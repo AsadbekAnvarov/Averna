@@ -1,0 +1,18 @@
+import Link from "next/link";
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-green-900 to-green-600 text-white">
+      <div className="container mx-auto px-4 py-16 text-center">
+        <h1 className="text-6xl font-bold mb-4">Averna Learning Centre</h1>
+        <p className="text-2xl mb-8">IELTS Excellence Platform</p>
+        <Link 
+          href="/auth/signin"
+          className="bg-green-400 text-black px-8 py-4 rounded-lg text-xl font-bold hover:bg-green-300"
+        >
+          Get Started
+        </Link>
+      </div>
+    </div>
+  );
+}
