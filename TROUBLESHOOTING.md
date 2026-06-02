@@ -56,6 +56,26 @@ achievements: {
 },
 ```
 
+### ❌ Проблема 4: Property 'type' does not exist on type 'AchievementType'
+
+**Ошибка:**
+```
+Property 'type' does not exist on type 'AchievementType'
+Property 'type' does not exist on type '"HOMEWORK_MASTER"'
+```
+
+**Решение:** ✅ **ИСПРАВЛЕНО!**
+
+`earnedAchievementTypes` это уже массив строк (`AchievementType[]`), не объектов:
+
+```typescript
+// До (НЕПРАВИЛЬНО):
+!earnedAchievementTypes.some((a) => a.type === "HOMEWORK_MASTER")
+
+// После (ПРАВИЛЬНО):
+!earnedAchievementTypes.includes("HOMEWORK_MASTER")
+```
+
 ---
 
 ## 🚀 Что Нужно Сделать Сейчас:
