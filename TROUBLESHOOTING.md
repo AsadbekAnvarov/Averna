@@ -33,6 +33,29 @@ adapter: PrismaAdapter(db),
 session: { strategy: "jwt" }
 ```
 
+### ❌ Проблема 3: Property 'achievement' does not exist
+
+**Ошибка:**
+```
+Property 'achievement' does not exist on type
+```
+
+**Решение:** ✅ **ИСПРАВЛЕНО!**
+
+Добавлен `include` для загрузки связанных данных в `lib/db-helpers.ts`:
+
+```typescript
+// До (НЕПРАВИЛЬНО):
+achievements: true,
+
+// После (ПРАВИЛЬНО):
+achievements: {
+  include: {
+    achievement: true,
+  },
+},
+```
+
 ---
 
 ## 🚀 Что Нужно Сделать Сейчас:
