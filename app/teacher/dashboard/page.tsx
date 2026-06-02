@@ -1,0 +1,119 @@
+import { redirect } from "next/navigation";
+import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { BookOpen, Users, CheckSquare, BarChart } from "lucide-react";
+import Link from "next/link";
+
+export default async function TeacherDashboard() {
+  const session = await auth();
+  if (!session?.user || session.user.role !== "TEACHER") redirect("/auth/signin");
+
+  const teacher = await db.teacher.findUnique({
+    where: { userId: session.user.id },
+    include: {
+      groups: { include: { students: true, homework: true } },
+      homework: { include: { submissions: true } },
+    },
+  });
+
+  if (!teacher) redirect("/auth/signin");
+
+  const totalStudents = teacher.groups.reduce((sum, g) => sum + g.students.length, 0);
+  const totalHomework = teacher.homework.length;
+  const pendingGrading = teacher.homework.reduce(
+    (sum, hw) => sum + hw.submissions.filter(s => s.status === "SUBMITTED").length,
+    0
+  );
+
+  return (
+    <div className="min-h-screen premium-gradient">
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <h1 className="text-4xl font-bold text-white mb-8">Teacher Dashboard</h1>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <Card className="glass border-blue-500/30">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-blue-400">
+                <Users className="h-5 w-5" />
+                Total Students
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold text-blue-400">{totalStudents}</p>
+            </CardContent>
+          </Card>
+
+          <Card className="glass border-purple-500/30">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-purple-400">
+                <BookOpen className="h-5 w-5" />
+                Total Homework
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold text-purple-400">{totalHomework}</p>
+            </CardContent>
+          </Card>
+
+          <Card className="glass border-yellow-500/30">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-yellow-400">
+                <CheckSquare className="h-5 w-5" />
+                Pending Grading
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold text-yellow-400">{pendingGrading}</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card className="glass border-averna-primary/30">
+            <CardHeader>
+              <CardTitle>Quick Actions</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <Link href="/teacher/homework/create">
+                <Button className="w-full neon-button bg-purple-500">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Create Homework
+                </Button>
+              </Link>
+              <Link href="/teacher/homework">
+                <Button className="w-full" variant="outline">
+                  <CheckSquare className="mr-2 h-4 w-4" />
+                  Grade Submissions
+                </Button>
+              </Link>
+              <Link href="/teacher/students">
+                <Button className="w-full" variant="outline">
+                  <Users className="mr-2 h-4 w-4" />
+                  View Students
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          <Card className="glass border-averna-primary/30">
+            <CardHeader>
+              <CardTitle>My Groups</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                {teacher.groups.map(group => (
+                  <div key={group.id} className="p-3 bg-averna-dark/30 rounded-lg">
+                    <p className="font-semibold text-white">{group.name}</p>
+                    <p className="text-sm text-gray-400">{group.students.length} students</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}

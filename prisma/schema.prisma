@@ -1,0 +1,314 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  TEACHER
+  PARENT
+  ADMIN
+}
+
+enum HomeworkStatus {
+  PENDING
+  SUBMITTED
+  GRADED
+  LATE
+}
+
+enum IELTSModule {
+  WRITING
+  READING
+  LISTENING
+  SPEAKING
+}
+
+enum AchievementType {
+  HOMEWORK_MASTER
+  SPEAKING_CHAMPION
+  READING_EXPERT
+  WRITING_GURU
+  LISTENING_MASTER
+  TOP_PERFORMER
+  STREAK_WARRIOR
+  EARLY_BIRD
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String
+  role          UserRole  @default(STUDENT)
+  image         String?
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  student       Student?
+  teacher       Teacher?
+  sessions      Session[]
+  accounts      Account[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model Student {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  groupId           String?
+  personalGoal      String?
+  totalPoints       Int      @default(0)
+  globalRank        Int      @default(0)
+  groupRank         Int      @default(0)
+  currentStreak     Int      @default(0)
+  longestStreak     Int      @default(0)
+  lastActiveDate    DateTime @default(now())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  user              User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  group             Group?               @relation(fields: [groupId], references: [id])
+  homeworkSubmissions HomeworkSubmission[]
+  ieltsTests        IELTSTest[]
+  achievements      StudentAchievement[]
+  speakingSessions  SpeakingSession[]
+  activityLogs      ActivityLog[]
+  parentLinks       ParentStudentLink[]
+
+  @@index([groupId])
+  @@index([totalPoints])
+  @@map("students")
+}
+
+model Teacher {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  bio       String?
+  specialty String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user              User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  groups            Group[]
+  homework          Homework[]
+  homeworkGrades    HomeworkSubmission[]
+  speakingSessions  SpeakingSession[]
+
+  @@map("teachers")
+}
+
+model Group {
+  id          String   @id @default(cuid())
+  name        String
+  teacherId   String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  teacher  Teacher    @relation(fields: [teacherId], references: [id])
+  students Student[]
+  homework Homework[]
+
+  @@index([teacherId])
+  @@map("groups")
+}
+
+model Homework {
+  id          String         @id @default(cuid())
+  title       String
+  description String         @db.Text
+  teacherId   String
+  groupId     String
+  dueDate     DateTime
+  points      Int            @default(10)
+  difficulty  Int            @default(1)
+  module      IELTSModule
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  // Relations
+  teacher     Teacher              @relation(fields: [teacherId], references: [id])
+  group       Group                @relation(fields: [groupId], references: [id])
+  submissions HomeworkSubmission[]
+
+  @@index([groupId])
+  @@index([teacherId])
+  @@index([dueDate])
+  @@map("homework")
+}
+
+model HomeworkSubmission {
+  id           String         @id @default(cuid())
+  studentId    String
+  homeworkId   String
+  content      String         @db.Text
+  status       HomeworkStatus @default(SUBMITTED)
+  position     Int?
+  pointsAwarded Int           @default(0)
+  feedback     String?        @db.Text
+  gradedBy     String?
+  submittedAt  DateTime       @default(now())
+  gradedAt     DateTime?
+
+  // Relations
+  student  Student  @relation(fields: [studentId], references: [id])
+  homework Homework @relation(fields: [homeworkId], references: [id])
+  teacher  Teacher? @relation(fields: [gradedBy], references: [id])
+
+  @@unique([studentId, homeworkId])
+  @@index([homeworkId])
+  @@index([status])
+  @@map("homework_submissions")
+}
+
+model IELTSTest {
+  id              String      @id @default(cuid())
+  studentId       String
+  module          IELTSModule
+  score           Float
+  answers         Json
+  aiAnalysis      Json?
+  timeSpent       Int // in seconds
+  completedAt     DateTime    @default(now())
+
+  // Relations
+  student Student @relation(fields: [studentId], references: [id])
+
+  @@index([studentId])
+  @@index([module])
+  @@map("ielts_tests")
+}
+
+model Achievement {
+  id          String            @id @default(cuid())
+  type        AchievementType   @unique
+  name        String
+  description String
+  icon        String
+  points      Int               @default(0)
+  createdAt   DateTime          @default(now())
+
+  // Relations
+  students StudentAchievement[]
+
+  @@map("achievements")
+}
+
+model StudentAchievement {
+  id            String   @id @default(cuid())
+  studentId     String
+  achievementId String
+  unlockedAt    DateTime @default(now())
+
+  // Relations
+  student     Student     @relation(fields: [studentId], references: [id])
+  achievement Achievement @relation(fields: [achievementId], references: [id])
+
+  @@unique([studentId, achievementId])
+  @@index([studentId])
+  @@map("student_achievements")
+}
+
+model SpeakingSession {
+  id          String   @id @default(cuid())
+  studentId   String
+  teacherId   String?
+  duration    Int // in minutes
+  points      Int      @default(0)
+  feedback    String?  @db.Text
+  rating      Int? // 1-5 stars from teacher
+  date        DateTime @default(now())
+
+  // Relations
+  student Student  @relation(fields: [studentId], references: [id])
+  teacher Teacher? @relation(fields: [teacherId], references: [id])
+
+  @@index([studentId])
+  @@index([date])
+  @@map("speaking_sessions")
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  studentId String
+  action    String
+  details   Json?
+  points    Int      @default(0)
+  createdAt DateTime @default(now())
+
+  // Relations
+  student Student @relation(fields: [studentId], references: [id])
+
+  @@index([studentId])
+  @@index([createdAt])
+  @@map("activity_logs")
+}
+
+model ParentStudentLink {
+  id         String   @id @default(cuid())
+  parentName String
+  parentEmail String
+  studentId  String
+  createdAt  DateTime @default(now())
+
+  // Relations
+  student Student @relation(fields: [studentId], references: [id])
+
+  @@unique([parentEmail, studentId])
+  @@index([studentId])
+  @@map("parent_student_links")
+}
+
+model DailyQuote {
+  id        String   @id @default(cuid())
+  text      String   @db.Text
+  author    String?
+  date      DateTime @unique @default(now())
+  createdAt DateTime @default(now())
+
+  @@index([date])
+  @@map("daily_quotes")
+}

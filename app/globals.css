@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 160 74% 17%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 160 60% 25%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 160 74% 17%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 160 30% 7%;
+    --foreground: 0 0% 98%;
+    --card: 160 25% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 160 25% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 160 70% 40%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 160 15% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 160 15% 15%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 160 55% 30%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 160 15% 20%;
+    --input: 160 15% 20%;
+    --ring: 160 70% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Neon Button Styles */
+.neon-button {
+  @apply transition-all duration-300 ease-in-out;
+  position: relative;
+}
+
+.neon-button:hover {
+  @apply shadow-neon-green;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.neon-button-error:hover {
+  @apply shadow-neon-red;
+  box-shadow: 0 0 20px rgba(255, 50, 50, 0.6), 0 0 40px rgba(255, 50, 50, 0.3);
+}
+
+/* Glassmorphism Effect */
+.glass {
+  background: rgba(13, 76, 58, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth Animations */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Premium Gradient Background */
+.premium-gradient {
+  background: linear-gradient(135deg, #082E24 0%, #0D4C3A 50%, #12654D 100%);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(13, 76, 58, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0D4C3A;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #12654D;
+}
