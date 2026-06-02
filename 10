@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 160 30% 7%;
+    --foreground: 0 0% 98%;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.neon-button:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 148, 0.6);
+}
+
+.glass {
+  background: rgba(13, 76, 58, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
