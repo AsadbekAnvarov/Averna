@@ -11,6 +11,28 @@
 "@radix-ui/react-radio-group": "^1.1.3"
 ```
 
+### ❌ Проблема 2: Type error with PrismaAdapter
+
+**Ошибка:**
+```
+Type 'Adapter' is not assignable to type 'Adapter'
+Property 'role' is missing in AdapterUser
+```
+
+**Решение:** ✅ **ИСПРАВЛЕНО!**
+
+Удален `PrismaAdapter` из `lib/auth.ts` - не требуется при использовании JWT стратегии с Credentials провайдером.
+
+```typescript
+// До (НЕПРАВИЛЬНО):
+import { PrismaAdapter } from "@auth/prisma-adapter";
+adapter: PrismaAdapter(db),
+
+// После (ПРАВИЛЬНО):
+// Adapter не используется
+session: { strategy: "jwt" }
+```
+
 ---
 
 ## 🚀 Что Нужно Сделать Сейчас:
