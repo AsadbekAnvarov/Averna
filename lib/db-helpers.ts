@@ -277,14 +277,18 @@ export async function checkAndAwardAchievements(studentId: string) {
       homeworkSubmissions: true,
       ieltsTests: true,
       speakingSessions: true,
-      achievements: true,
+      achievements: {
+        include: {
+          achievement: true,
+        },
+      },
     },
   });
 
   if (!student) return;
 
   const earnedAchievementTypes = student.achievements.map(
-    (a) => a.achievement
+    (a) => a.achievement.type
   );
 
   // Check Homework Master (50 homework completed)
