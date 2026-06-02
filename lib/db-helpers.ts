@@ -295,7 +295,7 @@ export async function checkAndAwardAchievements(studentId: string) {
   if (
     student.homeworkSubmissions.filter((s) => s.status === "GRADED").length >=
       50 &&
-    !earnedAchievementTypes.some((a) => a.type === "HOMEWORK_MASTER")
+    !earnedAchievementTypes.includes("HOMEWORK_MASTER")
   ) {
     await awardAchievement(studentId, "HOMEWORK_MASTER");
   }
@@ -303,7 +303,7 @@ export async function checkAndAwardAchievements(studentId: string) {
   // Check Speaking Champion (50 speaking sessions)
   if (
     student.speakingSessions.length >= 50 &&
-    !earnedAchievementTypes.some((a) => a.type === "SPEAKING_CHAMPION")
+    !earnedAchievementTypes.includes("SPEAKING_CHAMPION")
   ) {
     await awardAchievement(studentId, "SPEAKING_CHAMPION");
   }
@@ -314,7 +314,7 @@ export async function checkAndAwardAchievements(studentId: string) {
   );
   if (
     readingTests.length >= 100 &&
-    !earnedAchievementTypes.some((a) => a.type === "READING_EXPERT")
+    !earnedAchievementTypes.includes("READING_EXPERT")
   ) {
     await awardAchievement(studentId, "READING_EXPERT");
   }
@@ -322,7 +322,7 @@ export async function checkAndAwardAchievements(studentId: string) {
   // Check Streak Warrior (30 day streak)
   if (
     student.currentStreak >= 30 &&
-    !earnedAchievementTypes.some((a) => a.type === "STREAK_WARRIOR")
+    !earnedAchievementTypes.includes("STREAK_WARRIOR")
   ) {
     await awardAchievement(studentId, "STREAK_WARRIOR");
   }
@@ -331,7 +331,7 @@ export async function checkAndAwardAchievements(studentId: string) {
   if (
     student.globalRank <= 10 &&
     student.globalRank > 0 &&
-    !earnedAchievementTypes.some((a) => a.type === "TOP_PERFORMER")
+    !earnedAchievementTypes.includes("TOP_PERFORMER")
   ) {
     await awardAchievement(studentId, "TOP_PERFORMER");
   }
