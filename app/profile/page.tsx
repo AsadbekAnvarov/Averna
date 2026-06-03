@@ -28,6 +28,9 @@ export default function ProfilePage() {
     personalGoal: "",
     totalPoints: 0,
     currentStreak: 0,
+    longestStreak: 0,
+    globalRank: 0,
+    groupRank: 0,
   });
 
   useEffect(() => {
@@ -91,7 +94,7 @@ export default function ProfilePage() {
           My Profile
         </h1>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
           <Card className="glass border-averna-primary/30">
             <CardHeader>
               <CardTitle className="text-sm">Total Points</CardTitle>
@@ -106,16 +109,27 @@ export default function ProfilePage() {
               <CardTitle className="text-sm">Current Streak</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold text-orange-400">{profile.currentStreak}</p>
+              <p className="text-3xl font-bold text-orange-400">{profile.currentStreak}🔥</p>
             </CardContent>
           </Card>
 
-          <Card className="glass border-blue-500/30">
+          <Card className="glass border-averna-purple/30">
             <CardHeader>
-              <CardTitle className="text-sm">Account Status</CardTitle>
+              <CardTitle className="text-sm">Longest Streak</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-lg font-bold text-green-400">Active</p>
+              <p className="text-3xl font-bold text-averna-purple">{profile.longestStreak}</p>
+            </CardContent>
+          </Card>
+
+          <Card className="glass border-averna-cyan/30">
+            <CardHeader>
+              <CardTitle className="text-sm">Global Rank</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-3xl font-bold text-averna-cyan">
+                {profile.globalRank > 0 ? `#${profile.globalRank}` : "—"}
+              </p>
             </CardContent>
           </Card>
         </div>

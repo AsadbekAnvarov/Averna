@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
+import { TeacherHeader } from "@/components/teacher/teacher-header";
 
 export default async function TeacherStudentsPage() {
   const session = await auth();
@@ -39,6 +40,7 @@ export default async function TeacherStudentsPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-5xl">
+        <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <Link
           href="/teacher/dashboard"
           className="text-averna-neon hover:underline text-sm mb-4 block"

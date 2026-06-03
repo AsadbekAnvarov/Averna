@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { BookOpen, Users, CheckSquare, BarChart } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
+import { TeacherHeader } from "@/components/teacher/teacher-header";
 
 export default async function TeacherDashboard() {
   const session = await auth();
@@ -43,6 +44,7 @@ export default async function TeacherDashboard() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <h1 className="text-4xl font-bold text-white mb-8">Teacher Dashboard</h1>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">

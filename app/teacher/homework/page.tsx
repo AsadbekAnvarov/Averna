@@ -7,10 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
+import { AccountNotice } from "@/components/account-notice";
+import { TeacherHeader } from "@/components/teacher/teacher-header";
 
 export default async function TeacherHomeworkPage() {
   const session = await auth();
-  if (!session?.user || session.user.role !== "TEACHER") redirect("/auth/signin");
+  if (!session?.user) redirect("/auth/signin");
+  if (session.user.role === "STUDENT") redirect("/dashboard");
 
   const teacher = await db.teacher.findUnique({
     where: { userId: session.user.id },
@@ -25,11 +28,19 @@ export default async function TeacherHomeworkPage() {
     },
   });
 
-  if (!teacher) redirect("/auth/signin");
+  if (!teacher) {
+    return (
+      <AccountNotice
+        title="No teacher profile found"
+        message="This account doesn't have a teacher profile. Sign in with a teacher account to manage homework."
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <Link href="/teacher/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Dashboard
         </Link>
