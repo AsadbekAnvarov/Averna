@@ -36,6 +36,7 @@ const studentNavigation = [
   { name: "Flashcards", href: "/flashcards", icon: Layers },
   { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
   { name: "Rewards", href: "/rewards", icon: Gift },
+  { name: "Messages", href: "/messages", icon: MessageSquare },
   { name: "Homework", href: "/homework", icon: BookMarked },
   { name: "Rankings", href: "/rankings", icon: Trophy },
   { name: "Achievements", href: "/achievements", icon: Award },

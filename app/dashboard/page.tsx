@@ -13,6 +13,7 @@ import { AchievementsPreview } from "@/components/dashboard/achievements-preview
 import { WordOfTheDay } from "@/components/dashboard/word-of-the-day";
 import { MotivationBanner } from "@/components/dashboard/motivation-banner";
 import { Milestones } from "@/components/dashboard/milestones";
+import { StreakHeatmap } from "@/components/dashboard/streak-heatmap";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { AccountNotice } from "@/components/account-notice";
 import { updateStudentStreak } from "@/lib/db-helpers";
@@ -165,6 +166,7 @@ export default async function DashboardPage() {
                 longestStreak={student.longestStreak}
                 testsCompleted={testsCompleted}
               />
+              <StreakHeatmap studentId={student.id} />
               <UpcomingHomework homework={upcomingHomework} />
               <RecentActivity activities={student.activityLogs} />
             </div>

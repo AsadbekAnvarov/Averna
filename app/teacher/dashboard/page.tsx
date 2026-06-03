@@ -129,6 +129,12 @@ export default async function TeacherDashboard() {
                   Gradebook
                 </Button>
               </Link>
+              <Link href="/messages">
+                <Button className="w-full" variant="outline">
+                  <BarChart className="mr-2 h-4 w-4" />
+                  Messages
+                </Button>
+              </Link>
             </CardContent>
           </Card>
 

@@ -124,6 +124,16 @@ export function QuickActions() {
       available: true,
       badge: "NEW",
     },
+    {
+      icon: MessageSquare,
+      label: "Messages",
+      description: "Chat with your teacher",
+      href: "/messages",
+      color: "text-averna-cyan",
+      bgColor: "bg-averna-cyan/10",
+      available: true,
+      badge: "NEW",
+    },
   ];
 
   return (
