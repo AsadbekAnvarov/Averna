@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CalendarClock, GraduationCap, ClipboardCheck, CheckCircle2, XCircle, Clock } from "lucide-react";
+import { CalendarClock, GraduationCap, ClipboardCheck, CheckCircle2, XCircle, Clock, BookOpenCheck } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 
@@ -32,6 +32,7 @@ export default async function StudentSchedulePage() {
     include: {
       group: { include: { teacher: { include: { user: { select: { name: true } } } } } },
       attendances: { orderBy: { date: "desc" }, take: 30 },
+      grades: { orderBy: { date: "desc" }, take: 20 },
     },
   });
 
@@ -135,6 +136,41 @@ export default async function StudentSchedulePage() {
                       </span>
                       <span className={`flex items-center gap-1 text-sm font-medium ${st.color}`}>
                         {st.icon} {st.label}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Grades */}
+        <Card className="glass border-averna-purple/30 mt-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-averna-purple">
+              <BookOpenCheck className="h-5 w-5" /> My Grades
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {student.grades.length === 0 ? (
+              <p className="text-sm text-gray-400">No grades yet. Your teacher will post them here.</p>
+            ) : (
+              <div className="space-y-2">
+                {student.grades.map((g) => {
+                  const pct = g.maxScore > 0 ? Math.round((g.score / g.maxScore) * 100) : 0;
+                  const color = pct >= 80 ? "text-averna-neon" : pct >= 50 ? "text-yellow-400" : "text-red-400";
+                  return (
+                    <div key={g.id} className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div className="min-w-0">
+                        <p className="text-white font-medium truncate">{g.title}</p>
+                        {g.comment && <p className="text-xs text-gray-400 truncate">{g.comment}</p>}
+                        <p className="text-[11px] text-gray-500">
+                          {new Date(g.date).toLocaleDateString("en-GB")}
+                        </p>
+                      </div>
+                      <span className={`font-bold whitespace-nowrap ${color}`}>
+                        {g.score}/{g.maxScore}
                       </span>
                     </div>
                   );

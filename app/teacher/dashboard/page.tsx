@@ -123,6 +123,12 @@ export default async function TeacherDashboard() {
                   Take Attendance
                 </Button>
               </Link>
+              <Link href="/teacher/gradebook">
+                <Button className="w-full neon-button bg-averna-purple/80 hover:bg-averna-purple">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Gradebook
+                </Button>
+              </Link>
             </CardContent>
           </Card>
 
