@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { signOut } from "@/lib/auth";
 import { LogOut, Settings, Bell } from "lucide-react";
 import Link from "next/link";
+import { Logo } from "@/components/logo";
 
 interface DashboardHeaderProps {
   user: {
@@ -15,9 +16,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
   return (
     <header className="flex items-center justify-between mb-6 animate-fade-in">
       <div className="flex items-center gap-4">
-        <Link href="/dashboard" className="text-2xl font-bold text-white hover:text-averna-neon transition-colors">
-          <span className="text-averna-neon">Averna</span> Learning
-        </Link>
+        <Logo href="/dashboard" size={40} className="text-xl" />
       </div>
 
       <div className="flex items-center gap-3">

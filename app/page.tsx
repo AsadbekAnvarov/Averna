@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Trophy, Target, Users } from "lucide-react";
+import { Logo } from "@/components/logo";
 
 export default function HomePage() {
   return (
@@ -8,6 +9,9 @@ export default function HomePage() {
       <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fade-in">
+          <div className="flex justify-center mb-8">
+            <Logo size={96} showText={false} className="animate-float" />
+          </div>
           <h1 className="text-6xl font-bold text-white mb-4">
             Averna Learning Centre
           </h1>

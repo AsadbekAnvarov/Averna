@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AlertCircle, Loader2 } from "lucide-react";
+import { Logo } from "@/components/logo";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -54,6 +55,9 @@ export default function SignInPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8 animate-fade-in">
+          <div className="flex justify-center mb-4">
+            <Logo size={72} showText={false} />
+          </div>
           <h1 className="text-4xl font-bold text-white mb-2">
             Averna Learning Centre
           </h1>
