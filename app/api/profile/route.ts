@@ -7,17 +7,12 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     const user = await requireAuth();
-    
+
     const student = await db.student.findUnique({
       where: { userId: user.id },
       include: {
-        user: {
-          select: {
-            name: true,
-            email: true,
-            image: true,
-          },
-        },
+        user: { select: { name: true, email: true, image: true } },
+        group: { select: { name: true, level: true, schedule: true } },
       },
     });
 
@@ -29,6 +24,14 @@ export async function GET() {
       name: student.user.name || "",
       email: student.user.email,
       personalGoal: student.personalGoal || "",
+      level: student.level || "",
+      phone: student.phone || "",
+      nativeLanguage: student.nativeLanguage || "",
+      targetBand: student.targetBand || "",
+      bio: student.bio || "",
+      groupName: student.group?.name || "",
+      groupLevel: student.group?.level || "",
+      groupSchedule: student.group?.schedule || "",
       totalPoints: student.totalPoints,
       currentStreak: student.currentStreak,
       longestStreak: student.longestStreak,
@@ -44,7 +47,7 @@ export async function GET() {
 export async function PUT(req: NextRequest) {
   try {
     const user = await requireAuth();
-    
+
     const student = await db.student.findUnique({
       where: { userId: user.id },
     });
@@ -54,23 +57,27 @@ export async function PUT(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { name, personalGoal } = body;
+    const { name, personalGoal, phone, nativeLanguage, targetBand, bio } = body;
 
     // Update user name
-    if (name) {
+    if (typeof name === "string" && name.trim()) {
       await db.user.update({
         where: { id: user.id },
-        data: { name },
+        data: { name: name.trim() },
       });
     }
 
-    // Update personal goal
-    if (personalGoal) {
-      await db.student.update({
-        where: { id: student.id },
-        data: { personalGoal },
-      });
-    }
+    // Update student-editable profile fields (level is set by admin, not here)
+    await db.student.update({
+      where: { id: student.id },
+      data: {
+        personalGoal: personalGoal || null,
+        phone: phone || null,
+        nativeLanguage: nativeLanguage || null,
+        targetBand: targetBand || null,
+        bio: bio || null,
+      },
+    });
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
