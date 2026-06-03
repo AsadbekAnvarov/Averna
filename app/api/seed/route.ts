@@ -259,6 +259,70 @@ const SCHEMA_STATEMENTS: string[] = [
     CONSTRAINT "attendance_groupId_fkey" FOREIGN KEY ("groupId") REFERENCES "groups"("id"),
     CONSTRAINT "attendance_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id")
   );`,
+
+  // notifications
+  `CREATE TABLE IF NOT EXISTS "notifications" (
+    "id" TEXT PRIMARY KEY,
+    "userId" TEXT NOT NULL,
+    "type" TEXT NOT NULL DEFAULT 'system',
+    "title" TEXT NOT NULL,
+    "message" TEXT NOT NULL,
+    "link" TEXT,
+    "read" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "notifications_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE
+  );`,
+
+  // grades (gradebook)
+  `CREATE TABLE IF NOT EXISTS "grades" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL,
+    "teacherId" TEXT,
+    "groupId" TEXT,
+    "title" TEXT NOT NULL,
+    "score" DOUBLE PRECISION NOT NULL,
+    "maxScore" DOUBLE PRECISION NOT NULL DEFAULT 100,
+    "comment" TEXT,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "grades_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id"),
+    CONSTRAINT "grades_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id")
+  );`,
+
+  // messages (teacher <-> student chat)
+  `CREATE TABLE IF NOT EXISTS "messages" (
+    "id" TEXT PRIMARY KEY,
+    "senderId" TEXT NOT NULL,
+    "receiverId" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "read" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "messages_senderId_fkey" FOREIGN KEY ("senderId") REFERENCES "users"("id") ON DELETE CASCADE,
+    CONSTRAINT "messages_receiverId_fkey" FOREIGN KEY ("receiverId") REFERENCES "users"("id") ON DELETE CASCADE
+  );`,
+
+  // rewards (store catalog)
+  `CREATE TABLE IF NOT EXISTS "rewards" (
+    "id" TEXT PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
+    "cost" INTEGER NOT NULL,
+    "icon" TEXT,
+    "active" BOOLEAN NOT NULL DEFAULT true,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
+
+  // reward_redemptions
+  `CREATE TABLE IF NOT EXISTS "reward_redemptions" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL,
+    "rewardId" TEXT NOT NULL,
+    "cost" INTEGER NOT NULL,
+    "status" TEXT NOT NULL DEFAULT 'PENDING',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "reward_redemptions_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id"),
+    CONSTRAINT "reward_redemptions_rewardId_fkey" FOREIGN KEY ("rewardId") REFERENCES "rewards"("id")
+  );`,
 ];
 
 async function createTables() {
@@ -509,6 +573,21 @@ export async function GET() {
           module: "WRITING",
         },
       });
+    }
+
+    // --- Rewards store catalog (only if none) ---
+    if ((await db.reward.count()) === 0) {
+      const rewards = [
+        { name: "Free Trial Lesson", description: "A free 1-on-1 trial lesson with a teacher.", cost: 300, icon: "🎟️" },
+        { name: "Homework Pass", description: "Skip one homework deadline penalty.", cost: 150, icon: "📝" },
+        { name: "Averna Sticker Pack", description: "Cool branded stickers.", cost: 100, icon: "✨" },
+        { name: "Averna T-Shirt", description: "Official Averna Learning Centre t-shirt.", cost: 800, icon: "👕" },
+        { name: "10% Course Discount", description: "10% off your next course payment.", cost: 1000, icon: "💸" },
+        { name: "VIP Badge (1 month)", description: "Show off a VIP badge on your profile for a month.", cost: 500, icon: "👑" },
+      ];
+      for (const r of rewards) {
+        await db.reward.create({ data: r });
+      }
     }
 
     return NextResponse.json({
