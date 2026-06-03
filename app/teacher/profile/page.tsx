@@ -8,10 +8,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { User, Save, BookOpen, Users, GraduationCap } from "lucide-react";
+import { User, Save, BookOpen, Users, GraduationCap, CalendarClock, Layers } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { TopPerformers } from "@/components/top-performers";
 
 async function updateTeacherProfile(formData: FormData) {
   "use server";
@@ -103,6 +104,45 @@ export default async function TeacherProfilePage() {
           </Card>
         </div>
 
+        {/* My Groups - detailed list with level & schedule */}
+        <Card className="glass border-averna-neon/30 mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-averna-neon">
+              <Layers className="h-5 w-5" />
+              My Groups ({teacher.groups.length})
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {teacher.groups.length === 0 ? (
+              <p className="text-gray-400 text-sm">No groups assigned yet.</p>
+            ) : (
+              <div className="grid sm:grid-cols-2 gap-3">
+                {teacher.groups.map((g) => (
+                  <div
+                    key={g.id}
+                    className="p-4 rounded-lg bg-white/5 border border-white/10 hover:border-averna-neon/40 transition-colors"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="font-semibold text-white">{g.name}</p>
+                      <span className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-averna-purple/20 text-averna-purple border border-averna-purple/30 whitespace-nowrap">
+                        {g.level ?? "Level N/A"}
+                      </span>
+                    </div>
+                    <p className="text-sm text-averna-cyan mt-2 flex items-center gap-1">
+                      <CalendarClock className="h-3.5 w-3.5" />
+                      {g.schedule ?? "Schedule TBA"}
+                    </p>
+                    <p className="text-xs text-gray-400 mt-1 flex items-center gap-1">
+                      <Users className="h-3.5 w-3.5" />
+                      {g.students.length} student{g.students.length === 1 ? "" : "s"}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
         {/* Edit form */}
         <Card className="glass border-averna-cyan/30">
           <CardHeader>
@@ -167,6 +207,12 @@ export default async function TeacherProfilePage() {
             </form>
           </CardContent>
         </Card>
+
+        {/* Top performers showcase */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold text-white mb-4">🏆 Hall of Fame</h2>
+          <TopPerformers />
+        </div>
       </div>
     </div>
   );
