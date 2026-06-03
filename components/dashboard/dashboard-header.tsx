@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/lib/auth";
-import { LogOut, Settings, Bell } from "lucide-react";
+import { LogOut, Settings } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/logo";
+import { NotificationBell } from "@/components/notification-bell";
 
 interface DashboardHeaderProps {
   user: {
@@ -21,14 +22,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
 
       <div className="flex items-center gap-3">
         {/* Notifications */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="relative hover:bg-averna-primary/20"
-        >
-          <Bell className="h-5 w-5 text-gray-300" />
-          <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full animate-pulse" />
-        </Button>
+        <NotificationBell />
 
         {/* Settings */}
         <Link href="/profile">

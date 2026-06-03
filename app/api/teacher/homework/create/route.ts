@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireTeacher } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { notifyGroupStudents } from "@/lib/notifications";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +37,14 @@ export async function POST(req: NextRequest) {
         teacherId: teacher.id,
         groupId: teacher.groups[0].id,
       },
+    });
+
+    // Notify all students in the group about the new homework
+    await notifyGroupStudents(teacher.groups[0].id, {
+      type: "homework",
+      title: "New homework assigned",
+      message: `${title} — due ${new Date(dueDate).toLocaleDateString("en-GB")}`,
+      link: "/homework",
     });
 
     return NextResponse.json({ success: true, homeworkId: homework.id });

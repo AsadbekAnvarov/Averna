@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { CalendarClock, UserCheck, Sparkles, X } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
+import { notifyUser } from "@/lib/notifications";
 
 const DAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
@@ -26,6 +27,20 @@ async function bookSlot(formData: FormData) {
     where: { id: slotId, studentId: null },
     data: { studentId: student.id },
   });
+
+  // Notify the teacher about the booking
+  const slot = await db.tutorSlot.findUnique({
+    where: { id: slotId },
+    include: { teacher: { select: { userId: true } } },
+  });
+  if (slot?.studentId === student.id && slot.teacher) {
+    await notifyUser(slot.teacher.userId, {
+      type: "booking",
+      title: "New 1-on-1 booking",
+      message: `A student booked your slot on ${slot.day} at ${slot.startTime}.`,
+      link: "/teacher/tutoring",
+    });
+  }
   revalidatePath("/tutoring");
 }
 
