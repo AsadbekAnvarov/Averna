@@ -97,6 +97,12 @@ model Student {
   userId            String   @unique
   groupId           String?
   personalGoal      String?
+  level             String?  // CEFR/IELTS level, set during enrollment
+  phone             String?
+  nativeLanguage    String?
+  targetBand        String?
+  bio               String?
+  enrolledAt        DateTime?
   totalPoints       Int      @default(0)
   globalRank        Int      @default(0)
   groupRank         Int      @default(0)

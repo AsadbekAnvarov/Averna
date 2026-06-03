@@ -223,6 +223,14 @@ const SCHEMA_STATEMENTS: string[] = [
   `ALTER TABLE "groups" ADD COLUMN IF NOT EXISTS "schedule" TEXT;`,
   `ALTER TABLE "teachers" ADD COLUMN IF NOT EXISTS "isSecondTeacher" BOOLEAN NOT NULL DEFAULT false;`,
 
+  // --- New student profile / enrollment columns (idempotent) ---
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "level" TEXT;`,
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "phone" TEXT;`,
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "nativeLanguage" TEXT;`,
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "targetBand" TEXT;`,
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "bio" TEXT;`,
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "enrolledAt" TIMESTAMP(3);`,
+
   // tutor_slots (Second Teacher booking system)
   `CREATE TABLE IF NOT EXISTS "tutor_slots" (
     "id" TEXT PRIMARY KEY,
