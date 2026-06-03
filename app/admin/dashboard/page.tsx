@@ -6,7 +6,8 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, GraduationCap, Layers, UserPlus, Inbox } from "lucide-react";
+import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3 } from "lucide-react";
+import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { TopPerformers } from "@/components/top-performers";
@@ -117,6 +118,14 @@ export default async function AdminDashboard() {
           <ShieldGraphic />
           Admin Panel
         </h1>
+
+        <div className="mb-8">
+          <Link href="/admin/analytics">
+            <Button className="neon-button bg-averna-cyan/80 hover:bg-averna-cyan text-black">
+              <BarChart3 className="mr-2 h-4 w-4" /> View Centre Analytics
+            </Button>
+          </Link>
+        </div>
 
         {/* Stats */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
