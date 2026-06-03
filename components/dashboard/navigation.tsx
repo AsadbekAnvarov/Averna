@@ -18,6 +18,7 @@ import {
   User,
   Zap,
   AudioLines,
+  Layers,
 } from "lucide-react";
 
 const studentNavigation = [
@@ -28,6 +29,7 @@ const studentNavigation = [
   { name: "Speaking", href: "/learning/speaking", icon: Mic },
   { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
   { name: "Daily Challenge", href: "/challenge", icon: Zap },
+  { name: "Flashcards", href: "/flashcards", icon: Layers },
   { name: "Homework", href: "/homework", icon: BookMarked },
   { name: "Rankings", href: "/rankings", icon: Trophy },
   { name: "Achievements", href: "/achievements", icon: Award },
