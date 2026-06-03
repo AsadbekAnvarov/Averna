@@ -109,6 +109,12 @@ export default async function TeacherDashboard() {
                   View Students
                 </Button>
               </Link>
+              <Link href="/teacher/tutoring">
+                <Button className="w-full neon-button bg-averna-pink/80 hover:bg-averna-pink">
+                  <Users className="mr-2 h-4 w-4" />
+                  1-on-1 Tutoring Slots
+                </Button>
+              </Link>
             </CardContent>
           </Card>
 

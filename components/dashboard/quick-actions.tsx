@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers } from "lucide-react";
+import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers, UserCheck } from "lucide-react";
 import Link from "next/link";
 import { isSpeakingTime, getTimeUntilSpeakingTime } from "@/lib/utils";
 
@@ -91,6 +91,16 @@ export function QuickActions() {
       href: "/flashcards",
       color: "text-averna-purple",
       bgColor: "bg-averna-purple/10",
+      available: true,
+      badge: "NEW",
+    },
+    {
+      icon: UserCheck,
+      label: "Second Teacher",
+      description: "Book 1-on-1 practice",
+      href: "/tutoring",
+      color: "text-averna-pink",
+      bgColor: "bg-averna-pink/10",
       available: true,
       badge: "NEW",
     },
