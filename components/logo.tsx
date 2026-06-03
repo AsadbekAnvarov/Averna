@@ -7,7 +7,7 @@ import Link from "next/link";
  * `logo.svg`) into the project's `public/` folder and update LOGO_SRC
  * below to "/logo.png". Everything else stays the same.
  */
-const LOGO_SRC = "/logo.svg";
+const LOGO_SRC = "/logo.png";
 
 interface LogoProps {
   /** Pixel size of the square logo mark. */
@@ -33,7 +33,8 @@ export function Logo({
         alt="Averna logo"
         width={size}
         height={size}
-        className="drop-shadow-[0_0_10px_rgba(0,229,255,0.5)]"
+        style={{ width: size, height: size }}
+        className="rounded-lg object-contain drop-shadow-[0_0_12px_rgba(0,229,255,0.55)]"
       />
       {showText && (
         <span className="font-bold leading-tight">
