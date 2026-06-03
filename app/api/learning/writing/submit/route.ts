@@ -4,6 +4,8 @@ import { db } from "@/lib/db";
 import { assessWritingTask } from "@/lib/ai";
 import { saveIELTSTest } from "@/lib/db-helpers";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const user = await requireAuth();

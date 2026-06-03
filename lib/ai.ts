@@ -1,8 +1,15 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Lazy initialization - only create OpenAI client when actually needed
+let openai: OpenAI | null = null;
+
+function getOpenAIClient(): OpenAI {
+  if (!openai) {
+    const apiKey = process.env.OPENAI_API_KEY || "placeholder-key-for-build";
+    openai = new OpenAI({ apiKey });
+  }
+  return openai;
+}
 
 export interface WritingAssessment {
   taskAchievement: number; // 0-9
@@ -59,6 +66,7 @@ Respond in JSON format:
 }`;
 
   try {
+    const openai = getOpenAIClient();
     const completion = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
@@ -89,6 +97,7 @@ export async function generateSpeakingQuestions(
   };
 
   try {
+    const openai = getOpenAIClient();
     const completion = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
@@ -116,6 +125,7 @@ export async function aiMentorChat(
   conversationHistory: { role: "user" | "assistant"; content: string }[]
 ): Promise<string> {
   try {
+    const openai = getOpenAIClient();
     const completion = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
@@ -155,6 +165,7 @@ export async function generatePersonalizedStudyPlan(
   }
 ): Promise<string> {
   try {
+    const openai = getOpenAIClient();
     const completion = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [

@@ -3,6 +3,8 @@ import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { submitHomework } from "@/lib/db-helpers";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const user = await requireAuth();
