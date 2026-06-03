@@ -81,3 +81,40 @@ export const motivationalQuotes = [
 export function getRandomQuote(): string {
   return motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
 }
+
+
+// ===== Learner Level system (shared) =====
+export interface LevelInfo {
+  level: number;
+  title: string;
+  base: number;
+  next: number;
+  into: number; // percent progress into the current level (0-100)
+}
+
+const LEVEL_THRESHOLDS = [0, 100, 300, 600, 1000, 1500, 2200, 3000, 4000, 5500];
+const LEVEL_TITLES = [
+  "Rookie",
+  "Explorer",
+  "Achiever",
+  "Skilled",
+  "Advanced",
+  "Expert",
+  "Master",
+  "Champion",
+  "Legend",
+  "IELTS Pro",
+];
+
+export function getLevelInfo(points: number): LevelInfo {
+  let level = 1;
+  for (let i = 0; i < LEVEL_THRESHOLDS.length; i++) {
+    if (points >= LEVEL_THRESHOLDS[i]) level = i + 1;
+  }
+  const idx = level - 1;
+  const base = LEVEL_THRESHOLDS[idx] ?? 0;
+  const next = LEVEL_THRESHOLDS[idx + 1] ?? base + 1000;
+  const into =
+    next > base ? Math.min(100, Math.round(((points - base) / (next - base)) * 100)) : 100;
+  return { level, title: LEVEL_TITLES[idx] ?? "IELTS Pro", base, next, into };
+}

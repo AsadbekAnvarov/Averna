@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { X, Sparkles, Flame, Star } from "lucide-react";
+import { getLevelInfo } from "@/lib/utils";
 
 const QUOTES = [
   "Success is the sum of small efforts repeated every day.",
@@ -23,24 +24,6 @@ function greeting(): string {
   return "Good evening";
 }
 
-// Simple level system based on total points
-function levelFor(points: number): { level: number; title: string; next: number; into: number } {
-  const thresholds = [0, 100, 300, 600, 1000, 1500, 2200, 3000, 4000, 5500];
-  const titles = [
-    "Rookie", "Explorer", "Achiever", "Skilled", "Advanced",
-    "Expert", "Master", "Champion", "Legend", "IELTS Pro",
-  ];
-  let level = 1;
-  for (let i = 0; i < thresholds.length; i++) {
-    if (points >= thresholds[i]) level = i + 1;
-  }
-  const idx = level - 1;
-  const base = thresholds[idx] ?? 0;
-  const next = thresholds[idx + 1] ?? base + 1000;
-  const into = next > base ? Math.min(100, Math.round(((points - base) / (next - base)) * 100)) : 100;
-  return { level, title: titles[idx] ?? "IELTS Pro", next, into };
-}
-
 interface MotivationBannerProps {
   name: string | null;
   points: number;
@@ -50,7 +33,7 @@ interface MotivationBannerProps {
 export function MotivationBanner({ name, points, streak }: MotivationBannerProps) {
   const [visible, setVisible] = useState(true);
   const [quote, setQuote] = useState(QUOTES[0]);
-  const { level, title, next, into } = levelFor(points);
+  const { level, title, next, into } = getLevelInfo(points);
 
   useEffect(() => {
     // Pick a fresh motivational quote each time the dashboard loads

@@ -217,6 +217,25 @@ const SCHEMA_STATEMENTS: string[] = [
     "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP UNIQUE,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
   );`,
+
+  // --- New columns (idempotent) for groups & teachers ---
+  `ALTER TABLE "groups" ADD COLUMN IF NOT EXISTS "level" TEXT;`,
+  `ALTER TABLE "groups" ADD COLUMN IF NOT EXISTS "schedule" TEXT;`,
+  `ALTER TABLE "teachers" ADD COLUMN IF NOT EXISTS "isSecondTeacher" BOOLEAN NOT NULL DEFAULT false;`,
+
+  // tutor_slots (Second Teacher booking system)
+  `CREATE TABLE IF NOT EXISTS "tutor_slots" (
+    "id" TEXT PRIMARY KEY,
+    "teacherId" TEXT NOT NULL,
+    "day" TEXT NOT NULL,
+    "startTime" TEXT NOT NULL,
+    "endTime" TEXT NOT NULL,
+    "topic" TEXT,
+    "studentId" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "tutor_slots_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id"),
+    CONSTRAINT "tutor_slots_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id")
+  );`,
 ];
 
 async function createTables() {
@@ -352,6 +371,73 @@ export async function GET() {
         },
       });
     }
+    // Ensure the main group has a level + schedule
+    await db.group.update({
+      where: { id: group.id },
+      data: { level: "Advanced (IELTS 7.5+)", schedule: "Mon, Wed, Fri · 18:00–19:30" },
+    });
+
+    // --- Extra groups (different levels & schedules), created once ---
+    const extraGroups = [
+      { name: "Intermediate Evening", level: "Intermediate (B1)", schedule: "Tue, Thu · 17:00–18:30" },
+      { name: "IELTS Standard", level: "IELTS Standard (6.0–6.5)", schedule: "Mon, Wed · 19:00–20:30" },
+      { name: "Beginner Foundations", level: "Beginner (A2)", schedule: "Sat · 10:00–12:00" },
+      { name: "Speaking Booster", level: "Upper-Intermediate (B2)", schedule: "Thu · 20:00–21:00" },
+    ];
+    for (const g of extraGroups) {
+      const exists = await db.group.findFirst({
+        where: { teacherId: teacher.id, name: g.name },
+      });
+      if (!exists) {
+        await db.group.create({
+          data: {
+            name: g.name,
+            level: g.level,
+            schedule: g.schedule,
+            teacherId: teacher.id,
+            description: `${g.level} group`,
+          },
+        });
+      }
+    }
+
+    // --- Second Teacher (1-on-1 tutoring) ---
+    const secondTeacherUser = await db.user.upsert({
+      where: { email: "teacher2@averna.com" },
+      update: {},
+      create: {
+        email: "teacher2@averna.com",
+        name: "Michael Chen",
+        password: await hash("teacher123", 12),
+        role: "TEACHER",
+        emailVerified: new Date(),
+      },
+    });
+    const secondTeacher = await db.teacher.upsert({
+      where: { userId: secondTeacherUser.id },
+      update: { isSecondTeacher: true },
+      create: {
+        userId: secondTeacherUser.id,
+        bio: "Friendly speaking & conversation coach for 1-on-1 practice sessions.",
+        specialty: "Speaking & Pronunciation",
+        isSecondTeacher: true,
+      },
+    });
+    created.push("teacher2@averna.com / teacher123 (Second Teacher)");
+
+    // --- Open tutoring slots for the second teacher (once) ---
+    if ((await db.tutorSlot.count({ where: { teacherId: secondTeacher.id } })) === 0) {
+      const slots = [
+        { day: "Monday", startTime: "16:00", endTime: "16:30", topic: "Speaking warm-up" },
+        { day: "Monday", startTime: "16:30", endTime: "17:00", topic: "IELTS Part 2 cue cards" },
+        { day: "Wednesday", startTime: "18:00", endTime: "18:30", topic: "Pronunciation drills" },
+        { day: "Friday", startTime: "17:00", endTime: "17:30", topic: "Free conversation" },
+        { day: "Friday", startTime: "17:30", endTime: "18:00", topic: "Mock interview" },
+      ];
+      for (const s of slots) {
+        await db.tutorSlot.create({ data: { ...s, teacherId: secondTeacher.id } });
+      }
+    }
 
     // --- Students ---
     const studentNames = ["Alex Thompson", "Maria Garcia", "John Smith", "Emma Wilson", "David Lee"];
@@ -409,6 +495,7 @@ export async function GET() {
       login: {
         admin: "admin@averna.com / admin123",
         teacher: "teacher@averna.com / teacher123",
+        secondTeacher: "teacher2@averna.com / teacher123",
         student: "student1@averna.com / student123",
       },
     });

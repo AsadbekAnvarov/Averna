@@ -115,6 +115,7 @@ model Student {
   speakingSessions  SpeakingSession[]
   activityLogs      ActivityLog[]
   parentLinks       ParentStudentLink[]
+  tutorBookings     TutorSlot[]
 
   @@index([groupId])
   @@index([totalPoints])
@@ -122,12 +123,13 @@ model Student {
 }
 
 model Teacher {
-  id        String   @id @default(cuid())
-  userId    String   @unique
-  bio       String?
-  specialty String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  bio             String?
+  specialty       String?
+  isSecondTeacher Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
   // Relations
   user              User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -135,6 +137,7 @@ model Teacher {
   homework          Homework[]
   homeworkGrades    HomeworkSubmission[]
   speakingSessions  SpeakingSession[]
+  tutorSlots        TutorSlot[]
 
   @@map("teachers")
 }
@@ -144,6 +147,8 @@ model Group {
   name        String
   teacherId   String
   description String?
+  level       String?
+  schedule    String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -311,4 +316,23 @@ model DailyQuote {
 
   @@index([date])
   @@map("daily_quotes")
+}
+
+model TutorSlot {
+  id        String   @id @default(cuid())
+  teacherId String
+  day       String // e.g. "Monday"
+  startTime String // e.g. "18:00"
+  endTime   String // e.g. "19:00"
+  topic     String?
+  studentId String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  teacher Teacher  @relation(fields: [teacherId], references: [id])
+  student Student? @relation(fields: [studentId], references: [id])
+
+  @@index([teacherId])
+  @@index([studentId])
+  @@map("tutor_slots")
 }
