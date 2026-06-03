@@ -24,7 +24,10 @@ export default async function DashboardPage() {
   }
 
   // Route non-students to their own area (one-way, prevents redirect loops)
-  if (session.user.role === "TEACHER" || session.user.role === "ADMIN") {
+  if (session.user.role === "ADMIN") {
+    redirect("/admin/dashboard");
+  }
+  if (session.user.role === "TEACHER") {
     redirect("/teacher/dashboard");
   }
 

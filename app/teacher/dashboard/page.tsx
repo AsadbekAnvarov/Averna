@@ -16,6 +16,8 @@ export default async function TeacherDashboard() {
 
   // Students belong on the student dashboard (one-way, prevents loops)
   if (session.user.role === "STUDENT") redirect("/dashboard");
+  // Admins have their own panel
+  if (session.user.role === "ADMIN") redirect("/admin/dashboard");
 
   const teacher = await db.teacher.findUnique({
     where: { userId: session.user.id },

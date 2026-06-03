@@ -36,7 +36,9 @@ export default function SignInPage() {
         // Route to the correct area based on the user's role
         const session = await getSession();
         const role = session?.user?.role;
-        if (role === "TEACHER" || role === "ADMIN") {
+        if (role === "ADMIN") {
+          router.push("/admin/dashboard");
+        } else if (role === "TEACHER") {
           router.push("/teacher/dashboard");
         } else {
           router.push("/dashboard");
