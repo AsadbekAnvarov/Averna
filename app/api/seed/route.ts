@@ -330,10 +330,10 @@ export async function GET() {
       }
     }
 
-    // --- Admin ---
+    // --- Admin (force role so an existing account is corrected too) ---
     await db.user.upsert({
       where: { email: "admin@averna.com" },
-      update: {},
+      update: { role: "ADMIN" },
       create: {
         email: "admin@averna.com",
         name: "Admin User",
