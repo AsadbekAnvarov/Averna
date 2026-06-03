@@ -118,3 +118,43 @@ export function getLevelInfo(points: number): LevelInfo {
     next > base ? Math.min(100, Math.round(((points - base) / (next - base)) * 100)) : 100;
   return { level, title: LEVEL_TITLES[idx] ?? "IELTS Pro", base, next, into };
 }
+
+
+// ===== Lightweight writing band estimator (no external deps) =====
+// Used by the Mock Exam to estimate a Writing band from the essay text.
+export function heuristicWritingAssessmentSafe(essay: string): number {
+  const text = (essay || "").trim();
+  if (!text) return 3.5;
+
+  const words = text.split(/\s+/).filter(Boolean);
+  const wordCount = words.length;
+  const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0);
+  const sentenceCount = Math.max(1, sentences.length);
+  const avgSentenceLen = wordCount / sentenceCount;
+  const uniqueWords = new Set(words.map((w) => w.toLowerCase().replace(/[^a-z']/g, ""))).size;
+  const lexicalDiversity = wordCount > 0 ? uniqueWords / wordCount : 0;
+
+  const linkers = [
+    "however", "moreover", "furthermore", "therefore", "in addition",
+    "for example", "for instance", "on the other hand", "in conclusion",
+    "firstly", "secondly", "finally", "although", "whereas", "because",
+  ];
+  const lower = text.toLowerCase();
+  const linkerCount = linkers.filter((l) => lower.includes(l)).length;
+
+  // Base band from length toward the 250-word Task 2 target
+  let band = 4;
+  if (wordCount >= 250) band = 6.5;
+  else if (wordCount >= 200) band = 6;
+  else if (wordCount >= 150) band = 5.5;
+  else if (wordCount >= 100) band = 5;
+  else if (wordCount >= 50) band = 4.5;
+
+  // Adjust for vocabulary range, cohesion and sentence variety
+  if (lexicalDiversity > 0.55) band += 0.5;
+  if (linkerCount >= 4) band += 0.5;
+  if (avgSentenceLen >= 10 && avgSentenceLen <= 22) band += 0.5;
+
+  band = Math.max(3.5, Math.min(8.5, band));
+  return Math.round(band * 2) / 2;
+}
