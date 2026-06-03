@@ -9,6 +9,16 @@ import type { NextAuthConfig } from "next-auth";
  * database access is added in lib/auth.ts (Node runtime only).
  */
 export const authConfig = {
+  // Required on Vercel / custom hosts for NextAuth v5, otherwise the
+  // middleware throws "UntrustedHost" -> MIDDLEWARE_INVOCATION_FAILED.
+  trustHost: true,
+  // Read the secret from env; fall back to a constant so the middleware
+  // never crashes if the env var is missing. Set NEXTAUTH_SECRET in Vercel
+  // for production security.
+  secret:
+    process.env.NEXTAUTH_SECRET ||
+    process.env.AUTH_SECRET ||
+    "averna-fallback-secret-change-me-in-production-2026",
   session: {
     strategy: "jwt",
   },
