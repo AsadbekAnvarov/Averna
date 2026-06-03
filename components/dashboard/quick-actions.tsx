@@ -74,6 +74,16 @@ export function QuickActions() {
       available: true,
       badge: "NEW",
     },
+    {
+      icon: Mic,
+      label: "Pronunciation Coach",
+      description: "Speak & get scored",
+      href: "/learning/pronunciation",
+      color: "text-averna-pink",
+      bgColor: "bg-averna-pink/10",
+      available: true,
+      badge: "NEW",
+    },
   ];
 
   return (

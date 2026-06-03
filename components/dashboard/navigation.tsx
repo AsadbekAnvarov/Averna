@@ -17,6 +17,7 @@ import {
   BarChart,
   User,
   Zap,
+  AudioLines,
 } from "lucide-react";
 
 const studentNavigation = [
@@ -25,6 +26,7 @@ const studentNavigation = [
   { name: "Reading", href: "/learning/reading", icon: BookOpen },
   { name: "Listening", href: "/learning/listening", icon: Headphones },
   { name: "Speaking", href: "/learning/speaking", icon: Mic },
+  { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
   { name: "Daily Challenge", href: "/challenge", icon: Zap },
   { name: "Homework", href: "/homework", icon: BookMarked },
   { name: "Rankings", href: "/rankings", icon: Trophy },
