@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { getGlobalRankings, getGroupRankings } from "@/lib/db-helpers";
