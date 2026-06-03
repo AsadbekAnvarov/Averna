@@ -16,6 +16,7 @@ import {
   MessageSquare,
   BarChart,
   User,
+  Zap,
 } from "lucide-react";
 
 const studentNavigation = [
@@ -24,6 +25,7 @@ const studentNavigation = [
   { name: "Reading", href: "/learning/reading", icon: BookOpen },
   { name: "Listening", href: "/learning/listening", icon: Headphones },
   { name: "Speaking", href: "/learning/speaking", icon: Mic },
+  { name: "Daily Challenge", href: "/challenge", icon: Zap },
   { name: "Homework", href: "/homework", icon: BookMarked },
   { name: "Rankings", href: "/rankings", icon: Trophy },
   { name: "Achievements", href: "/achievements", icon: Award },

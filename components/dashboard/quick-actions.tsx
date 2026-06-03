@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare } from "lucide-react";
+import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap } from "lucide-react";
 import Link from "next/link";
 import { isSpeakingTime, getTimeUntilSpeakingTime } from "@/lib/utils";
 
@@ -63,6 +63,16 @@ export function QuickActions() {
       color: "text-pink-400",
       bgColor: "bg-pink-500/10",
       available: true,
+    },
+    {
+      icon: Zap,
+      label: "Daily Challenge",
+      description: "Test yourself today",
+      href: "/challenge",
+      color: "text-averna-cyan",
+      bgColor: "bg-averna-cyan/10",
+      available: true,
+      badge: "NEW",
     },
   ];
 
