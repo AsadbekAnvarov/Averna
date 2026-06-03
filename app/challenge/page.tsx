@@ -49,6 +49,7 @@ export default function DailyChallengePage() {
   const [answered, setAnswered] = useState(false);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [rewardMsg, setRewardMsg] = useState("");
 
   const q = questions[current];
 
@@ -66,6 +67,19 @@ export default function DailyChallengePage() {
       setAnswered(false);
     } else {
       setFinished(true);
+      // Award points (once per day) in the background
+      const finalScore = score + (selected === q.answer ? 0 : 0); // score already counted on select
+      fetch("/api/challenge/complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ score: finalScore }),
+      })
+        .then((r) => r.json())
+        .then((d) => {
+          if (d.alreadyDone) setRewardMsg("✓ Already completed today — come back tomorrow!");
+          else if (d.pointsEarned > 0) setRewardMsg(`🪙 +${d.pointsEarned} points added!`);
+        })
+        .catch(() => {});
     }
   };
 
@@ -163,6 +177,9 @@ export default function DailyChallengePage() {
                   ? "Great job! Keep practicing 💪"
                   : "Good effort — review and try again tomorrow!"}
               </p>
+              {rewardMsg && (
+                <p className="text-averna-neon font-semibold">{rewardMsg}</p>
+              )}
               <div className="flex gap-3 justify-center pt-2">
                 <Button
                   onClick={restart}
