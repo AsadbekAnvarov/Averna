@@ -225,8 +225,44 @@ async function createTables() {
   }
 }
 
+function findDatabaseUrl(): string | undefined {
+  const candidates = [
+    process.env.DATABASE_URL,
+    process.env.POSTGRES_PRISMA_URL,
+    process.env.POSTGRES_URL,
+    process.env.DATABASE_URL_UNPOOLED,
+    process.env.POSTGRES_URL_NON_POOLING,
+    process.env.NEON_DATABASE_URL,
+  ];
+  return candidates.find(
+    (url) =>
+      !!url &&
+      url.length > 0 &&
+      !url.includes("localhost") &&
+      !url.includes("placeholder")
+  );
+}
+
 export async function GET() {
   try {
+    // --- Step 0: diagnostic - make sure we actually have a DB connection ---
+    const dbUrl = findDatabaseUrl();
+    if (!dbUrl) {
+      const dbEnvKeys = Object.keys(process.env).filter((k) =>
+        /DATABASE|POSTGRES|PG|NEON|PRISMA/i.test(k)
+      );
+      return NextResponse.json(
+        {
+          success: false,
+          error: "No valid database connection string found in environment.",
+          availableDbEnvVars: dbEnvKeys,
+          hint:
+            "Add an environment variable named DATABASE_URL with your Neon connection string in Vercel -> Settings -> Environment Variables, then Redeploy. If your Neon variable has a different name, tell me the name shown in 'availableDbEnvVars'.",
+        },
+        { status: 500 }
+      );
+    }
+
     // --- Step 1: create tables (idempotent) ---
     await createTables();
 
