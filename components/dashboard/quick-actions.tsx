@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers, UserCheck } from "lucide-react";
+import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers, UserCheck, CalendarClock } from "lucide-react";
 import Link from "next/link";
 import { isSpeakingTime, getTimeUntilSpeakingTime } from "@/lib/utils";
 
@@ -101,6 +101,16 @@ export function QuickActions() {
       href: "/tutoring",
       color: "text-averna-pink",
       bgColor: "bg-averna-pink/10",
+      available: true,
+      badge: "NEW",
+    },
+    {
+      icon: CalendarClock,
+      label: "My Schedule",
+      description: "Lessons & attendance",
+      href: "/schedule",
+      color: "text-averna-cyan",
+      bgColor: "bg-averna-cyan/10",
       available: true,
       badge: "NEW",
     },

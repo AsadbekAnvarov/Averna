@@ -20,10 +20,12 @@ import {
   AudioLines,
   Layers,
   UserCheck,
+  CalendarClock,
 } from "lucide-react";
 
 const studentNavigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { name: "My Schedule", href: "/schedule", icon: CalendarClock },
   { name: "Writing", href: "/learning/writing", icon: PenTool },
   { name: "Reading", href: "/learning/reading", icon: BookOpen },
   { name: "Listening", href: "/learning/listening", icon: Headphones },

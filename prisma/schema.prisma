@@ -122,6 +122,7 @@ model Student {
   activityLogs      ActivityLog[]
   parentLinks       ParentStudentLink[]
   tutorBookings     TutorSlot[]
+  attendances       Attendance[]
 
   @@index([groupId])
   @@index([totalPoints])
@@ -144,6 +145,7 @@ model Teacher {
   homeworkGrades    HomeworkSubmission[]
   speakingSessions  SpeakingSession[]
   tutorSlots        TutorSlot[]
+  attendanceRecords Attendance[]
 
   @@map("teachers")
 }
@@ -159,9 +161,10 @@ model Group {
   updatedAt   DateTime @updatedAt
 
   // Relations
-  teacher  Teacher    @relation(fields: [teacherId], references: [id])
-  students Student[]
-  homework Homework[]
+  teacher     Teacher      @relation(fields: [teacherId], references: [id])
+  students    Student[]
+  homework    Homework[]
+  attendances Attendance[]
 
   @@index([teacherId])
   @@map("groups")
@@ -341,4 +344,24 @@ model TutorSlot {
   @@index([teacherId])
   @@index([studentId])
   @@map("tutor_slots")
+}
+
+model Attendance {
+  id        String   @id @default(cuid())
+  studentId String
+  groupId   String
+  teacherId String?
+  date      DateTime @default(now())
+  status    String   @default("PRESENT") // PRESENT | ABSENT | LATE | EXCUSED
+  note      String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  student Student  @relation(fields: [studentId], references: [id])
+  group   Group    @relation(fields: [groupId], references: [id])
+  teacher Teacher? @relation(fields: [teacherId], references: [id])
+
+  @@index([groupId, date])
+  @@index([studentId])
+  @@map("attendance")
 }

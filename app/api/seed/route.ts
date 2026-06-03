@@ -244,6 +244,21 @@ const SCHEMA_STATEMENTS: string[] = [
     CONSTRAINT "tutor_slots_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id"),
     CONSTRAINT "tutor_slots_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id")
   );`,
+
+  // attendance (roll-call / journal)
+  `CREATE TABLE IF NOT EXISTS "attendance" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL,
+    "groupId" TEXT NOT NULL,
+    "teacherId" TEXT,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "status" TEXT NOT NULL DEFAULT 'PRESENT',
+    "note" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "attendance_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id"),
+    CONSTRAINT "attendance_groupId_fkey" FOREIGN KEY ("groupId") REFERENCES "groups"("id"),
+    CONSTRAINT "attendance_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id")
+  );`,
 ];
 
 async function createTables() {

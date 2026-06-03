@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Users, CheckSquare, BarChart } from "lucide-react";
+import { BookOpen, Users, CheckSquare, BarChart, ClipboardCheck, CalendarClock } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
@@ -117,6 +117,12 @@ export default async function TeacherDashboard() {
                   1-on-1 Tutoring Slots
                 </Button>
               </Link>
+              <Link href="/teacher/attendance">
+                <Button className="w-full neon-button bg-averna-cyan/80 hover:bg-averna-cyan text-black">
+                  <ClipboardCheck className="mr-2 h-4 w-4" />
+                  Take Attendance
+                </Button>
+              </Link>
             </CardContent>
           </Card>
 
@@ -127,9 +133,20 @@ export default async function TeacherDashboard() {
             <CardContent>
               <div className="space-y-2">
                 {teacher.groups.map(group => (
-                  <div key={group.id} className="p-3 bg-averna-dark/30 rounded-lg">
-                    <p className="font-semibold text-white">{group.name}</p>
-                    <p className="text-sm text-gray-400">{group.students.length} students</p>
+                  <div key={group.id} className="p-3 bg-averna-dark/30 rounded-lg border border-white/5">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="font-semibold text-white">{group.name}</p>
+                      {group.level && (
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-averna-purple/20 text-averna-purple border border-averna-purple/30 whitespace-nowrap">
+                          {group.level}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-averna-cyan mt-1 flex items-center gap-1">
+                      <CalendarClock className="h-3 w-3" />
+                      {group.schedule ?? "Schedule TBA"}
+                    </p>
+                    <p className="text-sm text-gray-400 mt-1">{group.students.length} students</p>
                   </div>
                 ))}
               </div>
