@@ -11,6 +11,8 @@ import { RecentActivity } from "@/components/dashboard/recent-activity";
 import { UpcomingHomework } from "@/components/dashboard/upcoming-homework";
 import { AchievementsPreview } from "@/components/dashboard/achievements-preview";
 import { WordOfTheDay } from "@/components/dashboard/word-of-the-day";
+import { MotivationBanner } from "@/components/dashboard/motivation-banner";
+import { Milestones } from "@/components/dashboard/milestones";
 import { AccountNotice } from "@/components/account-notice";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -83,6 +85,11 @@ export default async function DashboardPage() {
   // Update student streak on dashboard visit
   await updateStudentStreak(student.id);
 
+  // Count completed tests (for milestones)
+  const testsCompleted = await db.iELTSTest.count({
+    where: { studentId: student.id },
+  });
+
   // Get upcoming homework
   const upcomingHomework = await db.homework.findMany({
     where: {
@@ -132,6 +139,12 @@ export default async function DashboardPage() {
         <DashboardHeader user={student.user} />
         
         <div className="space-y-6">
+          <MotivationBanner
+            name={student.user.name}
+            points={student.totalPoints}
+            streak={student.currentStreak}
+          />
+
           <WelcomeSection 
             student={student}
             quote={dailyQuote}
@@ -142,6 +155,12 @@ export default async function DashboardPage() {
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-6">
               <QuickActions />
+              <Milestones
+                points={student.totalPoints}
+                currentStreak={student.currentStreak}
+                longestStreak={student.longestStreak}
+                testsCompleted={testsCompleted}
+              />
               <UpcomingHomework homework={upcomingHomework} />
               <RecentActivity activities={student.activityLogs} />
             </div>
