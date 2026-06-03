@@ -5,30 +5,235 @@ import { db } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 /**
- * One-time seed endpoint to create demo accounts and sample data.
+ * One-time setup endpoint.
  * Visit /api/seed in the browser once after deployment.
- * It is idempotent: running it again will not create duplicates.
+ *
+ * It does two things, both idempotent (safe to run multiple times):
+ *   1. Creates all database tables (runtime DDL, since DATABASE_URL is
+ *      only available at runtime on Vercel + Neon, not at build time).
+ *   2. Creates demo accounts and sample data.
  */
+
+// --- 1. Schema (DDL) statements, run in dependency order ---
+const SCHEMA_STATEMENTS: string[] = [
+  // Enums (idempotent via DO/EXCEPTION)
+  `DO $$ BEGIN CREATE TYPE "UserRole" AS ENUM ('STUDENT','TEACHER','PARENT','ADMIN'); EXCEPTION WHEN duplicate_object THEN null; END $$;`,
+  `DO $$ BEGIN CREATE TYPE "HomeworkStatus" AS ENUM ('PENDING','SUBMITTED','GRADED','LATE'); EXCEPTION WHEN duplicate_object THEN null; END $$;`,
+  `DO $$ BEGIN CREATE TYPE "IELTSModule" AS ENUM ('WRITING','READING','LISTENING','SPEAKING'); EXCEPTION WHEN duplicate_object THEN null; END $$;`,
+  `DO $$ BEGIN CREATE TYPE "AchievementType" AS ENUM ('HOMEWORK_MASTER','SPEAKING_CHAMPION','READING_EXPERT','WRITING_GURU','LISTENING_MASTER','TOP_PERFORMER','STREAK_WARRIOR','EARLY_BIRD'); EXCEPTION WHEN duplicate_object THEN null; END $$;`,
+
+  // users
+  `CREATE TABLE IF NOT EXISTS "users" (
+    "id" TEXT PRIMARY KEY,
+    "email" TEXT NOT NULL UNIQUE,
+    "name" TEXT,
+    "password" TEXT NOT NULL,
+    "role" "UserRole" NOT NULL DEFAULT 'STUDENT',
+    "image" TEXT,
+    "emailVerified" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
+
+  // teachers
+  `CREATE TABLE IF NOT EXISTS "teachers" (
+    "id" TEXT PRIMARY KEY,
+    "userId" TEXT NOT NULL UNIQUE,
+    "bio" TEXT,
+    "specialty" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "teachers_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE
+  );`,
+
+  // groups
+  `CREATE TABLE IF NOT EXISTS "groups" (
+    "id" TEXT PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "teacherId" TEXT NOT NULL,
+    "description" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "groups_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id")
+  );`,
+
+  // students
+  `CREATE TABLE IF NOT EXISTS "students" (
+    "id" TEXT PRIMARY KEY,
+    "userId" TEXT NOT NULL UNIQUE,
+    "groupId" TEXT,
+    "personalGoal" TEXT,
+    "totalPoints" INTEGER NOT NULL DEFAULT 0,
+    "globalRank" INTEGER NOT NULL DEFAULT 0,
+    "groupRank" INTEGER NOT NULL DEFAULT 0,
+    "currentStreak" INTEGER NOT NULL DEFAULT 0,
+    "longestStreak" INTEGER NOT NULL DEFAULT 0,
+    "lastActiveDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "students_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE,
+    CONSTRAINT "students_groupId_fkey" FOREIGN KEY ("groupId") REFERENCES "groups"("id")
+  );`,
+
+  // accounts
+  `CREATE TABLE IF NOT EXISTS "accounts" (
+    "id" TEXT PRIMARY KEY,
+    "userId" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "provider" TEXT NOT NULL,
+    "providerAccountId" TEXT NOT NULL,
+    "refresh_token" TEXT,
+    "access_token" TEXT,
+    "expires_at" INTEGER,
+    "token_type" TEXT,
+    "scope" TEXT,
+    "id_token" TEXT,
+    "session_state" TEXT,
+    CONSTRAINT "accounts_provider_providerAccountId_key" UNIQUE ("provider","providerAccountId"),
+    CONSTRAINT "accounts_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE
+  );`,
+
+  // sessions
+  `CREATE TABLE IF NOT EXISTS "sessions" (
+    "id" TEXT PRIMARY KEY,
+    "sessionToken" TEXT NOT NULL UNIQUE,
+    "userId" TEXT NOT NULL,
+    "expires" TIMESTAMP(3) NOT NULL,
+    CONSTRAINT "sessions_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE
+  );`,
+
+  // homework
+  `CREATE TABLE IF NOT EXISTS "homework" (
+    "id" TEXT PRIMARY KEY,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "teacherId" TEXT NOT NULL,
+    "groupId" TEXT NOT NULL,
+    "dueDate" TIMESTAMP(3) NOT NULL,
+    "points" INTEGER NOT NULL DEFAULT 10,
+    "difficulty" INTEGER NOT NULL DEFAULT 1,
+    "module" "IELTSModule" NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "homework_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id"),
+    CONSTRAINT "homework_groupId_fkey" FOREIGN KEY ("groupId") REFERENCES "groups"("id")
+  );`,
+
+  // homework_submissions
+  `CREATE TABLE IF NOT EXISTS "homework_submissions" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL,
+    "homeworkId" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "status" "HomeworkStatus" NOT NULL DEFAULT 'SUBMITTED',
+    "position" INTEGER,
+    "pointsAwarded" INTEGER NOT NULL DEFAULT 0,
+    "feedback" TEXT,
+    "gradedBy" TEXT,
+    "submittedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "gradedAt" TIMESTAMP(3),
+    CONSTRAINT "homework_submissions_studentId_homeworkId_key" UNIQUE ("studentId","homeworkId"),
+    CONSTRAINT "homework_submissions_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id"),
+    CONSTRAINT "homework_submissions_homeworkId_fkey" FOREIGN KEY ("homeworkId") REFERENCES "homework"("id"),
+    CONSTRAINT "homework_submissions_gradedBy_fkey" FOREIGN KEY ("gradedBy") REFERENCES "teachers"("id")
+  );`,
+
+  // ielts_tests
+  `CREATE TABLE IF NOT EXISTS "ielts_tests" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL,
+    "module" "IELTSModule" NOT NULL,
+    "score" DOUBLE PRECISION NOT NULL,
+    "answers" JSONB NOT NULL,
+    "aiAnalysis" JSONB,
+    "timeSpent" INTEGER NOT NULL,
+    "completedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "ielts_tests_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id")
+  );`,
+
+  // achievements
+  `CREATE TABLE IF NOT EXISTS "achievements" (
+    "id" TEXT PRIMARY KEY,
+    "type" "AchievementType" NOT NULL UNIQUE,
+    "name" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "icon" TEXT NOT NULL,
+    "points" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
+
+  // student_achievements
+  `CREATE TABLE IF NOT EXISTS "student_achievements" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL,
+    "achievementId" TEXT NOT NULL,
+    "unlockedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "student_achievements_studentId_achievementId_key" UNIQUE ("studentId","achievementId"),
+    CONSTRAINT "student_achievements_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id"),
+    CONSTRAINT "student_achievements_achievementId_fkey" FOREIGN KEY ("achievementId") REFERENCES "achievements"("id")
+  );`,
+
+  // speaking_sessions
+  `CREATE TABLE IF NOT EXISTS "speaking_sessions" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL,
+    "teacherId" TEXT,
+    "duration" INTEGER NOT NULL,
+    "points" INTEGER NOT NULL DEFAULT 0,
+    "feedback" TEXT,
+    "rating" INTEGER,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "speaking_sessions_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id"),
+    CONSTRAINT "speaking_sessions_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id")
+  );`,
+
+  // activity_logs
+  `CREATE TABLE IF NOT EXISTS "activity_logs" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL,
+    "action" TEXT NOT NULL,
+    "details" JSONB,
+    "points" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "activity_logs_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id")
+  );`,
+
+  // parent_student_links
+  `CREATE TABLE IF NOT EXISTS "parent_student_links" (
+    "id" TEXT PRIMARY KEY,
+    "parentName" TEXT NOT NULL,
+    "parentEmail" TEXT NOT NULL,
+    "studentId" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "parent_student_links_parentEmail_studentId_key" UNIQUE ("parentEmail","studentId"),
+    CONSTRAINT "parent_student_links_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id")
+  );`,
+
+  // daily_quotes
+  `CREATE TABLE IF NOT EXISTS "daily_quotes" (
+    "id" TEXT PRIMARY KEY,
+    "text" TEXT NOT NULL,
+    "author" TEXT,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP UNIQUE,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
+];
+
+async function createTables() {
+  for (const stmt of SCHEMA_STATEMENTS) {
+    await db.$executeRawUnsafe(stmt);
+  }
+}
+
 export async function GET() {
   try {
+    // --- Step 1: create tables (idempotent) ---
+    await createTables();
+
     const created: string[] = [];
 
     // --- Achievements (idempotent via upsert) ---
-    const achievements: Array<{
-      type:
-        | "HOMEWORK_MASTER"
-        | "SPEAKING_CHAMPION"
-        | "READING_EXPERT"
-        | "WRITING_GURU"
-        | "LISTENING_MASTER"
-        | "TOP_PERFORMER"
-        | "STREAK_WARRIOR"
-        | "EARLY_BIRD";
-      name: string;
-      description: string;
-      icon: string;
-      points: number;
-    }> = [
+    const achievements = [
       { type: "HOMEWORK_MASTER", name: "Homework Master", description: "Complete 50 homework assignments", icon: "📚", points: 100 },
       { type: "SPEAKING_CHAMPION", name: "Speaking Champion", description: "Attend 50 speaking sessions", icon: "🗣️", points: 150 },
       { type: "READING_EXPERT", name: "Reading Expert", description: "Complete 100 reading tests", icon: "📖", points: 120 },
@@ -37,7 +242,7 @@ export async function GET() {
       { type: "TOP_PERFORMER", name: "Top Performer", description: "Reach Top 10 in global rankings", icon: "🏆", points: 300 },
       { type: "STREAK_WARRIOR", name: "Streak Warrior", description: "Maintain a 30-day study streak", icon: "🔥", points: 250 },
       { type: "EARLY_BIRD", name: "Early Bird", description: "Submit homework first 10 times", icon: "🐦", points: 100 },
-    ];
+    ] as const;
 
     for (const a of achievements) {
       await db.achievement.upsert({
@@ -48,45 +253,42 @@ export async function GET() {
     }
 
     // --- Daily quotes (only if none exist) ---
-    const quoteCount = await db.dailyQuote.count();
-    if (quoteCount === 0) {
+    if ((await db.dailyQuote.count()) === 0) {
       const quotes = [
         { text: "Success is the sum of small efforts repeated every day.", author: "Robert Collier" },
         { text: "Your future IELTS score depends on today's effort.", author: "Averna Team" },
         { text: "Every expert was once a beginner. Keep pushing!", author: "Helen Hayes" },
-        { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-        { text: "Believe in yourself and all that you are.", author: "Christian D. Larson" },
       ];
+      let offset = 0;
       for (const q of quotes) {
-        // dates are unique; offset each quote by a day to avoid collisions
-        await db.dailyQuote.create({ data: q });
+        const date = new Date(Date.now() - offset * 86400000);
+        offset += 1;
+        await db.dailyQuote.create({ data: { ...q, date } });
       }
     }
 
-    // --- Admin user (idempotent) ---
-    const adminPassword = await hash("admin123", 12);
+    // --- Admin ---
     await db.user.upsert({
       where: { email: "admin@averna.com" },
       update: {},
       create: {
         email: "admin@averna.com",
         name: "Admin User",
-        password: adminPassword,
+        password: await hash("admin123", 12),
         role: "ADMIN",
         emailVerified: new Date(),
       },
     });
     created.push("admin@averna.com / admin123");
 
-    // --- Teacher user + profile (idempotent) ---
-    const teacherPassword = await hash("teacher123", 12);
+    // --- Teacher + profile ---
     const teacherUser = await db.user.upsert({
       where: { email: "teacher@averna.com" },
       update: {},
       create: {
         email: "teacher@averna.com",
         name: "Sarah Johnson",
-        password: teacherPassword,
+        password: await hash("teacher123", 12),
         role: "TEACHER",
         emailVerified: new Date(),
       },
@@ -103,7 +305,7 @@ export async function GET() {
     });
     created.push("teacher@averna.com / teacher123");
 
-    // --- Group (only if none exist) ---
+    // --- Group (only if none) ---
     let group = await db.group.findFirst({ where: { teacherId: teacher.id } });
     if (!group) {
       group = await db.group.create({
@@ -115,7 +317,7 @@ export async function GET() {
       });
     }
 
-    // --- Students (only create those that don't exist) ---
+    // --- Students ---
     const studentNames = ["Alex Thompson", "Maria Garcia", "John Smith", "Emma Wilson", "David Lee"];
     const studentPassword = await hash("student123", 12);
 
@@ -126,7 +328,6 @@ export async function GET() {
         created.push(`${email} / student123 (already existed)`);
         continue;
       }
-
       const studentUser = await db.user.create({
         data: {
           email,
@@ -136,7 +337,6 @@ export async function GET() {
           emailVerified: new Date(),
         },
       });
-
       await db.student.create({
         data: {
           userId: studentUser.id,
@@ -149,9 +349,8 @@ export async function GET() {
       created.push(`${email} / student123`);
     }
 
-    // --- Sample homework (only if none exist) ---
-    const hwCount = await db.homework.count();
-    if (hwCount === 0) {
+    // --- Sample homework (only if none) ---
+    if ((await db.homework.count()) === 0) {
       await db.homework.create({
         data: {
           title: "IELTS Writing Task 2: Technology and Education",
@@ -169,7 +368,7 @@ export async function GET() {
 
     return NextResponse.json({
       success: true,
-      message: "✅ Demo accounts are ready! You can now log in.",
+      message: "✅ Database is ready and demo accounts are created! You can now log in.",
       accounts: created,
       login: {
         admin: "admin@averna.com / admin123",
@@ -184,7 +383,7 @@ export async function GET() {
       {
         success: false,
         error: message,
-        hint: "Make sure DATABASE_URL is set in Vercel and the database tables exist (they are created automatically during deployment).",
+        hint: "Make sure DATABASE_URL is set in the Vercel project settings (Neon connection string).",
       },
       { status: 500 }
     );
