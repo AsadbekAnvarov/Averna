@@ -144,6 +144,16 @@ export function QuickActions() {
       available: true,
       badge: "NEW",
     },
+    {
+      icon: Trophy,
+      label: "Mock Exam",
+      description: "Timed mini IELTS test",
+      href: "/learning/mock-exam",
+      color: "text-yellow-400",
+      bgColor: "bg-yellow-500/10",
+      available: true,
+      badge: "NEW",
+    },
   ];
 
   return (

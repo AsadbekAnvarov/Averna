@@ -34,6 +34,7 @@ const studentNavigation = [
   { name: "Listening", href: "/learning/listening", icon: Headphones },
   { name: "Speaking", href: "/learning/speaking", icon: Mic },
   { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
+  { name: "Mock Exam", href: "/learning/mock-exam", icon: Trophy },
   { name: "Daily Challenge", href: "/challenge", icon: Zap },
   { name: "Flashcards", href: "/flashcards", icon: Layers },
   { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
