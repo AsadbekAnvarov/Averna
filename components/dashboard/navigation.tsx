@@ -21,6 +21,7 @@ import {
   Layers,
   UserCheck,
   CalendarClock,
+  Gift,
 } from "lucide-react";
 
 const studentNavigation = [
@@ -34,6 +35,7 @@ const studentNavigation = [
   { name: "Daily Challenge", href: "/challenge", icon: Zap },
   { name: "Flashcards", href: "/flashcards", icon: Layers },
   { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
+  { name: "Rewards", href: "/rewards", icon: Gift },
   { name: "Homework", href: "/homework", icon: BookMarked },
   { name: "Rankings", href: "/rankings", icon: Trophy },
   { name: "Achievements", href: "/achievements", icon: Award },
