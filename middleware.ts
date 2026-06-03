@@ -1,10 +1,13 @@
+import NextAuth from "next-auth";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { auth } from "@/lib/auth";
+import { authConfig } from "@/lib/auth.config";
 
-export async function middleware(request: NextRequest) {
-  const session = await auth();
-  const pathname = request.nextUrl.pathname;
+// Edge-safe NextAuth instance (no Prisma / bcrypt imported here).
+const { auth } = NextAuth(authConfig);
+
+export default auth((req) => {
+  const session = req.auth;
+  const pathname = req.nextUrl.pathname;
 
   // Public routes that don't require authentication
   const publicRoutes = ["/", "/auth/signin", "/auth/signup", "/auth/error", "/about"];
@@ -12,43 +15,33 @@ export async function middleware(request: NextRequest) {
 
   // If user is not authenticated and trying to access protected route
   if (!session && !isPublicRoute) {
-    const signInUrl = new URL("/auth/signin", request.url);
+    const signInUrl = new URL("/auth/signin", req.url);
     signInUrl.searchParams.set("callbackUrl", pathname);
     return NextResponse.redirect(signInUrl);
   }
 
   // If user is authenticated and trying to access auth pages
   if (session && (pathname.startsWith("/auth/signin") || pathname.startsWith("/auth/signup"))) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   // Role-based route protection
   if (session) {
     const userRole = session.user.role;
 
-    // Student routes
-    if (pathname.startsWith("/dashboard") && userRole !== "STUDENT") {
-      return NextResponse.redirect(new URL(getRoleDefaultRoute(userRole), request.url));
-    }
-
     // Teacher routes
     if (pathname.startsWith("/teacher") && userRole !== "TEACHER" && userRole !== "ADMIN") {
-      return NextResponse.redirect(new URL(getRoleDefaultRoute(userRole), request.url));
+      return NextResponse.redirect(new URL(getRoleDefaultRoute(userRole), req.url));
     }
 
     // Admin routes
     if (pathname.startsWith("/admin") && userRole !== "ADMIN") {
-      return NextResponse.redirect(new URL(getRoleDefaultRoute(userRole), request.url));
-    }
-
-    // Redirect from base /dashboard to role-specific dashboard
-    if (pathname === "/dashboard") {
-      return NextResponse.redirect(new URL(getRoleDefaultRoute(userRole), request.url));
+      return NextResponse.redirect(new URL(getRoleDefaultRoute(userRole), req.url));
     }
   }
 
   return NextResponse.next();
-}
+});
 
 function getRoleDefaultRoute(role: string): string {
   switch (role) {

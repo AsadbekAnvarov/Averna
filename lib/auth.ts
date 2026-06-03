@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
 import { db } from "@/lib/db";
 import { UserRole } from "@prisma/client";
+import { authConfig } from "@/lib/auth.config";
 
 // Extend the built-in session types
 declare module "next-auth" {
@@ -19,13 +20,7 @@ declare module "next-auth" {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  session: {
-    strategy: "jwt",
-  },
-  pages: {
-    signIn: "/auth/signin",
-    error: "/auth/error",
-  },
+  ...authConfig,
   providers: [
     Credentials({
       name: "credentials",
@@ -67,22 +62,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.role = user.role;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (token && session.user) {
-        session.user.id = token.id as string;
-        session.user.role = token.role as UserRole;
-      }
-      return session;
-    },
-  },
 });
 
 // Helper functions for authorization
@@ -102,11 +81,11 @@ export async function requireAuth() {
 export async function requireRole(role: UserRole | UserRole[]) {
   const user = await requireAuth();
   const roles = Array.isArray(role) ? role : [role];
-  
+
   if (!roles.includes(user.role)) {
     throw new Error("Forbidden: Insufficient permissions");
   }
-  
+
   return user;
 }
 
