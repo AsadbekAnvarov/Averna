@@ -10,13 +10,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Averna Brand Colors - Dark Green Theme
+        // Averna Brand Colors - Neon Tech Theme
         averna: {
-          primary: "#0D4C3A", // Deep dark green
-          light: "#12654D",
-          neon: "#00FF94", // Neon green for hover effects
-          dark: "#082E24",
-          accent: "#1A7A5F",
+          primary: "#0B8F6A", // brighter brand green (less swampy)
+          light: "#14B583",
+          neon: "#00FF94", // neon green
+          dark: "#04110D",
+          accent: "#0FD6A6",
+          cyan: "#00E5FF", // neon cyan
+          purple: "#B14EFF", // neon purple
+          pink: "#FF3DBb", // neon pink/magenta
+          blue: "#2E8BFF",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -60,7 +64,10 @@ const config: Config = {
       boxShadow: {
         "neon-green": "0 0 20px rgba(0, 255, 148, 0.6), 0 0 40px rgba(0, 255, 148, 0.3)",
         "neon-red": "0 0 20px rgba(255, 50, 50, 0.6), 0 0 40px rgba(255, 50, 50, 0.3)",
-        "glass": "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+        "neon-cyan": "0 0 20px rgba(0, 229, 255, 0.6), 0 0 40px rgba(0, 229, 255, 0.3)",
+        "neon-purple": "0 0 20px rgba(177, 78, 255, 0.6), 0 0 40px rgba(177, 78, 255, 0.3)",
+        "neon-pink": "0 0 20px rgba(255, 61, 187, 0.6), 0 0 40px rgba(255, 61, 187, 0.3)",
+        "glass": "0 8px 32px 0 rgba(0, 0, 0, 0.45)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

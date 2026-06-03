@@ -10,7 +10,7 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 160 74% 17%;
+    --primary: 160 74% 30%;
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
@@ -22,30 +22,30 @@
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-    --ring: 160 74% 17%;
+    --ring: 160 74% 30%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 160 30% 7%;
+    --background: 200 40% 4%;
     --foreground: 0 0% 98%;
-    --card: 160 25% 10%;
+    --card: 200 30% 8%;
     --card-foreground: 0 0% 98%;
-    --popover: 160 25% 10%;
+    --popover: 200 30% 8%;
     --popover-foreground: 0 0% 98%;
-    --primary: 160 70% 40%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 160 15% 15%;
+    --primary: 160 90% 45%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 200 20% 14%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 160 15% 15%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 160 55% 30%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --muted: 200 20% 14%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 187 100% 50%;
+    --accent-foreground: 0 0% 5%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 160 15% 20%;
-    --input: 160 15% 20%;
-    --ring: 160 70% 40%;
+    --border: 200 20% 18%;
+    --input: 200 20% 18%;
+    --ring: 160 90% 45%;
   }
 }
 
@@ -58,7 +58,7 @@
   }
 }
 
-/* Custom Neon Button Styles */
+/* ===== Neon Button Styles ===== */
 .neon-button {
   @apply transition-all duration-300 ease-in-out;
   position: relative;
@@ -66,6 +66,7 @@
 
 .neon-button:hover {
   @apply shadow-neon-green;
+  transform: translateY(-1px);
   animation: glow 1.5s ease-in-out infinite alternate;
 }
 
@@ -74,15 +75,56 @@
   box-shadow: 0 0 20px rgba(255, 50, 50, 0.6), 0 0 40px rgba(255, 50, 50, 0.3);
 }
 
-/* Glassmorphism Effect */
-.glass {
-  background: rgba(13, 76, 58, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.neon-button-cyan:hover {
+  @apply shadow-neon-cyan;
 }
 
-/* Smooth Animations */
+.neon-button-purple:hover {
+  @apply shadow-neon-purple;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(0, 255, 148, 0.5), 0 0 20px rgba(0, 255, 148, 0.3);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 255, 148, 0.8), 0 0 40px rgba(0, 255, 148, 0.5);
+  }
+}
+
+/* ===== Neon Text Glow ===== */
+.neon-text {
+  color: #00ff94;
+  text-shadow: 0 0 8px rgba(0, 255, 148, 0.7), 0 0 16px rgba(0, 255, 148, 0.4);
+}
+
+.neon-text-cyan {
+  color: #00e5ff;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.7), 0 0 16px rgba(0, 229, 255, 0.4);
+}
+
+.neon-text-purple {
+  color: #b14eff;
+  text-shadow: 0 0 8px rgba(177, 78, 255, 0.7), 0 0 16px rgba(177, 78, 255, 0.4);
+}
+
+/* ===== Glassmorphism Effect ===== */
+.glass {
+  background: rgba(10, 22, 30, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 229, 255, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+
+.glass-strong {
+  background: rgba(8, 18, 26, 0.8);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(0, 255, 148, 0.18);
+}
+
+/* ===== Animations ===== */
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -98,25 +140,47 @@
   }
 }
 
-/* Premium Gradient Background */
-.premium-gradient {
-  background: linear-gradient(135deg, #082E24 0%, #0D4C3A 50%, #12654D 100%);
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
-/* Scrollbar Styling */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ===== Premium Neon Gradient Background ===== */
+.premium-gradient {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(0, 255, 148, 0.12), transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(0, 229, 255, 0.12), transparent 42%),
+    radial-gradient(circle at 50% 95%, rgba(177, 78, 255, 0.12), transparent 45%),
+    linear-gradient(135deg, #04070d 0%, #061318 55%, #04110c 100%);
+  background-attachment: fixed;
+}
+
+/* A subtle animated neon grid accent (optional usage) */
+.neon-grid {
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ===== Scrollbar Styling ===== */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(13, 76, 58, 0.1);
+  background: rgba(4, 17, 12, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0D4C3A;
+  background: linear-gradient(#00ff94, #00e5ff);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #12654D;
+  background: linear-gradient(#00e5ff, #b14eff);
 }

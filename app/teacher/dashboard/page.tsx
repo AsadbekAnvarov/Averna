@@ -7,10 +7,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Users, CheckSquare, BarChart } from "lucide-react";
 import Link from "next/link";
+import { AccountNotice } from "@/components/account-notice";
 
 export default async function TeacherDashboard() {
   const session = await auth();
-  if (!session?.user || session.user.role !== "TEACHER") redirect("/auth/signin");
+  if (!session?.user) redirect("/auth/signin");
+
+  // Students belong on the student dashboard (one-way, prevents loops)
+  if (session.user.role === "STUDENT") redirect("/dashboard");
 
   const teacher = await db.teacher.findUnique({
     where: { userId: session.user.id },
@@ -20,7 +24,14 @@ export default async function TeacherDashboard() {
     },
   });
 
-  if (!teacher) redirect("/auth/signin");
+  if (!teacher) {
+    return (
+      <AccountNotice
+        title="No teacher profile found"
+        message="This account is signed in, but it doesn't have a teacher profile. If you're an admin, use the admin tools, or sign in with a teacher account."
+      />
+    );
+  }
 
   const totalStudents = teacher.groups.reduce((sum, g) => sum + g.students.length, 0);
   const totalHomework = teacher.homework.length;

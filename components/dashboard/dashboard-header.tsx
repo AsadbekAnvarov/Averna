@@ -32,7 +32,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
         </Button>
 
         {/* Settings */}
-        <Link href="/dashboard/settings">
+        <Link href="/profile">
           <Button
             variant="ghost"
             size="icon"

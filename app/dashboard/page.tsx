@@ -10,6 +10,8 @@ import { QuickActions } from "@/components/dashboard/quick-actions";
 import { RecentActivity } from "@/components/dashboard/recent-activity";
 import { UpcomingHomework } from "@/components/dashboard/upcoming-homework";
 import { AchievementsPreview } from "@/components/dashboard/achievements-preview";
+import { WordOfTheDay } from "@/components/dashboard/word-of-the-day";
+import { AccountNotice } from "@/components/account-notice";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
@@ -17,6 +19,11 @@ export default async function DashboardPage() {
 
   if (!session?.user) {
     redirect("/auth/signin");
+  }
+
+  // Route non-students to their own area (one-way, prevents redirect loops)
+  if (session.user.role === "TEACHER" || session.user.role === "ADMIN") {
+    redirect("/teacher/dashboard");
   }
 
   // Get comprehensive student data
@@ -65,7 +72,12 @@ export default async function DashboardPage() {
   });
 
   if (!student) {
-    redirect("/auth/signin");
+    return (
+      <AccountNotice
+        title="No student profile found"
+        message="This account doesn't have a student profile yet. If you just signed up, please sign in again, or contact your teacher."
+      />
+    );
   }
 
   // Update student streak on dashboard visit
@@ -135,6 +147,7 @@ export default async function DashboardPage() {
             </div>
 
             <div className="space-y-6">
+              <WordOfTheDay />
               <AchievementsPreview achievements={student.achievements} />
             </div>
           </div>
