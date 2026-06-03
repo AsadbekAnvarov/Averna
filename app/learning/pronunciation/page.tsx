@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mic, Volume2, RotateCcw, ChevronRight, Sparkles } from "lucide-react";
+import { Mic, Volume2, RotateCcw, ChevronRight, Sparkles, Circle, Square } from "lucide-react";
 
 const PHRASES = [
   "The quick brown fox jumps over the lazy dog.",
@@ -41,7 +41,45 @@ export default function PronunciationPage() {
   const [score, setScore] = useState<number | null>(null);
   const recognitionRef = useRef<any>(null);
 
+  // Audio recording (MediaRecorder)
+  const [recording, setRecording] = useState(false);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [recSupported, setRecSupported] = useState(true);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
+
   const phrase = PHRASES[index];
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!navigator.mediaDevices || typeof window.MediaRecorder === "undefined") {
+      setRecSupported(false);
+    }
+  }, []);
+
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mr = new MediaRecorder(stream);
+      chunksRef.current = [];
+      mr.ondataavailable = (e) => { if (e.data.size > 0) chunksRef.current.push(e.data); };
+      mr.onstop = () => {
+        const blob = new Blob(chunksRef.current, { type: "audio/webm" });
+        setAudioUrl(URL.createObjectURL(blob));
+        stream.getTracks().forEach((t) => t.stop());
+      };
+      mediaRecorderRef.current = mr;
+      mr.start();
+      setRecording(true);
+    } catch {
+      setRecSupported(false);
+    }
+  };
+
+  const stopRecording = () => {
+    mediaRecorderRef.current?.stop();
+    setRecording(false);
+  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -97,6 +135,7 @@ export default function PronunciationPage() {
     setIndex((i) => (i + 1) % PHRASES.length);
     setHeard("");
     setScore(null);
+    setAudioUrl(null);
   };
 
   const feedback =
@@ -182,6 +221,46 @@ export default function PronunciationPage() {
                     </Button>
                   </div>
                 )}
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Record yourself */}
+        <Card className="glass border-averna-pink/30 mt-6">
+          <CardHeader>
+            <CardTitle className="text-averna-pink flex items-center gap-2">
+              <Circle className="h-5 w-5" /> Record &amp; Self-Review
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-gray-400">
+              Record your voice and play it back to hear yourself — a great way to spot
+              pronunciation mistakes.
+            </p>
+            {!recSupported ? (
+              <p className="text-yellow-300 text-sm">
+                Audio recording isn&apos;t supported in this browser. Try Chrome on desktop or Android.
+              </p>
+            ) : (
+              <div className="flex flex-wrap items-center gap-3">
+                {!recording ? (
+                  <Button onClick={startRecording} className="neon-button bg-averna-pink hover:opacity-90">
+                    <Circle className="mr-2 h-4 w-4 fill-current" /> Start Recording
+                  </Button>
+                ) : (
+                  <Button onClick={stopRecording} variant="outline" className="border-red-500/60 text-red-300 animate-pulse">
+                    <Square className="mr-2 h-4 w-4" /> Stop
+                  </Button>
+                )}
+                {recording && <span className="text-red-300 text-sm animate-pulse">● Recording…</span>}
+              </div>
+            )}
+            {audioUrl && (
+              <div className="animate-fade-in">
+                <p className="text-xs text-gray-400 mb-1">Your recording:</p>
+                {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+                <audio src={audioUrl} controls className="w-full" />
               </div>
             )}
           </CardContent>
