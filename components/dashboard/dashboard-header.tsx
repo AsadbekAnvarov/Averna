@@ -4,6 +4,7 @@ import { LogOut, Settings } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { NotificationBell } from "@/components/notification-bell";
+import { ThemeSwitcher } from "@/components/theme/theme-switcher";
 
 interface DashboardHeaderProps {
   user: {
@@ -21,6 +22,9 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
       </div>
 
       <div className="flex items-center gap-3">
+        {/* Theme */}
+        <ThemeSwitcher />
+
         {/* Notifications */}
         <NotificationBell />
 

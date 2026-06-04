@@ -184,3 +184,63 @@
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(#00e5ff, #b14eff);
 }
+
+
+/* ===== Light theme overrides ===== */
+html.light body {
+  color: #0f172a;
+}
+
+html.light .premium-gradient {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(0, 200, 120, 0.10), transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(0, 180, 220, 0.10), transparent 42%),
+    radial-gradient(circle at 50% 95%, rgba(150, 90, 230, 0.08), transparent 45%),
+    linear-gradient(135deg, #eef2f6 0%, #e6edf3 55%, #eaf3ee 100%);
+  background-attachment: fixed;
+}
+
+html.light .glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+html.light .glass-strong {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* In light mode, make the many text-white / text-gray-* utilities readable */
+html.light .text-white { color: #0f172a !important; }
+html.light .text-gray-300 { color: #334155 !important; }
+html.light .text-gray-400 { color: #475569 !important; }
+html.light .text-gray-500 { color: #64748b !important; }
+
+html.light ::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
+
+/* ===== Accent-aware helpers (use the --accent CSS variable) ===== */
+.accent-text { color: var(--accent, #00ff94); }
+.accent-bg { background-color: var(--accent, #00ff94); }
+.accent-border { border-color: var(--accent, #00ff94); }
+
+/* ===== Skeleton loading shimmer ===== */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  animation: skeleton-shimmer 1.4s infinite;
+}
+@keyframes skeleton-shimmer {
+  100% { transform: translateX(100%); }
+}
+html.light .skeleton { background: rgba(0,0,0,0.06); }
+html.light .skeleton::after { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent); }

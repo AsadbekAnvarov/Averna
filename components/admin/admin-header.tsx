@@ -3,6 +3,7 @@ import { signOut } from "@/lib/auth";
 import { LogOut, ShieldCheck } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { NotificationBell } from "@/components/notification-bell";
+import { ThemeSwitcher } from "@/components/theme/theme-switcher";
 
 interface AdminHeaderProps {
   user: { name: string | null; email: string };
@@ -14,6 +15,7 @@ export function AdminHeader({ user }: AdminHeaderProps) {
       <Logo href="/admin/dashboard" size={40} className="text-xl" />
 
       <div className="flex items-center gap-3">
+        <ThemeSwitcher />
         <NotificationBell />
         <span className="hidden sm:inline-flex items-center gap-1 px-3 py-1 rounded-full bg-averna-purple/20 border border-averna-purple/40 text-averna-purple text-xs font-semibold">
           <ShieldCheck className="h-4 w-4" />

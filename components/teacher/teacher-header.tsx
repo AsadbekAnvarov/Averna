@@ -4,6 +4,7 @@ import { LogOut, User } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { NotificationBell } from "@/components/notification-bell";
+import { ThemeSwitcher } from "@/components/theme/theme-switcher";
 
 interface TeacherHeaderProps {
   user: {
@@ -18,6 +19,7 @@ export function TeacherHeader({ user }: TeacherHeaderProps) {
       <Logo href="/teacher/dashboard" size={40} className="text-xl" />
 
       <div className="flex items-center gap-3">
+        <ThemeSwitcher />
         <NotificationBell />
         <Link href="/teacher/profile">
           <Button
