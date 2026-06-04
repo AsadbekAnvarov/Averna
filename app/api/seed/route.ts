@@ -232,6 +232,8 @@ const SCHEMA_STATEMENTS: string[] = [
   `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "enrolledAt" TIMESTAMP(3);`,
   `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "blacklisted" BOOLEAN NOT NULL DEFAULT false;`,
   `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "blacklistReason" TEXT;`,
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "streakFreezes" INTEGER NOT NULL DEFAULT 1;`,
+  `ALTER TABLE "messages" ADD COLUMN IF NOT EXISTS "reaction" TEXT;`,
 
   // tutor_slots (Second Teacher booking system)
   `CREATE TABLE IF NOT EXISTS "tutor_slots" (
