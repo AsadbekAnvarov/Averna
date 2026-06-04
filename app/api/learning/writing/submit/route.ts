@@ -3,6 +3,7 @@ import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { assessWritingTask } from "@/lib/ai";
 import { saveIELTSTest } from "@/lib/db-helpers";
+import { isGenuineWriting } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -33,6 +34,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Anti-cheat: only award points for a genuine effort. Empty / spammy /
+    // too-short essays are still assessed and saved, but earn 0 points.
+    const minWords = taskType === "task1" ? 60 : 100;
+    const genuine = isGenuineWriting(essay, minWords);
+
     // Get AI assessment
     const assessment = await assessWritingTask(
       essay,
@@ -40,19 +46,24 @@ export async function POST(req: NextRequest) {
       prompt
     );
 
-    // Save test result
+    // Save test result (0 points if it doesn't meet the effort threshold)
     const test = await saveIELTSTest(
       student.id,
       "WRITING",
       assessment.overallBand,
       { essay, prompt },
       assessment,
-      timeSpent || 0
+      timeSpent || 0,
+      genuine ? undefined : { pointsOverride: 0 }
     );
 
     return NextResponse.json({
       testId: test.id,
       assessment,
+      pointsAwarded: genuine,
+      cheatNotice: genuine
+        ? undefined
+        : `Write at least ${minWords} meaningful words to earn points.`,
     });
   } catch (error: any) {
     console.error("Writing submission error:", error);

@@ -158,3 +158,20 @@ export function heuristicWritingAssessmentSafe(essay: string): number {
   band = Math.max(3.5, Math.min(8.5, band));
   return Math.round(band * 2) / 2;
 }
+
+
+// ===== Anti-cheat: effort validation =====
+// Returns true if a piece of writing shows genuine effort (not blank,
+// not a few random characters, not the prompt copied back, etc.)
+export function isGenuineWriting(essay: string, minWords = 40): boolean {
+  const text = (essay || "").trim();
+  if (text.length < 20) return false;
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length < minWords) return false;
+  // Reject if it's the same word/char repeated (e.g. "aaaa", "test test test")
+  const unique = new Set(words.map((w) => w.toLowerCase()));
+  if (unique.size < Math.max(8, Math.floor(words.length * 0.3))) return false;
+  // Reject if there's no alphabetic content
+  if (!/[a-zA-Z]{3,}/.test(text)) return false;
+  return true;
+}

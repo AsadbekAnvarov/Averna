@@ -66,6 +66,11 @@ export async function POST(req: NextRequest) {
     const percentage = (correctCount / totalQuestions) * 100;
     const bandScore = calculateBandScore(percentage);
 
+    // Anti-cheat: only award points if the student actually answered and got
+    // at least one correct. Submitting an empty test earns 0 points.
+    const answeredCount = Object.keys(answers || {}).length;
+    const earnsPoints = answeredCount > 0 && correctCount > 0;
+
     // Save test result
     const test = await saveIELTSTest(
       student.id,
@@ -73,7 +78,8 @@ export async function POST(req: NextRequest) {
       bandScore,
       { answers, results },
       { correctCount, totalQuestions, percentage },
-      timeSpent || 0
+      timeSpent || 0,
+      earnsPoints ? undefined : { pointsOverride: 0 }
     );
 
     return NextResponse.json({
@@ -81,6 +87,7 @@ export async function POST(req: NextRequest) {
       correctCount,
       totalQuestions,
       bandScore,
+      pointsAwarded: earnsPoints,
     });
   } catch (error: any) {
     console.error("Reading submission error:", error);

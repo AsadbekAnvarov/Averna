@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { saveIELTSTest } from "@/lib/db-helpers";
-import { calculateBandScore, heuristicWritingAssessmentSafe } from "@/lib/utils";
+import { calculateBandScore, heuristicWritingAssessmentSafe, isGenuineWriting } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -28,13 +28,18 @@ export async function POST(req: NextRequest) {
 
     const overall = Math.round(((listeningBand + readingBand + writingBand) / 3) * 2) / 2;
 
-    // Save each section as an IELTS test (awards points + updates streak/achievements)
-    await saveIELTSTest(student.id, "LISTENING", listeningBand, { mock: true, lCorrect, lTotal }, { type: "mock" }, Math.round(timeSpent / 3));
-    await saveIELTSTest(student.id, "READING", readingBand, { mock: true, rCorrect, rTotal }, { type: "mock" }, Math.round(timeSpent / 3));
-    await saveIELTSTest(student.id, "WRITING", writingBand, { mock: true, essay: essay.slice(0, 2000) }, { type: "mock" }, Math.round(timeSpent / 3));
+    // Anti-cheat: each section only earns points if the student actually
+    // engaged with it (answered questions / wrote a genuine essay).
+    const lPts = lCorrect > 0 ? Math.round(listeningBand * 10) : 0;
+    const rPts = rCorrect > 0 ? Math.round(readingBand * 10) : 0;
+    const wPts = isGenuineWriting(essay, 100) ? Math.round(writingBand * 10) : 0;
 
-    const pointsEarned =
-      Math.round(listeningBand * 10) + Math.round(readingBand * 10) + Math.round(writingBand * 10);
+    // Save each section as an IELTS test (awards points + updates streak/achievements)
+    await saveIELTSTest(student.id, "LISTENING", listeningBand, { mock: true, lCorrect, lTotal }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: lPts });
+    await saveIELTSTest(student.id, "READING", readingBand, { mock: true, rCorrect, rTotal }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: rPts });
+    await saveIELTSTest(student.id, "WRITING", writingBand, { mock: true, essay: essay.slice(0, 2000) }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: wPts });
+
+    const pointsEarned = lPts + rPts + wPts;
 
     return NextResponse.json({
       listeningBand,

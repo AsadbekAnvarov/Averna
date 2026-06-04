@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { AchievementType, IELTSModule, UserRole } from "@prisma/client";
+import { isGenuineWriting } from "@/lib/utils";
 
 // ==================== STUDENT HELPERS ====================
 
@@ -199,11 +200,17 @@ export async function submitHomework(
     throw new Error("Homework not found");
   }
 
-  // Calculate points based on position
-  let pointsAwarded = homework.points;
-  if (position === 1) pointsAwarded += 10;
-  else if (position === 2) pointsAwarded += 8;
-  else if (position === 3) pointsAwarded += 6;
+  // Anti-cheat: require genuine effort to earn points. Empty / spammy
+  // submissions are still recorded for the teacher, but earn 0 points.
+  const genuine = isGenuineWriting(content, 25);
+
+  // Calculate points based on position (only if the work is genuine)
+  let pointsAwarded = genuine ? homework.points : 0;
+  if (genuine) {
+    if (position === 1) pointsAwarded += 10;
+    else if (position === 2) pointsAwarded += 8;
+    else if (position === 3) pointsAwarded += 6;
+  }
 
   // Create submission
   const submission = await db.homeworkSubmission.create({
@@ -230,6 +237,9 @@ export async function submitHomework(
       points: pointsAwarded,
     },
   });
+
+  // Note: points are credited to the student when the teacher grades the
+  // submission (gradeHomework), so we don't double-credit here.
 
   return submission;
 }
@@ -380,7 +390,8 @@ export async function saveIELTSTest(
   score: number,
   answers: any,
   aiAnalysis: any,
-  timeSpent: number
+  timeSpent: number,
+  options?: { pointsOverride?: number }
 ) {
   const test = await db.iELTSTest.create({
     data: {
@@ -393,9 +404,16 @@ export async function saveIELTSTest(
     },
   });
 
-  // Award points based on score
-  const points = Math.round(score * 10);
-  await updateStudentPoints(studentId, points);
+  // Anti-cheat: callers can override the points (e.g. 0 for an empty/trivial
+  // submission). Otherwise fall back to score-based points.
+  const points =
+    options?.pointsOverride !== undefined
+      ? Math.max(0, Math.round(options.pointsOverride))
+      : Math.round(score * 10);
+
+  if (points > 0) {
+    await updateStudentPoints(studentId, points);
+  }
 
   // Log activity
   await db.activityLog.create({
