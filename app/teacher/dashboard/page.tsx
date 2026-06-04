@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Users, CheckSquare, BarChart, ClipboardCheck, CalendarClock, Megaphone, MessageSquare } from "lucide-react";
+import { BookOpen, Users, CheckSquare, BarChart, ClipboardCheck, CalendarClock, Megaphone, MessageSquare, CalendarDays } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
@@ -140,6 +140,12 @@ export default async function TeacherDashboard() {
                 <Button className="w-full" variant="outline">
                   <Megaphone className="mr-2 h-4 w-4" />
                   Announcements
+                </Button>
+              </Link>
+              <Link href="/teacher/calendar">
+                <Button className="w-full" variant="outline">
+                  <CalendarDays className="mr-2 h-4 w-4" />
+                  Calendar
                 </Button>
               </Link>
               <Link href="/messages">
