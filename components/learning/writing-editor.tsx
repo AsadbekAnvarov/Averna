@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Clock, FileText, Send, Loader2, ArrowLeft, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { VoiceInputButton } from "@/components/voice-input-button";
 
 interface WritingEditorProps {
   prompt: {
@@ -271,8 +272,22 @@ export default function WritingEditor({ prompt, config, userId }: WritingEditorP
                   className="min-h-[500px] text-base leading-relaxed bg-background/50 border-averna-primary/20 focus:border-averna-neon resize-none"
                   disabled={isSubmitting}
                 />
-                <div className="mt-4 text-xs text-gray-400">
-                  <p>💡 Tips: Focus on clear structure, varied vocabulary, and accurate grammar. Address all parts of the task.</p>
+                <div className="mt-4 flex items-center justify-between gap-2">
+                  <p className="text-xs text-gray-400">
+                    💡 Tips: Focus on clear structure, varied vocabulary, and accurate grammar.
+                  </p>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="text-xs text-averna-cyan hidden sm:inline">Dictate:</span>
+                    <VoiceInputButton
+                      onText={(t) =>
+                        setEssay((prev) => {
+                          const next = (prev ? prev + " " : "") + t.trim();
+                          if (!isTimerRunning && next.length > 0) setIsTimerRunning(true);
+                          return next;
+                        })
+                      }
+                    />
+                  </div>
                 </div>
               </CardContent>
             </Card>

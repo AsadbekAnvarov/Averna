@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageSquare, Send, Loader2, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { VoiceInputButton } from "@/components/voice-input-button";
 
 export default function AIMentorPage() {
   const [messages, setMessages] = useState<Array<{ role: string; content: string }>>([
@@ -89,6 +90,7 @@ export default function AIMentorPage() {
                 className="bg-background/50"
                 disabled={isLoading}
               />
+              <VoiceInputButton onText={(t) => setInput((prev) => (prev ? prev + " " : "") + t.trim())} />
               <Button onClick={handleSend} disabled={isLoading} className="neon-button bg-pink-500">
                 <Send className="h-4 w-4" />
               </Button>

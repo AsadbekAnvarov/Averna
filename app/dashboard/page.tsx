@@ -17,6 +17,7 @@ import { StreakHeatmap } from "@/components/dashboard/streak-heatmap";
 import { StudentOfTheWeek } from "@/components/student-of-the-week";
 import { DailyQuests } from "@/components/dashboard/daily-quests";
 import { DailyArticle } from "@/components/dashboard/daily-article";
+import { StudyPet } from "@/components/dashboard/study-pet";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { OnboardingTour } from "@/components/onboarding-tour";
 import { AccountNotice } from "@/components/account-notice";
@@ -188,6 +189,7 @@ export default async function DashboardPage() {
             </div>
 
             <div className="space-y-6">
+              <StudyPet streak={student.currentStreak} points={student.totalPoints} />
               <StudentOfTheWeek />
               <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
               <DailyArticle />
