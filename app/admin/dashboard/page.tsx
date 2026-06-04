@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone, Activity } from "lucide-react";
+import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone, Activity, Wallet } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
@@ -148,6 +148,11 @@ export default async function AdminDashboard() {
           <Link href="/admin/content">
             <Button variant="outline" className="border-averna-purple/40 text-averna-purple">
               <Layers className="mr-2 h-4 w-4" /> Manage Content
+            </Button>
+          </Link>
+          <Link href="/admin/finance">
+            <Button variant="outline" className="border-averna-neon/40 text-averna-neon">
+              <Wallet className="mr-2 h-4 w-4" /> Finance
             </Button>
           </Link>
           <Link href="/admin/system">
