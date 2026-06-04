@@ -454,6 +454,17 @@ const SCHEMA_STATEMENTS: string[] = [
     "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP UNIQUE,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
   );`,
+
+  // audit_logs (admin activity audit)
+  `CREATE TABLE IF NOT EXISTS "audit_logs" (
+    "id" TEXT PRIMARY KEY,
+    "actorId" TEXT NOT NULL,
+    "actorName" TEXT NOT NULL,
+    "role" TEXT NOT NULL,
+    "action" TEXT NOT NULL,
+    "detail" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
 ];
 
 async function createTables() {

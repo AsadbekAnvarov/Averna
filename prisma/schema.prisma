@@ -608,3 +608,16 @@ model DailyArticle {
 
   @@map("daily_articles")
 }
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String
+  actorName String
+  role      String
+  action    String
+  detail    String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("audit_logs")
+}

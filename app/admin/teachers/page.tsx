@@ -13,6 +13,7 @@ import { GraduationCap, Plus, Users, Layers } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { recordAudit } from "@/lib/audit";
 
 async function addTeacher(formData: FormData) {
   "use server";
@@ -43,6 +44,11 @@ async function addTeacher(formData: FormData) {
   await db.teacher.create({
     data: { userId: user.id, specialty: specialty || null, isSecondTeacher: isSecond },
   });
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    "Created teacher",
+    `name=${name} email=${email}`
+  );
 
   revalidatePath("/admin/teachers");
   redirect("/admin/teachers?saved=1");

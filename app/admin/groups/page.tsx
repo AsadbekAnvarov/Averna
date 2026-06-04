@@ -12,6 +12,7 @@ import { Layers, Plus, Users } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { recordAudit } from "@/lib/audit";
 
 const LEVELS = ["Beginner (A2)", "Intermediate (B1)", "Upper-Intermediate (B2)", "Advanced (C1)", "IELTS Standard (6.0–6.5)", "IELTS Advanced (7.5+)"];
 
@@ -29,6 +30,11 @@ async function createGroup(formData: FormData) {
   await db.group.create({
     data: { name, teacherId, level: level || null, schedule: schedule || null, description: `${level ?? ""} group` },
   });
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    "Created group",
+    `name=${name}`
+  );
   revalidatePath("/admin/groups");
   redirect("/admin/groups?saved=1");
 }

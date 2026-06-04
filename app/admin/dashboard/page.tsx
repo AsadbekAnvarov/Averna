@@ -6,11 +6,12 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone, Activity, Wallet } from "lucide-react";
+import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone, Activity, Wallet, ScrollText } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { TopPerformers } from "@/components/top-performers";
+import { recordAudit } from "@/lib/audit";
 
 const LEVELS = [
   "Beginner (A2)",
@@ -38,6 +39,11 @@ async function enrollStudent(formData: FormData) {
       enrolledAt: new Date(),
     },
   });
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    "Enrolled student",
+    `studentId=${studentId} level=${level || "-"} group=${groupId || "-"}`
+  );
   revalidatePath("/admin/dashboard");
 }
 
@@ -158,6 +164,11 @@ export default async function AdminDashboard() {
           <Link href="/admin/system">
             <Button variant="outline" className="border-averna-cyan/40 text-averna-cyan">
               <Activity className="mr-2 h-4 w-4" /> System Health
+            </Button>
+          </Link>
+          <Link href="/admin/logs">
+            <Button variant="outline" className="border-white/20 text-gray-200">
+              <ScrollText className="mr-2 h-4 w-4" /> Audit Log
             </Button>
           </Link>
         </div>
