@@ -114,6 +114,7 @@ model Student {
   currentStreak     Int      @default(0)
   longestStreak     Int      @default(0)
   streakFreezes     Int      @default(1)
+  balance           Int      @default(0)
   lastActiveDate    DateTime @default(now())
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
@@ -131,6 +132,7 @@ model Student {
   attendances       Attendance[]
   grades            Grade[]
   redemptions       RewardRedemption[]
+  payments          Payment[]
 
   @@index([groupId])
   @@index([totalPoints])
@@ -491,4 +493,44 @@ model SpeakingMessage {
 
   @@index([roomId])
   @@map("speaking_messages")
+}
+
+model Payment {
+  id          String   @id @default(cuid())
+  studentId   String
+  amount      Int
+  type        String   @default("TOPUP") // TOPUP | COURSE | SUBSCRIPTION
+  description String?
+  status      String   @default("COMPLETED") // COMPLETED | PENDING
+  createdAt   DateTime @default(now())
+
+  student Student @relation(fields: [studentId], references: [id])
+
+  @@index([studentId])
+  @@map("payments")
+}
+
+model StudyMaterial {
+  id          String   @id @default(cuid())
+  title       String
+  module      String // WRITING | READING | LISTENING | SPEAKING | VOCABULARY | GENERAL
+  level       String // Beginner | Intermediate | Advanced | All
+  description String?
+  content     String?  @db.Text
+  url         String?
+  createdAt   DateTime @default(now())
+
+  @@index([module])
+  @@map("study_materials")
+}
+
+model DailyArticle {
+  id          String   @id @default(cuid())
+  title       String
+  body        String   @db.Text
+  vocabulary  Json?
+  date        DateTime @unique @default(now())
+  createdAt   DateTime @default(now())
+
+  @@map("daily_articles")
 }

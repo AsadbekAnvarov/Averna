@@ -360,6 +360,43 @@ const SCHEMA_STATEMENTS: string[] = [
     "content" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
   );`,
+
+  // --- New student balance column ---
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "balance" INTEGER NOT NULL DEFAULT 0;`,
+
+  // payments (online balance / course payments)
+  `CREATE TABLE IF NOT EXISTS "payments" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL,
+    "amount" INTEGER NOT NULL,
+    "type" TEXT NOT NULL DEFAULT 'TOPUP',
+    "description" TEXT,
+    "status" TEXT NOT NULL DEFAULT 'COMPLETED',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "payments_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id")
+  );`,
+
+  // study_materials (IELTS materials bank)
+  `CREATE TABLE IF NOT EXISTS "study_materials" (
+    "id" TEXT PRIMARY KEY,
+    "title" TEXT NOT NULL,
+    "module" TEXT NOT NULL,
+    "level" TEXT NOT NULL,
+    "description" TEXT,
+    "content" TEXT,
+    "url" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
+
+  // daily_articles (daily English article)
+  `CREATE TABLE IF NOT EXISTS "daily_articles" (
+    "id" TEXT PRIMARY KEY,
+    "title" TEXT NOT NULL,
+    "body" TEXT NOT NULL,
+    "vocabulary" JSONB,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP UNIQUE,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
 ];
 
 async function createTables() {
@@ -625,6 +662,45 @@ export async function GET() {
       for (const r of rewards) {
         await db.reward.create({ data: r });
       }
+    }
+
+    // --- Study materials bank (only if none) ---
+    if ((await db.studyMaterial.count()) === 0) {
+      const materials = [
+        { title: "Writing Task 2: Opinion Essay Structure", module: "WRITING", level: "All", description: "A clear 4-paragraph template for opinion essays with linking phrases." },
+        { title: "Writing Task 1: Describing Graphs", module: "WRITING", level: "Intermediate", description: "Key vocabulary for trends (rise, plummet, plateau) and a model answer." },
+        { title: "Reading: Skimming & Scanning Guide", module: "READING", level: "All", description: "How to find answers fast without reading every word." },
+        { title: "Reading: True/False/Not Given Strategy", module: "READING", level: "Intermediate", description: "Avoid the classic traps with a step-by-step method." },
+        { title: "Listening: Map & Diagram Questions", module: "LISTENING", level: "Advanced", description: "Directions vocabulary and practice tips for Section 2." },
+        { title: "Speaking: Part 2 Cue Card Bank", module: "SPEAKING", level: "All", description: "30 common cue cards with idea prompts." },
+        { title: "Speaking: Fluency & Linking Phrases", module: "SPEAKING", level: "Intermediate", description: "Natural connectors to sound more fluent." },
+        { title: "Academic Vocabulary List (AWL)", module: "VOCABULARY", level: "Advanced", description: "The most important academic words for Band 7+." },
+        { title: "Top 100 Collocations for IELTS", module: "VOCABULARY", level: "All", description: "Word partnerships examiners love to see." },
+        { title: "IELTS Band Descriptors Explained", module: "GENERAL", level: "All", description: "Understand exactly how you're scored in each skill." },
+      ];
+      for (const m of materials) {
+        await db.studyMaterial.create({ data: m });
+      }
+    }
+
+    // --- Daily article (only if none today) ---
+    if ((await db.dailyArticle.count()) === 0) {
+      await db.dailyArticle.create({
+        data: {
+          title: "Why Reading Every Day Boosts Your English",
+          body:
+            "Reading in English for just fifteen minutes a day can dramatically improve your vocabulary, grammar and writing. " +
+            "When you read regularly, you absorb how natural sentences are built and you encounter words in context, which makes them easier to remember. " +
+            "Experts recommend choosing material slightly above your current level — challenging enough to learn from, but not so hard that you give up. " +
+            "News articles, short stories and even subtitles are all excellent sources. The key is consistency: a small amount every day beats a huge effort once a week.",
+          vocabulary: [
+            { word: "dramatically", meaning: "in a sudden and impressive way" },
+            { word: "absorb", meaning: "to take in information gradually" },
+            { word: "in context", meaning: "within a surrounding situation that gives meaning" },
+            { word: "consistency", meaning: "doing something regularly in the same way" },
+          ],
+        },
+      });
     }
 
     return NextResponse.json({
