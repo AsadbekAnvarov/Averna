@@ -145,6 +145,11 @@ export default async function AdminDashboard() {
               <Megaphone className="mr-2 h-4 w-4" /> Announce
             </Button>
           </Link>
+          <Link href="/admin/content">
+            <Button variant="outline" className="border-averna-purple/40 text-averna-purple">
+              <Layers className="mr-2 h-4 w-4" /> Manage Content
+            </Button>
+          </Link>
           <Link href="/admin/system">
             <Button variant="outline" className="border-averna-cyan/40 text-averna-cyan">
               <Activity className="mr-2 h-4 w-4" /> System Health

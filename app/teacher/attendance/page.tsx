@@ -49,6 +49,34 @@ async function saveAttendance(formData: FormData) {
   redirect(`/teacher/attendance?group=${groupId}&saved=1`);
 }
 
+async function markAllPresent(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user) redirect("/auth/signin");
+  const teacher = await db.teacher.findUnique({ where: { userId: session.user.id } });
+  if (!teacher) return;
+
+  const groupId = formData.get("groupId") as string;
+  const dateStr = (formData.get("date") as string) || new Date().toISOString().slice(0, 10);
+
+  const group = await db.group.findFirst({
+    where: { id: groupId, teacherId: teacher.id },
+    include: { students: true },
+  });
+  if (!group) return;
+
+  const dayStart = new Date(`${dateStr}T00:00:00`);
+  const dayEnd = new Date(`${dateStr}T23:59:59`);
+  await db.attendance.deleteMany({ where: { groupId, date: { gte: dayStart, lte: dayEnd } } });
+  for (const s of group.students) {
+    await db.attendance.create({
+      data: { studentId: s.id, groupId, teacherId: teacher.id, date: dayStart, status: "PRESENT" },
+    });
+  }
+  revalidatePath("/teacher/attendance");
+  redirect(`/teacher/attendance?group=${groupId}&saved=1`);
+}
+
 export default async function TeacherAttendancePage({
   searchParams,
 }: {
@@ -172,6 +200,15 @@ export default async function TeacherAttendancePage({
               </CardHeader>
               <CardContent>
                 {selected && selected.students.length > 0 ? (
+                  {/* Quick: mark everyone present for today */}
+                  <form action={markAllPresent} className="mb-3">
+                    <input type="hidden" name="groupId" value={selected.id} />
+                    <input type="hidden" name="date" value={today} />
+                    <Button type="submit" variant="outline" className="border-averna-neon/50 text-averna-neon w-full sm:w-auto">
+                      <CheckCircle2 className="mr-2 h-4 w-4" /> Mark everyone present (today)
+                    </Button>
+                  </form>
+
                   <form action={saveAttendance} className="space-y-4">
                     <input type="hidden" name="groupId" value={selected.id} />
                     <div className="flex items-center gap-3 flex-wrap">
