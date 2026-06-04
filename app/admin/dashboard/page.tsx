@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3 } from "lucide-react";
+import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
@@ -119,10 +119,25 @@ export default async function AdminDashboard() {
           Admin Panel
         </h1>
 
-        <div className="mb-8">
+        <div className="mb-8 flex flex-wrap gap-3">
           <Link href="/admin/analytics">
             <Button className="neon-button bg-averna-cyan/80 hover:bg-averna-cyan text-black">
-              <BarChart3 className="mr-2 h-4 w-4" /> View Centre Analytics
+              <BarChart3 className="mr-2 h-4 w-4" /> Analytics
+            </Button>
+          </Link>
+          <Link href="/admin/groups">
+            <Button className="neon-button bg-averna-purple/80 hover:bg-averna-purple">
+              <Layers className="mr-2 h-4 w-4" /> Manage Groups
+            </Button>
+          </Link>
+          <Link href="/admin/rewards">
+            <Button className="neon-button bg-averna-pink/80 hover:bg-averna-pink">
+              <Gift className="mr-2 h-4 w-4" /> Rewards &amp; Requests
+            </Button>
+          </Link>
+          <Link href="/admin/announcements">
+            <Button variant="outline" className="border-averna-neon/40 text-averna-neon">
+              <Megaphone className="mr-2 h-4 w-4" /> Announce
             </Button>
           </Link>
         </div>
