@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone } from "lucide-react";
+import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone, Activity } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
@@ -130,6 +130,11 @@ export default async function AdminDashboard() {
               <Layers className="mr-2 h-4 w-4" /> Manage Groups
             </Button>
           </Link>
+          <Link href="/admin/teachers">
+            <Button className="neon-button bg-blue-500/80 hover:bg-blue-500">
+              <GraduationCap className="mr-2 h-4 w-4" /> Manage Teachers
+            </Button>
+          </Link>
           <Link href="/admin/rewards">
             <Button className="neon-button bg-averna-pink/80 hover:bg-averna-pink">
               <Gift className="mr-2 h-4 w-4" /> Rewards &amp; Requests
@@ -138,6 +143,11 @@ export default async function AdminDashboard() {
           <Link href="/admin/announcements">
             <Button variant="outline" className="border-averna-neon/40 text-averna-neon">
               <Megaphone className="mr-2 h-4 w-4" /> Announce
+            </Button>
+          </Link>
+          <Link href="/admin/system">
+            <Button variant="outline" className="border-averna-cyan/40 text-averna-cyan">
+              <Activity className="mr-2 h-4 w-4" /> System Health
             </Button>
           </Link>
         </div>
