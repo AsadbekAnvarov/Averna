@@ -371,6 +371,53 @@ const SCHEMA_STATEMENTS: string[] = [
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
   );`,
 
+  // lesson_logs (what was covered each lesson)
+  `CREATE TABLE IF NOT EXISTS "lesson_logs" (
+    "id" TEXT PRIMARY KEY,
+    "teacherId" TEXT NOT NULL,
+    "groupId" TEXT NOT NULL,
+    "topic" TEXT NOT NULL,
+    "notes" TEXT,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "lesson_logs_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id"),
+    CONSTRAINT "lesson_logs_groupId_fkey" FOREIGN KEY ("groupId") REFERENCES "groups"("id")
+  );`,
+
+  // student_notes (private teacher notes)
+  `CREATE TABLE IF NOT EXISTS "student_notes" (
+    "id" TEXT PRIMARY KEY,
+    "teacherId" TEXT NOT NULL,
+    "studentId" TEXT NOT NULL,
+    "note" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "student_notes_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id")
+  );`,
+
+  // homework_templates (reusable homework)
+  `CREATE TABLE IF NOT EXISTS "homework_templates" (
+    "id" TEXT PRIMARY KEY,
+    "teacherId" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "module" TEXT NOT NULL,
+    "points" INTEGER NOT NULL DEFAULT 50,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "homework_templates_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "teachers"("id")
+  );`,
+
+  // announcements (admin/teacher broadcasts)
+  `CREATE TABLE IF NOT EXISTS "announcements" (
+    "id" TEXT PRIMARY KEY,
+    "authorId" TEXT NOT NULL,
+    "authorName" TEXT NOT NULL,
+    "scope" TEXT NOT NULL DEFAULT 'ALL',
+    "groupId" TEXT,
+    "title" TEXT NOT NULL,
+    "body" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
+
   // --- New student balance column ---
   `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "balance" INTEGER NOT NULL DEFAULT 0;`,
 
