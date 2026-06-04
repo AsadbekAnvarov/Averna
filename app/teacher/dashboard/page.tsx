@@ -9,6 +9,7 @@ import { BookOpen, Users, CheckSquare, BarChart, ClipboardCheck, CalendarClock, 
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { RiskRadar } from "@/components/teacher/risk-radar";
 
 export default async function TeacherDashboard() {
   const session = await auth();
@@ -176,6 +177,11 @@ export default async function TeacherDashboard() {
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Risk radar — students who need attention */}
+        <div className="mt-6">
+          <RiskRadar teacherId={teacher.id} />
         </div>
       </div>
     </div>
