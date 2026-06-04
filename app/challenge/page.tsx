@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, CheckCircle2, XCircle, RotateCcw, Trophy } from "lucide-react";
+import { Confetti } from "@/components/confetti";
 
 interface Question {
   question: string;
@@ -167,6 +168,7 @@ export default function DailyChallengePage() {
           <Card className="glass border-averna-neon/40 text-center animate-fade-in">
             <CardContent className="py-10 space-y-4">
               <Trophy className="h-16 w-16 text-yellow-400 mx-auto" />
+              {score >= Math.ceil(questions.length / 2) && <Confetti />}
               <h2 className="text-3xl font-bold text-white">
                 You scored {score} / {questions.length}
               </h2>

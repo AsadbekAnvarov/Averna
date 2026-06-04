@@ -9,6 +9,7 @@ import {
   Loader2, CheckCircle2, XCircle, Coins,
 } from "lucide-react";
 import { calculateBandScore, heuristicWritingAssessmentSafe } from "@/lib/utils";
+import { Confetti } from "@/components/confetti";
 
 const EXAM_SECONDS = 25 * 60; // 25-minute mini mock
 
@@ -194,6 +195,7 @@ export default function MockExamPage() {
               ) : (
                 <>
                   <Trophy className="h-16 w-16 text-yellow-400 mx-auto" />
+                  {r.overall >= 6 && <Confetti />}
                   <h1 className="text-3xl font-bold text-white">Estimated Overall Band</h1>
                   <p className="text-6xl font-bold neon-text">{r.overall.toFixed(1)}</p>
                   <div className="grid grid-cols-3 gap-3 text-sm">
