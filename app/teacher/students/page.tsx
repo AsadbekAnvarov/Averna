@@ -58,6 +58,38 @@ async function unblacklistStudent(formData: FormData) {
   revalidatePath("/teacher/students");
 }
 
+async function awardBonus(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user) redirect("/auth/signin");
+  const teacher = await db.teacher.findUnique({
+    where: { userId: session.user.id },
+    include: { groups: { include: { students: { select: { id: true, userId: true } } } } },
+  });
+  if (!teacher) return;
+
+  const studentId = formData.get("studentId") as string;
+  const amount = Math.max(1, Math.min(50, parseInt(formData.get("amount") as string) || 0));
+  const owns = teacher.groups.some((g) => g.students.some((s) => s.id === studentId));
+  if (!owns || amount <= 0) return;
+
+  await db.student.update({ where: { id: studentId }, data: { totalPoints: { increment: amount } } });
+  await db.activityLog.create({
+    data: { studentId, action: "BONUS_POINTS", details: { by: "teacher", amount }, points: amount },
+  });
+
+  const target = teacher.groups.flatMap((g) => g.students).find((s) => s.id === studentId);
+  if (target) {
+    await notifyUser(target.userId, {
+      type: "grade",
+      title: "🌟 Bonus points!",
+      message: `Your teacher awarded you +${amount} points for great work.`,
+      link: "/dashboard",
+    });
+  }
+  revalidatePath("/teacher/students");
+}
+
 export default async function TeacherStudentsPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
@@ -172,7 +204,14 @@ export default async function TeacherStudentsPage() {
                           <span className="text-averna-neon font-semibold">{student.totalPoints} pts</span>
                           <span className="text-averna-pink">{student.currentStreak}🔥</span>
                         </div>
-                        <div className="sm:ml-auto flex items-center gap-2">
+                        <div className="sm:ml-auto flex items-center gap-2 flex-wrap">
+                          <form action={awardBonus} className="flex gap-1 items-center">
+                            <input type="hidden" name="studentId" value={student.id} />
+                            <Input name="amount" type="number" min="1" max="50" defaultValue="5" className="bg-background/50 h-9 w-16 text-xs" />
+                            <Button type="submit" size="sm" variant="outline" className="border-yellow-500/50 text-yellow-400">
+                              + Bonus
+                            </Button>
+                          </form>
                           <Link href={`/teacher/parent-report/${student.id}`}>
                             <Button size="sm" variant="outline" className="border-averna-cyan/40 text-averna-cyan">
                               Report
