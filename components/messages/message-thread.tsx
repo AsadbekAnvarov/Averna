@@ -53,7 +53,7 @@ export function MessageThread({
               >
                 {m.content}
                 <div className="flex items-center gap-1 text-[10px] opacity-60 mt-0.5 justify-end">
-                  {new Date(m.createdAt).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
+                  {new Date(m.createdAt).toLocaleTimeString("en-GB", { timeZone: "Asia/Tashkent", hour: "2-digit", minute: "2-digit", hour12: false })}
                   {mine && (m.read ? <CheckCheck className="h-3 w-3 text-averna-cyan" /> : <Check className="h-3 w-3" />)}
                 </div>
               </div>

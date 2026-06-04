@@ -91,7 +91,7 @@ export default async function NotificationsPage() {
                     <p className="text-white font-medium">{n.title}</p>
                     <p className="text-sm text-gray-300">{n.message}</p>
                     <p className="text-xs text-gray-500 mt-1">
-                      {new Date(n.createdAt).toLocaleString("en-GB")}
+                      {new Date(n.createdAt).toLocaleString("en-GB", { timeZone: "Asia/Tashkent" })}
                     </p>
                   </div>
                   {!n.read && <span className="h-2 w-2 rounded-full bg-averna-neon mt-2" />}

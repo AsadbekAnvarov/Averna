@@ -67,7 +67,11 @@ export default function SpeakingPage() {
 
   useEffect(() => {
     const update = () => {
-      const h = new Date().getHours();
+      // Compute the current hour in Tashkent (UTC+5), independent of device TZ
+      const h = parseInt(
+        new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Tashkent", hour: "2-digit", hour12: false }).format(new Date()),
+        10
+      ) % 24;
       const live = h >= 19 && h < 21;
       setIsLive(live);
       if (live) setTimeText("Speaking Time is LIVE now (19:00–21:00)!");

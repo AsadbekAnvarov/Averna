@@ -38,7 +38,7 @@ export default async function ArticlePage() {
           Article of the Day
         </h1>
         <p className="text-xs text-gray-500 mb-6">
-          {new Date(article.date).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}
+          {new Date(article.date).toLocaleDateString("en-GB", { timeZone: "Asia/Tashkent", weekday: "long", day: "numeric", month: "long" })}
         </p>
 
         <Card className="glass border-averna-cyan/30 mb-6">

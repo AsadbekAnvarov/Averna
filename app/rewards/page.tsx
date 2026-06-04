@@ -144,7 +144,7 @@ export default async function RewardsPage({
                   <div key={red.id} className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/10">
                     <div>
                       <p className="text-white font-medium">{red.reward.icon} {red.reward.name}</p>
-                      <p className="text-xs text-gray-500">{new Date(red.createdAt).toLocaleDateString("en-GB")} · {red.cost} pts</p>
+                      <p className="text-xs text-gray-500">{new Date(red.createdAt).toLocaleDateString("en-GB", { timeZone: "Asia/Tashkent" })} · {red.cost} pts</p>
                     </div>
                     <span className={`text-xs px-2 py-1 rounded-full border ${
                       red.status === "APPROVED" ? "text-averna-neon border-averna-neon/40 bg-averna-neon/10"

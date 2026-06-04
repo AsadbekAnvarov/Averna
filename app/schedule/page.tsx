@@ -138,6 +138,7 @@ export default async function StudentSchedulePage() {
                     >
                       <span className="text-gray-200 text-sm">
                         {new Date(a.date).toLocaleDateString("en-GB", {
+                          timeZone: "Asia/Tashkent",
                           weekday: "short",
                           day: "numeric",
                           month: "short",
@@ -176,7 +177,7 @@ export default async function StudentSchedulePage() {
                         <p className="text-white font-medium truncate">{g.title}</p>
                         {g.comment && <p className="text-xs text-gray-400 truncate">{g.comment}</p>}
                         <p className="text-[11px] text-gray-500">
-                          {new Date(g.date).toLocaleDateString("en-GB")}
+                          {new Date(g.date).toLocaleDateString("en-GB", { timeZone: "Asia/Tashkent" })}
                         </p>
                       </div>
                       <span className={`font-bold whitespace-nowrap ${color}`}>

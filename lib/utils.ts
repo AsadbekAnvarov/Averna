@@ -5,20 +5,65 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// Format date helpers
-export function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
+// ===== Timezone: Averna Learning Centre runs on Asia/Tashkent (UTC+5) =====
+export const AVERNA_TZ = "Asia/Tashkent";
+
+// Format date helpers (always shown in Tashkent time)
+export function formatDate(date: Date | string): string {
+  const d = typeof date === "string" ? new Date(date) : date;
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone: AVERNA_TZ,
     day: "numeric",
+    month: "short",
     year: "numeric",
-  }).format(date);
+  }).format(d);
 }
 
-export function formatTime(date: Date): string {
-  return new Intl.DateTimeFormat("en-US", {
+export function formatTime(date: Date | string): string {
+  const d = typeof date === "string" ? new Date(date) : date;
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone: AVERNA_TZ,
     hour: "2-digit",
     minute: "2-digit",
-  }).format(date);
+    hour12: false,
+  }).format(d);
+}
+
+export function formatDateTime(date: Date | string): string {
+  const d = typeof date === "string" ? new Date(date) : date;
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone: AVERNA_TZ,
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(d);
+}
+
+/** The current hour (0-23) in Tashkent, regardless of server/browser TZ. */
+export function tashkentHour(now: Date = new Date()): number {
+  const h = new Intl.DateTimeFormat("en-GB", {
+    timeZone: AVERNA_TZ,
+    hour: "2-digit",
+    hour12: false,
+  }).format(now);
+  return parseInt(h, 10) % 24;
+}
+
+/** Day-of-year in Tashkent — used to rotate daily content consistently. */
+export function tashkentDayOfYear(now: Date = new Date()): number {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: AVERNA_TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now); // YYYY-MM-DD
+  const [y, m, d] = parts.split("-").map((n) => parseInt(n, 10));
+  const start = Date.UTC(y, 0, 0);
+  const today = Date.UTC(y, m - 1, d);
+  return Math.floor((today - start) / 86400000);
 }
 
 // Calculate IELTS band score from percentage
@@ -41,26 +86,24 @@ export function calculateHomeworkPoints(position: number, basePoints: number): n
   return basePoints;
 }
 
-// Time helpers for Speaking Time feature
+// Time helpers for Speaking Time feature (Tashkent time, 19:00–21:00)
 export function isSpeakingTime(): boolean {
-  const now = new Date();
-  const hours = now.getHours();
+  const hours = tashkentHour();
   return hours >= 19 && hours < 21;
 }
 
 export function getTimeUntilSpeakingTime(): string {
-  const now = new Date();
-  const hours = now.getHours();
-  
+  const hours = tashkentHour();
+
   if (hours >= 19 && hours < 21) {
     return "Speaking Time is NOW!";
   }
-  
+
   if (hours < 19) {
     const hoursUntil = 19 - hours;
-    return `Speaking Time starts in ${hoursUntil} hour${hoursUntil > 1 ? 's' : ''}`;
+    return `Speaking Time starts in ${hoursUntil} hour${hoursUntil > 1 ? "s" : ""}`;
   }
-  
+
   return "Speaking Time starts tomorrow at 19:00";
 }
 

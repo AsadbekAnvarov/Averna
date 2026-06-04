@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { NotificationBell } from "@/components/notification-bell";
 import { ThemeSwitcher } from "@/components/theme/theme-switcher";
+import { TashkentClock } from "@/components/tashkent-clock";
 
 interface DashboardHeaderProps {
   user: {
@@ -22,6 +23,9 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
       </div>
 
       <div className="flex items-center gap-3">
+        {/* Tashkent time */}
+        <TashkentClock />
+
         {/* Theme */}
         <ThemeSwitcher />
 

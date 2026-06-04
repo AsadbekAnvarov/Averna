@@ -157,7 +157,7 @@ export default async function BillingPage({
                   <div key={p.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
                     <div>
                       <p className="text-white text-sm">{p.description ?? p.type}</p>
-                      <p className="text-[11px] text-gray-500">{new Date(p.createdAt).toLocaleDateString("en-GB")} · {p.status}</p>
+                      <p className="text-[11px] text-gray-500">{new Date(p.createdAt).toLocaleDateString("en-GB", { timeZone: "Asia/Tashkent" })} · {p.status}</p>
                     </div>
                     <span className={`font-semibold ${p.amount >= 0 ? "text-averna-neon" : "text-red-300"}`}>
                       {p.amount >= 0 ? "+" : ""}{fmt(p.amount)}

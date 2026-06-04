@@ -109,7 +109,7 @@ export default async function ParentReportPage({ params }: { params: { studentId
                   const l = attLabel(a.status);
                   return (
                     <div key={a.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
-                      <span className="text-gray-300 text-sm">{new Date(a.date).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" })}</span>
+                      <span className="text-gray-300 text-sm">{new Date(a.date).toLocaleDateString("en-GB", { timeZone: "Asia/Tashkent", weekday: "short", day: "numeric", month: "short" })}</span>
                       <span className={`flex items-center gap-1 text-sm ${l.c}`}><l.I className="h-4 w-4" /> {l.t}</span>
                     </div>
                   );
