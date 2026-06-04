@@ -278,28 +278,18 @@ html.light .bg-background\/60 { background-color: rgba(15, 23, 42, 0.04) !import
 html.light ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.05); }
 html.light ::-webkit-scrollbar-thumb { background: linear-gradient(#0d9460, #0e7fa0); }
 
-/* ===== Accent-aware helpers (use the --accent CSS variable) ===== */
-.accent-text { color: var(--accent, #00ff94); }
-.accent-bg { background-color: var(--accent, #00ff94); }
-.accent-border { border-color: var(--accent, #00ff94); }
-
-/* Tie the primary neon glow + headline text to the chosen accent colour so
-   the Accent picker visibly changes the whole vibe. We only retint the
-   PRIMARY neon (green) utilities; cyan/purple/pink stay as named accents. */
-:root[data-accent="cyan"] { --accent: #00e5ff; }
-:root[data-accent="purple"] { --accent: #b14eff; }
-:root[data-accent="pink"] { --accent: #ff3dbb; }
-:root[data-accent="neon"] { --accent: #00ff94; }
+/* ===== Accent helpers (fixed neon green brand) ===== */
+.accent-text { color: #00ff94; }
+.accent-bg { background-color: #00ff94; }
+.accent-border { border-color: #00ff94; }
 
 .neon-text {
-  color: var(--accent, #00ff94);
-  text-shadow: 0 0 8px color-mix(in srgb, var(--accent, #00ff94) 70%, transparent),
-               0 0 16px color-mix(in srgb, var(--accent, #00ff94) 40%, transparent);
+  color: #00ff94;
+  text-shadow: 0 0 8px rgba(0, 255, 148, 0.7), 0 0 16px rgba(0, 255, 148, 0.4);
 }
 
 .neon-button:hover {
-  box-shadow: 0 0 20px color-mix(in srgb, var(--accent, #00ff94) 60%, transparent),
-              0 0 40px color-mix(in srgb, var(--accent, #00ff94) 30%, transparent);
+  box-shadow: 0 0 20px rgba(0, 255, 148, 0.6), 0 0 40px rgba(0, 255, 148, 0.3);
   transform: translateY(-1px);
 }
 
