@@ -384,3 +384,69 @@ export async function generateHomework(
     return pool[Math.floor(Math.random() * pool.length)];
   }
 }
+
+
+// ============================================================
+// AI essay error analysis (#4) — highlights likely issues
+// ============================================================
+export interface WritingIssue {
+  text: string;       // the word/phrase flagged
+  type: string;       // grammar | spelling | style | punctuation
+  suggestion: string; // how to fix / improve
+}
+
+// Common, safe heuristic checks that work without any API key.
+export function analyzeWritingIssues(essay: string): WritingIssue[] {
+  const issues: WritingIssue[] = [];
+  const text = essay || "";
+  const lower = text.toLowerCase();
+
+  const checks: { re: RegExp; type: string; suggestion: string; label?: string }[] = [
+    { re: /\bi\s/g, type: "grammar", suggestion: "The pronoun 'I' must always be capitalised.", label: "i" },
+    { re: /\b(alot)\b/gi, type: "spelling", suggestion: "'alot' is not a word — write 'a lot'." },
+    { re: /\b(recieve|recieved)\b/gi, type: "spelling", suggestion: "Spelling: 'receive' (i before e except after c)." },
+    { re: /\b(definately)\b/gi, type: "spelling", suggestion: "Spelling: 'definitely'." },
+    { re: /\b(beacuse|becuase)\b/gi, type: "spelling", suggestion: "Spelling: 'because'." },
+    { re: /\b(thier)\b/gi, type: "spelling", suggestion: "Spelling: 'their'." },
+    { re: /\b(teh)\b/gi, type: "spelling", suggestion: "Spelling: 'the'." },
+    { re: /\b(very very|really really)\b/gi, type: "style", suggestion: "Avoid repetition — use a stronger adjective instead." },
+    { re: /\b(in my opinion i think)\b/gi, type: "style", suggestion: "Redundant — use either 'In my opinion' or 'I think', not both." },
+    { re: /\b(gonna|wanna|gotta|kinda)\b/gi, type: "style", suggestion: "Too informal for IELTS — write the full form (going to, want to)." },
+    { re: /\s,/g, type: "punctuation", suggestion: "No space before a comma." },
+    { re: /\s{2,}/g, type: "punctuation", suggestion: "Remove extra spaces." },
+    { re: /[a-z]\.[A-Za-z]/g, type: "punctuation", suggestion: "Add a space after the full stop." },
+  ];
+
+  for (const c of checks) {
+    const m = text.match(c.re);
+    if (m && m.length > 0) {
+      issues.push({ text: (c.label ?? m[0]).trim() || m[0], type: c.type, suggestion: c.suggestion });
+    }
+  }
+
+  // Sentence length warning (run-on sentences)
+  const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0);
+  const longOne = sentences.find((s) => s.split(/\s+/).filter(Boolean).length > 40);
+  if (longOne) {
+    issues.push({
+      text: longOne.trim().slice(0, 40) + "…",
+      type: "style",
+      suggestion: "This sentence is very long. Consider splitting it for clarity.",
+    });
+  }
+
+  // Repeated starting word
+  const starts = sentences.map((s) => s.trim().split(/\s+/)[0]?.toLowerCase()).filter(Boolean);
+  const counts: Record<string, number> = {};
+  starts.forEach((w) => { counts[w] = (counts[w] ?? 0) + 1; });
+  const repeated = Object.entries(counts).find(([, n]) => n >= 3);
+  if (repeated) {
+    issues.push({
+      text: repeated[0],
+      type: "style",
+      suggestion: `You start several sentences with '${repeated[0]}'. Vary your sentence openers.`,
+    });
+  }
+
+  return issues.slice(0, 12);
+}

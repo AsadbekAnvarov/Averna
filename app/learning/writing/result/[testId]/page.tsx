@@ -281,6 +281,36 @@ export default async function WritingResultPage({
           </CardContent>
         </Card>
 
+        {/* Error Analysis (#4) */}
+        {Array.isArray(assessment.issues) && assessment.issues.length > 0 && (
+          <Card className="glass border-averna-pink/30 mt-6 animate-fade-in">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-averna-pink">
+                <AlertCircle className="h-5 w-5" />
+                Error Analysis
+              </CardTitle>
+              <CardDescription>Specific issues detected in your text</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                {assessment.issues.map((issue: any, index: number) => (
+                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/10">
+                    <span className="text-[10px] uppercase px-2 py-0.5 rounded-full bg-averna-pink/20 text-averna-pink border border-averna-pink/30 shrink-0 mt-0.5">
+                      {issue.type}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-sm text-white">
+                        <span className="text-red-300">&ldquo;{issue.text}&rdquo;</span>
+                      </p>
+                      <p className="text-xs text-gray-400">{issue.suggestion}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Actions */}
         <div className="flex gap-4 mt-8 animate-fade-in">
           <Link href="/learning/writing" className="flex-1">

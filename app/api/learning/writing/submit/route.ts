@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { assessWritingTask } from "@/lib/ai";
+import { assessWritingTask, analyzeWritingIssues } from "@/lib/ai";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { isGenuineWriting } from "@/lib/utils";
 
@@ -45,6 +45,7 @@ export async function POST(req: NextRequest) {
       taskType,
       prompt
     );
+    const issues = analyzeWritingIssues(essay);
 
     // Save test result (0 points if it doesn't meet the effort threshold)
     const test = await saveIELTSTest(
@@ -52,7 +53,7 @@ export async function POST(req: NextRequest) {
       "WRITING",
       assessment.overallBand,
       { essay, prompt },
-      assessment,
+      { ...assessment, issues },
       timeSpent || 0,
       genuine ? undefined : { pointsOverride: 0 }
     );
@@ -60,6 +61,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       testId: test.id,
       assessment,
+      issues,
       pointsAwarded: genuine,
       cheatNotice: genuine
         ? undefined
