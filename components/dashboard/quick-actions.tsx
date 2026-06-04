@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers, UserCheck, CalendarClock, Gift, CalendarDays } from "lucide-react";
+import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers, UserCheck, CalendarClock, Gift, CalendarDays, Crown } from "lucide-react";
 import Link from "next/link";
 import { isSpeakingTime, getTimeUntilSpeakingTime } from "@/lib/utils";
 
@@ -54,6 +54,16 @@ export function QuickActions() {
       color: "text-yellow-400",
       bgColor: "bg-yellow-500/10",
       available: true,
+    },
+    {
+      icon: Crown,
+      label: "Leagues",
+      description: "Weekly season league",
+      href: "/leagues",
+      color: "text-averna-cyan",
+      bgColor: "bg-averna-cyan/10",
+      available: true,
+      badge: "NEW",
     },
     {
       icon: MessageSquare,

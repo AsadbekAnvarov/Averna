@@ -15,6 +15,7 @@ import { MotivationBanner } from "@/components/dashboard/motivation-banner";
 import { Milestones } from "@/components/dashboard/milestones";
 import { StreakHeatmap } from "@/components/dashboard/streak-heatmap";
 import { StudentOfTheWeek } from "@/components/student-of-the-week";
+import { DailyQuests } from "@/components/dashboard/daily-quests";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { OnboardingTour } from "@/components/onboarding-tour";
 import { AccountNotice } from "@/components/account-notice";
@@ -187,6 +188,7 @@ export default async function DashboardPage() {
 
             <div className="space-y-6">
               <StudentOfTheWeek />
+              <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
               <WordOfTheDay />
               <AchievementsPreview achievements={student.achievements} />
             </div>

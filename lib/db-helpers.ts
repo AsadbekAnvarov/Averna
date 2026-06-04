@@ -68,10 +68,15 @@ export async function updateStudentStreak(studentId: string) {
   );
 
   let newStreak = student.currentStreak;
+  let freezes = (student as any).streakFreezes ?? 0;
 
   if (daysDiff === 1) {
     // Continue streak
     newStreak = student.currentStreak + 1;
+  } else if (daysDiff === 2 && freezes > 0) {
+    // Missed exactly one day, but a streak freeze saves the streak
+    newStreak = student.currentStreak + 1;
+    freezes -= 1;
   } else if (daysDiff > 1) {
     // Streak broken
     newStreak = 1;
@@ -84,6 +89,7 @@ export async function updateStudentStreak(studentId: string) {
       currentStreak: newStreak,
       longestStreak: Math.max(newStreak, student.longestStreak),
       lastActiveDate: today,
+      streakFreezes: freezes,
     },
   });
 }
