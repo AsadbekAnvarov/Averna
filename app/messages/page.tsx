@@ -1,42 +1,18 @@
 export const dynamic = "force-dynamic";
 
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { MessageSquare, Send } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import Link from "next/link";
-import { notifyUser } from "@/lib/notifications";
 import { MessageComposer } from "@/components/messages/message-composer";
+import { MessageThread } from "@/components/messages/message-thread";
 
 interface Contact {
   userId: string;
   name: string;
   sub: string;
-}
-
-async function sendMessage(formData: FormData) {
-  "use server";
-  const session = await auth();
-  if (!session?.user) redirect("/auth/signin");
-  const receiverId = formData.get("receiverId") as string;
-  const content = (formData.get("content") as string)?.trim();
-  if (!receiverId || !content) redirect(`/messages?with=${receiverId}`);
-
-  await db.message.create({
-    data: { senderId: session.user.id, receiverId, content },
-  });
-  await notifyUser(receiverId, {
-    type: "message",
-    title: `New message from ${session.user.name ?? "someone"}`,
-    message: content.length > 60 ? content.slice(0, 60) + "…" : content,
-    link: `/messages?with=${session.user.id}`,
-  });
-  revalidatePath("/messages");
-  redirect(`/messages?with=${receiverId}`);
 }
 
 async function getContacts(userId: string, role: string): Promise<Contact[]> {
@@ -90,7 +66,7 @@ export default async function MessagesPage({
   const activeId = searchParams.with ?? contacts[0]?.userId;
   const active = contacts.find((c) => c.userId === activeId) ?? contacts[0];
 
-  let messages: { id: string; senderId: string; content: string; createdAt: Date }[] = [];
+  let messages: { id: string; senderId: string; content: string; createdAt: Date; read: boolean; reaction: string | null }[] = [];
   if (active) {
     messages = await db.message.findMany({
       where: {
@@ -108,6 +84,15 @@ export default async function MessagesPage({
       data: { read: true },
     });
   }
+
+  const threadMessages = messages.map((m) => ({
+    id: m.id,
+    senderId: m.senderId,
+    content: m.content,
+    createdAt: m.createdAt.toISOString(),
+    read: m.read,
+    reaction: m.reaction,
+  }));
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -156,32 +141,8 @@ export default async function MessagesPage({
                 <p className="text-white font-semibold border-b border-white/10 pb-2 mb-3">
                   {active?.name}
                 </p>
-                <div className="flex-1 overflow-y-auto space-y-2 pr-1">
-                  {messages.length === 0 ? (
-                    <p className="text-sm text-gray-400 text-center mt-8">
-                      No messages yet. Say hello! 👋
-                    </p>
-                  ) : (
-                    messages.map((m) => {
-                      const mine = m.senderId === me;
-                      return (
-                        <div key={m.id} className={`flex ${mine ? "justify-end" : "justify-start"}`}>
-                          <div
-                            className={`max-w-[75%] px-3 py-2 rounded-2xl text-sm ${
-                              mine
-                                ? "bg-averna-primary text-white rounded-br-sm"
-                                : "bg-white/10 text-gray-100 rounded-bl-sm"
-                            }`}
-                          >
-                            {m.content}
-                            <div className="text-[10px] opacity-60 mt-0.5">
-                              {new Date(m.createdAt).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })
-                  )}
+                <div className="flex-1 overflow-y-auto space-y-3 pr-1">
+                  <MessageThread messages={threadMessages} meId={me} />
                 </div>
                 <MessageComposer receiverId={active!.userId} role={role} />
               </CardContent>
