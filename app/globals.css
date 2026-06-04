@@ -283,6 +283,26 @@ html.light ::-webkit-scrollbar-thumb { background: linear-gradient(#0d9460, #0e7
 .accent-bg { background-color: var(--accent, #00ff94); }
 .accent-border { border-color: var(--accent, #00ff94); }
 
+/* Tie the primary neon glow + headline text to the chosen accent colour so
+   the Accent picker visibly changes the whole vibe. We only retint the
+   PRIMARY neon (green) utilities; cyan/purple/pink stay as named accents. */
+:root[data-accent="cyan"] { --accent: #00e5ff; }
+:root[data-accent="purple"] { --accent: #b14eff; }
+:root[data-accent="pink"] { --accent: #ff3dbb; }
+:root[data-accent="neon"] { --accent: #00ff94; }
+
+.neon-text {
+  color: var(--accent, #00ff94);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent, #00ff94) 70%, transparent),
+               0 0 16px color-mix(in srgb, var(--accent, #00ff94) 40%, transparent);
+}
+
+.neon-button:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent, #00ff94) 60%, transparent),
+              0 0 40px color-mix(in srgb, var(--accent, #00ff94) 30%, transparent);
+  transform: translateY(-1px);
+}
+
 /* ===== Skeleton loading shimmer ===== */
 .skeleton {
   position: relative;
