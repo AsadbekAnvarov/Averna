@@ -16,6 +16,7 @@ import { Milestones } from "@/components/dashboard/milestones";
 import { StreakHeatmap } from "@/components/dashboard/streak-heatmap";
 import { StudentOfTheWeek } from "@/components/student-of-the-week";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
+import { OnboardingTour } from "@/components/onboarding-tour";
 import { AccountNotice } from "@/components/account-notice";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -193,6 +194,7 @@ export default async function DashboardPage() {
         </div>
       </div>
       <MobileNav />
+      <OnboardingTour />
     </div>
   );
 }
