@@ -26,6 +26,7 @@ import {
   Crown,
   Swords,
   Library,
+  Wallet,
 } from "lucide-react";
 
 const studentNavigation = [
@@ -43,6 +44,7 @@ const studentNavigation = [
   { name: "Materials", href: "/materials", icon: Library },
   { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
   { name: "Rewards", href: "/rewards", icon: Gift },
+  { name: "Billing", href: "/billing", icon: Wallet },
   { name: "Messages", href: "/messages", icon: MessageSquare },
   { name: "Homework", href: "/homework", icon: BookMarked },
   { name: "Rankings", href: "/rankings", icon: Trophy },
