@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, CheckCircle2, XCircle, RotateCcw, Trophy } from "lucide-react";
 import { Confetti } from "@/components/confetti";
+import { tashkentDayOfYear } from "@/lib/utils";
 
 interface Question {
   question: string;
@@ -31,11 +32,9 @@ const QUESTION_POOL: Question[] = [
   { category: "Vocabulary", question: "A synonym for \"significant\" is:", options: ["Trivial", "Considerable", "Tiny", "Optional"], answer: 1, explanation: "\"Significant\" means considerable or important." },
 ];
 
-// Deterministic daily selection of 5 questions
+// Deterministic daily selection of 5 questions (Tashkent day)
 function getDailyQuestions(): Question[] {
-  const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 0);
-  const dayOfYear = Math.floor((now.getTime() - start.getTime()) / 86400000);
+  const dayOfYear = tashkentDayOfYear();
   const result: Question[] = [];
   for (let i = 0; i < 5; i++) {
     result.push(QUESTION_POOL[(dayOfYear + i * 5) % QUESTION_POOL.length]);

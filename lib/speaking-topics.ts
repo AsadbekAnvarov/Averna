@@ -70,14 +70,16 @@ export const SPEAKING_TOPICS: SpeakingTopic[] = [
   },
 ];
 
+import { tashkentDayOfYear } from "@/lib/utils";
+
 export function getTodayTopic(): SpeakingTopic {
-  const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 0);
-  const dayOfYear = Math.floor((now.getTime() - start.getTime()) / 86400000);
-  return SPEAKING_TOPICS[dayOfYear % SPEAKING_TOPICS.length];
+  return SPEAKING_TOPICS[tashkentDayOfYear() % SPEAKING_TOPICS.length];
 }
 
 export function isSpeakingTimeNow(): boolean {
-  const h = new Date().getHours();
+  const h = parseInt(
+    new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Tashkent", hour: "2-digit", hour12: false }).format(new Date()),
+    10
+  ) % 24;
   return h >= 19 && h < 21;
 }

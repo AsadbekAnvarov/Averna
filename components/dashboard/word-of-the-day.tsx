@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpenCheck, Sparkles } from "lucide-react";
+import { tashkentDayOfYear } from "@/lib/utils";
 
 interface VocabEntry {
   word: string;
@@ -29,11 +30,7 @@ const VOCAB: VocabEntry[] = [
 ];
 
 function getDayIndex(): number {
-  const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 0);
-  const diff = now.getTime() - start.getTime();
-  const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
-  return dayOfYear % VOCAB.length;
+  return tashkentDayOfYear() % VOCAB.length;
 }
 
 export function WordOfTheDay() {

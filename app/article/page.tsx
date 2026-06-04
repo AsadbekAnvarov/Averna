@@ -2,32 +2,22 @@ export const dynamic = "force-dynamic";
 
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
-import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Newspaper, BookMarked } from "lucide-react";
 import Link from "next/link";
-
-interface VocabItem { word: string; meaning: string }
+import { getTodayArticle } from "@/lib/daily-content";
 
 export default async function ArticlePage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 
-  const article = await db.dailyArticle.findFirst({ orderBy: { date: "desc" } });
-
-  if (!article) {
-    return (
-      <div className="min-h-screen premium-gradient flex items-center justify-center px-4">
-        <Card className="glass border-averna-primary/30 max-w-md w-full text-center">
-          <CardContent className="py-10 text-gray-300">
-            No article yet. Run <code className="text-averna-cyan">/api/seed</code> to add today&apos;s article.
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
-  const vocab = (article.vocabulary as unknown as VocabItem[]) ?? [];
+  const article = getTodayArticle();
+  const today = new Date().toLocaleDateString("en-GB", {
+    timeZone: "Asia/Tashkent",
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -37,9 +27,7 @@ export default async function ArticlePage() {
           <Newspaper className="h-7 w-7 text-averna-cyan" />
           Article of the Day
         </h1>
-        <p className="text-xs text-gray-500 mb-6">
-          {new Date(article.date).toLocaleDateString("en-GB", { timeZone: "Asia/Tashkent", weekday: "long", day: "numeric", month: "long" })}
-        </p>
+        <p className="text-xs text-gray-500 mb-6">{today} · a new article every day</p>
 
         <Card className="glass border-averna-cyan/30 mb-6">
           <CardHeader><CardTitle className="text-white">{article.title}</CardTitle></CardHeader>
@@ -48,7 +36,7 @@ export default async function ArticlePage() {
           </CardContent>
         </Card>
 
-        {vocab.length > 0 && (
+        {article.vocabulary.length > 0 && (
           <Card className="glass border-averna-purple/30">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-averna-purple">
@@ -56,7 +44,7 @@ export default async function ArticlePage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              {vocab.map((v) => (
+              {article.vocabulary.map((v) => (
                 <div key={v.word} className="p-3 rounded-lg bg-white/5 border border-white/10">
                   <span className="text-averna-neon font-semibold">{v.word}</span>
                   <span className="text-gray-300 text-sm"> — {v.meaning}</span>

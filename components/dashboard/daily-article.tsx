@@ -1,18 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Newspaper, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { db } from "@/lib/db";
+import { getTodayArticle } from "@/lib/daily-content";
 
-export async function DailyArticle() {
-  let article: { id: string; title: string; body: string } | null = null;
-  try {
-    article = await db.dailyArticle.findFirst({ orderBy: { date: "desc" } });
-  } catch {
-    article = null;
-  }
-
-  if (!article) return null;
-
+export function DailyArticle() {
+  const article = getTodayArticle();
   const preview = article.body.length > 160 ? article.body.slice(0, 160) + "…" : article.body;
 
   return (
@@ -26,7 +18,7 @@ export async function DailyArticle() {
         <p className="text-white font-semibold mb-1">{article.title}</p>
         <p className="text-sm text-gray-400 mb-3">{preview}</p>
         <Link href="/article" className="text-sm text-averna-neon hover:underline inline-flex items-center gap-1">
-          Read & learn vocabulary <ArrowRight className="h-3.5 w-3.5" />
+          Read &amp; learn vocabulary <ArrowRight className="h-3.5 w-3.5" />
         </Link>
       </CardContent>
     </Card>
