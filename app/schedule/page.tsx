@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CalendarClock, GraduationCap, ClipboardCheck, CheckCircle2, XCircle, Clock, BookOpenCheck } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
+import { AddToGoogleCalendar } from "@/components/add-to-google-calendar";
 
 function statusStyle(status: string) {
   switch (status) {
@@ -93,6 +94,15 @@ export default async function StudentSchedulePage() {
               <p className="text-sm text-gray-400">
                 ⏳ You haven&apos;t been assigned to a group yet. An administrator will enroll you soon.
               </p>
+            )}
+            {student.group && (
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <AddToGoogleCalendar
+                  title={`Averna: ${student.group.name}`}
+                  details={`${student.group.level ?? ""} lesson with ${student.group.teacher.user.name ?? "your teacher"}`}
+                  scheduleText={student.group.schedule}
+                />
+              </div>
             )}
           </CardContent>
         </Card>

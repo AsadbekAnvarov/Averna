@@ -172,7 +172,12 @@ export default async function TeacherStudentsPage() {
                           <span className="text-averna-neon font-semibold">{student.totalPoints} pts</span>
                           <span className="text-averna-pink">{student.currentStreak}🔥</span>
                         </div>
-                        <div className="sm:ml-auto">
+                        <div className="sm:ml-auto flex items-center gap-2">
+                          <Link href={`/teacher/parent-report/${student.id}`}>
+                            <Button size="sm" variant="outline" className="border-averna-cyan/40 text-averna-cyan">
+                              Report
+                            </Button>
+                          </Link>
                           {student.blacklisted ? (
                             <form action={unblacklistStudent}>
                               <input type="hidden" name="studentId" value={student.id} />
