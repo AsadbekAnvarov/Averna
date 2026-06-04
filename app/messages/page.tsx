@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { MessageSquare, Send } from "lucide-react";
 import Link from "next/link";
 import { notifyUser } from "@/lib/notifications";
+import { MessageComposer } from "@/components/messages/message-composer";
 
 interface Contact {
   userId: string;
@@ -182,19 +183,7 @@ export default async function MessagesPage({
                     })
                   )}
                 </div>
-                <form action={sendMessage} className="flex gap-2 mt-3 border-t border-white/10 pt-3">
-                  <input type="hidden" name="receiverId" value={active?.userId} />
-                  <Input
-                    name="content"
-                    placeholder="Type a message..."
-                    autoComplete="off"
-                    className="bg-background/50"
-                    required
-                  />
-                  <Button type="submit" className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
-                    <Send className="h-4 w-4" />
-                  </Button>
-                </form>
+                <MessageComposer receiverId={active!.userId} role={role} />
               </CardContent>
             </Card>
           </div>

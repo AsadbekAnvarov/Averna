@@ -151,6 +151,18 @@ export default async function DashboardPage() {
             streak={student.currentStreak}
           />
 
+          {student.blacklisted && (
+            <div className="rounded-xl border border-red-500/40 bg-red-500/10 p-4 text-red-200 flex items-start gap-3">
+              <span className="text-xl">⚠️</span>
+              <div>
+                <p className="font-semibold text-red-300">You are on the blacklist</p>
+                <p className="text-sm">
+                  {student.blacklistReason || "Please complete your homework."} Talk to your teacher and catch up to be removed.
+                </p>
+              </div>
+            </div>
+          )}
+
           <WelcomeSection 
             student={student}
             quote={dailyQuote}
