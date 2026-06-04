@@ -5,6 +5,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
 import { Award, Lock, Trophy, CheckCircle } from "lucide-react";
 import Link from "next/link";
 
@@ -113,9 +114,16 @@ export default async function AchievementsPage() {
           <Award className="h-10 w-10 text-yellow-400" />
           Achievements
         </h1>
-        <p className="text-gray-300 mb-8">
+        <p className="text-gray-300 mb-4">
           Unlock badges by completing challenges and earning points!
         </p>
+        <div className="mb-8">
+          <Link href="/certificate">
+            <Button className="neon-button bg-averna-primary hover:bg-averna-light">
+              <Award className="mr-2 h-4 w-4" /> View my certificate
+            </Button>
+          </Link>
+        </div>
 
         {/* Summary Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
