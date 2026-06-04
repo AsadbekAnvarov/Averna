@@ -49,6 +49,26 @@ async function updateGroup(formData: FormData) {
   revalidatePath("/admin/groups");
 }
 
+async function duplicateGroup(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  const id = formData.get("id") as string;
+  const original = await db.group.findUnique({ where: { id } });
+  if (!original) return;
+  await db.group.create({
+    data: {
+      name: `${original.name} (copy)`,
+      teacherId: original.teacherId,
+      level: original.level,
+      schedule: original.schedule,
+      description: original.description,
+    },
+  });
+  revalidatePath("/admin/groups");
+  redirect("/admin/groups?saved=1");
+}
+
 export default async function AdminGroupsPage({ searchParams }: { searchParams: { saved?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
@@ -133,7 +153,12 @@ export default async function AdminGroupsPage({ searchParams }: { searchParams: 
                     </select>
                     <Input name="schedule" defaultValue={g.schedule ?? ""} placeholder="Schedule" className="bg-background/50 h-9 text-xs" />
                   </div>
-                  <Button type="submit" size="sm" variant="outline" className="border-averna-cyan/40 text-averna-cyan">Save changes</Button>
+                  <div className="flex gap-2">
+                    <Button type="submit" size="sm" variant="outline" className="border-averna-cyan/40 text-averna-cyan">Save changes</Button>
+                    <button formAction={duplicateGroup} className="text-xs px-3 py-1.5 rounded-md border border-averna-purple/40 text-averna-purple hover:bg-averna-purple/10">
+                      Duplicate
+                    </button>
+                  </div>
                 </form>
               ))
             )}
