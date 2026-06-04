@@ -243,3 +243,61 @@ export function toCSV(rows: (string | number)[][]): string {
     )
     .join("\n");
 }
+
+
+// ===== AI Speaking Examiner scoring (#1) =====
+export interface SpeakingScore {
+  fluency: number;       // 0-9
+  vocabulary: number;    // 0-9
+  grammar: number;       // 0-9
+  overall: number;       // 0-9
+  wordCount: number;
+  feedback: string[];
+}
+
+// Scores a transcript of spoken English using simple, transparent heuristics.
+export function scoreSpeaking(transcript: string, seconds: number): SpeakingScore {
+  const text = (transcript || "").trim();
+  const words = text.split(/\s+/).filter(Boolean);
+  const wordCount = words.length;
+  const minutes = Math.max(0.1, seconds / 60);
+  const wpm = wordCount / minutes;
+
+  const unique = new Set(words.map((w) => w.toLowerCase().replace(/[^a-z']/g, "")));
+  const diversity = wordCount > 0 ? unique.size / wordCount : 0;
+
+  const linkers = ["because", "however", "although", "for example", "such as", "therefore", "in addition", "on the other hand", "firstly", "finally", "in my opinion"];
+  const lower = text.toLowerCase();
+  const linkerCount = linkers.filter((l) => lower.includes(l)).length;
+
+  const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0);
+  const avgLen = wordCount / Math.max(1, sentences.length);
+
+  const clamp = (n: number) => Math.max(3, Math.min(8.5, Math.round(n * 2) / 2));
+
+  // Fluency: based on speaking rate (ideal ~110-150 wpm) and amount spoken
+  let fluency = 4;
+  if (wpm >= 100 && wpm <= 170) fluency = 7;
+  else if (wpm >= 80) fluency = 6;
+  else if (wpm >= 50) fluency = 5;
+  if (wordCount < 20) fluency = Math.min(fluency, 4);
+  fluency = clamp(fluency + (linkerCount >= 2 ? 0.5 : 0));
+
+  // Vocabulary: lexical diversity + linking phrases
+  const vocabulary = clamp(4 + diversity * 5 + Math.min(1, linkerCount * 0.25));
+
+  // Grammar: reasonable sentence length + variety (proxy)
+  const grammar = clamp(4.5 + (avgLen >= 8 && avgLen <= 22 ? 1.5 : 0.5) + (sentences.length >= 3 ? 0.5 : 0));
+
+  const overall = Math.round(((fluency + vocabulary + grammar) / 3) * 2) / 2;
+
+  const feedback: string[] = [];
+  if (wordCount < 40) feedback.push("Try to speak more — aim for at least a minute of continuous speech.");
+  if (wpm < 80) feedback.push("Your pace was a little slow. Practise speaking more smoothly without long pauses.");
+  if (wpm > 180) feedback.push("You spoke very fast — slow down slightly for clarity.");
+  if (diversity < 0.5) feedback.push("Use a wider range of vocabulary and avoid repeating the same words.");
+  if (linkerCount < 2) feedback.push("Use more linking phrases (however, for example, because) to connect ideas.");
+  if (feedback.length === 0) feedback.push("Great job! Keep practising daily to push your band even higher.");
+
+  return { fluency, vocabulary, grammar, overall, wordCount, feedback };
+}

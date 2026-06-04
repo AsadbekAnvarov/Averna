@@ -27,6 +27,7 @@ import {
   Swords,
   Library,
   Wallet,
+  Bot,
 } from "lucide-react";
 
 const studentNavigation = [
@@ -38,6 +39,7 @@ const studentNavigation = [
   { name: "Listening", href: "/learning/listening", icon: Headphones },
   { name: "Speaking", href: "/learning/speaking", icon: Mic },
   { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
+  { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
   { name: "Mock Exam", href: "/learning/mock-exam", icon: Trophy },
   { name: "Daily Challenge", href: "/challenge", icon: Zap },
   { name: "Flashcards", href: "/flashcards", icon: Layers },

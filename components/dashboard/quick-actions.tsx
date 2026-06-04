@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers, UserCheck, CalendarClock, Gift, CalendarDays, Crown, Swords, Library } from "lucide-react";
+import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers, UserCheck, CalendarClock, Gift, CalendarDays, Crown, Swords, Library, Bot } from "lucide-react";
 import Link from "next/link";
 import { isSpeakingTime, getTimeUntilSpeakingTime } from "@/lib/utils";
 
@@ -111,6 +111,16 @@ export function QuickActions() {
       href: "/learning/pronunciation",
       color: "text-averna-pink",
       bgColor: "bg-averna-pink/10",
+      available: true,
+      badge: "NEW",
+    },
+    {
+      icon: Bot,
+      label: "AI Examiner",
+      description: "Speak, get a band",
+      href: "/learning/examiner",
+      color: "text-averna-cyan",
+      bgColor: "bg-averna-cyan/10",
       available: true,
       badge: "NEW",
     },
