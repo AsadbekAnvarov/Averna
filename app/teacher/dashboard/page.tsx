@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Users, CheckSquare, BarChart, ClipboardCheck, CalendarClock } from "lucide-react";
+import { BookOpen, Users, CheckSquare, BarChart, ClipboardCheck, CalendarClock, Megaphone, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
@@ -129,9 +129,21 @@ export default async function TeacherDashboard() {
                   Gradebook
                 </Button>
               </Link>
+              <Link href="/teacher/lessons">
+                <Button className="w-full" variant="outline">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Lesson Log
+                </Button>
+              </Link>
+              <Link href="/teacher/announcements">
+                <Button className="w-full" variant="outline">
+                  <Megaphone className="mr-2 h-4 w-4" />
+                  Announcements
+                </Button>
+              </Link>
               <Link href="/messages">
                 <Button className="w-full" variant="outline">
-                  <BarChart className="mr-2 h-4 w-4" />
+                  <MessageSquare className="mr-2 h-4 w-4" />
                   Messages
                 </Button>
               </Link>
