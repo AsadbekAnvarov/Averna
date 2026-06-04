@@ -361,6 +361,16 @@ const SCHEMA_STATEMENTS: string[] = [
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
   );`,
 
+  // speaking_signals (WebRTC voice signaling)
+  `CREATE TABLE IF NOT EXISTS "speaking_signals" (
+    "id" TEXT PRIMARY KEY,
+    "roomId" TEXT NOT NULL,
+    "senderId" TEXT NOT NULL,
+    "kind" TEXT NOT NULL,
+    "payload" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
+
   // --- New student balance column ---
   `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "balance" INTEGER NOT NULL DEFAULT 0;`,
 

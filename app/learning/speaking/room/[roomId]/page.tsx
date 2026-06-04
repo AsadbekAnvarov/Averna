@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mic, Send, LogOut, Users, Sparkles } from "lucide-react";
 import { getTodayTopic } from "@/lib/speaking-topics";
+import { VoiceCall } from "@/components/speaking/voice-call";
 
 interface Msg { id: string; senderId: string; senderName: string; content: string; createdAt: string; }
 interface RoomInfo { id: string; topic: string; studentAName: string; studentBName: string; status: string; }
@@ -21,6 +22,7 @@ export default function SpeakingRoomPage() {
   const [room, setRoom] = useState<RoomInfo | null>(null);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [meId, setMeId] = useState("");
+  const [isInitiator, setIsInitiator] = useState<boolean | null>(null);
   const [text, setText] = useState("");
   const [error, setError] = useState("");
   const [ended, setEnded] = useState(false);
@@ -39,6 +41,7 @@ export default function SpeakingRoomPage() {
       setRoom(data.room);
       setMessages(data.messages);
       setMeId(data.meId);
+      setIsInitiator(data.isInitiator ?? false);
       if (data.room.status === "ENDED") setEnded(true);
     } catch {
       setError("Connection error");
@@ -156,6 +159,10 @@ export default function SpeakingRoomPage() {
         {/* Chat */}
         <Card className="glass border-averna-cyan/30">
           <CardContent className="py-4 flex flex-col h-[50vh]">
+            {/* Real-time voice call */}
+            {!ended && isInitiator !== null && (
+              <VoiceCall roomId={roomId} isInitiator={isInitiator} />
+            )}
             <div className="flex-1 overflow-y-auto space-y-2 pr-1">
               {messages.length === 0 ? (
                 <p className="text-sm text-gray-400 text-center mt-8">

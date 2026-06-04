@@ -495,6 +495,18 @@ model SpeakingMessage {
   @@map("speaking_messages")
 }
 
+model SpeakingSignal {
+  id        String   @id @default(cuid())
+  roomId    String
+  senderId  String
+  kind      String // offer | answer | ice
+  payload   String   @db.Text
+  createdAt DateTime @default(now())
+
+  @@index([roomId])
+  @@map("speaking_signals")
+}
+
 model Payment {
   id          String   @id @default(cuid())
   studentId   String

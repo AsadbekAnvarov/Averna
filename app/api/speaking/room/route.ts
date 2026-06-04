@@ -41,6 +41,7 @@ export async function GET(req: NextRequest) {
       },
       messages,
       meId: student!.id,
+      isInitiator: room.studentAId === student!.id,
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Failed";
