@@ -8,12 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, Save, ArrowLeft } from "lucide-react";
+import { Loader2, Save, ArrowLeft, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export default function CreateHomeworkPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [aiTopic, setAiTopic] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -22,6 +24,24 @@ export default function CreateHomeworkPage() {
     points: 50,
     dueDate: "",
   });
+
+  const handleGenerate = async () => {
+    setGenerating(true);
+    try {
+      const res = await fetch("/api/teacher/homework/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ module: formData.module, level: "Intermediate", topic: aiTopic }),
+      });
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      setFormData((f) => ({ ...f, title: data.title, description: data.description }));
+    } catch {
+      alert("Could not generate homework. Please try again.");
+    } finally {
+      setGenerating(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,6 +80,33 @@ export default function CreateHomeworkPage() {
             <CardTitle>Homework Details</CardTitle>
           </CardHeader>
           <CardContent>
+            {/* AI generator */}
+            <div className="mb-6 p-4 rounded-lg bg-averna-purple/10 border border-averna-purple/30">
+              <p className="text-sm text-averna-purple font-semibold flex items-center gap-2 mb-2">
+                <Sparkles className="h-4 w-4" /> AI Homework Generator
+              </p>
+              <p className="text-xs text-gray-400 mb-3">
+                Pick a module above, optionally add a topic, and let AI draft the task for you. You can edit it after.
+              </p>
+              <div className="flex gap-2">
+                <Input
+                  value={aiTopic}
+                  onChange={(e) => setAiTopic(e.target.value)}
+                  placeholder="Optional topic, e.g. 'the environment'"
+                  className="bg-background/50"
+                />
+                <Button
+                  type="button"
+                  onClick={handleGenerate}
+                  disabled={generating}
+                  className="neon-button bg-averna-purple/80 hover:bg-averna-purple shrink-0"
+                >
+                  {generating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
+                  <span className="ml-1 hidden sm:inline">Generate</span>
+                </Button>
+              </div>
+            </div>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="title">Title *</Label>

@@ -318,3 +318,69 @@ export function offlineMentorReply(message: string): string {
 
   return "Great question! Here's a general IELTS tip: study a little every day, focus on your weakest skill, and always review your mistakes. Ask me about Writing, Speaking, Reading, Listening, grammar, vocabulary, or how to reach your target band, and I'll give you specific advice. (Tip: connecting an OpenAI API key unlocks full AI-powered answers.)";
 }
+
+
+// ============================================================
+// AI Homework generator (#3) — GPT-4 if key present, else templates
+// ============================================================
+export interface GeneratedHomework {
+  title: string;
+  description: string;
+}
+
+const HW_TEMPLATES: Record<string, GeneratedHomework[]> = {
+  WRITING: [
+    { title: "Writing Task 2: Technology & Society", description: "Some people believe technology makes us more connected, while others think it isolates us. Discuss both views and give your own opinion. Write at least 250 words." },
+    { title: "Writing Task 2: Education", description: "Some think students should study subjects they enjoy; others say they should study useful subjects for their careers. Discuss both views and give your opinion. Write at least 250 words." },
+    { title: "Writing Task 1: Describe a Graph", description: "The chart below shows the percentage of households with internet access in three countries between 2000 and 2020. Summarise the information by selecting and reporting the main features. Write at least 150 words." },
+  ],
+  READING: [
+    { title: "Reading Practice: Skimming & Scanning", description: "Read the assigned passage and answer all True/False/Not Given and multiple-choice questions. Time yourself: 20 minutes. Note any unfamiliar vocabulary." },
+    { title: "Reading: Matching Headings", description: "Complete the matching-headings exercise for the article on renewable energy. Explain why you chose each heading in one sentence." },
+  ],
+  LISTENING: [
+    { title: "Listening: Section 2 Practice", description: "Complete one Listening test in the app, then write down 5 new words you heard and their meanings." },
+    { title: "Listening: Note Completion", description: "Listen to the lecture twice and complete the note-taking exercise. Focus on numbers, dates and names." },
+  ],
+  SPEAKING: [
+    { title: "Speaking: Part 2 Cue Card", description: "Record a 2-minute response to the cue card: 'Describe a skill you would like to learn.' Use the Pronunciation Coach to check clarity." },
+    { title: "Speaking: Daily Topic Discussion", description: "Join a Speaking room (or practise with the app) and discuss today's topic for at least 5 minutes. Note 3 useful phrases you used." },
+  ],
+};
+
+export async function generateHomework(
+  module: string,
+  level: string,
+  topic?: string
+): Promise<GeneratedHomework> {
+  const mod = (module || "WRITING").toUpperCase();
+
+  if (!hasOpenAI()) {
+    const pool = HW_TEMPLATES[mod] ?? HW_TEMPLATES.WRITING;
+    const pick = pool[Math.floor(Math.random() * pool.length)];
+    return {
+      title: topic ? `${pick.title} (${topic})` : pick.title,
+      description: pick.description,
+    };
+  }
+
+  try {
+    const openai = getOpenAIClient();
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        { role: "system", content: "You are an IELTS teacher creating homework. Respond in JSON: { \"title\": string, \"description\": string }. The description must be clear, specific instructions a student can follow." },
+        { role: "user", content: `Create one ${mod} homework task for ${level} level students${topic ? ` about ${topic}` : ""}. Keep it realistic and exam-focused.` },
+      ],
+      response_format: { type: "json_object" },
+      temperature: 0.8,
+    });
+    const result = completion.choices[0].message.content;
+    if (!result) throw new Error("empty");
+    const parsed = JSON.parse(result);
+    return { title: parsed.title || "Homework", description: parsed.description || "" };
+  } catch {
+    const pool = HW_TEMPLATES[mod] ?? HW_TEMPLATES.WRITING;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+}
