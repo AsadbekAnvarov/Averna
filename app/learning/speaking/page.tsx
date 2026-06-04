@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mic, Clock, Volume2, RefreshCw, Play, Square } from "lucide-react";
+import { Mic, Clock, Volume2, RefreshCw, Play, Square, Users, Loader2, Search } from "lucide-react";
+import { getTodayTopic } from "@/lib/speaking-topics";
 
 const PART1 = [
   "Where are you from, and what do you like about your hometown?",
@@ -42,6 +44,7 @@ function speak(text: string) {
 }
 
 export default function SpeakingPage() {
+  const router = useRouter();
   const [tab, setTab] = useState<1 | 2 | 3>(1);
   const [p1, setP1] = useState(0);
   const [p2, setP2] = useState(0);
@@ -50,6 +53,12 @@ export default function SpeakingPage() {
   // Speaking-time status (computed client-side to avoid hydration mismatch)
   const [timeText, setTimeText] = useState("");
   const [isLive, setIsLive] = useState(false);
+
+  // Matchmaking
+  const [matching, setMatching] = useState(false);
+  const [matchError, setMatchError] = useState("");
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const todayTopic = getTodayTopic();
 
   // Part 2 timer
   const [phase, setPhase] = useState<"idle" | "prep" | "speak" | "done">("idle");
@@ -111,6 +120,43 @@ export default function SpeakingPage() {
   const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
   const ss = String(seconds % 60).padStart(2, "0");
 
+  // ---- Matchmaking ----
+  const stopPolling = () => { if (pollRef.current) clearInterval(pollRef.current); pollRef.current = null; };
+
+  useEffect(() => () => stopPolling(), []);
+
+  const findPartner = async () => {
+    setMatchError("");
+    setMatching(true);
+    try {
+      const res = await fetch("/api/speaking/match", { method: "POST" });
+      const data = await res.json();
+      if (data.roomId) {
+        router.push(`/learning/speaking/room/${data.roomId}`);
+        return;
+      }
+      if (data.error) { setMatchError(data.error); setMatching(false); return; }
+      // waiting: poll for a partner
+      pollRef.current = setInterval(async () => {
+        const r = await fetch("/api/speaking/match");
+        const d = await r.json();
+        if (d.roomId) {
+          stopPolling();
+          router.push(`/learning/speaking/room/${d.roomId}`);
+        }
+      }, 3000);
+    } catch {
+      setMatchError("Connection error");
+      setMatching(false);
+    }
+  };
+
+  const cancelMatch = async () => {
+    stopPolling();
+    await fetch("/api/speaking/match", { method: "DELETE" });
+    setMatching(false);
+  };
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
@@ -138,6 +184,52 @@ export default function SpeakingPage() {
               Join the daily live sessions (19:00–21:00) to practise with teachers and other students.
               Meanwhile, warm up with the practice questions below 👇
             </p>
+          </CardContent>
+        </Card>
+
+        {/* Find a partner (face-to-face speaking) */}
+        <Card className="glass border-averna-pink/40 mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-averna-pink">
+              <Users className="h-5 w-5" /> Face-to-Face Speaking
+              {isLive && (
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-red-500 text-white animate-pulse">LIVE</span>
+              )}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-gray-300">
+              Get paired <strong>1-on-1</strong> with another Averna student and practise speaking
+              live. Today&apos;s topic: <span className="text-averna-cyan font-semibold">{todayTopic.topic}</span>.
+            </p>
+            {!isLive && (
+              <p className="text-xs text-yellow-300">
+                ⏰ Official Speaking Time is 19:00–21:00 — but you can practise pairing any time.
+              </p>
+            )}
+
+            {matching ? (
+              <div className="flex items-center gap-3">
+                <span className="flex items-center gap-2 text-averna-pink">
+                  <Loader2 className="h-5 w-5 animate-spin" /> Looking for a partner…
+                </span>
+                <Button onClick={cancelMatch} variant="outline" size="sm" className="border-white/20">
+                  Cancel
+                </Button>
+              </div>
+            ) : (
+              <Button onClick={findPartner} className="neon-button bg-averna-pink hover:opacity-90 w-full sm:w-auto">
+                <Search className="mr-2 h-4 w-4" /> Find a Partner
+              </Button>
+            )}
+            {matchError && <p className="text-sm text-red-300">{matchError}</p>}
+
+            <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+              <p className="text-xs text-gray-400 mb-1">Today&apos;s discussion questions:</p>
+              <ul className="text-sm text-gray-300 list-disc list-inside space-y-0.5">
+                {todayTopic.questions.map((q) => <li key={q}>{q}</li>)}
+              </ul>
+            </div>
           </CardContent>
         </Card>
 
