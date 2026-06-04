@@ -25,6 +25,7 @@ import {
   CalendarDays,
   Crown,
   Swords,
+  Library,
 } from "lucide-react";
 
 const studentNavigation = [
@@ -39,6 +40,7 @@ const studentNavigation = [
   { name: "Mock Exam", href: "/learning/mock-exam", icon: Trophy },
   { name: "Daily Challenge", href: "/challenge", icon: Zap },
   { name: "Flashcards", href: "/flashcards", icon: Layers },
+  { name: "Materials", href: "/materials", icon: Library },
   { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
   { name: "Rewards", href: "/rewards", icon: Gift },
   { name: "Messages", href: "/messages", icon: MessageSquare },
