@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers, UserCheck, CalendarClock, Gift, CalendarDays, Crown } from "lucide-react";
+import { PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers, UserCheck, CalendarClock, Gift, CalendarDays, Crown, Swords } from "lucide-react";
 import Link from "next/link";
 import { isSpeakingTime, getTimeUntilSpeakingTime } from "@/lib/utils";
 
@@ -62,6 +62,16 @@ export function QuickActions() {
       href: "/leagues",
       color: "text-averna-cyan",
       bgColor: "bg-averna-cyan/10",
+      available: true,
+      badge: "NEW",
+    },
+    {
+      icon: Swords,
+      label: "Team Challenge",
+      description: "Group vs group race",
+      href: "/team-challenge",
+      color: "text-averna-pink",
+      bgColor: "bg-averna-pink/10",
       available: true,
       badge: "NEW",
     },

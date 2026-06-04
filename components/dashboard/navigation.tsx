@@ -24,6 +24,7 @@ import {
   Gift,
   CalendarDays,
   Crown,
+  Swords,
 } from "lucide-react";
 
 const studentNavigation = [
@@ -44,6 +45,7 @@ const studentNavigation = [
   { name: "Homework", href: "/homework", icon: BookMarked },
   { name: "Rankings", href: "/rankings", icon: Trophy },
   { name: "Leagues", href: "/leagues", icon: Crown },
+  { name: "Team Challenge", href: "/team-challenge", icon: Swords },
   { name: "Achievements", href: "/achievements", icon: Award },
   { name: "Movie Time", href: "/movies", icon: Film },
   { name: "AI Mentor", href: "/mentor", icon: MessageSquare },
