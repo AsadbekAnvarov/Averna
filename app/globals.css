@@ -186,38 +186,97 @@
 }
 
 
-/* ===== Light theme overrides ===== */
+/* ===================================================================
+   LIGHT THEME — elegant, soft, eye-friendly (does not affect dark mode)
+   =================================================================== */
 html.light body {
-  color: #0f172a;
+  color: #1e293b;
+  background: #eef1f6;
 }
 
+/* Soft, calm gradient — gentle brand tints on a clean light canvas */
 html.light .premium-gradient {
   background:
-    radial-gradient(circle at 15% 15%, rgba(0, 200, 120, 0.10), transparent 40%),
-    radial-gradient(circle at 85% 25%, rgba(0, 180, 220, 0.10), transparent 42%),
-    radial-gradient(circle at 50% 95%, rgba(150, 90, 230, 0.08), transparent 45%),
-    linear-gradient(135deg, #eef2f6 0%, #e6edf3 55%, #eaf3ee 100%);
+    radial-gradient(circle at 12% 12%, rgba(13, 148, 96, 0.07), transparent 38%),
+    radial-gradient(circle at 88% 18%, rgba(14, 165, 200, 0.07), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(124, 92, 220, 0.06), transparent 45%),
+    linear-gradient(160deg, #f6f8fb 0%, #eef2f7 60%, #f1f6f3 100%);
   background-attachment: fixed;
 }
 
+/* Clean white cards with soft shadow and crisp hairline border */
 html.light .glass {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 6px 24px -8px rgba(15, 23, 42, 0.12);
 }
 
 html.light .glass-strong {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.18);
 }
 
-/* In light mode, make the many text-white / text-gray-* utilities readable */
+/* Headings/labels that used text-white become near-black for contrast */
 html.light .text-white { color: #0f172a !important; }
+html.light .text-gray-200 { color: #1e293b !important; }
 html.light .text-gray-300 { color: #334155 !important; }
 html.light .text-gray-400 { color: #475569 !important; }
 html.light .text-gray-500 { color: #64748b !important; }
 
-html.light ::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
+/* The translucent "white" surfaces used for rows/chips need to flip to
+   subtle dark-on-light so they are visible on white cards */
+html.light .bg-white\/5 { background-color: rgba(15, 23, 42, 0.04) !important; }
+html.light .bg-white\/10 { background-color: rgba(15, 23, 42, 0.06) !important; }
+html.light .border-white\/5 { border-color: rgba(15, 23, 42, 0.06) !important; }
+html.light .border-white\/10 { border-color: rgba(15, 23, 42, 0.1) !important; }
+html.light .border-white\/20 { border-color: rgba(15, 23, 42, 0.16) !important; }
+html.light .hover\:bg-white\/5:hover { background-color: rgba(15, 23, 42, 0.05) !important; }
+
+/* Neon glowing text becomes rich, readable brand colours (no glow) */
+html.light .neon-text { color: #0a8f5e; text-shadow: none; }
+html.light .neon-text-cyan { color: #0e7fa0; text-shadow: none; }
+html.light .neon-text-purple { color: #7b3fd1; text-shadow: none; }
+
+/* Brand accent text utilities — darken for contrast on white */
+html.light .text-averna-neon { color: #0a8f5e !important; }
+html.light .text-averna-cyan { color: #0e7fa0 !important; }
+html.light .text-averna-purple { color: #7b3fd1 !important; }
+html.light .text-averna-pink { color: #c01f86 !important; }
+
+/* Other bright accent texts used around the app */
+html.light .text-blue-400 { color: #2563eb !important; }
+html.light .text-purple-400 { color: #7c3aed !important; }
+html.light .text-green-400 { color: #059669 !important; }
+html.light .text-orange-400 { color: #ea7317 !important; }
+html.light .text-yellow-400 { color: #b8860b !important; }
+html.light .text-pink-400 { color: #db2777 !important; }
+html.light .text-red-300 { color: #dc2626 !important; }
+
+/* Buttons: keep the brand fill but replace the harsh neon glow with a soft
+   elegant shadow in light mode */
+html.light .neon-button:hover {
+  box-shadow: 0 6px 18px -6px rgba(13, 148, 96, 0.5) !important;
+  animation: none !important;
+  transform: translateY(-1px);
+}
+
+/* Form inputs readable on light */
+html.light input,
+html.light textarea,
+html.light select {
+  color: #0f172a;
+}
+html.light input::placeholder,
+html.light textarea::placeholder { color: #94a3b8; }
+html.light .bg-background\/50,
+html.light .bg-background\/60 { background-color: rgba(15, 23, 42, 0.04) !important; }
+
+/* Scrollbar in light mode */
+html.light ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.05); }
+html.light ::-webkit-scrollbar-thumb { background: linear-gradient(#0d9460, #0e7fa0); }
 
 /* ===== Accent-aware helpers (use the --accent CSS variable) ===== */
 .accent-text { color: var(--accent, #00ff94); }
