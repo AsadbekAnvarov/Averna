@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import { PwaInstaller } from "@/components/pwa-installer";
 import { CommandPalette } from "@/components/command-palette";
+import { LiveNotifications } from "@/components/live-notifications";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         <Providers>{children}</Providers>
         <CommandPalette />
         <PwaInstaller />
+        <LiveNotifications />
       </body>
     </html>
   );
