@@ -67,6 +67,35 @@ export default function SpeakingRoomPage() {
     load();
   };
 
+  // Push-to-talk: transcribe speech and send as a voice message
+  const [talking, setTalking] = useState(false);
+  const [voiceSupported, setVoiceSupported] = useState(true);
+  const recRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SR) { setVoiceSupported(false); return; }
+    const rec = new SR();
+    rec.lang = "en-US";
+    rec.interimResults = false;
+    rec.continuous = false;
+    rec.onresult = (e: any) => {
+      const t = Array.from(e.results).map((r: any) => r[0].transcript).join(" ").trim();
+      if (t) send("🎤 " + t);
+    };
+    rec.onend = () => setTalking(false);
+    rec.onerror = () => setTalking(false);
+    recRef.current = rec;
+    return () => { try { rec.abort(); } catch {} };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roomId]);
+
+  const toggleTalk = () => {
+    if (talking) { recRef.current?.stop(); setTalking(false); }
+    else { try { recRef.current?.start(); setTalking(true); } catch { setTalking(false); } }
+  };
+
   const leave = async () => {
     await fetch(`/api/speaking/room?roomId=${roomId}`, { method: "DELETE" });
     router.push("/learning/speaking");
@@ -168,6 +197,16 @@ export default function SpeakingRoomPage() {
                   onSubmit={(e) => { e.preventDefault(); send(text); }}
                   className="flex gap-2 mt-2 border-t border-white/10 pt-3"
                 >
+                  {voiceSupported && (
+                    <Button
+                      type="button"
+                      onClick={toggleTalk}
+                      title="Push to talk — speak and it sends as a voice message"
+                      className={`shrink-0 ${talking ? "bg-red-500 hover:bg-red-600 animate-pulse" : "neon-button bg-averna-pink hover:opacity-90"}`}
+                    >
+                      <Mic className="h-4 w-4" />
+                    </Button>
+                  )}
                   <Input value={text} onChange={(e) => setText(e.target.value)} placeholder="Type your message..." autoComplete="off" className="bg-background/50" />
                   <Button type="submit" className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
                     <Send className="h-4 w-4" />
