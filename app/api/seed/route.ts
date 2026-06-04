@@ -230,6 +230,8 @@ const SCHEMA_STATEMENTS: string[] = [
   `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "targetBand" TEXT;`,
   `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "bio" TEXT;`,
   `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "enrolledAt" TIMESTAMP(3);`,
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "blacklisted" BOOLEAN NOT NULL DEFAULT false;`,
+  `ALTER TABLE "students" ADD COLUMN IF NOT EXISTS "blacklistReason" TEXT;`,
 
   // tutor_slots (Second Teacher booking system)
   `CREATE TABLE IF NOT EXISTS "tutor_slots" (
@@ -322,6 +324,39 @@ const SCHEMA_STATEMENTS: string[] = [
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT "reward_redemptions_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id"),
     CONSTRAINT "reward_redemptions_rewardId_fkey" FOREIGN KEY ("rewardId") REFERENCES "rewards"("id")
+  );`,
+
+  // speaking_queue (matchmaking)
+  `CREATE TABLE IF NOT EXISTS "speaking_queue" (
+    "id" TEXT PRIMARY KEY,
+    "studentId" TEXT NOT NULL UNIQUE,
+    "studentName" TEXT NOT NULL,
+    "roomId" TEXT,
+    "topic" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );`,
+
+  // speaking_rooms (paired sessions)
+  `CREATE TABLE IF NOT EXISTS "speaking_rooms" (
+    "id" TEXT PRIMARY KEY,
+    "topic" TEXT NOT NULL,
+    "studentAId" TEXT NOT NULL,
+    "studentAName" TEXT NOT NULL,
+    "studentBId" TEXT NOT NULL,
+    "studentBName" TEXT NOT NULL,
+    "status" TEXT NOT NULL DEFAULT 'ACTIVE',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "endedAt" TIMESTAMP(3)
+  );`,
+
+  // speaking_messages (room chat)
+  `CREATE TABLE IF NOT EXISTS "speaking_messages" (
+    "id" TEXT PRIMARY KEY,
+    "roomId" TEXT NOT NULL,
+    "senderId" TEXT NOT NULL,
+    "senderName" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
   );`,
 ];
 

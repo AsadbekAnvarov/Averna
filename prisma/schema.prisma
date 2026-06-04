@@ -106,6 +106,8 @@ model Student {
   targetBand        String?
   bio               String?
   enrolledAt        DateTime?
+  blacklisted       Boolean  @default(false)
+  blacklistReason   String?
   totalPoints       Int      @default(0)
   globalRank        Int      @default(0)
   groupRank         Int      @default(0)
@@ -450,4 +452,41 @@ model RewardRedemption {
 
   @@index([studentId])
   @@map("reward_redemptions")
+}
+
+model SpeakingQueue {
+  id          String   @id @default(cuid())
+  studentId   String   @unique
+  studentName String
+  roomId      String?
+  topic       String?
+  createdAt   DateTime @default(now())
+
+  @@map("speaking_queue")
+}
+
+model SpeakingRoom {
+  id           String    @id @default(cuid())
+  topic        String
+  studentAId   String
+  studentAName String
+  studentBId   String
+  studentBName String
+  status       String    @default("ACTIVE") // ACTIVE | ENDED
+  createdAt    DateTime  @default(now())
+  endedAt      DateTime?
+
+  @@map("speaking_rooms")
+}
+
+model SpeakingMessage {
+  id         String   @id @default(cuid())
+  roomId     String
+  senderId   String
+  senderName String
+  content    String
+  createdAt  DateTime @default(now())
+
+  @@index([roomId])
+  @@map("speaking_messages")
 }
