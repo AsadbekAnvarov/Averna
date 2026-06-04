@@ -10,6 +10,7 @@ import { ClipboardCheck, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { QrCheckin } from "@/components/qr-checkin";
 
 const STATUSES = ["PRESENT", "ABSENT", "LATE", "EXCUSED"] as const;
 
@@ -151,6 +152,13 @@ export default async function TeacherAttendancePage({
                 </Link>
               ))}
             </div>
+
+            {/* QR self check-in */}
+            {selected && (
+              <div className="mb-6">
+                <QrCheckin groupId={selected.id} groupName={selected.name} />
+              </div>
+            )}
 
             {/* Roll call form */}
             <Card className="glass border-averna-cyan/30">
