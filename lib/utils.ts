@@ -175,3 +175,71 @@ export function isGenuineWriting(essay: string, minWords = 40): boolean {
   if (!/[a-zA-Z]{3,}/.test(text)) return false;
   return true;
 }
+
+
+// ===== Band prediction (#11) =====
+// Predicts a target band from recent test scores using a simple weighted
+// trend (recent results weigh more) + a small momentum bonus if improving.
+export interface BandPrediction {
+  current: number;   // weighted current level
+  predicted: number; // projected band with continued practice
+  trend: "up" | "down" | "flat";
+  confidence: "low" | "medium" | "high";
+  sampleSize: number;
+}
+
+export function predictBand(scores: number[]): BandPrediction | null {
+  const valid = scores.filter((s) => typeof s === "number" && s > 0);
+  if (valid.length === 0) return null;
+
+  // Weighted average: most recent scores (end of array) weigh more
+  let wsum = 0;
+  let w = 0;
+  valid.forEach((s, i) => {
+    const weight = i + 1;
+    wsum += s * weight;
+    w += weight;
+  });
+  const current = wsum / w;
+
+  // Trend: compare first third vs last third
+  const third = Math.max(1, Math.floor(valid.length / 3));
+  const early = valid.slice(0, third);
+  const late = valid.slice(-third);
+  const earlyAvg = early.reduce((a, b) => a + b, 0) / early.length;
+  const lateAvg = late.reduce((a, b) => a + b, 0) / late.length;
+  const delta = lateAvg - earlyAvg;
+
+  let trend: BandPrediction["trend"] = "flat";
+  if (delta > 0.2) trend = "up";
+  else if (delta < -0.2) trend = "down";
+
+  // Projected band: current + momentum (capped), rounded to nearest 0.5
+  const momentum = trend === "up" ? Math.min(1, delta) : trend === "down" ? Math.max(-0.5, delta) : 0.25;
+  const predictedRaw = Math.min(9, Math.max(1, current + momentum));
+  const predicted = Math.round(predictedRaw * 2) / 2;
+
+  const confidence = valid.length >= 8 ? "high" : valid.length >= 4 ? "medium" : "low";
+
+  return {
+    current: Math.round(current * 2) / 2,
+    predicted,
+    trend,
+    confidence,
+    sampleSize: valid.length,
+  };
+}
+
+// ===== CSV helper (#22) =====
+export function toCSV(rows: (string | number)[][]): string {
+  return rows
+    .map((row) =>
+      row
+        .map((cell) => {
+          const s = String(cell ?? "");
+          return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+        })
+        .join(",")
+    )
+    .join("\n");
+}

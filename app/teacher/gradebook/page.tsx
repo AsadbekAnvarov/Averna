@@ -169,7 +169,23 @@ export default async function GradebookPage({
 
             {/* Recent grades */}
             <Card className="glass border-averna-cyan/30">
-              <CardHeader><CardTitle className="text-averna-cyan">Recent Grades — {selected?.name}</CardTitle></CardHeader>
+              <CardHeader>
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <CardTitle className="text-averna-cyan">Recent Grades — {selected?.name}</CardTitle>
+                  <div className="flex gap-2">
+                    <a href={`/api/teacher/export?group=${selected?.id}&type=grades`}>
+                      <Button size="sm" variant="outline" className="border-averna-cyan/40 text-averna-cyan">
+                        Export grades
+                      </Button>
+                    </a>
+                    <a href={`/api/teacher/export?group=${selected?.id}&type=attendance`}>
+                      <Button size="sm" variant="outline" className="border-averna-neon/40 text-averna-neon">
+                        Export attendance
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </CardHeader>
               <CardContent>
                 {recentGrades.length === 0 ? (
                   <p className="text-gray-400 text-sm">No grades recorded yet.</p>

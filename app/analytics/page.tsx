@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { BarChart, TrendingUp, Clock, Target } from "lucide-react";
 import Link from "next/link";
+import { BandPredictor } from "@/components/band-predictor";
 
 export default async function AnalyticsPage() {
   const session = await auth();
@@ -30,6 +31,10 @@ export default async function AnalyticsPage() {
           <BarChart className="h-10 w-10 text-blue-400" />
           Study Analytics
         </h1>
+
+        <div className="mb-8">
+          <BandPredictor studentId={student.id} />
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card className="glass border-blue-500/30">
