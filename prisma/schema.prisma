@@ -621,3 +621,39 @@ model AuditLog {
   @@index([createdAt])
   @@map("audit_logs")
 }
+
+
+// ── Peer Review ───────────────────────────────────────────────────────────
+// Students submit writing for peers to review. Kept relation-free (plain id
+// columns) so `prisma generate` stays valid without touching other models.
+// Activate with:  npx prisma db push
+model PeerSubmission {
+  id         String   @id @default(cuid())
+  studentId  String
+  authorName String
+  groupId    String?
+  title      String
+  taskType   String   @default("Task 2")
+  content    String   @db.Text
+  createdAt  DateTime @default(now())
+
+  @@index([studentId])
+  @@index([groupId])
+  @@index([createdAt])
+  @@map("peer_submissions")
+}
+
+model PeerReview {
+  id           String   @id @default(cuid())
+  submissionId String
+  reviewerId   String
+  reviewerName String
+  rating       Int
+  strengths    String   @db.Text
+  improvements String   @db.Text
+  createdAt    DateTime @default(now())
+
+  @@index([submissionId])
+  @@index([reviewerId])
+  @@map("peer_reviews")
+}

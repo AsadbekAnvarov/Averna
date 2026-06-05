@@ -22,6 +22,7 @@ import {
   TrendingUp,
   Timer,
   MessagesSquare,
+  Users,
 } from "lucide-react";
 import Link from "next/link";
 import { isSpeakingTime, getTimeUntilSpeakingTime } from "@/lib/utils";
@@ -203,6 +204,15 @@ export function QuickActions() {
       accent: "text-averna-pink",
       accentBg: "bg-averna-pink/10 border-averna-pink/30",
       items: [
+        {
+          icon: Users,
+          label: "Peer Review",
+          description: "Review & get feedback",
+          href: "/peer-review",
+          color: "text-averna-pink",
+          bgColor: "bg-averna-pink/10",
+          ring: "hover:border-averna-pink/50 hover:shadow-[0_0_18px_rgba(236,72,153,0.25)]",
+        },
         {
           icon: Library,
           label: "Materials",
