@@ -115,7 +115,7 @@ export default async function DashboardPage() {
     }),
     db.activityLog.findMany({
       where: { studentId: student.id, createdAt: { gte: todayStart } },
-      select: { action: true },
+      select: { action: true, points: true },
     }),
     db.homeworkSubmission.count({
       where: { studentId: student.id, submittedAt: { gte: todayStart } },
@@ -136,7 +136,11 @@ export default async function DashboardPage() {
   const hasSpeakingToday =
     todayActions.has("SPEAKING_PRACTICE") || todayActions.has("SPEAKING_SESSION_COMPLETED");
   const hasChallengeToday = todayActions.has("DAILY_CHALLENGE");
+  const hasPronunciationToday = todayActions.has("PRONUNCIATION_PRACTICE");
   const hasHomeworkToday = homeworkSubmittedToday > 0;
+
+  // Total XP the student has actually earned today (powers the daily goal meter).
+  const xpEarnedToday = todayActivities.reduce((sum, a) => sum + (a.points ?? 0), 0);
 
   // Get upcoming homework
   const upcomingHomework = await db.homework.findMany({
@@ -195,9 +199,8 @@ export default async function DashboardPage() {
 
           <LearningPath
             studentName={student.user.name}
-            totalPoints={student.totalPoints}
             currentStreak={student.currentStreak}
-            testsCompleted={testsCompleted}
+            xpEarnedToday={xpEarnedToday}
             hasListening={hasListeningToday}
             hasReading={hasReadingToday}
             hasWriting={hasWritingToday}
@@ -206,6 +209,7 @@ export default async function DashboardPage() {
             hasHomework={hasHomeworkToday}
             hasFlashcards={hasFlashcardsToday}
             hasChallenge={hasChallengeToday}
+            hasPronunciation={hasPronunciationToday}
           />
 
           {student.blacklisted && (

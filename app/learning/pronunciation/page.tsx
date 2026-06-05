@@ -47,6 +47,20 @@ export default function PronunciationPage() {
   const [recSupported, setRecSupported] = useState(true);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
+  const trackedRef = useRef(false);
+
+  // Record pronunciation practice for the daily Learning Path (once per day).
+  const trackPronunciation = () => {
+    if (trackedRef.current) return;
+    trackedRef.current = true;
+    fetch("/api/activity/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "PRONUNCIATION" }),
+    }).catch(() => {
+      trackedRef.current = false;
+    });
+  };
 
   const phrase = PHRASES[index];
 
@@ -98,6 +112,7 @@ export default function PronunciationPage() {
       setHeard(transcript);
       setScore(scoreMatch(phrase, transcript));
       setListening(false);
+      trackPronunciation();
     };
     recognition.onerror = () => setListening(false);
     recognition.onend = () => setListening(false);

@@ -16,6 +16,7 @@ export const dynamic = "force-dynamic";
 const ACTIVITY_CONFIG: Record<string, { action: string; points: number }> = {
   FLASHCARDS: { action: "FLASHCARDS_STUDIED", points: 10 },
   SPEAKING: { action: "SPEAKING_PRACTICE", points: 15 },
+  PRONUNCIATION: { action: "PRONUNCIATION_PRACTICE", points: 10 },
 };
 
 export async function POST(req: NextRequest) {
