@@ -19,6 +19,8 @@ import {
   GraduationCap,
   Dumbbell,
   Compass,
+  TrendingUp,
+  Timer,
 } from "lucide-react";
 import Link from "next/link";
 import { isSpeakingTime, getTimeUntilSpeakingTime } from "@/lib/utils";
@@ -118,15 +120,6 @@ export function QuickActions() {
           ring: "hover:border-yellow-400/50 hover:shadow-[0_0_18px_rgba(250,204,21,0.25)]",
         },
         {
-          icon: Zap,
-          label: "Daily Challenge",
-          description: "Test yourself today",
-          href: "/challenge",
-          color: "text-averna-cyan",
-          bgColor: "bg-averna-cyan/10",
-          ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
-        },
-        {
           icon: Bot,
           label: "AI Examiner",
           description: "Speak, get a band",
@@ -147,13 +140,31 @@ export function QuickActions() {
       ],
     },
     {
-      id: "study",
-      title: "Study & Resources",
-      subtitle: "Build vocabulary and get guidance",
-      icon: Library,
-      accent: "text-averna-pink",
-      accentBg: "bg-averna-pink/10 border-averna-pink/30",
+      id: "track-focus",
+      title: "Track & Focus",
+      subtitle: "Watch your growth and study with focus",
+      icon: TrendingUp,
+      accent: "text-averna-purple",
+      accentBg: "bg-averna-purple/10 border-averna-purple/30",
       items: [
+        {
+          icon: TrendingUp,
+          label: "My Progress",
+          description: "Band trend & stats",
+          href: "/progress",
+          color: "text-averna-neon",
+          bgColor: "bg-averna-neon/10",
+          ring: "hover:border-averna-neon/50 hover:shadow-[0_0_18px_rgba(0,255,148,0.25)]",
+        },
+        {
+          icon: Timer,
+          label: "Focus Mode",
+          description: "Pomodoro study timer",
+          href: "/focus",
+          color: "text-averna-cyan",
+          bgColor: "bg-averna-cyan/10",
+          ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
+        },
         {
           icon: Layers,
           label: "Flashcards",
@@ -163,6 +174,25 @@ export function QuickActions() {
           bgColor: "bg-averna-purple/10",
           ring: "hover:border-averna-purple/50 hover:shadow-[0_0_18px_rgba(168,85,247,0.25)]",
         },
+        {
+          icon: Zap,
+          label: "Daily Challenge",
+          description: "Test yourself today",
+          href: "/challenge",
+          color: "text-averna-cyan",
+          bgColor: "bg-averna-cyan/10",
+          ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
+        },
+      ],
+    },
+    {
+      id: "study",
+      title: "Study & Resources",
+      subtitle: "Build vocabulary and get guidance",
+      icon: Library,
+      accent: "text-averna-pink",
+      accentBg: "bg-averna-pink/10 border-averna-pink/30",
+      items: [
         {
           icon: Library,
           label: "Materials",
