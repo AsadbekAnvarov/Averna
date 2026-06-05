@@ -21,6 +21,7 @@ import { StudyPet } from "@/components/dashboard/study-pet";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { OnboardingTour } from "@/components/onboarding-tour";
 import { AccountNotice } from "@/components/account-notice";
+import { LearningPath } from "@/components/dashboard/learning-path";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
@@ -100,6 +101,28 @@ export default async function DashboardPage() {
     where: { studentId: student.id },
   });
 
+  // --- Learning Path progress queries (today) ---
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+
+  const [hasListeningToday, hasReadingToday, hasWritingToday, hasSpeakingToday, hasMockExamToday, hasHomeworkToday] = await Promise.all([
+    db.iELTSTest.count({ where: { studentId: student.id, module: "LISTENING", completedAt: { gte: todayStart } } }).then(c => c > 0),
+    db.iELTSTest.count({ where: { studentId: student.id, module: "READING", completedAt: { gte: todayStart } } }).then(c => c > 0),
+    db.iELTSTest.count({ where: { studentId: student.id, module: "WRITING", completedAt: { gte: todayStart } } }).then(c => c > 0),
+    db.iELTSTest.count({ where: { studentId: student.id, module: "SPEAKING", completedAt: { gte: todayStart } } }).then(c => c > 0),
+    db.iELTSTest.count({ where: { studentId: student.id, completedAt: { gte: todayStart } } }).then(c => c >= 4),
+    db.homeworkSubmission.count({ where: { studentId: student.id, submittedAt: { gte: todayStart } } }).then(c => c > 0),
+  ]);
+
+  // Check if student did flashcards or challenge today via activity logs
+  const todayActivities = await db.activityLog.findMany({
+    where: { studentId: student.id, createdAt: { gte: todayStart } },
+    select: { action: true },
+  });
+
+  const hasFlashcardsToday = todayActivities.some(a => a.action.toLowerCase().includes("flashcard"));
+  const hasChallengeToday = todayActivities.some(a => a.action.toLowerCase().includes("challenge"));
+
   // Get upcoming homework
   const upcomingHomework = await db.homework.findMany({
     where: {
@@ -153,6 +176,21 @@ export default async function DashboardPage() {
             name={student.user.name}
             points={student.totalPoints}
             streak={student.currentStreak}
+          />
+
+          <LearningPath
+            studentName={student.user.name}
+            totalPoints={student.totalPoints}
+            currentStreak={student.currentStreak}
+            testsCompleted={testsCompleted}
+            hasListening={hasListeningToday}
+            hasReading={hasReadingToday}
+            hasWriting={hasWritingToday}
+            hasSpeaking={hasSpeakingToday}
+            hasMockExam={hasMockExamToday}
+            hasHomework={hasHomeworkToday}
+            hasFlashcards={hasFlashcardsToday}
+            hasChallenge={hasChallengeToday}
           />
 
           {student.blacklisted && (
