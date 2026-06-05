@@ -136,6 +136,18 @@ export default async function TeacherDashboard() {
                   Class Insights
                 </Button>
               </Link>
+              <Link href="/teacher/grading-assistant">
+                <Button className="w-full" variant="outline">
+                  <CheckSquare className="mr-2 h-4 w-4" />
+                  Grading Assistant
+                </Button>
+              </Link>
+              <Link href="/teacher/planner">
+                <Button className="w-full" variant="outline">
+                  <CalendarDays className="mr-2 h-4 w-4" />
+                  Lesson Planner
+                </Button>
+              </Link>
               <Link href="/teacher/lessons">
                 <Button className="w-full" variant="outline">
                   <BookOpen className="mr-2 h-4 w-4" />
