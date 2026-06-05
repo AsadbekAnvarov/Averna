@@ -18,7 +18,6 @@ import {
   Bot,
   GraduationCap,
   Dumbbell,
-  Sparkles,
   Compass,
 } from "lucide-react";
 import Link from "next/link";
@@ -117,7 +116,6 @@ export function QuickActions() {
           color: "text-yellow-400",
           bgColor: "bg-yellow-500/10",
           ring: "hover:border-yellow-400/50 hover:shadow-[0_0_18px_rgba(250,204,21,0.25)]",
-          badge: "NEW",
         },
         {
           icon: Zap,
@@ -127,27 +125,6 @@ export function QuickActions() {
           color: "text-averna-cyan",
           bgColor: "bg-averna-cyan/10",
           ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
-          badge: "NEW",
-        },
-        {
-          icon: Layers,
-          label: "Flashcards",
-          description: "Master vocabulary",
-          href: "/flashcards",
-          color: "text-averna-purple",
-          bgColor: "bg-averna-purple/10",
-          ring: "hover:border-averna-purple/50 hover:shadow-[0_0_18px_rgba(168,85,247,0.25)]",
-          badge: "NEW",
-        },
-        {
-          icon: Mic,
-          label: "Pronunciation",
-          description: "Speak & get scored",
-          href: "/learning/pronunciation",
-          color: "text-averna-pink",
-          bgColor: "bg-averna-pink/10",
-          ring: "hover:border-averna-pink/50 hover:shadow-[0_0_18px_rgba(236,72,153,0.25)]",
-          badge: "NEW",
         },
         {
           icon: Bot,
@@ -157,7 +134,61 @@ export function QuickActions() {
           color: "text-averna-cyan",
           bgColor: "bg-averna-cyan/10",
           ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
-          badge: "NEW",
+        },
+        {
+          icon: Mic,
+          label: "Pronunciation",
+          description: "Speak & get scored",
+          href: "/learning/pronunciation",
+          color: "text-averna-pink",
+          bgColor: "bg-averna-pink/10",
+          ring: "hover:border-averna-pink/50 hover:shadow-[0_0_18px_rgba(236,72,153,0.25)]",
+        },
+      ],
+    },
+    {
+      id: "study",
+      title: "Study & Resources",
+      subtitle: "Build vocabulary and get guidance",
+      icon: Library,
+      accent: "text-averna-pink",
+      accentBg: "bg-averna-pink/10 border-averna-pink/30",
+      items: [
+        {
+          icon: Layers,
+          label: "Flashcards",
+          description: "Master vocabulary",
+          href: "/flashcards",
+          color: "text-averna-purple",
+          bgColor: "bg-averna-purple/10",
+          ring: "hover:border-averna-purple/50 hover:shadow-[0_0_18px_rgba(168,85,247,0.25)]",
+        },
+        {
+          icon: Library,
+          label: "Materials",
+          description: "IELTS guides & lists",
+          href: "/materials",
+          color: "text-averna-cyan",
+          bgColor: "bg-averna-cyan/10",
+          ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
+        },
+        {
+          icon: MessageSquare,
+          label: "AI Mentor",
+          description: "Get instant help",
+          href: "/mentor",
+          color: "text-pink-400",
+          bgColor: "bg-pink-500/10",
+          ring: "hover:border-pink-400/50 hover:shadow-[0_0_18px_rgba(244,114,182,0.25)]",
+        },
+        {
+          icon: UserCheck,
+          label: "Second Teacher",
+          description: "Book 1-on-1 practice",
+          href: "/tutoring",
+          color: "text-averna-pink",
+          bgColor: "bg-averna-pink/10",
+          ring: "hover:border-averna-pink/50 hover:shadow-[0_0_18px_rgba(236,72,153,0.25)]",
         },
       ],
     },
@@ -186,7 +217,6 @@ export function QuickActions() {
           color: "text-averna-cyan",
           bgColor: "bg-averna-cyan/10",
           ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
-          badge: "NEW",
         },
         {
           icon: Swords,
@@ -196,46 +226,6 @@ export function QuickActions() {
           color: "text-averna-pink",
           bgColor: "bg-averna-pink/10",
           ring: "hover:border-averna-pink/50 hover:shadow-[0_0_18px_rgba(236,72,153,0.25)]",
-          badge: "NEW",
-        },
-      ],
-    },
-    {
-      id: "learn-support",
-      title: "Learn & Get Help",
-      subtitle: "Resources, mentors and extra support",
-      icon: Sparkles,
-      accent: "text-averna-pink",
-      accentBg: "bg-averna-pink/10 border-averna-pink/30",
-      items: [
-        {
-          icon: MessageSquare,
-          label: "AI Mentor",
-          description: "Get instant help",
-          href: "/mentor",
-          color: "text-pink-400",
-          bgColor: "bg-pink-500/10",
-          ring: "hover:border-pink-400/50 hover:shadow-[0_0_18px_rgba(244,114,182,0.25)]",
-        },
-        {
-          icon: Library,
-          label: "Materials",
-          description: "IELTS guides & lists",
-          href: "/materials",
-          color: "text-averna-cyan",
-          bgColor: "bg-averna-cyan/10",
-          ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
-          badge: "NEW",
-        },
-        {
-          icon: UserCheck,
-          label: "Second Teacher",
-          description: "Book 1-on-1 practice",
-          href: "/tutoring",
-          color: "text-averna-pink",
-          bgColor: "bg-averna-pink/10",
-          ring: "hover:border-averna-pink/50 hover:shadow-[0_0_18px_rgba(236,72,153,0.25)]",
-          badge: "NEW",
         },
       ],
     },
@@ -255,7 +245,6 @@ export function QuickActions() {
           color: "text-averna-cyan",
           bgColor: "bg-averna-cyan/10",
           ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
-          badge: "NEW",
         },
         {
           icon: CalendarDays,
@@ -265,7 +254,6 @@ export function QuickActions() {
           color: "text-averna-purple",
           bgColor: "bg-averna-purple/10",
           ring: "hover:border-averna-purple/50 hover:shadow-[0_0_18px_rgba(168,85,247,0.25)]",
-          badge: "NEW",
         },
         {
           icon: MessageSquare,
@@ -275,7 +263,6 @@ export function QuickActions() {
           color: "text-averna-cyan",
           bgColor: "bg-averna-cyan/10",
           ring: "hover:border-averna-cyan/50 hover:shadow-[0_0_18px_rgba(34,211,238,0.25)]",
-          badge: "NEW",
         },
         {
           icon: Gift,
@@ -285,11 +272,17 @@ export function QuickActions() {
           color: "text-averna-pink",
           bgColor: "bg-averna-pink/10",
           ring: "hover:border-averna-pink/50 hover:shadow-[0_0_18px_rgba(236,72,153,0.25)]",
-          badge: "NEW",
         },
       ],
     },
   ];
+
+  // Grid that always fills its rows: 4-item sections use a 2/4 column grid,
+  // the 3-item section uses a 1/3 column grid. No lonely trailing cards.
+  const gridFor = (count: number) =>
+    count === 3
+      ? "grid grid-cols-1 sm:grid-cols-3 gap-2.5"
+      : "grid grid-cols-2 lg:grid-cols-4 gap-2.5";
 
   return (
     <Card className="glass border-averna-primary/30 animate-fade-in">
@@ -325,7 +318,7 @@ export function QuickActions() {
               </div>
 
               {/* Section items */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5">
+              <div className={gridFor(section.items.length)}>
                 {section.items.map((action) => {
                   const Icon = action.icon;
                   return (

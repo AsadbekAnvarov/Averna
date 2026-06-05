@@ -48,7 +48,9 @@ export function MessageThread({
             <div className="relative max-w-[78%]">
               <div
                 className={`px-3 py-2 rounded-2xl text-sm ${
-                  mine ? "bg-averna-primary text-white rounded-br-sm" : "bg-white/10 text-gray-100 rounded-bl-sm"
+                  mine
+                    ? "chat-out bg-averna-primary text-white rounded-br-sm"
+                    : "bg-white/10 text-gray-200 rounded-bl-sm"
                 }`}
               >
                 {m.content}

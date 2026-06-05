@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Layers, RotateCcw, Shuffle, Check, ChevronLeft, ChevronRight, Volume2 } from "lucide-react";
+import { tashkentDayOfYear } from "@/lib/utils";
 
 interface Flashcard {
   word: string;
@@ -98,8 +99,10 @@ const DECKS: Deck[] = [
 ];
 
 export default function FlashcardsPage() {
-  const [deckId, setDeckId] = useState(DECKS[0].id);
-  const [cards, setCards] = useState<Flashcard[]>(DECKS[0].cards);
+  // The featured deck rotates every day so students see fresh words daily.
+  const dailyDeckIndex = tashkentDayOfYear() % DECKS.length;
+  const [deckId, setDeckId] = useState(DECKS[dailyDeckIndex].id);
+  const [cards, setCards] = useState<Flashcard[]>(DECKS[dailyDeckIndex].cards);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [known, setKnown] = useState<Set<string>>(new Set());
@@ -185,22 +188,25 @@ export default function FlashcardsPage() {
           Vocabulary <span className="neon-text-purple">Flashcards</span>
         </h1>
         <p className="text-gray-400 mb-5">
-          Choose a topic, tap a card to flip, and mark words you know. Progress is saved. 🧠
+          Choose a topic, tap a card to flip, and mark words you know. A fresh set is featured every day. 🧠
         </p>
 
         {/* Deck selector */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {DECKS.map((d) => (
+          {DECKS.map((d, i) => (
             <button
               key={d.id}
               onClick={() => selectDeck(d.id)}
-              className={`px-3 py-1.5 rounded-full text-sm border transition-colors ${
+              className={`relative px-3 py-1.5 rounded-full text-sm border transition-colors ${
                 deckId === d.id
                   ? "bg-averna-purple/20 border-averna-purple text-averna-purple"
                   : "bg-white/5 border-white/10 text-gray-300 hover:border-averna-purple/40"
               }`}
             >
               {d.emoji} {d.name}
+              {i === dailyDeckIndex && (
+                <span className="ml-1.5 text-[9px] font-bold uppercase text-averna-neon">• Today</span>
+              )}
             </button>
           ))}
         </div>
