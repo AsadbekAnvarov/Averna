@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -103,6 +103,22 @@ export default function FlashcardsPage() {
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [known, setKnown] = useState<Set<string>>(new Set());
+  const trackedRef = useRef(false);
+
+  // Tell the server the student studied flashcards today (powers the daily
+  // Learning Path + awards points once per day). Fire-and-forget.
+  const trackStudy = () => {
+    if (trackedRef.current) return;
+    trackedRef.current = true;
+    fetch("/api/activity/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "FLASHCARDS" }),
+    }).catch(() => {
+      // allow a retry on a later card if this one failed
+      trackedRef.current = false;
+    });
+  };
 
   useEffect(() => {
     try {
@@ -136,6 +152,7 @@ export default function FlashcardsPage() {
     s.add(card.word);
     setKnown(s);
     persist(s);
+    trackStudy();
     next();
   };
 

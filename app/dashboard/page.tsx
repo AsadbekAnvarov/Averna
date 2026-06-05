@@ -101,27 +101,42 @@ export default async function DashboardPage() {
     where: { studentId: student.id },
   });
 
-  // --- Learning Path progress queries (today) ---
+  // --- Learning Path progress (today) ---
+  // We use the IELTSTest table (module column) + the ActivityLog (single source
+  // of truth for actions) + HomeworkSubmission so every step maps to a real,
+  // reliably-recorded signal.
   const todayStart = new Date();
   todayStart.setHours(0, 0, 0, 0);
 
-  const [hasListeningToday, hasReadingToday, hasWritingToday, hasSpeakingToday, hasMockExamToday, hasHomeworkToday] = await Promise.all([
-    db.iELTSTest.count({ where: { studentId: student.id, module: "LISTENING", completedAt: { gte: todayStart } } }).then(c => c > 0),
-    db.iELTSTest.count({ where: { studentId: student.id, module: "READING", completedAt: { gte: todayStart } } }).then(c => c > 0),
-    db.iELTSTest.count({ where: { studentId: student.id, module: "WRITING", completedAt: { gte: todayStart } } }).then(c => c > 0),
-    db.iELTSTest.count({ where: { studentId: student.id, module: "SPEAKING", completedAt: { gte: todayStart } } }).then(c => c > 0),
-    db.iELTSTest.count({ where: { studentId: student.id, completedAt: { gte: todayStart } } }).then(c => c >= 4),
-    db.homeworkSubmission.count({ where: { studentId: student.id, submittedAt: { gte: todayStart } } }).then(c => c > 0),
+  const [todayTests, todayActivities, homeworkSubmittedToday] = await Promise.all([
+    db.iELTSTest.findMany({
+      where: { studentId: student.id, completedAt: { gte: todayStart } },
+      select: { module: true, aiAnalysis: true },
+    }),
+    db.activityLog.findMany({
+      where: { studentId: student.id, createdAt: { gte: todayStart } },
+      select: { action: true },
+    }),
+    db.homeworkSubmission.count({
+      where: { studentId: student.id, submittedAt: { gte: todayStart } },
+    }),
   ]);
 
-  // Check if student did flashcards or challenge today via activity logs
-  const todayActivities = await db.activityLog.findMany({
-    where: { studentId: student.id, createdAt: { gte: todayStart } },
-    select: { action: true },
+  const hasListeningToday = todayTests.some((t) => t.module === "LISTENING");
+  const hasReadingToday = todayTests.some((t) => t.module === "READING");
+  const hasWritingToday = todayTests.some((t) => t.module === "WRITING");
+  // A mock exam is saved as IELTSTest records tagged with aiAnalysis.type = "mock".
+  const hasMockExamToday = todayTests.some((t) => {
+    const a = t.aiAnalysis as { type?: string } | null;
+    return !!a && typeof a === "object" && a.type === "mock";
   });
 
-  const hasFlashcardsToday = todayActivities.some(a => a.action.toLowerCase().includes("flashcard"));
-  const hasChallengeToday = todayActivities.some(a => a.action.toLowerCase().includes("challenge"));
+  const todayActions = new Set(todayActivities.map((a) => a.action));
+  const hasFlashcardsToday = todayActions.has("FLASHCARDS_STUDIED");
+  const hasSpeakingToday =
+    todayActions.has("SPEAKING_PRACTICE") || todayActions.has("SPEAKING_SESSION_COMPLETED");
+  const hasChallengeToday = todayActions.has("DAILY_CHALLENGE");
+  const hasHomeworkToday = homeworkSubmittedToday > 0;
 
   // Get upcoming homework
   const upcomingHomework = await db.homework.findMany({

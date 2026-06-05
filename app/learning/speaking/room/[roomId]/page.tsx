@@ -27,7 +27,21 @@ export default function SpeakingRoomPage() {
   const [error, setError] = useState("");
   const [ended, setEnded] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const trackedRef = useRef(false);
   const topic = getTodayTopic();
+
+  // Count a peer speaking session toward the daily Learning Path (once/day).
+  const trackSpeaking = () => {
+    if (trackedRef.current) return;
+    trackedRef.current = true;
+    fetch("/api/activity/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "SPEAKING" }),
+    }).catch(() => {
+      trackedRef.current = false;
+    });
+  };
 
   const load = useCallback(async () => {
     try {
@@ -43,6 +57,7 @@ export default function SpeakingRoomPage() {
       setMeId(data.meId);
       setIsInitiator(data.isInitiator ?? false);
       if (data.room.status === "ENDED") setEnded(true);
+      else if (data.room.status === "ACTIVE") trackSpeaking();
     } catch {
       setError("Connection error");
     }

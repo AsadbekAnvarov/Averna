@@ -145,7 +145,7 @@ export function LearningPath({
       borderColor: "border-orange-500/40",
       isCompleted: hasSpeaking,
       isActive: hasListening && hasReading && hasWriting && hasFlashcards && !hasSpeaking,
-      reward: "+20 pts",
+      reward: "+15 pts",
     },
     {
       id: "challenge",

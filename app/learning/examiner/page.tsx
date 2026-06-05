@@ -37,8 +37,22 @@ export default function ExaminerPage() {
   const recRef = useRef<any>(null);
   const startRef = useRef<number>(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const trackedRef = useRef(false);
 
   const question = QUESTIONS[qIndex];
+
+  // Record speaking practice for the daily Learning Path (once per day).
+  const trackSpeaking = () => {
+    if (trackedRef.current) return;
+    trackedRef.current = true;
+    fetch("/api/activity/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "SPEAKING" }),
+    }).catch(() => {
+      trackedRef.current = false;
+    });
+  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -75,7 +89,10 @@ export default function ExaminerPage() {
     setListening(false);
     const secs = Math.max(1, Math.round((Date.now() - startRef.current) / 1000));
     setTranscript((t) => {
-      if (t.trim().length > 0) setResult(scoreSpeaking(t, secs));
+      if (t.trim().length > 0) {
+        setResult(scoreSpeaking(t, secs));
+        trackSpeaking();
+      }
       return t;
     });
   }, []);
