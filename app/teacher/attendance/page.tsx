@@ -200,9 +200,9 @@ export default async function TeacherAttendancePage({
               </CardHeader>
               <CardContent>
                 {selected && selected.students.length > 0 ? (
-                  <>
+                  <div className="space-y-3">
                   {/* Quick: mark everyone present for today */}
-                  <form action={markAllPresent} className="mb-3">
+                  <form action={markAllPresent}>
                     <input type="hidden" name="groupId" value={selected.id} />
                     <input type="hidden" name="date" value={today} />
                     <Button type="submit" variant="outline" className="border-averna-neon/50 text-averna-neon w-full sm:w-auto">
@@ -269,7 +269,7 @@ export default async function TeacherAttendancePage({
                       <CheckCircle2 className="mr-2 h-4 w-4" /> Save Attendance
                     </Button>
                   </form>
-                  </>
+                  </div>
                 ) : (
                   <p className="text-gray-400 text-sm">No students in this group yet.</p>
                 )}
