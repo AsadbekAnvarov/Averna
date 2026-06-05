@@ -22,6 +22,8 @@ import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { OnboardingTour } from "@/components/onboarding-tour";
 import { AccountNotice } from "@/components/account-notice";
 import { LearningPath } from "@/components/dashboard/learning-path";
+import { SmartFocus } from "@/components/dashboard/smart-focus";
+import { StudyReminder } from "@/components/dashboard/study-reminder";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
@@ -247,6 +249,8 @@ export default async function DashboardPage() {
 
             <div className="space-y-6">
               <StudyPet streak={student.currentStreak} points={student.totalPoints} />
+              <SmartFocus studentId={student.id} />
+              <StudyReminder xpEarnedToday={xpEarnedToday} />
               <StudentOfTheWeek />
               <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
               <DailyArticle />
