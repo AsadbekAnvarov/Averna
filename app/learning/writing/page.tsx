@@ -51,6 +51,26 @@ export default async function WritingPage() {
           </p>
         </div>
 
+        {/* Writing Lab banner */}
+        <Link href="/learning/writing-lab" className="block mb-8 animate-fade-in">
+          <Card className="glass border-averna-cyan/40 hover:border-averna-cyan/70 hover:scale-[1.01] transition-all">
+            <CardContent className="py-4 flex items-center gap-4">
+              <div className="h-11 w-11 shrink-0 rounded-xl bg-averna-cyan/15 border border-averna-cyan/30 flex items-center justify-center">
+                <Target className="h-5 w-5 text-averna-cyan" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="font-semibold text-white">
+                  New: Writing Lab <span className="text-[10px] font-bold bg-averna-cyan/20 text-averna-cyan px-1.5 py-0.5 rounded-full align-middle">LIVE COACH</span>
+                </p>
+                <p className="text-sm text-gray-400">
+                  A pressure-free scratchpad with instant suggestions as you type — vocabulary, linking words, repetition and more.
+                </p>
+              </div>
+              <span className="text-averna-cyan text-sm shrink-0 hidden sm:block">Open →</span>
+            </CardContent>
+          </Card>
+        </Link>
+
         {/* Overview Card */}
         <Card className="glass border-purple-500/30 mb-8 animate-fade-in">
           <CardHeader>

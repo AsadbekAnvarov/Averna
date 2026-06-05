@@ -4,7 +4,17 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Layers, RotateCcw, Shuffle, Check, ChevronLeft, ChevronRight, Volume2 } from "lucide-react";
+import {
+  Layers,
+  RotateCcw,
+  Shuffle,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Volume2,
+  Repeat,
+  Sparkles,
+} from "lucide-react";
 import { tashkentDayOfYear } from "@/lib/utils";
 
 interface Flashcard {
@@ -98,18 +108,45 @@ const DECKS: Deck[] = [
   },
 ];
 
+const ALL_CARDS: Flashcard[] = DECKS.flatMap((d) => d.cards);
+const DAY = 86400000;
+const MAX_NEW_PER_SESSION = 10;
+
+interface SrsEntry {
+  due: number;
+  interval: number; // days
+}
+type SrsMap = Record<string, SrsEntry>;
+type Grade = "again" | "good" | "easy";
+
+function schedule(prev: SrsEntry | undefined, grade: Grade): SrsEntry {
+  let interval = prev?.interval ?? 0;
+  if (grade === "again") {
+    return { interval: 0, due: Date.now() + 10 * 60 * 1000 }; // ~10 min
+  }
+  if (grade === "good") {
+    interval = interval === 0 ? 1 : Math.min(Math.round(interval * 2), 60);
+  } else {
+    interval = interval === 0 ? 3 : Math.min(Math.round(interval * 2.5), 120);
+  }
+  return { interval, due: Date.now() + interval * DAY };
+}
+
 export default function FlashcardsPage() {
   // The featured deck rotates every day so students see fresh words daily.
   const dailyDeckIndex = tashkentDayOfYear() % DECKS.length;
+
+  const [mode, setMode] = useState<"browse" | "review">("browse");
   const [deckId, setDeckId] = useState(DECKS[dailyDeckIndex].id);
   const [cards, setCards] = useState<Flashcard[]>(DECKS[dailyDeckIndex].cards);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [known, setKnown] = useState<Set<string>>(new Set());
+  const [srs, setSrs] = useState<SrsMap>({});
+  const [queue, setQueue] = useState<Flashcard[]>([]);
+  const [reviewPos, setReviewPos] = useState(0);
   const trackedRef = useRef(false);
 
-  // Tell the server the student studied flashcards today (powers the daily
-  // Learning Path + awards points once per day). Fire-and-forget.
   const trackStudy = () => {
     if (trackedRef.current) return;
     trackedRef.current = true;
@@ -118,26 +155,38 @@ export default function FlashcardsPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: "FLASHCARDS" }),
     }).catch(() => {
-      // allow a retry on a later card if this one failed
       trackedRef.current = false;
     });
   };
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("averna_known_cards");
-      if (saved) setKnown(new Set(JSON.parse(saved)));
+      const savedKnown = localStorage.getItem("averna_known_cards");
+      if (savedKnown) setKnown(new Set(JSON.parse(savedKnown)));
+      const savedSrs = localStorage.getItem("averna_srs");
+      if (savedSrs) setSrs(JSON.parse(savedSrs));
     } catch {}
   }, []);
 
-  const persist = (s: Set<string>) => {
+  const persistKnown = (s: Set<string>) => {
     try {
       localStorage.setItem("averna_known_cards", JSON.stringify(Array.from(s)));
+    } catch {}
+  };
+  const persistSrs = (s: SrsMap) => {
+    try {
+      localStorage.setItem("averna_srs", JSON.stringify(s));
     } catch {}
   };
 
   const deck = DECKS.find((d) => d.id === deckId)!;
   const card = cards[index];
+
+  // How many cards are due (or new) right now
+  const now = Date.now();
+  const dueCount =
+    ALL_CARDS.filter((c) => srs[c.word] && srs[c.word].due <= now).length +
+    Math.min(MAX_NEW_PER_SESSION, ALL_CARDS.filter((c) => !srs[c.word]).length);
 
   const selectDeck = (id: string) => {
     const d = DECKS.find((x) => x.id === id)!;
@@ -147,14 +196,20 @@ export default function FlashcardsPage() {
     setFlipped(false);
   };
 
-  const next = () => { setFlipped(false); setIndex((i) => (i + 1) % cards.length); };
-  const prev = () => { setFlipped(false); setIndex((i) => (i - 1 + cards.length) % cards.length); };
+  const next = () => {
+    setFlipped(false);
+    setIndex((i) => (i + 1) % cards.length);
+  };
+  const prev = () => {
+    setFlipped(false);
+    setIndex((i) => (i - 1 + cards.length) % cards.length);
+  };
 
   const markKnown = () => {
     const s = new Set(known);
     s.add(card.word);
     setKnown(s);
-    persist(s);
+    persistKnown(s);
     trackStudy();
     next();
   };
@@ -165,7 +220,10 @@ export default function FlashcardsPage() {
     setFlipped(false);
   };
 
-  const resetProgress = () => { setKnown(new Set()); persist(new Set()); };
+  const resetProgress = () => {
+    setKnown(new Set());
+    persistKnown(new Set());
+  };
 
   const speak = (text: string) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -175,7 +233,31 @@ export default function FlashcardsPage() {
     window.speechSynthesis.speak(u);
   };
 
+  // ---- Spaced-repetition review mode ----
+  const startReview = () => {
+    const due = ALL_CARDS.filter((c) => srs[c.word] && srs[c.word].due <= now);
+    const fresh = ALL_CARDS.filter((c) => !srs[c.word]).slice(0, MAX_NEW_PER_SESSION);
+    const q = [...due, ...fresh].sort(() => Math.random() - 0.5);
+    setQueue(q);
+    setReviewPos(0);
+    setFlipped(false);
+    setMode("review");
+  };
+
+  const gradeCard = (grade: Grade) => {
+    const c = queue[reviewPos];
+    if (!c) return;
+    const updated = { ...srs, [c.word]: schedule(srs[c.word], grade) };
+    setSrs(updated);
+    persistSrs(updated);
+    trackStudy();
+    setFlipped(false);
+    setReviewPos((p) => p + 1);
+  };
+
   const knownInDeck = deck.cards.filter((c) => known.has(c.word)).length;
+  const reviewCard = queue[reviewPos];
+  const reviewDone = mode === "review" && reviewPos >= queue.length;
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -188,74 +270,212 @@ export default function FlashcardsPage() {
           Vocabulary <span className="neon-text-purple">Flashcards</span>
         </h1>
         <p className="text-gray-400 mb-5">
-          Choose a topic, tap a card to flip, and mark words you know. A fresh set is featured every day. 🧠
+          Browse topics or run a smart <span className="text-averna-cyan">Daily Review</span> that
+          shows each word right before you&apos;d forget it. 🧠
         </p>
 
-        {/* Deck selector */}
+        {/* Mode toggle */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {DECKS.map((d, i) => (
-            <button
-              key={d.id}
-              onClick={() => selectDeck(d.id)}
-              className={`relative px-3 py-1.5 rounded-full text-sm border transition-colors ${
-                deckId === d.id
-                  ? "bg-averna-purple/20 border-averna-purple text-averna-purple"
-                  : "bg-white/5 border-white/10 text-gray-300 hover:border-averna-purple/40"
-              }`}
-            >
-              {d.emoji} {d.name}
-              {i === dailyDeckIndex && (
-                <span className="ml-1.5 text-[9px] font-bold uppercase text-averna-neon">• Today</span>
+          <button
+            onClick={() => setMode("browse")}
+            className={`px-3 py-1.5 rounded-full text-sm border transition-colors ${
+              mode === "browse"
+                ? "bg-averna-purple/20 border-averna-purple text-averna-purple"
+                : "bg-white/5 border-white/10 text-gray-300 hover:border-averna-purple/40"
+            }`}
+          >
+            <Layers className="inline h-4 w-4 mr-1" /> Browse Decks
+          </button>
+          <button
+            onClick={startReview}
+            className={`px-3 py-1.5 rounded-full text-sm border transition-colors ${
+              mode === "review"
+                ? "bg-averna-cyan/20 border-averna-cyan text-averna-cyan"
+                : "bg-white/5 border-white/10 text-gray-300 hover:border-averna-cyan/40"
+            }`}
+          >
+            <Repeat className="inline h-4 w-4 mr-1" /> Daily Review
+            {dueCount > 0 && (
+              <span className="ml-1.5 text-[10px] font-bold bg-averna-cyan/30 text-averna-cyan px-1.5 py-0.5 rounded-full">
+                {dueCount}
+              </span>
+            )}
+          </button>
+        </div>
+
+        {mode === "review" ? (
+          /* ============ SPACED-REPETITION REVIEW ============ */
+          reviewDone ? (
+            <Card className="glass border-averna-neon/40">
+              <CardContent className="py-12 text-center space-y-3">
+                <Sparkles className="h-10 w-10 text-averna-neon mx-auto" />
+                <p className="text-xl font-bold text-averna-neon">Review complete! 🎉</p>
+                <p className="text-gray-400 text-sm">
+                  You reviewed {queue.length} card{queue.length !== 1 ? "s" : ""}. Come back tomorrow —
+                  cards will reappear right when you need them.
+                </p>
+                <Button onClick={() => setMode("browse")} className="neon-button bg-averna-primary hover:bg-averna-light mt-2">
+                  Back to decks
+                </Button>
+              </CardContent>
+            </Card>
+          ) : reviewCard ? (
+            <>
+              <div className="flex items-center justify-between mb-4 text-sm">
+                <span className="text-gray-400">
+                  Card {reviewPos + 1} / {queue.length}
+                </span>
+                <span className="text-averna-cyan font-semibold">Spaced repetition</span>
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-white/10 overflow-hidden mb-4">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-averna-cyan to-averna-neon transition-all"
+                  style={{ width: `${(reviewPos / queue.length) * 100}%` }}
+                />
+              </div>
+
+              <button onClick={() => setFlipped((f) => !f)} className="w-full text-left">
+                <Card className="glass-strong border-averna-cyan/40 min-h-[16rem] flex items-center justify-center">
+                  <CardContent className="text-center py-10 px-6">
+                    {!flipped ? (
+                      <>
+                        <p className="text-4xl font-bold text-white">{reviewCard.word}</p>
+                        <p className="text-xs text-gray-500 mt-4">tap to reveal meaning</p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-lg text-averna-cyan font-semibold mb-2">{reviewCard.meaning}</p>
+                        <p className="text-sm text-gray-300 italic">&ldquo;{reviewCard.example}&rdquo;</p>
+                      </>
+                    )}
+                  </CardContent>
+                </Card>
+              </button>
+
+              {!flipped ? (
+                <Button
+                  onClick={() => setFlipped(true)}
+                  className="w-full mt-6 neon-button bg-averna-primary hover:bg-averna-light"
+                >
+                  Show answer
+                </Button>
+              ) : (
+                <div className="grid grid-cols-3 gap-2 mt-6">
+                  <Button onClick={() => gradeCard("again")} variant="outline" className="border-rose-500/50 text-rose-300">
+                    Again
+                    <span className="block text-[10px] opacity-70">10 min</span>
+                  </Button>
+                  <Button onClick={() => gradeCard("good")} variant="outline" className="border-averna-cyan/50 text-averna-cyan">
+                    Good
+                    <span className="block text-[10px] opacity-70">days</span>
+                  </Button>
+                  <Button onClick={() => gradeCard("easy")} className="neon-button bg-averna-primary hover:bg-averna-light">
+                    Easy
+                    <span className="block text-[10px] opacity-80">longer</span>
+                  </Button>
+                </div>
               )}
+
+              <div className="flex justify-center mt-4">
+                <Button onClick={() => speak(`${reviewCard.word}. ${reviewCard.example}`)} variant="ghost" size="sm" className="text-averna-pink">
+                  <Volume2 className="mr-2 h-4 w-4" /> Pronounce
+                </Button>
+              </div>
+            </>
+          ) : (
+            <Card className="glass border-averna-neon/40">
+              <CardContent className="py-12 text-center space-y-3">
+                <Sparkles className="h-10 w-10 text-averna-neon mx-auto" />
+                <p className="text-xl font-bold text-averna-neon">All caught up! 🎉</p>
+                <p className="text-gray-400 text-sm">
+                  No cards are due right now. Browse a deck to learn new words, or check back later.
+                </p>
+                <Button onClick={() => setMode("browse")} className="neon-button bg-averna-primary hover:bg-averna-light mt-2">
+                  Browse decks
+                </Button>
+              </CardContent>
+            </Card>
+          )
+        ) : (
+          /* ============ BROWSE MODE ============ */
+          <>
+            {/* Deck selector */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {DECKS.map((d, i) => (
+                <button
+                  key={d.id}
+                  onClick={() => selectDeck(d.id)}
+                  className={`relative px-3 py-1.5 rounded-full text-sm border transition-colors ${
+                    deckId === d.id
+                      ? "bg-averna-purple/20 border-averna-purple text-averna-purple"
+                      : "bg-white/5 border-white/10 text-gray-300 hover:border-averna-purple/40"
+                  }`}
+                >
+                  {d.emoji} {d.name}
+                  {i === dailyDeckIndex && (
+                    <span className="ml-1.5 text-[9px] font-bold uppercase text-averna-neon">• Today</span>
+                  )}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-between mb-4 text-sm">
+              <span className="text-gray-400">
+                Card {index + 1} / {cards.length}
+              </span>
+              <span className="text-averna-neon font-semibold">
+                {knownInDeck} / {deck.cards.length} mastered in this deck
+              </span>
+            </div>
+
+            {/* Flip card */}
+            <button onClick={() => setFlipped((f) => !f)} className="w-full text-left" style={{ perspective: "1000px" }}>
+              <div
+                className="relative w-full h-64 transition-transform duration-500"
+                style={{ transformStyle: "preserve-3d", transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
+              >
+                <Card className="glass border-averna-purple/40 absolute inset-0 flex items-center justify-center" style={{ backfaceVisibility: "hidden" }}>
+                  <CardContent className="text-center py-10">
+                    <p className="text-4xl font-bold text-white">{card.word}</p>
+                    {known.has(card.word) && <span className="mt-3 inline-block text-xs text-averna-neon">✓ mastered</span>}
+                    <p className="text-xs text-gray-500 mt-4">tap to see meaning</p>
+                  </CardContent>
+                </Card>
+                <Card className="glass-strong border-averna-cyan/40 absolute inset-0 flex items-center justify-center" style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
+                  <CardContent className="text-center py-8 px-6">
+                    <p className="text-lg text-averna-cyan font-semibold mb-2">{card.meaning}</p>
+                    <p className="text-sm text-gray-300 italic">&ldquo;{card.example}&rdquo;</p>
+                  </CardContent>
+                </Card>
+              </div>
             </button>
-          ))}
-        </div>
 
-        <div className="flex items-center justify-between mb-4 text-sm">
-          <span className="text-gray-400">Card {index + 1} / {cards.length}</span>
-          <span className="text-averna-neon font-semibold">{knownInDeck} / {deck.cards.length} mastered in this deck</span>
-        </div>
+            {/* Controls */}
+            <div className="flex items-center justify-between mt-6 gap-2">
+              <Button onClick={prev} variant="outline" className="border-white/20">
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button onClick={markKnown} className="neon-button bg-averna-primary hover:bg-averna-light flex-1">
+                <Check className="mr-2 h-4 w-4" /> I know this
+              </Button>
+              <Button onClick={next} variant="outline" className="border-white/20">
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
 
-        {/* Flip card */}
-        <button onClick={() => setFlipped((f) => !f)} className="w-full text-left" style={{ perspective: "1000px" }}>
-          <div className="relative w-full h-64 transition-transform duration-500"
-            style={{ transformStyle: "preserve-3d", transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)" }}>
-            <Card className="glass border-averna-purple/40 absolute inset-0 flex items-center justify-center" style={{ backfaceVisibility: "hidden" }}>
-              <CardContent className="text-center py-10">
-                <p className="text-4xl font-bold text-white">{card.word}</p>
-                {known.has(card.word) && <span className="mt-3 inline-block text-xs text-averna-neon">✓ mastered</span>}
-                <p className="text-xs text-gray-500 mt-4">tap to see meaning</p>
-              </CardContent>
-            </Card>
-            <Card className="glass-strong border-averna-cyan/40 absolute inset-0 flex items-center justify-center" style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
-              <CardContent className="text-center py-8 px-6">
-                <p className="text-lg text-averna-cyan font-semibold mb-2">{card.meaning}</p>
-                <p className="text-sm text-gray-300 italic">&ldquo;{card.example}&rdquo;</p>
-              </CardContent>
-            </Card>
-          </div>
-        </button>
-
-        {/* Controls */}
-        <div className="flex items-center justify-between mt-6 gap-2">
-          <Button onClick={prev} variant="outline" className="border-white/20"><ChevronLeft className="h-4 w-4" /></Button>
-          <Button onClick={markKnown} className="neon-button bg-averna-primary hover:bg-averna-light flex-1">
-            <Check className="mr-2 h-4 w-4" /> I know this
-          </Button>
-          <Button onClick={next} variant="outline" className="border-white/20"><ChevronRight className="h-4 w-4" /></Button>
-        </div>
-
-        <div className="flex justify-center gap-3 mt-4">
-          <Button onClick={() => speak(`${card.word}. ${card.example}`)} variant="ghost" size="sm" className="text-averna-pink">
-            <Volume2 className="mr-2 h-4 w-4" /> Pronounce
-          </Button>
-          <Button onClick={shuffle} variant="ghost" size="sm" className="text-averna-cyan">
-            <Shuffle className="mr-2 h-4 w-4" /> Shuffle
-          </Button>
-          <Button onClick={resetProgress} variant="ghost" size="sm" className="text-gray-400">
-            <RotateCcw className="mr-2 h-4 w-4" /> Reset
-          </Button>
-        </div>
+            <div className="flex justify-center gap-3 mt-4">
+              <Button onClick={() => speak(`${card.word}. ${card.example}`)} variant="ghost" size="sm" className="text-averna-pink">
+                <Volume2 className="mr-2 h-4 w-4" /> Pronounce
+              </Button>
+              <Button onClick={shuffle} variant="ghost" size="sm" className="text-averna-cyan">
+                <Shuffle className="mr-2 h-4 w-4" /> Shuffle
+              </Button>
+              <Button onClick={resetProgress} variant="ghost" size="sm" className="text-gray-400">
+                <RotateCcw className="mr-2 h-4 w-4" /> Reset
+              </Button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

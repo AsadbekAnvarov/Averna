@@ -21,6 +21,7 @@ import {
   Compass,
   TrendingUp,
   Timer,
+  MessagesSquare,
 } from "lucide-react";
 import Link from "next/link";
 import { isSpeakingTime, getTimeUntilSpeakingTime } from "@/lib/utils";
@@ -136,6 +137,15 @@ export function QuickActions() {
           color: "text-averna-pink",
           bgColor: "bg-averna-pink/10",
           ring: "hover:border-averna-pink/50 hover:shadow-[0_0_18px_rgba(236,72,153,0.25)]",
+        },
+        {
+          icon: MessagesSquare,
+          label: "Roleplay",
+          description: "Real-life conversations",
+          href: "/learning/roleplay",
+          color: "text-averna-purple",
+          bgColor: "bg-averna-purple/10",
+          ring: "hover:border-averna-purple/50 hover:shadow-[0_0_18px_rgba(168,85,247,0.25)]",
         },
       ],
     },
