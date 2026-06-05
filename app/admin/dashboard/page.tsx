@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone, Activity, Wallet, ScrollText, AlertTriangle } from "lucide-react";
+import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone, Activity, Wallet, ScrollText, AlertTriangle, LineChart, Send } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
@@ -134,6 +134,16 @@ export default async function AdminDashboard() {
           <Link href="/admin/at-risk">
             <Button variant="outline" className="border-yellow-500/40 text-yellow-300">
               <AlertTriangle className="mr-2 h-4 w-4" /> At-Risk Radar
+            </Button>
+          </Link>
+          <Link href="/admin/retention">
+            <Button variant="outline" className="border-averna-cyan/40 text-averna-cyan">
+              <LineChart className="mr-2 h-4 w-4" /> Retention
+            </Button>
+          </Link>
+          <Link href="/admin/broadcast">
+            <Button variant="outline" className="border-averna-purple/40 text-averna-purple">
+              <Send className="mr-2 h-4 w-4" /> Broadcast
             </Button>
           </Link>
           <Link href="/admin/groups">
