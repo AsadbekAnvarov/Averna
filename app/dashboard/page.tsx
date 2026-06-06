@@ -27,6 +27,7 @@ import { StudyReminder } from "@/components/dashboard/study-reminder";
 import { StreakCelebration } from "@/components/dashboard/streak-celebration";
 import { WeeklyRecap } from "@/components/dashboard/weekly-recap";
 import { WhatsNew } from "@/components/dashboard/whats-new";
+import { AchievementToast } from "@/components/dashboard/achievement-toast";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
@@ -268,6 +269,14 @@ export default async function DashboardPage() {
       <OnboardingTour />
       <StreakCelebration currentStreak={student.currentStreak} />
       <WhatsNew />
+      <AchievementToast
+        achievements={student.achievements.map((a) => ({
+          id: a.id,
+          name: a.achievement.name,
+          icon: a.achievement.icon,
+          points: a.achievement.points,
+        }))}
+      />
     </div>
   );
 }
