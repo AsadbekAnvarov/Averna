@@ -85,6 +85,21 @@ export default function WritingLabPage() {
     // Overly long sentences
     const longSentences = sentences.filter((s) => (s.match(/\b[\w']+\b/g)?.length ?? 0) > 40).length;
 
+    // Heuristic IELTS criteria estimates, anchored to the overall band
+    const clamp = (n: number) => Math.max(4, Math.min(9, Math.round(n * 2) / 2));
+    const b = band || 5;
+    const has = trimmed.length > 20;
+    const taskScore = has
+      ? clamp(b + (wordCount >= 250 ? 0.5 : wordCount >= 150 ? 0 : -1) + (paragraphs.length >= 3 ? 0.5 : -0.5))
+      : 0;
+    const coherenceScore = has
+      ? clamp(b + (linkersUsed.length >= 4 ? 0.5 : linkersUsed.length >= 2 ? 0 : -0.5) + (paragraphs.length >= 4 ? 0.5 : 0) - (longSentences > 0 ? 0.5 : 0))
+      : 0;
+    const lexicalScore = has ? clamp(b - weakFound.length * 0.25 - repeated.length * 0.25) : 0;
+    const grammarScore = has
+      ? clamp(b - (contractionsFound.length > 0 ? 0.5 : 0) - longSentences * 0.25 + (avgSentenceLen >= 12 && avgSentenceLen <= 22 ? 0.5 : 0))
+      : 0;
+
     return {
       wordCount,
       sentenceCount: sentences.length,
@@ -96,6 +111,10 @@ export default function WritingLabPage() {
       linkersUsed,
       contractionsFound,
       longSentences,
+      taskScore,
+      coherenceScore,
+      lexicalScore,
+      grammarScore,
     };
   }, [text]);
 
@@ -177,6 +196,34 @@ export default function WritingLabPage() {
               </Card>
             ) : (
               <>
+                {/* IELTS criteria breakdown */}
+                <Card className="glass border-averna-purple/30">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm text-averna-purple">Estimated IELTS criteria*</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2">
+                    {[
+                      { label: "Task Response", value: analysis.taskScore },
+                      { label: "Coherence & Cohesion", value: analysis.coherenceScore },
+                      { label: "Lexical Resource", value: analysis.lexicalScore },
+                      { label: "Grammar & Accuracy", value: analysis.grammarScore },
+                    ].map((c) => (
+                      <div key={c.label} className="flex items-center gap-2">
+                        <span className="w-40 text-xs text-gray-300 shrink-0">{c.label}</span>
+                        <div className="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
+                          <div
+                            className="h-full rounded-full bg-gradient-to-r from-averna-purple to-averna-neon"
+                            style={{ width: `${(c.value / 9) * 100}%` }}
+                          />
+                        </div>
+                        <span className={`w-8 text-right text-xs font-bold ${bandColor(c.value)}`}>
+                          {c.value.toFixed(1)}
+                        </span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+
                 {/* Linking words */}
                 <SuggestionCard
                   icon={<Link2 className="h-4 w-4" />}
