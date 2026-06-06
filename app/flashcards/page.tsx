@@ -14,6 +14,8 @@ import {
   Volume2,
   Repeat,
   Sparkles,
+  Keyboard,
+  X,
 } from "lucide-react";
 import { tashkentDayOfYear } from "@/lib/utils";
 
@@ -44,6 +46,11 @@ const DECKS: Deck[] = [
       { word: "Prominent", meaning: "Important or well known.", example: "He is a prominent figure in education." },
       { word: "Reluctant", meaning: "Unwilling and hesitant.", example: "Students are sometimes reluctant to speak." },
       { word: "Vital", meaning: "Absolutely necessary; essential.", example: "Daily practice is vital for fluency." },
+      { word: "Comprehensive", meaning: "Complete and including everything.", example: "The course gives a comprehensive overview." },
+      { word: "Diverse", meaning: "Showing a great deal of variety.", example: "The city has a diverse population." },
+      { word: "Significant", meaning: "Large enough to be noticed or important.", example: "There was a significant rise in prices." },
+      { word: "Substantial", meaning: "Large in amount or importance.", example: "They made a substantial investment." },
+      { word: "Subsequent", meaning: "Coming after something in time.", example: "Subsequent studies confirmed the result." },
     ],
   },
   {
@@ -59,6 +66,10 @@ const DECKS: Deck[] = [
       { word: "Voyage", meaning: "A long journey, especially by sea.", example: "The voyage across the Atlantic took six days." },
       { word: "Picturesque", meaning: "Visually attractive, like a picture.", example: "The village was small and picturesque." },
       { word: "Remote", meaning: "Far away from other places.", example: "They travelled to a remote island." },
+      { word: "Bustling", meaning: "Full of busy, energetic activity.", example: "The market was bustling with shoppers." },
+      { word: "Affordable", meaning: "Reasonably priced; not expensive.", example: "We looked for affordable flights." },
+      { word: "Spontaneous", meaning: "Done without planning, on impulse.", example: "We took a spontaneous trip to the coast." },
+      { word: "Breathtaking", meaning: "Astonishingly beautiful or impressive.", example: "The view from the peak was breathtaking." },
     ],
   },
   {
@@ -74,6 +85,9 @@ const DECKS: Deck[] = [
       { word: "Literacy", meaning: "The ability to read and write.", example: "The campaign improved adult literacy." },
       { word: "Mentor", meaning: "An experienced, trusted adviser.", example: "Her mentor helped her plan her career." },
       { word: "Vocational", meaning: "Relating to a particular occupation.", example: "He chose a vocational training course." },
+      { word: "Tertiary", meaning: "Relating to higher education.", example: "Tertiary education includes universities." },
+      { word: "Compulsory", meaning: "Required by law or rules.", example: "Schooling is compulsory until sixteen." },
+      { word: "Aptitude", meaning: "A natural ability to do something.", example: "She has an aptitude for languages." },
     ],
   },
   {
@@ -89,6 +103,9 @@ const DECKS: Deck[] = [
       { word: "Deforestation", meaning: "The clearing of forests.", example: "Deforestation threatens many species." },
       { word: "Habitat", meaning: "The natural home of an animal or plant.", example: "Pandas are losing their habitat." },
       { word: "Biodiversity", meaning: "The variety of life in an area.", example: "Rainforests have rich biodiversity." },
+      { word: "Ecosystem", meaning: "A community of living things and their environment.", example: "Coral reefs are fragile ecosystems." },
+      { word: "Contaminate", meaning: "To make impure or polluted.", example: "Waste can contaminate the water supply." },
+      { word: "Depletion", meaning: "The using up of a resource.", example: "Oil depletion is a global concern." },
     ],
   },
   {
@@ -104,6 +121,77 @@ const DECKS: Deck[] = [
       { word: "Network", meaning: "A group of connected computers or people.", example: "The social network has millions of users." },
       { word: "Cutting-edge", meaning: "The most advanced; latest.", example: "They use cutting-edge technology." },
       { word: "Obsolete", meaning: "No longer used; out of date.", example: "Fax machines are now obsolete." },
+      { word: "Artificial", meaning: "Made by humans, not natural.", example: "Artificial intelligence is advancing fast." },
+      { word: "Surveillance", meaning: "Close observation, especially of a suspect.", example: "Cameras provide constant surveillance." },
+      { word: "Disruptive", meaning: "Causing radical change to an industry.", example: "Streaming was a disruptive technology." },
+    ],
+  },
+  {
+    id: "health",
+    name: "Health & Medicine",
+    emoji: "🩺",
+    cards: [
+      { word: "Nutrition", meaning: "The process of getting the right food for health.", example: "Good nutrition supports concentration." },
+      { word: "Chronic", meaning: "Lasting for a long time (illness).", example: "Diabetes is a chronic condition." },
+      { word: "Sedentary", meaning: "Involving a lot of sitting; inactive.", example: "A sedentary lifestyle harms your health." },
+      { word: "Immunity", meaning: "The body's ability to resist disease.", example: "Vaccines build immunity." },
+      { word: "Epidemic", meaning: "A widespread occurrence of a disease.", example: "The flu epidemic spread quickly." },
+      { word: "Wellbeing", meaning: "The state of being comfortable and healthy.", example: "Exercise improves mental wellbeing." },
+      { word: "Preventive", meaning: "Designed to stop something before it happens.", example: "Preventive care reduces hospital visits." },
+      { word: "Fatigue", meaning: "Extreme tiredness.", example: "Lack of sleep causes fatigue." },
+      { word: "Diagnosis", meaning: "Identifying an illness from its symptoms.", example: "Early diagnosis improves recovery." },
+      { word: "Therapy", meaning: "Treatment to relieve or heal a condition.", example: "Speech therapy helped her recover." },
+    ],
+  },
+  {
+    id: "work",
+    name: "Work & Business",
+    emoji: "💼",
+    cards: [
+      { word: "Entrepreneur", meaning: "A person who starts a business.", example: "The young entrepreneur launched a startup." },
+      { word: "Productivity", meaning: "The rate of producing useful output.", example: "Remote work can boost productivity." },
+      { word: "Incentive", meaning: "Something that motivates you to act.", example: "Bonuses are a strong incentive." },
+      { word: "Negotiate", meaning: "To discuss to reach an agreement.", example: "They negotiated a better contract." },
+      { word: "Recruitment", meaning: "The process of hiring people.", example: "Recruitment takes several weeks." },
+      { word: "Revenue", meaning: "The income a business earns.", example: "Annual revenue rose by 10%." },
+      { word: "Versatile", meaning: "Able to adapt to many tasks.", example: "Employers value versatile workers." },
+      { word: "Lucrative", meaning: "Producing a lot of money.", example: "Software can be a lucrative career." },
+      { word: "Collaborate", meaning: "To work jointly with others.", example: "Teams collaborate on shared goals." },
+      { word: "Tedious", meaning: "Boring and repetitive.", example: "Data entry can be tedious." },
+    ],
+  },
+  {
+    id: "society",
+    name: "Society & Law",
+    emoji: "⚖️",
+    cards: [
+      { word: "Inequality", meaning: "Unfair difference between groups.", example: "Income inequality is widening." },
+      { word: "Welfare", meaning: "The health and happiness of people.", example: "The state supports child welfare." },
+      { word: "Legislation", meaning: "Laws considered together.", example: "New legislation banned smoking indoors." },
+      { word: "Deterrent", meaning: "Something that discourages an action.", example: "Fines act as a deterrent to speeding." },
+      { word: "Rehabilitation", meaning: "Restoring someone to normal life.", example: "Prisons should focus on rehabilitation." },
+      { word: "Discrimination", meaning: "Unfair treatment of a group.", example: "The law forbids discrimination at work." },
+      { word: "Integrity", meaning: "Being honest and having strong morals.", example: "Leaders should act with integrity." },
+      { word: "Poverty", meaning: "The state of being extremely poor.", example: "Education helps reduce poverty." },
+      { word: "Civic", meaning: "Relating to a city or citizens' duties.", example: "Voting is a civic responsibility." },
+      { word: "Prohibit", meaning: "To formally forbid by law.", example: "The rules prohibit cheating." },
+    ],
+  },
+  {
+    id: "advanced",
+    name: "Band 7+ Advanced",
+    emoji: "🚀",
+    cards: [
+      { word: "Ubiquitous", meaning: "Present or found everywhere.", example: "Smartphones are now ubiquitous." },
+      { word: "Detrimental", meaning: "Causing harm or damage.", example: "Stress is detrimental to health." },
+      { word: "Pivotal", meaning: "Of crucial importance.", example: "Teachers play a pivotal role." },
+      { word: "Mitigate", meaning: "To make less severe.", example: "Trees help mitigate flooding." },
+      { word: "Compelling", meaning: "Convincing and powerful.", example: "She made a compelling argument." },
+      { word: "Inherent", meaning: "Existing as a natural part of something.", example: "Risk is inherent in any sport." },
+      { word: "Paramount", meaning: "More important than anything else.", example: "Safety is of paramount importance." },
+      { word: "Exacerbate", meaning: "To make a problem worse.", example: "Traffic exacerbates air pollution." },
+      { word: "Scrutiny", meaning: "Critical, careful examination.", example: "The plan came under public scrutiny." },
+      { word: "Cohesive", meaning: "Well connected and unified.", example: "A cohesive essay flows logically." },
     ],
   },
 ];
@@ -132,11 +220,18 @@ function schedule(prev: SrsEntry | undefined, grade: Grade): SrsEntry {
   return { interval, due: Date.now() + interval * DAY };
 }
 
+// Hide the target word inside its example sentence for active recall.
+function blankExample(card: Flashcard): string {
+  const re = new RegExp(card.word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "ig");
+  const replaced = card.example.replace(re, "_____");
+  return replaced === card.example ? card.example : replaced;
+}
+
 export default function FlashcardsPage() {
   // The featured deck rotates every day so students see fresh words daily.
   const dailyDeckIndex = tashkentDayOfYear() % DECKS.length;
 
-  const [mode, setMode] = useState<"browse" | "review">("browse");
+  const [mode, setMode] = useState<"browse" | "recall" | "review">("browse");
   const [deckId, setDeckId] = useState(DECKS[dailyDeckIndex].id);
   const [cards, setCards] = useState<Flashcard[]>(DECKS[dailyDeckIndex].cards);
   const [index, setIndex] = useState(0);
@@ -145,6 +240,8 @@ export default function FlashcardsPage() {
   const [srs, setSrs] = useState<SrsMap>({});
   const [queue, setQueue] = useState<Flashcard[]>([]);
   const [reviewPos, setReviewPos] = useState(0);
+  const [recallInput, setRecallInput] = useState("");
+  const [recallResult, setRecallResult] = useState<"correct" | "wrong" | null>(null);
   const trackedRef = useRef(false);
 
   const trackStudy = () => {
@@ -198,12 +295,35 @@ export default function FlashcardsPage() {
 
   const next = () => {
     setFlipped(false);
+    setRecallInput("");
+    setRecallResult(null);
     setIndex((i) => (i + 1) % cards.length);
   };
   const prev = () => {
     setFlipped(false);
+    setRecallInput("");
+    setRecallResult(null);
     setIndex((i) => (i - 1 + cards.length) % cards.length);
   };
+
+  const checkRecall = () => {
+    if (recallResult) {
+      next();
+      return;
+    }
+    const correct = recallInput.trim().toLowerCase() === card.word.toLowerCase();
+    setRecallResult(correct ? "correct" : "wrong");
+    trackStudy();
+    if (correct) {
+      const s = new Set(known);
+      s.add(card.word);
+      setKnown(s);
+      persistKnown(s);
+    }
+  };
+
+  const deckMastery = (d: Deck) =>
+    Math.round((d.cards.filter((c) => known.has(c.word)).length / d.cards.length) * 100);
 
   const markKnown = () => {
     const s = new Set(known);
@@ -285,6 +405,16 @@ export default function FlashcardsPage() {
             }`}
           >
             <Layers className="inline h-4 w-4 mr-1" /> Browse Decks
+          </button>
+          <button
+            onClick={() => { setMode("recall"); setRecallInput(""); setRecallResult(null); }}
+            className={`px-3 py-1.5 rounded-full text-sm border transition-colors ${
+              mode === "recall"
+                ? "bg-averna-pink/20 border-averna-pink text-averna-pink"
+                : "bg-white/5 border-white/10 text-gray-300 hover:border-averna-pink/40"
+            }`}
+          >
+            <Keyboard className="inline h-4 w-4 mr-1" /> Type it
           </button>
           <button
             onClick={startReview}
@@ -396,27 +526,95 @@ export default function FlashcardsPage() {
               </CardContent>
             </Card>
           )
+        ) : mode === "recall" ? (
+          /* ============ ACTIVE RECALL (type the word) ============ */
+          <>
+            <div className="flex items-center justify-between mb-4 text-sm">
+              <span className="text-gray-400">Card {index + 1} / {cards.length}</span>
+              <span className="text-averna-pink font-semibold">Active recall</span>
+            </div>
+            <Card className="glass-strong border-averna-pink/40">
+              <CardContent className="py-8 px-6 space-y-4">
+                <div>
+                  <p className="text-xs text-gray-400 mb-1">Definition</p>
+                  <p className="text-lg text-white font-medium">{card.meaning}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 mb-1">Used in a sentence</p>
+                  <p className="text-sm text-gray-300 italic">&ldquo;{blankExample(card)}&rdquo;</p>
+                </div>
+                <input
+                  value={recallInput}
+                  onChange={(e) => setRecallInput(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") checkRecall(); }}
+                  disabled={recallResult !== null}
+                  placeholder="Type the word…"
+                  className={`w-full rounded-lg border bg-white/5 px-4 py-2.5 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 ${
+                    recallResult === "correct"
+                      ? "border-averna-neon focus:ring-averna-neon"
+                      : recallResult === "wrong"
+                      ? "border-rose-500 focus:ring-rose-500"
+                      : "border-white/10 focus:ring-averna-pink"
+                  }`}
+                />
+                {recallResult === "correct" && (
+                  <p className="text-averna-neon text-sm flex items-center gap-1">
+                    <Check className="h-4 w-4" /> Correct! Nicely recalled.
+                  </p>
+                )}
+                {recallResult === "wrong" && (
+                  <p className="text-rose-300 text-sm flex items-center gap-1">
+                    <X className="h-4 w-4" /> The word was <span className="font-bold">{card.word}</span>
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+            <div className="flex items-center gap-2 mt-6">
+              <Button onClick={prev} variant="outline" className="border-white/20">
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button onClick={checkRecall} className="neon-button bg-averna-primary hover:bg-averna-light flex-1">
+                {recallResult ? "Next word" : "Check"}
+              </Button>
+              <Button onClick={next} variant="outline" className="border-white/20">
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </>
         ) : (
           /* ============ BROWSE MODE ============ */
           <>
-            {/* Deck selector */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {DECKS.map((d, i) => (
-                <button
-                  key={d.id}
-                  onClick={() => selectDeck(d.id)}
-                  className={`relative px-3 py-1.5 rounded-full text-sm border transition-colors ${
-                    deckId === d.id
-                      ? "bg-averna-purple/20 border-averna-purple text-averna-purple"
-                      : "bg-white/5 border-white/10 text-gray-300 hover:border-averna-purple/40"
-                  }`}
-                >
-                  {d.emoji} {d.name}
-                  {i === dailyDeckIndex && (
-                    <span className="ml-1.5 text-[9px] font-bold uppercase text-averna-neon">• Today</span>
-                  )}
-                </button>
-              ))}
+            {/* Deck selector with mastery */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-6">
+              {DECKS.map((d, i) => {
+                const mastery = deckMastery(d);
+                return (
+                  <button
+                    key={d.id}
+                    onClick={() => selectDeck(d.id)}
+                    className={`relative text-left p-2.5 rounded-xl border transition-colors ${
+                      deckId === d.id
+                        ? "bg-averna-purple/15 border-averna-purple"
+                        : "bg-white/5 border-white/10 hover:border-averna-purple/40"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg">{d.emoji}</span>
+                      <span className="text-xs font-medium text-white truncate flex-1">{d.name}</span>
+                    </div>
+                    <div className="h-1 w-full rounded-full bg-white/10 overflow-hidden mt-2">
+                      <div className="h-full rounded-full bg-gradient-to-r from-averna-purple to-averna-neon" style={{ width: `${mastery}%` }} />
+                    </div>
+                    <div className="flex items-center justify-between mt-1">
+                      <span className="text-[9px] text-gray-500">{d.cards.length} words</span>
+                      <span className="text-[9px] text-averna-neon font-semibold">{mastery}%</span>
+                    </div>
+                    {i === dailyDeckIndex && (
+                      <span className="absolute top-1.5 right-1.5 text-[8px] font-bold uppercase text-averna-neon">Today</span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
             <div className="flex items-center justify-between mb-4 text-sm">
