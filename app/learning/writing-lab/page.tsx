@@ -13,6 +13,17 @@ const PROMPTS = [
   "Some argue that governments should invest more in public transport than in roads. Do you agree or disagree?",
 ];
 
+const MODEL_ANSWERS: Record<string, string> = {
+  [PROMPTS[0]]:
+    "While some argue that students should bear the full cost of their university education, I largely disagree, as the benefits of higher education extend well beyond the individual. Admittedly, those who later earn higher salaries could reasonably contribute through tuition fees. However, a well-educated population drives economic growth, innovation and essential public services, all of which benefit society as a whole. Furthermore, requiring students to pay the entire cost would deter talented individuals from low-income families, thereby entrenching inequality. A balanced approach, in which governments subsidise tuition while students contribute a manageable share, is preferable. In conclusion, although a partial contribution is justifiable, expecting students to fund the whole cost would be both unfair and economically short-sighted.",
+  [PROMPTS[1]]:
+    "It is often claimed that technology has complicated modern life rather than simplifying it. On the one hand, constant connectivity, information overload and the pressure to master new devices can undeniably create stress; many employees, for instance, struggle to disconnect from work emails. On the other hand, technology has streamlined countless tasks: online banking, instant communication and navigation apps save enormous time and effort. In my view, technology itself is neutral; whether it simplifies or complicates depends on how we use it. Used mindfully, with clear boundaries, it is a powerful tool that enhances convenience and productivity. Therefore, while the drawbacks are real, I believe technology has, on balance, made life considerably simpler.",
+  [PROMPTS[2]]:
+    "In several countries, employees routinely work long hours, a trend driven by a number of factors with significant consequences. The principal causes include rising living costs, which compel people to earn more, and a competitive corporate culture that equates long hours with commitment; technology also blurs the line between work and home. These conditions have serious effects. For individuals, chronic overwork leads to stress, fatigue and damaged relationships. For society, productivity may paradoxically fall, while healthcare costs rise as a result of burnout. In conclusion, although long hours stem from economic and cultural pressures, their detrimental impact on wellbeing suggests that healthier working patterns should be actively encouraged.",
+  [PROMPTS[3]]:
+    "I strongly agree that governments should prioritise investment in public transport over road construction. Building more roads tends to encourage car ownership, which ultimately worsens congestion and air pollution rather than relieving them. In contrast, efficient buses, trains and metro systems move large numbers of people while reducing emissions and traffic; cities with extensive metro networks generally enjoy cleaner air and shorter commutes. Moreover, public transport is more inclusive, providing affordable mobility for those who cannot drive. Critics may argue that roads remain essential for freight and rural areas, which is valid; however, the broader environmental and social benefits of public transport are far greater. Overall, channelling funds into public transport is a wiser, more sustainable long-term strategy.",
+};
+
 const WEAK_WORDS: Record<string, string> = {
   "very": "extremely, remarkably, considerably",
   "really": "genuinely, truly, significantly",
@@ -46,6 +57,7 @@ function bandColor(b: number): string {
 export default function WritingLabPage() {
   const [text, setText] = useState("");
   const [prompt, setPrompt] = useState(PROMPTS[0]);
+  const [showModel, setShowModel] = useState(false);
 
   const analysis = useMemo(() => {
     const trimmed = text.trim();
@@ -150,6 +162,21 @@ export default function WritingLabPage() {
             ))}
           </select>
           <p className="text-sm text-gray-300 mt-2 italic">&ldquo;{prompt}&rdquo;</p>
+          <button
+            onClick={() => setShowModel((v) => !v)}
+            className="mt-2 text-xs text-averna-cyan hover:underline inline-flex items-center gap-1"
+          >
+            <Sparkles className="h-3.5 w-3.5" /> {showModel ? "Hide" : "Show"} Band 8 model answer
+          </button>
+          {showModel && (
+            <div className="mt-2 p-3 rounded-lg bg-averna-cyan/5 border border-averna-cyan/20 animate-fade-in">
+              <p className="text-[11px] uppercase font-bold text-averna-cyan mb-1">Model answer · Band 8</p>
+              <p className="text-sm text-gray-200 leading-relaxed">{MODEL_ANSWERS[prompt]}</p>
+              <p className="text-[11px] text-gray-500 mt-2">
+                Notice the clear position, linking words and precise vocabulary — mirror the structure, don&apos;t copy it.
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
