@@ -20,6 +20,7 @@ import {
   AudioLines,
 } from "lucide-react";
 import Link from "next/link";
+import { Confetti } from "@/components/confetti";
 
 type Difficulty = "Easy" | "Medium" | "Hard";
 
@@ -77,6 +78,7 @@ export function LearningPath({
 }: LearningPathProps) {
   const [isExpanded, setIsExpanded] = useState(true);
   const [animateActive, setAnimateActive] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const steps: PathStep[] = [
     {
@@ -222,8 +224,22 @@ export function LearningPath({
     return () => clearTimeout(timer);
   }, []);
 
+  // Celebrate the first time the daily XP goal is reached each day
+  useEffect(() => {
+    if (!goalReached) return;
+    try {
+      const stamp = new Date().toDateString();
+      if (localStorage.getItem("averna_goal_celebrated") === stamp) return;
+      localStorage.setItem("averna_goal_celebrated", stamp);
+    } catch {}
+    setShowConfetti(true);
+    const t = setTimeout(() => setShowConfetti(false), 3500);
+    return () => clearTimeout(t);
+  }, [goalReached]);
+
   return (
     <div className="relative overflow-hidden rounded-2xl glass-strong border border-averna-cyan/30 animate-fade-in">
+      {showConfetti && <Confetti />}
       {/* Background glow accents */}
       <div className="absolute -top-20 -right-20 h-60 w-60 rounded-full bg-averna-cyan/10 blur-3xl" />
       <div className="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-averna-purple/10 blur-3xl" />
