@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { LayoutDashboard, CalendarClock, Zap, UserCheck, User } from "lucide-react";
+import { LayoutDashboard, TrendingUp, Zap, Layers, User } from "lucide-react";
 
 const items = [
   { name: "Home", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Schedule", href: "/schedule", icon: CalendarClock },
+  { name: "Progress", href: "/progress", icon: TrendingUp },
   { name: "Challenge", href: "/challenge", icon: Zap },
-  { name: "Tutor", href: "/tutoring", icon: UserCheck },
+  { name: "Cards", href: "/flashcards", icon: Layers },
   { name: "Profile", href: "/profile", icon: User },
 ];
 
