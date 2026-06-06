@@ -8,91 +8,72 @@ interface MilestonesProps {
   testsCompleted: number;
 }
 
-interface Milestone {
-  emoji: string;
-  name: string;
-  description: string;
-  current: number;
-  target: number;
-}
+const TIER_NAMES = ["Bronze", "Silver", "Gold"];
+const TIER_MEDAL = ["🥉", "🥈", "🥇"];
+const TIER_COLOR = ["text-amber-400", "text-gray-300", "text-yellow-300"];
+const TIER_BORDER = ["border-amber-400/40", "border-gray-300/40", "border-yellow-400/50"];
 
-export function Milestones({
-  points,
-  currentStreak,
-  longestStreak,
-  testsCompleted,
-}: MilestonesProps) {
-  const milestones: Milestone[] = [
-    { emoji: "🌱", name: "First Steps", description: "Earn your first 10 points", current: points, target: 10 },
-    { emoji: "💯", name: "Century Club", description: "Reach 100 points", current: points, target: 100 },
-    { emoji: "🚀", name: "Point Hunter", description: "Reach 500 points", current: points, target: 500 },
-    { emoji: "👑", name: "Halfway Hero", description: "Reach 1000 points", current: points, target: 1000 },
-    { emoji: "🔥", name: "Streak Starter", description: "Keep a 3-day streak", current: longestStreak, target: 3 },
-    { emoji: "⚡", name: "On Fire", description: "Reach a 7-day streak", current: longestStreak, target: 7 },
-    { emoji: "🏆", name: "Unstoppable", description: "Reach a 30-day streak", current: longestStreak, target: 30 },
-    { emoji: "📚", name: "Test Taker", description: "Complete 5 tests", current: testsCompleted, target: 5 },
+export function Milestones({ points, currentStreak, longestStreak, testsCompleted }: MilestonesProps) {
+  const badges = [
+    { emoji: "⭐", name: "Points Collector", unit: "pts", value: points, tiers: [100, 1000, 5000] },
+    { emoji: "🔥", name: "Streak Master", unit: "days", value: longestStreak, tiers: [3, 14, 30] },
+    { emoji: "📚", name: "Test Taker", unit: "tests", value: testsCompleted, tiers: [5, 25, 100] },
   ];
+  const totalTiers = badges.reduce((s, b) => s + b.tiers.filter((t) => b.value >= t).length, 0);
+  const maxTiers = badges.length * 3;
 
-  const earned = milestones.filter((m) => m.current >= m.target).length;
 
   return (
     <Card className="glass border-averna-purple/30">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-averna-purple">
-            <Medal className="h-5 w-5" />
-            Milestones
+            <Medal className="h-5 w-5" /> Achievements
           </span>
-          <span className="text-sm text-gray-400">
-            {earned}/{milestones.length} unlocked
-          </span>
+          <span className="text-sm text-gray-400">{totalTiers}/{maxTiers} tiers</span>
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="grid sm:grid-cols-2 gap-3">
-          {milestones.map((m) => {
-            const done = m.current >= m.target;
-            const pct = Math.min(100, Math.round((m.current / m.target) * 100));
-            return (
-              <div
-                key={m.name}
-                className={`p-3 rounded-lg border transition-all ${
-                  done
-                    ? "border-averna-neon/50 bg-averna-neon/10 shadow-neon-green"
-                    : "border-white/10 bg-white/5"
-                }`}
-              >
-                <div className="flex items-center gap-2">
-                  <span className={`text-2xl ${done ? "" : "grayscale opacity-60"}`}>
-                    {m.emoji}
-                  </span>
-                  <div className="min-w-0">
-                    <p className={`text-sm font-semibold ${done ? "text-averna-neon" : "text-white"}`}>
-                      {m.name}
-                    </p>
-                    <p className="text-xs text-gray-400 truncate">{m.description}</p>
-                  </div>
+      <CardContent className="space-y-3">
+        {badges.map((b) => {
+          const reached = b.tiers.filter((t) => b.value >= t).length; // 0..3
+          const nextTarget = reached < 3 ? b.tiers[reached] : b.tiers[2];
+          const prevTarget = reached === 0 ? 0 : b.tiers[reached - 1];
+          const pct = reached >= 3 ? 100 : Math.round(((b.value - prevTarget) / (nextTarget - prevTarget)) * 100);
+          const tierIdx = reached - 1;
+          return (
+            <div key={b.name} className={`p-3 rounded-lg border bg-white/5 ${reached > 0 ? TIER_BORDER[tierIdx] : "border-white/10"}`}>
+              <div className="flex items-center gap-2">
+                <span className={`text-2xl ${reached > 0 ? "" : "grayscale opacity-60"}`}>{b.emoji}</span>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold text-white flex items-center gap-1.5">
+                    {b.name}
+                    {reached > 0 && (
+                      <span className={`text-xs ${TIER_COLOR[tierIdx]}`}>{TIER_MEDAL[tierIdx]} {TIER_NAMES[tierIdx]}</span>
+                    )}
+                  </p>
+                  <p className="text-xs text-gray-400">
+                    {reached >= 3 ? "Maxed out! 🏆" : `${b.value} / ${nextTarget} ${b.unit} → ${TIER_NAMES[reached]}`}
+                  </p>
                 </div>
-                {!done && (
-                  <div className="mt-2">
-                    <div className="h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-averna-purple to-averna-cyan"
-                        style={{ width: `${pct}%` }}
-                      />
-                    </div>
-                    <p className="text-[10px] text-gray-500 mt-1">
-                      {Math.min(m.current, m.target)} / {m.target}
-                    </p>
-                  </div>
-                )}
-                {done && (
-                  <p className="text-[10px] text-averna-neon mt-2 font-medium">✓ Unlocked!</p>
-                )}
               </div>
-            );
-          })}
-        </div>
+              <div className="mt-2 flex items-center gap-2">
+                <div className="h-1.5 flex-1 rounded-full bg-white/10 overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-averna-purple to-averna-neon"
+                    style={{ width: `${Math.max(0, Math.min(100, pct))}%` }}
+                  />
+                </div>
+                <div className="flex gap-0.5">
+                  {[0, 1, 2].map((i) => (
+                    <span key={i} className={`text-xs ${i < reached ? TIER_COLOR[i] : "opacity-25 grayscale"}`}>
+                      {TIER_MEDAL[i]}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </CardContent>
     </Card>
   );
