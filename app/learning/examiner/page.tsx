@@ -33,12 +33,27 @@ export default function ExaminerPage() {
   const [transcript, setTranscript] = useState("");
   const [elapsed, setElapsed] = useState(0);
   const [result, setResult] = useState<SpeakingScore | null>(null);
+  const [metrics, setMetrics] = useState<{ wpm: number; fillers: number; words: number; secs: number } | null>(null);
 
   const recRef = useRef<any>(null);
   const startRef = useRef<number>(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const trackedRef = useRef(false);
 
   const question = QUESTIONS[qIndex];
+
+  // Record speaking practice for the daily Learning Path (once per day).
+  const trackSpeaking = () => {
+    if (trackedRef.current) return;
+    trackedRef.current = true;
+    fetch("/api/activity/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "SPEAKING" }),
+    }).catch(() => {
+      trackedRef.current = false;
+    });
+  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -62,6 +77,7 @@ export default function ExaminerPage() {
   const start = () => {
     setTranscript("");
     setResult(null);
+    setMetrics(null);
     setElapsed(0);
     startRef.current = Date.now();
     try { recRef.current?.start(); } catch {}
@@ -75,13 +91,22 @@ export default function ExaminerPage() {
     setListening(false);
     const secs = Math.max(1, Math.round((Date.now() - startRef.current) / 1000));
     setTranscript((t) => {
-      if (t.trim().length > 0) setResult(scoreSpeaking(t, secs));
+      if (t.trim().length > 0) {
+        setResult(scoreSpeaking(t, secs));
+        // Fluency metrics
+        const words = t.trim().split(/\s+/).filter(Boolean);
+        const fillerList = ["um", "uh", "er", "erm", "like", "basically", "actually", "literally"];
+        const fillers = words.filter((w) => fillerList.includes(w.toLowerCase().replace(/[^a-z]/g, ""))).length;
+        const wpm = Math.round(words.length / (secs / 60));
+        setMetrics({ wpm, fillers, words: words.length, secs });
+        trackSpeaking();
+      }
       return t;
     });
   }, []);
 
   const reset = () => {
-    setTranscript(""); setResult(null); setElapsed(0);
+    setTranscript(""); setResult(null); setMetrics(null); setElapsed(0);
     setQIndex((i) => (i + 1) % QUESTIONS.length);
   };
 
@@ -165,6 +190,39 @@ export default function ExaminerPage() {
                   <p className="text-averna-pink font-bold text-lg">{result.grammar.toFixed(1)}</p>
                 </div>
               </div>
+              {metrics && (
+                <div className="grid grid-cols-3 gap-3 text-sm">
+                  <div className="p-3 rounded-lg bg-white/5 border border-white/10">
+                    <p className="text-gray-400">Speed</p>
+                    <p className={`font-bold text-lg ${metrics.wpm >= 110 && metrics.wpm <= 160 ? "text-averna-neon" : "text-yellow-400"}`}>
+                      {metrics.wpm}
+                    </p>
+                    <p className="text-[10px] text-gray-500">words/min</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-white/5 border border-white/10">
+                    <p className="text-gray-400">Filler words</p>
+                    <p className={`font-bold text-lg ${metrics.fillers <= 2 ? "text-averna-neon" : "text-orange-400"}`}>
+                      {metrics.fillers}
+                    </p>
+                    <p className="text-[10px] text-gray-500">um, uh, like…</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-white/5 border border-white/10">
+                    <p className="text-gray-400">Duration</p>
+                    <p className="font-bold text-lg text-averna-cyan">{metrics.secs}s</p>
+                    <p className="text-[10px] text-gray-500">{metrics.words} words</p>
+                  </div>
+                </div>
+              )}
+              {metrics && (
+                <p className="text-xs text-gray-400">
+                  {metrics.wpm < 110
+                    ? "💡 Try to speak a little faster and more continuously."
+                    : metrics.wpm > 160
+                    ? "💡 Slow down slightly for clearer delivery."
+                    : "👍 Great speaking pace!"}
+                  {metrics.fillers > 3 && " Reduce filler words to sound more fluent."}
+                </p>
+              )}
               <div className="text-left bg-white/5 border border-white/10 rounded-lg p-4">
                 <p className="text-sm text-averna-neon font-semibold mb-2">Examiner feedback ({result.wordCount} words):</p>
                 <ul className="text-sm text-gray-300 space-y-1 list-disc list-inside">

@@ -130,6 +130,24 @@ export default async function TeacherDashboard() {
                   Gradebook
                 </Button>
               </Link>
+              <Link href="/teacher/insights">
+                <Button className="w-full neon-button bg-averna-cyan/80 hover:bg-averna-cyan text-black">
+                  <BarChart className="mr-2 h-4 w-4" />
+                  Class Insights
+                </Button>
+              </Link>
+              <Link href="/teacher/grading-assistant">
+                <Button className="w-full" variant="outline">
+                  <CheckSquare className="mr-2 h-4 w-4" />
+                  Grading Assistant
+                </Button>
+              </Link>
+              <Link href="/teacher/planner">
+                <Button className="w-full" variant="outline">
+                  <CalendarDays className="mr-2 h-4 w-4" />
+                  Lesson Planner
+                </Button>
+              </Link>
               <Link href="/teacher/lessons">
                 <Button className="w-full" variant="outline">
                   <BookOpen className="mr-2 h-4 w-4" />

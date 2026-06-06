@@ -34,7 +34,17 @@ export function StudyPet({ streak, points }: Props) {
     : 100;
 
   // Pet "happiness" reflects the current streak
-  const hearts = Math.min(5, Math.max(1, Math.ceil(streak / 3)));
+  const hearts = Math.min(5, Math.ceil(streak / 3));
+
+  // Mood reflects daily consistency — emotional attachment that pulls you back
+  const mood =
+    streak === 0
+      ? { label: "Misses you", face: "😢", glow: "grayscale opacity-80", note: "I miss our daily sessions — study a little today to cheer me up!" }
+      : streak < 3
+      ? { label: "Content", face: "🙂", glow: "", note: stage.mood }
+      : streak < 7
+      ? { label: "Happy", face: "😄", glow: "", note: "You're so consistent — I'm thriving!" }
+      : { label: "Thrilled", face: "🤩", glow: "drop-shadow-[0_0_12px_rgba(236,72,153,0.6)]", note: "On fire! Our streak makes me unstoppable!" };
 
   return (
     <Card className="glass border-averna-pink/30 relative overflow-hidden">
@@ -45,9 +55,12 @@ export function StudyPet({ streak, points }: Props) {
         </CardTitle>
       </CardHeader>
       <CardContent className="relative text-center">
-        <div className="text-6xl mb-2 animate-float">{stage.emoji}</div>
-        <p className="text-white font-bold">{stage.name}</p>
-        <p className="text-xs text-gray-400 italic mb-3">&ldquo;{stage.mood}&rdquo;</p>
+        <div className={`text-6xl mb-2 animate-float ${mood.glow}`}>{stage.emoji}</div>
+        <p className="text-white font-bold flex items-center justify-center gap-1.5">
+          {stage.name}
+          <span className="text-xs font-normal text-averna-pink">{mood.face} {mood.label}</span>
+        </p>
+        <p className="text-xs text-gray-400 italic mb-3">&ldquo;{mood.note}&rdquo;</p>
 
         {/* Happiness hearts */}
         <div className="flex justify-center gap-0.5 mb-3">

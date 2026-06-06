@@ -21,6 +21,13 @@ import { StudyPet } from "@/components/dashboard/study-pet";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { OnboardingTour } from "@/components/onboarding-tour";
 import { AccountNotice } from "@/components/account-notice";
+import { LearningPath } from "@/components/dashboard/learning-path";
+import { SmartFocus } from "@/components/dashboard/smart-focus";
+import { StudyReminder } from "@/components/dashboard/study-reminder";
+import { StreakCelebration } from "@/components/dashboard/streak-celebration";
+import { WeeklyRecap } from "@/components/dashboard/weekly-recap";
+import { WhatsNew } from "@/components/dashboard/whats-new";
+import { AchievementToast } from "@/components/dashboard/achievement-toast";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
@@ -100,6 +107,47 @@ export default async function DashboardPage() {
     where: { studentId: student.id },
   });
 
+  // --- Learning Path progress (today) ---
+  // We use the IELTSTest table (module column) + the ActivityLog (single source
+  // of truth for actions) + HomeworkSubmission so every step maps to a real,
+  // reliably-recorded signal.
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+
+  const [todayTests, todayActivities, homeworkSubmittedToday] = await Promise.all([
+    db.iELTSTest.findMany({
+      where: { studentId: student.id, completedAt: { gte: todayStart } },
+      select: { module: true, aiAnalysis: true },
+    }),
+    db.activityLog.findMany({
+      where: { studentId: student.id, createdAt: { gte: todayStart } },
+      select: { action: true, points: true },
+    }),
+    db.homeworkSubmission.count({
+      where: { studentId: student.id, submittedAt: { gte: todayStart } },
+    }),
+  ]);
+
+  const hasListeningToday = todayTests.some((t) => t.module === "LISTENING");
+  const hasReadingToday = todayTests.some((t) => t.module === "READING");
+  const hasWritingToday = todayTests.some((t) => t.module === "WRITING");
+  // A mock exam is saved as IELTSTest records tagged with aiAnalysis.type = "mock".
+  const hasMockExamToday = todayTests.some((t) => {
+    const a = t.aiAnalysis as { type?: string } | null;
+    return !!a && typeof a === "object" && a.type === "mock";
+  });
+
+  const todayActions = new Set(todayActivities.map((a) => a.action));
+  const hasFlashcardsToday = todayActions.has("FLASHCARDS_STUDIED");
+  const hasSpeakingToday =
+    todayActions.has("SPEAKING_PRACTICE") || todayActions.has("SPEAKING_SESSION_COMPLETED");
+  const hasChallengeToday = todayActions.has("DAILY_CHALLENGE");
+  const hasPronunciationToday = todayActions.has("PRONUNCIATION_PRACTICE");
+  const hasHomeworkToday = homeworkSubmittedToday > 0;
+
+  // Total XP the student has actually earned today (powers the daily goal meter).
+  const xpEarnedToday = todayActivities.reduce((sum, a) => sum + (a.points ?? 0), 0);
+
   // Get upcoming homework
   const upcomingHomework = await db.homework.findMany({
     where: {
@@ -155,6 +203,21 @@ export default async function DashboardPage() {
             streak={student.currentStreak}
           />
 
+          <LearningPath
+            studentName={student.user.name}
+            currentStreak={student.currentStreak}
+            xpEarnedToday={xpEarnedToday}
+            hasListening={hasListeningToday}
+            hasReading={hasReadingToday}
+            hasWriting={hasWritingToday}
+            hasSpeaking={hasSpeakingToday}
+            hasMockExam={hasMockExamToday}
+            hasHomework={hasHomeworkToday}
+            hasFlashcards={hasFlashcardsToday}
+            hasChallenge={hasChallengeToday}
+            hasPronunciation={hasPronunciationToday}
+          />
+
           {student.blacklisted && (
             <div className="rounded-xl border border-red-500/40 bg-red-500/10 p-4 text-red-200 flex items-start gap-3">
               <span className="text-xl">⚠️</span>
@@ -190,6 +253,9 @@ export default async function DashboardPage() {
 
             <div className="space-y-6">
               <StudyPet streak={student.currentStreak} points={student.totalPoints} />
+              <WeeklyRecap studentId={student.id} streak={student.currentStreak} />
+              <SmartFocus studentId={student.id} />
+              <StudyReminder xpEarnedToday={xpEarnedToday} />
               <StudentOfTheWeek />
               <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
               <DailyArticle />
@@ -201,6 +267,16 @@ export default async function DashboardPage() {
       </div>
       <MobileNav />
       <OnboardingTour />
+      <StreakCelebration currentStreak={student.currentStreak} />
+      <WhatsNew />
+      <AchievementToast
+        achievements={student.achievements.map((a) => ({
+          id: a.id,
+          name: a.achievement.name,
+          icon: a.achievement.icon,
+          points: a.achievement.points,
+        }))}
+      />
     </div>
   );
 }

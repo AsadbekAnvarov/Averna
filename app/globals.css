@@ -313,3 +313,34 @@ html.light ::-webkit-scrollbar-thumb { background: linear-gradient(#0d9460, #0e7
 }
 html.light .skeleton { background: rgba(0,0,0,0.06); }
 html.light .skeleton::after { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent); }
+
+
+/* ===================================================================
+   LIGHT THEME — message bubble fixes
+   text-gray-100 was previously not remapped, leaving incoming chat
+   bubbles with near-white text on a light surface (invisible).
+   =================================================================== */
+html.light .text-gray-100 { color: #1e293b !important; }
+
+/* Sent messages keep white text on the green bubble in light mode
+   (declared last so it wins over the generic .text-white remap). */
+html.light .chat-out,
+html.light .chat-out * { color: #ffffff !important; }
+
+
+/* ===================================================================
+   LIGHT THEME — accent shades introduced by newer features
+   (Progress, Learning Path difficulty badges, At-Risk, heatmaps).
+   These light-tint text colours were invisible/low-contrast on white,
+   so remap them to readable darker shades. Dark mode is untouched.
+   =================================================================== */
+html.light .text-emerald-400 { color: #059669 !important; }
+html.light .text-emerald-300 { color: #047857 !important; }
+html.light .text-rose-300 { color: #e11d48 !important; }
+html.light .text-rose-400 { color: #e11d48 !important; }
+html.light .text-amber-300 { color: #b45309 !important; }
+html.light .text-amber-400 { color: #b45309 !important; }
+html.light .text-yellow-300 { color: #a16207 !important; }
+html.light .text-orange-300 { color: #c2410c !important; }
+html.light .text-cyan-400 { color: #0891b2 !important; }
+html.light .text-gray-600 { color: #475569 !important; }

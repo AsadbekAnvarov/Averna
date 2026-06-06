@@ -60,6 +60,12 @@ export default async function LeaguesPage() {
     board.push({ id: me.id, name: me.user.name ?? "You", points: 0 });
   }
 
+  const myRank = board.findIndex((b) => b.id === me.id) + 1;
+  const promoZone = 5; // top 5 get promoted
+  const releZone = board.length > 12 ? board.length - 3 : Infinity; // bottom 3 relegated when enough players
+  const myZone =
+    myRank <= promoZone && myPoints > 0 ? "promotion" : myRank >= releZone ? "relegation" : "safe";
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
@@ -83,6 +89,11 @@ export default async function LeaguesPage() {
             ) : (
               <p className="text-sm text-averna-neon mt-2">👑 You&apos;re in the top league!</p>
             )}
+            <p className="text-xs text-gray-400 mt-3">
+              Weekly rank <span className="text-white font-semibold">#{myRank}</span> of {board.length}
+              {myZone === "promotion" && <span className="text-averna-neon"> · 🔼 Promotion zone!</span>}
+              {myZone === "relegation" && <span className="text-rose-300"> · 🔽 Relegation zone — earn points!</span>}
+            </p>
           </CardContent>
         </Card>
 
@@ -94,6 +105,10 @@ export default async function LeaguesPage() {
             </span>
           ))}
         </div>
+
+        <p className="text-center text-[11px] text-gray-500 mb-6">
+          🔼 Top 5 get promoted next week · 🔽 bottom places risk relegation — stay active to climb!
+        </p>
 
         {/* Weekly leaderboard */}
         <Card className="glass border-averna-cyan/30">
@@ -120,6 +135,11 @@ export default async function LeaguesPage() {
                       <span className="flex-1 min-w-0 truncate text-white font-medium">
                         {row.name}{mine && " (you)"}
                       </span>
+                      {i < promoZone ? (
+                        <span title="Promotion zone" className="text-averna-neon text-xs">🔼</span>
+                      ) : i + 1 >= releZone ? (
+                        <span title="Relegation zone" className="text-rose-300 text-xs">🔽</span>
+                      ) : null}
                       <span className="text-averna-cyan font-bold">{row.points} pts</span>
                     </div>
                   );

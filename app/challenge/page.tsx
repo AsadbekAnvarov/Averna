@@ -30,6 +30,18 @@ const QUESTION_POOL: Question[] = [
   { category: "Grammar", question: "Pick the correct passive form: \"The report ___ yesterday.\"", options: ["was written", "is wrote", "has wrote", "writes"], answer: 0, explanation: "Past simple passive: was/were + past participle = \"was written\"." },
   { category: "Linking", question: "Which linker best shows contrast?", options: ["Moreover", "Therefore", "However", "Furthermore"], answer: 2, explanation: "\"However\" introduces a contrasting idea." },
   { category: "Vocabulary", question: "A synonym for \"significant\" is:", options: ["Trivial", "Considerable", "Tiny", "Optional"], answer: 1, explanation: "\"Significant\" means considerable or important." },
+  { category: "Synonym", question: "Choose the closest meaning of \"detrimental\".", options: ["Helpful", "Harmful", "Neutral", "Cheap"], answer: 1, explanation: "\"Detrimental\" means causing harm or damage." },
+  { category: "Grammar", question: "Pick the correct article: \"She is ___ honest person.\"", options: ["a", "an", "the", "—"], answer: 1, explanation: "\"Honest\" begins with a vowel sound (silent 'h'), so we use \"an\"." },
+  { category: "Collocation", question: "Which verb fits: \"___ a goal\"?", options: ["do", "make", "achieve", "take"], answer: 2, explanation: "We \"achieve a goal\" (also \"reach\" or \"set\" a goal)." },
+  { category: "Word form", question: "Complete: \"The results were ___.\" (impress)", options: ["impress", "impressive", "impression", "impressively"], answer: 1, explanation: "An adjective describes \"results\": impressive." },
+  { category: "Prepositions", question: "She has been working here ___ 2019.", options: ["for", "since", "from", "during"], answer: 1, explanation: "Use \"since\" with a point in time; \"for\" with a duration." },
+  { category: "Idiom", question: "\"Once in a blue moon\" means:", options: ["Very often", "Very rarely", "At night", "By accident"], answer: 1, explanation: "It describes something that happens very rarely." },
+  { category: "Reading", question: "\"The scheme was scrapped due to lack of funding.\" \"Scrapped\" means:", options: ["Expanded", "Cancelled", "Delayed", "Approved"], answer: 1, explanation: "To \"scrap\" a plan is to cancel/abandon it." },
+  { category: "Grammar", question: "Choose: \"By next year, I ___ here for a decade.\"", options: ["will work", "will have worked", "have worked", "worked"], answer: 1, explanation: "Future perfect (will have + past participle) for an action completed by a future point." },
+  { category: "Vocabulary", question: "\"Mitigate\" most nearly means:", options: ["Worsen", "Reduce", "Ignore", "Repeat"], answer: 1, explanation: "To \"mitigate\" is to make something less severe." },
+  { category: "Linking", question: "Which linker best adds a similar idea?", options: ["However", "Furthermore", "Nevertheless", "Whereas"], answer: 1, explanation: "\"Furthermore\" adds supporting information." },
+  { category: "Collocation", question: "Which is correct?", options: ["heavy rain", "strong rain", "big rain", "high rain"], answer: 0, explanation: "We say \"heavy rain\" — a common collocation." },
+  { category: "Synonym", question: "Choose the closest meaning of \"abundant\".", options: ["Scarce", "Plentiful", "Hidden", "Costly"], answer: 1, explanation: "\"Abundant\" means existing in large quantities; plentiful." },
 ];
 
 // Deterministic daily selection of 5 questions (Tashkent day)
@@ -48,16 +60,33 @@ export default function DailyChallengePage() {
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
   const [score, setScore] = useState(0);
+  const [combo, setCombo] = useState(0);
+  const [maxCombo, setMaxCombo] = useState(0);
+  const [points, setPoints] = useState(0);
+  const [lastGain, setLastGain] = useState(0);
   const [finished, setFinished] = useState(false);
   const [rewardMsg, setRewardMsg] = useState("");
 
   const q = questions[current];
+  const comboMult = 1 + Math.min(combo, 4) * 0.5;
 
   const handleSelect = (idx: number) => {
     if (answered) return;
     setSelected(idx);
     setAnswered(true);
-    if (idx === q.answer) setScore((s) => s + 1);
+    if (idx === q.answer) {
+      const newCombo = combo + 1;
+      const mult = 1 + Math.min(newCombo - 1, 4) * 0.5;
+      const gain = Math.round(10 * mult);
+      setCombo(newCombo);
+      setMaxCombo((m) => Math.max(m, newCombo));
+      setPoints((p) => p + gain);
+      setLastGain(gain);
+      setScore((s) => s + 1);
+    } else {
+      setCombo(0);
+      setLastGain(0);
+    }
   };
 
   const handleNext = () => {
@@ -88,6 +117,10 @@ export default function DailyChallengePage() {
     setSelected(null);
     setAnswered(false);
     setScore(0);
+    setCombo(0);
+    setMaxCombo(0);
+    setPoints(0);
+    setLastGain(0);
     setFinished(false);
   };
 
@@ -106,6 +139,21 @@ export default function DailyChallengePage() {
           Daily <span className="neon-text-cyan">Challenge</span>
         </h1>
         <p className="text-gray-400 mb-8">5 quick questions. New set every day. 🌟</p>
+
+        {!finished && (
+          <div className="flex items-center justify-between mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-averna-neon/15 border border-averna-neon/30 text-averna-neon text-sm font-semibold">
+              ⭐ {points} pts
+            </span>
+            {combo >= 2 ? (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/40 text-orange-300 text-sm font-bold animate-pulse">
+                🔥 Combo ×{comboMult}
+              </span>
+            ) : (
+              <span className="text-xs text-gray-500">Answer in a row to build a combo 🔥</span>
+            )}
+          </div>
+        )}
 
         {!finished ? (
           <Card className="glass border-averna-cyan/30 animate-fade-in">
@@ -149,6 +197,13 @@ export default function DailyChallengePage() {
 
               {answered && (
                 <div className="mt-4 p-4 rounded-lg bg-averna-primary/20 border border-averna-primary/30 animate-fade-in">
+                  {selected === q.answer ? (
+                    <p className="text-sm font-semibold text-averna-neon mb-1">
+                      ✓ Correct! +{lastGain} pts{combo >= 2 ? ` (×${comboMult} combo 🔥)` : ""}
+                    </p>
+                  ) : (
+                    <p className="text-sm font-semibold text-rose-300 mb-1">✗ Not quite — combo reset</p>
+                  )}
                   <p className="text-sm text-gray-200">
                     <span className="font-semibold text-averna-neon">Explanation: </span>
                     {q.explanation}
@@ -171,6 +226,16 @@ export default function DailyChallengePage() {
               <h2 className="text-3xl font-bold text-white">
                 You scored {score} / {questions.length}
               </h2>
+              <div className="flex items-center justify-center gap-3">
+                <span className="px-3 py-1 rounded-full bg-averna-neon/15 border border-averna-neon/30 text-averna-neon text-sm font-bold">
+                  ⭐ {points} challenge pts
+                </span>
+                {maxCombo >= 2 && (
+                  <span className="px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/40 text-orange-300 text-sm font-bold">
+                    🔥 Best combo ×{(1 + Math.min(maxCombo - 1, 4) * 0.5)}
+                  </span>
+                )}
+              </div>
               <p className="text-gray-300">
                 {score === questions.length
                   ? "Perfect! You're on fire 🔥"

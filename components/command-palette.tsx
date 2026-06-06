@@ -5,22 +5,28 @@ import { useRouter } from "next/navigation";
 import {
   Search, LayoutDashboard, PenTool, BookOpen, Headphones, Mic, Zap, Layers,
   UserCheck, CalendarClock, Gift, MessageSquare, CalendarDays, Trophy, User, Bell,
+  TrendingUp, Timer, MessagesSquare, Users,
 } from "lucide-react";
 
 interface Cmd { label: string; href: string; icon: any; keywords?: string }
 
 const COMMANDS: Cmd[] = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, keywords: "home main" },
+  { label: "My Progress", href: "/progress", icon: TrendingUp, keywords: "band stats chart trend insights" },
+  { label: "Focus Mode", href: "/focus", icon: Timer, keywords: "pomodoro timer study concentrate" },
   { label: "My Schedule", href: "/schedule", icon: CalendarClock, keywords: "attendance grades" },
   { label: "Calendar", href: "/calendar", icon: CalendarDays, keywords: "month deadlines" },
   { label: "Writing", href: "/learning/writing", icon: PenTool, keywords: "essay task" },
+  { label: "Writing Lab", href: "/learning/writing-lab", icon: PenTool, keywords: "essay coach live suggestions" },
   { label: "Reading", href: "/learning/reading", icon: BookOpen, keywords: "passage test" },
   { label: "Listening", href: "/learning/listening", icon: Headphones, keywords: "audio test" },
   { label: "Speaking", href: "/learning/speaking", icon: Mic, keywords: "partner talk" },
+  { label: "Speaking Roleplay", href: "/learning/roleplay", icon: MessagesSquare, keywords: "conversation scenario interview practice" },
   { label: "Pronunciation", href: "/learning/pronunciation", icon: Mic, keywords: "record voice" },
   { label: "Mock Exam", href: "/learning/mock-exam", icon: Trophy, keywords: "test band" },
   { label: "Daily Challenge", href: "/challenge", icon: Zap, keywords: "quiz daily" },
-  { label: "Flashcards", href: "/flashcards", icon: Layers, keywords: "vocabulary words" },
+  { label: "Flashcards", href: "/flashcards", icon: Layers, keywords: "vocabulary words spaced repetition" },
+  { label: "Peer Review", href: "/peer-review", icon: Users, keywords: "feedback review classmates essay" },
   { label: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck, keywords: "second teacher book" },
   { label: "Rewards", href: "/rewards", icon: Gift, keywords: "points store prizes" },
   { label: "Messages", href: "/messages", icon: MessageSquare, keywords: "chat teacher" },

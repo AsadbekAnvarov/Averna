@@ -8,6 +8,7 @@ import { Users, Award, ClipboardCheck, BookMarked, Flame, Target, CheckCircle2, 
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { WeeklyReportButton } from "@/components/teacher/weekly-report-button";
 
 function attLabel(status: string) {
   if (status === "PRESENT") return { t: "Present", c: "text-averna-neon", I: CheckCircle2 };
@@ -71,6 +72,18 @@ export default async function ParentReportPage({ params }: { params: { studentId
             {student.blacklisted && (
               <p className="mt-2 text-sm text-red-300">⚠️ On blacklist: {student.blacklistReason}</p>
             )}
+            <div className="mt-4">
+              <WeeklyReportButton
+                name={student.user.name ?? "Student"}
+                group={student.group?.name ?? "No group"}
+                level={student.level ?? "N/A"}
+                points={student.totalPoints}
+                streak={student.currentStreak}
+                attendanceRate={rate}
+                avgGrade={avgGrade}
+                homework={student.homeworkSubmissions.map((h) => ({ title: h.homework.title, status: h.status }))}
+              />
+            </div>
           </CardContent>
         </Card>
 
