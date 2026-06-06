@@ -107,6 +107,7 @@ export default function RoleplayPage() {
   const [transcript, setTranscript] = useState("");
   const [answers, setAnswers] = useState<string[]>([]);
   const [result, setResult] = useState<SpeakingScore | null>(null);
+  const [reaction, setReaction] = useState("");
 
   const recRef = useRef<any>(null);
   const trackedRef = useRef(false);
@@ -154,6 +155,7 @@ export default function RoleplayPage() {
     setAnswers([]);
     setResult(null);
     setTranscript("");
+    setReaction("");
     setTimeout(() => speak(`${s.intro} ${s.prompts[0]}`), 250);
   };
 
@@ -174,16 +176,25 @@ export default function RoleplayPage() {
 
   const nextTurn = () => {
     if (!scenario) return;
-    const recorded = [...answers, transcript.trim()];
+    const answer = transcript.trim();
+    const recorded = [...answers, answer];
     setAnswers(recorded);
     setTranscript("");
+
+    // Contextual reaction (light branching) based on the answer's depth
+    const wc = answer.split(/\s+/).filter(Boolean).length;
+    let react = "";
+    if (wc === 0) react = "";
+    else if (wc < 6) react = "I see — try to give a fuller answer next time, but let's continue.";
+    else if (wc < 20) react = "Thanks for sharing that.";
+    else react = "Great, that's a nice, detailed answer!";
 
     if (turn + 1 < scenario.prompts.length) {
       const nextIdx = turn + 1;
       setTurn(nextIdx);
-      setTimeout(() => speak(scenario.prompts[nextIdx]), 200);
+      setReaction(react);
+      setTimeout(() => speak(`${react} ${scenario.prompts[nextIdx]}`), 200);
     } else {
-      // Finished — score the combined conversation
       const combined = recorded.join(" ").trim();
       setResult(scoreSpeaking(combined || "", Math.max(30, recorded.length * 20)));
       trackSpeaking();
@@ -196,6 +207,7 @@ export default function RoleplayPage() {
     setAnswers([]);
     setResult(null);
     setTranscript("");
+    setReaction("");
   };
 
   return (
@@ -272,6 +284,7 @@ export default function RoleplayPage() {
                 </span>
                 <div className="bg-white/10 text-gray-100 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[85%]">
                   <p className="text-[11px] text-averna-pink font-semibold mb-0.5">{scenario.persona}</p>
+                  {reaction && turn > 0 && <p className="text-sm text-averna-neon/90 mb-1 italic">{reaction}</p>}
                   <p className="text-sm">{scenario.prompts[turn]}</p>
                 </div>
               </div>
@@ -282,6 +295,9 @@ export default function RoleplayPage() {
                   <div className="bg-averna-primary text-white rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[85%]">
                     <p className="text-[11px] text-white/80 font-semibold mb-0.5 flex items-center gap-1">
                       You {listening && <Loader2 className="h-3 w-3 animate-spin" />}
+                      {!listening && transcript && (
+                        <span className="text-white/60 font-normal">· {transcript.split(/\s+/).filter(Boolean).length} words</span>
+                      )}
                     </p>
                     <p className="text-sm">{transcript || "Listening…"}</p>
                   </div>
