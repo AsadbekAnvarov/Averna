@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { X, Sparkles, Flame, Star } from "lucide-react";
 import { getLevelInfo } from "@/lib/utils";
+import Link from "next/link";
 
 const QUOTES = [
   "Success is the sum of small efforts repeated every day.",
@@ -70,10 +71,13 @@ export function MotivationBanner({ name, points, streak }: MotivationBannerProps
         {/* Level + streak row */}
         <div className="mt-5 flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-averna-purple/20 border border-averna-purple/40 text-averna-purple text-sm font-semibold">
+            <Link
+              href="/levels"
+              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-averna-purple/20 border border-averna-purple/40 text-averna-purple text-sm font-semibold hover:bg-averna-purple/30 transition-colors"
+            >
               <Star className="h-4 w-4" />
               Level {level} · {title}
-            </span>
+            </Link>
           </div>
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/40 text-orange-300 text-sm font-semibold">
