@@ -26,6 +26,7 @@ import { SmartFocus } from "@/components/dashboard/smart-focus";
 import { StudyReminder } from "@/components/dashboard/study-reminder";
 import { StreakCelebration } from "@/components/dashboard/streak-celebration";
 import { WeeklyRecap } from "@/components/dashboard/weekly-recap";
+import { WhatsNew } from "@/components/dashboard/whats-new";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
@@ -266,6 +267,7 @@ export default async function DashboardPage() {
       <MobileNav />
       <OnboardingTour />
       <StreakCelebration currentStreak={student.currentStreak} />
+      <WhatsNew />
     </div>
   );
 }
