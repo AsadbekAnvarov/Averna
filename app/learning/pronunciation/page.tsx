@@ -17,6 +17,17 @@ const PHRASES = [
   "Confidence comes from consistent practice.",
 ];
 
+const MINIMAL_PAIRS: { a: string; b: string; focus: string }[] = [
+  { a: "ship", b: "sheep", focus: "/ɪ/ vs /iː/" },
+  { a: "bit", b: "beat", focus: "/ɪ/ vs /iː/" },
+  { a: "full", b: "fool", focus: "/ʊ/ vs /uː/" },
+  { a: "cat", b: "cut", focus: "/æ/ vs /ʌ/" },
+  { a: "thin", b: "tin", focus: "/θ/ vs /t/" },
+  { a: "vest", b: "west", focus: "/v/ vs /w/" },
+  { a: "rice", b: "lice", focus: "/r/ vs /l/" },
+  { a: "pen", b: "pan", focus: "/e/ vs /æ/" },
+];
+
 function normalize(text: string): string[] {
   return text
     .toLowerCase()
@@ -153,6 +164,35 @@ export default function PronunciationPage() {
     setAudioUrl(null);
   };
 
+  // Minimal pairs sound-discrimination drill
+  const [mpIndex, setMpIndex] = useState(0);
+  const [mpTarget, setMpTarget] = useState<0 | 1>(0);
+  const [mpPlayed, setMpPlayed] = useState(false);
+  const [mpResult, setMpResult] = useState<"correct" | "wrong" | null>(null);
+  const mp = MINIMAL_PAIRS[mpIndex];
+
+  const playMinimalPair = () => {
+    const target: 0 | 1 = Math.random() < 0.5 ? 0 : 1;
+    setMpTarget(target);
+    setMpResult(null);
+    setMpPlayed(true);
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(target === 0 ? mp.a : mp.b);
+    u.lang = "en-US";
+    u.rate = 0.85;
+    window.speechSynthesis.speak(u);
+  };
+  const guessMinimalPair = (choice: 0 | 1) => {
+    if (mpResult || !mpPlayed) return;
+    setMpResult(choice === mpTarget ? "correct" : "wrong");
+  };
+  const nextMinimalPair = () => {
+    setMpIndex((i) => (i + 1) % MINIMAL_PAIRS.length);
+    setMpResult(null);
+    setMpPlayed(false);
+  };
+
   const feedback =
     score === null
       ? ""
@@ -277,6 +317,59 @@ export default function PronunciationPage() {
                 {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                 <audio src={audioUrl} controls className="w-full" />
               </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className="glass border-averna-cyan/30 mt-6">
+          <CardHeader>
+            <CardTitle className="text-averna-cyan flex items-center gap-2">
+              <Volume2 className="h-5 w-5" /> Minimal Pairs — Train Tricky Sounds
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-gray-400">
+              Press play, then tap the word you heard. Perfect for sounds learners often confuse.
+            </p>
+            <div className="flex items-center gap-3 flex-wrap">
+              <Button onClick={playMinimalPair} className="neon-button bg-averna-cyan/80 hover:bg-averna-cyan text-black">
+                <Volume2 className="mr-2 h-4 w-4" /> Play a word
+              </Button>
+              <span className="text-xs text-gray-500">Focus sound: {mp.focus}</span>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {[mp.a, mp.b].map((w, i) => {
+                const chosen = mpResult !== null;
+                const isTarget = i === mpTarget;
+                return (
+                  <button
+                    key={w}
+                    onClick={() => guessMinimalPair(i as 0 | 1)}
+                    disabled={!mpPlayed || chosen}
+                    className={`py-4 rounded-xl border text-lg font-semibold transition-all ${
+                      chosen && isTarget
+                        ? "border-averna-neon bg-averna-neon/15 text-averna-neon"
+                        : chosen
+                        ? "border-white/10 bg-white/5 text-gray-400"
+                        : "border-white/10 bg-white/5 text-white hover:border-averna-cyan/50"
+                    } disabled:opacity-60`}
+                  >
+                    {w}
+                  </button>
+                );
+              })}
+            </div>
+            {!mpPlayed && <p className="text-xs text-gray-500">▶️ Press &ldquo;Play a word&rdquo; first.</p>}
+            {mpResult === "correct" && (
+              <p className="text-averna-neon text-sm">✓ Correct! You heard &ldquo;{mpTarget === 0 ? mp.a : mp.b}&rdquo;.</p>
+            )}
+            {mpResult === "wrong" && (
+              <p className="text-rose-300 text-sm">✗ It was &ldquo;{mpTarget === 0 ? mp.a : mp.b}&rdquo;. Listen again and notice the difference.</p>
+            )}
+            {mpResult && (
+              <Button onClick={nextMinimalPair} variant="outline" className="border-white/20">
+                Next pair →
+              </Button>
             )}
           </CardContent>
         </Card>
