@@ -25,6 +25,7 @@ import { LearningPath } from "@/components/dashboard/learning-path";
 import { SmartFocus } from "@/components/dashboard/smart-focus";
 import { StudyReminder } from "@/components/dashboard/study-reminder";
 import { StreakCelebration } from "@/components/dashboard/streak-celebration";
+import { WeeklyRecap } from "@/components/dashboard/weekly-recap";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
@@ -250,6 +251,7 @@ export default async function DashboardPage() {
 
             <div className="space-y-6">
               <StudyPet streak={student.currentStreak} points={student.totalPoints} />
+              <WeeklyRecap studentId={student.id} streak={student.currentStreak} />
               <SmartFocus studentId={student.id} />
               <StudyReminder xpEarnedToday={xpEarnedToday} />
               <StudentOfTheWeek />
