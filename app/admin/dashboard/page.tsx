@@ -6,7 +6,22 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, GraduationCap, Layers, UserPlus, Inbox, BarChart3, Gift, Megaphone, Activity, Wallet, ScrollText } from "lucide-react";
+import {
+  Users,
+  GraduationCap,
+  Layers,
+  UserPlus,
+  Inbox,
+  BarChart3,
+  Gift,
+  Megaphone,
+  Activity,
+  Wallet,
+  ScrollText,
+  ShieldCheck,
+  Trophy,
+  ArrowRight,
+} from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
@@ -79,9 +94,29 @@ export default async function AdminDashboard() {
   ]);
 
   const pending = students.filter((s) => !s.groupId);
+  const firstName = (session.user.name ?? "Admin").split(" ")[0];
+
+  const stats = [
+    { label: "Students", value: students.length, icon: Users, accent: "text-averna-cyan", ring: "ring-averna-cyan/30", glow: "from-averna-cyan/20", iconBg: "bg-averna-cyan/15 text-averna-cyan" },
+    { label: "Teachers", value: teacherCount, icon: GraduationCap, accent: "text-averna-purple", ring: "ring-averna-purple/30", glow: "from-averna-purple/20", iconBg: "bg-averna-purple/15 text-averna-purple" },
+    { label: "Groups", value: groups.length, icon: Layers, accent: "text-averna-neon", ring: "ring-averna-neon/30", glow: "from-averna-neon/20", iconBg: "bg-averna-neon/15 text-averna-neon" },
+    { label: "Pending", value: pending.length, icon: Inbox, accent: "text-averna-pink", ring: "ring-averna-pink/30", glow: "from-averna-pink/20", iconBg: "bg-averna-pink/15 text-averna-pink" },
+  ];
+
+  const actions = [
+    { href: "/admin/analytics", label: "Analytics", desc: "Platform insights", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+    { href: "/admin/groups", label: "Manage Groups", desc: "Classes & schedules", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+    { href: "/admin/teachers", label: "Manage Teachers", desc: "Staff accounts", icon: GraduationCap, iconBg: "bg-averna-blue/15 text-averna-blue", hover: "hover:border-averna-blue/40" },
+    { href: "/admin/rewards", label: "Rewards & Requests", desc: "Approve redemptions", icon: Gift, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
+    { href: "/admin/announcements", label: "Announcements", desc: "Broadcast updates", icon: Megaphone, iconBg: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
+    { href: "/admin/content", label: "Manage Content", desc: "Lessons & materials", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+    { href: "/admin/finance", label: "Finance", desc: "Payments & billing", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
+    { href: "/admin/system", label: "System Health", desc: "Monitor status", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+    { href: "/admin/logs", label: "Audit Log", desc: "Track all actions", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
+  ];
 
   const StudentForm = ({ s }: { s: (typeof students)[number] }) => (
-    <form action={enrollStudent} className="flex flex-col md:flex-row md:items-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10">
+    <form action={enrollStudent} className="flex flex-col md:flex-row md:items-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10 transition-colors hover:border-averna-cyan/30">
       <input type="hidden" name="studentId" value={s.id} />
       <div className="md:w-56 min-w-0">
         <p className="text-white font-medium truncate">{s.user.name ?? "Unnamed"}</p>
@@ -120,66 +155,76 @@ export default async function AdminDashboard() {
       <div className="container mx-auto px-4 py-8 max-w-5xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
 
-        <h1 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
-          <ShieldGraphic />
-          Admin Panel
-        </h1>
-
-        <div className="mb-8 flex flex-wrap gap-3">
-          <Link href="/admin/analytics">
-            <Button className="neon-button bg-averna-cyan/80 hover:bg-averna-cyan text-black">
-              <BarChart3 className="mr-2 h-4 w-4" /> Analytics
-            </Button>
-          </Link>
-          <Link href="/admin/groups">
-            <Button className="neon-button bg-averna-purple/80 hover:bg-averna-purple">
-              <Layers className="mr-2 h-4 w-4" /> Manage Groups
-            </Button>
-          </Link>
-          <Link href="/admin/teachers">
-            <Button className="neon-button bg-blue-500/80 hover:bg-blue-500">
-              <GraduationCap className="mr-2 h-4 w-4" /> Manage Teachers
-            </Button>
-          </Link>
-          <Link href="/admin/rewards">
-            <Button className="neon-button bg-averna-pink/80 hover:bg-averna-pink">
-              <Gift className="mr-2 h-4 w-4" /> Rewards &amp; Requests
-            </Button>
-          </Link>
-          <Link href="/admin/announcements">
-            <Button variant="outline" className="border-averna-neon/40 text-averna-neon">
-              <Megaphone className="mr-2 h-4 w-4" /> Announce
-            </Button>
-          </Link>
-          <Link href="/admin/content">
-            <Button variant="outline" className="border-averna-purple/40 text-averna-purple">
-              <Layers className="mr-2 h-4 w-4" /> Manage Content
-            </Button>
-          </Link>
-          <Link href="/admin/finance">
-            <Button variant="outline" className="border-averna-neon/40 text-averna-neon">
-              <Wallet className="mr-2 h-4 w-4" /> Finance
-            </Button>
-          </Link>
-          <Link href="/admin/system">
-            <Button variant="outline" className="border-averna-cyan/40 text-averna-cyan">
-              <Activity className="mr-2 h-4 w-4" /> System Health
-            </Button>
-          </Link>
-          <Link href="/admin/logs">
-            <Button variant="outline" className="border-white/20 text-gray-200">
-              <ScrollText className="mr-2 h-4 w-4" /> Audit Log
-            </Button>
-          </Link>
+        {/* Welcome banner */}
+        <div className="mb-8 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-averna-purple/10 border border-averna-purple/20 text-averna-purple text-xs font-medium mb-3">
+            <ShieldCheck className="h-3.5 w-3.5" />
+            Admin Control Center
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+            Welcome back, <span className="neon-text">{firstName}</span>
+          </h1>
+          <p className="text-gray-400 mt-1">Manage students, staff and the whole platform from here.</p>
         </div>
 
         {/* Stats */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <StatCard icon={<Users className="h-4 w-4" />} label="Students" value={students.length} color="cyan" />
-          <StatCard icon={<GraduationCap className="h-4 w-4" />} label="Teachers" value={teacherCount} color="purple" />
-          <StatCard icon={<Layers className="h-4 w-4" />} label="Groups" value={groups.length} color="neon" />
-          <StatCard icon={<Inbox className="h-4 w-4" />} label="Pending" value={pending.length} color="pink" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+          {stats.map((stat) => {
+            const Icon = stat.icon;
+            return (
+              <Card
+                key={stat.label}
+                className={`glass relative overflow-hidden ring-1 ${stat.ring} border-transparent transition-transform duration-300 hover:-translate-y-1`}
+              >
+                <div className={`pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br ${stat.glow} to-transparent blur-2xl`} />
+                <CardContent className="p-6 relative">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <p className="text-sm text-gray-400 font-medium">{stat.label}</p>
+                      <p className={`text-4xl font-bold mt-2 ${stat.accent}`}>{stat.value}</p>
+                    </div>
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg}`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
+
+        {/* Quick actions */}
+        <Card className="glass border-averna-primary/30 mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-white">
+              <ShieldCheck className="h-5 w-5 text-averna-purple" />
+              Management Tools
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {actions.map((action) => {
+                const Icon = action.icon;
+                return (
+                  <Link key={action.href} href={action.href} className="group">
+                    <div
+                      className={`flex items-center gap-4 p-4 rounded-xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/50 hover:-translate-y-0.5 ${action.hover}`}
+                    >
+                      <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${action.iconBg}`}>
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold text-white text-sm truncate">{action.label}</p>
+                        <p className="text-xs text-gray-400 truncate">{action.desc}</p>
+                      </div>
+                      <ArrowRight className="h-4 w-4 text-gray-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Pending enrollment */}
         <Card className="glass border-averna-pink/30 mb-8">
@@ -227,44 +272,12 @@ export default async function AdminDashboard() {
         </Card>
 
         {/* Hall of Fame */}
-        <h2 className="text-2xl font-bold text-white mb-4">🏆 Hall of Fame</h2>
+        <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+          <Trophy className="h-6 w-6 text-amber-400" />
+          Hall of Fame
+        </h2>
         <TopPerformers />
       </div>
     </div>
   );
-}
-
-function StatCard({
-  icon,
-  label,
-  value,
-  color,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: number;
-  color: "cyan" | "purple" | "neon" | "pink";
-}) {
-  const map = {
-    cyan: "border-averna-cyan/30 text-averna-cyan",
-    purple: "border-averna-purple/30 text-averna-purple",
-    neon: "border-averna-neon/30 text-averna-neon",
-    pink: "border-averna-pink/30 text-averna-pink",
-  } as const;
-  return (
-    <Card className={`glass ${map[color].split(" ")[0]}`}>
-      <CardHeader>
-        <CardTitle className={`text-sm flex items-center gap-2 ${map[color].split(" ")[1]}`}>
-          {icon} {label}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className={`text-3xl font-bold ${map[color].split(" ")[1]}`}>{value}</p>
-      </CardContent>
-    </Card>
-  );
-}
-
-function ShieldGraphic() {
-  return <span className="text-averna-purple">🛡️</span>;
 }
