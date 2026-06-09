@@ -20,8 +20,10 @@ import {
   ShieldCheck,
   Trophy,
   ArrowRight,
+  Trash2,
 } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { TopPerformers } from "@/components/top-performers";
@@ -30,8 +32,12 @@ import { ActivityFeed } from "@/components/admin/activity-feed";
 import { EnrollmentFunnel } from "@/components/admin/enrollment-funnel";
 import { TeacherWorkload } from "@/components/admin/teacher-workload";
 import { FinanceSummary } from "@/components/admin/finance-summary";
-import { PanelCommandPalette } from "@/components/panel-command-palette";
+import { AdminAttentionBar } from "@/components/admin/attention-bar";
+import { SeedDemoButton } from "@/components/admin/seed-demo-button";
+import { ConfirmButton } from "@/components/ui/confirm-button";
+import { LiveRefresh } from "@/components/ui/live-refresh";
 import { recordAudit } from "@/lib/audit";
+import { deleteStudentCascade } from "@/lib/cascade-delete";
 
 const LEVELS = [
   "Beginner (A2)",
@@ -63,6 +69,28 @@ async function enrollStudent(formData: FormData) {
     { id: session.user.id, name: session.user.name, role: session.user.role },
     "Enrolled student",
     `studentId=${studentId} level=${level || "-"} group=${groupId || "-"}`
+  );
+  revalidatePath("/admin/dashboard");
+}
+
+async function deleteStudent(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+
+  const studentId = formData.get("studentId") as string;
+  if (!studentId) return;
+
+  const student = await db.student.findUnique({
+    where: { id: studentId },
+    include: { user: { select: { name: true, email: true } } },
+  });
+
+  await deleteStudentCascade(studentId);
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    "Deleted student",
+    `name=${student?.user.name ?? "?"} email=${student?.user.email ?? "?"}`
   );
   revalidatePath("/admin/dashboard");
 }
@@ -144,6 +172,14 @@ export default async function AdminDashboard() {
       <Button type="submit" size="sm" className="neon-button bg-averna-primary hover:bg-averna-light">
         Save
       </Button>
+      <ConfirmButton
+        formAction={deleteStudent}
+        message={`Permanently delete ${s.user.name ?? "this student"} and all their data (submissions, grades, points, payments)? This also deletes their login and cannot be undone.`}
+        title="Delete student"
+        className="h-9 w-9 shrink-0 rounded-md border border-red-500/30 bg-red-500/10 text-red-400 hover:bg-red-500/20"
+      >
+        <Trash2 className="h-4 w-4" />
+      </ConfirmButton>
     </form>
   );
 
@@ -153,16 +189,24 @@ export default async function AdminDashboard() {
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
 
         {/* Welcome banner */}
-        <div className="mb-8 animate-fade-in">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-averna-purple/10 border border-averna-purple/20 text-averna-purple text-xs font-medium mb-3">
-            <ShieldCheck className="h-3.5 w-3.5" />
-            Admin Control Center
+        <div className="mb-6 animate-fade-in">
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-averna-purple/10 border border-averna-purple/20 text-averna-purple text-xs font-medium">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Admin Control Center
+            </div>
+            <LiveRefresh />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
             Welcome back, <span className="neon-text">{firstName}</span>
           </h1>
           <p className="text-gray-400 mt-1">Manage students, staff and the whole platform from here.</p>
         </div>
+
+        {/* What needs attention */}
+        <Suspense fallback={<div className="h-10 mb-8" />}>
+          <AdminAttentionBar />
+        </Suspense>
 
         {/* KPI trends */}
         <div className="mb-8">
@@ -215,11 +259,14 @@ export default async function AdminDashboard() {
         </div>
 
         {/* Pending enrollment */}
-        <Card className="glass border-averna-pink/30 mb-8">
+        <Card id="enroll" className="glass border-averna-pink/30 mb-8 scroll-mt-6">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-averna-pink">
-              <UserPlus className="h-5 w-5" />
-              Enroll New Students ({pending.length})
+            <CardTitle className="flex items-center justify-between gap-2">
+              <span className="flex items-center gap-2 text-averna-pink">
+                <UserPlus className="h-5 w-5" />
+                Enroll New Students ({pending.length})
+              </span>
+              <SeedDemoButton />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -266,8 +313,6 @@ export default async function AdminDashboard() {
         </h2>
         <TopPerformers />
       </div>
-
-      <PanelCommandPalette role="ADMIN" />
     </div>
   );
 }

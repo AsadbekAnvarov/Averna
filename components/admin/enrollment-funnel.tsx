@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Filter, UserPlus, Users, GraduationCap } from "lucide-react";
 import { db } from "@/lib/db";
+import { EmptyState } from "@/components/ui/empty-state";
 
 /**
  * Enrollment funnel — visualises how new sign-ups flow through to fully
@@ -32,7 +33,13 @@ export async function EnrollmentFunnel() {
       </CardHeader>
       <CardContent>
         {registered === 0 ? (
-          <p className="text-sm text-gray-400 py-2 text-center">No students registered yet.</p>
+          <EmptyState
+            icon={UserPlus}
+            title="No students yet"
+            description="Share your sign-up link — new students will flow through this funnel as they register and get placed."
+            accent="text-averna-purple"
+            compact
+          />
         ) : (
           <div className="space-y-4">
             {stages.map((s) => {

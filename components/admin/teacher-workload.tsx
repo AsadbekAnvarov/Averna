@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Scale, Layers } from "lucide-react";
 import { db } from "@/lib/db";
+import { EmptyState } from "@/components/ui/empty-state";
 
 /**
  * Teacher workload balance — shows how many students/groups each teacher
@@ -42,7 +43,14 @@ export async function TeacherWorkload() {
       </CardHeader>
       <CardContent>
         {rows.length === 0 ? (
-          <p className="text-sm text-gray-400 py-2 text-center">No teachers yet.</p>
+          <EmptyState
+            icon={Scale}
+            title="No teachers yet"
+            description="Add teachers and assign them groups — their workload balance will appear here."
+            accent="text-averna-blue"
+            action={{ label: "Manage teachers", href: "/admin/teachers" }}
+            compact
+          />
         ) : (
           <div className="space-y-3">
             {rows.map((r) => {

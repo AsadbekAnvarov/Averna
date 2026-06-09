@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Activity, Users, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { Activity, Users, TrendingUp, TrendingDown, Minus, AlertTriangle } from "lucide-react";
 import { db } from "@/lib/db";
 import { Sparkline } from "@/components/ui/sparkline";
+import { EmptyState } from "@/components/ui/empty-state";
 
 /**
  * Per-group "pulse": a 7-session attendance sparkline, the average grade and a
@@ -72,23 +73,40 @@ export async function GroupPulse({ teacherId }: { teacherId: string }) {
       </CardHeader>
       <CardContent>
         {cards.length === 0 ? (
-          <p className="text-sm text-gray-400 py-2 text-center">No groups yet.</p>
+          <EmptyState
+            icon={Activity}
+            title="No groups to track yet"
+            description="Once you have a group with attendance and grades, you'll see live trends here."
+            compact
+          />
         ) : (
           <div className="grid sm:grid-cols-2 gap-4">
             {cards.map((c) => {
               const TrendIcon = c.trend === "up" ? TrendingUp : c.trend === "down" ? TrendingDown : Minus;
               const trendColor =
                 c.trend === "up" ? "text-averna-neon" : c.trend === "down" ? "text-red-400" : "text-gray-400";
+              const needsAttention =
+                (c.avgAttendance !== null && c.avgAttendance < 70) ||
+                (c.avgGrade !== null && c.avgGrade < 60);
               return (
                 <div
                   key={c.id}
-                  className="p-4 rounded-xl bg-averna-dark/30 border border-white/5 hover:border-averna-cyan/30 transition-colors"
+                  className={`p-4 rounded-xl bg-averna-dark/30 border transition-colors ${
+                    needsAttention ? "border-amber-400/30 hover:border-amber-400/50" : "border-white/5 hover:border-averna-cyan/30"
+                  }`}
                 >
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <p className="font-semibold text-white truncate">{c.name}</p>
-                    <span className="text-xs text-gray-400 flex items-center gap-1 shrink-0">
-                      <Users className="h-3.5 w-3.5" /> {c.students}
-                    </span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      {needsAttention && (
+                        <span title="Low attendance or grades" className="flex items-center gap-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-amber-400/15 text-amber-400">
+                          <AlertTriangle className="h-3 w-3" /> attention
+                        </span>
+                      )}
+                      <span className="text-xs text-gray-400 flex items-center gap-1">
+                        <Users className="h-3.5 w-3.5" /> {c.students}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="flex items-end justify-between gap-3">

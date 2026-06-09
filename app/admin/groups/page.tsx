@@ -8,11 +8,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Layers, Plus, Users } from "lucide-react";
+import { Layers, Plus, Users, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { ConfirmButton } from "@/components/ui/confirm-button";
 import { recordAudit } from "@/lib/audit";
+import { deleteGroupCascade } from "@/lib/cascade-delete";
 
 const LEVELS = ["Beginner (A2)", "Intermediate (B1)", "Upper-Intermediate (B2)", "Advanced (C1)", "IELTS Standard (6.0–6.5)", "IELTS Advanced (7.5+)"];
 
@@ -75,7 +77,24 @@ async function duplicateGroup(formData: FormData) {
   redirect("/admin/groups?saved=1");
 }
 
-export default async function AdminGroupsPage({ searchParams }: { searchParams: { saved?: string } }) {
+async function deleteGroup(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  const id = formData.get("id") as string;
+  if (!id) return;
+  const group = await db.group.findUnique({ where: { id }, select: { name: true } });
+  await deleteGroupCascade(id);
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    "Deleted group",
+    `name=${group?.name ?? "?"}`
+  );
+  revalidatePath("/admin/groups");
+  redirect("/admin/groups?deleted=1");
+}
+
+export default async function AdminGroupsPage({ searchParams }: { searchParams: { saved?: string; deleted?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {
@@ -101,6 +120,7 @@ export default async function AdminGroupsPage({ searchParams }: { searchParams: 
         <p className="text-gray-400 mb-6">Create groups, assign teachers, set levels and lesson schedules.</p>
 
         {searchParams.saved && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Group created!</div>}
+        {searchParams.deleted && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Group deleted.</div>}
 
         {/* Create group */}
         <Card className="glass border-averna-purple/30 mb-8">
@@ -164,6 +184,14 @@ export default async function AdminGroupsPage({ searchParams }: { searchParams: 
                     <button formAction={duplicateGroup} className="text-xs px-3 py-1.5 rounded-md border border-averna-purple/40 text-averna-purple hover:bg-averna-purple/10">
                       Duplicate
                     </button>
+                    <ConfirmButton
+                      formAction={deleteGroup}
+                      message={`Delete "${g.name}"? Its homework, attendance and lesson logs will be removed and ${g.students.length} student${g.students.length === 1 ? "" : "s"} will be unassigned (not deleted). This cannot be undone.`}
+                      title="Delete group"
+                      className="ml-auto text-xs px-3 py-1.5 rounded-md border border-red-500/30 text-red-400 hover:bg-red-500/10"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" /> Delete
+                    </ConfirmButton>
                   </div>
                 </form>
               ))

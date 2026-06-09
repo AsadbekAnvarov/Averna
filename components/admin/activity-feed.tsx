@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { db } from "@/lib/db";
 import { timeAgo } from "@/lib/utils";
+import { EmptyState } from "@/components/ui/empty-state";
 
 /** Pick an icon + accent colour from the audit action text. */
 function iconFor(action: string): { Icon: any; color: string } {
@@ -50,7 +51,13 @@ export async function ActivityFeed() {
       </CardHeader>
       <CardContent>
         {logs.length === 0 ? (
-          <p className="text-sm text-gray-400 py-2 text-center">No activity recorded yet.</p>
+          <EmptyState
+            icon={Radio}
+            title="No activity yet"
+            description="Enrollments, grading, announcements and other staff actions will stream in here."
+            accent="text-averna-neon"
+            compact
+          />
         ) : (
           <ol className="relative space-y-1">
             {logs.map((log) => {

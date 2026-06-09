@@ -1,7 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, FileCheck2, Activity, Wallet, TrendingUp, TrendingDown } from "lucide-react";
+import { Users, FileCheck2, Activity, Wallet } from "lucide-react";
 import { db } from "@/lib/db";
 import { Sparkline } from "@/components/ui/sparkline";
+import { CountUp } from "@/components/ui/count-up";
+import { TrendBadge } from "@/components/ui/trend-badge";
 
 /** Bucket timestamps into a `days`-length daily series ending today. */
 function dailySeries(dates: Date[], days: number, valueOf?: (i: number) => number): number[] {
@@ -125,8 +127,6 @@ export async function AdminKpis() {
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
       {cards.map((c) => {
         const Icon = c.icon;
-        const up = (c.delta ?? 0) >= 0;
-        const DeltaIcon = up ? TrendingUp : TrendingDown;
         return (
           <Card
             key={c.label}
@@ -138,23 +138,15 @@ export async function AdminKpis() {
                 <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${c.iconBg}`}>
                   <Icon className="h-5 w-5" />
                 </div>
-                {c.delta !== null && (
-                  <span
-                    className={`flex items-center gap-0.5 text-xs font-semibold ${
-                      up ? "text-averna-neon" : "text-red-400"
-                    }`}
-                  >
-                    <DeltaIcon className="h-3.5 w-3.5" />
-                    {Math.abs(c.delta)}%
-                  </span>
-                )}
+                <TrendBadge value={c.delta} title="vs the previous week" />
               </div>
               <p className="text-sm text-gray-400 font-medium">{c.label}</p>
-              <p className={`text-3xl font-bold mt-1 ${c.accent}`}>
-                {c.prefix ?? ""}
-                {c.value.toLocaleString()}
-                {c.suffix ?? ""}
-              </p>
+              <CountUp
+                value={c.value}
+                prefix={c.prefix ?? ""}
+                suffix={c.suffix ?? ""}
+                className={`block text-3xl font-bold mt-1 ${c.accent}`}
+              />
               <div className="mt-3">
                 <Sparkline data={c.series} width={200} height={32} stroke={c.stroke} fill={c.fill} className="w-full" />
               </div>

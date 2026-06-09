@@ -20,6 +20,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { RiskRadar } from "@/components/teacher/risk-radar";
@@ -27,7 +28,11 @@ import { TodayPanel } from "@/components/teacher/today-panel";
 import { GradingInbox } from "@/components/teacher/grading-inbox";
 import { GroupPulse } from "@/components/teacher/group-pulse";
 import { GroupBroadcast } from "@/components/teacher/group-broadcast";
-import { PanelCommandPalette } from "@/components/panel-command-palette";
+import { TeacherAttentionBar } from "@/components/teacher/attention-bar";
+import { SectionHeader } from "@/components/ui/section-header";
+import { LiveRefresh } from "@/components/ui/live-refresh";
+import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
+import { CalendarClock as CalendarClockIcon, LayoutGrid, Zap } from "lucide-react";
 
 export default async function TeacherDashboard() {
   const session = await auth();
@@ -189,10 +194,13 @@ export default async function TeacherDashboard() {
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
 
         {/* Welcome banner */}
-        <div className="mb-8 animate-fade-in">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-averna-neon/10 border border-averna-neon/20 text-averna-neon text-xs font-medium mb-3">
-            <Sparkles className="h-3.5 w-3.5" />
-            Teacher Workspace
+        <div className="mb-6 animate-fade-in">
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-averna-neon/10 border border-averna-neon/20 text-averna-neon text-xs font-medium">
+              <Sparkles className="h-3.5 w-3.5" />
+              Teacher Workspace
+            </div>
+            <LiveRefresh />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
             Welcome back, <span className="neon-text">{firstName}</span>
@@ -200,9 +208,17 @@ export default async function TeacherDashboard() {
           <p className="text-gray-400 mt-1">Here&apos;s what&apos;s happening across your classes today.</p>
         </div>
 
-        {/* Today / next lesson */}
+        {/* What needs attention today */}
+        <Suspense fallback={<div className="h-10 mb-8" />}>
+          <TeacherAttentionBar teacherId={teacher.id} userId={session.user.id} />
+        </Suspense>
+
+        {/* ===== TODAY ===== */}
+        <SectionHeader icon={CalendarClockIcon} title="Today" subtitle="Your next lesson and what's on" accent="text-averna-cyan" />
         <div className="mb-8">
-          <TodayPanel teacherId={teacher.id} />
+          <Suspense fallback={<WidgetSkeleton rows={2} />}>
+            <TodayPanel teacherId={teacher.id} />
+          </Suspense>
         </div>
 
         {/* Stat cards */}
@@ -231,15 +247,10 @@ export default async function TeacherDashboard() {
           })}
         </div>
 
-        {/* Quick actions */}
+        {/* ===== QUICK ACTIONS ===== */}
+        <SectionHeader icon={Zap} title="Quick Actions" subtitle="Jump straight into your daily tasks" accent="text-averna-neon" />
         <Card className="glass border-averna-primary/30 mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-white">
-              <Sparkles className="h-5 w-5 text-averna-neon" />
-              Quick Actions
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {actions.map((action) => {
                 const Icon = action.icon;
@@ -264,15 +275,21 @@ export default async function TeacherDashboard() {
           </CardContent>
         </Card>
 
-        {/* Grading inbox + group broadcast */}
+        {/* ===== NEEDS ACTION ===== */}
+        <SectionHeader icon={CheckSquare} title="Needs Action" subtitle="Grade work and keep your groups in the loop" accent="text-amber-400" />
         <div className="grid lg:grid-cols-2 gap-6 mb-8">
-          <GradingInbox teacherId={teacher.id} />
+          <Suspense fallback={<WidgetSkeleton rows={4} />}>
+            <GradingInbox teacherId={teacher.id} />
+          </Suspense>
           <GroupBroadcast groups={groupOptions} />
         </div>
 
-        {/* Group pulse — attendance & grade trends */}
-        <div className="mb-8">
-          <GroupPulse teacherId={teacher.id} />
+        {/* ===== ANALYTICS ===== */}
+        <SectionHeader icon={LayoutGrid} title="Class Insights" subtitle="Attendance, grades and who needs help" accent="text-averna-purple" />
+        <div className="mb-6">
+          <Suspense fallback={<WidgetSkeleton rows={2} />}>
+            <GroupPulse teacherId={teacher.id} />
+          </Suspense>
         </div>
 
         {/* My groups */}
@@ -328,8 +345,6 @@ export default async function TeacherDashboard() {
           <RiskRadar teacherId={teacher.id} />
         </div>
       </div>
-
-      <PanelCommandPalette role="TEACHER" />
     </div>
   );
 }
