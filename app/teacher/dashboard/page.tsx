@@ -23,6 +23,11 @@ import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { RiskRadar } from "@/components/teacher/risk-radar";
+import { TodayPanel } from "@/components/teacher/today-panel";
+import { GradingInbox } from "@/components/teacher/grading-inbox";
+import { GroupPulse } from "@/components/teacher/group-pulse";
+import { GroupBroadcast } from "@/components/teacher/group-broadcast";
+import { PanelCommandPalette } from "@/components/panel-command-palette";
 
 export default async function TeacherDashboard() {
   const session = await auth();
@@ -58,6 +63,12 @@ export default async function TeacherDashboard() {
   );
 
   const firstName = (session.user.name ?? "Teacher").split(" ")[0];
+
+  const groupOptions = teacher.groups.map((g) => ({
+    id: g.id,
+    name: g.name,
+    count: g.students.length,
+  }));
 
   const stats = [
     {
@@ -189,6 +200,11 @@ export default async function TeacherDashboard() {
           <p className="text-gray-400 mt-1">Here&apos;s what&apos;s happening across your classes today.</p>
         </div>
 
+        {/* Today / next lesson */}
+        <div className="mb-8">
+          <TodayPanel teacherId={teacher.id} />
+        </div>
+
         {/* Stat cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
           {stats.map((stat) => {
@@ -248,6 +264,17 @@ export default async function TeacherDashboard() {
           </CardContent>
         </Card>
 
+        {/* Grading inbox + group broadcast */}
+        <div className="grid lg:grid-cols-2 gap-6 mb-8">
+          <GradingInbox teacherId={teacher.id} />
+          <GroupBroadcast groups={groupOptions} />
+        </div>
+
+        {/* Group pulse — attendance & grade trends */}
+        <div className="mb-8">
+          <GroupPulse teacherId={teacher.id} />
+        </div>
+
         {/* My groups */}
         <Card className="glass border-averna-primary/30 mb-6">
           <CardHeader>
@@ -301,6 +328,8 @@ export default async function TeacherDashboard() {
           <RiskRadar teacherId={teacher.id} />
         </div>
       </div>
+
+      <PanelCommandPalette role="TEACHER" />
     </div>
   );
 }

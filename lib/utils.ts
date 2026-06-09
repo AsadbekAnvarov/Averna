@@ -344,3 +344,66 @@ export function scoreSpeaking(transcript: string, seconds: number): SpeakingScor
 
   return { fluency, vocabulary, grammar, overall, wordCount, feedback };
 }
+
+
+
+// ===== Relative time ("3m ago", "2h ago", "Yesterday") =====
+export function timeAgo(date: Date | string): string {
+  const d = typeof date === "string" ? new Date(date) : date;
+  const diff = Date.now() - d.getTime();
+  const sec = Math.floor(diff / 1000);
+  if (sec < 60) return "just now";
+  const min = Math.floor(sec / 60);
+  if (min < 60) return `${min}m ago`;
+  const hr = Math.floor(min / 60);
+  if (hr < 24) return `${hr}h ago`;
+  const day = Math.floor(hr / 24);
+  if (day === 1) return "yesterday";
+  if (day < 7) return `${day}d ago`;
+  const wk = Math.floor(day / 7);
+  if (wk < 5) return `${wk}w ago`;
+  return formatDate(d);
+}
+
+// ===== Schedule parsing for the teacher "Today" panel =====
+// Group.schedule is a free-form string e.g. "Mon, Wed, Fri 18:00" or
+// "Tuesday/Thursday 19:30". We extract the weekdays and the first time.
+const DAY_TOKENS: Record<string, number> = {
+  sun: 0, sunday: 0,
+  mon: 1, monday: 1,
+  tue: 2, tues: 2, tuesday: 2,
+  wed: 3, weds: 3, wednesday: 3,
+  thu: 4, thur: 4, thurs: 4, thursday: 4,
+  fri: 5, friday: 5,
+  sat: 6, saturday: 6,
+};
+
+export interface ParsedSchedule {
+  days: number[]; // 0=Sun..6=Sat
+  time: string | null; // "18:00"
+}
+
+export function parseSchedule(schedule: string | null | undefined): ParsedSchedule {
+  if (!schedule) return { days: [], time: null };
+  const lower = schedule.toLowerCase();
+  const days = new Set<number>();
+  for (const [token, idx] of Object.entries(DAY_TOKENS)) {
+    // match whole-word day tokens
+    const re = new RegExp(`\\b${token}\\b`, "i");
+    if (re.test(lower)) days.add(idx);
+  }
+  const timeMatch = schedule.match(/(\d{1,2}):(\d{2})/);
+  const time = timeMatch ? `${timeMatch[1].padStart(2, "0")}:${timeMatch[2]}` : null;
+  return { days: Array.from(days).sort((a, b) => a - b), time };
+}
+
+/** Current weekday index (0=Sun..6=Sat) in Tashkent time. */
+export function tashkentWeekday(now: Date = new Date()): number {
+  const wd = new Intl.DateTimeFormat("en-US", {
+    timeZone: AVERNA_TZ,
+    weekday: "short",
+  }).format(now).toLowerCase();
+  return DAY_TOKENS[wd] ?? new Date(now).getDay();
+}
+
+export const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

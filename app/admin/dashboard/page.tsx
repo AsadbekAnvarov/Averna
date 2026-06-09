@@ -11,7 +11,6 @@ import {
   GraduationCap,
   Layers,
   UserPlus,
-  Inbox,
   BarChart3,
   Gift,
   Megaphone,
@@ -26,6 +25,12 @@ import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { TopPerformers } from "@/components/top-performers";
+import { AdminKpis } from "@/components/admin/kpi-cards";
+import { ActivityFeed } from "@/components/admin/activity-feed";
+import { EnrollmentFunnel } from "@/components/admin/enrollment-funnel";
+import { TeacherWorkload } from "@/components/admin/teacher-workload";
+import { FinanceSummary } from "@/components/admin/finance-summary";
+import { PanelCommandPalette } from "@/components/panel-command-palette";
 import { recordAudit } from "@/lib/audit";
 
 const LEVELS = [
@@ -78,7 +83,7 @@ export default async function AdminDashboard() {
     );
   }
 
-  const [students, groups, teacherCount] = await Promise.all([
+  const [students, groups] = await Promise.all([
     db.student.findMany({
       include: {
         user: { select: { name: true, email: true } },
@@ -90,18 +95,10 @@ export default async function AdminDashboard() {
       include: { teacher: { include: { user: { select: { name: true } } } } },
       orderBy: { name: "asc" },
     }),
-    db.teacher.count(),
   ]);
 
   const pending = students.filter((s) => !s.groupId);
   const firstName = (session.user.name ?? "Admin").split(" ")[0];
-
-  const stats = [
-    { label: "Students", value: students.length, icon: Users, accent: "text-averna-cyan", ring: "ring-averna-cyan/30", glow: "from-averna-cyan/20", iconBg: "bg-averna-cyan/15 text-averna-cyan" },
-    { label: "Teachers", value: teacherCount, icon: GraduationCap, accent: "text-averna-purple", ring: "ring-averna-purple/30", glow: "from-averna-purple/20", iconBg: "bg-averna-purple/15 text-averna-purple" },
-    { label: "Groups", value: groups.length, icon: Layers, accent: "text-averna-neon", ring: "ring-averna-neon/30", glow: "from-averna-neon/20", iconBg: "bg-averna-neon/15 text-averna-neon" },
-    { label: "Pending", value: pending.length, icon: Inbox, accent: "text-averna-pink", ring: "ring-averna-pink/30", glow: "from-averna-pink/20", iconBg: "bg-averna-pink/15 text-averna-pink" },
-  ];
 
   const actions = [
     { href: "/admin/analytics", label: "Analytics", desc: "Platform insights", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
@@ -167,30 +164,9 @@ export default async function AdminDashboard() {
           <p className="text-gray-400 mt-1">Manage students, staff and the whole platform from here.</p>
         </div>
 
-        {/* Stats */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-          {stats.map((stat) => {
-            const Icon = stat.icon;
-            return (
-              <Card
-                key={stat.label}
-                className={`glass relative overflow-hidden ring-1 ${stat.ring} border-transparent transition-transform duration-300 hover:-translate-y-1`}
-              >
-                <div className={`pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br ${stat.glow} to-transparent blur-2xl`} />
-                <CardContent className="p-6 relative">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <p className="text-sm text-gray-400 font-medium">{stat.label}</p>
-                      <p className={`text-4xl font-bold mt-2 ${stat.accent}`}>{stat.value}</p>
-                    </div>
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg}`}>
-                      <Icon className="h-6 w-6" />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+        {/* KPI trends */}
+        <div className="mb-8">
+          <AdminKpis />
         </div>
 
         {/* Quick actions */}
@@ -225,6 +201,18 @@ export default async function AdminDashboard() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Live activity + finance */}
+        <div className="grid lg:grid-cols-2 gap-6 mb-8">
+          <ActivityFeed />
+          <FinanceSummary />
+        </div>
+
+        {/* Enrollment funnel + teacher workload */}
+        <div className="grid lg:grid-cols-2 gap-6 mb-8">
+          <EnrollmentFunnel />
+          <TeacherWorkload />
+        </div>
 
         {/* Pending enrollment */}
         <Card className="glass border-averna-pink/30 mb-8">
@@ -278,6 +266,8 @@ export default async function AdminDashboard() {
         </h2>
         <TopPerformers />
       </div>
+
+      <PanelCommandPalette role="ADMIN" />
     </div>
   );
 }
