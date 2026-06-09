@@ -62,15 +62,16 @@ export function QuickActions() {
           <Zap className="h-5 w-5 text-averna-neon" /> Quick Actions
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-4">
         {groups.map((group) => {
           const GroupIcon = group.icon;
           return (
-            <div key={group.title}>
+            <div key={group.title} className="rounded-2xl bg-white/[0.02] border border-white/5 p-4">
               <p className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide ${group.accent} mb-3`}>
                 <GroupIcon className="h-3.5 w-3.5" /> {group.title}
+                <span className="ml-auto text-gray-600 normal-case font-normal">{group.items.length}</span>
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
                 {group.items.map((action) => {
                   const Icon = action.icon;
                   return (

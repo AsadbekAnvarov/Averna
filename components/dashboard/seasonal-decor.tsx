@@ -32,7 +32,7 @@ export function SeasonalDecor() {
   if (!on) return null;
 
   const emojis = seasonEmojis(new Date().getMonth());
-  const flakes = Array.from({ length: 14 });
+  const flakes = Array.from({ length: 10 });
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[5] overflow-hidden" aria-hidden>
@@ -51,7 +51,7 @@ export function SeasonalDecor() {
               fontSize: `${size}px`,
               animationDuration: `${duration}s`,
               animationDelay: `-${delay}s`,
-              opacity: 0.5,
+              opacity: 0.35,
             }}
           >
             {emoji}

@@ -69,30 +69,21 @@ export function DailySpin() {
 
         <div className="relative mx-auto h-40 w-40">
           {/* pointer */}
-          <div className="absolute left-1/2 -top-1 -translate-x-1/2 z-10 text-averna-neon text-xl">▼</div>
+          <div className="absolute left-1/2 -top-1.5 -translate-x-1/2 z-10 text-averna-neon text-xl drop-shadow">▼</div>
           <div
-            className="h-40 w-40 rounded-full border-4 border-white/10"
+            className="h-40 w-40 rounded-full border-4 border-white/10 shadow-inner"
             style={{
               transform: `rotate(${rotation}deg)`,
               transition: spinning ? "transform 3.1s cubic-bezier(0.17,0.67,0.17,0.98)" : "none",
               background: `conic-gradient(${REWARDS.map((_, i) => {
-                const c = ["#0B8F6A33", "#00e5ff33", "#b14eff33", "#ff3dbb33"][i % 4];
-                return `${c} ${i * seg}deg ${(i + 1) * seg}deg`;
+                const c = ["#0B8F6A", "#00e5ff", "#b14eff", "#ff3dbb"][i % 4];
+                return `${c}55 ${i * seg}deg ${(i + 1) * seg}deg`;
               }).join(",")})`,
             }}
-          >
-            {REWARDS.map((r, i) => (
-              <span
-                key={i}
-                className="absolute left-1/2 top-1/2 text-lg"
-                style={{ transform: `rotate(${i * seg + seg / 2}deg) translateY(-58px) translateX(-50%)` }}
-              >
-                {r.emoji}
-              </span>
-            ))}
-          </div>
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-averna-dark border-2 border-averna-neon/40 flex items-center justify-center text-averna-neon text-xs font-bold">
-            {REWARDS.length}x
+          />
+          {/* center hub showing the current/result emoji */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-14 w-14 rounded-full bg-averna-dark border-2 border-averna-neon/40 flex items-center justify-center text-2xl">
+            {result !== null ? REWARDS[result].emoji : spinning ? "🎰" : "🎁"}
           </div>
         </div>
 

@@ -36,14 +36,13 @@ import { DashboardPreferences } from "@/components/dashboard/dashboard-preferenc
 import { ExamCountdown } from "@/components/dashboard/exam-countdown";
 import { TestHistory } from "@/components/dashboard/test-history";
 import { MentorCard } from "@/components/dashboard/mentor-card";
-import { ResourcesHub } from "@/components/dashboard/resources-hub";
 import { MoodCheckin } from "@/components/dashboard/mood-checkin";
 import { DailySpin } from "@/components/dashboard/daily-spin";
 import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { TrendingUp, Sparkles, LayoutGrid, ClipboardList, Library } from "lucide-react";
+import { TrendingUp, Sparkles, LayoutGrid, ClipboardList } from "lucide-react";
 import { predictBand } from "@/lib/utils";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
@@ -262,12 +261,6 @@ export default async function DashboardPage() {
             </Suspense>
           </div>
 
-          {/* ===== RESOURCES & PRACTICE ===== */}
-          <div>
-            <SectionHeader icon={Library} title="Resources & Practice" subtitle="Everything you need to study, in one place" accent="text-averna-cyan" />
-            <ResourcesHub />
-          </div>
-
           {/* ===== EVERYTHING ELSE ===== */}
           <SectionHeader icon={LayoutGrid} title="Your Workspace" subtitle="Modules, progress and your class" accent="text-averna-purple" />
           <div className="grid lg:grid-cols-3 gap-6">
@@ -287,6 +280,8 @@ export default async function DashboardPage() {
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <GroupFeed studentId={student.id} groupId={student.groupId} />
               </Suspense>
+              <DailyArticle />
+              <WordOfTheDay />
             </div>
 
             <div className="space-y-6">
@@ -322,8 +317,6 @@ export default async function DashboardPage() {
                   globalRank={student.globalRank}
                 />
               </Suspense>
-              <DailyArticle />
-              <WordOfTheDay />
             </div>
           </div>
         </div>
