@@ -10,7 +10,6 @@ import { QuickActions } from "@/components/dashboard/quick-actions";
 import { RecentActivity } from "@/components/dashboard/recent-activity";
 import { UpcomingHomework } from "@/components/dashboard/upcoming-homework";
 import { WordOfTheDay } from "@/components/dashboard/word-of-the-day";
-import { MotivationBanner } from "@/components/dashboard/motivation-banner";
 import { Milestones } from "@/components/dashboard/milestones";
 import { StreakHeatmap } from "@/components/dashboard/streak-heatmap";
 import { StudentOfTheWeek } from "@/components/student-of-the-week";
@@ -37,7 +36,7 @@ import { DashboardPreferences } from "@/components/dashboard/dashboard-preferenc
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { TrendingUp, Sparkles, LayoutGrid } from "lucide-react";
+import { TrendingUp, Sparkles, LayoutGrid, ClipboardList } from "lucide-react";
 import { predictBand } from "@/lib/utils";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
@@ -184,12 +183,6 @@ export default async function DashboardPage() {
         <DashboardHeader user={student.user} />
         
         <div className="space-y-6">
-          <MotivationBanner
-            name={student.user.name}
-            points={student.totalPoints}
-            streak={student.currentStreak}
-          />
-
           {/* Focus for today + live indicator + comfort settings */}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <Suspense fallback={<div className="h-8" />}>
@@ -216,6 +209,18 @@ export default async function DashboardPage() {
               </div>
             </div>
           )}
+
+          {/* ===== HOMEWORK — front and centre so students know what to do ===== */}
+          <div>
+            <SectionHeader
+              icon={ClipboardList}
+              title="Do This Next"
+              subtitle={upcomingHomework.length > 0 ? `You have ${upcomingHomework.length} assignment${upcomingHomework.length === 1 ? "" : "s"} to complete` : "Your assignments will appear here"}
+              accent="text-averna-neon"
+              action={{ label: "All homework", href: "/homework" }}
+            />
+            <UpcomingHomework homework={upcomingHomework} />
+          </div>
 
           <WelcomeSection 
             student={student}
@@ -254,7 +259,6 @@ export default async function DashboardPage() {
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-6">
               <QuickActions />
-              <UpcomingHomework homework={upcomingHomework} />
               <StreakHeatmap studentId={student.id} />
               <Milestones
                 points={student.totalPoints}
