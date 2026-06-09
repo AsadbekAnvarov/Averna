@@ -37,6 +37,9 @@ import { ExamCountdown } from "@/components/dashboard/exam-countdown";
 import { TestHistory } from "@/components/dashboard/test-history";
 import { MentorCard } from "@/components/dashboard/mentor-card";
 import { ResourcesHub } from "@/components/dashboard/resources-hub";
+import { MoodCheckin } from "@/components/dashboard/mood-checkin";
+import { DailySpin } from "@/components/dashboard/daily-spin";
+import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
@@ -182,6 +185,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
+      <SeasonalDecor />
       <StickyProgress current={currentBand} target={targetBandNum} />
       <div className="container mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
         <DashboardHeader user={student.user} />
@@ -286,6 +290,7 @@ export default async function DashboardPage() {
             </div>
 
             <div className="space-y-6">
+              <MoodCheckin />
               <ExamCountdown />
               <Suspense fallback={<WidgetSkeleton rows={2} />}>
                 <TeacherCard groupId={student.groupId} />
@@ -298,6 +303,9 @@ export default async function DashboardPage() {
                 <MessagePreview userId={session.user.id} />
               </Suspense>
               <PomodoroTimer />
+              <div data-gamified>
+                <DailySpin />
+              </div>
               <div data-gamified>
                 <StudyPet streak={student.currentStreak} points={student.totalPoints} />
               </div>

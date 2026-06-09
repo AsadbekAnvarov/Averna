@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Shuffle, Keyboard, ListChecks, X, RotateCcw, ArrowLeft, Coffee, Trophy } from "lucide-react";
+import { fireConfetti } from "@/lib/confetti";
 
 /** A small bank of IELTS-friendly words used across the break mini-games. */
 const WORDS: { word: string; meaning: string }[] = [
@@ -163,6 +164,11 @@ function WordQuiz() {
   const [i, setI] = useState(0);
   const [score, setScore] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
+
+  const finished = i >= quiz.length;
+  useEffect(() => {
+    if (finished && score >= 4) fireConfetti();
+  }, [finished, score]);
 
   if (i >= quiz.length) {
     return (

@@ -375,3 +375,19 @@ html.text-scale-lg { font-size: 18px; }
 @media (max-width: 1023px) {
   .quick-jump-fab { bottom: 5.5rem !important; }
 }
+
+
+
+/* ===== Seasonal decoration (gentle falling emojis) ===== */
+@keyframes seasonal-fall {
+  0% { transform: translateY(-12vh) rotate(0deg); }
+  100% { transform: translateY(112vh) rotate(360deg); }
+}
+.seasonal-flake {
+  position: absolute;
+  top: 0;
+  will-change: transform;
+  animation-name: seasonal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

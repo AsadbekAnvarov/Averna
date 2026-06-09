@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Settings, X, Eye, EyeOff, Type } from "lucide-react";
+import { Settings, X, Eye, EyeOff, Type, Snowflake } from "lucide-react";
 
 type FontScale = "sm" | "md" | "lg";
 
@@ -15,6 +15,7 @@ export function DashboardPreferences() {
   const [open, setOpen] = useState(false);
   const [focus, setFocus] = useState(false);
   const [scale, setScale] = useState<FontScale>("md");
+  const [seasonal, setSeasonal] = useState(true);
 
   // Apply + persist
   const applyFocus = (v: boolean) => {
@@ -30,10 +31,17 @@ export function DashboardPreferences() {
     if (v === "lg") el.classList.add("text-scale-lg");
     localStorage.setItem("averna_text_scale", v);
   };
+  const applySeasonal = (v: boolean) => {
+    setSeasonal(v);
+    localStorage.setItem("averna_seasonal", v ? "1" : "0");
+    window.dispatchEvent(new Event("averna-seasonal"));
+  };
 
   useEffect(() => {
     const f = localStorage.getItem("averna_focus_mode") === "1";
     const s = (localStorage.getItem("averna_text_scale") as FontScale) || "md";
+    const seas = localStorage.getItem("averna_seasonal") !== "0";
+    setSeasonal(seas);
     if (f) {
       setFocus(true);
       document.body.classList.add("focus-mode");
@@ -96,6 +104,23 @@ export function DashboardPreferences() {
                 ))}
               </div>
             </div>
+
+            {/* Seasonal decoration */}
+            <button
+              onClick={() => applySeasonal(!seasonal)}
+              className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-white/5 border border-white/10 mt-3"
+            >
+              <span className="flex items-center gap-2 text-sm text-white">
+                <Snowflake className={`h-4 w-4 ${seasonal ? "text-averna-cyan" : "text-gray-400"}`} />
+                <span className="text-left">
+                  Seasonal effects
+                  <span className="block text-[11px] text-gray-400 font-normal">Gentle falling decorations</span>
+                </span>
+              </span>
+              <span className={`relative h-6 w-11 rounded-full transition-colors ${seasonal ? "bg-averna-cyan/70" : "bg-white/15"}`}>
+                <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-all ${seasonal ? "left-[22px]" : "left-0.5"}`} />
+              </span>
+            </button>
           </div>
         </div>
       )}
