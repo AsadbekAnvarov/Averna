@@ -33,10 +33,14 @@ import { GroupFeed } from "@/components/dashboard/group-feed";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
 import { StickyProgress } from "@/components/dashboard/sticky-progress";
 import { DashboardPreferences } from "@/components/dashboard/dashboard-preferences";
+import { ExamCountdown } from "@/components/dashboard/exam-countdown";
+import { TestHistory } from "@/components/dashboard/test-history";
+import { MentorCard } from "@/components/dashboard/mentor-card";
+import { ResourcesHub } from "@/components/dashboard/resources-hub";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { TrendingUp, Sparkles, LayoutGrid, ClipboardList } from "lucide-react";
+import { TrendingUp, Sparkles, LayoutGrid, ClipboardList, Library } from "lucide-react";
 import { predictBand } from "@/lib/utils";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
@@ -254,6 +258,12 @@ export default async function DashboardPage() {
             </Suspense>
           </div>
 
+          {/* ===== RESOURCES & PRACTICE ===== */}
+          <div>
+            <SectionHeader icon={Library} title="Resources & Practice" subtitle="Everything you need to study, in one place" accent="text-averna-cyan" />
+            <ResourcesHub />
+          </div>
+
           {/* ===== EVERYTHING ELSE ===== */}
           <SectionHeader icon={LayoutGrid} title="Your Workspace" subtitle="Modules, progress and your class" accent="text-averna-purple" />
           <div className="grid lg:grid-cols-3 gap-6">
@@ -266,6 +276,9 @@ export default async function DashboardPage() {
                 longestStreak={student.longestStreak}
                 testsCompleted={testsCompleted}
               />
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <TestHistory studentId={student.id} />
+              </Suspense>
               <RecentActivity activities={student.activityLogs} />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <GroupFeed studentId={student.id} groupId={student.groupId} />
@@ -273,12 +286,14 @@ export default async function DashboardPage() {
             </div>
 
             <div className="space-y-6">
+              <ExamCountdown />
               <Suspense fallback={<WidgetSkeleton rows={2} />}>
                 <TeacherCard groupId={student.groupId} />
               </Suspense>
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
               </Suspense>
+              <MentorCard />
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <MessagePreview userId={session.user.id} />
               </Suspense>

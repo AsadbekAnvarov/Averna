@@ -115,9 +115,17 @@ export async function SkillRadar({ studentId }: { studentId: string }) {
                 </Link>
               ))}
               {weakest && (
-                <p className="text-xs text-gray-400 pt-1">
-                  Tip: your weakest skill is <span className="text-amber-400 font-medium">{weakest.label}</span> — give it some love today.
-                </p>
+                <div className="pt-1 space-y-1.5">
+                  <p className="text-xs text-gray-400">
+                    Tip: your weakest skill is <span className="text-amber-400 font-medium">{weakest.label}</span> — give it some love today.
+                  </p>
+                  <Link
+                    href={`/materials?module=${weakest.key}`}
+                    className="inline-flex items-center gap-1 text-xs text-averna-cyan hover:underline"
+                  >
+                    Browse {weakest.label} materials <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
               )}
             </div>
           </div>

@@ -7,6 +7,7 @@ import {
   UserCheck, CalendarClock, Gift, MessageSquare, CalendarDays, Trophy, User, Bell,
   GraduationCap, ClipboardCheck, NotebookPen, PlusCircle, Megaphone, BarChart3,
   Wallet, Activity, ScrollText, Users, Command as CommandIcon,
+  Library, FileText, Clapperboard, Award, Bot,
 } from "lucide-react";
 
 interface Cmd { label: string; href: string; icon: any; keywords?: string }
@@ -23,6 +24,16 @@ const STUDENT_COMMANDS: Cmd[] = [
   { label: "Mock Exam", href: "/learning/mock-exam", icon: Trophy, keywords: "test band" },
   { label: "Daily Challenge", href: "/challenge", icon: Zap, keywords: "quiz daily" },
   { label: "Flashcards", href: "/flashcards", icon: Layers, keywords: "vocabulary words" },
+  { label: "Materials", href: "/materials", icon: Library, keywords: "resources guides bank study" },
+  { label: "Daily Article", href: "/article", icon: FileText, keywords: "reading news read" },
+  { label: "Movies", href: "/movies", icon: Clapperboard, keywords: "films watch subtitles" },
+  { label: "AI Mentor", href: "/mentor", icon: Bot, keywords: "ask help chatbot assistant" },
+  { label: "Leagues", href: "/leagues", icon: Trophy, keywords: "rank division weekly" },
+  { label: "Team Challenge", href: "/team-challenge", icon: Users, keywords: "group goal" },
+  { label: "Achievements", href: "/achievements", icon: Award, keywords: "badges medals" },
+  { label: "Rankings", href: "/rankings", icon: Trophy, keywords: "leaderboard top" },
+  { label: "Certificate", href: "/certificate", icon: Award, keywords: "diploma award download" },
+  { label: "Billing", href: "/billing", icon: Wallet, keywords: "payment balance topup" },
   { label: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck, keywords: "second teacher book" },
   { label: "Rewards", href: "/rewards", icon: Gift, keywords: "points store prizes" },
   { label: "Messages", href: "/messages", icon: MessageSquare, keywords: "chat teacher" },
