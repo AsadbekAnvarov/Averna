@@ -21,6 +21,9 @@ import { StudyPet } from "@/components/dashboard/study-pet";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { OnboardingTour } from "@/components/onboarding-tour";
 import { AccountNotice } from "@/components/account-notice";
+import { StudentAttentionBar } from "@/components/dashboard/student-attention-bar";
+import { LiveRefresh } from "@/components/ui/live-refresh";
+import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
@@ -154,6 +157,18 @@ export default async function DashboardPage() {
             points={student.totalPoints}
             streak={student.currentStreak}
           />
+
+          {/* Focus for today + live indicator */}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Suspense fallback={<div className="h-8" />}>
+              <StudentAttentionBar
+                userId={session.user.id}
+                homeworkDue={upcomingHomework.length}
+                streak={student.currentStreak}
+              />
+            </Suspense>
+            <LiveRefresh />
+          </div>
 
           {student.blacklisted && (
             <div className="rounded-xl border border-red-500/40 bg-red-500/10 p-4 text-red-200 flex items-start gap-3">

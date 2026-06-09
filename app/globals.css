@@ -313,3 +313,42 @@ html.light ::-webkit-scrollbar-thumb { background: linear-gradient(#0d9460, #0e7
 }
 html.light .skeleton { background: rgba(0,0,0,0.06); }
 html.light .skeleton::after { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent); }
+
+
+
+/* ===================================================================
+   LIGHT THEME — fixes for dashboard widgets (focus bars, KPIs, tiles)
+   Appended last so these take precedence over earlier light rules.
+   =================================================================== */
+
+/* Dark translucent inner surfaces (action tiles, group cards, rows) must
+   flip to soft light surfaces or they appear as dark blobs on white cards */
+html.light .bg-averna-dark\/30 { background-color: rgba(15, 23, 42, 0.04) !important; }
+html.light .bg-averna-dark\/40 { background-color: rgba(15, 23, 42, 0.05) !important; }
+html.light .bg-averna-dark\/50 { background-color: rgba(15, 23, 42, 0.06) !important; }
+html.light .hover\:bg-averna-dark\/50:hover { background-color: rgba(15, 23, 42, 0.07) !important; }
+
+/* Accent text colours used by the new widgets — darkened for contrast */
+html.light .text-amber-400 { color: #b45309 !important; }
+html.light .text-amber-300 { color: #b45309 !important; }
+html.light .text-emerald-400 { color: #047857 !important; }
+html.light .text-red-400 { color: #dc2626 !important; }
+html.light .text-averna-blue { color: #1d6fe0 !important; }
+html.light .text-gray-600 { color: #64748b !important; }
+
+/* Keep WHITE text on filled brand buttons/badges (the blanket text-white→dark
+   rule would otherwise make label text unreadable on coloured fills) */
+html.light .bg-averna-primary.text-white,
+html.light .bg-averna-primary\/90.text-white,
+html.light .bg-averna-primary\/80.text-white,
+html.light .bg-averna-primary\/70.text-white,
+html.light .bg-averna-light.text-white { color: #ffffff !important; }
+
+/* Light, readable chip backgrounds for the "needs attention" focus bars */
+html.light .bg-amber-400\/10 { background-color: rgba(180, 83, 9, 0.10) !important; }
+html.light .bg-emerald-400\/10 { background-color: rgba(4, 120, 87, 0.10) !important; }
+html.light .bg-red-400\/10 { background-color: rgba(220, 38, 38, 0.10) !important; }
+html.light .bg-red-500\/10 { background-color: rgba(220, 38, 38, 0.10) !important; }
+
+/* Subtle rings/borders read better a touch stronger on white */
+html.light [class*="ring-averna-"] { --tw-ring-color: rgba(15, 23, 42, 0.08) !important; }
