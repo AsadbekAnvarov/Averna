@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Play, Pause, RotateCcw, Timer, Coffee } from "lucide-react";
+import { Play, Pause, RotateCcw, Timer, Coffee, Gamepad2 } from "lucide-react";
+import { BrainBreak } from "@/components/dashboard/brain-break";
 
 type Mode = "focus" | "break";
 const DURATIONS: Record<Mode, number> = { focus: 25 * 60, break: 5 * 60 };
@@ -16,6 +17,7 @@ export function PomodoroTimer() {
   const [remaining, setRemaining] = useState(DURATIONS.focus);
   const [running, setRunning] = useState(false);
   const [sessions, setSessions] = useState(0);
+  const [breakOpen, setBreakOpen] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -25,7 +27,10 @@ export function PomodoroTimer() {
         if (r <= 1) {
           // session finished — switch mode
           const nextMode: Mode = mode === "focus" ? "break" : "focus";
-          if (mode === "focus") setSessions((s) => s + 1);
+          if (mode === "focus") {
+            setSessions((s) => s + 1);
+            setBreakOpen(true); // pop the Brain Break game after a focus session
+          }
           setMode(nextMode);
           setRunning(false);
           try {
@@ -114,7 +119,16 @@ export function PomodoroTimer() {
             🍅 {sessions} focus session{sessions === 1 ? "" : "s"} done today
           </p>
         )}
+
+        <button
+          onClick={() => setBreakOpen(true)}
+          className="w-full mt-3 inline-flex items-center justify-center gap-1.5 text-xs text-averna-neon hover:text-white transition-colors"
+        >
+          <Gamepad2 className="h-3.5 w-3.5" /> Take a brain break game
+        </button>
       </CardContent>
+
+      <BrainBreak open={breakOpen} onClose={() => setBreakOpen(false)} />
     </Card>
   );
 }
