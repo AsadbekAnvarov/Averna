@@ -53,6 +53,13 @@ export default async function MoviesPage() {
     },
   ];
 
+  const COLOR: Record<string, { border: string; badge: string }> = {
+    blue: { border: "border-blue-500/30", badge: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
+    green: { border: "border-green-500/30", badge: "bg-green-500/20 text-green-400 border-green-500/30" },
+    purple: { border: "border-purple-500/30", badge: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
+    pink: { border: "border-pink-500/30", badge: "bg-pink-500/20 text-pink-400 border-pink-500/30" },
+  };
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -104,7 +111,7 @@ export default async function MoviesPage() {
           {movies.map((movie) => (
             <Card
               key={movie.id}
-              className={`glass border-${movie.color}-500/30 hover:shadow-neon-green transition-all duration-300 hover:scale-105`}
+              className={`glass ${COLOR[movie.color]?.border ?? "border-white/10"} hover:shadow-neon-green transition-all duration-300 hover:scale-105`}
             >
               <CardHeader>
                 <div className="text-center mb-4">
@@ -113,7 +120,7 @@ export default async function MoviesPage() {
                   <p className="text-xs text-gray-400">({movie.year})</p>
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                  <span className={`text-xs px-3 py-1 rounded-full bg-${movie.color}-500/20 text-${movie.color}-400 border border-${movie.color}-500/30`}>
+                  <span className={`text-xs px-3 py-1 rounded-full border ${COLOR[movie.color]?.badge ?? "bg-white/10 text-gray-300 border-white/10"}`}>
                     {movie.level}
                   </span>
                   <span className="flex items-center gap-1 text-xs text-gray-400">
