@@ -42,7 +42,7 @@ import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { TrendingUp, Sparkles, LayoutGrid, ClipboardList } from "lucide-react";
+import { TrendingUp, Sparkles, LayoutGrid, ClipboardList, Activity, Gamepad2 } from "lucide-react";
 import { predictBand } from "@/lib/utils";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
@@ -189,7 +189,7 @@ export default async function DashboardPage() {
       <div className="container mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
         <DashboardHeader user={student.user} />
         
-        <div className="space-y-6">
+        <div className="space-y-8">
           {/* Focus for today + live indicator + comfort settings */}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <Suspense fallback={<div className="h-8" />}>
@@ -236,9 +236,9 @@ export default async function DashboardPage() {
 
           <StatsGrid student={student} />
 
-          {/* ===== YOUR PROGRESS ===== */}
+          {/* ===== PROGRESS & GOALS ===== */}
           <div>
-            <SectionHeader icon={TrendingUp} title="Your Progress" subtitle="Where you are and where you're heading" accent="text-averna-cyan" />
+            <SectionHeader icon={TrendingUp} title="Progress & Goals" subtitle="Where you are and where you're heading" accent="text-averna-cyan" />
             <div className="grid lg:grid-cols-2 gap-6">
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <BandProgress studentId={student.id} targetBand={student.targetBand} />
@@ -247,9 +247,10 @@ export default async function DashboardPage() {
                 <SkillRadar studentId={student.id} />
               </Suspense>
             </div>
-            <div className="grid lg:grid-cols-2 gap-6 mt-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
               <LevelProgress points={student.totalPoints} />
               <WeeklyGoal completed={weeklyCompleted} />
+              <ExamCountdown />
             </div>
           </div>
 
@@ -261,62 +262,80 @@ export default async function DashboardPage() {
             </Suspense>
           </div>
 
-          {/* ===== EVERYTHING ELSE ===== */}
-          <SectionHeader icon={LayoutGrid} title="Your Workspace" subtitle="Modules, progress and your class" accent="text-averna-purple" />
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 space-y-6">
-              <QuickActions />
-              <StreakHeatmap studentId={student.id} />
-              <Milestones
-                points={student.totalPoints}
-                currentStreak={student.currentStreak}
-                longestStreak={student.longestStreak}
-                testsCompleted={testsCompleted}
-              />
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <TestHistory studentId={student.id} />
-              </Suspense>
-              <RecentActivity activities={student.activityLogs} />
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <GroupFeed studentId={student.id} groupId={student.groupId} />
-              </Suspense>
-              <DailyArticle />
-              <WordOfTheDay />
-            </div>
+          {/* ===== EXPLORE ===== */}
+          <div>
+            <SectionHeader icon={LayoutGrid} title="Explore" subtitle="Jump into any module or tool" accent="text-averna-purple" />
+            <QuickActions />
+          </div>
 
-            <div className="space-y-6">
-              <MoodCheckin />
-              <ExamCountdown />
-              <Suspense fallback={<WidgetSkeleton rows={2} />}>
-                <TeacherCard groupId={student.groupId} />
-              </Suspense>
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
-              </Suspense>
-              <MentorCard />
-              <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <MessagePreview userId={session.user.id} />
-              </Suspense>
-              <PomodoroTimer />
-              <div data-gamified>
-                <DailySpin />
-              </div>
-              <div data-gamified>
-                <StudyPet streak={student.currentStreak} points={student.totalPoints} />
-              </div>
-              <div data-gamified>
-                <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
-              </div>
-              <div data-gamified>
-                <StudentOfTheWeek />
-              </div>
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <AchievementsProgress
-                  studentId={student.id}
+          {/* ===== ACTIVITY & CLASS ===== */}
+          <div>
+            <SectionHeader icon={Activity} title="Activity & Class" subtitle="Your progress log and your group" accent="text-averna-cyan" />
+            <div className="grid lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2 space-y-6">
+                <StreakHeatmap studentId={student.id} />
+                <Milestones
+                  points={student.totalPoints}
+                  currentStreak={student.currentStreak}
                   longestStreak={student.longestStreak}
-                  globalRank={student.globalRank}
+                  testsCompleted={testsCompleted}
                 />
-              </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <TestHistory studentId={student.id} />
+                </Suspense>
+                <RecentActivity activities={student.activityLogs} />
+              </div>
+              <div className="space-y-6">
+                <Suspense fallback={<WidgetSkeleton rows={2} />}>
+                  <TeacherCard groupId={student.groupId} />
+                </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
+                </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                  <MessagePreview userId={session.user.id} />
+                </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <GroupFeed studentId={student.id} groupId={student.groupId} />
+                </Suspense>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== COACH, FUN & READING ===== */}
+          <div>
+            <SectionHeader icon={Gamepad2} title="Coach, Fun & Reading" subtitle="Tools and treats to keep you going" accent="text-averna-pink" />
+            <div className="grid lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2 space-y-6">
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <MentorCard />
+                  <PomodoroTimer />
+                </div>
+                <DailyArticle />
+                <WordOfTheDay />
+              </div>
+              <div className="space-y-6">
+                <MoodCheckin />
+                <div data-gamified>
+                  <DailySpin />
+                </div>
+                <div data-gamified>
+                  <StudyPet streak={student.currentStreak} points={student.totalPoints} />
+                </div>
+                <div data-gamified>
+                  <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
+                </div>
+                <div data-gamified>
+                  <StudentOfTheWeek />
+                </div>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <AchievementsProgress
+                    studentId={student.id}
+                    longestStreak={student.longestStreak}
+                    globalRank={student.globalRank}
+                  />
+                </Suspense>
+              </div>
             </div>
           </div>
         </div>

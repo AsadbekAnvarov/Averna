@@ -391,3 +391,18 @@ html.text-scale-lg { font-size: 18px; }
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
+
+
+/* ===== Light theme: more readable greys + prettier message bubbles ===== */
+html.light .text-gray-50 { color: #1e293b !important; }
+html.light .text-gray-100 { color: #1e293b !important; }
+html.light .text-gray-200 { color: #1e293b !important; }
+
+/* Incoming chat bubble: soft light surface with dark text */
+html.light .bg-white\/10.text-white { color: #0f172a !important; }
+
+/* Outgoing chat bubble keeps the brand green with white text (already
+   handled by the brand-button rule) — give it a slightly softer green so it
+   looks pleasant on a white background */
+html.light .bg-averna-primary { background-color: #0fa06f !important; }
