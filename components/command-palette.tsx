@@ -112,7 +112,7 @@ export function CommandPalette() {
       {/* Floating "Quick jump" button — always discoverable */}
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full glass-strong border border-averna-neon/30 text-gray-200 shadow-lg hover:border-averna-neon/60 hover:text-white transition-colors"
+        className="quick-jump-fab fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full glass-strong border border-averna-neon/30 text-gray-200 shadow-lg hover:border-averna-neon/60 hover:text-white transition-colors"
         aria-label="Open command palette"
       >
         <CommandIcon className="h-4 w-4 text-averna-neon" />

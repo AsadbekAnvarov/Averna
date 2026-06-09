@@ -352,3 +352,26 @@ html.light .bg-red-500\/10 { background-color: rgba(220, 38, 38, 0.10) !importan
 
 /* Subtle rings/borders read better a touch stronger on white */
 html.light [class*="ring-averna-"] { --tw-ring-color: rgba(15, 23, 42, 0.08) !important; }
+
+
+
+/* ===== Dashboard comfort: Focus Mode + text scaling ===== */
+/* Focus mode hides gamification widgets for distraction-free study */
+body.focus-mode [data-gamified] { display: none !important; }
+
+/* Whole-UI text scaling (Tailwind uses rem, so this scales everything) */
+html.text-scale-sm { font-size: 14px; }
+html.text-scale-lg { font-size: 18px; }
+
+/* Line-clamp helper used by recommendation tiles */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Keep the floating "Quick jump" button clear of the mobile bottom nav */
+@media (max-width: 1023px) {
+  .quick-jump-fab { bottom: 5.5rem !important; }
+}
