@@ -38,7 +38,6 @@ import { MentorCard } from "@/components/dashboard/mentor-card";
 import { MoodCheckin } from "@/components/dashboard/mood-checkin";
 import { DailySpin } from "@/components/dashboard/daily-spin";
 import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
-import { AmbientBackground } from "@/components/dashboard/ambient-background";
 import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -173,9 +172,8 @@ export default async function DashboardPage() {
   });
 
   return (
-    <div className="min-h-screen premium-gradient">
+    <div className="min-h-screen brand-bg">
       <SeasonalDecor />
-      <AmbientBackground />
       <div className="container relative z-10 mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
         <DashboardHeader user={student.user} />
 

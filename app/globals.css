@@ -413,13 +413,13 @@ html.light .bg-averna-primary { background-color: #0fa06f !important; }
    BEAUTIFICATION — gradients, orbs, stagger, shine, hover glow
    =================================================================== */
 
-/* Slowly shifting brand gradient (used in the hero banner) */
+/* Slowly shifting brand gradient (used in the hero banner) — brand tones only */
 .animated-gradient {
   background: linear-gradient(120deg,
-    rgba(0, 229, 255, 0.20),
-    rgba(177, 78, 255, 0.20),
-    rgba(255, 61, 187, 0.16),
-    rgba(0, 255, 148, 0.16));
+    rgba(11, 143, 106, 0.30),
+    rgba(0, 229, 255, 0.18),
+    rgba(0, 255, 148, 0.18),
+    rgba(15, 214, 166, 0.20));
   background-size: 300% 300%;
   animation: gradient-shift 14s ease infinite;
 }
@@ -474,4 +474,20 @@ html.light .bg-averna-primary { background-color: #0fa06f !important; }
   .animated-gradient,
   .shine::after { animation: none; }
   .tab-stagger > * { opacity: 1; animation: none; }
+}
+
+
+
+/* ===== Solid, on-brand dashboard background (clean monotone) ===== */
+.brand-bg {
+  background:
+    radial-gradient(circle at 50% -10%, rgba(11, 143, 106, 0.12), transparent 55%),
+    #04110d;
+  background-attachment: fixed;
+}
+html.light .brand-bg {
+  background:
+    radial-gradient(circle at 50% -10%, rgba(13, 148, 96, 0.08), transparent 55%),
+    #eef2f7;
+  background-attachment: fixed;
 }
