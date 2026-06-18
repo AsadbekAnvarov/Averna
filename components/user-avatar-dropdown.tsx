@@ -34,7 +34,7 @@ export function UserAvatarDropdown({ user, role }: Props) {
   }, []);
 
   const profileHref =
-    role === "ADMIN" ? "/admin/dashboard" :
+    role === "ADMIN" ? "/admin/profile" :
     role === "TEACHER" ? "/teacher/profile" :
     "/profile";
 

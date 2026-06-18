@@ -13,6 +13,7 @@ import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { TopPerformers } from "@/components/top-performers";
+import { AvatarEditor } from "@/components/avatar-editor";
 
 async function updateTeacherProfile(formData: FormData) {
   "use server";
@@ -43,7 +44,7 @@ export default async function TeacherProfilePage() {
   const teacher = await db.teacher.findUnique({
     where: { userId: session.user.id },
     include: {
-      user: { select: { name: true, email: true } },
+      user: { select: { name: true, email: true, image: true } },
       groups: { include: { students: true } },
       homework: true,
     },
@@ -63,12 +64,17 @@ export default async function TeacherProfilePage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <TeacherHeader user={{ name: teacher.user.name ?? "Teacher", email: teacher.user.email }} />
+        <TeacherHeader user={{ name: teacher.user.name ?? "Teacher", email: teacher.user.email, image: teacher.user.image }} />
 
         <h1 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
           <GraduationCap className="h-10 w-10 text-averna-cyan" />
           Teacher Profile
         </h1>
+
+        {/* Avatar editor */}
+        <div className="mb-8">
+          <AvatarEditor currentImage={teacher.user.image ?? null} name={teacher.user.name ?? "Teacher"} />
+        </div>
 
         {/* Stats */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
