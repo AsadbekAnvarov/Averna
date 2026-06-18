@@ -23,8 +23,8 @@ export function SectionHeader({
     <div className="flex items-end justify-between gap-3 mb-4 mt-2">
       <div className="flex items-center gap-2.5 min-w-0">
         {Icon && (
-          <div className={`flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 border border-white/10 ${accent}`}>
-            <Icon className="h-4 w-4" />
+          <div className={`flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-white/15 to-white/[0.03] border border-white/10 shadow-inner ${accent}`}>
+            <Icon className="h-5 w-5" />
           </div>
         )}
         <div className="min-w-0">

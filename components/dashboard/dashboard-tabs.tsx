@@ -4,19 +4,19 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Home, GraduationCap, TrendingUp, Users, Gamepad2 } from "lucide-react";
 
 const TABS = [
-  { key: "home", label: "Home", icon: Home },
-  { key: "learn", label: "Learn", icon: GraduationCap },
-  { key: "progress", label: "Progress", icon: TrendingUp },
-  { key: "class", label: "Class", icon: Users },
-  { key: "fun", label: "Fun", icon: Gamepad2 },
+  { key: "home", label: "Home", icon: Home, active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
+  { key: "learn", label: "Learn", icon: GraduationCap, active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
+  { key: "progress", label: "Progress", icon: TrendingUp, active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
+  { key: "class", label: "Class", icon: Users, active: "bg-averna-blue/15 text-averna-blue ring-1 ring-averna-blue/40" },
+  { key: "fun", label: "Fun", icon: Gamepad2, active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
 ] as const;
 
 type TabKey = (typeof TABS)[number]["key"];
 
 /**
  * Tabbed shell for the student dashboard. Each tab's content is pre-rendered on
- * the server and passed in as a prop, so switching is instant (no refetch).
- * The tab bar is sticky, finger-friendly and scrolls horizontally on phones.
+ * the server and passed as a prop, so switching is instant. The tab bar is
+ * sticky, colour-coded per section, finger-friendly and scrolls on phones.
  */
 export function DashboardTabs({
   home,
@@ -51,9 +51,9 @@ export function DashboardTabs({
   return (
     <div>
       {/* Sticky tab bar */}
-      <div className="sticky top-0 z-30 -mx-4 px-4 py-2 mb-2">
+      <div className="sticky top-0 z-30 -mx-4 px-4 py-2 mb-4">
         <div className="flex overflow-x-auto md:justify-center">
-          <div className="flex gap-1 mx-auto md:mx-0 glass-strong border border-white/10 rounded-2xl p-1.5">
+          <div className="flex gap-1 mx-auto md:mx-0 glass-strong border border-white/10 rounded-2xl p-1.5 shadow-xl">
             {TABS.map((t) => {
               const Icon = t.icon;
               const isActive = active === t.key;
@@ -61,14 +61,12 @@ export function DashboardTabs({
                 <button
                   key={t.key}
                   onClick={() => select(t.key)}
-                  className={`flex items-center gap-2 px-3.5 sm:px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all ${
-                    isActive
-                      ? "bg-averna-primary text-white shadow-lg shadow-averna-primary/20"
-                      : "text-gray-300 hover:text-white hover:bg-white/5"
+                  className={`flex flex-col sm:flex-row items-center gap-1 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
+                    isActive ? `${t.active} shadow-lg` : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
-                  <Icon className="h-4 w-4 shrink-0" />
+                  <Icon className={`h-5 w-5 shrink-0 transition-transform ${isActive ? "scale-110" : ""}`} />
                   {t.label}
                 </button>
               );
@@ -77,8 +75,8 @@ export function DashboardTabs({
         </div>
       </div>
 
-      {/* Active tab content */}
-      <div key={active} className="animate-fade-in space-y-6">
+      {/* Active tab content (staggered fade-in) */}
+      <div key={active} className="tab-stagger space-y-6">
         {content[active]}
       </div>
     </div>

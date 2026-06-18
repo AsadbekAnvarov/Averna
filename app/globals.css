@@ -406,3 +406,72 @@ html.light .bg-white\/10.text-white { color: #0f172a !important; }
    handled by the brand-button rule) — give it a slightly softer green so it
    looks pleasant on a white background */
 html.light .bg-averna-primary { background-color: #0fa06f !important; }
+
+
+
+/* ===================================================================
+   BEAUTIFICATION — gradients, orbs, stagger, shine, hover glow
+   =================================================================== */
+
+/* Slowly shifting brand gradient (used in the hero banner) */
+.animated-gradient {
+  background: linear-gradient(120deg,
+    rgba(0, 229, 255, 0.20),
+    rgba(177, 78, 255, 0.20),
+    rgba(255, 61, 187, 0.16),
+    rgba(0, 255, 148, 0.16));
+  background-size: 300% 300%;
+  animation: gradient-shift 14s ease infinite;
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ambient blurred background orbs */
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+}
+
+/* Staggered fade-in for tab content children */
+.tab-stagger > * {
+  opacity: 0;
+  animation: stagger-in 0.5s ease forwards;
+}
+.tab-stagger > *:nth-child(1) { animation-delay: 0.04s; }
+.tab-stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.tab-stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.tab-stagger > *:nth-child(4) { animation-delay: 0.22s; }
+.tab-stagger > *:nth-child(5) { animation-delay: 0.28s; }
+.tab-stagger > *:nth-child(6) { animation-delay: 0.34s; }
+.tab-stagger > *:nth-child(n+7) { animation-delay: 0.40s; }
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Shimmer sweep for badges / highlights */
+.shine { position: relative; overflow: hidden; }
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.28) 50%, transparent 65%);
+  transform: translateX(-130%);
+  animation: shine-sweep 3.6s ease-in-out infinite;
+}
+@keyframes shine-sweep { to { transform: translateX(130%); } }
+
+/* Reusable gentle hover glow for cards */
+.glass { transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease; }
+.glass:hover { box-shadow: 0 10px 40px -10px rgba(0, 229, 255, 0.18); }
+
+/* Respect reduced motion for all the decorative animation */
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient,
+  .shine::after { animation: none; }
+  .tab-stagger > * { opacity: 1; animation: none; }
+}

@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
-import { WelcomeSection } from "@/components/dashboard/welcome-section";
 import { StatsGrid } from "@/components/dashboard/stats-grid";
 import { QuickActions } from "@/components/dashboard/quick-actions";
 import { RecentActivity } from "@/components/dashboard/recent-activity";
@@ -39,6 +38,8 @@ import { MentorCard } from "@/components/dashboard/mentor-card";
 import { MoodCheckin } from "@/components/dashboard/mood-checkin";
 import { DailySpin } from "@/components/dashboard/daily-spin";
 import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
+import { AmbientBackground } from "@/components/dashboard/ambient-background";
+import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
@@ -174,7 +175,8 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <SeasonalDecor />
-      <div className="container mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
+      <AmbientBackground />
+      <div className="container relative z-10 mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
         <DashboardHeader user={student.user} />
 
         {/* Focus + controls (always visible above the tabs) */}
@@ -207,6 +209,15 @@ export default async function DashboardPage() {
         <DashboardTabs
           home={
             <>
+              <DashboardHero
+                name={student.user.name}
+                image={student.user.image}
+                points={student.totalPoints}
+                streak={student.currentStreak}
+                globalRank={student.globalRank}
+                goal={student.personalGoal}
+                quote={dailyQuote}
+              />
               <div>
                 <SectionHeader
                   icon={ClipboardList}
@@ -217,7 +228,6 @@ export default async function DashboardPage() {
                 />
                 <UpcomingHomework homework={upcomingHomework} />
               </div>
-              <WelcomeSection student={student} quote={dailyQuote} />
               <StatsGrid student={student} />
               <div>
                 <SectionHeader icon={Sparkles} title="Your Plan for Today" subtitle="A smart, personalised study plan" accent="text-averna-neon" />
