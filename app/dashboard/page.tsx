@@ -239,7 +239,7 @@ export default async function DashboardPage() {
           learn={
             <>
               <div>
-                <SectionHeader icon={LayoutGrid} title="Explore" subtitle="Jump into any module or tool" accent="text-averna-purple" />
+                <SectionHeader icon={LayoutGrid} title="Explore" subtitle="Jump into any module or tool" accent="text-averna-purple" action={{ label: "Learning Center", href: "/learning" }} />
                 <QuickActions />
               </div>
               <div>

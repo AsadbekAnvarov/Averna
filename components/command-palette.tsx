@@ -14,6 +14,8 @@ interface Cmd { label: string; href: string; icon: any; keywords?: string }
 
 const STUDENT_COMMANDS: Cmd[] = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, keywords: "home main" },
+  { label: "Learning Center", href: "/learning", icon: GraduationCap, keywords: "practice modules hub all skills" },
+  { label: "My Progress", href: "/progress", icon: BarChart3, keywords: "band rank achievements bests leagues" },
   { label: "My Schedule", href: "/schedule", icon: CalendarClock, keywords: "attendance grades" },
   { label: "Calendar", href: "/calendar", icon: CalendarDays, keywords: "month deadlines" },
   { label: "Writing", href: "/learning/writing", icon: PenTool, keywords: "essay task" },
