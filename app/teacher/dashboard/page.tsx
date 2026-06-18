@@ -235,9 +235,10 @@ export default async function TeacherDashboard() {
         ) : (
           <div className="grid sm:grid-cols-2 gap-4">
             {teacher.groups.map((group) => (
-              <div
+              <Link
                 key={group.id}
-                className="p-4 bg-averna-dark/30 rounded-xl border border-white/5 transition-all duration-300 hover:border-averna-cyan/30 hover:-translate-y-0.5"
+                href={`/teacher/group/${group.id}`}
+                className="block p-4 bg-averna-dark/30 rounded-xl border border-white/5 transition-all duration-300 hover:border-averna-cyan/30 hover:-translate-y-0.5"
               >
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2 min-w-0">
@@ -262,7 +263,7 @@ export default async function TeacherDashboard() {
                     {group.students.length}
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

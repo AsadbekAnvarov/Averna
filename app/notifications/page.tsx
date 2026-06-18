@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Bell, CheckCheck, BookMarked, Award, CalendarClock, MessageSquare, Info } from "lucide-react";
 import Link from "next/link";
 import { timeAgo } from "@/lib/utils";
+import { InboxTabs } from "@/components/inbox-tabs";
 
 async function markAllRead() {
   "use server";
@@ -67,6 +68,7 @@ export default async function NotificationsPage({ searchParams }: { searchParams
   });
 
   const unreadCount = await db.notification.count({ where: { userId: session.user.id, read: false } });
+  const unreadMessages = await db.message.count({ where: { receiverId: session.user.id, read: false } });
 
   // Group into time buckets, preserving order
   const buckets: Record<string, typeof notifications> = { Today: [], "This week": [], Earlier: [] };
@@ -78,6 +80,8 @@ export default async function NotificationsPage({ searchParams }: { searchParams
         <Link href={homeHref(session.user.role)} className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Dashboard
         </Link>
+
+        <InboxTabs unreadMessages={unreadMessages} unreadNotifications={unreadCount} />
         <div className="flex items-center justify-between mb-5">
           <h1 className="text-3xl sm:text-4xl font-bold text-white flex items-center gap-3">
             <Bell className="h-8 w-8 text-averna-cyan" />
