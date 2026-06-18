@@ -30,6 +30,7 @@ import { MessagePreview } from "@/components/dashboard/message-preview";
 import { PomodoroTimer } from "@/components/dashboard/pomodoro-timer";
 import { GroupFeed } from "@/components/dashboard/group-feed";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
+import { PersonalBests } from "@/components/dashboard/personal-bests";
 import { DashboardTabs } from "@/components/dashboard/dashboard-tabs";
 import { DashboardPreferences } from "@/components/dashboard/dashboard-preferences";
 import { ExamCountdown } from "@/components/dashboard/exam-countdown";
@@ -42,7 +43,7 @@ import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, ClipboardList } from "lucide-react";
+import { Sparkles, LayoutGrid, ClipboardList, BookOpen } from "lucide-react";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -172,7 +173,7 @@ export default async function DashboardPage() {
   });
 
   return (
-    <div className="min-h-screen brand-bg">
+    <div className="min-h-screen premium-gradient">
       <SeasonalDecor />
       <div className="container relative z-10 mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
         <DashboardHeader user={student.user} />
@@ -241,9 +242,19 @@ export default async function DashboardPage() {
                 <SectionHeader icon={LayoutGrid} title="Explore" subtitle="Jump into any module or tool" accent="text-averna-purple" />
                 <QuickActions />
               </div>
-              <div className="grid lg:grid-cols-2 gap-6">
-                <MentorCard />
-                <PomodoroTimer />
+              <div>
+                <SectionHeader icon={Sparkles} title="Coach & Focus" subtitle="Get help and study in focused sprints" accent="text-averna-neon" />
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <MentorCard />
+                  <PomodoroTimer />
+                </div>
+              </div>
+              <div>
+                <SectionHeader icon={BookOpen} title="Keep Learning" subtitle="A little reading goes a long way" accent="text-averna-cyan" />
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <DailyArticle />
+                  <WordOfTheDay />
+                </div>
               </div>
             </>
           }
@@ -274,13 +285,18 @@ export default async function DashboardPage() {
                   <TestHistory studentId={student.id} />
                 </Suspense>
               </div>
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <AchievementsProgress
-                  studentId={student.id}
-                  longestStreak={student.longestStreak}
-                  globalRank={student.globalRank}
-                />
-              </Suspense>
+              <div className="grid lg:grid-cols-2 gap-6">
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <AchievementsProgress
+                    studentId={student.id}
+                    longestStreak={student.longestStreak}
+                    globalRank={student.globalRank}
+                  />
+                </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <PersonalBests studentId={student.id} />
+                </Suspense>
+              </div>
             </>
           }
           classroom={
@@ -322,10 +338,6 @@ export default async function DashboardPage() {
               </div>
               <div data-gamified>
                 <StudentOfTheWeek />
-              </div>
-              <div className="grid lg:grid-cols-2 gap-6">
-                <DailyArticle />
-                <WordOfTheDay />
               </div>
             </>
           }
