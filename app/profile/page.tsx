@@ -20,6 +20,7 @@ import {
   CalendarClock,
 } from "lucide-react";
 import Link from "next/link";
+import { AvatarEditor } from "@/components/avatar-editor";
 
 const personalGoals = [
   "IELTS 7.5+",
@@ -39,6 +40,7 @@ export default function ProfilePage() {
   const [profile, setProfile] = useState({
     name: "",
     email: "",
+    image: "",
     personalGoal: "",
     level: "",
     phone: "",
@@ -118,6 +120,11 @@ export default function ProfilePage() {
           <User className="h-10 w-10 text-averna-cyan" />
           My Profile
         </h1>
+
+        {/* Avatar editor */}
+        <div className="mb-8">
+          <AvatarEditor currentImage={profile.image || null} name={profile.name || "Student"} />
+        </div>
 
         {/* Stats */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">

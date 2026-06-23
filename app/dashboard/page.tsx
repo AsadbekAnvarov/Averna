@@ -4,14 +4,11 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
-import { WelcomeSection } from "@/components/dashboard/welcome-section";
 import { StatsGrid } from "@/components/dashboard/stats-grid";
 import { QuickActions } from "@/components/dashboard/quick-actions";
 import { RecentActivity } from "@/components/dashboard/recent-activity";
 import { UpcomingHomework } from "@/components/dashboard/upcoming-homework";
-import { AchievementsPreview } from "@/components/dashboard/achievements-preview";
 import { WordOfTheDay } from "@/components/dashboard/word-of-the-day";
-import { MotivationBanner } from "@/components/dashboard/motivation-banner";
 import { Milestones } from "@/components/dashboard/milestones";
 import { StreakHeatmap } from "@/components/dashboard/streak-heatmap";
 import { StudentOfTheWeek } from "@/components/student-of-the-week";
@@ -20,6 +17,33 @@ import { DailyArticle } from "@/components/dashboard/daily-article";
 import { StudyPet } from "@/components/dashboard/study-pet";
 import { OnboardingTour } from "@/components/onboarding-tour";
 import { AccountNotice } from "@/components/account-notice";
+import { StudentAttentionBar } from "@/components/dashboard/student-attention-bar";
+import { BandProgress } from "@/components/dashboard/band-progress";
+import { SkillRadar } from "@/components/dashboard/skill-radar";
+import { LevelProgress } from "@/components/dashboard/level-progress";
+import { WeeklyGoal } from "@/components/dashboard/weekly-goal";
+import { RecommendedToday } from "@/components/dashboard/recommended-today";
+import { TeacherCard } from "@/components/dashboard/teacher-card";
+import { LeaderboardWidget } from "@/components/dashboard/leaderboard-widget";
+import { MessagePreview } from "@/components/dashboard/message-preview";
+import { PomodoroTimer } from "@/components/dashboard/pomodoro-timer";
+import { GroupFeed } from "@/components/dashboard/group-feed";
+import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
+import { PersonalBests } from "@/components/dashboard/personal-bests";
+import { DashboardTabs } from "@/components/dashboard/dashboard-tabs";
+import { DashboardPreferences } from "@/components/dashboard/dashboard-preferences";
+import { ExamCountdown } from "@/components/dashboard/exam-countdown";
+import { TestHistory } from "@/components/dashboard/test-history";
+import { MentorCard } from "@/components/dashboard/mentor-card";
+import { MoodCheckin } from "@/components/dashboard/mood-checkin";
+import { DailySpin } from "@/components/dashboard/daily-spin";
+import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
+import { DashboardHero } from "@/components/dashboard/dashboard-hero";
+import { LiveRefresh } from "@/components/ui/live-refresh";
+import { SectionHeader } from "@/components/ui/section-header";
+import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
+import { Sparkles, LayoutGrid, ClipboardList, BookOpen } from "lucide-react";
+import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
@@ -142,61 +166,181 @@ export default async function DashboardPage() {
     },
   });
 
+  // Study activity completed in the last 7 days (for the weekly goal ring)
+  const weeklyCompleted = await db.activityLog.count({
+    where: { studentId: student.id, createdAt: { gte: new Date(Date.now() - 7 * 86400000) } },
+  });
+
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
+      <SeasonalDecor />
+      <div className="container relative z-10 mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
         <DashboardHeader user={student.user} />
-        
-        <div className="space-y-6">
-          <MotivationBanner
-            name={student.user.name}
-            points={student.totalPoints}
-            streak={student.currentStreak}
-          />
 
-          {student.blacklisted && (
-            <div className="rounded-xl border border-red-500/40 bg-red-500/10 p-4 text-red-200 flex items-start gap-3">
-              <span className="text-xl">⚠️</span>
-              <div>
-                <p className="font-semibold text-red-300">You are on the blacklist</p>
-                <p className="text-sm">
-                  {student.blacklistReason || "Please complete your homework."} Talk to your teacher and catch up to be removed.
-                </p>
-              </div>
-            </div>
-          )}
-
-          <WelcomeSection 
-            student={student}
-            quote={dailyQuote}
-          />
-
-          <StatsGrid student={student} />
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 space-y-6">
-              <QuickActions />
-              <Milestones
-                points={student.totalPoints}
-                currentStreak={student.currentStreak}
-                longestStreak={student.longestStreak}
-                testsCompleted={testsCompleted}
-              />
-              <StreakHeatmap studentId={student.id} />
-              <UpcomingHomework homework={upcomingHomework} />
-              <RecentActivity activities={student.activityLogs} />
-            </div>
-
-            <div className="space-y-6">
-              <StudyPet streak={student.currentStreak} points={student.totalPoints} />
-              <StudentOfTheWeek />
-              <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
-              <DailyArticle />
-              <WordOfTheDay />
-              <AchievementsPreview achievements={student.achievements} />
-            </div>
+        {/* Focus + controls (always visible above the tabs) */}
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <Suspense fallback={<div className="h-8" />}>
+            <StudentAttentionBar
+              userId={session.user.id}
+              homeworkDue={upcomingHomework.length}
+              streak={student.currentStreak}
+            />
+          </Suspense>
+          <div className="flex items-center gap-4">
+            <DashboardPreferences />
+            <LiveRefresh />
           </div>
         </div>
+
+        {student.blacklisted && (
+          <div className="mb-4 rounded-xl border border-red-500/40 bg-red-500/10 p-4 text-red-200 flex items-start gap-3">
+            <span className="text-xl">⚠️</span>
+            <div>
+              <p className="font-semibold text-red-300">You are on the blacklist</p>
+              <p className="text-sm">
+                {student.blacklistReason || "Please complete your homework."} Talk to your teacher and catch up to be removed.
+              </p>
+            </div>
+          </div>
+        )}
+
+        <DashboardTabs
+          home={
+            <>
+              <DashboardHero
+                name={student.user.name}
+                image={student.user.image}
+                points={student.totalPoints}
+                streak={student.currentStreak}
+                globalRank={student.globalRank}
+                goal={student.personalGoal}
+                quote={dailyQuote}
+              />
+              <div>
+                <SectionHeader
+                  icon={ClipboardList}
+                  title="Do This Next"
+                  subtitle={upcomingHomework.length > 0 ? `You have ${upcomingHomework.length} assignment${upcomingHomework.length === 1 ? "" : "s"} to complete` : "Your assignments will appear here"}
+                  accent="text-averna-neon"
+                  action={{ label: "All homework", href: "/homework" }}
+                />
+                <UpcomingHomework homework={upcomingHomework} />
+              </div>
+              <StatsGrid student={student} />
+              <div>
+                <SectionHeader icon={Sparkles} title="Your Plan for Today" subtitle="A smart, personalised study plan" accent="text-averna-neon" />
+                <Suspense fallback={<WidgetSkeleton rows={1} title={false} />}>
+                  <RecommendedToday studentId={student.id} groupId={student.groupId} />
+                </Suspense>
+              </div>
+            </>
+          }
+          learn={
+            <>
+              <div>
+                <SectionHeader icon={LayoutGrid} title="Explore" subtitle="Jump into any module or tool" accent="text-averna-purple" action={{ label: "Learning Center", href: "/learning" }} />
+                <QuickActions />
+              </div>
+              <div>
+                <SectionHeader icon={Sparkles} title="Coach & Focus" subtitle="Get help and study in focused sprints" accent="text-averna-neon" />
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <MentorCard />
+                  <PomodoroTimer />
+                </div>
+              </div>
+              <div>
+                <SectionHeader icon={BookOpen} title="Keep Learning" subtitle="A little reading goes a long way" accent="text-averna-cyan" />
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <DailyArticle />
+                  <WordOfTheDay />
+                </div>
+              </div>
+            </>
+          }
+          progress={
+            <>
+              <div className="grid lg:grid-cols-2 gap-6">
+                <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                  <BandProgress studentId={student.id} targetBand={student.targetBand} />
+                </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                  <SkillRadar studentId={student.id} />
+                </Suspense>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <LevelProgress points={student.totalPoints} />
+                <WeeklyGoal completed={weeklyCompleted} />
+                <ExamCountdown />
+              </div>
+              <StreakHeatmap studentId={student.id} />
+              <div className="grid lg:grid-cols-2 gap-6">
+                <Milestones
+                  points={student.totalPoints}
+                  currentStreak={student.currentStreak}
+                  longestStreak={student.longestStreak}
+                  testsCompleted={testsCompleted}
+                />
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <TestHistory studentId={student.id} />
+                </Suspense>
+              </div>
+              <div className="grid lg:grid-cols-2 gap-6">
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <AchievementsProgress
+                    studentId={student.id}
+                    longestStreak={student.longestStreak}
+                    globalRank={student.globalRank}
+                  />
+                </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <PersonalBests studentId={student.id} />
+                </Suspense>
+              </div>
+            </>
+          }
+          classroom={
+            <>
+              <div className="grid lg:grid-cols-2 gap-6">
+                <Suspense fallback={<WidgetSkeleton rows={2} />}>
+                  <TeacherCard groupId={student.groupId} />
+                </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
+                </Suspense>
+              </div>
+              <div className="grid lg:grid-cols-2 gap-6">
+                <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                  <MessagePreview userId={session.user.id} />
+                </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <GroupFeed studentId={student.id} groupId={student.groupId} />
+                </Suspense>
+              </div>
+              <RecentActivity activities={student.activityLogs} />
+            </>
+          }
+          fun={
+            <>
+              <div className="grid lg:grid-cols-2 gap-6">
+                <MoodCheckin />
+                <div data-gamified>
+                  <DailySpin />
+                </div>
+              </div>
+              <div className="grid lg:grid-cols-2 gap-6">
+                <div data-gamified>
+                  <StudyPet streak={student.currentStreak} points={student.totalPoints} />
+                </div>
+                <div data-gamified>
+                  <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
+                </div>
+              </div>
+              <div data-gamified>
+                <StudentOfTheWeek />
+              </div>
+            </>
+          }
+        />
       </div>
       <OnboardingTour />
     </div>

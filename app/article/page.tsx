@@ -3,15 +3,18 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Newspaper, BookMarked } from "lucide-react";
+import { Newspaper, BookMarked, Clock } from "lucide-react";
 import Link from "next/link";
 import { getTodayArticle } from "@/lib/daily-content";
+import { ArticleListen } from "@/components/article-listen";
 
 export default async function ArticlePage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 
   const article = getTodayArticle();
+  const wordCount = article.body.trim().split(/\s+/).filter(Boolean).length;
+  const readingMinutes = Math.max(1, Math.round(wordCount / 200));
   const today = new Date().toLocaleDateString("en-GB", {
     timeZone: "Asia/Tashkent",
     weekday: "long",
@@ -30,7 +33,18 @@ export default async function ArticlePage() {
         <p className="text-xs text-gray-500 mb-6">{today} · a new article every day</p>
 
         <Card className="glass border-averna-cyan/30 mb-6">
-          <CardHeader><CardTitle className="text-white">{article.title}</CardTitle></CardHeader>
+          <CardHeader>
+            <div className="flex items-start justify-between gap-3">
+              <CardTitle className="text-white">{article.title}</CardTitle>
+            </div>
+            <div className="flex items-center justify-between gap-3 mt-2">
+              <span className="text-xs text-gray-400 flex items-center gap-3">
+                <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {readingMinutes} min read</span>
+                <span>{wordCount} words</span>
+              </span>
+              <ArticleListen text={article.body} title={article.title} />
+            </div>
+          </CardHeader>
           <CardContent>
             <p className="text-gray-200 leading-relaxed whitespace-pre-line">{article.body}</p>
           </CardContent>
