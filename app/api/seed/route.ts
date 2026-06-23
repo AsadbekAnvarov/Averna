@@ -1,8 +1,38 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { hash } from "bcryptjs";
 import { db } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
+
+/**
+ * Authorization for the seed endpoint.
+ *
+ * In production, the endpoint is disabled unless ALLOW_SEED=true is set, AND
+ * the request carries `Authorization: Bearer <SEED_TOKEN>` matching the
+ * SEED_TOKEN env var. Outside production we still require the bearer token if
+ * SEED_TOKEN is set; otherwise (local dev with no token) we allow it.
+ */
+function isSeedAuthorized(req: NextRequest): { ok: true } | { ok: false; reason: string; status: number } {
+  const inProd = process.env.NODE_ENV === "production";
+  const allowed = process.env.ALLOW_SEED === "true";
+  const expectedToken = process.env.SEED_TOKEN;
+
+  if (inProd && !allowed) {
+    return { ok: false, reason: "Seeding is disabled in production. Set ALLOW_SEED=true to enable.", status: 404 };
+  }
+
+  if (expectedToken) {
+    const header = req.headers.get("authorization") ?? "";
+    const presented = header.startsWith("Bearer ") ? header.slice("Bearer ".length) : "";
+    if (presented !== expectedToken) {
+      return { ok: false, reason: "Unauthorized.", status: 401 };
+    }
+  } else if (inProd) {
+    return { ok: false, reason: "SEED_TOKEN must be set in production.", status: 500 };
+  }
+
+  return { ok: true };
+}
 
 /**
  * One-time setup endpoint.
@@ -491,8 +521,13 @@ function findDatabaseUrl(): string | undefined {
   );
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
+    const auth = isSeedAuthorized(req);
+    if (!auth.ok) {
+      return NextResponse.json({ error: auth.reason }, { status: auth.status });
+    }
+
     // --- Step 0: diagnostic - make sure we actually have a DB connection ---
     const dbUrl = findDatabaseUrl();
     if (!dbUrl) {

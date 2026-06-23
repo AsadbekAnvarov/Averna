@@ -12,13 +12,17 @@ export const authConfig = {
   // Required on Vercel / custom hosts for NextAuth v5, otherwise the
   // middleware throws "UntrustedHost" -> MIDDLEWARE_INVOCATION_FAILED.
   trustHost: true,
-  // Read the secret from env; fall back to a constant so the middleware
-  // never crashes if the env var is missing. Set NEXTAUTH_SECRET in Vercel
-  // for production security.
+  // Read the secret from env. In development we allow a throwaway fallback so
+  // local dev "just works", but in PRODUCTION there is no fallback: a missing
+  // secret must fail closed rather than ship a publicly-known signing key that
+  // would let anyone forge an ADMIN session. Set NEXTAUTH_SECRET (or AUTH_SECRET)
+  // in Vercel → Settings → Environment Variables.
   secret:
     process.env.NEXTAUTH_SECRET ||
     process.env.AUTH_SECRET ||
-    "averna-fallback-secret-change-me-in-production-2026",
+    (process.env.NODE_ENV !== "production"
+      ? "averna-dev-only-secret-do-not-use-in-production"
+      : undefined),
   session: {
     strategy: "jwt",
   },

@@ -112,15 +112,19 @@ export default function SignInPage() {
                 />
               </div>
 
-              {/* Demo Accounts Info */}
-              <div className="bg-averna-primary/20 border border-averna-neon/30 rounded-lg p-3 text-sm">
-                <p className="font-semibold text-averna-neon mb-1">Demo Accounts:</p>
-                <ul className="text-gray-300 space-y-1 text-xs">
-                  <li>👨‍🎓 Student: student1@averna.com / student123</li>
-                  <li>👨‍🏫 Teacher: teacher@averna.com / teacher123</li>
-                  <li>🔐 Admin: admin@averna.com / admin123</li>
-                </ul>
-              </div>
+              {process.env.NODE_ENV !== "production" && (
+                <div className="bg-averna-primary/20 border border-averna-neon/30 rounded-lg p-3 text-sm">
+                  <p className="font-semibold text-averna-neon mb-1">Dev demo accounts:</p>
+                  <ul className="text-gray-300 space-y-1 text-xs">
+                    <li>Student: student1@averna.com / student123</li>
+                    <li>Teacher: teacher@averna.com / teacher123</li>
+                    <li>Admin: admin@averna.com / admin123</li>
+                  </ul>
+                  <p className="text-[10px] text-gray-400 mt-2">
+                    Shown only when NODE_ENV !== &quot;production&quot;.
+                  </p>
+                </div>
+              )}
             </CardContent>
 
             <CardFooter className="flex flex-col space-y-4">
