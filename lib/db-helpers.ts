@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { AchievementType, IELTSModule, UserRole } from "@prisma/client";
-import { isGenuineWriting } from "@/lib/utils";
+import { isGenuineWriting, tashkentDayDiff } from "@/lib/utils";
 
 // ==================== STUDENT HELPERS ====================
 
@@ -63,9 +63,9 @@ export async function updateStudentStreak(studentId: string) {
 
   const today = new Date();
   const lastActive = new Date(student.lastActiveDate);
-  const daysDiff = Math.floor(
-    (today.getTime() - lastActive.getTime()) / (1000 * 60 * 60 * 24)
-  );
+  // Compare by Tashkent calendar day (UTC+5), not by raw elapsed milliseconds,
+  // so the streak depends on the date — not on the time of day someone logs in.
+  const daysDiff = tashkentDayDiff(today, lastActive);
 
   let newStreak = student.currentStreak;
   let freezes = (student as any).streakFreezes ?? 0;
@@ -244,8 +244,13 @@ export async function submitHomework(
     },
   });
 
-  // Note: points are credited to the student when the teacher grades the
-  // submission (gradeHomework), so we don't double-credit here.
+  // Credit the points now so they reach totalPoints / rankings (the activity
+  // log above already feeds the weekly leagues, so both stay in sync). If a
+  // teacher later adjusts the grade, gradeHomework() applies only the delta.
+  if (pointsAwarded > 0) {
+    await updateStudentPoints(studentId, pointsAwarded);
+  }
+  await checkAndAwardAchievements(studentId);
 
   return submission;
 }
@@ -265,6 +270,10 @@ export async function gradeHomework(
   }
 
   const finalPoints = adjustedPoints ?? submission.pointsAwarded;
+  // submitHomework() already credited submission.pointsAwarded to the student,
+  // so here we only apply the difference (positive or negative) — otherwise
+  // grading would double-credit the original award.
+  const pointsDelta = finalPoints - submission.pointsAwarded;
 
   // Update submission
   const updated = await db.homeworkSubmission.update({
@@ -278,8 +287,9 @@ export async function gradeHomework(
     },
   });
 
-  // Award points to student
-  await updateStudentPoints(submission.studentId, finalPoints);
+  if (pointsDelta !== 0) {
+    await updateStudentPoints(submission.studentId, pointsDelta);
+  }
 
   return updated;
 }

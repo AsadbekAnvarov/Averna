@@ -52,6 +52,31 @@ export function tashkentHour(now: Date = new Date()): number {
   return parseInt(h, 10) % 24;
 }
 
+/** Calendar date in Tashkent as a "YYYY-MM-DD" string, regardless of server TZ. */
+export function tashkentDateKey(now: Date = new Date()): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: AVERNA_TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now); // YYYY-MM-DD
+}
+
+/**
+ * The exact UTC instant of midnight (00:00) in Tashkent for the given moment.
+ * Use this for "since the start of today" database filters so day boundaries
+ * are correct in Tashkent (UTC+5) instead of the server's timezone (UTC on Vercel).
+ */
+export function tashkentDayStart(now: Date = new Date()): Date {
+  // Tashkent is UTC+5 with no daylight saving, so local midnight is a fixed offset.
+  return new Date(`${tashkentDateKey(now)}T00:00:00+05:00`);
+}
+
+/** Whole-day difference (Tashkent calendar days) between two moments: a - b. */
+export function tashkentDayDiff(a: Date, b: Date): number {
+  return Math.round((tashkentDayStart(a).getTime() - tashkentDayStart(b).getTime()) / 86400000);
+}
+
 /** Day-of-year in Tashkent — used to rotate daily content consistently. */
 export function tashkentDayOfYear(now: Date = new Date()): number {
   const parts = new Intl.DateTimeFormat("en-CA", {
