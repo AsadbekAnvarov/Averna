@@ -194,19 +194,27 @@ async function main() {
   });
   console.log("✅ Created teacher: teacher@averna.com (password: teacher123)");
 
-  // Create Sample Group
-  console.log("Creating sample group...");
-  const group = await prisma.group.create({
-    data: {
-      name: "IELTS Preparation - Advanced",
-      teacherId: teacher.id,
-      description: "Advanced IELTS preparation course for students targeting 7.5+",
-    },
+  // Create Sample Group (idempotent — match by name+teacher)
+  console.log("Ensuring sample group...");
+  const groupName = "IELTS Preparation - Advanced";
+  let group = await prisma.group.findFirst({
+    where: { name: groupName, teacherId: teacher.id },
   });
-  console.log(`✅ Created group: ${group.name}`);
+  if (!group) {
+    group = await prisma.group.create({
+      data: {
+        name: groupName,
+        teacherId: teacher.id,
+        description: "Advanced IELTS preparation course for students targeting 7.5+",
+      },
+    });
+    console.log(`✅ Created group: ${group.name}`);
+  } else {
+    console.log(`↺ Group already exists: ${group.name}`);
+  }
 
-  // Create Sample Students
-  console.log("Creating sample students...");
+  // Create Sample Students (idempotent — upsert user + student profile)
+  console.log("Ensuring sample students...");
   const studentNames = [
     "Alex Thompson",
     "Maria Garcia",
@@ -216,10 +224,13 @@ async function main() {
   ];
 
   for (let i = 0; i < studentNames.length; i++) {
+    const email = `student${i + 1}@averna.com`;
     const studentPassword = await hash("student123", 12);
-    const studentUser = await prisma.user.create({
-      data: {
-        email: `student${i + 1}@averna.com`,
+    const studentUser = await prisma.user.upsert({
+      where: { email },
+      update: {},
+      create: {
+        email,
         name: studentNames[i],
         password: studentPassword,
         role: "STUDENT",
@@ -227,8 +238,10 @@ async function main() {
       },
     });
 
-    const student = await prisma.student.create({
-      data: {
+    await prisma.student.upsert({
+      where: { userId: studentUser.id },
+      update: { groupId: group.id },
+      create: {
         userId: studentUser.id,
         groupId: group.id,
         personalGoal: ["IELTS 7.5+", "Study Abroad", "Work Opportunities"][i % 3],
@@ -237,14 +250,27 @@ async function main() {
       },
     });
 
-    console.log(`✅ Created student: ${studentUser.email} (password: student123)`);
+    console.log(`✅ Ensured student: ${email} (password: student123)`);
   }
 
-  // Create Sample Homework
-  console.log("Creating sample homework...");
+  // Create Sample Homework (skip if already present for this group)
+  console.log("Ensuring sample homework...");
+  const hwTitle = "IELTS Writing Task 2: Technology and Education";
+  const existingHw = await prisma.homework.findFirst({
+    where: { title: hwTitle, groupId: group.id },
+  });
+  if (existingHw) {
+    console.log(`↺ Homework already exists: ${hwTitle}`);
+    console.log("\n🎉 Database seeding completed successfully!");
+    console.log("\n📝 Test Accounts:");
+    console.log("Admin: admin@averna.com / admin123");
+    console.log("Teacher: teacher@averna.com / teacher123");
+    console.log("Students: student1-5@averna.com / student123");
+    return;
+  }
   const homework = await prisma.homework.create({
     data: {
-      title: "IELTS Writing Task 2: Technology and Education",
+      title: hwTitle,
       description: `Write an essay on the following topic:
 
 "Some people believe that technology has made learning easier and more accessible, while others think it has made students lazy and less focused. Discuss both views and give your own opinion."
