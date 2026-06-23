@@ -7,6 +7,12 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  // Dynamic color classes used by AppSidebar — keep them in the final CSS.
+  safelist: [
+    "bg-averna-neon", "bg-averna-cyan", "bg-averna-purple", "bg-averna-pink",
+    "text-averna-neon", "text-averna-cyan", "text-averna-purple", "text-averna-pink",
+    "border-averna-neon", "border-averna-cyan", "border-averna-purple", "border-averna-pink",
+  ],
   theme: {
     extend: {
       colors: {

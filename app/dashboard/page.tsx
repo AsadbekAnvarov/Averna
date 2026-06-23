@@ -18,7 +18,6 @@ import { StudentOfTheWeek } from "@/components/student-of-the-week";
 import { DailyQuests } from "@/components/dashboard/daily-quests";
 import { DailyArticle } from "@/components/dashboard/daily-article";
 import { StudyPet } from "@/components/dashboard/study-pet";
-import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { OnboardingTour } from "@/components/onboarding-tour";
 import { AccountNotice } from "@/components/account-notice";
 import { updateStudentStreak } from "@/lib/db-helpers";
@@ -199,7 +198,6 @@ export default async function DashboardPage() {
           </div>
         </div>
       </div>
-      <MobileNav />
       <OnboardingTour />
     </div>
   );

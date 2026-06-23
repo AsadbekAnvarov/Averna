@@ -1,0 +1,22 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="avernaNeon" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00FF94"/>
+      <stop offset="0.5" stop-color="#00E5FF"/>
+      <stop offset="1" stop-color="#B14EFF"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Hexagon frame -->
+  <path d="M32 3 L55.6 16.5 L55.6 47.5 L32 61 L8.4 47.5 L8.4 16.5 Z"
+        stroke="url(#avernaNeon)" stroke-width="2.5" fill="rgba(0,229,255,0.05)" filter="url(#glow)"/>
+  <!-- Stylized A -->
+  <path d="M32 17 L43 47 L37 47 L34.6 40 L29.4 40 L27 47 L21 47 Z M30.8 35.5 L33.2 35.5 L32 31.5 Z"
+        fill="url(#avernaNeon)" filter="url(#glow)"/>
+</svg>

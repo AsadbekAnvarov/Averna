@@ -5,6 +5,7 @@ import { Providers } from "@/components/providers";
 import { PwaInstaller } from "@/components/pwa-installer";
 import { CommandPalette } from "@/components/command-palette";
 import { LiveNotifications } from "@/components/live-notifications";
+import { AppShell } from "@/components/layout/app-sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +15,10 @@ export const metadata: Metadata = {
   keywords: ["IELTS", "English Learning", "Education", "Gamification"],
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Averna", statusBarStyle: "black-translucent" },
+  other: {
+    // Newer, non-deprecated equivalent of apple-mobile-web-app-capable
+    "mobile-web-app-capable": "yes",
+  },
 };
 
 export const viewport: Viewport = {
@@ -30,7 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <AppShell>{children}</AppShell>
+        </Providers>
         <CommandPalette />
         <PwaInstaller />
         <LiveNotifications />
