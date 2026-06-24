@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, CalendarDays } from "lucide-react";
+import { ChevronLeft, ChevronRight, CalendarDays, Download } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 
@@ -88,10 +88,18 @@ export default async function CalendarPage({
         <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Dashboard
         </Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 flex items-center gap-3">
-          <CalendarDays className="h-8 w-8 text-averna-cyan" />
-          My <span className="neon-text-cyan">Calendar</span>
-        </h1>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white flex items-center gap-3">
+            <CalendarDays className="h-8 w-8 text-averna-cyan" />
+            My <span className="neon-text-cyan">Calendar</span>
+          </h1>
+          <a
+            href="/api/calendar/ics"
+            className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-averna-cyan/40 text-averna-cyan text-sm hover:bg-averna-cyan/10 transition-colors"
+          >
+            <Download className="h-4 w-4" /> Export to calendar (.ics)
+          </a>
+        </div>
 
         <Card className="glass border-averna-cyan/30">
           <CardHeader>

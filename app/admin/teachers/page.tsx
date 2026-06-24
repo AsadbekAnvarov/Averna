@@ -9,11 +9,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { GraduationCap, Plus, Users, Layers } from "lucide-react";
 import Link from "next/link";
+import { GraduationCap, Plus, Users, Layers, Trash2 } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { ConfirmButton } from "@/components/ui/confirm-button";
 import { recordAudit } from "@/lib/audit";
+import { deleteTeacherCascade } from "@/lib/cascade-delete";
 
 async function addTeacher(formData: FormData) {
   "use server";
@@ -54,7 +56,31 @@ async function addTeacher(formData: FormData) {
   redirect("/admin/teachers?saved=1");
 }
 
-export default async function AdminTeachersPage({ searchParams }: { searchParams: { saved?: string; error?: string } }) {
+async function deleteTeacher(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+
+  const teacherId = formData.get("teacherId") as string;
+  if (!teacherId) return;
+
+  const teacher = await db.teacher.findUnique({
+    where: { id: teacherId },
+    include: { user: { select: { name: true, email: true } } },
+  });
+
+  await deleteTeacherCascade(teacherId);
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    "Deleted teacher",
+    `name=${teacher?.user.name ?? "?"} email=${teacher?.user.email ?? "?"}`
+  );
+
+  revalidatePath("/admin/teachers");
+  redirect("/admin/teachers?deleted=1");
+}
+
+export default async function AdminTeachersPage({ searchParams }: { searchParams: { saved?: string; error?: string; deleted?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {
@@ -80,6 +106,7 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
         <p className="text-gray-400 mb-6">Add teachers and see their groups & student counts.</p>
 
         {searchParams.saved && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Teacher added!</div>}
+        {searchParams.deleted && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Teacher deleted.</div>}
         {searchParams.error === "exists" && <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">A user with that email already exists.</div>}
         {searchParams.error === "invalid" && <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">Please fill all fields (password ≥ 6 chars).</div>}
 
@@ -131,9 +158,21 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
                       </p>
                       <p className="text-xs text-gray-400 truncate">{t.user.email} · {t.specialty ?? "IELTS Instructor"}</p>
                     </div>
-                    <div className="flex gap-3 text-xs text-gray-400 shrink-0">
-                      <span className="flex items-center gap-1"><Layers className="h-3.5 w-3.5" /> {t.groups.length}</span>
-                      <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> {students}</span>
+                    <div className="flex items-center gap-3 shrink-0">
+                      <div className="flex gap-3 text-xs text-gray-400">
+                        <span className="flex items-center gap-1"><Layers className="h-3.5 w-3.5" /> {t.groups.length}</span>
+                        <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> {students}</span>
+                      </div>
+                      <form action={deleteTeacher}>
+                        <input type="hidden" name="teacherId" value={t.id} />
+                        <ConfirmButton
+                          message={`Delete ${t.user.name}? Their groups will be removed and ${students} student${students === 1 ? "" : "s"} will be unassigned (not deleted). This cannot be undone.`}
+                          title="Delete teacher"
+                          className="h-8 w-8 rounded-lg border border-red-500/30 bg-red-500/10 text-red-400 hover:bg-red-500/20"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </ConfirmButton>
+                      </form>
                     </div>
                   </div>
                 </div>

@@ -1,48 +1,39 @@
-import { Button } from "@/components/ui/button";
-import { signOut } from "@/lib/auth";
-import { LogOut, ShieldCheck } from "lucide-react";
+import { auth, signOut } from "@/lib/auth";
+import { db } from "@/lib/db";
 import { Logo } from "@/components/logo";
 import { NotificationBell } from "@/components/notification-bell";
-import { ThemeSwitcher } from "@/components/theme/theme-switcher";
+import { UserAvatarDropdown } from "@/components/user-avatar-dropdown";
 
 interface AdminHeaderProps {
-  user: { name: string | null; email: string };
+  user: { name: string | null; email: string; image?: string | null };
 }
 
-export function AdminHeader({ user }: AdminHeaderProps) {
+export async function AdminHeader({ user }: AdminHeaderProps) {
+  const session = await auth();
+  let image = user.image ?? null;
+  if (session?.user?.id) {
+    const u = await db.user.findUnique({ where: { id: session.user.id }, select: { image: true } });
+    image = u?.image ?? image;
+  }
+
   return (
     <header className="flex items-center justify-between mb-8 animate-fade-in">
       <Logo href="/admin/dashboard" size={40} className="text-xl" />
 
-      <div className="flex items-center gap-3">
-        <ThemeSwitcher />
+      <div className="flex items-center gap-2">
         <NotificationBell />
-        <span className="hidden sm:inline-flex items-center gap-1 px-3 py-1 rounded-full bg-averna-purple/20 border border-averna-purple/40 text-averna-purple text-xs font-semibold">
-          <ShieldCheck className="h-4 w-4" />
-          Administrator
-        </span>
-        <div className="flex items-center gap-3 pl-3 border-l border-averna-primary/30">
-          <div className="text-right hidden md:block">
-            <p className="text-sm font-medium text-white">{user.name}</p>
-            <p className="text-xs text-gray-400">{user.email}</p>
-          </div>
-          <form
-            action={async () => {
-              "use server";
-              await signOut({ redirectTo: "/" });
-            }}
-          >
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-averna-neon text-averna-neon hover:bg-averna-primary/20 neon-button"
-            >
-              <LogOut className="mr-2 h-4 w-4" />
-              <span className="hidden md:inline">Sign Out</span>
-            </Button>
-          </form>
-        </div>
+        <UserAvatarDropdown user={{ name: user.name, email: user.email, image }} role="ADMIN" />
       </div>
+
+      {/* Hidden sign-out form for the dropdown */}
+      <form
+        id="signout-form"
+        className="hidden"
+        action={async () => {
+          "use server";
+          await signOut({ redirectTo: "/" });
+        }}
+      />
     </header>
   );
 }

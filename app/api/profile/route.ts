@@ -23,6 +23,7 @@ export async function GET() {
     return NextResponse.json({
       name: student.user.name || "",
       email: student.user.email,
+      image: student.user.image || "",
       personalGoal: student.personalGoal || "",
       level: student.level || "",
       phone: student.phone || "",

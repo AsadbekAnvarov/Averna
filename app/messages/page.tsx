@@ -8,6 +8,7 @@ import { MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { MessageComposer } from "@/components/messages/message-composer";
 import { MessageThread } from "@/components/messages/message-thread";
+import { InboxTabs } from "@/components/inbox-tabs";
 
 interface Contact {
   userId: string;
@@ -94,16 +95,23 @@ export default async function MessagesPage({
     reaction: m.reaction,
   }));
 
+  const [unreadMessages, unreadNotifications] = await Promise.all([
+    db.message.count({ where: { receiverId: me, read: false } }),
+    db.notification.count({ where: { userId: me, read: false } }),
+  ]);
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
         <Link href={homeHref(role)} className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Dashboard
         </Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 flex items-center gap-3">
+        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center gap-3">
           <MessageSquare className="h-8 w-8 text-averna-pink" />
           <span className="neon-text-purple">Messages</span>
         </h1>
+
+        <InboxTabs unreadMessages={unreadMessages} unreadNotifications={unreadNotifications} />
 
         {contacts.length === 0 ? (
           <Card className="glass border-averna-primary/30">

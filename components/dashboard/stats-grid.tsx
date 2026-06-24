@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Trophy, Flame, Target, TrendingUp, Award, Clock } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { CountUp } from "@/components/ui/count-up";
 
 interface StatsGridProps {
   student: {
@@ -33,7 +34,7 @@ export function StatsGrid({ student }: StatsGridProps) {
         <CardContent>
           <div className="space-y-2">
             <div className="text-4xl font-bold text-averna-neon">
-              {student.totalPoints.toLocaleString()}
+              <CountUp value={student.totalPoints} />
             </div>
             <div className="space-y-1">
               <div className="flex justify-between text-xs text-gray-400">
@@ -56,7 +57,7 @@ export function StatsGrid({ student }: StatsGridProps) {
         </CardHeader>
         <CardContent>
           <div className="text-4xl font-bold text-orange-500">
-            {student.currentStreak}
+            <CountUp value={student.currentStreak} />
             <span className="text-lg text-gray-400 ml-1">days</span>
           </div>
           <p className="text-xs text-gray-400 mt-2">
@@ -80,7 +81,7 @@ export function StatsGrid({ student }: StatsGridProps) {
         </CardHeader>
         <CardContent>
           <div className="text-4xl font-bold text-yellow-500">
-            {student.globalRank > 0 ? `#${student.globalRank}` : "—"}
+            {student.globalRank > 0 ? <CountUp value={student.globalRank} prefix="#" /> : "—"}
           </div>
           <p className="text-xs text-gray-400 mt-2">
             {student.globalRank > 0 && student.globalRank <= 10 && "⭐ Top 10!"}
@@ -101,7 +102,7 @@ export function StatsGrid({ student }: StatsGridProps) {
         </CardHeader>
         <CardContent>
           <div className="text-4xl font-bold text-blue-500">
-            {student.groupRank > 0 ? `#${student.groupRank}` : "—"}
+            {student.groupRank > 0 ? <CountUp value={student.groupRank} prefix="#" /> : "—"}
           </div>
           <p className="text-xs text-gray-400 mt-2 truncate">
             {student.group?.name || "No group assigned"}
