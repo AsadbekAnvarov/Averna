@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { BookOpen, Clock, FileText, Target, Play } from "lucide-react";
 import Link from "next/link";
+import { READING_TESTS } from "@/lib/reading-tests-data";
 
 export default async function ReadingPage() {
   const session = await auth();
@@ -16,33 +17,32 @@ export default async function ReadingPage() {
       id: "academic-1",
       title: "Academic Reading Test 1",
       description: "Technology and Innovation",
-      passages: 3,
-      questions: 40,
-      timeLimit: 60,
       difficulty: "Intermediate",
-      topics: ["Technology", "Science", "Society"],
+      topics: ["Technology", "AI", "Society"],
     },
     {
       id: "academic-2",
       title: "Academic Reading Test 2",
       description: "Environment and Climate",
-      passages: 3,
-      questions: 40,
-      timeLimit: 60,
       difficulty: "Advanced",
-      topics: ["Environment", "Climate Change", "Policy"],
+      topics: ["Environment", "Climate", "Nature"],
     },
     {
       id: "academic-3",
       title: "Academic Reading Test 3",
       description: "History and Culture",
-      passages: 3,
-      questions: 40,
-      timeLimit: 60,
       difficulty: "Intermediate",
-      topics: ["History", "Archaeology", "Culture"],
+      topics: ["History", "Culture", "Language"],
     },
-  ];
+  ].map((t) => {
+    const data = READING_TESTS[t.id];
+    return {
+      ...t,
+      passages: data?.passages.length ?? 0,
+      questions: data?.passages.reduce((sum, p) => sum + p.questions.length, 0) ?? 0,
+      timeLimit: data?.timeLimit ?? 60,
+    };
+  });
 
   return (
     <div className="min-h-screen premium-gradient">

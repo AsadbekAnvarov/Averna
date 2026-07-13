@@ -1,38 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mic, Clock, Volume2, RefreshCw, Play, Square, Users, Loader2, Search } from "lucide-react";
+import { Mic, Clock, Volume2, RefreshCw, Play, Square, Users, Loader2, Search, Sparkles, Lightbulb } from "lucide-react";
 import { getTodayTopic } from "@/lib/speaking-topics";
-
-const PART1 = [
-  "Where are you from, and what do you like about your hometown?",
-  "Do you work or are you a student?",
-  "What do you usually do in your free time?",
-  "Do you enjoy cooking? Why or why not?",
-  "How often do you use public transport?",
-  "What kind of music do you enjoy listening to?",
-  "Do you prefer mornings or evenings? Why?",
-  "Tell me about your favourite season of the year.",
-];
-
-const PART2 = [
-  { topic: "Describe a skill you would like to learn.", points: ["what the skill is", "why you want to learn it", "how you would learn it", "and explain how it would help you"] },
-  { topic: "Describe a memorable trip you have taken.", points: ["where you went", "who you went with", "what you did there", "and explain why it was memorable"] },
-  { topic: "Describe a person who has influenced you.", points: ["who the person is", "how you know them", "what they are like", "and explain how they influenced you"] },
-  { topic: "Describe a book or film you enjoyed.", points: ["what it was about", "when you read/watched it", "why you chose it", "and explain why you enjoyed it"] },
-];
-
-const PART3 = [
-  "Why do you think people enjoy travelling?",
-  "How has technology changed the way we communicate?",
-  "Should education be free for everyone? Why?",
-  "What are the advantages of learning a foreign language?",
-  "Does social media have a more positive or negative effect on society?",
-];
+import { PART1_TOPICS, PART2_CARDS, PART3_QUESTIONS } from "@/lib/speaking-data";
 
 function speak(text: string) {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -46,11 +21,21 @@ function speak(text: string) {
 export default function SpeakingPage() {
   const router = useRouter();
   const [tab, setTab] = useState<1 | 2 | 3>(1);
-  const [p1, setP1] = useState(0);
-  const [p2, setP2] = useState(0);
-  const [p3, setP3] = useState(0);
 
-  // Speaking-time status (computed client-side to avoid hydration mismatch)
+  // Part 1: topic + question within topic + reveal
+  const [p1Topic, setP1Topic] = useState(0);
+  const [p1Q, setP1Q] = useState(0);
+  const [p1Reveal, setP1Reveal] = useState(false);
+
+  // Part 2: cue card + reveal
+  const [p2, setP2] = useState(0);
+  const [p2Reveal, setP2Reveal] = useState(false);
+
+  // Part 3: discussion question + reveal
+  const [p3, setP3] = useState(0);
+  const [p3Reveal, setP3Reveal] = useState(false);
+
+  // Speaking-time status (client-side to avoid hydration mismatch)
   const [timeText, setTimeText] = useState("");
   const [isLive, setIsLive] = useState(false);
 
@@ -67,7 +52,6 @@ export default function SpeakingPage() {
 
   useEffect(() => {
     const update = () => {
-      // Compute the current hour in Tashkent (UTC+5), independent of device TZ
       const h = parseInt(
         new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Tashkent", hour: "2-digit", hour12: false }).format(new Date()),
         10
@@ -83,7 +67,6 @@ export default function SpeakingPage() {
     return () => clearInterval(id);
   }, []);
 
-  // Timer engine for Part 2
   useEffect(() => {
     if (phase === "prep" || phase === "speak") {
       timerRef.current = setInterval(() => {
@@ -116,9 +99,29 @@ export default function SpeakingPage() {
     setPhase("idle");
     setSeconds(0);
   };
+
+  const currentTopic = PART1_TOPICS[p1Topic];
+  const currentP1Q = currentTopic.questions[p1Q % currentTopic.questions.length];
+  const currentP2 = PART2_CARDS[p2];
+  const currentP3 = PART3_QUESTIONS[p3];
+
+  const pickTopic = (idx: number) => {
+    setP1Topic(idx);
+    setP1Q(0);
+    setP1Reveal(false);
+  };
+  const nextP1 = () => {
+    setP1Reveal(false);
+    setP1Q((i) => (i + 1) % currentTopic.questions.length);
+  };
   const newCue = () => {
     stopPart2();
-    setP2((i) => (i + 1) % PART2.length);
+    setP2Reveal(false);
+    setP2((i) => (i + 1) % PART2_CARDS.length);
+  };
+  const nextP3 = () => {
+    setP3Reveal(false);
+    setP3((i) => (i + 1) % PART3_QUESTIONS.length);
   };
 
   const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
@@ -140,7 +143,6 @@ export default function SpeakingPage() {
         return;
       }
       if (data.error) { setMatchError(data.error); setMatching(false); return; }
-      // waiting: poll for a partner
       pollRef.current = setInterval(async () => {
         const r = await fetch("/api/speaking/match");
         const d = await r.json();
@@ -251,35 +253,101 @@ export default function SpeakingPage() {
           ))}
         </div>
 
-        {/* Part 1 */}
+        {/* Part 1 — Topic chips + question with reveal */}
         {tab === 1 && (
-          <Card className="glass border-orange-500/30">
-            <CardHeader><CardTitle className="text-orange-400">Part 1 · Interview</CardTitle></CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-2xl text-white">{PART1[p1]}</p>
-              <div className="flex gap-3">
-                <Button onClick={() => speak(PART1[p1])} variant="outline" className="border-averna-cyan text-averna-cyan">
-                  <Volume2 className="mr-2 h-4 w-4" /> Listen
-                </Button>
-                <Button onClick={() => setP1((i) => (i + 1) % PART1.length)} className="neon-button bg-orange-500 hover:bg-orange-600">
-                  <RefreshCw className="mr-2 h-4 w-4" /> Next question
-                </Button>
-              </div>
-              <p className="text-xs text-gray-500">Tip: answer in 2–3 sentences and add a reason or example.</p>
-            </CardContent>
-          </Card>
+          <div className="space-y-4">
+            <div className="flex flex-wrap gap-2">
+              {PART1_TOPICS.map((t, i) => (
+                <button
+                  key={t.id}
+                  onClick={() => pickTopic(i)}
+                  className={`px-3 py-1.5 rounded-full text-sm border transition ${
+                    i === p1Topic
+                      ? "bg-orange-500/20 border-orange-400 text-orange-200"
+                      : "border-white/10 text-gray-300 hover:border-white/30 hover:text-white"
+                  }`}
+                >
+                  <span className="mr-1">{t.emoji}</span>{t.name}
+                </button>
+              ))}
+            </div>
+
+            <Card className="glass border-orange-500/30">
+              <CardHeader>
+                <CardTitle className="text-orange-400 flex items-center gap-2">
+                  <span>{currentTopic.emoji}</span>
+                  Part 1 · {currentTopic.name}
+                  <span className="text-xs text-gray-500 font-normal ml-auto">
+                    Q {p1Q + 1} / {currentTopic.questions.length}
+                  </span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-2xl text-white leading-relaxed">{currentP1Q.q}</p>
+                <div className="flex flex-wrap gap-3">
+                  <Button onClick={() => speak(currentP1Q.q)} variant="outline" className="border-averna-cyan text-averna-cyan">
+                    <Volume2 className="mr-2 h-4 w-4" /> Listen
+                  </Button>
+                  <Button onClick={nextP1} className="neon-button bg-orange-500 hover:bg-orange-600">
+                    <RefreshCw className="mr-2 h-4 w-4" /> Next question
+                  </Button>
+                  <Button
+                    onClick={() => setP1Reveal((v) => !v)}
+                    variant="outline"
+                    className="border-averna-neon/40 text-averna-neon"
+                  >
+                    <Sparkles className="mr-2 h-4 w-4" /> {p1Reveal ? "Hide" : "Show"} sample answer
+                  </Button>
+                </div>
+
+                {p1Reveal && (
+                  <div className="bg-white/5 border border-averna-neon/30 rounded-lg p-4 space-y-3 animate-in fade-in duration-200">
+                    <div>
+                      <p className="text-xs text-averna-neon uppercase tracking-wide mb-1">Band-7 sample</p>
+                      <p className="text-gray-200 leading-relaxed">{currentP1Q.sample}</p>
+                      <Button
+                        onClick={() => speak(currentP1Q.sample)}
+                        variant="ghost"
+                        size="sm"
+                        className="mt-2 text-averna-cyan hover:text-averna-cyan h-8 px-2"
+                      >
+                        <Volume2 className="mr-2 h-3.5 w-3.5" /> Listen to sample
+                      </Button>
+                    </div>
+                    {currentP1Q.phrases && currentP1Q.phrases.length > 0 && (
+                      <div>
+                        <p className="text-xs text-averna-pink uppercase tracking-wide mb-1">Useful phrases</p>
+                        <ul className="text-sm text-gray-300 list-disc list-inside space-y-1">
+                          {currentP1Q.phrases.map((ph) => <li key={ph}>{ph}</li>)}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <p className="text-xs text-gray-500">Tip: answer in 2–3 sentences and add a reason or example.</p>
+              </CardContent>
+            </Card>
+          </div>
         )}
 
-        {/* Part 2 - cue card with timer */}
+        {/* Part 2 — Cue card with timer and model answer reveal */}
         {tab === 2 && (
           <Card className="glass border-orange-500/30">
-            <CardHeader><CardTitle className="text-orange-400">Part 2 · Cue Card (Long Turn)</CardTitle></CardHeader>
+            <CardHeader>
+              <CardTitle className="text-orange-400 flex items-center justify-between">
+                <span>Part 2 · Cue Card (Long Turn)</span>
+                <span className="text-xs text-gray-500 font-normal">
+                  Card {p2 + 1} / {PART2_CARDS.length}
+                </span>
+              </CardTitle>
+            </CardHeader>
             <CardContent className="space-y-4">
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-                <p className="text-xl text-white font-medium mb-3">{PART2[p2].topic}</p>
+                <p className="text-xl text-white font-medium mb-3">{currentP2.topic}</p>
                 <p className="text-sm text-gray-400 mb-1">You should say:</p>
                 <ul className="text-sm text-gray-300 list-disc list-inside space-y-1">
-                  {PART2[p2].points.map((pt) => <li key={pt}>{pt}</li>)}
+                  {currentP2.points.map((pt) => <li key={pt}>{pt}</li>)}
                 </ul>
               </div>
 
@@ -302,31 +370,118 @@ export default function SpeakingPage() {
                     <Square className="mr-2 h-4 w-4" /> Stop
                   </Button>
                 )}
-                <Button onClick={() => speak(PART2[p2].topic)} variant="outline" className="border-averna-cyan text-averna-cyan">
+                <Button onClick={() => speak(currentP2.topic)} variant="outline" className="border-averna-cyan text-averna-cyan">
                   <Volume2 className="mr-2 h-4 w-4" /> Listen
                 </Button>
                 <Button onClick={newCue} variant="outline" className="border-orange-500/40 text-orange-300">
                   <RefreshCw className="mr-2 h-4 w-4" /> New cue card
                 </Button>
+                <Button
+                  onClick={() => setP2Reveal((v) => !v)}
+                  variant="outline"
+                  className="border-averna-neon/40 text-averna-neon"
+                >
+                  <Sparkles className="mr-2 h-4 w-4" /> {p2Reveal ? "Hide" : "Show"} model answer
+                </Button>
               </div>
+
+              {p2Reveal && (
+                <div className="bg-white/5 border border-averna-neon/30 rounded-lg p-4 space-y-4 animate-in fade-in duration-200">
+                  <div>
+                    <p className="text-xs text-averna-neon uppercase tracking-wide mb-1">Band-7 sample</p>
+                    <p className="text-gray-200 leading-relaxed whitespace-pre-line">{currentP2.sample}</p>
+                    <Button
+                      onClick={() => speak(currentP2.sample)}
+                      variant="ghost"
+                      size="sm"
+                      className="mt-2 text-averna-cyan hover:text-averna-cyan h-8 px-2"
+                    >
+                      <Volume2 className="mr-2 h-3.5 w-3.5" /> Listen to sample
+                    </Button>
+                  </div>
+                  <div>
+                    <p className="text-xs text-averna-pink uppercase tracking-wide mb-1">Useful phrases</p>
+                    <ul className="text-sm text-gray-300 list-disc list-inside space-y-1">
+                      {currentP2.usefulPhrases.map((ph) => <li key={ph}>{ph}</li>)}
+                    </ul>
+                  </div>
+                  <div className="flex items-start gap-2 bg-averna-primary/10 border border-averna-primary/30 rounded-lg p-3">
+                    <Lightbulb className="h-4 w-4 text-yellow-300 shrink-0 mt-0.5" />
+                    <p className="text-xs text-gray-300">
+                      <span className="text-yellow-300 font-semibold">Maslahat: </span>
+                      {currentP2.tipUz}
+                    </p>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
         )}
 
-        {/* Part 3 */}
+        {/* Part 3 — Discussion with theme badge and band-8 reveal */}
         {tab === 3 && (
           <Card className="glass border-orange-500/30">
-            <CardHeader><CardTitle className="text-orange-400">Part 3 · Discussion</CardTitle></CardHeader>
+            <CardHeader>
+              <CardTitle className="text-orange-400 flex items-center justify-between">
+                <span>Part 3 · Discussion</span>
+                <span className="text-xs text-gray-500 font-normal">
+                  Q {p3 + 1} / {PART3_QUESTIONS.length}
+                </span>
+              </CardTitle>
+            </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-2xl text-white">{PART3[p3]}</p>
-              <div className="flex gap-3">
-                <Button onClick={() => speak(PART3[p3])} variant="outline" className="border-averna-cyan text-averna-cyan">
+              <div>
+                <span className="inline-block text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300 mb-3">
+                  Theme · {currentP3.theme}
+                </span>
+                <p className="text-2xl text-white leading-relaxed">{currentP3.question}</p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Button onClick={() => speak(currentP3.question)} variant="outline" className="border-averna-cyan text-averna-cyan">
                   <Volume2 className="mr-2 h-4 w-4" /> Listen
                 </Button>
-                <Button onClick={() => setP3((i) => (i + 1) % PART3.length)} className="neon-button bg-orange-500 hover:bg-orange-600">
+                <Button onClick={nextP3} className="neon-button bg-orange-500 hover:bg-orange-600">
                   <RefreshCw className="mr-2 h-4 w-4" /> Next question
                 </Button>
+                <Button
+                  onClick={() => setP3Reveal((v) => !v)}
+                  variant="outline"
+                  className="border-averna-neon/40 text-averna-neon"
+                >
+                  <Sparkles className="mr-2 h-4 w-4" /> {p3Reveal ? "Hide" : "Show"} model answer
+                </Button>
               </div>
+
+              {p3Reveal && (
+                <div className="bg-white/5 border border-averna-neon/30 rounded-lg p-4 space-y-4 animate-in fade-in duration-200">
+                  <div>
+                    <p className="text-xs text-averna-neon uppercase tracking-wide mb-1">Band-8 sample</p>
+                    <p className="text-gray-200 leading-relaxed whitespace-pre-line">{currentP3.sample}</p>
+                    <Button
+                      onClick={() => speak(currentP3.sample)}
+                      variant="ghost"
+                      size="sm"
+                      className="mt-2 text-averna-cyan hover:text-averna-cyan h-8 px-2"
+                    >
+                      <Volume2 className="mr-2 h-3.5 w-3.5" /> Listen to sample
+                    </Button>
+                  </div>
+                  <div>
+                    <p className="text-xs text-averna-pink uppercase tracking-wide mb-1">Useful phrases</p>
+                    <ul className="text-sm text-gray-300 list-disc list-inside space-y-1">
+                      {currentP3.usefulPhrases.map((ph) => <li key={ph}>{ph}</li>)}
+                    </ul>
+                  </div>
+                  <div className="flex items-start gap-2 bg-averna-primary/10 border border-averna-primary/30 rounded-lg p-3">
+                    <Lightbulb className="h-4 w-4 text-yellow-300 shrink-0 mt-0.5" />
+                    <p className="text-xs text-gray-300">
+                      <span className="text-yellow-300 font-semibold">Maslahat: </span>
+                      {currentP3.tipUz}
+                    </p>
+                  </div>
+                </div>
+              )}
+
               <p className="text-xs text-gray-500">Tip: give your opinion, a reason, and consider the other side.</p>
             </CardContent>
           </Card>
