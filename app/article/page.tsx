@@ -38,7 +38,12 @@ export default async function ArticlePage() {
               <CardTitle className="text-white">{article.title}</CardTitle>
             </div>
             <div className="flex items-center justify-between gap-3 mt-2">
-              <span className="text-xs text-gray-400 flex items-center gap-3">
+              <span className="text-xs text-gray-400 flex flex-wrap items-center gap-3">
+                {article.theme && (
+                  <span className="inline-block text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-averna-cyan/15 text-averna-cyan border border-averna-cyan/30">
+                    {article.theme}
+                  </span>
+                )}
                 <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {readingMinutes} min read</span>
                 <span>{wordCount} words</span>
               </span>
