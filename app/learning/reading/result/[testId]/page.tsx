@@ -6,8 +6,79 @@ import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Trophy, CheckCircle, XCircle, ArrowLeft, RotateCcw } from "lucide-react";
+import { Trophy, CheckCircle, XCircle, ArrowLeft, RotateCcw, BookOpen, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { READING_TESTS, ReadingQuestion } from "@/lib/reading-tests-data";
+
+function formatAnswer(ans: any, type: string, options?: string[]) {
+  if (ans === undefined || ans === null || ans === "") return "—";
+  if (type === "multiple-choice" && options) {
+    const idx = typeof ans === "number" ? ans : parseInt(ans, 10);
+    return Number.isFinite(idx) && options[idx] !== undefined ? options[idx] : String(ans);
+  }
+  if (type === "true-false-not-given") return String(ans).replace(/-/g, " ");
+  return String(ans);
+}
+
+function QuestionReview({
+  q,
+  qNum,
+  studentAns,
+  isCorrect,
+}: {
+  q: ReadingQuestion;
+  qNum: number;
+  studentAns: any;
+  isCorrect: boolean;
+}) {
+  const missing = studentAns === undefined || studentAns === null || studentAns === "";
+  return (
+    <div
+      className={`p-4 rounded-lg border ${
+        isCorrect ? "border-green-500/40 bg-green-500/5" : "border-red-500/40 bg-red-500/5"
+      }`}
+    >
+      <div className="flex items-start justify-between gap-3 mb-2">
+        <p className="text-white font-medium flex-1">
+          {qNum}. {q.question}
+        </p>
+        {isCorrect ? (
+          <CheckCircle className="h-5 w-5 text-green-400 shrink-0" />
+        ) : (
+          <XCircle className="h-5 w-5 text-red-400 shrink-0" />
+        )}
+      </div>
+      <div className="space-y-1 text-sm">
+        <p className="text-gray-400">
+          Your answer:{" "}
+          {missing ? (
+            <em className="text-gray-500">No answer</em>
+          ) : (
+            <span className={isCorrect ? "text-green-300 font-medium" : "text-red-300 font-medium"}>
+              {formatAnswer(studentAns, q.type, q.options)}
+            </span>
+          )}
+        </p>
+        {!isCorrect && (
+          <p className="text-gray-400">
+            Correct answer:{" "}
+            <span className="text-green-300 font-medium">
+              {formatAnswer(q.correctAnswer, q.type, q.options)}
+            </span>
+          </p>
+        )}
+        {q.explanation && (
+          <div className="mt-3 border-l-2 border-averna-cyan/40 pl-3 py-1 bg-averna-cyan/5 rounded-r-md">
+            <p className="text-averna-cyan text-[10px] uppercase tracking-wider flex items-center gap-1 mb-0.5">
+              <Sparkles className="h-3 w-3" /> Why
+            </p>
+            <p className="text-gray-200 text-sm">{q.explanation}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default async function ReadingResultPage({ params }: { params: { testId: string } }) {
   const session = await auth();
@@ -24,7 +95,11 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
   if (!test || test.studentId !== student.id) redirect("/learning/reading");
 
   const analysis = test.aiAnalysis as any;
-  const results = test.answers as any;
+  const raw = test.answers as any;
+  const savedAnswers: Record<string, any> = raw?.answers ?? {};
+  const results: Record<string, boolean> = raw?.results ?? {};
+  const sourceTestId: string | undefined = raw?.testId;
+  const testData = sourceTestId ? READING_TESTS[sourceTestId] : undefined;
 
   const getBandColor = (band: number) => {
     if (band >= 8) return "text-green-400";
@@ -42,7 +117,9 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
             Back to Reading
           </Link>
           <h1 className="text-4xl font-bold text-white mb-2">Reading Test Results</h1>
-          <p className="text-gray-400">Your performance analysis</p>
+          <p className="text-gray-400">
+            {testData ? `${testData.title} · ${testData.description}` : "Your performance analysis"}
+          </p>
         </div>
 
         {/* Band Score */}
@@ -89,37 +166,74 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
           </CardContent>
         </Card>
 
-        {/* Question Review */}
-        <Card className="glass border-averna-primary/30 mb-8 animate-fade-in">
-          <CardHeader>
-            <CardTitle>Question Review</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              {Object.entries(results.results || {}).map(([questionId, isCorrect]: [string, any]) => (
-                <div
-                  key={questionId}
-                  className={`p-3 rounded-lg border ${
-                    isCorrect
-                      ? "bg-green-500/10 border-green-500/30"
-                      : "bg-red-500/10 border-red-500/30"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-white">
-                      Question {questionId.replace("q", "")}
-                    </span>
-                    {isCorrect ? (
-                      <CheckCircle className="h-5 w-5 text-green-400" />
-                    ) : (
-                      <XCircle className="h-5 w-5 text-red-400" />
-                    )}
-                  </div>
-                </div>
-              ))}
+        {/* Per-passage question review */}
+        {testData ? (
+          <div className="space-y-6 mb-8 animate-fade-in">
+            <div className="flex items-center gap-2 text-averna-cyan">
+              <BookOpen className="h-5 w-5" />
+              <h2 className="text-xl font-semibold">Question Review</h2>
+              <span className="text-xs text-gray-500 ml-2">Read the "Why" note under each incorrect answer to learn from it.</span>
             </div>
-          </CardContent>
-        </Card>
+            {testData.passages.map((p, pIdx) => {
+              let qNum = 0;
+              for (let i = 0; i < pIdx; i++) qNum += testData.passages[i].questions.length;
+              return (
+                <Card key={p.id} className="glass border-blue-500/30">
+                  <CardHeader>
+                    <CardTitle className="text-blue-400 text-lg">
+                      Passage {pIdx + 1}: {p.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    {p.questions.map((q, qIdx) => {
+                      const studentAns = savedAnswers[q.id];
+                      const isCorrect = results[q.id] === true;
+                      return (
+                        <QuestionReview
+                          key={q.id}
+                          q={q}
+                          qNum={qNum + qIdx + 1}
+                          studentAns={studentAns}
+                          isCorrect={isCorrect}
+                        />
+                      );
+                    })}
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        ) : (
+          // Fallback for older submissions without stored testId
+          <Card className="glass border-averna-primary/30 mb-8 animate-fade-in">
+            <CardHeader>
+              <CardTitle>Question Review</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                {Object.entries(results).map(([questionId, isCorrect]: [string, any]) => (
+                  <div
+                    key={questionId}
+                    className={`p-3 rounded-lg border ${
+                      isCorrect ? "bg-green-500/10 border-green-500/30" : "bg-red-500/10 border-red-500/30"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-white">
+                        Question {questionId.replace("q", "")}
+                      </span>
+                      {isCorrect ? (
+                        <CheckCircle className="h-5 w-5 text-green-400" />
+                      ) : (
+                        <XCircle className="h-5 w-5 text-red-400" />
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Actions */}
         <div className="flex gap-4 animate-fade-in">

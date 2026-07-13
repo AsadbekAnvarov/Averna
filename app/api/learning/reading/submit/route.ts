@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
       student.id,
       "READING",
       bandScore,
-      { answers, results },
+      { testId, answers, results },
       { correctCount, totalQuestions, percentage },
       timeSpent || 0,
       earnsPoints ? undefined : { pointsOverride: 0 }
