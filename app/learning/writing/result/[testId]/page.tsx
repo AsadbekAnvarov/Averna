@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Trophy, TrendingUp, TrendingDown, AlertCircle, CheckCircle, ArrowLeft, RotateCcw } from "lucide-react";
 import Link from "next/link";
+import { NextStepCard } from "@/components/learning/next-step-card";
 
 export default async function WritingResultPage({
   params,
@@ -310,6 +311,9 @@ export default async function WritingResultPage({
             </CardContent>
           </Card>
         )}
+
+        {/* What's next */}
+        <NextStepCard studentId={student.id} completedLabel="Writing" completedScore={assessment.overallBand} />
 
         {/* Actions */}
         <div className="flex gap-4 mt-8 animate-fade-in">
