@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Library, PenTool, BookOpen, Headphones, Mic, BookMarked, GraduationCap, Search, X } from "lucide-react";
 import Link from "next/link";
 
@@ -147,8 +148,18 @@ export default async function MaterialsPage({
 
         {materials.length === 0 ? (
           <Card className="glass border-averna-primary/30">
-            <CardContent className="py-10 text-center text-gray-400">
-              No materials match your filters. Try a different search or category.
+            <CardContent className="py-2">
+              <EmptyState
+                icon={Search}
+                title="No materials found"
+                description={
+                  hasFilters
+                    ? "Nothing matches your current filters. Try a different search or category."
+                    : "Study materials will appear here as your teacher adds them."
+                }
+                accent="text-averna-cyan"
+                action={hasFilters ? { label: "Clear filters", href: "/materials" } : undefined}
+              />
             </CardContent>
           </Card>
         ) : (

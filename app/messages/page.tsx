@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/empty-state";
 import { MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { MessageComposer } from "@/components/messages/message-composer";
@@ -115,10 +116,17 @@ export default async function MessagesPage({
 
         {contacts.length === 0 ? (
           <Card className="glass border-averna-primary/30">
-            <CardContent className="py-10 text-center text-gray-400">
-              {role === "STUDENT"
-                ? "You'll be able to message your teacher once you're assigned to a group."
-                : "No contacts yet."}
+            <CardContent className="py-2">
+              <EmptyState
+                icon={MessageSquare}
+                title="No conversations yet"
+                description={
+                  role === "STUDENT"
+                    ? "You'll be able to message your teacher once you're assigned to a group."
+                    : "You have no contacts to message yet."
+                }
+                accent="text-averna-pink"
+              />
             </CardContent>
           </Card>
         ) : (

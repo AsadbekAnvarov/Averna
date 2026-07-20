@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { getGlobalRankings, getGroupRankings } from "@/lib/db-helpers";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Trophy, Users, Crown, Medal } from "lucide-react";
 import Link from "next/link";
 
@@ -83,7 +84,13 @@ export default async function RankingsPage() {
             </CardHeader>
             <CardContent>
               {groupRankings.length === 0 ? (
-                <p className="text-center text-gray-400 py-8">No group assigned</p>
+                <EmptyState
+                  icon={Users}
+                  title="No group yet"
+                  description="You'll appear on the group leaderboard once your teacher adds you to a group."
+                  accent="text-blue-400"
+                  compact
+                />
               ) : (
                 <div className="space-y-2">
                   {groupRankings.map((s, index) => (
