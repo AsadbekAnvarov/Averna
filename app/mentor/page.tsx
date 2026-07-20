@@ -97,7 +97,7 @@ export default function AIMentorPage() {
                 disabled={isLoading}
               />
               <VoiceInputButton onText={(t) => setInput((prev) => (prev ? prev + " " : "") + t.trim())} />
-              <Button onClick={handleSend} disabled={isLoading} className="neon-button bg-pink-500">
+              <Button onClick={handleSend} disabled={isLoading} aria-label="Send message" className="neon-button bg-pink-500">
                 <Send className="h-4 w-4" />
               </Button>
             </div>

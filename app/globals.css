@@ -602,3 +602,21 @@ html.light .card-hover:hover {
   .card-hover, .hover-lift, .press { transition: none; }
   .card-hover:hover, .hover-lift:hover, .press:active { transform: none; }
 }
+
+
+
+
+/* ===================================================================
+   ACCESSIBILITY — clear, consistent keyboard focus indicator.
+   Many custom clickable elements had no visible focus state; this gives
+   every keyboard-focused element a distinct ring (mouse clicks unaffected,
+   thanks to :focus-visible).
+   =================================================================== */
+:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+html.light :focus-visible {
+  outline-color: #0e7fa0;
+}

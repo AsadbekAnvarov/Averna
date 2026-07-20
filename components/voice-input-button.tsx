@@ -62,6 +62,8 @@ export function VoiceInputButton({
     <button
       type="button"
       onClick={toggle}
+      aria-label={listening ? "Stop dictation" : "Dictate with your voice"}
+      aria-pressed={listening}
       title={listening ? "Stop dictation" : "Dictate with your voice"}
       className={`inline-flex items-center justify-center h-9 w-9 rounded-md border transition-colors ${
         listening
