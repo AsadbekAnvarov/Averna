@@ -33,9 +33,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           throw new Error("Invalid credentials");
         }
 
+        // Normalise the email the same way signup does so that logins are
+        // case/whitespace-insensitive and always match the stored record.
+        const email = (credentials.email as string).trim().toLowerCase();
+
         const user = await db.user.findUnique({
           where: {
-            email: credentials.email as string,
+            email,
           },
         });
 
