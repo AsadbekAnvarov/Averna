@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Film, Play, Clock, BookOpen, Target, Star } from "lucide-react";
-import Link from "next/link";
+import { PageHeader } from "@/components/ui/page-header";
 
 export default async function MoviesPage() {
   const session = await auth();
@@ -63,17 +63,13 @@ export default async function MoviesPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-
-        <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Film className="h-10 w-10 text-pink-400" />
-          Movie Time
-        </h1>
-        <p className="text-gray-300 mb-8">
-          Learn English through movies with vocabulary lists, subtitles, and quizzes!
-        </p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Film}
+          iconClassName="text-pink-400"
+          title="Movie Time"
+          subtitle="Learn English through movies with vocabulary lists, subtitles, and quizzes!"
+        />
 
         {/* How It Works */}
         <Card className="glass border-pink-500/30 mb-8">

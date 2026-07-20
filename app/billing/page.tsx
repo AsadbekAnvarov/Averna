@@ -7,8 +7,8 @@ import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Wallet, Plus, CreditCard, Receipt } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
+import { PageHeader } from "@/components/ui/page-header";
 
 async function topUp(formData: FormData) {
   "use server";
@@ -80,11 +80,12 @@ export default async function BillingPage({
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 flex items-center gap-3">
-          <Wallet className="h-8 w-8 text-averna-neon" />
-          <span className="neon-text">Billing &amp; Balance</span>
-        </h1>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Wallet}
+          iconClassName="text-averna-neon"
+          title={<span className="neon-text">Billing &amp; Balance</span>}
+        />
 
         {searchParams.success && (
           <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">
