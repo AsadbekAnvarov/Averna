@@ -5,9 +5,9 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Wallet, TrendingUp, AlertTriangle, Receipt } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { PageHeader } from "@/components/ui/page-header";
 import { formatDate } from "@/lib/utils";
 
 function fmt(n: number) {
@@ -45,11 +45,13 @@ export default async function AdminFinancePage() {
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
-        <Link href="/admin/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Admin Panel</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Wallet className="h-8 w-8 text-averna-neon" /> <span className="neon-text">Finance</span>
-        </h1>
-        <p className="text-gray-400 mb-6">Revenue overview, recent transactions and students who may owe payment.</p>
+        <PageHeader
+          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          icon={Wallet}
+          iconClassName="text-averna-neon"
+          title={<span className="neon-text">Finance</span>}
+          subtitle="Revenue overview, recent transactions and students who may owe payment."
+        />
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
           <Card className="glass border-averna-neon/30">

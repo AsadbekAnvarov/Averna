@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Megaphone, Send } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { PageHeader } from "@/components/ui/page-header";
 import { notifyUsers } from "@/lib/notifications";
 import { formatDateTime } from "@/lib/utils";
 
@@ -58,11 +58,13 @@ export default async function AdminAnnouncementsPage({ searchParams }: { searchP
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
-        <Link href="/admin/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Admin Panel</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Megaphone className="h-8 w-8 text-averna-neon" /> Global <span className="neon-text">Announcements</span>
-        </h1>
-        <p className="text-gray-400 mb-6">Broadcast a message to everyone at the centre — all students and teachers.</p>
+        <PageHeader
+          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          icon={Megaphone}
+          iconClassName="text-averna-neon"
+          title={<>Global <span className="neon-text">Announcements</span></>}
+          subtitle="Broadcast a message to everyone at the centre — all students and teachers."
+        />
 
         {searchParams.saved && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Sent to everyone &amp; notified!</div>}
 

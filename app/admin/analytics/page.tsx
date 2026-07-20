@@ -5,9 +5,9 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3, TrendingUp, Users, ClipboardCheck, Layers } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { PageHeader } from "@/components/ui/page-header";
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -59,13 +59,12 @@ export default async function AdminAnalyticsPage() {
       <div className="container mx-auto px-4 py-8 max-w-5xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
 
-        <Link href="/admin/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Admin Panel
-        </Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-8 flex items-center gap-3">
-          <BarChart3 className="h-8 w-8 text-averna-cyan" />
-          Centre <span className="neon-text-cyan">Analytics</span>
-        </h1>
+        <PageHeader
+          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          icon={BarChart3}
+          iconClassName="text-averna-cyan"
+          title={<>Centre <span className="neon-text-cyan">Analytics</span></>}
+        />
 
         {/* Summary cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
