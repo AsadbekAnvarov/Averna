@@ -9,6 +9,7 @@ import { ChevronLeft, ChevronRight, CalendarDays } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { PageHeader } from "@/components/ui/page-header";
 
 const DOW: Record<string, number> = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -74,10 +75,12 @@ export default async function TeacherCalendarPage({ searchParams }: { searchPara
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
-        <Link href="/teacher/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 flex items-center gap-3">
-          <CalendarDays className="h-8 w-8 text-averna-cyan" /> Teaching <span className="neon-text-cyan">Calendar</span>
-        </h1>
+        <PageHeader
+          back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
+          icon={CalendarDays}
+          iconClassName="text-averna-cyan"
+          title={<>Teaching <span className="neon-text-cyan">Calendar</span></>}
+        />
 
         <Card className="glass border-averna-cyan/30">
           <CardHeader>

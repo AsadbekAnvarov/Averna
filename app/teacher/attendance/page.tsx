@@ -11,6 +11,7 @@ import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { QrCheckin } from "@/components/qr-checkin";
+import { PageHeader } from "@/components/ui/page-header";
 
 const STATUSES = ["PRESENT", "ABSENT", "LATE", "EXCUSED"] as const;
 
@@ -142,11 +143,13 @@ export default async function TeacherAttendancePage({
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
 
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <ClipboardCheck className="h-8 w-8 text-averna-cyan" />
-          Attendance <span className="neon-text-cyan">Journal</span>
-        </h1>
-        <p className="text-gray-400 mb-6">Take the roll call for each lesson and track attendance.</p>
+        <PageHeader
+          back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
+          icon={ClipboardCheck}
+          iconClassName="text-averna-cyan"
+          title={<>Attendance <span className="neon-text-cyan">Journal</span></>}
+          subtitle="Take the roll call for each lesson and track attendance."
+        />
 
         {searchParams.saved && (
           <div className="mb-6 flex items-center gap-2 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">

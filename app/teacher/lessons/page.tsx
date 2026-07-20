@@ -12,6 +12,7 @@ import { BookOpen, Plus, CalendarClock } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { PageHeader } from "@/components/ui/page-header";
 import { formatDate } from "@/lib/utils";
 
 async function addLesson(formData: FormData) {
@@ -80,12 +81,13 @@ export default async function LessonLogPage({
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
-        <Link href="/teacher/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <BookOpen className="h-8 w-8 text-averna-cyan" />
-          Lesson <span className="neon-text-cyan">Log</span>
-        </h1>
-        <p className="text-gray-400 mb-6">Record what you covered each lesson — handy for revision and parents.</p>
+        <PageHeader
+          back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
+          icon={BookOpen}
+          iconClassName="text-averna-cyan"
+          title={<>Lesson <span className="neon-text-cyan">Log</span></>}
+          subtitle="Record what you covered each lesson — handy for revision and parents."
+        />
 
         {searchParams.saved && (
           <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Lesson saved!</div>
