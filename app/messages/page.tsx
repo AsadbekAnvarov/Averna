@@ -5,6 +5,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { MessageComposer } from "@/components/messages/message-composer";
@@ -104,13 +105,13 @@ export default async function MessagesPage({
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
-        <Link href={homeHref(role)} className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center gap-3">
-          <MessageSquare className="h-8 w-8 text-averna-pink" />
-          <span className="neon-text-purple">Messages</span>
-        </h1>
+        <PageHeader
+          className="mb-4"
+          back={{ href: homeHref(role), label: "Back to Dashboard" }}
+          icon={MessageSquare}
+          iconClassName="text-averna-pink"
+          title={<span className="neon-text-purple">Messages</span>}
+        />
 
         <InboxTabs unreadMessages={unreadMessages} unreadNotifications={unreadNotifications} />
 

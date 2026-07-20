@@ -11,7 +11,6 @@ import {
   User,
   Save,
   Loader2,
-  ArrowLeft,
   Mail,
   Target,
   Phone,
@@ -19,8 +18,8 @@ import {
   GraduationCap,
   CalendarClock,
 } from "lucide-react";
-import Link from "next/link";
 import { AvatarEditor } from "@/components/avatar-editor";
+import { PageHeader } from "@/components/ui/page-header";
 
 const personalGoals = [
   "IELTS 7.5+",
@@ -111,15 +110,12 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          <ArrowLeft className="h-4 w-4 inline mr-1" />
-          Back to Dashboard
-        </Link>
-
-        <h1 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
-          <User className="h-10 w-10 text-averna-cyan" />
-          My Profile
-        </h1>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={User}
+          iconClassName="text-averna-cyan"
+          title="My Profile"
+        />
 
         {/* Avatar editor */}
         <div className="mb-8">

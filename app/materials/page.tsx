@@ -5,6 +5,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { Library, PenTool, BookOpen, Headphones, Mic, BookMarked, GraduationCap, Search, X } from "lucide-react";
 import Link from "next/link";
 
@@ -77,12 +78,13 @@ export default async function MaterialsPage({
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Library className="h-8 w-8 text-averna-cyan" />
-          IELTS <span className="neon-text-cyan">Materials</span>
-        </h1>
-        <p className="text-gray-400 mb-6">Curated guides, strategies and word lists for every skill. 📚</p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Library}
+          iconClassName="text-averna-cyan"
+          title={<>IELTS <span className="neon-text-cyan">Materials</span></>}
+          subtitle="Curated guides, strategies and word lists for every skill. 📚"
+        />
 
         {/* Search */}
         <form method="get" className="mb-4">

@@ -7,9 +7,9 @@ import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CalendarClock, UserCheck, Sparkles, X } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { notifyUser } from "@/lib/notifications";
+import { PageHeader } from "@/components/ui/page-header";
 
 const DAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
@@ -98,16 +98,13 @@ export default async function TutoringPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <UserCheck className="h-9 w-9 text-averna-pink" />
-          Book a <span className="neon-text-purple">Second Teacher</span>
-        </h1>
-        <p className="text-gray-400 mb-8">
-          Reserve a free 1-on-1 slot with an extra teacher for focused speaking practice. 🎙️
-        </p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={UserCheck}
+          iconClassName="text-averna-pink"
+          title={<>Book a <span className="neon-text-purple">Second Teacher</span></>}
+          subtitle="Reserve a free 1-on-1 slot with an extra teacher for focused speaking practice. 🎙️"
+        />
 
         {/* My booked sessions */}
         <Card className="glass border-averna-neon/30 mb-8">
