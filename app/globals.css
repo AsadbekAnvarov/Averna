@@ -491,3 +491,44 @@ html.light .brand-bg {
     #eef2f7;
   background-attachment: fixed;
 }
+
+
+
+
+/* ===================================================================
+   LIGHT THEME — contrast fixes for bright -300 / -500 text shades.
+   These utilities are used across the app (status text, tips, and the
+   big dashboard stat numbers) and were not covered by earlier rules,
+   so on the white light-mode canvas they were nearly invisible.
+   Appended last so they take precedence.
+   =================================================================== */
+
+/* Bright yellows -> readable amber */
+html.light .text-yellow-200,
+html.light .text-yellow-300,
+html.light .text-yellow-500 { color: #b45309 !important; }
+html.light .text-yellow-300\/90 { color: #b45309 !important; }
+
+/* Bright oranges -> deep orange (400 already handled, add 300/500) */
+html.light .text-orange-300,
+html.light .text-orange-500 { color: #c2410c !important; }
+
+/* Emerald / green light shades -> readable green */
+html.light .text-emerald-200,
+html.light .text-emerald-300,
+html.light .text-green-300,
+html.light .text-green-500 { color: #047857 !important; }
+
+/* Blue 500 (Group Rank stat) -> accessible blue */
+html.light .text-blue-500 { color: #2563eb !important; }
+
+/* Light shades of other accents occasionally used inline */
+html.light .text-purple-300 { color: #7c3aed !important; }
+html.light .text-pink-300 { color: #db2777 !important; }
+html.light .text-cyan-300,
+html.light .text-cyan-400 { color: #0e7fa0 !important; }
+
+/* Brand tints used as text but not yet mapped */
+html.light .text-averna-light { color: #0a8f5e !important; }
+html.light .text-averna-accent { color: #0a8f5e !important; }
+html.light .text-averna-primary { color: #0a7d5c !important; }
