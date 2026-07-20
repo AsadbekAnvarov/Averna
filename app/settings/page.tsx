@@ -5,6 +5,7 @@ import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { SettingsPanel } from "@/components/settings/settings-panel";
 import { SectionHeader } from "@/components/ui/section-header";
+import { PageHeader } from "@/components/ui/page-header";
 import { Settings, User, Bell, Wallet, Palette, ChevronRight } from "lucide-react";
 
 export default async function SettingsPage() {
@@ -26,14 +27,12 @@ export default async function SettingsPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Settings className="h-8 w-8 text-averna-cyan" />
-          Settings
-        </h1>
-        <p className="text-gray-400 mb-8">Manage your account and personalise how Averna looks and feels.</p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Settings}
+          title="Settings"
+          subtitle="Manage your account and personalise how Averna looks and feels."
+        />
 
         {/* Account */}
         <SectionHeader icon={User} title="Account" subtitle={session.user.email ?? undefined} accent="text-averna-neon" />

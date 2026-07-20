@@ -12,6 +12,7 @@ import { BandProgress } from "@/components/dashboard/band-progress";
 import { SkillRadar } from "@/components/dashboard/skill-radar";
 import { SkillJourney } from "@/components/learning/skill-journey";
 import { FirstRunGuide } from "@/components/learning/first-run-guide";
+import { PageHeader } from "@/components/ui/page-header";
 import {
   GraduationCap, Mic, Bot, Trophy,
   Zap, Layers, Library, ArrowRight, ClipboardList, SpellCheck, Sparkles,
@@ -69,12 +70,12 @@ export default async function LearningCenterPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <GraduationCap className="h-8 w-8 text-averna-cyan" />
-          Learning <span className="neon-text-cyan">Center</span>
-        </h1>
-        <p className="text-gray-400 mb-8">Everything to practise IELTS — your progress and all modules in one place. 📚</p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={GraduationCap}
+          title={<>Learning <span className="neon-text-cyan">Center</span></>}
+          subtitle="Everything to practise IELTS — your progress and all modules in one place. 📚"
+        />
 
         {isNewStudent ? (
           <FirstRunGuide name={session.user.name} />

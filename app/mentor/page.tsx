@@ -5,8 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageSquare, Send, Loader2, Sparkles } from "lucide-react";
-import Link from "next/link";
 import { VoiceInputButton } from "@/components/voice-input-button";
+import { PageHeader } from "@/components/ui/page-header";
 
 export default function AIMentorPage() {
   const [messages, setMessages] = useState<Array<{ role: string; content: string }>>([
@@ -50,13 +50,12 @@ export default function AIMentorPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-4xl font-bold text-white mb-4 flex items-center gap-3">
-          <MessageSquare className="h-10 w-10 text-pink-400" />
-          AI Mentor
-        </h1>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={MessageSquare}
+          iconClassName="text-pink-400"
+          title="AI Mentor"
+        />
 
         <Card className="glass border-pink-500/30 h-[70vh] min-h-[420px] max-h-[680px] flex flex-col overflow-hidden">
           <CardHeader className="shrink-0">

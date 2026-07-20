@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { SectionHeader } from "@/components/ui/section-header";
+import { PageHeader } from "@/components/ui/page-header";
 import {
   BookOpen, Layers, Clock, Hash, GitBranch, Link2, ListChecks, Lightbulb,
 } from "lucide-react";
@@ -89,16 +90,13 @@ export default async function GrammarPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
-        <Link href="/learning" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Learning Center
-        </Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <BookOpen className="h-8 w-8 text-averna-purple" />
-          IELTS <span className="neon-text">Grammar</span>
-        </h1>
-        <p className="text-gray-400 mb-8">
-          Focused grammar essentials mapped to the IELTS band descriptors. Master these to lift your Writing and Speaking scores.
-        </p>
+        <PageHeader
+          back={{ href: "/learning", label: "Back to Learning Center" }}
+          icon={BookOpen}
+          iconClassName="text-averna-purple"
+          title={<>IELTS <span className="neon-text">Grammar</span></>}
+          subtitle="Focused grammar essentials mapped to the IELTS band descriptors. Master these to lift your Writing and Speaking scores."
+        />
 
         <SectionHeader icon={Layers} title="Grammar Essentials" subtitle="Six high-impact focus areas" accent="text-averna-purple" />
         <div className="grid md:grid-cols-2 gap-5">
