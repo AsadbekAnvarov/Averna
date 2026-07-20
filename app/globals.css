@@ -532,3 +532,29 @@ html.light .text-cyan-400 { color: #0e7fa0 !important; }
 html.light .text-averna-light { color: #0a8f5e !important; }
 html.light .text-averna-accent { color: #0a8f5e !important; }
 html.light .text-averna-primary { color: #0a7d5c !important; }
+
+
+
+
+/* ===================================================================
+   APP SIDEBAR — theme-aware surface (left navigation rail)
+   The rail background is defined here so it can adapt to light mode.
+   In dark mode: deep near-black gradient. In light mode: clean white
+   surface so the (now-dark) text and icons stay readable.
+   =================================================================== */
+.app-sidebar {
+  background: linear-gradient(to bottom, #04070d, #06101a, #04070d);
+}
+
+html.light .app-sidebar {
+  background: #ffffff;
+  box-shadow: 1px 0 0 rgba(15, 23, 42, 0.06), 4px 0 24px -12px rgba(15, 23, 42, 0.12);
+}
+
+/* Mobile menu toggle + small dark chips must flip to a light surface so
+   their (now-dark) icon/emoji is visible in light mode */
+html.light .bg-averna-dark\/80 { background-color: rgba(255, 255, 255, 0.92) !important; }
+html.light .hover\:bg-averna-dark:hover { background-color: rgba(15, 23, 42, 0.06) !important; }
+
+/* Sidebar section labels a touch stronger for scannability in light mode */
+html.light .app-sidebar .sidebar-label { color: #64748b !important; }

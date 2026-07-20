@@ -286,8 +286,7 @@ export function AppSidebar() {
 
       <aside
         className={cn(
-          "fixed left-0 top-0 z-50 h-screen w-64 overflow-y-auto",
-          "bg-gradient-to-b from-[#04070d] via-[#06101a] to-[#04070d]",
+          "app-sidebar fixed left-0 top-0 z-50 h-screen w-64 overflow-y-auto",
           "border-r border-white/5",
           "transition-transform duration-300 ease-out",
           mobileOpen ? "translate-x-0" : "-translate-x-full",
@@ -324,7 +323,7 @@ export function AppSidebar() {
         <nav className="px-3 py-4 space-y-5 pb-24">
           {sections.map((section) => (
             <div key={section.label}>
-              <div className="px-3 mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-gray-500">
+              <div className="sidebar-label px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
                 {section.label}
               </div>
               <div className="space-y-0.5">
@@ -336,10 +335,10 @@ export function AppSidebar() {
                       key={item.href}
                       href={item.href}
                       className={cn(
-                        "group flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors",
+                        "group flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                         active
-                          ? cn("bg-white/[0.06] text-white", `border-l-2 border-${accent}`)
-                          : "text-gray-400 hover:bg-white/[0.04] hover:text-white border-l-2 border-transparent"
+                          ? cn("bg-white/10 text-white", `border-l-2 border-${accent}`)
+                          : "text-gray-400 hover:bg-white/5 hover:text-white border-l-2 border-transparent"
                       )}
                     >
                       <Icon
