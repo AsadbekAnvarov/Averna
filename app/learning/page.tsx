@@ -11,6 +11,7 @@ import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
 import { BandProgress } from "@/components/dashboard/band-progress";
 import { SkillRadar } from "@/components/dashboard/skill-radar";
 import { SkillJourney } from "@/components/learning/skill-journey";
+import { FirstRunGuide } from "@/components/learning/first-run-guide";
 import {
   GraduationCap, Mic, Bot, Trophy,
   Zap, Layers, Library, ArrowRight, ClipboardList, SpellCheck, Sparkles,
@@ -62,6 +63,9 @@ export default async function LearningCenterPage() {
     return <AccountNotice title="No student profile found" message="Sign in with a student account to access the Learning Center." />;
   }
 
+  const testsCount = await db.iELTSTest.count({ where: { studentId: student.id } });
+  const isNewStudent = testsCount === 0;
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
@@ -72,14 +76,18 @@ export default async function LearningCenterPage() {
         </h1>
         <p className="text-gray-400 mb-8">Everything to practise IELTS — your progress and all modules in one place. 📚</p>
 
-        <div className="grid lg:grid-cols-2 gap-6 mb-8">
-          <Suspense fallback={<WidgetSkeleton rows={3} />}>
-            <BandProgress studentId={student.id} targetBand={student.targetBand} />
-          </Suspense>
-          <Suspense fallback={<WidgetSkeleton rows={3} />}>
-            <SkillRadar studentId={student.id} />
-          </Suspense>
-        </div>
+        {isNewStudent ? (
+          <FirstRunGuide name={session.user.name} />
+        ) : (
+          <div className="grid lg:grid-cols-2 gap-6 mb-8">
+            <Suspense fallback={<WidgetSkeleton rows={3} />}>
+              <BandProgress studentId={student.id} targetBand={student.targetBand} />
+            </Suspense>
+            <Suspense fallback={<WidgetSkeleton rows={3} />}>
+              <SkillRadar studentId={student.id} />
+            </Suspense>
+          </div>
+        )}
 
         <SectionHeader icon={ClipboardList} title="Your Skill Journey" subtitle="Your level and next step in each IELTS skill" accent="text-averna-cyan" />
         <div className="mb-8">
