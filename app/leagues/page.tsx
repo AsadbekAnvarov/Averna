@@ -5,8 +5,8 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Trophy, Crown } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
+import { PageHeader } from "@/components/ui/page-header";
 import { leagueForWeeklyPoints, nextLeague, startOfWeek, seasonLabel, LEAGUES } from "@/lib/leagues";
 
 export default async function LeaguesPage() {
@@ -63,12 +63,13 @@ export default async function LeaguesPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-1 flex items-center gap-3">
-          <Trophy className="h-8 w-8 text-yellow-400" />
-          <span className="neon-text">Leagues</span>
-        </h1>
-        <p className="text-gray-400 mb-6">{seasonLabel()} · resets every Monday 🔁</p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Trophy}
+          iconClassName="text-yellow-400"
+          title={<span className="neon-text">Leagues</span>}
+          subtitle={<>{seasonLabel()} · resets every Monday 🔁</>}
+        />
 
         {/* My league card */}
         <Card className="glass border-averna-neon/40 mb-6">

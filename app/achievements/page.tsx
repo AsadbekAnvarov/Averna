@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { Award, Lock, Trophy, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { PageHeader } from "@/components/ui/page-header";
 
 export default async function AchievementsPage() {
   const session = await auth();
@@ -106,17 +107,14 @@ export default async function AchievementsPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-
-        <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Award className="h-10 w-10 text-yellow-400" />
-          Achievements
-        </h1>
-        <p className="text-gray-300 mb-4">
-          Unlock badges by completing challenges and earning points!
-        </p>
+        <PageHeader
+          className="mb-4"
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Award}
+          iconClassName="text-yellow-400"
+          title="Achievements"
+          subtitle="Unlock badges by completing challenges and earning points!"
+        />
         <div className="mb-8">
           <Link href="/certificate">
             <Button className="neon-button bg-averna-primary hover:bg-averna-light">

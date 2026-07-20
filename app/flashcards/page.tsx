@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
-import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
+import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import {
   Layers, RotateCcw, Shuffle, Check, ChevronLeft, ChevronRight,
@@ -154,16 +154,14 @@ export default function FlashcardsPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-2xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Layers className="h-9 w-9 text-averna-purple" />
-          Vocabulary <span className="neon-text-purple">Flashcards</span>
-        </h1>
-        <p className="text-gray-400 mb-1">
-          Real IELTS vocabulary with Uzbek translations. Study cards, then test yourself with the quiz. 🧠
-        </p>
+        <PageHeader
+          className="mb-2"
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Layers}
+          iconClassName="text-averna-purple"
+          title={<>Vocabulary <span className="neon-text-purple">Flashcards</span></>}
+          subtitle="Real IELTS vocabulary with Uzbek translations. Study cards, then test yourself with the quiz. 🧠"
+        />
         <p className="text-xs text-averna-neon mb-5">
           {totalKnown} / {totalWords} words mastered across all decks
         </p>

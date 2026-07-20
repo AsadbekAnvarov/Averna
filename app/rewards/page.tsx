@@ -7,8 +7,8 @@ import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Gift, Coins, Sparkles } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
+import { PageHeader } from "@/components/ui/page-header";
 
 async function redeemReward(formData: FormData) {
   "use server";
@@ -74,19 +74,17 @@ export default async function RewardsPage({
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white flex items-center gap-3">
-            <Gift className="h-8 w-8 text-averna-pink" />
-            Rewards <span className="neon-text-purple">Store</span>
-          </h1>
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-averna-neon/15 border border-averna-neon/40 text-averna-neon font-bold">
-            <Coins className="h-5 w-5" /> {student.totalPoints} points
-          </span>
-        </div>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Gift}
+          iconClassName="text-averna-pink"
+          title={<>Rewards <span className="neon-text-purple">Store</span></>}
+          action={
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-averna-neon/15 border border-averna-neon/40 text-averna-neon font-bold">
+              <Coins className="h-5 w-5" /> {student.totalPoints} points
+            </span>
+          }
+        />
 
         {searchParams.success && (
           <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">
