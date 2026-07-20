@@ -12,7 +12,8 @@
     "db:generate": "prisma generate",
     "db:seed": "npx prisma db seed",
     "postinstall": "prisma generate",
-    "vercel-build": "prisma generate && prisma db push --skip-generate && next build",
+    "vercel-build": "prisma generate && next build",
+    "db:deploy": "prisma db push --skip-generate",
     "clean": "rm -rf .next node_modules",
     "reset": "npm run clean && npm install"
   },
