@@ -572,3 +572,33 @@ html.light .app-sidebar .sidebar-label { color: #64748b !important; }
 @media (prefers-reduced-motion: reduce) {
   .animate-pop { animation: none; }
 }
+
+
+
+
+/* ===================================================================
+   MICRO-INTERACTIONS — reusable, reduced-motion-safe hover/press helpers
+   Opt-in utilities for consistent tactile feedback across the app.
+   (Buttons already get a scale-press globally via the Button component.)
+   =================================================================== */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.5);
+}
+html.light .card-hover:hover {
+  box-shadow: 0 14px 34px -16px rgba(15, 23, 42, 0.22);
+}
+
+.hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.hover-lift:hover { transform: translateY(-2px); }
+
+.press { transition: transform 0.12s ease; }
+.press:active { transform: scale(0.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card-hover, .hover-lift, .press { transition: none; }
+  .card-hover:hover, .hover-lift:hover, .press:active { transform: none; }
+}
