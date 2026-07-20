@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,12 @@ export default function AIMentorPage() {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  // Keep the newest message in view.
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [messages, isLoading]);
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -52,15 +58,15 @@ export default function AIMentorPage() {
           AI Mentor
         </h1>
 
-        <Card className="glass border-pink-500/30 h-[600px] flex flex-col">
-          <CardHeader>
+        <Card className="glass border-pink-500/30 h-[70vh] min-h-[420px] max-h-[680px] flex flex-col overflow-hidden">
+          <CardHeader className="shrink-0">
             <CardTitle className="text-pink-400 flex items-center gap-2">
               <Sparkles className="h-5 w-5" />
               Chat with AI Assistant
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex-1 flex flex-col">
-            <div className="flex-1 overflow-y-auto space-y-4 mb-4">
+          <CardContent className="flex-1 min-h-0 flex flex-col">
+            <div className="flex-1 min-h-0 overflow-y-auto space-y-4 mb-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div className={`max-w-[80%] min-w-0 p-3 rounded-lg ${
@@ -79,9 +85,10 @@ export default function AIMentorPage() {
                   </div>
                 </div>
               )}
+              <div ref={bottomRef} />
             </div>
             
-            <div className="flex gap-2">
+            <div className="flex gap-2 shrink-0">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}

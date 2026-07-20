@@ -144,12 +144,12 @@ export default async function MessagesPage({
             </Card>
 
             {/* Thread */}
-            <Card className="glass border-averna-purple/30 md:col-span-2 flex flex-col">
-              <CardContent className="py-4 flex flex-col h-[60vh]">
-                <p className="text-white font-semibold border-b border-white/10 pb-2 mb-3">
+            <Card className="glass border-averna-purple/30 md:col-span-2 flex flex-col overflow-hidden">
+              <CardContent className="py-4 flex flex-col h-[60vh] min-h-0">
+                <p className="text-white font-semibold border-b border-white/10 pb-2 mb-3 shrink-0">
                   {active?.name}
                 </p>
-                <div className="flex-1 overflow-y-auto space-y-3 pr-1">
+                <div className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1">
                   <MessageThread messages={threadMessages} meId={me} />
                 </div>
                 <MessageComposer receiverId={active!.userId} role={role} />
