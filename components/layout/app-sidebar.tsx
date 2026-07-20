@@ -43,8 +43,12 @@ import {
   Bell,
   Menu,
   X,
+  TrendingUp,
+  Sparkles,
+  Newspaper,
   type LucideIcon,
 } from "lucide-react";
+import { MobileNav } from "@/components/dashboard/mobile-nav";
 
 type NavItem = { name: string; href: string; icon: LucideIcon; badge?: string };
 type NavSection = { label: string; items: NavItem[] };
@@ -60,55 +64,61 @@ const STUDENT_NAV: NavSection[] = [
     ],
   },
   {
-    label: "Learning",
+    label: "IELTS Skills",
     items: [
-      { name: "Writing", href: "/learning/writing", icon: PenTool },
       { name: "Reading", href: "/learning/reading", icon: BookOpen },
       { name: "Listening", href: "/learning/listening", icon: Headphones },
+      { name: "Writing", href: "/learning/writing", icon: PenTool },
       { name: "Speaking", href: "/learning/speaking", icon: Mic },
       { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
-      { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
     ],
   },
   {
-    label: "Practice",
+    label: "Practice & Immersion",
     items: [
-      { name: "Mock Exam", href: "/learning/mock-exam", icon: Trophy },
+      { name: "Mock Exams", href: "/learning/mock-exam", icon: GraduationCap },
       { name: "Daily Challenge", href: "/challenge", icon: Zap },
-      { name: "Flashcards", href: "/flashcards", icon: Layers },
+      { name: "Vocabulary", href: "/flashcards", icon: Layers },
+      { name: "Daily Article", href: "/article", icon: Newspaper },
+      { name: "Movie Time", href: "/movies", icon: Film },
     ],
   },
   {
-    label: "Coursework",
+    label: "AI Tools",
     items: [
-      { name: "Homework", href: "/homework", icon: Notebook },
-      { name: "Materials", href: "/materials", icon: Library },
-      { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
+      { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
+      { name: "AI Mentor", href: "/mentor", icon: Sparkles },
+    ],
+  },
+  {
+    label: "My Progress",
+    items: [
+      { name: "Progress Tracking", href: "/progress", icon: TrendingUp },
+      { name: "Analytics", href: "/analytics", icon: BarChart },
+      { name: "Achievements", href: "/achievements", icon: Award },
     ],
   },
   {
     label: "Community",
     items: [
-      { name: "Rankings", href: "/rankings", icon: Trophy },
+      { name: "Leaderboard", href: "/rankings", icon: Trophy },
       { name: "Leagues", href: "/leagues", icon: Crown },
       { name: "Team Challenge", href: "/team-challenge", icon: Swords },
-      { name: "Achievements", href: "/achievements", icon: Award },
       { name: "Rewards", href: "/rewards", icon: Gift },
     ],
   },
   {
-    label: "Social & AI",
+    label: "Classroom",
     items: [
+      { name: "Homework", href: "/homework", icon: Notebook },
+      { name: "Materials", href: "/materials", icon: Library },
+      { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
       { name: "Messages", href: "/messages", icon: MessageSquare },
-      { name: "AI Mentor", href: "/mentor", icon: Bot },
-      { name: "Movie Time", href: "/movies", icon: Film },
-      { name: "Daily Article", href: "/article", icon: BookOpen },
     ],
   },
   {
     label: "Account",
     items: [
-      { name: "Analytics", href: "/analytics", icon: BarChart },
       { name: "Billing", href: "/billing", icon: Wallet },
       { name: "Profile", href: "/profile", icon: User },
     ],
@@ -348,6 +358,9 @@ export function AppSidebar() {
           ))}
         </nav>
       </aside>
+
+      {/* Mobile bottom tab bar — quick access to the 5 most-used student destinations */}
+      {role === "STUDENT" && <MobileNav />}
     </>
   );
 }
@@ -366,7 +379,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <AppSidebar />
-      <div className={cn(isPublic ? "" : "lg:pl-64")}>{children}</div>
+      {/* pb clearance on mobile so content never hides behind the bottom tab bar */}
+      <div className={cn(isPublic ? "" : "lg:pl-64 pb-16 lg:pb-0")}>{children}</div>
     </>
   );
 }
