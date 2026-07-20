@@ -45,9 +45,9 @@ export function MessageThread({
         const mine = m.senderId === meId;
         return (
           <div key={m.id} className={`flex ${mine ? "justify-end" : "justify-start"} group`}>
-            <div className="relative max-w-[78%]">
+            <div className="relative max-w-[78%] min-w-0">
               <div
-                className={`px-3 py-2 rounded-2xl text-sm ${
+                className={`px-3 py-2 rounded-2xl text-sm whitespace-pre-wrap break-words ${
                   mine ? "bg-averna-primary text-white rounded-br-sm" : "bg-white/10 text-white rounded-bl-sm"
                 }`}
               >

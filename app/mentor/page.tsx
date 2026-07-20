@@ -63,12 +63,12 @@ export default function AIMentorPage() {
             <div className="flex-1 overflow-y-auto space-y-4 mb-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[80%] p-3 rounded-lg ${
+                  <div className={`max-w-[80%] min-w-0 p-3 rounded-lg ${
                     msg.role === "user" 
                       ? "bg-averna-primary text-white" 
                       : "bg-pink-500/20 text-gray-200 border border-pink-500/30"
                   }`}>
-                    <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                    <p className="text-sm whitespace-pre-wrap break-words leading-relaxed">{msg.content}</p>
                   </div>
                 </div>
               ))}

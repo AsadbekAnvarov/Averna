@@ -276,7 +276,7 @@ export default async function WritingResultPage({
             <CardDescription>In-depth analysis of your writing</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+            <p className="text-gray-300 leading-relaxed whitespace-pre-line break-words">
               {assessment.detailedFeedback}
             </p>
           </CardContent>

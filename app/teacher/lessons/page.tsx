@@ -146,7 +146,7 @@ export default async function LessonLogPage({
                             <CalendarClock className="h-3 w-3" /> {formatDate(l.date)}
                           </span>
                         </div>
-                        {l.notes && <p className="text-sm text-gray-400 mt-1 whitespace-pre-line">{l.notes}</p>}
+                        {l.notes && <p className="text-sm text-gray-400 mt-1 whitespace-pre-line break-words">{l.notes}</p>}
                       </div>
                     ))}
                   </div>

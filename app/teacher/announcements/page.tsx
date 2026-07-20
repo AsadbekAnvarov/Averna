@@ -138,7 +138,7 @@ export default async function AnnouncementsPage({
                         {groupName(a.groupId)}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-400 mt-1 whitespace-pre-line">{a.body}</p>
+                    <p className="text-sm text-gray-400 mt-1 whitespace-pre-line break-words">{a.body}</p>
                     <p className="text-[11px] text-gray-500 mt-1">{formatDateTime(a.createdAt)}</p>
                   </div>
                 ))}

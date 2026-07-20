@@ -94,7 +94,7 @@ export default async function AdminAnnouncementsPage({ searchParams }: { searchP
                 {recent.map((a) => (
                   <div key={a.id} className="p-3 rounded-lg bg-white/5 border border-white/10">
                     <p className="text-white font-medium">{a.title}</p>
-                    <p className="text-sm text-gray-400 mt-1 whitespace-pre-line">{a.body}</p>
+                    <p className="text-sm text-gray-400 mt-1 whitespace-pre-line break-words">{a.body}</p>
                     <p className="text-[11px] text-gray-500 mt-1">by {a.authorName} · {formatDateTime(a.createdAt)}</p>
                   </div>
                 ))}
