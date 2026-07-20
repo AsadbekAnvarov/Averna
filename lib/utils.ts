@@ -432,3 +432,21 @@ export function tashkentWeekday(now: Date = new Date()): number {
 }
 
 export const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+
+
+/**
+ * Derive up-to-two-letter uppercase initials from a name.
+ * Shared across every avatar so the logic lives in one place.
+ * Falls back to "U" (unknown) for empty/missing names.
+ */
+export function initialsOf(name?: string | null): string {
+  const base = (name ?? "").trim();
+  if (!base) return "U";
+  return base
+    .split(/\s+/)
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}

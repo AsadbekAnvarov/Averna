@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Flame, Trophy, Target, Quote } from "lucide-react";
-import { tashkentHour, getRandomQuote, getLevelInfo } from "@/lib/utils";
+import { tashkentHour, getRandomQuote, getLevelInfo, initialsOf } from "@/lib/utils";
 import { CountUp } from "@/components/ui/count-up";
 
 interface HeroProps {
@@ -23,7 +23,7 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
   const hour = tashkentHour();
   const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
   const emoji = hour < 12 ? "🌅" : hour < 18 ? "☀️" : "🌙";
-  const initials = (name ?? "U").split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+  const initials = initialsOf(name);
   const displayQuote = quote || { text: getRandomQuote(), author: "Averna Team" };
   const level = getLevelInfo(points);
 

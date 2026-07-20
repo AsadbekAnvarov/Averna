@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Flame } from "lucide-react";
 import { db } from "@/lib/db";
-import { timeAgo } from "@/lib/utils";
+import { timeAgo, initialsOf } from "@/lib/utils";
 import { EmptyState } from "@/components/ui/empty-state";
 
 /**
@@ -39,7 +39,7 @@ export async function GroupFeed({ studentId, groupId }: { studentId: string; gro
           <ul className="space-y-2">
             {logs.map((log) => {
               const name = log.student.user.name ?? "A classmate";
-              const initials = name.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+              const initials = initialsOf(name);
               return (
                 <li key={log.id} className="flex items-center gap-3">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-averna-pink/15 text-averna-pink text-xs font-bold">

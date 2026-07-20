@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "@/components/theme/theme-provider";
+import { initialsOf } from "@/lib/utils";
 import {
   User, Settings, Sun, Moon, LogOut, ChevronDown,
   Shield, GraduationCap, Palette,
@@ -38,12 +39,7 @@ export function UserAvatarDropdown({ user, role }: Props) {
     role === "TEACHER" ? "/teacher/profile" :
     "/profile";
 
-  const initials = (user.name ?? "U")
-    .split(" ")
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
+  const initials = initialsOf(user.name);
 
   const roleBadge =
     role === "ADMIN" ? { icon: Shield, label: "Admin", cls: "bg-averna-purple/20 text-averna-purple" } :

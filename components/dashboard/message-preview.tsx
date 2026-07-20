@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageSquare, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { db } from "@/lib/db";
-import { timeAgo } from "@/lib/utils";
+import { timeAgo, initialsOf } from "@/lib/utils";
 import { EmptyState } from "@/components/ui/empty-state";
 
 /**
@@ -71,7 +71,7 @@ export async function MessagePreview({ userId }: { userId: string }) {
         ) : (
           <div className="space-y-1.5">
             {threads.map((t) => {
-              const initials = t.partnerName.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+              const initials = initialsOf(t.partnerName);
               return (
                 <Link
                   key={t.partnerId}

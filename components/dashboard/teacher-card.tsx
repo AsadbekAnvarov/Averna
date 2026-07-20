@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { MessageSquare, CalendarClock, GraduationCap } from "lucide-react";
 import Link from "next/link";
 import { db } from "@/lib/db";
-import { parseSchedule, tashkentWeekday, WEEKDAY_NAMES } from "@/lib/utils";
+import { parseSchedule, tashkentWeekday, WEEKDAY_NAMES, initialsOf } from "@/lib/utils";
 
 /**
  * Teacher card — puts a friendly face on the class: who teaches it, the next
@@ -32,12 +32,7 @@ export async function TeacherCard({ groupId }: { groupId: string | null }) {
     nextLabel = time ? `${wd} · ${time}` : wd;
   }
 
-  const initials = (teacher.user.name ?? "T")
-    .split(" ")
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
+  const initials = initialsOf(teacher.user.name);
 
   return (
     <Card className="glass border-averna-cyan/30">
