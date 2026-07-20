@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Clock, FileText, Send, Loader2, ArrowLeft, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { VoiceInputButton } from "@/components/voice-input-button";
+import { toast } from "@/components/ui/toast";
 
 interface WritingEditorProps {
   prompt: {
@@ -110,7 +111,7 @@ export default function WritingEditor({ prompt, config, userId }: WritingEditorP
       router.push(`/learning/writing/result/${data.testId}`);
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Failed to submit essay. Please try again.");
+      toast.error("Failed to submit essay. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
