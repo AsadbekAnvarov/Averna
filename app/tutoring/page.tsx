@@ -10,6 +10,7 @@ import { CalendarClock, UserCheck, Sparkles, X } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { notifyUser } from "@/lib/notifications";
 import { PageHeader } from "@/components/ui/page-header";
+import { initialsOf } from "@/lib/utils";
 
 const DAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
@@ -168,7 +169,7 @@ export default async function TutoringPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
                     <span className="h-10 w-10 rounded-full bg-averna-purple/30 flex items-center justify-center text-white font-bold">
-                      {(t.user.name ?? "T").charAt(0)}
+                      {initialsOf(t.user.name)}
                     </span>
                     <div>
                       <p className="text-white">{t.user.name}</p>

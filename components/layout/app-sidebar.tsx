@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn, initialsOf } from "@/lib/utils";
 import {
   LayoutDashboard,
   PenTool,
@@ -310,7 +310,7 @@ export function AppSidebar() {
         <div className="px-5 py-3 border-b border-white/5">
           <div className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-averna-primary/30 grid place-items-center text-white text-sm font-semibold">
-              {(session.user.name ?? session.user.email ?? "U").charAt(0).toUpperCase()}
+              {initialsOf(session.user.name ?? session.user.email)}
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-sm text-white font-medium truncate">{session.user.name ?? "User"}</div>

@@ -11,6 +11,7 @@ import { Users, Ban, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { PageHeader } from "@/components/ui/page-header";
 import { notifyUser } from "@/lib/notifications";
 
 async function blacklistStudent(formData: FormData) {
@@ -124,13 +125,12 @@ export default async function TeacherStudentsPage() {
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-5xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
-        <Link href="/teacher/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
-          <Users className="h-8 w-8 text-averna-cyan" />
-          My Students
-        </h1>
+        <PageHeader
+          back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
+          icon={Users}
+          iconClassName="text-averna-cyan"
+          title="My Students"
+        />
 
         {/* Blacklist summary */}
         {blacklistedAll.length > 0 && (
