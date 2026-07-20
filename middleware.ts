@@ -9,9 +9,13 @@ export default auth((req) => {
   const session = req.auth;
   const pathname = req.nextUrl.pathname;
 
-  // Public routes that don't require authentication
-  const publicRoutes = ["/", "/auth/signin", "/auth/signup", "/auth/error", "/about"];
-  const isPublicRoute = publicRoutes.some((route) => pathname.startsWith(route));
+  // Public routes that don't require authentication.
+  // NOTE: the landing page "/" must be matched EXACTLY — using startsWith("/")
+  // would match every path and disable auth protection for the whole app.
+  const publicPrefixes = ["/auth/signin", "/auth/signup", "/auth/error", "/about"];
+  const isPublicRoute =
+    pathname === "/" ||
+    publicPrefixes.some((route) => pathname === route || pathname.startsWith(route + "/"));
 
   // If user is not authenticated and trying to access protected route
   if (!session && !isPublicRoute) {

@@ -12,18 +12,18 @@ export default function HomePage() {
           <div className="flex justify-center mb-8">
             <Logo size={96} showText={false} className="animate-float" />
           </div>
-          <h1 className="text-6xl font-bold text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
             Averna Learning Centre
           </h1>
-          <p className="text-2xl text-averna-neon mb-8">
+          <p className="text-xl sm:text-2xl text-averna-neon mb-8">
             Transform Your IELTS Journey
           </p>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-12">
+          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-12">
             Join the most advanced IELTS learning platform with AI-powered assessments,
             gamification, real-time speaking sessions, and a competitive community.
           </p>
           
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/auth/signin">
               <Button className="neon-button bg-averna-primary hover:bg-averna-light text-white px-8 py-6 text-lg">
                 <Sparkles className="mr-2" />
@@ -85,7 +85,7 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="glass rounded-2xl p-6 hover:shadow-neon-green transition-all duration-300 cursor-pointer">
+    <div className="glass rounded-2xl p-6 hover:shadow-neon-green transition-all duration-300">
       <div className="mb-4">{icon}</div>
       <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
       <p className="text-gray-400">{description}</p>
