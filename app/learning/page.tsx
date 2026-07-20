@@ -12,7 +12,7 @@ import { BandProgress } from "@/components/dashboard/band-progress";
 import { SkillRadar } from "@/components/dashboard/skill-radar";
 import {
   GraduationCap, PenTool, BookOpen, Headphones, Mic, Bot, Trophy,
-  Zap, Layers, Library, ArrowRight, ClipboardList,
+  Zap, Layers, Library, ArrowRight, ClipboardList, SpellCheck,
 } from "lucide-react";
 
 const SKILLS = [
@@ -21,13 +21,14 @@ const SKILLS = [
   { href: "/learning/listening", label: "Listening", desc: "Audio practice", icon: Headphones, color: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
   { href: "/learning/speaking", label: "Speaking", desc: "Talk with partners", icon: Mic, color: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
   { href: "/learning/pronunciation", label: "Pronunciation", desc: "Speak & get scored", icon: Mic, color: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
+  { href: "/grammar", label: "Grammar", desc: "Essentials & tips", icon: SpellCheck, color: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
 ];
 
 const TESTS = [
   { href: "/learning/mock-exam", label: "Mock Exam", desc: "Full timed test", icon: Trophy, color: "bg-yellow-500/15 text-yellow-400", hover: "hover:border-yellow-400/40" },
   { href: "/learning/examiner", label: "AI Examiner", desc: "Speak, get a band", icon: Bot, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
   { href: "/challenge", label: "Daily Challenge", desc: "Quick daily quiz", icon: Zap, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
-  { href: "/flashcards", label: "Flashcards", desc: "Build vocabulary", icon: Layers, color: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+  { href: "/flashcards", label: "Vocabulary", desc: "Flashcards & word lists", icon: Layers, color: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
   { href: "/materials", label: "Materials", desc: "Guides & word lists", icon: Library, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
   { href: "/mentor", label: "AI Mentor", desc: "Ask for help", icon: Bot, color: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
 ];

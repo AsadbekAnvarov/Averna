@@ -46,6 +46,7 @@ import {
   TrendingUp,
   Sparkles,
   Newspaper,
+  SpellCheck,
   type LucideIcon,
 } from "lucide-react";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
@@ -71,6 +72,7 @@ const STUDENT_NAV: NavSection[] = [
       { name: "Writing", href: "/learning/writing", icon: PenTool },
       { name: "Speaking", href: "/learning/speaking", icon: Mic },
       { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
+      { name: "Grammar", href: "/grammar", icon: SpellCheck },
     ],
   },
   {
@@ -121,6 +123,7 @@ const STUDENT_NAV: NavSection[] = [
     items: [
       { name: "Billing", href: "/billing", icon: Wallet },
       { name: "Profile", href: "/profile", icon: User },
+      { name: "Settings", href: "/settings", icon: Settings },
     ],
   },
 ];
@@ -162,6 +165,7 @@ const TEACHER_NAV: NavSection[] = [
     label: "Account",
     items: [
       { name: "Profile", href: "/teacher/profile", icon: User },
+      { name: "Settings", href: "/settings", icon: Settings },
     ],
   },
 ];
