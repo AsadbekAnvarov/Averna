@@ -558,3 +558,17 @@ html.light .hover\:bg-averna-dark:hover { background-color: rgba(15, 23, 42, 0.0
 
 /* Sidebar section labels a touch stronger for scannability in light mode */
 html.light .app-sidebar .sidebar-label { color: #64748b !important; }
+
+
+
+
+/* ===== Score pop-in (result pages) ===== */
+@keyframes pop-in {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-pop { animation: pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop { animation: none; }
+}
