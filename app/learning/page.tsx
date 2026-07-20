@@ -10,25 +10,22 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
 import { BandProgress } from "@/components/dashboard/band-progress";
 import { SkillRadar } from "@/components/dashboard/skill-radar";
+import { SkillJourney } from "@/components/learning/skill-journey";
 import {
-  GraduationCap, PenTool, BookOpen, Headphones, Mic, Bot, Trophy,
-  Zap, Layers, Library, ArrowRight, ClipboardList, SpellCheck,
+  GraduationCap, Mic, Bot, Trophy,
+  Zap, Layers, Library, ArrowRight, ClipboardList, SpellCheck, Sparkles,
 } from "lucide-react";
 
-const SKILLS = [
-  { href: "/learning/writing", label: "Writing", desc: "Task 1 & 2 practice", icon: PenTool, color: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
-  { href: "/learning/reading", label: "Reading", desc: "Passages & questions", icon: BookOpen, color: "bg-averna-blue/15 text-averna-blue", hover: "hover:border-averna-blue/40" },
-  { href: "/learning/listening", label: "Listening", desc: "Audio practice", icon: Headphones, color: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
-  { href: "/learning/speaking", label: "Speaking", desc: "Talk with partners", icon: Mic, color: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
+const ALSO = [
   { href: "/learning/pronunciation", label: "Pronunciation", desc: "Speak & get scored", icon: Mic, color: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
   { href: "/grammar", label: "Grammar", desc: "Essentials & tips", icon: SpellCheck, color: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+  { href: "/flashcards", label: "Vocabulary", desc: "Flashcards & word lists", icon: Layers, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
 ];
 
 const TESTS = [
   { href: "/learning/mock-exam", label: "Mock Exam", desc: "Full timed test", icon: Trophy, color: "bg-yellow-500/15 text-yellow-400", hover: "hover:border-yellow-400/40" },
   { href: "/learning/examiner", label: "AI Examiner", desc: "Speak, get a band", icon: Bot, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
   { href: "/challenge", label: "Daily Challenge", desc: "Quick daily quiz", icon: Zap, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
-  { href: "/flashcards", label: "Vocabulary", desc: "Flashcards & word lists", icon: Layers, color: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
   { href: "/materials", label: "Materials", desc: "Guides & word lists", icon: Library, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
   { href: "/mentor", label: "AI Mentor", desc: "Ask for help", icon: Bot, color: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
 ];
@@ -84,12 +81,19 @@ export default async function LearningCenterPage() {
           </Suspense>
         </div>
 
-        <SectionHeader icon={ClipboardList} title="Practice by Skill" subtitle="Sharpen each IELTS skill" accent="text-averna-cyan" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          {SKILLS.map((s) => <Tile key={s.href} item={s} />)}
+        <SectionHeader icon={ClipboardList} title="Your Skill Journey" subtitle="Your level and next step in each IELTS skill" accent="text-averna-cyan" />
+        <div className="mb-8">
+          <Suspense fallback={<WidgetSkeleton rows={2} />}>
+            <SkillJourney studentId={student.id} targetBand={student.targetBand} />
+          </Suspense>
         </div>
 
-        <SectionHeader icon={Trophy} title="Tests & Tools" subtitle="Exams, vocabulary and help" accent="text-averna-neon" />
+        <SectionHeader icon={Sparkles} title="Also Practise" subtitle="Round out your English beyond the four skills" accent="text-averna-purple" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          {ALSO.map((s) => <Tile key={s.href} item={s} />)}
+        </div>
+
+        <SectionHeader icon={Trophy} title="Tests & Tools" subtitle="Exams, guides and AI help" accent="text-averna-neon" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {TESTS.map((t) => <Tile key={t.href} item={t} />)}
         </div>
