@@ -525,3 +525,64 @@ Return ONLY JSON matching exactly:
   const test = readingTestSchema.parse(parsed);
   return { ...test, id };
 }
+
+
+
+/**
+ * Generate a COMPLETE, fully ORIGINAL IELTS-style Listening test.
+ * The model invents brand-new transcripts and questions and must never copy
+ * real, published or Cambridge exam material. Validated against the schema.
+ * Audio is produced client-side from the transcript (text-to-speech).
+ */
+export async function generateListeningTest(opts: {
+  topic: string;
+  difficulty?: "Easy" | "Medium" | "Hard";
+  sectionCount?: number;
+  questionsPerSection?: number;
+  id?: string;
+}): Promise<import("@/lib/test-schema").GeneratedListeningTest> {
+  const { listeningTestSchema } = await import("@/lib/test-schema");
+  if (!hasOpenAI()) {
+    throw new Error("OpenAI is not configured. Set OPENAI_API_KEY to generate tests.");
+  }
+
+  const sectionCount = Math.min(4, Math.max(1, opts.sectionCount ?? 2));
+  const qps = Math.min(8, Math.max(3, opts.questionsPerSection ?? 5));
+  const difficulty = opts.difficulty ?? "Medium";
+  const id = opts.id || `gen-${Date.now()}`;
+  const client = getOpenAIClient();
+
+  const systemPrompt = `You are an expert IELTS item writer creating ORIGINAL listening practice for a language school.
+STRICT RULE: Never copy, translate, paraphrase or adapt any real, published or Cambridge IELTS transcript or question. Everything must be brand-new writing invented by you.
+
+Create an IELTS Listening test on the theme "${opts.topic}", difficulty "${difficulty}":
+- ${sectionCount} section(s). Each section is a natural spoken passage (a conversation, announcement, or short talk), 120-220 words, written as plain spoken text suitable for text-to-speech (no speaker labels, no stage directions).
+- Each section: exactly ${qps} multiple-choice questions with 4 "options" each and "answer" = the 0-based index (number) of the correct option.
+- Questions must be answerable ONLY from that section's transcript.
+
+Return ONLY JSON matching exactly:
+{"id":"${id}","title":string,"difficulty":"${difficulty}","description":string,"sections":[{"title":"Section 1 — ...","transcript":string,"questions":[{"question":string,"options":[string,string,string,string],"answer":number}]}]}`;
+
+  const completion = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: `Generate the full original listening test now. Theme: ${opts.topic}.` },
+    ],
+    response_format: { type: "json_object" },
+    temperature: 0.6,
+  });
+
+  const raw = completion.choices[0]?.message?.content;
+  if (!raw) throw new Error("No response from OpenAI");
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("The model returned invalid JSON — please try generating again.");
+  }
+
+  const test = listeningTestSchema.parse(parsed);
+  return { ...test, id };
+}

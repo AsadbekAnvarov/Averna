@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireTeacherOrAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { readingTestSchema } from "@/lib/test-schema";
+import { readingTestSchema, listeningTestSchema } from "@/lib/test-schema";
 
 export const dynamic = "force-dynamic";
 
 /**
- * Persist a reviewed, generated Reading test so students can take it.
- * POST body: { test: <ReadingTest JSON>, topic?, level?, publish?: boolean }
+ * Persist a reviewed, generated test so students can take it.
+ * POST body: { module?: "reading"|"listening", test: <Test JSON>, topic?, level?, publish?: boolean }
  */
 export async function POST(req: NextRequest) {
   let user;
@@ -19,23 +19,48 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json().catch(() => ({} as Record<string, unknown>));
-    const parsed = readingTestSchema.safeParse(body.test);
-    if (!parsed.success) {
-      return NextResponse.json({ error: "Invalid or incomplete test data." }, { status: 400 });
+    const module = (typeof body.module === "string" ? body.module : "reading").toLowerCase();
+
+    let title: string;
+    let description: string;
+    let questions: number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let data: any;
+    let moduleKey: string;
+
+    if (module === "listening") {
+      const parsed = listeningTestSchema.safeParse(body.test);
+      if (!parsed.success) {
+        return NextResponse.json({ error: "Invalid or incomplete listening test data." }, { status: 400 });
+      }
+      const t = parsed.data;
+      title = t.title;
+      description = t.description || "";
+      questions = t.sections.reduce((n, s) => n + s.questions.length, 0);
+      data = t;
+      moduleKey = "LISTENING";
+    } else {
+      const parsed = readingTestSchema.safeParse(body.test);
+      if (!parsed.success) {
+        return NextResponse.json({ error: "Invalid or incomplete reading test data." }, { status: 400 });
+      }
+      const t = parsed.data;
+      title = t.title;
+      description = t.description || "";
+      questions = t.passages.reduce((n, p) => n + p.questions.length, 0);
+      data = t;
+      moduleKey = "READING";
     }
-    const t = parsed.data;
-    const questions = t.passages.reduce((n, p) => n + p.questions.length, 0);
 
     const row = await db.generatedTest.create({
       data: {
-        module: "READING",
-        title: t.title,
-        description: t.description || "",
+        module: moduleKey,
+        title,
+        description,
         topic: typeof body.topic === "string" ? body.topic : null,
         level: typeof body.level === "string" ? body.level : null,
         published: body.publish !== false,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        data: t as any,
+        data,
         createdById: user.id,
       },
     });

@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireTeacherOrAdmin } from "@/lib/auth";
-import { generateReadingTest } from "@/lib/ai";
+import { generateReadingTest, generateListeningTest } from "@/lib/ai";
 
 export const dynamic = "force-dynamic";
 // Full-test generation is a large model call; request a longer function budget.
 export const maxDuration = 60;
 
 /**
- * Admin/teacher endpoint that generates an ORIGINAL IELTS Reading test.
- * Returns the validated test JSON for review. (Persistence + an authoring UI
- * are the next phase.)
+ * Admin/teacher endpoint that generates an ORIGINAL IELTS test and returns the
+ * validated JSON for review.
  *
- * POST body: { topic: string; level?: string; passageCount?: number; questionsPerPassage?: number }
+ * POST body: { module?: "reading" | "listening"; topic: string; level?: string;
+ *              difficulty?: "Easy"|"Medium"|"Hard"; count?: number }
  */
 export async function POST(req: NextRequest) {
   try {
@@ -27,15 +27,27 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Provide a 'topic' for the test." }, { status: 400 });
     }
 
+    const module = (typeof body.module === "string" ? body.module : "reading").toLowerCase();
+    const count = typeof body.count === "number" ? body.count : undefined;
+
+    if (module === "listening") {
+      const test = await generateListeningTest({
+        topic,
+        difficulty:
+          body.difficulty === "Easy" || body.difficulty === "Medium" || body.difficulty === "Hard"
+            ? body.difficulty
+            : undefined,
+        sectionCount: count,
+      });
+      return NextResponse.json({ ok: true, module: "listening", test });
+    }
+
     const test = await generateReadingTest({
       topic,
       level: typeof body.level === "string" ? body.level : undefined,
-      passageCount: typeof body.passageCount === "number" ? body.passageCount : undefined,
-      questionsPerPassage:
-        typeof body.questionsPerPassage === "number" ? body.questionsPerPassage : undefined,
+      passageCount: count ?? (typeof body.passageCount === "number" ? body.passageCount : undefined),
     });
-
-    return NextResponse.json({ ok: true, test });
+    return NextResponse.json({ ok: true, module: "reading", test });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Failed to generate test";
     console.error("generate-test error:", error);
