@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { readingTestSchema, type GeneratedReadingTest } from "@/lib/test-schema";
 
 // Lazy initialization - only create OpenAI client when actually needed
 let openai: OpenAI | null = null;
@@ -452,4 +453,75 @@ export function analyzeWritingIssues(essay: string): WritingIssue[] {
   }
 
   return issues.slice(0, 12);
+}
+
+
+
+/**
+ * Generate a COMPLETE, fully ORIGINAL IELTS-style Academic Reading test.
+ *
+ * The model is instructed to invent brand-new passages and questions and must
+ * never copy, translate or adapt any real, published or Cambridge exam text.
+ * Output is validated against readingTestSchema before being returned.
+ *
+ * Notes for deployment:
+ * - Requires OPENAI_API_KEY.
+ * - A full 3-passage test is a large generation; on time-limited serverless
+ *   plans, generate 1 passage per call (passageCount: 1) and assemble.
+ */
+export async function generateReadingTest(opts: {
+  topic: string;
+  level?: string;
+  passageCount?: number;
+  questionsPerPassage?: number;
+  id?: string;
+}): Promise<GeneratedReadingTest> {
+  if (!hasOpenAI()) {
+    throw new Error("OpenAI is not configured. Set OPENAI_API_KEY to generate tests.");
+  }
+
+  const passageCount = Math.min(3, Math.max(1, opts.passageCount ?? 3));
+  const qpp = Math.min(14, Math.max(6, opts.questionsPerPassage ?? 13));
+  const level = opts.level || "IELTS band 6.0-7.5";
+  const id = opts.id || `gen-${Date.now()}`;
+  const client = getOpenAIClient();
+
+  const systemPrompt = `You are an expert IELTS item writer creating ORIGINAL practice material for a language school.
+STRICT RULE: Never copy, translate, paraphrase or adapt any real, published or Cambridge IELTS passage or question. Everything must be brand-new writing invented by you.
+
+Produce ${passageCount} passage(s) on the theme "${opts.topic}", ${level} difficulty:
+- Each passage: 700-900 words, academic register, entirely original.
+- Each passage: exactly ${qpp} questions, mixing "multiple-choice", "true-false-not-given" and "sentence-completion".
+- multiple-choice: provide 4 "options"; "correctAnswer" = the 0-based index (number) of the correct option.
+- true-false-not-given: "correctAnswer" = the string "true", "false" or "not-given".
+- sentence-completion: "correctAnswer" = the exact answer word/phrase (string); put "___________" in the question where the gap is.
+- Every question needs a one-sentence "explanation" justified by the passage.
+- Question ids must be unique across the whole test: q1, q2, ... .
+
+Return ONLY JSON matching exactly:
+{"id":"${id}","title":string,"description":string,"timeLimit":60,"passages":[{"id":"passage-1","title":string,"text":string,"questions":[{"id":"q1","type":"multiple-choice","question":string,"options":[string,string,string,string],"correctAnswer":number,"explanation":string}]}]}`;
+
+  const completion = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: `Generate the full original reading test now. Theme: ${opts.topic}.` },
+    ],
+    response_format: { type: "json_object" },
+    temperature: 0.6,
+  });
+
+  const raw = completion.choices[0]?.message?.content;
+  if (!raw) throw new Error("No response from OpenAI");
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("The model returned invalid JSON — please try generating again.");
+  }
+
+  // Throws a descriptive error if the model's output doesn't match the shape.
+  const test = readingTestSchema.parse(parsed);
+  return { ...test, id };
 }
