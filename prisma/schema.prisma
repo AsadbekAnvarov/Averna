@@ -621,3 +621,23 @@ model AuditLog {
   @@index([createdAt])
   @@map("audit_logs")
 }
+
+
+
+/// Original, generated practice tests (Reading first; extensible to other modules).
+/// The full test payload lives in `data` (same shape as lib/reading-tests-data.ts).
+model GeneratedTest {
+  id          String   @id @default(cuid())
+  module      String   @default("READING")
+  title       String
+  description String   @default("")
+  topic       String?
+  level       String?
+  published   Boolean  @default(false)
+  data        Json
+  createdById String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([module, published])
+}

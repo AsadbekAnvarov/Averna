@@ -7,12 +7,13 @@ import { Button } from "@/components/ui/button";
 import { BookOpen, Clock, FileText, Target, Play } from "lucide-react";
 import Link from "next/link";
 import { READING_TESTS } from "@/lib/reading-tests-data";
+import { listReadingTests } from "@/lib/reading-content";
 
 export default async function ReadingPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 
-  const tests = [
+  const core = [
     {
       id: "academic-1",
       title: "Academic Reading Test 1",
@@ -43,6 +44,23 @@ export default async function ReadingPage() {
       timeLimit: data?.timeLimit ?? 60,
     };
   });
+
+  // Append published, generated tests from the database (defensive — falls back
+  // to core tests only if the table isn't available yet).
+  const generated = (await listReadingTests())
+    .filter((s) => s.source === "generated")
+    .map((s) => ({
+      id: s.id,
+      title: s.title,
+      description: s.description,
+      difficulty: "New",
+      topics: [] as string[],
+      passages: s.passages,
+      questions: s.questions,
+      timeLimit: s.timeLimit,
+    }));
+
+  const tests = [...core, ...generated];
 
   return (
     <div className="min-h-screen premium-gradient">

@@ -190,6 +190,7 @@ const ADMIN_NAV: NavSection[] = [
     label: "Content",
     items: [
       { name: "Study Content", href: "/admin/content", icon: FolderOpen },
+      { name: "Test Generator", href: "/admin/generate-tests", icon: Sparkles },
       { name: "Announcements", href: "/admin/announcements", icon: Megaphone },
       { name: "Rewards", href: "/admin/rewards", icon: Gift },
     ],

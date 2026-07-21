@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Trophy, CheckCircle, XCircle, ArrowLeft, RotateCcw, BookOpen, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { READING_TESTS, ReadingQuestion } from "@/lib/reading-tests-data";
+import { ReadingQuestion } from "@/lib/reading-tests-data";
+import { getReadingTest } from "@/lib/reading-content";
 import { NextStepCard } from "@/components/learning/next-step-card";
 import { ResultCelebration } from "@/components/learning/result-celebration";
 
@@ -101,7 +102,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
   const savedAnswers: Record<string, any> = raw?.answers ?? {};
   const results: Record<string, boolean> = raw?.results ?? {};
   const sourceTestId: string | undefined = raw?.testId;
-  const testData = sourceTestId ? READING_TESTS[sourceTestId] : undefined;
+  const testData = sourceTestId ? await getReadingTest(sourceTestId) : undefined;
 
   const getBandColor = (band: number) => {
     if (band >= 8) return "text-green-400";

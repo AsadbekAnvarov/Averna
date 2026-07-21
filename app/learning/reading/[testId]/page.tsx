@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import ReadingTest from "@/components/learning/reading-test";
-import { READING_TESTS } from "@/lib/reading-tests-data";
+import { getReadingTest } from "@/lib/reading-content";
 
 export default async function ReadingTestPage({
   params,
@@ -13,7 +13,7 @@ export default async function ReadingTestPage({
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 
-  const test = READING_TESTS[params.testId];
+  const test = await getReadingTest(params.testId);
 
   if (!test) {
     redirect("/learning/reading");
