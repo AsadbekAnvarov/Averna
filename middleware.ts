@@ -28,10 +28,13 @@ const authMiddleware = auth((req) => {
     return NextResponse.redirect(signInUrl);
   }
 
-  // If user is authenticated and trying to access auth pages
-  if (session && (pathname.startsWith("/auth/signin") || pathname.startsWith("/auth/signup"))) {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
-  }
+  // NOTE: We intentionally do NOT redirect authenticated users away from the
+  // auth pages here. Doing so can create an infinite redirect loop
+  // (ERR_TOO_MANY_REDIRECTS) whenever the Edge middleware and the server
+  // components disagree about the session — e.g. a stale/expired JWT cookie
+  // that middleware still reads as valid but the server `auth()` rejects.
+  // The sign-in page performs its own post-login navigation, so this redirect
+  // was only a minor convenience and is not needed for correctness.
 
   // Role-based route protection
   if (session) {
