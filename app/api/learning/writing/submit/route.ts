@@ -45,7 +45,18 @@ export async function POST(req: NextRequest) {
       taskType,
       prompt
     );
-    const issues = analyzeWritingIssues(essay);
+    // Prefer the model's inline issues (richer — includes strong-phrase
+    // highlights) and top up with mechanical heuristic checks it may miss.
+    // Falls back cleanly to heuristics-only when no OpenAI key is configured.
+    const heuristicIssues = analyzeWritingIssues(essay);
+    const aiIssues = Array.isArray((assessment as { issues?: unknown }).issues)
+      ? ((assessment as { issues: { text: string; type: string; suggestion: string }[] }).issues)
+      : [];
+    const seen = new Set<string>(aiIssues.map((i) => String(i.text || "").toLowerCase()));
+    const issues = [
+      ...aiIssues,
+      ...heuristicIssues.filter((h) => !seen.has(String(h.text || "").toLowerCase())),
+    ].slice(0, 15);
 
     // Save test result (0 points if it doesn't meet the effort threshold)
     const test = await saveIELTSTest(
