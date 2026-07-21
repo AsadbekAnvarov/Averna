@@ -28,6 +28,7 @@ export interface WritingAssessment {
   weaknesses: string[];
   recommendations: string[];
   detailedFeedback: string;
+  issues?: WritingIssue[]; // inline highlights for the Writing Heatmap
 }
 
 export async function assessWritingTask(
@@ -56,6 +57,7 @@ Provide:
 - 3-5 weaknesses
 - 3-5 specific recommendations
 - Detailed feedback paragraph
+- 6-12 inline "issues". For each, "text" MUST be an EXACT substring copied verbatim from the essay (a word or short phrase, at most ~8 words) so it can be located and highlighted. Use type "good" to highlight 2-3 phrases the student used particularly well. Keep every "suggestion" to one short, concrete sentence.
 
 Task Prompt: ${prompt}
 
@@ -73,7 +75,8 @@ Respond in JSON format:
   "strengths": string[],
   "weaknesses": string[],
   "recommendations": string[],
-  "detailedFeedback": string
+  "detailedFeedback": string,
+  "issues": [{ "text": string, "type": "grammar" | "vocabulary" | "spelling" | "cohesion" | "punctuation" | "good", "suggestion": string }]
 }`;
 
   try {

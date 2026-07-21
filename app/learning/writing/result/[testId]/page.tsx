@@ -6,10 +6,11 @@ import { db } from "@/lib/db";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Trophy, TrendingUp, TrendingDown, AlertCircle, CheckCircle, ArrowLeft, RotateCcw } from "lucide-react";
+import { Trophy, TrendingUp, TrendingDown, AlertCircle, CheckCircle, ArrowLeft, RotateCcw, Highlighter } from "lucide-react";
 import Link from "next/link";
 import { NextStepCard } from "@/components/learning/next-step-card";
 import { ResultCelebration } from "@/components/learning/result-celebration";
+import { WritingHeatmap } from "@/components/learning/writing-heatmap";
 
 export default async function WritingResultPage({
   params,
@@ -286,6 +287,22 @@ export default async function WritingResultPage({
             </p>
           </CardContent>
         </Card>
+
+        {/* Writing Heatmap — essay with issues highlighted inline */}
+        {answers?.essay && Array.isArray(assessment.issues) && assessment.issues.length > 0 && (
+          <Card className="glass border-averna-cyan/30 mt-6 animate-fade-in">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-averna-cyan">
+                <Highlighter className="h-5 w-5" />
+                Writing Heatmap
+              </CardTitle>
+              <CardDescription>Your essay with issues highlighted — tap any highlight for a tip</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <WritingHeatmap essay={answers.essay} issues={assessment.issues} />
+            </CardContent>
+          </Card>
+        )}
 
         {/* Error Analysis (#4) */}
         {Array.isArray(assessment.issues) && assessment.issues.length > 0 && (
