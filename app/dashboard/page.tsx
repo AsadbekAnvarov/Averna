@@ -42,7 +42,7 @@ import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, ClipboardList, BookOpen } from "lucide-react";
+import { Sparkles, LayoutGrid, BookOpen } from "lucide-react";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -216,22 +216,35 @@ export default async function DashboardPage() {
                 goal={student.personalGoal}
                 quote={dailyQuote}
               />
-              <div>
-                <SectionHeader
-                  icon={ClipboardList}
-                  title="Do This Next"
-                  subtitle={upcomingHomework.length > 0 ? `You have ${upcomingHomework.length} assignment${upcomingHomework.length === 1 ? "" : "s"} to complete` : "Your assignments will appear here"}
-                  accent="text-averna-neon"
-                  action={{ label: "All homework", href: "/homework" }}
-                />
-                <UpcomingHomework homework={upcomingHomework} />
-              </div>
               <StatsGrid student={student} />
-              <div>
-                <SectionHeader icon={Sparkles} title="Your Plan for Today" subtitle="A smart, personalised study plan" accent="text-averna-neon" />
-                <Suspense fallback={<WidgetSkeleton rows={1} title={false} />}>
-                  <RecommendedToday studentId={student.id} groupId={student.groupId} />
-                </Suspense>
+
+              {/* Bento grid — modern, asymmetric overview of the day */}
+              <div className="tab-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-start">
+                {/* Personalised plan — full-width banner */}
+                <div className="md:col-span-2 lg:col-span-4">
+                  <Suspense fallback={<WidgetSkeleton rows={2} />}>
+                    <RecommendedToday studentId={student.id} groupId={student.groupId} />
+                  </Suspense>
+                </div>
+
+                {/* What's due + a little vocabulary */}
+                <div className="md:col-span-2 lg:col-span-2">
+                  <UpcomingHomework homework={upcomingHomework} />
+                </div>
+                <div className="md:col-span-2 lg:col-span-2">
+                  <WordOfTheDay />
+                </div>
+
+                {/* Goal + level + countdown */}
+                <div className="md:col-span-2 lg:col-span-2">
+                  <WeeklyGoal completed={weeklyCompleted} />
+                </div>
+                <div className="md:col-span-1 lg:col-span-1">
+                  <LevelProgress points={student.totalPoints} />
+                </div>
+                <div className="md:col-span-1 lg:col-span-1">
+                  <ExamCountdown />
+                </div>
               </div>
             </>
           }
