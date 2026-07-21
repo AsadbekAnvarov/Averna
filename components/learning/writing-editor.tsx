@@ -9,6 +9,8 @@ import { Clock, FileText, Send, Loader2, ArrowLeft, AlertCircle } from "lucide-r
 import Link from "next/link";
 import { VoiceInputButton } from "@/components/voice-input-button";
 import { toast } from "@/components/ui/toast";
+import { Task1Chart } from "@/components/learning/task1-chart";
+import type { Task1ChartData } from "@/lib/writing-data";
 
 interface WritingEditorProps {
   prompt: {
@@ -17,6 +19,7 @@ interface WritingEditorProps {
     prompt: string;
     type: string;
     imageUrl?: string;
+    chart?: Task1ChartData[];
   };
   config: {
     title: string;
@@ -160,14 +163,14 @@ export default function WritingEditor({ prompt, config, userId }: WritingEditorP
                   </p>
                 </div>
 
-                {prompt.imageUrl && (
-                  <div className="bg-gray-800/50 rounded-lg p-4 text-center">
-                    <p className="text-xs text-gray-400 mb-2">Visual Data (Placeholder)</p>
-                    <div className="aspect-video bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded flex items-center justify-center">
-                      <p className="text-gray-400 text-sm">Chart/Graph/Diagram</p>
-                    </div>
+                {prompt.chart && prompt.chart.length > 0 ? (
+                  <Task1Chart charts={prompt.chart} />
+                ) : prompt.imageUrl ? (
+                  <div className="rounded-lg overflow-hidden border border-white/10">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={prompt.imageUrl} alt={`${prompt.title} — task visual`} className="w-full h-auto" />
                   </div>
-                )}
+                ) : null}
 
                 {/* Stats */}
                 <div className="space-y-2 pt-4 border-t border-purple-500/20">

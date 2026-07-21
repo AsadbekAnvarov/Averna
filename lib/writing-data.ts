@@ -1,9 +1,18 @@
+/** Structured data for an auto-rendered Task 1 visual (chart/graph). */
+export type Task1ChartData =
+  | { kind: "bar"; unit?: string; groups: string[]; series: { name: string; values: number[] }[] }
+  | { kind: "line"; unit?: string; xLabels: string[]; series: { name: string; values: number[] }[] }
+  | { kind: "pie"; unit?: string; title?: string; slices: { label: string; value: number }[] };
+
 export interface WritingPrompt {
   id: string;
   title: string;
   prompt: string;
   type: string;
+  /** Optional real image (e.g. a scanned map or process diagram). */
   imageUrl?: string;
+  /** Optional structured data rendered as an SVG chart (bar/line/pie). */
+  chart?: Task1ChartData[];
   sampleAnswer: string;
   usefulPhrases: string[];
   strategyEn: string;
@@ -18,6 +27,18 @@ export const WRITING_PROMPTS: Record<"task1" | "task2", WritingPrompt[]> = {
       prompt:
         "The bar chart below shows the number of students enrolled in three different courses (Business, Engineering and Arts) at a university over three years: 2019, 2021 and 2023.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.\n\nWrite at least 150 words.\n\nData (approx.):\n• 2019: Business 4,500 · Engineering 3,000 · Arts 2,500\n• 2021: Business 5,200 · Engineering 3,800 · Arts 2,200\n• 2023: Business 6,100 · Engineering 5,000 · Arts 1,800",
       type: "Bar Chart",
+      chart: [
+        {
+          kind: "bar",
+          unit: "students",
+          groups: ["2019", "2021", "2023"],
+          series: [
+            { name: "Business", values: [4500, 5200, 6100] },
+            { name: "Engineering", values: [3000, 3800, 5000] },
+            { name: "Arts", values: [2500, 2200, 1800] },
+          ],
+        },
+      ],
       sampleAnswer:
         "The bar chart illustrates changes in the number of students enrolled in Business, Engineering and Arts courses at a particular university in 2019, 2021 and 2023.\n\nOverall, Business remained the most popular subject throughout the period and, together with Engineering, showed steady growth, whereas the number of Arts students fell consistently.\n\nIn 2019, Business attracted around 4,500 students, well ahead of Engineering (3,000) and Arts (2,500). Over the following four years, enrolment in Business rose sharply, reaching approximately 6,100 by 2023 — an increase of roughly 35 per cent. Engineering experienced an even faster relative rise, climbing from 3,000 to 5,000 students and narrowing the gap with the leading subject.\n\nBy contrast, Arts followed the opposite trend. After a small initial fall to 2,200 students in 2021, numbers dropped further to just 1,800 in 2023, meaning that the subject lost around 28 per cent of its intake compared with 2019. As a result, Arts finished the period as by far the least popular of the three courses.",
       usefulPhrases: [
@@ -40,6 +61,18 @@ export const WRITING_PROMPTS: Record<"task1" | "task2", WritingPrompt[]> = {
       prompt:
         "The line graph below shows the average monthly temperatures (°C) in three different cities — Reykjavik, Cairo and Singapore — from January to December.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.\n\nWrite at least 150 words.",
       type: "Line Graph",
+      chart: [
+        {
+          kind: "line",
+          unit: "°C",
+          xLabels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          series: [
+            { name: "Singapore", values: [27, 27, 28, 28, 28, 28, 27, 27, 27, 27, 27, 27] },
+            { name: "Cairo", values: [14, 15, 18, 22, 26, 28, 29, 29, 27, 24, 19, 15] },
+            { name: "Reykjavik", values: [-1, 0, 1, 3, 7, 10, 12, 12, 9, 5, 2, 0] },
+          ],
+        },
+      ],
       sampleAnswer:
         "The line graph compares the average monthly temperatures in three cities — Reykjavik in Iceland, Cairo in Egypt and Singapore — throughout a single year.\n\nOverall, Singapore remained the hottest city and showed almost no seasonal variation, whereas Reykjavik was consistently the coldest and experienced the most dramatic change between winter and summer. Cairo lay between the two, with a clear but less extreme summer peak.\n\nSingapore's temperatures stayed close to 27 °C in every month, moving only one or two degrees above or below this figure. Cairo, in contrast, began the year at about 14 °C in January, then rose steadily to a peak of around 29 °C in July and August before falling back to 15 °C by December.\n\nReykjavik displayed the widest range. Winter temperatures hovered near freezing, dipping to about −1 °C in January, before climbing gradually to a summer high of only 13 °C in July. Even at its warmest, the Icelandic capital was more than 14 degrees cooler than either of the other two cities.",
       usefulPhrases: [
@@ -62,6 +95,32 @@ export const WRITING_PROMPTS: Record<"task1" | "task2", WritingPrompt[]> = {
       prompt:
         "The two pie charts below show how energy is used in a typical household in the United Kingdom and in Australia.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.\n\nWrite at least 150 words.\n\nUK: Heating 55%, Water heating 18%, Appliances & lighting 20%, Cooking 5%, Other 2%\nAustralia: Heating 24%, Water heating 30%, Appliances & lighting 34%, Cooking 6%, Other 6%",
       type: "Pie Chart",
+      chart: [
+        {
+          kind: "pie",
+          unit: "%",
+          title: "United Kingdom",
+          slices: [
+            { label: "Heating", value: 55 },
+            { label: "Water heating", value: 18 },
+            { label: "Appliances & lighting", value: 20 },
+            { label: "Cooking", value: 5 },
+            { label: "Other", value: 2 },
+          ],
+        },
+        {
+          kind: "pie",
+          unit: "%",
+          title: "Australia",
+          slices: [
+            { label: "Heating", value: 24 },
+            { label: "Water heating", value: 30 },
+            { label: "Appliances & lighting", value: 34 },
+            { label: "Cooking", value: 6 },
+            { label: "Other", value: 6 },
+          ],
+        },
+      ],
       sampleAnswer:
         "The two pie charts show how domestic energy is used in typical households in the United Kingdom and Australia.\n\nOverall, space heating is the single largest use of energy in the UK, while in Australian homes energy consumption is spread much more evenly across three main activities. Cooking and other minor uses account for only a small share in both countries.\n\nIn a British household, more than half of all energy (55 per cent) is spent on heating rooms, and a further 18 per cent goes on heating water. Appliances and lighting use around 20 per cent, and cooking just 5 per cent.\n\nThe Australian pattern is strikingly different. Appliances and lighting are the biggest single category at 34 per cent, followed by water heating at 30 per cent. Space heating accounts for only 24 per cent — less than half of the UK figure — reflecting Australia's much warmer climate. Cooking (6 per cent) and other uses (6 per cent) together make up a slightly larger share than in the UK, but remain minor overall.",
       usefulPhrases: [
