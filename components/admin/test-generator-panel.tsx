@@ -8,20 +8,27 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/toast";
 import { Sparkles, Loader2, CheckCircle2, FileText } from "lucide-react";
 
+type Module = "reading" | "listening";
+
 interface GeneratedPreview {
   title: string;
   description: string;
-  passages: { title: string; questions: unknown[] }[];
+  passages?: { title: string; questions: unknown[] }[];
+  sections?: { title: string; questions: unknown[] }[];
 }
 
 export function TestGeneratorPanel() {
   const router = useRouter();
+  const [module, setModule] = useState<Module>("reading");
   const [topic, setTopic] = useState("");
   const [level, setLevel] = useState("IELTS band 6.0-7.5");
-  const [passageCount, setPassageCount] = useState(1);
+  const [difficulty, setDifficulty] = useState<"Easy" | "Medium" | "Hard">("Medium");
+  const [count, setCount] = useState(1);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [preview, setPreview] = useState<GeneratedPreview | null>(null);
+
+  const partWord = module === "listening" ? "section" : "passage";
 
   const generate = async () => {
     if (!topic.trim()) {
@@ -34,7 +41,11 @@ export function TestGeneratorPanel() {
       const res = await fetch("/api/admin/generate-test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ topic: topic.trim(), level, passageCount }),
+        body: JSON.stringify(
+          module === "listening"
+            ? { module, topic: topic.trim(), difficulty, count }
+            : { module, topic: topic.trim(), level, count }
+        ),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Generation failed");
@@ -54,7 +65,7 @@ export function TestGeneratorPanel() {
       const res = await fetch("/api/admin/save-test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ test: preview, topic, level, publish: true }),
+        body: JSON.stringify({ module, test: preview, topic, level: module === "reading" ? level : difficulty, publish: true }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Save failed");
@@ -69,44 +80,69 @@ export function TestGeneratorPanel() {
     }
   };
 
-  const questionCount = preview?.passages?.reduce((n, p) => n + (p.questions?.length || 0), 0) ?? 0;
+  const parts = preview?.passages ?? preview?.sections ?? [];
+  const questionCount = parts.reduce((n, p) => n + (p.questions?.length || 0), 0);
 
   return (
     <Card className="glass border-averna-purple/30">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-purple">
           <Sparkles className="h-5 w-5" />
-          Generate a Reading Test
+          Generate a Test
         </CardTitle>
         <CardDescription>
-          Creates a brand-new, original IELTS-style Reading test. Review it, then publish so students can take it.
+          Creates a brand-new, original IELTS-style test. Review it, then publish so students can take it.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label className="text-xs text-gray-400">Module</label>
+            <select
+              value={module}
+              onChange={(e) => { setModule(e.target.value as Module); setPreview(null); }}
+              className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
+            >
+              <option value="reading">Reading</option>
+              <option value="listening">Listening</option>
+            </select>
+          </div>
+          <div>
+            <label className="text-xs text-gray-400">{module === "listening" ? "Sections" : "Passages"}</label>
+            <select
+              value={count}
+              onChange={(e) => setCount(Number(e.target.value))}
+              className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
+            >
+              <option value={1}>1 {partWord} (fast)</option>
+              <option value={2}>2 {partWord}s</option>
+              <option value={3}>3 {partWord}s{module === "reading" ? " (full test)" : ""}</option>
+              {module === "listening" && <option value={4}>4 sections (full test)</option>}
+            </select>
+          </div>
           <div className="sm:col-span-2">
             <label className="text-xs text-gray-400">Theme / topic</label>
             <Input value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g. Ocean exploration, Urban planning…" className="bg-background/50" />
           </div>
-          <div>
+          <div className="sm:col-span-2">
             <label className="text-xs text-gray-400">Difficulty</label>
-            <Input value={level} onChange={(e) => setLevel(e.target.value)} className="bg-background/50" />
-          </div>
-          <div>
-            <label className="text-xs text-gray-400">Passages</label>
-            <select
-              value={passageCount}
-              onChange={(e) => setPassageCount(Number(e.target.value))}
-              className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
-            >
-              <option value={1}>1 passage (fast)</option>
-              <option value={2}>2 passages</option>
-              <option value={3}>3 passages (full test)</option>
-            </select>
+            {module === "listening" ? (
+              <select
+                value={difficulty}
+                onChange={(e) => setDifficulty(e.target.value as "Easy" | "Medium" | "Hard")}
+                className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
+              >
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+            ) : (
+              <Input value={level} onChange={(e) => setLevel(e.target.value)} className="bg-background/50" />
+            )}
           </div>
         </div>
         <p className="text-[11px] text-gray-500">
-          Tip: on the Hobby plan, generate 1 passage at a time to avoid function timeouts.
+          Tip: on the Hobby plan, generate 1 {partWord} at a time to avoid function timeouts.
         </p>
 
         <Button onClick={generate} disabled={loading} className="neon-button bg-averna-purple hover:bg-averna-purple/80">
@@ -121,10 +157,10 @@ export function TestGeneratorPanel() {
                 <p className="font-semibold text-white">{preview.title}</p>
                 <p className="text-sm text-gray-400">{preview.description}</p>
                 <p className="text-xs text-gray-500 mt-1">
-                  {preview.passages.length} passage{preview.passages.length === 1 ? "" : "s"} · {questionCount} questions
+                  {parts.length} {partWord}{parts.length === 1 ? "" : "s"} · {questionCount} questions
                 </p>
                 <ul className="mt-2 space-y-0.5">
-                  {preview.passages.map((p, i) => (
+                  {parts.map((p, i) => (
                     <li key={i} className="text-xs text-gray-400 truncate">• {p.title} ({p.questions?.length ?? 0} Q)</li>
                   ))}
                 </ul>

@@ -33,10 +33,10 @@ export default async function GenerateTestsPage() {
 
   const dbUser = await db.user.findUnique({ where: { id: session.user.id } });
 
-  let tests: { id: string; title: string; description: string; published: boolean; createdAt: Date; data: unknown }[] = [];
+  let tests: { id: string; module: string; title: string; description: string; published: boolean; createdAt: Date; data: unknown }[] = [];
   try {
     tests = await db.generatedTest.findMany({
-      where: { module: "READING" },
+      where: { module: { in: ["READING", "LISTENING"] } },
       orderBy: { createdAt: "desc" },
     });
   } catch {
@@ -66,7 +66,7 @@ export default async function GenerateTestsPage() {
         <div className="mt-8">
           <h2 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-averna-cyan" />
-            Generated Reading Tests
+            Generated Tests
           </h2>
 
           {tests.length === 0 ? (
@@ -91,6 +91,9 @@ export default async function GenerateTestsPage() {
                       {t.description} · {questionCount(t.data)} questions
                     </p>
                   </div>
+                  <span className="shrink-0 text-[10px] px-2 py-0.5 rounded-full border border-averna-cyan/40 text-averna-cyan bg-averna-cyan/10">
+                    {t.module === "LISTENING" ? "Listening" : "Reading"}
+                  </span>
                   <span
                     className={`shrink-0 text-[10px] px-2 py-0.5 rounded-full border ${
                       t.published
