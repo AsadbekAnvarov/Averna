@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn, initialsOf } from "@/lib/utils";
 import {
   LayoutDashboard,
   PenTool,
@@ -43,8 +43,13 @@ import {
   Bell,
   Menu,
   X,
+  TrendingUp,
+  Sparkles,
+  Newspaper,
+  SpellCheck,
   type LucideIcon,
 } from "lucide-react";
+import { MobileNav } from "@/components/dashboard/mobile-nav";
 
 type NavItem = { name: string; href: string; icon: LucideIcon; badge?: string };
 type NavSection = { label: string; items: NavItem[] };
@@ -60,57 +65,65 @@ const STUDENT_NAV: NavSection[] = [
     ],
   },
   {
-    label: "Learning",
+    label: "IELTS Skills",
     items: [
-      { name: "Writing", href: "/learning/writing", icon: PenTool },
       { name: "Reading", href: "/learning/reading", icon: BookOpen },
       { name: "Listening", href: "/learning/listening", icon: Headphones },
+      { name: "Writing", href: "/learning/writing", icon: PenTool },
       { name: "Speaking", href: "/learning/speaking", icon: Mic },
       { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
-      { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
+      { name: "Grammar", href: "/grammar", icon: SpellCheck },
     ],
   },
   {
-    label: "Practice",
+    label: "Practice & Immersion",
     items: [
-      { name: "Mock Exam", href: "/learning/mock-exam", icon: Trophy },
+      { name: "Mock Exams", href: "/learning/mock-exam", icon: GraduationCap },
       { name: "Daily Challenge", href: "/challenge", icon: Zap },
-      { name: "Flashcards", href: "/flashcards", icon: Layers },
+      { name: "Vocabulary", href: "/flashcards", icon: Layers },
+      { name: "Daily Article", href: "/article", icon: Newspaper },
+      { name: "Movie Time", href: "/movies", icon: Film },
     ],
   },
   {
-    label: "Coursework",
+    label: "AI Tools",
     items: [
-      { name: "Homework", href: "/homework", icon: Notebook },
-      { name: "Materials", href: "/materials", icon: Library },
-      { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
+      { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
+      { name: "AI Mentor", href: "/mentor", icon: Sparkles },
+    ],
+  },
+  {
+    label: "My Progress",
+    items: [
+      { name: "Progress Tracking", href: "/progress", icon: TrendingUp },
+      { name: "Analytics", href: "/analytics", icon: BarChart },
+      { name: "Achievements", href: "/achievements", icon: Award },
     ],
   },
   {
     label: "Community",
     items: [
-      { name: "Rankings", href: "/rankings", icon: Trophy },
+      { name: "Leaderboard", href: "/rankings", icon: Trophy },
       { name: "Leagues", href: "/leagues", icon: Crown },
       { name: "Team Challenge", href: "/team-challenge", icon: Swords },
-      { name: "Achievements", href: "/achievements", icon: Award },
       { name: "Rewards", href: "/rewards", icon: Gift },
     ],
   },
   {
-    label: "Social & AI",
+    label: "Classroom",
     items: [
+      { name: "Homework", href: "/homework", icon: Notebook },
+      { name: "Materials", href: "/materials", icon: Library },
+      { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
       { name: "Messages", href: "/messages", icon: MessageSquare },
-      { name: "AI Mentor", href: "/mentor", icon: Bot },
-      { name: "Movie Time", href: "/movies", icon: Film },
-      { name: "Daily Article", href: "/article", icon: BookOpen },
     ],
   },
   {
     label: "Account",
     items: [
-      { name: "Analytics", href: "/analytics", icon: BarChart },
       { name: "Billing", href: "/billing", icon: Wallet },
       { name: "Profile", href: "/profile", icon: User },
+      { name: "Settings", href: "/settings", icon: Settings },
     ],
   },
 ];
@@ -152,6 +165,7 @@ const TEACHER_NAV: NavSection[] = [
     label: "Account",
     items: [
       { name: "Profile", href: "/teacher/profile", icon: User },
+      { name: "Settings", href: "/settings", icon: Settings },
     ],
   },
 ];
@@ -272,8 +286,7 @@ export function AppSidebar() {
 
       <aside
         className={cn(
-          "fixed left-0 top-0 z-50 h-screen w-64 overflow-y-auto",
-          "bg-gradient-to-b from-[#04070d] via-[#06101a] to-[#04070d]",
+          "app-sidebar fixed left-0 top-0 z-50 h-screen w-64 overflow-y-auto",
           "border-r border-white/5",
           "transition-transform duration-300 ease-out",
           mobileOpen ? "translate-x-0" : "-translate-x-full",
@@ -297,7 +310,7 @@ export function AppSidebar() {
         <div className="px-5 py-3 border-b border-white/5">
           <div className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-averna-primary/30 grid place-items-center text-white text-sm font-semibold">
-              {(session.user.name ?? session.user.email ?? "U").charAt(0).toUpperCase()}
+              {initialsOf(session.user.name ?? session.user.email)}
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-sm text-white font-medium truncate">{session.user.name ?? "User"}</div>
@@ -310,7 +323,7 @@ export function AppSidebar() {
         <nav className="px-3 py-4 space-y-5 pb-24">
           {sections.map((section) => (
             <div key={section.label}>
-              <div className="px-3 mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-gray-500">
+              <div className="sidebar-label px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
                 {section.label}
               </div>
               <div className="space-y-0.5">
@@ -322,10 +335,10 @@ export function AppSidebar() {
                       key={item.href}
                       href={item.href}
                       className={cn(
-                        "group flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors",
+                        "group flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                         active
-                          ? cn("bg-white/[0.06] text-white", `border-l-2 border-${accent}`)
-                          : "text-gray-400 hover:bg-white/[0.04] hover:text-white border-l-2 border-transparent"
+                          ? cn("bg-white/10 text-white", `border-l-2 border-${accent}`)
+                          : "text-gray-400 hover:bg-white/5 hover:text-white border-l-2 border-transparent"
                       )}
                     >
                       <Icon
@@ -348,6 +361,9 @@ export function AppSidebar() {
           ))}
         </nav>
       </aside>
+
+      {/* Mobile bottom tab bar — quick access to the 5 most-used student destinations */}
+      {role === "STUDENT" && <MobileNav />}
     </>
   );
 }
@@ -366,7 +382,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <AppSidebar />
-      <div className={cn(isPublic ? "" : "lg:pl-64")}>{children}</div>
+      {/* pb clearance on mobile so content never hides behind the bottom tab bar */}
+      <div className={cn(isPublic ? "" : "lg:pl-64 pb-16 lg:pb-0")}>{children}</div>
     </>
   );
 }

@@ -15,7 +15,7 @@ export default function NotFound() {
             Page Not Found
           </CardTitle>
           <p className="text-gray-400 text-lg">
-            Oops! The page you're looking for doesn't exist.
+            Oops! The page you&apos;re looking for doesn&apos;t exist.
           </p>
         </CardHeader>
         <CardContent className="text-center space-y-6">
@@ -34,7 +34,13 @@ export default function NotFound() {
               </Button>
             </Link>
             <Button
-              onClick={() => window.history.back()}
+              onClick={() => {
+                if (typeof window !== "undefined" && window.history.length > 1) {
+                  window.history.back();
+                } else {
+                  window.location.href = "/dashboard";
+                }
+              }}
               variant="outline"
               className="flex-1 border-averna-neon text-averna-neon"
             >

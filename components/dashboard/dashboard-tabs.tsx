@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import { Home, GraduationCap, TrendingUp, Users, Gamepad2 } from "lucide-react";
+import { Home, GraduationCap, TrendingUp, Users, Sparkles } from "lucide-react";
 
 const TABS = [
   { key: "home", label: "Home", icon: Home, active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
   { key: "learn", label: "Learn", icon: GraduationCap, active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
   { key: "progress", label: "Progress", icon: TrendingUp, active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
   { key: "class", label: "Class", icon: Users, active: "bg-averna-blue/15 text-averna-blue ring-1 ring-averna-blue/40" },
-  { key: "fun", label: "Fun", icon: Gamepad2, active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
+  { key: "fun", label: "Rewards", icon: Sparkles, active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
 ] as const;
 
 type TabKey = (typeof TABS)[number]["key"];

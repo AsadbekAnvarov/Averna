@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Check, CheckCheck, SmilePlus } from "lucide-react";
 
@@ -24,6 +24,12 @@ export function MessageThread({
 }) {
   const router = useRouter();
   const [openFor, setOpenFor] = useState<string | null>(null);
+  const endRef = useRef<HTMLDivElement>(null);
+
+  // Open the conversation scrolled to the most recent message.
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ block: "end" });
+  }, [messages.length]);
 
   const react = async (messageId: string, emoji: string) => {
     setOpenFor(null);
@@ -45,9 +51,9 @@ export function MessageThread({
         const mine = m.senderId === meId;
         return (
           <div key={m.id} className={`flex ${mine ? "justify-end" : "justify-start"} group`}>
-            <div className="relative max-w-[78%]">
+            <div className="relative max-w-[78%] min-w-0">
               <div
-                className={`px-3 py-2 rounded-2xl text-sm ${
+                className={`px-3 py-2 rounded-2xl text-sm whitespace-pre-wrap break-words ${
                   mine ? "bg-averna-primary text-white rounded-br-sm" : "bg-white/10 text-white rounded-bl-sm"
                 }`}
               >
@@ -87,6 +93,7 @@ export function MessageThread({
           </div>
         );
       })}
+      <div ref={endRef} />
     </>
   );
 }

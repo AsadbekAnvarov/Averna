@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Crown } from "lucide-react";
 import { db } from "@/lib/db";
-import { getLevelInfo } from "@/lib/utils";
+import { getLevelInfo, initialsOf } from "@/lib/utils";
 
 /**
  * Highlights the student who earned the most points over the last 7 days.
@@ -49,12 +49,7 @@ export async function StudentOfTheWeek() {
   if (!student) return null;
 
   const lvl = getLevelInfo(student.totalPoints);
-  const initials = (student.user.name ?? "?")
-    .split(" ")
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
+  const initials = initialsOf(student.user.name);
 
   return (
     <Card className="glass border-yellow-400/40 relative overflow-hidden">

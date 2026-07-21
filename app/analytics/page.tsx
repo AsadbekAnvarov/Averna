@@ -6,8 +6,8 @@ import { getStudentAnalytics } from "@/lib/db-helpers";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { BarChart, TrendingUp, Clock, Target } from "lucide-react";
-import Link from "next/link";
 import { BandPredictor } from "@/components/band-predictor";
+import { PageHeader } from "@/components/ui/page-header";
 
 export default async function AnalyticsPage() {
   const session = await auth();
@@ -24,13 +24,12 @@ export default async function AnalyticsPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
-          <BarChart className="h-10 w-10 text-blue-400" />
-          Study Analytics
-        </h1>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={BarChart}
+          iconClassName="text-blue-400"
+          title="Study Analytics"
+        />
 
         <div className="mb-8">
           <BandPredictor studentId={student.id} />

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, CalendarDays, Download } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
+import { PageHeader } from "@/components/ui/page-header";
 
 const DOW: Record<string, number> = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -85,21 +86,20 @@ export default async function CalendarPage({
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white flex items-center gap-3">
-            <CalendarDays className="h-8 w-8 text-averna-cyan" />
-            My <span className="neon-text-cyan">Calendar</span>
-          </h1>
-          <a
-            href="/api/calendar/ics"
-            className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-averna-cyan/40 text-averna-cyan text-sm hover:bg-averna-cyan/10 transition-colors"
-          >
-            <Download className="h-4 w-4" /> Export to calendar (.ics)
-          </a>
-        </div>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={CalendarDays}
+          iconClassName="text-averna-cyan"
+          title={<>My <span className="neon-text-cyan">Calendar</span></>}
+          action={
+            <a
+              href="/api/calendar/ics"
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-averna-cyan/40 text-averna-cyan text-sm hover:bg-averna-cyan/10 transition-colors"
+            >
+              <Download className="h-4 w-4" /> Export (.ics)
+            </a>
+          }
+        />
 
         <Card className="glass border-averna-cyan/30">
           <CardHeader>

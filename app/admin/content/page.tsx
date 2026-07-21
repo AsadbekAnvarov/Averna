@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Library, Plus, BookText } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { PageHeader } from "@/components/ui/page-header";
 
 const MODULES = ["WRITING", "READING", "LISTENING", "SPEAKING", "VOCABULARY", "GENERAL"];
 const LEVELS = ["All", "Beginner", "Intermediate", "Advanced"];
@@ -48,11 +48,13 @@ export default async function AdminContentPage({ searchParams }: { searchParams:
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
-        <Link href="/admin/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Admin Panel</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Library className="h-8 w-8 text-averna-cyan" /> Manage <span className="neon-text-cyan">Content</span>
-        </h1>
-        <p className="text-gray-400 mb-6">Add study materials shown to students in the Materials section.</p>
+        <PageHeader
+          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          icon={Library}
+          iconClassName="text-averna-cyan"
+          title={<>Manage <span className="neon-text-cyan">Content</span></>}
+          subtitle="Add study materials shown to students in the Materials section."
+        />
 
         {searchParams.saved && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Material added!</div>}
 

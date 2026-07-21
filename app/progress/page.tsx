@@ -12,6 +12,8 @@ import { BandProgress } from "@/components/dashboard/band-progress";
 import { PersonalBests } from "@/components/dashboard/personal-bests";
 import { LeaderboardWidget } from "@/components/dashboard/leaderboard-widget";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
+import { FirstRunGuide } from "@/components/learning/first-run-guide";
+import { PageHeader } from "@/components/ui/page-header";
 import { TrendingUp, Trophy, Crown, Award, Medal, Swords, ArrowRight } from "lucide-react";
 
 const LINKS = [
@@ -36,24 +38,31 @@ export default async function ProgressCenterPage() {
     return <AccountNotice title="No student profile found" message="Sign in with a student account to see your progress." />;
   }
 
+  const testsCount = await db.iELTSTest.count({ where: { studentId: student.id } });
+  const isNewStudent = testsCount === 0;
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <TrendingUp className="h-8 w-8 text-averna-cyan" />
-          My <span className="neon-text-cyan">Progress</span>
-        </h1>
-        <p className="text-gray-400 mb-8">Your band journey, personal bests, ranks and rewards — all together. 🏆</p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={TrendingUp}
+          title={<>My <span className="neon-text-cyan">Progress</span></>}
+          subtitle="Your band journey, personal bests, ranks and rewards — all together. 🏆"
+        />
 
-        <div className="grid lg:grid-cols-2 gap-6 mb-6">
-          <Suspense fallback={<WidgetSkeleton rows={3} />}>
-            <BandProgress studentId={student.id} targetBand={student.targetBand} />
-          </Suspense>
-          <Suspense fallback={<WidgetSkeleton rows={3} />}>
-            <PersonalBests studentId={student.id} />
-          </Suspense>
-        </div>
+        {isNewStudent ? (
+          <FirstRunGuide name={session.user.name} />
+        ) : (
+          <div className="grid lg:grid-cols-2 gap-6 mb-6">
+            <Suspense fallback={<WidgetSkeleton rows={3} />}>
+              <BandProgress studentId={student.id} targetBand={student.targetBand} />
+            </Suspense>
+            <Suspense fallback={<WidgetSkeleton rows={3} />}>
+              <PersonalBests studentId={student.id} />
+            </Suspense>
+          </div>
+        )}
 
         <div className="grid lg:grid-cols-2 gap-6 mb-8">
           <Suspense fallback={<WidgetSkeleton rows={4} />}>

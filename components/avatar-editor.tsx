@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserCircle, Upload, Check, Loader2, Trash2, Sparkles, ImageIcon } from "lucide-react";
+import { initialsOf } from "@/lib/utils";
 
 /** Preset character avatars (DiceBear). Rendered straight from their URL. */
 const PRESET_STYLES = [
@@ -18,10 +19,6 @@ const SIZES = [
   { key: "md", label: "Medium", px: 160 },
   { key: "lg", label: "Large", px: 256 },
 ] as const;
-
-function initialsOf(name: string) {
-  return name.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase() || "U";
-}
 
 export function AvatarEditor({ currentImage, name }: { currentImage: string | null; name: string }) {
   const router = useRouter();

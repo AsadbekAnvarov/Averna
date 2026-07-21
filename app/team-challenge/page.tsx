@@ -5,8 +5,8 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Swords, Crown } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
+import { PageHeader } from "@/components/ui/page-header";
 import { startOfWeek, seasonLabel } from "@/lib/leagues";
 
 export default async function TeamChallengePage() {
@@ -63,12 +63,13 @@ export default async function TeamChallengePage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-1 flex items-center gap-3">
-          <Swords className="h-8 w-8 text-averna-pink" />
-          Team <span className="neon-text-purple">Challenge</span>
-        </h1>
-        <p className="text-gray-400 mb-6">{seasonLabel()} · groups compete for the most points 🏁</p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Swords}
+          iconClassName="text-averna-pink"
+          title={<>Team <span className="neon-text-purple">Challenge</span></>}
+          subtitle={<>{seasonLabel()} · groups compete for the most points 🏁</>}
+        />
 
         {board.length === 0 ? (
           <Card className="glass border-averna-primary/30">

@@ -151,7 +151,7 @@ export default function HomeworkSubmissionForm({
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-gray-300 whitespace-pre-line">{homework.description}</p>
+            <p className="text-gray-300 whitespace-pre-line break-words">{homework.description}</p>
 
             <div className="flex flex-wrap items-center gap-4 text-sm">
               <span className="flex items-center gap-1 text-gray-400">

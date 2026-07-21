@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Gift, Plus, Check, X, Coins } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { PageHeader } from "@/components/ui/page-header";
 import { notifyUser } from "@/lib/notifications";
 import { formatDate } from "@/lib/utils";
 
@@ -83,11 +83,13 @@ export default async function AdminRewardsPage() {
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
-        <Link href="/admin/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Admin Panel</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Gift className="h-8 w-8 text-averna-pink" /> Rewards &amp; <span className="neon-text-purple">Requests</span>
-        </h1>
-        <p className="text-gray-400 mb-6">Approve student redemptions and manage the rewards catalog.</p>
+        <PageHeader
+          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          icon={Gift}
+          iconClassName="text-averna-pink"
+          title={<>Rewards &amp; <span className="neon-text-purple">Requests</span></>}
+          subtitle="Approve student redemptions and manage the rewards catalog."
+        />
 
         {/* Pending requests */}
         <Card className="glass border-averna-pink/30 mb-8">

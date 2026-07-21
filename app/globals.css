@@ -491,3 +491,132 @@ html.light .brand-bg {
     #eef2f7;
   background-attachment: fixed;
 }
+
+
+
+
+/* ===================================================================
+   LIGHT THEME — contrast fixes for bright -300 / -500 text shades.
+   These utilities are used across the app (status text, tips, and the
+   big dashboard stat numbers) and were not covered by earlier rules,
+   so on the white light-mode canvas they were nearly invisible.
+   Appended last so they take precedence.
+   =================================================================== */
+
+/* Bright yellows -> readable amber */
+html.light .text-yellow-200,
+html.light .text-yellow-300,
+html.light .text-yellow-500 { color: #b45309 !important; }
+html.light .text-yellow-300\/90 { color: #b45309 !important; }
+
+/* Bright oranges -> deep orange (400 already handled, add 300/500) */
+html.light .text-orange-300,
+html.light .text-orange-500 { color: #c2410c !important; }
+
+/* Emerald / green light shades -> readable green */
+html.light .text-emerald-200,
+html.light .text-emerald-300,
+html.light .text-green-300,
+html.light .text-green-500 { color: #047857 !important; }
+
+/* Blue 500 (Group Rank stat) -> accessible blue */
+html.light .text-blue-500 { color: #2563eb !important; }
+
+/* Light shades of other accents occasionally used inline */
+html.light .text-purple-300 { color: #7c3aed !important; }
+html.light .text-pink-300 { color: #db2777 !important; }
+html.light .text-cyan-300,
+html.light .text-cyan-400 { color: #0e7fa0 !important; }
+
+/* Brand tints used as text but not yet mapped */
+html.light .text-averna-light { color: #0a8f5e !important; }
+html.light .text-averna-accent { color: #0a8f5e !important; }
+html.light .text-averna-primary { color: #0a7d5c !important; }
+
+
+
+
+/* ===================================================================
+   APP SIDEBAR — theme-aware surface (left navigation rail)
+   The rail background is defined here so it can adapt to light mode.
+   In dark mode: deep near-black gradient. In light mode: clean white
+   surface so the (now-dark) text and icons stay readable.
+   =================================================================== */
+.app-sidebar {
+  background: linear-gradient(to bottom, #04070d, #06101a, #04070d);
+}
+
+html.light .app-sidebar {
+  background: #ffffff;
+  box-shadow: 1px 0 0 rgba(15, 23, 42, 0.06), 4px 0 24px -12px rgba(15, 23, 42, 0.12);
+}
+
+/* Mobile menu toggle + small dark chips must flip to a light surface so
+   their (now-dark) icon/emoji is visible in light mode */
+html.light .bg-averna-dark\/80 { background-color: rgba(255, 255, 255, 0.92) !important; }
+html.light .hover\:bg-averna-dark:hover { background-color: rgba(15, 23, 42, 0.06) !important; }
+
+/* Sidebar section labels a touch stronger for scannability in light mode */
+html.light .app-sidebar .sidebar-label { color: #64748b !important; }
+
+
+
+
+/* ===== Score pop-in (result pages) ===== */
+@keyframes pop-in {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-pop { animation: pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop { animation: none; }
+}
+
+
+
+
+/* ===================================================================
+   MICRO-INTERACTIONS — reusable, reduced-motion-safe hover/press helpers
+   Opt-in utilities for consistent tactile feedback across the app.
+   (Buttons already get a scale-press globally via the Button component.)
+   =================================================================== */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.5);
+}
+html.light .card-hover:hover {
+  box-shadow: 0 14px 34px -16px rgba(15, 23, 42, 0.22);
+}
+
+.hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.hover-lift:hover { transform: translateY(-2px); }
+
+.press { transition: transform 0.12s ease; }
+.press:active { transform: scale(0.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card-hover, .hover-lift, .press { transition: none; }
+  .card-hover:hover, .hover-lift:hover, .press:active { transform: none; }
+}
+
+
+
+
+/* ===================================================================
+   ACCESSIBILITY — clear, consistent keyboard focus indicator.
+   Many custom clickable elements had no visible focus state; this gives
+   every keyboard-focused element a distinct ring (mouse clicks unaffected,
+   thanks to :focus-visible).
+   =================================================================== */
+:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+html.light :focus-visible {
+  outline-color: #0e7fa0;
+}

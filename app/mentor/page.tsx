@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageSquare, Send, Loader2, Sparkles } from "lucide-react";
-import Link from "next/link";
 import { VoiceInputButton } from "@/components/voice-input-button";
+import { PageHeader } from "@/components/ui/page-header";
 
 export default function AIMentorPage() {
   const [messages, setMessages] = useState<Array<{ role: string; content: string }>>([
@@ -14,6 +14,12 @@ export default function AIMentorPage() {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  // Keep the newest message in view.
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [messages, isLoading]);
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -44,31 +50,30 @@ export default function AIMentorPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-4xl font-bold text-white mb-4 flex items-center gap-3">
-          <MessageSquare className="h-10 w-10 text-pink-400" />
-          AI Mentor
-        </h1>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={MessageSquare}
+          iconClassName="text-pink-400"
+          title="AI Mentor"
+        />
 
-        <Card className="glass border-pink-500/30 h-[600px] flex flex-col">
-          <CardHeader>
+        <Card className="glass border-pink-500/30 h-[70vh] min-h-[420px] max-h-[680px] flex flex-col overflow-hidden">
+          <CardHeader className="shrink-0">
             <CardTitle className="text-pink-400 flex items-center gap-2">
               <Sparkles className="h-5 w-5" />
               Chat with AI Assistant
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex-1 flex flex-col">
-            <div className="flex-1 overflow-y-auto space-y-4 mb-4">
+          <CardContent className="flex-1 min-h-0 flex flex-col">
+            <div className="flex-1 min-h-0 overflow-y-auto space-y-4 mb-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[80%] p-3 rounded-lg ${
+                  <div className={`max-w-[80%] min-w-0 p-3 rounded-lg ${
                     msg.role === "user" 
                       ? "bg-averna-primary text-white" 
                       : "bg-pink-500/20 text-gray-200 border border-pink-500/30"
                   }`}>
-                    <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                    <p className="text-sm whitespace-pre-wrap break-words leading-relaxed">{msg.content}</p>
                   </div>
                 </div>
               ))}
@@ -79,9 +84,10 @@ export default function AIMentorPage() {
                   </div>
                 </div>
               )}
+              <div ref={bottomRef} />
             </div>
             
-            <div className="flex gap-2">
+            <div className="flex gap-2 shrink-0">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -91,7 +97,7 @@ export default function AIMentorPage() {
                 disabled={isLoading}
               />
               <VoiceInputButton onText={(t) => setInput((prev) => (prev ? prev + " " : "") + t.trim())} />
-              <Button onClick={handleSend} disabled={isLoading} className="neon-button bg-pink-500">
+              <Button onClick={handleSend} disabled={isLoading} aria-label="Send message" className="neon-button bg-pink-500">
                 <Send className="h-4 w-4" />
               </Button>
             </div>

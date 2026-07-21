@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
@@ -15,6 +16,19 @@ import {
   CheckCircle2,
   Star,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Why Averna is Different",
+  description:
+    "Band 8.0+ teachers (one perfect 9.0), 2-hour lessons, AI feedback, daily speaking practice and live progress tracking — see why Averna students reach their target band faster.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "Why Averna is Different",
+    description:
+      "Band 8.0+ teachers, longer lessons, AI feedback and daily speaking practice — built to get you to your target IELTS band faster.",
+    url: "/about",
+  },
+};
 
 export default function AboutPage() {
   return (

@@ -6,6 +6,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Bell, CheckCheck, BookMarked, Award, CalendarClock, MessageSquare, Info } from "lucide-react";
 import Link from "next/link";
 import { timeAgo } from "@/lib/utils";
@@ -117,8 +118,13 @@ export default async function NotificationsPage({ searchParams }: { searchParams
 
         {notifications.length === 0 ? (
           <Card className="glass border-averna-primary/30">
-            <CardContent className="py-10 text-center text-gray-400">
-              🔔 Nothing here{typeFilter ? " in this category" : " yet"}. You&apos;ll see updates about homework, grades and bookings here.
+            <CardContent className="py-2">
+              <EmptyState
+                icon={Bell}
+                title={typeFilter ? "Nothing in this category" : "You're all caught up"}
+                description="Updates about homework, grades, bookings and messages will show up here."
+                accent="text-averna-cyan"
+              />
             </CardContent>
           </Card>
         ) : (

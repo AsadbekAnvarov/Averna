@@ -9,11 +9,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { User, Save, BookOpen, Users, GraduationCap, CalendarClock, Layers } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { TopPerformers } from "@/components/top-performers";
 import { AvatarEditor } from "@/components/avatar-editor";
+import { PageHeader } from "@/components/ui/page-header";
 
 async function updateTeacherProfile(formData: FormData) {
   "use server";
@@ -66,10 +66,12 @@ export default async function TeacherProfilePage() {
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <TeacherHeader user={{ name: teacher.user.name ?? "Teacher", email: teacher.user.email, image: teacher.user.image }} />
 
-        <h1 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
-          <GraduationCap className="h-10 w-10 text-averna-cyan" />
-          Teacher Profile
-        </h1>
+        <PageHeader
+          back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
+          icon={GraduationCap}
+          iconClassName="text-averna-cyan"
+          title="Teacher Profile"
+        />
 
         {/* Avatar editor */}
         <div className="mb-8">

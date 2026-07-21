@@ -1,5 +1,5 @@
 // Minimal service worker for PWA installability + light offline cache.
-const CACHE = "averna-v1";
+const CACHE = "averna-v2";
 const ASSETS = ["/", "/dashboard", "/logo.png", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {

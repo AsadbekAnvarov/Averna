@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, Save, ArrowLeft, Sparkles, BookmarkPlus, Files } from "lucide-react";
 import Link from "next/link";
+import { toast } from "@/components/ui/toast";
 
 interface Template {
   id: string;
@@ -50,7 +51,7 @@ export default function CreateHomeworkPage() {
 
   const saveTemplate = async () => {
     if (!formData.title || !formData.description) {
-      alert("Add a title and description first.");
+      toast.error("Add a title and description first.");
       return;
     }
     setSavingTpl(true);
@@ -79,7 +80,7 @@ export default function CreateHomeworkPage() {
       const data = await res.json();
       setFormData((f) => ({ ...f, title: data.title, description: data.description }));
     } catch {
-      alert("Could not generate homework. Please try again.");
+      toast.error("Could not generate homework. Please try again.");
     } finally {
       setGenerating(false);
     }
@@ -98,10 +99,10 @@ export default function CreateHomeworkPage() {
 
       if (!response.ok) throw new Error("Failed to create homework");
 
-      alert("Homework created successfully!");
+      toast.success("Homework created successfully!");
       router.push("/teacher/homework");
     } catch (error) {
-      alert("Failed to create homework");
+      toast.error("Failed to create homework. Please try again.");
     } finally {
       setLoading(false);
     }

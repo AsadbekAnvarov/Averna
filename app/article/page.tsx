@@ -4,8 +4,8 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Newspaper, BookMarked, Clock } from "lucide-react";
-import Link from "next/link";
 import { getTodayArticle } from "@/lib/daily-content";
+import { PageHeader } from "@/components/ui/page-header";
 import { ArticleListen } from "@/components/article-listen";
 
 export default async function ArticlePage() {
@@ -25,12 +25,13 @@ export default async function ArticlePage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-2xl pb-24 lg:pb-8">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <Newspaper className="h-7 w-7 text-averna-cyan" />
-          Article of the Day
-        </h1>
-        <p className="text-xs text-gray-500 mb-6">{today} · a new article every day</p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Newspaper}
+          iconClassName="text-averna-cyan"
+          title="Article of the Day"
+          subtitle={<>{today} · a new article every day</>}
+        />
 
         <Card className="glass border-averna-cyan/30 mb-6">
           <CardHeader>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { PageHeader } from "@/components/ui/page-header";
 import { Zap, CheckCircle2, XCircle, RotateCcw, Trophy } from "lucide-react";
 import { Confetti } from "@/components/confetti";
 import { tashkentDayOfYear } from "@/lib/utils";
@@ -94,18 +95,13 @@ export default function DailyChallengePage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-10 max-w-2xl">
-        <Link
-          href="/dashboard"
-          className="text-averna-neon hover:underline text-sm mb-4 block"
-        >
-          ← Back to Dashboard
-        </Link>
-
-        <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Zap className="h-8 w-8 text-averna-cyan" />
-          Daily <span className="neon-text-cyan">Challenge</span>
-        </h1>
-        <p className="text-gray-400 mb-8">5 quick questions. New set every day. 🌟</p>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Zap}
+          iconClassName="text-averna-cyan"
+          title={<>Daily <span className="neon-text-cyan">Challenge</span></>}
+          subtitle="5 quick questions. New set every day. 🌟"
+        />
 
         {!finished ? (
           <Card className="glass border-averna-cyan/30 animate-fade-in">

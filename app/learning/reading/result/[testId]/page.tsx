@@ -9,6 +9,8 @@ import { Progress } from "@/components/ui/progress";
 import { Trophy, CheckCircle, XCircle, ArrowLeft, RotateCcw, BookOpen, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { READING_TESTS, ReadingQuestion } from "@/lib/reading-tests-data";
+import { NextStepCard } from "@/components/learning/next-step-card";
+import { ResultCelebration } from "@/components/learning/result-celebration";
 
 function formatAnswer(ans: any, type: string, options?: string[]) {
   if (ans === undefined || ans === null || ans === "") return "—";
@@ -108,8 +110,12 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
     return "text-orange-400";
   };
 
+  const targetNum = student.targetBand ? parseFloat(String(student.targetBand).replace(/[^0-9.]/g, "")) : NaN;
+  const target = Number.isFinite(targetNum) ? targetNum : null;
+
   return (
     <div className="min-h-screen premium-gradient">
+      <ResultCelebration score={test.score} target={target} />
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8 animate-fade-in">
           <Link href="/learning/reading" className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
@@ -127,7 +133,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
           <CardContent className="py-8">
             <div className="text-center">
               <p className="text-gray-400 mb-2">IELTS Reading Band Score</p>
-              <div className={`text-7xl font-bold mb-2 ${getBandColor(test.score)}`}>
+              <div className={`text-7xl font-bold mb-2 inline-block animate-pop ${getBandColor(test.score)}`}>
                 {test.score.toFixed(1)}
               </div>
               <p className="text-xl text-gray-300 mb-4">
@@ -235,8 +241,11 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
           </Card>
         )}
 
+        {/* What's next */}
+        <NextStepCard studentId={student.id} completedLabel="Reading" completedScore={test.score} />
+
         {/* Actions */}
-        <div className="flex gap-4 animate-fade-in">
+        <div className="flex gap-4 mt-8 animate-fade-in">
           <Link href="/learning/reading" className="flex-1">
             <Button className="w-full neon-button bg-blue-500 hover:bg-blue-600">
               <RotateCcw className="mr-2 h-4 w-4" />

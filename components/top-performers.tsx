@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getLevelInfo } from "@/lib/utils";
+import { getLevelInfo, initialsOf } from "@/lib/utils";
 import { Trophy, GraduationCap } from "lucide-react";
 
 const MEDALS = ["🥇", "🥈", "🥉"];
@@ -14,12 +14,7 @@ function Avatar({
   image: string | null;
   ring: string;
 }) {
-  const initials = (name ?? "?")
-    .split(" ")
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
+  const initials = initialsOf(name);
   if (image) {
     // eslint-disable-next-line @next/next/no-img-element
     return (

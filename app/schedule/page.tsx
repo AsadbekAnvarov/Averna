@@ -5,9 +5,9 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CalendarClock, GraduationCap, ClipboardCheck, CheckCircle2, XCircle, Clock, BookOpenCheck } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AddToGoogleCalendar } from "@/components/add-to-google-calendar";
+import { PageHeader } from "@/components/ui/page-header";
 
 function statusStyle(status: string) {
   switch (status) {
@@ -53,13 +53,12 @@ export default async function StudentSchedulePage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 flex items-center gap-3">
-          <CalendarClock className="h-8 w-8 text-averna-cyan" />
-          My <span className="neon-text-cyan">Schedule</span>
-        </h1>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={CalendarClock}
+          iconClassName="text-averna-cyan"
+          title={<>My <span className="neon-text-cyan">Schedule</span></>}
+        />
 
         {/* Group / schedule */}
         <Card className="glass border-averna-neon/30 mb-6">

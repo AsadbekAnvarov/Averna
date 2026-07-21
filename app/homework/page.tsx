@@ -5,9 +5,10 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Calendar, Clock, Trophy } from "lucide-react";
+import { BookOpen, Calendar, Clock, Trophy, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
+import { EmptyState } from "@/components/ui/empty-state";
 
 export default async function HomeworkPage() {
   const session = await auth();
@@ -60,9 +61,14 @@ export default async function HomeworkPage() {
           <h2 className="text-2xl font-bold text-white mb-4">Pending ({upcomingHomework.length})</h2>
           {upcomingHomework.length === 0 ? (
             <Card className="glass border-averna-primary/30">
-              <CardContent className="py-8 text-center text-gray-400">
-                <BookOpen className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                <p>No pending homework</p>
+              <CardContent className="py-2">
+                <EmptyState
+                  icon={CheckCircle2}
+                  title="You're all caught up!"
+                  description="No pending homework right now. New assignments from your teacher will appear here."
+                  accent="text-averna-neon"
+                  action={{ label: "Practise in the Learning Center", href: "/learning" }}
+                />
               </CardContent>
             </Card>
           ) : (
@@ -111,6 +117,18 @@ export default async function HomeworkPage() {
         {/* Submitted Homework */}
         <div>
           <h2 className="text-2xl font-bold text-white mb-4">Submitted ({submittedHomework.length})</h2>
+          {submittedHomework.length === 0 ? (
+            <Card className="glass border-averna-primary/30">
+              <CardContent className="py-2">
+                <EmptyState
+                  icon={Trophy}
+                  title="Nothing submitted yet"
+                  description="Complete a pending assignment to earn points — submit early for a bonus!"
+                  accent="text-averna-cyan"
+                />
+              </CardContent>
+            </Card>
+          ) : (
           <div className="space-y-3">
             {submittedHomework.map((submission) => (
               <Card key={submission.id} className="glass border-averna-primary/30">
@@ -141,6 +159,7 @@ export default async function HomeworkPage() {
               </Card>
             ))}
           </div>
+          )}
         </div>
       </div>
     </div>

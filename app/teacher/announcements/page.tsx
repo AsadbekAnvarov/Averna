@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Megaphone, Send } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { PageHeader } from "@/components/ui/page-header";
 import { notifyGroupStudents } from "@/lib/notifications";
 import { formatDateTime } from "@/lib/utils";
 
@@ -83,12 +83,13 @@ export default async function AnnouncementsPage({
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
-        <Link href="/teacher/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Megaphone className="h-8 w-8 text-averna-pink" />
-          <span className="neon-text-purple">Announcements</span>
-        </h1>
-        <p className="text-gray-400 mb-6">Send a message to a whole group at once — everyone gets notified.</p>
+        <PageHeader
+          back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
+          icon={Megaphone}
+          iconClassName="text-averna-pink"
+          title={<span className="neon-text-purple">Announcements</span>}
+          subtitle="Send a message to a whole group at once — everyone gets notified."
+        />
 
         {searchParams.saved && (
           <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Announcement sent &amp; students notified!</div>
@@ -138,7 +139,7 @@ export default async function AnnouncementsPage({
                         {groupName(a.groupId)}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-400 mt-1 whitespace-pre-line">{a.body}</p>
+                    <p className="text-sm text-gray-400 mt-1 whitespace-pre-line break-words">{a.body}</p>
                     <p className="text-[11px] text-gray-500 mt-1">{formatDateTime(a.createdAt)}</p>
                   </div>
                 ))}

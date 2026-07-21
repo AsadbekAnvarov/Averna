@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Clock, Send, Loader2, ArrowLeft, ChevronLeft, ChevronRight, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { toast } from "@/components/ui/toast";
 
 interface ReadingTestProps {
   test: {
@@ -116,7 +117,7 @@ export default function ReadingTest({ test, userId }: ReadingTestProps) {
       router.push(`/learning/reading/result/${data.testId}`);
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Failed to submit test. Please try again.");
+      toast.error("Failed to submit test. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

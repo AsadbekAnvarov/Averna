@@ -6,9 +6,9 @@ import { db } from "@/lib/db";
 import { hasOpenAI } from "@/lib/ai";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Activity, Database, Bot, Users, GraduationCap, Layers, CheckCircle2, XCircle } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { PageHeader } from "@/components/ui/page-header";
 
 export default async function AdminSystemPage() {
   const session = await auth();
@@ -48,11 +48,13 @@ export default async function AdminSystemPage() {
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
-        <Link href="/admin/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Admin Panel</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-          <Activity className="h-8 w-8 text-averna-neon" /> System <span className="neon-text">Health</span>
-        </h1>
-        <p className="text-gray-400 mb-6">Status of core services and platform data.</p>
+        <PageHeader
+          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          icon={Activity}
+          iconClassName="text-averna-neon"
+          title={<>System <span className="neon-text">Health</span></>}
+          subtitle="Status of core services and platform data."
+        />
 
         <Card className="glass border-averna-neon/30 mb-6">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-neon"><Database className="h-5 w-5" /> Services</CardTitle></CardHeader>

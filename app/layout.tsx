@@ -9,12 +9,46 @@ import { AppShell } from "@/components/layout/app-sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? process.env.NEXTAUTH_URL ?? "https://averna.vercel.app";
+
+const SITE_DESCRIPTION =
+  "Modern IELTS learning platform with AI-powered assessments, gamification, daily speaking practice, mock exams and real-time progress tracking.";
+
 export const metadata: Metadata = {
-  title: "Averna Learning Centre - IELTS Excellence Platform",
-  description: "Modern educational platform for IELTS students with gamification, AI features, and real-time communication",
-  keywords: ["IELTS", "English Learning", "Education", "Gamification"],
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Averna Learning Centre — IELTS Excellence Platform",
+    template: "%s · Averna",
+  },
+  description: SITE_DESCRIPTION,
+  keywords: ["IELTS", "English Learning", "IELTS preparation", "Education", "Gamification", "Mock exams"],
+  applicationName: "Averna",
+  authors: [{ name: "Averna Learning Centre" }],
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Averna", statusBarStyle: "black-translucent" },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    apple: "/logo.png",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Averna Learning Centre",
+    title: "Averna Learning Centre — IELTS Excellence Platform",
+    description: SITE_DESCRIPTION,
+    url: siteUrl,
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: "Averna Learning Centre" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Averna Learning Centre — IELTS Excellence Platform",
+    description: SITE_DESCRIPTION,
+    images: ["/logo.png"],
+  },
+  robots: { index: true, follow: true },
   other: {
     // Newer, non-deprecated equivalent of apple-mobile-web-app-capable
     "mobile-web-app-capable": "yes",

@@ -4,8 +4,9 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { getGlobalRankings, getGroupRankings } from "@/lib/db-helpers";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Trophy, Users, Crown, Medal } from "lucide-react";
-import Link from "next/link";
+import { PageHeader } from "@/components/ui/page-header";
 
 export default async function RankingsPage() {
   const session = await auth();
@@ -23,13 +24,12 @@ export default async function RankingsPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
-          <Trophy className="h-10 w-10 text-yellow-400" />
-          Leaderboards
-        </h1>
+        <PageHeader
+          back={{ href: "/dashboard", label: "Back to Dashboard" }}
+          icon={Trophy}
+          iconClassName="text-yellow-400"
+          title="Leaderboards"
+        />
 
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Global Rankings */}
@@ -83,7 +83,13 @@ export default async function RankingsPage() {
             </CardHeader>
             <CardContent>
               {groupRankings.length === 0 ? (
-                <p className="text-center text-gray-400 py-8">No group assigned</p>
+                <EmptyState
+                  icon={Users}
+                  title="No group yet"
+                  description="You'll appear on the group leaderboard once your teacher adds you to a group."
+                  accent="text-blue-400"
+                  compact
+                />
               ) : (
                 <div className="space-y-2">
                   {groupRankings.map((s, index) => (

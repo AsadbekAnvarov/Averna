@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Trophy, TrendingUp, TrendingDown, AlertCircle, CheckCircle, ArrowLeft, RotateCcw } from "lucide-react";
 import Link from "next/link";
+import { NextStepCard } from "@/components/learning/next-step-card";
+import { ResultCelebration } from "@/components/learning/result-celebration";
 
 export default async function WritingResultPage({
   params,
@@ -56,8 +58,12 @@ export default async function WritingResultPage({
     return "Keep Practicing";
   };
 
+  const targetNum = student.targetBand ? parseFloat(String(student.targetBand).replace(/[^0-9.]/g, "")) : NaN;
+  const target = Number.isFinite(targetNum) ? targetNum : null;
+
   return (
     <div className="min-h-screen premium-gradient">
+      <ResultCelebration score={assessment.overallBand} target={target} />
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
         <div className="mb-8 animate-fade-in">
@@ -74,7 +80,7 @@ export default async function WritingResultPage({
           <CardContent className="py-8">
             <div className="text-center">
               <p className="text-gray-400 mb-2">Overall Band Score</p>
-              <div className={`text-7xl font-bold mb-2 ${getBandColor(assessment.overallBand)}`}>
+              <div className={`text-7xl font-bold mb-2 inline-block animate-pop ${getBandColor(assessment.overallBand)}`}>
                 {assessment.overallBand.toFixed(1)}
               </div>
               <p className={`text-xl ${getBandColor(assessment.overallBand)}`}>
@@ -275,7 +281,7 @@ export default async function WritingResultPage({
             <CardDescription>In-depth analysis of your writing</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+            <p className="text-gray-300 leading-relaxed whitespace-pre-line break-words">
               {assessment.detailedFeedback}
             </p>
           </CardContent>
@@ -310,6 +316,9 @@ export default async function WritingResultPage({
             </CardContent>
           </Card>
         )}
+
+        {/* What's next */}
+        <NextStepCard studentId={student.id} completedLabel="Writing" completedScore={assessment.overallBand} />
 
         {/* Actions */}
         <div className="flex gap-4 mt-8 animate-fade-in">

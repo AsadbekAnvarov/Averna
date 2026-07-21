@@ -12,6 +12,7 @@ import { User, Save, Mail, ShieldCheck } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { AvatarEditor } from "@/components/avatar-editor";
+import { PageHeader } from "@/components/ui/page-header";
 
 async function updateAdminProfile(formData: FormData) {
   "use server";
@@ -45,10 +46,12 @@ export default async function AdminProfilePage({ searchParams }: { searchParams:
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <AdminHeader user={{ name: dbUser.name ?? "Admin", email: dbUser.email, image: dbUser.image }} />
 
-        <h1 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
-          <ShieldCheck className="h-10 w-10 text-averna-purple" />
-          Admin Profile
-        </h1>
+        <PageHeader
+          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          icon={ShieldCheck}
+          iconClassName="text-averna-purple"
+          title="Admin Profile"
+        />
 
         {searchParams.saved && (
           <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Profile saved!</div>

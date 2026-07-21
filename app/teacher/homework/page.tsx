@@ -5,10 +5,11 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { formatDate } from "@/lib/utils";
+import { Notebook } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { PageHeader } from "@/components/ui/page-header";
 
 export default async function TeacherHomeworkPage() {
   const session = await auth();
@@ -41,10 +42,12 @@ export default async function TeacherHomeworkPage() {
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
-        <Link href="/teacher/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-4xl font-bold text-white mb-8">Homework Management</h1>
+        <PageHeader
+          back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
+          icon={Notebook}
+          iconClassName="text-averna-purple"
+          title="Homework Management"
+        />
 
         <div className="space-y-6">
           {teacher.homework.map(hw => {

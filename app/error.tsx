@@ -28,7 +28,9 @@ export default function Error({
         </CardHeader>
         <CardContent className="text-center space-y-4">
           <p className="text-sm text-gray-400">
-            {error.message || "An unexpected error occurred"}
+            {process.env.NODE_ENV === "production"
+              ? "An unexpected error occurred. Please try again."
+              : error.message || "An unexpected error occurred"}
           </p>
           <Button
             onClick={reset}

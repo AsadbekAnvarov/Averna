@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { MessageComposer } from "@/components/messages/message-composer";
@@ -103,22 +105,29 @@ export default async function MessagesPage({
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
-        <Link href={homeHref(role)} className="text-averna-neon hover:underline text-sm mb-4 block">
-          ← Back to Dashboard
-        </Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center gap-3">
-          <MessageSquare className="h-8 w-8 text-averna-pink" />
-          <span className="neon-text-purple">Messages</span>
-        </h1>
+        <PageHeader
+          className="mb-4"
+          back={{ href: homeHref(role), label: "Back to Dashboard" }}
+          icon={MessageSquare}
+          iconClassName="text-averna-pink"
+          title={<span className="neon-text-purple">Messages</span>}
+        />
 
         <InboxTabs unreadMessages={unreadMessages} unreadNotifications={unreadNotifications} />
 
         {contacts.length === 0 ? (
           <Card className="glass border-averna-primary/30">
-            <CardContent className="py-10 text-center text-gray-400">
-              {role === "STUDENT"
-                ? "You'll be able to message your teacher once you're assigned to a group."
-                : "No contacts yet."}
+            <CardContent className="py-2">
+              <EmptyState
+                icon={MessageSquare}
+                title="No conversations yet"
+                description={
+                  role === "STUDENT"
+                    ? "You'll be able to message your teacher once you're assigned to a group."
+                    : "You have no contacts to message yet."
+                }
+                accent="text-averna-pink"
+              />
             </CardContent>
           </Card>
         ) : (
@@ -144,12 +153,12 @@ export default async function MessagesPage({
             </Card>
 
             {/* Thread */}
-            <Card className="glass border-averna-purple/30 md:col-span-2 flex flex-col">
-              <CardContent className="py-4 flex flex-col h-[60vh]">
-                <p className="text-white font-semibold border-b border-white/10 pb-2 mb-3">
+            <Card className="glass border-averna-purple/30 md:col-span-2 flex flex-col overflow-hidden">
+              <CardContent className="py-4 flex flex-col h-[60vh] min-h-0">
+                <p className="text-white font-semibold border-b border-white/10 pb-2 mb-3 shrink-0">
                   {active?.name}
                 </p>
-                <div className="flex-1 overflow-y-auto space-y-3 pr-1">
+                <div className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1">
                   <MessageThread messages={threadMessages} meId={me} />
                 </div>
                 <MessageComposer receiverId={active!.userId} role={role} />

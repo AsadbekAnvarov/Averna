@@ -85,14 +85,14 @@ export function MessageComposer({
       )}
 
       <form onSubmit={(e) => { e.preventDefault(); send(text); }} className="flex gap-2 items-center">
-        <Button type="button" variant="ghost" size="icon" onClick={() => { setShowEmoji((s) => !s); setShowQuick(false); }} className="text-gray-300 shrink-0">
+        <Button type="button" variant="ghost" size="icon" onClick={() => { setShowEmoji((s) => !s); setShowQuick(false); }} className="text-gray-300 shrink-0" aria-label="Insert emoji" aria-pressed={showEmoji}>
           <Smile className="h-5 w-5" />
         </Button>
-        <Button type="button" variant="ghost" size="icon" onClick={() => { setShowQuick((s) => !s); setShowEmoji(false); }} className="text-averna-cyan shrink-0" title="Quick replies">
+        <Button type="button" variant="ghost" size="icon" onClick={() => { setShowQuick((s) => !s); setShowEmoji(false); }} className="text-averna-cyan shrink-0" aria-label="Quick replies" aria-pressed={showQuick} title="Quick replies">
           <Zap className="h-5 w-5" />
         </Button>
         <Input value={text} onChange={(e) => setText(e.target.value)} placeholder="Type a message..." autoComplete="off" className="bg-background/50" />
-        <Button type="submit" disabled={sending} className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
+        <Button type="submit" disabled={sending} aria-label="Send message" className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
           <Send className="h-4 w-4" />
         </Button>
       </form>
