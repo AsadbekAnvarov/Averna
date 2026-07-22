@@ -18,7 +18,7 @@ export default async function AdminFinancePage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {
-    return <AccountNotice title="Admins only" message="This area is reserved for administrators." />;
+    return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
   const [payments, students] = await Promise.all([
@@ -46,40 +46,40 @@ export default async function AdminFinancePage() {
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
           icon={Wallet}
           iconClassName="text-averna-neon"
-          title={<span className="neon-text">Finance</span>}
-          subtitle="Revenue overview, recent transactions and students who may owe payment."
+          title={<span className="neon-text">Moliya</span>}
+          subtitle="Daromad koʻrinishi, soʻnggi tranzaksiyalar va toʻlov qarzi boʻlishi mumkin boʻlgan oʻquvchilar."
         />
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
           <Card className="glass border-averna-neon/30">
-            <CardHeader className="pb-2"><CardTitle className="text-xs flex items-center gap-1 text-averna-neon"><TrendingUp className="h-4 w-4" /> Course revenue</CardTitle></CardHeader>
+            <CardHeader className="pb-2"><CardTitle className="text-xs flex items-center gap-1 text-averna-neon"><TrendingUp className="h-4 w-4" /> Kurs daromadi</CardTitle></CardHeader>
             <CardContent><p className="text-2xl font-bold text-averna-neon">{fmt(courseTotal)}</p><p className="text-[11px] text-gray-500">UZS</p></CardContent>
           </Card>
           <Card className="glass border-averna-cyan/30">
-            <CardHeader className="pb-2"><CardTitle className="text-xs flex items-center gap-1 text-averna-cyan"><Wallet className="h-4 w-4" /> Total top-ups</CardTitle></CardHeader>
+            <CardHeader className="pb-2"><CardTitle className="text-xs flex items-center gap-1 text-averna-cyan"><Wallet className="h-4 w-4" /> Jami toʻldirishlar</CardTitle></CardHeader>
             <CardContent><p className="text-2xl font-bold text-averna-cyan">{fmt(topupTotal)}</p><p className="text-[11px] text-gray-500">UZS</p></CardContent>
           </Card>
           <Card className="glass border-averna-pink/30">
-            <CardHeader className="pb-2"><CardTitle className="text-xs flex items-center gap-1 text-averna-pink"><AlertTriangle className="h-4 w-4" /> Possible debtors</CardTitle></CardHeader>
+            <CardHeader className="pb-2"><CardTitle className="text-xs flex items-center gap-1 text-averna-pink"><AlertTriangle className="h-4 w-4" /> Mumkin boʻlgan qarzdorlar</CardTitle></CardHeader>
             <CardContent><p className="text-2xl font-bold text-averna-pink">{debtors.length}</p></CardContent>
           </Card>
         </div>
 
         <Card className="glass border-averna-pink/30 mb-8">
-          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-pink"><AlertTriangle className="h-5 w-5" /> Students with zero balance</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-pink"><AlertTriangle className="h-5 w-5" /> Balansi nol boʻlgan oʻquvchilar</CardTitle></CardHeader>
           <CardContent>
             {debtors.length === 0 ? (
-              <p className="text-gray-400 text-sm">🎉 No enrolled students with zero balance.</p>
+              <p className="text-gray-400 text-sm">🎉 Balansi nol boʻlgan oʻquvchilar yoʻq.</p>
             ) : (
               <div className="space-y-2">
                 {debtors.slice(0, 20).map((s) => (
                   <div key={s.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
                     <div className="min-w-0">
                       <p className="text-white text-sm truncate">{s.user.name}</p>
-                      <p className="text-xs text-gray-400 truncate">{s.group?.name ?? "No group"}</p>
+                      <p className="text-xs text-gray-400 truncate">{s.group?.name ?? "Guruhsiz"}</p>
                     </div>
                     <span className="text-red-300 font-semibold whitespace-nowrap">{fmt(s.balance)} UZS</span>
                   </div>
@@ -90,10 +90,10 @@ export default async function AdminFinancePage() {
         </Card>
 
         <Card className="glass border-white/10">
-          <CardHeader><CardTitle className="flex items-center gap-2 text-white"><Receipt className="h-5 w-5" /> Recent Transactions</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-white"><Receipt className="h-5 w-5" /> Soʻnggi tranzaksiyalar</CardTitle></CardHeader>
           <CardContent>
             {recent.length === 0 ? (
-              <p className="text-gray-400 text-sm">No transactions yet.</p>
+              <p className="text-gray-400 text-sm">Hozircha tranzaksiyalar yoʻq.</p>
             ) : (
               <div className="space-y-2">
                 {recent.map((p) => (

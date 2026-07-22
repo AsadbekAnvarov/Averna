@@ -14,7 +14,7 @@ export default async function AdminSystemPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {
-    return <AccountNotice title="Admins only" message="This area is reserved for administrators." />;
+    return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
   let dbOk = true;
@@ -49,34 +49,34 @@ export default async function AdminSystemPage() {
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
           icon={Activity}
           iconClassName="text-averna-neon"
-          title={<>System <span className="neon-text">Health</span></>}
-          subtitle="Status of core services and platform data."
+          title={<>Tizim <span className="neon-text">holati</span></>}
+          subtitle="Asosiy xizmatlar va platforma maʼlumotlari holati."
         />
 
         <Card className="glass border-averna-neon/30 mb-6">
-          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-neon"><Database className="h-5 w-5" /> Services</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-neon"><Database className="h-5 w-5" /> Xizmatlar</CardTitle></CardHeader>
           <CardContent className="space-y-2">
-            <Row ok={dbOk} label="Database (Neon PostgreSQL)" detail={dbOk ? "Connected" : "Error"} />
-            <Row ok={aiOn} label="AI features (OpenAI)" detail={aiOn ? "GPT-4 active" : "Offline mode (heuristics)"} />
+            <Row ok={dbOk} label="Maʼlumotlar bazasi (Neon PostgreSQL)" detail={dbOk ? "Ulangan" : "Xatolik"} />
+            <Row ok={aiOn} label="AI imkoniyatlari (OpenAI)" detail={aiOn ? "GPT-4 faol" : "Oflayn rejim (evristika)"} />
           </CardContent>
         </Card>
 
         <Card className="glass border-averna-cyan/30">
-          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><Activity className="h-5 w-5" /> Platform Data</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><Activity className="h-5 w-5" /> Platforma maʼlumotlari</CardTitle></CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <Stat icon={<Users className="h-4 w-4" />} label="Students" value={counts.students} />
-              <Stat icon={<GraduationCap className="h-4 w-4" />} label="Teachers" value={counts.teachers} />
-              <Stat icon={<Layers className="h-4 w-4" />} label="Groups" value={counts.groups} />
-              <Stat icon={<Bot className="h-4 w-4" />} label="Tests taken" value={counts.tests} />
-              <Stat icon={<Activity className="h-4 w-4" />} label="Messages" value={counts.messages} />
+              <Stat icon={<Users className="h-4 w-4" />} label="Oʻquvchilar" value={counts.students} />
+              <Stat icon={<GraduationCap className="h-4 w-4" />} label="Oʻqituvchilar" value={counts.teachers} />
+              <Stat icon={<Layers className="h-4 w-4" />} label="Guruhlar" value={counts.groups} />
+              <Stat icon={<Bot className="h-4 w-4" />} label="Yechilgan testlar" value={counts.tests} />
+              <Stat icon={<Activity className="h-4 w-4" />} label="Xabarlar" value={counts.messages} />
             </div>
             {!aiOn && (
               <p className="text-xs text-gray-500 mt-4">
-                Tip: add <code className="text-averna-cyan">OPENAI_API_KEY</code> in Vercel to enable full AI feedback. Everything works without it via smart heuristics.
+                Maslahat: toʻliq AI tahlilini yoqish uchun Vercelʼda <code className="text-averna-cyan">OPENAI_API_KEY</code> qoʻshing. Usiz ham hammasi aqlli evristika orqali ishlaydi.
               </p>
             )}
           </CardContent>
