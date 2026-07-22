@@ -33,7 +33,7 @@ interface MotivationBannerProps {
 export function MotivationBanner({ name, points, streak }: MotivationBannerProps) {
   const [visible, setVisible] = useState(true);
   const [quote, setQuote] = useState(QUOTES[0]);
-  const { level, title, next, into } = getLevelInfo(points);
+  const { level, title, next, into, isMax } = getLevelInfo(points);
 
   useEffect(() => {
     // Pick a fresh motivational quote each time the dashboard loads
@@ -87,7 +87,7 @@ export function MotivationBanner({ name, points, streak }: MotivationBannerProps
         <div className="mt-4">
           <div className="flex justify-between text-xs text-gray-400 mb-1">
             <span>{points} pts</span>
-            <span>{Math.max(0, next - points)} pts to Level {level + 1}</span>
+            <span>{isMax ? "Max level reached 🏆" : `${Math.max(0, next - points)} pts to Level ${level + 1}`}</span>
           </div>
           <div className="h-2.5 w-full rounded-full bg-white/10 overflow-hidden">
             <div

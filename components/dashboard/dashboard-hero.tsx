@@ -121,7 +121,7 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
             </div>
             <div className="text-center">
               <p className="text-sm font-semibold text-white">{level.title}</p>
-              <p className="text-[11px] text-gray-400">{level.into}% to Level {level.level + 1}</p>
+              <p className="text-[11px] text-gray-400">{level.isMax ? "Max level 🏆" : `${level.into}% to Level ${level.level + 1}`}</p>
             </div>
           </div>
         </div>
