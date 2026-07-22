@@ -9,7 +9,7 @@ import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 
-const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONTHS = ["Yan","Fev","Mar","Apr","May","Iyn","Iyl","Avg","Sen","Okt","Noy","Dek"];
 
 export default async function AdminAnalyticsPage() {
   const session = await auth();
@@ -17,7 +17,7 @@ export default async function AdminAnalyticsPage() {
   if (session.user.role === "STUDENT") redirect("/dashboard");
   if (session.user.role === "TEACHER") redirect("/teacher/dashboard");
   if (session.user.role !== "ADMIN") {
-    return <AccountNotice title="Admins only" message="This area is reserved for administrators." />;
+    return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
   const [students, groups, attendance, totalPoints] = await Promise.all([
@@ -60,25 +60,25 @@ export default async function AdminAnalyticsPage() {
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
 
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
           icon={BarChart3}
           iconClassName="text-averna-cyan"
-          title={<>Centre <span className="neon-text-cyan">Analytics</span></>}
+          title={<>Markaz <span className="neon-text-cyan">tahlili</span></>}
         />
 
         {/* Summary cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Stat icon={<Users className="h-4 w-4" />} label="Students" value={students.length} color="text-averna-cyan" border="border-averna-cyan/30" />
-          <Stat icon={<Layers className="h-4 w-4" />} label="Groups" value={groups.length} color="text-averna-neon" border="border-averna-neon/30" />
-          <Stat icon={<ClipboardCheck className="h-4 w-4" />} label="Attendance logs" value={attendance} color="text-averna-purple" border="border-averna-purple/30" />
-          <Stat icon={<TrendingUp className="h-4 w-4" />} label="Total points" value={totalPoints._sum.totalPoints ?? 0} color="text-averna-pink" border="border-averna-pink/30" />
+          <Stat icon={<Users className="h-4 w-4" />} label="Oʻquvchilar" value={students.length} color="text-averna-cyan" border="border-averna-cyan/30" />
+          <Stat icon={<Layers className="h-4 w-4" />} label="Guruhlar" value={groups.length} color="text-averna-neon" border="border-averna-neon/30" />
+          <Stat icon={<ClipboardCheck className="h-4 w-4" />} label="Davomat yozuvlari" value={attendance} color="text-averna-purple" border="border-averna-purple/30" />
+          <Stat icon={<TrendingUp className="h-4 w-4" />} label="Jami ballar" value={totalPoints._sum.totalPoints ?? 0} color="text-averna-pink" border="border-averna-pink/30" />
         </div>
 
         {/* Growth chart */}
         <Card className="glass border-averna-cyan/30 mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-averna-cyan">
-              <TrendingUp className="h-5 w-5" /> New Students (last 6 months)
+              <TrendingUp className="h-5 w-5" /> Yangi oʻquvchilar (soʻnggi 6 oy)
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -100,10 +100,10 @@ export default async function AdminAnalyticsPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Level distribution */}
           <Card className="glass border-averna-purple/30">
-            <CardHeader><CardTitle className="text-averna-purple">Students by Level</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="text-averna-purple">Daraja boʻyicha oʻquvchilar</CardTitle></CardHeader>
             <CardContent className="space-y-3">
               {levels.length === 0 ? (
-                <p className="text-sm text-gray-400">No data yet.</p>
+                <p className="text-sm text-gray-400">Hozircha maʼlumot yoʻq.</p>
               ) : (
                 levels.map(([name, n]) => (
                   <div key={name}>
@@ -122,17 +122,17 @@ export default async function AdminAnalyticsPage() {
 
           {/* Attendance by group */}
           <Card className="glass border-averna-neon/30">
-            <CardHeader><CardTitle className="text-averna-neon">Attendance Rate by Group</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="text-averna-neon">Guruhlar boʻyicha davomat</CardTitle></CardHeader>
             <CardContent className="space-y-3">
               {groupRates.length === 0 ? (
-                <p className="text-sm text-gray-400">No groups yet.</p>
+                <p className="text-sm text-gray-400">Hozircha guruhlar yoʻq.</p>
               ) : (
                 groupRates.map((g) => (
                   <div key={g.name}>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-gray-300 truncate">{g.name}</span>
                       <span className={g.rate === null ? "text-gray-500" : g.rate >= 80 ? "text-averna-neon" : g.rate >= 50 ? "text-yellow-400" : "text-red-400"}>
-                        {g.rate === null ? "No data" : `${g.rate}%`}
+                        {g.rate === null ? "Maʼlumot yoʻq" : `${g.rate}%`}
                       </span>
                     </div>
                     <div className="h-2.5 w-full rounded-full bg-white/10 overflow-hidden">
