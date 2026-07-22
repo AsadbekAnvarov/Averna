@@ -16,6 +16,36 @@ const CONFETTI = Array.from({ length: 44 }, (_, i) => ({
   dur: +(2.4 + Math.random() * 1.8).toFixed(2),
 }));
 
+/** A short, pleasant rising arpeggio synthesised with the Web Audio API
+ *  (no audio asset needed). Best-effort — silently no-ops if blocked. */
+function playChime() {
+  try {
+    const Ctx =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+    if (!Ctx) return;
+    const ctx = new Ctx();
+    const now = ctx.currentTime;
+    const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.value = freq;
+      const start = now + i * 0.09;
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(0.06, start + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.32);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(start);
+      osc.stop(start + 0.34);
+    });
+    setTimeout(() => ctx.close().catch(() => {}), 900);
+  } catch {
+    /* audio unavailable — ignore */
+  }
+}
+
 /**
  * Shows a one-time celebration whenever the learner's level increases since
  * they last saw it. Purely client-side: compares the current level (derived
@@ -41,6 +71,17 @@ export function LevelUpCelebration({ points }: { points: number }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Celebrate with a gentle chime + haptic tap when the modal appears.
+  useEffect(() => {
+    if (!show) return;
+    try {
+      navigator.vibrate?.([35, 55, 110]);
+    } catch {
+      /* haptics unsupported */
+    }
+    playChime();
+  }, [show]);
 
   const dismiss = () => {
     try {
