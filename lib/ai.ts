@@ -644,3 +644,62 @@ Return ONLY JSON:
   const promptData = writingPromptSchema.parse(parsed);
   return { ...promptData, id };
 }
+
+
+
+
+/**
+ * Generate a COMPLETE, fully ORIGINAL IELTS Speaking practice set: one Part 1
+ * topic with sample answers, one Part 2 cue card with a model long-turn, and a
+ * few Part 3 discussion questions with band-8 model answers. The model must
+ * never copy real, published or Cambridge exam material. Validated against the
+ * schema. Uzbek strategy tips (tipUz) match the built-in content style.
+ */
+export async function generateSpeakingTest(opts: {
+  topic: string;
+  part3Count?: number;
+  id?: string;
+}): Promise<import("@/lib/test-schema").GeneratedSpeakingTest> {
+  const { speakingTestSchema } = await import("@/lib/test-schema");
+  if (!hasOpenAI()) {
+    throw new Error("OpenAI is not configured. Set OPENAI_API_KEY to generate content.");
+  }
+
+  const part3Count = Math.min(4, Math.max(1, opts.part3Count ?? 3));
+  const id = opts.id || `gen-${Date.now()}`;
+  const client = getOpenAIClient();
+
+  const systemPrompt = `You are an expert IELTS Speaking examiner creating ORIGINAL practice for a language school.
+STRICT RULE: Never copy, translate or adapt any real, published or Cambridge IELTS question or answer. Everything must be brand-new writing invented by you.
+
+Create ONE complete IELTS Speaking practice set on the theme "${opts.topic}":
+- "part1": a Part 1 topic. Provide a short "name" (2-4 words), one relevant emoji as "emoji", and 5 "questions". Each question has "q" (a natural Part 1 question), "sample" (a band-7 answer of 2-4 sentences), and optional "phrases" (2-3 useful expressions).
+- "part2": a Part 2 cue card. "topic" starts with "Describe...", "points" is the 4 "You should say" bullet points, "sample" is an original band-7 long-turn answer of 180-260 words (you may use \\n\\n between paragraphs), "usefulPhrases" is 5-6 expressions, and "tipUz" is a 1-2 sentence strategy tip written in Uzbek.
+- "part3": ${part3Count} Part 3 discussion question(s) linked to the theme. Each has "theme" (1-2 words), "question", "sample" (an original band-8 answer of 4-6 sentences, \\n\\n allowed), "usefulPhrases" (4-5 expressions) and "tipUz" (a short strategy tip in Uzbek).
+
+Return ONLY JSON matching exactly:
+{"id":"${id}","title":string,"topic":"${opts.topic}","part1":{"emoji":string,"name":string,"questions":[{"q":string,"sample":string,"phrases":[string]}]},"part2":{"topic":string,"points":[string],"sample":string,"usefulPhrases":[string],"tipUz":string},"part3":[{"theme":string,"question":string,"sample":string,"usefulPhrases":[string],"tipUz":string}]}`;
+
+  const completion = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: `Generate the full original speaking set now. Theme: ${opts.topic}.` },
+    ],
+    response_format: { type: "json_object" },
+    temperature: 0.7,
+  });
+
+  const raw = completion.choices[0]?.message?.content;
+  if (!raw) throw new Error("No response from OpenAI");
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("The model returned invalid JSON — please try generating again.");
+  }
+
+  const test = speakingTestSchema.parse(parsed);
+  return { ...test, id };
+}

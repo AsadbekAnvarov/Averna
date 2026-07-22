@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/toast";
 import { Sparkles, Loader2, CheckCircle2, FileText } from "lucide-react";
 
-type Module = "reading" | "listening" | "writing";
+type Module = "reading" | "listening" | "writing" | "speaking";
 
 interface GeneratedPreview {
   title: string;
@@ -19,6 +19,11 @@ interface GeneratedPreview {
   prompt?: string;
   type?: string;
   sampleAnswer?: string;
+  // Speaking practice-set fields
+  topic?: string;
+  part1?: { name: string; questions: unknown[] };
+  part2?: { topic: string };
+  part3?: unknown[];
 }
 
 export function TestGeneratorPanel() {
@@ -27,6 +32,7 @@ export function TestGeneratorPanel() {
   const [topic, setTopic] = useState("");
   const [level, setLevel] = useState("IELTS band 6.0-7.5");
   const isWriting = module === "writing";
+  const isSpeaking = module === "speaking";
   const [difficulty, setDifficulty] = useState<"Easy" | "Medium" | "Hard">("Medium");
   const [count, setCount] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -51,6 +57,8 @@ export function TestGeneratorPanel() {
             ? { module, topic: topic.trim(), difficulty, count }
             : module === "writing"
             ? { module, topic: topic.trim(), level }
+            : module === "speaking"
+            ? { module, topic: topic.trim() }
             : { module, topic: topic.trim(), level, count }
         ),
       });
@@ -119,9 +127,10 @@ export function TestGeneratorPanel() {
               <option value="reading">Reading</option>
               <option value="listening">Listening</option>
               <option value="writing">Writing (Task 2 essay)</option>
+              <option value="speaking">Speaking (full set)</option>
             </select>
           </div>
-          {!isWriting && (
+          {!isWriting && !isSpeaking && (
             <div>
               <label className="text-xs text-gray-400">{module === "listening" ? "Sections" : "Passages"}</label>
               <select
@@ -140,6 +149,7 @@ export function TestGeneratorPanel() {
             <label className="text-xs text-gray-400">Theme / topic</label>
             <Input value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g. Ocean exploration, Urban planning…" className="bg-background/50" />
           </div>
+          {!isSpeaking && (
           <div className="sm:col-span-2">
             <label className="text-xs text-gray-400">{isWriting ? "Essay type (optional)" : "Difficulty"}</label>
             {module === "listening" ? (
@@ -161,10 +171,13 @@ export function TestGeneratorPanel() {
               />
             )}
           </div>
+          )}
         </div>
         <p className="text-[11px] text-gray-500">
           {isWriting
             ? "Generates one original Task 2 essay prompt with a band 7.5–8 model answer, useful phrases and a strategy tip."
+            : isSpeaking
+            ? "Generates a full original Speaking set: a Part 1 topic, a Part 2 cue card and Part 3 discussion questions — each with model answers, useful phrases and tips."
             : `Tip: on the Hobby plan, generate 1 ${partWord} at a time to avoid function timeouts.`}
         </p>
 
@@ -178,7 +191,20 @@ export function TestGeneratorPanel() {
               <FileText className="h-5 w-5 text-averna-cyan shrink-0 mt-0.5" />
               <div className="min-w-0 flex-1">
                 <p className="font-semibold text-white">{preview.title}</p>
-                {isWriting ? (
+                {isSpeaking ? (
+                  <>
+                    {preview.topic && (
+                      <span className="inline-block text-xs px-2 py-0.5 mt-1 rounded-full bg-orange-500/20 text-orange-300 border border-orange-400/40">
+                        {preview.topic}
+                      </span>
+                    )}
+                    <ul className="mt-2 space-y-0.5 text-xs text-gray-400">
+                      <li className="truncate">• Part 1 · {preview.part1?.name} ({preview.part1?.questions?.length ?? 0} questions)</li>
+                      <li className="truncate">• Part 2 · {preview.part2?.topic}</li>
+                      <li className="truncate">• Part 3 · {preview.part3?.length ?? 0} discussion question{(preview.part3?.length ?? 0) === 1 ? "" : "s"}</li>
+                    </ul>
+                  </>
+                ) : isWriting ? (
                   <>
                     {preview.type && (
                       <span className="inline-block text-xs px-2 py-0.5 mt-1 rounded-full bg-averna-purple/20 text-averna-purple border border-averna-purple/40">

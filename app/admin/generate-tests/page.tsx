@@ -36,7 +36,7 @@ export default async function GenerateTestsPage() {
   let tests: { id: string; module: string; title: string; description: string; published: boolean; createdAt: Date; data: unknown }[] = [];
   try {
     tests = await db.generatedTest.findMany({
-      where: { module: { in: ["READING", "LISTENING", "WRITING"] } },
+      where: { module: { in: ["READING", "LISTENING", "WRITING", "SPEAKING"] } },
       orderBy: { createdAt: "desc" },
     });
   } catch {
@@ -53,7 +53,7 @@ export default async function GenerateTestsPage() {
   };
 
   const moduleLabel = (m: string) =>
-    m === "LISTENING" ? "Listening" : m === "WRITING" ? "Writing" : "Reading";
+    m === "LISTENING" ? "Listening" : m === "WRITING" ? "Writing" : m === "SPEAKING" ? "Speaking" : "Reading";
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -97,6 +97,8 @@ export default async function GenerateTestsPage() {
                     <p className="text-xs text-gray-400 truncate">
                       {t.module === "WRITING"
                         ? t.description || "Task 2 essay prompt"
+                        : t.module === "SPEAKING"
+                        ? t.description || "Speaking practice set"
                         : `${t.description} · ${questionCount(t.data)} questions`}
                     </p>
                   </div>
