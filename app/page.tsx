@@ -5,15 +5,15 @@ import { Logo } from "@/components/logo";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen premium-gradient">
+    <div className="min-h-screen premium-gradient relative overflow-hidden aurora-bg">
       <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fade-in">
           <div className="flex justify-center mb-8">
             <Logo size={96} showText={false} className="animate-float" />
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Averna Learning Centre
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+            <span className="text-gradient-animate">Averna Learning Centre</span>
           </h1>
           <p className="text-xl sm:text-2xl text-averna-neon mb-8">
             Transform Your IELTS Journey
@@ -85,7 +85,7 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="glass rounded-2xl p-6 hover:shadow-neon-green transition-all duration-300">
+    <div className="glass card-hover rounded-2xl p-6 hover:shadow-neon-green">
       <div className="mb-4">{icon}</div>
       <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
       <p className="text-gray-400">{description}</p>
@@ -96,7 +96,7 @@ function FeatureCard({
 function StatCard({ number, label }: { number: string; label: string }) {
   return (
     <div>
-      <div className="text-5xl font-bold text-averna-neon mb-2">{number}</div>
+      <div className="text-5xl font-bold text-gradient mb-2">{number}</div>
       <div className="text-gray-300 text-lg">{label}</div>
     </div>
   );
