@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { AvatarEditor } from "@/components/avatar-editor";
 import { PageHeader } from "@/components/ui/page-header";
+import { ProfilePassport } from "@/components/profile/profile-passport";
 
 const personalGoals = [
   "IELTS 7.5+",
@@ -117,33 +118,22 @@ export default function ProfilePage() {
           title="My Profile"
         />
 
+        {/* Passport — premium identity card */}
+        <div className="mb-8">
+          <ProfilePassport
+            name={profile.name || "Student"}
+            image={profile.image}
+            points={profile.totalPoints}
+            currentStreak={profile.currentStreak}
+            longestStreak={profile.longestStreak}
+            globalRank={profile.globalRank}
+            targetBand={profile.targetBand}
+          />
+        </div>
+
         {/* Avatar editor */}
         <div className="mb-8">
           <AvatarEditor currentImage={profile.image || null} name={profile.name || "Student"} />
-        </div>
-
-        {/* Stats */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card className="glass border-averna-primary/30">
-            <CardHeader><CardTitle className="text-sm">Total Points</CardTitle></CardHeader>
-            <CardContent><p className="text-3xl font-bold text-averna-neon">{profile.totalPoints}</p></CardContent>
-          </Card>
-          <Card className="glass border-orange-500/30">
-            <CardHeader><CardTitle className="text-sm">Current Streak</CardTitle></CardHeader>
-            <CardContent><p className="text-3xl font-bold text-orange-400">{profile.currentStreak}🔥</p></CardContent>
-          </Card>
-          <Card className="glass border-averna-purple/30">
-            <CardHeader><CardTitle className="text-sm">Longest Streak</CardTitle></CardHeader>
-            <CardContent><p className="text-3xl font-bold text-averna-purple">{profile.longestStreak}</p></CardContent>
-          </Card>
-          <Card className="glass border-averna-cyan/30">
-            <CardHeader><CardTitle className="text-sm">Global Rank</CardTitle></CardHeader>
-            <CardContent>
-              <p className="text-3xl font-bold text-averna-cyan">
-                {profile.globalRank > 0 ? `#${profile.globalRank}` : "—"}
-              </p>
-            </CardContent>
-          </Card>
         </div>
 
         {/* Enrollment info (set by admin) */}
