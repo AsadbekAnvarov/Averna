@@ -60,3 +60,23 @@ export const listeningTestSchema = z.object({
 });
 
 export type GeneratedListeningTest = z.infer<typeof listeningTestSchema>;
+
+
+
+/**
+ * Validation schema for a generated IELTS Writing Task 2 prompt. Mirrors the
+ * WritingPrompt shape in lib/writing-data.ts (chart/imageUrl are omitted — they
+ * only apply to Task 1).
+ */
+export const writingPromptSchema = z.object({
+  id: z.string(),
+  title: z.string().min(2),
+  prompt: z.string().min(20),
+  type: z.string(),
+  sampleAnswer: z.string().min(100),
+  usefulPhrases: z.array(z.string()).min(3),
+  strategyEn: z.string(),
+  strategyUz: z.string(),
+});
+
+export type GeneratedWritingPrompt = z.infer<typeof writingPromptSchema>;

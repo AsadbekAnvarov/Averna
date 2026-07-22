@@ -36,7 +36,7 @@ export default async function GenerateTestsPage() {
   let tests: { id: string; module: string; title: string; description: string; published: boolean; createdAt: Date; data: unknown }[] = [];
   try {
     tests = await db.generatedTest.findMany({
-      where: { module: { in: ["READING", "LISTENING"] } },
+      where: { module: { in: ["READING", "LISTENING", "WRITING"] } },
       orderBy: { createdAt: "desc" },
     });
   } catch {
@@ -44,9 +44,16 @@ export default async function GenerateTestsPage() {
   }
 
   const questionCount = (data: unknown): number => {
-    const passages = (data as { passages?: { questions?: unknown[] }[] })?.passages ?? [];
-    return passages.reduce((n, p) => n + (p.questions?.length ?? 0), 0);
+    const d = data as {
+      passages?: { questions?: unknown[] }[];
+      sections?: { questions?: unknown[] }[];
+    };
+    const groups = d?.passages ?? d?.sections ?? [];
+    return groups.reduce((n, p) => n + (p.questions?.length ?? 0), 0);
   };
+
+  const moduleLabel = (m: string) =>
+    m === "LISTENING" ? "Listening" : m === "WRITING" ? "Writing" : "Reading";
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -58,7 +65,7 @@ export default async function GenerateTestsPage() {
           icon={Sparkles}
           iconClassName="text-averna-purple"
           title={<>Test <span className="neon-text-purple">Generator</span></>}
-          subtitle="Create original, full-length IELTS Reading tests and publish them to students."
+          subtitle="Create original IELTS Reading & Listening tests and Writing Task 2 prompts, then publish them to students."
         />
 
         <TestGeneratorPanel />
@@ -88,11 +95,13 @@ export default async function GenerateTestsPage() {
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold text-white truncate">{t.title}</p>
                     <p className="text-xs text-gray-400 truncate">
-                      {t.description} · {questionCount(t.data)} questions
+                      {t.module === "WRITING"
+                        ? t.description || "Task 2 essay prompt"
+                        : `${t.description} · ${questionCount(t.data)} questions`}
                     </p>
                   </div>
                   <span className="shrink-0 text-[10px] px-2 py-0.5 rounded-full border border-averna-cyan/40 text-averna-cyan bg-averna-cyan/10">
-                    {t.module === "LISTENING" ? "Listening" : "Reading"}
+                    {moduleLabel(t.module)}
                   </span>
                   <span
                     className={`shrink-0 text-[10px] px-2 py-0.5 rounded-full border ${

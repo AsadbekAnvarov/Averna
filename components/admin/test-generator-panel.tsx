@@ -8,13 +8,17 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/toast";
 import { Sparkles, Loader2, CheckCircle2, FileText } from "lucide-react";
 
-type Module = "reading" | "listening";
+type Module = "reading" | "listening" | "writing";
 
 interface GeneratedPreview {
   title: string;
   description: string;
   passages?: { title: string; questions: unknown[] }[];
   sections?: { title: string; questions: unknown[] }[];
+  // Writing Task 2 prompt fields
+  prompt?: string;
+  type?: string;
+  sampleAnswer?: string;
 }
 
 export function TestGeneratorPanel() {
@@ -22,6 +26,7 @@ export function TestGeneratorPanel() {
   const [module, setModule] = useState<Module>("reading");
   const [topic, setTopic] = useState("");
   const [level, setLevel] = useState("IELTS band 6.0-7.5");
+  const isWriting = module === "writing";
   const [difficulty, setDifficulty] = useState<"Easy" | "Medium" | "Hard">("Medium");
   const [count, setCount] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -44,6 +49,8 @@ export function TestGeneratorPanel() {
         body: JSON.stringify(
           module === "listening"
             ? { module, topic: topic.trim(), difficulty, count }
+            : module === "writing"
+            ? { module, topic: topic.trim(), level }
             : { module, topic: topic.trim(), level, count }
         ),
       });
@@ -65,7 +72,7 @@ export function TestGeneratorPanel() {
       const res = await fetch("/api/admin/save-test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ module, test: preview, topic, level: module === "reading" ? level : difficulty, publish: true }),
+        body: JSON.stringify({ module, test: preview, topic, level: module === "listening" ? difficulty : level, publish: true }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Save failed");
@@ -100,32 +107,41 @@ export function TestGeneratorPanel() {
             <label className="text-xs text-gray-400">Module</label>
             <select
               value={module}
-              onChange={(e) => { setModule(e.target.value as Module); setPreview(null); }}
+              onChange={(e) => {
+                const next = e.target.value as Module;
+                setModule(next);
+                setPreview(null);
+                if (next === "writing") setLevel("");
+                else if (!level) setLevel("IELTS band 6.0-7.5");
+              }}
               className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
             >
               <option value="reading">Reading</option>
               <option value="listening">Listening</option>
+              <option value="writing">Writing (Task 2 essay)</option>
             </select>
           </div>
-          <div>
-            <label className="text-xs text-gray-400">{module === "listening" ? "Sections" : "Passages"}</label>
-            <select
-              value={count}
-              onChange={(e) => setCount(Number(e.target.value))}
-              className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
-            >
-              <option value={1}>1 {partWord} (fast)</option>
-              <option value={2}>2 {partWord}s</option>
-              <option value={3}>3 {partWord}s{module === "reading" ? " (full test)" : ""}</option>
-              {module === "listening" && <option value={4}>4 sections (full test)</option>}
-            </select>
-          </div>
+          {!isWriting && (
+            <div>
+              <label className="text-xs text-gray-400">{module === "listening" ? "Sections" : "Passages"}</label>
+              <select
+                value={count}
+                onChange={(e) => setCount(Number(e.target.value))}
+                className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
+              >
+                <option value={1}>1 {partWord} (fast)</option>
+                <option value={2}>2 {partWord}s</option>
+                <option value={3}>3 {partWord}s{module === "reading" ? " (full test)" : ""}</option>
+                {module === "listening" && <option value={4}>4 sections (full test)</option>}
+              </select>
+            </div>
+          )}
           <div className="sm:col-span-2">
             <label className="text-xs text-gray-400">Theme / topic</label>
             <Input value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g. Ocean exploration, Urban planning…" className="bg-background/50" />
           </div>
           <div className="sm:col-span-2">
-            <label className="text-xs text-gray-400">Difficulty</label>
+            <label className="text-xs text-gray-400">{isWriting ? "Essay type (optional)" : "Difficulty"}</label>
             {module === "listening" ? (
               <select
                 value={difficulty}
@@ -137,12 +153,19 @@ export function TestGeneratorPanel() {
                 <option value="Hard">Hard</option>
               </select>
             ) : (
-              <Input value={level} onChange={(e) => setLevel(e.target.value)} className="bg-background/50" />
+              <Input
+                value={level}
+                onChange={(e) => setLevel(e.target.value)}
+                placeholder={isWriting ? "e.g. Opinion, Discussion, Problem & Solution" : ""}
+                className="bg-background/50"
+              />
             )}
           </div>
         </div>
         <p className="text-[11px] text-gray-500">
-          Tip: on the Hobby plan, generate 1 {partWord} at a time to avoid function timeouts.
+          {isWriting
+            ? "Generates one original Task 2 essay prompt with a band 7.5–8 model answer, useful phrases and a strategy tip."
+            : `Tip: on the Hobby plan, generate 1 ${partWord} at a time to avoid function timeouts.`}
         </p>
 
         <Button onClick={generate} disabled={loading} className="neon-button bg-averna-purple hover:bg-averna-purple/80">
@@ -155,15 +178,31 @@ export function TestGeneratorPanel() {
               <FileText className="h-5 w-5 text-averna-cyan shrink-0 mt-0.5" />
               <div className="min-w-0 flex-1">
                 <p className="font-semibold text-white">{preview.title}</p>
-                <p className="text-sm text-gray-400">{preview.description}</p>
-                <p className="text-xs text-gray-500 mt-1">
-                  {parts.length} {partWord}{parts.length === 1 ? "" : "s"} · {questionCount} questions
-                </p>
-                <ul className="mt-2 space-y-0.5">
-                  {parts.map((p, i) => (
-                    <li key={i} className="text-xs text-gray-400 truncate">• {p.title} ({p.questions?.length ?? 0} Q)</li>
-                  ))}
-                </ul>
+                {isWriting ? (
+                  <>
+                    {preview.type && (
+                      <span className="inline-block text-xs px-2 py-0.5 mt-1 rounded-full bg-averna-purple/20 text-averna-purple border border-averna-purple/40">
+                        {preview.type}
+                      </span>
+                    )}
+                    <p className="text-sm text-gray-300 mt-2 whitespace-pre-line line-clamp-4">{preview.prompt}</p>
+                    <p className="text-xs text-gray-500 mt-2">
+                      Task 2 essay prompt · {preview.sampleAnswer ? `${preview.sampleAnswer.trim().split(/\s+/).length}-word model answer` : "model answer included"}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-sm text-gray-400">{preview.description}</p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      {parts.length} {partWord}{parts.length === 1 ? "" : "s"} · {questionCount} questions
+                    </p>
+                    <ul className="mt-2 space-y-0.5">
+                      {parts.map((p, i) => (
+                        <li key={i} className="text-xs text-gray-400 truncate">• {p.title} ({p.questions?.length ?? 0} Q)</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </div>
             </div>
             <div className="flex gap-2 mt-4">

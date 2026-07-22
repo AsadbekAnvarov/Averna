@@ -586,3 +586,61 @@ Return ONLY JSON matching exactly:
   const test = listeningTestSchema.parse(parsed);
   return { ...test, id };
 }
+
+
+
+/**
+ * Generate a COMPLETE, ORIGINAL IELTS Writing Task 2 prompt with a model answer.
+ * Never copies real/published exam prompts. Validated against the schema.
+ */
+export async function generateWritingPrompt(opts: {
+  topic: string;
+  essayType?: string;
+  id?: string;
+}): Promise<import("@/lib/test-schema").GeneratedWritingPrompt> {
+  const { writingPromptSchema } = await import("@/lib/test-schema");
+  if (!hasOpenAI()) {
+    throw new Error("OpenAI is not configured. Set OPENAI_API_KEY to generate content.");
+  }
+
+  const id = opts.id || `gen-${Date.now()}`;
+  const essayType = opts.essayType || "Opinion (agree/disagree)";
+  const client = getOpenAIClient();
+
+  const systemPrompt = `You are an expert IELTS Writing tutor creating ORIGINAL Task 2 practice for a language school.
+STRICT RULE: Never copy, translate or adapt any real, published or Cambridge IELTS prompt. Write a brand-new task yourself.
+
+Create ONE IELTS Academic Writing Task 2 essay task on the theme "${opts.topic}", style "${essayType}":
+- "prompt": a realistic Task 2 question — a statement followed by the instruction (e.g. "To what extent do you agree or disagree?"). 2-4 sentences.
+- "type": a short label such as "Opinion Essay", "Discussion Essay", or "Problem & Solution".
+- "sampleAnswer": an original band 7.5-8 model essay, 260-300 words, four clear paragraphs.
+- "usefulPhrases": 5-7 useful academic phrases/collocations relevant to this topic.
+- "strategyEn": a 2-3 sentence strategy tip in English.
+- "strategyUz": the same tip translated into Uzbek.
+
+Return ONLY JSON:
+{"id":"${id}","title":string,"prompt":string,"type":string,"sampleAnswer":string,"usefulPhrases":[string],"strategyEn":string,"strategyUz":string}`;
+
+  const completion = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: `Generate the original Task 2 essay task now. Theme: ${opts.topic}.` },
+    ],
+    response_format: { type: "json_object" },
+    temperature: 0.7,
+  });
+
+  const raw = completion.choices[0]?.message?.content;
+  if (!raw) throw new Error("No response from OpenAI");
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("The model returned invalid JSON — please try generating again.");
+  }
+
+  const promptData = writingPromptSchema.parse(parsed);
+  return { ...promptData, id };
+}
