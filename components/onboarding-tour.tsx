@@ -25,7 +25,10 @@ export function OnboardingTour() {
 
   useEffect(() => {
     try {
-      if (!localStorage.getItem(KEY)) setOpen(true);
+      // Show the info tour only after the first-run setup wizard is done, so
+      // the two never stack on a brand-new student's first visit.
+      const setupDone = localStorage.getItem("averna_setup_done_v1");
+      if (!localStorage.getItem(KEY) && setupDone) setOpen(true);
     } catch {}
   }, []);
 

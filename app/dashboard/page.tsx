@@ -16,6 +16,7 @@ import { DailyQuests } from "@/components/dashboard/daily-quests";
 import { DailyArticle } from "@/components/dashboard/daily-article";
 import { StudyPet } from "@/components/dashboard/study-pet";
 import { OnboardingTour } from "@/components/onboarding-tour";
+import { OnboardingWizard } from "@/components/onboarding-wizard";
 import { AccountNotice } from "@/components/account-notice";
 import { StudentAttentionBar } from "@/components/dashboard/student-attention-bar";
 import { BandProgress } from "@/components/dashboard/band-progress";
@@ -356,6 +357,7 @@ export default async function DashboardPage() {
           }
         />
       </div>
+      <OnboardingWizard />
       <OnboardingTour />
       <LevelUpCelebration points={student.totalPoints} />
     </div>
