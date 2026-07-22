@@ -46,15 +46,15 @@ export async function ActivityFeed() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-averna-neon opacity-75" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-averna-neon" />
           </span>
-          <Radio className="h-5 w-5" /> Live Activity
+          <Radio className="h-5 w-5" /> Jonli faoliyat
         </CardTitle>
       </CardHeader>
       <CardContent>
         {logs.length === 0 ? (
           <EmptyState
             icon={Radio}
-            title="No activity yet"
-            description="Enrollments, grading, announcements and other staff actions will stream in here."
+            title="Hozircha faoliyat yoʻq"
+            description="Qabullar, baholash, eʼlonlar va boshqa xodim amallari shu yerda paydo boʻladi."
             accent="text-averna-neon"
             compact
           />

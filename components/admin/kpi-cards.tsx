@@ -68,7 +68,7 @@ export async function AdminKpis() {
 
   const cards: Kpi[] = [
     {
-      label: "Total Students",
+      label: "Jami oʻquvchilar",
       value: students.length,
       delta: pctDelta(studentSeries),
       series: studentSeries,
@@ -81,7 +81,7 @@ export async function AdminKpis() {
       fill: "rgba(0,229,255,0.14)",
     },
     {
-      label: "Submissions (14d)",
+      label: "Topshiriqlar (14 kun)",
       value: submissions.length,
       delta: pctDelta(subSeries),
       series: subSeries,
@@ -94,7 +94,7 @@ export async function AdminKpis() {
       fill: "rgba(177,78,255,0.14)",
     },
     {
-      label: "Active Learners (7d)",
+      label: "Faol oʻquvchilar (7 kun)",
       value: activeCount,
       delta: pctDelta(activitySeries),
       series: activitySeries,
@@ -107,10 +107,10 @@ export async function AdminKpis() {
       fill: "rgba(0,255,148,0.14)",
     },
     {
-      label: "Revenue (14d)",
+      label: "Daromad (14 kun)",
       value: totalRevenue,
       prefix: "",
-      suffix: " pts",
+      suffix: " ball",
       delta: pctDelta(paySeries),
       series: paySeries,
       icon: Wallet,
@@ -138,7 +138,7 @@ export async function AdminKpis() {
                 <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${c.iconBg}`}>
                   <Icon className="h-5 w-5" />
                 </div>
-                <TrendBadge value={c.delta} title="vs the previous week" />
+                <TrendBadge value={c.delta} title="oʻtgan haftaga nisbatan" />
               </div>
               <p className="text-sm text-gray-400 font-medium">{c.label}</p>
               <CountUp

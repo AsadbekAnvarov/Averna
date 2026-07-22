@@ -44,22 +44,22 @@ export async function FinanceSummary() {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-emerald-400">
-            <Wallet className="h-5 w-5" /> Finance
+            <Wallet className="h-5 w-5" /> Moliya
           </span>
           <Link
             href="/admin/finance"
             className="text-xs font-normal text-emerald-400 hover:underline flex items-center gap-1"
           >
-            Details <ArrowRight className="h-3.5 w-3.5" />
+            Batafsil <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex items-end justify-between gap-3 mb-3">
           <div>
-            <p className="text-xs text-gray-400">Revenue · last 30 days</p>
+            <p className="text-xs text-gray-400">Daromad · soʻnggi 30 kun</p>
             <p className="text-3xl font-bold text-emerald-400">{total.toLocaleString()}</p>
-            <p className="text-xs text-gray-500">{completed.length} payments</p>
+            <p className="text-xs text-gray-500">{completed.length} ta toʻlov</p>
           </div>
           <Sparkline data={series} width={140} height={48} stroke="#34d399" fill="rgba(52,211,153,0.14)" />
         </div>
@@ -68,12 +68,11 @@ export async function FinanceSummary() {
           <div className="flex items-center gap-2 p-3 rounded-lg bg-amber-400/10 border border-amber-400/20">
             <Clock className="h-4 w-4 text-amber-400 shrink-0" />
             <p className="text-xs text-amber-400">
-              <span className="font-semibold">{pending.length}</span> pending payment
-              {pending.length === 1 ? "" : "s"} · {pendingTotal.toLocaleString()} awaiting
+              <span className="font-semibold">{pending.length}</span> ta toʻlov kutilmoqda · {pendingTotal.toLocaleString()} kutilyapti
             </p>
           </div>
         ) : (
-          <p className="text-xs text-gray-500">No pending payments.</p>
+          <p className="text-xs text-gray-500">Kutilayotgan toʻlovlar yoʻq.</p>
         )}
       </CardContent>
     </Card>

@@ -39,6 +39,7 @@ import { MoodCheckin } from "@/components/dashboard/mood-checkin";
 import { DailySpin } from "@/components/dashboard/daily-spin";
 import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
 import { DashboardHero } from "@/components/dashboard/dashboard-hero";
+import { LevelUpCelebration } from "@/components/dashboard/level-up-celebration";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
@@ -356,6 +357,7 @@ export default async function DashboardPage() {
         />
       </div>
       <OnboardingTour />
+      <LevelUpCelebration points={student.totalPoints} />
     </div>
   );
 }

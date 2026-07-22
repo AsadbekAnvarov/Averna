@@ -17,9 +17,9 @@ export async function EnrollmentFunnel() {
   const pending = registered - enrolled;
 
   const stages = [
-    { label: "Registered", value: registered, icon: UserPlus, color: "from-averna-cyan to-averna-blue", text: "text-averna-cyan" },
-    { label: "Level set", value: withLevel, icon: GraduationCap, color: "from-averna-purple to-averna-pink", text: "text-averna-purple" },
-    { label: "Enrolled in group", value: enrolled, icon: Users, color: "from-averna-neon to-averna-cyan", text: "text-averna-neon" },
+    { label: "Roʻyxatdan oʻtgan", value: registered, icon: UserPlus, color: "from-averna-cyan to-averna-blue", text: "text-averna-cyan" },
+    { label: "Daraja belgilangan", value: withLevel, icon: GraduationCap, color: "from-averna-purple to-averna-pink", text: "text-averna-purple" },
+    { label: "Guruhga qabul qilingan", value: enrolled, icon: Users, color: "from-averna-neon to-averna-cyan", text: "text-averna-neon" },
   ];
 
   const max = Math.max(registered, 1);
@@ -28,15 +28,15 @@ export async function EnrollmentFunnel() {
     <Card className="glass border-averna-purple/30">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-purple">
-          <Filter className="h-5 w-5" /> Enrollment Funnel
+          <Filter className="h-5 w-5" /> Qabul voronkasi
         </CardTitle>
       </CardHeader>
       <CardContent>
         {registered === 0 ? (
           <EmptyState
             icon={UserPlus}
-            title="No students yet"
-            description="Share your sign-up link — new students will flow through this funnel as they register and get placed."
+            title="Hozircha oʻquvchilar yoʻq"
+            description="Roʻyxatdan oʻtish havolangizni ulashing — yangi oʻquvchilar roʻyxatdan oʻtib, joylashtirilgach shu voronkadan oʻtadi."
             accent="text-averna-purple"
             compact
           />
@@ -71,7 +71,7 @@ export async function EnrollmentFunnel() {
               <div className="mt-2 flex items-center gap-2 p-3 rounded-lg bg-averna-pink/10 border border-averna-pink/20">
                 <UserPlus className="h-4 w-4 text-averna-pink shrink-0" />
                 <p className="text-xs text-averna-pink">
-                  <span className="font-semibold">{pending}</span> student{pending === 1 ? "" : "s"} waiting to be placed in a group.
+                  <span className="font-semibold">{pending}</span> ta oʻquvchi guruhga joylashtirilishini kutmoqda.
                 </p>
               </div>
             )}

@@ -7,7 +7,7 @@ import { CommandPalette } from "@/components/command-palette";
 import { LiveNotifications } from "@/components/live-notifications";
 import { AppShell } from "@/components/layout/app-sidebar";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? process.env.NEXTAUTH_URL ?? "https://averna.vercel.app";
@@ -71,8 +71,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <AppShell>{children}</AppShell>
+          <CommandPalette />
         </Providers>
-        <CommandPalette />
         <PwaInstaller />
         <LiveNotifications />
       </body>

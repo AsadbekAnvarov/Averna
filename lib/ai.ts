@@ -586,3 +586,194 @@ Return ONLY JSON matching exactly:
   const test = listeningTestSchema.parse(parsed);
   return { ...test, id };
 }
+
+
+
+/**
+ * Generate a COMPLETE, ORIGINAL IELTS Writing Task 2 prompt with a model answer.
+ * Never copies real/published exam prompts. Validated against the schema.
+ */
+export async function generateWritingPrompt(opts: {
+  topic: string;
+  essayType?: string;
+  id?: string;
+}): Promise<import("@/lib/test-schema").GeneratedWritingPrompt> {
+  const { writingPromptSchema } = await import("@/lib/test-schema");
+  if (!hasOpenAI()) {
+    throw new Error("OpenAI is not configured. Set OPENAI_API_KEY to generate content.");
+  }
+
+  const id = opts.id || `gen-${Date.now()}`;
+  const essayType = opts.essayType || "Opinion (agree/disagree)";
+  const client = getOpenAIClient();
+
+  const systemPrompt = `You are an expert IELTS Writing tutor creating ORIGINAL Task 2 practice for a language school.
+STRICT RULE: Never copy, translate or adapt any real, published or Cambridge IELTS prompt. Write a brand-new task yourself.
+
+Create ONE IELTS Academic Writing Task 2 essay task on the theme "${opts.topic}", style "${essayType}":
+- "prompt": a realistic Task 2 question — a statement followed by the instruction (e.g. "To what extent do you agree or disagree?"). 2-4 sentences.
+- "type": a short label such as "Opinion Essay", "Discussion Essay", or "Problem & Solution".
+- "sampleAnswer": an original band 7.5-8 model essay, 260-300 words, four clear paragraphs.
+- "usefulPhrases": 5-7 useful academic phrases/collocations relevant to this topic.
+- "strategyEn": a 2-3 sentence strategy tip in English.
+- "strategyUz": the same tip translated into Uzbek.
+
+Return ONLY JSON:
+{"id":"${id}","title":string,"prompt":string,"type":string,"sampleAnswer":string,"usefulPhrases":[string],"strategyEn":string,"strategyUz":string}`;
+
+  const completion = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: `Generate the original Task 2 essay task now. Theme: ${opts.topic}.` },
+    ],
+    response_format: { type: "json_object" },
+    temperature: 0.7,
+  });
+
+  const raw = completion.choices[0]?.message?.content;
+  if (!raw) throw new Error("No response from OpenAI");
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("The model returned invalid JSON — please try generating again.");
+  }
+
+  const promptData = writingPromptSchema.parse(parsed);
+  return { ...promptData, id };
+}
+
+
+
+
+/**
+ * Generate a COMPLETE, fully ORIGINAL IELTS Speaking practice set: one Part 1
+ * topic with sample answers, one Part 2 cue card with a model long-turn, and a
+ * few Part 3 discussion questions with band-8 model answers. The model must
+ * never copy real, published or Cambridge exam material. Validated against the
+ * schema. Uzbek strategy tips (tipUz) match the built-in content style.
+ */
+export async function generateSpeakingTest(opts: {
+  topic: string;
+  part3Count?: number;
+  id?: string;
+}): Promise<import("@/lib/test-schema").GeneratedSpeakingTest> {
+  const { speakingTestSchema } = await import("@/lib/test-schema");
+  if (!hasOpenAI()) {
+    throw new Error("OpenAI is not configured. Set OPENAI_API_KEY to generate content.");
+  }
+
+  const part3Count = Math.min(4, Math.max(1, opts.part3Count ?? 3));
+  const id = opts.id || `gen-${Date.now()}`;
+  const client = getOpenAIClient();
+
+  const systemPrompt = `You are an expert IELTS Speaking examiner creating ORIGINAL practice for a language school.
+STRICT RULE: Never copy, translate or adapt any real, published or Cambridge IELTS question or answer. Everything must be brand-new writing invented by you.
+
+Create ONE complete IELTS Speaking practice set on the theme "${opts.topic}":
+- "part1": a Part 1 topic. Provide a short "name" (2-4 words), one relevant emoji as "emoji", and 5 "questions". Each question has "q" (a natural Part 1 question), "sample" (a band-7 answer of 2-4 sentences), and optional "phrases" (2-3 useful expressions).
+- "part2": a Part 2 cue card. "topic" starts with "Describe...", "points" is the 4 "You should say" bullet points, "sample" is an original band-7 long-turn answer of 180-260 words (you may use \\n\\n between paragraphs), "usefulPhrases" is 5-6 expressions, and "tipUz" is a 1-2 sentence strategy tip written in Uzbek.
+- "part3": ${part3Count} Part 3 discussion question(s) linked to the theme. Each has "theme" (1-2 words), "question", "sample" (an original band-8 answer of 4-6 sentences, \\n\\n allowed), "usefulPhrases" (4-5 expressions) and "tipUz" (a short strategy tip in Uzbek).
+
+Return ONLY JSON matching exactly:
+{"id":"${id}","title":string,"topic":"${opts.topic}","part1":{"emoji":string,"name":string,"questions":[{"q":string,"sample":string,"phrases":[string]}]},"part2":{"topic":string,"points":[string],"sample":string,"usefulPhrases":[string],"tipUz":string},"part3":[{"theme":string,"question":string,"sample":string,"usefulPhrases":[string],"tipUz":string}]}`;
+
+  const completion = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: `Generate the full original speaking set now. Theme: ${opts.topic}.` },
+    ],
+    response_format: { type: "json_object" },
+    temperature: 0.7,
+  });
+
+  const raw = completion.choices[0]?.message?.content;
+  if (!raw) throw new Error("No response from OpenAI");
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("The model returned invalid JSON — please try generating again.");
+  }
+
+  const test = speakingTestSchema.parse(parsed);
+  return { ...test, id };
+}
+
+
+
+
+/**
+ * Generate a COMPLETE, ORIGINAL IELTS Academic Writing Task 1 task with
+ * STRUCTURED chart data (bar / line / pie) that renders as an SVG via the
+ * Task1Chart component — no images required, so it is fully copyright-safe and
+ * scalable. Never copies real/published exam material. Validated (including
+ * series/label length consistency) against writingTask1Schema.
+ */
+export async function generateWritingTask1(opts: {
+  topic: string;
+  chartType?: "bar" | "line" | "pie" | "auto";
+  id?: string;
+}): Promise<import("@/lib/test-schema").GeneratedWritingTask1> {
+  const { writingTask1Schema } = await import("@/lib/test-schema");
+  if (!hasOpenAI()) {
+    throw new Error("OpenAI is not configured. Set OPENAI_API_KEY to generate content.");
+  }
+
+  const id = opts.id || `gen-${Date.now()}`;
+  const chartType = opts.chartType && opts.chartType !== "auto" ? opts.chartType : null;
+  const client = getOpenAIClient();
+
+  const chartInstruction = chartType
+    ? `Use a "${chartType}" chart.`
+    : `Choose the most suitable single chart kind ("bar", "line" or "pie") for the data.`;
+
+  const systemPrompt = `You are an expert IELTS Writing tutor creating ORIGINAL Academic Task 1 practice for a language school.
+STRICT RULE: Never copy, translate or adapt any real, published or Cambridge IELTS task. Invent brand-new, realistic data yourself.
+
+Create ONE IELTS Academic Writing Task 1 task on the theme "${opts.topic}". ${chartInstruction}
+
+The "chart" field is an array with exactly ONE chart object. Its shape depends on the kind:
+- bar:  {"kind":"bar","unit":string,"groups":[string,...],"series":[{"name":string,"values":[number,...]}]}  — every series MUST have exactly one value per group.
+- line: {"kind":"line","unit":string,"xLabels":[string,...],"series":[{"name":string,"values":[number,...]}]} — every series MUST have exactly one value per xLabel.
+- pie:  {"kind":"pie","unit":string,"title":string,"slices":[{"label":string,"value":number},...]}
+Rules for the data: use 2-4 groups/xLabels (or 3-6 pie slices) and 1-3 series with realistic whole numbers.
+
+Also provide:
+- "prompt": the Task 1 instruction paraphrasing what the visual shows, followed by "Summarise the information by selecting and reporting the main features, and make comparisons where relevant." and "Write at least 150 words." Do NOT restate every number in the prompt.
+- "type": a short label such as "Bar Chart", "Line Graph" or "Pie Chart".
+- "sampleAnswer": an original band 7.5-8 model answer, 170-210 words, with an overview paragraph plus detail paragraphs that quote the ACTUAL numbers from your chart.
+- "usefulPhrases": 5-7 useful Task 1 phrases (trends, comparisons, approximations).
+- "strategyEn": a 2-3 sentence strategy tip in English.
+- "strategyUz": the same tip translated into Uzbek.
+
+Return ONLY JSON:
+{"id":"${id}","title":string,"prompt":string,"type":string,"chart":[<one chart object>],"sampleAnswer":string,"usefulPhrases":[string],"strategyEn":string,"strategyUz":string}`;
+
+  const completion = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: `Generate the original Task 1 task now. Theme: ${opts.topic}.` },
+    ],
+    response_format: { type: "json_object" },
+    temperature: 0.6,
+  });
+
+  const raw = completion.choices[0]?.message?.content;
+  if (!raw) throw new Error("No response from OpenAI");
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("The model returned invalid JSON — please try generating again.");
+  }
+
+  const task = writingTask1Schema.parse(parsed);
+  return { ...task, id };
+}

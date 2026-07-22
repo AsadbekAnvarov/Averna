@@ -27,7 +27,7 @@ export function LevelProgress({ points }: { points: number }) {
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-400">{points.toLocaleString()} pts</p>
-            <p className="text-[11px] text-gray-500">{toNext.toLocaleString()} to next</p>
+            <p className="text-[11px] text-gray-500">{info.isMax ? "Max level 🏆" : `${toNext.toLocaleString()} to next`}</p>
           </div>
         </div>
 
@@ -38,7 +38,7 @@ export function LevelProgress({ points }: { points: number }) {
           />
         </div>
         <p className="text-[11px] text-gray-500 mt-1.5">
-          {info.into}% toward Level {info.level + 1}
+          {info.isMax ? `Top level reached — ${info.title}!` : `${info.into}% toward Level ${info.level + 1}`}
         </p>
       </CardContent>
     </Card>

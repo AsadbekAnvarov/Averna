@@ -36,7 +36,7 @@ export default async function GenerateTestsPage() {
   let tests: { id: string; module: string; title: string; description: string; published: boolean; createdAt: Date; data: unknown }[] = [];
   try {
     tests = await db.generatedTest.findMany({
-      where: { module: { in: ["READING", "LISTENING"] } },
+      where: { module: { in: ["READING", "LISTENING", "WRITING", "WRITING_TASK1", "SPEAKING"] } },
       orderBy: { createdAt: "desc" },
     });
   } catch {
@@ -44,9 +44,24 @@ export default async function GenerateTestsPage() {
   }
 
   const questionCount = (data: unknown): number => {
-    const passages = (data as { passages?: { questions?: unknown[] }[] })?.passages ?? [];
-    return passages.reduce((n, p) => n + (p.questions?.length ?? 0), 0);
+    const d = data as {
+      passages?: { questions?: unknown[] }[];
+      sections?: { questions?: unknown[] }[];
+    };
+    const groups = d?.passages ?? d?.sections ?? [];
+    return groups.reduce((n, p) => n + (p.questions?.length ?? 0), 0);
   };
+
+  const moduleLabel = (m: string) =>
+    m === "LISTENING"
+      ? "Listening"
+      : m === "WRITING"
+      ? "Writing T2"
+      : m === "WRITING_TASK1"
+      ? "Writing T1"
+      : m === "SPEAKING"
+      ? "Speaking"
+      : "Reading";
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -54,11 +69,11 @@ export default async function GenerateTestsPage() {
         <AdminHeader user={{ name: dbUser?.name ?? "Admin", email: dbUser?.email ?? "", image: dbUser?.image ?? null }} />
 
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
           icon={Sparkles}
           iconClassName="text-averna-purple"
-          title={<>Test <span className="neon-text-purple">Generator</span></>}
-          subtitle="Create original, full-length IELTS Reading tests and publish them to students."
+          title={<>Test <span className="neon-text-purple">generatori</span></>}
+          subtitle="Original IELTS Reading va Listening testlari hamda Writing topshiriqlarini yarating va oʻquvchilarga eʼlon qiling."
         />
 
         <TestGeneratorPanel />
@@ -66,7 +81,7 @@ export default async function GenerateTestsPage() {
         <div className="mt-8">
           <h2 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-averna-cyan" />
-            Generated Tests
+            Yaratilgan testlar
           </h2>
 
           {tests.length === 0 ? (
@@ -74,8 +89,8 @@ export default async function GenerateTestsPage() {
               <CardContent className="py-2">
                 <EmptyState
                   icon={FileText}
-                  title="No generated tests yet"
-                  description="Generate your first original Reading test above — once published it appears in the students' Reading section."
+                  title="Hozircha yaratilgan testlar yoʻq"
+                  description="Yuqorida birinchi original testingizni yarating — eʼlon qilingach, u oʻquvchilarning boʻlimida paydo boʻladi."
                   accent="text-averna-purple"
                 />
               </CardContent>
@@ -88,11 +103,17 @@ export default async function GenerateTestsPage() {
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold text-white truncate">{t.title}</p>
                     <p className="text-xs text-gray-400 truncate">
-                      {t.description} · {questionCount(t.data)} questions
+                      {t.module === "WRITING"
+                        ? t.description || "Task 2 esse topshirigʻi"
+                        : t.module === "WRITING_TASK1"
+                        ? `${t.description || "Task 1"} · grafik topshiriq`
+                        : t.module === "SPEAKING"
+                        ? t.description || "Speaking mashq toʻplami"
+                        : `${t.description} · ${questionCount(t.data)} ta savol`}
                     </p>
                   </div>
                   <span className="shrink-0 text-[10px] px-2 py-0.5 rounded-full border border-averna-cyan/40 text-averna-cyan bg-averna-cyan/10">
-                    {t.module === "LISTENING" ? "Listening" : "Reading"}
+                    {moduleLabel(t.module)}
                   </span>
                   <span
                     className={`shrink-0 text-[10px] px-2 py-0.5 rounded-full border ${
@@ -101,13 +122,13 @@ export default async function GenerateTestsPage() {
                         : "text-yellow-300 border-yellow-500/40 bg-yellow-500/10"
                     }`}
                   >
-                    {t.published ? "Published" : "Draft"}
+                    {t.published ? "Eʼlon qilingan" : "Qoralama"}
                   </span>
                   <form action={deleteGeneratedTest}>
                     <input type="hidden" name="id" value={t.id} />
                     <button
                       type="submit"
-                      aria-label="Delete test"
+                      aria-label="Testni oʻchirish"
                       className="text-gray-500 hover:text-red-400 transition-colors shrink-0"
                     >
                       <Trash2 className="h-4 w-4" />

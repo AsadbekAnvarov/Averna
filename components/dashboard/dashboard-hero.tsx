@@ -58,7 +58,7 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
               <div className="min-w-0 flex-1">
                 <p className="text-sm sm:text-base text-gray-200">{greeting} {emoji}</p>
                 <h2 className="text-3xl sm:text-4xl font-bold text-white truncate">
-                  {firstName} <span className="inline-block">👋</span>
+                  <span className="text-gradient-animate">{firstName}</span> <span className="inline-block">👋</span>
                 </h2>
                 {goal && (
                   <span className="inline-flex items-center gap-1.5 mt-2 text-xs sm:text-sm px-3 py-1 rounded-full bg-white/10 border border-white/15 text-averna-neon">
@@ -121,7 +121,7 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
             </div>
             <div className="text-center">
               <p className="text-sm font-semibold text-white">{level.title}</p>
-              <p className="text-[11px] text-gray-400">{level.into}% to Level {level.level + 1}</p>
+              <p className="text-[11px] text-gray-400">{level.isMax ? "Max level 🏆" : `${level.into}% to Level ${level.level + 1}`}</p>
             </div>
           </div>
         </div>
