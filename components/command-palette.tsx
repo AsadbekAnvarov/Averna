@@ -81,30 +81,31 @@ const TEACHER_COMMANDS: Cmd[] = [
   { group: "Communication", label: "Profile", href: "/teacher/profile", icon: User, keywords: "account" },
 ];
 
+// Admin commands are in Uzbek — the administrator is a native Uzbek speaker.
 const ADMIN_COMMANDS: Cmd[] = [
-  { group: "Overview", label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard, keywords: "home" },
-  { group: "Overview", label: "Analytics", href: "/admin/analytics", icon: BarChart3, keywords: "stats insights" },
-  { group: "Overview", label: "Notifications", href: "/notifications", icon: Bell, keywords: "alerts" },
+  { group: "Umumiy koʻrinish", label: "Boshqaruv paneli", href: "/admin/dashboard", icon: LayoutDashboard, keywords: "home bosh" },
+  { group: "Umumiy koʻrinish", label: "Tahlil", href: "/admin/analytics", icon: BarChart3, keywords: "stats analytics statistika" },
+  { group: "Umumiy koʻrinish", label: "Bildirishnomalar", href: "/notifications", icon: Bell, keywords: "alerts notifications" },
 
-  { group: "People", label: "Manage Teachers", href: "/admin/teachers", icon: GraduationCap, keywords: "staff" },
-  { group: "People", label: "Manage Groups", href: "/admin/groups", icon: Layers, keywords: "classes" },
+  { group: "Odamlar", label: "Oʻqituvchilar", href: "/admin/teachers", icon: GraduationCap, keywords: "teachers staff" },
+  { group: "Odamlar", label: "Guruhlar", href: "/admin/groups", icon: Layers, keywords: "groups classes" },
 
-  { group: "Content", label: "Manage Content", href: "/admin/content", icon: Layers, keywords: "lessons materials" },
-  { group: "Content", label: "Test Generator", href: "/admin/generate-tests", icon: Sparkles, keywords: "ai generate reading listening writing speaking" },
-  { group: "Content", label: "Announcements", href: "/admin/announcements", icon: Megaphone, keywords: "broadcast" },
-  { group: "Content", label: "Rewards & Requests", href: "/admin/rewards", icon: Gift, keywords: "redemptions store" },
+  { group: "Kontent", label: "Oʻquv kontenti", href: "/admin/content", icon: Layers, keywords: "content lessons materials" },
+  { group: "Kontent", label: "Test generatori", href: "/admin/generate-tests", icon: Sparkles, keywords: "ai generate test reading listening writing speaking" },
+  { group: "Kontent", label: "Eʼlonlar", href: "/admin/announcements", icon: Megaphone, keywords: "announcements broadcast" },
+  { group: "Kontent", label: "Mukofotlar va soʻrovlar", href: "/admin/rewards", icon: Gift, keywords: "rewards redemptions store" },
 
-  { group: "Operations", label: "Finance", href: "/admin/finance", icon: Wallet, keywords: "payments revenue billing" },
-  { group: "Operations", label: "System Health", href: "/admin/system", icon: Activity, keywords: "status monitor" },
-  { group: "Operations", label: "Audit Log", href: "/admin/logs", icon: ScrollText, keywords: "history actions" },
-  { group: "Operations", label: "Messages", href: "/messages", icon: MessageSquare, keywords: "chat" },
+  { group: "Operatsiyalar", label: "Moliya", href: "/admin/finance", icon: Wallet, keywords: "finance payments revenue" },
+  { group: "Operatsiyalar", label: "Tizim holati", href: "/admin/system", icon: Activity, keywords: "system status monitor" },
+  { group: "Operatsiyalar", label: "Audit jurnali", href: "/admin/logs", icon: ScrollText, keywords: "audit log history" },
+  { group: "Operatsiyalar", label: "Xabarlar", href: "/messages", icon: MessageSquare, keywords: "messages chat" },
 ];
 
 // Group render order per role
 const GROUP_ORDER: Record<string, string[]> = {
   student: ["Overview", "IELTS Skills", "Practice", "AI Tools", "Community", "Account", "Actions"],
   teacher: ["Overview", "Students", "Teaching", "Communication", "Actions"],
-  admin: ["Overview", "People", "Content", "Operations", "Actions"],
+  admin: ["Umumiy koʻrinish", "Odamlar", "Kontent", "Operatsiyalar", "Amallar"],
 };
 
 /**
@@ -128,15 +129,26 @@ export function CommandPalette() {
     return { baseCommands: STUDENT_COMMANDS, roleKey: "student", label: "" };
   }, [pathname]);
 
-  // Quick actions available in every area
-  const commands: Cmd[] = useMemo(
-    () => [
+  // Quick actions available in every area (Uzbek for the admin portal)
+  const commands: Cmd[] = useMemo(() => {
+    const isAdmin = roleKey === "admin";
+    const actionsGroup = isAdmin ? "Amallar" : "Actions";
+    const themeLabel = isAdmin
+      ? mode === "dark"
+        ? "Yorugʻ mavzuga oʻtish"
+        : "Qorongʻi mavzuga oʻtish"
+      : mode === "dark"
+      ? "Switch to light theme"
+      : "Switch to dark theme";
+    const signOutLabel = isAdmin ? "Chiqish" : "Sign out";
+    return [
       ...baseCommands,
-      { group: "Actions", label: mode === "dark" ? "Switch to light theme" : "Switch to dark theme", icon: mode === "dark" ? Sun : Moon, actionId: "theme", keywords: "theme dark light mode toggle appearance" },
-      { group: "Actions", label: "Sign out", icon: LogOut, actionId: "signout", keywords: "logout exit leave" },
-    ],
-    [baseCommands, mode]
-  );
+      { group: actionsGroup, label: themeLabel, icon: mode === "dark" ? Sun : Moon, actionId: "theme", keywords: "theme dark light mode toggle appearance mavzu" },
+      { group: actionsGroup, label: signOutLabel, icon: LogOut, actionId: "signout", keywords: "logout exit leave chiqish" },
+    ];
+  }, [baseCommands, mode, roleKey]);
+
+  const isAdmin = roleKey === "admin";
 
   // Hide the palette entirely on auth/marketing routes
   const hidden = pathname === "/" || pathname.startsWith("/auth");
@@ -200,7 +212,7 @@ export function CommandPalette() {
         aria-label="Open command palette"
       >
         <CommandIcon className="h-4 w-4 text-averna-neon" />
-        <span className="hidden sm:inline text-sm">Quick jump</span>
+        <span className="hidden sm:inline text-sm">{isAdmin ? "Tezkor oʻtish" : "Quick jump"}</span>
         <kbd className="hidden sm:inline text-[10px] text-gray-400 border border-white/15 rounded px-1.5 py-0.5">⌘K</kbd>
       </button>
 
@@ -224,7 +236,7 @@ export function CommandPalette() {
                   if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => Math.max(a - 1, 0)); }
                   if (e.key === "Enter" && ordered[active]) select(ordered[active]);
                 }}
-                placeholder="Search pages & actions…"
+                placeholder={isAdmin ? "Sahifa va amallarni qidirish…" : "Search pages & actions…"}
                 className="flex-1 bg-transparent text-white placeholder:text-gray-500 outline-none text-sm"
               />
               {label && (
@@ -235,7 +247,7 @@ export function CommandPalette() {
 
             <div className="max-h-80 overflow-y-auto py-2">
               {ordered.length === 0 ? (
-                <p className="text-center text-gray-500 text-sm py-6">No matches for &ldquo;{query}&rdquo;</p>
+                <p className="text-center text-gray-500 text-sm py-6">{isAdmin ? `«${query}» boʻyicha natija yoʻq` : `No matches for “${query}”`}</p>
               ) : (
                 groupsToRender.map((section) => (
                   <div key={section.group} className="mb-1">
@@ -269,9 +281,9 @@ export function CommandPalette() {
 
             {/* Keyboard hint footer */}
             <div className="flex items-center justify-between gap-4 px-4 py-2 border-t border-white/10 text-[10px] text-gray-500">
-              <span className="flex items-center gap-1.5"><ArrowUpDown className="h-3 w-3" /> navigate</span>
-              <span className="flex items-center gap-1.5"><CornerDownLeft className="h-3 w-3" /> open</span>
-              <span>{ordered.length} result{ordered.length === 1 ? "" : "s"}</span>
+              <span className="flex items-center gap-1.5"><ArrowUpDown className="h-3 w-3" /> {isAdmin ? "harakat" : "navigate"}</span>
+              <span className="flex items-center gap-1.5"><CornerDownLeft className="h-3 w-3" /> {isAdmin ? "ochish" : "open"}</span>
+              <span>{ordered.length} {isAdmin ? "natija" : `result${ordered.length === 1 ? "" : "s"}`}</span>
             </div>
           </div>
         </div>
