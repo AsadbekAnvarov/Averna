@@ -6,9 +6,10 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Gift, Coins, Sparkles } from "lucide-react";
+import { Gift, Coins, Sparkles, Lock } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { PageHeader } from "@/components/ui/page-header";
+import { getLevelInfo } from "@/lib/utils";
 
 async function redeemReward(formData: FormData) {
   "use server";
@@ -21,6 +22,9 @@ async function redeemReward(formData: FormData) {
   const reward = await db.reward.findUnique({ where: { id: rewardId } });
   if (!reward || !reward.active) {
     redirect("/rewards?error=unavailable");
+  }
+  if (getLevelInfo(student.totalPoints).level < (reward.minLevel ?? 1)) {
+    redirect("/rewards?error=level");
   }
   if (student.totalPoints < reward.cost) {
     redirect("/rewards?error=points");
@@ -71,6 +75,8 @@ export default async function RewardsPage({
     orderBy: { cost: "asc" },
   });
 
+  const studentLevel = getLevelInfo(student.totalPoints).level;
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-4xl pb-24 lg:pb-8">
@@ -96,13 +102,32 @@ export default async function RewardsPage({
             Not enough points for that reward yet — keep learning! 💪
           </div>
         )}
+        {searchParams.error === "level" && (
+          <div className="mb-6 p-3 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300">
+            🔒 That reward is locked — reach the required level first. Keep climbing!
+          </div>
+        )}
 
         {/* Catalog */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {rewards.map((r) => {
+            const minLevel = r.minLevel ?? 1;
+            const levelLocked = studentLevel < minLevel;
             const affordable = student.totalPoints >= r.cost;
+            const canRedeem = affordable && !levelLocked;
             return (
-              <Card key={r.id} className={`glass ${affordable ? "border-averna-neon/30" : "border-white/10"}`}>
+              <Card key={r.id} className={`glass relative ${canRedeem ? "border-averna-neon/30" : "border-white/10"} ${levelLocked ? "opacity-80" : ""}`}>
+                {minLevel > 1 && (
+                  <span
+                    className={`absolute top-2 right-2 inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full border ${
+                      levelLocked
+                        ? "text-amber-300 border-amber-500/40 bg-amber-500/10"
+                        : "text-averna-neon border-averna-neon/40 bg-averna-neon/10"
+                    }`}
+                  >
+                    {levelLocked && <Lock className="h-3 w-3" />} Lvl {minLevel}+
+                  </span>
+                )}
                 <CardContent className="py-6 text-center flex flex-col h-full">
                   <div className="text-4xl mb-2">{r.icon ?? "🎁"}</div>
                   <p className="text-white font-semibold">{r.name}</p>
@@ -114,10 +139,14 @@ export default async function RewardsPage({
                     <input type="hidden" name="rewardId" value={r.id} />
                     <Button
                       type="submit"
-                      disabled={!affordable}
+                      disabled={!canRedeem}
                       className="w-full neon-button bg-averna-primary hover:bg-averna-light disabled:opacity-40"
                     >
-                      {affordable ? "Redeem" : `Need ${r.cost - student.totalPoints} more`}
+                      {levelLocked
+                        ? `Reach Level ${minLevel}`
+                        : affordable
+                        ? "Redeem"
+                        : `Need ${r.cost - student.totalPoints} more`}
                     </Button>
                   </form>
                 </CardContent>
