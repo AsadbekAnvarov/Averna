@@ -158,9 +158,32 @@ export interface LevelInfo {
   base: number;
   next: number;
   into: number; // percent progress into the current level (0-100)
+  isMax: boolean; // true once the learner reaches the final level
 }
 
-const LEVEL_THRESHOLDS = [0, 100, 300, 600, 1000, 1500, 2200, 3000, 4000, 5500];
+/**
+ * Level curve. Steep, exponential-ish gaps so climbing feels like a real,
+ * long-term achievement (early levels are quick for onboarding momentum, then
+ * each level costs progressively more). 15 levels, with a prestige tail
+ * (Elite → Immortal) beyond the classic "IELTS Pro" cap.
+ */
+const LEVEL_THRESHOLDS = [
+  0,      // 1  Rookie
+  150,    // 2  Explorer
+  400,    // 3  Achiever
+  800,    // 4  Skilled
+  1400,   // 5  Advanced
+  2200,   // 6  Expert
+  3300,   // 7  Master
+  4800,   // 8  Champion
+  6800,   // 9  Legend
+  9500,   // 10 IELTS Pro
+  13000,  // 11 Elite
+  17500,  // 12 Grandmaster
+  23000,  // 13 Virtuoso
+  30000,  // 14 Mythic
+  40000,  // 15 Immortal
+];
 const LEVEL_TITLES = [
   "Rookie",
   "Explorer",
@@ -172,6 +195,11 @@ const LEVEL_TITLES = [
   "Champion",
   "Legend",
   "IELTS Pro",
+  "Elite",
+  "Grandmaster",
+  "Virtuoso",
+  "Mythic",
+  "Immortal",
 ];
 
 export function getLevelInfo(points: number): LevelInfo {
@@ -180,11 +208,14 @@ export function getLevelInfo(points: number): LevelInfo {
     if (points >= LEVEL_THRESHOLDS[i]) level = i + 1;
   }
   const idx = level - 1;
+  const isMax = level >= LEVEL_THRESHOLDS.length;
   const base = LEVEL_THRESHOLDS[idx] ?? 0;
-  const next = LEVEL_THRESHOLDS[idx + 1] ?? base + 1000;
+  const next = isMax ? base : LEVEL_THRESHOLDS[idx + 1];
   const into =
-    next > base ? Math.min(100, Math.round(((points - base) / (next - base)) * 100)) : 100;
-  return { level, title: LEVEL_TITLES[idx] ?? "IELTS Pro", base, next, into };
+    isMax || next <= base
+      ? 100
+      : Math.min(100, Math.round(((points - base) / (next - base)) * 100));
+  return { level, title: LEVEL_TITLES[idx] ?? "Immortal", base, next, into, isMax };
 }
 
 
