@@ -80,3 +80,53 @@ export const writingPromptSchema = z.object({
 });
 
 export type GeneratedWritingPrompt = z.infer<typeof writingPromptSchema>;
+
+
+
+/**
+ * Validation schema for a generated IELTS Speaking practice set. Bundles one
+ * Part 1 topic (with sample answers), one Part 2 cue card and a few Part 3
+ * discussion questions. Mirrors Part1Topic / Part2Card / Part3Question in
+ * lib/speaking-data.ts — the inner `id` fields are assigned when the content is
+ * merged (see lib/speaking-content.ts), so the model does not need to invent them.
+ */
+export const speakingPart1Schema = z.object({
+  emoji: z.string().optional(),
+  name: z.string().min(2),
+  questions: z
+    .array(
+      z.object({
+        q: z.string().min(3),
+        sample: z.string().min(20),
+        phrases: z.array(z.string()).optional(),
+      })
+    )
+    .min(3),
+});
+
+export const speakingPart2Schema = z.object({
+  topic: z.string().min(5),
+  points: z.array(z.string()).min(3),
+  sample: z.string().min(100),
+  usefulPhrases: z.array(z.string()).min(3),
+  tipUz: z.string(),
+});
+
+export const speakingPart3Schema = z.object({
+  theme: z.string(),
+  question: z.string().min(5),
+  sample: z.string().min(50),
+  usefulPhrases: z.array(z.string()).min(3),
+  tipUz: z.string(),
+});
+
+export const speakingTestSchema = z.object({
+  id: z.string(),
+  title: z.string().min(2),
+  topic: z.string(),
+  part1: speakingPart1Schema,
+  part2: speakingPart2Schema,
+  part3: z.array(speakingPart3Schema).min(1),
+});
+
+export type GeneratedSpeakingTest = z.infer<typeof speakingTestSchema>;
