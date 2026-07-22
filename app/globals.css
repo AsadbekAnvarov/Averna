@@ -620,3 +620,140 @@ html.light .card-hover:hover {
 html.light :focus-visible {
   outline-color: #0e7fa0;
 }
+
+
+
+
+/* ===================================================================
+   JUICE PASS — richer, more vibrant brand visuals (dark mode).
+   Appended last so these enhance the earlier definitions. Light-mode
+   rules are scoped with html.light and keep higher specificity, so the
+   calm light theme is unaffected.
+   =================================================================== */
+
+/* More saturated, colourful ambient background used across all pages */
+.premium-gradient {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(0, 255, 148, 0.20), transparent 42%),
+    radial-gradient(circle at 88% 18%, rgba(0, 229, 255, 0.20), transparent 44%),
+    radial-gradient(circle at 78% 88%, rgba(177, 78, 255, 0.18), transparent 46%),
+    radial-gradient(circle at 22% 92%, rgba(255, 61, 187, 0.14), transparent 46%),
+    linear-gradient(135deg, #04070d 0%, #061318 55%, #04110c 100%);
+  background-attachment: fixed;
+}
+
+/* Richer, more luminous hero gradient */
+.animated-gradient {
+  background: linear-gradient(120deg,
+    rgba(11, 143, 106, 0.42),
+    rgba(0, 229, 255, 0.28),
+    rgba(177, 78, 255, 0.22),
+    rgba(0, 255, 148, 0.30));
+  background-size: 300% 300%;
+  animation: gradient-shift 14s ease infinite;
+}
+
+/* Stronger, multi-colour hover glow on glass cards */
+.glass:hover {
+  box-shadow:
+    0 12px 44px -12px rgba(0, 229, 255, 0.28),
+    0 0 0 1px rgba(0, 255, 148, 0.10) inset;
+  border-color: rgba(0, 229, 255, 0.28);
+}
+
+/* Gradient hairline-bordered card (opt-in, for feature/hero cards) */
+.glass-vibrant {
+  position: relative;
+  background: rgba(10, 22, 30, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+.glass-vibrant::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 255, 148, 0.6), rgba(0, 229, 255, 0.4), rgba(177, 78, 255, 0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+html.light .glass-vibrant { background: rgba(255, 255, 255, 0.9); }
+
+/* Brand gradient TEXT (great for headings / big numbers) */
+.text-gradient {
+  background: linear-gradient(100deg, #00ff94 0%, #00e5ff 45%, #b14eff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.text-gradient-animate {
+  background: linear-gradient(100deg, #00ff94, #00e5ff, #b14eff, #00ff94);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: text-gradient-move 6s ease infinite;
+}
+@keyframes text-gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* Keep gradient text vivid but readable in light mode */
+html.light .text-gradient,
+html.light .text-gradient-animate {
+  background: linear-gradient(100deg, #0a8f5e, #0e7fa0, #7b3fd1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Animated aurora mesh — opt-in, for hero / landing backdrops.
+   Place inside a position:relative, overflow:hidden container. */
+.aurora-bg { position: relative; isolation: isolate; }
+.aurora-bg::before,
+.aurora-bg::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: -1;
+  background:
+    radial-gradient(40% 40% at 20% 30%, rgba(0, 255, 148, 0.22), transparent 60%),
+    radial-gradient(40% 40% at 80% 20%, rgba(0, 229, 255, 0.20), transparent 60%),
+    radial-gradient(45% 45% at 60% 80%, rgba(177, 78, 255, 0.20), transparent 60%);
+  filter: blur(30px);
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+.aurora-bg::after {
+  animation-duration: 24s;
+  animation-direction: alternate-reverse;
+  opacity: 0.7;
+}
+@keyframes aurora-drift {
+  0% { transform: translate3d(-4%, -2%, 0) rotate(0deg) scale(1); }
+  50% { transform: translate3d(3%, 2%, 0) rotate(8deg) scale(1.08); }
+  100% { transform: translate3d(2%, -3%, 0) rotate(-6deg) scale(1.04); }
+}
+html.light .aurora-bg::before,
+html.light .aurora-bg::after {
+  background:
+    radial-gradient(40% 40% at 20% 30%, rgba(13, 148, 96, 0.12), transparent 60%),
+    radial-gradient(40% 40% at 80% 20%, rgba(14, 165, 200, 0.10), transparent 60%),
+    radial-gradient(45% 45% at 60% 80%, rgba(124, 92, 220, 0.10), transparent 60%);
+}
+
+/* Soft brand glow ring — for icons / avatars / featured tiles */
+.glow-ring { box-shadow: 0 0 0 1px rgba(0, 255, 148, 0.25), 0 0 24px -6px rgba(0, 255, 148, 0.45); }
+
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient-animate { animation: none; }
+  .aurora-bg::before, .aurora-bg::after { animation: none; }
+}
