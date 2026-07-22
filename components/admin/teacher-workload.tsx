@@ -20,7 +20,7 @@ export async function TeacherWorkload() {
       const students = t.groups.reduce((sum, g) => sum + g.students.length, 0);
       return {
         id: t.id,
-        name: t.user.name ?? "Teacher",
+        name: t.user.name ?? "Oʻqituvchi",
         groups: t.groups.length,
         students,
         isSecond: t.isSecondTeacher,
@@ -36,19 +36,19 @@ export async function TeacherWorkload() {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-averna-blue">
-            <Scale className="h-5 w-5" /> Teacher Workload
+            <Scale className="h-5 w-5" /> Oʻqituvchi yuklamasi
           </span>
-          <span className="text-xs font-normal text-gray-400">avg {avg} / teacher</span>
+          <span className="text-xs font-normal text-gray-400">oʻrtacha {avg} / oʻqituvchi</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
         {rows.length === 0 ? (
           <EmptyState
             icon={Scale}
-            title="No teachers yet"
-            description="Add teachers and assign them groups — their workload balance will appear here."
+            title="Hozircha oʻqituvchilar yoʻq"
+            description="Oʻqituvchilar qoʻshing va ularga guruhlar biriktiring — yuklama muvozanati shu yerda koʻrinadi."
             accent="text-averna-blue"
-            action={{ label: "Manage teachers", href: "/admin/teachers" }}
+            action={{ label: "Oʻqituvchilarni boshqarish", href: "/admin/teachers" }}
             compact
           />
         ) : (
@@ -68,7 +68,7 @@ export async function TeacherWorkload() {
                       )}
                       {overloaded && (
                         <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-red-400/20 text-red-400 shrink-0">
-                          high load
+                          yuqori yuklama
                         </span>
                       )}
                     </span>

@@ -24,35 +24,35 @@ export async function AdminAttentionBar() {
     unplaced > 0 && {
       href: "/admin/dashboard#enroll",
       icon: UserPlus,
-      label: `${unplaced} to place`,
+      label: `${unplaced} ta joylashtirish kerak`,
       cls: "border-averna-pink/30 bg-averna-pink/10 text-averna-pink hover:border-averna-pink/60",
     },
     pendingPayments > 0 && {
       href: "/admin/finance",
       icon: Wallet,
-      label: `${pendingPayments} payment${pendingPayments === 1 ? "" : "s"} pending`,
+      label: `${pendingPayments} ta toʻlov kutilmoqda`,
       cls: "border-amber-400/30 bg-amber-400/10 text-amber-300 hover:border-amber-400/60",
     },
     pendingRewards > 0 && {
       href: "/admin/rewards",
       icon: Gift,
-      label: `${pendingRewards} reward request${pendingRewards === 1 ? "" : "s"}`,
+      label: `${pendingRewards} ta mukofot soʻrovi`,
       cls: "border-averna-purple/30 bg-averna-purple/10 text-averna-purple hover:border-averna-purple/60",
     },
     overloaded > 0 && {
       href: "/admin/teachers",
       icon: Scale,
-      label: `${overloaded} teacher${overloaded === 1 ? "" : "s"} overloaded`,
+      label: `${overloaded} ta oʻqituvchi ortiqcha yuklangan`,
       cls: "border-red-400/30 bg-red-400/10 text-red-300 hover:border-red-400/60",
     },
   ].filter(Boolean) as { href: string; icon: any; label: string; cls: string }[];
 
   return (
     <div className="flex flex-wrap items-center gap-2.5 mb-8">
-      <span className="text-sm text-gray-400 font-medium">Needs attention:</span>
+      <span className="text-sm text-gray-400 font-medium">Eʼtibor talab qiladi:</span>
       {chips.length === 0 ? (
         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-averna-neon/30 bg-averna-neon/10 text-averna-neon text-sm">
-          <CheckCircle2 className="h-4 w-4" /> Everything looks healthy
+          <CheckCircle2 className="h-4 w-4" /> Hammasi joyida
         </span>
       ) : (
         chips.map((c) => {

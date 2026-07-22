@@ -38,19 +38,19 @@ export function SeedDemoButton() {
       >
         {status === "loading" ? (
           <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Seeding…
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Yuklanmoqda…
           </>
         ) : status === "done" ? (
           <>
-            <CheckCircle2 className="mr-2 h-4 w-4" /> Done!
+            <CheckCircle2 className="mr-2 h-4 w-4" /> Bajarildi!
           </>
         ) : (
           <>
-            <Database className="mr-2 h-4 w-4" /> Load demo data
+            <Database className="mr-2 h-4 w-4" /> Demo maʼlumot yuklash
           </>
         )}
       </Button>
-      {status === "error" && <span className="text-xs text-red-400">Failed — try again.</span>}
+      {status === "error" && <span className="text-xs text-red-400">Xatolik — qayta urining.</span>}
     </div>
   );
 }

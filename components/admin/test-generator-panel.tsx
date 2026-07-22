@@ -78,7 +78,7 @@ export function TestGeneratorPanel() {
   const [bulkLog, setBulkLog] = useState<BulkLogEntry[]>([]);
   const cancelRef = useRef(false);
 
-  const partWord = module === "listening" ? "section" : "passage";
+  const partWord = module === "listening" ? "boʻlim" : "matn";
 
   /** Build the /generate-test request body for a given topic, using the current module + params. */
   const buildGenerateBody = (topicStr: string) =>
@@ -103,7 +103,7 @@ export function TestGeneratorPanel() {
 
   const generate = async () => {
     if (!topic.trim()) {
-      toast.error("Enter a topic first (e.g. 'Ocean exploration').");
+      toast.error("Avval mavzu kiriting (masalan, 'Okean tadqiqoti').");
       return;
     }
     setLoading(true);
@@ -115,11 +115,11 @@ export function TestGeneratorPanel() {
         body: JSON.stringify(buildGenerateBody(topic.trim())),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Generation failed");
+      if (!res.ok) throw new Error(data.error || "Yaratishda xatolik");
       setPreview(data.test);
-      toast.success("Draft generated — review below, then publish.");
+      toast.success("Qoralama yaratildi — quyida koʻrib chiqing va eʼlon qiling.");
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Generation failed");
+      toast.error(e instanceof Error ? e.message : "Yaratishda xatolik");
     } finally {
       setLoading(false);
     }
@@ -135,13 +135,13 @@ export function TestGeneratorPanel() {
         body: JSON.stringify(buildSaveBody(preview, topic)),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Save failed");
-      toast.success("Published! Students can now take this test.");
+      if (!res.ok) throw new Error(data.error || "Saqlashda xatolik");
+      toast.success("Eʼlon qilindi! Endi oʻquvchilar bu testni yechishi mumkin.");
       setPreview(null);
       setTopic("");
       router.refresh();
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Save failed");
+      toast.error(e instanceof Error ? e.message : "Saqlashda xatolik");
     } finally {
       setSaving(false);
     }
@@ -162,7 +162,7 @@ export function TestGeneratorPanel() {
   const runBulk = async () => {
     const topics = resolveBulkTopics();
     if (topics.length === 0) {
-      toast.error("Enter a topic, or a list of themes (one per line).");
+      toast.error("Mavzu yoki mavzular roʻyxatini kiriting (har birini yangi qatordan).");
       return;
     }
     cancelRef.current = false;
@@ -207,8 +207,8 @@ export function TestGeneratorPanel() {
 
     setBulkRunning(false);
     router.refresh();
-    if (cancelRef.current) toast.info(`Stopped. ${ok} published, ${failed} failed.`);
-    else toast.success(`Bulk finished: ${ok} published${failed ? `, ${failed} failed` : ""}.`);
+    if (cancelRef.current) toast.info(`Toʻxtatildi. ${ok} ta eʼlon qilindi, ${failed} ta xato.`);
+    else toast.success(`Yakunlandi: ${ok} ta eʼlon qilindi${failed ? `, ${failed} ta xato` : ""}.`);
   };
 
   const cancelBulk = () => {
@@ -223,10 +223,10 @@ export function TestGeneratorPanel() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-purple">
           <Sparkles className="h-5 w-5" />
-          Generate a Test
+          Test yaratish
         </CardTitle>
         <CardDescription>
-          Creates brand-new, original IELTS-style content. Review a single draft before publishing, or switch to Bulk to fill the bank with many at once.
+          Yangi, original IELTS uslubidagi kontent yaratadi. Bitta qoralamani koʻrib chiqib eʼlon qiling yoki bankni tez toʻldirish uchun &ldquo;Koʻp&rdquo; rejimiga oʻting.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -238,7 +238,7 @@ export function TestGeneratorPanel() {
             disabled={bulkRunning}
             className={`px-3 py-1.5 text-sm rounded-md transition ${!bulkMode ? "bg-averna-purple text-white" : "text-gray-400 hover:text-white"}`}
           >
-            Single
+            Bitta
           </button>
           <button
             type="button"
@@ -246,13 +246,13 @@ export function TestGeneratorPanel() {
             disabled={bulkRunning}
             className={`px-3 py-1.5 text-sm rounded-md transition flex items-center gap-1.5 ${bulkMode ? "bg-averna-purple text-white" : "text-gray-400 hover:text-white"}`}
           >
-            <Layers className="h-3.5 w-3.5" /> Bulk
+            <Layers className="h-3.5 w-3.5" /> Koʻp
           </button>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-3">
           <div>
-            <label className="text-xs text-gray-400">Module</label>
+            <label className="text-xs text-gray-400">Modul</label>
             <select
               value={module}
               onChange={(e) => {
@@ -266,63 +266,63 @@ export function TestGeneratorPanel() {
             >
               <option value="reading">Reading</option>
               <option value="listening">Listening</option>
-              <option value="writing">Writing (Task 2 essay)</option>
-              <option value="writing-task1">Writing Task 1 (chart)</option>
-              <option value="speaking">Speaking (full set)</option>
+              <option value="writing">Writing (Task 2 esse)</option>
+              <option value="writing-task1">Writing Task 1 (grafik)</option>
+              <option value="speaking">Speaking (toʻliq toʻplam)</option>
             </select>
           </div>
           {isTask1 && (
             <div>
-              <label className="text-xs text-gray-400">Chart type</label>
+              <label className="text-xs text-gray-400">Grafik turi</label>
               <select
                 value={chartType}
                 onChange={(e) => setChartType(e.target.value as "auto" | "bar" | "line" | "pie")}
                 className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
               >
-                <option value="auto">Auto (let AI choose)</option>
-                <option value="bar">Bar chart</option>
-                <option value="line">Line graph</option>
-                <option value="pie">Pie chart</option>
+                <option value="auto">Avto (AI tanlaydi)</option>
+                <option value="bar">Ustunli grafik</option>
+                <option value="line">Chiziqli grafik</option>
+                <option value="pie">Doiraviy diagramma</option>
               </select>
             </div>
           )}
           {!isWriting && !isSpeaking && !isTask1 && (
             <div>
-              <label className="text-xs text-gray-400">{module === "listening" ? "Sections" : "Passages"}</label>
+              <label className="text-xs text-gray-400">{module === "listening" ? "Boʻlimlar" : "Matnlar"}</label>
               <select
                 value={count}
                 onChange={(e) => setCount(Number(e.target.value))}
                 className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
               >
-                <option value={1}>1 {partWord} (fast)</option>
-                <option value={2}>2 {partWord}s</option>
-                <option value={3}>3 {partWord}s{module === "reading" ? " (full test)" : ""}</option>
-                {module === "listening" && <option value={4}>4 sections (full test)</option>}
+                <option value={1}>1 {partWord} (tez)</option>
+                <option value={2}>2 {partWord}</option>
+                <option value={3}>3 {partWord}{module === "reading" ? " (toʻliq test)" : ""}</option>
+                {module === "listening" && <option value={4}>4 boʻlim (toʻliq test)</option>}
               </select>
             </div>
           )}
           <div className="sm:col-span-2">
-            <label className="text-xs text-gray-400">Theme / topic</label>
-            <Input value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g. Ocean exploration, Urban planning…" className="bg-background/50" />
+            <label className="text-xs text-gray-400">Mavzu</label>
+            <Input value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="masalan, Okean tadqiqoti, Shaharsozlik…" className="bg-background/50" />
           </div>
           {!isSpeaking && !isTask1 && (
           <div className="sm:col-span-2">
-            <label className="text-xs text-gray-400">{isWriting ? "Essay type (optional)" : "Difficulty"}</label>
+            <label className="text-xs text-gray-400">{isWriting ? "Esse turi (ixtiyoriy)" : "Qiyinlik"}</label>
             {module === "listening" ? (
               <select
                 value={difficulty}
                 onChange={(e) => setDifficulty(e.target.value as "Easy" | "Medium" | "Hard")}
                 className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
               >
-                <option value="Easy">Easy</option>
-                <option value="Medium">Medium</option>
-                <option value="Hard">Hard</option>
+                <option value="Easy">Oson</option>
+                <option value="Medium">Oʻrta</option>
+                <option value="Hard">Qiyin</option>
               </select>
             ) : (
               <Input
                 value={level}
                 onChange={(e) => setLevel(e.target.value)}
-                placeholder={isWriting ? "e.g. Opinion, Discussion, Problem & Solution" : ""}
+                placeholder={isWriting ? "masalan, Opinion, Discussion, Problem & Solution" : ""}
                 className="bg-background/50"
               />
             )}
@@ -332,18 +332,18 @@ export function TestGeneratorPanel() {
         {!bulkMode && (
         <p className="text-[11px] text-gray-500">
           {isTask1
-            ? "Generates one original Task 1 task with real chart data (rendered as an SVG bar/line/pie graph) plus a band 7.5–8 model answer, useful phrases and a strategy tip."
+            ? "Bitta original Task 1 topshirigʻini haqiqiy grafik maʼlumotlari (SVG ustunli/chiziqli/doiraviy grafik) hamda band 7.5–8 namuna javob, foydali iboralar va strategiya bilan yaratadi."
             : isWriting
-            ? "Generates one original Task 2 essay prompt with a band 7.5–8 model answer, useful phrases and a strategy tip."
+            ? "Bitta original Task 2 esse topshirigʻini band 7.5–8 namuna javob, foydali iboralar va strategiya bilan yaratadi."
             : isSpeaking
-            ? "Generates a full original Speaking set: a Part 1 topic, a Part 2 cue card and Part 3 discussion questions — each with model answers, useful phrases and tips."
-            : `Tip: on the Hobby plan, generate 1 ${partWord} at a time to avoid function timeouts.`}
+            ? "Toʻliq original Speaking toʻplamini yaratadi: Part 1 mavzusi, Part 2 kartochkasi va Part 3 muhokama savollari — har biri namuna javoblar, foydali iboralar va maslahatlar bilan."
+            : `Maslahat: Hobby rejasida funksiya vaqti tugamasligi uchun bir vaqtda 1 ${partWord} yarating.`}
         </p>
         )}
 
         {!bulkMode && (
           <Button onClick={generate} disabled={loading} className="neon-button bg-averna-purple hover:bg-averna-purple/80">
-            {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating…</> : <><Sparkles className="mr-2 h-4 w-4" /> Generate draft</>}
+            {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Yaratilmoqda…</> : <><Sparkles className="mr-2 h-4 w-4" /> Qoralama yaratish</>}
           </Button>
         )}
 
@@ -352,7 +352,7 @@ export function TestGeneratorPanel() {
           <div className="rounded-xl border border-averna-purple/30 bg-averna-purple/5 p-4 space-y-3">
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
-                <label className="text-xs text-gray-400">How many (using the topic above)</label>
+                <label className="text-xs text-gray-400">Nechta (yuqoridagi mavzu boʻyicha)</label>
                 <select
                   value={bulkCount}
                   onChange={(e) => setBulkCount(Number(e.target.value))}
@@ -360,19 +360,19 @@ export function TestGeneratorPanel() {
                   className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white disabled:opacity-50"
                 >
                   {[5, 10, 20, 30, 50].map((n) => (
-                    <option key={n} value={n}>{n} items</option>
+                    <option key={n} value={n}>{n} ta</option>
                   ))}
                 </select>
               </div>
               <div className="flex items-end">
                 <p className="text-[11px] text-gray-500">
-                  Each item reuses the module &amp; settings above. A rotating angle is added to the topic so the batch stays varied.
+                  Har bir element yuqoridagi modul va sozlamalardan foydalanadi. Xilma-xillik uchun mavzuga aylanuvchi jihat qoʻshiladi.
                 </p>
               </div>
             </div>
 
             <div>
-              <label className="text-xs text-gray-400">…or paste specific themes (one per line — overrides the count, max 50)</label>
+              <label className="text-xs text-gray-400">…yoki aniq mavzularni joylashtiring (har biri yangi qatordan — sonni bekor qiladi, koʻpi 50)</label>
               <textarea
                 value={bulkThemes}
                 onChange={(e) => setBulkThemes(e.target.value)}
@@ -386,10 +386,10 @@ export function TestGeneratorPanel() {
             {bulkProgress && (
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs text-gray-400">
-                  <span>{bulkProgress.done} / {bulkProgress.total} processed</span>
+                  <span>{bulkProgress.done} / {bulkProgress.total} bajarildi</span>
                   <span>
-                    <span className="text-averna-neon">{bulkProgress.ok} published</span>
-                    {bulkProgress.failed > 0 && <span className="text-red-400"> · {bulkProgress.failed} failed</span>}
+                    <span className="text-averna-neon">{bulkProgress.ok} eʼlon qilindi</span>
+                    {bulkProgress.failed > 0 && <span className="text-red-400"> · {bulkProgress.failed} xato</span>}
                   </span>
                 </div>
                 <div className="h-2 rounded-full bg-white/10 overflow-hidden">
@@ -404,16 +404,16 @@ export function TestGeneratorPanel() {
             <div className="flex gap-2">
               {bulkRunning ? (
                 <Button onClick={cancelBulk} variant="outline" className="border-red-500/50 text-red-300">
-                  <StopCircle className="mr-2 h-4 w-4" /> Stop after current
+                  <StopCircle className="mr-2 h-4 w-4" /> Joriysidan keyin toʻxtatish
                 </Button>
               ) : (
                 <Button onClick={runBulk} className="neon-button bg-averna-purple hover:bg-averna-purple/80">
-                  <Layers className="mr-2 h-4 w-4" /> Generate &amp; publish
+                  <Layers className="mr-2 h-4 w-4" /> Yaratish va eʼlon qilish
                 </Button>
               )}
               {bulkRunning && (
                 <span className="flex items-center gap-2 text-sm text-averna-purple">
-                  <Loader2 className="h-4 w-4 animate-spin" /> Working… keep this tab open
+                  <Loader2 className="h-4 w-4 animate-spin" /> Ishlayapti… bu oynani ochiq qoldiring
                 </span>
               )}
             </div>
@@ -436,7 +436,7 @@ export function TestGeneratorPanel() {
             )}
 
             <p className="text-[11px] text-gray-500">
-              Tip: full Reading/Listening tests are slow — for large batches keep the count/sections small, or run overnight. Individual failures are skipped and logged; the rest keep going.
+              Maslahat: toʻliq Reading/Listening testlari sekin — katta partiyalar uchun boʻlimlar sonini kichik tuting. Alohida xatolar oʻtkazib yuboriladi va qayd etiladi; qolganlari davom etadi.
             </p>
           </div>
         )}
@@ -454,7 +454,7 @@ export function TestGeneratorPanel() {
                     </span>
                     <p className="text-sm text-gray-300 mt-2 whitespace-pre-line line-clamp-4">{preview.prompt}</p>
                     <p className="text-xs text-gray-500 mt-2">
-                      Task 1 with auto-rendered chart · {preview.sampleAnswer ? `${preview.sampleAnswer.trim().split(/\s+/).length}-word model answer` : "model answer included"}
+                      Avto-grafikli Task 1 · {preview.sampleAnswer ? `${preview.sampleAnswer.trim().split(/\s+/).length} soʻzlik namuna javob` : "namuna javob mavjud"}
                     </p>
                   </>
                 ) : isSpeaking ? (
@@ -465,9 +465,9 @@ export function TestGeneratorPanel() {
                       </span>
                     )}
                     <ul className="mt-2 space-y-0.5 text-xs text-gray-400">
-                      <li className="truncate">• Part 1 · {preview.part1?.name} ({preview.part1?.questions?.length ?? 0} questions)</li>
+                      <li className="truncate">• Part 1 · {preview.part1?.name} ({preview.part1?.questions?.length ?? 0} ta savol)</li>
                       <li className="truncate">• Part 2 · {preview.part2?.topic}</li>
-                      <li className="truncate">• Part 3 · {preview.part3?.length ?? 0} discussion question{(preview.part3?.length ?? 0) === 1 ? "" : "s"}</li>
+                      <li className="truncate">• Part 3 · {preview.part3?.length ?? 0} ta muhokama savoli</li>
                     </ul>
                   </>
                 ) : isWriting ? (
@@ -479,18 +479,18 @@ export function TestGeneratorPanel() {
                     )}
                     <p className="text-sm text-gray-300 mt-2 whitespace-pre-line line-clamp-4">{preview.prompt}</p>
                     <p className="text-xs text-gray-500 mt-2">
-                      Task 2 essay prompt · {preview.sampleAnswer ? `${preview.sampleAnswer.trim().split(/\s+/).length}-word model answer` : "model answer included"}
+                      Task 2 esse topshirigʻi · {preview.sampleAnswer ? `${preview.sampleAnswer.trim().split(/\s+/).length} soʻzlik namuna javob` : "namuna javob mavjud"}
                     </p>
                   </>
                 ) : (
                   <>
                     <p className="text-sm text-gray-400">{preview.description}</p>
                     <p className="text-xs text-gray-500 mt-1">
-                      {parts.length} {partWord}{parts.length === 1 ? "" : "s"} · {questionCount} questions
+                      {parts.length} {partWord} · {questionCount} ta savol
                     </p>
                     <ul className="mt-2 space-y-0.5">
                       {parts.map((p, i) => (
-                        <li key={i} className="text-xs text-gray-400 truncate">• {p.title} ({p.questions?.length ?? 0} Q)</li>
+                        <li key={i} className="text-xs text-gray-400 truncate">• {p.title} ({p.questions?.length ?? 0} savol)</li>
                       ))}
                     </ul>
                   </>
@@ -499,9 +499,9 @@ export function TestGeneratorPanel() {
             </div>
             <div className="flex gap-2 mt-4">
               <Button onClick={publish} disabled={saving} className="neon-button bg-averna-primary hover:bg-averna-light">
-                {saving ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Publishing…</> : <><CheckCircle2 className="mr-2 h-4 w-4" /> Publish for students</>}
+                {saving ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Eʼlon qilinmoqda…</> : <><CheckCircle2 className="mr-2 h-4 w-4" /> Oʻquvchilar uchun eʼlon qilish</>}
               </Button>
-              <Button variant="outline" onClick={() => setPreview(null)} disabled={saving}>Discard</Button>
+              <Button variant="outline" onClick={() => setPreview(null)} disabled={saving}>Bekor qilish</Button>
             </div>
           </div>
         )}
