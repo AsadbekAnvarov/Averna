@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/toast";
 import { Sparkles, Loader2, CheckCircle2, FileText } from "lucide-react";
 
-type Module = "reading" | "listening" | "writing" | "speaking";
+type Module = "reading" | "listening" | "writing" | "writing-task1" | "speaking";
 
 interface GeneratedPreview {
   title: string;
@@ -24,6 +24,8 @@ interface GeneratedPreview {
   part1?: { name: string; questions: unknown[] };
   part2?: { topic: string };
   part3?: unknown[];
+  // Writing Task 1 chart data
+  chart?: { kind: string }[];
 }
 
 export function TestGeneratorPanel() {
@@ -33,7 +35,9 @@ export function TestGeneratorPanel() {
   const [level, setLevel] = useState("IELTS band 6.0-7.5");
   const isWriting = module === "writing";
   const isSpeaking = module === "speaking";
+  const isTask1 = module === "writing-task1";
   const [difficulty, setDifficulty] = useState<"Easy" | "Medium" | "Hard">("Medium");
+  const [chartType, setChartType] = useState<"auto" | "bar" | "line" | "pie">("auto");
   const [count, setCount] = useState(1);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -59,6 +63,8 @@ export function TestGeneratorPanel() {
             ? { module, topic: topic.trim(), level }
             : module === "speaking"
             ? { module, topic: topic.trim() }
+            : module === "writing-task1"
+            ? { module, topic: topic.trim(), chartType }
             : { module, topic: topic.trim(), level, count }
         ),
       });
@@ -127,10 +133,26 @@ export function TestGeneratorPanel() {
               <option value="reading">Reading</option>
               <option value="listening">Listening</option>
               <option value="writing">Writing (Task 2 essay)</option>
+              <option value="writing-task1">Writing Task 1 (chart)</option>
               <option value="speaking">Speaking (full set)</option>
             </select>
           </div>
-          {!isWriting && !isSpeaking && (
+          {isTask1 && (
+            <div>
+              <label className="text-xs text-gray-400">Chart type</label>
+              <select
+                value={chartType}
+                onChange={(e) => setChartType(e.target.value as "auto" | "bar" | "line" | "pie")}
+                className="w-full h-10 rounded-md bg-background/50 border border-input px-3 text-sm text-white"
+              >
+                <option value="auto">Auto (let AI choose)</option>
+                <option value="bar">Bar chart</option>
+                <option value="line">Line graph</option>
+                <option value="pie">Pie chart</option>
+              </select>
+            </div>
+          )}
+          {!isWriting && !isSpeaking && !isTask1 && (
             <div>
               <label className="text-xs text-gray-400">{module === "listening" ? "Sections" : "Passages"}</label>
               <select
@@ -149,7 +171,7 @@ export function TestGeneratorPanel() {
             <label className="text-xs text-gray-400">Theme / topic</label>
             <Input value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g. Ocean exploration, Urban planning…" className="bg-background/50" />
           </div>
-          {!isSpeaking && (
+          {!isSpeaking && !isTask1 && (
           <div className="sm:col-span-2">
             <label className="text-xs text-gray-400">{isWriting ? "Essay type (optional)" : "Difficulty"}</label>
             {module === "listening" ? (
@@ -174,7 +196,9 @@ export function TestGeneratorPanel() {
           )}
         </div>
         <p className="text-[11px] text-gray-500">
-          {isWriting
+          {isTask1
+            ? "Generates one original Task 1 task with real chart data (rendered as an SVG bar/line/pie graph) plus a band 7.5–8 model answer, useful phrases and a strategy tip."
+            : isWriting
             ? "Generates one original Task 2 essay prompt with a band 7.5–8 model answer, useful phrases and a strategy tip."
             : isSpeaking
             ? "Generates a full original Speaking set: a Part 1 topic, a Part 2 cue card and Part 3 discussion questions — each with model answers, useful phrases and tips."
@@ -191,7 +215,17 @@ export function TestGeneratorPanel() {
               <FileText className="h-5 w-5 text-averna-cyan shrink-0 mt-0.5" />
               <div className="min-w-0 flex-1">
                 <p className="font-semibold text-white">{preview.title}</p>
-                {isSpeaking ? (
+                {isTask1 ? (
+                  <>
+                    <span className="inline-block text-xs px-2 py-0.5 mt-1 rounded-full bg-averna-cyan/20 text-averna-cyan border border-averna-cyan/40">
+                      {preview.type}{preview.chart?.[0]?.kind ? ` · ${preview.chart[0].kind} chart` : ""}
+                    </span>
+                    <p className="text-sm text-gray-300 mt-2 whitespace-pre-line line-clamp-4">{preview.prompt}</p>
+                    <p className="text-xs text-gray-500 mt-2">
+                      Task 1 with auto-rendered chart · {preview.sampleAnswer ? `${preview.sampleAnswer.trim().split(/\s+/).length}-word model answer` : "model answer included"}
+                    </p>
+                  </>
+                ) : isSpeaking ? (
                   <>
                     {preview.topic && (
                       <span className="inline-block text-xs px-2 py-0.5 mt-1 rounded-full bg-orange-500/20 text-orange-300 border border-orange-400/40">

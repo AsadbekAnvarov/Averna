@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireTeacherOrAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { readingTestSchema, listeningTestSchema, writingPromptSchema, speakingTestSchema } from "@/lib/test-schema";
+import { readingTestSchema, listeningTestSchema, writingPromptSchema, writingTask1Schema, speakingTestSchema } from "@/lib/test-schema";
 
 export const dynamic = "force-dynamic";
 
@@ -39,6 +39,17 @@ export async function POST(req: NextRequest) {
       questions = 0;
       data = t;
       moduleKey = "SPEAKING";
+    } else if (module === "writing-task1") {
+      const parsed = writingTask1Schema.safeParse(body.test);
+      if (!parsed.success) {
+        return NextResponse.json({ error: "Invalid or incomplete Task 1 data." }, { status: 400 });
+      }
+      const t = parsed.data;
+      title = t.title;
+      description = t.type || "";
+      questions = 0;
+      data = t;
+      moduleKey = "WRITING_TASK1";
     } else if (module === "writing") {
       const parsed = writingPromptSchema.safeParse(body.test);
       if (!parsed.success) {

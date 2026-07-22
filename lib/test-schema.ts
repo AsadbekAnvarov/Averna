@@ -130,3 +130,65 @@ export const speakingTestSchema = z.object({
 });
 
 export type GeneratedSpeakingTest = z.infer<typeof speakingTestSchema>;
+
+
+
+
+/**
+ * Validation schema for a generated IELTS Writing Task 1 task with structured
+ * chart data. Mirrors WritingPrompt in lib/writing-data.ts with a required
+ * `chart` (Task1ChartData[]) that the Task1Chart component renders as SVG.
+ * A superRefine guarantees each series' value count matches its axis labels so
+ * the chart always renders correctly.
+ */
+export const task1ChartSchema = z.discriminatedUnion("kind", [
+  z.object({
+    kind: z.literal("bar"),
+    unit: z.string().optional(),
+    groups: z.array(z.string()).min(2),
+    series: z.array(z.object({ name: z.string(), values: z.array(z.number()) })).min(1),
+  }),
+  z.object({
+    kind: z.literal("line"),
+    unit: z.string().optional(),
+    xLabels: z.array(z.string()).min(2),
+    series: z.array(z.object({ name: z.string(), values: z.array(z.number()) })).min(1),
+  }),
+  z.object({
+    kind: z.literal("pie"),
+    unit: z.string().optional(),
+    title: z.string().optional(),
+    slices: z.array(z.object({ label: z.string(), value: z.number() })).min(2),
+  }),
+]);
+
+export const writingTask1Schema = z
+  .object({
+    id: z.string(),
+    title: z.string().min(2),
+    prompt: z.string().min(20),
+    type: z.string(),
+    chart: z.array(task1ChartSchema).min(1),
+    sampleAnswer: z.string().min(100),
+    usefulPhrases: z.array(z.string()).min(3),
+    strategyEn: z.string(),
+    strategyUz: z.string(),
+  })
+  .superRefine((data, ctx) => {
+    data.chart.forEach((c, i) => {
+      if (c.kind === "bar" || c.kind === "line") {
+        const labels = c.kind === "bar" ? c.groups : c.xLabels;
+        c.series.forEach((s, j) => {
+          if (s.values.length !== labels.length) {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              message: `chart[${i}].series[${j}] has ${s.values.length} values but there are ${labels.length} ${c.kind === "bar" ? "groups" : "xLabels"}.`,
+              path: ["chart", i, "series", j, "values"],
+            });
+          }
+        });
+      }
+    });
+  });
+
+export type GeneratedWritingTask1 = z.infer<typeof writingTask1Schema>;
