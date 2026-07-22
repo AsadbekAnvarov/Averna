@@ -3,7 +3,7 @@
 import { getLevelInfo, initialsOf } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
-import { Share2, Flame, Trophy, Star, Target, Sparkles } from "lucide-react";
+import { Share2, Flame, Trophy, Star, Target, Sparkles, Download } from "lucide-react";
 
 interface PassportProps {
   name: string;
@@ -36,17 +36,55 @@ export function ProfilePassport({
   const C = 2 * Math.PI * R;
   const dash = (lvl.into / 100) * C;
 
+  const cardUrl = () => {
+    const p = new URLSearchParams({
+      name,
+      level: String(lvl.level),
+      title: lvl.title,
+      points: String(points),
+      streak: String(currentStreak),
+    });
+    return `/api/og/achievement?${p.toString()}`;
+  };
+
   const share = async () => {
-    const text = `I'm ${name} — Level ${lvl.level} "${lvl.title}" on Averna 🎓 with ${points.toLocaleString()} points and a ${currentStreak}-day streak! 🔥`;
+    const text = `I'm ${name} — Level ${lvl.level} "${lvl.title}" on Averna with ${points.toLocaleString()} points and a ${currentStreak}-day streak!`;
     try {
-      if (typeof navigator !== "undefined" && navigator.share) {
-        await navigator.share({ title: "My Averna progress", text });
-      } else if (typeof navigator !== "undefined" && navigator.clipboard) {
-        await navigator.clipboard.writeText(text);
-        toast.success("Progress copied — paste it anywhere to share! 🎉");
+      // Best experience (mobile): share the generated achievement image.
+      const nav = navigator as Navigator & { canShare?: (d: ShareData) => boolean };
+      const res = await fetch(cardUrl());
+      const blob = await res.blob();
+      const file = new File([blob], `averna-level-${lvl.level}.png`, { type: "image/png" });
+      if (nav.canShare && nav.canShare({ files: [file] })) {
+        await nav.share({ files: [file], text, title: "My Averna progress" });
+        return;
       }
+      if (nav.share) {
+        await nav.share({ title: "My Averna progress", text });
+        return;
+      }
+      await navigator.clipboard.writeText(text);
+      toast.success("Progress copied — paste it anywhere to share! 🎉");
     } catch {
-      /* user cancelled share — ignore */
+      /* user cancelled or share unsupported — ignore */
+    }
+  };
+
+  const saveCard = async () => {
+    try {
+      const res = await fetch(cardUrl());
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `averna-level-${lvl.level}.png`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      toast.success("Achievement card saved! 🎉");
+    } catch {
+      toast.error("Couldn't generate the card — please try again.");
     }
   };
 
@@ -127,10 +165,13 @@ export function ProfilePassport({
           </div>
         </div>
 
-        {/* Share */}
-        <div className="shrink-0">
+        {/* Share / Save */}
+        <div className="shrink-0 flex sm:flex-col gap-2">
           <Button onClick={share} className="neon-button bg-averna-primary hover:bg-averna-light">
             <Share2 className="mr-2 h-4 w-4" /> Share
+          </Button>
+          <Button onClick={saveCard} variant="outline" className="border-averna-cyan/40 text-averna-cyan hover:bg-averna-cyan/10">
+            <Download className="mr-2 h-4 w-4" /> Save card
           </Button>
         </div>
       </div>
