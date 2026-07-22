@@ -170,43 +170,45 @@ const TEACHER_NAV: NavSection[] = [
   },
 ];
 
+// Admin portal is used by our fully Uzbek-speaking administrator, so its
+// navigation is presented entirely in Uzbek (o‘zbekcha).
 const ADMIN_NAV: NavSection[] = [
   {
-    label: "Overview",
+    label: "Umumiy koʻrinish",
     items: [
-      { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-      { name: "Analytics", href: "/admin/analytics", icon: BarChart },
-      { name: "Notifications", href: "/notifications", icon: Bell },
+      { name: "Boshqaruv paneli", href: "/admin/dashboard", icon: LayoutDashboard },
+      { name: "Tahlil", href: "/admin/analytics", icon: BarChart },
+      { name: "Bildirishnomalar", href: "/notifications", icon: Bell },
     ],
   },
   {
-    label: "People",
+    label: "Odamlar",
     items: [
-      { name: "Teachers", href: "/admin/teachers", icon: GraduationCap },
-      { name: "Groups", href: "/admin/groups", icon: Users },
+      { name: "Oʻqituvchilar", href: "/admin/teachers", icon: GraduationCap },
+      { name: "Guruhlar", href: "/admin/groups", icon: Users },
     ],
   },
   {
-    label: "Content",
+    label: "Kontent",
     items: [
-      { name: "Study Content", href: "/admin/content", icon: FolderOpen },
-      { name: "Test Generator", href: "/admin/generate-tests", icon: Sparkles },
-      { name: "Announcements", href: "/admin/announcements", icon: Megaphone },
-      { name: "Rewards", href: "/admin/rewards", icon: Gift },
+      { name: "Oʻquv kontenti", href: "/admin/content", icon: FolderOpen },
+      { name: "Test generatori", href: "/admin/generate-tests", icon: Sparkles },
+      { name: "Eʼlonlar", href: "/admin/announcements", icon: Megaphone },
+      { name: "Mukofotlar", href: "/admin/rewards", icon: Gift },
     ],
   },
   {
-    label: "Operations",
+    label: "Operatsiyalar",
     items: [
-      { name: "Finance", href: "/admin/finance", icon: DollarSign },
-      { name: "Audit Logs", href: "/admin/logs", icon: Activity },
-      { name: "System", href: "/admin/system", icon: Settings },
+      { name: "Moliya", href: "/admin/finance", icon: DollarSign },
+      { name: "Audit jurnali", href: "/admin/logs", icon: Activity },
+      { name: "Tizim", href: "/admin/system", icon: Settings },
     ],
   },
   {
-    label: "Communication",
+    label: "Muloqot",
     items: [
-      { name: "Messages", href: "/messages", icon: MessageSquare },
+      { name: "Xabarlar", href: "/messages", icon: MessageSquare },
     ],
   },
 ];
@@ -224,7 +226,7 @@ function isActive(pathname: string, href: string): boolean {
 function getNavForRole(role: string | undefined): { sections: NavSection[]; label: string; accent: string } {
   switch (role) {
     case "ADMIN":
-      return { sections: ADMIN_NAV, label: "Admin Portal", accent: "averna-purple" };
+      return { sections: ADMIN_NAV, label: "Admin paneli", accent: "averna-purple" };
     case "TEACHER":
       return { sections: TEACHER_NAV, label: "Teacher Portal", accent: "averna-cyan" };
     case "STUDENT":
