@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireTeacherOrAdmin } from "@/lib/auth";
-import { generateReadingTest, generateListeningTest, generateWritingPrompt, generateSpeakingTest } from "@/lib/ai";
+import { generateReadingTest, generateListeningTest, generateWritingPrompt, generateWritingTask1, generateSpeakingTest } from "@/lib/ai";
 
 export const dynamic = "force-dynamic";
 // Full-test generation is a large model call; request a longer function budget.
@@ -33,6 +33,15 @@ export async function POST(req: NextRequest) {
     if (module === "speaking") {
       const test = await generateSpeakingTest({ topic });
       return NextResponse.json({ ok: true, module: "speaking", test });
+    }
+
+    if (module === "writing-task1") {
+      const ct = body.chartType;
+      const test = await generateWritingTask1({
+        topic,
+        chartType: ct === "bar" || ct === "line" || ct === "pie" ? ct : "auto",
+      });
+      return NextResponse.json({ ok: true, module: "writing-task1", test });
     }
 
     if (module === "writing") {

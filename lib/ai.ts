@@ -703,3 +703,77 @@ Return ONLY JSON matching exactly:
   const test = speakingTestSchema.parse(parsed);
   return { ...test, id };
 }
+
+
+
+
+/**
+ * Generate a COMPLETE, ORIGINAL IELTS Academic Writing Task 1 task with
+ * STRUCTURED chart data (bar / line / pie) that renders as an SVG via the
+ * Task1Chart component — no images required, so it is fully copyright-safe and
+ * scalable. Never copies real/published exam material. Validated (including
+ * series/label length consistency) against writingTask1Schema.
+ */
+export async function generateWritingTask1(opts: {
+  topic: string;
+  chartType?: "bar" | "line" | "pie" | "auto";
+  id?: string;
+}): Promise<import("@/lib/test-schema").GeneratedWritingTask1> {
+  const { writingTask1Schema } = await import("@/lib/test-schema");
+  if (!hasOpenAI()) {
+    throw new Error("OpenAI is not configured. Set OPENAI_API_KEY to generate content.");
+  }
+
+  const id = opts.id || `gen-${Date.now()}`;
+  const chartType = opts.chartType && opts.chartType !== "auto" ? opts.chartType : null;
+  const client = getOpenAIClient();
+
+  const chartInstruction = chartType
+    ? `Use a "${chartType}" chart.`
+    : `Choose the most suitable single chart kind ("bar", "line" or "pie") for the data.`;
+
+  const systemPrompt = `You are an expert IELTS Writing tutor creating ORIGINAL Academic Task 1 practice for a language school.
+STRICT RULE: Never copy, translate or adapt any real, published or Cambridge IELTS task. Invent brand-new, realistic data yourself.
+
+Create ONE IELTS Academic Writing Task 1 task on the theme "${opts.topic}". ${chartInstruction}
+
+The "chart" field is an array with exactly ONE chart object. Its shape depends on the kind:
+- bar:  {"kind":"bar","unit":string,"groups":[string,...],"series":[{"name":string,"values":[number,...]}]}  — every series MUST have exactly one value per group.
+- line: {"kind":"line","unit":string,"xLabels":[string,...],"series":[{"name":string,"values":[number,...]}]} — every series MUST have exactly one value per xLabel.
+- pie:  {"kind":"pie","unit":string,"title":string,"slices":[{"label":string,"value":number},...]}
+Rules for the data: use 2-4 groups/xLabels (or 3-6 pie slices) and 1-3 series with realistic whole numbers.
+
+Also provide:
+- "prompt": the Task 1 instruction paraphrasing what the visual shows, followed by "Summarise the information by selecting and reporting the main features, and make comparisons where relevant." and "Write at least 150 words." Do NOT restate every number in the prompt.
+- "type": a short label such as "Bar Chart", "Line Graph" or "Pie Chart".
+- "sampleAnswer": an original band 7.5-8 model answer, 170-210 words, with an overview paragraph plus detail paragraphs that quote the ACTUAL numbers from your chart.
+- "usefulPhrases": 5-7 useful Task 1 phrases (trends, comparisons, approximations).
+- "strategyEn": a 2-3 sentence strategy tip in English.
+- "strategyUz": the same tip translated into Uzbek.
+
+Return ONLY JSON:
+{"id":"${id}","title":string,"prompt":string,"type":string,"chart":[<one chart object>],"sampleAnswer":string,"usefulPhrases":[string],"strategyEn":string,"strategyUz":string}`;
+
+  const completion = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: `Generate the original Task 1 task now. Theme: ${opts.topic}.` },
+    ],
+    response_format: { type: "json_object" },
+    temperature: 0.6,
+  });
+
+  const raw = completion.choices[0]?.message?.content;
+  if (!raw) throw new Error("No response from OpenAI");
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("The model returned invalid JSON — please try generating again.");
+  }
+
+  const task = writingTask1Schema.parse(parsed);
+  return { ...task, id };
+}
