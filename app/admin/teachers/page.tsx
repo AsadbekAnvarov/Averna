@@ -84,7 +84,7 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {
-    return <AccountNotice title="Admins only" message="This area is reserved for administrators." />;
+    return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
   const teachers = await db.teacher.findMany({
@@ -100,45 +100,45 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
           icon={GraduationCap}
           iconClassName="text-averna-purple"
-          title={<>Manage <span className="neon-text-purple">Teachers</span></>}
-          subtitle="Add teachers and see their groups & student counts."
+          title={<>Oʻqituvchilarni <span className="neon-text-purple">boshqarish</span></>}
+          subtitle="Oʻqituvchi qoʻshing hamda ularning guruhlari va oʻquvchilar sonini koʻring."
         />
 
-        {searchParams.saved && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Teacher added!</div>}
-        {searchParams.deleted && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Teacher deleted.</div>}
-        {searchParams.error === "exists" && <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">A user with that email already exists.</div>}
-        {searchParams.error === "invalid" && <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">Please fill all fields (password ≥ 6 chars).</div>}
+        {searchParams.saved && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Oʻqituvchi qoʻshildi!</div>}
+        {searchParams.deleted && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Oʻqituvchi oʻchirildi.</div>}
+        {searchParams.error === "exists" && <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">Bunday email bilan foydalanuvchi allaqachon mavjud.</div>}
+        {searchParams.error === "invalid" && <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">Barcha maydonlarni toʻldiring (parol ≥ 6 belgi).</div>}
 
         {/* Add teacher */}
         <Card className="glass border-averna-purple/30 mb-8">
-          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-purple"><Plus className="h-5 w-5" /> Add Teacher</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-purple"><Plus className="h-5 w-5" /> Oʻqituvchi qoʻshish</CardTitle></CardHeader>
           <CardContent>
             <form action={addTeacher} className="grid sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Full name</Label>
-                <Input id="name" name="name" placeholder="e.g., John Carter" className="bg-background/50" required />
+                <Label htmlFor="name">Toʻliq ism</Label>
+                <Input id="name" name="name" placeholder="masalan, Aziz Karimov" className="bg-background/50" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" name="email" type="email" placeholder="teacher@averna.com" className="bg-background/50" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Temporary password</Label>
-                <Input id="password" name="password" placeholder="min 6 characters" className="bg-background/50" required />
+                <Label htmlFor="password">Vaqtinchalik parol</Label>
+                <Input id="password" name="password" placeholder="kamida 6 belgi" className="bg-background/50" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="specialty">Specialty</Label>
-                <Input id="specialty" name="specialty" placeholder="e.g., Writing & Speaking" className="bg-background/50" />
+                <Label htmlFor="specialty">Mutaxassislik</Label>
+                <Input id="specialty" name="specialty" placeholder="masalan, Writing & Speaking" className="bg-background/50" />
               </div>
               <label className="flex items-center gap-2 text-sm text-gray-300 sm:col-span-2">
                 <input type="checkbox" name="isSecond" className="accent-averna-primary" />
-                Second teacher (offers 1-on-1 tutoring)
+                Ikkinchi oʻqituvchi (1-1 dars beradi)
               </label>
               <div className="sm:col-span-2">
-                <Button type="submit" className="w-full neon-button bg-averna-primary hover:bg-averna-light">Create Teacher Account</Button>
+                <Button type="submit" className="w-full neon-button bg-averna-primary hover:bg-averna-light">Oʻqituvchi akkaunti yaratish</Button>
               </div>
             </form>
           </CardContent>
@@ -146,7 +146,7 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
 
         {/* Teacher list */}
         <Card className="glass border-averna-cyan/30">
-          <CardHeader><CardTitle className="text-averna-cyan">All Teachers ({teachers.length})</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="text-averna-cyan">Barcha oʻqituvchilar ({teachers.length})</CardTitle></CardHeader>
           <CardContent className="space-y-3">
             {teachers.map((t) => {
               const students = t.groups.reduce((s, g) => s + g.students.length, 0);
@@ -158,7 +158,7 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
                         {t.user.name}
                         {t.isSecondTeacher && <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded-full bg-averna-pink/20 text-averna-pink border border-averna-pink/30">1-on-1</span>}
                       </p>
-                      <p className="text-xs text-gray-400 truncate">{t.user.email} · {t.specialty ?? "IELTS Instructor"}</p>
+                      <p className="text-xs text-gray-400 truncate">{t.user.email} · {t.specialty ?? "IELTS oʻqituvchisi"}</p>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
                       <div className="flex gap-3 text-xs text-gray-400">
@@ -168,8 +168,8 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
                       <form action={deleteTeacher}>
                         <input type="hidden" name="teacherId" value={t.id} />
                         <ConfirmButton
-                          message={`Delete ${t.user.name}? Their groups will be removed and ${students} student${students === 1 ? "" : "s"} will be unassigned (not deleted). This cannot be undone.`}
-                          title="Delete teacher"
+                          message={`${t.user.name}ni oʻchirasizmi? Uning guruhlari olib tashlanadi va ${students} ta oʻquvchi biriktirilmagan holatga oʻtadi (oʻchirilmaydi). Buni qaytarib boʻlmaydi.`}
+                          title="Oʻqituvchini oʻchirish"
                           className="h-8 w-8 rounded-lg border border-red-500/30 bg-red-500/10 text-red-400 hover:bg-red-500/20"
                         >
                           <Trash2 className="h-4 w-4" />

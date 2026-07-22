@@ -68,7 +68,7 @@ export default async function AdminRewardsPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {
-    return <AccountNotice title="Admins only" message="This area is reserved for administrators." />;
+    return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
   const [pending, rewards] = await Promise.all([
@@ -85,26 +85,26 @@ export default async function AdminRewardsPage() {
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
           icon={Gift}
           iconClassName="text-averna-pink"
-          title={<>Rewards &amp; <span className="neon-text-purple">Requests</span></>}
-          subtitle="Approve student redemptions and manage the rewards catalog."
+          title={<>Mukofotlar va <span className="neon-text-purple">soʻrovlar</span></>}
+          subtitle="Oʻquvchilar soʻrovlarini tasdiqlang va mukofotlar katalogini boshqaring."
         />
 
         {/* Pending requests */}
         <Card className="glass border-averna-pink/30 mb-8">
-          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-pink">Pending Requests ({pending.length})</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-pink">Kutilayotgan soʻrovlar ({pending.length})</CardTitle></CardHeader>
           <CardContent>
             {pending.length === 0 ? (
-              <p className="text-gray-400 text-sm">🎉 No pending requests.</p>
+              <p className="text-gray-400 text-sm">🎉 Kutilayotgan soʻrovlar yoʻq.</p>
             ) : (
               <div className="space-y-2">
                 {pending.map((r) => (
                   <div key={r.id} className="flex items-center justify-between gap-2 p-3 rounded-lg bg-white/5 border border-white/10">
                     <div className="min-w-0">
                       <p className="text-white font-medium">{r.reward.icon} {r.reward.name}</p>
-                      <p className="text-xs text-gray-400">{r.student.user.name} · {r.cost} pts · {formatDate(r.createdAt)}</p>
+                      <p className="text-xs text-gray-400">{r.student.user.name} · {r.cost} ball · {formatDate(r.createdAt)}</p>
                     </div>
                     <div className="flex gap-2 shrink-0">
                       <form action={moderate}>
@@ -127,31 +127,31 @@ export default async function AdminRewardsPage() {
 
         {/* Add reward */}
         <Card className="glass border-averna-cyan/30 mb-8">
-          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><Plus className="h-5 w-5" /> Add Reward</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><Plus className="h-5 w-5" /> Mukofot qoʻshish</CardTitle></CardHeader>
           <CardContent>
             <form action={addReward} className="grid sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" placeholder="e.g., Free Trial Lesson" className="bg-background/50" required />
+                <Label htmlFor="name">Nomi</Label>
+                <Input id="name" name="name" placeholder="masalan, Bepul sinov darsi" className="bg-background/50" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="cost">Cost (points)</Label>
+                <Label htmlFor="cost">Narxi (ball)</Label>
                 <Input id="cost" name="cost" type="number" min="1" placeholder="300" className="bg-background/50" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="icon">Icon (emoji)</Label>
+                <Label htmlFor="icon">Belgi (emoji)</Label>
                 <Input id="icon" name="icon" placeholder="🎁" className="bg-background/50" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="minLevel">Min. level (gate)</Label>
+                <Label htmlFor="minLevel">Min. daraja (cheklov)</Label>
                 <Input id="minLevel" name="minLevel" type="number" min="1" max="15" defaultValue="1" placeholder="1" className="bg-background/50" />
               </div>
               <div className="space-y-2 sm:col-span-2">
-                <Label htmlFor="description">Description</Label>
-                <Input id="description" name="description" placeholder="Short description" className="bg-background/50" />
+                <Label htmlFor="description">Tavsif</Label>
+                <Input id="description" name="description" placeholder="Qisqa tavsif" className="bg-background/50" />
               </div>
               <div className="sm:col-span-2">
-                <Button type="submit" className="w-full neon-button bg-averna-primary hover:bg-averna-light">Add to Store</Button>
+                <Button type="submit" className="w-full neon-button bg-averna-primary hover:bg-averna-light">Doʻkonga qoʻshish</Button>
               </div>
             </form>
           </CardContent>
@@ -159,7 +159,7 @@ export default async function AdminRewardsPage() {
 
         {/* Catalog */}
         <Card className="glass border-white/10">
-          <CardHeader><CardTitle className="text-white">Catalog ({rewards.length})</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="text-white">Katalog ({rewards.length})</CardTitle></CardHeader>
           <CardContent>
             <div className="grid sm:grid-cols-2 gap-2">
               {rewards.map((r) => (
