@@ -103,9 +103,11 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
               <svg width="144" height="144" viewBox="0 0 144 144" className="-rotate-90">
                 <circle cx="72" cy="72" r={R} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="10" />
                 <circle
+                  className="ring-draw"
                   cx="72" cy="72" r={R} fill="none"
                   stroke="url(#levelGrad)" strokeWidth="10" strokeLinecap="round"
                   strokeDasharray={`${dash} ${C}`}
+                  style={{ ["--dash" as any]: dash }}
                 />
                 <defs>
                   <linearGradient id="levelGrad" x1="0" y1="0" x2="1" y2="1">
@@ -116,7 +118,7 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-[10px] uppercase tracking-wider text-gray-400">Level</span>
-                <span className="text-4xl font-bold neon-text leading-none">{level.level}</span>
+                <span className="text-4xl font-bold neon-text leading-none animate-breathe">{level.level}</span>
               </div>
             </div>
             <div className="text-center">

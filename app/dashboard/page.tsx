@@ -174,7 +174,7 @@ export default async function DashboardPage() {
   });
 
   return (
-    <div className="min-h-screen premium-gradient">
+    <div className="min-h-screen premium-gradient dashboard-anim">
       <SeasonalDecor />
       <div className="container relative z-10 mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
         <DashboardHeader user={student.user} />
