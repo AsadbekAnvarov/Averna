@@ -37,13 +37,29 @@ export function MobileNav() {
               key={item.href}
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className={cn(
-                "flex flex-col items-center justify-center gap-0.5 py-2 px-2 flex-1 text-[10px] transition-colors",
-                active ? "text-averna-neon" : "text-gray-400 hover:text-white"
-              )}
+              className="relative flex flex-col items-center justify-center gap-1 py-2 px-1 flex-1 text-[10px] active:scale-95 transition-transform"
             >
-              <Icon className="h-5 w-5" />
-              {item.name}
+              {/* Top active indicator */}
+              <span
+                className={cn(
+                  "absolute top-0 h-0.5 rounded-full bg-averna-neon transition-all duration-300",
+                  active ? "w-8 opacity-100" : "w-0 opacity-0"
+                )}
+              />
+              {/* Icon in a neon-tinted pill when active */}
+              <span
+                className={cn(
+                  "flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-300",
+                  active
+                    ? "bg-averna-neon/15 text-averna-neon shadow-[0_0_18px_-5px_rgba(0,255,148,0.7)] -translate-y-0.5"
+                    : "text-gray-400"
+                )}
+              >
+                <Icon className="h-5 w-5" />
+              </span>
+              <span className={cn("transition-colors", active ? "text-averna-neon font-medium" : "text-gray-400")}>
+                {item.name}
+              </span>
             </Link>
           );
         })}
