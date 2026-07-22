@@ -71,8 +71,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <AppShell>{children}</AppShell>
+          <CommandPalette />
         </Providers>
-        <CommandPalette />
         <PwaInstaller />
         <LiveNotifications />
       </body>
