@@ -5,8 +5,54 @@ import { auth } from "@/lib/auth";
 import { getGlobalRankings, getGroupRankings } from "@/lib/db-helpers";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
-import { Trophy, Users, Crown, Medal } from "lucide-react";
+import { Trophy, Users, Crown } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
+import { initialsOf } from "@/lib/utils";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+function Podium({ top, currentUserId }: { top: any[]; currentUserId: string }) {
+  if (!top || top.length === 0) return null;
+  const [first, second, third] = top;
+  const slots = [
+    { s: second, place: 2, h: "h-16 sm:h-20", ring: "ring-gray-300", grad: "from-gray-300/25", medal: "🥈", accent: "text-gray-200" },
+    { s: first, place: 1, h: "h-24 sm:h-28", ring: "ring-yellow-400", grad: "from-yellow-400/30", medal: "🥇", accent: "text-yellow-400", crown: true },
+    { s: third, place: 3, h: "h-12 sm:h-16", ring: "ring-orange-400", grad: "from-orange-400/25", medal: "🥉", accent: "text-orange-400" },
+  ].filter((x) => x.s);
+
+  return (
+    <Card className="glass border-yellow-500/30 mb-6 overflow-hidden">
+      <CardContent className="pt-6">
+        <div className="flex items-end justify-center gap-2 sm:gap-5">
+          {slots.map((slot) => {
+            const isMe = slot.s.userId === currentUserId;
+            return (
+              <div key={slot.place} className="flex flex-col items-center flex-1 max-w-[150px]">
+                {slot.crown && <Crown className="h-5 w-5 text-yellow-400 mb-1 animate-float" />}
+                <div
+                  className={`relative h-14 w-14 sm:h-16 sm:w-16 rounded-full grid place-items-center bg-averna-dark ring-2 ${slot.ring} ${
+                    isMe ? "shadow-[0_0_20px_-4px_rgba(0,255,148,0.7)]" : ""
+                  }`}
+                >
+                  <span className="text-white font-bold text-base sm:text-lg">{initialsOf(slot.s.user?.name)}</span>
+                  <span className="absolute -bottom-1.5 -right-1.5 text-lg">{slot.medal}</span>
+                </div>
+                <p className={`mt-2 text-xs sm:text-sm font-semibold truncate w-full text-center ${isMe ? "text-averna-neon" : "text-white"}`}>
+                  {slot.s.user?.name}
+                </p>
+                <p className={`text-[11px] sm:text-xs font-bold ${slot.accent}`}>{slot.s.totalPoints} pts</p>
+                <div
+                  className={`mt-2 w-full ${slot.h} rounded-t-xl bg-gradient-to-t ${slot.grad} to-transparent border-x border-t border-white/10 flex items-start justify-center pt-2`}
+                >
+                  <span className={`text-2xl font-black ${slot.accent}`}>{slot.place}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
 
 export default async function RankingsPage() {
   const session = await auth();
@@ -30,6 +76,8 @@ export default async function RankingsPage() {
           iconClassName="text-yellow-400"
           title="Leaderboards"
         />
+
+        <Podium top={globalRankings.slice(0, 3)} currentUserId={student.id} />
 
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Global Rankings */}
