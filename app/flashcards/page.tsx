@@ -9,8 +9,10 @@ import {
   Volume2, Search, BookOpen, Zap, X as XIcon, Trophy,
 } from "lucide-react";
 import { DECKS, type Flashcard } from "@/lib/flashcards-data";
+import { SrsReview } from "@/components/learning/srs-review";
+import { loadSrs, countDue } from "@/lib/srs";
 
-type Mode = "study" | "quiz";
+type Mode = "study" | "quiz" | "srs";
 
 export default function FlashcardsPage() {
   const [deckId, setDeckId] = useState(DECKS[0].id);
@@ -41,6 +43,19 @@ export default function FlashcardsPage() {
   };
 
   const deck = DECKS.find((d) => d.id === deckId)!;
+
+  // Whole de-duplicated pool + how many cards are due for spaced review.
+  const allCards = useMemo(() => {
+    const seen = new Set<string>();
+    return DECKS.flatMap((d) => d.cards).filter((c) => (seen.has(c.word) ? false : (seen.add(c.word), true)));
+  }, []);
+  const [dueCount, setDueCount] = useState(0);
+  useEffect(() => {
+    // Recompute due count on load and whenever we leave the review session.
+    if (mode !== "srs") {
+      setDueCount(countDue(allCards.map((c) => c.word), loadSrs()));
+    }
+  }, [mode, allCards]);
 
   const visibleCards = useMemo(() => {
     let list = cards;
@@ -188,6 +203,19 @@ export default function FlashcardsPage() {
           >
             <Zap className="h-4 w-4" /> Quiz
           </button>
+          <button
+            onClick={() => setModeAndReset("srs")}
+            className={`relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors ${
+              mode === "srs"
+                ? "bg-averna-cyan/20 border-averna-cyan text-averna-cyan"
+                : "border-white/10 text-gray-300 hover:border-averna-cyan/40"
+            }`}
+          >
+            <RotateCcw className="h-4 w-4" /> Review
+            {dueCount > 0 && mode !== "srs" && (
+              <span className="ml-1 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-averna-cyan text-black">{dueCount}</span>
+            )}
+          </button>
           {mode === "quiz" && quizScore.total > 0 && (
             <div className="ml-auto flex items-center gap-2 text-sm text-averna-neon">
               <Trophy className="h-4 w-4" />
@@ -197,6 +225,7 @@ export default function FlashcardsPage() {
         </div>
 
         {/* Deck selector */}
+        {mode !== "srs" && (
         <div className="flex flex-wrap gap-2 mb-4">
           {DECKS.map((d) => {
             const dk = d.cards.filter((c) => known.has(c.word)).length;
@@ -219,6 +248,7 @@ export default function FlashcardsPage() {
             );
           })}
         </div>
+        )}
 
         {/* Search + filter (study mode only) */}
         {mode === "study" && (
@@ -253,6 +283,7 @@ export default function FlashcardsPage() {
           </div>
         )}
 
+        {mode !== "srs" && (
         <div className="flex items-center justify-between mb-4 text-sm">
           <span className="text-gray-400">
             {visibleCards.length > 0 ? `Card ${index + 1} / ${visibleCards.length}` : "No cards"}
@@ -261,8 +292,11 @@ export default function FlashcardsPage() {
             {knownInDeck} / {deck.cards.length} in {deck.name}
           </span>
         </div>
+        )}
 
-        {!card ? (
+        {mode === "srs" ? (
+          <SrsReview cards={allCards} />
+        ) : !card ? (
           <Card className="glass border-averna-purple/40">
             <CardContent className="text-center py-16 text-gray-400">
               No cards match your filter. Try clearing the search or turning off &quot;Unknown only&quot;.
