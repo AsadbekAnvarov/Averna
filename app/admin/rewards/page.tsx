@@ -23,8 +23,9 @@ async function addReward(formData: FormData) {
   const cost = parseInt(formData.get("cost") as string) || 0;
   const description = (formData.get("description") as string)?.trim();
   const icon = (formData.get("icon") as string)?.trim() || "🎁";
+  const minLevel = Math.max(1, parseInt(formData.get("minLevel") as string) || 1);
   if (!name || cost <= 0) return;
-  await db.reward.create({ data: { name, cost, description: description || null, icon } });
+  await db.reward.create({ data: { name, cost, description: description || null, icon, minLevel } });
   revalidatePath("/admin/rewards");
 }
 
@@ -142,6 +143,10 @@ export default async function AdminRewardsPage() {
                 <Input id="icon" name="icon" placeholder="🎁" className="bg-background/50" />
               </div>
               <div className="space-y-2">
+                <Label htmlFor="minLevel">Min. level (gate)</Label>
+                <Input id="minLevel" name="minLevel" type="number" min="1" max="15" defaultValue="1" placeholder="1" className="bg-background/50" />
+              </div>
+              <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="description">Description</Label>
                 <Input id="description" name="description" placeholder="Short description" className="bg-background/50" />
               </div>
@@ -159,7 +164,12 @@ export default async function AdminRewardsPage() {
             <div className="grid sm:grid-cols-2 gap-2">
               {rewards.map((r) => (
                 <div key={r.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
-                  <span className="text-white text-sm">{r.icon} {r.name}</span>
+                  <span className="text-white text-sm">
+                    {r.icon} {r.name}
+                    {(r.minLevel ?? 1) > 1 && (
+                      <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300">Lvl {r.minLevel}+</span>
+                    )}
+                  </span>
                   <span className="text-averna-cyan font-semibold flex items-center gap-1"><Coins className="h-3.5 w-3.5" /> {r.cost}</span>
                 </div>
               ))}

@@ -439,6 +439,7 @@ model Reward {
   description String?
   cost        Int
   icon        String?
+  minLevel    Int      @default(1) // learner level required to redeem (gates premium gifts)
   active      Boolean  @default(true)
   createdAt   DateTime @default(now())
 
