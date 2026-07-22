@@ -15,36 +15,37 @@ import { FirstRunGuide } from "@/components/learning/first-run-guide";
 import { PageHeader } from "@/components/ui/page-header";
 import {
   GraduationCap, Mic, Bot, Trophy,
-  Zap, Layers, Library, ArrowRight, ClipboardList, SpellCheck, Sparkles,
+  Zap, Layers, Library, Newspaper, ClipboardList, SpellCheck, Sparkles,
 } from "lucide-react";
 
+// Counts kept as multiples of 4 so the 2/4-column grids are always gap-free.
 const ALSO = [
-  { href: "/learning/pronunciation", label: "Pronunciation", desc: "Speak & get scored", icon: Mic, color: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
-  { href: "/grammar", label: "Grammar", desc: "Essentials & tips", icon: SpellCheck, color: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
-  { href: "/flashcards", label: "Vocabulary", desc: "Flashcards & word lists", icon: Layers, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+  { href: "/learning/pronunciation", label: "Pronunciation", desc: "Speak & get scored", icon: Mic, color: "bg-averna-pink/15 text-averna-pink" },
+  { href: "/grammar", label: "Grammar", desc: "Essentials & tips", icon: SpellCheck, color: "bg-averna-purple/15 text-averna-purple" },
+  { href: "/flashcards", label: "Vocabulary", desc: "Flashcards & word lists", icon: Layers, color: "bg-averna-cyan/15 text-averna-cyan" },
+  { href: "/article", label: "Daily Article", desc: "Read & learn words", icon: Newspaper, color: "bg-averna-neon/15 text-averna-neon" },
 ];
 
 const TESTS = [
-  { href: "/learning/mock-exam", label: "Mock Exam", desc: "Full timed test", icon: Trophy, color: "bg-yellow-500/15 text-yellow-400", hover: "hover:border-yellow-400/40" },
-  { href: "/learning/examiner", label: "AI Examiner", desc: "Speak, get a band", icon: Bot, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
-  { href: "/challenge", label: "Daily Challenge", desc: "Quick daily quiz", icon: Zap, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
-  { href: "/materials", label: "Materials", desc: "Guides & word lists", icon: Library, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
-  { href: "/mentor", label: "AI Mentor", desc: "Ask for help", icon: Bot, color: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
+  { href: "/learning/mock-exam", label: "Mock Exam", desc: "Full timed test", icon: Trophy, color: "bg-yellow-500/15 text-yellow-400" },
+  { href: "/learning/examiner", label: "AI Examiner", desc: "Speak, get a band", icon: Bot, color: "bg-averna-cyan/15 text-averna-cyan" },
+  { href: "/challenge", label: "Daily Challenge", desc: "Quick daily quiz", icon: Zap, color: "bg-averna-purple/15 text-averna-purple" },
+  { href: "/materials", label: "Materials", desc: "Guides & word lists", icon: Library, color: "bg-averna-pink/15 text-averna-pink" },
 ];
 
-function Tile({ item }: { item: { href: string; label: string; desc: string; icon: any; color: string; hover: string } }) {
+function Tile({ item }: { item: { href: string; label: string; desc: string; icon: any; color: string } }) {
   const Icon = item.icon;
   return (
-    <Link href={item.href} className="group">
-      <div className={`flex items-center gap-4 p-4 rounded-xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/50 hover:-translate-y-0.5 ${item.hover}`}>
-        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${item.color}`}>
-          <Icon className="h-5 w-5" />
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="font-semibold text-white text-sm truncate">{item.label}</p>
-          <p className="text-xs text-gray-400 truncate">{item.desc}</p>
-        </div>
-        <ArrowRight className="h-4 w-4 text-gray-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
+    <Link
+      href={item.href}
+      className="group flex flex-col items-center text-center gap-2.5 p-4 rounded-2xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/60 hover:-translate-y-1 hover:border-averna-neon/40 hover:shadow-[0_14px_40px_-16px_rgba(0,229,255,0.35)]"
+    >
+      <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${item.color} transition-transform duration-300 group-hover:scale-110`}>
+        <Icon className="h-6 w-6" />
+      </div>
+      <div className="min-w-0 w-full">
+        <p className="font-semibold text-white text-sm truncate">{item.label}</p>
+        <p className="text-[11px] text-gray-400 truncate">{item.desc}</p>
       </div>
     </Link>
   );
@@ -98,12 +99,12 @@ export default async function LearningCenterPage() {
         </div>
 
         <SectionHeader icon={Sparkles} title="Also Practise" subtitle="Round out your English beyond the four skills" accent="text-averna-purple" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
           {ALSO.map((s) => <Tile key={s.href} item={s} />)}
         </div>
 
         <SectionHeader icon={Trophy} title="Tests & Tools" subtitle="Exams, guides and AI help" accent="text-averna-neon" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {TESTS.map((t) => <Tile key={t.href} item={t} />)}
         </div>
       </div>
