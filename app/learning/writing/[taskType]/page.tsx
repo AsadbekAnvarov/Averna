@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 import WritingEditor from "@/components/learning/writing-editor";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { WRITING_PROMPTS } from "@/lib/writing-data";
+import { getWritingPrompts } from "@/lib/writing-content";
 import { ArrowLeft, PenTool, BookOpen, Sparkles, Lightbulb, ChevronRight } from "lucide-react";
 
 export default async function WritingTaskPage({
@@ -24,7 +24,7 @@ export default async function WritingTaskPage({
     redirect("/learning/writing");
   }
 
-  const prompts = WRITING_PROMPTS[taskType];
+  const prompts = await getWritingPrompts(taskType);
   const taskConfig = {
     task1: { title: "IELTS Writing Task 1", timeLimit: 20, wordCount: 150, type: "task1" },
     task2: { title: "IELTS Writing Task 2", timeLimit: 40, wordCount: 250, type: "task2" },
