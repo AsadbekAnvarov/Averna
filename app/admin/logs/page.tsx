@@ -14,7 +14,7 @@ export default async function AdminLogsPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {
-    return <AccountNotice title="Admins only" message="This area is reserved for administrators." />;
+    return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
   let logs: { id: string; actorName: string; role: string; action: string; detail: string | null; createdAt: Date }[] = [];
@@ -29,18 +29,18 @@ export default async function AdminLogsPage() {
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
           icon={ScrollText}
           iconClassName="text-averna-cyan"
-          title={<>Audit <span className="neon-text-cyan">Log</span></>}
-          subtitle="A record of important admin & teacher actions across the centre."
+          title={<>Audit <span className="neon-text-cyan">jurnali</span></>}
+          subtitle="Markaz boʻylab muhim admin va oʻqituvchi amallari yozuvi."
         />
 
         <Card className="glass border-averna-cyan/30">
-          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><ShieldCheck className="h-5 w-5" /> Recent Activity ({logs.length})</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><ShieldCheck className="h-5 w-5" /> Soʻnggi faoliyat ({logs.length})</CardTitle></CardHeader>
           <CardContent>
             {logs.length === 0 ? (
-              <p className="text-gray-400 text-sm">No audit entries yet. Actions like enrolling students, creating groups/teachers and moderating rewards will appear here.</p>
+              <p className="text-gray-400 text-sm">Hozircha audit yozuvlari yoʻq. Oʻquvchilarni qabul qilish, guruh/oʻqituvchi yaratish va mukofotlarni moderatsiya qilish kabi amallar shu yerda koʻrinadi.</p>
             ) : (
               <div className="space-y-2">
                 {logs.map((l) => (
