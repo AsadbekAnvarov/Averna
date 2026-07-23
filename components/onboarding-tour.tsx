@@ -25,15 +25,17 @@ export function OnboardingTour() {
 
   useEffect(() => {
     try {
-      // Show the info tour only after the first-run setup wizard is done, so
-      // the two never stack on a brand-new student's first visit.
-      const setupDone = localStorage.getItem("averna_setup_done_v1");
-      if (!localStorage.getItem(KEY) && setupDone) setOpen(true);
+      // Show the welcome tour immediately on the first visit (right after login).
+      if (!localStorage.getItem(KEY)) setOpen(true);
     } catch {}
   }, []);
 
   const finish = () => {
-    try { localStorage.setItem(KEY, "1"); } catch {}
+    try {
+      localStorage.setItem(KEY, "1");
+      // Let the setup wizard run right after the tour (no overlap, no delay).
+      window.dispatchEvent(new Event("averna-tour-finished"));
+    } catch {}
     setOpen(false);
   };
 
