@@ -66,6 +66,7 @@ import { LivingCampusSection } from "@/components/dashboard/living-campus-sectio
 import { CommunityChallenge } from "@/components/dashboard/community-challenge";
 import { LearningJournal } from "@/components/dashboard/learning-journal";
 import { AvernaAiSection } from "@/components/dashboard/averna-ai-section";
+import { MysteryBox } from "@/components/dashboard/mystery-box";
 import { GraduationSection } from "@/components/dashboard/graduation-section";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
@@ -459,6 +460,9 @@ export default async function DashboardPage() {
             <>
               <div data-gamified>
                 <WordDuel />
+              </div>
+              <div data-gamified>
+                <MysteryBox />
               </div>
               <div className="grid lg:grid-cols-2 gap-6">
                 <div data-gamified>
