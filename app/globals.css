@@ -271,6 +271,15 @@ html.light select {
 }
 html.light input::placeholder,
 html.light textarea::placeholder { color: #94a3b8; }
+
+/* Dropdown options: many use `bg-averna-dark` (dark) which, combined with the
+   dark text above, made them invisible in light mode. Force a light popup. */
+html.light option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+html.light option:checked,
+html.light option:hover { background-color: #e2e8f0 !important; }
 html.light .bg-background\/50,
 html.light .bg-background\/60 { background-color: rgba(15, 23, 42, 0.04) !important; }
 
