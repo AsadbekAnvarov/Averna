@@ -35,6 +35,7 @@ import { StreakStory } from "@/components/dashboard/streak-story";
 import { RecordsWall } from "@/components/dashboard/records-wall";
 import { WritingTimeMachine } from "@/components/dashboard/writing-time-machine";
 import { StudySquad } from "@/components/dashboard/study-squad";
+import { AdaptivePractice } from "@/components/dashboard/adaptive-practice";
 import { GroupFeed } from "@/components/dashboard/group-feed";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
 import { PersonalBests } from "@/components/dashboard/personal-bests";
@@ -320,6 +321,9 @@ export default async function DashboardPage() {
                   <SkillRadar studentId={student.id} />
                 </Suspense>
               </div>
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <AdaptivePractice studentId={student.id} />
+              </Suspense>
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <WritingTimeMachine studentId={student.id} />
               </Suspense>
