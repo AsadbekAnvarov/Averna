@@ -60,6 +60,9 @@ import { DailyPodcast } from "@/components/dashboard/daily-podcast";
 import { AiClone } from "@/components/dashboard/ai-clone";
 import { MemoryTimelineSection } from "@/components/dashboard/memory-timeline-section";
 import { FutureSelfSection } from "@/components/dashboard/future-self-section";
+import { KnowledgeGalaxySection } from "@/components/dashboard/knowledge-galaxy-section";
+import { MonthlyRecapSection } from "@/components/dashboard/monthly-recap-section";
+import { AiMissionsSection } from "@/components/dashboard/ai-missions-section";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
@@ -245,6 +248,10 @@ export default async function DashboardPage() {
               <DailyPodcast />
 
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <AiMissionsSection studentId={student.id} />
+              </Suspense>
+
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <FutureSelfSection
                   studentId={student.id}
                   targetBand={student.targetBand}
@@ -293,6 +300,9 @@ export default async function DashboardPage() {
           learn={
             <>
               <WarmUp />
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <KnowledgeGalaxySection studentId={student.id} />
+              </Suspense>
               <div>
                 <SectionHeader icon={LayoutGrid} title="Explore" subtitle="Jump into any module or tool" accent="text-averna-purple" action={{ label: "Learning Center", href: "/learning" }} />
                 <QuickActions />
@@ -391,6 +401,9 @@ export default async function DashboardPage() {
                   <PersonalBests studentId={student.id} />
                 </Suspense>
               </div>
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <MonthlyRecapSection studentId={student.id} />
+              </Suspense>
               <RecordsWall />
             </>
           }

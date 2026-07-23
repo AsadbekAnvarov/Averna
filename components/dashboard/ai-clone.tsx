@@ -39,7 +39,7 @@ export async function AiClone({ studentId }: { studentId: string }) {
             icon={Bot}
             title="Your clone is waking up"
             description="Take a test in any skill and your AI clone will start predicting your exam bands and where to focus."
-            action={{ label: "Take a mock exam", href: "/learning/mock-exam" }}
+            action={{ label: "Start a test", href: "/learning" }}
             accent="text-averna-purple"
             compact
           />
