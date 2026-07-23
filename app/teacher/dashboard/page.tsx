@@ -3,13 +3,14 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   BookOpen,
   Users,
   CheckSquare,
   ClipboardCheck,
   CalendarClock,
+  Wand2,
   Megaphone,
   MessageSquare,
   CalendarDays,
@@ -23,7 +24,15 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
-import { RiskRadar } from "@/components/teacher/risk-radar";
+import { StudentRadar } from "@/components/teacher/student-radar";
+import { TeachingAssistant } from "@/components/teacher/teaching-assistant";
+import { TeachingDNA } from "@/components/teacher/teaching-dna";
+import { AchievementStudio } from "@/components/teacher/achievement-studio";
+import { LessonBuilder } from "@/components/teacher/lesson-builder";
+import { SmartEssayReview } from "@/components/teacher/smart-essay-review";
+import { LessonReflectionSection } from "@/components/teacher/lesson-reflection-section";
+import { FutureClassSimulatorSection } from "@/components/teacher/future-class-simulator-section";
+import { TeacherTwinSection } from "@/components/teacher/teacher-twin-section";
 import { TodayPanel } from "@/components/teacher/today-panel";
 import { GradingInbox } from "@/components/teacher/grading-inbox";
 import { GroupPulse } from "@/components/teacher/group-pulse";
@@ -224,12 +233,7 @@ export default async function TeacherDashboard() {
 
   const myGroups = (
     <Card className="glass border-averna-primary/30">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-white">
-          <Users className="h-5 w-5 text-averna-cyan" /> My Groups
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         {teacher.groups.length === 0 ? (
           <p className="text-sm text-gray-400 py-4 text-center">No groups assigned yet.</p>
         ) : (
@@ -332,13 +336,16 @@ export default async function TeacherDashboard() {
           content={{
             overview: (
               <>
+                {statCards}
                 <div>
                   <SectionHeader icon={CalendarClockIcon} title="Today" subtitle="Your next lesson and what's on" accent="text-averna-cyan" />
                   <Suspense fallback={<WidgetSkeleton rows={2} />}>
                     <TodayPanel teacherId={teacher.id} />
                   </Suspense>
                 </div>
-                {statCards}
+                <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                  <TeachingAssistant teacherId={teacher.id} />
+                </Suspense>
                 <div>
                   <SectionHeader icon={CheckSquare} title="Needs Action" subtitle="Grade work and keep your groups in the loop" accent="text-amber-400" />
                   <div className="grid lg:grid-cols-2 gap-6">
@@ -352,6 +359,21 @@ export default async function TeacherDashboard() {
             ),
             teaching: (
               <>
+                <div>
+                  <SectionHeader icon={Wand2} title="AI Teaching Tools" subtitle="Prep lessons, mark essays and get AI backup — grounded in your class data" accent="text-averna-purple" />
+                  <div className="space-y-6">
+                    <LessonBuilder />
+                    <SmartEssayReview />
+                    <div className="grid lg:grid-cols-2 gap-6 items-start">
+                      <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                        <FutureClassSimulatorSection teacherId={teacher.id} />
+                      </Suspense>
+                      <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                        <TeacherTwinSection teacherId={teacher.id} />
+                      </Suspense>
+                    </div>
+                  </div>
+                </div>
                 <div>
                   <SectionHeader icon={Zap} title="Quick Actions" subtitle="Jump straight into your daily tasks" accent="text-averna-neon" />
                   {quickActions}
@@ -371,7 +393,18 @@ export default async function TeacherDashboard() {
                   </Suspense>
                 </div>
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                  <RiskRadar teacherId={teacher.id} />
+                  <StudentRadar teacherId={teacher.id} />
+                </Suspense>
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                    <TeachingDNA teacherId={teacher.id} />
+                  </Suspense>
+                  <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                    <AchievementStudio teacherId={teacher.id} />
+                  </Suspense>
+                </div>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <LessonReflectionSection teacherId={teacher.id} />
                 </Suspense>
               </>
             ),
