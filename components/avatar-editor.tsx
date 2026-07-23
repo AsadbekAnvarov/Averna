@@ -14,23 +14,22 @@ import { initialsOf } from "@/lib/utils";
 // Colourful, characterful avatars (varied clothing/hair/style per seed) on a
 // clean, minimalist SOLID background so the characters pop and the gallery
 // stays tidy. Styles chosen for the richest outfit/style variety.
-// Colourful, characterful avatars (varied clothing/hair/style per seed) each on
-// a different clean solid background — DiceBear picks one colour from this
-// palette per seed, so every avatar gets its own tidy backdrop.
+// A big gallery of DiceBear "adventurer" characters — lots of hair/outfit/
+// accessory variety (from simple to elegant) driven by the seed, all with a
+// light skin tone and each on its own clean, minimalist solid background.
 const AVATAR_BG =
   "eef2f7,e2e8f0,ede9fe,e0f2fe,fce7f3,fef3c7,dcfce7,fee2e2,dbeafe,f3e8ff,ccfbf1,ffedd5";
+const SKIN = "f2d3b1,ffdbb4"; // light skin tones
 const SEEDS = [
   "Aria", "Leo", "Mia", "Theo", "Luna", "Kai", "Nova", "Zoe", "Remi", "Ivy", "Max", "Sage",
   "Nora", "Finn", "Ada", "Milo", "Elsa", "Ryan", "Cleo", "Otto", "Iris", "Jude", "Vera", "Odin",
+  "Bea", "Rex", "Suki", "Neo", "Lila", "Gus", "Juno", "Enzo", "Wren", "Cody", "Faye", "Hugo",
 ];
-const dice = (style: string, seed: string) =>
-  `https://api.dicebear.com/7.x/${style}/svg?seed=${encodeURIComponent(seed)}&backgroundColor=${AVATAR_BG}&radius=50`;
+const dice = (seed: string) =>
+  `https://api.dicebear.com/7.x/adventurer/svg?seed=${encodeURIComponent(seed)}&backgroundColor=${AVATAR_BG}&skinColor=${SKIN}&radius=50`;
 
 const PRESET_GROUPS: { label: string; items: string[] }[] = [
-  { label: "Characters", items: SEEDS.slice(0, 12).map((s) => dice("avataaars", s)) },
-  { label: "Adventurers", items: SEEDS.slice(12, 24).map((s) => dice("adventurer", s)) },
-  { label: "People", items: SEEDS.slice(0, 12).map((s) => dice("open-peeps", s)) },
-  { label: "Personas", items: SEEDS.slice(12, 24).map((s) => dice("personas", s)) },
+  { label: "Adventurers", items: SEEDS.map((s) => dice(s)) },
 ];
 
 const SIZES = [
