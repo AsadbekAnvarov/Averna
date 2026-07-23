@@ -389,3 +389,103 @@ export async function getTeacherAchievements(teacherId: string): Promise<Teacher
     mk("class-builder", "Class Builder", "👥", "Teach 25 students", studentIds.length, 25),
   ];
 }
+
+
+
+// ---------------- Shared helpers for F4 / F9 / F10 ----------------
+export interface GroupBrief {
+  id: string;
+  name: string;
+  level: string | null;
+  size: number;
+  avgBand: number | null;
+  weakModule: string | null;
+}
+
+export async function getGroupsBrief(teacherId: string): Promise<GroupBrief[]> {
+  const groups = await db.group.findMany({
+    where: { teacherId },
+    select: { id: true, name: true, level: true, students: { select: { id: true } } },
+  });
+  const studentToGroup = new Map<string, string>();
+  for (const g of groups) for (const s of g.students) studentToGroup.set(s.id, g.id);
+  const allIds = Array.from(studentToGroup.keys());
+
+  const tests = allIds.length
+    ? await db.iELTSTest.findMany({ where: { studentId: { in: allIds } }, select: { studentId: true, module: true, score: true } })
+    : [];
+
+  // per group: overall avg + per-module avg
+  const byGroup = new Map<string, { total: number; n: number; mod: Map<string, { t: number; n: number }> }>();
+  for (const g of groups) byGroup.set(g.id, { total: 0, n: 0, mod: new Map() });
+  for (const t of tests) {
+    const gid = studentToGroup.get(t.studentId);
+    if (!gid) continue;
+    const agg = byGroup.get(gid)!;
+    agg.total += t.score;
+    agg.n += 1;
+    const m = agg.mod.get(t.module) ?? { t: 0, n: 0 };
+    m.t += t.score;
+    m.n += 1;
+    agg.mod.set(t.module, m);
+  }
+
+  return groups.map((g) => {
+    const agg = byGroup.get(g.id)!;
+    let weak: { label: string; avg: number } | null = null;
+    for (const [mod, m] of agg.mod) {
+      const avg = m.t / m.n;
+      if (!weak || avg < weak.avg) weak = { label: MODULE_LABEL[mod] ?? mod, avg };
+    }
+    return {
+      id: g.id,
+      name: g.name,
+      level: g.level,
+      size: g.students.length,
+      avgBand: agg.n ? Math.round((agg.total / agg.n) * 10) / 10 : null,
+      weakModule: weak ? weak.label : null,
+    };
+  });
+}
+
+export interface RecentLesson {
+  id: string;
+  topic: string;
+  notes: string | null;
+  date: string;
+  group: string;
+}
+
+export async function getRecentLessons(teacherId: string, take = 8): Promise<RecentLesson[]> {
+  const lessons = await db.lessonLog.findMany({
+    where: { teacherId },
+    orderBy: { date: "desc" },
+    take,
+    select: { id: true, topic: true, notes: true, date: true, group: { select: { name: true } } },
+  });
+  return lessons.map((l) => ({
+    id: l.id,
+    topic: l.topic,
+    notes: l.notes,
+    date: new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short" }).format(l.date),
+    group: l.group?.name ?? "Group",
+  }));
+}
+
+export interface FeedbackProfile {
+  count: number;
+  avgLen: number;
+  samples: string[];
+}
+
+export async function getTeacherFeedbackProfile(teacherId: string): Promise<FeedbackProfile> {
+  const graded = await db.homeworkSubmission.findMany({
+    where: { gradedBy: teacherId, feedback: { not: null } },
+    orderBy: { gradedAt: "desc" },
+    take: 12,
+    select: { feedback: true },
+  });
+  const samples = graded.map((g) => (g.feedback ?? "").trim()).filter((f) => f.length > 0);
+  const avgLen = samples.length ? Math.round(samples.reduce((s, f) => s + f.length, 0) / samples.length) : 0;
+  return { count: samples.length, avgLen, samples: samples.slice(0, 6) };
+}

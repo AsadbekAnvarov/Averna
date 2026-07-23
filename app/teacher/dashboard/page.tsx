@@ -11,6 +11,8 @@ import {
   ClipboardCheck,
   CalendarClock,
   Wand2,
+  FlaskConical,
+  Bot,
   Megaphone,
   MessageSquare,
   CalendarDays,
@@ -30,6 +32,9 @@ import { TeachingDNA } from "@/components/teacher/teaching-dna";
 import { AchievementStudio } from "@/components/teacher/achievement-studio";
 import { LessonBuilder } from "@/components/teacher/lesson-builder";
 import { SmartEssayReview } from "@/components/teacher/smart-essay-review";
+import { LessonReflectionSection } from "@/components/teacher/lesson-reflection-section";
+import { FutureClassSimulatorSection } from "@/components/teacher/future-class-simulator-section";
+import { TeacherTwinSection } from "@/components/teacher/teacher-twin-section";
 import { TodayPanel } from "@/components/teacher/today-panel";
 import { GradingInbox } from "@/components/teacher/grading-inbox";
 import { GroupPulse } from "@/components/teacher/group-pulse";
@@ -370,6 +375,18 @@ export default async function TeacherDashboard() {
                   <SmartEssayReview />
                 </div>
                 <div>
+                  <SectionHeader icon={FlaskConical} title="Future Class Simulator" subtitle="Preview tomorrow's lesson before it happens" accent="text-averna-pink" />
+                  <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                    <FutureClassSimulatorSection teacherId={teacher.id} />
+                  </Suspense>
+                </div>
+                <div>
+                  <SectionHeader icon={Bot} title="Your AI Teacher Twin" subtitle="Draft feedback in your own voice" accent="text-averna-neon" />
+                  <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                    <TeacherTwinSection teacherId={teacher.id} />
+                  </Suspense>
+                </div>
+                <div>
                   <SectionHeader icon={Zap} title="Quick Actions" subtitle="Jump straight into your daily tasks" accent="text-averna-neon" />
                   {quickActions}
                 </div>
@@ -396,6 +413,12 @@ export default async function TeacherDashboard() {
                   </Suspense>
                   <Suspense fallback={<WidgetSkeleton rows={4} />}>
                     <AchievementStudio teacherId={teacher.id} />
+                  </Suspense>
+                </div>
+                <div>
+                  <SectionHeader icon={NotebookPen} title="Lesson Reflection" subtitle="AI summarises each lesson and suggests what's next" accent="text-averna-blue" />
+                  <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                    <LessonReflectionSection teacherId={teacher.id} />
                   </Suspense>
                 </div>
               </>
