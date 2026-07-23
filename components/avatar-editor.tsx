@@ -11,16 +11,19 @@ import { initialsOf } from "@/lib/utils";
  * styles, we use a few refined ones with a soft, cohesive gradient background so
  * the whole gallery looks neat and premium on the dark theme.
  */
-const AVATAR_BG = "b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf,d1f4d9";
-const SEEDS = ["Aria", "Leo", "Mia", "Theo", "Luna", "Kai", "Nova", "Zoe"];
+// Colourful, characterful avatars (varied clothing/hair/style per seed) on a
+// clean, minimalist SOLID background so the characters pop and the gallery
+// stays tidy. Styles chosen for the richest outfit/style variety.
+const AVATAR_BG = "eef2f7,e2e8f0,ede9fe,e0f2fe,fce7f3,fef3c7,dcfce7";
+const SEEDS = ["Aria", "Leo", "Mia", "Theo", "Luna", "Kai", "Nova", "Zoe", "Remi", "Ivy", "Max", "Sage"];
 const dice = (style: string, seed: string) =>
-  `https://api.dicebear.com/7.x/${style}/svg?seed=${encodeURIComponent(seed)}&backgroundColor=${AVATAR_BG}&backgroundType=gradientLinear&radius=50`;
+  `https://api.dicebear.com/7.x/${style}/svg?seed=${encodeURIComponent(seed)}&backgroundColor=${AVATAR_BG}&radius=50`;
 
 const PRESET_GROUPS: { label: string; items: string[] }[] = [
-  { label: "Illustrated", items: SEEDS.slice(0, 6).map((s) => dice("notionists", s)) },
-  { label: "Portraits", items: SEEDS.slice(0, 6).map((s) => dice("lorelei", s)) },
-  { label: "Minimal", items: SEEDS.slice(0, 6).map((s) => dice("micah", s)) },
-  { label: "Abstract", items: SEEDS.slice(0, 6).map((s) => dice("glass", s)) },
+  { label: "Characters", items: SEEDS.slice(0, 6).map((s) => dice("avataaars", s)) },
+  { label: "Adventurers", items: SEEDS.slice(6, 12).map((s) => dice("adventurer", s)) },
+  { label: "People", items: SEEDS.slice(0, 6).map((s) => dice("open-peeps", s)) },
+  { label: "Personas", items: SEEDS.slice(6, 12).map((s) => dice("personas", s)) },
 ];
 
 const SIZES = [
