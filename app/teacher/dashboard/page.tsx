@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   BookOpen,
   Users,
@@ -11,8 +11,6 @@ import {
   ClipboardCheck,
   CalendarClock,
   Wand2,
-  FlaskConical,
-  Bot,
   Megaphone,
   MessageSquare,
   CalendarDays,
@@ -235,12 +233,7 @@ export default async function TeacherDashboard() {
 
   const myGroups = (
     <Card className="glass border-averna-primary/30">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-white">
-          <Users className="h-5 w-5 text-averna-cyan" /> My Groups
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         {teacher.groups.length === 0 ? (
           <p className="text-sm text-gray-400 py-4 text-center">No groups assigned yet.</p>
         ) : (
@@ -343,6 +336,7 @@ export default async function TeacherDashboard() {
           content={{
             overview: (
               <>
+                {statCards}
                 <div>
                   <SectionHeader icon={CalendarClockIcon} title="Today" subtitle="Your next lesson and what's on" accent="text-averna-cyan" />
                   <Suspense fallback={<WidgetSkeleton rows={2} />}>
@@ -352,7 +346,6 @@ export default async function TeacherDashboard() {
                 <Suspense fallback={<WidgetSkeleton rows={3} />}>
                   <TeachingAssistant teacherId={teacher.id} />
                 </Suspense>
-                {statCards}
                 <div>
                   <SectionHeader icon={CheckSquare} title="Needs Action" subtitle="Grade work and keep your groups in the loop" accent="text-amber-400" />
                   <div className="grid lg:grid-cols-2 gap-6">
@@ -367,24 +360,19 @@ export default async function TeacherDashboard() {
             teaching: (
               <>
                 <div>
-                  <SectionHeader icon={Wand2} title="AI Lesson Builder" subtitle="Turn a topic into a full, editable offline lesson" accent="text-averna-purple" />
-                  <LessonBuilder />
-                </div>
-                <div>
-                  <SectionHeader icon={ClipboardCheck} title="Smart Essay Review" subtitle="AI marks first — you approve, edit and personalise" accent="text-averna-cyan" />
-                  <SmartEssayReview />
-                </div>
-                <div>
-                  <SectionHeader icon={FlaskConical} title="Future Class Simulator" subtitle="Preview tomorrow's lesson before it happens" accent="text-averna-pink" />
-                  <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                    <FutureClassSimulatorSection teacherId={teacher.id} />
-                  </Suspense>
-                </div>
-                <div>
-                  <SectionHeader icon={Bot} title="Your AI Teacher Twin" subtitle="Draft feedback in your own voice" accent="text-averna-neon" />
-                  <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                    <TeacherTwinSection teacherId={teacher.id} />
-                  </Suspense>
+                  <SectionHeader icon={Wand2} title="AI Teaching Tools" subtitle="Prep lessons, mark essays and get AI backup — grounded in your class data" accent="text-averna-purple" />
+                  <div className="space-y-6">
+                    <LessonBuilder />
+                    <SmartEssayReview />
+                    <div className="grid lg:grid-cols-2 gap-6 items-start">
+                      <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                        <FutureClassSimulatorSection teacherId={teacher.id} />
+                      </Suspense>
+                      <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                        <TeacherTwinSection teacherId={teacher.id} />
+                      </Suspense>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <SectionHeader icon={Zap} title="Quick Actions" subtitle="Jump straight into your daily tasks" accent="text-averna-neon" />
@@ -415,12 +403,9 @@ export default async function TeacherDashboard() {
                     <AchievementStudio teacherId={teacher.id} />
                   </Suspense>
                 </div>
-                <div>
-                  <SectionHeader icon={NotebookPen} title="Lesson Reflection" subtitle="AI summarises each lesson and suggests what's next" accent="text-averna-blue" />
-                  <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                    <LessonReflectionSection teacherId={teacher.id} />
-                  </Suspense>
-                </div>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <LessonReflectionSection teacherId={teacher.id} />
+                </Suspense>
               </>
             ),
           }}
