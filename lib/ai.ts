@@ -1087,3 +1087,133 @@ Xavflar: ${risks.join(" ") || "yoʻq"}`;
     return fallback();
   }
 }
+
+
+
+// ============================================================
+// Teacher — AI Lesson Builder (F2)
+// GPT-4o structured lesson plan when a key is present; a solid templated
+// skeleton otherwise. Everything is a starting draft the teacher adapts.
+// ============================================================
+export interface LessonPlan {
+  topic: string;
+  level: string;
+  objectives: string[];
+  warmup: string;
+  presentation: string[];
+  examples: string[];
+  exercises: string[];
+  speaking: string[];
+  writingPrompt: string;
+  vocabulary: string[];
+  homework: string;
+  quiz: { q: string; a: string }[];
+  differentiation: { stronger: string; weaker: string };
+}
+
+function templateLessonPlan(topic: string, level: string): LessonPlan {
+  const t = topic.trim() || "Today's topic";
+  return {
+    topic: t,
+    level,
+    objectives: [
+      `Understand the form and use of ${t}`,
+      `Recognise ${t} in reading and listening texts`,
+      `Produce ${t} accurately in speaking and writing`,
+    ],
+    warmup: `Elicit what students already know about ${t}. Put 2 example sentences on the board — one correct, one with a typical mistake — and ask students to spot the difference (5 min).`,
+    presentation: [
+      `Introduce the rule/form of ${t} with a clear board diagram.`,
+      `Contrast it with a related structure students often confuse it with.`,
+      `Concept-check with 3 quick questions before any production.`,
+    ],
+    examples: [
+      `A clear affirmative example of ${t}.`,
+      `A negative/question form example.`,
+      `A common error and its correction (highlight why).`,
+    ],
+    exercises: [
+      `Gap-fill: 8 sentences targeting ${t} (controlled practice).`,
+      `Error-correction: 6 sentences with typical mistakes.`,
+      `Transformation: rewrite 5 sentences using ${t}.`,
+    ],
+    speaking: [
+      `Pair discussion using ${t} at least 3 times each.`,
+      `Mini role-play where ${t} naturally appears.`,
+      `1-minute individual talk applying ${t}.`,
+    ],
+    writingPrompt: `Write a short paragraph (60–80 words) that uses ${t} at least three times, then underline each use.`,
+    vocabulary: ["accurate", "structure", "context", "appropriate", "meaning", "form", "usage", "example"],
+    homework: `Write 8 original sentences using ${t}, plus complete the workbook exercise. Bring one question about ${t} to the next lesson.`,
+    quiz: [
+      { q: `When do we use ${t}?`, a: "Students state the rule in their own words." },
+      { q: `Correct the mistake in a sentence with ${t}.`, a: "Students identify and fix the error." },
+      { q: `Produce one original sentence with ${t}.`, a: "Any accurate, meaningful sentence." },
+    ],
+    differentiation: {
+      stronger: `Add nuance/exceptions of ${t} and a Band 7+ writing extension.`,
+      weaker: `Provide a sentence frame and more guided controlled practice before free production.`,
+    },
+  };
+}
+
+export async function generateLessonPlan(topic: string, level = "B1–B2"): Promise<LessonPlan> {
+  const t = (topic || "").trim();
+  if (!t) return templateLessonPlan("Today's topic", level);
+  if (!hasOpenAI()) return templateLessonPlan(t, level);
+
+  const systemPrompt = `You are an experienced IELTS/English lesson planner. Build a complete, practical OFFLINE lesson plan for the topic "${t}" at CEFR level ${level}.
+Return ONLY JSON matching exactly:
+{
+  "topic": string,
+  "level": string,
+  "objectives": [string],
+  "warmup": string,
+  "presentation": [string],
+  "examples": [string],
+  "exercises": [string],
+  "speaking": [string],
+  "writingPrompt": string,
+  "vocabulary": [string],
+  "homework": string,
+  "quiz": [{ "q": string, "a": string }],
+  "differentiation": { "stronger": string, "weaker": string }
+}
+Keep it concrete and classroom-ready (a real teacher could run it as-is). 3–5 items per list. No markdown.`;
+
+  try {
+    const client = getOpenAIClient();
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "system", content: systemPrompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.6,
+    });
+    const raw = completion.choices[0]?.message?.content;
+    if (!raw) throw new Error("No response");
+    const p = JSON.parse(raw) as Partial<LessonPlan>;
+    const fallback = templateLessonPlan(t, level);
+    const arr = (v: unknown, f: string[]) => (Array.isArray(v) ? v.filter((x) => typeof x === "string") : f);
+    return {
+      topic: typeof p.topic === "string" ? p.topic : t,
+      level: typeof p.level === "string" ? p.level : level,
+      objectives: arr(p.objectives, fallback.objectives),
+      warmup: typeof p.warmup === "string" ? p.warmup : fallback.warmup,
+      presentation: arr(p.presentation, fallback.presentation),
+      examples: arr(p.examples, fallback.examples),
+      exercises: arr(p.exercises, fallback.exercises),
+      speaking: arr(p.speaking, fallback.speaking),
+      writingPrompt: typeof p.writingPrompt === "string" ? p.writingPrompt : fallback.writingPrompt,
+      vocabulary: arr(p.vocabulary, fallback.vocabulary),
+      homework: typeof p.homework === "string" ? p.homework : fallback.homework,
+      quiz: Array.isArray(p.quiz) ? p.quiz.filter((x) => x && typeof x.q === "string" && typeof x.a === "string") : fallback.quiz,
+      differentiation:
+        p.differentiation && typeof p.differentiation.stronger === "string" && typeof p.differentiation.weaker === "string"
+          ? p.differentiation
+          : fallback.differentiation,
+    };
+  } catch (error) {
+    console.error("Lesson builder error:", error);
+    return templateLessonPlan(t, level);
+  }
+}
