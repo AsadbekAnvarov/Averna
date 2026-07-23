@@ -144,6 +144,7 @@ model Teacher {
   userId          String   @unique
   bio             String?
   specialty       String?
+  ieltsBand       Float?   // teacher's own IELTS overall band (0-9), shown to students
   isSecondTeacher Boolean  @default(false)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
