@@ -45,10 +45,11 @@ import { CommitmentCard } from "@/components/dashboard/commitment-card";
 import { VoiceJournal } from "@/components/dashboard/voice-journal";
 import { ExplainCoach } from "@/components/learning/explain-coach";
 import { SkillDna } from "@/components/dashboard/skill-dna";
+import { MistakeBank } from "@/components/learning/mistake-bank";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb } from "lucide-react";
+import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked } from "lucide-react";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -281,6 +282,10 @@ export default async function DashboardPage() {
               <div>
                 <SectionHeader icon={Lightbulb} title="Teach to Learn" subtitle="Explain a concept to the AI coach — the fastest way to master it" accent="text-averna-purple" />
                 <ExplainCoach />
+              </div>
+              <div>
+                <SectionHeader icon={BookMarked} title="Fix Your Mistakes" subtitle="Save your errors and beat them with spaced repetition" accent="text-averna-cyan" />
+                <MistakeBank />
               </div>
               <div>
                 <SectionHeader icon={BookOpen} title="Keep Learning" subtitle="A little reading goes a long way" accent="text-averna-cyan" />
