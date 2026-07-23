@@ -857,3 +857,66 @@ ${text}`;
     };
   }
 }
+
+
+
+// ============================================================
+// AI Roleplay Scenarios (#) — immersive in-character speaking practice
+// GPT-4o when a key is present; a friendly offline fallback otherwise.
+// ============================================================
+const ROLEPLAY_SCENARIOS: Record<string, { role: string; setting: string }> = {
+  airport: { role: "a friendly airline check-in agent", setting: "an airport check-in desk before a flight" },
+  interview: { role: "a professional but warm job interviewer", setting: "a job interview for a role the student wants" },
+  restaurant: { role: "a polite waiter at a restaurant", setting: "ordering a meal at a restaurant" },
+  hotel: { role: "a hotel receptionist", setting: "checking in at a hotel reception" },
+  doctor: { role: "a caring doctor at a clinic", setting: "a medical appointment where the student describes symptoms" },
+  shopping: { role: "a helpful shop assistant in a clothing store", setting: "shopping for clothes in a store" },
+};
+
+export function roleplayScenarioIds(): string[] {
+  return Object.keys(ROLEPLAY_SCENARIOS);
+}
+
+function offlineRoleplayReply(): string {
+  const followups = [
+    "That's great — could you tell me a little more?",
+    "I see. And what would you prefer?",
+    "Understood. Is there anything else I can help you with?",
+    "Sounds good. Could you explain that in a bit more detail?",
+  ];
+  return followups[Math.floor(Math.random() * followups.length)];
+}
+
+export async function aiRoleplayReply(
+  scenarioId: string,
+  message: string,
+  history: { role: "user" | "assistant"; content: string }[],
+): Promise<string> {
+  const scen = ROLEPLAY_SCENARIOS[scenarioId] ?? ROLEPLAY_SCENARIOS.restaurant;
+
+  if (!hasOpenAI()) return offlineRoleplayReply();
+
+  try {
+    const client = getOpenAIClient();
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "system",
+          content: `You are ${scen.role}, role-playing a real-life English conversation with an IELTS / English learner. The scene: ${scen.setting}. Stay fully in character and keep the conversation moving. Rules:
+- Speak natural, clear English suitable for an intermediate learner. Keep each reply to 1-3 sentences and ALWAYS end with a question or prompt so the learner has to respond.
+- Never break character or mention that you are an AI.
+- If the learner makes a significant English mistake, AFTER your in-character reply add a new line beginning exactly with "TIP:" containing one short, friendly correction. If there is no notable mistake, do not add a TIP line.`,
+        },
+        ...history,
+        { role: "user", content: message },
+      ],
+      temperature: 0.8,
+      max_tokens: 250,
+    });
+    return completion.choices[0]?.message?.content || "Sorry, could you say that again?";
+  } catch (error) {
+    console.error("Roleplay error:", error);
+    return offlineRoleplayReply();
+  }
+}

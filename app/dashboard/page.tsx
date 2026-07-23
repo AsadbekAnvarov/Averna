@@ -55,13 +55,14 @@ import { ExplainCoach } from "@/components/learning/explain-coach";
 import { SkillDna } from "@/components/dashboard/skill-dna";
 import { MistakeBank } from "@/components/learning/mistake-bank";
 import { EssayXray } from "@/components/learning/essay-xray";
+import { Roleplay } from "@/components/learning/roleplay";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine } from "lucide-react";
+import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine, Clapperboard } from "lucide-react";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -294,6 +295,10 @@ export default async function DashboardPage() {
               <div>
                 <SectionHeader icon={Mic} title="Speak Daily" subtitle="A 60-second spoken diary that tracks your fluency over time" accent="text-averna-pink" />
                 <VoiceJournal />
+              </div>
+              <div>
+                <SectionHeader icon={Clapperboard} title="Roleplay Real Situations" subtitle="Chat in character with an AI — airport, interview, restaurant and more" accent="text-averna-pink" />
+                <Roleplay />
               </div>
               <div>
                 <SectionHeader icon={Lightbulb} title="Teach to Learn" subtitle="Explain a concept to the AI coach — the fastest way to master it" accent="text-averna-purple" />
