@@ -46,6 +46,20 @@ export function DashboardTabs({
     }
   };
 
+  // Allow other dashboard widgets to jump to a tab (e.g. Mood recommendation).
+  useEffect(() => {
+    const onGoto = (e: Event) => {
+      const key = (e as CustomEvent).detail as TabKey;
+      if (key && TABS.some((t) => t.key === key)) {
+        setActive(key);
+        localStorage.setItem("averna_dash_tab", key);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+    window.addEventListener("averna-goto-tab", onGoto as EventListener);
+    return () => window.removeEventListener("averna-goto-tab", onGoto as EventListener);
+  }, []);
+
   const content: Record<TabKey, ReactNode> = { home, learn, progress, class: classroom, fun };
 
   return (
