@@ -160,3 +160,104 @@ export async function getMemoryTimeline(studentId: string): Promise<MemoryEntry[
   // Most urgent (lowest retention) first.
   return entries.sort((a, b) => a.retention - b.retention);
 }
+
+
+
+// ---------------- F2 — Knowledge Galaxy ----------------
+export interface GalaxyPlanet {
+  key: ModuleKey;
+  label: string;
+  href: string;
+  tests: number;
+  avgBand: number;
+  mastery: number; // 0-100
+  locked: boolean;
+}
+
+const MODULE_HREF: Record<ModuleKey, string> = {
+  READING: "/learning/reading",
+  LISTENING: "/learning/listening",
+  WRITING: "/learning/writing",
+  SPEAKING: "/learning/speaking",
+};
+
+export async function getGalaxy(studentId: string): Promise<GalaxyPlanet[]> {
+  const tests = await db.iELTSTest.findMany({ where: { studentId }, select: { module: true, score: true } });
+  return MODULES.map((m) => {
+    const rows = tests.filter((t) => t.module === m.key);
+    const avgBand = rows.length ? rows.reduce((a, b) => a + b.score, 0) / rows.length : 0;
+    return {
+      key: m.key,
+      label: m.label,
+      href: MODULE_HREF[m.key],
+      tests: rows.length,
+      avgBand: Math.round(avgBand * 10) / 10,
+      mastery: rows.length ? Math.round((avgBand / 9) * 100) : 0,
+      locked: rows.length === 0,
+    };
+  });
+}
+
+// ---------------- F10 — Monthly Recap ("Wrapped") ----------------
+export interface MonthlyRecap {
+  monthLabel: string;
+  tests: number;
+  activeDays: number;
+  points: number;
+  achievements: number;
+  thisAvg: number | null;
+  bandDelta: number | null;
+  topModule: string | null;
+  hasData: boolean;
+}
+
+export async function getMonthlyRecap(studentId: string): Promise<MonthlyRecap> {
+  const now = new Date();
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+  const startOfPrev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+
+  const [tests, activity, achievements] = await Promise.all([
+    db.iELTSTest.findMany({
+      where: { studentId, completedAt: { gte: startOfPrev } },
+      select: { module: true, score: true, completedAt: true },
+    }),
+    db.activityLog.findMany({
+      where: { studentId, createdAt: { gte: startOfMonth } },
+      select: { createdAt: true, points: true },
+    }),
+    db.studentAchievement.count({ where: { studentId, createdAt: { gte: startOfMonth } } }),
+  ]);
+
+  const thisMonth = tests.filter((t) => t.completedAt >= startOfMonth);
+  const prevMonth = tests.filter((t) => t.completedAt >= startOfPrev && t.completedAt < startOfMonth);
+
+  const avg = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null);
+  const thisAvg = avg(thisMonth.map((t) => t.score));
+  const prevAvg = avg(prevMonth.map((t) => t.score));
+  const bandDelta = thisAvg != null && prevAvg != null ? Math.round((thisAvg - prevAvg) * 10) / 10 : null;
+
+  const days = new Set(activity.map((a) => new Date(a.createdAt).toISOString().slice(0, 10)));
+  const points = activity.reduce((s, a) => s + (a.points || 0), 0);
+
+  // top module this month
+  const modCount = new Map<string, number>();
+  for (const t of thisMonth) modCount.set(t.module, (modCount.get(t.module) ?? 0) + 1);
+  let topModule: string | null = null;
+  let topN = 0;
+  const LABEL: Record<string, string> = { READING: "Reading", LISTENING: "Listening", WRITING: "Writing", SPEAKING: "Speaking" };
+  for (const [mod, n] of modCount) if (n > topN) { topN = n; topModule = LABEL[mod] ?? mod; }
+
+  const monthLabel = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" }).format(startOfMonth);
+
+  return {
+    monthLabel,
+    tests: thisMonth.length,
+    activeDays: days.size,
+    points,
+    achievements,
+    thisAvg: thisAvg != null ? Math.round(thisAvg * 10) / 10 : null,
+    bandDelta,
+    topModule,
+    hasData: thisMonth.length > 0 || activity.length > 0,
+  };
+}
