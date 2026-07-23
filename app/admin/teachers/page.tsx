@@ -26,6 +26,8 @@ async function addTeacher(formData: FormData) {
   const email = (formData.get("email") as string)?.trim().toLowerCase();
   const password = (formData.get("password") as string) || "";
   const specialty = (formData.get("specialty") as string)?.trim();
+  const bandRaw = parseFloat(formData.get("ieltsBand") as string);
+  const ieltsBand = Number.isFinite(bandRaw) ? Math.min(9, Math.max(0, bandRaw)) : null;
   const isSecond = formData.get("isSecond") === "on";
   if (!name || !email || password.length < 6) {
     redirect("/admin/teachers?error=invalid");
@@ -44,7 +46,7 @@ async function addTeacher(formData: FormData) {
     },
   });
   await db.teacher.create({
-    data: { userId: user.id, specialty: specialty || null, isSecondTeacher: isSecond },
+    data: { userId: user.id, specialty: specialty || null, ieltsBand, isSecondTeacher: isSecond },
   });
   await recordAudit(
     { id: session.user.id, name: session.user.name, role: session.user.role },
@@ -54,6 +56,20 @@ async function addTeacher(formData: FormData) {
 
   revalidatePath("/admin/teachers");
   redirect("/admin/teachers?saved=1");
+}
+
+async function updateTeacherBand(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+
+  const teacherId = formData.get("teacherId") as string;
+  const bandRaw = parseFloat(formData.get("ieltsBand") as string);
+  const ieltsBand = Number.isFinite(bandRaw) ? Math.min(9, Math.max(0, bandRaw)) : null;
+  if (!teacherId) return;
+
+  await db.teacher.update({ where: { id: teacherId }, data: { ieltsBand } });
+  revalidatePath("/admin/teachers");
 }
 
 async function deleteTeacher(formData: FormData) {
@@ -133,6 +149,10 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
                 <Label htmlFor="specialty">Mutaxassislik</Label>
                 <Input id="specialty" name="specialty" placeholder="masalan, Writing & Speaking" className="bg-background/50" />
               </div>
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="ieltsBand">IELTS bali (0–9)</Label>
+                <Input id="ieltsBand" name="ieltsBand" type="number" min="0" max="9" step="0.5" placeholder="masalan, 8.5" className="bg-background/50" />
+              </div>
               <label className="flex items-center gap-2 text-sm text-gray-300 sm:col-span-2">
                 <input type="checkbox" name="isSecond" className="accent-averna-primary" />
                 Ikkinchi oʻqituvchi (1-1 dars beradi)
@@ -154,9 +174,14 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
                 <div key={t.id} className="p-3 rounded-lg bg-white/5 border border-white/10">
                   <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
-                      <p className="text-white font-medium truncate">
+                      <p className="text-white font-medium truncate flex items-center gap-2">
                         {t.user.name}
-                        {t.isSecondTeacher && <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded-full bg-averna-pink/20 text-averna-pink border border-averna-pink/30">1-on-1</span>}
+                        {t.ieltsBand != null && (
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-averna-neon/15 text-averna-neon border border-averna-neon/40 shrink-0">
+                            IELTS {t.ieltsBand}
+                          </span>
+                        )}
+                        {t.isSecondTeacher && <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-averna-pink/20 text-averna-pink border border-averna-pink/30 shrink-0">1-on-1</span>}
                       </p>
                       <p className="text-xs text-gray-400 truncate">{t.user.email} · {t.specialty ?? "IELTS oʻqituvchisi"}</p>
                     </div>
@@ -177,6 +202,12 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
                       </form>
                     </div>
                   </div>
+                  <form action={updateTeacherBand} className="mt-2 flex items-center gap-2 border-t border-white/5 pt-2">
+                    <input type="hidden" name="teacherId" value={t.id} />
+                    <label className="text-[11px] text-gray-500">IELTS bali:</label>
+                    <Input name="ieltsBand" type="number" min="0" max="9" step="0.5" defaultValue={t.ieltsBand ?? ""} placeholder="—" className="h-8 w-24 bg-background/50 text-sm" />
+                    <Button type="submit" size="sm" variant="outline" className="h-8 border-averna-neon/40 text-averna-neon">Saqlash</Button>
+                  </form>
                 </div>
               );
             })}

@@ -23,13 +23,15 @@ async function updateTeacherProfile(formData: FormData) {
   const name = (formData.get("name") as string)?.trim();
   const bio = (formData.get("bio") as string)?.trim();
   const specialty = (formData.get("specialty") as string)?.trim();
+  const bandRaw = parseFloat(formData.get("ieltsBand") as string);
+  const ieltsBand = Number.isFinite(bandRaw) ? Math.min(9, Math.max(0, bandRaw)) : null;
 
   if (name) {
     await db.user.update({ where: { id: session.user.id }, data: { name } });
   }
   await db.teacher.update({
     where: { userId: session.user.id },
-    data: { bio: bio || null, specialty: specialty || null },
+    data: { bio: bio || null, specialty: specialty || null, ieltsBand },
   });
 
   revalidatePath("/teacher/profile");
@@ -176,17 +178,35 @@ export default async function TeacherProfilePage() {
                 <Input value={teacher.user.email} disabled className="bg-background/50 opacity-75" />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="specialty" className="flex items-center gap-2">
-                  <GraduationCap className="h-4 w-4" /> Specialty
-                </Label>
-                <Input
-                  id="specialty"
-                  name="specialty"
-                  defaultValue={teacher.specialty ?? ""}
-                  placeholder="e.g., Writing & Speaking"
-                  className="bg-background/50"
-                />
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="specialty" className="flex items-center gap-2">
+                    <GraduationCap className="h-4 w-4" /> Specialty
+                  </Label>
+                  <Input
+                    id="specialty"
+                    name="specialty"
+                    defaultValue={teacher.specialty ?? ""}
+                    placeholder="e.g., Writing & Speaking"
+                    className="bg-background/50"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="ieltsBand" className="flex items-center gap-2">
+                    <GraduationCap className="h-4 w-4" /> IELTS Band (0–9)
+                  </Label>
+                  <Input
+                    id="ieltsBand"
+                    name="ieltsBand"
+                    type="number"
+                    min="0"
+                    max="9"
+                    step="0.5"
+                    defaultValue={teacher.ieltsBand ?? ""}
+                    placeholder="e.g., 8.5"
+                    className="bg-background/50"
+                  />
+                </div>
               </div>
 
               <div className="space-y-2">
