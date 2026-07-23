@@ -44,6 +44,7 @@ import { LevelUpCelebration } from "@/components/dashboard/level-up-celebration"
 import { CommitmentCard } from "@/components/dashboard/commitment-card";
 import { VoiceJournal } from "@/components/dashboard/voice-journal";
 import { ExplainCoach } from "@/components/learning/explain-coach";
+import { SkillDna } from "@/components/dashboard/skill-dna";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
@@ -300,6 +301,9 @@ export default async function DashboardPage() {
                   <SkillRadar studentId={student.id} />
                 </Suspense>
               </div>
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <SkillDna studentId={student.id} />
+              </Suspense>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <LevelProgress points={student.totalPoints} />
                 <WeeklyGoal completed={weeklyCompleted} />
