@@ -125,7 +125,10 @@ export default async function AdminDashboard() {
       orderBy: { createdAt: "desc" },
     }),
     db.group.findMany({
-      include: { teacher: { include: { user: { select: { name: true } } } } },
+      // Use `select` (not `include`) on teacher so we never query teacher
+      // scalar columns the dashboard doesn't need (keeps it resilient to
+      // schema changes like `ieltsBand`).
+      include: { teacher: { select: { user: { select: { name: true } } } } },
       orderBy: { name: "asc" },
     }),
   ]);

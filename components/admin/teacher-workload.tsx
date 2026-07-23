@@ -9,9 +9,13 @@ import { EmptyState } from "@/components/ui/empty-state";
  */
 export async function TeacherWorkload() {
   const teachers = await db.teacher.findMany({
-    include: {
+    // Explicit `select` avoids querying teacher scalar columns we don't use
+    // here (e.g. `ieltsBand`), so this widget never breaks on schema changes.
+    select: {
+      id: true,
+      isSecondTeacher: true,
       user: { select: { name: true } },
-      groups: { include: { students: { select: { id: true } } } },
+      groups: { select: { students: { select: { id: true } } } },
     },
   });
 
