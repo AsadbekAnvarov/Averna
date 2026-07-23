@@ -33,6 +33,7 @@ import { WarmUp } from "@/components/dashboard/warm-up";
 import { WordDuel } from "@/components/dashboard/word-duel";
 import { StreakStory } from "@/components/dashboard/streak-story";
 import { RecordsWall } from "@/components/dashboard/records-wall";
+import { WritingTimeMachine } from "@/components/dashboard/writing-time-machine";
 import { GroupFeed } from "@/components/dashboard/group-feed";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
 import { PersonalBests } from "@/components/dashboard/personal-bests";
@@ -318,6 +319,9 @@ export default async function DashboardPage() {
                   <SkillRadar studentId={student.id} />
                 </Suspense>
               </div>
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <WritingTimeMachine studentId={student.id} />
+              </Suspense>
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <SkillDna studentId={student.id} />
               </Suspense>
