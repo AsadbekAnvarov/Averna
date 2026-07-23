@@ -837,3 +837,26 @@ html.light .aurora-bg::after {
   .animate-breathe { animation: none; }
   .ring-draw { animation: none; }
 }
+
+
+
+
+/* ===== Skill DNA — living helix visualization ===== */
+.dna-float {
+  animation: dna-float 9s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes dna-float {
+  0%, 100% { transform: rotate(-2.5deg); }
+  50% { transform: rotate(2.5deg); }
+}
+.dna-rung {
+  animation: dna-pulse 2.6s ease-in-out infinite;
+}
+@keyframes dna-pulse {
+  0%, 100% { opacity: var(--o, 0.5); }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dna-float, .dna-rung { animation: none; }
+}
