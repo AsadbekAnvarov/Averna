@@ -56,6 +56,7 @@ import { SkillDna } from "@/components/dashboard/skill-dna";
 import { MistakeBank } from "@/components/learning/mistake-bank";
 import { EssayXray } from "@/components/learning/essay-xray";
 import { Roleplay } from "@/components/learning/roleplay";
+import { DailyPodcast } from "@/components/dashboard/daily-podcast";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
@@ -237,6 +238,8 @@ export default async function DashboardPage() {
                 quote={dailyQuote}
               />
               <StatsGrid student={student} />
+
+              <DailyPodcast />
 
               {/* Bento grid — modern, asymmetric overview of the day */}
               <div className="tab-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-start">
