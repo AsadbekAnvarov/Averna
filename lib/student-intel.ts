@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { cache } from "react";
 import { predictBand } from "@/lib/utils";
 
 /**
@@ -44,7 +45,7 @@ export interface ExamReadiness {
   recommendations: string[];
 }
 
-export async function getExamReadiness(studentId: string): Promise<ExamReadiness> {
+export const getExamReadiness = cache(async function getExamReadiness(studentId: string): Promise<ExamReadiness> {
   const tests = await db.iELTSTest.findMany({
     where: { studentId },
     orderBy: { completedAt: "asc" },
@@ -95,7 +96,7 @@ export async function getExamReadiness(studentId: string): Promise<ExamReadiness
     narrative,
     recommendations,
   };
-}
+});
 
 // ---------------- F1 — Memory Timeline ----------------
 export type MemoryStatus = "mastered" | "strong" | "fading" | "forgotten";

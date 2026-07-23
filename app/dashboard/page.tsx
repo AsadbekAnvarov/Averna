@@ -247,6 +247,7 @@ export default async function DashboardPage() {
                 globalRank={student.globalRank}
                 goal={student.personalGoal}
                 quote={dailyQuote}
+                featuredCosmetic={student.featuredCosmetic}
               />
               <StatsGrid student={student} />
 
@@ -419,7 +420,7 @@ export default async function DashboardPage() {
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <MonthlyRecapSection studentId={student.id} />
               </Suspense>
-              <RecordsWall />
+              <RecordsWall mysteryCount={student.cosmetics?.length ?? 0} />
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <GraduationSection
                   studentId={student.id}

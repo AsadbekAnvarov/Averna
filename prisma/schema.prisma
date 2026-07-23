@@ -115,6 +115,9 @@ model Student {
   longestStreak     Int      @default(0)
   streakFreezes     Int      @default(1)
   balance           Int      @default(0)
+  cosmetics         String[] @default([])
+  featuredCosmetic  String?
+  cosmeticBoxAt     DateTime?
   lastActiveDate    DateTime @default(now())
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
