@@ -63,6 +63,7 @@ import { FutureSelfSection } from "@/components/dashboard/future-self-section";
 import { KnowledgeGalaxySection } from "@/components/dashboard/knowledge-galaxy-section";
 import { MonthlyRecapSection } from "@/components/dashboard/monthly-recap-section";
 import { AiMissionsSection } from "@/components/dashboard/ai-missions-section";
+import { LivingCampus } from "@/components/dashboard/living-campus";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
@@ -299,6 +300,7 @@ export default async function DashboardPage() {
           }
           learn={
             <>
+              <LivingCampus />
               <WarmUp />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <KnowledgeGalaxySection studentId={student.id} />
