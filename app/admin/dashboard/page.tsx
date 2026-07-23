@@ -41,6 +41,7 @@ import { ConfirmButton } from "@/components/ui/confirm-button";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PanelTabs } from "@/components/panel-tabs";
+import { MissionControl } from "@/components/admin/mission-control";
 import { recordAudit } from "@/lib/audit";
 import { deleteStudentCascade } from "@/lib/cascade-delete";
 
@@ -234,6 +235,9 @@ export default async function AdminDashboard() {
           content={{
             overview: (
               <>
+                <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <MissionControl firstName={firstName} />
+                </Suspense>
                 <AdminKpis />
                 <div className="grid lg:grid-cols-2 gap-6">
                   <ActivityFeed />
