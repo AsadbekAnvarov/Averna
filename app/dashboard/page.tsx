@@ -28,6 +28,7 @@ import { TeacherCard } from "@/components/dashboard/teacher-card";
 import { LeaderboardWidget } from "@/components/dashboard/leaderboard-widget";
 import { MessagePreview } from "@/components/dashboard/message-preview";
 import { PomodoroTimer } from "@/components/dashboard/pomodoro-timer";
+import { FocusVault } from "@/components/dashboard/focus-vault";
 import { GroupFeed } from "@/components/dashboard/group-feed";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
 import { PersonalBests } from "@/components/dashboard/personal-bests";
@@ -276,6 +277,9 @@ export default async function DashboardPage() {
                 <div className="grid lg:grid-cols-2 gap-6">
                   <MentorCard />
                   <PomodoroTimer />
+                </div>
+                <div className="mt-6">
+                  <FocusVault />
                 </div>
               </div>
               <div>
