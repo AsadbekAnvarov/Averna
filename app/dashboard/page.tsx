@@ -63,6 +63,8 @@ import { FutureSelfSection } from "@/components/dashboard/future-self-section";
 import { MonthlyRecapSection } from "@/components/dashboard/monthly-recap-section";
 import { AiMissionsSection } from "@/components/dashboard/ai-missions-section";
 import { LivingCampusSection } from "@/components/dashboard/living-campus-section";
+import { CommunityChallenge } from "@/components/dashboard/community-challenge";
+import { LearningJournal } from "@/components/dashboard/learning-journal";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
@@ -378,6 +380,9 @@ export default async function DashboardPage() {
               <SectionHeader icon={Flame} title="Streaks & Milestones" subtitle="Consistency is your superpower" accent="text-orange-400" />
               <StreakStory currentStreak={student.currentStreak} longestStreak={student.longestStreak} />
               <StreakHeatmap studentId={student.id} />
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <LearningJournal studentId={student.id} />
+              </Suspense>
               <div className="grid lg:grid-cols-2 gap-6">
                 <Milestones
                   points={student.totalPoints}
@@ -412,6 +417,9 @@ export default async function DashboardPage() {
           }
           classroom={
             <>
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <CommunityChallenge studentId={student.id} />
+              </Suspense>
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <StudySquad groupId={student.groupId} studentId={student.id} />
               </Suspense>
