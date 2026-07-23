@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   BookOpen,
   Users,
@@ -17,7 +17,6 @@ import {
   GraduationCap,
   NotebookPen,
   PlusCircle,
-  ArrowRight,
   Sparkles,
 } from "lucide-react";
 import Link from "next/link";
@@ -115,86 +114,37 @@ export default async function TeacherDashboard() {
     },
   ];
 
-  const actions = [
+  const actionGroups = [
     {
-      href: "/teacher/homework/create",
-      label: "Create Homework",
-      desc: "Assign new tasks",
-      icon: PlusCircle,
-      iconBg: "bg-averna-purple/15 text-averna-purple",
-      hover: "hover:border-averna-purple/40",
-    },
-    {
-      href: "/teacher/homework",
-      label: "Grade Submissions",
-      desc: "Review & score work",
-      icon: CheckSquare,
-      iconBg: "bg-amber-400/15 text-amber-400",
-      hover: "hover:border-amber-400/40",
-    },
-    {
-      href: "/teacher/students",
-      label: "View Students",
-      desc: "Manage your learners",
+      title: "Teaching",
       icon: GraduationCap,
-      iconBg: "bg-averna-cyan/15 text-averna-cyan",
-      hover: "hover:border-averna-cyan/40",
+      accent: "text-averna-cyan",
+      items: [
+        { href: "/teacher/homework/create", label: "Create Homework", desc: "Assign new tasks", icon: PlusCircle, color: "text-averna-purple", bg: "bg-averna-purple/15" },
+        { href: "/teacher/homework", label: "Grade Work", desc: "Review & score", icon: CheckSquare, color: "text-amber-400", bg: "bg-amber-400/15" },
+        { href: "/teacher/gradebook", label: "Gradebook", desc: "Track all grades", icon: NotebookPen, color: "text-averna-purple", bg: "bg-averna-purple/15" },
+        { href: "/teacher/lessons", label: "Lesson Log", desc: "Record lessons", icon: BookOpen, color: "text-averna-blue", bg: "bg-averna-blue/15" },
+      ],
     },
     {
-      href: "/teacher/tutoring",
-      label: "1-on-1 Tutoring",
-      desc: "Open booking slots",
+      title: "Students & Classes",
       icon: Users,
-      iconBg: "bg-averna-pink/15 text-averna-pink",
-      hover: "hover:border-averna-pink/40",
+      accent: "text-averna-pink",
+      items: [
+        { href: "/teacher/students", label: "Students", desc: "Manage learners", icon: GraduationCap, color: "text-averna-cyan", bg: "bg-averna-cyan/15" },
+        { href: "/teacher/attendance", label: "Attendance", desc: "Mark today's class", icon: ClipboardCheck, color: "text-emerald-400", bg: "bg-emerald-400/15" },
+        { href: "/teacher/tutoring", label: "1-on-1 Tutoring", desc: "Open booking slots", icon: Users, color: "text-averna-pink", bg: "bg-averna-pink/15" },
+        { href: "/messages", label: "Messages", desc: "Chat with students", icon: MessageSquare, color: "text-averna-neon", bg: "bg-averna-neon/15" },
+      ],
     },
     {
-      href: "/teacher/attendance",
-      label: "Take Attendance",
-      desc: "Mark today's class",
-      icon: ClipboardCheck,
-      iconBg: "bg-emerald-400/15 text-emerald-400",
-      hover: "hover:border-emerald-400/40",
-    },
-    {
-      href: "/teacher/gradebook",
-      label: "Gradebook",
-      desc: "Track all grades",
-      icon: NotebookPen,
-      iconBg: "bg-averna-purple/15 text-averna-purple",
-      hover: "hover:border-averna-purple/40",
-    },
-    {
-      href: "/teacher/lessons",
-      label: "Lesson Log",
-      desc: "Record lessons",
-      icon: BookOpen,
-      iconBg: "bg-averna-blue/15 text-averna-blue",
-      hover: "hover:border-averna-blue/40",
-    },
-    {
-      href: "/teacher/announcements",
-      label: "Announcements",
-      desc: "Post updates",
+      title: "Communicate",
       icon: Megaphone,
-      iconBg: "bg-orange-400/15 text-orange-400",
-      hover: "hover:border-orange-400/40",
-    },
-    {
-      href: "/teacher/calendar",
-      label: "Calendar",
-      desc: "Plan your schedule",
-      icon: CalendarDays,
-      iconBg: "bg-averna-cyan/15 text-averna-cyan",
-      hover: "hover:border-averna-cyan/40",
-    },
-    {
-      href: "/messages",
-      label: "Messages",
-      desc: "Chat with students",
-      icon: MessageSquare,
-      iconBg: "bg-averna-neon/15 text-averna-neon",
-      hover: "hover:border-averna-neon/40",
+      accent: "text-averna-purple",
+      items: [
+        { href: "/teacher/announcements", label: "Announcements", desc: "Post updates", icon: Megaphone, color: "text-orange-400", bg: "bg-orange-400/15" },
+        { href: "/teacher/calendar", label: "Calendar", desc: "Plan your schedule", icon: CalendarDays, color: "text-averna-cyan", bg: "bg-averna-cyan/15" },
+      ],
     },
   ];
 
@@ -276,29 +226,44 @@ export default async function TeacherDashboard() {
   );
 
   const quickActions = (
-    <Card className="glass border-averna-primary/30">
-      <CardContent className="pt-6">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {actions.map((action) => {
-            const Icon = action.icon;
-            return (
-              <Link key={action.href} href={action.href} className="group">
-                <div
-                  className={`flex items-center gap-4 p-4 rounded-xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/50 hover:-translate-y-0.5 ${action.hover}`}
-                >
-                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${action.iconBg}`}>
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-white text-sm truncate">{action.label}</p>
-                    <p className="text-xs text-gray-400 truncate">{action.desc}</p>
-                  </div>
-                  <ArrowRight className="h-4 w-4 text-gray-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+    <Card className="glass border-averna-primary/30 animate-fade-in">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 text-white">
+          <Zap className="h-5 w-5 text-averna-neon" /> Quick Access
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-5">
+        {actionGroups.map((group) => {
+          const GroupIcon = group.icon;
+          return (
+            <div key={group.title}>
+              <p className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide ${group.accent} mb-3`}>
+                <GroupIcon className="h-3.5 w-3.5" /> {group.title}
+                <span className="ml-auto text-gray-600 normal-case font-normal">{group.items.length}</span>
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+                {group.items.map((action) => {
+                  const Icon = action.icon;
+                  return (
+                    <Link
+                      key={action.label}
+                      href={action.href}
+                      className="group relative flex flex-col items-center text-center gap-2.5 p-4 rounded-2xl bg-averna-dark/30 border border-white/5 hover:border-averna-neon/40 hover:bg-averna-dark/60 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_14px_40px_-16px_rgba(0,229,255,0.35)]"
+                    >
+                      <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${action.bg} ${action.color} transition-transform duration-300 group-hover:scale-110`}>
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <div className="min-w-0 w-full">
+                        <p className="font-semibold text-white text-sm truncate">{action.label}</p>
+                        <p className="text-[11px] text-gray-400 truncate">{action.desc}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </CardContent>
     </Card>
   );
@@ -374,10 +339,7 @@ export default async function TeacherDashboard() {
                     </div>
                   </div>
                 </div>
-                <div>
-                  <SectionHeader icon={Zap} title="Quick Actions" subtitle="Jump straight into your daily tasks" accent="text-averna-neon" />
-                  {quickActions}
-                </div>
+                {quickActions}
                 <div>
                   <SectionHeader icon={Users} title="My Groups" subtitle="Your classes at a glance" accent="text-averna-cyan" />
                   {myGroups}
