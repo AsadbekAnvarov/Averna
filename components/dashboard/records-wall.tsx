@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, Lock, Timer, Swords, Ghost, Gauge, CalendarDays, Zap, BookMarked, Flame } from "lucide-react";
+import { Award, Lock, Timer, Swords, Ghost, Gauge, CalendarDays, Zap, BookMarked, Flame, Gift } from "lucide-react";
 
 function read<T>(key: string): T | null {
   try {
@@ -30,7 +30,7 @@ interface Trophy {
  * Unlocked records shine; the rest stay locked as clear goals to chase. Fully
  * client-side — reads the same localStorage keys those features write.
  */
-export function RecordsWall() {
+export function RecordsWall({ mysteryCount = 0 }: { mysteryCount?: number }) {
   const [loaded, setLoaded] = useState(false);
   const [trophies, setTrophies] = useState<Trophy[]>([]);
 
@@ -130,11 +130,20 @@ export function RecordsWall() {
         color: "text-averna-cyan",
         unlocked: mistakeCount > 0,
       },
+      {
+        key: "mystery",
+        icon: Gift,
+        title: "Cosmetics",
+        value: mysteryCount > 0 ? `${mysteryCount}` : "—",
+        sub: "collected in Mystery Box",
+        color: "text-averna-pink",
+        unlocked: mysteryCount > 0,
+      },
     ];
 
     setTrophies(list);
     setLoaded(true);
-  }, []);
+  }, [mysteryCount]);
 
   const unlockedCount = trophies.filter((t) => t.unlocked).length;
 

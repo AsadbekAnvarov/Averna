@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star, Flame, Trophy, Target, Quote } from "lucide-react";
 import { tashkentHour, getRandomQuote, getLevelInfo, initialsOf } from "@/lib/utils";
 import { CountUp } from "@/components/ui/count-up";
+import { cosmeticById } from "@/lib/cosmetics";
 
 interface HeroProps {
   name: string | null;
@@ -11,6 +12,7 @@ interface HeroProps {
   globalRank: number;
   goal: string | null;
   quote: { text: string; author: string | null } | null;
+  featuredCosmetic?: string | null;
 }
 
 /**
@@ -18,7 +20,8 @@ interface HeroProps {
  * greeting + stat pills on the left, and a circular Level ring on the right so
  * the layout feels complete on wide screens. Brand-toned animated gradient.
  */
-export function DashboardHero({ name, image, points, streak, globalRank, goal, quote }: HeroProps) {
+export function DashboardHero({ name, image, points, streak, globalRank, goal, quote, featuredCosmetic }: HeroProps) {
+  const cosmetic = cosmeticById(featuredCosmetic);
   const firstName = name?.split(" ")[0] || "Student";
   const hour = tashkentHour();
   const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
@@ -47,12 +50,22 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
           {/* Left: greeting + pills + quote */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-4 sm:gap-5">
-              <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shrink-0 shadow-lg shadow-averna-neon/20">
-                {image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={image} alt={name ?? "Avatar"} className="h-full w-full object-cover" />
-                ) : (
-                  <span className="text-3xl font-bold text-averna-neon">{initials}</span>
+              <div className="relative shrink-0">
+                <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shadow-lg shadow-averna-neon/20">
+                  {image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={image} alt={name ?? "Avatar"} className="h-full w-full object-cover" />
+                  ) : (
+                    <span className="text-3xl font-bold text-averna-neon">{initials}</span>
+                  )}
+                </div>
+                {cosmetic && (
+                  <span
+                    className="absolute -bottom-1 -right-1 h-8 w-8 rounded-full bg-averna-dark border border-white/20 flex items-center justify-center text-lg shadow-lg animate-fade-in"
+                    title={`${cosmetic.name} · featured cosmetic`}
+                  >
+                    {cosmetic.emoji}
+                  </span>
                 )}
               </div>
               <div className="min-w-0 flex-1">
