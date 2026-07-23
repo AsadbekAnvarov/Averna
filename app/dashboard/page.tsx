@@ -29,6 +29,7 @@ import { LeaderboardWidget } from "@/components/dashboard/leaderboard-widget";
 import { MessagePreview } from "@/components/dashboard/message-preview";
 import { PomodoroTimer } from "@/components/dashboard/pomodoro-timer";
 import { FocusVault } from "@/components/dashboard/focus-vault";
+import { WarmUp } from "@/components/dashboard/warm-up";
 import { GroupFeed } from "@/components/dashboard/group-feed";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
 import { PersonalBests } from "@/components/dashboard/personal-bests";
@@ -268,6 +269,7 @@ export default async function DashboardPage() {
           }
           learn={
             <>
+              <WarmUp />
               <div>
                 <SectionHeader icon={LayoutGrid} title="Explore" subtitle="Jump into any module or tool" accent="text-averna-purple" action={{ label: "Learning Center", href: "/learning" }} />
                 <QuickActions />
