@@ -43,10 +43,11 @@ import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { LevelUpCelebration } from "@/components/dashboard/level-up-celebration";
 import { CommitmentCard } from "@/components/dashboard/commitment-card";
 import { VoiceJournal } from "@/components/dashboard/voice-journal";
+import { ExplainCoach } from "@/components/learning/explain-coach";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, BookOpen, Mic } from "lucide-react";
+import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb } from "lucide-react";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -275,6 +276,10 @@ export default async function DashboardPage() {
               <div>
                 <SectionHeader icon={Mic} title="Speak Daily" subtitle="A 60-second spoken diary that tracks your fluency over time" accent="text-averna-pink" />
                 <VoiceJournal />
+              </div>
+              <div>
+                <SectionHeader icon={Lightbulb} title="Teach to Learn" subtitle="Explain a concept to the AI coach — the fastest way to master it" accent="text-averna-purple" />
+                <ExplainCoach />
               </div>
               <div>
                 <SectionHeader icon={BookOpen} title="Keep Learning" subtitle="A little reading goes a long way" accent="text-averna-cyan" />
