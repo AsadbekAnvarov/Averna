@@ -32,6 +32,7 @@ import { FocusVault } from "@/components/dashboard/focus-vault";
 import { WarmUp } from "@/components/dashboard/warm-up";
 import { WordDuel } from "@/components/dashboard/word-duel";
 import { StreakStory } from "@/components/dashboard/streak-story";
+import { RecordsWall } from "@/components/dashboard/records-wall";
 import { GroupFeed } from "@/components/dashboard/group-feed";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
 import { PersonalBests } from "@/components/dashboard/personal-bests";
@@ -350,6 +351,7 @@ export default async function DashboardPage() {
                   <PersonalBests studentId={student.id} />
                 </Suspense>
               </div>
+              <RecordsWall />
             </>
           }
           classroom={
