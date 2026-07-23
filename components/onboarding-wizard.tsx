@@ -36,7 +36,8 @@ export function OnboardingWizard() {
 
   useEffect(() => {
     let cancelled = false;
-    (async () => {
+
+    const decide = async () => {
       try {
         if (localStorage.getItem(SETUP_KEY)) return;
         // Skip (and remember) if the student already set up their profile.
@@ -58,9 +59,26 @@ export function OnboardingWizard() {
       } catch {
         /* offline / no profile — don't block the dashboard */
       }
-    })();
+    };
+
+    let cleanup: (() => void) | undefined;
+    try {
+      // If the welcome tour is already done, decide now; otherwise wait until it
+      // finishes so the two never overlap and the wizard follows the tour.
+      if (localStorage.getItem("averna_onboarding_done_v1")) {
+        decide();
+      } else {
+        const onTourDone = () => decide();
+        window.addEventListener("averna-tour-finished", onTourDone, { once: true });
+        cleanup = () => window.removeEventListener("averna-tour-finished", onTourDone);
+      }
+    } catch {
+      decide();
+    }
+
     return () => {
       cancelled = true;
+      cleanup?.();
     };
   }, []);
 
