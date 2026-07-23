@@ -46,6 +46,7 @@ import { VoiceJournal } from "@/components/dashboard/voice-journal";
 import { ExplainCoach } from "@/components/learning/explain-coach";
 import { SkillDna } from "@/components/dashboard/skill-dna";
 import { MistakeBank } from "@/components/learning/mistake-bank";
+import { BossBattle } from "@/components/dashboard/boss-battle";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
@@ -363,6 +364,9 @@ export default async function DashboardPage() {
           }
           fun={
             <>
+              <div data-gamified>
+                <BossBattle />
+              </div>
               <div className="grid lg:grid-cols-2 gap-6">
                 <MoodCheckin />
                 <div data-gamified>
