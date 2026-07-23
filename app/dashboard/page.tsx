@@ -48,6 +48,7 @@ import { SkillDna } from "@/components/dashboard/skill-dna";
 import { MistakeBank } from "@/components/learning/mistake-bank";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
+import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
@@ -374,21 +375,26 @@ export default async function DashboardPage() {
                 </div>
               </div>
               <div className="grid lg:grid-cols-2 gap-6">
+                <div data-gamified>
+                  <ConfidenceMeter />
+                </div>
                 <MoodCheckin />
+              </div>
+              <div className="grid lg:grid-cols-2 gap-6">
                 <div data-gamified>
                   <DailySpin />
+                </div>
+                <div data-gamified>
+                  <StudyPet streak={student.currentStreak} points={student.totalPoints} />
                 </div>
               </div>
               <div className="grid lg:grid-cols-2 gap-6">
                 <div data-gamified>
-                  <StudyPet streak={student.currentStreak} points={student.totalPoints} />
-                </div>
-                <div data-gamified>
                   <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
                 </div>
-              </div>
-              <div data-gamified>
-                <StudentOfTheWeek />
+                <div data-gamified>
+                  <StudentOfTheWeek />
+                </div>
               </div>
             </>
           }
