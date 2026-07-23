@@ -34,6 +34,7 @@ import { WordDuel } from "@/components/dashboard/word-duel";
 import { StreakStory } from "@/components/dashboard/streak-story";
 import { RecordsWall } from "@/components/dashboard/records-wall";
 import { WritingTimeMachine } from "@/components/dashboard/writing-time-machine";
+import { StudySquad } from "@/components/dashboard/study-squad";
 import { GroupFeed } from "@/components/dashboard/group-feed";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
 import { PersonalBests } from "@/components/dashboard/personal-bests";
@@ -360,6 +361,9 @@ export default async function DashboardPage() {
           }
           classroom={
             <>
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <StudySquad groupId={student.groupId} studentId={student.id} />
+              </Suspense>
               <div className="grid lg:grid-cols-2 gap-6">
                 <Suspense fallback={<WidgetSkeleton rows={2} />}>
                   <TeacherCard groupId={student.groupId} />
