@@ -1217,3 +1217,164 @@ Keep it concrete and classroom-ready (a real teacher could run it as-is). 3–5 
     return templateLessonPlan(t, level);
   }
 }
+
+
+
+// ============================================================
+// Teacher — F4 Lesson Reflection · F9 Future Class Simulator · F10 Teacher Twin
+// GPT-4o with graceful fallbacks. All outputs are drafts the teacher controls.
+// ============================================================
+export interface LessonReflection {
+  summary: string[];
+  nextSuggestions: string[];
+  reviewActivities: string[];
+}
+
+export async function generateLessonReflection(input: {
+  topic: string;
+  notes?: string;
+  weakArea?: string | null;
+  groupName?: string;
+}): Promise<LessonReflection> {
+  const { topic, notes, weakArea, groupName } = input;
+  const fallback = (): LessonReflection => ({
+    summary: [
+      `Covered ${topic}${groupName ? ` with ${groupName}` : ""}.`,
+      notes ? `Your notes: ${notes}` : `No lesson notes were recorded — add a few next time for sharper reflections.`,
+      weakArea ? `This group's weakest skill is ${weakArea} — watch for it bleeding into ${topic}.` : `Watch for the usual mistakes with ${topic}.`,
+    ],
+    nextSuggestions: [
+      `Start the next lesson with a 5-minute recap of ${topic}.`,
+      weakArea ? `Weave a short ${weakArea} task into the warm-up.` : `Add a quick diagnostic to check retention of ${topic}.`,
+      `Pair stronger and weaker students for the first practice activity.`,
+    ],
+    reviewActivities: [
+      `Error-correction sprint on ${topic} (6 sentences).`,
+      `2-minute spoken recap: each student uses ${topic} once.`,
+      `Exit ticket: one sentence applying ${topic}.`,
+    ],
+  });
+
+  if (!hasOpenAI()) return fallback();
+
+  const sys = `You are an experienced academic coordinator writing a concise post-lesson reflection for a teacher after an OFFLINE IELTS lesson.
+Topic: "${topic}". ${groupName ? `Group: ${groupName}. ` : ""}${weakArea ? `This group's weakest skill: ${weakArea}. ` : ""}${notes ? `Teacher notes: ${notes}` : ""}
+Return ONLY JSON: { "summary": [string], "nextSuggestions": [string], "reviewActivities": [string] }. 3 items per list, concrete and practical, grounded in the notes when given. No markdown.`;
+
+  try {
+    const client = getOpenAIClient();
+    const c = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "system", content: sys }],
+      response_format: { type: "json_object" },
+      temperature: 0.6,
+    });
+    const raw = c.choices[0]?.message?.content;
+    if (!raw) throw new Error("empty");
+    const p = JSON.parse(raw) as Partial<LessonReflection>;
+    const f = fallback();
+    const arr = (v: unknown, d: string[]) => (Array.isArray(v) && v.length ? v.filter((x) => typeof x === "string") : d);
+    return {
+      summary: arr(p.summary, f.summary),
+      nextSuggestions: arr(p.nextSuggestions, f.nextSuggestions),
+      reviewActivities: arr(p.reviewActivities, f.reviewActivities),
+    };
+  } catch (e) {
+    console.error("Lesson reflection error:", e);
+    return fallback();
+  }
+}
+
+export interface ClassSimulation {
+  difficultConcepts: string[];
+  likelyQuestions: string[];
+  commonMistakes: string[];
+  examples: string[];
+  exercises: string[];
+  timing: string;
+  backups: string[];
+}
+
+export async function simulateClass(input: {
+  topic: string;
+  level?: string | null;
+  size?: number;
+  avgBand?: number | null;
+  weakArea?: string | null;
+}): Promise<ClassSimulation> {
+  const { topic, level, size, avgBand, weakArea } = input;
+  const fallback = (): ClassSimulation => ({
+    difficultConcepts: [`The trickiest part of ${topic} for mixed-ability groups`, `Where ${topic} overlaps with a commonly-confused structure`],
+    likelyQuestions: [`"When exactly do we use ${topic}?"`, `"Is this sentence with ${topic} correct?"`, `"What's the difference between this and…?"`],
+    commonMistakes: [`Overusing ${topic} where it isn't needed`, `Form errors under time pressure`, weakArea ? `${weakArea} weaknesses showing up inside ${topic}` : `Mixing up similar structures`],
+    examples: [`One clear model sentence of ${topic}`, `A before/after correction`, `A real IELTS-style example`],
+    exercises: [`Controlled gap-fill (8 items)`, `Error correction (6 items)`, `Free production task`],
+    timing: `Warm-up 5m · Presentation 10m · Controlled practice 15m · Freer practice 15m · Wrap-up 5m`,
+    backups: [`Extension task for fast finishers on ${topic}`, `A quick speaking round if time remains`],
+  });
+
+  if (!hasOpenAI()) return fallback();
+
+  const sys = `You are an academic coordinator predicting how an OFFLINE IELTS class will go BEFORE the lesson, so the teacher can prepare.
+Topic: "${topic}". ${level ? `Level: ${level}. ` : ""}${size ? `Class size: ${size}. ` : ""}${avgBand != null ? `Class average band: ~${avgBand}. ` : ""}${weakArea ? `Class's weakest skill: ${weakArea}. ` : ""}
+Return ONLY JSON: { "difficultConcepts": [string], "likelyQuestions": [string], "commonMistakes": [string], "examples": [string], "exercises": [string], "timing": string, "backups": [string] }. 2-4 items per list, concrete. No markdown.`;
+
+  try {
+    const client = getOpenAIClient();
+    const c = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "system", content: sys }],
+      response_format: { type: "json_object" },
+      temperature: 0.6,
+    });
+    const raw = c.choices[0]?.message?.content;
+    if (!raw) throw new Error("empty");
+    const p = JSON.parse(raw) as Partial<ClassSimulation>;
+    const f = fallback();
+    const arr = (v: unknown, d: string[]) => (Array.isArray(v) && v.length ? v.filter((x) => typeof x === "string") : d);
+    return {
+      difficultConcepts: arr(p.difficultConcepts, f.difficultConcepts),
+      likelyQuestions: arr(p.likelyQuestions, f.likelyQuestions),
+      commonMistakes: arr(p.commonMistakes, f.commonMistakes),
+      examples: arr(p.examples, f.examples),
+      exercises: arr(p.exercises, f.exercises),
+      timing: typeof p.timing === "string" ? p.timing : f.timing,
+      backups: arr(p.backups, f.backups),
+    };
+  } catch (e) {
+    console.error("Class simulation error:", e);
+    return fallback();
+  }
+}
+
+export async function draftTeacherFeedback(input: { context: string; samples: string[] }): Promise<string> {
+  const { context, samples } = input;
+  const fallback = () =>
+    `Great effort on this. You clearly understood the task, and there are real strengths to build on. ` +
+    `To push higher: tighten your weaker areas, vary your sentence structures, and proofread for small slips. ` +
+    `Keep this up — you're moving in the right direction.` +
+    (context ? `\n\n(Context: ${context})` : "");
+
+  if (!hasOpenAI() || samples.length === 0) return fallback();
+
+  const sys = `You are the "AI Twin" of a specific teacher. Learn their feedback VOICE from the examples below and draft new feedback in the SAME tone, length and structure. Never invent facts about the student.
+Teacher's past feedback examples:
+${samples.map((s, i) => `--- Example ${i + 1} ---\n${s}`).join("\n")}
+
+Now draft feedback for this situation, matching the teacher's style: ${context || "a student's essay"}.
+Return ONLY the feedback text (no preamble, no markdown).`;
+
+  try {
+    const client = getOpenAIClient();
+    const c = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "system", content: sys }],
+      temperature: 0.7,
+      max_tokens: 320,
+    });
+    return c.choices[0]?.message?.content?.trim() || fallback();
+  } catch (e) {
+    console.error("Teacher twin error:", e);
+    return fallback();
+  }
+}
