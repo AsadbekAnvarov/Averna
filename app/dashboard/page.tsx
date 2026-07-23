@@ -57,6 +57,9 @@ import { MistakeBank } from "@/components/learning/mistake-bank";
 import { EssayXray } from "@/components/learning/essay-xray";
 import { Roleplay } from "@/components/learning/roleplay";
 import { DailyPodcast } from "@/components/dashboard/daily-podcast";
+import { AiClone } from "@/components/dashboard/ai-clone";
+import { MemoryTimelineSection } from "@/components/dashboard/memory-timeline-section";
+import { FutureSelfSection } from "@/components/dashboard/future-self-section";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
@@ -241,6 +244,15 @@ export default async function DashboardPage() {
 
               <DailyPodcast />
 
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <FutureSelfSection
+                  studentId={student.id}
+                  targetBand={student.targetBand}
+                  points={student.totalPoints}
+                  streak={student.currentStreak}
+                />
+              </Suspense>
+
               {/* Bento grid — modern, asymmetric overview of the day */}
               <div className="tab-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-start">
                 {/* Personalised plan — full-width banner */}
@@ -326,6 +338,9 @@ export default async function DashboardPage() {
           }
           progress={
             <>
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <AiClone studentId={student.id} />
+              </Suspense>
               <div className="grid lg:grid-cols-2 gap-6">
                 <Suspense fallback={<WidgetSkeleton rows={3} />}>
                   <BandProgress studentId={student.id} targetBand={student.targetBand} />
@@ -342,6 +357,9 @@ export default async function DashboardPage() {
               </Suspense>
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <SkillDna studentId={student.id} />
+              </Suspense>
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <MemoryTimelineSection studentId={student.id} />
               </Suspense>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <LevelProgress points={student.totalPoints} />
