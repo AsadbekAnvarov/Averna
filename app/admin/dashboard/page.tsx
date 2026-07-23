@@ -48,6 +48,8 @@ import { TeacherIntelligence } from "@/components/admin/teacher-intelligence";
 import { VoiceControl } from "@/components/admin/voice-control";
 import { JourneyReplaySection } from "@/components/admin/journey-replay-section";
 import { ContentHealth } from "@/components/admin/content-health";
+import { PublishImpactSection } from "@/components/admin/publish-impact-section";
+import { InnovationRadar } from "@/components/admin/innovation-radar";
 import { recordAudit } from "@/lib/audit";
 import { deleteStudentCascade } from "@/lib/cascade-delete";
 
@@ -312,6 +314,10 @@ export default async function AdminDashboard() {
                   <EnrollmentFunnel />
                   <TeacherWorkload />
                 </div>
+                <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <PublishImpactSection />
+                </Suspense>
+                <InnovationRadar />
                 <div>
                   <SectionHeader icon={Trophy} title="Shon-shuhrat zali" subtitle="Platformadagi eng faol oʻquvchilar" accent="text-amber-400" />
                   <TopPerformers />

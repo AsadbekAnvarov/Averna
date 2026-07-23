@@ -241,3 +241,35 @@ export async function getFeatureHeatmap(): Promise<FeatureUsage[]> {
     })
     .sort((a, b) => b.count - a.count);
 }
+
+
+
+// ==================== M8 — Publish Impact (reach estimate) ====================
+export interface ReachStats {
+  totalStudents: number;
+  activeWeek: number;
+  activeToday: number;
+  peakHour: number | null;
+}
+
+export async function getReachStats(): Promise<ReachStats> {
+  const now = Date.now();
+  const weekAgo = new Date(now - 7 * DAY);
+  const today0 = new Date();
+  today0.setHours(0, 0, 0, 0);
+
+  const [students, recentActivity] = await Promise.all([
+    db.student.findMany({ select: { lastActiveDate: true } }),
+    db.activityLog.findMany({ where: { createdAt: { gte: weekAgo } }, select: { createdAt: true } }),
+  ]);
+
+  const totalStudents = students.length;
+  const activeWeek = students.filter((s) => s.lastActiveDate && s.lastActiveDate >= weekAgo).length;
+  const activeToday = students.filter((s) => s.lastActiveDate && s.lastActiveDate >= today0).length;
+
+  const buckets = new Array(24).fill(0);
+  for (const a of recentActivity) buckets[(new Date(a.createdAt).getUTCHours() + 5) % 24] += 1; // Tashkent
+  const peakHour = recentActivity.length > 0 ? buckets.indexOf(Math.max(...buckets)) : null;
+
+  return { totalStudents, activeWeek, activeToday, peakHour };
+}
