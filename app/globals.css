@@ -271,6 +271,15 @@ html.light select {
 }
 html.light input::placeholder,
 html.light textarea::placeholder { color: #94a3b8; }
+
+/* Dropdown options: many use `bg-averna-dark` (dark) which, combined with the
+   dark text above, made them invisible in light mode. Force a light popup. */
+html.light option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+html.light option:checked,
+html.light option:hover { background-color: #e2e8f0 !important; }
 html.light .bg-background\/50,
 html.light .bg-background\/60 { background-color: rgba(15, 23, 42, 0.04) !important; }
 
@@ -439,7 +448,7 @@ html.light .bg-averna-primary { background-color: #0fa06f !important; }
 /* Staggered fade-in for tab content children */
 .tab-stagger > * {
   opacity: 0;
-  animation: stagger-in 0.5s ease forwards;
+  animation: stagger-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .tab-stagger > *:nth-child(1) { animation-delay: 0.04s; }
 .tab-stagger > *:nth-child(2) { animation-delay: 0.10s; }
@@ -449,8 +458,8 @@ html.light .bg-averna-primary { background-color: #0fa06f !important; }
 .tab-stagger > *:nth-child(6) { animation-delay: 0.34s; }
 .tab-stagger > *:nth-child(n+7) { animation-delay: 0.40s; }
 @keyframes stagger-in {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Shimmer sweep for badges / highlights */
@@ -795,4 +804,68 @@ html.light .aurora-bg::after {
 }
 @media (prefers-reduced-motion: reduce) {
   .animate-pop-in { animation: none; }
+}
+
+
+
+
+/* ===================================================================
+   Dashboard motion pass — subtle, premium, scoped to `.dashboard-anim`.
+   =================================================================== */
+
+/* Cards gently lift on hover so the dashboard feels alive/interactive. */
+.dashboard-anim .glass {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.dashboard-anim .glass:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 229, 255, 0.30);
+  box-shadow: 0 18px 48px -16px rgba(0, 229, 255, 0.28);
+}
+
+/* Soft "breathing" glow — used on the hero level number. */
+.animate-breathe {
+  animation: breathe 4.5s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%, 100% { text-shadow: 0 0 8px rgba(0, 255, 148, 0.35); }
+  50% { text-shadow: 0 0 20px rgba(0, 255, 148, 0.7), 0 0 34px rgba(0, 229, 255, 0.35); }
+}
+
+/* One-time "draw" of the hero level ring on mount. */
+.ring-draw {
+  animation: ring-draw 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes ring-draw {
+  from { stroke-dashoffset: var(--dash, 0); }
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-anim .glass:hover { transform: none; }
+  .animate-breathe { animation: none; }
+  .ring-draw { animation: none; }
+}
+
+
+
+
+/* ===== Skill DNA — living helix visualization ===== */
+.dna-float {
+  animation: dna-float 9s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes dna-float {
+  0%, 100% { transform: rotate(-2.5deg); }
+  50% { transform: rotate(2.5deg); }
+}
+.dna-rung {
+  animation: dna-pulse 2.6s ease-in-out infinite;
+}
+@keyframes dna-pulse {
+  0%, 100% { opacity: var(--o, 0.5); }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dna-float, .dna-rung { animation: none; }
 }

@@ -777,3 +777,313 @@ Return ONLY JSON:
   const task = writingTask1Schema.parse(parsed);
   return { ...task, id };
 }
+
+
+
+// ============================================================
+// Essay X-Ray (#) — inline, band-focused essay diagnosis
+// GPT-4o when a key is present; graceful heuristic fallback otherwise.
+// ============================================================
+export interface EssayXrayResult {
+  issues: WritingIssue[]; // each .text is an exact substring for inline highlighting
+  summary: string;        // short paragraph on the biggest band-limiting problems
+  topFixes: string[];     // 3-5 highest-impact fixes
+}
+
+export async function analyzeEssayXray(essay: string, prompt?: string): Promise<EssayXrayResult> {
+  const text = (essay || "").trim();
+  if (!text) return { issues: [], summary: "Paste an essay to X-ray it.", topFixes: [] };
+
+  // Offline / no-key fallback: reuse the safe heuristic scanner.
+  if (!hasOpenAI()) {
+    const issues = analyzeWritingIssues(text);
+    const words = text.split(/\s+/).filter(Boolean).length;
+    return {
+      issues,
+      summary:
+        `Quick offline scan of ${words} words found ${issues.length} thing${issues.length === 1 ? "" : "s"} to check. ` +
+        `Connect an OpenAI key for a full examiner-level, band-focused X-ray.`,
+      topFixes: issues.slice(0, 3).map((i) => i.suggestion),
+    };
+  }
+
+  const systemPrompt = `You are an expert IELTS Writing examiner performing an "X-ray" of a student's essay.
+Find the specific things that are holding the band score back and the things done well.
+
+Return ONLY JSON:
+{
+  "issues": [{ "text": string, "type": "grammar" | "vocabulary" | "spelling" | "cohesion" | "punctuation" | "style" | "good", "suggestion": string }],
+  "summary": string,
+  "topFixes": [string]
+}
+
+Rules:
+- Provide 8-16 "issues". For EACH, "text" MUST be an EXACT substring copied verbatim from the essay (a word or short phrase, at most ~8 words) so it can be located and highlighted.
+- Use type "good" for 2-3 phrases the student used particularly well.
+- Each "suggestion" is ONE short, concrete sentence (how to fix, or why it's good).
+- "summary": one short paragraph naming the biggest band-limiting problems.
+- "topFixes": 3-5 highest-impact fixes as short imperatives.
+${prompt ? `Task prompt: ${prompt}` : ""}
+
+Essay:
+${text}`;
+
+  try {
+    const client = getOpenAIClient();
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "system", content: systemPrompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.3,
+    });
+    const raw = completion.choices[0]?.message?.content;
+    if (!raw) throw new Error("No response from OpenAI");
+    const parsed = JSON.parse(raw) as Partial<EssayXrayResult>;
+    return {
+      issues: Array.isArray(parsed.issues)
+        ? parsed.issues.filter((i): i is WritingIssue => !!i && typeof i.text === "string" && i.text.trim().length > 0)
+        : [],
+      summary: typeof parsed.summary === "string" ? parsed.summary : "",
+      topFixes: Array.isArray(parsed.topFixes) ? parsed.topFixes.filter((f) => typeof f === "string") : [],
+    };
+  } catch (error) {
+    // Never hard-fail: fall back to the heuristic scan.
+    console.error("Essay X-Ray error:", error);
+    const issues = analyzeWritingIssues(text);
+    return {
+      issues,
+      summary: "The AI analysis is unavailable right now — showing a quick automatic scan instead.",
+      topFixes: issues.slice(0, 3).map((i) => i.suggestion),
+    };
+  }
+}
+
+
+
+// ============================================================
+// AI Roleplay Scenarios (#) — immersive in-character speaking practice
+// GPT-4o when a key is present; a friendly offline fallback otherwise.
+// ============================================================
+const ROLEPLAY_SCENARIOS: Record<string, { role: string; setting: string }> = {
+  airport: { role: "a friendly airline check-in agent", setting: "an airport check-in desk before a flight" },
+  interview: { role: "a professional but warm job interviewer", setting: "a job interview for a role the student wants" },
+  restaurant: { role: "a polite waiter at a restaurant", setting: "ordering a meal at a restaurant" },
+  hotel: { role: "a hotel receptionist", setting: "checking in at a hotel reception" },
+  doctor: { role: "a caring doctor at a clinic", setting: "a medical appointment where the student describes symptoms" },
+  shopping: { role: "a helpful shop assistant in a clothing store", setting: "shopping for clothes in a store" },
+};
+
+export function roleplayScenarioIds(): string[] {
+  return Object.keys(ROLEPLAY_SCENARIOS);
+}
+
+function offlineRoleplayReply(): string {
+  const followups = [
+    "That's great — could you tell me a little more?",
+    "I see. And what would you prefer?",
+    "Understood. Is there anything else I can help you with?",
+    "Sounds good. Could you explain that in a bit more detail?",
+  ];
+  return followups[Math.floor(Math.random() * followups.length)];
+}
+
+export async function aiRoleplayReply(
+  scenarioId: string,
+  message: string,
+  history: { role: "user" | "assistant"; content: string }[],
+): Promise<string> {
+  const scen = ROLEPLAY_SCENARIOS[scenarioId] ?? ROLEPLAY_SCENARIOS.restaurant;
+
+  if (!hasOpenAI()) return offlineRoleplayReply();
+
+  try {
+    const client = getOpenAIClient();
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "system",
+          content: `You are ${scen.role}, role-playing a real-life English conversation with an IELTS / English learner. The scene: ${scen.setting}. Stay fully in character and keep the conversation moving. Rules:
+- Speak natural, clear English suitable for an intermediate learner. Keep each reply to 1-3 sentences and ALWAYS end with a question or prompt so the learner has to respond.
+- Never break character or mention that you are an AI.
+- If the learner makes a significant English mistake, AFTER your in-character reply add a new line beginning exactly with "TIP:" containing one short, friendly correction. If there is no notable mistake, do not add a TIP line.`,
+        },
+        ...history,
+        { role: "user", content: message },
+      ],
+      temperature: 0.8,
+      max_tokens: 250,
+    });
+    return completion.choices[0]?.message?.content || "Sorry, could you say that again?";
+  } catch (error) {
+    console.error("Roleplay error:", error);
+    return offlineRoleplayReply();
+  }
+}
+
+
+
+// ============================================================
+// Daily AI Podcast (#) — a short, personalised spoken "episode"
+// GPT-4o script when a key is present; templated script otherwise.
+// Audio is produced client-side via the browser SpeechSynthesis API.
+// ============================================================
+export interface DailyBriefing {
+  title: string;
+  script: string;
+  bullets: string[];
+}
+
+const BRIEFING_TIPS: Record<string, { tip: string; example: string; challenge: string }> = {
+  Writing: {
+    tip: "In Writing, examiners reward clear structure over fancy words — give every paragraph one main idea and support it.",
+    example: "instead of listing three points in one sentence, give each its own sentence with a reason.",
+    challenge: "write one body paragraph with a topic sentence, an explanation and a specific example.",
+  },
+  Reading: {
+    tip: "In Reading, don't read every word — skim for the main idea first, then scan for the keyword the question is really testing.",
+    example: "if a question mentions 'benefits', hunt for synonyms like 'advantages' or 'positive effects'.",
+    challenge: "do one passage and, for each answer, underline the exact words that prove it.",
+  },
+  Listening: {
+    tip: "In Listening, read the questions before the audio and predict what kind of answer you need — a number, a name, a place.",
+    example: "if a gap follows 'the meeting is on', you're listening for a day or a time.",
+    challenge: "do one section and note every answer's spelling carefully.",
+  },
+  Speaking: {
+    tip: "In Speaking, never give one-word answers — extend every reply with a reason and an example.",
+    example: "'Do you like coffee?' becomes 'Yes, especially in the morning, because it helps me focus before class.'",
+    challenge: "record a two-minute answer about your week and count how many times you added a reason.",
+  },
+  General: {
+    tip: "Consistency beats intensity — thirty focused minutes today will do more than a three-hour cram on Sunday.",
+    example: "pick one weak skill and give it the first slot of your study time while your mind is fresh.",
+    challenge: "complete one short activity in your weakest skill before you do anything easier.",
+  },
+};
+
+function offlineDailyBriefing(opts: {
+  studentName?: string;
+  focusArea: string;
+  recentBand?: number;
+  dateLabel: string;
+}): DailyBriefing {
+  const key = BRIEFING_TIPS[opts.focusArea] ? opts.focusArea : "General";
+  const t = BRIEFING_TIPS[key];
+  const hi = opts.studentName ? `Hi ${opts.studentName}` : "Hi there";
+  const bandLine = opts.recentBand ? ` You're around band ${opts.recentBand} here, and small tweaks can push that up.` : "";
+  const script =
+    `${hi}, and welcome to Averna Daily for ${opts.dateLabel}. ` +
+    `Today we're focusing on ${opts.focusArea}.${bandLine} ` +
+    `${t.tip} For example, ${t.example} ` +
+    `Here's your mini-challenge for today: ${t.challenge} ` +
+    `That's it — small steps every day add up to a big band jump. You've got this. See you tomorrow!`;
+  return {
+    title: `Averna Daily — ${opts.focusArea}`,
+    script,
+    bullets: [t.tip, `Example: ${t.example}`, `Today: ${t.challenge}`],
+  };
+}
+
+export async function generateDailyBriefing(opts: {
+  studentName?: string;
+  focusArea: string;
+  recentBand?: number;
+  dateLabel: string;
+}): Promise<DailyBriefing> {
+  if (!hasOpenAI()) return offlineDailyBriefing(opts);
+
+  const systemPrompt = `You are the host of "Averna Daily", a short, upbeat ~90-second English-learning podcast for an IELTS student.
+Create today's episode focused on "${opts.focusArea}"${opts.recentBand ? ` (their recent band is about ${opts.recentBand})` : ""}.
+
+Return ONLY JSON:
+{
+  "title": string,
+  "script": string,
+  "bullets": [string, string, string]
+}
+
+Rules:
+- "title": catchy, at most 8 words.
+- "script": 150-220 words of flowing SPOKEN text (it will be read aloud by text-to-speech, so no headings, lists or markdown). Greet the listener${opts.studentName ? ` by name ("${opts.studentName}")` : ""}, mention today is ${opts.dateLabel}, give ONE focused, practical tip for ${opts.focusArea}, one quick concrete example, one small challenge for today, and a warm, motivating sign-off.
+- "bullets": exactly 3 short written takeaways.`;
+
+  try {
+    const client = getOpenAIClient();
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "system", content: systemPrompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.8,
+    });
+    const raw = completion.choices[0]?.message?.content;
+    if (!raw) throw new Error("No response from OpenAI");
+    const parsed = JSON.parse(raw) as Partial<DailyBriefing>;
+    if (!parsed.script || typeof parsed.script !== "string") throw new Error("Invalid briefing");
+    return {
+      title: typeof parsed.title === "string" ? parsed.title : `Averna Daily — ${opts.focusArea}`,
+      script: parsed.script,
+      bullets: Array.isArray(parsed.bullets) ? parsed.bullets.filter((b) => typeof b === "string").slice(0, 3) : [],
+    };
+  } catch (error) {
+    console.error("Daily briefing error:", error);
+    return offlineDailyBriefing(opts);
+  }
+}
+
+
+
+// ============================================================
+// Admin Mission Control — AI Executive Briefing (Uzbek)
+// GPT-4o narrative when a key is present; templated Uzbek fallback otherwise.
+// ============================================================
+export async function generateAdminBriefing(ctx: {
+  firstName?: string;
+  bullets: string[];
+  priorities: string[];
+  risks: string[];
+}): Promise<string> {
+  const { firstName, bullets, priorities, risks } = ctx;
+  const hi = firstName ? `Assalomu alaykum, ${firstName}.` : "Assalomu alaykum.";
+
+  // Templated Uzbek fallback (also used when there is no key or on error).
+  const fallback = () => {
+    const parts: string[] = [hi];
+    if (bullets.length) parts.push(`Bugungi holat: ${bullets.join(" ")}`);
+    if (priorities.length) parts.push(`Bugungi ustuvor vazifalar: ${priorities.join(" ")}`);
+    if (risks.length) parts.push(`Eʼtibor bering: ${risks.join(" ")}`);
+    parts.push("Kichik, aniq qadamlar bugun eng katta taʼsir beradi.");
+    return parts.join(" ");
+  };
+
+  if (!hasOpenAI()) return fallback();
+
+  const systemPrompt = `Siz Averna Learning Centre platformasining AI boshqaruv yordamchisisiz.
+Administrator uchun QISQA, aniq va professional kunlik xulosa yozing.
+QATTIY QOIDALAR:
+- Faqat OʻZBEK tilida (lotin yozuvi), toʻgʻri imlo bilan (oʻ, gʻ, ʼ).
+- 3-5 jumla, xotirjam va ishonchli ohangda.
+- Berilgan maʼlumotlardan tashqari raqam yoki dalil OʻYLAB TOPMANG.
+- Salomlashish bilan boshlang, keyin eng muhim holat, ustuvorlik va xavf haqida ayting, ijobiy yakun bilan tugating.
+Faqat matnni qaytaring (JSON emas).
+
+Maʼlumot:
+Salom: ${hi}
+Bugungi koʻrsatkichlar: ${bullets.join(" ")}
+Ustuvor vazifalar: ${priorities.join(" ") || "yoʻq"}
+Xavflar: ${risks.join(" ") || "yoʻq"}`;
+
+  try {
+    const client = getOpenAIClient();
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "system", content: systemPrompt }],
+      temperature: 0.5,
+      max_tokens: 320,
+    });
+    return completion.choices[0]?.message?.content?.trim() || fallback();
+  } catch (error) {
+    console.error("Admin briefing error:", error);
+    return fallback();
+  }
+}

@@ -6,13 +6,31 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserCircle, Upload, Check, Loader2, Trash2, Sparkles, ImageIcon } from "lucide-react";
 import { initialsOf } from "@/lib/utils";
 
-/** Preset character avatars (DiceBear). Rendered straight from their URL. */
-const PRESET_STYLES = [
-  "fun-emoji", "bottts", "adventurer", "avataaars", "thumbs", "big-smile",
-  "lorelei", "micah", "notionists", "open-peeps", "personas", "pixel-art",
+/**
+ * Curated, elegant preset avatars (DiceBear). Instead of a mix of cartoonish
+ * styles, we use a few refined ones with a soft, cohesive gradient background so
+ * the whole gallery looks neat and premium on the dark theme.
+ */
+// Colourful, characterful avatars (varied clothing/hair/style per seed) on a
+// clean, minimalist SOLID background so the characters pop and the gallery
+// stays tidy. Styles chosen for the richest outfit/style variety.
+// A big gallery of DiceBear "adventurer" characters — lots of hair/outfit/
+// accessory variety (from simple to elegant) driven by the seed, all with a
+// light skin tone and each on its own clean, minimalist solid background.
+const AVATAR_BG =
+  "eef2f7,e2e8f0,ede9fe,e0f2fe,fce7f3,fef3c7,dcfce7,fee2e2,dbeafe,f3e8ff,ccfbf1,ffedd5";
+const SKIN = "f2d3b1,ffdbb4"; // light skin tones
+const SEEDS = [
+  "Aria", "Leo", "Mia", "Theo", "Luna", "Kai", "Nova", "Zoe", "Remi", "Ivy", "Max", "Sage",
+  "Nora", "Finn", "Ada", "Milo", "Elsa", "Ryan", "Cleo", "Otto", "Iris", "Jude", "Vera", "Odin",
+  "Bea", "Rex", "Suki", "Neo", "Lila", "Gus", "Juno", "Enzo", "Wren", "Cody", "Faye", "Hugo",
 ];
-const SEEDS = ["Leo", "Mia", "Zoe", "Max", "Ivy", "Sam", "Aria", "Kai", "Nova", "Remi", "Luna", "Theo"];
-const PRESETS = PRESET_STYLES.map((style, i) => `https://api.dicebear.com/7.x/${style}/svg?seed=${SEEDS[i % SEEDS.length]}`);
+const dice = (seed: string) =>
+  `https://api.dicebear.com/7.x/adventurer/svg?seed=${encodeURIComponent(seed)}&backgroundColor=${AVATAR_BG}&skinColor=${SKIN}&radius=50`;
+
+const PRESET_GROUPS: { label: string; items: string[] }[] = [
+  { label: "Adventurers", items: SEEDS.map((s) => dice(s)) },
+];
 
 const SIZES = [
   { key: "sm", label: "Small", px: 96 },
@@ -159,18 +177,25 @@ export function AvatarEditor({ currentImage, name }: { currentImage: string | nu
             </div>
 
             {tab === "characters" ? (
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
-                {PRESETS.map((url) => (
-                  <button
-                    key={url}
-                    onClick={() => { setRawFile(null); setPreview(url); }}
-                    className={`aspect-square rounded-xl overflow-hidden border-2 transition-all hover:-translate-y-0.5 ${
-                      preview === url ? "border-averna-neon ring-2 ring-averna-neon/30" : "border-white/10 hover:border-averna-pink/40"
-                    } bg-white/5`}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={url} alt="Character" className="h-full w-full object-cover" />
-                  </button>
+              <div className="space-y-4 max-h-[420px] overflow-y-auto pr-1">
+                {PRESET_GROUPS.map((group) => (
+                  <div key={group.label}>
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-2">{group.label}</p>
+                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
+                      {group.items.map((url) => (
+                        <button
+                          key={url}
+                          onClick={() => { setRawFile(null); setPreview(url); }}
+                          className={`aspect-square rounded-full overflow-hidden border-2 transition-all hover:-translate-y-1 hover:shadow-[0_10px_28px_-10px_rgba(255,61,187,0.5)] ${
+                            preview === url ? "border-averna-neon ring-2 ring-averna-neon/40" : "border-white/10 hover:border-averna-pink/50"
+                          } bg-white/5`}
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={url} alt={`${group.label} avatar`} className="h-full w-full object-cover" loading="lazy" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             ) : (

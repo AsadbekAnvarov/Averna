@@ -127,6 +127,7 @@ model Student {
   achievements      StudentAchievement[]
   speakingSessions  SpeakingSession[]
   activityLogs      ActivityLog[]
+  commitments       Commitment[]
   parentLinks       ParentStudentLink[]
   tutorBookings     TutorSlot[]
   attendances       Attendance[]
@@ -144,6 +145,7 @@ model Teacher {
   userId          String   @unique
   bio             String?
   specialty       String?
+  ieltsBand       Float?   // teacher's own IELTS overall band (0-9), shown to students
   isSecondTeacher Boolean  @default(false)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
@@ -298,6 +300,25 @@ model SpeakingSession {
   @@index([studentId])
   @@index([date])
   @@map("speaking_sessions")
+}
+
+// Streak Insurance — a student stakes points on a weekly study goal.
+// Meet it → get the stake back plus a bonus; miss it → the stake is lost.
+model Commitment {
+  id         String   @id @default(cuid())
+  studentId  String
+  targetDays Int      // number of study days required in the window
+  stake      Int      // points escrowed (deducted at creation)
+  reward     Int      // bonus points awarded on success
+  startAt    DateTime
+  endAt      DateTime
+  status     String   @default("active") // active | succeeded | failed
+  createdAt  DateTime @default(now())
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId])
+  @@map("commitments")
 }
 
 model ActivityLog {

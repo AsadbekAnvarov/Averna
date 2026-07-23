@@ -21,6 +21,9 @@ import {
   Trophy,
   ArrowRight,
   Trash2,
+  Sparkles,
+  Bell,
+  MessageSquare,
 } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -38,6 +41,15 @@ import { ConfirmButton } from "@/components/ui/confirm-button";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PanelTabs } from "@/components/panel-tabs";
+import { MissionControl } from "@/components/admin/mission-control";
+import { PredictionEngine } from "@/components/admin/prediction-engine";
+import { FeatureHeatmap } from "@/components/admin/feature-heatmap";
+import { TeacherIntelligence } from "@/components/admin/teacher-intelligence";
+import { VoiceControl } from "@/components/admin/voice-control";
+import { JourneyReplaySection } from "@/components/admin/journey-replay-section";
+import { ContentHealth } from "@/components/admin/content-health";
+import { PublishImpactSection } from "@/components/admin/publish-impact-section";
+import { InnovationRadar } from "@/components/admin/innovation-radar";
 import { recordAudit } from "@/lib/audit";
 import { deleteStudentCascade } from "@/lib/cascade-delete";
 
@@ -122,7 +134,10 @@ export default async function AdminDashboard() {
       orderBy: { createdAt: "desc" },
     }),
     db.group.findMany({
-      include: { teacher: { include: { user: { select: { name: true } } } } },
+      // Use `select` (not `include`) on teacher so we never query teacher
+      // scalar columns the dashboard doesn't need (keeps it resilient to
+      // schema changes like `ieltsBand`).
+      include: { teacher: { select: { user: { select: { name: true } } } } },
       orderBy: { name: "asc" },
     }),
   ]);
@@ -147,6 +162,9 @@ export default async function AdminDashboard() {
     { href: "/admin/finance", label: "Moliya", desc: "Toʻlovlar va hisob-kitob", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
     { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
     { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
+    { href: "/admin/generate-tests", label: "Test generatori", desc: "Original testlar yaratish", icon: Sparkles, iconBg: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
+    { href: "/notifications", label: "Bildirishnomalar", desc: "Tizim xabarlari", icon: Bell, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+    { href: "/messages", label: "Xabarlar", desc: "Oʻquvchilar bilan yozishma", icon: MessageSquare, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
   ];
 
   const StudentForm = ({ s }: { s: (typeof students)[number] }) => (
@@ -225,6 +243,9 @@ export default async function AdminDashboard() {
           content={{
             overview: (
               <>
+                <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <MissionControl firstName={firstName} />
+                </Suspense>
                 <AdminKpis />
                 <div className="grid lg:grid-cols-2 gap-6">
                   <ActivityFeed />
@@ -276,9 +297,27 @@ export default async function AdminDashboard() {
             insights: (
               <>
                 <div className="grid lg:grid-cols-2 gap-6">
+                  <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
+                    <PredictionEngine />
+                  </Suspense>
+                  <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
+                    <FeatureHeatmap />
+                  </Suspense>
+                </div>
+                <Suspense fallback={<div className="h-40 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <TeacherIntelligence />
+                </Suspense>
+                <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <JourneyReplaySection />
+                </Suspense>
+                <div className="grid lg:grid-cols-2 gap-6">
                   <EnrollmentFunnel />
                   <TeacherWorkload />
                 </div>
+                <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <PublishImpactSection />
+                </Suspense>
+                <InnovationRadar />
                 <div>
                   <SectionHeader icon={Trophy} title="Shon-shuhrat zali" subtitle="Platformadagi eng faol oʻquvchilar" accent="text-amber-400" />
                   <TopPerformers />
@@ -286,26 +325,32 @@ export default async function AdminDashboard() {
               </>
             ),
             manage: (
-              <div>
+              <>
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <VoiceControl />
+                  <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
+                    <ContentHealth />
+                  </Suspense>
+                </div>
+                <div>
                 <SectionHeader icon={ShieldCheck} title="Boshqaruv vositalari" subtitle="Butun platformani shu yerdan boshqaring" accent="text-averna-purple" />
                 <Card className="glass border-averna-primary/30">
                   <CardContent className="pt-6">
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                       {actions.map((action) => {
                         const Icon = action.icon;
                         return (
-                          <Link key={action.href} href={action.href} className="group">
-                            <div
-                              className={`flex items-center gap-4 p-4 rounded-xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/50 hover:-translate-y-0.5 ${action.hover}`}
-                            >
-                              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${action.iconBg}`}>
-                                <Icon className="h-5 w-5" />
-                              </div>
-                              <div className="min-w-0 flex-1">
-                                <p className="font-semibold text-white text-sm truncate">{action.label}</p>
-                                <p className="text-xs text-gray-400 truncate">{action.desc}</p>
-                              </div>
-                              <ArrowRight className="h-4 w-4 text-gray-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
+                          <Link
+                            key={action.href}
+                            href={action.href}
+                            className="group flex flex-col items-center text-center gap-2.5 p-4 rounded-2xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/60 hover:-translate-y-1 hover:border-averna-neon/40 hover:shadow-[0_14px_40px_-16px_rgba(0,229,255,0.35)]"
+                          >
+                            <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${action.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+                              <Icon className="h-6 w-6" />
+                            </div>
+                            <div className="min-w-0 w-full">
+                              <p className="font-semibold text-white text-sm truncate">{action.label}</p>
+                              <p className="text-[11px] text-gray-400 truncate">{action.desc}</p>
                             </div>
                           </Link>
                         );
@@ -313,7 +358,8 @@ export default async function AdminDashboard() {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+                </div>
+              </>
             ),
           }}
         />
