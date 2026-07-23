@@ -10,6 +10,7 @@ import {
   CheckSquare,
   ClipboardCheck,
   CalendarClock,
+  Wand2,
   Megaphone,
   MessageSquare,
   CalendarDays,
@@ -27,6 +28,8 @@ import { StudentRadar } from "@/components/teacher/student-radar";
 import { TeachingAssistant } from "@/components/teacher/teaching-assistant";
 import { TeachingDNA } from "@/components/teacher/teaching-dna";
 import { AchievementStudio } from "@/components/teacher/achievement-studio";
+import { LessonBuilder } from "@/components/teacher/lesson-builder";
+import { SmartEssayReview } from "@/components/teacher/smart-essay-review";
 import { TodayPanel } from "@/components/teacher/today-panel";
 import { GradingInbox } from "@/components/teacher/grading-inbox";
 import { GroupPulse } from "@/components/teacher/group-pulse";
@@ -358,6 +361,14 @@ export default async function TeacherDashboard() {
             ),
             teaching: (
               <>
+                <div>
+                  <SectionHeader icon={Wand2} title="AI Lesson Builder" subtitle="Turn a topic into a full, editable offline lesson" accent="text-averna-purple" />
+                  <LessonBuilder />
+                </div>
+                <div>
+                  <SectionHeader icon={ClipboardCheck} title="Smart Essay Review" subtitle="AI marks first — you approve, edit and personalise" accent="text-averna-cyan" />
+                  <SmartEssayReview />
+                </div>
                 <div>
                   <SectionHeader icon={Zap} title="Quick Actions" subtitle="Jump straight into your daily tasks" accent="text-averna-neon" />
                   {quickActions}
