@@ -30,6 +30,7 @@ import { MessagePreview } from "@/components/dashboard/message-preview";
 import { PomodoroTimer } from "@/components/dashboard/pomodoro-timer";
 import { FocusVault } from "@/components/dashboard/focus-vault";
 import { WarmUp } from "@/components/dashboard/warm-up";
+import { WordDuel } from "@/components/dashboard/word-duel";
 import { GroupFeed } from "@/components/dashboard/group-feed";
 import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
 import { PersonalBests } from "@/components/dashboard/personal-bests";
@@ -372,6 +373,9 @@ export default async function DashboardPage() {
           }
           fun={
             <>
+              <div data-gamified>
+                <WordDuel />
+              </div>
               <div className="grid lg:grid-cols-2 gap-6">
                 <div data-gamified>
                   <BossBattle />
