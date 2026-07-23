@@ -6,13 +6,22 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserCircle, Upload, Check, Loader2, Trash2, Sparkles, ImageIcon } from "lucide-react";
 import { initialsOf } from "@/lib/utils";
 
-/** Preset character avatars (DiceBear). Rendered straight from their URL. */
-const PRESET_STYLES = [
-  "fun-emoji", "bottts", "adventurer", "avataaars", "thumbs", "big-smile",
-  "lorelei", "micah", "notionists", "open-peeps", "personas", "pixel-art",
+/**
+ * Curated, elegant preset avatars (DiceBear). Instead of a mix of cartoonish
+ * styles, we use a few refined ones with a soft, cohesive gradient background so
+ * the whole gallery looks neat and premium on the dark theme.
+ */
+const AVATAR_BG = "b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf,d1f4d9";
+const SEEDS = ["Aria", "Leo", "Mia", "Theo", "Luna", "Kai", "Nova", "Zoe"];
+const dice = (style: string, seed: string) =>
+  `https://api.dicebear.com/7.x/${style}/svg?seed=${encodeURIComponent(seed)}&backgroundColor=${AVATAR_BG}&backgroundType=gradientLinear&radius=50`;
+
+const PRESET_GROUPS: { label: string; items: string[] }[] = [
+  { label: "Illustrated", items: SEEDS.slice(0, 6).map((s) => dice("notionists", s)) },
+  { label: "Portraits", items: SEEDS.slice(0, 6).map((s) => dice("lorelei", s)) },
+  { label: "Minimal", items: SEEDS.slice(0, 6).map((s) => dice("micah", s)) },
+  { label: "Abstract", items: SEEDS.slice(0, 6).map((s) => dice("glass", s)) },
 ];
-const SEEDS = ["Leo", "Mia", "Zoe", "Max", "Ivy", "Sam", "Aria", "Kai", "Nova", "Remi", "Luna", "Theo"];
-const PRESETS = PRESET_STYLES.map((style, i) => `https://api.dicebear.com/7.x/${style}/svg?seed=${SEEDS[i % SEEDS.length]}`);
 
 const SIZES = [
   { key: "sm", label: "Small", px: 96 },
@@ -159,18 +168,25 @@ export function AvatarEditor({ currentImage, name }: { currentImage: string | nu
             </div>
 
             {tab === "characters" ? (
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
-                {PRESETS.map((url) => (
-                  <button
-                    key={url}
-                    onClick={() => { setRawFile(null); setPreview(url); }}
-                    className={`aspect-square rounded-xl overflow-hidden border-2 transition-all hover:-translate-y-0.5 ${
-                      preview === url ? "border-averna-neon ring-2 ring-averna-neon/30" : "border-white/10 hover:border-averna-pink/40"
-                    } bg-white/5`}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={url} alt="Character" className="h-full w-full object-cover" />
-                  </button>
+              <div className="space-y-4 max-h-[420px] overflow-y-auto pr-1">
+                {PRESET_GROUPS.map((group) => (
+                  <div key={group.label}>
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-2">{group.label}</p>
+                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
+                      {group.items.map((url) => (
+                        <button
+                          key={url}
+                          onClick={() => { setRawFile(null); setPreview(url); }}
+                          className={`aspect-square rounded-full overflow-hidden border-2 transition-all hover:-translate-y-1 hover:shadow-[0_10px_28px_-10px_rgba(255,61,187,0.5)] ${
+                            preview === url ? "border-averna-neon ring-2 ring-averna-neon/40" : "border-white/10 hover:border-averna-pink/50"
+                          } bg-white/5`}
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={url} alt={`${group.label} avatar`} className="h-full w-full object-cover" loading="lazy" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             ) : (
