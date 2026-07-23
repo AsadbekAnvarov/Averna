@@ -65,6 +65,8 @@ import { AiMissionsSection } from "@/components/dashboard/ai-missions-section";
 import { LivingCampusSection } from "@/components/dashboard/living-campus-section";
 import { CommunityChallenge } from "@/components/dashboard/community-challenge";
 import { LearningJournal } from "@/components/dashboard/learning-journal";
+import { AvernaAiSection } from "@/components/dashboard/averna-ai-section";
+import { GraduationSection } from "@/components/dashboard/graduation-section";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
@@ -247,6 +249,10 @@ export default async function DashboardPage() {
               />
               <StatsGrid student={student} />
 
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <AvernaAiSection studentId={student.id} firstName={(student.user.name ?? "there").split(" ")[0]} />
+              </Suspense>
+
               <DailyPodcast />
 
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
@@ -413,6 +419,13 @@ export default async function DashboardPage() {
                 <MonthlyRecapSection studentId={student.id} />
               </Suspense>
               <RecordsWall />
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <GraduationSection
+                  studentId={student.id}
+                  targetBand={student.targetBand}
+                  firstName={(student.user.name ?? "there").split(" ")[0]}
+                />
+              </Suspense>
             </>
           }
           classroom={
