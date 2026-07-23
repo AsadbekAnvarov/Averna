@@ -16,7 +16,7 @@ export async function TeacherCard({ groupId }: { groupId: string | null }) {
     select: {
       name: true,
       schedule: true,
-      teacher: { select: { specialty: true, user: { select: { id: true, name: true, image: true } } } },
+      teacher: { select: { specialty: true, ieltsBand: true, user: { select: { id: true, name: true, image: true } } } },
     },
   });
   if (!group) return null;
@@ -50,7 +50,14 @@ export async function TeacherCard({ groupId }: { groupId: string | null }) {
             <p className="text-xs text-gray-400 flex items-center gap-1">
               <GraduationCap className="h-3.5 w-3.5" /> Your teacher
             </p>
-            <p className="font-bold text-white truncate">{teacher.user.name ?? "Teacher"}</p>
+            <p className="font-bold text-white truncate flex items-center gap-2">
+              <span className="truncate">{teacher.user.name ?? "Teacher"}</span>
+              {teacher.ieltsBand != null && (
+                <span className="shrink-0 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-averna-neon/15 text-averna-neon border border-averna-neon/40">
+                  IELTS {teacher.ieltsBand}
+                </span>
+              )}
+            </p>
             {teacher.specialty && <p className="text-xs text-averna-cyan truncate">{teacher.specialty}</p>}
           </div>
         </div>
