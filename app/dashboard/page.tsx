@@ -54,13 +54,14 @@ import { VoiceJournal } from "@/components/dashboard/voice-journal";
 import { ExplainCoach } from "@/components/learning/explain-coach";
 import { SkillDna } from "@/components/dashboard/skill-dna";
 import { MistakeBank } from "@/components/learning/mistake-bank";
+import { EssayXray } from "@/components/learning/essay-xray";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked } from "lucide-react";
+import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine } from "lucide-react";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -301,6 +302,10 @@ export default async function DashboardPage() {
               <div>
                 <SectionHeader icon={BookMarked} title="Fix Your Mistakes" subtitle="Save your errors and beat them with spaced repetition" accent="text-averna-cyan" />
                 <MistakeBank />
+              </div>
+              <div>
+                <SectionHeader icon={ScanLine} title="X-Ray Your Essay" subtitle="Instant examiner-style diagnosis with issues highlighted inline" accent="text-averna-cyan" />
+                <EssayXray />
               </div>
               <div>
                 <SectionHeader icon={BookOpen} title="Keep Learning" subtitle="A little reading goes a long way" accent="text-averna-cyan" />

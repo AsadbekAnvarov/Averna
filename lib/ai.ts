@@ -777,3 +777,83 @@ Return ONLY JSON:
   const task = writingTask1Schema.parse(parsed);
   return { ...task, id };
 }
+
+
+
+// ============================================================
+// Essay X-Ray (#) — inline, band-focused essay diagnosis
+// GPT-4o when a key is present; graceful heuristic fallback otherwise.
+// ============================================================
+export interface EssayXrayResult {
+  issues: WritingIssue[]; // each .text is an exact substring for inline highlighting
+  summary: string;        // short paragraph on the biggest band-limiting problems
+  topFixes: string[];     // 3-5 highest-impact fixes
+}
+
+export async function analyzeEssayXray(essay: string, prompt?: string): Promise<EssayXrayResult> {
+  const text = (essay || "").trim();
+  if (!text) return { issues: [], summary: "Paste an essay to X-ray it.", topFixes: [] };
+
+  // Offline / no-key fallback: reuse the safe heuristic scanner.
+  if (!hasOpenAI()) {
+    const issues = analyzeWritingIssues(text);
+    const words = text.split(/\s+/).filter(Boolean).length;
+    return {
+      issues,
+      summary:
+        `Quick offline scan of ${words} words found ${issues.length} thing${issues.length === 1 ? "" : "s"} to check. ` +
+        `Connect an OpenAI key for a full examiner-level, band-focused X-ray.`,
+      topFixes: issues.slice(0, 3).map((i) => i.suggestion),
+    };
+  }
+
+  const systemPrompt = `You are an expert IELTS Writing examiner performing an "X-ray" of a student's essay.
+Find the specific things that are holding the band score back and the things done well.
+
+Return ONLY JSON:
+{
+  "issues": [{ "text": string, "type": "grammar" | "vocabulary" | "spelling" | "cohesion" | "punctuation" | "style" | "good", "suggestion": string }],
+  "summary": string,
+  "topFixes": [string]
+}
+
+Rules:
+- Provide 8-16 "issues". For EACH, "text" MUST be an EXACT substring copied verbatim from the essay (a word or short phrase, at most ~8 words) so it can be located and highlighted.
+- Use type "good" for 2-3 phrases the student used particularly well.
+- Each "suggestion" is ONE short, concrete sentence (how to fix, or why it's good).
+- "summary": one short paragraph naming the biggest band-limiting problems.
+- "topFixes": 3-5 highest-impact fixes as short imperatives.
+${prompt ? `Task prompt: ${prompt}` : ""}
+
+Essay:
+${text}`;
+
+  try {
+    const client = getOpenAIClient();
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "system", content: systemPrompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.3,
+    });
+    const raw = completion.choices[0]?.message?.content;
+    if (!raw) throw new Error("No response from OpenAI");
+    const parsed = JSON.parse(raw) as Partial<EssayXrayResult>;
+    return {
+      issues: Array.isArray(parsed.issues)
+        ? parsed.issues.filter((i): i is WritingIssue => !!i && typeof i.text === "string" && i.text.trim().length > 0)
+        : [],
+      summary: typeof parsed.summary === "string" ? parsed.summary : "",
+      topFixes: Array.isArray(parsed.topFixes) ? parsed.topFixes.filter((f) => typeof f === "string") : [],
+    };
+  } catch (error) {
+    // Never hard-fail: fall back to the heuristic scan.
+    console.error("Essay X-Ray error:", error);
+    const issues = analyzeWritingIssues(text);
+    return {
+      issues,
+      summary: "The AI analysis is unavailable right now — showing a quick automatic scan instead.",
+      topFixes: issues.slice(0, 3).map((i) => i.suggestion),
+    };
+  }
+}
