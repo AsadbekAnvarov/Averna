@@ -261,3 +261,34 @@ export async function getMonthlyRecap(studentId: string): Promise<MonthlyRecap> 
     hasData: thisMonth.length > 0 || activity.length > 0,
   };
 }
+
+
+
+// ---------------- F6 — Graduation ----------------
+export interface Graduation {
+  reached: boolean;
+  current: number | null;
+  target: number | null;
+  toGo: number | null;
+  tests: number;
+  achievements: number;
+  bandDelta: number | null;
+  firstBand: number | null;
+}
+
+export async function getGraduation(studentId: string, targetBand?: string | null): Promise<Graduation> {
+  const [tests, achievements] = await Promise.all([
+    db.iELTSTest.findMany({ where: { studentId }, orderBy: { completedAt: "asc" }, select: { score: true } }),
+    db.studentAchievement.count({ where: { studentId } }),
+  ]);
+  const scores = tests.map((t) => t.score).filter((s) => s > 0);
+  const p = predictBand(scores);
+  const current = p ? p.current : null;
+  const target = targetBand ? parseFloat(targetBand.replace(/[^0-9.]/g, "")) || null : null;
+  const firstBand = scores.length ? Math.round(scores[0] * 10) / 10 : null;
+  const bandDelta = current != null && firstBand != null ? Math.round((current - firstBand) * 10) / 10 : null;
+  const reached = current != null && target != null && current >= target;
+  const toGo = current != null && target != null && !reached ? Math.round((target - current) * 10) / 10 : null;
+
+  return { reached, current, target, toGo, tests: tests.length, achievements, bandDelta, firstBand };
+}

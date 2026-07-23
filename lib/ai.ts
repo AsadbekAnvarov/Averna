@@ -1378,3 +1378,43 @@ Return ONLY the feedback text (no preamble, no markdown).`;
     return fallback();
   }
 }
+
+
+
+// ============================================================
+// F1 — Averna AI (platform-wide, context-aware learning companion)
+// GPT-4o grounded in the student's REAL data; rule-based fallback supplied by
+// the caller so it always answers something useful.
+// ============================================================
+export async function avernaAssistant(
+  profileText: string,
+  message: string,
+  history: { role: "user" | "assistant"; content: string }[],
+  fallback: string,
+): Promise<string> {
+  if (!hasOpenAI()) return fallback;
+  try {
+    const client = getOpenAIClient();
+    const c = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "system",
+          content:
+            `You are Averna AI — a warm, insightful IELTS mentor who knows this student personally. ` +
+            `Answer using ONLY the real data below; never invent numbers, dates or facts. ` +
+            `Be concise (2–5 sentences), specific and encouraging, and always end with ONE concrete next action grounded in their data.\n\n` +
+            `STUDENT DATA:\n${profileText}`,
+        },
+        ...history.slice(-8),
+        { role: "user", content: message },
+      ],
+      temperature: 0.5,
+      max_tokens: 320,
+    });
+    return c.choices[0]?.message?.content?.trim() || fallback;
+  } catch (e) {
+    console.error("Averna AI error:", e);
+    return fallback;
+  }
+}
