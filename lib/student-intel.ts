@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { cache } from "react";
 import { predictBand } from "@/lib/utils";
 
 /**
@@ -31,7 +32,7 @@ export interface SkillPrediction {
   label: string;
   predicted: number | null;
   current: number | null;
-  trend: "up" | "down" | "steady" | null;
+  trend: "up" | "down" | "flat" | null;
   sampleSize: number;
 }
 
@@ -44,7 +45,7 @@ export interface ExamReadiness {
   recommendations: string[];
 }
 
-export async function getExamReadiness(studentId: string): Promise<ExamReadiness> {
+export const getExamReadiness = cache(async function getExamReadiness(studentId: string): Promise<ExamReadiness> {
   const tests = await db.iELTSTest.findMany({
     where: { studentId },
     orderBy: { completedAt: "asc" },
@@ -95,7 +96,7 @@ export async function getExamReadiness(studentId: string): Promise<ExamReadiness
     narrative,
     recommendations,
   };
-}
+});
 
 // ---------------- F1 — Memory Timeline ----------------
 export type MemoryStatus = "mastered" | "strong" | "fading" | "forgotten";
@@ -225,7 +226,7 @@ export async function getMonthlyRecap(studentId: string): Promise<MonthlyRecap> 
       where: { studentId, createdAt: { gte: startOfMonth } },
       select: { createdAt: true, points: true },
     }),
-    db.studentAchievement.count({ where: { studentId, createdAt: { gte: startOfMonth } } }),
+    db.studentAchievement.count({ where: { studentId, unlockedAt: { gte: startOfMonth } } }),
   ]);
 
   const thisMonth = tests.filter((t) => t.completedAt >= startOfMonth);
@@ -260,4 +261,35 @@ export async function getMonthlyRecap(studentId: string): Promise<MonthlyRecap> 
     topModule,
     hasData: thisMonth.length > 0 || activity.length > 0,
   };
+}
+
+
+
+// ---------------- F6 — Graduation ----------------
+export interface Graduation {
+  reached: boolean;
+  current: number | null;
+  target: number | null;
+  toGo: number | null;
+  tests: number;
+  achievements: number;
+  bandDelta: number | null;
+  firstBand: number | null;
+}
+
+export async function getGraduation(studentId: string, targetBand?: string | null): Promise<Graduation> {
+  const [tests, achievements] = await Promise.all([
+    db.iELTSTest.findMany({ where: { studentId }, orderBy: { completedAt: "asc" }, select: { score: true } }),
+    db.studentAchievement.count({ where: { studentId } }),
+  ]);
+  const scores = tests.map((t) => t.score).filter((s) => s > 0);
+  const p = predictBand(scores);
+  const current = p ? p.current : null;
+  const target = targetBand ? parseFloat(targetBand.replace(/[^0-9.]/g, "")) || null : null;
+  const firstBand = scores.length ? Math.round(scores[0] * 10) / 10 : null;
+  const bandDelta = current != null && firstBand != null ? Math.round((current - firstBand) * 10) / 10 : null;
+  const reached = current != null && target != null && current >= target;
+  const toGo = current != null && target != null && !reached ? Math.round((target - current) * 10) / 10 : null;
+
+  return { reached, current, target, toGo, tests: tests.length, achievements, bandDelta, firstBand };
 }
