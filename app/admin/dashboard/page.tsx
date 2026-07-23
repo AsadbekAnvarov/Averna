@@ -42,6 +42,10 @@ import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PanelTabs } from "@/components/panel-tabs";
 import { MissionControl } from "@/components/admin/mission-control";
+import { PredictionEngine } from "@/components/admin/prediction-engine";
+import { FeatureHeatmap } from "@/components/admin/feature-heatmap";
+import { TeacherIntelligence } from "@/components/admin/teacher-intelligence";
+import { VoiceControl } from "@/components/admin/voice-control";
 import { recordAudit } from "@/lib/audit";
 import { deleteStudentCascade } from "@/lib/cascade-delete";
 
@@ -289,6 +293,17 @@ export default async function AdminDashboard() {
             insights: (
               <>
                 <div className="grid lg:grid-cols-2 gap-6">
+                  <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
+                    <PredictionEngine />
+                  </Suspense>
+                  <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
+                    <FeatureHeatmap />
+                  </Suspense>
+                </div>
+                <Suspense fallback={<div className="h-40 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <TeacherIntelligence />
+                </Suspense>
+                <div className="grid lg:grid-cols-2 gap-6">
                   <EnrollmentFunnel />
                   <TeacherWorkload />
                 </div>
@@ -299,7 +314,9 @@ export default async function AdminDashboard() {
               </>
             ),
             manage: (
-              <div>
+              <>
+                <VoiceControl />
+                <div>
                 <SectionHeader icon={ShieldCheck} title="Boshqaruv vositalari" subtitle="Butun platformani shu yerdan boshqaring" accent="text-averna-purple" />
                 <Card className="glass border-averna-primary/30">
                   <CardContent className="pt-6">
@@ -325,7 +342,8 @@ export default async function AdminDashboard() {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+                </div>
+              </>
             ),
           }}
         />
