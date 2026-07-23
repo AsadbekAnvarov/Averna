@@ -23,7 +23,10 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
-import { RiskRadar } from "@/components/teacher/risk-radar";
+import { StudentRadar } from "@/components/teacher/student-radar";
+import { TeachingAssistant } from "@/components/teacher/teaching-assistant";
+import { TeachingDNA } from "@/components/teacher/teaching-dna";
+import { AchievementStudio } from "@/components/teacher/achievement-studio";
 import { TodayPanel } from "@/components/teacher/today-panel";
 import { GradingInbox } from "@/components/teacher/grading-inbox";
 import { GroupPulse } from "@/components/teacher/group-pulse";
@@ -338,6 +341,9 @@ export default async function TeacherDashboard() {
                     <TodayPanel teacherId={teacher.id} />
                   </Suspense>
                 </div>
+                <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                  <TeachingAssistant teacherId={teacher.id} />
+                </Suspense>
                 {statCards}
                 <div>
                   <SectionHeader icon={CheckSquare} title="Needs Action" subtitle="Grade work and keep your groups in the loop" accent="text-amber-400" />
@@ -371,8 +377,16 @@ export default async function TeacherDashboard() {
                   </Suspense>
                 </div>
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                  <RiskRadar teacherId={teacher.id} />
+                  <StudentRadar teacherId={teacher.id} />
                 </Suspense>
+                <div className="grid lg:grid-cols-2 gap-6">
+                  <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                    <TeachingDNA teacherId={teacher.id} />
+                  </Suspense>
+                  <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                    <AchievementStudio teacherId={teacher.id} />
+                  </Suspense>
+                </div>
               </>
             ),
           }}
