@@ -1030,3 +1030,60 @@ Rules:
     return offlineDailyBriefing(opts);
   }
 }
+
+
+
+// ============================================================
+// Admin Mission Control — AI Executive Briefing (Uzbek)
+// GPT-4o narrative when a key is present; templated Uzbek fallback otherwise.
+// ============================================================
+export async function generateAdminBriefing(ctx: {
+  firstName?: string;
+  bullets: string[];
+  priorities: string[];
+  risks: string[];
+}): Promise<string> {
+  const { firstName, bullets, priorities, risks } = ctx;
+  const hi = firstName ? `Assalomu alaykum, ${firstName}.` : "Assalomu alaykum.";
+
+  // Templated Uzbek fallback (also used when there is no key or on error).
+  const fallback = () => {
+    const parts: string[] = [hi];
+    if (bullets.length) parts.push(`Bugungi holat: ${bullets.join(" ")}`);
+    if (priorities.length) parts.push(`Bugungi ustuvor vazifalar: ${priorities.join(" ")}`);
+    if (risks.length) parts.push(`Eʼtibor bering: ${risks.join(" ")}`);
+    parts.push("Kichik, aniq qadamlar bugun eng katta taʼsir beradi.");
+    return parts.join(" ");
+  };
+
+  if (!hasOpenAI()) return fallback();
+
+  const systemPrompt = `Siz Averna Learning Centre platformasining AI boshqaruv yordamchisisiz.
+Administrator uchun QISQA, aniq va professional kunlik xulosa yozing.
+QATTIY QOIDALAR:
+- Faqat OʻZBEK tilida (lotin yozuvi), toʻgʻri imlo bilan (oʻ, gʻ, ʼ).
+- 3-5 jumla, xotirjam va ishonchli ohangda.
+- Berilgan maʼlumotlardan tashqari raqam yoki dalil OʻYLAB TOPMANG.
+- Salomlashish bilan boshlang, keyin eng muhim holat, ustuvorlik va xavf haqida ayting, ijobiy yakun bilan tugating.
+Faqat matnni qaytaring (JSON emas).
+
+Maʼlumot:
+Salom: ${hi}
+Bugungi koʻrsatkichlar: ${bullets.join(" ")}
+Ustuvor vazifalar: ${priorities.join(" ") || "yoʻq"}
+Xavflar: ${risks.join(" ") || "yoʻq"}`;
+
+  try {
+    const client = getOpenAIClient();
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "system", content: systemPrompt }],
+      temperature: 0.5,
+      max_tokens: 320,
+    });
+    return completion.choices[0]?.message?.content?.trim() || fallback();
+  } catch (error) {
+    console.error("Admin briefing error:", error);
+    return fallback();
+  }
+}
