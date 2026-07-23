@@ -42,10 +42,11 @@ import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
 import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { LevelUpCelebration } from "@/components/dashboard/level-up-celebration";
 import { CommitmentCard } from "@/components/dashboard/commitment-card";
+import { VoiceJournal } from "@/components/dashboard/voice-journal";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, BookOpen } from "lucide-react";
+import { Sparkles, LayoutGrid, BookOpen, Mic } from "lucide-react";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -270,6 +271,10 @@ export default async function DashboardPage() {
                   <MentorCard />
                   <PomodoroTimer />
                 </div>
+              </div>
+              <div>
+                <SectionHeader icon={Mic} title="Speak Daily" subtitle="A 60-second spoken diary that tracks your fluency over time" accent="text-averna-pink" />
+                <VoiceJournal />
               </div>
               <div>
                 <SectionHeader icon={BookOpen} title="Keep Learning" subtitle="A little reading goes a long way" accent="text-averna-cyan" />
