@@ -60,17 +60,20 @@ import { DailyPodcast } from "@/components/dashboard/daily-podcast";
 import { AiClone } from "@/components/dashboard/ai-clone";
 import { MemoryTimelineSection } from "@/components/dashboard/memory-timeline-section";
 import { FutureSelfSection } from "@/components/dashboard/future-self-section";
-import { KnowledgeGalaxySection } from "@/components/dashboard/knowledge-galaxy-section";
 import { MonthlyRecapSection } from "@/components/dashboard/monthly-recap-section";
 import { AiMissionsSection } from "@/components/dashboard/ai-missions-section";
-import { LivingCampus } from "@/components/dashboard/living-campus";
+import { LivingCampusSection } from "@/components/dashboard/living-campus-section";
+import { CommunityChallenge } from "@/components/dashboard/community-challenge";
+import { LearningJournal } from "@/components/dashboard/learning-journal";
+import { AvernaAiSection } from "@/components/dashboard/averna-ai-section";
+import { GraduationSection } from "@/components/dashboard/graduation-section";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine, Clapperboard } from "lucide-react";
+import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine, Clapperboard, Brain, Flame, Award } from "lucide-react";
 import { Suspense } from "react";
 import { updateStudentStreak } from "@/lib/db-helpers";
 
@@ -246,6 +249,10 @@ export default async function DashboardPage() {
               />
               <StatsGrid student={student} />
 
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <AvernaAiSection studentId={student.id} firstName={(student.user.name ?? "there").split(" ")[0]} />
+              </Suspense>
+
               <DailyPodcast />
 
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
@@ -300,11 +307,10 @@ export default async function DashboardPage() {
           }
           learn={
             <>
-              <LivingCampus />
-              <WarmUp />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <KnowledgeGalaxySection studentId={student.id} />
+                <LivingCampusSection studentId={student.id} />
               </Suspense>
+              <WarmUp />
               <div>
                 <SectionHeader icon={LayoutGrid} title="Explore" subtitle="Jump into any module or tool" accent="text-averna-purple" action={{ label: "Learning Center", href: "/learning" }} />
                 <QuickActions />
@@ -341,15 +347,14 @@ export default async function DashboardPage() {
               </div>
               <div>
                 <SectionHeader icon={BookOpen} title="Keep Learning" subtitle="A little reading goes a long way" accent="text-averna-cyan" />
-                <div className="grid lg:grid-cols-2 gap-6">
-                  <DailyArticle />
-                  <WordOfTheDay />
-                </div>
+                <DailyArticle />
               </div>
             </>
           }
           progress={
             <>
+              {/* Predicted level & focus */}
+              <SectionHeader icon={Brain} title="Your Predicted Level" subtitle="Where your bands are heading and what to focus on next" accent="text-averna-purple" />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <AiClone studentId={student.id} />
               </Suspense>
@@ -364,22 +369,26 @@ export default async function DashboardPage() {
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <AdaptivePractice studentId={student.id} />
               </Suspense>
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <WritingTimeMachine studentId={student.id} />
-              </Suspense>
+
+              {/* Skill deep-dive */}
+              <SectionHeader icon={LayoutGrid} title="Skill Deep-Dive" subtitle="Mastery, memory strength and how your writing is growing" accent="text-averna-cyan" />
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <SkillDna studentId={student.id} />
               </Suspense>
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <MemoryTimelineSection studentId={student.id} />
               </Suspense>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <LevelProgress points={student.totalPoints} />
-                <WeeklyGoal completed={weeklyCompleted} />
-                <ExamCountdown />
-              </div>
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <WritingTimeMachine studentId={student.id} />
+              </Suspense>
+
+              {/* Streaks & milestones */}
+              <SectionHeader icon={Flame} title="Streaks & Milestones" subtitle="Consistency is your superpower" accent="text-orange-400" />
               <StreakStory currentStreak={student.currentStreak} longestStreak={student.longestStreak} />
               <StreakHeatmap studentId={student.id} />
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <LearningJournal studentId={student.id} />
+              </Suspense>
               <div className="grid lg:grid-cols-2 gap-6">
                 <Milestones
                   points={student.totalPoints}
@@ -391,6 +400,9 @@ export default async function DashboardPage() {
                   <TestHistory studentId={student.id} />
                 </Suspense>
               </div>
+
+              {/* Achievements & records */}
+              <SectionHeader icon={Award} title="Achievements & Records" subtitle="Everything you've earned so far" accent="text-amber-400" />
               <div className="grid lg:grid-cols-2 gap-6">
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
                   <AchievementsProgress
@@ -407,10 +419,20 @@ export default async function DashboardPage() {
                 <MonthlyRecapSection studentId={student.id} />
               </Suspense>
               <RecordsWall />
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <GraduationSection
+                  studentId={student.id}
+                  targetBand={student.targetBand}
+                  firstName={(student.user.name ?? "there").split(" ")[0]}
+                />
+              </Suspense>
             </>
           }
           classroom={
             <>
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <CommunityChallenge studentId={student.id} />
+              </Suspense>
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <StudySquad groupId={student.groupId} studentId={student.id} />
               </Suspense>
