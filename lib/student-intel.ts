@@ -31,7 +31,7 @@ export interface SkillPrediction {
   label: string;
   predicted: number | null;
   current: number | null;
-  trend: "up" | "down" | "steady" | null;
+  trend: "up" | "down" | "flat" | null;
   sampleSize: number;
 }
 
@@ -225,7 +225,7 @@ export async function getMonthlyRecap(studentId: string): Promise<MonthlyRecap> 
       where: { studentId, createdAt: { gte: startOfMonth } },
       select: { createdAt: true, points: true },
     }),
-    db.studentAchievement.count({ where: { studentId, createdAt: { gte: startOfMonth } } }),
+    db.studentAchievement.count({ where: { studentId, unlockedAt: { gte: startOfMonth } } }),
   ]);
 
   const thisMonth = tests.filter((t) => t.completedAt >= startOfMonth);
