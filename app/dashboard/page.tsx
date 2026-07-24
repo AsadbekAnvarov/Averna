@@ -47,6 +47,7 @@ import { MentorCard } from "@/components/dashboard/mentor-card";
 import { MoodCheckin } from "@/components/dashboard/mood-checkin";
 import { DailySpin } from "@/components/dashboard/daily-spin";
 import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
+import { DaypartAmbiance } from "@/components/dashboard/daypart-ambiance";
 import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { LevelUpCelebration } from "@/components/dashboard/level-up-celebration";
 import { CommitmentCard } from "@/components/dashboard/commitment-card";
@@ -205,6 +206,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="min-h-screen premium-gradient dashboard-anim">
+      <DaypartAmbiance />
       <SeasonalDecor />
       <div className="container relative z-10 mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
         <DashboardHeader user={student.user} />
