@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { History, PenTool, BookOpen, Headphones, Mic, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 import { formatDate } from "@/lib/utils";
 import { EmptyState } from "@/components/ui/empty-state";
 
@@ -23,12 +23,8 @@ function bandColor(score: number) {
  * glance — module, band and when they took it.
  */
 export async function TestHistory({ studentId }: { studentId: string }) {
-  const tests = await db.iELTSTest.findMany({
-    where: { studentId },
-    orderBy: { completedAt: "desc" },
-    take: 8,
-    select: { id: true, module: true, score: true, completedAt: true },
-  });
+  // Shared cached history is ascending; reverse for newest-first and cap at 8.
+  const tests = [...(await getStudentTests(studentId))].reverse().slice(0, 8);
 
   return (
     <Card className="glass border-averna-blue/30">

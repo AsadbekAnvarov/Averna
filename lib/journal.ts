@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 
 /**
  * F2 — AI Learning Journal (read-only).
@@ -27,7 +28,7 @@ export async function getLearningJournal(studentId: string, days = 30): Promise<
 
   const [activity, tests, achievements] = await Promise.all([
     db.activityLog.findMany({ where: { studentId, createdAt: { gte: since } }, select: { action: true, points: true, createdAt: true } }),
-    db.iELTSTest.findMany({ where: { studentId }, orderBy: { completedAt: "asc" }, select: { module: true, score: true, completedAt: true } }),
+    getStudentTests(studentId),
     db.studentAchievement.findMany({
       where: { studentId, unlockedAt: { gte: since } },
       select: { unlockedAt: true, achievement: { select: { name: true } } },

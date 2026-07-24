@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sparkles, TrendingUp, TrendingDown, Minus } from "lucide-react";
-import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 import { predictBand } from "@/lib/utils";
 
 /**
@@ -10,12 +10,7 @@ import { predictBand } from "@/lib/utils";
 export async function BandPredictor({ studentId }: { studentId: string }) {
   let scores: number[] = [];
   try {
-    const tests = await db.iELTSTest.findMany({
-      where: { studentId },
-      orderBy: { completedAt: "asc" },
-      take: 30,
-      select: { score: true },
-    });
+    const tests = await getStudentTests(studentId);
     scores = tests.map((t) => t.score);
   } catch {
     scores = [];
