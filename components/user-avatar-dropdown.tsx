@@ -103,8 +103,8 @@ export function UserAvatarDropdown({ user, role }: Props) {
           {/* Menu items */}
           <div className="py-1.5">
             <DropItem icon={User} label="My Profile" onClick={() => { setOpen(false); router.push(profileHref); }} />
-            <DropItem icon={Settings} label="Settings" onClick={() => { setOpen(false); router.push(profileHref); }} />
-            <DropItem icon={Palette} label="Edit Avatar" onClick={() => { setOpen(false); router.push(profileHref); }} />
+            <DropItem icon={Settings} label="Settings" onClick={() => { setOpen(false); router.push("/settings"); }} />
+            <DropItem icon={Palette} label="Edit Avatar" onClick={() => { setOpen(false); router.push(`${profileHref}#avatar`); }} />
             <div className="border-t border-white/10 my-1.5 mx-3" />
             <button
               onClick={toggleMode}
