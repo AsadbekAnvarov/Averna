@@ -52,6 +52,61 @@ export function tashkentHour(now: Date = new Date()): number {
   return parseInt(h, 10) % 24;
 }
 
+export type DaypartKey = "morning" | "afternoon" | "evening" | "night";
+
+export interface Daypart {
+  key: DaypartKey;
+  greeting: string;
+  emoji: string;
+  /** A calm, mood-appropriate fallback line when there's no personal highlight. */
+  line: string;
+  /** Tailwind bg class for the hero's soft ambient glow — warm by day, cool at night. */
+  glow: string;
+}
+
+/**
+ * Maps an hour (0-23, Fergana/UTC+5) to a part of the day with a matching mood.
+ * Powers the "Dynamic Daily Experience": the dashboard feels warm and fresh in
+ * the morning, energetic midday, softer in the evening, and calm at night —
+ * without changing the overall design. Pure + deterministic (safe on the server).
+ */
+export function getDaypart(hour: number): Daypart {
+  if (hour >= 5 && hour < 12) {
+    return {
+      key: "morning",
+      greeting: "Good morning",
+      emoji: "🌅",
+      line: "A calm, focused morning is the perfect time to learn something new.",
+      glow: "bg-amber-400/10",
+    };
+  }
+  if (hour >= 12 && hour < 18) {
+    return {
+      key: "afternoon",
+      greeting: "Good afternoon",
+      emoji: "☀️",
+      line: "You've got momentum — a focused session right now pays off.",
+      glow: "bg-averna-cyan/10",
+    };
+  }
+  if (hour >= 18 && hour < 22) {
+    return {
+      key: "evening",
+      greeting: "Good evening",
+      emoji: "🌆",
+      line: "Evenings are ideal for lighter review — a few minutes keeps your streak alive.",
+      glow: "bg-averna-purple/10",
+    };
+  }
+  return {
+    key: "night",
+    greeting: "Good night",
+    emoji: "🌙",
+    line: "It's getting late — a quick 10-minute review is a lovely way to wind down.",
+    glow: "bg-indigo-500/15",
+  };
+}
+
 /** Calendar date in Tashkent as a "YYYY-MM-DD" string, regardless of server TZ. */
 export function tashkentDateKey(now: Date = new Date()): string {
   return new Intl.DateTimeFormat("en-CA", {

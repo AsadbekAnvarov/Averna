@@ -12,6 +12,9 @@ const config: Config = {
     "bg-averna-neon", "bg-averna-cyan", "bg-averna-purple", "bg-averna-pink",
     "text-averna-neon", "text-averna-cyan", "text-averna-purple", "text-averna-pink",
     "border-averna-neon", "border-averna-cyan", "border-averna-purple", "border-averna-pink",
+    // Time-of-day ambient glow classes returned by getDaypart() in lib/utils.ts
+    // (lib/ is outside Tailwind's content scan, so they must be safelisted).
+    "bg-amber-400/10", "bg-averna-cyan/10", "bg-averna-purple/10", "bg-indigo-500/15",
   ],
   theme: {
     extend: {
