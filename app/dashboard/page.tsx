@@ -50,6 +50,7 @@ import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
 import { DaypartAmbiance } from "@/components/dashboard/daypart-ambiance";
 import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { MemoriesSection } from "@/components/dashboard/memories-section";
+import { HabitNudge } from "@/components/dashboard/habit-nudge";
 import { LevelUpCelebration } from "@/components/dashboard/level-up-celebration";
 import { CommitmentCard } from "@/components/dashboard/commitment-card";
 import { VoiceJournal } from "@/components/dashboard/voice-journal";
@@ -253,6 +254,10 @@ export default async function DashboardPage() {
                 featuredCosmetic={student.featuredCosmetic}
               />
               <StatsGrid student={student} />
+
+              <Suspense fallback={null}>
+                <HabitNudge studentId={student.id} streak={student.currentStreak} />
+              </Suspense>
 
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <AvernaAiSection studentId={student.id} firstName={(student.user.name ?? "there").split(" ")[0]} />
