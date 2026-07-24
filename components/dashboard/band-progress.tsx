@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, Target, Sparkles } from "lucide-react";
-import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 import { predictBand } from "@/lib/utils";
 import { Sparkline } from "@/components/ui/sparkline";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -11,11 +11,7 @@ import { EmptyState } from "@/components/ui/empty-state";
  * heading — turning raw scores into motivation ("you're trending toward 6.5").
  */
 export async function BandProgress({ studentId, targetBand }: { studentId: string; targetBand?: string | null }) {
-  const tests = await db.iELTSTest.findMany({
-    where: { studentId },
-    orderBy: { completedAt: "asc" },
-    select: { score: true },
-  });
+  const tests = await getStudentTests(studentId);
 
   const scores = tests.map((t) => t.score).filter((s) => s > 0);
   const prediction = predictBand(scores);

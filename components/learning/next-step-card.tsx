@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 import { Compass, ArrowRight, TrendingUp, Target } from "lucide-react";
 
 const MODULE_META: Record<string, { label: string; href: string }> = {
@@ -27,7 +28,7 @@ export async function NextStepCard({
 }) {
   const [student, tests] = await Promise.all([
     db.student.findUnique({ where: { id: studentId }, select: { targetBand: true } }),
-    db.iELTSTest.findMany({ where: { studentId }, select: { module: true, score: true } }),
+    getStudentTests(studentId),
   ]);
 
   // Average band per module → find the weakest tested skill.

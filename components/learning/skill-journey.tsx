@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 import { PenTool, BookOpen, Headphones, Mic, ArrowRight, PlayCircle } from "lucide-react";
 
 const MODULES = [
@@ -32,10 +32,7 @@ export async function SkillJourney({
   studentId: string;
   targetBand?: string | null;
 }) {
-  const tests = await db.iELTSTest.findMany({
-    where: { studentId },
-    select: { module: true, score: true, completedAt: true },
-  });
+  const tests = await getStudentTests(studentId);
 
   const stats = new Map<string, { total: number; count: number; lastAt: Date }>();
   for (const t of tests) {

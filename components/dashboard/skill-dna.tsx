@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Fingerprint } from "lucide-react";
-import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 
 type ModuleKey = "READING" | "LISTENING" | "WRITING" | "SPEAKING";
 
@@ -21,10 +21,7 @@ const SKILL_META: { key: ModuleKey; label: string; color: string }[] = [
 export async function SkillDna({ studentId }: { studentId: string }) {
   let tests: { module: ModuleKey; score: number }[] = [];
   try {
-    tests = (await db.iELTSTest.findMany({
-      where: { studentId },
-      select: { module: true, score: true },
-    })) as { module: ModuleKey; score: number }[];
+    tests = (await getStudentTests(studentId)) as { module: ModuleKey; score: number }[];
   } catch {
     tests = [];
   }

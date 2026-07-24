@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 import { predictBand } from "@/lib/utils";
 import { FutureSelf } from "@/components/dashboard/future-self";
 
@@ -14,11 +14,7 @@ export async function FutureSelfSection({
   points: number;
   streak: number;
 }) {
-  const tests = await db.iELTSTest.findMany({
-    where: { studentId },
-    orderBy: { completedAt: "asc" },
-    select: { score: true },
-  });
+  const tests = await getStudentTests(studentId);
   const scores = tests.map((t) => t.score).filter((s) => s > 0);
   const p = predictBand(scores);
   const current = p ? p.current : null;

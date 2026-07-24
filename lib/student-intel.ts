@@ -26,6 +26,24 @@ const MODULES = [
 
 type ModuleKey = (typeof MODULES)[number]["key"];
 
+/**
+ * Single source of truth for a student's IELTS test history.
+ *
+ * Wrapped in React.cache so that no matter how many dashboard widgets / lib
+ * helpers ask for it during one server render, the DB is hit exactly ONCE per
+ * request. Selects the lightweight superset ({id, module, score, completedAt})
+ * every consumer needs — heavier fields (answers/aiAnalysis) stay out so the
+ * shared payload is tiny. Ordered ascending by completedAt; consumers that need
+ * newest-first should reverse locally.
+ */
+export const getStudentTests = cache(async (studentId: string) =>
+  db.iELTSTest.findMany({
+    where: { studentId },
+    orderBy: { completedAt: "asc" },
+    select: { id: true, module: true, score: true, completedAt: true },
+  })
+);
+
 // ---------------- F3 — AI Clone / Exam Readiness ----------------
 export interface SkillPrediction {
   key: ModuleKey;
@@ -46,11 +64,7 @@ export interface ExamReadiness {
 }
 
 export const getExamReadiness = cache(async function getExamReadiness(studentId: string): Promise<ExamReadiness> {
-  const tests = await db.iELTSTest.findMany({
-    where: { studentId },
-    orderBy: { completedAt: "asc" },
-    select: { module: true, score: true },
-  });
+  const tests = await getStudentTests(studentId);
 
   const perSkill: SkillPrediction[] = MODULES.map((m) => {
     const scores = tests.filter((t) => t.module === m.key).map((t) => t.score).filter((s) => s > 0);
@@ -115,10 +129,7 @@ export interface MemoryEntry {
 }
 
 export async function getMemoryTimeline(studentId: string): Promise<MemoryEntry[]> {
-  const tests = await db.iELTSTest.findMany({
-    where: { studentId },
-    select: { module: true, score: true, completedAt: true },
-  });
+  const tests = await getStudentTests(studentId);
   const now = Date.now();
 
   const entries: MemoryEntry[] = [];
@@ -183,7 +194,7 @@ const MODULE_HREF: Record<ModuleKey, string> = {
 };
 
 export async function getGalaxy(studentId: string): Promise<GalaxyPlanet[]> {
-  const tests = await db.iELTSTest.findMany({ where: { studentId }, select: { module: true, score: true } });
+  const tests = await getStudentTests(studentId);
   return MODULES.map((m) => {
     const rows = tests.filter((t) => t.module === m.key);
     const avgBand = rows.length ? rows.reduce((a, b) => a + b.score, 0) / rows.length : 0;
@@ -218,10 +229,7 @@ export async function getMonthlyRecap(studentId: string): Promise<MonthlyRecap> 
   const startOfPrev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
 
   const [tests, activity, achievements] = await Promise.all([
-    db.iELTSTest.findMany({
-      where: { studentId, completedAt: { gte: startOfPrev } },
-      select: { module: true, score: true, completedAt: true },
-    }),
+    getStudentTests(studentId),
     db.activityLog.findMany({
       where: { studentId, createdAt: { gte: startOfMonth } },
       select: { createdAt: true, points: true },
@@ -279,7 +287,7 @@ export interface Graduation {
 
 export async function getGraduation(studentId: string, targetBand?: string | null): Promise<Graduation> {
   const [tests, achievements] = await Promise.all([
-    db.iELTSTest.findMany({ where: { studentId }, orderBy: { completedAt: "asc" }, select: { score: true } }),
+    getStudentTests(studentId),
     db.studentAchievement.count({ where: { studentId } }),
   ]);
   const scores = tests.map((t) => t.score).filter((s) => s > 0);
