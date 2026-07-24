@@ -5,30 +5,24 @@ import { useRouter } from "next/navigation";
 import { RefreshCw } from "lucide-react";
 
 /**
- * Quietly re-runs the server components on an interval (router.refresh) so live
- * widgets — activity feed, grading inbox, KPIs — stay fresh without a full
- * reload. Shows a tiny "updated Xs ago" pill the user can also click to refresh.
+ * Shows a small "Live · updated Xs ago" pill. It does NOT refresh the page on
+ * its own — an automatic interval refresh was disruptive (it re-ran server
+ * components while the user was mid-action). The page only updates when the
+ * user clicks the pill (manual router.refresh). The pulsing dot keeps the live
+ * feel, and the "updated Xs ago" counter signals when data may be stale.
+ *
+ * `intervalMs` is accepted for backwards compatibility but intentionally unused.
  */
-export function LiveRefresh({ intervalMs = 30000, label = "Live" }: { intervalMs?: number; label?: string }) {
+export function LiveRefresh({ label = "Live" }: { intervalMs?: number; label?: string }) {
   const router = useRouter();
   const [secondsAgo, setSecondsAgo] = useState(0);
   const [spinning, setSpinning] = useState(false);
 
+  // Only track how long ago the data was last loaded/refreshed — no auto-refresh.
   useEffect(() => {
-    const refresh = () => {
-      setSpinning(true);
-      router.refresh();
-      setSecondsAgo(0);
-      setTimeout(() => setSpinning(false), 600);
-    };
-
     const tick = setInterval(() => setSecondsAgo((s) => s + 1), 1000);
-    const poll = setInterval(refresh, intervalMs);
-    return () => {
-      clearInterval(tick);
-      clearInterval(poll);
-    };
-  }, [router, intervalMs]);
+    return () => clearInterval(tick);
+  }, []);
 
   const manual = () => {
     setSpinning(true);
@@ -40,7 +34,7 @@ export function LiveRefresh({ intervalMs = 30000, label = "Live" }: { intervalMs
   return (
     <button
       onClick={manual}
-      title="Refresh now"
+      title="Click to refresh"
       className="inline-flex items-center gap-1.5 text-[11px] text-gray-400 hover:text-white transition-colors"
     >
       <span className="relative flex h-2 w-2">
