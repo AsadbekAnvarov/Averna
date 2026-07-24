@@ -149,6 +149,15 @@
   50% { transform: translateY(-12px); }
 }
 
+/* ===== Time-of-day ambiance: gentle night stars ===== */
+@keyframes avernaTwinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.9; }
+}
+.averna-twinkle {
+  animation: avernaTwinkle 4s ease-in-out infinite;
+}
+
 /* ===== Premium Neon Gradient Background ===== */
 .premium-gradient {
   background:
