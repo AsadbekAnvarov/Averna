@@ -40,14 +40,16 @@ export function PanelTabs({
 }) {
   const [active, setActive] = useState(tabs[0]?.key);
 
+  // Session-scoped memory: keeps the tab during the current visit, but leaving
+  // the site and returning later starts fresh on the first tab (overview).
   useEffect(() => {
-    const saved = localStorage.getItem(storageKey);
+    const saved = sessionStorage.getItem(storageKey);
     if (saved && tabs.some((t) => t.key === saved)) setActive(saved);
   }, [storageKey, tabs]);
 
   const select = (k: string) => {
     setActive(k);
-    localStorage.setItem(storageKey, k);
+    sessionStorage.setItem(storageKey, k);
     if (typeof window !== "undefined" && window.scrollY > 200) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }

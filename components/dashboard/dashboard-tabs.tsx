@@ -33,14 +33,17 @@ export function DashboardTabs({
 }) {
   const [active, setActive] = useState<TabKey>("home");
 
+  // Remember the tab only for the current visit (sessionStorage). Switching /
+  // reloading mid-session keeps your place, but leaving the site and returning
+  // later always starts fresh on Home — the dashboard's natural landing.
   useEffect(() => {
-    const saved = localStorage.getItem("averna_dash_tab") as TabKey | null;
+    const saved = sessionStorage.getItem("averna_dash_tab") as TabKey | null;
     if (saved && TABS.some((t) => t.key === saved)) setActive(saved);
   }, []);
 
   const select = (k: TabKey) => {
     setActive(k);
-    localStorage.setItem("averna_dash_tab", k);
+    sessionStorage.setItem("averna_dash_tab", k);
     if (typeof window !== "undefined" && window.scrollY > 200) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -52,7 +55,7 @@ export function DashboardTabs({
       const key = (e as CustomEvent).detail as TabKey;
       if (key && TABS.some((t) => t.key === key)) {
         setActive(key);
-        localStorage.setItem("averna_dash_tab", key);
+        sessionStorage.setItem("averna_dash_tab", key);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     };
