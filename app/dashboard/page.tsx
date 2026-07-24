@@ -49,6 +49,7 @@ import { DailySpin } from "@/components/dashboard/daily-spin";
 import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
 import { DaypartAmbiance } from "@/components/dashboard/daypart-ambiance";
 import { DashboardHero } from "@/components/dashboard/dashboard-hero";
+import { MemoriesSection } from "@/components/dashboard/memories-section";
 import { LevelUpCelebration } from "@/components/dashboard/level-up-celebration";
 import { CommitmentCard } from "@/components/dashboard/commitment-card";
 import { VoiceJournal } from "@/components/dashboard/voice-journal";
@@ -270,6 +271,10 @@ export default async function DashboardPage() {
                   points={student.totalPoints}
                   streak={student.currentStreak}
                 />
+              </Suspense>
+
+              <Suspense fallback={null}>
+                <MemoriesSection studentId={student.id} />
               </Suspense>
 
               {/* Bento grid — modern, asymmetric overview of the day */}
