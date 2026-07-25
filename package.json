@@ -13,7 +13,12 @@
     "db:seed": "npx prisma db seed",
     "postinstall": "prisma generate",
     "vercel-build": "prisma generate && prisma db push --skip-generate && next build",
+    "vercel-build:migrations": "prisma generate && prisma migrate deploy && next build",
     "db:deploy": "prisma db push --skip-generate",
+    "db:baseline": "bash scripts/db-baseline.sh",
+    "db:migrate": "prisma migrate dev",
+    "db:status": "prisma migrate status",
+    "db:drift": "prisma migrate diff --from-url $DATABASE_URL --to-schema-datamodel prisma/schema.prisma --script",
     "clean": "rm -rf .next node_modules",
     "reset": "npm run clean && npm install"
   },

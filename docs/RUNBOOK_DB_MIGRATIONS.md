@@ -1,92 +1,117 @@
 # Runbook — adopt Prisma migrations (S0b)
 
-**Why.** The database had two sources of truth: `prisma/schema.prisma` and a
+**Why.** The database used to have two sources of truth: `prisma/schema.prisma` and a
 hand-written `CREATE TABLE` list inside `app/api/seed/route.ts`. The seed's DDL had
 drifted (it never created `Commitment`, `ReviewItem`, `GeneratedTest`, and its
 `students` table was missing many newer columns). `prisma db push` therefore saw a
 mismatch and wanted a destructive reconciliation — which is why `--accept-data-loss`
-was once added, and why accounts/XP were wiped.
+was once added, and why accounts and XP were wiped.
 
-**Done already (S0a, in this branch):** the seed is now **data-only**; the DDL is gone.
-`prisma/schema.prisma` is the single source of truth.
+**Already done (in the repo):**
+- **S0a** — the seed is data-only; `prisma/schema.prisma` is the single source of truth.
+- The destructive `--accept-data-loss` flag is gone, so a deploy can now only fail
+  safely, never delete data.
 
-**Remaining (S0b, needs DB access — must be run by you):** replace `db push` with a
-versioned migration history so schema changes are reviewed and never destructive.
+**Remaining (S0b — needs a machine with `node_modules` and the DB URL):** replace
+`db push` with a versioned migration history, so every schema change is reviewed in a
+PR and applied non-destructively.
 
-> ⚠️ Do **not** switch `vercel-build` to `prisma migrate deploy` until step 4 succeeds.
-> `migrate deploy` with no `prisma/migrations/` folder applies nothing, so the schema
-> would silently stop being updated.
+> This half can't be done from the agent sandbox: the `prisma` CLI isn't installed
+> there and it has no route to your database. The baseline is **generated**, never
+> hand-written — hand-writing 37 tables would recreate exactly the drift problem we
+> just eliminated.
 
 ---
 
 ## 0. Safety net first
-In the Neon console, create a **branch** (instant copy) of the production database.
-Do every experiment against the branch's connection string, never production.
+
+In the Neon console, create a **branch** (an instant copy of production). Do every
+step against the branch first.
 
 ```bash
-export DB_PROD="postgres://…"     # production (read-only use here)
-export DB_TEST="postgres://…"     # the Neon branch you just created
+git pull                      # get scripts/db-baseline.sh
+npm install                   # need node_modules for the prisma CLI
+export DATABASE_URL="postgres://…"   # ← the Neon BRANCH, not production
 ```
 
-## 1. See the real drift (read-only, changes nothing)
+## 1. Run the baseline script
+
 ```bash
-npx prisma migrate diff \
-  --from-url "$DB_PROD" \
-  --to-schema-datamodel prisma/schema.prisma \
-  --script > drift.sql
+npm run db:baseline
 ```
-Read `drift.sql`. Expect only additive statements (`CREATE TABLE`, `ADD COLUMN`,
-`CREATE INDEX`). **If you see `DROP TABLE` or `DROP COLUMN` on a table that holds real
-data, stop and send me `drift.sql`** — that's the destructive part we must convert by
-hand into a safe, additive migration.
 
-## 2. Create the baseline migration (describes the DB as it exists today)
+It does four things and prints what it found:
+
+1. Generates `prisma/migrations/00000000000000_baseline/migration.sql` **from the
+   schema** (no DB access needed) — this is the canonical "create everything" SQL.
+2. Compares your **real** database to the schema and, if they differ, writes the
+   difference to `prisma/migrations/00000000000001_sync_schema/migration.sql`.
+   It counts `DROP` statements and warns loudly if any exist.
+3. Marks the baseline as already applied (`migrate resolve`) — bookkeeping only, it
+   creates and alters nothing.
+4. Prints `migrate status`.
+
+## 2. Review the drift before applying it
+
+If step 1 created a `_sync_schema` migration, open it:
+
+```
+prisma/migrations/00000000000001_sync_schema/migration.sql
+```
+
+- Only `CREATE TABLE` / `ADD COLUMN` / `CREATE INDEX` → **safe**, continue.
+- Any `DROP TABLE` / `DROP COLUMN` on a table that holds real data → **stop** and
+  send me the file. I'll rewrite it as an additive migration (add the new shape,
+  copy the data, drop later) so nothing is lost.
+
+You can regenerate this diff at any time, read-only:
+
 ```bash
-mkdir -p prisma/migrations/00000000000000_baseline
-npx prisma migrate diff \
-  --from-empty \
-  --to-url "$DB_PROD" \
-  --script > prisma/migrations/00000000000000_baseline/migration.sql
+npm run db:drift
 ```
 
-## 3. Mark the baseline as already applied (does not touch data)
+## 3. Apply and verify on the branch
+
 ```bash
-DATABASE_URL="$DB_TEST" npx prisma migrate resolve \
-  --applied 00000000000000_baseline
+npx prisma migrate deploy
+npm run db:status        # expect: up to date
 ```
 
-## 4. Create + apply the catch-up migration on the TEST branch
+Then point a local dev server at the branch and smoke-test: sign in, submit a test,
+do one flashcard review.
+
+## 4. Repeat on production
+
 ```bash
-DATABASE_URL="$DB_TEST" npx prisma migrate dev --name sync_schema_and_review_items
-DATABASE_URL="$DB_TEST" npx prisma migrate status     # expect: up to date
-```
-Then point a local dev run at `$DB_TEST` and smoke-test login, a test submission, and
-an SRS review.
-
-## 5. Apply to production
-```bash
-DATABASE_URL="$DB_PROD" npx prisma migrate resolve --applied 00000000000000_baseline
-DATABASE_URL="$DB_PROD" npx prisma migrate deploy
-DATABASE_URL="$DB_PROD" npx prisma migrate status
+export DATABASE_URL="postgres://…"   # production now
+npm run db:baseline                  # skips regeneration, baselines prod
+npx prisma migrate deploy
+npm run db:status
 ```
 
-## 6. Switch the deploy to migrations
-In `package.json`:
+## 5. Switch the deploy over
+
+The migration-based build command is already in `package.json` as
+`vercel-build:migrations`. Swap it in only **after** step 4 succeeded:
+
 ```json
 "vercel-build": "prisma generate && prisma migrate deploy && next build"
 ```
-Commit `prisma/migrations/` (it must be in git). From now on, every schema change is
-`prisma migrate dev --name <change>` locally, reviewed in the PR, applied automatically
-and non-destructively on deploy.
+
+Commit `prisma/migrations/` — it must be in git, or the deploy has nothing to apply.
+
+From then on, a schema change is: `npm run db:migrate -- --name <change>` locally,
+review the generated SQL in the PR, and it applies automatically and
+non-destructively on deploy.
 
 ---
 
 ## Rollback
-- Steps 1–4 touch only the Neon branch → delete the branch, nothing lost.
-- Step 6 → revert the `package.json` line; `db push` behaviour returns.
-- Worst case → restore from the Neon branch / point-in-time restore.
+- Steps 0–3 touch only the Neon branch → delete the branch, nothing is lost.
+- Step 5 → revert the `package.json` line; `db push` behaviour returns.
+- Worst case → Neon point-in-time restore.
 
-## Invariants to keep
+## Invariants
 1. Only `prisma/schema.prisma` defines the schema. No raw DDL anywhere in the app.
 2. Never reintroduce `--accept-data-loss` in a deploy command.
 3. Any migration containing a `DROP` gets human review before it ships.
