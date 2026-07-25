@@ -3,6 +3,8 @@ import { AchievementType, IELTSModule, UserRole } from "@prisma/client";
 import { isGenuineWriting } from "@/lib/utils";
 import { computeTestXp } from "@/lib/xp";
 import { awardXp, advanceStreak } from "@/lib/engine/xp-engine";
+import { reconcileSkillStates, celebrationFor } from "@/lib/engine/progress-engine";
+import { notifyUser } from "@/lib/notifications";
 
 // ==================== STUDENT HELPERS ====================
 
@@ -490,6 +492,21 @@ export async function saveIELTSTest(
 
   // Check for achievements
   await checkAndAwardAchievements(studentId);
+
+  // Persist the mastery lifecycle and celebrate any stage the student just
+  // reached. Derived from evidence, so it can't be faked; never throws.
+  const advances = await reconcileSkillStates(studentId);
+  if (advances.length > 0) {
+    const owner = await db.student
+      .findUnique({ where: { id: studentId }, select: { userId: true } })
+      .catch(() => null);
+    if (owner?.userId) {
+      for (const a of advances) {
+        const c = celebrationFor(a);
+        if (c) await notifyUser(owner.userId, { type: "system", ...c });
+      }
+    }
+  }
 
   // Expose the XP that was granted (used by the Integrity Engine's shadow log).
   // Attached to the test object so existing callers using `test.id` keep working.

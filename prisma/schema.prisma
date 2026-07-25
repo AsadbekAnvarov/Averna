@@ -138,6 +138,7 @@ model Student {
   redemptions       RewardRedemption[]
   payments          Payment[]
   reviewItems       ReviewItem[]
+  skillStates       SkillState[]
 
   @@index([groupId])
   @@index([totalPoints])
@@ -633,6 +634,35 @@ model ReviewItem {
   @@unique([studentId, itemKey])
   @@index([studentId, dueAt])
   @@map("review_items")
+}
+
+/// Persisted mastery lifecycle per skill (locked → learning → practicing →
+/// verified → mastered → retained). The stage itself is DERIVED from test
+/// evidence (lib/student-intel getSkillStages); this table records it so we also
+/// keep the transition history — which is what makes "you reached Verified"
+/// celebrations, mastery velocity and cohort analytics possible.
+model SkillState {
+  id             String    @id @default(cuid())
+  studentId      String
+  skill          String // READING | LISTENING | WRITING | SPEAKING
+  stage          String // locked | learning | practicing | verified | mastered | retained
+  previousStage  String?
+  evidenceCount  Int       @default(0)
+  distinctDays   Int       @default(0)
+  bestBand       Float     @default(0)
+  recentAvg      Float     @default(0)
+  retention      Int       @default(0) // 0-100
+  stageChangedAt DateTime  @default(now())
+  lastVerifiedAt DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, skill])
+  @@index([studentId])
+  @@index([stage])
+  @@map("skill_states")
 }
 
 model StudyMaterial {
