@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { saveIELTSTest, computeTestXpForStudent } from "@/lib/db-helpers";
-import { calculateBandScore, heuristicWritingAssessmentSafe, isGenuineWriting } from "@/lib/utils";
+import { calculateBandScore, heuristicWritingAssessmentSafe, isGenuineWriting, isOnTopic } from "@/lib/utils";
 import { MOCK_EXAMS } from "@/lib/mock-exams-data";
 
 export const dynamic = "force-dynamic";
@@ -54,7 +54,8 @@ export async function POST(req: NextRequest) {
     // The exam id is stored as `testId` so retaking the same mock decays XP.
     const lPts = lCorrect > 0 ? await computeTestXpForStudent(student.id, "LISTENING", listeningBand, { difficulty: exam.difficulty, contentKey: exam.id }) : 0;
     const rPts = rCorrect > 0 ? await computeTestXpForStudent(student.id, "READING", readingBand, { difficulty: exam.difficulty, contentKey: exam.id }) : 0;
-    const wPts = isGenuineWriting(essay, 100) ? await computeTestXpForStudent(student.id, "WRITING", writingBand, { difficulty: exam.difficulty, contentKey: exam.id }) : 0;
+    const wGenuine = isGenuineWriting(essay, 100) && isOnTopic(essay, exam.writing.prompt);
+    const wPts = wGenuine ? await computeTestXpForStudent(student.id, "WRITING", writingBand, { difficulty: exam.difficulty, contentKey: exam.id }) : 0;
 
     // Save each section as an IELTS test (awards points + updates streak/achievements)
     await saveIELTSTest(student.id, "LISTENING", listeningBand, { mock: true, testId: exam.id, lCorrect, lTotal }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: lPts });
