@@ -14,11 +14,12 @@ import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { notifyUsers } from "@/lib/notifications";
 import { formatDateTime } from "@/lib/utils";
+import { can } from "@/lib/engine/permissions";
 
 async function postGlobal(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "announcements")) redirect("/auth/signin");
 
   const title = (formData.get("title") as string)?.trim();
   const body = (formData.get("body") as string)?.trim();
@@ -44,7 +45,7 @@ async function postGlobal(formData: FormData) {
 export default async function AdminAnnouncementsPage({ searchParams }: { searchParams: { saved?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "announcements")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

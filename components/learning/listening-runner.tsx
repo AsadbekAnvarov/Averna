@@ -16,6 +16,15 @@ const DIFF_COLORS: Record<string, string> = {
   Hard: "text-averna-pink border-averna-pink/40 bg-averna-pink/10",
 };
 
+/** Unique id for one test attempt (used for idempotent submission). */
+function newAttemptId(): string {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    return `a-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+}
+
 export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
   const [testId, setTestId] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState(0);
@@ -26,6 +35,8 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
   const [submitted, setSubmitted] = useState(false);
   const [startTime, setStartTime] = useState(() => Date.now());
   const [saveMsg, setSaveMsg] = useState("");
+  // One id per attempt → the server can ignore duplicate/retried submissions.
+  const [attemptId, setAttemptId] = useState(() => newAttemptId());
 
   useEffect(() => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) setSupported(false);
@@ -62,6 +73,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
   const openTest = (id: string) => {
     setTestId(id); setAnswers({}); setSubmitted(false); setSaveMsg("");
     setActiveSection(0); setStartTime(Date.now());
+    setAttemptId(newAttemptId());
   };
 
   const backToBank = () => { stopAudio(); setTestId(null); setAnswers({}); setSubmitted(false); setSaveMsg(""); };
@@ -73,9 +85,22 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
       const res = await fetch("/api/learning/listening/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ correctCount, totalQuestions: allQuestions.length, answers, timeSpent: Math.round((Date.now() - startTime) / 1000) }),
+        // Send the test id + raw answers; the server scores from the real key.
+        // submissionId makes a retried request idempotent (no double XP).
+        body: JSON.stringify({
+          testId: test.id,
+          answers,
+          timeSpent: Math.round((Date.now() - startTime) / 1000),
+          submissionId: attemptId,
+        }),
       });
-      setSaveMsg(res.ok ? "✅ Result saved — points added to your account!" : "Result shown below (not saved).");
+      if (res.ok) {
+        const data = await res.json().catch(() => null);
+        // Be transparent when the Integrity Engine reduced the reward.
+        setSaveMsg(data?.integrityNotice ?? "✅ Result saved — points added to your account!");
+      } else {
+        setSaveMsg("Result shown below (not saved).");
+      }
     } catch {
       setSaveMsg("Result shown below (not saved).");
     }

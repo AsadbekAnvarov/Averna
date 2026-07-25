@@ -116,7 +116,7 @@ export function AvatarEditor({ currentImage, name }: { currentImage: string | nu
   };
 
   return (
-    <Card className="glass border-averna-pink/30">
+    <Card id="avatar" className="glass border-averna-pink/30 scroll-mt-24">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-pink">
           <UserCircle className="h-5 w-5" /> Avatar

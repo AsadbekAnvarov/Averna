@@ -10,6 +10,7 @@ import { Gift, Coins, Sparkles, Lock } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { PageHeader } from "@/components/ui/page-header";
 import { getLevelInfo } from "@/lib/utils";
+import { awardXp } from "@/lib/engine/xp-engine";
 
 async function redeemReward(formData: FormData) {
   "use server";
@@ -30,21 +31,17 @@ async function redeemReward(formData: FormData) {
     redirect("/rewards?error=points");
   }
 
-  await db.student.update({
-    where: { id: student.id },
-    data: { totalPoints: { decrement: reward.cost } },
+  // Spending goes through the XP engine (single authority): it audits the
+  // movement and, being a non-learning source, never touches the streak.
+  await awardXp({
+    studentId: student.id,
+    amount: -reward.cost,
+    source: "reward_spend",
+    details: { reward: reward.name, cost: reward.cost },
   });
   await db.rewardRedemption.create({
     data: { studentId: student.id, rewardId: reward.id, cost: reward.cost, status: "PENDING" },
   });
-  await db.activityLog.create({
-    data: {
-      studentId: student.id,
-      action: "REWARD_REDEEMED",
-      details: { reward: reward.name, cost: reward.cost },
-      points: -reward.cost,
-    },
-  }).catch(() => {});
 
   revalidatePath("/rewards");
   redirect("/rewards?success=1");

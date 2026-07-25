@@ -84,6 +84,8 @@ export function ConfidenceMeter() {
   const [buckets, setBuckets] = useState<Buckets>(emptyBuckets());
   const [selected, setSelected] = useState<string | null>(null);
   const [graded, setGraded] = useState<{ correct: boolean; delta: number } | null>(null);
+  // Recall outcomes collected during the round, flushed to the SRS ledger at the end.
+  const recallRef = useRef<{ itemKey: string; rating: "easy" | "good" | "again"; source: "vocab" }[]>([]);
   const [locked, setLocked] = useState(false);
 
   const mounted = useRef(true);
@@ -145,6 +147,19 @@ export function ConfidenceMeter() {
         toast.success(`New best — ${finalScore} confidence points! 🎯`);
       }
       setPhase("done");
+
+      // S10 — feed the memory engine: this round is genuine vocabulary recall, so
+      // each word becomes a spaced-repetition review. Only words that were DUE
+      // earn capped retention-XP, so replaying can't be farmed.
+      const reviews = recallRef.current;
+      recallRef.current = [];
+      if (reviews.length > 0) {
+        fetch("/api/srs/review", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ reviews }),
+        }).catch(() => {});
+      }
     },
     [store],
   );
@@ -154,6 +169,13 @@ export function ConfidenceMeter() {
     setLocked(true);
     const stake = LEVELS.find((l) => l.key === level)!.stake;
     const correct = selected === q.card.word;
+    // Record the recall outcome for the spaced-repetition ledger (sent at the end).
+    // A confident correct answer is stronger evidence of recall than a lucky guess.
+    recallRef.current.push({
+      itemKey: q.card.word,
+      rating: correct ? (level === "certain" ? "easy" : "good") : "again",
+      source: "vocab",
+    });
     const delta = correct ? stake : -stake;
     const newScore = score + delta;
     const newBuckets: Buckets = {

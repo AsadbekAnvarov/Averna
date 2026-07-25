@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireTeacherOrAdmin } from "@/lib/auth";
 import { generateReadingTest, generateListeningTest, generateWritingPrompt, generateWritingTask1, generateSpeakingTest } from "@/lib/ai";
+import { guardAi } from "@/lib/engine/ai-guard";
 
 export const dynamic = "force-dynamic";
 // Full-test generation is a large model call; request a longer function budget.
@@ -15,7 +16,9 @@ export const maxDuration = 60;
  */
 export async function POST(req: NextRequest) {
   try {
-    await requireTeacherOrAdmin();
+    const user = await requireTeacherOrAdmin();
+    const guard = guardAi(user.id, "generate-test");
+    if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
   } catch {
     return NextResponse.json({ error: "Teacher or admin access required." }, { status: 403 });
   }

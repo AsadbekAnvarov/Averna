@@ -15,6 +15,14 @@ enum UserRole {
   TEACHER
   PARENT
   ADMIN
+  /// Full business visibility, including finance. Intended for the owner.
+  OWNER
+  /// Money only: payments, expenses, payroll, calendar, finance reports.
+  FINANCE_MANAGER
+  /// Read-oriented finance role: reports and ledgers, no people management.
+  ACCOUNTANT
+  /// Front desk: enrolment, groups, announcements — never salaries or profit.
+  RECEPTION
 }
 
 enum HomeworkStatus {
@@ -108,6 +116,15 @@ model Student {
   enrolledAt        DateTime?
   blacklisted       Boolean  @default(false)
   blacklistReason   String?
+  // --- Tuition (M6). Effective fee = feeOverride ?? group.monthlyFee, less discount. ---
+  /// Per-student price, when it differs from the group's standard fee.
+  feeOverride       Int?
+  /// Percentage discount 0-100 (scholarships use 100).
+  discountPct       Int      @default(0)
+  /// Day of month the payment is due (1-28). Null = no schedule set.
+  dueDay            Int?
+  /// True for scholarship students — excluded from debt collection.
+  scholarship       Boolean  @default(false)
   totalPoints       Int      @default(0)
   globalRank        Int      @default(0)
   groupRank         Int      @default(0)
@@ -137,6 +154,8 @@ model Student {
   grades            Grade[]
   redemptions       RewardRedemption[]
   payments          Payment[]
+  reviewItems       ReviewItem[]
+  skillStates       SkillState[]
 
   @@index([groupId])
   @@index([totalPoints])
@@ -150,6 +169,10 @@ model Teacher {
   specialty       String?
   ieltsBand       Float?   // teacher's own IELTS overall band (0-9), shown to students
   isSecondTeacher Boolean  @default(false)
+  // --- Payroll configuration (optional; drives the suggested salary) ---
+  salaryType      String?  // monthly | hourly | per_lesson
+  baseSalary      Int?     // monthly salary, when salaryType = monthly
+  hourlyRate      Int?     // per hour/lesson rate, for hourly | per_lesson
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -165,8 +188,45 @@ model Teacher {
   lessonLogs        LessonLog[]
   studentNotes      StudentNote[]
   homeworkTemplates HomeworkTemplate[]
+  payrolls          Payroll[]
 
   @@map("teachers")
+}
+
+/// One payroll record per teacher per month. This is the CALCULATION and
+/// APPROVAL workflow; the money itself lands in the P&L as an Expense when the
+/// payroll is paid (see expenseId), so Expense stays the single ledger and
+/// salaries can never be double-counted against profit.
+model Payroll {
+  id             String    @id @default(cuid())
+  teacherId      String
+  /// "YYYY-MM" — the month being paid for.
+  period         String
+  salaryType     String    @default("monthly") // monthly | hourly | per_lesson
+  baseSalary     Int       @default(0)
+  hourlyRate     Int       @default(0)
+  /// Lessons/hours counted for the period (from lesson logs).
+  lessons        Int       @default(0)
+  extraHours     Int       @default(0)
+  bonus          Int       @default(0)
+  deduction      Int       @default(0)
+  /// Final amount owed, computed on save so history is immutable.
+  net            Int       @default(0)
+  status         String    @default("draft") // draft | approved | paid
+  approvedByName String?
+  paidAt         DateTime?
+  /// The Expense row created when this payroll was paid.
+  expenseId      String?
+  note           String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  teacher Teacher @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@unique([teacherId, period])
+  @@index([period])
+  @@index([status])
+  @@map("payrolls")
 }
 
 model Group {
@@ -174,6 +234,8 @@ model Group {
   name        String
   teacherId   String
   description String?
+  /// Standard monthly tuition for this group (UZS). Null = not priced yet.
+  monthlyFee  Int?
   level       String?
   schedule    String?
   createdAt   DateTime @default(now())
@@ -599,6 +661,11 @@ model Payment {
   studentId   String
   amount      Int
   type        String   @default("TOPUP") // TOPUP | COURSE | SUBSCRIPTION
+  /// How the money arrived: CASH | CARD | TERMINAL | TRANSFER.
+  /// Nullable on purpose — rows created before this field existed have no
+  /// recorded method, and defaulting them to CASH would invent bookkeeping that
+  /// never happened. Unknown is reported as its own bucket.
+  method      String?
   description String?
   status      String   @default("COMPLETED") // COMPLETED | PENDING
   createdAt   DateTime @default(now())
@@ -606,7 +673,119 @@ model Payment {
   student Student @relation(fields: [studentId], references: [id])
 
   @@index([studentId])
+  @@index([method])
+  @@index([createdAt])
   @@map("payments")
+}
+
+/// Server-backed spaced-repetition ledger. One row per (student, item) — a
+/// vocabulary word or a Mistake Bank entry — holding its SM-2 state so
+/// retention syncs across devices and is visible to XP/streak/AI. The client
+/// keeps localStorage for instant review UX and mirrors each review here.
+model ReviewItem {
+  id             String   @id @default(cuid())
+  studentId      String
+  itemKey        String
+  source         String   @default("vocab") // vocab | mistake
+  ease           Float    @default(2.5)
+  interval       Int      @default(0) // days until next review
+  reps           Int      @default(0)
+  lapses         Int      @default(0)
+  dueAt          DateTime @default(now())
+  lastReviewedAt DateTime @default(now())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, itemKey])
+  @@index([studentId, dueAt])
+  @@map("review_items")
+}
+
+/// Manually scheduled business events (M8): rent, utilities, taxes, meetings,
+/// maintenance, marketing, renewals. Payment and salary deadlines are DERIVED
+/// from real data instead of being duplicated here, so the calendar can never
+/// disagree with the finance pages.
+model BusinessEvent {
+  id            String    @id @default(cuid())
+  type          String // RENT | UTILITY | TAX | MEETING | EXAM | MAINTENANCE | MARKETING | EVENT | RENEWAL | OTHER
+  title         String
+  amount        Int?
+  startsAt      DateTime
+  endsAt        DateTime?
+  /// null | monthly | yearly — expanded when the calendar is rendered.
+  recurring     String?
+  /// Remind this many days before (used by future automation, M12).
+  reminderDays  Int?
+  notes         String?
+  createdById   String?
+  createdByName String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([startsAt])
+  @@index([type])
+  @@map("business_events")
+}
+
+/// Operating expenses — the missing half of the P&L. Without this table "profit"
+/// cannot be computed at all, so the dashboard refuses to show one. Amounts are
+/// stored as integers in the same unit as Payment.amount (UZS).
+model Expense {
+  id            String    @id @default(cuid())
+  category      String // SALARY_TEACHER | SALARY_ADMIN | RENT | UTILITIES | ...
+  amount        Int
+  method        String    @default("CASH") // CASH | CARD | TERMINAL | TRANSFER
+  vendor        String?
+  invoiceNo     String?
+  receiptUrl    String?
+  note          String?
+  /// draft | pending | approved | paid — only approved/paid count toward profit.
+  status        String    @default("paid")
+  /// Set when this expense repeats (e.g. "monthly"); null for one-off costs.
+  recurring     String?
+  /// Admin/user id who recorded it, for accountability.
+  recordedById  String?
+  recordedByName String?
+  /// When the cost was actually incurred (may differ from createdAt).
+  incurredAt    DateTime  @default(now())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([incurredAt])
+  @@index([category])
+  @@index([status])
+  @@map("expenses")
+}
+
+/// Persisted mastery lifecycle per skill (locked → learning → practicing →
+/// verified → mastered → retained). The stage itself is DERIVED from test
+/// evidence (lib/student-intel getSkillStages); this table records it so we also
+/// keep the transition history — which is what makes "you reached Verified"
+/// celebrations, mastery velocity and cohort analytics possible.
+model SkillState {
+  id             String    @id @default(cuid())
+  studentId      String
+  skill          String // READING | LISTENING | WRITING | SPEAKING
+  stage          String // locked | learning | practicing | verified | mastered | retained
+  previousStage  String?
+  evidenceCount  Int       @default(0)
+  distinctDays   Int       @default(0)
+  bestBand       Float     @default(0)
+  recentAvg      Float     @default(0)
+  retention      Int       @default(0) // 0-100
+  stageChangedAt DateTime  @default(now())
+  lastVerifiedAt DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, skill])
+  @@index([studentId])
+  @@index([stage])
+  @@map("skill_states")
 }
 
 model StudyMaterial {

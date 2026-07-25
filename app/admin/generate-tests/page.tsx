@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { auth, requireTeacherOrAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { can } from "@/lib/engine/permissions";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { TestGeneratorPanel } from "@/components/admin/test-generator-panel";
@@ -29,7 +30,8 @@ export default async function GenerateTestsPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   const role = (session.user as { role?: string }).role;
-  if (role !== "ADMIN" && role !== "TEACHER") redirect("/dashboard");
+  // Teachers keep their access; admin-area roles are gated by the "tests" module.
+  if (role !== "TEACHER" && !can(role, "tests")) redirect("/dashboard");
 
   const dbUser = await db.user.findUnique({ where: { id: session.user.id } });
 

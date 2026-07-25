@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award } from "lucide-react";
 import { db } from "@/lib/db";
+import { buildAchievementSnapshot, achievementProgress } from "@/lib/engine/achievement-engine";
 
 /**
  * Achievements progress — instead of only showing unlocked badges, this shows
@@ -16,54 +17,21 @@ export async function AchievementsProgress({
   longestStreak: number;
   globalRank: number;
 }) {
-  const [achievements, unlocked, hwCount, speakingCount, readingCount, listeningCount, writingHigh, earlyBird] =
-    await Promise.all([
-      db.achievement.findMany(),
-      db.studentAchievement.findMany({ where: { studentId }, select: { achievementId: true } }),
-      db.homeworkSubmission.count({ where: { studentId } }),
-      db.speakingSession.count({ where: { studentId } }),
-      db.iELTSTest.count({ where: { studentId, module: "READING" } }),
-      db.iELTSTest.count({ where: { studentId, module: "LISTENING" } }),
-      db.iELTSTest.count({ where: { studentId, module: "WRITING", score: { gte: 7.5 } } }),
-      db.homeworkSubmission.count({ where: { studentId, position: 1 } }),
-    ]);
+  const [achievements, unlocked, snapshot] = await Promise.all([
+    db.achievement.findMany(),
+    db.studentAchievement.findMany({ where: { studentId }, select: { achievementId: true } }),
+    buildAchievementSnapshot(studentId, { longestStreak, globalRank }),
+  ]);
 
   const unlockedIds = new Set(unlocked.map((u) => u.achievementId));
 
-  const progressFor = (type: string): number => {
-    switch (type) {
-      case "HOMEWORK_MASTER": return hwCount;
-      case "SPEAKING_CHAMPION": return speakingCount;
-      case "READING_EXPERT": return readingCount;
-      case "LISTENING_MASTER": return listeningCount;
-      case "WRITING_GURU": return writingHigh;
-      case "STREAK_WARRIOR": return longestStreak;
-      case "EARLY_BIRD": return earlyBird;
-      case "TOP_PERFORMER": return globalRank > 0 && globalRank <= 10 ? 10 : 0;
-      default: return 0;
-    }
-  };
-  const targetFor = (type: string): number => {
-    switch (type) {
-      case "HOMEWORK_MASTER": return 50;
-      case "SPEAKING_CHAMPION": return 50;
-      case "READING_EXPERT": return 100;
-      case "LISTENING_MASTER": return 100;
-      case "WRITING_GURU": return 20;
-      case "STREAK_WARRIOR": return 30;
-      case "EARLY_BIRD": return 10;
-      case "TOP_PERFORMER": return 10;
-      default: return 1;
-    }
-  };
-
-  // Show the closest-to-completion locked achievements first
+  // Show the closest-to-completion locked achievements first. Thresholds come
+  // from the shared rule table, so these numbers always match what awards them.
   const rows = achievements
     .map((a) => {
       const done = unlockedIds.has(a.id);
-      const current = Math.min(progressFor(a.type), targetFor(a.type));
-      const target = targetFor(a.type);
-      const pct = target > 0 ? Math.round((current / target) * 100) : 0;
+      const { current: raw, target, percent: pct } = achievementProgress(a.type, snapshot);
+      const current = Math.min(raw, target);
       return { a, done, current, target, pct };
     })
     .sort((x, y) => (x.done === y.done ? y.pct - x.pct : x.done ? 1 : -1))

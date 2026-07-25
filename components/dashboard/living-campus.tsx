@@ -77,8 +77,13 @@ export function LivingCampus({ planets }: { planets: GalaxyPlanet[] }) {
                 <p className="relative text-sm font-semibold text-white">{t.name}</p>
                 <p className="relative text-[11px] text-gray-400 mt-0.5">{t.desc}</p>
 
-                {/* mastery */}
-                <div className="relative mt-2 flex items-center gap-2">
+                {/* verification stage + mastery */}
+                {!p.locked && (
+                  <p className="relative mt-1.5 text-[10px] font-semibold uppercase tracking-wider" style={{ color }}>
+                    {p.stageLabel}
+                  </p>
+                )}
+                <div className="relative mt-1 flex items-center gap-2">
                   {p.locked ? (
                     <span className="flex items-center gap-1 text-[11px] text-gray-500">
                       <Lock className="h-3 w-3" /> Not started

@@ -1403,6 +1403,8 @@ export async function avernaAssistant(
           content:
             `You are Averna AI — a warm, insightful IELTS mentor who knows this student personally. ` +
             `Answer using ONLY the real data below; never invent numbers, dates or facts. ` +
+            `Justify every recommendation with the specific datum it rests on (say "because …" and cite the number, stage or trend). ` +
+            `If a fact isn't in the data, say you don't have it yet rather than guessing. ` +
             `Be concise (2–5 sentences), specific and encouraging, and always end with ONE concrete next action grounded in their data.\n\n` +
             `STUDENT DATA:\n${profileText}`,
         },
@@ -1415,6 +1417,51 @@ export async function avernaAssistant(
     return c.choices[0]?.message?.content?.trim() || fallback;
   } catch (e) {
     console.error("Averna AI error:", e);
+    return fallback;
+  }
+}
+
+
+// ============================================================
+// M14 — AI Business Assistant (admin).
+// Answers business questions using ONLY the supplied real figures. Uzbek admin
+// UI. The caller passes a rule-based fallback so it always answers something
+// useful when no key is configured or the model call fails.
+// ============================================================
+export async function businessAssistant(
+  businessData: string,
+  message: string,
+  history: { role: "user" | "assistant"; content: string }[],
+  fallback: string,
+): Promise<string> {
+  if (!hasOpenAI()) return fallback;
+  try {
+    const client = getOpenAIClient();
+    const c = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "system",
+          content:
+            `Siz Averna Learning Centre uchun AI biznes tahlilchisisiz — CFO yordamchisi.\n` +
+            `QATTIY QOIDALAR:\n` +
+            `- Faqat OʻZBEK tilida (lotin yozuvi), toʻgʻri imlo bilan (oʻ, gʻ, ʼ).\n` +
+            `- FAQAT quyidagi haqiqiy maʼlumotlardan foydalaning. Raqam, sana yoki dalil OʻYLAB TOPMANG.\n` +
+            `- Har bir xulosani aniq raqam bilan asoslang ("chunki ..." deb koʻrsating).\n` +
+            `- Agar javob uchun maʼlumot yetmasa, buni ochiq ayting va qanday maʼlumot kerakligini tushuntiring.\n` +
+            `- Qisqa yozing: 2-5 jumla, soʻngida bitta aniq tavsiya.\n` +
+            `- Pul summalari UZS da. Faqat matn qaytaring (JSON emas).\n\n` +
+            `BIZNES MAʼLUMOTLARI:\n${businessData}`,
+        },
+        ...history.slice(-6),
+        { role: "user", content: message },
+      ],
+      temperature: 0.4,
+      max_tokens: 400,
+    });
+    return c.choices[0]?.message?.content?.trim() || fallback;
+  } catch (e) {
+    console.error("Business assistant error:", e);
     return fallback;
   }
 }

@@ -1,6 +1,11 @@
 import { db } from "@/lib/db";
 import { AchievementType, IELTSModule, UserRole } from "@prisma/client";
-import { isGenuineWriting, tashkentDayDiff } from "@/lib/utils";
+import { isGenuineWriting } from "@/lib/utils";
+import { computeTestXp } from "@/lib/xp";
+import { awardXp, advanceStreak } from "@/lib/engine/xp-engine";
+import { reconcileSkillStates, celebrationFor } from "@/lib/engine/progress-engine";
+import { buildAchievementSnapshot, evaluateAchievements } from "@/lib/engine/achievement-engine";
+import { notifyUser } from "@/lib/notifications";
 
 // ==================== STUDENT HELPERS ====================
 
@@ -38,64 +43,46 @@ export async function getStudentProfile(userId: string) {
   });
 }
 
+/**
+ * @deprecated Use `awardXp({ studentId, amount, source })` from
+ * `lib/engine/xp-engine` — it is the single authority for XP and records an
+ * audit entry. Kept as a thin alias so existing callers keep working; it treats
+ * the movement as a generic learning award (advances the streak on a net gain).
+ */
 export async function updateStudentPoints(studentId: string, points: number) {
-  const student = await db.student.update({
-    where: { id: studentId },
-    data: {
-      totalPoints: {
-        increment: points,
-      },
-    },
-  });
-
-  // Update rankings after points change
-  await updateRankings();
-
-  return student;
+  await awardXp({ studentId, amount: points, source: points > 0 ? "test" : "legacy", skipLog: true });
+  return db.student.findUnique({ where: { id: studentId } });
 }
 
-export async function updateStudentStreak(studentId: string) {
-  const student = await db.student.findUnique({
-    where: { id: studentId },
-  });
-
-  if (!student) return null;
-
-  const today = new Date();
-  const lastActive = new Date(student.lastActiveDate);
-  // Compare by Tashkent calendar day (UTC+5), not by raw elapsed milliseconds,
-  // so the streak depends on the date — not on the time of day someone logs in.
-  const daysDiff = tashkentDayDiff(today, lastActive);
-
-  let newStreak = student.currentStreak;
-  let freezes = (student as any).streakFreezes ?? 0;
-
-  if (daysDiff === 1) {
-    // Continue streak
-    newStreak = student.currentStreak + 1;
-  } else if (daysDiff === 2 && freezes > 0) {
-    // Missed exactly one day, but a streak freeze saves the streak
-    newStreak = student.currentStreak + 1;
-    freezes -= 1;
-  } else if (daysDiff > 1) {
-    // Streak broken
-    newStreak = 1;
-  }
-  // If daysDiff === 0, already logged in today, don't change streak
-
-  return await db.student.update({
-    where: { id: studentId },
-    data: {
-      currentStreak: newStreak,
-      longestStreak: Math.max(newStreak, student.longestStreak),
-      lastActiveDate: today,
-      streakFreezes: freezes,
-    },
-  });
-}
+/** Re-exported for backward compatibility; the engine owns streak advancement. */
+export const updateStudentStreak = advanceStreak;
 
 // ==================== RANKING HELPERS ====================
 
+/**
+ * A student's global rank, computed on READ with a single indexed COUNT
+ * (`@@index([totalPoints])`) instead of maintaining a `globalRank` column via
+ * an O(N) rewrite on every points change. Students are ranked only once they
+ * have points; ties share a rank (standard competition ranking).
+ */
+export async function getGlobalRank(totalPoints: number): Promise<number> {
+  if (totalPoints <= 0) return 0;
+  const above = await db.student.count({ where: { totalPoints: { gt: totalPoints } } });
+  return above + 1;
+}
+
+/** A student's rank within their group, computed on read (same approach). */
+export async function getGroupRank(groupId: string, totalPoints: number): Promise<number> {
+  if (totalPoints <= 0) return 0;
+  const above = await db.student.count({ where: { groupId, totalPoints: { gt: totalPoints } } });
+  return above + 1;
+}
+
+/**
+ * Batch recompute of the cached `globalRank`/`groupRank` columns. No longer on
+ * the hot path (rank is computed on read); kept only for an optional
+ * admin/cron refresh of the cached columns. Do NOT call this per points change.
+ */
 export async function updateRankings() {
   // Global rankings
   const allStudents = await db.student.findMany({
@@ -248,7 +235,8 @@ export async function submitHomework(
   // log above already feeds the weekly leagues, so both stay in sync). If a
   // teacher later adjusts the grade, gradeHomework() applies only the delta.
   if (pointsAwarded > 0) {
-    await updateStudentPoints(studentId, pointsAwarded);
+    // skipLog: this function already wrote its own ActivityLog row above.
+    await awardXp({ studentId, amount: pointsAwarded, source: "homework", skipLog: true });
   }
   await checkAndAwardAchievements(studentId);
 
@@ -288,7 +276,8 @@ export async function gradeHomework(
   });
 
   if (pointsDelta !== 0) {
-    await updateStudentPoints(submission.studentId, pointsDelta);
+    // A teacher re-grading isn't a new study event, so it must not touch the streak.
+    await awardXp({ studentId: submission.studentId, amount: pointsDelta, source: "grade_adjust" });
   }
 
   return updated;
@@ -296,70 +285,34 @@ export async function gradeHomework(
 
 // ==================== ACHIEVEMENT HELPERS ====================
 
+/**
+ * Evaluate every achievement rule and award whatever is newly earned.
+ *
+ * Driven by the declarative rule table in lib/engine/achievement-engine, so the
+ * thresholds here are identical to the ones the progress UIs display, and all
+ * eight badges are actually reachable (three previously had no check at all).
+ * Uses indexed counts instead of loading the student's whole history.
+ */
 export async function checkAndAwardAchievements(studentId: string) {
   const student = await db.student.findUnique({
     where: { id: studentId },
-    include: {
-      homeworkSubmissions: true,
-      ieltsTests: true,
-      speakingSessions: true,
-      achievements: {
-        include: {
-          achievement: true,
-        },
-      },
+    select: {
+      totalPoints: true,
+      longestStreak: true,
+      achievements: { select: { achievement: { select: { type: true } } } },
     },
   });
-
   if (!student) return;
 
-  const earnedAchievementTypes = student.achievements.map(
-    (a) => a.achievement.type
-  );
+  const earnedTypes = student.achievements.map((a) => a.achievement.type);
+  const globalRank = await getGlobalRank(student.totalPoints);
+  const snapshot = await buildAchievementSnapshot(studentId, {
+    longestStreak: student.longestStreak,
+    globalRank,
+  });
 
-  // Check Homework Master (50 homework completed)
-  if (
-    student.homeworkSubmissions.filter((s) => s.status === "GRADED").length >=
-      50 &&
-    !earnedAchievementTypes.includes("HOMEWORK_MASTER")
-  ) {
-    await awardAchievement(studentId, "HOMEWORK_MASTER");
-  }
-
-  // Check Speaking Champion (50 speaking sessions)
-  if (
-    student.speakingSessions.length >= 50 &&
-    !earnedAchievementTypes.includes("SPEAKING_CHAMPION")
-  ) {
-    await awardAchievement(studentId, "SPEAKING_CHAMPION");
-  }
-
-  // Check Reading Expert (100 reading tests)
-  const readingTests = student.ieltsTests.filter(
-    (t) => t.module === "READING"
-  );
-  if (
-    readingTests.length >= 100 &&
-    !earnedAchievementTypes.includes("READING_EXPERT")
-  ) {
-    await awardAchievement(studentId, "READING_EXPERT");
-  }
-
-  // Check Streak Warrior (30 day streak)
-  if (
-    student.currentStreak >= 30 &&
-    !earnedAchievementTypes.includes("STREAK_WARRIOR")
-  ) {
-    await awardAchievement(studentId, "STREAK_WARRIOR");
-  }
-
-  // Check Top Performer (reach top 10 globally)
-  if (
-    student.globalRank <= 10 &&
-    student.globalRank > 0 &&
-    !earnedAchievementTypes.includes("TOP_PERFORMER")
-  ) {
-    await awardAchievement(studentId, "TOP_PERFORMER");
+  for (const type of evaluateAchievements(snapshot, earnedTypes)) {
+    await awardAchievement(studentId, type);
   }
 }
 
@@ -381,8 +334,8 @@ async function awardAchievement(
     },
   });
 
-  // Award points
-  await updateStudentPoints(studentId, achievement.points);
+  // Award points (skipLog: an ACHIEVEMENT_UNLOCKED row is written below)
+  await awardXp({ studentId, amount: achievement.points, source: "achievement", skipLog: true });
 
   // Log activity
   await db.activityLog.create({
@@ -400,6 +353,41 @@ async function awardAchievement(
 
 // ==================== IELTS TEST HELPERS ====================
 
+/**
+ * XP for a test, computed from real growth signals (XP Engine 2.0). Gathers the
+ * student's recent average in this module, how many times they've taken this
+ * exact content (via the `testId` stored in the answers JSON), and their XP in
+ * the last 24h, then applies the pure formula in lib/xp.ts. Call this BEFORE
+ * inserting the new test so history excludes the current attempt.
+ */
+export async function computeTestXpForStudent(
+  studentId: string,
+  module: IELTSModule,
+  score: number,
+  opts?: { difficulty?: string | null; contentKey?: string }
+): Promise<number> {
+  const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  const [recent, repeatCount, todayLogs] = await Promise.all([
+    db.iELTSTest.findMany({
+      where: { studentId, module },
+      orderBy: { completedAt: "desc" },
+      take: 3,
+      select: { score: true },
+    }),
+    opts?.contentKey
+      ? db.iELTSTest.count({
+          where: { studentId, module, answers: { path: ["testId"], equals: opts.contentKey } },
+        })
+      : Promise.resolve(0),
+    db.activityLog.findMany({ where: { studentId, createdAt: { gte: since } }, select: { points: true } }),
+  ]);
+
+  const recentAvg = recent.length ? recent.reduce((a, b) => a + b.score, 0) / recent.length : 0;
+  const dailyXpSoFar = todayLogs.reduce((s, l) => s + (l.points || 0), 0);
+
+  return computeTestXp({ score, difficulty: opts?.difficulty, recentAvg, repeatCount, dailyXpSoFar });
+}
+
 export async function saveIELTSTest(
   studentId: string,
   module: IELTSModule,
@@ -407,28 +395,58 @@ export async function saveIELTSTest(
   answers: any,
   aiAnalysis: any,
   timeSpent: number,
-  options?: { pointsOverride?: number }
+  options?: {
+    pointsOverride?: number;
+    contentKey?: string;
+    difficulty?: string | null;
+    /** Per-attempt id from the client; makes the award retry-safe (S2). */
+    idempotencyKey?: string;
+    /** Integrity trust multiplier (0..1) applied to earned XP (S4). */
+    trustMultiplier?: number;
+  }
 ) {
+  // Clamp untrusted/edge inputs so analytics and bands stay sane: timeSpent is
+  // client-influenced (cap at 3h, floor at 0) and score must be a valid band 0-9.
+  const safeTime = Math.max(0, Math.min(Math.round(Number(timeSpent) || 0), 3 * 60 * 60));
+  const safeScore = Math.max(0, Math.min(Number(score) || 0, 9));
+
+  // Compute XP BEFORE inserting so history queries exclude this attempt.
+  // Callers may still override (e.g. 0 for an empty/trivial submission).
+  const rawPoints =
+    options?.pointsOverride !== undefined
+      ? Math.max(0, Math.round(options.pointsOverride))
+      : await computeTestXpForStudent(studentId, module, safeScore, {
+          difficulty: options?.difficulty,
+          contentKey: options?.contentKey,
+        });
+
+  // Integrity Engine (S4): scale the reward by how much the attempt looks like
+  // genuine effort. 1 when nothing is suspicious; floored for soft signals so an
+  // honest attempt is never zeroed.
+  const trust = options?.trustMultiplier == null ? 1 : Math.max(0, Math.min(1, options.trustMultiplier));
+  const points = Math.max(0, Math.round(rawPoints * trust));
+
   const test = await db.iELTSTest.create({
     data: {
       studentId,
       module,
-      score,
+      score: safeScore,
       answers,
       aiAnalysis,
-      timeSpent,
+      timeSpent: safeTime,
     },
   });
 
-  // Anti-cheat: callers can override the points (e.g. 0 for an empty/trivial
-  // submission). Otherwise fall back to score-based points.
-  const points =
-    options?.pointsOverride !== undefined
-      ? Math.max(0, Math.round(options.pointsOverride))
-      : Math.round(score * 10);
-
   if (points > 0) {
-    await updateStudentPoints(studentId, points);
+    // skipLog: an IELTS_TEST_COMPLETED row is written below. The idempotency key
+    // (when the caller supplies one) makes a retried submission a no-op.
+    await awardXp({
+      studentId,
+      amount: points,
+      source: "test",
+      skipLog: true,
+      idempotencyKey: options?.idempotencyKey,
+    });
   }
 
   // Log activity
@@ -447,7 +465,24 @@ export async function saveIELTSTest(
   // Check for achievements
   await checkAndAwardAchievements(studentId);
 
-  return test;
+  // Persist the mastery lifecycle and celebrate any stage the student just
+  // reached. Derived from evidence, so it can't be faked; never throws.
+  const advances = await reconcileSkillStates(studentId);
+  if (advances.length > 0) {
+    const owner = await db.student
+      .findUnique({ where: { id: studentId }, select: { userId: true } })
+      .catch(() => null);
+    if (owner?.userId) {
+      for (const a of advances) {
+        const c = celebrationFor(a);
+        if (c) await notifyUser(owner.userId, { type: "system", ...c });
+      }
+    }
+  }
+
+  // Expose the XP that was granted (used by the Integrity Engine's shadow log).
+  // Attached to the test object so existing callers using `test.id` keep working.
+  return Object.assign(test, { pointsAwarded: points });
 }
 
 export async function getStudentTestHistory(
@@ -490,8 +525,8 @@ export async function recordSpeakingSession(
     },
   });
 
-  // Award points
-  await updateStudentPoints(studentId, points);
+  // Award points (skipLog: a SPEAKING_SESSION_COMPLETED row is written below)
+  await awardXp({ studentId, amount: points, source: "test", skipLog: true });
 
   // Log activity
   await db.activityLog.create({

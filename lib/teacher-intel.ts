@@ -40,6 +40,9 @@ interface StudentSignals {
   homeworkCompletion: number | null;
   band: number | null;
   trend: "up" | "down" | "flat" | null;
+  lastTestDaysAgo: number | null;
+  /** Real practice, a decent band, but no test in a while → knowledge is fading. */
+  fading: boolean;
 }
 
 async function loadSignals(teacherId: string): Promise<StudentSignals[]> {
@@ -67,15 +70,17 @@ async function loadSignals(teacherId: string): Promise<StudentSignals[]> {
   if (ids.length === 0) return [];
 
   const [tests, subs] = await Promise.all([
-    db.iELTSTest.findMany({ where: { studentId: { in: ids } }, orderBy: { completedAt: "asc" }, select: { studentId: true, score: true } }),
+    db.iELTSTest.findMany({ where: { studentId: { in: ids } }, orderBy: { completedAt: "asc" }, select: { studentId: true, score: true, completedAt: true } }),
     db.homeworkSubmission.findMany({ where: { studentId: { in: ids } }, select: { studentId: true } }),
   ]);
 
   const testsBy = new Map<string, number[]>();
+  const lastTestAtBy = new Map<string, number>();
   for (const t of tests) {
     const arr = testsBy.get(t.studentId) ?? [];
     arr.push(t.score);
     testsBy.set(t.studentId, arr);
+    lastTestAtBy.set(t.studentId, new Date(t.completedAt).getTime()); // asc order → latest wins
   }
   const subsBy = new Map<string, number>();
   for (const s of subs) subsBy.set(s.studentId, (subsBy.get(s.studentId) ?? 0) + 1);
@@ -92,9 +97,17 @@ async function loadSignals(teacherId: string): Promise<StudentSignals[]> {
 
     const scores = (testsBy.get(s.id) ?? []).filter((x) => x > 0);
     const p = predictBand(scores);
+    const band = p ? p.current : null;
 
     const submitted = subsBy.get(s.id) ?? 0;
     const homeworkCompletion = assigned > 0 ? Math.min(100, Math.round((submitted / assigned) * 100)) : null;
+
+    const lastTestAt = lastTestAtBy.get(s.id);
+    const lastTestDaysAgo = lastTestAt ? Math.floor((now - lastTestAt) / DAY) : null;
+    // Retention risk: they've built real ability (≥3 tests, decent band) but
+    // haven't practised in a while, so it's quietly slipping — even if they
+    // still log in. A no-schema proxy for spaced-repetition decay.
+    const fading = scores.length >= 3 && (band ?? 0) >= 5.5 && lastTestDaysAgo != null && lastTestDaysAgo > 14;
 
     return {
       id: s.id,
@@ -104,8 +117,10 @@ async function loadSignals(teacherId: string): Promise<StudentSignals[]> {
       attendanceRate,
       daysSinceActive,
       homeworkCompletion,
-      band: p ? p.current : null,
+      band,
       trend: p ? p.trend : null,
+      lastTestDaysAgo,
+      fading,
     };
   });
 }
@@ -119,6 +134,8 @@ function healthOf(sig: StudentSignals): { score: number; label: HealthLabel } {
 
   let score = Math.round(attendance * 0.3 + homework * 0.3 + recency * 0.2 + band * 0.2);
   if (sig.blacklisted) score = Math.min(score, 35);
+  // Fading retention nudges them below "Stable" so they surface in the radar.
+  if (sig.fading) score = Math.min(score, 58);
   score = Math.max(0, Math.min(100, score));
 
   const label: HealthLabel = score >= 80 ? "Excellent" : score >= 60 ? "Stable" : score >= 40 ? "Needs Attention" : "Critical";
@@ -138,6 +155,10 @@ function categorise(sig: StudentSignals, score: number): { category: RadarCatego
   if (sig.trend === "up" && (sig.daysSinceActive == null || sig.daysSinceActive <= 3)) {
     return { category: "improving", action: "Acknowledge the progress — a little praise compounds." };
   }
+  // Retention risk: real ability, but no recent practice — knowledge is slipping.
+  if (sig.fading) {
+    return { category: "at_risk", action: `No practice test in ${sig.lastTestDaysAgo}d — set a short review task before the band slips.` };
+  }
   if (inactive || sig.trend === "down" || (sig.homeworkCompletion != null && sig.homeworkCompletion < 40)) {
     return { category: "losing_motivation", action: "Send a quick nudge and a bite-sized task to rebuild momentum." };
   }
@@ -154,6 +175,7 @@ function reasonsOf(sig: StudentSignals): string[] {
   else r.push("no activity yet");
   if (sig.band != null) r.push(`~Band ${sig.band.toFixed(1)}${sig.trend === "up" ? " ↑" : sig.trend === "down" ? " ↓" : ""}`);
   if (sig.homeworkCompletion != null) r.push(`${sig.homeworkCompletion}% homework`);
+  if (sig.fading && sig.lastTestDaysAgo != null) r.push(`no test in ${sig.lastTestDaysAgo}d — retention slipping`);
   if (sig.blacklisted) r.push("blacklisted");
   return r;
 }

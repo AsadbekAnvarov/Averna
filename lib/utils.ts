@@ -342,6 +342,53 @@ export interface BandPrediction {
   sampleSize: number;
 }
 
+/**
+ * Whether a free-text answer matches the expected one, IELTS-style: exact after
+ * normalising case, surrounding punctuation, collapsed whitespace and a leading
+ * article ("a"/"an"/"the"). Deliberately NOT a substring match — the old
+ * `includes` check over-credited (e.g. "it is not true" counted as "true").
+ */
+export function isTextAnswerCorrect(userAnswer: unknown, correctAnswer: string): boolean {
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, "")
+      .replace(/^(a|an|the)\s+/, "");
+  const u = norm(String(userAnswer ?? ""));
+  const c = norm(correctAnswer ?? "");
+  return u.length > 0 && u === c;
+}
+
+// Words that carry no topic signal (common English + IELTS task boilerplate).
+const TOPIC_STOPWORDS = new Set([
+  "the", "and", "that", "this", "with", "have", "from", "your", "you", "for", "are", "was", "were",
+  "will", "would", "should", "could", "their", "they", "them", "there", "these", "those", "what",
+  "which", "when", "some", "many", "most", "more", "than", "then", "into", "about", "also", "such",
+  "opinion", "agree", "disagree", "discuss", "essay", "view", "views", "statement", "following",
+  "think", "believe", "people", "give", "reasons", "examples", "example", "answer", "write", "words",
+  "least", "both", "sides", "extent", "advantages", "disadvantages", "problem", "problems", "solution",
+  "solutions", "cause", "causes", "effect", "effects", "society", "modern", "recent", "years",
+]);
+
+/**
+ * A lenient topic-relevance check for essays (no external calls). Extracts the
+ * prompt's salient content words and asks whether the essay mentions enough of
+ * them. Deliberately forgiving — it only flags essays that address almost none
+ * of the prompt (off-topic filler farmed for XP), never legitimate paraphrases.
+ * Returns true when there isn't enough signal to judge.
+ */
+export function isOnTopic(essay: string, prompt: string): boolean {
+  const salient = Array.from(
+    new Set((prompt.toLowerCase().match(/[a-z]{4,}/g) ?? []).filter((w) => !TOPIC_STOPWORDS.has(w)))
+  );
+  if (salient.length < 5) return true; // prompt too short/generic to judge
+  const essayLc = (essay || "").toLowerCase();
+  const matched = salient.filter((w) => essayLc.includes(w)).length;
+  return matched / salient.length >= 0.15;
+}
+
 export function predictBand(scores: number[]): BandPrediction | null {
   const valid = scores.filter((s) => typeof s === "number" && s > 0);
   if (valid.length === 0) return null;

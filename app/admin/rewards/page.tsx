@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { awardXp } from "@/lib/engine/xp-engine";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,11 +15,12 @@ import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { notifyUser } from "@/lib/notifications";
 import { formatDate } from "@/lib/utils";
+import { can } from "@/lib/engine/permissions";
 
 async function addReward(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "rewards")) redirect("/auth/signin");
   const name = (formData.get("name") as string)?.trim();
   const cost = parseInt(formData.get("cost") as string) || 0;
   const description = (formData.get("description") as string)?.trim();
@@ -32,7 +34,7 @@ async function addReward(formData: FormData) {
 async function moderate(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "rewards")) redirect("/auth/signin");
   const id = formData.get("id") as string;
   const action = formData.get("action") as string;
 
@@ -53,7 +55,12 @@ async function moderate(formData: FormData) {
   } else {
     // Refund the points on rejection
     await db.rewardRedemption.update({ where: { id }, data: { status: "REJECTED" } });
-    await db.student.update({ where: { id: red.student.id }, data: { totalPoints: { increment: red.cost } } });
+    await awardXp({
+      studentId: red.student.id,
+      amount: red.cost,
+      source: "reward_refund",
+      details: { cost: red.cost, reason: "redemption rejected" },
+    });
     await notifyUser(red.student.userId, {
       type: "system",
       title: "Reward request declined",
@@ -67,7 +74,7 @@ async function moderate(formData: FormData) {
 export default async function AdminRewardsPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "rewards")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

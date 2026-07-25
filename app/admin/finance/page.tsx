@@ -1,27 +1,85 @@
 export const dynamic = "force-dynamic";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wallet, TrendingUp, AlertTriangle, Receipt } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Wallet, TrendingUp, AlertTriangle, Receipt, Banknote } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
+import { StudentPicker } from "@/components/admin/student-picker";
 import { formatDate } from "@/lib/utils";
+import { recordAudit } from "@/lib/audit";
+import { can } from "@/lib/engine/permissions";
+import { MethodBreakdown } from "@/components/admin/method-breakdown";
+import {
+  PAYMENT_METHODS,
+  isCourseIncome,
+  normaliseMethod,
+  paymentMethodLabel,
+  paymentMethodOf,
+  summariseByMethod,
+} from "@/lib/engine/payment-methods";
 
 function fmt(n: number) {
   return n.toLocaleString("en-US");
 }
 
+async function recordPayment(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || !can(session.user.role, "finance")) redirect("/auth/signin");
+
+  const studentId = (formData.get("studentId") as string)?.trim();
+  const amount = Math.round(Number(formData.get("amount")));
+  const method = normaliseMethod(formData.get("method") as string) ?? "CASH";
+  if (!studentId || !Number.isFinite(amount) || amount <= 0) return;
+
+  const student = await db.student.findUnique({
+    where: { id: studentId },
+    select: { user: { select: { name: true } } },
+  });
+  if (!student) return;
+
+  // Credit the student's balance and log the transaction so it appears in the
+  // finance history and keeps balance/records in sync.
+  await db.$transaction([
+    db.student.update({ where: { id: studentId }, data: { balance: { increment: amount } } }),
+    db.payment.create({
+      data: {
+        studentId,
+        amount,
+        type: "COURSE",
+        method,
+        status: "COMPLETED",
+        description: `${paymentMethodLabel(method)} toʻlov (admin qabul qildi)`,
+      },
+    }),
+  ]);
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    "Recorded payment",
+    `name=${student.user.name ?? "?"} amount=${amount} UZS method=${method}`
+  );
+  revalidatePath("/admin/finance");
+  revalidatePath("/admin/payments");
+  revalidatePath("/admin/dashboard");
+}
+
 export default async function AdminFinancePage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "finance")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
-  const [payments, students] = await Promise.all([
+  const now = new Date();
+  const startMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+
+  const [payments, students, monthPayments] = await Promise.all([
     db.payment.findMany({
       orderBy: { createdAt: "desc" },
       take: 200,
@@ -30,10 +88,21 @@ export default async function AdminFinancePage() {
     db.student.findMany({
       include: { user: { select: { name: true } }, group: { select: { name: true } } },
     }),
+    // The method split must cover the whole month, not just the last 200 rows
+    // the history list happens to show.
+    db.payment.findMany({
+      where: { status: "COMPLETED", createdAt: { gte: startMonth } },
+      select: { amount: true, type: true, method: true, description: true },
+    }),
   ]);
 
   const topupTotal = payments.filter((p) => p.amount > 0).reduce((s, p) => s + p.amount, 0);
-  const courseTotal = payments.filter((p) => p.type === "COURSE").reduce((s, p) => s + Math.abs(p.amount), 0);
+  // Course income previously filtered `type === "COURSE"` and took absolute
+  // values, which dropped every cash payment (those were stored as type "CASH")
+  // while counting balance spending as if it were fresh income. Both are money
+  // errors an owner would read as revenue, so the rule now lives in one place.
+  const courseTotal = payments.filter(isCourseIncome).reduce((s, p) => s + p.amount, 0);
+  const methodSummary = summariseByMethod(monthPayments);
 
   const debtors = students
     .filter((s) => s.groupId && s.balance <= 0)
@@ -68,6 +137,58 @@ export default async function AdminFinancePage() {
           </Card>
         </div>
 
+        <MethodBreakdown
+          summary={methodSummary}
+          title="Toʻlov usullari boʻyicha"
+          periodLabel="Bu oy"
+        />
+
+        <Card className="glass border-averna-neon/30 mb-8">
+          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-neon"><Banknote className="h-5 w-5" /> Toʻlov qabul qilish</CardTitle></CardHeader>
+          <CardContent>
+            <form action={recordPayment} className="flex flex-col sm:flex-row sm:items-end gap-3">
+              <div className="flex-1 min-w-0">
+                <StudentPicker
+                  students={students.map((s) => ({ id: s.id, name: s.user.name, group: s.group?.name ?? null }))}
+                />
+              </div>
+              <div className="sm:w-40">
+                <label className="text-xs text-gray-400">Summa (UZS)</label>
+                <input
+                  name="amount"
+                  type="number"
+                  min="1"
+                  step="1000"
+                  required
+                  placeholder="masalan, 500000"
+                  className="w-full mt-1 rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-neon"
+                />
+              </div>
+              <div className="sm:w-40">
+                <label className="text-xs text-gray-400">Toʻlov usuli</label>
+                <select
+                  name="method"
+                  defaultValue="CASH"
+                  className="w-full mt-1 rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-neon"
+                >
+                  {PAYMENT_METHODS.map((m) => (
+                    <option key={m.key} value={m.key} className="bg-averna-dark">
+                      {m.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <Button type="submit" className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
+                Qoʻshish
+              </Button>
+            </form>
+            <p className="text-[11px] text-gray-500 mt-2">
+              Toʻlov oʻquvchi balansiga qoʻshiladi, usuli bilan saqlanadi va yuqoridagi
+              boʻlinishda hisobga olinadi.
+            </p>
+          </CardContent>
+        </Card>
+
         <Card className="glass border-averna-pink/30 mb-8">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-pink"><AlertTriangle className="h-5 w-5" /> Balansi nol boʻlgan oʻquvchilar</CardTitle></CardHeader>
           <CardContent>
@@ -100,7 +221,11 @@ export default async function AdminFinancePage() {
                   <div key={p.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
                     <div className="min-w-0">
                       <p className="text-white text-sm truncate">{p.student.user.name} · {p.description ?? p.type}</p>
-                      <p className="text-[11px] text-gray-500">{formatDate(p.createdAt)} · {p.status}</p>
+                      <p className="text-[11px] text-gray-500">
+                        {formatDate(p.createdAt)} · {p.status}
+                        {/* Only incoming money has a method; balance spending has none. */}
+                        {p.amount > 0 ? ` · ${paymentMethodLabel(paymentMethodOf(p))}` : ""}
+                      </p>
                     </div>
                     <span className={`font-semibold whitespace-nowrap ${p.amount >= 0 ? "text-averna-neon" : "text-red-300"}`}>
                       {p.amount >= 0 ? "+" : ""}{fmt(p.amount)}

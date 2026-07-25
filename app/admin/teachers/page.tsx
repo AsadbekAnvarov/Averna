@@ -16,11 +16,12 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ConfirmButton } from "@/components/ui/confirm-button";
 import { recordAudit } from "@/lib/audit";
 import { deleteTeacherCascade } from "@/lib/cascade-delete";
+import { can } from "@/lib/engine/permissions";
 
 async function addTeacher(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "teachers")) redirect("/auth/signin");
 
   const name = (formData.get("name") as string)?.trim();
   const email = (formData.get("email") as string)?.trim().toLowerCase();
@@ -61,7 +62,7 @@ async function addTeacher(formData: FormData) {
 async function updateTeacherBand(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "teachers")) redirect("/auth/signin");
 
   const teacherId = formData.get("teacherId") as string;
   const bandRaw = parseFloat(formData.get("ieltsBand") as string);
@@ -75,7 +76,7 @@ async function updateTeacherBand(formData: FormData) {
 async function deleteTeacher(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "teachers")) redirect("/auth/signin");
 
   const teacherId = formData.get("teacherId") as string;
   if (!teacherId) return;
@@ -99,7 +100,7 @@ async function deleteTeacher(formData: FormData) {
 export default async function AdminTeachersPage({ searchParams }: { searchParams: { saved?: string; error?: string; deleted?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "teachers")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

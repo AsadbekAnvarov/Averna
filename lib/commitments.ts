@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { updateStudentPoints } from "@/lib/db-helpers";
+import { awardXp } from "@/lib/engine/xp-engine";
 import { tashkentDateKey } from "@/lib/utils";
 
 /** Bonus is 50% of the stake (rounded), so success = net +50%, failure = -stake. */
@@ -56,7 +56,13 @@ export async function resolveDueCommitments(
     for (const c of due) {
       const progress = await studyDays(c.studentId, c.startAt, c.endAt);
       if (progress >= c.targetDays) {
-        await updateStudentPoints(studentId, c.stake + c.reward); // return stake + bonus
+        // Return stake + bonus. This IS a learning outcome (the goal was met).
+        await awardXp({
+          studentId,
+          amount: c.stake + c.reward,
+          source: "commitment_reward",
+          details: { stake: c.stake, reward: c.reward },
+        });
         await db.commitment.update({ where: { id: c.id }, data: { status: "succeeded" } });
         results.push({ status: "succeeded", reward: c.reward, stake: c.stake });
       } else {
@@ -114,7 +120,9 @@ export async function createCommitment(
   const now = new Date();
   const endAt = new Date(now.getTime() + WINDOW_DAYS * 86400000);
 
-  await updateStudentPoints(studentId, -st); // escrow the stake
+  // Escrow the stake. Non-learning source: escrowing points must NOT advance the
+  // streak (the old path did, because any points change bumped it).
+  await awardXp({ studentId, amount: -st, source: "commitment_stake", details: { stake: st } });
   await db.commitment.create({
     data: { studentId, targetDays: td, stake: st, reward: bonusFor(st), startAt: now, endAt, status: "active" },
   });

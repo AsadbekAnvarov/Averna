@@ -37,6 +37,40 @@ export function saveSrs(map: SrsMap): void {
   }
 }
 
+/**
+ * Merge the server ledger into the local map (S6 cross-device sync).
+ *
+ * The server is the durable source of truth, but a device may hold reviews it
+ * hasn't managed to mirror yet, so we keep whichever entry represents MORE
+ * progress: more successful reps wins, and on a tie the later due date (the more
+ * recent scheduling) wins. That way syncing can never lose work or reset a card.
+ */
+export function mergeSrs(local: SrsMap, server: SrsMap): SrsMap {
+  const merged: SrsMap = { ...local };
+  for (const [key, remote] of Object.entries(server)) {
+    const mine = merged[key];
+    if (!mine) {
+      merged[key] = remote;
+      continue;
+    }
+    const remoteWins = remote.reps > mine.reps || (remote.reps === mine.reps && remote.due > mine.due);
+    if (remoteWins) merged[key] = remote;
+  }
+  return merged;
+}
+
+/** Fetch the server ledger. Returns {} on any failure so review still works. */
+export async function fetchServerSrs(): Promise<SrsMap> {
+  try {
+    const res = await fetch("/api/srs/review");
+    if (!res.ok) return {};
+    const data = await res.json();
+    return (data?.items ?? {}) as SrsMap;
+  } catch {
+    return {};
+  }
+}
+
 /** A card is due if it has never been seen, or its due time has passed. */
 export function isDue(state: SrsCardState | undefined, now: number = Date.now()): boolean {
   return !state || state.due <= now;

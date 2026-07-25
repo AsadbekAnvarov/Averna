@@ -13,6 +13,7 @@ import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { notifyUser } from "@/lib/notifications";
+import { awardXp } from "@/lib/engine/xp-engine";
 
 async function blacklistStudent(formData: FormData) {
   "use server";
@@ -74,9 +75,13 @@ async function awardBonus(formData: FormData) {
   const owns = teacher.groups.some((g) => g.students.some((s) => s.id === studentId));
   if (!owns || amount <= 0) return;
 
-  await db.student.update({ where: { id: studentId }, data: { totalPoints: { increment: amount } } });
-  await db.activityLog.create({
-    data: { studentId, action: "BONUS_POINTS", details: { by: "teacher", amount }, points: amount },
+  // Discretionary teacher XP goes through the engine so it is audited and
+  // clearly distinguishable from earned mastery — and it doesn't fake a streak.
+  await awardXp({
+    studentId,
+    amount,
+    source: "teacher_bonus",
+    details: { by: "teacher", teacherId: teacher.id, amount },
   });
 
   const target = teacher.groups.flatMap((g) => g.students).find((s) => s.id === studentId);

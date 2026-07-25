@@ -5,7 +5,6 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Users,
   GraduationCap,
@@ -20,10 +19,14 @@ import {
   ShieldCheck,
   Trophy,
   ArrowRight,
-  Trash2,
   Sparkles,
   Bell,
   MessageSquare,
+  TrendingDown,
+  Banknote,
+  CreditCard,
+  ShieldAlert,
+  CalendarDays,
 } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -31,13 +34,16 @@ import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { TopPerformers } from "@/components/top-performers";
 import { AdminKpis } from "@/components/admin/kpi-cards";
+import { OutcomeKpis } from "@/components/admin/outcome-kpis";
+import { ExecutiveOverview } from "@/components/admin/executive-overview";
+import { BusinessAi } from "@/components/admin/business-ai";
 import { ActivityFeed } from "@/components/admin/activity-feed";
 import { EnrollmentFunnel } from "@/components/admin/enrollment-funnel";
 import { TeacherWorkload } from "@/components/admin/teacher-workload";
 import { FinanceSummary } from "@/components/admin/finance-summary";
 import { AdminAttentionBar } from "@/components/admin/attention-bar";
 import { SeedDemoButton } from "@/components/admin/seed-demo-button";
-import { ConfirmButton } from "@/components/ui/confirm-button";
+import { StudentRoster } from "@/components/admin/student-roster";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PanelTabs } from "@/components/panel-tabs";
@@ -52,6 +58,7 @@ import { PublishImpactSection } from "@/components/admin/publish-impact-section"
 import { InnovationRadar } from "@/components/admin/innovation-radar";
 import { recordAudit } from "@/lib/audit";
 import { deleteStudentCascade } from "@/lib/cascade-delete";
+import { can } from "@/lib/engine/permissions";
 
 const LEVELS = [
   "Boshlangʻich (A2)",
@@ -65,7 +72,7 @@ const LEVELS = [
 async function enrollStudent(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "dashboard")) redirect("/auth/signin");
 
   const studentId = formData.get("studentId") as string;
   const level = (formData.get("level") as string)?.trim();
@@ -87,10 +94,41 @@ async function enrollStudent(formData: FormData) {
   revalidatePath("/admin/dashboard");
 }
 
+async function toggleFreeze(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || !can(session.user.role, "dashboard")) redirect("/auth/signin");
+
+  const studentId = formData.get("studentId") as string;
+  if (!studentId) return;
+
+  const student = await db.student.findUnique({
+    where: { id: studentId },
+    select: { blacklisted: true, user: { select: { name: true } } },
+  });
+  if (!student) return;
+
+  const next = !student.blacklisted;
+  await db.student.update({
+    where: { id: studentId },
+    data: {
+      blacklisted: next,
+      // Student UI is English — this is shown to the learner on their dashboard.
+      blacklistReason: next ? "Your account is frozen. Please contact the learning centre." : null,
+    },
+  });
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    next ? "Froze student" : "Unfroze student",
+    `name=${student.user.name ?? "?"}`
+  );
+  revalidatePath("/admin/dashboard");
+}
+
 async function deleteStudent(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "dashboard")) redirect("/auth/signin");
 
   const studentId = formData.get("studentId") as string;
   if (!studentId) return;
@@ -116,7 +154,7 @@ export default async function AdminDashboard() {
   if (session.user.role === "TEACHER") redirect("/teacher/dashboard");
 
   // Only ADMINs continue
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "dashboard")) {
     return (
       <AccountNotice
         title="Faqat adminlar uchun"
@@ -147,68 +185,81 @@ export default async function AdminDashboard() {
 
   const tabs = [
     { key: "overview", label: "Umumiy", icon: "overview", active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
-    { key: "people", label: "Odamlar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
+    { key: "finance", label: "Moliya", icon: "finance", active: "bg-emerald-400/15 text-emerald-400 ring-1 ring-emerald-400/40" },
+    { key: "people", label: "Oʻquvchilar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
     { key: "insights", label: "Tahlillar", icon: "analytics", active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
     { key: "manage", label: "Boshqarish", icon: "manage", active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
   ];
 
-  const actions = [
-    { href: "/admin/analytics", label: "Tahlil", desc: "Platforma tahlili", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
-    { href: "/admin/groups", label: "Guruhlar", desc: "Sinflar va jadvallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
-    { href: "/admin/teachers", label: "Oʻqituvchilar", desc: "Xodimlar akkauntlari", icon: GraduationCap, iconBg: "bg-averna-blue/15 text-averna-blue", hover: "hover:border-averna-blue/40" },
-    { href: "/admin/rewards", label: "Mukofotlar va soʻrovlar", desc: "Almashtirishlarni tasdiqlash", icon: Gift, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
-    { href: "/admin/announcements", label: "Eʼlonlar", desc: "Yangiliklarni tarqatish", icon: Megaphone, iconBg: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
-    { href: "/admin/content", label: "Kontent", desc: "Darslar va materiallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+  // Tools grouped by domain instead of one flat 17-tile wall: money is kept
+  // separate from managing people, teaching content and system tools, so an admin
+  // scanning for a financial task never has to read past unrelated tiles.
+  const FINANCE_TOOLS = [
     { href: "/admin/finance", label: "Moliya", desc: "Toʻlovlar va hisob-kitob", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
-    { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
-    { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
-    { href: "/admin/generate-tests", label: "Test generatori", desc: "Original testlar yaratish", icon: Sparkles, iconBg: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
-    { href: "/notifications", label: "Bildirishnomalar", desc: "Tizim xabarlari", icon: Bell, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+    { href: "/admin/expenses", label: "Xarajatlar", desc: "Xarajatlar va sof foyda", icon: TrendingDown, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
+    { href: "/admin/payroll", label: "Maoshlar", desc: "Oʻqituvchilar maoshi", icon: Banknote, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+    { href: "/admin/payments", label: "Oʻquvchi toʻlovlari", desc: "Qarzdorlik va muddatlar", icon: CreditCard, iconBg: "bg-averna-blue/15 text-averna-blue", hover: "hover:border-averna-blue/40" },
+    { href: "/admin/calendar", label: "Biznes kalendari", desc: "Muddatlar va rejalar", icon: CalendarDays, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+  ];
+
+  const PEOPLE_TOOLS = [
+    { href: "/admin/teachers", label: "Oʻqituvchilar", desc: "Xodimlar akkauntlari", icon: GraduationCap, iconBg: "bg-averna-blue/15 text-averna-blue", hover: "hover:border-averna-blue/40" },
+    { href: "/admin/groups", label: "Guruhlar", desc: "Sinflar va jadvallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+    { href: "/admin/announcements", label: "Eʼlonlar", desc: "Yangiliklarni tarqatish", icon: Megaphone, iconBg: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
     { href: "/messages", label: "Xabarlar", desc: "Oʻquvchilar bilan yozishma", icon: MessageSquare, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
   ];
 
-  const StudentForm = ({ s }: { s: (typeof students)[number] }) => (
-    <form action={enrollStudent} className="flex flex-col md:flex-row md:items-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10 transition-colors hover:border-averna-cyan/30">
-      <input type="hidden" name="studentId" value={s.id} />
-      <div className="md:w-56 min-w-0">
-        <p className="text-white font-medium truncate">{s.user.name ?? "Nomsiz"}</p>
-        <p className="text-xs text-gray-400 truncate">{s.user.email}</p>
-      </div>
-      <select
-        name="level"
-        defaultValue={s.level ?? ""}
-        className="rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-purple md:flex-1"
-      >
-        <option value="" className="bg-averna-dark">— Daraja —</option>
-        {LEVELS.map((l) => (
-          <option key={l} value={l} className="bg-averna-dark">{l}</option>
-        ))}
-      </select>
-      <select
-        name="groupId"
-        defaultValue={s.groupId ?? ""}
-        className="rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-cyan md:flex-1"
-      >
-        <option value="" className="bg-averna-dark">— Biriktirilmagan —</option>
-        {groups.map((g) => (
-          <option key={g.id} value={g.id} className="bg-averna-dark">
-            {g.name} · {g.teacher.user.name}
-          </option>
-        ))}
-      </select>
-      <Button type="submit" size="sm" className="neon-button bg-averna-primary hover:bg-averna-light">
-        Saqlash
-      </Button>
-      <ConfirmButton
-        formAction={deleteStudent}
-        message={`${s.user.name ?? "Ushbu oʻquvchi"}ni va uning barcha maʼlumotlarini (topshiriqlar, baholar, ballar, toʻlovlar) butunlay oʻchirasizmi? Bu uning hisobini ham oʻchiradi va qaytarib boʻlmaydi.`}
-        title="Oʻquvchini oʻchirish"
-        className="h-9 w-9 shrink-0 rounded-md border border-red-500/30 bg-red-500/10 text-red-400 hover:bg-red-500/20"
-      >
-        <Trash2 className="h-4 w-4" />
-      </ConfirmButton>
-    </form>
+  const LEARNING_TOOLS = [
+    { href: "/admin/content", label: "Kontent", desc: "Darslar va materiallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+    { href: "/admin/generate-tests", label: "Test generatori", desc: "Original testlar yaratish", icon: Sparkles, iconBg: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
+    { href: "/admin/rewards", label: "Mukofotlar va soʻrovlar", desc: "Almashtirishlarni tasdiqlash", icon: Gift, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
+    { href: "/admin/analytics", label: "Tahlil", desc: "Platforma tahlili", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+  ];
+
+  const SYSTEM_TOOLS = [
+    { href: "/admin/risks", label: "Xavflar markazi", desc: "Moliyaviy va operatsion xavflar", icon: ShieldAlert, iconBg: "bg-red-400/15 text-red-400", hover: "hover:border-red-400/40" },
+    { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
+    { href: "/admin/roles", label: "Rollar va ruxsatlar", desc: "Xodimlar kirish huquqi", icon: ShieldCheck, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+    { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+    { href: "/notifications", label: "Bildirishnomalar", desc: "Tizim xabarlari", icon: Bell, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+  ];
+
+  type Tool = (typeof FINANCE_TOOLS)[number];
+
+  const ToolGrid = ({ tools }: { tools: Tool[] }) => (
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      {tools.map((action) => {
+        const Icon = action.icon;
+        return (
+          <Link
+            key={action.href}
+            href={action.href}
+            className="group flex flex-col items-center text-center gap-2.5 p-4 rounded-2xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/60 hover:-translate-y-1 hover:border-averna-neon/40 hover:shadow-[0_14px_40px_-16px_rgba(0,229,255,0.35)]"
+          >
+            <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${action.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+              <Icon className="h-6 w-6" />
+            </div>
+            <div className="min-w-0 w-full">
+              <p className="font-semibold text-white text-sm truncate">{action.label}</p>
+              <p className="text-[11px] text-gray-400 truncate">{action.desc}</p>
+            </div>
+          </Link>
+        );
+      })}
+    </div>
   );
+
+  const rosterGroups = groups.map((g) => ({ id: g.id, name: g.name, teacherName: g.teacher?.user?.name ?? null }));
+  const toRoster = (s: (typeof students)[number]) => ({
+    id: s.id,
+    name: s.user.name,
+    email: s.user.email,
+    level: s.level,
+    groupId: s.groupId,
+    blacklisted: s.blacklisted,
+  });
+  const pendingRoster = pending.map(toRoster);
+  const studentsRoster = students.map(toRoster);
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -243,13 +294,33 @@ export default async function AdminDashboard() {
           content={{
             overview: (
               <>
+                <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <ExecutiveOverview />
+                </Suspense>
+                <BusinessAi />
                 <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
                   <MissionControl firstName={firstName} />
                 </Suspense>
                 <AdminKpis />
-                <div className="grid lg:grid-cols-2 gap-6">
-                  <ActivityFeed />
+                <Suspense fallback={<div className="h-32 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <OutcomeKpis />
+                </Suspense>
+                <ActivityFeed />
+              </>
+            ),
+            finance: (
+              <>
+                <div>
+                  <SectionHeader icon={Wallet} title="Moliya holati" subtitle="Daromad, xarajat va foyda" accent="text-emerald-400" />
                   <FinanceSummary />
+                </div>
+                <div>
+                  <SectionHeader icon={Banknote} title="Moliya vositalari" subtitle="Toʻlovlar, xarajatlar, maoshlar va muddatlar" accent="text-averna-cyan" />
+                  <Card className="glass border-emerald-400/20">
+                    <CardContent className="pt-6">
+                      <ToolGrid tools={FINANCE_TOOLS} />
+                    </CardContent>
+                  </Card>
                 </div>
               </>
             ),
@@ -264,15 +335,15 @@ export default async function AdminDashboard() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      {pending.length === 0 ? (
-                        <p className="text-gray-400 text-sm">🎉 Qabul kutayotgan oʻquvchilar yoʻq.</p>
-                      ) : (
-                        <div className="space-y-2">
-                          {pending.map((s) => (
-                            <StudentForm key={s.id} s={s} />
-                          ))}
-                        </div>
-                      )}
+                      <StudentRoster
+                        students={pendingRoster}
+                        groups={rosterGroups}
+                        levels={LEVELS}
+                        enrollAction={enrollStudent}
+                        deleteAction={deleteStudent}
+                        freezeAction={toggleFreeze}
+                        emptyText="🎉 Qabul kutayotgan oʻquvchilar yoʻq."
+                      />
                     </CardContent>
                   </Card>
                 </div>
@@ -280,15 +351,15 @@ export default async function AdminDashboard() {
                   <SectionHeader icon={Users} title={`Barcha oʻquvchilar (${students.length})`} subtitle="Platformadagi barcha oʻquvchilar" accent="text-averna-cyan" />
                   <Card className="glass border-averna-cyan/30">
                     <CardContent className="pt-6">
-                      {students.length === 0 ? (
-                        <p className="text-gray-400 text-sm">Hozircha oʻquvchilar yoʻq.</p>
-                      ) : (
-                        <div className="space-y-2">
-                          {students.map((s) => (
-                            <StudentForm key={s.id} s={s} />
-                          ))}
-                        </div>
-                      )}
+                      <StudentRoster
+                        students={studentsRoster}
+                        groups={rosterGroups}
+                        levels={LEVELS}
+                        enrollAction={enrollStudent}
+                        deleteAction={deleteStudent}
+                        freezeAction={toggleFreeze}
+                        emptyText="Hozircha oʻquvchilar yoʻq."
+                      />
                     </CardContent>
                   </Card>
                 </div>
@@ -332,32 +403,33 @@ export default async function AdminDashboard() {
                     <ContentHealth />
                   </Suspense>
                 </div>
+                {/* Tools grouped by domain — money is intentionally NOT here, it
+                    has its own "Moliya" tab so the two never blur together. */}
                 <div>
-                <SectionHeader icon={ShieldCheck} title="Boshqaruv vositalari" subtitle="Butun platformani shu yerdan boshqaring" accent="text-averna-purple" />
-                <Card className="glass border-averna-primary/30">
-                  <CardContent className="pt-6">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                      {actions.map((action) => {
-                        const Icon = action.icon;
-                        return (
-                          <Link
-                            key={action.href}
-                            href={action.href}
-                            className="group flex flex-col items-center text-center gap-2.5 p-4 rounded-2xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/60 hover:-translate-y-1 hover:border-averna-neon/40 hover:shadow-[0_14px_40px_-16px_rgba(0,229,255,0.35)]"
-                          >
-                            <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${action.iconBg} transition-transform duration-300 group-hover:scale-110`}>
-                              <Icon className="h-6 w-6" />
-                            </div>
-                            <div className="min-w-0 w-full">
-                              <p className="font-semibold text-white text-sm truncate">{action.label}</p>
-                              <p className="text-[11px] text-gray-400 truncate">{action.desc}</p>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </CardContent>
-                </Card>
+                  <SectionHeader icon={Users} title="Odamlarni boshqarish" subtitle="Oʻqituvchilar, guruhlar va muloqot" accent="text-averna-cyan" />
+                  <Card className="glass border-averna-cyan/20">
+                    <CardContent className="pt-6">
+                      <ToolGrid tools={PEOPLE_TOOLS} />
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div>
+                  <SectionHeader icon={GraduationCap} title="Oʻquv jarayoni" subtitle="Kontent, testlar, mukofotlar va tahlil" accent="text-averna-purple" />
+                  <Card className="glass border-averna-purple/20">
+                    <CardContent className="pt-6">
+                      <ToolGrid tools={LEARNING_TOOLS} />
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div>
+                  <SectionHeader icon={ShieldCheck} title="Nazorat va tizim" subtitle="Xavflar, audit va tizim holati" accent="text-red-400" />
+                  <Card className="glass border-white/10">
+                    <CardContent className="pt-6">
+                      <ToolGrid tools={SYSTEM_TOOLS} />
+                    </CardContent>
+                  </Card>
                 </div>
               </>
             ),

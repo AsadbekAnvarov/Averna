@@ -72,6 +72,12 @@ export function MistakeBank() {
     const nextSrs = schedule(current.srs, rating);
     const updated = items.map((m) => (m.id === current.id ? { ...m, srs: nextSrs } : m));
     persist(updated);
+    // Mirror to the server ledger so retention syncs across devices + earns XP.
+    fetch("/api/srs/review", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ itemKey: current.id, rating, source: "mistake" }),
+    }).catch(() => {});
     setReviewed((n) => n + 1);
     setRevealed(false);
     setQueue((q) => {

@@ -22,7 +22,7 @@ export async function AdminAttentionBar() {
 
   const chips = [
     unplaced > 0 && {
-      href: "/admin/dashboard#enroll",
+      href: "/admin/dashboard?tab=people#enroll",
       icon: UserPlus,
       label: `${unplaced} ta joylashtirish kerak`,
       cls: "border-averna-pink/30 bg-averna-pink/10 text-averna-pink hover:border-averna-pink/60",
