@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { saveIELTSTest, computeTestXpForStudent } from "@/lib/db-helpers";
 import { calculateBandScore, heuristicWritingAssessmentSafe, isGenuineWriting, isOnTopic } from "@/lib/utils";
 import { MOCK_EXAMS } from "@/lib/mock-exams-data";
+import { assessSubmission, logShadowAssessment } from "@/lib/engine/integrity-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -63,6 +64,21 @@ export async function POST(req: NextRequest) {
     await saveIELTSTest(student.id, "WRITING", writingBand, { mock: true, testId: exam.id, essay: essay.slice(0, 2000) }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: wPts });
 
     const pointsEarned = lPts + rPts + wPts;
+
+    // Integrity Engine — SHADOW MODE: assess the whole attempt, reward unchanged (S3).
+    const mockChances = [...lQ, ...rQ].map((q) => 1 / Math.max(2, q.options?.length ?? 4));
+    const facts = {
+      studentId: student.id,
+      module: "MOCK",
+      correct: lCorrect + rCorrect,
+      total: lTotal + rTotal,
+      answered: Object.keys(lAns).length + Object.keys(rAns).length,
+      timeSpent,
+      chanceLevel: mockChances.length ? mockChances.reduce((a, b) => a + b, 0) / mockChances.length : 0.25,
+      essay: { genuine: isGenuineWriting(essay, 100), onTopic: isOnTopic(essay, exam.writing.prompt) },
+    };
+    const verdict = await assessSubmission(facts);
+    await logShadowAssessment(facts, verdict, pointsEarned);
 
     return NextResponse.json({
       listeningBand,

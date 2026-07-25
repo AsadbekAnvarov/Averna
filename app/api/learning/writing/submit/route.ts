@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { assessWritingTask, analyzeWritingIssues } from "@/lib/ai";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { isGenuineWriting, isOnTopic } from "@/lib/utils";
+import { assessSubmission, logShadowAssessment } from "@/lib/engine/integrity-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -73,6 +74,16 @@ export async function POST(req: NextRequest) {
         ? { idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined }
         : { pointsOverride: 0 }
     );
+
+    // Integrity Engine — SHADOW MODE: assess and record, reward unchanged (S3).
+    const facts = {
+      studentId: student.id,
+      module: "WRITING",
+      timeSpent: Number(timeSpent) || 0,
+      essay: { genuine: isGenuineWriting(essay, minWords), onTopic },
+    };
+    const verdict = await assessSubmission(facts);
+    await logShadowAssessment(facts, verdict, test.pointsAwarded ?? 0);
 
     return NextResponse.json({
       testId: test.id,

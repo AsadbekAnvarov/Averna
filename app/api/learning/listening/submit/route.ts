@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { calculateBandScore } from "@/lib/utils";
 import { listListeningTests } from "@/lib/listening-content";
+import { assessSubmission, logShadowAssessment } from "@/lib/engine/integrity-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -69,6 +70,20 @@ export async function POST(req: NextRequest) {
           }
         : { pointsOverride: 0 }
     );
+
+    // Integrity Engine — SHADOW MODE: assess and record, reward unchanged (S3).
+    const chances = allQuestions.map((q) => 1 / Math.max(2, q.options?.length ?? 4));
+    const facts = {
+      studentId: student.id,
+      module: "LISTENING",
+      correct,
+      total,
+      answered: answeredCount,
+      timeSpent: Number(timeSpent) || 0,
+      chanceLevel: chances.reduce((a, b) => a + b, 0) / chances.length,
+    };
+    const verdict = await assessSubmission(facts);
+    await logShadowAssessment(facts, verdict, test.pointsAwarded ?? 0);
 
     return NextResponse.json({
       testId: test.id,

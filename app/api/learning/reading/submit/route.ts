@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { calculateBandScore, isTextAnswerCorrect } from "@/lib/utils";
 import { READING_TESTS } from "@/lib/reading-tests-data";
+import { assessSubmission, logShadowAssessment } from "@/lib/engine/integrity-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -27,13 +28,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid test ID" }, { status: 400 });
     }
 
-    // Build map of correct answers from the shared data file
+    // Build map of correct answers from the shared data file, and the average
+    // guess probability per question (used by the Integrity Engine).
     const correctAnswers: Record<string, number | string> = {};
+    const chances: number[] = [];
     for (const passage of testData.passages) {
       for (const q of passage.questions) {
         correctAnswers[q.id] = q.correctAnswer;
+        if (q.type === "multiple-choice") chances.push(1 / Math.max(2, q.options?.length ?? 4));
+        else if (q.type === "true-false-not-given") chances.push(1 / 3);
+        else chances.push(0.02); // open text — effectively unguessable
       }
     }
+    const chanceLevel = chances.length ? chances.reduce((a, b) => a + b, 0) / chances.length : 0.25;
 
     let correctCount = 0;
     const results: Record<string, boolean> = {};
@@ -70,6 +77,20 @@ export async function POST(req: NextRequest) {
         ? { contentKey: testId, idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined }
         : { pointsOverride: 0 }
     );
+
+    // Integrity Engine — SHADOW MODE: assess and record, but do not change the
+    // reward yet (see docs/CORE_ENGINE_ARCHITECTURE.md, S3 → S4).
+    const facts = {
+      studentId: student.id,
+      module: "READING",
+      correct: correctCount,
+      total: totalQuestions,
+      answered: answeredCount,
+      timeSpent: Number(timeSpent) || 0,
+      chanceLevel,
+    };
+    const verdict = await assessSubmission(facts);
+    await logShadowAssessment(facts, verdict, test.pointsAwarded ?? 0);
 
     return NextResponse.json({
       testId: test.id,

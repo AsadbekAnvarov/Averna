@@ -491,7 +491,9 @@ export async function saveIELTSTest(
   // Check for achievements
   await checkAndAwardAchievements(studentId);
 
-  return test;
+  // Expose the XP that was granted (used by the Integrity Engine's shadow log).
+  // Attached to the test object so existing callers using `test.id` keep working.
+  return Object.assign(test, { pointsAwarded: points });
 }
 
 export async function getStudentTestHistory(
