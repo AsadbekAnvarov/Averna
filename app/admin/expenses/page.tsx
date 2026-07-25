@@ -13,8 +13,8 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ConfirmButton } from "@/components/ui/confirm-button";
 import { formatDate } from "@/lib/utils";
 import { recordAudit } from "@/lib/audit";
-import {
 import { can } from "@/lib/engine/permissions";
+import {
   getProfitSnapshot,
   expenseCategoryLabel,
   EXPENSE_CATEGORIES,

@@ -8,8 +8,8 @@ import { ShieldAlert, ArrowRight, CheckCircle2, Info } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
-import {
 import { can } from "@/lib/engine/permissions";
+import {
   getRiskRegister,
   riskCategoryLabel,
   riskSeverityLabel,
