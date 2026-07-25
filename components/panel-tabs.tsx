@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   LayoutDashboard, GraduationCap, TrendingUp, Users, BarChart3,
   ShieldCheck, Activity, Wallet,
@@ -39,13 +40,37 @@ export function PanelTabs({
   storageKey: string;
 }) {
   const [active, setActive] = useState(tabs[0]?.key);
+  const searchParams = useSearchParams();
+  const restored = useRef(false);
 
-  // Session-scoped memory: keeps the tab during the current visit, but leaving
-  // the site and returning later starts fresh on the first tab (overview).
   useEffect(() => {
-    const saved = sessionStorage.getItem(storageKey);
-    if (saved && tabs.some((t) => t.key === saved)) setActive(saved);
-  }, [storageKey, tabs]);
+    // Deep link: `?tab=<key>#anchor` selects that tab (and scrolls to the
+    // anchor), taking precedence over the remembered tab. Driven by
+    // useSearchParams so it also fires on SAME-PAGE navigation — this is what
+    // makes the attention-bar pill and AI action links (?tab=people#enroll)
+    // work even when clicked from another tab on the very same page.
+    const tabParam = searchParams.get("tab");
+    if (tabParam && tabs.some((t) => t.key === tabParam)) {
+      setActive(tabParam);
+      sessionStorage.setItem(storageKey, tabParam);
+      restored.current = true;
+      const hash = window.location.hash;
+      if (hash.length > 1) {
+        setTimeout(() => {
+          document.querySelector(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 80);
+      }
+      return;
+    }
+    // Session-scoped memory (only on first mount): keeps the tab during the
+    // current visit, but leaving the site and returning later starts fresh on
+    // the first tab (overview).
+    if (!restored.current) {
+      restored.current = true;
+      const saved = sessionStorage.getItem(storageKey);
+      if (saved && tabs.some((t) => t.key === saved)) setActive(saved);
+    }
+  }, [searchParams, storageKey, tabs]);
 
   const select = (k: string) => {
     setActive(k);

@@ -183,7 +183,7 @@ export async function getMissionControl(): Promise<MissionControl> {
 
   if (unplaced > 0) {
     priorities.push(`${unplaced} ta oʻquvchini guruhga biriktirish.`);
-    actions.push({ text: "Oʻquvchilarni joylashtirish", href: "/admin/dashboard#enroll" });
+    actions.push({ text: "Oʻquvchilarni joylashtirish", href: "/admin/dashboard?tab=people#enroll" });
   }
   if (pendingRewards > 0) {
     priorities.push(`${pendingRewards} ta mukofot soʻrovini koʻrib chiqish.`);
@@ -212,7 +212,7 @@ export async function getMissionControl(): Promise<MissionControl> {
       title: `${unplaced} ta oʻquvchi guruhsiz`,
       impact: "Bu oʻquvchilar darslardan va progressdan chetda qolmoqda.",
       action: "Ularni guruhlarga biriktiring.",
-      href: "/admin/dashboard#enroll",
+      href: "/admin/dashboard?tab=people#enroll",
     });
   } else if (unplaced > 0) {
     events.push({
@@ -221,7 +221,7 @@ export async function getMissionControl(): Promise<MissionControl> {
       title: `${unplaced} ta oʻquvchi guruhsiz`,
       impact: "Kichik navbat — tez hal qilinadi.",
       action: "Guruhga biriktiring.",
-      href: "/admin/dashboard#enroll",
+      href: "/admin/dashboard?tab=people#enroll",
     });
   }
   if (pendingPaymentsCount > 0) {

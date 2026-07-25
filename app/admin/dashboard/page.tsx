@@ -24,6 +24,7 @@ import {
   Sparkles,
   Bell,
   MessageSquare,
+  Snowflake,
 } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -83,6 +84,37 @@ async function enrollStudent(formData: FormData) {
     { id: session.user.id, name: session.user.name, role: session.user.role },
     "Enrolled student",
     `studentId=${studentId} level=${level || "-"} group=${groupId || "-"}`
+  );
+  revalidatePath("/admin/dashboard");
+}
+
+async function toggleFreeze(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+
+  const studentId = formData.get("studentId") as string;
+  if (!studentId) return;
+
+  const student = await db.student.findUnique({
+    where: { id: studentId },
+    select: { blacklisted: true, user: { select: { name: true } } },
+  });
+  if (!student) return;
+
+  const next = !student.blacklisted;
+  await db.student.update({
+    where: { id: studentId },
+    data: {
+      blacklisted: next,
+      // Student UI is English — this is shown to the learner on their dashboard.
+      blacklistReason: next ? "Your account is frozen. Please contact the learning centre." : null,
+    },
+  });
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    next ? "Froze student" : "Unfroze student",
+    `name=${student.user.name ?? "?"}`
   );
   revalidatePath("/admin/dashboard");
 }
@@ -171,7 +203,14 @@ export default async function AdminDashboard() {
     <form action={enrollStudent} className="flex flex-col md:flex-row md:items-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10 transition-colors hover:border-averna-cyan/30">
       <input type="hidden" name="studentId" value={s.id} />
       <div className="md:w-56 min-w-0">
-        <p className="text-white font-medium truncate">{s.user.name ?? "Nomsiz"}</p>
+        <p className="text-white font-medium truncate flex items-center gap-1.5">
+          <span className="truncate">{s.user.name ?? "Nomsiz"}</span>
+          {s.blacklisted && (
+            <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded-full border border-averna-cyan/40 bg-averna-cyan/10 text-averna-cyan">
+              Muzlatilgan
+            </span>
+          )}
+        </p>
         <p className="text-xs text-gray-400 truncate">{s.user.email}</p>
       </div>
       <select
@@ -199,6 +238,18 @@ export default async function AdminDashboard() {
       <Button type="submit" size="sm" className="neon-button bg-averna-primary hover:bg-averna-light">
         Saqlash
       </Button>
+      <button
+        type="submit"
+        formAction={toggleFreeze}
+        title={s.blacklisted ? "Muzlashdan chiqarish" : "Muzlatish"}
+        className={`h-9 w-9 shrink-0 rounded-md border flex items-center justify-center transition-colors ${
+          s.blacklisted
+            ? "border-averna-cyan/40 bg-averna-cyan/15 text-averna-cyan hover:bg-averna-cyan/25"
+            : "border-white/10 bg-white/5 text-gray-400 hover:text-averna-cyan hover:border-averna-cyan/40"
+        }`}
+      >
+        <Snowflake className="h-4 w-4" />
+      </button>
       <ConfirmButton
         formAction={deleteStudent}
         message={`${s.user.name ?? "Ushbu oʻquvchi"}ni va uning barcha maʼlumotlarini (topshiriqlar, baholar, ballar, toʻlovlar) butunlay oʻchirasizmi? Bu uning hisobini ham oʻchiradi va qaytarib boʻlmaydi.`}
