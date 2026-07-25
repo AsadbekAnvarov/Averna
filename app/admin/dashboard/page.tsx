@@ -184,30 +184,68 @@ export default async function AdminDashboard() {
 
   const tabs = [
     { key: "overview", label: "Umumiy", icon: "overview", active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
+    { key: "finance", label: "Moliya", icon: "finance", active: "bg-emerald-400/15 text-emerald-400 ring-1 ring-emerald-400/40" },
     { key: "people", label: "Oʻquvchilar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
     { key: "insights", label: "Tahlillar", icon: "analytics", active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
     { key: "manage", label: "Boshqarish", icon: "manage", active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
   ];
 
-  const actions = [
-    { href: "/admin/analytics", label: "Tahlil", desc: "Platforma tahlili", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
-    { href: "/admin/groups", label: "Guruhlar", desc: "Sinflar va jadvallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
-    { href: "/admin/teachers", label: "Oʻqituvchilar", desc: "Xodimlar akkauntlari", icon: GraduationCap, iconBg: "bg-averna-blue/15 text-averna-blue", hover: "hover:border-averna-blue/40" },
-    { href: "/admin/rewards", label: "Mukofotlar va soʻrovlar", desc: "Almashtirishlarni tasdiqlash", icon: Gift, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
-    { href: "/admin/announcements", label: "Eʼlonlar", desc: "Yangiliklarni tarqatish", icon: Megaphone, iconBg: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
-    { href: "/admin/content", label: "Kontent", desc: "Darslar va materiallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+  // Tools grouped by domain instead of one flat 17-tile wall: money is kept
+  // separate from managing people, teaching content and system tools, so an admin
+  // scanning for a financial task never has to read past unrelated tiles.
+  const FINANCE_TOOLS = [
     { href: "/admin/finance", label: "Moliya", desc: "Toʻlovlar va hisob-kitob", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
     { href: "/admin/expenses", label: "Xarajatlar", desc: "Xarajatlar va sof foyda", icon: TrendingDown, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
     { href: "/admin/payroll", label: "Maoshlar", desc: "Oʻqituvchilar maoshi", icon: Banknote, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
     { href: "/admin/payments", label: "Oʻquvchi toʻlovlari", desc: "Qarzdorlik va muddatlar", icon: CreditCard, iconBg: "bg-averna-blue/15 text-averna-blue", hover: "hover:border-averna-blue/40" },
-    { href: "/admin/risks", label: "Xavflar markazi", desc: "Moliyaviy va operatsion xavflar", icon: ShieldAlert, iconBg: "bg-red-400/15 text-red-400", hover: "hover:border-red-400/40" },
     { href: "/admin/calendar", label: "Biznes kalendari", desc: "Muddatlar va rejalar", icon: CalendarDays, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
-    { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
-    { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
-    { href: "/admin/generate-tests", label: "Test generatori", desc: "Original testlar yaratish", icon: Sparkles, iconBg: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
-    { href: "/notifications", label: "Bildirishnomalar", desc: "Tizim xabarlari", icon: Bell, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+  ];
+
+  const PEOPLE_TOOLS = [
+    { href: "/admin/teachers", label: "Oʻqituvchilar", desc: "Xodimlar akkauntlari", icon: GraduationCap, iconBg: "bg-averna-blue/15 text-averna-blue", hover: "hover:border-averna-blue/40" },
+    { href: "/admin/groups", label: "Guruhlar", desc: "Sinflar va jadvallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+    { href: "/admin/announcements", label: "Eʼlonlar", desc: "Yangiliklarni tarqatish", icon: Megaphone, iconBg: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
     { href: "/messages", label: "Xabarlar", desc: "Oʻquvchilar bilan yozishma", icon: MessageSquare, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
   ];
+
+  const LEARNING_TOOLS = [
+    { href: "/admin/content", label: "Kontent", desc: "Darslar va materiallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+    { href: "/admin/generate-tests", label: "Test generatori", desc: "Original testlar yaratish", icon: Sparkles, iconBg: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
+    { href: "/admin/rewards", label: "Mukofotlar va soʻrovlar", desc: "Almashtirishlarni tasdiqlash", icon: Gift, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
+    { href: "/admin/analytics", label: "Tahlil", desc: "Platforma tahlili", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+  ];
+
+  const SYSTEM_TOOLS = [
+    { href: "/admin/risks", label: "Xavflar markazi", desc: "Moliyaviy va operatsion xavflar", icon: ShieldAlert, iconBg: "bg-red-400/15 text-red-400", hover: "hover:border-red-400/40" },
+    { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
+    { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+    { href: "/notifications", label: "Bildirishnomalar", desc: "Tizim xabarlari", icon: Bell, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
+  ];
+
+  type Tool = (typeof FINANCE_TOOLS)[number];
+
+  const ToolGrid = ({ tools }: { tools: Tool[] }) => (
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      {tools.map((action) => {
+        const Icon = action.icon;
+        return (
+          <Link
+            key={action.href}
+            href={action.href}
+            className="group flex flex-col items-center text-center gap-2.5 p-4 rounded-2xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/60 hover:-translate-y-1 hover:border-averna-neon/40 hover:shadow-[0_14px_40px_-16px_rgba(0,229,255,0.35)]"
+          >
+            <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${action.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+              <Icon className="h-6 w-6" />
+            </div>
+            <div className="min-w-0 w-full">
+              <p className="font-semibold text-white text-sm truncate">{action.label}</p>
+              <p className="text-[11px] text-gray-400 truncate">{action.desc}</p>
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
 
   const rosterGroups = groups.map((g) => ({ id: g.id, name: g.name, teacherName: g.teacher?.user?.name ?? null }));
   const toRoster = (s: (typeof students)[number]) => ({
@@ -265,9 +303,22 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-32 rounded-2xl bg-white/5 animate-pulse" />}>
                   <OutcomeKpis />
                 </Suspense>
-                <div className="grid lg:grid-cols-2 gap-6">
-                  <ActivityFeed />
+                <ActivityFeed />
+              </>
+            ),
+            finance: (
+              <>
+                <div>
+                  <SectionHeader icon={Wallet} title="Moliya holati" subtitle="Daromad, xarajat va foyda" accent="text-emerald-400" />
                   <FinanceSummary />
+                </div>
+                <div>
+                  <SectionHeader icon={Banknote} title="Moliya vositalari" subtitle="Toʻlovlar, xarajatlar, maoshlar va muddatlar" accent="text-averna-cyan" />
+                  <Card className="glass border-emerald-400/20">
+                    <CardContent className="pt-6">
+                      <ToolGrid tools={FINANCE_TOOLS} />
+                    </CardContent>
+                  </Card>
                 </div>
               </>
             ),
@@ -350,32 +401,33 @@ export default async function AdminDashboard() {
                     <ContentHealth />
                   </Suspense>
                 </div>
+                {/* Tools grouped by domain — money is intentionally NOT here, it
+                    has its own "Moliya" tab so the two never blur together. */}
                 <div>
-                <SectionHeader icon={ShieldCheck} title="Boshqaruv vositalari" subtitle="Butun platformani shu yerdan boshqaring" accent="text-averna-purple" />
-                <Card className="glass border-averna-primary/30">
-                  <CardContent className="pt-6">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                      {actions.map((action) => {
-                        const Icon = action.icon;
-                        return (
-                          <Link
-                            key={action.href}
-                            href={action.href}
-                            className="group flex flex-col items-center text-center gap-2.5 p-4 rounded-2xl bg-averna-dark/30 border border-white/5 transition-all duration-300 hover:bg-averna-dark/60 hover:-translate-y-1 hover:border-averna-neon/40 hover:shadow-[0_14px_40px_-16px_rgba(0,229,255,0.35)]"
-                          >
-                            <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${action.iconBg} transition-transform duration-300 group-hover:scale-110`}>
-                              <Icon className="h-6 w-6" />
-                            </div>
-                            <div className="min-w-0 w-full">
-                              <p className="font-semibold text-white text-sm truncate">{action.label}</p>
-                              <p className="text-[11px] text-gray-400 truncate">{action.desc}</p>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </CardContent>
-                </Card>
+                  <SectionHeader icon={Users} title="Odamlarni boshqarish" subtitle="Oʻqituvchilar, guruhlar va muloqot" accent="text-averna-cyan" />
+                  <Card className="glass border-averna-cyan/20">
+                    <CardContent className="pt-6">
+                      <ToolGrid tools={PEOPLE_TOOLS} />
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div>
+                  <SectionHeader icon={GraduationCap} title="Oʻquv jarayoni" subtitle="Kontent, testlar, mukofotlar va tahlil" accent="text-averna-purple" />
+                  <Card className="glass border-averna-purple/20">
+                    <CardContent className="pt-6">
+                      <ToolGrid tools={LEARNING_TOOLS} />
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div>
+                  <SectionHeader icon={ShieldCheck} title="Nazorat va tizim" subtitle="Xavflar, audit va tizim holati" accent="text-red-400" />
+                  <Card className="glass border-white/10">
+                    <CardContent className="pt-6">
+                      <ToolGrid tools={SYSTEM_TOOLS} />
+                    </CardContent>
+                  </Card>
                 </div>
               </>
             ),

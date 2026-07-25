@@ -202,14 +202,21 @@ const ADMIN_NAV: NavSection[] = [
     ],
   },
   {
-    label: "Operatsiyalar",
+    // Money lives in its own section: an admin doing finance shouldn't have to
+    // scan past system tools, and a finance-only role (M13) maps onto this group.
+    label: "Moliya",
     items: [
       { name: "Moliya", href: "/admin/finance", icon: DollarSign },
       { name: "Xarajatlar", href: "/admin/expenses", icon: Receipt },
       { name: "Maoshlar", href: "/admin/payroll", icon: Banknote },
       { name: "Oʻquvchi toʻlovlari", href: "/admin/payments", icon: CreditCard },
-      { name: "Xavflar markazi", href: "/admin/risks", icon: ShieldAlert },
       { name: "Biznes kalendari", href: "/admin/calendar", icon: CalendarClock },
+    ],
+  },
+  {
+    label: "Nazorat va tizim",
+    items: [
+      { name: "Xavflar markazi", href: "/admin/risks", icon: ShieldAlert },
       { name: "Audit jurnali", href: "/admin/logs", icon: Activity },
       { name: "Tizim", href: "/admin/system", icon: Settings },
     ],
