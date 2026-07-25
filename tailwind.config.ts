@@ -12,6 +12,12 @@ const config: Config = {
     "bg-averna-neon", "bg-averna-cyan", "bg-averna-purple", "bg-averna-pink",
     "text-averna-neon", "text-averna-cyan", "text-averna-purple", "text-averna-pink",
     "border-averna-neon", "border-averna-cyan", "border-averna-purple", "border-averna-pink",
+    // Time-of-day ambient glow classes returned by getDaypart() in lib/utils.ts
+    // (lib/ is outside Tailwind's content scan, so they must be safelisted).
+    "bg-amber-400/10", "bg-averna-cyan/10", "bg-averna-purple/10", "bg-indigo-500/15",
+    // Memory card accent gradients returned by getMemories() in lib/memories.ts.
+    "from-averna-neon/30", "from-averna-cyan/30", "from-averna-purple/30",
+    "from-averna-pink/30", "from-amber-500/30", "from-emerald-500/30",
   ],
   theme: {
     extend: {

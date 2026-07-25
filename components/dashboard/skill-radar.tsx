@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Radar as RadarIcon, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 import { EmptyState } from "@/components/ui/empty-state";
 
 const MODULES = [
@@ -17,10 +17,7 @@ const MODULES = [
  * skill needs the most work.
  */
 export async function SkillRadar({ studentId }: { studentId: string }) {
-  const tests = await db.iELTSTest.findMany({
-    where: { studentId },
-    select: { module: true, score: true },
-  });
+  const tests = await getStudentTests(studentId);
 
   const sums = new Map<string, { total: number; count: number }>();
   for (const t of tests) {

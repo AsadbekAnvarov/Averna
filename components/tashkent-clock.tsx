@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { Clock } from "lucide-react";
 
 /**
- * Small live clock that always shows Tashkent (UTC+5) time, regardless of
- * the user's device timezone — so everyone at the centre sees the same time.
+ * Small live clock that always shows Fergana (UTC+5) time, regardless of the
+ * user's device timezone — so everyone at the centre sees the same time.
+ * Fergana shares Uzbekistan's single time zone (IANA "Asia/Tashkent", UTC+5).
  */
 export function TashkentClock() {
   const [time, setTime] = useState("");
@@ -31,10 +32,10 @@ export function TashkentClock() {
   return (
     <span
       className="hidden md:inline-flex items-center gap-1 text-xs text-gray-400 px-2 py-1 rounded-md border border-white/10"
-      title="Tashkent time (UTC+5)"
+      title="Fergana time (UTC+5)"
     >
       <Clock className="h-3.5 w-3.5 text-averna-cyan" />
-      {time} <span className="text-gray-500">Tashkent</span>
+      {time} <span className="text-gray-500">Fergana</span>
     </span>
   );
 }

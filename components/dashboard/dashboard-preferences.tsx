@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Settings, X, Eye, EyeOff, Type, Snowflake } from "lucide-react";
+import { Settings, X, Eye, EyeOff, Type, Snowflake, Moon } from "lucide-react";
 
 type FontScale = "sm" | "md" | "lg";
 
@@ -16,6 +16,7 @@ export function DashboardPreferences() {
   const [focus, setFocus] = useState(false);
   const [scale, setScale] = useState<FontScale>("md");
   const [seasonal, setSeasonal] = useState(true);
+  const [ambiance, setAmbiance] = useState(true);
 
   // Apply + persist
   const applyFocus = (v: boolean) => {
@@ -36,12 +37,18 @@ export function DashboardPreferences() {
     localStorage.setItem("averna_seasonal", v ? "1" : "0");
     window.dispatchEvent(new Event("averna-seasonal"));
   };
+  const applyAmbiance = (v: boolean) => {
+    setAmbiance(v);
+    localStorage.setItem("averna_ambiance", v ? "1" : "0");
+    window.dispatchEvent(new Event("averna-ambiance"));
+  };
 
   useEffect(() => {
     const f = localStorage.getItem("averna_focus_mode") === "1";
     const s = (localStorage.getItem("averna_text_scale") as FontScale) || "md";
     const seas = localStorage.getItem("averna_seasonal") !== "0";
     setSeasonal(seas);
+    setAmbiance(localStorage.getItem("averna_ambiance") !== "0");
     if (f) {
       setFocus(true);
       document.body.classList.add("focus-mode");
@@ -119,6 +126,23 @@ export function DashboardPreferences() {
               </span>
               <span className={`relative h-6 w-11 rounded-full transition-colors ${seasonal ? "bg-averna-cyan/70" : "bg-white/15"}`}>
                 <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-all ${seasonal ? "left-[22px]" : "left-0.5"}`} />
+              </span>
+            </button>
+
+            {/* Time-of-day ambiance */}
+            <button
+              onClick={() => applyAmbiance(!ambiance)}
+              className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-white/5 border border-white/10 mt-3"
+            >
+              <span className="flex items-center gap-2 text-sm text-white">
+                <Moon className={`h-4 w-4 ${ambiance ? "text-averna-purple" : "text-gray-400"}`} />
+                <span className="text-left">
+                  Time-of-day ambiance
+                  <span className="block text-[11px] text-gray-400 font-normal">Warm mornings, starry nights</span>
+                </span>
+              </span>
+              <span className={`relative h-6 w-11 rounded-full transition-colors ${ambiance ? "bg-averna-purple/70" : "bg-white/15"}`}>
+                <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-all ${ambiance ? "left-[22px]" : "left-0.5"}`} />
               </span>
             </button>
           </div>

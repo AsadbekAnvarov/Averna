@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Gauge, BookOpen, Headphones, PenLine, Mic, TrendingUp, TrendingDown, Minus, ArrowRight, Target } from "lucide-react";
 
@@ -26,17 +26,14 @@ const avg = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.le
  * of adaptive difficulty without touching the test runner. Server component.
  */
 export async function AdaptivePractice({ studentId }: { studentId: string }) {
-  const tests = await db.iELTSTest.findMany({
-    where: { studentId },
-    orderBy: { completedAt: "desc" },
-    take: 60,
-    select: { module: true, score: true },
-  });
+  // Shared cached history is ascending (oldest -> newest); reverse so the
+  // per-module arrays stay newest -> oldest, which the trend logic below expects.
+  const tests = [...(await getStudentTests(studentId))].reverse();
 
   const byModule = new Map<string, number[]>();
   for (const t of tests) {
     const arr = byModule.get(t.module) ?? [];
-    arr.push(t.score); // already ordered newest -> oldest
+    arr.push(t.score); // ordered newest -> oldest
     byModule.set(t.module, arr);
   }
 

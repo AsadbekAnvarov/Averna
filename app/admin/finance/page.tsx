@@ -1,17 +1,58 @@
 export const dynamic = "force-dynamic";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wallet, TrendingUp, AlertTriangle, Receipt } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Wallet, TrendingUp, AlertTriangle, Receipt, Banknote } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
+import { StudentPicker } from "@/components/admin/student-picker";
 import { formatDate } from "@/lib/utils";
+import { recordAudit } from "@/lib/audit";
 
 function fmt(n: number) {
   return n.toLocaleString("en-US");
+}
+
+async function recordCashPayment(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+
+  const studentId = (formData.get("studentId") as string)?.trim();
+  const amount = Math.round(Number(formData.get("amount")));
+  if (!studentId || !Number.isFinite(amount) || amount <= 0) return;
+
+  const student = await db.student.findUnique({
+    where: { id: studentId },
+    select: { user: { select: { name: true } } },
+  });
+  if (!student) return;
+
+  // Credit the student's balance and log the transaction so it appears in the
+  // finance history and keeps balance/records in sync.
+  await db.$transaction([
+    db.student.update({ where: { id: studentId }, data: { balance: { increment: amount } } }),
+    db.payment.create({
+      data: {
+        studentId,
+        amount,
+        type: "CASH",
+        status: "COMPLETED",
+        description: "Naqd toʻlov (admin qabul qildi)",
+      },
+    }),
+  ]);
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    "Recorded cash payment",
+    `name=${student.user.name ?? "?"} amount=${amount} UZS`
+  );
+  revalidatePath("/admin/finance");
 }
 
 export default async function AdminFinancePage() {
@@ -67,6 +108,37 @@ export default async function AdminFinancePage() {
             <CardContent><p className="text-2xl font-bold text-averna-pink">{debtors.length}</p></CardContent>
           </Card>
         </div>
+
+        <Card className="glass border-averna-neon/30 mb-8">
+          <CardHeader><CardTitle className="flex items-center gap-2 text-averna-neon"><Banknote className="h-5 w-5" /> Naqd toʻlov qabul qilish</CardTitle></CardHeader>
+          <CardContent>
+            <form action={recordCashPayment} className="flex flex-col sm:flex-row sm:items-end gap-3">
+              <div className="flex-1 min-w-0">
+                <StudentPicker
+                  students={students.map((s) => ({ id: s.id, name: s.user.name, group: s.group?.name ?? null }))}
+                />
+              </div>
+              <div className="sm:w-48">
+                <label className="text-xs text-gray-400">Summa (UZS)</label>
+                <input
+                  name="amount"
+                  type="number"
+                  min="1"
+                  step="1000"
+                  required
+                  placeholder="masalan, 500000"
+                  className="w-full mt-1 rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-neon"
+                />
+              </div>
+              <Button type="submit" className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
+                Qoʻshish
+              </Button>
+            </form>
+            <p className="text-[11px] text-gray-500 mt-2">
+              Naqd toʻlov oʻquvchi balansiga qoʻshiladi va tranzaksiyalar tarixida saqlanadi.
+            </p>
+          </CardContent>
+        </Card>
 
         <Card className="glass border-averna-pink/30 mb-8">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-pink"><AlertTriangle className="h-5 w-5" /> Balansi nol boʻlgan oʻquvchilar</CardTitle></CardHeader>

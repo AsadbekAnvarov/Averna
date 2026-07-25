@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sparkles, PenTool, BookOpen, Headphones, Mic, RotateCcw, ClipboardList, Trophy, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 
 const MOD: Record<string, { label: string; href: string; icon: any; color: string }> = {
   WRITING: { label: "Writing", href: "/learning/writing", icon: PenTool, color: "bg-averna-purple/15 text-averna-purple" },
@@ -17,7 +18,7 @@ const MOD: Record<string, { label: string; href: string; icon: any; color: strin
  */
 export async function RecommendedToday({ studentId, groupId }: { studentId: string; groupId: string | null }) {
   const [tests, dueHw] = await Promise.all([
-    db.iELTSTest.findMany({ where: { studentId }, select: { module: true, score: true, completedAt: true } }),
+    getStudentTests(studentId),
     groupId
       ? db.homework.findFirst({
           where: { groupId, dueDate: { gte: new Date() }, submissions: { none: { studentId } } },

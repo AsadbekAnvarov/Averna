@@ -5,7 +5,6 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Users,
   GraduationCap,
@@ -20,7 +19,6 @@ import {
   ShieldCheck,
   Trophy,
   ArrowRight,
-  Trash2,
   Sparkles,
   Bell,
   MessageSquare,
@@ -37,7 +35,7 @@ import { TeacherWorkload } from "@/components/admin/teacher-workload";
 import { FinanceSummary } from "@/components/admin/finance-summary";
 import { AdminAttentionBar } from "@/components/admin/attention-bar";
 import { SeedDemoButton } from "@/components/admin/seed-demo-button";
-import { ConfirmButton } from "@/components/ui/confirm-button";
+import { StudentRoster } from "@/components/admin/student-roster";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PanelTabs } from "@/components/panel-tabs";
@@ -83,6 +81,37 @@ async function enrollStudent(formData: FormData) {
     { id: session.user.id, name: session.user.name, role: session.user.role },
     "Enrolled student",
     `studentId=${studentId} level=${level || "-"} group=${groupId || "-"}`
+  );
+  revalidatePath("/admin/dashboard");
+}
+
+async function toggleFreeze(formData: FormData) {
+  "use server";
+  const session = await auth();
+  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+
+  const studentId = formData.get("studentId") as string;
+  if (!studentId) return;
+
+  const student = await db.student.findUnique({
+    where: { id: studentId },
+    select: { blacklisted: true, user: { select: { name: true } } },
+  });
+  if (!student) return;
+
+  const next = !student.blacklisted;
+  await db.student.update({
+    where: { id: studentId },
+    data: {
+      blacklisted: next,
+      // Student UI is English — this is shown to the learner on their dashboard.
+      blacklistReason: next ? "Your account is frozen. Please contact the learning centre." : null,
+    },
+  });
+  await recordAudit(
+    { id: session.user.id, name: session.user.name, role: session.user.role },
+    next ? "Froze student" : "Unfroze student",
+    `name=${student.user.name ?? "?"}`
   );
   revalidatePath("/admin/dashboard");
 }
@@ -147,7 +176,7 @@ export default async function AdminDashboard() {
 
   const tabs = [
     { key: "overview", label: "Umumiy", icon: "overview", active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
-    { key: "people", label: "Odamlar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
+    { key: "people", label: "Oʻquvchilar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
     { key: "insights", label: "Tahlillar", icon: "analytics", active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
     { key: "manage", label: "Boshqarish", icon: "manage", active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
   ];
@@ -167,48 +196,17 @@ export default async function AdminDashboard() {
     { href: "/messages", label: "Xabarlar", desc: "Oʻquvchilar bilan yozishma", icon: MessageSquare, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
   ];
 
-  const StudentForm = ({ s }: { s: (typeof students)[number] }) => (
-    <form action={enrollStudent} className="flex flex-col md:flex-row md:items-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10 transition-colors hover:border-averna-cyan/30">
-      <input type="hidden" name="studentId" value={s.id} />
-      <div className="md:w-56 min-w-0">
-        <p className="text-white font-medium truncate">{s.user.name ?? "Nomsiz"}</p>
-        <p className="text-xs text-gray-400 truncate">{s.user.email}</p>
-      </div>
-      <select
-        name="level"
-        defaultValue={s.level ?? ""}
-        className="rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-purple md:flex-1"
-      >
-        <option value="" className="bg-averna-dark">— Daraja —</option>
-        {LEVELS.map((l) => (
-          <option key={l} value={l} className="bg-averna-dark">{l}</option>
-        ))}
-      </select>
-      <select
-        name="groupId"
-        defaultValue={s.groupId ?? ""}
-        className="rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-cyan md:flex-1"
-      >
-        <option value="" className="bg-averna-dark">— Biriktirilmagan —</option>
-        {groups.map((g) => (
-          <option key={g.id} value={g.id} className="bg-averna-dark">
-            {g.name} · {g.teacher.user.name}
-          </option>
-        ))}
-      </select>
-      <Button type="submit" size="sm" className="neon-button bg-averna-primary hover:bg-averna-light">
-        Saqlash
-      </Button>
-      <ConfirmButton
-        formAction={deleteStudent}
-        message={`${s.user.name ?? "Ushbu oʻquvchi"}ni va uning barcha maʼlumotlarini (topshiriqlar, baholar, ballar, toʻlovlar) butunlay oʻchirasizmi? Bu uning hisobini ham oʻchiradi va qaytarib boʻlmaydi.`}
-        title="Oʻquvchini oʻchirish"
-        className="h-9 w-9 shrink-0 rounded-md border border-red-500/30 bg-red-500/10 text-red-400 hover:bg-red-500/20"
-      >
-        <Trash2 className="h-4 w-4" />
-      </ConfirmButton>
-    </form>
-  );
+  const rosterGroups = groups.map((g) => ({ id: g.id, name: g.name, teacherName: g.teacher?.user?.name ?? null }));
+  const toRoster = (s: (typeof students)[number]) => ({
+    id: s.id,
+    name: s.user.name,
+    email: s.user.email,
+    level: s.level,
+    groupId: s.groupId,
+    blacklisted: s.blacklisted,
+  });
+  const pendingRoster = pending.map(toRoster);
+  const studentsRoster = students.map(toRoster);
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -264,15 +262,15 @@ export default async function AdminDashboard() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      {pending.length === 0 ? (
-                        <p className="text-gray-400 text-sm">🎉 Qabul kutayotgan oʻquvchilar yoʻq.</p>
-                      ) : (
-                        <div className="space-y-2">
-                          {pending.map((s) => (
-                            <StudentForm key={s.id} s={s} />
-                          ))}
-                        </div>
-                      )}
+                      <StudentRoster
+                        students={pendingRoster}
+                        groups={rosterGroups}
+                        levels={LEVELS}
+                        enrollAction={enrollStudent}
+                        deleteAction={deleteStudent}
+                        freezeAction={toggleFreeze}
+                        emptyText="🎉 Qabul kutayotgan oʻquvchilar yoʻq."
+                      />
                     </CardContent>
                   </Card>
                 </div>
@@ -280,15 +278,15 @@ export default async function AdminDashboard() {
                   <SectionHeader icon={Users} title={`Barcha oʻquvchilar (${students.length})`} subtitle="Platformadagi barcha oʻquvchilar" accent="text-averna-cyan" />
                   <Card className="glass border-averna-cyan/30">
                     <CardContent className="pt-6">
-                      {students.length === 0 ? (
-                        <p className="text-gray-400 text-sm">Hozircha oʻquvchilar yoʻq.</p>
-                      ) : (
-                        <div className="space-y-2">
-                          {students.map((s) => (
-                            <StudentForm key={s.id} s={s} />
-                          ))}
-                        </div>
-                      )}
+                      <StudentRoster
+                        students={studentsRoster}
+                        groups={rosterGroups}
+                        levels={LEVELS}
+                        enrollAction={enrollStudent}
+                        deleteAction={deleteStudent}
+                        freezeAction={toggleFreeze}
+                        emptyText="Hozircha oʻquvchilar yoʻq."
+                      />
                     </CardContent>
                   </Card>
                 </div>

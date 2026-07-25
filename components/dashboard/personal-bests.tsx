@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Medal, PenTool, BookOpen, Headphones, Mic } from "lucide-react";
-import { db } from "@/lib/db";
+import { getStudentTests } from "@/lib/student-intel";
 import { EmptyState } from "@/components/ui/empty-state";
 
 const MODULES = [
@@ -15,10 +15,7 @@ const MODULES = [
  * "trophy cabinet" that fills the Progress tab and celebrates their peaks.
  */
 export async function PersonalBests({ studentId }: { studentId: string }) {
-  const tests = await db.iELTSTest.findMany({
-    where: { studentId },
-    select: { module: true, score: true },
-  });
+  const tests = await getStudentTests(studentId);
 
   const best = new Map<string, number>();
   for (const t of tests) {

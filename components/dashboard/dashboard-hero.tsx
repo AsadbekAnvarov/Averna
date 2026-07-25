@@ -1,7 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Flame, Trophy, Target, Quote } from "lucide-react";
-import { tashkentHour, getRandomQuote, getLevelInfo, initialsOf } from "@/lib/utils";
+import { tashkentHour, getDaypart, getRandomQuote, getLevelInfo, initialsOf } from "@/lib/utils";
 import { CountUp } from "@/components/ui/count-up";
+import { cosmeticById } from "@/lib/cosmetics";
 
 interface HeroProps {
   name: string | null;
@@ -11,6 +12,7 @@ interface HeroProps {
   globalRank: number;
   goal: string | null;
   quote: { text: string; author: string | null } | null;
+  featuredCosmetic?: string | null;
 }
 
 /**
@@ -18,14 +20,24 @@ interface HeroProps {
  * greeting + stat pills on the left, and a circular Level ring on the right so
  * the layout feels complete on wide screens. Brand-toned animated gradient.
  */
-export function DashboardHero({ name, image, points, streak, globalRank, goal, quote }: HeroProps) {
+export function DashboardHero({ name, image, points, streak, globalRank, goal, quote, featuredCosmetic }: HeroProps) {
+  const cosmetic = cosmeticById(featuredCosmetic);
   const firstName = name?.split(" ")[0] || "Student";
-  const hour = tashkentHour();
-  const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
-  const emoji = hour < 12 ? "🌅" : hour < 18 ? "☀️" : "🌙";
+  const daypart = getDaypart(tashkentHour());
   const initials = initialsOf(name);
   const displayQuote = quote || { text: getRandomQuote(), author: "Averna Team" };
   const level = getLevelInfo(points);
+
+  // One short, honest contextual line: prefer a real highlight the student has
+  // earned, otherwise fall back to the calm time-of-day mood. Never generic.
+  const smartLine =
+    streak >= 7
+      ? `${streak} days in a row — your consistency is on fire. 🔥`
+      : streak >= 3
+        ? `You're on a ${streak}-day streak — keep it alive.`
+        : !level.isMax && level.into >= 75
+          ? `Almost there — ${100 - level.into}% to Level ${level.level + 1}.`
+          : daypart.line;
 
   // Level ring geometry
   const R = 52;
@@ -41,25 +53,36 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
   return (
     <Card className="glass relative overflow-hidden border-averna-primary/30">
       <div className="absolute inset-0 animated-gradient opacity-60" />
-      <div className="pointer-events-none absolute -top-24 -right-20 h-60 w-60 rounded-full bg-averna-neon/10 blur-3xl" />
+      <div className={`pointer-events-none absolute -top-24 -right-20 h-60 w-60 rounded-full ${daypart.glow} blur-3xl transition-colors duration-1000`} />
       <CardContent className="relative p-6 sm:p-8">
         <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
           {/* Left: greeting + pills + quote */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-4 sm:gap-5">
-              <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shrink-0 shadow-lg shadow-averna-neon/20">
-                {image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={image} alt={name ?? "Avatar"} className="h-full w-full object-cover" />
-                ) : (
-                  <span className="text-3xl font-bold text-averna-neon">{initials}</span>
+              <div className="relative shrink-0">
+                <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shadow-lg shadow-averna-neon/20">
+                  {image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={image} alt={name ?? "Avatar"} className="h-full w-full object-cover" />
+                  ) : (
+                    <span className="text-3xl font-bold text-averna-neon">{initials}</span>
+                  )}
+                </div>
+                {cosmetic && (
+                  <span
+                    className="absolute -bottom-1 -right-1 h-8 w-8 rounded-full bg-averna-dark border border-white/20 flex items-center justify-center text-lg shadow-lg animate-fade-in"
+                    title={`${cosmetic.name} · featured cosmetic`}
+                  >
+                    {cosmetic.emoji}
+                  </span>
                 )}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-sm sm:text-base text-gray-200">{greeting} {emoji}</p>
+                <p className="text-sm sm:text-base text-gray-200">{daypart.greeting} {daypart.emoji}</p>
                 <h2 className="text-3xl sm:text-4xl font-bold text-white truncate">
                   <span className="text-gradient-animate">{firstName}</span> <span className="inline-block">👋</span>
                 </h2>
+                <p className="text-xs sm:text-sm text-gray-300 mt-1.5 animate-fade-in">{smartLine}</p>
                 {goal && (
                   <span className="inline-flex items-center gap-1.5 mt-2 text-xs sm:text-sm px-3 py-1 rounded-full bg-white/10 border border-white/15 text-averna-neon">
                     <Target className="h-4 w-4" /> {goal}

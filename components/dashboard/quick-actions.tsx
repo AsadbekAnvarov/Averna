@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  PenTool, BookOpen, Headphones, Mic, Trophy, MessageSquare, Zap, Layers,
-  UserCheck, CalendarClock, Gift, CalendarDays, Crown, Swords, Library, Bot,
+  Mic, Trophy, MessageSquare, Zap, Layers,
+  UserCheck, CalendarClock, Gift, Crown, Swords, Library, Bot,
   GraduationCap, Gamepad2, Wrench, Award, SpellCheck,
 } from "lucide-react";
 import Link from "next/link";
@@ -23,13 +23,11 @@ export function QuickActions() {
 
   // Counts are kept as multiples of the column grid (8 / 4 / 8) so every row is
   // perfectly filled at both 2 and 4 columns — no lonely trailing tiles.
+  // Core skills (Reading/Listening/Writing/Speaking) live in the Living Campus,
+  // so Practice here holds the complementary tools only — no duplicate nav.
   const practice: Action[] = [
-    { icon: PenTool, label: "Writing", description: "Practice Task 1 & 2", href: "/learning/writing", color: "text-purple-400", bgColor: "bg-purple-500/15" },
-    { icon: BookOpen, label: "Reading", description: "Take a reading test", href: "/learning/reading", color: "text-blue-400", bgColor: "bg-blue-500/15" },
-    { icon: Headphones, label: "Listening", description: "Practice listening", href: "/learning/listening", color: "text-green-400", bgColor: "bg-green-500/15" },
-    { icon: Mic, label: "Speaking", description: speakingTimeText, href: "/learning/speaking", color: speakingTimeActive ? "text-averna-neon" : "text-orange-400", bgColor: speakingTimeActive ? "bg-averna-neon/15" : "bg-orange-500/15", live: speakingTimeActive },
     { icon: Mic, label: "Pronunciation", description: "Speak & get scored", href: "/learning/pronunciation", color: "text-averna-pink", bgColor: "bg-averna-pink/15" },
-    { icon: Bot, label: "AI Examiner", description: "Speak, get a band", href: "/learning/examiner", color: "text-averna-cyan", bgColor: "bg-averna-cyan/15" },
+    { icon: Bot, label: "AI Examiner", description: speakingTimeActive ? speakingTimeText : "Speak, get a band", href: "/learning/examiner", color: speakingTimeActive ? "text-averna-neon" : "text-averna-cyan", bgColor: speakingTimeActive ? "bg-averna-neon/15" : "bg-averna-cyan/15", live: speakingTimeActive },
     { icon: SpellCheck, label: "Grammar", description: "Rules & practice", href: "/grammar", color: "text-teal-400", bgColor: "bg-teal-500/15" },
     { icon: Trophy, label: "Mock Exam", description: "Timed mini IELTS test", href: "/learning/mock-exam", color: "text-yellow-400", bgColor: "bg-yellow-500/15" },
   ];
