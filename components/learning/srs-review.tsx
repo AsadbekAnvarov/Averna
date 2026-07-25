@@ -69,6 +69,12 @@ export function SrsReview({ cards }: { cards: Flashcard[] }) {
     const map = mapRef.current;
     map[current.word] = schedule(map[current.word], rating);
     saveSrs(map);
+    // Mirror to the server ledger so retention syncs across devices + earns XP.
+    fetch("/api/srs/review", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ itemKey: current.word, rating, source: "vocab" }),
+    }).catch(() => {});
     setReviewed((n) => n + 1);
     setFlipped(false);
 

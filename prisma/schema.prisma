@@ -137,6 +137,7 @@ model Student {
   grades            Grade[]
   redemptions       RewardRedemption[]
   payments          Payment[]
+  reviewItems       ReviewItem[]
 
   @@index([groupId])
   @@index([totalPoints])
@@ -607,6 +608,31 @@ model Payment {
 
   @@index([studentId])
   @@map("payments")
+}
+
+/// Server-backed spaced-repetition ledger. One row per (student, item) — a
+/// vocabulary word or a Mistake Bank entry — holding its SM-2 state so
+/// retention syncs across devices and is visible to XP/streak/AI. The client
+/// keeps localStorage for instant review UX and mirrors each review here.
+model ReviewItem {
+  id             String   @id @default(cuid())
+  studentId      String
+  itemKey        String
+  source         String   @default("vocab") // vocab | mistake
+  ease           Float    @default(2.5)
+  interval       Int      @default(0) // days until next review
+  reps           Int      @default(0)
+  lapses         Int      @default(0)
+  dueAt          DateTime @default(now())
+  lastReviewedAt DateTime @default(now())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, itemKey])
+  @@index([studentId, dueAt])
+  @@map("review_items")
 }
 
 model StudyMaterial {
