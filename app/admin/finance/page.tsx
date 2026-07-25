@@ -10,6 +10,7 @@ import { Wallet, TrendingUp, AlertTriangle, Receipt, Banknote } from "lucide-rea
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
+import { StudentPicker } from "@/components/admin/student-picker";
 import { formatDate } from "@/lib/utils";
 import { recordAudit } from "@/lib/audit";
 
@@ -113,20 +114,9 @@ export default async function AdminFinancePage() {
           <CardContent>
             <form action={recordCashPayment} className="flex flex-col sm:flex-row sm:items-end gap-3">
               <div className="flex-1 min-w-0">
-                <label className="text-xs text-gray-400">Oʻquvchi</label>
-                <select
-                  name="studentId"
-                  required
-                  defaultValue=""
-                  className="w-full mt-1 rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-neon"
-                >
-                  <option value="" disabled className="bg-averna-dark">— Oʻquvchini tanlang —</option>
-                  {students.map((s) => (
-                    <option key={s.id} value={s.id} className="bg-averna-dark">
-                      {s.user.name}{s.group?.name ? ` · ${s.group.name}` : ""}
-                    </option>
-                  ))}
-                </select>
+                <StudentPicker
+                  students={students.map((s) => ({ id: s.id, name: s.user.name, group: s.group?.name ?? null }))}
+                />
               </div>
               <div className="sm:w-48">
                 <label className="text-xs text-gray-400">Summa (UZS)</label>
