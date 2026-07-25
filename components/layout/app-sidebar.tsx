@@ -209,6 +209,7 @@ const ADMIN_NAV: NavSection[] = [
       { name: "Maoshlar", href: "/admin/payroll", icon: Banknote },
       { name: "Oʻquvchi toʻlovlari", href: "/admin/payments", icon: CreditCard },
       { name: "Xavflar markazi", href: "/admin/risks", icon: ShieldAlert },
+      { name: "Biznes kalendari", href: "/admin/calendar", icon: CalendarClock },
       { name: "Audit jurnali", href: "/admin/logs", icon: Activity },
       { name: "Tizim", href: "/admin/system", icon: Settings },
     ],

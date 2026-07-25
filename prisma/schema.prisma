@@ -688,6 +688,32 @@ model ReviewItem {
   @@map("review_items")
 }
 
+/// Manually scheduled business events (M8): rent, utilities, taxes, meetings,
+/// maintenance, marketing, renewals. Payment and salary deadlines are DERIVED
+/// from real data instead of being duplicated here, so the calendar can never
+/// disagree with the finance pages.
+model BusinessEvent {
+  id            String    @id @default(cuid())
+  type          String // RENT | UTILITY | TAX | MEETING | EXAM | MAINTENANCE | MARKETING | EVENT | RENEWAL | OTHER
+  title         String
+  amount        Int?
+  startsAt      DateTime
+  endsAt        DateTime?
+  /// null | monthly | yearly — expanded when the calendar is rendered.
+  recurring     String?
+  /// Remind this many days before (used by future automation, M12).
+  reminderDays  Int?
+  notes         String?
+  createdById   String?
+  createdByName String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([startsAt])
+  @@index([type])
+  @@map("business_events")
+}
+
 /// Operating expenses — the missing half of the P&L. Without this table "profit"
 /// cannot be computed at all, so the dashboard refuses to show one. Amounts are
 /// stored as integers in the same unit as Payment.amount (UZS).
