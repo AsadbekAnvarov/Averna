@@ -21,8 +21,17 @@ async function topUp(formData: FormData) {
   if (amount <= 0) return;
 
   await db.student.update({ where: { id: student.id }, data: { balance: { increment: amount } } });
+  // Self-service top-ups go through the online card flow, so they are the one
+  // method a student can pick without an admin at the desk.
   await db.payment.create({
-    data: { studentId: student.id, amount, type: "TOPUP", description: "Balance top-up", status: "COMPLETED" },
+    data: {
+      studentId: student.id,
+      amount,
+      type: "TOPUP",
+      method: "CARD",
+      description: "Balance top-up",
+      status: "COMPLETED",
+    },
   });
   revalidatePath("/billing");
   redirect("/billing?success=topup");
@@ -41,6 +50,8 @@ async function payCourse(formData: FormData) {
   if (student.balance < amount) redirect("/billing?error=funds");
 
   await db.student.update({ where: { id: student.id }, data: { balance: { decrement: amount } } });
+  // Spending existing balance moves no new money into the centre, so it carries
+  // no payment method — the method was recorded on the top-up that funded it.
   await db.payment.create({
     data: { studentId: student.id, amount: -amount, type: "COURSE", description, status: "COMPLETED" },
   });

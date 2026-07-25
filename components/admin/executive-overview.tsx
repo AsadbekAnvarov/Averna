@@ -35,6 +35,19 @@ export async function ExecutiveOverview() {
   const C = 2 * Math.PI * R;
   const filled = (health.score / 100) * C;
 
+  // Which channel the month's money actually came through. Only methods that
+  // were used are listed — showing "Terminal 0%" in a one-line hint would spend
+  // the space on nothing. The full split, zeroes included, is on /admin/finance.
+  const usedMethods = snapshot.revenueByMethod.rows.filter((r) => r.amount > 0);
+  const topMethod = usedMethods.reduce<(typeof usedMethods)[number] | null>(
+    (best, r) => (best == null || r.amount > best.amount ? r : best),
+    null
+  );
+  const methodHint =
+    usedMethods.length > 0
+      ? usedMethods.map((r) => `${r.label} ${fmt(r.amount)}`).join(" · ")
+      : "Bu oy toʻlov qabul qilinmagan";
+
   const metrics = [
     {
       label: "Bugungi daromad",
@@ -119,14 +132,14 @@ export async function ExecutiveOverview() {
       hint: `Oʻrtacha ${snapshot.avgGroupSize ?? "—"} oʻquvchi · ${snapshot.underEnrolledGroups} ta kam toʻldirilgan`,
     },
     {
-      label: "Naqd / boshqa (oylik)",
-      value: `${fmt(snapshot.revenueByMethod.cash)} / ${fmt(snapshot.revenueByMethod.other)}`,
+      label: "Asosiy toʻlov usuli (oy)",
+      value: topMethod ? `${topMethod.label} ${topMethod.sharePct ?? 0}%` : "—",
       suffix: "",
       icon: TrendingUp,
       accent: "text-emerald-400",
       bg: "bg-emerald-400/15 text-emerald-400",
       href: "/admin/finance",
-      hint: "Toʻliq toʻlov usullari uchun ERP maydonlari kerak",
+      hint: methodHint,
     },
   ];
 

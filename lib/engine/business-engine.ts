@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { summariseByMethod, type MethodSummary } from "@/lib/engine/payment-methods";
 
 /**
  * Business Engine — the executive view of the learning centre.
@@ -15,10 +16,14 @@ import { db } from "@/lib/db";
 
 const DAY = 86_400_000;
 
-export interface RevenueBreakdown {
-  cash: number;
-  other: number;
-}
+/**
+ * Monthly income per payment method.
+ *
+ * This used to be a cash/other pair, because the schema had no method field and
+ * cash was the only thing distinguishable (it hijacked `type`). Now that method
+ * is recorded, the real split is available and the coarse pair is gone.
+ */
+export type RevenueBreakdown = MethodSummary;
 
 export interface ExecutiveSnapshot {
   // --- Money (income only; expenses have no data source yet) ---
@@ -61,7 +66,7 @@ export async function getExecutiveSnapshot(): Promise<ExecutiveSnapshot> {
     // Completed income for the year — one scan, then bucketed in memory.
     db.payment.findMany({
       where: { status: "COMPLETED", createdAt: { gte: startYear } },
-      select: { amount: true, type: true, createdAt: true },
+      select: { amount: true, type: true, method: true, description: true, createdAt: true },
     }),
     db.payment.count({ where: { status: "PENDING" } }),
     db.student.findMany({ select: { createdAt: true, balance: true, groupId: true, lastActiveDate: true } }),
@@ -82,13 +87,7 @@ export async function getExecutiveSnapshot(): Promise<ExecutiveSnapshot> {
   const revenueGrowthPct =
     revenuePrevMonth > 0 ? Math.round(((revenueMonth - revenuePrevMonth) / revenuePrevMonth) * 100) : null;
 
-  // Payment "method" is only partially expressible today: the schema has a
-  // coarse `type` (TOPUP | COURSE | SUBSCRIPTION | CASH), not a real method
-  // field. Cash is distinguishable because admins record it explicitly.
-  const revenueByMethod: RevenueBreakdown = {
-    cash: sum(monthRows.filter((p) => p.type === "CASH")),
-    other: sum(monthRows.filter((p) => p.type !== "CASH")),
-  };
+  const revenueByMethod: RevenueBreakdown = summariseByMethod(monthRows);
 
   const present = attendance.filter((a) => a.status === "PRESENT" || a.status === "LATE").length;
   const attendanceRate = attendance.length >= 5 ? Math.round((present / attendance.length) * 100) : null;

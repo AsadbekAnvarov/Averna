@@ -661,6 +661,11 @@ model Payment {
   studentId   String
   amount      Int
   type        String   @default("TOPUP") // TOPUP | COURSE | SUBSCRIPTION
+  /// How the money arrived: CASH | CARD | TERMINAL | TRANSFER.
+  /// Nullable on purpose — rows created before this field existed have no
+  /// recorded method, and defaulting them to CASH would invent bookkeeping that
+  /// never happened. Unknown is reported as its own bucket.
+  method      String?
   description String?
   status      String   @default("COMPLETED") // COMPLETED | PENDING
   createdAt   DateTime @default(now())
@@ -668,6 +673,8 @@ model Payment {
   student Student @relation(fields: [studentId], references: [id])
 
   @@index([studentId])
+  @@index([method])
+  @@index([createdAt])
   @@map("payments")
 }
 

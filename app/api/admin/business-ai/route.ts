@@ -51,7 +51,12 @@ export async function POST(req: NextRequest) {
         pnl.revenueGrowthPct == null ? "" : ` (oʻzgarish ${pnl.revenueGrowthPct > 0 ? "+" : ""}${pnl.revenueGrowthPct}%)`
       }.`,
       `Yillik daromad: ${fmt(pnl.year.revenue)} UZS.`,
-      `Naqd toʻlovlar (shu oy): ${fmt(snap.revenueByMethod.cash)} UZS; boshqa usullar: ${fmt(snap.revenueByMethod.other)} UZS.`,
+      `Toʻlov usullari (shu oy): ${
+        snap.revenueByMethod.rows
+          .filter((r) => r.amount > 0)
+          .map((r) => `${r.label} ${fmt(r.amount)} UZS (${r.sharePct ?? 0}%)`)
+          .join("; ") || "toʻlov yoʻq"
+      }.`,
     ];
 
     if (pnl.hasExpenseData) {

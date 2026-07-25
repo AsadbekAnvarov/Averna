@@ -15,6 +15,13 @@ import { recordAudit } from "@/lib/audit";
 import { notifyUser } from "@/lib/notifications";
 import { getTuitionSummary, riskLabel, type PaymentRisk } from "@/lib/engine/tuition-engine";
 import { can } from "@/lib/engine/permissions";
+import { MethodBreakdown } from "@/components/admin/method-breakdown";
+import {
+  PAYMENT_METHODS,
+  normaliseMethod,
+  paymentMethodLabel,
+  summariseByMethod,
+} from "@/lib/engine/payment-methods";
 
 const fmt = (n: number) => n.toLocaleString("en-US");
 
@@ -65,7 +72,9 @@ async function recordTuitionPayment(formData: FormData) {
 
   const studentId = formData.get("studentId") as string;
   const amount = Math.round(Number(formData.get("amount")));
-  const method = ((formData.get("method") as string) || "CASH").trim();
+  // Anything unrecognised falls back to cash, which is what a desk payment
+  // without a selection is in practice.
+  const method = normaliseMethod(formData.get("method") as string) ?? "CASH";
   if (!studentId || !Number.isFinite(amount) || amount <= 0) return;
 
   const student = await db.student.findUnique({
@@ -80,9 +89,12 @@ async function recordTuitionPayment(formData: FormData) {
       data: {
         studentId,
         amount,
-        type: method === "CASH" ? "CASH" : "COURSE",
+        // `type` is what was paid for; `method` is how it arrived. Cash used to
+        // overwrite `type`, which hid it from course-income totals.
+        type: "COURSE",
+        method,
         status: "COMPLETED",
-        description: `Kurs toʻlovi (${method})`,
+        description: `Kurs toʻlovi · ${paymentMethodLabel(method)}`,
       },
     }),
   ]);
@@ -143,7 +155,20 @@ export default async function AdminPaymentsPage() {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
-  const data = await getTuitionSummary();
+  const now = new Date();
+  const startToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  // Today's split, not the month's: this page is where money is taken, so the
+  // question here is "does the till match what we recorded". The monthly view
+  // lives on /admin/finance and is deliberately not repeated.
+  const [data, todayPayments] = await Promise.all([
+    getTuitionSummary(),
+    db.payment.findMany({
+      where: { status: "COMPLETED", createdAt: { gte: startToday } },
+      select: { amount: true, type: true, method: true, description: true },
+    }),
+  ]);
+  const todayByMethod = summariseByMethod(todayPayments);
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -179,6 +204,12 @@ export default async function AdminPaymentsPage() {
             <CardContent><p className="text-2xl font-bold text-amber-400">{data.dueSoon}</p><p className="text-[11px] text-gray-500">{data.unpriced} ta narx/muddat sozlanmagan</p></CardContent>
           </Card>
         </div>
+
+        <MethodBreakdown
+          summary={todayByMethod}
+          title="Bugun qabul qilingan toʻlovlar"
+          periodLabel="Bugun"
+        />
 
         {data.rows.length === 0 ? (
           <Card className="glass border-white/10">
@@ -284,10 +315,11 @@ export default async function AdminPaymentsPage() {
                       <div className="w-28">
                         <label className="text-[11px] text-gray-400">Usul</label>
                         <select name="method" defaultValue="CASH" className="w-full mt-1 rounded-md border border-input bg-background/60 px-2 py-1.5 text-sm text-white">
-                          <option value="CASH" className="bg-averna-dark">Naqd</option>
-                          <option value="CARD" className="bg-averna-dark">Karta</option>
-                          <option value="TERMINAL" className="bg-averna-dark">Terminal</option>
-                          <option value="TRANSFER" className="bg-averna-dark">Oʻtkazma</option>
+                          {PAYMENT_METHODS.map((m) => (
+                            <option key={m.key} value={m.key} className="bg-averna-dark">
+                              {m.label}
+                            </option>
+                          ))}
                         </select>
                       </div>
                       <Button type="submit" size="sm" className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
