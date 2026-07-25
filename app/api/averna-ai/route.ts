@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { getExamReadiness, getMemoryTimeline } from "@/lib/student-intel";
+import { getExamReadiness, getMemoryTimeline, getSkillStages } from "@/lib/student-intel";
 import { avernaAssistant } from "@/lib/ai";
 
 export const dynamic = "force-dynamic";
@@ -20,7 +20,13 @@ export async function POST(req: NextRequest) {
     });
     if (!student) return NextResponse.json({ error: "No student profile" }, { status: 403 });
 
-    const [readiness, memory] = await Promise.all([getExamReadiness(student.id), getMemoryTimeline(student.id)]);
+    const [readiness, memory, stages, dueCount] = await Promise.all([
+      getExamReadiness(student.id),
+      getMemoryTimeline(student.id),
+      getSkillStages(student.id),
+      // Server SRS ledger (Phase 3a). Defensive: the table may not exist before deploy.
+      db.reviewItem.count({ where: { studentId: student.id, dueAt: { lte: new Date() } } }).catch(() => 0),
+    ]);
 
     const fading = memory.filter((m) => m.status === "fading" || m.status === "forgotten").map((m) => m.label);
     const perSkill = readiness.perSkill
@@ -35,6 +41,11 @@ export async function POST(req: NextRequest) {
       readiness.weakest ? `Weakest skill: ${readiness.weakest.label} (Band ${readiness.weakest.predicted?.toFixed(1)}).` : "",
       `Streak: ${student.currentStreak} days (best ${student.longestStreak}). XP: ${student.totalPoints}.`,
       fading.length ? `Skills fading from memory (need review): ${fading.join(", ")}.` : "Memory retention is currently strong.",
+      (() => {
+        const st = stages.filter((s) => s.stage !== "locked").map((s) => `${s.label}: ${s.stageLabel}`);
+        return st.length ? `Mastery stages — ${st.join("; ")}.` : "";
+      })(),
+      dueCount > 0 ? `${dueCount} spaced-repetition item${dueCount === 1 ? "" : "s"} are due for review right now.` : "",
     ]
       .filter(Boolean)
       .join(" ");
@@ -44,9 +55,18 @@ export async function POST(req: NextRequest) {
     const weak = readiness.weakest;
     let fallback: string;
     if (/(study|do).*(today|now)|what should/.test(m)) {
-      fallback = weak
-        ? `Start with ${weak.label} today — it's your lowest predicted band (${weak.predicted?.toFixed(1)}). Do one ${weak.label} test, then review the mistakes it surfaces.`
-        : `Take a test in any skill today so I can map your levels and give you a precise plan.`;
+      if (dueCount > 0) {
+        fallback = `First clear your ${dueCount} due review${dueCount === 1 ? "" : "s"} (~5 min) — spaced review right before you'd forget is the highest-yield thing you can do now. Then ${weak ? `take one ${weak.label} test (your weakest, Band ${weak.predicted?.toFixed(1)})` : "take a test in any skill"}.`;
+      } else if (weak) {
+        const ws = stages.find((s) => s.key === weak.key);
+        fallback = `Start with ${weak.label} today — it's your lowest predicted band (${weak.predicted?.toFixed(1)})${ws && ws.stage !== "locked" ? `, still only at the "${ws.stageLabel}" stage` : ""}. Do one ${weak.label} test, then review the mistakes it surfaces.`;
+      } else {
+        fallback = `Take a test in any skill today so I can map your levels and give you a precise plan.`;
+      }
+    } else if (/(review|due|flashcard|vocab|spaced)/.test(m)) {
+      fallback = dueCount > 0
+        ? `You have ${dueCount} item${dueCount === 1 ? "" : "s"} due for review right now — clear those first, because reviewing right before you'd forget is what actually moves things into long-term memory.`
+        : `Nothing is due for review right now. Keep logging mistakes in the Mistake Bank so the system resurfaces them at the perfect time.`;
     } else if (/(stuck|not improv|plateau|why)/.test(m)) {
       const falling = readiness.perSkill.filter((s) => s.trend === "down").map((s) => s.label);
       fallback = falling.length
