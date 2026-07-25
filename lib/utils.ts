@@ -342,6 +342,25 @@ export interface BandPrediction {
   sampleSize: number;
 }
 
+/**
+ * Whether a free-text answer matches the expected one, IELTS-style: exact after
+ * normalising case, surrounding punctuation, collapsed whitespace and a leading
+ * article ("a"/"an"/"the"). Deliberately NOT a substring match — the old
+ * `includes` check over-credited (e.g. "it is not true" counted as "true").
+ */
+export function isTextAnswerCorrect(userAnswer: unknown, correctAnswer: string): boolean {
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, "")
+      .replace(/^(a|an|the)\s+/, "");
+  const u = norm(String(userAnswer ?? ""));
+  const c = norm(correctAnswer ?? "");
+  return u.length > 0 && u === c;
+}
+
 export function predictBand(scores: number[]): BandPrediction | null {
   const valid = scores.filter((s) => typeof s === "number" && s > 0);
   if (valid.length === 0) return null;

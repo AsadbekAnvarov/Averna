@@ -435,14 +435,19 @@ export async function saveIELTSTest(
   timeSpent: number,
   options?: { pointsOverride?: number }
 ) {
+  // Clamp untrusted/edge inputs so analytics and bands stay sane: timeSpent is
+  // client-influenced (cap at 3h, floor at 0) and score must be a valid band 0-9.
+  const safeTime = Math.max(0, Math.min(Math.round(Number(timeSpent) || 0), 3 * 60 * 60));
+  const safeScore = Math.max(0, Math.min(Number(score) || 0, 9));
+
   const test = await db.iELTSTest.create({
     data: {
       studentId,
       module,
-      score,
+      score: safeScore,
       answers,
       aiAnalysis,
-      timeSpent,
+      timeSpent: safeTime,
     },
   });
 
@@ -451,7 +456,7 @@ export async function saveIELTSTest(
   const points =
     options?.pointsOverride !== undefined
       ? Math.max(0, Math.round(options.pointsOverride))
-      : Math.round(score * 10);
+      : Math.round(safeScore * 10);
 
   if (points > 0) {
     await updateStudentPoints(studentId, points);

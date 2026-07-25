@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { saveIELTSTest } from "@/lib/db-helpers";
-import { calculateBandScore } from "@/lib/utils";
+import { calculateBandScore, isTextAnswerCorrect } from "@/lib/utils";
 import { READING_TESTS } from "@/lib/reading-tests-data";
 
 export const dynamic = "force-dynamic";
@@ -45,9 +45,7 @@ export async function POST(req: NextRequest) {
       if (typeof correctAnswer === "number") {
         isCorrect = userAnswer === correctAnswer;
       } else if (typeof correctAnswer === "string") {
-        const normalized = (userAnswer ?? "").toString().toLowerCase().trim();
-        const correct = correctAnswer.toLowerCase().trim();
-        isCorrect = normalized === correct || normalized.includes(correct);
+        isCorrect = isTextAnswerCorrect(userAnswer, correctAnswer);
       }
 
       results[questionId] = isCorrect;
