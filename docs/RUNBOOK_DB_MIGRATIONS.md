@@ -23,22 +23,53 @@ PR and applied non-destructively.
 
 ---
 
-## 0. Safety net first
+## 0. Prerequisites
 
-In the Neon console, create a **branch** (an instant copy of production). Do every
-step against the branch first.
+You need **Git** and **Node.js** installed, and a local copy of the repo.
 
-```bash
-git pull                      # get scripts/db-baseline.sh
-npm install                   # need node_modules for the prisma CLI
-export DATABASE_URL="postgres://…"   # ← the Neon BRANCH, not production
+- Git for Windows: https://git-scm.com/download/win (also gives you "Git Bash")
+- Node.js LTS: https://nodejs.org
+
+Check both, in a fresh terminal:
+
+```
+git --version
+node --version
 ```
 
-## 1. Run the baseline script
+Then get the project (once):
 
-```bash
+```
+cd %USERPROFILE%
+git clone https://github.com/AsadbekAnvarov/Averna.git
+cd Averna
+npm install
+```
+
+> If you already have the folder, just `cd` into it and run `git pull && npm install`.
+> **All commands below must be run from inside the `Averna` folder** — that's where
+> `package.json` lives. Running them in `C:\Users\<you>` is the most common mistake.
+
+## 1. Safety net + the DB URL
+
+In the Neon console create a **branch** (an instant copy of production) and use its
+connection string first. Setting an environment variable differs per shell:
+
+| Shell | Command |
+|---|---|
+| **Windows cmd** | `set DATABASE_URL=postgres://...` |
+| **Windows PowerShell** | `$env:DATABASE_URL="postgres://..."` |
+| **Git Bash / macOS / Linux** | `export DATABASE_URL="postgres://..."` |
+
+`export` does **not** exist in Windows cmd — that's why it errors there.
+
+## 2. Run the baseline script
+
+```
 npm run db:baseline
 ```
+
+It is cross-platform (plain Node, no bash needed) and refuses to run twice.
 
 It does four things and prints what it found:
 
