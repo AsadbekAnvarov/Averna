@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { calculateBandScore } from "@/lib/utils";
 import { listListeningTests } from "@/lib/listening-content";
-import { assessSubmission, logShadowAssessment } from "@/lib/engine/integrity-engine";
+import { assessSubmission, applyTrust, logAssessment } from "@/lib/engine/integrity-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -55,6 +55,21 @@ export async function POST(req: NextRequest) {
     // Effort gate: only award points for a genuine attempt.
     const earnsPoints = answeredCount > 0 && correct > 0;
 
+    // Integrity Engine (S4) — assess BEFORE awarding so the verdict scales the
+    // reward and the burst check doesn't count this very attempt.
+    const chances = allQuestions.map((q) => 1 / Math.max(2, q.options?.length ?? 4));
+    const facts = {
+      studentId: student.id,
+      module: "LISTENING",
+      correct,
+      total,
+      answered: answeredCount,
+      timeSpent: Number(timeSpent) || 0,
+      chanceLevel: chances.reduce((a, b) => a + b, 0) / chances.length,
+    };
+    const verdict = await assessSubmission(facts);
+    const trust = applyTrust(verdict);
+
     const test = await saveIELTSTest(
       student.id,
       "LISTENING",
@@ -67,23 +82,12 @@ export async function POST(req: NextRequest) {
             contentKey: testId,
             difficulty: testData.difficulty,
             idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
+            trustMultiplier: trust.multiplier,
           }
         : { pointsOverride: 0 }
     );
 
-    // Integrity Engine — SHADOW MODE: assess and record, reward unchanged (S3).
-    const chances = allQuestions.map((q) => 1 / Math.max(2, q.options?.length ?? 4));
-    const facts = {
-      studentId: student.id,
-      module: "LISTENING",
-      correct,
-      total,
-      answered: answeredCount,
-      timeSpent: Number(timeSpent) || 0,
-      chanceLevel: chances.reduce((a, b) => a + b, 0) / chances.length,
-    };
-    const verdict = await assessSubmission(facts);
-    await logShadowAssessment(facts, verdict, test.pointsAwarded ?? 0);
+    await logAssessment(facts, verdict, test.pointsAwarded ?? 0);
 
     return NextResponse.json({
       testId: test.id,
@@ -91,6 +95,7 @@ export async function POST(req: NextRequest) {
       totalQuestions: total,
       bandScore,
       pointsAwarded: earnsPoints,
+      integrityNotice: trust.reduced ? trust.notice : undefined,
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Failed to submit test";

@@ -401,6 +401,8 @@ export async function saveIELTSTest(
     difficulty?: string | null;
     /** Per-attempt id from the client; makes the award retry-safe (S2). */
     idempotencyKey?: string;
+    /** Integrity trust multiplier (0..1) applied to earned XP (S4). */
+    trustMultiplier?: number;
   }
 ) {
   // Clamp untrusted/edge inputs so analytics and bands stay sane: timeSpent is
@@ -410,13 +412,19 @@ export async function saveIELTSTest(
 
   // Compute XP BEFORE inserting so history queries exclude this attempt.
   // Callers may still override (e.g. 0 for an empty/trivial submission).
-  const points =
+  const rawPoints =
     options?.pointsOverride !== undefined
       ? Math.max(0, Math.round(options.pointsOverride))
       : await computeTestXpForStudent(studentId, module, safeScore, {
           difficulty: options?.difficulty,
           contentKey: options?.contentKey,
         });
+
+  // Integrity Engine (S4): scale the reward by how much the attempt looks like
+  // genuine effort. 1 when nothing is suspicious; floored for soft signals so an
+  // honest attempt is never zeroed.
+  const trust = options?.trustMultiplier == null ? 1 : Math.max(0, Math.min(1, options.trustMultiplier));
+  const points = Math.max(0, Math.round(rawPoints * trust));
 
   const test = await db.iELTSTest.create({
     data: {

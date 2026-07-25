@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { calculateBandScore, isTextAnswerCorrect } from "@/lib/utils";
 import { READING_TESTS } from "@/lib/reading-tests-data";
-import { assessSubmission, logShadowAssessment } from "@/lib/engine/integrity-engine";
+import { assessSubmission, applyTrust, logAssessment } from "@/lib/engine/integrity-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -66,20 +66,8 @@ export async function POST(req: NextRequest) {
     const answeredCount = Object.keys(answers || {}).length;
     const earnsPoints = answeredCount > 0 && correctCount > 0;
 
-    const test = await saveIELTSTest(
-      student.id,
-      "READING",
-      bandScore,
-      { testId, answers, results },
-      { correctCount, totalQuestions, percentage },
-      timeSpent || 0,
-      earnsPoints
-        ? { contentKey: testId, idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined }
-        : { pointsOverride: 0 }
-    );
-
-    // Integrity Engine — SHADOW MODE: assess and record, but do not change the
-    // reward yet (see docs/CORE_ENGINE_ARCHITECTURE.md, S3 → S4).
+    // Integrity Engine (S4) — assess BEFORE awarding, so the verdict scales the
+    // reward and the burst check doesn't count this very attempt.
     const facts = {
       studentId: student.id,
       module: "READING",
@@ -90,7 +78,25 @@ export async function POST(req: NextRequest) {
       chanceLevel,
     };
     const verdict = await assessSubmission(facts);
-    await logShadowAssessment(facts, verdict, test.pointsAwarded ?? 0);
+    const trust = applyTrust(verdict);
+
+    const test = await saveIELTSTest(
+      student.id,
+      "READING",
+      bandScore,
+      { testId, answers, results },
+      { correctCount, totalQuestions, percentage },
+      timeSpent || 0,
+      earnsPoints
+        ? {
+            contentKey: testId,
+            idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
+            trustMultiplier: trust.multiplier,
+          }
+        : { pointsOverride: 0 }
+    );
+
+    await logAssessment(facts, verdict, test.pointsAwarded ?? 0);
 
     return NextResponse.json({
       testId: test.id,
@@ -98,6 +104,7 @@ export async function POST(req: NextRequest) {
       totalQuestions,
       bandScore,
       pointsAwarded: earnsPoints,
+      integrityNotice: trust.reduced ? trust.notice : undefined,
     });
   } catch (error: any) {
     console.error("Reading submission error:", error);

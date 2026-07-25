@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { saveIELTSTest, computeTestXpForStudent } from "@/lib/db-helpers";
 import { calculateBandScore, heuristicWritingAssessmentSafe, isGenuineWriting, isOnTopic } from "@/lib/utils";
 import { MOCK_EXAMS } from "@/lib/mock-exams-data";
-import { assessSubmission, logShadowAssessment } from "@/lib/engine/integrity-engine";
+import { assessSubmission, applyTrust, logAssessment } from "@/lib/engine/integrity-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -50,22 +50,10 @@ export async function POST(req: NextRequest) {
 
     const overall = Math.round(((listeningBand + readingBand + writingBand) / 3) * 2) / 2;
 
-    // Anti-cheat + XP 2.0: each section earns points only for genuine effort,
-    // and XP is growth-aware (improvement, difficulty, repeat-decay, daily cap).
-    // The exam id is stored as `testId` so retaking the same mock decays XP.
-    const lPts = lCorrect > 0 ? await computeTestXpForStudent(student.id, "LISTENING", listeningBand, { difficulty: exam.difficulty, contentKey: exam.id }) : 0;
-    const rPts = rCorrect > 0 ? await computeTestXpForStudent(student.id, "READING", readingBand, { difficulty: exam.difficulty, contentKey: exam.id }) : 0;
     const wGenuine = isGenuineWriting(essay, 100) && isOnTopic(essay, exam.writing.prompt);
-    const wPts = wGenuine ? await computeTestXpForStudent(student.id, "WRITING", writingBand, { difficulty: exam.difficulty, contentKey: exam.id }) : 0;
 
-    // Save each section as an IELTS test (awards points + updates streak/achievements)
-    await saveIELTSTest(student.id, "LISTENING", listeningBand, { mock: true, testId: exam.id, lCorrect, lTotal }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: lPts });
-    await saveIELTSTest(student.id, "READING", readingBand, { mock: true, testId: exam.id, rCorrect, rTotal }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: rPts });
-    await saveIELTSTest(student.id, "WRITING", writingBand, { mock: true, testId: exam.id, essay: essay.slice(0, 2000) }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: wPts });
-
-    const pointsEarned = lPts + rPts + wPts;
-
-    // Integrity Engine — SHADOW MODE: assess the whole attempt, reward unchanged (S3).
+    // Integrity Engine (S4) — assess the whole attempt BEFORE awarding, so the
+    // verdict scales every section's XP and the burst check excludes this attempt.
     const mockChances = [...lQ, ...rQ].map((q) => 1 / Math.max(2, q.options?.length ?? 4));
     const facts = {
       studentId: student.id,
@@ -78,7 +66,24 @@ export async function POST(req: NextRequest) {
       essay: { genuine: isGenuineWriting(essay, 100), onTopic: isOnTopic(essay, exam.writing.prompt) },
     };
     const verdict = await assessSubmission(facts);
-    await logShadowAssessment(facts, verdict, pointsEarned);
+    const trust = applyTrust(verdict);
+
+    // XP 2.0: growth-aware (improvement, difficulty, repeat-decay, daily cap),
+    // then scaled by integrity trust. The exam id is stored as `testId` so
+    // retaking the same mock decays XP.
+    const scale = (xp: number) => Math.max(0, Math.round(xp * trust.multiplier));
+    const lPts = lCorrect > 0 ? scale(await computeTestXpForStudent(student.id, "LISTENING", listeningBand, { difficulty: exam.difficulty, contentKey: exam.id })) : 0;
+    const rPts = rCorrect > 0 ? scale(await computeTestXpForStudent(student.id, "READING", readingBand, { difficulty: exam.difficulty, contentKey: exam.id })) : 0;
+    const wPts = wGenuine ? scale(await computeTestXpForStudent(student.id, "WRITING", writingBand, { difficulty: exam.difficulty, contentKey: exam.id })) : 0;
+
+    // Save each section as an IELTS test (awards points + updates streak/achievements)
+    await saveIELTSTest(student.id, "LISTENING", listeningBand, { mock: true, testId: exam.id, lCorrect, lTotal }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: lPts });
+    await saveIELTSTest(student.id, "READING", readingBand, { mock: true, testId: exam.id, rCorrect, rTotal }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: rPts });
+    await saveIELTSTest(student.id, "WRITING", writingBand, { mock: true, testId: exam.id, essay: essay.slice(0, 2000) }, { type: "mock" }, Math.round(timeSpent / 3), { pointsOverride: wPts });
+
+    const pointsEarned = lPts + rPts + wPts;
+
+    await logAssessment(facts, verdict, pointsEarned);
 
     return NextResponse.json({
       listeningBand,
@@ -86,6 +91,7 @@ export async function POST(req: NextRequest) {
       writingBand,
       overall,
       pointsEarned,
+      integrityNotice: trust.reduced ? trust.notice : undefined,
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Failed to submit mock exam";

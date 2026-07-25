@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { assessWritingTask, analyzeWritingIssues } from "@/lib/ai";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { isGenuineWriting, isOnTopic } from "@/lib/utils";
-import { assessSubmission, logShadowAssessment } from "@/lib/engine/integrity-engine";
+import { assessSubmission, logAssessment } from "@/lib/engine/integrity-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -75,7 +75,8 @@ export async function POST(req: NextRequest) {
         : { pointsOverride: 0 }
     );
 
-    // Integrity Engine — SHADOW MODE: assess and record, reward unchanged (S3).
+    // Integrity Engine (S4). The hard writing signals already gate XP to zero
+    // above (via `genuine`), so this records the verdict for the audit trail.
     const facts = {
       studentId: student.id,
       module: "WRITING",
@@ -83,7 +84,7 @@ export async function POST(req: NextRequest) {
       essay: { genuine: isGenuineWriting(essay, minWords), onTopic },
     };
     const verdict = await assessSubmission(facts);
-    await logShadowAssessment(facts, verdict, test.pointsAwarded ?? 0);
+    await logAssessment(facts, verdict, test.pointsAwarded ?? 0);
 
     return NextResponse.json({
       testId: test.id,

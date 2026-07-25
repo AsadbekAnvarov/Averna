@@ -94,7 +94,13 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
           submissionId: attemptId,
         }),
       });
-      setSaveMsg(res.ok ? "✅ Result saved — points added to your account!" : "Result shown below (not saved).");
+      if (res.ok) {
+        const data = await res.json().catch(() => null);
+        // Be transparent when the Integrity Engine reduced the reward.
+        setSaveMsg(data?.integrityNotice ?? "✅ Result saved — points added to your account!");
+      } else {
+        setSaveMsg("Result shown below (not saved).");
+      }
     } catch {
       setSaveMsg("Result shown below (not saved).");
     }

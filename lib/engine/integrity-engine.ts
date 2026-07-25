@@ -7,10 +7,11 @@ import { db } from "@/lib/db";
  * `trust` multiplier (0..1) plus the signals that produced it and a plain-language
  * explanation, so any reduction can always be explained to the learner.
  *
- * SHADOW MODE (current): `assessSubmission` is called by the submit routes and
- * `logShadowAssessment` records the verdict, but nothing scales XP yet. That lets
- * us compare verdicts against real submissions before enforcing (see S4), so an
- * honest student can never be penalised by an untested heuristic.
+ * ENFORCING (S4): submit routes call `assessSubmission` BEFORE awarding, then
+ * `applyTrust` turns the verdict into an XP multiplier and `logAssessment`
+ * records the outcome. Safety rails: soft signals are floored (never zero an
+ * honest attempt), the student is always told why, and INTEGRITY_ENFORCE=false
+ * reverts to shadow mode without a code change.
  */
 
 export type IntegritySignalCode =
@@ -53,6 +54,23 @@ export interface SubmissionFacts {
   /** Essay checks, when the module is WRITING. */
   essay?: { genuine: boolean; onTopic: boolean };
 }
+
+/**
+ * Master switch (S4). Set INTEGRITY_ENFORCE=false in the environment to fall
+ * back to shadow mode without a code change — verdicts keep being recorded, but
+ * rewards stop being scaled.
+ */
+export const INTEGRITY_ENFORCED = process.env.INTEGRITY_ENFORCE !== "false";
+
+/**
+ * Floor for reward scaling. Soft signals (pace, guessing, coverage) are
+ * heuristics about *how* an attempt looked, so they reduce XP but never erase
+ * it — a student who genuinely rushed still gets credit for the work. Hard
+ * signals (off-topic / low-effort writing) are separately gated to zero XP by
+ * the submit routes, and are exempt from this floor.
+ */
+const SOFT_TRUST_FLOOR = 0.25;
+const HARD_SIGNALS: IntegritySignalCode[] = ["off_topic", "low_effort"];
 
 /** Minimum seconds a human plausibly needs per question, even skimming. */
 const MIN_SECONDS_PER_ITEM = 2;
@@ -147,15 +165,48 @@ export async function assessSubmission(facts: SubmissionFacts): Promise<Integrit
   };
 }
 
+export interface TrustApplication {
+  /** Multiplier to apply to earned XP (1 when nothing looks wrong). */
+  multiplier: number;
+  /** True when the reward was actually reduced. */
+  reduced: boolean;
+  /** Student-facing reason, safe to show in the UI. */
+  notice?: string;
+}
+
 /**
- * Record a verdict without changing any reward (shadow mode).
+ * Turn a verdict into a reward multiplier (S4 — enforcement).
+ *
+ * Soft signals are floored so an honest-but-rushed attempt is never zeroed, the
+ * whole thing is disabled by INTEGRITY_ENFORCE=false, and a plain-language
+ * reason is always returned so the decision can be explained to the student.
+ */
+export function applyTrust(verdict: IntegrityVerdict): TrustApplication {
+  if (!INTEGRITY_ENFORCED || verdict.signals.length === 0) {
+    return { multiplier: 1, reduced: false };
+  }
+
+  const hasHard = verdict.signals.some((s) => HARD_SIGNALS.includes(s.code));
+  const multiplier = hasHard ? verdict.trust : Math.max(SOFT_TRUST_FLOOR, verdict.trust);
+
+  if (multiplier >= 0.995) return { multiplier: 1, reduced: false };
+
+  return {
+    multiplier,
+    reduced: true,
+    notice: `${verdict.explanation} XP for this attempt was reduced — take your time and it counts fully next time.`,
+  };
+}
+
+/**
+ * Record a verdict (shadow mode) or the enforced outcome.
  *
  * Deliberately written to AuditLog, not ActivityLog: ActivityLog is the
  * student-facing engagement ledger (it drives streak heatmaps, squad
  * contributions and the "Recent Activity" feed), so moderation data must never
  * go there. AuditLog is admin-facing and already surfaced at /admin/logs.
  */
-export async function logShadowAssessment(
+export async function logAssessment(
   facts: SubmissionFacts,
   verdict: IntegrityVerdict,
   awardedXp: number
@@ -178,8 +229,8 @@ export async function logShadowAssessment(
           answered: facts.answered ?? null,
           timeSpent: facts.timeSpent ?? null,
           awardedXp,
-          // What S4 would grant once trust is enforced — compare before enabling.
-          wouldAward: Math.round(awardedXp * verdict.trust),
+          enforced: INTEGRITY_ENFORCED,
+          mode: INTEGRITY_ENFORCED ? "enforced" : "shadow",
         }).slice(0, 1500),
       },
     });
