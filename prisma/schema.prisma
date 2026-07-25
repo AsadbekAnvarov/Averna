@@ -108,6 +108,15 @@ model Student {
   enrolledAt        DateTime?
   blacklisted       Boolean  @default(false)
   blacklistReason   String?
+  // --- Tuition (M6). Effective fee = feeOverride ?? group.monthlyFee, less discount. ---
+  /// Per-student price, when it differs from the group's standard fee.
+  feeOverride       Int?
+  /// Percentage discount 0-100 (scholarships use 100).
+  discountPct       Int      @default(0)
+  /// Day of month the payment is due (1-28). Null = no schedule set.
+  dueDay            Int?
+  /// True for scholarship students — excluded from debt collection.
+  scholarship       Boolean  @default(false)
   totalPoints       Int      @default(0)
   globalRank        Int      @default(0)
   groupRank         Int      @default(0)
@@ -217,6 +226,8 @@ model Group {
   name        String
   teacherId   String
   description String?
+  /// Standard monthly tuition for this group (UZS). Null = not priced yet.
+  monthlyFee  Int?
   level       String?
   schedule    String?
   createdAt   DateTime @default(now())
