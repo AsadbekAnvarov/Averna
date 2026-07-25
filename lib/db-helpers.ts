@@ -53,6 +53,10 @@ export async function updateStudentPoints(studentId: string, points: number) {
   // rewriting every student's rank on every points change, which was O(N)
   // writes per XP event and would not scale. No per-award rank write here.
 
+  // Earning points is a VERIFIED learning event, so this is where the streak
+  // advances — not on merely opening the dashboard. Idempotent within a day.
+  await updateStudentStreak(studentId);
+
   return student;
 }
 
@@ -82,8 +86,11 @@ export async function updateStudentStreak(studentId: string) {
   } else if (daysDiff > 1) {
     // Streak broken
     newStreak = 1;
+  } else {
+    // Same day (daysDiff === 0): keep the streak, but a first verified activity
+    // starts it at 1 (a brand-new student's very first learning day counts).
+    newStreak = Math.max(student.currentStreak, 1);
   }
-  // If daysDiff === 0, already logged in today, don't change streak
 
   return await db.student.update({
     where: { id: studentId },
