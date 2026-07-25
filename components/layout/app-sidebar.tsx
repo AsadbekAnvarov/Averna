@@ -36,6 +36,7 @@ import {
   ShieldCheck,
   DollarSign,
   Receipt,
+  Banknote,
   Activity,
   Settings,
   Database,
@@ -203,6 +204,7 @@ const ADMIN_NAV: NavSection[] = [
     items: [
       { name: "Moliya", href: "/admin/finance", icon: DollarSign },
       { name: "Xarajatlar", href: "/admin/expenses", icon: Receipt },
+      { name: "Maoshlar", href: "/admin/payroll", icon: Banknote },
       { name: "Audit jurnali", href: "/admin/logs", icon: Activity },
       { name: "Tizim", href: "/admin/system", icon: Settings },
     ],

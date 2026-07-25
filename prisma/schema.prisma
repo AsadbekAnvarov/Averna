@@ -152,6 +152,10 @@ model Teacher {
   specialty       String?
   ieltsBand       Float?   // teacher's own IELTS overall band (0-9), shown to students
   isSecondTeacher Boolean  @default(false)
+  // --- Payroll configuration (optional; drives the suggested salary) ---
+  salaryType      String?  // monthly | hourly | per_lesson
+  baseSalary      Int?     // monthly salary, when salaryType = monthly
+  hourlyRate      Int?     // per hour/lesson rate, for hourly | per_lesson
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -167,8 +171,45 @@ model Teacher {
   lessonLogs        LessonLog[]
   studentNotes      StudentNote[]
   homeworkTemplates HomeworkTemplate[]
+  payrolls          Payroll[]
 
   @@map("teachers")
+}
+
+/// One payroll record per teacher per month. This is the CALCULATION and
+/// APPROVAL workflow; the money itself lands in the P&L as an Expense when the
+/// payroll is paid (see expenseId), so Expense stays the single ledger and
+/// salaries can never be double-counted against profit.
+model Payroll {
+  id             String    @id @default(cuid())
+  teacherId      String
+  /// "YYYY-MM" — the month being paid for.
+  period         String
+  salaryType     String    @default("monthly") // monthly | hourly | per_lesson
+  baseSalary     Int       @default(0)
+  hourlyRate     Int       @default(0)
+  /// Lessons/hours counted for the period (from lesson logs).
+  lessons        Int       @default(0)
+  extraHours     Int       @default(0)
+  bonus          Int       @default(0)
+  deduction      Int       @default(0)
+  /// Final amount owed, computed on save so history is immutable.
+  net            Int       @default(0)
+  status         String    @default("draft") // draft | approved | paid
+  approvedByName String?
+  paidAt         DateTime?
+  /// The Expense row created when this payroll was paid.
+  expenseId      String?
+  note           String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  teacher Teacher @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@unique([teacherId, period])
+  @@index([period])
+  @@index([status])
+  @@map("payrolls")
 }
 
 model Group {
