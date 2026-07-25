@@ -179,7 +179,7 @@ export default async function AdminDashboard() {
 
   const tabs = [
     { key: "overview", label: "Umumiy", icon: "overview", active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
-    { key: "people", label: "Odamlar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
+    { key: "people", label: "Oʻquvchilar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
     { key: "insights", label: "Tahlillar", icon: "analytics", active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
     { key: "manage", label: "Boshqarish", icon: "manage", active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
   ];
