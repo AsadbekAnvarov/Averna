@@ -89,6 +89,8 @@ export function WordDuel() {
   const [locked, setLocked] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [result, setResult] = useState<{ correct: number; ms: number; isNewBest: boolean } | null>(null);
+  // Recall outcomes collected during the run, flushed to the SRS ledger at the end.
+  const recallRef = useRef<{ itemKey: string; rating: "good" | "again"; source: "vocab" }[]>([]);
 
   const startRef = useRef(0);
   const rafRef = useRef<number | null>(null);
@@ -186,6 +188,20 @@ export function WordDuel() {
       }
       setResult({ correct: finalCorrect, ms, isNewBest });
       setPhase("done");
+
+      // S10 — feed the memory engine: this duel is real vocabulary recall, so
+      // each word becomes a spaced-repetition review (right = good, wrong =
+      // again). Only words that were actually DUE earn capped retention-XP, so
+      // replaying the duel can't be farmed. Fire-and-forget: the game never waits.
+      const reviews = recallRef.current;
+      recallRef.current = [];
+      if (reviews.length > 0) {
+        fetch("/api/srs/review", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ reviews }),
+        }).catch(() => {});
+      }
     },
     [store, today],
   );
@@ -196,6 +212,8 @@ export function WordDuel() {
     setPicked(opt);
     const q = questions[idx];
     const isRight = opt === q.card.word;
+    // Record the recall outcome for the spaced-repetition ledger (sent on finish).
+    recallRef.current.push({ itemKey: q.card.word, rating: isRight ? "good" : "again", source: "vocab" });
     let nextCorrect = correct;
     if (isRight) {
       nextCorrect = correct + 1;

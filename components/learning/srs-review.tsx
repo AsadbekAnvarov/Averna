@@ -12,6 +12,8 @@ import {
   isDue,
   isNew,
   intervalHint,
+  mergeSrs,
+  fetchServerSrs,
   type Rating,
   type SrsMap,
 } from "@/lib/srs";
@@ -45,21 +47,38 @@ export function SrsReview({ cards }: { cards: Flashcard[] }) {
   const [reviewed, setReviewed] = useState(0);
   const [ready, setReady] = useState(false);
 
-  // Build the session queue on mount.
+  // Build the session queue on mount, seeding from the server ledger first so a
+  // second device continues the same schedule instead of starting over (S6).
   useEffect(() => {
-    const map = loadSrs();
-    mapRef.current = map;
-    const now = Date.now();
+    let cancelled = false;
 
-    const dueExisting = pool.filter((c) => !isNew(map[c.word]) && isDue(map[c.word], now));
-    const fresh = pool.filter((c) => isNew(map[c.word])).slice(0, NEW_PER_SESSION);
+    const build = (map: SrsMap) => {
+      mapRef.current = map;
+      const now = Date.now();
 
-    const combined = [...dueExisting, ...fresh].slice(0, MAX_QUEUE);
-    // Light shuffle so order isn't always deck order.
-    combined.sort(() => Math.random() - 0.5);
+      const dueExisting = pool.filter((c) => !isNew(map[c.word]) && isDue(map[c.word], now));
+      const fresh = pool.filter((c) => isNew(map[c.word])).slice(0, NEW_PER_SESSION);
 
-    setQueue(combined);
-    setReady(true);
+      const combined = [...dueExisting, ...fresh].slice(0, MAX_QUEUE);
+      // Light shuffle so order isn't always deck order.
+      combined.sort(() => Math.random() - 0.5);
+
+      setQueue(combined);
+      setReady(true);
+    };
+
+    (async () => {
+      const local = loadSrs();
+      const server = await fetchServerSrs();
+      if (cancelled) return;
+      const map = mergeSrs(local, server);
+      if (Object.keys(server).length > 0) saveSrs(map);
+      build(map);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [pool]);
 
   const current = queue[0];
