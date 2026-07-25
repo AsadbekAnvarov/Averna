@@ -3,12 +3,15 @@ import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getTeacherFeedbackProfile } from "@/lib/teacher-intel";
 import { draftTeacherFeedback } from "@/lib/ai";
+import { guardAi } from "@/lib/engine/ai-guard";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
     const user = await requireAuth();
+    const guard = guardAi(user.id, "teacher-tool");
+    if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
     if (user.role !== "TEACHER" && user.role !== "ADMIN") {
       return NextResponse.json({ error: "Teachers only" }, { status: 403 });
     }
