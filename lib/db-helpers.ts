@@ -1,7 +1,8 @@
 import { db } from "@/lib/db";
 import { AchievementType, IELTSModule, UserRole } from "@prisma/client";
-import { isGenuineWriting, tashkentDayDiff } from "@/lib/utils";
+import { isGenuineWriting } from "@/lib/utils";
 import { computeTestXp } from "@/lib/xp";
+import { awardXp, advanceStreak } from "@/lib/engine/xp-engine";
 
 // ==================== STUDENT HELPERS ====================
 
@@ -39,69 +40,19 @@ export async function getStudentProfile(userId: string) {
   });
 }
 
+/**
+ * @deprecated Use `awardXp({ studentId, amount, source })` from
+ * `lib/engine/xp-engine` — it is the single authority for XP and records an
+ * audit entry. Kept as a thin alias so existing callers keep working; it treats
+ * the movement as a generic learning award (advances the streak on a net gain).
+ */
 export async function updateStudentPoints(studentId: string, points: number) {
-  const student = await db.student.update({
-    where: { id: studentId },
-    data: {
-      totalPoints: {
-        increment: points,
-      },
-    },
-  });
-
-  // Rank is now computed on read (see getGlobalRank/getGroupRank) instead of
-  // rewriting every student's rank on every points change, which was O(N)
-  // writes per XP event and would not scale. No per-award rank write here.
-
-  // Earning points is a VERIFIED learning event, so this is where the streak
-  // advances — not on merely opening the dashboard. Idempotent within a day.
-  await updateStudentStreak(studentId);
-
-  return student;
+  await awardXp({ studentId, amount: points, source: points > 0 ? "test" : "legacy", skipLog: true });
+  return db.student.findUnique({ where: { id: studentId } });
 }
 
-export async function updateStudentStreak(studentId: string) {
-  const student = await db.student.findUnique({
-    where: { id: studentId },
-  });
-
-  if (!student) return null;
-
-  const today = new Date();
-  const lastActive = new Date(student.lastActiveDate);
-  // Compare by Tashkent calendar day (UTC+5), not by raw elapsed milliseconds,
-  // so the streak depends on the date — not on the time of day someone logs in.
-  const daysDiff = tashkentDayDiff(today, lastActive);
-
-  let newStreak = student.currentStreak;
-  let freezes = (student as any).streakFreezes ?? 0;
-
-  if (daysDiff === 1) {
-    // Continue streak
-    newStreak = student.currentStreak + 1;
-  } else if (daysDiff === 2 && freezes > 0) {
-    // Missed exactly one day, but a streak freeze saves the streak
-    newStreak = student.currentStreak + 1;
-    freezes -= 1;
-  } else if (daysDiff > 1) {
-    // Streak broken
-    newStreak = 1;
-  } else {
-    // Same day (daysDiff === 0): keep the streak, but a first verified activity
-    // starts it at 1 (a brand-new student's very first learning day counts).
-    newStreak = Math.max(student.currentStreak, 1);
-  }
-
-  return await db.student.update({
-    where: { id: studentId },
-    data: {
-      currentStreak: newStreak,
-      longestStreak: Math.max(newStreak, student.longestStreak),
-      lastActiveDate: today,
-      streakFreezes: freezes,
-    },
-  });
-}
+/** Re-exported for backward compatibility; the engine owns streak advancement. */
+export const updateStudentStreak = advanceStreak;
 
 // ==================== RANKING HELPERS ====================
 
@@ -281,7 +232,8 @@ export async function submitHomework(
   // log above already feeds the weekly leagues, so both stay in sync). If a
   // teacher later adjusts the grade, gradeHomework() applies only the delta.
   if (pointsAwarded > 0) {
-    await updateStudentPoints(studentId, pointsAwarded);
+    // skipLog: this function already wrote its own ActivityLog row above.
+    await awardXp({ studentId, amount: pointsAwarded, source: "homework", skipLog: true });
   }
   await checkAndAwardAchievements(studentId);
 
@@ -321,7 +273,8 @@ export async function gradeHomework(
   });
 
   if (pointsDelta !== 0) {
-    await updateStudentPoints(submission.studentId, pointsDelta);
+    // A teacher re-grading isn't a new study event, so it must not touch the streak.
+    await awardXp({ studentId: submission.studentId, amount: pointsDelta, source: "grade_adjust" });
   }
 
   return updated;
@@ -415,8 +368,8 @@ async function awardAchievement(
     },
   });
 
-  // Award points
-  await updateStudentPoints(studentId, achievement.points);
+  // Award points (skipLog: an ACHIEVEMENT_UNLOCKED row is written below)
+  await awardXp({ studentId, amount: achievement.points, source: "achievement", skipLog: true });
 
   // Log activity
   await db.activityLog.create({
@@ -476,7 +429,13 @@ export async function saveIELTSTest(
   answers: any,
   aiAnalysis: any,
   timeSpent: number,
-  options?: { pointsOverride?: number; contentKey?: string; difficulty?: string | null }
+  options?: {
+    pointsOverride?: number;
+    contentKey?: string;
+    difficulty?: string | null;
+    /** Per-attempt id from the client; makes the award retry-safe (S2). */
+    idempotencyKey?: string;
+  }
 ) {
   // Clamp untrusted/edge inputs so analytics and bands stay sane: timeSpent is
   // client-influenced (cap at 3h, floor at 0) and score must be a valid band 0-9.
@@ -505,7 +464,15 @@ export async function saveIELTSTest(
   });
 
   if (points > 0) {
-    await updateStudentPoints(studentId, points);
+    // skipLog: an IELTS_TEST_COMPLETED row is written below. The idempotency key
+    // (when the caller supplies one) makes a retried submission a no-op.
+    await awardXp({
+      studentId,
+      amount: points,
+      source: "test",
+      skipLog: true,
+      idempotencyKey: options?.idempotencyKey,
+    });
   }
 
   // Log activity
@@ -567,8 +534,8 @@ export async function recordSpeakingSession(
     },
   });
 
-  // Award points
-  await updateStudentPoints(studentId, points);
+  // Award points (skipLog: a SPEAKING_SESSION_COMPLETED row is written below)
+  await awardXp({ studentId, amount: points, source: "test", skipLog: true });
 
   // Log activity
   await db.activityLog.create({

@@ -69,7 +69,9 @@ export async function POST(req: NextRequest) {
       { essay, prompt },
       { ...assessment, issues },
       timeSpent || 0,
-      genuine ? undefined : { pointsOverride: 0 }
+      genuine
+        ? { idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined }
+        : { pointsOverride: 0 }
     );
 
     return NextResponse.json({

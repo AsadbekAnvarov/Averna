@@ -66,7 +66,9 @@ export async function POST(req: NextRequest) {
       { testId, answers, results },
       { correctCount, totalQuestions, percentage },
       timeSpent || 0,
-      earnsPoints ? { contentKey: testId } : { pointsOverride: 0 }
+      earnsPoints
+        ? { contentKey: testId, idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined }
+        : { pointsOverride: 0 }
     );
 
     return NextResponse.json({

@@ -61,7 +61,13 @@ export async function POST(req: NextRequest) {
       { testId, answers: ans },
       { correctCount: correct, totalQuestions: total, percentage },
       Number(timeSpent) || 0,
-      earnsPoints ? { contentKey: testId, difficulty: testData.difficulty } : { pointsOverride: 0 }
+      earnsPoints
+        ? {
+            contentKey: testId,
+            difficulty: testData.difficulty,
+            idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
+          }
+        : { pointsOverride: 0 }
     );
 
     return NextResponse.json({

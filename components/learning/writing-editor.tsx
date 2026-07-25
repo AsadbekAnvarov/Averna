@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -38,6 +38,10 @@ export default function WritingEditor({ prompt, config, userId }: WritingEditorP
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [wordCount, setWordCount] = useState(0);
   const [showWarning, setShowWarning] = useState(false);
+  // One id per attempt → retried submissions can't double-award XP.
+  const attemptIdRef = useRef<string>(
+    typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `a-${Date.now()}`
+  );
 
   // Calculate word count
   useEffect(() => {
@@ -103,6 +107,8 @@ export default function WritingEditor({ prompt, config, userId }: WritingEditorP
           taskType: config.type,
           prompt: prompt.prompt,
           timeSpent: (config.timeLimit * 60) - timeLeft,
+          // Makes a retried submission idempotent (no double XP).
+          submissionId: attemptIdRef.current,
         }),
       });
 

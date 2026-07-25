@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { updateStudentPoints } from "@/lib/db-helpers";
+import { awardXp } from "@/lib/engine/xp-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -36,7 +36,8 @@ export async function POST(req: NextRequest) {
       },
     });
     if (pointsEarned > 0) {
-      await updateStudentPoints(student.id, pointsEarned);
+      // skipLog: a DAILY_CHALLENGE row is written above. Learning source → streak.
+      await awardXp({ studentId: student.id, amount: pointsEarned, source: "challenge", skipLog: true });
     }
 
     return NextResponse.json({ alreadyDone: false, pointsEarned });

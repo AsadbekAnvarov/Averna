@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -40,6 +40,10 @@ export default function ReadingTest({ test, userId }: ReadingTestProps) {
   const [timeLeft, setTimeLeft] = useState(test.timeLimit * 60);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
+  // One id per attempt → retried submissions can't double-award XP.
+  const attemptIdRef = useRef<string>(
+    typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `a-${Date.now()}`
+  );
 
   // Timer
   useEffect(() => {
@@ -108,6 +112,8 @@ export default function ReadingTest({ test, userId }: ReadingTestProps) {
           testId: test.id,
           answers,
           timeSpent: (test.timeLimit * 60) - timeLeft,
+          // Makes a retried submission idempotent (no double XP).
+          submissionId: attemptIdRef.current,
         }),
       });
 

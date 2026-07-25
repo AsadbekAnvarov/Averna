@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { updateStudentPoints } from "@/lib/db-helpers";
+import { awardXp } from "@/lib/engine/xp-engine";
 import { schedule, type Rating, type SrsCardState } from "@/lib/srs";
 
 export const dynamic = "force-dynamic";
@@ -68,7 +68,8 @@ export async function POST(req: NextRequest) {
       const dailySrsXp = todays.reduce((s, l) => s + (l.points || 0), 0);
       awarded = dailySrsXp >= DAILY_SRS_XP_CAP ? 0 : Math.min(12, 3 + Math.floor(next.interval / 4));
       if (awarded > 0) {
-        await updateStudentPoints(student.id, awarded); // also advances the verified streak
+        // skipLog: an SRS_REVIEW row is written below. Learning source → streak.
+        await awardXp({ studentId: student.id, amount: awarded, source: "srs_review", skipLog: true });
       }
       await db.activityLog.create({
         data: { studentId: student.id, action: "SRS_REVIEW", details: { itemKey, source, rating }, points: awarded },
