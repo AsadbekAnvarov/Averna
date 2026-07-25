@@ -4,6 +4,7 @@ import { isGenuineWriting } from "@/lib/utils";
 import { computeTestXp } from "@/lib/xp";
 import { awardXp, advanceStreak } from "@/lib/engine/xp-engine";
 import { reconcileSkillStates, celebrationFor } from "@/lib/engine/progress-engine";
+import { buildAchievementSnapshot, evaluateAchievements } from "@/lib/engine/achievement-engine";
 import { notifyUser } from "@/lib/notifications";
 
 // ==================== STUDENT HELPERS ====================
@@ -284,71 +285,34 @@ export async function gradeHomework(
 
 // ==================== ACHIEVEMENT HELPERS ====================
 
+/**
+ * Evaluate every achievement rule and award whatever is newly earned.
+ *
+ * Driven by the declarative rule table in lib/engine/achievement-engine, so the
+ * thresholds here are identical to the ones the progress UIs display, and all
+ * eight badges are actually reachable (three previously had no check at all).
+ * Uses indexed counts instead of loading the student's whole history.
+ */
 export async function checkAndAwardAchievements(studentId: string) {
   const student = await db.student.findUnique({
     where: { id: studentId },
-    include: {
-      homeworkSubmissions: true,
-      ieltsTests: true,
-      speakingSessions: true,
-      achievements: {
-        include: {
-          achievement: true,
-        },
-      },
+    select: {
+      totalPoints: true,
+      longestStreak: true,
+      achievements: { select: { achievement: { select: { type: true } } } },
     },
   });
-
   if (!student) return;
 
-  const earnedAchievementTypes = student.achievements.map(
-    (a) => a.achievement.type
-  );
-
-  // Check Homework Master (50 homework completed)
-  if (
-    student.homeworkSubmissions.filter((s) => s.status === "GRADED").length >=
-      50 &&
-    !earnedAchievementTypes.includes("HOMEWORK_MASTER")
-  ) {
-    await awardAchievement(studentId, "HOMEWORK_MASTER");
-  }
-
-  // Check Speaking Champion (50 speaking sessions)
-  if (
-    student.speakingSessions.length >= 50 &&
-    !earnedAchievementTypes.includes("SPEAKING_CHAMPION")
-  ) {
-    await awardAchievement(studentId, "SPEAKING_CHAMPION");
-  }
-
-  // Check Reading Expert (100 reading tests)
-  const readingTests = student.ieltsTests.filter(
-    (t) => t.module === "READING"
-  );
-  if (
-    readingTests.length >= 100 &&
-    !earnedAchievementTypes.includes("READING_EXPERT")
-  ) {
-    await awardAchievement(studentId, "READING_EXPERT");
-  }
-
-  // Check Streak Warrior (30 day streak)
-  if (
-    student.currentStreak >= 30 &&
-    !earnedAchievementTypes.includes("STREAK_WARRIOR")
-  ) {
-    await awardAchievement(studentId, "STREAK_WARRIOR");
-  }
-
-  // Check Top Performer (reach top 10 globally) — rank computed on read.
+  const earnedTypes = student.achievements.map((a) => a.achievement.type);
   const globalRank = await getGlobalRank(student.totalPoints);
-  if (
-    globalRank > 0 &&
-    globalRank <= 10 &&
-    !earnedAchievementTypes.includes("TOP_PERFORMER")
-  ) {
-    await awardAchievement(studentId, "TOP_PERFORMER");
+  const snapshot = await buildAchievementSnapshot(studentId, {
+    longestStreak: student.longestStreak,
+    globalRank,
+  });
+
+  for (const type of evaluateAchievements(snapshot, earnedTypes)) {
+    await awardAchievement(studentId, type);
   }
 }
 

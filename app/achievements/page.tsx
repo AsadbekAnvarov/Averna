@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getGlobalRank } from "@/lib/db-helpers";
+import { buildAchievementSnapshot, achievementProgress } from "@/lib/engine/achievement-engine";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -23,11 +24,6 @@ export default async function AchievementsPage() {
           achievement: true,
         },
       },
-      homeworkSubmissions: {
-        where: { status: "GRADED" },
-      },
-      ieltsTests: true,
-      speakingSessions: true,
     },
   });
 
@@ -43,58 +39,16 @@ export default async function AchievementsPage() {
 
   const unlockedIds = student.achievements.map((a) => a.achievementId);
 
-  // Calculate progress for each achievement
+  // Progress comes from the shared achievement rule table, so these numbers are
+  // guaranteed to match the thresholds that actually award each badge.
+  const snapshot = await buildAchievementSnapshot(student.id, {
+    longestStreak: student.longestStreak,
+    globalRank,
+  });
+
   const achievementsWithProgress = allAchievements.map((achievement) => {
     const isUnlocked = unlockedIds.includes(achievement.id);
-    let progress = 0;
-    let total = 100;
-    let current = 0;
-
-    // Calculate progress based on type
-    switch (achievement.type) {
-      case "HOMEWORK_MASTER":
-        total = 50;
-        current = student.homeworkSubmissions.length;
-        progress = (current / total) * 100;
-        break;
-      case "SPEAKING_CHAMPION":
-        total = 50;
-        current = student.speakingSessions.length;
-        progress = (current / total) * 100;
-        break;
-      case "READING_EXPERT":
-        total = 100;
-        current = student.ieltsTests.filter((t) => t.module === "READING").length;
-        progress = (current / total) * 100;
-        break;
-      case "WRITING_GURU":
-        total = 20;
-        current = student.ieltsTests.filter((t) => t.module === "WRITING" && t.score >= 7.5).length;
-        progress = (current / total) * 100;
-        break;
-      case "LISTENING_MASTER":
-        total = 100;
-        current = student.ieltsTests.filter((t) => t.module === "LISTENING").length;
-        progress = (current / total) * 100;
-        break;
-      case "TOP_PERFORMER":
-        if (globalRank > 0 && globalRank <= 10) {
-          progress = 100;
-          current = 1;
-          total = 1;
-        }
-        break;
-      case "STREAK_WARRIOR":
-        total = 30;
-        current = student.currentStreak;
-        progress = (current / total) * 100;
-        break;
-      case "EARLY_BIRD":
-        total = 10;
-        current = student.homeworkSubmissions.filter((s) => s.position === 1).length;
-        progress = (current / total) * 100;
-        break;
-    }
+    const { current, target: total, percent: progress } = achievementProgress(achievement.type, snapshot);
 
     return {
       ...achievement,
