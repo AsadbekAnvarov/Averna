@@ -5,6 +5,7 @@ import {
   Layers, AlertTriangle, Banknote, ArrowRight, Info,
 } from "lucide-react";
 import { getExecutiveSnapshot, getBusinessHealth, type HealthBand } from "@/lib/engine/business-engine";
+import { getProfitSnapshot } from "@/lib/engine/finance-engine";
 
 const BAND_STYLE: Record<HealthBand, { ring: string; text: string; stroke: string }> = {
   excellent: { ring: "ring-averna-neon/30", text: "text-averna-neon", stroke: "#00ff94" },
@@ -26,7 +27,7 @@ const fmt = (n: number) => n.toLocaleString("en-US");
  */
 export async function ExecutiveOverview() {
   const snapshot = await getExecutiveSnapshot();
-  const health = await getBusinessHealth(snapshot);
+  const [health, pnl] = await Promise.all([getBusinessHealth(snapshot), getProfitSnapshot()]);
   const st = BAND_STYLE[health.band];
 
   // Donut geometry for the health ring.
@@ -60,14 +61,22 @@ export async function ExecutiveOverview() {
       trend: snapshot.revenueGrowthPct,
     },
     {
+      // Real P&L once expenses exist; still "—" (never a guess) when they don't.
       label: "Sof foyda (oylik)",
-      value: "—",
-      suffix: "",
+      value: pnl.hasExpenseData ? fmt(pnl.month.grossProfit) : "—",
+      suffix: pnl.hasExpenseData ? "UZS" : "",
       icon: Gauge,
-      accent: "text-gray-400",
-      bg: "bg-white/5 text-gray-400",
-      href: "/admin/finance",
-      hint: "Xarajatlar moduli qoʻshilgach hisoblanadi — taxmin qilinmaydi",
+      accent: !pnl.hasExpenseData
+        ? "text-gray-400"
+        : pnl.month.grossProfit >= 0
+          ? "text-averna-neon"
+          : "text-red-400",
+      bg: "bg-averna-neon/15 text-averna-neon",
+      href: "/admin/expenses",
+      hint: pnl.hasExpenseData
+        ? `Xarajat ${fmt(pnl.month.expenses)} · marja ${pnl.month.margin == null ? "—" : `${pnl.month.margin}%`}`
+        : "Xarajat qoʻshing — foyda avtomatik hisoblanadi",
+      trend: pnl.hasExpenseData ? pnl.profitGrowthPct : undefined,
     },
     {
       label: "Qarzdor oʻquvchilar",

@@ -636,6 +636,36 @@ model ReviewItem {
   @@map("review_items")
 }
 
+/// Operating expenses — the missing half of the P&L. Without this table "profit"
+/// cannot be computed at all, so the dashboard refuses to show one. Amounts are
+/// stored as integers in the same unit as Payment.amount (UZS).
+model Expense {
+  id            String    @id @default(cuid())
+  category      String // SALARY_TEACHER | SALARY_ADMIN | RENT | UTILITIES | ...
+  amount        Int
+  method        String    @default("CASH") // CASH | CARD | TERMINAL | TRANSFER
+  vendor        String?
+  invoiceNo     String?
+  receiptUrl    String?
+  note          String?
+  /// draft | pending | approved | paid — only approved/paid count toward profit.
+  status        String    @default("paid")
+  /// Set when this expense repeats (e.g. "monthly"); null for one-off costs.
+  recurring     String?
+  /// Admin/user id who recorded it, for accountability.
+  recordedById  String?
+  recordedByName String?
+  /// When the cost was actually incurred (may differ from createdAt).
+  incurredAt    DateTime  @default(now())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([incurredAt])
+  @@index([category])
+  @@index([status])
+  @@map("expenses")
+}
+
 /// Persisted mastery lifecycle per skill (locked → learning → practicing →
 /// verified → mastered → retained). The stage itself is DERIVED from test
 /// evidence (lib/student-intel getSkillStages); this table records it so we also
