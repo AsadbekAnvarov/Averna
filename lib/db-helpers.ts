@@ -48,8 +48,9 @@ export async function updateStudentPoints(studentId: string, points: number) {
     },
   });
 
-  // Update rankings after points change
-  await updateRankings();
+  // Rank is now computed on read (see getGlobalRank/getGroupRank) instead of
+  // rewriting every student's rank on every points change, which was O(N)
+  // writes per XP event and would not scale. No per-award rank write here.
 
   return student;
 }
@@ -96,6 +97,30 @@ export async function updateStudentStreak(studentId: string) {
 
 // ==================== RANKING HELPERS ====================
 
+/**
+ * A student's global rank, computed on READ with a single indexed COUNT
+ * (`@@index([totalPoints])`) instead of maintaining a `globalRank` column via
+ * an O(N) rewrite on every points change. Students are ranked only once they
+ * have points; ties share a rank (standard competition ranking).
+ */
+export async function getGlobalRank(totalPoints: number): Promise<number> {
+  if (totalPoints <= 0) return 0;
+  const above = await db.student.count({ where: { totalPoints: { gt: totalPoints } } });
+  return above + 1;
+}
+
+/** A student's rank within their group, computed on read (same approach). */
+export async function getGroupRank(groupId: string, totalPoints: number): Promise<number> {
+  if (totalPoints <= 0) return 0;
+  const above = await db.student.count({ where: { groupId, totalPoints: { gt: totalPoints } } });
+  return above + 1;
+}
+
+/**
+ * Batch recompute of the cached `globalRank`/`groupRank` columns. No longer on
+ * the hot path (rank is computed on read); kept only for an optional
+ * admin/cron refresh of the cached columns. Do NOT call this per points change.
+ */
 export async function updateRankings() {
   // Global rankings
   const allStudents = await db.student.findMany({
@@ -353,10 +378,11 @@ export async function checkAndAwardAchievements(studentId: string) {
     await awardAchievement(studentId, "STREAK_WARRIOR");
   }
 
-  // Check Top Performer (reach top 10 globally)
+  // Check Top Performer (reach top 10 globally) — rank computed on read.
+  const globalRank = await getGlobalRank(student.totalPoints);
   if (
-    student.globalRank <= 10 &&
-    student.globalRank > 0 &&
+    globalRank > 0 &&
+    globalRank <= 10 &&
     !earnedAchievementTypes.includes("TOP_PERFORMER")
   ) {
     await awardAchievement(studentId, "TOP_PERFORMER");

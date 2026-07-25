@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { getGlobalRank } from "@/lib/db-helpers";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -31,6 +32,9 @@ export default async function AchievementsPage() {
   });
 
   if (!student) redirect("/auth/signin");
+
+  // Rank computed on read (indexed count), not from a maintained column.
+  const globalRank = await getGlobalRank(student.totalPoints);
 
   // All available achievements
   const allAchievements = await db.achievement.findMany({
@@ -74,7 +78,7 @@ export default async function AchievementsPage() {
         progress = (current / total) * 100;
         break;
       case "TOP_PERFORMER":
-        if (student.globalRank > 0 && student.globalRank <= 10) {
+        if (globalRank > 0 && globalRank <= 10) {
           progress = 100;
           current = 1;
           total = 1;
