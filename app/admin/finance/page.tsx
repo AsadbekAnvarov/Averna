@@ -13,6 +13,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { StudentPicker } from "@/components/admin/student-picker";
 import { formatDate } from "@/lib/utils";
 import { recordAudit } from "@/lib/audit";
+import { can } from "@/lib/engine/permissions";
 
 function fmt(n: number) {
   return n.toLocaleString("en-US");
@@ -21,7 +22,7 @@ function fmt(n: number) {
 async function recordCashPayment(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "finance")) redirect("/auth/signin");
 
   const studentId = (formData.get("studentId") as string)?.trim();
   const amount = Math.round(Number(formData.get("amount")));
@@ -58,7 +59,7 @@ async function recordCashPayment(formData: FormData) {
 export default async function AdminFinancePage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "finance")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

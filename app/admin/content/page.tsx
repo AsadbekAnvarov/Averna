@@ -12,6 +12,7 @@ import { Library, Plus, BookText } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
+import { can } from "@/lib/engine/permissions";
 
 const MODULES = ["WRITING", "READING", "LISTENING", "SPEAKING", "VOCABULARY", "GENERAL"];
 const LEVELS = ["All", "Beginner", "Intermediate", "Advanced"];
@@ -19,7 +20,7 @@ const LEVELS = ["All", "Beginner", "Intermediate", "Advanced"];
 async function addMaterial(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "content")) redirect("/auth/signin");
 
   const title = (formData.get("title") as string)?.trim();
   const module = (formData.get("module") as string) || "GENERAL";
@@ -38,7 +39,7 @@ async function addMaterial(formData: FormData) {
 export default async function AdminContentPage({ searchParams }: { searchParams: { saved?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "content")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

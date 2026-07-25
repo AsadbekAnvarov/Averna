@@ -14,6 +14,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ConfirmButton } from "@/components/ui/confirm-button";
 import { recordAudit } from "@/lib/audit";
 import { getCalendar, EVENT_TYPES, TYPE_ACCENT, eventTypeLabel } from "@/lib/engine/calendar-engine";
+import { can } from "@/lib/engine/permissions";
 
 const fmt = (n: number) => n.toLocaleString("en-US");
 
@@ -26,7 +27,7 @@ function dayLabel(d: Date): string {
 async function addEvent(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "calendar")) redirect("/auth/signin");
 
   const type = (formData.get("type") as string)?.trim();
   const title = (formData.get("title") as string)?.trim();
@@ -60,7 +61,7 @@ async function addEvent(formData: FormData) {
 async function deleteEvent(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "calendar")) redirect("/auth/signin");
 
   const id = formData.get("id") as string;
   if (!id) return;
@@ -77,7 +78,7 @@ async function deleteEvent(formData: FormData) {
 export default async function AdminCalendarPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "calendar")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

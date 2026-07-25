@@ -9,11 +9,12 @@ import { Activity, Database, Bot, Users, GraduationCap, Layers, CheckCircle2, XC
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
+import { can } from "@/lib/engine/permissions";
 
 export default async function AdminSystemPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "system")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

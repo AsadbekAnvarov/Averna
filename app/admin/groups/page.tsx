@@ -15,13 +15,14 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ConfirmButton } from "@/components/ui/confirm-button";
 import { recordAudit } from "@/lib/audit";
 import { deleteGroupCascade } from "@/lib/cascade-delete";
+import { can } from "@/lib/engine/permissions";
 
 const LEVELS = ["Boshlangʻich (A2)", "Oʻrta (B1)", "Oʻrtadan yuqori (B2)", "Yuqori (C1)", "IELTS standart (6.0–6.5)", "IELTS yuqori (7.5+)"];
 
 async function createGroup(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "groups")) redirect("/auth/signin");
 
   const name = (formData.get("name") as string)?.trim();
   const teacherId = formData.get("teacherId") as string;
@@ -44,7 +45,7 @@ async function createGroup(formData: FormData) {
 async function updateGroup(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "groups")) redirect("/auth/signin");
   const id = formData.get("id") as string;
   const teacherId = formData.get("teacherId") as string;
   const level = (formData.get("level") as string)?.trim();
@@ -60,7 +61,7 @@ async function updateGroup(formData: FormData) {
 async function duplicateGroup(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "groups")) redirect("/auth/signin");
   const id = formData.get("id") as string;
   const original = await db.group.findUnique({ where: { id } });
   if (!original) return;
@@ -80,7 +81,7 @@ async function duplicateGroup(formData: FormData) {
 async function deleteGroup(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "groups")) redirect("/auth/signin");
   const id = formData.get("id") as string;
   if (!id) return;
   const group = await db.group.findUnique({ where: { id }, select: { name: true } });
@@ -97,7 +98,7 @@ async function deleteGroup(formData: FormData) {
 export default async function AdminGroupsPage({ searchParams }: { searchParams: { saved?: string; deleted?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "groups")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

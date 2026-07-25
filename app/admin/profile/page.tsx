@@ -13,11 +13,12 @@ import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { AvatarEditor } from "@/components/avatar-editor";
 import { PageHeader } from "@/components/ui/page-header";
+import { can } from "@/lib/engine/permissions";
 
 async function updateAdminProfile(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "dashboard")) redirect("/auth/signin");
   const name = (formData.get("name") as string)?.trim();
   if (name) {
     await db.user.update({ where: { id: session.user.id }, data: { name } });
@@ -29,7 +30,7 @@ async function updateAdminProfile(formData: FormData) {
 export default async function AdminProfilePage({ searchParams }: { searchParams: { saved?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "dashboard")) {
     return <AccountNotice title="Admins only" message="This area is reserved for administrators." />;
   }
 

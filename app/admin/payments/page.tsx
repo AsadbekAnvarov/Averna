@@ -14,6 +14,7 @@ import { formatDate } from "@/lib/utils";
 import { recordAudit } from "@/lib/audit";
 import { notifyUser } from "@/lib/notifications";
 import { getTuitionSummary, riskLabel, type PaymentRisk } from "@/lib/engine/tuition-engine";
+import { can } from "@/lib/engine/permissions";
 
 const fmt = (n: number) => n.toLocaleString("en-US");
 
@@ -29,7 +30,7 @@ const RISK_STYLE: Record<PaymentRisk, string> = {
 async function saveTerms(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "payments")) redirect("/auth/signin");
 
   const studentId = formData.get("studentId") as string;
   if (!studentId) return;
@@ -60,7 +61,7 @@ async function saveTerms(formData: FormData) {
 async function recordTuitionPayment(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "payments")) redirect("/auth/signin");
 
   const studentId = formData.get("studentId") as string;
   const amount = Math.round(Number(formData.get("amount")));
@@ -106,7 +107,7 @@ async function recordTuitionPayment(formData: FormData) {
 async function sendReminder(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "payments")) redirect("/auth/signin");
 
   const studentId = formData.get("studentId") as string;
   const amount = Math.round(Number(formData.get("amount")) || 0);
@@ -138,7 +139,7 @@ async function sendReminder(formData: FormData) {
 export default async function AdminPaymentsPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "payments")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

@@ -14,6 +14,7 @@ import { ConfirmButton } from "@/components/ui/confirm-button";
 import { formatDate } from "@/lib/utils";
 import { recordAudit } from "@/lib/audit";
 import {
+import { can } from "@/lib/engine/permissions";
   getProfitSnapshot,
   expenseCategoryLabel,
   EXPENSE_CATEGORIES,
@@ -25,7 +26,7 @@ const fmt = (n: number) => n.toLocaleString("en-US");
 async function addExpense(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "expenses")) redirect("/auth/signin");
 
   const category = (formData.get("category") as string)?.trim();
   const amount = Math.round(Number(formData.get("amount")));
@@ -62,7 +63,7 @@ async function addExpense(formData: FormData) {
 async function approveExpense(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "expenses")) redirect("/auth/signin");
   const id = formData.get("id") as string;
   if (!id) return;
 
@@ -79,7 +80,7 @@ async function approveExpense(formData: FormData) {
 async function deleteExpense(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "expenses")) redirect("/auth/signin");
   const id = formData.get("id") as string;
   if (!id) return;
 
@@ -97,7 +98,7 @@ async function deleteExpense(formData: FormData) {
 export default async function AdminExpensesPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "expenses")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

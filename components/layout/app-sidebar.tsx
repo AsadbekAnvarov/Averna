@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { cn, initialsOf } from "@/lib/utils";
+import { can, isAdminArea, moduleForHref, roleLabel } from "@/lib/engine/permissions";
 import {
   LayoutDashboard,
   PenTool,
@@ -56,6 +57,7 @@ import {
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 
 type NavItem = { name: string; href: string; icon: LucideIcon; badge?: string };
+
 type NavSection = { label: string; items: NavItem[] };
 
 const STUDENT_NAV: NavSection[] = [
@@ -217,6 +219,7 @@ const ADMIN_NAV: NavSection[] = [
     label: "Nazorat va tizim",
     items: [
       { name: "Xavflar markazi", href: "/admin/risks", icon: ShieldAlert },
+      { name: "Rollar va ruxsatlar", href: "/admin/roles", icon: ShieldCheck },
       { name: "Audit jurnali", href: "/admin/logs", icon: Activity },
       { name: "Tizim", href: "/admin/system", icon: Settings },
     ],
@@ -239,10 +242,31 @@ function isActive(pathname: string, href: string): boolean {
   return false;
 }
 
+/**
+ * Hide admin links the role can't open (M13). Filtering here is a UX courtesy —
+ * the real enforcement is the `can()` guard on each page — but showing a
+ * receptionist a "Maoshlar" link they'd only bounce off is worse than hiding it.
+ * Sections that end up empty are dropped entirely.
+ */
+function filterAdminNav(role: string | undefined): NavSection[] {
+  return ADMIN_NAV.map((section) => ({
+    ...section,
+    items: section.items.filter((item) => {
+      const mod = moduleForHref(item.href);
+      return mod === null || can(role, mod); // ungated links (messages) stay
+    }),
+  })).filter((section) => section.items.length > 0);
+}
+
 function getNavForRole(role: string | undefined): { sections: NavSection[]; label: string; accent: string } {
+  if (isAdminArea(role)) {
+    return {
+      sections: filterAdminNav(role),
+      label: role === "ADMIN" || role === "OWNER" ? "Admin paneli" : roleLabel(role),
+      accent: "averna-purple",
+    };
+  }
   switch (role) {
-    case "ADMIN":
-      return { sections: ADMIN_NAV, label: "Admin paneli", accent: "averna-purple" };
     case "TEACHER":
       return { sections: TEACHER_NAV, label: "Teacher Portal", accent: "averna-cyan" };
     case "STUDENT":

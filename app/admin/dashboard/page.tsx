@@ -58,6 +58,7 @@ import { PublishImpactSection } from "@/components/admin/publish-impact-section"
 import { InnovationRadar } from "@/components/admin/innovation-radar";
 import { recordAudit } from "@/lib/audit";
 import { deleteStudentCascade } from "@/lib/cascade-delete";
+import { can } from "@/lib/engine/permissions";
 
 const LEVELS = [
   "Boshlangʻich (A2)",
@@ -71,7 +72,7 @@ const LEVELS = [
 async function enrollStudent(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "dashboard")) redirect("/auth/signin");
 
   const studentId = formData.get("studentId") as string;
   const level = (formData.get("level") as string)?.trim();
@@ -96,7 +97,7 @@ async function enrollStudent(formData: FormData) {
 async function toggleFreeze(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "dashboard")) redirect("/auth/signin");
 
   const studentId = formData.get("studentId") as string;
   if (!studentId) return;
@@ -127,7 +128,7 @@ async function toggleFreeze(formData: FormData) {
 async function deleteStudent(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "dashboard")) redirect("/auth/signin");
 
   const studentId = formData.get("studentId") as string;
   if (!studentId) return;
@@ -153,7 +154,7 @@ export default async function AdminDashboard() {
   if (session.user.role === "TEACHER") redirect("/teacher/dashboard");
 
   // Only ADMINs continue
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "dashboard")) {
     return (
       <AccountNotice
         title="Faqat adminlar uchun"
@@ -218,6 +219,7 @@ export default async function AdminDashboard() {
   const SYSTEM_TOOLS = [
     { href: "/admin/risks", label: "Xavflar markazi", desc: "Moliyaviy va operatsion xavflar", icon: ShieldAlert, iconBg: "bg-red-400/15 text-red-400", hover: "hover:border-red-400/40" },
     { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
+    { href: "/admin/roles", label: "Rollar va ruxsatlar", desc: "Xodimlar kirish huquqi", icon: ShieldCheck, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
     { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
     { href: "/notifications", label: "Bildirishnomalar", desc: "Tizim xabarlari", icon: Bell, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
   ];

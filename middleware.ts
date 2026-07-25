@@ -46,7 +46,12 @@ const authMiddleware = auth((req) => {
     }
 
     // Admin routes
-    if (pathname.startsWith("/admin") && userRole !== "ADMIN") {
+    // Admin area now serves several staff roles (M13). Per-module access is
+    // enforced on each page via can(); this only keeps students/teachers out.
+    // Kept as a literal list because middleware runs on the Edge runtime and
+    // must not import server-only modules.
+    const ADMIN_AREA = ["ADMIN", "OWNER", "FINANCE_MANAGER", "ACCOUNTANT", "RECEPTION"];
+    if (pathname.startsWith("/admin") && !ADMIN_AREA.includes(userRole)) {
       return NextResponse.redirect(new URL(getRoleDefaultRoute(userRole), req.url));
     }
   }

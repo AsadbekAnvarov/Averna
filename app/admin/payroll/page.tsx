@@ -14,6 +14,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { formatDate } from "@/lib/utils";
 import { recordAudit } from "@/lib/audit";
 import {
+import { can } from "@/lib/engine/permissions";
   getPayrollPeriod,
   computeNet,
   periodKey,
@@ -28,7 +29,7 @@ const fmt = (n: number) => n.toLocaleString("en-US");
 async function saveSalaryConfig(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "payroll")) redirect("/auth/signin");
 
   const teacherId = formData.get("teacherId") as string;
   const salaryType = (formData.get("salaryType") as string)?.trim();
@@ -52,7 +53,7 @@ async function saveSalaryConfig(formData: FormData) {
 async function approvePayroll(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "payroll")) redirect("/auth/signin");
 
   const teacherId = formData.get("teacherId") as string;
   const period = (formData.get("period") as string)?.trim();
@@ -109,7 +110,7 @@ async function approvePayroll(formData: FormData) {
 async function payPayroll(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "payroll")) redirect("/auth/signin");
 
   const id = formData.get("id") as string;
   if (!id) return;
@@ -160,7 +161,7 @@ export default async function AdminPayrollPage({
 }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "payroll")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

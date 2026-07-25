@@ -9,6 +9,7 @@ import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 import {
+import { can } from "@/lib/engine/permissions";
   getRiskRegister,
   riskCategoryLabel,
   riskSeverityLabel,
@@ -27,7 +28,7 @@ const ORDER: RiskSeverity[] = ["critical", "high", "medium", "low"];
 export default async function AdminRisksPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "risks")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

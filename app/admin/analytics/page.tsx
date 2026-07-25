@@ -8,6 +8,7 @@ import { BarChart3, TrendingUp, Users, ClipboardCheck, Layers } from "lucide-rea
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
+import { can } from "@/lib/engine/permissions";
 
 const MONTHS = ["Yan","Fev","Mar","Apr","May","Iyn","Iyl","Avg","Sen","Okt","Noy","Dek"];
 
@@ -16,7 +17,7 @@ export default async function AdminAnalyticsPage() {
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "STUDENT") redirect("/dashboard");
   if (session.user.role === "TEACHER") redirect("/teacher/dashboard");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "analytics")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

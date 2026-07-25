@@ -15,11 +15,12 @@ import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { notifyUser } from "@/lib/notifications";
 import { formatDate } from "@/lib/utils";
+import { can } from "@/lib/engine/permissions";
 
 async function addReward(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "rewards")) redirect("/auth/signin");
   const name = (formData.get("name") as string)?.trim();
   const cost = parseInt(formData.get("cost") as string) || 0;
   const description = (formData.get("description") as string)?.trim();
@@ -33,7 +34,7 @@ async function addReward(formData: FormData) {
 async function moderate(formData: FormData) {
   "use server";
   const session = await auth();
-  if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
+  if (!session?.user || !can(session.user.role, "rewards")) redirect("/auth/signin");
   const id = formData.get("id") as string;
   const action = formData.get("action") as string;
 
@@ -73,7 +74,7 @@ async function moderate(formData: FormData) {
 export default async function AdminRewardsPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (!can(session.user.role, "rewards")) {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 

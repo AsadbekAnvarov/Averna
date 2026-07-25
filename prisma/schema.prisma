@@ -15,6 +15,14 @@ enum UserRole {
   TEACHER
   PARENT
   ADMIN
+  /// Full business visibility, including finance. Intended for the owner.
+  OWNER
+  /// Money only: payments, expenses, payroll, calendar, finance reports.
+  FINANCE_MANAGER
+  /// Read-oriented finance role: reports and ledgers, no people management.
+  ACCOUNTANT
+  /// Front desk: enrolment, groups, announcements — never salaries or profit.
+  RECEPTION
 }
 
 enum HomeworkStatus {
