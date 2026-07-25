@@ -5,7 +5,6 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Users,
   GraduationCap,
@@ -20,11 +19,9 @@ import {
   ShieldCheck,
   Trophy,
   ArrowRight,
-  Trash2,
   Sparkles,
   Bell,
   MessageSquare,
-  Snowflake,
 } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -38,7 +35,7 @@ import { TeacherWorkload } from "@/components/admin/teacher-workload";
 import { FinanceSummary } from "@/components/admin/finance-summary";
 import { AdminAttentionBar } from "@/components/admin/attention-bar";
 import { SeedDemoButton } from "@/components/admin/seed-demo-button";
-import { ConfirmButton } from "@/components/ui/confirm-button";
+import { StudentRoster } from "@/components/admin/student-roster";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PanelTabs } from "@/components/panel-tabs";
@@ -199,67 +196,17 @@ export default async function AdminDashboard() {
     { href: "/messages", label: "Xabarlar", desc: "Oʻquvchilar bilan yozishma", icon: MessageSquare, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
   ];
 
-  const StudentForm = ({ s }: { s: (typeof students)[number] }) => (
-    <form action={enrollStudent} className="flex flex-col md:flex-row md:items-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10 transition-colors hover:border-averna-cyan/30">
-      <input type="hidden" name="studentId" value={s.id} />
-      <div className="md:w-56 min-w-0">
-        <p className="text-white font-medium truncate flex items-center gap-1.5">
-          <span className="truncate">{s.user.name ?? "Nomsiz"}</span>
-          {s.blacklisted && (
-            <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded-full border border-averna-cyan/40 bg-averna-cyan/10 text-averna-cyan">
-              Muzlatilgan
-            </span>
-          )}
-        </p>
-        <p className="text-xs text-gray-400 truncate">{s.user.email}</p>
-      </div>
-      <select
-        name="level"
-        defaultValue={s.level ?? ""}
-        className="rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-purple md:flex-1"
-      >
-        <option value="" className="bg-averna-dark">— Daraja —</option>
-        {LEVELS.map((l) => (
-          <option key={l} value={l} className="bg-averna-dark">{l}</option>
-        ))}
-      </select>
-      <select
-        name="groupId"
-        defaultValue={s.groupId ?? ""}
-        className="rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-cyan md:flex-1"
-      >
-        <option value="" className="bg-averna-dark">— Biriktirilmagan —</option>
-        {groups.map((g) => (
-          <option key={g.id} value={g.id} className="bg-averna-dark">
-            {g.name} · {g.teacher.user.name}
-          </option>
-        ))}
-      </select>
-      <Button type="submit" size="sm" className="neon-button bg-averna-primary hover:bg-averna-light">
-        Saqlash
-      </Button>
-      <button
-        type="submit"
-        formAction={toggleFreeze}
-        title={s.blacklisted ? "Muzlashdan chiqarish" : "Muzlatish"}
-        className={`h-9 w-9 shrink-0 rounded-md border flex items-center justify-center transition-colors ${
-          s.blacklisted
-            ? "border-averna-cyan/40 bg-averna-cyan/15 text-averna-cyan hover:bg-averna-cyan/25"
-            : "border-white/10 bg-white/5 text-gray-400 hover:text-averna-cyan hover:border-averna-cyan/40"
-        }`}
-      >
-        <Snowflake className="h-4 w-4" />
-      </button>
-      <ConfirmButton
-        formAction={deleteStudent}
-        message={`${s.user.name ?? "Ushbu oʻquvchi"}ni va uning barcha maʼlumotlarini (topshiriqlar, baholar, ballar, toʻlovlar) butunlay oʻchirasizmi? Bu uning hisobini ham oʻchiradi va qaytarib boʻlmaydi.`}
-        title="Oʻquvchini oʻchirish"
-        className="h-9 w-9 shrink-0 rounded-md border border-red-500/30 bg-red-500/10 text-red-400 hover:bg-red-500/20"
-      >
-        <Trash2 className="h-4 w-4" />
-      </ConfirmButton>
-    </form>
-  );
+  const rosterGroups = groups.map((g) => ({ id: g.id, name: g.name, teacherName: g.teacher?.user?.name ?? null }));
+  const toRoster = (s: (typeof students)[number]) => ({
+    id: s.id,
+    name: s.user.name,
+    email: s.user.email,
+    level: s.level,
+    groupId: s.groupId,
+    blacklisted: s.blacklisted,
+  });
+  const pendingRoster = pending.map(toRoster);
+  const studentsRoster = students.map(toRoster);
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -315,15 +262,15 @@ export default async function AdminDashboard() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      {pending.length === 0 ? (
-                        <p className="text-gray-400 text-sm">🎉 Qabul kutayotgan oʻquvchilar yoʻq.</p>
-                      ) : (
-                        <div className="space-y-2">
-                          {pending.map((s) => (
-                            <StudentForm key={s.id} s={s} />
-                          ))}
-                        </div>
-                      )}
+                      <StudentRoster
+                        students={pendingRoster}
+                        groups={rosterGroups}
+                        levels={LEVELS}
+                        enrollAction={enrollStudent}
+                        deleteAction={deleteStudent}
+                        freezeAction={toggleFreeze}
+                        emptyText="🎉 Qabul kutayotgan oʻquvchilar yoʻq."
+                      />
                     </CardContent>
                   </Card>
                 </div>
@@ -331,15 +278,15 @@ export default async function AdminDashboard() {
                   <SectionHeader icon={Users} title={`Barcha oʻquvchilar (${students.length})`} subtitle="Platformadagi barcha oʻquvchilar" accent="text-averna-cyan" />
                   <Card className="glass border-averna-cyan/30">
                     <CardContent className="pt-6">
-                      {students.length === 0 ? (
-                        <p className="text-gray-400 text-sm">Hozircha oʻquvchilar yoʻq.</p>
-                      ) : (
-                        <div className="space-y-2">
-                          {students.map((s) => (
-                            <StudentForm key={s.id} s={s} />
-                          ))}
-                        </div>
-                      )}
+                      <StudentRoster
+                        students={studentsRoster}
+                        groups={rosterGroups}
+                        levels={LEVELS}
+                        enrollAction={enrollStudent}
+                        deleteAction={deleteStudent}
+                        freezeAction={toggleFreeze}
+                        emptyText="Hozircha oʻquvchilar yoʻq."
+                      />
                     </CardContent>
                   </Card>
                 </div>
