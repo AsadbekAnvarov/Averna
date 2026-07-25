@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { generateDailyBriefing } from "@/lib/ai";
+import { guardAi } from "@/lib/engine/ai-guard";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +16,8 @@ const MODULE_LABEL: Record<string, string> = {
 export async function GET() {
   try {
     const user = await requireAuth();
+    const guard = guardAi(user.id, "podcast");
+    if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
 
     const student = await db.student.findUnique({
       where: { userId: user.id },

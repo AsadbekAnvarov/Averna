@@ -3,6 +3,7 @@ import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getExamReadiness, getMemoryTimeline, getSkillStages } from "@/lib/student-intel";
 import { avernaAssistant } from "@/lib/ai";
+import { guardAi } from "@/lib/engine/ai-guard";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,12 @@ export async function POST(req: NextRequest) {
       select: { id: true, totalPoints: true, currentStreak: true, longestStreak: true, targetBand: true },
     });
     if (!student) return NextResponse.json({ error: "No student profile" }, { status: 403 });
+
+    // Cost/abuse ceiling before any model call.
+    const guard = guardAi(user.id, "averna-ai");
+    if (!guard.ok) {
+      return NextResponse.json({ reply: guard.message }, { status: 429 });
+    }
 
     const [readiness, memory, stages, dueCount] = await Promise.all([
       getExamReadiness(student.id),
