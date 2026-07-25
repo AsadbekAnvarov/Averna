@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { AchievementType, IELTSModule, UserRole } from "@prisma/client";
 import { isGenuineWriting, tashkentDayDiff } from "@/lib/utils";
+import { computeTestXp } from "@/lib/xp";
 
 // ==================== STUDENT HELPERS ====================
 
@@ -426,6 +427,41 @@ async function awardAchievement(
 
 // ==================== IELTS TEST HELPERS ====================
 
+/**
+ * XP for a test, computed from real growth signals (XP Engine 2.0). Gathers the
+ * student's recent average in this module, how many times they've taken this
+ * exact content (via the `testId` stored in the answers JSON), and their XP in
+ * the last 24h, then applies the pure formula in lib/xp.ts. Call this BEFORE
+ * inserting the new test so history excludes the current attempt.
+ */
+export async function computeTestXpForStudent(
+  studentId: string,
+  module: IELTSModule,
+  score: number,
+  opts?: { difficulty?: string | null; contentKey?: string }
+): Promise<number> {
+  const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  const [recent, repeatCount, todayLogs] = await Promise.all([
+    db.iELTSTest.findMany({
+      where: { studentId, module },
+      orderBy: { completedAt: "desc" },
+      take: 3,
+      select: { score: true },
+    }),
+    opts?.contentKey
+      ? db.iELTSTest.count({
+          where: { studentId, module, answers: { path: ["testId"], equals: opts.contentKey } },
+        })
+      : Promise.resolve(0),
+    db.activityLog.findMany({ where: { studentId, createdAt: { gte: since } }, select: { points: true } }),
+  ]);
+
+  const recentAvg = recent.length ? recent.reduce((a, b) => a + b.score, 0) / recent.length : 0;
+  const dailyXpSoFar = todayLogs.reduce((s, l) => s + (l.points || 0), 0);
+
+  return computeTestXp({ score, difficulty: opts?.difficulty, recentAvg, repeatCount, dailyXpSoFar });
+}
+
 export async function saveIELTSTest(
   studentId: string,
   module: IELTSModule,
@@ -433,12 +469,22 @@ export async function saveIELTSTest(
   answers: any,
   aiAnalysis: any,
   timeSpent: number,
-  options?: { pointsOverride?: number }
+  options?: { pointsOverride?: number; contentKey?: string; difficulty?: string | null }
 ) {
   // Clamp untrusted/edge inputs so analytics and bands stay sane: timeSpent is
   // client-influenced (cap at 3h, floor at 0) and score must be a valid band 0-9.
   const safeTime = Math.max(0, Math.min(Math.round(Number(timeSpent) || 0), 3 * 60 * 60));
   const safeScore = Math.max(0, Math.min(Number(score) || 0, 9));
+
+  // Compute XP BEFORE inserting so history queries exclude this attempt.
+  // Callers may still override (e.g. 0 for an empty/trivial submission).
+  const points =
+    options?.pointsOverride !== undefined
+      ? Math.max(0, Math.round(options.pointsOverride))
+      : await computeTestXpForStudent(studentId, module, safeScore, {
+          difficulty: options?.difficulty,
+          contentKey: options?.contentKey,
+        });
 
   const test = await db.iELTSTest.create({
     data: {
@@ -450,13 +496,6 @@ export async function saveIELTSTest(
       timeSpent: safeTime,
     },
   });
-
-  // Anti-cheat: callers can override the points (e.g. 0 for an empty/trivial
-  // submission). Otherwise fall back to score-based points.
-  const points =
-    options?.pointsOverride !== undefined
-      ? Math.max(0, Math.round(options.pointsOverride))
-      : Math.round(safeScore * 10);
 
   if (points > 0) {
     await updateStudentPoints(studentId, points);
