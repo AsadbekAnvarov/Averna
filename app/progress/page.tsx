@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { getGlobalRank } from "@/lib/db-helpers";
 import { AccountNotice } from "@/components/account-notice";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
@@ -32,11 +33,14 @@ export default async function ProgressCenterPage() {
 
   const student = await db.student.findUnique({
     where: { userId: session.user.id },
-    select: { id: true, targetBand: true, groupId: true, longestStreak: true, globalRank: true },
+    select: { id: true, targetBand: true, groupId: true, longestStreak: true, totalPoints: true },
   });
   if (!student) {
     return <AccountNotice title="No student profile found" message="Sign in with a student account to see your progress." />;
   }
+
+  // Rank computed on read (indexed count), not from a maintained column.
+  const globalRank = await getGlobalRank(student.totalPoints);
 
   const testsCount = await db.iELTSTest.count({ where: { studentId: student.id } });
   const isNewStudent = testsCount === 0;
@@ -69,7 +73,7 @@ export default async function ProgressCenterPage() {
             <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
           </Suspense>
           <Suspense fallback={<WidgetSkeleton rows={4} />}>
-            <AchievementsProgress studentId={student.id} longestStreak={student.longestStreak} globalRank={student.globalRank} />
+            <AchievementsProgress studentId={student.id} longestStreak={student.longestStreak} globalRank={globalRank} />
           </Suspense>
         </div>
 

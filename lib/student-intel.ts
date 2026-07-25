@@ -175,6 +175,87 @@ export async function getMemoryTimeline(studentId: string): Promise<MemoryEntry[
 
 
 
+// ---------------- Learning Verification lifecycle (Phase 3b) ----------------
+// Evidence-based mastery: a skill advances stages only with repeated, spaced,
+// genuine test evidence (not one lucky result), and slips back if it starts to
+// be forgotten. Derived from the shared test history — no schema, no writes.
+export type SkillStage = "locked" | "learning" | "practicing" | "verified" | "mastered" | "retained";
+
+const STAGE_ORDER: SkillStage[] = ["locked", "learning", "practicing", "verified", "mastered", "retained"];
+const STAGE_LABEL: Record<SkillStage, string> = {
+  locked: "Not started",
+  learning: "Learning",
+  practicing: "Practicing",
+  verified: "Verified",
+  mastered: "Mastered",
+  retained: "Retained",
+};
+const STAGE_MASTERY: Record<SkillStage, number> = {
+  locked: 0, learning: 25, practicing: 45, verified: 65, mastered: 88, retained: 100,
+};
+
+export interface SkillStageInfo {
+  key: ModuleKey;
+  label: string;
+  stage: SkillStage;
+  stageLabel: string;
+  mastery: number; // 0-100, derived from the stage
+  sessions: number;
+  distinctDays: number;
+  bestBand: number;
+  recentAvg: number;
+  retention: number; // 0-100
+}
+
+export async function getSkillStages(studentId: string): Promise<SkillStageInfo[]> {
+  const tests = await getStudentTests(studentId);
+  const now = Date.now();
+
+  return MODULES.map((m) => {
+    const rows = tests.filter((t) => t.module === m.key && t.score > 0);
+    if (rows.length === 0) {
+      return { key: m.key, label: m.label, stage: "locked" as SkillStage, stageLabel: STAGE_LABEL.locked, mastery: 0, sessions: 0, distinctDays: 0, bestBand: 0, recentAvg: 0, retention: 0 };
+    }
+
+    const scores = rows.map((r) => r.score);
+    const sessions = rows.length;
+    const bestBand = Math.max(...scores);
+    const recent = rows.slice(-3);
+    const recentAvg = recent.reduce((a, b) => a + b.score, 0) / recent.length;
+    const distinctDays = new Set(rows.map((r) => r.completedAt.toISOString().slice(0, 10))).size;
+    const times = rows.map((r) => r.completedAt.getTime());
+    const lastDaysAgo = Math.floor((now - Math.max(...times)) / DAY);
+    const spanDays = Math.floor((Math.max(...times) - Math.min(...times)) / DAY);
+
+    // Light forgetting curve (same shape as the Memory Timeline).
+    const strengthDays = 3 * (1 + Math.log2(sessions + 1)) * (0.6 + 0.4 * (recentAvg / 9));
+    const retention = Math.exp(-lastDaysAgo / strengthDays); // 0-1
+
+    // Evidence ladder.
+    let idx = 1; // learning
+    if (sessions >= 3) idx = Math.max(idx, 2); // practicing
+    if (sessions >= 2 && bestBand >= 6) idx = Math.max(idx, 3); // verified
+    if (sessions >= 4 && distinctDays >= 3 && recentAvg >= 6.5) idx = Math.max(idx, 4); // mastered
+    if (idx >= 4 && spanDays >= 21 && retention >= 0.8 && lastDaysAgo <= 30) idx = 5; // retained
+    // Forgetting decay: can't claim verified+ once retention has collapsed.
+    if (retention < 0.4) idx = Math.min(idx, 2);
+
+    const stage = STAGE_ORDER[idx];
+    return {
+      key: m.key,
+      label: m.label,
+      stage,
+      stageLabel: STAGE_LABEL[stage],
+      mastery: STAGE_MASTERY[stage],
+      sessions,
+      distinctDays,
+      bestBand: Math.round(bestBand * 10) / 10,
+      recentAvg: Math.round(recentAvg * 10) / 10,
+      retention: Math.round(retention * 100),
+    };
+  });
+}
+
 // ---------------- F2 — Knowledge Galaxy ----------------
 export interface GalaxyPlanet {
   key: ModuleKey;
@@ -182,8 +263,10 @@ export interface GalaxyPlanet {
   href: string;
   tests: number;
   avgBand: number;
-  mastery: number; // 0-100
+  mastery: number; // 0-100 (now evidence-based, from the verification stage)
   locked: boolean;
+  stage: SkillStage;
+  stageLabel: string;
 }
 
 const MODULE_HREF: Record<ModuleKey, string> = {
@@ -194,20 +277,18 @@ const MODULE_HREF: Record<ModuleKey, string> = {
 };
 
 export async function getGalaxy(studentId: string): Promise<GalaxyPlanet[]> {
-  const tests = await getStudentTests(studentId);
-  return MODULES.map((m) => {
-    const rows = tests.filter((t) => t.module === m.key);
-    const avgBand = rows.length ? rows.reduce((a, b) => a + b.score, 0) / rows.length : 0;
-    return {
-      key: m.key,
-      label: m.label,
-      href: MODULE_HREF[m.key],
-      tests: rows.length,
-      avgBand: Math.round(avgBand * 10) / 10,
-      mastery: rows.length ? Math.round((avgBand / 9) * 100) : 0,
-      locked: rows.length === 0,
-    };
-  });
+  const stages = await getSkillStages(studentId);
+  return stages.map((s) => ({
+    key: s.key,
+    label: s.label,
+    href: MODULE_HREF[s.key],
+    tests: s.sessions,
+    avgBand: s.recentAvg,
+    mastery: s.mastery,
+    locked: s.stage === "locked",
+    stage: s.stage,
+    stageLabel: s.stageLabel,
+  }));
 }
 
 // ---------------- F10 — Monthly Recap ("Wrapped") ----------------

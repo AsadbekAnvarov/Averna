@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { getGlobalRank, getGroupRank } from "@/lib/db-helpers";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +21,12 @@ export async function GET() {
       return NextResponse.json({ error: "Student not found" }, { status: 404 });
     }
 
+    // Rank computed on read (indexed counts) rather than a maintained column.
+    const [globalRank, groupRank] = await Promise.all([
+      getGlobalRank(student.totalPoints),
+      student.groupId ? getGroupRank(student.groupId, student.totalPoints) : Promise.resolve(0),
+    ]);
+
     return NextResponse.json({
       name: student.user.name || "",
       email: student.user.email,
@@ -36,8 +43,8 @@ export async function GET() {
       totalPoints: student.totalPoints,
       currentStreak: student.currentStreak,
       longestStreak: student.longestStreak,
-      globalRank: student.globalRank,
-      groupRank: student.groupRank,
+      globalRank,
+      groupRank,
     });
   } catch (error: any) {
     console.error("Profile fetch error:", error);

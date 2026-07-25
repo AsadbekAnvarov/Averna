@@ -79,13 +79,12 @@ export function MockExamRunner({ exam }: Props) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          listeningCorrect: lc,
-          listeningTotal: listeningQs.length,
-          readingCorrect: rc,
-          readingTotal: readingQs.length,
+          examId: exam.id,
+          // Raw answers; listening & reading are scored server-side from the key.
+          listeningAnswers: lAns,
+          readingAnswers: rAns,
           essay,
           timeSpent: examSeconds - secs,
-          examId: exam.id,
         }),
       });
       if (res.ok) {

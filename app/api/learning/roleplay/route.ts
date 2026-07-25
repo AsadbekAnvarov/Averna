@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { aiRoleplayReply } from "@/lib/ai";
+import { guardAi } from "@/lib/engine/ai-guard";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
-    await requireAuth();
+    const user = await requireAuth();
+    const guard = guardAi(user.id, "roleplay");
+    if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
 
     const { scenarioId, message, history } = await req.json();
 

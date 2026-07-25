@@ -79,7 +79,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
 import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine, Clapperboard, Brain, Flame, Award } from "lucide-react";
 import { Suspense } from "react";
-import { updateStudentStreak } from "@/lib/db-helpers";
+import { getGlobalRank, getGroupRank } from "@/lib/db-helpers";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -150,8 +150,14 @@ export default async function DashboardPage() {
     );
   }
 
-  // Update student streak on dashboard visit
-  await updateStudentStreak(student.id);
+  // Note: the streak is advanced by VERIFIED learning (see updateStudentPoints),
+  // not by opening the dashboard, so we no longer bump it on page load.
+
+  // Rank computed on read (cheap indexed counts) — no per-award write storm.
+  const [globalRank, groupRank] = await Promise.all([
+    getGlobalRank(student.totalPoints),
+    student.groupId ? getGroupRank(student.groupId, student.totalPoints) : Promise.resolve(0),
+  ]);
 
   // Count completed tests (for milestones)
   const testsCompleted = await db.iELTSTest.count({
@@ -248,12 +254,12 @@ export default async function DashboardPage() {
                 image={student.user.image}
                 points={student.totalPoints}
                 streak={student.currentStreak}
-                globalRank={student.globalRank}
+                globalRank={globalRank}
                 goal={student.personalGoal}
                 quote={dailyQuote}
                 featuredCosmetic={student.featuredCosmetic}
               />
-              <StatsGrid student={student} />
+              <StatsGrid student={{ ...student, globalRank, groupRank }} />
 
               <Suspense fallback={null}>
                 <HabitNudge studentId={student.id} streak={student.currentStreak} />
@@ -422,7 +428,7 @@ export default async function DashboardPage() {
                   <AchievementsProgress
                     studentId={student.id}
                     longestStreak={student.longestStreak}
-                    globalRank={student.globalRank}
+                    globalRank={globalRank}
                   />
                 </Suspense>
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { awardXp } from "@/lib/engine/xp-engine";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -53,7 +54,12 @@ async function moderate(formData: FormData) {
   } else {
     // Refund the points on rejection
     await db.rewardRedemption.update({ where: { id }, data: { status: "REJECTED" } });
-    await db.student.update({ where: { id: red.student.id }, data: { totalPoints: { increment: red.cost } } });
+    await awardXp({
+      studentId: red.student.id,
+      amount: red.cost,
+      source: "reward_refund",
+      details: { cost: red.cost, reason: "redemption rejected" },
+    });
     await notifyUser(red.student.userId, {
       type: "system",
       title: "Reward request declined",

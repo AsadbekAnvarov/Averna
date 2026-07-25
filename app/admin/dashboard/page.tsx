@@ -29,6 +29,8 @@ import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { TopPerformers } from "@/components/top-performers";
 import { AdminKpis } from "@/components/admin/kpi-cards";
+import { OutcomeKpis } from "@/components/admin/outcome-kpis";
+import { ExecutiveOverview } from "@/components/admin/executive-overview";
 import { ActivityFeed } from "@/components/admin/activity-feed";
 import { EnrollmentFunnel } from "@/components/admin/enrollment-funnel";
 import { TeacherWorkload } from "@/components/admin/teacher-workload";
@@ -241,10 +243,16 @@ export default async function AdminDashboard() {
           content={{
             overview: (
               <>
+                <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <ExecutiveOverview />
+                </Suspense>
                 <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
                   <MissionControl firstName={firstName} />
                 </Suspense>
                 <AdminKpis />
+                <Suspense fallback={<div className="h-32 rounded-2xl bg-white/5 animate-pulse" />}>
+                  <OutcomeKpis />
+                </Suspense>
                 <div className="grid lg:grid-cols-2 gap-6">
                   <ActivityFeed />
                   <FinanceSummary />

@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { assessWritingTask } from "@/lib/ai";
+import { guardAi } from "@/lib/engine/ai-guard";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
     const user = await requireAuth();
+    const guard = guardAi(user.id, "teacher-tool");
+    if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
     if (user.role !== "TEACHER" && user.role !== "ADMIN") {
       return NextResponse.json({ error: "Teachers only" }, { status: 403 });
     }

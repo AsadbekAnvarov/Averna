@@ -3,7 +3,8 @@ import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { assessWritingTask, analyzeWritingIssues } from "@/lib/ai";
 import { saveIELTSTest } from "@/lib/db-helpers";
-import { isGenuineWriting } from "@/lib/utils";
+import { isGenuineWriting, isOnTopic } from "@/lib/utils";
+import { assessSubmission, logAssessment } from "@/lib/engine/integrity-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -37,7 +38,10 @@ export async function POST(req: NextRequest) {
     // Anti-cheat: only award points for a genuine effort. Empty / spammy /
     // too-short essays are still assessed and saved, but earn 0 points.
     const minWords = taskType === "task1" ? 60 : 100;
-    const genuine = isGenuineWriting(essay, minWords);
+    // Genuine effort AND actually about the prompt — an off-topic essay is still
+    // assessed and saved, but earns no XP (relevance gate, Phase 3c).
+    const onTopic = isOnTopic(essay, prompt);
+    const genuine = isGenuineWriting(essay, minWords) && onTopic;
 
     // Get AI assessment
     const assessment = await assessWritingTask(
@@ -66,8 +70,21 @@ export async function POST(req: NextRequest) {
       { essay, prompt },
       { ...assessment, issues },
       timeSpent || 0,
-      genuine ? undefined : { pointsOverride: 0 }
+      genuine
+        ? { idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined }
+        : { pointsOverride: 0 }
     );
+
+    // Integrity Engine (S4). The hard writing signals already gate XP to zero
+    // above (via `genuine`), so this records the verdict for the audit trail.
+    const facts = {
+      studentId: student.id,
+      module: "WRITING",
+      timeSpent: Number(timeSpent) || 0,
+      essay: { genuine: isGenuineWriting(essay, minWords), onTopic },
+    };
+    const verdict = await assessSubmission(facts);
+    await logAssessment(facts, verdict, test.pointsAwarded ?? 0);
 
     return NextResponse.json({
       testId: test.id,
@@ -76,7 +93,9 @@ export async function POST(req: NextRequest) {
       pointsAwarded: genuine,
       cheatNotice: genuine
         ? undefined
-        : `Write at least ${minWords} meaningful words to earn points.`,
+        : !onTopic
+          ? "Your essay looks off-topic — address the prompt to earn points."
+          : `Write at least ${minWords} meaningful words to earn points.`,
     });
   } catch (error: any) {
     console.error("Writing submission error:", error);
