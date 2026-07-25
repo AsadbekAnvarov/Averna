@@ -3,6 +3,7 @@ import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { calculateBandScore, heuristicWritingAssessmentSafe, isGenuineWriting } from "@/lib/utils";
+import { MOCK_EXAMS } from "@/lib/mock-exams-data";
 
 export const dynamic = "force-dynamic";
 
@@ -15,12 +16,32 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const lCorrect = Number(body.listeningCorrect) || 0;
-    const lTotal = Number(body.listeningTotal) || 1;
-    const rCorrect = Number(body.readingCorrect) || 0;
-    const rTotal = Number(body.readingTotal) || 1;
     const essay: string = body.essay || "";
     const timeSpent = Number(body.timeSpent) || 0;
+
+    // Score listening & reading SERVER-SIDE from the real exam answer keys, so a
+    // client can't forge section scores. The runner sends its raw chosen options
+    // (keyed by question index) plus the exam id.
+    const exam = MOCK_EXAMS.find((e) => e.id === body.examId);
+    if (!exam) {
+      return NextResponse.json({ error: "Invalid exam ID" }, { status: 400 });
+    }
+
+    const lQ = exam.listening.questions;
+    const rQ = exam.reading.questions;
+    const lTotal = lQ.length || 1;
+    const rTotal = rQ.length || 1;
+    const lAns = (body.listeningAnswers ?? {}) as Record<string, number>;
+    const rAns = (body.readingAnswers ?? {}) as Record<string, number>;
+
+    let lCorrect = 0;
+    lQ.forEach((q, i) => {
+      if ((lAns[i] ?? lAns[String(i)]) === q.a) lCorrect++;
+    });
+    let rCorrect = 0;
+    rQ.forEach((q, i) => {
+      if ((rAns[i] ?? rAns[String(i)]) === q.a) rCorrect++;
+    });
 
     const listeningBand = calculateBandScore((lCorrect / lTotal) * 100);
     const readingBand = calculateBandScore((rCorrect / rTotal) * 100);

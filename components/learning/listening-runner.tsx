@@ -73,7 +73,8 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
       const res = await fetch("/api/learning/listening/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ correctCount, totalQuestions: allQuestions.length, answers, timeSpent: Math.round((Date.now() - startTime) / 1000) }),
+        // Send the test id + raw answers; the server scores from the real key.
+        body: JSON.stringify({ testId: test.id, answers, timeSpent: Math.round((Date.now() - startTime) / 1000) }),
       });
       setSaveMsg(res.ok ? "✅ Result saved — points added to your account!" : "Result shown below (not saved).");
     } catch {
