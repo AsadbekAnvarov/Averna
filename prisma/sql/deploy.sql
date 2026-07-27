@@ -1,29 +1,41 @@
 -- ============================================================================
--- Learning DNA Engine (AVERNA-001) — additive schema.
+-- Averna — deploy-time schema application (ADDITIVE ONLY)
 -- ============================================================================
 --
--- WHY THIS FILE EXISTS
+-- This file is run on every deploy by `npm run vercel-build`
+-- (prisma db execute --file prisma/sql/deploy.sql).
 --
--- The project deploys with `prisma db push`, which reconciles the WHOLE schema
--- on every build. That means one unrelated piece of drift between the database
--- and schema.prisma can block a deploy — and worse, "fixing" it with
--- `--accept-data-loss` would let a future build silently drop real data.
+-- WHY THIS EXISTS INSTEAD OF `prisma db push`
 --
--- This script applies only the three new Learning DNA tables, explicitly and
--- additively. It contains no DROP, no ALTER of an existing table, and no column
--- change: there is nothing here that can lose data. Run it once and `db push`
--- has nothing left to add for this feature.
+-- `prisma db push` reconciles the ENTIRE schema against the database on every
+-- build. That makes a deploy hostage to any unrelated drift between the live
+-- database and schema.prisma: a single pre-existing difference makes push refuse
+-- with "Use the --accept-data-loss flag…", and adding that flag would let every
+-- future build silently DROP real data.
 --
--- HOW TO RUN
+-- This script instead applies only the additive changes the application needs.
+-- There is no DROP, no ALTER of an existing column and no type change anywhere
+-- in it, so it can never lose data and never fails on unrelated drift.
 --
---   Neon / Vercel Postgres console: paste and execute.
---   Or locally:  psql "$DATABASE_URL" -f prisma/sql/learning_dna.sql
+-- IDEMPOTENT BY CONSTRUCTION
+--   Every statement is `CREATE TABLE IF NOT EXISTS` / `CREATE INDEX IF NOT
+--   EXISTS`. Foreign keys are declared INSIDE the CREATE TABLE, so they are
+--   created exactly once with the table and never re-attempted on a later run.
+--   Re-running the whole file is a safe no-op. (No `DO $$ … $$` blocks, so no
+--   dollar-quoting for `prisma db execute` to mis-split.)
 --
--- Safe to run more than once — every statement is idempotent.
+-- ADDING SOMETHING IN FUTURE
+--   Append another `CREATE TABLE IF NOT EXISTS …` or
+--   `ALTER TABLE … ADD COLUMN IF NOT EXISTS …` (both additive and idempotent).
+--   Never put a DROP here. For a deliberate destructive change, preview it with
+--   `npm run db:drift` and apply it out-of-band via `npm run db:deploy:pushfull`.
+--
+-- ============================================================================
+-- Learning DNA Engine (AVERNA-001)
 -- ============================================================================
 
 -- ---------------------------------------------------------------------------
--- 1. learning_events — the append-only behavioural sensor stream
+-- learning_events — append-only behavioural sensor stream
 -- ---------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS "learning_events" (
     "id"          TEXT NOT NULL,
@@ -46,7 +58,10 @@ CREATE TABLE IF NOT EXISTS "learning_events" (
     "dayKey"      TEXT NOT NULL,
     "createdAt"   TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "learning_events_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "learning_events_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "learning_events_studentId_fkey"
+        FOREIGN KEY ("studentId") REFERENCES "students"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE INDEX IF NOT EXISTS "learning_events_studentId_createdAt_idx"
@@ -57,7 +72,7 @@ CREATE INDEX IF NOT EXISTS "learning_events_studentId_dayKey_idx"
     ON "learning_events" ("studentId", "dayKey");
 
 -- ---------------------------------------------------------------------------
--- 2. learning_profiles — the living profile (one row per student)
+-- learning_profiles — the living profile (one row per student)
 -- ---------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS "learning_profiles" (
     "id"                  TEXT NOT NULL,
@@ -97,7 +112,10 @@ CREATE TABLE IF NOT EXISTS "learning_profiles" (
     "createdAt"           TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt"           TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "learning_profiles_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "learning_profiles_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "learning_profiles_studentId_fkey"
+        FOREIGN KEY ("studentId") REFERENCES "students"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS "learning_profiles_studentId_key"
@@ -108,7 +126,7 @@ CREATE INDEX IF NOT EXISTS "learning_profiles_computedAt_idx"
     ON "learning_profiles" ("computedAt");
 
 -- ---------------------------------------------------------------------------
--- 3. learning_profile_snapshots — one row per student per day, for trends
+-- learning_profile_snapshots — one row per student per day, for trends
 -- ---------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS "learning_profile_snapshots" (
     "id"               TEXT NOT NULL,
@@ -125,7 +143,10 @@ CREATE TABLE IF NOT EXISTS "learning_profile_snapshots" (
     "preferredStyle"   TEXT,
     "createdAt"        TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "learning_profile_snapshots_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "learning_profile_snapshots_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "learning_profile_snapshots_studentId_fkey"
+        FOREIGN KEY ("studentId") REFERENCES "students"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS "learning_profile_snapshots_studentId_dayKey_key"
@@ -135,42 +156,6 @@ CREATE INDEX IF NOT EXISTS "learning_profile_snapshots_dayKey_idx"
 CREATE INDEX IF NOT EXISTS "learning_profile_snapshots_studentId_dayKey_idx"
     ON "learning_profile_snapshots" ("studentId", "dayKey");
 
--- ---------------------------------------------------------------------------
--- 4. Foreign keys → students(id), cascading on delete
---
--- Added separately and guarded, because ADD CONSTRAINT has no IF NOT EXISTS in
--- PostgreSQL and this script must stay re-runnable.
--- ---------------------------------------------------------------------------
-DO $$
-BEGIN
-    IF NOT EXISTS (
-        SELECT 1 FROM pg_constraint WHERE conname = 'learning_events_studentId_fkey'
-    ) THEN
-        ALTER TABLE "learning_events"
-            ADD CONSTRAINT "learning_events_studentId_fkey"
-            FOREIGN KEY ("studentId") REFERENCES "students"("id")
-            ON DELETE CASCADE ON UPDATE CASCADE;
-    END IF;
-
-    IF NOT EXISTS (
-        SELECT 1 FROM pg_constraint WHERE conname = 'learning_profiles_studentId_fkey'
-    ) THEN
-        ALTER TABLE "learning_profiles"
-            ADD CONSTRAINT "learning_profiles_studentId_fkey"
-            FOREIGN KEY ("studentId") REFERENCES "students"("id")
-            ON DELETE CASCADE ON UPDATE CASCADE;
-    END IF;
-
-    IF NOT EXISTS (
-        SELECT 1 FROM pg_constraint WHERE conname = 'learning_profile_snapshots_studentId_fkey'
-    ) THEN
-        ALTER TABLE "learning_profile_snapshots"
-            ADD CONSTRAINT "learning_profile_snapshots_studentId_fkey"
-            FOREIGN KEY ("studentId") REFERENCES "students"("id")
-            ON DELETE CASCADE ON UPDATE CASCADE;
-    END IF;
-END $$;
-
 -- ============================================================================
--- Done. Nothing above can remove or modify existing data.
+-- End of additive deploy script. Nothing above can remove or modify data.
 -- ============================================================================
