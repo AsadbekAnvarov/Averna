@@ -1,5 +1,8 @@
 import OpenAI from "openai";
 import { readingTestSchema, type GeneratedReadingTest } from "@/lib/test-schema";
+// Type-only import: the Learning DNA context is passed IN by the caller, so this
+// module stays free of any database or engine dependency.
+import type { DnaPromptContext } from "@/lib/engine/learning-dna/types";
 
 // Lazy initialization - only create OpenAI client when actually needed
 let openai: OpenAI | null = null;
@@ -135,9 +138,31 @@ export async function generateSpeakingQuestions(
   }
 }
 
+/**
+ * Render a Learning DNA context block for a system prompt.
+ *
+ * The `cautions` are included as prominently as the `facts` on purpose: telling
+ * the model when NOT to assert a pattern is what stops confident-sounding
+ * personalised advice from being invented for a student we barely know yet.
+ */
+function dnaPromptBlock(dna?: DnaPromptContext | null): string {
+  if (!dna || !dna.available || dna.facts.length === 0) return "";
+  return `
+LEARNING DNA — what we have measured about THIS student's behaviour.
+Use it to shape HOW you explain things (channel, session length, sequencing) and WHAT you prioritise.
+${dna.summary}
+${dna.facts.map((f) => `- ${f}`).join("\n")}
+
+Rules for using this profile:
+${dna.cautions.map((c) => `- ${c}`).join("\n")}
+- Never quote these numbers back as a report. Let them change your advice, not your wording.
+`;
+}
+
 export async function aiMentorChat(
   message: string,
-  conversationHistory: { role: "user" | "assistant"; content: string }[]
+  conversationHistory: { role: "user" | "assistant"; content: string }[],
+  dna?: DnaPromptContext | null
 ): Promise<string> {
   // Offline fallback: rule-based helpful answer when no OpenAI key is configured
   if (!hasOpenAI()) {
@@ -160,7 +185,8 @@ export async function aiMentorChat(
           - Practice questions
           - Motivation and encouragement
           
-          Be friendly, encouraging, and provide clear, actionable advice. Always relate answers back to IELTS success.`,
+          Be friendly, encouraging, and provide clear, actionable advice. Always relate answers back to IELTS success.
+${dnaPromptBlock(dna)}`,
         },
         ...conversationHistory,
         { role: "user", content: message },

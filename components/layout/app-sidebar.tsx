@@ -47,6 +47,7 @@ import {
   Sparkles,
   Newspaper,
   SpellCheck,
+  Dna,
   type LucideIcon,
 } from "lucide-react";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
@@ -95,6 +96,7 @@ const STUDENT_NAV: NavSection[] = [
   {
     label: "My Progress",
     items: [
+      { name: "Learning DNA", href: "/learning-dna", icon: Dna, badge: "New" },
       { name: "Progress Tracking", href: "/progress", icon: TrendingUp },
       { name: "Analytics", href: "/analytics", icon: BarChart },
       { name: "Achievements", href: "/achievements", icon: Award },
