@@ -10,7 +10,7 @@ import {
   GraduationCap, ClipboardCheck, NotebookPen, PlusCircle, Megaphone, BarChart3,
   Wallet, Activity, ScrollText, Users, Command as CommandIcon, Settings, LogOut,
   Sun, Moon, SpellCheck, Sparkles, CornerDownLeft, ArrowUpDown,
-  Library, FileText, Clapperboard, Award, Bot, type LucideIcon,
+  Library, FileText, Clapperboard, Award, Bot, Dna, type LucideIcon,
 } from "lucide-react";
 
 type ActionId = "theme" | "signout";
@@ -27,6 +27,7 @@ const STUDENT_COMMANDS: Cmd[] = [
   { group: "Overview", label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, keywords: "home main" },
   { group: "Overview", label: "Learning Center", href: "/learning", icon: GraduationCap, keywords: "practice modules hub all skills" },
   { group: "Overview", label: "My Progress", href: "/progress", icon: BarChart3, keywords: "band rank achievements bests leagues" },
+  { group: "Overview", label: "Learning DNA", href: "/learning-dna", icon: Dna, keywords: "how i learn style focus retention confidence consistency motivation personalised profile" },
   { group: "Overview", label: "My Schedule", href: "/schedule", icon: CalendarClock, keywords: "attendance grades" },
   { group: "Overview", label: "Calendar", href: "/calendar", icon: CalendarDays, keywords: "month deadlines" },
   { group: "Overview", label: "Notifications", href: "/notifications", icon: Bell, keywords: "alerts" },
@@ -68,6 +69,7 @@ const TEACHER_COMMANDS: Cmd[] = [
   { group: "Overview", label: "Notifications", href: "/notifications", icon: Bell, keywords: "alerts" },
 
   { group: "Students", label: "Students", href: "/teacher/students", icon: GraduationCap, keywords: "learners" },
+  { group: "Students", label: "Learning DNA (pick a student)", href: "/teacher/students", icon: Dna, keywords: "how student learns style focus motivation teaching strategy behaviour" },
   { group: "Students", label: "Take Attendance", href: "/teacher/attendance", icon: ClipboardCheck, keywords: "roll call present" },
   { group: "Students", label: "Gradebook", href: "/teacher/gradebook", icon: NotebookPen, keywords: "grades marks" },
 
@@ -85,6 +87,7 @@ const TEACHER_COMMANDS: Cmd[] = [
 const ADMIN_COMMANDS: Cmd[] = [
   { group: "Umumiy koʻrinish", label: "Boshqaruv paneli", href: "/admin/dashboard", icon: LayoutDashboard, keywords: "home bosh" },
   { group: "Umumiy koʻrinish", label: "Tahlil", href: "/admin/analytics", icon: BarChart3, keywords: "stats analytics statistika" },
+  { group: "Umumiy koʻrinish", label: "Oʻquv DNK tahlili", href: "/admin/analytics", icon: Dna, keywords: "learning dna oʻrganish uslubi diqqat motivatsiya eslab qolish behaviour anonim" },
   { group: "Umumiy koʻrinish", label: "Bildirishnomalar", href: "/notifications", icon: Bell, keywords: "alerts notifications" },
 
   { group: "Odamlar", label: "Oʻqituvchilar", href: "/admin/teachers", icon: GraduationCap, keywords: "teachers staff" },

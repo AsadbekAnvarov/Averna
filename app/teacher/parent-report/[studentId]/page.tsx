@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, Award, ClipboardCheck, BookMarked, Flame, Target, CheckCircle2, XCircle, Clock } from "lucide-react";
+import { Users, Award, ClipboardCheck, BookMarked, Flame, Target, CheckCircle2, XCircle, Clock, Brain } from "lucide-react";
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
@@ -56,7 +56,19 @@ export default async function ParentReportPage({ params }: { params: { studentId
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-8 max-w-3xl pb-12">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
-        <Link href="/teacher/students" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Students</Link>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <Link href="/teacher/students" className="text-averna-neon hover:underline text-sm">← Back to Students</Link>
+          {/* Teaching strategy lives on its own page: this report is written to be
+              shared with parents, so professional diagnostics stay out of it. */}
+          {session.user.role !== "STUDENT" && (
+            <Link
+              href={`/teacher/learning-dna/${student.id}`}
+              className="text-averna-purple hover:underline text-sm inline-flex items-center gap-1.5"
+            >
+              <Brain className="h-4 w-4" /> How this student learns
+            </Link>
+          )}
+        </div>
 
         {/* Report header */}
         <Card className="glass border-averna-neon/40 mb-6">

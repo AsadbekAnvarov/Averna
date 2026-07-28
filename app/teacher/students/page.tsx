@@ -217,6 +217,11 @@ export default async function TeacherStudentsPage() {
                               + Bonus
                             </Button>
                           </form>
+                          <Link href={`/teacher/learning-dna/${student.id}`}>
+                            <Button size="sm" variant="outline" className="border-averna-purple/40 text-averna-purple">
+                              Learning DNA
+                            </Button>
+                          </Link>
                           <Link href={`/teacher/parent-report/${student.id}`}>
                             <Button size="sm" variant="outline" className="border-averna-cyan/40 text-averna-cyan">
                               Report

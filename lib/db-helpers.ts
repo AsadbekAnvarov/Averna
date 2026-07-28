@@ -4,6 +4,15 @@ import { isGenuineWriting } from "@/lib/utils";
 import { computeTestXp } from "@/lib/xp";
 import { awardXp, advanceStreak } from "@/lib/engine/xp-engine";
 import { reconcileSkillStates, celebrationFor } from "@/lib/engine/progress-engine";
+import {
+  recordLearningEvent,
+  reconcileLearningProfile,
+  testAccuracy,
+  testCompletion,
+  SKILL_CHANNEL,
+  type Channel,
+  type SkillKey,
+} from "@/lib/engine/learning-dna";
 import { buildAchievementSnapshot, evaluateAchievements } from "@/lib/engine/achievement-engine";
 import { notifyUser } from "@/lib/notifications";
 
@@ -240,6 +249,30 @@ export async function submitHomework(
   }
   await checkAndAwardAchievements(studentId);
 
+  // Learning DNA: homework is sustained, self-paced production — a different
+  // behaviour from a timed test, and the only place we see how much language the
+  // student writes voluntarily. Missing the deadline is recorded as a planning
+  // signal rather than a knowledge one.
+  const words = content.trim().split(/\s+/).filter(Boolean).length;
+  const uniqueWords = new Set(
+    content
+      .toLowerCase()
+      .split(/\s+/)
+      .map((w) => w.replace(/[^a-z']/g, ""))
+      .filter(Boolean)
+  ).size;
+  await recordLearningEvent({
+    studentId,
+    kind: "homework",
+    skill: homework.module as SkillKey,
+    channel: SKILL_CHANNEL[homework.module as SkillKey],
+    durationMin: null,
+    words,
+    diversity: words > 0 ? uniqueWords / words : null,
+    difficulty: String(homework.difficulty),
+    errorTags: Date.now() > homework.dueDate.getTime() ? ["time_pressure"] : [],
+  });
+
   return submission;
 }
 
@@ -403,6 +436,18 @@ export async function saveIELTSTest(
     idempotencyKey?: string;
     /** Integrity trust multiplier (0..1) applied to earned XP (S4). */
     trustMultiplier?: number;
+    /**
+     * Extra behavioural detail for the Learning DNA Engine that the outcome row
+     * can't express: words read/produced, lexical diversity, the delivery channel
+     * actually used, and observed mistake categories. Optional everywhere — the
+     * engine reconstructs what it can without it.
+     */
+    dna?: {
+      channel?: Channel;
+      words?: number;
+      diversity?: number;
+      errorTags?: string[];
+    };
   }
 ) {
   // Clamp untrusted/edge inputs so analytics and bands stay sane: timeSpent is
@@ -465,6 +510,36 @@ export async function saveIELTSTest(
   // Check for achievements
   await checkAndAwardAchievements(studentId);
 
+  // Learning DNA (AVERNA-001): record the BEHAVIOUR behind the result — channel,
+  // time of day, how long it took, how complete it was, which mistakes appeared.
+  // The test row stores the outcome; this stores how the outcome was produced,
+  // which is what personalisation actually needs. Never throws.
+  const completion = testCompletion(answers, aiAnalysis);
+  await recordLearningEvent({
+    studentId,
+    kind: "test",
+    skill: module as SkillKey,
+    channel: options?.dna?.channel ?? SKILL_CHANNEL[module as SkillKey],
+    accuracy: testAccuracy(aiAnalysis, safeScore),
+    durationMin: safeTime > 0 ? safeTime / 60 : null,
+    items: completion.total,
+    correct: null,
+    words: options?.dna?.words,
+    diversity: options?.dna?.diversity,
+    difficulty: options?.difficulty ?? null,
+    errorTags: [
+      ...(options?.dna?.errorTags ?? []),
+      // Reconstructable without any caller support: a materially incomplete
+      // paper is a time-management signal, not a knowledge signal.
+      ...(completion.answered != null &&
+      completion.total != null &&
+      completion.total >= 5 &&
+      completion.answered / completion.total < 0.9
+        ? ["time_pressure"]
+        : []),
+    ],
+  });
+
   // Persist the mastery lifecycle and celebrate any stage the student just
   // reached. Derived from evidence, so it can't be faked; never throws.
   const advances = await reconcileSkillStates(studentId);
@@ -479,6 +554,14 @@ export async function saveIELTSTest(
       }
     }
   }
+
+  // Make sure a Learning DNA profile EXISTS for this student, so they appear in
+  // platform-wide analytics from their first test onward. `skipIfFresh` keeps this
+  // off the critical path in the normal case: the profile the student actually
+  // sees is refreshed lazily on read, which is both cheaper (nothing is computed
+  // for a submission nobody looks at) and better placed (the read path streams it
+  // inside Suspense instead of delaying this response). Never throws.
+  await reconcileLearningProfile(studentId, { skipIfFresh: true });
 
   // Expose the XP that was granted (used by the Integrity Engine's shadow log).
   // Attached to the test object so existing callers using `test.id` keep working.
@@ -543,6 +626,18 @@ export async function recordSpeakingSession(
 
   // Check achievements
   await checkAndAwardAchievements(studentId);
+
+  // Learning DNA: speaking is the activity learners avoid when they feel unsure,
+  // so choosing it — and how long they sustain it — is one of the strongest
+  // confidence signals available. A teacher's star rating is the accuracy proxy.
+  await recordLearningEvent({
+    studentId,
+    kind: "speaking",
+    skill: "SPEAKING",
+    channel: "speaking",
+    accuracy: rating != null ? rating / 5 : null,
+    durationMin: duration > 0 ? duration : null,
+  });
 
   return session;
 }

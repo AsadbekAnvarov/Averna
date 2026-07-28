@@ -5,9 +5,12 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3, TrendingUp, Users, ClipboardCheck, Layers } from "lucide-react";
+import { Suspense } from "react";
 import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
+import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
+import { LearningDnaAnalytics } from "@/components/admin/learning-dna-analytics";
 
 const MONTHS = ["Yan","Fev","Mar","Apr","May","Iyn","Iyl","Avg","Sen","Okt","Noy","Dek"];
 
@@ -72,6 +75,14 @@ export default async function AdminAnalyticsPage() {
           <Stat icon={<Layers className="h-4 w-4" />} label="Guruhlar" value={groups.length} color="text-averna-neon" border="border-averna-neon/30" />
           <Stat icon={<ClipboardCheck className="h-4 w-4" />} label="Davomat yozuvlari" value={attendance} color="text-averna-purple" border="border-averna-purple/30" />
           <Stat icon={<TrendingUp className="h-4 w-4" />} label="Jami ballar" value={totalPoints._sum.totalPoints ?? 0} color="text-averna-pink" border="border-averna-pink/30" />
+        </div>
+
+        {/* Learning DNA — platforma boʻylab xatti-harakat tahlili (anonim).
+            Oʻz maʼlumotini oʻzi yuklaydi, shuning uchun Suspense ichida. */}
+        <div className="mb-8">
+          <Suspense fallback={<WidgetSkeleton rows={6} />}>
+            <LearningDnaAnalytics />
+          </Suspense>
         </div>
 
         {/* Growth chart */}

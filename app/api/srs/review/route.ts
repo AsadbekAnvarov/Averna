@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { awardXp } from "@/lib/engine/xp-engine";
+import { recordLearningEvent } from "@/lib/engine/learning-dna";
 import { schedule, type Rating, type SrsCardState } from "@/lib/srs";
 
 export const dynamic = "force-dynamic";
@@ -91,6 +92,8 @@ export async function POST(req: NextRequest) {
 
     let totalXp = 0;
     const results: { itemKey: string; dueAt: number; xp: number }[] = [];
+    /** Recall quality per review, for the Learning DNA accuracy signal. */
+    const RECALL_QUALITY: Record<Rating, number> = { again: 0, hard: 0.5, good: 0.85, easy: 1 };
 
     for (const rev of reviews) {
       const now = Date.now();
@@ -149,6 +152,23 @@ export async function POST(req: NextRequest) {
         },
       })
       .catch(() => {});
+
+    // Learning DNA: recall after a delay is the only honest measure of retention,
+    // and the timestamp is what lets the engine detect whether reviewing FIRST
+    // improves the rest of this student's session. One event per request keeps the
+    // write cost flat for a fast game round while preserving both signals.
+    const quality =
+      reviews.reduce((sum, r) => sum + RECALL_QUALITY[r.rating], 0) / reviews.length;
+    await recordLearningEvent({
+      studentId: student.id,
+      kind: "review",
+      skill: reviews[0].source === "mistake" ? "GRAMMAR" : "VOCABULARY",
+      channel: "flashcard",
+      accuracy: quality,
+      items: reviews.length,
+      correct: reviews.filter((r) => r.rating !== "again").length,
+      errorTags: quality < 0.5 ? ["vocabulary_recall"] : [],
+    });
 
     return NextResponse.json({ ok: true, xp: totalXp, results });
   } catch (error: unknown) {

@@ -63,6 +63,39 @@ export async function POST(req: NextRequest) {
     const percentage = (correctCount / totalQuestions) * 100;
     const bandScore = calculateBandScore(percentage);
 
+    // ---- Learning DNA signals this route is uniquely able to measure ----
+    // Words in the passages give a real reading speed (words ÷ minutes), which no
+    // other surface can compute; per-question-type error rates give a defensible
+    // mistake category instead of a vague "reading is weak".
+    const passageWords = testData.passages.reduce(
+      (sum, p) => sum + p.text.trim().split(/\s+/).filter(Boolean).length,
+      0
+    );
+
+    const byType = new Map<string, { wrong: number; total: number }>();
+    for (const passage of testData.passages) {
+      for (const q of passage.questions) {
+        const entry = byType.get(q.type) ?? { wrong: 0, total: 0 };
+        entry.total += 1;
+        if (results[q.id] === false) entry.wrong += 1;
+        byType.set(q.type, entry);
+      }
+    }
+    const TYPE_TAG: Record<string, string> = {
+      "true-false-not-given": "inference",
+      "multiple-choice": "detail_questions",
+      "sentence-completion": "detail_questions",
+    };
+    const errorTags: string[] = [];
+    for (const [type, stats] of byType) {
+      // A pattern within the paper, not a single slip: at least two wrong AND a
+      // failure rate high enough that it isn't just this student's overall level.
+      if (stats.wrong >= 2 && stats.wrong / stats.total >= 0.4) {
+        const tag = TYPE_TAG[type];
+        if (tag) errorTags.push(tag);
+      }
+    }
+
     const answeredCount = Object.keys(answers || {}).length;
     const earnsPoints = answeredCount > 0 && correctCount > 0;
 
@@ -92,8 +125,9 @@ export async function POST(req: NextRequest) {
             contentKey: testId,
             idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
             trustMultiplier: trust.multiplier,
+            dna: { channel: "reading", words: passageWords, errorTags },
           }
-        : { pointsOverride: 0 }
+        : { pointsOverride: 0, dna: { channel: "reading", words: passageWords, errorTags } }
     );
 
     await logAssessment(facts, verdict, test.pointsAwarded ?? 0);

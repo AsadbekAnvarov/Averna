@@ -139,6 +139,9 @@ model Student {
   payments          Payment[]
   reviewItems       ReviewItem[]
   skillStates       SkillState[]
+  learningEvents    LearningEvent[]
+  learningProfile   LearningProfile?
+  learningSnapshots LearningProfileSnapshot[]
 
   @@index([groupId])
   @@index([totalPoints])
@@ -184,12 +187,40 @@ model Group {
   // Relations
   teacher     Teacher      @relation(fields: [teacherId], references: [id])
   students    Student[]
+  rosterMembers RosterStudent[]
   homework    Homework[]
   attendances Attendance[]
   lessonLogs  LessonLog[]
 
   @@index([teacherId])
   @@map("groups")
+}
+
+/// A student who belongs to a group but has NO site account.
+///
+/// The platform's `Student` model is inseparable from a `User` (login) — it
+/// exists to power a personal dashboard. But a learning centre also enrols young
+/// children who never touch the app, and the administrator still needs the full,
+/// truthful roster of every group. This table is that roster: a group member the
+/// admin manages by hand, holding only what a register needs (name, age, a parent
+/// contact, a note). It is intentionally separate from `Student` so an account is
+/// never fabricated for a child who shouldn't have one, and so the two lists can
+/// be shown together without pretending a roster child can log in.
+model RosterStudent {
+  id         String   @id @default(cuid())
+  groupId    String
+  fullName   String
+  parentName String?
+  phone      String?
+  age        Int?
+  note       String?  @db.Text
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  group Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@index([groupId])
+  @@map("roster_students")
 }
 
 model Homework {
@@ -721,4 +752,182 @@ model GeneratedTest {
   updatedAt   DateTime @updatedAt
 
   @@index([module, published])
+}
+
+
+// ============================================================================
+// LEARNING DNA ENGINE (AVERNA-001)
+// ============================================================================
+
+/// The behavioural sensor stream that feeds the Learning DNA Engine.
+///
+/// Every model in Averna already stores *outcomes* (a band, a submission, a
+/// streak). None of them store the *behaviour* that produced the outcome — which
+/// channel the learner used, how long they stayed focused, what time of day it
+/// was in their own timezone, which error categories appeared. Those are exactly
+/// the signals a personalisation engine needs, so they get their own append-only
+/// table rather than being reverse-engineered from unstructured JSON.
+///
+/// Design notes:
+/// - APPEND-ONLY. Rows are never updated, so the stream is a truthful audit of
+///   behaviour and can be re-processed with better maths at any time.
+/// - PRE-BUCKETED TIME. `hourLocal`/`weekday`/`dayKey` are computed once, at
+///   write time, in Asia/Tashkent — so "your best study hour" never depends on
+///   the server's timezone and needs no per-request conversion of history.
+/// - NORMALISED ACCURACY. `accuracy` is 0-1 for every kind of activity, which is
+///   what makes cross-channel comparison ("you score higher by audio") valid.
+/// - PRIVACY. Only measurements are stored, never learner content. `errorTags`
+///   holds short category slugs (e.g. "articles", "time_pressure"), not answers.
+model LearningEvent {
+  id        String   @id @default(cuid())
+  studentId String
+
+  /// test | review | homework | speaking | focus | ai_chat | checkin | game | lesson
+  kind      String
+  /// READING | LISTENING | WRITING | SPEAKING | GRAMMAR | VOCABULARY | null (mixed)
+  skill     String?
+  /// Delivery channel the learner actually used — the basis of learning-style
+  /// detection: reading | audio | writing | speaking | flashcard | conversation | video | grammar
+  channel   String
+
+  /// 0-1 normalised correctness. Null when the activity has no notion of correct.
+  accuracy    Float?
+  /// Time genuinely spent on the activity, in minutes.
+  durationMin Float?
+  /// Items attempted / answered correctly (questions, cards, prompts).
+  items       Int?
+  correct     Int?
+  /// Words produced (writing) or consumed (reading) — powers writing complexity
+  /// and reading speed.
+  words       Int?
+  /// Lexical diversity 0-1 of produced text, when applicable.
+  diversity   Float?
+  /// Self-reported confidence 0-1 (from a check-in), never inferred.
+  confidence  Float?
+  /// Difficulty of the material, when the content declares one.
+  difficulty  String?
+  /// Repeated mistake categories observed in this event.
+  errorTags   String[] @default([])
+  /// "sensor" (recorded live) or "derived" (back-filled from legacy outcome rows).
+  origin      String   @default("sensor")
+
+  /// Pre-bucketed Tashkent time so behavioural queries never re-convert history.
+  hourLocal Int
+  weekday   Int
+  dayKey    String
+
+  createdAt DateTime @default(now())
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId, createdAt])
+  @@index([studentId, kind])
+  @@index([studentId, dayKey])
+  @@map("learning_events")
+}
+
+/// The living Learning DNA profile — one row per student, rewritten each time the
+/// engine reconciles.
+///
+/// The scalar columns are deliberately denormalised out of `payload` so that
+/// platform-wide admin aggregates ("average focus duration", "most common
+/// learning style") are a single indexed scan instead of parsing thousands of
+/// JSON blobs. `payload` carries the rich, evolving detail (per-skill breakdown,
+/// style scores, insights, recommendations) whose shape changes as the engine
+/// improves — versioned by `version` so a stale payload is recomputed rather
+/// than mis-read.
+model LearningProfile {
+  id        String @id @default(cuid())
+  studentId String @unique
+
+  /// Engine schema version of `payload`. Bumped when the shape changes.
+  version    Int      @default(1)
+  computedAt DateTime @default(now())
+  /// Number of behavioural events the profile was computed from — the honest
+  /// measure of how much the engine actually knows about this learner.
+  dataPoints Int      @default(0)
+  /// 0-100: how developed this learner is as a *learner* (self-regulation,
+  /// consistency, retention, breadth) — not how high their band is.
+  maturity   Int      @default(0)
+  /// insufficient | low | medium | high — overall trust in this profile.
+  confidence String   @default("insufficient")
+
+  // --- How they learn ---
+  preferredStyle   String?
+  styleConfidence  String  @default("insufficient")
+  focusMinutes     Int?
+  fatiguePointMin  Int?
+  idealLessonMin   Int?
+  optimalDaypart   String?
+  optimalHourStart Int?
+  optimalHourEnd   Int?
+
+  // --- How well they learn ---
+  confidenceScore    Int?
+  retentionScore     Int?
+  memoryHalfLifeDays Float?
+  consistencyScore   Int?
+  motivationScore    Int?
+  motivationTrend    String?
+  learningSpeed      Float?
+  revisionEfficiency Int?
+  skillBalance       Int?
+
+  // --- What they know ---
+  strongestSkill     String?
+  weakestSkill       String?
+  fastestGrowingSkill String?
+  vocabularyGrowth   Int?
+  grammarGrowth      Int?
+  speakingConfidence Int?
+  writingComplexity  Int?
+  readingSpeedWpm    Int?
+  listeningAccuracy  Int?
+
+  /// Full profile detail: per-skill metrics, style scores, insights (with their
+  /// evidence), recommendations and the study plan.
+  payload Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([preferredStyle])
+  @@index([computedAt])
+  @@map("learning_profiles")
+}
+
+/// One snapshot per student per day of the headline DNA metrics.
+///
+/// The live profile answers "who is this learner now"; only a time series can
+/// answer "is motivation rising, is retention improving, is this learner
+/// maturing" — which is the whole point of a profile that evolves. Kept to
+/// scalars (cheap to store, cheap to chart) and unique per day so repeated
+/// reconciliations during a day overwrite rather than accumulate.
+model LearningProfileSnapshot {
+  id        String @id @default(cuid())
+  studentId String
+  dayKey    String
+
+  maturity         Int
+  confidenceScore  Int?
+  retentionScore   Int?
+  consistencyScore Int?
+  motivationScore  Int?
+  learningSpeed    Float?
+  focusMinutes     Int?
+  dataPoints       Int    @default(0)
+  preferredStyle   String?
+
+  createdAt DateTime @default(now())
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, dayKey])
+  /// Platform-wide trend queries scan by day across all students…
+  @@index([dayKey])
+  /// …and a single learner's history is read by day within their own rows.
+  @@index([studentId, dayKey])
+  @@map("learning_profile_snapshots")
 }

@@ -56,6 +56,7 @@ import { CommitmentCard } from "@/components/dashboard/commitment-card";
 import { VoiceJournal } from "@/components/dashboard/voice-journal";
 import { ExplainCoach } from "@/components/learning/explain-coach";
 import { SkillDna } from "@/components/dashboard/skill-dna";
+import { LearningDnaCard } from "@/components/dashboard/learning-dna-card";
 import { MistakeBank } from "@/components/learning/mistake-bank";
 import { EssayXray } from "@/components/learning/essay-xray";
 import { Roleplay } from "@/components/learning/roleplay";
@@ -77,7 +78,7 @@ import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine, Clapperboard, Brain, Flame, Award } from "lucide-react";
+import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine, Clapperboard, Brain, Flame, Award, Dna } from "lucide-react";
 import { Suspense } from "react";
 import { getGlobalRank, getGroupRank } from "@/lib/db-helpers";
 
@@ -373,6 +374,12 @@ export default async function DashboardPage() {
           }
           progress={
             <>
+              {/* How you learn — the Learning DNA Engine's summary of this student */}
+              <SectionHeader icon={Dna} title="How You Learn" subtitle="Your Learning DNA, discovered from your own study behaviour" accent="text-averna-purple" action={{ label: "Full profile", href: "/learning-dna" }} />
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <LearningDnaCard studentId={student.id} />
+              </Suspense>
+
               {/* Predicted level & focus */}
               <SectionHeader icon={Brain} title="Your Predicted Level" subtitle="Where your bands are heading and what to focus on next" accent="text-averna-purple" />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>

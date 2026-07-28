@@ -11,6 +11,10 @@ type Tx = Prisma.TransactionClient;
  */
 async function deleteGroupWithTx(tx: Tx, groupId: string) {
   await tx.student.updateMany({ where: { groupId }, data: { groupId: null } });
+  // Roster members have no account, so they can't be "unassigned" — they exist
+  // only as part of this group and are removed with it. (The DB FK cascades too;
+  // deleting explicitly keeps this transaction self-describing.)
+  await tx.rosterStudent.deleteMany({ where: { groupId } }).catch(() => {});
   await tx.attendance.deleteMany({ where: { groupId } });
   await tx.lessonLog.deleteMany({ where: { groupId } });
 
