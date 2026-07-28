@@ -14,8 +14,17 @@ import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { ConfirmButton } from "@/components/ui/confirm-button";
+import { SortControl } from "@/components/admin/sort-control";
 import { recordAudit } from "@/lib/audit";
 import { deleteTeacherCascade } from "@/lib/cascade-delete";
+
+const TEACHER_SORTS = [
+  { value: "name", label: "Ism" },
+  { value: "students", label: "Oʻquvchilar" },
+  { value: "groups", label: "Guruhlar" },
+  { value: "band", label: "IELTS bali" },
+  { value: "new", label: "Yangi" },
+];
 
 async function addTeacher(formData: FormData) {
   "use server";
@@ -96,20 +105,33 @@ async function deleteTeacher(formData: FormData) {
   redirect("/admin/teachers?deleted=1");
 }
 
-export default async function AdminTeachersPage({ searchParams }: { searchParams: { saved?: string; error?: string; deleted?: string } }) {
+export default async function AdminTeachersPage({ searchParams }: { searchParams: { saved?: string; error?: string; deleted?: string; sort?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
-  const teachers = await db.teacher.findMany({
+  const teachersRaw = await db.teacher.findMany({
     include: {
       user: { select: { name: true, email: true } },
       groups: { include: { students: { select: { id: true } } } },
     },
     orderBy: { createdAt: "asc" },
   });
+
+  // Professional, deterministic ordering driven by ?sort= (name is the default).
+  const collator = new Intl.Collator("uz");
+  const studentCount = (t: (typeof teachersRaw)[number]) => t.groups.reduce((s, g) => s + g.students.length, 0);
+  const sort = searchParams.sort ?? "name";
+  const teachers = [...teachersRaw].sort((a, b) => {
+    if (sort === "students") return studentCount(b) - studentCount(a) || collator.compare(a.user.name ?? "", b.user.name ?? "");
+    if (sort === "groups") return b.groups.length - a.groups.length || collator.compare(a.user.name ?? "", b.user.name ?? "");
+    if (sort === "band") return (b.ieltsBand ?? -1) - (a.ieltsBand ?? -1) || collator.compare(a.user.name ?? "", b.user.name ?? "");
+    if (sort === "new") return 0; // already createdAt asc; reverse below
+    return collator.compare(a.user.name ?? "", b.user.name ?? "");
+  });
+  if (sort === "new") teachers.reverse();
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -166,7 +188,12 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
 
         {/* Teacher list */}
         <Card className="glass border-averna-cyan/30">
-          <CardHeader><CardTitle className="text-averna-cyan">Barcha oʻqituvchilar ({teachers.length})</CardTitle></CardHeader>
+          <CardHeader>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <CardTitle className="text-averna-cyan">Barcha oʻqituvchilar ({teachers.length})</CardTitle>
+              {teachers.length > 1 && <SortControl options={TEACHER_SORTS} />}
+            </div>
+          </CardHeader>
           <CardContent className="space-y-3">
             {teachers.map((t) => {
               const students = t.groups.reduce((s, g) => s + g.students.length, 0);

@@ -157,5 +157,29 @@ CREATE INDEX IF NOT EXISTS "learning_profile_snapshots_studentId_dayKey_idx"
     ON "learning_profile_snapshots" ("studentId", "dayKey");
 
 -- ============================================================================
+-- Group roster — students who belong to a group but have no site account
+-- (young learners the admin tracks by hand). Additive; never touches `students`.
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS "roster_students" (
+    "id"         TEXT NOT NULL,
+    "groupId"    TEXT NOT NULL,
+    "fullName"   TEXT NOT NULL,
+    "parentName" TEXT,
+    "phone"      TEXT,
+    "age"        INTEGER,
+    "note"       TEXT,
+    "createdAt"  TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt"  TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "roster_students_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "roster_students_groupId_fkey"
+        FOREIGN KEY ("groupId") REFERENCES "groups"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS "roster_students_groupId_idx"
+    ON "roster_students" ("groupId");
+
+-- ============================================================================
 -- End of additive deploy script. Nothing above can remove or modify data.
 -- ============================================================================

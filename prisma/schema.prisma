@@ -187,12 +187,40 @@ model Group {
   // Relations
   teacher     Teacher      @relation(fields: [teacherId], references: [id])
   students    Student[]
+  rosterMembers RosterStudent[]
   homework    Homework[]
   attendances Attendance[]
   lessonLogs  LessonLog[]
 
   @@index([teacherId])
   @@map("groups")
+}
+
+/// A student who belongs to a group but has NO site account.
+///
+/// The platform's `Student` model is inseparable from a `User` (login) — it
+/// exists to power a personal dashboard. But a learning centre also enrols young
+/// children who never touch the app, and the administrator still needs the full,
+/// truthful roster of every group. This table is that roster: a group member the
+/// admin manages by hand, holding only what a register needs (name, age, a parent
+/// contact, a note). It is intentionally separate from `Student` so an account is
+/// never fabricated for a child who shouldn't have one, and so the two lists can
+/// be shown together without pretending a roster child can log in.
+model RosterStudent {
+  id         String   @id @default(cuid())
+  groupId    String
+  fullName   String
+  parentName String?
+  phone      String?
+  age        Int?
+  note       String?  @db.Text
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  group Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@index([groupId])
+  @@map("roster_students")
 }
 
 model Homework {

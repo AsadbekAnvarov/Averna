@@ -22,6 +22,39 @@ export interface RosterGroup {
 
 type Action = (formData: FormData) => void | Promise<void>;
 
+type SortKey = "name" | "level" | "group" | "status";
+
+const SORT_OPTIONS: { value: SortKey; label: string }[] = [
+  { value: "name", label: "Ism (A–Z)" },
+  { value: "level", label: "Daraja" },
+  { value: "group", label: "Guruh" },
+  { value: "status", label: "Holat" },
+];
+
+const COLLATOR = new Intl.Collator("uz");
+
+/** Order the roster by the chosen key, always tie-breaking on name so the list
+ *  never jitters between equal rows. Unassigned/blank values sort last. Pure. */
+function sortStudents(
+  list: RosterStudent[],
+  key: SortKey,
+  groupNameById: Record<string, string>
+): RosterStudent[] {
+  const LAST = "\uffff"; // sorts after any real text, so "no value" lands at the end
+  const byName = (a: RosterStudent, b: RosterStudent) =>
+    COLLATOR.compare((a.name ?? "").trim() || a.email, (b.name ?? "").trim() || b.email);
+  return [...list].sort((a, b) => {
+    if (key === "level") return COLLATOR.compare(a.level || LAST, b.level || LAST) || byName(a, b);
+    if (key === "group") {
+      const ga = a.groupId ? groupNameById[a.groupId] ?? LAST : LAST;
+      const gb = b.groupId ? groupNameById[b.groupId] ?? LAST : LAST;
+      return COLLATOR.compare(ga, gb) || byName(a, b);
+    }
+    if (key === "status") return Number(a.blacklisted) - Number(b.blacklisted) || byName(a, b);
+    return byName(a, b);
+  });
+}
+
 /**
  * Admin student roster with instant client-side search (by name or email) and
  * optional voice search (Web Speech API). The rows keep using the server
@@ -47,6 +80,7 @@ export function StudentRoster({
   emptyText: string;
 }) {
   const [q, setQ] = useState("");
+  const [sort, setSort] = useState<SortKey>("name");
   const [listening, setListening] = useState(false);
   const [voiceSupported, setVoiceSupported] = useState(false);
   const recognitionRef = useRef<any>(null);
@@ -91,11 +125,13 @@ export function StudentRoster({
   };
 
   const query = q.trim().toLowerCase();
-  const filtered = query
+  const groupNameById = Object.fromEntries(groups.map((g) => [g.id, g.name]));
+  const matched = query
     ? students.filter(
         (s) => (s.name ?? "").toLowerCase().includes(query) || s.email.toLowerCase().includes(query)
       )
     : students;
+  const filtered = sortStudents(matched, sort, groupNameById);
 
   const showSearch = students.length > 6;
 
@@ -136,6 +172,30 @@ export function StudentRoster({
               <Mic className="h-4 w-4" />
             </button>
           )}
+        </div>
+      )}
+
+      {showSearch && (
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-[11px] uppercase tracking-wider text-gray-500 shrink-0">Saralash:</span>
+          <div className="inline-flex rounded-lg border border-white/10 bg-white/5 p-0.5">
+            {SORT_OPTIONS.map((o) => {
+              const active = sort === o.value;
+              return (
+                <button
+                  key={o.value}
+                  type="button"
+                  onClick={() => setSort(o.value)}
+                  aria-pressed={active}
+                  className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
+                    active ? "bg-averna-cyan/20 text-averna-cyan" : "text-gray-400 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {o.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
       )}
 
