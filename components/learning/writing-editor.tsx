@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Clock, FileText, Send, Loader2, ArrowLeft, AlertCircle } from "lucide-react";
+import { Clock, FileText, Send, Loader2, ArrowLeft, AlertCircle, ClipboardList } from "lucide-react";
 import Link from "next/link";
 import { VoiceInputButton } from "@/components/voice-input-button";
 import { toast } from "@/components/ui/toast";
 import { Task1Chart } from "@/components/learning/task1-chart";
+import { formatDateTime } from "@/lib/utils";
 import type { Task1ChartData } from "@/lib/writing-data";
 
 interface WritingEditorProps {
@@ -28,9 +29,11 @@ interface WritingEditorProps {
     type: string;
   };
   userId: string;
+  /** This essay completes exam homework (sent with the submission; the server re-validates it). */
+  homework?: { id: string; title: string; due: string };
 }
 
-export default function WritingEditor({ prompt, config, userId }: WritingEditorProps) {
+export default function WritingEditor({ prompt, config, userId, homework }: WritingEditorProps) {
   const router = useRouter();
   const [essay, setEssay] = useState("");
   const [timeLeft, setTimeLeft] = useState(config.timeLimit * 60);
@@ -51,7 +54,7 @@ export default function WritingEditor({ prompt, config, userId }: WritingEditorP
 
   // Timer logic
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval> | undefined;
     
     if (isTimerRunning && timeLeft > 0) {
       interval = setInterval(() => {
@@ -109,6 +112,8 @@ export default function WritingEditor({ prompt, config, userId }: WritingEditorP
           timeSpent: (config.timeLimit * 60) - timeLeft,
           // Makes a retried submission idempotent (no double XP).
           submissionId: attemptIdRef.current,
+          promptId: prompt.id,
+          ...(homework ? { homeworkId: homework.id } : {}),
         }),
       });
 
@@ -152,12 +157,21 @@ export default function WritingEditor({ prompt, config, userId }: WritingEditorP
       <div className="container mx-auto px-4 py-6 max-w-7xl">
         {/* Header */}
         <div className="mb-6 animate-fade-in">
-          <Link href="/learning/writing" className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
+          <Link href={homework ? "/homework" : "/learning/writing"} className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
             <ArrowLeft className="h-4 w-4" />
-            Back to Writing
+            {homework ? "Back to Homework" : "Back to Writing"}
           </Link>
           <h1 className="text-3xl font-bold text-white">{config.title}</h1>
           <p className="text-gray-400 text-sm mt-1">{prompt.type}</p>
+          {homework && (
+            <p className="mt-3 inline-flex flex-wrap items-center gap-2 rounded-xl border border-averna-neon/30 bg-averna-neon/[0.07] px-3 py-2 text-sm text-gray-200">
+              <ClipboardList className="h-4 w-4 shrink-0 text-averna-neon" aria-hidden />
+              <span>
+                Homework: <span className="font-semibold text-white">{homework.title}</span>
+              </span>
+              <span className="text-gray-400">· due {formatDateTime(homework.due)} · your first submission counts</span>
+            </p>
+          )}
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">

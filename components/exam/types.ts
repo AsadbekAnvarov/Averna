@@ -36,6 +36,10 @@ export interface ReadingExamRunnerProps {
   onAutosave?: (answers: ExamAnswers) => void;
   /** Practice: where "Leave" goes. */
   exitHref?: string;
+  /** Practice: this attempt completes exam homework (sent with the submission; the server re-validates it). */
+  homeworkId?: string;
+  /** Practice only: the in-text dictionary in the passage (default on; pass false to switch it off). Never in the mock. */
+  lookup?: boolean;
 }
 
 export interface ListeningExamRunnerProps {
@@ -48,6 +52,10 @@ export interface ListeningExamRunnerProps {
   onSubmit?: (answers: ExamAnswers, meta: SubmitMeta) => Promise<void> | void;
   onAutosave?: (answers: ExamAnswers) => void;
   exitHref?: string;
+  /** Practice: this attempt completes exam homework (the server re-validates it). */
+  homeworkId?: string;
+  /** Mock mode: the name of the exam shown in the header (default "Mock exam"; the placement test passes its own). */
+  examName?: string;
 }
 
 export interface WritingEssays {
@@ -75,14 +83,22 @@ export interface SpeakingAnswer {
   transcript: string;
   /** Seconds the candidate spoke for this question. */
   seconds: number;
+  /** Position of the question in flattenSpeakingQuestions(set) (lib/speaking/shared.ts). */
+  questionIndex?: number;
+  /** The candidate typed this answer (no microphone / recognition for it). */
+  typed?: boolean;
 }
 
 export interface SpeakingTestSubmission {
   setId: string;
   answers: SpeakingAnswer[];
   totalSeconds: number;
-  /** "speech" = browser speech recognition; "typed" = fallback when recognition isn't available. */
-  inputMode: "speech" | "typed";
+  /**
+   * "speech" = browser speech recognition; "typed" = fallback when recognition isn't available;
+   * "recorded" = every answer recorded and transcribed on the server (SpeakingRecording rows
+   * under the runner's attempt id) — the server marks those, not the transcripts sent here.
+   */
+  inputMode: "speech" | "typed" | "recorded";
 }
 
 export interface SpeakingCriteria {
@@ -113,4 +129,6 @@ export interface SpeakingExamRunnerProps {
   /** Mock: receive the transcripts. Practice (omitted): POST /api/learning/speaking/test and show the result. */
   onSubmit?: (submission: SpeakingTestSubmission) => Promise<void> | void;
   exitHref?: string;
+  /** Practice: this attempt completes exam homework (the server re-validates it). */
+  homeworkId?: string;
 }

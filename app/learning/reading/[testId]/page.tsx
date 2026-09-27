@@ -8,6 +8,7 @@ import { findAward } from "@/lib/engine/xp-engine";
 import { getReadingExam } from "@/lib/ielts/catalog";
 import { toClientReading } from "@/lib/ielts/sanitize";
 import { resolvePartIndex } from "@/lib/ielts/submit";
+import { examHomeworkFor } from "@/lib/homework/exam-homework";
 import { ReadingExamRunner } from "@/components/exam/reading-exam-runner";
 
 /**
@@ -36,9 +37,10 @@ function safeDecode(s: string): string {
   }
 }
 
-function practiceUrl(testId: string, part: number | null, attempt: string): string {
+function practiceUrl(testId: string, part: number | null, attempt: string, hw?: string | null): string {
   const qs = new URLSearchParams();
   if (part != null) qs.set("part", String(part));
+  if (hw) qs.set("hw", hw);
   qs.set("attempt", attempt);
   return `${LIBRARY}/${encodeURIComponent(testId)}?${qs.toString()}`;
 }
@@ -74,9 +76,15 @@ export default async function ReadingTestPage({
   if (!test) return redirect(LIBRARY);
 
   const part = resolvePartIndex(test, firstParam(searchParams.part));
+  // Exam homework: only kept when it really is this student's homework for this paper / part.
+  const hwParam = firstParam(searchParams.hw);
+  const student = hwParam
+    ? await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true } }).catch(() => null)
+    : null;
+  const homework = student ? await examHomeworkFor(student.id, hwParam, { kind: "READING", contentId: test.id, part }) : null;
   const requested = firstParam(searchParams.attempt);
   const attempt = requested && ATTEMPT_RE.test(requested) ? requested : null;
-  if (!attempt) return redirect(practiceUrl(test.id, part, randomUUID().replace(/-/g, "")));
+  if (!attempt) return redirect(practiceUrl(test.id, part, randomUUID().replace(/-/g, ""), homework?.homeworkId));
 
   const done = await submittedResultId(session.user.id, attempt);
   if (done) return redirect(`${LIBRARY}/result/${encodeURIComponent(done)}`);
@@ -87,7 +95,8 @@ export default async function ReadingTestPage({
       partIndex={part ?? undefined}
       mode="practice"
       attemptId={attempt}
-      exitHref={LIBRARY}
+      exitHref={homework ? "/homework" : LIBRARY}
+      homeworkId={homework?.homeworkId}
     />
   );
 }

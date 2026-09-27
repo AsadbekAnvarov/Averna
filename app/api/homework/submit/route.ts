@@ -19,8 +19,27 @@ export async function POST(req: NextRequest) {
 
     const { homeworkId, content } = await req.json();
 
-    if (!homeworkId || !content) {
+    if (!homeworkId || !content || typeof homeworkId !== "string" || typeof content !== "string") {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+    }
+
+    const homework: { groupId: string; contentKind: string | null } | null = await db.homework.findUnique({
+      where: { id: homeworkId },
+      select: { groupId: true, contentKind: true },
+    });
+    if (!homework) {
+      return NextResponse.json({ error: "Homework not found" }, { status: 404 });
+    }
+    // Only homework set for the student's own group.
+    if (homework.groupId !== student.groupId) {
+      return NextResponse.json({ error: "This homework isn't set for your group." }, { status: 403 });
+    }
+    // Exam homework (a test from the library) is completed by taking that test.
+    if (homework.contentKind) {
+      return NextResponse.json(
+        { error: "This homework is a test — open it from your homework page and complete it there." },
+        { status: 400 }
+      );
     }
 
     const submission = await submitHomework(student.id, homeworkId, content);

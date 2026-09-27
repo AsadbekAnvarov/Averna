@@ -98,6 +98,8 @@ export interface WritingExamClientProps {
   attemptId: string;
   /** This attempt was already marked (e.g. a refresh on the result screen) — show the result straight away. */
   initialResult?: WritingExamResult | null;
+  /** This attempt completes exam homework (the server re-validates it). */
+  homeworkId?: string;
 }
 
 const isNum = (v: unknown): v is number => typeof v === "number" && Number.isFinite(v);
@@ -185,6 +187,7 @@ interface ExamRequest {
   essays: WritingEssays;
   timeSpent: number;
   submissionId: string;
+  homeworkId?: string;
 }
 
 async function postWritingExam(body: ExamRequest): Promise<WritingExamResult> {
@@ -640,7 +643,7 @@ function NothingToMark() {
 
 type Phase = "intro" | "exam" | "result" | "empty";
 
-export function WritingExamClient({ task1, task2, attemptId, initialResult }: WritingExamClientProps) {
+export function WritingExamClient({ task1, task2, attemptId, initialResult, homeworkId }: WritingExamClientProps) {
   const [phase, setPhase] = useState<Phase>(initialResult ? "result" : "intro");
   const [result, setResult] = useState<WritingExamResult | null>(initialResult ?? null);
   const [marking, setMarking] = useState<{ words1: number; words2: number } | null>(null);
@@ -697,6 +700,7 @@ export function WritingExamClient({ task1, task2, attemptId, initialResult }: Wr
           essays,
           timeSpent: meta.timeSpent,
           submissionId: attemptId,
+          ...(homeworkId ? { homeworkId } : {}),
         });
         writeSession(resultKey(attemptId), JSON.stringify(r));
         removeSession(startedKey(attemptId));
@@ -707,7 +711,7 @@ export function WritingExamClient({ task1, task2, attemptId, initialResult }: Wr
         if (mountedRef.current) setMarking(null);
       }
     },
-    [attemptId, task1.id, task2.id]
+    [attemptId, homeworkId, task1.id, task2.id]
   );
 
   if (phase === "result" && result) {

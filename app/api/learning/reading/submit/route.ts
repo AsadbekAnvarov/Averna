@@ -10,6 +10,7 @@ import { findSubmittedTest, loadXpHistory } from "@/lib/engine/progression/servi
 import { getReadingExam } from "@/lib/ielts/catalog";
 import { clientAttemptKey, resolvePartIndex, submitObjectiveExam } from "@/lib/ielts/submit";
 import { paperLockedByMock } from "@/lib/ielts/mock";
+import { examHomeworkFor, recordExamHomework } from "@/lib/homework/exam-homework";
 
 export const dynamic = "force-dynamic";
 
@@ -51,6 +52,21 @@ export async function POST(req: NextRequest) {
         idempotencyKey: clientAttemptKey(body.submissionId),
         auto: body.auto === true,
       });
+      // Exam homework (?hw): the first attempt at this exact paper / Passage completes it.
+      if (body.homeworkId) {
+        const part = resolvePartIndex(exam, body.part);
+        const target = await examHomeworkFor(student.id, body.homeworkId, { kind: "READING", contentId: exam.id, part });
+        if (target) {
+          await recordExamHomework({
+            studentId: student.id,
+            target,
+            testId: r.testId,
+            band: r.band,
+            summary: `${part == null ? "Full test" : `Passage ${part + 1}`} · ${r.correct}/${r.total} correct · band ${r.band.toFixed(1)}`,
+            genuine: r.answered > 0,
+          });
+        }
+      }
       return NextResponse.json({
         testId: r.testId,
         correctCount: r.correct,

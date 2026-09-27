@@ -3,26 +3,32 @@ export const dynamic = "force-dynamic";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
 import WritingEditor from "@/components/learning/writing-editor";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getWritingPrompts } from "@/lib/writing-content";
-import { ArrowLeft, PenTool, BookOpen, Sparkles, Lightbulb, ChevronRight } from "lucide-react";
+import { examHomeworkFor } from "@/lib/homework/exam-homework";
+import { ArrowLeft, PenTool, BookOpen, Sparkles, Lightbulb, ChevronRight, ClipboardList } from "lucide-react";
+
+type SearchParams = Record<string, string | string[] | undefined>;
+const firstParam = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
 
 export default async function WritingTaskPage({
   params,
-  searchParams,
+  searchParams = {},
 }: {
   params: { taskType: string };
-  searchParams: { p?: string };
+  searchParams?: SearchParams;
 }) {
   const session = await auth();
-  if (!session?.user) redirect("/auth/signin");
+  if (!session?.user) return redirect("/auth/signin");
 
   const taskType = params.taskType as "task1" | "task2";
   if (!["task1", "task2"].includes(taskType)) {
-    redirect("/learning/writing");
+    return redirect("/learning/writing");
   }
+  const promptParam = firstParam(searchParams.p);
 
   const prompts = await getWritingPrompts(taskType);
   const taskConfig = {
@@ -31,7 +37,7 @@ export default async function WritingTaskPage({
   }[taskType];
 
   // No prompt selected → show list
-  if (!searchParams.p) {
+  if (!promptParam) {
     return (
       <div className="min-h-screen premium-gradient">
         <div className="container mx-auto px-4 py-8 max-w-5xl">
@@ -95,15 +101,45 @@ export default async function WritingTaskPage({
   }
 
   // Prompt selected → show editor + study panel
-  const prompt = prompts.find((p) => p.id === searchParams.p);
-  if (!prompt) redirect(`/learning/writing/${taskType}`);
+  const prompt = prompts.find((p) => p.id === promptParam);
+  if (!prompt) return redirect(`/learning/writing/${taskType}`);
+
+  // Exam homework (?hw): only kept when it really is this student's homework for this prompt.
+  const hwParam = firstParam(searchParams.hw);
+  const student = hwParam
+    ? await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true } }).catch(() => null)
+    : null;
+  const homework = student
+    ? await examHomeworkFor(student.id, hwParam, {
+        kind: taskType === "task1" ? "WRITING_TASK1" : "WRITING_TASK2",
+        contentId: prompt.id,
+      })
+    : null;
 
   return (
     <>
-      <WritingEditor prompt={prompt} config={taskConfig} userId={session.user.id} />
+      <WritingEditor
+        // Only what the editor renders — the sample answer, phrases and strategy stay on the server.
+        prompt={{ id: prompt.id, title: prompt.title, prompt: prompt.prompt, type: prompt.type, imageUrl: prompt.imageUrl, chart: prompt.chart }}
+        config={taskConfig}
+        userId={session.user.id}
+        homework={homework ? { id: homework.homeworkId, title: homework.title, due: new Date(homework.dueDate).toISOString() } : undefined}
+      />
 
       <div className="premium-gradient">
         <div className="container mx-auto px-4 py-4 max-w-7xl">
+          {homework ? (
+            // Homework is written without the model answer (it stays available in the Writing library).
+            <Card className="glass border-averna-neon/20">
+              <CardContent className="py-4 flex items-start gap-3 text-sm text-gray-300">
+                <ClipboardList className="h-5 w-5 shrink-0 text-averna-neon" aria-hidden />
+                <span>
+                  This is homework, so the sample answer, useful phrases and strategy are hidden — write it on your own. After you
+                  submit, open this task from the Writing library to study them.
+                </span>
+              </CardContent>
+            </Card>
+          ) : (
           <details className="group">
             <summary className="cursor-pointer list-none">
               <Card className="glass border-averna-neon/30 hover:border-averna-neon/60 transition-colors">
@@ -165,6 +201,7 @@ export default async function WritingTaskPage({
               </div>
             </div>
           </details>
+          )}
         </div>
       </div>
     </>
