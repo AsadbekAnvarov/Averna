@@ -9,6 +9,7 @@ import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
+import { MockSummaryCard } from "@/components/teacher/mock-summary-card";
 import {
   Users, ClipboardCheck, NotebookPen, BookOpen, CalendarClock, ArrowRight,
   GraduationCap, AlertTriangle,
@@ -98,6 +99,8 @@ export default async function TeacherGroupPage({ params }: { params: { id: strin
             );
           })}
         </div>
+
+        <MockSummaryCard groupId={group.id} studentIds={group.students.map((s) => s.id)} />
 
         {/* Students */}
         <SectionHeader icon={Users} title={`Students (${group.students.length})`} subtitle="Ranked by points · attendance shown" accent="text-averna-cyan" />

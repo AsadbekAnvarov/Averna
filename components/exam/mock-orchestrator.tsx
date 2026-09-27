@@ -135,9 +135,12 @@ const SECTION_INFO: Record<MockSection, { rules: { icon: LucideIcon; text: strin
     rules: [
       {
         icon: Mic,
-        text: "Microphone check first — allow microphone access when your browser asks. Chrome or Edge give the most reliable speech recognition.",
+        text: "Microphone check first — allow microphone access when your browser asks. An up-to-date Chrome, Edge or Safari works best.",
       },
-      { icon: Volume2, text: "The examiner asks every question out loud, and your answers are transcribed as you speak." },
+      {
+        icon: Volume2,
+        text: "The examiner asks every question out loud, and your spoken answers are transcribed for marking.",
+      },
       { icon: NotebookPen, text: "Part 2: you get 1 minute to prepare your cue card, then speak for up to 2 minutes." },
       {
         icon: MessagesSquare,
