@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { getListeningExam } from "@/lib/ielts/catalog";
 import { ObjectiveResult } from "@/components/exam/results/objective-result";
 import { parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
+import { canViewStudent } from "@/lib/access";
 
 export const metadata = { title: "Listening results" };
 
@@ -31,11 +32,15 @@ export default async function ListeningResultPage({ params }: { params: { testId
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 
-  const student = await db.student.findUnique({ where: { userId: session.user.id } });
-  if (!student) return redirect("/auth/signin");
-
-  const row = await db.iELTSTest.findUnique({ where: { id: params.testId } });
-  if (!row || row.studentId !== student.id) return redirect(LIBRARY);
+  const row = await db.iELTSTest.findUnique({
+    where: { id: params.testId },
+    include: { student: { include: { user: { select: { name: true } } } } },
+  });
+  if (!row) return redirect(LIBRARY);
+  // The student, a teacher of their group, or an admin.
+  const viewerIsOwner = row.student.userId === session.user.id;
+  if (!viewerIsOwner && !(await canViewStudent(session.user, row.studentId))) return redirect(LIBRARY);
+  const student = row.student;
 
   const attempt = parseObjectiveAttempt(row);
   if (!attempt) return redirect(LIBRARY);
@@ -53,6 +58,8 @@ export default async function ListeningResultPage({ params }: { params: { testId
       completedAt={row.completedAt}
       xp={xp}
       target={parseTargetBand(student.targetBand)}
+      viewerIsOwner={viewerIsOwner}
+      studentName={student.user?.name ?? undefined}
     />
   );
 }

@@ -17,6 +17,7 @@ import { ResultCelebration } from "@/components/learning/result-celebration";
 import { getReadingExam } from "@/lib/ielts/catalog";
 import { ObjectiveResult } from "@/components/exam/results/objective-result";
 import { isExamV2, parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
+import { canViewStudent } from "@/lib/access";
 
 export const metadata = { title: "Reading results" };
 
@@ -104,15 +105,15 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 
-  const student = await db.student.findUnique({ where: { userId: session.user.id } });
-  if (!student) redirect("/auth/signin");
-
   const test = await db.iELTSTest.findUnique({
     where: { id: params.testId },
     include: { student: { include: { user: true } } },
   });
-
-  if (!test || test.studentId !== student.id) redirect("/learning/reading");
+  if (!test) redirect("/learning/reading");
+  // The student, a teacher of their group, or an admin.
+  const viewerIsOwner = test.student.userId === session.user.id;
+  if (!viewerIsOwner && !(await canViewStudent(session.user, test.studentId))) redirect("/learning/reading");
+  const student = test.student;
 
   // Computer-delivered (exam-v2) attempts get the full exam review; older
   // practice attempts keep the original page below, unchanged.
@@ -131,6 +132,8 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
         completedAt={test.completedAt}
         xp={xp}
         target={parseTargetBand(student.targetBand)}
+        viewerIsOwner={viewerIsOwner}
+        studentName={student.user?.name ?? undefined}
       />
     );
   }
@@ -185,9 +188,11 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
 
         {/* One more thing: what improved, what you earned, what's next */}
         <div className="mb-8">
-          <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
+          {viewerIsOwner && (
+            <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
             <SessionOutcomeSection studentId={student.id} testId={test.id} label="Reading" score={test.score} />
           </Suspense>
+          )}
         </div>
 
         {/* Score Breakdown */}
