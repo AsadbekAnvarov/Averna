@@ -7,6 +7,9 @@ import { listListeningTests } from "@/lib/listening-content";
 import { assessSubmission, applyTrust, logAssessment } from "@/lib/engine/integrity-engine";
 import { computeObjectiveXp } from "@/lib/engine/progression/xp";
 import { buildSessionOutcome, findSubmittedTest, loadXpHistory } from "@/lib/engine/progression/service";
+import { getListeningExam } from "@/lib/ielts/catalog";
+import { clientAttemptKey, resolvePartIndex, submitObjectiveExam } from "@/lib/ielts/submit";
+import { paperLockedByMock } from "@/lib/ielts/mock";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +30,42 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
+
+    // Exam-format papers (CD-IELTS runner): graded against the exam-v2 key by
+    // the shared scorer (same rules as the mock exam).
+    if (body?.format === "exam-v2") {
+      const exam = typeof body.testId === "string" ? await getListeningExam(body.testId) : null;
+      if (!exam) {
+        return NextResponse.json({ error: "This Listening test couldn't be found. Please pick it again from the list." }, { status: 400 });
+      }
+      // The paper of a running mock section can't be practised until that section is
+      // handed in — the practice result page would reveal its answer key.
+      if (await paperLockedByMock(student.id, exam.id)) {
+        return NextResponse.json(
+          { error: "This paper is part of your mock exam in progress. Finish that section first, then practise it here." },
+          { status: 409 }
+        );
+      }
+      const r = await submitObjectiveExam({
+        studentId: student.id,
+        test: exam,
+        partIndex: resolvePartIndex(exam, body.part),
+        rawAnswers: body.answers,
+        timeSpent: body.timeSpent,
+        idempotencyKey: clientAttemptKey(body.submissionId),
+        auto: body.auto === true,
+      });
+      return NextResponse.json({
+        testId: r.testId,
+        correctCount: r.correct,
+        totalQuestions: r.total,
+        bandScore: r.band,
+        xpAwarded: r.xpAwarded,
+        duplicate: r.duplicate,
+        integrityNotice: r.integrityNotice,
+      });
+    }
+
     const { testId, answers, timeSpent } = body;
 
     const tests = await listListeningTests();

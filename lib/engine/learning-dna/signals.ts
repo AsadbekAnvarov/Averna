@@ -191,8 +191,11 @@ export function testAccuracy(aiAnalysis: unknown, score: number): number | null 
 export function testCompletion(answers: unknown, aiAnalysis: unknown): { answered: number | null; total: number | null } {
   const root = asRecord(answers);
   const inner = root ? asRecord(root.answers) : null;
-  const answered = inner ? Object.keys(inner).length : null;
   const analysis = asRecord(aiAnalysis);
+  // exam-v2 attempts store the graded count: a "choose TWO" group keeps both
+  // answers under ONE key, so counting keys would under-report completion.
+  const graded = analysis ? num(analysis.answeredCount) : null;
+  const answered = graded ?? (inner ? Object.keys(inner).length : null);
   let total = analysis ? num(analysis.totalQuestions) : null;
   if (total == null) {
     const results = root ? asRecord(root.results) : null;

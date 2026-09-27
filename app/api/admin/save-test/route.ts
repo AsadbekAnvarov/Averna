@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireTeacherOrAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { revalidateTag } from "next/cache";
+import { EXAM_CATALOG_TAG } from "@/lib/ielts/catalog";
 import { readingTestSchema, listeningTestSchema, writingPromptSchema, writingTask1Schema, speakingTestSchema } from "@/lib/test-schema";
 
 export const dynamic = "force-dynamic";
@@ -98,6 +100,8 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // The exam library lists are cached — show the new test without waiting for the refresh.
+    revalidateTag(EXAM_CATALOG_TAG);
     return NextResponse.json({ ok: true, id: row.id, questions });
   } catch (error) {
     console.error("save-test error:", error);

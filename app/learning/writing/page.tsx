@@ -4,8 +4,9 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PenTool, FileText, Clock, Target } from "lucide-react";
+import { PenTool, FileText, Clock, Target, ArrowRight, Scale, Shuffle, Timer } from "lucide-react";
 import Link from "next/link";
+import { SpotlightCard } from "@/components/motion/spotlight-card";
 
 export default async function WritingPage() {
   const session = await auth();
@@ -50,6 +51,64 @@ export default async function WritingPage() {
             Practice Academic Writing with AI-powered feedback and band score estimation
           </p>
         </div>
+
+        {/* Full Writing test (exam format) */}
+        <SpotlightCard
+          as="section"
+          aria-labelledby="full-writing-test-title"
+          className="av-panel av-panel-hero glow-hover mb-8 rounded-3xl p-5 animate-fade-in sm:p-8"
+        >
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="min-w-0">
+              <div className="flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-averna-neon/10 text-averna-neon" aria-hidden>
+                  <Timer className="h-5 w-5" />
+                </span>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">Exam format</p>
+              </div>
+              <h2 id="full-writing-test-title" className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                Full Writing test
+              </h2>
+              <p className="mt-1.5 flex flex-wrap items-center gap-x-2 text-sm text-gray-300 sm:text-base">
+                <span>Task 1 + Task 2</span>
+                <span aria-hidden className="text-gray-500">·</span>
+                <span>60 minutes</span>
+                <span aria-hidden className="text-gray-500">·</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Shuffle className="h-3.5 w-3.5 text-averna-neon" aria-hidden />
+                  new tasks every time
+                </span>
+              </p>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-400">
+                Write both tasks in one timed sitting, just like the computer-delivered IELTS, and get your overall
+                Writing band.
+              </p>
+              <p className="mt-3 flex max-w-2xl items-start gap-2 rounded-xl border border-averna-cyan/20 bg-averna-cyan/[0.06] px-3 py-2.5 text-sm leading-snug text-gray-200">
+                <Scale className="mt-0.5 h-4 w-4 shrink-0 text-averna-cyan" aria-hidden />
+                <span>
+                  Task 2 counts double: your band is (Task 1 + 2 × Task 2) ÷ 3, rounded to the nearest half band — so
+                  give Task 2 about 40 minutes.
+                </span>
+              </p>
+              <ul role="list" aria-label="Test format" className="mt-4 flex flex-wrap gap-2">
+                <li className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-300">
+                  Task 1 · about 20 min · 150+ words
+                </li>
+                <li className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-300">
+                  Task 2 · about 40 min · 250+ words
+                </li>
+              </ul>
+            </div>
+            <Link
+              href="/learning/writing/exam"
+              prefetch={false}
+              className="glow-cta inline-flex min-h-[52px] shrink-0 items-center justify-center gap-2 rounded-xl bg-averna-primary px-6 text-base font-semibold text-white transition-colors hover:bg-averna-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60"
+            >
+              Start the full test
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
+        </SpotlightCard>
 
         {/* Overview Card */}
         <Card className="glass border-purple-500/30 mb-8 animate-fade-in">

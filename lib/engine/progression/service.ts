@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { tashkentDateKey, tashkentDayDiff, tashkentDayStart } from "@/lib/utils";
 import { awardXp, BUDGETED_ACTIONS, findAward } from "@/lib/engine/xp-engine";
 import { notifyUser } from "@/lib/notifications";
-import { listReadingTests } from "@/lib/reading-content";
+import { listListeningExams, listReadingExams, listSpeakingSets } from "@/lib/ielts/catalog";
 import { MISSION_CONFIG, SKILLS, SKILL_LABEL, STREAK_CONFIG, XP_CONFIG, type SkillKey } from "./config";
 import { EMPTY_HISTORY, type XpHistory, type XpLine } from "./xp";
 import { getLevelInfo, type LevelInfo } from "./levels";
@@ -19,7 +19,8 @@ import {
 } from "./skills";
 import { buildDailyMission, hashString, type DailyMission } from "./missions";
 import { challengeState, pickDailyChallenge, pickWeeklyChallenge, type ChallengeState } from "./challenges";
-import { recommendNext, type ContentHints, type Recommendation } from "./recommendations";
+import { examLevelForBand, recommendNext, type ContentHints, type Recommendation } from "./recommendations";
+import { countContentKeys, pickFull, pickPart, pickSpeakingSet } from "./picks";
 import { evaluateBadges, type BadgeSnapshot, type BadgeState } from "./badges";
 
 /**
@@ -232,21 +233,49 @@ export interface Progression {
   isNew: boolean;
   /** Reward ledger keys already paid (mission / challenge / badge). */
   paidKeys: string[];
+  /** Concrete papers behind the mission / recommendation links (reused by the session outcome). */
+  hints: ContentHints;
 }
 
-async function readingHints(facts: { row: TestRow }[]): Promise<ContentHints> {
+/**
+ * Concrete material for mission and recommendation links, from the exam
+ * catalog: the next Reading passage and Listening part (mission size), a full
+ * paper of each (bigger goals) and a Speaking set — preferring material the
+ * student hasn't met, judged by the content keys (answers.testId) of their
+ * attempts in that skill. Never throws: when the catalog can't be read, the
+ * links fall back to the library pages.
+ */
+async function contentHints(
+  sessions: { row: TestRow }[],
+  profile: SkillSnapshot[],
+  now: number
+): Promise<ContentHints> {
   try {
-    const tests = await listReadingTests();
-    if (!tests.length) return {};
-    const taken = new Map<string, number>();
-    for (const { row } of facts) {
-      if (row.module !== "READING") continue;
-      const k = contentKeyOf(row.answers);
-      if (k) taken.set(k, (taken.get(k) ?? 0) + 1);
+    const keysOf = (m: SkillKey) =>
+      countContentKeys(sessions.filter((s) => s.row.module === m).map((s) => contentKeyOf(s.row.answers)));
+    const levelOf = (m: SkillKey) => examLevelForBand(profile.find((p) => p.skill === m)?.recentAvg ?? 0);
+    let lastMockAt: number | null = null;
+    for (const { row } of sessions) {
+      if (asRec(row.answers)?.mock === true) lastMockAt = Math.max(lastMockAt ?? 0, row.completedAt.getTime());
     }
-    const next = [...tests].sort((a, b) => (taken.get(a.id) ?? 0) - (taken.get(b.id) ?? 0))[0];
-    return { nextReadingTestId: next.id, readingQuestions: next.questions, readingMinutes: next.timeLimit };
-  } catch {
+    const [reading, listening, speaking] = await Promise.all([
+      listReadingExams().catch(() => []),
+      listListeningExams().catch(() => []),
+      listSpeakingSets().catch(() => []),
+    ]);
+    const readingKeys = keysOf("READING");
+    const listeningKeys = keysOf("LISTENING");
+    return {
+      readingPassage: pickPart(reading, readingKeys, { level: levelOf("READING") }),
+      readingFull: pickFull(reading, readingKeys, { level: levelOf("READING") }),
+      listeningPart: pickPart(listening, listeningKeys, { level: levelOf("LISTENING") }),
+      listeningFull: pickFull(listening, listeningKeys, { level: levelOf("LISTENING") }),
+      speakingSet: pickSpeakingSet(speaking, keysOf("SPEAKING")),
+      mockAvailable: reading.some((t) => t.full) && listening.some((t) => t.full) && speaking.length > 0,
+      daysSinceMock: lastMockAt == null ? null : Math.max(0, Math.floor((now - lastMockAt) / 86400000)),
+    };
+  } catch (e) {
+    console.error("contentHints failed:", e);
     return {};
   }
 }
@@ -324,7 +353,7 @@ async function computeProgression(studentId: string): Promise<Progression | null
   const beforeToday = facts.filter((f) => f.dayKey !== dayKey);
   const profileNow = buildSkillProfile(facts, targetBand, now.getTime());
   const profileMorning = buildSkillProfile(beforeToday, targetBand, dayStart.getTime());
-  const hints = await readingHints(sessions);
+  const hints = await contentHints(sessions, profileNow, now.getTime());
 
   const srsReviewsToday = todayLogs
     .filter((l) => l.action === "SRS_REVIEW")
@@ -435,6 +464,7 @@ async function computeProgression(studentId: string): Promise<Progression | null
     todayXp,
     isNew: facts.length === 0,
     paidKeys: ledger.map((l) => l.idempotencyKey),
+    hints,
   };
 }
 
@@ -658,7 +688,7 @@ export async function buildSessionOutcome(studentId: string, testId: string): Pr
     }
     const levelBefore = getLevelInfo(pointsBefore);
     const levelAfter = getLevelInfo(pointsBefore + (xp ?? 0));
-    const next = recommendNext(p.profile, p.targetBand, { justCompleted: skill });
+    const next = recommendNext(p.profile, p.targetBand, { justCompleted: skill, hints: p.hints });
 
     const label = SKILL_LABEL[skill];
     let headline = "Result saved.";

@@ -953,3 +953,348 @@ html.light .error-surface .text-red-100\/80 { color: #991b1b !important; }
   .animate-fade-in { animation-duration: 1ms !important; }
   .skeleton { animation: none !important; }
 }
+
+/* Hide scrollbars on horizontally scrolling strips (question navigator). */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+
+/* ===== Motion system ===== */
+/*
+ * Calm, purposeful motion (components/motion/*). Transform/opacity only, UI
+ * transitions ≤ 600 ms, never blocking reading or clicks. The graphics tier
+ * lives on <html data-gfx="full|lite"> (set before first paint by
+ * components/motion/gfx-tier.ts); "lite" and prefers-reduced-motion switch the
+ * heavier effects off. Everything here is additive — no earlier rule is edited.
+ */
+
+/* --- Scroll reveal (reveal.tsx) ---------------------------------------- */
+/* Hiding only ever happens on motion-OK, full-tier screens: without JS, with
+   reduced motion, in lite mode or in print, content is simply visible. */
+@keyframes av-reveal-in {
+  from { opacity: 0; translate: 0 var(--av-reveal-y, 14px); }
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  html:not([data-gfx="lite"]) [data-av-reveal="armed"] {
+    opacity: 0;
+    translate: 0 var(--av-reveal-y, 14px);
+  }
+  html:not([data-gfx="lite"]) [data-av-reveal="in"] {
+    animation: av-reveal-in 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--av-reveal-delay, 0ms) both;
+  }
+}
+
+/* --- Aurora (aurora.tsx) ----------------------------------------------- */
+/* Parent: relative + isolate + overflow-hidden. Sits under the content. */
+.av-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+  contain: layout paint;
+}
+.av-aurora[data-intensity="soft"] { opacity: 0.65; }
+.av-aurora__blob {
+  --s: max(68%, 20rem);
+  position: absolute;
+  display: block;
+  width: var(--s);
+  aspect-ratio: 1;
+  margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2); /* left/top = blob centre */
+  border-radius: 9999px;
+  opacity: 0.7;
+  will-change: transform, opacity;
+  animation: av-aurora-a 26s ease-in-out infinite alternate;
+}
+.av-aurora__blob--a {
+  left: 14%;
+  top: 16%;
+  background: radial-gradient(closest-side, rgba(11, 143, 106, 0.5), rgba(11, 143, 106, 0.16) 55%, rgba(11, 143, 106, 0) 100%);
+}
+.av-aurora__blob--b {
+  --s: max(58%, 18rem);
+  left: 86%;
+  top: 6%;
+  background: radial-gradient(closest-side, rgba(0, 255, 148, 0.15), rgba(0, 255, 148, 0.05) 55%, rgba(0, 255, 148, 0) 100%);
+  animation-name: av-aurora-b;
+  animation-duration: 32s;
+}
+.av-aurora__blob--c {
+  --s: max(56%, 18rem);
+  left: 52%;
+  top: 104%;
+  background: radial-gradient(closest-side, rgba(20, 181, 131, 0.24), rgba(0, 229, 255, 0.05) 60%, rgba(0, 229, 255, 0) 100%);
+  animation-name: av-aurora-c;
+  animation-duration: 38s;
+  animation-direction: alternate-reverse;
+}
+.av-aurora[data-paused] .av-aurora__blob { animation-play-state: paused; }
+@keyframes av-aurora-a {
+  0% { transform: translate3d(-4%, -2%, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate3d(7%, 5%, 0) scale(1.12); opacity: 0.85; }
+  100% { transform: translate3d(2%, -4%, 0) scale(1.04); opacity: 0.65; }
+}
+@keyframes av-aurora-b {
+  0% { transform: translate3d(6%, 0, 0) scale(1.06); opacity: 0.45; }
+  100% { transform: translate3d(-9%, 8%, 0) scale(0.94); opacity: 0.8; }
+}
+@keyframes av-aurora-c {
+  0% { transform: translate3d(-6%, 4%, 0) scale(0.96); opacity: 0.35; }
+  100% { transform: translate3d(8%, -6%, 0) scale(1.1); opacity: 0.7; }
+}
+html.light .av-aurora__blob--a { background: radial-gradient(closest-side, rgba(11, 143, 106, 0.16), rgba(11, 143, 106, 0) 100%); }
+html.light .av-aurora__blob--b { background: radial-gradient(closest-side, rgba(10, 143, 94, 0.1), rgba(10, 143, 94, 0) 100%); }
+html.light .av-aurora__blob--c { background: radial-gradient(closest-side, rgba(14, 127, 160, 0.08), rgba(14, 127, 160, 0) 100%); }
+
+/* --- Spotlight card (spotlight-card.tsx) ------------------------------- */
+.av-spotlight { position: relative; isolation: isolate; overflow: hidden; }
+.av-spotlight > .av-spotlight__glow {
+  position: absolute;
+  left: -11rem;
+  top: -11rem;
+  width: 22rem;
+  height: 22rem;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, rgba(0, 255, 148, 0.1), rgba(0, 255, 148, 0.035) 55%, rgba(0, 255, 148, 0) 100%);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.av-spotlight[data-spot] > .av-spotlight__glow { opacity: 1; }
+html.light .av-spotlight > .av-spotlight__glow {
+  background: radial-gradient(closest-side, rgba(11, 143, 106, 0.09), rgba(11, 143, 106, 0) 100%);
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .av-spotlight > .av-spotlight__glow { display: none; }
+}
+
+/* --- Reduced motion ------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .av-aurora__blob { animation: none; will-change: auto; }
+}
+
+/* --- Lite tier: heavy effects off, app-wide ---------------------------- */
+html[data-gfx="lite"] .av-aurora__blob { animation: none; will-change: auto; }
+html[data-gfx="lite"] .av-spotlight > .av-spotlight__glow { display: none; }
+/* Continuous decorative loops (several animate paint-heavy properties). */
+html[data-gfx="lite"] .animated-gradient,
+html[data-gfx="lite"] .text-gradient-animate,
+html[data-gfx="lite"] .aurora-bg::before,
+html[data-gfx="lite"] .aurora-bg::after,
+html[data-gfx="lite"] .shine::after,
+html[data-gfx="lite"] .animate-breathe,
+html[data-gfx="lite"] .animate-glow,
+html[data-gfx="lite"] .animate-float,
+html[data-gfx="lite"] .dna-float,
+html[data-gfx="lite"] .dna-rung,
+html[data-gfx="lite"] .neon-button:hover { animation: none !important; }
+html[data-gfx="lite"] .confetti-piece,
+html[data-gfx="lite"] .seasonal-flake { display: none !important; }
+/* Backdrop blur and fixed backgrounds are the costliest paints on weak GPUs. */
+html[data-gfx="lite"] .glass,
+html[data-gfx="lite"] .glass-strong,
+html[data-gfx="lite"] .glass-vibrant,
+html[data-gfx="lite"] .av-panel {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+html[data-gfx="lite"] .premium-gradient,
+html[data-gfx="lite"] .brand-bg { background-attachment: scroll; }
+
+
+
+/* ===================================================================
+   EXAM SCREENS keep their own colours in the light theme.
+   The computer-delivered IELTS screens (.exam-shell: components/exam/
+   exam-shell.tsx and the Speaking runner's full-screen stage) are always
+   dark, like the real test. The light theme above re-colours white/grey
+   text, translucent white surfaces, panels and form controls — mostly
+   with !important — which made text vanish on those dark screens. These
+   scoped resets put back the dark-theme value of every light override
+   that can render inside an exam screen: utilities, the hover/focus/peer
+   variants those overrides would shadow, components, form elements,
+   scrollbars, focus outlines and the shadcn colour tokens. Page-level
+   decoration (page gradients, aurora, sidebar …) never renders inside an
+   exam and is left alone. Additive only — no earlier rule is edited.
+   =================================================================== */
+
+/* Colour tokens (components/ui/button, the default border colour …): dark palette. */
+html.light .exam-shell {
+  --background: 200 40% 4%;
+  --foreground: 0 0% 98%;
+  --card: 200 30% 8%;
+  --card-foreground: 0 0% 98%;
+  --popover: 200 30% 8%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 160 90% 45%;
+  --primary-foreground: 0 0% 5%;
+  --secondary: 200 20% 14%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 200 20% 14%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 187 100% 50%;
+  --accent-foreground: 0 0% 5%;
+  --destructive: 0 72% 45%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 200 20% 18%;
+  --input: 200 20% 18%;
+  --ring: 160 90% 45%;
+}
+
+/* Neutral text — the shell root itself carries one (text-gray-100), so match it too. */
+html.light .exam-shell.text-white, html.light .exam-shell .text-white { color: #ffffff !important; }
+html.light .exam-shell.text-gray-50, html.light .exam-shell .text-gray-50 { color: #f9fafb !important; }
+html.light .exam-shell.text-gray-100, html.light .exam-shell .text-gray-100 { color: #f3f4f6 !important; }
+html.light .exam-shell.text-gray-200, html.light .exam-shell .text-gray-200 { color: #e5e7eb !important; }
+html.light .exam-shell.text-gray-300, html.light .exam-shell .text-gray-300 { color: #d1d5db !important; }
+html.light .exam-shell.text-gray-400, html.light .exam-shell .text-gray-400 { color: #9ca3af !important; }
+html.light .exam-shell.text-gray-500, html.light .exam-shell .text-gray-500 { color: #6b7280 !important; }
+html.light .exam-shell.text-gray-600, html.light .exam-shell .text-gray-600 { color: #4b5563 !important; }
+
+/* Accent text */
+html.light .exam-shell .text-averna-neon { color: #00ff94 !important; }
+html.light .exam-shell .text-averna-cyan { color: #00e5ff !important; }
+html.light .exam-shell .text-averna-purple { color: #b14eff !important; }
+html.light .exam-shell .text-averna-pink { color: #ff3dbb !important; }
+html.light .exam-shell .text-averna-blue { color: #2e8bff !important; }
+html.light .exam-shell .text-averna-light { color: #14b583 !important; }
+html.light .exam-shell .text-averna-accent { color: #0fd6a6 !important; }
+html.light .exam-shell .text-averna-primary { color: #0b8f6a !important; }
+html.light .exam-shell .text-blue-400 { color: #60a5fa !important; }
+html.light .exam-shell .text-blue-500 { color: #3b82f6 !important; }
+html.light .exam-shell .text-purple-300 { color: #d8b4fe !important; }
+html.light .exam-shell .text-purple-400 { color: #c084fc !important; }
+html.light .exam-shell .text-pink-300 { color: #f9a8d4 !important; }
+html.light .exam-shell .text-pink-400 { color: #f472b6 !important; }
+html.light .exam-shell .text-red-300 { color: #fca5a5 !important; }
+html.light .exam-shell .text-red-400 { color: #f87171 !important; }
+html.light .exam-shell .text-orange-300 { color: #fdba74 !important; }
+html.light .exam-shell .text-orange-400 { color: #fb923c !important; }
+html.light .exam-shell .text-orange-500 { color: #f97316 !important; }
+html.light .exam-shell .text-amber-300 { color: #fcd34d !important; }
+html.light .exam-shell .text-amber-400 { color: #fbbf24 !important; }
+html.light .exam-shell .text-yellow-200 { color: #fef08a !important; }
+html.light .exam-shell .text-yellow-300 { color: #fde047 !important; }
+html.light .exam-shell .text-yellow-300\/90 { color: rgb(253 224 71 / 0.9) !important; }
+html.light .exam-shell .text-yellow-400 { color: #facc15 !important; }
+html.light .exam-shell .text-yellow-500 { color: #eab308 !important; }
+html.light .exam-shell .text-green-300 { color: #86efac !important; }
+html.light .exam-shell .text-green-400 { color: #4ade80 !important; }
+html.light .exam-shell .text-green-500 { color: #22c55e !important; }
+html.light .exam-shell .text-emerald-200 { color: #a7f3d0 !important; }
+html.light .exam-shell .text-emerald-300 { color: #6ee7b7 !important; }
+html.light .exam-shell .text-emerald-400 { color: #34d399 !important; }
+html.light .exam-shell .text-cyan-300 { color: #67e8f9 !important; }
+html.light .exam-shell .text-cyan-400 { color: #22d3ee !important; }
+
+/* Surfaces and borders */
+html.light .exam-shell .bg-white\/5 { background-color: rgb(255 255 255 / 0.05) !important; }
+html.light .exam-shell .bg-white\/10 { background-color: rgb(255 255 255 / 0.1) !important; }
+html.light .exam-shell .hover\:bg-white\/5:hover { background-color: rgb(255 255 255 / 0.05) !important; }
+html.light .exam-shell .border-white\/5 { border-color: rgb(255 255 255 / 0.05) !important; }
+html.light .exam-shell .border-white\/10 { border-color: rgb(255 255 255 / 0.1) !important; }
+html.light .exam-shell .border-white\/20 { border-color: rgb(255 255 255 / 0.2) !important; }
+html.light .exam-shell .bg-background\/50 { background-color: hsl(var(--background) / 0.5) !important; }
+html.light .exam-shell .bg-background\/60 { background-color: hsl(var(--background) / 0.6) !important; }
+html.light .exam-shell .bg-averna-dark\/30 { background-color: rgb(4 17 13 / 0.3) !important; }
+html.light .exam-shell .bg-averna-dark\/40 { background-color: rgb(4 17 13 / 0.4) !important; }
+html.light .exam-shell .bg-averna-dark\/50 { background-color: rgb(4 17 13 / 0.5) !important; }
+html.light .exam-shell .bg-averna-dark\/80 { background-color: rgb(4 17 13 / 0.8) !important; }
+html.light .exam-shell .hover\:bg-averna-dark\/50:hover { background-color: rgb(4 17 13 / 0.5) !important; }
+html.light .exam-shell .hover\:bg-averna-dark:hover { background-color: #04110d !important; }
+html.light .exam-shell .bg-amber-400\/10 { background-color: rgb(251 191 36 / 0.1) !important; }
+html.light .exam-shell .bg-emerald-400\/10 { background-color: rgb(52 211 153 / 0.1) !important; }
+html.light .exam-shell .bg-red-400\/10 { background-color: rgb(248 113 113 / 0.1) !important; }
+html.light .exam-shell .bg-red-500\/10 { background-color: rgb(239 68 68 / 0.1) !important; }
+html.light .exam-shell .bg-averna-primary { background-color: #0b8f6a !important; }
+
+/* State variants the (!important) resets above would otherwise shadow. */
+html.light .exam-shell .hover\:text-white:hover { color: #ffffff !important; }
+html.light .exam-shell .hover\:text-gray-100:hover { color: #f3f4f6 !important; }
+html.light .exam-shell .hover\:text-gray-200:hover { color: #e5e7eb !important; }
+html.light .exam-shell .hover\:text-gray-300:hover { color: #d1d5db !important; }
+html.light .exam-shell .peer:checked ~ .peer-checked\:text-white { color: #ffffff !important; }
+html.light .exam-shell .peer:checked ~ .peer-checked\:text-averna-neon { color: #00ff94 !important; }
+html.light .exam-shell .hover\:bg-averna-light:hover { background-color: #14b583 !important; }
+html.light .exam-shell .hover\:bg-white\/10:hover { background-color: rgb(255 255 255 / 0.1) !important; }
+html.light .exam-shell .hover\:bg-red-500\/20:hover { background-color: rgb(239 68 68 / 0.2) !important; }
+html.light .exam-shell .hover\:border-white\/20:hover { border-color: rgb(255 255 255 / 0.2) !important; }
+html.light .exam-shell .hover\:border-averna-neon\/40:hover { border-color: rgb(0 255 148 / 0.4) !important; }
+html.light .exam-shell .hover\:border-averna-neon\/45:hover { border-color: rgb(0 255 148 / 0.45) !important; }
+html.light .exam-shell .hover\:border-averna-neon\/60:hover { border-color: rgb(0 255 148 / 0.6) !important; }
+html.light .exam-shell .focus\:border-averna-neon\/50:focus { border-color: rgb(0 255 148 / 0.5) !important; }
+html.light .exam-shell .focus\:border-averna-neon\/70:focus { border-color: rgb(0 255 148 / 0.7) !important; }
+html.light .exam-shell .peer:checked ~ .peer-checked\:border-averna-neon\/70 { border-color: rgb(0 255 148 / 0.7) !important; }
+
+/* Brand rings (the light theme turns every ring-averna-* ring a faint grey). */
+html.light .exam-shell .ring-averna-neon\/70 { --tw-ring-color: rgb(0 255 148 / 0.7) !important; }
+html.light .exam-shell .focus\:ring-averna-neon\/20:focus { --tw-ring-color: rgb(0 255 148 / 0.2) !important; }
+html.light .exam-shell .focus\:ring-averna-neon\/25:focus { --tw-ring-color: rgb(0 255 148 / 0.25) !important; }
+html.light .exam-shell .focus\:ring-averna-neon\/30:focus { --tw-ring-color: rgb(0 255 148 / 0.3) !important; }
+html.light .exam-shell .focus-visible\:ring-averna-neon\/60:focus-visible { --tw-ring-color: rgb(0 255 148 / 0.6) !important; }
+html.light .exam-shell .focus-visible\:ring-averna-neon\/70:focus-visible { --tw-ring-color: rgb(0 255 148 / 0.7) !important; }
+html.light .exam-shell .focus-visible\:ring-averna-cyan\/60:focus-visible { --tw-ring-color: rgb(0 229 255 / 0.6) !important; }
+html.light .exam-shell .peer:focus-visible ~ .peer-focus-visible\:ring-averna-neon\/40 { --tw-ring-color: rgb(0 255 148 / 0.4) !important; }
+
+/* Components */
+html.light .exam-shell .av-panel {
+  background: linear-gradient(180deg, rgba(12, 26, 22, 0.78), rgba(6, 16, 14, 0.82));
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 10px 30px -18px rgba(0, 0, 0, 0.8);
+}
+html.light .exam-shell .av-panel-hero {
+  border-color: rgba(0, 255, 148, 0.18);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(11, 143, 106, 0.18), transparent 55%),
+    linear-gradient(180deg, rgba(12, 28, 23, 0.9), rgba(5, 15, 13, 0.92));
+}
+/* …and keep the hover glow that the panel reset would outrank. */
+html.light .exam-shell .glow-hover:hover,
+html.light .exam-shell .glow-hover:focus-visible {
+  border-color: rgba(0, 255, 148, 0.45);
+  box-shadow: 0 0 0 1px rgba(0, 255, 148, 0.18), 0 0 26px -8px rgba(0, 255, 148, 0.45);
+}
+html.light .exam-shell .error-surface { background: rgba(127, 29, 29, 0.18); }
+html.light .exam-shell .error-surface .text-red-200 { color: #fecaca !important; }
+html.light .exam-shell .error-surface .text-red-100\/80 { color: rgb(254 226 226 / 0.8) !important; }
+html.light .exam-shell .glass {
+  background: rgba(10, 22, 30, 0.55);
+  border: 1px solid rgba(0, 229, 255, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+html.light .exam-shell .glass:hover {
+  border-color: rgba(0, 229, 255, 0.28);
+  box-shadow: 0 12px 44px -12px rgba(0, 229, 255, 0.28), 0 0 0 1px rgba(0, 255, 148, 0.1) inset;
+}
+html.light .exam-shell .glass-strong { background: rgba(8, 18, 26, 0.8); border: 1px solid rgba(0, 255, 148, 0.18); }
+html.light .exam-shell .glass-vibrant { background: rgba(10, 22, 30, 0.55); }
+html.light .exam-shell .skeleton { background: rgba(255, 255, 255, 0.06); }
+html.light .exam-shell .skeleton::after { background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent); }
+html.light .exam-shell .neon-text { color: #00ff94; text-shadow: 0 0 8px rgba(0, 255, 148, 0.7), 0 0 16px rgba(0, 255, 148, 0.4); }
+html.light .exam-shell .neon-text-cyan { color: #00e5ff; text-shadow: 0 0 8px rgba(0, 229, 255, 0.7), 0 0 16px rgba(0, 229, 255, 0.4); }
+html.light .exam-shell .neon-text-purple { color: #b14eff; text-shadow: 0 0 8px rgba(177, 78, 255, 0.7), 0 0 16px rgba(177, 78, 255, 0.4); }
+
+/* Form controls: inherit like Tailwind's preflight does; placeholders and
+   native option lists as in the dark theme. */
+html.light .exam-shell input,
+html.light .exam-shell textarea,
+html.light .exam-shell select { color: inherit; }
+html.light .exam-shell input::placeholder,
+html.light .exam-shell textarea::placeholder { color: #9ca3af; }
+html.light .exam-shell .placeholder\:text-gray-400::placeholder { color: #9ca3af; }
+html.light .exam-shell .placeholder\:text-gray-500::placeholder { color: #6b7280; }
+html.light .exam-shell .placeholder\:text-gray-600::placeholder { color: #4b5563; }
+html.light .exam-shell option,
+html.light .exam-shell option:checked,
+html.light .exam-shell option:hover { background-color: revert !important; color: revert !important; }
+
+/* Scrollbars and the keyboard focus outline */
+html.light .exam-shell ::-webkit-scrollbar-track { background: rgba(4, 17, 12, 0.5); }
+html.light .exam-shell ::-webkit-scrollbar-thumb { background: linear-gradient(#00ff94, #00e5ff); }
+html.light .exam-shell ::-webkit-scrollbar-thumb:hover { background: linear-gradient(#00e5ff, #b14eff); }
+html.light .exam-shell :focus-visible { outline-color: #00e5ff; }

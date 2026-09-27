@@ -6,6 +6,7 @@ import { PwaInstaller } from "@/components/pwa-installer";
 import { CommandPalette } from "@/components/command-palette";
 import { LiveNotifications } from "@/components/live-notifications";
 import { AppShell } from "@/components/layout/app-sidebar";
+import { GFX_TIER_SCRIPT } from "@/components/motion/gfx-tier";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -67,7 +68,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    // suppressHydrationWarning: the <head> script sets html[data-gfx] (and the theme can switch
+    // the class) before React hydrates, so <html>'s attributes legitimately differ from the server HTML.
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        {/* Graphics tier (html[data-gfx]) before first paint — components/motion/gfx-tier.ts */}
+        <script dangerouslySetInnerHTML={{ __html: GFX_TIER_SCRIPT }} />
+      </head>
       <body className={inter.className}>
         <Providers>
           <AppShell>{children}</AppShell>

@@ -2,233 +2,65 @@ export const dynamic = "force-dynamic";
 
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { BookOpen, Clock, FileText, Target, Play } from "lucide-react";
-import Link from "next/link";
-import { READING_TESTS } from "@/lib/reading-tests-data";
-import { listReadingTests } from "@/lib/reading-content";
+import { listReadingExams } from "@/lib/ielts/catalog";
+import type { ExamTestSummary } from "@/lib/ielts/types";
+import { Reveal } from "@/components/motion/reveal";
+import { LibraryHero } from "@/components/library/library-hero";
+import { ExamLibrary } from "@/components/library/exam-library";
+import { ScoreGuide } from "@/components/library/score-guide";
+import { parseDifficulty, parseTypeFilter, type SearchParams } from "@/components/library/filters";
 
-export default async function ReadingPage() {
+const PATH = "/learning/reading";
+
+export default async function ReadingLibraryPage({ searchParams = {} }: { searchParams?: SearchParams }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 
-  const core = [
-    {
-      id: "academic-1",
-      title: "Academic Reading Test 1",
-      description: "Technology and Innovation",
-      difficulty: "Intermediate",
-      topics: ["Technology", "AI", "Society"],
-    },
-    {
-      id: "academic-2",
-      title: "Academic Reading Test 2",
-      description: "Environment and Climate",
-      difficulty: "Advanced",
-      topics: ["Environment", "Climate", "Nature"],
-    },
-    {
-      id: "academic-3",
-      title: "Academic Reading Test 3",
-      description: "History and Culture",
-      difficulty: "Intermediate",
-      topics: ["History", "Culture", "Language"],
-    },
-  ].map((t) => {
-    const data = READING_TESTS[t.id];
-    return {
-      ...t,
-      passages: data?.passages.length ?? 0,
-      questions: data?.passages.reduce((sum, p) => sum + p.questions.length, 0) ?? 0,
-      timeLimit: data?.timeLimit ?? 60,
-    };
-  });
+  const type = parseTypeFilter(searchParams.type);
+  const difficulty = parseDifficulty(searchParams.difficulty ?? searchParams.level);
 
-  // Append published, generated tests from the database (defensive — falls back
-  // to core tests only if the table isn't available yet).
-  const generated = (await listReadingTests())
-    .filter((s) => s.source === "generated")
-    .map((s) => ({
-      id: s.id,
-      title: s.title,
-      description: s.description,
-      difficulty: "New",
-      topics: [] as string[],
-      passages: s.passages,
-      questions: s.questions,
-      timeLimit: s.timeLimit,
-    }));
+  const exams = await listReadingExams().catch((): ExamTestSummary[] => []);
+  const full = exams.filter((e) => e.full).length;
+  const practice = exams.length - full;
 
-  const tests = [...core, ...generated];
+  const facts = [
+    full > 0 ? `${full} full ${full === 1 ? "test" : "tests"}` : null,
+    practice > 0 ? `${practice} short practice` : null,
+    "3 passages · 40 questions · 60 min",
+    "About 20 min per passage",
+  ].filter((f): f is string => !!f);
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        {/* Header */}
-        <div className="mb-8 animate-fade-in">
-          <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-2 block">
-            ← Back to Dashboard
-          </Link>
-          <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-            <BookOpen className="h-10 w-10 text-blue-400" />
-            IELTS Reading
-          </h1>
-          <p className="text-gray-300">
-            Practice Academic Reading with automatic scoring and detailed feedback
-          </p>
-        </div>
+      <div className="container mx-auto max-w-6xl px-4 py-6 pb-24 sm:py-8 lg:pb-8">
+        <LibraryHero
+          skill="READING"
+          eyebrow="Academic Reading"
+          title="Reading tests"
+          subtitle="Full Academic papers in the computer-delivered format, or one passage at a time when you have 20 minutes. Every test is marked instantly and converted to a band."
+          facts={facts}
+        />
 
-        {/* How It Works */}
-        <Card className="glass border-blue-500/30 mb-8 animate-fade-in">
-          <CardHeader>
-            <CardTitle className="text-blue-400">How It Works</CardTitle>
-            <CardDescription>Complete reading tests with instant results</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-4 gap-4">
-              <div className="text-center p-4">
-                <div className="text-3xl mb-2">1️⃣</div>
-                <p className="text-sm text-white font-semibold">Choose Test</p>
-                <p className="text-xs text-gray-400 mt-1">Select a reading test</p>
-              </div>
-              <div className="text-center p-4">
-                <div className="text-3xl mb-2">2️⃣</div>
-                <p className="text-sm text-white font-semibold">Read Passages</p>
-                <p className="text-xs text-gray-400 mt-1">3 passages, 60 minutes</p>
-              </div>
-              <div className="text-center p-4">
-                <div className="text-3xl mb-2">3️⃣</div>
-                <p className="text-sm text-white font-semibold">Answer Questions</p>
-                <p className="text-xs text-gray-400 mt-1">40 questions total</p>
-              </div>
-              <div className="text-center p-4">
-                <div className="text-3xl mb-2">4️⃣</div>
-                <p className="text-sm text-white font-semibold">Get Results</p>
-                <p className="text-xs text-gray-400 mt-1">Instant band score</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <ExamLibrary
+          skill="READING"
+          exams={exams}
+          path={PATH}
+          type={type}
+          difficulty={difficulty}
+          difficultyParams={{ difficulty }}
+          copy={{
+            full: { title: "Full Academic tests", hint: "3 passages · 40 questions · 60 minutes — exactly like test day" },
+            practice: { title: "Short practice", hint: "Shorter papers for a focused session" },
+          }}
+          empty={{
+            title: "Reading tests are on the way",
+            description: "New papers are being prepared. Check back soon — or practise vocabulary and grammar in the meantime.",
+          }}
+        />
 
-        {/* Test Selection */}
-        <div className="space-y-6 animate-fade-in">
-          <h2 className="text-2xl font-bold text-white">Available Tests</h2>
-          
-          {tests.map((test) => (
-            <Card
-              key={test.id}
-              className="glass border-blue-500/30 hover:shadow-neon-green transition-all duration-300"
-            >
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <h3 className="text-xl font-bold text-white">{test.title}</h3>
-                      <span className="text-xs px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">
-                        {test.difficulty}
-                      </span>
-                    </div>
-                    
-                    <p className="text-gray-300 mb-4">{test.description}</p>
-
-                    <div className="flex flex-wrap items-center gap-4 text-sm">
-                      <div className="flex items-center gap-2 text-gray-400">
-                        <FileText className="h-4 w-4" />
-                        <span>{test.passages} passages</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-gray-400">
-                        <Target className="h-4 w-4" />
-                        <span>{test.questions} questions</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-gray-400">
-                        <Clock className="h-4 w-4" />
-                        <span>{test.timeLimit} minutes</span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {test.topics.map((topic) => (
-                        <span
-                          key={topic}
-                          className="text-xs px-2 py-1 bg-averna-primary/20 text-averna-neon rounded"
-                        >
-                          {topic}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex-shrink-0">
-                    <Link href={`/learning/reading/${test.id}`}>
-                      <Button className="neon-button bg-blue-500 hover:bg-blue-600">
-                        <Play className="mr-2 h-4 w-4" />
-                        Start Test
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Scoring Info */}
-        <Card className="glass border-averna-primary/30 mt-8 animate-fade-in">
-          <CardHeader>
-            <CardTitle className="text-averna-neon">IELTS Reading Band Scores</CardTitle>
-            <CardDescription>How your score is calculated</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold text-white mb-3">Academic Reading</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">39-40 correct</span>
-                    <span className="text-green-400 font-semibold">Band 9.0</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">37-38 correct</span>
-                    <span className="text-green-400 font-semibold">Band 8.5</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">35-36 correct</span>
-                    <span className="text-blue-400 font-semibold">Band 8.0</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">33-34 correct</span>
-                    <span className="text-blue-400 font-semibold">Band 7.5</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">30-32 correct</span>
-                    <span className="text-yellow-400 font-semibold">Band 7.0</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">27-29 correct</span>
-                    <span className="text-yellow-400 font-semibold">Band 6.5</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">23-26 correct</span>
-                    <span className="text-orange-400 font-semibold">Band 6.0</span>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-semibold text-white mb-3">Question Types</h4>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li>✓ Multiple Choice</li>
-                  <li>✓ True/False/Not Given</li>
-                  <li>✓ Yes/No/Not Given</li>
-                  <li>✓ Matching Headings</li>
-                  <li>✓ Sentence Completion</li>
-                  <li>✓ Summary Completion</li>
-                  <li>✓ Short Answer Questions</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <Reveal>
+          <ScoreGuide skill="READING" />
+        </Reveal>
       </div>
     </div>
   );
