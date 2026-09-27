@@ -67,6 +67,14 @@ export const AI_LIMITS: Record<string, RouteLimit> = {
   // Admin bulk generator: one request = one passage / part / task. Filling the
   // library to 70 per skill is ~700 steps (Reading 3, Listening 4, others 1).
   "exam-gen": { perHour: 200, perDay: 1000 },
+  // Dictionary lookups that miss the cache (cached words cost nothing).
+  dictionary: { perHour: 120, perDay: 400 },
+  // Admin: rendering one Listening part (≈ 40–70 text-to-speech calls) per request.
+  "listening-audio": { perHour: 60, perDay: 400 },
+  // One recorded Speaking answer = one transcription (a full test ≈ 15).
+  "speaking-answer": { perHour: 90, perDay: 300 },
+  // Placement test writing sample (one AI assessment per sitting).
+  placement: { perHour: 6, perDay: 12 },
 };
 
 const DEFAULT_LIMIT: RouteLimit = { perHour: 20, perDay: 100 };
