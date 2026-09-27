@@ -117,13 +117,19 @@ export default function ReadingTest({ test, userId }: ReadingTestProps) {
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to submit");
+      if (!response.ok) {
+        const err = await response.json().catch(() => null);
+        throw new Error(err?.error || "");
+      }
 
       const data = await response.json();
       router.push(`/learning/reading/result/${data.testId}`);
     } catch (error) {
       console.error("Submission error:", error);
-      toast.error("Failed to submit test. Please try again.");
+      toast.error(
+        (error instanceof Error && error.message) ||
+          "Your answers weren't submitted. Nothing was lost — check your connection and try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -177,12 +183,12 @@ export default function ReadingTest({ test, userId }: ReadingTestProps) {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Submitting...
+                    Checking your answers…
                   </>
                 ) : (
                   <>
                     <Send className="mr-2 h-4 w-4" />
-                    Submit Test
+                    Check My Answers
                   </>
                 )}
               </Button>
@@ -204,7 +210,7 @@ export default function ReadingTest({ test, userId }: ReadingTestProps) {
                   onClick={() => handleSubmit(true)}
                   className="ml-auto bg-red-500 hover:bg-red-600"
                 >
-                  Submit Anyway
+                  Check My Answers Anyway
                 </Button>
               </div>
             </CardContent>

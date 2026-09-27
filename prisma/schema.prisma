@@ -142,6 +142,7 @@ model Student {
   learningEvents    LearningEvent[]
   learningProfile   LearningProfile?
   learningSnapshots LearningProfileSnapshot[]
+  xpTransactions    XpTransaction[]
 
   @@index([groupId])
   @@index([totalPoints])
@@ -930,4 +931,45 @@ model LearningProfileSnapshot {
   /// …and a single learner's history is read by day within their own rows.
   @@index([studentId, dayKey])
   @@map("learning_profile_snapshots")
+}
+
+
+// ============================================================================
+// PROGRESSION ENGINE — XP LEDGER
+// ============================================================================
+
+/// Append-only ledger of every XP movement, with a per-student idempotency key.
+///
+/// The unique (studentId, idempotencyKey) pair is what makes XP reliable: a
+/// double click, a page refresh, a network retry or a duplicate submission all
+/// reuse the same key, so the database itself refuses the second award. The
+/// ledger row is written in the SAME transaction as the totalPoints increment
+/// (and, for tests, the IELTSTest row), so XP can never be paid without the
+/// activity existing — or twice for one activity.
+///
+/// `breakdown` stores the engine's explanation ("30 questions +90 · accuracy
+/// ×0.89 · first attempt +8 …") so the student can always see why they earned
+/// what they earned. Badge / mission / challenge rewards use deterministic keys
+/// (e.g. "badge:read-80", "mission:2026-09-27"), which doubles as their unlock
+/// record.
+model XpTransaction {
+  id             String   @id @default(cuid())
+  studentId      String
+  idempotencyKey String
+  /// XpSource from lib/engine/xp-engine (test | homework | achievement | …)
+  source         String
+  amount         Int
+  /// READING | LISTENING | WRITING | SPEAKING | MISSION | CHALLENGE | BADGE | …
+  activity       String?
+  /// Id of the row this XP belongs to (e.g. the IELTSTest id).
+  refId          String?
+  breakdown      Json?
+  createdAt      DateTime @default(now())
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, idempotencyKey])
+  @@index([studentId, createdAt])
+  @@index([refId])
+  @@map("xp_transactions")
 }

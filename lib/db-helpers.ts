@@ -1,8 +1,11 @@
 import { db } from "@/lib/db";
 import { AchievementType, IELTSModule, UserRole } from "@prisma/client";
 import { isGenuineWriting } from "@/lib/utils";
-import { computeTestXp } from "@/lib/xp";
-import { awardXp, advanceStreak } from "@/lib/engine/xp-engine";
+import { randomUUID } from "crypto";
+import { awardXp, advanceStreak, type StreakChange } from "@/lib/engine/xp-engine";
+import { computeHomeworkXp, computeObjectiveXp, type XpResult } from "@/lib/engine/progression/xp";
+import { XP_CONFIG, type SkillKey as ProgressionSkill } from "@/lib/engine/progression/config";
+import { loadXpHistory, settleProgression, type SettledReward } from "@/lib/engine/progression/service";
 import { reconcileSkillStates, celebrationFor } from "@/lib/engine/progress-engine";
 import {
   recordLearningEvent,
@@ -204,15 +207,11 @@ export async function submitHomework(
 
   // Anti-cheat: require genuine effort to earn points. Empty / spammy
   // submissions are still recorded for the teacher, but earn 0 points.
-  const genuine = isGenuineWriting(content, 25);
+  const genuine = isGenuineWriting(content, XP_CONFIG.homework.minWords);
 
-  // Calculate points based on position (only if the work is genuine)
-  let pointsAwarded = genuine ? homework.points : 0;
-  if (genuine) {
-    if (position === 1) pointsAwarded += 10;
-    else if (position === 2) pointsAwarded += 8;
-    else if (position === 3) pointsAwarded += 6;
-  }
+  // Teacher-set points plus a small early-submission bonus (XP_CONFIG.homework),
+  // only when the work is genuine.
+  const pointsAwarded = computeHomeworkXp(homework.points, position, genuine);
 
   // Create submission
   const submission = await db.homeworkSubmission.create({
@@ -245,9 +244,19 @@ export async function submitHomework(
   // teacher later adjusts the grade, gradeHomework() applies only the delta.
   if (pointsAwarded > 0) {
     // skipLog: this function already wrote its own ActivityLog row above.
-    await awardXp({ studentId, amount: pointsAwarded, source: "homework", skipLog: true });
+    await awardXp({
+      studentId,
+      amount: pointsAwarded,
+      source: "homework",
+      skipLog: true,
+      idempotencyKey: `homework:${submission.id}`,
+      activity: String(homework.module),
+      refId: submission.id,
+      breakdown: { lines: [{ label: "Homework", amount: homework.points }, ...(pointsAwarded > homework.points ? [{ label: `Submitted #${position}`, amount: pointsAwarded - homework.points }] : [])] },
+    });
   }
   await checkAndAwardAchievements(studentId);
+  await settleProgression(studentId);
 
   // Learning DNA: homework is sustained, self-paced production — a different
   // behaviour from a timed test, and the only place we see how much language the
@@ -387,11 +396,10 @@ async function awardAchievement(
 // ==================== IELTS TEST HELPERS ====================
 
 /**
- * XP for a test, computed from real growth signals (XP Engine 2.0). Gathers the
- * student's recent average in this module, how many times they've taken this
- * exact content (via the `testId` stored in the answers JSON), and their XP in
- * the last 24h, then applies the pure formula in lib/xp.ts. Call this BEFORE
- * inserting the new test so history excludes the current attempt.
+ * @deprecated Band-only XP estimate kept for backward compatibility. Submit
+ * routes now score attempts with the Progression Engine
+ * (lib/engine/progression/xp.ts) using accuracy, completion, quality and
+ * history, and pass the full `xp` result to saveIELTSTest.
  */
 export async function computeTestXpForStudent(
   studentId: string,
@@ -399,26 +407,29 @@ export async function computeTestXpForStudent(
   score: number,
   opts?: { difficulty?: string | null; contentKey?: string }
 ): Promise<number> {
-  const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
-  const [recent, repeatCount, todayLogs] = await Promise.all([
-    db.iELTSTest.findMany({
-      where: { studentId, module },
-      orderBy: { completedAt: "desc" },
-      take: 3,
-      select: { score: true },
-    }),
-    opts?.contentKey
-      ? db.iELTSTest.count({
-          where: { studentId, module, answers: { path: ["testId"], equals: opts.contentKey } },
-        })
-      : Promise.resolve(0),
-    db.activityLog.findMany({ where: { studentId, createdAt: { gte: since } }, select: { points: true } }),
-  ]);
+  const history = await loadXpHistory(studentId, module as ProgressionSkill, opts?.contentKey);
+  const accuracy = Math.max(0, Math.min(1, score / 9));
+  return computeObjectiveXp({
+    skill: module === "LISTENING" ? "LISTENING" : "READING",
+    correct: Math.round(accuracy * 20),
+    total: 20,
+    answered: 20,
+    band: score,
+    difficulty: opts?.difficulty,
+    history,
+  }).xp;
+}
 
-  const recentAvg = recent.length ? recent.reduce((a, b) => a + b.score, 0) / recent.length : 0;
-  const dailyXpSoFar = todayLogs.reduce((s, l) => s + (l.points || 0), 0);
-
-  return computeTestXp({ score, difficulty: opts?.difficulty, recentAvg, repeatCount, dailyXpSoFar });
+export interface SaveTestResult {
+  /** XP actually paid for this attempt. */
+  pointsAwarded: number;
+  /** The engine's explanation (null for zero-XP / override paths). */
+  xp: XpResult | null;
+  /** True when this submission was already processed (retry / double click). */
+  duplicate: boolean;
+  streak: StreakChange | null;
+  /** Rewards (mission / challenges / badges) this attempt unlocked. */
+  rewards: SettledReward[];
 }
 
 export async function saveIELTSTest(
@@ -429,13 +440,20 @@ export async function saveIELTSTest(
   aiAnalysis: any,
   timeSpent: number,
   options?: {
+    /** Fixed XP (legacy callers / zero-XP attempts). Ignored when `xp` is given. */
     pointsOverride?: number;
+    /** The Progression Engine's result for this attempt (preferred). */
+    xp?: XpResult;
     contentKey?: string;
     difficulty?: string | null;
-    /** Per-attempt id from the client; makes the award retry-safe (S2). */
+    /** Per-attempt id from the client; makes the whole save retry-safe. */
     idempotencyKey?: string;
-    /** Integrity trust multiplier (0..1) applied to earned XP (S4). */
+    /** Integrity trust multiplier (0..1) — only applied to `pointsOverride`/legacy XP. */
     trustMultiplier?: number;
+    /** Skip reward settlement (a caller saving several sections settles once, last). */
+    skipSettle?: boolean;
+    /** Extra fields for the ActivityLog entry (accuracy, mock flag …). */
+    logDetails?: Record<string, string | number | boolean | null>;
     /**
      * Extra behavioural detail for the Learning DNA Engine that the outcome row
      * can't express: words read/produced, lexical diversity, the delivery channel
@@ -455,53 +473,87 @@ export async function saveIELTSTest(
   const safeTime = Math.max(0, Math.min(Math.round(Number(timeSpent) || 0), 3 * 60 * 60));
   const safeScore = Math.max(0, Math.min(Number(score) || 0, 9));
 
-  // Compute XP BEFORE inserting so history queries exclude this attempt.
-  // Callers may still override (e.g. 0 for an empty/trivial submission).
-  const rawPoints =
-    options?.pointsOverride !== undefined
-      ? Math.max(0, Math.round(options.pointsOverride))
-      : await computeTestXpForStudent(studentId, module, safeScore, {
-          difficulty: options?.difficulty,
-          contentKey: options?.contentKey,
-        });
-
-  // Integrity Engine (S4): scale the reward by how much the attempt looks like
-  // genuine effort. 1 when nothing is suspicious; floored for soft signals so an
-  // honest attempt is never zeroed.
-  const trust = options?.trustMultiplier == null ? 1 : Math.max(0, Math.min(1, options.trustMultiplier));
-  const points = Math.max(0, Math.round(rawPoints * trust));
-
-  const test = await db.iELTSTest.create({
-    data: {
-      studentId,
-      module,
-      score: safeScore,
-      answers,
-      aiAnalysis,
-      timeSpent: safeTime,
-    },
-  });
-
-  if (points > 0) {
-    // skipLog: an IELTS_TEST_COMPLETED row is written below. The idempotency key
-    // (when the caller supplies one) makes a retried submission a no-op.
-    await awardXp({
-      studentId,
-      amount: points,
-      source: "test",
-      skipLog: true,
-      idempotencyKey: options?.idempotencyKey,
+  // XP: prefer the engine's full result; otherwise a fixed override; otherwise
+  // the legacy band estimate (scaled by integrity trust).
+  const xpResult: XpResult | null = options?.xp ?? null;
+  let points: number;
+  if (xpResult) {
+    points = xpResult.xp;
+  } else if (options?.pointsOverride !== undefined) {
+    points = Math.max(0, Math.round(options.pointsOverride));
+  } else {
+    const raw = await computeTestXpForStudent(studentId, module, safeScore, {
+      difficulty: options?.difficulty,
+      contentKey: options?.contentKey,
     });
+    const trust = options?.trustMultiplier == null ? 1 : Math.max(0, Math.min(1, options.trustMultiplier));
+    points = Math.max(0, Math.round(raw * trust));
   }
 
-  // Log activity
+  // The test row, the ledger entry and the totalPoints increment commit
+  // together. The ledger's unique key makes a retried submission a no-op that
+  // returns the ORIGINAL test instead of creating a second one.
+  const testId = randomUUID();
+  const award = await awardXp({
+    studentId,
+    amount: points,
+    source: "test",
+    skipLog: true,
+    idempotencyKey: options?.idempotencyKey ? `test:${options.idempotencyKey}` : undefined,
+    activity: module,
+    refId: testId,
+    breakdown: xpResult ? { lines: xpResult.lines, notes: xpResult.notes } : { lines: [{ label: "Attempt", amount: points }] },
+    atomicWith: [
+      db.iELTSTest.create({
+        data: { id: testId, studentId, module, score: safeScore, answers, aiAnalysis, timeSpent: safeTime },
+      }),
+    ],
+  });
+
+  if (award.duplicate) {
+    let originalId = award.existingRefId ?? null;
+    if (!originalId && options?.idempotencyKey) {
+      // Pre-ledger fallback: the original attempt's ActivityLog row carries its test id.
+      const log = await db.activityLog
+        .findFirst({
+          where: { studentId, details: { path: ["idem"], equals: `test:${options.idempotencyKey}` } },
+          select: { details: true },
+        })
+        .catch(() => null);
+      const id = (log?.details as { testId?: unknown } | null)?.testId;
+      originalId = typeof id === "string" ? id : null;
+    }
+    const original = originalId
+      ? await db.iELTSTest.findFirst({ where: { id: originalId, studentId } }).catch(() => null)
+      : null;
+    if (original) {
+      const ledger = await db.xpTransaction.findFirst({ where: { studentId, refId: original.id } }).catch(() => null);
+      return Object.assign(original, {
+        pointsAwarded: ledger?.amount ?? 0,
+        xp: null,
+        duplicate: true,
+        streak: null,
+        rewards: [],
+      } satisfies SaveTestResult);
+    }
+  }
+
+  const test = await db.iELTSTest.findUnique({ where: { id: testId } });
+  if (!test) throw new Error("This attempt was already submitted.");
+
+  // Log activity (the student-facing feed + daily budget accounting)
   await db.activityLog.create({
     data: {
       studentId,
       action: "IELTS_TEST_COMPLETED",
       details: {
         module,
-        score,
+        score: safeScore,
+        testId,
+        ...(options?.logDetails ?? {}),
+        // Same key the XP ledger uses, so the legacy (pre-ledger) duplicate
+        // check in awardXp recognises a retried submission too.
+        ...(options?.idempotencyKey ? { idem: `test:${options.idempotencyKey}` } : {}),
       },
       points,
     },
@@ -555,17 +607,23 @@ export async function saveIELTSTest(
     }
   }
 
+  // Progression Engine: pay any mission / challenge / badge reward this attempt
+  // just completed (idempotent ledger keys — never double-pays). Never throws.
+  const rewards = options?.skipSettle ? [] : await settleProgression(studentId);
+
   // Make sure a Learning DNA profile EXISTS for this student, so they appear in
   // platform-wide analytics from their first test onward. `skipIfFresh` keeps this
-  // off the critical path in the normal case: the profile the student actually
-  // sees is refreshed lazily on read, which is both cheaper (nothing is computed
-  // for a submission nobody looks at) and better placed (the read path streams it
-  // inside Suspense instead of delaying this response). Never throws.
+  // off the critical path in the normal case. Never throws.
   await reconcileLearningProfile(studentId, { skipIfFresh: true });
 
-  // Expose the XP that was granted (used by the Integrity Engine's shadow log).
   // Attached to the test object so existing callers using `test.id` keep working.
-  return Object.assign(test, { pointsAwarded: points });
+  return Object.assign(test, {
+    pointsAwarded: points,
+    xp: xpResult,
+    duplicate: false,
+    streak: award.streak ?? null,
+    rewards,
+  } satisfies SaveTestResult);
 }
 
 export async function getStudentTestHistory(

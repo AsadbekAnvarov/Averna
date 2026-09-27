@@ -8,7 +8,9 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Trophy, TrendingUp, TrendingDown, AlertCircle, CheckCircle, ArrowLeft, RotateCcw, Highlighter } from "lucide-react";
 import Link from "next/link";
-import { NextStepCard } from "@/components/learning/next-step-card";
+import { Suspense } from "react";
+import { SessionOutcomeSection } from "@/components/progression/session-outcome-section";
+import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { ResultCelebration } from "@/components/learning/result-celebration";
 import { WritingHeatmap } from "@/components/learning/writing-heatmap";
 
@@ -93,6 +95,13 @@ export default async function WritingResultPage({
             </div>
           </CardContent>
         </Card>
+
+        {/* One more thing: what improved, what you earned, what's next */}
+        <div className="mb-8">
+          <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
+            <SessionOutcomeSection studentId={student.id} testId={test.id} label="Writing" score={assessment.overallBand} />
+          </Suspense>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Criterion Scores */}
@@ -334,8 +343,6 @@ export default async function WritingResultPage({
           </Card>
         )}
 
-        {/* What's next */}
-        <NextStepCard studentId={student.id} completedLabel="Writing" completedScore={assessment.overallBand} />
 
         {/* Actions */}
         <div className="flex gap-4 mt-8 animate-fade-in">

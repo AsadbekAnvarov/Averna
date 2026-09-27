@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Trophy, Flame, Target, TrendingUp, Award, Clock } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { CountUp } from "@/components/ui/count-up";
+import { getLevelInfo } from "@/lib/utils";
 
 interface StatsGridProps {
   student: {
@@ -17,9 +18,9 @@ interface StatsGridProps {
 }
 
 export function StatsGrid({ student }: StatsGridProps) {
-  // Calculate next rank milestone
-  const nextMilestone = Math.ceil(student.totalPoints / 100) * 100;
-  const progressToNext = ((student.totalPoints % 100) / 100) * 100;
+  // Progress uses the one shared level curve (Progression Engine), not a
+  // separate "every 100 points" bar that disagreed with the level shown elsewhere.
+  const level = getLevelInfo(student.totalPoints);
 
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 animate-fade-in">
@@ -28,7 +29,7 @@ export function StatsGrid({ student }: StatsGridProps) {
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2 text-base">
             <Trophy className="h-5 w-5 text-averna-neon" />
-            Total Points
+            Total XP
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -38,10 +39,10 @@ export function StatsGrid({ student }: StatsGridProps) {
             </div>
             <div className="space-y-1">
               <div className="flex justify-between text-xs text-gray-400">
-                <span>Next: {nextMilestone}</span>
-                <span>{Math.ceil(nextMilestone - student.totalPoints)} pts</span>
+                <span>Level {level.level} · {level.title}</span>
+                <span>{level.isMax ? "Max level" : `${level.toNext} to Level ${level.level + 1}`}</span>
               </div>
-              <Progress value={progressToNext} className="h-1" />
+              <Progress value={level.into} className="h-1" aria-label="Progress to next level" />
             </div>
           </div>
         </CardContent>

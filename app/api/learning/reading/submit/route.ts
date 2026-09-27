@@ -3,8 +3,10 @@ import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { calculateBandScore, isTextAnswerCorrect } from "@/lib/utils";
-import { READING_TESTS } from "@/lib/reading-tests-data";
+import { getReadingTest } from "@/lib/reading-content";
 import { assessSubmission, applyTrust, logAssessment } from "@/lib/engine/integrity-engine";
+import { computeObjectiveXp } from "@/lib/engine/progression/xp";
+import { findSubmittedTest, loadXpHistory } from "@/lib/engine/progression/service";
 
 export const dynamic = "force-dynamic";
 
@@ -23,9 +25,15 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { testId, answers, timeSpent } = body;
 
-    const testData = READING_TESTS[testId];
+    const testData = typeof testId === "string" ? await getReadingTest(testId) : null;
     if (!testData) {
-      return NextResponse.json({ error: "Invalid test ID" }, { status: 400 });
+      return NextResponse.json({ error: "This Reading test couldn't be found. Please pick it again from the list." }, { status: 400 });
+    }
+
+    // Retry / double-click safety: the same attempt id returns the original result.
+    const previous = await findSubmittedTest(student.id, body.submissionId);
+    if (previous) {
+      return NextResponse.json({ testId: previous.id, duplicate: true });
     }
 
     // Build map of correct answers from the shared data file, and the average
@@ -113,6 +121,18 @@ export async function POST(req: NextRequest) {
     const verdict = await assessSubmission(facts);
     const trust = applyTrust(verdict);
 
+    const accuracyPct = Math.round(percentage);
+    const xp = earnsPoints
+      ? computeObjectiveXp({
+          skill: "READING",
+          correct: correctCount,
+          total: totalQuestions,
+          answered: answeredCount,
+          band: bandScore,
+          history: { ...(await loadXpHistory(student.id, "READING", testId)), trust: trust.multiplier },
+        })
+      : undefined;
+
     const test = await saveIELTSTest(
       student.id,
       "READING",
@@ -120,14 +140,13 @@ export async function POST(req: NextRequest) {
       { testId, answers, results },
       { correctCount, totalQuestions, percentage },
       timeSpent || 0,
-      earnsPoints
-        ? {
-            contentKey: testId,
-            idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
-            trustMultiplier: trust.multiplier,
-            dna: { channel: "reading", words: passageWords, errorTags },
-          }
-        : { pointsOverride: 0, dna: { channel: "reading", words: passageWords, errorTags } }
+      {
+        contentKey: testId,
+        idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
+        ...(xp ? { xp } : { pointsOverride: 0 }),
+        logDetails: { accuracy: accuracyPct },
+        dna: { channel: "reading", words: passageWords, errorTags },
+      }
     );
 
     await logAssessment(facts, verdict, test.pointsAwarded ?? 0);
@@ -137,11 +156,16 @@ export async function POST(req: NextRequest) {
       correctCount,
       totalQuestions,
       bandScore,
-      pointsAwarded: earnsPoints,
+      pointsAwarded: test.pointsAwarded > 0,
+      xpAwarded: test.pointsAwarded,
+      duplicate: test.duplicate,
       integrityNotice: trust.reduced ? trust.notice : undefined,
     });
   } catch (error: any) {
     console.error("Reading submission error:", error);
-    return NextResponse.json({ error: error.message || "Failed to submit test" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Your answers weren't submitted. Nothing was lost — please try again." },
+      { status: 500 }
+    );
   }
 }
