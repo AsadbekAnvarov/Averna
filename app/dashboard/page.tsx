@@ -74,6 +74,7 @@ import { GraduationSection } from "@/components/dashboard/graduation-section";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
+import { PlacementPrompt } from "@/components/placement/placement-prompt";
 import { ProgressionHome } from "@/components/progression/progression-home";
 import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { LiveRefresh } from "@/components/ui/live-refresh";
@@ -239,6 +240,11 @@ export default async function DashboardPage() {
 
               <Suspense fallback={null}>
                 <HabitNudge studentId={student.id} streak={student.currentStreak} />
+              </Suspense>
+
+              {/* New students: find your level (hidden once a placement test is finished). */}
+              <Suspense fallback={null}>
+                <PlacementPrompt studentId={student.id} />
               </Suspense>
 
               {/* 2-7. The learning loop: mission → skills → next step → level &
