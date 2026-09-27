@@ -10,7 +10,7 @@ import {
   GraduationCap, ClipboardCheck, NotebookPen, PlusCircle, Megaphone, BarChart3,
   Wallet, Activity, ScrollText, Users, Command as CommandIcon, Settings, LogOut,
   Sun, Moon, SpellCheck, Sparkles, CornerDownLeft, ArrowUpDown,
-  Library, FileText, Clapperboard, Award, Bot, Dna, type LucideIcon,
+  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, type LucideIcon,
 } from "lucide-react";
 
 type ActionId = "theme" | "signout";
@@ -40,6 +40,7 @@ const STUDENT_COMMANDS: Cmd[] = [
   { group: "IELTS Skills", label: "Grammar", href: "/grammar", icon: SpellCheck, keywords: "rules tenses" },
 
   { group: "Practice", label: "Mock Exam", href: "/learning/mock-exam", icon: Trophy, keywords: "test band full" },
+  { group: "Practice", label: "Placement Test", href: "/learning/placement", icon: Compass, keywords: "level entry cefr test" },
   { group: "Practice", label: "Daily Challenge", href: "/challenge", icon: Zap, keywords: "quiz daily" },
   { group: "Practice", label: "Flashcards", href: "/flashcards", icon: Layers, keywords: "vocabulary words" },
   { group: "Practice", label: "Materials", href: "/materials", icon: Library, keywords: "resources guides bank study" },
@@ -75,6 +76,8 @@ const TEACHER_COMMANDS: Cmd[] = [
 
   { group: "Teaching", label: "Create Homework", href: "/teacher/homework/create", icon: PlusCircle, keywords: "assign task new" },
   { group: "Teaching", label: "Grade Submissions", href: "/teacher/homework", icon: ClipboardCheck, keywords: "review score" },
+  { group: "Teaching", label: "Review Queue", href: "/teacher/reviews", icon: ListChecks, keywords: "writing speaking band mark check" },
+  { group: "Teaching", label: "Mock Results", href: "/teacher/mock", icon: BarChart3, keywords: "mock exam group bands analytics" },
   { group: "Teaching", label: "Lesson Log", href: "/teacher/lessons", icon: BookOpen, keywords: "record" },
   { group: "Teaching", label: "1-on-1 Tutoring", href: "/teacher/tutoring", icon: Users, keywords: "booking slots" },
 
@@ -92,9 +95,13 @@ const ADMIN_COMMANDS: Cmd[] = [
 
   { group: "Odamlar", label: "Oʻqituvchilar", href: "/admin/teachers", icon: GraduationCap, keywords: "teachers staff" },
   { group: "Odamlar", label: "Guruhlar", href: "/admin/groups", icon: Layers, keywords: "groups classes" },
+  { group: "Oʻqitish", label: "Tekshiruv navbati", href: "/teacher/reviews", icon: ListChecks, keywords: "review queue writing speaking tekshirish" },
+  { group: "Oʻqitish", label: "Mock natijalari", href: "/teacher/mock", icon: BarChart3, keywords: "mock results group natija" },
+  { group: "Oʻqitish", label: "Kirish testi", href: "/admin/placement", icon: Compass, keywords: "placement level daraja kirish" },
 
   { group: "Kontent", label: "Oʻquv kontenti", href: "/admin/content", icon: Layers, keywords: "content lessons materials" },
   { group: "Kontent", label: "Test generatori", href: "/admin/generate-tests", icon: Sparkles, keywords: "ai generate test reading listening writing speaking" },
+  { group: "Kontent", label: "Listening audio", href: "/admin/listening-audio", icon: Headphones, keywords: "audio mp3 tts listening ovoz" },
   { group: "Kontent", label: "Eʼlonlar", href: "/admin/announcements", icon: Megaphone, keywords: "announcements broadcast" },
   { group: "Kontent", label: "Mukofotlar va soʻrovlar", href: "/admin/rewards", icon: Gift, keywords: "rewards redemptions store" },
 
@@ -102,13 +109,14 @@ const ADMIN_COMMANDS: Cmd[] = [
   { group: "Operatsiyalar", label: "Tizim holati", href: "/admin/system", icon: Activity, keywords: "system status monitor" },
   { group: "Operatsiyalar", label: "Audit jurnali", href: "/admin/logs", icon: ScrollText, keywords: "audit log history" },
   { group: "Operatsiyalar", label: "Xabarlar", href: "/messages", icon: MessageSquare, keywords: "messages chat" },
+  { group: "Operatsiyalar", label: "Telegram bot", href: "/admin/telegram", icon: Send, keywords: "telegram bot webhook ota-ona parents" },
 ];
 
 // Group render order per role
 const GROUP_ORDER: Record<string, string[]> = {
   student: ["Overview", "IELTS Skills", "Practice", "AI Tools", "Community", "Account", "Actions"],
   teacher: ["Overview", "Students", "Teaching", "Communication", "Actions"],
-  admin: ["Umumiy koʻrinish", "Odamlar", "Kontent", "Operatsiyalar", "Amallar"],
+  admin: ["Umumiy koʻrinish", "Odamlar", "Oʻqitish", "Kontent", "Operatsiyalar", "Amallar"],
 };
 
 /**

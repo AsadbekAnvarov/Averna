@@ -18,6 +18,7 @@ import {
   NotebookPen,
   PlusCircle,
   Sparkles,
+  BarChart3,
 } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -34,6 +35,7 @@ import { FutureClassSimulatorSection } from "@/components/teacher/future-class-s
 import { TeacherTwinSection } from "@/components/teacher/teacher-twin-section";
 import { TodayPanel } from "@/components/teacher/today-panel";
 import { GradingInbox } from "@/components/teacher/grading-inbox";
+import { PendingReviewsCard } from "@/components/review/pending-reviews-card";
 import { GroupPulse } from "@/components/teacher/group-pulse";
 import { GroupBroadcast } from "@/components/teacher/group-broadcast";
 import { TeacherAttentionBar } from "@/components/teacher/attention-bar";
@@ -122,6 +124,8 @@ export default async function TeacherDashboard() {
       items: [
         { href: "/teacher/homework/create", label: "Create Homework", desc: "Assign new tasks", icon: PlusCircle, color: "text-averna-purple", bg: "bg-averna-purple/15" },
         { href: "/teacher/homework", label: "Grade Work", desc: "Review & score", icon: CheckSquare, color: "text-amber-400", bg: "bg-amber-400/15" },
+        { href: "/teacher/reviews", label: "Review Queue", desc: "Writing & Speaking bands", icon: ClipboardCheck, color: "text-averna-pink", bg: "bg-averna-pink/15" },
+        { href: "/teacher/mock", label: "Mock Results", desc: "Bands by group", icon: BarChart3, color: "text-averna-cyan", bg: "bg-averna-cyan/15" },
         { href: "/teacher/gradebook", label: "Gradebook", desc: "Track all grades", icon: NotebookPen, color: "text-averna-purple", bg: "bg-averna-purple/15" },
         { href: "/teacher/lessons", label: "Lesson Log", desc: "Record lessons", icon: BookOpen, color: "text-averna-blue", bg: "bg-averna-blue/15" },
       ],
@@ -317,7 +321,12 @@ export default async function TeacherDashboard() {
                     <Suspense fallback={<WidgetSkeleton rows={4} />}>
                       <GradingInbox teacherId={teacher.id} />
                     </Suspense>
-                    <GroupBroadcast groups={groupOptions} />
+                    <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                      <PendingReviewsCard viewer={{ id: session.user.id, role: session.user.role }} />
+                    </Suspense>
+                    <div className="lg:col-span-2">
+                      <GroupBroadcast groups={groupOptions} />
+                    </div>
                   </div>
                 </div>
               </>
