@@ -282,9 +282,11 @@ function EmptyTest({ exitHref }: { exitHref?: string }) {
 // ---------------------------------------------------------------------------
 
 export function ReadingExamRunner(props: ReadingExamRunnerProps) {
-  const { test, partIndex, mode, attemptId, minutes, deadline: serverDeadline, initialAnswers, onSubmit, onAutosave, exitHref } = props;
+  const { test, partIndex, mode, attemptId, minutes, deadline: serverDeadline, initialAnswers, onSubmit, onAutosave, exitHref, homeworkId } = props;
   const router = useRouter();
   const practice = !onSubmit;
+  // In-text dictionary: practice only — never in the mock, like the real exam.
+  const lookup = mode === "practice" && props.lookup !== false;
 
   // ---- scope ---------------------------------------------------------------
   // An out-of-range partIndex falls back to the full test, consistently for the UI, the clock and the payload.
@@ -438,6 +440,7 @@ export function ReadingExamRunner(props: ReadingExamRunnerProps) {
             timeSpent: meta.timeSpent,
             auto: meta.auto,
             submissionId: attemptId,
+            ...(homeworkId ? { homeworkId } : {}),
           });
       } catch (err) {
         // Answers stay in state and in localStorage; the same attempt id makes the retry safe.
@@ -464,7 +467,7 @@ export function ReadingExamRunner(props: ReadingExamRunnerProps) {
         window.setTimeout(() => window.location.assign(url), 50);
       }
     },
-    [attemptId, cleanupAfterSubmit, router, single, test.id, timeSpent]
+    [attemptId, cleanupAfterSubmit, homeworkId, router, single, test.id, timeSpent]
   );
   const submitRef = useRef(submit);
   submitRef.current = submit;
@@ -605,7 +608,7 @@ export function ReadingExamRunner(props: ReadingExamRunnerProps) {
       onJump={jump}
       fontScale={fontScale}
       onFontScale={changeFont}
-      left={<PassagePane passage={sp.part} label={sp.label} intro={sp.intro} attemptId={attemptId} />}
+      left={<PassagePane passage={sp.part} label={sp.label} intro={sp.intro} attemptId={attemptId} lookup={lookup} />}
       leftLabel="Passage"
       rightLabel="Questions"
       footerExtra={error && !paneVisible ? <SubmitErrorStrip error={error} onRetry={retry} /> : undefined}

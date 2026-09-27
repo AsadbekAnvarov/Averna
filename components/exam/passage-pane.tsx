@@ -1,9 +1,12 @@
 "use client";
 
 import { Fragment, memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Eraser, Highlighter } from "lucide-react";
+import { Eraser, Highlighter, Search } from "lucide-react";
 import type { ExamParagraph } from "@/lib/ielts/types";
 import { cn } from "@/lib/utils";
+import { normalizeWord, sentenceAround } from "@/lib/dictionary-core";
+import { rangeFromOffsets, rangeRect } from "@/components/dictionary/dom";
+import { WordPopover, type LookupRequest } from "@/components/dictionary/word-popover";
 
 /**
  * Left pane of the CD-IELTS Reading runner: the passage, typeset for long-form
@@ -41,6 +44,11 @@ export interface PassagePaneProps {
   intro?: string;
   /** Highlights are stored per attempt. */
   attemptId: string;
+  /**
+   * Practice only: the in-text dictionary — "Look up" in the selection toolbar
+   * for 1–3 words, and double-click a word (mouse). Never in the mock exam.
+   */
+  lookup?: boolean;
 }
 
 export const highlightStorageKey = (attemptId: string) => `averna-exam-hl:${attemptId}`;
@@ -304,7 +312,7 @@ const Paragraph = memo(ParagraphImpl);
 // Pane
 // ---------------------------------------------------------------------------
 
-function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps) {
+function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: PassagePaneProps) {
   const storageKey = highlightStorageKey(attemptId);
   const [store, setStore] = useState<HighlightStore>({});
   const storeRef = useRef<HighlightStore>({});
@@ -327,6 +335,11 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
   const mouseDown = useRef(false);
   /** A press on the toolbar is in progress — don't let the collapsing selection hide it first. */
   const pressing = useRef(false);
+
+  // ---- dictionary (practice only) ------------------------------------------
+  const [look, setLook] = useState<LookupRequest | null>(null);
+  const lookSeq = useRef(0);
+  const lookButtonRef = useRef<HTMLButtonElement>(null);
 
   // ---- persistence -------------------------------------------------------
   useEffect(() => {
@@ -468,7 +481,8 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
       if (!inToolbar(e.target)) schedule(150);
     };
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && toolRef.current) setTool(null);
+      // defaultPrevented: the dictionary popover took this Esc — the toolbar closes on the next one.
+      if (e.key === "Escape" && toolRef.current && !e.defaultPrevented) setTool(null);
     };
     const onBlur = () => {
       mouseDown.current = false;
@@ -560,6 +574,59 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
     [commit, say]
   );
 
+  // ---- dictionary: "Look up" (toolbar) and double-click ----------------------
+  const openLookup = useCallback((seg: Segment, pointer: LookupRequest["pointer"]) => {
+    const text = passageRef.current.paragraphs[seg.p]?.text ?? "";
+    const word = normalizeWord(text.slice(seg.s, seg.e));
+    const el = textRef.current?.querySelector(`[data-para="${seg.p}"]`);
+    const range = word && el ? rangeFromOffsets(el, seg.s, seg.e) : null;
+    if (!word || !range) return;
+    setLook({
+      id: ++lookSeq.current,
+      text: word,
+      context: sentenceAround(text, seg.s, seg.e) || undefined,
+      pointer,
+      getRect: () => rangeRect(range),
+      returnFocus: pointer === "keyboard" ? lookButtonRef.current : null,
+    });
+    if (pointer === "touch") {
+      // Dismiss the native selection menu / handles so they can't sit on top of the popover.
+      setTool(null);
+      try {
+        window.getSelection()?.removeAllRanges();
+      } catch {
+        /* ignore */
+      }
+    }
+  }, []);
+
+  const lookupFromTool = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const t = toolRef.current;
+      if (!t || t.segments.length !== 1) return;
+      pressing.current = false;
+      // detail === 0: activated from the keyboard (Enter / Space).
+      openLookup(t.segments[0], e.detail === 0 ? "keyboard" : lastPointer.current);
+    },
+    [openLookup]
+  );
+
+  const onTextDoubleClick = useCallback(() => {
+    if (lastPointer.current === "touch") return; // touch: long-press, then "Look up"
+    const textEl = textRef.current;
+    if (!textEl) return;
+    try {
+      const sel = window.getSelection();
+      if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return;
+      const hit = selectionSegments(textEl, sel.getRangeAt(0), passageRef.current.paragraphs);
+      if (hit && hit.segments.length === 1) openLookup(hit.segments[0], "mouse");
+    } catch {
+      /* never let an exotic selection crash the exam */
+    }
+  }, [openLookup]);
+
+  const closeLookup = useCallback(() => setLook(null), []);
+
   // Keep the toolbar inside the pane horizontally (no sideways scroll on phones).
   useIsoLayoutEffect(() => {
     const w = toolbarRef.current?.offsetWidth;
@@ -575,6 +642,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
     const sp = findScrollParent(rootRef.current);
     if (sp) sp.scrollTop = positions.current[passage.id] ?? 0;
     setTool(null);
+    setLook(null);
     setConfirmClear(false);
     if (firstPassage.current) {
       firstPassage.current = false;
@@ -627,6 +695,10 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
   const toolLeft = tool ? Math.max(half + 8, Math.min(Math.max(half + 8, tool.rootWidth - half - 8), tool.x)) : 0;
   // Pressing a toolbar button must not collapse the selection it acts on.
   const keepSelection = (e: { preventDefault: () => void }) => e.preventDefault();
+  // "Look up" for a selection (or a tapped highlight) of 1–3 words inside one paragraph.
+  const lookSeg = lookup && tool && tool.segments.length === 1 ? tool.segments[0] : null;
+  const canLookup = !!lookSeg && !!normalizeWord((passage.paragraphs[lookSeg.p]?.text ?? "").slice(lookSeg.s, lookSeg.e));
+  const btnPad = lookup ? "px-3 sm:px-3.5" : "px-3.5";
 
   return (
     <article ref={rootRef} className="relative min-h-full w-full" aria-label={label ? `${label}: ${passage.title}` : passage.title}>
@@ -662,7 +734,9 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
           {highlightCount === 0 && (
             <p className="mt-[0.9em] flex items-center gap-[0.45em] text-[0.8em] text-gray-500">
               <Highlighter className="h-[1.1em] w-[1.1em] shrink-0" aria-hidden />
-              Tip: select any words in the passage to highlight them.
+              {lookup
+                ? "Tip: select any words in the passage to highlight them or look them up."
+                : "Tip: select any words in the passage to highlight them."}
             </p>
           )}
         </header>
@@ -672,6 +746,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
           key={passage.id}
           ref={textRef}
           onClick={onTextClick}
+          onDoubleClick={lookup ? onTextDoubleClick : undefined}
           className="space-y-[1.1em] select-text selection:bg-averna-cyan/30 selection:text-white"
         >
           {passage.paragraphs.map((para, i) => (
@@ -687,8 +762,10 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
         </div>
       </div>
 
-      {tool && (tool.canHighlight || tool.canRemove) && (
+      {tool && (tool.canHighlight || tool.canRemove || canLookup) && (
         <div
+          // Hidden, not removed, while the dictionary is open: Esc hands focus back to "Look up".
+          hidden={!!look}
           className="pointer-events-none absolute z-20"
           style={{
             left: toolLeft,
@@ -699,7 +776,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
           <div
             ref={toolbarRef}
             role="toolbar"
-            aria-label="Highlight tools"
+            aria-label={lookup ? "Text tools" : "Highlight tools"}
             onPointerDown={keepSelection}
             onMouseDown={keepSelection}
             className="pointer-events-auto flex select-none items-center gap-1 rounded-xl border border-white/15 bg-[#0b1a16]/95 p-1 shadow-[0_14px_36px_-12px_rgba(0,0,0,0.9)] backdrop-blur motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95 motion-safe:duration-150"
@@ -708,17 +785,37 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
               <button
                 type="button"
                 onClick={() => apply("add")}
-                className="inline-flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-lg px-3.5 text-sm font-semibold text-amber-100 transition-colors hover:bg-amber-300/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 motion-reduce:transition-none"
+                className={cn(
+                  "inline-flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold text-amber-100 transition-colors hover:bg-amber-300/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 motion-reduce:transition-none",
+                  btnPad
+                )}
               >
                 <Highlighter className="h-4 w-4 text-amber-300" aria-hidden />
                 Highlight
+              </button>
+            )}
+            {canLookup && (
+              <button
+                ref={lookButtonRef}
+                type="button"
+                onClick={lookupFromTool}
+                className={cn(
+                  "inline-flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold text-gray-100 transition-colors hover:bg-averna-cyan/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 motion-reduce:transition-none",
+                  btnPad
+                )}
+              >
+                <Search className="h-4 w-4 text-averna-cyan" aria-hidden />
+                Look up
               </button>
             )}
             {tool.canRemove && (
               <button
                 type="button"
                 onClick={() => apply("remove")}
-                className="inline-flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-lg px-3.5 text-sm font-semibold text-gray-200 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 motion-reduce:transition-none"
+                className={cn(
+                  "inline-flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold text-gray-200 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 motion-reduce:transition-none",
+                  btnPad
+                )}
               >
                 <Eraser className="h-4 w-4" aria-hidden />
                 Remove
@@ -727,6 +824,8 @@ function PassagePaneImpl({ passage, label, intro, attemptId }: PassagePaneProps)
           </div>
         </div>
       )}
+
+      {lookup && <WordPopover request={look} onClose={closeLookup} reviewLink={false} />}
 
       <span className="sr-only" aria-live="polite">
         {announce}

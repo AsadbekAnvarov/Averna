@@ -1,11 +1,13 @@
-import { BookOpen, ChevronDown } from "lucide-react";
+import { BookOpen, ChevronDown, Search } from "lucide-react";
+import { LookupArea } from "@/components/dictionary/lookup-area";
 import { partWordCount } from "@/lib/ielts/format";
 import type { ReadingPart } from "@/lib/ielts/types";
 
 /**
  * The Reading passage behind a set of answers, collapsed by default
  * ("Show passage"), with paragraph labels (A, B …) so explanations that point
- * to a paragraph are easy to check. Server component — native <details>.
+ * to a paragraph are easy to check. Server component — native <details>; the
+ * text is wrapped in the (client) dictionary LookupArea.
  */
 export function PassageDetails({ part, no }: { part: ReadingPart; no: number }) {
   const paragraphs = part.paragraphs.filter((p) => p.text.trim());
@@ -31,19 +33,25 @@ export function PassageDetails({ part, no }: { part: ReadingPart; no: number }) 
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500">Reading Passage {no}</p>
         <p className="mt-1 text-base font-semibold text-white">{part.title}</p>
         {part.subtitle && <p className="mt-1 text-sm italic text-gray-400">{part.subtitle}</p>}
-        <div className="mt-4 space-y-3.5 text-[15px] leading-relaxed text-gray-200">
+        <p className="mt-2 flex items-center gap-1.5 text-xs text-gray-500">
+          <Search className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          Tip: select any word to look it up.
+        </p>
+        <LookupArea className="mt-4 space-y-3.5 text-[15px] leading-relaxed text-gray-200">
           {paragraphs.map((p, i) => (
             <p key={`${p.label ?? ""}${i}`} className="flex gap-3">
               {p.label ? (
-                <span className="w-5 shrink-0 font-bold text-averna-cyan">
+                <span className="w-5 shrink-0 select-none font-bold text-averna-cyan">
                   <span className="sr-only">Paragraph </span>
                   {p.label}
                 </span>
               ) : null}
-              <span className="min-w-0">{p.text}</span>
+              <span className="min-w-0" data-lookup-text="">
+                {p.text}
+              </span>
             </p>
           ))}
-        </div>
+        </LookupArea>
       </div>
     </details>
   );
