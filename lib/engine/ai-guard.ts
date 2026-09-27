@@ -60,6 +60,12 @@ export const AI_LIMITS: Record<string, RouteLimit> = {
   "admin-briefing": { perHour: 10, perDay: 40 },
   "generate-test": { perHour: 20, perDay: 80 },
   "teacher-tool": { perHour: 30, perDay: 150 },
+  // Exam-format assessment: when exhausted, scoring falls back to heuristics
+  // (the attempt is still saved) — never a failed submission.
+  "speaking-test": { perHour: 6, perDay: 20 },
+  "writing-exam": { perHour: 8, perDay: 24 },
+  // Admin bulk generator: one request = one passage / part / task.
+  "exam-gen": { perHour: 150, perDay: 600 },
 };
 
 const DEFAULT_LIMIT: RouteLimit = { perHour: 20, perDay: 100 };

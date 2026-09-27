@@ -46,7 +46,12 @@ export async function getContentHealth(): Promise<ContentHealth> {
     db.homework.findMany({ where: { dueDate: { lt: now } }, select: { _count: { select: { submissions: true } } } }),
     db.announcement.findMany({ select: { body: true } }),
     db.studyMaterial.findMany({ select: { content: true, url: true } }),
-    db.generatedTest.findMany({ select: { published: true, data: true } }),
+    // Bulk-generator rows (level "exam-gen:*") are validated and tracked in their own
+    // admin UI — and loading hundreds of full exam papers here would be heavy.
+    db.generatedTest.findMany({
+      where: { OR: [{ level: null }, { NOT: { level: { startsWith: "exam-gen" } } }] },
+      select: { published: true, data: true },
+    }),
     db.dailyArticle.count({ where: { date: { gte: today0 } } }),
   ]);
 

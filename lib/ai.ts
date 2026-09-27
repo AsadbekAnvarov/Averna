@@ -1446,3 +1446,73 @@ export async function avernaAssistant(
     return fallback;
   }
 }
+
+
+// ---------------------------------------------------------------------------
+// Full Speaking test assessment (Parts 1–3) — transcript-based
+// ---------------------------------------------------------------------------
+
+export interface SpeakingExamAssessment {
+  fluency: number;
+  lexical: number;
+  grammar: number;
+  overall: number;
+  feedback: string[];
+}
+
+/**
+ * Examiner-style assessment of a whole Speaking test from its transcripts.
+ * Pronunciation can't be judged from text, so it is deliberately NOT scored.
+ * Returns null when OpenAI isn't configured or the call fails, so callers fall
+ * back to the transparent heuristic scorer.
+ */
+export async function assessSpeakingExam(
+  answers: { part: 1 | 2 | 3; question: string; transcript: string; seconds: number }[]
+): Promise<SpeakingExamAssessment | null> {
+  if (!hasOpenAI()) return null;
+  const spoken = answers.filter((a) => a.transcript.trim().length > 0);
+  if (spoken.length === 0) return null;
+  const clampBand = (x: unknown) => {
+    const n = Number(x);
+    return Number.isFinite(n) ? Math.max(0, Math.min(9, Math.round(n * 2) / 2)) : null;
+  };
+  try {
+    const transcript = spoken
+      .map((a) => `[Part ${a.part}] Examiner: ${a.question}\nCandidate (${Math.round(a.seconds)}s): ${a.transcript.slice(0, 2500)}`)
+      .join("\n\n")
+      .slice(0, 16000);
+    const completion = await getOpenAIClient().chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "system",
+          content: `You are a certified IELTS Speaking examiner. You receive speech-to-text transcripts of a candidate's full Speaking test (Parts 1–3). Rate with the public IELTS Speaking band descriptors:
+- fluency: Fluency and Coherence (length of turns, development, linking, hesitation markers visible in the text)
+- lexical: Lexical Resource (range, precision, paraphrase, idiomatic language)
+- grammar: Grammatical Range and Accuracy (complex structures, error frequency)
+Do NOT rate pronunciation — it cannot be heard in a transcript. Transcription errors from speech recognition are not the candidate's fault. Very short or off-topic answers must lower fluency/coherence. Bands are 0–9 in 0.5 steps.
+Return ONLY JSON: {"fluency":number,"lexical":number,"grammar":number,"feedback":[3 to 5 short, specific, encouraging sentences in English, each with one concrete tip]}`,
+        },
+        { role: "user", content: transcript },
+      ],
+      response_format: { type: "json_object" },
+      temperature: 0.2,
+      max_tokens: 700,
+    });
+    const raw = completion.choices[0]?.message?.content;
+    if (!raw) return null;
+    const p = JSON.parse(raw) as Record<string, unknown>;
+    const fluency = clampBand(p.fluency);
+    const lexical = clampBand(p.lexical);
+    const grammar = clampBand(p.grammar);
+    if (fluency == null || lexical == null || grammar == null) return null;
+    const feedback = Array.isArray(p.feedback)
+      ? p.feedback.filter((f): f is string => typeof f === "string" && f.trim().length > 0).map((f) => f.trim().slice(0, 300)).slice(0, 5)
+      : [];
+    const overall = Math.round(((fluency + lexical + grammar) / 3) * 2) / 2;
+    return { fluency, lexical, grammar, overall, feedback };
+  } catch (e) {
+    console.error("Speaking exam assessment error:", e);
+    return null;
+  }
+}

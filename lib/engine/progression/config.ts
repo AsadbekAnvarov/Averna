@@ -32,8 +32,11 @@ export const XP_CONFIG = {
    * 7-question Listening drill, and answering 3 questions is worth very little.
    */
   objective: {
-    READING: { perItem: 3, maxItems: 40 },
-    LISTENING: { perItem: 5, maxItems: 40 },
+    // Tuned for real 40-question papers: a full Reading test (60 min) pays
+    // ~140 base XP and a full Listening test (~35 min) ~100, so XP per minute
+    // stays level across skills and one paper can't blow the daily budget.
+    READING: { perItem: 3.5, maxItems: 40 },
+    LISTENING: { perItem: 2.5, maxItems: 40 },
   },
   /**
    * Accuracy multiplier = floor + (1 - floor) · accuracy^exponent.
@@ -89,6 +92,9 @@ export const XP_CONFIG = {
     implausibleMultiplier: 0.25,
     quality: { floor: 0.35, from: 4, span: 4.5 },
     maxSeconds: 600,
+    /** A full Speaking test (Parts 1–3, 11–14 minutes) instead of one answer. */
+    fullTest: { base: 95, targetSeconds: 420, maxSeconds: 1500 },
+    typedMultiplier: 0.5,
   },
 
   /** Full mock exam sections pay a little more: they are timed, mixed practice. */
@@ -215,17 +221,34 @@ export const MISSION_CONFIG = {
   completionBonus: 50,
   /** A skill untouched for this many days is "neglected" and gets priority. */
   neglectDays: 4,
-  /** Minutes per step (estimates shown to the student). */
+  /** Minutes per activity (estimates shown to the student). */
   minutes: {
     warmup: 3,
+    /** One Reading passage — a third of the 60-minute paper. */
     reading: 20,
+    readingFull: 60,
+    /** One Listening part (10 questions). */
     listening: 10,
+    /** A full Listening paper: ~30 minutes of audio + 2 minutes to check answers. */
+    listeningFull: 35,
     writingTask1: 20,
     writingTask2: 40,
+    writingExam: 60,
+    /** One answer to the AI examiner. */
     speaking: 5,
+    /** A full Speaking test, Parts 1–3 (11–14 minutes). */
+    speakingTest: 14,
     flashcards: 5,
     homework: 20,
   },
+  /**
+   * "Bigger goals". Daily missions always use one passage / part; the
+   * recommendation switches to the full timed paper (Writing: both tasks) once
+   * a skill has `minSessions` results and is within `bandMargin` of the target
+   * band. When all four skills are there, it becomes the full mock exam — at
+   * most once every `mockCooldownDays`.
+   */
+  examReady: { minSessions: 3, bandMargin: 0.5, mockCooldownDays: 7 },
 };
 
 // ---------------------------------------------------------------------------

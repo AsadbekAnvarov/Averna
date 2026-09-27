@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { WRITING_PROMPTS, type WritingPrompt } from "@/lib/writing-data";
 import { writingPromptSchema, writingTask1Schema } from "@/lib/test-schema";
+import { WRITING_SEED } from "@/lib/ielts/content/writing";
 
 /**
  * All Writing prompts for a given task type: the built-in ("core") prompts plus
@@ -12,7 +13,8 @@ import { writingPromptSchema, writingTask1Schema } from "@/lib/test-schema";
  * there yet (before `db:push`), the core prompts still work perfectly.
  */
 export async function getWritingPrompts(taskType: "task1" | "task2"): Promise<WritingPrompt[]> {
-  const core = WRITING_PROMPTS[taskType] ?? [];
+  // Built-in prompts plus the hand-written Averna exam tasks.
+  const core = [...(WRITING_PROMPTS[taskType] ?? []), ...(WRITING_SEED[taskType] ?? [])];
   const moduleKey = taskType === "task1" ? "WRITING_TASK1" : "WRITING";
 
   let generated: WritingPrompt[] = [];

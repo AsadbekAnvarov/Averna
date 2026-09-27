@@ -210,5 +210,36 @@ CREATE INDEX IF NOT EXISTS "xp_transactions_refId_idx"
     ON "xp_transactions" ("refId");
 
 -- ============================================================================
+-- Real IELTS mock exam — one row per sitting (papers, section clock, autosave,
+-- per-section results). Additive; never touches existing tables.
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS "mock_attempts" (
+    "id"               TEXT NOT NULL,
+    "studentId"        TEXT NOT NULL,
+    "status"           TEXT NOT NULL DEFAULT 'active',
+    "papers"           JSONB NOT NULL,
+    "current"          INTEGER NOT NULL DEFAULT 0,
+    "sectionStartedAt" TIMESTAMP(3),
+    "sectionDeadline"  TIMESTAMP(3),
+    "draft"            JSONB,
+    "results"          JSONB NOT NULL DEFAULT '{}',
+    "overall"          DOUBLE PRECISION,
+    "startedAt"        TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "finishedAt"       TIMESTAMP(3),
+    "updatedAt"        TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "mock_attempts_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "mock_attempts_studentId_fkey"
+        FOREIGN KEY ("studentId") REFERENCES "students"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS "mock_attempts_studentId_status_idx"
+    ON "mock_attempts" ("studentId", "status");
+-- At most one active sitting per student (two tabs pressing Start at once).
+CREATE UNIQUE INDEX IF NOT EXISTS "mock_attempts_one_active_per_student"
+    ON "mock_attempts" ("studentId") WHERE "status" = 'active';
+
+-- ============================================================================
 -- End of additive deploy script. Nothing above can remove or modify data.
 -- ============================================================================

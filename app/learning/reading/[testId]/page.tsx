@@ -1,23 +1,93 @@
 export const dynamic = "force-dynamic";
 
+import { randomUUID } from "crypto";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
-import ReadingTest from "@/components/learning/reading-test";
-import { getReadingTest } from "@/lib/reading-content";
+import { db } from "@/lib/db";
+import { findAward } from "@/lib/engine/xp-engine";
+import { getReadingExam } from "@/lib/ielts/catalog";
+import { toClientReading } from "@/lib/ielts/sanitize";
+import { resolvePartIndex } from "@/lib/ielts/submit";
+import { ReadingExamRunner } from "@/components/exam/reading-exam-runner";
+
+/**
+ * Computer-delivered IELTS Reading practice — the whole paper, or one passage
+ * with ?part=<0-based index>.
+ *
+ * Every visit runs under its own attempt id (?attempt=…): a refresh keeps it,
+ * so the runner's autosave, clock and idempotent submission carry on; a new
+ * visit without one is redirected to a fresh id. An attempt that was already
+ * submitted opens its result instead of a blank paper that would only
+ * resubmit to the old result.
+ */
+
+const LIBRARY = "/learning/reading";
+const ATTEMPT_RE = /^[A-Za-z0-9_-]{8,64}$/;
+
+type SearchParams = Record<string, string | string[] | undefined>;
+
+const firstParam = (v: string | string[] | undefined): string | undefined => (Array.isArray(v) ? v[0] : v);
+
+function safeDecode(s: string): string {
+  try {
+    return decodeURIComponent(s);
+  } catch {
+    return s;
+  }
+}
+
+function practiceUrl(testId: string, part: number | null, attempt: string): string {
+  const qs = new URLSearchParams();
+  if (part != null) qs.set("part", String(part));
+  qs.set("attempt", attempt);
+  return `${LIBRARY}/${encodeURIComponent(testId)}?${qs.toString()}`;
+}
+
+/** The saved result of this attempt, when it has already been submitted. */
+async function submittedResultId(userId: string, attempt: string): Promise<string | null> {
+  try {
+    const student = await db.student.findUnique({ where: { userId }, select: { id: true } });
+    if (!student) return null;
+    const award = await findAward(student.id, `test:${attempt}`);
+    return typeof award?.refId === "string" && award.refId ? award.refId : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function generateMetadata({ params }: { params: { testId: string } }) {
+  const test = await getReadingExam(safeDecode(params.testId)).catch(() => null);
+  return { title: test ? `${test.title} · Reading` : "Reading test" };
+}
 
 export default async function ReadingTestPage({
   params,
+  searchParams = {},
 }: {
   params: { testId: string };
+  searchParams?: SearchParams;
 }) {
   const session = await auth();
-  if (!session?.user) redirect("/auth/signin");
+  if (!session?.user) return redirect("/auth/signin");
 
-  const test = await getReadingTest(params.testId);
+  const test = await getReadingExam(safeDecode(params.testId));
+  if (!test) return redirect(LIBRARY);
 
-  if (!test) {
-    redirect("/learning/reading");
-  }
+  const part = resolvePartIndex(test, firstParam(searchParams.part));
+  const requested = firstParam(searchParams.attempt);
+  const attempt = requested && ATTEMPT_RE.test(requested) ? requested : null;
+  if (!attempt) return redirect(practiceUrl(test.id, part, randomUUID().replace(/-/g, "")));
 
-  return <ReadingTest test={test} userId={session.user.id} />;
+  const done = await submittedResultId(session.user.id, attempt);
+  if (done) return redirect(`${LIBRARY}/result/${encodeURIComponent(done)}`);
+
+  return (
+    <ReadingExamRunner
+      test={toClientReading(test)}
+      partIndex={part ?? undefined}
+      mode="practice"
+      attemptId={attempt}
+      exitHref={LIBRARY}
+    />
+  );
 }

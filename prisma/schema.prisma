@@ -143,6 +143,7 @@ model Student {
   learningProfile   LearningProfile?
   learningSnapshots LearningProfileSnapshot[]
   xpTransactions    XpTransaction[]
+  mockAttempts      MockAttempt[]
 
   @@index([groupId])
   @@index([totalPoints])
@@ -972,4 +973,35 @@ model XpTransaction {
   @@index([studentId, createdAt])
   @@index([refId])
   @@map("xp_transactions")
+}
+
+
+/// One sitting of the full IELTS mock exam (Listening → Reading → Writing →
+/// Speaking). Papers are picked at random from the full-format library when the
+/// attempt starts; each section is graded and saved as an IELTSTest the moment
+/// it is submitted, and the section clock lives here so a refresh can't reset it.
+model MockAttempt {
+  id               String    @id @default(cuid())
+  studentId        String
+  /// active | finished | abandoned
+  status           String    @default("active")
+  /// { listening, reading, task1, task2, speaking } — ids of the chosen papers.
+  papers           Json
+  /// Index of the current section (0 Listening … 3 Speaking; 4 = done).
+  current          Int       @default(0)
+  sectionStartedAt DateTime?
+  sectionDeadline  DateTime?
+  /// Autosaved answers of the running section.
+  draft            Json?
+  /// Per-section results keyed LISTENING | READING | WRITING | SPEAKING.
+  results          Json      @default("{}")
+  overall          Float?
+  startedAt        DateTime  @default(now())
+  finishedAt       DateTime?
+  updatedAt        DateTime  @updatedAt
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId, status])
+  @@map("mock_attempts")
 }

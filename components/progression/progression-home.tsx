@@ -10,6 +10,7 @@ import { LevelCard } from "./level-card";
 import { ActivityHistory } from "./activity-history";
 import { ProgressionSkeleton } from "./progression-skeleton";
 import { ErrorPanel } from "./error-panel";
+import { Reveal } from "@/components/motion/reveal";
 
 /**
  * The Home tab's learning loop, in priority order:
@@ -37,30 +38,34 @@ export async function ProgressionHome({ studentId }: { studentId: string }) {
 
   return (
     <div className="space-y-4 md:space-y-6">
-      <TodayMission mission={p.mission} firstName={p.firstName} isNew={p.isNew} />
+      <Reveal>
+        <TodayMission mission={p.mission} firstName={p.firstName} isNew={p.isNew} />
+      </Reveal>
 
-      <div className="grid gap-4 md:gap-6 lg:grid-cols-5">
+      <Reveal className="grid gap-4 md:gap-6 lg:grid-cols-5">
         <div className="lg:col-span-3">
           <SkillProgress profile={p.profile} targetBand={p.targetBand} insight={p.insight} weakestSkill={p.weakest?.skill ?? null} />
         </div>
         <div className="lg:col-span-2">
           <NextActivity rec={p.recommendation} />
         </div>
-      </div>
+      </Reveal>
 
-      <div className="grid gap-4 md:gap-6 md:grid-cols-2">
+      <Reveal className="grid gap-4 md:gap-6 md:grid-cols-2">
         <LevelCard level={p.level} todayXp={p.todayXp} />
         <StreakWeek streak={p.streak} />
-      </div>
+      </Reveal>
 
-      <div className="grid gap-4 md:gap-6 md:grid-cols-2">
+      <Reveal className="grid gap-4 md:gap-6 md:grid-cols-2">
         <ChallengesCard daily={p.daily} weekly={p.weekly} />
         <RecentBadges badges={p.badges} recent={p.recentBadges} />
-      </div>
+      </Reveal>
 
-      <Suspense fallback={<ProgressionSkeleton rows={1} />}>
-        <ActivityHistory studentId={studentId} />
-      </Suspense>
+      <Reveal>
+        <Suspense fallback={<ProgressionSkeleton rows={1} />}>
+          <ActivityHistory studentId={studentId} />
+        </Suspense>
+      </Reveal>
     </div>
   );
 }

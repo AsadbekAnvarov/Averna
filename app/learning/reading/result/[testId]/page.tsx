@@ -14,6 +14,21 @@ import { Suspense } from "react";
 import { SessionOutcomeSection } from "@/components/progression/session-outcome-section";
 import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { ResultCelebration } from "@/components/learning/result-celebration";
+import { getReadingExam } from "@/lib/ielts/catalog";
+import { ObjectiveResult } from "@/components/exam/results/objective-result";
+import { isExamV2, parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
+
+export const metadata = { title: "Reading results" };
+
+/** XP paid for this attempt (the ledger row written with the test), or null when unavailable. */
+async function xpForTest(studentId: string, testId: string): Promise<number | null> {
+  try {
+    const row = await db.xpTransaction.findFirst({ where: { studentId, refId: testId } });
+    return typeof row?.amount === "number" ? row.amount : null;
+  } catch {
+    return null;
+  }
+}
 
 function formatAnswer(ans: any, type: string, options?: string[]) {
   if (ans === undefined || ans === null || ans === "") return "—";
@@ -98,6 +113,27 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
   });
 
   if (!test || test.studentId !== student.id) redirect("/learning/reading");
+
+  // Computer-delivered (exam-v2) attempts get the full exam review; older
+  // practice attempts keep the original page below, unchanged.
+  if (isExamV2(test.answers)) {
+    const attempt = parseObjectiveAttempt(test);
+    if (!attempt) return redirect("/learning/reading"); // exam-v2 Writing / Speaking rows have their own pages
+    if (attempt.skill !== "READING") return redirect(resultHref(attempt.skill, test.id));
+    const [exam, xp] = await Promise.all([getReadingExam(attempt.examId), xpForTest(student.id, test.id)]);
+    return (
+      <ObjectiveResult
+        attempt={attempt}
+        test={exam}
+        testRowId={test.id}
+        studentId={student.id}
+        timeSpent={test.timeSpent}
+        completedAt={test.completedAt}
+        xp={xp}
+        target={parseTargetBand(student.targetBand)}
+      />
+    );
+  }
 
   const analysis = test.aiAnalysis as any;
   const raw = test.answers as any;
