@@ -8,9 +8,14 @@ import { cn } from "@/lib/utils";
 
 /**
  * The Listening recording strip that sits above the question navigator: what
- * the audio is doing, line progress through the current part and — in
- * practice mode only — pause / replay / speed / skip-reading-time controls.
+ * the audio is doing, progress through the current part and — in practice
+ * mode only — pause / replay / speed / skip-reading-time controls.
  * Mock mode shows status only (exam conditions: the recording plays once).
+ *
+ * Two kinds of progress:
+ * - browser voices: script lines reached ("12/40");
+ * - a pre-rendered recording (`durationMs` given): time ("2:05 / 7:48"), and in
+ *   practice a seek slider plus −10 s / +10 s.
  *
  * No captions or transcript here on purpose: it's a listening test.
  */
@@ -19,6 +24,7 @@ export type AudioBarStatus =
   | "ready" // not started yet
   | "starting" // waiting for the first sentence
   | "playing"
+  | "buffering" // a recording is loading mid-part
   | "reading" // silent time to look at the questions
   | "paused"
   | "stopped" // interrupted (left the page, submit failed…) — can continue
@@ -27,6 +33,10 @@ export type AudioBarStatus =
   | "unsupported";
 
 export const PRACTICE_RATES = [0.9, 1, 1.1];
+/** Speeds offered for a pre-rendered recording. */
+export const FILE_RATES = [0.75, 0.9, 1, 1.1, 1.25];
+/** −10 s / +10 s. */
+const SEEK_STEP_MS = 10_000;
 
 export interface AudioBarProps {
   mode: RunnerMode;
@@ -41,10 +51,12 @@ export interface AudioBarProps {
   lines: number;
   /** Reading time end (ms epoch) while it runs. */
   silenceEndsAt?: number | null;
-  /** Reading time left while paused (ms). */
+  /** Reading time left while paused (ms) — for a recording also while it runs. */
   silenceLeftMs?: number;
   /** Practice speed. */
   rate?: number;
+  /** Speeds to offer (default PRACTICE_RATES). */
+  rates?: number[];
   onRateChange?: (rate: number) => void;
   onTogglePause?: () => void;
   onReplay?: () => void;
@@ -55,6 +67,13 @@ export interface AudioBarProps {
   startDisabled?: boolean;
   /** Extra detail under the status (e.g. what went wrong). */
   message?: string | null;
+  /** A pre-rendered recording: playhead / length / buffered (ms). Omit for browser voices. */
+  timeMs?: number;
+  durationMs?: number;
+  bufferedMs?: number;
+  /** Practice with a recording: jump to a position / by ±ms. */
+  onSeek?: (ms: number) => void;
+  onSeekBy?: (deltaMs: number) => void;
 }
 
 const EQ_CSS = `
@@ -94,6 +113,16 @@ function useTicker(active: boolean, everyMs = 500): number {
   return now;
 }
 
+/** "2 minutes 5 seconds" (screen readers). */
+function spokenTime(ms: number): string {
+  const s = Math.max(0, Math.round(ms / 1000));
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  const mins = m ? `${m} minute${m === 1 ? "" : "s"}` : "";
+  const secs = r || !m ? `${r} second${r === 1 ? "" : "s"}` : "";
+  return [mins, secs].filter(Boolean).join(" ");
+}
+
 function StatusIcon({ status }: { status: AudioBarStatus }) {
   const box = "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border";
   switch (status) {
@@ -110,6 +139,7 @@ function StatusIcon({ status }: { status: AudioBarStatus }) {
         </span>
       );
     case "starting":
+    case "buffering":
       return (
         <span className={cn(box, "border-white/10 bg-white/[0.04] text-averna-neon")}>
           <Loader2 className="h-5 w-5 motion-safe:animate-spin" aria-hidden />
@@ -152,6 +182,8 @@ function statusLabel(status: AudioBarStatus, part: string, of: string): string {
       return `Starting the recording · ${part}`;
     case "playing":
       return `Audio playing · ${part}${of}`;
+    case "buffering":
+      return `Loading the recording · ${part}`;
     case "reading":
       return `Reading time · ${part}`;
     case "paused":
@@ -170,6 +202,42 @@ function statusLabel(status: AudioBarStatus, part: string, of: string): string {
 const ctrl =
   "inline-flex h-11 min-w-[44px] items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-white/[0.03] px-3 text-sm font-semibold text-gray-100 transition hover:border-averna-neon/45 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 disabled:cursor-not-allowed disabled:opacity-45";
 
+/** Practice seek bar for a recording: drags preview locally and seek on release; keys seek at once. */
+function SeekSlider({ partLabel, timeMs, durationMs, onSeek }: { partLabel: string; timeMs: number; durationMs: number; onSeek: (ms: number) => void }) {
+  const [drag, setDrag]: [number | null, (v: number | null) => void] = useState<number | null>(null);
+  const value = drag ?? timeMs;
+  const max = Math.max(1, Math.round(durationMs / 1000));
+  const commit = (seconds: number) => {
+    setDrag(null);
+    onSeek(seconds * 1000);
+  };
+  return (
+    <input
+      type="range"
+      min={0}
+      max={max}
+      step={1}
+      value={Math.min(max, Math.round(value / 1000))}
+      aria-label={`${partLabel} position`}
+      aria-valuetext={`${spokenTime(value)} of ${spokenTime(durationMs)}`}
+      onPointerDown={() => setDrag(timeMs)}
+      onChange={(e: { target: { value: string } }) => {
+        const seconds = Number(e.target.value);
+        if (drag != null) setDrag(seconds * 1000);
+        else onSeek(seconds * 1000); // keyboard
+      }}
+      onPointerUp={(e: { currentTarget: { value: string } }) => {
+        if (drag != null) commit(Number(e.currentTarget.value));
+      }}
+      onPointerCancel={() => setDrag(null)}
+      onBlur={(e: { currentTarget: { value: string } }) => {
+        if (drag != null) commit(Number(e.currentTarget.value));
+      }}
+      className="h-6 min-w-0 flex-1 cursor-pointer accent-averna-neon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60"
+    />
+  );
+}
+
 export function AudioBar(props: AudioBarProps) {
   const {
     mode,
@@ -182,6 +250,7 @@ export function AudioBar(props: AudioBarProps) {
     silenceEndsAt,
     silenceLeftMs = 0,
     rate = 1,
+    rates = PRACTICE_RATES,
     onRateChange,
     onTogglePause,
     onReplay,
@@ -190,12 +259,21 @@ export function AudioBar(props: AudioBarProps) {
     startLabel = "Start",
     startDisabled,
     message,
+    timeMs = 0,
+    durationMs,
+    bufferedMs,
+    onSeek,
+    onSeekBy,
   } = props;
 
   const practice = mode === "practice";
-  const now = useTicker(status === "reading" && !!silenceEndsAt);
-  const countdown =
-    status === "reading" && silenceEndsAt
+  const timed = typeof durationMs === "number" && durationMs > 0;
+  const now = useTicker(!timed && status === "reading" && !!silenceEndsAt);
+  const countdown = timed
+    ? (status === "reading" || status === "paused") && silenceLeftMs > 0
+      ? formatClock(silenceLeftMs)
+      : null
+    : status === "reading" && silenceEndsAt
       ? formatClock(Math.max(0, silenceEndsAt - now))
       : status === "paused" && silenceLeftMs > 0
         ? formatClock(silenceLeftMs)
@@ -204,10 +282,20 @@ export function AudioBar(props: AudioBarProps) {
   const of = partCount && partCount > 1 && partPosition ? ` of ${partCount}` : "";
   const label = statusLabel(status, partLabel, of);
   const shownLine = status === "finished" ? lines : Math.max(0, Math.min(line, lines));
-  const pct = lines > 0 ? Math.round((shownLine / lines) * 100) : status === "finished" ? 100 : 0;
-  const live = status === "playing" || status === "reading" || status === "paused";
+  const total = timed ? (durationMs as number) : 0;
+  const shownTime = status === "finished" ? total : Math.max(0, Math.min(timeMs, total));
+  const pct = timed
+    ? Math.round((shownTime / total) * 1000) / 10
+    : lines > 0
+      ? Math.round((shownLine / lines) * 100)
+      : status === "finished"
+        ? 100
+        : 0;
+  const bufferedPct = timed && bufferedMs != null ? Math.min(100, Math.max(pct, (bufferedMs / total) * 100)) : 0;
+  const live = status === "playing" || status === "reading" || status === "paused" || status === "buffering";
   const canStart = !!onStart && (status === "ready" || status === "stopped" || status === "error");
   const canSkip = !!onSkip && (status === "reading" || (status === "paused" && silenceLeftMs > 0));
+  const seekable = timed && practice && live && !!onSeek;
 
   return (
     <div role="region" aria-label="Recording" className="px-3 py-2 sm:px-5">
@@ -229,22 +317,42 @@ export function AudioBar(props: AudioBarProps) {
             </div>
             {status !== "unsupported" && (
               <div className="mt-1.5 flex items-center gap-2">
-                <div
-                  role="progressbar"
-                  aria-label={`${partLabel} progress`}
-                  aria-valuemin={0}
-                  aria-valuemax={Math.max(1, lines)}
-                  aria-valuenow={shownLine}
-                  aria-valuetext={`Line ${shownLine} of ${lines}`}
-                  className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10"
-                >
+                {seekable ? (
+                  <SeekSlider partLabel={partLabel} timeMs={shownTime} durationMs={total} onSeek={onSeek as (ms: number) => void} />
+                ) : timed ? (
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-averna-primary to-averna-neon transition-[width] duration-500 ease-out motion-reduce:transition-none"
-                    style={{ width: `${pct}%` }}
-                  />
-                </div>
+                    role="progressbar"
+                    aria-label={`${partLabel} progress`}
+                    aria-valuemin={0}
+                    aria-valuemax={Math.max(1, Math.round(total / 1000))}
+                    aria-valuenow={Math.round(shownTime / 1000)}
+                    aria-valuetext={`${spokenTime(shownTime)} of ${spokenTime(total)}`}
+                    className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-white/10"
+                  >
+                    {bufferedPct > 0 && <div className="absolute inset-y-0 left-0 rounded-full bg-white/15" style={{ width: `${bufferedPct}%` }} />}
+                    <div
+                      className="relative h-full rounded-full bg-gradient-to-r from-averna-primary to-averna-neon transition-[width] duration-500 ease-linear motion-reduce:transition-none"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                ) : (
+                  <div
+                    role="progressbar"
+                    aria-label={`${partLabel} progress`}
+                    aria-valuemin={0}
+                    aria-valuemax={Math.max(1, lines)}
+                    aria-valuenow={shownLine}
+                    aria-valuetext={`Line ${shownLine} of ${lines}`}
+                    className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10"
+                  >
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-averna-primary to-averna-neon transition-[width] duration-500 ease-out motion-reduce:transition-none"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                )}
                 <span className="shrink-0 font-mono text-[11px] tabular-nums text-gray-400" aria-hidden>
-                  {shownLine}/{lines}
+                  {timed ? `${formatClock(shownTime)} / ${formatClock(total)}` : `${shownLine}/${lines}`}
                 </span>
               </div>
             )}
@@ -274,6 +382,17 @@ export function AudioBar(props: AudioBarProps) {
                     <SkipForward className="h-4 w-4" aria-hidden />
                   </button>
                 )}
+                {timed && onSeekBy && (
+                  <button
+                    type="button"
+                    onClick={() => onSeekBy(-SEEK_STEP_MS)}
+                    className={cn(ctrl, "px-2.5 font-mono text-xs tabular-nums")}
+                    aria-label="Back 10 seconds"
+                    title="Back 10 seconds"
+                  >
+                    −10s
+                  </button>
+                )}
                 <button
                   type="button"
                   onClick={onTogglePause}
@@ -283,6 +402,17 @@ export function AudioBar(props: AudioBarProps) {
                 >
                   {status === "paused" ? <Play className="h-5 w-5" aria-hidden /> : <Pause className="h-5 w-5" aria-hidden />}
                 </button>
+                {timed && onSeekBy && (
+                  <button
+                    type="button"
+                    onClick={() => onSeekBy(SEEK_STEP_MS)}
+                    className={cn(ctrl, "px-2.5 font-mono text-xs tabular-nums")}
+                    aria-label="Forward 10 seconds"
+                    title="Forward 10 seconds"
+                  >
+                    +10s
+                  </button>
+                )}
                 <button
                   type="button"
                   onClick={onReplay}
@@ -293,7 +423,7 @@ export function AudioBar(props: AudioBarProps) {
                   <RotateCcw className="h-5 w-5" aria-hidden />
                 </button>
                 <div role="radiogroup" aria-label="Playback speed" className="flex overflow-hidden rounded-xl border border-white/15 bg-white/[0.03]">
-                  {PRACTICE_RATES.map((r) => {
+                  {rates.map((r) => {
                     const on = Math.abs(r - rate) < 0.001;
                     return (
                       <button
