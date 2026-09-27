@@ -28,6 +28,13 @@ interface Result {
   overall: number;
   pointsEarned: number;
   saved: boolean;
+  integrityNotice?: string;
+  xpNotes?: string[];
+  error?: string;
+}
+
+function newAttemptId(): string {
+  return typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `m-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
 interface Props {
@@ -49,12 +56,18 @@ export function MockExamRunner({ exam }: Props) {
   const [result, setResult] = useState<Result | null>(null);
   const [secs, setSecs] = useState(examSeconds);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // One id per attempt + a guard, so the timer and the Finish button can never
+  // submit the same exam twice (and a network retry can't double-award XP).
+  const attemptIdRef = useRef<string>(newAttemptId());
+  const finishingRef = useRef(false);
 
   const lCorrect = listeningQs.reduce((n, q, i) => n + (lAns[i] === q.a ? 1 : 0), 0);
   const rCorrect = readingQs.reduce((n, q, i) => n + (rAns[i] === q.a ? 1 : 0), 0);
   const words = essay.trim().split(/\s+/).filter(Boolean).length;
 
   const finishExam = useCallback(async () => {
+    if (finishingRef.current) return;
+    finishingRef.current = true;
     if (timerRef.current) clearInterval(timerRef.current);
     setFinished(true);
     setSubmitting(true);
@@ -85,16 +98,17 @@ export function MockExamRunner({ exam }: Props) {
           readingAnswers: rAns,
           essay,
           timeSpent: examSeconds - secs,
+          submissionId: attemptIdRef.current,
         }),
       });
+      const data = await res.json().catch(() => null);
       if (res.ok) {
-        const data = await res.json();
         setResult({ ...data, saved: true });
       } else {
-        setResult(fallback);
+        setResult({ ...fallback, error: data?.error || "Your exam wasn't saved. Your bands are shown below." });
       }
     } catch {
-      setResult(fallback);
+      setResult({ ...fallback, error: "Your exam wasn't saved — check your connection. Your bands are shown below." });
     } finally {
       setSubmitting(false);
     }
@@ -120,6 +134,8 @@ export function MockExamRunner({ exam }: Props) {
   const ss = String(secs % 60).padStart(2, "0");
 
   const reset = () => {
+    attemptIdRef.current = newAttemptId();
+    finishingRef.current = false;
     setStarted(false); setFinished(false); setResult(null);
     setSecs(examSeconds); setLAns({}); setRAns({}); setEssay(""); setSection("listening");
   };
@@ -205,8 +221,14 @@ export function MockExamRunner({ exam }: Props) {
                   </div>
                   {r.saved && r.pointsEarned > 0 && (
                     <p className="inline-flex items-center gap-1 text-averna-neon font-semibold">
-                      <Coins className="h-4 w-4" /> +{r.pointsEarned} points earned & saved!
+                      <Coins className="h-4 w-4" /> +{r.pointsEarned} XP earned · result saved
                     </p>
+                  )}
+                  {r.error && (
+                    <p role="alert" className="error-surface mx-auto max-w-md rounded-xl px-4 py-2 text-sm text-red-200">{r.error}</p>
+                  )}
+                  {(r.integrityNotice || r.xpNotes?.[0]) && (
+                    <p className="mx-auto max-w-md text-sm text-gray-300">{r.integrityNotice ?? r.xpNotes?.[0]}</p>
                   )}
                   <div className="flex gap-3 justify-center pt-2 flex-wrap">
                     <Link href="/learning/mock-exam"><Button variant="outline" className="border-averna-cyan text-averna-cyan">Other exams</Button></Link>

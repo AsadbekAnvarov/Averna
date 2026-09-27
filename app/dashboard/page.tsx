@@ -65,7 +65,6 @@ import { AiClone } from "@/components/dashboard/ai-clone";
 import { MemoryTimelineSection } from "@/components/dashboard/memory-timeline-section";
 import { FutureSelfSection } from "@/components/dashboard/future-self-section";
 import { MonthlyRecapSection } from "@/components/dashboard/monthly-recap-section";
-import { AiMissionsSection } from "@/components/dashboard/ai-missions-section";
 import { LivingCampusSection } from "@/components/dashboard/living-campus-section";
 import { CommunityChallenge } from "@/components/dashboard/community-challenge";
 import { LearningJournal } from "@/components/dashboard/learning-journal";
@@ -75,12 +74,16 @@ import { GraduationSection } from "@/components/dashboard/graduation-section";
 import { BossBattle } from "@/components/dashboard/boss-battle";
 import { GhostRace } from "@/components/dashboard/ghost-race";
 import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
+import { ProgressionHome } from "@/components/progression/progression-home";
+import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
 import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine, Clapperboard, Brain, Flame, Award, Dna } from "lucide-react";
 import { Suspense } from "react";
 import { getGlobalRank, getGroupRank } from "@/lib/db-helpers";
+import { BUDGETED_ACTIONS } from "@/lib/engine/xp-engine";
+import { tashkentDayStart } from "@/lib/utils";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -154,64 +157,36 @@ export default async function DashboardPage() {
   // Note: the streak is advanced by VERIFIED learning (see updateStudentPoints),
   // not by opening the dashboard, so we no longer bump it on page load.
 
-  // Rank computed on read (cheap indexed counts) — no per-award write storm.
-  const [globalRank, groupRank] = await Promise.all([
+  // All independent reads run in parallel (they used to be sequential awaits).
+  // Rank is computed on read (cheap indexed counts) — no per-award write storm.
+  const today = tashkentDayStart();
+  const [globalRank, groupRank, testsCompleted, upcomingHomework, dailyQuote, weeklyCompleted] = await Promise.all([
     getGlobalRank(student.totalPoints),
     student.groupId ? getGroupRank(student.groupId, student.totalPoints) : Promise.resolve(0),
+    db.iELTSTest.count({ where: { studentId: student.id } }),
+    db.homework.findMany({
+      where: {
+        groupId: student.groupId || "",
+        dueDate: { gte: new Date() },
+        submissions: { none: { studentId: student.id } },
+      },
+      orderBy: { dueDate: "asc" },
+      take: 5,
+      include: { teacher: { include: { user: { select: { name: true } } } } },
+    }),
+    db.dailyQuote.findFirst({
+      where: { date: { gte: today, lt: new Date(today.getTime() + 24 * 60 * 60 * 1000) } },
+    }),
+    // Real study sessions in the last 7 days (not reward spends or logins).
+    db.activityLog.count({
+      where: {
+        studentId: student.id,
+        createdAt: { gte: new Date(Date.now() - 7 * 86400000) },
+        action: { in: BUDGETED_ACTIONS },
+        points: { gt: 0 },
+      },
+    }),
   ]);
-
-  // Count completed tests (for milestones)
-  const testsCompleted = await db.iELTSTest.count({
-    where: { studentId: student.id },
-  });
-
-  // Get upcoming homework
-  const upcomingHomework = await db.homework.findMany({
-    where: {
-      groupId: student.groupId || "",
-      dueDate: {
-        gte: new Date(),
-      },
-      submissions: {
-        none: {
-          studentId: student.id,
-        },
-      },
-    },
-    orderBy: {
-      dueDate: "asc",
-    },
-    take: 5,
-    include: {
-      teacher: {
-        include: {
-          user: {
-            select: {
-              name: true,
-            },
-          },
-        },
-      },
-    },
-  });
-
-  // Get today's quote
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  
-  const dailyQuote = await db.dailyQuote.findFirst({
-    where: {
-      date: {
-        gte: today,
-        lt: new Date(today.getTime() + 24 * 60 * 60 * 1000),
-      },
-    },
-  });
-
-  // Study activity completed in the last 7 days (for the weekly goal ring)
-  const weeklyCompleted = await db.activityLog.count({
-    where: { studentId: student.id, createdAt: { gte: new Date(Date.now() - 7 * 86400000) } },
-  });
 
   return (
     <div className="min-h-screen premium-gradient dashboard-anim">
@@ -250,6 +225,7 @@ export default async function DashboardPage() {
         <DashboardTabs
           home={
             <>
+              {/* 1. Who I am: greeting, level, XP, streak */}
               <DashboardHero
                 name={student.user.name}
                 image={student.user.image}
@@ -260,74 +236,38 @@ export default async function DashboardPage() {
                 quote={dailyQuote}
                 featuredCosmetic={student.featuredCosmetic}
               />
-              <StatsGrid student={{ ...student, globalRank, groupRank }} />
 
               <Suspense fallback={null}>
                 <HabitNudge studentId={student.id} streak={student.currentStreak} />
               </Suspense>
 
-              <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <AvernaAiSection studentId={student.id} firstName={(student.user.name ?? "there").split(" ")[0]} />
+              {/* 2-7. The learning loop: mission → skills → next step → level &
+                  streak → challenges & achievements → recent activity */}
+              <Suspense fallback={<ProgressionSkeleton rows={3} />}>
+                <ProgressionHome studentId={student.id} />
               </Suspense>
 
-              <DailyPodcast />
-
-              <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <AiMissionsSection studentId={student.id} />
-              </Suspense>
-
-              <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <FutureSelfSection
-                  studentId={student.id}
-                  targetBand={student.targetBand}
-                  points={student.totalPoints}
-                  streak={student.currentStreak}
-                />
-              </Suspense>
-
-              <Suspense fallback={null}>
-                <MemoriesSection studentId={student.id} />
-              </Suspense>
-
-              {/* Bento grid — modern, asymmetric overview of the day */}
-              <div className="tab-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-start">
-                {/* Personalised plan — full-width banner */}
-                <div className="md:col-span-2 lg:col-span-4">
-                  <Suspense fallback={<WidgetSkeleton rows={2} />}>
-                    <RecommendedToday studentId={student.id} groupId={student.groupId} />
-                  </Suspense>
-                </div>
-
-                {/* What's due + a little vocabulary */}
-                <div className="md:col-span-2 lg:col-span-2">
+              {/* Secondary: what's due + a little daily input */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 items-start">
+                <div className="lg:col-span-2">
                   <UpcomingHomework homework={upcomingHomework} />
                 </div>
-                <div className="md:col-span-2 lg:col-span-2">
-                  <WordOfTheDay />
-                </div>
-
-                {/* Goal + level + countdown */}
-                <div className="md:col-span-2 lg:col-span-2">
-                  <WeeklyGoal completed={weeklyCompleted} />
-                </div>
-                <div className="md:col-span-1 lg:col-span-1">
-                  <LevelProgress points={student.totalPoints} />
-                </div>
-                <div className="md:col-span-1 lg:col-span-1">
+                <div className="space-y-4 md:space-y-6">
                   <ExamCountdown />
-                </div>
-
-                {/* Streak Insurance — stake points on a weekly study goal */}
-                <div className="md:col-span-2 lg:col-span-2">
-                  <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                    <CommitmentCard studentId={student.id} />
-                  </Suspense>
+                  <WordOfTheDay />
                 </div>
               </div>
             </>
           }
           learn={
             <>
+              <Suspense fallback={<WidgetSkeleton rows={2} />}>
+                <RecommendedToday studentId={student.id} groupId={student.groupId} />
+              </Suspense>
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <AvernaAiSection studentId={student.id} firstName={(student.user.name ?? "there").split(" ")[0]} />
+              </Suspense>
+              <DailyPodcast />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <LivingCampusSection studentId={student.id} />
               </Suspense>
@@ -409,9 +349,25 @@ export default async function DashboardPage() {
                 <WritingTimeMachine studentId={student.id} />
               </Suspense>
 
+              <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                <FutureSelfSection
+                  studentId={student.id}
+                  targetBand={student.targetBand}
+                  points={student.totalPoints}
+                  streak={student.currentStreak}
+                />
+              </Suspense>
+
               {/* Streaks & milestones */}
               <SectionHeader icon={Flame} title="Streaks & Milestones" subtitle="Consistency is your superpower" accent="text-orange-400" />
               <StreakStory currentStreak={student.currentStreak} longestStreak={student.longestStreak} />
+              <div className="grid lg:grid-cols-3 gap-6 items-start">
+                <LevelProgress points={student.totalPoints} />
+                <WeeklyGoal completed={weeklyCompleted} />
+                <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                  <CommitmentCard studentId={student.id} />
+                </Suspense>
+              </div>
               <StreakHeatmap studentId={student.id} />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <LearningJournal studentId={student.id} />
@@ -445,6 +401,9 @@ export default async function DashboardPage() {
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <MonthlyRecapSection studentId={student.id} />
               </Suspense>
+              <Suspense fallback={null}>
+                <MemoriesSection studentId={student.id} />
+              </Suspense>
               <RecordsWall mysteryCount={student.cosmetics?.length ?? 0} />
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
                 <GraduationSection
@@ -457,6 +416,8 @@ export default async function DashboardPage() {
           }
           classroom={
             <>
+              {/* Rankings are secondary: you vs. your previous self comes first on Home. */}
+              <StatsGrid student={{ ...student, globalRank, groupRank }} />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <CommunityChallenge studentId={student.id} />
               </Suspense>

@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { computeHomeworkXp } from "@/lib/engine/progression/xp";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -160,10 +161,8 @@ export function calculateBandScore(percentage: number): number {
 
 // Points calculation helpers
 export function calculateHomeworkPoints(position: number, basePoints: number): number {
-  if (position === 1) return basePoints + 10;
-  if (position === 2) return basePoints + 8;
-  if (position === 3) return basePoints + 6;
-  return basePoints;
+  // Position bonuses are configured centrally (XP_CONFIG.homework.positionBonus).
+  return computeHomeworkXp(basePoints, position, true);
 }
 
 // Time helpers for Speaking Time feature (Tashkent time, 19:00–21:00)
@@ -207,72 +206,10 @@ export function getRandomQuote(): string {
 
 
 // ===== Learner Level system (shared) =====
-export interface LevelInfo {
-  level: number;
-  title: string;
-  base: number;
-  next: number;
-  into: number; // percent progress into the current level (0-100)
-  isMax: boolean; // true once the learner reaches the final level
-}
-
-/**
- * Level curve. Steep, exponential-ish gaps so climbing feels like a real,
- * long-term achievement (early levels are quick for onboarding momentum, then
- * each level costs progressively more). 15 levels, with a prestige tail
- * (Elite → Immortal) beyond the classic "IELTS Pro" cap.
- */
-const LEVEL_THRESHOLDS = [
-  0,      // 1  Rookie
-  150,    // 2  Explorer
-  400,    // 3  Achiever
-  800,    // 4  Skilled
-  1400,   // 5  Advanced
-  2200,   // 6  Expert
-  3300,   // 7  Master
-  4800,   // 8  Champion
-  6800,   // 9  Legend
-  9500,   // 10 IELTS Pro
-  13000,  // 11 Elite
-  17500,  // 12 Grandmaster
-  23000,  // 13 Virtuoso
-  30000,  // 14 Mythic
-  40000,  // 15 Immortal
-];
-const LEVEL_TITLES = [
-  "Rookie",
-  "Explorer",
-  "Achiever",
-  "Skilled",
-  "Advanced",
-  "Expert",
-  "Master",
-  "Champion",
-  "Legend",
-  "IELTS Pro",
-  "Elite",
-  "Grandmaster",
-  "Virtuoso",
-  "Mythic",
-  "Immortal",
-];
-
-export function getLevelInfo(points: number): LevelInfo {
-  let level = 1;
-  for (let i = 0; i < LEVEL_THRESHOLDS.length; i++) {
-    if (points >= LEVEL_THRESHOLDS[i]) level = i + 1;
-  }
-  const idx = level - 1;
-  const isMax = level >= LEVEL_THRESHOLDS.length;
-  const base = LEVEL_THRESHOLDS[idx] ?? 0;
-  const next = isMax ? base : LEVEL_THRESHOLDS[idx + 1];
-  const into =
-    isMax || next <= base
-      ? 100
-      : Math.min(100, Math.round(((points - base) / (next - base)) * 100));
-  return { level, title: LEVEL_TITLES[idx] ?? "Immortal", base, next, into, isMax };
-}
-
+// The curve, tiers and titles live in the Progression Engine config
+// (lib/engine/progression/config.ts). Re-exported here so existing imports of
+// `getLevelInfo` / `LevelInfo` from "@/lib/utils" keep working unchanged.
+export { getLevelInfo, type LevelInfo } from "@/lib/engine/progression/levels";
 
 // ===== Lightweight writing band estimator (no external deps) =====
 // Used by the Mock Exam to estimate a Writing band from the essay text.

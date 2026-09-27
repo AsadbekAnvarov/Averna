@@ -11,6 +11,9 @@ import { Button } from "@/components/ui/button";
 import { Award, Lock, Trophy, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { PageHeader } from "@/components/ui/page-header";
+import { Suspense } from "react";
+import { BadgeGrid } from "@/components/progression/badge-grid";
+import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
 
 export default async function AchievementsPage() {
   const session = await auth();
@@ -71,7 +74,7 @@ export default async function AchievementsPage() {
           icon={Award}
           iconClassName="text-yellow-400"
           title="Achievements"
-          subtitle="Unlock badges by completing challenges and earning points!"
+          subtitle="Milestones that mark real progress in your IELTS preparation."
         />
         <div className="mb-8">
           <Link href="/certificate">
@@ -115,6 +118,16 @@ export default async function AchievementsPage() {
           </Card>
         </div>
 
+        {/* Evidence-based learning milestones (Progression Engine) */}
+        <section aria-labelledby="milestones-title" className="mb-10">
+          <h2 id="milestones-title" className="text-xl font-bold text-white">Learning milestones</h2>
+          <p className="mb-5 text-sm text-gray-400">Earned from real results — every badge shows exactly what it takes.</p>
+          <Suspense fallback={<WidgetSkeleton rows={3} />}>
+            <BadgeGrid studentId={student.id} />
+          </Suspense>
+        </section>
+
+        <h2 className="mb-4 text-xl font-bold text-white">Signature achievements</h2>
         {/* Achievements Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {achievementsWithProgress.map((achievement) => (

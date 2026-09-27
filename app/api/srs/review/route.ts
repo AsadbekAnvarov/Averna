@@ -1,15 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { awardXp } from "@/lib/engine/xp-engine";
+import { awardXp, advanceStreak } from "@/lib/engine/xp-engine";
 import { recordLearningEvent } from "@/lib/engine/learning-dna";
 import { schedule, type Rating, type SrsCardState } from "@/lib/srs";
+import { STREAK_CONFIG, XP_CONFIG } from "@/lib/engine/progression/config";
+import { computeSrsReviewXp } from "@/lib/engine/progression/xp";
+import { settleProgression } from "@/lib/engine/progression/service";
+import { tashkentDayStart } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
 const VALID: Rating[] = ["again", "hard", "good", "easy"];
-/** Cap retention-XP per rolling 24h so reviews can't be farmed. */
-const DAILY_SRS_XP_CAP = 60;
+/** Cap retention-XP per rolling 24h so reviews can't be farmed (central config). */
+const DAILY_SRS_XP_CAP = XP_CONFIG.srs.dailyCap;
 /** Max reviews accepted in one batch (a game round is well under this). */
 const MAX_BATCH = 60;
 
@@ -130,16 +134,40 @@ export async function POST(req: NextRequest) {
       // Only a successful review of a due item earns retention-XP.
       let awarded = 0;
       if (wasDue && rev.rating !== "again") {
-        awarded = spent >= DAILY_SRS_XP_CAP ? 0 : Math.min(12, 3 + Math.floor(next.interval / 4));
+        awarded = spent >= DAILY_SRS_XP_CAP ? 0 : Math.min(DAILY_SRS_XP_CAP - spent, computeSrsReviewXp(next.interval));
         spent += awarded;
         totalXp += awarded;
       }
       results.push({ itemKey: rev.itemKey, dueAt: next.due, xp: awarded });
     }
 
+    // Flashcards keep the streak alive only after a real review session
+    // (STREAK_CONFIG.srsMinReviewsPerDay reviews in this Tashkent day). This is
+    // decided independently of XP: reviews after the daily XP cap still count
+    // as study.
+    const todayRows = await db.activityLog.findMany({
+      where: { studentId: student.id, action: "SRS_REVIEW", createdAt: { gte: tashkentDayStart() } },
+      select: { details: true },
+    });
+    const reviewedBefore = todayRows.reduce(
+      (n, r) => n + (Number((r.details as { count?: number } | null)?.count) || 0),
+      0
+    );
+    const reviewedToday = reviewedBefore + reviews.length;
+
     if (totalXp > 0) {
-      // Learning source → also advances the verified streak.
-      await awardXp({ studentId: student.id, amount: totalXp, source: "srs_review", skipLog: true });
+      await awardXp({
+        studentId: student.id,
+        amount: totalXp,
+        source: "srs_review",
+        skipLog: true,
+        activity: "FLASHCARDS",
+        breakdown: { lines: [{ label: `${reviews.length} reviews`, amount: totalXp }] },
+        countsTowardStreak: false,
+      });
+    }
+    if (reviewedToday >= STREAK_CONFIG.srsMinReviewsPerDay) {
+      await advanceStreak(student.id).catch(() => null); // idempotent per day
     }
     // One audit row per request keeps the daily budget accounting exact.
     await db.activityLog
@@ -169,6 +197,9 @@ export async function POST(req: NextRequest) {
       correct: reviews.filter((r) => r.rating !== "again").length,
       errorTags: quality < 0.5 ? ["vocabulary_recall"] : [],
     });
+
+    // A 10-card review can complete the Daily Mission warm-up.
+    await settleProgression(student.id);
 
     return NextResponse.json({ ok: true, xp: totalXp, results });
   } catch (error: unknown) {

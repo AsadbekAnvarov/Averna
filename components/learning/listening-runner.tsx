@@ -5,10 +5,12 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
-  Headphones, Play, Pause, RotateCcw, CheckCircle2, XCircle, Trophy, Volume2, ArrowLeft,
+  Headphones, Play, Pause, RotateCcw, CheckCircle2, XCircle, Volume2, ArrowLeft,
 } from "lucide-react";
 import { calculateBandScore } from "@/lib/utils";
 import type { ListeningTest } from "@/lib/listening-tests-data";
+import type { SessionOutcome } from "@/lib/engine/progression/service";
+import { SessionOutcomeCard } from "@/components/progression/session-outcome";
 
 const DIFF_COLORS: Record<string, string> = {
   Easy: "text-averna-neon border-averna-neon/40 bg-averna-neon/10",
@@ -35,8 +37,18 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
   const [submitted, setSubmitted] = useState(false);
   const [startTime, setStartTime] = useState(() => Date.now());
   const [saveMsg, setSaveMsg] = useState("");
+  const [saveFailed, setSaveFailed] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [outcome, setOutcome] = useState<SessionOutcome | null>(null);
+  // Level suggested by Averna's recommendation (?level=Easy|Medium|Hard).
+  const [suggestedLevel, setSuggestedLevel] = useState<string | null>(null);
   // One id per attempt → the server can ignore duplicate/retried submissions.
   const [attemptId, setAttemptId] = useState(() => newAttemptId());
+
+  useEffect(() => {
+    const lvl = new URLSearchParams(window.location.search).get("level");
+    if (lvl && ["Easy", "Medium", "Hard"].includes(lvl)) setSuggestedLevel(lvl);
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) setSupported(false);
@@ -71,16 +83,17 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
   const band = calculateBandScore((correctCount / Math.max(1, allQuestions.length)) * 100);
 
   const openTest = (id: string) => {
-    setTestId(id); setAnswers({}); setSubmitted(false); setSaveMsg("");
+    setTestId(id); setAnswers({}); setSubmitted(false); setSaveMsg(""); setOutcome(null); setSaveFailed(false);
     setActiveSection(0); setStartTime(Date.now());
     setAttemptId(newAttemptId());
   };
 
-  const backToBank = () => { stopAudio(); setTestId(null); setAnswers({}); setSubmitted(false); setSaveMsg(""); };
+  const backToBank = () => { stopAudio(); setTestId(null); setAnswers({}); setSubmitted(false); setSaveMsg(""); setOutcome(null); setSaveFailed(false); };
 
-  const handleSubmit = async () => {
-    stopAudio();
-    setSubmitted(true);
+  const save = async () => {
+    if (!test) return;
+    setSaving(true);
+    setSaveFailed(false);
     try {
       const res = await fetch("/api/learning/listening/submit", {
         method: "POST",
@@ -94,16 +107,30 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
           submissionId: attemptId,
         }),
       });
-      if (res.ok) {
-        const data = await res.json().catch(() => null);
-        // Be transparent when the Integrity Engine reduced the reward.
-        setSaveMsg(data?.integrityNotice ?? "✅ Result saved — points added to your account!");
-      } else {
-        setSaveMsg("Result shown below (not saved).");
-      }
-    } catch {
-      setSaveMsg("Result shown below (not saved).");
+      const data = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(data?.error);
+      setOutcome(data?.outcome ?? null);
+      // Be transparent when the Integrity Engine reduced the reward.
+      setSaveMsg(
+        data?.integrityNotice ??
+          (data?.xpAwarded > 0 ? "" : data?.xpNotes?.[0] ?? "Result saved.")
+      );
+    } catch (e) {
+      setSaveFailed(true);
+      setSaveMsg(
+        e instanceof Error && e.message
+          ? e.message
+          : "Your result wasn't saved. Check your connection and try again — your answers are still here."
+      );
+    } finally {
+      setSaving(false);
     }
+  };
+
+  const handleSubmit = async () => {
+    stopAudio();
+    setSubmitted(true);
+    await save();
   };
 
   // ---------- Test bank (selector) ----------
@@ -116,7 +143,12 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
             <Headphones className="h-9 w-9 text-averna-neon" />
             IELTS <span className="neon-text">Listening</span>
           </h1>
-          <p className="text-gray-400 mb-6">Choose a test. The audio is read aloud by your browser — no downloads needed. 🎧</p>
+          <p className="text-gray-400 mb-6">Choose a test. The audio is read aloud by your browser — no downloads needed.</p>
+          {suggestedLevel && (
+            <p className="mb-4 rounded-xl border border-averna-neon/30 bg-averna-neon/5 px-4 py-3 text-sm text-gray-200">
+              Averna suggests a <span className="font-semibold text-averna-neon">{suggestedLevel}</span> test for your current level — it&apos;s marked below.
+            </p>
+          )}
 
           {!supported && (
             <Card className="glass border-yellow-500/40 mb-6">
@@ -128,12 +160,15 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
 
           <div className="space-y-4">
             {tests.map((t) => (
-              <Card key={t.id} className="glass border-averna-cyan/30 hover:border-averna-neon/40 transition-colors">
+              <Card key={t.id} className={`glass transition-colors hover:border-averna-neon/40 ${suggestedLevel === t.difficulty ? "border-averna-neon/50" : "border-averna-cyan/30"}`}>
                 <CardContent className="py-5 flex items-center justify-between gap-4">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <h3 className="text-lg font-bold text-white">{t.title}</h3>
                       <span className={`text-xs px-2 py-0.5 rounded-full border ${DIFF_COLORS[t.difficulty]}`}>{t.difficulty}</span>
+                      {suggestedLevel === t.difficulty && (
+                        <span className="text-[10px] font-semibold uppercase tracking-wide text-averna-neon">Recommended</span>
+                      )}
                     </div>
                     <p className="text-sm text-gray-400">{t.description}</p>
                     <p className="text-xs text-gray-500 mt-1">
@@ -141,7 +176,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
                     </p>
                   </div>
                   <Button onClick={() => openTest(t.id)} className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
-                    <Play className="mr-2 h-4 w-4" /> Start
+                    <Play className="mr-2 h-4 w-4" /> Start Test
                   </Button>
                 </CardContent>
               </Card>
@@ -250,23 +285,35 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
           {!submitted ? (
             <Button onClick={handleSubmit} disabled={Object.keys(answers).length < allQuestions.length}
               className="w-full neon-button bg-averna-primary hover:bg-averna-light disabled:opacity-50">
-              Submit Answers ({Object.keys(answers).length}/{allQuestions.length})
+              Check My Answers ({Object.keys(answers).length}/{allQuestions.length})
             </Button>
           ) : (
-            <Card className="glass border-averna-neon/40 text-center">
-              <CardContent className="py-8 space-y-3">
-                <Trophy className="h-14 w-14 text-yellow-400 mx-auto" />
-                <h2 className="text-3xl font-bold text-white">{correctCount} / {allQuestions.length} correct</h2>
-                <p className="text-xl text-averna-neon">Estimated Band: {band.toFixed(1)}</p>
-                {saveMsg && <p className="text-sm text-gray-300">{saveMsg}</p>}
-                <div className="flex gap-3 justify-center pt-2 flex-wrap">
-                  <Button onClick={() => openTest(test.id)} variant="outline" className="border-averna-cyan text-averna-cyan">
-                    <RotateCcw className="mr-2 h-4 w-4" /> Retry
-                  </Button>
-                  <Button onClick={backToBank} className="neon-button bg-averna-primary">Other tests</Button>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="space-y-4">
+              <Card className="glass border-averna-neon/40 text-center">
+                <CardContent className="py-6 space-y-2">
+                  <h2 className="text-3xl font-bold text-white">{correctCount} / {allQuestions.length} correct</h2>
+                  <p className="text-lg text-averna-neon">Estimated band {band.toFixed(1)}</p>
+                  {saving && <p className="text-sm text-gray-400" role="status">Saving your result…</p>}
+                  {saveMsg && (
+                    <p role={saveFailed ? "alert" : undefined} className={`text-sm ${saveFailed ? "text-red-300" : "text-gray-300"}`}>
+                      {saveMsg}
+                    </p>
+                  )}
+                  <div className="flex gap-3 justify-center pt-2 flex-wrap">
+                    {saveFailed && (
+                      <Button onClick={save} disabled={saving} variant="outline" className="border-red-400/50 text-red-200">
+                        Try Saving Again
+                      </Button>
+                    )}
+                    <Button onClick={() => openTest(test.id)} variant="outline" className="border-averna-cyan text-averna-cyan">
+                      <RotateCcw className="mr-2 h-4 w-4" /> Retake (less XP)
+                    </Button>
+                    <Button onClick={backToBank} className="neon-button bg-averna-primary">Try Another Test</Button>
+                  </div>
+                </CardContent>
+              </Card>
+              {outcome && <SessionOutcomeCard outcome={outcome} />}
+            </div>
           )}
         </div>
       </div>

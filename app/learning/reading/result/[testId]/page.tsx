@@ -10,7 +10,9 @@ import { Trophy, CheckCircle, XCircle, ArrowLeft, RotateCcw, BookOpen, Sparkles 
 import Link from "next/link";
 import { ReadingQuestion } from "@/lib/reading-tests-data";
 import { getReadingTest } from "@/lib/reading-content";
-import { NextStepCard } from "@/components/learning/next-step-card";
+import { Suspense } from "react";
+import { SessionOutcomeSection } from "@/components/progression/session-outcome-section";
+import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { ResultCelebration } from "@/components/learning/result-celebration";
 
 function formatAnswer(ans: any, type: string, options?: string[]) {
@@ -145,6 +147,13 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
           </CardContent>
         </Card>
 
+        {/* One more thing: what improved, what you earned, what's next */}
+        <div className="mb-8">
+          <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
+            <SessionOutcomeSection studentId={student.id} testId={test.id} label="Reading" score={test.score} />
+          </Suspense>
+        </div>
+
         {/* Score Breakdown */}
         <Card className="glass border-averna-primary/30 mb-8 animate-fade-in">
           <CardHeader>
@@ -242,8 +251,6 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
           </Card>
         )}
 
-        {/* What's next */}
-        <NextStepCard studentId={student.id} completedLabel="Reading" completedScore={test.score} />
 
         {/* Actions */}
         <div className="flex gap-4 mt-8 animate-fade-in">

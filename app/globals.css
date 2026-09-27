@@ -878,3 +878,78 @@ html.light .aurora-bg::after {
 @media (prefers-reduced-motion: reduce) {
   .dna-float, .dna-rung { animation: none; }
 }
+
+
+/* ===================================================================== */
+/* ===== Progression surfaces & the green-glow system =================== */
+/* ===================================================================== */
+/*
+ * Restraint is the rule: surfaces are calm by default, a SOFT green glow
+ * appears on hover, a stronger (still controlled) glow marks the one primary
+ * action, and red is reserved for errors. Nothing glows at rest.
+ */
+.av-panel {
+  background: linear-gradient(180deg, rgba(12, 26, 22, 0.78), rgba(6, 16, 14, 0.82));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 10px 30px -18px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+}
+.av-panel-hero {
+  border-color: rgba(0, 255, 148, 0.18);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(11, 143, 106, 0.18), transparent 55%),
+    linear-gradient(180deg, rgba(12, 28, 23, 0.9), rgba(5, 15, 13, 0.92));
+}
+
+/* Hover: soft bright green glow. */
+.glow-hover {
+  transition: border-color 0.2s ease, box-shadow 0.25s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+.glow-hover:hover,
+.glow-hover:focus-visible {
+  border-color: rgba(0, 255, 148, 0.45);
+  box-shadow: 0 0 0 1px rgba(0, 255, 148, 0.18), 0 0 26px -8px rgba(0, 255, 148, 0.45);
+}
+.glow-hover:active { transform: scale(0.995); }
+
+/* Primary action: controlled glow, strongest on hover/active. */
+.glow-cta {
+  box-shadow: 0 0 0 1px rgba(0, 255, 148, 0.25), 0 8px 24px -12px rgba(0, 255, 148, 0.55);
+}
+.glow-cta:hover,
+.glow-cta:focus-visible {
+  box-shadow: 0 0 0 1px rgba(0, 255, 148, 0.5), 0 0 32px -6px rgba(0, 255, 148, 0.6);
+}
+.glow-cta:active { box-shadow: 0 0 0 2px rgba(0, 255, 148, 0.6), 0 0 18px -4px rgba(0, 255, 148, 0.7); }
+
+/* Errors: clear red accent, subtle red glow — never aggressive. */
+.error-surface {
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  background: rgba(127, 29, 29, 0.18);
+  box-shadow: 0 0 24px -12px rgba(248, 113, 113, 0.55);
+}
+
+/* Progress fills ease in once; no looping motion. */
+.meter-fill { transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+html.light .av-panel {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(4, 17, 13, 0.08);
+  box-shadow: 0 8px 24px -16px rgba(4, 17, 13, 0.25);
+}
+html.light .av-panel-hero {
+  border-color: rgba(11, 143, 106, 0.3);
+  background: radial-gradient(120% 140% at 0% 0%, rgba(11, 143, 106, 0.1), transparent 55%), #ffffff;
+}
+html.light .error-surface { background: rgba(254, 226, 226, 0.9); }
+html.light .error-surface .text-red-200,
+html.light .error-surface .text-red-100\/80 { color: #991b1b !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .meter-fill, .glow-hover, .glow-cta { transition: none; }
+  .glow-hover:active { transform: none; }
+  /* Previously uncovered decorative loops. */
+  .animate-float, .averna-twinkle, .seasonal-flake, .animate-glow { animation: none !important; }
+  .animate-fade-in { animation-duration: 1ms !important; }
+  .skeleton { animation: none !important; }
+}

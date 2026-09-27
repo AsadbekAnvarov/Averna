@@ -5,6 +5,10 @@ import { assessWritingTask, analyzeWritingIssues } from "@/lib/ai";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { isGenuineWriting, isOnTopic } from "@/lib/utils";
 import { assessSubmission, logAssessment } from "@/lib/engine/integrity-engine";
+import { computeWritingXp } from "@/lib/engine/progression/xp";
+import { XP_CONFIG } from "@/lib/engine/progression/config";
+import { hashString } from "@/lib/engine/progression/missions";
+import { findSubmittedTest, loadXpHistory } from "@/lib/engine/progression/service";
 
 export const dynamic = "force-dynamic";
 
@@ -30,18 +34,26 @@ export async function POST(req: NextRequest) {
     // Validate
     if (!essay || !taskType || !prompt) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "Your essay is missing its task or text. Reload the task and try again." },
         { status: 400 }
       );
     }
 
-    // Anti-cheat: only award points for a genuine effort. Empty / spammy /
-    // too-short essays are still assessed and saved, but earn 0 points.
-    const minWords = taskType === "task1" ? 60 : 100;
-    // Genuine effort AND actually about the prompt — an off-topic essay is still
-    // assessed and saved, but earns no XP (relevance gate, Phase 3c).
+    // Retry / double-click safety — checked BEFORE the (slow, paid) AI call.
+    const previous = await findSubmittedTest(student.id, body.submissionId);
+    if (previous) {
+      return NextResponse.json({ testId: previous.id, duplicate: true });
+    }
+
+    const task: "task1" | "task2" = taskType === "task1" ? "task1" : "task2";
+    // Anti-cheat: only award XP for a genuine, on-topic, long-enough essay.
+    // Weak essays are still assessed and saved (feedback is the point) — the
+    // XP engine explains exactly what was missing.
+    const minWords = XP_CONFIG.writing[task].minWords;
     const onTopic = isOnTopic(essay, prompt);
     const genuine = isGenuineWriting(essay, minWords) && onTopic;
+    // Same prompt again → repeat decay (stored as `testId` on the answers).
+    const contentKey = `${task}:${hashString(String(prompt))}`;
 
     // Get AI assessment
     const assessment = await assessWritingTask(
@@ -102,17 +114,32 @@ export async function POST(req: NextRequest) {
       errorTags: dnaErrorTags,
     };
 
-    // Save test result (0 points if it doesn't meet the effort threshold)
+    const wordTotal = essayWords.length;
+    const xp = computeWritingXp({
+      task,
+      words: wordTotal,
+      band: Number(assessment.overallBand) || 0,
+      genuine: isGenuineWriting(essay, minWords),
+      onTopic,
+      coherence: Number((assessment as { coherenceCohesion?: number }).coherenceCohesion) || null,
+      history: await loadXpHistory(student.id, "WRITING", contentKey),
+    });
+
+    // Save test result (0 XP when it doesn't meet the effort threshold)
     const test = await saveIELTSTest(
       student.id,
       "WRITING",
       assessment.overallBand,
-      { essay, prompt },
-      { ...assessment, issues },
+      { essay, prompt, taskType: task, testId: contentKey },
+      { ...assessment, issues, wordCount: wordTotal },
       timeSpent || 0,
-      genuine
-        ? { idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined, dna }
-        : { pointsOverride: 0, dna }
+      {
+        contentKey,
+        idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
+        xp,
+        logDetails: { words: wordTotal, task },
+        dna,
+      }
     );
 
     // Integrity Engine (S4). The hard writing signals already gate XP to zero
@@ -130,17 +157,14 @@ export async function POST(req: NextRequest) {
       testId: test.id,
       assessment,
       issues,
-      pointsAwarded: genuine,
-      cheatNotice: genuine
-        ? undefined
-        : !onTopic
-          ? "Your essay looks off-topic — address the prompt to earn points."
-          : `Write at least ${minWords} meaningful words to earn points.`,
+      pointsAwarded: test.pointsAwarded > 0,
+      xpAwarded: test.pointsAwarded,
+      cheatNotice: genuine ? undefined : xp.notes[0],
     });
   } catch (error: any) {
     console.error("Writing submission error:", error);
     return NextResponse.json(
-      { error: error.message || "Failed to submit essay" },
+      { error: "Your essay wasn't submitted. Your text is still in the editor — please try again." },
       { status: 500 }
     );
   }

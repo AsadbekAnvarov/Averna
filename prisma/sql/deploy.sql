@@ -181,5 +181,34 @@ CREATE INDEX IF NOT EXISTS "roster_students_groupId_idx"
     ON "roster_students" ("groupId");
 
 -- ============================================================================
+-- Progression Engine — idempotent XP ledger. The unique (studentId,
+-- idempotencyKey) index is what stops double clicks / retries / refreshes from
+-- awarding XP twice. Additive; never touches existing tables.
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS "xp_transactions" (
+    "id"             TEXT NOT NULL,
+    "studentId"      TEXT NOT NULL,
+    "idempotencyKey" TEXT NOT NULL,
+    "source"         TEXT NOT NULL,
+    "amount"         INTEGER NOT NULL,
+    "activity"       TEXT,
+    "refId"          TEXT,
+    "breakdown"      JSONB,
+    "createdAt"      TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "xp_transactions_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "xp_transactions_studentId_fkey"
+        FOREIGN KEY ("studentId") REFERENCES "students"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS "xp_transactions_studentId_idempotencyKey_key"
+    ON "xp_transactions" ("studentId", "idempotencyKey");
+CREATE INDEX IF NOT EXISTS "xp_transactions_studentId_createdAt_idx"
+    ON "xp_transactions" ("studentId", "createdAt");
+CREATE INDEX IF NOT EXISTS "xp_transactions_refId_idx"
+    ON "xp_transactions" ("refId");
+
+-- ============================================================================
 -- End of additive deploy script. Nothing above can remove or modify data.
 -- ============================================================================

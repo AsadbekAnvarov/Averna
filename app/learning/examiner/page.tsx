@@ -7,15 +7,15 @@ import { Button } from "@/components/ui/button";
 import { Mic, Square, Volume2, RotateCcw, Trophy, Bot, Loader2 } from "lucide-react";
 import { scoreSpeaking, type SpeakingScore } from "@/lib/utils";
 import { Confetti } from "@/components/confetti";
+import { EXAMINER_QUESTIONS } from "@/lib/examiner-questions";
+import type { SessionOutcome } from "@/lib/engine/progression/service";
+import { SessionOutcomeCard } from "@/components/progression/session-outcome";
 
-const QUESTIONS = [
-  "Describe your hometown and what you like about it.",
-  "Talk about a hobby you enjoy and why.",
-  "Describe a person who has influenced you.",
-  "Do you think technology has improved education? Why or why not?",
-  "Describe your ideal job and explain your choice.",
-  "Talk about a memorable trip you have taken.",
-];
+function newAttemptId(): string {
+  return typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `s-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+
 
 function speak(text: string) {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -33,12 +33,20 @@ export default function ExaminerPage() {
   const [transcript, setTranscript] = useState("");
   const [elapsed, setElapsed] = useState(0);
   const [result, setResult] = useState<SpeakingScore | null>(null);
+  const [outcome, setOutcome] = useState<SessionOutcome | null>(null);
+  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "failed">("idle");
+  const [saveNote, setSaveNote] = useState("");
+  const transcriptRef = useRef("");
+  const secondsRef = useRef(0);
+  const attemptIdRef = useRef<string>("");
 
   const recRef = useRef<any>(null);
   const startRef = useRef<number>(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const question = QUESTIONS[qIndex];
+  const question = EXAMINER_QUESTIONS[qIndex];
+  const qIndexRef = useRef(qIndex);
+  qIndexRef.current = qIndex;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -52,6 +60,7 @@ export default function ExaminerPage() {
       let full = "";
       for (let i = 0; i < e.results.length; i++) full += e.results[i][0].transcript + " ";
       setTranscript(full.trim());
+      transcriptRef.current = full.trim();
     };
     rec.onerror = () => stop();
     recRef.current = rec;
@@ -59,7 +68,34 @@ export default function ExaminerPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Saved server-side: re-scored there, earns Speaking XP, and feeds progress,
+  // missions and recommendations. The attempt id makes a retry idempotent.
+  const save = useCallback(async (text: string, secs: number) => {
+    setSaveState("saving");
+    setSaveNote("");
+    try {
+      const res = await fetch("/api/learning/speaking/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: EXAMINER_QUESTIONS[qIndexRef.current], transcript: text, seconds: secs, submissionId: attemptIdRef.current }),
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(data?.error || "");
+      setOutcome(data?.outcome ?? null);
+      setSaveNote(data?.xpAwarded > 0 ? "" : data?.xpNotes?.[0] ?? "");
+      setSaveState("saved");
+    } catch (e) {
+      setSaveState("failed");
+      setSaveNote((e instanceof Error && e.message) || "Your answer wasn't saved. Check your connection and try again.");
+    }
+  }, []);
+
   const start = () => {
+    attemptIdRef.current = newAttemptId();
+    transcriptRef.current = "";
+    setOutcome(null);
+    setSaveState("idle");
+    setSaveNote("");
     setTranscript("");
     setResult(null);
     setElapsed(0);
@@ -74,15 +110,17 @@ export default function ExaminerPage() {
     if (timerRef.current) clearInterval(timerRef.current);
     setListening(false);
     const secs = Math.max(1, Math.round((Date.now() - startRef.current) / 1000));
-    setTranscript((t) => {
-      if (t.trim().length > 0) setResult(scoreSpeaking(t, secs));
-      return t;
-    });
-  }, []);
+    secondsRef.current = secs;
+    const t = transcriptRef.current.trim();
+    if (t.length > 0) {
+      setResult(scoreSpeaking(t, secs));
+      void save(t, secs);
+    }
+  }, [save]);
 
   const reset = () => {
-    setTranscript(""); setResult(null); setElapsed(0);
-    setQIndex((i) => (i + 1) % QUESTIONS.length);
+    setTranscript(""); setResult(null); setElapsed(0); setOutcome(null); setSaveState("idle"); setSaveNote("");
+    setQIndex((i) => (i + 1) % EXAMINER_QUESTIONS.length);
   };
 
   const mm = String(Math.floor(elapsed / 60)).padStart(2, "0");
@@ -96,7 +134,7 @@ export default function ExaminerPage() {
           <Bot className="h-8 w-8 text-averna-cyan" />
           AI Speaking <span className="neon-text-cyan">Examiner</span>
         </h1>
-        <p className="text-gray-400 mb-6">Answer the question out loud. The examiner transcribes your speech and scores it. 🎤</p>
+        <p className="text-gray-400 mb-6">Answer out loud for up to 2 minutes. The examiner transcribes and scores your speech — answers of 30+ seconds earn Speaking XP.</p>
 
         {!supported && (
           <Card className="glass border-yellow-500/40 mb-6">
@@ -171,11 +209,29 @@ export default function ExaminerPage() {
                   {result.feedback.map((f, i) => <li key={i}>{f}</li>)}
                 </ul>
               </div>
-              <Button onClick={reset} className="neon-button bg-averna-primary hover:bg-averna-light">
-                <RotateCcw className="mr-2 h-4 w-4" /> Try another question
-              </Button>
+              {saveState === "saving" && <p className="text-sm text-gray-400" role="status">Saving your answer…</p>}
+              {saveNote && (
+                <p role={saveState === "failed" ? "alert" : undefined} className={`text-sm ${saveState === "failed" ? "text-red-300" : "text-gray-300"}`}>
+                  {saveNote}
+                </p>
+              )}
+              <div className="flex flex-wrap justify-center gap-3">
+                {saveState === "failed" && (
+                  <Button onClick={() => save(transcriptRef.current, secondsRef.current)} variant="outline" className="border-red-400/50 text-red-200">
+                    Try Saving Again
+                  </Button>
+                )}
+                <Button onClick={reset} className="neon-button bg-averna-primary hover:bg-averna-light">
+                  <RotateCcw className="mr-2 h-4 w-4" /> Try Another Question
+                </Button>
+              </div>
             </CardContent>
           </Card>
+        )}
+        {outcome && (
+          <div className="mt-6">
+            <SessionOutcomeCard outcome={outcome} />
+          </div>
         )}
       </div>
     </div>

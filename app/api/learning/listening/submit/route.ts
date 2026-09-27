@@ -5,6 +5,8 @@ import { saveIELTSTest } from "@/lib/db-helpers";
 import { calculateBandScore } from "@/lib/utils";
 import { listListeningTests } from "@/lib/listening-content";
 import { assessSubmission, applyTrust, logAssessment } from "@/lib/engine/integrity-engine";
+import { computeObjectiveXp } from "@/lib/engine/progression/xp";
+import { buildSessionOutcome, findSubmittedTest, loadXpHistory } from "@/lib/engine/progression/service";
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +32,14 @@ export async function POST(req: NextRequest) {
     const tests = await listListeningTests();
     const testData = tests.find((t) => t.id === testId);
     if (!testData) {
-      return NextResponse.json({ error: "Invalid test ID" }, { status: 400 });
+      return NextResponse.json({ error: "This Listening test couldn't be found. Please pick it again from the list." }, { status: 400 });
+    }
+
+    // Retry / double-click safety: the same attempt id returns the original result.
+    const previous = await findSubmittedTest(student.id, body.submissionId);
+    if (previous) {
+      const outcome = await buildSessionOutcome(student.id, previous.id);
+      return NextResponse.json({ testId: previous.id, duplicate: true, outcome });
     }
 
     // Flatten in the exact order the runner indexes answers by.
@@ -70,6 +79,18 @@ export async function POST(req: NextRequest) {
     const verdict = await assessSubmission(facts);
     const trust = applyTrust(verdict);
 
+    const xp = earnsPoints
+      ? computeObjectiveXp({
+          skill: "LISTENING",
+          correct,
+          total,
+          answered: answeredCount,
+          band: bandScore,
+          difficulty: testData.difficulty,
+          history: { ...(await loadXpHistory(student.id, "LISTENING", testId)), trust: trust.multiplier },
+        })
+      : undefined;
+
     const test = await saveIELTSTest(
       student.id,
       "LISTENING",
@@ -77,14 +98,13 @@ export async function POST(req: NextRequest) {
       { testId, answers: ans },
       { correctCount: correct, totalQuestions: total, percentage },
       Number(timeSpent) || 0,
-      earnsPoints
-        ? {
-            contentKey: testId,
-            difficulty: testData.difficulty,
-            idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
-            trustMultiplier: trust.multiplier,
-          }
-        : { pointsOverride: 0 }
+      {
+        contentKey: testId,
+        difficulty: testData.difficulty,
+        idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
+        ...(xp ? { xp } : { pointsOverride: 0 }),
+        logDetails: { accuracy: Math.round(percentage) },
+      }
     );
 
     await logAssessment(facts, verdict, test.pointsAwarded ?? 0);
@@ -94,12 +114,17 @@ export async function POST(req: NextRequest) {
       correctCount: correct,
       totalQuestions: total,
       bandScore,
-      pointsAwarded: earnsPoints,
+      pointsAwarded: test.pointsAwarded > 0,
+      xpAwarded: test.pointsAwarded,
+      xpNotes: xp?.notes ?? (earnsPoints ? [] : ["Answer at least one question correctly to earn XP."]),
       integrityNotice: trust.reduced ? trust.notice : undefined,
+      outcome: await buildSessionOutcome(student.id, test.id),
     });
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : "Failed to submit test";
     console.error("Listening submission error:", error);
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json(
+      { error: "Your answers weren't saved. Your result is still shown — please try saving again." },
+      { status: 500 }
+    );
   }
 }

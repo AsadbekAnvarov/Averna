@@ -112,15 +112,21 @@ export default function WritingEditor({ prompt, config, userId }: WritingEditorP
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to submit");
+      if (!response.ok) {
+        const err = await response.json().catch(() => null);
+        throw new Error(err?.error || "");
+      }
 
       const data = await response.json();
-      
+
       // Redirect to results page
       router.push(`/learning/writing/result/${data.testId}`);
     } catch (error) {
       console.error("Submission error:", error);
-      toast.error("Failed to submit essay. Please try again.");
+      toast.error(
+        (error instanceof Error && error.message) ||
+          "Your essay wasn't submitted. Your text is still here — check your connection and try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
