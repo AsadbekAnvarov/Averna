@@ -8,6 +8,7 @@ import { Users, Award, ClipboardCheck, BookMarked, Flame, Target, CheckCircle2, 
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
+import { TelegramParentInvite } from "@/components/admin/telegram-parent-invite";
 
 function attLabel(status: string) {
   if (status === "PRESENT") return { t: "Present", c: "text-averna-neon", I: CheckCircle2 };
@@ -147,6 +148,13 @@ export default async function ParentReportPage({ params }: { params: { studentId
             )}
           </CardContent>
         </Card>
+
+        {/* Teachers of this group (checked above) and admins only */}
+        {(session.user.role === "TEACHER" || session.user.role === "ADMIN") && (
+          <div className="mt-6">
+            <TelegramParentInvite studentId={student.id} studentName={student.user.name ?? "your child"} />
+          </div>
+        )}
 
         <p className="text-center text-xs text-gray-500 mt-6">
           Share this page link with parents to keep them updated. 👨‍👩‍👧

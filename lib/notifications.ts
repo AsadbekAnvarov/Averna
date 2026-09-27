@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { deliverToTelegram } from "@/lib/telegram/notify";
 
 interface NotificationInput {
   type?: string; // homework | grade | booking | message | system
@@ -7,7 +8,11 @@ interface NotificationInput {
   link?: string;
 }
 
-/** Create a notification for a single user (by user id). Never throws. */
+/**
+ * Create a notification for a single user (by user id). Never throws.
+ * After the in-app row exists, a copy goes to the user's Telegram (when linked
+ * and their preferences allow the type) — bounded to ~3 s, never throwing.
+ */
 export async function notifyUser(userId: string, input: NotificationInput) {
   try {
     await db.notification.create({
@@ -21,10 +26,12 @@ export async function notifyUser(userId: string, input: NotificationInput) {
     });
   } catch (e) {
     console.error("notifyUser failed:", e);
+    return;
   }
+  await deliverToTelegram([userId], input);
 }
 
-/** Create the same notification for many users. Never throws. */
+/** Create the same notification for many users. Never throws. Telegram copies are throttled. */
 export async function notifyUsers(userIds: string[], input: NotificationInput) {
   if (userIds.length === 0) return;
   try {
@@ -39,7 +46,9 @@ export async function notifyUsers(userIds: string[], input: NotificationInput) {
     });
   } catch (e) {
     console.error("notifyUsers failed:", e);
+    return;
   }
+  await deliverToTelegram(userIds, input);
 }
 
 /** Notify every student in a group (by group id). */
