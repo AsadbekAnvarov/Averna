@@ -64,8 +64,9 @@ export const AI_LIMITS: Record<string, RouteLimit> = {
   // (the attempt is still saved) — never a failed submission.
   "speaking-test": { perHour: 6, perDay: 20 },
   "writing-exam": { perHour: 8, perDay: 24 },
-  // Admin bulk generator: one request = one passage / part / task.
-  "exam-gen": { perHour: 150, perDay: 600 },
+  // Admin bulk generator: one request = one passage / part / task. Filling the
+  // library to 70 per skill is ~700 steps (Reading 3, Listening 4, others 1).
+  "exam-gen": { perHour: 200, perDay: 1000 },
 };
 
 const DEFAULT_LIMIT: RouteLimit = { perHour: 20, perDay: 100 };
