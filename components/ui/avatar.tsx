@@ -1,4 +1,5 @@
 import { cn, initialsOf } from "@/lib/utils";
+import { avatarSrc } from "@/lib/avatars";
 
 /**
  * Shared avatar. Shows the user's photo when present, otherwise coloured
@@ -8,7 +9,7 @@ import { cn, initialsOf } from "@/lib/utils";
  */
 export function Avatar({
   name,
-  image,
+  image: rawImage,
   className,
   fallbackClassName,
   alt,
@@ -19,6 +20,7 @@ export function Avatar({
   fallbackClassName?: string;
   alt?: string;
 }) {
+  const image = avatarSrc(rawImage);
   return (
     <div
       className={cn(

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <radialGradient id="base-a11" cx="0.5" cy="0.4" r="0.8">
+      <stop offset="0" stop-color="#0c1424"/><stop offset="1" stop-color="#03060c"/>
+    </radialGradient>
+    <filter id="blur-a11" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter>
+    <radialGradient id="orb-a11" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.25" stop-color="#f8fafc" stop-opacity="0.95"/>
+      <stop offset="0.7" stop-color="#94a3b8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#00e5ff" stop-opacity="0.85"/>
+    </radialGradient>
+    <linearGradient id="rim-a11" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" fill="url(#base-a11)"/>
+  <g filter="url(#blur-a11)" opacity="0.9">
+    <circle cx="80" cy="70" r="70" fill="#f8fafc"/>
+    <circle cx="190" cy="190" r="62" fill="#94a3b8"/>
+    <circle cx="196" cy="70" r="54" fill="#00e5ff"/>
+  </g>
+  <circle cx="128" cy="128" r="64" fill="url(#orb-a11)"/>
+  <circle cx="128" cy="128" r="64" fill="none" stroke="url(#rim-a11)" stroke-width="2"/>
+  <ellipse cx="108" cy="102" rx="24" ry="14" fill="#ffffff" opacity="0.35" transform="rotate(-30 108 102)"/>
+  <path d="M190 58 L194 70 L206 74 L194 78 L190 90 L186 78 L174 74 L186 70 Z" fill="#ffffff" opacity="0.85"/>
+  <circle cx="66" cy="196" r="3" fill="#ffffff" opacity="0.7"/><circle cx="206" cy="182" r="2" fill="#ffffff" opacity="0.6"/>
+</svg>

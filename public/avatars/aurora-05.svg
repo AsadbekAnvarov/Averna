@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <radialGradient id="base-a5" cx="0.5" cy="0.4" r="0.8">
+      <stop offset="0" stop-color="#0a1030"/><stop offset="1" stop-color="#04060f"/>
+    </radialGradient>
+    <filter id="blur-a5" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter>
+    <radialGradient id="orb-a5" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.25" stop-color="#a5b4fc" stop-opacity="0.95"/>
+      <stop offset="0.7" stop-color="#6366f1" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#00e5ff" stop-opacity="0.85"/>
+    </radialGradient>
+    <linearGradient id="rim-a5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" fill="url(#base-a5)"/>
+  <g filter="url(#blur-a5)" opacity="0.9">
+    <circle cx="196" cy="72" r="70" fill="#a5b4fc"/>
+    <circle cx="70" cy="196" r="62" fill="#6366f1"/>
+    <circle cx="128" cy="40" r="54" fill="#00e5ff"/>
+  </g>
+  <path d="M128 56 L196 128 L128 200 L60 128 Z" fill="url(#orb-a5)"/>
+  <path d="M128 56 L196 128 L128 200 L60 128 Z" fill="none" stroke="url(#rim-a5)" stroke-width="2"/>
+  <path d="M128 56 L150 128 L128 200 M60 128 H196" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" fill="none"/>
+  
+</svg>

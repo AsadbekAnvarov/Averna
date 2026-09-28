@@ -2,12 +2,13 @@ import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLevelInfo, initialsOf } from "@/lib/utils";
 import { Trophy, GraduationCap } from "lucide-react";
+import { avatarSrc } from "@/lib/avatars";
 
 const MEDALS = ["🥇", "🥈", "🥉"];
 
 function Avatar({
   name,
-  image,
+  image: rawImage,
   ring,
 }: {
   name: string | null;
@@ -15,6 +16,7 @@ function Avatar({
   ring: string;
 }) {
   const initials = initialsOf(name);
+  const image = avatarSrc(rawImage);
   if (image) {
     // eslint-disable-next-line @next/next/no-img-element
     return (
