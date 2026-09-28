@@ -9,6 +9,7 @@ import { teacherOf } from "@/lib/access";
 import { getListeningExam, getReadingExam } from "@/lib/ielts/catalog";
 import type { ExamListeningTest, ExamReadingTest, GradeItem } from "@/lib/ielts/types";
 import { AUTO_GRADED, isExamHomeworkKind } from "@/lib/homework/exam-homework";
+import { attemptMismatch } from "@/lib/homework/exam-attempt";
 import { describeExamHomework, type ExamHomeworkInfo } from "@/lib/homework/library";
 import { reviewedTestIds } from "@/lib/homework/reviews";
 import { aggregateClassStats, statsLayout, type StatsGroup } from "@/lib/homework/stats";
@@ -71,6 +72,7 @@ interface TestRow {
   answers: unknown;
   aiAnalysis: unknown;
   timeSpent: number;
+  completedAt: Date;
 }
 
 type Status = "not-started" | "on-time" | "late";
@@ -181,7 +183,16 @@ export default async function TeacherHomeworkDetailPage({ params }: { params: { 
       ? db.iELTSTest
           .findMany({
             where: { id: { in: testIds } },
-            select: { id: true, studentId: true, module: true, score: true, answers: true, aiAnalysis: true, timeSpent: true },
+            select: {
+              id: true,
+              studentId: true,
+              module: true,
+              score: true,
+              answers: true,
+              aiAnalysis: true,
+              timeSpent: true,
+              completedAt: true,
+            },
           })
           .catch(() => [])
       : Promise.resolve([]),
@@ -196,11 +207,22 @@ export default async function TeacherHomeworkDetailPage({ params }: { params: { 
 
   const subByStudent = new Map(submissions.map((s) => [s.studentId, s]));
 
-  // Reading / Listening: the graded items of each linked attempt (only the submitter's own test).
+  // Reading / Listening: the graded items of each linked attempt — only the submitter's own
+  // attempt at exactly this paper and part, saved after the homework was set (a linked test at
+  // other content never reaches the class statistics or the average).
   const attemptByTest = new Map<string, { items: GradeItem[]; correct: number; total: number; timeSpent: number }>();
+  const mismatched = new Set<string>();
   for (const t of tests) {
     const sub = submissions.find((s) => s.testId === t.id);
-    if (!sub || sub.studentId !== t.studentId) continue;
+    if (!sub) continue;
+    if (
+      !kind ||
+      !hw.contentId ||
+      attemptMismatch({ homeworkId: hw.id, kind, contentId: hw.contentId, part: hw.contentPart ?? null, setAt: hw.createdAt }, sub.studentId, t)
+    ) {
+      mismatched.add(sub.id);
+      continue;
+    }
     const parsed = parseObjectiveAttempt(t);
     if (parsed) attemptByTest.set(t.id, { items: parsed.items, correct: parsed.correct, total: parsed.total, timeSpent: t.timeSpent });
   }
@@ -227,8 +249,16 @@ export default async function TeacherHomeworkDetailPage({ params }: { params: { 
   const late = memberSubs.filter((s) => statusOf(s) === "late").length;
   const notStarted = rows.filter((r) => r.member && !r.sub);
   // HomeworkSubmission.band is kept current by the review flow (full Writing test: the combined Writing band).
-  const avgBand = kind ? mean(submissions.map((s) => s.band).filter((b): b is number => typeof b === "number")) : null;
-  const toReview = kind && !auto ? submissions.filter((s) => s.testId && !reviewed.has(s.testId)).length : 0;
+  const avgBand = kind
+    ? mean(
+        submissions
+          .filter((s) => !mismatched.has(s.id))
+          .map((s) => s.band)
+          .filter((b): b is number => typeof b === "number")
+      )
+    : null;
+  // Current members only: a student who left the group can't be reviewed from here any more.
+  const toReview = kind && !auto ? memberSubs.filter((s) => s.testId && !reviewed.has(s.testId)).length : 0;
   const pendingClassic = !kind ? submissions.filter((s) => s.status === "SUBMITTED").length : 0;
   const preview = kind ? examPreviewHref(hw) : null;
 
@@ -343,7 +373,8 @@ export default async function TeacherHomeworkDetailPage({ params }: { params: { 
                           {!auto && !review && <span className="ml-1 text-[11px] font-normal text-gray-500">AI</span>}
                         </span>
                       )}
-                      {kind && sub?.testId && (
+                      {/* A student who left the group: their pages are only open to their current teacher. */}
+                      {kind && sub?.testId && r.member && (
                         <Link
                           href={examResultHref(kind, sub.testId)}
                           className={cn(linkCls, "border-white/10 text-gray-200 hover:border-averna-cyan/40 hover:text-white")}
@@ -351,7 +382,7 @@ export default async function TeacherHomeworkDetailPage({ params }: { params: { 
                           <BarChart3 className="h-3.5 w-3.5" aria-hidden /> Result
                         </Link>
                       )}
-                      {kind && !auto && sub?.testId && (
+                      {kind && !auto && sub?.testId && r.member && (
                         <Link
                           href={examReviewHref(sub.testId)}
                           className={cn(

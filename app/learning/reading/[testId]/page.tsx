@@ -97,6 +97,8 @@ export default async function ReadingTestPage({
       attemptId={attempt}
       exitHref={homework ? "/homework" : LIBRARY}
       homeworkId={homework?.homeworkId}
+      // Graded homework follows exam rules: no in-text dictionary (practice keeps it).
+      lookup={homework ? false : undefined}
     />
   );
 }

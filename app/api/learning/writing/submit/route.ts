@@ -10,7 +10,8 @@ import { XP_CONFIG } from "@/lib/engine/progression/config";
 import { hashString } from "@/lib/engine/progression/missions";
 import { findSubmittedTest, loadXpHistory } from "@/lib/engine/progression/service";
 import { getWritingTask } from "@/lib/ielts/catalog";
-import { examHomeworkFor, recordExamHomework, type ExamHomeworkTarget } from "@/lib/homework/exam-homework";
+import { examHomeworkFor, recordExamHomework, writingVerdict, type ExamHomeworkTarget } from "@/lib/homework/exam-homework";
+import { writingTaskGate } from "@/lib/homework/exam-attempt";
 import { isHomeworkRetryOf } from "@/lib/homework/library-shared";
 import type { WritingPrompt } from "@/lib/writing-data";
 
@@ -86,7 +87,8 @@ export async function POST(req: NextRequest) {
       // A retried request still completes the homework (recordExamHomework is idempotent) — but
       // only with this homework's own saved essay, never another skill's or another prompt's attempt.
       if (homework && isHomeworkRetryOf(previous, homework.target.homeworkId, homework.prompt.id)) {
-        const prevEssay = String((previous.answers as { essay?: unknown } | null)?.essay ?? "");
+        const prevAnswers = previous.answers as { essay?: unknown; prompt?: unknown } | null;
+        const prevEssay = String(prevAnswers?.essay ?? "");
         const prevWords = (previous.aiAnalysis as { wordCount?: unknown } | null)?.wordCount;
         const words = typeof prevWords === "number" ? prevWords : prevEssay.trim().split(/\s+/).filter(Boolean).length;
         const band = Number(previous.score) || 0;
@@ -96,7 +98,8 @@ export async function POST(req: NextRequest) {
           testId: previous.id,
           band,
           summary: homeworkSummary(task, words, band),
-          genuine: isGenuineWriting(prevEssay, minWords),
+          // Real words that address the task, at least the XP minimum (80 / 120) — the saved essay, as recordExamHomework judges it too.
+          genuine: writingTaskGate(writingVerdict(prevEssay, prevAnswers?.prompt ?? homework.prompt.prompt, task)).counts,
         });
       }
       return NextResponse.json({ testId: previous.id, duplicate: true });
@@ -211,7 +214,7 @@ export async function POST(req: NextRequest) {
     const verdict = await assessSubmission(facts);
     await logAssessment(facts, verdict, test.pointsAwarded ?? 0);
 
-    // Exam homework: the first essay for this prompt completes it (the teacher reviews it later).
+    // Exam homework: the first essay for this prompt that counts completes it (the teacher reviews it later).
     if (homework) {
       const band = Number(assessment.overallBand) || 0;
       await recordExamHomework({
@@ -220,8 +223,9 @@ export async function POST(req: NextRequest) {
         testId: test.id,
         band,
         summary: homeworkSummary(task, wordTotal, band),
-        // Points only for an essay that met the minimum length (and isn't filler).
-        genuine: isGenuineWriting(essay, minWords),
+        // The same minimum the essay's own XP needs (80 / 120 real words, not filler) and on the task —
+        // a shorter or off-topic essay earns neither XP nor homework points, and leaves it in To do.
+        genuine: writingTaskGate(writingVerdict(essay, prompt, task)).counts,
       });
     }
 

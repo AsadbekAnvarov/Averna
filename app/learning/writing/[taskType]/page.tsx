@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getWritingPrompts } from "@/lib/writing-content";
 import { examHomeworkFor } from "@/lib/homework/exam-homework";
+import { writingHomeworkRule } from "@/lib/homework/exam-attempt";
 import { ArrowLeft, PenTool, BookOpen, Sparkles, Lightbulb, ChevronRight, ClipboardList } from "lucide-react";
 
 type SearchParams = Record<string, string | string[] | undefined>;
@@ -123,7 +124,16 @@ export default async function WritingTaskPage({
         prompt={{ id: prompt.id, title: prompt.title, prompt: prompt.prompt, type: prompt.type, imageUrl: prompt.imageUrl, chart: prompt.chart }}
         config={taskConfig}
         userId={session.user.id}
-        homework={homework ? { id: homework.homeworkId, title: homework.title, due: new Date(homework.dueDate).toISOString() } : undefined}
+        homework={
+          homework
+            ? {
+                id: homework.homeworkId,
+                title: homework.title,
+                due: new Date(homework.dueDate).toISOString(),
+                rule: writingHomeworkRule(taskType === "task1" ? "WRITING_TASK1" : "WRITING_TASK2"),
+              }
+            : undefined
+        }
       />
 
       <div className="premium-gradient">

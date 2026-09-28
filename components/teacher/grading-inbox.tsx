@@ -20,11 +20,15 @@ const MODULE_COLOR: Record<string, string> = {
 
 /**
  * "Needs grading" inbox — the most recent ungraded submissions across all of
- * the teacher's homework, with a one-click jump to the grading hub.
+ * the teacher's classic homework, with a one-click jump to the grading hub.
+ * Exam homework (contentKind set) is left out: Writing / Speaking attempts wait
+ * in the review queue (PendingReviewsCard) and Reading / Listening are marked
+ * automatically.
  */
 export async function GradingInbox({ teacherId }: { teacherId: string }) {
+  const where = { status: "SUBMITTED" as const, homework: { teacherId, contentKind: null } };
   const submissions = await db.homeworkSubmission.findMany({
-    where: { status: "SUBMITTED", homework: { teacherId } },
+    where,
     include: {
       student: { include: { user: { select: { name: true } } } },
       homework: { select: { title: true, module: true, group: { select: { name: true } } } },
@@ -33,9 +37,7 @@ export async function GradingInbox({ teacherId }: { teacherId: string }) {
     take: 6,
   });
 
-  const total = await db.homeworkSubmission.count({
-    where: { status: "SUBMITTED", homework: { teacherId } },
-  });
+  const total = await db.homeworkSubmission.count({ where });
 
   return (
     <Card className="glass border-amber-400/30">

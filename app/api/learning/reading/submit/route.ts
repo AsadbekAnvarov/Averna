@@ -11,6 +11,7 @@ import { getReadingExam } from "@/lib/ielts/catalog";
 import { clientAttemptKey, resolvePartIndex, submitObjectiveExam } from "@/lib/ielts/submit";
 import { paperLockedByMock } from "@/lib/ielts/mock";
 import { examHomeworkFor, recordExamHomework } from "@/lib/homework/exam-homework";
+import { objectiveGate } from "@/lib/homework/exam-attempt";
 
 export const dynamic = "force-dynamic";
 
@@ -52,7 +53,8 @@ export async function POST(req: NextRequest) {
         idempotencyKey: clientAttemptKey(body.submissionId),
         auto: body.auto === true,
       });
-      // Exam homework (?hw): the first attempt at this exact paper / Passage completes it.
+      // Exam homework (?hw): the first attempt at this exact paper / Passage that counts completes it
+      // (recordExamHomework checks the saved attempt is that content and counts by the same rule).
       if (body.homeworkId) {
         const part = resolvePartIndex(exam, body.part);
         const target = await examHomeworkFor(student.id, body.homeworkId, { kind: "READING", contentId: exam.id, part });
@@ -63,7 +65,8 @@ export async function POST(req: NextRequest) {
             testId: r.testId,
             band: r.band,
             summary: `${part == null ? "Full test" : `Passage ${part + 1}`} · ${r.correct}/${r.total} correct · band ${r.band.toFixed(1)}`,
-            genuine: r.answered > 0,
+            // At least half of the questions in the homework's scope answered.
+            genuine: objectiveGate(r.answered, r.total).counts,
           });
         }
       }

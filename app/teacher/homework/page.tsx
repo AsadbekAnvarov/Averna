@@ -188,7 +188,8 @@ export default async function TeacherHomeworkPage({ searchParams = {} }: { searc
               const lateCount = subs.filter((s) => new Date(s.submittedAt).getTime() > due.getTime()).length;
               const bands = hw.submissions.map((s) => s.band).filter((b): b is number => typeof b === "number" && Number.isFinite(b));
               const avg = bands.length ? Math.round((bands.reduce((a, b) => a + b, 0) / bands.length) * 10) / 10 : null;
-              const toReview = exam && !AUTO_GRADED[exam] ? hw.submissions.filter((s) => s.testId && !reviewed.has(s.testId)).length : 0;
+              // Current members only (as on the homework's page): a student who left can't be reviewed from there.
+              const toReview = exam && !AUTO_GRADED[exam] ? subs.filter((s) => s.testId && !reviewed.has(s.testId)).length : 0;
               const pendingCount = hw.submissions.filter((s) => s.status === "SUBMITTED").length;
               const pct = total ? Math.round((subs.length / total) * 100) : 0;
               const href = `/teacher/homework/${encodeURIComponent(hw.id)}`;

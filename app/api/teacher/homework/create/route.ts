@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { notifyGroupStudents } from "@/lib/notifications";
+import { notifyGroupStudents, TELEGRAM_BULK_BUDGET_MAX_MS } from "@/lib/notifications";
 import { formatDateTime } from "@/lib/utils";
 import { resolveExamContent } from "@/lib/homework/library";
 import { homeworkStaff } from "@/lib/homework/staff";
+
+// Telegram copies of the "new homework" notice are sent after the response (lib/notifications) — give
+// them time: up to 45 s of sending (TELEGRAM_BULK_BUDGET_MAX_MS, shared by the groups) fits inside these 60 s.
+export const maxDuration = 60;
 
 export const dynamic = "force-dynamic";
 
@@ -130,7 +134,11 @@ export async function POST(req: NextRequest) {
     const message = `${data.title} — due ${formatDateTime(due)}`;
     await Promise.all(
       created.map((h) =>
-        notifyGroupStudents(h.groupId, { type: "homework", title: "New homework assigned", message, link: `/homework/${h.id}` })
+        notifyGroupStudents(
+          h.groupId,
+          { type: "homework", title: "New homework assigned", message, link: `/homework/${h.id}` },
+          { telegramBudgetMs: TELEGRAM_BULK_BUDGET_MAX_MS }
+        )
       )
     );
 

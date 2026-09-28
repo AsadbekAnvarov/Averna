@@ -10,6 +10,7 @@ import { examHomeworkHref, isExamHomeworkKind, type ExamHomeworkKind } from "@/l
 import { describeExamHomework, type ExamHomeworkInfo } from "@/lib/homework/library";
 import { reviewedTestIds } from "@/lib/homework/reviews";
 import { EXAM_KIND_INFO, dueState, examResultHref } from "@/lib/homework/library-shared";
+import { isWritingHomeworkKind, writingHomeworkRule } from "@/lib/homework/exam-attempt";
 import { KindIcon, ExamKindBadge } from "@/components/homework/exam-kind";
 import { DueChip } from "@/components/homework/homework-cards";
 import { cn, formatDateTime } from "@/lib/utils";
@@ -142,12 +143,13 @@ function ExamHomeworkView({
   const late = submission ? new Date(submission.submittedAt).getTime() > new Date(homework.dueDate).getTime() : false;
   // The review flow keeps HomeworkSubmission.band current (AI estimate until the teacher reviews it).
   const band = submission?.band ?? null;
+  // Which attempt completes it: lib/homework/exam-attempt (a blank or token attempt leaves it in To do).
   const how =
     kindInfo.graded === "auto"
-      ? "It is marked automatically the moment you submit. Only your first attempt counts for this homework."
+      ? "It is marked automatically the moment you submit. Your first attempt that answers at least half of the questions counts for this homework."
       : kindInfo.skill === "SPEAKING"
-        ? "Record your answers in a quiet place. You get an AI band estimate straight away, then your teacher reviews it. Only your first attempt counts."
-        : "You get an AI band estimate straight away, then your teacher reviews your writing. Only your first attempt counts.";
+        ? "Record your answers in a quiet place. You get an AI band estimate straight away, then your teacher reviews it. Your first real attempt counts — a blank or very short one doesn't."
+        : `You get an AI band estimate straight away, then your teacher reviews your writing. ${isWritingHomeworkKind(kind) ? writingHomeworkRule(kind) : "Your first real attempt counts."}`;
 
   return (
     <div className="min-h-screen premium-gradient">

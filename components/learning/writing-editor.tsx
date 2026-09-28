@@ -30,7 +30,7 @@ interface WritingEditorProps {
   };
   userId: string;
   /** This essay completes exam homework (sent with the submission; the server re-validates it). */
-  homework?: { id: string; title: string; due: string };
+  homework?: { id: string; title: string; due: string; /** e.g. "Your first attempt with at least 120 words on the task counts." */ rule?: string };
 }
 
 export default function WritingEditor({ prompt, config, userId, homework }: WritingEditorProps) {
@@ -169,7 +169,10 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
               <span>
                 Homework: <span className="font-semibold text-white">{homework.title}</span>
               </span>
-              <span className="text-gray-400">· due {formatDateTime(homework.due)} · your first submission counts</span>
+              <span className="text-gray-400">
+                · due {formatDateTime(homework.due)}
+                {homework.rule ? ` · ${homework.rule}` : ""}
+              </span>
             </p>
           )}
         </div>

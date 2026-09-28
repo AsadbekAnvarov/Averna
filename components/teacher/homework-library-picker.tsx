@@ -850,7 +850,9 @@ export function SelectionPreview({ selection }: { selection: LibrarySelection })
           <p className="mt-1 text-xs text-gray-400">{facts.join(" · ")}</p>
         </div>
       </div>
-      <p className="mt-3 text-xs leading-relaxed text-gray-400">{how} Only the first attempt counts.</p>
+      <p className="mt-3 text-xs leading-relaxed text-gray-400">
+        {how} Only the first real attempt counts — a blank or very short one leaves the homework open.
+      </p>
     </section>
   );
 }

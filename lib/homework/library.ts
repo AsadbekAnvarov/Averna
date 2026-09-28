@@ -44,6 +44,7 @@ import {
   type HomeworkLibrary,
   type LibraryWriting,
 } from "./library-shared";
+import { writingHomeworkRule } from "./exam-attempt";
 
 // library-shared.ts re-declares the kind union to stay dependency-free: keep the two identical.
 type Same<A, B> = [A] extends [B] ? ([B] extends [A] ? true : false) : false;
@@ -200,7 +201,7 @@ export async function resolveExamContent(raw: {
         title: suggestedTitle(kind, { title: test.title, scope }),
         description:
           `${EXAM_KIND_INFO[kind].label} homework: ${what}. ${plural(questions, "question")}, ${kind === "LISTENING" ? "about " : ""}${plural(minutes, "minute")}. ` +
-          "Take it in exam conditions — it is marked as soon as you submit, and your first attempt counts.",
+          "Take it in exam conditions — it is marked as soon as you submit, and your first attempt that answers at least half of the questions counts.",
         difficulty: suggestedDifficulty(test.difficulty),
       },
     };
@@ -226,7 +227,7 @@ export async function resolveExamContent(raw: {
         title: suggestedTitle(kind, { title: prompt.title }),
         description:
           `${EXAM_KIND_INFO[kind].label}: “${prompt.title}”. Write at least ${spec.words} words in ${spec.minutes} minutes. ` +
-          "You get an AI band estimate as soon as you submit; your teacher then reviews it. Your first attempt counts.",
+          `You get an AI band estimate as soon as you submit; your teacher then reviews it. ${writingHomeworkRule(kind)}`,
         difficulty: null,
       },
     };
@@ -256,7 +257,7 @@ export async function resolveExamContent(raw: {
         description:
           `Full Writing test in ${WRITING_TASK.examMinutes} minutes: Task 1 “${t1.title}” (at least ${WRITING_TASK.task1.words} words) ` +
           `and Task 2 “${t2.title}” (at least ${WRITING_TASK.task2.words} words). ` +
-          "You get an AI band estimate as soon as you submit; your teacher then reviews it. Your first attempt counts.",
+          `You get an AI band estimate as soon as you submit; your teacher then reviews it. ${writingHomeworkRule(kind)}`,
         difficulty: null,
       },
     };
@@ -278,7 +279,7 @@ export async function resolveExamContent(raw: {
       title: suggestedTitle(kind, { title: set.title }),
       description:
         `Speaking test “${set.title}”: Parts 1–3, about ${SPEAKING_MINUTES} minutes. Find a quiet place and record your answers. ` +
-        "You get an AI band estimate as soon as you submit; your teacher then reviews it. Your first attempt counts.",
+        "You get an AI band estimate as soon as you submit; your teacher then reviews it. Your first real attempt counts — a blank or very short one doesn't.",
       difficulty: null,
     },
   };
