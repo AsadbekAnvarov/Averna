@@ -666,6 +666,7 @@ function SectionRunner({
           key={runnerKey}
           test={c.test}
           mode="mock"
+          context="mock"
           attemptId={runnerId}
           initialAnswers={session.initialAnswers}
           onAutosave={onAnswersAutosave}

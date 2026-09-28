@@ -263,6 +263,7 @@ type AttemptRow = {
   overall: number | null;
   startedAt: Date;
   finishedAt: Date | null;
+  updatedAt: Date;
 };
 
 async function loadRow(studentId: string, attemptId: string): Promise<AttemptRow | null> {
@@ -513,26 +514,34 @@ export async function submitMockSection(o: {
   const done = next >= MOCK_SECTIONS.length;
   // Re-read: grading can take ~30 s (AI examiner) and a teacher may have reviewed
   // an earlier section meanwhile — never write back a stale copy of the results.
-  const fresh = await loadRow(o.studentId, o.attemptId);
-  if (!fresh || fresh.status !== "active" || fresh.current !== o.section || resultsOf(fresh.results)[skill]) {
-    return { ok: true, done: fresh?.status === "finished", section: skill };
+  // The write is guarded by the row's updatedAt too: a review (lib/review/save
+  // updateMock) that commits between this read and the write makes it match no
+  // row, and the results are re-read and merged again — same loop as updateMock.
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const fresh = await loadRow(o.studentId, o.attemptId);
+    if (!fresh || fresh.status !== "active" || fresh.current !== o.section || resultsOf(fresh.results)[skill]) {
+      return { ok: true, done: fresh?.status === "finished", section: skill };
+    }
+    // A review of this section's own tests saved since the last look.
+    if (attempt > 0) result = await withTeacherReviews(skill, result);
+    const merged: MockResults = { ...resultsOf(fresh.results), [skill]: result };
+    const overall = done ? overallBand(MOCK_SECTIONS.map((s) => merged[s]?.band ?? 0)) : null;
+    const r: { count: number } = await db.mockAttempt.updateMany({
+      where: { id: row.id, current: o.section, status: "active", updatedAt: fresh.updatedAt },
+      data: {
+        current: next,
+        results: json(merged),
+        draft: Prisma.DbNull,
+        sectionStartedAt: null,
+        sectionDeadline: null,
+        ...(done ? { status: "finished", finishedAt: new Date(now), overall } : {}),
+      },
+    });
+    if (r.count > 0) return { ok: true, done, section: skill };
   }
-  const merged: MockResults = { ...resultsOf(fresh.results), [skill]: result };
-  const overall = done
-    ? overallBand(MOCK_SECTIONS.map((s) => merged[s]?.band ?? 0))
-    : null;
-  await db.mockAttempt.updateMany({
-    where: { id: row.id, current: o.section, status: "active" },
-    data: {
-      current: next,
-      results: json(merged),
-      draft: Prisma.DbNull,
-      sectionStartedAt: null,
-      sectionDeadline: null,
-      ...(done ? { status: "finished", finishedAt: new Date(now), overall } : {}),
-    },
-  });
-  return { ok: true, done, section: skill };
+  console.warn(`Mock attempt ${row.id}: the ${skill} section kept changing while it was saved; not moved on.`);
+  // Retryable: the section's tests are saved under per-section keys, so a retry only redoes this write.
+  return { ok: false, error: "Your answers were marked, but the exam couldn't move on. Press Try again — nothing is lost.", status: 503 };
 }
 
 // ---------------------------------------------------------------------------
