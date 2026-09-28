@@ -12,7 +12,16 @@
  *     the database, so a refresh or a second tab can't reset it;
  *   - work is autosaved while the section runs; after the deadline (+ a short
  *     grace) new work is refused and the section is marked from the autosave;
- *   - submitting a section is idempotent (a retry of a marked section is ok).
+ *   - submitting a section is idempotent (a retry of a marked section is ok);
+ *   - leaving is no restart: a sitting left after a section's clock started
+ *     (or a section was marked) gets `finishedAt` and counts toward the
+ *     retake wait like a finished one (see COUNTED_SITTINGS);
+ *   - Writing is optional: leaving at its intro (its clock not started)
+ *     finishes the sitting without it, with a level, like "Skip Writing";
+ *   - a sitting left waiting at the optional Writing intro for more than
+ *     WRITING_INTRO_TIMEOUT_HOURS is finished without Writing when it is next
+ *     read (the student's pages, the admin list), so it still gets a level —
+ *     written to Student.level only if no one (an admin) changed it meanwhile.
  *
  * PlacementAttempt has no clock columns, so the running section's clock lives
  * in `draft` (PlacementDraft: { section, startedAt, deadline, answers | essay }),
@@ -31,7 +40,14 @@ import { gradeGroups, sanitizeAnswers } from "@/lib/ielts/grading";
 import { toClientGroup, toClientReading } from "@/lib/ielts/sanitize";
 import { listeningClientContent } from "@/lib/ielts/audio/client";
 import type { ExamGroup } from "@/lib/ielts/types";
-import { GRACE_MS, LISTENING_BUFFER_MINUTES, SECTION_MINUTES, SECTION_TITLE, retakeOpensAt } from "./config";
+import {
+  GRACE_MS,
+  LISTENING_BUFFER_MINUTES,
+  SECTION_MINUTES,
+  SECTION_TITLE,
+  WRITING_INTRO_TIMEOUT_HOURS,
+  retakeOpensAt,
+} from "./config";
 import { CURRENT_FORM_ID, getPlacementForm } from "./content";
 import { grammarGroups, scoreGrammar, scoreObjective, scoreWriting, skippedWriting, summarize } from "./scoring";
 import { assessPlacementWriting } from "./writing";
@@ -141,26 +157,64 @@ function sectionMinutes(section: PlacementSection, form: PlacementForm): number 
   return SECTION_MINUTES[section];
 }
 
+/** A section's clock has started, or a section was marked: leaving now counts toward the retake wait. */
+function sittingStarted(row: Pick<AttemptRow, "current" | "draft" | "results">): boolean {
+  return row.current > 0 || Object.keys(resultsOf(row.results).sections).length > 0 || !!draftOf(row.draft, row.current);
+}
+
+/** An active sitting waiting at the optional Writing intro: every other section marked, the Writing clock not started. */
+function atWritingIntro(row: Pick<AttemptRow, "status" | "plan" | "current" | "draft">): boolean {
+  if (row.status !== "active") return false;
+  const plan = planOf(row.plan);
+  return !!plan && plan.sections[row.current] === "WRITING" && !draftOf(row.draft, row.current);
+}
+
 // ---------------------------------------------------------------------------
 // Retakes
 // ---------------------------------------------------------------------------
 
-function retakeFrom(last: { finishedAt: Date | null; startedAt: Date; results: unknown } | null): RetakeStatus {
+/**
+ * The sittings the retake wait follows are exactly those with `finishedAt`:
+ * it is set when a sitting finishes, and when the student leaves one after a
+ * section's clock had started or a section was marked (abandonPlacement). A
+ * sitting left before any section started — or closed because its content
+ * form was retired — has no finishedAt and doesn't count.
+ */
+export const COUNTED_SITTINGS = { status: { in: ["finished", "abandoned"] }, finishedAt: { not: null } };
+
+type CountedSitting = { id: string; status: string; finishedAt: Date | null; startedAt: Date; results: unknown };
+
+/** The retake state that follows a student's latest counted sitting (null: none yet). */
+export function retakeFrom(last: Omit<CountedSitting, "id"> | null): RetakeStatus {
   if (!last) return { allowed: true, nextAt: null, override: false };
   const override = !!resultsOf(last.results).retake;
   const opens = retakeOpensAt(last.finishedAt ?? last.startedAt);
   const open = Date.now() >= opens.getTime();
-  return { allowed: override || open, nextAt: override || open ? null : opens.toISOString(), override };
+  return {
+    allowed: override || open,
+    nextAt: override || open ? null : opens.toISOString(),
+    override,
+    ...(last.status === "abandoned" ? { unfinished: true } : {}),
+  };
 }
 
-/** Can this student start a new sitting? (14 days after the last finished one, or earlier with an admin's permission.) */
-export async function retakeStatus(studentId: string): Promise<RetakeStatus> {
-  const last = await db.placementAttempt.findFirst({
-    where: { studentId, status: "finished" },
+/** The student's latest sitting that counts toward the retake wait (see COUNTED_SITTINGS), or null. */
+export async function lastCountedSitting(studentId: string): Promise<CountedSitting | null> {
+  const row = await db.placementAttempt.findFirst({
+    where: { studentId, ...COUNTED_SITTINGS },
     orderBy: { finishedAt: "desc" },
-    select: { finishedAt: true, startedAt: true, results: true },
+    select: { id: true, status: true, finishedAt: true, startedAt: true, results: true },
   });
-  return retakeFrom(last);
+  return (row as CountedSitting | null) ?? null;
+}
+
+/**
+ * Can this student start a new sitting? 14 days after the last sitting that
+ * counts — finished, or left after a section had started — or earlier with an
+ * admin's permission.
+ */
+export async function retakeStatus(studentId: string): Promise<RetakeStatus> {
+  return retakeFrom(await lastCountedSitting(studentId));
 }
 
 // ---------------------------------------------------------------------------
@@ -180,11 +234,8 @@ export async function startPlacement(studentId: string): Promise<StartResult> {
   if (active) {
     const plan = planOf(active.plan);
     if (plan && getPlacementForm(plan.form)) return { ok: true, attemptId: active.id, resumed: true };
-    // Its content form was retired: close it so a fresh sitting can start.
-    await db.placementAttempt.updateMany({
-      where: { id: active.id, status: "active" },
-      data: { status: "abandoned", draft: Prisma.DbNull, updatedAt: new Date() },
-    });
+    // Its content form was retired: close it (not the student's doing — it doesn't count) so a fresh sitting can start.
+    await abandonPlacement(studentId, active.id, "system");
   }
 
   const retake = await retakeStatus(studentId);
@@ -192,11 +243,14 @@ export async function startPlacement(studentId: string): Promise<StartResult> {
     const when = retake.nextAt
       ? new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Tashkent", day: "numeric", month: "long", year: "numeric" }).format(new Date(retake.nextAt))
       : "soon";
+    const why = retake.unfinished
+      ? "You left your last placement test after it had started, so it counts as a sitting."
+      : "You've already taken the placement test.";
     return {
       ok: false,
       status: 403,
       nextAt: retake.nextAt,
-      error: `You've already taken the placement test. You can take it again from ${when} — or ask your teacher if you need to retake it sooner.`,
+      error: `${why} You can take it again from ${when} — or ask your teacher if you need to retake it sooner.`,
     };
   }
 
@@ -216,13 +270,47 @@ export async function startPlacement(studentId: string): Promise<StartResult> {
   }
 }
 
-export async function abandonPlacement(studentId: string, attemptId: string): Promise<boolean> {
+/** What leaving did: "finished" (at the Writing intro — finished without Writing, with a level), "left" (abandoned), or false (nothing to leave). */
+export type LeaveOutcome = false | "left" | "finished";
+
+/**
+ * Leave a sitting for good. When a section's clock had started (or a section
+ * was marked) the sitting gets `finishedAt`, so it counts toward the retake
+ * wait like a finished one — leaving can't restart the clocks on the same
+ * items. At the intro of the optional Writing (its clock not started) the
+ * student's Leave finishes the sitting with Writing skipped instead, so the
+ * three marked sections still give a level. `by: "system"` (its content form
+ * was retired, so nobody can continue it) never counts, and neither does a
+ * sitting whose form is gone.
+ */
+export async function abandonPlacement(studentId: string, attemptId: string, by: "student" | "system" = "student"): Promise<LeaveOutcome> {
   if (typeof attemptId !== "string" || !attemptId || attemptId.length > 64) return false;
-  const r = await db.placementAttempt.updateMany({
-    where: { id: attemptId, studentId, status: "active" },
-    data: { status: "abandoned", draft: Prisma.DbNull, updatedAt: new Date() },
-  });
-  return r.count > 0;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const row = await loadRow(studentId, attemptId);
+    if (!row || row.status !== "active") return false;
+    const f = formOfRow(row);
+    if (by === "student" && f && atWritingIntro(row)) {
+      // Leaving here is skipping Writing. Only while the sitting is exactly as checked: a Start pressed in
+      // another tab at the same moment wins, and the next pass leaves by the rule for a running section.
+      const r = await markSection(
+        { studentId, userId: "", attemptId: row.id, section: row.current, payload: { skip: true } },
+        { ifUpdatedAt: row.updatedAt }
+      );
+      if (r.ok && r.done) return "finished";
+      continue;
+    }
+    const counts = by === "student" && !!f && sittingStarted(row);
+    // The student leaves before anything started: compare-and-set on updatedAt, so a Start pressed
+    // at the same moment (another tab) can't slip in between this check and the write.
+    const guard = by === "student" && !counts;
+    const now = new Date();
+    const r = await db.placementAttempt.updateMany({
+      where: { id: row.id, studentId, status: "active", ...(guard ? { updatedAt: row.updatedAt } : {}) },
+      data: { status: "abandoned", draft: Prisma.DbNull, updatedAt: now, ...(counts ? { finishedAt: now } : {}) },
+    });
+    if (r.count > 0) return "left";
+  }
+  return false;
 }
 
 /** Start the clock of the current section (idempotent). */
@@ -282,21 +370,47 @@ export type SectionSubmitResult =
   | { ok: true; done: boolean; section: PlacementSection }
   | { ok: false; error: string; status: number };
 
-/**
- * Mark one section and move the sitting on; the last one finishes it (summary,
- * cefr / band / recommendation, Student.level). Idempotent: a retry of a marked
- * section returns ok. Writing may call the AI examiner (up to ~40 s).
- * `payload`: { answers } | { essay } | { skip: true } (Writing only — also before its clock starts).
- */
-export async function submitPlacementSection(o: {
+interface SectionSubmit {
   studentId: string;
   userId: string;
   attemptId: string;
   section: number;
   payload: unknown;
-  /** Mark from the autosave (the deadline passed while the student was away). */
+  /**
+   * Marked by the server, not the student: from the autosave (the deadline
+   * passed while the student was away), or — with { skip: true } — Writing
+   * skipped for a sitting left at the Writing intro (finishIfParked). That
+   * automatic skip is refused once a Writing clock has started, and it writes
+   * only while the sitting is unchanged since it was checked.
+   */
   fromDraft?: boolean;
-}): Promise<SectionSubmitResult> {
+}
+
+/** How the server itself marks a section (never from a request). */
+interface MarkOptions {
+  /** Compare-and-set: mark only while the sitting still has this updatedAt (the row the caller checked). */
+  ifUpdatedAt?: Date;
+  /**
+   * A late automatic finish: Student.level is written only when it is empty or still holds the level
+   * the student's previous finished placement wrote — never over a level an admin set meanwhile.
+   */
+  keepChangedLevel?: boolean;
+}
+
+const SITTING_CHANGED: SectionSubmitResult = { ok: false, error: "This test changed in another tab — reloading it.", status: 409 };
+
+/**
+ * Mark one section and move the sitting on; the last one finishes it (summary,
+ * cefr / band / recommendation, Student.level). Idempotent: a retry of a marked
+ * section returns ok. Writing may call the AI examiner (at most
+ * WRITING_AI_TIMEOUT_MS, then the offline estimate).
+ * `payload`: { answers } | { essay } | { skip: true } (Writing only — also before its clock starts).
+ */
+export async function submitPlacementSection(o: SectionSubmit): Promise<SectionSubmitResult> {
+  return markSection(o, {});
+}
+
+async function markSection(o: SectionSubmit, opts: MarkOptions): Promise<SectionSubmitResult> {
   const row = await loadRow(o.studentId, o.attemptId);
   if (!row) return { ok: false, error: "This placement test couldn't be found.", status: 404 };
   const f = formOfRow(row);
@@ -312,11 +426,16 @@ export async function submitPlacementSection(o: {
   }
   if (row.status !== "active") return { ok: false, error: "This placement test is no longer active.", status: 409 };
   if (row.current !== o.section) return { ok: false, error: "Finish the earlier sections first.", status: 409 };
+  if (opts.ifUpdatedAt && new Date(row.updatedAt).getTime() !== new Date(opts.ifUpdatedAt).getTime()) return SITTING_CHANGED;
 
   const payload = asRec(o.payload);
   const skip = key === "WRITING" && payload?.skip === true;
   const clock = draftOf(row.draft, o.section);
   if (!clock && !skip) return { ok: false, error: "Start the section first.", status: 409 };
+  // The server's own skip (a sitting left at the Writing intro) never throws away a Writing started meanwhile.
+  const autoSkip = skip && !!o.fromDraft;
+  if (autoSkip && clock) return { ok: false, error: "Writing has started, so it isn't skipped.", status: 409 };
+  const guard = opts.ifUpdatedAt ?? (autoSkip ? row.updatedAt : undefined);
 
   const now = Date.now();
   const late = !!clock && now > clock.deadline + GRACE_MS;
@@ -347,7 +466,8 @@ export async function submitPlacementSection(o: {
   const summary = done ? summarize(form.grammar, sections) : null;
   const merged: PlacementResults = { ...results, sections, ...(summary ? { summary } : {}) };
   const r = await db.placementAttempt.updateMany({
-    where: { id: row.id, status: "active", current: o.section },
+    // `guard`: only while the sitting is exactly the row that was checked (a Writing Start in between changes it).
+    where: { id: row.id, status: "active", current: o.section, ...(guard ? { updatedAt: guard } : {}) },
     data: {
       current: next,
       results: json(merged),
@@ -371,14 +491,105 @@ export async function submitPlacementSection(o: {
     if (again && (again.current > o.section || resultsOf(again.results).sections[key])) {
       return { ok: true, done: again.status === "finished", section: key };
     }
-    return { ok: false, error: "This test changed in another tab — reloading it.", status: 409 };
+    return SITTING_CHANGED;
   }
-  if (summary) {
-    await db.student
-      .update({ where: { id: o.studentId }, data: { level: summary.level } })
-      .catch((e: unknown) => console.error("Placement: Student.level update failed", e));
-  }
+  if (summary) await writeStudentLevel(o.studentId, row.id, summary.level, !!opts.keepChangedLevel);
   return { ok: true, done, section: key };
+}
+
+/**
+ * Student.level after a finished sitting: the admin roster's level name ("Oʻrta (B1)"), so the
+ * enrollment form shows it and keeps it on save. A late automatic finish (`keepChanged`) writes it
+ * only when it is empty or still the level the student's previous finished placement wrote — as a
+ * compare-and-set, so a level an admin set (even at this very moment) stays. Never throws.
+ */
+async function writeStudentLevel(studentId: string, attemptId: string, level: string, keepChanged: boolean): Promise<void> {
+  try {
+    if (!keepChanged) {
+      await db.student.update({ where: { id: studentId }, data: { level } });
+      return;
+    }
+    const previous: { results: unknown } | null = await db.placementAttempt.findFirst({
+      where: { studentId, status: "finished", id: { not: attemptId } },
+      orderBy: { finishedAt: "desc" },
+      select: { results: true },
+    });
+    const written = resultsOf(previous?.results).summary?.level;
+    const unchanged: { level: string | null }[] = [{ level: null }, { level: "" }];
+    if (typeof written === "string" && written) unchanged.push({ level: written });
+    await db.student.updateMany({ where: { id: studentId, OR: unchanged }, data: { level } });
+  } catch (e) {
+    console.error("Placement: Student.level update failed", e);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sittings left at the (optional) Writing intro
+// ---------------------------------------------------------------------------
+
+const WRITING_INTRO_TIMEOUT_MS = WRITING_INTRO_TIMEOUT_HOURS * 3_600_000;
+
+/** Waiting at the Writing intro (no clock started) for longer than WRITING_INTRO_TIMEOUT_HOURS. */
+function parkedAtWriting(row: AttemptRow, now: number = Date.now()): boolean {
+  const plan = planOf(row.plan);
+  if (!plan || !atWritingIntro(row)) return false;
+  const prevKey = row.current > 0 ? plan.sections[row.current - 1] : undefined;
+  const prev = prevKey ? resultsOf(row.results).sections[prevKey] : undefined;
+  const marked = Date.parse(prev?.submittedAt ?? "");
+  const since = Number.isFinite(marked) ? marked : new Date(row.updatedAt).getTime();
+  return now - since > WRITING_INTRO_TIMEOUT_MS;
+}
+
+/**
+ * A sitting that has waited at the Writing intro too long is finished with
+ * Writing skipped (marked `auto`), so the student gets a result and a level.
+ * Only while the sitting is still the row checked here (a Writing started
+ * since is never skipped), and Student.level only when no one changed it
+ * since the last placement (an admin may have enrolled the student meanwhile).
+ * True when it is finished now. Never throws.
+ */
+async function finishIfParked(row: AttemptRow): Promise<boolean> {
+  if (!parkedAtWriting(row)) return false;
+  try {
+    const r = await markSection(
+      {
+        studentId: row.studentId,
+        userId: "", // skipping never calls the AI examiner
+        attemptId: row.id,
+        section: row.current,
+        payload: { skip: true },
+        fromDraft: true,
+      },
+      { ifUpdatedAt: row.updatedAt, keepChangedLevel: true }
+    );
+    return r.ok && r.done;
+  } catch (e) {
+    console.error("Placement: finishing a sitting left at the Writing intro failed", e);
+    return false;
+  }
+}
+
+/** Finish every active sitting (of one student, or everyone's) that has waited at the Writing intro too long. Never throws. */
+export async function finishParkedSittings(studentId?: string): Promise<number> {
+  try {
+    const rows = (await db.placementAttempt.findMany({
+      where: { status: "active", ...(studentId ? { studentId } : {}) },
+      orderBy: { startedAt: "asc" },
+      take: 200,
+    })) as AttemptRow[];
+    let finished = 0;
+    for (const row of rows) if (await finishIfParked(row)) finished++;
+    return finished;
+  } catch (e) {
+    console.error("Placement: checking sittings left at the Writing intro failed", e);
+    return 0;
+  }
+}
+
+/** The student's sitting in progress (full row), or null. */
+async function activeRow(studentId: string): Promise<AttemptRow | null> {
+  const row = await db.placementAttempt.findFirst({ where: { studentId, status: "active" }, orderBy: { startedAt: "desc" } });
+  return (row as AttemptRow | null) ?? null;
 }
 
 // ---------------------------------------------------------------------------
@@ -416,7 +627,9 @@ async function sectionContent(section: PlacementSection, form: PlacementForm): P
     case "GRAMMAR":
       return { section, groups: grammarGroups(form.grammar).map(toClientGroup), minutes: sectionMinutes(section, form) };
     case "LISTENING":
-      // Browser voices, or a pre-rendered recording if one exists for this test id (the script is then withheld).
+      // With a ready pre-rendered recording for this test id (rendered on the admin audio page),
+      // listeningClientContent sends the recording and withholds the script. Without one the script
+      // is sent for the browser voices — as for any browser-voice test — and it contains the answers.
       return { section, test: await listeningClientContent(form.listening) };
     case "READING":
       return { section, test: toClientReading(form.reading), minutes: sectionMinutes(section, form) };
@@ -441,7 +654,7 @@ export async function getPlacementView(studentId: string, userId: string, attemp
     // usual, and its runner submits at once (the clock is over).
     try {
       const r = await submitPlacementSection({ studentId, userId, attemptId: row.id, section: row.current, payload: null, fromDraft: true });
-      if (!r.ok && r.status === 410) await abandonPlacement(studentId, row.id);
+      if (!r.ok && r.status === 410) await abandonPlacement(studentId, row.id, "system");
       if (!r.ok) {
         row = await loadRow(studentId, attemptId);
         break;
@@ -453,10 +666,13 @@ export async function getPlacementView(studentId: string, userId: string, attemp
     row = await loadRow(studentId, attemptId);
   }
   if (!row) return null;
+  // Left waiting at the optional Writing intro for too long: finished without Writing.
+  if (row.status === "active" && (await finishIfParked(row))) row = await loadRow(studentId, attemptId);
+  if (!row) return null;
 
   const f = formOfRow(row);
   if (!f) {
-    if (row.status === "active") await abandonPlacement(studentId, row.id).catch(() => false);
+    if (row.status === "active") await abandonPlacement(studentId, row.id, "system").catch(() => false);
     return { attemptId: row.id, sections: [], stage: { kind: row.status === "finished" ? "finished" : "abandoned" }, startedAt: row.startedAt.toISOString() };
   }
   const { plan, form } = f;
@@ -504,20 +720,22 @@ export async function getPlacementResult(studentId: string, attemptId: string): 
 
 const EMPTY_OVERVIEW: PlacementOverview = { active: null, last: null, retake: { allowed: true, nextAt: null, override: false } };
 
-/** The hub page: a sitting in progress, the last result, and whether a new sitting can start. Never throws. */
+/**
+ * The hub page: a sitting in progress, the last result, and whether a new
+ * sitting can start. A sitting left at the Writing intro for too long is
+ * finished first. Never throws.
+ */
 export async function getPlacementOverview(studentId: string): Promise<PlacementOverview> {
   try {
-    const [active, last] = await Promise.all([
-      db.placementAttempt.findFirst({
-        where: { studentId, status: "active" },
-        orderBy: { startedAt: "desc" },
-        select: { id: true, current: true, startedAt: true, plan: true },
-      }),
+    let active = await activeRow(studentId);
+    if (active && (await finishIfParked(active))) active = null;
+    const [last, counted] = await Promise.all([
       db.placementAttempt.findFirst({
         where: { studentId, status: "finished" },
         orderBy: { finishedAt: "desc" },
-        select: { id: true, finishedAt: true, startedAt: true, cefr: true, band: true, recommendation: true, results: true },
+        select: { id: true, finishedAt: true, startedAt: true, cefr: true, band: true, recommendation: true },
       }),
+      lastCountedSitting(studentId),
     ]);
     const plan = active ? planOf(active.plan) : null;
     return {
@@ -527,6 +745,8 @@ export async function getPlacementOverview(studentId: string): Promise<Placement
             current: active.current,
             sections: plan?.sections.length ?? PLACEMENT_SECTIONS.length,
             startedAt: active.startedAt.toISOString(),
+            started: sittingStarted(active),
+            atWritingIntro: atWritingIntro(active),
           }
         : null,
       last: last
@@ -538,7 +758,7 @@ export async function getPlacementOverview(studentId: string): Promise<Placement
             recommendation: last.recommendation,
           }
         : null,
-      retake: retakeFrom(last),
+      retake: retakeFrom(counted),
     };
   } catch (e) {
     console.error("Placement overview failed:", e);
@@ -546,14 +766,22 @@ export async function getPlacementOverview(studentId: string): Promise<Placement
   }
 }
 
-/** Dashboard card: show it to students who never finished a placement test. Never throws (hidden on errors). */
+/**
+ * Dashboard card: show it to students who never finished a placement test —
+ * not while a left sitting's retake wait is running (there's nothing they
+ * could start). Never throws (hidden on errors).
+ */
 export async function placementPromptState(studentId: string): Promise<{ show: boolean; activeAttemptId: string | null }> {
   try {
     const [finished, active] = await Promise.all([
       db.placementAttempt.findFirst({ where: { studentId, status: "finished" }, select: { id: true } }),
-      db.placementAttempt.findFirst({ where: { studentId, status: "active" }, orderBy: { startedAt: "desc" }, select: { id: true } }),
+      activeRow(studentId),
     ]);
-    return { show: !finished, activeAttemptId: active?.id ?? null };
+    // Left at the Writing intro for too long: finished now, so there's a level and nothing to finish.
+    if (active && (await finishIfParked(active))) return { show: false, activeAttemptId: null };
+    if (finished) return { show: false, activeAttemptId: active?.id ?? null };
+    if (!active && !retakeFrom(await lastCountedSitting(studentId)).allowed) return { show: false, activeAttemptId: null };
+    return { show: true, activeAttemptId: active?.id ?? null };
   } catch {
     return { show: false, activeAttemptId: null };
   }

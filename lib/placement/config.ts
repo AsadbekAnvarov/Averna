@@ -28,14 +28,31 @@ export const SECTION_MINUTES: Record<Exclude<PlacementSection, "LISTENING">, num
 /**
  * Listening has no clock of its own (the runner ends the section after the
  * recording and the 2-minute check). The server window is the estimated
- * recording + checking time plus this buffer: browser voices differ in speed,
- * and the student may play the sound check first.
+ * recording + checking time plus this buffer — room for slower browser voices
+ * and the sound check, but none for a second hearing (a refresh can't replay
+ * the recording, and answers after the window are refused).
  */
-export const LISTENING_BUFFER_MINUTES = 6;
+export const LISTENING_BUFFER_MINUTES = 3;
 /** Answers still count this long after the deadline (network, the runner's own auto-submit). */
 export const GRACE_MS = 2 * 60_000;
-/** Days before a finished test can be taken again (an admin can allow it earlier). */
+/**
+ * Days before the test can be taken again (an admin can allow it earlier). The
+ * wait follows the last sitting that counts: a finished one, or one the student
+ * left after a section's clock had started (or a section was marked).
+ */
 export const RETAKE_DAYS = 14;
+/**
+ * Writing is optional: a sitting left waiting at the Writing intro this long
+ * is finished without it the next time it is read (the student's pages, the
+ * admin list), so the student still gets a result and a level.
+ */
+export const WRITING_INTRO_TIMEOUT_HOURS = 24;
+/**
+ * The AI examiner gets this long for the Writing sample; after that the
+ * offline estimate is used, so a submit (and the run page) stays well inside
+ * the 60 s function limit.
+ */
+export const WRITING_AI_TIMEOUT_MS = 35_000;
 /** "Not now" on the dashboard card hides it for this long (localStorage). */
 export const PROMPT_DISMISS_DAYS = 7;
 export const PROMPT_DISMISS_KEY = "averna-placement-prompt-until";
@@ -61,6 +78,15 @@ export const SECTION_WEIGHTS: Record<PlacementSection, number> = {
   LISTENING: 0.25,
   WRITING: 0.1,
 };
+/**
+ * Listening with no answer at all (usually the audio didn't play) doesn't
+ * count, and a blank must neither lift the level nor sink it: the overall is
+ * at most the lower of these sections' levels — the scored sections every
+ * sitting has (Writing is optional and capped by length, so it never sets the
+ * ceiling) — and at least what the same sitting gets with every Listening
+ * answer wrong.
+ */
+export const BLANK_LISTENING_CEILING: readonly PlacementSection[] = ["GRAMMAR", "READING"];
 
 /**
  * Grammar & Vocabulary raw score (out of 30; other lengths are scaled to 30)
@@ -234,7 +260,22 @@ export const TOPIC_LABEL: Record<string, string> = {
 /** Vocabulary topics are practised with flashcards; the rest in the grammar guide. */
 export const VOCABULARY_TOPICS = ["word-formation", "collocations", "academic-vocabulary"];
 
-/** "B1 · IELTS ≈ 5.0" — what Student.level gets. */
-export function levelLabel(cefr: Cefr, band: number): string {
-  return `${cefr} · IELTS ≈ ${band.toFixed(1)}`;
+/**
+ * What Student.level gets: the admin panel's own level names (the LEVELS of
+ * the enrollment roster, app/admin/dashboard/page.tsx), so the roster shows the
+ * placement result and saving it keeps the level. The IELTS estimate stays on
+ * the attempt (PlacementAttempt.band).
+ */
+export const STUDENT_LEVEL_LABEL: Record<Cefr, string> = {
+  A1: "Boshlangʻich (A2)",
+  A2: "Boshlangʻich (A2)",
+  B1: "Oʻrta (B1)",
+  B2: "Oʻrtadan yuqori (B2)",
+  C1: "Yuqori (C1)",
+};
+
+/** A1/A2 → "Boshlangʻich (A2)", B1 → "Oʻrta (B1)", B2 → "Oʻrtadan yuqori (B2)", C1/C2 → "Yuqori (C1)". */
+export function studentLevelLabel(cefr: Cefr | "C2"): string {
+  if (cefr === "C2") return STUDENT_LEVEL_LABEL.C1;
+  return STUDENT_LEVEL_LABEL[cefr] ?? STUDENT_LEVEL_LABEL.A1;
 }

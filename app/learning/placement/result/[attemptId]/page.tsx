@@ -64,6 +64,8 @@ export default async function PlacementResultPage({ params }: { params: { attemp
   const s = r.summary;
   const rule = recommendationRule(s.cefr);
   const finishedAt = r.finishedAt ?? r.startedAt;
+  // Older summaries have no flag — the Listening result itself says so.
+  const listeningNotAssessed = !!s.listeningNotAssessed || (!!r.sections.LISTENING && !r.sections.LISTENING.scored);
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -92,6 +94,16 @@ export default async function PlacementResultPage({ params }: { params: { attemp
                 <CalendarDays className="h-4 w-4 text-gray-500" aria-hidden />
                 {formatDateTime(finishedAt)}
               </p>
+              {listeningNotAssessed && (
+                <p className="mt-3 flex max-w-xl items-start gap-2 rounded-xl border border-amber-300/35 bg-amber-400/10 px-3 py-2 text-sm leading-relaxed text-amber-100">
+                  <CircleSlash className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" aria-hidden />
+                  <span>
+                    Listening wasn&apos;t assessed — no answers were recorded — so your level comes from your other sections, with
+                    Grammar &amp; Vocabulary and Reading counting most. If the audio didn&apos;t play, tell your teacher — the school can let
+                    you take the test again sooner.
+                  </span>
+                </p>
+              )}
 
               <div className="mt-5 rounded-2xl border border-averna-neon/25 bg-averna-neon/[0.05] p-4">
                 <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-averna-neon">
@@ -266,6 +278,12 @@ export default async function PlacementResultPage({ params }: { params: { attemp
                 . The IELTS bands are estimates from a short test (at most 7.5 per section) — a full mock exam gives a closer
                 picture.
               </p>
+              {listeningNotAssessed && (
+                <p className="mt-1 text-xs text-gray-500">
+                  Listening wasn&apos;t assessed (normally {pct(SECTION_WEIGHTS.LISTENING)}), so the other sections share its
+                  weight.
+                </p>
+              )}
               {!s.weights.WRITING && (
                 <p className="mt-1 text-xs text-gray-500">Writing wasn&apos;t included (normally {pct(SECTION_WEIGHTS.WRITING)}).</p>
               )}
@@ -339,7 +357,11 @@ function SectionCard({ section, result, delay }: { section: PlacementSection; re
           {skipped && (
             <li className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-3 text-xs font-medium text-gray-200">
               <CircleSlash className="h-3.5 w-3.5 text-gray-400" aria-hidden />
-              {result?.blank ? "Nothing was written — not counted" : "Skipped — not counted in your level"}
+              {result?.blank
+                ? "Nothing was written — not counted"
+                : result?.auto
+                  ? "Not started within a day — skipped, not counted in your level"
+                  : "Skipped — not counted in your level"}
             </li>
           )}
           {notCounted && (

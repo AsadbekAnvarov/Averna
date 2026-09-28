@@ -4,7 +4,9 @@
  * Placement test actions:
  * - <PlacementStartButton />: "before you start" dialog → POST /api/placement/start → the run page
  *   (resumes the sitting in progress when there is one);
- * - <PlacementLeaveButton />: confirm → POST /api/placement/{id}/abandon.
+ * - <PlacementLeaveButton />: confirm → POST /api/placement/{id}/abandon (once a section has started,
+ *   leaving counts toward the retake wait — the dialog says so; at the optional Writing intro leaving
+ *   finishes the test without Writing, so the dialog says that and the result opens).
  *
  * Client only — talks to the /api/placement routes; the dialog, the JSON POST
  * helper and the button looks are shared with the mock exam.
@@ -12,9 +14,9 @@
 
 import { useId, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { AlertCircle, Clock, Coffee, Headphones, Loader2, LogOut, Play, Save, X } from "lucide-react";
+import { AlertCircle, Clock, Coffee, Headphones, Loader2, LogOut, Play, Save, SkipForward, X } from "lucide-react";
 import { MOCK_BTN, MockDialog, postJson, type MockPostResult } from "@/components/exam/mock-start-button";
-import { TOTAL_MINUTES_CORE, placementRunHref } from "@/lib/placement/config";
+import { RETAKE_DAYS, TOTAL_MINUTES_CORE, placementResultHref, placementRunHref } from "@/lib/placement/config";
 import { cn } from "@/lib/utils";
 
 export function leavePlacement(attemptId: string): Promise<MockPostResult> {
@@ -55,6 +57,10 @@ const BEFORE_YOU_START = [
   { icon: Headphones, text: "Use headphones for Listening — the recording plays once." },
   { icon: Coffee, text: "You can rest between sections: each section's clock starts only when you press Start." },
   { icon: Save, text: "Your answers save as you work, so a dropped connection won't lose them." },
+  {
+    icon: LogOut,
+    text: `Once a section has started, leaving still counts as taking the test — the next try is possible after ${RETAKE_DAYS} days.`,
+  },
 ];
 
 export function PlacementStartButton({
@@ -154,15 +160,38 @@ export function PlacementStartButton({
   );
 }
 
+/**
+ * What leaving means (lib/placement/placement.ts abandonPlacement): a sitting left after a section's
+ * clock started counts toward the retake wait; at the optional Writing intro it is finished without Writing.
+ */
+function leaveCopy(started: boolean | undefined, atWritingIntro: boolean | undefined): string {
+  if (atWritingIntro) {
+    return `Writing is optional, so leaving now finishes your test without it: your level comes from Grammar & Vocabulary, Listening and Reading, and your result opens straight away. As with any finished test, you can take it again after ${RETAKE_DAYS} days (sooner only if your teacher allows it).`;
+  }
+  if (started === false) {
+    return "You haven't started a section yet, so leaving doesn't count — you can start the test again whenever you're ready.";
+  }
+  const rule = `you won't get a result or a level, and you can take the test again only after ${RETAKE_DAYS} days (sooner only if your teacher allows it).`;
+  return started
+    ? `You've already started this test, so leaving still counts as taking it: ${rule}`
+    : `If a section has already started, leaving still counts as taking the test: ${rule}`;
+}
+
 export function PlacementLeaveButton({
   attemptId,
   redirectTo,
+  started,
+  atWritingIntro,
   label = "Leave the test",
   className,
 }: {
   attemptId: string;
   /** Where to go after leaving; omit to stay on this page and refresh it. */
   redirectTo?: string;
+  /** A section's clock has started (or a section was marked): leaving counts toward the retake wait. */
+  started?: boolean;
+  /** Waiting at the optional Writing intro: leaving finishes the test without Writing, and the result opens. */
+  atWritingIntro?: boolean;
   label?: string;
   className?: string;
 }) {
@@ -191,8 +220,10 @@ export function PlacementLeaveButton({
       setError(r.error);
       return;
     }
-    if (redirectTo) {
-      router.push(redirectTo);
+    // Left at the Writing intro: the test is finished (without Writing) — show the result.
+    const target = r.data?.finished === true ? placementResultHref(attemptId) : redirectTo;
+    if (target) {
+      router.push(target);
       router.refresh(); // don't show a cached copy that still offers "Resume"
     } else {
       startTransition(() => {
@@ -211,24 +242,35 @@ export function PlacementLeaveButton({
         <MockDialog titleId={titleId} descriptionId={descId} onClose={busy ? undefined : close} busy={busy} role="alertdialog">
           <div className="flex items-start justify-between gap-3">
             <h2 id={titleId} className="text-lg font-bold text-white sm:text-xl">
-              Leave the placement test?
+              {atWritingIntro ? "Finish without Writing?" : "Leave the placement test?"}
             </h2>
             <CloseButton onClick={close} disabled={busy} />
           </div>
           <p id={descId} className="mt-1 text-sm leading-relaxed text-gray-300">
-            Your answers so far won&apos;t count. Next time the test starts again from the beginning.
+            {leaveCopy(started, atWritingIntro)}
           </p>
           <p aria-live="polite" className="sr-only">
-            {busy ? "Leaving the placement test…" : ""}
+            {busy ? (atWritingIntro ? "Working out your level…" : "Leaving the placement test…") : ""}
           </p>
           {error && <ErrorNote message={error} />}
           <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
             <button type="button" data-autofocus onClick={close} disabled={busy} className={MOCK_BTN.secondary}>
               Keep going
             </button>
-            <button type="button" onClick={() => void leave()} aria-disabled={busy || undefined} className={MOCK_BTN.danger}>
-              {busy ? <Loader2 className="h-4 w-4 motion-safe:animate-spin" aria-hidden /> : <LogOut className="h-4 w-4" aria-hidden />}
-              {busy ? "Leaving…" : "Leave the test"}
+            <button
+              type="button"
+              onClick={() => void leave()}
+              aria-disabled={busy || undefined}
+              className={atWritingIntro ? MOCK_BTN.primary : MOCK_BTN.danger}
+            >
+              {busy ? (
+                <Loader2 className="h-4 w-4 motion-safe:animate-spin" aria-hidden />
+              ) : atWritingIntro ? (
+                <SkipForward className="h-4 w-4" aria-hidden />
+              ) : (
+                <LogOut className="h-4 w-4" aria-hidden />
+              )}
+              {atWritingIntro ? (busy ? "Working out your level…" : "Finish without Writing") : busy ? "Leaving…" : "Leave the test"}
             </button>
           </div>
         </MockDialog>

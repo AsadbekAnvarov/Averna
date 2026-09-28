@@ -12,15 +12,19 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ConfirmButton } from "@/components/ui/confirm-button";
 import {
   ADMIN_LIMIT,
+  ADMIN_STATUSES,
+  STATUS_UZ,
   allowPlacementRetake,
   filtersQuery,
   listPlacementResults,
   parsePlacementFilters,
   sectionCell,
+  statusCell,
   uzDate,
   uzDateTime,
   type AdminPlacementList,
   type AdminPlacementRow,
+  type AdminPlacementStatus,
 } from "@/lib/placement/admin";
 import { RETAKE_DAYS, SECTION_TITLE_UZ } from "@/lib/placement/config";
 import { CEFR_LEVELS, PLACEMENT_SECTIONS } from "@/lib/placement/types";
@@ -73,9 +77,11 @@ export default async function AdminPlacementPage({
     console.error("Admin placement list failed:", e);
   }
   const rows = list?.rows ?? [];
-  const filtered = !!(filters.from || filters.to || filters.level || filters.noGroup);
-  const byLevel = CEFR_LEVELS.map((l) => ({ level: l, count: rows.filter((r) => r.cefr === l).length }));
-  const noGroup = rows.filter((r) => !r.group).length;
+  const filtered = !!(filters.from || filters.to || filters.level || filters.noGroup || filters.status);
+  const finished = rows.filter((r) => r.status === "finished");
+  const byLevel = CEFR_LEVELS.map((l) => ({ level: l, count: finished.filter((r) => r.cefr === l).length }));
+  const noGroup = finished.filter((r) => !r.group).length;
+  const left = rows.filter((r) => r.status === "abandoned").length;
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -94,9 +100,10 @@ export default async function AdminPlacementPage({
         />
 
         {/* Summary */}
-        <section aria-label="Qisqacha" className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <Stat label={filtered ? "Filtrga mos natijalar" : "Natijalar"} value={rows.length} />
+        <section aria-label="Qisqacha" className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <Stat label={filtered ? "Filtrga mos natijalar" : "Natijalar"} value={finished.length} />
           <Stat label="Hozir test topshirmoqda" value={list?.active ?? 0} />
+          <Stat label={filtered ? "Filtrga mos tark etilganlar" : "Tark etilgan"} value={left} />
           <Stat label="Guruhga biriktirilmagan" value={noGroup} />
           <div className="glass rounded-xl border border-white/10 p-4">
             <p className="text-xs text-gray-400">Darajalar boʻyicha</p>
@@ -116,7 +123,7 @@ export default async function AdminPlacementPage({
             <Filter className="h-4 w-4" aria-hidden />
             Filtr
           </h2>
-          <form method="get" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto] lg:items-end">
+          <form method="get" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[repeat(5,minmax(0,1fr))_auto] lg:items-end">
             <div className="space-y-1.5">
               <label htmlFor="pl-from" className="text-xs text-gray-400">
                 Sana (dan)
@@ -144,6 +151,21 @@ export default async function AdminPlacementPage({
                 ))}
               </select>
             </div>
+            <div className="space-y-1.5">
+              <label htmlFor="pl-status" className="text-xs text-gray-400">
+                Holat
+              </label>
+              <select id="pl-status" name="status" defaultValue={filters.status} className={FIELD}>
+                <option value="" className="bg-averna-dark">
+                  Barchasi
+                </option>
+                {ADMIN_STATUSES.map((s) => (
+                  <option key={s} value={s} className="bg-averna-dark">
+                    {STATUS_UZ[s]}
+                  </option>
+                ))}
+              </select>
+            </div>
             <label className="flex min-h-[40px] items-center gap-2 text-sm text-gray-200">
               <input type="checkbox" name="nogroup" value="1" defaultChecked={filters.noGroup} className="h-4 w-4 accent-averna-neon" />
               Faqat guruhsizlar
@@ -162,7 +184,8 @@ export default async function AdminPlacementPage({
           </form>
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-4">
             <p className="text-xs text-gray-400">
-              Qayta topshirish oxirgi testdan {RETAKE_DAYS} kun oʻtgach ochiladi. Kerak boʻlsa, uni hozir ochib berishingiz mumkin.
+              Qayta topshirish oxirgi testdan {RETAKE_DAYS} kun oʻtgach ochiladi — boʻlimi boshlangandan keyin tark etilgan test ham
+              hisobga olinadi. Kerak boʻlsa, uni hozir ochib berishingiz mumkin.
             </p>
             <a
               href={`/api/admin/placement/export${filtersQuery(filters)}`}
@@ -179,10 +202,10 @@ export default async function AdminPlacementPage({
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 px-4 py-3">
             <h2 id="placement-list-title" className="flex items-center gap-2 text-sm font-semibold text-white">
               <Users className="h-4 w-4 text-averna-cyan" aria-hidden />
-              Natijalar roʻyxati
+              Natijalar va urinishlar
             </h2>
             {list?.truncated && (
-              <p className="text-xs text-amber-200">Faqat oxirgi {ADMIN_LIMIT} ta natija koʻrsatildi — sanalar oraligʻini toraytiring.</p>
+              <p className="text-xs text-amber-200">Faqat oxirgi {ADMIN_LIMIT} ta urinish koʻrsatildi — sanalar oraligʻini toraytiring.</p>
             )}
           </div>
 
@@ -196,12 +219,13 @@ export default async function AdminPlacementPage({
             </p>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[1100px] border-collapse text-left text-sm">
-                <caption className="sr-only">Daraja aniqlash testi natijalari, eng yangisi birinchi</caption>
+              <table className="w-full min-w-[1240px] border-collapse text-left text-sm">
+                <caption className="sr-only">Daraja aniqlash testi natijalari va urinishlari, eng yangisi birinchi</caption>
                 <thead>
                   <tr className="border-b border-white/10 text-xs uppercase tracking-wider text-gray-400">
                     <th scope="col" className="px-4 py-2.5 font-semibold">Oʻquvchi</th>
                     <th scope="col" className="px-3 py-2.5 font-semibold">Sana</th>
+                    <th scope="col" className="px-3 py-2.5 font-semibold">Holat</th>
                     <th scope="col" className="px-3 py-2.5 font-semibold">CEFR</th>
                     <th scope="col" className="px-3 py-2.5 font-semibold">IELTS</th>
                     {PLACEMENT_SECTIONS.map((s) => (
@@ -237,15 +261,30 @@ function Stat({ label, value }: { label: string; value: number }) {
   );
 }
 
+const STATUS_TONE: Record<AdminPlacementStatus, string> = {
+  finished: "border-averna-neon/40 bg-averna-neon/10 text-averna-neon",
+  active: "border-averna-cyan/40 bg-averna-cyan/10 text-averna-cyan",
+  abandoned: "border-amber-400/40 bg-amber-400/10 text-amber-200",
+};
+
 function ResultRow({ row }: { row: AdminPlacementRow }) {
   const essay = row.sections.WRITING?.essay;
+  const status = statusCell(row);
+  // Earlier sittings of a student, and sittings left before a section started, are dimmed.
+  const dim = row.status !== "active" && !row.latest;
   return (
-    <tr className={cn("border-b border-white/5 align-top", !row.latest && "opacity-70")}>
+    <tr className={cn("border-b border-white/5 align-top", dim && "opacity-70")}>
       <td className="px-4 py-3">
         <p className="font-medium text-white">{row.name}</p>
         <p className="text-xs text-gray-500">{row.email}</p>
       </td>
-      <td className="whitespace-nowrap px-3 py-3 text-gray-300">{uzDateTime(row.finishedAt)}</td>
+      <td className="whitespace-nowrap px-3 py-3 text-gray-300">{uzDateTime(row.date)}</td>
+      <td className="px-3 py-3">
+        <span className={cn("inline-flex whitespace-nowrap rounded-full border px-2 py-0.5 text-xs font-semibold", STATUS_TONE[row.status])}>
+          {status.label}
+        </span>
+        {status.note && <p className="mt-1 max-w-[12rem] text-[11px] leading-snug text-gray-400">{status.note}</p>}
+      </td>
       <td className="px-3 py-3">
         {row.cefr ? (
           <span className="inline-flex rounded-full border border-averna-neon/40 bg-averna-neon/10 px-2 py-0.5 text-xs font-bold text-averna-neon">
@@ -253,6 +292,11 @@ function ResultRow({ row }: { row: AdminPlacementRow }) {
           </span>
         ) : (
           "—"
+        )}
+        {row.listeningNotAssessed && (
+          <p className="mt-1 max-w-[9rem] text-[11px] leading-snug text-amber-200">
+            Listening baholanmagan — daraja qolgan boʻlimlardan olingan
+          </p>
         )}
       </td>
       <td className="px-3 py-3 font-semibold tabular-nums text-white">{row.band != null ? row.band.toFixed(1) : "—"}</td>
@@ -278,8 +322,12 @@ function ResultRow({ row }: { row: AdminPlacementRow }) {
         )}
       </td>
       <td className="px-4 py-3">
-        {!row.latest ? (
-          <span className="text-xs text-gray-500">Oldingi natija</span>
+        {row.status === "active" ? (
+          <span className="text-xs text-gray-500">—</span>
+        ) : !row.counts ? (
+          <span className="text-xs text-gray-500">Hisobga olinmaydi</span>
+        ) : !row.latest ? (
+          <span className="text-xs text-gray-500">{row.status === "finished" ? "Oldingi natija" : "Oldingi urinish"}</span>
         ) : row.retake.override ? (
           <span className="inline-flex items-center gap-1 text-xs text-averna-neon">
             <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />

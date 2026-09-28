@@ -41,7 +41,7 @@ const PRIMARY_BTN =
   "glow-cta inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-averna-primary px-6 text-base font-semibold text-white transition-colors hover:bg-averna-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/70 motion-reduce:transition-none";
 
 const RULES = [
-  { icon: ShieldCheck, text: "Each section's clock runs on our server — a refresh or a second tab can't pause or reset it." },
+  { icon: ShieldCheck, text: "Each section's clock runs on our server — a refresh, a second tab or leaving the test can't pause or reset it." },
   { icon: Save, text: "Your answers save as you work, so a dropped connection doesn't cost you anything." },
   { icon: Coffee, text: "You can rest between sections — the next clock starts only when you press Start." },
   { icon: Sparkles, text: "No XP, no pass or fail: the test only finds the course that fits you." },
@@ -174,8 +174,10 @@ function StartCard({ overview }: { overview: PlacementOverview }) {
               You can take the test again {retake.nextAt ? `from ${formatDate(retake.nextAt)}` : "soon"}
             </h2>
             <p className="mt-1 max-w-2xl text-sm leading-relaxed text-gray-400">
-              A retake is possible {RETAKE_DAYS} days after your last test, so that it shows real progress. If you need to take it
-              sooner, ask your teacher or the school office.
+              {retake.unfinished
+                ? `You left your last test after a section had started, so it counts as taken. A new test is possible ${RETAKE_DAYS} days after it, so that it shows real progress.`
+                : `A retake is possible ${RETAKE_DAYS} days after your last test, so that it shows real progress.`}{" "}
+              If you need to take it sooner, ask your teacher or the school office.
             </p>
           </div>
         </div>
@@ -251,7 +253,12 @@ function ActiveSitting({ active }: { active: NonNullable<PlacementOverview["acti
             Resume — section {idx + 1} of {active.sections}
             <ArrowRight className="h-4 w-4" aria-hidden />
           </a>
-          <PlacementLeaveButton attemptId={active.attemptId} label="Leave this test" />
+          <PlacementLeaveButton
+            attemptId={active.attemptId}
+            started={active.started}
+            atWritingIntro={active.atWritingIntro}
+            label="Leave this test"
+          />
         </div>
       </div>
     </section>
@@ -311,8 +318,8 @@ function SpeakingNote() {
             What about Speaking?
           </h2>
           <p className="mt-0.5 text-sm leading-relaxed text-gray-400">
-            Speaking isn&apos;t part of the online test. Your teacher will have a short conversation with you at your first lesson
-            and add it to your level.
+            Speaking isn&apos;t part of the online test. Your teacher will assess your speaking in a short conversation at your
+            first lesson.
           </p>
         </div>
       </div>

@@ -10,7 +10,12 @@
  *   Writing               examiner / heuristic band, capped → index.
  *   Overall               weighted mean of the indexes (G&V 40 %, R 25 %, L 25 %,
  *                         W 10 % when taken; renormalised) → CEFR + an IELTS
- *                         estimate kept inside that level's band range.
+ *                         estimate kept inside that level's band range. When
+ *                         Listening has no answer at all it doesn't count, and
+ *                         the overall is then at most the lower of the G&V and
+ *                         Reading levels (a blank never lifts it; Writing never
+ *                         sets that ceiling) and at least what every Listening
+ *                         answer wrong would give (a blank never sinks it).
  *
  * Every rule and number lives in config.ts.
  */
@@ -21,6 +26,7 @@ import type { ExamAnswers, ExamGroup, GradeResult } from "../ielts/types";
 import {
   BAND_CAP,
   BAND_INDEX_ANCHORS,
+  BLANK_LISTENING_CEILING,
   CEFR_BAND_RANGE,
   GV_SCALE,
   GV_THRESHOLDS,
@@ -35,9 +41,9 @@ import {
   TOPIC_LABEL,
   VOCABULARY_TOPICS,
   WRITING_LENGTH_CAPS,
-  levelLabel,
   recommendationLabel,
   recommendationRule,
+  studentLevelLabel,
 } from "./config";
 import {
   CEFR_LEVELS,
@@ -273,11 +279,18 @@ export function skippedWriting(meta: Meta & { blank: boolean }): PlacementSectio
 // Overall level + recommendation + what to study
 // ---------------------------------------------------------------------------
 
+/** Listening was taken but has no answer at all, so it doesn't count (see scoreObjective). */
+export function listeningNotAssessed(sections: SectionResults): boolean {
+  return !!sections.LISTENING && !sections.LISTENING.scored;
+}
+
 export function overallLevel(sections: SectionResults): {
   index: number;
   cefr: Cefr;
   band: number;
   weights: Partial<Record<PlacementSection, number>>;
+  /** The blank-Listening ceiling lowered the level. */
+  capped: boolean;
 } {
   const counted = PLACEMENT_SECTIONS.filter((s) => {
     const r = sections[s];
@@ -290,8 +303,27 @@ export function overallLevel(sections: SectionResults): {
     weights[s] = round2(SECTION_WEIGHTS[s] / total);
     acc += SECTION_WEIGHTS[s] * (sections[s] as PlacementSectionResult).index;
   }
-  const index = total > 0 ? round2(acc / total) : 1;
-  return { index, cefr: indexToCefr(index), band: estimateBand(index), weights };
+  let index = total > 0 ? round2(acc / total) : 1;
+  // Without Listening the other sections are renormalised — but leaving it blank must neither lift
+  // the level nor sink it (config BLANK_LISTENING_CEILING): at most the lower of the Grammar &
+  // Vocabulary and Reading levels (never Writing — optional, and capped by length), and at least the
+  // weighted mean with every Listening answer wrong, so a blank never places lower than guessing.
+  let capped = false;
+  const listening = sections.LISTENING;
+  const core = BLANK_LISTENING_CEILING.map((s) => sections[s]).filter(
+    (r): r is PlacementSectionResult => !!r && r.scored && Number.isFinite(r.index)
+  );
+  if (listening && listeningNotAssessed(sections) && core.length) {
+    const ceiling = round2(Math.min(...core.map((r) => CEFR_INDEX[r.cefr])) + 0.99);
+    const allWrong = bandToIndex(objectiveBand("LISTENING", 0, listening.total ?? 0));
+    const floor = round2((acc + SECTION_WEIGHTS.LISTENING * allWrong) / (total + SECTION_WEIGHTS.LISTENING));
+    const bounded = Math.max(Math.min(index, ceiling), floor);
+    if (bounded < index) {
+      index = bounded;
+      capped = true;
+    }
+  }
+  return { index, cefr: indexToCefr(index), band: estimateBand(index), weights, capped };
 }
 
 export function sectionScoreText(r: PlacementSectionResult): string {
@@ -411,7 +443,9 @@ export function summarize(items: GvItem[], sections: SectionResults): PlacementS
     cefr: overall.cefr,
     index: overall.index,
     band: overall.band,
-    level: levelLabel(overall.cefr, overall.band),
+    level: studentLevelLabel(overall.cefr),
+    ...(listeningNotAssessed(sections) ? { listeningNotAssessed: true } : {}),
+    ...(overall.capped ? { capped: true } : {}),
     recommendation: { key: rule.key, course: rule.course, ...(rule.target ? { target: rule.target } : {}), label: recommendationLabel(rule) },
     weights: overall.weights,
     strengths,

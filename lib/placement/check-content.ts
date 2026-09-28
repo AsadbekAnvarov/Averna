@@ -17,8 +17,9 @@ import { validateGroup, validateListeningTest, validateReadingTest, type Validat
 import type { ExamAnswers, ExamTest } from "../ielts/types";
 import { CEFR_LEVELS, GV_TOPICS, type PlacementForm } from "./types";
 import { CURRENT_FORM_ID, PLACEMENT_FORMS, getPlacementForm } from "./content";
-import { GV_THRESHOLDS } from "./config";
+import { BLANK_LISTENING_CEILING, GV_THRESHOLDS, studentLevelLabel } from "./config";
 import {
+  CEFR_INDEX,
   capWritingBand,
   grammarGroups,
   grammarLevel,
@@ -30,6 +31,19 @@ import {
   summarize,
   type SectionResults,
 } from "./scoring";
+
+/**
+ * Student.level must be one of the admin roster's level names (the LEVELS of
+ * app/admin/dashboard/page.tsx), or the enrollment form clears it on save.
+ */
+const ADMIN_LEVELS: Record<string, string> = {
+  A1: "Boshlangʻich (A2)",
+  A2: "Boshlangʻich (A2)",
+  B1: "Oʻrta (B1)",
+  B2: "Oʻrtadan yuqori (B2)",
+  C1: "Yuqori (C1)",
+  C2: "Yuqori (C1)",
+};
 
 function keyAnswers(test: ExamTest): ExamAnswers {
   const a: ExamAnswers = {};
@@ -196,15 +210,24 @@ function checkScoring(form: PlacementForm, show: Show, lines: string[]) {
 
   const L = form.listening;
   const R = form.reading;
-  const run = (gv: ExamAnswers, l: ExamAnswers, rd: ExamAnswers, writing: number | null): SectionResults => ({
-    GRAMMAR: scoreGrammar(items, gv, meta),
-    LISTENING: scoreObjective("LISTENING", gradeTest(L, l), meta),
-    READING: scoreObjective("READING", gradeTest(R, rd), meta),
-    WRITING:
-      writing == null
-        ? skippedWriting({ ...meta, blank: false })
-        : scoreWriting({ band: capWritingBand(writing, 140, "ai"), words: 140, assessedBy: "ai", feedback: [], essay: "…" }, meta),
-  });
+  /** Writing: an AI band on a 140-word sample, or { band, words } (capped for its length); null = skipped. */
+  const run = (gv: ExamAnswers, l: ExamAnswers, rd: ExamAnswers, writing: number | { band: number; words: number } | null): SectionResults => {
+    const w = typeof writing === "number" ? { band: writing, words: 140 } : writing;
+    return {
+      GRAMMAR: scoreGrammar(items, gv, meta),
+      LISTENING: scoreObjective("LISTENING", gradeTest(L, l), meta),
+      READING: scoreObjective("READING", gradeTest(R, rd), meta),
+      WRITING:
+        w == null
+          ? skippedWriting({ ...meta, blank: false })
+          : scoreWriting({ band: capWritingBand(w.band, w.words, "ai"), words: w.words, assessedBy: "ai", feedback: [], essay: "…" }, meta),
+    };
+  };
+  /** The same sitting with every Listening question answered, and every answer wrong. */
+  const listeningAllWrong = (s: SectionResults): SectionResults => {
+    const none = gradeTest(L, {});
+    return { ...s, LISTENING: scoreObjective("LISTENING", { ...none, answered: none.total }, meta) };
+  };
   const scenarios: { name: string; sections: SectionResults; expect?: string }[] = [
     { name: "everything right, Writing 8.0", sections: run(key, keyAnswers(L), keyAnswers(R), 8), expect: "C1" },
     { name: "everything blank, Writing skipped", sections: run({}, {}, {}, null), expect: "A1" },
@@ -212,12 +235,42 @@ function checkScoring(form: PlacementForm, show: Show, lines: string[]) {
     { name: "typical B1 (G&V 18, L 6/10, R 6/12, W 5.0)", sections: run(firstK(18), firstRight(L, 6), firstRight(R, 6), 5) },
     { name: "typical B2 (G&V 23, L 8/10, R 9/12, W 6.0)", sections: run(firstK(23), firstRight(L, 8), firstRight(R, 9), 6) },
     { name: "Listening audio failed (G&V 18, L blank, R 6/12)", sections: run(firstK(18), {}, firstRight(R, 6), null) },
+    // Without the blank-Listening ceiling, C1 grammar would carry this to B2 past the B1 Reading.
+    { name: "strong grammar, blank Listening (G&V 30, L blank, R 6/12)", sections: run(key, {}, firstRight(R, 6), null), expect: "B1" },
+    { name: "same, Listening 2/10 answered", sections: run(key, firstRight(L, 2), firstRight(R, 6), null) },
+    // Writing never sets the ceiling: a weaker or very short sample can't pull a blank-Listening sitting below guessing.
+    { name: "blank Listening, Writing 4.0 (G&V 23, R 9/12)", sections: run(firstK(23), {}, firstRight(R, 9), 4), expect: "B2" },
+    { name: "blank Listening, 140-word Writing 5.0 (G&V 25, R 10/12)", sections: run(firstK(25), {}, firstRight(R, 10), 5), expect: "B2" },
+    { name: "blank Listening, 15-word Writing (G&V 25, R 10/12)", sections: run(firstK(25), {}, firstRight(R, 10), { band: 5, words: 15 }), expect: "B2" },
+    { name: "same, all 10 Listening answers wrong", sections: listeningAllWrong(run(firstK(25), {}, firstRight(R, 10), { band: 5, words: 15 })), expect: "B1" },
+    // The floor: C1 grammar over A2 Reading — the ceiling alone (A2) would place this below all-wrong Listening (B1).
+    { name: "strong grammar, weak Reading, blank Listening (G&V 30, R 4/12)", sections: run(key, {}, firstRight(R, 4), null), expect: "B1" },
+    { name: "same, all 10 Listening answers wrong", sections: listeningAllWrong(run(key, {}, firstRight(R, 4), null)), expect: "B1" },
   ];
+  for (const [cefr, label] of Object.entries(ADMIN_LEVELS)) {
+    if (studentLevelLabel(cefr as "C2") !== label) r.errors.push(`Student.level for ${cefr} should be "${label}" (got "${studentLevelLabel(cefr as "C2")}")`);
+  }
   const out: string[] = [];
   for (const s of scenarios) {
     const sum = summarize(items, s.sections);
     if (s.expect && sum.cefr !== s.expect) r.errors.push(`${s.name}: expected ${s.expect}, got ${sum.cefr}`);
     if (sum.band > 7.5 || sum.band < 2) r.errors.push(`${s.name}: band ${sum.band} is outside 2.0–7.5`);
+    if (sum.level !== ADMIN_LEVELS[sum.cefr]) r.errors.push(`${s.name}: Student.level "${sum.level}" is not the admin name for ${sum.cefr}`);
+    const blankListening = !!s.sections.LISTENING && !s.sections.LISTENING.scored;
+    if (blankListening !== !!sum.listeningNotAssessed) r.errors.push(`${s.name}: listeningNotAssessed should be ${blankListening}`);
+    if (blankListening) {
+      // A blank neither lifts the level (above the lower of G&V and Reading — Writing never sets it)
+      // nor sinks it (below the same sitting with every Listening answer wrong).
+      const core = BLANK_LISTENING_CEILING.map((k) => s.sections[k]).filter((x) => !!x && x.scored);
+      const lowest = Math.min(...core.map((x) => CEFR_INDEX[x!.cefr]));
+      const wrong = summarize(items, listeningAllWrong(s.sections));
+      if (CEFR_INDEX[sum.cefr] > Math.max(lowest, CEFR_INDEX[wrong.cefr])) {
+        r.errors.push(`${s.name}: blank Listening lifted the level to ${sum.cefr} (the lower of G&V and Reading is lower)`);
+      }
+      if (sum.index < wrong.index || CEFR_INDEX[sum.cefr] < CEFR_INDEX[wrong.cefr]) {
+        r.errors.push(`${s.name}: blank Listening placed ${sum.cefr} (${sum.index}), below every Listening answer wrong (${wrong.cefr}, ${wrong.index})`);
+      }
+    }
     const parts = (["GRAMMAR", "LISTENING", "READING", "WRITING"] as const)
       .map((k) => {
         const x = s.sections[k];
@@ -225,7 +278,10 @@ function checkScoring(form: PlacementForm, show: Show, lines: string[]) {
         return `${k[0]} ${x.scored ? `${x.cefr}/${x.band.toFixed(1)}` : "not counted"}`;
       })
       .join(" · ");
-    out.push(`    ${s.name}: ${sum.level} → ${sum.recommendation.label} [${parts}; index ${sum.index}]`);
+    const flags = [sum.listeningNotAssessed ? "Listening not assessed" : "", sum.capped ? "capped" : ""].filter(Boolean).join(", ");
+    out.push(
+      `    ${s.name}: ${sum.cefr} · IELTS ≈ ${sum.band.toFixed(1)} (Student.level "${sum.level}")${flags ? ` {${flags}}` : ""} → ${sum.recommendation.label} [${parts}; index ${sum.index}]`
+    );
     out.push(`      study first: ${sum.studyFirst.map((l) => l.href).join(", ")} · review ${sum.review.length} · strengths ${sum.strengths.length} · weaknesses ${sum.weaknesses.length}`);
   }
   // Listening / Reading conversion tables as the student will meet them.

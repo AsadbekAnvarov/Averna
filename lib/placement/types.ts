@@ -177,8 +177,21 @@ export interface PlacementSummary {
   cefr: Cefr;
   index: number;
   band: number;
-  /** What was written to Student.level, e.g. "B1 · IELTS ≈ 5.0". */
+  /**
+   * The admin roster's level name for this result, e.g. "Oʻrta (B1)" (config STUDENT_LEVEL_LABEL) —
+   * written to Student.level when the sitting finished (a late automatic finish keeps a level an
+   * admin set meanwhile: placement.ts).
+   */
   level: string;
+  /**
+   * Listening was taken but not assessed (no answer at all — usually the audio
+   * didn't play): the level is at most the lower of the Grammar & Vocabulary and
+   * Reading levels, and at least what every Listening answer wrong would give
+   * (config BLANK_LISTENING_CEILING).
+   */
+  listeningNotAssessed?: boolean;
+  /** That rule lowered the level the other sections alone would have given. */
+  capped?: boolean;
   recommendation: PlacementRecommendation;
   /** Normalised weights of the sections that counted. */
   weights: Partial<Record<PlacementSection, number>>;
@@ -247,6 +260,8 @@ export interface RetakeStatus {
   nextAt: string | null;
   /** An admin allowed an early retake. */
   override: boolean;
+  /** The sitting the wait follows was left unfinished after a section had started. */
+  unfinished?: boolean;
 }
 
 export interface PlacementResultView {
@@ -260,7 +275,16 @@ export interface PlacementResultView {
 }
 
 export interface PlacementOverview {
-  active: { attemptId: string; current: number; sections: number; startedAt: string } | null;
+  active: {
+    attemptId: string;
+    current: number;
+    sections: number;
+    startedAt: string;
+    /** A section's clock has started (or a section was marked): leaving now counts toward the retake wait. */
+    started: boolean;
+    /** Waiting at the optional Writing intro (its clock not started): leaving now finishes the sitting without Writing, with a level. */
+    atWritingIntro: boolean;
+  } | null;
   last: {
     attemptId: string;
     finishedAt: string;

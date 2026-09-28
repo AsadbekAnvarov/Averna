@@ -237,6 +237,9 @@ function StudentRow({
   deleteAction: Action;
   freezeAction: Action;
 }) {
+  // A level that isn't one of the options (set elsewhere, e.g. an older placement result) stays
+  // selectable and selected, so saving the row never clears it.
+  const otherLevel = s.level && !levels.includes(s.level) ? s.level : null;
   return (
     <form
       action={enrollAction}
@@ -260,6 +263,9 @@ function StudentRow({
         className="rounded-md border border-input bg-background/60 px-2 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-purple md:flex-1"
       >
         <option value="" className="bg-averna-dark">— Daraja —</option>
+        {otherLevel && (
+          <option value={otherLevel} className="bg-averna-dark">{otherLevel}</option>
+        )}
         {levels.map((l) => (
           <option key={l} value={l} className="bg-averna-dark">{l}</option>
         ))}

@@ -3,7 +3,8 @@
  *
  * Assessed by the AI examiner (assessWritingTask) when OpenAI is configured
  * and the per-user "placement" AI limit allows it; otherwise — or when the
- * model call fails — by the offline heuristic. Either way the band is capped
+ * model call fails or takes longer than WRITING_AI_TIMEOUT_MS (35 s) — by the
+ * offline heuristic. Either way the band is capped
  * for short samples and for automatic estimates (config.ts), so a short test
  * never overstates the level. Never throws.
  *
@@ -12,9 +13,21 @@
 
 import { assessWritingTask, hasOpenAI, heuristicWritingAssessment, type WritingAssessment } from "@/lib/ai";
 import { cachedAi, guardAi } from "@/lib/engine/ai-guard";
-import { MIN_AI_WORDS } from "./config";
+import { MIN_AI_WORDS, WRITING_AI_TIMEOUT_MS } from "./config";
 import { capWritingBand, countWords } from "./scoring";
 import type { PlacementWritingPrompt, WritingCriteria } from "./types";
+
+/**
+ * `p`, or a rejection after `ms`. The model call itself isn't cancelled (lib/ai
+ * owns the client) — its late answer is just not waited for.
+ */
+function withinTime<T>(p: Promise<T>, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`no answer within ${Math.round(ms / 1000)} s`)), ms);
+  });
+  return Promise.race([p, timeout]).finally(() => clearTimeout(timer));
+}
 
 export interface PlacementWritingAssessment {
   band: number;
@@ -65,12 +78,15 @@ export async function assessPlacementWriting(o: {
       `(Placement test writing sample: the candidate had 15 minutes and was asked for ${o.prompt.minWords}–${o.prompt.maxWords} words. ` +
       `Do not penalise it for being shorter than a full Task 2 essay; judge the level of English it shows.)`;
     try {
-      a = await cachedAi(`placement-writing:${o.attemptId}:${fingerprint(essay)}`, AI_CACHE_MS, () =>
-        assessWritingTask(essay, "task2", task)
+      // One attempt, at most WRITING_AI_TIMEOUT_MS: no retry on this path — a slow or failed
+      // examiner means the offline estimate, never a submit (or run page) that hits the 60 s limit.
+      a = await withinTime(
+        cachedAi(`placement-writing:${o.attemptId}:${fingerprint(essay)}`, AI_CACHE_MS, () => assessWritingTask(essay, "task2", task)),
+        WRITING_AI_TIMEOUT_MS
       );
       assessedBy = "ai";
     } catch (e) {
-      console.error("Placement writing: AI assessment failed, using the heuristic", e);
+      console.error("Placement writing: AI assessment failed or timed out, using the heuristic", e instanceof Error ? e.message : e);
       a = null;
     }
   }

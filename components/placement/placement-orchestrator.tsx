@@ -51,7 +51,7 @@ import {
 } from "lucide-react";
 import type { ExamAnswers } from "@/lib/ielts/types";
 import type { PlacementDraft, PlacementSection, PlacementSectionView, PlacementStage, PlacementView } from "@/lib/placement/types";
-import { GRACE_MS, PLACEMENT_HUB_HREF, SECTION_TITLE, placementResultHref } from "@/lib/placement/config";
+import { GRACE_MS, PLACEMENT_HUB_HREF, SECTION_TITLE, WRITING_INTRO_TIMEOUT_HOURS, placementResultHref } from "@/lib/placement/config";
 import { cn } from "@/lib/utils";
 import { ListeningExamRunner } from "@/components/exam/listening-exam-runner";
 import { ReadingExamRunner } from "@/components/exam/reading-exam-runner";
@@ -118,7 +118,10 @@ const SECTION_INFO: Record<PlacementSection, { rules: { icon: Icon; text: string
       { icon: PenLine, text: "Write 120–150 words giving your opinion on a simple question about learning languages." },
       { icon: Timer, text: "15 minutes. Your text saves as you type, and at 0:00 it is handed in automatically." },
       { icon: SpellCheck, text: "Spell check is off — we want to see your own English." },
-      { icon: SkipForward, text: "Writing is optional. If you skip it, your level comes from the other three sections." },
+      {
+        icon: SkipForward,
+        text: `Writing is optional. If you skip it, leave the test here or don't start it within ${WRITING_INTRO_TIMEOUT_HOURS} hours, your level comes from the other three sections.`,
+      },
     ],
     clock: "The 15-minute clock starts as soon as you press Start.",
     start: "Start Writing",
@@ -613,6 +616,7 @@ function SectionRunner({
           key={runnerKey}
           test={c.test}
           mode="mock"
+          context="placement"
           examName="Placement test"
           attemptId={runnerId}
           initialAnswers={session.initialAnswers}
@@ -790,7 +794,14 @@ function IntroScreen({
               Section {stage.index + 1} of {total}
             </p>
           </div>
-          <PlacementLeaveButton attemptId={view.attemptId} redirectTo={PLACEMENT_HUB_HREF} />
+          {/* At an intro the current section's clock hasn't started — only earlier (marked) sections count.
+              At the optional Writing's intro, leaving finishes the test without it (the result opens). */}
+          <PlacementLeaveButton
+            attemptId={view.attemptId}
+            redirectTo={PLACEMENT_HUB_HREF}
+            started={stage.index > 0}
+            atWritingIntro={writing}
+          />
         </header>
 
         <ProgressRail sections={view.sections} />
