@@ -1,95 +1,174 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState, useCallback } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { SoundEngine, type Scene, type UiPack, type UiSound } from "@/components/audio/sound-engine";
 
-type SoundType = "click" | "toggle" | "success";
+/** "click" is kept as an alias of "tap" for older callers. */
+type SoundType = UiSound | "click";
+
+export interface SoundPrefs {
+  ui: boolean;
+  uiPack: UiPack;
+  uiVolume: number; // 0..1
+  ambient: boolean;
+  scene: Scene;
+  ambientVolume: number; // 0..1
+}
 
 interface SoundCtx {
+  prefs: SoundPrefs;
+  /** Back-compat shorthands. */
   uiOn: boolean;
   ambientOn: boolean;
+  /** Plays a UI sound if interface sounds are on. */
   play: (t: SoundType) => void;
+  /** Plays a UI sound regardless of the toggle (Settings previews). */
+  preview: (t: UiSound, pack?: UiPack) => void;
+  setPrefs: (patch: Partial<SoundPrefs>) => void;
+}
+
+const DEFAULTS: SoundPrefs = {
+  ui: false,
+  uiPack: "soft",
+  uiVolume: 0.6,
+  ambient: false,
+  scene: "focus",
+  ambientVolume: 0.5,
+};
+
+// localStorage keys (the two on/off keys are unchanged from the first version)
+const K = {
+  ui: "averna_sound_ui",
+  uiPack: "averna_sound_ui_pack",
+  uiVolume: "averna_sound_ui_volume",
+  ambient: "averna_sound_ambient",
+  scene: "averna_sound_scene",
+  ambientVolume: "averna_sound_ambient_volume",
+} as const;
+
+const PACKS: UiPack[] = ["soft", "glass", "minimal"];
+const SCENE_KEYS: Scene[] = ["focus", "rain", "ocean", "night", "cosmos"];
+
+function readPrefs(): SoundPrefs {
+  try {
+    const num = (k: string, d: number) => {
+      const v = parseFloat(localStorage.getItem(k) ?? "");
+      return Number.isFinite(v) ? Math.max(0, Math.min(1, v)) : d;
+    };
+    const pack = localStorage.getItem(K.uiPack) as UiPack | null;
+    const scene = localStorage.getItem(K.scene) as Scene | null;
+    return {
+      ui: localStorage.getItem(K.ui) === "1",
+      uiPack: pack && PACKS.includes(pack) ? pack : DEFAULTS.uiPack,
+      uiVolume: num(K.uiVolume, DEFAULTS.uiVolume),
+      ambient: localStorage.getItem(K.ambient) === "1",
+      scene: scene && SCENE_KEYS.includes(scene) ? scene : DEFAULTS.scene,
+      ambientVolume: num(K.ambientVolume, DEFAULTS.ambientVolume),
+    };
+  } catch {
+    return DEFAULTS;
+  }
+}
+
+function writePrefs(p: SoundPrefs) {
+  try {
+    localStorage.setItem(K.ui, p.ui ? "1" : "0");
+    localStorage.setItem(K.uiPack, p.uiPack);
+    localStorage.setItem(K.uiVolume, String(p.uiVolume));
+    localStorage.setItem(K.ambient, p.ambient ? "1" : "0");
+    localStorage.setItem(K.scene, p.scene);
+    localStorage.setItem(K.ambientVolume, String(p.ambientVolume));
+  } catch {
+    /* private mode — keep in memory only */
+  }
 }
 
 const Ctx = createContext<SoundCtx | null>(null);
 
-const UI_KEY = "averna_sound_ui";
-const AMBIENT_KEY = "averna_sound_ambient";
-
 /**
- * Opt-in sound system built entirely with the Web Audio API (no audio files).
- * - "UI sounds": a subtle click on any button/link (attached globally, so no
- *   component needs editing) plus success/toggle blips.
- * - "Ambient": a soft, slowly-breathing pad for atmosphere.
- * Both are OFF by default, persisted in localStorage, and toggled from Settings
- * (which dispatches the "averna-sound" event). Everything is best-effort and
- * respects browser autoplay rules (audio only starts after a user gesture).
+ * Opt-in sound system (see sound-engine.ts — all synthesised, no audio files).
+ * - Interface sounds: a soft tap on buttons/links (attached globally), plus
+ *   chimes for toggles and success/error toasts. Three packs, own volume.
+ * - Ambient atmosphere: five generative scenes with their own volume.
+ * Everything is OFF by default, saved per device and changed from Settings.
+ * Audio only starts after a user gesture (browser autoplay rules), the
+ * AudioContext is created only once a sound is actually needed, and the
+ * ambience pauses while the tab is hidden.
  */
 export function SoundProvider({ children }: { children: React.ReactNode }) {
-  const [uiOn, setUiOn] = useState(false);
-  const [ambientOn, setAmbientOn] = useState(false);
+  const [prefs, setPrefsState] = useState<SoundPrefs>(DEFAULTS);
   const [gestureReady, setGestureReady] = useState(false);
+  const engineRef = useRef<SoundEngine | null>(null);
+  const failed = useRef(false);
+  const prefsRef = useRef(prefs);
+  prefsRef.current = prefs;
 
-  const ctxRef = useRef<AudioContext | null>(null);
-  const ambientRef = useRef<{ stop: () => void } | null>(null);
-
-  const getCtx = useCallback((): AudioContext | null => {
+  /** Creates the engine on first use (ideally inside a user gesture). */
+  const getEngine = useCallback((): SoundEngine | null => {
+    if (engineRef.current || failed.current) return engineRef.current;
     try {
-      if (!ctxRef.current) {
-        const AC =
-          window.AudioContext ||
-          (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-        if (!AC) return null;
-        ctxRef.current = new AC();
-      }
-      if (ctxRef.current.state === "suspended") ctxRef.current.resume().catch(() => {});
-      return ctxRef.current;
+      const e = new SoundEngine();
+      e.setUiVolume(prefsRef.current.uiVolume);
+      e.setAmbientVolume(prefsRef.current.ambientVolume);
+      engineRef.current = e;
     } catch {
-      return null;
+      failed.current = true; // Web Audio unavailable
     }
+    return engineRef.current;
   }, []);
 
-  const play = useCallback(
-    (type: SoundType) => {
-      const ctx = getCtx();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-      const notes =
-        type === "success" ? [523.25, 659.25, 783.99] : type === "toggle" ? [392, 587.33] : [660];
-      const peak = type === "click" ? 0.035 : 0.05;
-      notes.forEach((freq, i) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = type === "click" ? "sine" : "triangle";
-        osc.frequency.value = freq;
-        const start = now + i * (type === "success" ? 0.08 : 0.05);
-        const dur = type === "click" ? 0.09 : 0.18;
-        gain.gain.setValueAtTime(0.0001, start);
-        gain.gain.exponentialRampToValueAtTime(peak, start + 0.012);
-        gain.gain.exponentialRampToValueAtTime(0.0001, start + dur);
-        osc.connect(gain).connect(ctx.destination);
-        osc.start(start);
-        osc.stop(start + dur + 0.02);
-      });
+  const preview = useCallback(
+    (t: UiSound, pack?: UiPack) => {
+      getEngine()?.play(t, pack ?? prefsRef.current.uiPack);
     },
-    [getCtx]
+    [getEngine]
   );
 
-  // Load prefs + stay in sync with the Settings toggles.
-  useEffect(() => {
-    const read = () => {
-      try {
-        setUiOn(localStorage.getItem(UI_KEY) === "1");
-        setAmbientOn(localStorage.getItem(AMBIENT_KEY) === "1");
-      } catch {
-        /* ignore */
-      }
-    };
-    read();
-    window.addEventListener("averna-sound", read);
-    return () => window.removeEventListener("averna-sound", read);
+  const play = useCallback(
+    (t: SoundType) => {
+      if (!prefsRef.current.ui) return;
+      preview(t === "click" ? "tap" : t);
+    },
+    [preview]
+  );
+
+  const setPrefs = useCallback((patch: Partial<SoundPrefs>) => {
+    const next = { ...prefsRef.current, ...patch };
+    prefsRef.current = next;
+    setPrefsState(next);
+    writePrefs(next);
+    window.dispatchEvent(new Event("averna-sound"));
   }, []);
 
-  // Mark that a user gesture happened (unlocks audio per browser policy).
+  // Load prefs + stay in sync across tabs/components.
+  useEffect(() => {
+    const read = () => setPrefsState(readPrefs());
+    read();
+    const onStorage = (e: StorageEvent) => e.key?.startsWith("averna_sound") && read();
+    window.addEventListener("averna-sound", read);
+    window.addEventListener("storage", onStorage);
+    return () => {
+      window.removeEventListener("averna-sound", read);
+      window.removeEventListener("storage", onStorage);
+    };
+  }, []);
+
+  // Every gesture (re)unlocks audio — iOS only lets a context start/resume
+  // inside one — as long as some sound is switched on.
+  useEffect(() => {
+    const unlock = () => {
+      const p = prefsRef.current;
+      if (p.ui || p.ambient) getEngine()?.resume();
+    };
+    window.addEventListener("pointerdown", unlock, true);
+    window.addEventListener("keydown", unlock, true);
+    return () => {
+      window.removeEventListener("pointerdown", unlock, true);
+      window.removeEventListener("keydown", unlock, true);
+    };
+  }, [getEngine]);
+
+  // Remember that a first gesture happened (ambience may start after it).
   useEffect(() => {
     if (gestureReady) return;
     const mark = () => setGestureReady(true);
@@ -101,86 +180,65 @@ export function SoundProvider({ children }: { children: React.ReactNode }) {
     };
   }, [gestureReady]);
 
-  // Global, non-invasive UI click sound for buttons/links.
+  // Volumes follow the prefs live.
   useEffect(() => {
-    if (!uiOn) return;
+    engineRef.current?.setUiVolume(prefs.uiVolume);
+    engineRef.current?.setAmbientVolume(prefs.ambientVolume);
+  }, [prefs.uiVolume, prefs.ambientVolume]);
+
+  // Global tap sound for buttons/links (skips range sliders and disabled controls).
+  useEffect(() => {
+    if (!prefs.ui) return;
     const onClick = (e: MouseEvent) => {
-      const el = (e.target as HTMLElement)?.closest?.("button, a, [role='button']");
-      if (!el) return;
-      if ((el as HTMLButtonElement).disabled) return;
-      play("click");
+      const el = (e.target as HTMLElement)?.closest?.("button, a, [role='button'], [role='tab']");
+      if (!el || (el as HTMLButtonElement).disabled || el.hasAttribute("data-no-sound")) return;
+      play("tap");
     };
     document.addEventListener("click", onClick, true);
     return () => document.removeEventListener("click", onClick, true);
-  }, [uiOn, play]);
+  }, [prefs.ui, play]);
 
-  // Ambient pad — starts only when enabled AND a gesture has occurred.
+  // Toasts chime: success → success, error → error, info → notify.
   useEffect(() => {
-    const shouldRun = ambientOn && gestureReady;
-    if (!shouldRun) {
-      ambientRef.current?.stop();
-      ambientRef.current = null;
-      return;
-    }
-    if (ambientRef.current) return; // already running
+    const onToast = (e: Event) => {
+      const type = (e as CustomEvent<string>).detail;
+      play(type === "success" ? "success" : type === "error" ? "error" : "notify");
+    };
+    window.addEventListener("averna-toast", onToast);
+    return () => window.removeEventListener("averna-toast", onToast);
+  }, [play]);
 
-    const ctx = getCtx();
-    if (!ctx) return;
-    try {
-      const master = ctx.createGain();
-      master.gain.value = 0.0001;
-      const filter = ctx.createBiquadFilter();
-      filter.type = "lowpass";
-      filter.frequency.value = 620;
-      filter.connect(master);
-      master.connect(ctx.destination);
+  // Ambient scene — runs only when enabled, after a gesture and while visible.
+  useEffect(() => {
+    const sync = () => {
+      const want = prefs.ambient && gestureReady && document.visibilityState === "visible";
+      if (!want) engineRef.current?.stopScene();
+      else getEngine()?.startScene(prefs.scene);
+    };
+    sync();
+    document.addEventListener("visibilitychange", sync);
+    return () => document.removeEventListener("visibilitychange", sync);
+  }, [prefs.ambient, prefs.scene, gestureReady, getEngine]);
 
-      // Warm, calm chord (A2, E3, A3) slightly detuned for movement.
-      const freqs = [110, 164.81, 220, 220.6];
-      const oscs = freqs.map((f) => {
-        const o = ctx.createOscillator();
-        o.type = "sine";
-        o.frequency.value = f;
-        o.connect(filter);
-        o.start();
-        return o;
-      });
+  // Stop everything on unmount.
+  useEffect(() => () => engineRef.current?.stopScene(), []);
 
-      // Slow "breathing" LFO on the master gain.
-      const lfo = ctx.createOscillator();
-      const lfoGain = ctx.createGain();
-      lfo.frequency.value = 0.06;
-      lfoGain.gain.value = 0.012;
-      lfo.connect(lfoGain).connect(master.gain);
-      lfo.start();
-
-      // Fade in gently.
-      master.gain.setValueAtTime(0.0001, ctx.currentTime);
-      master.gain.exponentialRampToValueAtTime(0.026, ctx.currentTime + 2.5);
-
-      ambientRef.current = {
-        stop: () => {
-          try {
-            master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.8);
-            const t = ctx.currentTime + 1;
-            oscs.forEach((o) => o.stop(t));
-            lfo.stop(t);
-          } catch {
-            /* ignore */
-          }
-        },
-      };
-    } catch {
-      /* audio unavailable — ignore */
-    }
-  }, [ambientOn, gestureReady, getCtx]);
-
-  // Clean up on unmount.
-  useEffect(() => () => ambientRef.current?.stop(), []);
-
-  return <Ctx.Provider value={{ uiOn, ambientOn, play }}>{children}</Ctx.Provider>;
+  return (
+    <Ctx.Provider value={{ prefs, uiOn: prefs.ui, ambientOn: prefs.ambient, play, preview, setPrefs }}>
+      {children}
+    </Ctx.Provider>
+  );
 }
 
 export function useSound(): SoundCtx {
-  return useContext(Ctx) ?? { uiOn: false, ambientOn: false, play: () => {} };
+  return (
+    useContext(Ctx) ?? {
+      prefs: DEFAULTS,
+      uiOn: false,
+      ambientOn: false,
+      play: () => {},
+      preview: () => {},
+      setPrefs: () => {},
+    }
+  );
 }

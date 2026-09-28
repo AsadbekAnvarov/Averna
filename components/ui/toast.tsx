@@ -28,6 +28,8 @@ const useToastStore = create<ToastState>((set) => ({
     const id = ++counter;
     set((s) => ({ toasts: [...s.toasts, { id, message, type }] }));
     if (typeof window !== "undefined") {
+      // Lets the (opt-in) sound system chime along — see components/audio/sound-provider.tsx
+      window.dispatchEvent(new CustomEvent("averna-toast", { detail: type }));
       window.setTimeout(() => {
         set((s) => ({ toasts: s.toasts.filter((t) => t.id !== id) }));
       }, DURATION);

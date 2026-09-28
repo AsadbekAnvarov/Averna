@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Settings, X, Eye, EyeOff, Type, Snowflake, Moon } from "lucide-react";
+import Link from "next/link";
+import { Settings, X, Eye, EyeOff, Type, Snowflake, Moon, ChevronRight } from "lucide-react";
 
 type FontScale = "sm" | "md" | "lg";
 
@@ -70,7 +71,7 @@ export function DashboardPreferences() {
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm flex items-center justify-center px-4" onClick={() => setOpen(false)}>
+        <div className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm flex items-end sm:items-center justify-center p-3 sm:px-4" onClick={() => setOpen(false)}>
           <div className="w-full max-w-sm glass-strong border border-averna-neon/30 rounded-2xl p-5 animate-fade-in" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-bold text-white flex items-center gap-2"><Settings className="h-5 w-5 text-averna-neon" /> Comfort settings</h3>
@@ -145,6 +146,14 @@ export function DashboardPreferences() {
                 <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-all ${ambiance ? "left-[22px]" : "left-0.5"}`} />
               </span>
             </button>
+
+            <Link
+              href="/settings"
+              onClick={() => setOpen(false)}
+              className="mt-4 flex items-center justify-center gap-1.5 rounded-xl border border-white/10 py-2.5 text-sm text-gray-300 transition-colors hover:border-white/20 hover:text-white"
+            >
+              Sound, theme &amp; all settings <ChevronRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       )}
