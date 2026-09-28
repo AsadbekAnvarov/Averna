@@ -39,7 +39,7 @@ export default function SignInPage() {
       });
 
       if (result?.error) {
-        setError("Invalid email or password");
+        setError("Wrong email / username or password");
       } else {
         // Route to the correct area based on the user's role
         const session = await getSession();
@@ -100,11 +100,14 @@ export default function SignInPage() {
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Email or username</Label>
                 <Input
                   id="email"
-                  type="email"
-                  placeholder="student@averna.com"
+                  type="text"
+                  autoComplete="username"
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  placeholder="you@gmail.com or @username"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required

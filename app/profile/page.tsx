@@ -21,6 +21,7 @@ import {
 import { AvatarEditor } from "@/components/avatar-editor";
 import { PageHeader } from "@/components/ui/page-header";
 import { ProfilePassport } from "@/components/profile/profile-passport";
+import { UsernameForm } from "@/components/account/username-form";
 
 const personalGoals = [
   "IELTS 7.5+",
@@ -134,6 +135,11 @@ export default function ProfilePage() {
         {/* Avatar editor */}
         <div className="mb-8">
           <AvatarEditor currentImage={profile.image || null} name={profile.name || "Student"} />
+        </div>
+
+        {/* Username (loads its own value) */}
+        <div className="mb-8">
+          <UsernameForm lang="en" />
         </div>
 
         {/* Enrollment info (set by admin) */}

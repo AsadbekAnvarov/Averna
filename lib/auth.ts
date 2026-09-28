@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { UserRole } from "@prisma/client";
 import { authConfig } from "@/lib/auth.config";
 import { sessionStillValid } from "@/lib/account/session-guard";
+import { looksLikeEmail, normalizeUsername } from "@/lib/account/username-rules";
 
 // Extend the built-in session types
 declare module "next-auth" {
@@ -37,23 +38,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Credentials({
       name: "credentials",
       credentials: {
-        email: { label: "Email", type: "email" },
+        // The sign-in field takes an email OR a username (the key stays "email" for older clients).
+        email: { label: "Email or username", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        const login = typeof credentials?.email === "string" ? credentials.email.trim() : "";
+        if (!login || !credentials?.password) {
           throw new Error("Invalid credentials");
         }
 
-        // Normalise the email the same way signup does so that logins are
-        // case/whitespace-insensitive and always match the stored record.
-        const email = (credentials.email as string).trim().toLowerCase();
-
-        const user = await db.user.findUnique({
-          where: {
-            email,
-          },
-        });
+        // An email (normalised the same way signup does, so logins are
+        // case/whitespace-insensitive) or a username (stored lower case, "@" optional).
+        const user = looksLikeEmail(login)
+          ? await db.user.findUnique({ where: { email: login.toLowerCase() } })
+          : await db.user.findUnique({ where: { username: normalizeUsername(login) } });
 
         if (!user || !user.password) {
           throw new Error("Invalid credentials");

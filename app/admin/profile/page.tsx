@@ -14,6 +14,7 @@ import { AdminHeader } from "@/components/admin/admin-header";
 import { AvatarEditor } from "@/components/avatar-editor";
 import { PageHeader } from "@/components/ui/page-header";
 import { ChangePasswordForm } from "@/components/account/change-password-form";
+import { UsernameForm } from "@/components/account/username-form";
 
 async function updateAdminProfile(formData: FormData) {
   "use server";
@@ -36,7 +37,7 @@ export default async function AdminProfilePage({ searchParams }: { searchParams:
 
   const dbUser = await db.user.findUnique({
     where: { id: session.user.id },
-    select: { name: true, email: true, image: true },
+    select: { name: true, email: true, image: true, username: true },
   });
   if (!dbUser) {
     return <AccountNotice title="Akkaunt topilmadi" message="Iltimos, qayta kiring." />;
@@ -52,7 +53,7 @@ export default async function AdminProfilePage({ searchParams }: { searchParams:
           icon={ShieldCheck}
           iconClassName="text-averna-purple"
           title="Admin profili"
-          subtitle="Ismingiz, rasmingiz va parolingiz."
+          subtitle="Ismingiz, rasmingiz, foydalanuvchi nomingiz va parolingiz."
         />
 
         {searchParams.saved && (
@@ -91,6 +92,11 @@ export default async function AdminProfilePage({ searchParams }: { searchParams:
             </form>
           </CardContent>
         </Card>
+
+        {/* Username */}
+        <div className="mt-8">
+          <UsernameForm lang="uz" initial={dbUser.username ?? null} allowReserved />
+        </div>
 
         {/* Password */}
         <div className="mt-8">

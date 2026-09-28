@@ -45,6 +45,8 @@ enum AchievementType {
 model User {
   id            String    @id @default(cuid())
   email         String    @unique
+  /// Unique sign-in name (lower case, see lib/account/username-rules); null until the user picks one.
+  username      String?   @unique
   name          String?
   password      String
   role          UserRole  @default(STUDENT)

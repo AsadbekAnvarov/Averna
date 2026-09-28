@@ -9,6 +9,8 @@ export interface RosterStudent {
   id: string;
   name: string | null;
   email: string;
+  /** Sign-in username, when the student has chosen one. */
+  username?: string | null;
   level: string | null;
   groupId: string | null;
   blacklisted: boolean;
@@ -128,7 +130,10 @@ export function StudentRoster({
   const groupNameById = Object.fromEntries(groups.map((g) => [g.id, g.name]));
   const matched = query
     ? students.filter(
-        (s) => (s.name ?? "").toLowerCase().includes(query) || s.email.toLowerCase().includes(query)
+        (s) =>
+          (s.name ?? "").toLowerCase().includes(query) ||
+          s.email.toLowerCase().includes(query) ||
+          (!!s.username && `@${s.username}`.includes(query))
       )
     : students;
   const filtered = sortStudents(matched, sort, groupNameById);
@@ -144,7 +149,7 @@ export function StudentRoster({
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Ism yoki email boʻyicha qidirish…"
+              placeholder="Ism, email yoki @login boʻyicha qidirish…"
               className="w-full rounded-lg border border-white/10 bg-background/60 pl-9 pr-8 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-averna-cyan"
             />
             {q && (
@@ -255,7 +260,10 @@ function StudentRow({
             </span>
           )}
         </p>
-        <p className="text-xs text-gray-400 truncate">{s.email}</p>
+        <p className="text-xs text-gray-400 truncate">
+          {s.username ? `@${s.username} · ` : ""}
+          {s.email}
+        </p>
       </div>
       <select
         name="level"
