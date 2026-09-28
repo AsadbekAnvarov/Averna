@@ -46,7 +46,9 @@ export interface PassagePaneProps {
   attemptId: string;
   /**
    * Practice only: the in-text dictionary — "Look up" in the selection toolbar
-   * for 1–3 words, and double-click a word (mouse). Never in the mock exam.
+   * for 1–3 words (also on a tapped highlight). A double-click only selects the
+   * word, so the toolbar offers Highlight and Look up side by side. Never in
+   * the mock exam.
    */
   lookup?: boolean;
 }
@@ -574,7 +576,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
     [commit, say]
   );
 
-  // ---- dictionary: "Look up" (toolbar) and double-click ----------------------
+  // ---- dictionary: "Look up" in the toolbar (a double-click stays a plain selection) ----
   const openLookup = useCallback((seg: Segment, pointer: LookupRequest["pointer"]) => {
     const text = passageRef.current.paragraphs[seg.p]?.text ?? "";
     const word = normalizeWord(text.slice(seg.s, seg.e));
@@ -610,20 +612,6 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
     },
     [openLookup]
   );
-
-  const onTextDoubleClick = useCallback(() => {
-    if (lastPointer.current === "touch") return; // touch: long-press, then "Look up"
-    const textEl = textRef.current;
-    if (!textEl) return;
-    try {
-      const sel = window.getSelection();
-      if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return;
-      const hit = selectionSegments(textEl, sel.getRangeAt(0), passageRef.current.paragraphs);
-      if (hit && hit.segments.length === 1) openLookup(hit.segments[0], "mouse");
-    } catch {
-      /* never let an exotic selection crash the exam */
-    }
-  }, [openLookup]);
 
   const closeLookup = useCallback(() => setLook(null), []);
 
@@ -746,7 +734,6 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
           key={passage.id}
           ref={textRef}
           onClick={onTextClick}
-          onDoubleClick={lookup ? onTextDoubleClick : undefined}
           className="space-y-[1.1em] select-text selection:bg-averna-cyan/30 selection:text-white"
         >
           {passage.paragraphs.map((para, i) => (

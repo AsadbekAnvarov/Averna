@@ -5,9 +5,11 @@
  * browser (components/dictionary/**, the "My words" flashcard deck):
  *   - normalizeWord: what counts as a lookup (1–3 English words, ≤ 40 chars);
  *   - parseAiEntry / parseFreeEntry / coerceEntry: every entry that reaches the
- *     cache or the UI goes through the same strict shape and caps;
+ *     cache or the UI goes through the same strict shape and caps, and the
+ *     same content check (entryIsClean: no links, @handles or phone numbers);
  *   - sentenceAround / sanitizeContext / orderSensesForContext: the optional
- *     context sentence only ever changes the ORDER of senses;
+ *     context sentence only ever changes the ORDER of senses, offline, for one
+ *     response — it never reaches the model or the shared cache;
  *   - small helpers for the student's translation language, SRS item keys and
  *     highlighting the headword inside an example.
  */
@@ -302,7 +304,7 @@ export function cleanIpa(x: unknown): string {
 }
 
 /** Shared normalisation for AI output, free-dictionary output and cached rows. */
-function normalizeEntry(o: Obj, fallbackWord: string, senseList: unknown[]): { entry: DictEntry; kept: number[] } {
+function normalizeEntry(o: Obj, fallbackWord: string, senseList: unknown[]): DictEntry {
   const key = normalizeWord(fallbackWord) ?? "";
   let headword = cleanText(o.headword, MAX_HEADWORD_CHARS) || fallbackWord;
   // A headword must be the looked-up word (or one of its forms), never something unrelated.
@@ -311,9 +313,8 @@ function normalizeEntry(o: Obj, fallbackWord: string, senseList: unknown[]): { e
   const lemma = cleanText(o.lemma, MAX_HEADWORD_CHARS) || headword;
 
   const senses: DictSense[] = [];
-  const kept: number[] = [];
   const seen = new Set<string>();
-  senseList.forEach((raw, i) => {
+  senseList.forEach((raw) => {
     if (senses.length >= MAX_SENSES || !isObj(raw)) return;
     const definition = capWords(cleanText(raw.definition, 240), MAX_DEFINITION_WORDS);
     if (!definition) return;
@@ -325,18 +326,79 @@ function normalizeEntry(o: Obj, fallbackWord: string, senseList: unknown[]): { e
       translation: cleanText(raw.translation, MAX_TRANSLATION_CHARS),
       example: capWords(cleanText(raw.example, 220), MAX_EXAMPLE_WORDS),
     });
-    kept.push(i);
   });
 
   const entry: DictEntry = { headword, lemma, pos: cleanPos(o.pos), ipa: cleanIpa(o.ipa), senses };
   const note = capWords(cleanText(o.note, 200), MAX_NOTE_WORDS);
   if (note) entry.note = note;
-  return { entry, kept };
+  return entry;
 }
 
-export type AiParse =
-  | { ok: true; entry: DictEntry; /** Index (into entry.senses) of the sense used in the context, when the model said so. */ contextSense: number | null }
-  | { ok: false; reason: "malformed" | "empty" };
+// ---------------------------------------------------------------------------
+// Content check — entries are shared by every reader, so nothing in one may
+// send them somewhere else
+// ---------------------------------------------------------------------------
+
+/**
+ * A scheme (https://, tg://), www., telegram.me, a host with a common TLD, or t.me / wa.me — the
+ * last only followed by "/" ("t.me/channel", "t . me / x") or as a word of its own at the very start
+ * or after whitespace ("join t.me"), so prose like "I can't. Me neither." is no link.
+ */
+const LINK_RE =
+  /[a-z][a-z0-9+.-]*:\/\/|\bwww\s*\.|(?:^|[^\p{L}\p{N}])(?:t|wa)\s*\.\s*me\s*\/|(?:^|\s)(?:t|wa)\s*\.me(?![\p{L}\p{N}])|telegram\s*\.\s*(?:me|org|dog)(?![\p{L}\p{N}])|[\p{L}\p{N}-]\.(?:com|net|org|info|biz|io|me|app|dev|link|site|online|xyz|top|club|pro|shop|store|live|ly|gg|cc|tv|uz|ru|su|kz)(?![\p{L}\p{N}-])/iu;
+/** @username or an e-mail address (a bare "@" in prose is fine). */
+const HANDLE_RE = /@[\p{L}\p{N}_]/u;
+/** Digits with the separators phone numbers use: "+998 90 123-45-67", "(90) 1234567", "555-1234". */
+const DIGIT_RUN_RE = /\+?\p{Nd}(?:[\s().\/-]{0,3}\p{Nd})+/gu;
+const NON_DIGITS = /[^\p{Nd}]/gu;
+/** Digit runs that are not phone numbers: a range of years (2000-2010) or a date (12.05.2023). */
+const YEAR_RANGE_RE = /^\p{Nd}{4}\s*[-/]\s*\p{Nd}{2,4}$/u;
+const DATE_RE = /^\p{Nd}{1,2}[./-]\p{Nd}{1,2}[./-]\p{Nd}{2,4}$/u;
+/** An ISO-style date, year first (2023-05-12, 2023.05.12) — checked for a real year, month and day. */
+const ISO_DATE_RE = /^([0-9]{4})([-./])([0-9]{1,2})\2([0-9]{1,2})$/;
+/** A number grouped in thousands with one separator throughout (1 500 000, 1.500.000) — never "+…" or a leading 0. */
+const THOUSANDS_RE = /^[1-9][0-9]{0,2}(?:([\s.,])[0-9]{3})(?:\1[0-9]{3})*$/;
+/** Fewer digits than this in one run is a number, not a phone number. */
+const PHONE_MIN_DIGITS = 7;
+
+function isIsoDate(run: string): boolean {
+  const m = ISO_DATE_RE.exec(run);
+  if (!m) return false;
+  const [year, month, day] = [Number(m[1]), Number(m[3]), Number(m[4])];
+  return year >= 1000 && year <= 2999 && month >= 1 && month <= 12 && day >= 1 && day <= 31;
+}
+
+function hasPhoneNumber(text: string): boolean {
+  for (const m of text.matchAll(DIGIT_RUN_RE)) {
+    const run = m[0].trim();
+    if (run.replace(NON_DIGITS, "").length < PHONE_MIN_DIGITS) continue;
+    if (YEAR_RANGE_RE.test(run) || DATE_RE.test(run) || isIsoDate(run) || THOUSANDS_RE.test(run)) continue;
+    return true;
+  }
+  return false;
+}
+
+/** Why a piece of entry text can't be shown to every reader, or null when it is fine. */
+export function unsafeTextReason(text: string): "link" | "handle" | "phone" | null {
+  if (!text) return null;
+  if (LINK_RE.test(text)) return "link";
+  if (HANDLE_RE.test(text)) return "handle";
+  if (hasPhoneNumber(text)) return "phone";
+  return null;
+}
+
+/**
+ * True when no field of the entry carries a link (URL, www., t.me …), an
+ * @handle / e-mail address or a phone-number-like run of digits. Entries that
+ * fail are never cached or shown (a model can be talked into advertising).
+ */
+export function entryIsClean(entry: DictEntry): boolean {
+  const texts = [entry.headword, entry.lemma, entry.pos, entry.ipa, entry.note ?? ""];
+  for (const s of entry.senses) texts.push(s.definition, s.translation, s.example);
+  return texts.every((t) => unsafeTextReason(t) === null);
+}
+
+export type AiParse = { ok: true; entry: DictEntry } | { ok: false; reason: "malformed" | "empty" | "unsafe" };
 
 /** JSON text from the model → object (tolerates code fences / chatter around one JSON object). */
 function parseJsonObject(raw: unknown): Obj | null {
@@ -358,17 +420,18 @@ function parseJsonObject(raw: unknown): Obj | null {
 /**
  * The model's JSON (string or object) → a strict DictEntry. "empty" = the model
  * says it is not an English word (no usable senses); "malformed" = not the
- * requested shape at all. `contextSense` is kept out of the entry: it depends
- * on one request's context and must never be cached.
+ * requested shape at all; "unsafe" = it carries a link, a handle or a phone
+ * number (entryIsClean). Only the entry fields are kept — anything else the
+ * model adds (e.g. a sense index for some context) is dropped.
  */
 export function parseAiEntry(raw: unknown, word: string): AiParse {
   const o = parseJsonObject(raw);
   if (!o) return { ok: false, reason: "malformed" };
   if (!Array.isArray(o.senses)) return { ok: false, reason: "malformed" };
-  const { entry, kept } = normalizeEntry(o, word, o.senses);
+  const entry = normalizeEntry(o, word, o.senses);
   if (entry.senses.length === 0) return { ok: false, reason: "empty" };
-  const cs = typeof o.contextSense === "number" && Number.isInteger(o.contextSense) ? kept.indexOf(o.contextSense) : -1;
-  return { ok: true, entry, contextSense: cs >= 0 ? cs : null };
+  if (!entryIsClean(entry)) return { ok: false, reason: "unsafe" };
+  return { ok: true, entry };
 }
 
 /**
@@ -398,21 +461,22 @@ export function parseFreeEntry(raw: unknown, word: string): DictEntry | null {
   const senseList = (meaning.definitions as unknown[]).map((d) =>
     isObj(d) ? { definition: d.definition, translation: "", example: d.example } : null
   );
-  const { entry } = normalizeEntry(
-    { headword: first.word, lemma: first.word, pos: meaning.partOfSpeech, ipa },
-    word,
-    senseList
-  );
-  return entry.senses.length ? entry : null;
+  const entry = normalizeEntry({ headword: first.word, lemma: first.word, pos: meaning.partOfSpeech, ipa }, word, senseList);
+  // A community-edited source too: an entry with a link, a handle or a phone number is not used.
+  return entry.senses.length && entryIsClean(entry) ? entry : null;
 }
 
-/** A cached row's `data` → DictEntry, or null when it isn't one (then the cache is refreshed). */
+/**
+ * A cached row's `data` → DictEntry, or null when it isn't one — or no longer
+ * passes the content check — so it is never shown and the cache is refreshed.
+ * Extra keys in `data` (e.g. the failed-upgrade stamp) are ignored.
+ */
 export function coerceEntry(data: unknown): DictEntry | null {
   if (!isObj(data) || !Array.isArray(data.senses)) return null;
   const fallback = typeof data.headword === "string" ? data.headword : "";
   if (!fallback.trim()) return null;
-  const { entry } = normalizeEntry(data, fallback, data.senses);
-  return entry.senses.length ? entry : null;
+  const entry = normalizeEntry(data, fallback, data.senses);
+  return entry.senses.length && entryIsClean(entry) ? entry : null;
 }
 
 export function hasTranslations(entry: DictEntry): boolean {

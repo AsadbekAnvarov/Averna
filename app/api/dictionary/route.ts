@@ -4,6 +4,8 @@ import { dictStudent, isWordSaved, lookupTooFast, lookupWord } from "@/lib/dicti
 import { hasTranslations, isDictLang, normalizeWord, sanitizeContext, type LookupResponse } from "@/lib/dictionary-core";
 
 export const dynamic = "force-dynamic";
+// A miss may wait for the model (12 s) and then the free dictionary (6 s) — past the 10 s default.
+export const maxDuration = 30;
 
 const NO_STORE = { "Cache-Control": "private, no-store" };
 
@@ -17,8 +19,9 @@ function fail(status: number, error: string, extra?: Record<string, unknown>, he
  * One dictionary entry for a word or short phrase (1–3 words) selected in a
  * text. `lang` defaults to the student's language (Student.nativeLanguage,
  * Uzbek unless it says Russian); `context` (the sentence around the word) only
- * orders the senses. 400 invalid word · 404 no entry · 429 rate-limited ·
- * 503 no dictionary reachable.
+ * orders the senses of this response — it is never sent to the model or
+ * cached. 400 invalid word · 404 no entry · 429 rate-limited · 503 no
+ * dictionary reachable.
  */
 export async function GET(req: NextRequest) {
   let user: { id: string };
