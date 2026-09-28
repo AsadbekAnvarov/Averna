@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { SettingsPanel } from "@/components/settings/settings-panel";
+import { TelegramConnect } from "@/components/settings/telegram-connect";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { Settings, User, Bell, Wallet, Palette, ChevronRight } from "lucide-react";
@@ -54,6 +55,9 @@ export default async function SettingsPage() {
             </Link>
           ))}
         </div>
+
+        {/* Telegram bot */}
+        <TelegramConnect />
 
         {/* Appearance & comfort */}
         <SectionHeader icon={Palette} title="Appearance & Comfort" subtitle="Preferences are saved on this device" accent="text-averna-cyan" />

@@ -9,8 +9,42 @@ import { computeWritingXp } from "@/lib/engine/progression/xp";
 import { XP_CONFIG } from "@/lib/engine/progression/config";
 import { hashString } from "@/lib/engine/progression/missions";
 import { findSubmittedTest, loadXpHistory } from "@/lib/engine/progression/service";
+import { getWritingTask } from "@/lib/ielts/catalog";
+import { examHomeworkFor, recordExamHomework, writingVerdict, type ExamHomeworkTarget } from "@/lib/homework/exam-homework";
+import { writingTaskGate } from "@/lib/homework/exam-attempt";
+import { isHomeworkRetryOf } from "@/lib/homework/library-shared";
+import type { WritingPrompt } from "@/lib/writing-data";
 
 export const dynamic = "force-dynamic";
+
+const sameText = (a: unknown, b: unknown) =>
+  String(a ?? "").replace(/\s+/g, " ").trim() === String(b ?? "").replace(/\s+/g, " ").trim();
+
+/**
+ * Exam homework (?hw) for exactly this library prompt, or null. The essay is
+ * assessed against the prompt text the client sends, so that text must be the
+ * homework prompt's own wording — a homework id can't be attached to another task.
+ */
+async function writingHomework(
+  studentId: string,
+  homeworkId: unknown,
+  task: "task1" | "task2",
+  promptId: unknown,
+  promptText: unknown
+): Promise<{ target: ExamHomeworkTarget; prompt: WritingPrompt } | null> {
+  if (typeof promptId !== "string" || !promptId || promptId.length > 200) return null;
+  const libraryPrompt: WritingPrompt | null = await getWritingTask(task, promptId).catch(() => null);
+  if (!libraryPrompt || !sameText(libraryPrompt.prompt, promptText)) return null;
+  const target = await examHomeworkFor(studentId, homeworkId, {
+    kind: task === "task1" ? "WRITING_TASK1" : "WRITING_TASK2",
+    contentId: libraryPrompt.id,
+  });
+  return target ? { target, prompt: libraryPrompt } : null;
+}
+
+function homeworkSummary(task: "task1" | "task2", words: number, band: number): string {
+  return `Writing ${task === "task1" ? "Task 1" : "Task 2"} · ${words} words · band ${band.toFixed(1)} (AI estimate)`;
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -39,17 +73,38 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Retry / double-click safety — checked BEFORE the (slow, paid) AI call.
-    const previous = await findSubmittedTest(student.id, body.submissionId);
-    if (previous) {
-      return NextResponse.json({ testId: previous.id, duplicate: true });
-    }
-
     const task: "task1" | "task2" = taskType === "task1" ? "task1" : "task2";
     // Anti-cheat: only award XP for a genuine, on-topic, long-enough essay.
     // Weak essays are still assessed and saved (feedback is the point) — the
     // XP engine explains exactly what was missing.
     const minWords = XP_CONFIG.writing[task].minWords;
+    // Exam homework: resolved before the slow assessment (cheap reads only).
+    const homework = body.homeworkId ? await writingHomework(student.id, body.homeworkId, task, body.promptId, prompt) : null;
+
+    // Retry / double-click safety — checked BEFORE the (slow, paid) AI call.
+    const previous = await findSubmittedTest(student.id, body.submissionId);
+    if (previous) {
+      // A retried request still completes the homework (recordExamHomework is idempotent) — but
+      // only with this homework's own saved essay, never another skill's or another prompt's attempt.
+      if (homework && isHomeworkRetryOf(previous, homework.target.homeworkId, homework.prompt.id)) {
+        const prevAnswers = previous.answers as { essay?: unknown; prompt?: unknown } | null;
+        const prevEssay = String(prevAnswers?.essay ?? "");
+        const prevWords = (previous.aiAnalysis as { wordCount?: unknown } | null)?.wordCount;
+        const words = typeof prevWords === "number" ? prevWords : prevEssay.trim().split(/\s+/).filter(Boolean).length;
+        const band = Number(previous.score) || 0;
+        await recordExamHomework({
+          studentId: student.id,
+          target: homework.target,
+          testId: previous.id,
+          band,
+          summary: homeworkSummary(task, words, band),
+          // Real words that address the task, at least the XP minimum (80 / 120) — the saved essay, as recordExamHomework judges it too.
+          genuine: writingTaskGate(writingVerdict(prevEssay, prevAnswers?.prompt ?? homework.prompt.prompt, task)).counts,
+        });
+      }
+      return NextResponse.json({ testId: previous.id, duplicate: true });
+    }
+
     const onTopic = isOnTopic(essay, prompt);
     const genuine = isGenuineWriting(essay, minWords) && onTopic;
     // Same prompt again → repeat decay (stored as `testId` on the answers).
@@ -130,7 +185,13 @@ export async function POST(req: NextRequest) {
       student.id,
       "WRITING",
       assessment.overallBand,
-      { essay, prompt, taskType: task, testId: contentKey },
+      {
+        essay,
+        prompt,
+        taskType: task,
+        testId: contentKey,
+        ...(homework ? { promptId: homework.prompt.id, promptTitle: homework.prompt.title, homeworkId: homework.target.homeworkId } : {}),
+      },
       { ...assessment, issues, wordCount: wordTotal },
       timeSpent || 0,
       {
@@ -152,6 +213,21 @@ export async function POST(req: NextRequest) {
     };
     const verdict = await assessSubmission(facts);
     await logAssessment(facts, verdict, test.pointsAwarded ?? 0);
+
+    // Exam homework: the first essay for this prompt that counts completes it (the teacher reviews it later).
+    if (homework) {
+      const band = Number(assessment.overallBand) || 0;
+      await recordExamHomework({
+        studentId: student.id,
+        target: homework.target,
+        testId: test.id,
+        band,
+        summary: homeworkSummary(task, wordTotal, band),
+        // The same minimum the essay's own XP needs (80 / 120 real words, not filler) and on the task —
+        // a shorter or off-topic essay earns neither XP nor homework points, and leaves it in To do.
+        genuine: writingTaskGate(writingVerdict(essay, prompt, task)).counts,
+      });
+    }
 
     return NextResponse.json({
       testId: test.id,

@@ -25,7 +25,9 @@ import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { hashString } from "@/lib/engine/progression/missions";
 import type { WritingPrompt } from "@/lib/writing-data";
-import { overallBand } from "./bands";
+import { overallBand, writingBand } from "./bands";
+import { hasRecordedSpeech } from "@/lib/speaking/recording";
+import { readCriteria } from "@/lib/review/scoring";
 import {
   getListeningExam,
   getReadingExam,
@@ -38,7 +40,8 @@ import {
   type SpeakingSetSummary,
 } from "./catalog";
 import { estimateListeningMinutes } from "./format";
-import { toClientListening, toClientReading } from "./sanitize";
+import { toClientReading } from "./sanitize";
+import { listeningClientContent } from "./audio/client";
 import { examPrompt, submitObjectiveExam, submitSpeakingTest, submitWritingExam } from "./submit";
 import type { ClientListeningTest, ClientReadingTest, ExamTestSummary, SpeakingExamSet } from "./types";
 
@@ -66,7 +69,9 @@ export type MockSectionResult = {
   task1Band?: number;
   task2Band?: number;
   /** Speaking: criteria and the top feedback lines (shown on the result page). */
-  criteria?: { fluency: number; lexical: number; grammar: number };
+  criteria?: { fluency: number; lexical: number; grammar: number; pronunciation?: number | null };
+  /** A teacher reviewed this section (Writing: at least one task) — its band is the teacher's. */
+  reviewed?: boolean;
   feedback?: string[];
   assessedBy?: "ai" | "heuristic";
   submittedAt: string;
@@ -258,6 +263,7 @@ type AttemptRow = {
   overall: number | null;
   startedAt: Date;
   finishedAt: Date | null;
+  updatedAt: Date;
 };
 
 async function loadRow(studentId: string, attemptId: string): Promise<AttemptRow | null> {
@@ -342,6 +348,45 @@ function isBlankSection(skill: MockSection, payload: unknown): boolean {
   return !answers.some((a) => filled(asRec(a)?.transcript));
 }
 
+/**
+ * A teacher can review a Writing / Speaking test the moment it is saved, i.e.
+ * while this section is still being marked (the review then finds no mock
+ * section to update). Use the reviewed bands in that case.
+ */
+async function withTeacherReviews(skill: MockSection, result: MockSectionResult): Promise<MockSectionResult> {
+  if ((skill !== "WRITING" && skill !== "SPEAKING") || !result.testIds.length) return result;
+  try {
+    const rows: { id: string; score: number; review: { band: number; criteria: unknown } | null }[] = await db.iELTSTest.findMany({
+      where: { id: { in: result.testIds } },
+      select: { id: true, score: true, review: { select: { band: true, criteria: true } } },
+    });
+    if (!rows.some((r) => r.review)) return result;
+    const bandOf = (id: string | undefined) => rows.find((r) => r.id === id)?.score;
+    if (skill === "WRITING") {
+      const t1 = bandOf(result.testIds[0]);
+      const t2 = bandOf(result.testIds[1]);
+      if (typeof t1 !== "number" || typeof t2 !== "number") return result;
+      return { ...result, task1Band: t1, task2Band: t2, band: writingBand(t1, t2), reviewed: true };
+    }
+    const row = rows.find((r) => r.id === result.testIds[0]);
+    if (!row?.review) return result;
+    const c = readCriteria("SPEAKING", row.review.criteria);
+    return {
+      ...result,
+      band: row.review.band,
+      criteria: {
+        fluency: c.fluency ?? result.criteria?.fluency ?? 0,
+        lexical: c.lexical ?? result.criteria?.lexical ?? 0,
+        grammar: c.grammar ?? result.criteria?.grammar ?? 0,
+        pronunciation: c.pronunciation ?? null,
+      },
+      reviewed: true,
+    };
+  } catch {
+    return result;
+  }
+}
+
 export type SectionSubmitResult =
   | { ok: true; done: boolean; section: MockSection }
   | { ok: false; error: string; status: number };
@@ -387,7 +432,11 @@ export async function submitMockSection(o: {
 
   let result: MockSectionResult;
   const submittedAt = new Date(now).toISOString();
-  if (isBlankSection(skill, payload)) {
+  // Recorded Speaking answers live on the server (SpeakingRecording), not in the
+  // payload / autosave — a section is only blank when nothing was recorded either.
+  let blank = isBlankSection(skill, payload);
+  if (blank && skill === "SPEAKING") blank = !(await hasRecordedSpeech(o.studentId, `${row.id}-S`, papers.speaking));
+  if (blank) {
     // Nothing was answered (time ran out while away): the section scores 0, as
     // in the real exam, but no empty attempt is written into the student's
     // skill history.
@@ -445,6 +494,8 @@ export async function submitMockSection(o: {
       auto,
       // Late Speaking is still marked, so bound it by the real elapsed time, not the deadline.
       maxSeconds: Math.max(0, Math.round((now - row.sectionStartedAt.getTime()) / 1000)),
+      // Answers recorded by the runner (attempt id "<mockAttemptId>-S", see the orchestrator).
+      recordingKey: `${row.id}-S`,
     });
     result = {
       band: r.band,
@@ -458,24 +509,39 @@ export async function submitMockSection(o: {
     };
   }
 
+  result = await withTeacherReviews(skill, result);
   const next = o.section + 1;
   const done = next >= MOCK_SECTIONS.length;
-  const merged: MockResults = { ...results, [skill]: result };
-  const overall = done
-    ? overallBand(MOCK_SECTIONS.map((s) => merged[s]?.band ?? 0))
-    : null;
-  await db.mockAttempt.updateMany({
-    where: { id: row.id, current: o.section },
-    data: {
-      current: next,
-      results: json(merged),
-      draft: Prisma.DbNull,
-      sectionStartedAt: null,
-      sectionDeadline: null,
-      ...(done ? { status: "finished", finishedAt: new Date(now), overall } : {}),
-    },
-  });
-  return { ok: true, done, section: skill };
+  // Re-read: grading can take ~30 s (AI examiner) and a teacher may have reviewed
+  // an earlier section meanwhile — never write back a stale copy of the results.
+  // The write is guarded by the row's updatedAt too: a review (lib/review/save
+  // updateMock) that commits between this read and the write makes it match no
+  // row, and the results are re-read and merged again — same loop as updateMock.
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const fresh = await loadRow(o.studentId, o.attemptId);
+    if (!fresh || fresh.status !== "active" || fresh.current !== o.section || resultsOf(fresh.results)[skill]) {
+      return { ok: true, done: fresh?.status === "finished", section: skill };
+    }
+    // A review of this section's own tests saved since the last look.
+    if (attempt > 0) result = await withTeacherReviews(skill, result);
+    const merged: MockResults = { ...resultsOf(fresh.results), [skill]: result };
+    const overall = done ? overallBand(MOCK_SECTIONS.map((s) => merged[s]?.band ?? 0)) : null;
+    const r: { count: number } = await db.mockAttempt.updateMany({
+      where: { id: row.id, current: o.section, status: "active", updatedAt: fresh.updatedAt },
+      data: {
+        current: next,
+        results: json(merged),
+        draft: Prisma.DbNull,
+        sectionStartedAt: null,
+        sectionDeadline: null,
+        ...(done ? { status: "finished", finishedAt: new Date(now), overall } : {}),
+      },
+    });
+    if (r.count > 0) return { ok: true, done, section: skill };
+  }
+  console.warn(`Mock attempt ${row.id}: the ${skill} section kept changing while it was saved; not moved on.`);
+  // Retryable: the section's tests are saved under per-section keys, so a retry only redoes this write.
+  return { ok: false, error: "Your answers were marked, but the exam couldn't move on. Press Try again — nothing is lost.", status: 503 };
 }
 
 // ---------------------------------------------------------------------------
@@ -542,7 +608,7 @@ async function sectionContent(section: MockSection, papers: MockPapers): Promise
   switch (section) {
     case "LISTENING": {
       const t = await getListeningExam(papers.listening);
-      return t ? { skill: "LISTENING", test: toClientListening(t) } : null;
+      return t ? { skill: "LISTENING", test: await listeningClientContent(t) } : null;
     }
     case "READING": {
       const t = await getReadingExam(papers.reading);

@@ -14,6 +14,8 @@ import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { notifyUser } from "@/lib/notifications";
 import { awardXp } from "@/lib/engine/xp-engine";
+import { latestPlacementByStudent } from "@/lib/placement/placement";
+import { PlacementLevelBadge } from "@/components/placement/level-badge";
 
 async function blacklistStudent(formData: FormData) {
   "use server";
@@ -125,6 +127,8 @@ export default async function TeacherStudentsPage() {
   }
 
   const blacklistedAll = teacher.groups.flatMap((g) => g.students).filter((s) => s.blacklisted);
+  // Level badges from each student's latest finished placement test (never throws).
+  const placements = await latestPlacementByStudent(teacher.groups.flatMap((g) => g.students.map((s) => s.id)));
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -196,6 +200,7 @@ export default async function TeacherStudentsPage() {
                           <div className="min-w-0">
                             <p className="text-white font-medium truncate flex items-center gap-2">
                               {student.user.name ?? "Unnamed"}
+                              <PlacementLevelBadge info={placements.get(student.id)} />
                               {student.blacklisted && (
                                 <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-red-500/30 text-red-300 border border-red-500/40">
                                   blacklisted

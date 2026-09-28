@@ -1,7 +1,11 @@
 import { db } from "@/lib/db";
 import { Prisma } from "@prisma/client";
+import { deleteBlobs } from "@/lib/storage/blob";
 
 type Tx = Prisma.TransactionClient;
+
+/** How long a student delete waits for their audio files to go (best effort). */
+const AUDIO_DELETE_TIMEOUT_MS = 5000;
 
 /**
  * Fully removes a group and everything that depends on it, in FK-safe order:
@@ -33,10 +37,32 @@ export async function deleteGroupCascade(groupId: string) {
 }
 
 /**
+ * The student's recorded Speaking answers that still have a file in the Blob
+ * store. Their rows go with the student (FK cascade), the files don't — and
+ * afterwards nothing points at them any more. [] when they can't be read.
+ */
+async function speakingAudioUrls(studentId: string): Promise<string[]> {
+  try {
+    const rows = (await db.speakingRecording.findMany({
+      where: { studentId, audioUrl: { not: null } },
+      select: { audioUrl: true },
+    })) as { audioUrl: string | null }[];
+    return rows.map((r) => r.audioUrl).filter((u): u is string => typeof u === "string" && u.length > 0);
+  } catch (e) {
+    console.error("The student's Speaking recordings couldn't be listed (their audio files stay in storage):", e);
+    return [];
+  }
+}
+
+/**
  * Deletes a student and all of their data, then removes their login account.
- * Tutor bookings are released (not deleted) so the slot stays open.
+ * Tutor bookings are released (not deleted) so the slot stays open. Their
+ * Speaking audio files are removed from the Blob store once the delete has
+ * committed (best effort — a failure never blocks or undoes the delete).
  */
 export async function deleteStudentCascade(studentId: string) {
+  // Collected first (outside the transaction: a failing read there would abort it).
+  const audioUrls = await speakingAudioUrls(studentId);
   await db.$transaction(async (tx) => {
     const student = await tx.student.findUnique({
       where: { id: studentId },
@@ -60,6 +86,15 @@ export async function deleteStudentCascade(studentId: string) {
     await tx.student.delete({ where: { id: studentId } });
     await tx.user.delete({ where: { id: student.userId } });
   }, { timeout: 20000 });
+
+  if (audioUrls.length > 0) {
+    try {
+      const ok = await deleteBlobs(audioUrls, { timeoutMs: AUDIO_DELETE_TIMEOUT_MS });
+      if (!ok) console.error(`Deleted student ${studentId}: ${audioUrls.length} Speaking audio file(s) couldn't be removed from storage.`);
+    } catch (e) {
+      console.error("Deleted student's Speaking audio couldn't be removed from storage:", e);
+    }
+  }
 }
 
 /**

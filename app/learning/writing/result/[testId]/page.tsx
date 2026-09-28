@@ -6,13 +6,17 @@ import { db } from "@/lib/db";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Trophy, TrendingUp, TrendingDown, AlertCircle, CheckCircle, ArrowLeft, RotateCcw, Highlighter } from "lucide-react";
+import { Trophy, TrendingUp, TrendingDown, AlertCircle, CheckCircle, ArrowLeft, RotateCcw, Highlighter, BadgeCheck } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import { SessionOutcomeSection } from "@/components/progression/session-outcome-section";
 import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { ResultCelebration } from "@/components/learning/result-celebration";
 import { WritingHeatmap } from "@/components/learning/writing-heatmap";
+import { TeacherReviewCard } from "@/components/review/teacher-review-card";
+import { HomeworkNoticeCard } from "@/components/homework/homework-notice";
+import { canViewStudent } from "@/lib/access";
+import { homeworkNoticeFor } from "@/lib/homework/exam-homework";
 
 export default async function WritingResultPage({
   params,
@@ -22,12 +26,6 @@ export default async function WritingResultPage({
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 
-  const student = await db.student.findUnique({
-    where: { userId: session.user.id },
-  });
-
-  if (!student) redirect("/auth/signin");
-
   const test = await db.iELTSTest.findUnique({
     where: { id: params.testId },
     include: {
@@ -36,15 +34,27 @@ export default async function WritingResultPage({
           user: true,
         },
       },
+      review: { select: { band: true } },
     },
   });
 
-  if (!test || test.studentId !== student.id) {
+  if (!test) redirect("/learning/writing");
+  // The student, a teacher of their group, or an admin.
+  const viewerIsOwner = test.student.userId === session.user.id;
+  if (!viewerIsOwner && !(await canViewStudent(session.user, test.studentId))) {
     redirect("/learning/writing");
   }
+  const student = test.student;
+  // Open homework for this prompt (or prompt pair) that this attempt didn't complete (owner only).
+  const homeworkNotice = viewerIsOwner ? await homeworkNoticeFor(student.id, test) : null;
 
   const assessment = test.aiAnalysis as any;
   const answers = test.answers as any;
+  // After a teacher's review their band is the attempt's band (IELTSTest.score);
+  // the criterion scores below stay the AI examiner's.
+  const teacherBand: number | null = typeof test.review?.band === "number" ? test.review.band : null;
+  const shownBand: number = teacherBand ?? assessment.overallBand;
+  const studentName: string = student.user?.name?.trim() || "Student";
 
   const getBandColor = (band: number) => {
     if (band >= 8) return "text-green-400";
@@ -66,31 +76,48 @@ export default async function WritingResultPage({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <ResultCelebration score={assessment.overallBand} target={target} />
+      {viewerIsOwner && <ResultCelebration score={shownBand} target={target} />}
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
         <div className="mb-8 animate-fade-in">
-          <Link href="/learning/writing" className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
+          <Link
+            href={viewerIsOwner ? "/learning/writing" : "/teacher/reviews"}
+            className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1"
+          >
             <ArrowLeft className="h-4 w-4" />
-            Back to Writing
+            {viewerIsOwner ? "Back to Writing" : "Review queue"}
           </Link>
-          <h1 className="text-4xl font-bold text-white mb-2">AI Assessment Results</h1>
-          <p className="text-gray-400">Detailed feedback on your writing</p>
+          <h1 className="text-4xl font-bold text-white mb-2">
+            {viewerIsOwner ? "AI Assessment Results" : `${studentName} — Writing`}
+          </h1>
+          <p className="text-gray-400">
+            {viewerIsOwner ? "Detailed feedback on your writing" : "The AI examiner's assessment of this attempt"}
+          </p>
         </div>
+
+        {homeworkNotice && <HomeworkNoticeCard notice={homeworkNotice} className="mb-8" />}
 
         {/* Overall Band Score */}
         <Card className="glass border-averna-primary/30 mb-8 animate-fade-in">
           <CardContent className="py-8">
             <div className="text-center">
-              <p className="text-gray-400 mb-2">Overall Band Score</p>
-              <div className={`text-7xl font-bold mb-2 inline-block animate-pop ${getBandColor(assessment.overallBand)}`}>
-                {assessment.overallBand.toFixed(1)}
-              </div>
-              <p className={`text-xl ${getBandColor(assessment.overallBand)}`}>
-                {getBandLabel(assessment.overallBand)}
+              <p className="text-gray-400 mb-2 inline-flex items-center justify-center gap-1.5">
+                {teacherBand !== null && <BadgeCheck className="h-4 w-4 text-averna-neon" aria-hidden />}
+                {teacherBand !== null ? "Teacher's band" : "Overall Band Score"}
               </p>
+              <div className={`text-7xl font-bold mb-2 block animate-pop ${getBandColor(shownBand)}`}>
+                {shownBand.toFixed(1)}
+              </div>
+              <p className={`text-xl ${getBandColor(shownBand)}`}>
+                {getBandLabel(shownBand)}
+              </p>
+              {teacherBand !== null && typeof assessment.overallBand === "number" && (
+                <p className="mt-2 text-sm text-gray-400">
+                  AI examiner&apos;s estimate: {assessment.overallBand.toFixed(1)} — the criterion scores below are the AI&apos;s.
+                </p>
+              )}
               <div className="mt-6 max-w-md mx-auto">
-                <Progress value={(assessment.overallBand / 9) * 100} className="h-3" />
+                <Progress value={(shownBand / 9) * 100} className="h-3" />
               </div>
             </div>
           </CardContent>
@@ -98,9 +125,12 @@ export default async function WritingResultPage({
 
         {/* One more thing: what improved, what you earned, what's next */}
         <div className="mb-8">
-          <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
-            <SessionOutcomeSection studentId={student.id} testId={test.id} label="Writing" score={assessment.overallBand} />
+          {viewerIsOwner && (
+            <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
+            <SessionOutcomeSection studentId={student.id} testId={test.id} label="Writing" score={shownBand} />
           </Suspense>
+          )}
+          <TeacherReviewCard testId={test.id} viewerIsOwner={viewerIsOwner} />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
@@ -345,19 +375,30 @@ export default async function WritingResultPage({
 
 
         {/* Actions */}
-        <div className="flex gap-4 mt-8 animate-fade-in">
-          <Link href="/learning/writing" className="flex-1">
-            <Button className="w-full neon-button bg-averna-primary hover:bg-averna-light">
-              <RotateCcw className="mr-2 h-4 w-4" />
-              Practice Again
-            </Button>
-          </Link>
-          <Link href="/dashboard" className="flex-1">
-            <Button variant="outline" className="w-full border-averna-neon text-averna-neon">
-              Back to Dashboard
-            </Button>
-          </Link>
-        </div>
+        {viewerIsOwner ? (
+          <div className="flex gap-4 mt-8 animate-fade-in">
+            <Link href="/learning/writing" className="flex-1">
+              <Button className="w-full neon-button bg-averna-primary hover:bg-averna-light">
+                <RotateCcw className="mr-2 h-4 w-4" />
+                Practice Again
+              </Button>
+            </Link>
+            <Link href="/dashboard" className="flex-1">
+              <Button variant="outline" className="w-full border-averna-neon text-averna-neon">
+                Back to Dashboard
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          <div className="flex gap-4 mt-8 animate-fade-in">
+            <Link href="/teacher/reviews" className="flex-1">
+              <Button variant="outline" className="w-full border-averna-neon text-averna-neon">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to the review queue
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

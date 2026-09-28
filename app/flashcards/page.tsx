@@ -6,13 +6,16 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import {
   Layers, RotateCcw, Shuffle, Check, ChevronLeft, ChevronRight,
-  Volume2, Search, BookOpen, Zap, X as XIcon, Trophy,
+  Volume2, Search, BookOpen, Zap, X as XIcon, Trophy, BookMarked,
 } from "lucide-react";
 import { DECKS, type Flashcard } from "@/lib/flashcards-data";
 import { SrsReview } from "@/components/learning/srs-review";
+import { MyWordsDeck } from "@/components/flashcards/my-words-deck";
+import { useMyWords } from "@/components/flashcards/use-my-words";
 import { loadSrs, countDue } from "@/lib/srs";
 
-type Mode = "study" | "quiz" | "srs";
+/** "words" = My words: saved from the in-text dictionary, reviewed with the same SRS schedule. */
+type Mode = "study" | "quiz" | "srs" | "words";
 
 export default function FlashcardsPage() {
   const [deckId, setDeckId] = useState(DECKS[0].id);
@@ -33,6 +36,14 @@ export default function FlashcardsPage() {
     try {
       const saved = localStorage.getItem("averna_known_cards");
       if (saved) setKnown(new Set(JSON.parse(saved)));
+    } catch {}
+  }, []);
+
+  // My words (dictionary): loaded once for the tab badge and the deck; /flashcards?deck=my-words opens it.
+  const myWords = useMyWords();
+  useEffect(() => {
+    try {
+      if (new URLSearchParams(window.location.search).get("deck") === "my-words") setMode("words");
     } catch {}
   }, []);
 
@@ -115,7 +126,7 @@ export default function FlashcardsPage() {
 
   const markKnown = () => {
     if (!card) return;
-    const s = new Set(known);
+    const s = new Set<string>(known);
     s.add(card.word);
     setKnown(s);
     persist(s);
@@ -128,7 +139,7 @@ export default function FlashcardsPage() {
     const isCorrect = quizOptions[optIdx] === card.meaning;
     setQuizScore((s) => ({ correct: s.correct + (isCorrect ? 1 : 0), total: s.total + 1 }));
     if (isCorrect) {
-      const set = new Set(known);
+      const set = new Set<string>(known);
       set.add(card.word);
       setKnown(set);
       persist(set);
@@ -182,7 +193,7 @@ export default function FlashcardsPage() {
         </p>
 
         {/* Mode toggle */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex flex-wrap items-center gap-2 mb-4">
           <button
             onClick={() => setModeAndReset("study")}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors ${
@@ -216,6 +227,23 @@ export default function FlashcardsPage() {
               <span className="ml-1 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-averna-cyan text-black">{dueCount}</span>
             )}
           </button>
+          <button
+            onClick={() => setModeAndReset("words")}
+            aria-pressed={mode === "words"}
+            className={`relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 ${
+              mode === "words"
+                ? "bg-averna-neon/15 border-averna-neon text-averna-neon"
+                : "border-white/10 text-gray-300 hover:border-averna-neon/40"
+            }`}
+          >
+            <BookMarked className="h-4 w-4" aria-hidden /> My words
+            {myWords.dueCount > 0 && mode !== "words" && (
+              <span className="ml-1 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-averna-neon text-black">
+                {myWords.dueCount}
+                <span className="sr-only"> due</span>
+              </span>
+            )}
+          </button>
           {mode === "quiz" && quizScore.total > 0 && (
             <div className="ml-auto flex items-center gap-2 text-sm text-averna-neon">
               <Trophy className="h-4 w-4" />
@@ -225,7 +253,7 @@ export default function FlashcardsPage() {
         </div>
 
         {/* Deck selector */}
-        {mode !== "srs" && (
+        {mode !== "srs" && mode !== "words" && (
         <div className="flex flex-wrap gap-2 mb-4">
           {DECKS.map((d) => {
             const dk = d.cards.filter((c) => known.has(c.word)).length;
@@ -283,7 +311,7 @@ export default function FlashcardsPage() {
           </div>
         )}
 
-        {mode !== "srs" && (
+        {mode !== "srs" && mode !== "words" && (
         <div className="flex items-center justify-between mb-4 text-sm">
           <span className="text-gray-400">
             {visibleCards.length > 0 ? `Card ${index + 1} / ${visibleCards.length}` : "No cards"}
@@ -294,7 +322,9 @@ export default function FlashcardsPage() {
         </div>
         )}
 
-        {mode === "srs" ? (
+        {mode === "words" ? (
+          <MyWordsDeck data={myWords} />
+        ) : mode === "srs" ? (
           <SrsReview cards={allCards} />
         ) : !card ? (
           <Card className="glass border-averna-purple/40">

@@ -9,7 +9,8 @@ import { CheckSquare, AlertTriangle, MessageSquare, CheckCircle2 } from "lucide-
  */
 export async function TeacherAttentionBar({ teacherId, userId }: { teacherId: string; userId: string }) {
   const [toGrade, unread, attendances] = await Promise.all([
-    db.homeworkSubmission.count({ where: { status: "SUBMITTED", homework: { teacherId } } }),
+    // Classic homework only: exam homework waiting for a teacher is counted by the review queue card.
+    db.homeworkSubmission.count({ where: { status: "SUBMITTED", homework: { teacherId, contentKind: null } } }),
     db.message.count({ where: { receiverId: userId, read: false } }),
     db.attendance.findMany({
       where: { group: { teacherId } },

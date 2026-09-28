@@ -9,6 +9,7 @@ import { hashString } from "@/lib/engine/progression/missions";
 import { writingBand } from "@/lib/ielts/bands";
 import { getWritingTask, listWritingTasks } from "@/lib/ielts/catalog";
 import { examPrompt } from "@/lib/ielts/submit";
+import { examHomeworkFor, writingExamContentId } from "@/lib/homework/exam-homework";
 import type { WritingPrompt } from "@/lib/writing-data";
 import {
   WritingExamClient,
@@ -157,6 +158,13 @@ export default async function WritingExamPage({ searchParams = {} }: { searchPar
 
   const studentId = await studentIdOf(session.user.id);
   const done = studentId ? await submittedResult(studentId, attempt) : null;
+  // Exam homework: only kept when it is this student's homework for exactly these two tasks.
+  const homework = studentId
+    ? await examHomeworkFor(studentId, firstParam(searchParams.hw), {
+        kind: "WRITING_EXAM",
+        contentId: writingExamContentId(given1.id, given2.id),
+      })
+    : null;
 
   return (
     <WritingExamClient
@@ -165,6 +173,7 @@ export default async function WritingExamPage({ searchParams = {} }: { searchPar
       task2={examPrompt(given2)}
       attemptId={attempt}
       initialResult={done}
+      homeworkId={homework?.homeworkId}
     />
   );
 }

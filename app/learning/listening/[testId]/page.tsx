@@ -6,8 +6,9 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { findAward } from "@/lib/engine/xp-engine";
 import { getListeningExam } from "@/lib/ielts/catalog";
-import { toClientListening } from "@/lib/ielts/sanitize";
+import { listeningClientContent } from "@/lib/ielts/audio/client";
 import { resolvePartIndex } from "@/lib/ielts/submit";
+import { examHomeworkFor } from "@/lib/homework/exam-homework";
 import { ListeningExamRunner } from "@/components/exam/listening-exam-runner";
 
 /**
@@ -35,9 +36,10 @@ function safeDecode(s: string): string {
   }
 }
 
-function practiceUrl(testId: string, part: number | null, attempt: string): string {
+function practiceUrl(testId: string, part: number | null, attempt: string, hw?: string | null): string {
   const qs = new URLSearchParams();
   if (part != null) qs.set("part", String(part));
+  if (hw) qs.set("hw", hw);
   qs.set("attempt", attempt);
   return `${LIBRARY}/${encodeURIComponent(testId)}?${qs.toString()}`;
 }
@@ -73,20 +75,27 @@ export default async function ListeningTestPage({
   if (!test) return redirect(LIBRARY);
 
   const part = resolvePartIndex(test, firstParam(searchParams.part));
+  // Exam homework: only kept when it really is this student's homework for this paper / part.
+  const hwParam = firstParam(searchParams.hw);
+  const student = hwParam
+    ? await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true } }).catch(() => null)
+    : null;
+  const homework = student ? await examHomeworkFor(student.id, hwParam, { kind: "LISTENING", contentId: test.id, part }) : null;
   const requested = firstParam(searchParams.attempt);
   const attempt = requested && ATTEMPT_RE.test(requested) ? requested : null;
-  if (!attempt) return redirect(practiceUrl(test.id, part, randomUUID().replace(/-/g, "")));
+  if (!attempt) return redirect(practiceUrl(test.id, part, randomUUID().replace(/-/g, ""), homework?.homeworkId));
 
   const done = await submittedResultId(session.user.id, attempt);
   if (done) return redirect(`${LIBRARY}/result/${encodeURIComponent(done)}`);
 
   return (
     <ListeningExamRunner
-      test={toClientListening(test)}
+      test={await listeningClientContent(test)}
       partIndex={part ?? undefined}
       mode="practice"
       attemptId={attempt}
-      exitHref={LIBRARY}
+      exitHref={homework ? "/homework" : LIBRARY}
+      homeworkId={homework?.homeworkId}
     />
   );
 }

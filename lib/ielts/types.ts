@@ -202,7 +202,25 @@ export type ClientQuestion = Omit<ExamQuestion, "answer" | "explanation">;
 export type ClientGroup = Omit<ExamGroup, "questions"> & { questions: ClientQuestion[] };
 export type ClientReadingPart = Omit<ReadingPart, "groups"> & { groups: ClientGroup[] };
 export type ClientReadingTest = Omit<ExamReadingTest, "parts"> & { parts: ClientReadingPart[] };
-export type ClientListeningPart = Omit<ListeningPart, "groups"> & { groups: ClientGroup[] };
+/** Pre-rendered recording of one Listening part (announcements, voices and pauses baked in). */
+export interface ListeningPartAudio {
+  url: string;
+  durationMs: number;
+  /** Where each script line sits in the file (i = script line index; -1 = an exam announcement). */
+  timeline: {
+    i: number;
+    startMs: number;
+    endMs: number;
+    /** Which announcement (i = -1): part intro, reading-time preview, end of part, end of the test. */
+    kind?: "intro" | "preview" | "end" | "final";
+  }[];
+}
+/**
+ * A part as sent to the browser. With `audio` the script is omitted (empty
+ * array): the recording plays from the file and the transcript — which
+ * contains every gap answer — never reaches the client.
+ */
+export type ClientListeningPart = Omit<ListeningPart, "groups"> & { groups: ClientGroup[]; audio?: ListeningPartAudio };
 export type ClientListeningTest = Omit<ExamListeningTest, "parts"> & { parts: ClientListeningPart[] };
 
 /** Result of grading one question (server-side). */

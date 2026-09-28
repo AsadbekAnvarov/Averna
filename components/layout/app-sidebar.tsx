@@ -48,6 +48,10 @@ import {
   Newspaper,
   SpellCheck,
   Dna,
+  Compass,
+  ListChecks,
+  BarChart3,
+  Send,
   type LucideIcon,
 } from "lucide-react";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
@@ -80,6 +84,7 @@ const STUDENT_NAV: NavSection[] = [
     label: "Practice & Immersion",
     items: [
       { name: "Mock Exams", href: "/learning/mock-exam", icon: GraduationCap },
+      { name: "Placement Test", href: "/learning/placement", icon: Compass },
       { name: "Daily Challenge", href: "/challenge", icon: Zap },
       { name: "Vocabulary", href: "/flashcards", icon: Layers },
       { name: "Daily Article", href: "/article", icon: Newspaper },
@@ -152,6 +157,8 @@ const TEACHER_NAV: NavSection[] = [
     items: [
       { name: "Homework", href: "/teacher/homework", icon: Notebook },
       { name: "Create Homework", href: "/teacher/homework/create", icon: PenTool },
+      { name: "Review Queue", href: "/teacher/reviews", icon: ListChecks },
+      { name: "Mock Results", href: "/teacher/mock", icon: BarChart3 },
       { name: "Lessons Log", href: "/teacher/lessons", icon: GraduationCap },
       { name: "1-on-1 Tutoring", href: "/teacher/tutoring", icon: UserCheck },
     ],
@@ -191,10 +198,19 @@ const ADMIN_NAV: NavSection[] = [
     ],
   },
   {
+    label: "Oʻqitish",
+    items: [
+      { name: "Tekshiruv navbati", href: "/teacher/reviews", icon: ListChecks },
+      { name: "Mock natijalari", href: "/teacher/mock", icon: BarChart3 },
+      { name: "Kirish testi", href: "/admin/placement", icon: Compass },
+    ],
+  },
+  {
     label: "Kontent",
     items: [
       { name: "Oʻquv kontenti", href: "/admin/content", icon: FolderOpen },
       { name: "Test generatori", href: "/admin/generate-tests", icon: Sparkles },
+      { name: "Listening audio", href: "/admin/listening-audio", icon: Headphones },
       { name: "Eʼlonlar", href: "/admin/announcements", icon: Megaphone },
       { name: "Mukofotlar", href: "/admin/rewards", icon: Gift },
     ],
@@ -211,6 +227,7 @@ const ADMIN_NAV: NavSection[] = [
     label: "Muloqot",
     items: [
       { name: "Xabarlar", href: "/messages", icon: MessageSquare },
+      { name: "Telegram bot", href: "/admin/telegram", icon: Send },
     ],
   },
 ];

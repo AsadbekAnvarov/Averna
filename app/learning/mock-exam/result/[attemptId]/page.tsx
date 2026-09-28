@@ -8,6 +8,7 @@ import {
   ArrowRight,
   CalendarDays,
   CircleSlash,
+  ClipboardCheck,
   Clock,
   FileText,
   Info,
@@ -18,6 +19,7 @@ import {
 } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { canViewStudent } from "@/lib/access";
 import { getMockResult, MOCK_SECTIONS, type MockResultView, type MockSection, type MockSectionResult } from "@/lib/ielts/mock";
 import { overallBand } from "@/lib/ielts/bands";
 import { Aurora } from "@/components/motion/aurora";
@@ -30,6 +32,8 @@ import { cn, formatDateTime } from "@/lib/utils";
 export const metadata = { title: "Mock exam result" };
 
 const HUB = "/learning/mock-exam";
+/** Where teachers / admins come from (Mock results by group). */
+const STAFF_HUB = "/teacher/mock";
 
 const PRIMARY_BTN =
   "glow-cta inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-averna-primary px-5 text-sm font-semibold text-white transition-colors hover:bg-averna-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/70 motion-reduce:transition-none";
@@ -72,12 +76,26 @@ export default async function MockResultPage({ params }: { params: { attemptId: 
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 
-  const student = await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true } });
-  if (!student) return redirect(HUB);
+  // The student sees their own sitting; their teacher (or an admin) can open it too.
+  const attemptId = typeof params.attemptId === "string" ? params.attemptId : "";
+  const owner: { studentId: string; student: { userId: string; user: { name: string | null } | null } | null } | null =
+    attemptId
+      ? await db.mockAttempt
+          .findUnique({
+            where: { id: attemptId },
+            select: { studentId: true, student: { select: { userId: true, user: { select: { name: true } } } } },
+          })
+          .catch(() => null)
+      : null;
+  if (!owner?.student) return redirect(HUB);
+  const viewerIsOwner = owner.student.userId === session.user.id;
+  if (!viewerIsOwner && !(await canViewStudent(session.user, owner.studentId))) return redirect(HUB);
+  const studentName = owner.student.user?.name?.trim() || "Student";
 
-  const r = await getMockResult(student.id, params.attemptId);
-  if (!r) return redirect(HUB);
+  const r = await getMockResult(owner.studentId, attemptId);
+  if (!r) return redirect(viewerIsOwner ? HUB : STAFF_HUB);
   if (r.status !== "finished") {
+    if (!viewerIsOwner) return redirect(STAFF_HUB);
     return redirect(r.status === "abandoned" ? HUB : `${HUB}/${encodeURIComponent(r.attemptId)}`);
   }
 
@@ -106,18 +124,18 @@ export default async function MockResultPage({ params }: { params: { attemptId: 
         >
           <Aurora intensity="soft" />
           <Link
-            href={HUB}
+            href={viewerIsOwner ? HUB : STAFF_HUB}
             className="-ml-2 inline-flex min-h-[44px] items-center gap-1.5 rounded-lg px-2 text-sm text-gray-400 transition-colors hover:text-white print:hidden"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
-            Mock exams
+            {viewerIsOwner ? "Mock exams" : "Mock results"}
           </Link>
 
           <div className="mt-2 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">IELTS mock exam · Result</p>
               <h1 id="mock-result-title" className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                Your mock exam result
+                {viewerIsOwner ? "Your mock exam result" : `${studentName} — mock exam result`}
               </h1>
               <ul role="list" className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-gray-400">
                 {finishedAt && (
@@ -162,7 +180,7 @@ export default async function MockResultPage({ params }: { params: { attemptId: 
           <p className="mt-6 flex items-start gap-2.5 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-relaxed text-gray-300">
             <Info className="mt-0.5 h-4 w-4 shrink-0 text-averna-cyan" aria-hidden />
             <span>
-              Your overall band is the average of the four section bands, rounded to the nearest half band, the way IELTS
+              {viewerIsOwner ? "Your" : "The"} overall band is the average of the four section bands, rounded to the nearest half band, the way IELTS
               reports it: ({bands.map(fmt).join(" + ")}) ÷ 4 = {trim(mean)} → <strong className="text-white">{fmt(overall)}</strong>.
             </span>
           </p>
@@ -175,7 +193,7 @@ export default async function MockResultPage({ params }: { params: { attemptId: 
           </h2>
           <ul role="list" className="grid gap-4 md:grid-cols-2">
             {MOCK_SECTIONS.map((s, i) => (
-              <SectionCard key={s} skill={s} result={r.results[s]} papers={r.papers} delay={150 + i * 90} />
+              <SectionCard key={s} skill={s} result={r.results[s]} papers={r.papers} delay={150 + i * 90} viewerIsOwner={viewerIsOwner} />
             ))}
           </ul>
         </section>
@@ -190,15 +208,17 @@ export default async function MockResultPage({ params }: { params: { attemptId: 
                   <div className="min-w-0">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">Focus next</p>
                     <h2 id="mock-focus-title" className="mt-0.5 text-lg font-semibold text-white">
-                      {TITLE[weakest]} — band {fmt(r.results[weakest]?.band ?? 0)}, your lowest this time
+                      {TITLE[weakest]} — band {fmt(r.results[weakest]?.band ?? 0)}, {viewerIsOwner ? "your" : "the"} lowest this time
                     </h2>
                     <p className="mt-1 max-w-2xl text-sm leading-relaxed text-gray-400">{FOCUS_TIP[weakest]}</p>
                   </div>
                 </div>
-                <Link href={LIBRARY[weakest]} className={cn(PRIMARY_BTN, "shrink-0")}>
-                  Practise {TITLE[weakest]}
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Link>
+                {viewerIsOwner && (
+                  <Link href={LIBRARY[weakest]} className={cn(PRIMARY_BTN, "shrink-0")}>
+                    Practise {TITLE[weakest]}
+                    <ArrowRight className="h-4 w-4" aria-hidden />
+                  </Link>
+                )}
               </div>
             ) : (
               <div className="flex min-w-0 items-start gap-3">
@@ -208,7 +228,7 @@ export default async function MockResultPage({ params }: { params: { attemptId: 
                 <div className="min-w-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">Focus next</p>
                   <h2 id="mock-focus-title" className="mt-0.5 text-lg font-semibold text-white">
-                    Your four bands are level
+                    {viewerIsOwner ? "Your" : "The"} four bands are level
                   </h2>
                   <p className="mt-1 max-w-2xl text-sm leading-relaxed text-gray-400">
                     No skill is holding the others back. Keep practising all four — and take another mock in a few weeks to
@@ -221,13 +241,28 @@ export default async function MockResultPage({ params }: { params: { attemptId: 
         </Reveal>
 
         <Reveal as="nav" aria-label="What to do next" className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:items-center print:hidden">
-          <Link href={HUB} className={PRIMARY_BTN}>
-            <RotateCcw className="h-4 w-4" aria-hidden />
-            Take another mock
-          </Link>
-          <Link href="/learning" className={SECONDARY_BTN}>
-            Back to Learning
-          </Link>
+          {viewerIsOwner ? (
+            <>
+              <Link href={HUB} className={PRIMARY_BTN}>
+                <RotateCcw className="h-4 w-4" aria-hidden />
+                Take another mock
+              </Link>
+              <Link href="/learning" className={SECONDARY_BTN}>
+                Back to Learning
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href={STAFF_HUB} className={PRIMARY_BTN}>
+                <ArrowLeft className="h-4 w-4" aria-hidden />
+                Back to mock results
+              </Link>
+              <Link href="/teacher/reviews" className={SECONDARY_BTN}>
+                <ClipboardCheck className="h-4 w-4" aria-hidden />
+                Review queue
+              </Link>
+            </>
+          )}
         </Reveal>
       </div>
     </div>
@@ -241,11 +276,13 @@ function SectionCard({
   result,
   papers,
   delay,
+  viewerIsOwner,
 }: {
   skill: MockSection;
   result: MockSectionResult | undefined;
   papers: MockResultView["papers"];
   delay: number;
+  viewerIsOwner: boolean;
 }) {
   const band = result?.band ?? 0;
   const blank = !result || result.testIds.length === 0;
@@ -283,8 +320,14 @@ function SectionCard({
         </div>
       </div>
 
-      {(blank || result?.auto) && (
+      {(blank || result?.auto || result?.reviewed) && (
         <ul role="list" className="mt-4 flex flex-wrap gap-2">
+          {result?.reviewed && !blank && (
+            <li className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-averna-neon/35 bg-averna-neon/10 px-3 text-xs font-medium text-emerald-100">
+              <ClipboardCheck className="h-3.5 w-3.5 text-averna-neon" aria-hidden />
+              {viewerIsOwner ? "Reviewed by your teacher" : "Reviewed by a teacher"}
+            </li>
+          )}
           {blank && (
             <li className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-3 text-xs font-medium text-gray-200">
               <CircleSlash className="h-3.5 w-3.5 text-gray-400" aria-hidden />
@@ -294,7 +337,7 @@ function SectionCard({
           {result?.auto && !blank && (
             <li className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-amber-300/35 bg-amber-400/10 px-3 text-xs font-medium text-amber-100">
               <Timer className="h-3.5 w-3.5 text-amber-300" aria-hidden />
-              Time ran out — graded from your autosave
+              Time ran out — graded from {viewerIsOwner ? "your" : "the"} autosave
             </li>
           )}
           {result?.auto && blank && (
@@ -312,7 +355,7 @@ function SectionCard({
         ) : skill === "WRITING" ? (
           <WritingDetails result={result} blank={blank} papers={papers} />
         ) : (
-          <SpeakingDetails result={result} blank={blank} />
+          <SpeakingDetails result={result} blank={blank} viewerIsOwner={viewerIsOwner} />
         )}
       </div>
     </li>
@@ -414,8 +457,19 @@ const CRITERIA: { key: "fluency" | "lexical" | "grammar"; label: string }[] = [
   { key: "grammar", label: "Grammatical Range & Accuracy" },
 ];
 
-function SpeakingDetails({ result, blank }: { result: MockSectionResult | undefined; blank: boolean }) {
+function SpeakingDetails({
+  result,
+  blank,
+  viewerIsOwner,
+}: {
+  result: MockSectionResult | undefined;
+  blank: boolean;
+  viewerIsOwner: boolean;
+}) {
   const criteria = result?.criteria;
+  const pronunciation = typeof criteria?.pronunciation === "number" && Number.isFinite(criteria.pronunciation) ? criteria.pronunciation : null;
+  const reviewed = !!result?.reviewed && !blank;
+  const testId = result?.testIds[0];
   const feedback = (result?.feedback ?? []).filter((f) => typeof f === "string" && f.trim());
   return (
     <>
@@ -430,7 +484,13 @@ function SpeakingDetails({ result, blank }: { result: MockSectionResult | undefi
         ))}
         <div className="flex items-center justify-between gap-3 rounded-xl border border-white/5 bg-white/[0.03] px-3 py-2.5">
           <dt className="text-xs text-gray-300">Pronunciation</dt>
-          <dd className="max-w-[9rem] shrink-0 text-right text-[11px] font-medium leading-snug text-gray-400">Not assessed from text</dd>
+          {!blank && pronunciation !== null ? (
+            <dd className="shrink-0 text-base font-semibold tabular-nums text-white">{fmt(pronunciation)}</dd>
+          ) : (
+            <dd className="max-w-[9rem] shrink-0 text-right text-[11px] font-medium leading-snug text-gray-400">
+              {reviewed ? "Not rated" : "Not assessed from text"}
+            </dd>
+          )}
         </div>
       </dl>
 
@@ -445,22 +505,41 @@ function SpeakingDetails({ result, blank }: { result: MockSectionResult | undefi
         </ul>
       )}
 
-      <p className="mt-auto flex items-start gap-2 pt-4 text-xs leading-relaxed text-gray-500">
+      <p className="flex items-start gap-2 pt-4 text-xs leading-relaxed text-gray-500">
         {blank ? (
           <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gray-500" aria-hidden />
         ) : (
           <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gray-500" aria-hidden />
         )}
         <span>
-          {blank
-            ? "Nothing was transcribed for this section."
-            : result?.assessedBy === "ai"
-              ? "Assessed by Averna's AI examiner from your transcript."
-              : "An automatic estimate from your transcript."}{" "}
-          Pronunciation can&apos;t be judged from a transcript, so the band comes from the other three criteria — a teacher can
-          rate it separately.
+          {blank ? (
+            "Nothing was recorded or transcribed for this section."
+          ) : reviewed ? (
+            <>
+              The band is {viewerIsOwner ? "your" : "the"} teacher&apos;s review
+              {pronunciation !== null ? ", including Pronunciation." : ". Pronunciation wasn't rated, so it comes from the other three criteria."}
+            </>
+          ) : (
+            <>
+              {result?.assessedBy === "ai"
+                ? `Assessed by Averna's AI examiner from ${viewerIsOwner ? "your" : "the"} transcript.`
+                : `An automatic estimate from ${viewerIsOwner ? "your" : "the"} transcript.`}{" "}
+              Pronunciation can&apos;t be judged from a transcript, so the band comes from the other three criteria — a teacher
+              can rate it separately.
+            </>
+          )}
         </span>
       </p>
+
+      {!blank && testId && (
+        <div className="mt-auto pt-5">
+          <Link href={`${LIBRARY.SPEAKING}/result/${encodeURIComponent(testId)}`} className={LINK_BTN}>
+            {viewerIsOwner ? "Answers and feedback" : "Answers, recordings and review"}
+            <span className="sr-only"> for Speaking</span>
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
+        </div>
+      )}
     </>
   );
 }

@@ -5,6 +5,8 @@ import { SessionOutcomeSection } from "@/components/progression/session-outcome-
 import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { READING_FULL } from "@/lib/ielts/format";
 import type { ExamListeningTest, ExamReadingTest } from "@/lib/ielts/types";
+import type { HomeworkNotice } from "@/lib/homework/exam-homework";
+import { HomeworkNoticeCard } from "@/components/homework/homework-notice";
 import { AnswerReview } from "./answer-review";
 import { KindBreakdown } from "./kind-breakdown";
 import { NextBand } from "./next-band";
@@ -25,6 +27,9 @@ export function ObjectiveResult({
   completedAt,
   xp,
   target,
+  viewerIsOwner = true,
+  studentName,
+  homeworkNotice = null,
 }: {
   attempt: ObjectiveAttempt;
   /** The paper, or null when it can't be loaded any more. */
@@ -36,6 +41,12 @@ export function ObjectiveResult({
   completedAt: Date;
   xp: number | null;
   target: number | null;
+  /** False when a teacher / admin opens a student's attempt: no progression panel or practice actions. */
+  viewerIsOwner?: boolean;
+  /** Shown to teachers: whose attempt this is. */
+  studentName?: string;
+  /** Owner only: open homework for this content that this attempt didn't complete (homeworkNoticeFor). */
+  homeworkNotice?: HomeworkNotice | null;
 }) {
   const { skill, part } = attempt;
   const word = skillWord(skill);
@@ -73,9 +84,14 @@ export function ObjectiveResult({
           mock={attempt.mock}
           mockHref={mockHref}
           auto={attempt.auto}
-          backHref={libraryHref(skill)}
-          backLabel={`${word} library`}
+          backHref={viewerIsOwner ? libraryHref(skill) : "/teacher/students"}
+          backLabel={viewerIsOwner ? `${word} library` : "Students"}
         >
+          {!viewerIsOwner && (
+            <p className="text-sm text-gray-300">
+              Student: <span className="font-semibold text-white">{studentName || "—"}</span>
+            </p>
+          )}
           <NextBand
             skill={skill}
             band={attempt.band}
@@ -91,7 +107,7 @@ export function ObjectiveResult({
                 Review your answers
               </a>
             )}
-            {test && (
+            {test && viewerIsOwner && (
               <a href={practiceHref(skill, attempt.examId, part)} className={SECONDARY_BTN}>
                 <RotateCcw className="h-4 w-4" aria-hidden />
                 Try again
@@ -101,11 +117,15 @@ export function ObjectiveResult({
           </div>
         </ResultHero>
 
-        <div className="print:hidden">
-          <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
-            <SessionOutcomeSection studentId={studentId} testId={testRowId} label={word} score={attempt.band} />
-          </Suspense>
-        </div>
+        {viewerIsOwner && homeworkNotice && <HomeworkNoticeCard notice={homeworkNotice} />}
+
+        {viewerIsOwner && (
+          <div className="print:hidden">
+            <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
+              <SessionOutcomeSection studentId={studentId} testId={testRowId} label={word} score={attempt.band} />
+            </Suspense>
+          </div>
+        )}
 
         <Reveal>
           <KindBreakdown skill={skill} byKind={attempt.byKind} items={attempt.items} blanks={blanks} />
@@ -113,9 +133,11 @@ export function ObjectiveResult({
 
         <AnswerReview skill={skill} test={test} part={part} items={attempt.items} />
 
-        <Reveal>
-          <ResultActions skill={skill} examId={attempt.examId} part={part} partsCount={test ? test.parts.length : null} />
-        </Reveal>
+        {viewerIsOwner && (
+          <Reveal>
+            <ResultActions skill={skill} examId={attempt.examId} part={part} partsCount={test ? test.parts.length : null} />
+          </Reveal>
+        )}
       </div>
     </div>
   );

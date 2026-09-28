@@ -241,5 +241,189 @@ CREATE UNIQUE INDEX IF NOT EXISTS "mock_attempts_one_active_per_student"
     ON "mock_attempts" ("studentId") WHERE "status" = 'active';
 
 -- ============================================================================
+-- Teaching tools (Phase 3): exam homework, teacher reviews, recorded Speaking,
+-- pre-rendered Listening audio, placement test, Telegram, dictionary cache.
+-- Additive only: new tables and new NULLABLE columns.
+-- ============================================================================
+
+-- Exam homework from the test library.
+ALTER TABLE "homework" ADD COLUMN IF NOT EXISTS "contentKind" TEXT;
+ALTER TABLE "homework" ADD COLUMN IF NOT EXISTS "contentId" TEXT;
+ALTER TABLE "homework" ADD COLUMN IF NOT EXISTS "contentPart" INTEGER;
+ALTER TABLE "homework" ADD COLUMN IF NOT EXISTS "contentTitle" TEXT;
+ALTER TABLE "homework_submissions" ADD COLUMN IF NOT EXISTS "testId" TEXT;
+ALTER TABLE "homework_submissions" ADD COLUMN IF NOT EXISTS "band" DOUBLE PRECISION;
+CREATE INDEX IF NOT EXISTS "homework_submissions_testId_idx" ON "homework_submissions" ("testId");
+
+CREATE TABLE IF NOT EXISTS "listening_audio" (
+    "id"         TEXT NOT NULL,
+    "testId"     TEXT NOT NULL,
+    "partIndex"  INTEGER NOT NULL,
+    "status"     TEXT NOT NULL DEFAULT 'ready',
+    "url"        TEXT,
+    "bytes"      INTEGER NOT NULL DEFAULT 0,
+    "durationMs" INTEGER NOT NULL DEFAULT 0,
+    "scriptHash" TEXT NOT NULL,
+    "voiceModel" TEXT NOT NULL,
+    "timeline"   JSONB,
+    "error"      TEXT,
+    "createdAt"  TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt"  TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "listening_audio_pkey" PRIMARY KEY ("id")
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "listening_audio_testId_partIndex_key"
+    ON "listening_audio" ("testId", "partIndex");
+
+CREATE TABLE IF NOT EXISTS "speaking_recordings" (
+    "id"            TEXT NOT NULL,
+    "studentId"     TEXT NOT NULL,
+    "attemptKey"    TEXT NOT NULL,
+    "setId"         TEXT NOT NULL,
+    "part"          INTEGER NOT NULL,
+    "questionIndex" INTEGER NOT NULL,
+    "question"      TEXT NOT NULL,
+    "transcript"    TEXT NOT NULL,
+    "words"         INTEGER NOT NULL DEFAULT 0,
+    "durationMs"    INTEGER NOT NULL DEFAULT 0,
+    "audioUrl"      TEXT,
+    "audioBytes"    INTEGER NOT NULL DEFAULT 0,
+    "mimeType"      TEXT,
+    "metrics"       JSONB,
+    "expiresAt"     TIMESTAMP(3),
+    "createdAt"     TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt"     TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "speaking_recordings_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "speaking_recordings_studentId_fkey"
+        FOREIGN KEY ("studentId") REFERENCES "students"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "speaking_recordings_studentId_attemptKey_questionIndex_key"
+    ON "speaking_recordings" ("studentId", "attemptKey", "questionIndex");
+CREATE INDEX IF NOT EXISTS "speaking_recordings_studentId_createdAt_idx"
+    ON "speaking_recordings" ("studentId", "createdAt");
+CREATE INDEX IF NOT EXISTS "speaking_recordings_expiresAt_idx"
+    ON "speaking_recordings" ("expiresAt");
+
+CREATE TABLE IF NOT EXISTS "test_reviews" (
+    "id"         TEXT NOT NULL,
+    "testId"     TEXT NOT NULL,
+    "studentId"  TEXT NOT NULL,
+    "reviewerId" TEXT NOT NULL,
+    "aiBand"     DOUBLE PRECISION,
+    "band"       DOUBLE PRECISION NOT NULL,
+    "criteria"   JSONB,
+    "comment"    TEXT,
+    "createdAt"  TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt"  TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "test_reviews_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "test_reviews_testId_fkey"
+        FOREIGN KEY ("testId") REFERENCES "ielts_tests"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "test_reviews_testId_key" ON "test_reviews" ("testId");
+CREATE INDEX IF NOT EXISTS "test_reviews_studentId_idx" ON "test_reviews" ("studentId");
+CREATE INDEX IF NOT EXISTS "test_reviews_reviewerId_createdAt_idx" ON "test_reviews" ("reviewerId", "createdAt");
+
+CREATE TABLE IF NOT EXISTS "placement_attempts" (
+    "id"             TEXT NOT NULL,
+    "studentId"      TEXT NOT NULL,
+    "status"         TEXT NOT NULL DEFAULT 'active',
+    "plan"           JSONB NOT NULL,
+    "current"        INTEGER NOT NULL DEFAULT 0,
+    "draft"          JSONB,
+    "results"        JSONB NOT NULL DEFAULT '{}',
+    "cefr"           TEXT,
+    "band"           DOUBLE PRECISION,
+    "recommendation" TEXT,
+    "startedAt"      TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "finishedAt"     TIMESTAMP(3),
+    "updatedAt"      TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "placement_attempts_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "placement_attempts_studentId_fkey"
+        FOREIGN KEY ("studentId") REFERENCES "students"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE INDEX IF NOT EXISTS "placement_attempts_studentId_status_idx"
+    ON "placement_attempts" ("studentId", "status");
+CREATE INDEX IF NOT EXISTS "placement_attempts_finishedAt_idx"
+    ON "placement_attempts" ("finishedAt");
+-- At most one active placement sitting per student.
+CREATE UNIQUE INDEX IF NOT EXISTS "placement_attempts_one_active_per_student"
+    ON "placement_attempts" ("studentId") WHERE "status" = 'active';
+
+CREATE TABLE IF NOT EXISTS "telegram_links" (
+    "id"        TEXT NOT NULL,
+    "chatId"    TEXT NOT NULL,
+    "role"      TEXT NOT NULL,
+    "userId"    TEXT,
+    "studentId" TEXT,
+    "language"  TEXT NOT NULL DEFAULT 'uz',
+    "username"  TEXT,
+    "firstName" TEXT,
+    "active"    BOOLEAN NOT NULL DEFAULT true,
+    "prefs"     JSONB,
+    "linkedAt"  TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "telegram_links_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "telegram_links_userId_fkey"
+        FOREIGN KEY ("userId") REFERENCES "users"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "telegram_links_studentId_fkey"
+        FOREIGN KEY ("studentId") REFERENCES "students"("id")
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "telegram_links_userId_key" ON "telegram_links" ("userId");
+CREATE UNIQUE INDEX IF NOT EXISTS "telegram_links_chatId_studentId_key" ON "telegram_links" ("chatId", "studentId");
+CREATE INDEX IF NOT EXISTS "telegram_links_chatId_idx" ON "telegram_links" ("chatId");
+CREATE INDEX IF NOT EXISTS "telegram_links_studentId_idx" ON "telegram_links" ("studentId");
+
+CREATE TABLE IF NOT EXISTS "telegram_link_codes" (
+    "code"        TEXT NOT NULL,
+    "kind"        TEXT NOT NULL,
+    "userId"      TEXT,
+    "studentId"   TEXT,
+    "createdById" TEXT,
+    "expiresAt"   TIMESTAMP(3) NOT NULL,
+    "usedAt"      TIMESTAMP(3),
+    "createdAt"   TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "telegram_link_codes_pkey" PRIMARY KEY ("code")
+);
+CREATE INDEX IF NOT EXISTS "telegram_link_codes_userId_idx" ON "telegram_link_codes" ("userId");
+CREATE INDEX IF NOT EXISTS "telegram_link_codes_studentId_idx" ON "telegram_link_codes" ("studentId");
+
+CREATE TABLE IF NOT EXISTS "dictionary_entries" (
+    "id"        TEXT NOT NULL,
+    "word"      TEXT NOT NULL,
+    "lang"      TEXT NOT NULL,
+    "data"      JSONB NOT NULL,
+    "source"    TEXT NOT NULL,
+    "hits"      INTEGER NOT NULL DEFAULT 0,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "dictionary_entries_pkey" PRIMARY KEY ("id")
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "dictionary_entries_word_lang_key" ON "dictionary_entries" ("word", "lang");
+
+CREATE TABLE IF NOT EXISTS "cron_runs" (
+    "id"        TEXT NOT NULL,
+    "job"       TEXT NOT NULL,
+    "day"       TEXT NOT NULL,
+    "status"    TEXT NOT NULL DEFAULT 'running',
+    "details"   JSONB,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "cron_runs_pkey" PRIMARY KEY ("id")
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "cron_runs_job_day_key" ON "cron_runs" ("job", "day");
+
+-- ============================================================================
 -- End of additive deploy script. Nothing above can remove or modify data.
 -- ============================================================================

@@ -1,0 +1,164 @@
+/**
+ * Shared Telegram types. Pure — client components may `import type` from here.
+ */
+
+/** Bot language: students English, teachers / admins Uzbek, parents Uzbek or Russian. */
+export type Lang = "uz" | "ru" | "en";
+export const LANGS: readonly Lang[] = ["uz", "ru", "en"];
+
+/** TelegramLink.role — "parent" links carry the child's studentId instead of a userId. */
+export type LinkRole = "student" | "teacher" | "admin" | "parent";
+export type UserLinkRole = Exclude<LinkRole, "parent">;
+
+const LINK_ROLES: readonly LinkRole[] = ["student", "teacher", "admin", "parent"];
+export const asRole = (v: unknown): LinkRole | null => (LINK_ROLES.includes(v as LinkRole) ? (v as LinkRole) : null);
+
+/** User.role → link role. PARENT accounts don't link from Settings (parents use teacher invites). */
+export const USER_LINK_ROLE: Record<string, UserLinkRole | undefined> = {
+  STUDENT: "student",
+  TEACHER: "teacher",
+  ADMIN: "admin",
+};
+
+/** TelegramLinkCode.kind. */
+export type CodeKind = "user" | "parent";
+
+/**
+ * Notification preferences stored in TelegramLink.prefs.
+ *   homework  — new homework (instant)
+ *   reviews   — teacher reviews and grades (instant)
+ *   reminders — evening reminders (around 19:00), announcements and other "system" updates
+ *   reports   — teachers / admins: the evening daily report; parents: the Sunday report
+ */
+export type PrefKey = "homework" | "reminders" | "reviews" | "reports";
+export type Prefs = Record<PrefKey, boolean>;
+
+export interface InlineButton {
+  text: string;
+  url?: string;
+  callback_data?: string;
+}
+export type Keyboard = InlineButton[][];
+
+/** GET /api/telegram/link */
+export interface TelegramLinkStatus {
+  /** Linking works: the bot is configured and this account type links from Settings. */
+  available: boolean;
+  reason?: "not_configured" | "parent_account";
+  linked: boolean;
+  /** false after /stop in Telegram or when the user blocked the bot. */
+  active: boolean;
+  role: LinkRole | null;
+  username: string | null;
+  firstName: string | null;
+  linkedAt: string | null;
+  prefs: Prefs;
+  /** The toggles that mean something for this account's role. */
+  prefKeys: PrefKey[];
+  /** https://t.me/<bot> (null when the bot isn't configured). */
+  botUrl: string | null;
+}
+
+/** POST /api/telegram/link and POST /api/telegram/parent-invite */
+export interface TelegramCodeResponse {
+  url: string;
+  expiresAt: string;
+}
+
+/** A parent chat linked to a student (parent report → "Connected parents"). */
+export interface ParentLinkInfo {
+  id: string;
+  /** Telegram first name / @username of whoever pressed Start (null when Telegram didn't say). */
+  firstName: string | null;
+  username: string | null;
+  linkedAt: string;
+  /** false after /stop or when the bot was blocked. */
+  active: boolean;
+}
+
+/** GET /api/telegram/parent-invite?studentId= */
+export interface ParentInviteStatus {
+  available: boolean;
+  /** Active parent chats linked to this student. */
+  linkedParents: number;
+  /** Every parent link of this student, oldest first. */
+  parents: ParentLinkInfo[];
+}
+
+export type RoleCounts = Record<LinkRole, { active: number; inactive: number }>;
+
+/** Numbers a run recorded in CronRun.details — telegram-daily: messages, sent, failed, blocked, capped; recordings cleanup: deleted, failed. */
+export type CronRunCounts = Partial<Record<"messages" | "sent" | "failed" | "blocked" | "capped" | "deleted", number>>;
+
+/** A CronRun row for Admin → Telegram (lib/telegram/cron-runs.ts reads it and says what it means). */
+export interface CronRunInfo {
+  job: string;
+  /** Tashkent day, YYYY-MM-DD. */
+  day: string;
+  /**
+   * running | done | failed — or "interrupted": still "running" STALE_RUN_MS
+   * (lib/cron/once) after its last change, so the invocation was killed before
+   * it could record the end.
+   */
+  status: string;
+  /** Last change (ISO). */
+  at: string;
+  /** details.error of a failed run. */
+  error: string | null;
+  /** The counts the run recorded (only those present in details). */
+  counts: CronRunCounts;
+  /** details.errors: parts that failed without stopping the run (telegram-daily loaders, e.g. "parents,students"). */
+  errors: string | null;
+  /** details.skipped: why the run did nothing. */
+  skipped: string | null;
+  /** details.more: work left for the next run (recordings cleanup). */
+  more: boolean;
+}
+
+/** GET /api/admin/telegram */
+export interface TelegramAdminStatus {
+  config: {
+    token: boolean;
+    /** TELEGRAM_BOT_USERNAME without "@" (null when missing or malformed). */
+    username: string | null;
+    /** TELEGRAM_WEBHOOK_SECRET is set … */
+    secret: boolean;
+    /** … and uses only the characters Telegram accepts (16–256 of A–Z a–z 0–9 _ -). */
+    secretValid: boolean;
+    cronSecret: boolean;
+    /** Everything needed for linking and sending is in place. */
+    ready: boolean;
+    /** Base URL used for "Open in Averna" buttons (null: no https URL known). */
+    appUrl: string | null;
+  };
+  /** getMe (null without a token). */
+  bot: { ok: true; id: number; username: string; firstName: string } | { ok: false; error: string } | null;
+  /** TELEGRAM_BOT_USERNAME equals the bot's real username (null when unknown). */
+  usernameMatches: boolean | null;
+  /** getWebhookInfo (null without a token). */
+  webhook:
+    | {
+        ok: true;
+        url: string;
+        pendingUpdateCount: number;
+        lastErrorDate: string | null;
+        lastErrorMessage: string | null;
+        allowedUpdates: string[] | null;
+      }
+    | { ok: false; error: string }
+    | null;
+  /**
+   * Where "Webhookni oʻrnatish" points the bot: the app's public URL
+   * (NEXTAUTH_URL, https and not localhost), else the production domain
+   * (VERCEL_PROJECT_PRODUCTION_URL), else this site (null without https).
+   */
+  expectedWebhookUrl: string | null;
+  /** This is a Vercel preview deployment — "Webhookni oʻrnatish" is refused here. */
+  preview: boolean;
+  counts: RoleCounts;
+  /** The latest daily-job runs (cron_runs), newest first. */
+  cronRuns: CronRunInfo[];
+  /** The signed-in admin's own link (for "Test xabar yuborish"). */
+  me: { linked: boolean; active: boolean; username: string | null };
+  checkedAt: string;
+}

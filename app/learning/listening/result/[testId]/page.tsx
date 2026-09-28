@@ -6,6 +6,8 @@ import { db } from "@/lib/db";
 import { getListeningExam } from "@/lib/ielts/catalog";
 import { ObjectiveResult } from "@/components/exam/results/objective-result";
 import { parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
+import { canViewStudent } from "@/lib/access";
+import { homeworkNoticeFor } from "@/lib/homework/exam-homework";
 
 export const metadata = { title: "Listening results" };
 
@@ -31,17 +33,26 @@ export default async function ListeningResultPage({ params }: { params: { testId
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 
-  const student = await db.student.findUnique({ where: { userId: session.user.id } });
-  if (!student) return redirect("/auth/signin");
-
-  const row = await db.iELTSTest.findUnique({ where: { id: params.testId } });
-  if (!row || row.studentId !== student.id) return redirect(LIBRARY);
+  const row = await db.iELTSTest.findUnique({
+    where: { id: params.testId },
+    include: { student: { include: { user: { select: { name: true } } } } },
+  });
+  if (!row) return redirect(LIBRARY);
+  // The student, a teacher of their group, or an admin.
+  const viewerIsOwner = row.student.userId === session.user.id;
+  if (!viewerIsOwner && !(await canViewStudent(session.user, row.studentId))) return redirect(LIBRARY);
+  const student = row.student;
 
   const attempt = parseObjectiveAttempt(row);
   if (!attempt) return redirect(LIBRARY);
   if (attempt.skill !== "LISTENING") return redirect(resultHref(attempt.skill, row.id));
 
-  const [exam, xp] = await Promise.all([getListeningExam(attempt.examId), xpForTest(student.id, row.id)]);
+  const [exam, xp, homeworkNotice] = await Promise.all([
+    getListeningExam(attempt.examId),
+    xpForTest(student.id, row.id),
+    // Open homework for this paper / part that this attempt didn't complete (owner only).
+    viewerIsOwner ? homeworkNoticeFor(student.id, row) : Promise.resolve(null),
+  ]);
 
   return (
     <ObjectiveResult
@@ -53,6 +64,9 @@ export default async function ListeningResultPage({ params }: { params: { testId
       completedAt={row.completedAt}
       xp={xp}
       target={parseTargetBand(student.targetBand)}
+      viewerIsOwner={viewerIsOwner}
+      studentName={student.user?.name ?? undefined}
+      homeworkNotice={homeworkNotice}
     />
   );
 }

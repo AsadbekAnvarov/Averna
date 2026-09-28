@@ -1,4 +1,7 @@
 export const dynamic = "force-dynamic";
+// Telegram copies of the announcement are sent after the response (lib/notifications) — give them
+// time: up to 45 s of sending (TELEGRAM_BULK_BUDGET_MAX_MS) fits inside these 60 s.
+export const maxDuration = 60;
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
@@ -12,7 +15,7 @@ import { Megaphone, Send } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { PageHeader } from "@/components/ui/page-header";
-import { notifyGroupStudents } from "@/lib/notifications";
+import { notifyGroupStudents, TELEGRAM_BULK_BUDGET_MAX_MS } from "@/lib/notifications";
 import { formatDateTime } from "@/lib/utils";
 
 async function postAnnouncement(formData: FormData) {
@@ -42,12 +45,16 @@ async function postAnnouncement(formData: FormData) {
     },
   });
 
-  await notifyGroupStudents(groupId, {
-    type: "system",
-    title: `📢 ${title}`,
-    message: body.length > 80 ? body.slice(0, 80) + "…" : body,
-    link: "/notifications",
-  });
+  await notifyGroupStudents(
+    groupId,
+    {
+      type: "system",
+      title: `📢 ${title}`,
+      message: body.length > 80 ? body.slice(0, 80) + "…" : body,
+      link: "/notifications",
+    },
+    { telegramBudgetMs: TELEGRAM_BULK_BUDGET_MAX_MS }
+  );
 
   revalidatePath("/teacher/announcements");
   redirect("/teacher/announcements?saved=1");

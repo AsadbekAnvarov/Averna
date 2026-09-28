@@ -10,6 +10,8 @@ import { buildSessionOutcome, findSubmittedTest, loadXpHistory } from "@/lib/eng
 import { getListeningExam } from "@/lib/ielts/catalog";
 import { clientAttemptKey, resolvePartIndex, submitObjectiveExam } from "@/lib/ielts/submit";
 import { paperLockedByMock } from "@/lib/ielts/mock";
+import { examHomeworkFor, recordExamHomework } from "@/lib/homework/exam-homework";
+import { objectiveGate } from "@/lib/homework/exam-attempt";
 
 export const dynamic = "force-dynamic";
 
@@ -55,6 +57,23 @@ export async function POST(req: NextRequest) {
         idempotencyKey: clientAttemptKey(body.submissionId),
         auto: body.auto === true,
       });
+      // Exam homework (?hw): the first attempt at this exact paper / Part that counts completes it
+      // (recordExamHomework checks the saved attempt is that content and counts by the same rule).
+      if (body.homeworkId) {
+        const part = resolvePartIndex(exam, body.part);
+        const target = await examHomeworkFor(student.id, body.homeworkId, { kind: "LISTENING", contentId: exam.id, part });
+        if (target) {
+          await recordExamHomework({
+            studentId: student.id,
+            target,
+            testId: r.testId,
+            band: r.band,
+            summary: `${part == null ? "Full test" : `Part ${part + 1}`} · ${r.correct}/${r.total} correct · band ${r.band.toFixed(1)}`,
+            // At least half of the questions in the homework's scope answered.
+            genuine: objectiveGate(r.answered, r.total).counts,
+          });
+        }
+      }
       return NextResponse.json({
         testId: r.testId,
         correctCount: r.correct,

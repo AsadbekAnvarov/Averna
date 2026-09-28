@@ -7,6 +7,7 @@ import { db } from "@/lib/db";
 import { findAward } from "@/lib/engine/xp-engine";
 import { getSpeakingSet } from "@/lib/ielts/catalog";
 import { SpeakingExamRunner } from "@/components/exam/speaking-exam-runner";
+import { examHomeworkFor } from "@/lib/homework/exam-homework";
 
 /**
  * Full IELTS Speaking test (Parts 1–3) — practice mode. The runner posts the
@@ -21,6 +22,8 @@ import { SpeakingExamRunner } from "@/components/exam/speaking-exam-runner";
 
 const LIBRARY = "/learning/speaking-test";
 const ATTEMPT_RE = /^[A-Za-z0-9_-]{8,64}$/;
+/** The mock exam's Speaking recording key ("<mockAttemptId>-S") — never a practice attempt id (those are plain hex). */
+const MOCK_KEY_RE = /-S$/;
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -76,10 +79,26 @@ export default async function SpeakingTestPage({
   if (!set) return redirect(LIBRARY);
 
   const requested = firstParam(searchParams.attempt);
-  const attempt = requested && ATTEMPT_RE.test(requested) ? requested : null;
+  const attempt = requested && ATTEMPT_RE.test(requested) && !MOCK_KEY_RE.test(requested) ? requested : null;
   if (!attempt || (await alreadySubmitted(session.user.id, attempt))) {
     return redirect(freshAttemptUrl(set.id, searchParams));
   }
 
-  return <SpeakingExamRunner key={attempt} set={set} mode="practice" attemptId={attempt} exitHref={LIBRARY} />;
+  // Exam homework: only kept when it really is this student's homework for this set.
+  const hwParam = firstParam(searchParams.hw);
+  const student = hwParam
+    ? await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true } }).catch(() => null)
+    : null;
+  const homework = student ? await examHomeworkFor(student.id, hwParam, { kind: "SPEAKING", contentId: set.id }) : null;
+
+  return (
+    <SpeakingExamRunner
+      key={attempt}
+      set={set}
+      mode="practice"
+      attemptId={attempt}
+      exitHref={homework ? "/homework" : LIBRARY}
+      homeworkId={homework?.homeworkId}
+    />
+  );
 }

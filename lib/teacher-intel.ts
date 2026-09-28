@@ -213,7 +213,9 @@ export interface TeachingTip {
 export async function getTeachingAssistant(teacherId: string): Promise<TeachingTip[]> {
   const [signals, pending, moduleRows] = await Promise.all([
     loadSignals(teacherId),
-    db.homeworkSubmission.count({ where: { status: "SUBMITTED", homework: { teacherId } } }),
+    // Classic homework only: exam homework (contentKind set) is marked automatically or waits in the
+    // review queue — the same rule as the dashboard's inbox and attention bar.
+    db.homeworkSubmission.count({ where: { status: "SUBMITTED", homework: { teacherId, contentKind: null } } }),
     db.iELTSTest.findMany({
       where: { student: { group: { teacherId } } },
       select: { module: true, score: true },

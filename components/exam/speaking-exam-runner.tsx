@@ -11,6 +11,24 @@
  * minutes to speak, Part 3 answers up to 75 s. Without speech recognition the
  * candidate types instead — the same timing rules apply.
  *
+ * Recorded mode — when the server can transcribe (/api/speaking/capabilities)
+ * and the browser can record: every answer is recorded (lib/ielts/recorder.ts,
+ * a level meter instead of the live transcript) and uploaded in a background
+ * queue to /api/speaking/answer, which transcribes it and keeps the audio for
+ * the teacher. The test flows on while answers upload; the final submission
+ * waits for the queue. A reloaded test (practice or mock) continues from the
+ * first unanswered question (/api/speaking/progress). Answer i is question i
+ * of flattenSpeakingQuestions(set) — the order this runner asks in. When the
+ * server stops taking recordings ("unavailable": transcription is down;
+ * "limit": today's recordings are used up) — or two answers have run out of
+ * retries on ordinary errors (5xx, timeouts: a plain outage) — the rest of
+ * the test uses the browser's speech recognition (or typing), and every answer
+ * whose upload failed can be typed at the end before submitting — nothing is
+ * lost. A question recorded too often in this attempt ("too-many-takes") is
+ * typed at the end too, while recording goes on. When the final wait for the
+ * uploads drags on (about a minute), the candidate can stop waiting and type
+ * every answer that isn't saved yet.
+ *
  * Mock mode hands the transcripts to `onSubmit`; practice mode posts them to
  * /api/learning/speaking/test and shows the assessment.
  */
@@ -29,8 +47,11 @@ import {
   Loader2,
   Mic,
   NotebookPen,
+  RefreshCw,
   RotateCcw,
+  ShieldCheck,
   Sparkles,
+  Upload,
   UserRound,
   Volume2,
 } from "lucide-react";
@@ -50,6 +71,29 @@ import {
   type LiveTranscript,
   type RecorderErrorCode,
 } from "@/lib/ielts/speech-recognition";
+import { AnswerRecorder, isRecordingSupported, recorderProblemOf, type RecordedTake, type RecorderProblem } from "@/lib/ielts/recorder";
+import { extensionForMime } from "@/lib/speaking/audio-format";
+import {
+  daysLabel,
+  flattenSpeakingQuestions,
+  parseCapabilities,
+  parseRecordedAnswer,
+  stopsRecording,
+  uploadRetryCanHelp,
+  type RecordedAnswer,
+  type RecordingStopCode,
+  type SpeakingCapabilities,
+  type SpeakingQuestionItem,
+} from "@/lib/speaking/shared";
+import {
+  OUTAGE_AFTER_EXHAUSTED,
+  UploadQueue,
+  countsTowardOutage,
+  type UploadAttempt,
+  type UploadFailure,
+  type UploadJob,
+  type UploadSnapshot,
+} from "@/lib/speaking/upload-queue";
 import { formatClock, useLeaveGuard } from "./use-exam";
 import type { SpeakingAnswer, SpeakingExamRunnerProps, SpeakingTestResult, SpeakingTestSubmission } from "./types";
 
@@ -59,14 +103,10 @@ import type { SpeakingAnswer, SpeakingExamRunnerProps, SpeakingTestResult, Speak
 
 type Part = 1 | 2 | 3;
 type InputMode = SpeakingTestSubmission["inputMode"];
-type TurnKind = "short" | "long" | "followUp";
 type EndReason = "next" | "timeout" | "cancel";
 
-interface TurnItem {
-  part: Part;
-  question: string;
-  kind: TurnKind;
-}
+/** One question as the examiner asks it — `index` is its place in flattenSpeakingQuestions(set). */
+type TurnItem = SpeakingQuestionItem;
 
 /** What is happening on the stage right now. */
 type Activity =
@@ -81,9 +121,11 @@ interface TurnHandle {
   startedAt: number;
   min: number;
   max: number;
-  /** The recorder was started for this turn. */
+  /** The speech recogniser was started for this turn. */
   recording: boolean;
-  /** Recognition failed during this turn and the candidate finished it by typing. */
+  /** Recorded mode: the answer recorder was started for this turn. */
+  recorded: boolean;
+  /** Recognition / recording failed during this turn and the candidate finished it by typing. */
   typedFallback: boolean;
   ending: boolean;
   timer: ReturnType<typeof setTimeout> | null;
@@ -96,8 +138,9 @@ interface PrepHandle {
 }
 
 type View = "intro" | "test" | "end";
-type MicState = "unknown" | "checking" | "ready" | "blocked" | "missing" | "busy" | "unsupported";
-type SubmitState = "idle" | "submitting" | "submitted" | "error" | "empty";
+type MicState = "unknown" | "checking" | "ready" | "blocked" | "missing" | "busy" | "failed" | "unsupported";
+/** uploading / upload-failed: recorded mode, waiting for the answer uploads before submitting. */
+type SubmitState = "idle" | "uploading" | "upload-failed" | "submitting" | "submitted" | "error" | "empty";
 type OrbState = "speaking" | "listening" | "thinking" | "idle";
 
 interface Capabilities {
@@ -131,6 +174,8 @@ const LINES = {
     `We've been talking about ${theme}, and I'd now like to discuss with you one or two more general questions related to this.`,
   end: "Thank you. That is the end of the speaking test.",
   soundCheck: "Hello. I'm Averna, your examiner. Can you hear me clearly?",
+  /** A reloaded recorded test picking up where it stopped. */
+  welcomeBack: "Welcome back. Let's carry on from where we stopped.",
 };
 
 const PART_INFO: Record<Part, { name: string; time: string; about: string }> = {
@@ -158,14 +203,53 @@ const RECOGNITION_LOST: Record<RecorderErrorCode, string> = {
   unknown: `Your browser stopped transcribing speech. ${KEEP_TYPING}`,
 };
 
-const MIC_PROBLEM: Record<"blocked" | "missing" | "busy", { title: string; detail: string }> = {
+const MIC_PROBLEM: Record<"blocked" | "missing" | "busy" | "failed", { title: string; detail: string }> = {
   blocked: {
     title: "Microphone access is blocked.",
     detail: "Allow the microphone for this site (use the icon in the address bar), then check again.",
   },
   missing: { title: "No microphone was found.", detail: "Connect a microphone or headset, then check again." },
   busy: { title: "Your microphone is busy.", detail: "Another app or tab is using it. Close it, then check again." },
+  failed: { title: "Your microphone couldn't start.", detail: "Check that it's connected and allowed for this site, then check again." },
 };
+
+const KEEP_TYPING_RECORDED = "Type what you would say for now — the answers already recorded are kept.";
+
+/** Recorded mode: the microphone went away mid-test. */
+const RECORDING_LOST: Record<RecorderProblem, string> = {
+  "not-allowed": `Microphone access was blocked, so your answers can't be recorded. ${KEEP_TYPING_RECORDED}`,
+  "no-device": `We lost your microphone. ${KEEP_TYPING_RECORDED}`,
+  busy: `Another app took over your microphone. ${KEEP_TYPING_RECORDED}`,
+  "not-supported": `Your browser stopped recording. ${KEEP_TYPING_RECORDED}`,
+  unknown: `Recording stopped unexpectedly. ${KEEP_TYPING_RECORDED}`,
+};
+
+/** Why recording stopped mid-test (the server's answer to an upload). */
+const STOPPED_WHY: Record<RecordingStopCode, string> = {
+  unavailable: "Recorded answers aren't available right now.",
+  limit: "You've reached today's limit for recorded answers.",
+};
+
+/** Recorded mode: the server stopped taking recordings — what happens for the rest of the test. */
+const RECORDING_STOPPED: Record<"speech" | "typed", string> = {
+  speech: "From the next question, your browser transcribes your answers as you speak. Answers that weren't saved can be typed at the end.",
+  typed: "From the next question, type what you would say — the timing rules still apply. Answers that weren't saved can be typed at the end.",
+};
+
+/** The intro, when recorded answers are paused on the server. */
+const RECORDING_PAUSED: Record<RecordingStopCode, string> = {
+  unavailable: "Recorded answers aren't available right now, so this test uses your browser's speech recognition — or typing — instead.",
+  limit: "You've reached today's limit for recorded answers, so this test uses your browser's speech recognition — or typing — instead.",
+};
+
+/** Longer than the answer route's 60 s, so a slow transcription isn't cut off and retried twice. */
+const UPLOAD_TIMEOUT_MS = 75_000;
+/** The end screen waits this long for the uploads before offering to stop waiting and type the rest. */
+const UPLOAD_WAIT_OFFER_MS = 60_000;
+/** What an upload stopped by "Stop waiting" reports (the typing step shows it). */
+const WAIT_STOPPED: UploadFailure = { message: "Uploading was taking too long, so it was stopped.", code: "cancelled" };
+/** How long the intro waits for the server's capabilities before using the browser's own recognition. */
+const CAPABILITIES_TIMEOUT_MS = 8000;
 
 const EMPTY_LIVE: LiveTranscript = { final: "", interim: "" };
 const CANCELLED = Symbol("speaking-test-cancelled");
@@ -219,6 +303,8 @@ function sleep(ms: number, signal?: AbortSignal): Promise<void> {
 }
 
 const fmtBand = (b: number) => (Number.isFinite(b) ? b.toFixed(1) : "–");
+/** The saved attempt's result page (answers, recordings, the teacher's review). */
+const speakingResultHref = (testId: string) => `/learning/speaking-test/result/${encodeURIComponent(testId)}`;
 const isStr = (v: unknown): v is string => typeof v === "string";
 const numOr = (v: unknown, fallback: number) => (typeof v === "number" && Number.isFinite(v) ? v : fallback);
 
@@ -257,6 +343,81 @@ function parseResult(data: unknown): SpeakingTestResult | null {
     xpNotes: Array.isArray(d.xpNotes) ? d.xpNotes.filter(isStr) : [],
     outcome: (d.outcome as SpeakingTestResult["outcome"]) ?? null,
     assessedBy: d.assessedBy === "ai" ? "ai" : "heuristic",
+  };
+}
+
+/** GET a JSON endpoint; null on any failure (the runner then keeps its browser-only flow). */
+async function getJson(url: string, signal: AbortSignal): Promise<unknown> {
+  try {
+    const res = await fetch(url, { credentials: "same-origin", cache: "no-store", signal });
+    return res.ok ? await res.json() : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Uploads one recorded answer to /api/speaking/answer (the queue retries what's retryable).
+ * `onStop`: the server stopped taking recordings ("unavailable" / "limit") — never retried.
+ */
+function uploadSender(attemptKey: string, setId: string, onStop: (code: RecordingStopCode) => void) {
+  return async (job: UploadJob, signal: AbortSignal): Promise<UploadAttempt<RecordedAnswer>> => {
+    const form = new FormData();
+    form.append("file", job.blob, job.filename);
+    form.append("attemptKey", attemptKey);
+    form.append("setId", setId);
+    form.append("questionIndex", String(job.index));
+    const ctrl = new AbortController();
+    const onAbort = () => ctrl.abort();
+    signal.addEventListener("abort", onAbort);
+    const timer = setTimeout(() => ctrl.abort(), UPLOAD_TIMEOUT_MS);
+    try {
+      const res = await fetch("/api/speaking/answer", { method: "POST", body: form, credentials: "same-origin", signal: ctrl.signal });
+      const data: unknown = await res.json().catch(() => null);
+      if (res.ok) {
+        const answer = parseRecordedAnswer(data);
+        return answer ? { ok: true, value: answer } : { ok: false, retryable: true, message: "The server's reply couldn't be read." };
+      }
+      const d = (data && typeof data === "object" ? data : {}) as { code?: unknown; retryAfterSec?: unknown };
+      if (stopsRecording(d.code)) {
+        // Transcription is down or today's limit is used up: the rest of the test goes on without recording.
+        onStop(d.code);
+        return { ok: false, retryable: false, message: errorText(data) || "Recorded answers aren't available right now.", code: d.code };
+      }
+      const retryAfter = numOr(d.retryAfterSec, Number(res.headers.get("retry-after")) || 0);
+      return {
+        ok: false,
+        // 4xx (except 408 / 429) won't change on a retry — e.g. 401: sign in again, then "Try again" at the end.
+        retryable: res.status >= 500 || res.status === 408 || res.status === 429,
+        message: errorText(data) || `The answer couldn't be uploaded (error ${res.status}).`,
+        code: isStr(d.code) ? d.code : undefined,
+        retryAfterMs: retryAfter > 0 ? retryAfter * 1000 : undefined,
+      };
+    } catch {
+      return { ok: false, retryable: true, message: "No connection — the answer will upload when you're back online.", code: "network" };
+    } finally {
+      clearTimeout(timer);
+      signal.removeEventListener("abort", onAbort);
+    }
+  };
+}
+
+/** The one line on the intro screen about what happens to the recordings. */
+function recordingNotice(server: SpeakingCapabilities | null): string {
+  if (server?.storeAudio && server.retentionDays > 0) {
+    return `Your answers are recorded and transcribed to assess them. Your teacher can listen to the recordings for ${daysLabel(server.retentionDays)}, then the audio is deleted.`;
+  }
+  return "Your answers are recorded and transcribed to assess them; the audio itself isn't kept.";
+}
+
+/** A saved recording as an answer of this run (resume). */
+function answerFromRecorded(item: TurnItem, rec: RecordedAnswer): SpeakingAnswer {
+  return {
+    part: item.part,
+    question: item.question,
+    transcript: rec.transcript,
+    seconds: Math.round(rec.durationMs / 1000),
+    questionIndex: item.index,
   };
 }
 
@@ -419,6 +580,79 @@ function Notice({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * Microphone input level (recorded mode). Paints straight to the DOM — no
+ * re-render per frame; under reduced motion it updates a few times a second
+ * without easing.
+ */
+function LevelMeter({ recorder, className }: { recorder: AnswerRecorder | null; className?: string }) {
+  const barRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (!recorder) return;
+    const reduced = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+    let interval = 0;
+    let alive = true;
+    const paint = () => {
+      const el = barRef.current;
+      if (el) el.style.transform = `scaleX(${Math.max(0.03, recorder.level()).toFixed(3)})`;
+    };
+    if (reduced) {
+      interval = window.setInterval(paint, 300);
+    } else {
+      const loop = () => {
+        if (!alive) return;
+        paint();
+        raf = window.requestAnimationFrame(loop);
+      };
+      raf = window.requestAnimationFrame(loop);
+    }
+    return () => {
+      alive = false;
+      window.cancelAnimationFrame(raf);
+      window.clearInterval(interval);
+    };
+  }, [recorder]);
+  return (
+    <div className={cn("relative h-2.5 overflow-hidden rounded-full bg-white/10", className)} aria-hidden>
+      <div
+        ref={barRef}
+        className="h-full w-full origin-left rounded-full bg-gradient-to-r from-averna-neon/70 to-averna-cyan/80"
+        style={{ transform: "scaleX(0.03)" }}
+      />
+    </div>
+  );
+}
+
+/** Recorded mode: how the background uploads are doing (shown in the progress bar). */
+function UploadStatus({ uploads }: { uploads: UploadSnapshot<RecordedAnswer> | null }) {
+  if (!uploads || uploads.total === 0) return null;
+  let icon: React.ReactNode;
+  let text: string;
+  let tone = "text-gray-400";
+  if (uploads.retrying) {
+    icon = <RefreshCw className="h-3.5 w-3.5 motion-safe:animate-spin" aria-hidden />;
+    text = "Connection problem — retrying…";
+    tone = "text-amber-200";
+  } else if (uploads.current != null) {
+    icon = <Upload className="h-3.5 w-3.5" aria-hidden />;
+    text = "Saving your answer…";
+  } else if (uploads.failed > 0) {
+    icon = <AlertTriangle className="h-3.5 w-3.5" aria-hidden />;
+    text = `${uploads.failed} ${uploads.failed === 1 ? "answer" : "answers"} not saved yet`;
+    tone = "text-amber-200";
+  } else {
+    icon = <CheckCircle2 className="h-3.5 w-3.5 text-averna-neon" aria-hidden />;
+    text = `${uploads.done} saved`;
+  }
+  return (
+    <span className={cn("inline-flex items-center gap-1.5 text-xs font-medium", tone)}>
+      {icon}
+      {text}
+    </span>
+  );
+}
+
 function ExitLinks() {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
@@ -472,6 +706,15 @@ function ResultView({
             ? "Assessed by Averna's AI examiner from your transcript."
             : "Estimated automatically from your transcript."}
         </p>
+        {result.testId && (
+          <Link
+            href={speakingResultHref(result.testId)}
+            className="glow-hover mt-5 inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-averna-neon/30 bg-averna-neon/[0.07] px-4 text-sm font-semibold text-averna-neon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60"
+          >
+            See full result
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
+        )}
       </section>
 
       <section aria-labelledby="speaking-criteria-title" className="av-panel rounded-2xl p-5 sm:p-6">
@@ -565,17 +808,22 @@ function ResultView({
 // Runner
 // ---------------------------------------------------------------------------
 
-export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }: SpeakingExamRunnerProps) {
+export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, homeworkId }: SpeakingExamRunnerProps) {
   const isMock = mode === "mock";
-  const followUp = set.part2.followUp?.trim() ?? "";
   const longMin = isMock ? TIMING.longMinMock : TIMING.longMinPractice;
-  const total = useMemo(
-    () =>
-      set.part1.reduce((n, t) => n + t.questions.length, 0) + 1 + (set.part2.followUp?.trim() ? 1 : 0) + set.part3.questions.length,
-    [set]
-  );
+  /** Every question in the order the examiner asks it (the server uses the same indices). */
+  const items = useMemo(() => flattenSpeakingQuestions(set), [set]);
+  const total = items.length;
 
   const [caps, setCaps] = useState<Capabilities | null>(null);
+  /** The server's side (/api/speaking/capabilities); null = unknown / unreachable. */
+  const [server, setServer] = useState<SpeakingCapabilities | null>(null);
+  const [serverReady, setServerReady] = useState(false);
+  /** Answers can be recorded here (server transcription + a browser that records). */
+  const [recordable, setRecordable] = useState(false);
+  /** Recorded answers this attempt already has on the server (a reloaded test). */
+  const [resume, setResume] = useState<Map<number, RecordedAnswer> | null>(null);
+  const [uploads, setUploads] = useState<UploadSnapshot<RecordedAnswer> | null>(null);
   const [voiceInfo, setVoiceInfo] = useState<ExaminerVoiceInfo | null>(null);
   const [mic, setMic] = useState<MicState>("unknown");
   const [inputMode, setInputModeState] = useState<InputMode>("speech");
@@ -601,7 +849,16 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
   const [submitError, setSubmitError] = useState("");
   const [result, setResult] = useState<SpeakingTestResult | null>(null);
   /** The route answered "already saved" without the full assessment (retry of a saved attempt). */
-  const [saved, setSaved] = useState<{ outcome: SpeakingTestResult["outcome"] } | null>(null);
+  const [saved, setSaved] = useState<{ testId: string; outcome: SpeakingTestResult["outcome"] } | null>(null);
+  /** The server stopped taking recordings mid-test ("unavailable" / "limit"): not recorded again in this run. */
+  const [stopped, setStopped] = useState<RecordingStopCode | null>(null);
+  /** The stage's notice after recording stopped. */
+  const [serviceNotice, setServiceNotice] = useState<string | null>(null);
+  /** Upload failures at the end: the questions, and what the candidate types for each (question index → text). */
+  const [unsaved, setUnsaved] = useState<number[]>([]);
+  const [drafts, setDrafts] = useState<Record<number, string>>({});
+  /** The end screen has waited UPLOAD_WAIT_OFFER_MS for the uploads: "Stop waiting" is offered. */
+  const [uploadWaitLong, setUploadWaitLong] = useState(false);
 
   const mountedRef = useRef(false);
   const runRef = useRef(0);
@@ -624,11 +881,57 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
   const notesAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const transcriptBoxRef = useRef<HTMLDivElement | null>(null);
   const recognitionLostRef = useRef<(code: RecorderErrorCode) => void>(() => undefined);
+  // Recorded mode.
+  const answerRecorderRef = useRef<AnswerRecorder | null>(null);
+  const queueRef = useRef<UploadQueue<RecordedAnswer> | null>(null);
+  const resumeRef = useRef<Map<number, RecordedAnswer> | null>(null);
+  const recordingLostRef = useRef<(code: RecorderProblem) => void>(() => undefined);
+  const applyUploadRef = useRef<(index: number, value: RecordedAnswer) => void>(() => undefined);
+  /** The microphone came back mid-answer: record again from the next question. */
+  const backToRecordingRef = useRef(false);
+  /** The server stopped taking recordings: never record again in this run. */
+  const stoppedRef = useRef<RecordingStopCode | null>(null);
+  /** Recording stopped while an answer was being recorded: this mode takes over once that answer ends. */
+  const pendingModeRef = useRef<InputMode | null>(null);
+  const recordingStoppedRef = useRef<(code: RecordingStopCode) => void>(() => undefined);
+  /** Answers whose upload ran out of retries on ordinary errors (countsTowardOutage). */
+  const exhaustedRef = useRef<Set<number>>(new Set<number>());
+  const giveUpRef = useRef<(index: number, failure: UploadFailure) => void>(() => undefined);
+  const viewRef = useRef<View>("intro");
+  viewRef.current = view;
 
   const setInputMode = useCallback((m: InputMode) => {
     inputModeRef.current = m;
     setInputModeState(m);
   }, []);
+
+  /** The answer recorder (recorded mode), created on first use. */
+  const ensureRecorder = useCallback((): AnswerRecorder => {
+    let rec = answerRecorderRef.current;
+    if (!rec) {
+      rec = new AnswerRecorder();
+      rec.onProblem((code) => recordingLostRef.current(code));
+      answerRecorderRef.current = rec;
+    }
+    return rec;
+  }, []);
+
+  /** The background upload queue (recorded mode), created with the first recorded answer. */
+  const ensureQueue = useCallback((): UploadQueue<RecordedAnswer> => {
+    let q = queueRef.current;
+    if (!q) {
+      q = new UploadQueue<RecordedAnswer>({
+        send: uploadSender(attemptId, set.id, (code) => recordingStoppedRef.current(code)),
+        onChange: (s) => {
+          if (mountedRef.current) setUploads(s);
+        },
+        onResult: (index, value) => applyUploadRef.current(index, value),
+        onGiveUp: (index, failure) => giveUpRef.current(index, failure),
+      });
+      queueRef.current = q;
+    }
+    return q;
+  }, [attemptId, set.id]);
 
   const announce = useCallback((msg: string) => {
     // Re-announce identical messages (screen readers skip unchanged text).
@@ -662,6 +965,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
       prep.resolve();
     }
     recorderRef.current?.cancel();
+    answerRecorderRef.current?.cancel();
     // Leave a just-primed (silent) utterance alone on the very first start.
     if (wasRunning) stopSpeaking();
   }, []);
@@ -709,6 +1013,63 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
     };
   }, [cancelRun, setInputMode]);
 
+  // Recorded mode: can the server transcribe, and does this attempt already have answers (a reload)?
+  useEffect(() => {
+    let alive = true;
+    const ctrl = new AbortController();
+    const timer = window.setTimeout(() => ctrl.abort(), CAPABILITIES_TIMEOUT_MS);
+    void (async () => {
+      const serverCaps = parseCapabilities(await getJson("/api/speaking/capabilities", ctrl.signal));
+      const canRecord = !!serverCaps?.serverTranscription && isRecordingSupported();
+      // Paused on the server (transcription down, today's limit reached): no recording, but a reloaded
+      // recorded test still keeps its saved answers and continues with the browser's recognition or typing.
+      const canResume = canRecord || !!serverCaps?.paused;
+      let saved: Map<number, RecordedAnswer> | null = null;
+      if (canResume) {
+        const q = new URLSearchParams({ attemptKey: attemptId, setId: set.id });
+        const progress = (await getJson(`/api/speaking/progress?${q.toString()}`, ctrl.signal)) as { answered?: unknown; submitted?: unknown } | null;
+        const list = Array.isArray(progress?.answered) ? progress.answered.map(parseRecordedAnswer) : [];
+        const valid = list.filter((a): a is RecordedAnswer => a !== null && a.questionIndex < total);
+        if (valid.length && progress?.submitted !== true) saved = new Map(valid.map((a) => [a.questionIndex, a]));
+      }
+      if (!alive) return;
+      window.clearTimeout(timer);
+      setServer(serverCaps);
+      if (canRecord) {
+        setRecordable(true);
+        setInputMode("recorded");
+      }
+      if (saved) {
+        resumeRef.current = saved;
+        setResume(saved);
+      }
+      setServerReady(true);
+    })();
+    return () => {
+      alive = false;
+      ctrl.abort();
+      window.clearTimeout(timer);
+    };
+  }, [attemptId, set.id, total, setInputMode]);
+
+  // Recorded mode: drop the microphone and pending uploads when the runner goes away; retry as soon as we're back online.
+  useEffect(() => {
+    const onOnline = () => {
+      const q = queueRef.current;
+      if (!q) return;
+      q.nudge();
+      q.retryFailed((f) => f.code === "network"); // uploads that gave up while offline
+    };
+    window.addEventListener("online", onOnline);
+    return () => {
+      window.removeEventListener("online", onOnline);
+      queueRef.current?.dispose();
+      queueRef.current = null;
+      answerRecorderRef.current?.dispose();
+      answerRecorderRef.current = null;
+    };
+  }, []);
+
   // Full-screen stage: lock the page behind it.
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -724,6 +1085,14 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
     const id = window.setInterval(() => setNow(Date.now()), 250);
     return () => window.clearInterval(id);
   }, [view]);
+
+  // The end screen's wait for the uploads: after about a minute, offer to stop waiting and type the rest.
+  useEffect(() => {
+    setUploadWaitLong(false);
+    if (submitState !== "uploading") return;
+    const id = window.setTimeout(() => setUploadWaitLong(true), UPLOAD_WAIT_OFFER_MS);
+    return () => window.clearTimeout(id);
+  }, [submitState]);
 
   const inProgress = view === "test" || (view === "end" && submitState !== "submitted" && submitState !== "empty");
   useLeaveGuard(inProgress);
@@ -792,7 +1161,110 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
     announce("Speech transcription stopped. Type your answers for the rest of the test.");
   };
 
+  // Recorded mode: the microphone went away → keep going by typing (recorded answers are kept).
+  recordingLostRef.current = (code: RecorderProblem) => {
+    const state: MicState = code === "not-allowed" ? "blocked" : code === "no-device" ? "missing" : code === "busy" ? "busy" : "failed";
+    if (viewRef.current !== "test") {
+      // Before the test: just show the problem on the microphone check.
+      if (inputModeRef.current === "recorded") setMic(state);
+      return;
+    }
+    if (inputModeRef.current !== "recorded") return;
+    setInputMode("typed");
+    setMic(state);
+    setMicIssue(RECORDING_LOST[code] ?? RECORDING_LOST.unknown);
+    const turn = turnRef.current;
+    if (turn && !turn.ending && turn.recorded) {
+      answerRecorderRef.current?.cancel();
+      turn.typedFallback = true;
+      typedRef.current = "";
+      setTyped("");
+    }
+    announce("Recording stopped. Type your answers for now — the answers already recorded are kept.");
+  };
+
+  /** After recording stopped: the browser's own speech recognition when it has one, otherwise typing. */
+  const fallbackMode = (): InputMode => (recorderRef.current ? "speech" : "typed");
+
+  // Recorded mode: the server stopped taking recordings (transcription unavailable, or today's limit
+  // reached) → the rest of the test uses the browser's recognition or typing; answers whose upload
+  // failed can be typed at the end. An answer being recorded right now finishes as a recording.
+  recordingStoppedRef.current = (code: RecordingStopCode) => {
+    if (stoppedRef.current) return;
+    stoppedRef.current = code;
+    setStopped(code);
+    setRecordable(false); // no way back to recording in this run ("Try my microphone again" hides)
+    backToRecordingRef.current = false;
+    if (viewRef.current !== "test" || inputModeRef.current !== "recorded") return;
+    const next = fallbackMode();
+    const turn = turnRef.current;
+    if (turn && !turn.ending && turn.recorded && !turn.typedFallback) {
+      pendingModeRef.current = next;
+    } else {
+      pendingModeRef.current = null;
+      answerRecorderRef.current?.release();
+      setInputMode(next);
+    }
+    setServiceNotice(`${STOPPED_WHY[code]} ${RECORDING_STOPPED[next === "speech" ? "speech" : "typed"]}`);
+    announce(
+      next === "speech"
+        ? "Recording stopped. From the next question your browser transcribes your answers."
+        : "Recording stopped. From the next question, type your answers."
+    );
+  };
+
+  // Recorded mode: an answer's upload ran out of retries on ordinary errors (5xx, timeouts, the network
+  // while online). After OUTAGE_AFTER_EXHAUSTED of them the server can't take recordings right now — a plain
+  // transcription outage: the rest of the test goes on as for "unavailable" (the queued answers keep retrying).
+  giveUpRef.current = (index: number, failure: UploadFailure) => {
+    const online = typeof navigator === "undefined" || navigator.onLine !== false;
+    if (!countsTowardOutage(failure, online)) return;
+    exhaustedRef.current.add(index);
+    if (exhaustedRef.current.size >= OUTAGE_AFTER_EXHAUSTED) recordingStoppedRef.current("unavailable");
+  };
+
+  // An uploaded answer's server transcript and measured duration replace the placeholders.
+  applyUploadRef.current = (index: number, value: RecordedAnswer) => {
+    let changed = false;
+    answersRef.current = answersRef.current.map((a) => {
+      if (a.questionIndex !== index || a.typed) return a;
+      changed = true;
+      return { ...a, transcript: value.transcript, seconds: Math.round(value.durationMs / 1000) };
+    });
+    if (changed && mountedRef.current) setAnswers(answersRef.current);
+  };
+
+  /** Recorded mode: open the microphone (asks for permission the first time). */
+  const openRecorder = useCallback(async (): Promise<boolean> => {
+    const rec = ensureRecorder();
+    rec.primeAudio(); // synchronous part of a click: lets iOS Safari run the level meter
+    if (rec.isOpen) {
+      setMic("ready");
+      return true;
+    }
+    setMic("checking");
+    try {
+      await rec.open();
+      if (mountedRef.current) setMic("ready");
+      return true;
+    } catch (err) {
+      if (!mountedRef.current) return false;
+      const code = recorderProblemOf(err);
+      if (code === "not-supported") {
+        // This browser can't record after all: its own speech recognition, or typing.
+        const recognition = isRecognitionSupported();
+        setRecordable(false);
+        setInputMode(recognition ? "speech" : "typed");
+        setMic("unknown");
+        return false;
+      }
+      setMic(code === "not-allowed" ? "blocked" : code === "no-device" ? "missing" : code === "busy" ? "busy" : "failed");
+      return false;
+    }
+  }, [ensureRecorder, setInputMode]);
+
   const checkMic = useCallback(async (): Promise<boolean> => {
+    if (inputModeRef.current === "recorded") return openRecorder();
     const md = typeof navigator !== "undefined" ? navigator.mediaDevices : undefined;
     if (!md || typeof md.getUserMedia !== "function") {
       setMic("unsupported");
@@ -815,7 +1287,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
       if (mountedRef.current) setMic(state);
       return false;
     }
-  }, []);
+  }, [openRecorder]);
 
   // -- the conversation -------------------------------------------------------
 
@@ -835,21 +1307,43 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
         seconds = r.seconds;
         spoken = r.transcript;
       }
+      const answerRecorder = answerRecorderRef.current;
+      const take: RecordedTake | null =
+        turn.recorded && !turn.typedFallback && answerRecorder ? await answerRecorder.stop() : null;
+      if (take && take.durationMs > 0) seconds = Math.round(take.durationMs / 1000);
       if (turnRef.current !== turn) return; // cancelled while the recorder was stopping
       turnRef.current = null;
-      const transcript = (!turn.recording || turn.typedFallback ? typedRef.current : spoken).trim();
+      const pendingMode = pendingModeRef.current;
+      if (pendingMode) {
+        // Recording stopped during this answer: it ends as a recording; the next question uses the browser's mode.
+        pendingModeRef.current = null;
+        answerRecorderRef.current?.release();
+        setInputMode(pendingMode);
+      } else if (backToRecordingRef.current) {
+        backToRecordingRef.current = false;
+        setInputMode("recorded");
+      }
+      const typedAnswer = (!turn.recording && !turn.recorded) || turn.typedFallback;
+      // A recorded answer's transcript arrives with its upload (applyUploadRef).
+      const transcript = (typedAnswer ? typedRef.current : turn.recorded ? "" : spoken).trim();
+      const index = turn.item.index;
       const answer: SpeakingAnswer = {
         part: turn.item.part,
         question: turn.item.question,
         transcript,
         seconds: Math.max(0, Math.min(turn.max, seconds)),
+        questionIndex: index,
+        ...(typedAnswer ? { typed: true } : {}),
       };
-      answersRef.current = [...answersRef.current, answer];
+      answersRef.current = [...answersRef.current.filter((a) => a.questionIndex !== index), answer];
       setAnswers(answersRef.current);
+      if (take && take.blob.size > 0) {
+        ensureQueue().enqueue({ index, blob: take.blob, filename: `q${index}.${extensionForMime(take.mimeType)}` });
+      }
       if (reason === "timeout") announce(turn.item.kind === "long" ? "Time is up." : "Time is up for this answer.");
       turn.resolve(reason);
     },
-    [announce]
+    [announce, ensureQueue, setInputMode]
   );
 
   const endPrep = useCallback(() => {
@@ -897,7 +1391,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
       const res = await fetch("/api/learning/speaking/test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...submission, submissionId: attemptId }),
+        body: JSON.stringify({ ...submission, submissionId: attemptId, ...(homeworkId ? { homeworkId } : {}) }),
       });
       const data: unknown = await res.json().catch(() => null);
       if (!res.ok) {
@@ -908,7 +1402,8 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
       if (parsed) {
         setResult(parsed);
       } else if (data && typeof data === "object" && isStr((data as { testId?: unknown }).testId)) {
-        setSaved({ outcome: (data as { outcome?: SpeakingTestResult["outcome"] }).outcome ?? null });
+        const d = data as { testId: string; outcome?: SpeakingTestResult["outcome"] };
+        setSaved({ testId: d.testId, outcome: d.outcome ?? null });
       } else {
         throw new Error("We couldn't read the assessment. Try again — your answers are safe.");
       }
@@ -921,20 +1416,115 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
     } finally {
       submittingRef.current = false;
     }
-  }, [attemptId]);
+  }, [attemptId, homeworkId]);
+
+  /** What gets submitted: the answers in question order (recorded ones with the server's transcripts). */
+  const buildSubmission = (recorded: boolean): SpeakingTestSubmission => {
+    const results = queueRef.current?.snapshot().results;
+    const list = answersRef.current
+      .map((a) => {
+        const r = a.questionIndex != null && !a.typed ? results?.get(a.questionIndex) : undefined;
+        return r ? { ...a, transcript: r.transcript, seconds: Math.round(r.durationMs / 1000) } : a;
+      })
+      .sort((x, y) => (x.questionIndex ?? 0) - (y.questionIndex ?? 0));
+    // Nothing of this attempt reached the server (recording stopped before the first answer was saved):
+    // the answers are the browser's own, so say how they were given.
+    const stored = (results?.size ?? 0) > 0 || (resumeRef.current?.size ?? 0) > 0;
+    const own: InputMode = inputModeRef.current === "recorded" ? "typed" : inputModeRef.current;
+    return {
+      setId: set.id,
+      answers: list,
+      totalSeconds: list.reduce((sum, a) => sum + a.seconds, 0),
+      inputMode: recorded && stored ? "recorded" : own,
+    };
+  };
+
+  /** Recorded answers: wait for the uploads (the server marks what it transcribed), then submit. */
+  const finishRecorded = async () => {
+    const queue = queueRef.current;
+    if (queue) {
+      setSubmitState("uploading");
+      setSubmitError("");
+      const snap = await queue.whenIdle();
+      if (!mountedRef.current) return;
+      if (snap.failed > 0) {
+        const first = snap.failures.values().next().value;
+        const failed = Array.from<number>(snap.failures.keys()).sort((a, b) => a - b);
+        // Each failed answer can be typed; prefilled with whatever this page has for it (a browser transcript).
+        setDrafts((prev: Record<number, string>) => {
+          const next = { ...prev };
+          for (const i of failed) {
+            if (next[i] == null) next[i] = answersRef.current.find((a) => a.questionIndex === i)?.transcript ?? "";
+          }
+          return next;
+        });
+        setUnsaved(failed);
+        setSubmitError(first?.message ?? "");
+        setSubmitState("upload-failed");
+        return;
+      }
+    }
+    submissionRef.current = buildSubmission(true);
+    queue?.dispose(); // the answers are final now: no late retries
+    void submit();
+  };
+
+  /** Upload failures that another try could fix (not "unavailable" / "limit", nor a question whose takes are used up). */
+  const retryUploads = () => {
+    queueRef.current?.retryFailed((f) => uploadRetryCanHelp(f.code));
+    void finishRecorded();
+  };
+
+  /**
+   * The end screen has waited a long time (a transcription outage, a hanging connection): stop the uploads
+   * still pending. finishRecorded's wait ends, and every answer that isn't saved yet goes to the typing step
+   * ("Try uploading again" can still send them).
+   */
+  const stopWaiting = () => {
+    queueRef.current?.cancelPending(WAIT_STOPPED);
+  };
+
+  /** Upload failures: what the candidate typed stands in for those answers (an empty box = unanswered), then submit. */
+  const submitWithTyped = () => {
+    const typedFor = new Map<number, string>(unsaved.map((i: number): [number, string] => [i, String(drafts[i] ?? "").trim()]));
+    answersRef.current = answersRef.current.map((a) => {
+      const text = a.questionIndex != null ? typedFor.get(a.questionIndex) : undefined;
+      return text ? { ...a, transcript: text.slice(0, 4000), typed: true } : a;
+    });
+    setAnswers(answersRef.current);
+    submissionRef.current = buildSubmission(true);
+    queueRef.current?.dispose();
+    void submit();
+  };
 
   const finishTest = () => {
     setActivity({ kind: "idle" });
     setCardVisible(false);
-    const list = answersRef.current;
-    submissionRef.current = {
-      setId: set.id,
-      answers: list,
-      totalSeconds: list.reduce((sum, a) => sum + a.seconds, 0),
-      inputMode: inputModeRef.current,
-    };
     setView("end");
+    // Any answer recorded in this attempt (even if the microphone was lost later): the recorded path.
+    if (inputModeRef.current === "recorded" || queueRef.current || resumeRef.current?.size) {
+      answerRecorderRef.current?.release(); // the microphone is no longer needed
+      void finishRecorded();
+      return;
+    }
+    submissionRef.current = buildSubmission(false);
     void submit();
+  };
+
+  /** A reloaded recorded test whose every answer is already saved: straight to the submission. */
+  const finishFromSaved = () => {
+    const saved = resumeRef.current;
+    if (!saved) return;
+    answersRef.current = items.filter((i) => saved.has(i.index)).map((i) => answerFromRecorded(i, saved.get(i.index) as RecordedAnswer));
+    setAnswers(answersRef.current);
+    submissionRef.current = null;
+    setResult(null);
+    setSaved(null);
+    setSubmitState("idle");
+    setSubmitError("");
+    setPart(3);
+    setAsked(total);
+    finishTest();
   };
 
   /** The examiner says one line (or, without a voice, it stays on screen long enough to read). */
@@ -949,11 +1539,30 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
     }
   };
 
+  /** Recorded mode: make sure the microphone is still open before the candidate's turn (reopened once if it went away). */
+  const prepareTurn = async (): Promise<void> => {
+    if (inputModeRef.current !== "recorded") return;
+    const rec = answerRecorderRef.current;
+    if (!rec) {
+      recordingLostRef.current("unknown");
+      return;
+    }
+    if (rec.isOpen) return;
+    try {
+      await rec.open();
+    } catch (err) {
+      recordingLostRef.current(recorderProblemOf(err));
+    }
+  };
+
   /** The candidate's turn: records (or takes typing) until Next or the time limit. */
   const answerTurn = (item: TurnItem, min: number, max: number) =>
     new Promise<EndReason>((resolve) => {
       const recorder = recorderRef.current;
-      const speech = inputModeRef.current === "speech" && recorder !== null;
+      const mode = inputModeRef.current;
+      const speech = mode === "speech" && recorder !== null;
+      const answerRecorder = answerRecorderRef.current;
+      const recorded = mode === "recorded" && answerRecorder !== null && answerRecorder.start();
       typedRef.current = "";
       setTyped("");
       liveRef.current = EMPTY_LIVE;
@@ -966,6 +1575,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
         min,
         max,
         recording: speech,
+        recorded,
         typedFallback: false,
         ending: false,
         timer: null,
@@ -973,11 +1583,13 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
       };
       turnRef.current = handle;
       if (speech && recorder) recorder.start();
+      // The recorder couldn't start: this answer (and the next ones) are typed.
+      if (mode === "recorded" && !recorded) recordingLostRef.current("unknown");
       handle.timer = setTimeout(() => void endTurn("timeout"), max * 1000);
       setNow(startedAt);
       setActivity({ kind: "turn", item, startedAt, min, max });
       // Keep it short while the microphone is open: a screen reader on speakers would be transcribed.
-      announce(speech ? "Your turn." : "Your turn. Type what you would say.");
+      announce(speech || recorded ? "Your turn." : "Your turn. Type what you would say.");
     });
 
   const prepTime = (seconds: number) =>
@@ -1002,59 +1614,87 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
       return value;
     }
 
-    answersRef.current = [];
-    setAnswers([]);
+    // A reloaded recorded test keeps what's already saved and asks only the rest.
+    const saved = resumeRef.current;
+    const done = (i: TurnItem) => !!saved?.has(i.index);
+    const prefilled = saved ? items.filter(done).map((i) => answerFromRecorded(i, saved.get(i.index) as RecordedAnswer)) : [];
+    const resumed = prefilled.length > 0;
+    const firstOpen = items.find((i) => !done(i));
+
+    answersRef.current = prefilled;
+    setAnswers(prefilled);
     submissionRef.current = null;
+    backToRecordingRef.current = false;
+    pendingModeRef.current = null;
     markRef.current = "";
     setNotes("");
     setTyped("");
     setLive(EMPTY_LIVE);
     setMicIssue(null);
+    setServiceNotice(null);
+    setUnsaved([]);
+    setDrafts({});
     setResult(null);
     setSaved(null);
     setSubmitState("idle");
     setSubmitError("");
     setCardVisible(false);
-    setPart(1);
-    setAsked(0);
+    setPart(firstOpen?.part ?? 1);
+    setAsked(firstOpen ? firstOpen.index : 0);
     setActivity({ kind: "idle" });
     setView("test");
 
-    let n = 0;
     const ask = async (item: TurnItem, min: number, max: number) => {
-      setAsked(n + 1);
+      setAsked(item.index + 1);
       await step(say(item.question, signal));
+      await step(prepareTurn());
       await step(answerTurn(item, min, max));
-      n++;
     };
 
     try {
       await step(sleep(500, signal));
+      if (resumed) await step(say(LINES.welcomeBack, signal));
 
       // Part 1 — introduction and interview.
-      await step(say(`${greeting()} ${LINES.part1}`, signal));
-      for (const topic of set.part1) {
-        await step(say(LINES.topic(inSentence(topic.topic)), signal));
-        for (const q of topic.questions) await ask({ part: 1, question: q, kind: "short" }, TIMING.minAnswer, TIMING.part1Max);
+      const part1 = items.filter((i) => i.part === 1 && !done(i));
+      if (part1.length) {
+        setPart(1);
+        if (!resumed) await step(say(`${greeting()} ${LINES.part1}`, signal));
+        for (let t = 0; t < set.part1.length; t++) {
+          const questions = part1.filter((i) => i.topicIndex === t);
+          if (!questions.length) continue;
+          await step(say(LINES.topic(inSentence(set.part1[t].topic)), signal));
+          for (const q of questions) await ask(q, TIMING.minAnswer, TIMING.part1Max);
+        }
       }
 
-      // Part 2 — the long turn.
-      setPart(2);
-      await step(say(LINES.part2, signal));
-      setAsked(n + 1);
-      setCardVisible(true);
-      await step(prepTime(TIMING.prep));
-      await step(say(LINES.part2Go, signal));
-      await step(answerTurn({ part: 2, question: set.part2.cue, kind: "long" }, longMin, TIMING.longMax));
-      n++;
-      await step(say(LINES.part2Stop, signal));
-      setCardVisible(false);
-      if (followUp) await ask({ part: 2, question: followUp, kind: "followUp" }, TIMING.minAnswer, TIMING.followUpMax);
+      // Part 2 — the long turn (a resumed test that stopped before it gets the preparation minute again).
+      const cue = items.find((i) => i.kind === "long");
+      const follow = items.find((i) => i.kind === "followUp");
+      if (cue && !done(cue)) {
+        setPart(2);
+        await step(say(LINES.part2, signal));
+        setAsked(cue.index + 1);
+        setCardVisible(true);
+        await step(prepTime(TIMING.prep));
+        await step(say(LINES.part2Go, signal));
+        await step(prepareTurn());
+        await step(answerTurn(cue, longMin, TIMING.longMax));
+        await step(say(LINES.part2Stop, signal));
+        setCardVisible(false);
+      }
+      if (follow && !done(follow)) {
+        setPart(2);
+        await ask(follow, TIMING.minAnswer, TIMING.followUpMax);
+      }
 
       // Part 3 — discussion.
-      setPart(3);
-      await step(say(LINES.part3(inSentence(set.part3.theme)), signal));
-      for (const q of set.part3.questions) await ask({ part: 3, question: q, kind: "short" }, TIMING.minAnswer, TIMING.part3Max);
+      const part3 = items.filter((i) => i.part === 3 && !done(i));
+      if (part3.length) {
+        setPart(3);
+        await step(say(LINES.part3(inSentence(set.part3.theme)), signal));
+        for (const q of part3) await ask(q, TIMING.minAnswer, TIMING.part3Max);
+      }
 
       await step(say(LINES.end, signal));
       finishTest();
@@ -1069,14 +1709,32 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
       prepRef.current = null;
       if (prep) clearTimeout(prep.timer);
       recorderRef.current?.cancel();
+      answerRecorderRef.current?.cancel();
       stopSpeaking();
       finishTest();
     }
   };
 
   const onStart = async () => {
-    if (starting || !caps) return;
+    if (starting || !caps || !serverReady) return;
     primeSpeech(); // must run inside the click: lets iOS Safari speak later
+    const saved = resumeRef.current;
+    if (saved && items.every((i) => saved.has(i.index))) {
+      finishFromSaved(); // a reload after the last answer: nothing left to ask
+      return;
+    }
+    if (inputModeRef.current === "recorded") {
+      ensureRecorder().primeAudio(); // also inside the click: the level meter's audio context (iOS Safari)
+      if (!answerRecorderRef.current?.isOpen) {
+        setStarting(true);
+        const ok = await openRecorder();
+        if (!mountedRef.current) return;
+        setStarting(false);
+        if (!ok) return;
+      }
+      void runTest();
+      return;
+    }
     if (inputModeRef.current === "speech" && caps.media && mic !== "ready") {
       setStarting(true);
       const ok = await checkMic();
@@ -1092,6 +1750,21 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
     answersRef.current = [];
     setAnswers([]);
     submissionRef.current = null;
+    // A fresh run of the same attempt: every question is asked (and recorded) again.
+    resumeRef.current = null;
+    setResume(null);
+    queueRef.current?.dispose();
+    queueRef.current = null;
+    setUploads(null);
+    exhaustedRef.current = new Set<number>();
+    // Recording stopped on the server's word (and the run ended before the switch took effect): don't record again.
+    pendingModeRef.current = null;
+    if (stoppedRef.current && inputModeRef.current === "recorded") {
+      answerRecorderRef.current?.release();
+      setInputMode(fallbackMode());
+    }
+    // The microphone was released at the end of the run: check it again on the intro.
+    if (inputModeRef.current === "recorded" && !answerRecorderRef.current?.isOpen) setMic("unknown");
     setSubmitState("idle");
     setSubmitError("");
     setResult(null);
@@ -1111,11 +1784,31 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
     if (mountedRef.current) setSoundChecking(false);
   };
 
-  const switchToTyping = () => setInputMode("typed");
+  const switchToTyping = () => {
+    answerRecorderRef.current?.release();
+    setInputMode("typed");
+  };
   const switchToMicrophone = async () => {
-    setInputMode("speech");
     setMicIssue(null);
+    if (recordable && !stoppedRef.current) {
+      setInputMode("recorded");
+      await openRecorder();
+      return;
+    }
+    setInputMode("speech");
     if (caps?.media) await checkMic();
+  };
+
+  /** Mid-test, after the microphone was lost: try it again (the next answer is recorded if it works). */
+  const reconnectMicrophone = async () => {
+    if (stoppedRef.current) return; // the server stopped taking recordings: typing (or recognition) it is
+    const ok = await openRecorder();
+    if (!ok || !mountedRef.current || stoppedRef.current) return;
+    setMicIssue(null);
+    announce("Microphone on again. Your next answer will be recorded.");
+    // An answer being typed right now stays typed; recording resumes with the next question.
+    if (turnRef.current) backToRecordingRef.current = true;
+    else setInputMode("recorded");
   };
 
   const confirmExit = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -1129,6 +1822,13 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
   const answeredCount = answers.filter((a) => a.transcript.trim()).length;
   const speakingSeconds = answers.reduce((s, a) => s + a.seconds, 0);
   const typedMode = inputMode === "typed";
+  const recordedMode = inputMode === "recorded";
+  /** Recorded answers are off for now: paused on the server, or stopped during this run. */
+  const pausedReason: RecordingStopCode | null = stopped ?? server?.paused ?? null;
+  /** Recorded answers already saved for this attempt (a reloaded test). */
+  const savedCount = resume ? items.filter((i) => resume.has(i.index)).length : 0;
+  const allSaved = savedCount > 0 && savedCount >= total;
+  const firstUnsaved = resume ? items.find((i) => !resume.has(i.index)) : undefined;
 
   const orb: OrbState =
     activity.kind === "examiner"
@@ -1158,26 +1858,82 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
 
   // -- screens ------------------------------------------------------------------
 
+  const renderMicProblem = (state: "blocked" | "missing" | "busy" | "failed") => {
+    const p = MIC_PROBLEM[state];
+    return (
+      <div role="alert" className="error-surface flex items-start gap-3 rounded-xl p-4">
+        <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400" aria-hidden />
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-semibold text-red-200">{p.title}</p>
+          <p className="mt-0.5 text-sm text-red-100/80">{p.detail}</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => void checkMic()}
+              className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-red-400/40 px-4 text-sm font-medium text-red-200 transition hover:bg-red-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/60"
+            >
+              <RotateCcw className="h-4 w-4" aria-hidden /> Check again
+            </button>
+            <button
+              type="button"
+              onClick={switchToTyping}
+              className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-white/15 px-4 text-sm font-medium text-gray-200 transition hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60"
+            >
+              <Keyboard className="h-4 w-4" aria-hidden /> Type my answers instead
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const renderMicCheck = () => {
-    if (!caps) {
+    if (!caps || !serverReady) {
       return (
         <p className="flex min-h-[44px] items-center gap-2 text-sm text-gray-400" role="status">
           <Loader2 className="h-4 w-4 motion-safe:animate-spin" aria-hidden /> Checking your browser…
         </p>
       );
     }
-    if (!caps.recognition) {
+    if (recordedMode) {
+      if (mic === "blocked" || mic === "missing" || mic === "busy" || mic === "failed") return renderMicProblem(mic);
       return (
-        <div className="flex items-start gap-3 rounded-xl border border-amber-300/30 bg-amber-400/10 p-4">
-          <Keyboard className="mt-0.5 h-5 w-5 shrink-0 text-amber-200" aria-hidden />
-          <div className="min-w-0">
-            <p className="text-sm font-semibold text-amber-100">{TYPED_FALLBACK}</p>
-            <p className="mt-1 text-sm text-amber-100/80">For spoken answers, open this test in Google Chrome or Microsoft Edge.</p>
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+          <div className="flex flex-wrap items-center gap-3">
+            {mic === "ready" ? (
+              <CheckCircle2 className="h-5 w-5 shrink-0 text-averna-neon" aria-hidden />
+            ) : mic === "checking" ? (
+              <Loader2 className="h-5 w-5 shrink-0 text-gray-300 motion-safe:animate-spin" aria-hidden />
+            ) : (
+              <Mic className="h-5 w-5 shrink-0 text-gray-300" aria-hidden />
+            )}
+            <div className="min-w-0 flex-1" role="status">
+              <p className="text-sm font-medium text-white">
+                {mic === "ready" ? "Microphone ready" : mic === "checking" ? "Waiting for microphone permission…" : "Microphone"}
+              </p>
+              <p className="text-xs text-gray-400">
+                {mic === "ready"
+                  ? "Say something — the bar below moves when we can hear you."
+                  : "Allow the microphone so your answers can be recorded."}
+              </p>
+            </div>
+            {(mic === "unknown" || mic === "checking") && (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => void checkMic()}
+                disabled={mic === "checking"}
+                className="min-h-[44px] rounded-lg border-white/15 bg-transparent text-gray-200 hover:bg-white/5 hover:text-white"
+              >
+                Check microphone
+              </Button>
+            )}
           </div>
+          {mic === "ready" && <LevelMeter recorder={answerRecorderRef.current} className="mt-3" />}
         </div>
       );
     }
-    if (typedMode) {
+    if (typedMode && (recordable || caps.recognition)) {
       return (
         <div className="flex flex-wrap items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
           <Keyboard className="h-5 w-5 shrink-0 text-gray-300" aria-hidden />
@@ -1193,34 +1949,18 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
         </div>
       );
     }
-    if (mic === "blocked" || mic === "missing" || mic === "busy") {
-      const p = MIC_PROBLEM[mic];
+    if (!caps.recognition) {
       return (
-        <div role="alert" className="error-surface flex items-start gap-3 rounded-xl p-4">
-          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400" aria-hidden />
-          <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-red-200">{p.title}</p>
-            <p className="mt-0.5 text-sm text-red-100/80">{p.detail}</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => void checkMic()}
-                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-red-400/40 px-4 text-sm font-medium text-red-200 transition hover:bg-red-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/60"
-              >
-                <RotateCcw className="h-4 w-4" aria-hidden /> Check again
-              </button>
-              <button
-                type="button"
-                onClick={switchToTyping}
-                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-white/15 px-4 text-sm font-medium text-gray-200 transition hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60"
-              >
-                <Keyboard className="h-4 w-4" aria-hidden /> Type my answers instead
-              </button>
-            </div>
+        <div className="flex items-start gap-3 rounded-xl border border-amber-300/30 bg-amber-400/10 p-4">
+          <Keyboard className="mt-0.5 h-5 w-5 shrink-0 text-amber-200" aria-hidden />
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-amber-100">{TYPED_FALLBACK}</p>
+            <p className="mt-1 text-sm text-amber-100/80">For spoken answers, open this test in Google Chrome or Microsoft Edge.</p>
           </div>
         </div>
       );
     }
+    if (mic === "blocked" || mic === "missing" || mic === "busy" || mic === "failed") return renderMicProblem(mic);
     return (
       <div className="flex flex-wrap items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
         {mic === "ready" ? (
@@ -1329,6 +2069,12 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
               ? "After each question your answer box opens by itself — press Next when you've finished."
               : "Recording starts by itself after each question — press Next (or Space / Enter) when you've finished."}
           </li>
+          {recordedMode && (
+            <li className="flex gap-2.5">
+              <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-averna-cyan" aria-hidden />
+              {recordingNotice(server)}
+            </li>
+          )}
           <li className="flex gap-2.5">
             <Info className="mt-0.5 h-4 w-4 shrink-0 text-averna-cyan" aria-hidden />
             The examiner can&apos;t answer questions or explain words — just give your best answer.
@@ -1342,30 +2088,55 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
         </ul>
       </div>
 
-      <div className="av-panel rounded-2xl p-5 sm:p-6">
-        <h2 className="text-sm font-semibold text-white">Before you start</h2>
-        <div className="mt-3 space-y-3">
-          {renderMicCheck()}
-          {renderVoiceCheck()}
+      {savedCount > 0 && (
+        <div role="status" className="flex items-start gap-3 rounded-2xl border border-averna-neon/25 bg-averna-neon/[0.06] p-4 text-left sm:p-5">
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-averna-neon" aria-hidden />
+          <div className="min-w-0">
+            <p className="font-semibold text-white">
+              {allSaved ? "All your answers are saved." : `Welcome back — ${savedCount} of ${total} answers are saved.`}
+            </p>
+            <p className="mt-0.5 text-sm text-gray-300">
+              {allSaved
+                ? "Submit them to get your result."
+                : firstUnsaved
+                  ? `The test continues from question ${firstUnsaved.index + 1} (Part ${firstUnsaved.part})${
+                      firstUnsaved.kind === "long" ? ", with a new minute to prepare your task card" : ""
+                    }.`
+                  : "The test continues where it stopped."}
+            </p>
+          </div>
         </div>
-      </div>
+      )}
+
+      {!allSaved && (
+        <div className="av-panel rounded-2xl p-5 sm:p-6">
+          <h2 className="text-sm font-semibold text-white">Before you start</h2>
+          <div className="mt-3 space-y-3">
+            {pausedReason && !recordedMode && <Notice>{RECORDING_PAUSED[pausedReason]}</Notice>}
+            {renderMicCheck()}
+            {renderVoiceCheck()}
+          </div>
+        </div>
+      )}
 
       <div className="flex justify-stretch sm:justify-end">
         <Button
           type="button"
           size="lg"
           onClick={() => void onStart()}
-          disabled={!caps || starting}
+          disabled={!caps || !serverReady || starting}
           className="glow-cta min-h-[52px] w-full rounded-xl bg-averna-primary px-8 text-base font-semibold text-white hover:bg-averna-light sm:w-auto"
         >
           {starting ? (
             <Loader2 className="mr-2 h-5 w-5 motion-safe:animate-spin" aria-hidden />
+          ) : allSaved ? (
+            <ArrowRight className="mr-2 h-5 w-5" aria-hidden />
           ) : typedMode ? (
             <Keyboard className="mr-2 h-5 w-5" aria-hidden />
           ) : (
             <Mic className="mr-2 h-5 w-5" aria-hidden />
           )}
-          Start Speaking Test
+          {allSaved ? "Submit My Answers" : savedCount > 0 ? "Continue the Test" : "Start Speaking Test"}
         </Button>
       </div>
     </section>
@@ -1389,10 +2160,28 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
         </h1>
         {activity.kind === "prep" && <p className="mt-1 text-sm text-gray-400">{formatClock(prepLeft)} to think about what you&apos;re going to say</p>}
 
-        {(voiceIssue || micIssue) && (
+        {(voiceIssue || micIssue || serviceNotice) && (
           <div className="mt-5 w-full space-y-2">
             {voiceIssue && <Notice>{voiceIssue}</Notice>}
+            {serviceNotice && <Notice>{serviceNotice}</Notice>}
             {micIssue && <Notice>{micIssue}</Notice>}
+            {micIssue && recordable && typedMode && (
+              <div className="flex justify-start">
+                <button
+                  type="button"
+                  onClick={() => void reconnectMicrophone()}
+                  disabled={mic === "checking"}
+                  className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-white/15 px-4 text-sm font-medium text-gray-200 transition hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 disabled:opacity-60"
+                >
+                  {mic === "checking" ? (
+                    <Loader2 className="h-4 w-4 motion-safe:animate-spin" aria-hidden />
+                  ) : (
+                    <Mic className="h-4 w-4" aria-hidden />
+                  )}
+                  Try my microphone again
+                </button>
+              </div>
+            )}
           </div>
         )}
 
@@ -1442,7 +2231,20 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
           </div>
         )}
 
-        {turn && !typedMode && showTranscript && (
+        {turn && recordedMode && (
+          <div className="mt-5 w-full rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-left">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-red-200">
+                <span className="h-2 w-2 rounded-full bg-red-400 motion-safe:animate-pulse" aria-hidden />
+                Recording
+              </span>
+              <LevelMeter recorder={answerRecorderRef.current} className="flex-1" />
+            </div>
+            <p className="mt-2 text-xs text-gray-400">Speak clearly — your answer is transcribed after you finish.</p>
+          </div>
+        )}
+
+        {turn && inputMode === "speech" && showTranscript && (
           <div className="mt-5 w-full text-left">
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Live transcript</p>
             <div
@@ -1462,7 +2264,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
           </div>
         )}
 
-        {turn && !typedMode && reconnecting && (
+        {turn && inputMode === "speech" && reconnecting && (
           <p className="mt-3 flex items-center gap-2 text-xs text-amber-200" role="status">
             <Loader2 className="h-3.5 w-3.5 motion-safe:animate-spin" aria-hidden /> Transcription interrupted — reconnecting…
           </p>
@@ -1599,6 +2401,89 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
     );
   };
 
+  /**
+   * Recorded mode, uploads failed at the end: the candidate types those answers (prefilled with anything
+   * this page has for them) and submits — typed answers are marked with the rest; an empty box is unanswered.
+   */
+  const renderUnsaved = () => {
+    const n = unsaved.length;
+    const failures = uploads ? Array.from<UploadFailure>(uploads.failures.values()) : [];
+    // "unavailable" / "limit" / "too-many-takes" won't change on a retry; a lost connection, a server error or
+    // an upload stopped by "Stop waiting" may.
+    const canRetry = failures.some((f) => uploadRetryCanHelp(f.code));
+    const why = stopped ? STOPPED_WHY[stopped] : submitError || "Check your connection.";
+    const nothingAnswered = !answers.some((a) => a.transcript.trim()) && !unsaved.some((i) => (drafts[i] ?? "").trim());
+    return (
+      <section aria-labelledby="speaking-unsaved-title" className="error-surface rounded-2xl p-4 text-left sm:p-5">
+        <div role="alert" className="flex items-start gap-3">
+          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400" aria-hidden />
+          <div className="min-w-0 flex-1">
+            <h2 id="speaking-unsaved-title" className="text-sm font-semibold text-red-200">
+              {n === 1 ? "One answer couldn't be uploaded." : `${n} answers couldn't be uploaded.`}
+            </h2>
+            <p className="mt-0.5 text-sm text-red-100/80">
+              {why} Type what you said below — typed answers are marked with the rest of your test. An empty box counts as unanswered.
+            </p>
+          </div>
+        </div>
+        <ol className="mt-4 space-y-4">
+          {unsaved.map((i) => {
+            const item = items[i];
+            if (!item) return null;
+            return (
+              <li key={i}>
+                <label htmlFor={`speaking-unsaved-${i}`} className="block text-xs font-semibold uppercase tracking-wider text-gray-400">
+                  Question {i + 1} · Part {item.part}
+                </label>
+                <p className="mt-1 text-sm font-medium text-white">{item.question}</p>
+                <textarea
+                  id={`speaking-unsaved-${i}`}
+                  value={drafts[i] ?? ""}
+                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                    const value = e.target.value;
+                    setDrafts((prev: Record<number, string>) => ({ ...prev, [i]: value }));
+                  }}
+                  rows={item.kind === "long" ? 6 : 3}
+                  spellCheck={false}
+                  autoComplete="off"
+                  placeholder="Type what you said…"
+                  className="mt-2 w-full resize-y rounded-2xl border border-white/10 bg-white/[0.03] p-3 text-base leading-relaxed text-white placeholder:text-gray-500 focus:border-averna-neon/50 focus:outline-none focus:ring-2 focus:ring-averna-neon/30"
+                />
+              </li>
+            );
+          })}
+        </ol>
+        {nothingAnswered && (
+          <p className="mt-4 text-sm font-medium text-amber-100">
+            {isMock
+              ? "Nothing has been answered yet — if you submit now, this section scores 0."
+              : "Nothing has been answered yet — type at least one answer so there's something to assess."}
+          </p>
+        )}
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Button
+            type="button"
+            size="lg"
+            onClick={submitWithTyped}
+            className="glow-cta min-h-[48px] rounded-xl bg-averna-primary px-6 text-white hover:bg-averna-light"
+          >
+            <ArrowRight className="mr-2 h-4 w-4" aria-hidden />
+            Submit My Answers
+          </Button>
+          {canRetry && (
+            <button
+              type="button"
+              onClick={retryUploads}
+              className="inline-flex min-h-[48px] items-center gap-1.5 rounded-xl border border-red-400/40 px-4 text-sm font-medium text-red-200 transition hover:bg-red-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/60"
+            >
+              <RotateCcw className="h-4 w-4" aria-hidden /> Try Uploading Again
+            </button>
+          )}
+        </div>
+      </section>
+    );
+  };
+
   const renderEnd = () => {
     if (result) return <ResultView result={result} answers={answers} headingRef={headingRef} />;
     return (
@@ -1623,6 +2508,49 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
             </div>
           </dl>
           <div className="mt-6 min-h-[24px]" aria-live="polite">
+            {submitState === "uploading" && (
+              <div className="mx-auto max-w-sm">
+                <p className="inline-flex items-center gap-2 text-sm text-gray-300">
+                  <Loader2 className="h-4 w-4 motion-safe:animate-spin" aria-hidden />
+                  {uploads && uploads.total > 0
+                    ? `Uploading your answers — ${uploads.done} of ${uploads.total} saved…`
+                    : "Uploading your answers…"}
+                </p>
+                {uploads && uploads.total > 0 && (
+                  <div
+                    role="progressbar"
+                    aria-label="Answers uploaded"
+                    aria-valuemin={0}
+                    aria-valuemax={uploads.total}
+                    aria-valuenow={uploads.done}
+                    className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/10"
+                  >
+                    <div
+                      className="h-full rounded-full bg-averna-neon/70 transition-[width] duration-300 motion-reduce:transition-none"
+                      style={{ width: `${Math.round((uploads.done / uploads.total) * 100)}%` }}
+                    />
+                  </div>
+                )}
+                {uploads?.retrying && (
+                  <p className="mt-2 text-xs text-amber-200">The connection dropped — retrying. Keep this page open.</p>
+                )}
+                {uploadWaitLong && (
+                  <div className="mt-4 border-t border-white/10 pt-4">
+                    <p className="text-xs text-gray-400">
+                      This is taking longer than it should. You can stop waiting and type the answers that haven&apos;t been saved
+                      yet — the saved ones are kept.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={stopWaiting}
+                      className="mt-3 inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-white/15 px-4 text-sm font-medium text-gray-200 transition hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60"
+                    >
+                      <Keyboard className="h-4 w-4" aria-hidden /> Stop waiting and type the remaining answers
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
             {submitState === "submitting" && (
               <p className="inline-flex items-center gap-2 text-sm text-gray-300">
                 <Loader2 className="h-4 w-4 motion-safe:animate-spin" aria-hidden />
@@ -1642,6 +2570,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
           </div>
         </div>
 
+        {submitState === "upload-failed" && renderUnsaved()}
         {submitState === "error" && (
           <ErrorBox title="Your test hasn't been submitted yet." detail={submitError} actionLabel="Try Again" onAction={() => void submit()} />
         )}
@@ -1658,6 +2587,17 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
           />
         )}
         {saved?.outcome && <SessionOutcomeCard outcome={saved.outcome} />}
+        {saved?.testId && !onSubmit && (
+          <div className="flex justify-center">
+            <Link
+              href={speakingResultHref(saved.testId)}
+              className="glow-hover inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-averna-neon/30 bg-averna-neon/[0.07] px-4 text-sm font-semibold text-averna-neon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60"
+            >
+              See full result
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
+        )}
         {!onSubmit && (submitState === "error" || submitState === "empty" || saved) && <ExitLinks />}
       </section>
     );
@@ -1685,7 +2625,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
           <p className="truncate text-sm font-bold text-white sm:text-base">IELTS Speaking{isMock ? " · Mock exam" : ""}</p>
           <p className="truncate text-xs text-gray-400">{set.title}</p>
         </div>
-        {view === "test" && !typedMode && (
+        {view === "test" && inputMode === "speech" && (
           <button
             type="button"
             onClick={() => setShowTranscript((v: boolean) => !v)}
@@ -1706,13 +2646,16 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref }:
 
       <div className="relative flex shrink-0 items-center justify-between gap-3 border-b border-white/5 bg-[#06110d]/90 px-4 py-2 sm:px-5">
         <PartProgress part={part} stage={view === "intro" ? "before" : view === "test" ? "during" : "after"} />
-        <p className="text-xs font-medium tabular-nums text-gray-400">
-          {view === "intro"
-            ? `${total} questions`
-            : view === "test"
-              ? `Question ${Math.min(total, Math.max(1, asked))} of ${total}`
-              : `${answeredCount} of ${total} answered`}
-        </p>
+        <div className="flex items-center gap-3">
+          {view === "test" && <UploadStatus uploads={uploads} />}
+          <p className="text-xs font-medium tabular-nums text-gray-400">
+            {view === "intro"
+              ? `${total} questions`
+              : view === "test"
+                ? `Question ${Math.min(total, Math.max(1, asked))} of ${total}`
+                : `${answeredCount} of ${total} answered`}
+          </p>
+        </div>
       </div>
 
       <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain">

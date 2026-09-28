@@ -30,6 +30,16 @@ import { findSubmittedTest, loadXpHistory } from "@/lib/engine/progression/servi
 import { computeObjectiveXp, computeSpeakingXp, computeWritingXp } from "@/lib/engine/progression/xp";
 import type { WritingPrompt } from "@/lib/writing-data";
 import type { SpeakingAnswer, SpeakingCriteria } from "@/components/exam/types";
+import { answersFromRecordings, typedAnswersBesides } from "@/lib/speaking/answers";
+import {
+  fluencyFromMetrics,
+  metricsFeedback,
+  totalSpeechMetrics,
+  type SpeechMetrics,
+  type SpeechMetricsTotal,
+} from "@/lib/speaking/metrics";
+import { loadAttemptRecordings } from "@/lib/speaking/recording";
+import { flattenSpeakingQuestions } from "@/lib/speaking/shared";
 import { listeningBand, readingBand, roundBand, writingBand } from "./bands";
 import { partWordCount, wordCount } from "./format";
 import { expandOptional, gradeGroups, normalizeAnswer, sanitizeAnswers } from "./grading";
@@ -317,16 +327,18 @@ export async function submitObjectiveExam(s: ObjectiveSubmission): Promise<Objec
 const normQ = (q: string) => q.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 
 /**
- * Keep only answers to questions that belong to this set (the part is taken
- * from the set, never from the client), one answer per question, with
- * plausible per-answer durations.
+ * Keep only answers to questions that belong to this set (the part, the
+ * question text and its `questionIndex` are taken from the set, never from the
+ * client), one answer per question, with plausible per-answer durations.
+ * `typed: true` is kept when the runner says the candidate typed the answer.
  */
 export function validSpeakingAnswers(set: SpeakingExamSet, raw: unknown): SpeakingAnswer[] {
-  const allowed = new Map<string, 1 | 2 | 3>();
-  for (const t of set.part1) for (const q of t.questions) allowed.set(normQ(q), 1);
-  allowed.set(normQ(set.part2.cue), 2);
-  if (set.part2.followUp) allowed.set(normQ(set.part2.followUp), 2);
-  for (const q of set.part3.questions) if (!allowed.has(normQ(q))) allowed.set(normQ(q), 3);
+  // The runner's order (Part 1 → Part 2 cue → follow-up → Part 3); a repeated question counts once, where first asked.
+  const allowed = new Map<string, { part: 1 | 2 | 3; index: number; question: string }>();
+  for (const item of flattenSpeakingQuestions(set)) {
+    const key = normQ(item.question);
+    if (key && !allowed.has(key)) allowed.set(key, { part: item.part, index: item.index, question: item.question });
+  }
 
   const out: SpeakingAnswer[] = [];
   const seen = new Set<string>();
@@ -334,16 +346,26 @@ export function validSpeakingAnswers(set: SpeakingExamSet, raw: unknown): Speaki
     const a = asRec(item);
     if (!a || typeof a.question !== "string") continue;
     const key = normQ(a.question);
-    const part = allowed.get(key);
-    if (!part || seen.has(key)) continue;
+    const q = allowed.get(key);
+    if (!q || seen.has(key)) continue;
     seen.add(key);
     const transcript = typeof a.transcript === "string" ? a.transcript.trim().slice(0, 4000) : "";
-    const cap = part === 2 ? 180 : 150;
+    const cap = q.part === 2 ? 180 : 150;
     const seconds = Math.max(0, Math.min(Math.round(Number(a.seconds) || 0), cap));
-    out.push({ part, question: a.question.trim().slice(0, 400), transcript, seconds });
+    out.push({
+      part: q.part,
+      question: q.question.trim().slice(0, 400),
+      transcript,
+      seconds,
+      questionIndex: q.index,
+      ...(a.typed === true ? { typed: true } : {}),
+    });
   }
   return out;
 }
+
+/** scoreSpeaking's pace tips — replaced by the recording's measured timing when it's known. */
+const PACE_TIP = /\bpace\b|spoke very fast/i;
 
 export interface SpeakingAssessmentResult {
   band: number;
@@ -357,7 +379,11 @@ export interface SpeakingAssessmentResult {
 
 export async function assessSpeakingAnswers(
   answers: SpeakingAnswer[],
-  opts: { allowAi: boolean }
+  opts: {
+    allowAi: boolean;
+    /** Timing measured from the recordings (recorded attempts) — makes the heuristic fluency honest. */
+    metrics?: SpeechMetricsTotal | null;
+  }
 ): Promise<SpeakingAssessmentResult> {
   const perPart = ([1, 2, 3] as const).map((part) => {
     const mine = answers.filter((a) => a.part === part);
@@ -392,8 +418,13 @@ export async function assessSpeakingAnswers(
   } else {
     const joined = answers.map((a) => a.transcript).filter(Boolean).join(" ");
     const h = scoreSpeaking(joined, Math.max(1, seconds));
-    criteria = { fluency: h.fluency, lexical: h.vocabulary, grammar: h.grammar, pronunciation: null };
-    feedback = [...h.feedback];
+    // Recorded answers: fluency from the measured speech rate and pauses, not from words ÷ answer time.
+    const timed = opts.metrics ? fluencyFromMetrics(opts.metrics, joined) : null;
+    criteria = { fluency: timed ?? h.fluency, lexical: h.vocabulary, grammar: h.grammar, pronunciation: null };
+    feedback =
+      timed != null && opts.metrics
+        ? [...metricsFeedback(opts.metrics), ...h.feedback.filter((f) => !PACE_TIP.test(f))]
+        : [...h.feedback];
   }
 
   // A part left (almost) unanswered can't show fluency or coherence.
@@ -417,9 +448,14 @@ export interface SpeakingOutcome extends SpeakingAssessmentResult {
   duplicate: boolean;
   xpAwarded: number;
   xpNotes: string[];
+  /** Marked from the server's recordings (the teacher can listen to them). */
+  recorded: boolean;
 }
 
-async function speakingOutcomeFromRow(studentId: string, row: { id: string; score: number; aiAnalysis: unknown }): Promise<SpeakingOutcome> {
+async function speakingOutcomeFromRow(
+  studentId: string,
+  row: { id: string; score: number; aiAnalysis: unknown; answers?: unknown }
+): Promise<SpeakingOutcome> {
   const ai = asRec(row.aiAnalysis) ?? {};
   const c = asRec(ai.criteria) ?? {};
   const perPart = Array.isArray(ai.perPart) ? (ai.perPart as SpeakingOutcome["perPart"]) : [];
@@ -440,6 +476,52 @@ async function speakingOutcomeFromRow(studentId: string, row: { id: string; scor
     seconds: num(ai.seconds) ?? 0,
     xpAwarded: await paidFor(studentId, row.id),
     xpNotes: [],
+    recorded: asRec(row.answers)?.recorded === true,
+  };
+}
+
+/**
+ * The answers a Speaking attempt is marked from. When the runner recorded
+ * them (SpeakingRecording rows under `recordingKey` for this set), the
+ * server's transcripts and audio durations are used and whatever the browser
+ * sent for those questions is ignored; a question without a recording keeps
+ * the candidate's typed answer (the microphone failed and they typed instead).
+ */
+async function speakingAnswersFor(o: {
+  studentId: string;
+  set: SpeakingExamSet;
+  rawAnswers: unknown;
+  inputMode: unknown;
+  recordingKey?: string;
+}): Promise<{
+  answers: SpeakingAnswer[];
+  recorded: boolean;
+  /** The typed half-XP rule applies. */
+  typed: boolean;
+  typedAnswers: number;
+  metrics: SpeechMetricsTotal | null;
+}> {
+  const client = validSpeakingAnswers(o.set, o.rawAnswers);
+  const rows = o.recordingKey ? await loadAttemptRecordings(o.studentId, o.recordingKey, o.set.id) : [];
+  const recorded = answersFromRecordings(o.set, rows);
+  if (!recorded.length) {
+    // "recorded" with nothing recorded: the server heard none of it, so only the typed rule can apply.
+    return { answers: client, recorded: false, typed: o.inputMode === "typed" || o.inputMode === "recorded", typedAnswers: 0, metrics: null };
+  }
+  const extra = typedAnswersBesides(recorded, client);
+  const answers: SpeakingAnswer[] = [
+    ...recorded.map((a) => ({ part: a.part, question: a.question, transcript: a.transcript, seconds: a.seconds, questionIndex: a.questionIndex })),
+    ...extra,
+  ].sort((x, y) => (x.questionIndex ?? 0) - (y.questionIndex ?? 0));
+  const words = (list: { transcript: string }[]) => list.reduce((s, a) => s + wordCount(a.transcript), 0);
+  const timed = recorded.map((a) => a.metrics).filter((m): m is SpeechMetrics => m !== null);
+  return {
+    answers,
+    recorded: true,
+    // Full XP for speaking (recorded, or the browser's transcripts after recording stopped); half only when most was typed.
+    typed: words(extra.filter((a) => a.typed)) > words(recorded) + words(extra.filter((a) => !a.typed)),
+    typedAnswers: extra.length,
+    metrics: timed.length ? totalSpeechMetrics(timed) : null,
   };
 }
 
@@ -454,21 +536,30 @@ export async function submitSpeakingTest(o: {
   auto?: boolean;
   /** Server-measured upper bound for the total speaking time (the mock's section clock). */
   maxSeconds?: number;
+  /**
+   * The runner's attempt id. When the answers were recorded and transcribed on
+   * the server (SpeakingRecording rows under this key), those transcripts and
+   * durations are used instead of anything the browser sends.
+   */
+  recordingKey?: string;
 }): Promise<SpeakingOutcome> {
   const previous = o.idempotencyKey ? await findSubmittedTest(o.studentId, o.idempotencyKey) : null;
   if (previous) return speakingOutcomeFromRow(o.studentId, previous);
 
-  let answers = validSpeakingAnswers(o.set, o.rawAnswers);
-  // Per-answer durations come from the browser: never let them add up to more
-  // time than the server saw pass.
+  const picked = await speakingAnswersFor(o);
+  let answers = picked.answers;
+  const { recorded, typed, typedAnswers, metrics } = picked;
+  // Durations (the browser's, or recordings made before the section started): never
+  // let them add up to more time than the server saw pass.
   const claimed = answers.reduce((s, a) => s + a.seconds, 0);
   if (o.maxSeconds != null && o.maxSeconds >= 0 && claimed > o.maxSeconds) {
     const k = o.maxSeconds / claimed;
     answers = answers.map((a) => ({ ...a, seconds: Math.floor(a.seconds * k) }));
   }
   const allowAi = guardAi(o.userId, "speaking-test").ok;
-  const a = await assessSpeakingAnswers(answers, { allowAi });
-  const typed = o.inputMode === "typed";
+  // The recordings' timing only speaks for a fully recorded attempt.
+  const a = await assessSpeakingAnswers(answers, { allowAi, metrics: typedAnswers === 0 ? metrics : null });
+  const inputMode = recorded ? "recorded" : typed ? "typed" : "speech";
   const mock = !!o.mockAttemptId;
   const contentKey = `speaking-test:${o.set.id}`;
 
@@ -491,8 +582,11 @@ export async function submitSpeakingTest(o: {
       testId: contentKey,
       examId: o.set.id,
       title: o.set.title,
-      inputMode: typed ? "typed" : "speech",
+      inputMode,
       answers,
+      // Contract (lib/speaking/recording.ts): recorded attempts carry their recording key.
+      ...(recorded ? { recorded: true, recordingKey: o.recordingKey } : {}),
+      ...(typedAnswers > 0 ? { typedAnswers } : {}),
       ...(mock ? { mock: true, mockAttemptId: o.mockAttemptId } : {}),
       ...(o.auto ? { auto: true } : {}),
     },
@@ -508,6 +602,7 @@ export async function submitSpeakingTest(o: {
       perPart: a.perPart,
       feedback: a.feedback,
       assessedBy: a.assessedBy,
+      ...(metrics ? { metrics } : {}),
       ...(mock ? { type: "mock" } : {}),
     },
     a.seconds,
@@ -515,7 +610,7 @@ export async function submitSpeakingTest(o: {
       contentKey,
       idempotencyKey: o.idempotencyKey,
       xp,
-      logDetails: { seconds: a.seconds, words: a.words, fullTest: true, ...(mock ? { mock: true } : {}) },
+      logDetails: { seconds: a.seconds, words: a.words, fullTest: true, ...(recorded ? { recorded: true } : {}), ...(mock ? { mock: true } : {}) },
       dna: { channel: "speaking", words: a.words },
     }
   );
@@ -527,7 +622,7 @@ export async function submitSpeakingTest(o: {
       .catch(() => {});
   }
 
-  return { ...a, testId: saved.id, duplicate: saved.duplicate, xpAwarded: saved.pointsAwarded ?? 0, xpNotes: xp.notes };
+  return { ...a, testId: saved.id, duplicate: saved.duplicate, xpAwarded: saved.pointsAwarded ?? 0, xpNotes: xp.notes, recorded };
 }
 
 // ---------------------------------------------------------------------------
