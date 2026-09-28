@@ -100,7 +100,7 @@ export default async function AdminProfilePage({ searchParams }: { searchParams:
 
         {/* Password */}
         <div className="mt-8">
-          <ChangePasswordForm lang="uz" email={dbUser.email} />
+          <ChangePasswordForm lang="uz" email={dbUser.email} username={dbUser.username} />
         </div>
       </div>
     </div>

@@ -14,13 +14,36 @@ export const USERNAME_MAX = 30;
 
 export type UsernameProblem = "too_short" | "too_long" | "bad_chars" | "start_letter" | "dots" | "reserved";
 
-/** Names that could pass for the school or its staff — only an admin may take them. */
+/** Whole names reserved for the system — only an admin may take them. */
 const RESERVED = new Set([
-  "admin", "administrator", "admins", "root", "system", "support", "help", "helpdesk", "info", "contact",
-  "averna", "teacher", "teachers", "student", "students", "parent", "parents", "moderator", "mod", "staff",
+  "admins", "system", "support", "help", "helpdesk", "info", "contact",
+  "teacher", "teachers", "student", "students", "parent", "parents", "moderator", "mod", "staff",
   "official", "security", "owner", "api", "auth", "login", "signin", "signup", "register", "logout",
   "settings", "profile", "dashboard", "null", "undefined", "me", "bot", "telegram",
 ]);
+
+/**
+ * Words that make a name look like the school or its staff wherever they
+ * stand ("support.averna", "the.admin", "ustoz_ali") — English, Uzbek and
+ * Russian (latin). Checked per part of the name, split at "_", "." and digits
+ * ("badminton" is fine: its part doesn't start with "admin").
+ */
+const STAFF_WORDS = new Set([
+  "support", "official", "moderator", "staff", "teacher", "security", "system", "root",
+  "ustoz", "ustozlar", "oqituvchi", "oqituvchilar", "muallim", "muallima", "direktor", "rahbar", "rahbariyat",
+  "markaz", "rasmiy", "yordam", "uchitel", "prepod", "prepodavatel", "kurator", "menejer", "manager",
+]);
+
+/** Never a sign-in name, not even an admin's: the first thing anyone would try. */
+const NEVER = new Set(["admin", "administrator", "root", "superadmin", "sysadmin"]);
+
+function looksOfficial(u: string): boolean {
+  if (RESERVED.has(u)) return true;
+  return u
+    .split(/[._\d]+/)
+    .filter(Boolean)
+    .some((part) => part.includes("averna") || part.startsWith("admin") || STAFF_WORDS.has(part));
+}
 
 /** "  @Ali_07 " → "ali_07". */
 export function normalizeUsername(raw: string): string {
@@ -32,7 +55,10 @@ export function looksLikeEmail(login: string): boolean {
   return String(login ?? "").trim().indexOf("@") > 0;
 }
 
-/** Why `raw` can't be a username (after normalising), or null. `allowReserved`: admins may take reserved names. */
+/**
+ * Why `raw` can't be a username (after normalising), or null. `allowReserved`:
+ * an admin may take names that look official — but never admin / root.
+ */
 export function usernameProblem(raw: string, opts: { allowReserved?: boolean } = {}): UsernameProblem | null {
   const u = normalizeUsername(raw);
   if (u.length < USERNAME_MIN) return "too_short";
@@ -40,7 +66,8 @@ export function usernameProblem(raw: string, opts: { allowReserved?: boolean } =
   if (!/^[a-z0-9._]+$/.test(u)) return "bad_chars";
   if (!/^[a-z]/.test(u)) return "start_letter";
   if (u.includes("..") || u.endsWith(".")) return "dots";
-  if (!opts.allowReserved && (RESERVED.has(u) || u.startsWith("averna") || u.startsWith("admin"))) return "reserved";
+  if (NEVER.has(u)) return "reserved";
+  if (!opts.allowReserved && looksOfficial(u)) return "reserved";
   return null;
 }
 
@@ -51,10 +78,11 @@ export function usernameProblem(raw: string, opts: { allowReserved?: boolean } =
 export type UsernameLang = "en" | "uz";
 export type UsernameMessageCode = UsernameProblem | "taken" | "missing" | "server" | "auth" | "too_many";
 
-export const USERNAME_TEXT: Record<UsernameLang, Record<UsernameMessageCode | "available" | "checking" | "rules", string>> = {
+export const USERNAME_TEXT: Record<UsernameLang, Record<UsernameMessageCode | "available" | "checking" | "unverified" | "rules", string>> = {
   en: {
     available: "Available",
     checking: "Checking…",
+    unverified: "Couldn't check it right now — it will be checked when you save.",
     taken: "This username is already taken — choose another.",
     too_short: `At least ${USERNAME_MIN} characters.`,
     too_long: `At most ${USERNAME_MAX} characters.`,
@@ -71,6 +99,7 @@ export const USERNAME_TEXT: Record<UsernameLang, Record<UsernameMessageCode | "a
   uz: {
     available: "Boʻsh",
     checking: "Tekshirilmoqda…",
+    unverified: "Hozir tekshirib boʻlmadi — saqlaganingizda tekshiriladi.",
     taken: "Bu nom allaqachon band — boshqasini tanlang.",
     too_short: `Kamida ${USERNAME_MIN} ta belgi.`,
     too_long: `Koʻpi bilan ${USERNAME_MAX} ta belgi.`,

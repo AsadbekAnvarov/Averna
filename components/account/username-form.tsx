@@ -164,6 +164,8 @@ export function UsernameForm({ lang, initial, allowReserved }: { lang: UsernameL
             <span className="inline-flex items-center gap-1.5 text-red-300">
               <XCircle className="h-4 w-4" aria-hidden /> {msg[status.code]}
             </span>
+          ) : status.state === "unverified" ? (
+            <span className="text-gray-400">{msg.unverified}</span>
           ) : null}
         </p>
         <p id="username-rules" className="text-xs text-gray-400">

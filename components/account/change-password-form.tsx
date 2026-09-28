@@ -71,7 +71,7 @@ type ErrorCode = keyof (typeof T)["en"]["errors"];
 const INPUT =
   "w-full rounded-md border border-input bg-background/50 px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-averna-cyan disabled:opacity-60";
 
-export function ChangePasswordForm({ lang, email }: { lang: Lang; email?: string | null }) {
+export function ChangePasswordForm({ lang, email, username }: { lang: Lang; email?: string | null; username?: string | null }) {
   const t = T[lang];
   const [current, setCurrent] = useState("");
   const [next, setNext] = useState("");
@@ -86,7 +86,7 @@ export function ChangePasswordForm({ lang, email }: { lang: Lang; email?: string
     if (busy || done) return;
     setError(null);
     if (!current || !next || !confirm) return setError("missing");
-    const problem = passwordProblem(next, { current, email });
+    const problem = passwordProblem(next, { current, email, username });
     if (problem) return setError(problem);
     if (next !== confirm) return setError("mismatch");
 

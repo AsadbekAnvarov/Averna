@@ -11,7 +11,8 @@ export const dynamic = "force-dynamic";
  * forms (the user's own current username counts as free). Limited per IP.
  */
 
-const PER_MINUTE = 60;
+/** Generous: a whole class may sign up at once behind one school IP (the sign-up itself re-checks). */
+const PER_MINUTE = 120;
 const hits = new Map<string, number[]>();
 
 function tooMany(key: string, now: number): boolean {

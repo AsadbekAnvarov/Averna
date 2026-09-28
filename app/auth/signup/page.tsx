@@ -177,6 +177,8 @@ export default function SignUpPage() {
                     <span className="inline-flex items-center gap-1 text-red-400">
                       <XCircle className="h-3.5 w-3.5" /> {U[usernameStatus.code]}
                     </span>
+                  ) : usernameStatus.state === "unverified" ? (
+                    <span className="text-gray-400">{U.unverified}</span>
                   ) : (
                     <span className="text-gray-400">You can sign in with it instead of your email. {U.rules}</span>
                   )}

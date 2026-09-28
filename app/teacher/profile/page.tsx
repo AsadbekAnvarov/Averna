@@ -245,7 +245,7 @@ export default async function TeacherProfilePage() {
 
         {/* Password */}
         <div className="mt-8">
-          <ChangePasswordForm lang="en" email={teacher.user.email} />
+          <ChangePasswordForm lang="en" email={teacher.user.email} username={teacher.user.username} />
         </div>
 
         {/* Top performers showcase */}

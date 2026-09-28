@@ -7,12 +7,17 @@ export type UsernameStatus =
   | { state: "idle" }
   | { state: "checking" }
   | { state: "available"; username: string }
-  | { state: "unavailable"; code: UsernameMessageCode };
+  | { state: "unavailable"; code: UsernameMessageCode }
+  /** The server couldn't be asked (busy / offline): the form may still submit — the save itself decides. */
+  | { state: "unverified"; code: UsernameMessageCode };
 
 /**
  * Live availability of a username while it is typed: the rules are checked at
  * once, the server (GET /api/account/username/check) 400 ms after typing stops.
  * `same`: the user's current username — shown as available without asking.
+ * Only a rule problem or "taken" blocks the form; when the check itself fails
+ * (rate limit, network) the status is "unverified" and the sign-up / save
+ * request gives the real answer (409 when taken).
  */
 export function useUsernameCheck(value: string, opts: { same?: string | null; allowReserved?: boolean } = {}): UsernameStatus {
   const [status, setStatus] = useState<UsernameStatus>({ state: "idle" });
@@ -41,9 +46,10 @@ export function useUsernameCheck(value: string, opts: { same?: string | null; al
         const body = (await res.json().catch(() => null)) as { available?: boolean; code?: UsernameMessageCode } | null;
         if (ctrl.signal.aborted) return;
         if (body?.available) setStatus({ state: "available", username: u });
-        else setStatus({ state: "unavailable", code: body?.code ?? "server" });
+        else if (res.ok && body?.code && body.code !== "server" && body.code !== "too_many") setStatus({ state: "unavailable", code: body.code });
+        else setStatus({ state: "unverified", code: body?.code === "too_many" ? "too_many" : "server" });
       } catch {
-        if (!ctrl.signal.aborted) setStatus({ state: "unavailable", code: "server" });
+        if (!ctrl.signal.aborted) setStatus({ state: "unverified", code: "server" });
       }
     }, 400);
     return () => {
