@@ -367,7 +367,13 @@ export interface WeeklyReport {
   activeDays: number;
   /** Skills practised this week (READING, LISTENING, WRITING, SPEAKING order). */
   tests: { skill: Skill; count: number; latestBand: number | null }[];
-  homework: { assigned: number; submitted: number; missing: DueItem[] };
+  /**
+   * Homework of the week (Monday–Sunday): `due` / `submitted` count only the
+   * ones whose deadline has passed (a late submission counts as submitted);
+   * `missed` = deadline passed, still not submitted; `early` = not due yet but
+   * already handed in; `toDo` = not due yet, not submitted.
+   */
+  homework: { total: number; due: number; submitted: number; early: number; missed: DueItem[]; toDo: DueItem[] };
   attendance: { present: number; absent: number; late: number; excused: number };
   streak: number;
   reviews: number;
@@ -391,10 +397,17 @@ export function buildWeeklyReport(i: WeeklyInput): WeeklyReport {
     tests.push({ skill, count: rows.length, latestBand: Number.isFinite(latest) ? Math.round(latest * 2) / 2 : null });
   }
 
-  const due = i.homework
+  const thisWeek = i.homework
     .filter((h) => h.dueDate >= week.start && h.dueDate < week.end)
     .sort(byDue);
-  const missing = due.filter((h) => !i.submittedHomeworkIds.has(h.id)).map((h) => ({ title: homeworkTitle(h), dueDate: h.dueDate }));
+  const item = (h: HomeworkRow): DueItem => ({ title: homeworkTitle(h), dueDate: h.dueDate });
+  const open = (h: HomeworkRow) => !i.submittedHomeworkIds.has(h.id);
+  // "Missed" only once the deadline has passed — an essay due tonight is still to do,
+  // and one already handed in before its deadline is credited as early.
+  const past = thisWeek.filter((h) => h.dueDate.getTime() < i.now.getTime());
+  const ahead = thisWeek.filter((h) => h.dueDate.getTime() >= i.now.getTime());
+  const missed = past.filter(open).map(item);
+  const toDo = ahead.filter(open).map(item);
 
   const attendance = { present: 0, absent: 0, late: 0, excused: 0 };
   for (const a of i.attendance) {
@@ -413,7 +426,14 @@ export function buildWeeklyReport(i: WeeklyInput): WeeklyReport {
     days: week.days,
     activeDays,
     tests,
-    homework: { assigned: due.length, submitted: due.length - missing.length, missing },
+    homework: {
+      total: thisWeek.length,
+      due: past.length,
+      submitted: past.length - missed.length,
+      early: ahead.length - toDo.length,
+      missed,
+      toDo,
+    },
     attendance,
     streak: streakNow(i.student, i.now).days,
     reviews: Math.max(0, Math.floor(i.reviews) || 0),

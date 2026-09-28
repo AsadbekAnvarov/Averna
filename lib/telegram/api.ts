@@ -3,9 +3,10 @@
  *
  *   - every call has a timeout and never throws: the result is { ok, result }
  *     or { ok: false, code, description, retryAfter, gone, network };
- *   - 429 "Too Many Requests": waits `retry_after` and retries (once by default,
- *     only when the wait fits `maxRetryWaitMs`; `onRetryAfter` lets a rate
- *     limiter hold every other send meanwhile);
+ *   - 429 "Too Many Requests": `onRetryAfter` hears every one (a rate limiter
+ *     holds every other send meanwhile); the call waits `retry_after` and
+ *     retries (once by default, only when the wait fits `maxRetryWaitMs` —
+ *     a function is asked at that moment, e.g. "the time left");
  *   - 403 (blocked by the user, deactivated …) and "chat not found" come back
  *     as `gone: true` — the caller marks that chat's links inactive;
  *   - sendMessage uses HTML with link previews off; if Telegram ever rejects
@@ -44,10 +45,11 @@ export interface CallOptions {
   /** Defaults to TELEGRAM_BOT_TOKEN. */
   token?: string | null;
   timeoutMs?: number;
-  /** 429 retries (default 1). */
+  /** 429 retries (default 1; 0 = never wait). */
   retries?: number;
-  /** Longest 429 wait worth retrying (default 3 s). */
-  maxRetryWaitMs?: number;
+  /** Longest 429 wait worth retrying (default 3 s). A function is asked when the 429 arrives (e.g. the time left). */
+  maxRetryWaitMs?: number | (() => number);
+  /** Called on every 429 with the wait Telegram asked for, retried or not. */
   onRetryAfter?: (ms: number) => void;
   fetchImpl?: typeof fetch;
   sleep?: (ms: number) => Promise<void>;
@@ -140,14 +142,15 @@ export async function callApi<T>(method: string, params: Record<string, unknown>
   }
   const f = opts.fetchImpl ?? globalThis.fetch;
   const retries = Math.max(0, opts.retries ?? 1);
-  const maxWait = opts.maxRetryWaitMs ?? 3000;
+  const cap = opts.maxRetryWaitMs;
+  const maxWait = (): number => (typeof cap === "function" ? cap() : cap ?? 3000);
   const timeoutMs = opts.timeoutMs ?? 5000;
   for (let attempt = 0; ; attempt++) {
     const res = await once<T>(f, token, method, params, timeoutMs);
-    if (!res.ok && res.retryAfter != null && attempt < retries) {
+    if (!res.ok && res.retryAfter != null) {
       const wait = res.retryAfter * 1000;
-      if (wait <= maxWait) {
-        opts.onRetryAfter?.(wait);
+      opts.onRetryAfter?.(wait);
+      if (attempt < retries && wait <= maxWait()) {
         await (opts.sleep ?? sleep)(wait + 100);
         continue;
       }

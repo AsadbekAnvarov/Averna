@@ -27,27 +27,30 @@ const PREF_TEXT: Record<LinkRole, Partial<Record<PrefKey, PrefText>>> = {
     reviews: { label: "Reviews & grades", desc: "When your teacher reviews your work or posts a grade" },
     reminders: {
       label: "Reminders & updates",
-      desc: "19:00 reminders (homework due tomorrow, streak at risk), announcements and milestones",
+      desc: "A reminder every evening (around 19:00) when homework is due tomorrow or your streak is at risk, plus announcements and milestones",
     },
   },
   teacher: {
     reports: {
-      label: "Daily report at 19:00",
-      desc: "Homework due today and yesterday with who's missing, work to review, inactive students",
+      label: "Daily report",
+      desc: "Every evening (around 19:00): homework due today and yesterday with who's missing, work to review, inactive students",
     },
     reminders: STAFF_ANNOUNCEMENTS,
   },
   admin: {
-    reports: { label: "Daily summary at 19:00", desc: "New students, placement tests, pending payments, reviews and homework" },
+    reports: {
+      label: "Daily summary",
+      desc: "Every evening (around 19:00): new students, placement tests, pending payments, reviews and homework",
+    },
     reminders: STAFF_ANNOUNCEMENTS,
   },
   parent: {},
 };
 
 const INTRO: Record<LinkRole, string> = {
-  student: "Get new homework, teacher reviews and a 19:00 reminder when something is due — right in Telegram.",
-  teacher: "Get a 19:00 report on your groups: missing homework, work waiting for review and inactive students.",
-  admin: "Get a 19:00 summary of the school: new students, placement tests, payments, reviews and homework.",
+  student: "Get new homework, teacher reviews and a reminder every evening (around 19:00) when something is due — right in Telegram.",
+  teacher: "Get a report on your groups every evening (around 19:00): missing homework, work waiting for review and inactive students.",
+  admin: "Get a summary of the school every evening (around 19:00): new students, placement tests, payments, reviews and homework.",
   parent: "",
 };
 

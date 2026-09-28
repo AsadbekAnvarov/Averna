@@ -1,6 +1,7 @@
 /**
- * Daily Telegram digests — called once per Tashkent day at 19:00 by
- * /api/cron/daily inside runOncePerDay (deduplicated across both projects).
+ * Daily Telegram digests — called once per Tashkent day, in the evening (the
+ * Hobby cron fires at some minute of 19:00–19:59), by /api/cron/daily inside
+ * runOncePerDay (deduplicated across both projects).
  *
  *   students (en)    homework due tomorrow not yet submitted; streak at risk   → prefs.reminders
  *   teachers (uz)    homework due yesterday / today: submitted X/Y + who's missing,
@@ -10,36 +11,53 @@
  *   parents (uz/ru)  Sundays only: the weekly report of each child             → prefs.reports
  *
  * One message per chat where possible (mergeByChat), throttled (~25/s),
- * capped at MAX_SENDS and bounded by a time budget that fits the route's 60 s.
+ * capped at MAX_SENDS and bounded by a time budget counted from the start of
+ * the cron request, so it fits the route's 60 s (a 429 wait is only retried
+ * when it still fits). Parents and students — the tail that a cap cuts — are
+ * shuffled by day, so it isn't the same people who miss out every day.
  * Returns counts for the CronRun row; without the bot configured → { skipped }.
  */
 
 import type { JobResult } from "@/lib/cron/once";
 import { db } from "@/lib/db";
-import { tashkentWeekday } from "@/lib/utils";
+import { tashkentDateKey, tashkentWeekday } from "@/lib/utils";
 import { digestIsEmpty, type StudentReminder, type TeacherDigest, type WeeklyReport } from "./builders";
 import { appBaseUrl, appLink, telegramReady } from "./config";
 import { purgeOldCodes } from "./links";
 import { adminSummaryText, asLang, openAppKeyboard, studentEveningText, teacherDigestText, weeklyReportText } from "./messages";
 import { markChatsInactive } from "./notify";
-import { mergeByChat, sendBatch, type Outgoing } from "./outbox";
+import { mergeByChat, seededRandom, sendBatch, shuffled, type Outgoing } from "./outbox";
 import { readPrefs } from "./prefs";
 import { loadAdminSummary, loadStudentReminders, loadTeacherDigests, loadWeeklyReports } from "./reports";
 import type { PrefKey } from "./types";
 
 /** Messages per run at most (the rest is reported as `capped`). */
 export const MAX_SENDS = 900;
-/** Queries + sends; the cron route may run 60 s. */
-const BUDGET_MS = 45_000;
+/** From the start of the cron request: claim + queries + sends; the route may run 60 s. */
+export const BUDGET_MS = 45_000;
+
+export interface DailyOptions {
+  /** Date.now() when the cron request started — the time budget counts from there (default: now). */
+  startedAt?: number;
+}
 
 type LinkRow = { chatId: string; role: string; userId: string | null; studentId: string | null; language: string; prefs: unknown };
 
 const idsOf = (rows: LinkRow[], key: "userId" | "studentId"): string[] =>
   Array.from(new Set(rows.map((r) => r[key]).filter((x): x is string => !!x)));
 
-export async function runTelegramDaily(now: Date = new Date()): Promise<JobResult> {
+const linkKey = (l: LinkRow) => `${l.chatId}:${l.userId ?? l.studentId ?? ""}`;
+/** A day-seeded shuffle of a stable order (the database returns rows in no particular order). */
+const dayOrder = (rows: LinkRow[], random: () => number): LinkRow[] =>
+  shuffled(
+    rows.slice().sort((a, b) => (linkKey(a) < linkKey(b) ? -1 : linkKey(a) > linkKey(b) ? 1 : 0)),
+    random
+  );
+
+export async function runTelegramDaily(now: Date = new Date(), opts: DailyOptions = {}): Promise<JobResult> {
   if (!telegramReady()) return { skipped: "telegram not configured" };
-  const started = Date.now();
+  const started = opts.startedAt ?? Date.now();
+  const deadline = started + BUDGET_MS;
   const sunday = tashkentWeekday(now) === 0;
 
   const links: LinkRow[] = await db.telegramLink.findMany({
@@ -47,10 +65,12 @@ export async function runTelegramDaily(now: Date = new Date()): Promise<JobResul
     select: { chatId: true, role: true, userId: true, studentId: true, language: true, prefs: true },
   });
   const wants = (key: PrefKey) => (l: LinkRow) => readPrefs(l.prefs)[key];
+  // The same order all day (a retry sends in the same order), a different one tomorrow.
+  const random = seededRandom(`telegram-daily:${tashkentDateKey(now)}`);
   const admins = links.filter((l) => l.role === "admin" && l.userId).filter(wants("reports"));
   const teachers = links.filter((l) => l.role === "teacher" && l.userId).filter(wants("reports"));
-  const parents = sunday ? links.filter((l) => l.role === "parent" && l.studentId).filter(wants("reports")) : [];
-  const students = links.filter((l) => l.role === "student" && l.userId).filter(wants("reminders"));
+  const parents = sunday ? dayOrder(links.filter((l) => l.role === "parent" && l.studentId).filter(wants("reports")), random) : [];
+  const students = dayOrder(links.filter((l) => l.role === "student" && l.userId).filter(wants("reminders")), random);
 
   const errors: string[] = [];
   const safe = async <T>(label: string, fn: () => Promise<T>, fallback: T): Promise<T> => {
@@ -110,8 +130,9 @@ export async function runTelegramDaily(now: Date = new Date()): Promise<JobResul
   const batch = merged.slice(0, MAX_SENDS);
   const result = await sendBatch(batch, {
     timeoutMs: 5000,
+    // Each 429 wait is capped by the time left before the deadline (sendBatch keeps one timeout for the retry).
     maxRetryWaitMs: 10_000,
-    budgetMs: Math.max(1000, BUDGET_MS - (Date.now() - started)),
+    deadline: () => deadline,
     onGone: markChatsInactive,
   });
   const codesPurged = await purgeOldCodes(now);

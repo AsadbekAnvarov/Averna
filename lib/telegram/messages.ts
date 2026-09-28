@@ -186,7 +186,6 @@ type When = HomeworkProgress["when"];
 
 interface Dict {
   openApp: string;
-  privateOnly: string;
   unknown: string;
   failed: string;
   codeInvalid: string;
@@ -204,8 +203,26 @@ interface Dict {
   linkedTitle(nameHtml: string): string;
   linkedBody(role: UserLinkRole): string;
   linkedFooter(role: UserLinkRole): string;
+  /** This chat belonged to other accounts, now unlinked (they were told in the app). */
+  replacedAccounts(namesHtml: string): string;
   parentWelcomeTitle(namesHtml: string, count: number): string;
   parentWelcomeBody: string;
+  // parents: /disconnect (asked first, removed on a button press), removed by the school
+  /** The question: one child → remove it?; several → which one? */
+  disconnectAsk(namesHtml: string, count: number): string;
+  /** Buttons (plain text): one child — yes / cancel; several — one per child, all, cancel. */
+  disconnectYes: string;
+  disconnectChild(name: string): string;
+  disconnectAll: string;
+  disconnectCancel: string;
+  disconnectCancelled: string;
+  /** A button of an old question whose connection is already gone. */
+  disconnectGone: string;
+  parentDisconnected(namesHtml: string, count: number): string;
+  /** One of several children removed; `othersHtml` stay connected. */
+  parentDisconnectedOne(nameHtml: string, othersHtml: string): string;
+  disconnectNotParent: string;
+  parentRemoved(nameHtml: string): string;
   // who / help
   who(role: LinkRole, nameHtml: string): string;
   connectedTitle: string;
@@ -213,6 +230,7 @@ interface Dict {
   helpStatus(role: LinkRole): string;
   helpLang: string;
   helpStop: string;
+  helpDisconnect: string;
   helpHelp: string;
   helpSettings: string;
   testTitle: string;
@@ -255,10 +273,18 @@ interface Dict {
   testsLabel: string;
   testItem(skill: string, count: number, band: string | null): string;
   noTests: string;
-  homeworkLine(submitted: number, assigned: number): string;
+  /** Over homework whose deadline has passed. */
+  homeworkLine(submitted: number, due: number): string;
   noHomeworkWeek: string;
-  missingLine(listHtml: string): string;
-  missingItem(titleHtml: string, due: string): string;
+  /** There is homework this week, but no deadline has passed yet. */
+  noHomeworkDueYet: string;
+  /** Appended to the homework line: not due yet, already handed in. `afterDue`: after "X of Y submitted". */
+  handedInEarly(n: number, afterDue: boolean): string;
+  /** Deadline passed, still not submitted (a late submission leaves this list). */
+  missedLine(listHtml: string): string;
+  /** Not due yet, not submitted. */
+  toDoLine(listHtml: string): string;
+  dueItem(titleHtml: string, due: string): string;
   attendanceLine(a: WeeklyReport["attendance"]): string;
   noAttendance: string;
   streakLine(days: number): string;
@@ -268,7 +294,6 @@ interface Dict {
 
 const EN: Dict = {
   openApp: "Open in Averna",
-  privateOnly: "Please message me in a private chat — I don't work in groups.",
   unknown: "Sorry, I didn't get that. Send /help to see what I can do.",
   failed: "Something went wrong — please try again in a minute.",
   codeInvalid: "This link isn't valid. Get a new one in Averna → Settings → Telegram.",
@@ -291,19 +316,37 @@ const EN: Dict = {
   linkedTitle: (n) => `✅ Telegram is connected to ${n}.`,
   linkedBody: (role) =>
     role === "student"
-      ? "You'll get:\n• new homework from your teacher\n• teacher reviews and grades\n• a 19:00 reminder when homework is due tomorrow or your streak is at risk\n\nChoose what you get in Averna → Settings → Telegram."
+      ? "You'll get:\n• new homework from your teacher\n• teacher reviews and grades\n• a reminder every evening (around 19:00) when homework is due tomorrow or your streak is at risk\n\nChoose what you get in Averna → Settings → Telegram."
       : role === "teacher"
-        ? "Every day at 19:00 you'll get a report: homework due today and yesterday (who hasn't submitted), Writing/Speaking work waiting for your review and students inactive for 7+ days. School announcements come here too."
-        : "Every day at 19:00 you'll get a summary: new students, finished placement tests, pending payments, work waiting for review and homework created.",
+        ? "Every evening (around 19:00) you'll get a report: homework due today and yesterday (who hasn't submitted), Writing/Speaking work waiting for your review and students inactive for 7+ days. School announcements come here too."
+        : "Every evening (around 19:00) you'll get a summary: new students, finished placement tests, pending payments, work waiting for review and homework created.",
   linkedFooter: (role) =>
     role === "student"
       ? "/status — your streak and next homework · /help — commands"
       : role === "teacher"
         ? "/status — right now · /help — commands"
         : "/status — today so far · /help — commands",
+  replacedAccounts: (n) => `ℹ️ This chat was connected to ${n} before — that account no longer gets Telegram messages here (it was told in Averna).`,
   parentWelcomeTitle: (names, count) => `✅ You're connected. ${count > 1 ? "Students" : "Student"}: ${names}`,
   parentWelcomeBody:
-    "Every Sunday at 19:00 you'll get a weekly report: active days, tests with the latest band, homework, attendance, streak and teacher reviews.\n\n/status — this week so far\n/lang — change language\n/stop — turn notifications off",
+    "Every Sunday evening (around 19:00) you'll get a weekly report: active days, tests with the latest band, homework, attendance, streak and teacher reviews.\n\n/status — this week so far\n/lang — change language\n/stop — turn notifications off\n/disconnect — remove this connection completely",
+  disconnectAsk: (names, count) =>
+    count > 1
+      ? `This chat gets the weekly reports of these students: ${names}. Which connection should be removed? Connecting again needs a new invite link from the teacher.`
+      : `Disconnect this chat from the weekly reports (student: ${names})? The reports will stop coming here, and connecting again needs a new invite link from the teacher.`,
+  disconnectYes: "✅ Yes, disconnect",
+  disconnectChild: (n) => `Disconnect: ${n}`,
+  disconnectAll: "Disconnect all",
+  disconnectCancel: "Cancel",
+  disconnectCancelled: "Cancelled — nothing was changed.",
+  disconnectGone: "This connection has already been removed.",
+  parentDisconnected: (names, count) =>
+    `✅ Connection removed. This chat won't get reports any more (${count > 1 ? "students" : "student"}: ${names}). To connect again, ask the teacher for a new invite link.`,
+  parentDisconnectedOne: (n, others) =>
+    `✅ Connection removed (student: ${n}) — this student's reports won't come here any more. Still connected: ${others}.`,
+  disconnectNotParent: "/disconnect is for parents. To disconnect your Averna account, open Averna → Settings → Telegram → Disconnect.",
+  parentRemoved: (n) =>
+    `The school removed this chat's connection to the reports (student: ${n}). If this is a mistake, ask the teacher for a new invite link.`,
   who: (role, n) =>
     role === "parent" ? `${n} (as a parent)` : `${n} (${role === "student" ? "student" : role === "teacher" ? "teacher" : "admin"})`,
   connectedTitle: "This chat is connected to Averna:",
@@ -318,6 +361,7 @@ const EN: Dict = {
           : "your child's week so far",
   helpLang: "/lang — change language (parents)",
   helpStop: "/stop — turn notifications off (/start turns them back on)",
+  helpDisconnect: "/disconnect — remove this chat's parent connection (no more reports)",
   helpHelp: "/help — this list",
   helpSettings: "Notification settings: Averna → Settings → Telegram.",
   testTitle: "✅ <b>Test message</b>",
@@ -363,10 +407,13 @@ const EN: Dict = {
   testsLabel: "Tests:",
   testItem: (s, c, band) => `${s} — ${c}${band ? ` (latest ${band})` : ""}`,
   noTests: "Tests: none this week",
-  homeworkLine: (s, a) => `Homework: ${s} of ${a} submitted`,
+  homeworkLine: (s, a) => `Homework due so far: ${s} of ${a} submitted`,
   noHomeworkWeek: "Homework: nothing due this week",
-  missingLine: (l) => `Not submitted: ${l}`,
-  missingItem: (t, d) => `${t} (due ${d})`,
+  noHomeworkDueYet: "Homework: nothing due yet this week",
+  handedInEarly: (n) => `${n} handed in early`,
+  missedLine: (l) => `Missed: ${l}`,
+  toDoLine: (l) => `Still to do: ${l}`,
+  dueItem: (t, d) => `${t} (due ${d})`,
   attendanceLine: (a) => `Attendance: present ${a.present}, absent ${a.absent}, late ${a.late}${a.excused ? `, excused ${a.excused}` : ""}`,
   noAttendance: "Attendance: no lessons marked this week",
   streakLine: (d) => `Streak: ${d} ${enDays(d)} in a row`,
@@ -376,7 +423,6 @@ const EN: Dict = {
 
 const UZ: Dict = {
   openApp: "Avernaʼda ochish",
-  privateOnly: "Iltimos, menga shaxsiy chatda yozing — guruhlarda ishlamayman.",
   unknown: "Tushunmadim. /help — buyruqlar roʻyxati.",
   failed: "Nimadir xato ketdi — birozdan keyin qayta urinib koʻring.",
   codeInvalid: "Bu havola yaroqsiz. Averna → Settings → Telegram boʻlimidan yangisini oling.",
@@ -399,19 +445,38 @@ const UZ: Dict = {
   linkedTitle: (n) => `✅ Telegram ${n} hisobiga ulandi.`,
   linkedBody: (role) =>
     role === "student"
-      ? "Bu yerga keladi:\n• oʻqituvchidan yangi uy vazifalari\n• oʻqituvchi tekshiruvlari va baholari\n• 19:00 da eslatma — ertaga topshiriladigan uy vazifasi boʻlsa yoki streak xavf ostida qolsa\n\nNimalar kelishini tanlash: Averna → Settings → Telegram."
+      ? "Bu yerga keladi:\n• oʻqituvchidan yangi uy vazifalari\n• oʻqituvchi tekshiruvlari va baholari\n• har kuni kechqurun (taxminan 19:00 da) eslatma — ertaga topshiriladigan uy vazifasi boʻlsa yoki streak xavf ostida qolsa\n\nNimalar kelishini tanlash: Averna → Settings → Telegram."
       : role === "teacher"
-        ? "Har kuni 19:00 da hisobot keladi: muddati bugun va kecha boʻlgan uy vazifalari (kim topshirmagan), tekshiruvingizni kutayotgan Writing/Speaking ishlari va 7+ kun faol boʻlmagan oʻquvchilar. Maktab eʼlonlari ham shu yerga keladi."
-        : "Har kuni 19:00 da kunlik xulosa keladi: yangi oʻquvchilar, tugallangan placement testlar, kutilayotgan toʻlovlar, tekshiruv kutayotgan ishlar va yaratilgan uy vazifalari.",
+        ? "Har kuni kechqurun (taxminan 19:00 da) hisobot keladi: muddati bugun va kecha boʻlgan uy vazifalari (kim topshirmagan), tekshiruvingizni kutayotgan Writing/Speaking ishlari va 7+ kun faol boʻlmagan oʻquvchilar. Maktab eʼlonlari ham shu yerga keladi."
+        : "Har kuni kechqurun (taxminan 19:00 da) kunlik xulosa keladi: yangi oʻquvchilar, tugallangan placement testlar, kutilayotgan toʻlovlar, tekshiruv kutayotgan ishlar va yaratilgan uy vazifalari.",
   linkedFooter: (role) =>
     role === "student"
       ? "/status — streak va navbatdagi uy vazifasi · /help — buyruqlar"
       : role === "teacher"
         ? "/status — hozirgi holat · /help — buyruqlar"
         : "/status — bugun hozirgacha · /help — buyruqlar",
+  replacedAccounts: (n) =>
+    `ℹ️ Bu chat avval ${n} hisobiga ulangan edi — u hisob boʻyicha xabarlar endi bu yerga kelmaydi (bu haqda unga Avernaʼda xabar berildi).`,
   parentWelcomeTitle: (names, count) => `✅ Ulandingiz. ${count > 1 ? "Oʻquvchilar" : "Oʻquvchi"}: ${names}`,
   parentWelcomeBody:
-    "Har yakshanba 19:00 da haftalik hisobot keladi: faol kunlar, testlar va oxirgi band, uy vazifalari, davomat, streak (ketma-ket faol kunlar) va oʻqituvchi tekshirgan ishlar.\n\n/status — shu hafta hozirgacha\n/lang — tilni oʻzgartirish\n/stop — xabarlarni toʻxtatish",
+    "Har yakshanba kechqurun (taxminan 19:00 da) haftalik hisobot keladi: faol kunlar, testlar va oxirgi band, uy vazifalari, davomat, streak (ketma-ket faol kunlar) va oʻqituvchi tekshirgan ishlar.\n\n/status — shu hafta hozirgacha\n/lang — tilni oʻzgartirish\n/stop — xabarlarni toʻxtatish\n/disconnect — ulanishni butunlay oʻchirish",
+  disconnectAsk: (names, count) =>
+    count > 1
+      ? `Bu chatga ${count} nafar oʻquvchining haftalik hisobotlari keladi: ${names}. Qaysi ulanishni oʻchiramiz? Qayta ulanish uchun oʻqituvchidan yangi taklif havolasi kerak boʻladi.`
+      : `Bu chatning hisobotlarga ulanishi oʻchirilsinmi (oʻquvchi: ${names})? Hisobotlar bu yerga endi kelmaydi, qayta ulanish uchun esa oʻqituvchidan yangi taklif havolasi kerak boʻladi.`,
+  disconnectYes: "✅ Ha, uzish",
+  disconnectChild: (n) => `Uzish: ${n}`,
+  disconnectAll: "Hammasini uzish",
+  disconnectCancel: "Bekor qilish",
+  disconnectCancelled: "Bekor qilindi — hech narsa oʻzgarmadi.",
+  disconnectGone: "Bu ulanish allaqachon oʻchirilgan.",
+  parentDisconnected: (names, count) =>
+    `✅ Ulanish oʻchirildi. Bu chatga endi hisobot kelmaydi (${count > 1 ? "oʻquvchilar" : "oʻquvchi"}: ${names}). Qayta ulanish uchun oʻqituvchidan yangi taklif havolasini soʻrang.`,
+  parentDisconnectedOne: (n, others) =>
+    `✅ Ulanish oʻchirildi (oʻquvchi: ${n}) — bu oʻquvchining hisobotlari endi bu chatga kelmaydi. Qolgan ulanishlar saqlandi: ${others}.`,
+  disconnectNotParent: "/disconnect — ota-onalar uchun. Averna hisobingizni uzish: Averna → Settings → Telegram → Disconnect.",
+  parentRemoved: (n) =>
+    `Maktab bu chatning hisobotlarga ulanishini oʻchirdi (oʻquvchi: ${n}). Xato boʻlsa, oʻqituvchidan yangi taklif havolasini soʻrang.`,
   who: (role, n) =>
     role === "parent"
       ? `${n} (ota-ona sifatida)`
@@ -428,6 +493,7 @@ const UZ: Dict = {
           : "farzandingizning shu haftasi",
   helpLang: "/lang — tilni oʻzgartirish (ota-onalar uchun)",
   helpStop: "/stop — xabarlarni toʻxtatish (/start — qayta yoqish)",
+  helpDisconnect: "/disconnect — ota-ona ulanishini butunlay oʻchirish (hisobotlar kelmaydi)",
   helpHelp: "/help — shu roʻyxat",
   helpSettings: "Xabar sozlamalari: Averna → Settings → Telegram.",
   testTitle: "✅ <b>Test xabar</b>",
@@ -474,10 +540,13 @@ const UZ: Dict = {
   testsLabel: "Testlar:",
   testItem: (s, c, band) => `${s} — ${c} ta${band ? ` (oxirgi band ${band})` : ""}`,
   noTests: "Testlar: bu hafta yoʻq",
-  homeworkLine: (s, a) => `Uy vazifalari: ${a} tadan ${s} tasi topshirildi`,
+  homeworkLine: (s, a) => `Muddati tugagan uy vazifalari: ${a} tadan ${s} tasi topshirildi`,
   noHomeworkWeek: "Uy vazifalari: bu hafta muddati tugaydiganlari yoʻq",
-  missingLine: (l) => `Topshirilmagan: ${l}`,
-  missingItem: (t, d) => `${t} (muddati ${d})`,
+  noHomeworkDueYet: "Uy vazifalari: bu hafta hali muddati tugaganlari yoʻq",
+  handedInEarly: (n, afterDue) => `${afterDue ? "yana " : ""}${n} tasi muddatidan oldin topshirildi`,
+  missedLine: (l) => `Topshirilmagan (muddati oʻtgan): ${l}`,
+  toDoLine: (l) => `Hali topshirilishi kerak: ${l}`,
+  dueItem: (t, d) => `${t} (muddati ${d})`,
   attendanceLine: (a) => `Davomat: keldi ${a.present}, kelmadi ${a.absent}, kechikdi ${a.late}${a.excused ? `, sababli ${a.excused}` : ""}`,
   noAttendance: "Davomat: bu hafta belgilanmagan",
   streakLine: (d) => `Streak: ketma-ket ${d} kun`,
@@ -487,7 +556,6 @@ const UZ: Dict = {
 
 const RU: Dict = {
   openApp: "Открыть в Averna",
-  privateOnly: "Пожалуйста, напишите мне в личном чате — в группах я не работаю.",
   unknown: "Не понял. Отправьте /help — там список команд.",
   failed: "Что-то пошло не так — попробуйте ещё раз через минуту.",
   codeInvalid: "Эта ссылка недействительна. Получите новую в Averna → Settings → Telegram.",
@@ -510,19 +578,38 @@ const RU: Dict = {
   linkedTitle: (n) => `✅ Telegram подключён к аккаунту ${n}.`,
   linkedBody: (role) =>
     role === "student"
-      ? "Сюда будут приходить:\n• новые домашние задания от учителя\n• проверки и оценки учителя\n• напоминание в 19:00, если завтра срок сдачи задания или серия под угрозой\n\nВыбрать, что присылать: Averna → Settings → Telegram."
+      ? "Сюда будут приходить:\n• новые домашние задания от учителя\n• проверки и оценки учителя\n• напоминание каждый вечер (около 19:00), если завтра срок сдачи задания или серия под угрозой\n\nВыбрать, что присылать: Averna → Settings → Telegram."
       : role === "teacher"
-        ? "Каждый день в 19:00 — отчёт: домашние задания со сроком сегодня и вчера (кто не сдал), работы Writing/Speaking, ожидающие вашей проверки, и ученики, неактивные 7+ дней. Объявления школы тоже приходят сюда."
-        : "Каждый день в 19:00 — сводка: новые ученики, завершённые placement-тесты, ожидающие платежи, работы на проверке и созданные домашние задания.",
+        ? "Каждый вечер (около 19:00) — отчёт: домашние задания со сроком сегодня и вчера (кто не сдал), работы Writing/Speaking, ожидающие вашей проверки, и ученики, неактивные 7+ дней. Объявления школы тоже приходят сюда."
+        : "Каждый вечер (около 19:00) — сводка: новые ученики, завершённые placement-тесты, ожидающие платежи, работы на проверке и созданные домашние задания.",
   linkedFooter: (role) =>
     role === "student"
       ? "/status — серия и ближайшее задание · /help — команды"
       : role === "teacher"
         ? "/status — текущее состояние · /help — команды"
         : "/status — сегодня на данный момент · /help — команды",
+  replacedAccounts: (n) =>
+    `ℹ️ Раньше этот чат был подключён к аккаунту ${n} — уведомления этого аккаунта сюда больше не приходят (ему сообщили в Averna).`,
   parentWelcomeTitle: (names, count) => `✅ Готово. ${count > 1 ? "Ученики" : "Ученик"}: ${names}`,
   parentWelcomeBody:
-    "Каждое воскресенье в 19:00 будет приходить недельный отчёт: активные дни, тесты и последний балл, домашние задания, посещаемость, серия занятий и работы, проверенные учителем.\n\n/status — эта неделя на данный момент\n/lang — сменить язык\n/stop — отключить уведомления",
+    "Каждое воскресенье вечером (около 19:00) будет приходить недельный отчёт: активные дни, тесты и последний балл, домашние задания, посещаемость, серия занятий и работы, проверенные учителем.\n\n/status — эта неделя на данный момент\n/lang — сменить язык\n/stop — отключить уведомления\n/disconnect — полностью удалить подключение",
+  disconnectAsk: (names, count) =>
+    count > 1
+      ? `Этот чат получает недельные отчёты по ученикам: ${names}. Какое подключение удалить? Чтобы подключиться снова, понадобится новая ссылка-приглашение от учителя.`
+      : `Отключить этот чат от отчётов (ученик: ${names})? Отчёты больше не будут приходить сюда, а чтобы подключиться снова, понадобится новая ссылка-приглашение от учителя.`,
+  disconnectYes: "✅ Да, отключить",
+  disconnectChild: (n) => `Отключить: ${n}`,
+  disconnectAll: "Отключить всех",
+  disconnectCancel: "Отмена",
+  disconnectCancelled: "Отменено — ничего не изменилось.",
+  disconnectGone: "Это подключение уже удалено.",
+  parentDisconnected: (names, count) =>
+    `✅ Подключение удалено. Отчёты больше не будут приходить в этот чат (${count > 1 ? "ученики" : "ученик"}: ${names}). Чтобы подключиться снова, попросите у учителя новую ссылку-приглашение.`,
+  parentDisconnectedOne: (n, others) =>
+    `✅ Подключение удалено (ученик: ${n}) — отчёты по этому ученику больше не будут приходить в этот чат. Остальные подключения сохранены: ${others}.`,
+  disconnectNotParent: "/disconnect — для родителей. Чтобы отключить аккаунт Averna, откройте Averna → Settings → Telegram → Disconnect.",
+  parentRemoved: (n) =>
+    `Школа удалила подключение этого чата к отчётам (ученик: ${n}). Если это ошибка, попросите у учителя новую ссылку-приглашение.`,
   who: (role, n) =>
     role === "parent" ? `${n} (как родитель)` : `${n} (${role === "student" ? "ученик" : role === "teacher" ? "учитель" : "администратор"})`,
   connectedTitle: "Этот чат подключён к Averna:",
@@ -537,6 +624,7 @@ const RU: Dict = {
           : "неделя ребёнка на данный момент",
   helpLang: "/lang — сменить язык (для родителей)",
   helpStop: "/stop — отключить уведомления (/start — включить снова)",
+  helpDisconnect: "/disconnect — полностью удалить родительское подключение (отчёты больше не придут)",
   helpHelp: "/help — этот список",
   helpSettings: "Настройки уведомлений: Averna → Settings → Telegram.",
   testTitle: "✅ <b>Тестовое сообщение</b>",
@@ -582,10 +670,13 @@ const RU: Dict = {
   testsLabel: "Тесты:",
   testItem: (s, c, band) => `${s} — ${c}${band ? ` (последний балл ${band})` : ""}`,
   noTests: "Тесты: на этой неделе не было",
-  homeworkLine: (s, a) => `Домашние задания: сдано ${s} из ${a}`,
+  homeworkLine: (s, a) => `Задания с истёкшим сроком: сдано ${s} из ${a}`,
   noHomeworkWeek: "Домашние задания: на этой неделе сроков не было",
-  missingLine: (l) => `Не сдано: ${l}`,
-  missingItem: (t, d) => `${t} (срок ${d})`,
+  noHomeworkDueYet: "Домашние задания: сроки на этой неделе ещё не наступили",
+  handedInEarly: (n, afterDue) => (afterDue ? `ещё ${n} сдано досрочно` : `${n} уже сдано досрочно`),
+  missedLine: (l) => `Не сдано (срок прошёл): ${l}`,
+  toDoLine: (l) => `Ещё предстоит сдать: ${l}`,
+  dueItem: (t, d) => `${t} (срок ${d})`,
   attendanceLine: (a) =>
     `Посещаемость: присутствие — ${a.present}, пропуски — ${a.absent}, опоздания — ${a.late}${a.excused ? `, по уважительной причине — ${a.excused}` : ""}`,
   noAttendance: "Посещаемость: на этой неделе отметок нет",
@@ -608,18 +699,21 @@ export const BOT_COMMANDS: Record<Lang, { command: string; description: string }
     { command: "help", description: "Buyruqlar roʻyxati" },
     { command: "lang", description: "Tilni oʻzgartirish (ota-onalar uchun)" },
     { command: "stop", description: "Xabarlarni toʻxtatish" },
+    { command: "disconnect", description: "Ota-ona ulanishini oʻchirish" },
   ],
   ru: [
     { command: "status", description: "Текущее состояние" },
     { command: "help", description: "Список команд" },
     { command: "lang", description: "Сменить язык (для родителей)" },
     { command: "stop", description: "Отключить уведомления" },
+    { command: "disconnect", description: "Удалить родительское подключение" },
   ],
   en: [
     { command: "status", description: "Your status right now" },
     { command: "help", description: "List of commands" },
     { command: "lang", description: "Change language (parents)" },
     { command: "stop", description: "Turn notifications off" },
+    { command: "disconnect", description: "Remove a parent connection (parents)" },
   ],
 };
 
@@ -671,9 +765,85 @@ export function chooseLanguageText(children: string[]): string {
   ]);
 }
 
-export function linkedText(lang: Lang, role: UserLinkRole, name: string): string {
+/** `replaced`: other accounts this chat was linked to until now (unlinked, told in the app). */
+export function linkedText(lang: Lang, role: UserLinkRole, name: string, replaced: string[] = []): string {
   const L = tr(lang);
-  return joinLines([L.linkedTitle(b(name, 60)), "", L.linkedBody(role), "", L.linkedFooter(role)]);
+  return joinLines([
+    L.linkedTitle(b(name, 60)),
+    ...(replaced.length ? ["", L.replacedAccounts(replaced.map((r) => b(r, 60)).join(", "))] : []),
+    "",
+    L.linkedBody(role),
+    "",
+    L.linkedFooter(role),
+  ]);
+}
+
+const boldNames = (names: string[]): string => (names.length ? names.map((c) => b(c, 60)).join(", ") : "—");
+
+/** Parent's /disconnect: the question, naming the chat's children (nothing is removed yet). */
+export function disconnectAskText(lang: Lang, children: string[]): string {
+  return tr(lang).disconnectAsk(boldNames(children), children.length);
+}
+
+/**
+ * Callback data of the /disconnect buttons (≤ 64 bytes): "dc:s:<studentId>" one
+ * child, "dc:all" every parent link of the chat, "dc:no" cancel.
+ */
+export const DISCONNECT_DATA = { cancel: "dc:no", all: "dc:all", childPrefix: "dc:s:" } as const;
+/** Student ids that fit the callback data (cuid: 25 characters). */
+export const DISCONNECT_STUDENT_ID_RE = /^[A-Za-z0-9_-]{1,59}$/;
+
+/**
+ * The /disconnect buttons. One child: Yes / Cancel. Several: one button per
+ * child, "all" and Cancel. Button texts are plain (Telegram doesn't parse them).
+ */
+export function disconnectKeyboard(lang: Lang, children: { studentId: string | null; name: string }[]): Keyboard {
+  const L = tr(lang);
+  const cancel = { text: L.disconnectCancel, callback_data: DISCONNECT_DATA.cancel };
+  const one = (c: { studentId: string | null }) =>
+    c.studentId && DISCONNECT_STUDENT_ID_RE.test(c.studentId) ? `${DISCONNECT_DATA.childPrefix}${c.studentId}` : null;
+  if (children.length <= 1) {
+    return [[{ text: L.disconnectYes, callback_data: (children[0] && one(children[0])) || DISCONNECT_DATA.all }, cancel]];
+  }
+  const rows: Keyboard = [];
+  for (const c of children) {
+    const data = one(c);
+    if (data) rows.push([{ text: L.disconnectChild(clip(c.name, 40) || "—"), callback_data: data }]);
+  }
+  rows.push([{ text: L.disconnectAll, callback_data: DISCONNECT_DATA.all }], [cancel]);
+  return rows;
+}
+
+/** Parent's /disconnect confirmed: the chat's parent links (these children) are gone. */
+export function parentDisconnectedText(lang: Lang, children: string[]): string {
+  return tr(lang).parentDisconnected(boldNames(children), children.length);
+}
+
+/** One child's parent link removed from a chat that keeps the others. */
+export function parentDisconnectedOneText(lang: Lang, child: string, others: string[]): string {
+  return tr(lang).parentDisconnectedOne(b(child || "—", 60), boldNames(others));
+}
+
+/** Staff removed this chat's parent link (parent report → Remove). */
+export function parentRemovedText(lang: Lang, childName: string): string {
+  return tr(lang).parentRemoved(b(childName || "—", 60));
+}
+
+/**
+ * The in-app notice (plain text) for an account whose chat was taken by
+ * another account's link: English for students, Uzbek for staff.
+ */
+export function displacedNotice(role: UserLinkRole, newAccountName: string): { title: string; message: string } {
+  const who = clip(newAccountName, 60) || "—";
+  return role === "student"
+    ? {
+        title: "Telegram disconnected",
+        message: `Your Telegram chat is now connected to another Averna account (${who}), so Telegram notifications for your account have stopped. To connect again: Settings → Telegram → Connect Telegram.`,
+      }
+    : {
+        title: "Telegram uzildi",
+        message: `Telegramʼingiz boshqa Averna hisobiga ulandi (${who}) — hisobingiz boʻyicha Telegram xabarlari endi kelmaydi. Qayta ulash: Settings → Telegram → Connect Telegram.`,
+      };
 }
 
 export function parentWelcomeText(lang: Lang, children: string[]): string {
@@ -711,6 +881,7 @@ export function helpText(lang: Lang, roles: LinkRole[]): string {
     `/status — ${status}`,
     unique.includes("parent") ? L.helpLang : null,
     L.helpStop,
+    unique.includes("parent") ? L.helpDisconnect : null,
     L.helpHelp,
     hasUser ? "" : null,
     hasUser ? L.helpSettings : null,
@@ -774,20 +945,26 @@ export function adminSummaryText(lang: Lang, s: AdminSummary, mode: "daily" | "s
 export function weeklyReportText(lang: Lang, r: WeeklyReport, mode: "weekly" | "status"): string {
   const L = tr(lang);
   const tests = r.tests.map((t) => L.testItem(SKILL_NAME[t.skill], t.count, t.latestBand == null ? null : fmtBand(t.latestBand)));
-  const missing: DueItem[] = r.homework.missing;
-  const shownMissing = missing.slice(0, CAPS.missingHomework).map((m) => L.missingItem(b(m.title, 60), fmtDue(m.dueDate, lang)));
+  const hw = r.homework;
+  const list = (items: DueItem[], line: (listHtml: string) => string): string | null => {
+    if (!items.length) return null;
+    const shown = items.slice(0, CAPS.missingHomework).map((m) => L.dueItem(b(m.title, 60), fmtDue(m.dueDate, lang)));
+    return `   ${line(shown.join(", "))}${items.length > shown.length ? ` ${L.andMore(items.length - shown.length)}` : ""}`;
+  };
   const a = r.attendance;
   const marked = a.present + a.absent + a.late + a.excused;
+  // Handed in before a deadline that hasn't come yet — credited even when nothing is due so far.
+  const early = hw.early > 0 ? ` · ${L.handedInEarly(hw.early, hw.due > 0)}` : "";
   return joinLines([
     `📘 <b>${L.weeklyTitle(mode)}</b> · ${fmtRange(r.weekStart, r.lastDay, lang)}`,
     L.studentLine(b(r.name, 60)),
     "",
     `📅 ${L.activeDays(r.activeDays, r.days)}`,
     `📝 ${tests.length ? `${L.testsLabel} ${tests.join(", ")}` : L.noTests}`,
-    `📚 ${r.homework.assigned ? L.homeworkLine(r.homework.submitted, r.homework.assigned) : L.noHomeworkWeek}`,
-    shownMissing.length
-      ? `   ${L.missingLine(shownMissing.join(", "))}${missing.length > shownMissing.length ? ` ${L.andMore(missing.length - shownMissing.length)}` : ""}`
-      : null,
+    // "X of Y submitted" only over homework already due; the rest is "still to do" (or early), not missed.
+    `📚 ${hw.due ? L.homeworkLine(hw.submitted, hw.due) : hw.total ? L.noHomeworkDueYet : L.noHomeworkWeek}${early}`,
+    list(hw.missed, L.missedLine),
+    list(hw.toDo, L.toDoLine),
     `🏫 ${marked ? L.attendanceLine(a) : L.noAttendance}`,
     `🔥 ${r.streak > 0 ? L.streakLine(r.streak) : L.noStreak}`,
     `✍️ ${L.reviewsWeek(r.reviews)}`,

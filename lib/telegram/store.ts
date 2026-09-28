@@ -3,18 +3,18 @@
  * database-backed BotStore and the Telegram-backed BotApi. SERVER ONLY.
  */
 
+import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
+import { notifyUser } from "@/lib/notifications";
 import { answerCallbackQuery, editMessageText, sendMessage } from "./api";
 import { hashLinkCode } from "./codes";
 import { appBaseUrl } from "./config";
-import { asLang, langForRole } from "./messages";
+import { asLang, displacedNotice, langForRole } from "./messages";
 import { markChatsInactive } from "./notify";
 import { defaultPrefs } from "./prefs";
 import { loadAdminSummary, loadStudentStatus, loadTeacherStatus, loadWeeklyReports } from "./reports";
-import type { BotApi, BotDeps, BotStore, ChatLink, StatusData } from "./webhook";
-import { asRole, USER_LINK_ROLE, type CodeKind } from "./types";
-
-const isUniqueViolation = (e: unknown) => !!e && typeof e === "object" && (e as { code?: unknown }).code === "P2002";
+import type { BotApi, BotDeps, BotStore, ChatInfo, ChatLink, ParentLinkResult, RedeemResult, StatusData, UserLinkResult } from "./webhook";
+import { asRole, USER_LINK_ROLE, type CodeKind, type Lang, type UserLinkRole } from "./types";
 
 type LinkRow = {
   id: string;
@@ -27,88 +27,128 @@ type LinkRow = {
   student: { user: { name: string | null } | null } | null;
 };
 
+/** An account whose link to this chat was just replaced. */
+type Displaced = { userId: string; role: UserLinkRole; name: string };
+
+/** One Averna account per chat: another account linked here is unlinked (and reported back as displaced). */
+async function linkUserIn(
+  tx: Prisma.TransactionClient,
+  userId: string,
+  chat: ChatInfo,
+  now: Date
+): Promise<{ link: UserLinkResult; displaced: Displaced[] }> {
+  const user: { name: string | null; email: string; role: string } | null = await tx.user.findUnique({
+    where: { id: userId },
+    select: { name: true, email: true, role: true },
+  });
+  if (!user) return { link: { ok: false, reason: "account_missing" }, displaced: [] };
+  const role = USER_LINK_ROLE[String(user.role)];
+  if (!role) return { link: { ok: false, reason: "parent_account" }, displaced: [] };
+  const language = langForRole(role);
+
+  const others = { chatId: chat.id, studentId: null, userId: { not: null }, NOT: { userId } };
+  const rows: { userId: string | null; role: string; user: { name: string | null; email: string } | null }[] = await tx.telegramLink.findMany({
+    where: others,
+    select: { userId: true, role: true, user: { select: { name: true, email: true } } },
+  });
+  const displaced: Displaced[] = [];
+  for (const r of rows) {
+    const otherRole = asRole(r.role);
+    if (!r.userId || !otherRole || otherRole === "parent") continue;
+    displaced.push({ userId: r.userId, role: otherRole, name: r.user?.name?.trim() || r.user?.email || "—" });
+  }
+  if (rows.length) await tx.telegramLink.deleteMany({ where: others });
+
+  await tx.telegramLink.upsert({
+    where: { userId },
+    create: {
+      chatId: chat.id,
+      role,
+      userId,
+      language,
+      username: chat.username,
+      firstName: chat.firstName,
+      active: true,
+      prefs: defaultPrefs(),
+      linkedAt: now,
+    },
+    // Preferences survive re-linking.
+    update: { chatId: chat.id, role, language, username: chat.username, firstName: chat.firstName, active: true, linkedAt: now },
+  });
+  const name = user.name?.trim() || user.email;
+  return { link: { ok: true, role, name, language, replaced: displaced.map((d) => d.name) }, displaced };
+}
+
+async function linkParentIn(
+  tx: Prisma.TransactionClient,
+  studentId: string,
+  chat: ChatInfo,
+  language: Lang,
+  now: Date
+): Promise<ParentLinkResult> {
+  const student: { user: { name: string | null } | null } | null = await tx.student.findUnique({
+    where: { id: studentId },
+    select: { user: { select: { name: true } } },
+  });
+  if (!student) return { ok: false, reason: "student_missing" };
+  const childName = student.user?.name?.trim() || "—";
+  const refresh = { role: "parent", username: chat.username, firstName: chat.firstName, active: true, linkedAt: now };
+  const existing: { id: string; language: string } | null = await tx.telegramLink.findFirst({
+    where: { chatId: chat.id, studentId },
+    select: { id: true, language: true },
+  });
+  if (existing) {
+    await tx.telegramLink.update({ where: { id: existing.id }, data: refresh });
+    return { ok: true, childName, language: asLang(existing.language) };
+  }
+  // A unique violation here (another invite for this child redeemed in this chat at the same moment)
+  // rolls the transaction back: the code stays unused, and the next Start finds the link above.
+  await tx.telegramLink.create({
+    data: { ...refresh, chatId: chat.id, studentId, language, prefs: defaultPrefs() },
+  });
+  return { ok: true, childName, language };
+}
+
 export function createBotStore(): BotStore {
   return {
-    async claimCode(code, now) {
+    async redeemCode({ code, chat, now, parentLanguage }) {
       const hash = hashLinkCode(code);
-      const row: { kind: string; userId: string | null; studentId: string | null; expiresAt: Date; usedAt: Date | null } | null =
-        await db.telegramLinkCode.findUnique({
-          where: { code: hash },
-          select: { kind: true, userId: true, studentId: true, expiresAt: true, usedAt: true },
+      let displaced: Displaced[] = [];
+      // Claim and link in one transaction: if linking throws, the claim is rolled back too.
+      const out: RedeemResult = await db.$transaction(async (tx: Prisma.TransactionClient): Promise<RedeemResult> => {
+        const row: { kind: string; userId: string | null; studentId: string | null; expiresAt: Date; usedAt: Date | null } | null =
+          await tx.telegramLinkCode.findUnique({
+            where: { code: hash },
+            select: { kind: true, userId: true, studentId: true, expiresAt: true, usedAt: true },
+          });
+        if (!row) return { status: "invalid" };
+        const kind: CodeKind = row.kind === "parent" ? "parent" : "user";
+        const base = { kind, userId: row.userId ?? null, studentId: row.studentId ?? null };
+        if (row.usedAt) return { status: "used", ...base };
+        if (new Date(row.expiresAt).getTime() <= now.getTime()) return { status: "expired", ...base };
+        // Single use even under concurrent /start: only one UPDATE can flip usedAt (a second one
+        // waits for this transaction, then finds the code used).
+        const won: { count: number } = await tx.telegramLinkCode.updateMany({
+          where: { code: hash, usedAt: null, expiresAt: { gt: now } },
+          data: { usedAt: now },
         });
-      if (!row) return { status: "invalid" };
-      const kind: CodeKind = row.kind === "parent" ? "parent" : "user";
-      const base = { kind, userId: row.userId ?? null, studentId: row.studentId ?? null };
-      if (row.usedAt) return { status: "used", ...base };
-      if (new Date(row.expiresAt).getTime() <= now.getTime()) return { status: "expired", ...base };
-      // Single use even under concurrent /start: only one UPDATE can flip usedAt.
-      const won: { count: number } = await db.telegramLinkCode.updateMany({
-        where: { code: hash, usedAt: null, expiresAt: { gt: now } },
-        data: { usedAt: now },
+        if (won.count !== 1) return { status: "used", ...base };
+        if (kind === "user") {
+          if (!row.userId) return { status: "ok", kind, link: { ok: false, reason: "account_missing" } };
+          const r = await linkUserIn(tx, row.userId, chat, now);
+          displaced = r.displaced;
+          return { status: "ok", kind, link: r.link };
+        }
+        if (!row.studentId) return { status: "ok", kind, link: { ok: false, reason: "student_missing" } };
+        return { status: "ok", kind, link: await linkParentIn(tx, row.studentId, chat, parentLanguage, now) };
       });
-      return { status: won.count === 1 ? "ok" : "used", ...base };
-    },
-
-    async releaseCode(code) {
-      await db.telegramLinkCode.updateMany({ where: { code: hashLinkCode(code) }, data: { usedAt: null } });
-    },
-
-    async linkUser({ userId, chat, now }) {
-      const user: { name: string | null; email: string; role: string } | null = await db.user.findUnique({
-        where: { id: userId },
-        select: { name: true, email: true, role: true },
-      });
-      if (!user) return { ok: false, reason: "account_missing" };
-      const role = USER_LINK_ROLE[String(user.role)];
-      if (!role) return { ok: false, reason: "parent_account" };
-      const language = langForRole(role);
-      // One Averna account per chat: another account linked here is unlinked.
-      await db.telegramLink.deleteMany({ where: { chatId: chat.id, studentId: null, userId: { not: null }, NOT: { userId } } });
-      await db.telegramLink.upsert({
-        where: { userId },
-        create: {
-          chatId: chat.id,
-          role,
-          userId,
-          language,
-          username: chat.username,
-          firstName: chat.firstName,
-          active: true,
-          prefs: defaultPrefs(),
-          linkedAt: now,
-        },
-        // Preferences survive re-linking.
-        update: { chatId: chat.id, role, language, username: chat.username, firstName: chat.firstName, active: true, linkedAt: now },
-      });
-      return { ok: true, role, name: user.name?.trim() || user.email, language };
-    },
-
-    async linkParent({ studentId, chat, language, now }) {
-      const student: { user: { name: string | null } | null } | null = await db.student.findUnique({
-        where: { id: studentId },
-        select: { user: { select: { name: true } } },
-      });
-      if (!student) return { ok: false, reason: "student_missing" };
-      const childName = student.user?.name?.trim() || "—";
-      const refresh = { role: "parent", username: chat.username, firstName: chat.firstName, active: true, linkedAt: now };
-      const existing: { id: string; language: string } | null = await db.telegramLink.findFirst({
-        where: { chatId: chat.id, studentId },
-        select: { id: true, language: true },
-      });
-      if (existing) {
-        await db.telegramLink.update({ where: { id: existing.id }, data: refresh });
-        return { ok: true, childName, language: asLang(existing.language) };
+      // Committed: an account this chat was taken from hears it in the app (its Telegram link is gone).
+      if (out.status === "ok" && out.kind === "user" && out.link.ok) {
+        for (const d of displaced) {
+          await notifyUser(d.userId, { type: "system", link: "/settings", ...displacedNotice(d.role, out.link.name) });
+        }
       }
-      try {
-        await db.telegramLink.create({
-          data: { ...refresh, chatId: chat.id, studentId, language, prefs: defaultPrefs() },
-        });
-      } catch (e) {
-        if (!isUniqueViolation(e)) throw e;
-        // A concurrent /start created it first.
-        await db.telegramLink.updateMany({ where: { chatId: chat.id, studentId }, data: refresh });
-      }
-      return { ok: true, childName, language };
+      return out;
     },
 
     async chatLinks(chatId) {
@@ -149,6 +189,11 @@ export function createBotStore(): BotStore {
 
     async setParentLanguage(chatId, language) {
       await db.telegramLink.updateMany({ where: { chatId, role: "parent" }, data: { language } });
+    },
+
+    async removeParentLinks(chatId, studentId) {
+      // Always scoped to this chat: a button press can't reach another chat's links.
+      await db.telegramLink.deleteMany({ where: { chatId, role: "parent", ...(studentId ? { studentId } : {}) } });
     },
 
     async status(link, now): Promise<StatusData | null> {

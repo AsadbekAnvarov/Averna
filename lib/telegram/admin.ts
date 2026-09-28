@@ -1,15 +1,18 @@
 /**
- * Admin → Telegram: configuration and bot status, installing the webhook and a
- * test message to the admin's own chat. Error texts are Uzbek (admin UI).
+ * Admin → Telegram: configuration and bot status (with the latest daily-job
+ * runs and what they did), installing the webhook on the app's public URL and
+ * a test message to the admin's own chat. Error texts are Uzbek (admin UI).
  * SERVER ONLY.
  */
 
+import { STALE_RUN_MS } from "@/lib/cron/once";
 import { db } from "@/lib/db";
 import { getMe, getWebhookInfo, sendMessage, setMyCommands, setWebhook } from "./api";
-import { botToken, botUsername, publicOrigin, telegramConfig, webhookSecret, WEBHOOK_PATH } from "./config";
+import { appBaseUrl, botToken, botUsername, publicOrigin, telegramConfig, webhookSecret, WEBHOOK_PATH } from "./config";
+import { readCronRun } from "./cron-runs";
 import { asLang, BOT_COMMANDS, testMessageText } from "./messages";
 import { markChatsInactive } from "./notify";
-import type { LinkRole, RoleCounts, TelegramAdminStatus } from "./types";
+import type { CronRunInfo, LinkRole, RoleCounts, TelegramAdminStatus } from "./types";
 
 type Result = { ok: true; message: string } | { ok: false; error: string };
 
@@ -25,6 +28,43 @@ export function requestOrigin(headers: { get(name: string): string | null }): st
 export function webhookUrlFor(origin: string | null): string | null {
   const o = publicOrigin(origin);
   return o ? `${o}${WEBHOOK_PATH}` : null;
+}
+
+/** A Vercel preview deployment (VERCEL_ENV=preview): its env and Deployment Protection aren't production's. */
+export function isPreviewDeployment(): boolean {
+  return (process.env.VERCEL_ENV ?? "").trim().toLowerCase() === "preview";
+}
+
+/**
+ * Where the one bot's webhook must point — never the preview or alias the
+ * admin happens to be on:
+ *   1. the app's configured public URL (appBaseUrl: NEXTAUTH_URL, when it is
+ *      https and not localhost) — the domain the admin chose, which must answer
+ *      directly: Telegram doesn't follow a redirect (an apex → www 308 …);
+ *   2. else the production domain Vercel gives this project (VERCEL_PROJECT_PRODUCTION_URL,
+ *      the shortest one — appBaseUrl's own fallback);
+ *   3. else the request's origin (self-hosted).
+ */
+export function webhookTargetUrl(origin: string | null): string | null {
+  return webhookUrlFor(appBaseUrl()) ?? webhookUrlFor(origin);
+}
+
+const CRON_RUNS_SHOWN = 6;
+
+async function recentCronRuns(): Promise<CronRunInfo[]> {
+  try {
+    const rows: { job: string; day: string; status: string; details: unknown; updatedAt: Date }[] = await db.cronRun.findMany({
+      orderBy: { updatedAt: "desc" },
+      take: CRON_RUNS_SHOWN,
+      select: { job: true, day: true, status: true, details: true, updatedAt: true },
+    });
+    // Counts from details, and a "running" row older than STALE_RUN_MS reads as interrupted.
+    const now = Date.now();
+    return rows.map((r) => readCronRun(r, now, STALE_RUN_MS));
+  } catch (e) {
+    console.error("Telegram admin: cron runs failed:", e);
+    return [];
+  }
 }
 
 async function roleCounts(): Promise<RoleCounts> {
@@ -51,13 +91,14 @@ async function roleCounts(): Promise<RoleCounts> {
 
 export async function telegramAdminStatus(origin: string | null, userId: string): Promise<TelegramAdminStatus> {
   const config = telegramConfig();
-  const [me, info, counts, mine] = await Promise.all([
+  const [me, info, counts, mine, cronRuns] = await Promise.all([
     config.token ? getMe({ timeoutMs: 4000, retries: 0 }) : Promise.resolve(null),
     config.token ? getWebhookInfo({ timeoutMs: 4000, retries: 0 }) : Promise.resolve(null),
     roleCounts(),
     db.telegramLink
       .findUnique({ where: { userId }, select: { active: true, username: true } })
       .catch(() => null) as Promise<{ active: boolean; username: string | null } | null>,
+    recentCronRuns(),
   ]);
 
   const bot: TelegramAdminStatus["bot"] =
@@ -85,23 +126,41 @@ export async function telegramAdminStatus(origin: string | null, userId: string)
     bot,
     usernameMatches: bot && bot.ok && config.username ? bot.username.toLowerCase() === config.username.toLowerCase() : null,
     webhook,
-    expectedWebhookUrl: webhookUrlFor(origin),
+    expectedWebhookUrl: webhookTargetUrl(origin),
+    preview: isPreviewDeployment(),
     counts,
+    cronRuns,
     me: { linked: !!mine, active: !!mine?.active, username: mine?.username ?? null },
     checkedAt: new Date().toISOString(),
   };
 }
 
-/** setWebhook(<origin>/api/telegram/webhook, secret) + the "/" command menu (uz default, ru, en). */
+/**
+ * setWebhook(<webhookTargetUrl>, secret) + the "/" command menu (uz default,
+ * ru, en). Refused on a preview deployment: the one bot must never point at a
+ * preview (Deployment Protection answers 401, the bot goes quiet).
+ */
 export async function installWebhook(origin: string | null): Promise<Result> {
+  if (isPreviewDeployment()) {
+    return {
+      ok: false,
+      error:
+        "Bu preview deployment — webhook bu yerdan oʻrnatilmaydi, aks holda bot hamma uchun ishlamay qoladi. Shu sahifani production saytida oching va qayta bosing.",
+    };
+  }
   if (!botToken()) return { ok: false, error: "TELEGRAM_BOT_TOKEN oʻrnatilmagan." };
   if (!botUsername()) return { ok: false, error: "TELEGRAM_BOT_USERNAME yoʻq yoki notoʻgʻri (@ belgisisiz, masalan AvernaSchoolBot)." };
   const secret = webhookSecret();
   if (!secret) {
     return { ok: false, error: "TELEGRAM_WEBHOOK_SECRET yoʻq yoki notoʻgʻri: 16–256 ta belgi, faqat A–Z, a–z, 0–9, _ va -." };
   }
-  const url = webhookUrlFor(origin);
-  if (!url) return { ok: false, error: "Webhook faqat ochiq HTTPS manzilda ishlaydi — sahifani sayt domeni orqali oching." };
+  const url = webhookTargetUrl(origin);
+  if (!url) {
+    return {
+      ok: false,
+      error: "Webhook faqat ochiq HTTPS manzilda ishlaydi — NEXTAUTH_URL ga saytning https manzilini yozing yoki sahifani sayt domeni orqali oching.",
+    };
+  }
   const r = await setWebhook(url, secret);
   if (!r.ok) return { ok: false, error: `Telegram rad etdi: ${r.description}` };
   const menus = await Promise.all([

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { runAfterResponse } from "@/lib/after-response";
 import { safeEqual } from "@/lib/telegram/codes";
 import { SECRET_HEADER, telegramReady, webhookSecret } from "@/lib/telegram/config";
 import { botDeps } from "@/lib/telegram/store";
@@ -18,7 +19,10 @@ const HANDLE_BUDGET_MS = 9000;
  * Only requests carrying X-Telegram-Bot-Api-Secret-Token equal to
  * TELEGRAM_WEBHOOK_SECRET are processed (constant-time compare); everything
  * else is rejected. A verified update is always answered 200 — errors are
- * logged, never retried by Telegram, never thrown.
+ * logged, never retried by Telegram, never thrown. An update still being
+ * handled after HANDLE_BUDGET_MS is answered and finished after the response
+ * (runAfterResponse); a /start code is claimed and linked in one transaction,
+ * so a cut-off can't spend it without linking.
  */
 export async function POST(req: NextRequest) {
   const secret = webhookSecret();
@@ -41,12 +45,15 @@ export async function POST(req: NextRequest) {
   if (update) {
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
-      await Promise.race([
-        handleUpdate(update, botDeps()),
-        new Promise<void>((resolve) => {
-          timer = setTimeout(resolve, HANDLE_BUDGET_MS);
+      const work = handleUpdate(update, botDeps()); // never throws
+      const finished = await Promise.race([
+        work.then(() => true),
+        new Promise<boolean>((resolve) => {
+          timer = setTimeout(() => resolve(false), HANDLE_BUDGET_MS);
         }),
       ]);
+      // Still running (slow database …): answer now and keep the function alive until it's done.
+      if (!finished) void runAfterResponse("Telegram update", () => work);
     } catch (e) {
       console.error("Telegram webhook failed:", e);
     } finally {

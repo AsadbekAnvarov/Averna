@@ -6,8 +6,9 @@ export const dynamic = "force-dynamic";
 
 /**
  * Admin → Telegram.
- *   GET                              status (config, bot, webhook, linked chats)
- *   POST { action: "set_webhook" }   setWebhook → <this origin>/api/telegram/webhook (+ command menu)
+ *   GET                              status (config, bot, webhook, linked chats, latest cron runs with counts)
+ *   POST { action: "set_webhook" }   setWebhook → <app URL: NEXTAUTH_URL, else the production domain>/api/telegram/webhook
+ *                                    (+ command menu); refused on a preview deployment
  *   POST { action: "test_message" }  a test message to the admin's own linked chat
  * POST answers { ok, message | error, status }.
  */

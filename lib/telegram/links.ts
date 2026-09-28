@@ -5,17 +5,28 @@
  *   user code   — the signed-in student / teacher / admin, 15 minutes, single use;
  *                 creating one drops the user's older unused codes;
  *   parent code — only a teacher of the student's group or an admin, 7 days,
- *                 single use (one per parent); at most 10 open per student.
+ *                 single use (one per parent); at most 10 open per student;
+ *   parent links — the same staff see who is linked (Telegram name, date,
+ *                 paused or not) and can remove a link.
  */
 
 import { db } from "@/lib/db";
 import { canReviewStudent, type Viewer } from "@/lib/access";
+import { runAfterResponse } from "@/lib/after-response";
 import { sendMessage } from "./api";
 import { deepLink, hashLinkCode, newLinkCode, PARENT_CODE_TTL_MS, USER_CODE_TTL_MS } from "./codes";
 import { botUsername, telegramReady } from "./config";
-import { tr } from "./messages";
+import { asLang, parentRemovedText, tr } from "./messages";
 import { patchPrefs, readPrefs, ROLE_PREF_KEYS } from "./prefs";
-import { asRole, USER_LINK_ROLE, type ParentInviteStatus, type Prefs, type TelegramCodeResponse, type TelegramLinkStatus } from "./types";
+import {
+  asRole,
+  USER_LINK_ROLE,
+  type ParentInviteStatus,
+  type ParentLinkInfo,
+  type Prefs,
+  type TelegramCodeResponse,
+  type TelegramLinkStatus,
+} from "./types";
 
 export type Fail = { ok: false; status: number; code: string; error: string };
 const fail = (status: number, code: string, error: string): Fail => ({ ok: false, status, code, error });
@@ -94,12 +105,51 @@ export async function updateUserPrefs(userId: string, body: unknown): Promise<{ 
 const validStudentId = (id: unknown): id is string => typeof id === "string" && /^[A-Za-z0-9_-]{1,64}$/.test(id);
 const FORBIDDEN = "You can only invite parents of students in your groups.";
 
+/** The student's parent links (who pressed Start, when, paused or not) — listed even while the bot is off, so they can be removed. */
 export async function parentInviteStatus(viewer: Viewer, studentId: unknown): Promise<({ ok: true } & ParentInviteStatus) | Fail> {
   if (!validStudentId(studentId)) return fail(400, "invalid", "Choose a student.");
   if (!(await canReviewStudent(viewer, studentId))) return fail(403, "forbidden", FORBIDDEN);
-  if (!telegramReady()) return { ok: true, available: false, linkedParents: 0 };
-  const linkedParents: number = await db.telegramLink.count({ where: { studentId, role: "parent", active: true } });
-  return { ok: true, available: true, linkedParents };
+  const rows: { id: string; firstName: string | null; username: string | null; linkedAt: Date; active: boolean }[] =
+    await db.telegramLink.findMany({
+      where: { studentId, role: "parent" },
+      select: { id: true, firstName: true, username: true, linkedAt: true, active: true },
+      orderBy: { linkedAt: "asc" },
+    });
+  const parents: ParentLinkInfo[] = rows.map((r) => ({
+    id: r.id,
+    firstName: r.firstName ?? null,
+    username: r.username ?? null,
+    linkedAt: new Date(r.linkedAt).toISOString(),
+    active: !!r.active,
+  }));
+  return { ok: true, available: telegramReady(), linkedParents: parents.filter((p) => p.active).length, parents };
+}
+
+const validLinkId = (id: unknown): id is string => typeof id === "string" && /^[A-Za-z0-9_-]{1,64}$/.test(id);
+
+/**
+ * Remove one parent link of this student (a mis-sent invite taken by the wrong
+ * chat …). Same rule as invites: a teacher of the student's group or an admin.
+ * The chat is told (best effort, after the response).
+ */
+export async function removeParentLink(viewer: Viewer, studentId: unknown, linkId: unknown): Promise<{ ok: true } | Fail> {
+  if (!validStudentId(studentId) || !validLinkId(linkId)) return fail(400, "invalid", "Choose a parent connection to remove.");
+  if (!(await canReviewStudent(viewer, studentId))) {
+    return fail(403, "forbidden", "You can only manage parents of students in your groups.");
+  }
+  const link: { id: string; chatId: string; language: string; active: boolean; student: { user: { name: string | null } | null } | null } | null =
+    await db.telegramLink.findFirst({
+      where: { id: linkId, studentId, role: "parent" },
+      select: { id: true, chatId: true, language: true, active: true, student: { select: { user: { select: { name: true } } } } },
+    });
+  if (!link) return fail(404, "not_found", "This parent connection no longer exists.");
+  // The link must belong to this student — checked again by the delete itself.
+  await db.telegramLink.deleteMany({ where: { id: link.id, studentId, role: "parent" } });
+  if (link.active && telegramReady()) {
+    const text = parentRemovedText(asLang(link.language), link.student?.user?.name?.trim() || "—");
+    void runAfterResponse("Telegram parent goodbye", () => sendMessage(link.chatId, text, { timeoutMs: 2500, retries: 0 }));
+  }
+  return { ok: true };
 }
 
 /** A 7-day, single-use invite for one parent of this student. Teacher of the student's group or admin only. */

@@ -78,9 +78,12 @@ export function publicOrigin(raw: string | null | undefined): string | null {
   }
 }
 
-/** The app's public base URL: NEXTAUTH_URL, else https://$VERCEL_PROJECT_PRODUCTION_URL. */
+/**
+ * The app's public base URL: NEXTAUTH_URL (https, not localhost), else
+ * https://$VERCEL_PROJECT_PRODUCTION_URL. Also where the webhook points (admin.ts).
+ */
 export function appBaseUrl(): string | null {
-  const prod = env("VERCEL_PROJECT_PRODUCTION_URL").replace(/^https?:\/\//, "");
+  const prod = env("VERCEL_PROJECT_PRODUCTION_URL").replace(/^https?:\/\//i, "");
   return publicOrigin(env("NEXTAUTH_URL")) ?? (prod ? publicOrigin(`https://${prod}`) : null);
 }
 

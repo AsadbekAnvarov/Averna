@@ -8,9 +8,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { AlertTriangle, CheckCircle2, Loader2, RefreshCw, Send, Webhook, XCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle2, History, Loader2, RefreshCw, Send, Webhook, XCircle } from "lucide-react";
 import { toast } from "@/components/ui/toast";
-import type { LinkRole, TelegramAdminStatus } from "@/lib/telegram/types";
+import { cronRunView } from "@/lib/telegram/cron-runs";
+import type { CronRunInfo, LinkRole, TelegramAdminStatus } from "@/lib/telegram/types";
 
 type Tone = "ok" | "warn" | "bad";
 
@@ -28,6 +29,36 @@ const ROLE_LABEL: Record<LinkRole, string> = {
 };
 
 const BTN = "inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50";
+
+const JOB_LABEL: Record<string, string> = {
+  "telegram-daily": "Telegram: kechki xabarlar",
+  "speaking-recordings-cleanup": "Speaking yozuvlarini tozalash",
+};
+
+const LINE_CLS: Record<Tone, string> = { ok: "text-gray-400", warn: "text-yellow-300/80", bad: "text-red-300/80" };
+
+/** Label, tone and counts from lib/telegram/cron-runs: a run that sent nothing, or was cut off, isn't a ✓. */
+function CronRunRow({ run }: { run: CronRunInfo }) {
+  const v = cronRunView(run);
+  const { cls, Icon } = TONE[v.tone];
+  return (
+    <tr className="border-t border-white/10 align-top">
+      <td className="py-2 pr-3 text-white">{JOB_LABEL[run.job] ?? run.job}</td>
+      <td className="py-2 pr-3 text-gray-300">{run.day}</td>
+      <td className={`py-2 pr-3 ${cls}`}>
+        <span className="inline-flex items-center gap-1">
+          <Icon className="h-3.5 w-3.5 shrink-0" /> {v.label}
+        </span>
+        {v.lines.map((line, i) => (
+          <span key={i} className={`mt-0.5 block break-words text-xs ${LINE_CLS[v.tone]}`}>
+            {line}
+          </span>
+        ))}
+      </td>
+      <td className="py-2 text-gray-400">{when(run.at)}</td>
+    </tr>
+  );
+}
 
 function when(iso: string | null): string {
   if (!iso) return "";
@@ -105,9 +136,10 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
   }
 
   const { config, bot, webhook, counts, me } = status;
+  const cronRuns = status.cronRuns ?? [];
   const hook = webhook && webhook.ok ? webhook : null;
   const hookHere = !!hook?.url && hook.url === status.expectedWebhookUrl;
-  const canSetWebhook = config.ready && !!status.expectedWebhookUrl;
+  const canSetWebhook = config.ready && !!status.expectedWebhookUrl && !status.preview;
   const totalActive = (Object.keys(counts) as LinkRole[]).reduce((n, r) => n + counts[r].active, 0);
 
   return (
@@ -149,7 +181,11 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
             label="Kunlik xabarlar (CRON_SECRET)"
             tone={config.cronSecret ? "ok" : "warn"}
             detail={config.cronSecret ? "oʻrnatilgan" : "yoʻq"}
-            hint={config.cronSecret ? "Har kuni 19:00 da (Toshkent) yuboriladi." : "Usiz 19:00 dagi kunlik xabarlar yuborilmaydi."}
+            hint={
+              config.cronSecret
+                ? "Har kuni kechqurun (taxminan 19:00 da, Toshkent vaqti) yuboriladi."
+                : "Usiz kechki kunlik xabarlar yuborilmaydi."
+            }
           />
           <Row
             label="Bot"
@@ -167,7 +203,7 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
                   : !webhook.url
                     ? "oʻrnatilmagan"
                     : hookHere
-                      ? "shu saytga ulangan"
+                      ? "toʻgʻri manzilga ulangan"
                       : webhook.url
             }
             hint={
@@ -176,6 +212,9 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
                   {hook.url && !hookHere ? "Webhook boshqa manzilga ulangan (masalan, ikkinchi Vercel loyihasi) — bu ham ishlaydi, agar oʻsha loyihada ham aynan shu kalitlar boʻlsa. " : null}
                   {hook.pendingUpdateCount > 0 ? `Navbatda: ${hook.pendingUpdateCount} ta yangilanish. ` : null}
                   {hook.lastErrorMessage ? `Oxirgi xato (${when(hook.lastErrorDate)}): ${hook.lastErrorMessage}` : null}
+                  {hook.lastErrorMessage && /\b30[1-8]\b|redirect|moved/i.test(hook.lastErrorMessage)
+                    ? " — domen boshqa manzilga yoʻnaltiryapti, Telegram esa redirectga ergashmaydi: NEXTAUTH_URL ga toʻgʻridan-toʻgʻri javob beradigan manzilni yozing va webhookni qayta oʻrnating."
+                    : null}
                 </>
               ) : undefined
             }
@@ -210,6 +249,40 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
         </div>
       </section>
 
+      {/* Daily jobs (cron_runs) */}
+      <section className="glass rounded-2xl border border-white/10 p-5">
+        <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-white">
+          <History className="h-5 w-5 text-averna-cyan" /> Kunlik ishlar{" "}
+          <span className="text-sm font-normal text-gray-400">· oxirgi ishga tushirishlar</span>
+        </h2>
+        {cronRuns.length ? (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="text-xs text-gray-400">
+                  <th className="pb-2 pr-3 font-medium">Ish</th>
+                  <th className="pb-2 pr-3 font-medium">Kun</th>
+                  <th className="pb-2 pr-3 font-medium">Holat</th>
+                  <th className="pb-2 font-medium">Vaqt</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cronRuns.map((run) => (
+                  <CronRunRow key={`${run.job}:${run.day}`} run={run} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="text-sm text-gray-400">Hali birorta ishga tushirish yoʻq — cron har kuni kechqurun (taxminan 19:00 da) ishlaydi.</p>
+        )}
+        <p className="mt-3 text-xs text-gray-500">
+          Ikkala Vercel loyihasining cronʼi ham ishlaydi: kunni shu ishni bajara oladigan loyiha oladi. Xato bilan tugagan yoki uzilib
+          qolgan ishni oʻsha kuni keyingi ishga tushirish qayta bajaradi. Raqamlar ish oxirida yozib qoʻyilgan natija: nechta xabar
+          yuborildi, nechtasi xato berdi yoki vaqt/limit tufayli yuborilmay qoldi.
+        </p>
+      </section>
+
       {/* Actions */}
       <section className="glass rounded-2xl border border-white/10 p-5">
         <h2 className="mb-4 text-lg font-bold text-white">Amallar</h2>
@@ -232,6 +305,11 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
           </button>
         </div>
         <div className="mt-3 space-y-1 text-xs text-gray-400">
+          {status.preview && (
+            <p className="text-yellow-300">
+              Bu preview deployment — webhookni faqat production saytidan oʻrnatish mumkin (aks holda bot hamma uchun ishlamay qoladi).
+            </p>
+          )}
           <p>
             Webhook manzili:{" "}
             {status.expectedWebhookUrl ? (
@@ -239,6 +317,12 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
             ) : (
               <span className="text-yellow-300">faqat HTTPS domen orqali ochilganda oʻrnatiladi.</span>
             )}
+          </p>
+          <p>
+            Manzil <Code>NEXTAUTH_URL</Code> dan olinadi (u boʻlmasa — Vercel production domeni). Bu domen soʻrovga toʻgʻridan-toʻgʻri
+            javob berishi kerak: Telegram yoʻnaltirishga (redirect, masalan <Code>averna.uz</Code> → <Code>www.averna.uz</Code>)
+            ergashmaydi. Domen yoʻnaltirsa, <Code>NEXTAUTH_URL</Code> ga oxirgi manzilni yozing, redeploy qiling va webhookni qayta
+            oʻrnating.
           </p>
           <p>
             Test xabar sizning Telegramʼingizga boradi
@@ -268,6 +352,10 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
             tugaydi). BotFather sizga <b>token</b> beradi.
           </li>
           <li>
+            Bot guruhlarga qoʻshilmasin: <b>@BotFather</b> → <Code>/setjoingroups</Code> → botingizni tanlang → <b>Disable</b>.
+            Hisobotlar faqat shaxsiy chatlarga boradi, guruhlardagi xabarlarga bot javob bermaydi.
+          </li>
+          <li>
             Vercel → Project → Settings → Environment Variables:
             <ul className="mt-2 list-disc space-y-1 pl-5">
               <li>
@@ -280,14 +368,18 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
                 <Code>TELEGRAM_WEBHOOK_SECRET</Code> — 16+ belgi, faqat A–Z, a–z, 0–9, _ va - (masalan <Code>openssl rand -hex 32</Code>)
               </li>
               <li>
-                <Code>CRON_SECRET</Code> — istalgan tasodifiy satr (16+ belgi): 19:00 dagi kunlik xabarlar uchun
+                <Code>CRON_SECRET</Code> — istalgan tasodifiy satr (16+ belgi): har kuni kechqurun (taxminan 19:00 da) yuboriladigan
+                xabarlar uchun
               </li>
             </ul>
             <p className="mt-2 text-xs text-gray-400">Ikkala Vercel loyihasiga ham aynan bir xil qiymatlarni kiriting — bitta bot, bitta baza.</p>
           </li>
           <li>Redeploy qiling — oʻzgaruvchilar faqat yangi deploydan keyin ishlaydi.</li>
           <li>
-            Shu sahifani saytning asosiy domenida oching va <b>Webhookni oʻrnatish</b> tugmasini bosing.
+            Shu sahifani saytning production domenida oching va <b>Webhookni oʻrnatish</b> tugmasini bosing (preview deploymentʼda bu
+            tugma ishlamaydi). Webhook <Code>NEXTAUTH_URL</Code> domeniga (u boʻlmasa, Vercel production domeniga) oʻrnatiladi — bu
+            domen redirectsiz javob berishi kerak. Botning «/» buyruqlar menyusi ham shu tugma bilan yangilanadi, shuning uchun yangi
+            deploydan keyin uni yana bir marta bosing.
           </li>
           <li>
             <Link href="/settings" className="text-averna-cyan hover:underline">
@@ -297,6 +389,8 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
           </li>
           <li>
             Ota-onalar: oʻqituvchi (yoki admin) oʻquvchining <b>Parent report</b> sahifasida taklif havolasini yaratib, ota-onaga yuboradi.
+            Oʻsha yerda ulangan ota-onalar roʻyxati ham bor — notoʻgʻri odamga tushgan ulanishni <b>Remove</b> bilan oʻchirish mumkin; ota-ona
+            esa botga <Code>/disconnect</Code> yuborib oʻzi uzilishi mumkin.
           </li>
         </ol>
       </section>
