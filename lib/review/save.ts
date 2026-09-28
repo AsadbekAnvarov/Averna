@@ -11,7 +11,11 @@
  *      id, if any) and gradedAt. For a full Writing test the submission points
  *      at Task 2: its band is writingBand() of both tasks' current bands and
  *      its feedback carries both tasks' comments — reviewing either task keeps
- *      it up to date (it becomes GRADED once Task 2 is reviewed);
+ *      it up to date (it becomes GRADED once every task worth reviewing —
+ *      MIN_REVIEW_ESSAY_WORDS+ words, the queue's rule — has a review:
+ *      sittingReviewed). The submission row is locked (SELECT … FOR UPDATE)
+ *      and the sitting re-read under the lock, so parallel reviews of its two
+ *      tasks end GRADED with both;
  *   4. mock: the sitting's results (Writing task bands + writingBand, Speaking
  *      band + criteria) and, for a finished sitting, `overall` — guarded by the
  *      row's updatedAt so a concurrent change is never overwritten.
@@ -37,6 +41,7 @@ import {
   sameReview,
   sittingBand,
   sittingFeedback,
+  sittingReviewed,
   studentResultHref,
   type MockReviewUpdate,
   type ReviewCriteria,
@@ -45,7 +50,7 @@ import {
   type WritingTask,
 } from "./scoring";
 import { parseQueueFilters } from "./filters";
-import { answersOf, asRec, examAttemptIdOf, isFullSpeakingTest, mockAttemptIdOf, taskTypeOf } from "./answers";
+import { answersOf, asRec, essayWordsOf, examAttemptIdOf, isFullSpeakingTest, mockAttemptIdOf, taskTypeOf } from "./answers";
 import { nextPendingReview } from "./queue";
 
 const json = (x: unknown) => x as Prisma.InputJsonValue;
@@ -80,6 +85,8 @@ interface SittingTask {
   score: number;
   comment: string | null;
   reviewed: boolean;
+  /** Words in the essay (a task under MIN_REVIEW_ESSAY_WORDS has nothing to review). */
+  words: number;
 }
 interface Sitting {
   task1: SittingTask;
@@ -88,19 +95,37 @@ interface Sitting {
 
 /** Both tasks of a full Writing test, read inside the transaction (so they include this review). */
 async function loadSitting(tx: Tx, studentId: string, examAttemptId: string): Promise<Sitting | null> {
-  const rows: { id: string; score: number; answers: unknown; review: { comment: string | null } | null }[] =
+  const rows: { id: string; score: number; answers: unknown; aiAnalysis: unknown; review: { comment: string | null } | null }[] =
     await tx.iELTSTest.findMany({
       where: { studentId, module: "WRITING", answers: { path: ["examAttemptId"], equals: examAttemptId } },
-      select: { id: true, score: true, answers: true, review: { select: { comment: true } } },
+      select: { id: true, score: true, answers: true, aiAnalysis: true, review: { select: { comment: true } } },
       take: 4,
     });
   const find = (task: WritingTask): SittingTask | undefined => {
     const r = rows.find((x) => taskTypeOf(answersOf(x.answers)) === task);
-    return r ? { id: r.id, score: r.score, comment: r.review?.comment ?? null, reviewed: !!r.review } : undefined;
+    return r
+      ? {
+          id: r.id,
+          score: r.score,
+          comment: r.review?.comment ?? null,
+          reviewed: !!r.review,
+          words: essayWordsOf(answersOf(r.answers), r.aiAnalysis),
+        }
+      : undefined;
   };
   const task1 = find("task1");
   const task2 = find("task2");
   return task1 && task2 ? { task1, task2 } : null;
+}
+
+/**
+ * Row locks (until the transaction ends) on the homework submissions these attempts completed. Two
+ * teachers reviewing Task 1 and Task 2 of one sitting at the same moment then write its submission one
+ * after the other, and the second — after re-reading the sitting — sees the first one's review.
+ */
+async function lockSubmissions(tx: Tx, testIds: string[]): Promise<void> {
+  if (!testIds.length) return;
+  await tx.$queryRaw`SELECT "id" FROM "homework_submissions" WHERE "testId" IN (${Prisma.join(testIds)}) ORDER BY "id" FOR UPDATE`;
 }
 
 async function updateHomework(
@@ -114,7 +139,9 @@ async function updateHomework(
   });
   for (const s of subs) {
     const sitting = o.sitting && s.testId === o.sitting.task2.id ? o.sitting : null;
-    const graded = s.testId === o.testId || (!!sitting && sitting.task2.reviewed);
+    // A full Writing test: GRADED once every task worth reviewing has a review — the same rule
+    // (sittingReviewed) the homework pages use to say "reviewed" (lib/homework/reviews).
+    const graded = sitting ? sittingReviewed([sitting.task1, sitting.task2]) : s.testId === o.testId;
     await tx.homeworkSubmission.update({
       where: { id: s.id },
       data: {
@@ -239,7 +266,15 @@ export async function saveTestReview(viewer: Viewer, testId: string, body: unkno
       });
       await tx.iELTSTest.update({ where: { id: testId }, data: { score: input.band } });
 
-      const sitting = examAttemptId ? await loadSitting(tx, test.studentId, examAttemptId) : null;
+      let sitting = examAttemptId ? await loadSitting(tx, test.studentId, examAttemptId) : null;
+      if (sitting && examAttemptId) {
+        // A full Writing test: the other task may be under review right now. Lock the submission its
+        // Task 2 row completed, then read the sitting again — under READ COMMITTED (the default) that
+        // read sees a review the other transaction committed while this one waited for the lock, so
+        // the band, the feedback and GRADED always include both reviews.
+        await lockSubmissions(tx, Array.from(new Set([testId, sitting.task2.id])));
+        sitting = (await loadSitting(tx, test.studentId, examAttemptId)) ?? sitting;
+      }
       await updateHomework(tx, { testId, band: input.band, comment: input.comment, sitting, gradedBy: teacher?.id ?? null, now });
       if (mockAttemptId) await updateMock(tx, { mockAttemptId, studentId: test.studentId, testId, skill, input });
 

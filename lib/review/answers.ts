@@ -59,6 +59,11 @@ export function countWords(text: string): number {
   return text.trim().split(/\s+/).filter(Boolean).length;
 }
 
+/** Words in a Writing attempt's essay: the stored count (every submit path writes aiAnalysis.wordCount), else counted. */
+export function essayWordsOf(answers: Record<string, unknown>, aiAnalysis: unknown): number {
+  return num(asRec(aiAnalysis)?.wordCount) ?? countWords(str(answers.essay));
+}
+
 /** First line of a text, shortened to `max` characters. */
 export function excerpt(text: string, max = 90): string {
   const line = text.trim().split(/\n/)[0]?.trim() ?? "";

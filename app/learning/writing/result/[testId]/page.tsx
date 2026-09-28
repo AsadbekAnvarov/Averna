@@ -14,7 +14,9 @@ import { ProgressionSkeleton } from "@/components/progression/progression-skelet
 import { ResultCelebration } from "@/components/learning/result-celebration";
 import { WritingHeatmap } from "@/components/learning/writing-heatmap";
 import { TeacherReviewCard } from "@/components/review/teacher-review-card";
+import { HomeworkNoticeCard } from "@/components/homework/homework-notice";
 import { canViewStudent } from "@/lib/access";
+import { homeworkNoticeFor } from "@/lib/homework/exam-homework";
 
 export default async function WritingResultPage({
   params,
@@ -43,6 +45,8 @@ export default async function WritingResultPage({
     redirect("/learning/writing");
   }
   const student = test.student;
+  // Open homework for this prompt (or prompt pair) that this attempt didn't complete (owner only).
+  const homeworkNotice = viewerIsOwner ? await homeworkNoticeFor(student.id, test) : null;
 
   const assessment = test.aiAnalysis as any;
   const answers = test.answers as any;
@@ -90,6 +94,8 @@ export default async function WritingResultPage({
             {viewerIsOwner ? "Detailed feedback on your writing" : "The AI examiner's assessment of this attempt"}
           </p>
         </div>
+
+        {homeworkNotice && <HomeworkNoticeCard notice={homeworkNotice} className="mb-8" />}
 
         {/* Overall Band Score */}
         <Card className="glass border-averna-primary/30 mb-8 animate-fade-in">

@@ -272,6 +272,22 @@ export function sittingBand(task1: number, task2: number): number {
   return writingBand(task1, task2);
 }
 
+/** A Writing task worth a teacher's review (MIN_REVIEW_ESSAY_WORDS+ words) — only these enter the queue. */
+export function isReviewableEssay(words: number | null | undefined): boolean {
+  return typeof words === "number" && Number.isFinite(words) && words >= MIN_REVIEW_ESSAY_WORDS;
+}
+
+/**
+ * Whether a full Writing test (the tasks of one sitting) counts as reviewed —
+ * the one rule behind its homework's GRADED status and the "reviewed" state the
+ * homework pages show: every task worth reviewing (isReviewableEssay) has a
+ * review, and at least one task does. A task too short to review never enters
+ * the queue, so nothing waits for it.
+ */
+export function sittingReviewed(tasks: readonly { words: number | null | undefined; reviewed: boolean }[]): boolean {
+  return tasks.some((t) => t.reviewed) && tasks.every((t) => t.reviewed || !isReviewableEssay(t.words));
+}
+
 // ---------------------------------------------------------------------------
 // Mock exam results
 // ---------------------------------------------------------------------------

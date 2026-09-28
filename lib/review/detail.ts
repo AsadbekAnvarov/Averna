@@ -10,6 +10,7 @@
 import { db } from "@/lib/db";
 import { canReviewStudent, type Viewer } from "@/lib/access";
 import { getSpeakingSet, getWritingTask } from "@/lib/ielts/catalog";
+import { audioNotKeptReason } from "@/lib/speaking/recording";
 import type { Task1ChartData } from "@/lib/writing-data";
 import {
   aiBandOf,
@@ -84,6 +85,12 @@ export interface SpeakingAnswerView {
   mimeType: string | null;
   /** Recorded, but the audio file is no longer kept. */
   audioExpired: boolean;
+  /**
+   * Recorded, but no audio file was stored: "monthly-limit" — this month's
+   * audio budget was used up (SPEAKING_AUDIO_MONTHLY_UPLOADS); "off" — audio
+   * storage isn't set up or retention is 0. null otherwise.
+   */
+  audioNotKept: "monthly-limit" | "off" | null;
 }
 
 export interface SpeakingPartView {
@@ -309,6 +316,7 @@ type Recording = {
   audioUrl: string | null;
   mimeType: string | null;
   expiresAt: Date | null;
+  metrics: unknown;
 };
 
 const PART_TITLE: Record<1 | 2 | 3, string> = {
@@ -338,6 +346,7 @@ async function speakingDetail(t: Row, a: Record<string, unknown>, ai: Record<str
               audioUrl: true,
               mimeType: true,
               expiresAt: true,
+              metrics: true,
             },
           })
           .catch(() => []) as Promise<Recording[]>)
@@ -365,7 +374,10 @@ async function speakingDetail(t: Row, a: Record<string, unknown>, ai: Record<str
       words: countWords(text),
       audioUrl: playable(rec) ? rec!.audioUrl : null,
       mimeType: rec?.mimeType ?? null,
-      audioExpired: !!rec && !playable(rec),
+      // Stored once (it had an expiry), gone now.
+      audioExpired: !!rec && !playable(rec) && !!rec.expiresAt,
+      // Never stored: the month's audio budget, or no audio storage.
+      audioNotKept: rec && !playable(rec) && !rec.expiresAt ? (audioNotKeptReason(rec.metrics) ?? "off") : null,
     };
   };
 

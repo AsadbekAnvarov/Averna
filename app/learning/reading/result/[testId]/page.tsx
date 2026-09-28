@@ -18,6 +18,7 @@ import { getReadingExam } from "@/lib/ielts/catalog";
 import { ObjectiveResult } from "@/components/exam/results/objective-result";
 import { isExamV2, parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
 import { canViewStudent } from "@/lib/access";
+import { homeworkNoticeFor } from "@/lib/homework/exam-homework";
 
 export const metadata = { title: "Reading results" };
 
@@ -121,7 +122,12 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
     const attempt = parseObjectiveAttempt(test);
     if (!attempt) return redirect("/learning/reading"); // exam-v2 Writing / Speaking rows have their own pages
     if (attempt.skill !== "READING") return redirect(resultHref(attempt.skill, test.id));
-    const [exam, xp] = await Promise.all([getReadingExam(attempt.examId), xpForTest(student.id, test.id)]);
+    const [exam, xp, homeworkNotice] = await Promise.all([
+      getReadingExam(attempt.examId),
+      xpForTest(student.id, test.id),
+      // Open homework for this paper / passage that this attempt didn't complete (owner only).
+      viewerIsOwner ? homeworkNoticeFor(student.id, test) : Promise.resolve(null),
+    ]);
     return (
       <ObjectiveResult
         attempt={attempt}
@@ -134,6 +140,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
         target={parseTargetBand(student.targetBand)}
         viewerIsOwner={viewerIsOwner}
         studentName={student.user?.name ?? undefined}
+        homeworkNotice={homeworkNotice}
       />
     );
   }

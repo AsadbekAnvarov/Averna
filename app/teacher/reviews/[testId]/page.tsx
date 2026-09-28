@@ -32,7 +32,7 @@ import { SkillIconBox, SourceBadge } from "@/components/review/review-badges";
 import { formatDuration } from "@/components/exam/results/attempt";
 import { loadReviewAttempt, type ReviewAttempt, type SpeakingDetail, type WritingDetail } from "@/lib/review/detail";
 import { parseQueueFilters, queueHref, reviewHref, type QueueFilters } from "@/lib/review/filters";
-import { criteriaFor, formatBand, type ReviewCriteria, type ReviewSkill, type WritingTask } from "@/lib/review/scoring";
+import { MIN_REVIEW_ESSAY_WORDS, criteriaFor, formatBand, type ReviewCriteria, type ReviewSkill, type WritingTask } from "@/lib/review/scoring";
 import { cn, formatDate, formatDateTime } from "@/lib/utils";
 
 export const metadata = { title: "Review attempt" };
@@ -181,7 +181,7 @@ function SaveEffects({ attempt: a }: { attempt: ReviewAttempt }) {
     ...(a.source === "homework"
       ? [
           sitting
-            ? `The homework “${a.homeworkTitle ?? "Homework"}” gets the Writing band of both tasks (Task 2 counts double) and your comments; it is marked graded once Task 2 is reviewed.`
+            ? `The homework “${a.homeworkTitle ?? "Homework"}” gets the Writing band of both tasks (Task 2 counts double) and your comments; it is marked graded once both tasks are reviewed (a task under ${MIN_REVIEW_ESSAY_WORDS} words has nothing to review).`
             : `The homework “${a.homeworkTitle ?? "Homework"}” is marked graded with your band and comment.`,
         ]
       : []),
@@ -335,6 +335,8 @@ function WritingWork({ attempt, w, filters }: { attempt: ReviewAttempt; w: Writi
 function SpeakingWork({ s }: { s: SpeakingDetail }) {
   const recordedCount = s.parts.reduce((n, p) => n + p.answers.filter((x) => x.audioUrl).length, 0);
   const expiredCount = s.parts.reduce((n, p) => n + p.answers.filter((x) => x.audioExpired).length, 0);
+  const budgetCount = s.parts.reduce((n, p) => n + p.answers.filter((x) => x.audioNotKept === "monthly-limit").length, 0);
+  const notKeptCount = s.parts.reduce((n, p) => n + p.answers.filter((x) => x.audioNotKept).length, 0);
   return (
     <>
       <p className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-gray-300">
@@ -346,6 +348,10 @@ function SpeakingWork({ s }: { s: SpeakingDetail }) {
               }`
             : expiredCount > 0
               ? "These answers were recorded, but the audio files have expired — only the transcripts are left."
+              : budgetCount > 0
+                ? "These answers were recorded and transcribed, but their audio wasn't kept — this month's storage limit was reached."
+                : notKeptCount > 0
+                  ? "These answers were recorded and transcribed on the server; their audio isn't kept on this deployment."
               : s.inputMode === "typed"
                 ? "The student typed these answers (speech recognition wasn't available), so there is no audio."
                 : "Transcribed live in the student's browser — no audio was recorded for this attempt."}{" "}
@@ -404,7 +410,15 @@ function SpeakingWork({ s }: { s: SpeakingDetail }) {
                       </a>
                     </div>
                   ) : (
-                    x.audioExpired && <p className="mt-2 text-xs text-gray-500">The recording of this answer has expired.</p>
+                    (x.audioExpired || x.audioNotKept) && (
+                      <p className="mt-2 text-xs text-gray-500">
+                        {x.audioExpired
+                          ? "The recording of this answer has expired."
+                          : x.audioNotKept === "monthly-limit"
+                            ? "Audio not kept — this month's storage limit was reached."
+                            : "The audio of this answer wasn't kept."}
+                      </p>
+                    )
                   )}
                   {x.transcript ? (
                     <p className="mt-3 whitespace-pre-wrap break-words rounded-lg border-l-2 border-amber-300/40 bg-black/10 px-3 py-2 text-sm leading-relaxed text-gray-200">

@@ -7,6 +7,7 @@ import { getListeningExam } from "@/lib/ielts/catalog";
 import { ObjectiveResult } from "@/components/exam/results/objective-result";
 import { parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
 import { canViewStudent } from "@/lib/access";
+import { homeworkNoticeFor } from "@/lib/homework/exam-homework";
 
 export const metadata = { title: "Listening results" };
 
@@ -46,7 +47,12 @@ export default async function ListeningResultPage({ params }: { params: { testId
   if (!attempt) return redirect(LIBRARY);
   if (attempt.skill !== "LISTENING") return redirect(resultHref(attempt.skill, row.id));
 
-  const [exam, xp] = await Promise.all([getListeningExam(attempt.examId), xpForTest(student.id, row.id)]);
+  const [exam, xp, homeworkNotice] = await Promise.all([
+    getListeningExam(attempt.examId),
+    xpForTest(student.id, row.id),
+    // Open homework for this paper / part that this attempt didn't complete (owner only).
+    viewerIsOwner ? homeworkNoticeFor(student.id, row) : Promise.resolve(null),
+  ]);
 
   return (
     <ObjectiveResult
@@ -60,6 +66,7 @@ export default async function ListeningResultPage({ params }: { params: { testId
       target={parseTargetBand(student.targetBand)}
       viewerIsOwner={viewerIsOwner}
       studentName={student.user?.name ?? undefined}
+      homeworkNotice={homeworkNotice}
     />
   );
 }
