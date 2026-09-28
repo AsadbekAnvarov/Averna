@@ -3,6 +3,7 @@ import { MessageSquare, CalendarClock, GraduationCap } from "lucide-react";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { parseSchedule, tashkentWeekday, WEEKDAY_NAMES, initialsOf } from "@/lib/utils";
+import { avatarSrc } from "@/lib/avatars";
 
 /**
  * Teacher card — puts a friendly face on the class: who teaches it, the next
@@ -39,9 +40,9 @@ export async function TeacherCard({ groupId }: { groupId: string | null }) {
       <CardContent className="p-5">
         <div className="flex items-center gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-averna-cyan/15 text-averna-cyan font-bold text-lg overflow-hidden shrink-0">
-            {teacher.user.image ? (
+            {avatarSrc(teacher.user.image) ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={teacher.user.image} alt={teacher.user.name ?? "Teacher"} className="h-full w-full object-cover" />
+              <img src={avatarSrc(teacher.user.image)!} alt={teacher.user.name ?? "Teacher"} className="h-full w-full object-cover" />
             ) : (
               initials
             )}

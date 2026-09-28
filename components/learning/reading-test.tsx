@@ -148,7 +148,7 @@ export default function ReadingTest({ test, userId }: ReadingTestProps) {
           </Link>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-white">{test.title}</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-white">{test.title}</h1>
               <p className="text-gray-400 text-sm mt-1">{test.description}</p>
             </div>
             <div className="flex items-center gap-4">

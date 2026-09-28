@@ -3,6 +3,7 @@ import { Star, Flame, Trophy, Target, Quote } from "lucide-react";
 import { tashkentHour, getDaypart, getRandomQuote, getLevelInfo, initialsOf } from "@/lib/utils";
 import { CountUp } from "@/components/ui/count-up";
 import { cosmeticById } from "@/lib/cosmetics";
+import { avatarSrc } from "@/lib/avatars";
 
 interface HeroProps {
   name: string | null;
@@ -20,8 +21,9 @@ interface HeroProps {
  * greeting + stat pills on the left, and a circular Level ring on the right so
  * the layout feels complete on wide screens. Brand-toned animated gradient.
  */
-export function DashboardHero({ name, image, points, streak, globalRank, goal, quote, featuredCosmetic }: HeroProps) {
+export function DashboardHero({ name, image: rawImage, points, streak, globalRank, goal, quote, featuredCosmetic }: HeroProps) {
   const cosmetic = cosmeticById(featuredCosmetic);
+  const image = avatarSrc(rawImage);
   const firstName = name?.split(" ")[0] || "Student";
   const daypart = getDaypart(tashkentHour());
   const initials = initialsOf(name);
@@ -54,18 +56,18 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
     <Card className="glass relative overflow-hidden border-averna-primary/30">
       <div className="absolute inset-0 animated-gradient opacity-60" />
       <div className={`pointer-events-none absolute -top-24 -right-20 h-60 w-60 rounded-full ${daypart.glow} blur-3xl transition-colors duration-1000`} />
-      <CardContent className="relative p-6 sm:p-8">
+      <CardContent className="relative p-5 sm:p-8">
         <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
           {/* Left: greeting + pills + quote */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-4 sm:gap-5">
               <div className="relative shrink-0">
-                <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shadow-lg shadow-averna-neon/20">
+                <div className="h-16 w-16 sm:h-24 sm:w-24 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shadow-lg shadow-averna-neon/20">
                   {image ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={image} alt={name ?? "Avatar"} className="h-full w-full object-cover" />
                   ) : (
-                    <span className="text-3xl font-bold text-averna-neon">{initials}</span>
+                    <span className="text-2xl sm:text-3xl font-bold text-averna-neon">{initials}</span>
                   )}
                 </div>
                 {cosmetic && (
@@ -79,7 +81,7 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm sm:text-base text-gray-200">{daypart.greeting} {daypart.emoji}</p>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white truncate">
+                <h2 className="text-2xl sm:text-4xl font-bold text-white truncate">
                   <span className="text-gradient-animate">{firstName}</span> <span className="inline-block">👋</span>
                 </h2>
                 <p className="text-xs sm:text-sm text-gray-300 mt-1.5 animate-fade-in">{smartLine}</p>
@@ -92,16 +94,16 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
             </div>
 
             {/* Stat pills */}
-            <div className="flex flex-wrap gap-3 mt-6">
+            <div className="grid grid-cols-3 gap-2 mt-5 sm:flex sm:flex-wrap sm:gap-3 sm:mt-6">
               {pills.map((p) => {
                 const Icon = p.icon;
                 return (
-                  <div key={p.label} className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur">
-                    <span className={`flex h-9 w-9 items-center justify-center rounded-xl ${p.bg} ${p.color}`}>
-                      <Icon className="h-5 w-5" />
+                  <div key={p.label} className="flex min-w-0 items-center gap-2 sm:gap-2.5 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur">
+                    <span className={`hidden min-[380px]:flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-xl ${p.bg} ${p.color}`}>
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                     </span>
-                    <div className="leading-tight">
-                      <p className={`text-xl font-bold ${p.color}`}>
+                    <div className="min-w-0 leading-tight">
+                      <p className={`truncate text-lg sm:text-xl font-bold ${p.color}`}>
                         {p.value === null ? "—" : <CountUp value={p.value} prefix={p.prefix ?? ""} suffix={p.suffix ?? ""} />}
                       </p>
                       <p className="text-[11px] text-gray-400">{p.label}</p>
@@ -112,18 +114,18 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
             </div>
 
             {/* Daily quote */}
-            <div className="mt-6 flex items-start gap-2.5 border-t border-white/10 pt-4">
-              <Quote className="h-5 w-5 text-averna-cyan shrink-0 mt-0.5" />
-              <p className="text-sm sm:text-base text-gray-200 italic">
+            <div className="mt-5 sm:mt-6 flex items-start gap-2.5 border-t border-white/10 pt-4">
+              <Quote className="h-4 w-4 sm:h-5 sm:w-5 text-averna-cyan shrink-0 mt-0.5" />
+              <p className="text-[13px] sm:text-base leading-relaxed text-gray-200 italic">
                 &ldquo;{displayQuote.text}&rdquo; <span className="text-gray-400 not-italic">— {displayQuote.author}</span>
               </p>
             </div>
           </div>
 
           {/* Right: Level ring (balances the layout) */}
-          <div className="flex lg:flex-col items-center justify-center gap-4 lg:gap-2 shrink-0 lg:border-l lg:border-white/10 lg:pl-8">
-            <div className="relative h-36 w-36">
-              <svg width="144" height="144" viewBox="0 0 144 144" className="-rotate-90">
+          <div className="flex lg:flex-col items-center gap-4 lg:gap-2 shrink-0 border-t border-white/10 pt-4 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-8">
+            <div className="relative h-24 w-24 sm:h-36 sm:w-36 shrink-0">
+              <svg viewBox="0 0 144 144" className="h-full w-full -rotate-90">
                 <circle cx="72" cy="72" r={R} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="10" />
                 <circle
                   className="ring-draw"
@@ -141,10 +143,10 @@ export function DashboardHero({ name, image, points, streak, globalRank, goal, q
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-[10px] uppercase tracking-wider text-gray-400">Level</span>
-                <span className="text-4xl font-bold neon-text leading-none animate-breathe">{level.level}</span>
+                <span className="text-3xl sm:text-4xl font-bold neon-text leading-none animate-breathe">{level.level}</span>
               </div>
             </div>
-            <div className="text-center">
+            <div className="text-left lg:text-center">
               <p className="text-sm font-semibold text-white">{level.title}</p>
               <p className="text-[11px] text-gray-400">{level.isMax ? "Max level 🏆" : `${level.into}% to Level ${level.level + 1}`}</p>
             </div>

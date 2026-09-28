@@ -30,7 +30,7 @@ export function CertificateView({ name, level, points, achievements, teacher, gr
         </div>
 
         {/* Certificate */}
-        <div className="certificate bg-white text-slate-800 rounded-xl p-10 shadow-2xl border-[6px] border-double border-averna-primary relative overflow-hidden">
+        <div className="certificate bg-white text-slate-800 rounded-xl p-5 sm:p-10 shadow-2xl border-[6px] border-double border-averna-primary relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none opacity-5 flex items-center justify-center">
             <Award className="h-[420px] w-[420px]" />
           </div>
@@ -39,7 +39,7 @@ export function CertificateView({ name, level, points, achievements, teacher, gr
               <Logo size={56} showText={false} />
             </div>
             <p className="tracking-[0.3em] text-averna-primary font-semibold text-sm">AVERNA LEARNING CENTRE</p>
-            <h1 className="text-3xl font-bold mt-4 mb-1">Certificate of Achievement</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold mt-4 mb-1">Certificate of Achievement</h1>
             <p className="text-slate-500 text-sm mb-6">This certificate is proudly presented to</p>
 
             <p className="text-4xl font-bold text-averna-primary mb-2" style={{ fontFamily: "Georgia, serif" }}>{name}</p>

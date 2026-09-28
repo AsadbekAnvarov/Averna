@@ -175,7 +175,7 @@ export function SpeakingRunner({ part1Topics, part2Cards, part3Questions, todayT
         <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Dashboard
         </Link>
-        <h1 className="text-4xl font-bold text-white mb-4 flex items-center gap-3">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 flex items-center gap-3">
           <Mic className="h-9 w-9 text-orange-400" />
           IELTS <span className="text-orange-400">Speaking</span>
         </h1>

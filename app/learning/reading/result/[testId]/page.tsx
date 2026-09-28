@@ -171,7 +171,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
             <ArrowLeft className="h-4 w-4" />
             Back to Reading
           </Link>
-          <h1 className="text-4xl font-bold text-white mb-2">Reading Test Results</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">Reading Test Results</h1>
           <p className="text-gray-400">
             {testData ? `${testData.title} · ${testData.description}` : "Your performance analysis"}
           </p>

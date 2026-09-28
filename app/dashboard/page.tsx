@@ -193,11 +193,19 @@ export default async function DashboardPage() {
     <div className="min-h-screen premium-gradient dashboard-anim">
       <DaypartAmbiance />
       <SeasonalDecor />
-      <div className="container relative z-10 mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
-        <DashboardHeader user={student.user} />
+      <div className="container relative z-10 mx-auto px-4 py-4 sm:py-6 max-w-7xl pb-8 lg:pb-6">
+        <DashboardHeader
+          user={student.user}
+          tools={
+            <>
+              <DashboardPreferences />
+              <LiveRefresh />
+            </>
+          }
+        />
 
-        {/* Focus + controls (always visible above the tabs) */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+        {/* Today's focus (always visible above the tabs; swipes sideways on phones) */}
+        <div className="mb-4">
           <Suspense fallback={<div className="h-8" />}>
             <StudentAttentionBar
               userId={session.user.id}
@@ -205,10 +213,6 @@ export default async function DashboardPage() {
               streak={student.currentStreak}
             />
           </Suspense>
-          <div className="flex items-center gap-4">
-            <DashboardPreferences />
-            <LiveRefresh />
-          </div>
         </div>
 
         {student.blacklisted && (

@@ -7,7 +7,7 @@ import { SettingsPanel } from "@/components/settings/settings-panel";
 import { TelegramConnect } from "@/components/settings/telegram-connect";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PageHeader } from "@/components/ui/page-header";
-import { Settings, User, Bell, Wallet, Palette, ChevronRight } from "lucide-react";
+import { Settings, User, Bell, Wallet, ChevronRight } from "lucide-react";
 
 export default async function SettingsPage() {
   const session = await auth();
@@ -27,7 +27,7 @@ export default async function SettingsPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl pb-10 lg:pb-8">
         <PageHeader
           back={{ href: "/dashboard", label: "Back to Dashboard" }}
           icon={Settings}
@@ -59,11 +59,8 @@ export default async function SettingsPage() {
         {/* Telegram bot */}
         <TelegramConnect />
 
-        {/* Appearance & comfort */}
-        <SectionHeader icon={Palette} title="Appearance & Comfort" subtitle="Preferences are saved on this device" accent="text-averna-cyan" />
-        <div className="glass rounded-2xl border border-white/5 p-5">
-          <SettingsPanel />
-        </div>
+        {/* Display · Comfort · Sound (saved on this device) */}
+        <SettingsPanel />
       </div>
     </div>
   );

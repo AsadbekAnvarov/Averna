@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "@/components/theme/theme-provider";
 import { initialsOf } from "@/lib/utils";
+import { avatarSrc } from "@/lib/avatars";
 import {
   User, Settings, Sun, Moon, LogOut, ChevronDown,
   Shield, GraduationCap, Palette, KeyRound,
@@ -25,7 +26,8 @@ const LABELS = {
   en: { profile: "My Profile", settings: "Settings", avatar: "Edit Avatar", password: "Change Password", light: "Light Mode", dark: "Dark Mode", signOut: "Sign Out" },
   uz: { profile: "Mening profilim", settings: "Sozlamalar", avatar: "Avatarni tahrirlash", password: "Parolni oʻzgartirish", light: "Yorugʻ rejim", dark: "Qorongʻi rejim", signOut: "Chiqish" },
 } as const;
-export function UserAvatarDropdown({ user, role }: Props) {
+export function UserAvatarDropdown({ user: rawUser, role }: Props) {
+  const user = { ...rawUser, image: avatarSrc(rawUser.image) };
   const router = useRouter();
   const { mode, toggleMode } = useTheme();
   const [open, setOpen] = useState(false);

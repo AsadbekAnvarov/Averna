@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Crown } from "lucide-react";
 import { db } from "@/lib/db";
 import { getLevelInfo, initialsOf } from "@/lib/utils";
+import { avatarSrc } from "@/lib/avatars";
 
 /**
  * Highlights the student who earned the most points over the last 7 days.
@@ -60,9 +61,9 @@ export async function StudentOfTheWeek() {
           <span className="text-sm font-semibold uppercase tracking-wide">Student of the Week</span>
         </div>
         <div className="flex items-center gap-3">
-          {student.user.image ? (
+          {avatarSrc(student.user.image) ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={student.user.image} alt={student.user.name ?? "student"} className="h-14 w-14 rounded-full object-cover border-2 border-yellow-400/60" />
+            <img src={avatarSrc(student.user.image)!} alt={student.user.name ?? "student"} className="h-14 w-14 rounded-full object-cover border-2 border-yellow-400/60" />
           ) : (
             <div className="h-14 w-14 rounded-full flex items-center justify-center font-bold text-white bg-yellow-500/30 border-2 border-yellow-400/60">
               {initials}

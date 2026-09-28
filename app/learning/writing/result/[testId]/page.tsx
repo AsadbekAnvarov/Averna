@@ -87,7 +87,7 @@ export default async function WritingResultPage({
             <ArrowLeft className="h-4 w-4" />
             {viewerIsOwner ? "Back to Writing" : "Review queue"}
           </Link>
-          <h1 className="text-4xl font-bold text-white mb-2">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
             {viewerIsOwner ? "AI Assessment Results" : `${studentName} — Writing`}
           </h1>
           <p className="text-gray-400">

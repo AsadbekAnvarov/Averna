@@ -21,8 +21,9 @@ export async function TeacherHeader({ user }: TeacherHeaderProps) {
   }
 
   return (
-    <header className="flex items-center justify-between mb-8 animate-fade-in">
-      <Logo href="/teacher/dashboard" size={40} className="text-xl" />
+    <header className="flex items-center justify-end lg:justify-between mb-4 lg:mb-8 animate-fade-in">
+      {/* The mobile top app bar already shows the brand — no duplicate logo on phones. */}
+      <div className="hidden lg:block"><Logo href="/teacher/dashboard" size={40} className="text-xl" /></div>
 
       <div className="flex items-center gap-2">
         <NotificationBell />

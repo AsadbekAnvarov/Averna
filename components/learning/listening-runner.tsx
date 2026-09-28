@@ -139,7 +139,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
       <div className="min-h-screen premium-gradient">
         <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
           <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-          <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 flex items-center gap-3">
             <Headphones className="h-9 w-9 text-averna-neon" />
             IELTS <span className="neon-text">Listening</span>
           </h1>
@@ -195,7 +195,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
         <button onClick={backToBank} className="text-averna-neon hover:underline text-sm mb-4 flex items-center gap-1">
           <ArrowLeft className="h-4 w-4" /> Back to tests
         </button>
-        <h1 className="text-3xl font-bold text-white mb-1 flex items-center gap-3">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 flex items-center gap-3">
           <Headphones className="h-8 w-8 text-averna-neon" />
           {test.title}
         </h1>

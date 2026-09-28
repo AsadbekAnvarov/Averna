@@ -4,6 +4,7 @@ import { getLevelInfo, initialsOf } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
 import { Share2, Flame, Trophy, Star, Target, Sparkles, Download } from "lucide-react";
+import { avatarSrc } from "@/lib/avatars";
 
 interface PassportProps {
   name: string;
@@ -22,7 +23,7 @@ interface PassportProps {
  */
 export function ProfilePassport({
   name,
-  image,
+  image: rawImage,
   points,
   currentStreak,
   longestStreak,
@@ -30,6 +31,7 @@ export function ProfilePassport({
   targetBand,
 }: PassportProps) {
   const lvl = getLevelInfo(points);
+  const image = avatarSrc(rawImage);
 
   // Level ring geometry
   const R = 46;

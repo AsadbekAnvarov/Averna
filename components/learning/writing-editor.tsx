@@ -161,7 +161,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
             <ArrowLeft className="h-4 w-4" />
             {homework ? "Back to Homework" : "Back to Writing"}
           </Link>
-          <h1 className="text-3xl font-bold text-white">{config.title}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">{config.title}</h1>
           <p className="text-gray-400 text-sm mt-1">{prompt.type}</p>
           {homework && (
             <p className="mt-3 inline-flex flex-wrap items-center gap-2 rounded-xl border border-averna-neon/30 bg-averna-neon/[0.07] px-3 py-2 text-sm text-gray-200">

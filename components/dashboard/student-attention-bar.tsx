@@ -48,8 +48,8 @@ export async function StudentAttentionBar({
   ].filter(Boolean) as { href: string; icon: any; label: string; cls: string }[];
 
   return (
-    <div className="flex flex-wrap items-center gap-2.5">
-      <span className="text-sm text-gray-400 font-medium flex items-center gap-1.5">
+    <div className="no-scrollbar -mx-4 flex items-center gap-2 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:gap-2.5 sm:overflow-visible sm:px-0">
+      <span className="shrink-0 text-sm text-gray-400 font-medium flex items-center gap-1.5">
         <Sparkles className="h-4 w-4 text-averna-neon" /> Focus today:
       </span>
       {chips.map((c) => {
@@ -58,7 +58,7 @@ export async function StudentAttentionBar({
           <Link
             key={c.label}
             href={c.href}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-sm font-medium transition-colors ${c.cls}`}
+            className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap px-3 py-1.5 rounded-full border text-[13px] sm:text-sm font-medium transition-colors ${c.cls}`}
           >
             <Icon className="h-4 w-4" />
             {c.label}
@@ -66,7 +66,7 @@ export async function StudentAttentionBar({
         );
       })}
       {streak > 0 && (
-        <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-orange-400/30 bg-orange-400/10 text-orange-400 text-sm font-medium">
+        <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap px-3 py-1.5 rounded-full border border-orange-400/30 bg-orange-400/10 text-orange-400 text-[13px] sm:text-sm font-medium">
           🔥 {streak}-day streak
         </span>
       )}
