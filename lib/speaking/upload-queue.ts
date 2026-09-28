@@ -1,7 +1,10 @@
 /**
  * Background upload queue for recorded Speaking answers: one upload at a time,
  * retries with back-off, and the test flows on meanwhile. The runner waits
- * for the queue (`whenIdle`) before the final submission.
+ * for the queue (`whenIdle`) before the final submission — or stops waiting
+ * (`cancelPending`) and has the rest typed. An upload that runs out of
+ * retries is reported (`onGiveUp`); OUTAGE_AFTER_EXHAUSTED of those
+ * (countsTowardOutage) stop recording for the rest of the test.
  *
  * Client-safe and framework-free — the caller supplies `send` (the actual
  * request), so the queue is unit-tested offline with a fake transport.
@@ -29,6 +32,8 @@ export interface UploadJob {
 export interface UploadFailure {
   message: string;
   code?: string;
+  /** It gave up after every retry on errors worth retrying (5xx, timeouts, the network …) — not refused outright. */
+  exhausted?: boolean;
 }
 
 export interface UploadSnapshot<T> {
@@ -50,6 +55,8 @@ export interface UploadQueueOptions<T> {
   send: (job: UploadJob, signal: AbortSignal) => Promise<UploadAttempt<T>>;
   onChange?: (snapshot: UploadSnapshot<T>) => void;
   onResult?: (index: number, value: T) => void;
+  /** An upload ran out of retries (its failure has `exhausted: true`) — see countsTowardOutage. */
+  onGiveUp?: (index: number, failure: UploadFailure) => void;
   /** Wait before retry n (ms); its length is the number of retries per upload. */
   retryDelays?: number[];
   /** Longest wait a server's Retry-After may impose (ms). */
@@ -61,6 +68,23 @@ export interface UploadQueueOptions<T> {
 
 /** ≈ 1 minute of retries in total before an upload is reported as failed. */
 export const DEFAULT_RETRY_DELAYS = [1500, 4000, 8000, 15_000, 30_000];
+
+/**
+ * This many answers running out of retries on ordinary errors means the
+ * server can't take recordings right now (a plain transcription outage: 5xx,
+ * hanging requests): the runner stops recording for the rest of the test, as
+ * for "unavailable".
+ */
+export const OUTAGE_AFTER_EXHAUSTED = 2;
+
+/**
+ * A given-up upload that points at an outage: it ran out of retries (not
+ * refused outright), wasn't just rate-limited, and the browser is online (an
+ * offline spell is retried when the connection is back instead).
+ */
+export function countsTowardOutage(failure: UploadFailure, online: boolean): boolean {
+  return failure.exhausted === true && failure.code !== "rate-limited" && online;
+}
 
 type State = "queued" | "uploading" | "waiting" | "done" | "failed";
 
@@ -101,6 +125,8 @@ export class UploadQueue<T> {
   private disposed = false;
   private readonly stopper = new AbortController();
   private wake: AbortController | null = null;
+  /** The request in flight (cancelPending aborts it). */
+  private inflight: AbortController | null = null;
   private idleWaiters: ((s: UploadSnapshot<T>) => void)[] = [];
 
   constructor(private readonly opts: UploadQueueOptions<T>) {}
@@ -146,6 +172,29 @@ export class UploadQueue<T> {
   nudge(): void {
     for (const e of this.entries.values()) if (e.state === "waiting") e.retryAt = 0;
     this.interrupt();
+  }
+
+  /**
+   * Stop waiting: every upload that is queued, in flight or waiting to retry
+   * fails now with `failure` (the request in flight is aborted). Their
+   * recordings are kept, so retryFailed can send them again; whenIdle
+   * resolves. Returns how many were stopped.
+   */
+  cancelPending(failure: UploadFailure): number {
+    if (this.disposed) return 0;
+    let n = 0;
+    for (const e of this.entries.values()) {
+      if (e.state !== "queued" && e.state !== "uploading" && e.state !== "waiting") continue;
+      e.state = "failed";
+      e.failure = { ...failure };
+      n++;
+    }
+    if (!n) return 0;
+    this.inflight?.abort();
+    this.interrupt();
+    this.changed();
+    if (!this.busy()) this.flushIdle();
+    return n;
   }
 
   /** Resolves when nothing is queued, uploading or waiting (every take is done or failed). */
@@ -253,14 +302,23 @@ export class UploadQueue<T> {
         }
         entry.state = "uploading";
         this.changed();
+        // One controller per request: dispose() (stopper) and cancelPending() both abort it.
+        const ctrl = new AbortController();
+        const onStop = () => ctrl.abort();
+        this.stopper.signal.addEventListener("abort", onStop);
+        this.inflight = ctrl;
         let r: UploadAttempt<T>;
         try {
-          r = await this.opts.send({ index: entry.index, filename: entry.filename, blob: entry.blob as Blob }, this.stopper.signal);
+          r = await this.opts.send({ index: entry.index, filename: entry.filename, blob: entry.blob as Blob }, ctrl.signal);
         } catch (e) {
           r = { ok: false, retryable: true, message: e instanceof Error && e.message ? e.message : "Network error." };
+        } finally {
+          this.stopper.signal.removeEventListener("abort", onStop);
+          if (this.inflight === ctrl) this.inflight = null;
         }
         if (this.disposed) break;
         if (this.entries.get(entry.index) !== entry) continue; // a newer take replaced it meanwhile
+        if (entry.state !== "uploading") continue; // stopped meanwhile (cancelPending), or already sent again
         if (r.ok) {
           entry.state = "done";
           entry.failure = undefined;
@@ -277,14 +335,24 @@ export class UploadQueue<T> {
         entry.attempts++;
         entry.failure = { message: r.message, code: r.code };
         const delays = this.opts.retryDelays ?? DEFAULT_RETRY_DELAYS;
+        let gaveUp = false;
         if (r.retryable && entry.attempts <= delays.length) {
           const asked = Math.min(Math.max(0, r.retryAfterMs ?? 0), this.opts.maxRetryAfterMs ?? 60_000);
           entry.state = "waiting";
           entry.retryAt = this.now() + Math.max(delays[entry.attempts - 1], asked);
         } else {
           entry.state = "failed";
+          // Worth retrying, but the retries are used up (an outage rather than this file).
+          if (r.retryable) entry.failure.exhausted = gaveUp = true;
         }
         this.changed();
+        if (gaveUp) {
+          try {
+            this.opts.onGiveUp?.(entry.index, { ...entry.failure });
+          } catch {
+            /* ignore listener bugs */
+          }
+        }
       }
     } finally {
       this.running = false;

@@ -518,8 +518,8 @@ async function speakingAnswersFor(o: {
   return {
     answers,
     recorded: true,
-    // Full XP for speaking; half only when most of the attempt was typed.
-    typed: words(extra) > words(recorded),
+    // Full XP for speaking (recorded, or the browser's transcripts after recording stopped); half only when most was typed.
+    typed: words(extra.filter((a) => a.typed)) > words(recorded) + words(extra.filter((a) => !a.typed)),
     typedAnswers: extra.length,
     metrics: timed.length ? totalSpeechMetrics(timed) : null,
   };

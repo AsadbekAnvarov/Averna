@@ -22,6 +22,8 @@ import { examHomeworkFor } from "@/lib/homework/exam-homework";
 
 const LIBRARY = "/learning/speaking-test";
 const ATTEMPT_RE = /^[A-Za-z0-9_-]{8,64}$/;
+/** The mock exam's Speaking recording key ("<mockAttemptId>-S") — never a practice attempt id (those are plain hex). */
+const MOCK_KEY_RE = /-S$/;
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -77,7 +79,7 @@ export default async function SpeakingTestPage({
   if (!set) return redirect(LIBRARY);
 
   const requested = firstParam(searchParams.attempt);
-  const attempt = requested && ATTEMPT_RE.test(requested) ? requested : null;
+  const attempt = requested && ATTEMPT_RE.test(requested) && !MOCK_KEY_RE.test(requested) ? requested : null;
   if (!attempt || (await alreadySubmitted(session.user.id, attempt))) {
     return redirect(freshAttemptUrl(set.id, searchParams));
   }

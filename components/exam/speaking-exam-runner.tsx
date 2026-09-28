@@ -18,7 +18,16 @@
  * the teacher. The test flows on while answers upload; the final submission
  * waits for the queue. A reloaded test (practice or mock) continues from the
  * first unanswered question (/api/speaking/progress). Answer i is question i
- * of flattenSpeakingQuestions(set) — the order this runner asks in.
+ * of flattenSpeakingQuestions(set) — the order this runner asks in. When the
+ * server stops taking recordings ("unavailable": transcription is down;
+ * "limit": today's recordings are used up) — or two answers have run out of
+ * retries on ordinary errors (5xx, timeouts: a plain outage) — the rest of
+ * the test uses the browser's speech recognition (or typing), and every answer
+ * whose upload failed can be typed at the end before submitting — nothing is
+ * lost. A question recorded too often in this attempt ("too-many-takes") is
+ * typed at the end too, while recording goes on. When the final wait for the
+ * uploads drags on (about a minute), the candidate can stop waiting and type
+ * every answer that isn't saved yet.
  *
  * Mock mode hands the transcripts to `onSubmit`; practice mode posts them to
  * /api/learning/speaking/test and shows the assessment.
@@ -69,11 +78,22 @@ import {
   flattenSpeakingQuestions,
   parseCapabilities,
   parseRecordedAnswer,
+  stopsRecording,
+  uploadRetryCanHelp,
   type RecordedAnswer,
+  type RecordingStopCode,
   type SpeakingCapabilities,
   type SpeakingQuestionItem,
 } from "@/lib/speaking/shared";
-import { UploadQueue, type UploadAttempt, type UploadJob, type UploadSnapshot } from "@/lib/speaking/upload-queue";
+import {
+  OUTAGE_AFTER_EXHAUSTED,
+  UploadQueue,
+  countsTowardOutage,
+  type UploadAttempt,
+  type UploadFailure,
+  type UploadJob,
+  type UploadSnapshot,
+} from "@/lib/speaking/upload-queue";
 import { formatClock, useLeaveGuard } from "./use-exam";
 import type { SpeakingAnswer, SpeakingExamRunnerProps, SpeakingTestResult, SpeakingTestSubmission } from "./types";
 
@@ -204,8 +224,30 @@ const RECORDING_LOST: Record<RecorderProblem, string> = {
   unknown: `Recording stopped unexpectedly. ${KEEP_TYPING_RECORDED}`,
 };
 
+/** Why recording stopped mid-test (the server's answer to an upload). */
+const STOPPED_WHY: Record<RecordingStopCode, string> = {
+  unavailable: "Recorded answers aren't available right now.",
+  limit: "You've reached today's limit for recorded answers.",
+};
+
+/** Recorded mode: the server stopped taking recordings — what happens for the rest of the test. */
+const RECORDING_STOPPED: Record<"speech" | "typed", string> = {
+  speech: "From the next question, your browser transcribes your answers as you speak. Answers that weren't saved can be typed at the end.",
+  typed: "From the next question, type what you would say — the timing rules still apply. Answers that weren't saved can be typed at the end.",
+};
+
+/** The intro, when recorded answers are paused on the server. */
+const RECORDING_PAUSED: Record<RecordingStopCode, string> = {
+  unavailable: "Recorded answers aren't available right now, so this test uses your browser's speech recognition — or typing — instead.",
+  limit: "You've reached today's limit for recorded answers, so this test uses your browser's speech recognition — or typing — instead.",
+};
+
 /** Longer than the answer route's 60 s, so a slow transcription isn't cut off and retried twice. */
 const UPLOAD_TIMEOUT_MS = 75_000;
+/** The end screen waits this long for the uploads before offering to stop waiting and type the rest. */
+const UPLOAD_WAIT_OFFER_MS = 60_000;
+/** What an upload stopped by "Stop waiting" reports (the typing step shows it). */
+const WAIT_STOPPED: UploadFailure = { message: "Uploading was taking too long, so it was stopped.", code: "cancelled" };
 /** How long the intro waits for the server's capabilities before using the browser's own recognition. */
 const CAPABILITIES_TIMEOUT_MS = 8000;
 
@@ -314,8 +356,11 @@ async function getJson(url: string, signal: AbortSignal): Promise<unknown> {
   }
 }
 
-/** Uploads one recorded answer to /api/speaking/answer (the queue retries what's retryable). */
-function uploadSender(attemptKey: string, setId: string) {
+/**
+ * Uploads one recorded answer to /api/speaking/answer (the queue retries what's retryable).
+ * `onStop`: the server stopped taking recordings ("unavailable" / "limit") — never retried.
+ */
+function uploadSender(attemptKey: string, setId: string, onStop: (code: RecordingStopCode) => void) {
   return async (job: UploadJob, signal: AbortSignal): Promise<UploadAttempt<RecordedAnswer>> => {
     const form = new FormData();
     form.append("file", job.blob, job.filename);
@@ -334,6 +379,11 @@ function uploadSender(attemptKey: string, setId: string) {
         return answer ? { ok: true, value: answer } : { ok: false, retryable: true, message: "The server's reply couldn't be read." };
       }
       const d = (data && typeof data === "object" ? data : {}) as { code?: unknown; retryAfterSec?: unknown };
+      if (stopsRecording(d.code)) {
+        // Transcription is down or today's limit is used up: the rest of the test goes on without recording.
+        onStop(d.code);
+        return { ok: false, retryable: false, message: errorText(data) || "Recorded answers aren't available right now.", code: d.code };
+      }
       const retryAfter = numOr(d.retryAfterSec, Number(res.headers.get("retry-after")) || 0);
       return {
         ok: false,
@@ -800,6 +850,15 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
   const [result, setResult] = useState<SpeakingTestResult | null>(null);
   /** The route answered "already saved" without the full assessment (retry of a saved attempt). */
   const [saved, setSaved] = useState<{ testId: string; outcome: SpeakingTestResult["outcome"] } | null>(null);
+  /** The server stopped taking recordings mid-test ("unavailable" / "limit"): not recorded again in this run. */
+  const [stopped, setStopped] = useState<RecordingStopCode | null>(null);
+  /** The stage's notice after recording stopped. */
+  const [serviceNotice, setServiceNotice] = useState<string | null>(null);
+  /** Upload failures at the end: the questions, and what the candidate types for each (question index → text). */
+  const [unsaved, setUnsaved] = useState<number[]>([]);
+  const [drafts, setDrafts] = useState<Record<number, string>>({});
+  /** The end screen has waited UPLOAD_WAIT_OFFER_MS for the uploads: "Stop waiting" is offered. */
+  const [uploadWaitLong, setUploadWaitLong] = useState(false);
 
   const mountedRef = useRef(false);
   const runRef = useRef(0);
@@ -830,6 +889,14 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
   const applyUploadRef = useRef<(index: number, value: RecordedAnswer) => void>(() => undefined);
   /** The microphone came back mid-answer: record again from the next question. */
   const backToRecordingRef = useRef(false);
+  /** The server stopped taking recordings: never record again in this run. */
+  const stoppedRef = useRef<RecordingStopCode | null>(null);
+  /** Recording stopped while an answer was being recorded: this mode takes over once that answer ends. */
+  const pendingModeRef = useRef<InputMode | null>(null);
+  const recordingStoppedRef = useRef<(code: RecordingStopCode) => void>(() => undefined);
+  /** Answers whose upload ran out of retries on ordinary errors (countsTowardOutage). */
+  const exhaustedRef = useRef<Set<number>>(new Set<number>());
+  const giveUpRef = useRef<(index: number, failure: UploadFailure) => void>(() => undefined);
   const viewRef = useRef<View>("intro");
   viewRef.current = view;
 
@@ -854,11 +921,12 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
     let q = queueRef.current;
     if (!q) {
       q = new UploadQueue<RecordedAnswer>({
-        send: uploadSender(attemptId, set.id),
+        send: uploadSender(attemptId, set.id, (code) => recordingStoppedRef.current(code)),
         onChange: (s) => {
           if (mountedRef.current) setUploads(s);
         },
         onResult: (index, value) => applyUploadRef.current(index, value),
+        onGiveUp: (index, failure) => giveUpRef.current(index, failure),
       });
       queueRef.current = q;
     }
@@ -953,8 +1021,11 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
     void (async () => {
       const serverCaps = parseCapabilities(await getJson("/api/speaking/capabilities", ctrl.signal));
       const canRecord = !!serverCaps?.serverTranscription && isRecordingSupported();
+      // Paused on the server (transcription down, today's limit reached): no recording, but a reloaded
+      // recorded test still keeps its saved answers and continues with the browser's recognition or typing.
+      const canResume = canRecord || !!serverCaps?.paused;
       let saved: Map<number, RecordedAnswer> | null = null;
-      if (canRecord) {
+      if (canResume) {
         const q = new URLSearchParams({ attemptKey: attemptId, setId: set.id });
         const progress = (await getJson(`/api/speaking/progress?${q.toString()}`, ctrl.signal)) as { answered?: unknown; submitted?: unknown } | null;
         const list = Array.isArray(progress?.answered) ? progress.answered.map(parseRecordedAnswer) : [];
@@ -967,10 +1038,10 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
       if (canRecord) {
         setRecordable(true);
         setInputMode("recorded");
-        if (saved) {
-          resumeRef.current = saved;
-          setResume(saved);
-        }
+      }
+      if (saved) {
+        resumeRef.current = saved;
+        setResume(saved);
       }
       setServerReady(true);
     })();
@@ -1014,6 +1085,14 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
     const id = window.setInterval(() => setNow(Date.now()), 250);
     return () => window.clearInterval(id);
   }, [view]);
+
+  // The end screen's wait for the uploads: after about a minute, offer to stop waiting and type the rest.
+  useEffect(() => {
+    setUploadWaitLong(false);
+    if (submitState !== "uploading") return;
+    const id = window.setTimeout(() => setUploadWaitLong(true), UPLOAD_WAIT_OFFER_MS);
+    return () => window.clearTimeout(id);
+  }, [submitState]);
 
   const inProgress = view === "test" || (view === "end" && submitState !== "submitted" && submitState !== "empty");
   useLeaveGuard(inProgress);
@@ -1102,6 +1181,46 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
       setTyped("");
     }
     announce("Recording stopped. Type your answers for now — the answers already recorded are kept.");
+  };
+
+  /** After recording stopped: the browser's own speech recognition when it has one, otherwise typing. */
+  const fallbackMode = (): InputMode => (recorderRef.current ? "speech" : "typed");
+
+  // Recorded mode: the server stopped taking recordings (transcription unavailable, or today's limit
+  // reached) → the rest of the test uses the browser's recognition or typing; answers whose upload
+  // failed can be typed at the end. An answer being recorded right now finishes as a recording.
+  recordingStoppedRef.current = (code: RecordingStopCode) => {
+    if (stoppedRef.current) return;
+    stoppedRef.current = code;
+    setStopped(code);
+    setRecordable(false); // no way back to recording in this run ("Try my microphone again" hides)
+    backToRecordingRef.current = false;
+    if (viewRef.current !== "test" || inputModeRef.current !== "recorded") return;
+    const next = fallbackMode();
+    const turn = turnRef.current;
+    if (turn && !turn.ending && turn.recorded && !turn.typedFallback) {
+      pendingModeRef.current = next;
+    } else {
+      pendingModeRef.current = null;
+      answerRecorderRef.current?.release();
+      setInputMode(next);
+    }
+    setServiceNotice(`${STOPPED_WHY[code]} ${RECORDING_STOPPED[next === "speech" ? "speech" : "typed"]}`);
+    announce(
+      next === "speech"
+        ? "Recording stopped. From the next question your browser transcribes your answers."
+        : "Recording stopped. From the next question, type your answers."
+    );
+  };
+
+  // Recorded mode: an answer's upload ran out of retries on ordinary errors (5xx, timeouts, the network
+  // while online). After OUTAGE_AFTER_EXHAUSTED of them the server can't take recordings right now — a plain
+  // transcription outage: the rest of the test goes on as for "unavailable" (the queued answers keep retrying).
+  giveUpRef.current = (index: number, failure: UploadFailure) => {
+    const online = typeof navigator === "undefined" || navigator.onLine !== false;
+    if (!countsTowardOutage(failure, online)) return;
+    exhaustedRef.current.add(index);
+    if (exhaustedRef.current.size >= OUTAGE_AFTER_EXHAUSTED) recordingStoppedRef.current("unavailable");
   };
 
   // An uploaded answer's server transcript and measured duration replace the placeholders.
@@ -1194,7 +1313,13 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
       if (take && take.durationMs > 0) seconds = Math.round(take.durationMs / 1000);
       if (turnRef.current !== turn) return; // cancelled while the recorder was stopping
       turnRef.current = null;
-      if (backToRecordingRef.current) {
+      const pendingMode = pendingModeRef.current;
+      if (pendingMode) {
+        // Recording stopped during this answer: it ends as a recording; the next question uses the browser's mode.
+        pendingModeRef.current = null;
+        answerRecorderRef.current?.release();
+        setInputMode(pendingMode);
+      } else if (backToRecordingRef.current) {
         backToRecordingRef.current = false;
         setInputMode("recorded");
       }
@@ -1302,11 +1427,15 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
         return r ? { ...a, transcript: r.transcript, seconds: Math.round(r.durationMs / 1000) } : a;
       })
       .sort((x, y) => (x.questionIndex ?? 0) - (y.questionIndex ?? 0));
+    // Nothing of this attempt reached the server (recording stopped before the first answer was saved):
+    // the answers are the browser's own, so say how they were given.
+    const stored = (results?.size ?? 0) > 0 || (resumeRef.current?.size ?? 0) > 0;
+    const own: InputMode = inputModeRef.current === "recorded" ? "typed" : inputModeRef.current;
     return {
       setId: set.id,
       answers: list,
       totalSeconds: list.reduce((sum, a) => sum + a.seconds, 0),
-      inputMode: recorded ? "recorded" : inputModeRef.current === "recorded" ? "typed" : inputModeRef.current,
+      inputMode: recorded && stored ? "recorded" : own,
     };
   };
 
@@ -1320,6 +1449,16 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
       if (!mountedRef.current) return;
       if (snap.failed > 0) {
         const first = snap.failures.values().next().value;
+        const failed = Array.from<number>(snap.failures.keys()).sort((a, b) => a - b);
+        // Each failed answer can be typed; prefilled with whatever this page has for it (a browser transcript).
+        setDrafts((prev: Record<number, string>) => {
+          const next = { ...prev };
+          for (const i of failed) {
+            if (next[i] == null) next[i] = answersRef.current.find((a) => a.questionIndex === i)?.transcript ?? "";
+          }
+          return next;
+        });
+        setUnsaved(failed);
         setSubmitError(first?.message ?? "");
         setSubmitState("upload-failed");
         return;
@@ -1330,12 +1469,29 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
     void submit();
   };
 
+  /** Upload failures that another try could fix (not "unavailable" / "limit", nor a question whose takes are used up). */
   const retryUploads = () => {
-    queueRef.current?.retryFailed();
+    queueRef.current?.retryFailed((f) => uploadRetryCanHelp(f.code));
     void finishRecorded();
   };
 
-  const submitWithoutFailed = () => {
+  /**
+   * The end screen has waited a long time (a transcription outage, a hanging connection): stop the uploads
+   * still pending. finishRecorded's wait ends, and every answer that isn't saved yet goes to the typing step
+   * ("Try uploading again" can still send them).
+   */
+  const stopWaiting = () => {
+    queueRef.current?.cancelPending(WAIT_STOPPED);
+  };
+
+  /** Upload failures: what the candidate typed stands in for those answers (an empty box = unanswered), then submit. */
+  const submitWithTyped = () => {
+    const typedFor = new Map<number, string>(unsaved.map((i: number): [number, string] => [i, String(drafts[i] ?? "").trim()]));
+    answersRef.current = answersRef.current.map((a) => {
+      const text = a.questionIndex != null ? typedFor.get(a.questionIndex) : undefined;
+      return text ? { ...a, transcript: text.slice(0, 4000), typed: true } : a;
+    });
+    setAnswers(answersRef.current);
     submissionRef.current = buildSubmission(true);
     queueRef.current?.dispose();
     void submit();
@@ -1469,11 +1625,15 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
     setAnswers(prefilled);
     submissionRef.current = null;
     backToRecordingRef.current = false;
+    pendingModeRef.current = null;
     markRef.current = "";
     setNotes("");
     setTyped("");
     setLive(EMPTY_LIVE);
     setMicIssue(null);
+    setServiceNotice(null);
+    setUnsaved([]);
+    setDrafts({});
     setResult(null);
     setSaved(null);
     setSubmitState("idle");
@@ -1596,6 +1756,13 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
     queueRef.current?.dispose();
     queueRef.current = null;
     setUploads(null);
+    exhaustedRef.current = new Set<number>();
+    // Recording stopped on the server's word (and the run ended before the switch took effect): don't record again.
+    pendingModeRef.current = null;
+    if (stoppedRef.current && inputModeRef.current === "recorded") {
+      answerRecorderRef.current?.release();
+      setInputMode(fallbackMode());
+    }
     // The microphone was released at the end of the run: check it again on the intro.
     if (inputModeRef.current === "recorded" && !answerRecorderRef.current?.isOpen) setMic("unknown");
     setSubmitState("idle");
@@ -1623,7 +1790,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
   };
   const switchToMicrophone = async () => {
     setMicIssue(null);
-    if (recordable) {
+    if (recordable && !stoppedRef.current) {
       setInputMode("recorded");
       await openRecorder();
       return;
@@ -1634,8 +1801,9 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
 
   /** Mid-test, after the microphone was lost: try it again (the next answer is recorded if it works). */
   const reconnectMicrophone = async () => {
+    if (stoppedRef.current) return; // the server stopped taking recordings: typing (or recognition) it is
     const ok = await openRecorder();
-    if (!ok || !mountedRef.current) return;
+    if (!ok || !mountedRef.current || stoppedRef.current) return;
     setMicIssue(null);
     announce("Microphone on again. Your next answer will be recorded.");
     // An answer being typed right now stays typed; recording resumes with the next question.
@@ -1655,6 +1823,8 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
   const speakingSeconds = answers.reduce((s, a) => s + a.seconds, 0);
   const typedMode = inputMode === "typed";
   const recordedMode = inputMode === "recorded";
+  /** Recorded answers are off for now: paused on the server, or stopped during this run. */
+  const pausedReason: RecordingStopCode | null = stopped ?? server?.paused ?? null;
   /** Recorded answers already saved for this attempt (a reloaded test). */
   const savedCount = resume ? items.filter((i) => resume.has(i.index)).length : 0;
   const allSaved = savedCount > 0 && savedCount >= total;
@@ -1942,6 +2112,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
         <div className="av-panel rounded-2xl p-5 sm:p-6">
           <h2 className="text-sm font-semibold text-white">Before you start</h2>
           <div className="mt-3 space-y-3">
+            {pausedReason && !recordedMode && <Notice>{RECORDING_PAUSED[pausedReason]}</Notice>}
             {renderMicCheck()}
             {renderVoiceCheck()}
           </div>
@@ -1989,9 +2160,10 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
         </h1>
         {activity.kind === "prep" && <p className="mt-1 text-sm text-gray-400">{formatClock(prepLeft)} to think about what you&apos;re going to say</p>}
 
-        {(voiceIssue || micIssue) && (
+        {(voiceIssue || micIssue || serviceNotice) && (
           <div className="mt-5 w-full space-y-2">
             {voiceIssue && <Notice>{voiceIssue}</Notice>}
+            {serviceNotice && <Notice>{serviceNotice}</Notice>}
             {micIssue && <Notice>{micIssue}</Notice>}
             {micIssue && recordable && typedMode && (
               <div className="flex justify-start">
@@ -2229,6 +2401,89 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
     );
   };
 
+  /**
+   * Recorded mode, uploads failed at the end: the candidate types those answers (prefilled with anything
+   * this page has for them) and submits — typed answers are marked with the rest; an empty box is unanswered.
+   */
+  const renderUnsaved = () => {
+    const n = unsaved.length;
+    const failures = uploads ? Array.from<UploadFailure>(uploads.failures.values()) : [];
+    // "unavailable" / "limit" / "too-many-takes" won't change on a retry; a lost connection, a server error or
+    // an upload stopped by "Stop waiting" may.
+    const canRetry = failures.some((f) => uploadRetryCanHelp(f.code));
+    const why = stopped ? STOPPED_WHY[stopped] : submitError || "Check your connection.";
+    const nothingAnswered = !answers.some((a) => a.transcript.trim()) && !unsaved.some((i) => (drafts[i] ?? "").trim());
+    return (
+      <section aria-labelledby="speaking-unsaved-title" className="error-surface rounded-2xl p-4 text-left sm:p-5">
+        <div role="alert" className="flex items-start gap-3">
+          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400" aria-hidden />
+          <div className="min-w-0 flex-1">
+            <h2 id="speaking-unsaved-title" className="text-sm font-semibold text-red-200">
+              {n === 1 ? "One answer couldn't be uploaded." : `${n} answers couldn't be uploaded.`}
+            </h2>
+            <p className="mt-0.5 text-sm text-red-100/80">
+              {why} Type what you said below — typed answers are marked with the rest of your test. An empty box counts as unanswered.
+            </p>
+          </div>
+        </div>
+        <ol className="mt-4 space-y-4">
+          {unsaved.map((i) => {
+            const item = items[i];
+            if (!item) return null;
+            return (
+              <li key={i}>
+                <label htmlFor={`speaking-unsaved-${i}`} className="block text-xs font-semibold uppercase tracking-wider text-gray-400">
+                  Question {i + 1} · Part {item.part}
+                </label>
+                <p className="mt-1 text-sm font-medium text-white">{item.question}</p>
+                <textarea
+                  id={`speaking-unsaved-${i}`}
+                  value={drafts[i] ?? ""}
+                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                    const value = e.target.value;
+                    setDrafts((prev: Record<number, string>) => ({ ...prev, [i]: value }));
+                  }}
+                  rows={item.kind === "long" ? 6 : 3}
+                  spellCheck={false}
+                  autoComplete="off"
+                  placeholder="Type what you said…"
+                  className="mt-2 w-full resize-y rounded-2xl border border-white/10 bg-white/[0.03] p-3 text-base leading-relaxed text-white placeholder:text-gray-500 focus:border-averna-neon/50 focus:outline-none focus:ring-2 focus:ring-averna-neon/30"
+                />
+              </li>
+            );
+          })}
+        </ol>
+        {nothingAnswered && (
+          <p className="mt-4 text-sm font-medium text-amber-100">
+            {isMock
+              ? "Nothing has been answered yet — if you submit now, this section scores 0."
+              : "Nothing has been answered yet — type at least one answer so there's something to assess."}
+          </p>
+        )}
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Button
+            type="button"
+            size="lg"
+            onClick={submitWithTyped}
+            className="glow-cta min-h-[48px] rounded-xl bg-averna-primary px-6 text-white hover:bg-averna-light"
+          >
+            <ArrowRight className="mr-2 h-4 w-4" aria-hidden />
+            Submit My Answers
+          </Button>
+          {canRetry && (
+            <button
+              type="button"
+              onClick={retryUploads}
+              className="inline-flex min-h-[48px] items-center gap-1.5 rounded-xl border border-red-400/40 px-4 text-sm font-medium text-red-200 transition hover:bg-red-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/60"
+            >
+              <RotateCcw className="h-4 w-4" aria-hidden /> Try Uploading Again
+            </button>
+          )}
+        </div>
+      </section>
+    );
+  };
+
   const renderEnd = () => {
     if (result) return <ResultView result={result} answers={answers} headingRef={headingRef} />;
     return (
@@ -2279,6 +2534,21 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
                 {uploads?.retrying && (
                   <p className="mt-2 text-xs text-amber-200">The connection dropped — retrying. Keep this page open.</p>
                 )}
+                {uploadWaitLong && (
+                  <div className="mt-4 border-t border-white/10 pt-4">
+                    <p className="text-xs text-gray-400">
+                      This is taking longer than it should. You can stop waiting and type the answers that haven&apos;t been saved
+                      yet — the saved ones are kept.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={stopWaiting}
+                      className="mt-3 inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-white/15 px-4 text-sm font-medium text-gray-200 transition hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60"
+                    >
+                      <Keyboard className="h-4 w-4" aria-hidden /> Stop waiting and type the remaining answers
+                    </button>
+                  </div>
+                )}
               </div>
             )}
             {submitState === "submitting" && (
@@ -2300,36 +2570,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
           </div>
         </div>
 
-        {submitState === "upload-failed" && (
-          <div role="alert" className="error-surface flex items-start gap-3 rounded-2xl p-4 text-left sm:p-5">
-            <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400" aria-hidden />
-            <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-red-200">
-                {uploads && uploads.failed === 1 ? "One answer couldn't be uploaded." : `${uploads?.failed ?? "Some"} answers couldn't be uploaded.`}
-              </p>
-              <p className="mt-0.5 text-sm text-red-100/80">
-                {submitError || "Check your connection and try again."} You can also submit without {uploads && uploads.failed === 1 ? "it" : "them"} — those questions
-                count as unanswered.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={retryUploads}
-                  className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-red-400/40 px-4 text-sm font-medium text-red-200 transition hover:bg-red-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/60"
-                >
-                  <RotateCcw className="h-4 w-4" aria-hidden /> Try Again
-                </button>
-                <button
-                  type="button"
-                  onClick={submitWithoutFailed}
-                  className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-white/15 px-4 text-sm font-medium text-gray-200 transition hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60"
-                >
-                  Submit Without {uploads && uploads.failed === 1 ? "It" : "Them"}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        {submitState === "upload-failed" && renderUnsaved()}
         {submitState === "error" && (
           <ErrorBox title="Your test hasn't been submitted yet." detail={submitError} actionLabel="Try Again" onAction={() => void submit()} />
         )}

@@ -3,7 +3,7 @@ import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getSpeakingSet } from "@/lib/ielts/catalog";
 import { clientAttemptKey } from "@/lib/ielts/submit";
-import { saveRecordedAnswer } from "@/lib/speaking/recording";
+import { isMissingTableError, markRecordingUnavailable, saveRecordedAnswer } from "@/lib/speaking/recording";
 import { MAX_UPLOAD_BYTES, flattenSpeakingQuestions, type SpeakingApiError, type SpeakingErrorCode } from "@/lib/speaking/shared";
 
 export const dynamic = "force-dynamic";
@@ -17,8 +17,14 @@ export const maxDuration = 60;
  *
  * The part and the question come from the set (by questionIndex), the duration
  * from the audio itself — nothing the browser says about the answer is
- * trusted. Uploading the same question again replaces the earlier take.
- * Errors: { error, code, retryAfterSec? } (429 carries Retry-After).
+ * trusted. Uploading the same question again replaces the earlier take (and
+ * counts as a take); the same file again returns the saved answer.
+ * Errors: { error, code, retryAfterSec? } (429 carries Retry-After). Not worth
+ * retrying: 503 "unavailable" (transcription or the database can't work right
+ * now) and 429 "limit" (today's takes are used up) — the runner carries on
+ * without recording; 409 "too-many-takes" (this question already has
+ * MAX_TAKES_PER_QUESTION takes in this attempt) — that answer is typed at the
+ * end, recording goes on.
  */
 
 function reply(status: number, code: SpeakingErrorCode, message: string, retryAfterSec?: number) {
@@ -69,6 +75,11 @@ export async function POST(req: NextRequest) {
     if (!r.ok) return reply(r.status, r.code, r.error, r.retryAfterSec);
     return NextResponse.json(r.answer);
   } catch (e) {
+    if (isMissingTableError(e)) {
+      // Retrying can't help until prisma/sql/deploy.sql is applied: stop recording instead.
+      markRecordingUnavailable("a table the answer needs is missing — apply prisma/sql/deploy.sql");
+      return reply(503, "unavailable", "Recorded answers aren't available right now.");
+    }
     console.error("Speaking answer error:", e);
     return reply(500, "server", "Your answer couldn't be saved yet — retrying.");
   }

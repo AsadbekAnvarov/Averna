@@ -5,13 +5,15 @@
  */
 
 import type { SpeakingExamSet } from "../ielts/types";
-import { MAX_ANSWER_SECONDS, flattenSpeakingQuestions, type SpeakingPart } from "./shared";
+import { MAX_ANSWER_SECONDS, flattenSpeakingQuestions, recordingMatchesQuestion, type SpeakingPart } from "./shared";
 import { parseSpeechMetrics, type SpeechMetrics } from "./metrics";
 
 /** The SpeakingRecording columns answer building reads. */
 export interface RecordingRow {
   questionIndex: number;
   setId: string;
+  /** The question as it was asked when the answer was recorded. */
+  question: string;
   transcript: string;
   durationMs: number;
   metrics?: unknown;
@@ -30,8 +32,9 @@ export interface RecordedSpeakingAnswer {
 }
 
 /**
- * Rows → answers in question order. Rows of another set, unknown indices and
- * duplicates are ignored.
+ * Rows → answers in question order. Rows of another set, unknown indices,
+ * duplicates and rows recorded for a different question (the set was edited
+ * or reordered since — the same check as attemptProgress) are ignored.
  */
 export function answersFromRecordings(set: SpeakingExamSet, rows: RecordingRow[]): RecordedSpeakingAnswer[] {
   const items = flattenSpeakingQuestions(set);
@@ -41,7 +44,7 @@ export function answersFromRecordings(set: SpeakingExamSet, rows: RecordingRow[]
   for (const row of sorted) {
     if (!row || row.setId !== set.id || !Number.isInteger(row.questionIndex) || seen.has(row.questionIndex)) continue;
     const item = items[row.questionIndex];
-    if (!item) continue;
+    if (!item || !recordingMatchesQuestion(item, row.question)) continue;
     seen.add(row.questionIndex);
     const ms = Number(row.durationMs);
     out.push({
@@ -67,13 +70,15 @@ export interface CheckedSpeakingAnswer {
 }
 
 /**
- * Typed answers for questions that have no recording — the microphone failed
- * mid-test and the candidate finished by typing. A recorded question always
- * keeps the server's transcript, whatever the browser sends for it.
+ * The candidate's own answers for questions that have no recording: typed
+ * (`typed: true` — the microphone failed mid-test, or an upload failed and the
+ * answer was typed at the end) or transcribed by the browser (recording
+ * stopped mid-test — transcription unavailable or today's limit reached — and
+ * the rest was answered with the browser's speech recognition). A recorded
+ * question always keeps the server's transcript, whatever the browser sends
+ * for it. (Only typed ones count towards the typed-XP rule — lib/ielts/submit.ts.)
  */
 export function typedAnswersBesides<T extends CheckedSpeakingAnswer>(recorded: { questionIndex: number }[], client: T[]): T[] {
   const taken = new Set(recorded.map((a) => a.questionIndex));
-  return client.filter(
-    (a) => a.typed === true && typeof a.questionIndex === "number" && !taken.has(a.questionIndex) && a.transcript.trim().length > 0
-  );
+  return client.filter((a) => typeof a.questionIndex === "number" && !taken.has(a.questionIndex) && a.transcript.trim().length > 0);
 }

@@ -8,11 +8,13 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { canViewStudent } from "@/lib/access";
 import { TeacherReviewCard } from "@/components/review/teacher-review-card";
+import { HomeworkNoticeCard } from "@/components/homework/homework-notice";
+import { homeworkNoticeFor } from "@/lib/homework/exam-homework";
 import { SessionOutcomeSection } from "@/components/progression/session-outcome-section";
 import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { SkillIcon } from "@/components/progression/ui";
 import { cn, formatDate, formatDateTime } from "@/lib/utils";
-import { recordingsForTest, type SpeakingRecordingRow } from "@/lib/speaking/recording";
+import { audioNotKeptReason, recordingsForTest, type SpeakingRecordingRow } from "@/lib/speaking/recording";
 import { parseSpeechMetrics, parseSpeechMetricsTotal, type SpeechMetrics } from "@/lib/speaking/metrics";
 import { daysLabel, normQuestion } from "@/lib/speaking/shared";
 import { RecordingPlayer } from "./recording-player";
@@ -95,6 +97,7 @@ function audioNoteFor(rec: SpeakingRecordingRow | undefined, now: number): strin
     const days = Math.max(1, Math.round((new Date(rec.expiresAt).getTime() - new Date(rec.createdAt).getTime()) / DAY_MS));
     return `Audio deleted after ${daysLabel(days)}.`;
   }
+  if (audioNotKeptReason(rec.metrics) === "monthly-limit") return "Audio not kept — this month's storage limit was reached. The transcript is kept.";
   return "The audio of this answer wasn't kept.";
 }
 
@@ -156,10 +159,15 @@ export default async function SpeakingResultPage({ params }: { params: { testId:
   const mockAttemptId = str(answersJson.mockAttemptId) || null;
   const auto = answersJson.auto === true;
 
-  const [recordings, review, xp] = await Promise.all([
+  // Open Speaking homework for this set that this attempt didn't complete (owner only): too few words,
+  // or not started from the homework page.
+  const homeworkNoticeP = viewerIsOwner ? homeworkNoticeFor(row.studentId, row) : Promise.resolve(null);
+
+  const [recordings, review, xp, homeworkNotice] = await Promise.all([
     recordingsForTest(row),
     db.testReview.findUnique({ where: { testId: row.id } }).catch(() => null) as Promise<{ criteria: unknown } | null>,
     xpForTest(row.studentId, row.id),
+    homeworkNoticeP,
   ]);
 
   // Answers + their recordings (by question index; by question text for anything older).
@@ -168,7 +176,10 @@ export default async function SpeakingResultPage({ params }: { params: { testId:
   const byIndex = new Map(mine.map((r) => [r.questionIndex, r]));
   const byQuestion = new Map(mine.map((r) => [normQuestion(r.question), r]));
   const answers: AnswerView[] = savedAnswers(row.answers).map((a, i) => {
-    const rec = a.typed ? undefined : (a.questionIndex != null ? byIndex.get(a.questionIndex) : undefined) ?? byQuestion.get(normQuestion(a.question));
+    // By index while the recording was made for this question (the set may have been edited since), else by its text.
+    const atIndex = a.questionIndex != null ? byIndex.get(a.questionIndex) : undefined;
+    const sameQuestion = !!atIndex && normQuestion(atIndex.question) === normQuestion(a.question);
+    const rec = a.typed ? undefined : (sameQuestion ? atIndex : undefined) ?? byQuestion.get(normQuestion(a.question));
     return {
       key: `${a.questionIndex ?? "q"}-${i}`,
       part: a.part,
@@ -358,6 +369,8 @@ export default async function SpeakingResultPage({ params }: { params: { testId:
             </dl>
           </div>
         </section>
+
+        {homeworkNotice && <HomeworkNoticeCard notice={homeworkNotice} />}
 
         {viewerIsOwner && (
           <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
