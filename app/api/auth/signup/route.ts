@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { hash } from "bcryptjs";
 import { db } from "@/lib/db";
+import { USERNAME_TEXT, normalizeUsername, usernameProblem } from "@/lib/account/username-rules";
+import { isUniqueViolationOn } from "@/lib/account/username";
+
+const USERNAME_TAKEN = "This username is already taken — choose another.";
 
 export const dynamic = "force-dynamic";
 
@@ -38,11 +42,10 @@ function describeDbError(error: unknown): { message: string; code?: string } | n
           "The database has not been initialised. Run the schema migration (npm run db:push) and try again.",
         code,
       };
-    case "P2002": // unique constraint failed (email already taken)
-      return {
-        message: "An account with this email already exists.",
-        code,
-      };
+    case "P2002": // unique constraint failed (email or username already taken)
+      return isUniqueViolationOn(error, "username")
+        ? { message: USERNAME_TAKEN, code: "username_taken" }
+        : { message: "An account with this email already exists.", code };
     default:
       return code ? { message: "A database error occurred. Please try again.", code } : null;
   }
@@ -57,11 +60,12 @@ export async function POST(req: NextRequest) {
 
     const name = typeof body.name === "string" ? body.name.trim() : "";
     const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+    const username = typeof body.username === "string" ? normalizeUsername(body.username) : "";
     const password = typeof body.password === "string" ? body.password : "";
     const personalGoal = typeof body.personalGoal === "string" ? body.personalGoal.trim() : "";
 
     // Validation
-    if (!name || !email || !password || !personalGoal) {
+    if (!name || !email || !username || !password || !personalGoal) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 }
@@ -71,6 +75,14 @@ export async function POST(req: NextRequest) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         { error: "Please enter a valid email address" },
+        { status: 400 }
+      );
+    }
+
+    const usernameIssue = usernameProblem(username);
+    if (usernameIssue) {
+      return NextResponse.json(
+        { error: `Username: ${USERNAME_TEXT.en[usernameIssue]}`, code: "username_invalid" },
         { status: 400 }
       );
     }
@@ -94,6 +106,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Every username belongs to one account.
+    const usernameOwner = await db.user.findUnique({ where: { username }, select: { id: true } });
+    if (usernameOwner) {
+      return NextResponse.json({ error: USERNAME_TAKEN, code: "username_taken" }, { status: 409 });
+    }
+
     // Hash password
     const hashedPassword = await hash(password, 12);
 
@@ -106,6 +124,7 @@ export async function POST(req: NextRequest) {
         data: {
           name,
           email,
+          username,
           password: hashedPassword,
           role: "STUDENT",
           emailVerified: new Date(),
@@ -128,6 +147,7 @@ export async function POST(req: NextRequest) {
         user: {
           id: user.id,
           email: user.email,
+          username: user.username,
           name: user.name,
         },
       },
@@ -140,7 +160,7 @@ export async function POST(req: NextRequest) {
     if (described) {
       // A unique-constraint race means the email was taken between our check
       // and the insert — treat as a conflict, not a server error.
-      const status = described.code === "P2002" ? 409 : 503;
+      const status = described.code === "P2002" || described.code === "username_taken" ? 409 : 503;
       return NextResponse.json(
         { error: described.message, code: described.code },
         { status }

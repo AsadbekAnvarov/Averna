@@ -14,6 +14,8 @@ import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { TopPerformers } from "@/components/top-performers";
 import { AvatarEditor } from "@/components/avatar-editor";
 import { PageHeader } from "@/components/ui/page-header";
+import { ChangePasswordForm } from "@/components/account/change-password-form";
+import { UsernameForm } from "@/components/account/username-form";
 
 async function updateTeacherProfile(formData: FormData) {
   "use server";
@@ -46,7 +48,7 @@ export default async function TeacherProfilePage() {
   const teacher = await db.teacher.findUnique({
     where: { userId: session.user.id },
     include: {
-      user: { select: { name: true, email: true, image: true } },
+      user: { select: { name: true, email: true, image: true, username: true } },
       groups: { include: { students: true } },
       homework: true,
     },
@@ -235,6 +237,16 @@ export default async function TeacherProfilePage() {
             </form>
           </CardContent>
         </Card>
+
+        {/* Username */}
+        <div className="mt-8">
+          <UsernameForm lang="en" initial={teacher.user.username ?? null} />
+        </div>
+
+        {/* Password */}
+        <div className="mt-8">
+          <ChangePasswordForm lang="en" email={teacher.user.email} username={teacher.user.username} />
+        </div>
 
         {/* Top performers showcase */}
         <div className="mt-8">

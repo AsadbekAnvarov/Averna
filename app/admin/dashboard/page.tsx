@@ -159,7 +159,7 @@ export default async function AdminDashboard() {
   const [students, groups] = await Promise.all([
     db.student.findMany({
       include: {
-        user: { select: { name: true, email: true } },
+        user: { select: { name: true, email: true, username: true } },
         group: { select: { name: true } },
       },
       orderBy: { createdAt: "desc" },
@@ -203,6 +203,7 @@ export default async function AdminDashboard() {
     id: s.id,
     name: s.user.name,
     email: s.user.email,
+    username: s.user.username ?? null,
     level: s.level,
     groupId: s.groupId,
     blacklisted: s.blacklisted,

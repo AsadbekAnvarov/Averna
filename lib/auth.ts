@@ -4,6 +4,8 @@ import { compare } from "bcryptjs";
 import { db } from "@/lib/db";
 import { UserRole } from "@prisma/client";
 import { authConfig } from "@/lib/auth.config";
+import { passwordStamp, sessionStillValid } from "@/lib/account/session-guard";
+import { looksLikeEmail, normalizeUsername } from "@/lib/account/username-rules";
 
 // Extend the built-in session types
 declare module "next-auth" {
@@ -16,32 +18,48 @@ declare module "next-auth" {
 
   interface User {
     role: UserRole;
+    /** passwordChangedAt (ms, 0 = never) of the row whose password this sign-in verified. */
+    pwdAt?: number;
   }
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
+  callbacks: {
+    ...authConfig.callbacks,
+    // Node side only (the Edge middleware uses authConfig as it is): the token
+    // remembers the passwordChangedAt of the row whose password it verified, and
+    // the session ends once that changes, or the account is deleted
+    // (lib/account/session-guard).
+    async jwt(params) {
+      const token = await authConfig.callbacks.jwt(params);
+      if (params.user) {
+        const pwdAt = (params.user as { pwdAt?: unknown }).pwdAt;
+        return { ...token, pwdAt: typeof pwdAt === "number" ? pwdAt : 0 };
+      }
+      return (await sessionStillValid(token)) ? token : null;
+    },
+  },
   providers: [
     Credentials({
       name: "credentials",
       credentials: {
-        email: { label: "Email", type: "email" },
+        // The sign-in field takes an email OR a username (the key stays "email" for older clients).
+        email: { label: "Email or username", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        const login = typeof credentials?.email === "string" ? credentials.email.trim() : "";
+        if (!login || !credentials?.password) {
           throw new Error("Invalid credentials");
         }
 
-        // Normalise the email the same way signup does so that logins are
-        // case/whitespace-insensitive and always match the stored record.
-        const email = (credentials.email as string).trim().toLowerCase();
-
-        const user = await db.user.findUnique({
-          where: {
-            email,
-          },
-        });
+        // An email (normalised the same way signup does, so logins are
+        // case/whitespace-insensitive) or a username (stored lower case, "@" optional).
+        const select = { id: true, email: true, name: true, role: true, image: true, password: true, passwordChangedAt: true };
+        const user = looksLikeEmail(login)
+          ? await db.user.findUnique({ where: { email: login.toLowerCase() }, select })
+          : await db.user.findUnique({ where: { username: normalizeUsername(login) }, select });
 
         if (!user || !user.password) {
           throw new Error("Invalid credentials");
@@ -62,6 +80,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           name: user.name,
           role: user.role,
           image: user.image,
+          // The password this sign-in verified: the session ends when it changes.
+          pwdAt: passwordStamp(user.passwordChangedAt),
         };
       },
     }),

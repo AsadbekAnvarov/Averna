@@ -110,6 +110,7 @@ const ADMIN_COMMANDS: Cmd[] = [
   { group: "Operatsiyalar", label: "Audit jurnali", href: "/admin/logs", icon: ScrollText, keywords: "audit log history" },
   { group: "Operatsiyalar", label: "Xabarlar", href: "/messages", icon: MessageSquare, keywords: "messages chat" },
   { group: "Operatsiyalar", label: "Telegram bot", href: "/admin/telegram", icon: Send, keywords: "telegram bot webhook ota-ona parents" },
+  { group: "Operatsiyalar", label: "Profil va parol", href: "/admin/profile", icon: User, keywords: "profile password parol profil" },
 ];
 
 // Group render order per role

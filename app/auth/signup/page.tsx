@@ -8,7 +8,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { AlertCircle, CheckCircle, Loader2 } from "lucide-react";
+import { AlertCircle, CheckCircle, Loader2, XCircle } from "lucide-react";
+import { USERNAME_MAX, USERNAME_TEXT, normalizeUsername } from "@/lib/account/username-rules";
+import { useUsernameCheck } from "@/components/account/use-username-check";
 
 const personalGoals = [
   "IELTS 7.5+",
@@ -22,6 +24,7 @@ export default function SignUpPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -30,6 +33,8 @@ export default function SignUpPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const usernameStatus = useUsernameCheck(formData.username);
+  const U = USERNAME_TEXT.en;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,6 +42,15 @@ export default function SignUpPage() {
     setSuccess(false);
 
     // Validation
+    if (!normalizeUsername(formData.username)) {
+      setError(U.missing);
+      return;
+    }
+    if (usernameStatus.state === "unavailable") {
+      setError(U[usernameStatus.code]);
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       return;
@@ -58,7 +72,7 @@ export default function SignUpPage() {
       const response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, username: normalizeUsername(formData.username) }),
       });
 
       const data = await response.json();
@@ -128,6 +142,47 @@ export default function SignUpPage() {
                   disabled={isLoading}
                   className="bg-background/50"
                 />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="username">Username</Label>
+                <div className="relative">
+                  <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500">@</span>
+                  <Input
+                    id="username"
+                    type="text"
+                    placeholder="john_smith"
+                    value={formData.username}
+                    onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                    required
+                    maxLength={USERNAME_MAX + 1}
+                    autoComplete="username"
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    disabled={isLoading}
+                    aria-describedby="username-status"
+                    className="bg-background/50 pl-7"
+                  />
+                </div>
+                <p id="username-status" aria-live="polite" className="min-h-[1rem] text-xs">
+                  {usernameStatus.state === "checking" ? (
+                    <span className="inline-flex items-center gap-1 text-gray-400">
+                      <Loader2 className="h-3.5 w-3.5 animate-spin" /> {U.checking}
+                    </span>
+                  ) : usernameStatus.state === "available" ? (
+                    <span className="inline-flex items-center gap-1 text-averna-neon">
+                      <CheckCircle className="h-3.5 w-3.5" /> @{usernameStatus.username} — {U.available}
+                    </span>
+                  ) : usernameStatus.state === "unavailable" ? (
+                    <span className="inline-flex items-center gap-1 text-red-400">
+                      <XCircle className="h-3.5 w-3.5" /> {U[usernameStatus.code]}
+                    </span>
+                  ) : usernameStatus.state === "unverified" ? (
+                    <span className="text-gray-400">{U.unverified}</span>
+                  ) : (
+                    <span className="text-gray-400">You can sign in with it instead of your email. {U.rules}</span>
+                  )}
+                </p>
               </div>
 
               <div className="space-y-2">

@@ -425,5 +425,15 @@ CREATE TABLE IF NOT EXISTS "cron_runs" (
 CREATE UNIQUE INDEX IF NOT EXISTS "cron_runs_job_day_key" ON "cron_runs" ("job", "day");
 
 -- ============================================================================
+-- Accounts: password change (sessions signed in before it end) and usernames.
+-- Additive only: new NULLABLE columns and an index.
+-- ============================================================================
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "passwordChangedAt" TIMESTAMP(3);
+-- Usernames: unique sign-in names (stored lower case). NULL until chosen; a
+-- unique index allows any number of NULLs.
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "username" TEXT;
+CREATE UNIQUE INDEX IF NOT EXISTS "users_username_key" ON "users" ("username");
+
+-- ============================================================================
 -- End of additive deploy script. Nothing above can remove or modify data.
 -- ============================================================================

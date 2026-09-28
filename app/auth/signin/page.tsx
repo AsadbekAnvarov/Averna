@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { AlertCircle, Loader2 } from "lucide-react";
+import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
 import { Logo } from "@/components/logo";
 
 export default function SignInPage() {
@@ -17,6 +17,14 @@ export default function SignInPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  // After a password change (/auth/signin?changed=1). Read here rather than with
+  // useSearchParams, which would need a Suspense boundary on this static page.
+  const [passwordChanged, setPasswordChanged] = useState(false);
+  useEffect(() => {
+    try {
+      setPasswordChanged(new URLSearchParams(window.location.search).get("changed") === "1");
+    } catch {}
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,7 +39,7 @@ export default function SignInPage() {
       });
 
       if (result?.error) {
-        setError("Invalid email or password");
+        setError("Wrong email / username or password");
       } else {
         // Route to the correct area based on the user's role
         const session = await getSession();
@@ -77,6 +85,13 @@ export default function SignInPage() {
 
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
+              {passwordChanged && !error && (
+                <div role="status" className="bg-averna-neon/10 border border-averna-neon/40 text-averna-neon px-4 py-3 rounded-lg flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 shrink-0" />
+                  <span className="text-sm">Your password was changed. Sign in with the new password.</span>
+                </div>
+              )}
+
               {error && (
                 <div className="bg-red-500/10 border border-red-500 text-red-500 px-4 py-3 rounded-lg flex items-center gap-2">
                   <AlertCircle className="h-4 w-4" />
@@ -85,11 +100,14 @@ export default function SignInPage() {
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Email or username</Label>
                 <Input
                   id="email"
-                  type="email"
-                  placeholder="student@averna.com"
+                  type="text"
+                  autoComplete="username"
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  placeholder="you@gmail.com or @username"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required

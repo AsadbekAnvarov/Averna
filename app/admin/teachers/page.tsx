@@ -17,6 +17,8 @@ import { ConfirmButton } from "@/components/ui/confirm-button";
 import { SortControl } from "@/components/admin/sort-control";
 import { recordAudit } from "@/lib/audit";
 import { deleteTeacherCascade } from "@/lib/cascade-delete";
+import { normalizeUsername, usernameProblem } from "@/lib/account/username-rules";
+import { isUniqueViolationOn } from "@/lib/account/username";
 
 const TEACHER_SORTS = [
   { value: "name", label: "Ism" },
@@ -33,6 +35,8 @@ async function addTeacher(formData: FormData) {
 
   const name = (formData.get("name") as string)?.trim();
   const email = (formData.get("email") as string)?.trim().toLowerCase();
+  // Optional: the teacher can also choose one later in their profile.
+  const username = normalizeUsername((formData.get("username") as string) || "");
   const password = (formData.get("password") as string) || "";
   const specialty = (formData.get("specialty") as string)?.trim();
   const bandRaw = parseFloat(formData.get("ieltsBand") as string);
@@ -42,25 +46,39 @@ async function addTeacher(formData: FormData) {
     redirect("/admin/teachers?error=invalid");
   }
 
+  if (username && usernameProblem(username)) redirect("/admin/teachers?error=username_invalid");
+
   const existing = await db.user.findUnique({ where: { email } });
   if (existing) redirect("/admin/teachers?error=exists");
+  if (username && (await db.user.findUnique({ where: { username }, select: { id: true } }))) {
+    redirect("/admin/teachers?error=username_taken");
+  }
 
-  const user = await db.user.create({
-    data: {
-      name,
-      email,
-      password: await hash(password, 12),
-      role: "TEACHER",
-      emailVerified: new Date(),
-    },
-  });
+  let user: { id: string };
+  try {
+    user = await db.user.create({
+      data: {
+        name,
+        email,
+        ...(username ? { username } : {}),
+        password: await hash(password, 12),
+        role: "TEACHER",
+        emailVerified: new Date(),
+      },
+    });
+  } catch (e) {
+    // Taken between the check and the insert.
+    if (isUniqueViolationOn(e, "username")) redirect("/admin/teachers?error=username_taken");
+    if (isUniqueViolationOn(e, "email")) redirect("/admin/teachers?error=exists");
+    throw e;
+  }
   await db.teacher.create({
     data: { userId: user.id, specialty: specialty || null, ieltsBand, isSecondTeacher: isSecond },
   });
   await recordAudit(
     { id: session.user.id, name: session.user.name, role: session.user.role },
     "Created teacher",
-    `name=${name} email=${email}`
+    `name=${name} email=${email}${username ? ` username=${username}` : ""}`
   );
 
   revalidatePath("/admin/teachers");
@@ -114,7 +132,7 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
 
   const teachersRaw = await db.teacher.findMany({
     include: {
-      user: { select: { name: true, email: true } },
+      user: { select: { name: true, email: true, username: true } },
       groups: { include: { students: { select: { id: true } } } },
     },
     orderBy: { createdAt: "asc" },
@@ -149,6 +167,12 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
         {searchParams.deleted && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Oʻqituvchi oʻchirildi.</div>}
         {searchParams.error === "exists" && <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">Bunday email bilan foydalanuvchi allaqachon mavjud.</div>}
         {searchParams.error === "invalid" && <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">Barcha maydonlarni toʻldiring (parol ≥ 6 belgi).</div>}
+        {searchParams.error === "username_taken" && <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">Bu foydalanuvchi nomi allaqachon band — boshqasini tanlang.</div>}
+        {searchParams.error === "username_invalid" && (
+          <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300">
+            Foydalanuvchi nomi notoʻgʻri: 3–30 ta belgi, faqat lotin harflari, raqamlar, _ va ., harf bilan boshlanadi (admin, averna… kabi nomlar band).
+          </div>
+        )}
 
         {/* Add teacher */}
         <Card className="glass border-averna-purple/30 mb-8">
@@ -162,6 +186,10 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" name="email" type="email" placeholder="teacher@averna.com" className="bg-background/50" required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="username">Foydalanuvchi nomi (ixtiyoriy)</Label>
+                <Input id="username" name="username" placeholder="masalan, aziz_karimov" autoCapitalize="none" spellCheck={false} className="bg-background/50" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="password">Vaqtinchalik parol</Label>
@@ -210,7 +238,10 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
                         )}
                         {t.isSecondTeacher && <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-averna-pink/20 text-averna-pink border border-averna-pink/30 shrink-0">1-on-1</span>}
                       </p>
-                      <p className="text-xs text-gray-400 truncate">{t.user.email} · {t.specialty ?? "IELTS oʻqituvchisi"}</p>
+                      <p className="text-xs text-gray-400 truncate">
+                        {t.user.username ? `@${t.user.username} · ` : ""}
+                        {t.user.email} · {t.specialty ?? "IELTS oʻqituvchisi"}
+                      </p>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
                       <div className="flex gap-3 text-xs text-gray-400">

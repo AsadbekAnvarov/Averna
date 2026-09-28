@@ -45,11 +45,15 @@ enum AchievementType {
 model User {
   id            String    @id @default(cuid())
   email         String    @unique
+  /// Unique sign-in name (lower case, see lib/account/username-rules); null until the user picks one.
+  username      String?   @unique
   name          String?
   password      String
   role          UserRole  @default(STUDENT)
   image         String?
   emailVerified DateTime?
+  /// Last password change: sessions signed in before it end (lib/account/session-guard).
+  passwordChangedAt DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
