@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, ArrowRight, Swords, Lock } from "lucide-react";
@@ -103,9 +104,10 @@ export function LivingCampus({ planets }: { planets: GalaxyPlanet[] }) {
         </div>
 
         {/* Challenge Arena — full-width feature */}
-        <button
-          onClick={() => window.dispatchEvent(new CustomEvent("averna-goto-tab", { detail: "fun" }))}
-          className="group relative w-full overflow-hidden rounded-2xl border border-red-500/30 bg-gradient-to-r from-red-500/15 via-averna-purple/10 to-transparent p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-red-500/50"
+        <Link
+          href="/studio#games"
+          data-gamified
+          className="group relative block w-full overflow-hidden rounded-2xl border border-red-500/30 bg-gradient-to-r from-red-500/15 via-averna-purple/10 to-transparent p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-red-500/50"
         >
           <div className="pointer-events-none absolute -top-10 right-10 h-28 w-28 rounded-full bg-red-500/20 blur-3xl opacity-70 group-hover:opacity-100 transition-opacity" />
           <div className="relative flex items-center gap-3">
@@ -120,7 +122,7 @@ export function LivingCampus({ planets }: { planets: GalaxyPlanet[] }) {
             </div>
             <ArrowRight className="h-4 w-4 text-red-300 shrink-0 group-hover:translate-x-1 transition-transform" />
           </div>
-        </button>
+        </Link>
       </CardContent>
     </Card>
   );

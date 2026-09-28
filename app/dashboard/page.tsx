@@ -1,149 +1,85 @@
 export const dynamic = "force-dynamic";
 
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { getGlobalRank } from "@/lib/db-helpers";
+import { BUDGETED_ACTIONS } from "@/lib/engine/xp-engine";
+import { tashkentDayStart } from "@/lib/utils";
+import { Dumbbell, Gamepad2, Newspaper } from "lucide-react";
+// Shell
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
-import { StatsGrid } from "@/components/dashboard/stats-grid";
-import { QuickActions } from "@/components/dashboard/quick-actions";
-import { RecentActivity } from "@/components/dashboard/recent-activity";
-import { UpcomingHomework } from "@/components/dashboard/upcoming-homework";
-import { WordOfTheDay } from "@/components/dashboard/word-of-the-day";
-import { Milestones } from "@/components/dashboard/milestones";
-import { StreakHeatmap } from "@/components/dashboard/streak-heatmap";
-import { StudentOfTheWeek } from "@/components/student-of-the-week";
-import { DailyQuests } from "@/components/dashboard/daily-quests";
-import { DailyArticle } from "@/components/dashboard/daily-article";
-import { StudyPet } from "@/components/dashboard/study-pet";
-import { OnboardingTour } from "@/components/onboarding-tour";
-import { OnboardingWizard } from "@/components/onboarding-wizard";
-import { AccountNotice } from "@/components/account-notice";
-import { StudentAttentionBar } from "@/components/dashboard/student-attention-bar";
-import { BandProgress } from "@/components/dashboard/band-progress";
-import { SkillRadar } from "@/components/dashboard/skill-radar";
-import { LevelProgress } from "@/components/dashboard/level-progress";
-import { WeeklyGoal } from "@/components/dashboard/weekly-goal";
-import { RecommendedToday } from "@/components/dashboard/recommended-today";
-import { TeacherCard } from "@/components/dashboard/teacher-card";
-import { LeaderboardWidget } from "@/components/dashboard/leaderboard-widget";
-import { MessagePreview } from "@/components/dashboard/message-preview";
-import { PomodoroTimer } from "@/components/dashboard/pomodoro-timer";
-import { FocusVault } from "@/components/dashboard/focus-vault";
-import { WarmUp } from "@/components/dashboard/warm-up";
-import { WordDuel } from "@/components/dashboard/word-duel";
-import { StreakStory } from "@/components/dashboard/streak-story";
-import { RecordsWall } from "@/components/dashboard/records-wall";
-import { WritingTimeMachine } from "@/components/dashboard/writing-time-machine";
-import { StudySquad } from "@/components/dashboard/study-squad";
-import { AdaptivePractice } from "@/components/dashboard/adaptive-practice";
-import { GroupFeed } from "@/components/dashboard/group-feed";
-import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
-import { PersonalBests } from "@/components/dashboard/personal-bests";
 import { DashboardTabs } from "@/components/dashboard/dashboard-tabs";
 import { DashboardPreferences } from "@/components/dashboard/dashboard-preferences";
-import { ExamCountdown } from "@/components/dashboard/exam-countdown";
-import { TestHistory } from "@/components/dashboard/test-history";
-import { MentorCard } from "@/components/dashboard/mentor-card";
-import { MoodCheckin } from "@/components/dashboard/mood-checkin";
-import { DailySpin } from "@/components/dashboard/daily-spin";
-import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
+import { StudentAttentionBar } from "@/components/dashboard/student-attention-bar";
 import { DaypartAmbiance } from "@/components/dashboard/daypart-ambiance";
-import { DashboardHero } from "@/components/dashboard/dashboard-hero";
-import { MemoriesSection } from "@/components/dashboard/memories-section";
-import { HabitNudge } from "@/components/dashboard/habit-nudge";
-import { LevelUpCelebration } from "@/components/dashboard/level-up-celebration";
-import { CommitmentCard } from "@/components/dashboard/commitment-card";
-import { VoiceJournal } from "@/components/dashboard/voice-journal";
-import { ExplainCoach } from "@/components/learning/explain-coach";
-import { SkillDna } from "@/components/dashboard/skill-dna";
-import { LearningDnaCard } from "@/components/dashboard/learning-dna-card";
-import { MistakeBank } from "@/components/learning/mistake-bank";
-import { EssayXray } from "@/components/learning/essay-xray";
-import { Roleplay } from "@/components/learning/roleplay";
-import { DailyPodcast } from "@/components/dashboard/daily-podcast";
-import { AiClone } from "@/components/dashboard/ai-clone";
-import { MemoryTimelineSection } from "@/components/dashboard/memory-timeline-section";
-import { FutureSelfSection } from "@/components/dashboard/future-self-section";
-import { MonthlyRecapSection } from "@/components/dashboard/monthly-recap-section";
-import { LivingCampusSection } from "@/components/dashboard/living-campus-section";
-import { CommunityChallenge } from "@/components/dashboard/community-challenge";
-import { LearningJournal } from "@/components/dashboard/learning-journal";
-import { AvernaAiSection } from "@/components/dashboard/averna-ai-section";
-import { MysteryBox } from "@/components/dashboard/mystery-box";
-import { GraduationSection } from "@/components/dashboard/graduation-section";
-import { BossBattle } from "@/components/dashboard/boss-battle";
-import { GhostRace } from "@/components/dashboard/ghost-race";
-import { ConfidenceMeter } from "@/components/dashboard/confidence-meter";
-import { PlacementPrompt } from "@/components/placement/placement-prompt";
-import { ProgressionHome } from "@/components/progression/progression-home";
-import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
+import { SeasonalDecor } from "@/components/dashboard/seasonal-decor";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { Sparkles, LayoutGrid, BookOpen, Mic, Lightbulb, BookMarked, ScanLine, Clapperboard, Brain, Flame, Award, Dna } from "lucide-react";
-import { Suspense } from "react";
-import { getGlobalRank, getGroupRank } from "@/lib/db-helpers";
-import { BUDGETED_ACTIONS } from "@/lib/engine/xp-engine";
-import { tashkentDayStart } from "@/lib/utils";
+import { AccountNotice } from "@/components/account-notice";
+import { OnboardingTour } from "@/components/onboarding-tour";
+import { OnboardingWizard } from "@/components/onboarding-wizard";
+import { LevelUpCelebration } from "@/components/dashboard/level-up-celebration";
+// Today
+import { DashboardHero } from "@/components/dashboard/dashboard-hero";
+import { HabitNudge } from "@/components/dashboard/habit-nudge";
+import { PlacementPrompt } from "@/components/placement/placement-prompt";
+import { ProgressionHome, ProgressionLevel } from "@/components/progression/progression-home";
+import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
+import { UpcomingHomework } from "@/components/dashboard/upcoming-homework";
+import { ExamCountdown } from "@/components/dashboard/exam-countdown";
+// Learn
+import { AvernaAiSection } from "@/components/dashboard/averna-ai-section";
+import { LivingCampusSection } from "@/components/dashboard/living-campus-section";
+import { StudioShelf } from "@/components/studio/studio-shelf";
+import { DailyArticle } from "@/components/dashboard/daily-article";
+import { WordOfTheDay } from "@/components/dashboard/word-of-the-day";
+// Progress
+import { BandProgress } from "@/components/dashboard/band-progress";
+import { SkillRadar } from "@/components/dashboard/skill-radar";
+import { WeeklyGoal } from "@/components/dashboard/weekly-goal";
+import { LearningDnaCard } from "@/components/dashboard/learning-dna-card";
+import { AchievementsProgress } from "@/components/dashboard/achievements-progress";
+import { StreakHeatmap } from "@/components/dashboard/streak-heatmap";
+import { ProgressLinks } from "@/components/progress/progress-links";
+// Class
+import { TeacherCard } from "@/components/dashboard/teacher-card";
+import { MessagePreview } from "@/components/dashboard/message-preview";
+import { StudySquad } from "@/components/dashboard/study-squad";
+import { LeaderboardWidget } from "@/components/dashboard/leaderboard-widget";
+import { GroupFeed } from "@/components/dashboard/group-feed";
+import { CommunityChallenge } from "@/components/dashboard/community-challenge";
+// Play
+import { MoodCheckin } from "@/components/dashboard/mood-checkin";
+import { DailySpin } from "@/components/dashboard/daily-spin";
+import { DailyQuests } from "@/components/dashboard/daily-quests";
+import { MysteryBox } from "@/components/dashboard/mystery-box";
+import { StudyPet } from "@/components/dashboard/study-pet";
+import { StudentOfTheWeek } from "@/components/student-of-the-week";
 
+/**
+ * Student dashboard — five calm tabs, each with a handful of blocks and no
+ * repeats:
+ *   Today    · who I am, today's mission, what's due, skills, streak, challenges
+ *   Learn    · AI tutor, the skill map, Practice Studio shelf, daily reading
+ *   Progress · bands & skills, level & weekly goal, DNA & achievements, heatmap
+ *   Class    · teacher & messages, squad goal, rivals & class feed, community
+ *   Play     · mood, daily rewards, word games, study buddy
+ * Deep-dives live on their own pages: /progress/*, /rankings/*, /studio/*.
+ */
 export default async function DashboardPage() {
   const session = await auth();
-
-  if (!session?.user) {
-    redirect("/auth/signin");
-  }
+  if (!session?.user) redirect("/auth/signin");
 
   // Route non-students to their own area (one-way, prevents redirect loops)
-  if (session.user.role === "ADMIN") {
-    redirect("/admin/dashboard");
-  }
-  if (session.user.role === "TEACHER") {
-    redirect("/teacher/dashboard");
-  }
+  if (session.user.role === "ADMIN") redirect("/admin/dashboard");
+  if (session.user.role === "TEACHER") redirect("/teacher/dashboard");
 
-  // Get comprehensive student data
   const student = await db.student.findUnique({
     where: { userId: session.user.id },
-    include: {
-      user: true,
-      group: {
-        include: {
-          teacher: {
-            include: {
-              user: {
-                select: {
-                  name: true,
-                },
-              },
-            },
-          },
-        },
-      },
-      achievements: {
-        include: {
-          achievement: true,
-        },
-        orderBy: {
-          unlockedAt: "desc",
-        },
-        take: 5,
-      },
-      homeworkSubmissions: {
-        include: {
-          homework: true,
-        },
-        orderBy: {
-          submittedAt: "desc",
-        },
-        take: 5,
-      },
-      activityLogs: {
-        orderBy: {
-          createdAt: "desc",
-        },
-        take: 10,
-      },
-    },
+    include: { user: true },
   });
 
   if (!student) {
@@ -155,16 +91,12 @@ export default async function DashboardPage() {
     );
   }
 
-  // Note: the streak is advanced by VERIFIED learning (see updateStudentPoints),
-  // not by opening the dashboard, so we no longer bump it on page load.
-
-  // All independent reads run in parallel (they used to be sequential awaits).
-  // Rank is computed on read (cheap indexed counts) — no per-award write storm.
+  // The streak is advanced by VERIFIED learning (see updateStudentPoints), not
+  // by opening the dashboard. Independent reads run in parallel; rank is
+  // computed on read (cheap indexed count).
   const today = tashkentDayStart();
-  const [globalRank, groupRank, testsCompleted, upcomingHomework, dailyQuote, weeklyCompleted] = await Promise.all([
+  const [globalRank, upcomingHomework, dailyQuote, weeklyCompleted] = await Promise.all([
     getGlobalRank(student.totalPoints),
-    student.groupId ? getGroupRank(student.groupId, student.totalPoints) : Promise.resolve(0),
-    db.iELTSTest.count({ where: { studentId: student.id } }),
     db.homework.findMany({
       where: {
         groupId: student.groupId || "",
@@ -189,6 +121,8 @@ export default async function DashboardPage() {
     }),
   ]);
 
+  const firstName = (student.user.name ?? "there").split(" ")[0];
+
   return (
     <div className="min-h-screen premium-gradient dashboard-anim">
       <DaypartAmbiance />
@@ -204,14 +138,10 @@ export default async function DashboardPage() {
           }
         />
 
-        {/* Today's focus (always visible above the tabs; swipes sideways on phones) */}
+        {/* What needs you today (swipes sideways on phones) */}
         <div className="mb-4">
           <Suspense fallback={<div className="h-8" />}>
-            <StudentAttentionBar
-              userId={session.user.id}
-              homeworkDue={upcomingHomework.length}
-              streak={student.currentStreak}
-            />
+            <StudentAttentionBar userId={session.user.id} homeworkDue={upcomingHomework.length} />
           </Suspense>
         </div>
 
@@ -230,7 +160,6 @@ export default async function DashboardPage() {
         <DashboardTabs
           home={
             <>
-              {/* 1. Who I am: greeting, level, XP, streak */}
               <DashboardHero
                 name={student.user.name}
                 image={student.user.image}
@@ -241,101 +170,52 @@ export default async function DashboardPage() {
                 quote={dailyQuote}
                 featuredCosmetic={student.featuredCosmetic}
               />
-
               <Suspense fallback={null}>
                 <HabitNudge studentId={student.id} streak={student.currentStreak} />
               </Suspense>
-
               {/* New students: find your level (hidden once a placement test is finished). */}
               <Suspense fallback={null}>
                 <PlacementPrompt studentId={student.id} />
               </Suspense>
-
-              {/* 2-7. The learning loop: mission → skills → next step → level &
-                  streak → challenges & achievements → recent activity */}
               <Suspense fallback={<ProgressionSkeleton rows={3} />}>
-                <ProgressionHome studentId={student.id} />
+                <ProgressionHome
+                  studentId={student.id}
+                  homework={<UpcomingHomework homework={upcomingHomework} />}
+                  aside={<ExamCountdown />}
+                />
               </Suspense>
-
-              {/* Secondary: what's due + a little daily input */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 items-start">
-                <div className="lg:col-span-2">
-                  <UpcomingHomework homework={upcomingHomework} />
-                </div>
-                <div className="space-y-4 md:space-y-6">
-                  <ExamCountdown />
-                  <WordOfTheDay />
-                </div>
-              </div>
             </>
           }
           learn={
             <>
-              <Suspense fallback={<WidgetSkeleton rows={2} />}>
-                <RecommendedToday studentId={student.id} groupId={student.groupId} />
-              </Suspense>
               <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <AvernaAiSection studentId={student.id} firstName={(student.user.name ?? "there").split(" ")[0]} />
+                <AvernaAiSection studentId={student.id} firstName={firstName} />
               </Suspense>
-              <DailyPodcast />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <LivingCampusSection studentId={student.id} />
               </Suspense>
-              <WarmUp />
-              <div>
-                <SectionHeader icon={LayoutGrid} title="Explore" subtitle="Jump into any module or tool" accent="text-averna-purple" action={{ label: "Learning Center", href: "/learning" }} />
-                <QuickActions />
-              </div>
-              <div>
-                <SectionHeader icon={Sparkles} title="Coach & Focus" subtitle="Get help and study in focused sprints" accent="text-averna-neon" />
-                <div className="grid lg:grid-cols-2 gap-6">
-                  <MentorCard />
-                  <PomodoroTimer />
+              <section>
+                <SectionHeader
+                  icon={Dumbbell}
+                  title="Practice Studio"
+                  subtitle="Quick tools — each opens on its own page"
+                  accent="text-averna-purple"
+                  action={{ label: "All tools", href: "/studio" }}
+                />
+                <StudioShelf group="practice" />
+              </section>
+              <section>
+                <SectionHeader icon={Newspaper} title="Daily reading" subtitle="A little input every day goes a long way" accent="text-averna-cyan" />
+                <div className="grid items-start gap-4 md:gap-6 md:grid-cols-2">
+                  <DailyArticle />
+                  <WordOfTheDay />
                 </div>
-                <div className="mt-6">
-                  <FocusVault />
-                </div>
-              </div>
-              <div>
-                <SectionHeader icon={Mic} title="Speak Daily" subtitle="A 60-second spoken diary that tracks your fluency over time" accent="text-averna-pink" />
-                <VoiceJournal />
-              </div>
-              <div>
-                <SectionHeader icon={Clapperboard} title="Roleplay Real Situations" subtitle="Chat in character with an AI — airport, interview, restaurant and more" accent="text-averna-pink" />
-                <Roleplay />
-              </div>
-              <div>
-                <SectionHeader icon={Lightbulb} title="Teach to Learn" subtitle="Explain a concept to the AI coach — the fastest way to master it" accent="text-averna-purple" />
-                <ExplainCoach />
-              </div>
-              <div>
-                <SectionHeader icon={BookMarked} title="Fix Your Mistakes" subtitle="Save your errors and beat them with spaced repetition" accent="text-averna-cyan" />
-                <MistakeBank />
-              </div>
-              <div>
-                <SectionHeader icon={ScanLine} title="X-Ray Your Essay" subtitle="Instant examiner-style diagnosis with issues highlighted inline" accent="text-averna-cyan" />
-                <EssayXray />
-              </div>
-              <div>
-                <SectionHeader icon={BookOpen} title="Keep Learning" subtitle="A little reading goes a long way" accent="text-averna-cyan" />
-                <DailyArticle />
-              </div>
+              </section>
             </>
           }
           progress={
             <>
-              {/* How you learn — the Learning DNA Engine's summary of this student */}
-              <SectionHeader icon={Dna} title="How You Learn" subtitle="Your Learning DNA, discovered from your own study behaviour" accent="text-averna-purple" action={{ label: "Full profile", href: "/learning-dna" }} />
-              <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <LearningDnaCard studentId={student.id} />
-              </Suspense>
-
-              {/* Predicted level & focus */}
-              <SectionHeader icon={Brain} title="Your Predicted Level" subtitle="Where your bands are heading and what to focus on next" accent="text-averna-purple" />
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <AiClone studentId={student.id} />
-              </Suspense>
-              <div className="grid lg:grid-cols-2 gap-6">
+              <div className="grid gap-4 md:gap-6 lg:grid-cols-2">
                 <Suspense fallback={<WidgetSkeleton rows={3} />}>
                   <BandProgress studentId={student.id} targetBand={student.targetBand} />
                 </Suspense>
@@ -343,153 +223,79 @@ export default async function DashboardPage() {
                   <SkillRadar studentId={student.id} />
                 </Suspense>
               </div>
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <AdaptivePractice studentId={student.id} />
-              </Suspense>
-
-              {/* Skill deep-dive */}
-              <SectionHeader icon={LayoutGrid} title="Skill Deep-Dive" subtitle="Mastery, memory strength and how your writing is growing" accent="text-averna-cyan" />
-              <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <SkillDna studentId={student.id} />
-              </Suspense>
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <MemoryTimelineSection studentId={student.id} />
-              </Suspense>
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <WritingTimeMachine studentId={student.id} />
-              </Suspense>
-
-              <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <FutureSelfSection
-                  studentId={student.id}
-                  targetBand={student.targetBand}
-                  points={student.totalPoints}
-                  streak={student.currentStreak}
-                />
-              </Suspense>
-
-              {/* Streaks & milestones */}
-              <SectionHeader icon={Flame} title="Streaks & Milestones" subtitle="Consistency is your superpower" accent="text-orange-400" />
-              <StreakStory currentStreak={student.currentStreak} longestStreak={student.longestStreak} />
-              <div className="grid lg:grid-cols-3 gap-6 items-start">
-                <LevelProgress points={student.totalPoints} />
-                <WeeklyGoal completed={weeklyCompleted} />
+              <div className="grid items-start gap-4 md:gap-6 lg:grid-cols-2">
                 <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                  <CommitmentCard studentId={student.id} />
+                  <ProgressionLevel studentId={student.id} />
+                </Suspense>
+                <WeeklyGoal completed={weeklyCompleted} />
+              </div>
+              <div className="grid items-start gap-4 md:gap-6 lg:grid-cols-2">
+                <Suspense fallback={<WidgetSkeleton rows={3} />}>
+                  <LearningDnaCard studentId={student.id} />
+                </Suspense>
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <AchievementsProgress studentId={student.id} longestStreak={student.longestStreak} globalRank={globalRank} />
                 </Suspense>
               </div>
-              <StreakHeatmap studentId={student.id} />
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <LearningJournal studentId={student.id} />
+                <StreakHeatmap studentId={student.id} />
               </Suspense>
-              <div className="grid lg:grid-cols-2 gap-6">
-                <Milestones
-                  points={student.totalPoints}
-                  currentStreak={student.currentStreak}
-                  longestStreak={student.longestStreak}
-                  testsCompleted={testsCompleted}
-                />
-                <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                  <TestHistory studentId={student.id} />
-                </Suspense>
-              </div>
-
-              {/* Achievements & records */}
-              <SectionHeader icon={Award} title="Achievements & Records" subtitle="Everything you've earned so far" accent="text-amber-400" />
-              <div className="grid lg:grid-cols-2 gap-6">
-                <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                  <AchievementsProgress
-                    studentId={student.id}
-                    longestStreak={student.longestStreak}
-                    globalRank={globalRank}
-                  />
-                </Suspense>
-                <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                  <PersonalBests studentId={student.id} />
-                </Suspense>
-              </div>
-              <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <MonthlyRecapSection studentId={student.id} />
-              </Suspense>
-              <Suspense fallback={null}>
-                <MemoriesSection studentId={student.id} />
-              </Suspense>
-              <RecordsWall mysteryCount={student.cosmetics?.length ?? 0} />
-              <Suspense fallback={<WidgetSkeleton rows={3} />}>
-                <GraduationSection
-                  studentId={student.id}
-                  targetBand={student.targetBand}
-                  firstName={(student.user.name ?? "there").split(" ")[0]}
-                />
-              </Suspense>
+              <ProgressLinks />
             </>
           }
           classroom={
             <>
-              {/* Rankings are secondary: you vs. your previous self comes first on Home. */}
-              <StatsGrid student={{ ...student, globalRank, groupRank }} />
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <CommunityChallenge studentId={student.id} />
-              </Suspense>
-              <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                <StudySquad groupId={student.groupId} studentId={student.id} />
-              </Suspense>
-              <div className="grid lg:grid-cols-2 gap-6">
+              <div className="grid items-start gap-4 md:gap-6 lg:grid-cols-2">
                 <Suspense fallback={<WidgetSkeleton rows={2} />}>
                   <TeacherCard groupId={student.groupId} />
                 </Suspense>
-                <Suspense fallback={<WidgetSkeleton rows={4} />}>
-                  <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
-                </Suspense>
-              </div>
-              <div className="grid lg:grid-cols-2 gap-6">
                 <Suspense fallback={<WidgetSkeleton rows={3} />}>
                   <MessagePreview userId={session.user.id} />
+                </Suspense>
+              </div>
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <StudySquad groupId={student.groupId} studentId={student.id} />
+              </Suspense>
+              <div className="grid items-start gap-4 md:gap-6 lg:grid-cols-2">
+                <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                  <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
                 </Suspense>
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
                   <GroupFeed studentId={student.id} groupId={student.groupId} />
                 </Suspense>
               </div>
-              <RecentActivity activities={student.activityLogs} />
+              <Suspense fallback={<WidgetSkeleton rows={4} />}>
+                <CommunityChallenge studentId={student.id} />
+              </Suspense>
             </>
           }
           fun={
             <>
-              <div data-gamified>
-                <WordDuel />
-              </div>
-              <div data-gamified>
-                <MysteryBox />
-              </div>
-              <div className="grid lg:grid-cols-2 gap-6">
-                <div data-gamified>
-                  <BossBattle />
-                </div>
-                <div data-gamified>
-                  <GhostRace />
-                </div>
-              </div>
-              <div className="grid lg:grid-cols-2 gap-6">
-                <div data-gamified>
-                  <ConfidenceMeter />
-                </div>
+              <div className="grid items-start gap-4 md:gap-6 md:grid-cols-2">
                 <MoodCheckin />
-              </div>
-              <div className="grid lg:grid-cols-2 gap-6">
                 <div data-gamified>
                   <DailySpin />
                 </div>
-                <div data-gamified>
-                  <StudyPet streak={student.currentStreak} points={student.totalPoints} />
-                </div>
               </div>
-              <div className="grid lg:grid-cols-2 gap-6">
-                <div data-gamified>
-                  <DailyQuests studentId={student.id} streakFreezes={(student as any).streakFreezes ?? 0} />
-                </div>
-                <div data-gamified>
+              <div className="grid items-start gap-4 md:gap-6 md:grid-cols-2" data-gamified>
+                <DailyQuests studentId={student.id} streakFreezes={student.streakFreezes} />
+                <MysteryBox />
+              </div>
+              <section data-gamified>
+                <SectionHeader
+                  icon={Gamepad2}
+                  title="Word games"
+                  subtitle="Beat your own best — every day"
+                  accent="text-averna-pink"
+                  action={{ label: "Practice Studio", href: "/studio#games" }}
+                />
+                <StudioShelf group="games" />
+              </section>
+              <div className="grid items-start gap-4 md:gap-6 md:grid-cols-2" data-gamified>
+                <StudyPet streak={student.currentStreak} points={student.totalPoints} />
+                <Suspense fallback={<WidgetSkeleton rows={2} />}>
                   <StudentOfTheWeek />
-                </div>
+                </Suspense>
               </div>
             </>
           }

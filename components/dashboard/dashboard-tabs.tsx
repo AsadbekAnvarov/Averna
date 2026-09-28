@@ -1,17 +1,21 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import { Home, GraduationCap, TrendingUp, Users, Sparkles } from "lucide-react";
+import { Sun, GraduationCap, TrendingUp, Users, Gamepad2 } from "lucide-react";
 
 const TABS = [
-  { key: "home", label: "Home", icon: Home, active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
+  { key: "home", label: "Today", icon: Sun, active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
   { key: "learn", label: "Learn", icon: GraduationCap, active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
   { key: "progress", label: "Progress", icon: TrendingUp, active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
   { key: "class", label: "Class", icon: Users, active: "bg-averna-blue/15 text-averna-blue ring-1 ring-averna-blue/40" },
-  { key: "fun", label: "Rewards", icon: Sparkles, active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
+  { key: "fun", label: "Play", icon: Gamepad2, active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
 ] as const;
 
 type TabKey = (typeof TABS)[number]["key"];
+
+/** Focus mode hides the gamified "Play" tab, so never land on it then. */
+const allowed = (k: TabKey): TabKey =>
+  k === "fun" && typeof document !== "undefined" && document.body.classList.contains("focus-mode") ? "home" : k;
 
 /**
  * Tabbed shell for the student dashboard. Each tab's content is pre-rendered on
@@ -38,7 +42,7 @@ export function DashboardTabs({
   // later always starts fresh on Home — the dashboard's natural landing.
   useEffect(() => {
     const saved = sessionStorage.getItem("averna_dash_tab") as TabKey | null;
-    if (saved && TABS.some((t) => t.key === saved)) setActive(saved);
+    if (saved && TABS.some((t) => t.key === saved)) setActive(allowed(saved));
   }, []);
 
   const select = (k: TabKey) => {
@@ -78,6 +82,7 @@ export function DashboardTabs({
                 <button
                   key={t.key}
                   onClick={() => select(t.key)}
+                  {...(t.key === "fun" ? { "data-gamified": "" } : {})}
                   className={`flex flex-1 md:flex-none flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
                     isActive ? `${t.active} shadow-lg` : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}

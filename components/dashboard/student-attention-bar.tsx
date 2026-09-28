@@ -11,11 +11,9 @@ import { BookOpen, MessageSquare, Mic, Zap, Sparkles } from "lucide-react";
 export async function StudentAttentionBar({
   userId,
   homeworkDue,
-  streak,
 }: {
   userId: string;
   homeworkDue: number;
-  streak: number;
 }) {
   const unread = await db.message.count({ where: { receiverId: userId, read: false } });
   const speaking = isSpeakingTime();
@@ -65,11 +63,6 @@ export async function StudentAttentionBar({
           </Link>
         );
       })}
-      {streak > 0 && (
-        <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap px-3 py-1.5 rounded-full border border-orange-400/30 bg-orange-400/10 text-orange-400 text-[13px] sm:text-sm font-medium">
-          🔥 {streak}-day streak
-        </span>
-      )}
     </div>
   );
 }

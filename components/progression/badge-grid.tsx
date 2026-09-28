@@ -14,7 +14,7 @@ export async function BadgeGrid({ studentId }: { studentId: string }) {
     return null;
   });
   if (!p) {
-    return <ErrorPanel title="We couldn't load your milestones." detail="Your badges are safe — this is only a display problem." retryHref="/achievements" />;
+    return <ErrorPanel title="We couldn't load your milestones." detail="Your badges are safe — this is only a display problem." retryHref="/progress/achievements" />;
   }
   return (
     <div className="space-y-6">

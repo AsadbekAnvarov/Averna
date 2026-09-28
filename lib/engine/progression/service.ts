@@ -587,7 +587,7 @@ async function settleFrom(studentId: string, p: Progression): Promise<SettledRew
             type: "system",
             title: `${out.length} milestones reached`,
             message: `${out.map((r) => r.title.replace(/^Badge unlocked: /, "")).slice(0, 4).join(", ")}${out.length > 4 ? "…" : ""}${total > 0 ? ` · +${total} XP` : ""}`,
-            link: "/achievements",
+            link: "/progress/achievements",
           });
         } else {
           for (const r of out) {
@@ -595,7 +595,7 @@ async function settleFrom(studentId: string, p: Progression): Promise<SettledRew
               type: "system",
               title: r.kind === "badge" ? "New badge" : r.kind === "mission" ? "Mission complete" : "Challenge complete",
               message: r.xp > 0 ? `${r.title} · +${r.xp} XP` : r.title,
-              link: r.kind === "badge" ? "/achievements" : "/dashboard",
+              link: r.kind === "badge" ? "/progress/achievements" : "/dashboard",
             });
           }
         }

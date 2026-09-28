@@ -17,6 +17,8 @@ interface PageSkeletonProps {
   banner?: boolean;
   /** Constrain width like most content pages. */
   maxWidth?: string;
+  /** Only the content blocks — for a route inside a layout that already draws the header. */
+  bare?: boolean;
 }
 
 export function PageSkeleton({
@@ -24,10 +26,32 @@ export function PageSkeleton({
   cards = 6,
   banner = false,
   maxWidth = "max-w-5xl",
+  bare = false,
 }: PageSkeletonProps) {
+  const body = (
+    <>
+      {pills > 0 && (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+          {Array.from({ length: pills }).map((_, i) => (
+            <Block key={i} className="h-24" />
+          ))}
+        </div>
+      )}
+
+      {banner && <Block className="h-28 mb-6" />}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Array.from({ length: cards }).map((_, i) => (
+          <Block key={i} className="h-44" />
+        ))}
+      </div>
+    </>
+  );
+  if (bare) return <div aria-busy="true">{body}</div>;
+
   return (
     <div className="min-h-screen premium-gradient">
-      <div className={`container mx-auto px-4 py-8 ${maxWidth} pb-24 lg:pb-8`}>
+      <div className={`container mx-auto px-4 py-6 sm:py-8 ${maxWidth} pb-10 lg:pb-8`}>
         {/* Header */}
         <div className="mb-8">
           <Block className="h-4 w-40 mb-4" />
@@ -40,21 +64,7 @@ export function PageSkeleton({
           </div>
         </div>
 
-        {pills > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-            {Array.from({ length: pills }).map((_, i) => (
-              <Block key={i} className="h-24" />
-            ))}
-          </div>
-        )}
-
-        {banner && <Block className="h-28 mb-6" />}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Array.from({ length: cards }).map((_, i) => (
-            <Block key={i} className="h-44" />
-          ))}
-        </div>
+        {body}
       </div>
     </div>
   );
