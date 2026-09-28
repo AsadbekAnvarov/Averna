@@ -10,8 +10,9 @@ import {
   GraduationCap, ClipboardCheck, NotebookPen, PlusCircle, Megaphone, BarChart3,
   Wallet, Activity, ScrollText, Users, Command as CommandIcon, Settings, LogOut,
   Sun, Moon, SpellCheck, Sparkles, CornerDownLeft, ArrowUpDown,
-  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, type LucideIcon,
+  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, type LucideIcon,
 } from "lucide-react";
+import { STUDIO_TOOLS } from "@/components/studio/studio-tools";
 
 type ActionId = "theme" | "signout";
 interface Cmd {
@@ -21,47 +22,62 @@ interface Cmd {
   href?: string;
   actionId?: ActionId;
   keywords?: string;
+  /** Only listed once the user types (keeps the empty palette short). */
+  searchOnly?: boolean;
 }
 
+// Same five groups as the student sidebar. The palette also lists the hub
+// sub-pages and every Practice Studio tool, so anything is one search away.
 const STUDENT_COMMANDS: Cmd[] = [
-  { group: "Overview", label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, keywords: "home main" },
-  { group: "Overview", label: "Learning Center", href: "/learning", icon: GraduationCap, keywords: "practice modules hub all skills" },
-  { group: "Overview", label: "My Progress", href: "/progress", icon: BarChart3, keywords: "band rank achievements bests leagues" },
-  { group: "Overview", label: "Learning DNA", href: "/learning-dna", icon: Dna, keywords: "how i learn style focus retention confidence consistency motivation personalised profile" },
-  { group: "Overview", label: "My Schedule", href: "/schedule", icon: CalendarClock, keywords: "attendance grades" },
-  { group: "Overview", label: "Calendar", href: "/calendar", icon: CalendarDays, keywords: "month deadlines" },
-  { group: "Overview", label: "Notifications", href: "/notifications", icon: Bell, keywords: "alerts" },
-
-  { group: "IELTS Skills", label: "Reading", href: "/learning/reading", icon: BookOpen, keywords: "passage test" },
-  { group: "IELTS Skills", label: "Listening", href: "/learning/listening", icon: Headphones, keywords: "audio test" },
-  { group: "IELTS Skills", label: "Writing", href: "/learning/writing", icon: PenTool, keywords: "essay task" },
-  { group: "IELTS Skills", label: "Speaking", href: "/learning/speaking", icon: Mic, keywords: "partner talk" },
-  { group: "IELTS Skills", label: "Pronunciation", href: "/learning/pronunciation", icon: Mic, keywords: "record voice" },
-  { group: "IELTS Skills", label: "Grammar", href: "/grammar", icon: SpellCheck, keywords: "rules tenses" },
+  { group: "Study", label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, keywords: "home main today" },
+  { group: "Study", label: "Learning Center", href: "/learning", icon: GraduationCap, keywords: "practice modules hub all skills" },
+  { group: "Study", label: "Reading", href: "/learning/reading", icon: BookOpen, keywords: "passage test" },
+  { group: "Study", label: "Listening", href: "/learning/listening", icon: Headphones, keywords: "audio test" },
+  { group: "Study", label: "Writing", href: "/learning/writing", icon: PenTool, keywords: "essay task" },
+  { group: "Study", label: "Speaking", href: "/learning/speaking", icon: Mic, keywords: "partner talk" },
+  { group: "Study", label: "Pronunciation", href: "/learning/pronunciation", icon: Mic, keywords: "record voice" },
+  { group: "Study", label: "Grammar", href: "/grammar", icon: SpellCheck, keywords: "rules tenses" },
+  { group: "Study", label: "Vocabulary", href: "/flashcards", icon: Layers, keywords: "flashcards words deck" },
 
   { group: "Practice", label: "Mock Exam", href: "/learning/mock-exam", icon: Trophy, keywords: "test band full" },
   { group: "Practice", label: "Placement Test", href: "/learning/placement", icon: Compass, keywords: "level entry cefr test" },
   { group: "Practice", label: "Daily Challenge", href: "/challenge", icon: Zap, keywords: "quiz daily" },
-  { group: "Practice", label: "Flashcards", href: "/flashcards", icon: Layers, keywords: "vocabulary words" },
-  { group: "Practice", label: "Materials", href: "/materials", icon: Library, keywords: "resources guides bank study" },
+  { group: "Practice", label: "Practice Studio", href: "/studio", icon: Dumbbell, keywords: "tools games warm-up roleplay mistakes podcast focus" },
+  ...STUDIO_TOOLS.map((t): Cmd => ({
+    group: "Practice",
+    label: t.title,
+    href: `/studio/${t.slug}`,
+    icon: t.icon,
+    keywords: `${t.group === "games" ? "game " : ""}studio ${t.blurb.toLowerCase()}`,
+    searchOnly: true,
+  })),
+  { group: "Practice", label: "AI Examiner", href: "/learning/examiner", icon: Sparkles, keywords: "assess feedback score" },
+  { group: "Practice", label: "AI Mentor", href: "/mentor", icon: Bot, keywords: "ask help chatbot assistant" },
   { group: "Practice", label: "Daily Article", href: "/article", icon: FileText, keywords: "reading news read" },
   { group: "Practice", label: "Movies", href: "/movies", icon: Clapperboard, keywords: "films watch subtitles" },
 
-  { group: "AI Tools", label: "AI Mentor", href: "/mentor", icon: Bot, keywords: "ask help chatbot assistant" },
-  { group: "AI Tools", label: "AI Examiner", href: "/learning/examiner", icon: Sparkles, keywords: "assess feedback score" },
+  { group: "Progress", label: "My Progress", href: "/progress", icon: BarChart3, keywords: "overview band analytics 30 days tests" },
+  { group: "Progress", label: "Skills deep-dive", href: "/progress/skills", icon: Sparkles, keywords: "skill radar predicted band memory writing growth", searchOnly: true },
+  { group: "Progress", label: "Streaks & journal", href: "/progress/streaks", icon: Zap, keywords: "streak heatmap commitment recap journal", searchOnly: true },
+  { group: "Progress", label: "Achievements", href: "/progress/achievements", icon: Award, keywords: "badges medals milestones" },
+  { group: "Progress", label: "Certificate", href: "/certificate", icon: Award, keywords: "diploma award download", searchOnly: true },
+  { group: "Progress", label: "Learning DNA", href: "/learning-dna", icon: Dna, keywords: "how i learn style focus retention confidence consistency motivation personalised profile" },
+  { group: "Progress", label: "Leaderboard", href: "/rankings", icon: Trophy, keywords: "rankings top global group" },
+  { group: "Progress", label: "Leagues", href: "/rankings/leagues", icon: Trophy, keywords: "rank division weekly", searchOnly: true },
+  { group: "Progress", label: "Team race", href: "/rankings/teams", icon: Users, keywords: "team challenge group goal", searchOnly: true },
+  { group: "Progress", label: "Rewards", href: "/rewards", icon: Gift, keywords: "points store prizes shop" },
 
-  { group: "Community", label: "Rankings", href: "/rankings", icon: Trophy, keywords: "leaderboard top" },
-  { group: "Community", label: "Leagues", href: "/leagues", icon: Trophy, keywords: "rank division weekly" },
-  { group: "Community", label: "Team Challenge", href: "/team-challenge", icon: Users, keywords: "group goal" },
-  { group: "Community", label: "Achievements", href: "/achievements", icon: Award, keywords: "badges medals" },
-  { group: "Community", label: "Rewards", href: "/rewards", icon: Gift, keywords: "points store prizes" },
-  { group: "Community", label: "Certificate", href: "/certificate", icon: Award, keywords: "diploma award download" },
+  { group: "Class", label: "Homework", href: "/homework", icon: NotebookPen, keywords: "assignments due" },
+  { group: "Class", label: "My Schedule", href: "/schedule", icon: CalendarClock, keywords: "attendance grades lessons" },
+  { group: "Class", label: "Calendar", href: "/calendar", icon: CalendarDays, keywords: "month deadlines" },
+  { group: "Class", label: "Materials", href: "/materials", icon: Library, keywords: "resources guides bank study" },
+  { group: "Class", label: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck, keywords: "second teacher book" },
+  { group: "Class", label: "Messages", href: "/messages", icon: MessageSquare, keywords: "chat teacher" },
 
-  { group: "Account", label: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck, keywords: "second teacher book" },
-  { group: "Account", label: "Messages", href: "/messages", icon: MessageSquare, keywords: "chat teacher" },
+  { group: "Account", label: "Notifications", href: "/notifications", icon: Bell, keywords: "alerts" },
   { group: "Account", label: "Billing", href: "/billing", icon: Wallet, keywords: "payment balance topup" },
-  { group: "Account", label: "My Profile", href: "/profile", icon: User, keywords: "account" },
-  { group: "Account", label: "Settings", href: "/settings", icon: Settings, keywords: "preferences theme" },
+  { group: "Account", label: "My Profile", href: "/profile", icon: User, keywords: "account avatar" },
+  { group: "Account", label: "Settings", href: "/settings", icon: Settings, keywords: "preferences theme sound" },
 ];
 
 const TEACHER_COMMANDS: Cmd[] = [
@@ -115,7 +131,7 @@ const ADMIN_COMMANDS: Cmd[] = [
 
 // Group render order per role
 const GROUP_ORDER: Record<string, string[]> = {
-  student: ["Overview", "IELTS Skills", "Practice", "AI Tools", "Community", "Account", "Actions"],
+  student: ["Study", "Practice", "Progress", "Class", "Account", "Actions"],
   teacher: ["Overview", "Students", "Teaching", "Communication", "Actions"],
   admin: ["Umumiy koʻrinish", "Odamlar", "Oʻqitish", "Kontent", "Operatsiyalar", "Amallar"],
 };
@@ -192,7 +208,7 @@ export function CommandPalette() {
     const q = query.trim().toLowerCase();
     const matches = q
       ? commands.filter((c) => c.label.toLowerCase().includes(q) || c.keywords?.includes(q))
-      : commands;
+      : commands.filter((c) => !c.searchOnly);
     const order = GROUP_ORDER[roleKey] ?? [];
     return [...matches].sort((a, b) => {
       const ga = order.indexOf(a.group);

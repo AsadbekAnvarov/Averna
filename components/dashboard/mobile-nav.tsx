@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { LayoutDashboard, GraduationCap, Zap, TrendingUp, User } from "lucide-react";
+import { LayoutDashboard, GraduationCap, Dumbbell, TrendingUp, User } from "lucide-react";
 
 const items = [
   { name: "Home", href: "/dashboard", icon: LayoutDashboard },
   { name: "Learn", href: "/learning", icon: GraduationCap },
-  { name: "Challenge", href: "/challenge", icon: Zap },
+  { name: "Practice", href: "/studio", icon: Dumbbell },
   { name: "Progress", href: "/progress", icon: TrendingUp },
   { name: "Profile", href: "/profile", icon: User },
 ];
