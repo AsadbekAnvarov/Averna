@@ -117,22 +117,30 @@ export async function putBlob(
   throw lastError ?? new BlobUploadError("Blob upload failed.", 0);
 }
 
-/** Delete files by URL. Never throws; returns false on failure. */
-export async function deleteBlobs(urls: string[]): Promise<boolean> {
+/**
+ * Delete files by URL. Never throws; returns false on failure (or when
+ * `timeoutMs` passes first — for best-effort clean-up that mustn't hold a request up).
+ */
+export async function deleteBlobs(urls: string[], opts: { timeoutMs?: number } = {}): Promise<boolean> {
   const t = token();
   const list = urls.filter((u) => typeof u === "string" && u.startsWith("https://"));
   if (!t || list.length === 0) return list.length === 0;
+  const ctrl = opts.timeoutMs && opts.timeoutMs > 0 ? new AbortController() : null;
+  const timer = ctrl ? setTimeout(() => ctrl.abort(), opts.timeoutMs) : null;
   try {
     for (let i = 0; i < list.length; i += 100) {
       const res = await fetch(`${API_URL}/delete`, {
         method: "POST",
         headers: headers(t, { "content-type": "application/json" }),
         body: JSON.stringify({ urls: list.slice(i, i + 100) }),
+        ...(ctrl ? { signal: ctrl.signal } : {}),
       });
       if (!res.ok) return false;
     }
     return true;
   } catch {
     return false;
+  } finally {
+    if (timer) clearTimeout(timer);
   }
 }

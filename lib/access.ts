@@ -86,8 +86,25 @@ export async function canViewStudent(viewer: Viewer, studentId: string): Promise
   }
 }
 
-/** True when the viewer is staff (teacher of the student's group or admin) — not the student themself. */
+/**
+ * True when the viewer is staff (teacher of the student's group or admin) — and
+ * never the student themself, even a teacher or admin who owns that Student row
+ * (nobody re-bands their own attempts).
+ */
 export async function canReviewStudent(viewer: Viewer, studentId: string): Promise<boolean> {
   if (viewer.role !== "ADMIN" && viewer.role !== "TEACHER") return false;
-  return canViewStudent(viewer, studentId);
+  if (!studentId) return false;
+  try {
+    const student = await db.student.findUnique({
+      where: { id: studentId },
+      select: { userId: true, group: { select: { teacherId: true } } },
+    });
+    if (!student || student.userId === viewer.id) return false;
+    if (viewer.role === "ADMIN") return true;
+    if (!student.group) return false;
+    const t = await teacherOf(viewer.id);
+    return !!t && student.group.teacherId === t.id;
+  } catch {
+    return false;
+  }
 }

@@ -28,7 +28,9 @@ export class OpenAiAudioError extends Error {
     /** HTTP status (0 = network / timeout). */
     readonly status: number,
     /** Seconds to wait before retrying, when the API said so (429). */
-    readonly retryAfterSec?: number
+    readonly retryAfterSec?: number,
+    /** OpenAI's error code (or type), e.g. "insufficient_quota" (a 429 that no retry fixes), "invalid_api_key". */
+    readonly code?: string
   ) {
     super(message);
     this.name = "OpenAiAudioError";
@@ -44,14 +46,22 @@ function key(): string {
 async function fail(res: Response, what: string): Promise<never> {
   const text = await res.text().catch(() => "");
   let message = text.slice(0, 300);
+  let code: string | undefined;
   try {
-    const j = JSON.parse(text) as { error?: { message?: string } };
+    const j = JSON.parse(text) as { error?: { message?: string; code?: unknown; type?: unknown } };
     if (j?.error?.message) message = j.error.message;
+    const c = typeof j?.error?.code === "string" && j.error.code ? j.error.code : j?.error?.type;
+    if (typeof c === "string" && c) code = c.slice(0, 80);
   } catch {
     /* not JSON */
   }
   const retry = Number(res.headers.get("retry-after"));
-  throw new OpenAiAudioError(`${what} failed (${res.status}): ${message}`, res.status, Number.isFinite(retry) && retry > 0 ? retry : undefined);
+  throw new OpenAiAudioError(
+    `${what} failed (${res.status}): ${message}`,
+    res.status,
+    Number.isFinite(retry) && retry > 0 ? retry : undefined,
+    code
+  );
 }
 
 function withTimeout(ms: number, outer?: AbortSignal): { signal: AbortSignal; done: () => void } {
