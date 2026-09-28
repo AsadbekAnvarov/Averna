@@ -52,9 +52,11 @@ import {
   ListChecks,
   BarChart3,
   Send,
+  Search,
   type LucideIcon,
 } from "lucide-react";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
+import { avatarSrc } from "@/lib/avatars";
 
 type NavItem = { name: string; href: string; icon: LucideIcon; badge?: string };
 type NavSection = { label: string; items: NavItem[] };
@@ -260,10 +262,15 @@ function getNavForRole(role: string | undefined): { sections: NavSection[]; labe
   }
 }
 
+function isPublicRoute(pathname: string): boolean {
+  return pathname === "/" || pathname.startsWith("/auth/") || pathname.startsWith("/about");
+}
+
 /**
- * Single sidebar used across all role portals.
+ * Single navigation used across all role portals.
  * - Desktop (lg+): always-visible fixed left rail (w-64).
- * - Mobile: hidden, opened via a floating button → drawer.
+ * - Mobile: a slim sticky top app bar (menu · brand · search) that opens the
+ *   same rail as a drawer. Nothing floats over the page content any more.
  */
 export function AppSidebar() {
   const pathname = usePathname() || "";
@@ -275,70 +282,118 @@ export function AppSidebar() {
     setMobileOpen(false);
   }, [pathname]);
 
-  // Hide on public routes + auth pages
-  const isPublic =
-    pathname === "/" ||
-    pathname.startsWith("/auth/") ||
-    pathname.startsWith("/about");
+  // While the drawer is open: lock page scroll and close on Escape.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMobileOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [mobileOpen]);
 
-  if (isPublic) return null;
+  if (isPublicRoute(pathname)) return null;
   if (status === "loading") return null;
   if (!session?.user) return null;
 
   const role = (session.user as { role?: string }).role;
   const { sections, label, accent } = getNavForRole(role);
+  const uz = role === "ADMIN";
+  const homeHref = role === "ADMIN" ? "/admin/dashboard" : role === "TEACHER" ? "/teacher/dashboard" : "/dashboard";
+  const image = avatarSrc(session.user.image);
 
   return (
     <>
-      {/* Mobile toggle button */}
-      <button
-        type="button"
-        aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
-        onClick={() => setMobileOpen((v) => !v)}
+      {/* Mobile top app bar */}
+      <header
         className={cn(
-          "lg:hidden fixed top-3 left-3 z-[60] inline-flex items-center justify-center",
-          "h-10 w-10 rounded-lg bg-averna-dark/80 backdrop-blur border border-white/10",
-          "text-white shadow-lg hover:bg-averna-dark"
+          "app-topbar lg:hidden fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top)]",
+          "border-b border-white/[0.06] backdrop-blur-xl"
         )}
       >
-        {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-      </button>
+        <div className="flex h-14 items-center gap-2 px-2">
+          <button
+            type="button"
+            aria-label={uz ? "Menyuni ochish" : "Open navigation"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen(true)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-gray-200 hover:bg-white/5 active:scale-95 transition"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+          <Link href={homeHref} className="flex min-w-0 flex-1 items-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="" width={28} height={28} className="h-7 w-7 rounded-md object-contain" />
+            <span className="min-w-0 leading-tight">
+              <span className="block text-[15px] font-bold text-white">Averna</span>
+              <span className={cn("block truncate text-[10px] uppercase tracking-wider", `text-${accent}`)}>{label}</span>
+            </span>
+          </Link>
+          <button
+            type="button"
+            aria-label={uz ? "Qidirish" : "Search"}
+            onClick={() => window.dispatchEvent(new Event("averna-command-palette"))}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-gray-200 hover:bg-white/5 active:scale-95 transition"
+          >
+            <Search className="h-5 w-5" />
+          </button>
+        </div>
+      </header>
 
       {/* Backdrop (mobile) */}
-      {mobileOpen && (
-        <div
-          className="lg:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
-          onClick={() => setMobileOpen(false)}
-        />
-      )}
+      <div
+        aria-hidden
+        className={cn(
+          "lg:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300",
+          mobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        )}
+        onClick={() => setMobileOpen(false)}
+      />
 
       <aside
+        aria-label={uz ? "Navigatsiya" : "Navigation"}
         className={cn(
-          "app-sidebar fixed left-0 top-0 z-50 h-screen w-64 overflow-y-auto",
+          "app-sidebar fixed left-0 top-0 z-[55] lg:z-40 h-[100dvh] w-[min(18rem,86vw)] lg:w-64 overflow-y-auto overscroll-contain",
           "border-r border-white/5",
           "transition-transform duration-300 ease-out",
-          mobileOpen ? "translate-x-0" : "-translate-x-full",
-          "lg:translate-x-0"
+          mobileOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full",
+          "lg:translate-x-0 lg:shadow-none"
         )}
       >
         {/* Brand */}
-        <div className="px-5 pt-5 pb-3 border-b border-white/5">
+        <div className="px-5 pt-[calc(1.25rem+env(safe-area-inset-top))] lg:pt-5 pb-3 border-b border-white/5">
           <div className="flex items-center gap-2">
             <div className={cn("h-9 w-9 rounded-lg grid place-items-center font-bold text-black", `bg-${accent}`)}>
               A
             </div>
-            <div>
+            <div className="min-w-0 flex-1">
               <div className="text-base font-bold text-white leading-tight">Averna</div>
               <div className={cn("text-[10px] uppercase tracking-wider", `text-${accent}`)}>{label}</div>
             </div>
+            <button
+              type="button"
+              aria-label={uz ? "Menyuni yopish" : "Close navigation"}
+              onClick={() => setMobileOpen(false)}
+              className="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 hover:bg-white/5 hover:text-white"
+            >
+              <X className="h-5 w-5" />
+            </button>
           </div>
         </div>
 
         {/* User strip */}
         <div className="px-5 py-3 border-b border-white/5">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-averna-primary/30 grid place-items-center text-white text-sm font-semibold">
-              {initialsOf(session.user.name ?? session.user.email)}
+            <div className="h-9 w-9 shrink-0 overflow-hidden rounded-full bg-averna-primary/30 grid place-items-center text-white text-sm font-semibold ring-1 ring-white/10">
+              {image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={image} alt="" className="h-full w-full object-cover" />
+              ) : (
+                initialsOf(session.user.name ?? session.user.email)
+              )}
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-sm text-white font-medium truncate">{session.user.name ?? "User"}</div>
@@ -348,7 +403,7 @@ export function AppSidebar() {
         </div>
 
         {/* Sections */}
-        <nav className="px-3 py-4 space-y-5 pb-24">
+        <nav className="px-3 py-4 space-y-5 pb-[calc(2rem+env(safe-area-inset-bottom))]">
           {sections.map((section) => (
             <div key={section.label}>
               <div className="sidebar-label px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
@@ -362,6 +417,7 @@ export function AppSidebar() {
                     <Link
                       key={item.href}
                       href={item.href}
+                      aria-current={active ? "page" : undefined}
                       className={cn(
                         "group flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                         active
@@ -397,21 +453,30 @@ export function AppSidebar() {
 }
 
 /**
- * Wraps children with sidebar + correct padding.
- * Sidebar handles its own visibility on public routes.
+ * Wraps children with the navigation + correct spacing.
+ * On phones the content starts below the top app bar (and, for students, ends
+ * above the bottom tab bar). `--app-bar-h` lets sticky elements (dashboard tabs,
+ * exam timers…) park right under the top bar instead of hiding behind it.
  */
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || "";
-  const isPublic =
-    pathname === "/" ||
-    pathname.startsWith("/auth/") ||
-    pathname.startsWith("/about");
+  const { data: session, status } = useSession();
+  // Reserve the space while the session loads too, so the page doesn't jump.
+  const chrome = !isPublicRoute(pathname) && status !== "unauthenticated";
+  const isStudent = (session?.user as { role?: string } | undefined)?.role === "STUDENT";
 
   return (
     <>
       <AppSidebar />
-      {/* pb clearance on mobile so content never hides behind the bottom tab bar */}
-      <div className={cn(isPublic ? "" : "lg:pl-64 pb-16 lg:pb-0")}>{children}</div>
+      <div
+        className={cn(
+          chrome &&
+            "lg:pl-64 pt-[calc(3.5rem+env(safe-area-inset-top))] lg:pt-0 [--app-bar-h:calc(3.5rem+env(safe-area-inset-top))] lg:[--app-bar-h:0px]",
+          chrome && isStudent && "pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0"
+        )}
+      >
+        {children}
+      </div>
     </>
   );
 }

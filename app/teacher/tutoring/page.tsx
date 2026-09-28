@@ -82,7 +82,7 @@ export default async function TeacherTutoringPage() {
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <TeacherHeader user={{ name: teacher.user.name ?? "Teacher", email: teacher.user.email }} />
 
-        <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 flex items-center gap-3">
           <UserCheck className="h-9 w-9 text-averna-pink" />
           1-on-1 <span className="neon-text-purple">Tutoring</span>
         </h1>

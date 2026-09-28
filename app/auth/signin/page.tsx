@@ -68,7 +68,7 @@ export default function SignInPage() {
           <div className="flex justify-center mb-4">
             <Logo size={72} showText={false} />
           </div>
-          <h1 className="text-4xl font-bold text-white mb-2">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
             Averna Learning Centre
           </h1>
           <p className="text-averna-neon">Welcome back! Sign in to continue.</p>

@@ -242,7 +242,7 @@ export function GrammarRunner({ groups, attemptId, deadline, minutes, initialAns
         </span>
 
         {error ? (
-          <div className="sticky top-0 z-10 -mx-4 mb-3 bg-[#040b09]/95 px-4 pb-3 pt-3 backdrop-blur sm:-mx-6 sm:px-6">
+          <div className="sticky top-[var(--app-bar-h,0px)] z-10 -mx-4 mb-3 bg-[#040b09]/95 px-4 pb-3 pt-3 backdrop-blur sm:-mx-6 sm:px-6">
             <div role="alert" className="error-surface flex flex-col gap-3 rounded-xl p-4 sm:flex-row sm:items-center">
               <div className="flex min-w-0 flex-1 items-start gap-3">
                 <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-300" aria-hidden />

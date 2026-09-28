@@ -173,8 +173,14 @@ export function CommandPalette() {
       }
       if (e.key === "Escape") setOpen(false);
     };
+    // The mobile top bar's search button opens the palette via this event.
+    const onOpen = () => setOpen(true);
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("averna-command-palette", onOpen);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("averna-command-palette", onOpen);
+    };
   }, []);
 
   useEffect(() => {
@@ -217,10 +223,11 @@ export function CommandPalette() {
 
   return (
     <>
-      {/* Floating "Quick jump" button — always discoverable */}
+      {/* Floating "Quick jump" button — desktop only. On phones the same action
+          lives in the top app bar, so nothing floats over the content. */}
       <button
         onClick={() => setOpen(true)}
-        className="quick-jump-fab fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full glass-strong border border-averna-neon/30 text-gray-200 shadow-lg hover:border-averna-neon/60 hover:text-white transition-colors"
+        className="quick-jump-fab hidden lg:flex fixed bottom-6 right-6 z-50 items-center gap-2 px-4 py-2.5 rounded-full glass-strong border border-averna-neon/30 text-gray-200 shadow-lg hover:border-averna-neon/60 hover:text-white transition-colors"
         aria-label="Open command palette"
       >
         <CommandIcon className="h-4 w-4 text-averna-neon" />

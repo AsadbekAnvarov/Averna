@@ -43,7 +43,7 @@ export default async function WritingPage() {
           <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-2 block">
             ← Back to Dashboard
           </Link>
-          <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 flex items-center gap-3">
             <PenTool className="h-10 w-10 text-purple-400" />
             IELTS Writing
           </h1>

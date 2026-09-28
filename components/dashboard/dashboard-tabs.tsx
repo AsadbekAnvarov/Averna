@@ -68,9 +68,9 @@ export function DashboardTabs({
   return (
     <div>
       {/* Sticky tab bar */}
-      <div className="sticky top-0 z-30 -mx-4 px-4 py-2 mb-4">
-        <div className="flex overflow-x-auto md:justify-center">
-          <div className="flex gap-1 mx-auto md:mx-0 glass-strong border border-white/10 rounded-2xl p-1.5 shadow-xl">
+      <div className="sticky top-[var(--app-bar-h,0px)] z-30 -mx-4 px-4 py-2 mb-4">
+        <div className="no-scrollbar overflow-x-auto">
+          <div className="flex w-max min-w-full md:min-w-0 gap-1 md:mx-auto glass-strong border border-white/10 rounded-2xl p-1.5 shadow-xl">
             {TABS.map((t) => {
               const Icon = t.icon;
               const isActive = active === t.key;
@@ -78,7 +78,7 @@ export function DashboardTabs({
                 <button
                   key={t.key}
                   onClick={() => select(t.key)}
-                  className={`flex flex-col sm:flex-row items-center gap-1 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
+                  className={`flex flex-1 md:flex-none flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
                     isActive ? `${t.active} shadow-lg` : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
                   aria-current={isActive ? "page" : undefined}

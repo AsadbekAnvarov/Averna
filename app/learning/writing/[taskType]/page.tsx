@@ -45,7 +45,7 @@ export default async function WritingTaskPage({
           <Link href="/learning/writing" className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
             <ArrowLeft className="h-4 w-4" /> Back to Writing
           </Link>
-          <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
             <PenTool className="h-8 w-8 text-averna-purple" /> {taskConfig.title}
           </h1>
           <p className="text-gray-400 mb-8">

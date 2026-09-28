@@ -11,9 +11,11 @@ interface DashboardHeaderProps {
     email: string;
     image: string | null;
   };
+  /** Small page tools (Customize, live refresh…) — left on phones, right on desktop. */
+  tools?: React.ReactNode;
 }
 
-export async function DashboardHeader({ user }: DashboardHeaderProps) {
+export async function DashboardHeader({ user, tools }: DashboardHeaderProps) {
   // Always read the freshest avatar from the DB so it updates everywhere
   const session = await auth();
   let image = user.image ?? null;
@@ -23,10 +25,13 @@ export async function DashboardHeader({ user }: DashboardHeaderProps) {
   }
 
   return (
-    <header className="flex items-center justify-between mb-6 animate-fade-in">
-      <Logo href="/dashboard" size={40} className="text-xl" />
+    <header className="flex items-center gap-3 mb-4 lg:mb-6 animate-fade-in">
+      {/* The mobile top app bar already shows the brand — no duplicate logo on phones. */}
+      <div className="hidden lg:block"><Logo href="/dashboard" size={40} className="text-xl" /></div>
 
-      <div className="flex items-center gap-2">
+      {tools && <div className="flex min-w-0 items-center gap-4 lg:ml-auto">{tools}</div>}
+
+      <div className="ml-auto lg:ml-0 flex items-center gap-2">
         <TashkentClock />
         <NotificationBell />
         <UserAvatarDropdown user={{ ...user, image }} role="STUDENT" />

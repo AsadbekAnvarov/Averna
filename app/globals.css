@@ -1298,3 +1298,30 @@ html.light .exam-shell ::-webkit-scrollbar-track { background: rgba(4, 17, 12, 0
 html.light .exam-shell ::-webkit-scrollbar-thumb { background: linear-gradient(#00ff94, #00e5ff); }
 html.light .exam-shell ::-webkit-scrollbar-thumb:hover { background: linear-gradient(#00e5ff, #b14eff); }
 html.light .exam-shell :focus-visible { outline-color: #00e5ff; }
+
+
+/* ===================================================================
+   MOBILE SHELL — top app bar + phone-friendly defaults
+   =================================================================== */
+.app-topbar { background: rgba(4, 7, 13, 0.82); }
+html.light .app-topbar { background: rgba(255, 255, 255, 0.9); }
+
+/* Nothing may push the page sideways on a phone (wide tables/charts scroll
+   inside their own containers instead). */
+html, body { overflow-x: clip; }
+body { -webkit-tap-highlight-color: transparent; text-rendering: optimizeLegibility; }
+
+@media (max-width: 639px) {
+  /* iOS zooms into any field under 16px — keep inputs at 16px on phones. */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  select,
+  textarea { font-size: 16px; }
+  /* Tighter, calmer cards on small screens. */
+  .container { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* Themed range slider (Settings → sound volume) */
+.averna-range { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 9999px; background: rgba(255,255,255,0.12); outline: none; }
+.averna-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; height: 18px; width: 18px; border-radius: 9999px; background: #fff; box-shadow: 0 0 0 4px rgba(0,229,255,0.25); cursor: pointer; }
+.averna-range::-moz-range-thumb { height: 18px; width: 18px; border: 0; border-radius: 9999px; background: #fff; box-shadow: 0 0 0 4px rgba(0,229,255,0.25); cursor: pointer; }
+html.light .averna-range { background: rgba(15,23,42,0.12); }
