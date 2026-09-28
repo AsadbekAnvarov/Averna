@@ -13,6 +13,7 @@ import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { AvatarEditor } from "@/components/avatar-editor";
 import { PageHeader } from "@/components/ui/page-header";
+import { ChangePasswordForm } from "@/components/account/change-password-form";
 
 async function updateAdminProfile(formData: FormData) {
   "use server";
@@ -30,7 +31,7 @@ export default async function AdminProfilePage({ searchParams }: { searchParams:
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {
-    return <AccountNotice title="Admins only" message="This area is reserved for administrators." />;
+    return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
   const dbUser = await db.user.findUnique({
@@ -38,7 +39,7 @@ export default async function AdminProfilePage({ searchParams }: { searchParams:
     select: { name: true, email: true, image: true },
   });
   if (!dbUser) {
-    return <AccountNotice title="Account not found" message="Please sign in again." />;
+    return <AccountNotice title="Akkaunt topilmadi" message="Iltimos, qayta kiring." />;
   }
 
   return (
@@ -47,14 +48,15 @@ export default async function AdminProfilePage({ searchParams }: { searchParams:
         <AdminHeader user={{ name: dbUser.name ?? "Admin", email: dbUser.email, image: dbUser.image }} />
 
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Back to Admin Panel" }}
+          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
           icon={ShieldCheck}
           iconClassName="text-averna-purple"
-          title="Admin Profile"
+          title="Admin profili"
+          subtitle="Ismingiz, rasmingiz va parolingiz."
         />
 
         {searchParams.saved && (
-          <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Profile saved!</div>
+          <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Profil saqlandi!</div>
         )}
 
         {/* Avatar editor */}
@@ -65,30 +67,35 @@ export default async function AdminProfilePage({ searchParams }: { searchParams:
         {/* Basic info */}
         <Card className="glass border-averna-cyan/30">
           <CardHeader>
-            <CardTitle>Account Details</CardTitle>
+            <CardTitle>Akkaunt maʼlumotlari</CardTitle>
           </CardHeader>
           <CardContent>
             <form action={updateAdminProfile} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name" className="flex items-center gap-2">
-                  <User className="h-4 w-4" /> Full Name
+                  <User className="h-4 w-4" /> Toʻliq ism
                 </Label>
-                <Input id="name" name="name" defaultValue={dbUser.name ?? ""} placeholder="Your name" className="bg-background/50" />
+                <Input id="name" name="name" defaultValue={dbUser.name ?? ""} placeholder="Ismingiz" className="bg-background/50" />
               </div>
               <div className="space-y-2">
                 <Label className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" /> Email (read-only)
+                  <Mail className="h-4 w-4" /> Email (oʻzgartirib boʻlmaydi)
                 </Label>
                 <Input value={dbUser.email} disabled className="bg-background/50 opacity-75" />
               </div>
               <div className="pt-4 border-t border-averna-primary/20">
                 <Button type="submit" className="neon-button bg-averna-primary hover:bg-averna-light">
-                  <Save className="mr-2 h-4 w-4" /> Save Changes
+                  <Save className="mr-2 h-4 w-4" /> Saqlash
                 </Button>
               </div>
             </form>
           </CardContent>
         </Card>
+
+        {/* Password */}
+        <div className="mt-8">
+          <ChangePasswordForm lang="uz" email={dbUser.email} />
+        </div>
       </div>
     </div>
   );

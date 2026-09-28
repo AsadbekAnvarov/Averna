@@ -14,6 +14,7 @@ import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { TopPerformers } from "@/components/top-performers";
 import { AvatarEditor } from "@/components/avatar-editor";
 import { PageHeader } from "@/components/ui/page-header";
+import { ChangePasswordForm } from "@/components/account/change-password-form";
 
 async function updateTeacherProfile(formData: FormData) {
   "use server";
@@ -235,6 +236,11 @@ export default async function TeacherProfilePage() {
             </form>
           </CardContent>
         </Card>
+
+        {/* Password */}
+        <div className="mt-8">
+          <ChangePasswordForm lang="en" email={teacher.user.email} />
+        </div>
 
         {/* Top performers showcase */}
         <div className="mt-8">

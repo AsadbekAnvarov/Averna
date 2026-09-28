@@ -4,6 +4,7 @@ import { compare } from "bcryptjs";
 import { db } from "@/lib/db";
 import { UserRole } from "@prisma/client";
 import { authConfig } from "@/lib/auth.config";
+import { sessionStillValid } from "@/lib/account/session-guard";
 
 // Extend the built-in session types
 declare module "next-auth" {
@@ -21,6 +22,17 @@ declare module "next-auth" {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
+  callbacks: {
+    ...authConfig.callbacks,
+    // Node side only (the Edge middleware uses authConfig as it is): remember
+    // when the user signed in, and end the session once the password has been
+    // changed after that, or the account was deleted (lib/account/session-guard).
+    async jwt(params) {
+      const token = await authConfig.callbacks.jwt(params);
+      if (params.user) return { ...token, loginAt: Date.now() };
+      return (await sessionStillValid(token)) ? token : null;
+    },
+  },
   providers: [
     Credentials({
       name: "credentials",

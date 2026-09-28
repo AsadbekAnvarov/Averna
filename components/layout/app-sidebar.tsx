@@ -230,6 +230,12 @@ const ADMIN_NAV: NavSection[] = [
       { name: "Telegram bot", href: "/admin/telegram", icon: Send },
     ],
   },
+  {
+    label: "Hisob",
+    items: [
+      { name: "Profil va parol", href: "/admin/profile", icon: User },
+    ],
+  },
 ];
 
 function isActive(pathname: string, href: string): boolean {

@@ -6,7 +6,7 @@ import { useTheme } from "@/components/theme/theme-provider";
 import { initialsOf } from "@/lib/utils";
 import {
   User, Settings, Sun, Moon, LogOut, ChevronDown,
-  Shield, GraduationCap, Palette,
+  Shield, GraduationCap, Palette, KeyRound,
 } from "lucide-react";
 
 interface Props {
@@ -16,9 +16,15 @@ interface Props {
 
 /**
  * User avatar with dropdown menu. Shows user photo or initials, and on click
- * opens a compact menu: Profile, Settings, Theme toggle, Sign out.
- * Works for all roles — the links adapt accordingly.
+ * opens a compact menu: Profile, Settings, Avatar, Change password (staff),
+ * Theme toggle, Sign out. Works for all roles — the links adapt accordingly;
+ * the admin's menu is in Uzbek (the admin panel's language).
  */
+
+const LABELS = {
+  en: { profile: "My Profile", settings: "Settings", avatar: "Edit Avatar", password: "Change Password", light: "Light Mode", dark: "Dark Mode", signOut: "Sign Out" },
+  uz: { profile: "Mening profilim", settings: "Sozlamalar", avatar: "Avatarni tahrirlash", password: "Parolni oʻzgartirish", light: "Yorugʻ rejim", dark: "Qorongʻi rejim", signOut: "Chiqish" },
+} as const;
 export function UserAvatarDropdown({ user, role }: Props) {
   const router = useRouter();
   const { mode, toggleMode } = useTheme();
@@ -40,6 +46,7 @@ export function UserAvatarDropdown({ user, role }: Props) {
     "/profile";
 
   const initials = initialsOf(user.name);
+  const L = LABELS[role === "ADMIN" ? "uz" : "en"];
 
   const roleBadge =
     role === "ADMIN" ? { icon: Shield, label: "Admin", cls: "bg-averna-purple/20 text-averna-purple" } :
@@ -102,16 +109,19 @@ export function UserAvatarDropdown({ user, role }: Props) {
 
           {/* Menu items */}
           <div className="py-1.5">
-            <DropItem icon={User} label="My Profile" onClick={() => { setOpen(false); router.push(profileHref); }} />
-            <DropItem icon={Settings} label="Settings" onClick={() => { setOpen(false); router.push("/settings"); }} />
-            <DropItem icon={Palette} label="Edit Avatar" onClick={() => { setOpen(false); router.push(`${profileHref}#avatar`); }} />
+            <DropItem icon={User} label={L.profile} onClick={() => { setOpen(false); router.push(profileHref); }} />
+            <DropItem icon={Settings} label={L.settings} onClick={() => { setOpen(false); router.push("/settings"); }} />
+            <DropItem icon={Palette} label={L.avatar} onClick={() => { setOpen(false); router.push(`${profileHref}#avatar`); }} />
+            {role !== "STUDENT" && (
+              <DropItem icon={KeyRound} label={L.password} onClick={() => { setOpen(false); router.push(`${profileHref}#password`); }} />
+            )}
             <div className="border-t border-white/10 my-1.5 mx-3" />
             <button
               onClick={toggleMode}
               className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-white/5 transition-colors"
             >
               {mode === "dark" ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-averna-purple" />}
-              <span>{mode === "dark" ? "Light Mode" : "Dark Mode"}</span>
+              <span>{mode === "dark" ? L.light : L.dark}</span>
               <span className="ml-auto text-[10px] text-gray-500 border border-white/10 rounded px-1.5 py-0.5">
                 {mode === "dark" ? "☀️" : "🌙"}
               </span>
@@ -122,7 +132,7 @@ export function UserAvatarDropdown({ user, role }: Props) {
               className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:bg-red-400/10 transition-colors"
             >
               <LogOut className="h-4 w-4" />
-              <span>Sign Out</span>
+              <span>{L.signOut}</span>
             </button>
           </div>
         </div>

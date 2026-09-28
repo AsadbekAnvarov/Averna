@@ -50,6 +50,8 @@ model User {
   role          UserRole  @default(STUDENT)
   image         String?
   emailVerified DateTime?
+  /// Last password change: sessions signed in before it end (lib/account/session-guard).
+  passwordChangedAt DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
