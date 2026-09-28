@@ -73,8 +73,9 @@ export default async function TeacherDashboard() {
 
   const totalStudents = teacher.groups.reduce((sum, g) => sum + g.students.length, 0);
   const totalHomework = teacher.homework.length;
+  // Classic homework only: Writing / Speaking exam homework waits in the review queue (PendingReviewsCard).
   const pendingGrading = teacher.homework.reduce(
-    (sum, hw) => sum + hw.submissions.filter(s => s.status === "SUBMITTED").length,
+    (sum, hw) => (hw.contentKind ? sum : sum + hw.submissions.filter(s => s.status === "SUBMITTED").length),
     0
   );
 
