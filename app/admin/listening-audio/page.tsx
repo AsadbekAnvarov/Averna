@@ -11,10 +11,12 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ListeningAudioManager } from "@/components/admin/listening-audio-manager";
 
 /**
- * Admin → Listening audio: pre-render every Listening part to one MP3 with
- * OpenAI voices (British / American / Australian speakers, a British
- * narrator, the exam announcements and pauses baked in), stored in Vercel
- * Blob. Parts without a recording keep using browser voices.
+ * Admin → Listening audio: pre-render every Listening part — the library's
+ * tests and the placement test's Listening — to one MP3 with OpenAI voices
+ * (British / American / Australian speakers, a British narrator, the exam
+ * announcements and pauses baked in), stored in Vercel Blob. Parts without a
+ * recording keep using browser voices (and all of them do while
+ * LISTENING_AUDIO=off).
  */
 export default async function ListeningAudioPage() {
   const session = await auth();

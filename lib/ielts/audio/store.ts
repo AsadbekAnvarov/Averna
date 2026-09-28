@@ -2,9 +2,13 @@
  * Listening audio storage — ListeningAudio rows + files in the (public)
  * Vercel Blob store. Used by the admin routes and page.
  *
- * - audioOverview: every catalog Listening test (legacy short tests skipped)
- *   with each part's status (none / ready / stale / failed), size and length,
- *   plus recordings of tests that left the catalog, and storage totals.
+ * - audioOverview: the placement test's Listening (lib/placement/content) and
+ *   every catalog Listening test (legacy short tests skipped) with each part's
+ *   status (none / ready / stale / failed), size and length, plus recordings
+ *   of tests that left the catalog, and storage totals.
+ * - resolveAudioTest: the test behind an id the admin renders — a placement
+ *   form's Listening test or a catalog test (as the placement test and the
+ *   practice pages / mock resolve them).
  * - renderAndStore: render one part, upload it, upsert its row, delete the file
  *   it replaces. A failed render never destroys a recording that still works:
  *   it only notes the error; without a recording the row becomes "failed".
@@ -16,12 +20,15 @@
 import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { blobConfigured, deleteBlobs, putBlob } from "@/lib/storage/blob";
+import { monthlyAudioUploadLimit, speakingStorageUsage } from "@/lib/speaking/recording";
 import { TTS_MODEL, audioAiConfigured } from "@/lib/openai-audio";
+import { PLACEMENT_FORMS } from "@/lib/placement/content";
 import { getListeningExam, listListeningExams, listeningFromRow } from "../catalog";
 import { LISTENING_SEED } from "../content";
 import { estimatePartSeconds } from "../format";
 import type { ExamListeningTest } from "../types";
 import type { AudioOverview, OrphanAudioInfo, PartAudioInfo, PartAudioStatus, TestAudioInfo } from "./admin-types";
+import { listeningAudioEnabled } from "./client";
 import { partAudioHash } from "./hash";
 import { fileProgramme } from "./programme";
 import { RenderError, renderListeningPart } from "./render";
@@ -135,6 +142,25 @@ export async function catalogTests(): Promise<ExamListeningTest[]> {
   return out;
 }
 
+/**
+ * The placement forms' Listening tests, once each. The placement test plays
+ * them through listeningClientContent like any other test, so a recording
+ * rendered here replaces their script in the placement too.
+ */
+export function placementListeningTests(): ExamListeningTest[] {
+  const byId = new Map<string, ExamListeningTest>();
+  for (const f of PLACEMENT_FORMS) {
+    const t = f?.listening;
+    if (t && typeof t.id === "string" && t.parts?.length && !byId.has(t.id)) byId.set(t.id, t);
+  }
+  return Array.from(byId.values());
+}
+
+/** The Listening test behind `testId`: a placement form's test, or the catalog's (getListeningExam). */
+export async function resolveAudioTest(testId: string): Promise<ExamListeningTest | null> {
+  return placementListeningTests().find((t) => t.id === testId) ?? (await getListeningExam(testId));
+}
+
 async function findRow(testId: string, partIndex: number): Promise<AudioRow | null> {
   try {
     return ((await db.listeningAudio.findUnique({
@@ -159,13 +185,22 @@ export async function audioOverview(): Promise<AudioOverview> {
   let dbError: string | null = null;
   const loadRows = async (): Promise<AudioRow[]> =>
     (await db.listeningAudio.findMany({ select: ROW_SELECT, orderBy: [{ testId: "asc" }, { partIndex: "asc" }] })) as AudioRow[];
-  const [tests, rows] = await Promise.all([
+  const [catalog, rows, speakingUsage] = await Promise.all([
     catalogTests(),
     loadRows().catch((e: unknown) => {
       dbError = dbErrorText(e);
       return [] as AudioRow[];
     }),
+    // The same Blob store holds recorded Speaking answers: they count against the same 1 GB / 2,000 uploads.
+    speakingStorageUsage().catch((e: unknown) => {
+      console.error("Speaking storage usage unavailable:", e);
+      return null;
+    }),
   ]);
+  // The placement test's Listening first (every new student sits it), then the library.
+  const placement = placementListeningTests();
+  const placementIds = new Set(placement.map((t) => t.id));
+  const tests = [...placement, ...catalog.filter((t) => !placementIds.has(t.id))];
 
   const byTest = new Map<string, Map<number, AudioRow>>();
   for (const r of rows) {
@@ -207,6 +242,7 @@ export async function audioOverview(): Promise<AudioOverview> {
       source: t.source,
       difficulty: t.difficulty,
       full: t.parts.length === 4 && questions === 40,
+      placement: placementIds.has(t.id),
       parts,
     };
   });
@@ -225,11 +261,13 @@ export async function audioOverview(): Promise<AudioOverview> {
   return {
     blobConfigured: blobConfigured(),
     openAiConfigured: audioAiConfigured(),
+    audioOff: !listeningAudioEnabled(),
     voiceModel: model,
     dbError,
     tests: list,
     orphans,
     totals,
+    speaking: speakingUsage ? { ...speakingUsage, monthlyLimit: monthlyAudioUploadLimit() } : null,
     generatedAt: new Date().toISOString(),
   };
 }

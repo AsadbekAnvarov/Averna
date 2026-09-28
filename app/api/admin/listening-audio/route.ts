@@ -12,9 +12,11 @@ function authError(e: unknown) {
 }
 
 /**
- * GET — every catalog Listening test (legacy short tests skipped) with each
- * part's recording status (none / ready / stale / failed), length and size,
- * recordings of tests no longer in the catalog, and storage totals.
+ * GET — the placement test's Listening and every catalog Listening test
+ * (legacy short tests skipped) with each part's recording status (none /
+ * ready / stale / failed), length and size, recordings of tests no longer in
+ * the catalog, storage totals, and whether recordings are switched off
+ * (LISTENING_AUDIO=off).
  */
 export async function GET() {
   try {

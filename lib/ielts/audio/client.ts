@@ -4,7 +4,17 @@
  * Parts with ready pre-rendered audio (ListeningAudio, matching the part's
  * current script) get `audio` and NO script — the recording plays from the
  * Blob CDN, and the transcript (which contains every gap answer) never reaches
- * the browser. Parts without audio keep their script for browser TTS.
+ * the browser. Parts without audio keep their script for browser TTS. If a
+ * recording can't be played in the browser, the runner fetches that one part's
+ * script from GET /api/listening/script and carries on with browser voices.
+ *
+ * Kill switch: LISTENING_AUDIO=off serves every part with its script and no
+ * recording (browser voices, as before recordings existed) — in practice, the
+ * mock exam and the placement test alike, since they all come through here.
+ * For when the Blob store is restricted (quota), down or blocked. Nothing is
+ * deleted: remove the variable (any other value) to serve the recordings
+ * again. Environment variables apply to new deployments, so redeploy after
+ * changing it on Vercel.
  *
  * One query per test; never throws (any problem → browser voices, as before).
  * SERVER ONLY.
@@ -25,8 +35,15 @@ interface ReadyRow {
   timeline: unknown;
 }
 
+/** False when LISTENING_AUDIO is "off" (any case): recordings aren't served to students. */
+export function listeningAudioEnabled(): boolean {
+  return String(process.env.LISTENING_AUDIO ?? "").trim().toLowerCase() !== "off";
+}
+
 export async function listeningClientContent(test: ExamListeningTest): Promise<ClientListeningTest> {
   const base = toClientListening(test);
+  // Switched off: scripts for every part, no recordings.
+  if (!listeningAudioEnabled()) return base;
   // The old short practice tests never get recordings (the admin skips them).
   if (test.source === "legacy" || !test.parts.length) return base;
   try {

@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { AlertTriangle, CheckCircle2, FileText, Headphones, Info, Loader2, Play, RotateCcw, Square, Volume2 } from "lucide-react";
-import type { ClientGroup, ClientListeningPart, ExamAnswers, ListeningPartAudio } from "@/lib/ielts/types";
+import { AlertTriangle, CheckCircle2, FileText, Headphones, Info, Loader2, Play, RotateCcw, SkipForward, Square, Volume2 } from "lucide-react";
+import type { ClientGroup, ClientListeningPart, ExamAnswers, ListeningPartAudio, ScriptLine } from "@/lib/ielts/types";
 import { LISTENING_FULL, answeredNumbers, estimatePartSeconds, partNumbers, partRange, rangeLabel } from "@/lib/ielts/format";
 import { NARRATOR, ScriptPlayer, cancelSpeech, isTtsSupported, onVoicesChanged, pickVoices, unlockSpeech, waitForVoices } from "@/lib/ielts/tts";
 import type { PlayerSnapshot } from "@/lib/ielts/tts";
@@ -18,14 +18,27 @@ import {
   recordingLines,
   transcriptLines,
 } from "@/lib/ielts/audio/programme";
-import { finalCutMs, positionInfo, scriptLineCount, scriptStartMs } from "@/lib/ielts/audio/timeline";
+import type { ProgrammeLine } from "@/lib/ielts/audio/programme";
+import {
+  finalCutMs,
+  lineRefAt,
+  positionInfo,
+  resumeLineIndex,
+  scriptLineCount,
+  scriptStartMs,
+  startMsOf,
+  voiceLineAt,
+} from "@/lib/ielts/audio/timeline";
+import type { LineRef } from "@/lib/ielts/audio/timeline";
+import { nextAfterPart, partCantBeHeard, readScriptLines, runContext, scriptUrl, scriptWaitMs } from "@/lib/ielts/audio/script";
+import type { ScriptContext } from "@/lib/ielts/audio/script";
 import { ExamShell } from "./exam-shell";
 import type { ExamPartNav } from "./exam-shell";
 import { QuestionGroupView } from "./question-group";
 import { AudioBar, FILE_RATES } from "./audio-bar";
 import type { AudioBarStatus } from "./audio-bar";
 import { AudioFilePlayer, FILE_IDLE, createAudioElement, releaseMediaSession } from "./audio-file-player";
-import type { FileSnapshot } from "./audio-file-player";
+import type { FileErrorCode, FileSnapshot } from "./audio-file-player";
 import { focusQuestion, useDeadline, useExamAnswers, useLeaveGuard } from "./use-exam";
 import type { ListeningExamRunnerProps } from "./types";
 import { cn } from "@/lib/utils";
@@ -44,10 +57,36 @@ import { cn } from "@/lib/utils";
  * are 2 minutes (1 for a single-part practice) to check answers, then the test
  * submits itself.
  *
- * mock = exam conditions: the recording plays once, no pause / replay / speed / seeking.
+ * Fail-open: a recording that can't be played (it keeps failing to load, or
+ * stalls for good — deleted or replaced mid-sitting, Blob store restricted,
+ * CDN blocked) is tried again once, then the runner fetches that part's
+ * script (GET /api/listening/script) and browser voices carry on from the line
+ * the recording had reached. Under exam conditions the server opens a part's
+ * script only once the section clock has reached that part; asked earlier
+ * ("not_yet"), the runner waits the time it is told and asks again. Without
+ * speech synthesis, or when the script is refused (or keeps failing on the
+ * server), the student is told the audio isn't available and can still answer
+ * — and under exam conditions can go on to the next part ("Continue with Part
+ * N", or the answer check after the last part), so the later recordings still
+ * play.
+ *
+ * mock = exam conditions: the recording plays once, no pause / replay / speed / seeking;
+ * after a refresh or an audio failure browser voices continue from the sentence
+ * where they stopped, never from the start of the part.
  * practice = pause, replay the part, speed, skip the reading time; a recording
  * can also be scrubbed and moved ±10 s.
  */
+
+/** The runner's props: the shared contract plus the context of the run. */
+export type ListeningRunnerProps = ListeningExamRunnerProps & {
+  /**
+   * Whose rules the script fallback asks for when a recording can't be played
+   * (lib/ielts/audio/script-access). Default: runContext — practice mode →
+   * "practice"; exam conditions → "placement" for a placement form's test,
+   * otherwise "mock".
+   */
+  context?: ScriptContext;
+};
 
 interface ScopePart {
   part: ClientListeningPart;
@@ -77,9 +116,51 @@ interface AudioSave {
   startedAt?: number;
   /** A recorded part: where it had got to (ms into the part's file). */
   pos?: number;
+  /** Browser voices: the programme line they were reading (index into buildProgramme's lines). */
+  line?: number;
+  /** The script line / announcement playing then: finds the place again if the part switched between a recording and browser voices. */
+  at?: LineRef;
+  /** The part's recording couldn't be played, so browser voices were reading it (its script fetched on demand). */
+  voices?: boolean;
 }
 
+/** Where browser voices continue a part (see resumeLineIndex). */
+interface VoiceResume {
+  line?: number;
+  at?: LineRef;
+}
+
+/** early: exam conditions, and the section clock hasn't reached the part yet — ask again after `retryAfterMs`. */
+type ScriptResult =
+  | { ok: true; script: ScriptLine[] }
+  | { ok: false; reason: "offline" | "denied" | "missing" | "failed" | "early"; retryAfterMs?: number };
+
 const IDLE: PlayerSnapshot = { state: "idle", line: 0, total: 0, silenceEndsAt: null, silenceMs: 0, silenceLeftMs: 0 };
+/** A recording is played this many times (the first try + one retry) before browser voices take over. */
+const FILE_TRIES = 2;
+/** Wait before trying a failed recording again. */
+const FILE_RETRY_DELAY_MS = 1000;
+/** A recording that has played this far since its last failure starts counting failures afresh. */
+const FILE_FAILS_RESET_MS = 20_000;
+const SCRIPT_TIMEOUT_MS = 15_000;
+/** A script asked for before the section clock reached its part ("not_yet"): asked again after the wait the server gives (capped) … */
+const SCRIPT_WAIT_MAX_MS = 60_000;
+/** … at most this many times before the part counts as refused. */
+const SCRIPT_WAITS = 10;
+const LINE_KINDS = new Set(["intro", "preview", "end", "final"]);
+
+function readLineRef(raw: unknown): LineRef | undefined {
+  if (!raw || typeof raw !== "object") return undefined;
+  const o = raw as Record<string, unknown>;
+  if (typeof o.i !== "number" || !Number.isInteger(o.i) || o.i < -1) return undefined;
+  if (o.i >= 0) return { i: o.i };
+  return typeof o.kind === "string" && LINE_KINDS.has(o.kind) ? { i: -1, kind: o.kind as LineRef["kind"] } : undefined;
+}
+
+function refOf(line: ProgrammeLine | undefined): LineRef | undefined {
+  if (!line) return undefined;
+  return line.kind ? { i: line.i, kind: line.kind } : { i: line.i };
+}
 
 function readAudioSave(key: string): AudioSave | null {
   try {
@@ -96,6 +177,9 @@ function readAudioSave(key: string): AudioSave | null {
           checkEndsAt: typeof o.checkEndsAt === "number" ? o.checkEndsAt : undefined,
           startedAt: typeof o.startedAt === "number" ? o.startedAt : undefined,
           pos: typeof o.pos === "number" && Number.isFinite(o.pos) && o.pos > 0 ? o.pos : undefined,
+          line: typeof o.line === "number" && Number.isInteger(o.line) && o.line >= 0 ? o.line : undefined,
+          at: readLineRef(o.at),
+          voices: o.voices === true,
         };
       }
     }
@@ -103,6 +187,33 @@ function readAudioSave(key: string): AudioSave | null {
     /* corrupted — ignore */
   }
   return null;
+}
+
+/** One part's script for browser voices, when its recording can't be played (see lib/ielts/audio/script). */
+async function fetchScript(testId: string, part: number, context: ScriptContext): Promise<ScriptResult> {
+  if (typeof navigator !== "undefined" && navigator.onLine === false) return { ok: false, reason: "offline" };
+  const ctrl = typeof AbortController === "function" ? new AbortController() : null;
+  const timer = ctrl ? window.setTimeout(() => ctrl.abort(), SCRIPT_TIMEOUT_MS) : null;
+  try {
+    const res = await fetch(scriptUrl(testId, part, context), {
+      cache: "no-store",
+      credentials: "same-origin",
+      headers: { Accept: "application/json" },
+      signal: ctrl?.signal,
+    });
+    // Signed out: the middleware answers with a redirect to the sign-in page.
+    if (res.redirected) return { ok: false, reason: "denied" };
+    const body: unknown = await res.json().catch(() => null);
+    const script = res.ok ? readScriptLines(body) : null;
+    if (script) return { ok: true, script };
+    const wait = scriptWaitMs(res.status, body, res.headers.get("retry-after"));
+    if (wait != null) return { ok: false, reason: "early", retryAfterMs: wait };
+    return { ok: false, reason: res.status === 401 || res.status === 403 ? "denied" : res.status === 404 ? "missing" : "failed" };
+  } catch {
+    return { ok: false, reason: typeof navigator !== "undefined" && navigator.onLine === false ? "offline" : "failed" };
+  } finally {
+    if (timer != null) window.clearTimeout(timer);
+  }
 }
 
 function writeAudioSave(key: string, data: AudioSave): void {
@@ -113,7 +224,8 @@ function writeAudioSave(key: string, data: AudioSave): void {
   }
 }
 
-function audioErrorText(code: string): string {
+/** Browser-voice errors. `carryOn`: Try again continues from the sentence where it stopped (else it restarts the part). */
+function audioErrorText(code: string, carryOn = false): string {
   switch (code) {
     case "not-allowed":
       return "Your browser blocked the audio. Press Try again to start it.";
@@ -124,8 +236,17 @@ function audioErrorText(code: string): string {
     case "unsupported":
       return "Audio isn't available in this browser — open Averna in Chrome, Edge or Safari.";
     default:
-      return "The audio stopped unexpectedly. Press Try again to restart this part.";
+      return carryOn
+        ? "The audio stopped unexpectedly. Press Try again to continue from where it stopped."
+        : "The audio stopped unexpectedly. Press Try again to restart this part.";
   }
+}
+
+/** The recording failed and its script couldn't be fetched for browser voices either. */
+function voicesErrorText(reason: Exclude<ScriptResult, { ok: true }>["reason"]): string {
+  return reason === "offline" || reason === "failed"
+    ? "The recording couldn't be played, and browser voices couldn't take over — check your internet connection, then press Try again."
+    : "The recording can't be played right now, and browser voices can't take over. You can still answer the questions below.";
 }
 
 /** Messages for a pre-rendered recording (Try again continues from where it stopped). */
@@ -146,6 +267,8 @@ function fileErrorText(code: string): string {
   }
 }
 
+const pause = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));
+
 function prefersReducedMotion(): boolean {
   try {
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -161,12 +284,16 @@ const primaryBtn =
 const dangerBtn =
   "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-red-300/40 px-4 text-sm font-semibold text-red-100 transition hover:bg-red-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/60 disabled:opacity-50";
 
-export function ListeningExamRunner(props: ListeningExamRunnerProps) {
+export function ListeningExamRunner(props: ListeningRunnerProps) {
   const { test, partIndex, mode, attemptId, initialAnswers, onSubmit, onAutosave, exitHref, homeworkId } = props;
   const examName = props.examName?.trim() || "Mock exam";
   const router = useRouter();
   const practice = mode === "practice";
   const single = partIndex != null;
+  const scriptContext: ScriptContext = props.context ?? runContext(mode, test.id);
+
+  /** Scripts fetched for recorded parts that browser voices read instead (part index in the full test → script). */
+  const [voiced, setVoiced]: State<Record<number, ScriptLine[]>> = useState<Record<number, ScriptLine[]>>({});
 
   const scope: ScopePart[] = useMemo(() => {
     const all = test.parts ?? [];
@@ -176,8 +303,13 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
         : all[partIndex]
           ? [{ part: all[partIndex], i: partIndex }]
           : [];
-    return picked.map(({ part, i }) => ({ part, no: i + 1, numbers: partNumbers(part) }));
-  }, [test, partIndex]);
+    // A recording that couldn't be played: from then on the part is read by browser voices from its fetched script.
+    return picked.map(({ part, i }) => ({
+      part: voiced[i] ? { ...part, script: voiced[i], audio: undefined } : part,
+      no: i + 1,
+      numbers: partNumbers(part),
+    }));
+  }, [test, partIndex, voiced]);
 
   const readingSeconds = mode === "mock" || !single ? EXAM_READING_SECONDS : PRACTICE_READING_SECONDS;
   const checkMinutes = single ? 1 : LISTENING_FULL.reviewMinutes;
@@ -217,6 +349,12 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
   const [resumeFrom, setResumeFrom]: State<number | null> = useState<number | null>(null);
   /** A recorded part continues from here (ms) after a refresh. */
   const [resumeAtMs, setResumeAtMs]: State<number | null> = useState<number | null>(null);
+  /** Browser voices continue from here after a refresh (exam conditions, and recordings they read instead). */
+  const [resumeVoice, setResumeVoice]: State<VoiceResume | null> = useState<VoiceResume | null>(null);
+  /** A failed recording is being tried again / browser voices are taking over (its script is loading). */
+  const [recovering, setRecovering]: State<"retry" | "voices" | null> = useState<"retry" | "voices" | null>(null);
+  /** Exam conditions: the part at this scope position can't be heard (no browser voices, its script refused or failing) — the run can go on. */
+  const [stuck, setStuck]: State<number | null> = useState<number | null>(null);
   const [restoredCheck, setRestoredCheck]: State<boolean> = useState(false);
   const [checkEndsAt, setCheckEndsAt]: State<number | null> = useState<number | null>(null);
   const [submitting, setSubmitting]: State<boolean> = useState(false);
@@ -253,6 +391,28 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
   const pendingFocus: Ref<number | null> = useRef<number | null>(null);
   const didMountRef: Ref<boolean> = useRef(false);
   const topRef: Ref<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
+  const testRef: Ref<typeof test> = useRef(test);
+  testRef.current = test;
+  const voicedRef: Ref<Record<number, ScriptLine[]>> = useRef<Record<number, ScriptLine[]>>({});
+  /** Recorded parts browser voices read without trying the file again (it failed before a refresh). */
+  const voicesWantedRef: Ref<Set<number>> = useRef<Set<number>>(new Set<number>());
+  /** Script requests in flight, by part index. */
+  const scriptLoadsRef: Ref<Map<number, Promise<ScriptResult>>> = useRef<Map<number, Promise<ScriptResult>>>(new Map());
+  /** The switch to browser voices that couldn't finish (Try again repeats it). */
+  const pendingSwitchRef: Ref<{ pos: number; posMs?: number; resume?: VoiceResume } | null> = useRef<{
+    pos: number;
+    posMs?: number;
+    resume?: VoiceResume;
+  } | null>(null);
+  /** Failures of the playing recording (bounded retries, then browser voices). */
+  const fileFailsRef: Ref<{ part: number; count: number; atMs: number }> = useRef({ part: -1, count: 0, atMs: 0 });
+  /** A recording of this run already failed for good: later ones hand over after their first failure. */
+  const filesFailingRef: Ref<boolean> = useRef(false);
+  /** Bumped whenever a part starts or the run stops: late retries and scripts are ignored. */
+  const runTokenRef: Ref<number> = useRef(0);
+  /** The browser-voice programme playing (to save where it is). */
+  const progLinesRef: Ref<ProgrammeLine[]> = useRef<ProgrammeLine[]>([]);
+  const savedLineRef: Ref<number> = useRef(-1);
 
   // Support check, voice loading, and stopping speech when leaving.
   useEffect(() => {
@@ -278,6 +438,7 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
       alive = false;
       off();
       window.removeEventListener("pagehide", onHide);
+      runTokenRef.current += 1; // a script still loading must not start anything
       playerRef.current?.dispose();
       playerRef.current = null;
       soundRef.current?.dispose();
@@ -294,7 +455,9 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
         const entry = scopeRef.current[playingPosRef.current];
         f.stop();
         if (entry && !doneRef.current) {
-          writeAudioSave(audioKey, { part: entry.no - 1, startedAt: startedAtRef.current ?? undefined, pos: Math.round(f.snapshot.positionMs) });
+          const ms = f.snapshot.positionMs;
+          const at = entry.part.audio ? lineRefAt(entry.part.audio, ms) ?? undefined : undefined;
+          writeAudioSave(audioKey, { part: entry.no - 1, startedAt: startedAtRef.current ?? undefined, pos: Math.round(ms), at });
         }
       }
       fileSoundRef.current?.dispose();
@@ -339,9 +502,23 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
       setPhase("check");
       return;
     }
-    // A recording picks up where it stopped (a second early); browser voices restart the part.
-    const audio = scope[pos]?.part.audio;
-    if (audio && saved.pos) setResumeAtMs(Math.max(0, Math.min(saved.pos - 1000, audio.durationMs - 1500)));
+    const entry = scope[pos];
+    const audio = entry?.part.audio;
+    if (audio && saved.voices) {
+      // Its recording had failed: browser voices carry on where they were (fetch the script now, so Continue can start at once).
+      voicesWantedRef.current.add(entry.no - 1);
+      filesFailingRef.current = true;
+      void loadScript(entry.no - 1);
+      setResumeVoice({ line: saved.line, at: saved.at });
+    } else if (audio) {
+      // A recording picks up where it stopped (a second early) — or where browser voices were, if they read this part before.
+      const ms = saved.pos != null ? saved.pos - 1000 : saved.at ? startMsOf(audio, saved.at) : null;
+      if (ms != null && ms > 0) setResumeAtMs(Math.max(0, Math.min(ms, audio.durationMs - 1500)));
+    } else if (!practice && (saved.line != null || saved.at)) {
+      // Exam conditions: browser voices continue from the sentence where they stopped (the part is heard once).
+      setResumeVoice({ line: saved.line, at: saved.at });
+    }
+    // (Practice: browser voices restart the part.)
     setResumeFrom(pos);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hydrated]);
@@ -417,24 +594,90 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
   function rememberPos(entry: ScopePart, ms: number) {
     if (doneRef.current || Math.abs(ms - savedPosRef.current) < 2000) return;
     savedPosRef.current = ms;
-    writeAudioSave(audioKey, { part: entry.no - 1, startedAt: startedAtRef.current ?? undefined, pos: Math.round(ms) });
+    const at = entry.part.audio ? lineRefAt(entry.part.audio, ms) ?? undefined : undefined;
+    writeAudioSave(audioKey, { part: entry.no - 1, startedAt: startedAtRef.current ?? undefined, pos: Math.round(ms), at });
   }
 
-  function startPart(pos: number, fromScript = false, fromMs?: number) {
+  /** Remember the line browser voices are reading, so a refresh can continue from it (exam conditions). */
+  function rememberLine(entry: ScopePart, line: number, voices: boolean) {
+    if (doneRef.current || line === savedLineRef.current) return;
+    savedLineRef.current = line;
+    writeAudioSave(audioKey, {
+      part: entry.no - 1,
+      startedAt: startedAtRef.current ?? undefined,
+      line,
+      at: refOf(progLinesRef.current[line]),
+      ...(voices ? { voices: true } : {}),
+    });
+  }
+
+  /**
+   * The script browser voices read instead of a recording that can't be played
+   * (fetched once per part; a refresh prefetches it). From then on the part is
+   * read by browser voices (`voiced`).
+   */
+  function loadScript(index: number): Promise<ScriptResult> {
+    const have = voicedRef.current[index];
+    if (have) return Promise.resolve({ ok: true, script: have });
+    const pending = scriptLoadsRef.current.get(index);
+    if (pending) return pending;
+    const p = fetchScript(testRef.current.id, index, scriptContext).then((r: ScriptResult) => {
+      scriptLoadsRef.current.delete(index);
+      if (r.ok) {
+        voicedRef.current = { ...voicedRef.current, [index]: r.script };
+        setVoiced(voicedRef.current);
+      }
+      return r;
+    });
+    scriptLoadsRef.current.set(index, p);
+    return p;
+  }
+
+  /** `resume`: where browser voices continue (a refresh under exam conditions, Try again). */
+  function startPart(pos: number, fromScript = false, fromMs?: number, resume?: VoiceResume) {
     const entry = scopeRef.current[pos];
     if (!entry || doneRef.current) return;
-    if (entry.part.audio) {
-      startFilePart(pos, entry, entry.part.audio, fromScript, fromMs);
+    runTokenRef.current += 1;
+    const index = entry.no - 1;
+    const script = voicedRef.current[index];
+    if (entry.part.audio && script) {
+      // Browser voices read this recording's script (the scope catches up on the next render).
+      startVoicePart(pos, { ...entry, part: { ...entry.part, script, audio: undefined } }, { fromScript, resume });
       return;
     }
+    if (entry.part.audio) {
+      // Its recording already failed (before a refresh, too): straight to browser voices, where they were.
+      if (voicesWantedRef.current.has(index)) void switchToVoices(pos, resume ? { resume } : { posMs: fromScript ? scriptStartMs(entry.part.audio) : fromMs });
+      else startFilePart(pos, entry, entry.part.audio, fromScript, fromMs);
+      return;
+    }
+    startVoicePart(pos, entry, { fromScript, resume });
+  }
+
+  /**
+   * Browser voices read a part — its own script, or the one fetched for a
+   * recording that can't be played. Starts at the part's beginning, its script
+   * (fromScript: practice Replay), a saved place (resume), or the line a failed
+   * recording had reached (file).
+   */
+  function startVoicePart(
+    pos: number,
+    entry: ScopePart,
+    start: { fromScript?: boolean; resume?: VoiceResume; file?: { audio: ListeningPartAudio; posMs: number } }
+  ) {
     if (!isTtsSupported()) {
-      // A part without a recording, in a browser without speech, after recorded parts: say why it's silent.
-      if (fileRef.current) {
+      // A part without a recording, in a browser without speech — after a recorded part, or gone on to
+      // from a part that couldn't be heard: say why it's silent. Under exam conditions the run can go on
+      // from here too, so the later recordings still play.
+      if (fileRef.current || !practice) {
         stopFile();
+        setRecovering(null);
         setPlayingPos(pos);
         setPhase("playing");
         if (activePartRef.current !== pos) setActivePart(pos);
+        setCurrent((c: number | null) => (c != null && entry.numbers.includes(c) ? c : entry.numbers[0] ?? null));
         setAudioError(audioErrorText("unsupported"));
+        if (!practice) setStuck(pos);
       }
       return;
     }
@@ -442,13 +685,19 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
     stopFile();
     playerRef.current?.dispose();
     playerRef.current = null;
+    setStuck(null);
     const last = pos === scopeRef.current.length - 1;
     const prog = buildProgramme(entry.part, { no: entry.no, readingSeconds, last, checkMinutes });
+    const voices = !!voicedRef.current[entry.no - 1];
+    // Exam conditions, and recordings read by browser voices: Try again carries on from the sentence where it stopped.
+    const carryOn = !practice || voices;
     const player: ScriptPlayer = new ScriptPlayer(prog.lines, {
       voices: pickVoices(entry.part.speakers ?? [], freshVoices()),
       rate: practice ? rateRef.current : 1,
       onChange: (s) => {
-        if (playerRef.current === player) setSnap(s);
+        if (playerRef.current !== player) return;
+        setSnap(s);
+        rememberLine(entry, s.line, voices);
       },
       onEnd: () => {
         if (playerRef.current !== player) return;
@@ -456,25 +705,37 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
         else startCheckRef.current();
       },
       onError: (code) => {
-        if (playerRef.current === player) setAudioError(audioErrorText(code));
+        if (playerRef.current === player) setAudioError(audioErrorText(code, carryOn));
       },
     });
     playerRef.current = player;
+    progLinesRef.current = prog.lines;
+    savedLineRef.current = -1;
+    pendingSwitchRef.current = null;
     if (startedAtRef.current == null) startedAtRef.current = Date.now();
     setAudioError(null);
+    setRecovering(null);
     setResumeFrom(null);
     setResumeAtMs(null);
+    setResumeVoice(null);
     setShowTranscript(false);
     setProgramme({ scriptStart: prog.scriptStart, scriptCount: prog.scriptCount });
     setPlayingPos(pos);
     setPhase("playing");
     if (activePartRef.current !== pos) setActivePart(pos);
     setCurrent((c: number | null) => (c != null && entry.numbers.includes(c) ? c : entry.numbers[0] ?? null));
-    writeAudioSave(audioKey, { part: entry.no - 1, startedAt: startedAtRef.current ?? undefined });
+    writeAudioSave(audioKey, { part: entry.no - 1, startedAt: startedAtRef.current ?? undefined, ...(voices ? { voices: true } : {}) });
+    let from = start.fromScript ? prog.scriptStart : 0;
+    if (start.file) from = voiceLineAt(start.file.audio, start.file.posMs, prog.lines);
+    else if (start.resume) from = resumeLineIndex(prog.lines, start.resume.line, start.resume.at) ?? from;
     const range = partRange(entry.part);
-    setAnnounce(`Part ${entry.no} is starting.${range ? ` ${rangeLabel(range.from, range.to)}.` : ""}`);
+    setAnnounce(
+      start.file
+        ? `The recording of Part ${entry.no} couldn't be played. Browser voices continue from where it stopped.`
+        : `Part ${entry.no} is ${start.resume && from > 0 ? "continuing" : "starting"}.${range ? ` ${rangeLabel(range.from, range.to)}.` : ""}`
+    );
     // Synchronous first speak() — inside the tap that started it (required on iOS).
-    player.play(fromScript ? prog.scriptStart : 0);
+    player.play(from);
   }
 
   /** A recorded part: one file, announcements and reading time included. */
@@ -488,22 +749,27 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
     if (startedAtRef.current == null) startedAtRef.current = Date.now();
     setResumeFrom(null);
     setResumeAtMs(null);
+    setResumeVoice(null);
     setShowTranscript(false);
+    setStuck(null);
     setPlayingPos(pos);
     setPhase("playing");
     if (activePartRef.current !== pos) setActivePart(pos);
     setCurrent((c: number | null) => (c != null && entry.numbers.includes(c) ? c : entry.numbers[0] ?? null));
     const range = partRange(entry.part);
     setAnnounce(`Part ${entry.no} is starting.${range ? ` ${rangeLabel(range.from, range.to)}.` : ""}`);
+    const startMs = fromScript ? scriptStartMs(audio) : Math.max(0, Math.min(fromMs ?? 0, audio.durationMs - 1000));
     const el = ensureMedia();
     if (!el) {
-      setAudioError(fileErrorText("unsupported"));
+      // No audio element in this browser: browser voices read the part instead (if it has them).
+      void switchToVoices(pos, { posMs: startMs });
       return;
     }
     setAudioError(null);
+    setRecovering(null);
+    pendingSwitchRef.current = null;
     // Practising one part on its own: the run gives its own checking time, so stop before the file's end-of-test line.
     const endAtMs = single ? finalCutMs(audio) : undefined;
-    const startMs = fromScript ? scriptStartMs(audio) : Math.max(0, Math.min(fromMs ?? 0, audio.durationMs - 1000));
     const player: AudioFilePlayer = new AudioFilePlayer(el, {
       url: audio.url,
       durationMs: audio.durationMs,
@@ -515,7 +781,15 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
       onChange: (s) => {
         if (fileRef.current !== player) return;
         setFileSnap(s);
-        if (s.state === "playing") setAudioError(null); // recovered
+        if (s.state === "playing") {
+          setAudioError(null); // recovered
+          setRecovering(null);
+          // Playing well again for a while: earlier failures no longer count.
+          const fails = fileFailsRef.current;
+          if (fails.part === entry.no - 1 && fails.count > 0 && s.positionMs - fails.atMs > FILE_FAILS_RESET_MS) {
+            fileFailsRef.current = { ...fails, count: 0 };
+          }
+        }
         rememberPos(entry, s.positionMs);
       },
       onEnd: () => {
@@ -524,30 +798,166 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
         else startCheckRef.current();
       },
       onError: (code) => {
-        if (fileRef.current === player) setAudioError(fileErrorText(code));
+        if (fileRef.current === player) onFileError(pos, entry, player, code);
       },
     });
     fileRef.current = player;
     setFileSnap(player.snapshot);
     savedPosRef.current = startMs;
-    writeAudioSave(audioKey, { part: entry.no - 1, startedAt: startedAtRef.current ?? undefined, pos: Math.round(startMs) });
+    writeAudioSave(audioKey, {
+      part: entry.no - 1,
+      startedAt: startedAtRef.current ?? undefined,
+      pos: Math.round(startMs),
+      at: lineRefAt(audio, startMs) ?? undefined,
+    });
     // Synchronous play() — inside the tap that started it (mobile autoplay rules).
     player.play();
+  }
+
+  /**
+   * A recording failed. Autoplay blocked or offline: the student's Try again
+   * fixes that. Otherwise the file is tried once more by itself, then browser
+   * voices take over from where it stopped — at once for a stall that didn't
+   * recover, or when a recording of this run has already failed for good.
+   */
+  function onFileError(pos: number, entry: ScopePart, player: AudioFilePlayer, code: FileErrorCode) {
+    const offline = typeof navigator !== "undefined" && navigator.onLine === false;
+    if (code === "not-allowed" || offline) {
+      setRecovering(null);
+      setAudioError(fileErrorText(offline ? "network" : code));
+      return;
+    }
+    const index = entry.no - 1;
+    const prev = fileFailsRef.current;
+    const count = (prev.part === index ? prev.count : 0) + 1;
+    const posMs = player.snapshot.positionMs;
+    fileFailsRef.current = { part: index, count, atMs: posMs };
+    const tries = code === "stalled" || filesFailingRef.current ? 1 : FILE_TRIES;
+    if (count < tries) {
+      setRecovering("retry");
+      const token = runTokenRef.current;
+      window.setTimeout(() => {
+        if (token === runTokenRef.current && fileRef.current === player && player.state === "error" && !doneRef.current) player.retry();
+      }, FILE_RETRY_DELAY_MS);
+      return;
+    }
+    void switchToVoices(pos, { posMs });
+  }
+
+  /**
+   * Fail-open: this part's recording can't be played. Fetch its script and let
+   * browser voices carry on from the line the recording had reached (`posMs`),
+   * or from where they were before a refresh (`resume`) — never from the start
+   * of the part under exam conditions. Asked before the section clock reached
+   * the part ("not_yet": a recording failed while browser voices ran ahead of
+   * the files), it waits as told and asks again. Without speech synthesis, or
+   * when the script is refused, the student is told the audio isn't available
+   * and can still answer (practice also gets the transcript; exam conditions can
+   * go on to the next part — skipPart).
+   */
+  async function switchToVoices(pos: number, opts: { posMs?: number; resume?: VoiceResume }) {
+    const entry = scopeRef.current[pos];
+    if (!entry || doneRef.current) return;
+    const index = entry.no - 1;
+    const audio = testRef.current.parts?.[index]?.audio;
+    const token = ++runTokenRef.current;
+    stopSoundCheck();
+    playerRef.current?.dispose();
+    playerRef.current = null;
+    stopFile();
+    filesFailingRef.current = true;
+    pendingSwitchRef.current = { pos, ...opts };
+    if (startedAtRef.current == null) startedAtRef.current = Date.now();
+    setResumeFrom(null);
+    setResumeAtMs(null);
+    setResumeVoice(null);
+    setShowTranscript(false);
+    setStuck(null);
+    setPlayingPos(pos);
+    setPhase("playing");
+    if (activePartRef.current !== pos) setActivePart(pos);
+    setCurrent((c: number | null) => (c != null && entry.numbers.includes(c) ? c : entry.numbers[0] ?? null));
+    const tts = isTtsSupported();
+    if (tts) {
+      voicesWantedRef.current.add(index);
+      // A refresh from here on goes straight to browser voices, at this place.
+      const at = opts.resume?.at ?? (audio && opts.posMs != null ? lineRefAt(audio, opts.posMs) ?? undefined : undefined);
+      writeAudioSave(audioKey, { part: index, startedAt: startedAtRef.current ?? undefined, voices: true, line: opts.resume?.line, at });
+    } else if (!practice) {
+      // No browser voices either: say so — the questions can still be answered, and the run can go on.
+      setRecovering(null);
+      setAudioError(audioErrorText("unsupported"));
+      if (partCantBeHeard("no-voices")) setStuck(pos);
+      return;
+    }
+    setAudioError(null);
+    setRecovering("voices");
+    setAnnounce(`The recording of Part ${entry.no} couldn't be played. Switching to browser voices.`);
+    let r = await loadScript(index);
+    // Exam conditions, asked before the section clock reached this part: wait as long as the server says, then ask again.
+    for (let waits = 0; !r.ok && r.reason === "early" && waits < SCRIPT_WAITS; waits++) {
+      if (token !== runTokenRef.current || doneRef.current) return;
+      await pause(Math.min(SCRIPT_WAIT_MAX_MS, Math.max(1000, r.retryAfterMs ?? 5000)));
+      if (token !== runTokenRef.current || doneRef.current) return;
+      r = await loadScript(index);
+    }
+    if (token !== runTokenRef.current || doneRef.current) return; // another part started, or the run ended, meanwhile
+    setRecovering(null);
+    if (!r.ok) {
+      setAudioError(voicesErrorText(r.reason));
+      if (!practice && partCantBeHeard(r.reason)) setStuck(pos);
+      return;
+    }
+    if (!tts) {
+      setAudioError(audioErrorText("unsupported")); // practice: the transcript can be read instead
+      return;
+    }
+    const voicedEntry: ScopePart = { ...entry, part: { ...entry.part, script: r.script, audio: undefined } };
+    startVoicePart(pos, voicedEntry, opts.resume ? { resume: opts.resume } : audio && opts.posMs != null ? { file: { audio, posMs: opts.posMs } } : {});
   }
 
   /** Start (or continue) the run from a tap: unlock whatever later parts will need, then play. */
   function beginRun(pos: number, resume: boolean) {
     const entry = scopeRef.current[pos];
     if (!entry || doneRef.current) return;
-    if (entry.part.audio && scopeRef.current.some((s) => !s.part.audio)) unlockSpeech();
+    // Browser voices may be needed later — for a part without a recording, or for a recording that can't
+    // be played: this tap unlocks speech (iOS only speaks after a speak() made inside a tap).
+    if (entry.part.audio) unlockSpeech();
     if (!entry.part.audio && scopeRef.current.some((s) => !!s.part.audio)) primeMedia();
-    startPart(pos, false, resume && entry.part.audio ? resumeAtMs ?? undefined : undefined);
+    startPart(pos, false, resume && entry.part.audio ? resumeAtMs ?? undefined : undefined, resume ? resumeVoice ?? undefined : undefined);
+  }
+
+  /**
+   * Exam conditions, a part that can't be heard (no browser voices, its script
+   * refused or failing): go on to the next part — or to the answer check after
+   * the last one — so the later recordings still play. Inside the tap, like
+   * Start (autoplay rules). The part's questions stay open.
+   */
+  function skipPart() {
+    if (doneRef.current || submittingRef.current || practice) return;
+    const pos = playingPosRef.current;
+    if (stuck !== pos) return;
+    const next = nextAfterPart(pos, scopeRef.current.length);
+    setStuck(null);
+    setAudioError(null);
+    pendingSwitchRef.current = null;
+    if (next.kind === "check") {
+      startCheck();
+      return;
+    }
+    // A recorded part may need browser voices later on (iOS only speaks after a speak() made inside a tap).
+    if (scopeRef.current[next.pos]?.part.audio) unlockSpeech();
+    startPart(next.pos);
   }
 
   function startCheck() {
     playerRef.current?.dispose();
     playerRef.current = null;
     stopFile();
+    runTokenRef.current += 1;
+    pendingSwitchRef.current = null;
+    setRecovering(null);
+    setStuck(null);
     if (doneRef.current) return;
     const ends = Date.now() + checkMs;
     setCheckEndsAt(ends);
@@ -579,6 +989,8 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
       setFileSnap(fileRef.current.snapshot);
       stopFile();
     }
+    runTokenRef.current += 1; // a retry or a script still loading must not start the audio again
+    setRecovering(null);
     stopSoundCheck();
     cancelSpeech();
     const started = startedAtRef.current ?? mountedAtRef.current ?? Date.now();
@@ -665,8 +1077,10 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
       stopSoundCheck();
       return;
     }
-    // A recorded test: play the start of the recording itself (its narrator, at its volume).
-    const audio = (scopeRef.current[resumeFrom ?? 0] ?? scopeRef.current[0])?.part.audio;
+    // A recorded test: play the start of the recording itself (its narrator, at its volume) — unless that
+    // recording already failed and browser voices will read the part.
+    const checkEntry = scopeRef.current[resumeFrom ?? 0] ?? scopeRef.current[0];
+    const audio = checkEntry && !voicesWantedRef.current.has(checkEntry.no - 1) ? checkEntry.part.audio : undefined;
     if (audio) {
       const el = ensureMedia();
       if (!el) {
@@ -772,14 +1186,46 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
     if (f.state === "paused" || f.state === "stopped") f.resume();
   }
 
-  /** Stopped by the system → continue; failed → reload at the same place. */
+  /**
+   * A recorded part's Continue / Try again. Stopped by the system → continue.
+   * Failed → the file once more at the same place (if that fails too, browser
+   * voices take over — never an endless retry), or, when browser voices already
+   * tried to take over and their script didn't load, that again.
+   */
   function continueFile() {
     if (doneRef.current || submittingRef.current) return;
+    const pos = playingPosRef.current;
+    const entry = scopeRef.current[pos];
+    if (!entry) return;
+    unlockSpeech(); // in this tap: browser voices may have to take over (iOS)
     const f = fileRef.current;
     setAudioError(null);
+    if (f && (f.state === "stopped" || f.state === "paused")) {
+      f.resume();
+      return;
+    }
+    const pending = pendingSwitchRef.current;
+    if (pending && pending.pos === pos && isTtsSupported()) {
+      void switchToVoices(pos, pending);
+      return;
+    }
+    fileFailsRef.current = { part: entry.no - 1, count: FILE_TRIES - 1, atMs: fileSnap.positionMs };
     if (f && f.state === "error") f.retry();
-    else if (f && (f.state === "stopped" || f.state === "paused")) f.resume();
-    else startPart(playingPosRef.current, false, fileSnap.positionMs);
+    else startPart(pos, false, fileSnap.positionMs);
+  }
+
+  /**
+   * Browser voices stopped or failed: Continue / Try again carries on from the
+   * sentence where they were under exam conditions and for a recording they
+   * read instead; practice restarts a part without a recording (as before).
+   */
+  function retryVoices() {
+    if (doneRef.current || submittingRef.current) return;
+    const pos = playingPosRef.current;
+    const entry = scopeRef.current[pos];
+    if (!entry) return;
+    const carryOn = !practice || !!voicedRef.current[entry.no - 1];
+    startPart(pos, false, undefined, carryOn ? { line: snap.line, at: refOf(progLinesRef.current[snap.line]) } : undefined);
   }
 
   const onJump = useCallback((n: number) => {
@@ -828,7 +1274,9 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
   else if (phase === "check") barStatus = "finished";
   else if (phase === "intro") barStatus = "ready";
   else if (barAudio) {
-    if (audioError || fileSnap.state === "error") barStatus = "error";
+    // Trying the file again / browser voices taking over: shown as loading, not as an error.
+    if (recovering && phase === "playing" && !audioError) barStatus = "buffering";
+    else if (audioError || fileSnap.state === "error") barStatus = "error";
     else if (fileSnap.state === "playing") barStatus = fileInfo?.reading ? "reading" : "playing";
     else if (fileSnap.state === "buffering") barStatus = "buffering";
     else if (fileSnap.state === "paused") barStatus = "paused";
@@ -855,19 +1303,23 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
       : phase === "check"
         ? barLines
         : 0;
+  /** Browser voices read the playing part because its recording couldn't be played. */
+  const playingVoiced = phase === "playing" && !!voiced[playingEntry.no - 1];
+  /** Continue / Try again on browser voices carries on from the sentence where they stopped (else practice restarts the part). */
+  const voicesCarryOn = !practice || playingVoiced;
   const barStart =
     barStatus === "ready"
       ? () => beginRun(startPos, resumeFrom != null)
       : barStatus === "stopped" || barStatus === "error"
         ? fileLive
           ? continueFile
-          : () => startPart(playingPos)
+          : retryVoices
         : undefined;
   const barStartLabel =
     barStatus === "error"
       ? "Try again"
       : barStatus === "stopped"
-        ? fileLive
+        ? fileLive || voicesCarryOn
           ? "Continue"
           : `Continue from Part ${playingEntry.no}`
         : resumeFrom != null
@@ -880,6 +1332,15 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
   /** Reading time before each part, as the student will hear it (a recording has the exam's 30 s). */
   const introReadingSeconds = startEntry.part.audio ? EXAM_READING_SECONDS : readingSeconds;
   const resumeRecording = resumeFrom != null && !!startEntry.part.audio && resumeAtMs != null && resumeAtMs > 0;
+  /** Browser voices will continue the part mid-way after the refresh (not from its first line). */
+  const resumeVoices =
+    resumeFrom != null && !!resumeVoice && ((resumeVoice.line ?? 0) > 0 || (!!resumeVoice.at && resumeVoice.at.kind !== "intro"));
+  /** Exam conditions: the playing part can't be heard — offer to go on (skipPart). */
+  const canGoOn = !practice && phase === "playing" && stuck === playingPos;
+  const goOn = nextAfterPart(playingPos, scope.length);
+  const goOnLabel = goOn.kind === "part" ? `Continue with Part ${scope[goOn.pos]?.no ?? playingEntry.no + 1}` : "Go to the answer check";
+  /** Try again can't help a part without a recording in a browser without speech. */
+  const retryUseless = supported === false && !playingEntry.part.audio;
 
   const footer = finished ? null : (
     <>
@@ -1029,11 +1490,15 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
                 <span>
                   {resumeRecording ? (
                     <>Your answers are saved. The recording of Part {startEntry.no} will continue from where it stopped.</>
-                  ) : (
+                  ) : resumeVoices ? (
+                    <>Your answers are saved. Part {startEntry.no} will continue from the sentence where it stopped.</>
+                  ) : practice ? (
                     <>
                       Your answers are saved. The recording can&apos;t pick up mid-sentence, so Part {startEntry.no} will start again
                       from the beginning.
                     </>
+                  ) : (
+                    <>Your answers are saved. Part {startEntry.no} will start from the beginning.</>
                   )}
                 </span>
               </p>
@@ -1143,6 +1608,22 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
           </section>
         )}
 
+        {/* A recording that couldn't be played: browser voices take over */}
+        {!finished && phase === "playing" && !audioError && (recovering === "voices" || playingVoiced) && (
+          <p role="status" className="mb-6 flex items-start gap-2 rounded-xl border border-amber-300/30 bg-amber-400/10 px-3 py-2.5 text-sm text-amber-100">
+            {recovering === "voices" ? (
+              <Loader2 className="mt-0.5 h-4 w-4 shrink-0 text-amber-300 motion-safe:animate-spin" aria-hidden />
+            ) : (
+              <Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" aria-hidden />
+            )}
+            <span>
+              {recovering === "voices"
+                ? `The recording of Part ${playingEntry.no} couldn't be played — switching to your browser's voices…`
+                : `The recording of Part ${playingEntry.no} couldn't be played, so your browser's voices are reading it instead.`}
+            </span>
+          </p>
+        )}
+
         {/* The audio failed while playing */}
         {!finished && phase === "playing" && audioError && (
           <section role="alert" className="error-surface mb-6 rounded-2xl p-4 sm:p-5">
@@ -1152,10 +1633,18 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
                 <p className="font-semibold text-red-200">The audio stopped</p>
                 <p className="mt-0.5 text-sm text-red-100/80">{audioError}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <button type="button" onClick={() => (fileLive ? continueFile() : startPart(playingPos))} disabled={submitting} className={dangerBtn}>
-                    <RotateCcw className="h-4 w-4" aria-hidden />
-                    Try again
-                  </button>
+                  {!retryUseless && (
+                    <button type="button" onClick={() => (fileLive ? continueFile() : retryVoices())} disabled={submitting} className={dangerBtn}>
+                      <RotateCcw className="h-4 w-4" aria-hidden />
+                      Try again
+                    </button>
+                  )}
+                  {canGoOn && (
+                    <button type="button" onClick={skipPart} disabled={submitting} className={secondaryBtn}>
+                      <SkipForward className="h-4 w-4" aria-hidden />
+                      {goOnLabel}
+                    </button>
+                  )}
                   {transcriptAvailable && (
                     <button
                       type="button"
@@ -1169,6 +1658,14 @@ export function ListeningExamRunner(props: ListeningExamRunnerProps) {
                     </button>
                   )}
                 </div>
+                {canGoOn && (
+                  <p className="mt-2 text-xs text-red-100/70">
+                    {goOn.kind === "part"
+                      ? `The next recording plays from the start of Part ${scope[goOn.pos]?.no ?? playingEntry.no + 1}.`
+                      : "The time to check your answers starts, then the test is submitted."}{" "}
+                    You can still answer the Part {playingEntry.no} questions after you go on.
+                  </p>
+                )}
               </div>
             </div>
           </section>

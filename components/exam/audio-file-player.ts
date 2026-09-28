@@ -9,7 +9,9 @@
  * at the file's end or at `endAtMs`. It reports loading / buffering, tells a
  * pause we asked for ("paused") from one the system made — a call, unplugged
  * headphones, another app ("stopped"), and turns load / network failures and
- * long stalls into errors; retry() reloads the element at the same position.
+ * long stalls into errors (onError once per failure); retry() reloads the
+ * element at the same position. What happens after repeated failures is the
+ * runner's call (it hands the part over to browser voices).
  *
  * No React; safe to import during SSR (nothing touches window at import time).
  */
@@ -415,7 +417,9 @@ export class AudioFilePlayer {
   }
 
   private fail(code: FileErrorCode): void {
-    if (this.disposed || this.done) return;
+    // One report per failure: a rejected play() and the element's error event can both describe it
+    // (the runner counts failures to decide when browser voices take over).
+    if (this.disposed || this.done || this.current === "error") return;
     this.capture();
     this.want = false;
     this.errorCode = code;

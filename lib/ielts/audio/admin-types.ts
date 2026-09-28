@@ -38,6 +38,8 @@ export interface TestAudioInfo {
   difficulty: string;
   /** Full 4-part, 40-question paper (used by the mock exam). */
   full: boolean;
+  /** The placement (entry) test's Listening — not in the library; with a recording its script stays off the page. */
+  placement: boolean;
   parts: PartAudioInfo[];
 }
 
@@ -51,6 +53,8 @@ export interface OrphanAudioInfo {
 export interface AudioOverview {
   blobConfigured: boolean;
   openAiConfigured: boolean;
+  /** LISTENING_AUDIO=off: recordings aren't served — students hear browser voices everywhere (lib/ielts/audio/client). */
+  audioOff: boolean;
   voiceModel: string;
   /** The recordings table couldn't be read (e.g. prisma/sql/deploy.sql not applied yet). */
   dbError: string | null;
@@ -69,6 +73,13 @@ export interface AudioOverview {
     /** Measured bytes per second of audio (null until something is rendered). */
     bytesPerSecond: number | null;
   };
+  /**
+   * Recorded Speaking answers in the same Blob store (lib/speaking/recording
+   * speakingStorageUsage): the files still kept, and this month's (UTC) stored
+   * answers — the count SPEAKING_AUDIO_MONTHLY_UPLOADS is checked against. null
+   * when it couldn't be read.
+   */
+  speaking: { bytes: number; files: number; uploadsThisMonth: number; monthlyLimit: number } | null;
   generatedAt: string;
 }
 

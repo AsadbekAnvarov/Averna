@@ -3,9 +3,8 @@ import { requireAdmin } from "@/lib/auth";
 import { guardAi } from "@/lib/engine/ai-guard";
 import { blobConfigured } from "@/lib/storage/blob";
 import { audioAiConfigured } from "@/lib/openai-audio";
-import { getListeningExam } from "@/lib/ielts/catalog";
 import { RenderError } from "@/lib/ielts/audio/render";
-import { StoreError, currentPartInfo, renderAndStore, shortError } from "@/lib/ielts/audio/store";
+import { StoreError, currentPartInfo, renderAndStore, resolveAudioTest, shortError } from "@/lib/ielts/audio/store";
 import type { AudioErrorBody, AudioErrorCode, RenderOk } from "@/lib/ielts/audio/admin-types";
 
 export const dynamic = "force-dynamic";
@@ -29,8 +28,9 @@ const inFlight = new Set<string>();
 
 /**
  * POST { testId, partIndex } — render one part with OpenAI voices, upload it
- * to Vercel Blob and record it. 429 { error, retryAfterSec } when the AI limit
- * (or OpenAI's) is reached: the admin queue waits and carries on by itself.
+ * to Vercel Blob and record it. `testId` is a catalog test or the placement
+ * test's Listening (resolveAudioTest). 429 { error, retryAfterSec } when the AI
+ * limit (or OpenAI's) is reached: the admin queue waits and carries on by itself.
  */
 export async function POST(req: NextRequest) {
   const startedAt = Date.now();
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
   if (!blobConfigured()) return fail(400, "config", "Vercel Blob ulanmagan — BLOB_READ_WRITE_TOKEN sozlanmagan.");
   if (!audioAiConfigured()) return fail(400, "config", "OPENAI_API_KEY sozlanmagan — ovoz yaratib boʻlmaydi.");
 
-  const test = await getListeningExam(testId);
+  const test = await resolveAudioTest(testId);
   if (!test) return fail(404, "not_found", "Test topilmadi (u katalogdan olib tashlangan boʻlishi mumkin).");
   if (test.source === "legacy") return fail(400, "invalid", "Eski qisqa mashq testlari uchun audio yaratilmaydi.");
   if (!test.parts[partIndex]) return fail(400, "invalid", `Bu testda ${partIndex + 1}-qism yoʻq.`);

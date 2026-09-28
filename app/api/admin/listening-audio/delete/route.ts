@@ -13,8 +13,9 @@ function authError(e: unknown) {
 
 /**
  * POST { testId, partIndex? } — delete one part's recording, or all of a
- * test's recordings (also works for tests no longer in the catalog). Students
- * hear browser voices for those parts again.
+ * test's recordings, by test id: catalog tests, the placement test's Listening
+ * and tests no longer in the catalog alike. Students hear browser voices for
+ * those parts again.
  */
 export async function POST(req: NextRequest) {
   try {

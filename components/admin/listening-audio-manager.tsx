@@ -73,6 +73,10 @@ function splitKey(key: string): [string, number] {
 
 const needsAudio = (p: PartAudioInfo) => p.status !== "ready";
 
+/** The placement (entry) test's Listening is listed under its admin name. */
+const PLACEMENT_TITLE = "Kirish testi · Listening";
+const testTitle = (t: TestAudioInfo) => (t.placement ? PLACEMENT_TITLE : t.title);
+
 function sizeText(bytes: number): string {
   if (bytes >= 1024 ** 3) return `${(bytes / 1024 ** 3).toFixed(2)} GB`;
   const mb = bytes / 1024 ** 2;
@@ -251,7 +255,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
   const titleOf = (key: string): string => {
     const [testId, index] = splitKey(key);
     const t = dataRef.current?.tests.find((x) => x.id === testId);
-    return `${t?.title ?? testId} · ${t?.parts[index]?.title ?? `Part ${index + 1}`}`;
+    return `${t ? testTitle(t) : testId} · ${t?.parts[index]?.title ?? `Part ${index + 1}`}`;
   };
 
   const stopQueue = (message: string | null) => {
@@ -546,7 +550,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
   const visible: TestAudioInfo[] = useMemo(() => {
     const q = query.trim().toLowerCase();
     return (data?.tests ?? []).filter((t) => {
-      if (q && !t.title.toLowerCase().includes(q) && !t.id.toLowerCase().includes(q)) return false;
+      if (q && !testTitle(t).toLowerCase().includes(q) && !t.title.toLowerCase().includes(q) && !t.id.toLowerCase().includes(q)) return false;
       if (filter === "todo") return t.parts.some(needsAudio);
       if (filter === "ready") return t.parts.length > 0 && t.parts.every((p) => p.status === "ready");
       return true;
@@ -560,8 +564,11 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
   const pct = progress.total ? Math.round(((progress.done + progress.failed) / progress.total) * 100) : 0;
   const bps = totals.bytesPerSecond ?? DEFAULT_BYTES_PER_SECOND;
   const fullTestBytes = FULL_TEST_MINUTES * 60 * bps;
-  const usedPct = Math.min(100, (totals.bytes / HOBBY_BLOB_BYTES) * 100);
-  const fits = Math.max(0, Math.floor((HOBBY_BLOB_BYTES - totals.bytes) / fullTestBytes));
+  // Recorded Speaking answers share the store (and its 1 GB).
+  const speaking = data?.speaking ?? null;
+  const usedBytes = totals.bytes + (speaking?.bytes ?? 0);
+  const usedPct = Math.min(100, (usedBytes / HOBBY_BLOB_BYTES) * 100);
+  const fits = Math.max(0, Math.floor((HOBBY_BLOB_BYTES - usedBytes) / fullTestBytes));
 
   // ---------------------------------------------------------------------------
 
@@ -609,6 +616,19 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
         <div role="alert" className="flex items-start gap-3 rounded-xl border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-200">
           <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-300" aria-hidden />
           <p className="min-w-0 flex-1">{loadError}</p>
+        </div>
+      )}
+
+      {data.audioOff && (
+        <div role="status" className="flex items-start gap-3 rounded-xl border border-amber-400/40 bg-amber-400/10 p-4">
+          <Pause className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden />
+          <div className="min-w-0">
+            <p className="font-semibold text-amber-200">Tayyor yozuvlar oʻquvchilarga eshittirilmayapti (LISTENING_AUDIO=off)</p>
+            <p className="mt-1 text-sm text-amber-100/80">
+              Amaliyotda, mock imtihonda va kirish testida barcha qismlar brauzer ovozida oʻqiladi. Yozuvlar oʻchirilmagan — ularni qayta
+              yoqish uchun LISTENING_AUDIO oʻzgaruvchisini olib tashlang va loyihani qayta deploy qiling.
+            </p>
+          </div>
         </div>
       )}
 
@@ -670,8 +690,9 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
           <div className="space-y-1.5">
             <div className="flex flex-wrap items-baseline justify-between gap-2 text-xs text-gray-400">
               <span>
-                Xotira: <span className="font-semibold tabular-nums text-white">{sizeText(totals.bytes)}</span> / 1 GB (Vercel Hobby) ·{" "}
-                {totals.files} ta fayl
+                Xotira: <span className="font-semibold tabular-nums text-white">{sizeText(usedBytes)}</span> / 1 GB (Vercel Hobby) ·
+                Listening {sizeText(totals.bytes)} ({totals.files} ta fayl)
+                {speaking ? ` · Speaking yozuvlari ${sizeText(speaking.bytes)} (${speaking.files} ta fayl)` : ""}
               </span>
               <span>Tayyor audio: {clockText(totals.readyMs)}</span>
             </div>
@@ -681,7 +702,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
               aria-valuemin={0}
               aria-valuemax={100}
               aria-valuenow={Math.round(usedPct)}
-              aria-valuetext={`${sizeText(totals.bytes)} / 1 GB`}
+              aria-valuetext={`${sizeText(usedBytes)} / 1 GB`}
               className="h-2 overflow-hidden rounded-full bg-white/10"
             >
               <div
@@ -695,6 +716,14 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
             {usedPct > 80 && (
               <p className="text-xs text-amber-200">
                 Xotira deyarli toʻldi — keraksiz yozuvlarni oʻchiring yoki Vercel tarifini oshiring.
+              </p>
+            )}
+            {speaking && (
+              <p className="text-xs text-gray-400">
+                Bu oy saqlangan Speaking javoblari:{" "}
+                <span className="font-semibold tabular-nums text-white">{speaking.uploadsThisMonth}</span>
+                {speaking.monthlyLimit > 0 ? ` / ${speaking.monthlyLimit}` : ""} (Hobby: oyiga 2 000 ta yuklash; chegaradan keyin javoblar
+                matn sifatida saqlanadi, audio saqlanmaydi).
               </p>
             )}
           </div>
@@ -894,15 +923,22 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
             const ms = t.parts.reduce((n, p) => n + (p.status === "ready" ? p.durationMs : 0), 0);
             const hasFiles = t.parts.some((p) => p.url || p.status === "failed");
             const queuedHere = todo.some((p) => jobs[keyOf(t.id, p.index)]);
+            const title = testTitle(t);
             return (
               <li key={t.id}>
-                <Card className="glass border-white/10">
+                <Card className={cn("glass", t.placement ? "border-averna-purple/30" : "border-white/10")}>
                   <CardContent className="p-4 sm:p-5">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <h3 className="font-semibold text-white">{t.title}</h3>
+                        <h3 className="font-semibold text-white">{title}</h3>
                         <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-400">
-                          <span>{t.source === "averna" ? "Averna" : "AI yaratgan"}</span>
+                          {t.placement ? (
+                            <span className="rounded-full border border-averna-purple/40 bg-averna-purple/10 px-2 py-0.5 text-[10px] font-semibold text-averna-purple">
+                              Kirish testi
+                            </span>
+                          ) : (
+                            <span>{t.source === "averna" ? "Averna" : "AI yaratgan"}</span>
+                          )}
                           <span aria-hidden>·</span>
                           <span>{t.difficulty}</span>
                           {t.full && (
@@ -924,6 +960,11 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
                             </>
                           )}
                         </p>
+                        {t.placement && (
+                          <p className="mt-1.5 max-w-xl text-xs leading-relaxed text-gray-400">
+                            Kirish testida oʻquvchilar shu yozuvni eshitadi. Yozuv tayyor boʻlsa, javoblar yozilgan skript brauzerga yuborilmaydi.
+                          </p>
+                        )}
                       </div>
                       <div className="flex flex-wrap gap-2">
                         <Button
@@ -941,7 +982,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
                             type="button"
                             size="sm"
                             onClick={() =>
-                              void removeParts(t.id, null, `“${t.title}” testining barcha audiolari oʻchirilsinmi?\n\nOʻquvchilar bu testda yana brauzer ovozini eshitadi.`)
+                              void removeParts(t.id, null, `“${title}” testining barcha audiolari oʻchirilsinmi?\n\nOʻquvchilar bu testda yana brauzer ovozini eshitadi.`)
                             }
                             disabled={!!deleting[t.id] || t.parts.some((p) => jobs[keyOf(t.id, p.index)] === "rendering")}
                             className={BTN_DANGER}
@@ -982,7 +1023,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
                                   src={p.url}
                                   data-la-player=""
                                   onPlay={pauseOtherPlayers}
-                                  aria-label={`${t.title}, ${p.title}: yozuvni tinglash`}
+                                  aria-label={`${title}, ${p.title}: yozuvni tinglash`}
                                   className="h-9 w-full min-w-0 sm:w-60"
                                 />
                               )}
@@ -992,11 +1033,11 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
                                   size="sm"
                                   onClick={() => {
                                     // A current recording costs money to redo — ask first.
-                                    if (p.status === "ready" && !window.confirm(`“${t.title}” — ${p.title} tayyor. Qayta yaratilsinmi?`)) return;
+                                    if (p.status === "ready" && !window.confirm(`“${title}” — ${p.title} tayyor. Qayta yaratilsinmi?`)) return;
                                     queueParts([k]);
                                   }}
                                   disabled={!canRender || !!job}
-                                  aria-label={`${t.title}, ${p.title}: ${again ? "qayta yaratish" : "audio yaratish"}`}
+                                  aria-label={`${title}, ${p.title}: ${again ? "qayta yaratish" : "audio yaratish"}`}
                                   className={cn("h-9", p.status === "stale" ? BTN_PRIMARY : BTN_OUTLINE)}
                                 >
                                   <RefreshCw className="mr-1.5 h-3.5 w-3.5" aria-hidden />
@@ -1007,10 +1048,10 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
                                     type="button"
                                     size="sm"
                                     onClick={() =>
-                                      void removeParts(t.id, p.index, `“${t.title}” — ${p.title} audiosi oʻchirilsinmi?\n\nOʻquvchilar bu qismda yana brauzer ovozini eshitadi.`)
+                                      void removeParts(t.id, p.index, `“${title}” — ${p.title} audiosi oʻchirilsinmi?\n\nOʻquvchilar bu qismda yana brauzer ovozini eshitadi.`)
                                     }
                                     disabled={!!deleting[k] || !!deleting[t.id] || job === "rendering"}
-                                    aria-label={`${t.title}, ${p.title}: audioni oʻchirish`}
+                                    aria-label={`${title}, ${p.title}: audioni oʻchirish`}
                                     title="Oʻchirish"
                                     className={cn(BTN_DANGER, "h-9 w-9 p-0")}
                                   >
