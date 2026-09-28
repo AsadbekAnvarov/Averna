@@ -2,7 +2,7 @@
 
 /**
  * Admin → Telegram (Uzbek UI): configuration and bot status, linked chats,
- * "Webhookni oʻrnatish", "Test xabar yuborish" and the setup steps.
+ * daily runs, "Webhookni oʻrnatish" and "Test xabar yuborish".
  * Talks to /api/admin/telegram.
  */
 
@@ -319,12 +319,6 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
             )}
           </p>
           <p>
-            Manzil <Code>NEXTAUTH_URL</Code> dan olinadi (u boʻlmasa — Vercel production domeni). Bu domen soʻrovga toʻgʻridan-toʻgʻri
-            javob berishi kerak: Telegram yoʻnaltirishga (redirect, masalan <Code>averna.uz</Code> → <Code>www.averna.uz</Code>)
-            ergashmaydi. Domen yoʻnaltirsa, <Code>NEXTAUTH_URL</Code> ga oxirgi manzilni yozing, redeploy qiling va webhookni qayta
-            oʻrnating.
-          </p>
-          <p>
             Test xabar sizning Telegramʼingizga boradi
             {me.linked ? (
               me.username ? ` (@${me.username})` : ""
@@ -341,58 +335,6 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
             .
           </p>
         </div>
-      </section>
-
-      {/* Setup */}
-      <section className="glass rounded-2xl border border-white/10 p-5">
-        <h2 className="mb-4 text-lg font-bold text-white">Sozlash bosqichlari</h2>
-        <ol className="list-decimal space-y-3 pl-5 text-sm text-gray-300 marker:text-averna-cyan">
-          <li>
-            Telegramʼda <b>@BotFather</b> ni oching → <Code>/newbot</Code> → botga nom va username bering (username <Code>bot</Code> bilan
-            tugaydi). BotFather sizga <b>token</b> beradi.
-          </li>
-          <li>
-            Bot guruhlarga qoʻshilmasin: <b>@BotFather</b> → <Code>/setjoingroups</Code> → botingizni tanlang → <b>Disable</b>.
-            Hisobotlar faqat shaxsiy chatlarga boradi, guruhlardagi xabarlarga bot javob bermaydi.
-          </li>
-          <li>
-            Vercel → Project → Settings → Environment Variables:
-            <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>
-                <Code>TELEGRAM_BOT_TOKEN</Code> — BotFather bergan token
-              </li>
-              <li>
-                <Code>TELEGRAM_BOT_USERNAME</Code> — bot username, @ belgisisiz (masalan <Code>AvernaSchoolBot</Code>)
-              </li>
-              <li>
-                <Code>TELEGRAM_WEBHOOK_SECRET</Code> — 16+ belgi, faqat A–Z, a–z, 0–9, _ va - (masalan <Code>openssl rand -hex 32</Code>)
-              </li>
-              <li>
-                <Code>CRON_SECRET</Code> — istalgan tasodifiy satr (16+ belgi): har kuni kechqurun (taxminan 19:00 da) yuboriladigan
-                xabarlar uchun
-              </li>
-            </ul>
-            <p className="mt-2 text-xs text-gray-400">Ikkala Vercel loyihasiga ham aynan bir xil qiymatlarni kiriting — bitta bot, bitta baza.</p>
-          </li>
-          <li>Redeploy qiling — oʻzgaruvchilar faqat yangi deploydan keyin ishlaydi.</li>
-          <li>
-            Shu sahifani saytning production domenida oching va <b>Webhookni oʻrnatish</b> tugmasini bosing (preview deploymentʼda bu
-            tugma ishlamaydi). Webhook <Code>NEXTAUTH_URL</Code> domeniga (u boʻlmasa, Vercel production domeniga) oʻrnatiladi — bu
-            domen redirectsiz javob berishi kerak. Botning «/» buyruqlar menyusi ham shu tugma bilan yangilanadi, shuning uchun yangi
-            deploydan keyin uni yana bir marta bosing.
-          </li>
-          <li>
-            <Link href="/settings" className="text-averna-cyan hover:underline">
-              Settings → Telegram
-            </Link>{" "}
-            → <b>Connect Telegram</b> orqali oʻz Telegramʼingizni ulang va <b>Test xabar yuborish</b> ni bosing.
-          </li>
-          <li>
-            Ota-onalar: oʻqituvchi (yoki admin) oʻquvchining <b>Parent report</b> sahifasida taklif havolasini yaratib, ota-onaga yuboradi.
-            Oʻsha yerda ulangan ota-onalar roʻyxati ham bor — notoʻgʻri odamga tushgan ulanishni <b>Remove</b> bilan oʻchirish mumkin; ota-ona
-            esa botga <Code>/disconnect</Code> yuborib oʻzi uzilishi mumkin.
-          </li>
-        </ol>
       </section>
     </div>
   );

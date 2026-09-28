@@ -12,8 +12,8 @@ import { PageHeader } from "@/components/ui/page-header";
 import { TelegramPanel } from "@/components/admin/telegram-panel";
 
 /**
- * Admin → Telegram: the Averna bot's configuration, webhook and linked chats,
- * plus the setup steps (BotFather → Vercel env vars → redeploy → webhook).
+ * Admin → Telegram: the Averna bot's configuration, webhook, linked chats and
+ * daily runs. (Setup is documented in .env.example.)
  */
 export default async function AdminTelegramPage() {
   const session = await auth();
