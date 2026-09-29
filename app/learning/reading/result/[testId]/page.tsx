@@ -236,7 +236,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
             <div className="flex items-center gap-2 text-averna-cyan">
               <BookOpen className="h-5 w-5" />
               <h2 className="text-xl font-semibold">Question Review</h2>
-              <span className="text-xs text-gray-500 ml-2">Read the "Why" note under each incorrect answer to learn from it.</span>
+              <span className="text-xs text-gray-500 ml-2">Read the “Why” note under each incorrect answer to learn from it.</span>
             </div>
             {testData.passages.map((p, pIdx) => {
               let qNum = 0;

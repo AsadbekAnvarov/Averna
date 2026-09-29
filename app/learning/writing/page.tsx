@@ -220,7 +220,7 @@ export default async function WritingPage() {
                 </ul>
               </div>
               <div className="space-y-3">
-                <h4 className="font-semibold text-white">You'll Receive:</h4>
+                <h4 className="font-semibold text-white">You’ll Receive:</h4>
                 <ul className="space-y-2 text-sm text-gray-300">
                   <li className="flex items-start gap-2">
                     <span className="text-purple-400">🎯</span>

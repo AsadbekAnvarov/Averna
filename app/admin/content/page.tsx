@@ -22,14 +22,14 @@ async function addMaterial(formData: FormData) {
   if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
 
   const title = (formData.get("title") as string)?.trim();
-  const module = (formData.get("module") as string) || "GENERAL";
+  const moduleName = (formData.get("module") as string) || "GENERAL";
   const level = (formData.get("level") as string) || "All";
   const description = (formData.get("description") as string)?.trim();
   const url = (formData.get("url") as string)?.trim();
   if (!title) return;
 
   await db.studyMaterial.create({
-    data: { title, module, level, description: description || null, url: url || null },
+    data: { title, module: moduleName, level, description: description || null, url: url || null },
   });
   revalidatePath("/admin/content");
   redirect("/admin/content?saved=material");

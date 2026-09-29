@@ -30,15 +30,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Provide a 'topic' for the test." }, { status: 400 });
     }
 
-    const module = (typeof body.module === "string" ? body.module : "reading").toLowerCase();
+    const kind = (typeof body.module === "string" ? body.module : "reading").toLowerCase();
     const count = typeof body.count === "number" ? body.count : undefined;
 
-    if (module === "speaking") {
+    if (kind === "speaking") {
       const test = await generateSpeakingTest({ topic });
       return NextResponse.json({ ok: true, module: "speaking", test });
     }
 
-    if (module === "writing-task1") {
+    if (kind === "writing-task1") {
       const ct = body.chartType;
       const test = await generateWritingTask1({
         topic,
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true, module: "writing-task1", test });
     }
 
-    if (module === "writing") {
+    if (kind === "writing") {
       const test = await generateWritingPrompt({
         topic,
         essayType: typeof body.level === "string" && body.level.trim() ? body.level.trim() : undefined,
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true, module: "writing", test });
     }
 
-    if (module === "listening") {
+    if (kind === "listening") {
       const test = await generateListeningTest({
         topic,
         difficulty:

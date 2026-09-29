@@ -6,17 +6,18 @@ import { getGlobalRankings, getGroupRankings } from "@/lib/db-helpers";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Users, Crown } from "lucide-react";
-import { initialsOf } from "@/lib/utils";
+import { Avatar } from "@/components/ui/avatar";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-function Podium({ top, currentUserId }: { top: any[]; currentUserId: string }) {
+type Ranked = Awaited<ReturnType<typeof getGlobalRankings>>[number];
+
+function Podium({ top, currentUserId }: { top: Ranked[]; currentUserId: string }) {
   if (!top || top.length === 0) return null;
   const [first, second, third] = top;
   const slots = [
     { s: second, place: 2, h: "h-16 sm:h-20", ring: "ring-gray-300", grad: "from-gray-300/25", medal: "🥈", accent: "text-gray-200" },
     { s: first, place: 1, h: "h-24 sm:h-28", ring: "ring-yellow-400", grad: "from-yellow-400/30", medal: "🥇", accent: "text-yellow-400", crown: true },
     { s: third, place: 3, h: "h-12 sm:h-16", ring: "ring-orange-400", grad: "from-orange-400/25", medal: "🥉", accent: "text-orange-400" },
-  ].filter((x) => x.s);
+  ].filter((x): x is typeof x & { s: Ranked } => !!x.s);
 
   return (
     <Card className="glass border-yellow-500/30 mb-6 overflow-hidden">
@@ -28,11 +29,11 @@ function Podium({ top, currentUserId }: { top: any[]; currentUserId: string }) {
               <div key={slot.place} className="flex flex-col items-center flex-1 max-w-[150px]">
                 {slot.crown && <Crown className="h-5 w-5 text-yellow-400 mb-1 animate-float" />}
                 <div
-                  className={`relative h-14 w-14 sm:h-16 sm:w-16 rounded-full grid place-items-center bg-averna-dark ring-2 ${slot.ring} ${
+                  className={`relative h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-averna-dark ring-2 ${slot.ring} ${
                     isMe ? "shadow-[0_0_20px_-4px_rgba(0,255,148,0.7)]" : ""
                   }`}
                 >
-                  <span className="text-white font-bold text-base sm:text-lg">{initialsOf(slot.s.user?.name)}</span>
+                  <Avatar name={slot.s.user?.name} image={slot.s.user?.image} className="h-full w-full" fallbackClassName="text-white text-base sm:text-lg" />
                   <span className="absolute -bottom-1.5 -right-1.5 text-lg">{slot.medal}</span>
                 </div>
                 <p className={`mt-2 text-xs sm:text-sm font-semibold truncate w-full text-center ${isMe ? "text-averna-neon" : "text-white"}`}>

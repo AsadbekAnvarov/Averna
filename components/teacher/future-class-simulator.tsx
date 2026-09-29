@@ -79,7 +79,7 @@ export function FutureClassSimulator({ groups }: { groups: GroupBrief[] }) {
         <CardTitle className="flex items-center gap-2 text-averna-pink">
           <FlaskConical className="h-5 w-5" /> Future Class Simulator
         </CardTitle>
-        <p className="text-xs text-gray-400">Preview tomorrow's lesson before it happens</p>
+        <p className="text-xs text-gray-400">Preview tomorrow’s lesson before it happens</p>
       </CardHeader>
       <CardContent className="space-y-4">
         {groups.length === 0 ? (

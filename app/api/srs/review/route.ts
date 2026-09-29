@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
     if (!student) return NextResponse.json({ error: "Student profile not found" }, { status: 404 });
 
     const body = await req.json();
-    const raw = Array.isArray(body?.reviews) ? body.reviews.slice(0, MAX_BATCH) : [body];
+    const raw: unknown[] = Array.isArray(body?.reviews) ? body.reviews.slice(0, MAX_BATCH) : [body];
     const reviews = raw.map(parseReview).filter((r): r is ReviewInput => r !== null);
     if (reviews.length === 0) {
       return NextResponse.json({ error: "Invalid review" }, { status: 400 });

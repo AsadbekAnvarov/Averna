@@ -1945,7 +1945,6 @@ export function ExamBulkGenerator({ canManage = true }: { canManage?: boolean })
     return { drafts, steps, done, total };
   }, [rows]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const run: { done: number; total: number; finished: number; failed: number; members: number } = useMemo(() => {
     let done = 0;
     let total = 0;
@@ -1971,6 +1970,8 @@ export function ExamBulkGenerator({ canManage = true }: { canManage?: boolean })
       }
     });
     return { done, total, finished, failed, members };
+    // Reads refs: `version` is bumped whenever they change, so it is the real dependency.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [version]);
 
   const current = stats[skill];

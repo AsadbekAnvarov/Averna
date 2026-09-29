@@ -163,7 +163,7 @@ export async function resolveExamContent(raw: {
 }): Promise<ResolveResult> {
   const kind = raw.contentKind;
   if (!isExamHomeworkKind(kind)) return { ok: false, error: "Choose what kind of test to set." };
-  const module = MODULE_FOR_KIND[kind];
+  const skillModule = MODULE_FOR_KIND[kind];
   const part = cleanPart(raw.contentPart);
   if (part === "invalid") return { ok: false, error: "That passage / part doesn't exist." };
 
@@ -197,7 +197,7 @@ export async function resolveExamContent(raw: {
         contentId: test.id,
         contentPart: p,
         contentTitle: contentTitle.slice(0, 300),
-        module,
+        module: skillModule,
         title: suggestedTitle(kind, { title: test.title, scope }),
         description:
           `${EXAM_KIND_INFO[kind].label} homework: ${what}. ${plural(questions, "question")}, ${kind === "LISTENING" ? "about " : ""}${plural(minutes, "minute")}. ` +
@@ -223,7 +223,7 @@ export async function resolveExamContent(raw: {
         contentId: prompt.id,
         contentPart: null,
         contentTitle: prompt.title.slice(0, 300),
-        module,
+        module: skillModule,
         title: suggestedTitle(kind, { title: prompt.title }),
         description:
           `${EXAM_KIND_INFO[kind].label}: “${prompt.title}”. Write at least ${spec.words} words in ${spec.minutes} minutes. ` +
@@ -252,7 +252,7 @@ export async function resolveExamContent(raw: {
         contentId: writingExamContentId(t1.id, t2.id),
         contentPart: null,
         contentTitle: `${t1.title} + ${t2.title}`.slice(0, 300),
-        module,
+        module: skillModule,
         title: suggestedTitle(kind, { title: t1.title, second: t2.title }),
         description:
           `Full Writing test in ${WRITING_TASK.examMinutes} minutes: Task 1 “${t1.title}” (at least ${WRITING_TASK.task1.words} words) ` +
@@ -275,7 +275,7 @@ export async function resolveExamContent(raw: {
       contentId: set.id,
       contentPart: null,
       contentTitle: set.title.slice(0, 300),
-      module,
+      module: skillModule,
       title: suggestedTitle(kind, { title: set.title }),
       description:
         `Speaking test “${set.title}”: Parts 1–3, about ${SPEAKING_MINUTES} minutes. Find a quiet place and record your answers. ` +

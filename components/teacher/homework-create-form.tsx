@@ -485,7 +485,7 @@ export function HomeworkCreateForm({
                 ))}
               </select>
               {mode === "library" && selection && (selection.kind === "READING" || selection.kind === "LISTENING") && !difficultyEdited && (
-                <p className="text-xs text-gray-500">Suggested from the test's level ({selection.item.difficulty}).</p>
+                <p className="text-xs text-gray-500">Suggested from the test’s level ({selection.item.difficulty}).</p>
               )}
             </div>
           </div>

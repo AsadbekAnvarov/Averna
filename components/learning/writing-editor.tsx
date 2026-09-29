@@ -288,7 +288,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
                   <div className="flex items-center gap-2 text-yellow-400">
                     <Clock className="h-5 w-5" />
                     <p className="text-sm">
-                      Time's up! You can still submit your essay for review.
+                      Time’s up! You can still submit your essay for review.
                     </p>
                   </div>
                 </CardContent>

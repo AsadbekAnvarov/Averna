@@ -61,14 +61,12 @@ export default async function ParentReportPage({ params }: { params: { studentId
           <Link href="/teacher/students" className="text-averna-neon hover:underline text-sm">← Back to Students</Link>
           {/* Teaching strategy lives on its own page: this report is written to be
               shared with parents, so professional diagnostics stay out of it. */}
-          {session.user.role !== "STUDENT" && (
-            <Link
-              href={`/teacher/learning-dna/${student.id}`}
-              className="text-averna-purple hover:underline text-sm inline-flex items-center gap-1.5"
-            >
-              <Brain className="h-4 w-4" /> How this student learns
-            </Link>
-          )}
+          <Link
+            href={`/teacher/learning-dna/${student.id}`}
+            className="text-averna-purple hover:underline text-sm inline-flex items-center gap-1.5"
+          >
+            <Brain className="h-4 w-4" /> How this student learns
+          </Link>
         </div>
 
         {/* Report header */}

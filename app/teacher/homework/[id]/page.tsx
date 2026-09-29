@@ -292,7 +292,7 @@ export default async function TeacherHomeworkDetailPage({ params }: { params: { 
           </div>
           {info && <p className="mt-2 text-sm text-gray-200">{info.contentTitle}</p>}
           {info && !info.available && (
-            <p className="mt-2 text-xs text-amber-300">This content is no longer in the library — students can't start it any more.</p>
+            <p className="mt-2 text-xs text-amber-300">This content is no longer in the library — students can’t start it any more.</p>
           )}
           <details className="mt-3 text-sm">
             <summary className="cursor-pointer text-averna-cyan hover:underline">Instructions students see</summary>

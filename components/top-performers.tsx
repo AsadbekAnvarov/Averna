@@ -1,38 +1,20 @@
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getLevelInfo, initialsOf } from "@/lib/utils";
+import { getLevelInfo } from "@/lib/utils";
 import { Trophy, GraduationCap } from "lucide-react";
-import { avatarSrc } from "@/lib/avatars";
+import { Avatar as UserAvatar } from "@/components/ui/avatar";
 
 const MEDALS = ["🥇", "🥈", "🥉"];
 
-function Avatar({
-  name,
-  image: rawImage,
-  ring,
-}: {
-  name: string | null;
-  image: string | null;
-  ring: string;
-}) {
-  const initials = initialsOf(name);
-  const image = avatarSrc(rawImage);
-  if (image) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return (
-      <img
-        src={image}
-        alt={name ?? "user"}
-        className={`h-14 w-14 rounded-full object-cover border-2 ${ring}`}
-      />
-    );
-  }
+function Avatar({ name, image, ring }: { name: string | null; image: string | null; ring: string }) {
   return (
-    <div
-      className={`h-14 w-14 rounded-full flex items-center justify-center font-bold text-white bg-averna-primary/40 border-2 ${ring}`}
-    >
-      {initials}
-    </div>
+    <UserAvatar
+      name={name}
+      image={image}
+      alt={name ?? "user"}
+      className={`h-14 w-14 border-2 ${ring}`}
+      fallbackClassName="text-white bg-averna-primary/40 h-full w-full grid place-items-center"
+    />
   );
 }
 

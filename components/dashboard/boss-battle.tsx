@@ -97,9 +97,10 @@ export function BossBattle() {
       /* ignore */
     }
     setLoaded(true);
+    const pending = timers.current; // the same array for the component's whole life
     return () => {
       mounted.current = false;
-      timers.current.forEach(clearTimeout);
+      pending.forEach(clearTimeout);
     };
   }, []);
 

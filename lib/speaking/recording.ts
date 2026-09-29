@@ -883,7 +883,7 @@ async function writeTake(o: {
   where: { studentId_attemptKey_questionIndex: { studentId: string; attemptKey: string; questionIndex: number } };
   key: { studentId: string; attemptKey: string; questionIndex: number };
   /** The take's columns, metrics aside. */
-  data: Record<string, unknown>;
+  data: Omit<Prisma.SpeakingRecordingUncheckedCreateInput, "id" | "studentId" | "attemptKey" | "questionIndex" | "metrics">;
   /** The take's metrics, the counters aside. */
   metrics: Record<string, unknown>;
   /** This take's audio file was uploaded (counted in putsInMonth). */

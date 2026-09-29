@@ -68,10 +68,10 @@ export function GraduationCeremony(props: Props) {
             {target == null ? (
               <>Set a target band and your graduation goal will appear here.</>
             ) : current == null ? (
-              <>Take a few tests and I'll track your journey to your Band {target.toFixed(1)} graduation.</>
+              <>Take a few tests and I’ll track your journey to your Band {target.toFixed(1)} graduation.</>
             ) : (
               <>
-                You're at <span className="text-white font-semibold">Band {current.toFixed(1)}</span> — just{" "}
+                You’re at <span className="text-white font-semibold">Band {current.toFixed(1)}</span> — just{" "}
                 <span className="text-averna-neon font-semibold">{toGo?.toFixed(1)}</span> to your Band {target.toFixed(1)} graduation. Keep going. 🎓
               </>
             )}
