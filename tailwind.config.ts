@@ -1,4 +1,25 @@
 import type { Config } from "tailwindcss";
+import themeTokens from "./lib/theme-tokens.json";
+
+/**
+ * Theme-aware colours: `white`, the grey scale, the bright accent shades and the
+ * brand colours resolve to CSS variables whose values switch with the theme
+ * (see lib/theme-tokens.json and scripts/theme-tokens.mjs). Opacity modifiers
+ * (`bg-white/5`, `ring-averna-neon/40` …) keep working through <alpha-value>.
+ */
+type Palette = Record<string, string | Record<string, string>>;
+const tokenColors = (themeTokens.tokens as [string, string, string][]).reduce<Palette>((out, [name]) => {
+  const value = `rgb(var(--c-${name}) / <alpha-value>)`;
+  if (name === "white") out.white = value;
+  else {
+    const [family, ...rest] = name.split("-");
+    const shade = rest.join("-");
+    const group = (out[family] as Record<string, string> | undefined) ?? {};
+    group[shade] = value;
+    out[family] = group;
+  }
+  return out;
+}, {});
 
 const config: Config = {
   darkMode: ["class"],
@@ -22,18 +43,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Averna Brand Colors - Neon Tech Theme
-        averna: {
-          primary: "#0B8F6A", // brighter brand green (less swampy)
-          light: "#14B583",
-          neon: "#00FF94", // neon green
-          dark: "#04110D",
-          accent: "#0FD6A6",
-          cyan: "#00E5FF", // neon cyan
-          purple: "#B14EFF", // neon purple
-          pink: "#FF3DBb", // neon pink/magenta
-          blue: "#2E8BFF",
-        },
+        // white, grey, bright accent shades and the Averna brand colours
+        // (neon green, cyan, purple, pink …) — dark/light values in lib/theme-tokens.json.
+        ...tokenColors,
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

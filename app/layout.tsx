@@ -7,6 +7,7 @@ import { CommandPalette } from "@/components/command-palette";
 import { LiveNotifications } from "@/components/live-notifications";
 import { AppShell } from "@/components/layout/app-sidebar";
 import { GFX_TIER_SCRIPT } from "@/components/motion/gfx-tier";
+import { THEME_SCRIPT } from "@/components/theme/theme-script";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -68,12 +69,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // suppressHydrationWarning: the <head> script sets html[data-gfx] (and the theme can switch
-    // the class) before React hydrates, so <html>'s attributes legitimately differ from the server HTML.
+    // suppressHydrationWarning: the <head> scripts set html[data-gfx] and the saved theme class
+    // before React hydrates, so <html>'s attributes legitimately differ from the server HTML.
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         {/* Graphics tier (html[data-gfx]) before first paint — components/motion/gfx-tier.ts */}
         <script dangerouslySetInnerHTML={{ __html: GFX_TIER_SCRIPT }} />
+        {/* Saved light/dark theme before first paint (no dark flash) — components/theme/theme-script.ts */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body className={inter.className}>
         <Providers>
