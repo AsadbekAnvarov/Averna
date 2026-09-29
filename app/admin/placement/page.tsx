@@ -85,7 +85,7 @@ export default async function AdminPlacementPage({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-7xl px-4 py-8 pb-24 lg:pb-8">
+      <div className="container mx-auto max-w-7xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
@@ -218,7 +218,13 @@ export default async function AdminPlacementPage({
               {filtered ? "Filtrga mos natija topilmadi." : "Hozircha hech kim daraja aniqlash testini topshirmagan."}
             </p>
           ) : (
-            <div className="overflow-x-auto">
+            <>
+            <ul className="divide-y divide-white/5 md:hidden" aria-label="Daraja aniqlash testi natijalari">
+              {rows.map((r) => (
+                <ResultCard key={r.attemptId} row={r} />
+              ))}
+            </ul>
+            <div className="hidden overflow-x-auto md:block">
               <table className="w-full min-w-[1240px] border-collapse text-left text-sm">
                 <caption className="sr-only">Daraja aniqlash testi natijalari va urinishlari, eng yangisi birinchi</caption>
                 <thead>
@@ -245,6 +251,7 @@ export default async function AdminPlacementPage({
                 </tbody>
               </table>
             </div>
+            </>
           )}
         </section>
       </div>
@@ -322,35 +329,104 @@ function ResultRow({ row }: { row: AdminPlacementRow }) {
         )}
       </td>
       <td className="px-4 py-3">
-        {row.status === "active" ? (
-          <span className="text-xs text-gray-500">—</span>
-        ) : !row.counts ? (
-          <span className="text-xs text-gray-500">Hisobga olinmaydi</span>
-        ) : !row.latest ? (
-          <span className="text-xs text-gray-500">{row.status === "finished" ? "Oldingi natija" : "Oldingi urinish"}</span>
-        ) : row.retake.override ? (
-          <span className="inline-flex items-center gap-1 text-xs text-averna-neon">
-            <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
-            Ruxsat berilgan
-          </span>
-        ) : row.retake.allowed ? (
-          <span className="text-xs text-gray-300">{RETAKE_DAYS} kun oʻtdi — topshira oladi</span>
-        ) : (
-          <form action={allowRetake} className="space-y-1">
-            <input type="hidden" name="studentId" value={row.studentId} />
-            <input type="hidden" name="studentName" value={row.name} />
-            <ConfirmButton
-              message={`${row.name}ga daraja aniqlash testini hozir qayta topshirishga ruxsat berasizmi? Yangi natija uning darajasini yangilaydi.`}
-              title="Qayta topshirishga ruxsat berish"
-              className="rounded-md border border-averna-cyan/40 px-2.5 py-1.5 text-xs font-semibold text-averna-cyan hover:bg-averna-cyan/10"
-            >
-              <RotateCcw className="h-3.5 w-3.5" aria-hidden />
-              Qayta topshirishga ruxsat berish
-            </ConfirmButton>
-            {row.retake.nextAt && <p className="text-[11px] text-gray-500">Aks holda {uzDate(row.retake.nextAt)} dan</p>}
-          </form>
-        )}
+        <RetakeCell row={row} />
       </td>
     </tr>
+  );
+}
+
+/** Retake status / "allow a retake" action — shared by the table row and the phone card. */
+function RetakeCell({ row }: { row: AdminPlacementRow }) {
+  return (
+    <>
+      {row.status === "active" ? (
+        <span className="text-xs text-gray-500">—</span>
+      ) : !row.counts ? (
+        <span className="text-xs text-gray-500">Hisobga olinmaydi</span>
+      ) : !row.latest ? (
+        <span className="text-xs text-gray-500">{row.status === "finished" ? "Oldingi natija" : "Oldingi urinish"}</span>
+      ) : row.retake.override ? (
+        <span className="inline-flex items-center gap-1 text-xs text-averna-neon">
+          <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
+          Ruxsat berilgan
+        </span>
+      ) : row.retake.allowed ? (
+        <span className="text-xs text-gray-300">{RETAKE_DAYS} kun oʻtdi — topshira oladi</span>
+      ) : (
+        <form action={allowRetake} className="space-y-1">
+          <input type="hidden" name="studentId" value={row.studentId} />
+          <input type="hidden" name="studentName" value={row.name} />
+          <ConfirmButton
+            message={`${row.name}ga daraja aniqlash testini hozir qayta topshirishga ruxsat berasizmi? Yangi natija uning darajasini yangilaydi.`}
+            title="Qayta topshirishga ruxsat berish"
+            className="rounded-md border border-averna-cyan/40 px-2.5 py-1.5 text-xs font-semibold text-averna-cyan hover:bg-averna-cyan/10"
+          >
+            <RotateCcw className="h-3.5 w-3.5" aria-hidden />
+            Qayta topshirishga ruxsat berish
+          </ConfirmButton>
+          {row.retake.nextAt && <p className="text-[11px] text-gray-500">Aks holda {uzDate(row.retake.nextAt)} dan</p>}
+        </form>
+      )}
+    </>
+  );
+}
+
+/** Phone layout of one attempt (the 12-column table doesn't fit on a phone). */
+function ResultCard({ row }: { row: AdminPlacementRow }) {
+  const essay = row.sections.WRITING?.essay;
+  const status = statusCell(row);
+  const dim = row.status !== "active" && !row.latest;
+  return (
+    <li className={cn("space-y-3 p-4", dim && "opacity-70")}>
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="truncate font-medium text-white">{row.name}</p>
+          <p className="truncate text-xs text-gray-500">{row.email}</p>
+        </div>
+        <div className="shrink-0 text-right">
+          <p className="text-lg font-bold leading-none tabular-nums text-white">{row.band != null ? row.band.toFixed(1) : "—"}</p>
+          {row.cefr && (
+            <span className="mt-1 inline-flex rounded-full border border-averna-neon/40 bg-averna-neon/10 px-2 py-0.5 text-[11px] font-bold text-averna-neon">
+              {row.cefr}
+            </span>
+          )}
+        </div>
+      </div>
+      <div className="flex flex-wrap items-center gap-2 text-xs">
+        <span className={cn("inline-flex rounded-full border px-2 py-0.5 font-semibold", STATUS_TONE[row.status])}>{status.label}</span>
+        <span className="text-gray-400">{uzDateTime(row.date)}</span>
+      </div>
+      {status.note && <p className="text-[11px] leading-snug text-gray-400">{status.note}</p>}
+      {row.listeningNotAssessed && (
+        <p className="text-[11px] leading-snug text-amber-200">Listening baholanmagan — daraja qolgan boʻlimlardan olingan</p>
+      )}
+      <dl className="grid grid-cols-2 gap-2 rounded-lg bg-white/[0.03] p-3 text-xs">
+        {PLACEMENT_SECTIONS.map((sec) => (
+          <div key={sec} className="min-w-0">
+            <dt className="text-gray-500">{SECTION_TITLE_UZ[sec]}</dt>
+            <dd className="tabular-nums text-gray-200">{sectionCell(sec, row.sections[sec])}</dd>
+          </div>
+        ))}
+      </dl>
+      {essay && (
+        <details>
+          <summary className="cursor-pointer text-xs text-averna-cyan hover:underline">Writing matnini koʻrish</summary>
+          <p className="mt-1 whitespace-pre-wrap rounded-md border border-white/10 bg-black/30 p-2 text-xs leading-relaxed text-gray-200">{essay}</p>
+        </details>
+      )}
+      <div className="grid grid-cols-2 gap-2 text-xs">
+        <div className="min-w-0">
+          <p className="text-gray-500">Tavsiya etilgan kurs</p>
+          <p className="text-gray-200">{row.recommendation}</p>
+        </div>
+        <div className="min-w-0">
+          <p className="text-gray-500">Guruh</p>
+          {row.group ? <p className="text-gray-200">{row.group}</p> : <p className="text-amber-200">Guruh yoʻq</p>}
+        </div>
+      </div>
+      <div>
+        <RetakeCell row={row} />
+      </div>
+    </li>
   );
 }

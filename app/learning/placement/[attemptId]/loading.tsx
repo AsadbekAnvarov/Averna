@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 export default function PlacementRunLoading() {
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-4xl px-4 py-6 pb-24 sm:py-8 lg:pb-8" aria-busy="true">
+      <div className="container mx-auto max-w-4xl px-4 py-6 pb-10 sm:py-8 lg:pb-8" aria-busy="true">
         <div className="mb-5 space-y-2" aria-hidden>
           <div className="skeleton h-3 w-28" />
           <div className="skeleton h-3.5 w-24" />

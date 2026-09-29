@@ -255,6 +255,11 @@ function getNavForRole(role: string | undefined): { sections: NavSection[]; labe
   }
 }
 
+/** Roles that get the phone bottom tab bar. */
+function hasTabBar(role: string | undefined): role is "STUDENT" | "TEACHER" | "ADMIN" {
+  return role === "STUDENT" || role === "TEACHER" || role === "ADMIN";
+}
+
 function isPublicRoute(pathname: string): boolean {
   return pathname === "/" || pathname.startsWith("/auth/") || pathname.startsWith("/about");
 }
@@ -440,16 +445,16 @@ export function AppSidebar() {
         </nav>
       </aside>
 
-      {/* Mobile bottom tab bar — quick access to the 5 most-used student destinations */}
-      {role === "STUDENT" && <MobileNav />}
+      {/* Mobile bottom tab bar — the 5 most-used destinations of this role */}
+      {hasTabBar(role) && <MobileNav role={role} />}
     </>
   );
 }
 
 /**
  * Wraps children with the navigation + correct spacing.
- * On phones the content starts below the top app bar (and, for students, ends
- * above the bottom tab bar). `--app-bar-h` lets sticky elements (dashboard tabs,
+ * On phones the content starts below the top app bar and ends above the
+ * bottom tab bar. `--app-bar-h` lets sticky elements (dashboard tabs,
  * exam timers…) park right under the top bar instead of hiding behind it.
  */
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -457,7 +462,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();
   // Reserve the space while the session loads too, so the page doesn't jump.
   const chrome = !isPublicRoute(pathname) && status !== "unauthenticated";
-  const isStudent = (session?.user as { role?: string } | undefined)?.role === "STUDENT";
+  const tabBar = hasTabBar((session?.user as { role?: string } | undefined)?.role);
 
   return (
     <>
@@ -466,7 +471,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         className={cn(
           chrome &&
             "lg:pl-64 pt-[calc(3.5rem+env(safe-area-inset-top))] lg:pt-0 [--app-bar-h:calc(3.5rem+env(safe-area-inset-top))] lg:[--app-bar-h:0px]",
-          chrome && isStudent && "pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0"
+          chrome && tabBar && "pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0"
         )}
       >
         {children}

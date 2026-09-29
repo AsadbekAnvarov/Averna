@@ -316,7 +316,7 @@ export default async function TeacherMockPage({ searchParams = {} }: { searchPar
 function Shell({ header, pageHeader, children }: { header: React.ReactNode; pageHeader: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-6xl px-4 py-8 pb-24 lg:pb-8">
+      <div className="container mx-auto max-w-6xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
         {header}
         {pageHeader}
         {children}

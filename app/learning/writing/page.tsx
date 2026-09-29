@@ -37,7 +37,7 @@ export default async function WritingPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-6xl">
         {/* Header */}
         <div className="mb-8 animate-fade-in">
           <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-2 block">

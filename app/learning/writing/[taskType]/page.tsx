@@ -41,7 +41,7 @@ export default async function WritingTaskPage({
   if (!promptParam) {
     return (
       <div className="min-h-screen premium-gradient">
-        <div className="container mx-auto px-4 py-8 max-w-5xl">
+        <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl">
           <Link href="/learning/writing" className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
             <ArrowLeft className="h-4 w-4" /> Back to Writing
           </Link>

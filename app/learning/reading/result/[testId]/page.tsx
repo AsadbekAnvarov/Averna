@@ -165,7 +165,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
   return (
     <div className="min-h-screen premium-gradient">
       <ResultCelebration score={test.score} target={target} />
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <div className="mb-8 animate-fade-in">
           <Link href="/learning/reading" className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
             <ArrowLeft className="h-4 w-4" />

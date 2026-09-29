@@ -137,7 +137,7 @@ export default function HomeworkSubmissionForm({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <Link href="/homework" className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Homework
         </Link>

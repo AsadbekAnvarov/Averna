@@ -77,7 +77,7 @@ export default async function ReviewAttemptPage({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-7xl px-4 py-8 pb-24 lg:pb-8">
+      <div className="container mx-auto max-w-7xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
         {role === "ADMIN" ? <AdminHeader user={user} /> : <TeacherHeader user={user} />}
 
         <Link href={back} className="mb-4 inline-flex items-center gap-1 text-sm text-averna-neon hover:underline">

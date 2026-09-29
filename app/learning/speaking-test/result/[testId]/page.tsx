@@ -280,7 +280,7 @@ export default async function SpeakingResultPage({ params }: { params: { testId:
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-4xl space-y-6 px-4 py-6 pb-24 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-4xl space-y-6 px-4 py-6 pb-10 sm:py-8 lg:pb-8">
         <section aria-labelledby="speaking-result-title" className="av-panel av-panel-hero rounded-3xl px-5 pb-6 pt-3 sm:px-8 sm:pb-8 sm:pt-5">
           <Link
             href={backHref}

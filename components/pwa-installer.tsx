@@ -41,7 +41,7 @@ export function PwaInstaller() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-20 lg:bottom-4 right-4 z-50 glass-strong border border-averna-neon/40 rounded-xl p-3 flex items-center gap-3 shadow-neon-green animate-fade-in max-w-[90vw]">
+    <div className="fixed bottom-[calc(5rem+env(safe-area-inset-bottom))] lg:bottom-4 right-4 z-50 glass-strong border border-averna-neon/40 rounded-xl p-3 flex items-center gap-3 shadow-neon-green animate-fade-in max-w-[90vw]">
       <div className="text-sm">
         <p className="text-white font-semibold">Install Averna</p>
         <p className="text-gray-400 text-xs">Add to your home screen for quick access</p>

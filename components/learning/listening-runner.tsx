@@ -137,7 +137,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
   if (!test) {
     return (
       <div className="min-h-screen premium-gradient">
-        <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
+        <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl pb-10 lg:pb-8">
           <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 flex items-center gap-3">
             <Headphones className="h-9 w-9 text-averna-neon" />
@@ -191,7 +191,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
   let globalIndex = 0;
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl pb-10 lg:pb-8">
         <button onClick={backToBank} className="text-averna-neon hover:underline text-sm mb-4 flex items-center gap-1">
           <ArrowLeft className="h-4 w-4" /> Back to tests
         </button>

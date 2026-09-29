@@ -77,7 +77,7 @@ export default async function NotificationsPage({ searchParams }: { searchParams
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-2xl pb-24 lg:pb-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-2xl pb-10 lg:pb-8">
         <Link href={homeHref(session.user.role)} className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Dashboard
         </Link>

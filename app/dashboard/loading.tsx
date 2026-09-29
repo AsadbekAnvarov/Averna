@@ -10,7 +10,7 @@ function Block({ className = "" }: { className?: string }) {
 export default function DashboardLoading() {
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 max-w-7xl pb-24 lg:pb-6">
+      <div className="container mx-auto px-4 py-6 max-w-7xl pb-10 lg:pb-6">
         {/* Header row */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">

@@ -74,7 +74,7 @@ export default async function GenerateTestsPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl pb-10 lg:pb-8">
         <AdminHeader user={{ name: dbUser?.name ?? "Admin", email: dbUser?.email ?? "", image: dbUser?.image ?? null }} />
 
         <PageHeader

@@ -77,7 +77,7 @@ export default async function WritingResultPage({
   return (
     <div className="min-h-screen premium-gradient">
       {viewerIsOwner && <ResultCelebration score={shownBand} target={target} />}
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-6xl">
         {/* Header */}
         <div className="mb-8 animate-fade-in">
           <Link

@@ -786,7 +786,7 @@ function IntroScreen({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-4xl px-4 py-6 pb-24 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-4xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
         <header className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div className="min-w-0">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">Placement test</p>

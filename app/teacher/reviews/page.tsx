@@ -65,7 +65,7 @@ export default async function ReviewQueuePage({ searchParams = {} }: { searchPar
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-7xl px-4 py-8 pb-24 lg:pb-8">
+      <div className="container mx-auto max-w-7xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
         {role === "ADMIN" ? <AdminHeader user={user} /> : <TeacherHeader user={user} />}
         <PageHeader
           back={{ href: role === "ADMIN" ? "/admin/dashboard" : "/teacher/dashboard", label: "Back to Dashboard" }}
@@ -240,7 +240,14 @@ export default async function ReviewQueuePage({ searchParams = {} }: { searchPar
             )}
           </div>
         ) : (
-          <div className="glass overflow-hidden rounded-2xl border border-white/10">
+          <>
+          {/* Phones: one card per attempt (the 8-column table doesn't fit) */}
+          <ul className="space-y-3 md:hidden" aria-label={f.tab === "pending" ? "Attempts waiting for review" : "Reviewed attempts"}>
+            {q.rows.map((r) => (
+              <QueueCard key={r.testId} r={r} f={f} />
+            ))}
+          </ul>
+          <div className="glass hidden overflow-hidden rounded-2xl border border-white/10 md:block">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[960px] text-left text-sm">
                 <caption className="sr-only">
@@ -268,6 +275,7 @@ export default async function ReviewQueuePage({ searchParams = {} }: { searchPar
               </table>
             </div>
           </div>
+          </>
         )}
 
         {q.pages > 1 && (
@@ -303,6 +311,55 @@ export default async function ReviewQueuePage({ searchParams = {} }: { searchPar
         )}
       </div>
     </div>
+  );
+}
+
+/** Phone layout of one queue row: who, what, band, when — and one big action. */
+function QueueCard({ r, f }: { r: QueueRow; f: QueueFilters }) {
+  const reviewed = r.band !== null;
+  return (
+    <li className="glass rounded-2xl border border-white/10 p-4">
+      <div className="flex items-start gap-3">
+        <SkillIconBox skill={r.skill} className="h-9 w-9 shrink-0" />
+        <div className="min-w-0 flex-1">
+          <p className="truncate font-medium text-white">{r.studentName}</p>
+          <p className="truncate text-xs text-gray-400">
+            {r.label}
+            {r.sitting ? " · full test" : ""} · {r.groupName ?? "No group"}
+          </p>
+        </div>
+        <div className="shrink-0 text-right tabular-nums">
+          <p className="text-lg font-bold leading-none text-white">{formatBand(reviewed ? r.band : r.aiBand)}</p>
+          <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-gray-500">{reviewed ? "Band" : "AI"}</p>
+        </div>
+      </div>
+      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-400">
+        <time dateTime={r.submittedAt.toISOString()} title={formatDateTime(r.submittedAt)}>
+          {timeAgo(r.submittedAt)}
+        </time>
+        {r.skill === "WRITING" && r.words !== null && <span className="tabular-nums">{r.words} words</span>}
+        {r.skill !== "WRITING" && r.seconds ? <span className="tabular-nums">{formatDuration(r.seconds)}</span> : null}
+        {r.audio === "available" && (
+          <span className="inline-flex items-center gap-1 text-averna-neon">
+            <Volume2 className="h-3.5 w-3.5" aria-hidden /> Recorded
+          </span>
+        )}
+        <SourceBadge source={r.source} title={r.homeworkTitle} />
+      </div>
+      <Link
+        href={reviewHref(r.testId, f)}
+        aria-label={`${reviewed ? "Open the review of" : "Review"} ${r.studentName}'s ${r.label}`}
+        className={cn(
+          "mt-3 flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl text-sm font-semibold",
+          reviewed
+            ? "border border-white/10 bg-white/[0.03] text-gray-100 hover:text-white"
+            : "bg-averna-primary text-white hover:bg-averna-light"
+        )}
+      >
+        {reviewed ? "Open review" : "Review now"}
+        <ArrowRight className="h-4 w-4" aria-hidden />
+      </Link>
+    </li>
   );
 }
 
