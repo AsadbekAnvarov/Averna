@@ -21,7 +21,7 @@ export default function WritingExamLoading() {
             <div className="skeleton h-3 w-28" aria-hidden />
             <div className="skeleton mt-3 h-7 w-72 max-w-full" aria-hidden />
             <div className="skeleton mt-3 h-3.5 w-full max-w-md" aria-hidden />
-            <div className="mt-6 grid gap-3 sm:grid-cols-2" aria-hidden>
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2" aria-hidden>
               {[0, 1].map((i) => (
                 <div key={i} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                   <div className="skeleton h-3 w-16" />

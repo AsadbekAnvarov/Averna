@@ -131,7 +131,7 @@ export default async function MessagesPage({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Contacts */}
             <Card className="glass border-averna-cyan/30 md:col-span-1">
               <CardContent className="py-4 space-y-1 max-h-[60vh] overflow-y-auto">

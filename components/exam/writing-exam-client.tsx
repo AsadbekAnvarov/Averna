@@ -308,7 +308,7 @@ function Intro({ onStart }: { onStart: () => void }) {
           starts — when you press Start.
         </p>
 
-        <ul role="list" className="mt-6 grid gap-3 sm:grid-cols-2">
+        <ul role="list" className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <li className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
             <p className="flex items-center justify-between gap-2 text-[11px] font-semibold uppercase tracking-[0.14em]">
               <span className="text-averna-pink">Task 1</span>
@@ -575,7 +575,7 @@ function ResultView({ result, task1, task2 }: { result: WritingExamResult; task1
         <h2 id="writing-result-tasks" className="sr-only">
           Your tasks
         </h2>
-        <ul role="list" className="grid gap-4 sm:grid-cols-2">
+        <ul role="list" className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <TaskResultCard n={1} prompt={task1} task={result.task1} className={cn(REVEAL, "motion-safe:delay-150")} />
           <TaskResultCard n={2} prompt={task2} task={result.task2} className={cn(REVEAL, "motion-safe:delay-200")} />
         </ul>

@@ -29,7 +29,7 @@ export function WidgetSkeleton({ rows = 4, title = true }: { rows?: number; titl
 
 export function StatSkeleton({ count = 4 }: { count?: number }) {
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       {Array.from({ length: count }).map((_, i) => (
         <Card key={i} className="glass border-white/10">
           <CardContent className="p-5 space-y-3">

@@ -842,7 +842,7 @@ function IntroScreen({
             </div>
           </div>
 
-          <ul role="list" className="mt-6 grid gap-3 sm:grid-cols-2">
+          <ul role="list" className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {info.rules.map(({ icon: RuleIcon, text }) => (
               <li key={text} className="flex gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-relaxed text-gray-200">
                 <RuleIcon className="mt-0.5 h-4 w-4 shrink-0 text-averna-neon" aria-hidden />

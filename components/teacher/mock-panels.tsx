@@ -164,7 +164,7 @@ export function QuestionTypesPanel({ kinds }: { kinds: KindBreakdown }) {
   return (
     <div className="space-y-4">
       {kinds.weakest.length > 0 ? (
-        <ol className="grid gap-3 lg:grid-cols-3">
+        <ol className="grid grid-cols-1 gap-3 lg:grid-cols-3">
           {kinds.weakest.map((k) => {
             const tone = accuracyTone(k.pct);
             return (
@@ -200,7 +200,7 @@ export function QuestionTypesPanel({ kinds }: { kinds: KindBreakdown }) {
         </p>
       )}
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {lists.map(({ skill, list }) => {
           const id = `mock-kinds-${skill.toLowerCase()}`;
           return (
@@ -297,7 +297,7 @@ export function NeedsMockPanel({
   const open = inProgress.filter((r) => !r.stalled);
   const stalled = inProgress.filter((r) => r.stalled);
   return (
-    <div className="grid gap-4 lg:grid-cols-5">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
       <section aria-labelledby="mock-needs-title" className="glass rounded-2xl border border-amber-300/25 p-4 sm:p-5 lg:col-span-3">
         <h3 id="mock-needs-title" className="font-semibold text-white">
           Needs a mock <span className="text-sm font-normal text-gray-400">({needs.length})</span>

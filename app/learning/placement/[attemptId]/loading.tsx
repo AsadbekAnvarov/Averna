@@ -23,7 +23,7 @@ export default function PlacementRunLoading() {
               <div className="skeleton h-3.5 w-72 max-w-full" />
             </div>
           </div>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2" aria-hidden>
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2" aria-hidden>
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="skeleton h-20 rounded-2xl" />
             ))}

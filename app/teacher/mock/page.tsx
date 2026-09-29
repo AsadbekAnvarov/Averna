@@ -257,7 +257,7 @@ export default async function TeacherMockPage({ searchParams = {} }: { searchPar
                   subtitle="Latest mocks · a teacher's review replaces the AI's bands"
                   accent="text-averna-pink"
                 />
-                <div className="grid gap-4 md:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <CriteriaCard skill="WRITING" block={data.criteria.writing} />
                   <CriteriaCard skill="SPEAKING" block={data.criteria.speaking} />
                 </div>
@@ -267,7 +267,7 @@ export default async function TeacherMockPage({ searchParams = {} }: { searchPar
                 </p>
               </section>
 
-              <div className="mt-10 grid gap-6 lg:grid-cols-5">
+              <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-5">
                 <section className="lg:col-span-2">
                   <SectionHeader icon={Layers} title="Band distribution" subtitle="Latest overall band" accent="text-averna-cyan" />
                   <div className="glass rounded-2xl border border-white/10 p-4 sm:p-5">

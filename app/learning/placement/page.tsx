@@ -123,7 +123,7 @@ function Hero() {
         </div>
       </div>
 
-      <ol role="list" aria-label="The sections, in order" className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <ol role="list" aria-label="The sections, in order" className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {outline().map((s, i) => (
           <li key={s.section} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
             <div className="flex items-center gap-3">
@@ -139,7 +139,7 @@ function Hero() {
         ))}
       </ol>
 
-      <ul role="list" className="mt-6 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+      <ul role="list" className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
         {RULES.map(({ icon: Icon, text }) => (
           <li key={text} className="flex gap-3 text-sm leading-relaxed text-gray-300">
             <Icon className="mt-0.5 h-4 w-4 shrink-0 text-averna-neon" aria-hidden />

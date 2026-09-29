@@ -164,7 +164,7 @@ export default async function WritingTaskPage({
               </Card>
             </summary>
 
-            <div className="grid lg:grid-cols-2 gap-6 mt-4 pb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4 pb-8">
               <Card className="glass border-averna-neon/30">
                 <CardHeader>
                   <CardTitle className="text-averna-neon flex items-center gap-2">

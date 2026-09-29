@@ -9,7 +9,7 @@ export const metadata = { title: "Focus Room · Practice Studio" };
 export default function FocusPage() {
   return (
     <StudioToolPage slug="focus">
-      <div className="grid items-start gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
         <PomodoroTimer />
         <FocusVault />
       </div>

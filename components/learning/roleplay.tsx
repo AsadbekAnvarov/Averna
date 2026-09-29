@@ -113,7 +113,7 @@ export function Roleplay() {
             <p className="text-sm text-gray-400">
               Practise real conversations. The AI stays in character and gently corrects you along the way.
             </p>
-            <div className="grid sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {SCENARIOS.map((s) => (
                 <button
                   key={s.id}

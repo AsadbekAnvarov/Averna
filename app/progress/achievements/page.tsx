@@ -69,7 +69,7 @@ export default async function ProgressAchievementsPage() {
   return (
     <div className="space-y-8">
       {/* Summary + certificate */}
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {summary.map(({ label, value, icon: Icon, tone }) => (
           <div key={label} className="glass flex items-center gap-3 rounded-2xl border border-white/10 p-4">
             <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${tone}`}>
@@ -106,7 +106,7 @@ export default async function ProgressAchievementsPage() {
       {/* Signature achievements */}
       <section>
         <SectionHeader icon={Award} title="Signature achievements" subtitle="Unlocked first, then the ones you're closest to" accent="text-amber-400" />
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           {items.map((a) => (
             <Card
               key={a.id}
@@ -143,7 +143,7 @@ export default async function ProgressAchievementsPage() {
       </section>
 
       {/* The road to the target band */}
-      <div className="grid items-start gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <FutureSelfSection
             studentId={student.id}

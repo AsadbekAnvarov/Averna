@@ -51,11 +51,11 @@ export function HubNav({ hub, label }: { hub: HubKey; label: string }) {
                 href={t.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-3 py-2 text-[13px] font-semibold transition-all duration-300 sm:px-5 sm:py-2.5 sm:text-sm md:flex-none",
+                  "flex flex-1 flex-col items-center justify-center gap-1 whitespace-nowrap rounded-xl px-2 py-2 text-[11px] font-semibold transition-all duration-300 sm:flex-row sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm md:flex-none",
                   active ? cn(t.active, "shadow-lg") : "text-gray-400 hover:bg-white/5 hover:text-white"
                 )}
               >
-                <Icon className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
+                <Icon className="h-5 w-5 shrink-0" />
                 {t.label}
               </Link>
             );

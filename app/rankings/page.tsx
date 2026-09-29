@@ -71,7 +71,7 @@ export default async function RankingsPage() {
     <div>
       <Podium top={globalRankings.slice(0, 3)} currentUserId={student.id} />
 
-      <div className="grid lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Global Rankings */}
         <Card className="glass border-yellow-500/30">
           <CardHeader>

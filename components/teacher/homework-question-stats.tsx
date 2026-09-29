@@ -181,7 +181,7 @@ export function HomeworkQuestionStats({ stats, maxQuestions }: { stats: ClassSta
         <h3 id="hw-by-type" className="mb-3 flex items-center gap-2 text-base font-semibold text-white">
           <Target className="h-4 w-4 text-averna-cyan" aria-hidden /> By question type
         </h3>
-        <ul role="list" className="grid gap-2 sm:grid-cols-2">
+        <ul role="list" className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {[...stats.byKind]
             .sort((a, b) => a.pct - b.pct)
             .map((k) => (

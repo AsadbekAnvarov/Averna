@@ -126,7 +126,7 @@ export default async function ReviewQueuePage({ searchParams = {} }: { searchPar
           method="get"
           action="/teacher/reviews"
           aria-label="Filter the review queue"
-          className="glass mb-5 grid items-end gap-3 rounded-2xl border border-white/10 p-4 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto]"
+          className="glass mb-5 grid grid-cols-1 items-end gap-3 rounded-2xl border border-white/10 p-4 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto]"
         >
           {f.tab === "reviewed" && <input type="hidden" name="tab" value="reviewed" />}
           <div>

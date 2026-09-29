@@ -113,7 +113,7 @@ export default async function LessonLogPage({
               <CardContent>
                 <form action={addLesson} className="space-y-4">
                   <input type="hidden" name="groupId" value={selected?.id} />
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="topic">Topic *</Label>
                       <Input id="topic" name="topic" placeholder="e.g., Writing Task 2 — opinion essays" className="bg-background/50" required />

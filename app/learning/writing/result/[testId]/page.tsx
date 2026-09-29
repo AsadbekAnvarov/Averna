@@ -133,7 +133,7 @@ export default async function WritingResultPage({
           <TeacherReviewCard testId={test.id} viewerIsOwner={viewerIsOwner} />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Criterion Scores */}
           <Card className="glass border-purple-500/30 animate-fade-in">
             <CardHeader>

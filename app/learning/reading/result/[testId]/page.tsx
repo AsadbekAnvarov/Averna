@@ -208,7 +208,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
             <CardTitle className="text-averna-neon">Score Breakdown</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                 <CheckCircle className="h-8 w-8 text-green-400 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-green-400">{analysis.correctCount}</p>

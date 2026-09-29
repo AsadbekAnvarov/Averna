@@ -251,7 +251,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
                     <Card key={qi} className="glass border-averna-primary/30">
                       <CardContent className="py-4">
                         <p className="text-white mb-3 font-medium">{qi + 1}. {q.question}</p>
-                        <div className="grid sm:grid-cols-2 gap-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {q.options.map((opt, oi) => {
                             const chosen = answers[qi] === oi;
                             const isCorrect = q.answer === oi;

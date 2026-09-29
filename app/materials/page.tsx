@@ -165,7 +165,7 @@ export default async function MaterialsPage({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {materials.map((m) => (
               <Card key={m.id} className={`glass ${MODULE_COLORS[m.module] ?? "border-white/10"}`}>
                 <CardHeader className="pb-2">

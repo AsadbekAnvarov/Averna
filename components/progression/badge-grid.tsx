@@ -26,7 +26,7 @@ export async function BadgeGrid({ studentId }: { studentId: string }) {
             <h3 id={`badges-${g}`} className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-400">
               {g === "GENERAL" ? "Consistency & milestones" : SKILL_LABEL[g]}
             </h3>
-            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((b) => (
                 <li
                   key={b.def.id}

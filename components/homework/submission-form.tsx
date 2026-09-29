@@ -197,7 +197,7 @@ export default function HomeworkSubmissionForm({
                 </CardContent>
               </Card>
             </summary>
-            <div className="grid md:grid-cols-2 gap-4 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <Card className="glass border-averna-cyan/30">
                 <CardHeader>
                   <CardTitle className="text-averna-cyan flex items-center gap-2 text-base">

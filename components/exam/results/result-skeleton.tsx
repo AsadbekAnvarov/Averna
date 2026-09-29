@@ -18,7 +18,7 @@ export function ResultSkeleton({ label = "Marking your answers…" }: { label?: 
               <div className="skeleton h-3.5 w-40 max-w-full" />
             </div>
           </div>
-          <div className="mt-6 grid items-center gap-6 sm:grid-cols-[auto_1fr]" aria-hidden>
+          <div className="mt-6 grid grid-cols-1 items-center gap-6 sm:grid-cols-[auto_1fr]" aria-hidden>
             <div className="skeleton mx-auto h-36 w-36 rounded-full sm:mx-0" />
             <div className="grid grid-cols-2 gap-2.5">
               {[0, 1, 2, 3].map((i) => (

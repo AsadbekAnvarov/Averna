@@ -184,7 +184,7 @@ export default async function TutoringPage() {
                   {openSlots.length === 0 ? (
                     <p className="text-sm text-gray-400">All slots are currently booked.</p>
                   ) : (
-                    <div className="grid sm:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {openSlots.map((s) => (
                         <div
                           key={s.id}

@@ -136,7 +136,7 @@ export default async function GradebookPage({
             <Card className="glass border-averna-purple/30 mb-8">
               <CardHeader><CardTitle className="flex items-center gap-2 text-averna-purple"><Plus className="h-5 w-5" /> Add Grade</CardTitle></CardHeader>
               <CardContent>
-                <form action={addGrade} className="grid sm:grid-cols-2 gap-4">
+                <form action={addGrade} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input type="hidden" name="groupId" value={selected?.id} />
                   <div className="space-y-2 sm:col-span-2">
                     <Label htmlFor="studentId">Student</Label>

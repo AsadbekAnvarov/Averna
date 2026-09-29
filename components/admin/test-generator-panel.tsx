@@ -250,7 +250,7 @@ export function TestGeneratorPanel() {
           </button>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label className="text-xs text-gray-400">Modul</label>
             <select
@@ -350,7 +350,7 @@ export function TestGeneratorPanel() {
         {/* Bulk generation controls */}
         {bulkMode && (
           <div className="rounded-xl border border-averna-purple/30 bg-averna-purple/5 p-4 space-y-3">
-            <div className="grid sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="text-xs text-gray-400">Nechta (yuqoridagi mavzu boʻyicha)</label>
                 <select

@@ -117,7 +117,7 @@ export default async function WritingPage() {
             <CardDescription>Get instant AI feedback on your writing</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="text-center p-4">
                 <div className="text-3xl mb-2">1️⃣</div>
                 <p className="text-sm text-white font-semibold">Choose Task Type</p>
@@ -143,7 +143,7 @@ export default async function WritingPage() {
         </Card>
 
         {/* Task Selection */}
-        <div className="grid md:grid-cols-2 gap-6 animate-fade-in">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
           {tasks.map((task) => (
             <Card
               key={task.id}
@@ -197,7 +197,7 @@ export default async function WritingPage() {
             <CardTitle className="text-averna-neon">AI Assessment Features</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-3">
                 <h4 className="font-semibold text-white">Scoring Criteria:</h4>
                 <ul className="space-y-2 text-sm text-gray-300">

@@ -43,7 +43,7 @@ export default async function SpeakingLibraryPage() {
           <h2 id="speaking-parts-heading" className="sr-only">
             How the Speaking test works
           </h2>
-          <ol role="list" className="grid gap-3 sm:grid-cols-3">
+          <ol role="list" className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             {PARTS.map((p) => (
               <li key={p.n} className="av-panel rounded-2xl p-4">
                 <p className="flex items-center justify-between gap-2 text-[11px] font-semibold uppercase tracking-[0.14em]">
@@ -75,7 +75,7 @@ export default async function SpeakingLibraryPage() {
               secondary={{ href: "/learning", label: "Back to the Learning Center" }}
             />
           ) : (
-            <RevealGroup as="ul" role="list" className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <RevealGroup as="ul" role="list" className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
               {sets.map((s) => (
                 <SpeakingSetCard key={`${s.source}-${s.id}`} set={s} />
               ))}

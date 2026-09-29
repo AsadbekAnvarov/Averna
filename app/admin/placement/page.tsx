@@ -100,12 +100,12 @@ export default async function AdminPlacementPage({
         />
 
         {/* Summary */}
-        <section aria-label="Qisqacha" className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <section aria-label="Qisqacha" className="mb-6 grid grid-cols-2 gap-3 lg:grid-cols-5">
           <Stat label={filtered ? "Filtrga mos natijalar" : "Natijalar"} value={finished.length} />
           <Stat label="Hozir test topshirmoqda" value={list?.active ?? 0} />
           <Stat label={filtered ? "Filtrga mos tark etilganlar" : "Tark etilgan"} value={left} />
           <Stat label="Guruhga biriktirilmagan" value={noGroup} />
-          <div className="glass rounded-xl border border-white/10 p-4">
+          <div className="glass col-span-2 rounded-xl border border-white/10 p-4 lg:col-span-1">
             <p className="text-xs text-gray-400">Darajalar boʻyicha</p>
             <ul role="list" className="mt-2 flex flex-wrap gap-1.5">
               {byLevel.map((b) => (
@@ -123,7 +123,7 @@ export default async function AdminPlacementPage({
             <Filter className="h-4 w-4" aria-hidden />
             Filtr
           </h2>
-          <form method="get" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[repeat(5,minmax(0,1fr))_auto] lg:items-end">
+          <form method="get" className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[repeat(5,minmax(0,1fr))_auto] lg:items-end">
             <div className="space-y-1.5">
               <label htmlFor="pl-from" className="text-xs text-gray-400">
                 Sana (dan)

@@ -634,7 +634,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
 
       {/* ---------------- Setup ---------------- */}
       {(!data.blobConfigured || !data.openAiConfigured) && (
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {!data.blobConfigured && (
             <SetupCard
               icon={<Database className="h-5 w-5" aria-hidden />}
@@ -680,7 +680,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-5">
-          <div className="grid gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-4">
             <Stat label="tayyor" value={totals.ready} tone="text-averna-neon" />
             <Stat label="eskirgan" value={totals.stale} tone="text-amber-200" />
             <Stat label="xato" value={totals.failed} tone="text-red-200" />

@@ -62,7 +62,7 @@ export default async function AdminContentPage({ searchParams }: { searchParams:
         <Card className="glass border-averna-cyan/30 mb-8">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><Plus className="h-5 w-5" /> Oʻquv materiali qoʻshish</CardTitle></CardHeader>
           <CardContent>
-            <form action={addMaterial} className="grid sm:grid-cols-2 gap-4">
+            <form action={addMaterial} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="title">Sarlavha</Label>
                 <Input id="title" name="title" placeholder="masalan, Writing Task 2: Bogʻlovchi iboralar" className="bg-background/50" required />

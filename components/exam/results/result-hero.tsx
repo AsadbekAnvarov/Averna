@@ -132,7 +132,7 @@ export function ResultHero({
         </ul>
       )}
 
-      <div className="mt-6 grid items-center gap-6 sm:grid-cols-[auto_1fr]">
+      <div className="mt-6 grid grid-cols-1 items-center gap-6 sm:grid-cols-[auto_1fr]">
         <div className="relative mx-auto h-36 w-36 shrink-0 sm:mx-0">
           <svg viewBox="0 0 120 120" className="h-full w-full" aria-hidden="true">
             <circle cx="60" cy="60" r={RING_R} fill="none" strokeWidth="8" className="stroke-white/10" />

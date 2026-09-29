@@ -139,7 +139,7 @@ export default async function HomeworkPage() {
               </CardContent>
             </Card>
           ) : (
-            <ul role="list" className="grid gap-4 md:grid-cols-2">
+            <ul role="list" className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {todo.map((hw, i) => (
                 <li key={hw.id}>
                   <TodoCard

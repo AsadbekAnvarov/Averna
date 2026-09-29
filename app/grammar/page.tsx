@@ -99,7 +99,7 @@ export default async function GrammarPage() {
         />
 
         <SectionHeader icon={Layers} title="Grammar Essentials" subtitle="Six high-impact focus areas" accent="text-averna-purple" />
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {TOPICS.map((t) => {
             const Icon = t.icon;
             return (

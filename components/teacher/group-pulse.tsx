@@ -80,7 +80,7 @@ export async function GroupPulse({ teacherId }: { teacherId: string }) {
             compact
           />
         ) : (
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {cards.map((c) => {
               const TrendIcon = c.trend === "up" ? TrendingUp : c.trend === "down" ? TrendingDown : Minus;
               const trendColor =

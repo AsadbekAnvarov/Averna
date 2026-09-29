@@ -20,7 +20,7 @@ export async function ThirtyDaySummary({ studentId }: { studentId: string }) {
     { label: "Points earned", value: a.totalPoints, icon: Star, tone: "text-averna-neon bg-averna-neon/15" },
     { label: "Tests done", value: a.totalTests, icon: ClipboardCheck, tone: "text-averna-cyan bg-averna-cyan/15" },
     { label: "Speaking sessions", value: a.totalSpeakingSessions, icon: Mic, tone: "text-averna-pink bg-averna-pink/15" },
-    { label: "Homework handed in", value: a.totalHomework, icon: Notebook, tone: "text-amber-400 bg-amber-400/15" },
+    { label: "Homework done", value: a.totalHomework, icon: Notebook, tone: "text-amber-400 bg-amber-400/15" },
   ];
   const byModule = MODULES.map((m) => ({ ...m, count: a.tests.filter((t) => t.module === m.key).length }));
   const most = Math.max(1, ...byModule.map((m) => m.count));
@@ -33,19 +33,19 @@ export async function ThirtyDaySummary({ studentId }: { studentId: string }) {
         </p>
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {stats.map(({ label, value, icon: Icon, tone }) => (
-            <div key={label} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3">
+            <div key={label} className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] p-3">
               <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${tone}`}>
                 <Icon className="h-4 w-4" />
               </span>
               <div className="min-w-0 leading-tight">
                 <p className="text-xl font-bold text-white tabular-nums">{value}</p>
-                <p className="truncate text-[11px] text-gray-400">{label}</p>
+                <p className="text-[11px] leading-tight text-gray-400">{label}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {byModule.map((m) => (
             <div key={m.key}>
               <div className="mb-1 flex justify-between text-xs">

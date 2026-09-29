@@ -452,7 +452,7 @@ export function HomeworkCreateForm({
             <p className="text-xs text-gray-500">Late work is still accepted and marked as late.</p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="hw-points">Base points *</Label>
               <Input
@@ -509,7 +509,7 @@ export function HomeworkCreateForm({
                 {allSelected ? "Clear selection" : `Select all ${groups.length} groups`}
               </button>
             )}
-            <div className="grid gap-2 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {groups.map((g) => {
                 const on = groupIds.includes(g.id);
                 return (

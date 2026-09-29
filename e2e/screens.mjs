@@ -109,10 +109,30 @@ async function shoot(context, role, theme, device) {
     await page.waitForTimeout(500); // entrance animations
     const body = (await page.textContent("body").catch(() => "")) ?? "";
     if (/Application error|Something went wrong|Internal Server Error/i.test(body)) problems.push(`${label}: error page shown`);
-    // Anything wider than the screen means sideways scrolling on a phone.
+    // Anything wider than the screen is either sideways scrolling or content cut
+    // off by the page's overflow clip. Elements inside their own scroll/clip
+    // container, fixed bars and absolutely placed decoration are fine.
     if (device === "phone") {
-      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-      if (overflow > 1) problems.push(`${label}: page is ${overflow}px wider than the screen`);
+      const wide = await page.evaluate(() => {
+        const vw = window.innerWidth;
+        const contained = (el) => {
+          for (let p = el.parentElement; p && p !== document.body && p !== document.documentElement; p = p.parentElement) {
+            if (getComputedStyle(p).overflowX !== "visible") return true;
+          }
+          return false;
+        };
+        const out = [];
+        for (const el of document.querySelectorAll("body *")) {
+          const r = el.getBoundingClientRect();
+          if (r.width === 0 || r.right <= vw + 1) continue;
+          const pos = getComputedStyle(el).position;
+          if (pos === "fixed" || pos === "absolute" || contained(el)) continue;
+          out.push(`<${el.tagName.toLowerCase()} class="${String(el.className).slice(0, 80)}"> +${Math.round(r.right - vw)}px`);
+          if (out.length === 3) break;
+        }
+        return out;
+      });
+      for (const w of wide) problems.push(`${label}: wider than the screen: ${w}`);
     }
     await page.screenshot({ path: `${OUT}/${theme}-${device}-${role}-${name}.png`, fullPage: true });
     report.push({ label, url: page.url() });

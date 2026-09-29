@@ -254,7 +254,7 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-32 rounded-2xl bg-white/5 animate-pulse" />}>
                   <OutcomeKpis />
                 </Suspense>
-                <div className="grid lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <ActivityFeed />
                   <FinanceSummary />
                 </div>
@@ -303,7 +303,7 @@ export default async function AdminDashboard() {
             ),
             insights: (
               <>
-                <div className="grid lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                     <PredictionEngine />
                   </Suspense>
@@ -317,7 +317,7 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                   <JourneyReplaySection />
                 </Suspense>
-                <div className="grid lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <EnrollmentFunnel />
                   <TeacherWorkload />
                 </div>
@@ -333,7 +333,7 @@ export default async function AdminDashboard() {
             ),
             manage: (
               <>
-                <div className="grid lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <VoiceControl />
                   <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
                     <ContentHealth />

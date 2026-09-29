@@ -134,7 +134,7 @@ function Hero() {
         </div>
       </div>
 
-      <ol role="list" aria-label="The four sections, in order" className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <ol role="list" aria-label="The four sections, in order" className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {SECTIONS.map((s, i) => (
           <li key={s.skill} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
             <div className="flex items-center gap-3">
@@ -150,7 +150,7 @@ function Hero() {
         ))}
       </ol>
 
-      <ul role="list" className="mt-6 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+      <ul role="list" className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
         {RULES.map(({ icon: Icon, text }) => (
           <li key={text} className="flex gap-3 text-sm leading-relaxed text-gray-300">
             <Icon className="mt-0.5 h-4 w-4 shrink-0 text-averna-neon" aria-hidden />
@@ -364,7 +364,7 @@ function Tips() {
         </h2>
         <p className="mt-0.5 text-sm text-gray-400">A mock tells you the most when you treat it like the real thing.</p>
       </Reveal>
-      <RevealGroup as="ul" role="list" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <RevealGroup as="ul" role="list" className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {TIPS.map((t) => (
           <li key={t.title} className="av-panel rounded-2xl p-4 sm:p-5">
             <p className="text-sm font-semibold text-white">{t.title}</p>

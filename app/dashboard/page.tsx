@@ -206,7 +206,7 @@ export default async function DashboardPage() {
               </section>
               <section>
                 <SectionHeader icon={Newspaper} title="Daily reading" subtitle="A little input every day goes a long way" accent="text-averna-cyan" />
-                <div className="grid items-start gap-4 md:gap-6 md:grid-cols-2">
+                <div className="grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-2">
                   <DailyArticle />
                   <WordOfTheDay />
                 </div>
@@ -215,7 +215,7 @@ export default async function DashboardPage() {
           }
           progress={
             <>
-              <div className="grid gap-4 md:gap-6 lg:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-2">
                 <Suspense fallback={<WidgetSkeleton rows={3} />}>
                   <BandProgress studentId={student.id} targetBand={student.targetBand} />
                 </Suspense>
@@ -223,13 +223,13 @@ export default async function DashboardPage() {
                   <SkillRadar studentId={student.id} />
                 </Suspense>
               </div>
-              <div className="grid items-start gap-4 md:gap-6 lg:grid-cols-2">
+              <div className="grid grid-cols-1 items-start gap-4 md:gap-6 lg:grid-cols-2">
                 <Suspense fallback={<WidgetSkeleton rows={3} />}>
                   <ProgressionLevel studentId={student.id} />
                 </Suspense>
                 <WeeklyGoal completed={weeklyCompleted} />
               </div>
-              <div className="grid items-start gap-4 md:gap-6 lg:grid-cols-2">
+              <div className="grid grid-cols-1 items-start gap-4 md:gap-6 lg:grid-cols-2">
                 <Suspense fallback={<WidgetSkeleton rows={3} />}>
                   <LearningDnaCard studentId={student.id} />
                 </Suspense>
@@ -245,7 +245,7 @@ export default async function DashboardPage() {
           }
           classroom={
             <>
-              <div className="grid items-start gap-4 md:gap-6 lg:grid-cols-2">
+              <div className="grid grid-cols-1 items-start gap-4 md:gap-6 lg:grid-cols-2">
                 <Suspense fallback={<WidgetSkeleton rows={2} />}>
                   <TeacherCard groupId={student.groupId} />
                 </Suspense>
@@ -256,7 +256,7 @@ export default async function DashboardPage() {
               <Suspense fallback={<WidgetSkeleton rows={4} />}>
                 <StudySquad groupId={student.groupId} studentId={student.id} />
               </Suspense>
-              <div className="grid items-start gap-4 md:gap-6 lg:grid-cols-2">
+              <div className="grid grid-cols-1 items-start gap-4 md:gap-6 lg:grid-cols-2">
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
                   <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
                 </Suspense>
@@ -271,13 +271,13 @@ export default async function DashboardPage() {
           }
           fun={
             <>
-              <div className="grid items-start gap-4 md:gap-6 md:grid-cols-2">
+              <div className="grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-2">
                 <MoodCheckin />
                 <div data-gamified>
                   <DailySpin />
                 </div>
               </div>
-              <div className="grid items-start gap-4 md:gap-6 md:grid-cols-2" data-gamified>
+              <div className="grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-2" data-gamified>
                 <DailyQuests studentId={student.id} streakFreezes={student.streakFreezes} />
                 <MysteryBox />
               </div>
@@ -291,7 +291,7 @@ export default async function DashboardPage() {
                 />
                 <StudioShelf group="games" />
               </section>
-              <div className="grid items-start gap-4 md:gap-6 md:grid-cols-2" data-gamified>
+              <div className="grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-2" data-gamified>
                 <StudyPet streak={student.currentStreak} points={student.totalPoints} />
                 <Suspense fallback={<WidgetSkeleton rows={2} />}>
                   <StudentOfTheWeek />

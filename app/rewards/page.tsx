@@ -106,7 +106,7 @@ export default async function RewardsPage({
         )}
 
         {/* Catalog */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {rewards.map((r) => {
             const minLevel = r.minLevel ?? 1;
             const levelLocked = studentLevel < minLevel;

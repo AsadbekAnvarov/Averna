@@ -407,7 +407,7 @@ export function BossBattle() {
           <p className="text-xs text-gray-400 mt-2">Pick the correct version to strike back:</p>
         </div>
 
-        <div className="mt-3 grid sm:grid-cols-2 gap-2">
+        <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
           {q?.options.map((opt) => {
             const isCorrect = norm(opt) === norm(q.m.right);
             let cls = "border-white/10 bg-white/5 hover:bg-white/10 text-gray-200";
