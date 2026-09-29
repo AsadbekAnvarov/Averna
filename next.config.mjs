@@ -4,12 +4,7 @@ const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // Type and lint errors fail the build (and CI) instead of reaching production.
   // Strip noisy console.* from production bundles (keep errors/warnings).
   compiler: {
     removeConsole: isProd ? { exclude: ["error", "warn"] } : false,

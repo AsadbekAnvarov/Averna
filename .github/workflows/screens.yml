@@ -1,0 +1,61 @@
+name: Screens
+
+# Visual smoke test (e2e/screens.mjs): seeded database, production build, then
+# phone + desktop screenshots of every role in both themes. Runs when a commit
+# message contains "[screens]", or by hand from the Actions tab.
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  screens:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[screens]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: averna
+          POSTGRES_PASSWORD: averna
+          POSTGRES_DB: averna
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U averna"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://averna:averna@localhost:5432/averna
+      NEXTAUTH_SECRET: ci-only-secret-not-used-anywhere-else
+      NEXTAUTH_URL: http://localhost:3000
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx prisma db push --skip-generate
+      - run: npm run db:seed
+      - run: npm run build
+      - name: Start the app
+        run: |
+          npx next start -p 3000 > next.log 2>&1 &
+          npx -y wait-on@8 -t 90000 http-get://localhost:3000/auth/signin
+      - name: Install Playwright
+        run: |
+          npm i --no-save playwright@1.48.2
+          npx playwright install --with-deps chromium
+      - name: Screenshots
+        run: node e2e/screens.mjs
+      - name: Server log
+        if: always()
+        run: tail -n 200 next.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screens
+          path: screens/
+          retention-days: 7
