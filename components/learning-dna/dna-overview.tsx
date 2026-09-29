@@ -45,7 +45,7 @@ function MaturityRing({ value, confidence }: { value: number; confidence: string
   return (
     <div className="relative shrink-0" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" className="stroke-white/[0.08]" strokeWidth={stroke} />
         <circle
           cx={size / 2}
           cy={size / 2}

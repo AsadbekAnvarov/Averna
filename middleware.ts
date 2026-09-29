@@ -63,7 +63,9 @@ const authMiddleware = auth((req) => {
  */
 export default async function middleware(req: NextRequest, event: NextFetchEvent) {
   try {
-    return await authMiddleware(req, event);
+    // NextAuth types its wrapper as a route handler; as middleware it receives
+    // (and forwards) the fetch event, which is exactly what we pass.
+    return await authMiddleware(req, event as unknown as Parameters<typeof authMiddleware>[1]);
   } catch (error) {
     console.error("Middleware auth error (failing safe):", error);
     const pathname = req.nextUrl.pathname;

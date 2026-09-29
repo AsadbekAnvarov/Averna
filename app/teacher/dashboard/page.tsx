@@ -160,7 +160,7 @@ export default async function TeacherDashboard() {
   ];
 
   const statCards = (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
       {stats.map((stat) => {
         const Icon = stat.icon;
         return (
@@ -169,14 +169,14 @@ export default async function TeacherDashboard() {
             className={`glass relative overflow-hidden ring-1 ${stat.ring} border-transparent transition-transform duration-300 hover:-translate-y-1`}
           >
             <div className={`pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br ${stat.glow} to-transparent blur-2xl`} />
-            <CardContent className="p-6 relative">
-              <div className="flex items-start justify-between">
-                <div>
-                  <p className="text-sm text-gray-400 font-medium">{stat.label}</p>
-                  <p className={`text-4xl font-bold mt-2 ${stat.accent}`}>{stat.value}</p>
+            <CardContent className="p-4 sm:p-6 relative">
+              <div className="flex items-start justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="text-xs sm:text-sm text-gray-400 font-medium leading-snug">{stat.label}</p>
+                  <p className={`text-3xl sm:text-4xl font-bold mt-2 ${stat.accent}`}>{stat.value}</p>
                 </div>
-                <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg}`}>
-                  <Icon className="h-6 w-6" />
+                <div className={`flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl ${stat.iconBg}`}>
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
               </div>
             </CardContent>
@@ -192,7 +192,7 @@ export default async function TeacherDashboard() {
         {teacher.groups.length === 0 ? (
           <p className="text-sm text-gray-400 py-4 text-center">No groups assigned yet.</p>
         ) : (
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {teacher.groups.map((group) => (
               <Link
                 key={group.id}
@@ -275,7 +275,7 @@ export default async function TeacherDashboard() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-6xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
 
         {/* Welcome banner */}
@@ -318,7 +318,7 @@ export default async function TeacherDashboard() {
                 </Suspense>
                 <div>
                   <SectionHeader icon={CheckSquare} title="Needs Action" subtitle="Grade work and keep your groups in the loop" accent="text-amber-400" />
-                  <div className="grid lg:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <Suspense fallback={<WidgetSkeleton rows={4} />}>
                       <GradingInbox teacherId={teacher.id} />
                     </Suspense>
@@ -339,7 +339,7 @@ export default async function TeacherDashboard() {
                   <div className="space-y-6">
                     <LessonBuilder />
                     <SmartEssayReview />
-                    <div className="grid lg:grid-cols-2 gap-6 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
                       <Suspense fallback={<WidgetSkeleton rows={3} />}>
                         <FutureClassSimulatorSection teacherId={teacher.id} />
                       </Suspense>
@@ -367,7 +367,7 @@ export default async function TeacherDashboard() {
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
                   <StudentRadar teacherId={teacher.id} />
                 </Suspense>
-                <div className="grid lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <Suspense fallback={<WidgetSkeleton rows={4} />}>
                     <TeachingDNA teacherId={teacher.id} />
                   </Suspense>

@@ -4,7 +4,7 @@ export function ProgressionSkeleton({ rows = 3, label = "Preparing your missionâ
     <div className="space-y-4 md:space-y-6" role="status" aria-live="polite">
       <div className="av-panel rounded-3xl p-6 sm:p-7">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-averna-neon">{label}</p>
-        <div className="mt-4 grid gap-6 lg:grid-cols-[38%_1fr]">
+        <div className="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-[38%_1fr]">
           <div className="space-y-3">
             <div className="skeleton h-8 w-3/4 rounded-lg" />
             <div className="skeleton h-4 w-full rounded" />
@@ -19,7 +19,7 @@ export function ProgressionSkeleton({ rows = 3, label = "Preparing your missionâ
         </div>
       </div>
       {Array.from({ length: Math.max(0, rows - 1) }).map((_, i) => (
-        <div key={i} className="grid gap-4 md:gap-6 md:grid-cols-2">
+        <div key={i} className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-2">
           <div className="av-panel skeleton h-48 rounded-2xl" />
           <div className="av-panel skeleton h-48 rounded-2xl" />
         </div>

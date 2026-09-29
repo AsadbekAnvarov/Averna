@@ -137,7 +137,7 @@ export default function HomeworkSubmissionForm({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <Link href="/homework" className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Homework
         </Link>
@@ -197,7 +197,7 @@ export default function HomeworkSubmissionForm({
                 </CardContent>
               </Card>
             </summary>
-            <div className="grid md:grid-cols-2 gap-4 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <Card className="glass border-averna-cyan/30">
                 <CardHeader>
                   <CardTitle className="text-averna-cyan flex items-center gap-2 text-base">

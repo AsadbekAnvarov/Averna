@@ -75,7 +75,7 @@ async function roleCounts(): Promise<RoleCounts> {
     parent: { active: 0, inactive: 0 },
   };
   try {
-    const rows: { role: string; active: boolean; _count: { _all: number } }[] = await db.telegramLink.groupBy({
+    const rows = await db.telegramLink.groupBy({
       by: ["role", "active"],
       _count: { _all: true },
     });

@@ -14,7 +14,7 @@ export async function BadgeGrid({ studentId }: { studentId: string }) {
     return null;
   });
   if (!p) {
-    return <ErrorPanel title="We couldn't load your milestones." detail="Your badges are safe — this is only a display problem." retryHref="/achievements" />;
+    return <ErrorPanel title="We couldn't load your milestones." detail="Your badges are safe — this is only a display problem." retryHref="/progress/achievements" />;
   }
   return (
     <div className="space-y-6">
@@ -26,7 +26,7 @@ export async function BadgeGrid({ studentId }: { studentId: string }) {
             <h3 id={`badges-${g}`} className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-400">
               {g === "GENERAL" ? "Consistency & milestones" : SKILL_LABEL[g]}
             </h3>
-            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((b) => (
                 <li
                   key={b.def.id}

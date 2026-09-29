@@ -22,14 +22,14 @@ async function addMaterial(formData: FormData) {
   if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
 
   const title = (formData.get("title") as string)?.trim();
-  const module = (formData.get("module") as string) || "GENERAL";
+  const moduleName = (formData.get("module") as string) || "GENERAL";
   const level = (formData.get("level") as string) || "All";
   const description = (formData.get("description") as string)?.trim();
   const url = (formData.get("url") as string)?.trim();
   if (!title) return;
 
   await db.studyMaterial.create({
-    data: { title, module, level, description: description || null, url: url || null },
+    data: { title, module: moduleName, level, description: description || null, url: url || null },
   });
   revalidatePath("/admin/content");
   redirect("/admin/content?saved=material");
@@ -46,7 +46,7 @@ export default async function AdminContentPage({ searchParams }: { searchParams:
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
@@ -62,7 +62,7 @@ export default async function AdminContentPage({ searchParams }: { searchParams:
         <Card className="glass border-averna-cyan/30 mb-8">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><Plus className="h-5 w-5" /> Oʻquv materiali qoʻshish</CardTitle></CardHeader>
           <CardContent>
-            <form action={addMaterial} className="grid sm:grid-cols-2 gap-4">
+            <form action={addMaterial} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="title">Sarlavha</Label>
                 <Input id="title" name="title" placeholder="masalan, Writing Task 2: Bogʻlovchi iboralar" className="bg-background/50" required />

@@ -31,8 +31,8 @@ export async function POST(req: NextRequest) {
   if (difficulty !== "mixed" && !isGenDifficulty(difficulty)) return NextResponse.json({ error: 'difficulty must be "Easy", "Medium", "Hard" or "mixed".' }, { status: 400 });
 
   try {
-    const module = MODULE_FOR[skill];
-    const existing = await db.generatedTest.findMany({ where: { module }, select: { topic: true } });
+    const testModule = MODULE_FOR[skill];
+    const existing = await db.generatedTest.findMany({ where: { module: testModule }, select: { topic: true } });
     const topics = pickTopics(skill, count, existing.map((r: { topic: string | null }) => r.topic));
     const levels = planDifficulties(count, difficulty as GenDifficulty | "mixed");
     const rows = await db.$transaction(
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
         const draft = newDraft(skill, topic, levels[i]);
         return db.generatedTest.create({
           data: {
-            module,
+            module: testModule,
             title: draft.title,
             description: "",
             topic,

@@ -59,7 +59,7 @@ export default function AboutPage() {
         </div>
 
         {/* Key differentiators */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {/* Elite teachers */}
           <div className="glass rounded-2xl p-8 border border-averna-neon/30">
             <div className="flex items-center gap-3 mb-4">
@@ -152,7 +152,7 @@ export default function AboutPage() {
 
         {/* More details grid */}
         <h2 className="text-2xl font-bold text-white mb-6 text-center">And so much more…</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           <Detail icon={<Brain className="h-7 w-7 text-purple-400" />} title="AI-Powered Feedback"
             text="Instant analysis of your essays and pronunciation, plus a 24/7 AI mentor for any question." />
           <Detail icon={<Mic className="h-7 w-7 text-orange-400" />} title="Real Speaking Practice"

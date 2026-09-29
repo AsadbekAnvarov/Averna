@@ -18,7 +18,7 @@ export async function TeachingAssistant({ teacherId }: { teacherId: string }) {
         <CardTitle className="flex items-center gap-2 text-averna-purple">
           <Sparkles className="h-5 w-5" /> AI Teaching Assistant
         </CardTitle>
-        <p className="text-xs text-gray-400">What I'd focus on with your classes right now</p>
+        <p className="text-xs text-gray-400">What I’d focus on with your classes right now</p>
       </CardHeader>
       <CardContent className="space-y-2 relative">
         {tips.length === 0 ? (

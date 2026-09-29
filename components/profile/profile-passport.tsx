@@ -103,7 +103,7 @@ export function ProfilePassport({
         {/* Avatar + level ring */}
         <div className="relative shrink-0">
           <svg width="120" height="120" viewBox="0 0 120 120" className="rotate-[-90deg]">
-            <circle cx="60" cy="60" r={R} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="6" />
+            <circle cx="60" cy="60" r={R} fill="none" className="stroke-white/[0.08]" strokeWidth="6" />
             <circle
               cx="60"
               cy="60"

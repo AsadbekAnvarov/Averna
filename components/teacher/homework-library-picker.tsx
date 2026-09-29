@@ -707,7 +707,7 @@ function WritingExamPicker({
   ];
   return (
     <div className="space-y-4">
-      <div className="grid gap-2 sm:grid-cols-2" role="group" aria-label="Writing test tasks">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2" role="group" aria-label="Writing test tasks">
         {tabs.map((t) => (
           <button
             key={t.key}

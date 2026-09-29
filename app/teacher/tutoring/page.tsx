@@ -79,7 +79,7 @@ export default async function TeacherTutoringPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <TeacherHeader user={{ name: teacher.user.name ?? "Teacher", email: teacher.user.email }} />
 
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 flex items-center gap-3">
@@ -90,7 +90,7 @@ export default async function TeacherTutoringPage() {
           Offer free time slots for students to book personal practice sessions.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card className="glass border-averna-cyan/30">
             <CardHeader><CardTitle className="text-sm text-averna-cyan">Open Slots</CardTitle></CardHeader>
             <CardContent><p className="text-3xl font-bold text-averna-cyan">{open.length}</p></CardContent>
@@ -113,7 +113,7 @@ export default async function TeacherTutoringPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <form action={createSlot} className="grid sm:grid-cols-2 gap-4">
+            <form action={createSlot} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="day">Day</Label>
                 <select

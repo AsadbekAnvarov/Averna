@@ -875,7 +875,7 @@ function renderTemplate(template: string): React.ReactNode {
 
 function renderOptions(options: Obj[]): React.ReactNode {
   return (
-    <ul className="grid gap-1 text-xs text-gray-300 sm:grid-cols-2">
+    <ul className="grid grid-cols-1 gap-1 text-xs text-gray-300 sm:grid-cols-2">
       {options.map((o, i) => (
         <li key={i} className="flex gap-1.5">
           <span className="shrink-0 font-semibold text-averna-cyan">{asText(o.key)}</span>
@@ -1945,7 +1945,6 @@ export function ExamBulkGenerator({ canManage = true }: { canManage?: boolean })
     return { drafts, steps, done, total };
   }, [rows]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const run: { done: number; total: number; finished: number; failed: number; members: number } = useMemo(() => {
     let done = 0;
     let total = 0;
@@ -1971,6 +1970,8 @@ export function ExamBulkGenerator({ canManage = true }: { canManage?: boolean })
       }
     });
     return { done, total, finished, failed, members };
+    // Reads refs: `version` is bumped whenever they change, so it is the real dependency.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [version]);
 
   const current = stats[skill];
@@ -2441,7 +2442,7 @@ export function ExamBulkGenerator({ canManage = true }: { canManage?: boolean })
                 <Wand2 className="h-4 w-4 text-averna-purple" aria-hidden />
                 Yangi testlarni rejalashtirish
               </h4>
-              <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_12rem]">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_12rem]">
                 <div className="space-y-1.5">
                   <label htmlFor={`${uid}-count`} className="text-xs text-gray-400">
                     Nechta test (1–{MAX_PLAN})

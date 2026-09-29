@@ -26,7 +26,7 @@ export function RecentBadges({ badges, recent }: { badges: BadgeState[]; recent:
         title="Achievements"
         hint={`${earnedCount} of ${badges.length} milestones`}
         action={
-          <Link href="/achievements" className="text-xs font-medium text-averna-neon hover:underline">
+          <Link href="/progress/achievements" className="text-xs font-medium text-averna-neon hover:underline">
             View all
           </Link>
         }

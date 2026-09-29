@@ -137,7 +137,7 @@ export async function ExecutiveOverview() {
             <div className="flex items-center gap-4 shrink-0">
               <div className="relative h-28 w-28">
                 <svg viewBox="0 0 100 100" className="h-28 w-28 -rotate-90">
-                  <circle cx="50" cy="50" r={R} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="9" />
+                  <circle cx="50" cy="50" r={R} fill="none" className="stroke-white/[0.08]" strokeWidth="9" />
                   <circle
                     cx="50" cy="50" r={R} fill="none"
                     stroke={st.stroke} strokeWidth="9" strokeLinecap="round"
@@ -213,7 +213,7 @@ export async function ExecutiveOverview() {
       </Card>
 
       {/* Executive metrics */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {metrics.map((m) => {
           const Icon = m.icon;
           return (

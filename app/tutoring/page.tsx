@@ -98,7 +98,7 @@ export default async function TutoringPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <PageHeader
           back={{ href: "/dashboard", label: "Back to Dashboard" }}
           icon={UserCheck}
@@ -184,7 +184,7 @@ export default async function TutoringPage() {
                   {openSlots.length === 0 ? (
                     <p className="text-sm text-gray-400">All slots are currently booked.</p>
                   ) : (
-                    <div className="grid sm:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {openSlots.map((s) => (
                         <div
                           key={s.id}

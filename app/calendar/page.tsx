@@ -85,7 +85,7 @@ export default async function CalendarPage({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-3xl pb-24 lg:pb-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl pb-10 lg:pb-8">
         <PageHeader
           back={{ href: "/dashboard", label: "Back to Dashboard" }}
           icon={CalendarDays}

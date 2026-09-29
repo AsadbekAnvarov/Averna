@@ -69,7 +69,7 @@ export default async function PlacementResultPage({ params }: { params: { attemp
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-5xl px-4 py-6 pb-24 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-5xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
         {/* Level + recommendation */}
         <section
           aria-labelledby="placement-result-title"
@@ -142,7 +142,7 @@ export default async function PlacementResultPage({ params }: { params: { attemp
           <h2 id="placement-sections-title" className={cn("mb-4 text-lg font-semibold text-white", ENTER)}>
             Section by section
           </h2>
-          <ul role="list" className="grid gap-4 md:grid-cols-2">
+          <ul role="list" className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {PLACEMENT_SECTIONS.map((sec, i) => (
               <SectionCard key={sec} section={sec} result={r.sections[sec]} delay={150 + i * 90} />
             ))}
@@ -154,7 +154,7 @@ export default async function PlacementResultPage({ params }: { params: { attemp
           <h2 id="placement-sw-title" className="mb-4 text-lg font-semibold text-white">
             What stood out
           </h2>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="av-panel rounded-2xl p-5">
               <h3 className="flex items-center gap-2 text-sm font-semibold text-white">
                 <ThumbsUp className="h-4 w-4 text-averna-neon" aria-hidden />
@@ -201,7 +201,7 @@ export default async function PlacementResultPage({ params }: { params: { attemp
               <TrendingUp className="h-5 w-5 text-averna-neon" aria-hidden />
               What to study first
             </h2>
-            <ul role="list" className="grid gap-3 md:grid-cols-3">
+            <ul role="list" className="grid grid-cols-1 gap-3 md:grid-cols-3">
               {s.studyFirst.map((l, i) => (
                 <li key={l.href} className="av-panel glow-hover relative flex flex-col rounded-2xl p-4 focus-within:border-averna-neon/40">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500">Step {i + 1}</p>
@@ -252,7 +252,7 @@ export default async function PlacementResultPage({ params }: { params: { attemp
         )}
 
         {/* Speaking + how the level was worked out */}
-        <Reveal as="section" aria-label="About this result" className="mt-8 grid gap-4 md:grid-cols-2">
+        <Reveal as="section" aria-label="About this result" className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="av-panel flex items-start gap-3 rounded-2xl p-5">
             <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-400/10 text-amber-300">
               <Mic className="h-5 w-5" />
@@ -421,7 +421,7 @@ function SectionCard({ section, result, delay }: { section: PlacementSection; re
       {result && section === "WRITING" && !skipped && (
         <div className="mt-4 flex flex-1 flex-col">
           {result.criteria && result.assessedBy === "ai" && (
-            <dl className="grid gap-2 sm:grid-cols-2">
+            <dl className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {(
                 [
                   ["task", "Task response"],

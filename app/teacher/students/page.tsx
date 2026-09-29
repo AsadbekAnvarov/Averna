@@ -132,7 +132,7 @@ export default async function TeacherStudentsPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-5xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}

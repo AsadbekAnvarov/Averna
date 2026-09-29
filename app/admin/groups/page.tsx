@@ -243,7 +243,7 @@ export default async function AdminGroupsPage({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
@@ -260,7 +260,7 @@ export default async function AdminGroupsPage({
         <Card className="glass border-averna-purple/30 mb-8">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-purple"><Plus className="h-5 w-5" /> Yangi guruh</CardTitle></CardHeader>
           <CardContent>
-            <form action={createGroup} className="grid sm:grid-cols-2 gap-4">
+            <form action={createGroup} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="name">Guruh nomi *</Label>
                 <Input id="name" name="name" placeholder="masalan, IELTS Advanced — Kechki" className="bg-background/50" required />
@@ -357,7 +357,7 @@ function GroupCard({
             <p className="text-white font-medium truncate">{g.name}</p>
             <span className="text-xs text-gray-400 flex items-center gap-1 shrink-0"><Users className="h-3 w-3" /> {count}</span>
           </div>
-          <div className="grid sm:grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <select name="teacherId" defaultValue={g.teacherId} className="rounded-md border border-input bg-background/60 px-2 py-2 text-xs text-white">
               {teachers.map((t) => <option key={t.id} value={t.id} className="bg-averna-dark">{t.user.name}</option>)}
             </select>
@@ -449,7 +449,7 @@ function GroupCard({
               <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-averna-cyan">
                 <UserPlus className="h-3.5 w-3.5" /> Hisobsiz oʻquvchi qoʻshish
               </p>
-              <div className="grid sm:grid-cols-4 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
                 <Input name="fullName" placeholder="Toʻliq ism *" required className="bg-background/50 h-9 text-xs sm:col-span-2" />
                 <Input name="age" type="number" min="1" max="119" placeholder="Yosh" className="bg-background/50 h-9 text-xs" />
                 <Input name="phone" placeholder="Telefon" className="bg-background/50 h-9 text-xs" />

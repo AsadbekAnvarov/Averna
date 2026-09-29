@@ -111,7 +111,7 @@ export default async function HomeworkPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-6xl px-4 py-8 pb-24 lg:pb-8">
+      <div className="container mx-auto max-w-6xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
         <Link href="/dashboard" className="mb-4 block text-sm text-averna-neon hover:underline">
           ← Back to Dashboard
         </Link>
@@ -139,7 +139,7 @@ export default async function HomeworkPage() {
               </CardContent>
             </Card>
           ) : (
-            <ul role="list" className="grid gap-4 md:grid-cols-2">
+            <ul role="list" className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {todo.map((hw, i) => (
                 <li key={hw.id}>
                   <TodoCard

@@ -122,9 +122,9 @@ export async function POST(req: NextRequest) {
       const title = text(body.title, 200);
       const description = text(body.description, 20000);
       if (!title || !description) return bad("Add a title and instructions.");
-      const module = MODULES.find((m) => m === body.module);
-      if (!module) return bad("Choose a module.");
-      data = { title, description, module, difficulty: int(body.difficulty, 1, 5, 2), points, dueDate: due, teacherId };
+      const skillModule = MODULES.find((m) => m === body.module);
+      if (!skillModule) return bad("Choose a module.");
+      data = { title, description, module: skillModule, difficulty: int(body.difficulty, 1, 5, 2), points, dueDate: due, teacherId };
     }
 
     const created: { id: string; groupId: string }[] = await db.$transaction(

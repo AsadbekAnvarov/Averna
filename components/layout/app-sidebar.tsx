@@ -12,7 +12,6 @@ import {
   Headphones,
   Mic,
   Trophy,
-  Award,
   Film,
   MessageSquare,
   BarChart,
@@ -24,8 +23,6 @@ import {
   CalendarClock,
   Gift,
   CalendarDays,
-  Crown,
-  Swords,
   Library,
   Wallet,
   Bot,
@@ -33,11 +30,9 @@ import {
   ClipboardCheck,
   Megaphone,
   Notebook,
-  ShieldCheck,
   DollarSign,
   Activity,
   Settings,
-  Database,
   GraduationCap,
   FolderOpen,
   Bell,
@@ -53,75 +48,62 @@ import {
   BarChart3,
   Send,
   Search,
+  LayoutGrid,
+  Dumbbell,
   type LucideIcon,
 } from "lucide-react";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { avatarSrc } from "@/lib/avatars";
 
-type NavItem = { name: string; href: string; icon: LucideIcon; badge?: string };
+type NavItem = { name: string; href: string; icon: LucideIcon; badge?: string; /** only active on this exact path */ exact?: boolean };
 type NavSection = { label: string; items: NavItem[] };
 
+// Five groups, in the order a student thinks about them. Merged pages
+// (Analytics → My Progress, Leagues/Team Challenge → Rankings, Achievements →
+// My Progress) redirect from their old URLs — see next.config.mjs.
 const STUDENT_NAV: NavSection[] = [
   {
-    label: "Overview",
+    label: "Study",
     items: [
       { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-      { name: "My Schedule", href: "/schedule", icon: CalendarClock },
-      { name: "Calendar", href: "/calendar", icon: CalendarDays },
-      { name: "Notifications", href: "/notifications", icon: Bell },
-    ],
-  },
-  {
-    label: "IELTS Skills",
-    items: [
+      { name: "Learning Center", href: "/learning", icon: LayoutGrid, exact: true },
       { name: "Reading", href: "/learning/reading", icon: BookOpen },
       { name: "Listening", href: "/learning/listening", icon: Headphones },
       { name: "Writing", href: "/learning/writing", icon: PenTool },
       { name: "Speaking", href: "/learning/speaking", icon: Mic },
       { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
       { name: "Grammar", href: "/grammar", icon: SpellCheck },
+      { name: "Vocabulary", href: "/flashcards", icon: Layers },
     ],
   },
   {
-    label: "Practice & Immersion",
+    label: "Practice",
     items: [
       { name: "Mock Exams", href: "/learning/mock-exam", icon: GraduationCap },
       { name: "Placement Test", href: "/learning/placement", icon: Compass },
       { name: "Daily Challenge", href: "/challenge", icon: Zap },
-      { name: "Vocabulary", href: "/flashcards", icon: Layers },
+      { name: "Practice Studio", href: "/studio", icon: Dumbbell },
+      { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
+      { name: "AI Mentor", href: "/mentor", icon: Sparkles },
       { name: "Daily Article", href: "/article", icon: Newspaper },
       { name: "Movie Time", href: "/movies", icon: Film },
     ],
   },
   {
-    label: "AI Tools",
+    label: "Progress",
     items: [
-      { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
-      { name: "AI Mentor", href: "/mentor", icon: Sparkles },
-    ],
-  },
-  {
-    label: "My Progress",
-    items: [
+      { name: "My Progress", href: "/progress", icon: TrendingUp },
       { name: "Learning DNA", href: "/learning-dna", icon: Dna, badge: "New" },
-      { name: "Progress Tracking", href: "/progress", icon: TrendingUp },
-      { name: "Analytics", href: "/analytics", icon: BarChart },
-      { name: "Achievements", href: "/achievements", icon: Award },
-    ],
-  },
-  {
-    label: "Community",
-    items: [
-      { name: "Leaderboard", href: "/rankings", icon: Trophy },
-      { name: "Leagues", href: "/leagues", icon: Crown },
-      { name: "Team Challenge", href: "/team-challenge", icon: Swords },
+      { name: "Rankings", href: "/rankings", icon: Trophy },
       { name: "Rewards", href: "/rewards", icon: Gift },
     ],
   },
   {
-    label: "Classroom",
+    label: "Class",
     items: [
       { name: "Homework", href: "/homework", icon: Notebook },
+      { name: "My Schedule", href: "/schedule", icon: CalendarClock },
+      { name: "Calendar", href: "/calendar", icon: CalendarDays },
       { name: "Materials", href: "/materials", icon: Library },
       { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
       { name: "Messages", href: "/messages", icon: MessageSquare },
@@ -130,6 +112,7 @@ const STUDENT_NAV: NavSection[] = [
   {
     label: "Account",
     items: [
+      { name: "Notifications", href: "/notifications", icon: Bell },
       { name: "Billing", href: "/billing", icon: Wallet },
       { name: "Profile", href: "/profile", icon: User },
       { name: "Settings", href: "/settings", icon: Settings },
@@ -240,14 +223,24 @@ const ADMIN_NAV: NavSection[] = [
   },
 ];
 
-function isActive(pathname: string, href: string): boolean {
-  if (href === pathname) return true;
-  // Treat /teacher/homework as active for /teacher/homework/create only if exact prefix
-  if (pathname.startsWith(href + "/")) {
-    // Avoid matching /dashboard for /dashboard/whatever incorrectly — generic prefix rule works fine
-    return true;
+function matches(pathname: string, item: NavItem): boolean {
+  if (item.href === pathname) return true;
+  return !item.exact && pathname.startsWith(item.href + "/");
+}
+
+/**
+ * The single nav item to highlight: the most specific match wins, so
+ * /teacher/homework/create lights up "Create Homework" only (not "Homework"
+ * too), and /learning/reading lights up "Reading", not "Learning Center".
+ */
+function activeHref(pathname: string, sections: NavSection[]): string | null {
+  let best: string | null = null;
+  for (const section of sections) {
+    for (const item of section.items) {
+      if (matches(pathname, item) && (!best || item.href.length > best.length)) best = item.href;
+    }
   }
-  return false;
+  return best;
 }
 
 function getNavForRole(role: string | undefined): { sections: NavSection[]; label: string; accent: string } {
@@ -260,6 +253,11 @@ function getNavForRole(role: string | undefined): { sections: NavSection[]; labe
     default:
       return { sections: STUDENT_NAV, label: "Student Portal", accent: "averna-neon" };
   }
+}
+
+/** Roles that get the phone bottom tab bar. */
+function hasTabBar(role: string | undefined): role is "STUDENT" | "TEACHER" | "ADMIN" {
+  return role === "STUDENT" || role === "TEACHER" || role === "ADMIN";
 }
 
 function isPublicRoute(pathname: string): boolean {
@@ -301,6 +299,7 @@ export function AppSidebar() {
 
   const role = (session.user as { role?: string }).role;
   const { sections, label, accent } = getNavForRole(role);
+  const current = activeHref(pathname, sections);
   const uz = role === "ADMIN";
   const homeHref = role === "ADMIN" ? "/admin/dashboard" : role === "TEACHER" ? "/teacher/dashboard" : "/dashboard";
   const image = avatarSrc(session.user.image);
@@ -412,7 +411,7 @@ export function AppSidebar() {
               <div className="space-y-0.5">
                 {section.items.map((item) => {
                   const Icon = item.icon;
-                  const active = isActive(pathname, item.href);
+                  const active = item.href === current;
                   return (
                     <Link
                       key={item.href}
@@ -446,16 +445,16 @@ export function AppSidebar() {
         </nav>
       </aside>
 
-      {/* Mobile bottom tab bar — quick access to the 5 most-used student destinations */}
-      {role === "STUDENT" && <MobileNav />}
+      {/* Mobile bottom tab bar — the 5 most-used destinations of this role */}
+      {hasTabBar(role) && <MobileNav role={role} />}
     </>
   );
 }
 
 /**
  * Wraps children with the navigation + correct spacing.
- * On phones the content starts below the top app bar (and, for students, ends
- * above the bottom tab bar). `--app-bar-h` lets sticky elements (dashboard tabs,
+ * On phones the content starts below the top app bar and ends above the
+ * bottom tab bar. `--app-bar-h` lets sticky elements (dashboard tabs,
  * exam timers…) park right under the top bar instead of hiding behind it.
  */
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -463,7 +462,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();
   // Reserve the space while the session loads too, so the page doesn't jump.
   const chrome = !isPublicRoute(pathname) && status !== "unauthenticated";
-  const isStudent = (session?.user as { role?: string } | undefined)?.role === "STUDENT";
+  const tabBar = hasTabBar((session?.user as { role?: string } | undefined)?.role);
 
   return (
     <>
@@ -472,7 +471,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         className={cn(
           chrome &&
             "lg:pl-64 pt-[calc(3.5rem+env(safe-area-inset-top))] lg:pt-0 [--app-bar-h:calc(3.5rem+env(safe-area-inset-top))] lg:[--app-bar-h:0px]",
-          chrome && isStudent && "pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0"
+          chrome && tabBar && "pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0"
         )}
       >
         {children}

@@ -88,7 +88,7 @@ export function InnovationRadar() {
         </p>
       </CardHeader>
       <CardContent>
-        <div className="grid md:grid-cols-2 gap-2.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
           {IDEAS.map((idea) => {
             const s = STATUS_META[idea.status];
             return (

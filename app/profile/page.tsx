@@ -111,7 +111,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <PageHeader
           back={{ href: "/dashboard", label: "Back to Dashboard" }}
           icon={User}
@@ -151,7 +151,7 @@ export default function ProfilePage() {
           </CardHeader>
           <CardContent>
             {profile.groupName ? (
-              <div className="grid sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <p className="text-xs text-gray-400">Level</p>
                   <p className="text-white font-medium">{profile.level || profile.groupLevel || "—"}</p>
@@ -181,7 +181,7 @@ export default function ProfilePage() {
             <CardTitle>Edit My Profile</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="grid sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="name" className="flex items-center gap-2">
                   <User className="h-4 w-4" /> Full Name

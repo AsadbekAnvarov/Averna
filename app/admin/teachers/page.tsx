@@ -153,7 +153,7 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
@@ -178,7 +178,7 @@ export default async function AdminTeachersPage({ searchParams }: { searchParams
         <Card className="glass border-averna-purple/30 mb-8">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-purple"><Plus className="h-5 w-5" /> Oʻqituvchi qoʻshish</CardTitle></CardHeader>
           <CardContent>
-            <form action={addTeacher} className="grid sm:grid-cols-2 gap-4">
+            <form action={addTeacher} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Toʻliq ism</Label>
                 <Input id="name" name="name" placeholder="masalan, Aziz Karimov" className="bg-background/50" required />

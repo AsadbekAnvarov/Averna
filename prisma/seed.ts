@@ -145,9 +145,20 @@ async function main() {
     },
   ];
 
-  for (const quote of quotes) {
-    await prisma.dailyQuote.create({
-      data: quote,
+  // One quote per day starting today (Tashkent, UTC+5): `date` is unique, and the
+  // dashboard shows the quote whose date falls on the current Tashkent day.
+  // Upserting by date keeps the seed re-runnable.
+  const TASHKENT_OFFSET_MS = 5 * 60 * 60 * 1000;
+  const DAY_MS = 24 * 60 * 60 * 1000;
+  const local = new Date(Date.now() + TASHKENT_OFFSET_MS);
+  local.setUTCHours(0, 0, 0, 0);
+  const todayStart = local.getTime() - TASHKENT_OFFSET_MS;
+  for (const [i, quote] of quotes.entries()) {
+    const date = new Date(todayStart + i * DAY_MS);
+    await prisma.dailyQuote.upsert({
+      where: { date },
+      update: {},
+      create: { ...quote, date },
     });
   }
   console.log(`✅ Created ${quotes.length} daily quotes`);

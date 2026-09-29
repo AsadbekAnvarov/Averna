@@ -280,7 +280,7 @@ export default async function SpeakingResultPage({ params }: { params: { testId:
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-4xl space-y-6 px-4 py-6 pb-24 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-4xl space-y-6 px-4 py-6 pb-10 sm:py-8 lg:pb-8">
         <section aria-labelledby="speaking-result-title" className="av-panel av-panel-hero rounded-3xl px-5 pb-6 pt-3 sm:px-8 sm:pb-8 sm:pt-5">
           <Link
             href={backHref}
@@ -345,7 +345,7 @@ export default async function SpeakingResultPage({ params }: { params: { testId:
             </ul>
           )}
 
-          <div className="mt-6 grid items-center gap-6 sm:grid-cols-[auto_1fr]">
+          <div className="mt-6 grid grid-cols-1 items-center gap-6 sm:grid-cols-[auto_1fr]">
             <div className="mx-auto text-center sm:mx-0">
               <p className="text-6xl font-bold tabular-nums tracking-tight text-white sm:text-7xl">{fmtBand(band)}</p>
               <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-400">{review ? "Band" : "Est. band"}</p>
@@ -384,7 +384,7 @@ export default async function SpeakingResultPage({ params }: { params: { testId:
           <h2 id="speaking-criteria-title" className="text-sm font-semibold text-white">
             Band by criterion
           </h2>
-          <dl className="mt-4 grid gap-3 sm:grid-cols-2">
+          <dl className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {criteria.map((cr) => (
               <div key={cr.key} className="flex min-h-[72px] items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
                 <dt className="text-sm text-gray-300">

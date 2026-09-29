@@ -167,7 +167,7 @@ export function LessonBuilder() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Section title="Objectives" items={plan.objectives} />
               <div>
                 <p className="text-[11px] uppercase tracking-wider text-averna-purple mb-1">Warm-up</p>
@@ -208,7 +208,7 @@ export function LessonBuilder() {
               </ul>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="rounded-lg border border-averna-neon/30 bg-averna-neon/5 p-3">
                 <p className="text-[11px] uppercase tracking-wider text-averna-neon mb-1">Stronger students</p>
                 <p className="text-sm text-gray-300">{plan.differentiation.stronger}</p>

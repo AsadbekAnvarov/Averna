@@ -29,7 +29,7 @@ export function SectionHeader({
         )}
         <div className="min-w-0">
           <h2 className="text-lg font-bold text-white tracking-tight truncate">{title}</h2>
-          {subtitle && <p className="text-xs text-gray-400 truncate">{subtitle}</p>}
+          {subtitle && <p className="text-xs text-gray-400 line-clamp-2 sm:truncate">{subtitle}</p>}
         </div>
       </div>
       {action && (

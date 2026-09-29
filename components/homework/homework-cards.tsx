@@ -84,7 +84,7 @@ export function TodoCard({ hw, exam, startHref }: { hw: TodoHomework; exam: Exam
         </span>
         <span className="inline-flex items-center gap-1">
           <Trophy className="h-3 w-3 text-averna-neon" aria-hidden /> {hw.points} pts
-          {bonus > 0 && <span className="text-averna-neon"> (+{bonus} if you're next)</span>}
+          {bonus > 0 && <span className="text-averna-neon"> (+{bonus} if you’re next)</span>}
         </span>
       </div>
       {overdue && <p className="mt-2 text-xs text-red-300">Overdue — you can still hand it in; it will be marked late.</p>}

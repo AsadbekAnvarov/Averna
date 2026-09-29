@@ -264,7 +264,7 @@ export default async function TeacherHomeworkDetailPage({ params }: { params: { 
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-5xl px-4 py-8 pb-24 lg:pb-8">
+      <div className="container mx-auto max-w-5xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/teacher/homework", label: "Back to Homework" }}
@@ -292,7 +292,7 @@ export default async function TeacherHomeworkDetailPage({ params }: { params: { 
           </div>
           {info && <p className="mt-2 text-sm text-gray-200">{info.contentTitle}</p>}
           {info && !info.available && (
-            <p className="mt-2 text-xs text-amber-300">This content is no longer in the library — students can't start it any more.</p>
+            <p className="mt-2 text-xs text-amber-300">This content is no longer in the library — students can’t start it any more.</p>
           )}
           <details className="mt-3 text-sm">
             <summary className="cursor-pointer text-averna-cyan hover:underline">Instructions students see</summary>

@@ -88,7 +88,7 @@ export default async function AdminRewardsPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
@@ -135,7 +135,7 @@ export default async function AdminRewardsPage() {
         <Card className="glass border-averna-cyan/30 mb-8">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><Plus className="h-5 w-5" /> Mukofot qoʻshish</CardTitle></CardHeader>
           <CardContent>
-            <form action={addReward} className="grid sm:grid-cols-2 gap-4">
+            <form action={addReward} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Nomi</Label>
                 <Input id="name" name="name" placeholder="masalan, Bepul sinov darsi" className="bg-background/50" required />
@@ -167,7 +167,7 @@ export default async function AdminRewardsPage() {
         <Card className="glass border-white/10">
           <CardHeader><CardTitle className="text-white">Katalog ({rewards.length})</CardTitle></CardHeader>
           <CardContent>
-            <div className="grid sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {rewards.map((r) => (
                 <div key={r.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
                   <span className="text-white text-sm">

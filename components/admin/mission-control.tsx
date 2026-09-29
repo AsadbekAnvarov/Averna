@@ -53,7 +53,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
           </p>
 
           {/* Today's numbers */}
-          <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-1.5">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
             {bullets.map((b, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
                 <span className="text-averna-neon mt-1.5 h-1 w-1 rounded-full bg-averna-neon shrink-0" /> {b}
@@ -62,7 +62,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
           </ul>
 
           {/* Priorities / risks / actions */}
-          <div className="grid md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div className="rounded-xl border border-white/10 bg-white/5 p-3">
               <p className="text-[11px] uppercase tracking-wider text-averna-cyan mb-1.5 flex items-center gap-1">
                 <ListChecks className="h-3.5 w-3.5" /> Ustuvor vazifalar
@@ -115,7 +115,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
         </CardContent>
       </Card>
 
-      <div className="grid lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Module 2 — Critical Event Center */}
         <Card className="glass border-red-500/30">
           <CardHeader>

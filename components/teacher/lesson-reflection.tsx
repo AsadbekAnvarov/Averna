@@ -74,7 +74,7 @@ export function LessonReflection({ lessons }: { lessons: Lesson[] }) {
         <CardTitle className="flex items-center gap-2 text-averna-blue">
           <NotebookPen className="h-5 w-5" /> Lesson Reflection
         </CardTitle>
-        <p className="text-xs text-gray-400">Pick a lesson — the AI reflects and suggests what's next</p>
+        <p className="text-xs text-gray-400">Pick a lesson — the AI reflects and suggests what’s next</p>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex gap-2 overflow-x-auto pb-1">

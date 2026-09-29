@@ -74,8 +74,8 @@ export async function SkillDna({ studentId }: { studentId: string }) {
           {/* Helix */}
           <div className="shrink-0">
             <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="dna-float">
-              <path d={pathA} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="2" strokeLinecap="round" />
-              <path d={pathB} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="2" strokeLinecap="round" />
+              <path d={pathA} fill="none" className="stroke-white/[0.18]" strokeWidth="2" strokeLinecap="round" />
+              <path d={pathB} fill="none" className="stroke-white/[0.18]" strokeWidth="2" strokeLinecap="round" />
               {rungs.map((r, i) => (
                 <g key={i}>
                   <line

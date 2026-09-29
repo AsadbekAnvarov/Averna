@@ -149,7 +149,7 @@ export default function PronunciationPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-2xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-2xl">
         <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Dashboard
         </Link>

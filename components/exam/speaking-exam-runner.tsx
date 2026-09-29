@@ -721,7 +721,7 @@ function ResultView({
         <h2 id="speaking-criteria-title" className="text-sm font-semibold text-white">
           Band by criterion
         </h2>
-        <dl className="mt-4 grid gap-3 sm:grid-cols-2">
+        <dl className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {CRITERIA.map((c) => {
             const value = result.criteria[c.key];
             return (
@@ -756,7 +756,7 @@ function ResultView({
         <h2 id="speaking-stats-title" className="text-sm font-semibold text-white">
           Your speaking
         </h2>
-        <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+        <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {perPart.map((p) => (
             <li key={p.part} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
               <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">Part {p.part}</p>
@@ -2046,7 +2046,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
           {set.title} · 3 parts · about 11–14 minutes
         </p>
 
-        <ol className="mt-5 grid gap-3 sm:grid-cols-3">
+        <ol className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {([1, 2, 3] as const).map((p) => (
             <li key={p} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <p className="text-xs font-semibold uppercase tracking-wider text-averna-neon">

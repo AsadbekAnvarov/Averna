@@ -39,7 +39,7 @@ export default function HomePage() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
           <FeatureCard
             icon={<Target className="w-12 h-12 text-averna-neon" />}
             title="AI-Powered Learning"
@@ -64,7 +64,7 @@ export default function HomePage() {
 
         {/* Stats Section */}
         <div className="mt-20 glass rounded-3xl p-12">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <StatCard number="500+" label="Active Students" />
             <StatCard number="50+" label="Expert Teachers" />
             <StatCard number="10,000+" label="Practice Tests Completed" />

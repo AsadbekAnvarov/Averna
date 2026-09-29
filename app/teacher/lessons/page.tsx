@@ -79,7 +79,7 @@ export default async function LessonLogPage({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
@@ -113,7 +113,7 @@ export default async function LessonLogPage({
               <CardContent>
                 <form action={addLesson} className="space-y-4">
                   <input type="hidden" name="groupId" value={selected?.id} />
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="topic">Topic *</Label>
                       <Input id="topic" name="topic" placeholder="e.g., Writing Task 2 — opinion essays" className="bg-background/50" required />

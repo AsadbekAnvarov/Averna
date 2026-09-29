@@ -55,20 +55,18 @@ export default async function ParentReportPage({ params }: { params: { studentId
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-3xl pb-12">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl pb-12">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <Link href="/teacher/students" className="text-averna-neon hover:underline text-sm">← Back to Students</Link>
           {/* Teaching strategy lives on its own page: this report is written to be
               shared with parents, so professional diagnostics stay out of it. */}
-          {session.user.role !== "STUDENT" && (
-            <Link
-              href={`/teacher/learning-dna/${student.id}`}
-              className="text-averna-purple hover:underline text-sm inline-flex items-center gap-1.5"
-            >
-              <Brain className="h-4 w-4" /> How this student learns
-            </Link>
-          )}
+          <Link
+            href={`/teacher/learning-dna/${student.id}`}
+            className="text-averna-purple hover:underline text-sm inline-flex items-center gap-1.5"
+          >
+            <Brain className="h-4 w-4" /> How this student learns
+          </Link>
         </div>
 
         {/* Report header */}

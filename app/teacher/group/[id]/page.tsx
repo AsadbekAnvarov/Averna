@@ -58,7 +58,7 @@ export default async function TeacherGroupPage({ params }: { params: { id: strin
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl pb-10 lg:pb-8">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
 
         <Link href="/teacher/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
@@ -81,7 +81,7 @@ export default async function TeacherGroupPage({ params }: { params: { id: strin
         </div>
 
         {/* Quick actions for this group */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {actions.map((a) => {
             const Icon = a.icon;
             return (
@@ -136,7 +136,7 @@ export default async function TeacherGroupPage({ params }: { params: { id: strin
         </Card>
 
         {/* Recent homework + lessons */}
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
             <SectionHeader icon={BookOpen} title="Recent Homework" accent="text-amber-400" action={{ label: "All", href: "/teacher/homework" }} />
             <Card className="glass border-amber-400/30">

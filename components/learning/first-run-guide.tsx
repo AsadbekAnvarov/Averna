@@ -34,7 +34,7 @@ export function FirstRunGuide({ name }: { name?: string | null }) {
           You haven&apos;t taken a test yet. Start with a quick baseline mock exam so we can map your level and build a personalised study plan.
         </p>
 
-        <ol className="grid sm:grid-cols-3 gap-3 mb-5">
+        <ol className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
           {STEPS.map((s, i) => {
             const Icon = s.icon;
             return (

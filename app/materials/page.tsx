@@ -77,7 +77,7 @@ export default async function MaterialsPage({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl pb-24 lg:pb-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl pb-10 lg:pb-8">
         <PageHeader
           back={{ href: "/dashboard", label: "Back to Dashboard" }}
           icon={Library}
@@ -165,7 +165,7 @@ export default async function MaterialsPage({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {materials.map((m) => (
               <Card key={m.id} className={`glass ${MODULE_COLORS[m.module] ?? "border-white/10"}`}>
                 <CardHeader className="pb-2">

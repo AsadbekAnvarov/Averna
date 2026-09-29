@@ -24,7 +24,7 @@ export function SessionOutcomeCard({ outcome }: { outcome: SessionOutcome }) {
         {o.headline}
       </h2>
 
-      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* What improved */}
         <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
           <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gray-400">

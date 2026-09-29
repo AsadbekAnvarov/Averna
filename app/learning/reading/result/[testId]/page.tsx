@@ -165,7 +165,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
   return (
     <div className="min-h-screen premium-gradient">
       <ResultCelebration score={test.score} target={target} />
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <div className="mb-8 animate-fade-in">
           <Link href="/learning/reading" className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
             <ArrowLeft className="h-4 w-4" />
@@ -208,7 +208,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
             <CardTitle className="text-averna-neon">Score Breakdown</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                 <CheckCircle className="h-8 w-8 text-green-400 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-green-400">{analysis.correctCount}</p>
@@ -236,7 +236,7 @@ export default async function ReadingResultPage({ params }: { params: { testId: 
             <div className="flex items-center gap-2 text-averna-cyan">
               <BookOpen className="h-5 w-5" />
               <h2 className="text-xl font-semibold">Question Review</h2>
-              <span className="text-xs text-gray-500 ml-2">Read the "Why" note under each incorrect answer to learn from it.</span>
+              <span className="text-xs text-gray-500 ml-2">Read the “Why” note under each incorrect answer to learn from it.</span>
             </div>
             {testData.passages.map((p, pIdx) => {
               let qNum = 0;

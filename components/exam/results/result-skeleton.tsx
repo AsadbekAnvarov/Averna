@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react";
 export function ResultSkeleton({ label = "Marking your answers…" }: { label?: string }) {
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-4xl space-y-6 px-4 py-6 pb-24 sm:py-8 lg:pb-8" aria-busy="true">
+      <div className="container mx-auto max-w-4xl space-y-6 px-4 py-6 pb-10 sm:py-8 lg:pb-8" aria-busy="true">
         <div className="av-panel av-panel-hero rounded-3xl px-5 pb-6 pt-5 sm:px-8 sm:pb-8">
           <div className="skeleton h-4 w-32" />
           <div className="mt-5 flex items-start gap-4">
@@ -18,7 +18,7 @@ export function ResultSkeleton({ label = "Marking your answers…" }: { label?: 
               <div className="skeleton h-3.5 w-40 max-w-full" />
             </div>
           </div>
-          <div className="mt-6 grid items-center gap-6 sm:grid-cols-[auto_1fr]" aria-hidden>
+          <div className="mt-6 grid grid-cols-1 items-center gap-6 sm:grid-cols-[auto_1fr]" aria-hidden>
             <div className="skeleton mx-auto h-36 w-36 rounded-full sm:mx-0" />
             <div className="grid grid-cols-2 gap-2.5">
               {[0, 1, 2, 3].map((i) => (

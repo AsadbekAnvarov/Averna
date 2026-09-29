@@ -110,7 +110,7 @@ export function ExamLibrary({ skill, exams, path, type, difficulty, difficultyPa
                 </h2>
                 <p className="mt-0.5 text-sm text-gray-400">{g.hint}</p>
               </Reveal>
-              <RevealGroup as="ul" role="list" className="grid gap-4 md:grid-cols-2">
+              <RevealGroup as="ul" role="list" className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {g.items.map((e) =>
                   skill === "READING" ? (
                     <ReadingExamCard key={`${e.source}-${e.id}`} exam={e} />

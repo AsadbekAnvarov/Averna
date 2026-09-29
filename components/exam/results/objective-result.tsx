@@ -67,7 +67,7 @@ export function ObjectiveResult({
 
   return (
     <div className="min-h-screen premium-gradient print:!bg-white print:!bg-none print:[&_*]:!bg-none print:[&_*]:!text-black print:[&_*]:!shadow-none">
-      <div className="container mx-auto max-w-4xl space-y-6 px-4 py-6 pb-24 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-4xl space-y-6 px-4 py-6 pb-10 sm:py-8 lg:pb-8">
         <ResultHero
           skill={skill}
           title={attempt.title || test?.title || `${word} test`}

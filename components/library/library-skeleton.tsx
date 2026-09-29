@@ -17,7 +17,7 @@ export function LibrarySkeleton({
 }) {
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-6xl px-4 py-6 pb-24 sm:py-8 lg:pb-8" aria-busy="true">
+      <div className="container mx-auto max-w-6xl px-4 py-6 pb-10 sm:py-8 lg:pb-8" aria-busy="true">
         <div className="av-panel av-panel-hero rounded-3xl px-5 pb-6 pt-5 sm:px-8 sm:pb-8">
           <div className="skeleton h-4 w-32" />
           <div className="mt-5 flex items-start gap-4">

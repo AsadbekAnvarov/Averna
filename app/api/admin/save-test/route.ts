@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import type { Prisma } from "@prisma/client";
 import { requireTeacherOrAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { revalidateTag } from "next/cache";
@@ -21,16 +22,15 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json().catch(() => ({} as Record<string, unknown>));
-    const module = (typeof body.module === "string" ? body.module : "reading").toLowerCase();
+    const kind = (typeof body.module === "string" ? body.module : "reading").toLowerCase();
 
     let title: string;
     let description: string;
     let questions: number;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let data: any;
+    let data: unknown; // one of the validated test shapes below
     let moduleKey: string;
 
-    if (module === "speaking") {
+    if (kind === "speaking") {
       const parsed = speakingTestSchema.safeParse(body.test);
       if (!parsed.success) {
         return NextResponse.json({ error: "Invalid or incomplete speaking set data." }, { status: 400 });
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       questions = 0;
       data = t;
       moduleKey = "SPEAKING";
-    } else if (module === "writing-task1") {
+    } else if (kind === "writing-task1") {
       const parsed = writingTask1Schema.safeParse(body.test);
       if (!parsed.success) {
         return NextResponse.json({ error: "Invalid or incomplete Task 1 data." }, { status: 400 });
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       questions = 0;
       data = t;
       moduleKey = "WRITING_TASK1";
-    } else if (module === "writing") {
+    } else if (kind === "writing") {
       const parsed = writingPromptSchema.safeParse(body.test);
       if (!parsed.success) {
         return NextResponse.json({ error: "Invalid or incomplete writing prompt data." }, { status: 400 });
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
       questions = 0;
       data = t;
       moduleKey = "WRITING";
-    } else if (module === "listening") {
+    } else if (kind === "listening") {
       const parsed = listeningTestSchema.safeParse(body.test);
       if (!parsed.success) {
         return NextResponse.json({ error: "Invalid or incomplete listening test data." }, { status: 400 });
@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
         topic: typeof body.topic === "string" ? body.topic : null,
         level: typeof body.level === "string" ? body.level : null,
         published: body.publish !== false,
-        data,
+        data: data as Prisma.InputJsonValue,
         createdById: user.id,
       },
     });

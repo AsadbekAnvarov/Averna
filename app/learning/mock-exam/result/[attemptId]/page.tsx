@@ -113,7 +113,7 @@ export default async function MockResultPage({ params }: { params: { attemptId: 
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-5xl px-4 py-6 pb-24 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-5xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
         {/* Overall band */}
         <section
           aria-labelledby="mock-result-title"
@@ -191,7 +191,7 @@ export default async function MockResultPage({ params }: { params: { attemptId: 
           <h2 id="mock-sections-title" className={cn("mb-4 text-lg font-semibold text-white", ENTER)}>
             Section by section
           </h2>
-          <ul role="list" className="grid gap-4 md:grid-cols-2">
+          <ul role="list" className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {MOCK_SECTIONS.map((s, i) => (
               <SectionCard key={s} skill={s} result={r.results[s]} papers={r.papers} delay={150 + i * 90} viewerIsOwner={viewerIsOwner} />
             ))}
@@ -473,7 +473,7 @@ function SpeakingDetails({
   const feedback = (result?.feedback ?? []).filter((f) => typeof f === "string" && f.trim());
   return (
     <>
-      <dl className="grid gap-2 sm:grid-cols-2">
+      <dl className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {CRITERIA.map((c) => (
           <div key={c.key} className="flex items-center justify-between gap-3 rounded-xl border border-white/5 bg-white/[0.03] px-3 py-2.5">
             <dt className="text-xs text-gray-300">{c.label}</dt>

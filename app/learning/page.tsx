@@ -170,7 +170,7 @@ export default async function LearningCenterPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-5xl px-4 py-6 pb-24 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-5xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
         {/* Hero */}
         <section
           aria-labelledby="learning-hero-title"
@@ -214,7 +214,7 @@ export default async function LearningCenterPage() {
         <Reveal>
           <SectionHeader icon={Target} title="Choose a skill" subtitle="Full exam papers or short, focused practice" accent="text-averna-neon" />
         </Reveal>
-        <RevealGroup as="ul" role="list" className="mb-6 grid gap-4 sm:grid-cols-2">
+        <RevealGroup as="ul" role="list" className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {skills.map((s) => (
             <SkillLibraryCard key={s.skill} data={s} />
           ))}
@@ -230,7 +230,7 @@ export default async function LearningCenterPage() {
             <FirstRunGuide name={session.user.name} />
           </Reveal>
         ) : (
-          <Reveal className="mb-8 grid gap-6 lg:grid-cols-2">
+          <Reveal className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
             <Suspense fallback={<WidgetSkeleton rows={3} />}>
               <BandProgress studentId={student.id} targetBand={student.targetBand} />
             </Suspense>

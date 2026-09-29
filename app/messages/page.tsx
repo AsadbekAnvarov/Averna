@@ -104,7 +104,7 @@ export default async function MessagesPage({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-5xl pb-24 lg:pb-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl pb-10 lg:pb-8">
         <PageHeader
           className="mb-4"
           back={{ href: homeHref(role), label: "Back to Dashboard" }}
@@ -131,7 +131,7 @@ export default async function MessagesPage({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Contacts */}
             <Card className="glass border-averna-cyan/30 md:col-span-1">
               <CardContent className="py-4 space-y-1 max-h-[60vh] overflow-y-auto">

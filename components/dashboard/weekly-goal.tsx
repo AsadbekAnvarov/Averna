@@ -37,7 +37,7 @@ export function WeeklyGoal({ completed }: { completed: number }) {
         <div className="flex items-center gap-4">
           <div className="relative h-28 w-28 shrink-0">
             <svg width={112} height={112} viewBox="0 0 112 112" className="-rotate-90">
-              <circle cx={56} cy={56} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={9} />
+              <circle cx={56} cy={56} r={r} fill="none" className="stroke-white/[0.08]" strokeWidth={9} />
               <circle
                 cx={56}
                 cy={56}

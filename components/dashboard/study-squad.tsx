@@ -92,11 +92,11 @@ export async function StudySquad({ groupId, studentId }: { groupId: string | nul
     <Card className="glass border-averna-blue/30 relative overflow-hidden">
       <div className="pointer-events-none absolute -top-12 -left-12 h-44 w-44 rounded-full bg-averna-blue/10 blur-3xl" />
       <CardHeader>
-        <CardTitle className="flex items-center justify-between text-averna-blue">
-          <span className="flex items-center gap-2">
+        <CardTitle className="flex flex-col gap-1.5 text-averna-blue sm:flex-row sm:items-center sm:justify-between">
+          <span className="flex shrink-0 items-center gap-2 whitespace-nowrap">
             <Users className="h-5 w-5" /> Study Squad
           </span>
-          <span className="text-xs font-normal text-gray-400 truncate max-w-[45%]">
+          <span className="min-w-0 truncate text-xs font-normal text-gray-400 sm:max-w-[45%]">
             {group?.name} · {members.length} member{members.length === 1 ? "" : "s"}
           </span>
         </CardTitle>

@@ -182,7 +182,7 @@ export function AvatarEditor({ currentImage, name }: { currentImage: string | nu
                         aria-pressed={selected}
                         className={`relative aspect-square rounded-full transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none ${
                           selected
-                            ? "ring-2 ring-averna-neon ring-offset-2 ring-offset-[#04070d]"
+                            ? "ring-2 ring-averna-neon ring-offset-2 ring-offset-background"
                             : "ring-1 ring-white/10 hover:ring-white/30"
                         }`}
                       >

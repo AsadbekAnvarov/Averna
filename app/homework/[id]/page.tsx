@@ -85,7 +85,7 @@ export default async function HomeworkDetailPage({ params }: { params: { id: str
   if (existingSubmission) {
     return (
       <div className="min-h-screen premium-gradient">
-        <div className="container mx-auto max-w-4xl px-4 py-8">
+        <div className="container mx-auto max-w-4xl px-4 py-6 sm:py-8">
           <div className="text-center text-white">
             <h1 className="mb-4 text-3xl font-bold">Already Submitted! ✓</h1>
             <p className="mb-2 text-gray-300">You&apos;ve already submitted this homework.</p>
@@ -153,7 +153,7 @@ function ExamHomeworkView({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-3xl px-4 py-8 pb-24 lg:pb-8">
+      <div className="container mx-auto max-w-3xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
         <Link href="/homework" className="mb-4 block text-sm text-averna-neon hover:underline">
           ← Back to Homework
         </Link>
@@ -178,7 +178,7 @@ function ExamHomeworkView({
             </p>
           )}
 
-          <dl className="mt-5 grid gap-3 text-sm sm:grid-cols-3">
+          <dl className="mt-5 grid grid-cols-1 gap-3 text-sm sm:grid-cols-3">
             <div className="flex items-center gap-2 text-gray-300">
               <CalendarClock className="h-4 w-4 shrink-0 text-averna-cyan" aria-hidden />
               <dt className="sr-only">Due</dt>

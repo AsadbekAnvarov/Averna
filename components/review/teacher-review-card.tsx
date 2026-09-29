@@ -123,7 +123,7 @@ export async function TeacherReviewCard({
       </p>
 
       {rated && (
-        <dl className="mt-4 grid gap-2 sm:grid-cols-2">
+        <dl className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
           {defs.map((d) => {
             const v = criteria[d.key];
             return (

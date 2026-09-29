@@ -77,7 +77,7 @@ export default async function ReviewAttemptPage({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-7xl px-4 py-8 pb-24 lg:pb-8">
+      <div className="container mx-auto max-w-7xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
         {role === "ADMIN" ? <AdminHeader user={user} /> : <TeacherHeader user={user} />}
 
         <Link href={back} className="mb-4 inline-flex items-center gap-1 text-sm text-averna-neon hover:underline">
@@ -143,7 +143,7 @@ export default async function ReviewAttemptPage({
           </p>
         )}
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
           <div className="min-w-0 space-y-6">
             {a.writing && <WritingWork attempt={a} w={a.writing} filters={filters} />}
             {a.speaking && <SpeakingWork s={a.speaking} />}
@@ -443,7 +443,7 @@ function SpeakingWork({ s }: { s: SpeakingDetail }) {
 
 function CriteriaList({ skill, taskType, criteria }: { skill: ReviewSkill; taskType: WritingTask | null; criteria: ReviewCriteria }) {
   return (
-    <dl className="grid gap-2 sm:grid-cols-2">
+    <dl className="grid grid-cols-1 gap-2 sm:grid-cols-2">
       {criteriaFor(skill, taskType).map((c) => {
         const v = criteria[c.key];
         return (
@@ -502,7 +502,7 @@ function AiAssessment({ attempt: a, taskType }: { attempt: ReviewAttempt; taskTy
       </div>
 
       {w && (w.strengths.length > 0 || w.weaknesses.length > 0 || w.recommendations.length > 0) && (
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
+        <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
           {w.strengths.length > 0 && (
             <div>
               <h3 className="mb-2 text-sm font-semibold text-green-400">Strengths</h3>

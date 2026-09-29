@@ -67,7 +67,7 @@ export default async function TeacherProfilePage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
         <TeacherHeader user={{ name: teacher.user.name ?? "Teacher", email: teacher.user.email, image: teacher.user.image }} />
 
         <PageHeader
@@ -83,7 +83,7 @@ export default async function TeacherProfilePage() {
         </div>
 
         {/* Stats */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card className="glass border-averna-cyan/30">
             <CardHeader>
               <CardTitle className="text-sm flex items-center gap-2 text-averna-cyan">
@@ -128,7 +128,7 @@ export default async function TeacherProfilePage() {
             {teacher.groups.length === 0 ? (
               <p className="text-gray-400 text-sm">No groups assigned yet.</p>
             ) : (
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {teacher.groups.map((g) => (
                   <div
                     key={g.id}
@@ -180,7 +180,7 @@ export default async function TeacherProfilePage() {
                 <Input value={teacher.user.email} disabled className="bg-background/50 opacity-75" />
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="specialty" className="flex items-center gap-2">
                     <GraduationCap className="h-4 w-4" /> Specialty
