@@ -53,16 +53,18 @@ export function LiveRefresh({ label = "Live" }: { intervalMs?: number; label?: s
   return (
     <button
       onClick={manual}
-      title="Click to refresh"
-      className="inline-flex items-center gap-1.5 text-[11px] text-gray-400 hover:text-white transition-colors"
+      title={`${formatAgo(secondsAgo)} — click to refresh`}
+      aria-label={`${label}, ${formatAgo(secondsAgo)}. Refresh`}
+      className="inline-flex items-center gap-1.5 whitespace-nowrap text-[11px] text-gray-400 hover:text-white transition-colors"
     >
       <span className="relative flex h-2 w-2">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-averna-neon opacity-75" />
         <span className="relative inline-flex rounded-full h-2 w-2 bg-averna-neon" />
       </span>
       <span>{label}</span>
-      <span className="text-gray-600">·</span>
-      <span>{formatAgo(secondsAgo)}</span>
+      {/* The "updated … ago" text only where there's room; phones keep dot · Live · ⟳ */}
+      <span className="hidden text-gray-600 sm:inline">·</span>
+      <span className="hidden sm:inline">{formatAgo(secondsAgo)}</span>
       <RefreshCw className={`h-3 w-3 ${spinning ? "animate-spin" : ""}`} />
     </button>
   );
