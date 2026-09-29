@@ -56,7 +56,7 @@ export function FutureSelf({
           {/* Evolving avatar + ring */}
           <div className="relative shrink-0">
             <svg width="112" height="112" viewBox="0 0 112 112" className="-rotate-90">
-              <circle cx="56" cy="56" r={R} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="6" />
+              <circle cx="56" cy="56" r={R} fill="none" className="stroke-white/[0.1]" strokeWidth="6" />
               <circle
                 cx="56"
                 cy="56"

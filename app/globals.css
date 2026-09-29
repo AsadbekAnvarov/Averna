@@ -540,9 +540,11 @@ html.text-scale-lg { font-size: 18px; }
 }
 
 /* Staggered fade-in for tab content children */
+/* fill-mode "both" hides a child only while its own delay/animation runs. (A
+   base opacity:0 here left any child with an animation of its own — e.g. the
+   placement prompt's fade-in — invisible once that animation ended.) */
 .tab-stagger > * {
-  opacity: 0;
-  animation: stagger-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: stagger-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .tab-stagger > *:nth-child(1) { animation-delay: 0.04s; }
 .tab-stagger > *:nth-child(2) { animation-delay: 0.10s; }

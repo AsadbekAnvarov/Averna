@@ -106,7 +106,31 @@ async function shoot(context, role, theme, device) {
       await action(page).catch((e) => problems.push(`${label}: action failed: ${e.message}`));
       await page.waitForTimeout(700);
     }
-    await page.waitForTimeout(500); // entrance animations
+    // Scroll through once so scroll-reveal content is shown, then settle.
+    await page.evaluate(async () => {
+      const step = Math.round(window.innerHeight * 0.8);
+      for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+        window.scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 120));
+      }
+      window.scrollTo(0, 0);
+    });
+    await page.waitForTimeout(900); // entrance animations
+    // Content that takes up space but can't be seen (stuck at opacity 0).
+    const ghosts = await page.evaluate(() => {
+      const out = [];
+      for (const el of document.querySelectorAll("body *")) {
+        const st = getComputedStyle(el);
+        if (st.opacity !== "0" || st.position === "fixed" || st.position === "absolute") continue;
+        if (el.closest('[aria-hidden="true"]') || out.some((o) => o.el.contains(el))) continue;
+        const r = el.getBoundingClientRect();
+        if (r.width < 120 || r.height < 40) continue;
+        out.push({ el, text: `<${el.tagName.toLowerCase()} class="${String(el.className).slice(0, 70)}"> “${(el.textContent ?? "").trim().slice(0, 50)}”` });
+        if (out.length === 3) break;
+      }
+      return out.map((o) => o.text);
+    });
+    for (const g of ghosts) problems.push(`${label}: invisible content: ${g}`);
     const body = (await page.textContent("body").catch(() => "")) ?? "";
     if (/Application error|Something went wrong|Internal Server Error/i.test(body)) problems.push(`${label}: error page shown`);
     // Anything wider than the screen is either sideways scrolling or content cut

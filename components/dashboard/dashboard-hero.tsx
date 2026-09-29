@@ -126,7 +126,7 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
           <div className="flex lg:flex-col items-center gap-4 lg:gap-2 shrink-0 border-t border-white/10 pt-4 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-8">
             <div className="relative h-24 w-24 sm:h-36 sm:w-36 shrink-0">
               <svg viewBox="0 0 144 144" className="h-full w-full -rotate-90">
-                <circle cx="72" cy="72" r={R} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="10" />
+                <circle cx="72" cy="72" r={R} fill="none" className="stroke-white/[0.08]" strokeWidth="10" />
                 <circle
                   className="ring-draw"
                   cx="72" cy="72" r={R} fill="none"
