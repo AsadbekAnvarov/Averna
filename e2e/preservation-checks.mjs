@@ -19,7 +19,8 @@
  * bottom tab bar has 5 tabs for every role (3.10).
  *
  * Determinism: frozen clock (page.clock), seeded Math.random, fonts loaded, CSS animations and
- * transitions off, prefers-reduced-motion, media play() rejected like a blocked autoplay.
+ * transitions off, prefers-reduced-motion, media play() rejected like a blocked autoplay, relative
+ * times ("5s ago") pinned to "just now" before each snapshot.
  * In CI (.github/workflows/screens.yml) --capture runs against the merge-base with main and --compare
  * against HEAD, both on the same seeded database. Exit code 1 on any difference or failed check.
  */
@@ -188,6 +189,21 @@ async function load(context, target, label, pinnedHref) {
 
 /** In-page: every visible element under the content root as [path, ...PROPS]. */
 function snapshot() {
+  // Pin relative times first ("updated 5s ago" → "just now"): they tick with the real clock between
+  // capture and compare, and a wider pill would shift its neighbours. Runs synchronously right before
+  // the measurements below, so no re-render can slip in between.
+  const RELATIVE = /\bjust now\b|\b\d+\s?(s|sec|secs|seconds?|m|min|mins|minutes?|h|hr|hours?)\s+ago\b/gi;
+  const texts = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let t = texts.nextNode(); t; t = texts.nextNode()) {
+    if (/^(SCRIPT|STYLE)$/.test(t.parentNode?.nodeName ?? "")) continue;
+    const pinned = t.nodeValue.replace(RELATIVE, "just now");
+    if (pinned !== t.nodeValue) t.nodeValue = pinned;
+  }
+  for (const el of document.body.querySelectorAll("[aria-label]")) {
+    const label = el.getAttribute("aria-label");
+    const pinned = label.replace(RELATIVE, "just now");
+    if (pinned !== label) el.setAttribute("aria-label", pinned);
+  }
   const root = document.querySelector(".exam-shell") || document.querySelector('[class~="lg:pl-64"]') || document.body;
   const r1 = (v) => Math.round(v * 10) / 10;
   const out = [];

@@ -56,7 +56,7 @@ describe("buildThemeBlock", () => {
   });
 
   it("app/globals.css holds exactly the generated block (regeneration gives no diff)", () => {
-    const css = readFileSync(join(process.cwd(), "app", "globals.css"), "utf8");
+    const css = readFileSync(join(process.cwd(), "app", "globals.css"), "utf8").replace(/\r\n/g, "\n");
     expect(css).toContain(block);
   });
 
