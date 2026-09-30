@@ -3,7 +3,7 @@ import { Loader2 } from "lucide-react";
 /** Full-screen placeholder shaped like the exam shell while the paper loads. */
 export default function ListeningTestLoading() {
   return (
-    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-[#040b09] text-gray-100" aria-busy="true">
+    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-exam-bg pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)] text-gray-100" aria-busy="true">
       <div className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-white/10 px-4 sm:px-6" aria-hidden>
         <div className="skeleton h-4 w-48 max-w-[50%]" />
         <div className="skeleton h-8 w-24 rounded-lg" />

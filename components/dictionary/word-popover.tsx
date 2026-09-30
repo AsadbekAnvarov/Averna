@@ -319,7 +319,7 @@ function PopoverPanel({ request, onClose, reviewLink }: { request: LookupRequest
       onKeyDown={onKeyDown}
       data-dictionary-popover=""
       className={cn(
-        "fixed z-[75] flex w-[min(22rem,calc(100vw-1rem))] flex-col overflow-hidden rounded-2xl border border-white/15 bg-[#0b1a16]/[0.97] text-left text-sm text-gray-200 shadow-[0_18px_48px_-14px_rgba(0,0,0,0.9)] outline-none backdrop-blur",
+        "fixed z-[75] flex w-[min(22rem,calc(100vw-1rem))] flex-col overflow-hidden rounded-2xl border border-white/15 bg-surface-raised/[0.97] av-float text-left text-sm text-gray-200 shadow-[0_18px_48px_-14px_rgba(0,0,0,0.9)] outline-none backdrop-blur",
         pos && "motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95 motion-safe:duration-150"
       )}
       style={{

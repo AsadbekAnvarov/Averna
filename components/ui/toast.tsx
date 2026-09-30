@@ -89,7 +89,7 @@ export function Toaster() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed top-4 right-4 z-[100] flex flex-col gap-2 w-[calc(100%-2rem)] max-w-sm pointer-events-none">
+    <div className="fixed top-[calc(4.5rem+env(safe-area-inset-top))] lg:top-4 right-[max(1rem,env(safe-area-inset-right))] z-[100] flex flex-col gap-2 w-[calc(100%-2rem)] max-w-sm pointer-events-none">
       {toasts.map((t) => (
         <ToastCard key={t.id} item={t} onClose={() => remove(t.id)} />
       ))}

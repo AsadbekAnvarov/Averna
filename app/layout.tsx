@@ -7,7 +7,7 @@ import { CommandPalette } from "@/components/command-palette";
 import { LiveNotifications } from "@/components/live-notifications";
 import { AppShell } from "@/components/layout/app-sidebar";
 import { GFX_TIER_SCRIPT } from "@/components/motion/gfx-tier";
-import { THEME_SCRIPT } from "@/components/theme/theme-script";
+import { THEME_COLORS, THEME_SCRIPT } from "@/components/theme/theme-script";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -57,10 +57,13 @@ export const metadata: Metadata = {
   },
 };
 
+// No static theme colour here: the theme-color <meta> is rendered in <head> below so
+// THEME_SCRIPT / ThemeProvider can switch it with the light/dark theme.
+// viewportFit "cover" makes env(safe-area-inset-*) non-zero on notched devices.
 export const viewport: Viewport = {
-  themeColor: "#04070d",
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -75,6 +78,8 @@ export default function RootLayout({
       <head>
         {/* Graphics tier (html[data-gfx]) before first paint — components/motion/gfx-tier.ts */}
         <script dangerouslySetInnerHTML={{ __html: GFX_TIER_SCRIPT }} />
+        {/* Browser-chrome colour; THEME_SCRIPT (next) and ThemeProvider update it for the light theme */}
+        <meta name="theme-color" content={THEME_COLORS.dark} suppressHydrationWarning />
         {/* Saved light/dark theme before first paint (no dark flash) — components/theme/theme-script.ts */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>

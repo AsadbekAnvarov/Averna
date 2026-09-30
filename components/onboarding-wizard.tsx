@@ -188,8 +188,8 @@ export function OnboardingWizard() {
   const canNext = step === 1 ? !!goal : step === 2 ? !!band : true;
 
   return (
-    <div className="fixed inset-0 z-[120] bg-black/75 backdrop-blur-sm flex items-center justify-center px-4">
-      <div className="glass-strong border border-averna-neon/40 rounded-2xl max-w-md w-full p-6 animate-pop-in relative">
+    <div className="fixed inset-0 z-[120] bg-black/75 backdrop-blur-sm flex items-center justify-center px-4 py-4">
+      <div className="av-modal-panel glass-strong border border-averna-neon/40 rounded-2xl max-w-md w-full p-6 animate-pop-in relative">
         {steps[step]}
 
         {/* progress dots */}

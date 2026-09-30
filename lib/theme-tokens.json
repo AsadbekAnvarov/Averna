@@ -62,7 +62,15 @@
     ["averna-purple", "#b14eff", "#7b3fd1"],
     ["averna-pink", "#ff3dbb", "#c01f86"],
     ["averna-blue", "#2e8bff", "#1d6fe0"],
-    ["averna-dark", "#04110d", "#e2e8f0"]
+    ["averna-dark", "#04110d", "#e2e8f0"],
+    ["exam-bg", "#040b09", "#f5f7fa"],
+    ["exam-bar", "#07130f", "#ffffff"],
+    ["exam-strip", "#06110d", "#f1f5f9"],
+    ["exam-orb-top", "#0e261e", "#e3f3ec"],
+    ["exam-orb-bottom", "#06120e", "#ffffff"],
+    ["exam-mark", "#fffbeb", "#0f172a"],
+    ["surface-raised", "#0b1a16", "#ffffff"],
+    ["surface-well", "#000000", "#ffffff"]
   ],
   "keepWhiteInk": ["bg-white", "bg-averna-primary", "bg-averna-primary/90", "bg-averna-primary/80", "bg-averna-primary/70", "bg-averna-light", "bg-averna-purple", "bg-averna-pink", "bg-averna-blue", "bg-red-500", "bg-red-600", "bg-emerald-500", "bg-emerald-600", "bg-green-500", "bg-green-600", "bg-blue-500", "bg-blue-600", "bg-purple-500", "bg-purple-600", "bg-indigo-500", "bg-pink-500", "bg-orange-500"]
 }

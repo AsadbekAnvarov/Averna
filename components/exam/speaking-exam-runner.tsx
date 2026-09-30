@@ -440,7 +440,7 @@ function ExaminerOrb({ state, typed }: { state: OrbState; typed: boolean }) {
       {listening && <span className="absolute -inset-2 rounded-full bg-averna-neon/10 blur-xl motion-safe:animate-pulse-slow" />}
       <span
         className={cn(
-          "relative flex h-full w-full items-center justify-center rounded-full border bg-gradient-to-b from-[#0e261e] to-[#06120e] transition-[border-color,box-shadow] duration-500 motion-reduce:transition-none",
+          "relative flex h-full w-full items-center justify-center rounded-full border bg-gradient-to-b from-exam-orb-top to-exam-orb-bottom transition-[border-color,box-shadow] duration-500 motion-reduce:transition-none",
           speaking
             ? "border-averna-cyan/60 shadow-[0_0_36px_-8px_rgba(0,229,255,0.6)]"
             : listening
@@ -2604,13 +2604,13 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
   };
 
   return (
-    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-[#040b09] text-gray-100">
+    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-exam-bg pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] text-gray-100">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_55%_at_50%_0%,rgba(11,143,106,0.16),transparent_70%)]"
       />
 
-      <header className="relative flex shrink-0 items-center gap-2 border-b border-white/10 bg-[#07130f]/95 px-3 py-2 backdrop-blur sm:gap-3 sm:px-5">
+      <header className="relative flex shrink-0 items-center gap-2 border-b border-white/10 bg-exam-bar/95 px-3 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top))] backdrop-blur sm:gap-3 sm:px-5">
         {exitHref && !isMock && (
           <Link
             href={exitHref}
@@ -2644,7 +2644,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
         )}
       </header>
 
-      <div className="relative flex shrink-0 items-center justify-between gap-3 border-b border-white/5 bg-[#06110d]/90 px-4 py-2 sm:px-5">
+      <div className="relative flex shrink-0 items-center justify-between gap-3 border-b border-white/5 bg-exam-strip/90 px-4 py-2 sm:px-5">
         <PartProgress part={part} stage={view === "intro" ? "before" : view === "test" ? "during" : "after"} />
         <div className="flex items-center gap-3">
           {view === "test" && <UploadStatus uploads={uploads} />}
@@ -2658,7 +2658,8 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
         </div>
       </div>
 
-      <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      {/* Without the footer the scroll area is the last element: it keeps clear of the home indicator. */}
+      <div className={cn("relative min-h-0 flex-1 overflow-y-auto overscroll-contain", view !== "test" && "pb-[env(safe-area-inset-bottom)]")}>
         <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col px-4 py-6 sm:px-6 sm:py-10">
           {view === "intro" && renderIntro()}
           {view === "test" && renderStage()}
@@ -2667,7 +2668,9 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
       </div>
 
       {view === "test" && (
-        <footer className="relative shrink-0 border-t border-white/10 bg-[#07130f]/95 px-4 py-3 backdrop-blur sm:px-6">{renderActions()}</footer>
+        <footer className="relative shrink-0 border-t border-white/10 bg-exam-bar/95 px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:px-6">
+          {renderActions()}
+        </footer>
       )}
 
       <p className="sr-only" role="status" aria-live="polite">

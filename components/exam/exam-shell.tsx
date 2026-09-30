@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Clock, Flag, Loader2, Minus, Plus, Type, X } from "lucide-react";
 import { formatClock } from "./use-exam";
@@ -71,7 +71,7 @@ function TimerPill({ remainingMs }: { remainingMs: number | null }) {
     <>
       <span
         className={cn(
-          "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-mono text-sm font-bold tabular-nums",
+          "inline-flex items-center gap-1.5 rounded-full border px-2 py-1.5 font-mono sm:px-3 text-sm font-bold tabular-nums",
           low
             ? "border-red-400/60 bg-red-500/15 text-red-200 shadow-[0_0_18px_-6px_rgba(248,113,113,0.7)]"
             : warn
@@ -87,6 +87,87 @@ function TimerPill({ remainingMs }: { remainingMs: number | null }) {
         {announce}
       </span>
     </>
+  );
+}
+
+/**
+ * Phone-only text size control (the header group is `hidden sm:flex`): an "Aa"
+ * button that opens a small panel under the header. Closes on Escape, a tap
+ * outside, or a second tap on "Aa".
+ */
+function MobileTextSize({ fontScale, onFontScale }: { fontScale: number; onFontScale: (v: number) => void }) {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelId = useId();
+  const fontIdx = Math.max(0, FONT_STEPS.indexOf(fontScale));
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      triggerRef.current?.focus({ preventScroll: true });
+    };
+    const onPointerDown = (e: Event) => {
+      if (wrapRef.current && e.target instanceof Node && !wrapRef.current.contains(e.target)) setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [open]);
+
+  const stepBtn =
+    "inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white disabled:opacity-40";
+
+  return (
+    <div ref={wrapRef} className="shrink-0 sm:hidden">
+      <button
+        ref={triggerRef}
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-label="Text size"
+        aria-expanded={open}
+        aria-controls={panelId}
+        className={cn(
+          "inline-flex h-11 w-11 items-center justify-center rounded-lg border text-sm font-bold transition",
+          open ? "border-averna-neon/50 bg-averna-neon/15 text-averna-neon" : "border-white/15 text-gray-300 hover:text-white"
+        )}
+      >
+        <span aria-hidden>Aa</span>
+      </button>
+      {open && (
+        <div
+          id={panelId}
+          className="absolute inset-x-0 top-full flex items-center justify-center gap-3 border-b border-white/10 bg-exam-bar px-3 py-2 shadow-lg"
+        >
+          <button
+            type="button"
+            onClick={() => onFontScale(FONT_STEPS[Math.max(0, fontIdx - 1)])}
+            disabled={fontIdx === 0}
+            className={stepBtn}
+            aria-label="Smaller text"
+          >
+            <Minus className="h-4 w-4" aria-hidden />
+          </button>
+          <span className="min-w-[3.5rem] text-center font-mono text-sm font-bold tabular-nums text-white" aria-live="polite">
+            {Math.round(fontScale * 100)}%
+          </span>
+          <button
+            type="button"
+            onClick={() => onFontScale(FONT_STEPS[Math.min(FONT_STEPS.length - 1, fontIdx + 1)])}
+            disabled={fontIdx === FONT_STEPS.length - 1}
+            className={stepBtn}
+            aria-label="Larger text"
+          >
+            <Plus className="h-4 w-4" aria-hidden />
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -154,14 +235,18 @@ function ReviewDialog({
   );
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-end justify-center bg-black/70 p-3 sm:items-center" role="presentation" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-[80] flex items-end justify-center bg-black/70 p-3 py-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:items-center"
+      role="presentation"
+      onClick={onClose}
+    >
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="review-title"
         onClick={(e) => e.stopPropagation()}
-        className="av-panel w-full max-w-lg rounded-2xl p-5 sm:p-6"
+        className="av-modal-panel av-panel w-full max-w-lg rounded-2xl p-5 sm:p-6"
       >
         <div className="flex items-start justify-between gap-3">
           <h2 id="review-title" className="text-lg font-bold text-white">
@@ -295,19 +380,19 @@ export function ExamShell(props: ExamShellProps) {
   const fontIdx = Math.max(0, FONT_STEPS.indexOf(fontScale));
 
   return (
-    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-[#040b09] text-gray-100">
+    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-exam-bg pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] text-gray-100">
       {/* Header */}
-      <header className="flex shrink-0 items-center gap-2 border-b border-white/10 bg-[#07130f]/95 px-3 py-2 backdrop-blur sm:gap-3 sm:px-5">
+      <header className="relative z-20 flex shrink-0 items-center gap-1.5 border-b border-white/10 bg-exam-bar/95 px-2 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top))] backdrop-blur sm:gap-3 sm:px-5">
         {exitHref && (
           <Link
             href={exitHref}
-            className="hidden rounded-lg px-2 py-1.5 text-sm text-gray-400 transition hover:bg-white/5 hover:text-white sm:inline-flex"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-sm text-gray-400 transition hover:bg-white/5 hover:text-white sm:h-auto sm:w-auto sm:px-2 sm:py-1.5"
             aria-label="Leave the test"
           >
             <ChevronLeft className="h-4 w-4" aria-hidden />
           </Link>
         )}
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 truncate">
           <p className="truncate text-sm font-bold text-white sm:text-base">{title}</p>
           {subtitle && <p className="truncate text-xs text-gray-400">{subtitle}</p>}
         </div>
@@ -334,11 +419,12 @@ export function ExamShell(props: ExamShellProps) {
             <Plus className="h-3.5 w-3.5" />
           </button>
         </div>
+        <MobileTextSize fontScale={fontScale} onFontScale={onFontScale} />
         <button
           type="button"
           onClick={() => setReviewOpen(true)}
           disabled={submitting}
-          className="glow-cta inline-flex min-h-[40px] items-center gap-2 rounded-xl bg-averna-primary px-3.5 text-sm font-semibold text-white transition hover:bg-averna-light disabled:opacity-60 sm:px-4"
+          className="glow-cta inline-flex min-h-[40px] items-center gap-2 rounded-xl bg-averna-primary px-3 text-sm font-semibold text-white transition hover:bg-averna-light disabled:opacity-60 sm:px-4"
         >
           {submitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
           {submitLabel}
@@ -347,7 +433,7 @@ export function ExamShell(props: ExamShellProps) {
 
       {/* Mobile pane switcher */}
       {left && (
-        <div className="flex shrink-0 gap-1 border-b border-white/10 bg-[#07130f] p-1.5 lg:hidden" role="tablist" aria-label="View">
+        <div className="flex shrink-0 gap-1 border-b border-white/10 bg-exam-bar p-1.5 lg:hidden" role="tablist" aria-label="View">
           {(["left", "right"] as const).map((pane) => (
             <button
               key={pane}
@@ -367,12 +453,21 @@ export function ExamShell(props: ExamShellProps) {
       )}
 
       {/* Body */}
-      <div ref={bodyRef} className="relative flex min-h-0 flex-1" style={{ fontSize: `${fontScale}rem` }}>
+      {/* Pane widths live in CSS variables and only apply from lg: below it the
+          visible pane is w-full (an inline flex-basis would override that). */}
+      <div
+        ref={bodyRef}
+        className="relative flex min-h-0 flex-1"
+        style={{ fontSize: `${fontScale}rem`, "--exam-left": `${split}%`, "--exam-right": `${100 - split}%` } as React.CSSProperties}
+      >
         {left ? (
           <>
             <div
-              className={cn("min-h-0 overflow-y-auto overscroll-contain", mobilePane === "left" ? "block w-full" : "hidden", "lg:block")}
-              style={{ flexBasis: `${split}%` }}
+              className={cn(
+                "min-h-0 overflow-y-auto overscroll-contain",
+                mobilePane === "left" ? "block w-full" : "hidden",
+                "lg:block lg:basis-[var(--exam-left)]"
+              )}
             >
               {left}
             </div>
@@ -392,8 +487,11 @@ export function ExamShell(props: ExamShellProps) {
               <span className="absolute left-1/2 top-1/2 h-10 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/20 group-hover:bg-averna-neon/60" />
             </div>
             <div
-              className={cn("min-h-0 overflow-y-auto overscroll-contain", mobilePane === "right" ? "block w-full" : "hidden", "lg:block")}
-              style={{ flexBasis: `${100 - split}%` }}
+              className={cn(
+                "min-h-0 overflow-y-auto overscroll-contain",
+                mobilePane === "right" ? "block w-full" : "hidden",
+                "lg:block lg:basis-[var(--exam-right)]"
+              )}
             >
               {children}
             </div>
@@ -403,15 +501,15 @@ export function ExamShell(props: ExamShellProps) {
         )}
       </div>
 
-      {footerExtra && <div className="shrink-0 border-t border-white/10 bg-[#07130f]">{footerExtra}</div>}
+      {footerExtra && <div className="shrink-0 border-t border-white/10 bg-exam-bar">{footerExtra}</div>}
 
       {/* Navigator */}
-      <nav aria-label="Question navigator" className="shrink-0 border-t border-white/10 bg-[#07130f]/95 px-2 py-2 backdrop-blur sm:px-4">
+      <nav aria-label="Question navigator" className="shrink-0 border-t border-white/10 bg-exam-bar/95 px-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur sm:px-4">
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => step(-1)}
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white sm:h-10 sm:w-10"
             aria-label="Previous question"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -448,7 +546,7 @@ export function ExamShell(props: ExamShellProps) {
                             aria-label={`Question ${n}${answered.has(n) ? ", answered" : ", not answered"}${flagged.has(n) ? ", flagged" : ""}`}
                             aria-current={isCur ? "true" : undefined}
                             className={cn(
-                              "relative h-8 min-w-[2rem] rounded-md border px-1 text-xs font-bold transition",
+                              "relative h-10 min-w-[2.5rem] rounded-md border px-1 text-xs font-bold transition sm:h-8 sm:min-w-[2rem]",
                               answered.has(n)
                                 ? "border-averna-cyan/40 bg-averna-cyan/15 text-white"
                                 : "border-white/15 bg-transparent text-gray-400 hover:text-white",
@@ -471,7 +569,7 @@ export function ExamShell(props: ExamShellProps) {
           <button
             type="button"
             onClick={() => step(1)}
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white sm:h-10 sm:w-10"
             aria-label="Next question"
           >
             <ChevronRight className="h-5 w-5" />

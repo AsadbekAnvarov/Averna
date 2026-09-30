@@ -1,0 +1,349 @@
+{
+  "pbtResults": {
+    "2. Написать исследовательский тест условия ошибки": {
+      "status": "passed",
+      "failingExample": "Bug-condition exploration fails on unfixed code as expected (22/22 Vitest tests fail). Counterexamples: tokens [\"exam-bg\"], [\"#ffffff\"] (exam-mark missing), [\"white\",\"exam-bg\"]; ExamShell {split:28, withLeft:true} → inline flex-basis \"28.000000000000004%\", no --exam-left; {mode:\"practice\", hasExit:true} → exit link has class \"hidden\"; no button[aria-label=\"Text size\"]; Previous/Next h-10 w-10, numbers h-8; header/nav without env(safe-area-inset-*); ThemeProvider [[\"light\"]] → theme-color \"#04070d\" (expected \"#ffffff\"); THEME_SCRIPT light → \"#04070d\"; layout.tsx without viewportFit:\"cover\" and with static themeColor; 32 hard-coded dark fills (exam-shell.tsx:298 bg-[#040b09] …, 4 loading.tsx); <mark> text-amber-50; html.light .exam-shell block present; no av-modal-panel in 6 modals; toast/live-notifications \"fixed top-4 right-4\"; no @supports not (overflow-x: clip).",
+      "lastRunTimestamp": 1790699294112
+    }
+  },
+  "executionHistory": {
+    "1. Настроить тестовую инфраструктуру": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695139762
+      },
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695150442
+      },
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790696778198
+      }
+    ],
+    "2. Написать исследовательский тест условия ошибки": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695139825
+      },
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790696856117
+      },
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790700199283
+      }
+    ],
+    "3. Написать тесты сохранения поведения (ДО исправления)": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695139868
+      },
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790700199843
+      },
+      {
+        "executionId": "57b22600-517b-4e0c-a382-02628d3d6f7f",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790705336615
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728576289
+      }
+    ],
+    "4.1 Добавить токены `exam-*` и `surface-*` и обновить генератор": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695139919
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728576417
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729368987
+      }
+    ],
+    "4.2 Убрать принудительную тёмную палитру с экзаменов и заменить жёсткие цвета": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695139965
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728576510
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729369124
+      }
+    ],
+    "4.3 Исправить словарные окна и обновить README": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140003
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728577878
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729369775
+      }
+    ],
+    "5.1 `ExamShell`: ширина панелей, шапка, области касания, безопасные зоны": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140045
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729380544
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729846220
+      }
+    ],
+    "5.2 Вьюпорт, `theme-color` и безопасные зоны навигации": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140106
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728578783
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729371239
+      }
+    ],
+    "5.3 Страница сообщений на телефоне": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140156
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728580347
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729373143
+      }
+    ],
+    "5.4 Модальные окна на невысоких экранах": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140195
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728591308
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729846307
+      }
+    ],
+    "5.5 Командная палитра и экранная клавиатура": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140232
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728591506
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729374022
+      }
+    ],
+    "5.6 Всплывающие уведомления": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140272
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728592110
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729374985
+      }
+    ],
+    "5.7 Запасной вариант защиты от горизонтальной прокрутки": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140316
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728593467
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729376375
+      }
+    ],
+    "5.8 Календари ученика и учителя на телефоне": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140355
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728594856
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729377866
+      }
+    ],
+    "6.1 Расширить `e2e/screens.mjs`": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140396
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790728595607
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729379223
+      }
+    ],
+    "6.2 Проверить, что исследовательский тест условия ошибки теперь проходит": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140456
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729847677
+      }
+    ],
+    "6.3 Проверить, что тесты сохранения поведения по-прежнему проходят": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140492
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729849209
+      }
+    ],
+    "7. Checkpoint: все проверки проходят": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140549
+      },
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729850106
+      }
+    ],
+    "8. Проверка на реальных устройствах (РУЧНАЯ ПРОВЕРКА, выполняет пользователь)": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140588
+      }
+    ],
+    "9.1 Preview-деплой": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140625
+      }
+    ],
+    "9.2 СТОП: запросить явное подтверждение продакшн-деплоя": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140664
+      }
+    ],
+    "9.3 Продакшн-деплой (только после подтверждения в 9.2)": [
+      {
+        "executionId": "4440e03e-419d-48b0-912f-74e8b9ef54e1",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790695140703
+      }
+    ],
+    "4. Исправление светлой темы на экзаменационных экранах": [
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729369855
+      }
+    ],
+    "5. Исправление мобильного интерфейса": [
+      {
+        "executionId": "a4d5c45c-afdd-4af7-852b-5869bf93f3d8",
+        "chatSessionId": "sess_febd06ce-08bd-4bc1-9c65-ce5ac7ca65e7",
+        "timestamp": 1790729846371
+      }
+    ]
+  }
+}

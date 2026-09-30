@@ -61,7 +61,7 @@ export function MobileNav({ role }: { role: Role }) {
     <nav
       aria-label={role === "ADMIN" ? "Asosiy boʻlimlar" : "Primary"}
       className={cn(
-        "lg:hidden fixed bottom-0 left-0 right-0 z-30 glass-strong border-t pb-[env(safe-area-inset-bottom)]",
+        "lg:hidden fixed bottom-0 left-0 right-0 z-30 glass-strong border-t pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]",
         accent.border
       )}
     >

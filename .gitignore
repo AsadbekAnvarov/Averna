@@ -6,6 +6,11 @@
 # testing
 /coverage
 
+# e2e artefacts (screenshots, style baselines, check reports)
+/screens/
+/e2e/baseline/
+/e2e/report*.json
+
 # next.js
 /.next/
 /out/

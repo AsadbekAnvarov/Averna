@@ -9,6 +9,8 @@ import { ChevronLeft, ChevronRight, CalendarDays, Download } from "lucide-react"
 import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { PageHeader } from "@/components/ui/page-header";
+import { PhoneMonth } from "@/components/calendar/phone-month";
+import { buildDayItems, parseSelectedDay, type WeeklyItem } from "@/lib/calendar-days";
 
 const DOW: Record<string, number> = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -26,7 +28,7 @@ function weekdaysFromText(text: string | null | undefined): Set<number> {
 export default async function CalendarPage({
   searchParams,
 }: {
-  searchParams: { m?: string };
+  searchParams: { m?: string; d?: string };
 }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
@@ -83,6 +85,29 @@ export default async function CalendarPage({
   const todayDay =
     now.getFullYear() === year && now.getMonth() === month ? now.getDate() : -1;
 
+  // Phone month view: full names per day (the sm+ grid keeps its short labels).
+  const weekly: WeeklyItem[] = [
+    ...Array.from(lessonDays).map((weekday) => ({
+      kind: "lesson" as const,
+      weekday,
+      label: student.group?.name ?? "",
+    })),
+    ...student.tutorBookings
+      .filter((b) => DOW[b.day.slice(0, 3).toLowerCase()] !== undefined)
+      .map((b) => ({
+        kind: "tutoring" as const,
+        weekday: DOW[b.day.slice(0, 3).toLowerCase()],
+        label: [`${b.startTime}–${b.endTime}`, b.topic].filter(Boolean).join(" · "),
+      })),
+  ];
+  const dayItems = buildDayItems({
+    year,
+    month,
+    weekly,
+    homework: homework.map((h) => ({ due: new Date(h.dueDate), label: h.title })),
+  });
+  const selectedDay = parseSelectedDay(searchParams.d, daysInMonth, todayDay);
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl pb-10 lg:pb-8">
@@ -114,12 +139,20 @@ export default async function CalendarPage({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-7 gap-1 text-center text-xs text-gray-400 mb-1">
+            <PhoneMonth
+              basePath="/calendar"
+              year={year}
+              month={month}
+              todayDay={todayDay}
+              selectedDay={selectedDay}
+              items={dayItems}
+            />
+            <div className="hidden sm:grid grid-cols-7 gap-1 text-center text-xs text-gray-400 mb-1">
               {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d) => (
                 <div key={d} className="py-1">{d}</div>
               ))}
             </div>
-            <div className="grid grid-cols-7 gap-1">
+            <div className="hidden sm:grid grid-cols-7 gap-1">
               {cells.map((day, i) => {
                 if (day === null) return <div key={i} />;
                 const weekday = new Date(year, month, day).getDay();

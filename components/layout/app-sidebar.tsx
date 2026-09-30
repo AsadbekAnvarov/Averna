@@ -309,7 +309,7 @@ export function AppSidebar() {
       {/* Mobile top app bar */}
       <header
         className={cn(
-          "app-topbar lg:hidden fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top)]",
+          "app-topbar lg:hidden fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]",
           "border-b border-white/[0.06] backdrop-blur-xl"
         )}
       >
@@ -355,7 +355,7 @@ export function AppSidebar() {
       <aside
         aria-label={uz ? "Navigatsiya" : "Navigation"}
         className={cn(
-          "app-sidebar fixed left-0 top-0 z-[55] lg:z-40 h-[100dvh] w-[min(18rem,86vw)] lg:w-64 overflow-y-auto overscroll-contain",
+          "app-sidebar fixed left-0 top-0 z-[55] lg:z-40 h-[100dvh] w-[min(18rem,86vw)] lg:w-64 overflow-y-auto overscroll-contain pl-[env(safe-area-inset-left)]",
           "border-r border-white/5",
           "transition-transform duration-300 ease-out",
           mobileOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full",
@@ -470,7 +470,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <div
         className={cn(
           chrome &&
-            "lg:pl-64 pt-[calc(3.5rem+env(safe-area-inset-top))] lg:pt-0 [--app-bar-h:calc(3.5rem+env(safe-area-inset-top))] lg:[--app-bar-h:0px]",
+            "pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] lg:pl-64 lg:pr-0 pt-[calc(3.5rem+env(safe-area-inset-top))] lg:pt-0 [--app-bar-h:calc(3.5rem+env(safe-area-inset-top))] lg:[--app-bar-h:0px]",
           chrome && tabBar && "pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0"
         )}
       >

@@ -535,7 +535,7 @@ export function PlacementOrchestrator({ view, serverNow }: { view: PlacementView
     <>
       {/* Time is up: the answers are collected, so the runner goes (and with it the recording). */}
       {s0.collected ? (
-        <div aria-hidden className="exam-shell fixed inset-0 z-[70] bg-[#040b09]" />
+        <div aria-hidden className="exam-shell fixed inset-0 z-[70] bg-exam-bg" />
       ) : (
         <SectionRunner
           stage={stage}

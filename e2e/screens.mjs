@@ -45,17 +45,63 @@ const PAGES = {
     ["learning", "/learning"],
     ["settings", "/settings"],
     ["profile", "/profile"],
+    ["messages", "/messages"],
+    ["calendar", "/calendar"],
+    ["learning-reading", "/learning/reading"],
+    ["learning-listening", "/learning/listening"],
   ],
   teacher: [
     ["teacher-dashboard", "/teacher/dashboard"],
     ["teacher-reviews", "/teacher/reviews"],
     ["teacher-students", "/teacher/students"],
+    ["teacher-calendar", "/teacher/calendar"],
+    ["teacher-homework", "/teacher/homework"],
+    ["teacher-gradebook", "/teacher/gradebook"],
+    ["teacher-attendance", "/teacher/attendance"],
+    ["teacher-messages", "/messages"],
   ],
   admin: [
     ["admin-dashboard", "/admin/dashboard"],
     ["admin-placement", "/admin/placement"],
+    ["admin-groups", "/admin/groups"],
+    ["admin-finance", "/admin/finance"],
+    ["admin-analytics", "/admin/analytics"],
+    ["admin-teachers", "/admin/teachers"],
+    ["admin-content", "/admin/content"],
+    ["admin-messages", "/messages"],
   ],
 };
+
+/**
+ * IELTS libraries whose first test is opened in its own tab (student only) and
+ * shot on each exam pane: Passage and Questions on the phone's tab switcher,
+ * the side-by-side layout on desktop (Listening has a single column).
+ */
+const EXAMS = [
+  ["reading", "/learning/reading"],
+  ["listening", "/learning/listening"],
+];
+
+/** Blocked audio autoplay in headless Chromium — not a bug in the page. */
+const AUTOPLAY_NOISE = /NotAllowedError|play\(\) failed because the user didn't interact/i;
+
+/**
+ * Exam tabs only: background requests that never completed. The app shell's nav
+ * links stay mounted behind the full-screen exam, so Next prefetches them, and
+ * next-auth polls the session when the tab gains focus. Those requests are cut
+ * off when the throwaway tab goes away, and Next / next-auth log the network
+ * TypeError. Server errors don't match (they are HTTP responses, not TypeErrors),
+ * and the exam's own status, error page, layout and screenshot checks still run.
+ */
+const EXAM_NOISE = new RegExp(
+  [
+    AUTOPLAY_NOISE.source,
+    /Failed to fetch RSC payload for \S+\. Falling back to browser navigation\. TypeError: (?:Failed to fetch|network error)/
+      .source,
+    /Failed to fetch\. Read more at https:\/\/errors\.authjs\.dev#autherror/.source,
+  ].join("|"),
+  "i"
+);
 
 /** Old URLs that must keep working. */
 const REDIRECTS = [
@@ -80,13 +126,18 @@ async function signIn(context, { email, password }) {
   await page.close();
 }
 
-function watch(page, label) {
-  page.on("pageerror", (e) => problems.push(`${label}: page error: ${e.message}`));
+/** `ignore` — extra noise to drop for this page (e.g. AUTOPLAY_NOISE on exams). */
+function watch(page, label, ignore) {
+  page.on("pageerror", (e) => {
+    if (ignore?.test(`${e.name}: ${e.message}`)) return;
+    problems.push(`${label}: page error: ${e.message}`);
+  });
   page.on("console", (m) => {
     if (m.type() !== "error") return;
     const text = m.text();
     // Third-party / environment noise that isn't a bug in the page itself.
     if (/favicon|Failed to load resource: the server responded with a status of 40[134]|ERR_CONNECTION|api\/averna-ai|api\/learning\/podcast/i.test(text)) return;
+    if (ignore?.test(text)) return;
     problems.push(`${label}: console error: ${text.slice(0, 300)}`);
   });
 }
@@ -106,64 +157,121 @@ async function shoot(context, role, theme, device) {
       await action(page).catch((e) => problems.push(`${label}: action failed: ${e.message}`));
       await page.waitForTimeout(700);
     }
-    // Scroll through once so scroll-reveal content is shown, then settle.
-    await page.evaluate(async () => {
-      const step = Math.round(window.innerHeight * 0.8);
-      for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
-        window.scrollTo(0, y);
-        await new Promise((r) => setTimeout(r, 120));
-      }
-      window.scrollTo(0, 0);
-    });
-    await page.waitForTimeout(900); // entrance animations
-    // Content that takes up space but can't be seen (stuck at opacity 0).
-    const ghosts = await page.evaluate(() => {
-      const out = [];
-      for (const el of document.querySelectorAll("body *")) {
-        const st = getComputedStyle(el);
-        if (st.opacity !== "0" || st.position === "fixed" || st.position === "absolute") continue;
-        if (el.closest('[aria-hidden="true"]') || out.some((o) => o.el.contains(el))) continue;
-        const r = el.getBoundingClientRect();
-        if (r.width < 120 || r.height < 40) continue;
-        out.push({ el, text: `<${el.tagName.toLowerCase()} class="${String(el.className).slice(0, 70)}"> “${(el.textContent ?? "").trim().slice(0, 50)}”` });
-        if (out.length === 3) break;
-      }
-      return out.map((o) => o.text);
-    });
-    for (const g of ghosts) problems.push(`${label}: invisible content: ${g}`);
-    const body = (await page.textContent("body").catch(() => "")) ?? "";
-    if (/Application error|Something went wrong|Internal Server Error/i.test(body)) problems.push(`${label}: error page shown`);
-    // Anything wider than the screen is either sideways scrolling or content cut
-    // off by the page's overflow clip. Elements inside their own scroll/clip
-    // container, fixed bars and absolutely placed decoration are fine.
-    if (device === "phone") {
-      const wide = await page.evaluate(() => {
-        const vw = window.innerWidth;
-        const contained = (el) => {
-          for (let p = el.parentElement; p && p !== document.body && p !== document.documentElement; p = p.parentElement) {
-            if (getComputedStyle(p).overflowX !== "visible") return true;
-          }
-          return false;
-        };
-        const out = [];
-        for (const el of document.querySelectorAll("body *")) {
-          const r = el.getBoundingClientRect();
-          if (r.width === 0 || r.right <= vw + 1) continue;
-          const pos = getComputedStyle(el).position;
-          if (pos === "fixed" || pos === "absolute" || contained(el)) continue;
-          out.push(`<${el.tagName.toLowerCase()} class="${String(el.className).slice(0, 80)}"> +${Math.round(r.right - vw)}px`);
-          if (out.length === 3) break;
-        }
-        return out;
-      });
-      for (const w of wide) problems.push(`${label}: wider than the screen: ${w}`);
-    }
-    await page.screenshot({ path: `${OUT}/${theme}-${device}-${role}-${name}.png`, fullPage: true });
-    report.push({ label, url: page.url() });
+    await inspect(page, label, device, `${OUT}/${theme}-${device}-${role}-${name}.png`);
     page.removeAllListeners("pageerror");
     page.removeAllListeners("console");
   }
   await page.close();
+}
+
+/**
+ * Opens the first test of each IELTS library in a separate tab and shoots its
+ * panes. The tab is closed with page.close(), which skips beforeunload, so the
+ * exam's leave guard can't hold it open.
+ */
+async function shootExams(context, theme, device) {
+  const list = await context.newPage();
+  for (const [skill, path] of EXAMS) {
+    const base = `${theme}/${device}/exam-${skill}`;
+    const ok = await list.goto(`${BASE}${path}`, { waitUntil: "networkidle", timeout: 60_000 }).catch((e) => {
+      problems.push(`${base}: library navigation failed: ${e.message}`);
+      return null;
+    });
+    if (!ok) continue;
+    const href = await list
+      .$$eval(`a[href^="${path}/"]`, (as) => as.map((a) => a.getAttribute("href")).find((h) => h && !h.includes("result")))
+      .catch(() => undefined);
+    if (!href) {
+      problems.push(`${base}: no test link on ${path}`);
+      continue;
+    }
+    const page = await context.newPage();
+    watch(page, base, EXAM_NOISE);
+    const res = await page.goto(new URL(href, BASE).href, { waitUntil: "networkidle", timeout: 60_000 }).catch((e) => {
+      problems.push(`${base}: navigation failed: ${e.message}`);
+      return null;
+    });
+    if (res && res.status() >= 400) problems.push(`${base}: HTTP ${res.status()}`);
+    if (res) {
+      await page.waitForTimeout(700);
+      // The phone's Passage / Questions switcher (hidden from lg up and on Listening).
+      const tabs = page.locator('[role="tablist"][aria-label="View"] [role="tab"]');
+      const names = (await tabs.first().isVisible().catch(() => false)) ? await tabs.allTextContents() : [];
+      if (names.length) {
+        for (let i = 0; i < names.length; i++) {
+          const pane = names[i].trim().toLowerCase() || `pane-${i}`;
+          const label = `${base}-${pane}`;
+          await tabs.nth(i).click().catch((e) => problems.push(`${label}: tab click failed: ${e.message}`));
+          await page.waitForTimeout(500);
+          await inspect(page, label, device, `${OUT}/${theme}-${device}-student-exam-${skill}-${pane}.png`);
+        }
+      } else {
+        await inspect(page, base, device, `${OUT}/${theme}-${device}-student-exam-${skill}.png`);
+      }
+    }
+    page.removeAllListeners("pageerror");
+    page.removeAllListeners("console");
+    await page.close();
+  }
+  await list.close();
+}
+
+/** The shared checks + full-page screenshot for the page as it is now. */
+async function inspect(page, label, device, file) {
+  // Scroll through once so scroll-reveal content is shown, then settle.
+  await page.evaluate(async () => {
+    const step = Math.round(window.innerHeight * 0.8);
+    for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 120));
+    }
+    window.scrollTo(0, 0);
+  });
+  await page.waitForTimeout(900); // entrance animations
+  // Content that takes up space but can't be seen (stuck at opacity 0).
+  const ghosts = await page.evaluate(() => {
+    const out = [];
+    for (const el of document.querySelectorAll("body *")) {
+      const st = getComputedStyle(el);
+      if (st.opacity !== "0" || st.position === "fixed" || st.position === "absolute") continue;
+      if (el.closest('[aria-hidden="true"]') || out.some((o) => o.el.contains(el))) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < 120 || r.height < 40) continue;
+      out.push({ el, text: `<${el.tagName.toLowerCase()} class="${String(el.className).slice(0, 70)}"> “${(el.textContent ?? "").trim().slice(0, 50)}”` });
+      if (out.length === 3) break;
+    }
+    return out.map((o) => o.text);
+  });
+  for (const g of ghosts) problems.push(`${label}: invisible content: ${g}`);
+  const body = (await page.textContent("body").catch(() => "")) ?? "";
+  if (/Application error|Something went wrong|Internal Server Error/i.test(body)) problems.push(`${label}: error page shown`);
+  // Anything wider than the screen is either sideways scrolling or content cut
+  // off by the page's overflow clip. Elements inside their own scroll/clip
+  // container, fixed bars and absolutely placed decoration are fine.
+  if (device === "phone") {
+    const wide = await page.evaluate(() => {
+      const vw = window.innerWidth;
+      const contained = (el) => {
+        for (let p = el.parentElement; p && p !== document.body && p !== document.documentElement; p = p.parentElement) {
+          if (getComputedStyle(p).overflowX !== "visible") return true;
+        }
+        return false;
+      };
+      const out = [];
+      for (const el of document.querySelectorAll("body *")) {
+        const r = el.getBoundingClientRect();
+        if (r.width === 0 || r.right <= vw + 1) continue;
+        const pos = getComputedStyle(el).position;
+        if (pos === "fixed" || pos === "absolute" || contained(el)) continue;
+        out.push(`<${el.tagName.toLowerCase()} class="${String(el.className).slice(0, 80)}"> +${Math.round(r.right - vw)}px`);
+        if (out.length === 3) break;
+      }
+      return out;
+    });
+    for (const w of wide) problems.push(`${label}: wider than the screen: ${w}`);
+  }
+  await page.screenshot({ path: file, fullPage: true });
+  report.push({ label, url: page.url() });
 }
 
 const browser = await chromium.launch();
@@ -181,6 +289,7 @@ try {
         }, theme);
         await signIn(context, creds);
         await shoot(context, role, theme, device);
+        if (role === "student") await shootExams(context, theme, device);
         if (role === "student" && theme === "dark" && device === "phone") {
           const page = await context.newPage();
           for (const [from, to] of REDIRECTS) {

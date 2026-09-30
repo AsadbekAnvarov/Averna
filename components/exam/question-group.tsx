@@ -112,7 +112,7 @@ function GapInput({
         spellCheck={false}
         maxLength={80}
         className={cn(
-          "mx-1 my-0.5 h-[1.9em] w-[9.5em] max-w-[70vw] rounded-md border bg-black/30 px-2 text-center font-semibold text-white outline-none transition placeholder:font-bold placeholder:text-gray-500",
+          "mx-1 my-0.5 h-[1.9em] w-[9.5em] max-w-[70vw] rounded-md border bg-surface-well/30 px-2 text-center font-semibold text-white outline-none transition placeholder:font-bold placeholder:text-gray-500",
           "focus:border-averna-neon/70 focus:ring-2 focus:ring-averna-neon/25",
           active ? "border-averna-neon/60" : value ? "border-averna-cyan/40" : "border-white/20"
         )}
@@ -148,7 +148,7 @@ function BoxSelect({
       disabled={disabled}
       aria-label={`Answer to question ${n}`}
       className={cn(
-        "h-[2.1em] rounded-md border bg-[#0b1a16] px-2 font-semibold text-white outline-none transition",
+        "h-[2.1em] rounded-md border bg-surface-raised px-2 font-semibold text-white outline-none transition",
         "focus:border-averna-neon/70 focus:ring-2 focus:ring-averna-neon/25",
         compact ? "mx-1 w-[6.5em]" : "w-full max-w-[22em]",
         active ? "border-averna-neon/60" : value ? "border-averna-cyan/40" : "border-white/20"

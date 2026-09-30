@@ -233,12 +233,12 @@ async function postWritingExam(body: ExamRequest): Promise<WritingExamResult> {
 
 function Frame({ subtitle, children }: { subtitle: string; children: React.ReactNode }) {
   return (
-    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-[#040b09] text-gray-100">
+    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-exam-bg pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] text-gray-100">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_55%_at_50%_0%,rgba(11,143,106,0.16),transparent_70%)]"
       />
-      <header className="relative flex shrink-0 items-center gap-2 border-b border-white/10 bg-[#07130f]/95 px-3 py-2 backdrop-blur sm:gap-3 sm:px-5">
+      <header className="relative flex shrink-0 items-center gap-2 border-b border-white/10 bg-exam-bar/95 px-3 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top))] backdrop-blur sm:gap-3 sm:px-5">
         <Link
           href={WRITING_HREF}
           className="inline-flex min-h-[44px] items-center gap-1 rounded-lg px-2.5 text-sm font-medium text-gray-300 transition hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 motion-reduce:transition-none"
@@ -251,7 +251,7 @@ function Frame({ subtitle, children }: { subtitle: string; children: React.React
           <p className="truncate text-xs text-gray-400">{subtitle}</p>
         </div>
       </header>
-      <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom)]">
         <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col px-4 py-6 sm:px-6 sm:py-10">{children}</div>
       </div>
     </div>
@@ -392,7 +392,7 @@ function MarkingOverlay({ words1, words2 }: { words1: number; words2: number }) 
       aria-modal="true"
       aria-labelledby="writing-marking-title"
       aria-describedby="writing-marking-status"
-      className="exam-shell fixed inset-0 z-[90] flex items-center justify-center bg-[#040b09]/95 p-4 backdrop-blur-sm motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300"
+      className="exam-shell fixed inset-0 z-[90] flex items-center justify-center bg-exam-bg/95 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pl-[calc(1rem+env(safe-area-inset-left))] pr-[calc(1rem+env(safe-area-inset-right))] pt-[calc(1rem+env(safe-area-inset-top))] backdrop-blur-sm motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300"
     >
       <div
         ref={panelRef}
@@ -403,7 +403,7 @@ function MarkingOverlay({ words1, words2 }: { words1: number; words2: number }) 
         <div className="relative mx-auto flex h-20 w-20 items-center justify-center" aria-hidden>
           <span className="absolute inset-0 rounded-full border-2 border-averna-neon/25 motion-safe:animate-[ping_2.6s_cubic-bezier(0,0,0.2,1)_infinite]" />
           <span className="absolute -inset-2 rounded-full bg-averna-neon/10 blur-xl motion-safe:animate-pulse-slow" />
-          <span className="relative flex h-16 w-16 items-center justify-center rounded-full border border-averna-neon/30 bg-[#07130f]">
+          <span className="relative flex h-16 w-16 items-center justify-center rounded-full border border-averna-neon/30 bg-exam-bar">
             <PenLine className="h-7 w-7 text-averna-neon" />
           </span>
         </div>
@@ -559,7 +559,7 @@ function ResultView({ result, task1, task2 }: { result: WritingExamResult; task1
         <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-gray-300">
           Task 2 counts twice as much as Task 1. The average is rounded to the nearest half band, like the real IELTS.
         </p>
-        <p className="mx-auto mt-3 inline-flex flex-wrap items-center justify-center gap-x-2 rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm tabular-nums text-gray-200">
+        <p className="mx-auto mt-3 inline-flex flex-wrap items-center justify-center gap-x-2 rounded-xl border border-white/10 bg-surface-well/20 px-3 py-2 text-sm tabular-nums text-gray-200">
           <span>
             ({fmtBand(b1)} + 2 × {fmtBand(b2)}) ÷ 3 = {weighted.toFixed(2)}
           </span>

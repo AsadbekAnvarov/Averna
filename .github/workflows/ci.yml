@@ -1,7 +1,7 @@
 name: CI
 
 # Every push (any branch) is checked, so a pull request shows the result of its
-# latest commit. Three independent jobs: one failing doesn't hide the others.
+# latest commit. Four independent jobs: one failing doesn't hide the others.
 on:
   push:
   workflow_dispatch:
@@ -34,6 +34,18 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx next lint --max-warnings=0
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm test
 
   build:
     name: Build

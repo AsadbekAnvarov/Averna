@@ -3,6 +3,14 @@ name: Screens
 # Visual smoke test (e2e/screens.mjs): seeded database, production build, then
 # phone + desktop screenshots of every role in both themes. Runs when a commit
 # message contains "[screens]", or by hand from the Actions tab.
+# Then the bug-condition checks of the mobile-ui-exam-light-theme-fix spec
+# (e2e/bugfix-checks.mjs, report in the "report-bugfix" artifact). They encode the
+# fixed behaviour, so they fail until that fix lands.
+# Preservation checks of the same spec (e2e/preservation-checks.mjs): computed-style
+# baselines are captured on the merge-base with main (port 3001), then compared on
+# HEAD (port 3000), both against the same seeded database. On main the base is HEAD
+# itself, which checks that the snapshots are deterministic. Report and baselines are
+# in the "report-preservation" artifact.
 on:
   push:
   workflow_dispatch:
@@ -11,7 +19,7 @@ jobs:
   screens:
     if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[screens]')
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     services:
       postgres:
         image: postgres:16
@@ -32,30 +40,85 @@ jobs:
       NEXT_TELEMETRY_DISABLED: 1
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npx prisma db push --skip-generate
-      - run: npm run db:seed
-      - run: npm run build
-      - name: Start the app
-        run: |
-          npx next start -p 3000 > next.log 2>&1 &
-          npx -y wait-on@8 -t 90000 http-get://localhost:3000/auth/signin
       - name: Install Playwright
         run: |
           npm i --no-save playwright@1.48.2
           npx playwright install --with-deps chromium
+      - run: npx prisma db push --skip-generate
+      - run: npm run db:seed
+      - name: Build the base commit (merge-base with main)
+        # A broken base must not hide the HEAD checks: --compare then reports the missing baselines.
+        continue-on-error: true
+        env:
+          NEXTAUTH_URL: http://localhost:3001
+        run: |
+          # One frozen clock for --capture and --compare.
+          echo "FIXED_TIME=$(date -u +%Y-%m-%d)T09:00:00Z" >> "$GITHUB_ENV"
+          git fetch origin main
+          BASE_SHA=$(git merge-base HEAD origin/main)
+          echo "Base commit: $BASE_SHA (HEAD: $(git rev-parse HEAD))"
+          git worktree add --detach ../base "$BASE_SHA"
+          cd ../base
+          npm ci
+          npm run build
+      - name: Preservation baseline (base commit, port 3001)
+        continue-on-error: true
+        env:
+          NEXTAUTH_URL: http://localhost:3001
+        run: |
+          (cd ../base && exec node_modules/.bin/next start -p 3001 > "$GITHUB_WORKSPACE/next-base.log" 2>&1) &
+          trap 'pkill -f "next start -p 3001" || true; fuser -k 3001/tcp || true' EXIT
+          npx -y wait-on@8 -t 90000 http-get://localhost:3001/auth/signin
+          BASE_URL=http://localhost:3001 node e2e/preservation-checks.mjs --capture
+      - run: npm run build
+      - name: Start the app
+        id: start
+        run: |
+          npx next start -p 3000 > next.log 2>&1 &
+          npx -y wait-on@8 -t 90000 http-get://localhost:3000/auth/signin
+      - name: Preservation checks (HEAD vs base)
+        # First on HEAD, so the database is as close as possible to the one the baseline saw.
+        if: ${{ !cancelled() && steps.start.outcome == 'success' }}
+        run: node e2e/preservation-checks.mjs --compare
       - name: Screenshots
+        if: ${{ !cancelled() && steps.start.outcome == 'success' }}
         run: node e2e/screens.mjs
+      - name: Bug-condition checks
+        # Runs even when the screenshots found problems, so both reports are available.
+        if: ${{ !cancelled() && steps.start.outcome == 'success' }}
+        run: node e2e/bugfix-checks.mjs
       - name: Server log
         if: always()
-        run: tail -n 200 next.log
+        run: |
+          tail -n 200 next.log || true
+          echo "--- base commit server (port 3001) ---"
+          tail -n 100 next-base.log || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: screens
           path: screens/
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-bugfix
+          path: e2e/report-bugfix.json
+          if-no-files-found: warn
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-preservation
+          path: |
+            e2e/report-preservation.json
+            e2e/baseline/
+          if-no-files-found: warn
           retention-days: 7

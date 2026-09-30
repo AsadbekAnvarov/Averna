@@ -277,7 +277,7 @@ export default function ProfilePage() {
                 onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
                 placeholder="Tell us a bit about yourself and why you're learning English..."
                 rows={4}
-                className="w-full rounded-md border border-input bg-background/50 px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-averna-cyan"
+                className="w-full rounded-md border border-input bg-background/50 px-3 py-2 text-base sm:text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-averna-cyan"
               />
             </div>
 

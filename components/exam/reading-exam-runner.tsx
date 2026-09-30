@@ -109,7 +109,7 @@ function StatusBanner({
   if (error) {
     return (
       // Sticky so the retry stays in reach while the student scrolls; the solid strip keeps it legible.
-      <div className="sticky top-[var(--app-bar-h,0px)] z-10 -mx-4 mb-2 bg-[#040b09]/95 px-4 pb-3 pt-3 backdrop-blur sm:-mx-6 sm:px-6">
+      <div className="sticky top-[var(--app-bar-h,0px)] z-10 -mx-4 mb-2 bg-exam-bg/95 px-4 pb-3 pt-3 backdrop-blur sm:-mx-6 sm:px-6">
         <div role="alert" className="error-surface flex flex-col gap-3 rounded-xl p-4 sm:flex-row sm:items-center">
           <div className="flex min-w-0 flex-1 items-start gap-3">
             <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-300" aria-hidden />
@@ -260,7 +260,7 @@ const QuestionsList = memo(QuestionsListImpl);
 
 function EmptyTest({ exitHref }: { exitHref?: string }) {
   return (
-    <div className="exam-shell fixed inset-0 z-[70] flex items-center justify-center bg-[#040b09] p-6 text-gray-100">
+    <div className="exam-shell fixed inset-0 z-[70] flex items-center justify-center bg-exam-bg p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pl-[calc(1.5rem+env(safe-area-inset-left))] pr-[calc(1.5rem+env(safe-area-inset-right))] pt-[calc(1.5rem+env(safe-area-inset-top))] text-gray-100">
       <div role="alert" className="av-panel w-full max-w-md rounded-2xl p-6 text-center">
         <p className="text-lg font-bold text-white">This test has no passages yet</p>
         <p className="mt-2 text-sm text-gray-400">Please choose another Reading test.</p>

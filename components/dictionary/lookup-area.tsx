@@ -244,7 +244,7 @@ export function LookupArea({ children, className, reviewLink = true }: LookupAre
             ref={chipRef}
             onPointerDown={keepSelection}
             onMouseDown={keepSelection}
-            className="pointer-events-auto flex select-none items-center rounded-xl border border-white/15 bg-[#0b1a16]/95 p-1 shadow-[0_14px_36px_-12px_rgba(0,0,0,0.9)] backdrop-blur motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95 motion-safe:duration-150"
+            className="pointer-events-auto flex select-none items-center rounded-xl border border-white/15 bg-surface-raised/95 av-float p-1 shadow-[0_14px_36px_-12px_rgba(0,0,0,0.9)] backdrop-blur motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95 motion-safe:duration-150"
           >
             <button
               ref={chipButtonRef}
