@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { THEME_COLORS } from "@/components/theme/theme-script";
 
 export type ThemeMode = "dark" | "light";
 
@@ -19,6 +20,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = document.documentElement;
     root.classList.toggle("dark", m === "dark");
     root.classList.toggle("light", m === "light");
+    // Keep the browser chrome (status bar / PWA title bar) in step with the theme.
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", THEME_COLORS[m]);
   }, []);
 
   useEffect(() => {

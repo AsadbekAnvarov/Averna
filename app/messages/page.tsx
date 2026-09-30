@@ -6,8 +6,9 @@ import { db } from "@/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageHeader } from "@/components/ui/page-header";
-import { MessageSquare } from "lucide-react";
+import { ArrowLeft, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import { messagesPhoneView } from "@/lib/messages-view";
 import { MessageComposer } from "@/components/messages/message-composer";
 import { MessageThread } from "@/components/messages/message-thread";
 import { InboxTabs } from "@/components/inbox-tabs";
@@ -68,6 +69,8 @@ export default async function MessagesPage({
   const contacts = await getContacts(me, role);
   const activeId = searchParams.with ?? contacts[0]?.userId;
   const active = contacts.find((c) => c.userId === activeId) ?? contacts[0];
+  // Phones (< md) show one half at a time; md+ keeps both cards side by side.
+  const phoneView = messagesPhoneView(searchParams.with, contacts.length);
 
   let messages: { id: string; senderId: string; content: string; createdAt: Date; read: boolean; reaction: string | null }[] = [];
   if (active) {
@@ -133,7 +136,7 @@ export default async function MessagesPage({
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Contacts */}
-            <Card className="glass border-averna-cyan/30 md:col-span-1">
+            <Card className={`glass border-averna-cyan/30 md:col-span-1 ${phoneView === "thread" ? "hidden md:block" : ""}`}>
               <CardContent className="py-4 space-y-1 max-h-[60vh] overflow-y-auto">
                 {contacts.map((c) => (
                   <Link
@@ -153,11 +156,27 @@ export default async function MessagesPage({
             </Card>
 
             {/* Thread */}
-            <Card className="glass border-averna-purple/30 md:col-span-2 flex flex-col overflow-hidden">
-              <CardContent className="py-4 flex flex-col h-[60vh] min-h-0">
-                <p className="text-white font-semibold border-b border-white/10 pb-2 mb-3 shrink-0">
-                  {active?.name}
-                </p>
+            <Card
+              className={`glass border-averna-purple/30 md:col-span-2 flex-col overflow-hidden ${
+                phoneView === "list" ? "hidden md:flex" : "flex"
+              }`}
+            >
+              {/* Phone height: the first screen minus the top bar (3.5rem), page header and inbox
+                  tabs (~11.5rem incl. page padding), the bottom tab bar (4.5rem) and ~1.5rem of slack,
+                  plus the safe-area insets. */}
+              <CardContent className="py-4 flex flex-col h-[calc(100dvh-21rem-env(safe-area-inset-top)-env(safe-area-inset-bottom))] min-h-[18rem] md:h-[60vh] md:min-h-0">
+                <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-3 shrink-0">
+                  {contacts.length > 1 && (
+                    <Link
+                      href="/messages"
+                      className="md:hidden -ml-2 inline-flex min-h-[44px] shrink-0 items-center gap-1 rounded-lg px-2 text-sm text-averna-neon hover:underline"
+                    >
+                      <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                      {role === "ADMIN" ? "Barcha kontaktlar" : "All contacts"}
+                    </Link>
+                  )}
+                  <p className="min-w-0 break-words text-white font-semibold">{active?.name}</p>
+                </div>
                 <div className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1">
                   <MessageThread messages={threadMessages} meId={me} />
                 </div>

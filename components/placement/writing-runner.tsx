@@ -339,7 +339,7 @@ export function PlacementWritingRunner({
             maxLength={MAX_CHARS}
             aria-describedby={counterId}
             placeholder="Start writing here…"
-            className="mt-2 min-h-[16rem] w-full flex-1 resize-none rounded-xl border border-white/15 bg-black/30 p-4 leading-relaxed text-white outline-none transition placeholder:text-gray-500 focus:border-averna-neon/60 focus:ring-2 focus:ring-averna-neon/20 disabled:opacity-70 motion-reduce:transition-none"
+            className="mt-2 min-h-[16rem] w-full flex-1 resize-none rounded-xl border border-white/15 bg-surface-well/30 p-4 leading-relaxed text-white outline-none transition placeholder:text-gray-500 focus:border-averna-neon/60 focus:ring-2 focus:ring-averna-neon/20 disabled:opacity-70 motion-reduce:transition-none"
           />
           <div className="mt-3">
             <div className="flex flex-wrap items-center justify-between gap-2 text-sm">

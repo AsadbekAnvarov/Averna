@@ -47,6 +47,7 @@ Cron) are optional and documented next to their variables.
 |---|---|
 | `npm run dev` / `build` / `start` | Develop, build, serve |
 | `npm run lint` · `npx tsc --noEmit` | Lint and type-check (both also fail the build) |
+| `npm test` | Unit and property-based tests in `tests/` (Vitest + fast-check, jsdom) |
 | `npm run db:push` · `db:seed` · `db:studio` | Local schema, demo data, Prisma Studio |
 | `npm run db:deploy` | Apply `prisma/sql/deploy.sql` (additive, idempotent) |
 | `node scripts/generate-avatars.mjs` | Regenerate the preset avatars in `public/avatars/` |
@@ -66,8 +67,8 @@ setup is described next to its variables in `.env.example`.
 
 ## Quality checks
 
-- **CI** (`.github/workflows/ci.yml`) — TypeScript, ESLint and a production build
-  on every push.
+- **CI** (`.github/workflows/ci.yml`) — TypeScript, ESLint, unit tests (`npm test`)
+  and a production build on every push.
 - **Screens** (`.github/workflows/screens.yml`) — seeds a fresh database, builds,
   signs in as each demo role and screenshots the key screens on a phone and on
   desktop in both themes. It fails on page errors, console errors, sideways
@@ -80,7 +81,9 @@ setup is described next to its variables in `.env.example`.
   brand colours resolve to CSS variables with a dark and a light value
   ([`lib/theme-tokens.json`](lib/theme-tokens.json)). Write classes for the dark
   design (`text-white`, `bg-white/5`, `text-averna-neon`); the light theme follows
-  automatically and exam screens (`.exam-shell`) always stay dark.
+  automatically. Exam screens follow the selected theme too: their surfaces use
+  the `exam-*` and `surface-*` tokens (`bg-exam-bg`, `bg-exam-bar/95`,
+  `bg-surface-raised`) instead of hard-coded hex colours.
 - **Layout.** Pages start with `PageHeader`; dashboard sections use `SectionHeader`;
   hub pages (`/progress/*`, `/rankings/*`) share a layout with `HubNav`.
   Student-only pages use `getPageStudent()` from `lib/student-page.ts`.

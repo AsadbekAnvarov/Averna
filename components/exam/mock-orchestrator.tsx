@@ -598,7 +598,7 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
     <>
       {/* Time is up: the paper is collected, so the runner goes (and with it the recording / the examiner's voice). */}
       {session.collected ? (
-        <div aria-hidden className="exam-shell fixed inset-0 z-[70] bg-[#040b09]" />
+        <div aria-hidden className="exam-shell fixed inset-0 z-[70] bg-exam-bg" />
       ) : (
         <SectionRunner
           stage={stage}

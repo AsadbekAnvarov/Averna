@@ -3,7 +3,7 @@ import { Loader2 } from "lucide-react";
 /** Full-screen placeholder shaped like the Speaking test while the set loads. */
 export default function SpeakingTestLoading() {
   return (
-    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-[#040b09] text-gray-100" aria-busy="true">
+    <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-exam-bg pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)] text-gray-100" aria-busy="true">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_55%_at_50%_0%,rgba(11,143,106,0.16),transparent_70%)]"

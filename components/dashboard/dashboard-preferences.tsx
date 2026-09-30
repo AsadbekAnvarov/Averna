@@ -71,8 +71,8 @@ export function DashboardPreferences() {
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm flex items-end sm:items-center justify-center p-3 sm:px-4" onClick={() => setOpen(false)}>
-          <div className="w-full max-w-sm glass-strong border border-averna-neon/30 rounded-2xl p-5 animate-fade-in" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm flex items-end sm:items-center justify-center p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:px-4 sm:py-4" onClick={() => setOpen(false)}>
+          <div className="av-modal-panel w-full max-w-sm glass-strong border border-averna-neon/30 rounded-2xl p-5 animate-fade-in" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-bold text-white flex items-center gap-2"><Settings className="h-5 w-5 text-averna-neon" /> Comfort settings</h3>
               <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-white"><X className="h-5 w-5" /></button>

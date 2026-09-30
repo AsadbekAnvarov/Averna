@@ -355,7 +355,7 @@ const EssayPane = memo(function EssayPane({ n, value, words, minutes, visible, l
         data-enable-grammarly="false"
         placeholder="Type your answer here…"
         className={cn(
-          "mt-2 min-h-[14rem] w-full flex-1 resize-none rounded-xl border border-white/10 bg-black/25 px-4 py-4 leading-[1.85] text-gray-100 caret-averna-neon outline-none sm:px-5",
+          "mt-2 min-h-[14rem] w-full flex-1 resize-none rounded-xl border border-white/10 bg-surface-well/25 px-4 py-4 leading-[1.85] text-gray-100 caret-averna-neon outline-none sm:px-5",
           "transition-[border-color,box-shadow] duration-200 motion-reduce:transition-none",
           "placeholder:text-gray-600 focus:border-averna-neon/50 focus:ring-2 focus:ring-averna-neon/20",
           locked && "cursor-default text-gray-300"

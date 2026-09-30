@@ -10,6 +10,8 @@ import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { PageHeader } from "@/components/ui/page-header";
+import { PhoneMonth } from "@/components/calendar/phone-month";
+import { buildDayItems, parseSelectedDay } from "@/lib/calendar-days";
 
 const DOW: Record<string, number> = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -20,7 +22,7 @@ function weekdaysFromText(text: string | null | undefined): number[] {
   return Object.entries(DOW).filter(([abbr]) => t.includes(abbr)).map(([, n]) => n);
 }
 
-export default async function TeacherCalendarPage({ searchParams }: { searchParams: { m?: string } }) {
+export default async function TeacherCalendarPage({ searchParams }: { searchParams: { m?: string; d?: string } }) {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "STUDENT") redirect("/dashboard");
@@ -71,6 +73,17 @@ export default async function TeacherCalendarPage({ searchParams }: { searchPara
   for (let i = 0; i < startOffset; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
 
+  // Phone month view: every group and homework title per day (the sm+ grid shows two groups).
+  const dayItems = buildDayItems({
+    year,
+    month,
+    weekly: teacher.groups.flatMap((g) =>
+      weekdaysFromText(g.schedule).map((weekday) => ({ kind: "lesson" as const, weekday, label: g.name }))
+    ),
+    homework: teacher.homework.map((h) => ({ due: new Date(h.dueDate), label: h.title })),
+  });
+  const selectedDay = parseSelectedDay(searchParams.d, daysInMonth, todayDay);
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl">
@@ -91,10 +104,18 @@ export default async function TeacherCalendarPage({ searchParams }: { searchPara
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-7 gap-1 text-center text-xs text-gray-400 mb-1">
+            <PhoneMonth
+              basePath="/teacher/calendar"
+              year={year}
+              month={month}
+              todayDay={todayDay}
+              selectedDay={selectedDay}
+              items={dayItems}
+            />
+            <div className="hidden sm:grid grid-cols-7 gap-1 text-center text-xs text-gray-400 mb-1">
               {["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map((d) => <div key={d} className="py-1">{d}</div>)}
             </div>
-            <div className="grid grid-cols-7 gap-1">
+            <div className="hidden sm:grid grid-cols-7 gap-1">
               {cells.map((day, i) => {
                 if (day === null) return <div key={i} />;
                 const wd = new Date(year, month, day).getDay();

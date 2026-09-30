@@ -69,7 +69,7 @@ export function LiveNotifications() {
   if (toasts.length === 0) return null;
 
   return (
-    <div className="fixed top-4 right-4 z-[120] space-y-2 w-[88vw] max-w-sm">
+    <div className="fixed top-[calc(4.5rem+env(safe-area-inset-top))] lg:top-4 right-[max(1rem,env(safe-area-inset-right))] z-[120] space-y-2 w-[88vw] max-w-sm">
       {toasts.map((n) => (
         <div
           key={n.id}

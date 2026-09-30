@@ -295,7 +295,7 @@ function ParagraphImpl({ index, text, label, withLabels, spans }: ParagraphProps
               data-p={index}
               data-s={pc.s}
               data-e={pc.e}
-              className="cursor-pointer rounded-[0.2em] bg-amber-300/25 text-amber-50 box-decoration-clone transition-colors hover:bg-amber-300/35 motion-reduce:transition-none"
+              className="cursor-pointer rounded-[0.2em] bg-amber-300/25 text-exam-mark box-decoration-clone transition-colors hover:bg-amber-300/35 motion-reduce:transition-none"
             >
               {text.slice(pc.s, pc.e)}
             </mark>
@@ -766,7 +766,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
             aria-label={lookup ? "Text tools" : "Highlight tools"}
             onPointerDown={keepSelection}
             onMouseDown={keepSelection}
-            className="pointer-events-auto flex select-none items-center gap-1 rounded-xl border border-white/15 bg-[#0b1a16]/95 p-1 shadow-[0_14px_36px_-12px_rgba(0,0,0,0.9)] backdrop-blur motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95 motion-safe:duration-150"
+            className="pointer-events-auto flex select-none items-center gap-1 rounded-xl border border-white/15 bg-surface-raised/95 av-float p-1 shadow-[0_14px_36px_-12px_rgba(0,0,0,0.9)] backdrop-blur motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95 motion-safe:duration-150"
           >
             {tool.canHighlight && (
               <button

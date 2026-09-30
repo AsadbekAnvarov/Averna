@@ -226,8 +226,8 @@ export function BrainBreak({ open, onClose }: { open: boolean; onClose: () => vo
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[120] bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
-      <div className="w-full max-w-md glass-strong border border-averna-neon/30 rounded-2xl p-5 animate-fade-in">
+    <div className="fixed inset-0 z-[120] bg-black/70 backdrop-blur-sm flex items-center justify-center px-4 py-4">
+      <div className="av-modal-panel w-full max-w-md glass-strong border border-averna-neon/30 rounded-2xl p-5 animate-fade-in">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-bold text-white flex items-center gap-2">
             {game ? (

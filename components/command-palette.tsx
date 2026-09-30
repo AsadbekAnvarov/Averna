@@ -129,6 +129,27 @@ const ADMIN_COMMANDS: Cmd[] = [
   { group: "Operatsiyalar", label: "Profil va parol", href: "/admin/profile", icon: User, keywords: "profile password parol profil" },
 ];
 
+/**
+ * The visible part of the layout viewport (shrinks when the on-screen keyboard
+ * opens on phones). `null` where `window.visualViewport` isn't supported.
+ */
+function useVisualViewport(enabled = true): { height: number; offsetTop: number } | null {
+  const [vv, setVv] = useState<{ height: number; offsetTop: number } | null>(null);
+  useEffect(() => {
+    const v = typeof window !== "undefined" ? window.visualViewport : null;
+    if (!enabled || !v) return;
+    const update = () => setVv({ height: v.height, offsetTop: v.offsetTop });
+    update();
+    v.addEventListener("resize", update);
+    v.addEventListener("scroll", update);
+    return () => {
+      v.removeEventListener("resize", update);
+      v.removeEventListener("scroll", update);
+    };
+  }, [enabled]);
+  return vv;
+}
+
 // Group render order per role
 const GROUP_ORDER: Record<string, string[]> = {
   student: ["Study", "Practice", "Progress", "Class", "Account", "Actions"],
@@ -150,6 +171,8 @@ export function CommandPalette() {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const activeRef = useRef<HTMLButtonElement | null>(null);
+  // Only listen while the palette is open.
+  const vv = useVisualViewport(open);
 
   const { baseCommands, roleKey, label } = useMemo(() => {
     if (pathname.startsWith("/admin")) return { baseCommands: ADMIN_COMMANDS, roleKey: "admin", label: "Admin" };
@@ -252,12 +275,15 @@ export function CommandPalette() {
       </button>
 
       {open && (
+        /* Sized to the visual viewport so the search field and results stay above
+           the on-screen keyboard; falls back to inset-0 where it isn't supported. */
         <div
-          className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-start justify-center pt-24 px-4"
+          className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-start justify-center pt-[calc(0.75rem+env(safe-area-inset-top))] sm:pt-24 pb-3 px-4"
+          style={vv ? { top: vv.offsetTop, height: vv.height, bottom: "auto" } : undefined}
           onClick={() => setOpen(false)}
         >
           <div
-            className="w-full max-w-lg glass-strong border border-averna-neon/30 rounded-2xl overflow-hidden animate-pop-in"
+            className="flex max-h-full w-full max-w-lg flex-col glass-strong border border-averna-neon/30 rounded-2xl overflow-hidden animate-pop-in"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
@@ -280,7 +306,7 @@ export function CommandPalette() {
               <kbd className="text-[10px] text-gray-500 border border-white/15 rounded px-1.5 py-0.5">ESC</kbd>
             </div>
 
-            <div className="max-h-80 overflow-y-auto py-2">
+            <div className="max-h-80 min-h-0 shrink overflow-y-auto py-2">
               {ordered.length === 0 ? (
                 <p className="text-center text-gray-500 text-sm py-6">{isAdmin ? `«${query}» boʻyicha natija yoʻq` : `No matches for “${query}”`}</p>
               ) : (

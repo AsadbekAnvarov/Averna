@@ -119,7 +119,7 @@ export function LevelUpCelebration({ points }: { points: number }) {
       </div>
 
       <div
-        className="glass-vibrant relative rounded-3xl px-8 py-10 max-w-sm w-full text-center animate-pop-in"
+        className="av-modal-panel glass-vibrant relative rounded-3xl px-8 py-10 max-w-sm w-full text-center animate-pop-in"
         onClick={(e) => e.stopPropagation()}
       >
         <button
