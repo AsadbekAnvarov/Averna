@@ -21,7 +21,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     root.classList.toggle("dark", m === "dark");
     root.classList.toggle("light", m === "light");
     // Keep the browser chrome (status bar / PWA title bar) in step with the theme.
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", THEME_COLORS[m]);
+    // Every tag, not just the first: React hydrates <meta> as a hoistable matched by its
+    // `content`, so once THEME_SCRIPT has switched it to the light colour React appends a
+    // second tag with the server's dark value.
+    document.querySelectorAll('meta[name="theme-color"]').forEach((el) => el.setAttribute("content", THEME_COLORS[m]));
   }, []);
 
   useEffect(() => {

@@ -85,6 +85,24 @@ const EXAMS = [
 /** Blocked audio autoplay in headless Chromium — not a bug in the page. */
 const AUTOPLAY_NOISE = /NotAllowedError|play\(\) failed because the user didn't interact/i;
 
+/**
+ * Exam tabs only: background requests that never completed. The app shell's nav
+ * links stay mounted behind the full-screen exam, so Next prefetches them, and
+ * next-auth polls the session when the tab gains focus. Those requests are cut
+ * off when the throwaway tab goes away, and Next / next-auth log the network
+ * TypeError. Server errors don't match (they are HTTP responses, not TypeErrors),
+ * and the exam's own status, error page, layout and screenshot checks still run.
+ */
+const EXAM_NOISE = new RegExp(
+  [
+    AUTOPLAY_NOISE.source,
+    /Failed to fetch RSC payload for \S+\. Falling back to browser navigation\. TypeError: (?:Failed to fetch|network error)/
+      .source,
+    /Failed to fetch\. Read more at https:\/\/errors\.authjs\.dev#autherror/.source,
+  ].join("|"),
+  "i"
+);
+
 /** Old URLs that must keep working. */
 const REDIRECTS = [
   ["/analytics", "/progress"],
@@ -168,7 +186,7 @@ async function shootExams(context, theme, device) {
       continue;
     }
     const page = await context.newPage();
-    watch(page, base, AUTOPLAY_NOISE);
+    watch(page, base, EXAM_NOISE);
     const res = await page.goto(new URL(href, BASE).href, { waitUntil: "networkidle", timeout: 60_000 }).catch((e) => {
       problems.push(`${base}: navigation failed: ${e.message}`);
       return null;
