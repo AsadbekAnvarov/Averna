@@ -193,7 +193,8 @@ function snapshot() {
   const out = [];
   // Path segments are tag[aria-label]:n, n counted among rendered siblings with the same key, so a new
   // hidden (display:none) or labelled element does not renumber its neighbours. Digits in labels are
-  // masked ("Time remaining 59:58" → "Time remaining #:#").
+  // masked ("Time remaining 59:58" → "Time remaining #:#"), and so are relative times, which tick with
+  // the real clock between capture and compare ("Live, updated just now" / "updated 5s ago" → "updated #t").
   const walk = (el, prefix) => {
     const counts = new Map();
     for (const child of el.children) {
@@ -201,7 +202,8 @@ function snapshot() {
       const contents = st.display === "contents";
       if (!contents && child.getClientRects().length === 0) continue;
       const label = child.getAttribute("aria-label");
-      const key = child.tagName.toLowerCase() + (label ? `[${label.replace(/\d+/g, "#").slice(0, 40)}]` : "");
+      const masked = label?.replace(/\d+/g, "#").replace(/\bjust now\b|#\s?[a-z]* ago\b/gi, "#t");
+      const key = child.tagName.toLowerCase() + (masked ? `[${masked.slice(0, 40)}]` : "");
       const n = (counts.get(key) ?? 0) + 1;
       counts.set(key, n);
       const path = `${prefix}>${key}:${n}`;
