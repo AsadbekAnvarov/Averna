@@ -28,10 +28,20 @@ const USERS = {
 const PAGES = {
   student: [
     ["dashboard-today", "/dashboard"],
-    ["dashboard-learn", "/dashboard", (p) => p.getByRole("button", { name: "Learn" }).first().click()],
-    ["dashboard-progress", "/dashboard", (p) => p.getByRole("button", { name: "Progress" }).first().click()],
-    ["dashboard-class", "/dashboard", (p) => p.getByRole("button", { name: "Class" }).first().click()],
-    ["dashboard-play", "/dashboard", (p) => p.getByRole("button", { name: "Play" }).first().click()],
+    // The active dashboard tab lives in the URL (?tab=…), so each tab is opened directly.
+    ["dashboard-learn", "/dashboard?tab=learn"],
+    ["dashboard-progress", "/dashboard?tab=progress"],
+    ["dashboard-class", "/dashboard?tab=class"],
+    ["dashboard-play", "/dashboard?tab=fun"],
+    // …and a click on the tab bar still switches tabs (client navigation to the tab's URL).
+    [
+      "dashboard-tab-click",
+      "/dashboard",
+      async (p) => {
+        await p.locator('nav[aria-label="Dashboard sections"] a', { hasText: "Progress" }).click();
+        await p.waitForURL(/\/dashboard\?tab=progress/, { timeout: 30_000 });
+      },
+    ],
     ["menu-open", "/dashboard", (p) => p.getByRole("button", { name: "Open navigation" }).click()],
     ["progress", "/progress"],
     ["progress-skills", "/progress/skills"],
