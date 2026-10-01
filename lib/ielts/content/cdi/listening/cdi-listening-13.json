@@ -1,0 +1,640 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-13",
+ "title": "CDI Listening Test 13",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-13-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Notes on A Part-time Society\nExample: Name of society: Leighton\n- Location: [[1]] house\n- Want: [[2]] actors and singers (no experience required)\n- Transportation: shuttle services (need someone who is able to [[3]] )\n- Meeting time: 6:00–8:00pm every [[4]]\n- Close time: during [[5]]\nMembership fee (including [[6]] )\n- £40 for employed members (under 30 years of age)\n- £60 for employed members (30–60 years of age)\n- £ [[7]] for retired or unemployed members (over 60 years of age)\nMinimum joining age: [[8]]\nMost members are\n- friendly\n- fond of culture and music\n- [[9]] authors looking for new experiences to write about in their books\nCharity\nThe children’s [[10]] will get the money raised by the annual dinner.",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Club",
+        "Clubhouse"
+       ],
+       "explanation": "Meetings are now held at the clubhouse."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "Male"
+       ],
+       "explanation": "Especially interested in recruiting male actors and singers."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "Drive"
+       ],
+       "explanation": "Looking for members who can drive for car sharing."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "Tuesday"
+       ],
+       "explanation": "Meetings from 6:00 to 8:00 pm every Tuesday."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "August"
+       ],
+       "explanation": "We close for August because the weather gets so hot."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "Dinner"
+       ],
+       "explanation": "The dinner is truly superb and included with your membership fee."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "25"
+       ],
+       "explanation": "The lowest price membership fee of 25 pounds for retired/unemployed."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "16"
+       ],
+       "explanation": "We don’t allow members who are aged 16 and under."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "Modern"
+       ],
+       "explanation": "Most of the people involved are modern authors."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Hospital"
+       ],
+       "explanation": "Money is donated to the children’s hospital."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a man who has just retired telephoning a local society to ask about membership and activities.\nWoman: Hello, this is the Leighton Society. How can I help?\nMan: Oh, hello. I'm just phoning you because I'm interested in becoming a member of your society, and I was wondering if you could give me some more information.\nWoman: Of course. What would you like to know?\nMan: Well, first of all, I'd like to know where you hold the club meetings. As I'm not very mobile anymore, I'm looking for somewhere that's within walking distance of my house. Are you still down at the old boathouse?\nWoman: No, we moved away from there a while ago. Meetings are now held at the clubhouse.\nMan: Oh, brilliant. That's only five minutes from me. Do you require members to have any skills or experience?\nWoman: No, there is no experience required. We have plenty of female singers and actresses, but we don't have many men who can play the male roles. We are looking to resolve this, and are especially interested in recruiting male actors and singers.\nMan: I've never sung professionally, but I'm very keen on it, and I've been told that I'm talented. So I think this would be a good fit. Do you organize coaches to transport members to practice at the theatre?\nWoman: Unfortunately, the club does not have sufficient funds to organize transportation, though this is something we are working towards. We are currently looking for members who can drive, so that we can organize car sharing. Members who are able to shuttle people in their cars will obviously be compensated for their petrol usage.\nMan: I don't drive, but I'd be happy to contribute some money in order to use the shuttle services.\nWoman: Yes, that is no problem. Are you aware of when the meetings take place?\nMan: No, I couldn't find the meeting times on your website.\nWoman: We hold meetings from 6:00 to 8:00 pm every Tuesday.\nMan: Ah, that's lucky. I go to a debating club every Wednesday, so I'm glad that it's on a different night so I can attend both. Do you operate year-round?\nWoman: We used to close during December for the Christmas period, but we found that a lot of members wanted to continue their practices during this time. We operate for most of the year, but we do however close for August, because the weather gets so hot that we are unable to practice comfortably. This may change when we have enough funds to operate the air conditioning.\nMan: Okay, I also wanted to ask how much the membership fee is, and what is included with it.\nWoman: Our membership fee is inexpensive, and it includes many benefits that certainly make the costs worth it. For example, we hold an annual event where members can meet each other and converse about topics that they have in common. We find that this is very popular, as the dinner is truly superb and included with your membership fee.\nMan: Wow, that sounds great. And how much does membership cost?\nWoman: We have a couple of membership rates depending on your age and situation. For employed members under the age of 30, the fee is 40 pounds. While it costs 60 pounds for members aged between 30 and 60. Which of these categories do you fit into?\nMan: Oh, I don't fit into either of those. I'm 65 years old and retired, so I'm no longer employed.\nWoman: That's no problem at all. You qualify for the lowest price membership fee of 25 pounds, which applies to those who are either unemployed or retired.\nMan: Wow, that's really affordable. I was thinking of bringing my grandson along to some of the practices. So what would the membership cost for him? He's 14.\nWoman: I'm afraid that the club is for adults only. That is to say, we don't allow members who are aged 16 and under. He is welcome to join in two years' time, though.\nMan: Ah, that's a shame. I guess I can wait and buy him a membership for his birthday present.\nWoman: Yes, what a good idea.\nMan: I was hoping I could bring him with me so I have someone there to talk to. I'm worried that I won't have anything in common with the other members.\nWoman: I'm sure you'll fit in just fine. All our members are very friendly and interested in culture and music. Most of the people involved are modern authors looking for new experiences to write about in their books. You could read some of their books, so you have something to discuss with them.\nMan: That's a good suggestion. I'll definitely do that. I'm really looking forward to attending the annual dinner, so I can meet new people and hopefully make some friends.\nWoman: Absolutely. Everyone has a great night and it's all for charity, as all of the money raised from this event is donated to the children's hospital so they can buy toys and clothes.\nMan: Wow, what a great cause. Well, I will definitely be popping in soon to arrange my membership. Thank you for all of your help.\nWoman: No problem at all. Goodbye."
+  },
+  {
+   "id": "cdi-listening-13-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What kind of changes is the station making?",
+       "options": [
+        {
+         "key": "A",
+         "text": "relocation"
+        },
+        {
+         "key": "B",
+         "text": "reconstruction"
+        },
+        {
+         "key": "C",
+         "text": "expansion"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The station is too small; they need expansion (C)."
+      },
+      {
+       "n": 12,
+       "text": "The original buildings on the site were",
+       "options": [
+        {
+         "key": "A",
+         "text": "houses."
+        },
+        {
+         "key": "B",
+         "text": "industrial buildings."
+        },
+        {
+         "key": "C",
+         "text": "shops."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Houses that were later converted into shops (A)."
+      },
+      {
+       "n": 13,
+       "text": "Firstly the station intended to use the site as",
+       "options": [
+        {
+         "key": "A",
+         "text": "a leisure centre."
+        },
+        {
+         "key": "B",
+         "text": "a car park."
+        },
+        {
+         "key": "C",
+         "text": "a lounge."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Initially planned to use the site as a car park (B)."
+      },
+      {
+       "n": 14,
+       "text": "The new buildings will be situated to the right side of",
+       "options": [
+        {
+         "key": "A",
+         "text": "the shopping district."
+        },
+        {
+         "key": "B",
+         "text": "the apartment blocks."
+        },
+        {
+         "key": "C",
+         "text": "the new formal gardens."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Located to the right of the shopping district (A)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Write the correct letter, A–G, next to questions 15–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      }
+     ],
+     "questions": [
+      {
+       "n": 15,
+       "text": "Cafe",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Café is behind the wall next to the rear entrance (F)."
+      },
+      {
+       "n": 16,
+       "text": "Taxi Rank",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Taxi rank: leave via rear entrance and turn left (C)."
+      },
+      {
+       "n": 17,
+       "text": "Car Park",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Car park: outside the rear entrance to the right (D)."
+      },
+      {
+       "n": 18,
+       "text": "Passenger Waiting Area",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Passenger waiting area to the right of the rear entrance (E)."
+      },
+      {
+       "n": 19,
+       "text": "Waiting Area for Wheelchair Users",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Wheelchair waiting area behind the wall to their left at main entrance (B)."
+      },
+      {
+       "n": 20,
+       "text": "Tourist Office",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Tourist office directly to the right at main entrance (A)."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening13-map.webp",
+      "alt": "Leisure Complex Plan Map"
+     }
+    }
+   ],
+   "transcript": "You will hear a part of a talk given by a director of a train station.\nDirector: Hello, and thank you for attending this meeting. I have called it to discuss station matters, as there have been a number of changes made, and I want to ensure that you are all filled in. Well, as I'm sure you will all have heard, there are plans underway to make some alterations to the station complex. Though we did the reconstruction work that occurred last year, from the data collected this year, we have learned that our station is too small to cope with a large number of visitors passing through it on a daily basis. [expansion — the station is too small]\nDirector: However, relocation is unnecessary, which means you, our staff, will be unaffected and can continue with your work as normal. We have decided that our only option is to make the area bigger by building new platforms and new facilities, such as cafes and lounge areas.\nDirector: We have already purchased the site on which these new facilities will be constructed. We had initially planned to build on the site of the old industrial buildings. However, tests carried out on the soil and water showed that it was too highly contaminated with waste from the industrial processes. Instead, we have purchased the site just across the road, on which there used to be a lot of houses that were later converted into shops. These buildings will, of course, be demolished to make room for our new facilities.\nDirector: What is going to be built on this new site? I hear you thinking to yourselves. There have been a lot of ideas put forward by all the parties involved. Initially, the station had planned to use the site as a car park. However, we decided this would be a very unsatisfactory way to occupy the space. Instead, we have hired an architect who has an exciting vision to transform the site into a large leisure centre, complete with cafes, shops, and a lounge where visitors can relax.\nDirector: We hope that this new complex will attract many visitors, not just from the station, but also from the apartment blocks in the nearby town centre. As part of the construction works, we are also going to create new formal gardens where visitors can enjoy the greenery and sit outside in the fresh air. The new leisure complex will be located to the right of the shopping district, so these formal gardens will serve as a meeting place for pedestrians.\nDirector: Now I'm delighted to be able to introduce you all to the plans for our new complex. So, if you could please focus your attention on the maps in front of you. We will start at the main entrance and make our way towards the cafe, which is located behind the wall that we can see directly in front of us, just next to the rear entrance. [Cafe — behind wall next to rear entrance = F]\nDirector: Once visitors arrive at our station, they often need further transport in order to reach their homes. Therefore, we have introduced a taxi rank with its own waiting area. In order to reach these facilities, the visitors must simply leave the complex via the rear entrance and turn left. [Taxi Rank — rear entrance, turn left = C] Visitors who have traveled to the station by car can leave it in the car park for a small fee, which is located just outside of the rear entrance to the right. [Car Park — rear entrance, to the right = D]\nDirector: At present, our station does not have an internal seating area for passengers, so they are forced to wait for their trains outside on the platforms, which can be particularly unpleasant during the winter. We have, therefore, decided to introduce a passenger waiting area inside the new complex to the right of the rear entrance, with comfortable seating where passengers can pass the time comfortably in the warmth. [Passenger Waiting Area — right of rear entrance = E]\nDirector: As this space is a distance away from the station, we have also proposed a waiting area for wheelchair users that is closer. As visitors enter through the main entrance, this space will be located behind the wall to their left. [Wheelchair — behind wall, left at main entrance = B] Finally, we have also decided that it would be a great idea to introduce a new tourist office where visitors can get maps and information on our wonderful town. We want this new office to be easily accessible, so visitors entering through the main entrance will find it directly to their right. [Tourist Office — right at main entrance = A]\nDirector: Now, I think that's all I have to tell you. Please feel free to ask any questions if you would like to know anything else."
+  },
+  {
+   "id": "cdi-listening-13-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What has Irene recently done?",
+       "options": [
+        {
+         "key": "A",
+         "text": "She has almost finished planning the experiment."
+        },
+        {
+         "key": "B",
+         "text": "She is not applying herself enough to her work."
+        },
+        {
+         "key": "C",
+         "text": "She spends a lot of time in the laboratory."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Irene spends free time in the laboratory (C)."
+      },
+      {
+       "n": 22,
+       "text": "What is Bill’s attitude toward Kim?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He is grateful for Kim’s contribution."
+        },
+        {
+         "key": "B",
+         "text": "He is not fond of Kim’s tastes in clothes."
+        },
+        {
+         "key": "C",
+         "text": "He thinks Kim is not good at laboratory work."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Bill is grateful for Kim’s significant contribution (A)."
+      },
+      {
+       "n": 23,
+       "text": "What does Jen think of the other people in the group?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The boys are good at maths which is very helpful."
+        },
+        {
+         "key": "B",
+         "text": "They would fail the experiment without Irene’s contribution."
+        },
+        {
+         "key": "C",
+         "text": "Irene has completed the data analysis so the experiment is nearly done."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Irene has completed the data analysis so the experiment is nearly done (C)."
+      },
+      {
+       "n": 24,
+       "text": "How did Jen and Bill feel about Linda?",
+       "options": [
+        {
+         "key": "A",
+         "text": "She always submitted her work late for the group work."
+        },
+        {
+         "key": "B",
+         "text": "She was difficult to get in touch with."
+        },
+        {
+         "key": "C",
+         "text": "She thought it was easy to get a high score."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Linda never had her phone, impossible to keep in touch (B)."
+      },
+      {
+       "n": 25,
+       "text": "Why was Jen invited to the professor’s individual project?",
+       "options": [
+        {
+         "key": "A",
+         "text": "She was quite popular among students."
+        },
+        {
+         "key": "B",
+         "text": "She always finished reading all the assignments."
+        },
+        {
+         "key": "C",
+         "text": "She was close to the professor."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Jen always completes reading the assignments in time (B)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What task has been given to each person? Choose the correct letter, A–G, next to each person.",
+     "title": "Tasks",
+     "options": [
+      {
+       "key": "A",
+       "text": "Abstract"
+      },
+      {
+       "key": "B",
+       "text": "Acknowledgement"
+      },
+      {
+       "key": "C",
+       "text": "Methodology"
+      },
+      {
+       "key": "D",
+       "text": "Bibliography"
+      },
+      {
+       "key": "E",
+       "text": "Literature review"
+      },
+      {
+       "key": "F",
+       "text": "Results"
+      },
+      {
+       "key": "G",
+       "text": "Discussion"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "text": "Irene",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Irene — Methodology (C)."
+      },
+      {
+       "n": 27,
+       "text": "Kim",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Kim — Results (F)."
+      },
+      {
+       "n": 28,
+       "text": "Jen",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Jen — Literature review (E)."
+      },
+      {
+       "n": 29,
+       "text": "Bill",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Bill — Bibliography (D)."
+      },
+      {
+       "n": 30,
+       "text": "Linda",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Linda — Discussion (G)."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear three students discussing an experiment they're interested in.\nBill: Oh hi, Jen and Irene. Are you two heading to class?\nJen: Hey Bill, yes we're just walking there now. We're a little bit early, but we wanted to prepare our apparatus for the experiment. Do you want to walk with us?\nBill: Yes, sure. It'll be good to catch up. How is everything going with your experiment? Have you decided what your test subject is yet?\nIrene: It's going really well, and we're conducting the test as laboratory partners. We've decided to test the effects of gravitational force on a series of objects with different densities.\nBill: It's interesting, but it's a lot of work. I've been planning the experiment for the last two weeks, and I only finished yesterday.\nJen: Gosh, Irene, I'm really impressed by how hardworking you are. I enjoy chemistry so much that it doesn't feel like work. Whenever I have some free time at the weekend, I spend it in the laboratory working on it. It almost feels like a second home to me.\nIrene: How about you, Bill? Who is your laboratory partner?\nBill: The tutor partnered me with Kim. At first I was worried, because I've never worked with him before, and I was worried that he wouldn't be very good at laboratory work. But actually, he's very capable.\nJen: I've noticed that he's always very well dressed.\nBill: Yes, he's very stylish, and we share the same tastes in clothes. That doesn't stop him from getting his hands dirty, though. He's a very hard worker, and makes a significant contribution, which I'm really grateful for.\nIrene: Ah, it's good that you get on well with your partner. It makes the experiment so much more enjoyable when you work well together.\nJen: What do you think of the other people in our group?\nBill: A lot of the boys are really good at math, which is really helpful with all the calculations we have to do.\nIrene: Jen is good at math as well, which makes her contribution really useful because she can do all the equations.\nJen: I take care of all the writing, because Irene finds that difficult. We'd probably fail without each other's help.\nIrene: That's true. I'm so glad that we're nearly finished. Only because you finished the data analysis.\nJen: Oh, Irene, you give me too much credit. I'm so glad that I didn't get partnered with Linda again.\nIrene: Jen and I were grouped with her for our last experiment, and it was a nightmare. Yes, she always submitted her work on time for the group work, but she never had her phone on her, so it was impossible for anyone to keep in touch with her and vice versa.\nJen: Her attitude was pretty annoying, but in all fairness, she was a very hard worker, because she realized the amount of work needed to get a high score.\nBill: Jen is such a hard worker. In fact, she has been invited to work on the professor's personal project.\nIrene: Wow, that's amazing. Well done. Why were you picked?\nJen: I thought he would pick one of the students that he's closer to. But he told me he was impressed with me because I always complete reading the assignments in time for class. I bet you'll be really popular among the other students when they find out. They'll all want to hear about the project.\nJen: You should give everyone tasks, so that they have the opportunity to participate.\nIrene: That's a really good idea actually. Will you help me decide who to assign each task to?\nBill: Of course. Now let's see. Well, as Irene finds writing difficult, perhaps it would be useful for her to practice that by doing the bibliography.\nJen: I think the bibliography is a bit long for me. I think I'd be better suited to the methodology.\nIrene: Yes, that makes sense. Bill, you've told us that Kim is a hard worker. So I think he should be tasked with the results, as there is quite a lot of effort involved.\nBill: Okay, sure. I know that Kyle hasn't been feeling well, so he should take care of the abstract and the acknowledgement, because there is very little work to be done for those tasks.\nJen: Irene, do you want to review some of the literature? It's a lot of work, but I know that you really enjoy writing, so I'm confident that you'll do a good job.\nIrene: Sure, sounds great. Right, so that leaves the bibliography and the discussion to assign.\nBill: I think that Linda will struggle with the amount of work involved in the referencing. So perhaps I should take care of that task, and she can do the other one.\nJen: That's great guys. Thanks for your help. I'll tell the tutor when he arrives."
+  },
+  {
+   "id": "cdi-listening-13-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Nanotechnology\nGeneral information\n- explanation: manipulation of matter on a minute scale\n- huge investment in research\n- Development of Nanotechnology may have started because of a new type of [[31]]\nApplication\na) daily lives\n- aids in getting [[32]] from diet\n- reduces the cost of [[33]]\n- improves the [[34]] of food\nb) agriculture\n- a spray which increases the efficiency of [[35]] in the soil; can be used instead of artificial chemicals\nc) medical area\n- can help avoid food poisoning\n- can kill foods’ [[36]] and make them safe to eat\n- nanoparticles are injected into the body and allow [[37]] to enter the veins\n- some nanoparticles can sterilise more than 650 types of bacteria\n- [[38]] has the greatest antibacterial qualities\n- fullerenes help [[39]] loss programmes\nd) cosmetics\n- preventing [[40]] from entering the body avoids skin cancer",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "Microscope"
+       ],
+       "explanation": "A new type of microscope had to be invented."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "Iron"
+       ],
+       "explanation": "Helps our body to absorb iron from our diet."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "Chocolates"
+       ],
+       "explanation": "Makes it easier and cheaper to produce foods such as chocolates."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "Flavour",
+        "Flavor"
+       ],
+       "explanation": "The food has an increased flavour."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "Fertilisers",
+        "Fertilizers"
+       ],
+       "explanation": "Increases the efficiency of fertilisers in the soil."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "Bacteria"
+       ],
+       "explanation": "Makes food safe to eat by killing these bacteria."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "Drugs"
+       ],
+       "explanation": "Enable the therapeutic drugs to be absorbed into the veins."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "Silver"
+       ],
+       "explanation": "Silver naturally has the strongest antibacterial qualities."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "Weight"
+       ],
+       "explanation": "Help dieters with their weight loss programmes."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "Sun"
+       ],
+       "explanation": "Nanoparticles in sun cream protect skin against the sun."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a talk on research in nanotechnology.\nLecturer: Good morning everyone. Welcome to the second lecture in our series on modern technology. Today I'll be discussing the recent developments in nanotechnology, in addition to its applications in a number of environments, such as domestic and medical.\nLecturer: First of all, I'd like to begin with a short explanation of what nanotechnology is. It is the manipulation of matter on an atomic, molecular, and supramolecular scale. Because of its limitless applications and uses, the government has invested billions of dollars into the research and development of nanotechnology in order to explore its potential. It is only recently that we have been able to engage in the development of nanotechnology, since particles are so minuscule that a new type of microscope had to be invented to enable us to see them.\nLecturer: Many of you may not realize that we all use nanotechnology in our homes as a part of our daily lives. For example, a new dietary supplement uses nanotechnology in order to help our body to absorb iron from our diet more efficiently, which can help to prevent anemia. This technology also makes it easier and cheaper for factories to produce foods such as chocolates, as the nanomolecules help the food to meet our recommended daily intake of certain vitamins and minerals. This may sound bizarre, but in fact it just means that the food is healthier and cheaper, and has an increased flavour.\nLecturer: Another application for nanotechnology is in the agriculture industry. In the past, farmers have used many artificial chemicals to fertilize the soil, which is extremely bad for the planet, as it contaminates the water that we drink. By using nanotechnology, scientists have been able to develop a spray which increases the efficiency of fertilisers that occur naturally in the soil. This means that a lot more food can now be produced per square hectare, making it cheaper and more efficient to grow without harming the planet.\nLecturer: One of the industries that nanotechnology has had the largest impact on is the production of pharmaceuticals. One of the most commonly occurring illnesses is food poisoning, as many foods have naturally occurring contaminants that can be harmful if eaten without being thoroughly cooked. Nanotechnology makes it possible for us to sterilize the food, and make it safe to eat by killing these bacteria.\nLecturer: A major success in the use of nanotechnology in the medical field is in the treatment of cancer. Researchers have found that they can attach medicine to nanoparticles, which are then injected into the body and enable the therapeutic drugs to be absorbed into the veins. These drugs then travel throughout the blood system and target cancerous tumors.\nLecturer: Scientists have also discovered that certain metals contain nanoparticles that have antibacterial qualities, with the ability to destroy over 650 types of bacteria. These metals are used, for example, on fridges to prevent the growth of bacteria. They can even be woven into materials to create clothing that is self-cleaning and has an attractive metallic appearance. The most popular of these materials contains silver, which naturally has the strongest antibacterial qualities. These clothes have a special tag on them to show that they use nanotechnology, so keep a look out for them next time you go shopping.\nLecturer: Another observation made by some researchers showed that certain types of nanoparticles called fullerenes can destroy fat tissues, and therefore stimulate fat loss without the need for dieting or exercise. They are currently developing a supplement that can be swallowed in order to help dieters with their weight loss programs. It is predicted that these supplements will be on the market by 2020.\nLecturer: I would like to finish today's lecture with a final example of a domestic application for nanotechnology: cosmetics. Nanoparticles are used in many makeups and body lotions, but they have the greatest effect in sun cream. Ultraviolet rays given off by the sun are a serious cause of skin cancer, but the nanoparticles in sun cream protect the skin against the sun by blocking the ultraviolet radiation from entering the body. This is why you must always wear sun cream on the beach. Now, I'd be happy to answer any questions you may have."
+  }
+ ],
+ "audio": {
+  "file": "listening-13.mp3",
+  "durationSec": 1638,
+  "questionTimes": {
+   "1": 75,
+   "2": 95,
+   "3": 130,
+   "4": 165,
+   "5": 195,
+   "6": 250,
+   "7": 290,
+   "8": 315,
+   "9": 355,
+   "10": 385,
+   "11": 460,
+   "12": 510,
+   "13": 545,
+   "14": 590,
+   "15": 660,
+   "16": 695,
+   "17": 710,
+   "18": 735,
+   "19": 765,
+   "20": 790,
+   "21": 870,
+   "22": 930,
+   "23": 985,
+   "24": 1020,
+   "25": 1070,
+   "26": 1140,
+   "27": 1165,
+   "28": 1190,
+   "29": 1220,
+   "30": 1230,
+   "31": 1320,
+   "32": 1370,
+   "33": 1395,
+   "34": 1415,
+   "35": 1450,
+   "36": 1500,
+   "37": 1535,
+   "38": 1580,
+   "39": 1625,
+   "40": 1660
+  }
+ }
+}

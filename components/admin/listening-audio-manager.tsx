@@ -871,6 +871,21 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
         </CardContent>
       </Card>
 
+      {/* ---------------- CDI tests (real recordings, read-only) ---------------- */}
+      {(data.realAudioTests ?? 0) > 0 && (
+        <div
+          role="note"
+          className="flex items-start gap-3 rounded-xl border border-averna-cyan/25 bg-averna-cyan/[0.06] px-4 py-3 text-sm text-gray-300"
+        >
+          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-averna-cyan" aria-hidden />
+          <p>
+            <span className="font-semibold text-white">CDI testlari: haqiqiy audio (TTS kerak emas)</span>
+            <span className="text-gray-400"> · {data.realAudioTests} ta test. </span>
+            Ular asl yozuv bilan ijro etiladi, shuning uchun bu roʻyxatda koʻrsatilmaydi.
+          </p>
+        </div>
+      )}
+
       {/* ---------------- Filters ---------------- */}
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative min-w-[12rem] flex-1">

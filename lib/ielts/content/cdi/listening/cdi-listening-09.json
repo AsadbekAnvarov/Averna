@@ -1,0 +1,697 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-09",
+ "title": "CDI Listening Test 09",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-09-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the table below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Beechen Festival\n| Date | Time | Activity | Place | Comments |\n| June 19th | 7 p.m. | Example Concert | [[1]] |   |\n| June 20th | [[2]] | tour | meet at the [[3]] | includes a visit to an old flour mill |\n| June 21st | all day | children’s [[4]] competition | Beechen Community Centre | bring a [[5]] |\n| June 21st | evening | fireworks | by the [[6]] |   |",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Theater",
+        "Theatre"
+       ],
+       "explanation": "The man asks 'Is it in the theater like last year?' and the woman confirms 'Yes, that's right.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "4:30",
+        "4.30",
+        "4 30"
+       ],
+       "explanation": "The printed time of 3:40 is an error; the correct time is 4:30."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "Station"
+       ],
+       "explanation": "Just turn up at the station where the guide will be waiting."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "Cooking"
+       ],
+       "explanation": "The plan was painting, but it’s now going to be cooking instead."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "Plate"
+       ],
+       "explanation": "They’ll need to have a plate to put whatever they’ve made on."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "River"
+       ],
+       "explanation": "The fireworks are next to the river this time due to large numbers."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Festival Information\nThis year, activities end by [[7]] p.m.\nThere won’t be any [[8]] in the town centre this year.\nThe festival’s web address is www. [[9]] .com.\nFestival organisers would like to receive [[10]] online.",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "11:15",
+        "11.15",
+        "1115"
+       ],
+       "explanation": "Evening events won’t go on beyond 11:15."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "Parking"
+       ],
+       "explanation": "Parking in the town centre isn’t going to be allowed."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "events"
+       ],
+       "explanation": "The website is www.events.com."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Feedback"
+       ],
+       "explanation": "The organizers want people to give feedback about what they enjoyed."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a man phoning to ask about a festival in a town called Beechen.\nWoman: Beachen Festival office.\nMan: Oh hello, I want to check some details about the festival. I know tickets are running out fast, and I haven't got access to the internet at present, my computer's down.\nWoman: Okay. Well, the first activity is on June the 19th at 7:00 p.m. and it's a concert with local musicians performing.\nMan: Mm, lovely. Is it in the theater like last year?\nWoman: Yes, that's right. And for the next activity on the 20th, the time's changed.\nMan: Is that the tour?\nWoman: Yes. Now it does say on the tickets that it's a 3:40 start, but that's an error. There wasn't time to update them unfortunately, so it should say 4:30 instead. The correct time is on the website though.\nMan: Oh right. Because one of my friends wants to go on that to see Beachsen with an expert and find out about the town and its history. Does she need to get a ticket in advance?\nWoman: No, just turn up at the station where the guide will be waiting. They'll start from there, and I think the plan is to stop for a break in the park. And there's no charge for the tour. And the tour will finish with a visit to the 16th century mill where they used to make flour. It's recently been restored.\nMan: Fine. And then on the 21st, there's an all-day event for children.\nWoman: Oh. That could be good for my visitors. They're bringing theirs, you see.\nMan: Right. Well, the plan was to have a painting competition for the kids, but it's now going to be cooking instead. And there'll be prizes for all the different age groups.\nWoman: Oh great. And it's in Beachsen community center.\nMan: Oh yes, I know where that is. They don't need to bring any ingredients, but they'll need to have a plate to put whatever they've made on, so they can display it and then take it home.\nWoman: Sounds good. And are they going ahead with the fireworks in the evening? Or is that cancelled? There was an article in the paper after last year's display which suggested it might not be happening again.\nMan: That's right. No, that's still on. It's getting more popular each year. And having it in the town square was starting to be a bit difficult because of the numbers. Which is why it's next to the river this time. It'll be easy for large numbers of people to get to.\nWoman: Yes, of course. I'm sure there's lots to look forward to.\nMan: Okay, now I just want to check how it's going to impact on me as a local resident. I mean, some people last year thought it was too noisy at night.\nWoman: Yes, I know. And that's why this year, evening events won't go on beyond 11:15. I know previously some activities lasted until 11:45. And the new time applies now to all the events, every evening.\nMan: Okay. And another change... perhaps you know about this already, is that because of high visitor numbers, parking in the town centre isn't going to be allowed. It'll be outside town.\nWoman: Oh yes, to keep the streets clear I suppose for all the visitors. I did know actually, and it's not really going to be a problem for me.\nMan: Right. I mean, I can just walk into town from my home.\nWoman: Okay. Well anyway, if you want to check any more details about the festival once you're back online, you can look at www.events.com. And you'll be able to comment on what activities you enjoyed, and what would really help the organizers would be if people could use the website to give feedback about what they enjoyed and that kind of thing. This will help them plan for next year.\nMan: That's probably a good idea. And with pricing, I know local residents..."
+  },
+  {
+   "id": "cdi-listening-09-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "Approximately how many passengers does the ferry hold?",
+       "options": [
+        {
+         "key": "A",
+         "text": "160"
+        },
+        {
+         "key": "B",
+         "text": "600"
+        },
+        {
+         "key": "C",
+         "text": "2000"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The ferry can accommodate about 2,000 people and 600 cars — that's C."
+      },
+      {
+       "n": 12,
+       "text": "Which items should the tourists pack in a separate bag?",
+       "options": [
+        {
+         "key": "A",
+         "text": "food"
+        },
+        {
+         "key": "B",
+         "text": "reading material"
+        },
+        {
+         "key": "C",
+         "text": "medicines"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "You can get tablets from the guide — medicines are covered (B)."
+      },
+      {
+       "n": 13,
+       "text": "The hostel in La Vega de Liebana has",
+       "options": [
+        {
+         "key": "A",
+         "text": "good washing facilities."
+        },
+        {
+         "key": "B",
+         "text": "a games room."
+        },
+        {
+         "key": "C",
+         "text": "a number of single bedrooms."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The bathrooms and showers are of a high standard (A)."
+      },
+      {
+       "n": 14,
+       "text": "Residents at the hostel are not allowed to",
+       "options": [
+        {
+         "key": "A",
+         "text": "take furniture out of the hostel building."
+        },
+        {
+         "key": "B",
+         "text": "enter the hostel after a certain time."
+        },
+        {
+         "key": "C",
+         "text": "smoke in the hostel gardens."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Chairs/tables taken outside into the gardens must be returned (B)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS for each answer.",
+     "wordLimit": 3,
+     "template": "What to bring:\nboots with thick soles, spare [[15]] , light waterproofs\nsuncream: strength – [[16]]\na [[17]] folder for map, etc.",
+     "questions": [
+      {
+       "n": 15,
+       "answer": [
+        "Socks"
+       ],
+       "explanation": "It’s important to bring spare socks."
+      },
+      {
+       "n": 16,
+       "answer": [
+        "Total block"
+       ],
+       "explanation": "Make sure you get what’s known as total block for sun cream."
+      },
+      {
+       "n": 17,
+       "answer": [
+        "Plastic"
+       ],
+       "explanation": "Bring a plastic folder to keep your map and papers in."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose THREE answers.",
+     "title": "Which THREE of the following features of the area in Spain does the speaker talk about?",
+     "options": [
+      {
+       "key": "A",
+       "text": "altitude"
+      },
+      {
+       "key": "B",
+       "text": "coastline"
+      },
+      {
+       "key": "C",
+       "text": "economy"
+      },
+      {
+       "key": "D",
+       "text": "temperatures"
+      },
+      {
+       "key": "E",
+       "text": "vegetation"
+      },
+      {
+       "key": "F",
+       "text": "wildlife"
+      },
+      {
+       "key": "G",
+       "text": "historical sites"
+      }
+     ],
+     "questions": [
+      {
+       "n": 18,
+       "answer": [
+        "A",
+        "F",
+        "G"
+       ],
+       "explanation": "Q18–20: The correct three features are A (altitude), F (wildlife), and G (historical sites). Q18–20: The correct three features are A (altitude), F (wildlife), and G (historical sites). Q18–20: The correct three features are A (altitude), F (wildlife), and G (historical sites)."
+      },
+      {
+       "n": 19,
+       "answer": [
+        "A",
+        "F",
+        "G"
+       ],
+       "explanation": "Q18–20: The correct three features are A (altitude), F (wildlife), and G (historical sites). Q18–20: The correct three features are A (altitude), F (wildlife), and G (historical sites). Q18–20: The correct three features are A (altitude), F (wildlife), and G (historical sites)."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "A",
+        "F",
+        "G"
+       ],
+       "explanation": "Q18–20: The correct three features are A (altitude), F (wildlife), and G (historical sites). Q18–20: The correct three features are A (altitude), F (wildlife), and G (historical sites). Q18–20: The correct three features are A (altitude), F (wildlife), and G (historical sites)."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a tour guide talking to some tourists who are going on a walking holiday in Spain.\nGuide: Well, good evening everyone. My name's Gary Payne, and I'll be the leader for your walking holiday in Spain. And the purpose of this evening's meeting is for us all to get to know each other in advance, and for you to ask any questions you may have about the holiday. So I'll begin by telling you a little bit about what to expect.\nGuide: Now, the ferry crossing from England to Santander in Spain takes about 24 hours. We'll be sailing on the Prince Regent, which was first launched in the 1980s. As well as the crew of 160, it can accommodate about 2,000 people and 600 cars. And it sails at an average speed of 37 kilometres an hour. There'll be an on-board map on one of the decks, which charts the ship's progress during the voyage.\nGuide: Although our minibus will be on one of the vehicle decks in the boat, access to these decks is prohibited during the crossing, so when you leave our bus, you'll have to take everything that you're likely to need with you, like toiletries or books and magazines. In fact, it's probably a good idea to put these things in a separate bag beforehand. You shouldn't need snacks on board as meals are provided and they're quite substantial. And if you don't feel well or get a headache, you can get tablets from me. I always carry an adequate supply.\nGuide: Now, once we're in Spain, we'll be based at a hostel in a small village called La Vega de Liebana, about 120 kilometres from Santander. It's a very picturesque area that's retained a lot of its traditional industry and culture. The hostel accommodation is fairly simple. There are bunk beds, and each room holds four to eight people. But the bathrooms and showers are of a high standard.\nGuide: The hostel residents have the use of tennis courts nearby if you feel like a game. We'll be given breakfast and an evening meal at the hostel. In general, the hostel is relaxed, but there are a few rules which the owners enforce strictly. Smoking is not allowed anywhere inside the building, and food and drink is banned in the dormitories. Any chairs or tables which you take outside into the gardens must be returned every evening to their original place. And finally, the doors are locked after midnight, out of consideration for other guests who are trying to sleep.\nGuide: Now, that's enough about travel and accommodation. But before I move on, I should say something briefly about equipment. There's a list in the guidebook you've been sent, but I'll just elaborate on one or two items. First, boots. Make sure that the ones you bring have thick soles. That's the most important thing. Don't bring trainers for walking in. Apart from anything else, they're dangerous because they slip. It's important to bring spare socks.\nGuide: Then about waterproofs. I'd strongly advise you not to come with anything heavy. You know, with a thick lining. The ideal things are those lightweight ones, because they fold up small. And although they do keep the wind out, they don't make you too hot.\nGuide: Right? Next, sun cream. This is absolutely essential. And regarding the strength, make sure you get what's known as total block. Even factor 25 isn't good enough for those latitudes in July.\nGuide: Then, uh, let's see. Bring a folder to keep your map and other papers in. You know, one of those plastic ones. It's not very likely to rain, but if it does, you'll find it soaks everything.\nGuide: So, that's the practicalities over. Now let me tell you a little bit about the area in Spain where we'll be walking. The Picos de Europa. It's a very popular area for tourists because of its spectacular peaks. Although they're only 25 kilometres from the sea, the highest peaks are more than 2,600 metres high. And have year-round snow caps.\nGuide: On the highest peaks, you've got alpine plants that are only free of their snow cover for a few months a year. Then you've got meadows that are full of wild flowers at certain times of the year. Then the northern slopes are covered by woodlands, giving homes to rare species such as wolves and bears. And because of the variety of plant life, which survives in that part of Europe due to the traditional way of life there, you..."
+  },
+  {
+   "id": "cdi-listening-09-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Sally says many students see peer assessment as",
+       "options": [
+        {
+         "key": "A",
+         "text": "a way for tutors to save time."
+        },
+        {
+         "key": "B",
+         "text": "a useful learning tool."
+        },
+        {
+         "key": "C",
+         "text": "a valuable form of assessment."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Steve says ‘I think we can learn a great deal from it’ — a useful learning tool (B)."
+      },
+      {
+       "n": 22,
+       "text": "What do Steve and Sally agree is an advantage of peer assessment?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It’s more reliable than self-assessment."
+        },
+        {
+         "key": "B",
+         "text": "It increases students’ self-awareness."
+        },
+        {
+         "key": "C",
+         "text": "It builds rapport between students."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Students learn to assess their own assignments objectively — increases self-awareness (B)."
+      },
+      {
+       "n": 23,
+       "text": "If the peer assessment marks seem incorrect,",
+       "options": [
+        {
+         "key": "A",
+         "text": "students should mark the assignments again."
+        },
+        {
+         "key": "B",
+         "text": "the tutor should check those assignments."
+        },
+        {
+         "key": "C",
+         "text": "the marking criteria should be rewritten."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The tutor would have to remark all those assignments (B)."
+      },
+      {
+       "n": 24,
+       "text": "How were the presentations in the research project marked?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Students and lecturers marked all the presentations."
+        },
+        {
+         "key": "B",
+         "text": "Students chose which presentations they wanted to mark."
+        },
+        {
+         "key": "C",
+         "text": "Lecturers marked a selection of presentations."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Each presentation was assessed individually by all participants, both students and lecturers (A)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "How did the following categories of student markers compare with the rest of the group when marking student presentations? Choose the correct answer.",
+     "questions": [
+      {
+       "n": 25,
+       "text": "male students marking female presenters A B C",
+       "options": [
+        {
+         "key": "A",
+         "text": "A"
+        },
+        {
+         "key": "B",
+         "text": "B"
+        },
+        {
+         "key": "C",
+         "text": "C"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Males were harder on female presenters than on males — gave lower marks (B)."
+      },
+      {
+       "n": 26,
+       "text": "female students marking male presenters A B C",
+       "options": [
+        {
+         "key": "A",
+         "text": "A"
+        },
+        {
+         "key": "B",
+         "text": "B"
+        },
+        {
+         "key": "C",
+         "text": "C"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Female students showed no bias towards male presenters — not significantly different (C)."
+      },
+      {
+       "n": 27,
+       "text": "female students marking female presenters A B C",
+       "options": [
+        {
+         "key": "A",
+         "text": "A"
+        },
+        {
+         "key": "B",
+         "text": "B"
+        },
+        {
+         "key": "C",
+         "text": "C"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "When women marked other women, it didn’t affect the grades — not significantly different (C)."
+      },
+      {
+       "n": 28,
+       "text": "younger students marking older presenters A B C",
+       "options": [
+        {
+         "key": "A",
+         "text": "A"
+        },
+        {
+         "key": "B",
+         "text": "B"
+        },
+        {
+         "key": "C",
+         "text": "C"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Younger peers were rather more generous to mature students — gave higher marks (A)."
+      },
+      {
+       "n": 29,
+       "text": "students marking presenters from a different university A B C",
+       "options": [
+        {
+         "key": "A",
+         "text": "A"
+        },
+        {
+         "key": "B",
+         "text": "B"
+        },
+        {
+         "key": "C",
+         "text": "C"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "University affiliation didn’t seem to influence marking — not significantly different (C)."
+      },
+      {
+       "n": 30,
+       "text": "students who had helped set criteria A B C",
+       "options": [
+        {
+         "key": "A",
+         "text": "A"
+        },
+        {
+         "key": "B",
+         "text": "B"
+        },
+        {
+         "key": "C",
+         "text": "C"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Students who helped devise criteria were the toughest markers, below tutors — gave lower marks (B)."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear two students called Sally and Steve discussing Sally's project on peer assessment.\nSteve: I can't believe you're still in the library, Sally. You've been here all day. Are you still working on your peer assessment project?\nSally: Hi Steve. Yes, I'm still here, and I'm nowhere near finished. I'm still processing the reading I've done on peer assessment. I'm interested to see if students marking each other's work is beneficial. I know a lot of the other students are pretty skeptical about its value as a way of assessing their performance. They think the tutors are in favour of it because they don't have to spend so long marking.\nSteve: But I disagree. I think we can learn a great deal from it.\nSally: Yes. I can see one advantage being that it saves time spent going over things in class.\nSteve: Well, initially it doesn't seem to work that way. And it can be quite a time-consuming business. Because sometimes things have to be marked again if the tutor thinks the students' assessments aren't reliable. The real gain is the fact that the students learn to stand back and assess their own assignments objectively, because they're much more familiar with the marking system.\nSally: Yes, I can see that. It gives them an opportunity to reflect on their own performance. And, how do they feel about having another student mark their work? Is that good for rapport?\nSteve: In some cases yes, in some cases no. I think more research is needed to answer that question.\nSally: What happens if a tutor notices that the marks for a particular assignment seem wrong? Should the students mark them again?\nSteve: That might not make any difference. So in that case, the tutor would have to remark all those assignments and then go through the marking criteria really carefully with the students on the next assignment with some sample answers.\nSally: Right. I've been reading about a research project on peer assessment. The researchers invited a group of students from two different universities to attend a one-day conference. They also invited some university lecturers to attend. Each student gave a short presentation on a project of their choice. Each of these presentations was assessed individually by all the participants, both students and lecturers. To support their marking, they used a set of assessment guidelines that had been prepared the day before by a random selection of students.\nSally: So, were the student markers reliable?\nSteve: Well, comparisons were made between certain categories of student markers and the group as a whole, including the lecturers. The findings showed that there were some variations in the way different groups marked. Gender did come into play, for example.\nSally: I expect the male students were more generous when marking female presenters, were they?\nSteve: Quite the reverse actually. They were harder on the female presenters than on the males. Which wasn't what I'd expected either.\nSally: Did female students show any bias towards male presenters?\nSteve: Interestingly not. So, does that suggest women are fairer and more reliable markers than men?\nSally: Well, I wouldn't go that far. It's only a small sample. But significantly, the results showed that when women marked other women, this didn't affect the grades they gave.\nSteve: What about age? Were you able to come to any conclusions about that?\nSally: Yes, because we had some mature students presenting, and we found the marks awarded to them by their younger peers were rather more generous.\nSteve: I wonder why that is. Now, you said there were groups of students from two universities. Did they tend to favour students making presentations from their own universities?\nSally: It didn't seem to influence marking one way or the other, which is quite encouraging. We'd been interested to see if students' personal relationships affected their objectivity. One striking variation though, was in the students who'd been asked to help devise the criteria for the marking scheme. They were actually the toughest markers of all, marking consistently below the tutors.\nSteve: Really? Well, it sounds as if it's generated lots of useful data. I expect you'll be..."
+  },
+  {
+   "id": "cdi-listening-09-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Bislama — The Pidgin English Language of Vanuatu\n# Languages in Vanuatu\n- Local languages:\n- Actively spoken languages: 81\n- Declining languages: 17\n- [[31]] languages: 8\n- Total: 106\n- Foreign languages: English is used in the [[32]] system\n# Bislama\n- It is spoken by 90% of the population today.\n- In the past this language was described as [[33]]\n# History of Bislama\n- Around 1800 it was used as a common language on many ships.\n- After 1860 Vanuatu people worked in Australian [[34]]\n- After 1950 people moved to the [[35]]\n# Description of Bislama\n- General: Bislama should be called a [[36]] pidgin.\n- Vocabulary:\n- Most words come from English.\n- Words such as “from” may have more [[37]] in Bislama.\n- Less than 10% of words are of [[38]] origin.\n- Pacific words describe the natural world and also local [[39]]\n- Grammar: It is based on Vanuatu languages. The word “long” acts as an important [[40]] in Bislama.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "Extinct"
+       ],
+       "explanation": "Eight languages have been identified as extinct."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "Education"
+       ],
+       "explanation": "English is the medium for all education purposes."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "Broken"
+       ],
+       "explanation": "It was commonly referred to as a broken language."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "Plantation"
+       ],
+       "explanation": "From about 1860, people travelled to work on the new plantation."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "City"
+       ],
+       "explanation": "From the 1950s, people migrated from small villages into the city."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "Developed"
+       ],
+       "explanation": "Linguists prefer to describe Bislama as a developed pidgin."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "Meanings"
+       ],
+       "explanation": "Words can have a wider range of meanings in Bislama."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "French"
+       ],
+       "explanation": "Around five to ten percent of words are derived from French."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "Culture"
+       ],
+       "explanation": "Pacific words describe some aspect of the culture unique to the country."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "Preposition"
+       ],
+       "explanation": "The word ‘long’ is almost the only preposition in Bislama."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear part of a linguistics lecture about a language called Bislama, spoken in the Pacific Islands.\nLecturer: Good morning, and welcome back to this series of linguistics lectures. Today I will be talking about the language Bislama, which is a form of pidgin English. Linguists use the term pidgin to describe new languages that are created by combining two or more existing languages, often in a simplified form. The study of pidgin languages is important because it provides us with information about language change and modification.\nLecturer: The pidgin English known as Bislama is used in the South Pacific nation of Vanuatu, a group of islands where 81 first languages are still regularly used by the local people. There are a further 17 local languages that are in danger of dying out, and eight that have been identified as extinct. This gives a total of 106 first languages in all, a very high number for a small country with a population of just 200,000 people.\nLecturer: Then, thinking about foreign languages, English is the most important and has official status, largely because it is the medium for all education purposes. However, it is Bislama that is the most widely spoken language in the country, used regularly by more than 90% of the population.\nLecturer: We should note here that in earlier times, some people had negative feelings towards the language. In fact, for many years it was commonly referred to as a broken language and its use was discouraged. But attitudes have changed dramatically, and today the people of Vanuatu are very proud of this unique language.\nLecturer: It is only when we understand the historical context that we can comprehend just why Bislama developed in Vanuatu. The first form of pidgin English in this region can be traced to around 1800, when foreign traders arrived, and local people were recruited to work as sailors. On board multilingual ships, there was an obvious need for a common tongue, and pidgin English was born. This early form of Bislama continued to spread as trade in the Pacific developed in sandalwood and other local commodities.\nLecturer: Then, from about 1860, a lot of people from Vanuatu travelled to Australia to work on the new plantations as labourers. Again, because of the multilingual nature of these workplaces, it was very important to have a common language.\nLecturer: Finally, in modern times, there have been other pressures that have maintained the need for a common language. Like many other parts of the world from about the 1950s, Vanuatu experienced a significant migration of its people from small villages into the city, and it has been here that Bislama has really established itself as the country's first language.\nLecturer: So then, how can we describe the language itself? In general terms, pidgin languages can be defined as extremely simple versions of the original language. However, this is not a satisfactory definition in this case, and linguists prefer to describe Bislama as a developed pidgin, because it has more rules and ideas than most simple pidgin languages found in other parts of the world.\nLecturer: Let's think first about the vocabulary. Because Britain was the colonial power, the majority of Bislama's vocabulary is derived from English. However, some care needs to be taken here. For example, the word 'from' in Bislama can also mean 'because of'. So we need to be aware that words can have a wider range of meanings in Bislama. Indeed, there are numerous other potentially misleading terms.\nLecturer: And English is not the only contributor to the vocabulary. Again, because of the region's history, there are some words, around five to ten percent, that are derived from French. Then, a relatively small number of words have been taken from local Pacific languages. Usually this is the case where there is no English equivalent for naturally occurring phenomena, or to describe some aspect of the culture that is unique to the country.\nLecturer: Finally, a word about grammar. Although the vocabulary is based largely on English, it is important to note that the grammatical structure of Bislama is derived from patterns common in the local languages of Vanuatu. So, for example, there are two distinct pronouns meaning 'we'. One means 'I and you', and another means 'I and some others but not you'. Sounds confusing in English, but in the local languages such distinctions are common. A different example concerns the word 'long'. It is almost the only preposition in Bislama and may be used in place of a whole range of English words such as 'at', 'to', 'with', 'on', 'in', and so on.\nLecturer: Well, that is the end of the formal part of the lecture. If you have any questions now, I'll be most happy to..."
+  }
+ ],
+ "audio": {
+  "file": "listening-9.mp3",
+  "durationSec": 1638,
+  "questionTimes": {
+   "1": 181,
+   "2": 192,
+   "3": 214,
+   "4": 243,
+   "5": 258,
+   "6": 283,
+   "7": 346,
+   "8": 362,
+   "9": 387,
+   "10": 398,
+   "11": 528,
+   "12": 579,
+   "13": 604,
+   "14": 634,
+   "15": 712,
+   "16": 737,
+   "17": 751,
+   "18": 775,
+   "19": 785,
+   "20": 797,
+   "21": 933,
+   "22": 967,
+   "23": 996,
+   "24": 1018,
+   "25": 1126,
+   "26": 1134,
+   "27": 1148,
+   "28": 1161,
+   "29": 1177,
+   "30": 1192,
+   "31": 1368,
+   "32": 1385,
+   "33": 1404,
+   "34": 1454,
+   "35": 1476,
+   "36": 1506,
+   "37": 1535,
+   "38": 1555,
+   "39": 1562,
+   "40": 1609
+  }
+ }
+}

@@ -1,0 +1,648 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-03",
+ "title": "CDI Reading Test 03",
+ "description": "A full Academic Reading test from the CDI practice materials: The History of the Guitar; Playing Soccer; Memory Champions ... or just good at tricks?.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The History of the Guitar",
+  "Playing Soccer",
+  "Memory Champions ... or just good at tricks?"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The History of the Guitar",
+   "paragraphs": [
+    {
+     "text": "An overview of the origins of the modern guitar"
+    },
+    {
+     "label": "A",
+     "text": "The earliest stringed instruments currently known to archaeologists are bowl harps. For millennia, people made bowl harps using, for example, tortoise shells as resonators, with a bent stick for a neck and one or more gut or silk strings. The world's museums contain many such harps from the ancient Sumerian, Babylonian, and Egyptian civilisations. Around 2500-2000 BC more advanced harps, such as the beautifully carved 11-stringed instrument found in the tomb of Queen Shub-Ad in ancient Mesopotamia, now modern-day Iraq, started to appear."
+    },
+    {
+     "label": "B",
+     "text": "The tanbur probably developed from the bowl harp. It was different from the bowl harp in that its neck was straightened out to allow the strings to be pressed down to create more notes. Tomb paintings and stone carvings in Egypt indicate that harps and tanburs - plus flutes and percussion instruments - were being played together 3,500-4,000 years ago. Archaeologists have also found many similar relics amongst the ruins of the ancient Mesopotamian civilisation. Many of these instruments have survived into modern times in almost unchanged form, for example folk instruments of the region such as the Turkish saz and Afghan panchtar."
+    },
+    {
+     "label": "C",
+     "text": "At 3,500 years old, the tanbur which belonged to the Egyptian singer Har-Mose is the earliest known example of this instrument. Har-Mose's tanbur had three strings and a plectrum suspended from the neck by a cord. The soundbox, which increased the volume, was made of beautifully polished cedarwood and covered in rawhide. It can be seen today at the Archaeological Museum in Cairo."
+    },
+    {
+     "label": "D",
+     "text": "In order to distinguish guitars from other stringed instruments, it is helpful to have a broad definition of the guitar. Music expert Dr Michael Kasha defines a guitar as having 'a long, fretted neck, flat wooden soundboard, ribs, and a flat back, most often with sides that curve inwards'. The oldest known visual representation of such an instrument is a stone carving at Alacaa Hüyük in Turkey, which shows a 3,300-year-old instrument with a long neck and sides that clearly curve inwards."
+    },
+    {
+     "label": "E",
+     "text": "The name 'guitar' comes from the ancient Sanskrit word for 'string' - 'tar'. Many popular stringed instruments used in central Asia today have existed in an unchanged form for several thousand years, as shown by the archaeological finds in the area. Many have names that end in 'tar', with a prefix indicating the number of strings, such as the dotar, a two-stringed instrument found in Turkestan, and the Persian three-stringed setar and four-stringed chartar. The Indian sitar almost certainly took its name from the setar, but over the centuries it evolved radically, following the Indians' own aesthetic and cultural ideals."
+    },
+    {
+     "label": "F",
+     "text": "Tanburs and harps spread around the ancient world with travellers, merchants and seamen. The earliest guitar-like instruments to arrive in Europe had, most often, four strings. Many such instruments, and variations with from three to five strings, can be seen in mediaeval illustrated manuscripts. They were also carved in stone in European churches and cathedrals, from the first century AD through until the 13th century."
+    },
+    {
+     "label": "G",
+     "text": "When the four stringed Persian chartar arrived in Spain, however, it changed in form and construction, acquiring pairs of strings tuned to the same note instead of single strings. It became known as the chitarra. By the middle of the 14th century, the chitarra had become dominant, at least in most of Europe. The earliest known music for the eight-stringed chitarra was written in 16th-century Spain. The ten-string version first appeared in Italy at the same time, and gradually replaced the eight-stringed instrument. A further two strings first appeared in the 17th century, an innovation which guitar makers all over Europe quickly took up. However, this twelve-string arrangement gradually gave way to six single strings across the continent. The six-stringed guitar can thus be said to be a development of the twelve-stringed, rather than vice versa, as was thought previously."
+    },
+    {
+     "label": "H",
+     "text": "At the beginning of the 19th century, the present-day guitar began to take shape, although bodies were still fairly small and narrow-waisted. The modern classical guitar first appeared in its current form in the mid-19th century, when the Spanish guitar maker Antonio Torres increased the size of the body, altered its proportions, and introduced the revolutionary fan-braced top. His design radically increased the volume and improved the tone of the instrument and very soon became the norm. This design has remained essentially unchanged to this day."
+    },
+    {
+     "label": "I",
+     "text": "At the time when Torres made his breakthrough, German immigrants to America - among them Christian Friedrich Martin - began making guitars with X-braced tops. Steel strings, which became widely available several decades later in the early 1900s, offered the promise of much louder guitars, but the increased tension was too much for the fan-braced top. The stronger X-braced top proved equal to the job, and quickly became the industry standard."
+    },
+    {
+     "label": "J",
+     "text": "At the end of the 19th century, guitar manufacturer Orville Gibson added steel strings to a body constructed like a cello, a combination which produced more volume. The electric guitar was born when pickups were fitted to Hawaiian and jazz guitars in the late 1920s, but met with little success until 1936, when Gibson introduced its famous ES150 model."
+    },
+    {
+     "text": "* tanbur: a long-necked stringed instrument with a small pear-shaped body"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "The instrument found in Queen Shub-Ad's tomb is the world's oldest known version of a harp.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "FALSE - Paragraph A says bowl harps are the earliest known instruments, while Queen Shub-Ad's harp appeared later (2500–2000 BC) as a more advanced type."
+      },
+      {
+       "n": 2,
+       "text": "Today's Afghan panchtar is very similar to an ancient Mesopotamian instrument.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "TRUE - Paragraph B says many instruments survived into modern times in almost unchanged form, including the Afghan panchtar."
+      },
+      {
+       "n": 3,
+       "text": "The Egyptian singer Har-Mose was an excellent tanbur player.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "NOT GIVEN - Paragraph C describes Har-Mose and his tanbur but gives no information about his skill as a player."
+      },
+      {
+       "n": 4,
+       "text": "Cairo Archaeological Museum contains many historic musical instruments.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "NOT GIVEN - Paragraph C only states the tanbur is in the Archaeological Museum in Cairo, not that it contains many historic instruments."
+      },
+      {
+       "n": 5,
+       "text": "The instrument carved in stone at Alacaa Hüyük is consistent with Dr Michael Kasha's definition of a guitar.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "TRUE - Paragraph D links Kasha's definition to the Alacaa Hüyük carving, which shows a long neck and inward-curving sides."
+      },
+      {
+       "n": 6,
+       "text": "The different instruments that appeared in mediaeval literature had the same number of strings.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "FALSE - Paragraph F states the instruments varied from three to five strings."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Development of the Modern Guitar",
+     "template": "- was a development of an earlier instrument called the [[7]]\n- its shape a result of modifications including a larger [[8]] introduced by Antonio Torres\n- changes produced better tone and greater [[9]]\n- first made in [[10]] in mid-19th century\n- strings made of [[11]] became available around 1900\n- in the 1920s, [[12]] added to guitars\n- a well-known version brought out by [[13]]",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "chartar"
+       ],
+       "explanation": "Paragraph G: the four-stringed Persian chartar arrived in Spain and became known as the chitarra."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "body"
+       ],
+       "explanation": "Paragraph H: Antonio Torres increased the size of the body."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "volume"
+       ],
+       "explanation": "Paragraph H: his design increased the volume and improved the tone."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "America"
+       ],
+       "explanation": "Paragraph I: German immigrants to America began making guitars with X-braced tops."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "steel"
+       ],
+       "explanation": "Paragraph I: steel strings became widely available in the early 1900s."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "pickups"
+       ],
+       "explanation": "Paragraph J: pickups were fitted to Hawaiian and jazz guitars in the late 1920s."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "Gibson"
+       ],
+       "explanation": "Paragraph J: Gibson introduced its famous ES150 model."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Playing Soccer",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Street soccer, as its name implies, is an informal variation of the sport, often played on the street, particularly in urban areas. There are many reasons for the widespread popularity of street soccer. Unlike youth soccer, its more formally organized counterpart, no large space is needed, and goal posts, corner markers, and marked lines, associated with the formal game, are typically absent, as are game officials or referees. Another attraction of street soccer is that it is played frequently and competitively, but does not necessarily require standard 11-a-side teams or fixed playing positions. Unlike in youth soccer, inexperienced street soccer players rarely learn from repetitive technical and tactical drills. Instead, they learn from their poor performance in competition, unconscious of the skills they are nonetheless developing, and without older adults or coaches present. Players learn without effort through playing the game, and soon attain an almost natural feeling for the sport."
+    },
+    {
+     "label": "B",
+     "text": "However, there are lots of cities in the world today where conditions are such that street soccer is no longer possible. Congested traffic now dominates where games were once played. Parks and open fields are used as hangouts for teenagers with other interests. Add to this the requirement in many localities for official permits to use public spaces and the managed schedules that many young people have today, and spontaneous play of any kind is hard to imagine."
+    },
+    {
+     "label": "C",
+     "text": "In spite of all these obstacles, which are probably solvable in most instances, there is another sociological explanation of why in many places street soccer doesn't enjoy the same popularity it once did. In his book How Soccer Explains the World, US writer Franklin Foer observes: 'But for all the talk of freedom, the 1960s parenting style had a far less relaxed side too. Like the 1960s consumer movement which brought seat belts and airbags to cars, the (youth) soccer movement felt like it could create a set of ... regulations that would protect both the child's body and mind from damage.' Soccer leagues like the one I played in as a child handed out 'participation' prizes to every player, no matter how few games his (or her) team won. Where most of the world accepts the practice of using your head to hit the ball as an essential element of the game, some (youth) soccer parents have worried over the potential for injury to the brain. An entire industry grew up to manufacture protective headgear. Even though very little medical evidence supports this fear, some youth leagues prohibited heading the ball altogether."
+    },
+    {
+     "label": "D",
+     "text": "A growing body of people don't believe street soccer involves a legitimate educational method. They argue that children need to be taught by experts. Youth soccer instruction now begins with four-year-olds, so that they will have an advantage as six-year-olds. This need to get ahead brings with it a fear of falling behind that only expert instruction can prevent. This type of instruction leaves no room for the trial and error approach of street soccer."
+    },
+    {
+     "label": "E",
+     "text": "One of the basic ideas of street soccer is that young players are assigned a particular role by a better player and are expected to play for the good of the team. Such an assignment runs counter to the idea of youth soccer that every child needs to learn every position and will benefit from doing so. In street soccer, you fill the role that you are best suited to at a particular time. While this role assignment can change from game to game, the purpose is always the same: to get the best out of each individual at any given moment."
+    },
+    {
+     "label": "F",
+     "text": "In street soccer, children have to learn patience, to wait their turn, to realize that they are not entitled to make decisions, or even be listened to simply because they speak up. Positions of responsibility are earned through competition within the team. Younger players in street soccer must wait to attain those positions. In youth soccer, however, with its overly democratic values, youngsters are guaranteed their time in the spotlight. Whether it's their turn to be captain, to play a central position or to take a crucial shot, youth soccer players come to believe that hard work and patience aren't really necessary."
+    },
+    {
+     "label": "G",
+     "text": "Not only does every youth soccer player get a chance, it is assumed that each individual has played well. 'Everyone's a winner; no one's a loser' is a guiding principle of youth soccer. This ensures each individual goes away positive about themselves. No one can leave a game or a practice feeling bad. But if there really are no losers, then why try at all? Since giving less than your best receives the same reward as giving your best, why go to any extra effort? In street soccer, every game results in a winner and a loser and everyone knows who is who. Losing a game is a common experience and players learn early on how to handle this. As a result, unlike most youth soccer players, they acquire resilience. A further difference between these two strands of soccer is that in street soccer a formal record is not kept. You can lose one day and win the next. The results are only temporary and are forgotten within minutes of the end of the match. But in organized youth soccer, the position each person plays and the results are formally noted and maintained throughout a season."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Which paragraph contains the following information? Write the correct letter, A–G.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "a contrast between the ways young players gain experience of playing different positions",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E contrasts role assignment in street soccer with the youth-soccer idea that every child should learn every position."
+      },
+      {
+       "n": 15,
+       "text": "examples outside sport of greater emphasis on individual safety",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C mentions seat belts and airbags as non-sport examples of increased safety emphasis."
+      },
+      {
+       "n": 16,
+       "text": "a description of methods of selection for leadership on soccer teams",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F explains that positions of responsibility (e.g., captain) are earned through competition within the team."
+      },
+      {
+       "n": 17,
+       "text": "details of urban changes that discourage street soccer",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B lists congested traffic, use of parks, permit requirements, and managed schedules as obstacles."
+      },
+      {
+       "n": 18,
+       "text": "a mention of the lesson that failure teaches street soccer players",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G notes that losing is common and teaches players resilience."
+      },
+      {
+       "n": 19,
+       "text": "an explanation of why youth soccer emphasises the need for coaches",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D says expert instruction is demanded due to fear of falling behind."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "The list below gives some possible reasons for the popularity of street soccer. Which TWO of these reasons are mentioned by the writer of the text?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Many famous soccer players got their start in street soccer."
+      },
+      {
+       "key": "B",
+       "text": "Young people can begin playing street soccer at a very early age."
+      },
+      {
+       "key": "C",
+       "text": "You do not need elaborate facilities to play street soccer."
+      },
+      {
+       "key": "D",
+       "text": "Inexperienced street soccer players are not criticised for mistakes."
+      },
+      {
+       "key": "E",
+       "text": "Street soccer teams can have varying numbers of players."
+      }
+     ],
+     "questions": [
+      {
+       "n": 20,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "C and E are correct. Paragraph A notes no large space or formal facilities are needed (C), and teams need not be standard 11-a-side (E). C and E are correct. Paragraph A notes no large space or formal facilities are needed (C), and teams need not be standard 11-a-side (E)."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "C and E are correct. Paragraph A notes no large space or formal facilities are needed (C), and teams need not be standard 11-a-side (E). C and E are correct. Paragraph A notes no large space or formal facilities are needed (C), and teams need not be standard 11-a-side (E)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "The list below gives some possible results of the 1960s parenting style. Which TWO of these results are mentioned by Franklin Foer in the excerpt from How Soccer Explains the World?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Participation in youth soccer became much more expensive."
+      },
+      {
+       "key": "B",
+       "text": "Some youth soccer leagues adopted more restrictive rules of play."
+      },
+      {
+       "key": "C",
+       "text": "Fewer young people joined youth soccer teams."
+      },
+      {
+       "key": "D",
+       "text": "Youth soccer players were sometimes rewarded for simply playing in games."
+      },
+      {
+       "key": "E",
+       "text": "Soccer equipment manufacturers directed advertising towards parents."
+      }
+     ],
+     "questions": [
+      {
+       "n": 22,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "B and D are correct. Paragraph C mentions restrictive rules like banning heading (B) and participation prizes for all players (D). B and D are correct. Paragraph C mentions restrictive rules like banning heading (B) and participation prizes for all players (D)."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "B and D are correct. Paragraph C mentions restrictive rules like banning heading (B) and participation prizes for all players (D). B and D are correct. Paragraph C mentions restrictive rules like banning heading (B) and participation prizes for all players (D)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Youth Soccer – Key Ideas",
+     "template": "- For youth soccer players, a key [[24]] is that they should always come away from the game with a positive attitude.\n- In this respect, regardless of the effort the players make, they get some kind of [[25]] at the end of a game.\n- In fact, no-one ever keeps a [[26]] of the results of games.",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "principle"
+       ],
+       "explanation": "Paragraph G: 'Everyone's a winner; no one's a loser' is described as a guiding principle."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "reward"
+       ],
+       "explanation": "Paragraph G: giving less than your best receives the same reward as giving your best."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "record"
+       ],
+       "explanation": "Paragraph G: in street soccer a formal record is not kept."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Memory Champions ... or just good at tricks?",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The Examinations School at Oxford University is where, last August, 34 contestants gathered at the World Memory Championships. It is an impressive historical venue, known for its austere yet grandiose setting of oak-paneled rooms, large Gothic windows, and looming portraits of eminent dukes and earls. It is here that generations of Oxford students have been tested in their final exams on their memory and knowledge, and it is here that these contestants were challenged to demonstrate their exceptional mnemonic abilities. Reciting poems, memorizing digit sequences, and recalling faces from photographs are just a few of the tasks that test the limits of human memory in this competitive setting."
+    },
+    {
+     "label": "B",
+     "text": "They are using a technique known as the loci method, reportedly originating in 477 BC with the Greek poet Simonides of Ceos. He was able to memorize the guest list at a dinner by closing his eyes and recalling each individual around the table. The loci method, which was rediscovered and popularized by Simonides, has become an integral part of historical and modern memory training. This method involves associating items to be remembered with specific physical locations, creating a mental map that facilitates recall. After Simonides's discovery, the loci method became widely embraced across ancient Greece, serving as a fundamental technique for orators and scholars. It was so effective that it was incorporated into educational curricula and became a cornerstone of rhetorical training. Aristotle wrote favorably about it, recognizing its value and effectiveness. Later, a number of treatises on the art of memory were published in Rome, further cementing its importance and utility in memory training."
+    },
+    {
+     "label": "C",
+     "text": "One memory champion, Ed Cooke, can memorize the order of ten decks of playing cards in less than one hour or one deck of cards in less than one minute. Psychologists Elizabeth Valentine and John Wilding have teamed up with Eleanor Maguire to study how memory champions like Cooke operate differently from average individuals. Their collaboration aims to explore the neural underpinnings that might explain the exceptional memory skills exhibited by competitors in high-pressure environments such as memory championships. When the researchers analyzed the brain scans from the number memorization, they found that the memory champions were activating some brain regions that were different from those the control subjects were using. These regions are known to be involved in visual memory and spatial navigation."
+    },
+    {
+     "label": "D",
+     "text": "To enable himself to memorize quickly, Ed Cooke has memorized a specific human being, verb, and object that he associates with every card in the deck. This detailed and highly personalized system allows him to rapidly encode and decode information during competitions. When Cooke commits a deck to memory, he does it three cards in one go, with every three-card group forming a composite picture of a person doing something to an object. He then places those images along a specific familiar path in his mind, creating a vivid mental journey that he can easily traverse. When it comes to recall, Cooke takes a mental walk along his route and translates the images into cards, effectively and efficiently converting his vivid mental images back into the specific order of the deck."
+    },
+    {
+     "label": "E",
+     "text": "The term 'photographic memory' is frequently used to describe people with exceptional recall. Yet, most researchers agree there is no proof that such a memory truly exists. If it is indeed a myth, it highlights how learned strategies are often more effective than natural talent. The belief in 'photographic memory' remains a point of contention among the public and scientists alike. Despite the absence of solid scientific evidence, this myth endures, reflecting how society's fascination with remarkable memory tends to ignore the practical techniques and training that genuinely drive mnemonic success."
+    },
+    {
+     "label": "F",
+     "text": "The most renowned of the naturals was the Russian journalist S.V. Shereshevski, who could remember long sequences of numbers learned decades before, as well as poems, strings of meaningless syllables, and nearly anything else he was asked to recall. Shereshevski also experienced synesthesia, a rare sensory condition where the senses are interconnected, which significantly improved his memorization ability. His skills were not limited to these accomplishments; his remarkable memory covered an almost endless range of information, making him a figure of great interest and study."
+    },
+    {
+     "label": "G",
+     "text": "K. Anders Ericsson, a well-known psychologist, claims that anyone can develop memory abilities comparable to those of memory champions through consistent practice and proper techniques. During two years of experimentation, S.V. increased his ability to recall numbers from seven to over eighty. This study led Ericsson to conclude that there is no such thing as an innately superior memory. When he revisited original case reports of natural memorizers, he discovered that their remarkable abilities were actually based on the use of specific techniques — sometimes unconsciously — combined with extensive practice. Strategists are usually outstanding at remembering only certain kinds of material, whereas naturals exhibit strong memory across many types of tasks and can retain those memories more easily."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has seven paragraphs, A–G. Which paragraph contains the following information? Write the correct letter, A–G.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "a description of how a contestant remembers complex sequences",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D details Ed Cooke's person-verb-object system for remembering card sequences."
+      },
+      {
+       "n": 28,
+       "text": "an example of how one person's memory was improved over time",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G notes S.V. increased recall from seven to over eighty through two years of training."
+      },
+      {
+       "n": 29,
+       "text": "a description of a memorizing competition",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A describes the World Memory Championships and the contest setting."
+      },
+      {
+       "n": 30,
+       "text": "a commonly held belief about memory that many experts say is unproven",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E says 'photographic memory' is commonly believed but lacks proof."
+      },
+      {
+       "n": 31,
+       "text": "a reference to the first recorded use of memorizing through location",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B mentions Simonides of Ceos and the origins of the loci method in 477 BC."
+      },
+      {
+       "n": 32,
+       "text": "a reference to an unusual condition which results in improved memory",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F describes synesthesia, a rare condition that enhanced Shereshevski's memory."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "title": "Ed Cooke's Method for Memorising a Pack of Cards",
+     "template": "- A [[33]], an action, and a thing are assigned to consecutive cards in the pack.\n- Combining these images allows Cooke to memorise [[34]] at a time.\n- The mind pictures are then positioned on a [[35]].\n- The pack of cards is remembered by going for a [[36]] while the pictures are converted back into cards.",
+     "questions": [
+      {
+       "n": 33,
+       "answer": [
+        "specific human being"
+       ],
+       "explanation": "Paragraph D: Cooke assigns a specific human being, a verb, and an object to cards."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "three cards"
+       ],
+       "explanation": "Paragraph D: he memorizes three cards in one go by combining the images."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "specific familiar path"
+       ],
+       "explanation": "Paragraph D: the images are placed along a specific familiar path."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "mental walk"
+       ],
+       "explanation": "Paragraph D: Cooke takes a mental walk along his route to recall the cards."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–F, below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "used mainly for educational purposes."
+      },
+      {
+       "key": "B",
+       "text": "activated brain areas associated with visual and spatial memory."
+      },
+      {
+       "key": "C",
+       "text": "became widespread in ancient Greece for memorizing speeches and texts."
+      },
+      {
+       "key": "D",
+       "text": "the result of techniques and extensive practice."
+      },
+      {
+       "key": "E",
+       "text": "retaining a wide variety of tasks."
+      },
+      {
+       "key": "F",
+       "text": "benefited from additional cognitive abilities."
+      }
+     ],
+     "questions": [
+      {
+       "n": 37,
+       "text": "Valentine, Wilding and Maguire's experiment shows that the memory contestants",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph C reports activation of brain regions involved in visual memory and spatial navigation."
+      },
+      {
+       "n": 38,
+       "text": "After Simonides discovered the loci method in 477 BC, it was",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph B says the loci method became widely embraced across ancient Greece for orators and scholars."
+      },
+      {
+       "n": 39,
+       "text": "Ericsson finds out that natural memorizers are better than strategic memorizers at",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph G contrasts naturals as strong across many types of tasks, unlike strategists."
+      },
+      {
+       "n": 40,
+       "text": "According to K. Anders Ericsson, Shereshevski's skills were",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph G states the remarkable abilities were based on techniques plus extensive practice."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,664 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-32",
+ "title": "CDI Reading Test 32",
+ "description": "A full Academic Reading test from the CDI practice materials: Fishbourne Roman Palace; The horseshoe crab; The strange world of sight.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Fishbourne Roman Palace",
+  "The horseshoe crab",
+  "The strange world of sight"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Fishbourne Roman Palace",
+   "paragraphs": [
+    {
+     "text": "Fishbourne Roman Palace is in the village of Fishbourne in West Sussex, England. This large palace was built in the 1st century AD, around thirty years after the Roman conquest of Britain, on the site of Roman army grain stores which had been established after the invasion, in the reign of the Roman Emperor Claudius in 43 AD. The rectangular palace was built around formal gardens, the northern half of which have been reconstructed. There were extensive alterations in the 2nd and 3rd centuries AD, with many of the original black and white mosaic floors being overlaid with more sophisticated coloured ones, including a perfectly preserved mosaic of a dolphin in the north wing. More alterations were in progress when the palace burnt down in around 270 AD, after which it was abandoned."
+    },
+    {
+     "text": "Local people had long believed that a Roman palace once existed in the area. However, it was not until 1960 that the archaeologist Barry Cunliffe, of Oxford University, first systematically excavated the site, after workmen had accidentally uncovered a wall while they were laying a water main. The Roman villa excavated by Cunliffe's team was so grand that it became known as Fishbourne Roman Palace, and a museum was erected to preserve some of the remains. This is administered by the Sussex Archaeological Society."
+    },
+    {
+     "text": "In its day, the completed palace would have comprised four large wings with colonnaded fronts. The north and east wings consisted of suites of private rooms built around courtyards, with a monumental entrance in the middle of the east wing. In the north-east corner there was an assembly hall. The west wing contained state rooms, a large ceremonial reception room, and a gallery. The south wing contained the owner's private apartments. The palace included as many as 50 mosaic floors, under-floor central heating and a bathhouse. In size, Fishbourne Palace would have been approximately equivalent to some of the great Roman palaces of Italy, and was by far the largest known Roman residence north of the European Alps, at about 500 feet (150 m) square."
+    },
+    {
+     "text": "A team of volunteers and professional archaeologists are involved in an ongoing archaeological excavation on the site of nearby, possibly military, buildings. The first buildings to be erected on the site were constructed in the early part of the conquest in 43 AD. Later, two timber buildings were constructed, one with clay and mortar floors and plaster walls, which appears to have been a house of some comfort. These buildings were demolished in the 60s AD and replaced by a substantial stone house, which included colonnades, and a bath suite. It has been suggested that the palace itself, incorporating the previous house in its south-east corner, was constructed around 73–75 AD. However, Dr Miles Russell, of Bournemouth University, reinterpreted the ground plan and the collection of objects found and has suggested that, given the extremely close parallels with the imperial palace of Domitian in Rome, its construction may more plausibly date to after 92 AD."
+    },
+    {
+     "text": "With regard to who lived in Fishbourne Palace, there are a number of theories; for example, one proposed by Professor Cunliffe is that, in its early phase, the palace was the residence of Tiberius Claudius Cogidubnus, a local chieftain who supported the Romans, and who may have been installed as king of a number of territories following the first stage of the conquest. Cogidubnus is known from a reference to his loyalty in Agricola, a work by the Roman writer Tacitus, and from an inscription commemorating a temple dedicated to the gods Neptune and Minerva found in the nearby city of Chichester. Another theory is that it was built for Sallustius Lucullus, a Roman governor of Britain of the late 1st century, who may have been the son of the British prince Adminius. Two inscriptions recording the presence of Lucullus have been found in Chichester, and the redating by Miles Russell of the palace to the early 90s AD would fit far more securely with such an interpretation. If the palace was designed for Lucullus, then it may have only been in use for a few years, as the Roman historian Suetonius records that Lucullus was executed by the Emperor Domitian in or shortly after 93 AD. Additional theories suggest that either Verica, a British king of the Roman Empire in the years preceding the Claudian invasion, was owner of the palace, or Tiberius Claudius Catuarus, following the recent discovery of a gold ring belonging to him."
+    },
+    {
+     "text": "The palace outlasted the original owner, whoever he was, and was extensively re-planned early in the 2nd century AD, and subdivided into a series of lesser apartments. Further redevelopment was begun in the late 3rd century AD, but these alterations were incomplete when the north wing was destroyed in a fire in around 270 AD. The damage was too great to repair, and the palace was abandoned and later dismantled. A modern museum has been built by the Sussex Archaeological Society, incorporating most of the visible remains, including one wing of the palace. The gardens have been replanted using authentic plants from the Roman period."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Fishbourne Palace was the first structure to be built on its site.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The site had Roman army grain stores before the palace: 'built in the 1st century AD... on the site of Roman army grain stores.'"
+      },
+      {
+       "n": 2,
+       "text": "Fishbourne Palace was renovated more than once.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'There were extensive alterations in the 2nd and 3rd centuries AD' and 'Further redevelopment was begun in the late 3rd century AD.'"
+      },
+      {
+       "n": 3,
+       "text": "Fishbourne Palace was large in comparison with Roman palaces in Italy.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says it was 'approximately equivalent to some of the great Roman palaces of Italy' — equivalent, not necessarily larger."
+      },
+      {
+       "n": 4,
+       "text": "Research is continuing in the area close to Fishbourne Palace.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'A team of volunteers and professional archaeologists are involved in an ongoing archaeological excavation on the site of nearby, possibly military, buildings.'"
+      },
+      {
+       "n": 5,
+       "text": "Researchers agree on the identity of the person for whom Fishbourne Palace was constructed.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'there are a number of theories' about who lived there — no consensus."
+      },
+      {
+       "n": 6,
+       "text": "Fishbourne Palace was burnt down by local people.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The palace 'burnt down in around 270 AD' but the passage does not say who or what caused the fire."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "title": "Fishbourne Palace",
+     "template": "Construction\nThe first buildings on the site contained food for the [[7]]\nThe palace building surrounded [[8]]\nIn the 2nd and 3rd centuries colour was added to the [[9]] of the palace.\nDiscovery\nThe first part of the palace to be found was part of a [[10]]\nPossible inhabitants\nCogidubnus — he is named in several writings\nSallustius Lucullus — he may have lived there until approximately AD [[11]]\nVerica — a British king\nCatuarus — his [[12]] was found there\nPresent Day\nA [[13]] has been built on the site to help protect it.",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "Roman army"
+       ],
+       "explanation": "'on the site of Roman army grain stores' — the first buildings contained food for the Roman army."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "formal gardens"
+       ],
+       "explanation": "'The rectangular palace was built around formal gardens.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "mosaic floors"
+       ],
+       "explanation": "'many of the original black and white mosaic floors being overlaid with more sophisticated coloured ones.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "wall"
+       ],
+       "explanation": "'workmen had accidentally uncovered a wall while they were laying a water main.'"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "93"
+       ],
+       "explanation": "'Lucullus was executed by the Emperor Domitian in or shortly after 93 AD.'"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "gold ring"
+       ],
+       "explanation": "'following the recent discovery of a gold ring belonging to him' — referring to Catuarus."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "museum"
+       ],
+       "explanation": "'A modern museum has been built by the Sussex Archaeological Society.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The horseshoe crab",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "One of the world's oldest animal species, the horseshoe crab, is found along the east coast of the United States and Mexico. Fossil records indicate this creature dates back 450 million years, and it has changed very little over time. This is because its anatomy has been so successful. In fact, the horseshoe crab is more closely related to spiders, scorpions and ticks than it is to true crabs and other crustaceans."
+    },
+    {
+     "label": "B",
+     "text": "The soft body of the horseshoe crab is protected by a large oval shell with jagged, pointed spines. The two-part body consists of a head and an abdominal region. The head region contains a brain, heart, mouth, four eyes and six pairs of legs. What is significant is that horseshoe crabs possess the rare ability to regrow lost limbs. They also use crawling as their primary means of movement, and commonly bury themselves under the surface of the sand. However, in the water, they will occasionally turn onto their backs and swim upside-down. The mouth of the horseshoe crab is located between the twelve legs. They can only eat when crawling, as the motion allows them to open and close their mouths. Their diet consists mainly of worms and clams. The abdominal region contains muscles for movement and is for breathing. A long spine forming a tail, called a telson, is located behind the abdominal region. Although this part of the body looks intimidating, it is not dangerous, poisonous or used to sting. Horseshoe crabs use it to flip over if they happen to be pushed on their backs, but this is only possible under the sea. Every year, about 10 percent of the horseshoe crab breeding population dies while on the beach, when rough surf flips the creatures onto their backs, a position from which they often cannot right themselves."
+    },
+    {
+     "label": "C",
+     "text": "Another distinctive feature of horseshoe crabs is that they do not have hemoglobin (a protein that contains the mineral iron), which gives blood its red color. Hemoglobin is the basis of oxygen transport in the blood of mammals, reptiles and birds. Rather, the blood of horseshoe crabs has a copper-containing protein called hemocyanin. Hemocyanin is dark blue when it is transporting oxygen and colorless when it is not. The oxygen is also transported in a fluid on the exterior of the cell, in contrast to most animals, where oxygen molecules are transported inside red blood cells. Horseshoe crab blood contains specialized cells called amebocytes that are used to detect bacteria and fungi. In fact, these enzymes are used by astronauts in the International Space Station to test surfaces for unwanted bacteria and fungi. Another application is a protein from horseshoe crab blood that is under investigation as an antibiotic."
+    },
+    {
+     "label": "D",
+     "text": "The horseshoe crab faces the greatest dangers in early life. Between April and June, adult horseshoe crabs travel from deep ocean waters to converge on beaches. Crawling out of the sea and onto the beach is especially common at high tides during full and new moons. The males arrive first and await the females for breeding. Female horseshoe crabs communicate by releasing a scent to signal to the males. Then female horseshoe crabs create nests by digging holes in the sand and laying between 60,000 and 120,000 eggs at a time before covering them with sand for protection. Most eggs do not survive the hatching period before being eaten, as the eggs are a food source for numerous birds, reptiles and fish."
+    },
+    {
+     "label": "E",
+     "text": "If the egg does survive, the young horseshoe crab will hatch after five weeks. Referred to as larvae, they look like miniature versions of adult horseshoe crabs. When first entering the sea, they exhibit a 'swimming frenzy' similar to that of newborn sea turtles, swimming vigorously and continuously for hours. During the larval stage, which can last a year or more, newly hatched horseshoe crabs travel into the ocean water and settle on the sandy bottom in shallow waters. As they develop, they move into deeper waters. After the larval stage, horseshoe crabs move into the juvenile period. The juvenile horseshoe crabs will slowly grow over a period of about ten years. The growing process requires shedding small exterior shells, known as exoskeletons, in exchange for larger shells. Horseshoe crabs can shed up to 17 exoskeletons during development and their entire life span can be over twenty years. Mature females can reach 45–50 centimetres from head to tail, while the males grow to approximately 35–40 centimetres."
+    },
+    {
+     "label": "F",
+     "text": "Despite their long history, horseshoe crabs face increased threats in modern times. Scientists have been studying the populations of horseshoe crabs, but more investigation is needed, particularly on the coast of Florida. A widespread decline in their abundance in the last 20 years may be especially severe in the Indian River Lagoon system in Florida. While the horseshoe crab is not currently listed as threatened, there is rising concern about the fact that it is increasingly absent from the Indian River Lagoon system, where it has historically been common. Loss of the horseshoe crab would negatively impact species that feed on the animal and its eggs and would decrease the biodiversity of the lagoon. Moreover, this development might indicate serious ecological disturbance in the region. In the northeast, the use of horseshoe crabs as bait to catch fish over the past ten years is, in part, responsible for a rapidly declining population of this unique species, and it is suspected that this is also a problem in Florida."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six sections, A–F. Which section contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "a mention of the horseshoe crab's potential value in medical science",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Section C: 'a protein from horseshoe crab blood that is under investigation as an antibiotic.'"
+      },
+      {
+       "n": 15,
+       "text": "an explanation of the function of the horseshoe crab's tail",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B: 'Horseshoe crabs use it to flip over if they happen to be pushed on their backs.'"
+      },
+      {
+       "n": 16,
+       "text": "a reference to the horseshoe crab's feeding habits",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B: 'Their diet consists mainly of worms and clams. They can only eat when crawling.'"
+      },
+      {
+       "n": 17,
+       "text": "a description of horseshoe crab reproduction",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Section D describes breeding, nesting and egg-laying."
+      },
+      {
+       "n": 18,
+       "text": "an account of the horseshoe crab's development to adulthood",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Section E describes the larval stage, juvenile period, shedding of exoskeletons, and adult size."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "According to the writer, which TWO of the following are true about the characteristics of horseshoe crabs?",
+     "options": [
+      {
+       "key": "A",
+       "text": "They bury themselves upside down."
+      },
+      {
+       "key": "B",
+       "text": "They must continue moving while eating."
+      },
+      {
+       "key": "C",
+       "text": "They most commonly move by swimming."
+      },
+      {
+       "key": "D",
+       "text": "They are able to replace their missing legs."
+      },
+      {
+       "key": "E",
+       "text": "They breathe through their mouth while on land."
+      }
+     ],
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "B: 'They can only eat when crawling.' D: 'horseshoe crabs possess the rare ability to regrow lost limbs.' D: 'horseshoe crabs possess the rare ability to regrow lost limbs.'"
+      },
+      {
+       "n": 20,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "B: 'They can only eat when crawling.' D: 'horseshoe crabs possess the rare ability to regrow lost limbs.' D: 'horseshoe crabs possess the rare ability to regrow lost limbs.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "According to the writer, in which TWO ways is horseshoe crab blood different from that of most other animals?",
+     "options": [
+      {
+       "key": "A",
+       "text": "It has a different mineral composition."
+      },
+      {
+       "key": "B",
+       "text": "It lacks a bacteria-fighting protein."
+      },
+      {
+       "key": "C",
+       "text": "Harmless fungi regularly grow in the blood."
+      },
+      {
+       "key": "D",
+       "text": "Its colour changes from blue to red as it circulates."
+      },
+      {
+       "key": "E",
+       "text": "The blood cell carries oxygen on its surface."
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "A: copper-containing protein instead of iron-based hemoglobin. E: 'oxygen is transported in a fluid on the exterior of the cell.' E: 'oxygen is transported in a fluid on the exterior of the cell, in contrast to most animals.'"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "A: copper-containing protein instead of iron-based hemoglobin. E: 'oxygen is transported in a fluid on the exterior of the cell.' E: 'oxygen is transported in a fluid on the exterior of the cell, in contrast to most animals.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The horseshoe crab in Florida",
+     "template": "A study of the Indian River Lagoon system in Florida has shown a [[23]] in the horseshoe crab's population. This means that animals that eat both horseshoe crabs and their [[24]] could also be impacted. The result would affect the Indian River Lagoon system's [[25]]. Local fishermen taking horseshoe crabs for [[26]] could be one cause of the reduction in numbers.",
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "decline"
+       ],
+       "explanation": "'A widespread decline in their abundance in the last 20 years.'"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "eggs"
+       ],
+       "explanation": "'species that feed on the animal and its eggs could also be impacted.'"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "biodiversity"
+       ],
+       "explanation": "'would decrease the biodiversity of the lagoon.'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "bait"
+       ],
+       "explanation": "'the use of horseshoe crabs as bait to catch fish... is responsible for a rapidly declining population.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The strange world of sight",
+   "paragraphs": [
+    {
+     "text": "Seeing is believing, it is said. But, asks Richard Gregory, could it be the other way round?"
+    },
+    {
+     "text": "Two of the great British men of the 17th century, the philosopher John Locke and the physicist Isaac Newton, were both aware that objects are not coloured, and that against all appearances light is not coloured either. This is still not generally recognised even now, 400 years later, because it seems too implausible. Yet it tells us something very important — that perceptions are not identical with what we perceive, and may be very different."
+    },
+    {
+     "text": "The most accurate historical account of perception is that of the 19th-century German scientist Hermann von Helmholtz. However, it was ridiculed at the time. Von Helmholtz thought that perceptions are unconscious inferences we make based on a combination of clues provided by the eyes and other senses, and knowledge of the world. This idea of unconscious inference for perception preceded, by several years, the psychoanalyst Freud’s notion of the unconscious, which was also initially treated with derision because it undermined the notion of humans as pre-eminently rational beings who could be held responsible for their actions and awarded blame or praise accordingly."
+    },
+    {
+     "text": "Crucially, perception of the present depends on rich, though of course not always correct or appropriate, knowledge from the past. We interpret sense data from the present according to what we already know. This raises the question: if we see the present through memory, why aren’t past and present confused? The pioneering Russian neurologist Alexander Luria described the case of Mr S, who had a remarkable memory. However, he was prone to just such confusions, for example mistaking seeing his clock for remembering it, and so failing to get up in the morning. This suggests that perhaps an important function of perception is to underline the present. Individual perceptions have a vividness that is rare for memories, which might be how we are able to separate them. Try this: look at something for a few seconds, and then shut your eyes and visualise it in memory. You will almost certainly find that the memory is pale by comparison with the perception. Perhaps this is why past and present are not normally confused. Luria’s Mr S had exceptionally vivid memories, and rich synaesthesia, which may be why he confused seeing with having seen."
+    },
+    {
+     "text": "The complexity of processes involved in how we see first impressed itself on me 45 years ago. With my colleague Jean Wallace, I studied the rare case of Sydney Bradford, a man who had been born blind but, through a corneal graft at the age of 52, suddenly found himself able to see. Almost immediately after the operation he was able to ‘see’ but he could only see those things that he already knew about, having experienced them through touch. It was his touch memories that enabled him to perceive them with his eyes. When Bradford was first taken to the zoo, he proved utterly unable to see an elephant as he had no knowledge to make sense of his perceptions."
+    },
+    {
+     "text": "The more recent case in California of Mike May, who was also born blind, is similar. Since his operation, his sight has gradually improved as he learns to see, for example, by understanding how shadows represent depth and tell us about the shape of things. Some of the consequences of May’s new-found vision were less happy. He had been a champion blind skier, but following the operation, he would have to shut his eyes while skiing to block out what he now found was a terrifying sight."
+    },
+    {
+     "text": "But acceptance of this intimate connection between memory and perception, even though it was first noticed in the 17th century, has been slow in brain science. Despite the fact that state-of-the-art brain imaging shows that perception animates parts of the brain associated with both present information and memory, most research on memory and perception is still undertaken as if these were separate processes. Seeing used to be thought of as taking place only in the eyes, and in quite specialised brain regions; but now it seems that half the brain is occupied with seeing, requiring a lot of energy."
+    },
+    {
+     "text": "It is not just extreme cases like Mike May, but also much more common errors of seeing — illusions — that can reveal the crucial role of memory in governing what we (think we) see. Perception depends on specific knowledge and probabilities. Our brains calculate the likelihood of what is out there, and when too far-fetched, perceptions are rejected. A dramatic and discomforting example is looking at the two sides of a face-mask. From the front it is a convex shape with the nose sticking out. Then if the mask is rotated, the back of the mask will be seen as convex, though we know that it must be concave. It is almost, if not quite, impossible to sketch the back of a hollow mask to look as it is — hollow. Science often learns from what does not happen: people not seeing a hollow face as hollow is the most revealing experiment on perception. The unsettling truth from brain science is that even people with no visual impairment see what, at some level, they expect to see, and often miss things as they really are."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Why does the writer refer to Locke and Newton in the first paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to indicate that his article will cover several scientific fields"
+        },
+        {
+         "key": "B",
+         "text": "to stress how much physics has changed in 400 years"
+        },
+        {
+         "key": "C",
+         "text": "to persuade the reader to take him seriously"
+        },
+        {
+         "key": "D",
+         "text": "to point out that his notions are not new"
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Locke and Newton knew 400 years ago that perception differs from reality — the writer’s ideas are not original."
+      },
+      {
+       "n": 28,
+       "text": "According to the writer, why was Freud's theory of the unconscious mocked?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It was too complex for his contemporaries to understand."
+        },
+        {
+         "key": "B",
+         "text": "It involved criticism of the way people behaved in society."
+        },
+        {
+         "key": "C",
+         "text": "People felt that it devalued the accepted concept of humanity."
+        },
+        {
+         "key": "D",
+         "text": "People assumed that it was intended as a joke."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'it undermined the notion of humans as pre-eminently rational beings who could be held responsible for their actions.'"
+      },
+      {
+       "n": 29,
+       "text": "The writer describes Mr S failing to get up in order to demonstrate",
+       "options": [
+        {
+         "key": "A",
+         "text": "how realistic most people's memories are."
+        },
+        {
+         "key": "B",
+         "text": "how hard it is to tell dreaming and waking apart."
+        },
+        {
+         "key": "C",
+         "text": "how unusual it is to mistake a perception for a memory."
+        },
+        {
+         "key": "D",
+         "text": "how valuable knowledge of the past can be."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Mr S is an exceptional case of confusion between seeing and remembering, showing how unusual such errors are in normal people."
+      },
+      {
+       "n": 30,
+       "text": "What point is the writer making in the text as a whole?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Perception involves much more than the data collected by the eyes."
+        },
+        {
+         "key": "B",
+         "text": "Learning to see as an adult can be a time-consuming process."
+        },
+        {
+         "key": "C",
+         "text": "Science is failing to devote enough attention to sight."
+        },
+        {
+         "key": "D",
+         "text": "Human perception is remarkably reliable."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The entire text argues that perception depends on memory, knowledge and inference — far more than just visual data."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 31,
+       "text": "Sydney Bradford relied on recollections of objects he had been told about to help him see after his operation.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Bradford relied on TOUCH memories: 'It was his touch memories that enabled him to perceive them with his eyes.' Not things he was told about."
+      },
+      {
+       "n": 32,
+       "text": "People who only start to see as adults can learn to see as other people do in time.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says May’s sight 'gradually improved' but does not say he will eventually see exactly as other people do."
+      },
+      {
+       "n": 33,
+       "text": "People who have gained their sight as adults find certain activities harder to do than before.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Mike May 'had been a champion blind skier, but following the operation, he would have to shut his eyes while skiing' — skiing became harder."
+      },
+      {
+       "n": 34,
+       "text": "It is evident now that sight involves the eyes and one particular area of the brain.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "'now it seems that half the brain is occupied with seeing' — not just the eyes and one particular area."
+      },
+      {
+       "n": 35,
+       "text": "The mask experiment is particularly useful in training people who are regaining their sight.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The mask experiment is described as revealing about perception, but no mention is made of using it to train people."
+      },
+      {
+       "n": 36,
+       "text": "People with perfect vision can fail to interpret objects correctly under certain circumstances.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'even people with no visual impairment see what, at some level, they expect to see, and often miss things as they really are.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–J, below.",
+     "title": "The mask experiment",
+     "options": [
+      {
+       "key": "A",
+       "text": "back"
+      },
+      {
+       "key": "B",
+       "text": "brain"
+      },
+      {
+       "key": "C",
+       "text": "view"
+      },
+      {
+       "key": "D",
+       "text": "convex"
+      },
+      {
+       "key": "E",
+       "text": "sight"
+      },
+      {
+       "key": "F",
+       "text": "nose"
+      },
+      {
+       "key": "G",
+       "text": "hollow"
+      },
+      {
+       "key": "H",
+       "text": "round"
+      },
+      {
+       "key": "I",
+       "text": "drawing"
+      },
+      {
+       "key": "J",
+       "text": "preconception"
+      }
+     ],
+     "template": "In this experiment, having looked at the front of a simple face-mask, subjects look at the reverse. However, the subjects are convinced that they are still looking at a mask which is [[37]] in shape. They believe that the [[38]] is poking out in the normal manner because that is what they are used to seeing. Attempting to make a [[39]] of the mask in this orientation leads to the same problem. The subjects fail to see a concave form because of the [[40]] that they bring to the image.",
+     "questions": [
+      {
+       "n": 37,
+       "answer": [
+        "D"
+       ],
+       "explanation": "D = convex. Subjects believe the back of the mask is convex in shape, as they expect the front of a face."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "F"
+       ],
+       "explanation": "F = nose. They believe the nose is poking out as expected."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "I"
+       ],
+       "explanation": "I = drawing. Attempting to make a drawing of the mask in this orientation leads to the same problem."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "J"
+       ],
+       "explanation": "J = preconception. Subjects fail to see a concave form because of the preconception they have."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,629 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-10",
+ "title": "CDI Reading Test 10",
+ "description": "A full Academic Reading test from the CDI practice materials: Caral: an ancient South American city; The 2003 European Heatwave; The art of deception.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Caral: an ancient South American city",
+  "The 2003 European Heatwave",
+  "The art of deception"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Caral: an ancient South American city",
+   "paragraphs": [
+    {
+     "text": "Huge earth and rock mounds rise out of the desert of the Supe Valley near the coast of Peru in South America. These immense mounds appear simply to be part of the geographical landscape in this arid region squeezed between the Pacific Ocean and the Andes mountains. But looks deceive. These are actually human-made pyramids. Strong evidence indicates they are the remains of a city known as Caral that flourished nearly 5,000 years ago. If true, it would be the oldest known urban center in the Americas and among the most ancient in the world."
+    },
+    {
+     "text": "Research undertaken by Peruvian archaeologist Ruth Shady suggests that the 150-acre complex of pyramids, plazas and residential buildings was a thriving metropolis when Egypt’s great pyramids were still being built. Though discovered in 1905, for years Caral attracted little attention, largely because archaeologists believed the structures were fairly recent. But the monumental scale of the pyramids had long interested Shady, who began excavations at the site in 1996, about 22 kilometers from the coast and 190 kilometers north of Peru’s capital city of Lima."
+    },
+    {
+     "text": "Shady and her crew searched for broken remains of the pots and containers that most such sites contain. Not finding any only made her more excited: it meant Caral could be what archaeologists term pre-ceramic, that is, existing before the advent in the area of pot-firing techniques. Shady’s team undertook the task of excavating Piramide Mayor, the largest of the pyramids. After carefully clearing away many hundreds of years’ worth of rubble and sand, they identified staircases, walls covered with remnants of colored plaster, and brickwork. In the foundations, they found the remains of grass-like reeds woven into bags. The original workers, she surmised, must have filled these bags with stones from a nearby quarry and laid them atop one another inside retaining walls, gradually giving rise to the pyramid’s immense structure. Shady had samples of the reeds subjected to radiocarbon dating and found that the reeds were 4,600 years old. This evidence indicated that Caral was, in fact, more than 1,000 years older than what had previously been thought to be the oldest urban center in the Americas."
+    },
+    {
+     "text": "What amazed archaeologists was not just the age, but the complexity and scope of Caral. Piramide Mayor alone covers an area nearly the size of four football fields and is 18 meters tall. A nine-meter-wide staircase rises from a circular plaza at the foot of the pyramid, passing over three terraced levels until it reaches the top. Thousands of manual laborers would have been needed to build such a project, not counting the many architects, craftsmen, and managers. Shady’s team found the remains of a large amphitheater, containing almost 70 musical instruments made of bird and deer bones. Clearly, music played an important role in Caral’s society. Around the perimeter of Caral are a series of smaller mounds and various buildings. These indicate a hierarchy of living arrangements: large, well-kept rooms atop pyramids for the elite, ground-level quarters for craftsmen, and shabbier outlying dwellings for workers."
+    },
+    {
+     "text": "But why had Caral been built in the first place? Her excavations convinced Shady that Caral once served as a trade center for the region, which extends from the rainforests of the Amazon to the high forests of the Andes. Shady found evidence of a rich trading environment, including seeds of the cocoa bush and necklaces of shells, neither of which was native to the immediate Caral area. This environment gave rise to people who did not take part in the production of food, allowing them to become priests and planners, builders and designers. Thus occupational specialization, elemental to an urban society, emerged."
+    },
+    {
+     "text": "But what sustained such a trading center and drew travelers to it? Was it food? Shady and her team found the bones of small edible fish, which must have come from the Pacific coast to the west, in the excavations. But they also found evidence of squash, sweet potatoes and beans having been grown locally. Shady theorized that Caral’s early farmers diverted the area’s rivers into canals, which still cross the Supe Valley today, to irrigate their fields. But because she found no traces of maize, which can be traded or stored and used in times of crop failure, she concluded that Caral’s trade leverage was not based on stockpiling food supplies."
+    },
+    {
+     "text": "It was evidence of another crop in the excavations that gave Shady the best clue to Caral’s success. In nearly every excavated building, her team discovered evidence of cotton – seeds, fibers and textiles. Her theory fell into place when a large fishing net made of those fibers, unearthed in an unrelated dig on Peru’s coast, turned out to be as old as Caral. ‘The farmers of Caral grew the cotton that the fishermen needed to make their nets,’ Shady speculates. ‘And the fishermen gave them shellfish and dried fish in exchange for these nets.’ In essence, the people of Caral enabled fishermen to work with larger and more effective nets, which made the resources of the sea more readily available, and the fishermen probably used dried squash grown by the Caral people as flotation devices for their nets."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Caral was built at the same time as the construction of the Egyptian pyramids.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says Caral was ‘a thriving metropolis when Egypt’s great pyramids were still being built.’ This means Caral was built before the Egyptian pyramids, not at the same time."
+      },
+      {
+       "n": 2,
+       "text": "The absence of pottery at the archaeological dig gave Shady a significant clue to the age of the site.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph 3 states: ‘Not finding any only made her more excited: it meant Caral could be what archaeologists term pre-ceramic.’ The lack of pottery was a clue about its age."
+      },
+      {
+       "n": 3,
+       "text": "The stones used to build Piramide Mayor came from a location far away.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says the bags were ‘filled with stones from a nearby quarry,’ not a location far away."
+      },
+      {
+       "n": 4,
+       "text": "The huge and complicated structures of Piramide Mayor suggest that its construction required an organised team of builders.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph 4 states: ‘Thousands of manual laborers would have been needed to build such a project, not counting the many architects, craftsmen, and managers.’"
+      },
+      {
+       "n": 5,
+       "text": "Archaeological evidence shows that the residents of Caral were highly skilled musicians.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Musical instruments were found (almost 70), but the text does not say the residents were ‘highly skilled’ musicians – only that music played an important role."
+      },
+      {
+       "n": 6,
+       "text": "The remains of housing areas at Caral suggest that there were no class distinctions in residential areas.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage explicitly describes a ‘hierarchy of living arrangements’: elite on top, craftsmen at ground level, workers in outlying dwellings."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- the [[7]] of a certain plant\n- [[8]] used to make jewellery\n- the remains of certain food such as [[9]]\n- [[10]] still in existence today indicate water diverted from rivers\n- no evidence that [[11]] was grown\n- the excavation findings and fishing nets found on the coast suggest Caral farmers traded [[12]]\n- dried squash may have been used to aid [[13]] of fishing nets",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "seeds"
+       ],
+       "explanation": "Paragraph 5 mentions ‘seeds of the cocoa bush’ among items discovered at Caral but not naturally occurring in the area."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "shells"
+       ],
+       "explanation": "Paragraph 5 mentions ‘necklaces of shells’ among traded items found at Caral."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "fish"
+       ],
+       "explanation": "Paragraph 6 states: ‘Shady and her team found the bones of small edible fish.’"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "canals"
+       ],
+       "explanation": "Paragraph 6: ‘Caral’s early farmers diverted the area’s rivers into canals, which still cross the Supe Valley today.’"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "maize"
+       ],
+       "explanation": "Paragraph 6: ‘she found no traces of maize.’"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "cotton"
+       ],
+       "explanation": "Paragraph 7: ‘The farmers of Caral grew the cotton that the fishermen needed to make their nets.’"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "flotation"
+       ],
+       "explanation": "Paragraph 7: ‘the fishermen probably used dried squash grown by the Caral people as flotation devices for their nets.’"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The 2003 European Heatwave",
+   "paragraphs": [
+    {
+     "text": "It was that summer, scientists now realise, when global warming at last made itself unmistakably felt. People in the Northern Hemisphere knew that summer 2003 was remarkable. Britain had record high temperatures; Europe had out-of-control forest fires, great rivers drying to a trickle and thousands of heat-related deaths. But how remarkable that summer was is only now becoming clear."
+    },
+    {
+     "text": "June, July and August were the warmest three months recorded in western and central Europe. And they were the warmest by a very long way. Like Britain, Portugal, Germany and Switzerland had record national highs. Over a great rectangular block stretching from west of Paris to northern Italy, taking in Switzerland and southern Germany, the average temperature for the summer months was 3.78 °C higher than the long-term norm, says the University of East Anglia’s Tyndall Centre for Climate Change Research, one of the world’s leading institutions for monitoring and analysing temperature records. That might not seem a lot until you are aware of the usual pattern. But then you realise it is enormous. There is nothing like this in previous data. It is considered so exceptional that Professor Phil Jones, the unit’s director, says openly – in a way that few scientists have done – that 2003’s extreme temperatures may be directly attributed to global warming caused by human actions, rather than natural climate variations."
+    },
+    {
+     "text": "Meteorologists have hitherto contented themselves with the formula that recent high temperatures are ‘consistent with predictions’ of climate change. For the great block of the map in question, the unit has reliable temperature records dating back to 1781. Using as a baseline the average summer temperature between 1961 and 1990, departures from the temperature norm, ‘anomalies’, can easily be plotted."
+    },
+    {
+     "text": "Over the past 200 years, there have been at least half a dozen excess temperature anomalies approaching, or even exceeding, 2 °C. But there has been nothing remotely like that year, when the anomaly was nearly 4 °C. ‘That is quite remarkable,’ Professor Jones says. ‘It’s very unusual in a statistical sense. If this series had a normal statistical distribution you wouldn’t get this number. The return period (i.e. how often it could be expected to recur) would be something like one in 1,000 years. If we look at an excess above the average of nearly 4 °C, then perhaps nearly 3 °C of that is natural variability, because we’ve seen that in past summers. But the final degree of it is likely to be due to global warming, caused by human action.’"
+    },
+    {
+     "text": "That year’s summer had in a sense been one that climate scientists had long been anticipating. Until then, the warming had been manifesting itself mainly in winters that were less cold rather than in summers that were much hotter. Last week, the UN predicted that winters were warming so quickly that some of Europe’s lower-level ski resorts will die out."
+    },
+    {
+     "text": "But sooner or later the unprecedented hot summer was bound to come – and that year it did. Over a large swathe of the western part of the European continent, records were broken in all three months. It wasn’t only monthly averages, but daily extremes and the lengths of spells above thresholds. National records were set in at least four countries. One of the most dramatic features of the summer was the hot nights, especially in the first half of August. The high night-time temperatures were related to the 15,000 extra deaths in France during August, compared with previous years. They gradually increased during the first 12 days of the month, peaking at about 2,000 a day on August 12 and 13 and severely overloading the medical services. Then they dropped dramatically after August 14 when minimum temperatures fell by about 5 °C. The elderly were most affected – their death rate rose 70 per cent."
+    },
+    {
+     "text": "For Britain, the year as a whole is likely to be the warmest recorded. But despite the temperature record on August 10, the summer itself – defined as the June, July and August period – comes behind 1976 and 1995, when there were longer periods of intense heat. At the moment, the year is likely to be the third-hottest in the global temperature record (which goes back to 1856), behind 1998 and 2002. But when the records for October, November and December are collated, it might move into second place. The ten hottest years in the record have occurred since 1990."
+    },
+    {
+     "text": "Professor Jones is in no doubt about the astonishing nature of that year’s European summer. ‘The temperatures recorded that year were out of all proportion to the previous record,’ he says. ‘It was the warmest summer in the last 500 years and probably way beyond that. It was enormously exceptional.’"
+    },
+    {
+     "text": "His colleagues at the Tyndall Centre are planning a study of it. ‘It was a summer that had not been experienced before, either in terms of the temperature extremes that were reached, or the range and diversity of the effects of the extreme heat,’ says the centre’s executive director, Professor Mike Hulme. ‘It will certainly have left its mark on a number of countries as to how they think and plan for climate change, much as the 2000 floods revolutionised the way the Government is thinking about flooding in the UK. The 2003 heatwave will have similar repercussions across Europe.’"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 2?",
+     "questions": [
+      {
+       "n": 14,
+       "text": "In 2003, the average temperature for June to August in parts of Europe was almost 4 °C higher than usual.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph 2: ‘the average temperature for the summer months was 3.78 °C higher than the long-term norm.’ 3.78 is almost 4."
+      },
+      {
+       "n": 15,
+       "text": "According to Phil Jones, the impact people have on the planet was one reason for 2003’s record summer.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph 2: Jones says ‘2003’s extreme temperatures may be directly attributed to global warming caused by human actions.’"
+      },
+      {
+       "n": 16,
+       "text": "Temperatures are recorded twice daily in major cities.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage does not mention how often temperatures are recorded in cities."
+      },
+      {
+       "n": 17,
+       "text": "Professor Phil Jones believes that the exceptional summer temperatures are within normal variation.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Jones says it’s ‘very unusual in a statistical sense’ and ‘the final degree of it is likely to be due to global warming’ – he does NOT believe it is within normal variation."
+      },
+      {
+       "n": 18,
+       "text": "Before 2003, global warming generally caused milder winter months, not warmer summers.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph 5: ‘the warming had been manifesting itself mainly in winters that were less cold rather than in summers that were much hotter.’"
+      },
+      {
+       "n": 19,
+       "text": "New ski resorts are being built at higher altitudes in some countries.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions lower-level ski resorts dying out, but says nothing about new resorts being built at higher altitudes."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS AND/OR NUMBERS from the passage for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "- In Britain, which TWO years had hotter summers than the one under discussion? [[20]]\n- Apart from the extreme summer of 2003, what other natural event has affected the way Britain is planning for the future? [[21]]",
+     "questions": [
+      {
+       "n": 20,
+       "answer": [
+        "1976 and 1995",
+        "1976, 1995"
+       ],
+       "explanation": "Paragraph 7: ‘the summer itself comes behind 1976 and 1995, when there were longer periods of intense heat.’"
+      },
+      {
+       "n": 21,
+       "answer": [
+        "2000 floods",
+        "the 2000 floods",
+        "floods"
+       ],
+       "explanation": "Paragraph 9: ‘much as the 2000 floods revolutionised the way the Government is thinking about flooding in the UK.’"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "- The three warmest years since global temperature records began in [[22]] have been 1998, 2002 and 2003.\n- It is significant that the warmest ten years have all been after [[23]].\n- Recorded temperatures in Europe in summer 2003 were the highest for at least [[24]] years.\n- For example, in August alone, thousands of people died in [[25]].",
+     "questions": [
+      {
+       "n": 22,
+       "answer": [
+        "1856"
+       ],
+       "explanation": "Paragraph 7: ‘the global temperature record (which goes back to 1856).’"
+      },
+      {
+       "n": 23,
+       "answer": [
+        "1990"
+       ],
+       "explanation": "Paragraph 7: ‘The ten hottest years in the record have occurred since 1990.’"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "500"
+       ],
+       "explanation": "Paragraph 8: ‘It was the warmest summer in the last 500 years.’"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "France"
+       ],
+       "explanation": "Paragraph 6: ‘the 15,000 extra deaths in France during August.’"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 26,
+       "text": "Which of the following is the most suitable title for Reading Passage 2?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The Causes of Global Warming"
+        },
+        {
+         "key": "B",
+         "text": "The Effects of Extreme Heat"
+        },
+        {
+         "key": "C",
+         "text": "The History of Temperature Recording"
+        },
+        {
+         "key": "D",
+         "text": "The Year of European Heat"
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "The passage primarily describes the remarkable heatwave of 2003 in Europe and its consequences, making D the most suitable title."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The art of deception",
+   "subtitle": "Do tiny changes of facial expression show whether someone is telling lies?",
+   "paragraphs": [
+    {
+     "text": "Forty years ago, the research psychologist Dr Paul Ekman was addressing a group of young psychiatrists in training when he was asked a question, the answer to which has kept him busy ever since. Suppose, the group wanted to know, a particular patient swears they are telling the truth. They look and sound sincere. So here is the question: is there any way you can be sure they are telling the truth? Ekman did not know the answer then, but wanted to find out."
+    },
+    {
+     "text": "As part of his research, he had already filmed a series of 12-minute interviews with psychiatric patients. In a subsequent conversation, one of the patients told him that she had lied to him. So Ekman sat and looked at the film but saw nothing noteworthy. Then he slowed it down and looked again. Then he slowed it even further. And suddenly, there, across just two frames of the film, he saw it: an intense expression of extreme anguish. It lasted less than a 15th of a second, but once he had spotted the first expression, he soon found three more examples in that same interview. He termed his discovery ‘micro-expressions’: very rapid, intense demonstrations of emotion that the subject intended to be concealed."
+    },
+    {
+     "text": "Over the course of the next four decades, Ekman successfully demonstrated a proposition first suggested by Charles Darwin: that the ways in which we express rage, disgust, contempt, fear, surprise, happiness and sadness are universal. The facial muscles triggered by those seven basic emotions are, he has shown, essentially standard, regardless of language and culture, from the US to Japan, and Brazil to Papua New Guinea. What is more, expressions of emotion are impossible to suppress and, particularly when we are lying, micro-expressions of powerfully felt emotions will inevitably flit across our faces before we get the chance to stop them."
+    },
+    {
+     "text": "Fortunately for liars, most people will fail to spot these fleeting signals of inner torment. Of the 15,000 Ekman has tested, only 50 people, whom he calls ‘naturals’, have been able to do it. But given a little more training, Ekman says, almost anyone can develop the skill. He should know: since these tests were completed in the mid-1980s and the first publication of his research, he has been called in by the FBI and CIA (among countless more law-enforcement and other agencies around the world), not just to solve cases, but to teach them how to use his technique for themselves. He has held workshops for defence and prosecution lawyers, health professionals, even jealous spouses, all of them wanting to know exactly when someone is not being 100 per cent candid."
+    },
+    {
+     "text": "Most recently, Ekman’s research has resulted in a new television series about the exploits of the fictional Dr Cal Lightman, a scientist who studies involuntary body language to discover not only if you are lying, but why you might have been motivated to do so. According to the publicity blurb, Lightman is a ‘human lie detector’, even more accurate than a polygraph test. Ekman concedes he was sceptical when the producer first approached him with the idea of turning his life’s work into a TV series, and initially would have stopped the project if he could. In particular, he was fearful that the show would exaggerate the effectiveness of his techniques and create the quite inaccurate impression among audiences that criminals could no longer hope to get away with lying. In the worst case scenario, he was concerned about unfair convictions: that one day someone not properly trained in his techniques might be sitting on a jury and wrongly find someone guilty of a crime simply on the basis of a television programme."
+    },
+    {
+     "text": "In the end though, he was won over because the series is unusual in several respects. It is the first time, as far as Ekman is aware, that commercial TV drama has been based on the work of just one scientist. That scientist is also deeply involved in the project, talking through plot ideas and checking five successive drafts of each script to ensure details are correct. He was also impressed with the producer’s manifestly serious and well-intentioned reasons for making the programme. Now that the first series has been completed, he believes probably 80–90 per cent of the show is based on fact, and that’s good enough for what is, after all, a drama, not a documentary."
+    },
+    {
+     "text": "Ekman, incidentally, professes to have been a terrible liar ever since he was a small boy and observes that the ability to detect a lie and the ability to lie successfully are completely unrelated. He has been asked by people running for high office if he could teach them to become ‘more credible’ with the public, but has always refused to use his skills in that way on ethical grounds. He also insists that there are various kinds of lies. A ‘true’ lie can be identified by having two essential characteristics: there must be a deliberate intent to mislead and there must be no notification that this is what is occurring. This means that an actor or a poker player isn’t a true liar. They’re supposed to be deceiving you, it’s part of the game, and the same is true of flattery. He prefers to focus on the kinds of lies where the liar would be in grave trouble if they were found out, and where the target would feel properly aggrieved if they knew."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "According to the writer, Ekman became interested in lying after a question from his",
+       "options": [
+        {
+         "key": "A",
+         "text": "peers."
+        },
+        {
+         "key": "B",
+         "text": "patients."
+        },
+        {
+         "key": "C",
+         "text": "students."
+        },
+        {
+         "key": "D",
+         "text": "teachers."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph 1: Ekman ‘was addressing a group of young psychiatrists in training’ who asked him the question. These are students (psychiatrists in training)."
+      },
+      {
+       "n": 28,
+       "text": "The writer refers to the 12-minute interviews in order to",
+       "options": [
+        {
+         "key": "A",
+         "text": "illustrate how frequently patients lie."
+        },
+        {
+         "key": "B",
+         "text": "describe the origins of Ekman’s theories."
+        },
+        {
+         "key": "C",
+         "text": "compare Ekman’s research to previous studies."
+        },
+        {
+         "key": "D",
+         "text": "show how patients’ behaviour is affected by filming."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The 12-minute interviews led Ekman to discover micro-expressions, which is the origin of his theories."
+      },
+      {
+       "n": 29,
+       "text": "What are we told about Ekman’s conclusions from his tests?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It’s natural for people to lie."
+        },
+        {
+         "key": "B",
+         "text": "Few untrained people can detect lying."
+        },
+        {
+         "key": "C",
+         "text": "Most liars suffer from periods of depression."
+        },
+        {
+         "key": "D",
+         "text": "All of his subjects were trained to identify micro-expressions."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph 4: ‘Of the 15,000 Ekman has tested, only 50 people... have been able to do it.’ Only 50 of 15,000 = very few untrained people can detect lying."
+      },
+      {
+       "n": 30,
+       "text": "What point does the writer make about Ekman’s techniques in the fourth paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They take decades to teach."
+        },
+        {
+         "key": "B",
+         "text": "They have been in great demand."
+        },
+        {
+         "key": "C",
+         "text": "They have aroused the suspicions of some agencies."
+        },
+        {
+         "key": "D",
+         "text": "They can be used by a limited range of occupations."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph 4 lists many groups that use his techniques: FBI, CIA, lawyers, health professionals, spouses – showing high demand."
+      },
+      {
+       "n": 31,
+       "text": "What is the writer’s point in the third paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Recent research has refuted an old idea."
+        },
+        {
+         "key": "B",
+         "text": "With practice we can learn to control our micro-expressions."
+        },
+        {
+         "key": "C",
+         "text": "Human society is too complex to allow for generalisations."
+        },
+        {
+         "key": "D",
+         "text": "Micro-expressions are common to all people."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph 3 explains that facial expressions of the seven basic emotions are ‘universal’ and ‘essentially standard, regardless of language and culture.’"
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–I, below.",
+     "title": "The television series based on Ekman's work",
+     "options": [
+      {
+       "key": "A",
+       "text": "consequences"
+      },
+      {
+       "key": "B",
+       "text": "crimes"
+      },
+      {
+       "key": "C",
+       "text": "false beliefs"
+      },
+      {
+       "key": "D",
+       "text": "motives"
+      },
+      {
+       "key": "E",
+       "text": "justice"
+      },
+      {
+       "key": "F",
+       "text": "accuracy"
+      },
+      {
+       "key": "G",
+       "text": "acting"
+      },
+      {
+       "key": "H",
+       "text": "research"
+      },
+      {
+       "key": "I",
+       "text": "ratings"
+      }
+     ],
+     "template": "A new TV series based on Ekman's work features a hero named Lightman, who detects lies. Initially, Ekman was unenthusiastic about the TV project, because he feared the possibility of encouraging viewers' [[32]]. For example, he was worried that one day the programme could result in [[33]] not being carried out. Ultimately though, he has given the show his blessing because he is not aware of any other comparable programme based on a single person's [[34]]. The [[35]] of the show's producer have been another pleasant surprise and, considering the genre of the programme, Ekman is happy with the show's overall [[36]].",
+     "questions": [
+      {
+       "n": 32,
+       "answer": [
+        "C"
+       ],
+       "explanation": "‘False beliefs’ matches Ekman’s fear of creating the ‘quite inaccurate impression’ among audiences."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "E"
+       ],
+       "explanation": "Ekman worried about ‘unfair convictions’ – meaning justice was not being carried out properly."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "H"
+       ],
+       "explanation": "Ekman is unaware of other TV drama based on ‘the work of just one scientist’ = a single person’s research."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "D"
+       ],
+       "explanation": "Ekman ‘was impressed with the producer’s manifestly serious and well-intentioned reasons’ = motives."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "F"
+       ],
+       "explanation": "Ekman believes ‘80–90 per cent of the show is based on fact’ = happy with the show’s accuracy."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 37,
+       "text": "Ekman regrets the lies he told as a child.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Paragraph 7 says Ekman was a ‘terrible liar’ as a boy, but there is no mention of him regretting it."
+      },
+      {
+       "n": 38,
+       "text": "People who are good at lying tend to be good at detecting lies.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Paragraph 7 states: ‘the ability to detect a lie and the ability to lie successfully are completely unrelated.’"
+      },
+      {
+       "n": 39,
+       "text": "Ekman has worked with poker players to help them lie more convincingly.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Poker players are mentioned only in the context of defining a ‘true’ lie, not in any professional capacity."
+      },
+      {
+       "n": 40,
+       "text": "Ekman is more interested in the types of lies with serious consequences.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Paragraph 7: ‘He prefers to focus on the kinds of lies where the liar would be in grave trouble if they were found out.’"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

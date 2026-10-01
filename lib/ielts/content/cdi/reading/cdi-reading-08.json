@@ -1,0 +1,646 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-08",
+ "title": "CDI Reading Test 08",
+ "description": "A full Academic Reading test from the CDI practice materials: How Basketball Was Invented; The City of Great Zimbabwe; The Conservation of Rare Species.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "How Basketball Was Invented",
+  "The City of Great Zimbabwe",
+  "The Conservation of Rare Species"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "How Basketball Was Invented",
+   "paragraphs": [
+    {
+     "text": "It was the winter of 1891–1892. Inside the International YMCA Training School located in Springfield, Massachusetts, USA, there was a group of restless college students. The young men had to be there; they were required to participate in indoor activities to burn off the energy that had been building up since the summer sports season had ended. The college offered them activities such as marching, gymnastic exercises and apparatus work, but they considered them poor substitutes for the more exciting games that they played outside in warmer seasons."
+    },
+    {
+     "text": "The instructor of this class was James Naismith, a 31-year-old graduate student. Naismith had recently moved from his native Canada to study physical education at the Springfield college and today is renowned as the father of physical education and recreation in the United States."
+    },
+    {
+     "text": "Two instructors had already tried and failed to devise activities that would engage the young men. There had been a meeting of college teaching staff to discuss what was becoming a persistent problem with the students’ uncontrolled energy and disinterest in their studies. Naismith felt that the kind of work needed to motivate and inspire the students ‘should be of a recreative nature, something that would appeal to their play instincts’. Before the end of the meeting, Gullick placed the problem squarely in Naismith’s lap, and charged him with the task of coming up with a solution."
+    },
+    {
+     "text": "So Naismith went to work. His challenge was to create a game that was easy to learn, yet complex enough to be interesting. It had to be playable in the winter in the college gymnasium, and by a large number of players all at once. It should give people sufficient exercise, yet without the roughness of outdoor games such as rugby, as players would be likely to end up with injuries if they played such games in a confined space."
+    },
+    {
+     "text": "Much time and thought went into this new creation. It became an adaptation of many sports of its time, adopting features of games including American rugby (passing the ball), English rugby (the technique known as jump ball) and soccer (the shape and size of the ball), and something called ‘duck on a rock,’ a game Naismith had played with his childhood friends."
+    },
+    {
+     "text": "Naismith approached the college janitor, hoping he could find two small square boxes to use as goals. Instead, the janitor came back with two baskets that had contained peaches from the school canteen. Naismith then nailed them to an elevated track, 10 feet (3 meters) from the ground. A man was stationed at each end of the balcony to pick the ball out of the basket and put it back into play. It wasn’t until a few years later that the bottoms of the baskets were cut to let the ball fall loose."
+    },
+    {
+     "text": "Naismith then drew up 13 rules, which described the method of moving the ball and what constituted a foul, among other issues. The game, he decided, would be divided into two 15-minute halves with a five-minute resting period in between."
+    },
+    {
+     "text": "Naismith’s secretary typed up the rules and tacked them on the bulletin board. A short time later, the class met, and the teams were chosen with three centers, three forwards, and three guards per side. Two of the centers met at mid-court, Naismith tossed the ball, and a new game was born."
+    },
+    {
+     "text": "A short while later, Frank Mahan, one of the players, approached Naismith, asking him what he intended to call his new game. Naismith replied that he hadn’t thought of it because he had been focused on just getting the game started. Mahan suggested that it be called ‘Naismith ball’, at which Naismith laughed, saying that a name like that would kill any game. Mahan then said, ‘Why not call it basketball?’ Naismith replied, ‘We have a basket and a ball, and it seems to me that would be a good name for it.’"
+    },
+    {
+     "text": "Word of the new game spread like wildfire. It was an instant success. The rules were printed in the college’s magazine, which was mailed to other YMCA schools across the country. Because of the college’s well-represented international student body, the game of basketball was introduced to many other nations in a relatively short period of time. High schools and colleges around the world began to play the new game, and by 1905, basketball was officially recognized as a permanent winter sport."
+    },
+    {
+     "text": "The rules have been slightly altered, but by and large the game has not changed drastically since Naismith’s original list of 13 Rules was tacked up on that college bulletin board."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Could be played inside the [[1]] at the college.\n- Provided enough [[2]] for the players.\n- Had a low risk of any [[3]] to the players.\n- A ball based on the one used for playing [[4]].\n- Two baskets that [[5]] had been stored in.\n- The 13 rules included the definition of a [[6]].\n- The rules were put in a [[7]] and sent to schools around the USA.",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "gymnasium"
+       ],
+       "explanation": "The passage states Naismith’s game had to be ‘playable in the winter in the college gymnasium.’"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "exercise"
+       ],
+       "explanation": "The passage says the game ‘should give people sufficient exercise.’"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "injuries"
+       ],
+       "explanation": "The passage warns that players ‘would be likely to end up with injuries if they played such games in a confined space.’"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "soccer"
+       ],
+       "explanation": "The passage states the game adopted features from ‘soccer (the shape and size of the ball).’"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "peaches"
+       ],
+       "explanation": "The passage says the janitor returned with ‘two baskets that had contained peaches from the school canteen.’"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "foul"
+       ],
+       "explanation": "The passage states Naismith’s rules ‘described the method of moving the ball and what constituted a foul.’"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "magazine"
+       ],
+       "explanation": "The passage states: ‘The rules were printed in the college’s magazine, which was mailed to other YMCA schools across the country.’"
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 8,
+       "text": "In 1891, the students of the International YMCA Training School preferred outdoor sports to indoor ones.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says students ‘considered them [indoor activities] poor substitutes for the more exciting games that they played outside in warmer seasons.’"
+      },
+      {
+       "n": 9,
+       "text": "During a meeting with his colleagues, Naismith offered to try to create a game for the students.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage states that ‘Gullick placed the problem squarely in Naismith’s lap, and charged him with the task.’ Naismith was assigned the task, he did not volunteer."
+      },
+      {
+       "n": 10,
+       "text": "Naismith was initially angry with the college janitor for giving him baskets instead of boxes.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage describes what the janitor brought but gives no information about Naismith’s emotional reaction."
+      },
+      {
+       "n": 11,
+       "text": "In the early days of the game, someone had to remove the ball from the basket after each goal was scored.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage states: ‘A man was stationed at each end of the balcony to pick the ball out of the basket and put it back into play.’"
+      },
+      {
+       "n": 12,
+       "text": "It took a long time for the new game to become popular.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says ‘Word of the new game spread like wildfire. It was an instant success.’"
+      },
+      {
+       "n": 13,
+       "text": "There has been disagreement about how Naismith’s rules should be altered.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions that rules have been ‘slightly altered’ but gives no information about any disagreement over changes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The City of Great Zimbabwe",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The ruins of the city of Great Zimbabwe in southern Africa are a unique testimony to the civilisation of the Shona people. The Shona word ‘zimbabwe’ means a large stone house, but the ruins consist of the largest stone complex in ancient Africa built before the modern era, aside from the monumental architecture of ancient Egypt. Their method of construction is unique to African architecture and, although there are examples of similar work elsewhere, none are as distinguished and imposing as Great Zimbabwe. The city was an important trading centre and has been renowned for centuries. The modern country of Zimbabwe, where the ruins are situated, was named after it, and in 1986 Great Zimbabwe was designated both a national monument and a World Heritage site."
+    },
+    {
+     "label": "B",
+     "text": "Great Zimbabwe is located on a plain at an altitude of some 1,100 metres in a sparsely populated region. The city, built between 1100 and 1450 AD, extends over seven square kilometres, and is divided into three areas: the Hill Complex, the Great Enclosure and the Valley Complex."
+    },
+    {
+     "text": "The Hill Complex, forming a huge granite mass on top of a north-east/south-west-facing ridge, was continuously occupied from the 12th to the 15th century, and traces of human settlements are found in numerous layers. Rough granite rubble-stone blocks form distinct enclosures, accessed by narrow, partly covered passageways. This complex is generally considered a ‘royal city’; the west enclosure is thought to have been the residence of successive chiefs and the east enclosure, where six soapstone posts topped with figurines of birds were found, is considered to have served a ritual purpose."
+    },
+    {
+     "label": "C",
+     "text": "The Great Enclosure, which is oval shaped, is located to the south of the hills, and dates to the 13th century. The external walls were built of cut granite blocks, laid in regular courses, and within these walls there are community and living areas, and a narrow passage leading to a high conical tower, which may have functioned as a granary warehouse. Interior walls mark off each family’s area, generally comprising a kitchen, two living huts and a yard. Huts were made of mud bricks, composed of a mixture of granitic sand and clay."
+    },
+    {
+     "label": "D",
+     "text": "The Valley Complex, which dates back to the 15th century, is a series of living quarters scattered throughout the valley. Each one has similar characteristics: many of the structures are in brick (huts, indoor flooring, benches, basins, etc.) and dry stone walls provide insulation. Construction work was carried out to a high standard of craftsmanship, incorporating an impressive display of V-shaped and checked wall decorations."
+    },
+    {
+     "label": "E",
+     "text": "Scientific research has shown that Great Zimbabwe was founded around 1100 on a site which had been sparsely occupied in the prehistoric period by the Shona. By the 14th century, it was the principal city of a major state extending over the gold-rich area; its population exceeded 10,000. However, in about 1450 the capital was abandoned. The reasons for this are debated, but suggestions include a shortage of food for the overpopulated city, and deforestation. The resulting migration benefited Khami, which then became the most influential city in the region, and signalled Great Zimbabwe’s waning political power."
+    },
+    {
+     "label": "F",
+     "text": "Archaeological excavations at Great Zimbabwe have revealed glass beads and porcelain from China and Persia, and gold and Arab coins from the Indian Ocean island of Kilwa, which testify to long-standing trade with the outer world. Other evidence, including fragments of pottery and ironware, gives a further insight into the city’s socio-economic complexity and into farming and pastoral activities in the surrounding area. A monumental granite cross, located at a traditionally revered and sacred site, also illustrates contact with Christian missionaries."
+    },
+    {
+     "text": "In the late 19th century, numerous soapstone figurines in the form of birds were found mounted on columns, buried among the ruins. These are testimony to the use of the site as a place of worship from the 12th century to the present day. The birds, which had some human features, were subsequently described as the Zimbabwe Birds, and a design based on them became a national symbol, incorporated into the Zimbabwe flag and shown in other prestigious contexts."
+    },
+    {
+     "label": "G",
+     "text": "Despite the importance of the site, it has suffered some deterioration due to variations in temperature and soil moisture content, as well as pressure from tourism, encroaching invasive vegetation, and incorrect preservation methods. The site would benefit if attention was given to conservation techniques and the materials employed, as well as to the need for conservation standards that meet the international benchmark, but which are balanced with the traditional activities still taking place there."
+    },
+    {
+     "text": "The site has been legally protected since 1893, and today is managed by the Zimbabwean Ministry of Home Affairs. Funding for the management and conservation of the site comes mainly from central government, with limited revenue generated by the sale of publications and charging an entrance fee for the site."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven sections, A–G. Which section contains the following information? You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "A list of factors which have resulted in some damage to Great Zimbabwe.",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G lists factors causing deterioration: ‘variations in temperature and soil moisture content, as well as pressure from tourism, encroaching invasive vegetation, and incorrect preservation methods.’"
+      },
+      {
+       "n": 15,
+       "text": "Proof of the former commercial significance of Great Zimbabwe.",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F describes ‘glass beads and porcelain from China and Persia, and gold and Arab coins’ which ‘testify to long-standing trade with the outer world.’"
+      },
+      {
+       "n": 16,
+       "text": "An indication of the global importance attached to Great Zimbabwe nowadays.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A states that ‘in 1986 Great Zimbabwe was designated both a national monument and a World Heritage site,’ indicating global recognition."
+      },
+      {
+       "n": 17,
+       "text": "An overview of the layout of the archaeological site.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B gives an overview: ‘the city… is divided into three areas: the Hill Complex, the Great Enclosure and the Valley Complex.’"
+      },
+      {
+       "n": 18,
+       "text": "A reference to the quality of comparable buildings in other places.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A notes that ‘although there are examples of similar work elsewhere, none are as distinguished and imposing as Great Zimbabwe.’"
+      },
+      {
+       "n": 19,
+       "text": "Theories about the eventual desertion of Great Zimbabwe.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E discusses why the city was abandoned in 1450: ‘suggestions include a shortage of food for the overpopulated city, and deforestation.’"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following aspects of Great Zimbabwe and the list of areas below. Match each aspect with the correct area, A, B or C. NB You may use any letter more than once.",
+     "title": "List of Areas",
+     "options": [
+      {
+       "key": "A",
+       "text": "Hill Complex"
+      },
+      {
+       "key": "B",
+       "text": "Great Enclosure"
+      },
+      {
+       "key": "C",
+       "text": "Valley Complex"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 20,
+       "text": "Its outer walls are curved.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph C describes the Great Enclosure as ‘oval shaped’ – its outer walls are curved. Answer: B (Great Enclosure)."
+      },
+      {
+       "n": 21,
+       "text": "Part of it may have been used for ceremonies.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph B describes the Hill Complex’s east enclosure as being ‘considered to have served a ritual purpose.’ Answer: A (Hill Complex)."
+      },
+      {
+       "n": 22,
+       "text": "Some of its buildings feature geometric patterns.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph D describes the Valley Complex as incorporating ‘an impressive display of V-shaped and checked wall decorations.’ Answer: C (Valley Complex)."
+      },
+      {
+       "n": 23,
+       "text": "It includes a structure that could have been used for storage.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph C describes the Great Enclosure’s ‘high conical tower, which may have functioned as a granary warehouse.’ Answer: B (Great Enclosure)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- An image based on the bird sculptures found at Great Zimbabwe now appears on the national [[24]].\n- The impact of nature on Great Zimbabwe, as well as that of [[25]], needs to be carefully managed.\n- A small part of Great Zimbabwe’s income comes from selling tickets and [[26]].",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "flag"
+       ],
+       "explanation": "Paragraph F states: ‘a design based on them became a national symbol, incorporated into the Zimbabwe flag.’"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "tourism"
+       ],
+       "explanation": "Paragraph G lists ‘pressure from tourism’ alongside natural factors such as temperature variations as causes of deterioration."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "publications"
+       ],
+       "explanation": "Paragraph G states: ‘limited revenue generated by the sale of publications and charging an entrance fee for the site.’"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The Conservation of Rare Species",
+   "paragraphs": [
+    {
+     "text": "When a naturalist says that a bird or a plant is rare, he or she may mean one of several different things (Harper 1981, Rabinowitz 1981). The concept of rarity can refer to one of three characteristics: geographic range, habitat specificity, or local population size, and a classification based on the interplay between these variables yields seven different types of rarity. For example, certain species may be locally abundant over a wide geographic range, but found in only a very specific habitat, whilst others may be found in several habitats, but only in small numbers and in a geographically restricted area. We must therefore recognise that the kinds of management which will be appropriate for protecting species threatened with extinction will vary."
+    },
+    {
+     "text": "Classic rare species are often those which have a small geographic range and narrow habitat specificity. Many plants of this type are restricted endemics, and are often endangered or threatened (Rabinowitz 1981). Other rare species have very large geographic ranges and occur widely in different habitats but are always at low density. These species are ecologically interesting but almost never appear on lists of endangered species. So the important point is that not all rare species are problems for conservationists."
+    },
+    {
+     "text": "The reasons why a particular species is rare vary. In some cases we can observe a species declining over time – for example, the African elephant population since 1950. This is a direct result of ivory poaching (Caughley et al. 1990). But not all species that have declined to rarity are so well understood. Some plant and animal species undergo bursts of colonisation and decay so that they persist as a mosaic of increasing and declining populations (Harper 1981)."
+    },
+    {
+     "text": "For species with small geographic ranges or narrow habitat specificity we must be concerned with the spatial distribution of the population. The number or size of habitable sites may be too small, and this could be one reason the species is rare. Or, if there are many habitable sites that are not occupied, a species may be rare due to its limited dispersal powers. Within habitable sites, competition from other species, predation, disease or social interactions may restrict abundance. One example that illustrates some of these factors is the red-cockaded woodpecker."
+    },
+    {
+     "text": "The red-cockaded woodpecker is an endangered species of bird endemic to eastern parts of the United States of America. It was once abundant from New Jersey in the north to Texas in the south, and from the coast inland as far as Missouri, but it is now nearly extinct in the northern and inland parts of its geographic range. The red-cockaded woodpecker is adapted to pine savannas, but most of this woodland has been destroyed for agriculture and timber production. The birds feed on insects and nest in cavities in old pine trees, and because old pines have been mostly cut down, their available habitats have been reduced (Walters 1991)."
+    },
+    {
+     "text": "Designing a recovery programme for the red-cockaded woodpecker has been complicated by the social organisation of the species. The birds live in groups of a breeding pair and up to four helpers, nearly all males. Helpers do not breed but assist in incubation and feeding. Young birds have a choice of dispersing or staying to help in a breeding group. If they stay, they become breeders by inheriting breeding status on the death of older birds. Helpers may wait many years before they acquire breeding status."
+    },
+    {
+     "text": "From a conservation viewpoint, the problem is that red-cockaded woodpeckers compete for breeding vacancies in existing groups, rather than forming new groups and occupying abandoned territories, or starting at a new site. The key problem is the excavation of new breeding cavities. Because of the energy and time needed, typically several years, birds are better off competing for existing territories than building new ones."
+    },
+    {
+     "text": "To test this idea, Walters (1991) and his colleagues artificially constructed cavities in trees at 20 sites in the young pine forests of North Carolina. The results were dramatic – 18 of 20 sites were colonised by red-cockaded woodpeckers and new breeding groups were formed only on areas where artificial cavities were drilled. This experiment showed clearly that much suitable habitat is not occupied by this woodpecker because of a shortage of cavities. Therefore, management of this endangered species was not directed at reducing mortality of the birds, but instead focused on physical characteristics of their chosen habitat."
+    },
+    {
+     "text": "The rescue of the red-cockaded woodpecker is a good example of how successful conservation biology depends on identifying and alleviating limiting factors. However, there can be no general prescription for rescuing rare species. Detailed information on resource requirements, social organisation, and dispersal powers are required before recovery plans can be specified."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "What does the writer say about rarity?",
+       "options": [
+        {
+         "key": "A",
+         "text": "There is more than one criterion for defining it."
+        },
+        {
+         "key": "B",
+         "text": "The term is a cause of dispute amongst naturalists."
+        },
+        {
+         "key": "C",
+         "text": "It applies to only a very small number of species."
+        },
+        {
+         "key": "D",
+         "text": "It is a phenomenon which has been widely researched."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The passage states: ‘The concept of rarity can refer to one of three characteristics: geographic range, habitat specificity, or local population size.’ Multiple criteria exist, so option A is correct."
+      },
+      {
+       "n": 28,
+       "text": "What does the writer say about the threat of extinction?",
+       "options": [
+        {
+         "key": "A",
+         "text": "All types of rarity present a problem."
+        },
+        {
+         "key": "B",
+         "text": "Few plant species are known to be vulnerable."
+        },
+        {
+         "key": "C",
+         "text": "Low density by itself does not endanger species."
+        },
+        {
+         "key": "D",
+         "text": "Lists of endangered species are not reliable."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says species with very large ranges that ‘are always at low density… almost never appear on lists of endangered species.’ Low density alone does not make a species endangered – option C."
+      },
+      {
+       "n": 29,
+       "text": "Which of the following makes it difficult for the red-cockaded woodpecker to increase in number?",
+       "options": [
+        {
+         "key": "A",
+         "text": "A proportion of male birds are sterile."
+        },
+        {
+         "key": "B",
+         "text": "Birds leave the parental nest too early."
+        },
+        {
+         "key": "C",
+         "text": "There is too much competition for food."
+        },
+        {
+         "key": "D",
+         "text": "Individuals may not breed for several years."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "The passage states: ‘Helpers may wait many years before they acquire breeding status.’ This means individuals cannot reproduce for several years, restricting population growth – option D."
+      },
+      {
+       "n": 30,
+       "text": "What was the basis of the recovery programme for the red-cockaded woodpecker?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Birds were bred in captivity."
+        },
+        {
+         "key": "B",
+         "text": "Nesting holes were created."
+        },
+        {
+         "key": "C",
+         "text": "Pine forests were planted."
+        },
+        {
+         "key": "D",
+         "text": "Food supplements were provided."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage describes how Walters ‘artificially constructed cavities in trees’ which were then colonised by woodpeckers. Nesting holes (cavities) were the key intervention – option B."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 31,
+       "text": "Species with various habitat types are not necessarily widely distributed.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage gives the example of species ‘found in several habitats, but only in small numbers and in a geographically restricted area.’ Multiple habitats does not equal wide distribution."
+      },
+      {
+       "n": 32,
+       "text": "The rate of decline of the African elephant has slowed down.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions the African elephant’s declining population since 1950 but provides no information about whether the rate of decline has changed."
+      },
+      {
+       "n": 33,
+       "text": "The causes of rarity are generally easy to establish.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage states: ‘not all species that have declined to rarity are so well understood,’ directly contradicting the idea that causes are generally easy to establish."
+      },
+      {
+       "n": 34,
+       "text": "The traditional habitat of the red-cockaded woodpecker has been destroyed by human activity.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage states: ‘most of this woodland has been destroyed for agriculture and timber production’ – both are human activities."
+      },
+      {
+       "n": 35,
+       "text": "The red-cockaded woodpecker prefers to leave its nest before breeding.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says young birds ‘have a choice of dispersing or staying to help in a breeding group,’ and many stay. There is no preference stated for leaving before breeding."
+      },
+      {
+       "n": 36,
+       "text": "It usually takes years for the red-cockaded woodpecker to make a nesting hole.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage states: ‘Because of the energy and time needed, typically several years, birds are better off competing for existing territories than building new ones.’"
+      },
+      {
+       "n": 37,
+       "text": "The project to rescue the red-cockaded woodpecker is ongoing.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage describes the experiment and its results but does not indicate whether the rescue project is still continuing today."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "template": "- What does the red-cockaded woodpecker feed on? [[38]]\n- Which TWO parental tasks do the helper woodpeckers perform? (Write both words) [[39]]",
+     "questions": [
+      {
+       "n": 38,
+       "answer": [
+        "insects"
+       ],
+       "explanation": "The passage clearly states: ‘The birds feed on insects and nest in cavities in old pine trees.’"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "incubation and feeding"
+       ],
+       "explanation": "The passage states helpers ‘assist in incubation and feeding.’ These are the two parental tasks helpers perform for the breeding pair."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 40,
+       "text": "In this article, the writer’s purpose is to",
+       "options": [
+        {
+         "key": "A",
+         "text": "alert the reader to the plight of the red-cockaded woodpecker."
+        },
+        {
+         "key": "B",
+         "text": "explain how Walters’s recovery programme can be applied to other species."
+        },
+        {
+         "key": "C",
+         "text": "illustrate the factors that must be considered when dealing with rarity."
+        },
+        {
+         "key": "D",
+         "text": "persuade readers that rarity is a neglected ecological issue."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The article uses the concept of rarity and the woodpecker case study to illustrate the variety of factors – habitat, social structure, dispersal – that conservationists must analyse. Option C reflects this broader purpose."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

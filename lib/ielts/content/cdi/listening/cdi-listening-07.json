@@ -1,0 +1,641 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-07",
+ "title": "CDI Listening Test 07",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-07-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the table below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Asia-Pacific Tours Activity Holidays\n| Tour | Details | COST |\n| Example Vietnam | a cookery course at a 5-star hotel either [[1]] lessons or a tour one-day trek in the [[2]] attend a [[3]] performance | 4 days £ [[4]] |\n| Hong Kong | go to the hills to look at [[5]] in a country park, followed by [[6]] in a monastery visit an [[7]] factory with the chance to shop | £1,320 |\n| [[8]] | visit a museum of traditional [[9]] tour of a big [[10]] market | £1,800 |",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "diving"
+       ],
+       "explanation": "The Vietnam tour offers \"either diving lessons or a [tour]\" — participants can choose diving lessons."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "jungle"
+       ],
+       "explanation": "The description says \"one-day trek in the jungle\" is one of the Vietnam tour activities."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "dance"
+       ],
+       "explanation": "The Vietnam tour includes \"attend a dance performance\" as part of the itinerary."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "1,450",
+        "1450"
+       ],
+       "explanation": "The cost of the Vietnam tour is stated as 4-day tour at £1,450 per person."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "birds"
+       ],
+       "explanation": "The Hong Kong tour includes going \"to the hills to look at birds in a country park\"."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "dinner"
+       ],
+       "explanation": "The Hong Kong tour includes \"followed by dinner in a monastery\" after viewing birds."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "electronics"
+       ],
+       "explanation": "The Hong Kong tour includes \"visit an electronics factory with the chance to shop\"."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "japan"
+       ],
+       "explanation": "The third destination in the table is Japan — the country name is missing from the table."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "costume"
+       ],
+       "explanation": "The Japan tour includes \"visit a museum of traditional costume\"."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "fish"
+       ],
+       "explanation": "The Japan tour includes \"tour of a big fish market\"."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a telephone conversation between a woman who is looking for information about holidays and an agent for a tour company.\nAgent: Asia Pacific Tours, can I help you?\nCaller: Yes, I've been looking at your website and I'd like some more information about your activity holidays.\nAgent: Certainly. You know, of course, the prices of the tours include stays in three-star hotels and they include airfares.\nCaller: Great. What about your tour of Vietnam? My sister went there last year and loved it.\nAgent: Yes, it's a really beautiful place and probably our fastest-growing destination. Now, that package includes several opportunities to take courses.\nCaller: Don't you have a cookery course of some kind?\nAgent: We certainly do. If you love eating out in Vietnam, like most people do, and want to know how to prepare a meal, you can learn how from a master in a five-star hotel. On another day, you have a choice of two activities. The first is instruction in diving in the South China Sea — not a certificate course, but just an introduction. Most people think it's wonderful. Or, if you want to stay dry but still want some exercise, you can spend the day on a trek through the jungle near the beach. It's not difficult, and everyone seems to enjoy it.\nCaller: Anything cultural on offer?\nAgent: We used to take people to a Vietnamese Opera, but that didn't prove so popular. So now we include a dance show, and our clients all rave about that. They say the colors are just magnificent.\nCaller: Hmm, what's the cost?\nAgent: I've just noticed it's now a special price. The holiday used to be £1,600, but it's just been reduced to £1,450. So you do save quite a bit. And as I said, it seems to be our up-and-coming tour.\nCaller: Well, let's see. Perhaps you could tell me a little about the Hong Kong tour? I notice it includes a walk in the hills of one of their country parks, where you have the chance to see birds of all sorts.\nAgent: Yes, that's a very popular activity. People don't realize that Hong Kong isn't just a crowded city. That's a half-day activity, and you go with a trained escort, and it includes dinner in a monastery where you end your day. And then we wouldn't want you to miss out altogether on shopping, so there's another day when we take you around an electronics factory. Now, that might sound like an odd thing to do, but it's actually really fascinating, and not like your usual ceramics factory. And you can buy their products there quite cheaply. Now, the whole Hong Kong package is just £1,320 per person.\nCaller: Sounds interesting.\nCaller: But let me find out about one more place. I've always wanted to go to Korea, but not on this trip. And I've been to Thailand, which I loved. But what about your Japan package?\nAgent: Good choice. Well, that tour includes a terrific trip to a museum of traditional costume. The exhibits are gorgeous. They've got an absolutely priceless collection.\nCaller: And I think the website says you take your clients to a market, don't you? A crafts market, I think?\nAgent: Well, we do go to a market, but it's one that sells fish, and it's one of the largest in the world. And you have the chance to sample the wares in a little restaurant nearby. We also give you plenty of free time to wander around the city with our guides if you want.\nCaller: And what's the cost of all that?\nAgent: £1,800.\nCaller: Well, you've been ever so helpful. I've noted all the details down and I'll get back to you when I've made up my mind.\nAgent: If we can give you any more help, do ring back.\nCaller: Thanks, I will."
+  },
+  {
+   "id": "cdi-listening-07-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO items will participants on the dancing course receive when they check in?",
+     "options": [
+      {
+       "key": "A",
+       "text": "a class list"
+      },
+      {
+       "key": "B",
+       "text": "a face towel"
+      },
+      {
+       "key": "C",
+       "text": "a name tag"
+      },
+      {
+       "key": "D",
+       "text": "a shoe bag"
+      },
+      {
+       "key": "E",
+       "text": "a water bottle"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Q11–12: Participants receive TWO items when they check in. The correct answers are A (a class list) and D (a shoe bag). Q11–12: The second item given at check-in is D — a shoe bag. Class list (A) and shoe bag (D) are the two correct choices."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Q11–12: Participants receive TWO items when they check in. The correct answers are A (a class list) and D (a shoe bag). Q11–12: The second item given at check-in is D — a shoe bag. Class list (A) and shoe bag (D) are the two correct choices."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO activities will take place on the first afternoon and evening?",
+     "options": [
+      {
+       "key": "A",
+       "text": "costume making"
+      },
+      {
+       "key": "B",
+       "text": "a musical show"
+      },
+      {
+       "key": "C",
+       "text": "an informal dance"
+      },
+      {
+       "key": "D",
+       "text": "a talk on dance history"
+      },
+      {
+       "key": "E",
+       "text": "dancing tests"
+      }
+     ],
+     "questions": [
+      {
+       "n": 13,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "Q13–14: Two activities on the first afternoon/evening are C (an informal dance) and D (a talk on dance history). Q13–14: The second first-day activity is D — a talk on dance history, alongside an informal dance (C)."
+      },
+      {
+       "n": 14,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "Q13–14: Two activities on the first afternoon/evening are C (an informal dance) and D (a talk on dance history). Q13–14: The second first-day activity is D — a talk on dance history, alongside an informal dance (C)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Write the correct letter, A–I, next to Questions 15–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 15,
+       "text": "the bathrooms",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The bathrooms are located at position C on the map of the activity centre."
+      },
+      {
+       "n": 16,
+       "text": "the bunkrooms",
+       "answer": [
+        "E"
+       ],
+       "explanation": "The bunkrooms are at position E on the map — a typical placement for sleeping accommodation."
+      },
+      {
+       "n": 17,
+       "text": "the games room",
+       "answer": [
+        "I"
+       ],
+       "explanation": "The games room is at position I on the map of the centre."
+      },
+      {
+       "n": 18,
+       "text": "the hall",
+       "answer": [
+        "F"
+       ],
+       "explanation": "The hall is located at position F on the centre map."
+      },
+      {
+       "n": 19,
+       "text": "the medical room",
+       "answer": [
+        "D"
+       ],
+       "explanation": "The medical room is at position D on the activity centre map."
+      },
+      {
+       "n": 20,
+       "text": "the reception office",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The reception office is at position B — typically near the entrance, which matches position B."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening7-map.png",
+      "alt": "Map of the Activity Centre — positions A–I"
+     }
+    }
+   ],
+   "transcript": "You will hear the organizer of a weekend dancing course for adults welcoming a group of participants to the community center where the course is being held.\nOrganizer: Hello everyone, and welcome to this weekend dancing course. Nice that you're here safely. Since you've all just arrived, I'd like to tell you firstly a bit about today's program, and secondly, how to get around this community center.\nOrganizer: Firstly, straight after this talk, you'll go off to the office where you should check in at the registration desk. Make sure you're wearing the name tags that we posted you out in the mail last week. The staff there will give you each a cloth bag as a little present from us, to keep your dancing shoes in for the weekend. Other things useful to take to class each day will be a bottle of water — hopefully you've all brought one with you — and a towel for your face if it's hot and you feel you need one. Also at registration, you can pick up a list for the level class that you're in, so you can start learning people's names.\nOrganizer: After checking in, this first afternoon is free for everyone. You could use this time to start thinking about your costumes for the final show, but we won't be making them until tomorrow. For those of you who are interested, there's a lecture this afternoon in the main hall on the history of dance. Or, you could practice for Sunday's concert in the music room. There is also an informal gathering planned for tonight, consisting of mainly easy dances where you can get to know each other. The tests of different levels won't be held until the final afternoon, so there's no need to worry about those yet.\nOrganizer: Now, I said I would tell you how to find your way around the community center. Well, we're standing at the south end of the site. I'll tell you where the bathrooms are first; that's the most important thing. Walk straight ahead from here, pass this first big block on your left, and you'll find the bathrooms on your left just after it.\nOrganizer: Now, equally important of course is where you'll sleep. So, the bunk rooms are just here on our left. You can see them beside where we're standing now.\nOrganizer: Now, we also have a games room where you can entertain yourself during your free time. Well, you'll get there if you go straight ahead from where we're standing now, take the first turning right, and carry on to the second building. It's on your right just before the bike racks. Games and books are in the cupboard there, and there's a ping-pong table, air hockey, things like that. Good for a rainy day.\nOrganizer: Okay, what else? Um, the hall is where we'll be for class photos. You can find that in the middle of the site, just south of the music room.\nOrganizer: The medical room, in case any of you get injured while you're dancing, can be found in the center of the site also. Go straight on from here, pass two pathways, and it's on your right beside the music room. The nurse there is very good with sports injuries, so don't hesitate to visit her if you need to.\nOrganizer: Any questions? Oh yes, the reception office, of course. You'll need to go over there after this talk to register. That's quite a long walk away from here. Go straight ahead and take the third turning on your right. Then you'll find that the office is the second building on your left. The staff there are very friendly, and if you have any problems during the weekend, go to see them and they'll help you out."
+  },
+  {
+   "id": "cdi-listening-07-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "According to Dominic, what is surprising about the supermarket garden project?",
+       "options": [
+        {
+         "key": "A",
+         "text": "At first, it was unpopular with customers."
+        },
+        {
+         "key": "B",
+         "text": "It has gained a lot of interest from chefs."
+        },
+        {
+         "key": "C",
+         "text": "Many shops are using the idea now."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Dominic says the supermarket garden project \"has gained a lot of interest from chefs\" — which is the surprising outcome (option B)."
+      },
+      {
+       "n": 22,
+       "text": "What do the speakers identify as a possible problem with the solar carpark idea?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The technology might not be well developed."
+        },
+        {
+         "key": "B",
+         "text": "The cost could be too high."
+        },
+        {
+         "key": "C",
+         "text": "There may not be enough room."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The speakers identify that for the solar carpark, \"there may not be enough room\" (option C) as a possible problem."
+      },
+      {
+       "n": 23,
+       "text": "According to the speakers, the unexpected benefit of wildlife crossings is that",
+       "options": [
+        {
+         "key": "A",
+         "text": "they are much cheaper to build than was predicted."
+        },
+        {
+         "key": "B",
+         "text": "animal populations become more genetically diverse."
+        },
+        {
+         "key": "C",
+         "text": "they greatly reduce the number of car accidents."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The unexpected benefit of wildlife crossings is that \"animal populations become more genetically diverse\" (option B)."
+      },
+      {
+       "n": 24,
+       "text": "What is impressive about the 100% renewable energy campaign?",
+       "options": [
+        {
+         "key": "A",
+         "text": "how many countries the movement has spread to"
+        },
+        {
+         "key": "B",
+         "text": "how fast cities can convert to 100% renewable energy"
+        },
+        {
+         "key": "C",
+         "text": "how much help is given to participating communities"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "What impresses the speakers about the 100% renewable energy campaign is \"how much help is given to participating communities\" (option C)."
+      },
+      {
+       "n": 25,
+       "text": "What positive point about \"carrot-mobbing\" does Ella describe?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It helps businesses undertake eco-friendly projects."
+        },
+        {
+         "key": "B",
+         "text": "It encourages people to buy sustainable products."
+        },
+        {
+         "key": "C",
+         "text": "It creates a sense of community in the people who participate."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Ella describes the positive point of carrot-mobbing as being that \"it helps businesses undertake eco-friendly projects\" (option A)."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the flow chart below. Drag the correct answer from the box to each question.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A land"
+      },
+      {
+       "key": "B",
+       "text": "B plants"
+      },
+      {
+       "key": "C",
+       "text": "C seeds"
+      },
+      {
+       "key": "D",
+       "text": "D nutrients"
+      },
+      {
+       "key": "E",
+       "text": "E compost"
+      },
+      {
+       "key": "F",
+       "text": "F insecticide"
+      },
+      {
+       "key": "G",
+       "text": "G clay"
+      },
+      {
+       "key": "H",
+       "text": "H light"
+      }
+     ],
+     "template": "Aerial Reforestation Process\nChoose a reforestation area with plenty of 26 [[26]]\n↓\nTake a lot of suitable 27 [[27]] appropriate to your purposes.\n↓\nMix with long-lasting 28 [[28]]\n↓\nPress into lumps of 29 [[29]]\n↓\nApply an outer coating, e.g. paper, to provide appropriate levels of 30 [[30]] and protection.",
+     "questions": [
+      {
+       "n": 26,
+       "answer": [
+        "H"
+       ],
+       "explanation": "The first step in aerial reforestation: \"ensuring there's enough light is crucial.\" H = light."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "C"
+       ],
+       "explanation": "Step 2: \"make sure you have the right seeds.\" C = seeds."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "E"
+       ],
+       "explanation": "Step 3: \"a mixture with decent quality, durable compost.\" E = compost."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "G"
+       ],
+       "explanation": "Step 4: \"pressing the whole thing into a small chunk of clay.\" G = clay."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "D"
+       ],
+       "explanation": "Step 5: \"it will add balanced nutrients to the mixture.\" D = nutrients."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear two environmental science students called Dominic and Alla discussing some ways of solving environmental problems.\nTutor: Okay everyone, get into pairs and look at the innovative environmental solutions we've been reading about this week. Discuss some of the pros and cons of each one.\nDominic: You want to work together, Alla?\nAlla: Sure, Dominic. Which solution do you want to look at first?\nDominic: I think the supermarket garden project's interesting.\nAlla: That's where the supermarket grows fruit and vegetables in the store and sells them?\nDominic: Yes. Understandably, only a few shops have decided to adopt this idea. It's hard to set up.\nAlla: What's the reaction from customers?\nDominic: Well, of course, they love the idea. One thing I didn't expect, though...\nAlla: What was that?\nDominic: The idea is hugely popular with local chefs, and many of them are finding new ways to use the plants in all their different stages of growth.\nAlla: I see. I found the solar car park idea to be really practical.\nDominic: I know what you mean. Putting solar panels on the roofs of car parks to generate electricity might be a cost-effective way to power a whole shopping center.\nAlla: The difficulty could be finding space to put all the panels. Some smaller shopping centers probably don't have covered car parks.\nDominic: That's right. It's a shame because the technology seems to be all there and ready to go if the conditions are right.\nAlla: What do you think of the wildlife crossing solution? You know, when a bridge or a tunnel is built over or under a major roadway so that animals can cross?\nDominic: That idea has become very popular and has so many benefits. A lot of research has been done, hasn't it?\nAlla: Yes, it's not surprising that the data reveals a huge drop in the number of road accidents in areas where there are wildlife crossings. That's one of the predicted outcomes.\nDominic: Something I read about in the research, which I'd never considered before, was how the animal populations in these areas are affected. Naturally, more of them survive, but because their habitat is not interrupted too much by the roads, the genetic diversity of local species has improved.\nAlla: That's true. It's worth the huge cost of building them if the result is a win-win for people and animals. I found the 100% renewable energy campaign, like solar and wind energy, to be really impressive.\nDominic: Yes, it's not so much the size of the movement — I mean, only a few countries are involved — as the amount of support offered once a community joins.\nAlla: Considering the sheer amount of time and planning it takes for a city to convert completely to renewables, the organizers of the movement would need to do that. Did you read about \"carrot mobbing\" as an environmental movement?\nDominic: What's that?\nAlla: It's where huge numbers of people learn through the internet about where to shop at stores that use the profits to support environmental projects.\nDominic: So they stop buying products that aren't eco-friendly, like a boycott?\nAlla: No, actually it's the opposite of that. It allows businesses to fund initiatives to help protect the environment by boosting their profits. It's a pity that most participants don't get to know each other personally; it's all through online notices.\nDominic: Now, everyone, let's look at one particular environmental innovation: aerial reforestation. With your partner, discuss the process involved in this idea.\nAlla: So, aerial reforestation is where they drop mixtures from planes to sow vegetables, grains, or trees, and so on in areas that might be hard to reach. Let's see, what are the steps?\nDominic: Well, the first step is choosing the right area. Whatever size land you're working on, ensuring there's enough light is crucial.\nAlla: The next step, whatever you're planting, is to make sure you have the right seeds.\nDominic: To give them a better chance against the competition from other plants, you need to use a lot.\nAlla: So then you make a mixture with decent quality, durable compost for nourishment.\nDominic: Then do they infuse it with insecticide?\nAlla: That's not necessary in this model. The next step is pressing the whole thing into a small chunk of clay to make a ball. This may then be covered in an outer material such as paper.\nDominic: Right, that way when it lands, it will add balanced nutrients to the mixture.\nAlla: Yes, and it may also protect it from insects and other plants.\nDominic: So a few days before they release it from the plane onto the land below, the final step is dipping it in water. Just enough to get the germination process started.\nAlla: Yes, and after that, it's just a matter of dropping them."
+  },
+  {
+   "id": "cdi-listening-07-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Canadian maple syrup\n# Description\n- It is a sweet liquid poured over pancakes etc.\n- The production of sap needs a climate where night and day temperatures are very [[31]]\n# History\n- Folk stories claim that maple syrup was first used to cook [[32]]\n- Sap collection in spring developed into a First Nations [[33]]\n- The sap was collected in buckets.\n- The sap was concentrated into syrup by:\n- using hot stones to produce [[34]]\n- leaving it outside at night and then removing the layer of [[35]] on top.\n# Uses\n- First Nations people drank the fresh sap to give them energy.\n- European settlers put the syrup in various types of [[36]]\n- They also used it for drinks and for candy.\n- Its use for making sugar declined after 1880, when the [[37]] on Caribbean sugar was removed.\n# Threats\n- Natural\n- Harvests may be affected by storms and destructive [[38]]\n- Climate change may also affect sap production.\n- Social\n- Maple syrup is expensive and faces considerable [[39]]\n- The obesity issue is affecting sales.\n# Reasons for optimism\n- Maple syrup is an important export.\n- It is quite [[40]] compared with other sweeteners.\n- Its taste is the main reason for its popularity.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "different"
+       ],
+       "explanation": "The production of maple syrup needs \"a climate where night and day temperatures are very different.\""
+      },
+      {
+       "n": 32,
+       "answer": [
+        "meat"
+       ],
+       "explanation": "Folk stories claim maple syrup was first used to cook meat — it was poured over or used with meat."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "tradition"
+       ],
+       "explanation": "Sap collection in spring developed into a First Nations tradition — a seasonal cultural practice."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "steam"
+       ],
+       "explanation": "Hot stones were used to produce steam, which helped concentrate the sap into syrup."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "ice"
+       ],
+       "explanation": "The sap was left outside at night, and the layer of ice that formed on top was removed, concentrating the syrup."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "medicine"
+       ],
+       "explanation": "European settlers put the syrup in various types of medicine — using it for medicinal purposes."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "tax"
+       ],
+       "explanation": "Its use for making sugar declined after 1880, when the tax on Caribbean sugar was removed."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "insects"
+       ],
+       "explanation": "Natural threats include storms and destructive insects — such as the Asian longhorn beetle."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "competition"
+       ],
+       "explanation": "Maple syrup is expensive and faces considerable competition from cheaper sweeteners."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "healthy"
+       ],
+       "explanation": "Reasons for optimism include that maple syrup is \"quite healthy compared with other sweeteners.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a lecture on a very popular Canadian food product called maple syrup.\nLecturer: Maple syrup can be described as very sweet. Canadians pour it generously over things like pancakes for breakfast. The syrup is produced from the maple tree, and it actually comes from the tree's sap, which is the watery substance that comes out of the trunk of the tree when this is cut.\nLecturer: In order for enough sap to be produced, very special climate conditions are needed. In spring, the temperatures need to drop to well below zero at night, but then they need to rise sharply during the day. So they're hugely different over a 24-hour period. And that's exactly what happens in northeastern Canada every spring.\nLecturer: The indigenous peoples of North America, known as the First Nations, discovered the maple secret long before the Europeans arrived. Early folk stories say it was first discovered by a chief who threw his tomahawk — which is similar to an axe — into the trunk of a tree. Clear sap started to run from the cut. His wife used this sap to boil meat, and the heat turned it into a sweet syrup which they found delicious.\nLecturer: Whether or not that story is true, we do know that the maple tree was very important to First Nations peoples for hundreds of years. Collecting the sap each spring became a tradition among them. Whole families would migrate to the areas where the maple trees grew and set up camp there. They collected the sap from the trees using buckets. Then they needed to concentrate the sap, removing some of the water from it to create syrup.\nLecturer: They had two ways of doing this. One way was to drop hot stones from a fire into the buckets to create steam. If repeated often enough, this would eventually concentrate the syrup. Another method that they used to concentrate the syrup was to leave the sap outside overnight, exposed to freezing temperatures. This would mean that a thick layer of ice would form on top, which could be discarded, leaving the sugary sap below. Again, this process could be repeated over several days, and eventually, a sweet brown syrup was produced.\nLecturer: The First Nations people had various uses for the sap and syrup. They drank the sap fresh from the tree as a tonic, knowing that it was an important source of energy. But for the most part, they reduced the syrup further and then cooled it so that it crystallized into sugar. This was easy to carry and kept indefinitely.\nLecturer: European settlers who arrived in Canada began to learn about the syrup from First Nations peoples and further expanded its uses. For example, they incorporated it into medicine of different kinds. They also discovered that by adding yeast to the sap, they could make a maple drink. And by throwing the hot syrup into the snow, they could make a toffee-like candy. But like the First Nations, they turned most of their sap into maple sugar. For most people, it was the only type of sugar they could afford, since the only alternative was the sugar imported from the Caribbean, which was made from sugarcane, and this was very expensive.\nLecturer: However, after 1880, the Canadian government decided to stop charging tax on Caribbean sugar, and this made it much cheaper. That meant it was no longer cost-effective to produce maple sugar, and so syrup making became the only viable industry remaining for Canadians, and that's what we've been doing ever since.\nLecturer: At present, maple syrup is enjoying a boom. In the last two decades, production has doubled in Canada. However, serious threats remain. Like any agricultural product, the harvest is subject to such things as major storms or the arrival of invasive insects, both of which have happened and these could destroy everything. It is predicted with some certainty that in the longer term, climate change will also have an adverse effect on the sap run.\nLecturer: Then there are the social factors. Producing maple syrup is a very labor-intensive process, making it an expensive purchase. And of equal concern is the fact that nowadays there is a lot of competition from cheaper, artificially flavored brands. Furthermore, we're at a time when obesity is a major issue, making a product that is 67% sugar increasingly difficult to sell.\nLecturer: Nevertheless, there are reasons to be optimistic. Producers are developing markets abroad. Our syrup is currently being exported to over 50 countries. Back here at home, chefs use it enthusiastically. It's certainly high in calories, but it also contains proteins, minerals, and antioxidants. As such, it is still relatively healthy when you compare it with sugar or corn syrup. Canadians are proud of maple syrup and its deep roots in our history and geography. However, the primary reason for maple syrup's success around the world remains its taste. There's nothing quite like it."
+  }
+ ],
+ "audio": {
+  "file": "listening-7.mp3",
+  "durationSec": 1706,
+  "questionTimes": {
+   "1": 214,
+   "2": 222,
+   "3": 236,
+   "4": 249,
+   "5": 263,
+   "6": 279,
+   "7": 290,
+   "8": 347,
+   "9": 360,
+   "10": 378,
+   "11": 532,
+   "12": 542,
+   "13": 587,
+   "14": 576,
+   "15": 656,
+   "16": 715,
+   "17": 686,
+   "18": 714,
+   "19": 725,
+   "20": 746,
+   "21": 924,
+   "22": 947,
+   "23": 990,
+   "24": 1023,
+   "25": 1059,
+   "26": 1145,
+   "27": 1143,
+   "28": 1163,
+   "29": 1173,
+   "30": 1183,
+   "31": 1351,
+   "32": 1383,
+   "33": 1407,
+   "34": 1440,
+   "35": 1456,
+   "36": 1508,
+   "37": 1554,
+   "38": 1594,
+   "39": 1629,
+   "40": 1660
+  }
+ }
+}

@@ -11,10 +11,14 @@
  */
 
 import {
+  findArchivedListening,
+  findArchivedReading,
+  findArchivedWritingTask,
   getListeningExam,
   getReadingExam,
   getSpeakingSet,
   getWritingTask,
+  isArchivedContent,
   listListeningExams,
   listReadingExams,
   listSpeakingSets,
@@ -170,6 +174,8 @@ export async function resolveExamContent(raw: {
   if (kind === "READING" || kind === "LISTENING") {
     const id = cleanId(raw.contentId);
     if (!id) return { ok: false, error: "Choose a test from the library." };
+    // Archived built-in tests still open by id (old homework) but can't be set again.
+    if (isArchivedContent(id)) return { ok: false, error: `That ${kind === "READING" ? "Reading" : "Listening"} test is no longer in the library.` };
     // Counts and minutes come from the same summary the picker shows, so both always agree.
     const loaded =
       kind === "READING"
@@ -213,7 +219,7 @@ export async function resolveExamContent(raw: {
     const id = cleanId(raw.contentId);
     if (!id) return { ok: false, error: "Choose a Writing task from the library." };
     const task = kind === "WRITING_TASK1" ? "task1" : "task2";
-    const prompt: WritingPrompt | null = await getWritingTask(task, id);
+    const prompt: WritingPrompt | null = isArchivedContent(id) ? null : await getWritingTask(task, id);
     if (!prompt) return { ok: false, error: "That Writing task is no longer in the library." };
     const spec = WRITING_TASK[task];
     return {
@@ -243,6 +249,9 @@ export async function resolveExamContent(raw: {
           ? splitWritingExamContentId(raw.contentId)
           : null;
     if (!pair) return { ok: false, error: "Choose a Task 1 and a Task 2 for the Writing test." };
+    if (isArchivedContent(pair.task1) || isArchivedContent(pair.task2)) {
+      return { ok: false, error: "One of those Writing tasks is no longer in the library." };
+    }
     const [t1, t2]: (WritingPrompt | null)[] = await Promise.all([getWritingTask("task1", pair.task1), getWritingTask("task2", pair.task2)]);
     if (!t1 || !t2) return { ok: false, error: "One of those Writing tasks is no longer in the library." };
     return {
@@ -317,6 +326,15 @@ function objectiveFacts(kind: "READING" | "LISTENING", s: ExamTestSummary, part:
   return [plural(p.questions, "question"), `${kind === "LISTENING" ? "~" : ""}${p.minutes} min`, s.difficulty];
 }
 
+function archivedSummary(kind: "READING" | "LISTENING", id: string): ExamTestSummary | null {
+  if (kind === "READING") {
+    const t = findArchivedReading(id);
+    return t ? summarizeReading(t) : null;
+  }
+  const t = findArchivedListening(id);
+  return t ? summarizeListening(t) : null;
+}
+
 /** What an exam homework contains, or null for classic homework. Never throws. */
 export async function describeExamHomework(h: {
   contentKind: string | null;
@@ -338,14 +356,16 @@ export async function describeExamHomework(h: {
       case "READING":
       case "LISTENING": {
         const list: ExamTestSummary[] = kind === "READING" ? await listReadingExams() : await listListeningExams();
-        const s = list.find((x) => x.id === contentId);
+        // Archived built-in tests aren't listed any more but still open by id, so old homework keeps working.
+        const s = list.find((x) => x.id === contentId) ?? archivedSummary(kind, contentId);
         if (!s) return { ...base, contentTitle: stored || "Test no longer available", facts: [], available: false };
         return { ...base, contentTitle: stored || s.title, facts: objectiveFacts(kind, s, h.contentPart), available: true };
       }
       case "WRITING_TASK1":
       case "WRITING_TASK2": {
         const task = kind === "WRITING_TASK1" ? "task1" : "task2";
-        const p = ((await listWritingTasks(task)) as WritingPrompt[]).find((x) => x.id === contentId);
+        const p =
+          ((await listWritingTasks(task)) as WritingPrompt[]).find((x) => x.id === contentId) ?? findArchivedWritingTask(task, contentId);
         const spec = WRITING_TASK[task];
         return {
           ...base,
@@ -359,8 +379,8 @@ export async function describeExamHomework(h: {
         const [all1, all2]: WritingPrompt[][] = pair
           ? await Promise.all([listWritingTasks("task1"), listWritingTasks("task2")])
           : [[], []];
-        const t1 = pair ? all1.find((x) => x.id === pair.task1) : undefined;
-        const t2 = pair ? all2.find((x) => x.id === pair.task2) : undefined;
+        const t1 = pair ? all1.find((x) => x.id === pair.task1) ?? findArchivedWritingTask("task1", pair.task1) : undefined;
+        const t2 = pair ? all2.find((x) => x.id === pair.task2) ?? findArchivedWritingTask("task2", pair.task2) : undefined;
         const available = !!(t1 && t2);
         return {
           ...base,

@@ -10,8 +10,9 @@ export default defineConfig({
   // tsconfig keeps `jsx: preserve` for Next.js, so JSX in tests needs its own transform.
   esbuild: { jsx: "automatic" },
   resolve: {
-    // Same "@/…" imports as the app (tsconfig paths: "@/*" → "./*").
-    alias: { "@": root },
+    // Same "@/…" imports as the app (tsconfig paths: "@/*" → "./*"). `server-only` resolves to
+    // Next's empty server build (as on the server); the client-side guard is checked by `next build`.
+    alias: { "@": root, "server-only": `${root}/node_modules/next/dist/compiled/server-only/empty.js` },
   },
   test: {
     environment: "jsdom",

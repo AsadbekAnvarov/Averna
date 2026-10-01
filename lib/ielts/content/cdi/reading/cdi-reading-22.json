@@ -1,0 +1,644 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-22",
+ "title": "CDI Reading Test 22",
+ "description": "A full Academic Reading test from the CDI practice materials: The last man who knew everything; Creative Problem-Solving; How a prehistoric predator took to the skies.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The last man who knew everything",
+  "Creative Problem-Solving",
+  "How a prehistoric predator took to the skies"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The last man who knew everything",
+   "paragraphs": [
+    {
+     "text": "In the 21st century, it would be quite impossible for even the most learned man to know everything. However, as recently as the 18th century there were those whose knowledge encompassed most of the information available at that time. This is a review of a biography of one such man."
+    },
+    {
+     "text": "Thomas Young (1773 - 1829) contributed 63 articles to the great British encyclopaedia, Encyclopaedia Britannica, including 46 biographical entries (mostly on scientists and classical scholars), and substantial essays on 'Bridge' (a card game), 'Egypt', 'Languages' and 'Tides'. Was someone who could write authoritatively about so many subjects a genius, or a dilettante? In an ambitious biography, Andrew Robinson argues that Young is a good contender to be described as 'the last man who knew everything'. Young has competition, however: the phrase which Robinson uses as the title of his biography of Young also serves as the subtitle of two other recent biographies: Leonard Warren's 1998 life of palaeontologist Joseph Leidy (1823 - 1891) and Paula Findlen's 2004 book on Athanasius Kircher (1602 - 1680)."
+    },
+    {
+     "text": "Young, of course, did more than write encyclopaedia entries. He presented his first paper, on the human eye, to the prestigious academic institution, the Royal Society of London at the age of 20 and was elected a Fellow of the Society shortly afterwards. In the paper, which seeks to explain how the eye focuses on objects at varying distances, Young hypothesised that this was achieved by changes in the shape of the lens. He also theorised that light travels in waves, and believed that, to be able to see in colour, there must be three receptors in the eye corresponding to the three 'principal colours' (red, green and violet) to which the retina could respond. All these hypotheses were subsequently proved to be correct. Later in his life, when he was in his forties, Young was instrumental in cracking the code that unlocked the unknown script on the Rosetta Stone, a tablet found in Egypt by the Napoleonic army in 1799. The stone has text in three alphabets: Greek, Egyptian hieroglyphs, and something originally unrecognisable. The unrecognisable script is now known as 'demotic' and, as Young deduced, is related directly to Egyptian hieroglyphs. His initial work on this appeared in the Britannica entry 'Egypt'. In another entry, Young coined the term 'Indo-European' to describe the family of languages spoken throughout most of Europe and northern India. These works are the landmark achievements of a man who was a child prodigy but who, unlike many remarkable children, did not fade into obscurity as an adult."
+    },
+    {
+     "text": "Born in 1773 in Somerset in England, Young lived with his maternal grandfather from an early age. He devoured books from the age of two, and excelled at Latin, Greek, mathematics and natural philosophy (the 18th-century term for science). After leaving school, he was greatly encouraged by Richard Brocklesby, a physician and Fellow of the Royal Society. Following Brocklesby's lead, Young decided to pursue a career in medicine. He studied in London and then moved on to more formal education in Edinburgh, Göttingen and Cambridge. After completing his medical training at the University of Cambridge in 1808, Young set up practice as a physician in London and a few years later was appointed physician at St. George's Hospital."
+    },
+    {
+     "text": "Young's skill as a physician, however, did not equal his talent as a scholar of natural philosophy or linguistics. In 1801, he had been appointed to a professorship of natural philosophy at the Royal Institution, where he delivered as many as 60 lectures a year. His opinions were requested by civic and national authorities on matters such as the introduction of gas lighting to London streets and methods of ship construction. From 1819, he was superintendent of the Nautical Almanac and secretary to the Board of Longitude. Between 1816 and 1825, he contributed many entries to the Encyclopaedia Britannica, and throughout his career he authored numerous other essays, papers and books."
+    },
+    {
+     "text": "Young is a perfect subject for a biography — perfect, but daunting. Few men contributed so much to so many technical fields. Robinson's aim is to introduce non-scientists to Young's work and life. He succeeds, providing clear expositions of the technical material (especially that on optics and Egyptian hieroglyphs). Some readers of this book will, like Robinson, find Young's accomplishments impressive; others will see him as some historians have — as a dilettante. Yet despite the rich material presented in this book, readers will not end up knowing Young personally. We catch glimpses of a playful Young, doodling Greek and Latin phrases in his notes on medical lectures and translating the verses that a young lady had written on the walls of a summerhouse into Greek elegiacs. Young was introduced into elite society, attended the theatre and learned to dance and play the flute. In addition, he was an accomplished horseman. However, his personal life looks pale next to his vibrant career and studies."
+    },
+    {
+     "text": "Young married Eliza Maxwell in 1804, and according to Robinson, 'their marriage was happy and she appreciated his work'. Almost all we know about her is that she sustained her husband through some rancorous disputes about optics and that she worried about money when his medical career was slow to take off. Little evidence survives concerning the complexities of Young's relationships with his mother and father. Robinson does not credit them with shaping Young's extraordinary mind. Despite the lack of details concerning Young's relationships, however, anyone interested in what it means to be a genius should read this book."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Other people have been referred to as 'the last man who knew everything'.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The phrase serves as subtitle of two other recent biographies by Leonard Warren and Paula Findlen."
+      },
+      {
+       "n": 2,
+       "text": "The fact that Young's childhood brilliance continued into adulthood was normal.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says unlike many remarkable children, Young did not fade into obscurity — implying it was unusual."
+      },
+      {
+       "n": 3,
+       "text": "Young's talents as a doctor are described as surpassing his other skills.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'Young's skill as a physician, however, did not equal his talent as a scholar...'"
+      },
+      {
+       "n": 4,
+       "text": "Young's advice was sought by several bodies responsible for local and national matters.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'His opinions were requested by civic and national authorities...'"
+      },
+      {
+       "n": 5,
+       "text": "All Young's written works were published in the Encyclopaedia Britannica.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'throughout his career he authored numerous other essays, papers and books'"
+      },
+      {
+       "n": 6,
+       "text": "Young was interested in a range of social pastimes.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "He attended theatre, danced, played flute, and was an accomplished horseman."
+      },
+      {
+       "n": 7,
+       "text": "Young suffered from poor health in his later years.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No information about Young's health in his later years is given in the passage."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "- How many life stories did Thomas Young write for the Encyclopaedia Britannica? [[8]]\n- What was the subject of Thomas Young's first academic paper? [[9]]\n- What name did Young give to a group of languages? [[10]]\n- Who inspired Young to enter the medical profession? [[11]]\n- At which place of higher learning did Young hold a teaching position? [[12]]\n- What was the improvement to London roads on which Young's ideas were sought? [[13]]",
+     "questions": [
+      {
+       "n": 8,
+       "answer": [
+        "46"
+       ],
+       "explanation": "The passage states '46 biographical entries'."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "the human eye"
+       ],
+       "explanation": "He presented his first paper 'on the human eye'."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Indo-European"
+       ],
+       "explanation": "Young coined the term 'Indo-European'."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "Richard Brocklesby"
+       ],
+       "explanation": "'he was greatly encouraged by Richard Brocklesby, a physician and Fellow of the Royal Society'"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "the Royal Institution"
+       ],
+       "explanation": "'he had been appointed to a professorship of natural philosophy at the Royal Institution'"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "gas lighting"
+       ],
+       "explanation": "'the introduction of gas lighting to London streets'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Creative Problem-Solving",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "In a recent study, researchers at Northwestern University in the United States found that people were more likely to solve word puzzles with sudden insight when they were amused, having just seen a short comedy routine. 'What we think is happening,' said Dr Mark Beeman, a neuroscientist who worked on the study, 'is that the humor, this positive mood, is lowering the brain's threshold for detecting weaker or more remote connections,' which enable people to solve puzzles."
+    },
+    {
+     "label": "B",
+     "text": "This suggests that the appeal of puzzles goes far deeper than the pleasant rush of finding a solution. The very act of doing a puzzle typically shifts the brain into an open, playful state that is itself a pleasing escape. Unlike the social and professional mysteries in the real world, puzzles are reassuringly solvable; but like any serious problem, they require more than mere intellect to crack. 'It's imagination, it's inference, it's guessing; and much of it is happening subconsciously,' said Dr Marcel Danesi, a professor of anthropology at the University of Toronto, Canada. 'It's all about you, using your own mind, without any method or schema, to restore order from chaos,' Danesi said. 'And once you have, you can sit back and say, \"Hey, the rest of my life may be a disaster, but at least I have a solution\".'"
+    },
+    {
+     "label": "C",
+     "text": "For almost a century scientists have used puzzles to study what they call 'insight thinking', the leaps of understanding that seem to come out of the blue. In one experiment, the German psychologist Karl Duncker presented people with a candle, a box of pins, and the task of attaching the candle to a wall. About a quarter of the subjects thought to use the pins to tack the box to the wall as a support—some immediately, and others after failed efforts to tack wax to the wall. According to Duncker, the creative leap seems to have been informed by subconscious cues. In another well-known experiment, psychologists H.G. Birch and H.S. Rabinowitz challenged people to tie together two cords; the cords were hanging from the ceiling of a large room, too far apart to be grabbed at the same time. A small percentage of people solved it without any help, by tying something else to one cord and swinging it like a pendulum so that it could be caught while they held the other cord. In some experiments, researchers gave clues to those who were stumped—for instance, by bumping into one of the strings so that it swung. Many of those who then solved the problem said they had no recollection of the clue, though it very likely registered subconsciously."
+    },
+    {
+     "label": "D",
+     "text": "All along, researchers have debated the definitions of insight and analysis, and some have concluded that the two are merely different sides of the same coin. Yet in an authoritative discussion of the research carried out so far, the psychologists Jonathan W. Schooler and Joseph Melcher concluded that the abilities most strongly correlated with insight problem-solving 'were not significantly correlated' with solving analytical problems. Either way, creative problem-solving usually requires both analysis and insight. Adam Anderson, a psychologist at the University of Toronto, Canada, argues that although when people are solving problems they may move back and forth between these abilities, they are truly different brain states."
+    },
+    {
+     "label": "E",
+     "text": "At first, studies did little more than confirm that brain areas that register reward spiked in activity when people came up with a solution, that is to say, once they had completed a puzzle. However, in a series of recent studies, John Kounios, a psychologist at Drexel University in the United States, has imaged people's brains as they prepare to tackle a puzzle, but before they've seen it. Those whose brains show a particular signature of preparatory activity—one that is strongly correlated with positive moods—turn out to be more likely to solve the puzzles with sudden insight than with trial and error (the clues can be solved either way). Previous research has also found activation of cells in a certain area of the brain when people widen or narrow their attention—say, when they filter out distractions to focus on a difficult task, like concentrating on someone's voice in a noisy room. In the case of insight puzzle-solving, the brain seems to widen its attention, in effect making itself more susceptible to distraction."
+    },
+    {
+     "label": "F",
+     "text": "In the humor study, Beeman had college students solve word-association puzzles after watching a short video showing a stand-up comedian. Beeman found that these students solved more of the puzzles overall, and significantly more by sudden insight, compared with when they'd seen a scary or boring video beforehand. This 'open' state of mind does not only apply to intellectual puzzles. In a study published last year, researchers at the University of Toronto found that people in positive moods picked up more background detail, even when they were told to block out distracting information during a computer task. The findings fit with dozens of experiments linking positive moods to better creative problem-solving. 'The implication is that positive mood engages this broad, attentional state that is both perceptual and visual,' said Anderson. He explains that not only are people in a positive mood able to think more broadly, they are able to notice more visually."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six paragraphs, A–F. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "A claim that people enjoy the process of doing puzzles as well as finding the answers",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B: 'The very act of doing a puzzle typically shifts the brain into an open, playful state that is itself a pleasing escape.'"
+      },
+      {
+       "n": 15,
+       "text": "A review of studies that looked at the relationship between insight and analysis",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D discusses researchers debating definitions of insight and analysis and the authoritative review by Schooler and Melcher."
+      },
+      {
+       "n": 16,
+       "text": "The finding that people were less likely to solve puzzles after viewing uninteresting or disturbing material",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F: students solved fewer puzzles 'compared with when they'd seen a scary or boring video beforehand.'"
+      },
+      {
+       "n": 17,
+       "text": "A comparison between doing puzzles and dealing with life challenges",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B: 'Unlike the social and professional mysteries in the real world, puzzles are reassuringly solvable.'"
+      },
+      {
+       "n": 18,
+       "text": "A description of a study where the subjects were given hints by those conducting the research",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C: 'researchers gave clues to those who were stumped—for instance, by bumping into one of the strings.'"
+      },
+      {
+       "n": 19,
+       "text": "Details of a study in which the focus shifted to mental activity before a puzzle is attempted",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E: Kounios 'has imaged people's brains as they prepare to tackle a puzzle, but before they've seen it.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of researchers below. Match each statement with the correct researcher, A–E. NB You may use any letter more than once.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Karl Duncker"
+      },
+      {
+       "key": "B",
+       "text": "Marcel Danesi"
+      },
+      {
+       "key": "C",
+       "text": "Mark Beeman"
+      },
+      {
+       "key": "D",
+       "text": "Adam Anderson"
+      },
+      {
+       "key": "E",
+       "text": "John Kounios"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 20,
+       "text": "Solving a puzzle may help people facing difficulties feel better",
+       "answer": [
+        "B"
+       ],
+       "explanation": "B. Marcel Danesi: 'the rest of my life may be a disaster, but at least I have a solution'."
+      },
+      {
+       "n": 21,
+       "text": "Two distinctly separate functions of the brain are used when solving puzzles",
+       "answer": [
+        "D"
+       ],
+       "explanation": "D. Adam Anderson: 'they are truly different brain states.'"
+      },
+      {
+       "n": 22,
+       "text": "Some subjects were able to find a solution to the puzzle they were given without knowing how they had done it",
+       "answer": [
+        "A"
+       ],
+       "explanation": "A. Karl Duncker: subjects solved problems subconsciously without awareness of the clue."
+      },
+      {
+       "n": 23,
+       "text": "Seeing something funny helps people make links that may not be obvious at first",
+       "answer": [
+        "C"
+       ],
+       "explanation": "C. Mark Beeman: 'humor, this positive mood, is lowering the brain's threshold for detecting weaker or more remote connections.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Kounios builds on studies of puzzle-solvers’ brain activity",
+     "template": "Studies by Kounios reveal that when people are feeling [[24]] during the preparatory stage, it is more probable that they will use insight to solve puzzles. When someone is trying to listen to a [[25]] when the general sound level is high, the focus narrows. When people solve puzzles using insight, their focus becomes wider, and they are more open to [[26]].",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "positive"
+       ],
+       "explanation": "'strongly correlated with positive moods'"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "voice"
+       ],
+       "explanation": "'concentrating on someone's voice in a noisy room'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "distraction"
+       ],
+       "explanation": "'making itself more susceptible to distraction'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "How a prehistoric predator took to the skies",
+   "subtitle": "Is that a bird in the sky? A plane? No, it's a pterosaur. Kate Thomas meets Professor Matthew Wilkinson, who built a life-size model to find out how this prehistoric predator ever got off the ground.",
+   "paragraphs": [
+    {
+     "text": "Pterosaurs existed from the Triassic period, 220 million years ago, to the end of the Cretaceous period, 65 million years ago, when South America pulled away from Africa and the South Atlantic was formed. They are among the least understood of all the extinct reptiles that once spent their lives in the skies while the dinosaurs dominated the land. Pterosaurs had no feathers, but at least part of their bodies was covered in hair, not unlike bats. Some believe this is an indication they were warm-blooded. Researchers also debate whether pterosaurs travelled on the ground by walking on their hind legs, like birds, or by using all fours, relying on their three-toed front feet as well as their four-toed rear feet."
+    },
+    {
+     "text": "Pterosaurs were vertebrates, meaning they were the first species possessing backbones to become airborne, but scientists have never quite understood their flight technique. How, they wondered, did such a heavy creature ever manage to take off? How could a wing that appears to have been supported by fine, hollow bones have carried one into the sky? Then came the discovery of a site in Brazil's Araripe basin. Here, not only were hundreds of fossils of amphibians and other reptiles found, but archaeologists unearthed a number of very well-preserved pterosaurs. The anhanguera — a fish-eating sub-species of pterosaur that ruled the skies in the Cretaceous period — was among them. With a wingspan of up to 12 metres, they would have made an amazing sight in the sky — had any human been there to witness it."
+    },
+    {
+     "text": "'I've been studying pterosaurs for about eight years now,' says Dr Matthew Wilkinson, a professor of zoology at Cambridge University. With an anhanguera fossil as his model, Wilkinson began gradually reconstructing its skeletal structure in his Cambridge studio. The probability of finding three-dimensional pterosaur fossils anywhere is slim. 'That was quite a find,' he says. 'Their bones are usually crushed to dust.' Once the structure was complete, it inspired him to make a robot version as a way to understand the animal's locomotion. With a team of model-makers, he has built a remote-controlled pterosaur in his studio. 'Fossils show just how large these creatures were. I've always been interested in how they managed to launch themselves, so I thought the real test would be to actually build one and fly it.'"
+    },
+    {
+     "text": "Wilkinson hasn't been alone in his desire to recreate a prehistoric beast. Swiss scientists recently announced they had built an amphibious robot that could walk on land and swim in water using the sort of backbone movements that must have been employed by the first creatures to crawl from the sea. But Wilkinson had the added complication of working out his beast's flight technique. Unlike those of bats or flying squirrels, pterosaur wings — soft, stretchy membranes of skin tissue — are thought to have reached from the chest right to the ankle, reinforced by fibres that stiffened the wing and prevented tearing. Smaller subspecies flapped their wings during takeoff. That may have explained the creatures' flexibility, but it did not answer the most pressing question: how did such heavy animals manage to launch themselves into the sky? Working with researchers in London and Berlin, Wilkinson began to piece together the puzzle."
+    },
+    {
+     "text": "It emerged that the anhanguera had an elongated limb called the pteroid. It had previously been thought the pteroid pointed towards the shoulder of the creature and supported a soft forewing in front of the arm. But if that were the case, the forewing would have been too small and ineffectual for flight. However, to the surprise of many scientists, fossils from the Araripe basin showed the pteroid possibly faced the opposite way, creating a much greater forewing that would have caught the air, working in the same way as the flaps on the wings of an aeroplane. So, with both feet on the ground, the anhanguera might have simply faced into the wind, spread its wings and risen up into the sky. Initial trials in wind tunnels proved the point — models of pterosaurs with forward-facing pteroids were not only adept at gliding, but were agile flyers in spite of their size. 'This high-lift capability would have significantly reduced the minimum flight speed, allowing even the largest forms to take off without difficulty,' Wilkinson says. 'It would have enabled them to glide very slowly and may have been instrumental in the evolution of large size by the pterosaurs.'"
+    },
+    {
+     "text": "Resting in the grass at the test site near Cambridge, the robot-model's wings ripple in the wind. In flight, the flexible membrane, while much stiffer than the real thing, allows for a smooth takeoff and landing. But the model has been troubled by other mechanical problems. 'Unlike an aircraft, which is stabilised by the tail wing at the back, the model is stabilised by its head, which is the most problematic bit as far as we're concerned,' Wilkinson says. 'We've had to take it flying without the head attached so far.' When it flies with its head attached, Wilkinson will finally have proved his point."
+    },
+    {
+     "text": "So what's next for the zoologist — perhaps a full-size Tyrannosaurus rex? 'No,' he tells me: 'We're desperate to build really big pterosaurs. We're talking about creatures with even greater wingspans, weighing a quarter of a ton. But,' he adds, just as one begins to fear for the safety and stress levels of pilots landing nearby at Cambridge City Airport, 'it's more likely we'll start off with one of the smaller, flapping pterosaurs.' This is certainly more reassuring. Let's hope he is content to leave it at that."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–L, below.",
+     "title": "How pterosaurs flew",
+     "options": [
+      {
+       "key": "A",
+       "text": "front feet"
+      },
+      {
+       "key": "B",
+       "text": "reptiles"
+      },
+      {
+       "key": "C",
+       "text": "amphibians"
+      },
+      {
+       "key": "D",
+       "text": "weight"
+      },
+      {
+       "key": "E",
+       "text": "flexibility"
+      },
+      {
+       "key": "F",
+       "text": "birds"
+      },
+      {
+       "key": "G",
+       "text": "tail"
+      },
+      {
+       "key": "H",
+       "text": "fish"
+      },
+      {
+       "key": "I",
+       "text": "strength"
+      },
+      {
+       "key": "J",
+       "text": "dinosaurs"
+      },
+      {
+       "key": "K",
+       "text": "hind legs"
+      },
+      {
+       "key": "L",
+       "text": "hair"
+      }
+     ],
+     "template": "Pterosaurs are believed to have existed until the end of the Cretaceous period. They are classed as [[27]] which were capable of flight, although, unlike modern species, they had some [[28]], which is evidence of their having had warm blood. There are two theories as to how they moved on land: perhaps with all their feet or by using their [[29]] only. Another mystery has concerned the ability of the pterosaur to fly despite its immense [[30]], and the fact that the bones making up the wing did not have great [[31]]. Thanks to reptile fossils found in Brazil, we now know that the subspecies known as anhanguera had wings that were 12 metres across and that it mainly survived on [[32]].",
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "B"
+       ],
+       "explanation": "B=reptiles. Pterosaurs were reptiles capable of flight."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "L"
+       ],
+       "explanation": "L=hair. 'at least part of their bodies was covered in hair'"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "K"
+       ],
+       "explanation": "K=hind legs. 'by walking on their hind legs'"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "D"
+       ],
+       "explanation": "D=weight. 'how such a heavy creature ever managed to take off'"
+      },
+      {
+       "n": 31,
+       "answer": [
+        "I"
+       ],
+       "explanation": "I=strength. 'fine, hollow bones' — bones lacked strength"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "H"
+       ],
+       "explanation": "H=fish. 'a fish-eating sub-species of pterosaur'"
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 33,
+       "text": "It is rare to find a fossil of a pterosaur that clearly shows its skeleton.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'The probability of finding three-dimensional pterosaur fossils anywhere is slim. Their bones are usually crushed to dust.'"
+      },
+      {
+       "n": 34,
+       "text": "The reason for building the model was to prove pterosaurs flew for long distances.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The model was built to understand locomotion and how they launched into flight, not to prove long-distance flight."
+      },
+      {
+       "n": 35,
+       "text": "It is possible that pterosaur species achieved their wing size as a result of the pteroid.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'may have been instrumental in the evolution of large size by the pterosaurs'"
+      },
+      {
+       "n": 36,
+       "text": "Wilkinson has made several unsuccessful replicas of the pterosaur's head.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions flying without the head attached, but gives no information about multiple unsuccessful replicas."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 37,
+       "text": "What was Professor Wilkinson's main problem, according to the third paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Early amphibians had a more complex structure than pterosaurs."
+        },
+        {
+         "key": "B",
+         "text": "Pterosaur wings could easily be damaged while on the ground."
+        },
+        {
+         "key": "C",
+         "text": "Flying squirrels and bats were better adapted to flying than pterosaurs."
+        },
+        {
+         "key": "D",
+         "text": "Large pterosaurs were not able to take off like other flying animals."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "The paragraph discusses how heavy pterosaurs managed to take off, which was Wilkinson's key challenge."
+      },
+      {
+       "n": 38,
+       "text": "What did Professor Wilkinson discover about a bone in pterosaurs called a pteroid?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It was in an unexpected position."
+        },
+        {
+         "key": "B",
+         "text": "It existed only in large species of pterosaurs."
+        },
+        {
+         "key": "C",
+         "text": "It allowed pterosaurs to glide rather than fly."
+        },
+        {
+         "key": "D",
+         "text": "It increased the speed pterosaurs could reach in the air."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'fossils showed the pteroid possibly faced the opposite way' — an unexpected direction."
+      },
+      {
+       "n": 39,
+       "text": "According to the writer, the main problem with the remote-controlled 'pterosaur' is that",
+       "options": [
+        {
+         "key": "A",
+         "text": "it has been unable to leave the ground so far."
+        },
+        {
+         "key": "B",
+         "text": "it cannot be controlled when its head is attached."
+        },
+        {
+         "key": "C",
+         "text": "its wing material is not flexible enough."
+        },
+        {
+         "key": "D",
+         "text": "the force of the wind may affect its test results."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'We've had to take it flying without the head attached so far.'"
+      },
+      {
+       "n": 40,
+       "text": "What does 'it' in the last sentence of the passage refer to?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the information the tests have revealed"
+        },
+        {
+         "key": "B",
+         "text": "Wilkinson's sense of achievement"
+        },
+        {
+         "key": "C",
+         "text": "Wilkinson's desire to build models"
+        },
+        {
+         "key": "D",
+         "text": "the comparison between types of models"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Let's hope he is content to leave it at that' — 'it' refers to his desire/ambition to build models."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

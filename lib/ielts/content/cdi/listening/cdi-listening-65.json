@@ -1,0 +1,707 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-65",
+ "title": "CDI Listening Test 65",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer questions 1–10",
+  "Listen and answer questions 11–20",
+  "Listen and answer questions 21–30",
+  "Listen and answer questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-65-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "title": "Eco-farm Tour",
+     "template": "- Dates offered: 6–20 June\n- Name: Helen [[1]]\n- Email address: helen123@ [[2]] .com\n- Home address: [[3]] Road, Sheffield\n- Source of information: [[4]]\n- Membership number: [[5]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Pennington"
+       ],
+       "explanation": "'Helen Pennington. That’s PE double N ING TO NY Thank you, Helen.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "greenfield"
+       ],
+       "explanation": "'That is Helen one two three at Greenfield.com and Greenfield is one word.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "66 Lake",
+        "66Lake"
+       ],
+       "explanation": "'It is sixty six Lake Road, Sheffield.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "Radio"
+       ],
+       "explanation": "'Is it on TV or Actually I heard about you on the radio, and I thought it might be a good place to take my children during the summer holidays. What kind of activities do you have?'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "UK765024EG",
+        "UK 765024EG"
+       ],
+       "explanation": "'Ah, actually it is UK seven six five zero two four E G.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the table below. Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "|   | Recommendations | Customer preferences |\n| Age | From 16 to 62 | Children: 6 and 4 |\n| Accommodation type | lodges | a [[6]] |\n| Accommodation location | Lakeside | Near the farm or in the [[7]] |\n| Food | A wide range of food | Meat, seafood, and [[8]] food |\n| Transport | Train or [[9]] | Ferry and van |\n| Courses | Flower planting courses | Active courses (e.g. a [[10]] course) |",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "flat"
+       ],
+       "explanation": "'Ah okay, that sounds nice. But a lodge is probably too big for us, and I don’t think we have much time and energy for cleaning, so we would like to stay in a flat, preferably near the farm.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "forest"
+       ],
+       "explanation": "'Actually, my daughter would prefer to stay in the forest if possible.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "organic"
+       ],
+       "explanation": "'Yes, that’s the kind of thing we want. I hope you have a wide range of food available. My husband is a meat eater. I like seafood, and my children like organic food, including plenty of vegetables.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "bike"
+       ],
+       "explanation": "'It generally takes about six hours to ride here from Sheffield.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "dance"
+       ],
+       "explanation": "'I was hoping for something a little more energetic to give us more exercise, a dance course, for example.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: This is the IELTS listening test. You will hear a number of different recordings and you will have to answer questions on what you hear.\nA: There will be time for you to read the instructions and questions and you will have a chance to check your work. All the recordings will be played once only. The test is in four parts.\nA: At the end of the test you will be given 10 minutes to transfer your answers to the answer sheet. Now turn to part one.\nA: Part one You will hear a woman telephoning an ecofarm. First you have some time to look at questions one to five.\nA: Now listen carefully and answer questions one to five\nA: Good afternoon Lakeside Eco Farm Mark speaking.\nB: Oh good afternoon. My name is Helen. I was listening to a programme the other day and it said that you are a member of the Northern Hotel Group.\nA: Yes, that’s correct. Are you a member of the group?\nB: Yes I am, and I would like to find out about staying with you for a week during the school holidays.\nA: No problem, Helen. May I have your full name?\nB: Helen Pennington. That’s PE double N ING TO NY Thank you, Helen.\nA: And your email address?\nB: Helen one two three at email dot com. No dashes or underscores. Oh sorry, actually it’s probably better if I give you my work email address which is more convenient for me.\nB: That is Helen one two three at Greenfield.com and Greenfield is one word.\nA: Okay, and your home address.\nB: It is sixty six Lake Road, Sheffield.\nA: May I ask where you heard about us? You mentioned a programme.\nB: Is it on TV or Actually I heard about you on the radio, and I thought it might be a good place to take my children during the summer holidays. What kind of activities do you have?\nA: Well here we have lodges in the woods, a couple of lakes and\nA: Lots of activities and great food, so I’m sure your whole family will love it. I can give you prices for all these. But first could I have your membership number?\nB: Oh yes, I think it’s UK seven six six six six six five zero four two GE. But I will just check. It has been a while since I used it. Just a moment.\nB: Ah, actually it is UK seven six five zero two four E G.\nA: That’s fine, thank you. Before you hear the rest of the conversation, you have some time to look at questions six to ten.\nA: Now listen carefully and answer questions six to ten.\nB: Can you see my information on your system?\nA: Yes, I’ve found you. So regarding accommodation here at Island Eco Farm, for families I recommend our family chalets, as they are large and suitable for both adults and children.\nB: Ah okay, that sounds nice. But a lodge is probably too big for us, and I don’t think we have much time and energy for cleaning, so we would like to stay in a flat, preferably near the farm.\nA: I’m afraid there’s no accommodation near the farm. Would you want to be located near the lake? It’s got a great view.\nB: Actually, my daughter would prefer to stay in the forest if possible.\nA: That’s fine. We have some lovely log cabins with room for four people, which would suit your family.\nB: Yes, that’s the kind of thing we want. I hope you have a wide range of food available. My husband is a meat eater. I like seafood, and my children like organic food, including plenty of vegetables.\nA: Yes, we cater for all different types of diet, so you can get all of those preferences here, don’t worry.\nB: Great. So what is the transport situation? Can we get there by ferry or van, for instance?\nA: No, the best way is by train. There’s a regular service from Sheffield, or there is a bike trail all the way here.\nA: It generally takes about six hours to ride here from Sheffield.\nB: That sounds good, but it might be difficult with our luggage. It’s a pity you don’t have vans or ferry boats. But I think we will take the train. So what activities do you have there?\nA: We have a gardening course on planting flowers. Would that be suitable?\nB: I was hoping for something a little more energetic to give us more exercise, a dance course, for example.\nA: Hm that is something guests requested in the past, but it’s not something we are doing at the moment. I will bear that in mind for the future though.\nB: Okay, that would be great. I need to get back to work, so can you email me through the prices and all the details?\nA: Certainly. I’ll send all the details through to your work email address right now.\nB: Great, thank you.\nA: You’re welcome, and we hope to see you here at Lakeside Eco Farm soon."
+  },
+  {
+   "id": "cdi-listening-65-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "How much should visitors tip taxi drivers on the island?",
+       "options": [
+        {
+         "key": "A",
+         "text": "as much as they feel right"
+        },
+        {
+         "key": "B",
+         "text": "no tip at all"
+        },
+        {
+         "key": "C",
+         "text": "10% tip"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'If you take a taxi, there is no set rate on how much you should leave to the driver. Someone may give a generous tip if he thinks the service is fantastic. It’s up to you entirely.'"
+      },
+      {
+       "n": 12,
+       "text": "What is mentioned about the medical service on the island?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It will be charged."
+        },
+        {
+         "key": "B",
+         "text": "Visitors should contact their insurance company."
+        },
+        {
+         "key": "C",
+         "text": "Visitors have to find the hotel doctor."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'I should remind you that the medical service on the island can be pricey, so it’s better to buy your insurance before you leave.'"
+      },
+      {
+       "n": 13,
+       "text": "The tour guide says the tap water",
+       "options": [
+        {
+         "key": "A",
+         "text": "contains no mineral."
+        },
+        {
+         "key": "B",
+         "text": "is unsafe."
+        },
+        {
+         "key": "C",
+         "text": "has an unusual taste."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'When you visit Moon Island, you’ll see the notice nearly everywhere. Tap water is safe to drink, but you might not get used to its weird taste because it contains minerals.'"
+      },
+      {
+       "n": 14,
+       "text": "What point is made about bottled water?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is expensive."
+        },
+        {
+         "key": "B",
+         "text": "The bottle is not always sealed."
+        },
+        {
+         "key": "C",
+         "text": "It isn't sold everywhere."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'In this case you can buy bottled water sold in every shop, but you’d better make sure the sealed lid is untouched, as the locals often put tap water into the bottle.'"
+      },
+      {
+       "n": 15,
+       "text": "What feature is mentioned about the bus on the island?",
+       "options": [
+        {
+         "key": "A",
+         "text": "frequent"
+        },
+        {
+         "key": "B",
+         "text": "not punctual"
+        },
+        {
+         "key": "C",
+         "text": "not comfortable"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'As a result, it’s not a good choice if you want to sit peacefully and relax on the way. And another thing is, before you jump on the bus, inquire of the driver about where the bus will go.'"
+      },
+      {
+       "n": 16,
+       "text": "How can visitors know the destination of the bus on the island?",
+       "options": [
+        {
+         "key": "A",
+         "text": "find it in front of the bus"
+        },
+        {
+         "key": "B",
+         "text": "check it with the driver"
+        },
+        {
+         "key": "C",
+         "text": "find it at the bus stop"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Unlike most cities, here in Moon Island, you cannot find the destination shown in front of the bus or at the bus stop. Maybe you found the bus service is not so enjoyable.'"
+      },
+      {
+       "n": 17,
+       "text": "What does the tour guide advise visitors to do before renting a car?",
+       "options": [
+        {
+         "key": "A",
+         "text": "find a taxi company"
+        },
+        {
+         "key": "B",
+         "text": "go to the hotel reception"
+        },
+        {
+         "key": "C",
+         "text": "compare the price in advance"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'It’s wise to compare several car rental companies online beforehand, as the price may vary a lot. Booking via hotel may be overcharged.'"
+      },
+      {
+       "n": 18,
+       "text": "When they rent a car, it's important for visitors to know",
+       "options": [
+        {
+         "key": "A",
+         "text": "the mileage is limited."
+        },
+        {
+         "key": "B",
+         "text": "what is included in the price."
+        },
+        {
+         "key": "C",
+         "text": "fuel is included in the price."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'More importantly, don’t forget to check with the company what the price covers in detail, like daily rental expenses, car insurance, commission, etc.'"
+      },
+      {
+       "n": 19,
+       "text": "How can visitors find a taxi easily?",
+       "options": [
+        {
+         "key": "A",
+         "text": "call the taxi company"
+        },
+        {
+         "key": "B",
+         "text": "look for a taxi in advance"
+        },
+        {
+         "key": "C",
+         "text": "stop a taxi on the street"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'The easiest way is just waving your hands on the street to stop the taxi. Otherwise, the driver will drive away directly after he drops off the guess.'"
+      },
+      {
+       "n": 20,
+       "text": "What is suggested by the tour guide about the taxi fee?",
+       "options": [
+        {
+         "key": "A",
+         "text": "make sure no extra money is asked"
+        },
+        {
+         "key": "B",
+         "text": "check what is included in the fee"
+        },
+        {
+         "key": "C",
+         "text": "agree the price with the driver in advance"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'For example, if you take a taxi from the airport at night, it may cost you. So confirm the price before you get in. Okay, that’s all about the tip.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "B: Thanks, goodbye.\nA: That is the end of part one. You now have one minute to check your answers to part one.\nC: Part 2 You will hear an introduction from a tour guide about suggestions for an island. First, you have some time to look at questions 11 to 14.\nC: Now listen carefully and answer questions eleven to fourteen.\nB: Hello everyone, I’m Hazel, the guide from Travel Light Agency.\nB: Since we mentioned the trip to Moona Island in the last programme, we’ve received several online messages from those who have been there.\nD: As a result, we’ve collected some helpful do’s and don’ts for new visitors, which will hopefully help you to know the island better and enjoy your stay to the fullest.\nD: The first suggestion is about tips. Although tipping is required in most circumstances in Moona Island, the amount you should give differs significantly.\nD: If you take a taxi, there is no set rate on how much you should leave to the driver. Someone may give a generous tip if he thinks the service is fantastic. It’s up to you entirely.\nD: However, if you go to the hairdressers or enjoy a meal in the restaurant and the bill comes with no service charge, a 10% tip is advisable.\nD: Moona Island has got relatively good medical service. If you get sick, the quickest way is to ask the hotel to arrange an English speaking doctor for you.\nD: But remember it’s not a complimentary service. The other alternative is to visit the local clinic, and you have to prepare for the charge as well.\nD: I should remind you that the medical service on the island can be pricey, so it’s better to buy your insurance before you leave.\nD: When you visit Moon Island, you’ll see the notice nearly everywhere. Tap water is safe to drink, but you might not get used to its weird taste because it contains minerals.\nD: In this case you can buy bottled water sold in every shop, but you’d better make sure the sealed lid is untouched, as the locals often put tap water into the bottle.\nC: Before you hear the rest of the talk, you have some time to look at questions fifteen to twenty.\nC: Now listen and answer questions fifteen to twenty.\nD: Then I’ll focus on transportation in Moon Island. The bus is the most commonly used means of transportation for local residents.\nD: Although there aren’t many bus lines, they’re always on time. However, some people complained that the road was so bumpy that they even got nausea and dizziness.\nD: As a result, it’s not a good choice if you want to sit peacefully and relax on the way. And another thing is, before you jump on the bus, inquire of the driver about where the bus will go.\nD: Unlike most cities, here in Moon Island, you cannot find the destination shown in front of the bus or at the bus stop. Maybe you found the bus service is not so enjoyable.\nD: In that case, you can always rent a car. If you choose this way, I advise you to prepare well beforehand.\nD: Although some taxi companies provide car rental services, many visitors sometimes find nobody answering the phone, so leave this way when you are in a hurry.\nD: It’s wise to compare several car rental companies online beforehand, as the price may vary a lot. Booking via hotel may be overcharged.\nD: As it contains a 10% commission, so it’s also not advisable.\nD: More importantly, don’t forget to check with the company what the price covers in detail, like daily rental expenses, car insurance, commission, etc.\nD: It usually includes unlimited mileage too, but fuel is excluded.\nD: If you don’t want to drive, a taxi is the quickest and most comfortable way, although few are available on Moon Island.\nD: If you want to find a taxi quickly, it’s not a good idea to reserve through the taxi company, as sometimes you’ll have quite a wait, especially in the rush hour.\nD: The easiest way is just waving your hands on the street to stop the taxi. Otherwise, the driver will drive away directly after he drops off the guess.\nD: Oh, another thing is, I have to remind you that there is no meter for taxis in Moon Island, so before you jump in the taxi, you’d better negotiate with the driver about how much you’re going to pay.\nD: For example, if you take a taxi from the airport at night, it may cost you. So confirm the price before you get in. Okay, that’s all about the tip.\nD: Moona Island that I want to share today. And are there any questions?\nC: That is the end of part two. You now have half a minute to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-65-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What is the topic of the research?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the effect of music on consumers"
+        },
+        {
+         "key": "B",
+         "text": "the effect of music on eating"
+        },
+        {
+         "key": "C",
+         "text": "the effect of music on the price of food"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Part three You will hear two students called Jeanie and Dan discussing some research on the effects of music on consumer behavior.'"
+      },
+      {
+       "n": 22,
+       "text": "The research finds out in the restaurant",
+       "options": [
+        {
+         "key": "A",
+         "text": "the music is played everywhere."
+        },
+        {
+         "key": "B",
+         "text": "the music is played at a uniform volume level."
+        },
+        {
+         "key": "C",
+         "text": "the music is played at a certain time."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'They all have a special section to play the music. More importantly, although the music is played at different times, the volume is unchanged. Sounds attractive. I’ve never read anything about this before.'"
+      },
+      {
+       "n": 23,
+       "text": "The first few questions in the questionnaire are",
+       "options": [
+        {
+         "key": "A",
+         "text": "to understand people's taste in music."
+        },
+        {
+         "key": "B",
+         "text": "to clarify the research aim."
+        },
+        {
+         "key": "C",
+         "text": "to disguise the purpose of the survey."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'These early questions don’t involve musical preferences, but largely act as distractors, the intention being that subjects will be less inclined to think that the survey is about the music being played.'"
+      },
+      {
+       "n": 24,
+       "text": "The questions in the questionnaire came from",
+       "options": [
+        {
+         "key": "A",
+         "text": "a previous study."
+        },
+        {
+         "key": "B",
+         "text": "a professional dictionary."
+        },
+        {
+         "key": "C",
+         "text": "the student herself."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'I came across it when I was looking something up in the dictionary. Oh, you’re so lucky. Is there any other question included in the questionnaire? Yes. Subjects are also asked why they choose to dine at a particular…'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO are the main reasons given for choosing a restaurant?",
+     "options": [
+      {
+       "key": "A",
+       "text": "competitors nearby"
+      },
+      {
+       "key": "B",
+       "text": "environment"
+      },
+      {
+       "key": "C",
+       "text": "transport facilities"
+      },
+      {
+       "key": "D",
+       "text": "service"
+      },
+      {
+       "key": "E",
+       "text": "seat capacity"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "'Only about twelve percent of them have chosen this reason, while the majority of respondents think whether they will pick this restaurant depends on how many available seats it has.' 'What I find interesting, however, is that a large percentage of people say they will compare different restaurants in the neighborhood on the internet first.'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "'Only about twelve percent of them have chosen this reason, while the majority of respondents think whether they will pick this restaurant depends on how many available seats it has.' 'What I find interesting, however, is that a large percentage of people say they will compare different restaurants in the neighborhood on the internet first.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What is people’s attitude toward playing each of the following music in restaurants? Choose FOUR answers from the box and write the correct letter, A–F, next to questions 27–30.",
+     "options": [
+      {
+       "key": "A",
+       "text": "People will spend more money in the restaurant."
+      },
+      {
+       "key": "B",
+       "text": "People don’t even notice the music."
+      },
+      {
+       "key": "C",
+       "text": "People will come back again."
+      },
+      {
+       "key": "D",
+       "text": "People don’t think the restaurant is worth the price."
+      },
+      {
+       "key": "E",
+       "text": "People will leave the restaurant right after eating."
+      },
+      {
+       "key": "F",
+       "text": "People don’t like the restaurant at all."
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "no music",
+       "answer": [
+        "D"
+       ],
+       "explanation": "'The results shows that music has become an indispensable part of restaurants. If people find there isn’t any music during the meal, they will think the restaurant charges too much.'"
+      },
+      {
+       "n": 28,
+       "text": "jazz",
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Most people think that if jazz is being played when eating, they tend to stay at the restaurant longer and order more food to enjoy the music. But this is quite the opposite of what happens when classical music is played.'"
+      },
+      {
+       "n": 29,
+       "text": "classical music",
+       "answer": [
+        "E"
+       ],
+       "explanation": "'Many customers think if the restaurant plays classical music'"
+      },
+      {
+       "n": 30,
+       "text": "pop music",
+       "answer": [
+        "C"
+       ],
+       "explanation": "'It’s very popular these days, especially among young people, as I’ve noticed in restaurants. They like listening to this type of music during their meals.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "D: Part three You will hear two students called Jeanie and Dan discussing some research on the effects of music on consumer behavior.\nD: First, you have some time to look at questions twenty one to twenty six.\nD: Now listen carefully and answer questions twenty one to twenty six.\nD: Hi Dan, how’s it going? Hello, Jeanie. Pretty well, thanks. Have you finished your research yet? Yes, it’s all done.\nD: I’ve spent several weeks on it, from the very beginning of deciding the topic to carrying out the research and writing the essay. Congratulations. Seems like a big project.\nD: I know the research is to do with music, but what is it exactly about?\nD: Well, at first I didn’t have a specific purpose until one day I read a report that said if appropriate music is played while people are eating, it may cause some changes in their behavior, but the report didn’t illustrate the changes in detail.\nD: So I wanted to carry out a thorough investigation into this. That’s quite unique. So how did you conduct your research?\nD: I started by looking for five different restaurants and then went to each of the restaurants to order some food and observe other people.\nD: I mainly focused on how the music is played instead of how people eat. Findings of my observations indicate that the five restaurants have something in common.\nD: They all have a special section to play the music. More importantly, although the music is played at different times, the volume is unchanged. Sounds attractive. I’ve never read anything about this before.\nD: In addition to observation, what other research methods have you used? I also distributed the survey questionnaire to people dining there. What questions are posed in your questionnaire?\nD: Well, the first section of the questionnaire asks subjects to indicate the number of times they have been to the restaurant previously, the number of people they dine with, and whether they think they will return to the restaurant.\nD: These early questions don’t involve musical preferences, but largely act as distractors, the intention being that subjects will be less inclined to think that the survey is about the music being played.\nD: That sounds very reasonable. Did you design the questionnaire by yourself? Actually no. I read an assignment a student wrote last year which was just kept beside a dictionary in the library.\nD: I came across it when I was looking something up in the dictionary. Oh, you’re so lucky. Is there any other question included in the questionnaire? Yes. Subjects are also asked why they choose to dine at a particular restaurant.\nD: Several reasons are listed in the questionnaire. I thought people would put service first. But that’s not the case.\nD: Only about twelve percent of them have chosen this reason, while the majority of respondents think whether they will pick this restaurant depends on how many available seats it has.\nD: They think it’s terrible to eat in a crowded place. Yes. Everyone wants to enjoy a meal comfortably. Then I guess maybe the location of a restaurant is an important factor, since no one likes to waste too much time on the way. It used to be.\nD: But nowadays nearly every household has a private car, so they don’t have to be worried about the traffic problem.\nD: What I find interesting, however, is that a large percentage of people say they will compare different restaurants in the neighborhood on the internet first.\nD: If one of them stands out from its rivals, they will choose it. Wow, it’s really interesting.\nD: Before you hear the rest of the discussion, you have some time to look at questions twenty seven to thirty.\nD: Now listen and answer questions twenty seven to thirty. What else then?\nD: Well, the second section of the questionnaire asks subjects to respond to the music being played by rating, so that the relationship between music and perceived atmosphere could be examined directly.\nD: As a means of examining purchase intention, the final section of the questionnaire asks them to indicate the maximum amount of money they are prepared to spend on their main meal.\nD: So what have you finally discovered? I collected all the questionnaires and analyzed people’s answers to get a clear idea of their reactions to different music conditions.\nD: The results shows that music has become an indispensable part of restaurants. If people find there isn’t any music during the meal, they will think the restaurant charges too much.\nD: Yes, now music is everywhere in our life. Is there any difference in people’s attitudes towards different musical styles? Yes.\nD: Most people think that if jazz is being played when eating, they tend to stay at the restaurant longer and order more food to enjoy the music. But this is quite the opposite of what happens when classical music is played.\nD: Many customers think if the restaurant plays classical music\nD: They wouldn’t like to stay there for another minute, but to finish the food quickly and hurry away, because they don’t like this type of music at all. And lastly about pop music.\nD: It’s very popular these days, especially among young people, as I’ve noticed in restaurants. They like listening to this type of music during their meals.\nD: As a result, this greatly increases the possibility of their presence at the same restaurant. Great. I’ve learned a lot from your research. I think is meaningful and innovative. Thanks for telling me Jeannie. You’re welcome, Dan\nD: That is the end of part three. You now have thirty seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-65-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "title": "Life on the International Space Station",
+     "template": "Background\n- Station was occupied by international teams of scientists over several months.\n- Research was done on living conditions.\nEarly impressions\n- The air smelt [[31]]\n- The temperature was easy to adjust.\n- The food had enough [[32]]\n- [[33]] was efficient\nProblems\n- Difficulties with air filters caused lack of [[34]]\n- It was difficult to keep cabin objects secure.\n- Systems were incompatible — e.g. there were problems when mixing [[35]] because of the preservatives\n- The [[36]] available were not always suitable for their purpose\n- It was difficult to access the [[37]] for equipment maintenance\nSuggested improvements\n- Systems and equipment should undergo more extensive [[38]]\n- In language training, astronauts needed practice in understanding the controller’s [[39]]\n- There should be less emphasis on [[40]] and more on other issues",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "fresh"
+       ],
+       "explanation": "'They’d expected that the air would smell stale or artificial, but the astronauts found that it was fresh. So that was one very positive finding.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "variety"
+       ],
+       "explanation": "'The feedback on the food was also positive. Astronauts on previous space stations had described the meals as boring, but the International Space Station meals were praised for their variety.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "communication"
+       ],
+       "explanation": "'And something which is taken for granted today, but was a key morale booster in those days was communication between the space station and Earth, which the astronauts said was clear and reliable.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "sleep"
+       ],
+       "explanation": "'Above all, the crew complained about the constant noise caused by the air filters, which used to rattle and buzz 24 hours a day, interrupting their sleep.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "water"
+       ],
+       "explanation": "'For example, it was impossible to mix the water produced from different systems because it contained different sorts of preservatives, and these reacted together and blocked the pipes.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "tools"
+       ],
+       "explanation": "'At the best of times, these took up an inordinate amount of time on the station, and the crew complained that many of the tools that they’d been provided with weren’t suitable for the jobs they had to do.'"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "instructions"
+       ],
+       "explanation": "'Because the instructions on the equipment were often located in places where they were difficult to read, like on the back of equipment, it was often difficult or impossible to read them.'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "testing"
+       ],
+       "explanation": "'First, it became clear that although there had been a great deal of consultation with the crews, the systems and equipment on the space station needed much more wide ranging testing.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "accent"
+       ],
+       "explanation": "'Now, although they’d had extensive language training, the astronauts sometimes had problems comprehending what was said because they weren’t familiar with the accent of the speaker.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "safety"
+       ],
+       "explanation": "'Finally, and this is the point I found most surprising, the researchers felt that the designers of the space station were paying too much attention to safety rather than considering operating issues.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "C: Part four You will hear an engineering student giving a presentation about a research project on design features of the International Space Station.\nB: First, you have some time to look at questions 31 to 40.\nB: Now listen carefully and answer questions thirty one to forty.\nD: For my presentation, I’m going to summarize the findings of a research project on life aboard the International Space Station in the early days of its operation, its teething problems as it were.\nD: I’ll start by giving a little background information. The space station crew were essentially a constantly changing team of scientists from different countries who lived on the space station for several months at a time.\nD: And they conducted a number of experiments, including some studies of living conditions in space, which is what I’m going to be looking at now.\nD: So, what was life like on board in the very confined conditions of the space station? Well, the early impressions recorded by the astronauts were very different from what people had expected.\nD: They’d expected that the air would smell stale or artificial, but the astronauts found that it was fresh. So that was one very positive finding.\nD: And although they were in such a confined space and people worried that it would get very hot, in fact, they found that it was very easy to turn the temperature up or down in order to keep it within a comfortable range.\nD: The feedback on the food was also positive. Astronauts on previous space stations had described the meals as boring, but the International Space Station meals were praised for their variety.\nD: So that was another good piece of feedback.\nD: And something which is taken for granted today, but was a key morale booster in those days was communication between the space station and Earth, which the astronauts said was clear and reliable.\nD: So in the early days it seems that the mood was overall very positive.\nD: However, after a few days, the difficulties and frustrations became clearer.\nD: Above all, the crew complained about the constant noise caused by the air filters, which used to rattle and buzz 24 hours a day, interrupting their sleep.\nD: As well as that, the astronauts complained that the Velcro fasteners, which were positioned all over the station didn’t work well. And so a lot of the time, objects weren’t secure in the cabin but floated about.\nD: A particularly serious problem was that the systems used on the space station had been developed in a number of different countries and they didn’t always work well together.\nD: For example, it was impossible to mix the water produced from different systems because it contained different sorts of preservatives, and these reacted together and blocked the pipes.\nD: Another problem was connected to repairs.\nD: At the best of times, these took up an inordinate amount of time on the station, and the crew complained that many of the tools that they’d been provided with weren’t suitable for the jobs they had to do.\nD: So they had to improvise, which meant that jobs took a lot longer than they needed to. Another related problem was to do with access to equipment that needed maintaining.\nD: Because the instructions on the equipment were often located in places where they were difficult to read, like on the back of equipment, it was often difficult or impossible to read them.\nD: So, having identified these problems, the researchers came up with a number of suggestions about how conditions could be improved on subsequent missions.\nD: First, it became clear that although there had been a great deal of consultation with the crews, the systems and equipment on the space station needed much more wide ranging testing.\nD: Then the whole issue of language training came under review. Astronauts from different countries had to be able to talk to the controllers on Earth and to understand them.\nD: Now, although they’d had extensive language training, the astronauts sometimes had problems comprehending what was said because they weren’t familiar with the accent of the speaker.\nD: And this sometimes led to quite dangerous misunderstandings.\nD: Finally, and this is the point I found most surprising, the researchers felt that the designers of the space station were paying too much attention to safety rather than considering operating issues.\nD: That is, how the station could be run comfortably and smoothly. And the recommendation was to make changes here at quite a fundamental level. So those were the main points I covered in the\nD: That is the end of part four. You now have one minute to check your answers to part four."
+  }
+ ],
+ "audio": {
+  "file": "listening-65.mp3",
+  "durationSec": 1660,
+  "partStarts": [
+   0,
+   374,
+   840,
+   1297
+  ],
+  "questionTimes": {
+   "1": 107,
+   "2": 129,
+   "3": 140,
+   "4": 148,
+   "5": 186,
+   "6": 253,
+   "7": 272,
+   "8": 283,
+   "9": 318,
+   "10": 339,
+   "11": 483,
+   "12": 532,
+   "13": 543,
+   "14": 557,
+   "15": 639,
+   "16": 653,
+   "17": 690,
+   "18": 709,
+   "19": 751,
+   "20": 779,
+   "21": 840,
+   "22": 979,
+   "23": 1020,
+   "24": 1046,
+   "25": 1069,
+   "26": 1104,
+   "27": 1199,
+   "28": 1220,
+   "29": 1235,
+   "30": 1253,
+   "31": 1421,
+   "32": 1445,
+   "33": 1461,
+   "34": 1490,
+   "35": 1525,
+   "36": 1540,
+   "37": 1567,
+   "38": 1589,
+   "39": 1612,
+   "40": 1629
+  }
+ }
+}

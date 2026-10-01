@@ -7,6 +7,7 @@ import { useDeadline, useLeaveGuard } from "./use-exam";
 import type { WritingEssays, WritingExamRunnerProps } from "./types";
 import { Task1Chart } from "@/components/learning/task1-chart";
 import type { WritingPrompt } from "@/lib/writing-data";
+import { task1ImageAlt } from "@/lib/writing-visual";
 import { cn } from "@/lib/utils";
 
 /**
@@ -279,7 +280,7 @@ const TaskPrompt = memo(function TaskPrompt({ n, prompt, minutes, showType }: Ta
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={image}
-            alt={`Writing Task 1 visual: ${prompt.title}`}
+            alt={task1ImageAlt(prompt)}
             decoding="async"
             className="mx-auto h-auto max-h-[70vh] w-auto max-w-full"
           />

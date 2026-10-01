@@ -1,0 +1,742 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-49",
+ "title": "CDI Reading Test 49",
+ "description": "A full Academic Reading test from the CDI practice materials: Save the Turtles; Marketing and Mind Control; Revolutions in Mapping.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Save the Turtles",
+  "Marketing and Mind Control",
+  "Revolutions in Mapping"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Save the Turtles",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Leatherback turtles follow the general sea turtle body plan of having a large, flattened, round body with two pairs of very large flippers and a short tail. Like other sea turtles, the leatherback’s flattened forelimbs are adapted for swimming in the open ocean. Claws are absent from both pairs of flippers. The leatherback’s front flippers can grow up to 2.7 metres in large specimens — the largest flippers of any sea turtle. As the last surviving member of its family, the leatherback turtle has several distinguishing characteristics that differentiate it from other sea turtles. Its most notable feature is that it lacks the bony carapace of the other extant sea turtles."
+    },
+    {
+     "label": "B",
+     "text": "During the past month, four turtles have washed up along Irish coasts from Wexford to Kerry. These turtles are more typical of warmer waters and only occur in Irish waters when they stray off course. It is likely that they may have originated from Florida, America. Two specimens have been taken to Coastal and Marine Resources Centre, University College Cork, where a necropsy will be conducted to establish their age, sex and exact origin. During this same period, two leatherback turtles were found in Scotland, and a rare Kemp’s Ridley turtle was found in Wales, making it an exceptional month for stranded turtles in Ireland and the UK."
+    },
+    {
+     "label": "C",
+     "text": "There has been extensive research conducted regarding the sea turtles’ abilities to return to their nesting regions and sometimes exact locations from hundreds of miles away. In the water, their path is greatly affected by powerful currents. Despite their limited vision, and lack of landmarks in the open water, turtles are able to retrace their migratory paths. Some explanations of this phenomenon have found that sea turtles can detect the angle and intensity of the earth’s magnetic fields."
+    },
+    {
+     "label": "D",
+     "text": "Loggerhead turtles are not normally found in Irish waters, because water temperatures here are far too cold for their survival. Instead, adult loggerheads prefer the warmer waters of the Mediterranean, the Caribbean and North America’s east coast. The four turtles that were found have probably originated from the North American population of loggerheads. It is thought that after leaving their nesting beach as hatchlings, these tiny turtles enter the North Atlantic Gyre — a giant circular ocean current — that takes them from America, across to Europe, down towards North Africa, before being transported back again to America via a different current. This remarkable round trip may take many years during which these tiny turtles grow by several centimetres a year. Loggerheads may circulate around the North Atlantic several times before they settle in the coastal waters of Florida or the Caribbean."
+    },
+    {
+     "label": "E",
+     "text": "These four turtles were probably on their way around the Atlantic when they strayed a bit too far north from the Gulf Stream. Once they did, their fate was sealed, as the cooler waters of the North East Atlantic are too cold for loggerheads. Once in cool waters, the body of a loggerhead begins to shut down as they get ‘cold stunned’, then get hypothermia and die."
+    },
+    {
+     "label": "F",
+     "text": "Leatherbacks are in imminent danger of extinction. A critical factor is the harvesting of eggs from nests. Valued as a food delicacy, leatherback eggs are falsely touted to have aphrodisiacal properties in some cultures. The leatherback, unlike the Green Sea turtle, is not often killed for its meat; however, the increase in human populations coupled with the growing black market trade has escalated their egg depletion. Other critical factors causing the leatherbacks’ decline are pollution such as plastics, fishing practices such as longline fishing and gill nets, and development on habitat areas. Scientists have estimated that there are only about 35,000 leatherback turtles in the world."
+    },
+    {
+     "label": "G",
+     "text": "We are often unable to understand the critical impact a species has on the environment — that is, until that species becomes extinct. Some scientists now speculate that the leatherback may play an important role in the recovery of diminishing fish populations. Since the leatherback consumes its weight in jellyfish per day, it helps to keep jellyfish populations in check. Jellyfish consume large quantities of fish larvae. The rapid decline in leatherback populations over the last 50 years has been accompanied by a significant increase in jellyfish and a marked decrease in fish in our oceans. Saving sea turtles is an international endeavor."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Choose the most suitable headings for paragraphs B–G from the list below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Sea turtles are found in unusual locations"
+      },
+      {
+       "key": "ii",
+       "text": "Unique features of the leatherbacks"
+      },
+      {
+       "key": "iii",
+       "text": "The leatherback's contribution"
+      },
+      {
+       "key": "iv",
+       "text": "Methods used for route tracking"
+      },
+      {
+       "key": "v",
+       "text": "Predicting the migration routes"
+      },
+      {
+       "key": "vi",
+       "text": "Variety multiplicity within the species"
+      },
+      {
+       "key": "vii",
+       "text": "The progress of hatching"
+      },
+      {
+       "key": "viii",
+       "text": "The fate of the lost turtles"
+      },
+      {
+       "key": "ix",
+       "text": "How trips are supposed to look"
+      },
+      {
+       "key": "x",
+       "text": "Factors leading to population decline"
+      }
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "text": "Paragraph B",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Para B: four turtles washed up on Irish coasts — sea turtles found in unusual locations."
+      },
+      {
+       "n": 2,
+       "text": "Paragraph C",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Para C: turtles detect earth’s magnetic fields to navigate — methods used for routes tracking."
+      },
+      {
+       "n": 3,
+       "text": "Paragraph D",
+       "answer": [
+        "ix"
+       ],
+       "explanation": "Para D: describes the North Atlantic Gyre circular migration route — how trips are supposed to look."
+      },
+      {
+       "n": 4,
+       "text": "Paragraph E",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Para E: turtles stray north, get cold stunned and die — the fate of the lost turtles."
+      },
+      {
+       "n": 5,
+       "text": "Paragraph F",
+       "answer": [
+        "x"
+       ],
+       "explanation": "Para F: egg harvesting, pollution, fishing — factors leading to population decline."
+      },
+      {
+       "n": 6,
+       "text": "Paragraph G",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Para G: leatherbacks control jellyfish, which helps fish — the leatherback’s contribution."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "template": "How many leatherback turtles are estimated to exist in the world? [[7]]\nWhat is the most noticeable difference between leatherbacks and other sea turtles? [[8]]\nWhat happens to loggerhead turtles in Irish waters that causes them to die? [[9]]\nWhere did the four loggerhead turtles probably originate from? [[10]]\nBy detecting what can sea turtles retrace their migratory paths? [[11]]\nFor what purpose do people kill Green Sea turtles? [[12]]\nWhich species benefits from a decline in leatherback turtle populations? [[13]]",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "about 35,000"
+       ],
+       "explanation": "'Scientists have estimated that there are only about 35,000 leatherback turtles in the world.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "bony carapace"
+       ],
+       "explanation": "'its most notable feature is that it lacks the bony carapace of the other extant sea turtles.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "cold stunned"
+       ],
+       "explanation": "'the body of a loggerhead begins to shut down as they get cold stunned, then get hypothermia and die.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "North America"
+       ],
+       "explanation": "'The four turtles that were found have probably originated from the North American population of loggerheads.'"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "earth's magnetic fields"
+       ],
+       "explanation": "'sea turtles can detect the angle and intensity of the earth’s magnetic fields.'"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "its meat"
+       ],
+       "explanation": "'the leatherback, unlike the Green Sea turtle, is not often killed for its meat' — implying Green Sea turtles ARE killed for meat."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "jellyfish"
+       ],
+       "explanation": "'The rapid decline in leatherback populations... has been accompanied by a significant increase in jellyfish.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Marketing and Mind Control",
+   "paragraphs": [
+    {
+     "text": "How marketing and advertising appeal to the associative nature of the brain"
+    },
+    {
+     "text": "While there had been a long tradition of giving rings as a commitment to marry, the custom of giving diamond engagement rings was in large part manufactured by one of the most effective marketing campaigns in history. In the early 1900s, diamond sales were declining, posing a serious problem for the company that essentially had control over the diamond market. In 1938, this company hired an advertising agency, which proposed reshaping social attitudes toward diamonds. As well as magazines showing film stars draped in diamonds, the agency arranged for movies to incorporate diamond engagement rings into their plots. The campaign culminated with the slogan: ‘A diamond is forever.’ Rather than pushing a brand, the objective was to promote diamonds as the symbol of everlasting love. This was achieved by exploiting the associative nature of the brain: associating neurons activated by the concept of ‘love’ with neurons that encoded the concept of diamonds. By 1941, diamond sales had increased by 55%."
+    },
+    {
+     "text": "Advertising comes in many forms, from blatant neon signs to subtly embedded products in movies. In each case, the goal is to mould our habits, desires and opinions. Our visual system is targeted by an avalanche of information on the internet, street posters, and billboards. Our auditory system submits to catchy radio jingles and telemarketers. More surreptitiously, our olfactory system is targeted by variations of vanilla and citrus perfumes aimed at enticing us to linger in a retail outlet. It is difficult to measure how effective these campaigns are, but as in the ‘A diamond is forever’ campaign, they can be so successful that they change the fabric of our culture."
+    },
+    {
+     "text": "In the case of bottled water, we are swayed by advertising into paying for something that we can obtain for free. Most people cannot distinguish bottled from tap water, much less between brands of bottled water, which is why you rarely hear of a bottled water company proposing a blind taste test. So why is marketing such an effective mind-control technique?"
+    },
+    {
+     "text": "It is interesting to consider whether other animals exhibit anything analogous to humans’ susceptibility to advertising. If we provide a lab rat with two types of cereal, it will consume approximately the same amount of each. However, if we put that rat with another rat that spent its day eating just one type, when faced with a choice, our rat will now show a preference for the same type as the other rat was eating. Psychologists call this ‘socially transmitted food preference’."
+    },
+    {
+     "text": "What many regard as the first documented examples of cultural learning in primates started with a clever monkey that lived in a colony of Japanese monkeys on the island of Koshima. She began taking her dirt-covered sweet potatoes to the river to wash them before eating them. Upon seeing this, a few other open-minded monkeys picked up on the idea. Potato washing then spread from monkey to monkey and, over the course of a few years, most monkeys were eating clean potatoes."
+    },
+    {
+     "text": "Humans are clearly not the only animals to engage in imitation and social learning. Learning by observation can be an extraordinarily valuable brain feature; this is how we learn to communicate and perform motor skills as well as deal with many everyday problems. For example, a newcomer struggling to purchase tickets and navigate the subway system in a foreign city may step back to learn from the people nearby. Humans and other primates exhibit multiple forms of imitative learning and this is called cultural transmission."
+    },
+    {
+     "text": "A component of advertising relies on the marketer’s ability to tap into the brain’s propensity for imitation. Anybody who has watched TV knows advertisements are disproportionately populated with attractive, successful looking individuals. If we are going to imitate someone, we are more inclined to imitate those who appear to be popular and appealing. Although not all researchers are convinced by the findings, a number of studies indicate that some animals also imitate dominant members of their group."
+    },
+    {
+     "text": "Primatologist Frans de Waal provides anecdotal evidence of preferential imitation among chimpanzees. He noted that in one particular group the dominant male was hurt and was limping as a result. Soon afterwards many other males in the group were also limping — something very unlikely if a non-dominant male had been injured."
+    },
+    {
+     "text": "Imitation is undoubtedly an invaluable ability, but often our propensity to imitate generalises indiscriminately, leading to poor decisions. When athlete Dick Fosbury revolutionised the high jump by jumping over the bar backward in 1968, imitators obviously copied his jumping style, not his brand of sports shoes. However, today, sports people appear in advertisements asking us to buy the laptops or sports drinks that they promote. Rationally, we know these people’s success did not depend on these products, so it seems our propensity to purchase products relates more to neural programs that evolved to encourage imitation of those further up the social ladder."
+    },
+    {
+     "text": "Today, companies engage in stealth marketing campaigns in which people are paid to frequent bars or websites to covertly promote certain products. Companies also perform studies in which they track the eye movements of people viewing displays, and carefully craft names, packages and jingles associated with their products. While we may like to believe that manipulation on a grand scale would not be possible, that’s not to say that advertising is innately harmful. To the contrary, the marketing of products or ideas is essential to human culture. The point is that we should ensure our choices reflect our actual goals and desires, and we must distinguish between the dissemination of information which is for our own good, and our manipulation for the benefit of companies."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 14,
+       "text": "According to the writer, which marketing technique attempts to make consumers stay in a shop for longer?",
+       "options": [
+        {
+         "key": "A",
+         "text": "playing appealing music"
+        },
+        {
+         "key": "B",
+         "text": "emitting pleasant scents"
+        },
+        {
+         "key": "C",
+         "text": "displaying attractive posters"
+        },
+        {
+         "key": "D",
+         "text": "making in-store announcements"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'our olfactory system is targeted by variations of vanilla and citrus perfumes aimed at enticing us to linger in a retail outlet.'"
+      },
+      {
+       "n": 15,
+       "text": "The writer mentions bottled water in order to show that",
+       "options": [
+        {
+         "key": "A",
+         "text": "consumers buy it because of the fact that it is marketed."
+        },
+        {
+         "key": "B",
+         "text": "people purchase it despite the fact that it has no taste."
+        },
+        {
+         "key": "C",
+         "text": "marketers need not do taste tests when a campaign is effective."
+        },
+        {
+         "key": "D",
+         "text": "tests prove that people cannot differentiate it from tap water."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Bottled water example shows consumers are 'swayed by advertising into paying for something that we can obtain for free.'"
+      },
+      {
+       "n": 16,
+       "text": "According to the writer, socially transmitted food preference occurs when",
+       "options": [
+        {
+         "key": "A",
+         "text": "only dominant members of an animal group influence what others eat."
+        },
+        {
+         "key": "B",
+         "text": "the same types of animals naturally prefer the same types of food."
+        },
+        {
+         "key": "C",
+         "text": "animals are influenced by what any other animals of the same species eat."
+        },
+        {
+         "key": "D",
+         "text": "a food type is more desirable because an animal views that food as scarce."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'if we put that rat with another rat that spent its day eating just one type, when faced with a choice, our rat will now show a preference for the same type.'"
+      },
+      {
+       "n": 17,
+       "text": "According to the writer, how is learning by observation and imitation a useful feature of the brain?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It helps people overcome challenges."
+        },
+        {
+         "key": "B",
+         "text": "Positive models can influence social behaviour."
+        },
+        {
+         "key": "C",
+         "text": "It can give an advantage when communicating with others."
+        },
+        {
+         "key": "D",
+         "text": "Cultural norms and relationships can be understood more easily."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'a newcomer struggling to purchase tickets and navigate the subway system... may step back to learn from the people nearby' — helps overcome challenges."
+      },
+      {
+       "n": 18,
+       "text": "According to the writer, how does television advertising exploit the human tendency to imitate others?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It shows buying behaviour that marketers want to encourage in viewers."
+        },
+        {
+         "key": "B",
+         "text": "It features people who have a desirable image."
+        },
+        {
+         "key": "C",
+         "text": "It shows older people whom teenagers admire."
+        },
+        {
+         "key": "D",
+         "text": "It features successful people endorsing products responsible for their success."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'advertisements are disproportionately populated with attractive, successful looking individuals.'"
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 2?",
+     "questions": [
+      {
+       "n": 19,
+       "text": "The monkey on Koshima island started washing potatoes because she was copying another monkey.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The monkey started the behaviour herself — it was others who then copied her."
+      },
+      {
+       "n": 20,
+       "text": "Some researchers are not fully convinced that animals copy the most powerful members of their group.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'not all researchers are convinced by the findings' — studies showing imitation of dominant members."
+      },
+      {
+       "n": 21,
+       "text": "Dick Fosbury’s high jump technique was widely adopted by other athletes.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'imitators obviously copied his jumping style' — widely adopted."
+      },
+      {
+       "n": 22,
+       "text": "Companies employ people to secretly advertise products to the public.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'companies engage in stealth marketing campaigns in which people are paid to frequent bars or websites to covertly promote certain products.'"
+      },
+      {
+       "n": 23,
+       "text": "The writer believes that all forms of advertising are harmful to society.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "'that’s not to say that advertising is innately harmful. To the contrary, the marketing of products or ideas is essential to human culture.'"
+      },
+      {
+       "n": 24,
+       "text": "The diamond campaign was the first to make use of celebrity endorsement.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Celebrities were used in the diamond campaign but the passage does not say it was the first ever campaign to do so."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "The diamond campaign changed the [[25]] of our culture by linking diamonds with everlasting love.\nAdvertising exploits the brain's natural tendency toward [[26]], which evolved as a valuable way of learning.",
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "fabric"
+       ],
+       "explanation": "'they can be so successful that they change the fabric of our culture.'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "imitation"
+       ],
+       "explanation": "'advertising relies on the marketer’s ability to tap into the brain’s propensity for imitation.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Revolutions in Mapping",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Today, the mapmaker’s vision is no longer confined to what the human eye can see. The perspective of mapmaking has shifted from the crow’s nest of the sailing vessel, mountain top and airplane to new orbital heights. Radar, which bounces microwave radio signals off a given surface to create images of its contours and textures, can penetrate jungle foliage and has produced the first maps of the mountains of the planet Venus. And a combination of sonar and radar produces charts of the seafloor, putting much of Earth on the map for the first time. ‘Suddenly it’s a whole different world for us,’ says Joel Morrison, chief of geography at the U.S. Bureau of the Census."
+    },
+    {
+     "label": "B",
+     "text": "The world’s largest collection of maps resides in the basement of the Library of Congress in Washington, D.C. The collection, consisting of up to 4.6 million map sheets and 63,000 atlases, includes magnificent bound collections of elaborate maps — the pride of the golden age of Dutch cartography. In the reading room scholars examine ancient maps with magnifying glasses. Across the room people sit at their computer screens, studying the latest maps. With their prodigious memories, computers are able to store data about people, places and environments — the stuff of maps — and almost instantly information is displayed on the screen in the desired geographic context."
+    },
+    {
+     "label": "C",
+     "text": "Measuring the spherical Earth ranks as the first major milestone in scientific cartography. This was first achieved by the Greek astronomer Eratosthenes, a scholar at the famous Alexandrian Library in Egypt in the third century BC. He calculated the Earth’s circumference as 25,200 miles, which was remarkably accurate. The longitudinal circumference is known to be 24,860 miles."
+    },
+    {
+     "label": "D",
+     "text": "Building on the ideas of his predecessors, the astronomer and geographer Ptolemy, working in the second century AD, spelled out a system for organizing maps according to grids of latitude and longitude. Today, parallels of latitude are often spaced at intervals of 10 to 20 degrees and meridians at 15 degrees, and this is the basis for the width of modern time zones. Another legacy of Ptolemy’s is his advice to cartographers to create maps to scale. Distance on today’s maps is expressed as a fraction or ratio of the real distance."
+    },
+    {
+     "label": "E",
+     "text": "However, just as the compass improved navigation and created demand for useful charts, so the invention of the printing press in the 15th century put maps in the hands of more people, and took their production away from monks, who had tended to illustrate theology rather than geography. Ocean-going ships launched an age of discovery, enlarging both what could and needed to be mapped, and awakened an intellectual spirit and desire for knowledge of the world."
+    },
+    {
+     "label": "F",
+     "text": "Inspired by the rediscovered Ptolemy, whose writing had been preserved by Arabs after the sacking of the Alexandrian Library in AD 931, mapmakers in the 15th century gradually replaced theology with knowledge of faraway places, as reported by travelling merchants like Marco Polo."
+    },
+    {
+     "label": "G",
+     "text": "Gerhardus Mercator, the foremost mapmaker of the 16th century, developed a technique of arranging meridians and parallels in such a way that navigators could draw straight lines between two points and steer a constant compass course between them. This distortion formula, introduced on his world map of 1569, created the ‘Greenland problem’. Even on some standard maps to this day, Greenland looks as large as South America — one of the many problems when one tries to portray a round world on a flat sheet of paper. But the Mercator projection was so practical that it is still popular with sailors."
+    },
+    {
+     "label": "H",
+     "text": "Scientific mapping of the land came into its own with the achievements of the Cassini family — father, son, grandson and great-grandson. In the late 17th century, the Italian-born founder Jean-Dominique invented a complex method of determining longitude based on observations of Jupiter’s moons. The family continued to map the French countryside and his great-grandson finally published their famous Cassini map in 1793 during the French Revolution. While it may have lacked the artistic appeal of earlier maps, it was the model of a social and geographic map showing roads, rivers, canals, towns, abbeys, vineyards, lakes and even windmills. With this achievement, France became the first country to be completely mapped by scientific methods."
+    },
+    {
+     "label": "I",
+     "text": "Mapmaking has come a long way since those days. Today’s surveyors rarely go into the field without being linked to navigation satellites. Their hand-held receivers are the most familiar of the new mapping technologies, and the satellite system is increasingly used by surveyors. Even ordinary hikers, sailors and explorers can tap into it for data telling them where they are. Simplified civilian versions of the receivers are available for a few hundred dollars and they are also the heart of electronic map displays available in some cars. Cartography is pressing on to cosmic frontiers, but its objective is, and always has been, to communicate a sense of ‘here’ in relation to ‘there’, however far away ‘there’ may be."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "According to the first paragraph, mapmakers in the 21st century",
+       "options": [
+        {
+         "key": "A",
+         "text": "combine techniques to chart unknown territory."
+        },
+        {
+         "key": "B",
+         "text": "still rely on being able to see what they map."
+        },
+        {
+         "key": "C",
+         "text": "are now able to visit the darkest jungle."
+        },
+        {
+         "key": "D",
+         "text": "need input from experts in other fields."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'a combination of sonar and radar produces charts of the seafloor' — combining techniques to chart unknown territory."
+      },
+      {
+       "n": 28,
+       "text": "The Library of Congress offers an opportunity to",
+       "options": [
+        {
+         "key": "A",
+         "text": "borrow from their collection of Dutch maps."
+        },
+        {
+         "key": "B",
+         "text": "learn how to restore ancient and fragile maps."
+        },
+        {
+         "key": "C",
+         "text": "enjoy the atmosphere of the reading room."
+        },
+        {
+         "key": "D",
+         "text": "create individual computer maps to order."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "'at the click of a button, a print-out of the map appears' — create individual maps to order."
+      },
+      {
+       "n": 29,
+       "text": "Ptolemy alerted his contemporaries to the importance of",
+       "options": [
+        {
+         "key": "A",
+         "text": "measuring the circumference of the world."
+        },
+        {
+         "key": "B",
+         "text": "organizing maps to reflect accurate ratios of distance."
+        },
+        {
+         "key": "C",
+         "text": "working out the distance between parallels of latitude."
+        },
+        {
+         "key": "D",
+         "text": "accuracy and precision in mapping."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'his advice to cartographers to create maps to scale. Distance on today’s maps is expressed as a fraction or ratio of the real distance.'"
+      },
+      {
+       "n": 30,
+       "text": "The invention of the printing press",
+       "options": [
+        {
+         "key": "A",
+         "text": "revitalised interest in scientific knowledge."
+        },
+        {
+         "key": "B",
+         "text": "enabled maps to be produced more cheaply."
+        },
+        {
+         "key": "C",
+         "text": "changed the approach to mapmaking."
+        },
+        {
+         "key": "D",
+         "text": "ensured that the work of Ptolemy was continued."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'put maps in the hands of more people, and took their production away from monks' — changed the approach."
+      },
+      {
+       "n": 31,
+       "text": "The writer concludes by stating that",
+       "options": [
+        {
+         "key": "A",
+         "text": "mapmaking has become too specialised."
+        },
+        {
+         "key": "B",
+         "text": "cartographers work in very harsh conditions."
+        },
+        {
+         "key": "C",
+         "text": "the fundamental aims of mapmaking remain unchanged."
+        },
+        {
+         "key": "D",
+         "text": "the possibilities of satellite mapping are infinite."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'its objective is, and always has been, to communicate a sense of here in relation to there' — fundamental aims unchanged."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Match each achievement with the correct mapmaker, A–D.",
+     "title": "Mapmakers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Mercator"
+      },
+      {
+       "key": "B",
+       "text": "Ptolemy"
+      },
+      {
+       "key": "C",
+       "text": "Cassini family"
+      },
+      {
+       "key": "D",
+       "text": "Eratosthenes"
+      }
+     ],
+     "questions": [
+      {
+       "n": 32,
+       "text": "came very close to accurately measuring the distance around the Earth",
+       "answer": [
+        "D"
+       ],
+       "explanation": "D = Eratosthenes. 'He calculated the Earth’s circumference as 25,200 miles, which was remarkably accurate.'"
+      },
+      {
+       "n": 33,
+       "text": "produced maps showing man-made landmarks such as roads and canals",
+       "answer": [
+        "C"
+       ],
+       "explanation": "C = Cassini family. Their map showed 'roads, rivers, canals, towns, abbeys, vineyards, lakes and even windmills.'"
+      },
+      {
+       "n": 34,
+       "text": "laid the foundation for our modern system of time zones",
+       "answer": [
+        "B"
+       ],
+       "explanation": "B = Ptolemy. 'meridians at 15 degrees, and this is the basis for the width of modern time zones.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "The first great step in scientific cartography took place in [[35]] in the 3rd century BC.\nFor over a thousand years, maps were made by [[36]] rather than scientists.\nThe writings of [[37]] were preserved by Arabs and revived scientific mapmaking in the 15th century.\nToday, [[38]] are vital to modern map creation and are used by professional surveyors.\nCheaper versions of satellite receivers are also used in some [[39]].\nDespite its distortion of relative land sizes, the Mercator projection is still used by [[40]].",
+     "questions": [
+      {
+       "n": 35,
+       "answer": [
+        "Egypt"
+       ],
+       "explanation": "'Eratosthenes, a scholar at the famous Alexandrian Library in Egypt in the third century BC.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "monks"
+       ],
+       "explanation": "'took their production away from monks, who had tended to illustrate theology rather than geography.'"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "Ptolemy"
+       ],
+       "explanation": "'Inspired by the rediscovered Ptolemy, whose writing had been preserved by Arabs.'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "navigation satellites"
+       ],
+       "explanation": "'Today’s surveyors rarely go into the field without being linked to navigation satellites.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "cars"
+       ],
+       "explanation": "'they are also the heart of electronic map displays available in some cars.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "sailors"
+       ],
+       "explanation": "'the Mercator projection was so practical that it is still popular with sailors.'"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

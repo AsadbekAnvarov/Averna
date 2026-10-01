@@ -1,0 +1,702 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-67",
+ "title": "CDI Reading Test 67",
+ "description": "A full Academic Reading test from the CDI practice materials: Tulip Mania; Toxic Stress: A Slow Wear And Tear; The geography of taste buds.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Tulip Mania",
+  "Toxic Stress: A Slow Wear And Tear",
+  "The geography of taste buds"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Tulip Mania",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Centuries before anyone ever heard of Qualcomm, CMGI or Cisco Systems, a tulip in 17th century Holland caused quite the stir. The Semper Augustus was a tulip of extraordinary grandeur, with midnight blue petals topped by a pure white band and highlighted with crimson flares. For the Dutch, there were few things more valuable than the Semper Augustus tulips."
+    },
+    {
+     "label": "B",
+     "text": "Around 1624, there were only a dozen specimens of the Semper Augustus. A man from Amsterdam owned all of the specimens. The man was offered 3,000 guilders in Dutch currency for just one bulb of the specimen. At the time, that was an absurd amount. The well-known Dutch painter Rembrandt Harmenszoon van Rijn received only about half of that amount a few years later for his The Night Watch painting. Despite the apparently exorbitant offer for just one of his tulip bulbs, the Dutch man, whose name has been lost in history, declined the offer."
+    },
+    {
+     "label": "C",
+     "text": "At that time, people wondered who was wackier, the man who refused to sell a tulip bulb for a fortune or the man who had offered to pay a fortune for just one bulb. This question was explored extensively by British journalist Mike Dash in his book, The Story of the World's Most Coveted Flower and the Extraordinary Passions It Aroused. In his account of tulip mania, Dash details the history behind the buzzword and, in doing so, he presents a cautionary tale for modern-day investors, who are often inclined to load up on unproven and yet-to-be-profitable stocks, similar to the tulip mania that raged in Holland in the 17th century."
+    },
+    {
+     "label": "D",
+     "text": "It should be pointed out that the Dutch were not the first people to go bonkers over tulips. Long before the first tulips ever bloomed in Europe, the Persians had already fallen in love with the beauty of the flower, and the rulers of the Ottoman Empire held it in the highest regard, dating back to a time around 1559. However, when the tulip finally arrived in Holland, the flower seemed to find an even more fertile ground, and not just from a horticultural standpoint."
+    },
+    {
+     "label": "E",
+     "text": "In the early 17th century, Holland was entering its Golden Age. Time, energy, and financial resources that had previously been used in fighting for Holland's independence from Spain were now available to be used for commerce. The city of Amsterdam was the hub of lucrative trade with the East Indies and a single voyage to the East Indies could result in substantial profits for the merchants involved in those activities. Those merchants often flaunted their success by building great estates, many landscaped with magnificent flower gardens."
+    },
+    {
+     "label": "F",
+     "text": "Then along came the tulip. \"It is impossible to comprehend the tulip mania without understanding just how different tulips were from every other flower known to horticulturists in the 17th century. The colours they exhibited were brighter than those of ordinary plants,\" Dash explains. Although the rarer tulips sometimes commanded higher prices, the bulbs for most ordinary tulips were sold by the pound for a modest price. Then, around 1630, a different type of tulip fancier appeared on the scene. Motivated by thoughts of great profits, these \"florists\" or professional tulip traders set out to find flower enthusiasts and speculators alike. But even as the number of tulip buyers grew quickly, the supply of tulip bulbs remained stagnant. It seems that the tulip became a foil in the supply squeeze: there was no quick fix to increase the quantity of available bulbs, as it takes seven years for a tulip to grow from a seed. Even though bulbs can produce two or three offshoots annually, the mother bulb lasts only a few years."
+    },
+    {
+     "label": "G",
+     "text": "Tulip bulb prices continued to soar throughout the 1630s, as more speculators wedged into the market. Even people in other occupations wanted in on the tulip trading business. Weavers and farmers mortgaged their assets in order to get into the tulip market. In 1633, a farmhouse in Hoorn was sold in exchange for three rare bulbs. By 1636, the tulip trading business was flourishing so much that even \"garbage\" bulbs were being sold for hundreds of guilders. Eventually, a futures market for bulbs was even established. Tulip mania reached its zenith during the winter of 1636-1637, when some bulbs were known to be bought and sold up to ten times a day. Exemplifying this mania is the story of an auction that was held to benefit seven orphans whose only asset was 70 fine tulips left by their father. One of those bulbs, a rare Violetten Admirael van Enkhuizen bulb, sold for 5,200 guilders, an all-time record. All told, the 70 flowers from that auction brought in nearly 53,000 guilders."
+    },
+    {
+     "label": "H",
+     "text": "There is a saying that goes, \"All good things must come to an end.\" That was certainly the case with the tulip market, which crashed quickly and spectacularly. It wasn't long after the above-mentioned orphan auction, when buyers refused to pay high asking prices at a routine bulb auction in Haarlem. In just a matter of days, the word of this auction spread all over the country, creating widespread panic among tulip traders and speculators. And, sure enough, the market for tulips crashed quickly thereafter. Tulips that had sold for 5,000 guilders only a few weeks before now fetched only 50 guilders."
+    },
+    {
+     "label": "I",
+     "text": "In comparing the tulip mania of the 17th century with the recent dot-com craze, there is one major difference: even at its height, the Amsterdam Stock Exchange never touched tulips. \"The speculation in tulip bulbs always existed at the margins of Dutch economic life,\" Dash points out. As tulip trading was at the periphery of the Dutch economy, the fallout had little effect on the Dutch economy. Will we be able to say the same when Wall Street's current obsession with the dot-com craze finally runs its course?"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 1 has nine paragraphs, A–I. Which paragraph contains the following information? Write the correct letter, A–I.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      },
+      {
+       "key": "I",
+       "text": "Paragraph I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "text": "a reference to an individual who warned of the dangers of investing",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C: Mike Dash presents a 'cautionary tale for modern-day investors'."
+      },
+      {
+       "n": 2,
+       "text": "a description of the outstanding appearance of a famous tulip",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A describes the striking appearance of the Semper Augustus tulip."
+      },
+      {
+       "n": 3,
+       "text": "a reference to another society fascinated by tulips",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D mentions Persians and the Ottoman Empire valuing tulips before Holland."
+      },
+      {
+       "n": 4,
+       "text": "a reference to the highest price offered at an auction",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G records the all-time auction price of 5,200 guilders."
+      },
+      {
+       "n": 5,
+       "text": "an incident related to the ending of 'tulip mania'",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H describes the Haarlem auction that triggered the crash ending tulip mania."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 6,
+       "text": "Rembrandt was known to have spent a considerable sum of money on purchasing flowers such as tulips.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Paragraph B compares Rembrandt's Night Watch fee to a tulip offer, but does not say he bought tulips (NOT GIVEN)."
+      },
+      {
+       "n": 7,
+       "text": "There was little incentive for traders to travel to the East Indies after Holland became independent.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph E says East Indies voyages were lucrative, so incentive was high (FALSE)."
+      },
+      {
+       "n": 8,
+       "text": "Tulips reproduced too slowly, and in too small a quantity, to keep up with the growing demand for the flower in the 1630s.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph F: supply stayed stagnant because bulbs take seven years from seed (TRUE)."
+      },
+      {
+       "n": 9,
+       "text": "The tulip market was comprised entirely of professional tulip traders and was generally inaccessible to most people.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph G shows weavers and farmers also entered the market (FALSE)."
+      },
+      {
+       "n": 10,
+       "text": "Despite the sizable demand for tulips, there was negligible impact on the Dutch economy as a whole when that demand suddenly dropped.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph I: the crash had little effect on the wider Dutch economy (TRUE)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- After their war for independence, the Dutch more heavily invested in [[11]] .\n- The [[12]] of tulips were more eye-catching than other flowers available at the time.\n- When an increasing number of [[13]] started selling tulips in the market, prices began to fall.",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "commerce"
+       ],
+       "explanation": "Paragraph E: resources freed after independence were used for 'commerce'."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "colours",
+        "colors"
+       ],
+       "explanation": "Paragraph F: the 'colours' of tulips were brighter than other flowers."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "florists"
+       ],
+       "explanation": "Paragraph F: an increasing number of 'florists' entered the market in the 1630s."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Toxic Stress: A Slow Wear And Tear",
+   "subtitle": "Our bodies are built to respond when under attack. When we sense danger, our brain goes on alert, our heart rate goes up, and our organs flood with stress hormones like cortisol and adrenaline.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Breathing gets faster, muscles tense, senses sharpen, and we may even begin to sweat. This fight-or-flight response is an evolutionary adaptation that helped our ancestors survive life-threatening situations. The problem is that our bodies can overreact to stressors that are not life-threatening - like traffic jams, work pressure, and family difficulties - as if they were."
+    },
+    {
+     "label": "B",
+     "text": "Not all stress is the same. There is \"positive\" stress that is temporary - for example, when a child dodges a speeding bus - and there is \"toxic stress\". Toxic stress results from constant, unrelenting stress such as neglect, abuse, or living in chaos, and it can derail normal development. Between these poles is \"tolerable\" stress, whose effects are buffered by the support of a parent or caregiver. Understanding how to address these stressors remains a major question in childhood development. Toxic stress can also have profound consequences across generations."
+    },
+    {
+     "label": "C",
+     "text": "In 1998, researchers Vincent Felitti and Robert Anda published a study showing that children who had experienced abuse or household dysfunction were more likely to develop serious health problems such as cancer and liver disease, as well as unhealthy habits, later in life. The research, known as the ACE Study (Adverse Childhood Experiences), linked more than a dozen forms of ACEs to these adult outcomes."
+    },
+    {
+     "label": "D",
+     "text": "But not every child who experiences adversity ends up with the same outcomes; resilience varies from one child to another. Jenny Anderson, a senior reporter at Quartz, explains the pathways linking childhood adversity to adult health problems. Children in abusive environments are constantly primed for fight-or-flight. The resulting wear and tear is known as allostatic load or overload. A brain that is constantly in \"danger mode\" has trouble organising itself, which can lead to problems with attention and learning - and with managing one's own behaviour."
+    },
+    {
+     "label": "E",
+     "text": "The word \"toxic\" is a loaded word. Critics say the term is judgmental and may appear to blame parents for social circumstances beyond their control. It can also be misused to describe the source of the stress itself rather than the biological process by which it could negatively affect some children. The term, writes John Devaney, centenary chair of social work at the University of Edinburgh, \"can stigmatise individuals and imply traumatic happenings in the past\". Some paediatricians do not like the term because of how difficult it is to actually fix the stressors their patients face, from poverty to racism. They feel it is too fatalistic to tell families that their child is experiencing toxic stress, and there is little they can do about it. But Nadine Burke Harris, surgeon general of California, argues that naming the problem means we can dedicate resources to it so that paediatricians feel like they have tools to treat \"toxic stress\"."
+    },
+    {
+     "label": "F",
+     "text": "The most effective prevention for toxic stress is to reduce the source of the stress. This can be tricky, especially if the source of the stress is the child's own family. But parent coaching, and connecting families with resources to help address the cause of their stress (sufficient food, housing insecurity, or even the parent's own trauma), can help. Another one is to ensure love and support from a parent or caregiver. Young children's stress responses are more stable, even in difficult situations, when they are with an adult they trust. As Megan Gunnar, a child psychologist and head of the Institute of Child at the University of Minnesota, said: \"When the parent is present and relationship is secure, basically the parent eats the stress: the kid cries, the parent comes, and it doesn't need to kick in the big biological guns because the parent is the protective system\". That is why Harvard's Center on the Developing Child recommends offering care to caregivers, like mental health or addiction support, because when they are healthy and well, they can better care for their children."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six paragraphs, A–F. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "The controversy around the word \"toxic\""
+      },
+      {
+       "key": "ii",
+       "text": "Effects of different types of stress"
+      },
+      {
+       "key": "iii",
+       "text": "How to protect children from toxic stress"
+      },
+      {
+       "key": "iv",
+       "text": "An association of adverse experience with health problems and unhealthy habits"
+      },
+      {
+       "key": "v",
+       "text": "Body's reactions in response to the perceived harmful event"
+      },
+      {
+       "key": "vi",
+       "text": "Signs of being under sustained stress"
+      },
+      {
+       "key": "vii",
+       "text": "Negative impacts of toxic stress on children's mental health"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Paragraph A describes the body's fight-or-flight reactions → v."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Paragraph B contrasts positive, toxic and tolerable stress → ii."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph C links ACEs to adult health problems and unhealthy habits → iv."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Paragraph D describes mental-health impacts such as attention and learning problems → vii."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Paragraph E discusses controversy over the word 'toxic' → i."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Paragraph F focuses on prevention and protection → iii."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 2?",
+     "questions": [
+      {
+       "n": 20,
+       "text": "Felitti and Anda were the first to show that ACEs create impacts regarding health and habits later on in life.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph C presents Felitti and Anda's ACE Study as establishing the link between ACEs and later health/habits (TRUE)."
+      },
+      {
+       "n": 21,
+       "text": "Some children have the same level of vulnerability to stressful events.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph D says resilience varies between children (FALSE)."
+      },
+      {
+       "n": 22,
+       "text": "Several paediatricians consider poverty and racism the primary contributors to toxic stress.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Paragraph E mentions poverty and racism as hard-to-fix stressors, not as primary contributors (NOT GIVEN)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following people (Questions 23–26) and the list of statements below. Match each person with the correct statement, A–E.",
+     "title": "List of Statements",
+     "options": [
+      {
+       "key": "A",
+       "text": "Traumatic experiences in childhood might lead to poor self-management."
+      },
+      {
+       "key": "B",
+       "text": "Supportive and responsive relationships with caring parents can prevent or reverse the damaging effects of toxic stress responses."
+      },
+      {
+       "key": "C",
+       "text": "Properly naming a type of stress can facilitate its treatment process."
+      },
+      {
+       "key": "D",
+       "text": "The real name of a particular form of stress could denounce a number of people."
+      },
+      {
+       "key": "E",
+       "text": "Toxic stress can cause the next generations to suffer from negative consequences on both mental and physical health problems."
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "text": "Megan Gunnar",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Megan Gunnar (B): secure parent relationship as protective system."
+      },
+      {
+       "n": 24,
+       "text": "Jenny Anderson",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Jenny Anderson (A): impacts include poor self-management."
+      },
+      {
+       "n": 25,
+       "text": "John Devaney",
+       "answer": [
+        "D"
+       ],
+       "explanation": "John Devaney (D): the term can stigmatise people."
+      },
+      {
+       "n": 26,
+       "text": "Nadine Burke Harris",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Nadine Burke Harris (C): naming facilitates treatment."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The geography of taste buds",
+   "subtitle": "Scientific researchers mapping the geography of the human tongue have finally succeeded in explaining how we perceive the flavours of what we eat and drink.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Scientists have long known that the surface of the tongue is covered with taste buds: onion-shaped bundles of cells that stand guard for the digestive system. Long before our modern world of supermarkets and restaurants, taste buds served as a crucial tool to maintain the daily existence of our ancestors. The bitter flavour of a wild almond told a prehistoric human foraging in African forests that the nut was poisonous, and they should spit it out. A sweet fruit, though, was safe to consume, and full of energy from carbohydrates. The presence of lions and other man-eating predators also added urgency to meal choices. ‘If the thing didn’t taste good, you might decide it’s not worth it to be out in the open and at risk,’ says Steve Miller, a taste researcher at the University of Maryland School of Medicine."
+    },
+    {
+     "label": "B",
+     "text": "Much of what we ‘taste’ in everyday life is actually the work of our nose. The tongue can distinguish only five basic flavour sensations - sweet, sour, bitter, salt and umami, the ‘savoury’ taste of meat and cheese which indicates protein. Sour taste comes from acidic compounds, and, like bitter taste, it can be a sign to leave decomposing meat or vegetables. Unpleasant tartness in unripe fruits comes from too much citric acid. This is how a tree or shrub keeps hungry diners at bay until its seeds are mature enough to travel – via the diner’s digestive system to a new home."
+    },
+    {
+     "label": "C",
+     "text": "Unlike animals, humans have acquired a taste for tartness. In the case of the Japanese pickle called ‘umeboshi’, the plums are harvested when still green and sour, before the tree fills them with sugar and turns them into a tantalising snack for birds and animals. Sour cream, yoghurt, lemonade, gorgonzola cheese, the German fermented cabbage ‘sauerkraut’ and other tart treats are eaten every day by millions of people."
+    },
+    {
+     "label": "D",
+     "text": "Only a decade ago, popular myth held that separate areas of the tongue were responsible for each taste. Referred to as the ‘mouth map’, the concept probably originated with a German text mistranslated into English at the beginning of the 20th century. As recently as 1996, ‘mouth map’ diagrams still appeared in university neuroscience textbooks. By the late 1990s, however, scientists had learned enough about molecular biology to turn their attention seriously to taste. They had discovered that thousands of taste buds cover the tongue, each containing 50 to 100 taste cells. Each cell has two poles: one end covered with taste receptors projecting from the tongue’s surface, and one end inside the tongue that connects to the brain via nerves. When a person bites into a lemon, acidic molecules from the food bump into acid-sensitive taste receptors, activating a taste cell, which sends a ‘sour’ message to the brain."
+    },
+    {
+     "label": "E",
+     "text": "The details of this process were long a matter of debate. In line with the ‘mouth map’ concept, some scientists believed that the taste buds in different areas of the tongue were filled with cells of only one type: the tip with sweet-sensing cells, the back with bitter-sensing cells, and so on. Others were not convinced and further suggested the location of cells was not an issue because each cell could sense all five tastes. However, no one had identified any of the taste receptors, so which cells responded to which tastes was unknown."
+    },
+    {
+     "label": "F",
+     "text": "Charles Zanker, professor of biology at the University of California, San Diego, and others set out to solve this problem with a variety of biological techniques, including engineering mutant mice that lacked certain receptors and could not taste certain tastes. They eventually isolated the first taste receptors - those for bitter and sweet. Each taste cell, they found, is covered with receptors for only one taste. A sweet cell, for example, is only turned on by sweet molecules because it only has sweet receptors. This dispelled the notion that all cells could sense all tastes. The scientists also assembled more evidence against the ‘mouth map’ myth when they found that each taste bud contains a full complement of taste cells. ‘There are areas of emphasis,’ Miller says, ‘but there are not these absolutely divided areas.’"
+    },
+    {
+     "label": "G",
+     "text": "Over time, the researchers identified the receptors for sweet, bitter and umami. But until recently, salt and sour receptors remained elusive. After eight years of this new wave of research into taste, a team led by Hideki Matsunami from Duke University in North Carolina, and Zanker’s separate group of Californian scientists, simultaneously published that they had finally found the tongue’s tart sensors. This breakthrough has answered some long-standing questions about the tongue’s geography."
+    },
+    {
+     "label": "H",
+     "text": "One surprising finding was that the sour-taste receptors on the tongue are also found in the spinal cord, where they probably monitor the acidity of cerebrospinal fluid. Similarly, sweet and bitter taste receptors have been found in the intestinal tract. Taken as a whole, the identification of various key taste receptors illuminates a link between the mouth and the brain. It also provides new targets for research. In the past, artificial flavourings were often chance discoveries, made when chemists accidentally tasted a substance, but now experts hope that knowing the identities of taste receptors will allow a more methodical approach to be taken towards developing these additives. New molecules might even be developed to cling to sour taste receptors and block the unpalatable taste of medicines. The finding may also explain how tongues, like fingerprints, are unique, making some people sensitive and others numb to certain tastes."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–L, below. Write the correct letter, A–L.",
+     "title": "The evolution and perception of taste",
+     "options": [
+      {
+       "key": "A",
+       "text": "cooking"
+      },
+      {
+       "key": "B",
+       "text": "sense"
+      },
+      {
+       "key": "C",
+       "text": "pests"
+      },
+      {
+       "key": "D",
+       "text": "consumption"
+      },
+      {
+       "key": "E",
+       "text": "predators"
+      },
+      {
+       "key": "F",
+       "text": "digestion"
+      },
+      {
+       "key": "G",
+       "text": "enemies"
+      },
+      {
+       "key": "H",
+       "text": "planting"
+      },
+      {
+       "key": "I",
+       "text": "decay"
+      },
+      {
+       "key": "J",
+       "text": "sight"
+      },
+      {
+       "key": "K",
+       "text": "smell"
+      },
+      {
+       "key": "L",
+       "text": "survival"
+      }
+     ],
+     "template": "For many years it has been understood that the human tongue is covered with taste buds. These first evolved as an aid to [[27]] . They acted as a warning that a food was dangerous, or a confirmation that it was good for [[28]] . For early humans, the gathering of food was made difficult by [[29]] . Because our tongues can only taste five different flavours, a lot of what we think we 'taste' is in fact conveyed by [[30]] . Sour and bitter tastes signal that food is in the process of [[31]] . However, over the centuries, people have come to like a sour taste, and in this [[32]] we are different from animals.",
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "L"
+       ],
+       "explanation": "The passage says taste buds served as a crucial tool to \"maintain the daily existence of our ancestors\". This directly refers to survival (L)."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "D"
+       ],
+       "explanation": "The passage states: \"A sweet fruit, though, was safe to consume...\" (D)."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "E"
+       ],
+       "explanation": "The text notes: \"The presence of lions and other man-eating predators (E) also added urgency to meal choices.\""
+      },
+      {
+       "n": 30,
+       "answer": [
+        "K"
+       ],
+       "explanation": "The passage mentions: \"Much of what we ‘taste’ in everyday life is actually the work of our nose\", matching smell (K)."
+      },
+      {
+       "n": 31,
+       "answer": [
+        "I"
+       ],
+       "explanation": "The text says: \"it can be a sign to leave decomposing meat or vegetables.\" \"Decomposing\" means the process of decay (I)."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Unlike animals, humans have acquired a taste for tartness.\" So in this sense (B) we differ from animals."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 33,
+       "text": "It is likely that the 'mouth map' myth began from an error of interpretation.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "\"Referred to as the ‘mouth map’, the concept probably originated with a German text mistranslated into English\". A mistranslation is an error of interpretation."
+      },
+      {
+       "n": 34,
+       "text": "Scientists were in agreement on the location of bitter-sensing cells.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "\"...some scientists believed that the taste buds in different areas of the tongue were filled with cells of only one type... Others were not convinced\". They were not in agreement."
+      },
+      {
+       "n": 35,
+       "text": "The experiment with mice proved that bitter-sensing cells have more receptors than sweet-sensing cells do.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The text mentions \"engineering mutant mice that lacked certain receptors\" but makes no comparison about whether bitter cells have more receptors than sweet cells."
+      },
+      {
+       "n": 36,
+       "text": "After a lengthy period of study, two different research teams reported the same finding about taste senses at the same time.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "The text confirms: \"After eight years of this new wave of research... Matsunami... and Zanker’s separate group... simultaneously published that they had finally found the tongue’s tart sensors.\""
+      },
+      {
+       "n": 37,
+       "text": "Scientists failed to find taste receptors in other parts of the body.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "\"...the sour-taste receptors on the tongue are also found in the spinal cord... sweet and bitter taste receptors have been found in the intestinal tract.\" They did not fail to find them."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 38,
+       "text": "What does the writer suggest about the 'mouth map' myth?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It followed the discovery of taste buds."
+        },
+        {
+         "key": "B",
+         "text": "It located taste in one part of the tongue."
+        },
+        {
+         "key": "C",
+         "text": "It used to be taught and believed in academic circles."
+        },
+        {
+         "key": "D",
+         "text": "It was an idea that originated in England."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The writer notes: \"As recently as 1996, ‘mouth map’ diagrams still appeared in university neuroscience textbooks.\" This means it used to be taught in academic circles."
+      },
+      {
+       "n": 39,
+       "text": "The writer refers to Zanker's experiment in order to",
+       "options": [
+        {
+         "key": "A",
+         "text": "compare several different methodologies."
+        },
+        {
+         "key": "B",
+         "text": "highlight the connection between taste and the brain."
+        },
+        {
+         "key": "C",
+         "text": "suggest that the use of animals in research can be misleading."
+        },
+        {
+         "key": "D",
+         "text": "show how a popular idea was proved wrong."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Zanker\\'s experiment proved each cell is covered with receptors for only one taste. \"This dispelled the notion that all cells could sense all tastes. The scientists also assembled more evidence against the ‘mouth map’ myth...\" proving a popular idea wrong."
+      },
+      {
+       "n": 40,
+       "text": "What is the main purpose of the writer of Reading Passage 3?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to describe a scientific experiment"
+        },
+        {
+         "key": "B",
+         "text": "to inform readers of a recent scientific discovery"
+        },
+        {
+         "key": "C",
+         "text": "to narrate how taste affected the lives of ancient humans"
+        },
+        {
+         "key": "D",
+         "text": "to predict how taste research will develop in the future"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The primary focus of the entire passage is to inform readers about the mapping of taste buds and the recent discovery of tart sensors."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

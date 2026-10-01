@@ -7,7 +7,7 @@ import { READING_FULL } from "@/lib/ielts/format";
 import type { ExamListeningTest, ExamReadingTest } from "@/lib/ielts/types";
 import type { HomeworkNotice } from "@/lib/homework/exam-homework";
 import { HomeworkNoticeCard } from "@/components/homework/homework-notice";
-import { AnswerReview } from "./answer-review";
+import { AnswerReview, type ReviewRecording } from "./answer-review";
 import { KindBreakdown } from "./kind-breakdown";
 import { NextBand } from "./next-band";
 import { PRIMARY_BTN, ResultActions, SECONDARY_BTN } from "./result-actions";
@@ -30,6 +30,7 @@ export function ObjectiveResult({
   viewerIsOwner = true,
   studentName,
   homeworkNotice = null,
+  recording = null,
 }: {
   attempt: ObjectiveAttempt;
   /** The paper, or null when it can't be loaded any more. */
@@ -47,6 +48,8 @@ export function ObjectiveResult({
   studentName?: string;
   /** Owner only: open homework for this content that this attempt didn't complete (homeworkNoticeFor). */
   homeworkNotice?: HomeworkNotice | null;
+  /** Listening with one real recording (CDI): played from each question in the answer review. */
+  recording?: ReviewRecording | null;
 }) {
   const { skill, part } = attempt;
   const word = skillWord(skill);
@@ -131,7 +134,7 @@ export function ObjectiveResult({
           <KindBreakdown skill={skill} byKind={attempt.byKind} items={attempt.items} blanks={blanks} />
         </Reveal>
 
-        <AnswerReview skill={skill} test={test} part={part} items={attempt.items} />
+        <AnswerReview skill={skill} test={test} part={part} items={attempt.items} recording={recording} />
 
         {viewerIsOwner && (
           <Reveal>

@@ -1,0 +1,609 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-14",
+ "title": "CDI Reading Test 14",
+ "description": "A full Academic Reading test from the CDI practice materials: The Early History of Olive Oil; Multi-tasking and the brain; The Voynich Manuscript.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Early History of Olive Oil",
+  "Multi-tasking and the brain",
+  "The Voynich Manuscript"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Early History of Olive Oil",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Olive oil is produced from the fruit of the olive tree, which is a member of the Oleaceae plant family. The trees require some cold weather during the year, but also tolerate hot, dry conditions, and do not like moisture when they are flowering. They actually produce better when subjected to these stressful conditions, and as a result, olive trees have traditionally been grown on land where little else will survive."
+    },
+    {
+     "label": "B",
+     "text": "Archaeologists today are divided over exactly where the first domestication of the olive occurred: some say it was in the area which is now Iran, Syria, Jordan and Egypt, while others contend it was in mainland Greece or on the island of Crete. The one thing that can be said with certainty is that cultivation began at least 6,000 years ago and spread slowly westward across the lands bordering on the Mediterranean Sea. Olive oil was used for a variety of purposes during these early times, including as a pharmacological ointment and in rituals for anointing royalty."
+    },
+    {
+     "label": "C",
+     "text": "The ancient Greeks believed the olive tree was a priceless gift from the goddess Athena and used its oil in sacred religious rituals. In fact, the Greek poet Homer called olive oil ‘liquid gold’, and during the 6th and 7th centuries BC Greek law forbade the cutting down of olive trees and made it punishable by death. The ancient Middle Eastern ruler King David valued his groves of olive trees and his olive oil warehouses so much that he posted guards around the clock to protect them."
+    },
+    {
+     "label": "D",
+     "text": "Over the years, olive oil developed other uses. Its employment in cooking dates at least as far back as the 5th century BC, as described by the Greek philosopher Plato. Its use as an aid to beauty and health later became ingrained in many Mediterranean cultures. The Romans, for example, are said to have used generous amounts on their bodies to moisturise their skin after bathing. With the spread of the Roman Empire, olive oil became a major commodity and its trade promoted commerce throughout the ancient world. It is generally believed that in the 1st-2nd century BC, olive trees were taken to North Africa and then to Spain, which was later to become the world’s largest producer of olive oil. Artefacts found at various Mediterranean archaeological sites include olive oil storage vessels with olive plant residue still in them. Historical evidence still in existence in the form of wall paintings and ancient manuscripts (including the works of the Roman naturalist and philosopher, Pliny the Elder) all record production techniques and the various uses of olive oil."
+    },
+    {
+     "label": "E",
+     "text": "Making olive oil in those early days was a laborious process accomplished without mechanisation. Processing or milling the fruit involved several distinct stages to extract the liquid. The olives were harvested from the trees by hand or by beating the fruit from the trees with long sticks. The olives were then rinsed and crushed to separate out the large seed found in the centre of each. The remaining seedless flesh was put in woven bags and pressed. Hot water was then poured over the bags to separate the oil from the solid bits of olive. The liquid produced in this process, consisting of oil and water, was drained into stone basins or tanks, where it was allowed to settle and separate. In cold weather a bit of salt was added to speed up the process. As much oil as possible was drawn off the water, but the result was still not pure oil. Therefore, this impure mixture was allowed once more to settle in vats and then separated in order to refine the product."
+    },
+    {
+     "label": "F",
+     "text": "The waste water from the milling process, which is called amurca, is a bitter-tasting and foul-smelling liquid. In many ancient civilisations it was often simply discarded, causing serious pollution because of its acidity and high salt content. However, in the Roman period it was regarded as a very useful substance. When spread on surfaces, amurca forms a hard finish and therefore it was often applied to the floors of grain storage buildings where it hardened, keeping out water, mud and pests. When boiled down amurca was applied to leather to soften it so that it was easier to shape into articles of clothing and shoes. It could also be eaten by farm animals and was, in fact, fed to livestock suffering from malnutrition. According to ancient texts, amurca was also utilised in moderate amounts by farmers as a fertiliser or as a pesticide helping them to protect their crops from insects and even small rodents."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "In the cultivation of olives, a period without rain is advantageous.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph A says olive trees ‘tolerate hot, dry conditions’ and ‘produce better when subjected to these stressful conditions’."
+      },
+      {
+       "n": 2,
+       "text": "The most fertile fields are usually chosen for growing olives.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph A states that olive trees have ‘traditionally been grown on land where little else will survive’ – the opposite of fertile fields."
+      },
+      {
+       "n": 3,
+       "text": "In ancient Greece, the olive tree was said to have divine origins.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph C says the ancient Greeks ‘believed the olive tree was a priceless gift from the goddess Athena’."
+      },
+      {
+       "n": 4,
+       "text": "Olive oil was more costly to buy in Greece than gold.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Homer called olive oil ‘liquid gold’ but this is a metaphor; no price comparison is given."
+      },
+      {
+       "n": 5,
+       "text": "Plato mentions the use of olive oil in the preparation of food.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph D says cooking use ‘dates at least as far back as the 5th century BC, as described by the Greek philosopher Plato’."
+      },
+      {
+       "n": 6,
+       "text": "North African farmers initially resisted the introduction of olive trees.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Paragraph D states olive trees were taken to North Africa but says nothing about resistance from farmers."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the flow-chart below.",
+     "answerRule": "Write ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Ancient olive oil processing",
+     "template": "7. Olives are harvested by picking them or [[7]] the trees\n8. Olive flesh is placed in [[8]] and pressed\n9. Resulting liquid is given time to settle and separate, and [[9]] is used to aid the process",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "beating"
+       ],
+       "explanation": "Paragraph E: olives were harvested ‘by hand or by beating the fruit from the trees with long sticks’."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "bags"
+       ],
+       "explanation": "Paragraph E: ‘The remaining seedless flesh was put in woven bags and pressed.’"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "salt"
+       ],
+       "explanation": "Paragraph E: ‘In cold weather a bit of salt was added to speed up the process.’"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Amurca",
+     "template": "10. In ancient times, this waste liquid was usually thrown away, which led to [[10]]\n11. When dried, created hard surface, so used on [[11]] of certain buildings\n12. Used when making [[12]]\n13. Used on farms as a [[13]] to stop insects or animals damaging crops",
+     "questions": [
+      {
+       "n": 10,
+       "answer": [
+        "pollution"
+       ],
+       "explanation": "Paragraph F: discarding amurca caused ‘serious pollution because of its acidity and high salt content’."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "floors"
+       ],
+       "explanation": "Paragraph F: amurca ‘was often applied to the floors of grain storage buildings’."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "leather"
+       ],
+       "explanation": "Paragraph F: ‘amurca was applied to leather to soften it’."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "pesticide"
+       ],
+       "explanation": "Paragraph F: amurca was ‘utilised… as a pesticide helping them to protect their crops’."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Multi-tasking and the brain",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Do you think you’re a master of multi-tasking? Think again. Unless you are one of the three percent of super-taskers in the population, research shows that your brain is incapable of paying close attention to more than one complex task at a time. Researchers who study attention say that effective multi-tasking is beyond most of us. Psychiatrist Edward M Hallowell even describes multi-tasking as a ‘mythical activity in which people believe they can perform two or more tasks simultaneously as effectively as they can perform one’."
+    },
+    {
+     "label": "B",
+     "text": "It’s true that you can check your email while eating your lunch, or listen to music while walking. But innate activities like walking, chewing, and breathing do not require you to pay attention, whereas activities such as reading, tapping out a text message or driving a car do require attention. Why is paying attention to two things at once difficult? ‘The brain can perform simultaneous tasks, but attention has capacity limitations,’ says Associate Professor Paul E Dux, a cognitive neuroscientist at the University of Queensland in Australia. When you do only one thing at a time, you’re better at that task than when you’re doing multiple things concurrently."
+    },
+    {
+     "label": "C",
+     "text": "Take the classic multi-tasking scenario of talking on a mobile phone while driving – an ill-advised activity that many people believe they have mastered. When David Strayer, Professor of Psychology in the University of Utah in the US, and his team observed 56,000 drivers as they approached an intersection, the majority of drivers who were talking on their phone failed to stop in accordance with traffic laws. And it did not matter if the driver was using a handheld or hands-free device. Even with both eyes on the road and both hands on the wheel, drivers’ performance was impaired. Strayer’s research shows that performance deteriorates dramatically when attention is split between tasks: more mistakes are made and it takes longer to complete each activity. The prefrontal cortex is the brain region responsible for choosing what to pay attention to, and for coordinating inputs from other brain areas. By scanning the prefrontal cortex of people while they multi-tasked, scientists at the French Institute of Health and Medical Research in Paris (INSERM) found that when people focused on a single thing, the right and left sides of the prefrontal cortex worked together. But when people attempted to perform two things at once, the sides worked independently. Neuroscientist Etienne Koechlin says his study demonstrates that while the brain can switch back and forth between two tasks, we might be in great trouble when we try to juggle more than two tasks simply because we have only two frontal lobes."
+    },
+    {
+     "label": "D",
+     "text": "To the question of whether there is a difference between the sexes, Koechlin’s imaging studies uncovered no differences in the ability to switch between tasks in the prefrontal cortices of men or women. But other researchers studying real life scenarios such as finding lost keys believe there might be truth to the claim that women are superior multi-taskers. Women have a much better strategy for finding the keys, whereas men tend to jump to it and be far less organised and thorough. ‘It’s as if they don’t stop to reflect and plan for a moment,’ says Professor Keith Laws from the University of Hertfordshire in England. But while the ability to develop strategies for coping with the numerous tasks in everyday life could give women an advantage, ‘nobody can juggle two, never mind three, “complex” tasks at the same time.’"
+    },
+    {
+     "label": "E",
+     "text": "However, David Strayer’s research uncovered that some rare people possess extraordinary multi-tasking ability. These so-called ‘super-taskers’ exhibit different patterns of brain activity when multi-tasking compared to ordinary people: they show less activity in the prefrontal cortex during multi-tasking suggesting their brains are functioning with a high level of efficiency. Strayer thinks that pilots of high-performance aircraft, high-end chefs who can cook several meals at the same time to perfection, and elite doctors in hospital emergency rooms might all be more likely to be super-taskers. ‘All other things being equal, we suspect that super-taskers will rise to a top position in any occupation that places a high demand on juggling numerous tasks that demand attention at the same time.’"
+    },
+    {
+     "label": "F",
+     "text": "The ability to multi-task probably comes down to the DNA you inherit from your parents. To a large extent, says Strayer, ‘You are either born with the neural structure that allows you to overcome the usual multi-tasking challenges, or you aren’t. Super-taskers’ brains are doing something we can’t do.’ All in all, these findings may have very real consequences on our lives."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "The text has six sections, A–F. Choose the correct heading for each section from the list of headings below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Professions in which super-taskers are likely to be found"
+      },
+      {
+       "key": "ii",
+       "text": "The effects of multi-tasking on neurological structure"
+      },
+      {
+       "key": "iii",
+       "text": "A distinction between situations when people can and can't multi-task"
+      },
+      {
+       "key": "iv",
+       "text": "Real multi-tasking is nearly impossible"
+      },
+      {
+       "key": "v",
+       "text": "Multi-tasking and gender"
+      },
+      {
+       "key": "vi",
+       "text": "The neurological reasons for struggling to manage more things"
+      },
+      {
+       "key": "vii",
+       "text": "The ability to multi-task is determined by people's genes"
+      },
+      {
+       "key": "viii",
+       "text": "Gender and the structure of the brain"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Section A",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Section A says real multi-tasking is ‘beyond most of us’ and calls it a ‘mythical activity’."
+      },
+      {
+       "n": 15,
+       "text": "Section B",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Section B distinguishes innate activities (walking, chewing) from attention-requiring ones (reading, driving)."
+      },
+      {
+       "n": 16,
+       "text": "Section C",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Section C discusses the prefrontal cortex and how its two sides work independently during multi-tasking."
+      },
+      {
+       "n": 17,
+       "text": "Section D",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Section D examines whether men or women are better at multi-tasking."
+      },
+      {
+       "n": 18,
+       "text": "Section E",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Section E describes super-taskers and the professions (pilots, chefs, doctors) where they are likely found."
+      },
+      {
+       "n": 19,
+       "text": "Section F",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Section F says multi-tasking ability ‘comes down to the DNA you inherit’ – determined by genes."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of researchers below. Match each statement with the correct researcher, A–E.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Edward M Hallowell"
+      },
+      {
+       "key": "B",
+       "text": "Paul E Dux"
+      },
+      {
+       "key": "C",
+       "text": "David Strayer"
+      },
+      {
+       "key": "D",
+       "text": "Etienne Koechlin"
+      },
+      {
+       "key": "E",
+       "text": "Keith Laws"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 20,
+       "text": "The brain of a good multi-tasker works differently from other people’s.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "David Strayer (C) found super-taskers ‘exhibit different patterns of brain activity’."
+      },
+      {
+       "n": 21,
+       "text": "The rate of error is considerably higher when people multi-task.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "David Strayer (C): ‘more mistakes are made and it takes longer to complete each activity’."
+      },
+      {
+       "n": 22,
+       "text": "People are mistaken in their assumption that they can multi-task.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Edward M Hallowell (A) describes multi-tasking as a ‘mythical activity in which people believe they can perform two or more tasks simultaneously’."
+      },
+      {
+       "n": 23,
+       "text": "One gender does not seem to pause to consider before taking action.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Keith Laws (E) says of men: ‘It’s as if they don’t stop to reflect and plan for a moment.’"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Write ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Super-taskers",
+     "template": "Super-taskers are those of us who possess special multi-tasking ability. They can be found in all professions. People who are pilots, chefs and doctors are often super-taskers and super-taskers are most likely to achieve a [[24]] that is high on the career ladder. Super-taskers typically have to undertake many tasks simultaneously that need their [[25]]. Genes play an important role in having this capability: these people have a special brain [[26]] which helps them do what we cannot.",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "position"
+       ],
+       "explanation": "Strayer says super-taskers ‘will rise to a top position in any occupation’."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "attention"
+       ],
+       "explanation": "Jobs that place ‘a high demand on juggling numerous tasks that demand attention’."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "structure"
+       ],
+       "explanation": "Strayer: ‘You are either born with the neural structure that allows you to overcome’ multi-tasking challenges."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The Voynich Manuscript",
+   "paragraphs": [
+    {
+     "text": "The starkly modern Beinecke Library at Yale University is home to some of the most valuable books in the world: first folios of Shakespeare, Gutenberg Bibles and manuscripts from the early Middle Ages. Yet the library’s most controversial possession is an unprepossessing vellum manuscript about the size of a hardback book, containing 240-odd pages of drawings and text of unknown age and authorship. Catalogued as MS408, the manuscript would attract little attention were it not for the fact that the drawings hint at esoteric knowledge, while the text seems to be some sort of code – one that no-one has been able to break. It’s known to scholars as the Voynich manuscript, after the American book dealer Wilfrid Voynich, who bought the manuscript from a Jesuit college in Italy in 1912."
+    },
+    {
+     "text": "Over the years, the manuscript has attracted the attention of everyone from amateur dabblers to top codebreakers, all determined to succeed where countless others have failed. Academic research papers, books and websites are devoted to making sense of the contents of the manuscript, which are freely available to all. ‘Most other mysteries involve second-hand reports,’ says Dr Gordon Rugg of Keele University, a leading Voynich expert. ‘But this is one that you can see for yourself.’"
+    },
+    {
+     "text": "It is certainly strange; page after page of drawings of weird plants, astrological symbolism and human figures, accompanied by a script that looks like some form of shorthand. What does it say – and what are the drawings about? Voynich himself believed that the manuscript was the work of the 13th-century English monk Roger Bacon, famed for his knowledge of alchemy, philosophy and science. In 1921 Voynich’s view that Bacon was the writer appeared to win support from the work of William Newbold, Professor of Philosophy at the University of Pennsylvania, who claimed to have found the key to the cipher system used by Bacon. According to Newbold, the manuscript proved that Bacon had access to a microscope centuries before they were supposedly first invented. The claim that this medieval monk had observed living cells created a sensation. It soon became clear, however, that Newbold had fallen victim to wishful thinking. Other scholars showed that his ‘decoding’ methods produced a host of possible interpretations."
+    },
+    {
+     "text": "The Voynich manuscript has continued to defy the efforts of world-class experts. In 1944, a team was assembled to tackle the mystery, led by William Friedman, the renowned American codebreaker. They began with the most basic codebreaking task: analysing the relative frequencies of the characters making up the text, looking for signs of an underlying structure. Yet Friedman’s team soon found themselves in deep water. The precise size of the ‘alphabet’ of the Voynich manuscript was unclear: it’s possible to make out more than 70 distinct symbols among the 170,000-character text. Furthermore, Friedman discovered that some words and phrases appeared more often than expected in a standard language, casting doubt on claims that the manuscript concealed a real language, as encryption typically reduces word frequencies. Friedman concluded that the most plausible resolution of this paradox was that ‘Voynichese’ is some sort of specially created artificial language, whose words are devised from concepts, rather than linguistics. So could the Voynich manuscript be the earliest-known example of an artificial language? ‘Friedman’s hypothesis commands respect because of the lifetime of cryptanalytical expertise he brought to bear,’ says Rob Churchill, co-author of The Voynich Manuscript. That still leaves a host of questions unanswered, however, such as the identity of the author and the meaning of the bizarre drawings. ‘It does little to advance our understanding of the manuscript as a whole,’ says Churchill."
+    },
+    {
+     "text": "Even though Friedman was working more than 60 years ago, he suspected that major insights would come from using the device that had already transformed codebreaking: the computer. In this he was right – it is now the key tool for uncovering clues about the manuscript’s language."
+    },
+    {
+     "text": "The insights so far have been perplexing. For example, in 2001 another leading Voynich scholar, Dr Gabriel Landini of Birmingham University in the UK, published the results of his study of the manuscript using a pattern-detecting method called spectral analysis. This revealed evidence that the manuscript contains genuine words, rather than random nonsense, consistent with the existence of some underlying natural language. Yet the following year, Voynich expert René Zandbergen of the European Space Agency in Darmstadt, Germany showed that the entropy of the text (a measure of the rate of transfer of information) was consistent with Friedman’s suspicions that an artificial language had been used."
+    },
+    {
+     "text": "Many are convinced that the Voynich manuscript isn’t a hoax. For how could a medieval hoaxer create so many telltale signs of a message from random nonsense? Yet even this has been challenged in new research by Rugg. Using a system, first published by the Italian mathematician Girolamo Cardano in 1150, in which a specially constructed grille is used to pick out symbols from a table, Rugg found he could rapidly generate text with many of the basic traits of the Voynich manuscript. Publishing his results in 2004, Rugg stresses that he hadn’t set out to prove the manuscript a hoax. ‘I simply demonstrated that it’s feasible to hoax something this complex in a few months,’ he says."
+    },
+    {
+     "text": "Inevitably, others beg to differ. Some scholars, such as Zandbergen, still suspect the text has genuine meaning, though believe it may never be decipherable. Others, such as Churchill, have suggested that the sheer weirdness of the illustrations and text hint at an author who had lost touch with reality."
+    },
+    {
+     "text": "What is clear is that the book-sized manuscript kept under lock and key at Yale University has lost none of its fascination. ‘Many derive great intellectual pleasure from solving puzzles,’ says Rugg. ‘The Voynich manuscript is as challenging a puzzle as anyone could ask for.’"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 27,
+       "text": "It is uncertain when the Voynich manuscript was written.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage describes it as being of ‘unknown age and authorship’."
+      },
+      {
+       "n": 28,
+       "text": "Wilfrid Voynich donated the manuscript to the Beinecke Library.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says Voynich bought it but does not say he donated it to Beinecke."
+      },
+      {
+       "n": 29,
+       "text": "Interest in the Voynich manuscript extends beyond that of academics and professional codebreakers.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says it has attracted ‘everyone from amateur dabblers to top codebreakers’."
+      },
+      {
+       "n": 30,
+       "text": "The text of the Voynich manuscript contains just under 70 symbols.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says ‘more than 70 distinct symbols’, not just under 70."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people below. Match each statement with the correct person, A–H.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Gordon Rugg"
+      },
+      {
+       "key": "B",
+       "text": "Roger Bacon"
+      },
+      {
+       "key": "C",
+       "text": "William Newbold"
+      },
+      {
+       "key": "D",
+       "text": "William Friedman"
+      },
+      {
+       "key": "E",
+       "text": "Rob Churchill"
+      },
+      {
+       "key": "F",
+       "text": "Gabriel Landini"
+      },
+      {
+       "key": "G",
+       "text": "René Zandbergen"
+      },
+      {
+       "key": "H",
+       "text": "Girolamo Cardano"
+      }
+     ],
+     "questions": [
+      {
+       "n": 31,
+       "text": "The number of times that some words occur make it unlikely that the manuscript is based on an authentic language.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "William Friedman (D) discovered that some words appeared more often than expected, casting doubt on a real language."
+      },
+      {
+       "n": 32,
+       "text": "Unlike some other similar objects of fascination, people can gain direct access to the Voynich manuscript.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Gordon Rugg (A) says: ‘Most other mysteries involve second-hand reports… But this is one that you can see for yourself.’"
+      },
+      {
+       "n": 33,
+       "text": "The person who wrote the manuscript may not have been entirely sane.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Rob Churchill (E) suggested ‘the sheer weirdness… hint at an author who had lost touch with reality’."
+      },
+      {
+       "n": 34,
+       "text": "It is likely that the author of the manuscript is the same person as suggested by Wilfrid Voynich.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "William Newbold (C) ‘claimed to have found the key to the cipher system used by Bacon’, supporting Voynich’s view."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Voynich Researchers",
+     "template": "35 William Newbold believed that the author of the Voynich manuscript had been able to look at cells through a [[35]]. Other researchers later demonstrated that there were flaws in his argument.\n36 William Friedman concluded that the manuscript was written in an artificial language that was based on [[36]].\n37 He couldn’t find out the meaning of this language but he believed that the [[37]] would continue to bring advances in codebreaking.\n38 Dr Gabriel Landini used a system known as [[38]] in his research, and claims to have demonstrated the presence of genuine words.\n39 Dr Gordon Rugg’s system involved a grille, that made it possible to quickly select symbols that appeared in a [[39]]. Rugg’s conclusion was that the manuscript lacked genuine meaning.",
+     "questions": [
+      {
+       "n": 35,
+       "answer": [
+        "microscope"
+       ],
+       "explanation": "Newbold claimed the manuscript proved Bacon had access to a microscope centuries before they were supposedly first invented."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "concepts"
+       ],
+       "explanation": "Friedman concluded Voynichese is an artificial language ‘whose words are devised from concepts, rather than linguistics’."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "computer"
+       ],
+       "explanation": "Friedman suspected insights would come from ‘the device that had already transformed codebreaking: the computer’."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "spectral analysis"
+       ],
+       "explanation": "Dr Gabriel Landini used ‘a pattern-detecting method called spectral analysis’."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "table"
+       ],
+       "explanation": "Rugg used a grille ‘to pick out symbols from a table’."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 40,
+       "text": "The writer’s main aim in this passage is to",
+       "options": [
+        {
+         "key": "A",
+         "text": "explain the meaning of the manuscript."
+        },
+        {
+         "key": "B",
+         "text": "determine the true identity of the manuscript’s author."
+        },
+        {
+         "key": "C",
+         "text": "describe the numerous attempts to decode the manuscript."
+        },
+        {
+         "key": "D",
+         "text": "identify which research into the manuscript has had the most media coverage."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage surveys many researchers’ attempts to decode the manuscript, from Newbold through Friedman, Landini, Zandbergen and Rugg."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

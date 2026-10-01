@@ -1,0 +1,595 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-24",
+ "title": "CDI Listening Test 24",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "conversation between the director of a childcare centre and a parent who wants to enrol his child in the centre",
+  "radio programme introducing a holiday resort to visitors",
+  "student, Eric, talking to his lecturer, Ms Harris, about essay writing",
+  "talk on the research of the sensory systems of different species"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-24-part-1",
+   "title": "Part 1",
+   "context": "You will hear a conversation between the director of a childcare centre and a parent who wants to enrol his child in the centre.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Enquiry about Childcare Centre\nAbout the Fees\n- For short-day caring:\n- $ [[1]] for children under 2 years old.\n- Meals aren’t included.\n- There are [[2]] hours of free caring (one week).\nAbout the Centre\n- The centre has its own playground and offers outdoor [[3]]\n- Teachers in the centre have experience in [[4]] teaching.\n- Like other centres, it has a weekly [[5]]\n- The earliest month child can join is [[6]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "37.50",
+        "$37.50"
+       ],
+       "explanation": "For children younger than two, you have to pay $37.50."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "20"
+       ],
+       "explanation": "We offer you free care for 20 hours weekly."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "programmes",
+        "programs"
+       ],
+       "explanation": "We always take children to our playground and organise different programmes in the open air."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "primary school"
+       ],
+       "explanation": "All teachers specialise in primary school education."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "report"
+       ],
+       "explanation": "Parents can receive a report from their caring centres every weekend."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "September"
+       ],
+       "explanation": "You can’t join until the beginning of September, because one child will finish caring at the end of August."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "About the Staff\n- For some activities, the staff need to bring [[7]] , sunglasses and suncream.\n- They also should bring a [[8]] for each child.\n- All staff have to provide a medical [[9]] from the doctor.\nContact Details\n- Address: NO.75, [[10]] Avenue, Waikley\n- Phone number: 4789 6354",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "aprons"
+       ],
+       "explanation": "Our staff will prepare all the necessities, like aprons in the painting class, sunglasses and sun cream."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "family photo"
+       ],
+       "explanation": "You must provide a family photo. Many children may miss their parents."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "certificate"
+       ],
+       "explanation": "Each applicant must provide a health certificate from the doctor."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Calliope"
+       ],
+       "explanation": "It’s number 75 Calliope Avenue. That’s C-A-L-L-I-O-P-E."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a conversation between the director of a childcare centre and a parent who wants to enrol his child in the centre.\nDirector: Good morning. Welcome to the Early Learning Child Care Centre. How can I help you?\nParent: Good morning. I came across the advertisement for your child care centre last week, and I’m calling to get some details. I’m thinking of enrolling my daughter.\nDirector: Okay. What do you want to know, sir?\nParent: Well, I’ve learnt from the brochure that there are different types of caring, and I’m interested in the short day one. How much is the cost?\nDirector: Well, it depends on the age of your child. For children over the age of two, we charge $30 a day. And for those younger than two, you have to pay $37.50.\nParent: Does it include meals?\nDirector: Well, I’m afraid not. You have to pay extra for them. But we offer you free care for 20 hours weekly. It used to be 10 hours, but this month we extended the length of time as a special offer for our clients.\nParent: Oh, that will be of great help. OK, that’s about the fee. Then may I know more about your centre? Something about the children’s activities, the staff, etc.?\nDirector: OK, we offer a diversity of indoor activities which cater for children of different ages. For example, painting with watercolours, singing, dancing, games, etc. Moreover, when the weather is good, we always take children to our playground and organise different programmes in the open air.\nParent: That’s great! Outdoor activities are essential for children. What about the teachers? Are they experienced?\nDirector: Of course! All teachers in our centre have relevant working experience of at least three years and specialise in primary school education.\nParent: Great. Then they must be professional in dealing with children. Another thing is, I’ve heard from other parents that they can receive a report from their caring centres every weekend about how their children perform during that week. And I wonder, is there anything like that in your centre?\nDirector: Yes, we provide that too. [Weekly report]\nParent: Great. Then I want to enrol my daughter as soon as possible.\nDirector: Well, I’m afraid we have no vacancy at the moment. And you can’t join until the beginning of September, because one child will finish caring at the end of August.\nNow listen and answer questions 7 to 10.\nDirector: Then I will talk about our staff. All of our centre’s members are well trained so that they will take care of your children in every aspect. For example, when doing activities with special needs, our staff will prepare all the necessities for children, like aprons in the painting class, sunglasses and sun cream when playing outside on a sunny day.\nParent: It’s great that you can consider that. I thought we had to prepare for these by ourselves.\nDirector: You must provide something. A family photo. Many children may miss their parents, especially during the first week. So our staff will take photos of every child in case they need them.\nParent: Right. Apart from the professional knowledge of caring, are there any other requirements for your staff?\nDirector: Well, actually, when we do the recruitment, the priority we consider is the general health of the staff, so each applicant must provide a health certificate from the doctor.\nParent: Yes, I agree it’s essential. I’ve learned about your centre and I’m pretty interested, but I still have to discuss it with my wife.\nDirector: Of course. Then I’ll give you the contact details of our centre and if you want to register, you can call us or even have a visit if you like.\nParent: Okay. What’s your address?\nDirector: It’s number 75 Calliope Avenue. That’s C-A-L-L-I-O-P-E. Waikley.\nParent: Okay. Number 75 Calliope Avenue. And the telephone number is 4789 6354.\nParent: Okay. That’s everything I want to know. Thank you very much.\nDirector: You are welcome. Bye."
+  },
+  {
+   "id": "cdi-listening-24-part-2",
+   "title": "Part 2",
+   "context": "You will hear a radio programme introducing a holiday resort to visitors.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "Who are suitable for Coconut Beach Resort?",
+       "options": [
+        {
+         "key": "A",
+         "text": "backpackers"
+        },
+        {
+         "key": "B",
+         "text": "couples"
+        },
+        {
+         "key": "C",
+         "text": "families with children"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The resort is the best place to spend time with your beloved one (couples). Not suitable for backpackers, and beyond budget for families with children."
+      },
+      {
+       "n": 12,
+       "text": "Which type of room does Anna prefer?",
+       "options": [
+        {
+         "key": "A",
+         "text": "room with a spa bath"
+        },
+        {
+         "key": "B",
+         "text": "room with a private beach"
+        },
+        {
+         "key": "C",
+         "text": "room with an individual pool"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Anna changed to a room with a private pool — “It was my favourite.” The third option (private beach) she wants to try next time."
+      },
+      {
+       "n": 13,
+       "text": "Which facility was recently built?",
+       "options": [
+        {
+         "key": "A",
+         "text": "picnic area"
+        },
+        {
+         "key": "B",
+         "text": "golf shop"
+        },
+        {
+         "key": "C",
+         "text": "horse ranch for horse riding"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "A horse ranch was added to the resort — recently built. The picnic area was extended (not built), and the golf shop already existed."
+      },
+      {
+       "n": 14,
+       "text": "What impressed Anna most?",
+       "options": [
+        {
+         "key": "A",
+         "text": "town"
+        },
+        {
+         "key": "B",
+         "text": "rainforest"
+        },
+        {
+         "key": "C",
+         "text": "waterfall"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Anna joined a tour group to the rainforest: “I was struck by the thick vegetation and diverse species. So I recommend it to you.”"
+      },
+      {
+       "n": 15,
+       "text": "Why do the visitors like the rainforest exploration?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It suits all ages."
+        },
+        {
+         "key": "B",
+         "text": "It is excellent for guiding."
+        },
+        {
+         "key": "C",
+         "text": "It is the most interesting activity."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "It is an exciting activity for both young and old — it suits all ages."
+      },
+      {
+       "n": 16,
+       "text": "The Sound of the Birds is only opened on",
+       "options": [
+        {
+         "key": "A",
+         "text": "Mondays and Tuesdays"
+        },
+        {
+         "key": "B",
+         "text": "Thursdays and Fridays"
+        },
+        {
+         "key": "C",
+         "text": "Weekends"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The Sound of the Birds changed its schedule to the last two days of the weekdays (Thursdays and Fridays)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO facilities does the resort centre provide?",
+     "options": [
+      {
+       "key": "A",
+       "text": "24-hour cafe"
+      },
+      {
+       "key": "B",
+       "text": "free bus transfer"
+      },
+      {
+       "key": "C",
+       "text": "tourist shop"
+      },
+      {
+       "key": "D",
+       "text": "car transfer"
+      },
+      {
+       "key": "E",
+       "text": "tour booking office"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Q17–18: Free bus transfer (a bus picks you up, no extra charge) and tour booking office (located next to the cafe). Q17–18: Free bus transfer and tour booking office. The cafe is not 24-hour (8am–11pm). The tourist shop is closed for refurbishment."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Q17–18: Free bus transfer (a bus picks you up, no extra charge) and tour booking office (located next to the cafe). Q17–18: Free bus transfer and tour booking office. The cafe is not 24-hour (8am–11pm). The tourist shop is closed for refurbishment."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "In the tour of visiting educational aboriginal tribe, visitors can",
+     "options": [
+      {
+       "key": "A",
+       "text": "learn about aboriginal history."
+      },
+      {
+       "key": "B",
+       "text": "watch blanket weaving."
+      },
+      {
+       "key": "C",
+       "text": "meet the artists."
+      },
+      {
+       "key": "D",
+       "text": "enjoy local traditional dancing."
+      },
+      {
+       "key": "E",
+       "text": "learn about medicines."
+      }
+     ],
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "Q19–20: Visitors can meet the artists (talking to well-known painters) and learn about medicines (herbal treatment from a local herbalist). Q19–20: Meet the artists and learn about medicines. Aboriginal history and blanket weaving are mentioned as things learned at school, not experienced on the visit."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "Q19–20: Visitors can meet the artists (talking to well-known painters) and learn about medicines (herbal treatment from a local herbalist). Q19–20: Meet the artists and learn about medicines. Aboriginal history and blanket weaving are mentioned as things learned at school, not experienced on the visit."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a radio programme introducing a holiday resort to visitors.\nAnna: Welcome to our radio programme, Travel with Me in Australia. I’m Anna, the presenter of the radio show. In today’s session, I will introduce a fantastic place to you, the Coconut Beach Resort, which was newly built and opened to the public several months ago. I visited the resort last week and had a wonderful time there. Now I will give some details.\nAnna: First of all, who is the target group? As it is a beach resort, it’s not suitable for backpackers, of course. With little houses alongside the beach, this resort is the best place to spend time with your beloved one (couples). I know several newlyweds booked cabins there to spend their honeymoon. However, it isn’t an ideal destination for families with several children because it may be beyond the budget.\nAnna: About the accommodation, you can choose from different types of rooms and the price differs a lot. Take the bathing facilities for example. I booked a room with a spa bath for the first two days, which is the most cost-effective one. But for the three days left, I changed the room and lived in the one with a private pool. It was my favourite, I had to say. Every night I could relax in the pool, which is so personal and secluded. And the third option is a room with a private beach, which I want to experience next time.\nAnna: The resort has various facilities catering to the needs of different visitors. There is a golf course, and if you want to play you can either hire the equipment on the course or buy it in the golf shop. If you’re going to bring some snacks and drinks and relax in the open air, you can go to the picnic area which was extended recently. The good news is that a horse ranch was added to the resort so you can try horse riding if interested.\nAnna: I went to the town on the first day to enjoy the local food and talk with the local people. Then the next day I joined a tour group to the rainforest. It was my first time seeing a rainforest and I was struck by the thick vegetation and diverse species. So I recommend it to you.\nAnna: If you like, you can even explore the rainforest. Walk in among the densely covered forest. You can find different species of plants and animals. It is an exciting activity for both young and old. So all the people who have been there loved it. Don’t worry, you won’t get lost as a guide will lead you throughout the exploration.\nAnna: The most popular attraction is called the Sound of the Birds. It used to be open at weekends, but it was always crowded with people. As a result, it has changed the schedule and put it on the last two days of the weekdays (Thursdays and Fridays). I think it will give visitors a better experience.\nNow listen and answer questions 17 to 20.\nAnna: Besides the recreational facilities, I’d also like to introduce you to some other facilities in the Resort Centre that may be useful. First, it offers a transfer service. You don’t have to rent a car or take a taxi when you arrive at the airport. A bus will pick you up and take you directly to the resort. It leaves every 24 minutes and there is no extra charge. [free bus transfer]\nAnna: For coffee lovers, there is a cafe in the centre and it opens from 8am to 11pm. If you want to reserve a guided tour of the attractions, go to the tour booking office, which is located next to the cafe. However, the tourist shop is being refurbished and isn’t open at the moment.\nAnna: The last thing I want to mention is there is an Aboriginal tribe near the resort and if you are interested there is a visit every Wednesday. Maybe some of you have learnt Aboriginal history or Aboriginal traditions at school like traditional dancing and blanket weaving. But this time you can experience by yourselves appreciating Aboriginal rock painting and even talking to well-known painters (meet the artists). What’s more, a local herbalist will introduce you to the herbal treatment (learn about medicines), which is commonly used in the Aboriginal tribe.\nAnna: Okay, that’s all I want to introduce today. If you want to know more exciting holiday resorts in Australia, please wait for our programme next week. Bye!"
+  },
+  {
+   "id": "cdi-listening-24-part-3",
+   "title": "Part 3",
+   "context": "You will hear a student, Eric, talking to his lecturer, Ms Harris, about essay writing.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the flowchart below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Foundation for Essay Writing\nDecide on [[21]] you like.\n↓\nFocus on [[22]] area of interest.\n↓\nWrite [[23]] statement.\n↓\nCreate [[24]]\n↓\nEnsure this [[25]] clearly.",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "topic"
+       ],
+       "explanation": "Start with a topic — one that you want to explore."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "current"
+       ],
+       "explanation": "Break it into various current areas of discussion and relevance."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "thesis"
+       ],
+       "explanation": "You’ll have to think of a thesis, and this statement could be of several types."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "outline"
+       ],
+       "explanation": "You’ll need an outline. This could be written as a flowchart or spider graph."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "progress"
+       ],
+       "explanation": "There must be a sense of progress in, more or less, a straight line towards a goal."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "There are several [[26]] involved in producing a good essay. The writer must think independently and give [[27]] examples as support, each one with a reference (which is a [[28]] ). The formatting must follow the [[29]] issued by the university, as well as the word count decided by the lecturer, although it can vary by [[30]] .",
+     "questions": [
+      {
+       "n": 26,
+       "answer": [
+        "aspects"
+       ],
+       "explanation": "There are many aspects to consider."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "real-life",
+        "real life"
+       ],
+       "explanation": "You need examples from real life to illustrate your points."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "necessity"
+       ],
+       "explanation": "You must give a reference. That’s an academic necessity."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "style guide"
+       ],
+       "explanation": "The practical considerations, as written in the university style guide."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "10%",
+        "10 %",
+        "10 percent"
+       ],
+       "explanation": "Perhaps 10% either way should be acceptable."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a student, Eric, talking to his lecturer, Ms Harris, about essay writing.\nEric: Hi, Ms Harris. Here we are talking once again.\nMs Harris: Well, I’m always willing to help out wherever possible. Is anything troubling you?\nEric: Well, your advice last week about writing summaries was very useful, and I’m using these summaries a lot in order to prepare my final master’s thesis.\nMs Harris: But you’re having problems, right?\nEric: Yes, I have a few issues to discuss. Obviously I want a good essay and I want to achieve high marks, but I’m not sure on the best way to start.\nMs Harris: That’s an easy question. Start with a topic, but not one that I necessarily suggest, but one that you want to explore. You will always write better when doing so on a topic you are interested in, not one imposed upon you by others.\nEric: Well, I’m interested in management theory.\nMs Harris: Then pursue that. However, that alone is far too broad. Break it into various current areas of discussion and relevance. Then look more carefully at one of them. Say, management and cultural differences, or management and motivation, or other aspects.\nEric: I would say I’m interested in group cohesion, that is, how people interact in the workplace.\nMs Harris: Well, that’s a start, but you can’t then just write planlessly without defining exactly what you intend to do within the area you’ve chosen. You’ll have to think of a thesis, and this statement could be of several types.\nEric: Such as what?\nMs Harris: Oh, you could argue a point, something that you believe in, or discuss an issue, looking at its various perspectives, or critique the opinions of others, pointing out the pitfalls and flaws. The thesis statement will make that very clear because it will say, in simple terms, what you intend to achieve in your essay.\nEric: I see. And then I can just begin writing, right?\nMs Harris: Wrong. If your essay is going to be clear, it needs to be logical and organised, and this means you’ll need an outline. This could be written as a flowchart or spider graph, that is, a series of connected lines. But whatever shape the outline takes, there must be a sense of progress in, more or less, a straight line towards a goal.\nEric: And then my essay will be good?\nMs Harris: With such progression, definitely, as long as you do achieve everything that you set out to do, as specified in the beginning, OK?\nNow listen and answer questions 26 to 30.\nEric: Well, Ms Harris, your advice about essay writing all sounds very useful, solid and step-by-step, so I’ll certainly follow that. But can you tell me in more general terms what constitutes the best essay?\nMs Harris: Oh, there are many aspects to consider, but one of the most important is certainly original thinking. The best essays are written by people who think for themselves, and not just copy or imitate established views.\nEric: I think I can do that.\nMs Harris: But remember, you can’t just give a list of unsupported assertions. There needs to be support as well. A chain of logic linking each step in your argument. Yet that alone is not enough. Your argument may be logically sound, but is it practically so? For that, you need examples from real life to illustrate your points or sub-points.\nEric: I’ve got lots of examples from my course readings. I suppose I could use them.\nMs Harris: But remember, whenever you use an example or facts or figures that are not commonly known, you must give a reference. That’s an academic necessity, without which your writing will automatically fail.\nEric: So it’s necessary to give these, right?\nMs Harris: Absolutely. And with that, your essay will be fine. But always ensure that you format it clearly.\nEric: What do you mean?\nMs Harris: I mean the practical considerations, as written in the university style guide, such as leaving appropriate margins, using double spacing, aerial font and so on. You see, your writing must look good as well as be good.\nEric: I can certainly do that.\nMs Harris: And finally, related to the previous point, you need to respect the number of words required. Your individual lecturers will give you a word count figure, so follow what they say, making your essay neither too long nor too short. Perhaps 10% either way should be acceptable. 15% was common when I was younger, but it’s a lot stricter now and 20% would be pushing the boundaries just a little too far.\nEric: I guess I can do all that. Thanks for your advice."
+  },
+  {
+   "id": "cdi-listening-24-part-4",
+   "title": "Part 4",
+   "context": "You will hear a talk on the research of the sensory systems of different species.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "Animal Senses\nSmell\n- Dogs have a greater sense of smell than human beings and are able to tell.\n- Some animals can smell odours such as [[31]] recognised by the human nose.\n- Some beetles can only distinguish the odours of certain plants.\n- Bees, feeling threatened, will use their [[32]] before they sting.\n- Queen bees, which can sting multiple times, use their feet to keep [[33]] over the colony.\n- A female [[34]] decides whether or not to mate with a male according to the quality of his scent.\nHearing\n- Sound through vibrations can be recognized by beetles without ears by using their [[35]]\n- They can locate prey living in [[36]] by tracking the vibrations.\nSight\n- Snakes are able to search for food by detecting [[37]] from the mouths of their prey.\n- They can tell the [[38]] of a mouse by detecting its heat.\n- After its prey is killed, a snake stores food in its [[39]] and hibernates.\n- A snake that goes into a state of hibernation will not eat for a long period of time.\n- The [[40]] is calculated by snakes before hunting their prey.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "carbon dioxide",
+        "CO2"
+       ],
+       "explanation": "Some animals can smell odours undetectable by the human nose, such as carbon dioxide."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "legs"
+       ],
+       "explanation": "When a bee feels threatened, it will use its legs to signal and warn others before it stings."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "control"
+       ],
+       "explanation": "The queen bee is able to control the colony by monitoring its movement through her feet."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "butterfly"
+       ],
+       "explanation": "One example is the female butterfly, who will only mate with the male that produces the strongest pheromones."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "feet"
+       ],
+       "explanation": "Beetles do not have ears, but instead use their feet to detect vibrations caused by sound."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "woodlands"
+       ],
+       "explanation": "They are able to detect the location and movement of their prey by monitoring vibrations in the woodlands."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "heat"
+       ],
+       "explanation": "Snakes hunt their prey by detecting the heat radiating from their mouths."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "body shape"
+       ],
+       "explanation": "Upon moving closer, a snake will be able to determine its body shape."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "stomach"
+       ],
+       "explanation": "All of its energy is directed towards digesting the food stored in its stomach."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "distance"
+       ],
+       "explanation": "Before it commits to hunt, a snake will use heat to calculate how much distance it has to travel."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a talk on the research of the sensory systems of different species.\nLecturer: Good day, ladies and gentlemen. Welcome to the second lecture in our series on animal senses. Today I’ll be comparing the sensory systems of different species and discussing how these senses enable them to explore their environment.\nLecturer: When it comes to the sense of smell, you may think that human beings have powerful and well-evolved sensory systems. However, some animals have a sense of smell that is far more powerful than ours. Dogs, for example, have a sense of smell that is 40 times greater than a human’s and can distinguish 220 kinds of smell. Some animals can even smell odours that are undetectable by the human nose, such as carbon dioxide. There are also animals that have a relatively weak sense of smell. For example, there are species of beetles that can recognise the odours of certain plants, but not others.\nLecturer: The bee is an interesting example to examine in reference to smell because they experience this sense via their antennae. Bumblebees have stings, but it’s rare that they actually use this weapon. When a bee feels threatened, it will use its legs to signal and warn others about the threat before it stings. This is called a signalling posture and involves the bee lifting its two back legs into the air. Within any hive, there is a hierarchy with the queen bee at the top. The queen bee is able to control the colony by monitoring its movement through her feet. The queen bee is the only reproductive female in the entire colony, and she is also able to sting multiple times, unlike the worker bees that will die if they sting.\nLecturer: In the insect world, scent can also be used to facilitate mating, as females decide whether or not to mate with a male depending on the quality of his scent. One such example of this is the female butterfly, who will only mate with the male butterfly that produces the strongest pheromones. This is how the species ensures that only the best genes are perpetuated in order to create the strongest offspring.\nLecturer: Next we move on to the hearing sense of beetles. Interestingly, beetles do not have ears, but instead use their feet to detect vibrations caused by sound. This is particularly useful when searching for food among the trees in which they live, as they are able to detect the location and movement of their prey by monitoring vibrations in the woodlands.\nLecturer: The final sense that we’ll be looking at today is sight. Snakes are a particularly interesting case study, as they do not see shapes and colours as humans do, but instead hunt their prey by detecting the heat radiating from their mouths. This makes them incredibly effective predators as they are able to zero in on their prey very quickly and efficiently.\nLecturer: From a distance, a snake is able to locate the heat radiating from a mouse, for example, and upon moving closer will be able to determine its body shape. This can help prevent the snake from attempting to attack prey that is too large for it.\nLecturer: Once a snake has killed and eaten its prey, it goes into a state of hibernation, whereby all of its energy is directed towards digesting the food stored in its stomach. Depending on the size of the snake and its prey, this hibernation can last from hours to days. Once fully fed, a large snake will not need to eat again for the next couple of weeks. During the breeding season, however, female snakes will feed more frequently.\nLecturer: The heat detection of a snake is very complex and can be even more effective than the vision of a human. It not only uses heat to determine the location of its prey, but before it commits to hunt, it will also use the heat to calculate how much distance it has to travel in order to reach it. This prevents the snake from wasting energy hunting prey that is too far away to catch."
+  }
+ ],
+ "audio": {
+  "file": "listening-24.mp3",
+  "durationSec": 1813,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

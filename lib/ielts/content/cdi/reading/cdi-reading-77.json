@@ -1,0 +1,638 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-77",
+ "title": "CDI Reading Test 77",
+ "description": "A full Academic Reading test from the CDI practice materials: Socotra Island; The Physics of Traffic Behavior; Practical Learning in the Classroom.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Socotra Island",
+  "The Physics of Traffic Behavior",
+  "Practical Learning in the Classroom"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Socotra Island",
+   "paragraphs": [
+    {
+     "text": "Situated in the Arabian Sea off the Arabian Peninsula is the Socotra archipelago, a remnant of an ancient landmass that became separated from Africa and Arabia 18 million years ago."
+    },
+    {
+     "text": "When scientists began the first substantial exploration of the islands 30 years ago, they found a fascinating collection of unusual plants and animals - a unique combination of 'relict' populations (organisms that have become extinct elsewhere) and species that have evolved to cope with the island's harsh conditions. In fact, almost a third of its plant species and up to 80 percent of its terrestrial animals are found nowhere else."
+    },
+    {
+     "text": "Life in the arid conditions is harsh for the people living there too. Isolated from the mainland by hundreds of kilometres, and with monsoons that rage for several months every year, the islanders were historically self-sufficient - relying only on what they themselves could produce to survive. There are floods and droughts, and many islanders lack adequate water resources and nutrition. Medical care and education are limited."
+    },
+    {
+     "text": "However, the main island, Socotra, is experiencing significant change. A rapid development programme has been instituted that will have far-reaching impacts on the island's people and the environment for decades to come. In the past, the only way to get to Socotra was by travelling for several days on a boat, but irregular flights began touching down on dirt landing strips during the late 1960s. By 1999, a runway had been constructed on Socotra that was capable of taking larger aircraft all year round, and since 2000 the capital, Hadibo, has seen huge expansion. New schools have been built, and a modern terminal was added to the airport, through which an increasing number of tourists are beginning to pass. And there are plans to construct new harbour facilities that will enable fishermen to sell their catch more easily, and also make it simpler for local people to have food, and bricks and timber for construction projects brought to the island."
+    },
+    {
+     "text": "However, although these improvements are significant, it’s the continuing development of Socotra’s road system that is having the greatest impact on the islanders. Until 1991, a few dirt tracks, navigable only by four-wheel drive, gave access to part of the island. Otherwise it was only possible to reach most areas on foot, or with a donkey. By 2001, however, there was an extensive network of unpaved car tracks, and the following year a tarmac road, the first of its kind on Socotra, connecting the airport to Hadibo, was completed. Now, a road traverses the Diksam plateau and continues on to the south coast, making essential services more accessible to a large number of villagers."
+    },
+    {
+     "text": "There is no doubt that the development of Socotra’s infrastructure has brought many benefits to the island’s inhabitants, but there is growing concern that the speed with which it is taking place is so rapid that it will be difficult for local people to maintain certain traditions. There is also the fear that the developments will threaten the island’s unique ecosystems. Building new roads and harbours may lead to the introduction of alien species to Socotra Island (as has already happened with the Indian house crow), damage to the sea’s biodiversity through the increased collection and sale of coral, and tourist developments on an inappropriate and unsustainable scale."
+    },
+    {
+     "text": "Problems were also caused by increasing access to sensitive areas. For example, cutting the road along the coast caused considerable damage to the stunning scenery. However, some steps were then taken to limit the damage caused by further development. For example, biodiversity project officers were consulted in the planning stages of the road that crosses the centre of Socotra, so it avoids some of the most scenic areas and sites that contain plants only found in a limited number of locations. It is an area which is also home to the greatest concentrations of dragon's blood trees and supports many endemic animals."
+    },
+    {
+     "text": "An agreement has now been reached about all future construction of roads. To protect the island’s ecologically sensitive areas, any proposed road will be subject to a report assessing its environmental impact prior to construction. The challenge has been to bring the benefits of development to Socotra without damaging the environment, which supports the people’s way of life and will form the basis of future development on the island."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Scientists found species on the islands that had died out in other countries.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'Relict' populations are organisms that have become extinct elsewhere, so species that died out in other places survive on Socotra."
+      },
+      {
+       "n": 2,
+       "text": "The inhabitants used to be dependent on the mainland.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says the opposite: the islanders were historically self-sufficient, relying only on what they produced."
+      },
+      {
+       "n": 3,
+       "text": "The fact that the first flights to the island were infrequent was because of poor weather conditions.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The flights are described as irregular, but no reason for this is given; the weather is never mentioned as the cause."
+      },
+      {
+       "n": 4,
+       "text": "Most visitors to the islands stay in the capital city.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Tourists are said to pass through the airport, but the passage never says where most visitors stay."
+      },
+      {
+       "n": 5,
+       "text": "People's lives have been changed more by the airport than any other development.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The road system, not the airport, is said to have the greatest impact on the islanders."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Choose ONE WORD AND/OR A NUMBER from the text for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "# Transportation\n- At one time, it was only possible to reach Socotra by [[6]].\n- In [[7]] the airport runway was finished.\n- The airport was further expanded with an up-to-date [[8]].\n- Harbour improvements have made it easier to import [[9]] and building materials.\n- Before the new road system, parts of Socotra were only accessible on foot, by [[10]] or in a four-wheel drive.\n# Impact on local people and the environment\n- Fewer [[11]] will be continued by local inhabitants because of the speed of development.\n- Biodiversity officers ensured the new road did not pass through places with rare [[12]].\n- In future, environmental damage by road construction will be evaluated in a [[13]].",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "boat"
+       ],
+       "explanation": "In the past the only way to reach Socotra was several days of travel on a boat."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "1999"
+       ],
+       "explanation": "The runway capable of taking larger aircraft was completed by 1999."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "terminal"
+       ],
+       "explanation": "The airport was expanded with a modern terminal."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "food"
+       ],
+       "explanation": "The new harbour facilities will make it easier to bring food and building materials (bricks and timber) to the island."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "donkey"
+       ],
+       "explanation": "Before the road network, most areas could only be reached on foot, with a donkey, or by four-wheel drive on a few dirt tracks."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "traditions"
+       ],
+       "explanation": "Because development is so rapid, local people will find it hard to maintain certain traditions."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "plants"
+       ],
+       "explanation": "The road was planned to avoid sites containing plants found in only a limited number of locations."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "report"
+       ],
+       "explanation": "Every future road must first have a report assessing its environmental impact."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The Physics of Traffic Behavior",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Some years ago, when several theoretical physicists, principally Dirk Helbing and Boris Kerner of Stuttgart, Germany, began publishing papers on traffic flow in publications normally read by traffic engineers, they were clearly working outside their usual sphere of investigation. They had noticed that if they simulated the movement of vehicles on a highway, using the equations that describe how the molecules of a gas move, some very strange results emerged. Of course, vehicles do not behave exactly like gas molecules: for example, drivers try to avoid collisions by slowing down when they get too near another vehicle, whereas gas molecules have no such concern. However, the physicists modified the equations to take the differences into account and the overall description of traffic as a flowing gas has proved to be a very good one; the moving-gas model of traffic reproduces many phenomena seen in real-world traffic."
+    },
+    {
+     "text": "The strangest thing that came out of these equations, however, was the implication that congestion can arise completely spontaneously; no external causes are necessary. Vehicles can be flowing freely along, at a density still well below what the road can handle, and then suddenly gel into a slow-moving queue. Under the right conditions, a brief and local fluctuation in the speed of the vehicles between vehicles is all it takes to trigger a system-wide breakdown that persists for hours. In fact, the physicists’ analysis suggested that such spontaneous breakdowns in traffic flow probably occur quite frequently on highways."
+    },
+    {
+     "label": "B",
+     "text": "Though a decidedly unsettling discovery, this showed striking similarities to the phenomena popularized as ‘chaos theory’. This theory has arisen from the understanding that in any complex interacting system which is made of many parts, each part affects the others. Consequently, tiny variations in one part of a complex system can grow in huge but unpredictable ways. This type of dramatic change from one state to another is similar to what happens when a chemical substance changes from a vapor to a liquid. It often happens that water in a cloud remains as a gas even after its temperature and density have reached the point where it could condense into water droplets. However, if the vapor encounters a solid surface, even something as small as a speck of dust, condensation can take place and the transition from vapor to liquid follows. Helbing and Kerner see traffic as a complex interacting system. They found that a small fluctuation in traffic density can act as the ‘speck of dust’ causing a sudden change from freely moving traffic to synchronized traffic, when vehicles in all lanes abruptly slow down and start moving at the same speed, mimicking passing impossible."
+    },
+    {
+     "label": "C",
+     "text": "The physicists have challenged proposals to set a maximum capacity for vehicles on highways. They argue that it may not be enough simply to limit the rate at which vehicles are allowed to enter a highway, rather, it may be necessary to time each vehicle’s entry onto a highway precisely to coincide with a temporary drop in the density of vehicles along the road. The aim of doing this would be to smooth out any possible fluctuations in the road conditions that can trigger a change in traffic behavior and result in congestion. They further suggest that preventing breakdowns in the flow of traffic could ultimately require implementing the radical idea that has been suggested from time to time: directly regulating the speed and spacing of individual cars along a highway with central computers and sensors that communicate with each car’s engine and brake controls."
+    },
+    {
+     "label": "D",
+     "text": "However, research into traffic control is generally centered in civil engineering departments and here the theories of the physicists have been greeted with some skepticism. Civil engineers favor a practical approach to problems and believe traffic congestion is the result of poor road construction (two lanes becoming one lane or dangerous curves), with constraints the flow of traffic. Engineers questioned how well the physicists’ theoretical results relate to traffic in the real world. Indeed some engineering researchers questioned whether elaborate chaos-theory interpretations are needed at all, since at least some of the traffic phenomena the physicists theories predicted seemed to be similar to observations that had been appearing in traffic engineering literature under other names for years; observations which had straightforward cause-and-effect explanations."
+    },
+    {
+     "label": "E",
+     "text": "James Banks, a professor of civil and environmental engineering at San Diego State University in the US, suggested that a sudden slowdown in traffic may have less to do with chaos theory than with driver psychology. As traffic gets heavier and the passing lane gets more crowded, aggressive drivers move to other lanes to try to pass, which also tends to even out the speed between lanes. He also felt that another leveling force is that when a driver in a fast lane brakes a little to maintain a safe distance between vehicles, the shock wave travels back much more rapidly than it would in the other slower lanes, because each following driver has to react more quickly. Consequently, as a road becomes congested, the faster moving traffic is the first to slow down."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "The text has four sections. Choose the correct heading for each section and move it into the gap. Example: {\"para\":\"B\",\"val\":\"I\"}",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "I",
+       "text": "Dramatic effects can result from small changes in traffic just as in nature"
+      },
+      {
+       "key": "II",
+       "text": "How a maths experiment actually reduced traffic congestion"
+      },
+      {
+       "key": "III",
+       "text": "How a concept from one field of study was applied in another"
+      },
+      {
+       "key": "IV",
+       "text": "A lack of investment in driver training"
+      },
+      {
+       "key": "V",
+       "text": "Areas of doubt and disagreement between experts"
+      },
+      {
+       "key": "VI",
+       "text": "How different countries have dealt with traffic congestion"
+      },
+      {
+       "key": "VII",
+       "text": "The impact of driver behavior on traffic speed"
+      },
+      {
+       "key": "VIII",
+       "text": "A proposal to take control away from the driver"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Section A",
+       "answer": [
+        "III"
+       ],
+       "explanation": "Physics (the behaviour of gas molecules) was applied to traffic engineering - a concept from one field used in another."
+      },
+      {
+       "n": 15,
+       "text": "Section C",
+       "answer": [
+        "VIII"
+       ],
+       "explanation": "Section C proposes letting central computers control each car's speed and spacing - taking control away from the driver."
+      },
+      {
+       "n": 16,
+       "text": "Section D",
+       "answer": [
+        "V"
+       ],
+       "explanation": "Section D describes the doubts of civil engineers and their disagreement with the physicists."
+      },
+      {
+       "n": 17,
+       "text": "Section E",
+       "answer": [
+        "VII"
+       ],
+       "explanation": "Section E explains how the behaviour and psychology of drivers affects traffic speed."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 2?",
+     "questions": [
+      {
+       "n": 18,
+       "text": "Dirk Helbing and Boris Kerner of Stuttgart were experts in traffic engineering.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "They were theoretical physicists working outside their usual field, not traffic engineers."
+      },
+      {
+       "n": 19,
+       "text": "Many occurrences of real-world traffic can be duplicated by the moving-gas model.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage states the model reproduces many phenomena seen in real-world traffic."
+      },
+      {
+       "n": 20,
+       "text": "Helbing and Kerner discovered that a little variation in the number of cars on the road can change the ease of flow of traffic.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "A small fluctuation in traffic density can trigger the change from free flow to synchronized, slow-moving traffic."
+      },
+      {
+       "n": 21,
+       "text": "Scientists agree that a maximum capacity of vehicles on the highway can be set restricting the number of vehicles entering the highway at a time.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Far from agreeing, the physicists have challenged such proposals and argue that limiting entry may not be enough."
+      },
+      {
+       "n": 22,
+       "text": "It is advised by scientists that directly managing the speed of individual cars can help put a stop to the breakdown in the flow of traffic.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "They suggest that preventing breakdowns could require directly regulating the speed and spacing of individual cars."
+      },
+      {
+       "n": 23,
+       "text": "Civil engineers do not completely believe in the theories of physicists regarding traffic control.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "In civil engineering departments the physicists' theories were met with skepticism."
+      },
+      {
+       "n": 24,
+       "text": "Mechanical engineers believe that modern engines can help in solving the problem of traffic congestion.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Mechanical engineers and modern engines are never discussed in the passage."
+      },
+      {
+       "n": 25,
+       "text": "Professor James Banks believes that the abrupt change in traffic flow depends on the driver's mindset.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Banks suggests sudden slowdowns have more to do with driver psychology than with chaos theory."
+      },
+      {
+       "n": 26,
+       "text": "Calm drivers switch lanes when the number of cars in the lane increases.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "It is aggressive drivers, not calm ones, who move to other lanes as traffic gets heavier."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Practical Learning in the Classroom",
+   "subtitle": "A teacher describes a case study involving middle school students and traditional earthen architecture",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The way we think about architecture in schools has come a long way. Once, studying architecture in the art class meant learning to appreciate great buildings art-history style, through slide presentations. In recent years, though, the American Institute of Architects has fostered the idea that the process of architectural design, not just the appreciation of architecture, is a beneficial aspect of the art curriculum (Sadler, 1989)."
+    },
+    {
+     "label": "B",
+     "text": "The value of architectural design is that it is the concrete training ground for a broadly applicable creative process. Architectural training can help people design structures to meet needs. It can help farmers design crop rotations to meet needs. Furthermore, it provides hands-on experiences that reinforce learning in various other subjects, from math to social studies."
+    },
+    {
+     "label": "C",
+     "text": "In the ongoing dialogue about architecture in the middle school art curriculum, many believe students should actually build the structures they design in their courses. Although the technology and expertise required of modern architecture can prohibit students from actually realizing their designs, traditional architectural materials and methods remain quite accessible to the art classroom. Traditional architectural materials, such as earth, clay and straw, are cheap, easy to work with and readily available. Further, when students participate in the construction or preservation of a traditional earthen structure in their local community, they engage in a form of experiential learning and they are motivated to invest in the project. This is evident in a case study of an adobe conservation project with middle school students in the town of Zuni, New Mexico, in the Southwestern United States."
+    },
+    {
+     "label": "D",
+     "text": "Traditional architecture reaches back to preindustrial America, when local resources and cultures produced structures in styles unique to each region. In New Mexico, examples of hand-built earthen structures still abound. The region has seen some decline in traditional architecture as industrialization has brought new building codes and materials; however, the traditional, non-industrial home, either preserved from earlier generations or newly built, remains in use. Traditional building materials and the land that supplies them are so accessible that handcrafting a house still remains feasible."
+    },
+    {
+     "label": "E",
+     "text": "Thus, with no technical expertise and little cost, middle school students can participate in the construction or preservation of a traditional earthen structure. During the project, a student will get to know the materials, understand the chemistry, solve problems, work with classmates, and exercise muscles. The student can apply knowledge of design principles and the creative process while participating in a cooperative effort. But most significantly, this type of project-based activity motivates students to invest intellectually and emotionally in the outcome."
+    },
+    {
+     "label": "F",
+     "text": "The town of Zuni, where I taught art, was surrounded by adobe construction, new and old. Behind our main high school building there was a one-room adobe structure which was once used for teaching. Now it served as a place where old furniture could be kept. I sent my class home with the oral history assignment to ask their family, friends and neighbors questions to find out about that building. From their research we compiled a sketchy history: it began as a kindergarten classroom; it later became an art classroom; now it was full of broken desks."
+    },
+    {
+     "label": "G",
+     "text": "The building’s design kept it relatively warm in the winter, even without heating, due to its broad south face, and it stayed cool in the summer due to its spacious, ventilated attic and massive earthen walls. Because of this, my students agreed it was worth preserving and were enthusiastic about helping. Preservationist Shalie Gasper arrived in the fall to help with an assessment of the building’s needs. She recommended replacing the stucco that encased the original adobe walls with a traditional mud plaster. She showed us where to find local supplies of sand and clay soil for the plaster mix. We began work on the stucco removal in late fall. The next spring the students were ready to replaster. To teach the traditional skills, Gasper and other local specialists joined us. They gave my class three full mornings of intensive workshops on history and preservation as well as mud-plastering technique, and the building got a new coat of traditional mud plaster."
+    },
+    {
+     "label": "H",
+     "text": "Small design-and-build projects such as this can be seen through to the finish when working with earth in the art curriculum. A simple landscape feature such as a wall, entryway, or arch can draw students into important aspects of design that involve the structure’s interaction with people, the surrounding landscape, and natural elements. The same project may provide an opportunity to focus on the chemistry of soil or the structural dynamics of construction. Design goals might guide students to involve traditional forms, consider formal aspects, or integrate math skills of measuring and estimating."
+    },
+    {
+     "label": "I",
+     "text": "During our traditional architecture unit, the students realized that something old and almost forgotten is valuable and worth preserving. Many others in the community and around the country share this renewal of interest in traditional earthen technologies. It is the connection to a cultural heritage that interests some; the quality of living within massive, natural walls that attracts others; or for others, the sustainability of the process and the minimal energy spent in construction. The value of adobe in general is becoming more and more known, but little has been said about its value in the art curriculum until now. This experiment in adobe conservation with middle school students convinced me that traditional architecture deserves a place in the regular curriculum."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "What education initiative does the American Institute of Architects currently promote?",
+       "options": [
+        {
+         "key": "A",
+         "text": "multimedia presentation of information in classrooms"
+        },
+        {
+         "key": "B",
+         "text": "the study of monumental buildings throughout history"
+        },
+        {
+         "key": "C",
+         "text": "the practice of designing architectural structures"
+        },
+        {
+         "key": "D",
+         "text": "processes to add more art classes in schools"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The Institute promotes the process of architectural design itself, not just the appreciation of buildings."
+      },
+      {
+       "n": 28,
+       "text": "In the third paragraph, what problem with teaching architecture on art courses does the writer note?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Technology-based courses are unavailable."
+        },
+        {
+         "key": "B",
+         "text": "Students cannot always construct their designs."
+        },
+        {
+         "key": "C",
+         "text": "The curriculum is too traditional."
+        },
+        {
+         "key": "D",
+         "text": "Students lack motivation."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Modern architecture demands technology and expertise that can stop students from actually building what they design."
+      },
+      {
+       "n": 29,
+       "text": "What is the greatest benefit for students that the writer sees in a traditional architecture project?",
+       "options": [
+        {
+         "key": "A",
+         "text": "personal connection to the end result"
+        },
+        {
+         "key": "B",
+         "text": "participation in a cooperative project"
+        },
+        {
+         "key": "C",
+         "text": "building of problem-solving skills"
+        },
+        {
+         "key": "D",
+         "text": "conservation of a traditional building"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Most significantly' signals the greatest benefit: students invest intellectually and emotionally in the outcome."
+      },
+      {
+       "n": 30,
+       "text": "What is the purpose of the eighth paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to explain why it is important that projects be small"
+        },
+        {
+         "key": "B",
+         "text": "to outline the multiple skills involved in one project"
+        },
+        {
+         "key": "C",
+         "text": "to discuss strategies for connecting content areas"
+        },
+        {
+         "key": "D",
+         "text": "to propose suggestions for traditional earth projects"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph H lists the many skills one small project can involve: design, chemistry, structural dynamics, and math."
+      },
+      {
+       "n": 31,
+       "text": "What does the writer say about traditional building and the general population?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Earthen architecture is becoming a profitable business."
+        },
+        {
+         "key": "B",
+         "text": "Earthen architecture is less feasible in some areas of the country."
+        },
+        {
+         "key": "C",
+         "text": "Interest in earthen architecture varies from region to region."
+        },
+        {
+         "key": "D",
+         "text": "People are attracted to earthen architecture for different reasons."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Different people are drawn by different things: heritage, the quality of living within natural walls, or sustainability."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–H, below. Drag each word into the correct gap.",
+     "title": "The Zuni earthen architecture project",
+     "options": [
+      {
+       "key": "A",
+       "text": "Experts"
+      },
+      {
+       "key": "B",
+       "text": "location"
+      },
+      {
+       "key": "C",
+       "text": "design"
+      },
+      {
+       "key": "D",
+       "text": "storage"
+      },
+      {
+       "key": "E",
+       "text": "students"
+      },
+      {
+       "key": "F",
+       "text": "resources"
+      },
+      {
+       "key": "G",
+       "text": "training"
+      },
+      {
+       "key": "H",
+       "text": "businesses"
+      }
+     ],
+     "template": "The students in Zuni chose to renovate an old building which was being used for [[32]]. They came to an agreement that the building was worthy of rehabilitation based on its functional [[33]]. At the beginning of the project, students were given the task of discovering the history of the building through interviews with local residents. During the course of the project, they learned where to locate [[34]] for the project. They also worked closely with a number of [[35]] on each step of the project. During the project, students were also given [[36]] to build useful skills.",
+     "questions": [
+      {
+       "n": 32,
+       "answer": [
+        "D"
+       ],
+       "explanation": "The old adobe classroom was being used to store broken desks and old furniture - storage."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "C"
+       ],
+       "explanation": "Its design kept it warm in winter and cool in summer, which is why the students agreed it was worth preserving."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "F"
+       ],
+       "explanation": "Gasper showed the class where to find local supplies of sand and clay - the resources for the plaster."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "A"
+       ],
+       "explanation": "Preservationist Shalie Gasper and other local specialists worked with the class - experts."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "G"
+       ],
+       "explanation": "The intensive workshops on preservation and mud-plastering technique were the students' training."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the views of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 37,
+       "text": "The price of materials is one drawback to using traditional architecture.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The writer says the opposite: traditional materials are cheap, easy to work with and readily available."
+      },
+      {
+       "n": 38,
+       "text": "Earthen structures can easily be built in all regions of the U.S.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The writer describes New Mexico, but never says whether earthen structures can easily be built in all regions."
+      },
+      {
+       "n": 39,
+       "text": "Working with a traditional earthen structure can have physical benefits.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Among the benefits the writer lists is that students exercise muscles - a physical benefit."
+      },
+      {
+       "n": 40,
+       "text": "A traditional architecture curriculum is best suited to middle school level students.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The writer worked with middle school students and supports the curriculum, but never claims that level is the BEST suited."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

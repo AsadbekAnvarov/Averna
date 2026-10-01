@@ -1,0 +1,645 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-28",
+ "title": "CDI Listening Test 28",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "customer calling to ask about joining a car club scheme",
+  "radio programme in which a woman called Tracy, a market manager in New Zealand, talks about her work",
+  "two town planning students, Lindy and Baz, talking about a project they have been given",
+  "presentation about how ordinary members of the public can assist in scientific research"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-28-part-1",
+   "title": "Part 1",
+   "context": "You will hear a customer calling to ask about joining a car club scheme.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Car Club Scheme\nLocation and access\n- Nearest location: [[1]] Street, near the\n- [[2]] where the caller works\n- Use membership card on the windscreen to unlock\n- Enter number on the [[3]] in the car to start engine\nBooking\n- Easiest way: online\n- Small charge for using the [[4]] to book\nPrices\n- Maximum cost: £ [[5]] an hour\n- Cost of [[6]] is included\nFamily & savings\n- Family members get a [[7]]\n- £10/month supplement for younger drivers due to higher [[8]] costs\n- Frequent user’s card: extra £ [[9]] a month\nOther\n- No pets allowed\n- Scheme is good for the [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Islip"
+       ],
+       "explanation": "'The closest location would be three streets away on Islip Street. I-S-L-I-P.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "school"
+       ],
+       "explanation": "'It’s not far from the school where I work.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "computer"
+       ],
+       "explanation": "'Isn’t there a computer inside the car?' — 'You enter a number on that, and it releases the immobilisation.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "phone"
+       ],
+       "explanation": "'You can do it by phone, but you will need to pay a small surcharge to use this facility.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "5.96"
+       ],
+       "explanation": "'The larger cars cost up to five pounds ninety six.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "fuel"
+       ],
+       "explanation": "'I suppose I still have to pay for the fuel?' — 'Actually you don’t. That’s all covered in the cost.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "discount"
+       ],
+       "explanation": "'They will get a discount on the standard rate' for family members."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "insurance"
+       ],
+       "explanation": "'For younger drivers we have to pay a lot more for insurance costs.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "12.50",
+        "12.5"
+       ],
+       "explanation": "'The frequent user’s card costs an additional twelve pounds fifty per month.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "environment"
+       ],
+       "explanation": "'Taking public transport more and only using a car when you really need one is better for the environment.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a customer calling to ask about joining a car club scheme.\nLorna: Good morning, Citywise Car Club, Lorna speaking. How can I help you?\nMan: Good morning. I was wondering if I could get some more information about joining your car club. How does the scheme work exactly?\nLorna: Of course. Well, the main thing is that each member of the car club has access to our fleet of cars whenever they need one. So once you’ve joined, you just go along and pick one up at a convenient location and drop it off when you’re done.\nLorna: This means you no longer need to own your own car.\nMan: I’ve had a look at your website and it says you have cars in locations all over the UK. But I’d like to know which would be the closest to me.\nLorna: Certainly. If I can have your postcode, I can tell you that.\nMan: I’m in London. So that’s NW52JX.\nLorna: Okay. So the closest location would be three streets away on Islip Street. It’s not far from where you live. It’s less than a mile away.\nMan: Sorry, could you spell that please?\nLorna: Certainly. That’s I–S–L–I–P, Islip Street.\nMan: Okay, I know where you mean. It’s not far from the school where I work. And how easy is it to pick up a car?\nLorna: Well, once you have your membership card, you just go along to the nearest location and find a car there. Then you simply place your membership card over the card reader on the windscreen in order to unlock the car.\nLorna: So then you can just get in.\nMan: Then isn’t there a computer inside the car or something?\nLorna: Yes, you enter a number on the computer in the car, and it releases the immobilisation — which means the engine will start.\nMan: Right. So how do I book a car?\nLorna: The easiest way is online on our website.\nMan: What about by phone?\nLorna: You can book by phone, but you will need to pay a small surcharge to use this facility.\nMan: OK, now what about the cost? How much can I expect to pay per hour? I’ve seen various prices advertised, and I’m a little confused.\nLorna: Well, it depends on the size of the car among other things. Prices start at £3.96 an hour, but the larger cars cost up to £5.96 an hour.\nMan: Really? As little as that, no matter what vehicle I choose?\nLorna: No, sir, the larger cars cost up to five pounds ninety six.\nMan: Right. So how does using this scheme mean I save thousands of pounds a year like you say on your website?\nLorna: Well, it means you don’t need to own your own car. So we take into account all the things car owners have to pay. But of course the amount you save depends on the kind of car you drive.\nMan: But I suppose I still have to pay for the fuel, don’t I?\nLorna: Actually you don’t. The cost of fuel is all covered in the cost.\nMan: Wow. That is good. So if I decide to join, do my wife and son also need their own membership cards?\nLorna: Yes, they will. However they will get a discount on the standard rate. I should add though that there is an additional membership fee of £10 a month for drivers under the age of twenty due to higher insurance costs.\nMan: Oh, why’s that? It seems a bit unfair.\nLorna: I know, but I’m afraid we don’t have any choice. It’s because for younger drivers we have to pay a lot more for insurance costs.\nMan: Hm. Is there any other way of saving money?\nLorna: Well, we have a frequent user’s card, which costs an additional £12.50 per month, but it entitles you to 20% off the hourly rates. This means you save more money the more you use the car.\nMan: Okay. Now what else do I need to know? What about pets? Can we take them in the car?\nLorna: I’m afraid not. There’s all sorts of problems with allergies and things.\nMan: Okay. That’s good to know at least.\nLorna: And lastly, we have good green credentials. Taking public transport more and only using a car when you really need one is better for the environment.\nMan: And that’s always a good thing in my wife’s eyes. Okay. Well I have all I need.\nLorna: Do call back if you have any more questions, and thanks for calling."
+  },
+  {
+   "id": "cdi-listening-28-part-2",
+   "title": "Part 2",
+   "context": "You will hear a radio programme in which a woman called Tracy, a market manager in New Zealand, talks about her work.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What first got Tracy interested in markets?",
+       "options": [
+        {
+         "key": "A",
+         "text": "She went to markets while travelling in Europe"
+        },
+        {
+         "key": "B",
+         "text": "Her husband designed the market’s website"
+        },
+        {
+         "key": "C",
+         "text": "A friend displayed her handmade items"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Tracy’s friend displayed her handmade items at the market, and customers loved them."
+      },
+      {
+       "n": 12,
+       "text": "What happened just before Tracy applied for the manager’s job?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the market was having financial problems"
+        },
+        {
+         "key": "B",
+         "text": "the two previous managers left at the same time"
+        },
+        {
+         "key": "C",
+         "text": "she saw an advertisement in the paper"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'The two previous managers had shared the job, but they’d both had to leave at the same time.'"
+      },
+      {
+       "n": 13,
+       "text": "How did Tracy change the market’s focus?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Specialising in regional crafts"
+        },
+        {
+         "key": "B",
+         "text": "Selling household goods and clothing"
+        },
+        {
+         "key": "C",
+         "text": "Focusing on local produce"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Tracy decided ‘to specialise in things like pottery and jewelry made by the people in the region.’"
+      },
+      {
+       "n": 14,
+       "text": "What is the policy on entertainment at the market?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They welcome all performers"
+        },
+        {
+         "key": "B",
+         "text": "Only professional entertainers are allowed"
+        },
+        {
+         "key": "C",
+         "text": "Entertainment is only on weekends"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'We’re open to all individuals and groups who want to showcase their talent.'"
+      },
+      {
+       "n": 15,
+       "text": "What led to the opening of a second market?",
+       "options": [
+        {
+         "key": "A",
+         "text": "From customer feedback"
+        },
+        {
+         "key": "B",
+         "text": "From stallholders based in the north"
+        },
+        {
+         "key": "C",
+         "text": "From local authorities"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Quite a few of the people who had stalls were based in the north of the city … they said there’d be plenty of customers.'"
+      },
+      {
+       "n": 16,
+       "text": "What happens at the kids’ market?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Children sell handmade crafts"
+        },
+        {
+         "key": "B",
+         "text": "Children sell their old items and keep the money"
+        },
+        {
+         "key": "C",
+         "text": "Children learn about market management"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Children bring along their old toys and books … and get to keep the money they make.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO correct answers.",
+     "title": "Which TWO things does Tracy find most challenging about her job?",
+     "options": [
+      {
+       "key": "A",
+       "text": "ensuring regulations are followed"
+      },
+      {
+       "key": "B",
+       "text": "the amount of administration involved"
+      },
+      {
+       "key": "C",
+       "text": "dealing with conflict between stallholders"
+      },
+      {
+       "key": "D",
+       "text": "the early start and long hours"
+      },
+      {
+       "key": "E",
+       "text": "introducing changes to existing systems"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "'I do get fed up with having to make sure all the stallholders keep to the rules' — ensuring regulations are followed. 'I need to be there very early … and I don’t get home until late' — early start and long hours."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "'I do get fed up with having to make sure all the stallholders keep to the rules' — ensuring regulations are followed. 'I need to be there very early … and I don’t get home until late' — early start and long hours."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO correct answers.",
+     "title": "Which TWO pieces of advice does Tracy give to new stallholders?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Try to vary your stock regularly"
+      },
+      {
+       "key": "B",
+       "text": "Don’t be discouraged if you don’t sell much at first"
+      },
+      {
+       "key": "C",
+       "text": "Create an eye-catching display"
+      },
+      {
+       "key": "D",
+       "text": "Keep your prices low at the start"
+      },
+      {
+       "key": "E",
+       "text": "Specialise in one type of product"
+      }
+     ],
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "'You must have a really attractive setup … make sure your display stands out' — create an eye-catching display. 'It’s important not to give up. Some people might look and go away, but then come back later.'"
+      },
+      {
+       "n": 20,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "'You must have a really attractive setup … make sure your display stands out' — create an eye-catching display. 'It’s important not to give up. Some people might look and go away, but then come back later.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a radio programme in which a woman called Tracy, a market manager in New Zealand, talks about her work.\nHost: Have you ever thought of having your own stall in a market?\nPresenter: Here in the studio we have Tracy Cartwright, who’s the manager of not one but two of the city’s street markets. Tracy, what got you interested in markets?\nTracy: Well, I’ve always liked them. When I was younger, I went travelling in Europe and Turkey, and I went to lots of markets and bazaars there, and I loved the atmosphere.\nTracy: Then after I came back to New Zealand, I got married, and we bought a house near Mahana Market, in the south of this city. My husband was working in IT, and he actually designed the market’s website.\nTracy: In the evenings, when the kids were in bed, I used to do a bit of sewing and knitting — clothes and things I designed myself — and a friend of mine who had a stall at the market offered to display some of them. And to my amazement, the customers loved them.\nTracy: Then I saw in the paper that they were looking for a new market manager, and I thought I’d apply.\nTracy: In fact, the market was having some financial problems, and it was looking as if it might have to close down. The two previous managers had shared the job, but they’d both had to leave at the same time for different reasons.\nTracy: I’d worked in merchandising before, so I had the right sort of experience. I was delighted when I got the job.\nTracy: But I realized I needed to find a new focus for the market.\nTracy: It had been selling all sorts of things — household goods, clothing, and produce from the area like apples and grapes and tomatoes — but to attract the tourists, I decided it’d be better to specialise in things like pottery and jewellery made by the people in the region.\nTracy: One innovation I’ve made is to have entertainers. We’re open to all individuals and groups who want to showcase their talent for an hour or two. We’ve had singers, clowns, comedians, all sorts. So get in touch if you’re interested in performing. Who knows? It could lead to fame and fortune.\nPresenter: And you’ve now set up a second market?\nTracy: That’s right.\nTracy: I realised that quite a few of the people who had stalls were actually based in the north of the city, and they said they thought there’d be plenty of customers up there too — and of course it’d mean less travelling for them.\nTracy: So I contacted the local authorities and they were very helpful. We had the new market set up within six months. We’ve also recently started a kids' market in cooperation with the local primary school.\nTracy: That’s just once a month. The children bring along their old toys and books, and even clothes they’ve grown out of.\nPresenter: And they sell them to the public and get to keep the money they make. It really teaches them about how money works.\nTracy: All the same, being a market manager can be a tough job. I need to be there very early in the morning, even before the stall holders, and I don’t get home until late — so the early start and long hours can be quite a challenge [Q17/18 — D].\nTracy: And there’s a lot of paperwork and planning, especially if I want to make any changes to the way the market works [Q17/18 — B]. I’m quite well organised though, so I don’t mind that.\nTracy: But I do get fed up with having to make sure all the stall holders keep to the rules that the council impose on us [Q17/18 — A]. I’d thought I might have problems if there were disagreements between stall holders, but in fact that hasn’t ever happened.\nPresenter: And what advice would you give to someone wanting to have a stall in a market?\nTracy: It doesn’t really matter if you start off in a specialised market or a more general one, but you must have a really attractive setup. That’s essential — make sure your display stands out [Q19/20 — C].\nTracy: Once you’ve established that, you needn’t make many changes to it. People will recognise you and the source of what you display. And make sure your prices are appropriate — you need to do some research there before you start [Q19/20 — E].\nTracy: You might find things don’t sell all that quickly at the beginning, but it’s important not to give up [Q19/20 — B]. Some people might look and go away, but then come back later."
+  },
+  {
+   "id": "cdi-listening-28-part-3",
+   "title": "Part 3",
+   "context": "You will hear two town planning students, Lindy and Baz, talking about a project they have been given.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Label the plan below. Write the correct letter, A–J, next to questions 21–27.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      },
+      {
+       "key": "J",
+       "text": "J"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "text": "Coffee lounge",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Coffee lounge: placed in the entrance area where people walk in, not the corner room."
+      },
+      {
+       "n": 22,
+       "text": "Technology room",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Technology room: in the west wing, the room just after the bend in the corridor."
+      },
+      {
+       "n": 23,
+       "text": "Music room",
+       "answer": [
+        "J"
+       ],
+       "explanation": "Music room: at the far end of the west wing, with large windows and a door into the garden."
+      },
+      {
+       "n": 24,
+       "text": "TV room",
+       "answer": [
+        "D"
+       ],
+       "explanation": "TV room: the first room to the right when you go in through the front door."
+      },
+      {
+       "n": 25,
+       "text": "Reading room",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Reading room: at the far end of the east wing with a view of the garden."
+      },
+      {
+       "n": 26,
+       "text": "Meeting room",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Meeting room: the room that sticks out into the courtyard opposite the front door."
+      },
+      {
+       "n": 27,
+       "text": "Office",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Office: on the left of the entrance area, so the manager can keep an eye on people."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening28-map.webp",
+      "alt": "Community Centre Floor Plan"
+     }
+    },
+    {
+     "kind": "matching",
+     "instructions": "Who do Lindy and Baz agree should do each job? Choose the correct letter, A, B, or C, next to questions 28–30.",
+     "title": "Person",
+     "options": [
+      {
+       "key": "A",
+       "text": "Lindy"
+      },
+      {
+       "key": "B",
+       "text": "Baz"
+      },
+      {
+       "key": "C",
+       "text": "both Lindy and Baz"
+      }
+     ],
+     "questions": [
+      {
+       "n": 28,
+       "text": "investigate other community centres",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Baz says: 'I wouldn’t mind doing that' — investigating other community centres."
+      },
+      {
+       "n": 29,
+       "text": "find out about planning regulations",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Lindy says: 'I quite fancy doing that' — looking into planning regulations."
+      },
+      {
+       "n": 30,
+       "text": "research the history of the house",
+       "answer": [
+        "C"
+       ],
+       "explanation": "'We can work on that together, as it’ll be quite a big job' — both research the history."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear two town planning students, Lindy and Baz, talking about a project they have been given.\nLindy: Baz, about this project we’ve been set.\nBaz: Yeah, so let me make sure I fully understand it, Lindy. An industrialist who lived in the town has just died, and he’s left his large house to the city council.\nBaz: The council intends to convert the ground floor into a community centre. That’s all true, isn’t it?\nLindy: It’s the big house at the end of Blackthorne Avenue.\nBaz: Okay. And for our project, we have to imagine we’re responsible for turning it into a community centre and write a detailed report, is that right?\nLindy: That’s right. First we have to decide what facilities we want and where they should go. Here’s a floor plan of the house.\nBaz: Alright. Now, I think it’s really important to have a coffee lounge. Do you agree?\nLindy: Definitely. What about having it in the corner room beside the existing kitchen? It’s the obvious place.\nBaz: Uh, but the front door opens into quite a big space, and it will be nice and welcoming if people are there drinking coffee and chatting rather than walking into a large empty space [Q21 — coffee lounge in entrance area].\nLindy: I see what you mean. Okay, I agree. I think it needs a technology room where people can access laptops or tablets and maybe get training too.\nBaz: Hmm, good idea. How about the room next to the kitchen in the east wing?\nLindy: I’m not sure. It might be noisy, or even have steam from the kitchen, which wouldn’t be good.\nLindy: Let’s put it in the west wing, the room you go into just after the bend in the corridor [Q22 — technology room].\nBaz: Okay. What do you think about having a music room where people can download music and listen through headphones?\nLindy: Yes. It’d be nice to sit and listen and look out onto the courtyard and garden. How about putting it at the far end of the west wing? There are quite large windows there and a door into the garden [Q23 — music room].\nBaz: Right.\nLindy: And maybe a TV room too. Maybe the first room to the right when you go in through the front door [Q24 — TV room].\nBaz: Shouldn’t it be one of the larger rooms?\nLindy: I don’t really think so. It could be quite cosy, and people who want to watch different channels could use a computer or a tablet.\nBaz: Okay, near the entrance then. What do you think about having a reading room with newspapers and magazines?\nLindy: Uh-huh. Let’s put that in the east wing, next to the existing kitchen. People can look across the corridor into the courtyard.\nBaz: But if the kitchen’s going to be renovated, that room could become a canteen. It’s quite big. No, let’s have the reading room at the far end of the east wing with a view of the garden [Q25 — reading room].\nLindy: Right. What do you think about having a meeting room?\nBaz: Essential, I’d say. I think that room that sticks out into the courtyard opposite the front door would be rather nice for meetings [Q26 — meeting room]. It’s got a door out into the courtyard and light coming in on three sides.\nLindy: Then the community centre will need a manager who’ll need an office. Where shall we put that?\nBaz: Maybe the large room in the corner to the left.\nLindy: I think it’d be better to have it nearer the front door, so the manager can keep an eye on people going in and out.\nBaz: I see what you mean. Okay, so the room on the left of the entrance area as you go in [Q27 — manager’s office].\nLindy: Yes, that’d be best. Anything else?\nBaz: I can’t think of anything for the moment, but we can always come back to this later.\nLindy: Let’s sort out what we need to do before we start writing our report, shall we, Baz? We should probably write a section about community centres in general — what sort of facilities they provide, how they’re funded and so on.\nBaz: I wouldn’t mind doing that, if that’s okay with you, Lindy [Q28 — Baz: investigate community centres]. All right. And we need to look into the planning regulations to see how to get permission for changing the way the building’s used.\nLindy: From residential to a community centre, you mean?\nBaz: Yes.\nLindy: I quite fancy doing that [Q29 — Lindy: planning regulations].\nBaz: Fine. I’ve thought a bit about how to research the history of the house, starting when it was built in the 18th century.\nLindy: It would be good if we could talk to some people who used to live there, or neighbours who knew it.\nBaz: Good idea. We can work on that together, as it’ll be quite a big job to track people down, interview them, look at documents in the library’s local history collection, and so on [Q30 — both: research the history].\nLindy: That’s fine by me."
+  },
+  {
+   "id": "cdi-listening-28-part-4",
+   "title": "Part 4",
+   "context": "You will hear part of a presentation about how ordinary members of the public can assist in scientific research.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "How Ordinary People Assist in Scientific Research\nCollecting data\n- ‘Ordinary people’ include those without a [[31]] and school children\n- Volunteers share a strong sense of [[32]] about the world\n- Scientists do not always get enough [[33]] , so volunteers are important\nPrevious projects\n- Wheel Power: compared types of [[34]] used in cars\n- Bankside: checked the health of a [[35]] by taking water samples\n- Thompson Project: investigated high levels of [[36]] in the soil\nInsect study\n- One group measured the [[37]] of various insects\n- Insects were trapped using [[38]] plates\nNewton Park\n- A hiker found a rare type of [[39]]\n- Volunteers counted [[40]] in a bird research project",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "degree"
+       ],
+       "explanation": "'They don’t even need a degree to participate in this sort of work.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "curiosity"
+       ],
+       "explanation": "'It’s their curiosity that draws people in. That’s the main thing they have in common.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "funding"
+       ],
+       "explanation": "'What scientists struggle with most is attracting sufficient funding.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "battery"
+       ],
+       "explanation": "'The research involved members of the public monitoring the battery in their own vehicles.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "lake"
+       ],
+       "explanation": "'The idea was to make sure a lake that was often used for recreation contained no hazardous chemicals.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "bacteria"
+       ],
+       "explanation": "'Scientists wanted to know why levels of bacteria were so high in these places.'"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "wings"
+       ],
+       "explanation": "'One group looked at insect species and compared the size of their wings.'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "yellow"
+       ],
+       "explanation": "'When yellow ones were used, the insects were attracted to them.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "mushroom"
+       ],
+       "explanation": "'A member of the public was hiking … when she saw a mushroom she didn’t recognise.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "chicks"
+       ],
+       "explanation": "'Volunteers went around all the nests to record how many chicks were there.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear part of a presentation about how ordinary members of the public can assist in scientific research.\nStudent: Hello everyone, today I’m going to talk about how the general public sometimes get involved in helping scientists with their work.\nStudent: So, in many research projects there’s often a great deal of data to collect, and this is where ordinary people sometimes contribute to the process.\nStudent: What I mean by ordinary people is they are not scientists and they don’t even need a degree to participate in this sort of work.\nStudent: In fact, school students and even quite young children have taken part in some of the projects I’m going to be talking about today. I found that volunteers come from diverse backgrounds and have a wide range of skills.\nStudent: But one common element is that they want to know more about the world and the environment in which they live. So yes, it’s their curiosity that draws people in. That’s the main thing they have in common.\nStudent: But why are volunteers so important? Well, a scientist might have a great research idea, but sometimes what scientists struggle with most is attracting sufficient funding to carry out their research.\nStudent: And so the work done by volunteers can help enormously in this respect because of course they’re not paid. Okay, so now I’ll tell you about some previous projects that have involved volunteers.\nStudent: For example, a project called Wheel Power wanted to maximise the efficiency of a particular model of electric car. The research involved lots of members of the public monitoring the battery in their own vehicles. The resulting data highlighted which one was the most efficient.\nStudent: An interesting project was called Bankside. This involved testing numerous water samples, so the researchers needed local people to help out. The idea was to make sure a lake that was often used for recreation contained no hazardous chemicals.\nStudent: Samples were taken several times a day for three months, and it would have been difficult to do this without the help of volunteers from the local community.\nStudent: Now, the Thompson Project. This used members of the public to conduct agricultural research. The goal was to study the damp soil where local people regularly gathered a type of edible plant.\nStudent: Scientists wanted to know why levels of bacteria were so high in these places. Volunteers were very helpful in taking the samples at just the right time and labelling them accurately.\nStudent: Many organisations rely on ongoing input from the community. For example, the Ornithological Society has been monitoring shorebirds for more than 50 years.\nStudent: Thanks to the help they received from volunteers in keeping track of bird life, the Society was able to publish a comprehensive book containing new information about bird numbers, migration patterns, and so on.\nStudent: So now I’ll give you an outline of the insect project, which was another study that made use of volunteers. It was a big project, and there were several groups involved.\nStudent: For example, what one group did was look at a number of insect species and compare the size of their wings, because these are an indicator of how healthy the insects are.\nStudent: One scientist designed a low-tech way to trap insects so they could be measured. Because the traps were so simple, the project was perfect for volunteers.\nStudent: The trap consisted of a plastic plate, and the scientists experimented with different colours to see which would attract the insects. Red plates didn’t seem to work, and nor did blue, but when yellow ones were used, the insects were attracted to them. This may be because it is the colour most closely associated with pollen.\nStudent: So how did the plates trap the insects? Well, some lukewarm water was put into each plate, but when the insects landed in this, they were still able to escape.\nStudent: So then a drop of soap was put in to create a slightly sticky mixture. And this prevented the insects from escaping once they had landed, but didn’t do them any harm.\nStudent: Now then, that brings us on to Newton Park. This is a protected park where ordinary people play an active role in research projects and where they have also made some significant discoveries.\nStudent: For example, recently a member of the public was hiking in the park when she saw a mushroom she didn’t recognise. She contacted some experts, and it turned out to be a species that hadn’t been seen for decades.\nStudent: I should mention that in Newton Park, even families with young children have got involved in research. One example would be a project where scientists were analysing the dead leaves in a particular area to learn more about this habitat. The children were given the job of hunting for snails on the forest floor. They loved getting involved.\nStudent: There is also a lot of bird life in Newton Park, and scientists are able to keep track of adult birds because they have bands around their legs. In the nesting season, once the eggs had hatched, volunteers went around all the nests to record how many chicks were there."
+  }
+ ],
+ "audio": {
+  "file": "listening-28.mp3",
+  "durationSec": 1783,
+  "questionTimes": {
+   "1": 131,
+   "2": 151,
+   "3": 177,
+   "4": 192,
+   "5": 254,
+   "6": 294,
+   "7": 305,
+   "8": 305,
+   "9": 331,
+   "10": 359,
+   "11": 534,
+   "12": 570,
+   "13": 584,
+   "14": 597,
+   "15": 617,
+   "16": 659,
+   "17": 725,
+   "18": 725,
+   "19": 770,
+   "20": 770,
+   "21": 972,
+   "22": 1007,
+   "23": 1020,
+   "24": 1034,
+   "25": 1069,
+   "26": 1085,
+   "27": 1116,
+   "28": 1177,
+   "29": 1193,
+   "30": 1209,
+   "31": 1388,
+   "32": 1401,
+   "33": 1429,
+   "34": 1451,
+   "35": 1483,
+   "36": 1521,
+   "37": 1551,
+   "38": 1575,
+   "39": 1610,
+   "40": 1687
+  }
+ }
+}

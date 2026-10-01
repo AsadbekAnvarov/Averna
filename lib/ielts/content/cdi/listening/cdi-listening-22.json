@@ -1,0 +1,540 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-22",
+ "title": "CDI Listening Test 22",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "conversation between a customer and a sales assistant in a shop",
+  "amateur photographer called Darren giving a talk about his photographs of red squirrels",
+  "two students discussing preparation for a whale survey during a marine biology boat trip",
+  "university lecture about the early development of the telescope up to the end of the 17th century"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-22-part-1",
+   "title": "Part 1",
+   "context": "You will hear a conversation between a customer and a sales assistant in a shop.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Customer Complaint Form — Product Return\nCustomer details\n- Type of product: vacuum cleaner\n- Name: Diane [[1]]\n- Street address: 34 [[2]]\n- City: Hamilton\n- Telephone: 970 7520 ( [[3]] number)\nProduct details\n- Date of purchase: [[4]]\n- Make and model: Volta Budget\n- Power: 2,000 watts\n- Colour: red\n- Purchase price: $ [[5]] (in the sale)\nFault & resolution details\n- Problem with: the [[6]]\n- First solution offered: free [[7]] (not accepted by customer)\n- Action requested: exchange for better model\n- Special feature needed: a reusable [[8]]\n- Maximum price agreed: $ [[9]]\n- Preferred colour: [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "ruddick"
+       ],
+       "explanation": "The customer gives her surname: “Diane Ruddick. That’s R-U-D-D-I-C-K.”"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "garden avenue"
+       ],
+       "explanation": "The customer gives her address: “34 Garden Avenue” — the house number was already printed on the form."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "home"
+       ],
+       "explanation": "She says: “That would be 970 7520. And that’s home, because my mobile is not working.”"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "31st of july",
+        "31 July",
+        "31st July"
+       ],
+       "explanation": "She reads from her receipt: “Does that say the 21st of July? Oh no, sorry, it’s the 31st.”"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "104",
+        "$104"
+       ],
+       "explanation": "She says: “I got it for only $104 on sale.” The dollar sign and ‘in the sale’ were already on the form."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "handle"
+       ],
+       "explanation": "She explains the fault: “There’s a problem with the handle. It’s permanently stuck in this upright position.”"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "repair"
+       ],
+       "explanation": "The assistant offers: “I could keep it here and offer you a repair at no charge.” She declines this first option."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "dust bag"
+       ],
+       "explanation": "She asks: “Some of them come with a dust bag which can be used again and again.” She says that sounds useful."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "180",
+        "$180"
+       ],
+       "explanation": "She confirms: “My range was always from about $100 to $200 maximum, so $180 would be fine.”"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "silver"
+       ],
+       "explanation": "She chooses the silver Volta Ultima: “I think I’ll take the silver one, please.”"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a conversation between a customer and a sales assistant in a shop.\nAssistant: Good morning, madam. Can I help you?\nCustomer: Yes, hello. I have a complaint to make about this vacuum cleaner. I’m wanting to return it, please.\nAssistant: Oh dear, I’m sorry to hear that. Could I take down your details first? Your name, please?\nCustomer: It’s Diane Ruddick. That’s R-U-D-D-I-C-K.\nAssistant: Right, fine, thanks. And your address?\nCustomer: It’s 34 Garden Avenue. That’s here in Hamilton. It’s just a small street.\nAssistant: And what number can I reach you on?\nCustomer: That would be 970 7520. And that’s home, because my mobile is not working at the moment. At the office I share a phone line, so it’s better not to call me at work.\nAssistant: OK. Now a few details about the product itself. When did you buy it?\nCustomer: Yes, it says on the receipt. Hang on. Does that say the 21st of July? Oh, no, sorry, it’s the 31st of July.\nAssistant: And it looks like a Volta Budget model. What’s the size of the motor?\nCustomer: It says 2,000 watts.\nAssistant: And I can see it’s a nice bright red. And the price?\nCustomer: I got it for an excellent price — only $104 on sale. I’d nearly bought one for $130 in another shop.\nAssistant: So what seems to be the matter with it?\nCustomer: It’s definitely faulty because there’s a problem with the handle. It’s permanently stuck in this upright position. It won’t fold back down as it should.\nAssistant: There are a couple of possible solutions. One thing I could do is keep it here and offer you a free repair at no charge.\nCustomer: No, thanks. I think I’d like to exchange it for a better model.\nAssistant: You’ll have to stick with the Volta brand, but I can show you the other options. Would you want any special features? Some come with a dust bag which can be used again and again.\nCustomer: That sounds like it would be useful.\nAssistant: I’d better check the cost is all right. My range was always from about $100 to $200 maximum.\nCustomer: So $180 would be fine.\nAssistant: The Volta Ultima comes in three colourways — sky blue, silver, and purple. Do you have a preference?\nCustomer: The sky blue looks good, but I think I’ll take the silver one, please. Although I do love that shade of purple.\nAssistant: We don’t have the purple in stock but they’re coming in on Tuesday. Would you like to come and collect it then?"
+  },
+  {
+   "id": "cdi-listening-22-part-2",
+   "title": "Part 2",
+   "context": "You will hear an amateur photographer called Darren giving a talk about his photographs of red squirrels.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "Darren now finds the Latin name for the red squirrel",
+       "options": [
+        {
+         "key": "A",
+         "text": "extremely suitable for this species."
+        },
+        {
+         "key": "B",
+         "text": "surprisingly meaningless."
+        },
+        {
+         "key": "C",
+         "text": "Amused by description."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Darren says the name “made sense” once he understood it as ‘sitting in the shadow of its tail’ — So it is suitable name for the species. (A)."
+      },
+      {
+       "n": 12,
+       "text": "Which restriction did Darren set himself for this project?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to focus exclusively on one species of animal."
+        },
+        {
+         "key": "B",
+         "text": "to use only one kind of camera."
+        },
+        {
+         "key": "C",
+         "text": "to take all the photos in one location."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "He set himself the goal of “taking all these photographs in my garden” — one location only (C)."
+      },
+      {
+       "n": 13,
+       "text": "Darren thinks the red squirrel’s decline was caused by",
+       "options": [
+        {
+         "key": "A",
+         "text": "the arrival of another species."
+        },
+        {
+         "key": "B",
+         "text": "the introduction of disease."
+        },
+        {
+         "key": "C",
+         "text": "a reduction in their food supply."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Darren’s own theory is that the decline is “to do with fewer nuts… being available” — a reduction in food supply (C)."
+      },
+      {
+       "n": 14,
+       "text": "Darren knew when red squirrels rather than mice had taken the bait because of",
+       "options": [
+        {
+         "key": "A",
+         "text": "the type of food consumed."
+        },
+        {
+         "key": "B",
+         "text": "how the food was eaten."
+        },
+        {
+         "key": "C",
+         "text": "how much food remained."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Red squirrels “spin the nut, find a fault line and split it in two with one bite” — it is how the food is eaten that gives them away (B)."
+      },
+      {
+       "n": 15,
+       "text": "Darren was confident about the quality of his photographs because",
+       "options": [
+        {
+         "key": "A",
+         "text": "he had spent a lot of time practising."
+        },
+        {
+         "key": "B",
+         "text": "his teacher had prepared him well."
+        },
+        {
+         "key": "C",
+         "text": "his equipment was of high quality."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "He says “I’d had a very good mentor and picked up a lot of tips from her” — his teacher had prepared him well (B)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "What Darren did with his photographs\n- exhibited them in a [[16]]\n- submitted them for a competition in a [[17]]\nDarren’s advice for beginner nature photographers\n- Your most important piece of equipment is a tripod.\n- Include a so-called [[18]] to give a sense of scale.\n- Check you are taking your shot from the best position.\n- The quality of light is best late in the [[19]] .\n- You should make [[20]] for each photo.",
+     "questions": [
+      {
+       "n": 16,
+       "answer": [
+        "local museum"
+       ],
+       "explanation": "He says: “I exhibited a selection of them in the local museum when friends advised me to.”"
+      },
+      {
+       "n": 17,
+       "answer": [
+        "national newspaper"
+       ],
+       "explanation": "He says: “I won third prize in a competition organized by a national newspaper.”"
+      },
+      {
+       "n": 18,
+       "answer": [
+        "secondary object"
+       ],
+       "explanation": "He advises: “make sure a secondary object is in view” to give the main subject proper perspective."
+      },
+      {
+       "n": 19,
+       "answer": [
+        "afternoon"
+       ],
+       "explanation": "He says: “Late afternoon light is my favourite” — the quality of light is best late in the afternoon."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "detailed notes"
+       ],
+       "explanation": "His final tip: “make detailed notes on all your shots” covering time, equipment, setting etc."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear an amateur photographer called Darren giving a talk about his photographs of red squirrels.\nDarren: Thanks for inviting me here today. I’ll start by showing some of my photographs and explaining a bit of background about the red squirrel, and then give some general advice for those of you who might be interested in nature photography.\nDarren: Let’s look at my first slide — a young red squirrel. Its Latin name, Sciurus vulgaris, derives from the Greek words skia, meaning shadow, and ura, meaning tail. I thought this was a bit funny at first and couldn’t make any sense of the phrase, until I realised it translated as an animal sitting in the shadow of its tail. And then it all fell into place, because that’s what the red squirrel does. So I now find it Suitable name for the species.\nDarren: This photo was taken right outside my back door. Before I started, I set myself the goal of taking all the photos in one location — my garden — but using different kinds of camera and incorporating a variety of contextual features.\nDarren: The red squirrel was once common throughout much of Britain. The American grey squirrel was introduced in the late 19th century. Some believe they brought a disease that reduced the red squirrel population — but the decline had already started long before the greys arrived. My own theory is that it’s to do with a reduction in their food supply — fewer nuts, which reds love to eat, being available.\nDarren: A wildlife photographer friend advised me to use bait of hazelnuts to attract them. You have to leave nuts out over several months. Lots of animals love hazelnuts, but evidence of red squirrels is clear. Mice gnaw a neat hole through the shell, whereas a red squirrel spins the nut, finds a fault line, and splits it in two with one bite. So it was how the food was eaten that told me squirrels had been there rather than mice.\nDarren: I was amazed by how quickly they started arriving. Although I had had only a little practice and my cameras were largely second-hand, I’d had a very good mentor and picked up a lot of tips from her. So my teacher had prepared me well.\nDarren: I exhibited a selection of them in the local museum when friends advised me to show them to a wider audience. And much to my surprise, I won third prize in a competition organised by a national newspaper.\nDarren: Now, some advice for those of you thinking of doing something similar. First, although a good camera matters, the crucial requirement for this kind of work is a tripod. Next, make sure you set up the shot so that a secondary object is in view — a branch, flowers, masonry — to portray the main subject in proper perspective.\nDarren: Third, take care to look behind you when setting up a shot. Next, it’s well known that midday light bleaches true colour. Late afternoon light is my favourite, with its warm red tones. And finally, if you are serious about wildlife photography, make detailed notes for every shot — time, equipment, setting — and it will work like a recipe book to help you recognise what made each shot successful."
+  },
+  {
+   "id": "cdi-listening-22-part-3",
+   "title": "Part 3",
+   "context": "You will hear two students discussing preparation for a whale survey during a marine biology boat trip.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "Whale Survey\nGeneral information\n- Date\n- [[21]]\n- State of sea, e.g. [[22]] , choppy, etc.\n- State of [[23]]\n- Visibility (estimate to nearest [[24]] metres)\n- Presence of [[25]]\nDetails of whale sightings\n- Location\n- Description\n- — appearance\n- — [[26]]\n- Group [[27]]\n- Presence of juveniles",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "watch times",
+        "watch time"
+       ],
+       "explanation": "After ‘Date’, the standard survey heading is ‘Watch times’ — the student says “that’s pretty standard on all survey reports.”"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "calm"
+       ],
+       "explanation": "The state of sea should record “whether it’s calm, whether it’s choppy” — calm is the example given first."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "weather"
+       ],
+       "explanation": "The next general-conditions heading is ‘State of weather’: “And then the weather too — the next section should be for recording what it’s like.”"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "100"
+       ],
+       "explanation": "For visibility estimate: one student says “nearest 50 metres” but the other says “100 would be more realistic.”"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "fishing boats"
+       ],
+       "explanation": "The last general-conditions item: “We should record whether there are any fishing boats. That’s useful information.”"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "behavior",
+        "behaviour"
+       ],
+       "explanation": "Under description, the two subheadings are ‘appearance’ and ‘behavior’: “that should cover everything.”"
+      },
+      {
+       "n": 27,
+       "answer": [
+        "size"
+       ],
+       "explanation": "Before seabirds, the students add two more headings: “one for recording the size of the group” and one for juveniles."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the diagram below. Write the correct letter, A–D, next to Questions 28–30.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      }
+     ],
+     "questions": [
+      {
+       "n": 28,
+       "text": "Sperm Whale",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Sperm whale = B. It has “small bumps along its back but no fin” — a key identifying feature discussed."
+      },
+      {
+       "n": 29,
+       "text": "Northern Right Whale",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Northern right whale = C. Identified by its “distinctive paddle-shaped flippers, square at the ends.”"
+      },
+      {
+       "n": 30,
+       "text": "Minke Whale",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Minke whale = A. Described as looking like the blue whale “but only about a quarter of the size.”"
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening22-part3.webp",
+      "alt": "Four whale diagrams labelled A-D"
+     }
+    }
+   ],
+   "transcript": "You will hear two students discussing preparation for a whale survey during a marine biology boat trip.\nStudent A: What exactly have we got to do for next week’s marine biology boat trip? I missed the meeting.\nStudent B: We’ve got to prepare a survey framework for a marine mammals survey. While we’re at sea, we’ll be looking for whales and identifying any we see from the boat.\nStudent A: Okay. Main heading: Whale Survey. What next? The first general information heading?\nStudent B: Well, date first. And then after that — watch times. That’s pretty standard on all survey reports.\nStudent A: Then I think it’ll be important to record what the sea’s like at the time — whether it’s calm, whether it’s choppy or whatever.\nStudent B: Yes, put that. And then the weather, too. The next section should be for recording what it’s like.\nStudent A: Oh, I know — visibility. It’ll have to be an estimate. Shall we say to the nearest 50 metres?\nStudent B: I think that’s too exact. 100 would be more realistic.\nStudent A: And, yes, one other thing. We should record whether there are any fishing boats. That’s useful information to get.\nStudent B: Then we need details about the actual whale sightings. Under description, I’d say just two subheadings. First, appearance — people could note any aspect they feel certain about. And the second?\nStudent A: That could just be behaviour. That should cover everything. If you make the headings too specific, people start making guesses.\nStudent B: Before we put seabirds, we should have one for recording the size of the group, in case there’s more than one whale, and another section for the presence of any young ones — juveniles.\nNow listen and answer questions 28 to 30.\nStudent A: We’ve got to identify the whales in these drawings. I suppose size is the most obvious thing that distinguishes them.\nStudent B: Well, size, or shape, or whether there’s a dorsal fin on the top of its back.\nStudent A: Oh, yes. This one’s just got small bumps along its back but doesn’t actually have a fin.\nStudent B: Yes. I think that’s a sperm whale. And the other one without a fin is a northern right whale. You can tell from the shape of its flippers — a distinctive paddle shape, square at the ends. So that’s northern right whale.\nStudent A: And the biggest one’s the blue whale. This other one looks just like it but it’s only about a quarter of the size.\nStudent B: That’s the minke whale."
+  },
+  {
+   "id": "cdi-listening-22-part-4",
+   "title": "Part 4",
+   "context": "You will hear a university lecture about the early development of the telescope up to the end of the 17th century.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "The Development of the Telescope\nRoger Bacon (1200s)\n- Invented the magnifying glass for reading\n- Helped [[31]] with sight problems when they were reading\nLipperhey (1608)\n- Combined concave and convex lenses to create a miniature telescope\n- It was first used in the [[32]]\nGalileo\n- 1609: experimented with lenses to improve the telescope\n- He started the [[33]] of his own lenses\n- Achieved magnification nine times the naked eye\n- The Venetian government hoped to use it for the [[34]]\nGalileo’s astronomical discoveries\n- The Moon:\n- surface was mountainous, not a perfect sphere\n- estimated mountain heights by locating [[35]] spots in dark areas\n- created [[36]] of the moon’s surface\n- Jupiter:\n- realised that bodies orbiting Jupiter were not [[37]] but moons\nFurther development (later 1600s)\n- Increasing the [[38]] improved magnification\n- 1670: Hevelius built a telescope 43 metres long\n- problem: the slightest [[39]] caused it to shift\n- solution: mounted on a [[40]] (aerial telescope)",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "researchers"
+       ],
+       "explanation": "The magnifying glass “assisted researchers with sight problems” who had been forced to give up working because of impaired vision."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "theatre",
+        "theater"
+       ],
+       "explanation": "Lipperhey’s miniature telescope was “first taken to the theatre for a better view of the stage.”"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "production"
+       ],
+       "explanation": "Galileo “decided he would have to start the production of his own lenses” because opticians’ lenses lacked sufficient magnification."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "army"
+       ],
+       "explanation": "The Venetian government “envisioned the advantages this eyeglass could have for the army.”"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "bright"
+       ],
+       "explanation": "He estimated mountain altitudes by “looking for bright spots in the dark areas” of the moon."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "charts"
+       ],
+       "explanation": "From his calculations, “he was able to draw charts of the terrain and show the altitudes of the mountains.”"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "stars"
+       ],
+       "explanation": "Near Jupiter, Galileo first saw “a trio of what initially seemed to be small stars” but later realised they were moons."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "length"
+       ],
+       "explanation": "Scientists found that “when they increased the length of the telescope, the intensity of magnification improved significantly.”"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "wind"
+       ],
+       "explanation": "Long telescopes proved useless because “the slightest wind caused the instrument to shift.”"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "building"
+       ],
+       "explanation": "In 1675, astronomers “mounted the telescope on a building” — these were called aerial telescopes."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a university lecture about the early development of the telescope up to the end of the 17th century.\nLecturer: Good morning. Today’s lecture is about the development of the telescope up until the end of the 17th century. We can trace the telescope’s earliest form back to the 1200s. History records Roger Bacon as possibly the first to invent a magnifying glass. The principal use of his invention was for reading. This proved to be a benefit mostly for researchers who until then had been forced to give up working while still relatively young because of impaired vision.\nLecturer: In 1608, a Dutch optician called Lipperhey discovered that if convex and concave lenses were put together, they created a magnifying glass through which things at a distance could be seen. He created a miniature telescope. It was so small that initially people took it to the theatre for a better view of the stage.\nLecturer: Galileo found out about Lipperhey’s invention in the spring of 1609 and immediately set about improving it. He experimented with different lenses, combining a weak convex with a strong concave lens. Unfortunately, the lenses opticians made for glasses were unsatisfactory — they lacked powerful enough magnification. So Galileo decided he would have to start the production of his own lenses. Eventually, he achieved a magnification about nine times greater than the naked eye.\nLecturer: Galileo demonstrated the improved instrument to the Senate of Venice. Many senators climbed the highest bell towers to look through the glass at ships far out to sea. The government of Venice was impressed, and envisioned the advantages this eyeglass could have for the army.\nLecturer: His first major astronomical discovery was that the moon’s surface was mountainous. During the lunar cycle of 28 days, he found that shadows seemed to vary with the light. Galileo figured out how to estimate the altitude of the mountains by looking for bright spots in the dark areas. With geometry, he was able to calculate the elevation. From these calculations, he was able to draw charts of the terrain and show the altitudes of the mountains.\nLecturer: In 1610, Galileo looked at Jupiter on successive nights with a telescope twenty times the strength of his previous ones. He saw a trio of what initially seemed to be small stars close to Jupiter. However, by the fifteenth night, he realised they were going around the planet in a daily orbit — they were moons, not stars. Three days later, he saw a fourth one.\nLecturer: In the later 1600s, scientists started to make stronger telescopes. They realised that when they increased the length of the telescope, the intensity of magnification improved significantly. One such telescope, created in 1656, magnified over 100 times and had an incredible length of 4 metres. By 1670, the astronomer Hevelius built one 43 metres long.\nLecturer: However, these telescopes proved useless for accurate observation because the slightest wind caused the instrument to shift. Finally, in 1675, astronomers abandoned the tube telescope and instead mounted it on a building. Telescopes like this were called aerial telescopes, and scientists hoped that the stability of the mount would reduce the frustration when observing stars."
+  }
+ ],
+ "audio": {
+  "file": "listening-22.mp3",
+  "durationSec": 1500,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

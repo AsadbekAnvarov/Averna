@@ -1,0 +1,632 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-64",
+ "title": "CDI Reading Test 64",
+ "description": "A full Academic Reading test from the CDI practice materials: In Deep Water; The Secret Language of Plants; We Have Star Performers.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "In Deep Water",
+  "The Secret Language of Plants",
+  "We Have Star Performers"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "In Deep Water",
+   "subtitle": "Scientists are learning more about the sea floor around New Zealand",
+   "paragraphs": [
+    {
+     "text": "While we know that the sea is a big place, few of us realise just how big it really is. More than 66% of the world's surface is covered by ocean, and the sea makes up 97% of the environments on Earth that can support living things. The vast majority of this area - and New Zealand's seas are no exception - remains unexplored. In fact, the deepest parts of the oceans are so poorly known that nearly every submarine dive or research trawl (pulling up specimens from the seabed) brings new knowledge of genuine significance to oceanographers. Our present knowledge of land biodiversity (all the animals and plants) compared with ocean biodiversity is one measure of how early we are in the task of researching the deep sea. A good example is the New Zealand takahe bird. In 1948, a small population of takahe, a flightless bird which at the time was thought to be extinct, was found living in New Zealand's mountains. The rediscovery of this bird species created a sensation among bird lovers. In dramatic contrast, new species from New Zealand's deep sea are today being discovered at a rate of about one every two weeks."
+    },
+    {
+     "text": "What's more, catching, examining and naming a new species is only the first step in the learning process. Just because an animal has been given a scientific name and shelf space in a museum doesn't necessarily mean that we know anything at all about its lifestyle and ecology. Most deep-sea animals have never been seen alive, and the few that have were almost certainly acting unnaturally in the glare of lights from the submarine camera with which they were observed. For this reason, our understanding of life in the deep sea relies heavily on conjecture: fierce debate continues among scientists over such details as how fast giant squid can swim, and why lantern fish flash their little lights. In some respects, deep-sea biology parallels the way that detectives hunt for criminals, requiring comparable problem-solving and clue-finding skills."
+    },
+    {
+     "text": "The sea floor around New Zealand has a wide range of seabed features. One of the most important are seamounts, which are underwater volcanoes. Most of the world's charted seamounts were discovered in the past 40 years, although the exact number around New Zealand is not known. One of the most conspicuous is the Bollons Seamount, which among others was visited by a scientific expedition in 2002. It rises more than three kilometres above the surrounding seabed, and measures two hundred kilometres across, making it a remarkable size, and therefore of particular interest."
+    },
+    {
+     "text": "Research has shown that these mountains of the deep are home to many species, although it is not clear why. One theory is that the ocean currents cause plankton, which is an important source of food, to thrive on their upper surfaces. Another factor is that they are not completely draped with the fine mud that covers just about everything else in the deep sea. Instead, their rocky surfaces provide attachment points for animals like sponges and anemones. Many seamounts are found on the Chatham Rise, which is a huge platform in a remote part of the ocean. The top of the rise is covered with small seamounts, many of which have been named by the inhabitants of the nearby Chatham Islands. They come fishing here because a valuable species called orange roughy seasonally migrates to these shallow waters to spawn."
+    },
+    {
+     "text": "Canyons are another of New Zealand's underwater features. These trenches cut deeply into the sea floor and come unusually close to land. At Goose Bay, the squid that live in the canyon attract sperm whales, and every year thousands of people come to see the whales just off the coast, helping local tourism. Further south, near the city of Dunedin, several canyons are found. Since the 1960s, the University of Otago's ship Nerida has conducted research in this area, leading to many unusual discoveries. Among these was a population of button-sized coral, whose remains had previously been mistaken by early fossil collectors for small dinosaur bones."
+    },
+    {
+     "text": "Scientists believe that canyons were created when powerful underwater currents cut into the seabed. Nearly all submarine canyons are located offshore from a large river, suggesting that it was the force of this river from the land into the sea that set the underwater current in motion. However, there are other explanations for canyons in other parts of the world, and a spectacular example took place in November 1929, when a significant earthquake in Canadian waters triggered an underwater current that travelled more than 720 kilometres, creating a canyon and cutting an undersea communication cable in the process."
+    },
+    {
+     "text": "Research in the seas around New Zealand has resulted in a far better understanding of the seamounts, canyons and other underwater features that stand out from the otherwise flat sea floor. Indeed, the seabed generally is very flat compared to the land. To deal with this, oceanographers use a technique called 'vertical exaggeration' in their maps, to make changes in ocean depth more apparent. Unfortunately, this has resulted in many people believing that the seabed is much steeper than it really is. But this misunderstanding aside, we know much more about the deep ocean today than we did even 20 years ago, and the speed of scientists' discoveries is only likely to increase."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Research trawls in the deepest oceans tend to produce important findings.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Nearly every dive or trawl brings new knowledge of genuine significance."
+      },
+      {
+       "n": 2,
+       "text": "In New Zealand, research into land biodiversity is better understood than ocean research.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Land biodiversity knowledge is contrasted with how early we are in deep-sea research."
+      },
+      {
+       "n": 3,
+       "text": "The takahe bird was first recorded as a species in 1948.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "In 1948 it was rediscovered — it was previously thought extinct, so it was known before."
+      },
+      {
+       "n": 4,
+       "text": "Museums only display a small number of their specimens from the deep ocean.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No information about how many specimens museums display."
+      },
+      {
+       "n": 5,
+       "text": "Filming specimens gives accurate information about the normal behaviour of their species.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The few seen alive were almost certainly acting unnaturally in the glare of lights."
+      },
+      {
+       "n": 6,
+       "text": "Scientists disagree about the swimming speed of giant squid.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Fierce debate continues over how fast giant squid can swim."
+      },
+      {
+       "n": 7,
+       "text": "The approach used by deep-sea biologists is similar to that used in police investigations.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Deep-sea biology parallels the way detectives hunt for criminals."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The sea floor around New Zealand",
+     "template": "- The Bollons Seamount is unusual because of its [[8]]\n- Seamounts are home to many species, perhaps because there is more food and less [[9]]\n- The Chatham Rise is considered a good source of [[10]] by local people.\n- The presence of whales in Goose Bay has resulted in the development of [[11]]\n- A species of [[12]] has been discovered near Dunedin.\n- One canyon near Canada was formed when a big [[13]] started a current in 1929.",
+     "questions": [
+      {
+       "n": 8,
+       "answer": [
+        "size"
+       ],
+       "explanation": "The Bollons Seamount is unusual for its size."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "mud"
+       ],
+       "explanation": "There is more food and less mud on seamounts."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "fish"
+       ],
+       "explanation": "The Chatham Rise is valued locally as a source of fish."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "tourism"
+       ],
+       "explanation": "Whales in Goose Bay led to the development of tourism."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "coral"
+       ],
+       "explanation": "A species of coral was discovered near Dunedin."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "earthquake"
+       ],
+       "explanation": "An earthquake started the current in 1929."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The Secret Language of Plants",
+   "paragraphs": [
+    {
+     "text": "Growing Evidence"
+    },
+    {
+     "text": "For a long time, scientists regarded plants as silent and passive organisms, limited to merely surviving in their environments. However, a growing body of evidence now challenges this perception. Researchers have discovered that many plants can \"communicate\" with one another through the release of airborne chemical signals."
+    },
+    {
+     "text": "When attacked by herbivorous insects, trees such as willows, poplars, and maples emit volatile organic compounds (VOCs) that alert nearby plants to danger. These neighboring plants, upon receiving the signal, begin producing chemicals that make their leaves less appetizing or even toxic to insects. In effect, they seem to \"warn\" one another of incoming threats."
+    },
+    {
+     "text": "This idea, once dismissed as science fiction, was first proposed in 1983 when two independent studies demonstrated that uninjured trees growing near damaged ones were capable of activating their own defense mechanisms. Although early critics labeled the findings as flawed or exaggerated, further research has since revived the concept. Modern experiments, conducted both in laboratories and in natural ecosystems, have repeatedly confirmed that plant signaling is a genuine biological process. Ecologist Richard Karban from the University of California, Davis, estimates that roughly forty out of forty-eight studies have found positive evidence for interplant communication."
+    },
+    {
+     "text": "Secret Lives"
+    },
+    {
+     "text": "Richard Karban's journey into this mysterious world began not with plants, but with insects. As a young ecologist, he studied how trees cope with infestations of cicadas and caterpillars. During that time, most biologists assumed that plants survived mainly through endurance, tolerating harsh conditions without active responses."
+    },
+    {
+     "text": "However, in the early 1980s, zoologist David Rhoades discovered that plants could defend themselves more dynamically. By altering the chemical composition of their leaves, plants made them less nutritious to herbivores."
+    },
+    {
+     "text": "What surprised Rhoades even more was that uninjured willows located near infested ones also produced these defensive compounds. The conclusion was startling: plants were somehow sensing signals from their neighbors. The excitement grew when similar results were found in poplars and sugar maples by scientists Ian Baldwin and Jack Schultz. Popular media soon proclaimed the discovery of \"talking trees,\" though such headlines made many researchers skeptical, fearing that the field was becoming pseudoscientific."
+    },
+    {
+     "text": "Nevertheless, further evidence accumulated. In the sagebrush-covered slopes of northern California, Karban simulated insect attacks by clipping plant leaves. He observed that nearby wild tobacco plants, unrelated to sagebrush, began producing protective enzymes such as polyphenol oxidase. These plants later showed significantly less leaf damage from grasshoppers and caterpillars. The experiment provided strong proof that interplant signaling could occur naturally, not just under laboratory conditions."
+    },
+    {
+     "text": "Airborne Messages"
+    },
+    {
+     "text": "By the 1990s, the idea of chemical communication among plants gained new support from scientists like Ted Farmer at the University of Lausanne. Working initially with sagebrush and tomato plants, Farmer demonstrated that when damaged sagebrush leaves were sealed in jars with undamaged tomato plants, the tomatoes began releasing proteinase inhibitors—substances that disrupt insect digestion. This indicated that plants could indeed send and receive airborne messages."
+    },
+    {
+     "text": "Subsequent research revealed that almost every green plant produces a unique cocktail of volatile compounds. The scent of freshly cut grass, for example, is actually a complex mixture of alcohols, aldehydes, and ketones—alarm signals that warn neighboring plants of damage. Lima beans respond to chemicals emitted by other lima beans being eaten, corn seedlings prepare themselves against caterpillars, and even chili peppers react to the emissions of cucumber plants. Insects, too, are part of this invisible communication network: maize attacked by beet armyworms releases volatiles that attract parasitic wasps, which lay their eggs in the caterpillars' bodies. Thus, plants not only \"talk\" to one another but also recruit animal allies in their defense."
+    },
+    {
+     "text": "Farmer later discovered that plants can transmit internal messages using electrical pulses, similar to the way animals send nerve signals. Though plants lack brains or neurons, this voltage-based signaling suggests an unexpected level of biological sophistication. As Farmer remarked, \"The more we study plants, the more we realize how intelligent their systems truly are.\""
+    },
+    {
+     "text": "Eavesdropping Plants"
+    },
+    {
+     "text": "Despite mounting evidence, not all scientists agree that plants are truly communicating. Some argue that what appears to be communication might simply be a form of eavesdropping. A plant might release chemicals into the air as part of its own defense, and nearby plants, detecting these volatiles, may respond independently. According to ecologist Martin Heil, most of these chemical signals travel no more than a meter, suggesting that plants may primarily be signaling to themselves rather than intentionally warning others. In this view, \"plant communication\" might be better understood as self-signaling with unintended recipients."
+    },
+    {
+     "text": "Still, the evolutionary implications are significant. If plants can share biochemical information, they may coordinate defenses across entire populations. This could have profound ecological and agricultural applications. For instance, certain modern corn hybrids have lost their ancestral ability to produce volatiles that attract beneficial wasps. Reintroducing these traits could make crops more resistant to pests, reducing the need for chemical pesticides. Other possibilities include planting \"sentinel\" species—plants with highly sensitive signaling systems—among crops, allowing them to act as early warning systems."
+    },
+    {
+     "text": "A New Perspective"
+    },
+    {
+     "text": "Whether we call it communication, signaling, or eavesdropping, the phenomenon challenges long-held distinctions between plants and animals. Plants respond, adapt, and interact with one another in ways that suggest a hidden intelligence within ecosystems. As scientists continue decoding these silent messages, they are beginning to view the natural world as a living web of signals and responses—a world far more dynamic and connected than we ever imagined."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "template": "- When insects attack, plants release [[14]] that can alert their neighbours.\n- According to Karban, sagebrush and wild tobacco respond to these signals by producing [[15]] to defend themselves.\n- Early studies on talking trees were dismissed because they were thought to be [[16]] or unrealistic.\n- The smell of [[17]] is actually a distress signal for plants rather than just a pleasant scent.\n- Some scientists believe that plants communicating with others may just be [[18]] on their own signals.",
+     "questions": [
+      {
+       "n": 14,
+       "answer": [
+        "VOCs"
+       ],
+       "explanation": "Plants release volatile organic compounds (VOCs)."
+      },
+      {
+       "n": 15,
+       "answer": [
+        "enzymes"
+       ],
+       "explanation": "They respond by producing defensive enzymes."
+      },
+      {
+       "n": 16,
+       "answer": [
+        "flawed"
+       ],
+       "explanation": "Early studies were dismissed as flawed."
+      },
+      {
+       "n": 17,
+       "answer": [
+        "freshly cut grass"
+       ],
+       "explanation": "The smell of freshly cut grass is a distress signal."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "eavesdropping"
+       ],
+       "explanation": "They may simply be eavesdropping on their own signals."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 19–22.",
+     "questions": [
+      {
+       "n": 19,
+       "text": "What was David Rhoades' main finding in 1983?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Insects prefer feeding on trees far from infested ones."
+        },
+        {
+         "key": "B",
+         "text": "Damaged willows send messages to nearby undamaged ones."
+        },
+        {
+         "key": "C",
+         "text": "Tent caterpillars ignore biochemical changes in leaves."
+        },
+        {
+         "key": "D",
+         "text": "Infested trees grow faster to survive attack."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Rhoades found damaged willows signalled nearby undamaged ones (B)."
+      },
+      {
+       "n": 20,
+       "text": "What was the major reason early scientists were skeptical about plant communication?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The concept seemed too extraordinary to be real."
+        },
+        {
+         "key": "B",
+         "text": "The plants studied were already genetically modified."
+        },
+        {
+         "key": "C",
+         "text": "The results contradicted established chemical theories."
+        },
+        {
+         "key": "D",
+         "text": "Researchers found no evidence in laboratory experiments."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The concept seemed too extraordinary to be real (A)."
+      },
+      {
+       "n": 21,
+       "text": "According to the text, what did Ted Farmer discover about plant communication?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Plants use sound waves to transmit information."
+        },
+        {
+         "key": "B",
+         "text": "Plants can send electrical pulses similar to animal nerve signals."
+        },
+        {
+         "key": "C",
+         "text": "Certain trees communicate through underground roots."
+        },
+        {
+         "key": "D",
+         "text": "Plants communicate only under laboratory conditions."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Farmer discovered plants transmit messages using electrical pulses (B)."
+      },
+      {
+       "n": 22,
+       "text": "What practical use could the study of plant communication have?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Developing fertilizers that make plants grow faster."
+        },
+        {
+         "key": "B",
+         "text": "Reducing insects that destroy wild forests."
+        },
+        {
+         "key": "C",
+         "text": "Helping crops defend themselves naturally against pests."
+        },
+        {
+         "key": "D",
+         "text": "Increasing the number of species in agricultural lands."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "It could help crops defend themselves naturally (C)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of researchers below. Match each statement with the correct researcher, A–E.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Richard Karban"
+      },
+      {
+       "key": "B",
+       "text": "Ted Farmer"
+      },
+      {
+       "key": "C",
+       "text": "Ian Baldwin"
+      },
+      {
+       "key": "D",
+       "text": "David Rhoades"
+      },
+      {
+       "key": "E",
+       "text": "Martin Heil"
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "text": "He conducted experiments in the wild that supported the idea of chemical communication among plants.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Richard Karban (A) ran field experiments on sagebrush slopes."
+      },
+      {
+       "n": 24,
+       "text": "He discovered that plants use an electrical system similar to the animal nervous system.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Ted Farmer (B) found plants transmit messages using electrical pulses."
+      },
+      {
+       "n": 25,
+       "text": "He argued that plants may simply be responding to their own chemical emissions.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Martin Heil (E) argued plants respond to their own emissions."
+      },
+      {
+       "n": 26,
+       "text": "He first suggested that plants could communicate through airborne signals.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "David Rhoades (D) first proposed airborne plant signalling."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "We Have Star Performers",
+   "subtitle": "Most organisations are looking for talent. But what if they've got it wrong, asks Jeffrey Pfeffer",
+   "paragraphs": [
+    {
+     "text": "Most organisations are looking for talent. But what if they've got it wrong, asks Jeffrey Pfeffer"
+    },
+    {
+     "label": "A",
+     "text": "One widely held assumption about talent is that it is a reasonably fixed characteristic and it is therefore the job of organisations to identify, recruit and retain star performers. This belief affects the way people are managed in the workplace. Most recruitment decisions are influenced by the skills and abilities of an individual rather than their aptitude and attitude. In terms of career development, organisations invest in staff who have been selected to reach higher-level positions, while ignoring front-line employees and people with less perceived potential. This idea, that talent is a fixed, identifiable characteristic — and that those firms with the best people do the best — is both flawed and harmful to people and organisations. There is a lot of evidence on this point, and it is useful to highlight some of the most pertinent arguments."
+    },
+    {
+     "label": "B",
+     "text": "First, are there stars? There is no question that in every field, from sports to computer programming to music, there are people who are better than the rest. As psychologist Dean Keith Simonton, who has spent his career studying greatness, has said, 'Wherever you look, the same story can be told. Identify the ten per cent who have achieved the most in a certain endeavour. Count the accomplishments they have to their credit. Now tally the accomplishments of the remaining 90 per cent. The first tally will equal or surpass the second.' For instance, in music, 16 individuals have produced about 50 per cent of the Western classical music that is performed and recorded today, while another 235 composers have produced the remaining half. The more interesting questions concern not just the existence of stars, but whether these stars can be reliably identified and, even more importantly, whether their talent is a fixed aspect or can be altered."
+    },
+    {
+     "label": "C",
+     "text": "Identifying the best people is tricky. Quality of performance changes over time and this is true whether we are talking about professors or footballers. If performance naturally varies, any measurement taken at a single point in time, such as when someone is being hired, will have error and imprecision. Therefore, single assessments of talent are likely to contain mistakes in their categorisation of people. Also, judgements about performance and ability depend on the standards used to judge what is good and bad. It should surprise no one that for Bach to be considered a great musician, standards of music needed to change to embrace the qualities that his compositions possessed. Similarly, artists and art come in and out of fashion, which means that what is genius depends not only on a person's ability, but on the prevailing standards used to evaluate output."
+    },
+    {
+     "label": "D",
+     "text": "Finally, it is difficult to evaluate people and their abilities with precision. In the domain of work, research shows that the best predictors of job performance tend to be measures of intelligence. But even these measures correlate only loosely with performance, which means that more than 80 per cent of the variation in performance is unexplained by even the best predictors. Even in the sports arena, where one would think natural ability would be readily assessed because sports teams spend lots of resources on identifying talent, mistakes get made. Basketball star Michael Jordan was dropped by his high-school basketball coach and a number of top American football quarterbacks were available early in their careers because they were not considered good enough by various teams."
+    },
+    {
+     "label": "E",
+     "text": "This leads on to the next question: is talent born or made? Should organisations assume that almost anyone can become a star performer, which implies that there ought to be a greater emphasis on motivation and development, or do they just figure out who is good and who isn't? Here the evidence is clear: talent is at least as much 'created' as inherent and, more importantly, the customary way companies think about identifying talent almost certainly works to destroy a lot of untapped potential. Decades of research by K Anders Ericsson, professor of psychology at Florida State University, show that exceptional performance doesn't happen without around ten years of nearly daily, deliberate practice of about four hours a day, by people who have access to the best techniques with the assistance of their coaches. Once achieved, exceptional performance can't be maintained without relentless effort. So performance may be as much a consequence of training as it is of innate ability, which suggests that performance can be altered by how people are managed."
+    },
+    {
+     "label": "F",
+     "text": "Further research by Stanford psychology professor Carol Dweck shows that the tendency of organisations to see performance results as an opportunity for an 'assessment' of ability, results in lower performance and poor motivation. Dweck identified two sets of goals that people bring to a performance context: 'performance goals', where the purpose is to validate one's ability or avoid demonstrating a lack of ability, and learning goals, where the aim is to acquire new knowledge and skills. People with performance goals have been shown to be more prone to helpless behaviour and debilitation after a setback, while people with learning goals strive for higher performance. The implications for managing people and talent are clear. Seeing talent as fixed and job performance as a way of classifying people creates a self-fulfilling prophecy in which ability and intelligence do become fixed. By contrast, seeing ability as malleable leads to a different sort of self-fulfilling prophecy, in which individuals and their employers may invest in ways to enhance performance."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has six paragraphs, A–F. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 27,
+       "text": "Disagreement with the view that employing talented people enables companies to achieve top performance",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section A: the idea that firms with the best people do best is flawed and harmful."
+      },
+      {
+       "n": 28,
+       "text": "A description of what individuals have to do on a regular basis to improve their performance",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Section E: deliberate daily practice improves performance."
+      },
+      {
+       "n": 29,
+       "text": "The evidence that exceptional talent exists in all areas of life",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B: in every field there are people who are better than the rest."
+      },
+      {
+       "n": 30,
+       "text": "How different ways of evaluating achievement at work can cause different reactions in employees",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Section F: different evaluation approaches produce different employee reactions."
+      },
+      {
+       "n": 31,
+       "text": "The belief that the time when an assessment is carried out affects its accuracy",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Section C: measurement at a single point in time will have error and imprecision."
+      },
+      {
+       "n": 32,
+       "text": "The extent to which different talented individuals have contributed to their particular area of achievement",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B: 16 individuals produced about 50% of Western classical music."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "- How many Western classical composers are identified as exceptionally talented? [[33]]\n- Which composer initially received little recognition for his work? [[34]]\n- Who can help improve the performance of people practising daily? [[35]]",
+     "questions": [
+      {
+       "n": 33,
+       "answer": [
+        "16"
+       ],
+       "explanation": "16 individuals produced about half of the Western classical music performed today."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "Bach"
+       ],
+       "explanation": "Standards had to change for Bach to be considered great."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "coaches"
+       ],
+       "explanation": "Coaches help improve the performance of those practising daily."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 36,
+       "text": "Companies usually hire people on the basis of their character.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Recruitment is influenced by skills and abilities rather than aptitude and attitude."
+      },
+      {
+       "n": 37,
+       "text": "There are some areas of sport that have a greater proportion of talent than others.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No comparison between sports is made."
+      },
+      {
+       "n": 38,
+       "text": "Measures of intelligence accurately predict performance at work.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage indicates such measures do not reliably predict performance."
+      },
+      {
+       "n": 39,
+       "text": "There are cases in which talented sportspeople have been overlooked.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage gives cases of talented sportspeople being missed."
+      },
+      {
+       "n": 40,
+       "text": "Newly formed organisations have the most highly motivated staff.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No information about newly formed organisations' staff motivation."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

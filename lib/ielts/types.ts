@@ -13,8 +13,18 @@
 
 export type ExamSkill = "READING" | "LISTENING";
 export type ExamDifficulty = "Easy" | "Medium" | "Hard";
-/** Where a test came from. "legacy" = converted from the old short practice format. */
-export type ExamSource = "averna" | "generated" | "legacy";
+/**
+ * Where a test came from. "legacy" = converted from the old short practice format;
+ * "cdi" = imported from the CDI practice materials (scripts/cdi/import.mjs).
+ */
+export type ExamSource = "averna" | "generated" | "legacy" | "cdi";
+
+/** A picture that belongs to a question group (map / plan / diagram to label). */
+export interface ExamImage {
+  /** Public URL, e.g. "/cdi/images/listening3-map.webp". */
+  src: string;
+  alt: string;
+}
 
 export type GroupKind =
   | "tfng" // TRUE / FALSE / NOT GIVEN
@@ -78,6 +88,8 @@ export interface ExamGroup {
    *   anything else        → plain line / paragraph
    */
   template?: string;
+  /** Map / plan / diagram shown with the group (e.g. "Label the map"). */
+  image?: ExamImage;
   questions: ExamQuestion[];
 }
 
@@ -137,6 +149,24 @@ export interface ListeningPart {
   speakers: ListeningSpeaker[];
   script: ScriptLine[];
   groups: ExamGroup[];
+  /**
+   * Transcript of a REAL recording ("Speaker: text" lines, plain text). Used
+   * when the test ships with `ExamListeningTest.audio` and `speakers`/`script`
+   * are empty. Contains every gap answer, so it must never reach the client
+   * before submission.
+   */
+  transcript?: string;
+}
+
+/** One real recording for the whole Listening test (all four parts in one file). */
+export interface ListeningTestAudio {
+  /** File name only, e.g. "listening-1.mp3" (hosting / base URL decided by the app). */
+  file: string;
+  durationSec?: number;
+  /** Seconds where each part starts in the file (4 entries) — approximate, from the transcript cues. */
+  partStarts?: number[];
+  /** Question number → second at which the answer is spoken. */
+  questionTimes?: Record<number, number>;
 }
 
 export interface ExamListeningTest {
@@ -149,6 +179,8 @@ export interface ExamListeningTest {
   topics?: string[];
   source: ExamSource;
   parts: ListeningPart[];
+  /** Real recording (e.g. imported CDI tests). When set, parts may have empty `speakers` / `script`. */
+  audio?: ListeningTestAudio;
 }
 
 export type ExamTest = ExamReadingTest | ExamListeningTest;
@@ -221,7 +253,23 @@ export interface ListeningPartAudio {
  * contains every gap answer — never reaches the client.
  */
 export type ClientListeningPart = Omit<ListeningPart, "groups"> & { groups: ClientGroup[]; audio?: ListeningPartAudio };
-export type ClientListeningTest = Omit<ExamListeningTest, "parts"> & { parts: ClientListeningPart[] };
+/**
+ * The one real recording of a whole test (ExamListeningTest.audio) as sent to
+ * the browser: its URL and the public timing only. `questionTimes` (where each
+ * answer is spoken) and the parts' `transcript` stay on the server until the
+ * attempt is submitted.
+ */
+export interface ListeningRecording {
+  url: string;
+  durationSec?: number;
+  /** Seconds where each part starts in the file (one per part, ascending) — approximate. */
+  partStarts?: number[];
+}
+export type ClientListeningTest = Omit<ExamListeningTest, "parts"> & {
+  parts: ClientListeningPart[];
+  /** Set for a test with one real recording (CDI): the runner plays this file for every part. */
+  recording?: ListeningRecording;
+};
 
 /** Result of grading one question (server-side). */
 export interface GradeItem {

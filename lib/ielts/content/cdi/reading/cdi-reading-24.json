@@ -1,0 +1,767 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-24",
+ "title": "CDI Reading Test 24",
+ "description": "A full Academic Reading test from the CDI practice materials: The Pearl; How do plants talk to each other?; The Discovery of Slowness.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Pearl",
+  "How do plants talk to each other?",
+  "The Discovery of Slowness"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Pearl",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The pearl has always had a special status in the rich and powerful all through the history. For instance, women from ancient Rome went to bed with pearls on them, so that they could remind themselves how wealthy they were after waking up. Pearls used to have more commercial value than diamonds until jewellers learnt to cut gems. In the eastern countries like Persia, ground pearl powders could be used as a medicine to cure anything including heart diseases and epilepsy."
+    },
+    {
+     "label": "B",
+     "text": "Pearls can generally be divided into three categories: natural, cultured and imitation. When an irritant (such as a grain of sand) gets inside a certain type of oyster, mussel, or clam, the mollusc will secrete a fluid as a means of defence to coat the irritant. Gradually, layers are accumulated around the irritant until a lustrous natural pearl is formed."
+    },
+    {
+     "label": "C",
+     "text": "A cultured pearl undergoes the same process. There is only one difference between cultured pearls and natural ones: in cultured pearls, the irritant is a bead called 'mother of pearl' and is placed in the oyster through surgical implantation. This results in much larger cores in cultivated pearls than those in natural pearls. As long as there are enough layers of nacre (the secreted fluid covering the irritant) to create a gorgeous, gem-quality pearl, the size of the nucleus wouldn't make a difference to beauty or durability."
+    },
+    {
+     "label": "D",
+     "text": "Pearls can come from both salt and freshwater sources. Typically, pearls from salt water usually have high quality, although several freshwater pearls are considered high in quality, too. In addition, freshwater pearls often have irregular shapes, with a puffed rice appearance. Nevertheless, it is the individual merits that determine the pearl's value more than the sources of pearls. Saltwater pearl oysters are usually cultivated in protected lagoons or volcanic atolls, while most freshwater cultured pearls sold today come from China. There are a number of options for producing cultured pearls: use fresh water or sea water shells, transplant the graft into the mantle or into the gonad, add a spherical bead or do it nonbeaded."
+    },
+    {
+     "label": "E",
+     "text": "No matter which method is used to get pearls, the process usually takes several years. Mussels must reach a mature age, which may take up almost three years, and then be transplanted an irritant. When the irritant is put in place, it takes approximately another three years for a pearl to reach its full size. Sometimes, the irritant may be rejected. As a result, the pearl may be seriously deformed, or the oyster may directly die from such numerous complications as diseases. At the end of a 5- to 10-year circle, only half of the oysters may have made it through. Among the pearls that are actually produced in the end, only about 5% of them will be high-quality enough for the jewellery makers."
+    },
+    {
+     "label": "F",
+     "text": "Imitation pearls are of another different story. The Island of Mallorca in Spain is renowned for its imitation pearl industry. In most cases, a bead is dipped into a solution made from fish scales. But this coating is quite thin and often wears off. One way to distinguish the imitation pearls is to have a bite on it. Fake pearls glide through your teeth, while the layers of nacre on the real pearls feel gritty."
+    },
+    {
+     "label": "G",
+     "text": "Several factors are taken into account to evaluate a pearl: size, shape, colour, the quality of surface and luster. Generally, the three types of pearls come in such order (with the value decreasing): natural pearls, cultured pearls and imitation pearls (which basically are worthless). For jewellers, one way to tell whether a pearl is natural or cultured is to send it to a gem lab and perform an X-ray on it. High-quality natural pearls are extremely rare. Japan's Akoya pearls are one of the glossiest pearls out there, while the south sea water of Australia is a cradle to bigger pearls."
+    },
+    {
+     "label": "H",
+     "text": "Historically, the pearls with the highest quality around the globe are found in the Persian Gulf, particularly around Bahrain. These pearls have to be hand-harvested by divers with no advanced equipment. Unfortunately, when the large reserve of oil was discovered in the early 1930s, Persian Gulf's natural pearl industry came to a sudden end because the contaminated water destroyed the once pristine pearls. In the present days, India probably has the largest stock of natural pearls. However, it is quite an irony that a large part of India's stock of natural pearls are originally from Bahrain."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 1 has eight paragraphs, A–H. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "text": "ancient stories around pearls and its customers",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A describes historical uses of pearls by the wealthy in ancient Rome and Persia."
+      },
+      {
+       "n": 2,
+       "text": "difficulties in cultivating process",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E describes the many challenges in pearl cultivation including rejection, disease and mortality."
+      },
+      {
+       "n": 3,
+       "text": "factors which decide the value of natural pearls",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G lists size, shape, colour, surface quality and luster as evaluation factors."
+      },
+      {
+       "n": 4,
+       "text": "a growth mechanism that distinguishes cultured pearls from natural ones",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C explains how the irritant in cultured pearls is surgically implanted, unlike natural pearls."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "In history, pearls have had great importance within the men of wealth and power, which were treated as gems for women in [[5]]. Also, pearls were even used as a medicine for people in [[6]]. There are essentially three types of pearls: natural, cultured and imitation. Most freshwater cultured pearls sold today come from China while [[7]] Island is famous for its imitation pearl industry. Good-quality natural pearls are exceedingly unusual. [[8]]'s Akoya pearls are one of the glossiest while [[9]] produces larger size ones due to the favourable environment along the coastline. In the past, [[10]] in Persian Gulf produced the world's best pearls.",
+     "questions": [
+      {
+       "n": 5,
+       "answer": [
+        "ancient Rome"
+       ],
+       "explanation": "Women from ancient Rome wore pearls to bed."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "eastern countries"
+       ],
+       "explanation": "In eastern countries like Persia, pearl powder was used as medicine."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "Mallorca"
+       ],
+       "explanation": "The Island of Mallorca in Spain is renowned for its imitation pearl industry."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "Japan"
+       ],
+       "explanation": "Japan's Akoya pearls are one of the glossiest pearls."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "Australia"
+       ],
+       "explanation": "The south sea water of Australia produces larger pearls."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Bahrain"
+       ],
+       "explanation": "Bahrain in the Persian Gulf produced the world's best quality pearls historically."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 11,
+       "text": "Generally speaking, the centre of cultured pearl is significantly larger than that of a natural pearl.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph C: 'This results in much larger cores in cultivated pearls than those in natural pearls.'"
+      },
+      {
+       "n": 12,
+       "text": "Sometimes, fake pearls can be more expensive.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage does not mention the price of imitation pearls compared to real ones."
+      },
+      {
+       "n": 13,
+       "text": "The size of the pearls produced in Japan is usually smaller than those in Australia.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage does not explicitly compare the size of Japanese and Australian pearls."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "How do plants talk to each other?",
+   "paragraphs": [
+    {
+     "text": "Research shows that plants communicate and interact with each other in surprisingly subtle and sophisticated ways."
+    },
+    {
+     "label": "A",
+     "text": "In 1983, plant scientists Jack Schultz and Ian Baldwin reported that the leaves of young maple trees increased their defense systems when exposed to maples that had been damaged by plant-eating (herbivorous) insects. The injured trees, they suggested, were alerting neighbors to the presence of a predator by releasing chemical signals into the air. But the plant research community did not accept this. The results were difficult to replicate, critics pointed out. Many also questioned how it could be evolutionarily stable if it benefited neighboring plants but not the plant releasing the signal. By the late 1980s, most ecologists felt that Schultz and Baldwin's idea had been discredited."
+    },
+    {
+     "label": "B",
+     "text": "A decade later, however, a number of more carefully designed experiments began to yield convincing indications to the contrary. In 2000, evolutionary ecologist Richard Karban showed that wild tobacco plants became resistant to herbivores when grown in close proximity to sagebrush plants whose leaves had been damaged by cutting. This change appeared to be in response to chemicals – known as volatile organic compounds or VOCs – released by the sagebrush plants. Other researchers soon reported similar VOC-induced defense responses in several other plants, including lima bean, broad bean, barley, and corn. And in 2006, Karban showed that VOCs released by damaged sagebrush induce herbivore resistance in plants growing at distances of up to 60 cm, well within the range of sagebrush neighbors in nature."
+    },
+    {
+     "label": "C",
+     "text": "But the question still remains: 'Why should a plant waste valuable resources on a function which has no obvious advantage for it?' One hypothesis is that external communication channels are merely an extension of within-plant signaling. In sagebrush, lima bean, and poplar, VOCs released from damaged parts of a plant induce resistance in intact sections of the same plant, suggesting that each individual plant uses the signals to coordinate its own physiological responses to protect itself. Karban agrees, saying: 'The interplant signaling we see may be a result of plants co-opting that process.' Alternatively, VOC-based signaling between plants may have been favored because it enhances the 'extended fitness' of the sender by aiding related plants of the same species: a strategy known as kin selection."
+    },
+    {
+     "label": "D",
+     "text": "Over the past few years, a team led by Ariel Novoplansky of Ben-Gurion University of the Negev in Israel seems to have found proof that distress signals can be passed through the plants' roots. They planted garden pea plants in rows and subjected the first in each row to conditions similar to those experienced in a drought. They then evaluated the response by measuring the microscopic holes on leaves, known as pores, which react when there is a shortage of water. After fifteen minutes, the stressed plant was seen to be closing its pores, followed by all of its neighbors, one by one. Importantly, in a control setup where root contact between neighboring plants was blocked, pores stayed open. Meanwhile, David Johnson's team at the University of Aberdeen in Scotland have been studying the labyrinths of hair-like fungi that occur around the roots of most plants. These fungi are involved in an important two-way relationship: in exchange for sugars, they provide plants with much-needed phosphorus and nitrogen. Research in which broad bean plants were infested with aphids – small herbivorous insects – revealed that these networks also served as a channel for warning neighboring plants of the infestation."
+    },
+    {
+     "label": "E",
+     "text": "Monica Gagliano of the University of Western Australia believes that plants may even use sounds to alert their neighbors. In one study, she demonstrated that chili plants growing next to fennel plants developed more quickly than seedlings grown with other chili plants. Gagliano and her colleagues suspect the chili plants were compensating for the presence of the fennel, which is known to release chemicals that inhibit the growth of other plants. Remarkably, however, when plant communication pathways – airborne volatiles, root contact, and common fungal networks – were blocked, the results begged for an alternative explanation. 'We think this other channel of communication might be acoustic,' says Gagliano. But behavioral ecologist Carel ten Cate of the University of Leiden in the Netherlands points out that taking advantage of such benefits would require sensory mechanisms yet to be described in plants."
+    },
+    {
+     "label": "F",
+     "text": "Researchers believe that knowledge of this phenomenon could eventually be applied to agriculture, and lead to the cultivation of hardier crops. But all agree that there is still much work to be done: applying our limited knowledge of plant-communication mechanisms to agriculture is a big jump, says Johnson, 'but it is definitely on the horizon.' Nevertheless, one message has emerged loud and clear from those studying this new realm of botanical interaction: despite not possessing eyes, ears, or a nervous system, plants are anything but uncommunicative. 'When I started my PhD (in the late 1980s), all this stuff was considered very weird,' recalls Ariel Novoplansky. 'Today, there is no doubt. We now recognise that plants are capable of some very sophisticated exchanges of information with other plants. This idea is not strange anymore.'"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six paragraphs, A–F. Choose the correct heading for each paragraph from the list of headings below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Sending messages underground"
+      },
+      {
+       "key": "ii",
+       "text": "Potential advantages for farmers"
+      },
+      {
+       "key": "iii",
+       "text": "The widespread rejection of an idea"
+      },
+      {
+       "key": "iv",
+       "text": "One species accelerating growth in another"
+      },
+      {
+       "key": "v",
+       "text": "Some obstacles to plant communication"
+      },
+      {
+       "key": "vi",
+       "text": "Evidence leading to renewed belief in a theory"
+      },
+      {
+       "key": "vii",
+       "text": "New technologies which helped researchers"
+      },
+      {
+       "key": "viii",
+       "text": "A suggested benefit to the sender of plant communication"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Paragraph A describes how the scientific community rejected Schultz and Baldwin's idea."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Paragraph B presents evidence that led to renewed belief in plant communication."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Paragraph C discusses kin selection – a benefit to the sender of plant signals."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Paragraph D shows signals passed via underground roots and fungal networks."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph E describes chili plants accelerating growth near fennel – one species affecting another."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Paragraph F discusses potential advantages of plant communication research for farming."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Plant communication research in Israel and Scotland",
+     "template": "Plants may send messages via their [[20]] according to Ariel Novoplansky of Ben-Gurion University in Israel. In one study, Novoplansky's team planted rows of garden peas, and created conditions like a [[21]] around the first plant in each row. The plants responded by closing the tiny holes on their leaf surfaces, known as pores. Research at the University of Aberdeen in Scotland has focused on the networks of [[22]] which connect the plants beneath the soil. These structures, which extract sugars from the plants and supply them with phosphorus and nitrogen, also play a key role in plant communication. Experiments involving broad bean plants and plant-eating insects called [[23]] have also produced some interesting results.",
+     "questions": [
+      {
+       "n": 20,
+       "answer": [
+        "roots"
+       ],
+       "explanation": "'distress signals can be passed through the plants' roots'"
+      },
+      {
+       "n": 21,
+       "answer": [
+        "drought"
+       ],
+       "explanation": "'conditions similar to those experienced in a drought'"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "fungi"
+       ],
+       "explanation": "'hair-like fungi that occur around the roots of most plants'"
+      },
+      {
+       "n": 23,
+       "answer": [
+        "aphids"
+       ],
+       "explanation": "'broad bean plants were infested with aphids – small herbivorous insects'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Match each statement with the correct researcher, A–E.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Richard Karban"
+      },
+      {
+       "key": "B",
+       "text": "Ariel Novoplansky"
+      },
+      {
+       "key": "C",
+       "text": "David Johnson"
+      },
+      {
+       "key": "D",
+       "text": "Monica Gagliano"
+      },
+      {
+       "key": "E",
+       "text": "Carel ten Cate"
+      }
+     ],
+     "questions": [
+      {
+       "n": 24,
+       "text": "It is likely that research into plant communication will one day help to improve our food supply.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "David Johnson (C): 'applying our limited knowledge of plant-communication mechanisms to agriculture... is definitely on the horizon.'"
+      },
+      {
+       "n": 25,
+       "text": "Plant communication could occur as a consequence of internal mechanisms intended to help a single plant.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Richard Karban (A): VOC signaling 'may be a result of plants co-opting' their own internal signaling process."
+      },
+      {
+       "n": 26,
+       "text": "Attitudes towards plant communication have changed greatly in recent decades.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Ariel Novoplansky (B): 'When I started my PhD (in the late 1980s), all this stuff was considered very weird... Today, there is no doubt.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The Discovery of Slowness",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The English explorer and writer John Franklin (1786–1847) joined the Navy at the age of 18. The boat is built in Tafelage, where many boats have been attached to Arctic capsules and used to participate in solving the construction of the Northwest Passage – a small-scale water route through the ice which would, if it exists, link the Pacific Ocean on America's West Coast with the Atlantic on its East. The first expedition Franklin led to the Arctic was an official overland journey lasting from 1819 to 1820 in which he and his twenty-two team covered 6,890 kilometres. The expedition was regarded as a triumph of surviving – they managed to chart hundreds of kilometres of previously unknown coastline – but food ran out on their journey back to civilisation. At the time they were forced to eat their belts and then boots (which they boiled up to make leather soup)."
+    },
+    {
+     "label": "B",
+     "text": "There followed a career as a travel writer and public speaker (the man who ate his boots was Franklin's tag-line). Then in 1845, Franklin set off back to the Arctic with two ships – the Erebus and the Terror – and 129 men. Nothing was heard of them for 14 years, although more than 30 expeditions were performed in search of them. Eventually it was discovered that Franklin and all his team had perished after their ships were trapped in the ice."
+    },
+    {
+     "label": "C",
+     "text": "In his personal correspondence and published memoirs, Franklin comes across as a man dedicated to the external duties of war and exploration, who kept introspection and self-analysis to a minimum. His background makes him an amenable and malleable subject for a novelist, and Sten Nadolny has taken full advantage of this in his book. Most important, Nadolny has provided John Franklin with a defining trait for which there is no historical evidence: Langsamkeit, or 'slowness'."
+    },
+    {
+     "label": "D",
+     "text": "Slowness influences not only Franklin's behaviour, but also his vision, his thought and his speech. The opening scene of The Discovery of Slowness depicts Franklin as a young boy, failing to catch a ball because his reaction time is too slow. Despite the bullying of his peers, Franklin resolves not to fall into step with 'their way of doing things'. For Nadolny, Franklin's fascination with the Arctic stems from his desire to find an environment suited to his peculiar slowness. He describes Franklin as a boy dreaming of the 'time without hours and days' which exists in the far north, a place where nobody would find him too slow."
+    },
+    {
+     "label": "E",
+     "text": "Ice is a slow mover: 'The compressed blue ice inside an Alpine crevasse will have fallen as snow several decades earlier. Polar pack ice takes at least two years to form. The film of crystals which first appears on the surface of the sea thickens into a silky plant layer called nilas; this in turn consolidates into young ice, which then deepens during several seasons to become pack-ice.' This natural slowness demands a corresponding patience from those who venture onto it. The explorers who thrive at high latitudes and at high altitudes haven't usually been men of great speed. They have tended instead to demonstrate unusual self-possession, a considerable capacity for boredom, and a talent for the uncomplaining endurance of suffering."
+    },
+    {
+     "label": "F",
+     "text": "These were all qualities which the historical Franklin possessed in abundance, and so Nadolny's exaggeration of them isn't unreasonable. Even as an adult, Franklin's slowness of thought means that he is unable to speak fluently, so he learns by heart entire fleets of words and batteries of responses, and speaks a languid, ice-blue language. In the Navy, his method of thinking first and acting later initially provokes mockery from his fellow sailors. But Franklin persists in doing things his way, and gradually earns the respect of those around him. 'To a commodore who tells him to speed up his report of an engagement, he replies: When I tell something, sir, I use my own rhythm.' A lieutenant says approvingly of him: 'Because Franklin is so slow, he never loses time.'"
+    },
+    {
+     "label": "G",
+     "text": "Nadolny also brings his central metaphor of slowness to bear on the novel's style. The chapters describing Franklin's early years are a medley of separate fragments, rhetorical questions, associative jumps and exclamation marks. In the latter part, recounting Franklin's first Arctic expedition, Nadolny brilliantly sets the narrative pace to the rhythms of the frozen landscape, and the slowness which is 'bred by hunger'."
+    },
+    {
+     "label": "H",
+     "text": "Since it was first published in Germany in 1983, The Discovery of Slowness has sold more than a million copies and been translated into 15 languages. It has been adopted as a manual and manifesto by European pressure groups and institutions representing causes as diverse as sustainable development, management science and modern policy, even becoming involved in the debate about speed limits on German roads. The various groups that have taken the novel up have one thing in common: a dislike of the high-speed culture of Postmodernity. Nadolny's Franklin appeals to them because he is immune to the compulsion to be constantly occupied, and to the idea that 'someone was better if he could do the same thing fast'."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has eight paragraphs, A–H. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "A summary of Franklin's occupation in the period before his first expedition",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C describes Franklin's background in war and exploration, before Nadolny's fictional treatment."
+      },
+      {
+       "n": 28,
+       "text": "A reference to a feature of Franklin's character in Nadolny's novel that has no definite basis in fact",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D: Nadolny provided Franklin with the trait of 'slowness' for which 'there is no historical evidence'. (Note: this detail is actually in C.)"
+      },
+      {
+       "n": 29,
+       "text": "A connection between the central theme of the novel and an environmental process",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E connects the slowness of ice formation to the personal qualities required of Arctic explorers."
+      },
+      {
+       "n": 30,
+       "text": "A reference to the widespread appeal of Nadolny's novel",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H describes how the novel sold over a million copies and was adopted by many diverse groups."
+      },
+      {
+       "n": 31,
+       "text": "A summary of events following Franklin's return from his first expedition",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B describes Franklin's career as a travel writer and his final fatal expedition."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–L, below.",
+     "title": "John Franklin and the Quality of Slowness",
+     "options": [
+      {
+       "key": "A",
+       "text": "a bully"
+      },
+      {
+       "key": "B",
+       "text": "discoveries"
+      },
+      {
+       "key": "C",
+       "text": "educational"
+      },
+      {
+       "key": "D",
+       "text": "family"
+      },
+      {
+       "key": "E",
+       "text": "an outsider"
+      },
+      {
+       "key": "F",
+       "text": "isolation"
+      },
+      {
+       "key": "G",
+       "text": "personality"
+      },
+      {
+       "key": "H",
+       "text": "problems"
+      },
+      {
+       "key": "I",
+       "text": "a scholar"
+      },
+      {
+       "key": "J",
+       "text": "remoteness"
+      },
+      {
+       "key": "K",
+       "text": "sporting"
+      },
+      {
+       "key": "L",
+       "text": "timelessness"
+      }
+     ],
+     "template": "Little is known from Franklin's correspondence and published writings about his [[32]]. The author, Nadolny, suggests that Franklin's whole life can be explained by the quality of 'slowness'. He begins the book by showing how this affects the young Franklin's [[33]] activities, and makes him become [[34]]. As a child, it is the quality of [[35]] that attracts Franklin to the Arctic.",
+     "questions": [
+      {
+       "n": 32,
+       "answer": [
+        "G"
+       ],
+       "explanation": "G = personality. Little is known from Franklin's writings about his personality/inner life."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "K"
+       ],
+       "explanation": "K = sporting. Nadolny begins the book showing how slowness affects the young Franklin's sporting activities (catching a ball)."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "E"
+       ],
+       "explanation": "E = an outsider. Franklin's slowness makes him become an outsider among his peers who bully him."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "L"
+       ],
+       "explanation": "L = timelessness. It is the quality of timelessness (time without hours and days) that attracts Franklin to the Arctic."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 36,
+       "text": "In paragraph E, the writer describes different types of ice in order to illustrate",
+       "options": [
+        {
+         "key": "A",
+         "text": "the extreme conditions that Polar explorers have to face."
+        },
+        {
+         "key": "B",
+         "text": "the unusual quality of the beauty of Polar regions."
+        },
+        {
+         "key": "C",
+         "text": "the vital importance of preserving the Arctic environment."
+        },
+        {
+         "key": "D",
+         "text": "the personal qualities required of an explorer in Arctic conditions."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "The ice metaphor is used to show that the slow formation of ice demands patience from explorers."
+      },
+      {
+       "n": 37,
+       "text": "What is said about the way Franklin communicates?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He expresses a very limited range of ideas."
+        },
+        {
+         "key": "B",
+         "text": "He is only willing to discuss things he is familiar with."
+        },
+        {
+         "key": "C",
+         "text": "He uses words and phrases that he has previously memorised."
+        },
+        {
+         "key": "D",
+         "text": "He is only fluent when talking about naval matters."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph F: 'he learns by heart entire fleets of words and batteries of responses'."
+      },
+      {
+       "n": 38,
+       "text": "How does the attitude of the other sailors change towards Franklin?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They no longer notice his slowness."
+        },
+        {
+         "key": "B",
+         "text": "They start to copy his approach to work."
+        },
+        {
+         "key": "C",
+         "text": "They begin to recognise his efforts to overcome his problems."
+        },
+        {
+         "key": "D",
+         "text": "They eventually appreciate his good qualities."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph F: 'gradually earns the respect of those around him'."
+      },
+      {
+       "n": 39,
+       "text": "The chapters of The Discovery of Slowness which describe Franklin's early years contain",
+       "options": [
+        {
+         "key": "A",
+         "text": "text from a wide variety of sources."
+        },
+        {
+         "key": "B",
+         "text": "short, disconnected pieces of text."
+        },
+        {
+         "key": "C",
+         "text": "descriptions of the Arctic landscape."
+        },
+        {
+         "key": "D",
+         "text": "information about other explorers like Franklin."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph G: 'a medley of separate fragments, rhetorical questions, associative jumps and exclamation marks'."
+      },
+      {
+       "n": 40,
+       "text": "The Discovery of Slowness has achieved widespread popularity because",
+       "options": [
+        {
+         "key": "A",
+         "text": "it reflects many people's concern about one aspect of modern life."
+        },
+        {
+         "key": "B",
+         "text": "it offers achievable solutions to many of the problems of today."
+        },
+        {
+         "key": "C",
+         "text": "it tells the story of someone's triumph over personal problems."
+        },
+        {
+         "key": "D",
+         "text": "it shows how life in the past was less pressured than it is now."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph H: the groups share 'a dislike of the high-speed culture of Postmodernity' — a concern about modern life."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

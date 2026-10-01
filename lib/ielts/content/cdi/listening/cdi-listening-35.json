@@ -1,0 +1,710 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-35",
+ "title": "CDI Listening Test 35",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "A woman calls The Function Company to enquire about party rooms at two hotels",
+  "A radio presenter describes a new cycle route called the Elmsden Way",
+  "Professor, Tom and Bella discuss the furniture company Willows in their after-school club meeting",
+  "A lecturer presents research on the phenomenon of photic (light-triggered) sneezing"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-35-part-1",
+   "title": "Part 1",
+   "context": "A woman calls The Function Company to enquire about party rooms at two hotels.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Rooms to Hire for Parties\nThe Exchange Hotel\n- – number of seated guests possible: 45\n- – room on the [[1]] floor\n- – large, bright room with a good [[2]]\n- – cost: £32 with buffet per person (minimum number of people: [[3]] )\n- – available any [[4]] in April\nThe [[5]] Hotel\n- – large room (seats 75)\n- – in the [[6]] area of the city\n- – room on ground floor with a small [[7]] for guests to use\n- – cost: £36 with buffet per person\n- – available: 13th and 20th April\nBooking information\n- – Bookings held for a [[8]]\n- – Final payment of [[9]] % required 10 days before booking\n- – Need to confirm guests and menu 5 days in advance\n- – To book, phone [[10]] on Monday",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "fifth",
+        "5th"
+       ],
+       "explanation": "The Exchange Hotel has a room for hire on the fifth floor."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "view"
+       ],
+       "explanation": "The room has a wonderful view -- on a fine evening you can see for miles."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "35"
+       ],
+       "explanation": "You have to have at least thirty-five guests."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "saturdays",
+        "saturday"
+       ],
+       "explanation": "They can do any Saturday in April, but not Fridays or Sundays."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "limerick"
+       ],
+       "explanation": "There is the Limerick Hotel -- L-I-M-E-R-I-C-K."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "business"
+       ],
+       "explanation": "The Limerick Hotel is in the business district of the city."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "garden"
+       ],
+       "explanation": "There is a small garden that would be available for guests to use."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "week"
+       ],
+       "explanation": "If I take your booking today, I can hold it for a week."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "65"
+       ],
+       "explanation": "You pay the other sixty-five per cent ten days before the party."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "044298611"
+       ],
+       "explanation": "The agent gives her mobile number: 044298611."
+      }
+     ]
+    }
+   ],
+   "transcript": "A woman calls The Function Company to enquire about party rooms at two hotels.\nAgent: Good morning, the Function Company. Can I help you?\nWoman: Hi. A friend told me that you can arrange rooms for hire for parties and things like that.\nAgent: That's right. We have about ten hotels on our list, and we hire out function rooms on their behalf. Are you having a party?\nWoman: Yes. It's for my birthday, my 21st.\nAgent: Okay. Well, the Exchange Hotel might be a good choice. They have a room which will seat up to 45 and will take 65 people standing. Are you going to have a meal or just a buffet?\nAgent: Well, it was built about 150 years ago. They have a room for hire on the fifth floor. Very easy for people to find. Popular for wedding parties.\nAgent: It's quite big and very light, but the best thing is that it has a wonderful view. On a fine evening you can see for miles.\nAgent: It's £32 a head. That includes the hire of the room and the standard buffet, but not drinks. And you have to have at least 35 guests.\nAgent: They can do any Saturday in April, but not Fridays or Sundays.\nAgent: There's the Limerick Hotel. L-I-M-E-R-I-C-K. Large room -- seats up to 75, or 125 standing.\nAgent: It's in the business district, so public transport is good. It's got a large car park too. Room is on the ground floor and it's recently been refurbished.\nAgent: There's a small garden that would be available for guests to use.\nAgent: If I take your booking today, I can hold it for a week. To confirm, I need a deposit of 35%. You pay the other 65% ten days before the party. The number of guests needs to be confirmed five days before.\nAgent: I'll be out of the office on Monday, but you can call me on my mobile on 044298611."
+  },
+  {
+   "id": "cdi-listening-35-part-2",
+   "title": "Part 2",
+   "context": "A radio presenter describes a new cycle route called the Elmsden Way.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Label the map of the Elmsden Way cycle route below. Write the correct letter, A–I, next to questions 11–14.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "text": "Rocks",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The Rocks are east of the road -- option B on the Elmsden Way map."
+      },
+      {
+       "n": 12,
+       "text": "Colleen Nature Reserve",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Colleen Nature Reserve: go straight on at the fork -- option E."
+      },
+      {
+       "n": 13,
+       "text": "Ashington China Factory",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Ashington China Factory along the river cycle path -- option F."
+      },
+      {
+       "n": 14,
+       "text": "Langton Forest",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Langton Forest to the south of the bridge -- option I."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening35-map1.webp",
+      "alt": "Elmsden Way Cycle Route Map"
+     }
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 15,
+       "text": "What kind of warning does the speaker give to cyclists?",
+       "options": [
+        {
+         "key": "A",
+         "text": "there may be traffic jams"
+        },
+        {
+         "key": "B",
+         "text": "avoid wet cycle paths"
+        },
+        {
+         "key": "C",
+         "text": "there may be animals in the way"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Cyclists should watch out for sheep straying onto the path."
+      },
+      {
+       "n": 16,
+       "text": "The starting point, Elmsden station, is described as",
+       "options": [
+        {
+         "key": "A",
+         "text": "very busy in the early 20th century."
+        },
+        {
+         "key": "B",
+         "text": "more modern after renovation."
+        },
+        {
+         "key": "C",
+         "text": "now permanently closed."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Elmsden Station was very busy in the early 20th century."
+      },
+      {
+       "n": 17,
+       "text": "What can visitors find near the station?",
+       "options": [
+        {
+         "key": "A",
+         "text": "a hire bike facility at the visitors centre"
+        },
+        {
+         "key": "B",
+         "text": "a small shop selling refreshments across the road"
+        },
+        {
+         "key": "C",
+         "text": "an exhibition about railway history"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "A small shop across the road from the station sells refreshments."
+      },
+      {
+       "n": 18,
+       "text": "To travel between Langton and Elmsden by train, cyclists need to",
+       "options": [
+        {
+         "key": "A",
+         "text": "book in advance."
+        },
+        {
+         "key": "B",
+         "text": "go on weekends only."
+        },
+        {
+         "key": "C",
+         "text": "pay an additional charge."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The trains between the two places do not run on weekdays."
+      },
+      {
+       "n": 19,
+       "text": "What should you be aware of when visiting River Elm?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The walk back up is very steep and takes a long time."
+        },
+        {
+         "key": "B",
+         "text": "The waterfall is inaccessible on foot."
+        },
+        {
+         "key": "C",
+         "text": "You need to take your bike to access it."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Going down to the River Elm is easy but the walk back up takes a long time."
+      },
+      {
+       "n": 20,
+       "text": "Where can you get information about other local cycle routes?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the Saturday edition of the local newspaper"
+        },
+        {
+         "key": "B",
+         "text": "the National Cycle Network website"
+        },
+        {
+         "key": "C",
+         "text": "the station radio programme"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Full details of other local cycle routes are in the Saturday edition of the local paper."
+      }
+     ]
+    }
+   ],
+   "transcript": "A radio presenter describes a new cycle route called the Elmsden Way.\nPresenter: Welcome to our holiday special. Today I'll be talking about a new cycle route called the Elmsden Way. It's 35 kilometres long from Elmsden to Lowington and consists partly of cycle paths and partly roads. Let me outline the route briefly starting at Elmsden Railway Station.\nPresenter: The first part is a cycle path running eastwards, roughly parallel to the rail track. Almost immediately, the railway curves away and goes around the southern side of a little lake. But the cycle path takes the northern route around the lake. Keep your eyes open for the swans that nest there.\nPresenter: The path then joins the road, and the next landmark is a group of massive Rocks which tower over the countryside. You will see them to the east of the road just before the road goes under the railway.\nPresenter: Soon you'll come to a fork in the road. But if you want to make a detour to Colleen Nature Reserve, go straight on instead of leaving the road here.\nPresenter: Continuing along the cycle path, you'll reach the River Cleave. After a bit, you'll see the Ashington China Factory, which closed in 1962.\nPresenter: When you get there, there's a bridge over the river and you carry on with Langton Forest to the south and farmland to the north. The route ends at Langton Village, where you'll find a railway station.\nPresenter: One point to remember: keep your eyes open for sheep which occasionally stray onto the cycle path from adjoining fields. The path is well constructed so not affected by wet or muddy conditions. There might be the odd car or tractor on roads, but most traffic has been diverted to the main road.\nPresenter: The starting point, Elmsden Station, was very busy in the early 20th century with services to several major cities, but it was closed in the 1950s. A small company was set up to turn it into a railway museum. The station was ready for trains to start using it again earlier this year.\nPresenter: There's a small shop just across the road from the station that sells refreshments.\nPresenter: You can take your cycle on the train -- no need to book, no extra charge. However, the trains don't run on weekdays.\nPresenter: There's a footpath from Elmsden Station to the River Elm. Leave yourself plenty of time. Going down is easy, but the climb up is very steep -- the walk back up can take quite a while.\nPresenter: If you'd like more cycling, full details are in the Saturday edition of the local paper. The National Cycle Network also has some details on their website."
+  },
+  {
+   "id": "cdi-listening-35-part-3",
+   "title": "Part 3",
+   "context": "Professor, Tom and Bella discuss the furniture company Willows in their after-school club meeting.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What is Willows currently focused on?",
+       "options": [
+        {
+         "key": "A",
+         "text": "specialising in one product (bookcases)"
+        },
+        {
+         "key": "B",
+         "text": "making a variety of products"
+        },
+        {
+         "key": "C",
+         "text": "adding retail outlets across the country"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Willows now specialises in one product -- bookcases."
+      },
+      {
+       "n": 22,
+       "text": "How did the department first make contact with Willows?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The professor contacted the company directly."
+        },
+        {
+         "key": "B",
+         "text": "The headmaster read an article written by the manager."
+        },
+        {
+         "key": "C",
+         "text": "A student worked there part-time during vacations."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The headmaster saw an article the manager had written in a newspaper."
+      },
+      {
+       "n": 23,
+       "text": "How did the student find the software used at Willows?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It was very difficult to predict."
+        },
+        {
+         "key": "B",
+         "text": "It was slow for drawing designs."
+        },
+        {
+         "key": "C",
+         "text": "It had a good and easy interface."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The software had a bad interface and was very difficult to predict."
+      },
+      {
+       "n": 24,
+       "text": "How did the students find out about the effects of the software?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They visited the IT department."
+        },
+        {
+         "key": "B",
+         "text": "They spoke with the manager."
+        },
+        {
+         "key": "C",
+         "text": "They were allowed to inspect the accounts."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Visitors were allowed to inspect the accounts."
+      },
+      {
+       "n": 25,
+       "text": "Why will the professor interview students individually?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to help them prepare for exams"
+        },
+        {
+         "key": "B",
+         "text": "because there will be less disturbance individually"
+        },
+        {
+         "key": "C",
+         "text": "because group interviews are more realistic"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "There would be too much disturbance if students are interviewed together."
+      },
+      {
+       "n": 26,
+       "text": "How did the two students perform in the exam?",
+       "options": [
+        {
+         "key": "A",
+         "text": "very disappointing results"
+        },
+        {
+         "key": "B",
+         "text": "significantly improved but below average"
+        },
+        {
+         "key": "C",
+         "text": "above the average"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Both students have scored above the average."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "In which TWO ways will the new system affect the company?",
+     "options": [
+      {
+       "key": "A",
+       "text": "gain more profit"
+      },
+      {
+       "key": "B",
+       "text": "employ more new staff"
+      },
+      {
+       "key": "C",
+       "text": "increase sales"
+      },
+      {
+       "key": "D",
+       "text": "reduce production time"
+      },
+      {
+       "key": "E",
+       "text": "cut labour costs"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Q27: B -- Hiring more staff increases efficiency of the production line. Q28: E -- The new system would significantly lower labour costs."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Q27: B -- Hiring more staff increases efficiency of the production line. Q28: E -- The new system would significantly lower labour costs."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO effects will the new system have on new clients?",
+     "options": [
+      {
+       "key": "A",
+       "text": "getting more involved in the design"
+      },
+      {
+       "key": "B",
+       "text": "obtaining more contacts"
+      },
+      {
+       "key": "C",
+       "text": "linking from home to do online work"
+      },
+      {
+       "key": "D",
+       "text": "wasting less time browsing the catalogue"
+      },
+      {
+       "key": "E",
+       "text": "decreasing labour costs"
+      }
+     ],
+     "questions": [
+      {
+       "n": 29,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Q29: A -- Staff can design furniture in front of clients, letting them get more involved. Q30: D -- The system lets clients browse the catalogue quickly, saving them time."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Q29: A -- Staff can design furniture in front of clients, letting them get more involved. Q30: D -- The system lets clients browse the catalogue quickly, saving them time."
+      }
+     ]
+    }
+   ],
+   "transcript": "Professor, Tom and Bella discuss the furniture company Willows in their after-school club meeting.\nProf: Now I hope you've read the notes I gave you last week on the furniture company Willows. Let's begin. Who can tell me what the current focus of the company's business is?\nTom: The company used to be very large, with many resale outlets across the country. However, since the recession, there have been fewer people spending money on furniture. And so the company was forced to close all of its outlets, and now only operates online.\nBella: Willows used to produce a very large number of products, such as tables, chairs, and light fittings. However, through market research, they realized that most of their profit was made from the sale of bookcases, so they now specialise in this one product.\nBella: Our headmaster saw an article that the manager had written in the newspaper and became very interested. He contacted Willows and arranged for a student to work there full time during the summer.\nTom: He worked as a member of the design team. There was a special software which had a bad interface and was very difficult to predict. However, it was very efficient and helpful for quickly drawing up furniture designs.\nBella: We both visited him whilst he was working there. Unfortunately, visitors were not allowed to access the IT department, but it was great to chat with his colleagues.\nTom: His manager didn't have time to meet with us. However, we were allowed to inspect the accounts, which really helped us to understand the effects of the software on the company.\nProf: I'm afraid not, Bella. I want to give each of you my undivided attention, and there will be too much disturbance if I interview you all together. Plus it will be more realistic if I interview you alone.\nProf: I'm glad to say that your performance has dramatically increased since you began attending this after-school club, and you have both scored above the average.\nProf: Now, back to our discussion about Willows. Can anyone tell me what business decisions might benefit the company?\nBella: A new system would definitely benefit Willows. I don't think it would help them to gain more profit. However, the system is capable of doing the work of hundreds of people. This would significantly lower labour costs. The answer is to hire more staff in order to increase the efficiency of the production line.\nProf: Unfortunately, the new system does not allow clients to connect to the Willows system from home, so they are unable to access their work online. This also means that the system presents no opportunity to attract more contacts, since clients are unable to view it from their homes.\nBella: However, it could benefit clients who visit the showroom. The system is very interactive and allows clients to easily browse the furniture catalogue, which will save them a lot of time.\nProf: The major benefit of the new system is that it enables staff to design the furniture in front of the client, which allows them to get a lot more involved in the design."
+  },
+  {
+   "id": "cdi-listening-35-part-4",
+   "title": "Part 4",
+   "context": "A lecturer presents research on the phenomenon of photic (light-triggered) sneezing.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Photic Sneezing\nSymptoms when facing bright sunlight:\n- a prickle in the nose\n- faster [[31]] rate (relieved by a sneeze)\n- watery eyes\n- This photic sneeze cannot be controlled — it is a very [[32]] reflex\nSneezing in general:\n- Caused by irritation in the nose\n- Nerve endings in the [[33]] are stimulated → explosive expulsion of air\n- Controlled by the same mechanism as production of [[34]] in the eyes\nResearch history:\n- Known for thousands of years\n- Aristotle: why does the sun cause sneezing but a [[35]] does not?\n- Bacon: proved the cause is light, not heat\n- Everett (1964): 80% of photic sneezers had the habit among their [[36]]\nIndicators of a photic sneeze:\n- Sneezers produce the same [[37]] of sneezes each time\n- Depends on a [[38]] in visible brightness (e.g. sun from behind a cloud)\n- The body needs [[39]] to recharge before sneezing again\nApplications:\n- Studied as a risk factor for [[40]]\n- May lead to breakthroughs in migraine / epilepsy research",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "breathing"
+       ],
+       "explanation": "An increase in the breathing rate is one of the symptoms."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "common"
+       ],
+       "explanation": "The photic sneeze is a very common reflex -- 1 in 10 to 1 in 3 people."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "face"
+       ],
+       "explanation": "Nerve endings all over the face are stimulated."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "tears"
+       ],
+       "explanation": "The same mechanism controls the production of tears in the eyes."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "fire"
+       ],
+       "explanation": "Aristotle asked why the sun causes sneezing but the heat of a fire does not."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "relatives"
+       ],
+       "explanation": "80% of photic sneezers reported other sneezers among their relatives."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "number"
+       ],
+       "explanation": "Sneezers almost always sneeze a set number of times on exposure to light."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "contrast"
+       ],
+       "explanation": "The sneeze depends on a contrast in visible brightness."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "time"
+       ],
+       "explanation": "The body needs time to recharge before the reflex can be triggered again."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "pilots"
+       ],
+       "explanation": "The government once studied photic sneezing as a risk factor for pilots."
+      }
+     ]
+    }
+   ],
+   "transcript": "A lecturer presents research on the phenomenon of photic (light-triggered) sneezing.\nLecturer: Today I want to show you how even ordinary human behaviour like sneezing may be worth studying.\nLecturer: Have you ever been walking outside when a bright shaft of sunlight hits you between the eyes? The reaction of some people is immediate. An unpleasant prickling in the nose, an increase in their breathing rate, and an uncontrollable watering of the eyes. Then, almost as quickly, they sneeze and gain relief. This may happen every time they go into the sun.\nLecturer: This so-called photic or light sneeze is a reflex which means it can't be controlled, and it's very common -- anything between one in ten and one in three people might be affected.\nLecturer: In fact, a sneeze is triggered by an irritation of some sort in the linings of the nostrils. The result is a cascade of reactions beginning with the stimulation of the nerve endings all over the face and generating an explosive expulsion of air at up to 95 miles an hour, like an extremely localised personal hurricane.\nLecturer: The body's coordination of such reactions is complicated and belongs to the subconscious control hardware that regulates other things, for example tears in the eyes.\nLecturer: People have been interested in the phenomenon of photic sneezing for thousands of years. The Greek philosopher Aristotle asked: why does the sun prompt us to sneeze, whereas the heat of a fire does not? Francis Bacon later showed that his photic sneeze had nothing to do with heat. If he closed his eyes going into the sun, he didn't sneeze even though the heat was still there.\nLecturer: Henry Everett, in 1964, found that while 80% of sneezers reported other sneezers among their relatives, only 20% of non-sneezers did.\nLecturer: Now there are certain indicators of a photic sneeze. First, those with the condition almost always sneeze a set number of times on exposure to light.\nLecturer: In addition, the sneeze depends on a contrast in visible brightness, such as when the sun moves out from behind a cloud. And the sneezing fit won't be repeated immediately.\nLecturer: The body needs time before it can be recharged. So if you go back into a darkened space and then immediately re-enter bright light, you will not sneeze again.\nLecturer: The photic sneeze had long been overlooked, although the government did once study it as a risk factor for pilots. Yet work on such a simple disorder might lead to important discoveries on more acute conditions such as migraine or epilepsy, which are also caused by crosswires in the nervous system."
+  }
+ ],
+ "audio": {
+  "file": "listening-35.mp3",
+  "durationSec": 1546,
+  "questionTimes": {
+   "1": 157,
+   "2": 181,
+   "3": 192,
+   "4": 219,
+   "5": 230,
+   "6": 254,
+   "7": 268,
+   "8": 335,
+   "9": 349,
+   "10": 373,
+   "11": 518,
+   "12": 532,
+   "13": 549,
+   "14": 564,
+   "15": 598,
+   "16": 633,
+   "17": 678,
+   "18": 684,
+   "19": 708,
+   "20": 745,
+   "21": 877,
+   "22": 905,
+   "23": 922,
+   "24": 964,
+   "25": 990,
+   "26": 1006,
+   "27": 1071,
+   "28": 1071,
+   "29": 1123,
+   "30": 1139,
+   "31": 1314,
+   "32": 1341,
+   "33": 1354,
+   "34": 1381,
+   "35": 1397,
+   "36": 1446,
+   "37": 1454,
+   "38": 1466,
+   "39": 1478,
+   "40": 1494
+  }
+ }
+}

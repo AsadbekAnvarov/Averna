@@ -1,0 +1,679 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-21",
+ "title": "CDI Reading Test 21",
+ "description": "A full Academic Reading test from the CDI practice materials: The Whale Goes to Court; A Unique Golden Textile; Science and filmmaking.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Whale Goes to Court",
+  "A Unique Golden Textile",
+  "Science and filmmaking"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Whale Goes to Court",
+   "paragraphs": [
+    {
+     "text": "In 1818, a whale became the subject of a controversial court case in New York City. The case involved an old law requiring those who sold fish oil to pay a fee in order to have their barrels inspected by city officials and certified. However, an oil merchant named Samuel Judd refused to pay the inspection fee on three barrels of oil, claiming that no inspection was necessary because it was whale oil, and whales were not fish. The state disagreed, and so a date was set for a court to decide not a question of law, but the answer to a more fundamental question: Is a whale a fish?"
+    },
+    {
+     "text": "As simple as that question may appear today, the answer was far from obvious in the early nineteenth century. Indeed, the public debate in New York sparked off by the trial was sensational. At stake was nothing less than what most regarded as the order of nature. According to the commonly accepted scheme of things, if an animal was not a beast or a bird, it was a fish, regardless of whether it breathed air or suckled its young. For as long as anyone could remember, all non-human creatures had been organized according to the categories of birds, beasts, or fish. For the average person, the answer seemed perfectly obvious: whales swam in the sea and therefore they were fish."
+    },
+    {
+     "text": "Against this traditional framework stood the new Linnaean system of classification, which sought to introduce more scientific values into the classification of living things. Barely half a century old in 1818, the Linnaean system controversially classified whales as mammals because they shared two mammalian characteristics: they were warm-blooded and breathed air."
+    },
+    {
+     "text": "So the trial began in December 1818. Judd’s defense lawyers chose as their star witness one of New York’s most prominent figures, the congressman Samuel Mitchill. Referred to as a ‘living encyclopedia’ and a ‘walking library’, Mitchill was a renowned natural history lecturer at the College of Physicians and Surgeons who liked to dare his students to test his knowledge of the natural world. “Show me the fin, and I will name the fish,” he boasted. Scientifically, it was an open-and-shut case, and Judd’s defense lawyers believed they only had to do one simple thing to win the trial: insist that it be decided by biology alone. Mitchill seemed fully qualified for this role."
+    },
+    {
+     "text": "But this is where the case becomes interesting, and is the reason why the trial of the whale is not some dusty nineteenth-century obscurity. For rather than debate Mitchill on his area of expertise, lawyers for the New York City fish-oil inspectors chose a different tack. Lead counsel William Sampson turned the trial into a contest between scientific learning and common sense, by asking plain-spoken whalers to make their case before the jury."
+    },
+    {
+     "text": "The crux of Sampson’s case was the trial’s implication with regard to humans: should Judd be found not guilty? Sampson told jury members that if they accepted Mitchill’s testimony on whales, they were obliged to accept a lower place for their own kind in the natural order. As a result, Mitchill’s day in court did not go smoothly, not least because he was forced to acknowledge serious disputes among his peers regarding exactly how to classify biological organisms. Sampson then took aim at Mitchill himself and what he represented: privileged aristocrats from the scientific community who had lost touch with reality. The smooth-talking Sampson then claimed Mitchill’s beliefs had their origin in Europe – something he rightly judged would infuriate the citizens of always-independent New York. This revolutionary new thinking, Sampson claimed, was something that honest working New Yorkers could do without. No longer was this a case about barrels of oil; but the proper place of scientific knowledge in the U.S.A."
+    },
+    {
+     "text": "Ultimately, what won the case for Samuel Judd were not Mitchill’s scientific arguments, but testimony from a different sphere altogether. In New York’s markets, the merchants implicitly understood that whale oil and fish oil were not the same: whale oil could be used as a fuel for lamps because it could be burned without giving off smoke; fish oil, on the other hand, was nasty, impure stuff used primarily in tanning leather. In the end, it was this testimony that led to Judd’s victory."
+    },
+    {
+     "text": "The trial of the whale still has relevance today, when the court of public opinion remains easily swayed by skeptics. The 1818 trial was really about this question: who gets to decide on the place of the natural world in the human world – scientific experts or public opinion? Whether the issue today is the effects of human activity on the climate of this planet, or one of many other contemporary topics, the legacy of Judd’s case continues to be of relevance."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "An inspection fee on fish oil was introduced in New York in 1818.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says it was an ‘old law’ – it existed before 1818."
+      },
+      {
+       "n": 2,
+       "text": "Samuel Judd argued that the inspection fee should exclude whale oil.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Judd refused to pay, claiming ‘whales were not fish’."
+      },
+      {
+       "n": 3,
+       "text": "Judd had been in trouble with city officials before the inspection fee disagreement.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says nothing about Judd’s prior history with officials."
+      },
+      {
+       "n": 4,
+       "text": "Many New Yorkers were interested in the court case at the time.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The debate was described as ‘sensational’."
+      },
+      {
+       "n": 5,
+       "text": "Traditionally, non-human creatures had been classified in one of three groups.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Creatures were organized as ‘birds, beasts, or fish’."
+      },
+      {
+       "n": 6,
+       "text": "Generally speaking, ordinary people thought fish were the lowest form of life.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage doesn’t mention any ranking of life forms."
+      },
+      {
+       "n": 7,
+       "text": "Whales were excluded from the Linnaean system in 1818.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The Linnaean system classified whales as mammals, not excluded them."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY from the text for each answer.",
+     "wordLimit": 1,
+     "title": "The Trial of December 1818",
+     "template": "The Personalities\n○ Samuel Mitchill worked as a congressman and [[8]]\n○ The defense wanted Mitchill to present the biology of the case.\n○ William Sampson called [[9]] as a witness to appeal to the common sense of the jury.\nThe Arguments\n○ Sampson’s case was based on the consequences for humans if Judd won.\n○ Mitchill admitted that scientists had disputes about classification.\n○ New Yorkers disliked Mitchill because his ideas came from [[10]]\nConclusions\n○ In the end, it was statements from local [[11]], not Mitchill’s testimony which helped Judd win.\n○ Whale oil made a good [[12]] because it was clean.\n○ Judd’s case is relevant today, e.g., in the debate about Earth’s [[13]].",
+     "questions": [
+      {
+       "n": 8,
+       "answer": [
+        "lecturer"
+       ],
+       "explanation": "Mitchill was a ‘renowned natural history lecturer’."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "whalers"
+       ],
+       "explanation": "Sampson asked ‘plain-spoken whalers to make their case’."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Europe"
+       ],
+       "explanation": "Mitchill’s beliefs ‘had their origin in Europe’."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "merchants"
+       ],
+       "explanation": "In the markets, ‘the merchants implicitly understood’ the difference."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "fuel"
+       ],
+       "explanation": "Whale oil could be used as a ‘fuel for lamps’."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "climate"
+       ],
+       "explanation": "The effects of human activity on the ‘climate’ of this planet."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "A Unique Golden Textile",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "A rare textile made from the silk of more than a million wild spiders has been on display at the American Museum of Natural History in New York City. To produce this golden cloth, 70 people spent four years collecting golden orb spiders from telephone poles in Madagascar, while another dozen workers carefully extracted about 80 feet of silk filament from each of the arachnids. The resulting 11-foot by 4-foot textile is the only large piece of cloth made from natural spider silk existing in the world today."
+    },
+    {
+     "label": "B",
+     "text": "Spider silk is very elastic and strong compared with steel or Kevlar, said textile expert Simon Peers, who co-led the project. Kevlar is a lightweight synthetic fabric which is chemically related to nylon. It is very tough and durable and used in bullet-proof vests. Kevlar is also resistant to wear, tear, and heat and has absolutely no melting point. But the tensile strength of spider silk is even greater than Kevlar’s amid filaments, and greater than that of high-grade steel. Most importantly, spider silk is extremely lightweight: a strand of spider silk long enough to circle the Earth would weigh less than 500 grams (18 oz). Spider silk is also especially ductile, able to stretch up to 140 per cent of its length without breaking. It can hold its strength below −40°C. This gives it a very high toughness, which equals that of commercial fibers."
+    },
+    {
+     "label": "C",
+     "text": "Researchers have long been intrigued by the unique properties of spider silk. Unfortunately, spider silk is extremely hard to mass produce. Unlike silk worms, which are easy to raise in captivity, spiders have a habit of chopping off each other’s heads when housed together. According to Peers, there’s scientific research going on all over the world right now trying to replicate the tensile properties of spider silk and apply it to all sorts of areas in medicine and industry, but no one up until now has succeeded in replicating 100 per cent of the properties of natural spider silk."
+    },
+    {
+     "label": "D",
+     "text": "Peers came up with the idea of weaving spider silk after learning about the French missionary Jacob Paul Camboué, who worked with spiders in Madagascar during the 1880s and 1890s. Camboué built a small, hand-driven machine to extract silk from up to 24 spiders at once, without harming them. The spiders were temporarily restrained, their silk extracted, and then let go. Peers managed to build a replica of this 24-spider silking machine that was used at the turn of the century, said Nicholas Godley, who co-led the project with Peers. As an experiment, the pair collected an initial batch of about 20 spiders. ‘When we stuck them in the machine and started turning it, lo and behold, this beautiful gold-colored silk started coming out,’ Godley said."
+    },
+    {
+     "label": "E",
+     "text": "But to make a textile of any significant size, the silk experts had to drastically scale up their plan. ‘Fourteen thousand spiders yield about an ounce of silk,’ Godley said, and the textile weighs about 2.6 pounds. ‘The numbers are overwhelming.’ To get as much silk as they needed, Godley and Peers began hiring dozens of spider handlers to collect wild arachnids and carefully harvest them to the silk-extraction machine. ‘We had to find people who were willing to work with spiders,’ Godley said, ‘because they bite.’ By the end of the project, Godley and Peers extracted silk from more than 1 million female golden orb spiders, which are abundant throughout Madagascar and known for the rich golden color of their silk. Because the spiders only produce silk during the rainy season, workers collected all the spiders between October and June. Then an additional 12 people used hand-powered machines to extract the silk and weave it into 96-filament thread. Once the spiders had been silked, they were released back into the wild, where Godley said it takes them about a week to regenerate their silk. ‘We can go back and re-silk the same spiders,’ he said. ‘It’s like the gift that never stops giving.’"
+    },
+    {
+     "label": "F",
+     "text": "Of course, spending four years to produce a single textile of spider silk isn’t very practical for scientists trying to study the properties of spider silk, or companies that want to manufacture the fabric for use as a biomedical product, or an alternative to Kevlar armor. Several groups have tried inserting spider genes into bacteria or even cows and goats to produce silk, but so far, the attempts have been only moderately successful. Part of the reason it’s so hard to generate spider silk in the lab is that it starts out as a liquid protein that’s produced by a special gland in the spider’s abdomen. Using their spinneret, spiders apply force to rearrange the protein’s molecular structure and transform it into solid silk. ‘When we talk about a spider spinning silk, we’re talking about how the spider applies forces to produce a transformation from liquid to solid,’ said spider silk expert Todd Blackledge of the University of Akron, Ohio, US, who was not involved in creating the textile. Scientists simply can’t replicate the efficiency with which a spider produces silk. ‘Every year we’re getting closer and closer to being able to mass-produce it, but we’re not there yet.’ For now, it seems we’ll have to be content with one incredibly beautiful cloth, graciously provided by more than a million spiders."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six paragraphs, A–F. Choose the correct heading for each paragraph from the list of headings below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Experimenting with an old idea"
+      },
+      {
+       "key": "ii",
+       "text": "Life cycle of Madagascar spiders"
+      },
+      {
+       "key": "iii",
+       "text": "Advances in the textile industry"
+      },
+      {
+       "key": "iv",
+       "text": "Resources needed to meet the project's demands"
+      },
+      {
+       "key": "v",
+       "text": "The physical properties of spider silk"
+      },
+      {
+       "key": "vi",
+       "text": "A scientific analysis of spider silk"
+      },
+      {
+       "key": "vii",
+       "text": "A unique work of art"
+      },
+      {
+       "key": "viii",
+       "text": "Importance of the silk textile market"
+      },
+      {
+       "key": "ix",
+       "text": "Difficulties of raising spiders in captivity"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Paragraph A describes a unique piece of art: the only large cloth made from spider silk."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Paragraph B details spider silk’s physical properties: strength, weight, ductility."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "ix"
+       ],
+       "explanation": "Paragraph C discusses why spiders are hard to raise in captivity."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Paragraph D describes Peers experimenting with Camboué’s old machine."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph E details the massive resources needed: 1 million spiders, dozens of handlers."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Paragraph F is a scientific analysis of how spider silk is produced."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Match each statement with the correct researcher, A, B or C. NB You may use any letter more than once.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Simon Peers"
+      },
+      {
+       "key": "B",
+       "text": "Nicholas Godley"
+      },
+      {
+       "key": "C",
+       "text": "Todd Blackledge"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 20,
+       "text": "It takes a tremendous number of spiders to make a small amount of silk.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Nicholas Godley (B): ‘Fourteen thousand spiders yield about an ounce of silk.’"
+      },
+      {
+       "n": 21,
+       "text": "Scientists want to use the qualities of spider silk for medical purposes.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Simon Peers (A): research trying to apply spider silk ‘to all sorts of areas in medicine and industry’."
+      },
+      {
+       "n": 22,
+       "text": "Scientists are making some progress in their efforts to manufacture spider silk.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Todd Blackledge (C): ‘Every year we’re getting closer and closer to being able to mass-produce it.’"
+      },
+      {
+       "n": 23,
+       "text": "Spider silk compares favourably to materials known for their strength.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Simon Peers (A): spider silk’s tensile strength is greater than Kevlar and steel."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Producing spider silk in the lab",
+     "template": "Both scientists and manufacturers are interested in producing silk for many different purposes. Some researchers have tried to grow silk by introducing genetic material into [[24]] and some animals. But these experiments have been somewhat disappointing.\nIt is difficult to make spider silk in a lab setting because the silk comes from a liquid protein made in a [[25]] inside the spider’s body. When a spider spins silk, it causes a [[26]] that turns this liquid into solid silk. Scientists cannot replicate this yet.",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "bacteria"
+       ],
+       "explanation": "Groups tried inserting spider genes into ‘bacteria or even cows and goats’."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "gland"
+       ],
+       "explanation": "A liquid protein produced by a special ‘gland’ in the spider’s abdomen."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "transformation"
+       ],
+       "explanation": "The spider applies forces to produce a ‘transformation from liquid to solid’."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Science and filmmaking",
+   "paragraphs": [
+    {
+     "text": "Every year the film academy in the USA celebrates the outstanding achievements of the year in a ceremony known as the Oscars. An increasingly important component of the ceremony is the presentation of the Scientific and Technical awards. In 2004 a notable event took place: the academic world met the cinematographic world when researchers from Stanford University in the USA were awarded an Oscar. These researchers, led by Steve Marschner, were from the field of Computer Graphics at Stanford. They were part of a growing cohort of computer scientists that has become fundamental to moviemaking."
+    },
+    {
+     "text": "Films have shown that it is possible to use CGI to make actors look younger, older, weaker or stronger than they actually are in a surprisingly realistic manner. At least, it is possible if the altered actors are not filmed too closely. This is because the difficulty of recreating the textures of both skin and fabric means that the effect is less convincing when seen close up. The work of Marschner and his colleagues has greatly improved the accurate and realistic modeling of both skin and fabric. They recognized that one of the difficulties of creating lifelike characters in the computer world is that in CGI the characters’ skin is opaque (two-dimensional) whereas real skin is in fact translucent (three-dimensional), that is to say it is semi-transparent."
+    },
+    {
+     "text": "Marschner and his colleagues received the Oscar for their work in successfully producing a CGI model that simulates translucency; this is when light penetrates skin and then scatters below the skin’s surface before re-emerging. This is called subsurface scattering, and the mathematics for the model goes back many decades to the time when it was used in astrophysics. Because human skin is naturally translucent, it was necessary to be able to create this artificially in order to simulate the soft appearance of real skin. Previous CGI models, which assumed that skin was entirely opaque, resulted in characters with a plastic appearance. The scientists’ new model of CGI was so important in bringing digital characters to life that, within two years of their original research paper, all the major special-effects studios had incorporated it into their digital rendering systems."
+    },
+    {
+     "text": "However, despite their award, the scientists, with admirable tenacity, continued their search for perfection, as they still did not feel that they had yet satisfactorily recreated the subtle ways light is reflected. To do this, they began to look in detail at the way skins and fabrics reflect light differently according to their make-up: the exact arrangement of fibers in fabric and the network of fibers in skin. Marschner and his team did this by using computerized tomography – which is most familiar as a medical technique for examining people’s internal organs. Like classical radiology it uses X-rays, but because the image is constructed inside a computer using exposures taken from many different positions, rather than a single exposure on photographic film, it can capture fine details that are invisible in classical radiography."
+    },
+    {
+     "text": "Unfortunately, the scientists understood that at this point in time they could not use computer tomography on skin, because a very high intensity X-ray is needed to show the kind of detail they wanted and this would be very dangerous for human skin. They have, however, had some success with fabric. Using this new method of imaging, they are able to accurately record the three-dimensional structure of all the fibers in a number of small pieces of fabric. These same pieces of fabric, through the use of CGI, can then be patched together to form an entire garment inside a computer, in the same way that a small group of actors can be made to look like hundreds of people gathered together. A garment created through CGI is therefore made up of pieces of fabric whose internal structure has been pre-recorded. This means that the way light is reflected by the garment can be calculated far more realistically than if the scientists just made a computer model of what they thought the interior of the fabric looked like."
+    },
+    {
+     "text": "Cinematography will benefit from this because, although it may take some years to be able to use computerized tomographic imaging of skin, for the moment the movement of a virtual cloak or the lifting of a computerized hat should look far more realistic."
+    },
+    {
+     "text": "In the meantime, according to Marschner’s colleague Kavita Bala, the technology might have an application in online retailing. At the moment people buying clothes over the internet have only a standard photograph to help them choose their purchases. It is hoped that if online shoppers can view items which have been presented through the use of computerized tomography graphics, they will have a much better understanding of what the material the item is made of is really like."
+    },
+    {
+     "text": "Marschner is now working on the way light is scattered from individual hairs. He says, ‘I feel lucky to be working in this niche. I’m a visual person and to be able to spend my time scrutinizing the world around me, trying to understand why it looks the way it does, is very rewarding’."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "What is the writer’s main point in the first paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Computer scientists are rarely represented at the Oscars."
+        },
+        {
+         "key": "B",
+         "text": "Film industry awards hold little interest for computer scientists."
+        },
+        {
+         "key": "C",
+         "text": "The USA rewards film actors more than computer scientists."
+        },
+        {
+         "key": "D",
+         "text": "Computer scientists are becoming a vital part of the film industry."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "The paragraph says computer scientists have ‘become fundamental to moviemaking’."
+      },
+      {
+       "n": 28,
+       "text": "When describing the way CGI changes actors’ appearance, what does the writer suggest?",
+       "options": [
+        {
+         "key": "A",
+         "text": "CGI looks best from a distance."
+        },
+        {
+         "key": "B",
+         "text": "CGI interferes with actors’ facial expressions."
+        },
+        {
+         "key": "C",
+         "text": "Audiences expect too much of CGI."
+        },
+        {
+         "key": "D",
+         "text": "The scientists had hoped for more convincing results."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The effect is ‘less convincing when seen close up’ – implying it works best from a distance."
+      },
+      {
+       "n": 29,
+       "text": "What does the writer suggest about the scientists’ attitude to their work in the fourth paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They were motivated to get as near to reality as possible."
+        },
+        {
+         "key": "B",
+         "text": "They were interested in gaining recognition for their work."
+        },
+        {
+         "key": "C",
+         "text": "They thought it could have medical applications."
+        },
+        {
+         "key": "D",
+         "text": "They hoped to receive further funding for their research."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "They continued their ‘search for perfection’ with ‘admirable tenacity’."
+      },
+      {
+       "n": 30,
+       "text": "What are we told about computerized tomography?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It has only recently been used by doctors."
+        },
+        {
+         "key": "B",
+         "text": "It is similar to X-rays in the way it works."
+        },
+        {
+         "key": "C",
+         "text": "Filmmakers have used it for many years for special lighting effects."
+        },
+        {
+         "key": "D",
+         "text": "It can be administered using traditional radiography machines."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "‘Like classical radiology it uses X-rays’."
+      },
+      {
+       "n": 31,
+       "text": "Which advantage does the writer attribute to the current use of computerized tomography?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is most effective when used to create images of skin."
+        },
+        {
+         "key": "B",
+         "text": "It can make a few people seem like a crowd."
+        },
+        {
+         "key": "C",
+         "text": "It allows clothes designers to create new designs."
+        },
+        {
+         "key": "D",
+         "text": "It is practical because of the time it takes."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Pieces of fabric can be ‘patched together’ like ‘a small group of actors can be made to look like hundreds’."
+      },
+      {
+       "n": 32,
+       "text": "The writer mentions Kavita Bala in order to",
+       "options": [
+        {
+         "key": "A",
+         "text": "comment on the success of CGI in commercial contexts."
+        },
+        {
+         "key": "B",
+         "text": "highlight the link between CGI and photography."
+        },
+        {
+         "key": "C",
+         "text": "show that Marschner’s team are uncertain about the future of CGI."
+        },
+        {
+         "key": "D",
+         "text": "demonstrate a use for CGI outside the film industry."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Bala suggests the technology ‘might have an application in online retailing’."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer?",
+     "questions": [
+      {
+       "n": 33,
+       "text": "It used to be unusual for university researchers to receive a cinematography award.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "2004 was described as ‘a notable event’ when academics met the cinematographic world."
+      },
+      {
+       "n": 34,
+       "text": "CGI is popular among ageing actors.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions CGI can make actors look younger/older but says nothing about actors’ opinions."
+      },
+      {
+       "n": 35,
+       "text": "The scientists’ success in generating images of complete CGI garments has won them many awards.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The passage mentions one Oscar; it doesn’t say the garment work won them many awards."
+      },
+      {
+       "n": 36,
+       "text": "It will be a long time before computerised tomographic fabric is used by filmmakers.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The passage says ‘for the moment’ virtual cloaks and hats ‘should look far more realistic’ – it’s already usable."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–I, below.",
+     "title": "The work of Marschner and his colleagues",
+     "options": [
+      {
+       "key": "A",
+       "text": "light"
+      },
+      {
+       "key": "B",
+       "text": "transparency"
+      },
+      {
+       "key": "C",
+       "text": "age"
+      },
+      {
+       "key": "D",
+       "text": "use"
+      },
+      {
+       "key": "E",
+       "text": "astrophysics"
+      },
+      {
+       "key": "F",
+       "text": "mathematics"
+      },
+      {
+       "key": "G",
+       "text": "improvement"
+      },
+      {
+       "key": "H",
+       "text": "colour"
+      },
+      {
+       "key": "I",
+       "text": "translucency"
+      }
+     ],
+     "template": "For many years, CGI characters did not appear entirely lifelike as their skin appeared plastic. Marschner and his colleagues were the first to apply an understanding of how [[37]] interacts with human skin. Their CGI model is based on a novel application of principles of [[38]], which had previously been applied in other scientific research. The importance of CGI to the film industry has led to the [[39]] of Marschner's model by special-effects studios. Marschner's model has led to the [[40]] of cinematography.",
+     "questions": [
+      {
+       "n": 37,
+       "answer": [
+        "A"
+       ],
+       "explanation": "A = light. Marschner studied how light penetrates and scatters in skin."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "E"
+       ],
+       "explanation": "E = astrophysics. The mathematics ‘goes back… to when it was used in astrophysics’."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "D"
+       ],
+       "explanation": "D = use. Studios ‘incorporated it into their digital rendering systems’."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "G"
+       ],
+       "explanation": "G = improvement. The model led to improvement in how CGI looks in films."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

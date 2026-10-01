@@ -5,7 +5,15 @@ import type { ExamGroup, ExamListeningTest, ExamReadingTest, GradeItem, Listenin
 import { cn } from "@/lib/utils";
 import type { ObjectiveSkill } from "./attempt";
 import { PassageDetails } from "./passage";
+import { RecordingPlayerProvider } from "./recording-player";
 import { TranscriptDetails } from "./transcript";
+
+/** A Listening test's one real recording, as the result page plays it (after submission only). */
+export interface ReviewRecording {
+  url: string;
+  /** Question number → second at which its answer is spoken. */
+  questionTimes?: Record<number, number>;
+}
 
 /**
  * Full answer review for an exam-v2 attempt: a question map to jump around,
@@ -174,19 +182,23 @@ export function AnswerReview({
   test,
   part,
   items,
+  recording,
 }: {
   skill: ObjectiveSkill;
   test: ExamReadingTest | ExamListeningTest | null;
   /** Practised part, or null for the whole paper. */
   part: number | null;
   items: GradeItem[];
+  /** Listening with one real recording (CDI): a shared player and "Play from here" per question (questionTimes). */
+  recording?: ReviewRecording | null;
 }) {
   const byNumber = new Map<number, GradeItem>(items.map((i) => [i.n, i]));
   const scoped = scopedParts(test, part);
   const full = matches(scoped, items);
   const word = skill === "READING" ? "Passage" : "Part";
+  const times = skill === "LISTENING" && recording ? recording.questionTimes : undefined;
 
-  return (
+  const review = (
     <section id="answer-review" aria-labelledby="answer-review-title" className="scroll-mt-24 space-y-4">
       <div className="av-panel rounded-2xl p-5 sm:p-6">
         <h2 id="answer-review-title" className="text-base font-semibold text-white sm:text-lg">
@@ -260,7 +272,7 @@ export function AnswerReview({
               <div className="mt-6">
                 {s.part.groups.map((g: ExamGroup, gi: number) => (
                   <div key={`${s.part.id}-${gi}`} id={groupAnchor(g)} className="scroll-mt-24">
-                    <ReviewGroup group={g} skill={skill} items={byNumber} />
+                    <ReviewGroup group={g} skill={skill} items={byNumber} questionTimes={times} />
                   </div>
                 ))}
               </div>
@@ -269,4 +281,6 @@ export function AnswerReview({
         })}
     </section>
   );
+
+  return skill === "LISTENING" && recording ? <RecordingPlayerProvider url={recording.url}>{review}</RecordingPlayerProvider> : review;
 }

@@ -1,0 +1,650 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-04",
+ "title": "CDI Reading Test 04",
+ "description": "A full Academic Reading test from the CDI practice materials: Australia's Cane Toad Problem; Farmers: An Iconic Chain Store in New Zealand Reaches a Milestone; Life on Mars?.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Australia's Cane Toad Problem",
+  "Farmers: An Iconic Chain Store in New Zealand Reaches a Milestone",
+  "Life on Mars?"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Australia's Cane Toad Problem",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "In the north of Australia there are many sugar cane plantations, which early in the 20th century were being damaged by a particular pest. This was a species of beetle whose larvae, the infant form of the beetle, live underground in the soil in the sugar cane fields. The sugar cane plants were weakened or died because their roots were eaten by the larvae. This had serious economic consequences for sugar cane farmers. Modern pesticides were not developed until the 1940s, so farmers had to use what was available at the time. Chemicals like arsenic and copper were used, but these were not only expensive but also stayed in the environment and were poisonous to people, plants and animals. It was generally acknowledged by government, farmers and scientists that cheaper and safer methods of pest control had to be found."
+    },
+    {
+     "label": "B",
+     "text": "A promising replacement for copper and arsenic was the use of biological control. Farmers already used some forms of biological pest control in the form of predatory and parasitic wasps and flies, insect-eating birds, and plants from different regions or countries to control pests. Common practice was to release these introduced agents into new environments, the expectation being that they would destroy resident pests. Some species of toad already had successful records as agents of biological control in gardens. For example, in 19th-century France toads were sold to gardeners at markets in Paris to eat insect pests in their gardens. In the early 20th century French sugar cane farmers first took giant toads from South America to control pests in their Caribbean sugar cane plantations. Although there is no evidence that these toads did help to control pests, sugar cane scientists then carried some of these toads from Jamaica and Barbados to Puerto Rico and from there to Hawaii."
+    },
+    {
+     "label": "C",
+     "text": "The idea of biological control of pests was not new to Australia. For example, in 1926 there had been a highly successful prevention of the increase of the exotic prickly-pear cactus by the introduction of a moth from Argentina. This success added strength to the argument that biological control was the answer to the sugar cane industry's pest problems. Accordingly, in the early 1930s a decision was taken to introduce the giant South American toads, which in Australia are now commonly called cane toads, into Australian sugar cane plantations."
+    },
+    {
+     "label": "D",
+     "text": "In 1935, an Australian entomologist brought 101 cane toads from Hawaii and released them in sugar cane plantations in the north of Australia. However, over the following years it became clear that the cane toads were a failure. There was a fatal flaw in the plan to use them as a form of biological control. This was that earthbound cane toads were expected to eat the mostly flying adult beetles in order to eliminate the soil-dwelling beetle larvae that ate the roots of the cane sugar plants. This, of course, cane toads could not do."
+    },
+    {
+     "label": "E",
+     "text": "Prior to their introduction in Australia, there had been very few opponents and only one made his views public. He was a retired former Chief Entomologist from the state government of New South Wales named Walter Froggatt. He forecast that cane toads might become as great a pest in Australia as rabbits. However, Froggatt's peers rebuked him and eminent scientists branded his views 'decidedly pessimistic'. It is estimated that today as many as a hundred million cane toads form a toxic infestation which is slowly spreading throughout the land."
+    },
+    {
+     "label": "F",
+     "text": "Cane toads are large, heavily built amphibians. Average-sized adults are 10–15 cm long and weigh more than a kilo. They have large swellings on each shoulder from which they squirt poison when they are threatened. This venom contains 14 different chemicals, but they do not appear to be harmful to humans as no-one has died in Australia from cane toad poison. Until recently there was no understanding of the toxicity of cane toad poison, but it is now clear that freshwater crocodiles, goannas (large lizards) and dingoes (wild dogs) have died after eating cane toads. Cane toads compete with native Australian fauna for food, and eat the eggs and young of ground-nesting birds. As their numbers increase, they are taking over more and more of the land where native Australian fauna live."
+    },
+    {
+     "label": "G",
+     "text": "The lesson that can be learned from the introduction of cane toads is important. It is wrong to think that such an awful biological event could not be repeated. In this instance, the catalyst was the overwhelming consensus of support for introducing cane toads to Australia. The error was that there was little or no testing of these biological agents before they were introduced to see what unplanned effects they might have on the environment."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Cane Toads in Australia – Background",
+     "template": "- The larvae of a type of [[1]] were a serious pest in sugar cane fields.\n- Its larvae ate the [[2]] of the plant.\n- Chemical pesticides were unsatisfactory because they were: poisonous; [[3]]; difficult to remove from the ground.\n- In the 19th century French [[4]] used toads.\n- In Australia a [[5]] stopped the spread of prickly-pear cactus.\n- Cane toads were brought to Australia from [[6]].\n- Cane toads proved to be a [[7]] as pest control.",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "beetle"
+       ],
+       "explanation": "Paragraph A identifies the pest as a species of beetle whose larvae damaged the cane."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "roots"
+       ],
+       "explanation": "Paragraph A says the plants weakened or died because their roots were eaten."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "expensive"
+       ],
+       "explanation": "Paragraph A notes the chemicals were not only poisonous and persistent, but also expensive."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "gardeners"
+       ],
+       "explanation": "Paragraph B says toads were sold to gardeners in Paris markets to eat pests."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "moth"
+       ],
+       "explanation": "Paragraph C refers to the introduction of a moth from Argentina to control prickly-pear cactus."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "Hawaii"
+       ],
+       "explanation": "Paragraph D states an Australian entomologist brought 101 cane toads from Hawaii."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "failure"
+       ],
+       "explanation": "Paragraph D says it became clear over the years that the cane toads were a failure."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 8,
+       "text": "The outcome of the introduction of cane toads was immediately obvious.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph D says it became clear only over the following years, not immediately."
+      },
+      {
+       "n": 9,
+       "text": "Rabbits were introduced to Australia to control weeds.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Rabbits are mentioned in Paragraph E, but the reason for their introduction is not stated."
+      },
+      {
+       "n": 10,
+       "text": "Walter Froggatt was criticised for his efforts to stop the introduction of the cane toad to Australia.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph E says Froggatt's peers rebuked him and branded his views pessimistic."
+      },
+      {
+       "n": 11,
+       "text": "The average size of cane toads has increased since their introduction.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Paragraph F gives the current size, but provides no comparison with past sizes."
+      },
+      {
+       "n": 12,
+       "text": "Australian animals can eat cane toads safely.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph F reports animals have died after eating cane toads, so it is not safe."
+      },
+      {
+       "n": 13,
+       "text": "In many places cane toads are gaining control of the habitats of Australian fauna.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph F says they are taking over more and more of the land where native fauna live."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Farmers: An Iconic Chain Store in New Zealand Reaches a Milestone",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The chain of stores known as Farmers began one hundred years ago as a mail order company. Today the Farmers chain employs 3,500 staff across 58 branches, making it the most venerable institution of its type in New Zealand. 'Coming to Farmers once a week has become woven into the fabric of New Zealand culture,' says business historian Ian Hunter. By 1960, one in every ten people had an account with the company. It was not only a shop but also hosted the largest annual parade in the country, the Santa Parade, each Christmas time. Gary Blumenthal, whose family have been customers for three generations, understands well the role Farmers has played in New Zealand culture. 'We were on holiday in Auckland,' he explains, 'and I decided that the lookout tower on top of the Farmers building would be a unique place to fit the ring on my new fiancée's finger.' The couple has been married for 50 years."
+    },
+    {
+     "label": "B",
+     "text": "Farmers' longevity can be attributed to the philosophy fostered by Robert Laidlaw, the Scottish immigrant who established the business. Right from the outset, Laidlaw guaranteed customer satisfaction, and those who were not entirely happy with a purchase would receive a full refund with no questions asked. This was certainly the first time such a guarantee had been made by a New Zealand retailer and was probably one of the first worldwide. Laidlaw believed that the scheme could work if he ensured that every product sold was of the highest quality relative to its price."
+    },
+    {
+     "label": "C",
+     "text": "Another important aspect of the Farmers' philosophy was to internationalise the New Zealand market. By the time the Hobson Street store opened in 1920 in order to sell directly to customers for the first time, Laidlaw had established buying offices in New York and London so as to offer his customers the latest designs. This was a bold move in those days and won Farmers a devoted following. It is also true that whoever you speak to regarding Farmers in the early years, whether managers or workers, they all emphasise how the company represented a large family. Everyone employed by Laidlaw felt they were building something that would ultimately be to the benefit of the whole country. For example, to mark the centenary celebrations, 58 Farmers stores around the country announced the neighbourhood charities they would raise funds for; everything from guide dog services to volunteer fire brigades will benefit."
+    },
+    {
+     "label": "D",
+     "text": "Farmers has always had a heart, according to former board chairman Rawdon Busfield. 'One day I was in the Hobson Street store and a woman came in with two small children – they didn't have a lot of money, you could tell. That week we had a special on, a big bar of chocolate for a shilling… But the boy only had a penny. I took the penny and gave him the chocolate.' However, not everything has stayed the same. Farmers was once home to genteel tea rooms, children's playgrounds, and an annual sale to celebrate the birthday of Hector the Parrot – who came to embody the store in the eyes of many shoppers and who died, aged 131, in the 1970s. You could buy houses from Farmers, and its saddle factory supplied the armed forces. In fact, although the company has grown considerably over the years, today it sells a narrower assortment of products than in the past."
+    },
+    {
+     "label": "E",
+     "text": "Walk through a Farmers store today and you will see big changes. Its most recent branch in the suburb of Albany is filled with bright lights and big brands. The branch sells cosmetics from 16 different international companies and buys from approximately 500 suppliers, of which about 30 percent are locally owned. 'Eight or ten years ago,' says current chief executive Rod McDermott, 'lots of brands wouldn't partner with us. We weren't in trouble as such, but we could have been doing much better because we were focused too much on price and not on fashion. The reorientation of the last decade has seen a great improvement.'"
+    },
+    {
+     "label": "F",
+     "text": "Farmers almost didn't pull through one economic crisis. In the mid-1980s, business was booming and the company had stores throughout the country. Then, with sales topping $375 million, it was taken over by Chase Corporation. Lincoln Laidlaw, the son of the company's founder, remembers the dark days following the stock market crash of 1987 and the collapse of the Chase Corporation. 'The business was being divided up,' he says, 'and I believe that the original culture of the store was dispelled and it hasn't been recovered. That's a shame, but the business is still strong.' For a few turbulent years the stores were controlled first by a consortium of Australian banks, and later a local corporation. In 2003, it went back into 'family' ownership by the purchase by the James Pascoe Group, owned by an established New Zealand retail family. Brand power has made Farmers profitable again, according to McDermott. 'And now we're becoming the brand we used to be... It's like the rebirth of an icon.'"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six paragraphs, A–F. Which paragraph contains the following information? Write the correct letter, A–F.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "a mention of the company being sold",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F describes the takeover by Chase Corporation and later purchase by the James Pascoe Group."
+      },
+      {
+       "n": 15,
+       "text": "a reference to how the range of goods for sale has become more limited",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D states the company now sells a narrower assortment of products than in the past."
+      },
+      {
+       "n": 16,
+       "text": "an example of an innovative offer made by the company's founder",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B notes Laidlaw's full refund guarantee as an early, innovative offer."
+      },
+      {
+       "n": 17,
+       "text": "a description of a romantic event on the shop's roof",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A describes a proposal on the lookout tower on top of the Farmers building."
+      },
+      {
+       "n": 18,
+       "text": "a description of the latest store in the chain",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E describes the most recent Albany branch and its features."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Farmers – Key Facts",
+     "template": "- Farmers was set up as a [[19]] business before it became a chain.\n- Robert Laidlaw set up [[20]] overseas so he could sell up-to-date fashions.\n- According to employees, Farmers was like a [[21]].\n- Farmers held a/an [[22]] once a year in honour of the company's famous pet.",
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "mail order"
+       ],
+       "explanation": "Paragraph A: Farmers began as a mail order company."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "buying offices"
+       ],
+       "explanation": "Paragraph C: Laidlaw established buying offices in New York and London."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "large family"
+       ],
+       "explanation": "Paragraph C: staff said the company represented a large family."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "annual sale"
+       ],
+       "explanation": "Paragraph D: an annual sale celebrated the birthday of Hector the Parrot."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people below. Match each statement with the correct person, A–F.",
+     "title": "What each person says about Farmers",
+     "options": [
+      {
+       "key": "A",
+       "text": "The character of the company has changed for the worse."
+      },
+      {
+       "key": "B",
+       "text": "The store is selling more local products than in the past."
+      },
+      {
+       "key": "C",
+       "text": "The company believes in offering lower prices than their competitors."
+      },
+      {
+       "key": "D",
+       "text": "The staff has always believed in generosity."
+      },
+      {
+       "key": "E",
+       "text": "The store is an integral part of the local way of life."
+      },
+      {
+       "key": "F",
+       "text": "The store needed to change its approach to business."
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "text": "Ian Hunter",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph A (Ian Hunter) says Farmers is woven into New Zealand culture, showing it is integral to local life."
+      },
+      {
+       "n": 24,
+       "text": "Rawdon Busfield",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D (Rawdon Busfield) shows generosity through the chocolate story."
+      },
+      {
+       "n": 25,
+       "text": "Rod McDermott",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph E (Rod McDermott) describes the need to reorient the business approach."
+      },
+      {
+       "n": 26,
+       "text": "Lincoln Laidlaw",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph F (Lincoln Laidlaw) says the original culture was dispelled, implying change for the worse."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Life on Mars?",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "When scientists began observing Mars with their first primitive telescopes, they assumed from the start that the planet was peopled. The 18th-century astronomer William Herschel, noting the seasons and atmosphere of Mars, declared that 'its inhabitants enjoy a situation similar to our own'. A century later, astronomers asserted that they could detect canals running across the Martian landscape. These canals, argued US scientist Percival Lowell, had been built by technologically advanced Martians to transport water from the poles to the equator of their drying world. 'Martian folk are possessed of inventions of which we have not dreamed,' he argued."
+    },
+    {
+     "label": "B",
+     "text": "The vision of an advanced culture trapped on a drying world was taken up by the British writer H.G. Wells in 1898 in his masterpiece The War of the Worlds, in which Earth is subjected to a pitiless invasion from a race of hideous Martians armed with poison gas and heat rays. Martians became synonymous with grotesque, threatening aliens, at least as far as the public was concerned. Scientists were more restrained, but still supported the idea that the planet might support relatively complex life forms."
+    },
+    {
+     "label": "C",
+     "text": "Then, in the late 1960s, rocket science changed our image of Mars forever. The US Mariner probes swept past Mars and sent back pictures, not of a world covered in vegetation, as many scientists still expected, but of vistas of cratered, arid deserts. Finally, in 1975, two huge US probes settled on the Martian surface and began a series of experiments aimed at pinpointing, once and for all, the existence of air-breathing organisms. None were found, for the Viking probes landed in areas as dead as the Sahara Desert. All that was sent back were images of a bleak, boulder-strewn terrain. Mars was declared officially dead – for a while."
+    },
+    {
+     "label": "D",
+     "text": "Since that time, two critical pieces of evidence have been found on Earth which support the idea that Mars has life. The first is known as ALH84001, a meteorite that was blasted into space when a large body struck Mars 15 million years ago and which spiralled across the solar system to crash into the Antarctic. Analysis carried out by NASA scientist Imre Friedmann showed that the meteorite contained elements identical to those found on Mars by the Viking probes, and revealed chains of crystals similar to those created by earthbound bacteria. Friedmann believes that these could only have been created by living organisms. Others, however, argue that the crystals could have been laid down by simple chemical processes. A second area of support for the idea that living organisms could survive Mars's harshness has been provided by the study of extremophiles, bacteria that have been found in increasingly hostile landscapes on Earth – acid lakes, for example, and volcanoes."
+    },
+    {
+     "label": "E",
+     "text": "In the past few years, astronomers have become convinced that the Martian surface, although hostile and arid today, was once lush and welcoming. Images sent back by recent probes such as the Mars Global Surveyor have revealed dried-up riverbeds and old estuaries. Rivers poured into ancient seas, it appears, and rain swept the sodden terrain. Then catastrophe struck. Mars lost its magnetic field several billion years ago, explains British astronomer Paul Murdin. 'Earth retained one, and it protects our atmosphere. Without that protection, Mars's gases and water boiled off.' That is why they are so different today."
+    },
+    {
+     "label": "F",
+     "text": "The discovery of signs of water on Mars has changed everything. Some researchers believe that water from underground reservoirs still gushes through Martian valleys as occasional flash floods bubble to the surface. In the 1990s, the Mars Odyssey probe began to map the chemical make-up of the Mars soil, and discovered that much of the ground in the southern hemisphere of Mars is mixed with large quantities of ice. And where there is ice, there is likely to be liquid water, probably underneath. 'There are huge underground reservoirs on Mars,' says Marcello Coradini, head of planetary exploration for the European Space Agency. 'I am now convinced of that.'"
+    },
+    {
+     "label": "G",
+     "text": "Current projects are hoping to clarify the question of the presence of water once and for all. These are aimed at conducting experiments to detect the presence of a substance called carbon 13 in soil and rock samples on Mars; this would be, according to some researchers, an unequivocal indicator of the presence of living organisms, past or present."
+    },
+    {
+     "label": "H",
+     "text": "But would the presence of a few Martian organisms alter our world view in any significant way? Professor Juan Pérez Mercader of Madrid's Centre for Astrobiology in Spain believes that it would. 'For a start, we will be able to find out if Martian organisms have DNA, the golden molecule that controls the replication of earthly creatures.' If there is no DNA, that would show that Martian biology is quite unlike Earth's, and that on two planets, side by side in the same solar system, life evolved independently. 'If DNA is located, it would mean that life on Mars and on Earth may spring from the same source.' 'If organisms can pop up that easily, our chances of finding intelligent versions elsewhere in the universe will look extremely good,' Pérez Mercader states. The discovery of any evidence of living organisms on Mars would also mean renewed purpose for manned space flight projects."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has eight paragraphs, A–H. Which paragraph contains the following information? Write the correct letter, A–H. NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 27,
+       "text": "evidence that a rock found on Earth originated on Mars",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D discusses the meteorite ALH84001 found on Earth and its Martian origin."
+      },
+      {
+       "n": 28,
+       "text": "a plan to analyse material on Mars",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G describes current projects to test Martian soil and rock for carbon 13."
+      },
+      {
+       "n": 29,
+       "text": "the reason Mars is no longer similar to Earth",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E explains Mars lost its magnetic field, causing gases and water to boil off."
+      },
+      {
+       "n": 30,
+       "text": "an observation suggesting that there is currently water on Mars",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F mentions water from underground reservoirs gushing as occasional flash floods."
+      },
+      {
+       "n": 31,
+       "text": "a claim that construction had taken place on Mars",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A reports Lowell's claim that canals were built by technologically advanced Martians."
+      },
+      {
+       "n": 32,
+       "text": "a possibility that humans and Martians could share the same origins",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H notes DNA on Mars could mean life on Mars and Earth shares the same source."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 33,
+       "text": "The 18th-century astronomer William Herschel believed that",
+       "options": [
+        {
+         "key": "A",
+         "text": "the Martians were physically similar to humans."
+        },
+        {
+         "key": "B",
+         "text": "the Martian environment resembled that of Earth."
+        },
+        {
+         "key": "C",
+         "text": "Mars was inhabited by an advanced society."
+        },
+        {
+         "key": "D",
+         "text": "the climatic conditions on Mars were very dry."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph A: Herschel compared Mars's seasons and atmosphere to Earth's, implying a similar environment."
+      },
+      {
+       "n": 34,
+       "text": "At the end of the 19th century, the public's ideas about Martians changed because of",
+       "options": [
+        {
+         "key": "A",
+         "text": "scientific discussion."
+        },
+        {
+         "key": "B",
+         "text": "media reports."
+        },
+        {
+         "key": "C",
+         "text": "a work of literature."
+        },
+        {
+         "key": "D",
+         "text": "a magazine illustration."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph B: public ideas shifted after H.G. Wells' The War of the Worlds."
+      },
+      {
+       "n": 35,
+       "text": "What does the writer say happened in the 1960s?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The appearance of some regions of Mars changed."
+        },
+        {
+         "key": "B",
+         "text": "Evidence of organisms was found on Mars."
+        },
+        {
+         "key": "C",
+         "text": "The Martian atmosphere was tested scientifically."
+        },
+        {
+         "key": "D",
+         "text": "Earlier beliefs about Mars were disproven."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph C: Mariner images disproved earlier beliefs about vegetation on Mars."
+      },
+      {
+       "n": 36,
+       "text": "The study of extremophiles suggests that",
+       "options": [
+        {
+         "key": "A",
+         "text": "organisms can survive on Mars."
+        },
+        {
+         "key": "B",
+         "text": "organisms on Earth are like those found on Mars."
+        },
+        {
+         "key": "C",
+         "text": "Martian conditions resemble those in Earth's volcanoes."
+        },
+        {
+         "key": "D",
+         "text": "Martian crystals can survive acid conditions."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph D: extremophiles show organisms can survive harsh conditions, suggesting survival on Mars is possible."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 37,
+       "text": "Lowell believed that Martian technology was more developed than human technology.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Paragraph A: Lowell claimed Martians had inventions humans had not dreamed of."
+      },
+      {
+       "n": 38,
+       "text": "Information gained from Viking probes remains unchallenged.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Paragraph D cites later evidence (meteorite and extremophiles) challenging earlier conclusions."
+      },
+      {
+       "n": 39,
+       "text": "There is evidence that there has been significant climate change on Mars.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Paragraph E describes Mars changing from lush to arid after losing its magnetic field."
+      },
+      {
+       "n": 40,
+       "text": "Spanish scientists plan to launch space probes if DNA is found on Mars.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Paragraph H mentions renewed purpose for manned space flight but no plan by Spanish scientists."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

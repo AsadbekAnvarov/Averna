@@ -1,0 +1,718 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-01",
+ "title": "CDI Listening Test 01",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "telephone conversation between a woman who is planning to move to Australia and a relocation agent who is helping her with the arrangements",
+  "city official talking to a group of people about a new development of shops and leisure facilities that have been built next to the sea",
+  "professor talking to her student about his study options",
+  "ecologist giving a presentation on research on a type of snail"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-01-part-1",
+   "title": "Part 1",
+   "context": "You will hear a telephone conversation between a woman who is planning to move to Australia and a relocation agent who is helping her with the arrangements.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "Australian Overseas Relocation Agency",
+     "template": "Personal information\n- Name: Helen Green\n- Current address: 42 [[1]] Road, Kew, London\n- Telephone: [[2]]\n- Relocation to: Brisbane\n- Employer: Kirkby Technology\n- Will move in: early [[3]]\nAccommodation\n- type of accommodation required at first: a central [[4]]\n- preferred location: near a [[5]]\n- client will need [[6]] for the accommodation\nSchool\n- client’s son: to go into grade [[7]]\n- type of school: high school (preferably [[8]] )\n- client to send the child’s [[9]]\nLeisure interests (son)\n- chess — find a club for him\nLeisure interests (client)\n- to play the flute in a [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Station"
+       ],
+       "explanation": "'It's a London address 42 Station Road Kew. It's just near the Botanical Gardens.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "02079460385",
+        "0207 9460 385",
+        "0207 9460385",
+        "02079460 385"
+       ],
+       "explanation": "'Yes, it's 0207 9460 385.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "August"
+       ],
+       "explanation": "'Shall we say the beginning of August then?' — moving date."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "apartment",
+        "flat"
+       ],
+       "explanation": "'I think that initially we'd be happy with an apartment that's fairly central.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "park"
+       ],
+       "explanation": "'As we won't have our own garden, I'd prefer something close to a park. That's more important than a view for us.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "furniture"
+       ],
+       "explanation": "'Oh yes, furniture. We were planning to ship our own, but we've decided it isn't really worth it.' — 'we can hire some for you for the first few months.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "8",
+        "eight"
+       ],
+       "explanation": "'He's just turned thirteen, so he should be going into grade nine, but we've decided it would be better if he repeats grade eight.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "private"
+       ],
+       "explanation": "'He's at a state school at the moment, but the company is prepared to pay his school fees, so we would probably go for a private school if possible.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "report"
+       ],
+       "explanation": "'Can you send me a copy of your son's report? The latest one if possible.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "band"
+       ],
+       "explanation": "'I play the flute, so I'd like to find a band that I could join, if possible.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a telephone conversation between a woman who is planning to move to Australia and a relocation agent who is helping her with the arrangements.\nAgent: Hello, Australian Overseas Relocation Agency. This is Jason here.\nHelen: Oh hello. Yes, I’m calling from London. My husband has just got a new job in Australia, and his company recommended you to help us.\nAgent: Great. We’ll get some details from you. Let’s start with your name, shall we?\nHelen: Oh yes. It’s Helen Green.\nAgent: Thank you. And what’s your current address?\nHelen: It’s a London address, 42 Station Road, Kew. It’s just near the Botanical Gardens.\nAgent: Ah, that sounds nice. And in case I need to contact you, could I have a telephone number?\nHelen: Yes, it’s 0207 9460 385.\nAgent: Got it. Now, Helen, whereabouts in Australia are you relocating to?\nHelen: Brisbane.\nAgent: And is your husband’s company paying for the move?\nHelen: Yes. It’s a company called Kirkby Technology.\nAgent: I think we’ve worked with them before. And how soon do you need to move?\nHelen: Well, they want my husband to start work in two weeks at the start of the month. But school doesn’t finish here until the end of July, so we can’t possibly move until then.\nAgent: Shall we say the beginning of August then?\nHelen: That sounds more realistic. June is nearly over, and I have so much to do before we move.\nAgent: Let’s start with the accommodation you need. Would you prefer a house or an apartment?\nHelen: Well, we live in a big house with a garden now, which we love. But I think that initially we’d be happy with an apartment that’s fairly central. Just until we get to know the city a little better and can find a house we love.\nAgent: Sounds like a good idea. And what about location? There are some beautiful developments along the Brisbane River. It runs right through the city. The views are spectacular and you wouldn’t need to worry about transport.\nHelen: Well, actually, as we won’t have our own garden, I’d prefer something close to a park. That’s more important than a view for us.\nAgent: Okay, I’ll make a note of that. Brisbane’s a lovely green city, so that won’t be hard. Is there anything else I can organize?\nHelen: Oh yes, furniture. We were planning to ship our own, but we’ve decided it isn’t really worth it.\nAgent: Okay. Well, we can hire some for you for the first few months.\nHelen: That would be great.\nBefore you hear the rest of the conversation, you have some time to look at questions seven to ten. Now listen and answer questions seven to ten.\nAgent: Helen, what else would you like us to help you with?\nHelen: Well, we have a son, a teenager, who will be coming with us, so we’ll need to find a school for him.\nAgent: Sure. What grade will he be in?\nHelen: He’s just turned thirteen, so he should be going into grade nine, but we’ve decided it would be better if he repeats grade eight (8).\nAgent: Right, so you’ll need a high school. Now, do you have any preferences regarding the school?\nHelen: Well, he’s at a state school at the moment, but the company is prepared to pay his school fees, so we would probably go for a private school if possible. It doesn’t matter if it’s mixed or single sex.\nAgent: Sure, I’ll make some inquiries and I’ll send you a short list of possibilities.\nHelen: That would be wonderful.\nAgent: Oh, can you send me a copy of your son’s report? The latest one if possible. The schools will want to know something about him as a student. You can fax or scan it to me.\nHelen: Okay, fine.\nAgent: Now, is there anything else I can help you with today?\nHelen: Yes, there is one other thing. We’d like some information to help us settle into the community and make friends. My son isn’t really into sport, but he’s a keen chess player. He’d like to continue playing when we move to Brisbane. Could you find out about a club for him?\nAgent: Certainly. I’ll make inquiries for you.\nHelen: And I play the flute, so I’d like to find a band that I could join, if possible.\nAgent: Music is very popular here, so that should be easy.\nHelen: Thank you for all your help, Jason.\nAgent: My pleasure. I’ll be in touch soon.\nThat is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-01-part-2",
+   "title": "Part 2",
+   "context": "You will hear a city official talking to a group of people about a new development of shops and leisure facilities that have been built next to the sea.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What problem did Sir Michael Grayson have with the original site?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The ground was sandy."
+        },
+        {
+         "key": "B",
+         "text": "The sea caused damage."
+        },
+        {
+         "key": "C",
+         "text": "The water was polluted."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Because the land was low-lying, whenever there was a storm, large waves would break on the shore, which could be destructive.' — the sea caused damage."
+      },
+      {
+       "n": 12,
+       "text": "In 1915, the land in this area became more valuable because",
+       "options": [
+        {
+         "key": "A",
+         "text": "transport links were improved."
+        },
+        {
+         "key": "B",
+         "text": "more people moved to the area."
+        },
+        {
+         "key": "C",
+         "text": "the national economy expanded quickly."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'The government wanted to increase local business activity, and they did this by constructing a better road connecting this site to the city centre.' — transport links were improved."
+      },
+      {
+       "n": 13,
+       "text": "The first boat harbour was built in the 1920s for",
+       "options": [
+        {
+         "key": "A",
+         "text": "the military."
+        },
+        {
+         "key": "B",
+         "text": "passenger ships."
+        },
+        {
+         "key": "C",
+         "text": "the fishing industry."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'The smaller boats that went out each day to catch snapper, tuna, and other species to feed the city started to use this as their port.' — the fishing industry."
+      },
+      {
+       "n": 14,
+       "text": "Why were warehouses built in the 1930s?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to store wood for export"
+        },
+        {
+         "key": "B",
+         "text": "to store imported goods"
+        },
+        {
+         "key": "C",
+         "text": "to store wool for sale locally"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Forestry was a major growth sector. The timber was brought here by train, kept in the new buildings, then shipped to foreign countries.' — to store wood for export."
+      },
+      {
+       "n": 15,
+       "text": "How long after the start of the project was the new waterfront area opened?",
+       "options": [
+        {
+         "key": "A",
+         "text": "ten years"
+        },
+        {
+         "key": "B",
+         "text": "fourteen years"
+        },
+        {
+         "key": "C",
+         "text": "twenty-five years"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Now, 14 years after the project started, the new waterfront area is open to the public.'"
+      },
+      {
+       "n": 16,
+       "text": "The hardest part of the redevelopment involved",
+       "options": [
+        {
+         "key": "A",
+         "text": "the old bridge."
+        },
+        {
+         "key": "B",
+         "text": "the steam boat."
+        },
+        {
+         "key": "C",
+         "text": "the traditional trams."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'What we really wanted was some traditional trams, so we bought some from another city. But it turned out to be a long process and they needed a lot of modification for our system. The hardest thing we had to do.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map. Choose the correct letter, A–I, for each label.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "text": "Playground",
+       "answer": [
+        "C"
+       ],
+       "explanation": "'From Southgate, walk north until you come to the lifting bridge. Cross the bridge to the area we call North Wharf. And the playground is at the eastern end there, right beside the water.'"
+      },
+      {
+       "n": 18,
+       "text": "Open Air Cinema",
+       "answer": [
+        "A"
+       ],
+       "explanation": "'The open air cinema… is up on North Wharf. Look in the northwest corner. It's a circular enclosure.'"
+      },
+      {
+       "n": 19,
+       "text": "Aquarium",
+       "answer": [
+        "G"
+       ],
+       "explanation": "'The aquarium is close to Southgate. Find Pier 1 and it's right down at the end of that.'"
+      },
+      {
+       "n": 20,
+       "text": "Maritime Museum",
+       "answer": [
+        "B"
+       ],
+       "explanation": "'The Maritime Museum is the long thin building that runs right along the north side of the boat harbour.'"
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening/listening1-map-white.webp",
+      "alt": "Waterfront development map"
+     }
+    }
+   ],
+   "transcript": "You will hear a city official talking to a group of people about a new development of shops and leisure facilities that have been built next to the sea.\nOfficial: Well, thank you all for coming along to this talk about our new waterfront development. The council has developed the old boat harbour to provide a new area of leisure facilities, right here on the city’s waterfront. And we want to encourage local people to visit the new development.\nOfficial: Okay, I’ll start with some background. Long before the harbour was built, the first building on the site was put up by Sir Michael Grayson. He’d been working in Asia for a time, and when he came home, he began developing the city along this part of the coast. However, there was a problem with the site.\nOfficial: Because the land was low-lying, whenever there was a storm, large waves would break on the shore, which could be destructive. [the sea caused damage — B] So Grayson built a wall along the beach to protect the land behind it, and that solved the problem.\nOfficial: Then, in 1915, the land here became more valuable. Some companies were not doing very well financially, so the government wanted to increase local business activity, and they did this by constructing a better road connecting this site to the city centre. [transport links were improved — A] That had an important impact, and later on, over the following years, it led to additional migration to this part of the country.\nOfficial: One obvious change came in the 1920s when the first boat harbour was built here. The water was too shallow for large ocean liners carrying people, so these continued to use the main wharf further south. But the smaller boats that went out each day to catch snapper, tuna, and other species to feed the city started to use this as their port. [the fishing industry — C] Defence Force ships, of course, already had their own base further up the coast.\nOfficial: Then, in the 1930s, warehouses were built around the harbour and it was made deeper. That’s because international trade was increasing. It’s true that some parts of the economy, like sheep farming, were in decline, but forestry was a major growth sector. The timber was brought here by train, kept in the new buildings, then shipped to foreign countries. [to store wood for export — A]\nOfficial: So why did we need this latest redevelopment? Well, over the years the harbour had become run down. They talked about doing something for ten years before anything actually happened. Finally, the project started when a team of designers began work and a consultation plan was drawn up. And now, 14 years (fourteen years — B) after the project started, the new waterfront area is open to the public. We hope that nothing will need to be done now for another 25 years when the harbour wall will need upgrading.\nOfficial: I have to say, some parts of the redevelopment were quite difficult. We were lucky with the steamship because it had already been restored. What we really wanted was some traditional trams (C), so we bought some from another city. But it turned out to be a long process and they needed a lot of modification for our system. The hardest thing we had to do. We decided against renovating the old bridge, and instead replaced it with a modern one, which was very simple in comparison.\nBefore you hear the rest of the talk, you have some time to look at questions seventeen to twenty. Now listen and answer Questions seventeen to twenty.\nOfficial: Okay, so now I’ll just tell you about a few of the features of the new development. Um so if you look at your maps, you’ll see we’re here where it says South Gate, near the bottom of the map.\nOfficial: So first, the playground (C). From Southgate, walk north until you come to the lifting bridge. Cross the bridge to the area we call North Wharf. And the playground is at the eastern end there, right beside the water.\nOfficial: So the open air cinema (A). They show movies on a big outdoor screen. After dark, of course. It’s a lot of fun. And it’s up on North Wharf. Look in the northwest corner. It’s a circular enclosure. You can’t miss it.\nOfficial: Now we’ve also built a small aquarium (G) that’s full of local species of fish. It’s close to Southgate. Find Pier 1 and it’s right down at the end of that.\nOfficial: Now the Maritime Museum (B) is well worth a visit. It’s the only one of its sort in the country. From Southgate you go… well, actually you can go two ways. Either go around the boat harbour or go over the lifting bridge. And it’s the long thin building that runs right along the north side of the boat harbour.\nOfficial: Okay, well that’s the end of my talk, but if you have any questions…\nThat is the end of part two. You now have thirty seconds to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-01-part-3",
+   "title": "Part 3",
+   "context": "You will hear a professor talking to her student about his study options.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Where has Professor Anderson recently been?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Physics conferences"
+        },
+        {
+         "key": "B",
+         "text": "Physics classes"
+        },
+        {
+         "key": "C",
+         "text": "Mechanics conferences"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Conferences in Massachusetts and New York.' — 'For physics?' 'Yes.' — Professor Anderson attended physics conferences."
+      },
+      {
+       "n": 22,
+       "text": "What grade did Rangy get on his classical mechanics exam?",
+       "options": [
+        {
+         "key": "A",
+         "text": "C plus"
+        },
+        {
+         "key": "B",
+         "text": "A plus"
+        },
+        {
+         "key": "C",
+         "text": "B plus"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'You were one of only two students out of a hundred and eighty to get an A plus.'"
+      },
+      {
+       "n": 23,
+       "text": "What do Rangy and the professor say about the Science Faculty?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It gives a quick response to students’ queries."
+        },
+        {
+         "key": "B",
+         "text": "Its regulations are unclear to students."
+        },
+        {
+         "key": "C",
+         "text": "It has a comprehensive website."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Needless to say, the lecturers who approved my transfer hadn't either, and nor does the regulation appear on the Science Faculty website.' — 'That'd be right, this faculty is disorganised.' The regulations are unclear to students."
+      },
+      {
+       "n": 24,
+       "text": "After his Edinburgh proposal was rejected, which subject area did Rangy get approval to study abroad in?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Maths and Physics"
+        },
+        {
+         "key": "B",
+         "text": "Science"
+        },
+        {
+         "key": "C",
+         "text": "Arts"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "After the Science Faculty rejected the application, Rangy 'quickly got approval for second year history and philosophy from the arts faculty.' — Arts."
+      },
+      {
+       "n": 25,
+       "text": "By dropping arts, Rangy believes he will",
+       "options": [
+        {
+         "key": "A",
+         "text": "finish his degree earlier."
+        },
+        {
+         "key": "B",
+         "text": "receive higher marks."
+        },
+        {
+         "key": "C",
+         "text": "improve his writing style."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Without doing the arts courses, I could finish my science degree earlier.'"
+      },
+      {
+       "n": 26,
+       "text": "The professor’s attitude to some lecturers’ claims about a rounded education is",
+       "options": [
+        {
+         "key": "A",
+         "text": "critical."
+        },
+        {
+         "key": "B",
+         "text": "doubtful."
+        },
+        {
+         "key": "C",
+         "text": "boastful."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The professor replies, 'I do think the claims made by some lecturers are dubious.' — doubtful."
+      },
+      {
+       "n": 27,
+       "text": "Rangy is also disappointed that he",
+       "options": [
+        {
+         "key": "A",
+         "text": "will have to work in a bar again."
+        },
+        {
+         "key": "B",
+         "text": "cannot afford to study abroad."
+        },
+        {
+         "key": "C",
+         "text": "will not be going to Europe."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Then there's the fact that now I'm going to be stuck here next year. I was so excited about going to Europe.'"
+      },
+      {
+       "n": 28,
+       "text": "Professor Anderson offers Rangy",
+       "options": [
+        {
+         "key": "A",
+         "text": "a part-time job in his lab."
+        },
+        {
+         "key": "B",
+         "text": "supervision of his master’s degree."
+        },
+        {
+         "key": "C",
+         "text": "help with his laser experiments."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'I'm looking for students to work six hours a week in my lab. It's paid work.'"
+      },
+      {
+       "n": 29,
+       "text": "The professor says Rangy is",
+       "options": [
+        {
+         "key": "A",
+         "text": "quite likely to win a scholarship."
+        },
+        {
+         "key": "B",
+         "text": "not so likely to win a scholarship."
+        },
+        {
+         "key": "C",
+         "text": "highly likely to win a scholarship."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'An A plus student like you has a very good chance of winning a major scholarship.'"
+      },
+      {
+       "n": 30,
+       "text": "At the end of the conversation, Rangy sounds",
+       "options": [
+        {
+         "key": "A",
+         "text": "thrilled but nervous."
+        },
+        {
+         "key": "B",
+         "text": "relieved and grateful."
+        },
+        {
+         "key": "C",
+         "text": "a little apprehensive."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Thanks, Professor Anderson. You've taken a load off my mind.' — relieved and grateful."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a professor talking to her student about his study options.\nProfessor: Come in, Rangy.\nRangy: Thank you, Professor Anderson.\nProfessor: I’ve been meaning to contact you, but I just got back last night.\nRangy: Where have you been?\nProfessor: Conferences in Massachusetts and New York (A — Physics conferences).\nRangy: For physics?\nProfessor: Yes.\nRangy: Great. I’m looking forward to attending conferences one day.\nProfessor: I imagine that won’t be so far away. I was extremely impressed with your classical mechanics exam. In fact, you were one of only two students out of a hundred and eighty to get an A plus (B).\nRangy: Wow. I really did enjoy the course.\nProfessor: So how can I help you?\nRangy: I’m sorry to say it’s a bit of a long story. You see, I’ve had to rethink my studies completely, and I wonder if I’m making the right decision.\nProfessor: You’re doing two degrees, aren’t you? Science and arts.\nRangy: I was doing two. I’ve decided to focus on science.\nProfessor: Oh?\nRangy: It all came about because I wanted to study abroad for a year. I was thinking about Edinburgh. Firstly, I sought approval from the maths and physics departments. I wanted to take quantum mechanics and computer simulations at Edinburgh.\nProfessor: Those are third year courses, right?\nRangy: Yeah. So I received approval from maths and physics. The stumbling block was the higher authority, the science faculty. When I submitted my application, it was rejected.\nProfessor: What?\nRangy: It turns out that students who study abroad for a year can only do first or second year courses or third year courses in a subject that’s not their major.\nProfessor: I’ve never heard that before.\nRangy: Needless to say, the lecturers who approved my transfer hadn’t either, and nor does the regulation appear on the Science Faculty website. [regulations are unclear to students — B]\nProfessor: That’d be right, this faculty is disorganised.\nRangy: So then I thought I’d take arts courses at Edinburgh and leave the third year maths until I came back. I quickly got approval for second year history and philosophy from the arts faculty (C — Arts).\nProfessor: When are you heading off?\nRangy: That’s just it. During this process, I began to think carefully about my studies. To be honest, the arts courses I’ve done were less challenging than the science ones, so I’ve decided to drop arts.\nBefore you listen to the rest of the conversation, you have 30 seconds to read questions 25 to 30.\nProfessor: Where do I figure in all this?\nRangy: The first week after I’d made my decision, I felt fine. Without doing the arts courses, I could finish my science degree earlier (A). But this week I’ve had some doubts.\nRangy: When I started the two degrees, lecturers in the science faculty assured me that these days scientists need a rounded education, which they get if they take some arts courses. I was even told I’d learn to write and think better if I did philosophy.\nProfessor: I do think the claims made by some lecturers are dubious (B — doubtful).\nRangy: Then there’s the fact that now I’m going to be stuck here next year. I was so excited about going to Europe (C — will not be going to Europe).\nProfessor: It is disappointing to give that up. Still, the reason I wanted to contact you, Rangy, is that I’m looking for students to work six hours a week in my lab (A — part-time job in his lab). It’s paid work, not highly paid, but probably better than them working in a bar. Also, we’ve just bought a new laser, which you’d learn to use.\nRangy: That sounds excellent.\nProfessor: As to going abroad, why not do your postgraduate studies in the US? There’s some amazing physics being done in Massachusetts. If you like, I can send you the papers from the conference.\nRangy: Thanks.\nProfessor: Of course I’d be sad to lose you if you did go abroad, but an A plus student like you has a very good chance of winning a major scholarship (C — highly likely).\nRangy: Goodness, I’ve never even considered that.\nProfessor: Personally, I think committing yourself to science is the way to go.\nRangy: Thanks, Professor Anderson. You’ve taken a load off my mind (B — relieved and grateful). Now I don’t have to deal with Hegel or Leibniz. I’ve plenty of time to read those conference papers.\nThat is the end of part three. You now have thirty seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-01-part-4",
+   "title": "Part 4",
+   "context": "You will hear an ecologist giving a presentation on research on a type of snail.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "title": "The White-lipped Grove Snail",
+     "template": "Background information\n- Its main diet is dead or decaying [[31]]\n- To obtain necessary minerals, it also eats [[32]]\nResearch at the University of Nottingham\n- Via the internet, volunteers were recruited for the [[33]] of snails\nTheories\n- Natural migration is ruled out as these snails do not like [[34]]\n- In the Pyrenees, large piles of shells have been found in [[35]]\n- This indicates the snails were used as [[36]]\n- There is archaeological evidence of [[37]] between the two areas\n- The conclusion is that snails were most likely carried in [[38]]\nFurther work\n- A wider [[39]] of the snails is required for the study\n- One other organism will be investigated: a particular type of [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "plants"
+       ],
+       "explanation": "'Its principal source of nutrition is plants, which are either already dead or in the process of rotting.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "soil"
+       ],
+       "explanation": "'It also needs calcium and other minerals to keep it healthy. To get these, it frequently consumes soil.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "collection"
+       ],
+       "explanation": "'They set up what is known as a megalab, recruiting numerous volunteers across Europe to be responsible for the collection of snail specimens.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "salt"
+       ],
+       "explanation": "'This was ruled out because they hate salt and simply wouldn't have embarked on the journey across the sea.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "caves"
+       ],
+       "explanation": "'Mounds of white-lipped snail shells had been thrown away in caves.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "food"
+       ],
+       "explanation": "'The snails must have been used over a long period by these Stone Age humans as food.'"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "trade"
+       ],
+       "explanation": "'They found evidence that very early on there had been trade between the people living in these widely separated areas.'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "boats"
+       ],
+       "explanation": "'The most likely way in which the snails travelled from east to west was in boats, and that they were transported live.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "sample"
+       ],
+       "explanation": "'They need to look at a broader sample of the snails.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "tree"
+       ],
+       "explanation": "'This is a species of tree which they want to look at in more detail.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear an ecologist giving a presentation on research on a type of snail.\nEcologist: Good afternoon. The topic I’ve chosen for my presentation is a snail. Snails belong to a group of animals called molluscs, soft-bodied creatures normally protected by a hard shell.\nEcologist: Today I’m going to talk about a particular example, the white-lipped grove snail, and the research which is being done into it. I’ll start by giving some background information about this variety.\nEcologist: The white-lipped snail lives on land and is air-breathing. Its shell is easy to recognize because of its clear stripe, but it varies considerably in colour from pale pink to yellow. The snail gets its rather strange name from the fact that it has a white edge or lip to its shell.\nEcologist: Its principal source of nutrition is plants, which are either already dead or in the process of rotting, a characteristic it shares with a number of other species of snail.\nEcologist: Because of this, its normal habitat is similar to other land snails, and it can be seen in urban settings such as gardens as well as uncultivated areas.\nEcologist: A final point about its ecology is that it also needs calcium and other minerals to keep it healthy. To get these, it frequently consumes soil, which contains these minerals.\nEcologist: So far, nothing I’ve said would seem to set this variety apart from other land-dwelling, air-breathing snails. However, as long ago as the early nineteenth century, naturalists observed that these white-lipped snails appeared to live in two strikingly separate areas, many hundreds of miles apart, namely Ireland and the Pyrenees, the large mountain range on the border of France and Spain.\nEcologist: But what is most surprising is that there was no record of the variety being found anywhere in between these places, so the distribution seemed very strange.\nEcologist: This age old puzzle has intrigued a group of present day researchers at the University of Nottingham, and they’ve decided to undertake a detailed study to investigate the strange distribution pattern. First of all, they wanted to make sure that the distribution first noticed two hundred years ago is in fact correct.\nEcologist: Via the Internet they set up what is known as a megalab, recruiting numerous volunteers across Europe to be responsible for the collection of snail specimens, which were then sent to the university lab.\nEcologist: Like many of these megalab initiatives, it was generally very successful, with high rates of participation. The research team then did a genetic analysis of the material they received. They confirmed that there were characteristics shared by the two sets of white lipped snails from Ireland and from the Pyrenees. Most importantly, this variety does not seem to occur anywhere else.\nEcologist: How could this split have happened? And when? Well, fossils indicate that the white lipped snail has been living in the Pyrenees for tens of thousands of years, but that in Ireland its arrival was relatively recent. This fact was very telling for the researchers. It generated a number of different theories to explain the strange distribution phenomenon.\nEcologist: The first theory the researchers looked at is one called convergent evolution, which basically means that the two sets of snails would have developed entirely separately, by complete coincidence. But the underlying similarities between the two sets are too close to be purely a matter of chance, so this seems an unlikely explanation.\nEcologist: The second theory proposed is called natural migration, which would necessitate the snail swimming the sea to Ireland. This was ruled out because they hate salt and simply wouldn’t have embarked on the journey across the sea, or had they tried, wouldn’t have survived.\nEcologist: The team then started looking at different kinds of evidence, reviewing findings from various locations in the Pyrenees, which showed that mounds of white-lipped snail shells had been thrown away in caves. Clearly these had been inhabited by Stone Age communities.\nEcologist: This led to the conclusion that the snails must have been used over a long period by these Stone Age humans as food, and interestingly, this was before the advent of agriculture.\nEcologist: The team then looked at other types of archaeological evidence from prehistoric times in Ireland and the Pyrenees, and they found evidence that very early on there had been trade between the people living in these widely separated areas.\nEcologist: For all these reasons, the research team have tentatively concluded that the most likely way in which the snails travelled from east to west was in boats, and that they were transported live to keep them fresh for consumption on the journey.\nEcologist: The research team acknowledged that their study is in the early stages and needs further work. They recognize, for example, that they need to look at a broader sample of the snails. They also feel that other animals and plants might shed light on their research.\nEcologist: They have found that there is probably at least one other type of organism which shows the same distribution pattern, the clear split between the Pyrenees and Ireland. This is a species of tree which they want to look at in more detail. Perhaps its story will corroborate that of the humble migrating white-lipped snail.\nThat is the end of part four. You now have one minute to check your answers to part four.\nThat is the end of the listening test. You now have 10 minutes to transfer your answers to the listening answer sheet."
+  }
+ ],
+ "audio": {
+  "file": "listening-1.mp3",
+  "durationSec": 1725,
+  "partStarts": [
+   50,
+   431,
+   847,
+   1190
+  ],
+  "questionTimes": {
+   "1": 128,
+   "2": 142,
+   "3": 181,
+   "4": 196,
+   "5": 224,
+   "6": 241,
+   "7": 301,
+   "8": 316,
+   "9": 334,
+   "10": 369,
+   "11": 538,
+   "12": 552,
+   "13": 569,
+   "14": 604,
+   "15": 628,
+   "16": 653,
+   "17": 730,
+   "18": 744,
+   "19": 759,
+   "20": 774,
+   "21": 898,
+   "22": 907,
+   "23": 984,
+   "24": 996,
+   "25": 1061,
+   "26": 1087,
+   "27": 1091,
+   "28": 1098,
+   "29": 1127,
+   "30": 1142,
+   "31": 1313,
+   "32": 1338,
+   "33": 1418,
+   "34": 1516,
+   "35": 1535,
+   "36": 1556,
+   "37": 1570,
+   "38": 1586,
+   "39": 1604,
+   "40": 1622
+  }
+ }
+}

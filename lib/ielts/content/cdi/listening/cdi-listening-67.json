@@ -1,0 +1,563 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-67",
+ "title": "CDI Listening Test 67",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-67-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "title": "New password",
+     "template": "- Call taken by: Natasha\n- Customer’s full name: Michael [[1]]\n- Date of birth: 27 March 1988\n- Previous address: 319 [[2]] East Providence\n- Phone number: 049248002\n- Data allowance: [[3]]\n- Current plan: [[4]]\n- Mother’s maiden name: [[5]]\n- First pet: [[6]]\n- New password sent on: [[7]]\nExtra services required:\n- — new [[8]]\n- — cancel [[9]]\n- — [[10]] pack",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Simmons"
+       ],
+       "explanation": "Michael Simmons S I double M O N S. I don't have a middle name."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "Ocean Drive"
+       ],
+       "explanation": "Oh yeah. I used to live at three hundred and nineteen Ocean Drive. That's in East Providence."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "Unlimited"
+       ],
+       "explanation": "I upgraded to the gold account not long ago, so it's unlimited."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "24 months",
+        "24 month"
+       ],
+       "explanation": "Oh hang on a minute while I think. Uh yes, I started off with a twelve month automatic renewal, but a few months ago I switched to the twenty four month plan."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "White"
+       ],
+       "explanation": "Oh sorry I misheard. It's um white."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "Goldfish"
+       ],
+       "explanation": "The first pet I ever had? Yes. It was actually a goldfish."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "30 June",
+        "30th June",
+        "June 30",
+        "June 30th"
+       ],
+       "explanation": "I'll just make a note of the date thirtieth of June. When you log in, I suggest you go to the members details section on the website."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "Cable"
+       ],
+       "explanation": "Yeah, there are a few things. I've been having some connection issues recently. I think the problem is with the cable that connects the modem to the computer. Do you…"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "Home phone",
+        "homephone"
+       ],
+       "explanation": "Thanks. Also I'm currently signed up for three of your services home phone, mobile and broadband. I use the internet a lot on my computer and on my mobile, but to be…"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Security"
+       ],
+       "explanation": "Yes, we have one which offers full protection against viruses, spam and identity theft, which is useful if you're doing any online banking and that kind of thing.…"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Now turn to section one.\nA: Section one You will hear a telephone conversation between a representative of an internet provider service and a man who wants to get a new password.\nA: First, you have some time to look at questions one to seven.\nA: Now we shall begin. You should answer the questions as you listen because you will not hear the recording a second time.\nA: Listen carefully and answer questions one to seven.\nB: Good evening. This is WebNet and you’re speaking with Natasha. How can I assist you today?\nC: Hello Natasha. I tried to log into my WebNet account yesterday and I realized I’d forgotten my password. Are you able to help me with that?\nB: Of course. What I’ll need to do is ask you a few questions to check your identity. And then I’ll issue you with a new password. Is that okay?\nC: No problem.\nB: Firstly, can I have your full name please?\nC: Michael Simmons S I double M O N S. I don’t have a middle name.\nB: Great. And your date of birth?\nC: It’s the twenty seventh of the third, nineteen eighty eight.\nB: Right. And I also need to know your previous address.\nC: I live at twelve Wake Street and that’s in We have that as your current address.\nB: What was the address you registered with us before you moved there?\nC: Oh yeah. I used to live at three hundred and nineteen Ocean Drive. That’s in East Providence.\nB: I’ll just need your contact phone number as well.\nC: That’s zero four nine two four eight double zero two.\nB: And just a few questions about your account. Do you know what your current data allowance is?\nC: I upgraded to the gold account not long ago, so it’s unlimited.\nB: Yes, unlimited data. Right, now can you just tell me about your payment plan? Which plan are you currently on? Do you know?\nC: Oh hang on a minute while I think. Uh yes, I started off with a twelve month automatic renewal, but a few months ago I switched to the twenty four month plan.\nB: That’s fine. Now when you first registered for WebNet, you selected two secret questions and provided us with the answers. In order to issue you with a new password, I need you to answer those questions for me.\nB: Firstly, what is your mother’s maiden name?\nC: My mother’s name is Sarah. That’s Sarah with an H.\nB: That sounds like her first name. We’re looking for her maiden name. That’s her family name before she was married.\nC: Oh sorry I misheard. It’s um white.\nB: White as in the collar?\nC: Yes, that’s right.\nB: Now the other question you chose to answer, what was your first pet?\nC: The first pet I ever had? Yes. It was actually a goldfish.\nB: That’s what it says on your file. Okay, that’s all done for you, Mr Simmons. I’ve sent you a generic password, which should arrive in your email box within a few minutes.\nB: I’ll just make a note of the date thirtieth of June. When you log in, I suggest you go to the members details section on the website.\nB: and change it to something you’re going to remember.\nC: Wonderful. Thanks.\nA: Before you hear the rest of the conversation, you have some time to look at questions eight to ten.\nA: Now listen and answer questions eight to ten\nB: Is there anything else I can help you with today?\nC: Yeah, there are a few things. I’ve been having some connection issues recently. I think the problem is with the cable that connects the modem to the computer. Do you supply those?\nB: You need a new cable. Not a problem. I’ll arrange for that to be sent off tomorrow.\nC: Thanks. Also I’m currently signed up for three of your services home phone, mobile and broadband. I use the internet a lot on my computer and on my mobile, but to be honest I never use the home phone, and I don’t see why I should keep paying for that plan.\nB: Would you like me to cancel that home phone for you?\nC: Yes, please, if you wouldn’t mind.\nB: Done. Is there anything else?\nC: Yes, just one last thing. Do you offer any antivirus products?\nB: Yes, we have one which offers full protection against viruses, spam and identity theft, which is useful if you’re doing any online banking and that kind of thing. It’s called the Security Pack.\nC: Sounds perfect. Sign me up for one of those please.\nB: And we’ve got another one. It’s called the Parenting Pack. It prevents your children from accessing harmful websites and downloading things they shouldn’t.\nC: I’m not so worried about that anymore. Both my children are adults and have left home. So just the security pack, thanks. That’s everything.\nA: That is the end of section one.\nA: You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-67-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap-box",
+     "instructions": "Where can each of the following items be found? Choose the correct location for each item and move it into the gap.",
+     "title": "Items",
+     "options": [
+      {
+       "key": "A",
+       "text": "on washing machine"
+      },
+      {
+       "key": "B",
+       "text": "in hallway cupboard"
+      },
+      {
+       "key": "C",
+       "text": "in hot water cupboard"
+      },
+      {
+       "key": "D",
+       "text": "next to back door"
+      },
+      {
+       "key": "E",
+       "text": "in bathroom"
+      },
+      {
+       "key": "F",
+       "text": "on top of television"
+      },
+      {
+       "key": "G",
+       "text": "in bedroom"
+      },
+      {
+       "key": "H",
+       "text": "under kitchen sink"
+      },
+      {
+       "key": "I",
+       "text": "above front door"
+      }
+     ],
+     "template": "Alarm [[11]]\nGarage key [[12]]\nLaundry detergent [[13]]\nBeach towels [[14]]\nBath towels [[15]]\nLight bulbs [[16]]",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "D"
+       ],
+       "explanation": "If you go through the front door into the living room, it will take you longer to reach the alarm, and you only have a few seconds to deactivate it. The code is three…"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "B"
+       ],
+       "explanation": "You'll find them hanging on a hook inside the cupboard in the hallway, next to the hot water cupboard. The laundry room is outside, next to the garage."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "H"
+       ],
+       "explanation": "There should be some laundry detergent for the washing machine next to the dishwashing liquid under the kitchen sink."
+      },
+      {
+       "n": 14,
+       "answer": [
+        "A"
+       ],
+       "explanation": "You'll find a pile of beach towels in a basket on the washing machine. Feel free to take these to the beach with you. We have lots of them, and they're pretty old, so…"
+      },
+      {
+       "n": 15,
+       "answer": [
+        "C"
+       ],
+       "explanation": "There are other newer towels for use in the bathroom only. These are in the hot water cupboard on the shelf up above the cylinder. Please don't take these ones down…"
+      },
+      {
+       "n": 16,
+       "answer": [
+        "G"
+       ],
+       "explanation": "Ah what else? Oh yes, I should tell you that the electricity supply is generally reliable, but sometimes there are power surges which make a few light bulbs blow."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "title": "Information about the town",
+     "template": "- Difficult parking in town at the weekend because of so many [[17]]\n- Museum is closed on [[18]]\n# Recommended places to eat\n- [[19]] for Chinese food\n- Pizzeria for Italian food\n- Phone number for takeaway pizza: [[20]]",
+     "questions": [
+      {
+       "n": 17,
+       "answer": [
+        "tourists",
+        "tourist"
+       ],
+       "explanation": "It's on top of the TV along with the remote control. Parking in the town is usually really easy, except for weekends, when the place is swamped with tourists, so I…"
+      },
+      {
+       "n": 18,
+       "answer": [
+        "Mondays"
+       ],
+       "explanation": "Oh one thing though, if you want to combine a shopping expedition with a visit to the early history museum, you should know that it's not open on Mondays. There are…"
+      },
+      {
+       "n": 19,
+       "answer": [
+        "happy dragon"
+       ],
+       "explanation": "You'll find a list of menus and takeaway prices for some of the more popular local cafes and restaurants. If you like Chinese, the Happy Dragon has excellent food, or…"
+      },
+      {
+       "n": 20,
+       "answer": [
+        "3231190"
+       ],
+       "explanation": "Phone three two three double one nine zero for pizza and three two three double nine double one for Chinese. You won't be disappointed."
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Now turn to section two. Section two You will hear a man who owns a holiday home talking on the phone to woman who has rented it.\nA: First you have some time to look at questions eleven to sixteen.\nA: Now listen carefully and answer questions eleven to sixteen\nD: Hello, Ron Smith speaking.\nB: Hi, this is Kayla Lawton. I signed up with the Holiday House agency to rent your beach house, but the agent isn’t available today and I’ve a problem. I can’t remember what she said about the alarm system.\nD: Oh it’s quite simple really. The main thing to remember is to enter by the back door which leads into the kitchen, because that is where the alarm is situated. Right next to the light switch just beside the door.\nD: If you go through the front door into the living room, it will take you longer to reach the alarm, and you only have a few seconds to deactivate it. The code is three four nine eight.\nA: Okay, I’ve got that.\nD: The agent will have given you the back and front door keys, but there are other keys that you may need for the garage, the laundry and the little garden shed.\nD: You’ll find them hanging on a hook inside the cupboard in the hallway, next to the hot water cupboard. The laundry room is outside, next to the garage.\nD: It should be kept locked, so please remember to return the key to the hook when you’ve done your washing. The last tenant lost it somewhere in the garden, and I had to have the lock replaced.\nD: There should be some laundry detergent for the washing machine next to the dishwashing liquid under the kitchen sink.\nD: Oh now about the linen. The sheets are already on the beds and there are lots of towels at the house too. Of course, you’ll want to enjoy that lovely safe swimming beach as much as possible.\nD: You’ll find a pile of beach towels in a basket on the washing machine. Feel free to take these to the beach with you. We have lots of them, and they’re pretty old, so it doesn’t matter if they get a bit dirty or sandy.\nD: There are other newer towels for use in the bathroom only. These are in the hot water cupboard on the shelf up above the cylinder. Please don’t take these ones down to the beach.\nD: Ah what else? Oh yes, I should tell you that the electricity supply is generally reliable, but sometimes there are power surges which make a few light bulbs blow.\nD: If that happens, don’t worry, there are spare light bulbs in a shoe box on the chest of drawers in the bedroom. That reminds me the main power supply is switched off at the mains box which is above the front door.\nD: The first thing to do when you arrive is to pull down the large lever. It’s clearly labelled main switch. You don’t need to touch any of the other switches.\nB: Thank you. Anything else?\nA: Before you hear the rest of the conversation, you have some time to look at questions seventeen to twenty.\nA: Now listen and answer questions seventeen to twenty\nD: Oh one more thing something that might interest you is a folder of local information you know the sort of thing, interesting places to visit, opening hours for the shops and services in the town, plus a little map of local walks.\nD: It’s on top of the TV along with the remote control. Parking in the town is usually really easy, except for weekends, when the place is swamped with tourists, so I would recommend doing your shopping on weekdays.\nD: Oh one thing though, if you want to combine a shopping expedition with a visit to the early history museum, you should know that it’s not open on Mondayss. There are lots of good places to eat in town too.\nD: You’ll find a list of menus and takeaway prices for some of the more popular local cafes and restaurants. If you like Chinese, the Happy Dragon has excellent food, or I’d recommend the pizzeria if you prefer Italian.\nD: They have a good selection of takeaway pasta and pizza as well. The Happy Dragon is a firm favourite with the locals though. Both restaurants deliver free of charge, but note the phone numbers have changed since the menus were printed.\nD: Phone three two three double one nine zero for pizza and three two three double nine double one for Chinese. You won’t be disappointed.\nA: Thanks a lot, I’ll do that.\nA: That is the end of section two. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-67-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Why did Joanne accept the offer from Gregory Associates?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It covered her travel expenses."
+        },
+        {
+         "key": "B",
+         "text": "It was from a well-known company."
+        },
+        {
+         "key": "C",
+         "text": "It was the only offer she received."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "But I knew Gregory Associates was a widely recognized leader in the industry, and that was the big factor for me."
+      },
+      {
+       "n": 22,
+       "text": "Joanne was disappointed because",
+       "options": [
+        {
+         "key": "A",
+         "text": "she found the work routine repetitive."
+        },
+        {
+         "key": "B",
+         "text": "the staff were not very helpful."
+        },
+        {
+         "key": "C",
+         "text": "the work was not related to her studies."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Well, yes and no."
+      },
+      {
+       "n": 23,
+       "text": "What did Joanne like best about her internship?",
+       "options": [
+        {
+         "key": "A",
+         "text": "observing how the workplace operates"
+        },
+        {
+         "key": "B",
+         "text": "being responsible for completing projects"
+        },
+        {
+         "key": "C",
+         "text": "working closely with the project managers"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Yes, but in a way I liked that. Because I got to stand back and watch and get a real sense of how a company like that runs on a day to day basis. And that was the…"
+      },
+      {
+       "n": 24,
+       "text": "What was the hardest part of the internship?",
+       "options": [
+        {
+         "key": "A",
+         "text": "combining it with her studies"
+        },
+        {
+         "key": "B",
+         "text": "living on so little money"
+        },
+        {
+         "key": "C",
+         "text": "working such long hours"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "What would you say was the biggest struggle then?"
+      },
+      {
+       "n": 25,
+       "text": "During the internship Joanne",
+       "options": [
+        {
+         "key": "A",
+         "text": "changed her mind about her career."
+        },
+        {
+         "key": "B",
+         "text": "received a job offer from the company."
+        },
+        {
+         "key": "C",
+         "text": "decided not to continue her studies."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Well, over the course of the internship, I ended up reconsidering whether this industry is really for me after all."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "title": "How to apply for an internship",
+     "template": "- Get all the necessary [[26]] ready\n- Make a [[27]] of suitable companies\n- [[28]] each application to the position\n- [[29]] each company to follow up\n- Be ready to [[30]] at the interview",
+     "questions": [
+      {
+       "n": 26,
+       "answer": [
+        "documents"
+       ],
+       "explanation": "Before they do anything else, students need to get their documents sorted."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "shortlist",
+        "short list"
+       ],
+       "explanation": "Yeah, so I think they need to weed out those positions they are not qualified for, or that don't meet their own needs and interests, and then put together a short…"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "alter"
+       ],
+       "explanation": "They really need to alter their applications and"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "call"
+       ],
+       "explanation": "I think so. It's best to call each company. An email is too easy to ignore or delete. And not too soon either. A week after the applications have been submitted is…"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "ask questions"
+       ],
+       "explanation": "Most students are so obsessed with having the right answers, but I think the most important thing is actually to ask questions. It shows the employer that you are…"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Now turn to section three. Section three You will hear a college professor and a postgraduate student Diana discussing her recent internship experience.\nA: First you have some time to look at questions twenty one to twenty five.\nA: Now listen carefully and answer questions twenty one to twenty five.\nD: Thanks for coming in today to discuss your internship experience. Completing some sort of work experience like an internship is a core part of our master’s program and we want to make sure students are able to make the most of it.\nA: That’s fine.\nD: So as I understand, you were offered an internship by Gregory Associates, is that correct?\nB: Actually, I got offers from a few companies, but Gregory Associates was the only one I seriously considered.\nD: Was there any reason for that?\nB: Yeah. They didn’t offer the best conditions. Some of the other companies were offering to cover transportation and other living costs, that kind of thing.\nB: But I knew Gregory Associates was a widely recognized leader in the industry, and that was the big factor for me.\nD: And were you happy with your choice?\nB: Well, yes and no.\nD: Mixed feelings?\nB: Yeah, I mean don’t get me wrong. Everyone in the office was great. They didn’t talk down to me and they were always happy to assist if I wasn’t sure about something.\nD: Was it the work then? Some students do find internships a little tedious and boring.\nB: It’s not that it was boring. I was doing new things every day, and I loved that. They really kept me on my toes. It’s just that I’m studying economics, you know.\nB: But most of the projects I was assigned to involved more administrative stuff. It just wasn’t relevant to what I’ve been studying.\nD: I’m sorry to hear that. I’ll make a note of it. Let’s talk about the good things. What did you particularly enjoy about the experience?\nB: Well, as an intern, the managers do tend to keep you at arm’s length.\nA: They just don’t trust you enough to let you take on a lot of responsibility for the big projects.\nD: That’s understandable.\nA: Yes, but in a way I liked that. Because I got to stand back and watch and get a real sense of how a company like that runs on a day to day basis. And that was the highlight for me.\nD: Well that’s great to hear. How did you find managing the internship alongside your study commitments?\nB: Well, because my internship was over the summer break, that wasn’t an issue for me at all. Okay.\nD: What would you say was the biggest struggle then?\nB: In the beginning I might have said the hours. Those 6 AM starts were tough. But I quickly got used to that. In retrospect, the biggest difficulty was getting by on such a tight budget.\nB: As I wasn’t earning anything, the whole experience really drained my savings account.\nD: Yeah, that can be tough. And my last question, what was the outcome of this internship for you? Some of our students are lucky enough to get offers of employment before finishing.\nB: At first, I was hoping I would be one of them. In the end I wasn’t, but I’m happy about that now.\nD: Why’s that?\nB: Well, over the course of the internship, I ended up reconsidering whether this industry is really for me after all.\nB: I’m going to finish my degree, because I’m only a semester away from graduation now, but then after that I’ve decided to pursue a different line of work.\nD: Well I do hope you’re successful with that.\nA: Before you hear the rest of the conversation, you have some time to look at questions twenty-six to thirty.\nA: Now listen and answer questions twenty six to thirty.\nD: Now we’re putting together a step by step guide about the process for students who want to apply for internships, and we were wondering if you could help us with it.\nB: Sure.\nD: What would you say is the first step?\nB: Before they do anything else, students need to get their documents sorted.\nA: Companies need to see all sorts of things, such as reference letters and verified copies of academic transcripts. It can take time to get it all together, so applicants need to get onto this as soon as possible.\nD: Great. We’ll put that down as number one. And then students should begin researching companies?\nA: Absolutely. They should look at a wide range of companies and the internships they offer. They really shouldn’t limit themselves at that stage.\nD: It would be time consuming to apply to them all though.\nA: Yeah, so I think they need to weed out those positions they are not qualified for, or that don’t meet their own needs and interests, and then put together a short list, consisting only of those positions that are a good match.\nD: And then?\nA: Well, the next part is the applications, of course. I think the big mistake here is that some students just send the same cover letter and the same C V to each company, when in reality every position is a little bit different.\nA: They really need to alter their applications and\nA: So that they refer to the individual needs of each position.\nD: I’ll make a note of that. And should students follow up on their applications?\nA: I think so. It’s best to call each company. An email is too easy to ignore or delete. And not too soon either. A week after the applications have been submitted is probably ideal.\nD: So if they get an interview, what’s next? Obviously they need to prepare. For me, this included all sorts of things, like practicing my body language in front of the mirror, and researching common interview questions online.\nD: Any tips for the interview itself?\nB: Most students are so obsessed with having the right answers, but I think the most important thing is actually to ask questions. It shows the employer that you are genuinely interested in their company and in the position.\nD: That’s really helpful advice. Thanks for coming by today.\nB: No problem.\nA: That is the end of section three. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-67-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "title": "Research on a Chain Store in the UK",
+     "template": "# Initial expansion\n- The company expanded by opening more [[31]] to increase market share in England.\n- They could raise capital by reducing the number of branches in southern [[32]] .\n# Consultation\n- They shut down the [[33]] of the convenience stores in Oxford.\n- Over 200 staff had to be transferred and [[34]] .\n- A new brand image was established to focus on selling [[35]] .\n# The future way\n- A [[36]] was assigned to hold each discussion.\n- Retail stores should be flexible in making [[37]] .\n- Changes should be introduced in [[38]] so that the staff can become accustomed to the new rules.\n# Conclusion\n- Be open-minded about the [[39]] for expansion they choose.\n- Companies have saved costs by changing the structure of the [[40]] department.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "petrol stations",
+        "petrol station"
+       ],
+       "explanation": "This strategy was so successful that they were able to open petrol stations across the country, subsequently increasing their market share in England."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "Scotland"
+       ],
+       "explanation": "Within a decade, Telsa were running establishments throughout the UK, including Wales and Scotland."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "head office"
+       ],
+       "explanation": "After assessing the company's financial statements, the consultants advised that Telsa close the head office of the convenience stores in Oxford."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "retrained"
+       ],
+       "explanation": "In order to avoid firing any employees, they transferred over 200 staff to other offices and retrained them to carry out their new roles."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "fresh food"
+       ],
+       "explanation": "They realized that they could establish a new environmentally friendly brand image by selling fresh food in their convenience stores that had been grown by local farmers."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "manager"
+       ],
+       "explanation": "Where all of the consultants and managers meet to discuss future plans for development and improvement."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "profits"
+       ],
+       "explanation": "They realized that by increasing the flexibility of the profit making strategies of each of the retail stores, they subsequently became more commercially successful."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "stages"
+       ],
+       "explanation": "To avoid misunderstandings and mistakes, any future changes were introduced in stages in order to familiarize the staff with the new regulations."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "strategies"
+       ],
+       "explanation": "In order to run a successful business, one cannot underestimate the importance of maintaining an open mind when deciding on strategies for expansion."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "organisation",
+        "organization"
+       ],
+       "explanation": "Research suitable case studies and look at how department stores, for example, were able to alter their organizational structure whilst minimizing costs and staff…"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Section 4 You will hear a part of a lecture in a series of lectures about chain stores in the UK. First, you have some time to look at questions 31 to 40.\nA: Now listen carefully and answer questions 31 to 40.\nA: Welcome ladies and gentlemen to the second lecture in our series on chain stores in the UK.\nA: Today I will be focusing on a very successful global petrol company called Telsa, paying particular attention to their expansion and future development.\nB: There will be time for questions at the end, so please refrain from interrupting during the talk.\nB: When it was founded, the company was a family-run organisation with only one shop open in a small town in southern England.\nB: The family was able to compete with other local companies by offering special discounts for returning customers, which resulted in a huge expansion of their client base.\nB: This strategy was so successful that they were able to open petrol stations across the country, subsequently increasing their market share in England.\nB: Within a decade, Telsa were running establishments throughout the UK, including Wales and Scotland.\nB: By comparing the sales income from all of their stores, they were able to collate data that highlighted which areas were the most profitable and receptive to their business.\nB: They discovered that by closing the less profitable stations in the south of Scotland, they could increase the income from their other more profitable stations.\nB: This example demonstrates the importance of constantly monitoring and maintaining a clear view of the finances of the company.\nB: Once the expertise required to run the company had exceeded the abilities of the family, they needed to hire professional consultants.\nB: After assessing the company’s financial statements, the consultants advised that Telsa close the head office of the convenience stores in Oxford.\nB: They deemed the head office unnecessary and identified it as a financial drain on the company, as the premises were expensive to run and generated no income.\nB: In order to avoid firing any employees, they transferred over 200 staff to other offices and retrained them to carry out their new roles.\nB: Now that Telsa had conquered the petrol market in the UK, they were able to branch out into other niche areas that offered prospects for profits.\nB: They realized that they could establish a new environmentally friendly brand image by selling fresh food in their convenience stores that had been grown by local farmers.\nB: This strategy would not only broaden the scope of the company but also help to strengthen its relationships with local communities. Every year, Telsa holds a meeting in London.\nB: Where all of the consultants and managers meet to discuss future plans for development and improvement.\nB: These meetings are essential to the evolution of the company, as feedback is heard from all levels of the organization, from the sales staff to the CEOs.\nB: They did this by assigning every manager the task of holding staff discussions, at which ideas and concerns would be passed on for evaluation at the meeting.\nB: Tesla decided to accommodate the individuality of each of their stores instead of forcing them to conform to one overriding company identity.\nB: They realized that by increasing the flexibility of the profit making strategies of each of the retail stores, they subsequently became more commercially successful.\nB: The level of staff satisfaction also increased as a result, as the individuals felt that they were not being constrained to one way of thinking.\nB: To avoid misunderstandings and mistakes, any future changes were introduced in stages in order to familiarize the staff with the new regulations.\nB: Now it’s time to conclude the lecture for today. So I will leave you with some food for thought before you leave.\nB: In order to run a successful business, one cannot underestimate the importance of maintaining an open mind when deciding on strategies for expansion.\nB: Sometimes it’s necessary to employ an independent consultant who can offer an objective and unbiased view on the running of your company.\nB: Emotion will only ever cloud your ability to make business-related decisions.\nB: Research suitable case studies and look at how department stores, for example, were able to alter their organizational structure whilst minimizing costs and staff redundancies.\nA: Precedents are an essential resource when it comes to making decisions for your own business, so don’t undervalue them. Well, that wraps up our lecture for today. If there are any questions,\nA: That is the end of section 4. You now have half a minute to check your answers.\nA: That is the end of the listening test. In the IELTS test, you will now have 10 minutes to transfer your answers to the answer sheet."
+  }
+ ],
+ "audio": {
+  "file": "listening-67.mp3",
+  "durationSec": 1561,
+  "partStarts": [
+   1,
+   364,
+   717,
+   1147
+  ],
+  "questionTimes": {
+   "1": 95,
+   "2": 120,
+   "3": 140,
+   "4": 152,
+   "5": 190,
+   "6": 204,
+   "7": 220,
+   "8": 270,
+   "9": 286,
+   "10": 313,
+   "11": 447,
+   "12": 471,
+   "13": 493,
+   "14": 513,
+   "15": 526,
+   "16": 540,
+   "17": 632,
+   "18": 646,
+   "19": 660,
+   "20": 689,
+   "21": 809,
+   "22": 819,
+   "23": 876,
+   "24": 901,
+   "25": 940,
+   "26": 1001,
+   "27": 1038,
+   "28": 1068,
+   "29": 1080,
+   "30": 1112,
+   "31": 1281,
+   "32": 1292,
+   "33": 1341,
+   "34": 1363,
+   "35": 1386,
+   "36": 1412,
+   "37": 1456,
+   "38": 1479,
+   "39": 1500,
+   "40": 1528
+  }
+ }
+}

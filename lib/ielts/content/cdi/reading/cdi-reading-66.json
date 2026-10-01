@@ -1,0 +1,595 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-66",
+ "title": "CDI Reading Test 66",
+ "description": "A full Academic Reading test from the CDI practice materials: Katsushika Hokusai; Pantomime; Talc Powder.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Katsushika Hokusai",
+  "Pantomime",
+  "Talc Powder"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Katsushika Hokusai",
+   "paragraphs": [
+    {
+     "text": "Hokusai (born October 1760, Edo [now Tokyo], Japan—died May 10, 1849, Edo) was a Japanese master artist and printmaker of the Ukiyo-e (\"pictures of the floating world\") school. His early works represent the full spectrum of Ukiyo-e art, including single-sheet prints of landscapes and actors, hand paintings, and surimono (\"printed things\"), such as greetings and announcements. Later he concentrated on the classical themes of the samurai and Chinese subjects. His famous print series \"Thirty-six Views of Mount Fuji,\" published between 1826 and 1833, marked the summit in the history of the Japanese landscape print."
+    },
+    {
+     "text": "Early years"
+    },
+    {
+     "text": "Hokusai was born in the Honjo quarter just east of Edo (Tokyo) and became interested in drawing at the age of five. He was adopted in childhood by a prestigious artisan family named Nakajima but was never accepted as an heir—possibly supporting the theory that, though the true son of Nakajima, he had been born of a concubine."
+    },
+    {
+     "text": "Hokusai is said to have served in his youth as clerk in a lending bookshop, and from 15 to 18 years of age he was apprenticed to a wood-block engraver. This early training in the book and printing trades obviously contributed to Hokusai's artistic development as a printmaker."
+    },
+    {
+     "text": "The earliest contemporary record of Hokusai dates from the year 1778, when, at the age of 18, he became a pupil of the leading Ukiyo-e master, Katsukawa Shunshō. The young Hokusai's first published works appeared the following year—actor prints of the Kabuki theatre, the genre that Shunshō and the Katsukawa school practically dominated."
+    },
+    {
+     "text": "To judge from the ages of his several children, Hokusai must have married in his mid-20s. Possibly under the influence of family life, from this period his designs tended to turn from prints of actors and women to historical and landscape subjects, especially Uki-e (semi-historical landscapes using Western-influenced perspective techniques), as well as prints of children."
+    },
+    {
+     "text": "Artist's book illustrations and texts turned as well from the earlier themes to historical and didactic subjects. At the same time, Hokusai's work in the surimono genre during the subsequent decade marks one of the early peaks in his career. Surimono were prints issued privately for special occasions—New Year's and other greetings, musical programs and announcements, private verse selections—in limited editions and featuring immaculate printing of the highest quality."
+    },
+    {
+     "text": "Hokusai's early 30s were to prove years of personal change. His master Shunshō died early in 1793, and somewhat later Hokusai's young wife passed away, leaving a son and two daughters. In the year 1797 he remarried and adopted the name Hokusai. This change of name marks the beginning of the golden age of his work, which was to continue for a half century."
+    },
+    {
+     "text": "Mature years"
+    },
+    {
+     "text": "In format, Hokusai's oeuvre from this period covers the gamut of Ukiyo-e art: single-sheet prints, surimono, picture books and picture novelettes, illustrations to verse anthologies and historical novels, erotic books and album prints, and hand paintings and sketches. In his subject matter, Hokusai only occasionally (in a few notable prints, in paintings, and erotica) chose to compete with Utamaro, the acknowledged master of voluptuous figure prints. Aside from this limitation, however, Hokusai's work encompassed a wide range, with particular emphasis on landscape views and historical scenes in which figures were often of secondary interest. Around the turn of the century he experimented for a time with Western-style perspective and colouring."
+    },
+    {
+     "text": "From the early 19th century Hokusai commenced illustrating yomihon (the extended historical novels that were just coming into fashion). Under their influence, his style began to suffer important and clearly visible changes between 1806 and 1807. His figure work becomes more powerful but increasingly less delicate; there is greater attention to classical or traditional themes (especially of samurai, or warriors, and Chinese subjects) and a turning away from the contemporary Ukiyo-e world."
+    },
+    {
+     "text": "In about the year 1812, Hokusai's eldest son died. This tragedy was not only an emotional but also an economic event, for, as adopted heir to the affluent Nakajima family, the son had been instrumental in obtaining a generous stipend for Hokusai, so that he did not need to worry about the uncertainties of income from his paintings, designs, and illustrations."
+    },
+    {
+     "text": "Whether for economic reasons or not, from this time on Hokusai's attention turned gradually from novel illustration to the picture book and, particularly, to the type of wood-block-printed copybook designed for amateur artists (including the famous Hokusai manga). Very likely his intention was to find new pupils and hence new patronage."
+    },
+    {
+     "text": "Though famed for his detailed prints and illustrations, Hokusai was also fond of displaying his artistic prowess in public—making, for example, huge paintings of mythological figures before festival crowds. He was once even summoned to show his artistic skills before the shogun."
+    },
+    {
+     "text": "In the summer of 1828, Hokusai's second wife died. The master was then 68, afflicted intermittently with paralysis and left alone, evidently with only a profligate grandson. It is probably no coincidence, therefore, that before long Hokusai's favourite daughter (and pupil), O-ei, returned to her father's side, where she was to stay for his remaining years."
+    },
+    {
+     "text": "An energetic artist, Hokusai rose early and continued painting until well after dark. Of Hokusai's thousands of books and prints, his \"Thirty-six Views of Mt. Fuji\" is particularly notable. Published from about 1826 to 1833, this famous series marked a summit in the history of the Japanese landscape print. Hokusai's frequent changes in domicile (more than 90 dwellings) and of his own name are indicative of the artist's restless nature."
+    },
+    {
+     "text": "Despite his appeals to heaven for \"yet another decade,\" on the 18th day of the fourth month of the Japanese calendar \"the old man mad with painting,\" as he called himself, breathed his last at the age of 89."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Hokusai's earliest artistic works mainly focused on landscapes and actors.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "His early works represented the 'full spectrum' of Ukiyo-e art, not mainly landscapes and actors (FALSE)."
+      },
+      {
+       "n": 2,
+       "text": "He was officially recognized as the heir of the Nakajima family.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Although adopted by the Nakajima family, he 'was never accepted as an heir' (FALSE)."
+      },
+      {
+       "n": 3,
+       "text": "Hokusai's apprenticeship with a wood-block engraver contributed to his later success as a printmaker.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "His apprenticeship 'obviously contributed to Hokusai's artistic development as a printmaker' (TRUE)."
+      },
+      {
+       "n": 4,
+       "text": "The series Thirty-six Views of Mount Fuji was the first landscape work ever created in Japan.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage calls the series the 'summit in the history of the Japanese landscape print' but never says whether it was the first landscape work ever created in Japan (NOT GIVEN)."
+      },
+      {
+       "n": 5,
+       "text": "Hokusai often competed with Utamaro in producing prints of women.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "He 'only occasionally' chose to compete with Utamaro, not often (FALSE)."
+      },
+      {
+       "n": 6,
+       "text": "His eldest son helped secure financial stability for him through the Nakajima family connections.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "As adopted heir to the affluent Nakajima family, the son 'had been instrumental in obtaining a generous stipend for Hokusai' (TRUE)."
+      },
+      {
+       "n": 7,
+       "text": "Hokusai changed his residence and artistic name multiple times throughout his life.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "His 'frequent changes in domicile (more than 90 dwellings) and of his own name' show he moved and renamed himself many times (TRUE)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The Life and Work of Hokusai",
+     "template": "Hokusai showed interest in drawing at the age of five and may have been the son of a [[8]] . As a teenager, he was apprenticed to a wood-block engraver, and later studied under the Ukiyo-e master Shunshō, producing actor prints of the [[9]] . During his career, Hokusai created a wide variety of works, including landscapes, actor prints, and [[10]] produced for special occasions. He also published sketchbooks for amateur artists known as Hokusai [[11]] . In many of his landscape works, he experimented with Western-style colouring and [[12]] for a time. Although he worked in different genres, Hokusai also competed with other masters such as [[13]] , who was famous for figure prints.",
+     "questions": [
+      {
+       "n": 8,
+       "answer": [
+        "concubine"
+       ],
+       "explanation": "He may have been the son of a 'concubine'."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "theatre",
+        "theater"
+       ],
+       "explanation": "Under Shunshō he produced 'actor prints of the Kabuki theatre'."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "surimono"
+       ],
+       "explanation": "'Surimono' were prints produced for special occasions."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "manga"
+       ],
+       "explanation": "His sketchbooks for amateur artists were known as Hokusai 'manga'."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "perspective"
+       ],
+       "explanation": "He experimented with Western-style 'perspective' and colouring for a time."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "Utamaro"
+       ],
+       "explanation": "He also competed with 'Utamaro', who was famous for figure prints."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Pantomime",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "A pantomime performance is a unique blend of eccentricity and absurdity, a wild mixture of songs, jokes, outrageous costumes and slapstick physical humour. For many British children, their first family trip to see a pantomime in the Christmas holiday season is their introduction to the magic of the theatre. But what has become a quintessentially British form of entertainment is more than just simple fun. As an art form, pantomime presents a tale of good and evil, where hope finally triumphs after danger and virtual despair."
+    },
+    {
+     "label": "B",
+     "text": "The story of pantomime begins with the commedia dell'arte tradition in 16th-century Italy. These improvised shows took place in streets and marketplaces in Italy and eventually throughout Europe. Distinctive masks enabled audiences to recognise the people in these stories immediately; they also allowed actors to be rude or disrespectful without fear of being recognised. The key roles in the cast were invariably rich old men, usually portrayed as cowardly and disreputable; young lovers whose parents refuse to let them marry; and ingenious and quick-witted servants. Many commedia plots show the latter, whose lives are a constant struggle to find food and money, outwitting the old men or overthrowing their masters. This theme of the victory of the underdog is still an essential feature of pantomime today."
+    },
+    {
+     "label": "C",
+     "text": "By the mid-18th century, many thousands of people were going to theatres across Britain every night. Among the most popular performances were harlequinades, a new kind of entertainment which interwove Ovid's first-century Latin poem Metamorphoses with aspects of the Italian commedia. Created by actor John Rich, these early pantomimes cleverly mixed spectacle, music, ballet and myth, and were tremendously enjoyable to watch. Amazing transformations happened at the touch of a magic wand, with mechanical serpents and flying vehicles. They also showed that even early pantomime was fascinated by the crossing of boundaries: the ambiguity of men dressed as women, and the fun of animal characters played by human beings."
+    },
+    {
+     "label": "D",
+     "text": "Despite their popularity, Rich's spectacular performances attracted huge controversy. Critics bitterly attacked pantomimes, complaining that they would bring about the downfall of Shakespeare and the death of serious theatre. David Garrick, the great 18th-century actor-manager, was quick to join these criticisms, while also realising the commercial opportunities of this new art form. But how could Garrick take advantage of the craze and still maintain his position as the defender of 'legitimate' theatre? His tactic was to set about changing pantomime's cultural identity, partly by confining shows to his theatre's Christmas season. Pantomimes became associated with the frivolity of the holiday season rather than being denounced as a threat. In doing so, Garrick created a convention which has survived to this day."
+    },
+    {
+     "label": "E",
+     "text": "At the end of the 18th century, popular theatre saw the arrival of the white-faced Clown, in the form of actor Joseph Grimaldi. By the early 19th century, Britain was at war with France; there was intense civil unrest and violent confrontations between the government and the people. Grimaldi's hilarious antics embodied the freedom and liberty of British culture by contrast with the country's supposedly dull, humourless enemies. His anarchic activities included chasing and imprisoning policemen and stealing gigantic quantities of sausages. But the Clown was never caught or sent to jail. Audiences were thrilled by his mischief and his endless eating precisely because he created on stage the fantasy of a different world: a world without hunger, a world of comic revenge against a highly repressive government."
+    },
+    {
+     "text": "Grimaldi became one of the great satirists of his age, a character who offered ludicrous commentaries on everything from the ruling classes to fashion, technology and new forms of transport."
+    },
+    {
+     "label": "F",
+     "text": "By the late 19th century, photography had arrived, the telegraph had been invented and the first motor cars were starting to appear on British streets. Meanwhile, the spotlight on the comic stage shifted away from the Clown and towards an unexpected star, the pantomime 'Dame': a tired housewife – always played by a man – struggling to cope in an unfriendly world. Dan Leno was the celebrated performer who created and played this talkative and eccentric working-class woman, a mother facing the difficulties of poverty, which he and his audiences knew all too well. In the Dame, Leno developed a persona whose theatrical power comes from the locking together of compassion and laughter. At the same time, artists such as Leno began to infuse pantomime with the plots and dilemmas of working people's culture."
+    },
+    {
+     "label": "G",
+     "text": "Pantomimes are as popular today as they have ever been. Our delight in this form comes from a complex mixture of emotions and relationships. Pantomime offers us the anarchic excitements of a topsy-turvy world only to give up the assurance of harmony restored. The engaging character of the Dame exemplifies pantomime's self-proclaimed absurdity. Her comical conversations with the audience cut across the boundaries between performers and spectators, drawing us into her chaotic world. While she presides over the anarchy which Grimaldi once visited on policemen, the Dame also embodies the collective ties which bind us together as families, as neighbours, and as members of society."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "A character who provoked sympathy and amusement"
+      },
+      {
+       "key": "ii",
+       "text": "Outdoor performances with a standard set of characters"
+      },
+      {
+       "key": "iii",
+       "text": "Pantomime as a means of focusing on political issues"
+      },
+      {
+       "key": "iv",
+       "text": "Discovering pantomime at a young age"
+      },
+      {
+       "key": "v",
+       "text": "A way of dealing with a negative attitude toward pantomime"
+      },
+      {
+       "key": "vi",
+       "text": "An explanation of how a pantomime character appeals to modern audiences"
+      },
+      {
+       "key": "vii",
+       "text": "Debate about the origins of pantomime"
+      },
+      {
+       "key": "viii",
+       "text": "A successful merging of artistic sources"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph A describes children's first family trip to a pantomime as their introduction to theatre → iv Discovering pantomime at a young age."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Paragraph B describes commedia dell'arte shows in streets and marketplaces with a fixed cast of stock characters → ii Outdoor performances with a standard set of characters."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Paragraph C explains how harlequinades interwove Ovid's poem with the Italian commedia, mixing spectacle, music, ballet and myth → viii A successful merging of artistic sources."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Paragraph D shows how Garrick handled the hostility to pantomime by rebranding it as Christmas entertainment → v A way of dealing with a negative attitude toward pantomime."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Paragraph E describes Grimaldi's satire of the repressive government and the ruling classes → iii Pantomime as a means of focusing on political issues."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Paragraph F describes Leno's Dame, combining compassion and laughter → i A character who provoked sympathy and amusement."
+      },
+      {
+       "n": 20,
+       "text": "Paragraph G",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Paragraph G explains why the Dame still delights and connects with audiences today → vi An explanation of how a pantomime character appeals to modern audiences."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Commedia dell'arte actors used [[21]] to disguise their real identities.\n- Harlequinades combined elements of a 16th-century art form with a [[22]] written many centuries earlier.\n- In early 19th-century pantomimes, [[23]] were often victims of the Clown's activities.",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "masks"
+       ],
+       "explanation": "Paragraph B: 'masks' allowed actors to be rude without fear of being recognised, disguising their identities."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "poem"
+       ],
+       "explanation": "Paragraph C: harlequinades combined the 16th-century commedia with Ovid's first-century 'poem' Metamorphoses."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "policemen"
+       ],
+       "explanation": "Paragraph E: the Clown's victims were the 'policemen' he chased and imprisoned."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements (Questions 24–26) and the list of people below. Match each statement with the correct person, A–D.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "John Rich"
+      },
+      {
+       "key": "B",
+       "text": "David Garrick"
+      },
+      {
+       "key": "C",
+       "text": "Joseph Grimaldi"
+      },
+      {
+       "key": "D",
+       "text": "Dan Leno"
+      }
+     ],
+     "questions": [
+      {
+       "n": 24,
+       "text": "His performances focused on the situation of the less wealthy sections of society.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Dan Leno (D) played a working-class woman facing poverty and drew on working people's culture."
+      },
+      {
+       "n": 25,
+       "text": "He introduced elements of the supernatural to the pantomime genre.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "John Rich (A) created harlequinades with magical transformations, mechanical serpents and flying vehicles."
+      },
+      {
+       "n": 26,
+       "text": "His pantomime character was never seen to be punished for his on-stage crimes.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Joseph Grimaldi (C) played the Clown, who 'was never caught or sent to jail'."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Talc Powder",
+   "subtitle": "Peter Brigg discovers how talc from Luzenac's Trimouns in France finds its way into food and agricultural products – from chewing gum to olive oil.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "High in the French Pyrenees, some 1,700m above sea level, lies Trimouns, a huge deposit of hydrated magnesium silicate – talc to you and me. Talc from Trimouns, and from ten other Luzenac mines across the globe, is used in the manufacture of a vast array of everyday products extending from paper, paint and plaster to cosmetics, plastics and car tyres. And of course, there is always talc's best-known end use: talcum powder for babies' bottoms. But the true versatility of this remarkable mineral is nowhere better displayed than in its sometimes surprising use in certain niche markets in the food and agriculture industries."
+    },
+    {
+     "label": "B",
+     "text": "Take, for example, the chewing gum business. Every year, Talc de Luzenac France – which owns and operates the Trimouns mine and is a member of international Luzenac Group (part of Rio Tinto minerals) – supplies about 6,000 tonnes of talc to chewing gum manufacturers in Europe. \"We've been selling to this sector of the market since the 1960s,\" says Laurent Fournier, a sales manager in Luzenac's Specialties business unit in Toulouse. \"Admittedly, in terms of our total annual sales of talc, the amount we supply to chewing gum manufacturers is relatively small, but we see it as a valuable niche market: one where customers place a premium on securing supplies from a reliable, high-quality source. Because of this, long term allegiance to a proven supplier is very much a feature of this sector of the talc market. Switching sources – in the way that you might choose to buy, say, paperclips from Supplier A rather than from Supplier B – is not an easy option for chewing gum manufacturers,\" Fournier says. \"The cost of reformulating is high, so when customers are using a talc grade that works, even if it's expensive, they are understandably reluctant to switch.\""
+    },
+    {
+     "label": "C",
+     "text": "But how is talc actually used in the manufacture of chewing gum? Patrick Delord, an engineer with a degree in agronomics, who has been with Luzenac for 22 years and is now senior market development manager, Agriculture and Food, in Europe, explains that chewing gum has four main components. \"The most important of them is the gum base,\" he says. \"It's the gum base that puts the chew into chewing gum. It binds all the ingredients together, creating a soft, smooth texture. To this the manufacturer then adds sweeteners, softeners and flavourings. Our talc is used as a filler in the gum base. The amount varies between, say, ten and 35 per cent, depending on the type of gum. Fruit flavoured chewing gum, for example, is slightly acidic and would react with the calcium carbonate that the manufacturer might otherwise use as a filler. Talc, on the other hand, makes an ideal filler because it's non-reactive chemically. In the factory, talc is also used to dust the gum base pellets and to stop the chewing gum sticking during the lamination and packing process,\" Delord adds."
+    },
+    {
+     "label": "D",
+     "text": "The chewing gum business is, however, just one example of talc's use in the food sector. For the past 20 years or so, olive oil processors in Spain have been taking advantage of talc's unique characteristics to help them boost the amount of oil they extract from crushed olives. According to Patrick Delord, talc is especially useful for treating what he calls \"difficult\" olives. After the olives are harvested – preferably early in the morning because their taste is better if they are gathered in the cool of the day – they are taken to the processing plant. There they are crushed and then stirred for 30-45 minutes. In the old days, the resulting paste was passed through an olive press but nowadays it's more common to add water and centrifuge the mixture to separate the water and oil from the solid matter. The oil and water are then allowed to settle so that the olive oil layer can be decanted off and bottled. \"Difficult\" olives are those that are more reluctant than the norm to yield up their full oil content. This may be attributable to the particular species of olive, or to its water content and the time of year the olives are collected – at the beginning and the end of the season their water content is often either too high or too low. These olives are easy to recognize because they produce a lot of extra foam during the stirring process, a consequence of an excess of a fine solid that acts as a natural emulsifier. The oil in this emulsion is lost when the water is disposed of. Not only that, if the wastewater is disposed of directly into local fields – often the case in many smaller processing operations – the emulsified oil may take some time to biodegrade and so be harmful to the environment."
+    },
+    {
+     "label": "E",
+     "text": "\"If you add between a half and two per cent of talc by weight during the stirring process, it absorbs the natural emulsifier in the olives and so boosts the amount of oil you can extract,\" says Delord. \"In addition, talc's flat, 'platey' structure helps increase the size of the oil droplets liberated during stirring, which again improves the yield. However, because talc is chemically inert, it doesn't affect the colour, taste, appearance or composition of the resulting olive oil.\""
+    },
+    {
+     "label": "F",
+     "text": "If the use of talc in olive oil processing and in chewing gum is long-established, new applications in the food and agriculture industries are also constantly being sought by Luzenac. One such promising new market is fruit crop protection, being pioneered in the US. Just like people, fruit can get sunburned. In fact, in very sunny regions up to 45 per cent of a typical crop can be affected by heat stress and sunburn. However, in the case of fruit, it's not so much the ultraviolet rays which harm the crop as the high surface temperature that the sun's rays create."
+    },
+    {
+     "label": "G",
+     "text": "To combat this, farmers normally use either chemicals or spray a continuous fine canopy of mist above the fruit trees or bushes. The trouble is, this uses a lot of water – normally a precious commodity in hot, sunny areas – and it is therefore expensive. What's more, the ground can quickly become waterlogged. \"So our idea was to coat the fruit with talc to protect it from the sun,\" says Greg Hunter, a marketing specialist who has been with Luzenac for ten years. \"But to do this, several technical challenges had first to be overcome. Talc is very hydrophobic: it doesn't like water. So in order to have a viable product we needed a wettable powder – something that would go readily into suspension so that it could be sprayed onto the fruit. It also had to break the surface tension of the cutin (the natural waxy, waterproof layer on the fruit) and of course, it had to wash off easily when the fruit was harvested. No-one's going to want an apple that's covered in talc.\""
+    },
+    {
+     "label": "H",
+     "text": "Initial trials in the state of Washington in 2003 showed that when the product was sprayed onto Granny Smith apples, it reduced their surface temperature and lowered the incidence of sunburn by up to 60 per cent. Today the new product, known as Envelop Maximum SPF, is in its second commercial year on the US market. Apple growers are the primary target although Hunter believes grape growers represent another sector with long term potential. He is also hopeful of extending sales to overseas markets such as Australia, South America and southern Europe."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Use the information in the passage to match each use of talc powder with a current application from A, B or C. NB You may use any letter more than once.",
+     "title": "List of Applications",
+     "options": [
+      {
+       "key": "A",
+       "text": "Fruit protection"
+      },
+      {
+       "key": "B",
+       "text": "Chewing gum business"
+      },
+      {
+       "key": "C",
+       "text": "Olive oil extraction"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 27,
+       "text": "Talc is used to increase the size of drops.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Olive oil extraction (C): talc 'helps increase the size of the oil droplets liberated during stirring'."
+      },
+      {
+       "n": 28,
+       "text": "Talc is applied to reduce foaming.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Olive oil extraction (C): talc 'absorbs the natural emulsifier' that causes the extra foam."
+      },
+      {
+       "n": 29,
+       "text": "Talc is employed as a filler of base.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Chewing gum business (B): 'Our talc is used as a filler in the gum base'."
+      },
+      {
+       "n": 30,
+       "text": "Talc is modified and prevented sunburn.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Fruit protection (A): a modified, wettable talc was used to 'coat the fruit with talc to protect it from the sun'."
+      },
+      {
+       "n": 31,
+       "text": "Talc is added to stop the stickiness.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Chewing gum business (B): talc is used 'to stop the chewing gum sticking during the lamination and packing process'."
+      },
+      {
+       "n": 32,
+       "text": "Talc is used to increase production.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Olive oil extraction (C): adding talc 'boosts the amount of oil you can extract', improving production."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the following summary of the paragraphs of Reading Passage 3, using NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Talc in Olive Oil Extraction",
+     "template": "Spanish olive oil industry has been using talc in the oil extraction process for about [[33]] years. It is useful in dealing with difficult olives which often produce a high amount of [[34]] because of the high content of solid materials. When smaller factories release [[35]] , it could be [[36]] to the environment because it is hard to [[37]] and usually takes time as it contains emulsified oil. However, talc powder added in the process is able to absorb the emulsifier oil. It improves the oil extraction production because with the aid of talc powder, size of oil [[38]] increased.",
+     "questions": [
+      {
+       "n": 33,
+       "answer": [
+        "20",
+        "twenty"
+       ],
+       "explanation": "Paragraph D: Spanish processors have used talc 'For the past 20 years or so'."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "foam",
+        "extra foam"
+       ],
+       "explanation": "Paragraph D: difficult olives 'produce a lot of extra foam' during stirring."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "wastewater",
+        "waste water"
+       ],
+       "explanation": "Paragraph D: smaller factories release 'wastewater' into local fields."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "harmful"
+       ],
+       "explanation": "Paragraph D: the wastewater could be 'harmful' to the environment."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "biodegrade"
+       ],
+       "explanation": "Paragraph D: the emulsified oil is hard to 'biodegrade' and takes time."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "droplets",
+        "droplet"
+       ],
+       "explanation": "Paragraph E: talc increases the size of the oil 'droplets', improving the yield."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below using NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "template": "- In which process is talc used to clear the stickiness of chewing gum? [[39]]\n- Which group of farmers does Envelop intend to target in a long view? [[40]]",
+     "questions": [
+      {
+       "n": 39,
+       "answer": [
+        "lamination and packing"
+       ],
+       "explanation": "Paragraph C: talc stops stickiness during the 'lamination and packing' process."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "grape growers",
+        "grape"
+       ],
+       "explanation": "Paragraph H: 'grape growers' are the group with long-term potential that Envelop hopes to target."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

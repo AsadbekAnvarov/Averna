@@ -1,0 +1,726 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-75",
+ "title": "CDI Reading Test 75",
+ "description": "A full Academic Reading test from the CDI practice materials: A Corridor in a New City; The School Around Them; Support, Autonomy and Adolescent Growth.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "A Corridor in a New City",
+  "The School Around Them",
+  "Support, Autonomy and Adolescent Growth"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "A Corridor in a New City",
+   "paragraphs": [
+    {
+     "text": "When fourteen-year-old Kalamkas moved from Taraz to Astana, the decision was neither an educational strategy nor an attempt to escape an unhappy life. Her elder sister was already studying in the capital, and previous holiday visits had given Kalamkas the impression that the city offered a wider, more energetic world. The move nevertheless required her to enter a new school, establish a place in an unfamiliar class and learn the habits of teachers whose expectations she did not yet understand."
+    },
+    {
+     "text": "During the first fortnight she made friends quickly. This early social success, however, did not prevent her attention from repeatedly settling on one particular student she saw in the corridors. The boy was Sanzhar, a student in class 11G. Kalamkas did not know his timetable and initially failed to locate his social-media accounts. Friends who had studied at the school for longer supplied his name, although she found it difficult to believe them: in her own experience, people called Sanzhar had rarely made a favourable impression. Her judgement was based on association rather than evidence, a distinction she would later recognise."
+    },
+    {
+     "text": "For several days she merely noticed him at a distance. Then, while missing a lesson with a friend, she saw him leaving a quiet corridor. Encouraged by her companion, she approached him at a moment when no crowd was present and asked to get acquainted. He gave her his TikTok account."
+    },
+    {
+     "text": "Their first conversations revealed both similarities and significant differences. Sanzhar was sixteen and would turn seventeen in November; Kalamkas was born in 2011 and would turn fifteen the following February. He was in his final year of school, whereas she was in Year 9 and intended to remain until Year 11. Sanzhar had played football for nine years. Both were Kazakh, both were studying English, and both were considering higher education abroad. Sanzhar had already been attending classes with the aim of applying to Italy. Kalamkas had not previously been curious about that destination, but the possibility gradually became relevant as their ambitions began to converge around one practical objective: taking IELTS."
+    },
+    {
+     "text": "After several days of daily messaging, Kalamkas invited Sanzhar to walk after school. Since both had seven lessons, the arrangement was convenient, and the conversation gave them their first opportunity to know one another beyond brief online exchanges. A week later, however, a small misunderstanding almost ended the friendship. Kalamkas wanted to meet during every break and interpreted Sanzhar's reluctance as evidence that he no longer wished to communicate. When she asked him to come outside and he replied, 'Why?', she blocked him. She expected an apology before the end of the school day. Instead, by evening he had blocked her in return."
+    },
+    {
+     "text": "Kalamkas soon regretted acting impulsively. Because they had exchanged only social-media details, she asked several of Sanzhar's classmates for his phone number. Her first message and calls received no immediate response, but he eventually accepted her apology and agreed to resume contact. Their renewed conversations were less fragile."
+    },
+    {
+     "text": "One source of connection was their affection for animals. Sanzhar owned a cat named Zara and sent new pictures of her eating, sleeping or playing. Kalamkas's own cat remained in Taraz, so the images she shared were older. The difference was minor, but the daily exchange became a routine through which each person offered the other a view of ordinary life."
+    },
+    {
+     "text": "English study provided a more purposeful routine. At first, both attended separate courses, yet each concluded that the classes were insufficiently informative and inconveniently distant from school. They therefore designed a shared study plan, focusing first on grammar and then on the skills required for IELTS. Their progress did not come from equal ability: Sanzhar's English was stronger, and he often explained structures that Kalamkas found confusing. Nevertheless, she contributed persistence and a willingness to organise their work. The arrangement changed the meaning of their time together. Meetings were no longer only romantic or social; they also became a form of mutual academic accountability."
+    },
+    {
+     "text": "Small objects acquired symbolic importance. Sanzhar had chewed gum regularly for about two years and had tried several brands without finding one he particularly liked. Kalamkas preferred Mentos and gave him a piece when he asked whether she had any gum. He enjoyed it, tried additional flavours, and eventually adopted the brand himself. Thereafter, a packet of Mentos could function as a practical gift, a private joke and a reminder of attention paid to another person's preferences. To an outsider, the detail was trivial. Within the relationship, it marked the way repeated, inexpensive gestures can accumulate emotional meaning."
+    },
+    {
+     "text": "By winter, they were walking together after school frequently and sometimes avoiding lessons in order to talk. The school was small, and a staircase above the fourth floor offered a view over the surrounding area. Because there were no cameras there, the pair occasionally sat on the steps when their timetables allowed it. They discussed school, English and future plans, and their physical closeness increased. Although classmates increasingly described them as a couple, neither had formally defined the relationship. Sanzhar assumed their commitment was already understood; Kalamkas, by contrast, waited for an explicit question. This difference between implicit and stated commitment would become important later."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Kalamkas moved to Astana mainly because she believed its schools were academically superior.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The move was connected with her sister already studying in Astana and Kalamkas's positive impression of the city, not with superior schools."
+      },
+      {
+       "n": 2,
+       "text": "Before speaking to Sanzhar, Kalamkas had been unable to find his social-media account.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Before approaching Sanzhar, Kalamkas had initially failed to locate his social-media accounts."
+      },
+      {
+       "n": 3,
+       "text": "Kalamkas and Sanzhar were both expected to leave school at the end of that academic year.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Sanzhar was in his final year, but Kalamkas was in Year 9 and intended to remain until Year 11."
+      },
+      {
+       "n": 4,
+       "text": "Kalamkas blocked Sanzhar after he refused to meet her outside.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Kalamkas expected an apology, but by evening Sanzhar had blocked her in return."
+      },
+      {
+       "n": 5,
+       "text": "Sanzhar apologised first after the pair had blocked each other.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Kalamkas's cat remained in Taraz, so the photographs she shared were older."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Sanzhar had played [[6]] for nine years.\n- The pair first concentrated on [[7]] when they created their own English-study plan.\n- Sanzhar regularly sent pictures of a cat called [[8]].\n- A packet of Mentos eventually became both a gift and a private [[9]].",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "football"
+       ],
+       "explanation": "The passage directly states that Sanzhar had played football for nine years."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "grammar"
+       ],
+       "explanation": "Their own study plan focused first on grammar and then on IELTS skills."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "Zara"
+       ],
+       "explanation": "Sanzhar's cat was named Zara."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "joke"
+       ],
+       "explanation": "The passage says Mentos could become a practical gift and a private joke."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 10,
+       "text": "Why did Kalamkas initially doubt that the boy was called Sanzhar?",
+       "options": [
+        {
+         "key": "A",
+         "text": "She had misunderstood her friends."
+        },
+        {
+         "key": "B",
+         "text": "The name had negative associations for her."
+        },
+        {
+         "key": "C",
+         "text": "He had introduced himself using another name."
+        },
+        {
+         "key": "D",
+         "text": "Another student in 11G had the same name."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Kalamkas associated the name Sanzhar with people who had rarely made a favourable impression on her."
+      },
+      {
+       "n": 11,
+       "text": "What caused the first serious misunderstanding?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Kalamkas expected more frequent contact at school."
+        },
+        {
+         "key": "B",
+         "text": "Sanzhar cancelled their first walk."
+        },
+        {
+         "key": "C",
+         "text": "Their English courses took place at different times."
+        },
+        {
+         "key": "D",
+         "text": "Sanzhar refused to share his phone number."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Kalamkas wanted to meet during every break and misread Sanzhar's reluctance as a wish to stop communicating."
+      },
+      {
+       "n": 12,
+       "text": "What does the writer suggest about their independent English plan?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It removed the need for either student to work alone."
+        },
+        {
+         "key": "B",
+         "text": "It was successful because their abilities were identical."
+        },
+        {
+         "key": "C",
+         "text": "It gave their meetings an additional purpose."
+        },
+        {
+         "key": "D",
+         "text": "It was designed mainly to save money."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The plan made their meetings academically purposeful as well as social or romantic."
+      },
+      {
+       "n": 13,
+       "text": "What was different about their understanding of the relationship by winter?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Only Sanzhar believed classmates knew about them."
+        },
+        {
+         "key": "B",
+         "text": "Kalamkas wanted a direct statement of commitment."
+        },
+        {
+         "key": "C",
+         "text": "Sanzhar wanted to wait until after IELTS."
+        },
+        {
+         "key": "D",
+         "text": "Kalamkas preferred to keep the relationship informal."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Sanzhar assumed their commitment was understood, while Kalamkas waited for an explicit question."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The School Around Them",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "As Kalamkas and Sanzhar became more visible together, the school community began to interpret their behaviour. Their appearance encouraged such commentary: she had reddish hair and often wore noticeable make-up, while he was tall, broad-shouldered and light-haired, with sharply defined features and bright brown eyes. Classmates from both year groups said they looked well suited to one another. Even Kalepanov, Sanzhar's Kazakh-language teacher, noticed them walking together and repeatedly teased him, praising the girl he assumed to be Sanzhar's girlfriend. What the observers saw was accurate in one sense - the two were emotionally close - but premature in another, since no formal relationship had yet been proposed."
+    },
+    {
+     "label": "B",
+     "text": "The ambiguity became more difficult when another student, Amina, approached Sanzhar and asked to exchange contact details. Kalamkas witnessed the interaction and felt betrayed. Sanzhar later explained that he had accepted because he found direct refusal uncomfortable, not because he intended to pursue Amina. Once he understood Kalamkas's reaction, he wrote to Amina, said that he did not want further contact, and removed her account. The incident exposed a contrast in their communication styles: Kalamkas expected him to recognise the emotional meaning of the situation immediately, whereas Sanzhar initially treated the request as a simple social exchange."
+    },
+    {
+     "label": "C",
+     "text": "The network surrounding the incident was unusually interconnected. Amina spent time with Iris and Aizere, who came to recognise Kalamkas as the girl often seen with Sanzhar. On a day when Sanzhar was absent, the group encountered Kalamkas on her way home and pushed her, aggravating a painful toe. Sanzhar's closest friend, Tleuzhan, had previously tried to form a relationship with Aizere. They had walked together, and he had confessed his feelings, but she rejected him. Thus, what appeared to be a conflict between two girls was linked to a wider set of friendships, unsuccessful approaches and second-hand loyalties."
+    },
+    {
+     "label": "D",
+     "text": "Adults also became involved, sometimes on incomplete evidence. After Kalamkas and Sanzhar remained at school until approximately four o'clock - long after lessons had ended at 1:30 - her form teacher, Zhanat, questioned them. They claimed that Sanzhar was a Year 10 student from an English course and that they had been studying together. The following day, Zhanat contacted Kalamkas's mother and suggested that the pair were again missing lessons, although she had not directly observed this second occasion. Since Kalamkas's mother was strict, the students changed their meeting place to a concealed area near an emergency exit on the first floor."
+    },
+    {
+     "label": "E",
+     "text": "Family monitoring continued in less formal ways. Kalamkas once invited Sanzhar to her apartment while her parents were in Taraz and her sister was away from home. Her sister had permitted a friend to visit but became suspicious during a video call when the room appeared dark and Sanzhar was reluctant to show his face. Embarrassed rather than hostile, he avoided greeting her properly. The sister interpreted this as unacceptable secrecy and insisted that he leave. Later, Kalamkas's younger brother Alinur saw the pair walking together and reached home first, informing their mother that his sister had been with a boy. For a time, family members jokingly called the unknown student 'Andrei' after Zhanat inaccurately described him as a Russian boy."
+    },
+    {
+     "label": "F",
+     "text": "Despite external pressure, the relationship continued to develop through repeated private rituals. They exchanged morning and evening messages, walked in parks near a small pyramid-shaped building, and spent long periods talking in the sheltered spaces of their school and residential complex. Their first kiss occurred almost accidentally. During winter, Sanzhar's lip had cracked and was bleeding slightly. Knowing that Kalamkas enjoyed vampire television series, he jokingly invited her to taste the blood and drew her closer by the chin. Their lips touched; when she said she had not noticed the blood and asked to try again, the second contact became an intentional kiss. The unusual beginning mattered less than the fact that both interpreted it as welcome."
+    },
+    {
+     "label": "G",
+     "text": "The lack of a formal proposal nevertheless continued to trouble Kalamkas. Sanzhar believed their conduct already constituted a relationship, while she wanted a clearly stated commitment. On a balcony area in her residential complex, she finally told him that she was tired of being 'nobody' to him and asked whether he intended to make their status explicit. After hesitating, he did so. They began dating officially on 9 February 2026, four days before Kalamkas's birthday. The moment did not create their closeness; rather, it supplied a shared definition for a bond that had already developed through conflict, reconciliation, study and routine."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Choose the correct heading for paragraphs A–F from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "A private event becomes intentional"
+      },
+      {
+       "key": "ii",
+       "text": "An adult conclusion based partly on assumption"
+      },
+      {
+       "key": "iii",
+       "text": "A network of connected disappointments"
+      },
+      {
+       "key": "iv",
+       "text": "Public approval before official commitment"
+      },
+      {
+       "key": "v",
+       "text": "A disagreement about refusing attention"
+      },
+      {
+       "key": "vi",
+       "text": "A relationship finally given a name"
+      },
+      {
+       "key": "vii",
+       "text": "An unsuccessful attempt to avoid family discovery"
+      },
+      {
+       "key": "viii",
+       "text": "The educational cost of social pressure"
+      },
+      {
+       "key": "ix",
+       "text": "The influence of appearance on self-esteem"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph A shows classmates and Kalepanov approving of the pair before a formal relationship had been proposed."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "v"
+       ],
+       "explanation": "The passage says: “The incident exposed a contrast in their communication styles: Kalamkas expected him to recognise the emotional meaning of the situation immediately, whereas Sanzhar initially treated the request as a simple social exchange.”"
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Paragraph C connects Amina, Iris, Aizere and Tleuzhan through linked friendships, rejection and loyalties."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "The passage says: “The following day, Zhanat contacted Kalamkas's mother and suggested that the pair were again missing lessons, although she had not directly observed this second occasion.”"
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "The passage says: “Her sister had permitted a friend to visit but became suspicious during a video call when the room appeared dark and Sanzhar was reluctant to show his face.”"
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Paragraph F describes an accidental first lip contact becoming an intentional second kiss."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people below. Match each statement with the correct person, A–J. NB You may use any letter more than once.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Kalamkas"
+      },
+      {
+       "key": "B",
+       "text": "Sanzhar"
+      },
+      {
+       "key": "C",
+       "text": "Amina"
+      },
+      {
+       "key": "D",
+       "text": "Aizere"
+      },
+      {
+       "key": "E",
+       "text": "Tleuzhan"
+      },
+      {
+       "key": "F",
+       "text": "Zhanat"
+      },
+      {
+       "key": "G",
+       "text": "Kalepanov"
+      },
+      {
+       "key": "H",
+       "text": "Kalamkas's sister"
+      },
+      {
+       "key": "I",
+       "text": "Alinur"
+      },
+      {
+       "key": "J",
+       "text": "Iris"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 20,
+       "text": "found it difficult to reject a request directly",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage says: “Sanzhar later explained that he had accepted because he found direct refusal uncomfortable, not because he intended to pursue Amina.”"
+      },
+      {
+       "n": 21,
+       "text": "informed a parent after seeing the pair together",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Alinur saw the pair walking together, arrived home first and told their mother."
+      },
+      {
+       "n": 22,
+       "text": "had previously rejected a declaration of love",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Aizere had rejected Tleuzhan after he confessed his feelings."
+      },
+      {
+       "n": 23,
+       "text": "made repeated jokes about the apparent couple",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Kalepanov repeatedly teased Sanzhar about the girl he assumed was his girlfriend."
+      },
+      {
+       "n": 24,
+       "text": "reported an event that had not been personally observed",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Zhanat suggested they were missing lessons again even though she had not directly observed that second occasion."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Defining the relationship",
+     "template": "Although other students and a teacher already treated Kalamkas and Sanzhar as a couple, they understood their status differently. Sanzhar considered their [[25]] sufficient evidence of commitment, while Kalamkas required an explicit statement. On 9 February 2026, he finally made the relationship [[26]].",
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "conduct"
+       ],
+       "explanation": "Paragraph G says Sanzhar believed their conduct already constituted a relationship."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "official"
+       ],
+       "explanation": "The supplied answer key defines the relationship as official on 9 February 2026."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Support, Autonomy and Adolescent Growth",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Teenage relationships are frequently discussed as distractions from education, yet this interpretation is too narrow to explain the effect that Sanzhar had on Kalamkas. Before meeting him, she described herself as highly anxious and unusually dependent on make-up. Her concern about appearance was not a minor preference but part of a wider pattern of insecurity. Sanzhar did not remove these feelings through a single reassurance. His influence was gradual: he behaved consistently, treated her interests seriously and offered explanations when she viewed situations in an excessively fearful or impulsive way. Kalamkas came to regard him as the kind of person whose presence made an alternative version of herself seem achievable."
+    },
+    {
+     "label": "B",
+     "text": "This process should not be confused with one partner redesigning the other. Kalamkas did not simply copy Sanzhar's habits. Instead, his support gave her enough confidence to test choices she had previously avoided. She began attending school without make-up, initially an uncomfortable experiment. The change reduced irritation to her skin, and the inflammation she had experienced gradually disappeared. The physical improvement reinforced the psychological one: an action motivated by trust produced visible evidence that she could tolerate being seen more naturally. Her growing confidence therefore emerged from an interaction between emotional support, behaviour and practical consequences."
+    },
+    {
+     "label": "C",
+     "text": "Sanzhar's birthday gift for Kalamkas illustrates a similar combination of observation and restraint. Because her parents might object to an expensive present from a boyfriend, he selected items that could plausibly have come from a female friend. The large pink box contained a book about French culture and feminine style, reflecting her interest in the French language; ten flavours of Mentos, representing a shared habit; snacks; lip balm; a small bottle filled with his perfume, which she liked; and a personal note expressing gratitude and affection. He also included a white canvas and paint so that they could create overlapping handprints. Kalamkas later hid the finished picture and treated it as one of her most valuable possessions."
+    },
+    {
+     "label": "D",
+     "text": "The episode demonstrates why material cost is an unreliable measure of emotional significance. None of the objects was individually rare. Their value came from accurate recall: Sanzhar had noticed what Kalamkas read, smelled, ate and discussed. The handprint picture added a collaborative element, turning a purchased gift into a record of joint activity. At the same time, the packaging acknowledged the constraints created by her family. Rather than confronting those constraints openly, he designed the present to pass unnoticed. This could be interpreted as secrecy, but it could equally be understood as an attempt to protect Kalamkas from unnecessary conflict."
+    },
+    {
+     "label": "E",
+     "text": "The pair's academic cooperation became more intensive after the school year ended. Sanzhar had completed Year 11, while Kalamkas chose to continue to Year 11 rather than leave after Year 9. They decided to prepare for IELTS together and began spending eight or nine hours a day in the library. Since his English level was higher, Sanzhar often functioned as a tutor; however, the arrangement was not purely one-directional. Kalamkas helped maintain the routine, and the shared goal reduced the likelihood that either would abandon a difficult task. Their plan to apply abroad, particularly to Italy, transformed an earlier topic of casual conversation into a structured long-term project."
+    },
+    {
+     "label": "F",
+     "text": "Researchers studying motivation distinguish between support that increases autonomy and support that creates dependency. The first kind helps a person make decisions, tolerate uncertainty and develop independent competence. The second makes progress conditional on the continued presence of the helper. Kalamkas's account contains evidence of both possibilities, but the stronger pattern is autonomy-enhancing. She credits Sanzhar with 'opening her eyes', yet the changes she names - reducing make-up, organising study and approaching future goals - require her own repeated action. His role is best understood as catalytic: he accelerated developments for which she already possessed some unrealised capacity."
+    },
+    {
+     "label": "G",
+     "text": "The relationship also illustrates the importance of reciprocity. Kalamkas does not describe her future aim as remaining permanently guided by Sanzhar. She wants to understand him more fully, support his ambitions and continue developing alongside him. This distinction matters because admiration can easily become inequality when one person is treated as complete and the other as a project. Their most sustainable pattern is visible not in moments of rescue but in activities where both participate: studying, planning, walking, discussing disagreements and creating shared rituals. The relationship is therefore significant not because it is free of conflict, but because conflict repeatedly becomes material for learning."
+    },
+    {
+     "label": "H",
+     "text": "A final example is their plan to connect their closest friends. Kalamkas's friend Azhar and Sanzhar's friend Tleuzhan had not yet met, but the couple proposed introducing them when both were in Astana. The plan may never produce another romance, and the text provides no evidence that either friend requested one. Its relevance lies elsewhere: the couple no longer viewed their bond as an isolated secret but as something capable of linking two social worlds. This outward movement, from private fascination to shared academic and social projects, marks the clearest change in their relationship. What began with repeated glances in a corridor became a framework through which both imagined adulthood."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has eight paragraphs, A–H. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "an explanation of how a behavioural change produced both physical and emotional benefits",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B explains that reducing make-up improved Kalamkas physically by removing inflammation and psychologically by increasing confidence."
+      },
+      {
+       "n": 28,
+       "text": "a warning that admiration can create an unequal relationship",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G warns that admiration can become inequality when one person is treated as complete and the other as a project."
+      },
+      {
+       "n": 29,
+       "text": "a description of a gift designed to avoid family suspicion",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C describes a birthday gift deliberately chosen so that it could plausibly appear to have come from a female friend."
+      },
+      {
+       "n": 30,
+       "text": "a distinction between two forms of interpersonal assistance",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F distinguishes autonomy-enhancing support from support that creates dependency."
+      },
+      {
+       "n": 31,
+       "text": "an example of the couple attempting to connect separate friendship groups",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H describes the plan to introduce Azhar and Tleuzhan, linking the couple’s separate friendship groups."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the views of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 32,
+       "text": "Sanzhar changed Kalamkas mainly by giving her a single persuasive piece of advice.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The writer explicitly says Sanzhar did not remove Kalamkas’s insecurity through a single reassurance; his influence was gradual."
+      },
+      {
+       "n": 33,
+       "text": "The monetary value of a present is less important than the attention it demonstrates.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "The writer states that material cost is an unreliable measure of emotional significance and emphasizes accurate attention to preferences."
+      },
+      {
+       "n": 34,
+       "text": "Kalamkas would have abandoned IELTS preparation without Sanzhar.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says the shared goal reduced the likelihood that either would abandon a difficult task, but it does not say Kalamkas definitely would have abandoned IELTS without Sanzhar."
+      },
+      {
+       "n": 35,
+       "text": "The available evidence suggests that Sanzhar generally increased Kalamkas's independence.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "The writer says the stronger pattern is autonomy-enhancing and describes Sanzhar’s role as catalytic rather than dependency-creating."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "- What health problem disappeared after Kalamkas reduced her use of make-up? [[36]]\n- How many flavours of Mentos were included in the birthday box? [[37]]\n- Where did the pair study for up to nine hours a day? [[38]]",
+     "questions": [
+      {
+       "n": 36,
+       "answer": [
+        "inflammation"
+       ],
+       "explanation": "Paragraph B states that the inflammation Kalamkas had experienced gradually disappeared after she reduced make-up."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "ten",
+        "10"
+       ],
+       "explanation": "The birthday box contained ten flavours of Mentos."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "the library"
+       ],
+       "explanation": "They spent eight or nine hours a day in the library while preparing for IELTS."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E. Which TWO features does the writer identify as evidence of a sustainable relationship?",
+     "title": "Which TWO features does the writer identify as evidence of a sustainable relationship?",
+     "options": [
+      {
+       "key": "A",
+       "text": "One partner making all important decisions"
+      },
+      {
+       "key": "B",
+       "text": "Activities in which both people participate"
+      },
+      {
+       "key": "C",
+       "text": "Avoiding disagreement whenever possible"
+      },
+      {
+       "key": "D",
+       "text": "Turning conflict into an opportunity to learn"
+      },
+      {
+       "key": "E",
+       "text": "Keeping the relationship separate from friends"
+      }
+     ],
+     "questions": [
+      {
+       "n": 39,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "Paragraph G identifies activities where both participate as part of their most sustainable pattern. Paragraph G says conflict repeatedly becomes material for learning, making disagreement an opportunity for development."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "Paragraph G identifies activities where both participate as part of their most sustainable pattern. Paragraph G says conflict repeatedly becomes material for learning, making disagreement an opportunity for development."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

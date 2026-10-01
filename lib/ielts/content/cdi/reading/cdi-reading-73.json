@@ -1,0 +1,690 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-73",
+ "title": "CDI Reading Test 73",
+ "description": "A full Academic Reading test from the CDI practice materials: Sleep Study on Modern-Day Hunter-Gatherers Dispels Popular Notions; The internal body clock; The contradictions of tourism.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Sleep Study on Modern-Day Hunter-Gatherers Dispels Popular Notions",
+  "The internal body clock",
+  "The contradictions of tourism"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Sleep Study on Modern-Day Hunter-Gatherers Dispels Popular Notions",
+   "paragraphs": [
+    {
+     "text": "The sleep troubles common in modern life have long been blamed on our industrial society, from the city lights, long work hours and commutes, to caffeine and the Internet. Sleep researchers often look back on a time when humans were able to get more rest by sleeping and waking to the rhythms of the sun. It turns out that may not be quite right. In fact, our ancestors may not have been getting the recommended eight hours of sleep, either."
+    },
+    {
+     "text": "In a recent study, researchers traveled all over the world to examine sleep in some of the world's last remaining hunter-gatherer societies – the Hadza of Tanzania, the San of Namibia, and the Tsimane of Bolivia. Cut off from media, electricity and other distractions, these pre-industrial societies are thought to sleep the way humans did more than 10,000 years ago. Traveling to where they lived, often in humid remote locations, researchers used medical devices to record the sleeping habits of 94 of these tribespeople and ended up collecting data representing 1,165 days."
+    },
+    {
+     "text": "They found very similar sleep patterns despite their geographic isolation. On average, all three groups sleep a little less than 6.5 hours a night, do not take naps, and don't go to sleep when it gets dark. Like many of us, the Hadza, San, and Tsimane spend more time in bed – from 6.9 to 8.5 hours – than they do actually sleeping. This adds up to a sleep efficiency that is very similar to today's industrial populations."
+    },
+    {
+     "text": "According to Jerome Siegel, director of the University of California's Center for Sleep Research, evidence suggests sleep habits may not be environmental or cultural, but central to the physical makeup of humans. These findings question the millions of dollars that have been spent on research that tries to explain why some sleepers get only about six hours of sleep a night. Also, such findings question whether lack of sleep is a cause of obesity, mood disorders, and other physical and mental illnesses which have become so common in recent decades. Scientists have documented that people's energy often falls in the mid-afternoon. Some have suggested that it's because we've managed to suppress a natural desire for a nap."
+    },
+    {
+     "text": "However, the new study provides evidence that this is unlikely, and that napping was actually rare in hunter-gatherer societies. The researchers estimated that naps may have occurred on up to 7 percent of winter days and 22 percent of summer days. They noted that their devices were only good at detecting longer naps, so it is possible that some of the study subjects took naps that were short, perhaps 15 minutes or less."
+    },
+    {
+     "text": "Another fascinating finding from the study had to do with the circadian rhythms, our daily activity cycles related to sunlight. Instead of going to sleep right at dusk, tribespeople were staying awake an average of between 2.5 and 4.4 hours after sunset. All three tribes had fires going, but the light itself was much lower than you might get from a light bulb. They did, however, have a tendency to wake up anywhere between an hour before and an hour after sunrise."
+    },
+    {
+     "text": "Siegel and his co-authors investigated this further by looking into the significance of temperature. They found that it also played a big role, though was somewhat less important than light in influencing sleep patterns. They wrote that \"sleep in both the winter and summer usually occurred during the period of cooling and that waking times usually occurred near the height of the daily warming trend.\""
+    },
+    {
+     "text": "The tribespeople that were studied are different from people living in modern conditions in a number of respects. Importantly, almost none of them were troubled by sleeplessness. In interviews with the researchers conducted through interpreters, only 1.5 to 2.5 percent of the study subjects said they had severe difficulties sleeping more than once a year. This figure is far lower than the 10 to 30 percent recorded in many industrialized countries today. Siegel suggested that 'mimicking aspects of the natural environment' may therefore help treat some sleep disorders."
+    },
+    {
+     "text": "The tribespeople are also much healthier. Not a single one is overweight, indicating their overall higher levels of physical fitness. They also tended to have healthier hearts. Thus comes a critical question. If we can't blame our health problems on our lack of sleep, could it be that the reason we feel so unrested is because of poor health?"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Scientists studied hunter-gatherer societies because their sleep patterns are assumed to be similar to those of humans more than 10,000 years ago.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says these societies are thought to sleep the way humans did more than 10,000 years ago."
+      },
+      {
+       "n": 2,
+       "text": "The medical devices used in the research were especially designed for humid conditions.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Humid locations and medical devices are mentioned, but not that devices were designed for humidity."
+      },
+      {
+       "n": 3,
+       "text": "Researchers found that tribespeople stayed longer in bed than inhabitants of industrialised regions.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Sleep efficiency is similar to industrial populations; the statement is not supported."
+      },
+      {
+       "n": 4,
+       "text": "Jerome Siegel believes that environment and culture have little effect on sleep patterns.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Siegel suggests sleep habits may not be environmental or cultural."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Sleep in three hunter-gatherer societies",
+     "template": "# Why the researchers were interested\n- scientists had recorded a fall in people's [[5]] in the middle of the afternoon, and blamed a suppressed urge to nap\n# What the study found about sleep\n- naps were rare, but they happened more often in [[6]] than in winter\n- the devices could not pick up naps that were very [[7]]\n- the groups stayed awake after dark, lit only by [[8]]\n- they tended to wake within an hour either side of [[9]]\n- sleep began as the daily [[10]] started to fall, not when it grew dark\n# The health of the tribespeople\n- they almost never reported [[11]]\n- not one of them was [[12]]\n- their [[13]] also tended to be healthier",
+     "questions": [
+      {
+       "n": 5,
+       "answer": [
+        "energy"
+       ],
+       "explanation": "The passage says scientists have documented that people's energy often falls in the mid-afternoon, and that some blamed a suppressed urge to nap."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "summer"
+       ],
+       "explanation": "Naps were rare overall, but more frequent in summer (22 percent of days) than in winter (7 percent)."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "short"
+       ],
+       "explanation": "The devices only picked up longer naps, so any naps they missed would have been short - perhaps 15 minutes or less."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "fires",
+        "fire"
+       ],
+       "explanation": "Even with fires there was little light."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "sunrise"
+       ],
+       "explanation": "Waking happened around sunrise - anywhere from an hour before it to an hour after it."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "temperature"
+       ],
+       "explanation": "Sleep began as the daily temperature fell. Temperature mattered a lot, though slightly less than light."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "sleeplessness"
+       ],
+       "explanation": "Few suffered from sleeplessness."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "overweight"
+       ],
+       "explanation": "Not overweight."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "hearts"
+       ],
+       "explanation": "Stronger/healthier hearts."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The internal body clock",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "From buffalo to bacteria, oaks to algae, all life follows the same relentless 24-hour cycle, which is driven by the rising and setting of the Sun. Or is it? Over 250 years ago, a French scientist performed a simple experiment that blew apart the idea that all life on Earth does the bidding of the Sun. Intrigued by the way some flowers open and close their leaves each day, Jean-Jacques de Mairan put a heliotrope in a darkened room and observed the effect. He was expecting the plant, robbed of sunlight, to cease its daily routine. To his astonishment, its leaves continued to open and close as if in response to some invisible timekeeper."
+    },
+    {
+     "label": "B",
+     "text": "But what – and where – is this internal timekeeper? And how does it achieve such astonishing regularity? These are the mysteries at the forefront of chronobiology, the study of the effect of time in living organisms. The search for answers is about more than just tying up some scientific loose ends. Internal 'clocks' clearly cause a lot of hardship. When an individual's 'clock' is knocked out of synchronization through having to work at night or go on long-haul flights, that person can be left utterly unable to think or act. Yet even when these 'clocks' work correctly, the natural rhythms of alertness they generate prove dangerous: traffic accident statistics show two deadly peaks, at 4 a.m. and again twelve hours later when people are at their least alert."
+    },
+    {
+     "label": "C",
+     "text": "During the 1970s, best-selling books began to emerge claiming such phenomena were manifestations of so-called biorhythms, a set of three cycles governing physical, emotional and intellectual traits. Said to start from the moment of birth and repeat every 23, 28 and 33 days respectively, they were supposed to result in 'critical days' when one or more cycles led to sub-optimal performance, with unfortunate consequences."
+    },
+    {
+     "label": "D",
+     "text": "Scientists have since dismissed biorhythms as pseudoscience, insisting the existence of the three cycles has no basis in fact. In 1998, Dr Terence Hines of Pace University, New York State published the most comprehensive study of the claims made for biorhythms, reviewing the results of over 130 investigations. He found that three-quarters of them failed to provide any support for biorhythms. Most of the remainder contained blunders ranging from faulty mathematics to basic errors in statistics, while the handful of positive studies were explicable as flukes."
+    },
+    {
+     "label": "E",
+     "text": "But there is no doubting the existence of 24-hour biological cycles – or, rather, ones roughly 24 hours long. Following de Mairan's pioneering work, other researchers found that when deprived of the cues provided by sunlight, organisms settle down to 'free-running' cycles that are close to, but rarely exactly, 24 hours. In the case of humans, the cycle is typically around 24.5 hours long. This is the so-called 'circadian' cycle (from the Latin meaning 'about a day'), the length of which is generated by the mysterious internal 'clock'."
+    },
+    {
+     "label": "F",
+     "text": "During the late 1960s, chronobiologists believed they had found the 'clock', in the form of the suprachiasmatic nucleus (SCN), a collection of nerves in a region of the brain known as the hypothalamus. Linked to photosensitive cells in the eye, the SCN senses daylight and triggers the release of hormones like melatonin, which keep body functions in synchronization with the time of day. For a few years the SCN was regarded as the ultimate pacemaker – at least in higher organisms such as ourselves. But in 1971, scientists at the California Institute of Technology working with fruit flies found evidence for something truly amazing. Fruit flies appeared to have genes affecting the daily rhythm of their behavior – suggesting that there are 'clocks' inside each of their cells. Further evidence for this emerged in 1995, when researchers at Massachusetts General Hospital isolated nerve cells from the SCN, and found they kept up a circadian cycle without help from daylight. Finally in 1997, scientists at Northwestern University in Illinois found a gene that regulates the daily rhythms of cellular activity in mammals."
+    },
+    {
+     "label": "G",
+     "text": "The details of how this gene, known as CLOCK, actually works are still being investigated, but they could culminate in better ways of coping with shift-work and jet-lag. Professor Takahashi, who led the research, says that now that we know that circadian clocks exist throughout our bodies, we will need new strategies and therapeutics to reset all of our cells. But how do all the biochemical 'clocks' inside their cells stay in synchronization and why did organisms bother to acquire a link with sunlight? So far, no-one knows, though there are several theories. For example, sunlight might be useful in keeping the myriad cellular 'clocks' in lockstep."
+    },
+    {
+     "label": "H",
+     "text": "In the search for answers, researchers are studying the behavior of a microbe called cyanobacterium. In 2005, a team at Nagoya University, Japan, showed that chemical reactions between three proteins produced by this bacterium ebbed and flowed on a 24-hour cycle. Cyanobacterium is the oldest form of life on Earth, so this suggests that cellular 'clocks' have existed for over three billion years. All subsequent organisms have followed suit, says Professor Johnson of Vanderbilt University, Tennessee. 'Bacteria, fungi, plants and animals all appear to have evolved clock systems independently from each other.' Quite why is still unknown. But one thing is clear: the daily routine of life is certainly not a modern invention."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has 8 paragraphs, A–H. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "support for an earlier finding from experiments on insects",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F. The earlier finding is the 1971 fruit-fly work; the support for it is the 1995 study that isolated SCN nerve cells and saw them keep a circadian cycle on their own."
+      },
+      {
+       "n": 15,
+       "text": "criticism of the way some research data was analysed",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D: criticism of data analysis."
+      },
+      {
+       "n": 16,
+       "text": "reference to a basic test on a plant",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A: plant experiment."
+      },
+      {
+       "n": 17,
+       "text": "a statement that the length of natural cycles varies slightly between living things",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E: cycles vary slightly."
+      },
+      {
+       "n": 18,
+       "text": "reference to a theory that became popular with the public",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C: popular biorhythms."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Research into the internal body clock",
+     "template": "In an experiment over 250 years ago, a plant kept its daily rhythm even after it had been deprived of [[19]]. Much later, work on [[20]] suggested that a separate clock sits inside every cell, and in 1997 a [[21]] controlling the daily rhythm of cells in mammals was identified. An organism cut off from natural cues settles into a cycle that is close to, but rarely exactly, twenty-four hours; this is called the [[22]] cycle.",
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "sunlight"
+       ],
+       "explanation": "De Mairan shut a heliotrope in a dark room. Robbed of sunlight, it still opened and closed its leaves on the usual daily cycle."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "fruit flies"
+       ],
+       "explanation": "The 1971 Caltech work on fruit flies was the first sign that a clock sits inside each individual cell."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "gene",
+        "genes"
+       ],
+       "explanation": "In 1997 a gene, later named CLOCK, was found to regulate the daily rhythm of cell activity in mammals."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "circadian",
+        "circadian cycle"
+       ],
+       "explanation": "A free-running cycle of about (but rarely exactly) 24 hours is called the circadian cycle, from the Latin for 'about a day'."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of the following problems are stated as being linked to a disrupted body clock?",
+     "options": [
+      {
+       "key": "A",
+       "text": "a decrease in output in workplaces without windows to let in natural light"
+      },
+      {
+       "key": "B",
+       "text": "a failure among workers on night-shifts to perform tasks"
+      },
+      {
+       "key": "C",
+       "text": "an increase in casualties on the roads at specific times of day"
+      },
+      {
+       "key": "D",
+       "text": "a decline in efficiency on certain days in a number of fixed cycles"
+      },
+      {
+       "key": "E",
+       "text": "a rise in mood swings dependent on the appearance of the Sun"
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "Night-shift failure (B). Road casualties at specific times (C)."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "Night-shift failure (B). Road casualties at specific times (C)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of the following issues relating to internal 'clocks' are mentioned?",
+     "options": [
+      {
+       "key": "A",
+       "text": "the precise length of the free-running daily cycle in different animals"
+      },
+      {
+       "key": "B",
+       "text": "the reason for 'clocks' being temporarily driven out of synchronisation"
+      },
+      {
+       "key": "C",
+       "text": "the reason for living beings forming a connection with the Sun's rhythms"
+      },
+      {
+       "key": "D",
+       "text": "the way in which all 'clocks' in a single organism are able to stay in step with one another"
+      },
+      {
+       "key": "E",
+       "text": "the location of the 'clocks' across the whole range of living organisms"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "Link with sunlight unexplained (C). How clocks stay in step unexplained (D)."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "Link with sunlight unexplained (C). How clocks stay in step unexplained (D)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The contradictions of tourism",
+   "paragraphs": [
+    {
+     "text": "Tourism may bring benefits to a society but its effects are not always straightforward. International tourism presents itself as straightforward, passive and benign, yet it is complex, interesting and important, full of contradictions and depths. It has enormous growth potential; almost every country desires an expansion in this sector. Yet whether and how to grow is not nearly as straightforward as one might hope."
+    },
+    {
+     "text": "Tourism can provide the ideal export for developing countries, which can capitalize on their unique cultures and natural environments. However, to do this they need to have features such as airports, hotels, sanitation facilities, roads and medical facilities. A government can build these itself, using revenue from local taxes or getting finance from foreign lenders. Alternatively, the government may attract foreign investment, allowing others to pay for the building, thus relieving itself of providing capital but forgoing profits. Tourism is, however, a risky investment. It can gradually decline as a resort becomes seen as outdated, or it can be destroyed overnight by a single hurricane, or a political emergency. Even when successful, countries and localities are faced with a dilemma: keep it within limits, or extend its benefits but also deepen dependence on a single, fickle industry."
+    },
+    {
+     "text": "By definition, tourists travel to see and knowingly to encounter the different, the original, the authentic. In this increasingly global world, what they want is regional and unique. But only through artifice can the tourist demand for authenticity be met. An event such as a festival or ceremony needs to be brought to their attention and its importance and unique nature elaborated to them. Natural sites, too, need to be presented if they are to be regarded as noteworthy; gates, permits, and notices are required to set them apart from the mundane. Complicated framing and staging allows tourists to recognize, by sight, 'the actual thing'."
+    },
+    {
+     "text": "Tourism places a premium on the parts of a culture that are visible, such as handicrafts and costume, and disregards those that are not, like the rules governing seating on a bus, attitudes to the elderly, or appropriate ways of addressing family members; in this way, tourism favors what can be commodified. Yet commodities can be produced most efficiently using industrial machinery to take advantage of economies of scale, an option closed to village artisans. This alienates the producers from what is being produced, and means the product no longer has any personal meaning to them."
+    },
+    {
+     "text": "In addition, cultural idiosyncrasies and natural spectacles change over time. Tourists can't be attracted, however, to an unstable and ambiguous culture, or to a natural site that is in the process of transforming itself. As a consequence, efforts are made to fix and standardize: folk dances, tortilla-making, peace pipes, bird habitats and the course of the Amazon have all been bound and defined. Had they not been fixed, however, they would not be accessible."
+    },
+    {
+     "text": "Tourism also promotes an external orientation. Like other exports, the 'tourism experience' is produced by local people, and consumed by foreigners. To obtain loans and ultimately create revenue, a government (of whatever size) has to please outside investors and potential travelers. In these ways, tourism can result in a political system becoming more authoritarian and giving less consideration to the needs of individuals within the country."
+    },
+    {
+     "text": "In recent years, with increased awareness of some of these dangers, the phenomenon of ecotourism has developed. This has been seen as a way to prevent and reverse the environmental degradation resulting from tourism as well as from general human activity. Ecotourists distance themselves from mainstream hotel tourists, and also from adventure tourists like those who have, for example, left rubbish at the base of Mount Everest in Nepal. They want to do things like sleep in tents on platforms in tropical rainforests, swim among the fish on coral reefs, or walk over a tree canopy on a net bridge. They value the ecosystem as it is and are willing to pay for its preservation. In this way, they create an incentive for local people to refrain from using natural resources for short-term gain."
+    },
+    {
+     "text": "However, what is fortunate for the birds is not always so fortunate for the local people. In order to be environmentally sustainable, ecotourists have to be few in number. The economies of scale that allow tourism to be profitable cannot operate in a small bush camp. Camping doesn't generate much revenue. Ecotourism proves that tourism does not have to be in conflict with environmental preservation. Unfortunately, it also proves that the realm in which the environment and the economy can be mutually supporting is tiny."
+    },
+    {
+     "text": "Furthermore, Westerners' interest in biodiversity often means that the tourist wants to listen to a parrot, not a local elder, and that dollars bypass beggars on their way to support trees. Thus ecotourists' environmental awareness can stand in contrast to their indifference to the local human community. Tourism always contains a message: this is what we value, this is what we don't."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary below. Drag a word from the list into each gap. On a phone, tap a word and then tap the gap.",
+     "title": "Tourism in developing countries",
+     "options": [
+      {
+       "key": "A",
+       "text": "accommodation"
+      },
+      {
+       "key": "B",
+       "text": "investment"
+      },
+      {
+       "key": "C",
+       "text": "feedback"
+      },
+      {
+       "key": "D",
+       "text": "perceptions"
+      },
+      {
+       "key": "E",
+       "text": "profit"
+      },
+      {
+       "key": "F",
+       "text": "expansion"
+      },
+      {
+       "key": "G",
+       "text": "loans"
+      },
+      {
+       "key": "H",
+       "text": "industry"
+      },
+      {
+       "key": "I",
+       "text": "infrastructure"
+      },
+      {
+       "key": "J",
+       "text": "labour"
+      }
+     ],
+     "template": "A country hoping to develop tourism must first provide the [[27]] that visitors expect, such as airports, roads and medical facilities. Paying for this is difficult, so a government may take out [[28]] from abroad, or attract foreign [[29]] instead, which spares it the cost of building but means giving up the returns. Tourism is also fragile: [[30]] of a resort can change, and it may come to be seen as outdated. Further [[31]] of the industry brings benefits, but it also deepens a country's dependence on a single, unpredictable trade.",
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "I"
+       ],
+       "explanation": "Before a developing country can sell itself as a destination it must build the infrastructure visitors expect."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "G"
+       ],
+       "explanation": "A government can pay for that building work out of taxes, or by taking loans from foreign lenders."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Foreign investment means forgoing profits."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "D"
+       ],
+       "explanation": "Perceptions of a resort shift over time and it can come to look outdated, which makes tourism a risky investment."
+      },
+      {
+       "n": 31,
+       "answer": [
+        "F"
+       ],
+       "explanation": "Expanding tourism spreads its benefits more widely, but it also makes the country more dependent on one unpredictable industry."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 32,
+       "text": "The writer says that for tourists, an authentic experience",
+       "options": [
+        {
+         "key": "A",
+         "text": "is only possible if official barriers can be removed."
+        },
+        {
+         "key": "B",
+         "text": "may be missed if people are not clear what they want."
+        },
+        {
+         "key": "C",
+         "text": "is created in an unnatural manner."
+        },
+        {
+         "key": "D",
+         "text": "may be destroyed by inappropriate behaviour."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Only through artifice can the tourist demand for authenticity be met."
+      },
+      {
+       "n": 33,
+       "text": "The writer refers to the rules governing seating on a bus as an example of",
+       "options": [
+        {
+         "key": "A",
+         "text": "a way in which tourism may change the attitudes of local people."
+        },
+        {
+         "key": "B",
+         "text": "an unintentional cause of offence to local people by tourists."
+        },
+        {
+         "key": "C",
+         "text": "the wide variation there may be between different cultures."
+        },
+        {
+         "key": "D",
+         "text": "an aspect of culture which tourism tends to ignore."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Tourism disregards rules like bus seating as not 'authentic' culture."
+      },
+      {
+       "n": 34,
+       "text": "Tourists' interest in traditionally-made objects may lead to changes in",
+       "options": [
+        {
+         "key": "A",
+         "text": "how they are made."
+        },
+        {
+         "key": "B",
+         "text": "their design and function."
+        },
+        {
+         "key": "C",
+         "text": "tourist attitudes towards them."
+        },
+        {
+         "key": "D",
+         "text": "the way they are presented for sale."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Industrial machinery may replace village artisan methods."
+      },
+      {
+       "n": 35,
+       "text": "The writer says that in order to promote tourism, features such as folk dances",
+       "options": [
+        {
+         "key": "A",
+         "text": "may be unintentionally neglected."
+        },
+        {
+         "key": "B",
+         "text": "have been publicised in undesirable ways."
+        },
+        {
+         "key": "C",
+         "text": "have been taught to people working in tourist areas."
+        },
+        {
+         "key": "D",
+         "text": "may be prevented from developing naturally."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Efforts to fix and standardize folk dances prevent natural development."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 36,
+       "text": "Tourism can influence a country's political priorities.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Tourism can make a political system more authoritarian / influence priorities."
+      },
+      {
+       "n": 37,
+       "text": "Limiting the number of ecotourists is necessary to protect the environment.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "For environmental sustainability, ecotourists have to be few."
+      },
+      {
+       "n": 38,
+       "text": "Ecotourism can be more profitable than mass tourism because it requires fewer facilities.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Camping/ecotourism doesn't generate much revenue compared with facilities-heavy tourism."
+      },
+      {
+       "n": 39,
+       "text": "Some ecotourists prefer interacting with wildlife over engaging with local residents.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The tourist wants to listen to a parrot, not a local elder."
+      },
+      {
+       "n": 40,
+       "text": "Ecotourism always benefits both the local community and the environment equally.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Environmental awareness can contrast with indifference to the local community."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

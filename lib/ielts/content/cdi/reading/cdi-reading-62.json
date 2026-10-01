@@ -1,0 +1,740 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-62",
+ "title": "CDI Reading Test 62",
+ "description": "A full Academic Reading test from the CDI practice materials: Bovids; The importance of law; Children's Literature Studies Today.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Bovids",
+  "The importance of law",
+  "Children's Literature Studies Today"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Bovids",
+   "paragraphs": [
+    {
+     "text": "The family of mammals called bovids belongs to the Artiodactyl class, which also includes giraffes. Bovids are a highly diverse group consisting of 137 species, some of which are man’s most important domestic animals. Bovids are well represented in most parts of Eurasia and South-east Asian islands, but they are by far the most numerous and diverse in the latter. Some species of bovid are solitary, but others live in large groups with complex social structures. Although bovids have adapted to a wide range of habitats, from arctic tundra to deep tropical forest, the majority of species favour open grassland, scrub or desert. This diversity of habitat is also matched by great diversity in size and form: at one extreme is the royal antelope of West Africa, which stands a mere 25 cm at the shoulder; at the other, the massively built bisons of North America and Europe, growing to a shoulder height of 2.2 m. Despite differences in size and appearance, bovids are united by the possession of certain common features. All species are ruminants, which means that they retain undigested food in their stomachs, and regurgitate it as necessary. Bovids are almost exclusively herbivorous. Typically their teeth are highly modified for browsing and grazing: grass or foliage is cropped with the upper lip and lower incisors (the upper incisors are usually absent), and then ground down by the cheek teeth. As well as having cloven, or split, hooves, the males of all bovid species and the females of most carry horns. Bovid horns have bony cores covered in a sheath of horny material that is constantly renewed from within; they are unbranched and never shed. They vary in shape and size: the relatively simple horns of a large Indian buffalo may measure around 4 m from tip to tip along the outer curve, while the various gazelles have horns with a variety of elegant curves."
+    },
+    {
+     "text": "Five groups, or sub-families, may be distinguished: Bovinae, Antelope, Caprinae, Cephalophinae and Antilocapridae. The sub-family Bovinae comprises most of the larger bovids, including the African bongo, nilgai, eland, bison and cattle. Unlike most other bovids they are all non-territorial. The ancestors of the various species of domestic cattle – banteng, gaur, yak and water buffalo – are generally rare and endangered in the wild, while the auroch (the ancestor of the domestic cattle of Europe) is extinct."
+    },
+    {
+     "text": "The term ‘antelope’ is not a very precise zoological name – it is used to loosely describe a number of bovids that have followed different lines of development. Antelopes are typically long-legged, fast-running species, often with long horns that may be laid along the back when the animal is in full flight. There are two main sub-groups of antelope: Hippotraginae, which includes the oryx and the addax, and Antilopinae, which generally contains slighter and more graceful animals such as the gazelle and the springbok. Antelopes are mainly grassland species, but many have adapted to flooded grasslands: pukus, waterbucks and lechwes are all good at swimming, usually feeding in deep water, while the sitatunga has long, splayed hooves that enable it to walk freely on swampy ground."
+    },
+    {
+     "text": "The sub-family Caprinae includes the sheep and the goat, together with various relatives such as the goral and the tahr. Most are woolly or have long hair. Several species, such as wild goats, chamois and ibex, are agile cliff- and mountain-dwellers. Tolerance of extreme conditions is most marked in this group: barbary and bighorn sheep have adapted to arid deserts, while Rocky Mountain sheep survive high up in mountains and musk oxen in arctic tundra."
+    },
+    {
+     "text": "The duiker of Africa belongs to the Cephalophinae sub-family. It is generally small and solitary, often living in thick forest. Although mainly feeding on grass and leaves, some duikers – unlike most other bovids – are believed to eat insects and feed on dead animal carcasses, and even to kill small animals."
+    },
+    {
+     "text": "The pronghorn is the sole survivor of a New World sub-family of herbivorous ruminants, the Antilocapridae in North America. It is similar in appearance and habits to the Old World antelope. Although greatly reduced in numbers since the arrival of Europeans, and the subsequent enclosure of grasslands, the pronghorn is still found in considerable numbers throughout North America, from Washington State to Mexico. When alarmed by the approach of wolves or other predators, hairs on the pronghorn’s rump stand erect, so showing and emphasising the white patch there. At this signal, the whole herd gallops off at speeds of over 60 km per hour."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 1–3.",
+     "questions": [
+      {
+       "n": 1,
+       "text": "In which region is the biggest range of bovids to be found?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Africa"
+        },
+        {
+         "key": "B",
+         "text": "Eurasia"
+        },
+        {
+         "key": "C",
+         "text": "North America"
+        },
+        {
+         "key": "D",
+         "text": "South-east Asia"
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Source answer: D."
+      },
+      {
+       "n": 2,
+       "text": "Most bovids have a preference for living in",
+       "options": [
+        {
+         "key": "A",
+         "text": "isolation."
+        },
+        {
+         "key": "B",
+         "text": "small groups."
+        },
+        {
+         "key": "C",
+         "text": "tropical forest."
+        },
+        {
+         "key": "D",
+         "text": "wide open spaces."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Most bovids prefer wide open spaces (D)."
+      },
+      {
+       "n": 3,
+       "text": "Which of the following features do all bovids have in common?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Their horns are short."
+        },
+        {
+         "key": "B",
+         "text": "They have upper incisors."
+        },
+        {
+         "key": "C",
+         "text": "They store food in the body."
+        },
+        {
+         "key": "D",
+         "text": "Their hooves are undivided."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "All bovids store food in the body (C)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following characteristics and the list of sub-families below. Match each characteristic with the correct sub-family, A–D. NB You may use any letter more than once.",
+     "title": "List of Sub-families",
+     "options": [
+      {
+       "key": "A",
+       "text": "Antelope"
+      },
+      {
+       "key": "B",
+       "text": "Bovinae"
+      },
+      {
+       "key": "C",
+       "text": "Caprinae"
+      },
+      {
+       "key": "D",
+       "text": "Cephalophinae"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 4,
+       "text": "can endure very harsh environments",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Caprinae (C) can endure harsh environments."
+      },
+      {
+       "n": 5,
+       "text": "includes the ox and the cow",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Bovinae (B) includes the ox and cow."
+      },
+      {
+       "n": 6,
+       "text": "may supplement its diet with meat",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Cephalophinae (D) may eat meat."
+      },
+      {
+       "n": 7,
+       "text": "can usually move at speed",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Antelope (A) can move at speed."
+      },
+      {
+       "n": 8,
+       "text": "does not defend a particular area of land",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Bovinae (B) does not defend territory."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "template": "- What is the smallest species of Bovid called? [[9]]\n- Which species of Bovinae has now died out? [[10]]\n- What facilitates the movement of the sitatunga over wetland? [[11]]\n- What sort of terrain do barbary sheep live in? [[12]]\n- What is the only living member of the Antilocapridae sub family? [[13]]",
+     "questions": [
+      {
+       "n": 9,
+       "answer": [
+        "royal antelope"
+       ],
+       "explanation": "The royal antelope is the smallest bovid."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "auroch"
+       ],
+       "explanation": "The auroch is the extinct species of Bovinae."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "long, splayed hooves"
+       ],
+       "explanation": "Long, splayed hooves help the sitatunga move over wetland."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "arid deserts"
+       ],
+       "explanation": "Barbary sheep live in arid deserts."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "pronghorn"
+       ],
+       "explanation": "The pronghorn is the only living Antilocapridae."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The importance of law",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The law influences all of us virtually all the time, it governs almost all aspects of our behavior, and even what happens to us when we are no longer alive. It affects us from the embryo onwards. It governs the air we breathe, the food and drink we consume, our travel, family relationships, and our property. It applies at the bottom of the ocean and in space."
+    },
+    {
+     "text": "Each time we examine a label on a food product, engage in work as an employee or employer, travel on the roads, go to school to learn or to teach, stay in a hotel, borrow a library book, create or dissolve a commercial company, play sports, or engage the services of someone for anything from plumbing a sink to planning a city, we are in the world of law."
+    },
+    {
+     "label": "B",
+     "text": "Law has also become much more widely recognised as the standard by which behavior needs to be judged. A very telling development in recent history is the way in which the idea of law has permeated all parts of social life. The universal standard of whether something is socially tolerated is progressively becoming whether it is legal, rather than something that has always been considered acceptable. In earlier times, most people were illiterate."
+    },
+    {
+     "text": "Today, by contrast, a vast number of people can read, and it is becoming easier for people to take an interest in law, and for the general population to help actually shape the law in many countries. However, law is a versatile instrument that can be used equally well for the improvement or the degradation of humanity."
+    },
+    {
+     "label": "C",
+     "text": "This, of course, puts law in a very significant position. In our rapidly developing world, all sorts of skills and knowledge are valuable. Those people, for example, with knowledge of computers, the internet, and communications technology are relied upon by the rest of us."
+    },
+    {
+     "text": "There is now someone with IT skills or an IT help desk in every UK school, every company, every hospital, every local and central government office. Without their knowledge, many parts of commercial and social life today would seize up in minutes. But legal understanding is just as vital and as universally needed. The American comedian Jerry Seinfeld put it like this, 'We are all throwing the dice, playing the game, moving our pieces around the board, but if there is a problem, the lawyer is the only person who has read the inside of the top of the box.' In other words, the lawyer is the only person who has read and made sense of the rules."
+    },
+    {
+     "label": "D",
+     "text": "The number of laws has never been greater. In the UK alone, about 35 new Acts of Parliament are produced every year, thereby delivering thousands of new rules. The legislative output of the British Parliament has more than doubled in recent times from 1,100 pages a year in the early 1970s, to over 2,500 pages a year today. Between 1997 and 2006, the legislature passed 365 Acts of Parliament and more than 32,000 legally binding statutory instruments. In a system with so much law, lawyers do a great deal not just to vindicate the rights of citizens and organizations but also to help develop the law through legal arguments, some of which are adapted by judges to become laws. Law courts can and do produce new law and revise old law, but they do so having heard the arguments of lawyers."
+    },
+    {
+     "label": "E",
+     "text": "However, despite their important role in developing the rules, lawyers are not universally admired. Anti-lawyer jokes have a long history going back to the ancient Greeks."
+    },
+    {
+     "text": "More recently the son of a famous Hollywood actor was asked at his junior school what his father did for a living, to which he replied, 'My daddy is a movie actor, and sometimes he plays the good guy, and sometimes he plays the lawyer.' For balance, though, it is worth remembering that there are and have been many heroic and revered lawyers such as the Roman philosopher and politician Cicero and Mahatma Gandhi, the Indian campaigner for independence."
+    },
+    {
+     "label": "F",
+     "text": "People sometimes make comments that characterise lawyers as professionals whose concerns put personal reward above truth, or who gain financially from misfortune. There are undoubtedly lawyers that would fit that bill, just as there are some scientists, journalists and others in that category. But, in general, it is no more just to say that lawyers are bad because they make a living from people's problems than it is to make the same accusation in respect of nurses or IT consultants. A great many lawyers are involved in public law work, such as that involving civil liberties, housing and other issues. Such work is not lavishly remunerated and the quality of the service provided by these lawyers relies on considerable professional dedication. Moreover, much legal work has nothing to do with conflict or misfortune, but is primarily concerned with drafting documents. Another source of social disaffection for lawyers, and disaffection for the law, is a limited public understanding of how law works and how it could be changed. Greater clarity about these issues, maybe as a result of better public relations, would reduce many aspects of public dissatisfaction with the law."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six paragraphs, A–F. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Different areas of professional expertise"
+      },
+      {
+       "key": "ii",
+       "text": "Reasons why it is unfair to criticise lawyers"
+      },
+      {
+       "key": "iii",
+       "text": "The disadvantages of the legal system"
+      },
+      {
+       "key": "iv",
+       "text": "The law applies throughout our lives"
+      },
+      {
+       "key": "v",
+       "text": "The law has affected historical events"
+      },
+      {
+       "key": "vi",
+       "text": "A negative regard for lawyers"
+      },
+      {
+       "key": "vii",
+       "text": "Public's increasing ability to influence the law"
+      },
+      {
+       "key": "viii",
+       "text": "Growth in laws"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Para A: the law applies throughout our lives (iv)."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Para B: the public's growing ability to influence the law (vii)."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Para C: different areas of professional/legal expertise (i)."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Para D: the growth in the number of laws (viii)."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Para E: a negative regard for lawyers (vi)."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Para F: reasons why it is unfair to criticise lawyers (ii)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO statements does the writer make about legal skills?",
+     "options": [
+      {
+       "key": "A",
+       "text": "There should be a person with legal training in every hospital."
+      },
+      {
+       "key": "B",
+       "text": "Lawyers with experience in commercial law are the most in demand."
+      },
+      {
+       "key": "C",
+       "text": "Knowledge of the law is as important as having computer skills."
+      },
+      {
+       "key": "D",
+       "text": "Society could not function effectively without legal experts."
+      },
+      {
+       "key": "E",
+       "text": "Schools should teach students about the law."
+      }
+     ],
+     "questions": [
+      {
+       "n": 20,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "C: legal knowledge is as important as IT skills. D: society could not function without legal experts. C: legal knowledge is as important as IT skills. D: society could not function without legal experts."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "C: legal knowledge is as important as IT skills. D: society could not function without legal experts. C: legal knowledge is as important as IT skills. D: society could not function without legal experts."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- People sometimes say that [[22]] is of little interest to lawyers, who are more concerned with making money.\n- This may well be true of some individuals, in the same way that some [[23]] or scientific experts may also be driven purely by financial greed.\n- Criticising lawyers because their work is concerned with people’s problems would be similar to attacking IT staff or [[24]] for the same reason.\n- In fact, many lawyers focus on questions relating, for example, to housing or civil liberties, which requires them to have [[25]] to their work.\n- Lawyers deal with people’s problems and often work with important [[26]] .",
+     "questions": [
+      {
+       "n": 22,
+       "answer": [
+        "truth"
+       ],
+       "explanation": "People say truth is of little interest to lawyers."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "journalists"
+       ],
+       "explanation": "Like some journalists driven by greed."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "nurses"
+       ],
+       "explanation": "Comparable to attacking IT staff or nurses."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "dedication"
+       ],
+       "explanation": "Such work requires dedication."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "documents"
+       ],
+       "explanation": "Lawyers work with important documents."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Children's Literature Studies Today",
+   "paragraphs": [
+    {
+     "text": "Who studies children’s literature and what is it that they study? The answers to this question are complex and messy, because of the many confounding factors which exist in this field."
+    },
+    {
+     "text": "Firstly, unlike literature for adults, children’s literature is not generally written by its own readers. Adults write for children, and thus adult perceptions of what children are and of what they could and should be become woven into the literature."
+    },
+    {
+     "text": "Furthermore, some of those who study children’s literature (and those who write certain kinds of children’s books) are less interested in literary values than in the kinds of lessons it can teach—either in terms of creating better children or in terms of serving a particular curriculum. The issue of how a teacher can use a children’s book is often contentious, but even outside the classroom, much material for children is still didactic."
+    },
+    {
+     "text": "Thirdly, while almost all literature is currently promoted within a strong commercial matrix, children’s literature is often especially targeted for marketing initiatives. This fact means that readers are often recruited with a message that is negligibly literary and significantly oriented to ideas of consumption. Daniel Hade (2002) has raised useful questions about whether children’s experience of reading is altered when their books are part of a larger marketing framework involving the movie, the game, and the toy of a popular children’s book. How children perceive and respond to their stories in this new context is an important question."
+    },
+    {
+     "text": "It is also important to note that texts in an ever-increasing range of new media compete with print media for the attention of the child reader, and create definitional issues for scholars. Does the term ‘literature’ exclusively imply a verbal text? If not, where are the limits? Could a literary computer game ever be considered a work of literature? If not, what kind of attention should be paid to it, since children themselves undoubtedly perceive their print literature as part of a broader continuum? The internet provides one forum through which children now communicate with each other. (In 2003, the internet search engine Google listed 7,920,000 sites relating to the Harry Potter novels; even allowing for duplication and dead ends, that is a number with revolutionary implications.)"
+    },
+    {
+     "text": "Finally, in the context of the higher education institutions where the formal study of children’s literature is often located, at least three disciplinary frameworks (English, education, and librarianship) fragment the focus of scholarly study of children’s literature."
+    },
+    {
+     "text": "How is the value of the imaginative encounter with the work of literature sustained and honored among such a welter of conflicting interests? One route through this maze is to ask the child readers for help. As David Lewis (2001) has perceptively noted, what children think of reading is not usually the same as what adults think, whether teachers or parents. As Lewis points out, children ‘sometimes see more and they often see differently’. If those who study reading can explore children’s perceptions as well as those of adults, their understanding of the nature of reading will be enhanced."
+    },
+    {
+     "text": "Lewis makes a further valid point when he adds that exploring children’s perceptions is usually justified for educational reasons: “It is true that a better understanding of how children read and how they learn to read, is a prerequisite to improved approaches to teaching.\" However, it can also be argued, as Lewis rightly does, that when children’s responses to literature are accessed and interpreted, they frequently lead to an understanding of how picture books appeal to children."
+    },
+    {
+     "text": "Young people’s accounts of what and how they read also enable a more sophisticated description of many of the complex processes involved in reading. All descriptions of reading run the risk of solipsism: i.e. this is how I read so this is what reading is for everyone. Asking other readers how they read, however, reduces that risk. For example, if I am a strong visualizer as I read, I may consider that visualization is a key component of successful reading and I may judge books by their capacity to evoke a vivid visual response. Other readers, however, may help me to realize that not everyone reads with mental pictures. Some readers respond to the patterns of the words, ‘hearing’ them inaudibly like a subliminal radio program. Others respond to the patterns of feelings in the story, responding with an emotional connection. Talking to competent readers, of all ages, provides a better understanding of reading experiences."
+    },
+    {
+     "text": "Children’s insights are even more important when it comes to understanding the significance of print literature as one aspect of literary culture. Too often adults assume that reading any book at all is a more worthwhile experience than playing a digital game of any kind. A humbler approach would include asking why the game appeals to the player. Many adults will probably never develop the automatic skills to process a game as readily as they can read a book. This does not indicate that a book is better, but that a particular set of skills is absent. Non-players must acknowledge that some fictional universes are thus closed to them, and a logical response would be to find someone who can guide them to the pleasures and challenges of the gaming world. Games need to be judged individually just as books do, and any evaluative framework needs to take this into account."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 27–29.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Which of the following best summarises the writer's argument in the second paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Children are portrayed as adults see them."
+        },
+        {
+         "key": "B",
+         "text": "Children are unable to write their own stories."
+        },
+        {
+         "key": "C",
+         "text": "Adults fail to stimulate children's imaginations."
+        },
+        {
+         "key": "D",
+         "text": "Adult literature is too difficult for children."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The writer argues children are portrayed as adults see them (A)."
+      },
+      {
+       "n": 28,
+       "text": "In the third paragraph, what does the writer say is the main interest of some people who study children's literature?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The quality of the writing."
+        },
+        {
+         "key": "B",
+         "text": "The imaginative content of stories."
+        },
+        {
+         "key": "C",
+         "text": "The instructive nature of children's books."
+        },
+        {
+         "key": "D",
+         "text": "The way children are written about in stories."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Their interest is the instructive nature of children's books (C)."
+      },
+      {
+       "n": 29,
+       "text": "The main point of the writer's argument in the fifth paragraph is to",
+       "options": [
+        {
+         "key": "A",
+         "text": "demonstrate that academics consider computer games to be a logical extension of children's literature."
+        },
+        {
+         "key": "B",
+         "text": "explore the impact of computers on the boundaries of children's literature."
+        },
+        {
+         "key": "C",
+         "text": "illustrate that literature and computer games have different origins."
+        },
+        {
+         "key": "D",
+         "text": "prove that children are using computers more than they are reading literature."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "It explores computers' impact on the boundaries of children's literature (B)."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 30,
+       "text": "Children tend to make a clear distinction between print literature and electronic media.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The writer suggests children do not make this clear distinction."
+      },
+      {
+       "n": 31,
+       "text": "The study of children's literature at higher education institutions is restricted to one subject area.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "It is studied across a range of subject areas, not just one."
+      },
+      {
+       "n": 32,
+       "text": "Exploring children's perceptions of reading will assist parents to choose suitable books for children.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No claim about helping parents choose books is made."
+      },
+      {
+       "n": 33,
+       "text": "Adults may appreciate the appeal of illustrated stories better, if they have more information on how children read.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "The writer agrees adults would appreciate them better with such information."
+      },
+      {
+       "n": 34,
+       "text": "Children should be asked what features they would like digital games to include.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No claim about asking children for game features is made."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–H, below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "accepting that literature exists in a variety of forms today"
+      },
+      {
+       "key": "B",
+       "text": "verbalising the words in their heads"
+      },
+      {
+       "key": "C",
+       "text": "discovering the reading techniques used by others"
+      },
+      {
+       "key": "D",
+       "text": "the style of written stories changing over time"
+      },
+      {
+       "key": "E",
+       "text": "the lack of some specific abilities"
+      },
+      {
+       "key": "F",
+       "text": "a deeper knowledge of the intricacies of reading"
+      },
+      {
+       "key": "G",
+       "text": "children teaching adults to play computer games"
+      },
+      {
+       "key": "H",
+       "text": "creating a variety of images in their minds"
+      }
+     ],
+     "questions": [
+      {
+       "n": 35,
+       "text": "Young people's accounts of how they read lead to",
+       "answer": [
+        "F"
+       ],
+       "explanation": "F: a deeper knowledge of the intricacies of reading."
+      },
+      {
+       "n": 36,
+       "text": "The risk of solipsism is reduced by",
+       "answer": [
+        "C"
+       ],
+       "explanation": "C: discovering the reading techniques used by others."
+      },
+      {
+       "n": 37,
+       "text": "Strong visualisers judge books on the basis that they are",
+       "answer": [
+        "H"
+       ],
+       "explanation": "H: creating a variety of images in their minds."
+      },
+      {
+       "n": 38,
+       "text": "Children's insights are important in",
+       "answer": [
+        "A"
+       ],
+       "explanation": "A: accepting that literature exists in a variety of forms today."
+      },
+      {
+       "n": 39,
+       "text": "When adults read a book more easily than they play a digital game it simply suggests",
+       "answer": [
+        "E"
+       ],
+       "explanation": "E: the lack of some specific abilities."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 40,
+       "text": "What was the writer's main purpose in writing this article?",
+       "options": [
+        {
+         "key": "A",
+         "text": "To evaluate how the process of reading fits into children's literature studies."
+        },
+        {
+         "key": "B",
+         "text": "To discuss the impact of the increasing commercial influence on children's literature studies."
+        },
+        {
+         "key": "C",
+         "text": "To review the challenges in the field of children's literature studies and suggest how to proceed."
+        },
+        {
+         "key": "D",
+         "text": "To provide arguments in favor of including computerized forms of children's literature studies."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "To review challenges and suggest how to proceed (C)."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

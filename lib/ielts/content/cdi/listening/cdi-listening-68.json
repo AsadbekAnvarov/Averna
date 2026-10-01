@@ -1,0 +1,594 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-68",
+ "title": "CDI Listening Test 68",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-68-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "Applicant details",
+     "template": "- Surname: Robinson\n- First name: [[1]]\n- Address: 12 [[2]] Gardens, Prestwich, Manchester\n- Telephone: [[3]]\n- Date of birth: [[4]] July 1961\n- Marital status: [[5]]\nQualifications\n- ‘A’ levels: [[6]] , Maths, Physics\n- Degree subject: [[7]]\n- Special subject: Water Management\n- Institution: Sheffield University\nWork experience\n- Post: Irrigation project engineer\n- Employer: The Chinese [[8]]\n- Length of service: [[9]] years\n- Post: Project research [[10]]\n- Employer: Latimer Engineering",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Steven"
+       ],
+       "explanation": "Ah. Good morning. It's Mr. Robinson, isn't it? Have a seat. Stephen Robinson. Yes. Is that S T E V E N or P H? It's V. Okay."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "Dynevor"
+       ],
+       "explanation": "I've got your letter of application, but I need a few more details for the file. Now, you're from Manchester. What exactly is the address? Yes, it's Dinover Gardens.…"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "483250",
+        "483-250",
+        "483 250"
+       ],
+       "explanation": "Presswich. Thanks. And telephone? Well, it isn't mine, it's the landlord's, but I can be contacted. It's 483250. Aha. The landlord lives in, does he?"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "12",
+        "12th"
+       ],
+       "explanation": "Well, he has the flat downstairs, and he's a friend of the family anyway. I see. Okay. According to your letter, I imagine you were born in uh let me see, 1960? 61.…"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "Single"
+       ],
+       "explanation": "Thank you. And I believe you're married. No, no, I'm getting married, but not for a few months. Oh, sorry. Well, I mean, congratulations. Is it going to be in…"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "Geography"
+       ],
+       "explanation": "Yes, I've got three. Geography, maths and physics. Geography, maths and physics. Okay."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "Engineering"
+       ],
+       "explanation": "And what about your degree? I went to Sheffield University and got an engineering degree, with water management as my specialization. Uh-huh."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "Government"
+       ],
+       "explanation": "And as for work experience, I started out after graduating in 1986 in China, working for the Chinese government. Did you work as a volunteer? No, I I did get a…"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "2",
+        "two"
+       ],
+       "explanation": "And as for work experience, I started out after graduating in 1986 in China, working for the Chinese government. Did you work as a volunteer? No, I I did get a…"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Assistant"
+       ],
+       "explanation": "Then I came back, moved to Manchester, and have been working with Latimer Engineering since then. And what exactly are you doing for Latimer? Oh, I'm working in…"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Part one.\nB: The director of an engineering company is interviewing an applicant for a job. First you have some time to look at questions one to six.\nC: Now we shall begin. You should answer the questions as you listen, because you will not hear the recording a second time. Listen carefully and answer questions 1 to 6.\nD: Ah. Good morning. It’s Mr. Robinson, isn’t it? Have a seat. Stephen Robinson. Yes. Is that S T E V E N or P H? It’s V. Okay.\nD: I’ve got your letter of application, but I need a few more details for the file. Now, you’re from Manchester. What exactly is the address? Yes, it’s Dinover Gardens. That’s D Y N E V O R.\nD: Presswich. Thanks. And telephone? Well, it isn’t mine, it’s the landlord’s, but I can be contacted. It’s 483250. Aha. The landlord lives in, does he?\nD: Well, he has the flat downstairs, and he’s a friend of the family anyway. I see. Okay. According to your letter, I imagine you were born in uh let me see, 1960? 61. Right. And the date? 12th of July.\nD: Thank you. And I believe you’re married. No, no, I’m getting married, but not for a few months. Oh, sorry. Well, I mean, congratulations. Is it going to be in Manchester? Well, no, actually.\nD: My fiance’s from Wales, so we’re getting married in her home village, near Bangor. Oh, how nice.\nD: Now, as you know, when you apply for a post with Williams Engineering, we need to find out a few things about both your academic background and more recent work experience, the latter being especially important in respect of this rather specialized position in the area of water management.\nD: First of all, A level.\nD: Yes, I’ve got three. Geography, maths and physics. Geography, maths and physics. Okay.\nC: Before you hear the rest of the conversation, you have some time to look at questions seven to ten.\nC: Now listen and answer questions seven to ten.\nD: And what about your degree? I went to Sheffield University and got an engineering degree, with water management as my specialization. Uh-huh.\nD: And as for work experience, I started out after graduating in 1986 in China, working for the Chinese government. Did you work as a volunteer? No, I I did get a nominal salary. It was a two year irrigation project. That sounds fascinating.\nD: How did you organize that? You say it wasn’t a British company then. No, no. My university had links with a Chinese engineering university, so it was organized at that level. And after that?\nD: Then I came back, moved to Manchester, and have been working with Latimer Engineering since then. And what exactly are you doing for Latimer? Oh, I’m working in irrigation again. This time as a project research assistant. Great. I’ve got your details.\nD: Now let’s move on to a more general discussion about what we’re looking for.\nA: That is the end of part one.\nA: You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-68-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "title": "Be Well Online Program",
+     "template": "(interactive website with resources to help reach health [[11]] )\nWellness register:\n- easy online health check\n- keep a record of progress\n- get [[12]] on present health condition\nActive Health Agenda (8-week plans taking into account age & lifestyle):\n- diet and workout\n- weight loss\n- [[13]] management\n- healthy aging\n- time-saver workouts\nMembership:\n- allow use of various tools and [[14]] online\n- give access to articles, recipes, exercises\nActive Sport (individual programs in accordance with personal objective and [[15]] ):\n- warm-up, workout, weekly training e.g. marathon, swimming, etc.\nActive Care (for specific health requirements):\n- [[16]]\n- Glucose Management\n- Heart Health\n- [[17]] care",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "Goals",
+        "goal"
+       ],
+       "explanation": "This is an interactive website packed with resources to assist you in achieving your health goals. On this website, you'll find up-to-date health information you can…"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "Personalised report",
+        "personalized report"
+       ],
+       "explanation": "Manage your blood glucose levels or just improve your overall fitness. Use the simple online assessment tool and receive a personalized report on your current state…"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "Stress"
+       ],
+       "explanation": "These are aimed at differing ages and lifestyles and include healthy eating and workout plans, plans for losing weight, stress management, longevity, or how to age…"
+      },
+      {
+       "n": 14,
+       "answer": [
+        "Calculators",
+        "calculator"
+       ],
+       "explanation": "If you join up to be well online, you'll not only be able to use a whole suite of interactive tools and calculators, but you'll also have unlimited access to an…"
+      },
+      {
+       "n": 15,
+       "answer": [
+        "Skill level"
+       ],
+       "explanation": "Sports science and fitness experts have developed programs that will enable you to take on a specific sporting challenge or fitness goal adapted to your particular…"
+      },
+      {
+       "n": 16,
+       "answer": [
+        "Stop smoking"
+       ],
+       "explanation": "The four courses in most demand are Stop Smoking, which will give you strategies, email support and reliable tools and resources to help you quit smoking forever."
+      },
+      {
+       "n": 17,
+       "answer": [
+        "Back"
+       ],
+       "explanation": "Those of you who suffer from neck and or back pain will benefit from the back care program. But we're talking about minor troubles here."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences. Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "title": "Be Well Coaching Course",
+     "template": "- Health professionals will help people make long-lasting [[18]] .\n- Coaching is for people with [[19]] diseases.\n- Coaches help people make a/an [[20]] and keep to it.",
+     "questions": [
+      {
+       "n": 18,
+       "answer": [
+        "Changes",
+        "change"
+       ],
+       "explanation": "It's a telephone based service that will give you the extra support, motivation and techniques that will provide the impetus for you to bring about permanent changes.…"
+      },
+      {
+       "n": 19,
+       "answer": [
+        "Serious"
+       ],
+       "explanation": "Well, this service is really for those of you who have serious health concerns like diabetes, arthritis or high blood pressure. I know there are many of you out there…"
+      },
+      {
+       "n": 20,
+       "answer": [
+        "Plan"
+       ],
+       "explanation": "How does it work? Your health coach will provide assistance as you develop a plan and maintain regular contact over a period of six months to help you stay on track."
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Part two You will hear a radio advertisement for a health program. First, you have some time to look at questions eleven to seventeen.\nA: Listen carefully and answer questions eleven to seventeen.\nC: Prevention is better than cure. You all know that, don’t you? Have you been looking for some help and guidance for maintaining your health?\nC: Well today I want to tell you all about a new health program called Be Well. Be Well Online actually.\nC: This is an interactive website packed with resources to assist you in achieving your health goals. On this website, you’ll find up-to-date health information you can trust.\nC: It has a register which includes a quick online check to assess your health and keep track of your progress. What do you want to do? Lose weight? Give up smoking?\nC: Manage your blood glucose levels or just improve your overall fitness. Use the simple online assessment tool and receive a personalized report on your current state of health.\nC: This is what we call your wellness register. After you’ve completed this, you’ll be ready to move on.\nC: Now, the Active Health Agenda is where our team of experts has created a series of interactive eight week programs for some of the most common health goals.\nC: These are aimed at differing ages and lifestyles and include healthy eating and workout plans, plans for losing weight, stress management, longevity, or how to age gracefully by maintaining your health, and express workouts for those of you who never have enough time.\nC: If you join up to be well online, you’ll not only be able to use a whole suite of interactive tools and calculators, but you’ll also have unlimited access to an extensive library of health articles, delicious, simple recipes, and illustrated exercise descriptions.\nC: Let’s look first at the active sport component. This gives you individual attention. In fact, it’s a virtual personal trainer.\nC: Sports science and fitness experts have developed programs that will enable you to take on a specific sporting challenge or fitness goal adapted to your particular ambition and skill level.\nC: Detailed daily warm-ups and workout plans and weekly training schedules will help you prepare for any upcoming event of your choice.\nC: Marathons, triathlons, open water swims, cycling or fun runs are just some of the events you could enter with confidence in\nC: When you’ve completed an active sport program. Be Well Online also features an active care project.\nA: This caters for individuals who want to address specific health needs.\nA: The four courses in most demand are Stop Smoking, which will give you strategies, email support and reliable tools and resources to help you quit smoking forever.\nA: Then there is glucose management, a self-care program designed for people with high blood sugar, which will help you manage your condition and improve your overall health.\nA: Obviously, heart health has a large following. It’s basically all about lifestyle modification where you will take a course of action with the aim of improving your cardiovascular health.\nA: Those of you who suffer from neck and or back pain will benefit from the back care program. But we’re talking about minor troubles here.\nA: Anything major should be attended to by a qualified physician in person. So what are you waiting for? Register today at BeWellfor Life dot com.\nA: Before you hear the rest of the talk, you have some time to look at questions eighteen to twenty.\nA: Now listen and answer questions eighteen to twenty\nA: OK I can hear some of you saying that you don’t have enough willpower to go through with our online program. Well just for people like you, we offer Be Well Coaching. What is it?\nA: It’s a telephone based service that will give you the extra support, motivation and techniques that will provide the impetus for you to bring about permanent changes. Who runs it?\nA: The course is delivered by experienced health coaches, as well as qualified exercise physiologists, dietitians and nurses. Who can use it?\nA: Well, this service is really for those of you who have serious health concerns like diabetes, arthritis or high blood pressure. I know there are many of you out there who could benefit from this.\nA: How does it work? Your health coach will provide assistance as you develop a plan and maintain regular contact over a period of six months to help you stay on track.\nA: You’ll also get access to a phone in service for extra support if you need it, and you’ll be provided with health information specifically targeted at your individual problem. Now what could be better than that?\nA: That is the end of part two. You now have 30 seconds to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-68-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "What do the speakers agree are the TWO reasons why children play outdoors less now than in the past?",
+     "options": [
+      {
+       "key": "A",
+       "text": "concerns about traffic"
+      },
+      {
+       "key": "B",
+       "text": "limited outdoor play facilities"
+      },
+      {
+       "key": "C",
+       "text": "increased time spent online"
+      },
+      {
+       "key": "D",
+       "text": "preference for indoor play"
+      },
+      {
+       "key": "E",
+       "text": "reduction in free time"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "There's perhaps no single more important factor than parental worries about the dangers of vehicles on the streets. And this has a knock-on effect on what's left for outdoor play. Right. Your premise is that outdoor play is good. What exactly do you want to focus on in your assignment?"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "There's perhaps no single more important factor than parental worries about the dangers of vehicles on the streets. And this has a knock-on effect on what's left for outdoor play. Right. Your premise is that outdoor play is good. What exactly do you want to focus on in your assignment?"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "In his assignment, which TWO aspects of outdoor play does Ravi want to focus on?",
+     "options": [
+      {
+       "key": "A",
+       "text": "how it helps children to evaluate risk"
+      },
+      {
+       "key": "B",
+       "text": "how it broadens their horizons"
+      },
+      {
+       "key": "C",
+       "text": "how it aids children’s muscular development"
+      },
+      {
+       "key": "D",
+       "text": "how it improves children’s digestion"
+      },
+      {
+       "key": "E",
+       "text": "how it teaches children about the environment"
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "What sort of decisions do outdoor games and activities force children to make? Well, for example, how they decide how dangerous something might be. And I'd like to… This is because fresh air tends to stimulate hunger. Perhaps leaving to one side the question of whether climbing trees helps educate children about the natural…"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "What sort of decisions do outdoor games and activities force children to make? Well, for example, how they decide how dangerous something might be. And I'd like to… This is because fresh air tends to stimulate hunger. Perhaps leaving to one side the question of whether climbing trees helps educate children about the natural…"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "According to Ravi, in which TWO ways are children’s periods of outdoor play now different from a generation ago?",
+     "options": [
+      {
+       "key": "A",
+       "text": "They are less dangerous."
+      },
+      {
+       "key": "B",
+       "text": "They involve fewer children."
+      },
+      {
+       "key": "C",
+       "text": "They usually last a shorter time."
+      },
+      {
+       "key": "D",
+       "text": "They include fewer made-up games."
+      },
+      {
+       "key": "E",
+       "text": "They involve fewer chasing games."
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "Well, surprisingly, it's not so much how often children play outside or preferences for large or small groups, but the fact that the play sessions don't go on for as… improvised games and I'd like to examine why this might be. Interesting. And what about safety? Well, from my reading, serious accidents are still rare."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "Well, surprisingly, it's not so much how often children play outside or preferences for large or small groups, but the fact that the play sessions don't go on for as… improvised games and I'd like to examine why this might be. Interesting. And what about safety? Well, from my reading, serious accidents are still rare."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Ravi thinks parents should be more concerned about the decline of outdoor play because",
+       "options": [
+        {
+         "key": "A",
+         "text": "it affects family relationships."
+        },
+        {
+         "key": "B",
+         "text": "it leads to health problems later in life."
+        },
+        {
+         "key": "C",
+         "text": "it makes childhood less enjoyable."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "But the links between inactivity and physical problems when they're adults are so well established that I think kids should be encouraged to spend more time outdoors…"
+      },
+      {
+       "n": 28,
+       "text": "What does Ravi say that schools should do with regard to outdoor play?",
+       "options": [
+        {
+         "key": "A",
+         "text": "revise their aims"
+        },
+        {
+         "key": "B",
+         "text": "spend more money on it"
+        },
+        {
+         "key": "C",
+         "text": "listen to the views of parents"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Well, what I think they should do differently regarding outdoor play, and it wouldn't actually require a great deal of expenditure, is base their policy on different…"
+      },
+      {
+       "n": 29,
+       "text": "What did Smith and Barker say about children in rural areas?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They tend not to be allowed on farmland."
+        },
+        {
+         "key": "B",
+         "text": "They receive more supervision outdoors."
+        },
+        {
+         "key": "C",
+         "text": "They spend more time outdoors than city children."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "There's research on this by Smith and Barker. Intuitively, you'd expect children in rural areas to spend more time out in the open, but in fact, they are generally…"
+      },
+      {
+       "n": 30,
+       "text": "What problem does Dr Chang highlight about Smith and Barker’s research?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Its findings are inconclusive."
+        },
+        {
+         "key": "B",
+         "text": "It is too old to be useful."
+        },
+        {
+         "key": "C",
+         "text": "Its focus is limited."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "But you'll need to stipulate very precisely that their focus was, if I remember correctly, just on rural areas."
+      }
+     ]
+    }
+   ],
+   "transcript": "C: Part three You will hear a student called Ravi talking to his tutor doctor Chang about research he is doing for an assignment on children playing outdoors.\nC: First you have some time to look at questions twenty one to twenty six.\nC: Now listen carefully and answer questions twenty-one to twenty-six.\nC: Right, Ravi. Tell me how the research for your assignment about children’s outdoor play is going. Yes.\nC: Well, I’ve been reading about why children spend less time playing outside now than 20 or 30 years ago. So is it just because of the amount of online time that children have now, which obviously happens indoors?\nC: Well, if that was the case, there’d be a correlation between high internet use and low levels of outdoor play.\nA: And it’s nothing to do with whether there are adequate facilities outside, playgrounds, for example, as any open space will do.\nA: There’s perhaps no single more important factor than parental worries about the dangers of vehicles on the streets.\nC: But it could also be that children today prefer playing indoors to outdoors.\nA: Well, a study in Tokyo suggests it’s the other way round. But children are spending more time in structured activities and out-of-school clubs than before.\nC: And this has a knock-on effect on what’s left for outdoor play. Right. Your premise is that outdoor play is good. What exactly do you want to focus on in your assignment?\nC: Well, not so much on things that apply to exercise in general, like children’s muscles getting stronger because they run around.\nC: And not on what seems, for instance, self-evident, that outdoor play helps children to concentrate on things other than lessons. Sure. I’d like to investigate some of the more unexpected benefits, like to children’s digestion.\nC: This is because fresh air tends to stimulate hunger. Perhaps leaving to one side the question of whether climbing trees helps educate children about the natural world. No, not really relevant.\nC: What sort of decisions do outdoor games and activities force children to make? Well, for example, how they decide how dangerous something might be. And I’d like to outline the main findings on that. Okay.\nC: And as you’re arguing that there’s been a shift in play patterns over the last generation or so, how are you going to substantiate this? Yes.\nC: Surveys have compared parents’ recollections of their childhood play 30 years ago with what their children do now.\nA: And the nature of what children do when they are playing outdoors has changed. How exactly?\nA: Well, surprisingly, it’s not so much how often children play outside or preferences for large or small groups, but the fact that the play sessions don’t go on for as long.\nA: And games involving one child running after another who tries to get away, these are still as popular as ever. But one thing that has declined.\nA: improvised games and I’d like to examine why this might be. Interesting. And what about safety? Well, from my reading, serious accidents are still rare.\nA: More kids hurt themselves falling out of bed than out of trees.\nC: Before you hear the rest of the discussion, you have some time to look at questions twenty seven to thirty.\nC: Now listen and answer questions twenty seven to thirty.\nA: I think the decline of outdoor play is a problem, which should worry parents. I mean, perhaps the children themselves don’t miss it. They may be happy to spend lots of time indoors.\nA: But the links between inactivity and physical problems when they’re adults are so well established that I think kids should be encouraged to spend more time outdoors with their brothers and sisters and friends.\nC: What about schools?\nA: Well, what I think they should do differently regarding outdoor play, and it wouldn’t actually require a great deal of expenditure, is base their policy on different outcomes, like developing children’s confidence, not just thinking about exam results.\nA: Although I don’t know how it would go down with the parents.\nC: And do children get more contact with nature in rural areas?\nA: There’s research on this by Smith and Barker. Intuitively, you’d expect children in rural areas to spend more time out in the open, but in fact, they are generally told to keep off agricultural land.\nA: Plus, there are difficulties with supervision outside towns and cities.\nC: Right. And Smith and Barker’s paper was published in 2001. Not the most up to date, but still valid to use.\nC: But you’ll need to stipulate very precisely that their focus was, if I remember correctly, just on rural areas.\nC: So you’d need to consider how far their restricted findings might be applicable to urban areas as well. Okay. Right. So now I’d suggest you produce an overview of what you’re going to cover.\nC: That is the end of part three. You now have 30 seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-68-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "title": "Field Trial – Heat Pump Technology",
+     "template": "# Background\n- Aim in the UK is to reduce carbon emissions from energy consumed in [[31]] by approximately 25%.\n- Most popular ‘green’ energy: [[32]]\n- Little investment in heat pumps in the UK due to lack of [[33]] in using them.\n# What is a heat pump?\n- Heat pumps serve the same purpose as a [[34]]\n- Most heat pumps get heat from the earth or the [[35]]\n- Water is heated to 60°C to destroy [[36]]\n# The field trial\n- 83 sites across the UK\n- Central heating systems monitored: [[37]] and under-floor heating\n# Key conclusions\n- Installation: need to provide improved [[38]] in pump-fitting technique\n- [[39]] designs performed best\n- Customers needed to be told about regulating the controls\n- Need for a [[40]] to coordinate the installation",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "Homes",
+        "home"
+       ],
+       "explanation": "27% of British carbon dioxide emissions come from the energy used in homes, so around a quarter of all reductions must also come from that sector rather than industry."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "Solar"
+       ],
+       "explanation": "At present, the most popular green energy from a range which includes wind, biomass heating and ground heat is solar. This has been the most readily accepted by the…"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "Experience"
+       ],
+       "explanation": "Heat pump technology is relatively new to the UK market, and because there is such limited experience of this technology, people have been reluctant to invest in it."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "Boiler"
+       ],
+       "explanation": "The heat pumps in this trial are used for the same reason you'd use a boiler, but rather than burning a fuel to produce heat, they move heat from a low temperature…"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "Air"
+       ],
+       "explanation": "Most heat pumps take heat from either the ground or the air, but water from ponds or rivers may occasionally be used."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "Bacteria"
+       ],
+       "explanation": "The general advice in the UK is that the temperature of the hot water stored in a cylinder should be periodically put up to 60 degrees centigrade to kill off bacteria."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "Radiators"
+       ],
+       "explanation": "This field trial monitored two central heating systems, radiators and the increasingly popular underfloor systems."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "Training"
+       ],
+       "explanation": "In some of the early installations, there were problems because the engineers hadn't fitted the heat pump correctly. This observation emphasizes the need for better…"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "Simple"
+       ],
+       "explanation": "Many different systems were monitored in the field trial, and it was found that in most cases, designs which were simple were more efficient."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "Supervisor"
+       ],
+       "explanation": "It was obvious that a supervisor should be appointed to oversee and be responsible for the whole installation. So what are the implications of this technology on a wider?"
+      }
+     ]
+    }
+   ],
+   "transcript": "D: Part four You will hear a student who is studying energy technology reporting on a field trial of heat pumps. First, you have some time to look at questions thirty one to forty.\nD: Now listen carefully and answer questions thirty one to forty.\nC: I’m going to talk about a field trial that was carried out on heat pumps. But first, some background. The UK has adopted a very ambitious target for reducing carbon emissions.\nC: 27% of British carbon dioxide emissions come from the energy used in homes, so around a quarter of all reductions must also come from that sector rather than industry.\nC: So it’s not surprising that the government, private companies, and independent agencies have been looking into green energy alternatives.\nC: At present, the most popular green energy from a range which includes wind, biomass heating and ground heat is solar. This has been the most readily accepted by the public.\nC: However, the field trial I’ve looked at researched heat pump technology.\nC: Heat pump technology is relatively new to the UK market, and because there is such limited experience of this technology, people have been reluctant to invest in it.\nC: So a field trial was needed to monitor this in a sample of heat pumps in real situations.\nC: The heat pumps in this trial are used for the same reason you’d use a boiler, but rather than burning a fuel to produce heat, they move heat from a low temperature heat source and pump it.\nC: To a higher temperature, where it can be used to provide central heating or domestic hot water.\nC: Most heat pumps take heat from either the ground or the air, but water from ponds or rivers may occasionally be used.\nC: The general advice in the UK is that the temperature of the hot water stored in a cylinder should be periodically put up to 60 degrees centigrade to kill off bacteria.\nC: It is sometimes necessary to use an electric immersion heater to achieve this temperature, as most heat pump installations will be designed to produce domestic hot water at temperatures between 50 and 55 degrees centigrade.\nA: For this field trial, 83 UK sites were monitored, and they provided a wide spectrum of performance results, even in installations that seemed similar.\nA: Some installations performed as well as heat pumps studied in European field trials, but many failed to meet these levels.\nA: This field trial monitored two central heating systems, radiators and the increasingly popular underfloor systems.\nC: The observations of the field trial led to some key conclusions. One was that heat pumps are sensitive pieces of equipment.\nC: In some of the early installations, there were problems because the engineers hadn’t fitted the heat pump correctly. This observation emphasizes the need for better training for everyone involved in the installation.\nC: Many different systems were monitored in the field trial, and it was found that in most cases, designs which were simple were more efficient.\nC: So this is something which both pump manufacturers and installers should bear in mind. Many customers mistakenly came to the conclusion that their system wasn’t working as well as they’d expected.\nC: However, when this was further investigated, it was found that they had not realized how to regulate the controls properly. There had been a failure to explain this in sufficient detail to the householders.\nC: And it was often the case that for the installation all sorts of workmen might be involved. For example, a groundworks contractor, a plumber, a heat pump installer, and an electrician.\nC: It was obvious that a supervisor should be appointed to oversee and be responsible for the whole installation. So what are the implications of this technology on a wider?\nD: That is the end of part four."
+  }
+ ],
+ "audio": {
+  "file": "listening-68.mp3",
+  "durationSec": 1421,
+  "partStarts": [
+   0,
+   248,
+   670,
+   1091
+  ],
+  "questionTimes": {
+   "1": 47,
+   "2": 62,
+   "3": 76,
+   "4": 89,
+   "5": 104,
+   "6": 137,
+   "7": 177,
+   "8": 185,
+   "9": 185,
+   "10": 210,
+   "11": 305,
+   "12": 331,
+   "13": 367,
+   "14": 388,
+   "15": 420,
+   "16": 469,
+   "17": 509,
+   "18": 582,
+   "19": 606,
+   "20": 620,
+   "21": 765,
+   "22": 789,
+   "23": 840,
+   "24": 827,
+   "25": 879,
+   "26": 902,
+   "27": 978,
+   "28": 993,
+   "29": 1018,
+   "30": 1048,
+   "31": 1176,
+   "32": 1199,
+   "33": 1218,
+   "34": 1237,
+   "35": 1258,
+   "36": 1268,
+   "37": 1322,
+   "38": 1340,
+   "39": 1353,
+   "40": 1402
+  }
+ }
+}

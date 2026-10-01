@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
  * Two kinds of progress:
  * - browser voices: script lines reached ("12/40");
  * - a pre-rendered recording (`durationMs` given): time ("2:05 / 7:48"), and in
- *   practice a seek slider plus −10 s / +10 s.
+ *   practice a seek slider plus back / forward buttons (±10 s; seekStepMs).
  *
  * No captions or transcript here on purpose: it's a listening test.
  */
@@ -74,6 +74,8 @@ export interface AudioBarProps {
   /** Practice with a recording: jump to a position / by ±ms. */
   onSeek?: (ms: number) => void;
   onSeekBy?: (deltaMs: number) => void;
+  /** Step of the back / forward buttons (default 10 s). */
+  seekStepMs?: number;
 }
 
 const EQ_CSS = `
@@ -264,7 +266,9 @@ export function AudioBar(props: AudioBarProps) {
     bufferedMs,
     onSeek,
     onSeekBy,
+    seekStepMs = SEEK_STEP_MS,
   } = props;
+  const stepSec = Math.max(1, Math.round(seekStepMs / 1000));
 
   const practice = mode === "practice";
   const timed = typeof durationMs === "number" && durationMs > 0;
@@ -385,12 +389,12 @@ export function AudioBar(props: AudioBarProps) {
                 {timed && onSeekBy && (
                   <button
                     type="button"
-                    onClick={() => onSeekBy(-SEEK_STEP_MS)}
+                    onClick={() => onSeekBy(-seekStepMs)}
                     className={cn(ctrl, "px-2.5 font-mono text-xs tabular-nums")}
-                    aria-label="Back 10 seconds"
-                    title="Back 10 seconds"
+                    aria-label={`Back ${stepSec} seconds`}
+                    title={`Back ${stepSec} seconds`}
                   >
-                    −10s
+                    −{stepSec}s
                   </button>
                 )}
                 <button
@@ -405,12 +409,12 @@ export function AudioBar(props: AudioBarProps) {
                 {timed && onSeekBy && (
                   <button
                     type="button"
-                    onClick={() => onSeekBy(SEEK_STEP_MS)}
+                    onClick={() => onSeekBy(seekStepMs)}
                     className={cn(ctrl, "px-2.5 font-mono text-xs tabular-nums")}
-                    aria-label="Forward 10 seconds"
-                    title="Forward 10 seconds"
+                    aria-label={`Forward ${stepSec} seconds`}
+                    title={`Forward ${stepSec} seconds`}
                   >
-                    +10s
+                    +{stepSec}s
                   </button>
                 )}
                 <button

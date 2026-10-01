@@ -16,6 +16,11 @@
  * again. Environment variables apply to new deployments, so redeploy after
  * changing it on Vercel.
  *
+ * A test with ONE real recording (CDI, `test.audio`) is different: it gets
+ * `recording` (lib/ielts/sanitize — URL from lib/ielts/cdi-audio) and no
+ * per-part audio, whatever LISTENING_AUDIO says; its parts have no script,
+ * and their transcripts never reach the browser.
+ *
  * One query per test; never throws (any problem → browser voices, as before).
  * SERVER ONLY.
  */
@@ -42,6 +47,9 @@ export function listeningAudioEnabled(): boolean {
 
 export async function listeningClientContent(test: ExamListeningTest): Promise<ClientListeningTest> {
   const base = toClientListening(test);
+  // One real recording for the whole test (CDI): it has no script to render or read aloud, and it
+  // isn't on the Blob store, so neither the per-part renders nor the kill switch apply.
+  if (base.recording) return base;
   // Switched off: scripts for every part, no recordings.
   if (!listeningAudioEnabled()) return base;
   // The old short practice tests never get recordings (the admin skips them).

@@ -1,0 +1,626 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-58",
+ "title": "CDI Reading Test 58",
+ "description": "A full Academic Reading test from the CDI practice materials: The Olmec and their great stone heads; Leaf-Cutting Ants and Fungus; Movement Underwater.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Olmec and their great stone heads",
+  "Leaf-Cutting Ants and Fungus",
+  "Movement Underwater"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Olmec and their great stone heads",
+   "paragraphs": [
+    {
+     "text": "The Olmec civilisation thrived in what is today eastern Mexico, along the coast of the Gulf of Mexico, from 1200 to 400 BC. The Olmec was the first major culture in Mesoamerica, a geographical area including Mexico and Central America. As in many ancient societies, the majority of the Olmec population laboured in the fields producing crops, while some spent their days fishing in the rivers. But the Olmec also developed cities – powerful population centres with political and cultural significance and influence – as early as 1200 BC. They were great traders who maintained contacts with other societies in the area. They traded their finely made masks and small statues, in return for materials such as semi-precious stones, crocodile skins, sea shells, sharks’ teeth, and brightly coloured feathers, as well as basic necessities like salt. Their skill as traders helped spread their culture to different contemporary civilisations and to several later related civilisations such as the Aztecs and the Maya."
+    },
+    {
+     "text": "Despite the influence the Olmec had, their great city of La Venta went into sharp decline around 400 BC. Soon after this, other Olmec population centres disappeared and much of the Olmec civilisation along with them. The once impressive cities were swallowed up by surrounding jungle, not to be seen again for thousands of years. Why the Olmec vanished so rapidly remains a mystery. It may have been due to changes in the climate because the Olmec were dependent on a few basic crops, and climate change could have seriously affected their harvests. Human actions, such as warfare, over-farming or deforestation may also have played a role in the Olmec’s decline."
+    },
+    {
+     "text": "The Olmec were extremely talented artists, and their most lasting artistic contribution was without doubt the enormous sculpted stone heads they created. Most of the heads were buried and forgotten for nearly 3,000 years until the first excavation of a head by Europeans in 1871, with the last one being unearthed in 1994. Seventeen Olmec great stone heads have been found in four Olmec cities: San Lorenzo, La Venta, Tres Zapotes and La Cobata. It is almost impossible to pinpoint the exact dates when the heads were made. The San Lorenzo heads were almost certainly all completed before 900 BC because that city went into steep decline at that time. Others are even more difficult to date; an examination of the head at La Cobata indicates it was never actually finished, and the heads at Tres Zapotes were removed from their original locations before their historical context could be documented."
+    },
+    {
+     "text": "The round face of each stone head with its characteristic wide, flat nose and full lips makes the heads readily identifiable. Several of the heads are taller than an average adult human male. The largest stands about three metres tall and weighs an estimated 40 tonnes. Each head is generally flattened at the back and not carved all the way around – they are meant to be viewed from the front and sides. Some tiny remains of colour on one of the San Lorenzo heads indicate that some may once have been painted."
+    },
+    {
+     "text": "The creation of these heads was a significant undertaking. The basalt stone boulders and blocks used to create the heads came from mountains located as far as 100 kilometres away from where they were displayed. Archaeologists suggest this involved a laborious process of slowly moving the stones, using a combination of manpower and, when possible, rafts on rivers. Once the stones reached a workshop, they would have been shaped using only crude tools such as stone hammers. The Olmec did not have metal tools, which makes the sculptures all the more remarkable. Once the heads were ready, they were put into position, although it is possible that they were occasionally moved to create scenes together with other Olmec sculptures."
+    },
+    {
+     "text": "The exact meaning of the great heads has been lost to time, but over the years there have been several theories. At one time, many archaeologists felt their sheer size suggested they represented gods. Other archaeologists argued that the helmet or cap on each of the heads looks like the headdress worn by players in an ancient game the Olmec played with rubber balls. Most archaeologists today, however, have come to believe that the heads actually represent Olmec rulers. Part of the evidence for this is the fact that each of the faces has a distinct human look and personality, suggesting they represented real individuals of great power and importance."
+    },
+    {
+     "text": "The Olmec left behind other stone carvings, small and large, including thrones and statues. There are also a few surviving wooden carvings and paintings in nearby caves. Nevertheless, the most striking examples of Olmec art are the great heads, and they have taught researchers a great deal about the ancient Olmec people. Their greatest value today, however, is probably artistic. The sculptures are truly amazing and inspirational and a popular attraction at the museums where they are housed. Most of them are in regional museums close to where they were found, while two are in Mexico City. In addition, reproductions have been made and can be seen in museums around the world."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Many Olmec people were farmers.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 1: ‘the majority of the Olmec population laboured in the fields producing crops’."
+      },
+      {
+       "n": 2,
+       "text": "The Olmec established a trading network based on river transport.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para 1 says they were great traders but does not state the network was based on river transport."
+      },
+      {
+       "n": 3,
+       "text": "Some of the cultural practices of the Olmec were adopted by the Aztecs.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 1: their culture spread ‘to several later related civilisations such as the Aztecs and the Maya’."
+      },
+      {
+       "n": 4,
+       "text": "La Venta was the last Olmec city to go into decline.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 2: La Venta declined around 400 BC and ‘soon after this, other Olmec population centres disappeared’ — so it was not the last."
+      },
+      {
+       "n": 5,
+       "text": "The Olmec grew a large variety of agricultural products before their civilisation vanished.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 2: ‘the Olmec were dependent on a few basic crops’ — not a large variety."
+      },
+      {
+       "n": 6,
+       "text": "The Olmec fought many battles with enemies from neighbouring areas.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para 2 mentions warfare only as a possible cause of decline, not actual battles with neighbours."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "- the [[7]] of the Olmec heads took place between 1871 and 1994\n- the basalt stone the heads are made from was taken from [[8]] in distant locations\n- the stones were moved by river on [[9]] and also dragged by men\n- the heads are a remarkable achievement since the Olmec did not have tools made of [[10]]\n- some archaeologists believed the [[11]] of the heads indicated they represented gods\n- other archaeologists thought the stone helmets were like those worn in an Olmec [[12]]\n- today’s most widely accepted theory is that the heads depict Olmec [[13]]",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "excavation"
+       ],
+       "explanation": "Para 3: ‘first excavation of a head by Europeans in 1871, with the last one being unearthed in 1994’."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "mountains"
+       ],
+       "explanation": "Para 5: ‘came from mountains located as far as 100 kilometres away’."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "rafts"
+       ],
+       "explanation": "Para 5: ‘using a combination of manpower and, when possible, rafts on rivers’."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "metal"
+       ],
+       "explanation": "Para 5: ‘The Olmec did not have metal tools’."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "size"
+       ],
+       "explanation": "Para 6: ‘their sheer size suggested they represented gods’."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "game"
+       ],
+       "explanation": "Para 6: helmet ‘looks like the headdress worn by players in an ancient game’."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "rulers"
+       ],
+       "explanation": "Para 6: ‘the heads actually represent Olmec rulers’."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Leaf-Cutting Ants and Fungus",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The ants and their agriculture have been extensively studied over the years, but the recent research has uncovered intriguing new findings about the fungus they cultivate, how they domesticated it and how they cultivate it and preserve it from pathogens (病原体). For example, the fungus farms, which the ants were thought to keep free of pathogens, turn out to be vulnerable to a devastating mold, found nowhere else but in ants’ nests. To keep the mold in check, the ants long ago made a discovery that would do credit to any pharmaceutical laboratory."
+    },
+    {
+     "label": "B",
+     "text": "Leaf-cutting ants and their fungus farms are a marvel of nature and perhaps the best known example of symbiosis, the mutual dependence of two species. The ants’ achievement is remarkable --the biologist Edward O. Wilson has called it “one of the major breakthroughs in animal evolution”--because it allows them to eat, courtesy of their mushroom’s digestive powers, the otherwise poisoned harvest of tropical forests whose leaves are laden with terpenoids, alkaloids and other chemicals designed to sicken browsers."
+    },
+    {
+     "label": "C",
+     "text": "Fungus growing seems to have originated only once in evolution, because all gardening ants belong to a single tribe, the descendants of the first fungus farmer. There are more than 200 known species of the attine ant tribe, divided into 12 groups, or genera. The leaf-cutters use fresh vegetation; the other groups, known as the lower attines because their nests are smaller and their techniques more primitive, feed their gardens with detritus like dead leaves, insects and feces."
+    },
+    {
+     "label": "D",
+     "text": "The leaf-cutters’ fungus was indeed descended from a single strain, propagated clonally, or just by budding, for at least 23 million years. But the lower attine ants used different varieties of the fungus, and in one case a quite separate species, the four biologists discovered. The pure strain of fungus grown by the leaf-cutters, it seemed to Mr. Currie, resembled the monocultures of various human crops, that are very productive for a while and then succumb to some disastrous pathogen, such as the Irish potato blight. Monocultures, which lack the genetic diversity to respond to changing environmental threats, are sitting ducks for parasites. Mr. Currie felt there had to be a parasite in the ant fungus system. But a century of ant research offered no support for the idea. Textbooks describe how leaf-cutter ants scrupulously weed their gardens of all foreign organisms. “People kept telling me, ‘You know the ants keep their gardens free of parasites, don’t you?’ ” Mr. Currie said of his efforts to find a hidden interloper."
+    },
+    {
+     "label": "E",
+     "text": "But after three years of sifting through attine ant gardens, Mr. Currie discovered they are far from free of infections. In last month’s issue of the Proceedings of the National Academy of Sciences, he and two colleagues, Dr. Mueller and David Mairoch, isolated several alien organisms, particularly a family of parasitic molds called Escovopsis."
+    },
+    {
+     "label": "F",
+     "text": "Escovopsis turns out to be a highly virulent pathogen that can devastate a fungus garden in a couple of days. It blooms like a white cloud, with the garden dimly visible underneath. In a day or two the whole garden is enveloped. “Other ants won’t go near it and the ants associated with the garden just starve to death,” Dr. Rehner said. “They just seem to give up, except for those that have rescued their larvae.” The deadly mold then turns greenish brown as it enters its spore-forming stage."
+    },
+    {
+     "label": "G",
+     "text": "Evidently the ants usually manage to keep Escovopsis and other parasites under control. But with any lapse in control, or if the ants are removed, Escovopsis will quickly burst forth. Although new leaf-cutter gardens start off free of Escovopsis, within two years some 60 percent become infected. The discovery of Escovopsis’s role brings a new level of understanding to the evolution of the attine ants. “In the last decade, evolutionary biologists have been increasingly aware of the role of parasites as driving forces in evolution,” Dr. Schultz said. There is now a possible reason to explain why the lower attine species keep changing the variety of fungus in their mushroom gardens, and occasionally domesticating new ones—to stay one step ahead of the relentless Escovopsis."
+    },
+    {
+     "label": "H",
+     "text": "Interestingly, Mr. Currie found that the leaf-cutters had in general fewer alien molds in their gardens than the lower attines, yet they had more Escovopsis infections. It seems that the price they pay for cultivating a pure variety of fungus is a higher risk from Escovopsis. But the leaf-cutters may have little alternative: they cultivate a special variety of fungus which, unlike those grown by the lower attines, produces nutritious swollen tips for the ants to eat."
+    },
+    {
+     "label": "I",
+     "text": "Discovery of a third partner in the ant-fungus symbiosis raises the question of how the attine ants, especially the leaf-cutters, keep this dangerous interloper under control. Amazingly enough, Mr. Currie has again provided the answer. “People have known for a hundred years that ants have a whitish growth on the cuticle,” said Dr. Mueller, referring to the insects’ body surface. “People would say this is like a cuticular wax. But Cameron was the first one in a hundred years to put these things under a microscope. He saw it was not inert wax. It is alive.” Mr. Currie discovered a specialized patch on the ants’ cuticle that harbors a particular kind of bacterium, one well known to the pharmaceutical industry, because it is the source of half the antibiotics used in medicine. From each of 22 species of attine ant studied, Mr. Cameron and colleagues isolated a species of Streptomyces bacterium, they reported in Nature in April. The Streptomyces does not have much effect on ordinary laboratory funguses. But it is a potent poisoner of Escovopsis, inhibiting its growth and suppressing spore formation. It also stimulates growth of the ants’ mushroom fungus. The bacterium is carried by virgin queens when they leave to establish new nests, but is not found on male ants, playboys who take no responsibility in nest-making or gardening."
+    },
+    {
+     "label": "J",
+     "text": "Because both the leaf-cutters and the lower attines use Streptomyces, the bacterium may have been part of their symbiosis for almost as long as the Escovopsis mold. If so, some Alexander Fleming of an ant discovered antibiotics millions of years before people did. Even now, the ants are accomplishing two feats beyond the powers of human technology. The leafcutters are growing a monocultural crop year after year without disaster, and they are using an antibiotic apparently so wisely and prudently that, unlike people, they are not provoking antibiotic resistance in the target pathogen."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Use the information in the passage to match the options (listed A–C) with activities or features of ants below. NB You may use any letter more than once.",
+     "title": "Options",
+     "options": [
+      {
+       "key": "A",
+       "text": "Leaf-cutting ants"
+      },
+      {
+       "key": "B",
+       "text": "Lower attines"
+      },
+      {
+       "key": "C",
+       "text": "Both"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "Build small nests and live with the different foreign fungus.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage says: “the other groups, known as the lower attines because their nests are smaller and their techniques more primitive”"
+      },
+      {
+       "n": 15,
+       "text": "Use toxic leaves to feed the fungus.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The passage says: “the otherwise poisoned harvest of tropical forests whose leaves are laden with terpenoids, alkaloids and other chemicals”"
+      },
+      {
+       "n": 16,
+       "text": "Raise fungus which doesn't live with other foreigners.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The passage says: “The leaf-cutters’ fungus was indeed descended from a single strain, propagated clonally”"
+      },
+      {
+       "n": 17,
+       "text": "Use substance to fight against Escovopsis.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “Because both the leaf-cutters and the lower attines use Streptomyces”"
+      },
+      {
+       "n": 18,
+       "text": "Use dead vegetable to feed the fungus.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage says: “feed their gardens with detritus like dead leaves, insects and feces”"
+      },
+      {
+       "n": 19,
+       "text": "Are free of parasites explained previously?",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The passage says: “Textbooks describe how leaf-cutter ants scrupulously weed their gardens of all foreign organisms”"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has 10 paragraphs, A–J. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      },
+      {
+       "key": "I",
+       "text": "Paragraph I"
+      },
+      {
+       "key": "J",
+       "text": "Paragraph J"
+      }
+     ],
+     "questions": [
+      {
+       "n": 20,
+       "text": "Dangerous outcome of Escovopsis.",
+       "answer": [
+        "F"
+       ],
+       "explanation": "The passage says: “Escovopsis turns out to be a highly virulent pathogen”"
+      },
+      {
+       "n": 21,
+       "text": "The disadvantage of growing single fungus.",
+       "answer": [
+        "H"
+       ],
+       "explanation": "The passage says: “Monocultures, which lack the genetic diversity to respond to changing environmental threats, are sitting ducks for parasites”"
+      },
+      {
+       "n": 22,
+       "text": "Comparison of features of two different nests.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “There are more than 200 known species of the attine ant tribe, divided into 12 groups, or genera”"
+      },
+      {
+       "n": 23,
+       "text": "Two achievements made by ants earlier than human.",
+       "answer": [
+        "J"
+       ],
+       "explanation": "The passage says: “Because both the leaf-cutters and the lower attines use Streptomyces”"
+      },
+      {
+       "n": 24,
+       "text": "Advantage of growing a new breed of fungus.",
+       "answer": [
+        "G"
+       ],
+       "explanation": "The passage says: “Evidently the ants usually manage to keep Escovopsis and other”"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 25,
+       "text": "How does the author think of Currie's opinion?",
+       "options": [
+        {
+         "key": "A",
+         "text": "his viewpoint was verified later."
+        },
+        {
+         "key": "B",
+         "text": "earlier study has sufficient evidence."
+        },
+        {
+         "key": "C",
+         "text": "no details mentioned in the article."
+        },
+        {
+         "key": "D",
+         "text": "his opinion was proved to be wrong."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The passage says: “But after three years of sifting through attine ant gardens, Mr. Currie discovered they are far from free of infections”"
+      },
+      {
+       "n": 26,
+       "text": "What did scientists find on the skin of ants under a microscope?",
+       "options": [
+        {
+         "key": "A",
+         "text": "some white cloud mold embed in their skin"
+        },
+        {
+         "key": "B",
+         "text": "that Wax is all over their skin."
+        },
+        {
+         "key": "C",
+         "text": "a substance which is useful to humans."
+        },
+        {
+         "key": "D",
+         "text": "a substance which suppresses the growth of fungus."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “the ants long ago made a discovery that would do credit to any pharmaceutical laboratory”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Movement Underwater",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Self-propelled motion is a fundamental ability in many organisms. From the beating flagella of tiny plankton keeping afloat near the ocean surface to the playful perfection of dolphins surfing the bow wave of a ship, marine creatures have adopted a huge variety of styles, speeds, and methods of movement. Each species has its own particular need for the evolutionary developments that have taken place, but the basic requirements are the same—finding food, avoiding predation, seeking a mate or a safe place to have young, or migrating to an area with more favorable conditions."
+    },
+    {
+     "label": "B",
+     "text": "The particular physical properties of water that most affect movement are density, viscosity (stickiness), and buoyancy. Seawater is about 800 times denser than air and nearly 100 times as viscous. Consequently, there is much more resistance to movement than on land, as anyone will know who has ever tried to wade through waist-deep water. However, with density comes much greater buoyancy, so that organisms need spend relatively little energy to stay afloat. As they move through the ocean environment, organisms seek to make wave motion, currents, and natural turbulence work to their advantage, not detriment."
+    },
+    {
+     "label": "C",
+     "text": "Most fishes have swim bladders to help them offset the density of their bodies and so maintain neutral buoyancy with minimal effort. These small, gas-filled chambers contain specialized networks of blood vessels that can add or remove gases such as oxygen and carbon dioxide. The ability to remain indefinitely at a constant depth without expending energy is especially important for slow-moving fishes that seek food in the shallows, or for those that hunt and scavenge in kelp forests. Active swimmers, such as mackerel, skipjacks, and sharks, do not have swim bladders because they need to change depth more rapidly than they could regulate the gas content. These fishes must swim forever or they will sink."
+    },
+    {
+     "label": "D",
+     "text": "Many animals, especially the tiny zooplankton, have taken to a life of simply drifting near the surface, contentedly feeding on the microscopic phytoplankton and bacteria floating there. Although life among the plankton might seem easy, there is in fact a remarkable range of movement. Some tiny plankton only 1.2mm in length actually travel long distances each day. Species that live below the level where sunlight reaches nightly swim hundreds of meters up to the surface to feed in the relative safety of darkness. At dawn, they sink back down in an effort to escape predators—a double journey equivalent to a person swimming 700km a day."
+    },
+    {
+     "label": "E",
+     "text": "It has taken marine creatures millions of years of evolution to overcome the chief deterrent to motion through a dense medium such as water, that of drag resistance. Swimming efficiency has been achieved by minimizing the three types of drag created by friction, turbulence, and body form. To reduce surface friction, the body must be smooth and rounded. In addition, the scales of most fishes are coated with slime to lubricate their passage through water. To reduce the turbulent drag created as water flows around the moving shape, a rounded front end and tapered back end are required. To reduce form drag, the cross-sectional area of the body should be minimal; a pencil shape would be ideal. The combined shape, taking into account all three types of drag, is the streamlined torpedo form of a tuna, the fastest-swimming of all fishes."
+    },
+    {
+     "label": "F",
+     "text": "Speed is only one of three important aspects of swimming ability. Tuna, swordfish, and mackerel all specialize in fast, steady cruising, but there are many other fishes for whom sustained speed is less important, such as the barracuda. This formidable predator specializes in swift acceleration, and has a far higher success rate for its attacks than its steady-cruising cousins. The freshwater pike, which lurks in the shadows until its quarry is within striking distance and then lunges with great rapidity, achieves a remarkable 70–80 percent success rate. The third specialization is maneuverability, best demonstrated by the butterfly fishes. These have disk-shaped bodies that permit abrupt changes of track. Many fishes are generalists, being at least partly proficient in all three modes of movement."
+    },
+    {
+     "label": "G",
+     "text": "Almost all fishes swim by undulation. Strong W-shaped muscles along the side of the body progressively contract and relax in sequence, from head to tail and from side to side, creating a traveling horizontal wave. The body is thrown into a series of curves that press sideways and back against the water, producing a forward thrust. The narrow, elongated forms of eels and sea snakes allow easy undulation along their full length. In contrast, the more stubby and inflexible bodies of armor-plated trunkfish use only the swish of their short tail fins to move themselves through the water. Most other fishes combine elements of both methods, coordinating powerful strokes of the tail fins with subtle body undulations."
+    },
+    {
+     "label": "H",
+     "text": "A fish’s fins also play a vital and versatile role. The vertically oriented dorsal and ventral fins on the back and belly control sideways motion, while up-and-down motion is controlled by the pectoral and pelvic fins on the fish’s sides. Whereas the shape of the tail fin relates directly to speed—crescent-moon shaped for fast cruising, broad and flat for acceleration—the style and arrangement of the other fins are crucial for maneuverability. Puffer fishes scull with tiny, oscillating pectoral fins, while butterfly fishes undulate their broad dorsal and ventral fins, twisting and turning with great precision through intricate coral reefs."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has 7 paragraphs, A–G. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "A strategy to avoid being attacked.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para D: plankton ‘sink back down in an effort to escape predators’ — a strategy to avoid being attacked."
+      },
+      {
+       "n": 28,
+       "text": "How fish are able to keep afloat naturally.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para C: swim bladders help fishes ‘maintain neutral buoyancy with minimal effort’."
+      },
+      {
+       "n": 29,
+       "text": "The physical process by which fish propel themselves ahead.",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Para G: undulation — W-shaped muscles create a wave ‘producing a forward thrust’."
+      },
+      {
+       "n": 30,
+       "text": "A list of reasons why different creatures move from one place to another.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para A lists the basic requirements: finding food, avoiding predation, seeking a mate, or migrating."
+      },
+      {
+       "n": 31,
+       "text": "How the medium of water both restricts and aids movement.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para B: water gives resistance (restricts) but also buoyancy (aids)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the flow-chart below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "- Ability to maintain the same [[32]]\n- Rapid [[33]]\n- Sudden attack on prey following period of lying in wait [[34]]\n- Rapid changes of direction [[35]]",
+     "questions": [
+      {
+       "n": 32,
+       "answer": [
+        "speed",
+        "steady cruising"
+       ],
+       "explanation": "Para F: swordfish specialise in ‘fast, steady cruising’ — maintaining the same speed."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "acceleration"
+       ],
+       "explanation": "Para F: the barracuda ‘specializes in swift acceleration’."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "freshwater pike",
+        "pike"
+       ],
+       "explanation": "Para F: ‘The freshwater pike, which lurks in the shadows until its quarry is within striking distance and then lunges’."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "butterfly fishes",
+        "butterfly fish"
+       ],
+       "explanation": "Para F: maneuverability is ‘best demonstrated by the butterfly fishes’."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Label the diagram below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "- Streamlined shape narrowing towards rear to reduce [[36]] drag\n- fin controlling [[37]] movement\n- fins controlling [[38]] movement\n- fins which are important for [[39]] of fish\n- Minimal cross-sectional body area: to decrease [[40]] drag",
+     "questions": [
+      {
+       "n": 36,
+       "answer": [
+        "turbulent",
+        "turbulent drag"
+       ],
+       "explanation": "Para E: a rounded front and tapered back reduce ‘turbulent drag’."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "up-and-down"
+       ],
+       "explanation": "Para H: ‘up-and-down motion is controlled by the pectoral and pelvic fins’."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "sideways"
+       ],
+       "explanation": "Para H: dorsal and ventral fins ‘control sideways motion’."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "maneuverability",
+        "manoeuvrability"
+       ],
+       "explanation": "Para H: the arrangement of the other fins is ‘crucial for maneuverability’."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "form",
+        "form drag"
+       ],
+       "explanation": "Para E: ‘To reduce form drag, the cross-sectional area of the body should be minimal’."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

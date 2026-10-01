@@ -1,0 +1,634 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-72",
+ "title": "CDI Reading Test 72",
+ "description": "A full Academic Reading test from the CDI practice materials: The Igloo; Computer Viruses; Homeschooling.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Igloo",
+  "Computer Viruses",
+  "Homeschooling"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Igloo",
+   "paragraphs": [
+    {
+     "text": "The igloo is the traditional shelter of Inuit living in the far northern regions. They are built of blocks of snow in a circular shape, in which the walls curve inward towards the top to form a snow vault with a self-supporting arched ceiling. An outstanding example of human ingenuity and adaptability to the environment, the igloo retains heat and protects against the cold, since snow and ice act as excellent insulation. The design includes a tunnel entrance that forms a cold trap to preserve heat inside. The sleeping and sitting areas are raised above this and so maintain a higher temperature."
+    },
+    {
+     "text": "A similar construction is the 'quinzhee', which is a shelter made by hollowing out a pile of settled snow, and is only for temporary use. In contemporary times, this type of snow shelter has become popular among those who enjoy winter camping, as well as in survival situations. Some contemporary Inuit though continue to use igloos, especially as temporary shelters while hunting. However, the warming climate of the early twenty-first century has reduced the availability of appropriate snow for igloo construction. Although the traditional art of igloo construction by Inuit natives may have declined, the igloo and variations upon it, such as ice hotels, have gained in popularity among those who enjoy the winter experience."
+    },
+    {
+     "text": "An igloo in the Inuit language simply means house and the Inuit do not restrict the use of this term exclusively to snow houses, but include traditional tents, sod houses, homes constructed of driftwood, and modern buildings. Although the origin of the igloo may have been lost in antiquity, it is known that Inuit have constructed snow igloos for hundreds of years. Living in an area where snow and ice predominate, particularly in the long dark winter above the Arctic Circle, the igloo is the perfect shelter. Snow is used because the air pockets trapped in it make it an excellent insulator. Outside, temperatures may be as low as minus 45 degrees Celsius, but inside an igloo, the temperature may range from minus 7 degrees Celsius to 16 degrees Celsius when warmed by body heat alone. A highly functional shelter, the igloo is also aesthetically pleasing, with its shape being both strong and beautiful."
+    },
+    {
+     "text": "In order to build an igloo, there is a fairly standard procedure. The first thing to do is to find a good spot. It is vital to choose a safe location away from avalanche prone slopes. Next, mark a circle in the snow. For two people, a circle of around two metres diameter is needed, and for four people, around four metres. The igloo body is the next step. Shovel a pile of snow into a large, reasonably steep mound and try and keep the sloping sides at an angle of around 35 degrees or higher, which is best for stability. Wide, short snow shelters are more prone to collapse. If possible, mix snow of different temperatures to help it to harden. The entrance is done by digging a trench downwards into the snow towards the mound. This should be on the downhill side and out of the wind. The snow that is being removed from the trench should be placed on top of the mound. In these conditions, make the trench as deep as a standing man. Then, leave everything for about 90 minutes if possible. Next, finish the tunnel entrance. Make the tunnel slightly wider than a body's width and dig at a slightly upward angle. Ideally, the floor of the snow shelter should be at least 30 centimetres above the entrance, which will help prevent warm air from escaping the shelter. After the initial entrance is made, it is easier to hollow the inside from the top down. The walls should be thirty to sixty centimetres thick, and if the inside walls are smoothed, this will help prevent dripping. Leave an elevated platform for sleeping on. As heat rises, the occupants will be in the warmest part of the igloo for sleeping. A very important point is to make an air vent in the wall of the shelter, which will prevent the occupants from suffocating in the night. Finally, block the entrance with a block of snow or a rucksack."
+    },
+    {
+     "text": "Igloo hotels are a new variation on the traditional igloo. In several winter destinations, villages of igloos are built for tourists, where the guests use sleeping bags that sit on top of reindeer hides in overnight stays. Ice hotels are found in many places in Norway, Finland, and Sweden, and are constructed each winter and melt in the spring. The Ice Hotel in the village of Jukkasjarvi, located next to the town of Kiruna in Sweden, is a famous attraction. Originally, the creators started out building a simple igloo, which later turned into the elaborate and now famous 'hotel'. It is made from the waters of the adjacent river Torne, the pure waters of which produce beautiful clear ice used to create interior decorations, which are made entirely of snow and ice."
+    },
+    {
+     "text": "The igloo is a subject that has fascinated people from all over the world. Although the traditional art of igloo construction by Inuit natives may have declined, the igloo and variations on it have gained in popularity among those who enjoy the novelty and winter experience."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "The quinzhee is constructed for living in long-term.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The quinzhee is only for temporary use (FALSE)."
+      },
+      {
+       "n": 2,
+       "text": "The Canadian government has allocated grants to keep the art of building igloos alive.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage does not mention Canadian government grants (NOT GIVEN)."
+      },
+      {
+       "n": 3,
+       "text": "Although relatively warm, the temperature inside an igloo in winter Arctic conditions will never rise above freezing.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Inside temperatures can reach 16°C, above freezing (FALSE)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the flow chart below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Building an Igloo",
+     "template": "Choose a good spot, away from places with [[4]] potential.\n↓\nMark a circle in the snow (2 m diameter for 2 people and 4 m for 4 people).\n↓\nCreate a large mound of snow with 35-degree side angles for robust [[5]] . Use snow with various [[6]] to help it set.\n↓\nDig an entrance tunnel on the downhill side and away from the wind. Place dug snow on top of the mound – leave everything for 90 minutes.\n↓\nContinue and finish the entrance tunnel – wider than a body and slightly upwards, as the igloo floor should be approx. 30 cm higher than the entrance to keep the [[7]] in.\n↓\nHollow the igloo from the inside – the walls should be 30–60 cm thick.\n↓\nSmooth the inside walls to stop [[8]] ; the sleeping area should be [[9]] ; it is vital to make an [[10]] ; block the entrance with snow or a rucksack.",
+     "questions": [
+      {
+       "n": 4,
+       "answer": [
+        "avalanche"
+       ],
+       "explanation": "Choose a spot away from avalanche potential."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "stability"
+       ],
+       "explanation": "35-degree sides for robust stability."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "temperatures"
+       ],
+       "explanation": "Use snow with various temperatures."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "warm air"
+       ],
+       "explanation": "Higher floor keeps the warm air in."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "dripping"
+       ],
+       "explanation": "Smooth walls to stop dripping."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "elevated"
+       ],
+       "explanation": "The sleeping area should be elevated."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "air vent",
+        "vent"
+       ],
+       "explanation": "Make an air vent (prevents suffocation)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "The Jukkasjärvi Ice Hotel",
+     "template": "Igloo hotels are popular novelties, where guests can sleep in sleeping bags on [[11]] . These hotels (in northern countries) are built every year and [[12]] when it warms. The famous Jukkasjärvi Ice Hotel is completely made from nearby river water – even the [[13]] .",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "reindeer hides",
+        "hides"
+       ],
+       "explanation": "Guests sleep on reindeer hides."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "melt"
+       ],
+       "explanation": "Hotels melt when it warms / in the spring."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "interior decorations",
+        "decorations"
+       ],
+       "explanation": "Even the interior decorations are made from river ice."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Computer Viruses",
+   "paragraphs": [
+    {
+     "text": "Computers can do anything: from running spread sheets, word processors and power stations to music synthesisers and missile control systems. And because computers can do anything, they can in particular run viruses and any other nasty software."
+    },
+    {
+     "text": "Viruses are unique in their abilities, as they can stop many computers at once. This would be much more serious for a small company than normal faults that affect only one PC at a time. Thus, viruses rank with hazards like power cuts and fire in their effect and speed of action. Worse than fire though, people may find that they cannot take their work elsewhere, for if they did, they might simply take the virus infection with them and bring more systems down. Secondly, viruses can distribute disinformation and bring shame to individuals or organisations: viruses may send malicious email apparently on behalf of the person whose computer has been infected."
+    },
+    {
+     "text": "A computer virus is a piece of program code that attaches copies of itself to other programs, incorporating itself into them, so that the modified programs, while still possibly performing their intended function, surreptitiously do other things. Programs so corrupted seek others to which to attach the virus, and so the infection circulates. Successful viruses lie low until they have thoroughly infiltrated the system, and only reveal their presence when they cause damage. The effect of a virus is rarely linked back to its originator, so viruses make attractive weapons for vandals. Computer viruses generally work by altering files that contain otherwise harmless programs. This is infection. When an infected program is invoked, it seeks other programs stored in files to which it has write permission, and infects them by modifying the files to include a copy of itself and inserting an instruction to branch to that code at the old program's starting point. Then the virus starts up the original program, so that the user is unaware of its intervention. Viruses are classified as being one of two types: 'research' or 'in the wild'. A research virus is one that has been written for research or study purposes and has received almost no distribution to the public. On the other hand, viruses that have been seen with any regularity are termed 'in the wild'."
+    },
+    {
+     "text": "Before the spread of the Internet, most computer viruses were spread by removable media, predominantly floppy disks. Some viruses spread by infecting programs stored on these disks, while others installed themselves into the disk boot sector. Until floppy disks were replaced by other removable media, this was the most successful infection strategy and boot sector viruses were the most common in the wild for many years."
+    },
+    {
+     "text": "The term 'computer virus' is a popular catchall for all kinds of malicious software. A logic bomb is a destructive program activated by a certain combination of circumstances, or on a certain date, to delete information. A Trojan horse is any bug inserted into a computer program that takes advantage of the trusted status of its host by surreptitiously performing unintended functions. A worm is a distributed program that invades computers on a network. It consists of several processes or segments that keep in touch through the network; when one is lost, the others conspire to replace it on another server."
+    },
+    {
+     "text": "Viruses today have no distinct identity, but typically undergo mutation each time they copy themselves to other files. This, combined with various cryptographic techniques, makes modern viruses difficult to detect. False alarms have become an increasing problem, particularly with users sending chain email warning about supposed virus problems; ironically, the panics may cause more problems than the viruses they warn about. Email though has become the most popular way to disperse viruses today, because powerful commercial email packages are themselves programmable and users often configure email systems to helpfully run programs automatically."
+    },
+    {
+     "text": "Viruses are not difficult to develop. The majority of viruses are simple variants of others and many virus construction kits are readily available on the Internet. Viruses have been created since the 1960's, although the term 'computer virus' was only formally defined by Fred Cohen in 1983. One of the first virus attacks occurred in late 1987 when, over a two-month period, a virus quietly insinuated itself into programs at a Middle East university. It was noticed because it caused programs to grow longer. Once discovered, it was analysed and an antidote devised. It was designed to slow processors down on certain Fridays, and to erase all files on Friday, 13 May."
+    },
+    {
+     "text": "It is common that certain viruses have been given names. Once discovered and named, programmers can create 'antidotes' that delete the viruses from the system. The obvious, but generally impractical defence against viruses is never to use anyone else's software and never to connect with anyone else's computer. A more practical approach to protect computers is to regularly or continuously run programs that recognise viruses and try to eliminate virus infections before they do too much damage. Because new viruses are being devised every day, it is important and sensible to keep detection programs up to date, by, for example, a regular subscription from a reputable firm, and to minimise risky procedures, such as sharing information as infrequently as possible."
+    },
+    {
+     "text": "All protection approaches are trade-offs. Eternal vigilance on the part of users is important, and, above all, education of users to the possible results of their actions."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–J, below. Drag the correct word into each gap. The letter of the word will appear in the blank.",
+     "title": "COMPUTER VIRUSES",
+     "options": [
+      {
+       "key": "A",
+       "text": "recipes"
+      },
+      {
+       "key": "B",
+       "text": "kill"
+      },
+      {
+       "key": "C",
+       "text": "spread"
+      },
+      {
+       "key": "D",
+       "text": "origins"
+      },
+      {
+       "key": "E",
+       "text": "die"
+      },
+      {
+       "key": "F",
+       "text": "cures"
+      },
+      {
+       "key": "G",
+       "text": "reputations"
+      },
+      {
+       "key": "H",
+       "text": "hide"
+      },
+      {
+       "key": "I",
+       "text": "jobs"
+      },
+      {
+       "key": "J",
+       "text": "risks"
+      }
+     ],
+     "template": "Computers today can perform all tasks, including running computer viruses. Viruses are worse than other computer problems, due to their ability to [[14]] to other systems. Viruses can also circulate misrepresentations and the [[15]] of people and groups can be harmed.\nComputer viruses are pieces of program code that become part of programs and then spread to other programs and computers. They usually [[16]] themselves within systems before creating harm and their [[17]] are difficult to trace.\nViruses also distribute themselves around files and computers without being noticed. Viruses can be ‘research’ or ‘in the wild’, the former usually creating no [[18]] .",
+     "questions": [
+      {
+       "n": 14,
+       "answer": [
+        "C"
+       ],
+       "explanation": "14 spread: viruses can be taken to other systems."
+      },
+      {
+       "n": 15,
+       "answer": [
+        "G"
+       ],
+       "explanation": "15 reputations: disinformation can harm reputations."
+      },
+      {
+       "n": 16,
+       "answer": [
+        "H"
+       ],
+       "explanation": "16 hide: viruses lie low / hide before causing damage."
+      },
+      {
+       "n": 17,
+       "answer": [
+        "D"
+       ],
+       "explanation": "17 origins: originators/origins are hard to trace."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "J"
+       ],
+       "explanation": "18 risks: research viruses usually create no risks (almost no public distribution)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "template": "- What type of removable media was first responsible for the distribution of computer viruses? [[19]]\n- What type of computer virus can be set to delete information at a particular time? [[20]]\n- What type of computer virus attacks networked computers? [[21]]\n- What combines with various cryptographic techniques to make a modern computer virus difficult to discover? [[22]]\n- What is the most common way to distribute a computer virus nowadays? [[23]]",
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "floppy disks",
+        "floppy disk"
+       ],
+       "explanation": "19 floppy disks were the main early removable media for spreading viruses."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "logic bomb",
+        "a logic bomb"
+       ],
+       "explanation": "20 logic bomb: activated on a certain date to delete information."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "worm",
+        "a worm"
+       ],
+       "explanation": "21 worm: invades computers on a network."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "mutation"
+       ],
+       "explanation": "22 mutation combined with cryptography makes viruses hard to detect."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "email"
+       ],
+       "explanation": "23 Email is the most popular way to disperse viruses today."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "template": "- Most viruses are just simple [[24]] of pre-existing viruses.\n- [[25]] to a trustworthy company that deals in virus protection is a practical precaution against computer viruses.\n- The key action to avoid computer viruses is the [[26]], so that they appreciate the potential consequences of what they do.",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "variants"
+       ],
+       "explanation": "24 variants: most viruses are simple variants of others."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "subscription",
+        "a subscription",
+        "regular subscription",
+        "a regular subscription"
+       ],
+       "explanation": "25 subscription to a reputable/trustworthy firm keeps protection up to date."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "education of users"
+       ],
+       "explanation": "26 education of users is the key action."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Homeschooling",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Homeschooling is a method of education where children do not attend a traditional school. Instead, usually parents take over the responsibility for the education of their children, either doing it all themselves or by using a company that specialises in providing homeschooling curricula and materials. Homeschooled children can excel in standardised testing and universities and colleges have no qualms about accepting them. Supporters also claim that because they have been trained early on to be independent learners, homeschooled individuals grow up to become reliable, resourceful individuals."
+    },
+    {
+     "label": "B",
+     "text": "Homeschooling offers various benefits. Almost all homeschooling families say that homeschooling has played an essential role in bringing their family closer, as the time that parents spend teaching their children, and the time the children spend learning together, can foster a loving relationship in the family. Homeschooled children do not have to worry about bullying, peer pressure and spiteful competition, so their self-esteem does not have to suffer needlessly, and many parents with children who have been the target of bullying have resorted to homeschooling to protect their children from the harmful effects of harassment. Another key advantage of homeschooling is that parents and children no longer have to work their lives around homework and school hours. They usually accomplish in a few hours each day what typically takes a week or more to complete in a classroom setting. Because they spend more time in hands-on learning, homeschooled children can do away with homework, which is what usually keeps public schooled children up late at night. Additionally, families can schedule offseason vacations, go on field trips or visit museums, zoos and parks during the week as part of their learning experience. A more controversial benefit of homeschooling is that parents have frequently much more say in what is taught to their children, so that they can avoid subjects which they disapprove of."
+    },
+    {
+     "label": "C",
+     "text": "Homeschooling is, however, sharply criticised in some quarters. A common criticism is that homeschooled children may not have as many opportunities to interact with other children in comparison to children who attend regular schools. Forming bonds and socialising with children his or her own age is important for a child's developmental health and development of social skills. If homeschooled, children may be deprived of the chance to form friendships and may suffer socially. The lack of socialisation may affect them in later stages of life."
+    },
+    {
+     "label": "D",
+     "text": "Parents choosing to homeschool their children may also be faced with the common problem of time. Parents need to set aside time to make it work. The task of homeschooling a child is certainly not easy, whether for working parents, single parents or stay-at-home parents. They have to take time to organise and prepare lessons, teach, give tests, and plan field trips. Also, in comparison to public schools, where education is free, homeschooling can also be costly, as purchasing the newest curriculum and teaching tools can be very expensive. Parents may choose to use a pre-prepared paid homeschooling program, but, in spite of the possible added benefits of such programs, they may increase the cost of the child's education. There are also other costs to keep in mind, like project materials, stationery, books, computer software, and field trips."
+    },
+    {
+     "label": "E",
+     "text": "There is also the issue of the different relationships between parents and their children and teachers and their students. Public and private schools provide for many children a safe haven, in which they are both regarded and respected independently and individually. Family love is intense, and children need it to survive and thrive. It is also deeply contingent on the existence and nature of the family ties. The unconditional love children receive at home is actually anything but unconditional: it is conditioned on the fact that they are their parents' children. School, either public or private, ideally provides a welcome respite. Children are regarded and respected at school not because they are their parents' children, but because they are students. They are valued for traits and for status that are independent of their status as the parents' genetic or adoptive offspring. The ideal teacher cares about a child as an individual, a learner and an actively curious person. The teacher does not care about the child because the child is his or hers, and the child is regarded with respect equal to all the children in the class. In these ways, the school classroom, ideally, and the relations within it, is a model of some core aspects of citizenship."
+    },
+    {
+     "label": "F",
+     "text": "A final criticism of homeschooling is that there is a public health risk. Children who attend public schools are required to have immunisations in order to begin classes. It is hard in many countries to ensure that mandatory immunisation is verified. Thus, deregulated homeschooling means that homeschooled children are basically exempted from immunisation requirements. The children are more susceptible to the diseases against which immunisation gives some protection, and others around them, particularly the elderly, are also consequently in danger."
+    },
+    {
+     "label": "G",
+     "text": "Even given these potential harms, there remain good reasons to permit homeschooling in plenty of circumstances. Parents often justifiably wish to shield their children from public schools that too often ill serve children who are at risk of bullying, or who are hurt by the culture of middle and high schools. Some children also have special abilities or needs, or simply idiosyncratic learning styles or habits, and many of these children can best or even only be educated by those who know them best."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has seven paragraphs, A–G. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "The traditional school environment can sometimes be a good model for living in today's society.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "27 E: school as a model of citizenship."
+      },
+      {
+       "n": 28,
+       "text": "Homeschooling has been accused of hindering children's social development.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "28 C: criticism about lack of socialisation / social development."
+      },
+      {
+       "n": 29,
+       "text": "Homeschooling can sometimes better adapt to a child's special learning needs.",
+       "answer": [
+        "G"
+       ],
+       "explanation": "29 G: special abilities or needs; educated by those who know them best."
+      },
+      {
+       "n": 30,
+       "text": "There are companies that focus on providing homeschooling materials, guidance and curricula.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "30 A: companies specialising in curricula and materials."
+      },
+      {
+       "n": 31,
+       "text": "Homeschooling can be a financial burden for some families.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "31 D: homeschooling can be costly."
+      },
+      {
+       "n": 32,
+       "text": "Homeschooling has been accused of spreading disease.",
+       "answer": [
+        "F"
+       ],
+       "explanation": "32 F: public health risk / disease from lack of immunisation."
+      },
+      {
+       "n": 33,
+       "text": "Homeschooling families can benefit from cheaper holidays outside the peak seasons of regular school holiday times.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "33 B: offseason vacations."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 34–37.",
+     "questions": [
+      {
+       "n": 34,
+       "text": "Homeschooled children will often",
+       "options": [
+        {
+         "key": "A",
+         "text": "have no problem entering university."
+        },
+        {
+         "key": "B",
+         "text": "have difficulties with universities accepting them."
+        },
+        {
+         "key": "C",
+         "text": "have to attend universities that offer similar teaching styles to the children's childhood education experiences."
+        },
+        {
+         "key": "D",
+         "text": "not need to attend university."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "34 A: universities have no qualms about accepting them."
+      },
+      {
+       "n": 35,
+       "text": "Homeschooled children can",
+       "options": [
+        {
+         "key": "A",
+         "text": "often become bullies when they meet other children."
+        },
+        {
+         "key": "B",
+         "text": "be bullied more often."
+        },
+        {
+         "key": "C",
+         "text": "be bullied less often."
+        },
+        {
+         "key": "D",
+         "text": "be often subject to a special type of parental bullying."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "35 C: they do not have to worry about bullying → bullied less often."
+      },
+      {
+       "n": 36,
+       "text": "Homeschooling classes",
+       "options": [
+        {
+         "key": "A",
+         "text": "generally take up more time than those at traditional schools."
+        },
+        {
+         "key": "B",
+         "text": "take up more or less the same time as those at traditional schools."
+        },
+        {
+         "key": "C",
+         "text": "generally take up a lot less time than those at traditional schools."
+        },
+        {
+         "key": "D",
+         "text": "generally take place in the mornings."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "36 C: a few hours vs a week or more → a lot less time."
+      },
+      {
+       "n": 37,
+       "text": "Homeschooling parents can often choose not to",
+       "options": [
+        {
+         "key": "A",
+         "text": "make their children sit exams."
+        },
+        {
+         "key": "B",
+         "text": "study certain subjects they do not favour."
+        },
+        {
+         "key": "C",
+         "text": "have any holidays away from education."
+        },
+        {
+         "key": "D",
+         "text": "share their children's results with universities."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "37 B: parents can avoid subjects they disapprove of."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 38,
+       "text": "Many parents are challenged by the parental time required of them to homeschool their children.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "38 YES: parents face the common problem of time."
+      },
+      {
+       "n": 39,
+       "text": "Parents' love for their children is unconditional.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "39 NO: the writer says this love is actually anything but unconditional."
+      },
+      {
+       "n": 40,
+       "text": "US law should require that parents who choose homeschooling are inspected at least once a year.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "40 NOT GIVEN: no mention of US law or annual inspections."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

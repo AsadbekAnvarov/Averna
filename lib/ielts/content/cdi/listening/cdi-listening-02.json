@@ -1,0 +1,657 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-02",
+ "title": "CDI Listening Test 02",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "conversation between an Australian accommodation agent and an Englishwoman who wants to rent a property in Sydney",
+  "student giving a presentation about houses which are built underground. First you have some time to look at questions 31 to 40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-02-part-1",
+   "title": "Part 1",
+   "context": "You will hear a conversation between an Australian accommodation agent and an Englishwoman who wants to rent a property in Sydney.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "Renting an apartment",
+     "template": "Location\n- in central Sydney\nDescription\n- a [[1]] apartment (for one or two people)\n- approximately 34 square metres\n- a shared [[2]]\n- on the fourteenth floor\n- views of the [[3]]\n- outdoor area: a [[4]]\nTenants have\n- a [[5]] (no charge for residents)\n- an indoor pool\n- two [[6]] (reduced charge for residents)\n- underground [[7]]\n- easy access to transport in the area\nRent\n- $ [[8]] per month\n- includes [[9]]\nOther details\n- available from [[10]] August",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "studio"
+       ],
+       "explanation": "A studio apartment is offered, suitable for one or two people."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "laundry"
+       ],
+       "explanation": "The apartment has a shared laundry facility for tenants."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "harbour",
+        "harbor"
+       ],
+       "explanation": "From the fourteenth floor the apartment offers views of the harbour."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "balcony"
+       ],
+       "explanation": "The outdoor area of the apartment is a balcony."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "gym"
+       ],
+       "explanation": "Tenants get free use of a gym on site."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "cinemas"
+       ],
+       "explanation": "There are two cinemas available at a reduced charge for residents."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "parking"
+       ],
+       "explanation": "Underground parking is available to tenants."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "580"
+       ],
+       "explanation": "Rent is $580 per month."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "electricity"
+       ],
+       "explanation": "The monthly rent includes electricity."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "13th",
+        "13",
+        "thirteenth"
+       ],
+       "explanation": "The apartment is available from the 13th of August."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a conversation between an Australian accommodation agent and an Englishwoman who wants to rent a property in Sydney.\nFirst you have some time to look at questions 1 to 4.\nAgent: Hi Jessica, nice to meet you. Have a seat.\nJessica: Thanks.\nAgent: So you’re looking to rent an apartment in Sydney.\nJessica: That’s right. Like I said on the phone, I’m going to be working in a bank here for the next year.\nAgent: Well, I’ve had a look around for you, and there’s one apartment I think might just suit you. It’s in central Sydney, not out in a suburb.\nJessica: Okay. So what sort of apartment is it?\nAgent: Well, it’s a studio, so basically it’s designed for a single person or a couple. You’re looking at a total area of about thirty-four square metres.\nAgent: And then every two apartments in the building share a separate laundry. So that’s almost as if you’ve got your own. But it means that’s not using up space in your apartment. And of course you don’t have the noise of the machines.\nJessica: Is it a modern building?\nAgent: Sure. And the apartment’s nearly at the top of the building. I think it’s on the twelfth floor… No, the fourteenth.\nJessica: Oh, you must get a good view from up there.\nAgent: Yeah, and the great thing about this apartment is that you look right out over the harbour. It’s a pretty awesome view. And the apartment’s got huge windows, so you really appreciate it.\nJessica: One thing I’d really like is a garden so I can sit outside. Does the apartment block have one?\nAgent: No, but your apartment has a balcony, so there’s room to sit out there.\nBefore you hear the rest of the conversation, you have some time to look at questions 5 to 10.\nJessica: Okay, well it all sounds good. Now does the apartment block have any special facilities for tenants, like a gym?\nAgent: Yeah, it does. That’s on the first floor, and all residents have access to that free of charge. And if you like swimming, you’ve got an indoor pool.\nJessica: Great.\nAgent: And one special feature of the building is it even has a couple of cinemas there on the ground floor. So you can even take in a movie without leaving the building. Of course, they’re open to the public, but I think residents get a reduction.\nJessica: Right. And what happens about parking? Is that underground?\nAgent: That’s right. Do you have a car?\nJessica: Not yet, but I’ll probably need one, I suppose. I’m wanting to do a bit of travelling while I’m here.\nAgent: Well, one big plus of this location is the fact that it’s in an excellent situation as far as transport is concerned, so a lot of residents don’t bother to run a car. You can always hire one if you’re planning a trip. You can save a lot of money that way.\nJessica: Yeah. That’s not a bad idea. But talking of money, you haven’t mentioned the rent yet. So from the description of the property, I guess it might be quite expensive. I did say I didn’t want anything above six hundred dollars a month.\nAgent: Well, I’m gonna surprise you because this comes in at 580. So you’re within your budget there, and I have to say, you’re getting a bargain.\nJessica: Well, I’d have preferred to pay a bit less, but I suppose in this location…\nAgent: Yeah. And when you’re looking at the rent, in a lot of places you have to add on the cost of electricity, but in this case it’s all included. So you’re saving money that way.\nJessica: Right. Well, I’d definitely be interested in the property. When is it available from?\nAgent: Well, the current tenant moves out on the eighth of August, so let’s say it’ll be free from the 13th (thirteenth). I’ll need to get the cleaners in on either the tenth or the eleventh.\nJessica: Right. And what’s the address?\nAgent: It’s number two hundred and twenty…\nThat is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-02-part-2",
+   "title": "Part 2",
+   "context": "You will hear an employee of a driving school answering a telephone inquiry about training to take a driving test. First you have some time to look at questions 11 to 16.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the flow-chart. Choose SIX answers from the box and move them into the gaps.",
+     "title": "Driving lessons",
+     "options": [
+      {
+       "key": "A",
+       "text": "12 months’ probation"
+      },
+      {
+       "key": "B",
+       "text": "Circuit-based"
+      },
+      {
+       "key": "C",
+       "text": "Provisional licence"
+      },
+      {
+       "key": "D",
+       "text": "Renewable after one year"
+      },
+      {
+       "key": "E",
+       "text": "Revision"
+      },
+      {
+       "key": "F",
+       "text": "Road-based"
+      },
+      {
+       "key": "G",
+       "text": "Road safety check"
+      },
+      {
+       "key": "H",
+       "text": "RTD test"
+      },
+      {
+       "key": "I",
+       "text": "Trial test"
+      }
+     ],
+     "template": "Theory course\nLessons\n(classroom or online)\n[[11]]\n(classroom)\n[[12]]\nRoad Traffic Department\n(RTD) test\n[[13]]\nPractical course\nTraining and assessment\n( [[14]] )\nTraining and assessment\n(on the highways)\nTrial test\n[[15]]\nFull driving licence\n( [[16]] )",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "E"
+       ],
+       "explanation": "After classroom/online lessons, the next stage is Revision before the RTD test. (E)"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "I"
+       ],
+       "explanation": "In classroom-based study the Trial test is taken. (I)"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "C"
+       ],
+       "explanation": "After passing the RTD test, candidates receive a Provisional licence. (C)"
+      },
+      {
+       "n": 14,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Initial practical training and assessment is Circuit-based. (B)"
+      },
+      {
+       "n": 15,
+       "answer": [
+        "H"
+       ],
+       "explanation": "After training on the highways, the next practical stage is the RTD test. (H)"
+      },
+      {
+       "n": 16,
+       "answer": [
+        "A"
+       ],
+       "explanation": "Upon receiving a full licence there is a 12-month probation period. (A)"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 17,
+       "text": "If you want to do the theory course, you",
+       "options": [
+        {
+         "key": "A",
+         "text": "have to reserve a place."
+        },
+        {
+         "key": "B",
+         "text": "can get details on the internet."
+        },
+        {
+         "key": "C",
+         "text": "must pay the whole cost in advance."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Theory course details — B: can get details on the internet."
+      },
+      {
+       "n": 18,
+       "text": "What does the woman say about the theory classes?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They are available in more than one language."
+        },
+        {
+         "key": "B",
+         "text": "All the necessary materials are provided."
+        },
+        {
+         "key": "C",
+         "text": "Trainees stay together for the whole course."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Theory classes are available in more than one language. (A)"
+      },
+      {
+       "n": 19,
+       "text": "What does the woman say about the practical course?",
+       "options": [
+        {
+         "key": "A",
+         "text": "You must attend a session every day."
+        },
+        {
+         "key": "B",
+         "text": "You are allowed to drive your own car."
+        },
+        {
+         "key": "C",
+         "text": "You can book at certain shops."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Practical course — you can book at certain shops. (C)"
+      },
+      {
+       "n": 20,
+       "text": "There is no charge for a cancelled practical session if",
+       "options": [
+        {
+         "key": "A",
+         "text": "the instructor agrees to reschedule it."
+        },
+        {
+         "key": "B",
+         "text": "the required amount of notice is given."
+        },
+        {
+         "key": "C",
+         "text": "a medical certificate is produced."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Cancelled practical sessions have no charge if the required amount of notice is given. (B)"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear an employee of a driving school answering a telephone inquiry about training to take a driving test. First you have some time to look at questions 11 to 16.\nEmployee: Safety Driving Centre, hello.\nCaller: Hello. Can you give me some information about driving lessons?\nEmployee: Yes. There are two courses, one on theory and one practical course, and most people do the two courses simultaneously.\nEmployee: The first part of the theory course consists of a series of lessons, and you can do these either at the centre in one of our classrooms or via the internet. You work through the material at your own pace, but there’s a tutor on hand to help whenever you need it.\nEmployee: At the second stage, we review what we’ve covered so far. [Revision — E] We do this in the classroom. We don’t deliver it online, so you have to come into the centre.\nEmployee: At the end of this lesson there’s a test, but this is just for practice. [Trial test — I] It’s not a proper RTD test. If you’re satisfied with your performance on this, you can go on to the next stage. And if you’re not, you can go back to stage one and follow the lessons again.\nEmployee: The third stage is the real test, the one set and administered by the RTD. That’s the road traffic department. Provided you pass that test, you then get your Provisional licence — C, which you need before you can venture onto public highways.\nEmployee: The practical course starts off here at the test centre and it consists of training and assessment on our specially designed Circuit-based — B. This allows you to get driving experience immediately but in a safe environment.\nEmployee: At the next stage, you continue with training and assessment but on public highways. Obviously, you can’t do this until you’ve obtained your provisional licence to show that you’ve got some knowledge of traffic regulations and road safety.\nEmployee: Then, when both you and your instructor think you’re ready, you do a trial test. And if that goes well, you go straight on to do the official test run by the RTD test — H.\nEmployee: Finally, provided that you’re successful in both parts of the course, the theory and the practice, you get your driving licence. You’re then on 12 months’ probation — A for a year, and as long as you don’t have any problems in that time, your licence will be endorsed for future use.\nBefore you hear the rest of the conversation, you have some time to look at questions 17 to 20.\nCaller: Can you tell me how to enrol?\nEmployee: Yes, it’s quite easy. For the theory course, there’s no need to book, and if you’re going to do classroom-based lessons, you can just turn up here at the centre and pay as you go. We run six sessions a day, and if you go to our website, you’ll find the start times for each session. [can get details on the internet — B] If you don’t have internet access, you can pick up a leaflet from the centre here with that information.\nEmployee: As for the classes themselves, all our theory classes are run by experienced tutors, and they’re offered in a number of different languages as well as in English. [available in more than one language — A] We deliver the content using PowerPoint, but there’s still a place for pen and paper tasks, and we ask you to bring your own stationery to the lessons.\nEmployee: You choose the particular stage of the course that you want each time. Some people attend more frequently than others, and so they progress through the course at a faster rate.\nCaller: What about enrolling on the practical course?\nEmployee: That’s a bit more complicated, and you do have to book in advance. But you can do that via our website or at the customer service desk here at the centre, or you can book at one of our self-service kiosks. You’ll find them in some of the big stores in the city. [you can book at certain shops — C] So it’s very convenient, whatever your situation is.\nEmployee: You can attend between one and seven sessions a week. So you can decide whether you want to do the course intensively or spread it out more. Some driving schools allow you to drive your own car, but for safety and insurance reasons we don’t.\nEmployee: You can cancel lessons in the same way that you book them, but in order to avoid incurring a penalty, you have to do that at least 72 hours in advance of your appointment. [required amount of notice is given — B]\nEmployee: When you make a cancellation in less than the required period, you can try and transfer your session to someone else. If another trainee then agrees to take the session over, your payment for the cancelled session can be credited back to your account. Otherwise, we can’t give a refund for any reason, and even a medical certificate isn’t accepted as grounds for granting one.\nThat is the end of part two. You now have thirty seconds to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-02-part-3",
+   "title": "Part 3",
+   "context": "You will hear a business study student called Edward talking to his tutor about some research he is doing on product development. First you have some time to look at questions 21 to 25.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Edward heard about a type of mosquito net from",
+       "options": [
+        {
+         "key": "A",
+         "text": "an administrator."
+        },
+        {
+         "key": "B",
+         "text": "a doctor."
+        },
+        {
+         "key": "C",
+         "text": "a friend."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Edward heard about the mosquito net from an administrator."
+      },
+      {
+       "n": 22,
+       "text": "Edward believes that mosquito nets were first used in",
+       "options": [
+        {
+         "key": "A",
+         "text": "China."
+        },
+        {
+         "key": "B",
+         "text": "Japan."
+        },
+        {
+         "key": "C",
+         "text": "Egypt."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Edward believes mosquito nets were first used in Egypt."
+      },
+      {
+       "n": 23,
+       "text": "Chemical treatment of mosquito nets in the mid-twentieth century",
+       "options": [
+        {
+         "key": "A",
+         "text": "was first developed by a soldier."
+        },
+        {
+         "key": "B",
+         "text": "made them potentially dangerous to users."
+        },
+        {
+         "key": "C",
+         "text": "was made possible by modern textiles."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Chemical treatment in the mid-twentieth century made nets potentially dangerous to users."
+      },
+      {
+       "n": 24,
+       "text": "The owners of present-day nets",
+       "options": [
+        {
+         "key": "A",
+         "text": "are likely to find they have an unpleasant smell."
+        },
+        {
+         "key": "B",
+         "text": "should avoid using them every night."
+        },
+        {
+         "key": "C",
+         "text": "may have difficulty obtaining the necessary chemical."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Owners of present-day nets may have difficulty obtaining the necessary chemical."
+      },
+      {
+       "n": 25,
+       "text": "According to Edward, Olyset nets are better than other nets because they",
+       "options": [
+        {
+         "key": "A",
+         "text": "remain effective for longer."
+        },
+        {
+         "key": "B",
+         "text": "use a greater number of chemicals."
+        },
+        {
+         "key": "C",
+         "text": "give protection against more types of insects."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Olyset nets are better because they remain effective for longer."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the flow-chart. Choose FIVE answers from the box and move them into the gaps.",
+     "title": "Seminar presentation",
+     "options": [
+      {
+       "key": "A",
+       "text": "workforce"
+      },
+      {
+       "key": "B",
+       "text": "sources of funding"
+      },
+      {
+       "key": "C",
+       "text": "investment opportunities"
+      },
+      {
+       "key": "D",
+       "text": "unique features of the product"
+      },
+      {
+       "key": "E",
+       "text": "future developments"
+      },
+      {
+       "key": "F",
+       "text": "production figures"
+      },
+      {
+       "key": "G",
+       "text": "national economies"
+      }
+     ],
+     "template": "Context: need for anti-malarial products\nFigures relating to:\n- global incidence of the disease\n- impact on [[26]]\nMosquito nets\n- History\n- [[27]]\nProduction\n- information about [[28]]\n- profile of manufacturer with description of [[29]]\n- [[30]] (according to website)",
+     "questions": [
+      {
+       "n": 26,
+       "answer": [
+        "G"
+       ],
+       "explanation": "The tutor asks for statistics on how malaria affects countries' economic output — national economies. (G)"
+      },
+      {
+       "n": 27,
+       "answer": [
+        "D"
+       ],
+       "explanation": "The history section discusses unique features of the product. (D)"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Production section includes information about sources of funding. (B)"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "A"
+       ],
+       "explanation": "Profile of manufacturer with description of workforce. (A)"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "F"
+       ],
+       "explanation": "'You should provide some figures about output' — how many nets the company produces, from its website: production figures. (F)"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a business study student called Edward talking to his tutor about some research he is doing on product development. First you have some time to look at questions 21 to 25.\nTutor: Hello, Edward. Sit down.\nEdward: Thanks. I need some advice on my presentation about product development.\nTutor: Right. Have you decided what to focus on?\nEdward: Yes, the product I’ve chosen is a particular type of mosquito net.\nTutor: Any reason for choosing that?\nEdward: I spent last summer travelling round Africa with a friend. He’s studying medicine, so when we’re in a region where mosquitoes cause malaria, we visited a medical centre. I chatted to an administrator — A while my friend talked to one of the doctors, and I found out they’ve had far fewer cases of malaria since these mosquito nets became available locally. That made me interested in them.\nTutor: Okay. Mosquito nets have quite a long history, don’t they? I believe they’ve been used in Japan for centuries.\nEdward: That’s right. Though apparently Queen Cleopatra slept under one in ancient Egypt — C. That was probably where they were invented. And much later, nets were used in China. So perhaps they were invented there independently.\nEdward: Originally they were made of silk, but later cotton was used, and nowadays they’re mainly synthetic. It wasn’t until the middle of the 20th century that they developed nets treated with insecticides for use by the military, and that was a major step forward. They used an insecticide called DDT, but it was later found that this could be harmful to people as well as mosquitoes — B.\nTutor: Is that still a problem with modern nets?\nEdward: Oh no. The chemicals used nowadays are safe, even if people sleep under them every night. And the nets work and they’re odour-free. But they have to be treated fairly often with the chemical, which the owners need to do themselves.\nTutor: Presumably distribution of the chemical can be a problem in remote areas. I mean people may not be able to get hold of it easily. [difficulty obtaining the necessary chemical — C]\nEdward: That’s right.\nTutor: Okay, tell me about this net you’re going to talk about.\nEdward: Well, the brand name is Olyset, and the product was invented by a Japanese company. These nets are an improvement on the alternatives because the insecticide is contained inside the fibre and released gradually. It’s not coated on the outside as with ordinary nets.\nTutor: So the chemicals don’t have to be replaced?\nEdward: Right. And Olyset nets are also tougher and don’t tear as easily. They give protection for at least five years, compared with a year or two for other nets. [remain effective for longer — A]\nTutor: Well, it sounds interesting. But for your seminar presentation, will you provide the bigger picture as well?\nEdward: Yes, it’ll be a case study of product development.\nBefore you hear the rest of the discussion, you have some time to look at questions 26 to 30.\nEdward: I thought I’d introduce my presentation by describing the background to the new product, the general context.\nTutor: You mean the business context? Where the investment’s coming from and that sort of thing?\nEdward: Well, I was thinking I’d talk first about insect-borne diseases, particularly malaria, and why there’s such an urgent need for new ways of fighting it. Some people might not know much about it.\nTutor: Yes, that’s a good idea.\nEdward: I’ve got some statistics about the numbers of people worldwide who get the disease each year. I thought I’d show those. They’re quite staggering.\nTutor: I can imagine. It’s one of the world’s biggest health problems, after all. It’d also be useful if you could find some statistical information on how malaria affects countries’ economic output and present that too. [impact on national economies — G]\nEdward: Okay. I’m sure I can find something. After that I’ll talk about mosquito nets. First the historical development, just briefly, and then I’ll introduce the Olyset mosquito net.\nTutor: Yes. Keep it simple. You could just present a bulleted list of its characteristics, the things that make it different from other types of net, and talk that through. [unique features of the product — D]\nEdward: Right. Then I thought I’d outline the production process.\nTutor: Fine.\nEdward: Should I give some information about where the money for the project has come from? There are lots of government and private sponsors. [sources of funding — B]\nTutor: Definitely. That’s a very important aspect of any product development. Where are the nets being manufactured, by the way?\nEdward: Over half are made in Tanzania by a company called A to Z. They got an interest-free loan to buy in the necessary machinery.\nTutor: Well, I’d say a bit about the company profile as well, and then present figures about numbers of staff and the kinds of people they’re employing on the Olyset project, if you can find the details. [workforce — A]\nEdward: Okay. I haven’t included any information about marketing. I’ve got a lot of notes about it, but I’m not sure how to present them.\nTutor: I wouldn’t mention that if I were you. You’ve only got a short time for your presentation, and you’ve got quite a lot of material here already. But you should provide some figures about output. Have you found out from the company’s website how many nets they actually produce? [production figures — F]\nEdward: Yes, it’s over thirty million a year.\nThat is the end of part three. You now have 30 seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-02-part-4",
+   "title": "Part 4",
+   "context": "You will hear a student giving a presentation about houses which are built underground. First you have some time to look at questions 31 to 40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "title": "Earth-sheltered Housing",
+     "template": "Advantages:\n- has a [[31]] on the environment\n- increased use of energy-efficient [[32]] technologies\n- can have a very long [[33]]\n- easy to maintain\n- no noise from the [[34]] outside (big problem in many conventional homes)\n- health benefits from advanced methods of [[35]]\nEarth-sheltered housing in the UK:\n- no longer difficult to get planning permission\n- more likely to get approval for development in [[36]] areas\n- may replace mobile homes on the coast",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "low impact"
+       ],
+       "explanation": "Earth-sheltered housing has a low impact on the environment."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "alternative"
+       ],
+       "explanation": "Uses energy-efficient alternative technologies."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "life span",
+        "lifespan"
+       ],
+       "explanation": "Can have a very long life span."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "traffic"
+       ],
+       "explanation": "No noise from the traffic outside — a big problem in many conventional homes."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "ventilation"
+       ],
+       "explanation": "Health benefits from advanced methods of ventilation."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "conservation"
+       ],
+       "explanation": "More likely to get approval for development in conservation areas."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Which UK project has each of the following features? Choose the correct answer for each feature and move it into the gap. You may use any answer more than once.",
+     "title": "Features",
+     "options": [
+      {
+       "key": "A",
+       "text": "Mole Manor"
+      },
+      {
+       "key": "B",
+       "text": "the Hockerton Project"
+      },
+      {
+       "key": "C",
+       "text": "both Mole Manor and the Hockerton Project"
+      }
+     ],
+     "template": "favourable reaction [[37]]\nself-sufficiency in energy [[38]]\nlow building costs [[39]]\nluxurious accommodation [[40]]",
+     "questions": [
+      {
+       "n": 37,
+       "answer": [
+        "C"
+       ],
+       "explanation": "Favourable reaction — both Mole Manor and the Hockerton Project. (C)"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Self-sufficiency in energy — the Hockerton Project. (B)"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Low building costs — the Hockerton Project. (B)"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "A"
+       ],
+       "explanation": "Luxurious accommodation — Mole Manor. (A)"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a student giving a presentation about houses which are built underground. First you have some time to look at questions 31 to 40.\nStudent: For my presentation on ecological environmental planning, I have chosen to talk about how underground housing, or earth-sheltered housing as it’s more commonly known, can meet the demands of ecological environmental planning both in terms of building and energy resources and in terms of sensitivity to the landscape.\nStudent: Perhaps the greatest merit of this building technique is the low impact it has on the environment, since houses built underground can hardly be seen from the surface.\nStudent: If earth-sheltered homes are perfect for environmentally sensitive sites, they are also remarkably efficient when it comes to energy use. This is because this kind of housing makes greater use of alternative technologies to improve energy efficiency, as I shall explain in more detail later.\nStudent: Many earth-sheltered housing projects use natural, non-toxic resources for building materials, such as rammed earth, which are surprisingly durable. Some of these houses have a predicted life span of five hundred years or more.\nStudent: The extra protection offered by this type of housing means less exposure to the elements, which keeps maintenance to a minimum, as there aren’t any outside walls to paint or gutters to clear, for example.\nStudent: Living underground also brings the advantage of a quieter environment. Eliminating disturbances caused by traffic — an enormous problem these days and one of the most common reasons for people to consider moving home.\nStudent: And lastly, despite the misconception that underground houses must be very damp, earth-sheltered housing offers significant health advantages. The sophistication of the ventilation systems installed in earth-sheltered houses brings enormous benefits to people suffering from asthma and other chest conditions.\nStudent: I’d like now to turn to the situation in the UK, where, despite all the obvious advantages, earth-sheltered housing still isn’t a popular option for most homeowners as the statistics prove.\nStudent: The British Earth Sheltering Association says that people shouldn’t be put off by fears of too much red tape, as it is getting easier to get planning permission. There is quite a lot of evidence that building development offices are more sympathetic to earth-sheltered projects, especially in conservation areas.\nStudent: Special consideration has been given to several underground homes on sites where conventional development would not normally be allowed. And there are hopes that one day Britain’s coastline will no longer be dominated by mobile homes, and instead the job of providing this type of accommodation will be done by earth-sheltered housing.\nStudent: I’d like to finish by looking at two quite different projects — Mole Manor and the Hockerton Project.\nStudent: When it was first built, Mole Manor generated international media interest and was voted one of the twelve most desirable places to live in the world in a national newspaper poll. Hockerton also attracted wide publicity, winning several awards for its innovative environmental design. [favourable reaction — both — C]\nStudent: As is the case for all earth-sheltered homes, running costs at Mole Manor are substantially lower than for conventional homes. Because of its effective insulation, its heating bills are approximately 75% lower than for conventional houses.\nStudent: However, at Hockerton, solar energy, wind power and rain are used to generate enough warmth, electricity for light and cooking, and water for washing and drinking for all the needs of the five families who live there. Their aim of living a holistic lifestyle in harmony with the environment has been realized. [self-sufficiency in energy — Hockerton — B]\nStudent: Hockerton also proves that earth-sheltered houses can be built on a modest budget. Each of the families contributed £80,000, the cost of an average family house in this area. [low building costs — Hockerton — B]\nStudent: The homely terraced cottage style at Hockerton contrasts with the grandeur and space of Mole Manor, which today is worth over £800,000. [luxurious accommodation — Mole Manor — A]\nStudent: The combination of architecturally sensitive designs with new energy-saving technology satisfies all the criteria for ecological environmental planning.\nThat is the end of part four. You now have forty-five seconds to check your answers to part four.\nThat is the end of the listening test. You now have 10 minutes to transfer your answers to the listening answer sheet."
+  }
+ ],
+ "audio": {
+  "file": "listening-2.mp3",
+  "durationSec": 1602,
+  "questionTimes": {
+   "1": 70,
+   "2": 82,
+   "3": 107,
+   "4": 126,
+   "5": 178,
+   "6": 196,
+   "7": 211,
+   "8": 257,
+   "9": 268,
+   "10": 290,
+   "11": 408,
+   "12": 422,
+   "13": 447,
+   "14": 467,
+   "15": 500,
+   "16": 514,
+   "17": 581,
+   "18": 606,
+   "19": 643,
+   "20": 682,
+   "21": 829,
+   "22": 861,
+   "23": 875,
+   "24": 915,
+   "25": 948,
+   "26": 1045,
+   "27": 1072,
+   "28": 1085,
+   "29": 1108,
+   "30": 1128,
+   "31": 1282,
+   "32": 1293,
+   "33": 1314,
+   "34": 1346,
+   "35": 1361,
+   "36": 1401,
+   "37": 1454,
+   "38": 1492,
+   "39": 1508,
+   "40": 1534
+  }
+ }
+}

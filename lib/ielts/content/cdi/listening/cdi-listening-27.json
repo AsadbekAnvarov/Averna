@@ -1,0 +1,619 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-27",
+ "title": "CDI Listening Test 27",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "woman called Jan telephoning a man about booking a place on a residential workshop",
+  "farm manager talking to a group of people who are starting work at a fruit farm",
+  "environmental science lecture about a plant called Jatropha and its uses"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-27-part-1",
+   "title": "Part 1",
+   "context": "You will hear a woman called Jan telephoning a man about booking a place on a residential workshop.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Drama Workshop Booking\n- Name: Jan [[1]]\n- Address: 20 [[2]]\n- Occupation: [[3]]\n- Course date: [[4]]\n- Earliest arrival time: [[5]]\n- Diet: does not eat anything made from [[6]]\n- Preferred afternoon option: [[7]]\n- Found out about the course from the [[8]]\n- Pre-course material requested: a [[9]]\n- No time to read the recommended [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Cresswick"
+       ],
+       "explanation": "Jan spells her surname: 'C-R-E-S-W-I-C-K.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "Gregory Place"
+       ],
+       "explanation": "Jan corrects: 'Gregory Place, actually' when the man says 'Gregory Avenue.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "waitress"
+       ],
+       "explanation": "'I want to be an actor, but I’m working as a waitress at the moment.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "13th June",
+        "13 June",
+        "June 13",
+        "13th of June"
+       ],
+       "explanation": "Jan corrects: 'Sorry, no, on the 13th of June. I meant the one starting in two weeks.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "5:30",
+        "5.30",
+        "five thirty",
+        "530"
+       ],
+       "explanation": "Jan asks: 'Is 5:30 too early to arrive?' The man replies: 'No, that’s fine.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "milk"
+       ],
+       "explanation": "'I don’t eat anything that’s made from milk.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "comedy",
+        "comic"
+       ],
+       "explanation": "'There’ll be a choice of doing comic or classic work.' Jan says: 'I’d always go with comedy.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "Internet",
+        "the Internet"
+       ],
+       "explanation": "'I looked for drama courses on the Internet and I saw that you were doing one.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "leaflet"
+       ],
+       "explanation": "'I’d be grateful for your leaflet, the one you mentioned in your publicity.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "books"
+       ],
+       "explanation": "'I don’t have much time to read any of the books you’re recommending' — the pre-course material includes recommended books."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a woman called Jan telephoning a man about booking a place on a residential workshop.\nMan: Hello, Creative Centre.\nJan: Hello there. I’m phoning to book a place on your next two-day drama workshop.\nMan: OK. Let me just check. Yes, we’ve still got room on that course. Great. Can I have your full name?\nJan: Yes, it’s Jan Cresswick. That’s C-R-E-S-W-I-C-K.\nMan: Thanks, Jan. And are you coming on your own?\nJan: Yes.\nMan: And have you done any of our courses before?\nJan: Yes, I did one a couple of years ago.\nMan: Great. So you may be on our computer records. Which course did you do?\nJan: The Writing for the Theatre course.\nMan: OK. Right. Yes, here we are. Oh, so that’s 20 Gregory Avenue.\nJan: Gregory Place, actually.\nMan: OK. I’ll correct that on the computer. And can I ask if you work?\nJan: Yes. I want to be an actor, but I’m working as a waitress at the moment. After this course, who knows?\nMan: Right, back to the paperwork. So, we’re enrolling you on the two-day course that starts tomorrow, the 30th of May.\nJan: Oh, uh, sorry, no, on the 13th of June. I meant the one starting in two weeks. Is that still all right?\nMan: Oh, that’s fine.\nJan: Can you tell me something about accommodation?\nMan: Yes. People usually come the evening before the course starts. The cost of the course includes accommodation for two nights.\nJan: Well, I’ll make sure I’m there in good time so I can meet the others that evening and settle in. Is 5:30 too early to arrive?\nMan: No, that’s fine. And you’ll finish no later than 5 o’clock on the last day. Right. Just a few other things. Any dietary information we should know?\nJan: All the food is provided and we use organic produce as often as we can. That sounds great. But I don’t eat anything that’s made from milk. I know that can be difficult.\nMan: It’s not a problem. What about meat? Do you eat that?\nJan: I don’t eat much of it, but that’s fine. You don’t need to note that.\nMan: Sure? Yes. Hey, I am really looking forward to this.\nMan: Great. I don’t know if you know this, but we may divide into two groups in the afternoon if we have more than 16 people on the course. If we do that, there’ll be a choice of doing comic or what we call classic work.\nJan: Oh, I’d always go with comedy. I’m much more interested in that.\nMan: Now, how did you find out about this course? Was it the adverts in the Sunday newspaper?\nJan: No. In fact, I looked for drama courses on the Internet and I saw that you were doing one. When I read about it, I just thought, hey, why not?\nMan: I saw that you send out some pre-course material.\nJan: Yes. I don’t have much time to read any of the books you’re recommending, but I’d be grateful for your leaflet, the one you mentioned in your publicity.\nMan: Sure. I’ll put a copy in the post to you.\nJan: Thanks a lot. I can’t wait."
+  },
+  {
+   "id": "cdi-listening-27-part-2",
+   "title": "Part 2",
+   "context": "You will hear a farm manager talking to a group of people who are starting work at a fruit farm.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What accommodation option is recommended apart from camping?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the farmhouse"
+        },
+        {
+         "key": "B",
+         "text": "a motel"
+        },
+        {
+         "key": "C",
+         "text": "a backpackers hostel"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The motel is mentioned as conveniently located with reduced rates for long-term stays."
+      },
+      {
+       "n": 12,
+       "text": "What does the farm manager say about the current season?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It has been unusually dry"
+        },
+        {
+         "key": "B",
+         "text": "Some fruit is in poor condition"
+        },
+        {
+         "key": "C",
+         "text": "The autumn harvest looks promising"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'This season’s been better than some we’ve had recently. And the autumn looks like it’s going to be great.'"
+      },
+      {
+       "n": 13,
+       "text": "What will fruit pickers be given?",
+       "options": [
+        {
+         "key": "A",
+         "text": "gloves"
+        },
+        {
+         "key": "B",
+         "text": "boots"
+        },
+        {
+         "key": "C",
+         "text": "hats"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'We’ll give all the fruit pickers gloves to wear to protect your fingers.'"
+      },
+      {
+       "n": 14,
+       "text": "What is required to drive a tractor on this farm?",
+       "options": [
+        {
+         "key": "A",
+         "text": "previous farm experience"
+        },
+        {
+         "key": "B",
+         "text": "a minimum age of 18"
+        },
+        {
+         "key": "C",
+         "text": "a relevant permit or document"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'You must have a relevant document or permit from your country that allows you to operate this type of vehicle.'"
+      },
+      {
+       "n": 15,
+       "text": "What must workers wear in the shed?",
+       "options": [
+        {
+         "key": "A",
+         "text": "safety goggles"
+        },
+        {
+         "key": "B",
+         "text": "ear protection"
+        },
+        {
+         "key": "C",
+         "text": "a hard hat"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'When that’s operating you must wear your ear protection' in the shed."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Choose the correct letter, A–H, next to questions 16–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 16,
+       "text": "Workshop",
+       "answer": [
+        "E"
+       ],
+       "explanation": "The workshop is accessed from the road going out to the orchards, close to main yard."
+      },
+      {
+       "n": 17,
+       "text": "Lunchroom",
+       "answer": [
+        "G"
+       ],
+       "explanation": "The lunchroom is halfway round the bend on the north road, next to the river and a wood."
+      },
+      {
+       "n": 18,
+       "text": "Farm office",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The farm office is the smallest building on the south side of the main yard."
+      },
+      {
+       "n": 19,
+       "text": "First aid room",
+       "answer": [
+        "H"
+       ],
+       "explanation": "The first aid room is attached to the farmhouse, more or less in the middle of the map."
+      },
+      {
+       "n": 20,
+       "text": "Store shed",
+       "answer": [
+        "D"
+       ],
+       "explanation": "The store shed: from main yard, take north road, past farmhouse, turn right."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening27-map.webp",
+      "alt": "Parsons Fruit Farm Map"
+     }
+    }
+   ],
+   "transcript": "You will hear a farm manager talking to a group of people who are starting work at a fruit farm.\nManager: Well, hello everyone and welcome to Parsons Fruit Farm. It’s good to see a mix of so many different nationalities who have all come here on their working holidays. I’m sure you’re going to enjoy working on our farm.\nManager: First of all, just a few words about accommodation. I know that some of you have pitched your tents down at the campground, but are looking for something more comfortable. So one option is the motel. It’s located very conveniently, just a few minutes away, and they often do reduce rates if you’re staying long term. And then the backpackers hostel is always very popular, though it can be busy at this time of year.\nManager: OK, so the work itself. This summer the weather’s been pretty mixed. We’ve had a bit of everything and the forecasts have always been wrong. So some of the apples and pears aren’t in great condition. That said, this season’s been better than some we’ve had recently. And the autumn looks like it’s going to be great. So we should have ideal conditions for the harvest.\nManager: So, there are a number of different jobs to do. Most of you will be fruit picking. We’ll give all the fruit pickers gloves to wear to protect your fingers so you won’t hurt yourselves.\nManager: We’ll also be looking for some tractor drivers. Their job is to collect the full baskets of fruit and take them to the shed. I should say, in this country, anyone is allowed to drive a tractor on farmland once they’re 13, rather than 18 as in some countries. However, we do have certain rules that are specific to our farm. You don’t need to have done farm work before. But here you must have a relevant document or permit from your country that allows you to operate this type of vehicle.\nManager: Then there are also lots of jobs working inside the shed. This involves sorting the fruit and cleaning it if necessary. There’s a lot of heavy machinery in the shed, so when that’s operating you must wear your ear protection. The big advantage is the shed’s fully air-conditioned, so it’s a pleasant environment regardless of what the weather’s doing outside.\nManager: All right, well, whatever job you do, I’ll just give you some final advice. When you’re picking the fruit, sometimes you can break off a small branch. That’s not something you need to be worried about. It’ll grow back. Also, remember to have snacks and use your water bottles often. People get exhausted quickly during harvest time. And if you’ve got a mobile or cell, keep it with you at all times in case there’s an emergency.\nManager: Alright, I’d like to quickly go over where everything is located. So look at your maps of Parsons Fruit Farm and find the main yard. It’s towards the bottom of your maps. That really is the centre of the farm.\nManager: OK, the first place I’ll mention is the workshop (E). This is close to the main yard, but you actually have to leave the yard to get into it. So you need to take the road that goes out to the orchards and you access the workshop from there.\nManager: Then the lunchroom (G). On the north side of the map there’s a road that curves sharply round to the left. Halfway round this bend you’ll find the entrance to the lunchroom. It’s a pretty place, next to the river and also beside a little wood.\nManager: You also need to be able to find the farm office (B). So, if you look at the main yard, you’ll see there’s a number of different buildings located around it. And the farm office is the smallest one. It’s on the south side.\nManager: Obviously, the first aid room (H) is important. Now, this is close to the main yard, so it’s quick to get there. And it’s actually more or less in the middle of your maps. That little building that’s attached to the farmhouse.\nManager: Then the store shed (D). From the main yard, take the road heading north. Go past the farmhouse and turn right. The store is down that road. If you come to the vegetable gardens, you’ve gone too far."
+  },
+  {
+   "id": "cdi-listening-27-part-3",
+   "title": "Part 3",
+   "context": "You will hear part of a discussion between two students, Liz from New Zealand and Scott from the UK, who are working on a presentation about a key historical site in New Zealand.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Why was Stone Point chosen as a presentation topic?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is a volcanic site"
+        },
+        {
+         "key": "B",
+         "text": "It overlooks a harbour"
+        },
+        {
+         "key": "C",
+         "text": "It has significant historical importance"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The tutor allocated the topic because of Stone Point’s significant historical role — used for shelter/attack for centuries."
+      },
+      {
+       "n": 22,
+       "text": "What initially attracted the Māori to settle at Stone Point?",
+       "options": [
+        {
+         "key": "A",
+         "text": "fishing opportunities"
+        },
+        {
+         "key": "B",
+         "text": "fertile volcanic soil"
+        },
+        {
+         "key": "C",
+         "text": "shelter from attack"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Initially 'the fishing opportunities would have been the attraction' not the soil."
+      },
+      {
+       "n": 23,
+       "text": "Why should Māori terminology be limited in the presentation?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is not relevant to the topic"
+        },
+        {
+         "key": "B",
+         "text": "International students won’t follow it"
+        },
+        {
+         "key": "C",
+         "text": "There is not enough time to explain it"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "They need to keep most Māori terminology out because international students won’t follow."
+      },
+      {
+       "n": 24,
+       "text": "What does Liz think the presentation should focus on?",
+       "options": [
+        {
+         "key": "A",
+         "text": "technical details of the engines installed"
+        },
+        {
+         "key": "B",
+         "text": "the military history of Stone Point"
+        },
+        {
+         "key": "C",
+         "text": "the impact on people’s lives"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Liz says: 'It’s more interesting to look at the impact Stone Point had on the people’s lives at the time.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "| Section | Task |\n| Early Māori | Check the [[25]] of the source material |\n| Lookout point | Locate some [[26]] of Stone Point |\n| Fort reconstruction | Add detail about what the [[27]] were adding |\n| 1930s–40s modernisation | Try to [[28]] the site |\n| 1950s onwards | Ask about [[29]] work |\n| Public park today | Check the [[30]] of the park |",
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "writers",
+        "authors"
+       ],
+       "explanation": "'Make sure we know who the writers were and when they wrote it.'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "drawings"
+       ],
+       "explanation": "'I’m sure we can locate some drawings of how Stone Point looked then.'"
+      },
+      {
+       "n": 27,
+       "answer": [
+        "prisoners"
+       ],
+       "explanation": "'We should add some more information about what it was the prisoners were adding to it.'"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "film"
+       ],
+       "explanation": "'I’ll ring the Department of Conservation and see if they’ll agree to let me film the site.'"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "restoration"
+       ],
+       "explanation": "'Could you arrange a meeting … to ask them about their restoration work?'"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "boundary"
+       ],
+       "explanation": "'Where is the boundary exactly? Does it go all the way to the beach?' — 'I’ll check that out.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear part of a discussion between two students, Liz from New Zealand and Scott from the UK, who are working on a presentation about a key historical site in New Zealand.\nScott: Hi Liz, here are my notes. Let’s sort this presentation out then.\nLiz: The first thing I found out about Stone Point is it’s an extinct volcanic cone. You probably know that already, being a New Zealander.\nScott: Yes, and there are two other cones nearby, which also overlook the harbour.\nLiz: Right. Yeah, the first settlers of New Zealand, the Māori, sailed to New Zealand thousands of years after these volcanoes erupted. I think the tutor allocated us this topic, though, because of Stone Point’s significant historical role. It’s been used by both Māori and European settlers as a place to shelter from attack, or launch an attack, for centuries.\nScott: Yeah, and the fact it was an ideal place for building a village, it would have been quite a sheltered spot. I suppose the Māori settled there because they thought the volcanic soil would help their crops grow.\nLiz: Well, they would have realised the benefits of the soil after a few good harvests, but initially the fishing opportunities would have been the attraction.\nScott: You’re right. Actually, I also read that Māori regard Stone Point as taonga. I believe that means a treasured thing.\nLiz: Wow, your Māori vocabulary is improving, Scott. We do have to deal with Stone Point’s cultural value for Māori. That’s still part of its historical significance. But we need to keep most Māori terminology out of the presentation. Otherwise, a lot of the international students won’t be able to follow us.\nScott: That’s a shame. I’m sure they’d be interested. I mean, I am. But, yeah, we wouldn’t be able to explain it in the time allowed, so I guess we have to stick to English.\nLiz: Anyway, European migrants turned Stone Point into a lookout point for ships. Then it became a fort, an army base in the late 1880s, and then during the World Wars the fort was modernised again. It’s also been a public park sometimes.\nScott: I’d prefer to devote more of the presentation to the military use of Stone Point. There are some great websites about the engines they installed.\nLiz: Sorry, I wouldn’t go into the technical side if I were you. If you start describing mechanical stuff, people will switch off. I think it’s more interesting to look at the impact Stone Point had on the people’s lives at the time. I mean, for example, there were about 25 years when they used local prisoners to build the tunnels and the underground rooms. They lived there too.\nScott: Yeah, I guess, if we can find some first-hand accounts.\nLiz: OK, so let’s make a checklist of things to do. For the early Māori inhabitation section, we have to look at the material we’ve used again and make sure we know who the writers were and when they wrote it.\nScott: Yes, that needs work. And for the part about Stone Point being used as a lookout point, I’m sure we can locate some drawings of how Stone Point looked then and the kind of ships coming in.\nLiz: Nice. And what else? We haven’t got a lot of detail for the reconstruction of the fort. We should add some more information about what it was the prisoners were adding to it.\nScott: OK. I’ll do that bit too. So I’ll deal with the section regarding the modernisation that happened in the 1930s and 40s. I mean, that’s a bit where we have the most visible evidence of historic buildings. I’ll ring the Department of Conservation and see if they’ll agree to let me film the site. Maybe allow me access to some of the tunnels the public don’t see.\nLiz: OK. For the 1950s onwards, could you also arrange a meeting with someone from the Department of Conservation to ask them about their restoration work?\nScott: I could try. Oh, and just about its use as a public park today. Where is the boundary exactly? Does it go all the way to the beach?\nLiz: Not sure. I’ll check that out. Great. I suppose it would finish off the presentation nicely if we explained the future plans for the site."
+  },
+  {
+   "id": "cdi-listening-27-part-4",
+   "title": "Part 4",
+   "context": "You will hear an environmental science lecture about a plant called Jatropha and its uses.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "Jatropha — Plant-based Biofuel\nProperties\n- survives in poor, infertile soil\n- resistant to drought for up to three years\n- prevents [[31]] of soil\nOil production\n- seeds can be distilled to produce [[32]]\n- yields up to 4 times the oil of [[33]]\n- residue is processed into [[34]] for power stations\n- energy produced is [[35]]\nBenefits\n- boiled leaves relieve [[36]] sufferers\n- corporations claim it will help end [[37]]\nConcerns\n- banned in Western Australia because seeds are [[38]]\n- farmers may grow Jatropha instead of [[39]]\n- vast areas of [[40]] are being cut down",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "erosion"
+       ],
+       "explanation": "'It’s still worth having it on your land as it prevents erosion.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "diesel oil",
+        "diesel"
+       ],
+       "explanation": "'Jatropha seeds can be slowly distilled to produce diesel oil.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "soybean",
+        "soybeans",
+        "soy bean"
+       ],
+       "explanation": "'The seeds can yield up to four times the oil that soybean can.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "biomass"
+       ],
+       "explanation": "'After the oil has been extracted, the residue is processed into biomass.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "renewable"
+       ],
+       "explanation": "'The energy produced by biofuels such as Jatropha is renewable.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "malaria"
+       ],
+       "explanation": "'The boiled leaves can do much to relieve the suffering of people with malaria.'"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "poverty"
+       ],
+       "explanation": "'It will help them bring an end to poverty by providing a long-term local industry.'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "toxic"
+       ],
+       "explanation": "'Jatropha has been banned since the seeds of some species are toxic.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "food crops"
+       ],
+       "explanation": "'Farmers now have a strong economic incentive to grow them rather than food crops.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "rainforest",
+        "rain forest"
+       ],
+       "explanation": "'Companies are cutting down vast areas of rainforest which can never be replaced.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear an environmental science lecture about a plant called Jatropha and its uses.\nLecturer: Good afternoon. As you know, the world is running out of fossil fuels, that is crude oil, coal and natural gas. As an alternative, certain plants are now being considered as biofuels, which are fuels made from organic plant material. These are possible sources of energy once the fossil fuels have gone forever.\nLecturer: Well, one such plant goes by the name of Jatropha. It was first a native of Central America and it’s now found across the world. A few things that make this plant especially attractive is that it can survive in very poor quality infertile soil, as it does, for example, alongside train tracks in India on the line between Mumbai and Delhi. And for up to three years, it’s resistant to drought. That’s right, it can do without rain for that long. And even if it’s not actually a plant that people can eat, it’s still worth having it on your land as it prevents erosion. And we looked at the dangerous consequences of that in a previous lecture.\nLecturer: Furthermore, Jatropha seeds can be slowly distilled to produce diesel oil, and it’s this kind of fuel, of course, that’s of interest to scientists and power companies. After processing, the seeds can yield up to four times the oil that soybean can, and ten times the amount compared to corn. So you can see why it’s causing such interest.\nLecturer: And not much is wasted in the processing procedure either. After the oil has been extracted from the seeds, the residue is processed into biomass, which can run power stations, which in turn can provide electricity for thousands of local homes. Also, whereas our fossil fuels cannot be replaced, the energy produced by biofuels such as Jatropha is renewable. It’s not going to run out because the plants just go on growing.\nLecturer: There’s no doubt that it is a remarkable plant, and one that has been very beneficial to man. In various African communities, it’s been used to operate water pumps and refrigerate medicines. It can be used to produce candles or as a fencing plant to keep some animals enclosed and some animals out. It can also treat a number of health problems. For example, the boiled leaves can do much to relieve the suffering of people with malaria. And some Jatropha species have seeds which are used to treat digestion problems.\nLecturer: Anyway, that’s not what the European corporations who are buying vast amounts of land for Jatropha plantations are focusing on. They claim that people who are dependent on rural economies will benefit from growing Jatropha and that it will help them bring an end to poverty by providing a long-term local industry. They also point out that few or no modifications would be necessary in modern diesel engines since they were originally designed to run on biofuels such as peanut oil and ethanol anyway. Of course, when the plants are burnt, they release carbon dioxide, but they absorb great amounts when they’re growing, making them a considerably greener alternative to fossil fuels.\nLecturer: But not everyone shares the excitement over Jatropha, nor other biofuels. In Western Australia, Jatropha has in fact been banned since the seeds of some species are toxic, and it only takes three or four to kill a person, and animals are also very vulnerable. Furthermore, sceptics also point out that as there are many species of Jatropha, its oil productivity is unreliable.\nLecturer: Aside from this, critics of Jatropha and other biofuels claim that farmers now have a strong economic incentive to grow them rather than food crops. Poor countries would be particularly affected because they would have to rely on imported foods to survive and people would end up having to pay greatly inflated prices for basic foods.\nLecturer: There’s also the concern over environmental damage. In order to provide land for palm oil or sugarcane plantations, for instance, companies are cutting down vast areas of rainforest which can never be replaced, and this in turn results in the disappearance of wildlife which depended on that habitat. You can also imagine that such deforestation makes a considerable contribution to global warming. Furthermore, opponents also reject the idea that biofuels are a carbon-neutral source of energy."
+  }
+ ],
+ "audio": {
+  "file": "listening-27.mp3",
+  "durationSec": 1639,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

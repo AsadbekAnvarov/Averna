@@ -1,0 +1,617 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-71",
+ "title": "CDI Listening Test 71",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-71-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "Joining Social Club Form",
+     "template": "- Name: Jenny F.\n- Nationality: [[1]]\n- Address: [[2]] Rd., Bondi\n- Mobile phone: [[3]]\n- Occupation: [[4]]\n- Free-time interests: singing and [[5]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Malaysian"
+       ],
+       "explanation": "So you're Malaysian, are you?"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "13 Anglesea",
+        "13 Anglesey"
+       ],
+       "explanation": "Sure. Just at the moment I'm lodging with a family at 13 Anglesey Road in Bondi."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "040 4229160",
+        "0404229160",
+        "040-4229160",
+        "040 422 9160"
+       ],
+       "explanation": "It's 04042 9160."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "economist"
+       ],
+       "explanation": "Well, at the moment I'm doing a temporary job with a company here in Sydney. I'm an economist, in fact."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "dancing"
+       ],
+       "explanation": "Well I'm quite musical and I really enjoy singing. Mm-hmm. Back home I sang with a band, just you know, for fun. But for me what I like best is dancing. You know theu2026"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 6,
+       "text": "According to Don, what might be a problem for Jenny?",
+       "options": [
+        {
+         "key": "A",
+         "text": "understanding local people"
+        },
+        {
+         "key": "B",
+         "text": "her accent"
+        },
+        {
+         "key": "C",
+         "text": "talking to her colleagues"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "And you've got a really nice American accent, so I don't suppose you have any communication problems in the office, though you might find some of our Australian slangu2026"
+      },
+      {
+       "n": 7,
+       "text": "How many members does the club have now?",
+       "options": [
+        {
+         "key": "A",
+         "text": "eighty"
+        },
+        {
+         "key": "B",
+         "text": "fifty"
+        },
+        {
+         "key": "C",
+         "text": "thirty"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Sure. We've got uh let's see, currently about fifty members, but people join all the time, so I should think that figure will go up."
+      },
+      {
+       "n": 8,
+       "text": "How often does the club meet?",
+       "options": [
+        {
+         "key": "A",
+         "text": "once a month"
+        },
+        {
+         "key": "B",
+         "text": "once every two weeks"
+        },
+        {
+         "key": "C",
+         "text": "once a week"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Yes, every second Thursday evening, in fact, so a couple of times a month. Though of course when you start making friends you'll be getting together with them moreu2026"
+      },
+      {
+       "n": 9,
+       "text": "What is the club’s most frequent type of activity?",
+       "options": [
+        {
+         "key": "A",
+         "text": "a visit"
+        },
+        {
+         "key": "B",
+         "text": "a meal"
+        },
+        {
+         "key": "C",
+         "text": "a talk"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The usual thing is for one of the members to give a little presentation about where they're from, their customs and so on."
+      },
+      {
+       "n": 10,
+       "text": "The main purpose of the club is to help members to",
+       "options": [
+        {
+         "key": "A",
+         "text": "learn about life in Australia."
+        },
+        {
+         "key": "B",
+         "text": "enjoy themselves together."
+        },
+        {
+         "key": "C",
+         "text": "meet Australians."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "No, not at all. The main point of the club is to give people like you the chance to mix in more with people from this country, uh people of all ages. You'll find usu2026"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Now turn to part one.\nA: Part one\nB: You will hear the manager of an electronic goods store giving instructions to her new assistant.\nB: First, you have some time to look at questions one to three on page two.\nA: Hello, come in and take a seat.\nC: Oh thanks.\nA: Good. And uh how can I help you?\nC: Well, I’d quite like to join this International Social Club, and I was hoping you could help me.\nD: Uh yes, no problem. Uh let me just get the form up on my screen and I’ll fill in your details. Let’s see. Yes, here we are.\nD: Okay, the first thing we need is your name.\nC: Jenny Foo. That’s Fou O.\nD: Okay, great. And can you tell me how old you are, Jenny?\nC: I’m 21. Great.\nD: And how long have you been here in Australia, by the way?\nC: I arrived just last month. Two weeks before the start of the academic year. Just to sort things out and settle in a bit.\nD: Good idea. Where are you from originally?\nC: I’m from Kuala Lumpur. That’s where I was born and brought up.\nD: So you’re Malaysian, are you?\nC: That’s right. Though I lived in the United States for a couple of years when I was a teenager. We went there for my father’s job.\nD: Right. And can you tell me your current address, please?\nC: Sure. Just at the moment I’m lodging with a family at 13 Anglesey Road in Bondi.\nD: Okay, let me just type that in.\nD: Uh how do you spell Anglesey, by the way?\nC: It’s spelled\nC: A N G L E S E A.\nD: Thanks. That’s quite a long way from the city center, isn’t it? Uh is it a problem getting into the city center?\nC: Not really. Because the buses are good and it’s a nice quiet area to live in.\nD: Hmm, that’s true. So I guess you must have a cell phone number you can give me so we can keep you informed of events and so on.\nC: Yes. Let me just have a look. It’s a new one, so I haven’t learned the number yet. Ah here it is.\nC: It’s 04042 9160.\nD: Okay, good. And you like the family you’re living with?\nC: Sure. They’ve got a little boy who is quite noisy, but he’s really no trouble.\nD: Fine. Now let’s see what’s next. Uh yep. Can you tell me what you do? I mean, are you working or studying?\nC: Well, at the moment I’m doing a temporary job with a company here in Sydney. I’m an economist, in fact.\nD: Okay. And how long do you think you’ll be here in Sydney?\nC: At least a year. I may look for work here afterwards.\nD: Great.\nD: Now you want to join the International Social Club and it will be good to know a bit about your free time interests as well. What do you like doing?\nC: Well I’m quite musical and I really enjoy singing. Mm-hmm. Back home I sang with a band, just you know, for fun. But for me what I like best is dancing. You know the modern sort? I really love it.\nB: Before you hear the rest of the conversation, you have some time to look at questions four to ten on page three.\nD: So how are you getting on here? I mean, your level of English is better than most people who come from overseas to work.\nD: And you’ve got a really nice American accent, so I don’t suppose you have any communication problems in the office, though you might find some of our Australian slang more difficult to understand.\nC: Well a bit. But I haven’t met that many Australians yet, outside of work, I mean.\nD: Right.\nC: But could you tell me a bit about the International Club now I’ve joined?\nD: Sure. We’ve got uh let’s see, currently about fifty members, but people join all the time, so I should think that figure will go up.\nD: Last year we had thirty members, and the year before just eighteen. So we’re growing and getting better known. I reckon that at this rate next year we’ll have about eighty.\nC: And does the club hold regular meetings?\nD: Yes, every second Thursday evening, in fact, so a couple of times a month. Though of course when you start making friends you’ll be getting together with them more often than that, I guess.\nD: The next meeting will be next Thursday, if I’m not mistaken. Uh yes, that’s right.\nC: And what happens when the club meets?\nC: I mean what sort of things are organized?\nD: The usual thing is for one of the members to give a little presentation about where they’re from, their customs and so on.\nD: But from time to time they do other things, outings to places around Sydney, or meeting up to eat together in a restaurant or go to a concert together or something like that.\nC: Okay, that sounds fun. And the members aren’t just people from other countries, non-Australians, are they?\nD: No, not at all. The main point of the club is to give people like you the chance to mix in more with people from this country, uh people of all ages. You’ll find us very friendly.\nD: I think the contact has a positive effect on visitors to this country. And in fact, it affects us locals positively as well. You know, it’s a sort of intercultural experience for everybody.\nD: And of course you should get the chance to do all sorts of activities with other members of the club if you want to. It’s not just for talking, and hopefully you’ll make friends with people who have similar interests.\nC: It sounds great. I’m really looking forward to the first meeting.\nA: That is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-71-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap-box",
+     "instructions": "What does the organiser tell the members about who should do each of the following tasks? Choose the correct answer for each task and move it into the gap.",
+     "title": "Tasks",
+     "options": [
+      {
+       "key": "A",
+       "text": "all the members must do it"
+      },
+      {
+       "key": "B",
+       "text": "members have the option of doing it"
+      },
+      {
+       "key": "C",
+       "text": "the organiser is responsible for doing it"
+      }
+     ],
+     "template": "taking tents [[11]]\nbooking campsites [[12]]\ntaking bicycles [[13]]\nbuying train tickets [[14]]\nbuying tickets for a football match [[15]]\ncollecting information about the area [[16]]",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "A"
+       ],
+       "explanation": "As you know, the original idea was that I'd arrange to borrow some tents that belong to the college, but it turns out that the mountaineering club will be using themu2026"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "C"
+       ],
+       "explanation": "So could you let me know whether you'll be using a single tent or sharing, please? I'll need to know how many tents there'll be for when I make the reservation at theu2026"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "A"
+       ],
+       "explanation": "Well, I've inquired about bike hire in Westbury, the town where we'll be arriving, and unfortunately there aren't any shops that hire them out, so I'm afraid it meansu2026"
+      },
+      {
+       "n": 14,
+       "answer": [
+        "C"
+       ],
+       "explanation": "I'll book them on the train when I book the train tickets, which reminds me I'll need to know the final number of people going so I can get a group discount on theu2026"
+      },
+      {
+       "n": 15,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Something else that'll need to be booked is tickets for the football match we discussed last time. I've inquired about availability, and there are only a few seatsu2026"
+      },
+      {
+       "n": 16,
+       "answer": [
+        "C"
+       ],
+       "explanation": "At our next meeting I'll be able to give you all individual packs with the final programme and something about the area we'll be cycling through and places we'll beu2026"
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Which location has the following attractions? Choose the correct attraction for each location and move it into the gap.",
+     "title": "Locations",
+     "options": [
+      {
+       "key": "A",
+       "text": "locally produced food"
+      },
+      {
+       "key": "B",
+       "text": "steam railway"
+      },
+      {
+       "key": "C",
+       "text": "farming museum"
+      },
+      {
+       "key": "D",
+       "text": "water sports"
+      },
+      {
+       "key": "E",
+       "text": "transport museum"
+      },
+      {
+       "key": "F",
+       "text": "horse riding"
+      },
+      {
+       "key": "G",
+       "text": "old ruins"
+      },
+      {
+       "key": "H",
+       "text": "market selling clothes"
+      }
+     ],
+     "template": "Westbury [[17]]\nCluny [[18]]\nPennerley [[19]]\nFarlow [[20]]",
+     "questions": [
+      {
+       "n": 17,
+       "answer": [
+        "G"
+       ],
+       "explanation": "Now I'll tell you briefly about some of the attractions in the places we'll be staying at. As I said, we'll be taking the train to Westbury, which has one or two veryu2026"
+      },
+      {
+       "n": 18,
+       "answer": [
+        "C"
+       ],
+       "explanation": "The site is being excavated, and you'll be able to help out if you want to. Our next overnight stop will be in the village of Clooney."
+      },
+      {
+       "n": 19,
+       "answer": [
+        "A"
+       ],
+       "explanation": "There are plenty of photographs showing how agricultural workers used to live too. From there we'll go on to Pennerley."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "E"
+       ],
+       "explanation": "In Farlow, which is one of the oldest towns in the area, there's a museum that shows how horses used to be the most common way of travelling around, and how they wereu2026"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Part two\nB: You will hear the leader of a college camping club talking to members about a cycling holiday that they are going to have together.\nB: First, you have some time to look at questions eleven to sixteen on page four.\nB: Now listen carefully and answer questions eleven to sixteen.\nB: Right, now let me bring you up to date with arrangements for our cycling tour next month. First of all, there’s the question of tents.\nB: As you know, the original idea was that I’d arrange to borrow some tents that belong to the college, but it turns out that the mountaineering club will be using them at the same time. So I’m afraid you’ll have to bring your own.\nB: So could you let me know whether you’ll be using a single tent or sharing, please? I’ll need to know how many tents there’ll be for when I make the reservation at the various campsites.\nB: Last time some of you said you’d like to hire bikes and pick them up when we arrive rather than taking your own with you.\nB: Well, I’ve inquired about bike hire in Westbury, the town where we’ll be arriving, and unfortunately there aren’t any shops that hire them out, so I’m afraid it means taking your own.\nB: I’ll book them on the train when I book the train tickets, which reminds me I’ll need to know the final number of people going so I can get a group discount on the train fare.\nB: Something else that’ll need to be booked is tickets for the football match we discussed last time. I’ve inquired about availability, and there are only a few seats left, so anyone who wants to go will need to get tickets very soon.\nB: Ideally today or tomorrow.\nB: At our next meeting I’ll be able to give you all individual packs with the final programme and something about the area we’ll be cycling through and places we’ll be visiting. I’m afraid I haven’t had time to do that yet.\nB: Before you hear the rest of the talk, you have some time to look at questions seventeen to twenty on page five.\nB: Now listen and answer questions seventeen to twenty.\nB: Now I’ll tell you briefly about some of the attractions in the places we’ll be staying at. As I said, we’ll be taking the train to Westbury, which has one or two very good restaurants.\nB: One thing that’s definitely worth visiting there is the site where the original town was constructed nearly 1,000 years ago. There’s not much of the original buildings left, but there’s still plenty to see.\nB: The site is being excavated, and you’ll be able to help out if you want to. Our next overnight stop will be in the village of Clooney.\nB: There are several old barns here that have been converted into a museum showing the importance of sheep in the area over the centuries. The wool used to be sold for cloth, and it made the district quite rich.\nB: There are plenty of photographs showing how agricultural workers used to live too. From there we’ll go on to Pennerley.\nB: Pennery is famous for its museum of village life, but that’s being refurbished at the moment and isn’t likely to reopen by the time we go there.\nB: But there’s an open-air farmers’ market every day selling fruits, vegetables, cheese and meat, all grown or processed within a few miles of the town and sold by the farmers themselves. It’s definitely worth a visit.\nB: In Farlow, which is one of the oldest towns in the area, there’s a museum that shows how horses used to be the most common way of travelling around, and how they were gradually replaced by steam trains, and later, of course, diesel and electric trains, buses, cars, and bicycles.\nB: Right, now I’ll pass round this sheet of paper.\nA: That is the end of part two. You now have thirty seconds to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-71-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "title": "Assignment Notes",
+     "template": "Things to do\n- check the accuracy of the [[21]] in the last section\n- try to give more [[22]]\nKaren’s tasks\n- she will give her presentation at the [[23]]\n- she must provide an explanation of [[24]] during the presentation\n- the abstract is due on [[25]]\n- the presentation will take place in the [[26]]\n- her presentation will be graded by a [[27]]",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "references"
+       ],
+       "explanation": "And I found some errors, just small ones, where you had quoted people but not recorded the information properly at the end. Don't forget to go through and make sureu2026"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "examples"
+       ],
+       "explanation": "Now, you make some good points, but it might be helpful if you could see if you can include a few extra examples, just to really hammer the point home."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "next seminar"
+       ],
+       "explanation": "Well, the thing is, Marco couldn't do it, so you agreed to do it at the next seminar, didn't you? So how can I help?"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "the experiment",
+        "experiment"
+       ],
+       "explanation": "Good question. Well, you have very little time really, so it's absolutely essential for you to explain the experiment."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "26 November",
+        "26th November",
+        "November 26",
+        "26 Nov",
+        "26th of November"
+       ],
+       "explanation": "Now they'll need to be done by the 3rd of December, so I'll need to see it by the twenty sixth of November, if that's okay. Yes, fine."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "Chemistry Lab",
+        "Chemistry Laboratory"
+       ],
+       "explanation": "In our faculty the only room free is the computer room, which is far from suitable. So we'll have to go across the road and do it in the chemistry lab. They've gotu2026"
+      },
+      {
+       "n": 27,
+       "answer": [
+        "professor"
+       ],
+       "explanation": "Yes, your first one is graded by your tutor, but this one will be assessed by the professor. But don't be worried, it'll be fine."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose THREE answers.",
+     "title": "Which THREE modules will Karen study next year?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Psycholinguistics"
+      },
+      {
+       "key": "B",
+       "text": "Phonology"
+      },
+      {
+       "key": "C",
+       "text": "Communication skills"
+      },
+      {
+       "key": "D",
+       "text": "Data collection"
+      },
+      {
+       "key": "E",
+       "text": "Social interaction"
+      },
+      {
+       "key": "F",
+       "text": "Discourse analysis"
+      }
+     ],
+     "questions": [
+      {
+       "n": 28,
+       "answer": [
+        "A",
+        "C",
+        "F"
+       ],
+       "explanation": "Kill two birds with one stone, as it were. And then I fancied something completely different. So I thought psycholinguistics would be interesting. Unless you thinku2026 I read the syllabuses, but they sound more or less the same to me. Anyway, I went for communication skills in the end, because I know the lecturer. Um I thought discourse analysis looked really interesting, and in fact they cover a little bit of research methodology in it, so I thought I'd do that rather than theu2026"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "A",
+        "C",
+        "F"
+       ],
+       "explanation": "Kill two birds with one stone, as it were. And then I fancied something completely different. So I thought psycholinguistics would be interesting. Unless you thinku2026 I read the syllabuses, but they sound more or less the same to me. Anyway, I went for communication skills in the end, because I know the lecturer. Um I thought discourse analysis looked really interesting, and in fact they cover a little bit of research methodology in it, so I thought I'd do that rather than theu2026"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "A",
+        "C",
+        "F"
+       ],
+       "explanation": "Kill two birds with one stone, as it were. And then I fancied something completely different. So I thought psycholinguistics would be interesting. Unless you thinku2026 I read the syllabuses, but they sound more or less the same to me. Anyway, I went for communication skills in the end, because I know the lecturer. Um I thought discourse analysis looked really interesting, and in fact they cover a little bit of research methodology in it, so I thought I'd do that rather than theu2026"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Part three\nB: You will hear a conversation between a female student called Karen and her course tutor.\nB: First, you have some time to look at questions twenty one to twenty seven on page five.\nB: Now listen carefully and answer questions twenty one to twenty seven.\nA: Oh, Karen. Hi, come in. Sit down. I wanted to talk to you about this assignment you’ve given me.\nA: I’ll give it back to you with my comments, but there are several things I wanted to run over, you know, pointers for next time. When you hand in your next assignment, can you check that you’ve dealt with these?\nB: Um yeah. Okay.\nA: Now, the first thing is um your literature discussion was a bit thin, so I would actually like to see your book reports to get your complete view. So can you submit those with the next assignment?\nA: Then I can see which bits you’ve chosen to leave out.\nB: Oh yes, sorry. I didn’t realize you needed them.\nA: And I found some errors, just small ones, where you had quoted people but not recorded the information properly at the end. Don’t forget to go through and make sure that your references are accurate.\nA: Your actual quotes were very relevant, but the references just need tidying up, okay?\nB: Yes, I’ll remember to check that.\nA: Now, you make some good points, but it might be helpful if you could see if you can include a few extra examples, just to really hammer the point home.\nA: Don’t start writing more paragraphs, just slot them in at the end of what you’ve already written. Now the thing you have to do if you really want to get better marks.\nA: Is to expand the ideas you’re presenting. Then your argument becomes more convincing.\nB: Okay, fine. Um can I talk to you about this presentation I’ve got to do?\nA: Yes, of course.\nB: Um am I doing it next term? I can’t remember what we said.\nA: Well, the thing is, Marco couldn’t do it, so you agreed to do it at the next seminar, didn’t you? So how can I help?\nB: Well, I was wondering what do you consider to be the core part of the presentation? I mean, what should I focus on?\nA: Good question. Well, you have very little time really, so it’s absolutely essential for you to explain the experiment.\nA: Of course, you’ll have a summary in the handouts you give out, but you need to go through it carefully when you do the presentation.\nB: And do I have to give you the abstract first, or shall I just email it to all the students?\nA: Um no, I do need to see it first. We’ll get some printouts done.\nB: Now they’ll need to be done by the 3rd of December, so I’ll need to see it by the twenty sixth of November, if that’s okay. Yes, fine.\nA: Oh, and I need to talk to you about where it will be. We’ve had problems with the rooms, because we’ll need something bigger than usual.\nA: In our faculty the only room free is the computer room, which is far from suitable. So we’ll have to go across the road and do it in the chemistry lab. They’ve got all the proper overhead equipment in there as well.\nB: Okay right. And I get a grade for this, don’t I?\nA: Yes, your first one is graded by your tutor, but this one will be assessed by the professor. But don’t be worried, it’ll be fine.\nB: Before you hear the rest of the conversation, you have some time to look at questions twenty eight to thirty on page six.\nB: Now listen and answer questions twenty eight to thirty.\nB: Oh, and I’ve sorted out my modules for next year. You asked me to tell you my choices.\nA: Yes. What have you decided?\nB: Oh, it was really difficult to decide. Um, I’ve already done the data collection one, so that wasn’t really a choice. I couldn’t make up my mind between language and society and communication skills.\nB: I read the syllabuses, but they sound more or less the same to me. Anyway, I went for communication skills in the end, because I know the lecturer.\nB: Actually, social interaction seems to cover much the same ground, so I didn’t bother with that either.\nB: Um I thought discourse analysis looked really interesting, and in fact they cover a little bit of research methodology in it, so I thought I’d do that rather than the full methodology course.\nB: Kill two birds with one stone, as it were. And then I fancied something completely different. So I thought psycholinguistics would be interesting. Unless you think it’ll be more worthwhile for me to do the phonology course.\nA: No, I think you’ve made sensible choices. I’m glad you’re organized. Okay. Let’s meet again in a couple of weeks to see how you’re getting on.\nB: Okay. Thank you. See ya then.\nA: That is the end of part three. You now have thirty seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-71-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "title": "Extinction of Australian species",
+     "template": "# Recent problems\n- several species of [[31]] are at risk because of increased housing\n- many animals, especially [[32]] , are affected by pesticides\n- production of single crops like [[33]] is harming wildlife\n# Endangered animals\n- can be influenced by the [[34]] (e.g. the panda)\n- people are less concerned about smaller animals, e.g. [[35]]\n- some animals are ignored because they are viewed:\n- – with [[36]]\n- – as our [[37]] in terms of food\n- – with disgust\n# Reasons for preventing extinction\n- the ecosystem needs to be [[38]] to be stable\n- some types of [[39]] can help to signal environmental issues\n- cobwebs help with medical disorders related to [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "frogs",
+        "frog"
+       ],
+       "explanation": "Here in Australia, many species of frog are losing their habitat as a direct result of this urban development. What's more, thanks to the increasing use ofu2026"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "birds",
+        "bird"
+       ],
+       "explanation": "Here in Australia, many species of frog are losing their habitat as a direct result of this urban development. What's more, thanks to the increasing use ofu2026"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "corn"
+       ],
+       "explanation": "In fact, when our farmers choose to grow large amounts of one staple crop each year, corn is a perfect example, this often results in the greater need for chemicalsu2026"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "media"
+       ],
+       "explanation": "Thanks to the attention it is given in the media, people are very aware of its plight and so are willing to give a great deal of support."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "insects",
+        "insect"
+       ],
+       "explanation": "However, it is not so easy to attract sympathy for those essential smaller species such as insects. They may seem insignificant, but these tiny creatures have anu2026"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "fear"
+       ],
+       "explanation": "And it isn't only size that is a problem when it comes to our attitude towards animals. There are certain animals that we would prefer to simply ignore for variousu2026"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "rivals",
+        "rival"
+       ],
+       "explanation": "That is the normal reaction when people see a shark or a snake, for example. Another reason might be that we believe that certain animals are rivals when it comes tou2026"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "complex"
+       ],
+       "explanation": "We now know that the more complex the ecosystem is, the more stable it is. When this is the case, large numbers of one animal are quickly controlled by outbreaks ofu2026"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "plants",
+        "plant"
+       ],
+       "explanation": "We've also begun to realise that the presence or absence of certain plants can alert us to changes in our environment."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "blood"
+       ],
+       "explanation": "The cobwebs they make can be used to assist with certain blood disorders. It actually helps blood to clot. Imagine how much more there is for us still to discoveru2026"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Part four\nB: You will hear a talk given by a specialist at a zoo about the implications of the extinction of species.\nB: First, you have some time to look at questions thirty one to forty on page seven.\nB: Now listen carefully and answer questions thirty-one to forty.\nB: Good afternoon. From my work as curator at the Brisbane Zoo, it is becoming increasingly obvious to me that the animal world is a highly endangered one.\nB: It sometimes seems as though a new species is added to the endangered list every day, and a great deal of this is due to human activity. You may have read about the orange-bellied parrot colonies in South Australia.\nB: These are under threat from wind farms. So even our attempts to save energy can have a negative impact. A further example is provided by the expansion of our cities.\nB: Here in Australia, many species of frog are losing their habitat as a direct result of this urban development. What’s more, thanks to the increasing use of pesticides, fewer insects are surviving.\nB: Many species depend upon these as a food source, birds in particular, and so their numbers are declining as well. So even in rural areas, we are having a damaging effect on species.\nB: In fact, when our farmers choose to grow large amounts of one staple crop each year, corn is a perfect example, this often results in the greater need for chemicals and fertilizers, which has a devastating effect on local wildlife.\nB: Clearly, something needs to be done about this.\nB: However, very little can be achieved without full public support, and our general attitude is not always a positive one. Of course, it is easy to get people interested in animals such as the panda.\nB: Thanks to the attention it is given in the media, people are very aware of its plight and so are willing to give a great deal of support.\nB: However, it is not so easy to attract sympathy for those essential smaller species such as insects. They may seem insignificant, but these tiny creatures have an enormous effect on our ecosystem.\nB: And it isn’t only size that is a problem when it comes to our attitude towards animals. There are certain animals that we would prefer to simply ignore for various reasons. Firstly, we might do this because of fear.\nB: That is the normal reaction when people see a shark or a snake, for example. Another reason might be that we believe that certain animals are rivals when it comes to food.\nB: Locusts and even mice could come into this category. Then there are animals that we view with disgust because of how they look or feel. The many different parasites, for example.\nB: You may well ask, what does it matter if any of these species dies? Extinction is a fact of life after all.\nB: I would argue that there are several reasons to be concerned about the extinction of any species. Each species helps us to understand more about how our ecosystem works.\nB: One species can be linked to many others in the food chain, for example. And inevitably they all lead back to us in some way.\nB: We now know that the more complex the ecosystem is, the more stable it is. When this is the case, large numbers of one animal are quickly controlled by outbreaks of its predators.\nB: We’ve also begun to realise that the presence or absence of certain plants can alert us to changes in our environment.\nB: One type of plant might indicate the presence of rich mineral deposits, another might alert us to toxic water.\nB: And so even seemingly insignificant species can be helpful and beneficial to us. This is especially true in the area of medicine.\nB: There are many well documented cases of the health benefits of pet ownership, especially with the ill or the handicapped. But not many people know that spiders are also being used in medicine.\nB: The cobwebs they make can be used to assist with certain blood disorders. It actually helps blood to clot. Imagine how much more there is for us still to discover from plants and animals.\nB: But we can only do this if we can save these creatures from extinction. Perhaps in the end it is our self interest that will save the animals.\nA: That is the end of part four. You now have one minute to check your answers to part four."
+  }
+ ],
+ "audio": {
+  "file": "listening-71.mp3",
+  "durationSec": 1655,
+  "partStarts": [
+   0,
+   539,
+   876,
+   1294
+  ],
+  "questionTimes": {
+   "1": 125,
+   "2": 139,
+   "3": 189,
+   "4": 221,
+   "5": 248,
+   "6": 310,
+   "7": 334,
+   "8": 360,
+   "9": 384,
+   "10": 412,
+   "11": 605,
+   "12": 617,
+   "13": 636,
+   "14": 648,
+   "15": 659,
+   "16": 676,
+   "17": 730,
+   "18": 753,
+   "19": 775,
+   "20": 808,
+   "21": 978,
+   "22": 1001,
+   "23": 1041,
+   "24": 1058,
+   "25": 1088,
+   "26": 1106,
+   "27": 1124,
+   "28": 1220,
+   "29": 1190,
+   "30": 1207,
+   "31": 1413,
+   "32": 1413,
+   "33": 1441,
+   "34": 1475,
+   "35": 1484,
+   "36": 1498,
+   "37": 1512,
+   "38": 1573,
+   "39": 1587,
+   "40": 1629
+  }
+ }
+}

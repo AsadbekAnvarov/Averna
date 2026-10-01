@@ -41,10 +41,13 @@ import { AudioFilePlayer, FILE_IDLE, createAudioElement, releaseMediaSession } f
 import type { FileErrorCode, FileSnapshot } from "./audio-file-player";
 import { focusQuestion, useDeadline, useExamAnswers, useLeaveGuard } from "./use-exam";
 import type { ListeningExamRunnerProps } from "./types";
+import { ListeningRecordingRunner } from "./listening-recording-runner";
 import { cn } from "@/lib/utils";
 
 /**
- * Computer-delivered IELTS Listening. Every part in scope plays either
+ * Computer-delivered IELTS Listening. (A test with one real recording for the
+ * whole test — CDI — is played by ./listening-recording-runner instead.)
+ * Every part in scope plays either
  * - its pre-rendered recording (`part.audio`: one MP3 on the Blob CDN with the
  *   announcements, voices and pauses baked in — lib/ielts/audio), through ONE
  *   HTMLAudioElement kept for the whole run (./audio-file-player), or
@@ -284,7 +287,20 @@ const primaryBtn =
 const dangerBtn =
   "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-red-300/40 px-4 text-sm font-semibold text-red-100 transition hover:bg-red-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/60 disabled:opacity-50";
 
+/**
+ * A test with ONE real recording for all its parts (CDI: `test.recording`)
+ * plays it through ListeningRecordingRunner; every other test keeps the
+ * per-part runner below (pre-rendered parts / browser voices), unchanged.
+ */
 export function ListeningExamRunner(props: ListeningRunnerProps) {
+  if (props.test.recording?.url) {
+    const { context: _context, ...rest } = props;
+    return <ListeningRecordingRunner {...rest} />;
+  }
+  return <ListeningPartsRunner {...props} />;
+}
+
+function ListeningPartsRunner(props: ListeningRunnerProps) {
   const { test, partIndex, mode, attemptId, initialAnswers, onSubmit, onAutosave, exitHref, homeworkId } = props;
   const examName = props.examName?.trim() || "Mock exam";
   const router = useRouter();

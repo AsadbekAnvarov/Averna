@@ -1,0 +1,580 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-08",
+ "title": "CDI Listening Test 08",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-08-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "| Arizona – travel advice |\n| Example | the temperature will probably be about 40 degrees centigrade during the day |\n| Advice | • pack a [[1]] • drive from Tucson along the [[2]] trails • go to the [[3]] (highly recommended) • there is the possibility of playing [[4]] |\n| Visit Susie's parents | Susie's parents live in a town called Williams Address: 6073 [[5]] Drive Town history: named after a local hunter destroyed by fire in [[6]] (rebuilt later) |\n| Dates & events | Susie's parents will be at home after 2nd July 4th July – Independence Day: there will be [[7]] in the evening Susie's parents' phone number: [[8]] |\n| Grand Canyon | tour by [[9]] (1½ hrs; 7 trips a day) canoe (all day; important to take [[10]] ) |",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "jacket"
+       ],
+       "explanation": "The caller asks what to pack. Despite the extreme daytime heat, temperatures drop sharply in the desert at night, so a jacket is essential."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "desert"
+       ],
+       "explanation": "The agent recommends driving from Tucson along the desert trails to see the stunning Arizona landscape and local wildlife."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "space museum"
+       ],
+       "explanation": "The agent highly recommends visiting the space museum as the area’s top attraction, connected to Arizona’s aerospace history."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "golf"
+       ],
+       "explanation": "The agent mentions the possibility of playing golf. Arizona is famous for its world-class golf courses thanks to its year-round warm climate."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "Fearnleigh"
+       ],
+       "explanation": "The address of Susie’s parents is 6073 Fearnleigh Drive in the town of Williams. The street name is spelled out carefully."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "1901"
+       ],
+       "explanation": "Williams, where Susie’s parents live, was historically destroyed by fire in 1901 and later rebuilt."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "fireworks"
+       ],
+       "explanation": "On 4th July — Independence Day — there will be a fireworks display in the evening, a traditional American celebration."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "9286352271"
+       ],
+       "explanation": "The phone number for Susie’s parents is 9286352271. Students should listen carefully and write each digit in order."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "helicopter"
+       ],
+       "explanation": "The Grand Canyon can be toured by helicopter — a 1½-hour trip with seven daily departures, offering spectacular aerial views."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "sun cream",
+        "suncream"
+       ],
+       "explanation": "When canoeing all day in the Arizona sun, it is essential to take sun cream due to the very high UV levels on open water."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear an Englishman called Steve phoning a friend called Suzy about his trip to Arizona in the United States.\nSuzy: Hello?\nSteve: Hi Suzy, it's Steve.\nSuzy: Steve, hi! How are you doing?\nSteve: I'm fine, thanks. Actually, I've got to attend a conference in July in Tucson, Arizona, and I was hoping you could give me a few tips. You're from around there, aren't you?\nSuzy: I sure am. Tucson's not my hometown though, but it's definitely worth seeing.\nSteve: What's the weather like around then? Is it true it's about 40 degrees centigrade in the daytime?\nSuzy: That's right, and not less than 25 at night. A bit different from England in July!\nSteve: True. I was wondering what to take with me. I won't need warm clothes then, will I?\nSuzy: Well, you'll find that everywhere is air-conditioned and it can feel quite cold sometimes, so a jacket would be a good idea. You might need an umbrella as well, as we sometimes have thunderstorms during the day. But you can always pick one up when you get there.\nSteve: My conference is only for a couple of days, so I was wondering what I could do in Tucson?\nSuzy: Well, it's a beautiful position. I'd hire a car in Tucson and then follow the trails in the desert.\nSteve: Okay, I'm writing all this down. Uh, any other tips? Museums and stuff?\nSuzy: Well, there are lots of museums. The usual thing like wildlife and history, but I think the most interesting is the Space Museum, so my advice would be to go there. Hmm, what else? Well, there are plenty of walks you can do. The town itself is great, and there are plenty of places you can eat and drink when you get too hot and tired.\nSteve: Any chance of a game of golf?\nSuzy: Oh, absolutely! There are loads of courses around Tucson.\nSuzy: If you've got time, why don't you visit my parents? They'd love to see you.\nSteve: Great! Can you give me their address?\nSuzy: Sure. They live in the town of Williams. At 6073 Fearnleigh Drive.\nSteve: Okay. Uh, how do you spell that?\nSuzy: F-E-A-R-N-L-E-Y. G-H. 6073 Fearnleigh Drive.\nSteve: Okay. Got that.\nSuzy: The town's in Northern Arizona, and it's named after a hunter in the area in the early 1800s. He used to make a living shooting animals around there for their skins.\nSteve: Hmm, sounds interesting. So, is it full of old buildings?\nSuzy: Well, the post office is the oldest as it was built in 1881, but there was a big fire in 1901 and most of the town was burnt down. But it didn't take them long to rebuild. Oh, and the famous Route 66 goes through the town; that was built in 1926. So, when exactly are you going?\nSteve: The conference is from the 1st to the 2nd of July. Will your parents be at home after that?\nSuzy: Oh yes. They wouldn't miss the 4th of July, Independence Day.\nSteve: Ah, okay. So lots of fireworks?\nSuzy: As soon as the sun goes down. People come from miles around to see them. Why don't you give my parents a call? They're on 928-635-2271. I'm sure they'd love to have you.\nSteve: Okay, I'll do that tonight.\nSuzy: And really, you shouldn't be in Arizona without taking a trip to the Grand Canyon for a few days. Hold on, I've got a leaflet here. I took a friend there last summer. She had a great time. Okay. It says here that there are a lot of tours you can take when you get there.\nSteve: Someone told me you could take a helicopter. Can I do that?\nSuzy: Sure. That tour takes about one and a half hours, and there are seven a day to choose from. The last is 5:30. You get a really good idea of the huge size of the canyon from up there.\nSteve: Sounds good. Any chance I can get down to the river? I'm quite good in a canoe.\nSuzy: Yes, you can do that too. Let's see... ah yes, there's an all-day trip. They provide you with waterproof clothes, but they recommend you bring sun cream. You'll really need it down on the river.\nSteve: Well, that should keep me busy for a few days. Thanks Suzy, that's terrific. I'll ring you again just before I go."
+  },
+  {
+   "id": "cdi-listening-08-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Label the plan of the City Bookshop below. Choose the correct letter, A–I, next to Questions 11–16.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "text": "Art Books",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Art Books are at position I on the map — on the far right side of the bookshop, a great collection of photography and illustrated books."
+      },
+      {
+       "n": 12,
+       "text": "Gardening Books",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Gardening Books are at position H — in the upper right area of the store, next to the Home section."
+      },
+      {
+       "n": 13,
+       "text": "History Books",
+       "answer": [
+        "D"
+       ],
+       "explanation": "History Books are at position D — in the central area of the shop, near the Biographies section shown on the map."
+      },
+      {
+       "n": 14,
+       "text": "Children's Books",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Children’s Books are at position G — on the right side, a bright, colourful section with low shelves for young readers."
+      },
+      {
+       "n": 15,
+       "text": "Reading Area",
+       "answer": [
+        "E"
+       ],
+       "explanation": "The Reading Area is at position E — at the top-centre of the store, a comfortable space to sit and browse before purchasing."
+      },
+      {
+       "n": 16,
+       "text": "Self-help Books",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Self-help Books are at position A — right near the Entrance, making them the first section visible to incoming customers."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening8-map.webp",
+      "alt": "City Bookshop Map — positions A–I"
+     }
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "What does the speaker say about each new book? Choose FOUR answers from the box and write one letter next to each question.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A a first time author"
+      },
+      {
+       "key": "B",
+       "text": "B an award-winning book"
+      },
+      {
+       "key": "C",
+       "text": "C a true story"
+      },
+      {
+       "key": "D",
+       "text": "D has a sad ending"
+      },
+      {
+       "key": "E",
+       "text": "E has good illustrations"
+      },
+      {
+       "key": "F",
+       "text": "F part of a series"
+      }
+     ],
+     "template": "Penny Pinchers\n[[17]]\nThe Running Boy\n[[18]]\nThe Hidden Code\n[[19]]\nThe Orange Moon\n[[20]]\nComments (A–F)",
+     "questions": [
+      {
+       "n": 17,
+       "answer": [
+        "E"
+       ],
+       "explanation": "“Penny Pinchers” has good illustrations (E). The broadcaster highlights the book’s remarkable artwork and visual design."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "A"
+       ],
+       "explanation": "“The Running Boy” is by a first-time author (A). The broadcaster notes this impressive debut from a brand-new writer."
+      },
+      {
+       "n": 19,
+       "answer": [
+        "B"
+       ],
+       "explanation": "“The Hidden Code” is an award-winning book (B). It has received tremendous critical acclaim and a prestigious literary prize."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "F"
+       ],
+       "explanation": "“The Orange Moon” is part of a series (F). The broadcaster recommends starting from the first book in the collection."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear the store manager of a bookshop give a short talk to new staff.\nManager: Good evening everyone. Thanks for coming in. This won't take long. Because we have quite a few new staff members, we thought it would be helpful to call you all in while the shop's closed to give you a short tour. After the tour, we'll introduce you to some of the book promotions we have this month.\nManager: Have you all got a copy of the map? Okay. Let's move to the store entrance. I can point out each section to you quite easily from there.\nManager: There are the two cashiers straight ahead. And on our right, close to the wall, is a large area divided into sections. To attract students from the Art College nearby, we decided to have books on Art at the front of this section,and we're planning to include more texts from the prescribed book lists of local colleges in future.\nManager: In the middle of this large section is the Home section. The books here range from design to renovation. And at the back of this section, we have a small selection of Gardening books. As this is a new section for us, at first we thought we'd locate it on its own on the other side of the cashiers, but we ultimately decided to have it at the back there, and it's well signposted.\nManager: Straight ahead, and directly behind the cashiers, there's the Magazine and Newspaper stand, which is closest to us. Behind this, you can see two sections side by side: History on one side and Biographies on the other. In our other stores, these sections are usually located at the very back, but sales haven't been great, so to try to attract more interest, we decided to make them more visible.\nManager: Also within this central area, just behind Biographies, we've placed our two Fiction sections. The Children's section is the larger area over on the right and the Adults section, the smaller one, on the left.\nManager: You'll see over in the far left-hand corner of the store, we have our Coffee Shop, which has become very popular. Behind this, running right along the back of the store, we've introduced a Reading Area. We've added chairs and cushions to create a cozy atmosphere, and as you move around the store later, you'll see this comfortable seating idea in other parts of the shop.\nManager: And finally, immediately to the left of the entrance, you'll see Self-Help books. These are here because we currently have a number of special offers connected with these topics. When the specials are finished, we'll relocate this section to behind the Coffee Shop.\nManager: Okay, I think that's it. I'll let you have a browse around in a minute.\nManager: Next, I'd like to quickly introduce you to some of the new books we have in stock. Firstly, Elizabeth Honey's written a new book called Penny Pinchers. It's a wonderful story set in early Australia, and I thoroughly recommend it. It includes some beautiful drawings based on the artwork of the era.\nManager: Next is The Running Boy. It's about a boy who gets himself into some difficult situations at school. I think Simon Darling, the writer, has done a fantastic job in this debut book. He's currently working on his second novel, a crime story aimed at the adult market. I'm sure that will definitely be worth waiting for.\nManager: The next book I have here is The Hidden Code, which won several prizes at the last book convention. Marketed as a book for older children, it deals with realistic problems faced by young people today. Basically, it's a work of fiction. It's something that should also be read by every parent, not just the younger members of the family.\nManager: And finally, my personal favorite, The Orange Moon. This is the final book in a set of novels about the lives of a fictional group of friends living in outback Australia. I hear this is being adapted to a movie suitable for the whole family, which I'm sure will be very popular."
+  },
+  {
+   "id": "cdi-listening-08-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Katy thinks it might be inappropriate for academic essays to",
+       "options": [
+        {
+         "key": "A",
+         "text": "give both sides of an argument."
+        },
+        {
+         "key": "B",
+         "text": "express personal opinions."
+        },
+        {
+         "key": "C",
+         "text": "present a range of views."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Katy thinks it might be inappropriate to express personal opinions (B) in academic essays, questioning whether personal views belong in formal writing."
+      },
+      {
+       "n": 22,
+       "text": "The tutor says that in one type of conclusion students should",
+       "options": [
+        {
+         "key": "A",
+         "text": "withhold their own views."
+        },
+        {
+         "key": "B",
+         "text": "avoid too much repetition."
+        },
+        {
+         "key": "C",
+         "text": "refer to the title."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The tutor says that in one type of conclusion, students should refer to the title (C) to show they have directly answered the original question."
+      },
+      {
+       "n": 23,
+       "text": "What does the tutor say about the bibliography?",
+       "options": [
+        {
+         "key": "A",
+         "text": "There is a standard format for references."
+        },
+        {
+         "key": "B",
+         "text": "Presentation is not assessed at this level."
+        },
+        {
+         "key": "C",
+         "text": "Book titles should be underlined."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The tutor explains there is a standard format for references (A) in the bibliography that the university expects students to follow consistently."
+      },
+      {
+       "n": 24,
+       "text": "What advice does the tutor give about quotations?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They provide evidence of how widely a student has read."
+        },
+        {
+         "key": "B",
+         "text": "They are useful for defining difficult concepts."
+        },
+        {
+         "key": "C",
+         "text": "There is a tendency to use too few of them."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The tutor advises that quotations are useful for defining difficult concepts (B), providing authoritative precision for complex terms."
+      },
+      {
+       "n": 25,
+       "text": "John suggests that the writer of the first essay should have",
+       "options": [
+        {
+         "key": "A",
+         "text": "done more thorough research."
+        },
+        {
+         "key": "B",
+         "text": "analysed his data more carefully."
+        },
+        {
+         "key": "C",
+         "text": "given his views more clearly."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "John suggests the first essay writer should have done more thorough research (A), as some claims lacked sufficient supporting evidence."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "The tutor says that the most basic requirement of an essay is relevance. Katy thinks the writer separates different [[26]] very clearly.\nJohn feels that bullet points and sub-headings might be more appropriate for [[27]] than for essays.\nThe tutor thinks that paragraphs should be used to structure essays. John particularly admires the way the writer backs up his statements with [[28]] .\nKaty likes the writer's use of language to link his [[29]] .\nThe tutor thinks that wide [[30]] helps to develop writing ability.",
+     "questions": [
+      {
+       "n": 26,
+       "answer": [
+        "subtopics"
+       ],
+       "explanation": "Katy observes that the writer clearly separates different subtopics, making the essay structure easy to follow. This shows good organisation."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "reports"
+       ],
+       "explanation": "John suggests bullet points and sub-headings are more suited to reports than essays, where continuous flowing prose is expected."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "examples"
+       ],
+       "explanation": "John admires how the writer backs up every statement with concrete examples, ensuring no claim is left unsupported."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "ideas"
+       ],
+       "explanation": "Katy likes the writer’s use of linking language to connect ideas across paragraphs, giving the essay a sense of flow and coherence."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "reading"
+       ],
+       "explanation": "The tutor believes wide reading is the best way to develop writing ability, as exposure to varied texts enriches vocabulary and style."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a university lecturer talking to a female student called Katie and a male student called John about writing essays.\nLecturer: Morning Katie, Morning John. I want to talk about essays today, and what the requirements are for this university. What kinds of things we look for when we're grading them. Okay? So, let's look at those two sample essays I gave you last week. I asked you to read them and to think about their strong and weak points. Do either of you have any general comments or questions about the first one? Katie?\nKatie: Um, well, the writer's made it quite clear what his own views are about this subject, but I thought in academic essays you weren't supposed to do that. I thought you were meant to present all the different arguments and just appear to be neutral about which one you think is best.\nLecturer: Students do sometimes come down quite firmly on one particular side, and that's okay, as long as they can show that they've given balanced consideration to all the issues. Do you see what I mean?\nJohn: Hmm.\nLecturer: John, you're looking a bit uncertain. Did you want to say something?\nJohn: Well, what if you don't feel as sure about the debate as this student?\nLecturer: There's another type of conclusion that's valid when you're writing at this level. People don't have to come down strongly on a particular side. They can say in the essay that the process of researching a particular topic has identified the importance of a range of studies that support different viewpoints, and then they return to the title of the assignment. Yes? And I'd say that it's a good idea to use some of the actual words that are in the title. It shows the reader that you're still on track. Okay?\nJohn: Yeah.\nKatie: Yes. Tony, can I just ask you something about the bibliography?\nLecturer: Of course.\nKatie: Um, this person's used italics when he refers to book titles in the reference section, but I thought we had to underline them.\nLecturer: Actually, he's done it in the way we set out in the university study guide. That is the appropriate convention for titles. You might think it's trivial, but presenting references appropriately is one of the requirements of a degree at this level, so I wouldn't be doing my job properly if I didn't stress that. And once people are used to it, they don't generally have a big problem with it. Um, yes Katie?\nKatie: You mentioned the university study guide? I looked in there to see what it said about quotations. Um, the essay's got a lot of quite long ones, and I was a bit surprised by that. I thought we weren't supposed to do that.\nJohn: But using a range of quotations is a way of showing that you have actually read quite widely, isn't it?\nLecturer: Well, not really. Unfortunately, some students just pick out extracts to quote without actually reading the whole thing. It's really a matter of using quotations appropriately. I've marked essays in the past where literally every fourth or fifth sentence has been a quote, and that definitely isn't acceptable. You have to read widely, but you should be assimilating what you've read, and in general, presenting the ideas in your own words.\nKatie: So when exactly should we use quotes?\nLecturer: Particularly where there are definitions involved, as there are here. Generally speaking, I'd say that you need to be aware of words within the essay title itself that are possibly contentious, terms that need defining. For instance, this one here has the word 'culture' in it. Now, although you probably have a rough idea of what that term means, you might not be able to articulate it very well. So why not cite someone else's definition rather than dream one up yourself?\nLecturer: Okay, any other comments on this first essay? What about the way the writer discusses research findings?\nJohn: Um, one thing that struck me was the approach of the student to some of the things he'd read. He says things like \"we aren't given enough evidence\" or \"we don't know how he got his results\". When you're reading about someone's research at second hand, you often don't get told how many people were studied or exactly what kind of questionnaires were used, or how exactly the results were analyzed. But I've always felt that it's just up to me to go to the primary sources and find out.\nLecturer: It is important that you feel free to say if there are reasons why you can't make a clear judgment about something. But you don't have to, not at this level. It's almost as if we just take things for granted. Okay?\nLecturer: Now, let's look at the second essay then. Um, first of all, this essay title is in the form of a question, isn't it? Did you think this student answered the question?\nJohn & Katie: Yes.\nLecturer: Good. Because really that's the bottom line. The minimum criterion for an assignment is relevance. Yes? Sometimes people don't seem to see the words on the page, but you have to be very focused.\nLecturer: Secondly, what about the overall structure? Would you say that the essay's well structured?\nKatie: Yes, I would. I mean, sometimes writers mix different subtopics up so it's quite difficult to follow the logic of the essay, but here I think they're separated very clearly.\nLecturer: Do you agree, John?\nJohn: Yes. I mean, it is very clear. But is it okay to use subheadings and bullet points like this? I mean, in things like reports they can be very useful, I know, but is it alright to use them in academic essays?\nLecturer: Well, my general feeling is that it's best just to use paragraphs to signal changes of topic. The beginning of a paragraph should signal what you're going to say in general, and then as you get to the end of the paragraph, you should be signaling what you're going to move onto next.\nJohn: One thing I thought was really good about this essay was the way the writer always gives examples to support statements. He never just assumes that explanations are enough.\nLecturer: Yes, I'm glad you brought that up. I was going to mention it myself. As you say, it's very helpful for the reader.\nKatie: Another thing that helps the reader is the way he uses words and phrases to connect ideas.\nLecturer: You mean things like 'however' and 'on the other hand'?\nKatie: Yes. And 'finally', 'in addition'.\nLecturer: Yes, that really is one of the hallmarks of a good essay. The content is the most important thing of course, but there's no doubt that language can make the content clearer or otherwise for the reader. Now, you may feel at this early stage that your writing skills are rusty, but reading is the key, I think. As you read more and more extensively, you'll find that your own use of academic language will improve and it'll get much easier to form your own ideas."
+  },
+  {
+   "id": "cdi-listening-08-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Inventing a Universal Language\n# Introduction\n- Most languages were not invented – they evolved.\n- Early invented languages were used for religious purposes or for [[31]] .\n- We know of about 900 invented languages, but many have been lost.\n# William Spencer\n- He wrote books about [[32]] , so he needed an accurate language.\n- At first he tried to base his language on [[33]] .\n- Later he classified words in the same way that was used for plants.\n# Ludwig Zamenhof\n- He mixed together existing European languages.\n- He wrote [[34]] to help develop his new language.\n- He wanted simplicity, e.g. one prefix to make words [[35]] .\n- He sent a [[36]] to his friends to publicise his language.\n- He created the most successful invented language.\n# Bruce Goldie\n- Each word of his language was based on a [[37]] .\n- His language did not get academic recognition at first.\n- Children in a Canadian [[38]] learned to read using his language.\n# Conclusion: why have invented languages failed?\n- They cannot express [[39]] .\n- English became the global language.\n- They are now invented by [[40]] , just for entertainment.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "trade"
+       ],
+       "explanation": "Early invented languages served two main purposes: religious communication and facilitating trade between merchants speaking different languages."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "science"
+       ],
+       "explanation": "William Spencer wrote books about science and found existing languages too imprecise for complex scientific ideas, so he invented his own."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "numbers"
+       ],
+       "explanation": "Spencer initially tried to base his language on numbers, using mathematical logic to assign a numerical value to each concept."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "songs"
+       ],
+       "explanation": "Zamenhof wrote songs to develop his language, testing its expressive range for emotion, rhythm and beauty in natural contexts."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "negative"
+       ],
+       "explanation": "Zamenhof wanted simplicity: one prefix could make any word negative, rather than requiring learners to memorise separate opposite words."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "letter"
+       ],
+       "explanation": "Zamenhof sent a letter to his friends to publicise Esperanto — an early form of grassroots promotion through personal correspondence."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "picture"
+       ],
+       "explanation": "In Bruce Goldie’s system, each word was based on a picture or visual symbol, creating a pictographic language accessible across cultures."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "hospital"
+       ],
+       "explanation": "Children in a Canadian hospital learned to read using Goldie’s language, giving it real-world credibility as an educational tool."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "emotions"
+       ],
+       "explanation": "Invented languages tend to fail because they cannot fully express emotions — feelings deeply tied to culture, idiom and lived history."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "writers"
+       ],
+       "explanation": "Today, invented languages are mainly created by writers of fantasy and science fiction — like Tolkien — purely for entertainment."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear part of a linguistics lecture about attempts to invent a universal language.\nLecturer: Good morning. Welcome back to the series of linguistics lectures. Today I will be talking about the idea of inventing a universal language.\nLecturer: What does that mean? Well, most human languages were never invented, instead they evolved over time. And the result is, you know, they're irregular and difficult to learn. So for centuries, people have dreamed of inventing a perfect universal language.\nLecturer: The early invented languages that did exist were either created by priests to be used for religious purposes, or developed to help establish trade between different nations. Scholars have found evidence that around 900 languages have been invented over the centuries in various parts of the world. But the linguist Arika Okrent believes that the exact figure is unclear because she suspects many of these languages are now lost; no record of them survives.\nLecturer: The first really serious attempt to invent a language was made by William Spencer in the 17th century. Like so many others, he was frustrated by the irregularities in all existing languages. Accuracy was particularly important for Spencer because he wrote books; his subject was science. As a result, he wanted to create a language where words had only one meaning, so everyone would understand precisely what they meant.\nLecturer: At first, he thought the only way to do this was, instead of using the usual letters of the alphabet, A, B, C and so on, he tried to substitute numbers for them. However, this attempt failed, mostly because he couldn't describe complex ideas in this way. So Spencer went back to using the alphabet, but he grouped words together in a different way.\nLecturer: When his dictionary was published in 1668, the words weren't classified in alphabetical order. What he'd done was, he'd used the same system with which plants were divided up into groups, based on their type.\nLecturer: Another important attempt to invent a universal language was made by Ludwik Zamenhof, who was born in 1859. Zamenhof's language reflects his own background. He grew up speaking Polish, English, French, German, and Russian. So rather than create a completely new language, he mixed together five or six existing European languages. Then Zamenhof used an interesting technique to help him develop his new language. He used it to write quite a few different songs, and this made his work more enjoyable.\nLecturer: He also thought that most European languages were too complicated, which meant that it was very difficult for people to learn them. Zamenhof wanted to create a more simple language. So, for example, he had a single prefix that was used before adjectives or verbs to make them negative, which is obviously much easier than English.\nLecturer: Then, finally, he published a book introducing his language to the world in 1887. Unfortunately, like other invented languages, no one was very interested at first. So again, Zamenhof used an interesting approach. In order to publicize the completed language, he made a list of everyone he knew and posted a letter to all of them using the new language. Many people were surprised how easily they could understand it, and the language began to attract attention. Zamenhof's language was never used all around the world as he had hoped, but still, it's probably the most successful of all the invented languages.\nLecturer: In the 20th century, an Australian named Bruce Goldie tried something completely different. Goldie thought that a universal language would be easier to use if the starting point for each word was a picture. Goldie spent more than 20 years designing his new language and eventually published a book giving all the details in 1949. He also went on a lecture tour to promote it. But although the general public were often quite interested, much to Goldie's disappointment, his language was ignored by all of the major universities, despite frequent attempts to make them interested.\nLecturer: It wasn't until the 1970s that his language had some success. This was in Canada in fact, where it was used to teach a group of disabled children in a hospital to read, and as a result, Goldie got some recognition for his work.\nLecturer: So, what can we say in conclusion? Well, the truth is, all attempts to create a universal language have failed, and there are a number of reasons for this. Firstly, most universal languages have been seen as rather technical and plain. They're not good at conveying emotions so they've never been very popular. Another reason is the spread of English as a global language in the 20th century, particularly resulting from the film industry in Hollywood. Then lastly, the type of people who invented the languages began to change. In the past it had been academics, but more recently, the languages have often been created by writers, usually for entertainment, so they haven't been taken seriously.\nLecturer: All right, well there's one other issue I'd like to consider and that's the..."
+  }
+ ],
+ "audio": {
+  "file": "listening-8.mp3",
+  "durationSec": 1923,
+  "questionTimes": {
+   "1": 204,
+   "2": 232,
+   "3": 246,
+   "4": 276,
+   "5": 335,
+   "6": 384,
+   "7": 419,
+   "8": 433,
+   "9": 472,
+   "10": 502,
+   "11": 662,
+   "12": 685,
+   "13": 715,
+   "14": 740,
+   "15": 754,
+   "16": 777,
+   "17": 842,
+   "18": 860,
+   "19": 886,
+   "20": 907,
+   "21": 1052,
+   "22": 1092,
+   "23": 1139,
+   "24": 1212,
+   "25": 1262,
+   "26": 1375,
+   "27": 1388,
+   "28": 1417,
+   "29": 1438,
+   "30": 1462,
+   "31": 1619,
+   "32": 1648,
+   "33": 1674,
+   "34": 1746,
+   "35": 1763,
+   "36": 1785,
+   "37": 1811,
+   "38": 1844,
+   "39": 1867,
+   "40": 1889
+  }
+ }
+}

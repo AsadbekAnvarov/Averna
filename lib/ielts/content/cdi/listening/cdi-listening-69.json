@@ -1,0 +1,673 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-69",
+ "title": "CDI Listening Test 69",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-69-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "Revision note",
+     "template": "Example Problem with: the brochure sample\n- Company name: [[1]] Hotel Chains\n- Letters of the [[2]] should be bigger.\n- The information of the [[3]] should be removed.\n- Change the description under the top photo to [[4]] .\n- Use the picture with the [[5]] of the hotel.\n- The [[6]] should be in red print.\n- Translate into [[7]] .\n- Deadline: by the end of [[8]]\n- Address: No. 9 Green Drive, [[9]] , NY21300\n- Telephone number: [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Central"
+       ],
+       "explanation": "Oh, I'm Mary Jane from Central Hotel Chains. Nice to meet you. I've got samples of the previous version."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "address"
+       ],
+       "explanation": "There are also a couple of problems with the layout. Firstly, the letters of the address on the front page are far too small. It's hard to see when glancing at the cover."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "pool"
+       ],
+       "explanation": "The information regarding the pool should be deleted because it is currently under renovation and is not available."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "reception"
+       ],
+       "explanation": "What is also bothering us is that the description under the top photos on page four is incorrect. The word lounge needs to be replaced with reception."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "view"
+       ],
+       "explanation": "On second thought, we've decided to use a picture with the view of the hotel."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "prices",
+        "price"
+       ],
+       "explanation": "At first sight it seems fine. But according to the feedback of the customers, the prices do not stand out. So we want to change the print from black to red to make it…"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "Spanish"
+       ],
+       "explanation": "I appreciate it. Just one final request. Could you translate the whole brochure into Spanish?"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "July"
+       ],
+       "explanation": "So roughly, when can we get the revised print? We need it before the end of July."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "Cliffton"
+       ],
+       "explanation": "The addresses number nine greendrive Clifton NY2130."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "903036602",
+        "9030366 02"
+       ],
+       "explanation": "It's nine oh three oh three six six O two. Also, if you have any further questions you can reach me through this number. Okay."
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Now turn to section 1. Section 1. You will hear a conversation between a printing company employee and a customer.\nA: First, you have some time to look at questions 1 to 5.\nA: You will see that there is an example which has been done for you. On this occasion only, the conversation relating to this will be played first.\nB: Good afternoon. Welcome to Matrix Printing. I’m John Smith. How can I help you?\nA: Good afternoon. I’m here to reprint a brochure for our hotel. There are some pages that need revising. The customer says the brochure sample needs revising.\nA: So brochure has been written in the space. Now we shall begin. You should answer the questions as you listen because you will not hear the recording a second time.\nA: Listen carefully and answer questions one to five.\nB: Good afternoon. Welcome to Matrix Printing. I’m John Smith. How can I help you?\nC: Good afternoon. I’m here to reprint a brochure for our hotel. There are some pages that need revising.\nB: Sure. How may I address you?\nC: Oh, I’m Mary Jane from Central Hotel Chains. Nice to meet you. I’ve got samples of the previous version.\nB: I assume it is your company’s advertising brochure. Yes. What exactly is the problem?\nA: Well, it was printed the year before, so some of the information is already out of date.\nC: There are also a couple of problems with the layout. Firstly, the letters of the address on the front page are far too small. It’s hard to see when glancing at the cover.\nB: How big do you need it to be?\nC: Increase the letters by three font sizes.\nB: Just a minute. Let me take notes of your requirements. Okay. What else needs changing?\nC: The information regarding the pool should be deleted because it is currently under renovation and is not available.\nB: So, all of the relevant descriptions on page two should be removed? What do we replace it with? We can’t just leave the whole page blank.\nC: Just fill it in with the introduction of our newly opened gym. I’ve included all the relevant information here in this flash drive.\nB: Let me check. Um I see. No problem then.\nA: What is also bothering us is that the description under the top photos on page four is incorrect. The word lounge needs to be replaced with reception.\nB: Fully noted. Is that all?\nC: No, there is more. Turn to page five.\nA: We feel that showing merely the picture of our exterior and interior decoration does not fully represent the appeal of our hotel.\nC: On second thought, we’ve decided to use a picture with the view of the hotel.\nB: Do you have the original copy of the picture?\nA: Yes.\nC: It is also enclosed in the flash drive.\nB: Okay. We’ll re-edit the whole layout of the photos.\nA: Great.\nA: Before you hear the rest of the conversation, you have some time to look at questions six to ten.\nA: Now listen and answer questions six to ten.\nA: Let’s turn to the next page.\nB: Yes. What’s wrong with that? It seems perfectly fine to me.\nA: At first sight it seems fine. But according to the feedback of the customers, the prices do not stand out. So we want to change the print from black to red to make it pop out.\nB: Okay. I’ve made notes of all of your requests. Is there anything else?\nA: I appreciate it. Just one final request. Could you translate the whole brochure into Spanish?\nC: We have customers worldwide, you know, especially those from Latin countries.\nB: No problem. What about other languages, like Japanese, Chinese or German? These are our most popular target languages.\nC: I have to ask the manager about the Chinese version. There’s been a surging number of Chinese clients during recent years.\nC: However, we don’t need German or Japanese translations, as we currently don’t have many customers from those two countries.\nB: Sure. Just keep me updated.\nC: So roughly, when can we get the revised print? We need it before the end of July.\nB: It’s late June now. Roughly, it’ll take three weeks to re-edit. So it will definitely be ready before the deadline.\nA: Great.\nB: To where shall we send the samples?\nA: The addresses number nine greendrive Clifton NY2130.\nB: How do you spell Clifton?\nA: C L I double F T O N Clifton.\nB: And the telephone number?\nA: It’s nine oh three oh three six six O two. Also, if you have any further questions you can reach me through this number. Okay.\nA: That is the end of section one. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-69-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "The most famous view in this park is",
+       "options": [
+        {
+         "key": "A",
+         "text": "the largest waterfall worldwide."
+        },
+        {
+         "key": "B",
+         "text": "the longest river in the world."
+        },
+        {
+         "key": "C",
+         "text": "the biggest sub-tropical rainforest in the world."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The park has a breathtaking waterfall connecting the longest river in the country, but it is most renowned for having the largest subtropical rainforest worldwide."
+      },
+      {
+       "n": 12,
+       "text": "According to the tour guide, what is best to do on top of the mountain?",
+       "options": [
+        {
+         "key": "A",
+         "text": "having a picnic"
+        },
+        {
+         "key": "B",
+         "text": "taking photos"
+        },
+        {
+         "key": "C",
+         "text": "strolling about"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "When you reach the top of the mountain, there is nothing better than having a picnic under the trees with your family. Accompanied mostly by wildlife,"
+      },
+      {
+       "n": 13,
+       "text": "What did the tour guide recommend for more experienced walkers?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the mountain trail"
+        },
+        {
+         "key": "B",
+         "text": "the Bush Track"
+        },
+        {
+         "key": "C",
+         "text": "the Creek Circuit"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "As your tour guide, I suggest that only expert hikers take the creek circuit because its beautiful and inspiring scenery through the subtropical jungle is paralleled…"
+      },
+      {
+       "n": 14,
+       "text": "What is mentioned about the transport in the park?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Bicycles can be hired."
+        },
+        {
+         "key": "B",
+         "text": "Trams are available for tourists."
+        },
+        {
+         "key": "C",
+         "text": "It is included in the bill."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Boat trips down the river are an ideal way to spend a tranquil afternoon. Rest assured that transport within the park is covered in the bill."
+      },
+      {
+       "n": 15,
+       "text": "Which activity is provided for adults all year round?",
+       "options": [
+        {
+         "key": "A",
+         "text": "abseiling"
+        },
+        {
+         "key": "B",
+         "text": "bungee jumping"
+        },
+        {
+         "key": "C",
+         "text": "paragliding"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Absailing is available regardless of the weather. It is a fun way to overcome fear of heights, gain new skills, and get an adrenaline rush."
+      },
+      {
+       "n": 16,
+       "text": "What should the visitors do before they go to the restaurant?",
+       "options": [
+        {
+         "key": "A",
+         "text": "make bookings"
+        },
+        {
+         "key": "B",
+         "text": "inquire about availability"
+        },
+        {
+         "key": "C",
+         "text": "collect the meal ticket at the reception"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Even though there is only one restaurant in the park at the moment, the variety of dishes is astonishing. There are two meals included in the price. Just get your…"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the plan below. Choose the correct letter, A–I, next to each place.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "text": "Campsite",
+       "answer": [
+        "E"
+       ],
+       "explanation": "When you get out of the guest house, go straight ahead, turn right at the end of the road, to your left there is a campsite amongst the trees where you could spend a…"
+      },
+      {
+       "n": 18,
+       "text": "Business Centre",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The business center is situated directly opposite the picnic area. It provides flexible, fully serviced offices, conferencing suites, meeting rooms, and is equipped…"
+      },
+      {
+       "n": 19,
+       "text": "Museum",
+       "answer": [
+        "G"
+       ],
+       "explanation": "You start from the guest house, just turn left at the first conjunction, then walk past the tea house. Turn right, you'll see the museum after making the third right.…"
+      },
+      {
+       "n": 20,
+       "text": "Cafe",
+       "answer": [
+        "D"
+       ],
+       "explanation": "From the guest house you go straight, then take the second right, and you'll see the cafe right in front of you."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening69-map.webp",
+      "alt": "Byron National Park plan"
+     }
+    }
+   ],
+   "transcript": "A: Now turn to section two. Section two\nA: You will hear a guide talking to a group of visitors about a national park. First you have some time to look at questions eleven to sixteen.\nA: Now listen carefully and answer questions eleven to sixteen.\nD: Welcome to Byron National Park. I am Jim Carson, your tour guide for the trip. First, I’d like to give you some basic information about the park.\nD: Covering 7,000 acres of land and spanning across three states, Byron National Park was established to protect the area’s most spectacular scenic values.\nD: With unique geological features, natural history and native plant and animal life, it is an ideal destination for recreation as well as research purposes.\nD: The park has a breathtaking waterfall connecting the longest river in the country, but it is most renowned for having the largest subtropical rainforest worldwide.\nD: There are many layers of tall, medium and low vegetation, growing with seasonal variations in the park. It is a place where the air seems green.\nD: Ardent hikers can find an awesome array of options here. Apart from the dense green rainforest, tourists can also hike along the mountain trail.\nD: Despite the stunning view, taking photos is not advised on the way up, I’m afraid, as one might get distracted and the narrow trail by the sheer cliff is quite dangerous.\nD: When you reach the top of the mountain, there is nothing better than having a picnic under the trees with your family. Accompanied mostly by wildlife,\nD: Walkers as well as cyclists may find the bush track a good choice for having a tranquil time to themselves.\nD: As your tour guide, I suggest that only expert hikers take the creek circuit because its beautiful and inspiring scenery through the subtropical jungle is paralleled by its physical challenges.\nD: A list of transport is available within the park. Bicycles are a popular choice as it is the most flexible way to get around. Electric trams are temporarily closed for maintenance.\nD: Boat trips down the river are an ideal way to spend a tranquil afternoon. Rest assured that transport within the park is covered in the bill.\nD: Extreme sports is another highlight of the park.\nD: There are, for adventurous grown-ups, especially those who are comfortable with having a racing heart, scary as it may sound, it is actually safe to participate in extreme sports under strict instructions and close supervision.\nD: Absailing is available regardless of the weather. It is a fun way to overcome fear of heights, gain new skills, and get an adrenaline rush.\nD: Bungee jumping and paragliding are also available, except for during the summer. At this point, you might worry about meals here. Well\nD: Even though there is only one restaurant in the park at the moment, the variety of dishes is astonishing. There are two meals included in the price. Just get your meal ticket at the reception before dining.\nD: Also, there is no need to make reservations or worry about availability since there are plenty of tables.\nA: Before you hear the rest of the talk, you have some time to look at questions seventeen to twenty.\nA: Now listen and answer questions seventeen to twenty.\nD: During your stay here, you might want to know what there is to do. Let’s turn to the plan so I can familiarize you with the layout of the park.\nD: Most tourists would choose to stay in our guest house located in the southeast corner. It features 63 tastefully appointed guest rooms, many of which offer spectacular views of the park.\nD: You’ll find a home away from home at our guest house. But for those who want to experience the natural beauty up close, there is also a campsite.\nD: When you get out of the guest house, go straight ahead, turn right at the end of the road, to your left there is a campsite amongst the trees where you could spend a night under the stars together with owls and chipmunks.\nD: If you look at the top left of the plan, you will notice a picnic area. You can either bring your own food or we can deliver food to you. Barbecue is an option.\nD: The business center is situated directly opposite the picnic area. It provides flexible, fully serviced offices, conferencing suites, meeting rooms, and is equipped with the latest multimedia facilities.\nD: Wired as well as wireless high speed internet is available within the entire premises. The center is designed to cater to both individual travelers and corporate groups.\nD: Visitors can also go to the museum, which holds a vast collection that exhibits local history and a natural habitat.\nD: You start from the guest house, just turn left at the first conjunction, then walk past the tea house. Turn right, you’ll see the museum after making the third right. Have you found it?\nD: Pretty easy, right? To spend a delightful afternoon with a book and a fresh cup of coffee, you can go to the only cafe in the park.\nD: From the guest house you go straight, then take the second right, and you’ll see the cafe right in front of you.\nD: You might want to check out our all season tennis court, which offers instruction for all ages and skill levels. It is located right opposite the cafe.\nA: That is the end of section two. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-69-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "How old are the students on the nursing program?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They are teenagers."
+        },
+        {
+         "key": "B",
+         "text": "They are in their twenties."
+        },
+        {
+         "key": "C",
+         "text": "They belong to different age groups."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Most were in their 20s, but there were also those in the 30s or even 40s. As it turns out, the intergenerational communication has sparked intense debate and new…"
+      },
+      {
+       "n": 22,
+       "text": "What do the speakers say about the group project?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It helps to improve relationships among different classmates."
+        },
+        {
+         "key": "B",
+         "text": "It helps to develop problem solving skills."
+        },
+        {
+         "key": "C",
+         "text": "It provides a supportive learning environment."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "We were then able to tackle the complex problem by pooling our knowledge and skills. More importantly, stronger links were established between the group members.…"
+      },
+      {
+       "n": 23,
+       "text": "Which part of the program surprised Paul?",
+       "options": [
+        {
+         "key": "A",
+         "text": "There’s a number of essays to write."
+        },
+        {
+         "key": "B",
+         "text": "There’s a lot of practical work."
+        },
+        {
+         "key": "C",
+         "text": "There’s an internship provided."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "However, I was amazed by the amount of written assignments since I thought the course should have focused more on practice-oriented learning."
+      },
+      {
+       "n": 24,
+       "text": "What do they feel about learning law?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is essential training."
+        },
+        {
+         "key": "B",
+         "text": "It is too theoretical."
+        },
+        {
+         "key": "C",
+         "text": "It takes up too much time."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "At first we felt that learning law is kind of redundant and too time consuming. After a few sessions, we realized that it is necessary in dealing with future medical…"
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "What are the suggestions offered by the speakers? Choose the correct suggestion for each item and move it into the gap.",
+     "title": "Aspects of the course",
+     "options": [
+      {
+       "key": "A",
+       "text": "get feedback from teaching staff"
+      },
+      {
+       "key": "B",
+       "text": "do more reading"
+      },
+      {
+       "key": "C",
+       "text": "get help from school supporting staff"
+      },
+      {
+       "key": "D",
+       "text": "get help for nursing problems"
+      },
+      {
+       "key": "E",
+       "text": "manage time properly"
+      },
+      {
+       "key": "F",
+       "text": "be well prepared"
+      },
+      {
+       "key": "G",
+       "text": "review the notes regularly"
+      },
+      {
+       "key": "H",
+       "text": "don’t set unrealistic goals"
+      }
+     ],
+     "template": "Essays [[25]]\nLectures [[26]]\nResearch [[27]]\nOnline forum [[28]]\nPlacement tests [[29]]\nFreshmen [[30]]",
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "E"
+       ],
+       "explanation": "What bothers me most is handing in essays on time. I almost missed the deadline once because there were three essays due within the same week. So rationalizing your…"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "G"
+       ],
+       "explanation": "Well that's true. The lectures deliver so much useful information. I have poor memory, so I kept making notes and revisiting them on a regular basis."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "C"
+       ],
+       "explanation": "That's true. The majority of us had no clue how to carry out the research at first. Fortunately, when I was digging up reference materials at the library, I sought…"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "A"
+       ],
+       "explanation": "Yes. It has become a habit for me to visit the forum regularly, in a sense, it extends classroom learning. It is where the students post academic problems that they…"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Some of my classmates didn't do so well during the placement tests. I feel that background reading is necessary."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "H"
+       ],
+       "explanation": "After consulting my advisor, I found it important to set realistic goals. Don't push yourself too hard."
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Now turn to section 3. Section 3. You will hear two students called Helen and Paul talking to their tutor about a nursing course.\nA: First, you have some time to look at questions 21 to 24.\nA: Now listen carefully and answer questions twenty-one to twenty four.\nD: Helen and Paul, congratulations to you both for doing so well the past semester. You two have exhibited an impeccable performance during your first year in the nursing program.\nD: I’d like to get some feedback from the two of you to better improve the program and to provide guidance for our prospective students. I’d like to start with you, Helen. So, first of all, which aspect of the program impressed you?\nA: Well, to be honest, when I was enrolled into the course, I was expecting a group of classmates my age. But as I stepped into the classroom for the first time, I was surprised by the diversity.\nA: Most were in their 20s, but there were also those in the 30s or even 40s. As it turns out, the intergenerational communication has sparked intense debate and new thinking.\nD: And I think that’s something special about the program that I appreciate very much. What about you, Paul? What do you think of the program?\nB: For me, the group project we carried out last semester is another key feature of the program. The whole class was divided into eight different groups, working on eight prospective cases.\nB: Team building sessions were conducted in a collaborative way most of the time. Comprised of five members, our group studied acute pancreatitis.\nB: During the process, we broke the task into different parts and assigned them to each member.\nB: We were then able to tackle the complex problem by pooling our knowledge and skills. More importantly, stronger links were established between the group members. Because of the project, we’ve all become good friends.\nD: That’s true. According to graduates, group projects prepare them for the work world in which teamwork and collaboration are increasingly the norm. So tell me, Paul, what else do you like about the program?\nB: I want to be a registered nurse working in a public hospital after graduation. So the internship provided is a valuable opportunity for clinical practice in a supportive learning atmosphere.\nB: However, I was amazed by the amount of written assignments since I thought the course should have focused more on practice-oriented learning.\nC: Well, I have to disagree with you, Paul. The essays demonstrate your understanding of the course. For me, writing essays is a process that involves critical thinking, which challenges me to develop my points more thoroughly.\nC: I thus managed to gain a diversity of perspectives.\nD: The program is designed to deliver basic and advanced theoretical knowledge of core concepts, including healthcare systems concepts, together with practicum or clinical practice experience to bridge the classroom content to the practice setting.\nD: So, I’m afraid written work is unavoidable. Also this year, we’ve added a module of law. How do you feel about that?\nC: At first we felt that learning law is kind of redundant and too time consuming. After a few sessions, we realized that it is necessary in dealing with future medical disputes.\nA: Before you hear the rest of the talk, you have some time to look at questions 25 to 30.\nA: Now listen and answer questions twenty-five to thirty.\nD: Do you have any suggestions for prospective students?\nB: What bothers me most is handing in essays on time. I almost missed the deadline once because there were three essays due within the same week. So rationalizing your time is critical.\nC: Well that’s true. The lectures deliver so much useful information. I have poor memory, so I kept making notes and revisiting them on a regular basis.\nA: To my surprise, at the end of the semester, I have learnt the key concepts by heart.\nD: How was the research? I heard that it was quite challenging. How did you manage to overcome the difficulties?\nB: That’s true. The majority of us had no clue how to carry out the research at first. Fortunately, when I was digging up reference materials at the library, I sought help from the librarian.\nB: She taught me about finding the appropriate resources and choosing the proper research methods.\nD: Have you checked out the online forum?\nA: Yes. It has become a habit for me to visit the forum regularly, in a sense, it extends classroom learning. It is where the students post academic problems that they come across and get support from the faculty members.\nB: Some of my classmates didn’t do so well during the placement tests. I feel that background reading is necessary.\nD: Lastly, do you have anything to say to the freshman?\nA: I was really ambitious at first, trying to get straight A’s on my transcript. I made tons of notes and worked hard even on the optional assignments to get extra credit. I stressed myself out before having an emotional breakdown.\nA: After consulting my advisor, I found it important to set realistic goals. Don’t push yourself too hard.\nC: It is wise to sort out your priorities.\nD: Thank you for coming here today and providing valuable feedback on the program. Have a great summer break.\nA: That is the end of section 3. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-69-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "title": "Penguins in Africa",
+     "template": "# Appearance and lifestyle\n- They are also called Jackass Penguins for the sound they make.\n- The [[31]] of their body remains constant.\n- They restrict their [[32]] on land from dusk till dawn.\n- They cannot fly because they have heavy [[33]] .\n- They nest under [[34]] .\n- They eat tree [[35]] .\n# Predators\n- seals\n- [[36]]\n- seagulls (eat the penguin [[37]] )\n# Threats\n- They lose [[38]] in winter.\n- They are fighting for nesting [[39]] and food because of human activities.\n- In order to improve survivorship, it is helpful to increase the [[40]] of their genes.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "temperature"
+       ],
+       "explanation": "African penguins can keep their body temperature at a stable level, but their land habitat can get quite warm, so there are a number of ways for them to stay cool."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "movements",
+        "movement"
+       ],
+       "explanation": "They limit their daylight movements on breeding sites on land to early mornings and early evenings to avoid too much sun. The pink glands above their eyes can help…"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "bones",
+        "bone"
+       ],
+       "explanation": "Even though they are categorized as birds, African penguins aren't able to fly because of their heavy bones, their wings are more like flippers that make them…"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "bushes",
+        "bush"
+       ],
+       "explanation": "They dig holes under bushes out of their own excrement, called guano, so they are sheltered from the sun and predators. The African penguins survive on a diet that is…"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "roots",
+        "root"
+       ],
+       "explanation": "They feed primarily on fish like sardines, along with the occasional squid and shellfish. But when normal food is in short supply, they eat tree roots as well."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "sharks",
+        "shark"
+       ],
+       "explanation": "The African penguin's smaller size means that it has many predators both in the water and also on dry land. Their natural predators at sea include seals and sharks."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "chicks",
+        "chick"
+       ],
+       "explanation": "The biggest threat to them on land is not just towards the adult penguins. The penguin chicks are sometimes taken by seagulls into the air and dropped from above. The…"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "feathers",
+        "feather"
+       ],
+       "explanation": "The entire surface of their body is densely covered with feathers which fall off during the winter. This process is called malting and takes about three weeks to…"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "space"
+       ],
+       "explanation": "They are struggling for nesting space due to human disruption and competing for food due to overfishing and pollution. With the limited number of breeding pairs,…"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "diversity"
+       ],
+       "explanation": "The more genetic diversity there is within a species, the higher the likelihood that at least some of the individuals will adapt and survive. That is the end of…"
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Now turn to section four. Section four You will hear part of a lecture about African penguins. First you have some time to look at questions thirty one to forty.\nA: Now listen carefully and answer questions 31 to 40.\nC: Good morning everyone. Today’s lecture is about a type of adorable animal, the penguin. When you think of penguins, you may picture them surrounded by snow and ice. But not all penguins live where it’s cold.\nC: African penguins live in the southern tip of Africa. They are usually found within 40 kilometers of the shore and on a number of its surrounding islands.\nC: African penguins are also known as jackass penguins because they make donkey-like braying sounds to communicate.\nC: African penguins can keep their body temperature at a stable level, but their land habitat can get quite warm, so there are a number of ways for them to stay cool.\nC: They limit their daylight movements on breeding sites on land to early mornings and early evenings to avoid too much sun. The pink glands above their eyes can help them cope with the temperate climates.\nC: Like other penguins, African penguins spend most of the day feeding in the ocean, which also helps keep them cool.\nA: Being a type of small to medium-sized penguin species, African penguins average about 60 centimetres tall and weigh up to 3.6 kilograms. They have a black stripe and a pattern of unique black spots on their chest.\nA: Males are larger than females and have larger beaks.\nA: Even though they are categorized as birds, African penguins aren’t able to fly because of their heavy bones, their wings are more like flippers that make them particularly suited for life in the water.\nA: When they’re on land, their flippers and their tails help them keep their balance and walk upright. African penguins begin to breed at the average age of four.\nA: When a male and female pair up, they tend to breed together for the rest of their lives.\nC: Most other penguins nest and lay their eggs out in the open, but African penguins have a different approach.\nC: They dig holes under bushes out of their own excrement, called guano, so they are sheltered from the sun and predators. The African penguins survive on a diet that is comprised mainly of marine organisms.\nC: They feed primarily on fish like sardines, along with the occasional squid and shellfish. But when normal food is in short supply, they eat tree roots as well.\nC: The streamlined body of the African penguin allows it to move through the water like a rocket, capable of reaching a speed of around 20 kilometers per hour when hunting for food.\nC: The African penguin’s smaller size means that it has many predators both in the water and also on dry land. Their natural predators at sea include seals and sharks.\nA: The biggest threat to them on land is not just towards the adult penguins. The penguin chicks are sometimes taken by seagulls into the air and dropped from above. The seagulls could thus feed on them.\nA: At risk from predators, young penguins are protected for about 40 days after hatching by both parents. They will leave the colony when they are between three to five months old and will return a few years later.\nA: The entire surface of their body is densely covered with feathers which fall off during the winter. This process is called malting and takes about three weeks to complete.\nC: During that time, they are unable to forage. Therefore, prior to this, African penguins spend about five weeks laying down fat deposits. They generally live between 10 to 15 years.\nC: However, many do not reach their full lifespan. Their population has drastically declined.\nC: Approximately 120,000 African penguins remain in the wild, and their population has decreased by 90% in the past 60 years. They are considered to be vulnerable and have been listed as being endangered.\nC: Two major factors have contributed to their decline.\nC: They are struggling for nesting space due to human disruption and competing for food due to overfishing and pollution. With the limited number of breeding pairs, survivorship becomes difficult for African penguins.\nC: This makes them especially vulnerable as environmental conditions change or an outbreak of a disease occurs. For instance, avian malaria has caused 27% of the captive breeding penguins’ deaths annually.\nA: The more genetic diversity there is within a species, the higher the likelihood that at least some of the individuals will adapt and survive. That is the end of section four."
+  }
+ ],
+ "audio": {
+  "file": "listening-69.mp3",
+  "durationSec": 1697,
+  "partStarts": [
+   34,
+   444,
+   918,
+   1351
+  ],
+  "questionTimes": {
+   "1": 142,
+   "2": 163,
+   "3": 186,
+   "4": 215,
+   "5": 240,
+   "6": 301,
+   "7": 318,
+   "8": 356,
+   "9": 374,
+   "10": 391,
+   "11": 531,
+   "12": 577,
+   "13": 595,
+   "14": 623,
+   "15": 654,
+   "16": 677,
+   "17": 770,
+   "18": 797,
+   "19": 835,
+   "20": 858,
+   "21": 1011,
+   "22": 1061,
+   "23": 1099,
+   "24": 1150,
+   "25": 1203,
+   "26": 1215,
+   "27": 1237,
+   "28": 1257,
+   "29": 1270,
+   "30": 1296,
+   "31": 1443,
+   "32": 1453,
+   "33": 1492,
+   "34": 1525,
+   "35": 1539,
+   "36": 1565,
+   "37": 1577,
+   "38": 1603,
+   "39": 1651,
+   "40": 1681
+  }
+ }
+}

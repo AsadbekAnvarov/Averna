@@ -1,0 +1,637 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-37",
+ "title": "CDI Reading Test 37",
+ "description": "A full Academic Reading test from the CDI practice materials: Traditional Maori Medicine; The purpose of facial expressions; Living Dunes.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Traditional Maori Medicine",
+  "The purpose of facial expressions",
+  "Living Dunes"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Traditional Maori Medicine",
+   "paragraphs": [
+    {
+     "text": "The Maori are the indigenous people of the islands of New Zealand. Their traditional medicine, which is believed to date back as far as the 13th century, was a system of healing that was passed down through the generations orally. It comprised diverse practices and placed an emphasis on the spiritual dimension of health. Its practices included remedies made from herbs, and physical therapies such as massage to relieve discomfort in the muscles and bones."
+    },
+    {
+     "text": "Maori systems for treating illness were well developed before Europeans arrived in New Zealand in the late 1700s: they had quite detailed knowledge of anatomy and recognition of the healing properties of various plants. When Europeans first visited New Zealand, the average age of death for Maori adults was around 30. However, apart from this, the people were fit and healthy, and troubled by few diseases."
+    },
+    {
+     "text": "Illness was often seen as spiritually based. Maori saw themselves as guardians of the earth, and the focus of their existence was to remain at one with the natural and supernatural world. Rather than a medical problem, sickness was often viewed as a symptom of disharmony with nature."
+    },
+    {
+     "text": "In Maori culture, illnesses were divided into diseases of the gods (mate atua) and physical diseases (mate tangata). Diseases sent by the gods were often attributed to attacks by evil spirits, because the person had broken a religious rule. For instance, for Maori, places where people had died, or places where their ancestors were buried were sacred, so if someone took food from a river where someone had died, or took a stick from a tree that had held their ancestor’s bones and placed it on a cooking fire, it was believed that the gods could punish them for their disrespectful acts by making them sick."
+    },
+    {
+     "text": "More than 200 plants were used medicinally by Maori. The leaves of the flax plant were used to treat skin infections and food poisoning, and the hard part of the leaf was also used as a splint or brace for broken bones and injured backs. Flax fibres were used along with a sharpened stick to sew up bad cuts. The bark and leaves of the pepper tree were used to heal cuts, wounds and stomach pains. People who had toothache were instructed to chew the leaves of this same tree, and this was found to be of considerable benefit. The pepper tree was also used in vapour baths to treat people with painful joints."
+    },
+    {
+     "text": "Colonisation by Europeans in the 1800s had a significant effect on traditional Maori healing. Europeans brought many new diseases with them which Maori healers had limited ability to combat. Though Western medicine was also relatively ineffectual at the time, this failure still strongly affected Maori confidence in their healers. Some western missionaries attributed the spread of disease to the fact that Maori did not believe in Christianity, and as Maori healers appeared powerless, many Maori accepted this explanation and turned to Christianity. Over time the schools of higher learning which had trained healers started to close and the tradition of the Maori healer declined."
+    },
+    {
+     "text": "From the late 20th century, there was renewed Maori interest in their traditional medicine. This was due to several factors. There was a resurgence of all aspects of Maori culture in New Zealand. Furthermore, people started to be less trusting of Western medicine — statistics from the 1970s came out revealing that Maori health continued to be poorer than that of other New Zealanders. There were also problems with access to health care for Maori. Additionally, there was and still is today a perceived lack of a spiritual dimension in Western health services."
+    },
+    {
+     "text": "Although Maori today largely accept Western concepts of health and illness, and use the mainstream health system, there is significant demand for traditional medicine. This is true for unusual illnesses, or those that fail to respond to standard medical treatment, but also for common ailments such as the cold and influenza."
+    },
+    {
+     "text": "Today’s healers differ significantly from those of old times. Training is highly variable, usually informal, and often less tribally bound than the rigorous education of the traditional houses of higher learning. Many modern healers work in urban clinics, some alongside mainstream health professionals. They experiment, incorporating knowledge from Western and other medical systems. As a result, their modern day work has no standard system of diagnosis or widespread agreement about treatments. Despite this, many healers are recognised as having knowledge and ability that has been passed down from their ancestors. The Maori language is also seen as important by many of those receiving treatment."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Early Maori healers learned their skills through studying written texts.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says traditional Maori medicine “was passed down through the generations orally” — i.e. spoken, not written. So the statement contradicts the passage."
+      },
+      {
+       "n": 2,
+       "text": "The first Europeans in New Zealand were surprised by how long the Maori lived.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage gives the average age of death (around 30), but says nothing about whether the Europeans were surprised by it."
+      },
+      {
+       "n": 3,
+       "text": "Diseases of the gods were believed to be more serious than physical diseases.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage describes the two categories (mate atua and mate tangata) but never compares their seriousness."
+      },
+      {
+       "n": 4,
+       "text": "The leaves of the pepper tree were used to treat toothache.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage states: “People who had toothache were instructed to chew the leaves of this same tree” (the pepper tree)."
+      },
+      {
+       "n": 5,
+       "text": "Western religion was one reason why traditional Maori medicine became less popular.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Missionaries blamed disease on lack of Christianity, so “many Maori accepted this explanation and turned to Christianity” — traditional healing then declined."
+      },
+      {
+       "n": 6,
+       "text": "Modern day Maori healers often reach the same conclusion about the type of treatment which is best.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage explicitly states modern healers have “no standard system of diagnosis or widespread agreement about treatments.”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "A short history of Maori healing",
+     "template": "Diseases sent from the gods were thought to be caused by disobeying a spiritual [[7]] .\nSickness could be attributed to eating food from a sacred [[8]] or burning sacred wood.\nThe inability of Maori healers to cure new diseases meant the Maori people lost [[9]] in them.\nEventually the [[10]] for Maori healing began shutting down.\nPublished [[11]] showed that Maori were not as healthy as Europeans.\nMaori healers can be seen working with Western doctors in [[12]] in cities.\nMany patients appreciate the fact that the Maori [[13]] is used by healers.",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "rule"
+       ],
+       "explanation": "“diseases sent by the gods were often attributed to attacks by evil spirits, because the person had broken a religious rule.”"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "river"
+       ],
+       "explanation": "“if someone took food from a river where someone had died... it was believed that the gods could punish them.”"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "confidence"
+       ],
+       "explanation": "“this failure still strongly affected Maori confidence in their healers.”"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "schools"
+       ],
+       "explanation": "“the schools of higher learning which had trained healers started to close.”"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "statistics"
+       ],
+       "explanation": "“statistics from the 1970s came out revealing that Maori health continued to be poorer than that of other New Zealanders.”"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "clinics"
+       ],
+       "explanation": "“Many modern healers work in urban clinics, some alongside mainstream health professionals.”"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "language"
+       ],
+       "explanation": "“The Maori language is also seen as important by many of those receiving treatment.”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The purpose of facial expressions",
+   "subtitle": "Do facial expressions reflect inner feelings? Or are they social devices for influencing others?",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The use of facial expressions for measuring people’s emotions has dominated psychology since the late 1960s. This was when Paul Ekman of the University of California pioneered the idea that, by carefully measuring facial expression, he could evaluate people’s true emotions. Ekman carried out experiments in which people were asked to label photos of basic facial expressions — such as a smile, frown or scowl — with words for emotions. He found, for example, that a smile represented joy and a scowl represented anger. In fact, since the 1970s Ekman has dominated the field of emotion research with his theory that when an emotion occurs, a large number of electrical impulses also occur, creating specific facial expressions and other physiological changes, such as increased or decreased heart rate or heightened blood pressure."
+    },
+    {
+     "label": "B",
+     "text": "Many took Ekman’s work to imply that facial expressions precisely indicated people’s feelings. However, this theory has been attacked by a number of psychologists, such as Alan Fridlund of the University of California, who claim that there is no one-to-one correspondence between facial expressions and emotions. Expressions evolved to set off certain behaviors in other people, says Fridlund. So a smile may prompt people to approach, a scowl may warn them to stay away, and a look of sadness may elicit words of sympathy and reassurance. In other words, in Fridlund’s view, facial expressions are inherently social — they involve not one, but two or more people. Even when people are alone they are holding a dialog with another person internally, or imagining themselves in a social situation."
+    },
+    {
+     "label": "C",
+     "text": "Thus Fridlund thinks of facial expressions as tools for influencing social interactions, a view which, he claims, enables us to begin predicting when certain facial expressions will occur. This in turn will allow more precise theories about social interactions. His studies find that expressions occur most often during pivotal points, the turning points in social interactions — during greetings, social crises, or times of appeasement, for example. At these pivotal points there is an approach, or closeness, or more intimacy, and facial expressions, as well as gestures, open up the possibilities of various social interactions."
+    },
+    {
+     "label": "D",
+     "text": "Although much work on the emotions relies on a link between facial expression and emotions, psychologist James Russell, of the University of British Columbia, says there is very little evidence supporting such a connection. ‘There’s some sense in which faces express emotion, but only in the sense that everything expresses emotion,’ says Russell, a long-time critic of the expression-emotion link. ‘Music does, posture does, words do, tone of voice does, your behavior does. The real question is, “Is there anything special about faces?” And there we really do not know much.’ What is more likely, argues Russell, is that facial expressions tell others something about a person’s overall mood and context, rather than provide details about specific emotions."
+    },
+    {
+     "label": "E",
+     "text": "Others, including Ekman, argue that the face can display information about emotions, but they admit that it is not reliable one hundred percent of the time. And those who only examine faces when trying to study emotion will jump to false conclusions. But according to Ekman, to say, as Fridlund does, that there is no connection at all between facial expressions and emotions is simply wrong. There is a link between facial expression and emotion, agrees developmental psychologist Linda Camras of DePaul University, but it’s not a one-to-one kind of relationship as many once thought. She believes there are many situations where emotion is experienced, yet no basic facial expression is displayed. And there are times when a facial expression appears with no corresponding emotion."
+    },
+    {
+     "label": "F",
+     "text": "Ekman’s theory states that if the emotion comes on slowly or is rather weak, the feeling might not be strong enough to trigger the expression. This would explain why there can sometimes be emotion without expression, he argues. In addition, cultural rules — which determine when and whether people of certain cultures display emotional expressions — can prevent this otherwise automatic process from being completed. Facial expressions evolved in humans as signals to others about how they feel, says Ekman. At times, though, it may be uncomfortable or inconvenient for us to let others know our emotions. But in the long run, over the course of evolution, it was useful to us as signalers: an angry look on someone’s face may be a warning that they are preparing to behave in an angry fashion."
+    },
+    {
+     "label": "G",
+     "text": "Although Fridlund disagrees with Ekman on certain matters, the two basically share the opinion that facial expressions indicate people’s future actions. The area of dispute between Fridlund and Ekman draws attention away from their major areas of agreement, says Joseph Campos of the University of California. Indeed, he says, ‘there is profound agreement that the face, along with the voice, body posture and hand gestures, forecasts to outside observers what people will do next.’ He goes on to say, ‘The face is a component [of emotion], but to make it the center of study of the human being experiencing an emotion is like saying the only thing you need to study in a car is the transmission. Not that the transmission is unimportant, but it’s only part of an entire system.’"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has 7 paragraphs, A–G. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "a recognition that facial expressions do not always provide a true guide to feelings",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E states the face is “not reliable one hundred percent of the time” and gives examples of expressions without matching emotions."
+      },
+      {
+       "n": 15,
+       "text": "examples of ways that a person’s facial expression can affect someone else’s actions",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B gives concrete examples: a smile may prompt people to approach, a scowl may warn them to stay away, sadness may elicit sympathy."
+      },
+      {
+       "n": 16,
+       "text": "a reference to reasons for hiding emotions",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F mentions “cultural rules” and that “it may be uncomfortable or inconvenient for us to let others know our emotions.”"
+      },
+      {
+       "n": 17,
+       "text": "examples of times when facial expressions are used especially frequently",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C lists pivotal moments: “greetings, social crises, or times of appeasement.”"
+      },
+      {
+       "n": 18,
+       "text": "examples of changes inside the body when an emotion is felt",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A gives “physiological changes, such as increased or decreased heart rate or heightened blood pressure.”"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of researchers below. Match each statement with the correct researcher, A–E. NB You may use any letter more than once.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paul Ekman"
+      },
+      {
+       "key": "B",
+       "text": "Alan Fridlund"
+      },
+      {
+       "key": "C",
+       "text": "James Russell"
+      },
+      {
+       "key": "D",
+       "text": "Linda Camras"
+      },
+      {
+       "key": "E",
+       "text": "Joseph Campos"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 19,
+       "text": "Focusing on the face in researching emotions is similar to researching a large structure by looking at just one small unit of it.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Joseph Campos compares studying only the face to “saying the only thing you need to study in a car is the transmission.”"
+      },
+      {
+       "n": 20,
+       "text": "Facial expressions developed in order to encourage other people to react in particular ways.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Ekman: “Facial expressions evolved in humans as signals to others about how they feel.”"
+      },
+      {
+       "n": 21,
+       "text": "Although certain researchers have different opinions about various points, they share some important ideas.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Joseph Campos says Fridlund and Ekman “draw attention away from their major areas of agreement.”"
+      },
+      {
+       "n": 22,
+       "text": "Both emotion and expression can exist independently of each other in certain circumstances.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Linda Camras: “many situations where emotion is experienced, yet no basic facial expression is displayed. And there are times when a facial expression appears with no corresponding emotion.”"
+      },
+      {
+       "n": 23,
+       "text": "It cannot be proved that there is a connection between facial expression and real emotion.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "James Russell says “there is very little evidence supporting such a connection.”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "In Fridlund's view [[24]] on someone's face may be intended as an invitation to come nearer.\nAccording to Fridlund, when we are by ourselves we still use facial expressions because we are having a [[25]] with someone in our minds.\nFridlund considers facial expressions to be [[26]] that can affect our contact with other people.",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "smile"
+       ],
+       "explanation": "“a smile may prompt people to approach” — i.e. an invitation to come nearer."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "dialog"
+       ],
+       "explanation": "“Even when people are alone they are holding a dialog with another person internally.”"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "tools"
+       ],
+       "explanation": "“Fridlund thinks of facial expressions as tools for influencing social interactions.”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Living Dunes",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Armies of giant sand dunes are advancing across the world’s deserts, engulfing anything that crosses their path. They are tens of metres tall and hundreds of metres long. Fortunately, they aren’t going very fast. Even the smallest, speediest dunes only travel about 100 metres over the course of a year, while the bigger ones, which weigh something in the order of 10,000 tonnes, barely move one metre in that time. However, their insidious creep can have serious consequences if there is an oil installation or a railway line in their path."
+    },
+    {
+     "label": "B",
+     "text": "About 47% of the world’s land mass, including Antarctica, most of Australia and large areas of Africa, is classified as arid or semi-arid desert. Only around 20% of that is sand-covered, however, and over half of that is classified as ‘linear’ sand dunes. These form in a long curving wave, as a result of wind blowing strongly from several quarters, flipping them from side to side. Although linear dunes are static, sand blowing off them can cause problems for desert villages, burying crops and buildings."
+    },
+    {
+     "label": "C",
+     "text": "Moving dunes make up just a small percentage of the rest, but they are of the most interest to scientists. They are known as ‘barchans’: heavy, crescent-shaped sand piles with a ridged crest and two elongated arms, one curving away to either side. ‘Barchan dunes only tend to form where you have one-directional winds on the edge of sandy deserts near coastal areas,’ says Giles Wiggs, a geomorphologist at Oxford University, who has been studying the formation and movement of sand dunes for more than a decade."
+    },
+    {
+     "label": "D",
+     "text": "But even with strong winds, how can entire barchans move while retaining their form? That question was first answered in the mid-20th century by British explorer Ralph Alger Bagnold, and his answer hinges on the fact that dunes aren’t solid, but granular. Bagnold figured out how barchan dunes are able to move grain by grain. Imagine a single grain of sand being blown up the back of a dune by the wind and deposited on the top. More grains follow the same pattern, until the accumulated weight of piled-up sand finally pushes the top down the dune face. The grain tumbles, then stops on the face until subsequent mini-avalanches bury it. Eventually, it reappears at the back of the dune, ready to repeat the process. As this happens to every grain of sand in the dune, the whole thing creeps in the direction of the prevailing wind."
+    },
+    {
+     "label": "E",
+     "text": "The relationship between the wind and barchan dunes is complex. As a dune grows, it modifies the speed and course of the wind, which in turn alters how that dune and its neighbours evolve. ‘Interestingly, the dune can regulate its own shape, and maintain it as it moves,’ says Dr Stéphane Douady, a physicist at Ecole Normale Supérieure (ENS) in France. ‘Even when two dunes collide, they quickly take on their distinctive shapes again. It’s like a living organism.’"
+    },
+    {
+     "label": "F",
+     "text": "Douady and his colleagues have also been studying an even odder phenomenon than moving dunes: some barchans actually sing. Local legends attributed the sounds to dangerous spirits which were trying to trap unwary travellers. Douady is more pragmatic. ‘It’s a strong booming noise with a low frequency,’ he explains. ‘It can last for a long time — up to several minutes. It’s a very loud sound and you don’t understand where it’s coming from when you first hear it.’ There are about 50 dunes distributed across 35 deserts round the world that are known to sing. Douady says the sound is caused by the way sand avalanches down the faces of particular dunes. Rather than tumbling randomly, the sand grains flow in synchrony and set each other vibrating like the membrane on a gigantic loudspeaker. The synchronisation causes the air to move in and out between the grains, creating a powerful sound wave."
+    },
+    {
+     "label": "G",
+     "text": "What really surprised the scientists, however, was that they were able to take samples of the singing sand back to France and replicate the sound at ENS, proving that it’s the sand, not the dune shape, that causes the sound. Their studies show the grains are a uniform shape, well-rounded from years of striking each other, and that the variations in size affect the tone. Crucially, the grains are coated with a special veneer, which Douady calls ‘desert glaze’, made from a precise combination of minerals from surrounding rocks including iron, aluminium, manganese, silicon and calcium. The team found that after a month or so, the veneer wore off and the grains lost their ‘voice’."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has seven paragraphs, A–G. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Moving rapidly across the desert"
+      },
+      {
+       "key": "ii",
+       "text": "Recreating the process in a laboratory"
+      },
+      {
+       "key": "iii",
+       "text": "Strange music created by human movement"
+      },
+      {
+       "key": "iv",
+       "text": "A potential threat to industry and communications"
+      },
+      {
+       "key": "v",
+       "text": "Dunes coming together and re-forming"
+      },
+      {
+       "key": "vi",
+       "text": "Needing a specific combination of conditions"
+      },
+      {
+       "key": "vii",
+       "text": "A continuous cycle"
+      },
+      {
+       "key": "viii",
+       "text": "The commonest type of dune"
+      },
+      {
+       "key": "ix",
+       "text": "Old superstitions demystified"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "Paragraph A",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph A describes how dunes pose a threat to oil installations and railway lines — industry and communications."
+      },
+      {
+       "n": 28,
+       "text": "Paragraph B",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Paragraph B says over half of sand-covered desert is classified as linear dunes — the commonest type."
+      },
+      {
+       "n": 29,
+       "text": "Paragraph C",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Paragraph C says barchans ‘only tend to form where you have one-directional winds on the edge of sandy deserts near coastal areas’ — a specific combination of conditions."
+      },
+      {
+       "n": 30,
+       "text": "Paragraph D",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Paragraph D explains the grain-by-grain process: ‘ready to repeat the process’ — a continuous cycle."
+      },
+      {
+       "n": 31,
+       "text": "Paragraph E",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Paragraph E describes dunes colliding and ‘quickly tak[ing] on their distinctive shapes again’ — coming together and re-forming."
+      },
+      {
+       "n": 32,
+       "text": "Paragraph F",
+       "answer": [
+        "ix"
+       ],
+       "explanation": "Paragraph F replaces the old superstition (dangerous spirits) with a scientific explanation — old superstitions demystified."
+      },
+      {
+       "n": 33,
+       "text": "Paragraph G",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Paragraph G describes ‘replicat[ing] the sound at ENS’ — recreating the process in a laboratory."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 34,
+       "text": "What are we told about linear dunes?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They are formed by strong winds blowing from one direction."
+        },
+        {
+         "key": "B",
+         "text": "They can move up to 100 metres in a twelve-month period."
+        },
+        {
+         "key": "C",
+         "text": "They develop in a recognisable shape."
+        },
+        {
+         "key": "D",
+         "text": "They make up about 20% of the world’s deserts."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "‘These form in a long curving wave’ — a recognisable shape. A is wrong (winds come from ‘several quarters’). B describes barchans, not linear. D is wrong (20% is sand-covered desert, not linear specifically)."
+      },
+      {
+       "n": 35,
+       "text": "Bagnold discovered that movement in barchans was caused by",
+       "options": [
+        {
+         "key": "A",
+         "text": "the long straight shape of the dunes."
+        },
+        {
+         "key": "B",
+         "text": "the particular composition of the dunes."
+        },
+        {
+         "key": "C",
+         "text": "the exceptionally heavy nature of the sand grains."
+        },
+        {
+         "key": "D",
+         "text": "the unusual strength of the wind in certain seasons."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Bagnold’s answer ‘hinges on the fact that dunes aren’t solid, but granular’ — their composition (granular vs solid)."
+      },
+      {
+       "n": 36,
+       "text": "Why does Dr Douady compare a barchan dune to a living organism?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It starts small and then increases in size."
+        },
+        {
+         "key": "B",
+         "text": "It has an effect on its immediate surroundings."
+        },
+        {
+         "key": "C",
+         "text": "Its relations with desert organisms are quite developed."
+        },
+        {
+         "key": "D",
+         "text": "Its outline stays the same even after a period of movement."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "‘the dune can regulate its own shape, and maintain it as it moves’ — outline stays the same."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Singing Dunes",
+     "template": "Singing dunes belong to the type of dunes known as [[37]] .\nThe individual grains have a similar [[38]] .\nThe differences in dimensions alter the [[39]] of the ‘song’.\nEach grain is covered with a mixture of different [[40]] and this is vital to the sound production.",
+     "questions": [
+      {
+       "n": 37,
+       "answer": [
+        "barchans"
+       ],
+       "explanation": "‘some barchans actually sing.’ The singing dunes are barchans."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "shape"
+       ],
+       "explanation": "‘Their studies show the grains are a uniform shape.’"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "tone"
+       ],
+       "explanation": "‘the variations in size affect the tone.’"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "minerals"
+       ],
+       "explanation": "‘the grains are coated with a special veneer... made from a precise combination of minerals.’"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -2,20 +2,26 @@ import { CheckCircle2, XCircle } from "lucide-react";
 import type { ExamGroup, ExamSkill, GradeItem } from "@/lib/ielts/types";
 import { answerRuleFor, groupRange, rangeLabel, splitPlaceholders } from "@/lib/ielts/format";
 import { cn } from "@/lib/utils";
+import { PlayFromHere } from "./results/recording-player";
+import { GroupImage } from "./group-image";
 
 /**
  * Post-submission review of one question group: the student's answer, the
  * correct answer(s) and the explanation for every question. No hooks — works
  * in server components (result pages) and client ones (the mock result).
+ * `questionTimes` (a real recording's answer times, result page only) adds a
+ * "Play from here" button per question inside a RecordingPlayerProvider.
  */
 export function ReviewGroup({
   group,
   skill,
   items,
+  questionTimes,
 }: {
   group: ExamGroup;
   skill: ExamSkill;
   items: Map<number, GradeItem>;
+  questionTimes?: Record<number, number>;
 }) {
   const { from, to } = groupRange(group);
   const optionText = (key: string) => group.options?.find((o) => o.key.toLowerCase() === key.toLowerCase())?.text;
@@ -42,6 +48,12 @@ export function ReviewGroup({
         {group.instructions} <span className="text-gray-300">{answerRuleFor(group, skill)}</span>
       </p>
       {group.kind === "mcq-multi" && group.title && <p className="mt-1 text-sm font-medium text-gray-200">{group.title}</p>}
+      {/* The map / plan the letters refer to, so map answers can be checked here too. */}
+      {group.image?.src && (
+        <div className="mt-3">
+          <GroupImage src={group.image.src} alt={group.image.alt} />
+        </div>
+      )}
       <ul className="mt-3 space-y-2">
         {group.questions.map((q) => {
           const it = items.get(q.n);
@@ -79,6 +91,7 @@ export function ReviewGroup({
                     </p>
                   )}
                   {it?.explanation && <p className="mt-1 text-gray-400">{it.explanation}</p>}
+                  {typeof questionTimes?.[q.n] === "number" && <PlayFromHere question={q.n} seconds={questionTimes[q.n]} />}
                 </div>
                 {ok ? (
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-averna-neon" aria-label="Correct" />

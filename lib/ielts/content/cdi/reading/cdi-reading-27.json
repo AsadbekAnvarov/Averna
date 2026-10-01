@@ -1,0 +1,637 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-27",
+ "title": "CDI Reading Test 27",
+ "description": "A full Academic Reading test from the CDI practice materials: New perspectives on food production; Egypt’s ancient boat-builders; Communication in Science.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "New perspectives on food production",
+  "Egypt’s ancient boat-builders",
+  "Communication in Science"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "New perspectives on food production",
+   "paragraphs": [
+    {
+     "text": "Solving the food problem requires scientific progress, but also an understanding of social context and cultures"
+    },
+    {
+     "text": "Is new technology needed for global food production?"
+    },
+    {
+     "text": "The Food and Agriculture Organization of the United Nations notes that domestic prices of staple food are continuing to increase, leading to a rise in the number of people worldwide who are chronically underfed. According to Erik Millstone, a food and agriculture researcher funded by the Economic and Social Research Council (ESRC), the natural science community tends to view world hunger as if it were a problem that could be solved simply by increasing total production. But, he says, 'Most people who are chronically hungry are so not because of the scarcity of food but because they are unable to afford what is available. In addition, the food trade is so globalised that food is often exported from areas where people are hungry and sent to countries where people already have sufficient.'"
+    },
+    {
+     "text": "Millstone believes the problem can only be solved by changing the conditions for poor subsistence farmers and providing the support they need to grow more food. And that is not enough on its own-they also have to have facilities for storing it so that their food can be kept safe and in good condition until it is needed. But, he adds, increasing productivity through technology is not the answer. An example is the new genetically-engineered varieties of high-performance maize. The problem with these new varieties is that if you save seed and plant it again next year, its vigour has diminished. Most North American and European farmers can afford to get new seed every year; poor farmers cannot, so they need traditional varieties whose seed can be saved and replanted. Giving farmers access to credit also doesn't help; it adds risk. 'Poor farmers should not be thought of as entrepreneurs looking to invest their money. They are looking to diminish their risk.' Ultimately, he concludes, 'Instead of devoting resources to research for intensifying commercial farming, we should devote them to enhancing the techniques available to subsistence farmers, and to developing appropriate tools for them to use, because their need is the greatest. Increasing their productivity will do more to enhance food security for those who are hungry than anything else we can do.'"
+    },
+    {
+     "text": "Looking for local solutions in the UK"
+    },
+    {
+     "text": "In contrast to Millstone, Gareth Edwards-jones a professor of agriculture and land use at the University of Bangor in Wales, focuses on food production in the UK. In recent years 'local food' has become fashionable in the UK without any real understanding of the issues involved. First and foremost, it is necessary to define more precisely what is meant by 'local'. Is bread bought in England from an English bakery 'local' if the wheat it is made from was grown in Canada? Funded through the Rural Economy and Land Use Programme, Edwards Jones is studying people's perceptions of 'localness' and seeking to establish whether there is any science behind the popular belief that 'local is better'."
+    },
+    {
+     "text": "His work involves studying the carbon footprint* of foods grown in different areas of the UK, as well as such common sources of supply as Spain, Kenya and Uganda. He has made some surprising discoveries. Which has the lower carbon footprint: sugar made from sugar cane grown in Africa, or from sugar beet flown in from Europe? The answer is sugar from sugar cane in Africa. Similarly, trucking vegetables in from Spain may have a smaller carbon footprint than growing them locally in the UK-because growing them locally requires adding all the emissions of running a heated greenhouse."
+    },
+    {
+     "text": "And, he asks, how far down the life cycle should you go? He discovered early in his research that the methods used to prepare foods to be eaten can have a huge impact: \"Boiling potatoes accounts for fully half their carbon footprint. Ultimately, it's a mistake to look at just one part of the food chain. You could have a policy where you're going to really pressurise farmers to try to get emissions down, but decarbonising fuel and electricity is a much more effective method of protecting the environment\", he says."
+    },
+    {
+     "text": "Another of Edwards-jones's research projects involved visiting farm workers in each of the above countries to assess their health and well-being. 'We found that farm workers in Kenya had better physical and mental health than the average Kenyan', he says, attributing the difference to both better income and to the benefits - housing, schools, medical care provided by their large corporate employers. He finds it ironic that after years of 'trade not aid', all of a sudden people are starting to say the UK shouldn't be importing food from Africa."
+    },
+    {
+     "text": "The other problem with insisting on locally grown food, he says, is that the UK is not suited to growing most fruits and vegetables - the key elements in a healthy diet. These crops need our best land - which means demoting other crops that do grow well in the UK to lower quality land. 'There's a domino effect so that increasing self-sufficiency may, from an environmental perspective, be quite bad, he says.'"
+    },
+    {
+     "text": "*carbon footprint: a calculation of the amount of greenhouse gases produced as a result of humanity"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Some scientists see world hunger as due to a general [[1]] of food.\n- hungry people cannot [[2]]\n- food is not available because it has been [[3]]\n- provide support for subsistence farmers in growing and [[4]] their food\n- don't use [[5]] to increase food production\n- [[6]] varieties of maize are better for poor farmers as the seed can be replanted\n- don't provide opportunities for farmers to have [[7]] too risky\n- do improve techniques and [[8]] available to subsistence farmers",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "scarcity"
+       ],
+       "explanation": "'Most people who are chronically hungry are so not because of the scarcity of food but because they are unable to afford what is available.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "afford"
+       ],
+       "explanation": "'Most people who are chronically hungry are so... because they are unable to afford what is available.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "exported"
+       ],
+       "explanation": "'the food trade is so globalised that food is often exported from areas where people are hungry'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "storing"
+       ],
+       "explanation": "Support for subsistence farmers in growing and storing food is a key recommendation in the passage."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "technology"
+       ],
+       "explanation": "Millstone advises against relying on technology to increase food production."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "traditional"
+       ],
+       "explanation": "'traditional varieties of seed can be replanted' — better for poor farmers than GM varieties."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "credit"
+       ],
+       "explanation": "The passage recommends against providing credit as it is too risky for subsistence farmers."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "tools"
+       ],
+       "explanation": "Improving techniques and tools available to subsistence farmers is explicitly recommended."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 9,
+       "text": "Importing sugar to the UK from other parts of Europe is less environmentally harmful than importing sugar from Africa.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage states the opposite: importing from nearby Europe can be more harmful than importing from Africa due to farming methods."
+      },
+      {
+       "n": 10,
+       "text": "The way in which some foods are cooked may affect their impact on the environment.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage discusses how preparation and cooking methods affect the environmental impact of food."
+      },
+      {
+       "n": 11,
+       "text": "The best way to reduce harm to the environment is to oblige farmers to use more environmentally friendly farming methods.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage suggests consumer choices and broader policy, not obliging farmers, as key solutions."
+      },
+      {
+       "n": 12,
+       "text": "Imports of food to the UK from African countries such as Kenya have fallen recently.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions imports from Africa but does not state whether they have risen or fallen."
+      },
+      {
+       "n": 13,
+       "text": "Growing fruit and vegetables is better for the environment than raising animals for food.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage discusses environmental impacts of food but does not make a direct comparison between plant and animal foods on this basis."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Egypt’s ancient boat-builders",
+   "paragraphs": [
+    {
+     "text": "Egypt's ancient boat-builders"
+    },
+    {
+     "label": "A",
+     "text": "The scenes carved into a wall of an Egyptian temple dating from the 15th century BC, tell of a remarkable sea voyage from a mysterious land known as Punt, or 'Land of God'. They show a fleet of ships bearing exotic cargo, navigating through high-crested waves on a journey. The exact meaning of these detailed carvings has divided Egyptologists ever since they were discovered in the mid-19th century. Some people have argued that Punt was not on the sea, or a fictitious place altogether, says Oxford University Egyptologist John Baines. However, a series of remarkable discoveries on a desolate stretch of Egypt's Red Sea coast has settled the debate. 'These finds remove all doubt that you reach Punt by sea.' Baines says. The Egyptians must have had considerable seagoing experience.'"
+    },
+    {
+     "label": "B",
+     "text": "The archaeologists behind these discoveries are Kathryn Bard of Boston University, USA, and Rodolfo Fattovich of Orientale University, Italy. From 2002 they spent several weeks each year examining a dried-up lagoon known in Egypt as Mersa Gawasis, and the coastal cliffs nearby. They were searching for signs of a harbour that might have sheltered merchant ships like those depicted in the wall carvings. Finally, in December 2004, Bard was clearing what she thought was the back wall of a rock shelter when she put her hand through the sand into an open space, and uncovered a hemispherical cave about 5 metres across and 2 metres high. The cave's entrance was carved into an exact rectangle and was clearly not a natural formation. Inside, the archaeologists found shattered storage jars, broken boxes made from cedar planks, and five grinding stones. A pottery fragment inscribed with the name of Amenemhat III, a pharaoh who ruled Egypt around 1800 BC, helped the team pinpoint the cave's age."
+    },
+    {
+     "label": "C",
+     "text": "Not long afterwards, Bard and Fattovich came across a larger cave, reinforced with wooden timbers and stone anchors, the first conclusive evidence of large-scale Egyptian seafaring ever discovered. Over the next few years, they uncovered the hidden remnants of an ancient boat-building and seafaring community. Many of the artefacts found were full of holes-the work of tiny marine animals known as shipworms. In addition to eight caves, Bard and Fattovich found remains of five mud-brick ramps that might have been used to ease ships into the water. One cave contained hundreds of metres of rope, expertly coiled and stacked."
+    },
+    {
+     "label": "D",
+     "text": "Material connecting Mersa Gawasis to Punt accumulated both inside and outside the caves. A few hundred metres from the cliffs lie piles of crumbled stone and conch shells - most probable the remains of altars. Among these are stones carved with inscriptions that specifically mention missions to Punt. As it that weren't enough, among the remnants found outside one cave were two planks marked with directions for assembling a ship. One of them bore an inscription still partly legible after 3,800 years: \"Year 8 under his majesty the king of Upper and Lower Egypt......given life forever.. of wonderful things of Punt.\""
+    },
+    {
+     "label": "E",
+     "text": "While the Mersa Gawasis artefacts have answered some questions, they have raised others. For instance, how did the expeditions to Punt actually work, and how did the Egyptians construct vessels that could make a round-trip voyage of over 3,000 kilometres? Cheryl Ward, a maritime archaeologist at Coastal Carolina University in South Carolina, USA, has gone some way to answering these questions. She spent three years building a full-scale reconstruction of a ship that would have docked in the lagoon of Mersa Gawasis. Ward has determined that unlike modern vessels, the Egyptian ship was essentially one giant hull. The Egyptian ships were also unique in that they were held together with fittings that needed no metal fasteners, and could be taken apart and put back together again. 'From the very beginning, the Egyptians were building boats that could be disassembled, and that makes them different from anyone else,' Ward says."
+    },
+    {
+     "label": "F",
+     "text": "For all the skill and craftsmanship evident in the Mersa Gawasis caves, ancient Egypt's ocean voyages were most likely an exception to the usual modes of trade, born out of a necessity to obtain precious materials, such as incense and aromatic resins. For most of Egypt's history these goods had moved along established routes across the eastern desert and through modern-day Sudan. But around the time Mersa Gawasis came into use, it seems a hostile new kingdom to the south cut Egypt off from its supply of exotic materials. 'If they could have gone overland, it would have been much easier than bringing timbers from Lebanon, building ships on the upper Nile, taking them apart and carrying them across the desert', Bard says. 'They weren't stupid - no one wants to do things the hard way. But geopolitically, they had no other choice'. Fattovich suggests that there were probably only 15 to 20 expeditions over some 400 years, about one every two decades. After that Mersa Gawasis fell out of use, probably because either there was no longer enough water in the lagoon to float ships, or overland links improved, or alternative sites were found. The last sailors to use the lagoon sealed up their equipment and shelters behind mud bricks and sand to await expeditions that never came."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six paragraphs, A–F. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "possible reasons why the site of Mersa Gawasis was abandoned",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F discusses why the site was eventually abandoned."
+      },
+      {
+       "n": 15,
+       "text": "mention of a lack of agreement about an archaeological discovery",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A describes divisions among Egyptologists about the meaning of the temple carvings from Punt."
+      },
+      {
+       "n": 16,
+       "text": "reference to a study which involved copying ancient Egyptian boat-building techniques",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E mentions researchers who recreated ancient Egyptian boat-building methods."
+      },
+      {
+       "n": 17,
+       "text": "a reason why the ancient Egyptians needed to import goods by sea",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F explains why sea routes were used for importing goods to Egypt."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Illustrations of merchant ships sailing from Punt were found on wall carvings in an ancient [[18]] in Egypt.\n- Bard and Fattovich hoped to find evidence of a [[19]] in the area of Mersa Gawasis.\n- When Bard first discovered a cave at Mersa Gawasis, the shape of its [[20]] indicated that it was man-made.\n- Bard and Fattovich discovered a considerable number of objects that had [[21]] made by small sea creatures.",
+     "questions": [
+      {
+       "n": 18,
+       "answer": [
+        "temple"
+       ],
+       "explanation": "'The scenes carved into a wall of an Egyptian temple dating from the 15th century BC, tell of a remarkable sea voyage from... Punt.'"
+      },
+      {
+       "n": 19,
+       "answer": [
+        "harbour"
+       ],
+       "explanation": "Bard and Fattovich hoped to find evidence of a harbour at Mersa Gawasis."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "entrance"
+       ],
+       "explanation": "The entrance shape of the cave at Mersa Gawasis indicated it was artificially made."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "holes"
+       ],
+       "explanation": "Objects with holes made by sea creatures (borers) were discovered at Mersa Gawasis, confirming they had been submerged at sea."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Match each statement with the correct archaeologist, A, B, C or D. You may use any letter more than once.",
+     "title": "List of Archaeologists",
+     "options": [
+      {
+       "key": "A",
+       "text": "John Baines"
+      },
+      {
+       "key": "B",
+       "text": "Kathryn Bard"
+      },
+      {
+       "key": "C",
+       "text": "Rodolfo Fattovich"
+      },
+      {
+       "key": "D",
+       "text": "Cheryl Ward"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 22,
+       "text": "Ancient Egyptian sea voyages were probably relatively infrequent.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Fattovich (C) is associated with the view that sea voyages were relatively rare."
+      },
+      {
+       "n": 23,
+       "text": "It is now certain that the ancient Egyptians sailed to Punt.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "John Baines (A) confirmed that the Egyptians certainly sailed to Punt based on evidence."
+      },
+      {
+       "n": 24,
+       "text": "During a certain period, Egyptians were forced to use sea rather than overland trade routes.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Kathryn Bard (B) explained the period when sea routes were used because overland routes were blocked."
+      },
+      {
+       "n": 25,
+       "text": "It has been suggested that Punt never existed.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "John Baines (A) mentioned that some scholars have suggested Punt was a mythical place."
+      },
+      {
+       "n": 26,
+       "text": "The construction of ancient Egyptian ships was unlike any other.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Cheryl Ward (D) studied the unique construction techniques of ancient Egyptian ships."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Communication in Science",
+   "paragraphs": [
+    {
+     "text": "Communication in Science"
+    },
+    {
+     "label": "A",
+     "text": "Science plays an increasingly significant role in people’s lives, making the faithful communication of scientific developments more important than ever. Yet such communication is fraught with challenges that can easily distort discussions, leading to unnecessary confusion and misunderstandings."
+    },
+    {
+     "label": "B",
+     "text": "Some problems stem from the esoteric nature of current research and the associated difficulty of finding sufficiently faithful terminology. Abstraction and complexity are not signs that a given scientific direction is wrong, as some commentators have suggested, but are instead a tribute to the success of human ingenuity in meeting the increasingly complex challenges that nature presents. They can, however, make communication more difficult. But many of the biggest challenges for science reporting arise because in areas of evolving research, scientists themselves often only partly understand the full implications of any particular advance or development. Since that dynamic applies to most of the scientific developments that directly affect people’s lives such as global warming, cancer research, diet studies – learning how to overcome it is critical to spurring a more informed scientific debate among the broader public."
+    },
+    {
+     "label": "C",
+     "text": "Ambiguous word choices are the source of some misunderstandings. Scientists often employ colloquial terminology, which they then assign a specific meaning that is impossible to fathom without proper training. Take Einstein’s famous theory of relativity. The term \"relativity,\" here is intrinsically misleading. Many interpret the theory to mean that everything is relative and there are no absolutes. Yet although the measurements any observer makes depend on his coordinates and reference frame, the physical phenomena he measures have an invariant description that transcends that observer’s particular coordinates. Einstein’s theory of relativity is really about finding an invariant description of physical phenomena. True, Einstein agreed with the idea that his theory would have been better named \"Invarianten theorie.\" But the term \"relativity\" was already entrenched at the time for him to change."
+    },
+    {
+     "label": "D",
+     "text": "\"The uncertainty principle\" is another frequently abused term. It is sometimes interpreted as a limitation on observers and their ability to make measurements. But it is not about intrinsic limitations on any one particular measurement; it is about the inability to precisely measure particular pairs of quantities simultaneously? The first interpretation is perhaps more engaging from a philosophical or political perspective. It's just not what the science is about."
+    },
+    {
+     "label": "E",
+     "text": "Even the word \"theory\" can be a problem. Unlike most people, who use the word to describe a passing conjecture that they often regard as suspect, physicists have very specific ideas in mind when they talk about theories. For physicists, theories entail a definite physical framework embodied in a set of fundamental assumptions about the world that lead to a specific set of equations and predictions – ones that are borne out by successful predictions. Theories aren't necessarily shown to be correct or complete immediately. Even Einstein took the better part of a decade to develop the correct version of his theory of general relativity. But eventually both the ideas and the measurements settle down and theories are either proven correct, abandoned or absorbed into other, more encompassing theories."
+    },
+    {
+     "label": "F",
+     "text": "\"Global warming\" is another example of problematic terminology. Climatologists predict more drastic fluctuations in temperature and rainfall – not necessarily that every place will be warmer. The name sometimes subverts the debate, since it lets people argue that their winter was worse, so how could there be global warming? Clearly \"global climate change\" would have been a better name. But not all problems stem solely from poor word choices. Some stem from the intrinsically complex nature of much of modern science. Science sometimes transcends this limitation: remarkably, chemists were able to detail the precise chemical processes involved in the destruction of the ozone layer, making the evidence that chlorofluorocarbon gases (Freon, for example) were destroying the ozone layer indisputable."
+    },
+    {
+     "label": "G",
+     "text": "A better understanding of the mathematical significance of results and less insistence on a simple story would help to clarify many scientific discussions. A few years ago, the Harvard University faculty was tortured by empty debates over the relative intrinsic scientific abilities of men and women. One of the more amusing aspects of the discussion was that those who believed in the differences and those who didn't use the same evidence about gender-specific special ability? How could that be? The answer is that the data shows no substantial effects. Social factors might account for these tiny differences, which in any case have an unclear connection to scientific ability. Not much of a headline when phrased that way, is it? Each type of science has its own source of complexity and potential for miscommunication."
+    },
+    {
+     "label": "H",
+     "text": "Yet there are steps we can take to improve public understanding in all cases. The first would be to inculcate greater understanding and acceptance of indirect scientific evidence. The information from an unmanned space mission is no less legitimate than the information from one in which people are on board. This doesn't mean questioning an interpretation, but it also doesn't mean equating indirect evidence with blind belief, as people sometimes suggest. Second, we might need different standards for evaluating science with urgent policy implications than research with the purely theoretical value. When scientists say they are not certain about their predictions, it doesn't necessarily mean they've found nothing substantial. It would be better if scientists were more open about the mathematical significance of their results and if the public didn't treat math as quite so scary; statistics and errors, which tell us the uncertainty in a measurement, give us the tools to evaluate new developments fairly."
+    },
+    {
+     "label": "I",
+     "text": "But most important, people have to recognize that science can be complex. If we accept only simple stories, the description will necessarily be distorted. When advances are subtle or complicated, scientists should be willing to go the extra distance to give proper explanations and the public should be more patient about the truth. Even so, some difficulties are unavoidable. Most developments reflect work in progress, so the story is complex because no one yet knows the big picture. Although the more involved story might not have the same immediate appeal, the truth in the end will always be far more interesting."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Why is faithful science communication important?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Science plays an increasingly significant role in people’s lives."
+        },
+        {
+         "key": "B",
+         "text": "Science is fraught with challenges the public are interested in."
+        },
+        {
+         "key": "C",
+         "text": "The nature of complexity in science communication leads to confusion."
+        },
+        {
+         "key": "D",
+         "text": "Scientific inventions are more important than ever before."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Science plays an increasingly significant role in people’s lives, making the faithful communication of scientific developments more important than ever.'"
+      },
+      {
+       "n": 28,
+       "text": "What does the author believe is the biggest challenge for science reporting?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Phenomena such as global warming and cancer research are too complex."
+        },
+        {
+         "key": "B",
+         "text": "Scientists themselves often only partly understand the Theory of Evolution."
+        },
+        {
+         "key": "C",
+         "text": "Scientists do not totally comprehend the meaning of certain scientific evolution."
+        },
+        {
+         "key": "D",
+         "text": "Scientists themselves often partly understand the esoteric communication nature."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage highlights that even scientists may not fully understand certain evolving scientific phenomena, making communication very challenging."
+      },
+      {
+       "n": 29,
+       "text": "According to the 3rd paragraph, the reference to ‘theory of relativity’ demonstrates that",
+       "options": [
+        {
+         "key": "A",
+         "text": "the theory of relativity is about an invariant physical phenomenon."
+        },
+        {
+         "key": "B",
+         "text": "common people may be misled by the inaccurate choice of scientific phrase."
+        },
+        {
+         "key": "C",
+         "text": "the term ‘relativity’ is designed to mislead the public."
+        },
+        {
+         "key": "D",
+         "text": "everything is relative and there is no absolute existence."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The example of ‘relativity’ is used to show how imprecise word choices can confuse non-specialists."
+      },
+      {
+       "n": 30,
+       "text": "Which is a good example of appropriate word choice?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Scientific theory for the uncertainty principle."
+        },
+        {
+         "key": "B",
+         "text": "Phenomenon of global warming."
+        },
+        {
+         "key": "C",
+         "text": "The importance of the ozone layer."
+        },
+        {
+         "key": "D",
+         "text": "Freon’s destructive process on the environment."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "‘Freon’s destructive process on the environment’ is cited in the passage as an example of precise, appropriate scientific communication."
+      },
+      {
+       "n": 31,
+       "text": "What is a surprising finding of the Harvard debates described in the passage?",
+       "options": [
+        {
+         "key": "A",
+         "text": "There are equal intrinsic scientific abilities of men and women."
+        },
+        {
+         "key": "B",
+         "text": "The evidence applied by both sides seemed to be of little difference."
+        },
+        {
+         "key": "C",
+         "text": "The scientific data shows no substantial figures to support a debated idea."
+        },
+        {
+         "key": "D",
+         "text": "Social factors might have a clear connection to scientific ability."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The surprising finding was that both sides in the Harvard debate appeared to rely on similarly inconclusive evidence."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the views of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 32,
+       "text": "‘Global warming’ scientifically refers to greater fluctuations in temperature and rainfall rather than a universal temperature rise.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "The passage explains that ‘global warming’ technically refers to changes in temperature variability and rainfall, not just uniform warming."
+      },
+      {
+       "n": 33,
+       "text": "More media coverage of ‘global warming’ would help the public to recognise the phenomenon.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage discusses terminology issues but does not comment on whether more media coverage would help public recognition."
+      },
+      {
+       "n": 34,
+       "text": "Harvard debates should focus more on female scientists and male scientists.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions the Harvard debates about gender and scientific ability but does not make recommendations about their focus."
+      },
+      {
+       "n": 35,
+       "text": "Public understanding and acceptance of indirect scientific evidence in all cases would lead to confusion.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The passage argues that public understanding of indirect evidence is necessary and important, not that it leads to confusion."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the following summary.",
+     "answerRule": "Use NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "- Ambiguous [[36]] are the source of some misunderstandings.\n- Common people without proper training do not understand a specific scientific meaning via the [[37]] scientists often employ.\n- The measurements any [[38]] makes cannot be confined to a constant description.\n- The measurements cannot be confined to a constant [[39]].\n- Scientists often evolved better versions of specific theories; a good example is the theory of [[40]].",
+     "questions": [
+      {
+       "n": 36,
+       "answer": [
+        "word choices"
+       ],
+       "explanation": "'Ambiguous word choices are the source of some misunderstandings' — stated directly in the passage."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "terminology"
+       ],
+       "explanation": "The passage discusses how specialist terminology used by scientists is not understood by laypeople."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "observer"
+       ],
+       "explanation": "The passage mentions that measurements made by any observer are subject to certain limitations."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "description"
+       ],
+       "explanation": "Scientific phenomena can exist independently but their measurement/description changes with the observer."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "relativity"
+       ],
+       "explanation": "'Scientists often evolved better versions of specific theories, a good example can be the theory of relativity.'"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

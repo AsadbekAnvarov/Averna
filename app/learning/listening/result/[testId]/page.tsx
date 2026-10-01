@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getListeningExam } from "@/lib/ielts/catalog";
+import { toReviewRecording } from "@/lib/ielts/sanitize";
 import { ObjectiveResult } from "@/components/exam/results/objective-result";
 import { parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
 import { canViewStudent } from "@/lib/access";
@@ -67,6 +68,10 @@ export default async function ListeningResultPage({ params }: { params: { testId
       viewerIsOwner={viewerIsOwner}
       studentName={student.user?.name ?? undefined}
       homeworkNotice={homeworkNotice}
+      // A real recording (CDI): its transcript is shown per part, and every question can be replayed
+      // from where its answer is spoken. Safe here: this page only exists for a submitted attempt,
+      // and only its student, their teacher or an admin gets this far (checks above).
+      recording={toReviewRecording(exam)}
     />
   );
 }

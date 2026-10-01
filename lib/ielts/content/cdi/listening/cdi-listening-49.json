@@ -1,0 +1,623 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-49",
+ "title": "CDI Listening Test 49",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-49-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Stamford Properties — Rental Notes\nStaff member: Jack\nProperty 1 — Modern House\n- Address: [[1]] Road\n- Rent: £ [[2]] per month\n- Near Stamford [[3]] (5–6 minutes’ walk)\nProperty 2 — Basement Flat\n- Address: [[4]] Street (oldest part of town)\n- Rent: £ [[5]] per month\n- Has a shared [[6]] at the back\nProperty 3 — Architect’s House (Marsh Lane)\n- Rent: £ [[7]] per month (3 bedrooms, balcony, near woodland)\nViewing Arrangements\n- Date: June [[8]]\n- Time: [[9]]\n- Agency address: [[10]] Oxford Road (postcode SM174AU)",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Delaware"
+       ],
+       "explanation": "\"It's in Delaware Road, which is spelt D E L A W A R R.\" — Property 1 is on Delaware Road."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "1200",
+        "£1200"
+       ],
+       "explanation": "\"This one is twelve hundred a month.\" — rent for the modern house."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "College"
+       ],
+       "explanation": "\"Not far from Stamford College. In fact, you can walk there in five or six minutes.\" — near Stamford College."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "Hartford"
+       ],
+       "explanation": "\"It's in Hartford Street, which is in the oldest part of the town.\" — flat is on Hartford Street."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "900",
+        "£900"
+       ],
+       "explanation": "\"That's 900 pounds.\" — rent for the basement flat."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "garden"
+       ],
+       "explanation": "\"There's a garden that's shared with the people living in the rest of the house.\" — shared garden at the back."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "1350",
+        "£1350",
+        "1,350"
+       ],
+       "explanation": "\"It's thirteen hundred and fifty a month.\" — rent for the architect's house on Marsh Lane."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "15th",
+        "15",
+        "fifteenth",
+        "June 15"
+       ],
+       "explanation": "\"How about the fifteenth instead? Yes, I'll be free then.\" — visit rescheduled to June 15th."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "10:30",
+        "10.30",
+        "10 30"
+       ],
+       "explanation": "\"Ten thirty would be better. That's fine.\" — meeting time agreed at 10:30."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "61",
+        "sixty-one"
+       ],
+       "explanation": "\"61 Oxford Road.\" — the agency's address."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 0:00[Narrator] Section one. You will hear a woman calling a letting agency about renting accommodation.\n▶ 1:25[Narrator] Now listen carefully and answer questions one to seven.\n▶ 2:19Jack: Hello, Stamford Properties, Jack speaking.\n▶ 2:23Louise: Good morning. My name's Louise. I want to rent a furnished place to live for six months or a year in Stamford. Do you deal with rentals?\n▶ 2:34Jack: We certainly do. What sort of property are you interested in?\n▶ 2:49Louise: Preferably a house, though a flat would be okay. And we need two bedrooms. We've got a daughter.\n▶ 2:57Jack: Right. We have a very nice modern house — living room, kitchen, and two bedrooms. There's also a large garage with a freezer in it.\n▶ 3:19Louise: We all have bikes. Would there be room for them in the garage?\n▶ 3:24Jack: Yes, plenty. And what's the rent?\n▶ 3:28Jack: It's slightly higher than the average, which is about eleven hundred pounds. This one is twelve hundred a month.\n▶ 3:42Louise: Okay. And what's the address, please?\n▶ 3:42Jack: It's in Delaware Road, which is spelt D E L A W A R R. It's a cul de sac, so there's very little traffic.\n▶ 4:00Jack: It's on the edge, not far from Stamford College . In fact, you can walk there in five or six minutes.\n▶ 4:08Louise: Oh, that might be useful for my daughter. She hasn't finished her studies.\n▶ 4:14Jack: Right. Now another option is a flat — in the basement of a converted house. It's on a hill, so the front is below street level, but the back is at ground level.\n▶ 4:34Jack: There's a garden that's shared with the people living in the rest of the house. There are three flats in all, each on one floor.\n▶ 4:46Jack: The rent is 900 pounds. It's in Hartford Street, which is in the oldest part of the town.\n▶ 5:15Jack: Now another house I can offer you is very different. It was designed a few years ago by an architect for himself and his family, and it's really striking.\n▶ 5:45Jack: Yes, and there are three bedrooms, so your daughter would be able to turn one into a study if she wanted to.\n▶ 6:03Jack: Well it's thirteen hundred and fifty a month, but it's certainly worth the money. It's in Marsh Lane, just a couple of minutes' walk from a small area of woodland.\n▶ 6:21[Narrator] Now listen and answer questions eight to ten.\n▶ 6:49Louise: Would next Wednesday suit you?\n▶ 6:59Jack: June the fourteenth. I'm afraid I'll be on leave that day. I could get one of my colleagues to show you round, or we could make it another day.\n▶ 7:11Louise: How about the fifteenth instead?\n▶ 7:15Jack: Yes, I'll be free then. Shall we say ten o'clock?\n▶ 7:20Louise: That might be too early, as we'll have a couple of hours' drive. Ten thirty would be better.\n▶ 7:27Jack: That's fine.\n▶ 7:29Louise: And what's your address?\n▶ 7:31Jack: 61 Oxford Road. If you're using a sat nav, our postcode is SM174AU. You should be able to park just outside.\n▶ 7:56[Narrator] That is the end of section one."
+  },
+  {
+   "id": "cdi-listening-49-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "How did the founder, Joe Clifton, learn to make furniture?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He trained as a carpenter at college."
+        },
+        {
+         "key": "B",
+         "text": "He learnt from an experienced craftsman."
+        },
+        {
+         "key": "C",
+         "text": "He taught himself without any formal training."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Joe used it to teach himself carpentry skills.\" — Joe was self-taught, with no formal training (C)."
+      },
+      {
+       "n": 12,
+       "text": "What does Mike say is unique about Clifton Furniture?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Staff are expected to produce high-quality work."
+        },
+        {
+         "key": "B",
+         "text": "They recognise the particular strengths of each employee."
+        },
+        {
+         "key": "C",
+         "text": "The company has expanded very rapidly."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"What's unique with Clifton Furniture is the appreciation we have of the strengths of every member of the team.\" — they recognise individual strengths (B)."
+      },
+      {
+       "n": 13,
+       "text": "What happens to new employees during the first week?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They will have an evaluation with their team leader."
+        },
+        {
+         "key": "B",
+         "text": "They receive training relevant to their specific role."
+        },
+        {
+         "key": "C",
+         "text": "They are shown how to use the company intranet."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"This week you'll receive training in company policies and procedures related to your particular job.\" — training relevant to their role (B)."
+      },
+      {
+       "n": 14,
+       "text": "What does Mike say about the employee handbook?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It will soon be available online for all staff."
+        },
+        {
+         "key": "B",
+         "text": "Employees will use it to record their progress."
+        },
+        {
+         "key": "C",
+         "text": "Staff are invited to suggest things that could be added."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"This is the first draft, so let us know if you think anything's missing.\" — staff can suggest additions (C)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What topic will each speaker cover during the orientation programme? Choose SIX answers from the box and write the correct letter, A–H, next to Questions 15–20.",
+     "title": "Topics",
+     "options": [
+      {
+       "key": "A",
+       "text": "using the company computer system"
+      },
+      {
+       "key": "B",
+       "text": "organising staff travel"
+      },
+      {
+       "key": "C",
+       "text": "raising concerns about work"
+      },
+      {
+       "key": "D",
+       "text": "keeping the workplace safe"
+      },
+      {
+       "key": "E",
+       "text": "protecting the environment"
+      },
+      {
+       "key": "F",
+       "text": "managing working hours"
+      },
+      {
+       "key": "G",
+       "text": "financial planning and benefits"
+      },
+      {
+       "key": "H",
+       "text": "company history and background"
+      }
+     ],
+     "questions": [
+      {
+       "n": 15,
+       "text": "Philip May",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"Philip May... telling you about how your work can be scheduled to allow you to have the best possible work life balance.\" — managing working hours (F)."
+      },
+      {
+       "n": 16,
+       "text": "Sally Graves",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"Sally Graves will be describing our new cycle to work initiative... car shares, which can not only help the environment.\" — protecting the environment (E)."
+      },
+      {
+       "n": 17,
+       "text": "Ahmed Al Jeffrey",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"Ahmed Al Jeffrey... explaining the company pension scheme and other benefits.\" — financial planning / benefits (G)."
+      },
+      {
+       "n": 18,
+       "text": "Caroline Brewer",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"Caroline Brewer will be showing you a video to help you avoid accidents and injuries.\" — keeping the workplace safe (D)."
+      },
+      {
+       "n": 19,
+       "text": "Amina Ray",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Amina Ray will be helping you log on to the system and making sure you're aware of the security issues when using it.\" — using the computer system (A)."
+      },
+      {
+       "n": 20,
+       "text": "Terry Blagrove",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Terry Blagrove will be talking about what procedures to follow if you feel you have any sort of work related grievance.\" — raising concerns (C)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 8:38[Narrator] Section two. You will hear a man called Mike Shenton, who is a manager at a large furniture company, talking to a group of new employees.\n▶ 9:31[Narrator] Now listen carefully and answer questions eleven to fourteen.\n▶ 9:39Mike: Hi everyone, my name's Mike Shenton, and I'm human resources manager here at Clifton Furniture.\n▶ 9:57Mike: Our founder, Joe Clifton, was a young man of 17. His father was a gardener who worked in a big estate, and when he cut down trees, he'd sometimes bring the wood back home. It was young Joe who used it to teach himself carpentry skills. Soon Joe decided that his furniture was good enough to put on the market.\n▶ 10:49Mike: Joe had no training in either manufacturing or sales, but he was passionate about making furniture, and things just took off.\n▶ 11:18Mike: Like most successful businesses, we expect our staff to perform to the very best of their ability. But what's unique with Clifton Furniture is the appreciation we have of the strengths of every member of the team. Even if you're a new young recruit, we'll be aware of what you can bring to the company and help you develop your skills.\n▶ 11:39Mike: This week you'll receive training in company policies and procedures related to your particular job. And you'll also be assigned to an experienced member of staff doing a similar job.\n▶ 12:08Mike: You'll be given a lot of information today, but much of it's also in the employee handbook. This is the first draft, so let us know if you think anything's missing.\n▶ 13:14[Narrator] Now listen and answer questions fifteen to twenty.\n▶ 13:14Mike: So first you'll meet Philip May , who'll be telling you about how your work can be scheduled to allow you to have the best possible work life balance .\n▶ 13:37Mike: Sally Graves will be describing our new cycle to work initiative , as well as car shares, which can help the environment and save you money.\n▶ 13:54Mike: After lunch, you'll meet Ahmed Al Jeffrey , who'll be explaining the company pension scheme and other benefits .\n▶ 14:09Mike: Caroline Brewer will be showing you a video to help you avoid accidents and injuries .\n▶ 14:31Mike: After that, Amina Ray will be helping you log on to the system and making sure you're aware of the security issues .\n▶ 14:51Mike: And finally, Terry Blagrove will be talking about what procedures to follow if you feel you have any sort of work related grievance .\n▶ 15:11[Narrator] That is the end of section two."
+  },
+  {
+   "id": "cdi-listening-49-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What does Alex plan to do after graduating?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Join a large financial services company."
+        },
+        {
+         "key": "B",
+         "text": "Start his own small independent company."
+        },
+        {
+         "key": "C",
+         "text": "Develop products for large multinational firms."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"I've got an idea for a financial services company to support small firms. I want to set it up as soon as I graduate. I'd like to keep it small and independent.\" — start own small company (B)."
+      },
+      {
+       "n": 22,
+       "text": "Which part of his course does Alex find unexpectedly useful?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Finance"
+        },
+        {
+         "key": "B",
+         "text": "Marketing"
+        },
+        {
+         "key": "C",
+         "text": "Human resources"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"I'm surprised how many ideas I'm getting from the marketing module. It's made me realise how important that is.\" — marketing is unexpectedly useful (B)."
+      },
+      {
+       "n": 23,
+       "text": "What does Alex mainly want to gain from a work placement?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Experience of a range of different companies."
+        },
+        {
+         "key": "B",
+         "text": "Insight into the difficulties that businesses face."
+        },
+        {
+         "key": "C",
+         "text": "Skills for managing a large workforce."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"What I want most is to find out the problems that businesses have to deal with.\" — insight into business difficulties (B)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What is each company particularly known for? Choose SEVEN answers from the box and write the correct letter, A–G, next to Questions 24–30.",
+     "title": "Characteristics",
+     "options": [
+      {
+       "key": "A",
+       "text": "is well known as a good employer"
+      },
+      {
+       "key": "B",
+       "text": "has developed highly innovative products"
+      },
+      {
+       "key": "C",
+       "text": "makes a positive contribution to its community"
+      },
+      {
+       "key": "D",
+       "text": "is particularly effective at marketing itself"
+      },
+      {
+       "key": "E",
+       "text": "responds quickly to changes in its sector"
+      },
+      {
+       "key": "F",
+       "text": "has a very good reputation for customer service"
+      },
+      {
+       "key": "G",
+       "text": "offers employees especially attractive conditions"
+      }
+     ],
+     "questions": [
+      {
+       "n": 24,
+       "text": "Clothing stores chain",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"It's well known for the way it treats employees. There's a very cooperative business culture.\" — well known as a good employer (A)."
+      },
+      {
+       "n": 25,
+       "text": "Cathcart's (furniture)",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"They sponsor sports clubs for children and teenagers in the area. They're highly respected.\" — contributes to the community (C)."
+      },
+      {
+       "n": 26,
+       "text": "Electronics manufacturer",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"They're very good at promoting their brand very well. And their website is very attractively designed.\" — effective at marketing itself (D)."
+      },
+      {
+       "n": 27,
+       "text": "Stuart McLeod (machine tools)",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"They manufacture machine tools which are way ahead of all their competitors. They've got an excellent research and development department.\" — highly innovative products (B)."
+      },
+      {
+       "n": 28,
+       "text": "PK Spencer (books)",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"Their shop assistants are trained to be really helpful... and if there's a problem, they make a point of dealing with it immediately.\" — excellent customer service (F)."
+      },
+      {
+       "n": 29,
+       "text": "Alders (travel)",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"Alders was probably the first to realise that more and more people would book travel online. Today, they still respond very quickly to new developments in their sector.\" — adapts quickly to changes (E)."
+      },
+      {
+       "n": 30,
+       "text": "Coffee shop chain",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"The pay and holidays are second to none, and one big advantage is the chance to get on their management training scheme.\" — attractive staff conditions (G)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 15:35[Narrator] Section three. You will hear a business student called Alex talking to Jill, who is from the University Careers Service.\n▶ 16:34[Narrator] Now listen carefully and answer questions twenty-one to twenty-three.\n▶ 16:43Jill: Oh hello. You must be Alex. I'm Jill. How can I help?\n▶ 17:05Alex: I've got an idea for a financial services company to support small firms. I want to set it up as soon as I graduate . I'd like to keep it small and independent.\n▶ 17:35Alex: Obviously finance is something I'm interested in, though I'm surprised how many ideas I'm getting from the marketing module .\n▶ 17:50Alex: The human resources module we're doing at the moment is a bit disappointing, though.\n▶ 18:06Alex: In a way, what I want most is to find out the problems that businesses have to deal with — like competition or economic conditions. It's the bigger picture that I'm interested in.\n▶ 18:59[Narrator] Now listen and answer questions twenty-four to thirty.\n▶ 19:39Jill: This chain of clothing stores offers a number of work placements. It's well known for the way it treats employees. There's a very cooperative business culture.\n▶ 19:53Jill: This one's Cathcart's — a furniture chain. They sponsor sports clubs for children and teenagers in the area. They're highly respected.\n▶ 20:22Alex: This electronics manufacturer — they're very good at promoting their brand. And their website is very attractively designed.\n▶ 20:36Alex: Stuart McLeod — they manufacture machine tools which are way ahead of all their competitors. They've got an excellent research and development department.\n▶ 20:50Jill: Next there's PK Spencer , the book retailer. Their shop assistants are trained to be really helpful... if there's a problem, they make a point of dealing with it immediately.\n▶ 21:18Alex: Alders was probably the first to realise that more and more people would book travel and hotels online, and they revised their business model accordingly. Today, they still respond very quickly to new developments in their sector.\n▶ 21:49Alex: The chain of coffee shops — the pay and holidays are second to none, and one big advantage is the chance to get on their management training scheme.\n▶ 22:34[Narrator] That is the end of section three."
+  },
+  {
+   "id": "cdi-listening-49-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "The Naked Mole Rat\nPhysical Features\n- Most obvious feature: large [[31]] (can move independently like chopsticks)\n- Lives entirely [[32]] — protected from temperature and from [[33]] such as birds\n- Builds an extensive network of [[34]] (area of a football field)\n- Can move [[35]] as easily as forwards\nDiet & Communication\n- Lives almost entirely on [[36]]\n- Produces a twittering sound similar to that of a [[37]]\nScientific History\n- First documented in the 19th century; the naturalist assumed the animal had a [[38]]\nRemarkable Physical Adaptations\n- Blood vessels do not lose their [[39]] — key to their long lifespan\n- Appear to be resistant to [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "teeth"
+       ],
+       "explanation": "\"Its most obvious feature is its pair of teeth, which are very large and which it can move independently.\" — large teeth are the most obvious feature."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "underground"
+       ],
+       "explanation": "\"They spend the whole of their lives underground.\" — they live underground."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "birds",
+        "predators"
+       ],
+       "explanation": "\"Protected from predators such as birds.\" — birds are a key predator."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "tunnels",
+        "tunnel"
+       ],
+       "explanation": "\"They build an extensive network of tunnels, which can cover an area the size of a football field.\" — network of tunnels."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "backwards"
+       ],
+       "explanation": "\"They can move as quickly and as easily backwards as they can forwards.\" — move backwards with ease."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "roots",
+        "root"
+       ],
+       "explanation": "\"They live almost entirely on roots.\" — diet is mainly roots."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "bird"
+       ],
+       "explanation": "\"They produce a twittering sound like that of a bird.\" — their sound resembles a bird."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "disease"
+       ],
+       "explanation": "\"He didn't realize it was a new species. He just assumed it had some sort of disease.\" — Ruppel thought it was diseased."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "elasticity"
+       ],
+       "explanation": "\"The blood vessels remain in good condition. They don't lose their elasticity like those of other mammals.\" — blood vessels retain elasticity."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "cancer"
+       ],
+       "explanation": "\"They appear to be resistant to cancer. A team working in the USA has identified a gene which they think makes cancer cells self-destruct.\" — resistant to cancer."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 23:01[Narrator] Section four. You will hear a zoology lecturer talking about recent research on an animal called the naked mole rat.\n▶ 24:14[Narrator] Now listen carefully and answer questions thirty-one to forty.\n▶ 24:22Lecturer: In this series of lectures, we're going to look at the different ways in which living organisms are adapted to their environments.\n▶ 24:36Lecturer: It's called the naked mole rat, and it's only found on the dry plains of East Africa. Like a rat, it's a rodent.\n▶ 24:50Lecturer: It's about 10 centimeters long, and its most obvious feature is its pair of teeth , which are very large and which it can move independently, like a pair of chopsticks.\n▶ 25:14Lecturer: Although these animals live in hot climates, they don't need protection from the sun as they spend the whole of their lives underground .\n▶ 25:24Lecturer: This means they're protected from extremes of temperature, as well as from predators such as birds .\n▶ 25:32Lecturer: They live in large groups or colonies and build an extensive network of tunnels , which can cover an area the size of a football field.\n▶ 25:49Lecturer: They can move as quickly and as easily backwards as they can forwards, which is a useful skill for animals living in such cramped conditions.\n▶ 26:00Lecturer: They live almost entirely on roots , but are careful not to entirely consume them, leaving enough to grow again.\n▶ 26:12Lecturer: They produce a twittering sound like that of a bird .\n▶ 26:38Lecturer: The first time a naked mole rat was documented was in the 19th century by a German naturalist called Edward Ruppel, but because of its unattractive appearance, he didn't realize it was a new species. He just assumed it had some sort of disease .\n▶ 27:17Lecturer: It wasn't until the 1950s that scientists really began to pay attention to this strange species.\n▶ 28:36Lecturer: One very striking feature of the naked mole rat is how long they live — over thirty years. One reason for this is that the blood vessels remain in good condition. They don't lose their elasticity like those of other mammals.\n▶ 29:29Lecturer: Another extraordinary thing about these animals is that they appear to be resistant to cancer . A team in the USA has identified a gene which they think makes cancer cells self-destruct.\n▶ 30:18[Narrator] That is the end of section four."
+  }
+ ],
+ "audio": {
+  "file": "listening-49.mp3",
+  "durationSec": 1822,
+  "questionTimes": {
+   "1": 222,
+   "2": 208,
+   "3": 240,
+   "4": 295,
+   "5": 295,
+   "6": 274,
+   "7": 363,
+   "8": 431,
+   "9": 440,
+   "10": 451,
+   "11": 597,
+   "12": 678,
+   "13": 699,
+   "14": 728,
+   "15": 794,
+   "16": 817,
+   "17": 834,
+   "18": 849,
+   "19": 871,
+   "20": 891,
+   "21": 1025,
+   "22": 1055,
+   "23": 1086,
+   "24": 1179,
+   "25": 1193,
+   "26": 1222,
+   "27": 1236,
+   "28": 1250,
+   "29": 1278,
+   "30": 1309,
+   "31": 1490,
+   "32": 1514,
+   "33": 1524,
+   "34": 1532,
+   "35": 1549,
+   "36": 1560,
+   "37": 1572,
+   "38": 1598,
+   "39": 1716,
+   "40": 1769
+  }
+ }
+}

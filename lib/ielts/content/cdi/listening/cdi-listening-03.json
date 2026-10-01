@@ -1,0 +1,652 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-03",
+ "title": "CDI Listening Test 03",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "conversation between a travel agent and a student who is planning a trip abroad. First, you have some time to look at questions 1 to 6",
+  "business student called Ron getting feedback from his tutor on his presentation. First, you have some time to look at questions 21 to 24"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-03-part-1",
+   "title": "Part 1",
+   "context": "You will hear a conversation between a travel agent and a student who is planning a trip abroad. First, you have some time to look at questions 1 to 6.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "International Student Travel Agency Enquiry Form\n- Name: Sarah Brown\n- Date of birth: [[1]]\n- Address: 21 Waverley Road, Radstone, RD4 6WV\n- Contact tel. no.: [[2]]\nNotes\n- wants to travel in [[3]] Europe\n- hopes to travel by [[4]]\n- interested in working in a [[5]]\n- recommended to consider an alternative e.g. [[6]] work\n- advised to buy a European [[7]] for travelling\n- given a [[8]] with accommodation details\n- agreed to take out [[9]] from the Agency\n- told to use an [[10]] for contacting people",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "30 march",
+        "30th march",
+        "March 30",
+        "March 30th"
+       ],
+       "explanation": "'March the 30th' — '1988' (date of birth)."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "0903775115",
+        "090 377 5115",
+        "090-377-5115",
+        "090 3775115"
+       ],
+       "explanation": "'I can give you my mobile number. 090 377 5115.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "northern"
+       ],
+       "explanation": "'I'd like to go to Northern Europe.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "train"
+       ],
+       "explanation": "'I'd like to go by train so I can stop off whenever I want.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "hotel"
+       ],
+       "explanation": "'I thought about hotel work because then I might get accommodation with the job.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "farm"
+       ],
+       "explanation": "'Lots of students like to work on a farm, and we have lots of requests from people looking for student workers.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "pass"
+       ],
+       "explanation": "'The best option would be to have a European pass, which would give you unlimited rail travel at off-peak times.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "booklet"
+       ],
+       "explanation": "'I'll give you a booklet now. But it's down to you to book your accommodation.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "insurance"
+       ],
+       "explanation": "'Before I make any arrangements for you, you need to have insurance for your entire trip.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "cafe",
+        "café"
+       ],
+       "explanation": "'It's much more sensible to rely on an internet cafe. That's what we tell people to do.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a conversation between a travel agent and a student who is planning a trip abroad. First, you have some time to look at questions 1 to 6.\nAgent: Hello, how can I help you?\nSarah: I’m taking a year off and I’m hoping to travel abroad and to find work as well for part of the time. I know you specialise in student travel and work placement, so…\nAgent: That’s right. We can help you arrange your travel and set up a job for you. But first of all, I need some personal details and then we’ll match your details against our database to see what’s available workwise.\nSarah: Great.\nAgent: Okay. Your full name?\nSarah: Sarah Brown.\nAgent: Date of birth?\nSarah: March the 30th (30 March).\nAgent: Oh, I’m the 31st.\nSarah: 1988.\nAgent: And your address?\nSarah: 21 Waverley Road, Radstone, RD4 6WV.\nAgent: And a contact telephone number, please.\nSarah: I can give you my mobile number. 090 377 5115.\nAgent: Fine. Now, tell me where you plan to travel to and I’ll see how I can help.\nSarah: Well, I’d like to go to Northern Europe.\nAgent: Have you been there before?\nSarah: No. I know Southern Europe quite well as I’ve been there with my family. We always went by plane, but now I can choose. I’d like to go by train so I can stop off whenever I want.\nAgent: Okay. Now, just as important, what sort of work have you got in mind?\nSarah: Well, I thought about hotel work because then I might get accommodation with the job. And I’d like to work for about half the year.\nAgent: That sort of work is usually quite competitive. Perhaps you should consider an alternative just in case.\nSarah: Such as…\nAgent: Well, lots of students like to work on a farm, and we have lots of requests from people looking for student workers for a few weeks at a time throughout the year. You can generally earn quite good money if you’re willing to work fairly long hours.\nBefore you hear the rest of the conversation, you have some time to look at questions 7 to 10.\nAgent: Now travel. Buying single tickets would be expensive, so the best option would be to have a European pass, which would give you unlimited rail travel at off-peak times. To start off with we could issue one for up to three months to cover the countries you’re intending to visit.\nSarah: Sounds good. Do you have any information about youth hostels which I could use to plan my route?\nAgent: Yes, I’ll give you a booklet now. But it’s down to you to book your accommodation. At certain times of the year, especially during public holiday periods, such places fill up fast. And remember, if we’re going to arrange work for you in the countryside, you won’t be able to go out easily in the evenings, although you’d probably be too tired anyway.\nSarah: I won’t mind that.\nAgent: And you’re going to be travelling alone?\nSarah: Yes.\nAgent: Well, before I make any arrangements for you, you need to have insurance for your entire trip. We can arrange that for you if you like.\nSarah: What does it cover?\nAgent: Any valuable items, jewellery for example, your money, your mobile, your health, and if you needed to get back home quickly, you’d be covered so you could buy a plane ticket.\nSarah: Right. I’ll do that. I thought I’d take my laptop so I can email and keep in touch with people at home.\nAgent: Not a good idea to lug your computer around with you. It’s much more sensible to rely on an internet cafe. That’s what we tell people to do.\nSarah: Oh, okay.\nAgent: Right, so I’ve entered all your details. Let’s see what the database comes up with.\nThat is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-03-part-2",
+   "title": "Part 2",
+   "context": "You will hear the manager of a bookshop called Bibliostack talking to a group of young people about the way the bookshop is organised. First, you have some time to look at questions 11 to 15.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Choose the correct letter, A–H, next to questions 11–15.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "text": "seating area",
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Right in the centre of this floor... is our main seating area.'"
+      },
+      {
+       "n": 12,
+       "text": "cushions",
+       "answer": [
+        "F"
+       ],
+       "explanation": "'If you look to your immediate left past the first double row of shelves, you'll see piles of coloured cushions in front of the window there.'"
+      },
+      {
+       "n": 13,
+       "text": "computer bench",
+       "answer": [
+        "D"
+       ],
+       "explanation": "'On your right, between the two larger bookshelves, you'll see the computer bench.'"
+      },
+      {
+       "n": 14,
+       "text": "café bar",
+       "answer": [
+        "A"
+       ],
+       "explanation": "'At the far end, just in front of the lift, you'll see that we provide a small cafe bar here too.'"
+      },
+      {
+       "n": 15,
+       "text": "newspapers",
+       "answer": [
+        "H"
+       ],
+       "explanation": "'Just to your right there's a door to the cloakroom... Then after that, there's a stand where we keep a selection of local and national newspapers.'"
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening3-map.webp",
+      "alt": "Bibliostack bookshop ground floor map"
+     }
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 16,
+       "text": "The bookshop aims to",
+       "options": [
+        {
+         "key": "A",
+         "text": "sell as many books as possible."
+        },
+        {
+         "key": "B",
+         "text": "create an energetic environment."
+        },
+        {
+         "key": "C",
+         "text": "attract people to remain in the shop."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Our purpose is to draw people in, to provide the kind of environment which makes them want to stay and read.' — attract people to remain."
+      },
+      {
+       "n": 17,
+       "text": "Children’s books are located on the",
+       "options": [
+        {
+         "key": "A",
+         "text": "ground floor."
+        },
+        {
+         "key": "B",
+         "text": "highest level."
+        },
+        {
+         "key": "C",
+         "text": "middle floor."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'We decided to put them on the very top level' — children's books on the highest level."
+      },
+      {
+       "n": 18,
+       "text": "To allow parents to relax, the bookshop provides",
+       "options": [
+        {
+         "key": "A",
+         "text": "trained floor staff to take care of children."
+        },
+        {
+         "key": "B",
+         "text": "a free nursery service."
+        },
+        {
+         "key": "C",
+         "text": "professional child care."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'We decided to employ qualified nursery staff for parents' complete peace of mind.' — professional childcare."
+      },
+      {
+       "n": 19,
+       "text": "The aim of the regular book readings is",
+       "options": [
+        {
+         "key": "A",
+         "text": "to sell more books."
+        },
+        {
+         "key": "B",
+         "text": "to bring authors together."
+        },
+        {
+         "key": "C",
+         "text": "to generate income by charging for tickets."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'We obviously hope that some of them will want to purchase the book after listening to part of it being read aloud.' — to sell more books."
+      },
+      {
+       "n": 20,
+       "text": "Participants at the poetry workshop were able to",
+       "options": [
+        {
+         "key": "A",
+         "text": "have their work published."
+        },
+        {
+         "key": "B",
+         "text": "become professional poets."
+        },
+        {
+         "key": "C",
+         "text": "receive feedback and encouragement from an expert."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'One of the country's best known poets ran the workshop... He was kind and encouraging, and many people felt inspired by his advice.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear the manager of a bookshop called Bibliostack talking to a group of young people about the way the bookshop is organised. First, you have some time to look at questions 11 to 15.\nManager: Good morning everyone, and a big welcome to Bibliostack. Firstly I’ll explain the plan of the store to you. The building is on seven floors and is circular, as you can see, and we’re here on the ground floor in its entrance hall.\nManager: Right in the centre of this floor, but behind the bookshelf so you can’t see it very well from here, is our main seating area — C, where people are encouraged to sit and read for as long as they like.\nManager: But they’re under no pressure to buy what they’re reading, that’s not how we operate. And if you look to your immediate left, past the first double row of shelves, you’ll see piles of coloured cushions — F in front of the window there.\nManager: We provide those so that people can sit wherever they want. Lots of people like to sit close to the bookshelves, and if they want to sit on the floor there, we want them to be as comfortable as possible. On your right, between the two larger bookshelves, you’ll see the computer bench — D, where our visitors can search through our entire catalogue.\nManager: We pride ourselves in being the largest bookshop in the country, so our sales assistants can’t possibly know all the available titles. Although the room in front of you is dominated by the bookshelves, at the far end, just in front of the lift, you’ll see that we provide a small café bar — A here too.\nManager: And just to your right, there’s a door to the cloakroom where people can leave their coats. Then after that, there’s a stand where we keep a selection of local and national newspapers — H. Customers are welcome to browse through them, and we also have some for sale. We really want people to feel as though they’re browsing through books in the comfort of their own home.\nBefore you hear the rest of the talk, you have some time to look at questions 16 to 20.\nManager: Right, now I suggest we walk slowly up through the building, and I’ll give you more information as we go. We’re open twelve hours a day. We don’t mind if people spend the whole day here but leave without buying anything.\nManager: Of course we hope they’ll buy something, but our purpose is to draw people in, to provide the kind of environment which makes them want to stay and read — C. Look at how busy each floor is, but how quiet.\nManager: You may be wondering whether there are any children in the building. We debated about locating children’s books on the ground floor or halfway up the building, like the third or fourth floor, but in the end we decided to put them on the very top level — B, and I can assure you it’s not the least bit quiet up there.\nManager: Of course, many parents would prefer to spend time on other floors, and so we provide a supervised area for children under two in the basement, so parents can wander around the shop for a few hours and not worry. But they do have to pay for this service, because although we thought about using some of our own assistants, we decided to employ qualified nursery staff for parents’ complete peace of mind — C.\nManager: Now we’re just passing the fiction section and you’ve probably noticed a small crowd of people beginning to gather. That’s because a well-known author is going to read from her latest novel. We try to hold events like this at least once or twice a week, and as you can imagine they’re very popular. We don’t make a charge for people to attend, but we obviously hope that some of them will want to purchase the book after listening to part of it being read aloud — A.\nManager: Other events which are proving to be very popular are our workshops. Last week we held a poetry workshop and people came along with poems that they’d written. One of the country’s best known poets ran the workshop, and the participants read their poems aloud to him — C. He was kind and encouraging, and many people felt inspired by his advice.\nManager: It’s extremely difficult to earn your living as a professional poet, and even published poets have other jobs. Now we’re going to take a look at our section on audiobooks.\nThat is the end of part two. You now have 30 seconds to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-03-part-3",
+   "title": "Part 3",
+   "context": "You will hear a business student called Ron getting feedback from his tutor on his presentation. First, you have some time to look at questions 21 to 24.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Ron suggests that in his presentation he should have",
+       "options": [
+        {
+         "key": "A",
+         "text": "given credit to the originators of the JIT idea."
+        },
+        {
+         "key": "B",
+         "text": "discussed why the Japanese adopted the JIT idea."
+        },
+        {
+         "key": "C",
+         "text": "explained how supermarkets used the JIT idea."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'The Americans actually pioneered the idea of just-in-time, though it wasn't called that. Henry Ford... I should have made clearer and talked about...'"
+      },
+      {
+       "n": 22,
+       "text": "The tutor says that in his presentation Ron omitted",
+       "options": [
+        {
+         "key": "A",
+         "text": "a description of classic business theory."
+        },
+        {
+         "key": "B",
+         "text": "an introductory definition of JIT."
+        },
+        {
+         "key": "C",
+         "text": "a statement of the aims of JIT."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'You should have stopped and clearly defined just-in-time for your seminar colleagues... you never told us that JIT simply means waiting until the last moment to order new supplies.'"
+      },
+      {
+       "n": 23,
+       "text": "Ron says that he found his information on standardising parts from",
+       "options": [
+        {
+         "key": "A",
+         "text": "a website."
+        },
+        {
+         "key": "B",
+         "text": "journal articles."
+        },
+        {
+         "key": "C",
+         "text": "a textbook."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'So in the end I got my data from a textbook called Learning from Toyota.'"
+      },
+      {
+       "n": 24,
+       "text": "The tutor suggests that in the service sector, JIT is",
+       "options": [
+        {
+         "key": "A",
+         "text": "difficult to apply because of the absence of countable things."
+        },
+        {
+         "key": "B",
+         "text": "regarded by most members of staff as unfashionable."
+        },
+        {
+         "key": "C",
+         "text": "unlikely to be accepted by important clients."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Service industries like tourism or healthcare, where customers are paying for something that they can't actually see or count.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What criticism is made of each of the following technical aspects of Ron’s presentation? Choose SIX answers from the box and write the correct letter, A–H, next to questions 25–30.",
+     "title": "Criticisms",
+     "options": [
+      {
+       "key": "A",
+       "text": "too informal"
+      },
+      {
+       "key": "B",
+       "text": "too irregular"
+      },
+      {
+       "key": "C",
+       "text": "too predictable"
+      },
+      {
+       "key": "D",
+       "text": "too sudden"
+      },
+      {
+       "key": "E",
+       "text": "too technical"
+      },
+      {
+       "key": "F",
+       "text": "too unenthusiastic"
+      },
+      {
+       "key": "G",
+       "text": "too loosely related"
+      },
+      {
+       "key": "H",
+       "text": "too vague"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "text": "speed of delivery",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Speed of delivery — 'I sometimes seemed to talk fast and sometimes slow' (too irregular)."
+      },
+      {
+       "n": 26,
+       "text": "purpose",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Purpose — 'your purpose wasn't very specific... Make it clear and concise and not so general' (too vague)."
+      },
+      {
+       "n": 27,
+       "text": "transitions",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Transitions — 'you didn't link the sections... it was all just too abrupt' (too sudden)."
+      },
+      {
+       "n": 28,
+       "text": "visuals",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Visuals — 'nice as they were as pictures, they didn't have much to do with what you were talking about' (too loosely related)."
+      },
+      {
+       "n": 29,
+       "text": "vocabulary",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Vocabulary — 'they just didn't understand some of the vocabulary I was using' (too technical)."
+      },
+      {
+       "n": 30,
+       "text": "body language",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Body language — 'you didn't use gestures, and you just stood straight without any animation... didn't make you seem very interested' (too unenthusiastic)."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a business student called Ron getting feedback from his tutor on his presentation. First, you have some time to look at questions 21 to 24.\nTutor: Thanks, Ron, for coming to my office to discuss the presentation you gave yesterday to the business management seminar. We’ll go over what you did with the aim of helping you improve your next presentation.\nRon: Sounds good.\nTutor: Now the topic was the just-in-time or JIT supply system, used by a lot of manufacturers, first in Japan and then in the West, I think.\nRon: Yes. But actually one thing I should have made clearer and talked about was the fact that the Americans actually pioneered the idea of just-in-time — A, though it wasn’t called that. Henry Ford and his cars, in fact, at the turn of the 20th century. And later, a big US supermarket chain used it, and this was where Toyota in Japan got the idea for its car making.\nTutor: Yes, that would have been a good addition. Now, before we go any further, I think I would suggest that you should have stopped and clearly defined just-in-time for your seminar colleagues — B. You said its aim was to reduce waste, and you mentioned that classic business theory assumes that stock, or inventory of parts, are counted as assets. But just-in-time sees them as unnecessary waste. But you never told us that JIT simply means waiting until the last moment to order new supplies as you need them.\nRon: Yes, you’re right. I should have done that.\nTutor: Now you talked a bit about standardising parts as a way of streamlining JIT. Where did you get your data from?\nRon: Well, I tried an internet website on the subject which is called the Lean Clearing House, but it was too technical for me. So in the end I got my data from a textbook called Learning from Toyota — C. I found some journal articles too, but they didn’t seem very useful.\nTutor: Yes. Well, there is a US government report on it I’ve seen. I’ll get a copy for you.\nRon: Great. I look forward to reading through it.\nTutor: And while you’re at it, you might want to find out about cases where JIT might not be suitable. And that’s in service industries like tourism or healthcare, where customers are paying for something that they can’t actually see or count — A. Although JIT is fashionable today, some people would say it hasn’t proved so successful in the service sector as it has with the manufacturing of goods that can be quantified.\nRon: That would be interesting. I’ll see what I can find out.\nBefore you hear the rest of the discussion, you have some time to look at questions 25 to 30.\nTutor: Now, unless you have any more questions, let’s turn to a critique of the technical aspects of the presentation. I’m afraid I’ll emphasize the things I think you might want to work on. It was a good talk, but with a little work, your next presentation should be excellent.\nRon: Fine. That would be helpful. Actually, I wasn’t happy with my delivery. I sometimes seemed to talk fast and sometimes slow — B (too irregular). I was on edge, I guess.\nTutor: Yes, you were. And as well as that, your purpose wasn’t very specific — H (too vague). In future, you need to lay out exactly what you’re going to cover and why. Make it clear and concise and not so general.\nRon: And what about my transitions from one section to the next?\nTutor: Well, you didn’t link the sections, did you? You went too quickly from one to the next. It was all just too abrupt — D (too sudden).\nRon: Okay. I’ll try to improve that.\nTutor: Now, your PowerPoint visuals were lovely, but sometimes I got the feeling that, nice as they were as pictures, they didn’t have much to do with what you were talking about — G (too loosely related).\nRon: You’re right. And you know another thing, I could see from the other students’ reactions, they just didn’t understand some of the vocabulary I was using — E (too technical).\nTutor: Good point. Well, remember your audience were laymen, mostly without knowledge of JIT. So you need to simplify and try to put things in everyday English.\nRon: I never seem to do that.\nTutor: And lastly, I’ll just mention your body language. You didn’t use gestures, and you just stood straight without any animation. It didn’t make you seem very interested in the subject — F (too unenthusiastic).\nRon: I know, even though I really do like the subject. Sorry.\nTutor: Well, despite all this, I enjoyed your presentation, and I could see you put lots of work into it. I look forward to an even better presentation from you next time.\nRon: Well, thanks for your help.\nThat is the end of part three. You now have thirty seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-03-part-4",
+   "title": "Part 4",
+   "context": "In part four you will hear about studying dyscalculia, a neurodevelopmental disorder affecting numerical abilities. First, you have some time to look at questions 31 to 40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Dyscalculia\n- Teaching applied in class: [[31]] method of teaching\n- Children have difficulty learning the concept of [[32]] and sequence\n- In the class, they are taught everyday practical examples, e.g. dealing with [[33]]\n- For children with mathematics disorder, extra calculation practice is used to develop more [[34]]\n- Teachers encourage them to solve problems by making educated [[35]]\n- Do exercises e.g. breathing, relaxation and [[36]] breaks\n- Researchers are looking for a potential [[37]] with language learning difficulties\n- Children are likely to have some problems with [[38]] and focus\n- With this approach, children no longer need [[39]] training\n- Dyscalculia affects the children and also their families and [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "traditional"
+       ],
+       "explanation": "'Most schools use the traditional method of teaching mathematics, which may not be effective for children with dyscalculia.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "time"
+       ],
+       "explanation": "'They find it challenging to comprehend the passage of time and the order in which events occur.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "money"
+       ],
+       "explanation": "'They engage the students in activities that involve dealing with money.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "confidence"
+       ],
+       "explanation": "'To boost their confidence, children with mathematics disorders are encouraged to practice more calculations.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "guesses",
+        "guess"
+       ],
+       "explanation": "'Teachers also implement strategies that encourage children to make educated guesses.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "walking"
+       ],
+       "explanation": "'Breathing techniques, relaxation exercises, and even walking breaks to promote a conducive learning environment.'"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "link"
+       ],
+       "explanation": "'Particularly interested in finding a potential link between dyscalculia and language learning difficulties.'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "concentration"
+       ],
+       "explanation": "'Children with dyscalculia often struggle with concentration and maintaining focus.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "additional"
+       ],
+       "explanation": "'Children may no longer require additional treatment or training specifically focused on their mathematics disorder.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "teachers",
+        "teacher"
+       ],
+       "explanation": "'It's important to note that dyscalculia affects not only the children but also their families and teachers.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "In part four you will hear about studying dyscalculia, a neurodevelopmental disorder affecting numerical abilities. First, you have some time to look at questions 31 to 40.\nLecturer: Dyscalculia, a complex neurodevelopmental condition, refers to a learning disorder marked by significant challenges in understanding and manipulating numerical concepts, quantities, and mathematical operations. It’s a condition that affects children’s ability to understand and work with numbers.\nLecturer: Currently, most schools use the traditional method of teaching mathematics, which may not be effective for children with dyscalculia.\nLecturer: These children struggle with grasping mathematical concepts, especially when it comes to understanding the concept of time and sequence. They find it challenging to comprehend the passage of time and the order in which events occur.\nLecturer: In the classroom, teachers focus on providing everyday practical examples to help these children overcome their difficulties. They engage the students in activities that involve dealing with money, as this is a common challenge for children with dyscalculia.\nLecturer: By incorporating real-life scenarios, teachers aim to make the learning experience more meaningful and relatable for these students. Additionally, teachers provide individualised support and interventions tailored to each student’s needs.\nLecturer: To boost their confidence, children with mathematics disorders are encouraged to practice more calculations and problem-solving. This additional practice helps them develop a stronger sense of self-assurance when it comes to dealing with mathematical tasks.\nLecturer: Teachers also provide positive reinforcement and praise for their efforts and progress. Teachers also implement strategies that encourage children to make educated guesses when they encounter mathematical problems. By empowering them to make informed guesses, teachers hope to foster problem-solving skills and reduce anxiety associated with mathematical challenges.\nLecturer: Additionally, they incorporate various exercises such as breathing techniques, relaxation exercises, and even walking breaks to promote a conducive learning environment. These activities aid in reducing stress and promoting focus during math lessons. Teachers also explore alternative teaching methods, such as visual aids and manipulatives to enhance understanding and engagement.\nLecturer: Researchers in this field are particularly interested in finding a potential link between dyscalculia and language learning difficulties. They are investigating whether there is a connection between language barriers and the challenges children face in mathematics. Understanding this link could help inform more targeted interventions and support strategies.\nLecturer: Children with dyscalculia often struggle with concentration and maintaining focus. Teachers are aware of this issue and work to provide additional support and accommodations to help these children stay engaged during lessons. They may use techniques like chunking information, breaking tasks into smaller steps and providing regular breaks.\nLecturer: With this comprehensive approach to teaching children with dyscalculia, the aim is to provide them with the necessary skills and strategies to overcome their mathematical challenges. By implementing these strategies, children may no longer require additional treatment or training specifically focused on their mathematics disorder.\nLecturer: Ongoing assessment and monitoring of progress are crucial to ensure the effectiveness of interventions and make any necessary adjustments. It’s important to note that dyscalculia affects not only the children but also their families and teachers. Teachers and families play a crucial role in supporting these children and understanding their unique needs in the classroom and at home.\nLecturer: Open communication, collaboration, and a supportive environment are key in helping children with dyscalculia thrive academically and emotionally. By recognising and addressing dyscalculia, we can provide a more inclusive and supportive learning environment for all students.\nThat is the end of part four. You now have one minute to check your answers to part four.\nThat is the end of the listening test. You now have 10 minutes to transfer your answers to the listening answer sheet."
+  }
+ ],
+ "audio": {
+  "file": "listening-3.mp3",
+  "durationSec": 1437,
+  "questionTimes": {
+   "1": 63,
+   "2": 82,
+   "3": 93,
+   "4": 126,
+   "5": 139,
+   "6": 208,
+   "7": 220,
+   "8": 231,
+   "9": 254,
+   "10": 266,
+   "11": 399,
+   "12": 413,
+   "13": 449,
+   "14": 473,
+   "15": 566,
+   "16": 580,
+   "17": 601,
+   "18": 616,
+   "19": 629,
+   "20": 642,
+   "21": 776,
+   "22": 788,
+   "23": 840,
+   "24": 865,
+   "25": 940,
+   "26": 970,
+   "27": 984,
+   "28": 1013,
+   "29": 1025,
+   "30": 1048,
+   "31": 1203,
+   "32": 1217,
+   "33": 1246,
+   "34": 1272,
+   "35": 1299,
+   "36": 1319,
+   "37": 1374,
+   "38": 1393,
+   "39": 1418,
+   "40": 1445
+  }
+ }
+}

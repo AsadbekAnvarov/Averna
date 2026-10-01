@@ -1,0 +1,658 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-23",
+ "title": "CDI Reading Test 23",
+ "description": "A full Academic Reading test from the CDI practice materials: The English Canal System; The importance of icebergs to ocean life; The Significant Role of Mother Tongue in Education.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The English Canal System",
+  "The importance of icebergs to ocean life",
+  "The Significant Role of Mother Tongue in Education"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The English Canal System",
+   "paragraphs": [
+    {
+     "text": "The development of a large inland water-transport network of rivers and canals in England in the 18th century was a direct result of the industrial revolution, which needed the support of an effective transport system. The use of inland water transport in England, where rivers are not large compared to elsewhere in Europe, may seem unexpected because no location in England is further than about 150 kilometres from the sea. Thus, road transport would seem to have been more viable. However, the small size of rivers may have been an advantage. In the early 18th century, hydraulic technology was still in its infancy and the smaller scale of works necessary for canal and river navigations in England would certainly have made it easier for the engineers of the time to organise them and carry them out."
+    },
+    {
+     "text": "Another factor in favour of the development of water transport in England is that the roads of the period were insufficient in number and badly maintained, particularly in the steep hills and valleys of the north, and in general they were incapable of carrying the vast quantities of heavy materials needed to supply the growing demands of industry. Merchants who owned factories or who sold the goods produced needed cheap transport for raw materials and for finished products. It was the English merchants who paid for the construction of the first highly successful English canals, unlike many of the European canals, which were financed by the aristocracy."
+    },
+    {
+     "text": "By the second half of the 18th century, most of England's canal system had been completed. Civil engineering had improved, and a few early canals which had had long, winding routes were made more direct, thus reducing the overall length of the canal. An additional engineering task was the building of locks, which enabled canals to be built in areas where there were hills. Locks basically acted as steps or lifts to raise or lower a boat from one canal level to another. When a boat was in the central chamber and both sets of lock gates were shut no water could enter or escape through the gates as they were totally waterproof. However, water could enter or leave the lock through the sluice gates. Sluice gates were located below the lock gates and could be opened to allow water to flood into the lock to raise a boat or to flood out of the lock to lower a boat. When the water levels both inside and outside the lock were equal, the lock gates in front of the boat could be opened and it could continue on its journey."
+    },
+    {
+     "text": "However, there were factors associated with the development of late-18th-century canals which were to cause continual problems for the entire system. To keep down costs, many canals and locks in industrial areas were constructed to small dimensions; often locks were as narrow as 2.15 metres wide. A consequence of this was that boats also had to be narrow. That there would be rapid growth in the amount of produce transported on canals was not appreciated by canal builders of the time. In contrast, canals leading to coastal rivers and ports were wider and had larger boats and locks (around 4.3 metres wide) than the canals in industrial areas. This lack of uniformity of size resulted in a fragmented transport system."
+    },
+    {
+     "text": "Many of the new canals planned in the 1790s were looked upon just as a means of making money by speculators. These people were not involved with local industries and sometimes lived in other parts of the country. They expected that canals would continue to be successful irrespective of where they were built. However, only a few of them were profitable. Those that were, were usually wide canals in northern England, where they provided a vital link between industry and transport. Many canals of this period were built in agricultural regions, but canals depend on industry for their supply of cargo and so these canals barely repaid their construction costs. By the early 19th century, most were unable to compete with the new railways. To reduce competition, railway companies purchased many of the canals but did not maintain them properly, so several were abandoned."
+    },
+    {
+     "text": "Inland water transport is no longer widely used in England, with most goods being carried by road. During the latter half of the 20th century, the GDI campaigned to increase national recognition of canals and the role they could play in recreation. It was a difficult task as many influential people in the community thought most canals were already virtually derelict and often parents tried to have them drained because they considered canals a danger to children. However, the increasing publicity which was being given to canals brought them to the attention of a wider and wider audience. Some people were interested in the historic aspects of canals. Because there had been so little investment in them, many canals had remained virtually unchanged from the days, 200 years previously, when they were built. Today, as a result of canal conservation and restoration, they are seen as places of both historical and environmental interest."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Larger rivers would have made the work of 18th-century hydraulic engineers more difficult.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage states the smaller scale of works in England 'would certainly have made it easier for the engineers of the time to organise them', implying larger rivers = harder work."
+      },
+      {
+       "n": 2,
+       "text": "Merchants refused to pay the high costs associated with road transport.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says roads were 'incapable of carrying the vast quantities' needed — it was a capacity problem, not a cost refusal."
+      },
+      {
+       "n": 3,
+       "text": "18th-century European and English canals were funded differently.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "English canals were paid for by merchants; European canals were financed by the aristocracy."
+      },
+      {
+       "n": 4,
+       "text": "Canals were narrower in some places than in others.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Industrial area locks were as narrow as 2.15m; coastal canals had locks around 4.3m wide."
+      },
+      {
+       "n": 5,
+       "text": "The GDI tried to get support for canal closures.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The GDI 'campaigned to increase national recognition of canals and the role they could play in recreation' — promoting them, not closing them."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Canal Locks",
+     "template": "Reasons for building locks:\n- locks allowed canal boats to be built in areas that had [[6]]\nHow locks operate:\n- a boat is shut in the [[7]] of the lock\n- [[8]] open or close to raise or lower the level of the water\n- water levels have to be [[9]] before the boat can exit",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "hills"
+       ],
+       "explanation": "'Locks enabled canals to be built in areas where there were hills.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "central chamber"
+       ],
+       "explanation": "'When a boat was in the central chamber and both sets of lock gates were shut...'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "sluice gates"
+       ],
+       "explanation": "'water could enter or leave the lock through the sluice gates'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "equal"
+       ],
+       "explanation": "'When the water levels both inside and outside the lock were equal, the lock gates in front of the boat could be opened.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "- Which group of people from outside the local community saw canals as a way of getting rich? [[10]]\n- In which geographical area did the canals make more money? [[11]]\n- What were the wrong kinds of areas to build profitable canals in? [[12]]\n- Who bought the canals that were not making a profit? [[13]]",
+     "questions": [
+      {
+       "n": 10,
+       "answer": [
+        "speculators"
+       ],
+       "explanation": "'Many of the new canals planned in the 1790s were looked upon just as a means of making money by speculators.'"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "northern England"
+       ],
+       "explanation": "'Those that were [profitable] were usually wide canals in northern England.'"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "agricultural regions"
+       ],
+       "explanation": "'Many canals of this period were built in agricultural regions, but canals depend on industry for their supply of cargo.'"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "railway companies"
+       ],
+       "explanation": "'railway companies purchased many of the canals but did not maintain them properly.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The importance of icebergs to ocean life",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The word iceberg refers to pieces of ice larger than five meters across. The waters surrounding Antarctica are home to most of the icebergs on Earth, although they can also be found in the Arctic region. The water surrounding icebergs teems with life including a range of fish and, consequently, the seals which prey on them. Seabirds such as gulls, fulmars and other birds often visit as well. Some fishermen in Arctic regions claim that the fishing is often best in the immediate vicinity of icebergs. Recent research is beginning to shed light on what it is about icebergs that is attractive to wildlife."
+    },
+    {
+     "label": "B",
+     "text": "Ken Smith, senior scientist at the Monterey Bay Aquarium Research Institute, explains that ‘free-drifting icebergs are hot spots of chemical and biological enrichment.’ His studies in the Weddell Sea off Antarctica confirmed high concentrations of chlorophyll, krill, and seabirds in the water surrounding the icebergs he sampled, extending out to about two miles around each berg. While he wouldn’t speculate about whether the same results would be found around Arctic icebergs, other scientists say that the evidence suggests it may well be the case."
+    },
+    {
+     "label": "C",
+     "text": "During their first expedition, Smith and his research team deployed a series of oceanographic instruments, fishing nets, and video cameras attached to remotely operated vehicles around a small iceberg with a surface area of 0.12 square kilometers, as well as around another much larger example. Their results revealed how important icebergs are to the marine environment."
+    },
+    {
+     "label": "D",
+     "text": "Perhaps their most significant finding was that as icebergs melt, accumulated dust, pulverized rocks, and other terrestrial materials are dispersed into the water. These were all incorporated into the ice millions of years ago when it was part of glaciers which scraped up debris from the surface of the soil while moving across huge areas of land. Once in the water, these materials act as ocean fertilizer to nourish microscopic marine organisms such as plankton, upon which the entire food chain ultimately depends. ‘These icebergs can be compared to river estuaries that supply surrounding coastal regions with nutrients as they enter the ocean,’ Smith and his team wrote."
+    },
+    {
+     "label": "E",
+     "text": "Oceanographer Greg Stone had a more hands-on approach to studying the productivity around icebergs. A vice president at Conservation International, one of the world’s largest biodiversity conservation organizations, he led a team of scuba divers and scientists on a rare and dangerous expedition to study iceberg ecology around B-15, the largest iceberg ever known, which broke away from the Ross Ice Shelf in Antarctica in 2000. Nearly the size of the US state of Connecticut and containing enough fresh water to supply the entire US for five years, the berg had begun to break up by the time Stone’s team arrived several months later, and the shifting pack ice made it impossible for them to reach it. But Stone and his colleagues still conducted about ninety dives around icebergs of various sizes. What they found was an unexpected bonanza of marine life in and around the ice."
+    },
+    {
+     "label": "F",
+     "text": "Greg Stone noted that the water of Antarctica where his team undertook dives was several degrees below freezing. Like Smith’s team, they recorded higher concentrations of jellyfish and krill within a mile or so around the icebergs. They also frequently saw juvenile ice fish living in burrows in the ice, though they were uncertain whether the fish excavated these themselves to hide from predators or simply took advantage of natural features of the ice. In an especially dangerous dive, they swam 300 meters into a cave inside another iceberg that had been grounded for several years and found a spectacular garden of invertebrates – feather duster worms, starfish, colorful sponges, sea cucumbers, and more – living on the seafloor at the farthest reaches of the cave."
+    },
+    {
+     "label": "G",
+     "text": "According to Stone, most Antarctic icebergs get pushed around continuously by the wind and currents. As they move, their keel will rub along the seafloor, disturbing the benthic ecosystem. But because this particular iceberg had been grounded for several years, it served to protect bottom-dwelling creatures from the ravages of moving icebergs and nurtured this underwater garden."
+    },
+    {
+     "label": "H",
+     "text": "Stone agrees with Smith’s conclusion that the big picture of iceberg ecology is the vital role they play in fertilizing the Southern Ocean, thereby creating the largest biomass on Earth. ‘The whole food chain gets fired up around one of these things,’ Stone explains. ‘The ice is the biological engine that drives the ecosystem, fueled further by the Antarctic’s twenty-four-hour summer sunshine. There’s no doubt that if you’re an ocean animal, you’re going to be attracted to an iceberg because it’s generally a better place to be.’"
+    },
+    {
+     "label": "I",
+     "text": "If you’re not an ocean animal, on the other hand, it’s probably best to keep your distance from icebergs, because one thing they are not is safe. Just hours after Stone’s dive team emerged from exploring the cave within the grounded iceberg, the entire berg completely crumbled and disintegrated, leaving in its place what Stone described as ‘two square miles of shattered crystal’. The pressures caused by the continuous melting and re-freezing of water throughout these mountainous structures ultimately lead to their destruction. As frightening as it was to Stone and his team of scientists, who decided then and there never to dive in an iceberg cave again, it also may have been the first time anyone had witnessed such an event."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has nine paragraphs, A–I. Which paragraph contains the following information? You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      },
+      {
+       "key": "I",
+       "text": "Paragraph I"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "examples of equipment used in the study of icebergs",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C: 'deployed a series of oceanographic instruments, fishing nets, and video cameras attached to remotely operated vehicles.'"
+      },
+      {
+       "n": 15,
+       "text": "a description of the volume of water inside one iceberg",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E: 'containing enough fresh water to supply the entire US for five years.'"
+      },
+      {
+       "n": 16,
+       "text": "a reference to causes of instability in icebergs",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Paragraph I: 'The pressures caused by the continuous melting and re-freezing of water throughout these mountainous structures ultimately lead to their destruction.'"
+      },
+      {
+       "n": 17,
+       "text": "an explanation as to the origins of the contents of the water around icebergs",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D: 'accumulated dust, pulverized rocks...incorporated into the ice millions of years ago when it was part of glaciers which scraped up debris.'"
+      },
+      {
+       "n": 18,
+       "text": "a definition of the term ‘iceberg’",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A: 'The word iceberg refers to pieces of ice larger than five meters across.'"
+      },
+      {
+       "n": 19,
+       "text": "a reference to the temperature of the water surrounding an iceberg",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F: 'the water of Antarctica where his team undertook dives was several degrees below freezing.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of the following are true about Ken Smith's research?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Ken Smith likened iceberg melt to river estuaries."
+      },
+      {
+       "key": "B",
+       "text": "He obtained all his results from a single Antarctic iceberg."
+      },
+      {
+       "key": "C",
+       "text": "He confirmed that all icebergs had identical ecosystems."
+      },
+      {
+       "key": "D",
+       "text": "He connected iceberg contents with surrounding marine life."
+      },
+      {
+       "key": "E",
+       "text": "He was the first to note bacteria around icebergs."
+      }
+     ],
+     "questions": [
+      {
+       "n": 20,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "A: Smith wrote icebergs 'can be compared to river estuaries'. D: confirmed 'high concentrations of chlorophyll, krill, and seabirds.' D: confirmed high concentrations of marine life connected to iceberg contents."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "A: Smith wrote icebergs 'can be compared to river estuaries'. D: confirmed 'high concentrations of chlorophyll, krill, and seabirds.' D: confirmed high concentrations of marine life connected to iceberg contents."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Iceberg ecosystems",
+     "template": "On his dives in Antarctica, Greg Stone and his team noted the presence of above-normal levels of marine life, such as krill and [[22]] in the immediate vicinity of the ice. They also observed that under many icebergs, young fish appeared to have created [[23]] to live in – possibly as a means of avoiding [[24]]. Under one iceberg, they located a stunning display of sea cucumbers, sponges and other invertebrates living deep within a [[25]] in the ice. These had probably survived because the iceberg in question had become stuck on the seabed rather than being blown around or moved by ocean [[26]].",
+     "questions": [
+      {
+       "n": 22,
+       "answer": [
+        "jellyfish"
+       ],
+       "explanation": "'they recorded higher concentrations of jellyfish and krill within a mile or so around the icebergs.'"
+      },
+      {
+       "n": 23,
+       "answer": [
+        "burrows"
+       ],
+       "explanation": "'juvenile ice fish living in burrows in the ice.'"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "predators"
+       ],
+       "explanation": "'possibly as a means of avoiding predators.'"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "cave"
+       ],
+       "explanation": "'they swam 300 meters into a cave inside another iceberg.'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "currents"
+       ],
+       "explanation": "'most Antarctic icebergs get pushed around continuously by the wind and currents.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The Significant Role of Mother Tongue in Education",
+   "paragraphs": [
+    {
+     "text": "One consequence of population mobility is an increasing diversity within schools. To illustrate, in the city of Toronto in Canada, 58% of kindergarten pupils come from homes where English is not the usual language of communication. Schools in Europe and North America have experienced this diversity for years, and educational policies and practices vary widely between countries and even within countries. Some political parties and groups search for ways to solve the problem of diverse communities and their integration in schools and society. However, they see few positive consequences for the host society and worry that this diversity threatens the identity of the host society. Consequently, they promote unfortunate educational policies that will make the “problem” disappear. If students retain their culture and language, they are viewed as less capable of identifying with the mainstream culture and learning the mainstream language of the society."
+    },
+    {
+     "text": "The challenge for educators and policy-makers is to shape the evolution of national identity in such a way that rights of all citizens (including school children) are respected, and the cultural linguistic, and economic resources of the nation are maximised. To waste the resources of the nation by discouraging children from developing their mother tongues is quite simply unintelligent from the point of view of national self-interest. A first step in providing an appropriate education for culturally and linguistically diverse children is to examine what the existing research says about the role of children’s mother tongues in their educational development."
+    },
+    {
+     "text": "In fact, the research is very clear. When children continue to develop their abilities in two or more languages throughout their primary school, they gain a deeper understanding of language and how to use it effectively. They have more practice in processing language, especially when they develop literacy in both. More than 150 research studies conducted during the past 25 years strongly support what Goethe, the famous eighteenth-century German philosopher, once said: the person who knows only one language does not truly know that language. Research suggests that bilingual children may also develop more flexibility in their thinking as a result of processing information through two different languages."
+    },
+    {
+     "text": "The level of development of children’s mother tongue is a strong predictor of their second language development. Children who come to school with a solid foundation in their mother tongue develop stronger literacy abilities in the school language. When parents and other caregivers (e.g. grandparents) are able to spend time with their children and tell stories or discuss issues with them in a way that develops their mother tongue, children come to school well-prepared to learn the school language and succeed educationally. Children’s knowledge and skills transfer across languages from the mother tongue to the school language. Transfer across languages can be two-way: both languages nurture each other when the educational environment permits children access to both languages."
+    },
+    {
+     "text": "Some educators and parents are suspicious of mother tongue-based teaching programs because they worry that they take time away from the majority language. For example, in a bilingual program when 50% of the time is spent teaching through children’s home language and 50% through the majority language, surely children won’t progress as far in the latter? One of the most strongly established findings of educational research, however, is that well-implemented bilingual programs can promote literacy and subject-matter knowledge in a minority language without any negative effects on children’s development in the majority language. Within Europe, the Foyer program in Belgium, which develops children’s speaking and literacy abilities in three languages (their mother tongue, Dutch and French), most clearly illustrates the benefits of bilingual and trilingual education. It is easy to understand how this happens. When children are learning through a minority language, they are learning concepts and intellectual skills too. Pupils who know how to tell the time in their mother tongue understand the concept of telling time. In order to tell time in the majority language, they do not need to re-learn the concept. Similarly, at more advanced stages, there is transfer across languages in other skills such as knowing how to distinguish the main idea from the supporting details of a written passage or story, and distinguishing fact from opinion. Studies of secondary school pupils are providing interesting findings in this area, and it would be worth extending this research."
+    },
+    {
+     "text": "Many people marvel at how quickly bilingual children seem to “pick up” conversational skills in the majority language at school (although it takes much longer for them to catch up with native speakers in academic language skills). However, educators are often much less aware of how quickly children can lose their ability to use their mother tongue, even in the home context. The extent and rapidity of language loss will vary according to the concentration of families from a particular linguistic group in the neighborhood. Where the mother tongue is used extensively in the community, then language loss among young children will be less. However, where language communities are not concentrated in particular neighborhoods, children can lose their ability to communicate in their mother tongue within 2–3 years of starting school. They may retain receptive skills in the language but they will use the majority language in speaking with their peers and siblings and in responding to their parents. By the time children become adolescents, the linguistic division between parents and children has become an emotional chasm. Pupils frequently become alienated from the cultures of both home and school with predictable results."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "What point does the writer make in the second paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Some present studies on children’s mother tongues are misleading."
+        },
+        {
+         "key": "B",
+         "text": "A culturally rich education programme benefits some children more than others."
+        },
+        {
+         "key": "C",
+         "text": "Bilingual children can make a valuable contribution to the wealth of a country."
+        },
+        {
+         "key": "D",
+         "text": "The law on mother tongue use at school should be strengthened."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph 2: 'To waste the resources of the nation by discouraging children from developing their mother tongues is quite simply unintelligent' — implying bilingual children contribute to national wealth."
+      },
+      {
+       "n": 28,
+       "text": "Why does the writer refer to something that Goethe said?",
+       "options": [
+        {
+         "key": "A",
+         "text": "To lend weight to his argument."
+        },
+        {
+         "key": "B",
+         "text": "To contradict some research."
+        },
+        {
+         "key": "C",
+         "text": "To introduce a new concept."
+        },
+        {
+         "key": "D",
+         "text": "To update current thinking."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Goethe’s quote is used to support the research finding: 'More than 150 research studies... strongly support what Goethe... once said.'"
+      },
+      {
+       "n": 29,
+       "text": "The writer believes that when young children have a firm grasp of their mother tongue, they",
+       "options": [
+        {
+         "key": "A",
+         "text": "can teach older family members what they learnt at school."
+        },
+        {
+         "key": "B",
+         "text": "go on to do much better throughout their time at school."
+        },
+        {
+         "key": "C",
+         "text": "can read stories about their cultural background."
+        },
+        {
+         "key": "D",
+         "text": "develop stronger relationships with their family than with their peers."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Children who come to school with a solid foundation in their mother tongue develop stronger literacy abilities in the school language.'"
+      },
+      {
+       "n": 30,
+       "text": "Why are some people suspicious about mother tongue-based teaching programmes?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They worry that children will be slow to learn to read in either language."
+        },
+        {
+         "key": "B",
+         "text": "They think that children will confuse words in the two languages."
+        },
+        {
+         "key": "C",
+         "text": "They believe that the programmes will make children less interested in their lessons."
+        },
+        {
+         "key": "D",
+         "text": "They fear that the programmes will use up valuable time in the school day."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "'Some educators and parents are suspicious...because they worry that they take time away from the majority language.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–J, below.",
+     "title": "Bilingual Children",
+     "options": [
+      {
+       "key": "A",
+       "text": "teachers"
+      },
+      {
+       "key": "B",
+       "text": "schools"
+      },
+      {
+       "key": "C",
+       "text": "dislocation"
+      },
+      {
+       "key": "D",
+       "text": "rate"
+      },
+      {
+       "key": "E",
+       "text": "time"
+      },
+      {
+       "key": "F",
+       "text": "family"
+      },
+      {
+       "key": "G",
+       "text": "communication"
+      },
+      {
+       "key": "H",
+       "text": "type"
+      },
+      {
+       "key": "I",
+       "text": "ability"
+      },
+      {
+       "key": "J",
+       "text": "area"
+      }
+     ],
+     "template": "It was often recorded that bilingual children acquire the [[31]] to converse in the majority language remarkably quickly. The fact that the mother tongue can disappear at a similar [[32]] is less well understood. This phenomenon depends, to a certain extent, on the proportion of people with the same linguistic background that have settled in a particular [[33]]. If this is limited, children are likely to lose the active use of their mother tongue, and thus no longer employ it even with [[34]], although they may still understand it. It follows that teenager children in these circumstances experience a sense of [[35]] in relation to all aspects of their lives.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "I"
+       ],
+       "explanation": "I=ability. Bilingual children acquire the ability to converse in the majority language."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "D"
+       ],
+       "explanation": "D=rate. The mother tongue can disappear at a similar rate."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "J"
+       ],
+       "explanation": "J=area. Depends on the proportion of people settled in a particular area."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "F"
+       ],
+       "explanation": "F=family. Children no longer employ the mother tongue even with family."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "C"
+       ],
+       "explanation": "C=dislocation. Teenager children experience a sense of dislocation in relation to all aspects of their lives."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the views of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 36,
+       "text": "Less than half of the children who attend kindergarten in Toronto have English as their mother tongue.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Following the official answer key: NO."
+      },
+      {
+       "n": 37,
+       "text": "Research proves that learning the host country language at school can have an adverse effect on a child’s mother tongue.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage discusses mother tongue affecting school language learning but does not say the reverse is proven."
+      },
+      {
+       "n": 38,
+       "text": "The Foyer program is accepted by the French education system.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions Belgium’s Foyer program but says nothing about French education system acceptance."
+      },
+      {
+       "n": 39,
+       "text": "Bilingual children are taught to tell the time earlier than monolingual children.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage uses telling time as an example of concept transfer, not as a comparison of when children learn it."
+      },
+      {
+       "n": 40,
+       "text": "Bilingual children can apply reading comprehension strategies acquired in one language when reading in the other.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'there is transfer across languages in other skills such as knowing how to distinguish the main idea from the supporting details.'"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

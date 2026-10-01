@@ -1,0 +1,465 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-78",
+ "title": "CDI Reading Test 78",
+ "description": "A full Academic Reading test from the CDI practice materials: Fungi: new sustainable alternatives; Lawrence Johnston and Hidcote Garden; Mercator – The Map Maker.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Fungi: new sustainable alternatives",
+  "Lawrence Johnston and Hidcote Garden",
+  "Mercator – The Map Maker"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Fungi: new sustainable alternatives",
+   "subtitle": "Innovators are turning to fungi to replace less environmentally friendly materials.",
+   "paragraphs": [
+    {
+     "text": "Fungi are peculiar organisms. Neither plant nor animal, they have their own kingdom, and play an important role in the decomposition of organic matter. There is a widespread perception that fungi, such as mildews, yeasts and mushrooms, are dangerous but some scientists and innovators are trying to change this perception by using fungi to create everyday objects. Not only are fungi readily available in nature but they're also sustainable and have the potential to replace less environmentally friendly materials, such as plastic. Is fungus the material of the future?"
+    },
+    {
+     "text": "Designer Maurizio Montalti asked himself this very question during his studies at the Design Academy Eindhoven in the Netherlands. 'It became apparent that fungi are the great recyclers of the natural world,' says Montalti. As a student, he developed an interest in ways of producing materials from alternative sources. Realizing fungi's hidden potential, but not having a background in biology, he contacted Han Wösten, a professor of microbiology at Utrecht University in the Netherlands. In the years since, they have developed a method of growing fungi in a controlled environment that makes it a sustainable alternative to materials like plastic, rubber, wood and leather. With a goal of sharing their work with the public, they decided to stage an exhibition that included an array of everyday objects created from fungi, including chairs, lampshades and slippers. By allowing visitors to interact with each piece by picking it up and discovering that it was both firm and light, their hope was that people would walk away with a better understanding of fungi's potential as a sustainable material."
+    },
+    {
+     "text": "In order to understand exactly how Montalti and Wösten use fungi to create these objects, it is necessary to understand the composition of these organisms. The vegetative part of fungi is called mycelium, and it consists of multiple long, thread-like fibers. The mycelium is what Montalti and Wösten use to make their sustainable items. An important part of the ecosystem, mycelium breaks down organic matter along with toxic substances, such as pesticides, and also filters water."
+    },
+    {
+     "text": "In a laboratory process, Montalti and Wösten let fungi degrade farm waste such as straw. This results in mycelium that is similar in strength to plastic. Once enough mycelium has formed, Montalti and Wösten take the mass and put it into a mold which retains humidity and forces it to take on a specific shape. Once the mycelium fills out the mold – a process that typically takes several weeks, depending on the size of the mold – the formed object is fired in an oven, which kills the fungi and stops it getting any bigger. In their work, Montalti and Wösten often use oyster mushrooms, which not only thrive on dead plant materials but are non-toxic, unlike some other mushrooms."
+    },
+    {
+     "text": "Montalti first learned about mycelium after attending a workshop led by Eben Bayer, co-founder and CEO of Ecovative, a company in Albany, New York that develops and produces sustainable packaging and building materials using mycelium. Bayer began working with mycelium in order to find a replacement for the harmful adhesive used in building manufacturing. Ten years ago, he and his business partner, Gavin McIntyre, applied for a patent and eventually began commercializing their product. In the time since, they've introduced dozens of designers and artists around the world to mycelium and its potential as a sustainable material, even going so far as to market grow-it-yourself kits that consumers can use at home. 'There are about 30 or 40 different designers and artists around the world who are doing projects with mycelium,' Bayer says."
+    },
+    {
+     "text": "Due to fungi's natural qualities, mycelium-based objects aren't meant to last forever, an issue that Montalti and Wösten are in the process of trying to resolve. 'Mycelium is still an experimental material and by definition it is susceptible to degradation,' Montalti says. He points out, however, that this doesn't mean that items made with mycelium are subject to quick decay, unless the conditions for such degradation to occur are created, such as a shift in humidity or an increase or decrease in temperature."
+    },
+    {
+     "text": "To make mycelium more resistant to these shifts, Montalti and Wösten are trying to find a coating that can be applied to objects near the end of production. In addition to household products, they're focusing on producing architectural materials such as panels and ceilings using their developed method. 'For the future, our aim is that, 20 years from now you can buy anything you need for a construction project using fungus,' Wösten says. He adds that materials made of mycelium 'would replace things like plastic, stones, and bricks'. Perhaps fungus really is the material of the future."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Fungi are a member of the plant kingdom.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Fungi are neither plant nor animal - they have their own kingdom."
+      },
+      {
+       "n": 2,
+       "text": "Mushrooms are the most dangerous of all fungi.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says fungi are widely seen as dangerous, but never ranks mushrooms against other fungi."
+      },
+      {
+       "n": 3,
+       "text": "One benefit of fungi is that they are easy to find.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Fungi are described as readily available in nature."
+      },
+      {
+       "n": 4,
+       "text": "Montalti and Wösten exhibited objects made of fungi to sell to visitors.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The objects were shown to inform visitors about fungi's potential, not to be sold."
+      },
+      {
+       "n": 5,
+       "text": "The visiting public had a chance to find out about the useful qualities of fungi.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Visitors were shown what fungi can be used for in everyday objects."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Choose ONE WORD ONLY from the text for each answer.",
+     "wordLimit": 1,
+     "title": "Using mycelium to create materials",
+     "template": "# Mycelium\n- a collection of thin, plant-like [[6]]\n# Mycelium benefits the ecosystem by\n- decomposing organic and [[7]] materials\n- filtering water\n# The process\n- fungi decompose agricultural waste, producing mycelium about as strong as [[8]]\n- mycelium is placed in a mould to give it a shape\n- the material is later placed in an oven to prevent further growth\n# The company Ecovative\n- used mycelium to make [[9]] as well as products for construction\n- developed an alternative to a dangerous [[10]]\n- introduced mycelium to designers and artists\n- created [[11]] for home use\n# An issue\n- changes in [[12]] and humidity can shorten the lifespan of mycelium-based products\n# A possible solution\n- using a [[13]] on mycelium-based products\n# Goal\n- to make all construction materials from mycelium",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "fibers",
+        "fibres"
+       ],
+       "explanation": "Mycelium consists of multiple long, thread-like fibres."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "toxic"
+       ],
+       "explanation": "Mycelium breaks down organic matter along with toxic substances such as pesticides."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "plastic"
+       ],
+       "explanation": "The mycelium produced from farm waste is similar in strength to plastic."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "packaging"
+       ],
+       "explanation": "Ecovative develops sustainable packaging and building materials from mycelium."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "adhesive"
+       ],
+       "explanation": "Bayer looked for a replacement for the harmful adhesive used in building manufacturing."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "kits"
+       ],
+       "explanation": "Ecovative created kits for growing mycelium products at home."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "temperature"
+       ],
+       "explanation": "A shift in humidity or a change in temperature can trigger degradation."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "coating"
+       ],
+       "explanation": "They are trying to find a coating that can be applied near the end of production."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Lawrence Johnston and Hidcote Garden",
+   "subtitle": "Robin Lane Fox writes about the American genius behind a remarkable garden in the English Cotswolds",
+   "paragraphs": [
+    {
+     "text": "Today, the National Trust in the UK administers hundreds of public gardens, while sixty-odd years ago there was only one, Hidcote Manor near the English village of Chipping Campden. In 1949 Hidcote attracted a mere 600 visitors and took all of £30 during its first public season. Nowadays, Hidcote is famous worldwide as a masterpiece of design and planting, attracting 150,000 visitors and raising nearly £1 million from entrance tickets annually. Hidcote Garden was the creation of an American in Britain, the shy Major Lawrence Johnston, who came to live on the site in 1907 with his widowed mother, Gertrude Winthrop. In some respects Winthrop feared her son's talents for expensive landscape gardening and never allowed him full access to the family's funds. Nonetheless, with her inspiration and guidance Johnston started his design in 1908 and brought it to a peak in the early 1930s when he was in his 60s. He may rightly be ranked at this time beside Harold Nicolson and Vita Sackville-West, creators of Sissinghurst, his garden's only surviving equal."
+    },
+    {
+     "text": "Graham Thomas was tasked with reviving Hidcote, and he had to manage without these crucial documents. Thomas knew that for the gardens to be a commercial success he needed to extend those areas that were of most interest to the general public, so he introduced new plants and a Mediterranean Bank where Johnston had had nothing of the sort, while retaining the existing superb structure of avenues and evergreen rooms. As a result, since 1949, the visiting public has innocently been admiring Thomas's flower plantings, not Johnston's own. When the important designer Russell Page had visited Hidcote in 1934 he had hailed the half-hardy plants in the summer house as one of the highlights. But Thomas later got rid of them and pulled the house down, fearing such relatively colourless exhibits would not capture the public's imagination."
+    },
+    {
+     "text": "Then, in 2002, Johnston's old diaries and notebooks resurfaced. The present head gardener had started to give lectures about Hidcote's lost early designs, during which he appealed for memories from his audience. A few months later, a woman approached him with a box of papers she had found in her attic. They were the missing records, including Johnston's original planting lists and detailed sketches. This discovery prompted a major reassessment of the garden's history. Curators could now distinguish between Johnston's original vision and the later modifications. A debate began on whether to restore parts of the garden to its 1930s heyday, a complex project that would involve removing some of Thomas's popular additions. The diaries also revealed Johnston's meticulous notes on plant sourcing from his expeditions to China and South Africa, highlighting his dedication and global influence. This find has allowed historians to fully appreciate the depth of Johnston's genius, which had been partially obscured for over half a century."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary. Choose NO MORE THAN TWO WORDS from the text for each answer.",
+     "wordLimit": 2,
+     "title": "Hidcote Manor Garden",
+     "template": "Hidcote Manor Garden is now operated by the National Trust. While it had very few visitors in its first year, it is now a [[14]] generating close to a million pounds per year. The garden was designed by Lawrence Johnston, who moved there with his [[15]]. Johnston's mother was supportive but also [[16]] of his costly gardening projects. Despite this, he managed to complete the garden's design with her [[17]] and inspiration. By the 1930s, his work was considered equal to that of the creators of the garden at [[18]].",
+     "questions": [
+      {
+       "n": 14,
+       "answer": [
+        "masterpiece"
+       ],
+       "explanation": "Hidcote is now famous as a masterpiece of design and planting."
+      },
+      {
+       "n": 15,
+       "answer": [
+        "widowed mother"
+       ],
+       "explanation": "Johnston came to live on the site in 1907 with his widowed mother."
+      },
+      {
+       "n": 16,
+       "answer": [
+        "feared"
+       ],
+       "explanation": "Winthrop feared her son's talents for expensive landscape gardening."
+      },
+      {
+       "n": 17,
+       "answer": [
+        "guidance"
+       ],
+       "explanation": "He completed the design with her guidance and inspiration."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "Sissinghurst"
+       ],
+       "explanation": "By the 1930s Hidcote was compared with the garden at Sissinghurst."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 2?",
+     "questions": [
+      {
+       "n": 19,
+       "text": "Graham Thomas had access to Johnston's original plans when he began his work.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Thomas had to manage without Johnston's crucial documents."
+      },
+      {
+       "n": 20,
+       "text": "Thomas kept the underlying layout of avenues and rooms unchanged.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "He kept the existing structure of avenues and evergreen rooms."
+      },
+      {
+       "n": 21,
+       "text": "Russell Page believed the summer house was one of the least interesting parts of Hidcote.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Page thought the summer house was one of the most interesting features, not the least."
+      },
+      {
+       "n": 22,
+       "text": "Thomas removed the summer house because he thought it was unsafe.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage gives a different reason for its removal - it was not about safety."
+      },
+      {
+       "n": 23,
+       "text": "The public after 1949 primarily saw flower arrangements designed by Thomas.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Since 1949 the public has been admiring Thomas's flower plantings, not Johnston's."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions. Choose NO MORE THAN TWO WORDS from the text for each answer.",
+     "wordLimit": 2,
+     "template": "What did the head gardener ask for from his audience during his lectures? [[24]]\nWhere were Johnston's missing papers discovered? [[25]]\nWhat did the rediscovered papers include, besides planting lists? [[26]]",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "memories"
+       ],
+       "explanation": "During his lectures the head gardener appealed for memories from his audience."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "attic"
+       ],
+       "explanation": "A woman found the box of papers in her attic."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "detailed sketches"
+       ],
+       "explanation": "The papers included Johnston's planting lists and detailed sketches."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Mercator – The Map Maker",
+   "subtitle": "The cobbler's son who taught the world to draw itself",
+   "paragraphs": [
+    {
+     "text": "Maps codify the miracle of existence. And the man who wrote the codes for the maps we use today was Gerard Mercator, a cobbler's son born 500 years ago on a muddy floodplain in northern Europe."
+    },
+    {
+     "text": "Mercator was a humble man with a universal vision. In his own time he was 'the prince of modern geographers', his depictions of the planet and its regions unsurpassed in accuracy, clarity and consistency. More recently, he was crowned by the American scholar Robert W. Karrow as 'the first modern, scientific cartographer'. Where his predecessors had adopted a piecemeal approach to cartography, Mercator sought to wrap the world in systematic overlapping maps."
+    },
+    {
+     "text": "Along the way he erected a number of historic milestones. He participated in the naming and mapping of 'America', he constructed the two most important globes of the 16th century, and the title of his pioneering 'modern geography', the Atlas, became the standard term for a volume of maps. Mercator also devised a new method – 'a projection' – of converting the spherical world into a two-dimensional map."
+    },
+    {
+     "text": "Mercator was born in 1512 and died in 1594. His world was one of military conflict, social upheaval, religious revolution – and geographical discovery. He was ten years old when the survivors of the world's first circumnavigation returned to Spain in their leaking caravel. No better example is required of genius arising from turmoil. He knew poverty, plague, war and persecution. He was imprisoned for his ideas yet patronised by an emperor. His life was one of brilliant breakthroughs and abrupt reversals."
+    },
+    {
+     "text": "In its telling, his is the story of the poor boy made good: the pauper who embraced the world, found fame, faced death, yet triumphed through fortitude. Variously described by his peers as honest, calm, candid, sincere and peaceable, Mercator wore an aura of calm in troubled times. His attitude to his geographical calling was described by his friend and neighbour, William Ghim, as 'indefatigable'. Some 40 or so of Mercator's letters have survived, together with examples of virtually all of his printed maps and globes."
+    },
+    {
+     "text": "Mercator's most significant work was a project of cosmic proportions. A multi-part cosmography, the work would include a section on astronomy, a chronology of world events and a modern geography, which would eventually contain over 100 maps. Before he commenced the great work, Mercator produced in 1569 an enormous world map on a new projection. His method for converting the spherical globe into a two-dimensional map helped to solve the greatest cartographic riddle of the day: how could the course of a ship following a constant compass bearing be represented as a straight line on a map which had been constructed on a grid of latitude and longitude?"
+    },
+    {
+     "text": "Mercator's solution was to progressively increase the space between his lines of latitude, away from the equator. The effect was to straighten the lines of constant compass bearing (also known as rhumbs or loxodromes). Unfortunately, straightening the rhumbs caused areal* distortion: at the map's northern and southern extremities, the polar regions occupied the full width of the map, while North America appeared to fill half the circumference of the world."
+    },
+    {
+     "text": "Few of Mercator's contemporaries understood what he was up to, despite the map's title explaining that it was intended 'for use in navigation'. Mercator knew that his projection was unsuitable as an areal description of the world, but it would be several decades before the map's true navigational value would be recognised."
+    },
+    {
+     "text": "Meanwhile, Mercator was marshalling and editing all the geographical data he needed for his modern regional maps of the world. His sources were wide-ranging and multitudinous, including an imperial physician in Vienna and his competitor, the Viceroy of Holstein. He was still working on these maps when he died. The great cosmography that Mercator had already titled 'Atlas' would never be finished."
+    },
+    {
+     "text": "In the Atlas, Mercator had embodied the principles of future mapmaking: his italic lettering, his identical map overlaps, his complete coverage of regions at more than one scale, his consistent use of grids of latitude and longitude, his singular editorial control, were all adopted as cartographic standards. 'Atlas', the cosmography, became 'atlas', the term for 'a collection of maps in a volume'."
+    },
+    {
+     "text": "The projection assumed a life of its own. So powerful a cartographic tool did it become that Mercator the man became subsumed by his own device. By the 20th century, Mercator's Projection had been adopted by state cartographers to map the land that he had named 'North America'. In 1938, Mercator's Projection was selected by the Ordnance Survey to map Britain anew. And in 1974, the American cartographer Alden P. Colvocoresses used the Space Oblique Mercator Projection for the first satellite map of the USA. When the Jet Propulsion Laboratory sent Mariner 8 and Mariner 9 to map Mars, they undertook their Martian cartography on a standard Mercator Projection. One by one, the mappable orbs of our solar system are appearing on the worldwide web, flattened for our screens according to Mercator's cartographic principles."
+    },
+    {
+     "text": "Mercator's Projection succeeded in reconciling the sphere and the plane, while his Atlas enveloped the world with an integrated system of maps."
+    },
+    {
+     "text": "* areal: of an area"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Cartographers before Mercator had tended to produce separate, individual maps.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "His predecessors had adopted a piecemeal approach to cartography."
+      },
+      {
+       "n": 28,
+       "text": "Mercator was critical of the work of his contemporaries.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Nothing in the passage says what Mercator thought of his contemporaries' work."
+      },
+      {
+       "n": 29,
+       "text": "During his life, Mercator experienced great changes of fortune.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "His life was one of brilliant breakthroughs and abrupt reversals."
+      },
+      {
+       "n": 30,
+       "text": "Most of Mercator's published work remains intact today.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Examples of virtually all of his printed maps and globes have survived."
+      },
+      {
+       "n": 31,
+       "text": "Mercator started work on his projection shortly after embarking on his cosmography.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The 1569 world map was produced before he began the great cosmography, not shortly after starting it."
+      },
+      {
+       "n": 32,
+       "text": "Mercator's Projection was immediately seen as a major breakthrough.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Few contemporaries understood the projection; its value was recognised decades later."
+      },
+      {
+       "n": 33,
+       "text": "Mercator produced an accurate areal description of the world.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Mercator knew the projection was unsuitable as an areal description of the world."
+      },
+      {
+       "n": 34,
+       "text": "Mercator consulted the work of various people when producing his maps.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "His sources were wide-ranging, including a physician in Vienna and a competitor."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Choose NO MORE THAN TWO WORDS from the text for each answer.",
+     "wordLimit": 2,
+     "title": "Mercator's Projection",
+     "template": "# His aim\n- his attempt to represent the globe as a [[35]] map\n# Problem\n- when sailors used a map based on lines of latitude and longitude and kept to a constant compass bearing, the course of the ship could not be shown as a [[36]] on a map\n# Solution\n- to increase the space separating the lines of latitude, the further they are from the equator\n# Result\n- when Mercator straightened the 'rhumbs' as intended, this produced [[37]] at the northern and southern extremities, with the full width of the map being taken up by the [[38]]\n# Original intention\n- Mercator originally designed the map for [[39]] purposes\n# Uses up to the present day\n- various uses including the mapping of [[40]] by state cartographers; also used to portray planets in our solar system on the web",
+     "questions": [
+      {
+       "n": 35,
+       "answer": [
+        "two-dimensional"
+       ],
+       "explanation": "The projection converts the spherical globe into a two-dimensional map."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "straight line"
+       ],
+       "explanation": "The riddle was how to show a constant compass course as a straight line."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "areal distortion"
+       ],
+       "explanation": "Straightening the rhumbs caused areal distortion at the extremities."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "polar regions"
+       ],
+       "explanation": "The polar regions occupied the full width of the map."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "navigation"
+       ],
+       "explanation": "The map's title explained it was intended for use in navigation."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "North America"
+       ],
+       "explanation": "State cartographers adopted the projection to map North America."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

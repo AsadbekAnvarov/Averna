@@ -1,0 +1,583 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-17",
+ "title": "CDI Reading Test 17",
+ "description": "A full Academic Reading test from the CDI practice materials: Katherine Mansfield; The conquest of malaria in Italy; Flower power.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Katherine Mansfield",
+  "The conquest of malaria in Italy",
+  "Flower power"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Katherine Mansfield",
+   "paragraphs": [
+    {
+     "text": "Katherine Mansfield was a modernist writer of short fiction who was born and brought up in New Zealand."
+    },
+    {
+     "text": "Katherine Mansfield Beauchamp Murry was born in 1888, into a prominent family in Wellington, New Zealand. She became one of New Zealand’s best-known writers, using the pen name of Katherine Mansfield. The daughter of a banker, and born into a middle-class family, she was also a first cousin of Countess Elizabeth von Arnim, a distinguished novelist in her time. Mansfield had two older sisters and a younger brother. Her father, Harold Beauchamp, went on to become the chairman of the Bank of New Zealand. In 1893, the Mansfield family moved to Karori, a suburb of Wellington, where Mansfield would spend the happiest years of her childhood; she later used her memories of this time as an inspiration for her Prelude story."
+    },
+    {
+     "text": "Her first published stories appeared in the High School Reporter and the Wellington Girls’ High School magazine in 1898 and 1899. In 1902, she developed strong feelings for a musician who played the cello, Arnold Trowell, although her feelings were not, for the most part, returned. Mansfield herself was an accomplished cellist, having received lessons from Trowell’s father. Mansfield wrote in her journals of feeling isolated to some extent in New Zealand, and, in general terms, of her interest in the Maori people (New Zealand’s native people), who were often portrayed in a sympathetic light in her later stories, such as How Pearl Button Was Kidnapped."
+    },
+    {
+     "text": "She moved to London in 1903, where she attended Queen’s College, along with her two sisters. Mansfield recommenced playing the cello, an occupation that she believed, during her time at Queen’s, she would take up professionally. She also began contributing to the college newspaper, with such a dedication to it that she eventually became its editor. She was particularly interested in the works of the French writers of this period and in the 19th-century British writer, Oscar Wilde, and she was appreciated amongst fellow students at Queen’s for her lively and charismatic approach to life and work. She met fellow writer Ida Baker, a South African, at the college, and the pair became lifelong friends. Mansfield did not actively support the suffragette movement in the UK. Women in New Zealand had gained the right to vote in 1893."
+    },
+    {
+     "text": "Mansfield first began journeying into the other parts of Europe in the period 1903-1906, mainly to Belgium and Germany. After finishing her schooling in England, she returned to her New Zealand home in 1906, only then beginning to write short stories in a serious way. She had several works published in Australia in a magazine called Native Companion, which was her first paid writing work, and by this time she had her mind set on becoming a professional writer. It was also the first occasion on which she used the pseudonym “K. Mansfield”."
+    },
+    {
+     "text": "Mansfield rapidly grew discontented with the provincial New Zealand lifestyle, and with her family. Two years later she headed again to London. Her father sent her an annual subsidy of €100 for the rest of her life. In later years, she would express both admiration and disdain for New Zealand in her journals."
+    },
+    {
+     "text": "In 1911, Mansfield met John Middleton Murry, the Oxford scholar and editor of the literary magazine Rhythm. They were later to marry in 1918. Mansfield became a co-editor of Rhythm, which was subsequently called The Blue Review, in which more of her works were published. She and Murry lived in various houses in England and briefly in Paris. The Blue Review failed to gain enough readers and was no longer published. Their attempt to set up as writers in Paris was cut short by Murry’s bankruptcy, which resulted from the failure of this and other journals. Life back in England meant frequently changed addresses and very limited funds."
+    },
+    {
+     "text": "Between 1915 and 1918, Mansfield moved between England and Bandol, France. She and Murry developed close contact with other well-known writers of the time such as D.H. Lawrence, Bertrand Russell, and Aldous Huxley. By October 1918 Mansfield had become seriously ill; she had been diagnosed with tuberculosis and was advised to enter a sanatorium. She could no longer spend winters in London. In the autumn of 1918 she was so ill that she decided to go to Ospedaletti in Italy. It was the publication of Bliss and Other Stories in 1920 that was to solidify Mansfield’s reputation as a writer."
+    },
+    {
+     "text": "Mansfield also spent time in Menton, France, as the tenant of her father’s cousin at “The Villa Isola Bella”. There she wrote eight stories including Miss Brill and The Daughters of the Late Colonel, the latter of which she pronounced to be “...the only story that satisfies me to any extent”."
+    },
+    {
+     "text": "Mansfield produced a great deal of work in the final years of her life, and much of her prose and poetry remained unpublished at her death in 1923. After her death, her husband, Murry, took on the task of editing and publishing her works. His efforts resulted in two additional volumes of short stories, The Doves’ Nest and Something Childish, published in 1923 and 1924 respectively, the publication of her Poems as well as a collection of critical writings (Novels and Novelists) and a number of editions of Mansfield’s previously unpublished letters and journals."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "The name Katherine Mansfield, that appears on the writer’s book, was exactly the same as her original name.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Her real name was Katherine Mansfield Beauchamp Murry; she used the pen name Katherine Mansfield."
+      },
+      {
+       "n": 2,
+       "text": "Mansfield won a prize for a story she wrote for the High School Reporter.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says her first stories appeared in the High School Reporter but mentions no prize."
+      },
+      {
+       "n": 3,
+       "text": "How Pearl Button Was Kidnapped portrayed Maori people in a favorable way.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says Maori people ‘were often portrayed in a sympathetic light in her later stories, such as How Pearl Button Was Kidnapped’."
+      },
+      {
+       "n": 4,
+       "text": "When Mansfield was at Queen’s College, she planned to be a professional writer.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "At Queen’s she believed she would take up the cello professionally, not writing."
+      },
+      {
+       "n": 5,
+       "text": "Mansfield was unpopular with the other students at Queen’s College.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "She was ‘appreciated amongst fellow students at Queen’s for her lively and charismatic approach’."
+      },
+      {
+       "n": 6,
+       "text": "In London, Mansfield showed little interest in politics.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says ‘Mansfield did not actively support the suffragette movement in the UK.’"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "Katherine Mansfield’s adult years",
+     "template": "- [[7]]\n– moved from England back to New Zealand\n– first paid writing work was in a publication based in [[8]]\n– her [[9]] and the New Zealand way of life made her feel dissatisfied\n- 1908\n– returned to London\n- 1911–1919\n– Met John Middleton Murry in 1911\n– [[10]] prevented Mansfield and Murry from staying together in Paris\n– spent time with distinguished [[11]]\n– from 1916, tuberculosis restricted the time she spent in London\n- 1920\n– her [[12]] was consolidated when Bliss and Other Stories was published\n– wrote several stories at “Villa Isola Bella”\n- 1923–1924\n– Mansfield’s [[13]] published more of her works after her death",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "1906"
+       ],
+       "explanation": "She ‘returned to her New Zealand home in 1906’."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "Australia"
+       ],
+       "explanation": "She had works published ‘in Australia in a magazine called Native Companion’."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "family"
+       ],
+       "explanation": "She ‘grew discontented with the provincial New Zealand lifestyle, and with her family’."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "bankruptcy"
+       ],
+       "explanation": "Their attempt in Paris ‘was cut short by Murry’s bankruptcy’."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "writers"
+       ],
+       "explanation": "She and Murry ‘developed close contact with other well-known writers of the time’."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "reputation"
+       ],
+       "explanation": "‘It was the publication of Bliss and Other Stories in 1920 that was to solidify Mansfield’s reputation as a writer.’"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "husband"
+       ],
+       "explanation": "After her death, ‘her husband, Murry, took on the task of editing and publishing her works’."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The conquest of malaria in Italy",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The word ‘malaria’ means ‘bad air’ in Italian, and this terrible disease marked the life of the people of that country for thousands of years. Yet by 1962, Italy was officially declared malaria-free, and it has remained so ever since. Frank Snowden’s study of this successful endeavour is a remarkable piece of historical work. Original, crystal clear, analytical and passionate, Snowden takes us to areas historians have rarely visited before."
+    },
+    {
+     "label": "B",
+     "text": "Everybody now knows that malaria is carried by mosquitoes. But in the 19th century most experts subscribed to the theory of ‘miasma’ or ‘poisoning of the air’. Others made a link between swamps, water and malaria, but did not make the further leap towards insects. The consequence of these theories was that little was done to combat the disease before the end of that century. The situation was so serious that from a total population of 25m Italians, 11m were ‘permanently at risk’. In warm, damp, malarial zones, the life expectancy of land workers was a terrifying 22.5 years. The economic impact of the disease was immense. Epidemics were blamed on people who originated from the hotter parts of Italy, given the widespread belief that malaria was hereditary."
+    },
+    {
+     "label": "C",
+     "text": "One of the first breakthroughs in the war against malaria came in 1898 when the zoologist Giovanni Battista Grassi demonstrated that the micro-organisms causing the disease were carried in the digestive tract of the mosquito. By releasing mosquitoes into rooms to drink the blood of healthy human volunteers, Grassi was able to make the direct link between the insects and the disease. Definitive proof of this theory was obtained after an extraordinary series of experiments in Italy, where healthy people were introduced into malarial zones but kept free of mosquito bites – and remained well. The recently formed Italian state at last had the necessary information to begin tackling the disease."
+    },
+    {
+     "label": "D",
+     "text": "A complicated approach was adopted, which made use of quinine – a drug obtained from tree bark which had long been used to combat fever, but was now seen as a crucial part of the war on malaria. Italy introduced a quinine law and a quinine tax in 1904, and the drug was administered to large numbers of rural workers. Despite its often terrible side effects, the drug was successful in limiting the spread of the disease, and in breaking cycles of infection. In addition, Italy set up rural health centres and invested heavily in education programmes. Malaria, as Snowden shows, was not just a medical problem, but a social and regional issue, and could only be defeated through multi-layered strategies."
+    },
+    {
+     "label": "E",
+     "text": "It was originally decided to give quinine to all those in vulnerable regions – even healthy people. However, peasants were often suspicious of medicine being forced upon them, and doctors were frequently met with hostility and stubborn refusal to accept the treatment offered. But despite the refusals, the strategy as a whole was hugely successful. Deaths from malaria fell by some 80% in the first decade of the 20th century and some areas escaped altogether from the scourge of the disease."
+    },
+    {
+     "label": "F",
+     "text": "The 1915-18 war delayed the campaign, as funds were diverted to the battlefields. In the 1920s and 1930s the draining of the damp, unhealthy marshlands around Rome had a certain impact on the spread of malaria. However, as war swept through the drained lands in the 1940s, the disease returned with a vengeance. Yet the country’s leading malariologist Alberto Missiroli refused to order the distribution of quinine, so allowing the epidemic to spread unchecked. According to Snowden, he did this in order to create the ideal conditions for a new strategy, supported by the US Rockefeller Foundation – a massive experiment involving the extermination of mosquitoes with the chemical DDT. It is estimated that more than a third of the inhabitants in the affected area contracted malaria and countless thousands died."
+    },
+    {
+     "label": "G",
+     "text": "With the end of the war in 1945, the US government and the Rockefeller Foundation were free to experiment. DDT was sprayed from the air, and 3m Italians had their bodies covered with the chemical. The effects were immense, and by 1962 malaria was more or less gone from the whole country. One of the final victims to die of the disease in Italy was the popular cyclist, Fausto Coppi. He had contracted malaria in Africa in 1960, and the failure of doctors in Italy to spot the disease was a sign of the times. A few decades earlier, they would have immediately noticed the telltale signs; it was later claimed that a small dose of quinine would have saved his life."
+    },
+    {
+     "label": "H",
+     "text": "As there are still more than 1m deaths every year from malaria worldwide, Snowden’s book also has contemporary relevance. This is a disease that affects every level of the societies where it is rampant. The economic miracle of the 1950s and 1960s which made Italy into a modern industrial nation would not have been possible without the eradication of malaria. Moreover, this book convincingly argues that the disease was ‘an integral part of the big picture of modern Italian history’. This magnificent study, beautifully written and impeccably documented, deserves an audience beyond specialists in history, or in Italy."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Malaria in 19th-century Italy",
+     "template": "Up until the late nineteenth century, experts failed to make the connection between malaria and [[14]]. The most popular belief at the time was the [[15]] theory, which upheld the idea that diseases were carried by unclean air. Another common idea was that malaria was a [[16]] disease, and as a result people from certain parts of the country were often held responsible for the spread of epidemics.\nMalaria was particularly widespread in rural regions, where [[17]] could be extremely short.",
+     "questions": [
+      {
+       "n": 14,
+       "answer": [
+        "insects"
+       ],
+       "explanation": "Experts failed to make the connection between malaria and insects (mosquitoes)."
+      },
+      {
+       "n": 15,
+       "answer": [
+        "miasma"
+       ],
+       "explanation": "The most popular belief was the ‘miasma’ theory."
+      },
+      {
+       "n": 16,
+       "answer": [
+        "hereditary"
+       ],
+       "explanation": "The widespread belief that malaria was hereditary."
+      },
+      {
+       "n": 17,
+       "answer": [
+        "life expectancy"
+       ],
+       "explanation": "In malarial zones, ‘the life expectancy of land workers was a terrifying 22.5 years’."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 2?",
+     "questions": [
+      {
+       "n": 18,
+       "text": "The volunteers in Giovanni Battista Grassi’s research came from all parts of Italy.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions ‘healthy human volunteers’ but says nothing about where they came from."
+      },
+      {
+       "n": 19,
+       "text": "Experiments in Italy proved that it was possible to remain healthy despite being in malarial zones.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph C: ‘healthy people were introduced into malarial zones but kept free of mosquito bites – and remained well’."
+      },
+      {
+       "n": 20,
+       "text": "In the early twentieth century, quinine was successfully administered to all inhabitants of vulnerable regions.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph E: peasants ‘were frequently met with hostility and stubborn refusal to accept the treatment’."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has eight paragraphs, A–H. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "text": "a figure showing the dramatic results of an anti-malarial drug programme",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E: ‘Deaths from malaria fell by some 80% in the first decade of the 20th century.’"
+      },
+      {
+       "n": 22,
+       "text": "an important discovery about how malaria is spread",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C describes Grassi’s breakthrough discovery linking mosquitoes to malaria."
+      },
+      {
+       "n": 23,
+       "text": "mention of an expert’s decision not to halt the spread of the disease",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F: Missiroli ‘refused to order the distribution of quinine’."
+      },
+      {
+       "n": 24,
+       "text": "the significance of the malaria story for today’s readers",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H discusses contemporary relevance with 1m deaths per year worldwide."
+      },
+      {
+       "n": 25,
+       "text": "examples of false assumptions which held back scientific understanding of malaria",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B describes the miasma theory and the belief that malaria was hereditary."
+      },
+      {
+       "n": 26,
+       "text": "reference to legislation to support the fight against malaria",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D: ‘Italy introduced a quinine law and a quinine tax in 1904.’"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Flower power",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Why do we give people flowers? To offer condolence to those who are grieving. To celebrate. To woo. To ask for forgiveness. We all know intuitively that there is something psychologically powerful about giving flowers; in fact, few objects provoke such a universal emotional response. In the US alone, the flower industry is now worth about $5bn a year – which suggests that, at the very least, they service a compelling human need."
+    },
+    {
+     "label": "B",
+     "text": "Recent studies at the Department of Psychology at Rutgers State University of New Jersey investigated claims that flowers are unique among living organisms in their ability to induce profound changes in our emotional state. As the first part of their research, the Rutgers team visited 150 women in their homes. Each was presented with a variety of gifts such as flowers, fruit or sweets. The women were unaware that the study was about the effect of the flowers on their emotions. They were told that it was a study about their daily moods, and that they would receive a gift in return for taking part. Following the presentation of the gift, those receiving flowers were assessed as displaying a much more positive mood than those who got other gifts, and this effect lasted for several days. After receiving flowers, they were also more willing to answer questions concerning their social circle and intimate conversations with friends and family. The results suggest that flowers influence our secondary socio-emotional behaviours, as well as having a strong effect on our immediate emotional expression."
+    },
+    {
+     "label": "C",
+     "text": "In the second study, the psychologists observed participants being handed single flowers, or alternative gifts, in a constrained and stressful situation – inside an elevator. Contrary to predictions regarding gender differences, both men and women presented with flowers were more likely to smile, to stand closer and to initiate conversation. Several subjects who were given the alternative gift then learnt that flowers were also being handed out, and returned to the elevator and demanded a flower. The scientists used elevators for this study precisely because the most typical behaviour in sparsely occupied elevators is for people to retreat to opposite corners. The subjects who received flowers, however, closed up that space to a considerable extent – indicating that the flowers not only induced a strong positive mood, but brought a significant affiliation among people who had never previously met."
+    },
+    {
+     "label": "D",
+     "text": "The third study involved regularly sending flowers to a selected sample of men and women. The researchers found not only a profound elevation of mood, but also reliable improvements in other measures of cognitive function, like memory. In this series of experiments, some participants produced such extraordinary emotional displays that the psychologists were totally unprepared for them. Subjects gave spontaneous hugs and kisses to the people who delivered the flowers, and sent invitations to the psychologists to come to their homes for refreshments."
+    },
+    {
+     "label": "E",
+     "text": "Various evolutionary hypotheses attempt to explain the remarkably powerful psychological effect of flowers. One is that our aesthetic preferences for fertile locations and growing things stem from prehistory, when these clues in our environment could mean the difference between starvation and survival. We may have become hardwired to respond positively to flowers because for early man, finding them in a particular location predicted future food supplies and possibly a better place to rear children. Yet the flaw in this argument is that the showy flowers which humans seem to find most visually attractive are generally found on those plants which yield no edible products."
+    },
+    {
+     "label": "F",
+     "text": "The Rutgers psychologists’ findings show that the various physical attributes of flowers combine to directly affect our emotions through multi-channel interactions. We have evolved preferences for the particular colours, textures, patterned symmetries and specific floral odours which influence our moods. Indeed, previous research has established that popular perfumes, which often have a floral ‘top-note’, will actually reduce depression. The origins of these inclinations may well be as the evolutionary theories suggest: the patterned symmetries of flowers can be detected easily as a recognisable signal within a wide variety of visual arrays, and a response to certain colour tones is important in finding ripe fruit against a leafy background. But, claim the Rutgers team, these preferences have long been separated from their primary evolutionary use, and become rewarding to us more generally. Thus plants with preferred colours, shapes and odours – despite having no other products – would therefore be protected and dispersed."
+    },
+    {
+     "label": "G",
+     "text": "The Rutgers study suggests that flowers may have actually evolved to exploit their peculiar impact on humans. The team’s theory proposes a plant-human co-evolution, or even domestication, based on the intense emotional rewards that flowers provide. The idea that flowering plants, with no known food or other basic survival value to man, have co-evolved with us by exploiting an emotional niche instead, is very much like the scenario presented for the evolution of dogs. Flowers may be the plant equivalent of ‘companion animals’. If this is true, then there is a very real sense in which, when you next give flowers, they are using you just as much as you are using them."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has seven paragraphs, A–G. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "A negative reaction to receiving flowers"
+      },
+      {
+       "key": "ii",
+       "text": "Some surprisingly strong responses to flowers"
+      },
+      {
+       "key": "iii",
+       "text": "A mutually beneficial relationship?"
+      },
+      {
+       "key": "iv",
+       "text": "Becoming more open about personal matters"
+      },
+      {
+       "key": "v",
+       "text": "Some common social functions of flowers"
+      },
+      {
+       "key": "vi",
+       "text": "Sensory appeal versus practical purpose of flowers"
+      },
+      {
+       "key": "vii",
+       "text": "Bridging the gap between strangers in an enclosed space"
+      },
+      {
+       "key": "viii",
+       "text": "An imperfect theory"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "Paragraph A",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Paragraph A lists common social functions of flowers: condolence, celebration, wooing, forgiveness."
+      },
+      {
+       "n": 28,
+       "text": "Paragraph B",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph B: after receiving flowers, women were more willing to answer questions about their social circle."
+      },
+      {
+       "n": 29,
+       "text": "Paragraph C",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Paragraph C: in an elevator, flower recipients closed the space and initiated conversation with strangers."
+      },
+      {
+       "n": 30,
+       "text": "Paragraph D",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Paragraph D: participants produced ‘extraordinary emotional displays’ including hugs and kisses."
+      },
+      {
+       "n": 31,
+       "text": "Paragraph E",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Paragraph E: the evolutionary theory has a ‘flaw’ – attractive flowers yield no edible products."
+      },
+      {
+       "n": 32,
+       "text": "Paragraph F",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Paragraph F discusses the sensory attributes of flowers versus their lack of practical products."
+      },
+      {
+       "n": 33,
+       "text": "Paragraph G",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Paragraph G: plant-human co-evolution based on mutual benefit, like companion animals."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Classify the following statements as referring to:",
+     "title": "The studies",
+     "options": [
+      {
+       "key": "A",
+       "text": "the first study"
+      },
+      {
+       "key": "B",
+       "text": "the second study"
+      },
+      {
+       "key": "C",
+       "text": "the third study"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 34,
+       "text": "The study focused on participants’ short-term reaction to receiving flowers.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Study B (elevator) observed immediate short-term reactions in a constrained situation."
+      },
+      {
+       "n": 35,
+       "text": "Participants were deliberately misled as to the aim of the study.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Study A: women ‘were told that it was a study about their daily moods’ (not about flowers)."
+      },
+      {
+       "n": 36,
+       "text": "Receiving flowers had a notable effect on participants’ mental capacities.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Study C found ‘reliable improvements in other measures of cognitive function, like memory’."
+      },
+      {
+       "n": 37,
+       "text": "Male and female responses were more uniform than expected.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Study B: ‘Contrary to predictions regarding gender differences, both men and women’ responded similarly."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Write ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "A possible explanation for the appeal of flowers",
+     "template": "It has been suggested that our intense response to flowers originates in prehistoric times. The presence of flowers might indicate a potential source of [[38]] in a particular location, and primitive humans would search for such signs when looking for a suitable site to raise their [[39]]. The interpretation of these signs was essential for the survival of our ancestors. However, the problem with this idea is that the plants producing the most attractive flowers do not usually have fruit which is [[40]].",
+     "questions": [
+      {
+       "n": 38,
+       "answer": [
+        "food"
+       ],
+       "explanation": "Finding flowers ‘predicted future food supplies’."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "children"
+       ],
+       "explanation": "A better place to ‘rear children’."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "edible"
+       ],
+       "explanation": "Attractive flowers ‘are generally found on those plants which yield no edible products’."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

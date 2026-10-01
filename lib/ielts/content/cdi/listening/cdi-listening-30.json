@@ -1,0 +1,657 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-30",
+ "title": "CDI Listening Test 30",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "telephone conversation between a man who wants to join an amateur dramatic society and the society secretary",
+  "woman called Sandra Hayes who works at a bird park talking to a group of people who want to volunteer there",
+  "two teachers called Andrew and Sarah discussing how to prepare students for a geology field trip",
+  "lecture to business management students about what managers should do when their organization faces a crisis"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-30-part-1",
+   "title": "Part 1",
+   "context": "You will hear a telephone conversation between a man who wants to join an amateur dramatic society and the society secretary.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Amateur Dramatic Society\n- Secretary: Jane Caulfield\n- Mailing address: 117 Green Road, Prestwin\n- Location for rehearsals: The [[1]] House, Wynne\n- No experience necessary\n- They need actors and [[2]] singers\n- Also need people who can [[3]]\n- Meetings 6–8 p.m. every [[4]]\n- Closed in [[5]] (for 2 weeks)\nMembership costs\n- Standard: £40 (includes a [[6]] once a year)\n- Over 60s or unemployed: £ [[7]]\n- Youth group: for people aged [[8]] years old and under\nShows\n- mostly plays by [[9]] authors\n- family show in December (raises money for children’s [[10]] )",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "club",
+        "clubhouse"
+       ],
+       "explanation": "Rehearsals at 'the clubhouse in Wynne. It's behind the playing fields. It used to be a cricket club.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "male"
+       ],
+       "explanation": "'We're always looking for actors and singers, of course, especially male ones.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "drive"
+       ],
+       "explanation": "'It's a big help if you're able to drive. Not all our members have access to transport.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "Tuesday"
+       ],
+       "explanation": "'On Tuesday from 6 till 8 pm.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "August"
+       ],
+       "explanation": "'We do close for a couple of weeks, you know, in August.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "dinner"
+       ],
+       "explanation": "'£40 a year and that covers our annual dinner.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "25"
+       ],
+       "explanation": "'You pay just twenty-five pounds, which is a reduction of fifteen pounds.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "16"
+       ],
+       "explanation": "'The youth group is open to anyone up to and including sixteen years old.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "modern"
+       ],
+       "explanation": "'Normally we choose works by modern playwrights.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "hospital"
+       ],
+       "explanation": "'We donate the money we make to the children's hospital here.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a telephone conversation between a man who wants to join an amateur dramatic society and the society secretary.\nSecretary: Hello, how can I help you?\nMan: Hi. I’ve just moved to the area and saw an advertisement for your drama society, so I’m calling to find out some more details.\nSecretary: Sure. I’m the Society Secretary. My name’s Jane Caulfield.\nMan: Uh thanks. Can you tell me exactly where the society is based?\nSecretary: Well, the address for the society is my address, which is 117 Green Road, like the colour, and that’s in Prestwin. But that’s just the mailing address. It’s not where we actually rehearse.\nSecretary: We do that at the clubhouse in Wynne. It’s behind the playing fields. It used to be a cricket club, you see.\nMan: Oh right.\nSecretary: So is this a new interest, or do you have some acting experience? It doesn’t matter if you haven’t, you know. Experience isn’t a requirement.\nMan: Well that’s good because I haven’t got any. But I am musical, and I’ve got some experience of song festivals.\nSecretary: Oh that’s great. We’re always looking for actors and singers, of course, especially male ones. Oh, by the way, do you have a car?\nMan: Yes. Why?\nSecretary: It’s a big help if you’re able to drive. Not all our members have access to transport, so it’s very helpful.\nMan: I see. Well, I’m sure I can help out there. So when do you actually meet?\nSecretary: On Tuesday from 6 till 8 pm.\nMan: Uh sorry. You said Tuesday not Thursday. Yes. Good. Thursdays are a problem for me. I do some private tutoring and can’t move that. Right. And that’s all year, no breaks.\nSecretary: Good point. We do close for a couple of weeks, you know, in August, so we don’t get together then.\nBefore you hear the rest of the conversation, you have some time to look at questions six to ten. Now listen and answer questions six to ten.\nMan: And is there a joining fee?\nSecretary: To be a member costs just forty pounds.\nMan: A year?\nSecretary: Yes, and that covers our annual dinner.\nMan: Right.\nSecretary: But there’s a rate for concessions, which are for people over 60 and the unemployed.\nMan: I’ve just retired, so that’s good news. What’s the discount?\nSecretary: It was ten percent, but now it’s more. You pay just twenty-five pounds, which is a reduction of fifteen pounds.\nMan: Every little helps, after all, especially with a teenage son. Actually, I wanted to ask if there’s an age limit. Could Jack come along too? He’s fifteen.\nSecretary: Actually, we have a special youth group, and that’s open to anyone up to and including sixteen years old. So he could join that.\nMan: Great. Keep him out of trouble. And uh what about the shows you put on? You said you were very busy. Do you have plays, etcetera, every year, or how does it work?\nSecretary: Well, we put on at least two productions a year. Occasionally we might do Shakespeare, but normally we choose works by modern playwrights.\nMan: Sounds quite varied and challenging. And you rehearse for the two productions when you meet up?\nSecretary: Certainly. But that’s not all we do. We also write our own family show each winter for the December holidays, which is always a lot of fun.\nSecretary: And is actually very popular in the local community. We donate the money we make to the children’s hospital here.\nMan: Well oh that sounds very nice. I’ve been involved in charity work.\nThat is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-30-part-2",
+   "title": "Part 2",
+   "context": "You will hear a woman called Sandra Hayes who works at a bird park talking to a group of people who want to volunteer there.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "The speaker stresses the importance to Clifton Bird Park of",
+       "options": [
+        {
+         "key": "A",
+         "text": "birds that are now endangered"
+        },
+        {
+         "key": "B",
+         "text": "birds from all over the world"
+        },
+        {
+         "key": "C",
+         "text": "birds that are common in the local area"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'For some species there aren't many still alive in the wild, so a big part of our job is to help their numbers increase' — endangered birds."
+      },
+      {
+       "n": 12,
+       "text": "People who volunteer to help with gardening at the park",
+       "options": [
+        {
+         "key": "A",
+         "text": "must work at weekends"
+        },
+        {
+         "key": "B",
+         "text": "need to come at least once a month"
+        },
+        {
+         "key": "C",
+         "text": "will only be required in the busy season"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'One day every four weeks is the minimum commitment that we ask for.'"
+      },
+      {
+       "n": 13,
+       "text": "According to the speaker, who would be the ideal gardening volunteer?",
+       "options": [
+        {
+         "key": "A",
+         "text": "someone who can work independently"
+        },
+        {
+         "key": "B",
+         "text": "someone who is willing to work in any weather"
+        },
+        {
+         "key": "C",
+         "text": "someone who knows a lot about plants"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'We're looking more for people who are flexible and turn up no matter whether it's raining or baking hot.'"
+      },
+      {
+       "n": 14,
+       "text": "Volunteer guides will mainly be working with",
+       "options": [
+        {
+         "key": "A",
+         "text": "international visitors"
+        },
+        {
+         "key": "B",
+         "text": "local people from Clifton"
+        },
+        {
+         "key": "C",
+         "text": "school groups"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'It's people in a foreign tour group that you're responsible for.'"
+      },
+      {
+       "n": 15,
+       "text": "What is still required for the Maintenance Day?",
+       "options": [
+        {
+         "key": "A",
+         "text": "food and drink"
+        },
+        {
+         "key": "B",
+         "text": "transport"
+        },
+        {
+         "key": "C",
+         "text": "tools"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'If anyone is able to drive some other volunteers to the event, please let me know because we need help there' — transport."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Write the correct letter, A–H, next to questions 16–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 16,
+       "text": "Wooden bridge",
+       "answer": [
+        "F"
+       ],
+       "explanation": "The wooden bridge runs between two ponds, south of Clifton Lane."
+      },
+      {
+       "n": 17,
+       "text": "Observation tower",
+       "answer": [
+        "H"
+       ],
+       "explanation": "The observation tower is in the south east corner, on the south side of the larger pond."
+      },
+      {
+       "n": 18,
+       "text": "Visitor cabins",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The visitor cabins are between the woods and the railway station."
+      },
+      {
+       "n": 19,
+       "text": "Nesting boxes",
+       "answer": [
+        "E"
+       ],
+       "explanation": "The nesting boxes: follow the path between the picnic area and the big pond, on the right of that pond."
+      },
+      {
+       "n": 20,
+       "text": "Boat sheds",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The boat sheds are on the same side of the smallish pond as the woods."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening30-map.webp",
+      "alt": "Clifton Bird Park Map"
+     }
+    }
+   ],
+   "transcript": "You will hear a woman called Sandra Hayes who works at a bird park talking to a group of people who want to volunteer there.\nSandra: Hello, my name is Sandra Hayes and I’m from Clifton Bird Park. It’s great to see so many possible volunteers here. The park is now a very popular attraction in this area.\nSandra: I think people love coming to see so many different types of birds in a beautiful environment.\nSandra: For some species that we have here, there aren’t many still alive in the wild, so a big part of our job is to make sure we help their numbers increase. All the birds are native species. [endangered birds — A]\nSandra: We need volunteers to help the bird park officers with different jobs. One of these is gardening. Obviously summer is the time when we have most visitors, but the park needs looking after all year round.\nSandra: If you want to help you can choose which day, although we do already have plenty of volunteers working Saturdays and Sundays. But one day every four weeks is the minimum commitment that we ask for. [once a month — B]\nSandra: So who’s the ideal volunteer for gardening work?\nSandra: If you have expert knowledge about flowers and trees, great, but we’re looking more for people who are flexible and turn up no matter whether it’s raining or baking hot. [willing to work in any weather — B]\nSandra: That’s what’ll make you the best person for the job. It’s all teamwork, so you’ll have plenty of support. What about volunteer guides?\nSandra: A guide’s role is to point out the birds and talk about the conservation programme. In general it’s people in a foreign tour group that you’re responsible for. [international visitors — A] The Clifton residents who come to the park usually know their way around.\nSandra: We get a few teachers bringing in classes, but they’re the park officer’s responsibility. The last thing to mention is the park’s maintenance day, which is coming up soon.\nSandra: We’re hoping to get as many volunteers as possible to come and help tidy things up. If anyone is able to drive some other volunteers to the event, please let me know because we need help there. [transport — B]\nSandra: The park officers will provide you with spades and drills and hammers, all of that stuff, and they’ll be offering you some refreshments too, so it should be a good day out.\nBefore you hear the rest of the talk, you have some time to look at questions 16 to 20. Now listen and answer questions sixteen to twenty.\nSandra: So here’s a map of Clifton Bird Park. As you can see, the railway line runs along the northwest of the park and road access is on that side too from Clifton Lane.\nSandra: We want volunteers to work on a few different areas on maintenance day. Firstly the wooden bridge. On the southern side of Clifton Lane is one of our car parks and below that there are two similar sized ponds. The wooden bridge runs between those two ponds. We just need to make it a bit stronger.\nSandra: Some volunteers will be doing a bit of painting at the observation tower. The tower’s in the south east corner of the map. You see there are two different sized ponds there? The tower’s on the south side of the larger pond at the end of the path. We’ll need about three people to help out.\nSandra: We need to replace the windows in the visitor cabins. So on the map you can see our car park on the north side of Clifton Lane. There’s the woods and on the left hand side of the map the railway line. The visitors’ cabins are marked there, between the woods and the railway station.\nSandra: You’ll also be repairing some nesting boxes. See the picnic area? The path you want is between there and the big pond. Follow it round all the way to the end. So as we’re looking at the map now, the nesting boxes are on the right of that pond.\nSandra: Finally the boat sheds. Towards the top of the map you’ve got that smallish pond quite near the railway line, and there are two places marked up there. The boat sheds are on the same side of the pond as the woods, not the place marked at the top of the park. What we want you to do is…\nThat is the end of part two. You now have thirty seconds to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-30-part-3",
+   "title": "Part 3",
+   "context": "You will hear two teachers called Andrew and Sarah discussing how to prepare students for a geology field trip.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Why do Andrew and Sarah decide to mention the Mountain Code?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is the most relevant to their field trip"
+        },
+        {
+         "key": "B",
+         "text": "It also applies to caves"
+        },
+        {
+         "key": "C",
+         "text": "It covers the whole country"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'The mountain one — that's what they need to know about for geology.' — most relevant to the field trip."
+      },
+      {
+       "n": 22,
+       "text": "Andrew suggests some field trip participants harm the environment because",
+       "options": [
+        {
+         "key": "A",
+         "text": "they fail to recognise rare species of plant"
+        },
+        {
+         "key": "B",
+         "text": "they don’t realise how fragile the environment is"
+        },
+        {
+         "key": "C",
+         "text": "they get too absorbed in their tasks"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'They all become so focused on what they're doing that they forget about other things around them.'"
+      },
+      {
+       "n": 23,
+       "text": "Which rule about taking samples is most important?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Leave the area in its natural state"
+        },
+        {
+         "key": "B",
+         "text": "Avoid removing fossils"
+        },
+        {
+         "key": "C",
+         "text": "Keep collecting to a minimum"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Only take minute samples and only if necessary.' — the golden rule is to keep collecting to a minimum."
+      },
+      {
+       "n": 24,
+       "text": "Which aspect of taking samples do they still have to find out about?",
+       "options": [
+        {
+         "key": "A",
+         "text": "taking them from private land"
+        },
+        {
+         "key": "B",
+         "text": "taking them from rock faces"
+        },
+        {
+         "key": "C",
+         "text": "taking them from man-made structures"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Something about how you can never take a sample from a wall … A wall, like of a building.' — man-made structures."
+      },
+      {
+       "n": 25,
+       "text": "What danger in coastal areas do they decide to emphasise?",
+       "options": [
+        {
+         "key": "A",
+         "text": "falling rock"
+        },
+        {
+         "key": "B",
+         "text": "tidal movements"
+        },
+        {
+         "key": "C",
+         "text": "unstable sand"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'People working on the seashore often fail to notice that the tides come in and they're cut off by water.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Which topic does each reading pack focus on? Choose the correct letter, A–G, next to questions 26–30.",
+     "title": "Topics",
+     "options": [
+      {
+       "key": "A",
+       "text": "unique geological features of Iceland"
+      },
+      {
+       "key": "B",
+       "text": "replacement of fossil fuels"
+      },
+      {
+       "key": "C",
+       "text": "negative changes due to human activity"
+      },
+      {
+       "key": "D",
+       "text": "energy for agriculture"
+      },
+      {
+       "key": "E",
+       "text": "health risks of eruptions"
+      },
+      {
+       "key": "F",
+       "text": "risk of flooding"
+      },
+      {
+       "key": "G",
+       "text": "long-term effects of volcanoes"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "text": "Geothermal Fields",
+       "answer": [
+        "D"
+       ],
+       "explanation": "'Harnessing the heat to grow vegetables for local consumption' — energy for agriculture."
+      },
+      {
+       "n": 27,
+       "text": "The Hot Spot",
+       "answer": [
+        "A"
+       ],
+       "explanation": "'The existence of the hotspot explains the rock formations — makes it unlike any of the others' — unique geological features."
+      },
+      {
+       "n": 28,
+       "text": "Glaciers",
+       "answer": [
+        "F"
+       ],
+       "explanation": "'If anything happens to make the glaciers melt suddenly, the water pours down the valleys' — risk of flooding."
+      },
+      {
+       "n": 29,
+       "text": "Basalt Rock",
+       "answer": [
+        "G"
+       ],
+       "explanation": "'Iceland's landscape has been moulded over millions of years by lava flows from volcanic eruptions' — long-term effects of volcanoes."
+      },
+      {
+       "n": 30,
+       "text": "Geothermal Power Plants",
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Iceland's plan to stop using energy derived from carbon' — replacement of fossil fuels."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear two teachers called Andrew and Sarah discussing how to prepare students for a geology field trip.\nSarah: It’s great that we’ve got some free time this afternoon to decide what advice to give when we talk to the students on the geology field trip to Iceland. Hi, Andrew. Yes. I’ve already jotted down a few ideas about the issues that come up on these trips.\nAndrew: We should include something about existing rules and laws that apply, like the country code. Or the mountain code. Yes, the country code’s mainly just common sense. So let’s include the mountain one. That’s what they need to know about for geology.\nSarah: Then there are similar guidelines for caving, but they won’t need those in the part of Iceland we’re going to. Okay. Right. Let’s think about when they’re on site and looking after the environment.\nSarah: I don’t mean not dropping litter, that’s obvious, or like closing gates. But what about not scaring birds or damaging rare plant life?\nAndrew: Actually, what I think happens is that they all become so focused on what they’re doing that they forget about other things around them. It’s not intentional damage.\nSarah: And we have to include something about collecting samples. That’s vital for geology students.\nAndrew: Yeah, there’s quite a list of rules about that. For example, only take minute samples and only if necessary. [keep collecting to a minimum — C]\nSarah: Yes, that’s the golden rule. That has to come first, and then I guess never take a fossil away from the area. And when you do disturb an area to take a sample, make sure you leave it as you found it. Okay.\nSarah: And there’s something we still have to find out about. Isn’t there something about how you can never take a sample from a wall. You mean a man made wall or something like a natural rock face? A wall, like of a building. [man-made structures — C] Don’t you just have to get permission from the owner?\nSarah: But I’m not sure to be honest, so we need to check that. Another really important thing is advice on safety, especially as a lot of our trips are along the coast. Yes, well you can usually hear if any large boulders start to tumble down a cliff.\nAndrew: And you realise you’re on soft sand when you start sinking. But when people are working on the seashore, they often fail to notice that the tides come in and they’re cut off by water. That’s what we should make a point about. Okay.\nBefore you hear the rest of the discussion, you have some time to look at questions twenty six to thirty. Now listen and answer questions twenty six to thirty.\nSarah: Before we do anything else, could we just talk about the reading packs we put together for the students to read before they go on the field trip to Iceland? Absolutely.\nAndrew: They’ll need to do most of the reading beforehand because there won’t be time while we’re away, and there’s a lot of technical data.\nSarah: That’s certainly the case in the pack called geothermal fields.\nAndrew: Does that cover industrial uses of geothermal energy?\nSarah: No, it deals with harnessing the heat generated from the earth in geothermal areas to grow vegetables for local consumption. They’ll need to understand the geological characteristics that make this possible.\nAndrew: Right. The reading pack called the Hot Spot will help them understand how Iceland differs from other islands formed at the same time, like Bermuda and the Canary Islands.\nAndrew: It’s the existence of the hotspot that explains the rock formations of this island and makes it unlike any of the others. Now I definitely think they should read the pack about glaciers.\nSarah: They need to be aware that although the ice in glaciers up in the mountains can stay frozen for thousands of years, if anything happens to make the glaciers melt suddenly, the water produced pours down the valleys and it can mean that whole villages suddenly have to be evacuated.\nAndrew: Right. Then the basalt rock pack shows how Iceland’s landscape, like many other islands, has been moulded over millions of years by lava flows from volcanic eruptions, especially the area in the northwest of the island.\nSarah: And lastly, reading about geothermal power plants will inform them of Iceland’s plan to stop using energy derived from carbon in the future.\nSarah: Heating and electricity will come from sustainable sources which won’t cause any pollution.\nAndrew: I think that’ll be all the reading they’ll have time for.\nThat is the end of part three. You now have 30 seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-30-part-4",
+   "title": "Part 4",
+   "context": "You will hear part of a lecture to business management students about what managers should do when their organization faces a crisis.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Crisis Communication Theory\nWhy do we need theory?\n- Some people think using [[31]] is better than theory\n- But a lot of advice is simply a [[32]]\nTypes of crisis\n- The organization can be a victim – e.g. due to a [[33]]\n- Crisis can be accidental – caused by external factors\n- Crisis can be preventable – resulting from a [[34]] in the organization\nSuggested response for all crises\n- Give information to prevent any more damage\n- Communicate what [[35]] is to be taken\nStrategies to influence people’s thinking\n- Diminish the crisis: provide [[36]] that the crisis is not so bad\n- Give excuses for the crisis: highlight that it was not intentional\nProtecting the organisation’s reputation\n- Initial objective is to lessen [[37]] opinions\n- ‘Rebuild strategies’ are important when there is a serious [[38]] to the organisation’s reputation\n- Things can be improved by providing an [[39]]\n- In serious cases, [[40]] is usually offered",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "logic"
+       ],
+       "explanation": "'Isn't logic the answer? Yes, it is sometimes.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "guess"
+       ],
+       "explanation": "'Much of the advice that organizations receive on how to respond to a crisis is just a guess.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "rumor",
+        "rumour"
+       ],
+       "explanation": "'This kind of crisis could be caused by a rumor.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "mistake"
+       ],
+       "explanation": "'Those affected believe strongly that a mistake was made within the organization.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "action"
+       ],
+       "explanation": "'Communicate the action the organization is planning in order to prevent another crisis.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "proof"
+       ],
+       "explanation": "'If crisis managers have proof, which is convincing, they can argue that a crisis is not as bad.'"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "negative"
+       ],
+       "explanation": "'Their first goal is to reduce the negative opinions generated by the crisis.'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "threat"
+       ],
+       "explanation": "'These crises present a severe threat to the perceived reliability of the organization.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "apology"
+       ],
+       "explanation": "'The problem can sometimes be addressed by offering an apology to those affected.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "compensation"
+       ],
+       "explanation": "'If the crisis is very severe, the most common strategy is to offer compensation to those affected.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear part of a lecture to business management students about what managers should do when their organization faces a crisis.\nLecturer: Today I want to talk about how organizations can respond to a crisis which happens when a serious problem occurs suddenly and must be dealt with quickly.\nLecturer: I will talk about a theory that tells crisis managers how to communicate in different kinds of crises. Some people ask why we need theory in crisis communication.\nLecturer: Isn’t logic the answer? Yes, it is sometimes, but organizations often handle crisis communication badly.\nLecturer: What we find is that in reality, much of the advice that organizations receive on how to respond to a crisis is just a guess.\nLecturer: Theory and research allow us to take those suggestions and test them.\nLecturer: Then managers can be given advice based on actual evidence of what works and what doesn’t.\nLecturer: The crisis theory has categorized three general types of crises.\nLecturer: One type is a crisis where the organization is a victim and has very little responsibility. For example, this kind of crisis could be caused by a rumour.\nLecturer: The second kind is accidental. There isn’t much responsibility because there are other outside factors that contributed to it.\nLecturer: And the third one, and the most difficult to actually manage, is a preventable crisis. In this kind of crisis, those affected believe strongly that a mistake was made within the organization.\nLecturer: The type of crisis is important because the more people think the organization is responsible for the crisis, the angrier they become at the organization.\nLecturer: The theory begins by suggesting a two part basic response that can be used in all kinds of crisis.\nLecturer: The first part is to provide information to those affected so that they can protect themselves from further harm. Many crises pose a risk to people.\nLecturer: For example, if there is a chemical release, people might have to evacuate an area. Or if there’s a product which could be harmful, people need to be told about it, so they don’t buy it, or so if they have bought it, they can return it.\nLecturer: The second part of the basic response is to communicate the action the organization is planning in order to prevent another crisis. This is important because those affected by a crisis are often concerned that it is going to happen again.\nLecturer: Beyond this, crisis managers also have other tools to shape how people think about the crisis. Crisis managers can use several strategies to do this.\nLecturer: One strategy is to diminish the crisis. If crisis managers have proof, which is convincing, they can argue that a crisis is not as bad as people think.\nLecturer: If they can argue this successfully, the harmful effects are reduced. Another way to shape thinking is to give excuses which emphasize a lack of intent.\nLecturer: Therefore, people will see the crisis as an accident. This is important because an accidental crisis is much easier to manage than an intentional crisis.\nLecturer: Crisis managers can also protect the organization’s reputation when there is a major crisis. Their first goal is to reduce the negative opinions generated by the crisis.\nLecturer: This can be done by presenting new positive facts and figures about the organization or by reminding people of past good works done by the organization.\nLecturer: Rebuild strategies are useful for preventable crises and or when there has been a series of accidental crises, as these crises present a severe threat to the perceived reliability of the organization.\nLecturer: For example, a crisis where the organization is clearly at fault or broke a law can be very damaging and can result in loss of business.\nLecturer: Rebuild strategies can also be used to reduce the impact of the crisis. To do this, crisis managers say and do things to benefit those affected by the crisis.\nLecturer: The reputation of the organization can also be protected in practical ways. The problem can sometimes be addressed by offering an apology to those affected by the crisis.\nLecturer: This may be sufficient action when the problem is relatively minor. However, if the crisis is very severe, the most common strategy is to offer compensation to those affected.\nLecturer: So, to summarize, crisis communication theory is interesting to managers as it gives positive guidance on how to respond. It can help them figure out which strategy…\nThat is the end of part four. You now have one minute to check your answers to part four.\nThat is the end of the listening test. You now have 10 minutes to transfer your answers to the listening answer sheet."
+  }
+ ],
+ "audio": {
+  "file": "listening-30.mp3",
+  "durationSec": 1697,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

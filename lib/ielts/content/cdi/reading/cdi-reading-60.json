@@ -1,0 +1,547 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-60",
+ "title": "CDI Reading Test 60",
+ "description": "A full Academic Reading test from the CDI practice materials: Native species that become pests; The growing industry of background music; Conscious and Unconscious Thought.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Native species that become pests",
+  "The growing industry of background music",
+  "Conscious and Unconscious Thought"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Native species that become pests",
+   "paragraphs": [
+    {
+     "text": "The disastrous consequences of foxes, cane toads and other introduced animals coming to Australia are well known. But problems also occur when Australia's own native species spread from one region to another, moving beyond the areas where they have always lived."
+    },
+    {
+     "text": "Mud snails were first detected in the Swan River in Perth, Western Australia in 1954, and this was only in the river's lower areas. Since then their numbers have exploded and they now crowd the river bed in densities of up to 400 per square metre. This species is native to Australia but its natural range is more than 3000km away in eastern Australia. Due to the snail's success, the river beds in the Swan River, which were once covered in natural vegetation, are now under threat by increased levels of seaweed. Before the snail arrived, the river had few hard surfaces on which small seaweeds could grow. Now, healthy vegetation is being pulled up by snails and the riverbed is covered by seaweed that is carried in snail shells and is released at the rate of 433 million fragments a day. Furthermore, snail waste is thought to be aggravating the situation by having the effect of a fertiliser on the seaweed."
+    },
+    {
+     "text": "Species are often moved unintentionally. Mud snails are thought to have travelled on live oysters taken from eastern Australia to the west of the country and stored in the Swan River before use. Northern Queensland frogs regularly travel south inside bunches of bananas. Researchers estimate that more than 6000 of these reach the state of Victoria each year, although the only lasting impact observed so far is a colony of dwarf tree frogs that live in a flooded quarry near Melbourne, Victoria. Similarly, spiders relocate in construction supplies, while lizards move with firewood. It is not just animals that are relocated inadvertently; seeds from the centre of the country often reach the coast aboard cattle trains."
+    },
+    {
+     "text": "Other animals have extended their ranges by themselves because changes to landscapes have suited them. Waterbirds arrive wherever dams are put in, bats find abandoned mines, and orchard swallowtail butterflies locate citrus trees that are planted near farm homes. Many of the birds now found in Australia's capital cities did not live in large cities in the past. Writing of the crested pigeon in 1865, naturalist John Gould regretted that 'being exclusively an inhabitant of the plains of the interior, it can never become an object of general observation'. Today, crested pigeons can be found in abundance in the middle of the coastal city of Sydney."
+    },
+    {
+     "text": "Some species have been moved deliberately. The kookaburra is a famous Australian bird, which is found in many parts of the continent. Long ago these birds were taken well beyond the areas where they had always lived, for the purpose of exterminating snakes. Following concern that the platypus, an unusual Australian water mammal, was declining in number on the mainland, this species was introduced to a national park on an island off the south coast in the 1920s. Vast numbers of plants have also been cultivated in areas where they did not originally grow."
+    },
+    {
+     "text": "There is no database of this movement and tracing species' existence and migration patterns can be difficult. For example, it is widely known that the venomous redback spider, common throughout Australia, lives close to humans in sheds and under outdoor furniture but is seldom seen in forests. Spider authority, Robert Raven, has wondered why this species went undiscovered until 1870, by which time 200 other Australian spiders had been named. Redbacks were hardly mentioned by early travellers and naturalists, and rarely feature in Aboriginal legends and languages. This led Raven to suspect that redbacks had been introduced to Australia from abroad. However, a mention of black-and-red spiders in South Australia was recently found in an 1850 book, and the thinking today is that redbacks are actually native to Australia's south-west, and were later introduced eastwards."
+    },
+    {
+     "text": "Species on the move within Australia present an environmental challenge. Although many animals and plants are thought of as native to Australia, Australia is a continent and one of the world's largest countries. If it were divided, like Europe, into smaller countries, those snails and kookaburras in Perth would count as foreign. 'Foreign' may not be the correct word, but the mud snails in Perth qualify as an introduced species and feral pest. The colourful rainbow lorikeets around Perth, descended from cage birds that managed to win their freedom, have been declared a state pest for the damage they do to stone fruits and other crops."
+    },
+    {
+     "text": "Birds and bats that travel under their own wings are not usually thought of as introduced, although those that cross the sea are sometimes called 'self-introduced'. Some of these movements take place without any cause for concern. No-one speaks badly about crested pigeons and butterflies thriving in new locations. Everyone likes the white terns, birds which colonised Lord Howe Island after finding that its pine trees offer good nesting sites for their chicks. But many arrivals do acquire a bad name. Eradication campaigns are organised in Western Australia whenever Queensland fruit flies turn up, as they did in 1989 and 2016, probably via smuggled fruit; they are also a problem in other states. Redbacks in eastern Australia aren't welcome, nor are the mud snails in the Swan River."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Mud snails: an Australian native species originally from the [[1]] part of the country\n- Seaweed comes out of the [[2]] of snails\n- Snail waste acts as a [[3]] and this makes the seaweed problem worse\n- Spiders are often carried in materials for [[4]]\n- When [[5]] are built, waterbirds move to the area\n- Planting citrus trees attracted [[6]] to country areas\n- Platypuses were taken from the [[7]] when their numbers dropped there",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "eastern"
+       ],
+       "explanation": "Snails came from the eastern part of the country."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "shells"
+       ],
+       "explanation": "Seaweed grows out of the snails' shells."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "fertiliser"
+       ],
+       "explanation": "The waste acts as a fertiliser, worsening the seaweed problem."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "construction"
+       ],
+       "explanation": "Spiders are carried in construction materials."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "dams"
+       ],
+       "explanation": "When dams are built, waterbirds move in."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "butterflies"
+       ],
+       "explanation": "Citrus trees attracted butterflies to rural areas."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "mainland"
+       ],
+       "explanation": "Platypuses were relocated from the mainland."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 8,
+       "text": "Redback spiders avoid places where there are people.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage indicates redbacks are found where people are."
+      },
+      {
+       "n": 9,
+       "text": "According to current theories, redback spiders originally came to Australia from another country.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Current theory holds the redback is native to Australia."
+      },
+      {
+       "n": 10,
+       "text": "In Perth, the ancestors of the rainbow lorikeets were originally domesticated animals.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The Perth lorikeets descended from escaped pet/captive birds."
+      },
+      {
+       "n": 11,
+       "text": "Bats are a threat to some native Australian bird species.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No information about bats threatening native birds is given."
+      },
+      {
+       "n": 12,
+       "text": "White terns moved to Lord Howe Island to raise their young.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "White terns came to Lord Howe Island to breed."
+      },
+      {
+       "n": 13,
+       "text": "There were more fruit flies in Western Australia than in Queensland in 1989.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No such comparison for 1989 is provided."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The growing industry of background music",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Music can be surprisingly powerful, even when it is played in the background and is barely noticeable. Over recent decades, creating background music has become a booming industry. Researchers have found that music played in commercial settings can have an impact on how much time we think has passed while waiting in a queue, how engaged customers are with sales staff, and even how sweet or bitter food tastes."
+    },
+    {
+     "label": "B",
+     "text": "Rob Wood is the founder of Music Concierge in the UK, a company that chooses background music for businesses. Some clients hire Wood because they want to influence behaviour, others seek to create a certain atmosphere, culture or ambience. The core of a music consultant's work is creating distinct, cohesive musical identities for brands. In 2018, Wood worked on music for a new hotel. His brief was to produce distinct playlists for separate areas: the lobby, the restaurant and the gym. The hotel manager explained every detail: the build materials, the history, and a prediction of the average restaurant bill. Much of Wood's job involves taking abstract suggestions and turning them into music. A large amount of intuition is also required. It is a complex process and part of his job is comprehending what businesses really want, which can be very demanding. It is sometimes hard to know whether he should deliver something that will precisely match expectations or pleasantly surprise them."
+    },
+    {
+     "label": "C",
+     "text": "In the 1920s, George Owen Squier, a former US army officer, developed a new way to transmit audio through wires. His idea led to the creation of Wired Music (renamed Muzak), which enabled businesses to play music throughout offices and commercial premises. In its early days, Muzak sold itself on the basis that its music would enhance job performance. Its programme for offices and factories played classical recordings in 15-minute sequences, alternated with silence. Each time the music sequence resumed, it rose in intensity. Muzak set the template for background music that would persist for decades. In terms of distribution, Muzak used wires to convey its music; the company sent a bulky cartridge to its customers through the post and it was then played through a specially designed device. In the 1970s, the introduction of affordable multi-deck tape players suddenly made it easy for businesses to choose and play music continuously. The CD was the first digital format for music and, by the late 1990s, it had enabled background music companies to develop digital libraries where tracks could be organised according to preference. But that was just a taste of the new world of infinite choice that was to come."
+    },
+    {
+     "label": "D",
+     "text": "Despite technological advances, it's the influence that background music has on customer behaviour which is driving its growth. Psychologists believe that music influences consumers in two main ways. The first is physical; numerous studies have confirmed that we often subconsciously match what we are doing to what we hear. For instance, one study found that diners chewed faster when higher-tempo music was played. The second approach focuses on the associations that music can trigger. Another study revealed that diners in a cafeteria were willing to part with more money when classical music was played in the background than when there was none at all. One explanation, researchers suggested, was that diners associated classical music with quality."
+    },
+    {
+     "label": "E",
+     "text": "However, it is the inoffensive nature of this kind of background music that creates some of the industry's fiercest critics. A UK group, Pipedown, founded by Nigel Rodgers, campaigns 'for freedom from unwanted music in public places'. The group claims that such music is impossible to escape and adds to the overall levels of noise pollution in public. 'You're not going for a special sort of atmosphere, you're just going to do your shopping,' Rodgers said. One of Pipedown's boldest claims is that there is 'no genuine evidence' that background music increases sales. Opinions vary on this question, although most professionals do not share Pipedown's position. Adrian North, a psychology professor at Curtin University in Perth, Australia, argues that small purchases are where it is most possible to influence consumers. He conducted a study that found that customers were more likely to choose either French or German wine, depending on which of the respective countries' music they heard, something he contrasted with a decision like buying a car where music would not have such an impact."
+    },
+    {
+     "label": "F",
+     "text": "Others argue that it makes more sense to think about the influence of background music in terms of subtle, long-term benefits, rather than immediate impact on sales. Rhonda Hadi, marketing professor at Oxford University, UK, believes companies that provide an experience, such as flights or accommodation, can reap the greatest rewards. She believes that people 'rely on any cues they can to gauge the quality of the service that they've received'. Companies have capitalised on the sweeping changes to the world of retail in recent years. Many businesses are no longer just functional places to buy things, they are presented as an experience. Since 2008, streaming music via the internet has become the way most people listen to music. For background music companies, streaming is both a threat and an opportunity. On the one hand, companies can select and tailor the music they deliver to businesses with greater speed, flexibility and precision than ever before. On the other hand, access to vast music libraries has made everyone a music specialist. However, Richard Hampson at Imagesound believes a real-life curator is indispensable. He emphasises the intuitive side to his job. 'It's always been about feel and human touch,' he argues. 'Human taste is really important.'"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six paragraphs, A–F. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "details of how modern developments have created positive and negative consequences for the industry",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Section F discusses modern developments' mixed consequences."
+      },
+      {
+       "n": 15,
+       "text": "an account of opposition to the use of background music",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Section E covers opposition to background music."
+      },
+      {
+       "n": 16,
+       "text": "a comparison of customer spending patterns with and without background music",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Section D compares spending with and without music."
+      },
+      {
+       "n": 17,
+       "text": "a mention of how background music can make shoppers more responsive to shop assistants",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section A notes shoppers become more responsive to staff."
+      },
+      {
+       "n": 18,
+       "text": "details of a project which required different music in various parts of a building",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B describes a project using different music in different areas."
+      },
+      {
+       "n": 19,
+       "text": "a mention of how the pace of the music influences how quickly food is consumed",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Section D links music tempo to eating speed."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people below. Match each statement with the correct person, A–E.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Rob Wood"
+      },
+      {
+       "key": "B",
+       "text": "Nigel Rodgers"
+      },
+      {
+       "key": "C",
+       "text": "Adrian North"
+      },
+      {
+       "key": "D",
+       "text": "Rhonda Hadi"
+      },
+      {
+       "key": "E",
+       "text": "Richard Hampson"
+      }
+     ],
+     "questions": [
+      {
+       "n": 20,
+       "text": "It is difficult to understand a client's specific wish.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Rob Wood (A) notes the difficulty of grasping a client's exact wish."
+      },
+      {
+       "n": 21,
+       "text": "Background music is especially beneficial to the tourism industry.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Rhonda Hadi (D) highlights benefits for tourism."
+      },
+      {
+       "n": 22,
+       "text": "Background music has more effect on people who are spending less.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Adrian North (C) found more effect on lower spenders."
+      },
+      {
+       "n": 23,
+       "text": "A creative music expert is crucial for businesses choosing background music.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Richard Hampson (E) stresses the need for a creative music expert."
+      },
+      {
+       "n": 24,
+       "text": "Buying goods does not require a particular environment.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Nigel Rodgers (B) argues buying needs no special environment."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The rise of background music",
+     "template": "In 1920, George Squier developed a way of transmitting music using a system of wires. His company claimed that [[25]] at work could be improved with the use of its audio programmes. However, in this audio format there was [[26]] between each short musical section. Gradually, the [[27]] of the music increased. Muzak became the template for music in businesses for years to come. Some companies delivered pre-recorded music in the form of a [[28]] . Later, in the 1970s, tapes were used, but the real change came with the move to CD [[29]] .",
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "performance"
+       ],
+       "explanation": "Squier's company claimed work performance could improve."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "silence"
+       ],
+       "explanation": "There was silence between musical sections."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "intensity"
+       ],
+       "explanation": "The intensity of the music increased over time."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "cartridge"
+       ],
+       "explanation": "Music was delivered on a cartridge."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "libraries"
+       ],
+       "explanation": "The move to CD libraries brought real change."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Conscious and Unconscious Thought",
+   "paragraphs": [
+    {
+     "text": "Great scientists and artists have long known about the unconscious mind. The founder of psychoanalysis, Sigmund Freud, argued that most of our real motivation lies below conscious awareness and that we require the services of a psychoanalyst to explain ourselves to ourselves. Even those celebrated scientists who believe Freud exaggerated the importance of the unconscious argue that it is a part of the inner mind that we should learn to control and take advantage of."
+    },
+    {
+     "text": "The great mathematician Alfred North Whitehead seemed to be a supporter of unconscious mental processing when he said: \"It is a profoundly erroneous truism, repeated by all copybooks and by eminent people making speeches, that we should cultivate the habit of thinking about what we are doing. The opposite is the case.\" What Whitehead meant by this is that some of the greatest breakthroughs in creativity occur when a problem is consciously shelved for a while – \"don't think about it, just sleep on it\" – after which the unconscious mind offers a solution. This is a process which psychoanalysts call \"incubation.\""
+    },
+    {
+     "text": "Now the latest psychological research confirms that we can all incubate a concern to our advantage. Ap Dijksterhuis, a psychologist at the University of Amsterdam, has recently published a series of experiments in which students were presented with complex everyday concerns to solve. In one experiment, they were allowed to think carefully about a decision; in another experiment, they were distracted by an irrelevant task while making a decision. The surprising result, published in the Journal of Personality and Social Psychology, was that 'unconscious' thinkers made better decisions."
+    },
+    {
+     "text": "Timothy Wilson and colleagues from the University of Virginia's psychology department conducted another experiment. Participants were presented with five posters and asked to choose one to take home. A little later, they telephoned and asked how satisfied they were with their choice – a measure of whether they made the right decision from a subjective point of view. Some participants picked their posters straight away, whereas others were asked to analyze carefully the pros and cons of each poster. It turned out that people who had analyzed and weighed the various attributes had made relatively poor decisions."
+    },
+    {
+     "text": "The conclusion that has to be drawn from current research suggests the somewhat counter-intuitive idea that the more complex a problem is, the less likely it becomes that conscious thought could contribute much. If a dilemma is particularly difficult, a lot of information has to be taken into account, and it appears that conscious thought is not good at this. The message is that when it comes to intricate problems with many variables, you should let the unconscious deal with them."
+    },
+    {
+     "text": "Using dreaming is one way of doing this. Dreams are the part of sleep most strongly correlated with rapid eye movement (REM) and have been associated with enhanced creativity and novel solutions. The latest research suggests that, if you want to enhance unconscious problem-solving, you should try to think about your concerns immediately after dreaming. In a recent experiment, psychiatrist Matthew Walker and colleagues from the Laboratory of Neurophysiology at Harvard Medical School woke half of their experimental subjects immediately after REM sleep, and the other half just after sleep with no dreams, and then asked them to solve crossword puzzles. REM awakenings led to a 32 percent advantage in the number of puzzles solved compared with non-REM awakenings. But you don't have to be asleep to use your unconscious mind when you are not thinking of anything in particular, which is why daydreams are so useful in the quest for solutions. Daniel Goleman, the famous psychologist who proposed the theory of emotional intelligence, urges us to be more aware of, and discount, a key obstacle that the conscious mind often encounters: that of self-censorship. This is the fear of what others will say or think about our ideas, keeping you imprisoned within the boundaries of what is deemed acceptable. Howard Gardner, a professor of cognition and education at Harvard University, suggests that we deserve a break from the restriction of always doing things the same way. By seeking to go beyond routine and convention, you will gain confidence in trusting your unconscious, he says."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people below. Match each statement with the correct person, A–F.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Alfred North Whitehead"
+      },
+      {
+       "key": "B",
+       "text": "Ap Dijksterhuis"
+      },
+      {
+       "key": "C",
+       "text": "Timothy Wilson"
+      },
+      {
+       "key": "D",
+       "text": "Matthew Walker"
+      },
+      {
+       "key": "E",
+       "text": "Daniel Goleman"
+      },
+      {
+       "key": "F",
+       "text": "Howard Gardner"
+      }
+     ],
+     "questions": [
+      {
+       "n": 30,
+       "text": "People find it easier to solve problems at a particular point in the sleep cycle.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Matthew Walker (D) found REM awakenings aided problem-solving."
+      },
+      {
+       "n": 31,
+       "text": "People should change their general behaviour patterns to benefit more from the unconscious.",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Howard Gardner (F) urges going beyond routine and convention."
+      },
+      {
+       "n": 32,
+       "text": "When solving problems, people should try to ignore negative thoughts.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Daniel Goleman (E) warns against self-censorship."
+      },
+      {
+       "n": 33,
+       "text": "People can come up with ideas that are more innovative if they temporarily put a concern aside.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Whitehead (A) supported shelving a problem to let the unconscious work."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Alfred North Whitehead gave support for the idea of [[34]] , a term for people deliberately ignoring a problem over a while.\n- Experiments in Amsterdam that required students to consider a tricky situation found them making good decisions while carrying out an unconnected [[35]] .\n- An experiment in Virginia required subjects to make a selection from several [[36]] .",
+     "questions": [
+      {
+       "n": 34,
+       "answer": [
+        "Incubation"
+       ],
+       "explanation": "The term is 'incubation'."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "Task"
+       ],
+       "explanation": "They performed an unconnected/irrelevant task."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "Posters"
+       ],
+       "explanation": "Subjects chose from several posters."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 37,
+       "text": "Our unconscious mind helps us more than our conscious mind with complex problems.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The research concludes the unconscious is better with complex problems."
+      },
+      {
+       "n": 38,
+       "text": "Resting before going to sleep can result in improved solutions to issues.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No claim about resting before sleep is made."
+      },
+      {
+       "n": 39,
+       "text": "Matthew Walker's team assessed their subjects using a memory test.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "They used crossword puzzles, not a memory test."
+      },
+      {
+       "n": 40,
+       "text": "People often create their own barriers to problem-solving.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Self-censorship and routine are self-imposed barriers."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

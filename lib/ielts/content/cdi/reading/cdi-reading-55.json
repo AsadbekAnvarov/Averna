@@ -1,0 +1,579 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-55",
+ "title": "CDI Reading Test 55",
+ "description": "A full Academic Reading test from the CDI practice materials: Deserts and Desert Life; Photovoltaics; Insect-inspired Robots.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Deserts and Desert Life",
+  "Photovoltaics",
+  "Insect-inspired Robots"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Deserts and Desert Life",
+   "paragraphs": [
+    {
+     "text": "Among the desert’s most famous survivors are camels, sometimes called the “ships of the desert.” They possess a unique set of anatomical features that make them perfectly suited to sand and drought. Their broad feet are equipped with thick pads of skin stretched between the toes, which keep them from sinking into loose dunes. Their nostrils are designed to close almost completely, shielding their lungs from swirling storms of dust and sand. On their backs rise distinctive humps, storing fat that can later be metabolised into water and energy. Unlike human beings, camels rarely perspire, an absence of sweat helping conserve precious body fluid."
+    },
+    {
+     "text": "Another master of desert adaptation is the fennec fox, whose oversized ears not only provide acute hearing but also dissipate heat. Many desert plants, like cacti, have evolved to store water in thick stems and reduce leaf surface area to minimize evaporation. Some species, such as the creosote bush, secrete chemicals into the soil to inhibit the growth of competing plants nearby—a phenomenon known as allelopathy."
+    },
+    {
+     "text": "Human cultures have also adapted ingeniously to arid environments. Nomadic groups like the Bedouins have historically moved with seasonal water and grazing sources, using camels for transport, milk, and wool. Traditional architecture in desert regions often features thick mud-brick walls that insulate against extreme temperatures, and wind towers that capture and funnel cool breezes into living spaces. In modern times, technology has enabled large-scale settlement and agriculture in deserts through irrigation, desalination, and solar energy harnessing, though such projects raise questions about long-term sustainability."
+    },
+    {
+     "text": "Despite their harsh conditions, deserts are ecologically rich and sensitive. They host specially adapted flora and fauna, many of which are endangered by climate change, overgrazing, and urban expansion. Conservation efforts now focus on protecting desert biodiversity while supporting the livelihoods of indigenous peoples. As climate patterns shift, understanding desert ecosystems and the survival strategies of their inhabitants becomes ever more critical for our planet’s future."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Camels are sometimes referred to as the ships of the desert.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 1: camels are ‘sometimes called the “ships of the desert”’."
+      },
+      {
+       "n": 2,
+       "text": "Camels sink easily into loose dunes because their feet are narrow.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 1: their broad feet prevent them from sinking — the opposite of narrow."
+      },
+      {
+       "n": 3,
+       "text": "Fennec foxes use their large ears to help release heat.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 2: the fennec fox’s oversized ears ‘dissipate heat’."
+      },
+      {
+       "n": 4,
+       "text": "Desalination is cheaper than irrigation in most desert regions.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para 3 mentions both technologies but makes no cost comparison."
+      },
+      {
+       "n": 5,
+       "text": "Desert biodiversity is threatened by climate change, overgrazing and urban expansion.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 4: ‘many of which are endangered by climate change, overgrazing, and urban expansion’."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Camel Adaptations and Human Uses",
+     "template": "- Wide feet contain tough [[6]] between the toes.\n- Specially adapted [[7]] can be tightly closed against dust.\n- [[8]] on their backs store food in the form of fat.\n- Survival is aided by the absence of [[9]].",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "pads"
+       ],
+       "explanation": "Para 1: ‘thick pads of skin stretched between the toes’."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "nostrils"
+       ],
+       "explanation": "Para 1: ‘Their nostrils are designed to close almost completely’."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "humps"
+       ],
+       "explanation": "Para 1: ‘On their backs rise distinctive humps, storing fat’."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "sweat"
+       ],
+       "explanation": "Para 1: ‘an absence of sweat helping conserve precious body fluid’."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "Besides camels, other desert species have evolved special traits. The [[10]] fox uses its large ears for cooling. Many plants store water in thick [[11]]. Some plants release chemicals to prevent competition, a process called [[12]]. Human adaptations include nomadic lifestyles, traditional architecture with [[13]] walls, and modern technologies like irrigation and solar energy.",
+     "questions": [
+      {
+       "n": 10,
+       "answer": [
+        "fennec"
+       ],
+       "explanation": "Para 2: ‘the fennec fox, whose oversized ears not only provide acute hearing but also dissipate heat’."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "stems"
+       ],
+       "explanation": "Para 2: ‘cacti, have evolved to store water in thick stems’."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "allelopathy"
+       ],
+       "explanation": "Para 2: ‘a phenomenon known as allelopathy’."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "mud-brick"
+       ],
+       "explanation": "Para 3: ‘thick mud-brick walls that insulate against extreme temperatures’."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Photovoltaics",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "In the past, urban home owners have not always had much choice in the way electricity is supplied to their homes. Now, however, there is a choice, and a rapidly increasing number of households worldwide are choosing the solar energy option. Solar energy, the conversion of sunlight into energy, is made possible through the use of ‘photovoltaics’, which are simple appliances that fit onto the roof of a house."
+    },
+    {
+     "label": "B",
+     "text": "The photovoltaic-powered home remains connected to the power lines, but no storage is required on-site, only a box of electronics (the inverter) to interface between the photovoltaics and the grid network. Figure 1 illustrates the system. During the day, when the home may not be using much electricity, excess power from the solar array is fed back to the grid, to factories offices that need daytime power. At night, power flows the opposite way. The grid network effectively provides storage. If the demand for electricity is well matched to when the sun shines, solar energy is especially valuable. This occurs in places like California in the US and Japan, where air-conditioning loads for offices and factories are large but heating loads for the home are small."
+    },
+    {
+     "label": "C",
+     "text": "The first systematic exploration of the use of photovoltaics on homes began in the US during the 1970s, a well-conceived program started with the siting of a number of ‘residential experiment stations’ at selected locations around the country, representing different climatic zones. These stations contained a number of ‘dummy’ houses, each with a different solar energy system design. Homes within the communities close to these stations were monitored to see how well their energy use matched the energy generated by the stations’ dummy roofs. A change in US government priorities in the early 1980s halted this program."
+    },
+    {
+     "label": "D",
+     "text": "With the US effort dropping away, the Japanese Sunshine Project came to the fore. A large residential test station was installed on Rokko Island beginning in 1986. This installation consists of 18 ‘dummy’ houses, each equipped with its own 2-5 kilowatt photovoltaic system (about 20-50 square metres for each system). For the other systems, electronics simulate these household loads. This test station has allowed the technical issues involved in using photovoltaics within the electricity network to be explored in a systematic way, under well-controlled test conditions. With no insurmountable problems identified, the Japanese have used the experience gained from this station to begin their own massive residential photovoltaics campaign."
+    },
+    {
+     "label": "E",
+     "text": "Meanwhile, Germany began a very important ‘1000 roof program’ in 1990, aimed at installing photovoltaics on the roofs of 1000 private homes. Large federal and regional government subsidies were involved, accounting in most cases for 70 per cent of the total system costs. The program proved immensely popular, forcing its extension to over 2000 homes scattered across Germany. The success of this program stimulated other European countries to launch similar programs."
+    },
+    {
+     "label": "F",
+     "text": "Japan’s ‘one million roof program’ was prompted by the experience gained in the Rokko Island test site and success of the German 1000 roof program. The initially quoted aims of the Japanese New Energy Development Organisation were to have 70,000 homes equipped with photovoltaics by the year 2000, on the way to one million by 2020. The program made a modest start in 1994, when 539 systems were installed with a government subsidy of 50 per cent. Under this program, entire new suburban developments are using photovoltaics."
+    },
+    {
+     "label": "G",
+     "text": "The Japanese initiative in embracing residential photovoltaics on a large scale prompted responses in both Europe and the US. The European Commission has called for one million solar residential systems before the year 2010, with 500,000 in Europe and 500,000 in the developing world, to be subsidised by the Commission. In 1997, a similar one million roof target was announced in the US. Since then, several other countries including Germany, Italy, the Netherlands and Australia, have announced their own targets for residential photovoltaics."
+    },
+    {
+     "label": "H",
+     "text": "This is good news, not only for the photovoltaic industry, but for everyone concerned with the environment. The use of fossil fuels to generate electricity is not only costly in financial terms, but also in terms of environmental damage. Gases produced by the burning of fossil fuels in the production of electricity are a major contributor to the greenhouse effect. To deal with this problem, many governments are now proposing stringent targets on the amount of greenhouse gas emissions permitted. These targets mean that all sources of greenhouse gas emissions, including residential electricity use, will receive closer attention in the future."
+    },
+    {
+     "label": "I",
+     "text": "It is likely that, in the future, governments will develop building codes that attempt to constrain the energy demands of new housing. For example, the use of photovoltaics or the equivalent may be stipulated to lessen demands on the grid network and hence reduce fossil fuel emissions. Approvals for building renovations may also be conditional upon taking such energy-saving measures. If this were to happen, everyone would benefit. Although there is an initial cost in attaching the system to the rooftop, the householder’s outlay is soon compensated with the savings on energy bills. In addition, everyone living on the planet stands to gain from the more benign environmental impact."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has nine paragraphs, A–I. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      },
+      {
+       "key": "I",
+       "text": "Paragraph I"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "examples of countries where electricity use is greater during the day than at night",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para B: California in the US and Japan, where air-conditioning loads (daytime) are large but heating loads (home) are small."
+      },
+      {
+       "n": 15,
+       "text": "a detailed description of an experiment that led to photovoltaics being promoted throughout the country",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para D: the Rokko Island test station with 18 dummy houses led to Japan’s massive residential photovoltaics campaign."
+      },
+      {
+       "n": 16,
+       "text": "the negative effects of using conventional means of generating electricity",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Para H: burning fossil fuels is costly financially and environmentally, contributing to the greenhouse effect."
+      },
+      {
+       "n": 17,
+       "text": "an explanation of the photovoltaic system",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para B: explains how the photovoltaic-powered home works – excess power fed to the grid by day, drawn from the grid at night."
+      },
+      {
+       "n": 18,
+       "text": "the long-term benefits of using photovoltaics",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Para I: savings on energy bills plus a more benign environmental impact for everyone."
+      },
+      {
+       "n": 19,
+       "text": "a reference to wealthy countries being prepared to help less wealthy countries have access to photovoltaics",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Para G: the European Commission target includes 500,000 systems in the developing world, subsidised by the Commission."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 2?",
+     "questions": [
+      {
+       "n": 20,
+       "text": "Photovoltaics are used to store electricity.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para B: no storage is required on-site – the grid network provides the storage."
+      },
+      {
+       "n": 21,
+       "text": "Since the 1970s, the US government has provided continuous support for the use of photovoltaics on homes.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para C: a change in US government priorities in the early 1980s halted the program."
+      },
+      {
+       "n": 22,
+       "text": "The solar-powered houses on Rokko Island are uninhabited.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para D: the 18 ‘dummy’ houses are not real homes – electronics simulate household loads."
+      },
+      {
+       "n": 23,
+       "text": "In 1994, the Japanese government was providing half the money required for installing photovoltaics on homes.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para F: in 1994, 539 systems were installed with a government subsidy of 50 per cent."
+      },
+      {
+       "n": 24,
+       "text": "Germany, Italy, the Netherlands and Australia all have strict goals with regard to greenhouse gas emissions.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para G: these countries announced photovoltaics targets, but no strict greenhouse gas goals are mentioned."
+      },
+      {
+       "n": 25,
+       "text": "Residential electricity use is the major source of greenhouse gas emissions.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para H: burning fossil fuels generally is the major contributor, not residential use specifically."
+      },
+      {
+       "n": 26,
+       "text": "Energy-saving measures must now be included in the design of all new homes and improvements to buildings.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para I: this is described as a likely future development, not a current requirement."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Insect-inspired Robots",
+   "subtitle": "A recent conference reports on developments in biorobotics",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "A tiny insect navigates its way across featureless salt-pans. A cockroach successfully works out how to scramble over an obstacle. The mantis shrimp scans its aquatic world through hyperspectral eyes. Using the most basic of equipment and brains tinier than a pinhead, insects constantly solve complex problems of movement, vision, and navigation processing data that would challenge a supercomputer. How they do it is driving one of the most exciting new fields of technology—biomimetics and biorobotics, the imitation of insect systems to control man-made machines. Delegates at a recent conference presented some outcomes of their work in this area."
+    },
+    {
+     "label": "B",
+     "text": "Dr Alex Zelinsky suggested that the method by which wasps use landmarks to find their way back to the nest may one day be part of a system for navigating cars that ‘know’ where to go. A research team led by Dr Zelinsky has shown that a robot can navigate its way along 50 different landmarks by recognizing them individually using a panoramic camera. ‘The inspiration came from biology, where wasps use a practice called “turn back and look” to orient themselves as they emerge from their nest. By flying to and fro, they lock in images of the nest from different angles and perspectives, so they can recognize it again,’ he explained. The robot’s panoramic camera logs the surrounding area and its key landmarks, which are then sorted in its computer according to how reliable they are as navigational aids. The landmarks are then scaled, from small to large, so that the robot can recognize whether it is getting closer to or further away from them. Their location is built into a map in its ‘mind’, which operates at different scales and instructs the robot whether to turn left or right at a particular mark. The technology provides a general way for a machine to navigate an unknown landscape."
+    },
+    {
+     "label": "C",
+     "text": "For three decades, Professor Ruediger Wehner has journeyed from Switzerland to the Sahara desert where Cataglyphis, a tiny ant with a brain weighing just 0.1 mg, performs acts of navigational genius when it leaves its nest, forages for food, and returns successfully. Cataglyphis uses polarised light, caused when air molecules scatter light, to orient and steer itself. Wehner’s team found the ant has a set of specialized photoreceptors along the upper rim of its eyes that detect polarized light, while other receptors perform different navigational tasks. As the sun moves, the ant notes its direction each time it leaves the nest and updates its internal compass. Using other eye receptors, it stores a ‘snapshot’ image of landmarks close to the nest entrance in its eyes and compares this with what it sees as it returns. The ant also has a way of measuring distance traveled, while a ‘path integrator’ periodically informs the ant of its current position relative to its point of departure. Rather than integrate all the information it receives in its brain, the ant actually performs a number of complex calculations in different organs. Like a supercomputer, the ant has many separate subroutines going on simultaneously. Using the ant’s ability to steer by polarised light and to store and reuse landscape images, Wehner and colleagues have built ‘Sahabot’, a small vehicle that uses polarisers and a digital CCD camera to store 360° images of landmarks to the ones in its memory."
+    },
+    {
+     "label": "D",
+     "text": "Professor Robert Michelson had a different desert challenge – to design a flying robot that can not only navigate but also stay aloft and hover in the thin atmosphere of Mars. Drawing inspiration from insect flight, he has gone beyond nature to devise a completely new concept for a flying machine. The ‘Entomopter’ is a sort of double-ended dragonfly whose wings beat reciprocally. Michelson says that the flapping-wing design gives the craft unusually high lift compared with a fixed-wing flyer, enabling it to fly slowly or hover in the thin Martian air—whereas a fixed-wing craft would have to move at more than 400 km/h and could not stop to explore."
+    },
+    {
+     "label": "E",
+     "text": "Engineer Roger Quinn and entomologist Professor Roy Ritzmann are taking their inspiration from cockroaches. According to Quinn and Ritzmann, the ability of cockroaches to run very fast over rough terrain may one day give rise to a completely new all-terrain vehicle with six legs, or maybe even wheel-like legs called ‘whegs’. The key to the cockroach’s remarkable cross-country performance lies partly in the fact that its legs do a lot of the ‘thinking’ without having to consult the brain. Quinn and Ritzmann are drawing on cockroach skills to create robotic walkers and control strategies that capture the remarkable capacity of these insects to traverse complex terrain and navigate safely toward goals while avoiding obstacles. The team has already designed a series of robots that run on six legs or on whegs, enabling them to handle surprisingly rugged terrain."
+    },
+    {
+     "label": "F",
+     "text": "International experts believe there are tremendous opportunities in biorobotics. However, delegates at the conference had differing visions for the future of the science. While some were concerned that the initial applications of biorobotics may be military, others, such as Dr Barbara Webb, predicted swarms of tiny cheap insect-like robots as society’s cleaners and collectors. Sonja Kleinlogel hoped the study of the hyperspectral eyes of the mantis shrimp might yield remote sensors that keep watch over the environmental health of our oceans. Several delegates were concerned about the ethical implications of biorobotics, and urged that close attention be paid to this as the science and technologies develop."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has six sections, A–F. Which section contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "positive and negative possibilities for the use of insect-inspired robots",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Para F: some fear military applications; others predict environmental sensors or cleaning robots. (F)"
+      },
+      {
+       "n": 28,
+       "text": "how perceived size is used as an aid to navigation",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para B: landmarks are scaled so the robot can judge distance. (B)"
+      },
+      {
+       "n": 29,
+       "text": "an example of decision-making taking place in the limbs",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Para E: cockroach legs do the thinking without consulting the brain. (E)"
+      },
+      {
+       "n": 30,
+       "text": "a description of a potential aid in space exploration",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para D: the Entomopter is designed to fly in the thin atmosphere of Mars. (D)"
+      },
+      {
+       "n": 31,
+       "text": "the range of skills that have inspired biorobotics",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para A: lists movement, vision, navigation and other insect abilities. (A)"
+      },
+      {
+       "n": 32,
+       "text": "how a variety of navigational methods operate at the same time",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para C: the ant uses polarised light, snapshot images, distance measurement and path integration simultaneously. (C)"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "template": "- Which creature sees particularly well under water? [[33]]\n- In addition to a computer, what technical equipment is fitted in Dr Zelinsky’s robot? [[34]]\n- Where is the Cataglyphis ant found? [[35]]\n- What atmospheric effect helps the Cataglyphis ant to know its direction? [[36]]",
+     "questions": [
+      {
+       "n": 33,
+       "answer": [
+        "mantis shrimp"
+       ],
+       "explanation": "Para A: ‘The mantis shrimp scans its aquatic world through hyperspectral eyes’."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "panoramic camera",
+        "a panoramic camera"
+       ],
+       "explanation": "Para B: a robot navigates using a panoramic camera."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "Sahara desert",
+        "the Sahara desert"
+       ],
+       "explanation": "Para C: Professor Wehner journeys to the Sahara desert."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "polarised light",
+        "polarized light"
+       ],
+       "explanation": "Para C: ‘Cataglyphis uses polarised light… to orient and steer itself’."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following people and the list of robots below. Match each person with the correct robot, A–G.",
+     "title": "List of Robots",
+     "options": [
+      {
+       "key": "A",
+       "text": "a robot that makes use of light as well as stored images for navigational purposes"
+      },
+      {
+       "key": "B",
+       "text": "a robot that can contribute to environmental health"
+      },
+      {
+       "key": "C",
+       "text": "a robot that can move over difficult surfaces"
+      },
+      {
+       "key": "D",
+       "text": "a robot that categorises information from the environment according to its usefulness"
+      },
+      {
+       "key": "E",
+       "text": "a robot that can be used to clean surfaces and collect rubbish"
+      },
+      {
+       "key": "F",
+       "text": "a robot that has improved on the ability of the insect on which it is based"
+      },
+      {
+       "key": "G",
+       "text": "a robot that can replace soldiers in war"
+      }
+     ],
+     "questions": [
+      {
+       "n": 37,
+       "text": "Dr Alex Zelinsky",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para B: Dr Zelinsky’s robot sorts landmarks by reliability — categorising information (D)."
+      },
+      {
+       "n": 38,
+       "text": "Professor Ruediger Wehner",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para C: Sahabot uses polarisers and stored 360° images — light and stored images (A)."
+      },
+      {
+       "n": 39,
+       "text": "Professor Robert Michelson",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Para D: the Entomopter goes beyond nature to devise a completely new concept — improved on its insect model (F)."
+      },
+      {
+       "n": 40,
+       "text": "Roger Quinn and Professor Roy Ritzmann",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para E: their robots handle rugged terrain — moving over difficult surfaces (C)."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,629 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-50",
+ "title": "CDI Listening Test 50",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-50-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Holiday Job\nExample Name of resort: Sandy Shores\n- Location: [[1]] Island\n- Start date: [[2]]\nAvailable jobs\nVacancy 1: Calypso Bistro\n- working as a [[3]]\n- no experience needed\nVacancy 2: Guest Liaison\n- must be able to [[4]]\nVacancy 3: Activities staff\n- help with games and water sports\n- need experience with [[5]]\nVacancy 4: In reception\n- as a porter\n- must be able to [[6]]\nBenefits — for all jobs,\n- there is free [[7]]\n- [[8]] are provided\nInterview\n- to be held on [[9]] at 2 pm\n- bring a CV and a [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Jamieson"
+       ],
+       "explanation": "\"It's on Jamieson Island... J A M I E S O N. It was named after a famous explorer.\" — the resort is on Jamieson Island."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "11 July",
+        "july 11",
+        "11th July",
+        "11 Jul",
+        "11july"
+       ],
+       "explanation": "\"They would need you to begin from the 11th of July.\" — the start date is 11 July (12 May is only the application deadline)."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "waiter"
+       ],
+       "explanation": "\"There is a vacancy in the Calypso Bistro. That's for a waiter.\" — the bistro job is a waiter."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "sing"
+       ],
+       "explanation": "\"They definitely need people who can sing.\" — Guest Liaison staff must be able to sing (piano is not useful, as they already have a band)."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "children"
+       ],
+       "explanation": "\"They definitely need people who have worked with children for that vacancy.\" — activities staff need experience with children."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "drive"
+       ],
+       "explanation": "\"A requirement for this role is that you can drive.\" — reception porters must be able to drive the golf buggies."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "transport"
+       ],
+       "explanation": "\"Staff don't have to pay for transport to and from the island.\" — transport is free (accommodation is only for permanent employees)."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "meals",
+        "meal"
+       ],
+       "explanation": "\"What about meals? Yes, they're provided when you're on duty.\" — meals are provided."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "Thursday"
+       ],
+       "explanation": "\"Can we do it on Thursday as I work on Wednesdays? Fine. Is two o'clock okay?\" — the interview is on Thursday at 2 pm."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "photo",
+        "photograph"
+       ],
+       "explanation": "\"They've asked everyone to provide a photo as well, so they can remember who is who.\" — bring a CV and a photo."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 0:00[Narrator] You will hear a number of different recordings and you will have to answer questions on what you hear. There will be time for you to read the instructions and questions, and you will have a chance to check your work. All the recordings will be played once only.\n▶ 0:24[Narrator] The test is in four sections. At the end of the test, you will be given ten minutes to transfer your answers to an answer sheet. Now turn to Section 1.\n▶ 0:51[Narrator] Section 1. You will hear a student phoning a student careers office about a job at a holiday resort. First you have some time to look at questions 1 to 6.\n▶ 1:35[Narrator] You will see that there is an example that has been done for you. On this occasion only, the conversation relating to this will be played first.\n▶ 1:48Student: Hello. I saw an advert for holiday staff on the notice board and I'm very interested. Can you tell me something about the resort?\n▶ 1:55Advisor: Let me see. Yes, those jobs are at the Sandy Shores resort. You may have heard of it, as it's quite well known in the area.\n▶ 2:07[Narrator] The name of the resort is Sandy Shores, so Sandy has been written in the space. Now we shall begin. You should answer the questions as you listen, because you will not hear the recording a second time. Listen carefully and answer questions 1 to 6.\n▶ 2:30Student: Hello. I saw an advert for holiday staff on the notice board and I'm very interested. Can you tell me something about the resort?\n▶ 2:37Advisor: Let me see. Yes, those jobs are at the Sandy Shores Resort. You may have heard of it, as it's quite well known in the area.\n▶ 2:46Student: I'm not sure. Where exactly is it?\n▶ 2:49Advisor: It's on Jamieson Island.\n▶ 2:50Student: I haven't heard of that one. Uh, how do you spell it?\n▶ 2:54Advisor: J A M I E S O N . It was named after a famous explorer.\n▶ 3:01Student: Oh, sounds interesting.\n▶ 3:03Advisor: Yes, it's a beautiful place. And as it's a large resort, they have vacancies in a few different areas.\n▶ 3:10Student: When would they want someone to start?\n▶ 3:12Advisor: It looks like the applications close by the twelfth of May, and they would need you to begin from the 11th of July .\n▶ 3:19Student: Oh, that's perfect. My exams finish on the 5th of July. Can you tell me something about the jobs?\n▶ 3:25Advisor: Well, first of all, there is a vacancy in the Calypso Bistro. That's for a waiter . The work is quite easy, taking orders and serving meals. You don't need any experience, as they will train you.\n▶ 3:38Student: That's good.\n▶ 3:39Advisor: They've also got a few vacancies in what is called the Guest Liaison department. They are involved with the entertainment in the resort, especially the daily music shows and parades. They definitely need people who can sing . What's your voice like?\n▶ 3:56Student: It's shocking. Uh, but I can play piano. Would that be useful?\n▶ 4:00Advisor: I don't think so. They already have a band.\n▶ 4:03Student: Okay. So what else is there?\n▶ 4:06Advisor: Among the most popular things for guests are the games and water sports activities, which take place on the beach that belongs to the resort.\n▶ 4:15Advisor: They are always looking for fit young people to help out with things like volleyball, surfing and cricket, but they definitely need people who have worked with children for that vacancy.\n▶ 4:26Student: Well, I coach junior basketball.\n▶ 4:28Advisor: Sounds great. Finally, there are vacancies in the reception area. You'd work as part of the concierge department, carrying bags to and from rooms. A requirement for this role is that you can drive .\n▶ 4:42Advisor: That might seem strange, but some of the villas are quite far away from the resort hub, so they have little golf buggies to take the bags over to them.\n▶ 4:55[Narrator] Before you hear the rest of the conversation, you have some time to look at questions 7 to 10.\n▶ 5:23[Narrator] Now listen and answer questions 7 to 10.\n▶ 5:30Advisor: I expect you'd like to know a bit more about the general benefits for staff?\n▶ 5:34Student: Yes, please. Do they provide free accommodation for staff?\n▶ 5:38Advisor: It looks like they only provide it to permanent employees, but staff don't have to pay for transport to and from the island. So you'd have to stay in Port Thomas, but there are plenty of cheap places there.\n▶ 5:51Student: What about meals?\n▶ 5:53Advisor: Yes, they're provided when you're on duty . So you would save money on groceries. If you are interested, we can set up an interview for you. I know the resort personnel manager wants interviews on Wednesday, Thursday and Friday here at the college. Which day would suit you?\n▶ 6:11Student: Can we do it on Thursday as I work on Wednesdays?\n▶ 6:14Advisor: Fine. Is two o'clock okay?\n▶ 6:17Student: Perfect.\n▶ 6:18Advisor: Okay. I've booked you in for then.\n▶ 6:21Student: Is there anything I need to take to the interview?\n▶ 6:23Advisor: Let me see. Yes, you need to bring a CV giving details of your work experience and qualifications. And because they are planning on interviewing a lot of people, they've asked everyone to provide a photo as well, so they can remember who is who. Do you have any questions?\n▶ 6:45[Narrator] That is the end of Section 1. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-50-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "The walk is organised specifically for",
+       "options": [
+        {
+         "key": "A",
+         "text": "extremely fit people."
+        },
+        {
+         "key": "B",
+         "text": "parents with their children."
+        },
+        {
+         "key": "C",
+         "text": "tourists unfamiliar with the local area."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The walk is mainly aimed at families. We want to help people to walk with their children.\" — organised for parents with their children (B)."
+      },
+      {
+       "n": 12,
+       "text": "The maximum number of people on the walk will be",
+       "options": [
+        {
+         "key": "A",
+         "text": "220."
+        },
+        {
+         "key": "B",
+         "text": "250."
+        },
+        {
+         "key": "C",
+         "text": "280."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"For most of the walk's history, we set a maximum of 220 walkers. But this year we've been able to expand to 280.\" — the maximum this year is 280 (C)."
+      },
+      {
+       "n": 13,
+       "text": "The organisers will stop walkers taking part if they",
+       "options": [
+        {
+         "key": "A",
+         "text": "arrive without a waterproof coat."
+        },
+        {
+         "key": "B",
+         "text": "are causing a lot of trouble."
+        },
+        {
+         "key": "C",
+         "text": "are unable to answer basic safety questions."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The only time we do that is if people behave badly at the start.\" — walkers are stopped if they cause trouble (B); those without proper clothing are helped, not turned away."
+      },
+      {
+       "n": 14,
+       "text": "The walk was cancelled two years previously because of",
+       "options": [
+        {
+         "key": "A",
+         "text": "illness in the organising team."
+        },
+        {
+         "key": "B",
+         "text": "very stormy weather."
+        },
+        {
+         "key": "C",
+         "text": "problems getting people to help."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"A couple of years ago, the organizers made a decision to cancel because we didn't get as many volunteers as we needed to act as stewards.\" — cancelled because of problems getting people to help (C)."
+      },
+      {
+       "n": 15,
+       "text": "Badges can be obtained",
+       "options": [
+        {
+         "key": "A",
+         "text": "only when they have been ordered before the walk."
+        },
+        {
+         "key": "B",
+         "text": "immediately people have completed the whole walk."
+        },
+        {
+         "key": "C",
+         "text": "one week after the walk has finished."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"If you want one, you have to order it one week before the walk, and you'll get it by post two weeks after the walk.\" — badges are only obtained if ordered before the walk (A)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What advice does Peter give about the following objects? Choose the correct letter, A, B or C, next to Questions 16–20.",
+     "title": "Advice",
+     "options": [
+      {
+       "key": "A",
+       "text": "Walkers are advised to have this"
+      },
+      {
+       "key": "B",
+       "text": "Walkers can have this, if they wish"
+      },
+      {
+       "key": "C",
+       "text": "Walkers are advised NOT to have this"
+      }
+     ],
+     "questions": [
+      {
+       "n": 16,
+       "text": "a pair of thick trousers",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"It must be emphasized that this doesn't mean that you wear thick trousers like jeans. Lighter, waterproof apparel is better.\" — advised NOT to have thick trousers (C)."
+      },
+      {
+       "n": 17,
+       "text": "a mobile phone",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Some people like to bring their mobile phones, but there isn't always a good signal.\" — walkers can bring one if they wish (B)."
+      },
+      {
+       "n": 18,
+       "text": "a torch",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Some people asked if they should bring a torch, but frankly, they're a waste of space and weight.\" — advised NOT to have a torch (C)."
+      },
+      {
+       "n": 19,
+       "text": "something to drink",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Whether you carry things like high energy drinks is up to you.\" — walkers can have this, if they wish (B)."
+      },
+      {
+       "n": 20,
+       "text": "a rucksack",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"We say it's a very good idea to bring a rucksack.\" — walkers are advised to have this (A)."
+      }
+     ],
+     "allowReuse": true
+    }
+   ],
+   "transcript": "▶ 7:21[Narrator] Now turn to Section 2.\n▶ 7:26[Narrator] Section 2. You will hear a radio talk by Peter Gentle, the organiser of an annual walk called the Tavy Point Walk. First you have some time to look at questions 11 to 15.\n▶ 8:18[Narrator] Now listen carefully and answer questions 11 to 15.\n▶ 8:25Presenter: Today we're pleased to welcome Peter Gentle, who is organizing this year's famous Tavy Point Walk. Can you tell us about the walk, Peter?\n▶ 8:35Peter: Well, it's an organized group walk, which takes place every year on one day in October, across some of the most beautiful scenery in the country.\n▶ 8:44Peter: Just about anyone with normal fitness can do it, but we have lots of volunteer stewards who are posted at regular intervals along the way to offer help if needed. The walk is mainly aimed at families. We want to help people to walk with their children. It's healthy exercise, and it helps people get to know their local area better.\n▶ 9:05Peter: Now, for those of your listeners who might be interested in doing the walk, it takes place this year on Sunday the 27th of October. It's 18 miles in length, so quite long, but we ensure walkers are very well looked after. We like to involve as many people as possible, and it's getting busier every year.\n▶ 9:26Peter: For most of the walk's history, we set a maximum of 220 walkers. But this year we've been able to expand to 280 , because we've got a total of 50 volunteers to help us.\n▶ 9:41Presenter: You provide a lot of support then.\n▶ 9:43Peter: We have to be pretty strict about arrangements, but we do what we can to help people. If someone arrives without proper clothing, we can help out from our stocks of waterproofs, for example. We don't just turn them away. The only time we do that is if people behave badly at the start. We also spend a lot of time fielding walkers' questions about safety, both before the walk and while it's going on.\n▶ 10:07Presenter: Do you ever cancel the walk for very bad weather?\n▶ 10:10Peter: Yes, but it hasn't happened for several years. However, a couple of years ago, the organizers made a decision to cancel because we didn't get as many volunteers as we needed to act as stewards on the walk. The team felt really awful about it. But these things happen. If something does go amiss, we try to inform all walkers well in advance.\n▶ 10:33Peter: Now, if any of your listeners are interested in joining the walk, they should go to our website at www.tavk.org and give us their details. It costs £4.50 each to enter, and that covers a bottle of juice and a hot pie. It also helps towards maintaining the 12 staffed checkpoints at different parts on the route.\n▶ 10:57Peter: About 90% of our walkers do complete the whole 18-mile route. But if you're not well or feel you can't go any further, just inform the stewards when you get to the checkpoint, and they'll organize transport to get you where you need to go.\n▶ 11:11Peter: If you do complete the course, you are entitled to receive a badge. Now, unfortunately, we can't give those to you immediately on finishing. If you want one, you have to order it one week before the walk, and you'll get it by post two weeks after the walk , as long as you finish, of course. It may seem a strange system, but we found it works because only those walkers who really want a badge get one.\n▶ 11:39[Narrator] Before you hear the rest of the talk, you have some time to look at questions 16 to 20.\n▶ 12:11[Narrator] Now listen and answer questions 16 to 20.\n▶ 12:18Presenter: What do walkers need to take with them?\n▶ 12:21Peter: Good question. When you register for the walk, we send you a booklet with all the key information. But basically, we do say that you should be properly dressed.\n▶ 12:32Peter: Now, it must be emphasized that this doesn't mean that you wear thick trousers like jeans. Lighter, waterproof apparel is better. Some people like to bring their mobile phones, but there isn't always a good signal.\n▶ 12:46Peter: And remember, the checkpoints are there, so you can always rely on those. Some people asked if they should bring a torch, but frankly, they're a waste of space and weight . It's a relatively gentle, straightforward walk.\n▶ 13:00Peter: Another thing people ask about is refreshments. Whether you carry things like high energy drinks is up to you. And finally, we say it's a very good idea to bring a rucksack . But what size is up to the individual. But as I say, there's full information in the walker's booklet.\n▶ 13:17Presenter: Well, thank you very much, Peter.\n▶ 13:24[Narrator] That is the end of Section 2. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-50-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "What do the students say about each of the following websites? Choose SIX answers from the box and write the correct letter, A–H, next to Questions 21–26.",
+     "title": "Comments",
+     "options": [
+      {
+       "key": "A",
+       "text": "Information is not freely accessible"
+      },
+      {
+       "key": "B",
+       "text": "Too detailed for their purposes"
+      },
+      {
+       "key": "C",
+       "text": "Contains a useful tool for users"
+      },
+      {
+       "key": "D",
+       "text": "Convenient format"
+      },
+      {
+       "key": "E",
+       "text": "Up-to-date information"
+      },
+      {
+       "key": "F",
+       "text": "Difficult to navigate"
+      },
+      {
+       "key": "G",
+       "text": "Some information is missing"
+      },
+      {
+       "key": "H",
+       "text": "Useful historical information"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "text": "National Geographic",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"There was National Geographic. The thing there that struck me was a facility for creating tailor-made maps.\" — it contains a useful tool for users (C)."
+      },
+      {
+       "n": 22,
+       "text": "United Nations",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"The United Nations website... had masses of useful stuff. Only I couldn't get at it. It was for subscribers only.\" — information is not freely accessible (A)."
+      },
+      {
+       "n": 23,
+       "text": "Energy Information Administration",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"There were some population statistics there... but there didn't seem to be any figures for energy use.\" — some information is missing (G)."
+      },
+      {
+       "n": 24,
+       "text": "British Petroleum",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The only thing is it went into more depth than was necessary for our assignment.\" — the British Petroleum site is too detailed for their purposes (B)."
+      },
+      {
+       "n": 25,
+       "text": "Central Intelligence Agency",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"It seemed to be the only place I looked at that had data for this current year.\" — the CIA site has up-to-date information (E)."
+      },
+      {
+       "n": 26,
+       "text": "World Bank",
+       "answer": [
+        "H"
+       ],
+       "explanation": "\"I also found stuff on the World Bank site, and that had figures going back quite a long way.\" — useful historical information (H)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO decisions do the students reach about the subject matter of their assignment?",
+     "options": [
+      {
+       "key": "A",
+       "text": "They will keep the assessment criteria in mind."
+      },
+      {
+       "key": "B",
+       "text": "They will limit the scale of their investigation."
+      },
+      {
+       "key": "C",
+       "text": "They will select countries from all over the world."
+      },
+      {
+       "key": "D",
+       "text": "They will collect data about two groups of countries."
+      },
+      {
+       "key": "E",
+       "text": "They will find figures for wind and nuclear power."
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "B: \"One thing we've got to be careful about is biting off more than we can chew\" — they limit the scale. D: \"The top ten consumers of energy in the region, and also the bottom 10\" — two groups of countries. B: they agree to limit the scale of the investigation. D: they will collect data about the top ten and bottom ten energy consumers — two groups of countries."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "B: \"One thing we've got to be careful about is biting off more than we can chew\" — they limit the scale. D: \"The top ten consumers of energy in the region, and also the bottom 10\" — two groups of countries. B: they agree to limit the scale of the investigation. D: they will collect data about the top ten and bottom ten energy consumers — two groups of countries."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO tasks will Charlie be responsible for?",
+     "options": [
+      {
+       "key": "A",
+       "text": "reviewing the final draft"
+      },
+      {
+       "key": "B",
+       "text": "collecting basic figures"
+      },
+      {
+       "key": "C",
+       "text": "producing the graphics"
+      },
+      {
+       "key": "D",
+       "text": "processing the raw data"
+      },
+      {
+       "key": "E",
+       "text": "drafting the written sections"
+      }
+     ],
+     "questions": [
+      {
+       "n": 29,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "B: \"I'll volunteer to search out all of the raw data we need if you're prepared to do the necessary number crunching\" — Charlie collects the basic figures. E: \"Do you mind doing the text? You've got a better way with words\" — Charlie drafts the written sections. Charlie collects the basic figures (B) and drafts the written sections (E); Delia does the number crunching, the graphics, and the final review."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "B: \"I'll volunteer to search out all of the raw data we need if you're prepared to do the necessary number crunching\" — Charlie collects the basic figures. E: \"Do you mind doing the text? You've got a better way with words\" — Charlie drafts the written sections. Charlie collects the basic figures (B) and drafts the written sections (E); Delia does the number crunching, the graphics, and the final review."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 14:00[Narrator] Now turn to Section 3.\n▶ 14:07[Narrator] Section 3. You will hear two students called Charlie and Delia discussing a joint assignment for their human geography course. First, you have some time to look at questions 21 to 26.\n▶ 14:52[Narrator] Now listen carefully and answer questions 21 to 26.\n▶ 15:00Charlie: Hi Delia, shall we get down to planning our assignment? We haven't got long now before the deadline.\n▶ 15:06Delia: I know. And it's quite open-ended, isn't it? Just research and analyze data about energy consumption in a given region.\n▶ 15:13Charlie: Yes, and all we've done so far is check out a few likely websites. Shall we exchange ideas about those first?\n▶ 15:20Delia: Hmm, good idea. Let me look at my notes.\n▶ 15:24Charlie: Okay. I had a preliminary look at one or two websites. There was National Geographic. The thing there that struck me was a facility for creating tailor-made maps. We might like to use that when it comes to presenting our findings.\n▶ 15:40Delia: Right. That would make some types of data instantly clear, my guess.\n▶ 15:48Charlie: Also, I checked out the United Nations website. That one had masses of useful stuff. Only I couldn't get at it.\n▶ 15:56Delia: I know. It was for subscribers only, right? And we don't want to get into that sort of thing. After all, it's not a major piece of work we're doing.\n▶ 16:06Charlie: Yes, I agree. I looked at the website of an agency called the Energy Information Administration. There were some population statistics there that we could use, but there didn't seem to be any figures for energy use , so that site would only be suitable to a limited extent for our purposes.\n▶ 16:23Delia: I thought the British Petroleum website might be a good place to get information about energy use.\n▶ 16:29Charlie: Oh, good thinking.\n▶ 16:31Delia: There was lots of data actually. Uh, the only thing is it went into more depth than was necessary for our assignment , and we'd have to collate a lot of the figures to arrive at an overview. So I didn't think it was quite what we were looking for.\n▶ 16:47Delia: I also looked on the Central Intelligence Agency website.\n▶ 16:51Charlie: I'd never have thought of that.\n▶ 16:52Delia: Something worth noting. It seemed to be the only place I looked at that had data for this current year.\n▶ 16:58Charlie: Oh right. I'm not sure about the websites I looked at. I didn't look carefully enough, I guess.\n▶ 17:05Delia: And I also found stuff on the World Bank site, and that had figures going back quite a long way . Okay.\n▶ 17:15[Narrator] Before you hear the rest of the discussion, you have some time to look at questions 27 to 30.\n▶ 17:42[Narrator] Now listen and answer questions 27 to 30.\n▶ 17:50Charlie: Fine. We know roughly what we're doing, but have you got any more definite thoughts about what our subject matter should be?\n▶ 17:56Delia: I think one thing we've got to be careful about is biting off more than we can chew .\n▶ 18:02Charlie: Yes, especially as it doesn't count towards our final assessment anyway. So shall we just limit it to data about population size and energy consumption?\n▶ 18:10Delia: How about if we add in one other factor, carbon emissions? I think it'd be interesting to see what the interaction between those three factors is like.\n▶ 18:17Charlie: Okay. But in that case, we originally planned to stick to countries in North and South America. But what if we narrowed it down further?\n▶ 18:25Delia: I'd be happy with that.\n▶ 18:30Charlie: How about, let's say 20 countries in all? The top ten consumers of energy in the region, and also the bottom 10.\n▶ 18:42Delia: Hmm, sounds good. And we can calculate per capita consumption and per capita emissions to allow valid comparisons.\n▶ 18:50Charlie: Actually, it would be interesting to look at a breakdown of the types of energy each of those countries uses. You know, how much coal, how much wind power, how much nuclear power, and so on.\n▶ 19:01Delia: But we did just agree to restrict our data.\n▶ 19:05Charlie: I know. And then, what about the way we present our data? Our tutor said that's one of the things she'll be looking at in particular, especially our graphics. Don't you think a bar chart would be more effective than a set of tables with figures?\n▶ 19:20Delia: It might, but I've got another idea. I'm keen to display our data on a map instead. We can easily find a software program to do that.\n▶ 19:28Charlie: Brilliant.\n▶ 19:30Delia: Thanks. One last thing, Charlie, and then we better go away and get started. Who's going to do what?\n▶ 19:34Charlie: Your math is better than mine, so I'll volunteer to search out all of the raw data we need if you're prepared to do the necessary number crunching.\n▶ 19:42Delia: Okay. But can you get them to me as soon as possible?\n▶ 19:46Charlie: I'll do it tonight.\n▶ 19:49Delia: Okay. And I tell you what, since the graphics were my idea, I'll take those on. But do you mind doing the text? You've got a better way with words than I have.\n▶ 20:00Charlie: That's okay with me. As long as you'll agree to look over everything and give it the finishing touches before we hand it in.\n▶ 20:07Delia: It's a deal. Shall we meet at the same time tomorrow?\n▶ 20:14[Narrator] That is the end of Section 3. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-50-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Public Monument Assignment\nSection one\n- First, identify the monument and justify your choice\n- Comment on the [[31]] of the monument\n- Add information about its:\n- geographical location\n- [[32]] significance\n- historical context\n- Illustrate assignment with:\n- [[33]]\n- photos (with captions)\n- End with: record of architect’s achievements\nSection two: Design and construction\nInclude information about\n- the [[34]] of any particular style on the design\n- the [[35]] used in construction\n- specialist [[36]] required\nSection three: Assessment of design\nContent should include:\n- personal assessment\n- results of your survey\nUse personal assessment and survey to consider:\n- the [[37]] for building the monument\n- the monument’s [[38]] effect on members of the public\n- how well the monument suits its [[39]]\nRemember!\n- Credit given for good [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "success"
+       ],
+       "explanation": "\"Include a comment on whether you think the monument works. By that I mean its success.\" — comment on the success of the monument."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "social"
+       ],
+       "explanation": "\"A discussion of its social importance, how relevant it was for the people of the time.\" — its social significance."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "plans",
+        "plan"
+       ],
+       "explanation": "\"Insert any plans you can find and make sure any photographs you use have captions.\" — illustrate with plans and photos."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "influence"
+       ],
+       "explanation": "\"I'll want to read about any particular influence you think is apparent in the design.\" — the influence of a style (e.g. classical Greek, Bauhaus, Art Nouveau)."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "materials",
+        "material"
+       ],
+       "explanation": "\"I want information about the choice of materials, not only those which were used, but reasons why they may have been selected.\" — the materials used in construction."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "skills",
+        "skill"
+       ],
+       "explanation": "\"I'll want a mention of any particular skills that were necessary in the construction too.\" — specialist skills required."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "reason",
+        "reasons"
+       ],
+       "explanation": "\"Firstly, was the reason for erecting the monument a valid one?\" — the reason for building the monument."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "emotional"
+       ],
+       "explanation": "\"Then think about its emotional impact. When someone looks at it, how do they feel?\" — its emotional effect on the public."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "environment"
+       ],
+       "explanation": "\"Don't forget to consider how well the monument sits in its environment. Does it harmonize with it or does it clash with it?\" — how well it suits its environment."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "analysis"
+       ],
+       "explanation": "\"You don't get extra marks for lots of factual information. You get those for a well constructed analysis.\" — credit is given for good analysis."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 20:50[Narrator] Now turn to Section 4. Section 4. You will hear a university lecturer talking to his students about an architectural studies assignment.\n▶ 21:04[Narrator] First you have some time to look at questions 31 to 40.\n▶ 21:55[Narrator] Now listen carefully and answer questions 31 to 40.\n▶ 22:03Lecturer: Okay, before this morning's lecture on successful design of public buildings, I want to draw your attention to your next assignment.\n▶ 22:11Lecturer: So, your assignment is on public monuments, and by that I mean any structure or statue that is built to remind us of important events or of historic figures. The assignment should be divided into three sections.\n▶ 22:25Lecturer: At the beginning of section one, you should identify the monument you're examining and say why you've chosen it. Include a comment on whether you think the monument works. By that I mean its success. You may think it's wonderful. You may think it's a public eyesore, something that people hate looking at.\n▶ 22:44Lecturer: Next, you should also include in this first section information about where the monument was built, its geographical site, and also a discussion of its social importance , how relevant it was for the people of the time. You should also include information on when it was built, its historical background, and make sure you illustrate the assignment appropriately too.\n▶ 23:09Lecturer: I shall expect that. Insert any plans you can find and make sure any photographs you use have captions and are clearly referred to in the text, or they will be meaningless.\n▶ 23:21Lecturer: To end this section, you should include something about the record of the person who designed the monument, showing how the monument relates to his or her other work.\n▶ 23:36Lecturer: Right, in section two of the assignment, you'll need to give a detailed account of the design and construction of the monument. Firstly, I'll want to read about any particular influence you think is apparent in the design . More often than not, there will be something in it that links it to an established style, classical Greek, for example. Or it may reflect a movement, like Bauhaus or Art Nouveau, you decide.\n▶ 24:05Lecturer: Secondly, I want information about the choice of materials , not only those which were used, but reasons why they may have been selected from others that were available at the time, and in the area where the designer worked.\n▶ 24:19Lecturer: Next, I'll want a mention of any particular skills that were necessary in the construction too.\n▶ 24:30Lecturer: The third section is the most important one. Here you'll go into much more critical detail. To add to your own comments, you'll need to carry out a survey for this section to be as comprehensive and rounded as possible. Ask yourself and others the following questions.\n▶ 24:45Lecturer: Firstly, was the reason for erecting the monument a valid one? For example, was it one that ordinary members of the public, the man or woman on the street, can readily relate to, and did it justify how much public money it cost? Was it a waste? Or does it represent a sound cultural investment?\n▶ 25:05Lecturer: Then think about its emotional impact . When someone looks at it, how do they feel? Angry? Sad? Indifferent? And don't forget to consider how well the monument sits in its environment . Does it harmonize with it or does it clash with it? And is that important? Does it add to the effect or take away from it?\n▶ 25:28Lecturer: Right. Those guidelines should help. Oh, and remember, it is important to weigh up carefully how to make the maximum impact in this kind of critique within the number of words allowable. You don't get extra marks for lots of factual information. You get those for a well constructed analysis. That's what counts, and that needs to be based on your personal opinion.\n▶ 25:56[Narrator] That is the end of Section 4. You now have half a minute to check your answers.\n▶ 26:32[Narrator] That is the end of the listening test. You now have ten minutes to transfer your answers to the listening answer sheet."
+  }
+ ],
+ "audio": {
+  "file": "listening-50.mp3",
+  "durationSec": 1602,
+  "questionTimes": {
+   "1": 63,
+   "2": 82,
+   "3": 93,
+   "4": 126,
+   "5": 139,
+   "6": 208,
+   "7": 220,
+   "8": 231,
+   "9": 254,
+   "10": 266,
+   "11": 399,
+   "12": 413,
+   "13": 449,
+   "14": 473,
+   "15": 566,
+   "16": 580,
+   "17": 601,
+   "18": 616,
+   "19": 629,
+   "20": 642,
+   "21": 776,
+   "22": 788,
+   "23": 840,
+   "24": 865,
+   "25": 940,
+   "26": 970,
+   "27": 984,
+   "28": 1013,
+   "29": 1025,
+   "30": 1048,
+   "31": 1203,
+   "32": 1217,
+   "33": 1246,
+   "34": 1272,
+   "35": 1299,
+   "36": 1319,
+   "37": 1374,
+   "38": 1393,
+   "39": 1418,
+   "40": 1445
+  }
+ }
+}

@@ -1,0 +1,645 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-48",
+ "title": "CDI Listening Test 48",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-48-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "How to Become a Tea Taster\nTraining\n- A trainee mainly works in the company’s [[1]]\n- Tea is tasted using a [[2]]\n- Trainees learn to assign a [[3]] to each sample according to quality\n- Trainees must remember the [[4]] of all the different teas\n- Qualification now takes [[5]] years of training\nRequirements for New Staff\n- Must have a degree – a [[6]] degree is an advantage\n- Must be able to do [[7]] quickly\n- Sight test required – must see [[8]] accurately\n- Must have strong [[9]] skills – deals with varied people\n- Must be willing to [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "lab"
+       ],
+       "explanation": "\"A trainee is based in our lab for most of their time.\" — the trainee works mainly in the lab."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "spoon"
+       ],
+       "explanation": "\"Rather than that, or even a glass to do the tasting, we sip it from a spoon.\" — tea is tasted with a spoon."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "grade"
+       ],
+       "explanation": "\"One of the most important things is to learn how to decide which grade should be assigned to each sample.\" — assigning the correct grade."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "names",
+        "name"
+       ],
+       "explanation": "\"Yes, that's another important part of the training. It took me ages before I remembered them all.\" — remembering the names of all the teas."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "five",
+        "5"
+       ],
+       "explanation": "\"It used to be seven years, but we've speeded things up a bit, so now it only takes five.\" — qualification now takes 5 years."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "science"
+       ],
+       "explanation": "\"It doesn't have to be a science degree, even though that's a definite bonus.\" — science is an advantage but not required."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "maths"
+       ],
+       "explanation": "\"You need to be able to do maths and do it fast. A lot of the job is to do with the price of tea.\" — quick maths is essential."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "colour",
+        "color"
+       ],
+       "explanation": "\"You have to see colour accurately. It's very important when looking at tea leaves.\" — accurate colour vision is required."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "communication"
+       ],
+       "explanation": "\"Essential. You'll need to be highly skilled at that, as you'll meet such varied people in this job.\" — communication skills are essential."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "travel"
+       ],
+       "explanation": "\"There's no point doing this job if you don't like to travel. You'll be living out of a suitcase for a while.\" — must be willing to travel."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 0:00[Narrator] You will hear a student at a job fair talking to a man who works as a professional tea taster.\n▶ 0:35[Narrator] Now listen carefully and answer questions one to five.\n▶ 0:42Student: Hello, can I help you?\n▶ 0:44Clara: Hi. I'm still a student, but I've done a bit of research into the tea company you work for.\n▶ 0:55Student: Well, that's actually what I do. Would you like me to tell you a bit about what it's like being a trainee tea taster?\n▶ 1:03Student: Well, initially, even though there's some time spent in meetings at our office, a trainee is based in our lab for most of their time, being trained how to do the tasting.\n▶ 1:15Clara: Right. How do you actually learn how to taste tea? Do you use a special kind of cup?\n▶ 1:22Student: No. Rather than that, or even a glass to do the tasting, we sip it from a spoon .\n▶ 1:28Clara: Ah, okay. And what other kind of things will I need to learn?\n▶ 1:33Student: Well, there are many different qualities of tea, so one of the most important things is to learn how to decide which grade should be assigned to each sample.\n▶ 1:52Student: And then another important thing to learn is how to choose the right leaf for tea bags. Shape isn't nearly as important as the size in that case.\n▶ 2:06Clara: Gosh. So do all of the teas have their own name?\n▶ 2:06Student: Yes, that's another important part of the training. Remembering the names of them all took me ages.\n▶ 2:12Clara: I can imagine. So how long before I qualify? I heard it was seven years. Is that right?\n▶ 2:19Student: Well, it used to be, but we've speeded things up a bit, so now it only takes five . That's two years less than before, which is quite significant, really.\n▶ 3:11[Narrator] Now listen and answer questions six to ten.\n▶ 3:28Student: Well, you need to have a degree. However, it doesn't have to be a science degree, even though that's a definite bonus. My degree was in history, for example.\n▶ 3:40Student: Yes, you need to be able to do maths and do it fast. A lot of the job is to do with the price of tea, so that's really important.\n▶ 3:51Student: And this might seem unusual, but you'll have your sight tested. You have to see colour accurately. It's very important when looking at tea leaves.\n▶ 4:14Student: Communication is essential. You'll need to be highly skilled at that, as you'll meet such varied people in this job. Everyone from farmers to buyers.\n▶ 4:26Student: Yes, I'd say there's no point doing this job if you don't like to travel . You'll be living out of a suitcase for a while.\n▶ 4:47[Narrator] That is the end of part one."
+  },
+  {
+   "id": "cdi-listening-48-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "When did Pioneer Historical Village welcome its first paying visitors?",
+       "options": [
+        {
+         "key": "A",
+         "text": "1962"
+        },
+        {
+         "key": "B",
+         "text": "1970"
+        },
+        {
+         "key": "C",
+         "text": "1980"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"In 1980 the village welcomed its first paying visitors.\" — the village opened to the public in 1980 (C)."
+      },
+      {
+       "n": 12,
+       "text": "How much will each adult in the group pay for admission today?",
+       "options": [
+        {
+         "key": "A",
+         "text": "$11.00"
+        },
+        {
+         "key": "B",
+         "text": "$12.50"
+        },
+        {
+         "key": "C",
+         "text": "$16.00"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"It'll only be eleven dollars per person for all of you today.\" — the group pays $11.00 each (A)."
+      },
+      {
+       "n": 13,
+       "text": "What demonstration will visitors watch?",
+       "options": [
+        {
+         "key": "A",
+         "text": "How bread is baked"
+        },
+        {
+         "key": "B",
+         "text": "How candles are made"
+        },
+        {
+         "key": "C",
+         "text": "A traditional method of making sweets"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"We have an expert sweet maker who will be making lollipops the old fashioned way.\" — a traditional method of making sweets (C)."
+      },
+      {
+       "n": 14,
+       "text": "What experience with animals will visitors have?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Gathering eggs"
+        },
+        {
+         "key": "B",
+         "text": "Milking cows"
+        },
+        {
+         "key": "C",
+         "text": "Feeding goats"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"You're welcome to have a look and see if you can find any [eggs] to collect.\" — visitors can gather eggs from the chickens (A)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Write the correct letter, A–K, next to Questions 15–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      },
+      {
+       "key": "J",
+       "text": "J"
+      },
+      {
+       "key": "K",
+       "text": "K"
+      }
+     ],
+     "questions": [
+      {
+       "n": 15,
+       "text": "Schoolhouse",
+       "answer": [
+        "I"
+       ],
+       "explanation": "\"If you head directly north, you'll come to a beautiful old church. The schoolhouse is diagonally across from it.\" — schoolhouse at I, diagonal from the church."
+      },
+      {
+       "n": 16,
+       "text": "Mill",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Go straight up from the main gate until you get to the clock tower. Turn right and it's on the other side of the road, across from the pond.\" — the mill is at B."
+      },
+      {
+       "n": 17,
+       "text": "Stables",
+       "answer": [
+        "H"
+       ],
+       "explanation": "\"They're a large building backing onto the car park. If you head west past the church, it's the first building you come to.\" — stables at H."
+      },
+      {
+       "n": 18,
+       "text": "Doctor's Office",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"Look in the middle of your maps and it's in a block of three buildings that are all close together.\" — doctor's office at E in the middle block."
+      },
+      {
+       "n": 19,
+       "text": "Hotel",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"Go up past the picnic area and the hotel is on the opposite side of the path, near the pond.\" — hotel at F, near the pond."
+      },
+      {
+       "n": 20,
+       "text": "Workshop",
+       "answer": [
+        "J"
+       ],
+       "explanation": "\"It's at the end of that narrow winding path just south of the picnic area, which is on the right hand side of your map.\" — workshop at J."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening48-map.webp",
+      "alt": "Pioneer Historical Village map"
+     }
+    }
+   ],
+   "transcript": "▶ 5:15[Narrator] Part two. You will hear a guide talking to a group of visitors to Pioneer Historical Village.\n▶ 5:58[Narrator] Now listen carefully and answer questions eleven to fourteen.\n▶ 6:05Guide: Hello everyone and welcome to Pioneer Historical Village. It's an outdoor park recreated to look just like a village from the mid nineteenth century.\n▶ 6:27Guide: Going back a bit, in nineteen sixty-two a committee was formed in the hope of preserving some of the local history. Many years of planning and fundraising followed.\n▶ 6:39Guide: Volunteers worked throughout the 1970s to restore and move buildings to the site. In 1980 the village welcomed its first paying visitors.\n▶ 6:53Guide: Since there are ten of you all together in this party, you qualify for the group discount. The normal price of admission is sixteen dollars for adults and twelve fifty for students and seniors. But it'll only be eleven dollars per person for all of you today.\n▶ 7:29Guide: We had hoped to show you how candles are made, but the person organizing it had to cancel. Just outside the shop we have an expert sweet maker who will be making lollipops the old fashioned way . So do go and have a look.\n▶ 7:47Guide: If you want to make bread yourself, head to the bakery and have a go. The space is quite small though, so no spectators please.\n▶ 7:53Guide: We used to keep cows in the dairy, but it became difficult to manage. Chickens are everywhere though, not just on the farms. Every house kept a few for the eggs. You're welcome to have a look and see if you can find any to collect.\n▶ 9:13[Narrator] Now listen and answer questions fifteen to twenty.\n▶ 9:26Guide: Please open your maps and we'll have a look at the layout. We'll enter through the main gate which is at the bottom of your map. If you head directly north, you'll come to a beautiful old church. The schoolhouse is diagonally across from it.\n▶ 9:40Guide: The mill is quite interesting. That's where they ground wheat to make flour for baking. To find it, go straight up from the main gate until you get to the clock tower. Turn right and it's on the other side of the road, across from the pond.\n▶ 10:01Guide: Then there are the stables where the horses were kept. They're a large building backing onto the car park. If you head west past the church, it's the first building you come to.\n▶ 10:16Guide: To get an idea of what medical care was like, you might like to visit the doctor's office . Look in the middle of your maps and it's in a block of three buildings that are all close together.\n▶ 10:29Guide: There's even an old hotel . Go up past the picnic area and the hotel is on the opposite side of the path, near the pond.\n▶ 10:42Guide: Another place to see is the workshop . It's at the end of that narrow winding path just south of the picnic area, which is on the right hand side of your map at the eastern end of the village.\n▶ 11:00[Narrator] That is the end of part two."
+  },
+  {
+   "id": "cdi-listening-48-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO things do Annie and Ryan agree are surprising about people’s behaviour and attitudes to waste disposal?",
+     "options": [
+      {
+       "key": "A",
+       "text": "People like to be reminded about what to recycle."
+      },
+      {
+       "key": "B",
+       "text": "People often forget what is dangerous."
+      },
+      {
+       "key": "C",
+       "text": "People are prepared to pay more for safer products."
+      },
+      {
+       "key": "D",
+       "text": "People recycle cheap items less often than expensive ones."
+      },
+      {
+       "key": "E",
+       "text": "People think waste disposal is boring."
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "\"People find waste disposal rather tiresome (E) and people are more careful using dangerous materials than when disposing of them — they simply don't remember (B).\" — both are surprising. \"People find waste disposal rather tiresome (E) and forget that materials are dangerous when they dispose of them (B).\" — both B and E are the two correct answers."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "\"People find waste disposal rather tiresome (E) and people are more careful using dangerous materials than when disposing of them — they simply don't remember (B).\" — both are surprising. \"People find waste disposal rather tiresome (E) and forget that materials are dangerous when they dispose of them (B).\" — both B and E are the two correct answers."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO things does Ryan think will improve recycling rates in the local area?",
+     "options": [
+      {
+       "key": "A",
+       "text": "giving people financial rewards for recycling"
+      },
+      {
+       "key": "B",
+       "text": "giving a fine to households which do not recycle"
+      },
+      {
+       "key": "C",
+       "text": "involving children in more schemes"
+      },
+      {
+       "key": "D",
+       "text": "passing laws which require local councils to recycle more"
+      },
+      {
+       "key": "E",
+       "text": "having more research on people's current habits"
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "\"I think it's more effective to impose a penalty on homes if they don't recycle stuff (B)... getting the local community involved, such as schools, working with kids (C).\" — Ryan suggests both. \"Financial penalties on homes (B) and involving children in schools to build good habits (C).\" — Ryan's two suggestions."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "\"I think it's more effective to impose a penalty on homes if they don't recycle stuff (B)... getting the local community involved, such as schools, working with kids (C).\" — Ryan suggests both. \"Financial penalties on homes (B) and involving children in schools to build good habits (C).\" — Ryan's two suggestions."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What advice is given about disposing of each type of waste? Choose SIX answers from the box and write the correct letter, A–H, next to Questions 25–30.",
+     "title": "Advice",
+     "options": [
+      {
+       "key": "A",
+       "text": "should be disposed of more regularly"
+      },
+      {
+       "key": "B",
+       "text": "should have better labelling on packaging"
+      },
+      {
+       "key": "C",
+       "text": "should normally be used up completely"
+      },
+      {
+       "key": "D",
+       "text": "should be saved for later disposal"
+      },
+      {
+       "key": "E",
+       "text": "should be made available for others’ use"
+      },
+      {
+       "key": "F",
+       "text": "should be repaired rather than thrown away"
+      },
+      {
+       "key": "G",
+       "text": "should be further modified to be made less harmful"
+      },
+      {
+       "key": "H",
+       "text": "should be retained and used for different purposes"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "text": "Paint",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"We advise setting up schemes where you can take it [paint] to a centre to be used by people who need it.\" — make available for others' use (E)."
+      },
+      {
+       "n": 26,
+       "text": "Batteries",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"People should have a storage container at home where they can put them [batteries] until they've got enough to take to a central collection facility.\" — save for later disposal (D)."
+      },
+      {
+       "n": 27,
+       "text": "Medicines",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Antibiotics should not need to be thrown away in the first place, because doctors usually tell us we should finish off the whole course of tablets.\" — should normally be used up completely (C)."
+      },
+      {
+       "n": 28,
+       "text": "Pesticides",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"There needs to be clearer information given on the packaging [of pesticides], so people are left in no doubt.\" — better labelling on packaging (B)."
+      },
+      {
+       "n": 29,
+       "text": "Tyres",
+       "answer": [
+        "H"
+       ],
+       "explanation": "\"Rather than sending them [tyres] to the dump, people should be encouraged to be creative... make them into things like plant holders for your garden.\" — retained and used for different purposes (H)."
+      },
+      {
+       "n": 30,
+       "text": "Fridge",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"We now have the capacity to use less dangerous materials... reduce effects on the ozone layer.\" — further modified to be made less harmful (G)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 11:10[Narrator] Part three. You will hear two environmental study students called Annie and Ryan discussing with their tutor a presentation they will give on disposing of dangerous household waste products.\n▶ 11:48[Narrator] Now listen carefully and answer questions twenty-one to twenty-four.\n▶ 11:56Tutor: Hi, Annie, Ryan, come in. I know you want to discuss your project presentation. Start by reminding me what you're focusing on.\n▶ 12:07Annie: We've been looking at a research article on the disposal of hazardous household waste.\n▶ 12:12Ryan: That includes things like dangerous chemicals we use in the home, but also less obvious items like electrical equipment.\n▶ 12:23Ryan: The research basically involved interviews, trying to find out what influence the methods people used to get rid of their dangerous waste.\n▶ 12:40Ryan: It's no great shock that in general people are much more aware than they used to be, you know, about the effects of these materials on the environment.\n▶ 12:56Annie: I did think it was surprising that people don't get very enthusiastic about the subject of waste disposal, like they do about other aspects of environmental protection.\n▶ 13:08Ryan: Many people are more careful when they're using certain hazardous materials than when they are getting rid of them. At that stage, they simply don't remember that they'll be bad for the environment.\n▶ 13:48Annie: In the conclusion section of the article, they talked about ways to improve recycling rates in the local area.\n▶ 14:00Ryan: I think financial penalties are a good idea, but criminalizing people is too harsh. I think it's more effective to impose a penalty on homes if they don't recycle stuff.\n▶ 14:12Annie: I still think legislation forcing local councils to increase recycling rates works better.\n▶ 14:25Ryan: I think encouragement is always better in the long run, and getting the local community involved, such as schools, working with kids. That way you establish good habits which last throughout their lives.\n▶ 14:39[Narrator] Now listen and answer questions twenty-five to thirty.\n▶ 15:00Annie/Ryan: We thought we'd talk about different types of waste covered in the research and give advice on each one.\n▶ 15:40Annie: We'll start with paint . We advise setting up schemes where you can take it to a centre to be used by people who need it.\n▶ 16:10Tutor: And will you discuss batteries?\n▶ 16:10Ryan: Definitely. We think people should have a storage container at home where they can put batteries until they've got enough to take to a central collection facility.\n▶ 16:24Tutor: Medicines are really interesting. I imagine people don't think of them as dangerous.\n▶ 16:24Ryan: No, indeed. Things like antibiotics should not need to be thrown away in the first place, because doctors usually tell us we should finish off the whole course of tablets.\n▶ 16:53Ryan: For pesticides , there needs to be clearer information given on the packaging, so people are left in no doubt.\n▶ 17:05Annie: We thought we'd also look at tyres . Rather than sending them to the dump, people should be encouraged to be creative with them — like making them into plant holders for your garden.\n▶ 17:28Annie: We've opted to finish with fridges because this is actually a good news story. We now have the capacity to use less dangerous materials and should continue to exploit that capacity to reduce effects on the ozone layer.\n▶ 17:52[Narrator] That is the end of part three."
+  },
+  {
+   "id": "cdi-listening-48-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Whale Sharks — Field Trip Notes\nBiology\n- Largest species of fish in the world — despite their size, they are docile\n- Like many whales: diet of plankton and krill; prefer to stay near the [[31]]\n- Unlike whales: lack real [[32]] — their skeleton is made of cartilage\nNingaloo, Western Australia\n- Whale sharks gather there April–July — nearby coral reef provides food\n- Reef is very close to the [[33]] — easy access for divers\nCurrent Monitoring Methods\n- Electronic tags attached manually to the [[34]] — expensive; can fall off\n- Special [[35]] used to spot and count animals in the ocean\nNew Research on Feeding Habits\n- Analyses plankton — different locations produce different quantities of [[36]] types\n- Comparing plankton data to maps shows exactly where a shark has been feeding\nHuman Impact Study\n- Engine noise caused whale sharks to [[37]]\nCommunity & Conservation\n- Whale shark “race”: tagged sharks allocated to a [[38]] for children to track\n- All [[39]] to whale sharks must be documented (date, location, photo)\n- New code of conduct: scuba diving banned — whale sharks are disturbed by [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "surface"
+       ],
+       "explanation": "\"Unlike many whale species, they prefer to swim close to the surface of the water.\" — whale sharks stay near the surface."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "bones",
+        "bone"
+       ],
+       "explanation": "\"Their skeleton is made entirely of cartilage, in comparison to whales that have skeletons made of real bones.\" — whale sharks lack real bones."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "shore"
+       ],
+       "explanation": "\"The reef is in close proximity to the shore, unlike some reefs that you have to travel miles to get to.\" — the reef is near the shore."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "fin"
+       ],
+       "explanation": "\"One way is to use an electronic tracking device or tag, which researchers have to attach manually to the fin.\" — tags are attached to the fin."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "drone"
+       ],
+       "explanation": "\"Another way of monitoring whale sharks is with a special drone to spot the animals in the ocean.\" — drones are used to spot them."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "carbon"
+       ],
+       "explanation": "\"Plankton from different places contains different quantities of carbon types.\" — different carbon quantities identify where the shark has been."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "dive"
+       ],
+       "explanation": "\"As soon as it heard the sound [of the engine], we saw it dive.\" — the whale shark dives when it hears engine noise."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "school"
+       ],
+       "explanation": "\"The researchers select a mature whale shark which has been tagged and they allocate it to a school.\" — each school tracks a whale shark."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "injuries",
+        "injury"
+       ],
+       "explanation": "\"All injuries which whale sharks suffer must be documented, with information such as date and location.\" — all injuries must be recorded."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "bubbles",
+        "bubble"
+       ],
+       "explanation": "\"Scuba diving is not going to be allowed anymore, as previous research has found that whale sharks find bubbles disturbing.\" — bubbles disturb whale sharks."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 18:03[Narrator] Part four. You will hear part of a student presentation about a field trip to a whale shark research center given to fellow marine biology students.\n▶ 19:10[Narrator] Now listen carefully and answer questions thirty-one to forty.\n▶ 19:17Student: Hi everyone, I've just returned from my field trip and want to share some of my experiences with you. I learnt a lot about whale sharks on this trip.\n▶ 19:27Student: For example, they're actually the largest species of fish in the world's seas, about the size of a bus. Despite their massive size, whale sharks are docile animals.\n▶ 19:38Student: They're similar in terms of their large size and what they eat. Like many species of whales, their diet consists mainly of plankton and krill, which are tiny plants and animals.\n▶ 20:03Student: Unlike many whale species, they prefer to swim close to the surface of the water rather than cruising the depths of the ocean.\n▶ 20:17Student: Their skeleton is made entirely of cartilage, in comparison to whales that have skeletons made of real bones .\n▶ 20:30Student: The place I visited is called Ningaloo in Western Australia. We were there to observe a large group of whale sharks which congregate in that part of the ocean each year between April and July.\n▶ 20:38Student: Ningaloo is ideal for whale sharks because there is a coral reef nearby which ensures an abundant supply of food.\n▶ 20:46Student: It's great for divers too, because although it's in relatively deep waters, the reef is in close proximity to the shore , unlike some reefs that you have to travel miles to get to.\n▶ 21:12Student: One way is to use an electronic tracking device or tag, which researchers have to attach manually to the fin .\n▶ 21:39Student: Another way of monitoring whale sharks is with a special drone to spot the animals in the ocean.\n▶ 21:59Student: Apparently, plankton from different places contains different quantities of carbon types. The researchers are checking the plankton consumed by the whale shark against maps to track exactly where the whale shark has been feeding.\n▶ 22:42Student: We drifted along in our boat with the engine off, then when a whale shark was nearby, we switched on the engine.\n▶ 22:54Student: As soon as it heard the sound, we saw it dive . This happened on several occasions and was quite obvious.\n▶ 23:13Student: The researchers select a mature whale shark which has been tagged and they allocate it to a school . The children get to track the journey of their whale shark and see which one travels the furthest.\n▶ 23:38Student: While these events may be rare, all injuries which whale sharks suffer must be documented, with information such as date and location and a photograph if possible.\n▶ 24:05Student: Scuba diving is not going to be allowed anymore, as previous research has found that whale sharks find bubbles disturbing.\n▶ 24:18[Narrator] That is the end of part four."
+  }
+ ],
+ "audio": {
+  "file": "listening-48.mp3",
+  "durationSec": 1474,
+  "questionTimes": {
+   "1": 63,
+   "2": 82,
+   "3": 93,
+   "4": 126,
+   "5": 139,
+   "6": 208,
+   "7": 220,
+   "8": 231,
+   "9": 254,
+   "10": 266,
+   "11": 399,
+   "12": 413,
+   "13": 449,
+   "14": 473,
+   "15": 566,
+   "16": 580,
+   "17": 601,
+   "18": 616,
+   "19": 629,
+   "20": 642,
+   "21": 776,
+   "22": 788,
+   "23": 840,
+   "24": 865,
+   "25": 940,
+   "26": 970,
+   "27": 984,
+   "28": 1013,
+   "29": 1025,
+   "30": 1048,
+   "31": 1203,
+   "32": 1217,
+   "33": 1246,
+   "34": 1272,
+   "35": 1299,
+   "36": 1319,
+   "37": 1374,
+   "38": 1393,
+   "39": 1418,
+   "40": 1445
+  }
+ }
+}

@@ -1,0 +1,666 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-70",
+ "title": "CDI Listening Test 70",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-70-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the table. Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "| Local Walks |\n|   | Village walk | McGrady Falls Trails | Coal Mine walk |\n| Length | 6 km | 12 km | 13.5 km |\n| Level of difficulty | Easy | [[1]] | Easy |\n| Attractions | • The [[2]] in the centre • A [[3]] with a good view | • A [[4]] below the falls • Lots of [[5]] | • Signs about the [[6]] of the mine |",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "moderate"
+       ],
+       "explanation": "Well, the village walks classified as easy. McGrady Falls has some climbing, which is a bit difficult, but overall it's moderate."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "museum"
+       ],
+       "explanation": "Well, with the village walk, you start off in the village. It's really nice, and right in the middle there's the museum. That's very popular. It tells you a bit aboutu2026"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "park"
+       ],
+       "explanation": "Then at the edge of the village there's a park where you can have a rest and look at the view before you set off on the walk back. It's pretty impressive on a clearu2026"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "pool"
+       ],
+       "explanation": "Yeah, just under the falls there's a great pool. At this time of year it's quite chilly, but it's a good way of cooling off after the climb up. And if you'reu2026"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "flowers",
+        "flower"
+       ],
+       "explanation": "Yeah, just under the falls there's a great pool. At this time of year it's quite chilly, but it's a good way of cooling off after the climb up. And if you'reu2026"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "history"
+       ],
+       "explanation": "No, it's closed down now, but there are signs along the path telling you all about the mine's history. It's very popular with school parties, but it's not just aimedu2026"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "McGrady Falls Trail",
+     "template": "- Will be given a [[7]] with a ticket\n- Can buy a picnic from the [[8]] at the entrance\n- Meet direct bus: number [[9]]\n- Get off bus at the [[10]]",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "map"
+       ],
+       "explanation": "Well, I should tell you there's an entrance fee for the trail, for maintenance, etc. It's uh ten dollars for adults, and you'll need a map because the walk's notu2026"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "café",
+        "cafe"
+       ],
+       "explanation": "The best thing is to get that from the cafe at the beginning of the trail. They'll pack it all up for you."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "279"
+       ],
+       "explanation": "That's the number two six eight bus. It wouldn't take you there directly. It's best if you walk down to the market and then you can catch the number two seven nineu2026"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "lake"
+       ],
+       "explanation": "You need to ask the bus driver to stop at the lake. The start of the walk is just beyond that. Okay."
+      }
+     ]
+    }
+   ],
+   "transcript": "A: Part one You will hear a woman asking a tourist representative about walks in the local area. First, you have some time to look at questions one to six.\nA: Now listen carefully and answer questions 1 to 6.\nB: G’day. What can I do for you?\nC: I’d like to do a day’s walk in the area. Do you have any suggestions?\nB: Well, the most popular day walks around here are the village walk, the McGrady Falls Trail, and the coal mine walk. If you just want a short walk, you can do the village walk. That’s just six kilometres.\nB: The McGrady Falls is twelve kilometres. The coal mine walks a bit longer again, it’s thirteen point five.\nC: Right. So are those two more difficult as well as longer?\nB: Well, the village walks classified as easy. McGrady Falls has some climbing, which is a bit difficult, but overall it’s moderate.\nB: But the coal mine walks mostly on flat ground, and the paths are very good, so that’s down as easy in spite of the length.\nC: And um what’s special about each of the walks? I mean what interesting things could I see?\nB: Well, with the village walk, you start off in the village. It’s really nice, and right in the middle there’s the museum. That’s very popular. It tells you a bit about the background to the region.\nC: Okay.\nB: Then at the edge of the village there’s a park where you can have a rest and look at the view before you set off on the walk back. It’s pretty impressive on a clear day. You get a fantastic view of the mountains. Hmm.\nC: I wouldn’t mind a chance to go swimming.\nC: Can I do that at the McGrady Falls?\nB: Yeah, just under the falls there’s a great pool. At this time of year it’s quite chilly, but it’s a good way of cooling off after the climb up. And if you’re interested in flowers, it’s a really good walk. You’ll see lots of them.\nC: Oh right. And the coal mine walk? Do you actually go down a mine?\nB: No, it’s closed down now, but there are signs along the path telling you all about the mine’s history. It’s very popular with school parties, but it’s not just aimed at children. It’s interesting for anyone.\nC: Well, it sounds good, but I think I’ll go for the McGrady Falls trail.\nA: Before you hear the rest of the conversation, you have some time to look at questions seven to ten.\nA: Now listen and answer questions seven to ten.\nC: Is there anything else I should know about it? Things to take and so on?\nB: Well, I should tell you there’s an entrance fee for the trail, for maintenance, etc. It’s uh ten dollars for adults, and you’ll need a map because the walk’s not guided, but they’ll give you one when you pay your entry fee.\nC: Right. And I’d like to take a picnic.\nB: The best thing is to get that from the cafe at the beginning of the trail. They’ll pack it all up for you.\nC: Great. And can you tell me how to get there?\nB: Sure. The start of the trail is about nine kilometers from here, so it’s best to get a bus.\nC: Will the bus that stops at the front of the hotel take me there?\nB: That’s the number two six eight bus. It wouldn’t take you there directly. It’s best if you walk down to the market and then you can catch the number two seven nine there. It’ll take you directly to the start of the trail.\nC: Okay. And will it be easy to tell when to get off?\nB: You need to ask the bus driver to stop at the lake. The start of the walk is just beyond that. Okay.\nC: And the trail is a round trip?\nB: Yes, so you can get the same bus back. But mind that you’re not too late. The last bus leaves at five thirty on weekdays and six thirty on Saturdays and six o’clock on Sundays.\nC: Okay. Well, thanks for all that information.\nB: No problems. Have a good walk.\nA: That is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-70-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap-box",
+     "instructions": "Which change is proposed for each of the following problem areas? Choose the correct change for each area and move it into the gap.",
+     "title": "Problem areas",
+     "options": [
+      {
+       "key": "A",
+       "text": "improve the road surface"
+      },
+      {
+       "key": "B",
+       "text": "add flowering plants"
+      },
+      {
+       "key": "C",
+       "text": "provide more bus stops"
+      },
+      {
+       "key": "D",
+       "text": "plant native trees"
+      },
+      {
+       "key": "E",
+       "text": "create new grassy areas"
+      },
+      {
+       "key": "F",
+       "text": "build a noise barrier"
+      },
+      {
+       "key": "G",
+       "text": "install traffic lights"
+      }
+     ],
+     "template": "Shared access paths [[11]]\nHighway [[12]]\nHousing estate [[13]]\nLocal roads [[14]]\nPicnic area [[15]]",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "E"
+       ],
+       "explanation": "For the shared access paths, by those I mean the paths shared by both bikes and pedestrians, we plan to turn these into open areas with grass around them."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "D"
+       ],
+       "explanation": "Now, along the highway, we want to put trees that are native to this area to add shade and make it more attractive. We thought possibly the spotted gum, which growsu2026"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "F"
+       ],
+       "explanation": "Now, I know those of you who live in the housing estate are disturbed by the sound of traffic nearby. We are aiming to solve this problem by constructing a wallu2026"
+      },
+      {
+       "n": 14,
+       "answer": [
+        "C"
+       ],
+       "explanation": "Moving on now to the local roads, we want to encourage more public transport use and solve some of our traffic problems, so we're going to add a considerable numberu2026"
+      },
+      {
+       "n": 15,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Just finally, as a way of thanking the community for their cooperation, we plan to make the picnic area in the park near the bus terminal more attractive."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Choose the correct letter, A–H, next to each place.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 16,
+       "text": "Park ‘n’ ride car park",
+       "answer": [
+        "A"
+       ],
+       "explanation": "It'll be a transport hub, linking all forms of transport in the area. To this end, we're building an underground park and ride car park so commuters can drive to theu2026"
+      },
+      {
+       "n": 17,
+       "text": "Bus interchange",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Now on the Progress Road side of the site, on the top left of your map is where we plan to put the bus interchange. Commuters will have direct access to the platformu2026"
+      },
+      {
+       "n": 18,
+       "text": "Bicycle lockers",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Cycling is an important part of our city's transport plan, so cyclists will also be fully catered for with 80 new bicycle lockers. You can see where they are on theu2026"
+      },
+      {
+       "n": 19,
+       "text": "Showers",
+       "answer": [
+        "D"
+       ],
+       "explanation": "You'll even be able to shower at the station after your bike ride as we're installing showers between the toilets and the platform. We'll also install a fountain atu2026"
+      },
+      {
+       "n": 20,
+       "text": "Lift",
+       "answer": [
+        "F"
+       ],
+       "explanation": "And between the fountain and the ticket machine, we're putting in a lift for our elderly and disabled passengers. They will be able to buy their ticket, then passu2026"
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening70-map.webp",
+      "alt": "Plan of Richlands Station"
+     }
+    }
+   ],
+   "transcript": "A: Part 2 You will hear part of a talk at a public meeting about a road and rail improvement project. First, you have some time to look at questions 11 to 15.\nA: Now listen carefully and answer questions eleven to fifteen.\nD: Welcome everyone. Thanks for coming to this information evening. The purpose of this meeting is to give you a chance to learn more about the Road and Rail Improvement Project.\nD: We’ve identified several problem areas and we’ve come up with some changes that we think will improve the local environment.\nD: For the shared access paths, by those I mean the paths shared by both bikes and pedestrians, we plan to turn these into open areas with grass around them.\nD: Cyclists and pedestrians need to be able to see each other clearly to avoid any accidents. So we’ve decided to remove the large native trees from the area for that reason.\nD: Now, along the highway, we want to put trees that are native to this area to add shade and make it more attractive. We thought possibly the spotted gum, which grows naturally here.\nD: Now, I know those of you who live in the housing estate are disturbed by the sound of traffic nearby. We are aiming to solve this problem by constructing a wall between the estate and the road, and possibly in the future we might consider adding some artwork to it.\nD: We think this will be quite an effective solution.\nD: Moving on now to the local roads, we want to encourage more public transport use and solve some of our traffic problems, so we’re going to add a considerable number of stops to the bus routes that run along those roads.\nD: Just finally, as a way of thanking the community for their cooperation, we plan to make the picnic area in the park near the bus terminal more attractive.\nD: So we’re adding some colourful new rose beds that our gardeners will be putting in at the completion of the project.\nA: Before you hear the rest of the talk, you have some time to look at questions sixteen to twenty.\nA: Now listen and answer questions sixteen to twenty.\nD: Now I’d like to give you more information about the renovations to Richland’s train station. Can you all see a copy of the plan? We envisage Richland Station as more than just a train station.\nD: It’ll be a transport hub, linking all forms of transport in the area. To this end, we’re building an underground park and ride car park so commuters can drive to the station, park and then ride to work on the train.\nD: That’s the entrance to it on the corner of Progress and Garden Road. You can drive into it from Progress Road.\nD: Now on the Progress Road side of the site, on the top left of your map is where we plan to put the bus interchange. Commuters will have direct access to the platform from the bus interchange via a covered walkway.\nD: Cycling is an important part of our city’s transport plan, so cyclists will also be fully catered for with 80 new bicycle lockers. You can see where they are on the plan in the bottom left hand corner next to the bike path.\nD: Cyclists can ride to the station, store their bikes in the lockers and board the train. Oh, and I forgot the most important thing.\nD: You’ll even be able to shower at the station after your bike ride as we’re installing showers between the toilets and the platform. We’ll also install a fountain at the station to make the area more attractive. You can see it in the centre of the plan.\nD: And between the fountain and the ticket machine, we’re putting in a lift for our elderly and disabled passengers. They will be able to buy their ticket, then pass directly to the platform via the lift.\nD: So I hope that gives you a much better idea of the new facilities that’ll be available at Richland station. Now, we would like your feedback about the project, so\nA: That is the end of part two. You now have 30 seconds to check your answers to part two.\nD: Welcome everyone. Thanks for coming to this information evening. The purpose of this meeting is to give you a chance to learn more about the Road and Rail Improvement Project.\nD: We’ve identified several problem areas and we’ve come up with some changes that we think will improve the local environment. For the shared access paths, by those I mean the paths shared by both bikes and pedestrians.\nD: We plan to turn these into open areas with grass around them. Cyclists and pedestrians need to be able to see each other clearly to avoid any accidents.\nD: So we’ve decided to remove the large native trees from the area for that reason. Now, along the highway, we want to put trees that are native to this area to add shade and make it more attractive.\nD: We thought possibly the spotted gum, which grows naturally here. Now I know those of you who live in the housing estate are disturbed by the sound of traffic nearby.\nD: We are aiming to solve this problem by constructing a wall between the estate and the road, and possibly in the future we might consider adding some artwork to it. We think this will be quite an effective solution.\nD: Moving on now to the local roads, we want to encourage more public transport use and solve some of our traffic problems, so we’re going to add a considerable number of stops to the bus routes that run along those roads.\nD: Just finally, as a way of thanking the community for their cooperation, we plan to make the picnic area in the park near the bus terminal more attractive.\nD: So we’re adding some colourful new rose beds that our gardeners will be putting in at the completion of the project.\nD: Now I’d like to give you more information about the renovations to Richland’s train station. Can you all see a copy of the plan? We envisage Richland Station as more than just a train station.\nD: It’ll be a transport hub, linking all forms of transport in the area. To this end, we’re building an underground park and ride car park so commuters can drive to the station, park and then ride to work on the train.\nD: That’s the entrance to it on the corner of Progress and Garden Road. You can drive into it from Progress Road.\nD: Now on the Progress Road side of the site, on the top left of your map is where we plan to put the bus interchange. Commuters will have direct access to the platform from the bus interchange via a covered walkway.\nD: Cycling is an important part of our city’s transport plan, so cyclists will also be fully catered for with 80 new bicycle lockers. You can see where they are on the plan in the bottom left hand corner next to the bike path.\nD: Cyclists can ride to the station, store their bikes in the lockers and board the train. Oh, and I forgot the most important thing.\nD: You’ll even be able to shower at the station after your bike ride as we’re installing showers between the toilets and the platform. We’ll also install a fountain at the station to make the area more attractive. You can see it in the center of the plan.\nD: And between the fountain and the ticket machine, we’re putting in a lift for our elderly and disabled passengers. They will be able to buy their ticket, then pass directly to the platform via the lift.\nD: So I hope that gives you a much better idea of the new facilities that’ll be available at Richland Station."
+  },
+  {
+   "id": "cdi-listening-70-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Laura chose Burcock Engineering for her research because",
+       "options": [
+        {
+         "key": "A",
+         "text": "she was contacted by the managing director."
+        },
+        {
+         "key": "B",
+         "text": "she knew several people who worked there."
+        },
+        {
+         "key": "C",
+         "text": "she had already done a work placement there."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "But she knows the managing director at Burkok, and she spoke to him, and then he got in touch with me. Apparently absence is a major problem there, so he's quiteu2026"
+      },
+      {
+       "n": 22,
+       "text": "What does Laura agree to do regarding the central theme of her research?",
+       "options": [
+        {
+         "key": "A",
+         "text": "check it is relevant"
+        },
+        {
+         "key": "B",
+         "text": "broaden the focus"
+        },
+        {
+         "key": "C",
+         "text": "be more specific in her aims"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "So my central theme is absence, but I'm thinking of concentrating on long term absence. I thought that might allow me to give more helpful feedback to the company. Ifu2026"
+      },
+      {
+       "n": 23,
+       "text": "What does Laura expect to find from her research?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Absence rates are related to the type of work done."
+        },
+        {
+         "key": "B",
+         "text": "A lot of worker absence is actually unnecessary."
+        },
+        {
+         "key": "C",
+         "text": "Employee absence rates are increasing."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Initially I wondered if workers often take time off without real justification, but I think that'll be hard to determine. So well, I think I may find that it'su2026"
+      },
+      {
+       "n": 24,
+       "text": "What employee information does the tutor think Laura will be able to obtain from company records?",
+       "options": [
+        {
+         "key": "A",
+         "text": "dates of birth"
+        },
+        {
+         "key": "B",
+         "text": "details of employment"
+        },
+        {
+         "key": "C",
+         "text": "individual records of absence"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Yes. Obviously you'll need overall absence figures, though it's unlikely they'll let you have them for individual workers."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO recommendations does the tutor make about Laura’s questionnaire?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Leave a space for contact details."
+      },
+      {
+       "key": "B",
+       "text": "Specify a completion date."
+      },
+      {
+       "key": "C",
+       "text": "Provide a mixture of question types."
+      },
+      {
+       "key": "D",
+       "text": "Keep the length to a minimum."
+      },
+      {
+       "key": "E",
+       "text": "Trial it on someone before finalising it."
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "I think the questions should be closed questions too. I mean where people choose an answer from a list. But then you miss the chance of getting unexpectedu2026 And after you've drafted it, you need to give it to at least one person to check there aren't any problems. So you need to leave enough time for that and anyu2026"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "I think the questions should be closed questions too. I mean where people choose an answer from a list. But then you miss the chance of getting unexpectedu2026 And after you've drafted it, you need to give it to at least one person to check there aren't any problems. So you need to leave enough time for that and anyu2026"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO things will Laura explain in her covering letter to participants?",
+     "options": [
+      {
+       "key": "A",
+       "text": "when the questionnaire should be completed"
+      },
+      {
+       "key": "B",
+       "text": "the fact that participation in the survey is voluntary"
+      },
+      {
+       "key": "C",
+       "text": "how long the questionnaire is likely to take"
+      },
+      {
+       "key": "D",
+       "text": "the purpose of the survey"
+      },
+      {
+       "key": "E",
+       "text": "the benefits of participation in the survey"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "Yes, I'll make that clear. And what about when they do it? Will they be allowed to use work time? That's really up to their manager, but you should say roughly howu2026 What about the covering letter that I'll send out with the questionnaire? I'll need to introduce myself and explain what the questionnaire is for, but what elseu2026"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "Yes, I'll make that clear. And what about when they do it? Will they be allowed to use work time? That's really up to their manager, but you should say roughly howu2026 What about the covering letter that I'll send out with the questionnaire? I'll need to introduce myself and explain what the questionnaire is for, but what elseu2026"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO activities does Laura already have definite dates for?",
+     "options": [
+      {
+       "key": "A",
+       "text": "completion of her finished assignment"
+      },
+      {
+       "key": "B",
+       "text": "questionnaire distribution"
+      },
+      {
+       "key": "C",
+       "text": "collection of completed questionnaires"
+      },
+      {
+       "key": "D",
+       "text": "the next meeting with her tutor"
+      },
+      {
+       "key": "E",
+       "text": "analysis of figures from the company’s database"
+      }
+     ],
+     "questions": [
+      {
+       "n": 29,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "And you have to submit your assignment by the end of June. Actually, I have to get it finished by the second, because I've arranged a work placement after that. Okay.u2026 And you have to submit your assignment by the end of June. Actually, I have to get it finished by the second, because I've arranged a work placement after that. Okay.u2026"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "And you have to submit your assignment by the end of June. Actually, I have to get it finished by the second, because I've arranged a work placement after that. Okay.u2026 And you have to submit your assignment by the end of June. Actually, I have to get it finished by the second, because I've arranged a work placement after that. Okay.u2026"
+      }
+     ]
+    }
+   ],
+   "transcript": "C: You will hear a business student called Laura talking to her tutor about some research she is planning to do on employee absence. First you have some time to look at questions twenty-one to twenty-four.\nA: Now listen carefully and answer questions twenty one to twenty four.\nA: Hello, Laura, have a seat. So I understand you’re planning to investigate absence from work for your research project.\nC: That’s all right. I’m going to base it on a local company called Burcock Engineering.\nB: Is there any particular reason why you’ve chosen Burkog?\nC: Well, I’d originally thought of asking another company, FG Engineering, because I did my placement there and I knew the staff there. But the CEO wasn’t very keen.\nC: But she knows the managing director at Burkok, and she spoke to him, and then he got in touch with me. Apparently absence is a major problem there, so he’s quite interested in having it investigated. Okay.\nC: So my central theme is absence, but I’m thinking of concentrating on long term absence. I thought that might allow me to give more helpful feedback to the company. If I were you, I wouldn’t be that specific.\nC: I’d look at absence as a whole. You might get more interesting results. Oh, okay. So what’s the main thing you expect to find? Rises in absence rates over time? Not really.\nC: Initially I wondered if workers often take time off without real justification, but I think that’ll be hard to determine. So well, I think I may find that it’s something to do with what sort of job the employee is doing.\nC: Okay. Now, have you thought how you’ll get your information?\nC: Well, first of all, I need access to the company records.\nA: Yes. Obviously you’ll need overall absence figures, though it’s unlikely they’ll let you have them for individual workers.\nA: And you probably won’t have access to personal information like when they were born, but you should be able to use anonymous details like the type of work they do or how long they’ve been with the company. Okay.\nC: Before you hear the rest of the discussion, you have some time to look at questions twenty five to thirty.\nC: Now listen and answer questions twenty five to thirty.\nC: So let’s think a bit more about your questionnaire. I know that it shouldn’t be too long or people get bored. No, but if it’s too short, you don’t get enough information. The trick is to get the balance right.\nC: I think the questions should be closed questions too. I mean where people choose an answer from a list. But then you miss the chance of getting unexpected information. So I’d include one or two open-ended questions, too.\nC: Okay. And I won’t ask for names or addresses or anything. No, it needs to be anonymous.\nA: And after you’ve drafted it, you need to give it to at least one person to check there aren’t any problems. So you need to leave enough time for that and any revisions necessary.\nC: What about the covering letter that I’ll send out with the questionnaire? I’ll need to introduce myself and explain what the questionnaire is for, but what else should I include?\nA: I’d reassure people that the survey isn’t going to be used to assess them personally. Otherwise they might choose not to take part.\nC: Yes, I’ll make that clear. And what about when they do it? Will they be allowed to use work time? That’s really up to their manager, but you should say roughly how much time it’ll take. Okay.\nC: So now you need to produce a schedule with dates. For example, when you’ll send out the questionnaire. Yes, okay. Once I can arrange that date with the manager.\nC: I’ll be able to fix the deadline for getting the completed questionnaires back. And I want to use the time in between to analyze the figures that HR is going to give me from their database, though they haven’t said exactly when I’ll get them.\nC: And you have to submit your assignment by the end of June. Actually, I have to get it finished by the second, because I’ve arranged a work placement after that. Okay. So our next meeting is two weeks today.\nC: Is that still okay? Yes. And in the meantime, I’ll send you an email.\nC: That is the end of part three. You now have thirty seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-70-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "title": "The Music of Salvatore Sciarrino",
+     "template": "# Biographical details\n- He was born in Palermo in 1947.\n- He moved to Rome in 1969 and took a course in electronic music, which influenced his style as a composer.\n# Work\n- In the 1970s he composed a lot of music and taught until 1982.\n- As well as music, he has written many [[31]] .\n- He has won many awards – including one in 2011 for [[32]] in music.\n# Musical characteristics\n- Surprisingly, his music often features [[33]] and very soft sounds.\n- His music uses unusual instrument techniques, e.g. violins often produce sounds which resemble those found in [[34]] .\n- He is seen as a [[35]] of music.\n- Sciarrino compares his music to a distant [[36]] .\n# Concert piece\n- for piano, chorus and orchestra\n- finished in 1979 and written in memory of a [[37]]\n- very difficult to play\n- starts with a noise that sounds like [[38]] , produced by two people moving large pieces of [[39]]\n- although the music is unusual, it has a traditional [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "essays",
+        "essay"
+       ],
+       "explanation": "Apart from composing music and teaching, he has also produced a large number of essays on a range of topics such as the philosophy behind his work and musical form."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "originality"
+       ],
+       "explanation": "Throughout his career, he has won numerous prestigious awards, most notably a major prize in 2011 in"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "silence"
+       ],
+       "explanation": "Now I'll talk about the characteristics of his music, which some people are a bit surprised by. The first thing that many listeners will notice about Schiarino'su2026"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "nature"
+       ],
+       "explanation": "The other unusual aspect of his music is that he frequently requires musicians to play their instruments in unconventional ways, so that for example, a violin may endu2026"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "pioneer"
+       ],
+       "explanation": "Actually, his novel instrumental techniques have often been imitated by other composers. As a result, he's widely regarded as a pioneer in terms of creating new sounds."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "volcano"
+       ],
+       "explanation": "It may sound strange, but Schiorino himself has likened his music to a volcano viewed from afar. As you'll see, it builds up slowly to an exciting climax."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "friend"
+       ],
+       "explanation": "That was completed in 1979. The work is dedicated to a friend who died unexpectedly, so it was written as a kind of memorial."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "thunder"
+       ],
+       "explanation": "The piece opens with a low sound of great complexity that is similar to thunder."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "metal"
+       ],
+       "explanation": "The sound, by the way, is created by large vibrating sheets of metal, which are slowly manipulated by two percussionists."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "structure"
+       ],
+       "explanation": "Even though the piece will be, for many people, very unusual in terms of the sounds it creates, it actually has a very conventional structure, which is just anotheru2026"
+      }
+     ]
+    }
+   ],
+   "transcript": "C: Now listen carefully and answer questions 31 to 40.\nC: Good morning. We’re really pleased that our university is going to hold a concert featuring the music of the Italian composer Salvatore Schiarino.\nC: He’s considered one of the leading composers of modern classical music in Europe. His music is highly unusual, so in order to prepare you for this concert, I’m going to talk about his life and music.\nC: First, some biographical details. Salvatore Schiorino was born in the Italian city of Palermo in 1947.\nC: Though he did receive some music lessons, he is mainly self-taught as a composer.\nC: After a few years of university in his home city, he moved to Rome in 1969, where he studied electronic music.\nC: This experience served as a turning point in the development of Schiorino as a composer.\nC: Turning to his work, he composed a great deal in the 1970s and was a music teacher until 1982.\nC: Apart from composing music and teaching, he has also produced a large number of essays on a range of topics such as the philosophy behind his work and musical form.\nC: Throughout his career, he has won numerous prestigious awards, most notably a major prize in 2011 in\nC: Which recognized his musical originality. So you could say that he is one of the most important composers of our times.\nC: Now I’ll talk about the characteristics of his music, which some people are a bit surprised by. The first thing that many listeners will notice about Schiarino’s music is the frequent use of silence.\nC: What is also striking about his music is his preference for extremely soft sounds that are sometimes at such a low volume that they can hardly be heard.\nC: The other unusual aspect of his music is that he frequently requires musicians to play their instruments in unconventional ways, so that for example, a violin may end up sounding very strange, and creating sounds we generally associate with nature.\nC: Actually, his novel instrumental techniques have often been imitated by other composers. As a result, he’s widely regarded as a pioneer in terms of creating new sounds.\nC: It may sound strange, but Schiorino himself has likened his music to a volcano viewed from afar. As you’ll see, it builds up slowly to an exciting climax.\nC: Let’s move on to talk about the particular piece that we’ll hear at the concert. Many people consider it to be his finest work to date. It’s an immense piece of music for piano, chorus and orchestra.\nC: That was completed in 1979. The work is dedicated to a friend who died unexpectedly, so it was written as a kind of memorial.\nC: In many ways, it is representative of his work as a whole in terms of the sound that it creates. It’s technically formidable, and it’s a very challenging piece for musicians to play.\nC: The piece opens with a low sound of great complexity that is similar to thunder.\nC: This low pitched noise is sustained almost uninterrupted for forty-five minutes, which may sound quite boring, but I found it to be very haunting and atmospheric.\nC: The sound, by the way, is created by large vibrating sheets of metal, which are slowly manipulated by two percussionists.\nC: There are very quiet and strange chords produced by string instruments and very complex piano melodies that quietly appear and then disappear.\nC: Even though the piece will be, for many people, very unusual in terms of the sounds it creates, it actually has a very conventional structure, which is just another surprising aspect of Schiarino’s work.\nC: Now let’s move on to another work.\nC: That is the end of part four. You now have one minute to check your answers to part four."
+  }
+ ],
+ "audio": {
+  "file": "listening-70.mp3",
+  "durationSec": 1640,
+  "partStarts": [
+   2,
+   367,
+   943,
+   1351
+  ],
+  "questionTimes": {
+   "1": 87,
+   "2": 112,
+   "3": 124,
+   "4": 143,
+   "5": 143,
+   "6": 163,
+   "7": 223,
+   "8": 240,
+   "9": 259,
+   "10": 278,
+   "11": 431,
+   "12": 452,
+   "13": 464,
+   "14": 482,
+   "15": 495,
+   "16": 567,
+   "17": 589,
+   "18": 604,
+   "19": 627,
+   "20": 643,
+   "21": 1023,
+   "22": 1036,
+   "23": 1063,
+   "24": 1087,
+   "25": 1170,
+   "26": 1191,
+   "27": 1220,
+   "28": 1201,
+   "29": 1258,
+   "30": 1258,
+   "31": 1425,
+   "32": 1438,
+   "33": 1459,
+   "34": 1485,
+   "35": 1504,
+   "36": 1518,
+   "37": 1548,
+   "38": 1572,
+   "39": 1591,
+   "40": 1613
+  }
+ }
+}

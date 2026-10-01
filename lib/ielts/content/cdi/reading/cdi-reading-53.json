@@ -1,0 +1,771 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-53",
+ "title": "CDI Reading Test 53",
+ "description": "A full Academic Reading test from the CDI practice materials: The Blockbuster Phenomenon: a new museum trend; Save Endangered Language; The dark side of the technological boom.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Blockbuster Phenomenon: a new museum trend",
+  "Save Endangered Language",
+  "The dark side of the technological boom"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Blockbuster Phenomenon: a new museum trend",
+   "subtitle": "Museums in Australia, like other pleasure-giving public organizations, are adapting their activities so that they more closely reflect the marketplace.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Since the 1980s, the term “blockbuster” has become the fashionable word for spectacular, high-profile museum exhibitions that have the ability to attract large crowds. A blockbuster is a “large-scale loan exhibition that people who normally don’t go to museums will stand in line for hours to see” (Elsen 1984). Once the museum that created the exhibition has shown it to their local market, it can be offered to other organizations for a fee. This means that you can increase your own door takings and profit from someone else’s success."
+    },
+    {
+     "label": "B",
+     "text": "While enjoying the blockbuster, visitors who are lured in are likely to stay longer at the museum. Betty Churcher, Director of the Australian National Gallery, summed up the new blockbuster creed as follows: “The bonus of the blockbuster exhibitions is that people come to see the blockbuster and they stay to look at the permanent collection, so you are getting broader exposure for your collection”."
+    },
+    {
+     "label": "C",
+     "text": "Museums across the UK, USA, Canada and Australia currently operate under a system of plural funding – revenue raised through contributions by federal, state and/or local governments, combined with revenue raised through admission charges and other activities. Maintaining and increasing visitor levels is paramount and involves not only creating or hiring blockbuster exhibitions but also providing regular exhibition changes and innovations. In addition, the visiting public has become known as customers rather than visitors, and the skills that are valued in museums to keep new customers coming through the door have changed. Curators are now administrators and being a museum director no longer requires an arts degree. But public relations skills are essential if the museum is going to compete with other museums to stage traveling exhibitions which draw huge crowds."
+    },
+    {
+     "label": "D",
+     "text": "The convergence of museums, the heritage industry, tourism, profit-making and pleasure-giving has resulted in the new “museology”. This has given rise to much debate about whether it is appropriate to see museums primarily as tourist attractions. In literature from both the UK and USA, the words that are starting to appear in some descriptions of blockbusters include “less scholarly”, “non-elitist” and “popularist”, while others extol the virtues encouraging scholars to co-operate on projects, and to provide exhibitions that cater for a broad selection of the community rather than an elite sector. Whatever commentators may think, managers of museums worldwide are looking for innovative ways to blend culture and commerce, and blockbuster exhibitions are at the top of the list."
+    },
+    {
+     "label": "E",
+     "text": "But do blockbusters held in public institutions really create a surplus to fund other activities? If the bottom line is profit, then according to the records of many major museums, blockbusters do make money. For museums in some countries, it may be the money that they require to replace parts of their collections or to fix buildings that are in need of attention. For some museums in Australia, it may be the opportunity to illustrate that they are attempting to pay their way by recovering part of their operating costs. Also, creating or hiring a blockbuster has many positive spin-offs: blockbusters mean crowds, and crowds are good for the local economy, and provide increased trade for shops, hotels, restaurants, the transport industry and retailers. The arrangement through which the arts provide sustained economic benefits has been well illustrated in impact studies in the USA and UK."
+    },
+    {
+     "label": "F",
+     "text": "However, blockbusters require large capital expenditure, and draw on resources across all branches of an organization, and the costs don’t end there. There is a Human Resource Management cost in addition to a measurable “real” dollar cost. Receiving a touring exhibition draws resources from across functional management structures in project management style. Everyone, from general labourers to building services, front-of-house, technical, promotional, educational and administrative staff, is required to perform additional tasks. Furthermore, as an increasing number of institutions try their hand at increasing visitor numbers and memberships (and therefore revenue) by staging blockbuster exhibitions, it may be less likely that blockbusters will continue to provide a surplus to subsidize other activities due to the competitive nature of the market."
+    },
+    {
+     "label": "G",
+     "text": "It has been illustrated in both the UK and USA that the blockbuster ideology has resulted in the false expectation that the momentum required to stage blockbusters can be maintained continually. Creating, mounting or hiring blockbusters is exhausting, with the real costs throughout an institution difficult to calculate. Secondly, as some analysts have argued, the “shopkeeping” mentality, cost-benefit analysis, and a pure concentration on the bottom line can squeeze substance out of an exhibition. This can be a recipe for blockbuster failure and therefore financial failure."
+    },
+    {
+     "label": "H",
+     "text": "Perhaps the best approach is to balance both blockbusters and regular exhibitions. However, this easy middle ground may only work if you have enough space, and have alternate sources of funding to continue to support the regular, less exciting fare. Perhaps the advice should be to make sure that you find out what your local community wants from you and make sure that your regular activities and exhibitions are more engaging."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 1 has eight paragraphs, A–H. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 1,
+       "text": "the reason why museum directors need to constantly alter and update their exhibits",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para C: ‘Maintaining and increasing visitor levels is paramount and involves not only creating or hiring blockbuster exhibitions but also providing regular exhibition changes and innovations.’"
+      },
+      {
+       "n": 2,
+       "text": "mention of the length of time people will queue up to see a blockbuster",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para A: ‘people who normally don’t go to museums will stand in line for hours to see’ a blockbuster."
+      },
+      {
+       "n": 3,
+       "text": "terms that people have used when referring to blockbusters",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para D: words such as ‘less scholarly’, ‘non-elitist’ and ‘popularist’ are used in descriptions of blockbusters."
+      },
+      {
+       "n": 4,
+       "text": "the various ways that institutions like museums get financial support",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para C: ‘Museums operate under a system of plural funding – revenue raised through contributions by federal, state and/or local governments, combined with revenue raised through admission charges.’"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "title": "The Blockbuster Phenomenon",
+     "template": "- These days, museum visitors tend to be referred to as [[5]].\n- Museum curators now need [[6]] rather than academic qualifications.\n- The linking of a range of public institutions that entertain the public is known as [[7]].\n- There is a discussion about whether museums can be regarded in the same way as other [[8]].",
+     "questions": [
+      {
+       "n": 5,
+       "answer": [
+        "customers"
+       ],
+       "explanation": "Para C: ‘the visiting public has become known as customers rather than visitors.’"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "public relations skills",
+        "public-relations skills"
+       ],
+       "explanation": "Para C: ‘public relations skills are essential if the museum is going to compete with other museums.’"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "museology"
+       ],
+       "explanation": "Para D: ‘The convergence of museums, the heritage industry, tourism, profit-making and pleasure-giving has resulted in the new “museology”.’"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "tourist attractions"
+       ],
+       "explanation": "Para D: ‘much debate about whether it is appropriate to see museums primarily as tourist attractions.’"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of the following are mentioned by the writer as advantages of blockbusters?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Some of the money they raise can be used for structural repairs."
+      },
+      {
+       "key": "B",
+       "text": "They can provide funds to help support amateur artists."
+      },
+      {
+       "key": "C",
+       "text": "Local services benefit from the extra business they bring about."
+      },
+      {
+       "key": "D",
+       "text": "They encourage overseas workers into the local area."
+      },
+      {
+       "key": "E",
+       "text": "They raise employee performance levels."
+      }
+     ],
+     "questions": [
+      {
+       "n": 9,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "Para E: money can be used to ‘replace parts of their collections or to fix buildings’ (A), and ‘provide increased trade for shops, hotels, restaurants’ (C). Para E: blockbusters ‘provide increased trade for shops, hotels, restaurants, the transport industry and retailers’ — local services benefit (C)."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "Para E: money can be used to ‘replace parts of their collections or to fix buildings’ (A), and ‘provide increased trade for shops, hotels, restaurants’ (C). Para E: blockbusters ‘provide increased trade for shops, hotels, restaurants, the transport industry and retailers’ — local services benefit (C)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose THREE letters, A–G.",
+     "title": "Which THREE of the following are mentioned by the writer as disadvantages of blockbusters?",
+     "options": [
+      {
+       "key": "A",
+       "text": "They do not suit museum management styles"
+      },
+      {
+       "key": "B",
+       "text": "Specialist business advice has to be paid for"
+      },
+      {
+       "key": "C",
+       "text": "They involve an increased workload for personnel"
+      },
+      {
+       "key": "D",
+       "text": "They do not increase overall annual visitor numbers"
+      },
+      {
+       "key": "E",
+       "text": "They are very tiring to put on"
+      },
+      {
+       "key": "F",
+       "text": "What is popular in one country may not be popular in another"
+      },
+      {
+       "key": "G",
+       "text": "The content can be weakened through financial pressure"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "C",
+        "E",
+        "G"
+       ],
+       "explanation": "Para F: ‘Everyone… is required to perform additional tasks’ — increased workload for personnel (C). Para G: ‘Creating, mounting or hiring blockbusters is exhausting’ — they are very tiring to put on (E). Para G: ‘the shopkeeping mentality… can squeeze substance out of an exhibition’ — content can be weakened through financial pressure (G)."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "C",
+        "E",
+        "G"
+       ],
+       "explanation": "Para F: ‘Everyone… is required to perform additional tasks’ — increased workload for personnel (C). Para G: ‘Creating, mounting or hiring blockbusters is exhausting’ — they are very tiring to put on (E). Para G: ‘the shopkeeping mentality… can squeeze substance out of an exhibition’ — content can be weakened through financial pressure (G)."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "C",
+        "E",
+        "G"
+       ],
+       "explanation": "Para F: ‘Everyone… is required to perform additional tasks’ — increased workload for personnel (C). Para G: ‘Creating, mounting or hiring blockbusters is exhausting’ — they are very tiring to put on (E). Para G: ‘the shopkeeping mentality… can squeeze substance out of an exhibition’ — content can be weakened through financial pressure (G)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Save Endangered Language",
+   "subtitle": "“Obviously we must do some serious rethinking of our priorities, lest linguistics go down in history as the only science that presided obviously over the disappearance of 90 percent of the very field to which it is dedicated.” – Michael Krauss, ‘The World’s Languages in Crisis’.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Ten years ago Michael Krauss sent a shudder through the discipline of linguistics with his prediction that half the 6,000 or so languages spoken in the world would cease to be uttered within a century. Unless scientists and community leaders directed a worldwide effort to stabilize the decline of local languages, he warned, nine-tenths of the linguistic diversity of humankind would probably be doomed to extinction. Krauss’s prediction was little more than an educated guess, but other respected linguists had been clanging out similar alarms. Keneth L. Hale of the Massachusetts Institute of Technology noted in the same journal issue that eight languages on which he had done fieldwork had since passed into extinction. A 1990 survey in Australia found that 70 of the 90 surviving Aboriginal languages were no longer used regularly by all age groups. The same was true for all but 20 of the 175 Native American languages spoken or remembered in the US., Krauss told a congressional panel in 1992."
+    },
+    {
+     "label": "B",
+     "text": "Many experts in the field mourn the loss of rare languages, for several reasons. To start, there is scientific self-interest: some of the most basic questions in linguistics have to do with the limits of human speech, which are far from fully explored. Many researchers would like to know which structural elements of grammar and vocabulary – if any – are truly universal and probably, therefore, hardwired into the human brain. Other scientists try to reconstruct ancient migration patterns by comparing borrowed words that appear in otherwise unrelated languages. In each of these cases, the wider the portfolio of languages you study, the more likely you are to get the right answers."
+    },
+    {
+     "label": "C",
+     "text": "Despite the near-constant buzz in linguistics about endangered languages over the past 10 years, the field has accomplished depressingly little. “You would think that there would be some organized response to this dire situation,” some attempt to determine which language can be saved and which should be documented before they disappear, says Sarah G. Thomason, a linguist at the University of Michigan at Ann Arbor. “But there isn’t any such effort organized in the profession. It is only recently that it has become fashionable enough to work on endangered languages.” Six years ago, recalls Douglas H. Whalen of Yale University, “when I asked linguists who were raising money to deal with these problems, I mostly got blank stares.” So Whalen and a few other linguists founded the Endangered Languages Fund. In the five years to 2001, they were able to collect only $80,000 for research grants. A similar foundation in England, directed by Nicholas Ostler, has raised just $8,000 since 1995."
+    },
+    {
+     "label": "D",
+     "text": "But there are encouraging signs that the field has turned a corner. The Volkswagen Foundation, a German charity, just issued its second round of grants totaling more than $2 million. It has created a multimedia archive at the Max Planck Institute for Psycholinguistics in the Netherlands that can house recordings, grammars, dictionaries and other data on endangered languages. To fill the archive, the foundation has dispatched field linguists to document Aweti (100 or so speakers in Brazil), Ega (about 300 speakers in Ivory Coast), Waima’a (a few hundred speakers in East Timor), and a dozen or so other languages unlikely to survive the century. The Ford Foundation has also edged into the arena. Its contributions helped to reinvigorate a master-apprentice program created in 1992 by Leanne Hinton of Berkeley and Native Americans worried about the imminent demise of about 50 indigenous languages in California. Fluent speakers receive $3,000 to teach a younger relative their native tongue through 360 hours of shared activities, spread over six months. So far about 5 teams have completed the program, Hinton says, transmitting at least some knowledge of 25 languages. “It’s too early to call this language revitalization,” Hinton admits. “In California, the death rate of elderly speakers will always be greater than the recruitment rate of young speakers. But at least we prolong the survival of the language.”"
+    },
+    {
+     "label": "E",
+     "text": "But the master-apprentice approach hasn’t caught on outside the U.S., and Hinton’s effort is a drop in the sea. At least 440 languages have been reduced to a mere handful of elders, according to the Ethnologue, a catalogue of languages produced by the Dallas-based group SIL International that comes closest to global coverage. For the vast majority of these languages, there is little or no record of their grammar, vocabulary, pronunciation or use in daily life. Even if a language has been fully documented, all that remains once it vanishes from active use is a fossil skeleton, a scattering of features that the scientist was lucky and astute enough to capture. Linguists may be able to sketch an outline of the forgotten language and fix its place on the evolutionary tree, but little more. “How did people start conversations and talk to babies? How did husbands and wives converse?” Hinton asks. “Those are the first things you want to learn when you want to revitalize the language.”"
+    },
+    {
+     "label": "F",
+     "text": "But there is as yet no discipline of “conservation linguistics,” as there is for biology. Almost every strategy tried so far has succeeded in some places but failed in others, and there seems to be no way to predict with certainty what will work where. Twenty years ago in New Zealand, Maori speakers set up “language nests,” in which preschoolers were immersed in the native language. Additional Maori-only classes were added as the children progressed through elementary and secondary school. A similar approach was tried in Hawaii, with some success – the number of native speakers has stabilized at 1,000 or so, reports Joseph E. Grimes of SIL International, who is working on Oahu. Students can now get instruction in Hawaiian all the way through university."
+    },
+    {
+     "label": "G",
+     "text": "One factor that always seems to occur in the demise of a language is that the speakers begin to have collective doubts about the usefulness of language loyalty. Once they start regarding their own language as inferior to the majority language, people stop using it in all situations. Kids pick up on the attitude and prefer the dominant language. In many cases, people don’t notice until they suddenly realize that their kids never speak the language, even at home. This is how Cornish and some dialects of Scottish Gaelic fell into extinction, and this is why Irish is still only rarely used for daily home life in Ireland, 80 years after the republic was founded with Irish as its first official language."
+    },
+    {
+     "label": "H",
+     "text": "Linguists agree that ultimately, the answer to the problem of language extinction is multilingualism. Even uneducated people can learn several languages, as long as they start as children. Indeed, most people in the world speak more than one tongue, and in places such as Cameroon (279 languages), Papua New Guinea (823) and India (387) it is common to speak three or four distinct languages and a dialect or two as well. Most Americans and Canadians, to the west of Quebec, have a gut reaction that anyone speaking another language in front of them is committing an immoral act. You get the same reaction in Australia and Russia. It is no coincidence that these are the areas where languages are disappearing the fastest. The first step in saving dying languages is to persuade the world’s majorities to allow the minorities among them to speak with their own voices."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has eight paragraphs, A–H. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph. Paragraph C has been done for you as an example.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Data consistency needed for language"
+      },
+      {
+       "key": "ii",
+       "text": "Consensuses on an initial recommendation for saving dying out languages"
+      },
+      {
+       "key": "iii",
+       "text": "Positive gains for protection"
+      },
+      {
+       "key": "iv",
+       "text": "Minimum requirement for saving a language"
+      },
+      {
+       "key": "v",
+       "text": "Potential threat to minority language"
+      },
+      {
+       "key": "vi",
+       "text": "A period when there was absent of real effort made"
+      },
+      {
+       "key": "vii",
+       "text": "Native language programs launched"
+      },
+      {
+       "key": "viii",
+       "text": "Lack of confidence in young speakers as a negative factor"
+      },
+      {
+       "key": "ix",
+       "text": "Practise in several developing countries"
+      },
+      {
+       "key": "x",
+       "text": "Value of minority language to linguists"
+      },
+      {
+       "key": "xi",
+       "text": "Government participation in the language field"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Para A describes Krauss’s warning that most of the world’s languages face extinction — a potential threat to minority language (v)."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "x"
+       ],
+       "explanation": "Para B explains why scientists value minority languages for research — value of minority language to linguists (x)."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph D",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Para D describes the Volkswagen Foundation grants and the Ford Foundation support — positive gains for protection (iii)."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph E",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Para E stresses how little is recorded about dying languages and what data is needed — data consistency needed for language (i)."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph F",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Para F describes language nest programs in New Zealand and Hawaii — native language programs launched (vii)."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph G",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Para G explains how speakers’ own doubts about their language lead to its demise — lack of confidence in young speakers as a negative factor (viii)."
+      },
+      {
+       "n": 20,
+       "text": "Paragraph H",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Para H argues that multilingualism is the agreed first step to saving dying languages — consensus on an initial recommendation (ii)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Use the information in the passage to match the people below with the opinions or deeds, A–F. NB You may use any letter more than once.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Nicholas Ostler"
+      },
+      {
+       "key": "B",
+       "text": "Michael Krauss"
+      },
+      {
+       "key": "C",
+       "text": "Joseph E. Grimes"
+      },
+      {
+       "key": "D",
+       "text": "Sarah G. Thomason"
+      },
+      {
+       "key": "E",
+       "text": "Keneth L. Hale"
+      },
+      {
+       "key": "F",
+       "text": "Douglas H. Whalen"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 21,
+       "text": "Reported language conservation practice in Hawaii",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para F: Joseph E. Grimes of SIL International is ‘working on Oahu’ and reports that the number of native speakers has stabilized."
+      },
+      {
+       "n": 22,
+       "text": "Predicted that many languages would disappear soon",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para A: Michael Krauss predicted ‘half the 6,000 or so languages spoken in the world would cease to be uttered within a century.’"
+      },
+      {
+       "n": 23,
+       "text": "Experienced the process of languages dying out personally",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Para A: Keneth L. Hale ‘noted… that eight languages on which he had done fieldwork had since passed into extinction.’"
+      },
+      {
+       "n": 24,
+       "text": "Raised language fund in England",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para C: Nicholas Ostler directed a similar foundation in England that ‘has raised just $8,000 since 1995.’"
+      },
+      {
+       "n": 25,
+       "text": "Not enough effort on saving languages until recent work",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para C: Sarah G. Thomason says ‘there isn’t any such effort organized in the profession.’"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 26–27.",
+     "questions": [
+      {
+       "n": 26,
+       "text": "What is the real result of a master-apprentice program sponsored by The Ford Foundation?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Teach children how to speak"
+        },
+        {
+         "key": "B",
+         "text": "Revive some endangered languages in California"
+        },
+        {
+         "key": "C",
+         "text": "Postpone the dying date for some endangered languages"
+        },
+        {
+         "key": "D",
+         "text": "Increase communication between students"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para D: Hinton admits ‘it’s too early to call this language revitalization’ but ‘at least we prolong the survival of the language’ — postponing the dying date (C)."
+      },
+      {
+       "n": 27,
+       "text": "What should the majority language speakers do according to the last paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They should teach their children endangered language in free lessons"
+        },
+        {
+         "key": "B",
+         "text": "They should learn at least four languages"
+        },
+        {
+         "key": "C",
+         "text": "They should show their loyalty to a dying language"
+        },
+        {
+         "key": "D",
+         "text": "They should be more tolerant of minority language speakers"
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para H: ‘The first step in saving dying languages is to persuade the world’s majorities to allow the minorities among them to speak with their own voices’ — be more tolerant of minority language speakers (D)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The dark side of the technological boom",
+   "subtitle": "What are the effects on the individual of working in modern technological workplaces?",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Changes in the way we work and how our offices are structured come at us faster and faster. Waves of state-of-the-art information technology and instant telecommunications let us reach anyone, anywhere, and speed is the key. Most of us are too busy struggling to keep pace with ongoing innovations to question the implications of our new electronic authority figures. According to a number of psychologists, however, the need to stay on top of the information flow and the consequent degree to which we remain in touch with our offices exact a profound toll on us as individuals."
+    },
+    {
+     "label": "B",
+     "text": "Mass exposure to technological innovations in the workplace has come too recently for psychologists to reach a consensus on its societal implications. Many agree, however, that one of the first signs of the struggle to adapt to the electronic office is often ‘technostress’, a cognitive shift that results from an over-identification with information systems. Psychologist Craig Brod says people become accustomed to the patterns set by electronic tools – accelerated time and yes/no logic – and internalize these patterns. ‘When they leave the office or go home,’ Brod says, ‘they need complete isolation to recover from the effects of the technology.’"
+    },
+    {
+     "label": "C",
+     "text": "Brod warns that over-reliance on electronic tools could also have serious repercussions on our ability to think creatively and develop new ideas. Because we don’t create in a vacuum, he points out, we need to avoid the temptation to replace informal gatherings for bouncing ideas off colleagues with electronic networking. It’s also more difficult to spot errors or even evaluate the shape of a project displayed in a flat, two-dimensional way on a screen."
+    },
+    {
+     "label": "D",
+     "text": "Electronically networked offices can also make it increasingly difficult to convince ourselves that we’re doing an adequate job and accumulating enough information to make informed decisions. Philosopher Daniel Dennett points out that modern technology eliminates the possibility of unavoidable ignorance. As the opportunity to amass information grows larger, the obligation to make accurate predictions – the ‘right’ decisions – becomes more onerous. Instead of consoling ourselves that we’re doing as good a job as we can, we are tormented by the knowledge that the world of information is limitless."
+    },
+    {
+     "label": "E",
+     "text": "For executives near the top of the office pyramid, the benefits of the electronic revolution – like telecommuting and flexible scheduling – may outweigh the disadvantages of being continuously on call. But in Workplace 2000, authors Joseph Boyett and Henry Conn describe a future in which millions of people now charged with analyzing information and making routine decisions will be replaced by less skilled workers using ‘intelligent’ software to make decisions for them. They predict that a cult of performance excellence will engulf most businesses."
+    },
+    {
+     "label": "F",
+     "text": "The millions of people on the bottom levels of electronic hierarchies are increasingly likely to spend their days in an isolated no-man’s land, subservient to intelligent information systems that report their progress to unseen supervisors far away. Because computers measure quantity better than quality, such systems tend to reward employees who work faster more than those who work better."
+    },
+    {
+     "label": "G",
+     "text": "Service people on the telephone or at a cash register curtly terminate attempts at idle conversation because their performance is being electronically monitored. Once judged on their ability to communicate with customers or troubleshoot unexpected situations, they’re now evaluated by the number of transactions they complete in a shift or the number of keystrokes required to draft a document. In these electronic ‘sweatshops’, the computers are running the people, not the other way around."
+    },
+    {
+     "label": "H",
+     "text": "‘I think people are going to feel an increased fragmentation of self. They won’t be able to hold the pieces together,’ human resources consultant Philip Nicholson says. ‘How do you keep a coherent face if you’re going in and out of spaces that don’t exist?’ He likens the psychic numbing of electronic information overload to symptoms of post-traumatic stress syndrome (a mental disorder following a horrific event). In office ‘wars’, people become overwhelmed by the sheer amount of information available, internalize the diversity of the world outside, and fear losing control over their own lives."
+    },
+    {
+     "label": "I",
+     "text": "‘If we are to survive the challenges of information-driven, hardwired offices, says Nicholson, we need to provide psychological support systems. As no one has yet measured the social cost of the workplace revolution, some psychologists are mobilizing efforts to pool information as it is derived. Nicholson started the Technostress International Information Network in Massachusetts to foster an exchange of data and ideas on the effects of computerization and information technology. Meanwhile, Brod wants to examine the parallels between electronic work environments and ‘sealed-cabin ecologies’ like space capsules or submarines, both totally automated artificial worlds in which people live in highly confined circumstances surrounded by technology that dictates the tenor of their days as well as their survival. In addition, Brod suggests that we re-examine our value systems and that we make greater allowances for privacy in order to circumvent potential revolts against technology. ‘We need to co-evolve with technology,’ he says. ‘These are wonderful tools, but if we exploit them without imposing appropriate values on their use, they become alienating and dangerous.’"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–E, from the box below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "requires more detailed study by psychologists."
+      },
+      {
+       "key": "B",
+       "text": "means people have no time to challenge the significance of the new technology."
+      },
+      {
+       "key": "C",
+       "text": "may reduce inventiveness and innovation."
+      },
+      {
+       "key": "D",
+       "text": "suggests computers will take over the workplace."
+      },
+      {
+       "key": "E",
+       "text": "results from increased electronic supervision."
+      }
+     ],
+     "questions": [
+      {
+       "n": 28,
+       "text": "The speed of technological changes",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para 1: ‘Most of us are too busy struggling to keep pace with ongoing innovations to question the implications’ — means people have no time to challenge the significance of the new technology (B)."
+      },
+      {
+       "n": 29,
+       "text": "A dependency on technology and computers",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para 3: Brod warns ‘over-reliance on electronic tools could… have serious repercussions on our ability to think creatively’ — may reduce inventiveness and innovation (C)."
+      },
+      {
+       "n": 30,
+       "text": "A deterioration in personal service",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Para 7: Service people terminate conversations ‘because their performance is being electronically monitored’ — results from increased electronic supervision (E)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Match each statement with the correct person or people, A–D. NB You may use any letter more than once.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Craig Brod"
+      },
+      {
+       "key": "B",
+       "text": "Daniel Dennett"
+      },
+      {
+       "key": "C",
+       "text": "Joseph Boyett and Henry Conn"
+      },
+      {
+       "key": "D",
+       "text": "Philip Nicholson"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 31,
+       "text": "Technology has placed greater expectations on workers not to make mistakes.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para 4: Daniel Dennett: ‘the obligation to make accurate predictions – the right decisions – becomes more onerous.’"
+      },
+      {
+       "n": 32,
+       "text": "People will need time away from technology to reduce the frustrations caused by it.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para 2: Craig Brod: ‘they need complete isolation to recover from the effects of the technology.’"
+      },
+      {
+       "n": 33,
+       "text": "Interacting with others at work contributes to creative thinking.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para 3: Craig Brod warns against replacing ‘informal gatherings for bouncing ideas off colleagues with electronic networking.’"
+      },
+      {
+       "n": 34,
+       "text": "The psychological effect of working with technology is similar to the anxiety felt after surviving a major ordeal.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para 8: Philip Nicholson ‘likens the psychic numbing of electronic information overload to symptoms of post-traumatic stress syndrome.’"
+      },
+      {
+       "n": 35,
+       "text": "Technology will ultimately increase unemployment for more highly qualified personnel.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para 5: Boyett and Conn describe ‘millions of people… charged with analyzing information’ who ‘will be replaced by less skilled workers using intelligent software.’"
+      },
+      {
+       "n": 36,
+       "text": "More counselling is required to help people cope with the demands of the modern workplace.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para 9: Philip Nicholson says ‘we need to provide psychological support systems’ to survive the challenges of information-driven offices."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 37,
+       "text": "Our knowledge of the effects of technology on workers is still limited.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 2: ‘Mass exposure to technological innovations has come too recently for psychologists to reach a consensus on its societal implications.’"
+      },
+      {
+       "n": 38,
+       "text": "An early indicator of technological anxiety is a tendency to adopt machine-like thinking.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 2: ‘one of the first signs of the struggle to adapt to the electronic office is often technostress’ — people internalize the patterns of electronic tools (yes/no logic)."
+      },
+      {
+       "n": 39,
+       "text": "We have now started to doubt our ability to perform well at work.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 4: ‘Electronically networked offices can make it increasingly difficult to convince ourselves that we’re doing an adequate job.’"
+      },
+      {
+       "n": 40,
+       "text": "Top level managers may be more negatively affected by changes created by the electronic workplace than junior workers.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 5: ‘For executives near the top of the office pyramid, the benefits of the electronic revolution may outweigh the disadvantages’ — they are LESS negatively affected than those at lower levels."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

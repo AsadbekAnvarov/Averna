@@ -1,0 +1,736 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-32",
+ "title": "CDI Listening Test 32",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "William interviews Grace Brown who is applying to do volunteer work",
+  "Peter Blakewell, owner of a strawberry farm, talks to new employees about the farm",
+  "Engineering student Kathy discusses her dissertation on water pumps with her tutor",
+  "A lecturer gives an introduction to American salt marshes and the horseshoe crab"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-32-part-1",
+   "title": "Part 1",
+   "context": "William interviews Grace Brown who is applying to do volunteer work.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Volunteer Work Application Form — Grace Brown\nContact Details\n- Mobile: 021 636 7189\n- Email: graceb @ [[1]] .co.nz\nQualifications & Availability\n- A diploma in [[2]]\n- Available: [[3]] am to 2 pm, Monday to Friday\nVolunteer Experience\n- Volunteer city [[4]] (Rugby World Cup)\n- Volunteer netball team [[5]]\nHobbies & Interests\n- Works in her [[6]] (grows vegetables & flowers)\n- Flower arranging\n- Plays the [[7]] (a bit rusty)\nPositions Offered\n- Helping on a [[8]] (1 month)\n- Working in a community centre with elderly people\nMotivation & How She Found the Agency\n- Wants to make [[9]] and help others\n- Saw advertisement at the [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "travel"
+       ],
+       "explanation": "The email is graceb@travel.co.nz — the domain is travel."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "teaching"
+       ],
+       "explanation": "Grace says she used to be in teaching and trained for a diploma in it."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "9.15",
+        "9:15",
+        "9.15am",
+        "9:15am"
+       ],
+       "explanation": "William suggests 9:15 AM to 2 PM, which Grace confirms is perfect."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "guide"
+       ],
+       "explanation": "During the Rugby World Cup, Grace worked as a volunteer city guide for tourists."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "coach"
+       ],
+       "explanation": "At university, the netball team manager asked Grace to be the team coach."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "garden"
+       ],
+       "explanation": "Grace says she loves to get out in her garden and grows most of her own vegetables."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "guitar"
+       ],
+       "explanation": "Grace says she can play the guitar but has not done much recently — a bit rusty."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "farm"
+       ],
+       "explanation": "William offers a position helping out on a farm for a month."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "friends"
+       ],
+       "explanation": "Grace says she would like to make some friends now that her children are in school."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "supermarket"
+       ],
+       "explanation": "Grace saw the advertisement at the supermarket on her way to school."
+      }
+     ]
+    }
+   ],
+   "transcript": "William interviews Grace Brown who is applying to do volunteer work.\nWilliam: Hello, Grace. I am William. What is the best phone number to contact you on?\nGrace: My mobile is probably best. Zero two one six three six seven one eight nine. But I cannot always answer it during the day. I will give you my email address as well.\nWilliam: What is the address?\nGrace: It is GraceB at travel.co.nz [Answer 1 — travel]\nWilliam: Do you have any particular qualifications, Grace?\nGrace: I am a housewife now, but I used to be in teaching. I trained for that and got my diploma. Before having children I worked as a bank teller. [Answer 2 — teaching]\nWilliam: When will you be available during the week?\nGrace: Both my children are at school. So I cannot start work before eight fifteen in the morning or work past three in the afternoon.\nWilliam: So you would be looking for about four or five hours a day, say nine fifteen AM to two PM? [Answer 3 — 9.15]\nGrace: That is perfect.\nWilliam: And are you looking to work Monday to Friday?\nGrace: Yes. If it gets to be too much, I can rethink it later.\nWilliam: Have you done any volunteer work before?\nGrace: During the Rugby World Cup, there were many visitors who did not know their way around Auckland. So I worked as a volunteer guide to help introduce the city to tourists. [Answer 4 — guide]\nWilliam: Have you done anything else?\nGrace: When I was at university, the manager of a netball team asked me to be the coach, and I did that. [Answer 5 — coach]\nWilliam: If not sports, do you have any other interests?\nGrace: Oh yes. I love to get out in my garden, and I grow most of my own vegetables. I love flowers and flower arranging. [Answer 6 — garden]\nGrace: Like most people, I like music. I can play the guitar, but I have not done much for a while, so I am a bit rusty. [Answer 7 — guitar]\nWilliam: I have a position helping out on a farm — just for a month. Not too physically demanding, though it does require you to be on your feet all day. [Answer 8 — farm]\nWilliam: There is also a position in a community centre with elderly men and women. They have activities like flower arranging, music lessons, sing-alongs.\nWilliam: Why do you want to do volunteer work?\nGrace: Now that both my children are in school, I would like to make some friends as I have got time on my hands. Also, I like the idea of helping others. [Answer 9 — friends]\nWilliam: How did you find our agency?\nGrace: I was on my way to school the other day and I saw your advertisement at the supermarket. [Answer 10 — supermarket]"
+  },
+  {
+   "id": "cdi-listening-32-part-2",
+   "title": "Part 2",
+   "context": "Peter Blakewell, owner of a strawberry farm, talks to new employees about the farm.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What should employees bring to work?",
+       "options": [
+        {
+         "key": "A",
+         "text": "gloves"
+        },
+        {
+         "key": "B",
+         "text": "lunch"
+        },
+        {
+         "key": "C",
+         "text": "water"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Fill up your water bottles at home and have them with you at all times.\" Gloves are provided at the farm; lunch is supplied."
+      },
+      {
+       "n": 12,
+       "text": "If employees cannot come to work one day, they should",
+       "options": [
+        {
+         "key": "A",
+         "text": "contact the duty manager directly."
+        },
+        {
+         "key": "B",
+         "text": "leave a phone message at the farm office."
+        },
+        {
+         "key": "C",
+         "text": "call their team leader."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"You need to get hold of the duty manager. Phone and speak to him directly.\" No point phoning the office."
+      },
+      {
+       "n": 13,
+       "text": "One problem with customers that may occur now is that",
+       "options": [
+        {
+         "key": "A",
+         "text": "they sometimes fail to return baskets."
+        },
+        {
+         "key": "B",
+         "text": "they eat the fruit before paying."
+        },
+        {
+         "key": "C",
+         "text": "they can be unsure about prices."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"People taking baskets out of the shop and leaving them in the car park, or worse, taking them home.\" Price signs have already been put up."
+      },
+      {
+       "n": 14,
+       "text": "One of the benefits of working at the strawberry farm is that",
+       "options": [
+        {
+         "key": "A",
+         "text": "employees' friends are entitled to a small discount."
+        },
+        {
+         "key": "B",
+         "text": "employees can have a quantity of fresh fruit for free."
+        },
+        {
+         "key": "C",
+         "text": "employees don't pay the full price for gift items in the shop."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"You get to take home a good sized carton of strawberries at no charge.\" Family get 15% off; no gift shop discount."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Write the correct letter, A–J, next to questions 15–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      },
+      {
+       "key": "J",
+       "text": "J"
+      }
+     ],
+     "questions": [
+      {
+       "n": 15,
+       "text": "Staff room",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Above the main building is a row of three smaller buildings. The staff room is the middle one.\" — C."
+      },
+      {
+       "n": 16,
+       "text": "Administration",
+       "answer": [
+        "H"
+       ],
+       "explanation": "\"Administration is in the top left hand corner\" of the main building — H."
+      },
+      {
+       "n": 17,
+       "text": "Packing shed",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The packing shed is the bigger of the two buildings directly below the tanks.\" — B."
+      },
+      {
+       "n": 18,
+       "text": "Staff car park",
+       "answer": [
+        "I"
+       ],
+       "explanation": "\"The staff car park is to the left of the main building, the area nearest the bottom of the map.\" — I."
+      },
+      {
+       "n": 19,
+       "text": "Ripe strawberries",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"The ripe strawberries — the L-shaped section right at the top of the map on the left.\" — A."
+      },
+      {
+       "n": 20,
+       "text": "Unripe strawberries",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"The unripe strawberries are above commercial growing area one, and you can see it from the cafe.\" — E."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening32-map.webp",
+      "alt": "Strawberry Farm Map"
+     }
+    }
+   ],
+   "transcript": "Peter Blakewell, owner of a strawberry farm, talks to new employees about the farm.\nPeter: Hello, my name is Peter Blakewell and I am the owner of the strawberry farm. The farm operates all year round, but summer is when we open to the public and people come here to pick their own strawberries.\nPeter: What do you need to bring for a long day? You will be working outside a lot, so fill up your water bottles at home and have them with you at all times. [Answer 11 — C: water] You will come in for lunch around one o’clock — we will be putting sandwiches out for you. Gloves should be worn at all times — you will find them in the packing shed.\nPeter: If for some reason you cannot come into work, there is no point phoning the office. You need to get hold of the duty manager. Phone and speak to him directly and he will let your team leader know. [Answer 12 — A: duty manager]\nPeter: One annoying thing is people taking baskets out of the shop and leaving them in the car park, or worse, taking them home. They are expensive to replace, so please keep an eye on them. [Answer 13 — A: fail to return baskets] We have got price signs all round the farm now, so customers knowing prices is sorted.\nPeter: The benefits: for a start, you get to take home a good sized carton of strawberries at no charge. [Answer 14 — B: free fruit] Your family members can also get fifteen percent off the fruit they pick. Discounts do not apply to the gift shop.\nPeter: Let us look at the farm map. We will start with the staff room. See the main building — above it is a row of three smaller buildings. The staff room is the middle one. [Answer 15 — C]\nPeter: In the main building you have the three checkout desks in the bottom right hand corner and the cafe in the top corner. The other large area is the shop. So administration is in the top left hand corner. [Answer 16 — H]\nPeter: At the top of the map, there are the round water tanks, four of them. The packing shed is the bigger of the two buildings directly below the tanks. [Answer 17 — B]\nPeter: The staff car park is to the left of the main building, the area nearest the bottom of the map. [Answer 18 — I]\nPeter: The ripe strawberries — that is the L-shaped section right at the top of the map on the left. [Answer 19 — A]\nPeter: The unripe strawberries are above commercial growing area one — you can see it from the cafe. [Answer 20 — E]"
+  },
+  {
+   "id": "cdi-listening-32-part-3",
+   "title": "Part 3",
+   "context": "Engineering student Kathy discusses her dissertation on water pumps with her tutor.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What part of Kathy's dissertation has the tutor just read?",
+       "options": [
+        {
+         "key": "A",
+         "text": "her results section"
+        },
+        {
+         "key": "B",
+         "text": "her introductory chapter"
+        },
+        {
+         "key": "C",
+         "text": "her literature review"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"I have been through your first chapter now, and I was quite impressed.\" — the introductory chapter (B)."
+      },
+      {
+       "n": 22,
+       "text": "What did the tutor like about Kathy's work?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the organisation"
+        },
+        {
+         "key": "B",
+         "text": "the style of writing"
+        },
+        {
+         "key": "C",
+         "text": "the use of resources"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"The overall structure of the piece is very clear.\" — the organisation (A). Writing style was criticised as too long and complex."
+      },
+      {
+       "n": 23,
+       "text": "Kathy and the tutor agree that she needs to",
+       "options": [
+        {
+         "key": "A",
+         "text": "do more library research."
+        },
+        {
+         "key": "B",
+         "text": "record more data."
+        },
+        {
+         "key": "C",
+         "text": "take additional measurements."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"I think you would get more convincing results if you took some additional measurements.\" — take additional measurements (C). Library work is not essential."
+      },
+      {
+       "n": 24,
+       "text": "Why does the tutor give an example from his own experience?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to show how successful he has become"
+        },
+        {
+         "key": "B",
+         "text": "to illustrate how times have changed"
+        },
+        {
+         "key": "C",
+         "text": "to encourage Kathy to do something similar"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The tutor shares how he got his first research post but then says times have changed and people are too busy — to illustrate how times have changed (B)."
+      },
+      {
+       "n": 25,
+       "text": "Kathy would like the tutor to advise her on her",
+       "options": [
+        {
+         "key": "A",
+         "text": "layout."
+        },
+        {
+         "key": "B",
+         "text": "bibliography."
+        },
+        {
+         "key": "C",
+         "text": "appendices."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Grace says: \"I would welcome some guidance about what I should or should not include in the appendices.\" — appendices (C)."
+      },
+      {
+       "n": 26,
+       "text": "What is Kathy going to do next?",
+       "options": [
+        {
+         "key": "A",
+         "text": "try out some software"
+        },
+        {
+         "key": "B",
+         "text": "go to a seminar"
+        },
+        {
+         "key": "C",
+         "text": "design a new type of pump"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Grace says she will go and investigate the latest version of the CAD software — try out software (A)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "How will Kathy benefit from doing each of the following activities? Choose FOUR answers from the box and write the correct letter, A–F, next to questions 27–30.",
+     "title": "Benefits",
+     "options": [
+      {
+       "key": "A",
+       "text": "broadens practical experience of the field"
+      },
+      {
+       "key": "B",
+       "text": "chance to publicise own work"
+      },
+      {
+       "key": "C",
+       "text": "effective way of keeping up-to-date"
+      },
+      {
+       "key": "D",
+       "text": "looks good on a CV"
+      },
+      {
+       "key": "E",
+       "text": "provides useful access to resources"
+      },
+      {
+       "key": "F",
+       "text": "way to make useful contacts"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "Going to Mechanical Engineers’ Society meetings",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"Make yourself known to various people like Professor Jones.\" — way to make useful contacts (F)."
+      },
+      {
+       "n": 28,
+       "text": "Visiting different workplaces",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"A very good way of making sure you are familiar with the cutting edge of what is going on.\" — effective way of keeping up-to-date (C)."
+      },
+      {
+       "n": 29,
+       "text": "Getting work experience abroad",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"A great way to find out how things are done elsewhere.\" — broadens practical experience of the field (A)."
+      },
+      {
+       "n": 30,
+       "text": "Attending an international conference",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Kathy says she could even present her dissertation at the conference — chance to publicise own work (B)."
+      }
+     ]
+    }
+   ],
+   "transcript": "Engineering student Kathy discusses her dissertation on water pumps with her tutor.\nTutor: Hello, Kathy. How is your dissertation on water pumps going?\nKathy: Not too bad. I am getting on well with the literature review now, and my lab work is fine so far.\nTutor: I have been through your first chapter now, and I was quite impressed. [Answer 21 — B: introductory chapter] Sometimes your sentences are a little long, but the overall structure of the piece is very clear. [Answer 22 — A: organisation] I would recommend you get a critical friend to go through it with you.\nTutor: However, I think you would get more convincing results if you took some additional measurements. [Answer 23 — C: additional measurements] I do not think more library work is essential at the moment.\nTutor: Have a word with James Higgins tomorrow. He is giving a lecture on hydraulics here and your work has drawn heavily from his last article.\nKathy: Fantastic. You never know how successful a chat with him might turn out to be.\nTutor: I got my first research post when I was a final year student and asked a visiting professor about his article. So I urge all my students to take such opportunities. But times have changed. People like that are too busy to talk to mere students these days. [Answer 24 — B: illustrate how times have changed]\nKathy: I suppose I am a bit unsure about how the bibliography should be presented — but I can just check journal articles for that. I would welcome some guidance about what I should or should not include in the appendices. [Answer 25 — C: appendices]\nKathy: I think I will go and investigate the latest version of the CAD software to see if it might help with my pump design experiments. [Answer 26 — A: try software]\nTutor: You certainly need to become a member of the Mechanical Engineers Society. There you must make a point of making yourself known to various people like Professor Jones. He is very approachable — way to make useful contacts. [Answer 27 — F]\nTutor: I think you should try to set up some visits to industry. Go to a lot of different workplaces to see how things are done. It is a very good way of making sure you are familiar with the cutting edge of what is going on. [Answer 28 — C: keeping up-to-date]\nTutor: I am sure we could set up a month for you in either the States or Canada. A great way to find out how things are done elsewhere — broadens practical experience. [Answer 29 — A]\nTutor: And the last thing was the European Water Engineering Conference in Spain in May.\nKathy: I could even present my dissertation there! [Answer 30 — B: chance to publicise own work]"
+  },
+  {
+   "id": "cdi-listening-32-part-4",
+   "title": "Part 4",
+   "context": "A lecturer gives an introduction to American salt marshes and the horseshoe crab.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "American Salt Marshes\n- The salt content can be as high as that of the [[31]]\n- Daily changes include salinity, [[32]] and warmth of the water\n- Animals such as worms and shrimps feed on the [[33]] that grow there\n- Marshland in the US was used in the past for [[34]] cultivation",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "ocean"
+       ],
+       "explanation": "\"The salinity ranges from ocean strength to almost fresh.\" — as high as ocean strength."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "depth"
+       ],
+       "explanation": "\"The amount of salt in the water rises and falls, as does the depth and warmth of the water.\""
+      },
+      {
+       "n": 33,
+       "answer": [
+        "plants"
+       ],
+       "explanation": "\"This food comes in the form of plants that thrive there.\" — worms and shrimps feed on plants."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "rice"
+       ],
+       "explanation": "\"Two hundred years ago, the flow of water was controlled so that rice could be grown there.\""
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 35,
+       "text": "One result of erecting artificial walls (dikes) in salt marshes is that",
+       "options": [
+        {
+         "key": "A",
+         "text": "water levels can get too high."
+        },
+        {
+         "key": "B",
+         "text": "wildlife has less space."
+        },
+        {
+         "key": "C",
+         "text": "water quality is difficult to control."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The walls restrict the movement of high volumes of water... the natural habitat of local aquatic life is reduced.\" — wildlife has less space (B)."
+      },
+      {
+       "n": 36,
+       "text": "Some people have complained about the building of dikes because",
+       "options": [
+        {
+         "key": "A",
+         "text": "access for walkers is reduced."
+        },
+        {
+         "key": "B",
+         "text": "the insect population has increased."
+        },
+        {
+         "key": "C",
+         "text": "the natural beauty of the area is affected."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Their presence means it is more difficult for walkers who appreciate the marshes to go where they want.\" — access for walkers is reduced (A)."
+      },
+      {
+       "n": 37,
+       "text": "In the 20th century, a large proportion of marshes in America became",
+       "options": [
+        {
+         "key": "A",
+         "text": "salt extraction sites."
+        },
+        {
+         "key": "B",
+         "text": "residential areas."
+        },
+        {
+         "key": "C",
+         "text": "protected insect reserves."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Over half of the salt marshes in the USA were destroyed... due to filling the marshes to create more land for housing developments.\" — residential areas (B)."
+      },
+      {
+       "n": 38,
+       "text": "There are now laws which help to prevent",
+       "options": [
+        {
+         "key": "A",
+         "text": "the erosion of soil and land loss to the sea."
+        },
+        {
+         "key": "B",
+         "text": "the building of more walls."
+        },
+        {
+         "key": "C",
+         "text": "the extinction of sealife."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"State laws now reflect the importance of marshes... they provide a natural barrier against storm damage and limit the amount of land lost to the sea.\" — prevent erosion of soil (A)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "The Horseshoe Crab\n- Related to: spider (not a crab at all)\n- Most common food: [[39]]\n- Time of year when female lays eggs: [[40]]",
+     "questions": [
+      {
+       "n": 39,
+       "answer": [
+        "shellfish"
+       ],
+       "explanation": "The horseshoe crab main diet is shellfish, but they will eat worms too."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "spring"
+       ],
+       "explanation": "\"The female lays between 200 and 300 eggs and comes ashore in spring, before the sand heats up in summer.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "A lecturer gives an introduction to American salt marshes and the horseshoe crab.\nLecturer: This morning I want to give you a brief introduction to American salt marshes, and then we will examine a particular inhabitant of the marsh, the horseshoe crab.\nLecturer: Salt marshes are found on the coast in various parts of the USA. They are areas between land and water.\nLecturer: The salinity — the amount of salt in the water — ranges from ocean strength to almost fresh. [Answer 31 — ocean]\nLecturer: The salt marshes are affected by daily changes in sea levels. The amount of salt in the water rises and falls, as does the depth and warmth of the water. [Answer 32 — depth]\nLecturer: Marshes provide plentiful food for creatures such as worms and shrimps. This food comes in the form of plants that thrive there. [Answer 33 — plants]\nLecturer: Two hundred years ago, the flow of water in marshland was controlled so that rice could be grown there. [Answer 34 — rice] Little is grown there today.\nLecturer: During the past twenty years, many objections have been voiced to the building of artificial earth walls — dikes — on salt marshes. The walls restrict the movement of high volumes of water, meaning the natural habitat of local aquatic life is reduced. [Answer 35 — B: wildlife has less space]\nLecturer: Many people are unhappy with the dikes. This is not because they distract from natural beauty, but because their presence means it is more difficult for walkers to go where they want. [Answer 36 — A: access for walkers reduced]\nLecturer: In the mid twentieth century, marshes were not thought of as valuable at all. Over half of the salt marshes in the USA were destroyed — due to filling them to create more land for housing developments. [Answer 37 — B: residential areas]\nLecturer: State laws now reflect the importance of marshes — they provide a natural barrier against storm damage and limit the amount of land lost to the sea. [Answer 38 — A: prevent erosion/land loss]\nLecturer: Horseshoe crabs have changed very little in the last three hundred and fifty million years. They are in fact distant relatives of the spider — not crabs at all. They look quite dangerous but are absolutely harmless.\nLecturer: The horseshoe crab’s main diet is shellfish, but they will eat worms too. [Answer 39 — shellfish]\nLecturer: The female lays between 200 and 300 eggs and comes ashore to do that. This process takes place in spring, before the sand heats up in the summer months. [Answer 40 — spring]"
+  }
+ ],
+ "audio": {
+  "file": "listening-32.mp3",
+  "durationSec": 1676,
+  "questionTimes": {
+   "1": 86,
+   "2": 102,
+   "3": 130,
+   "4": 157,
+   "5": 181,
+   "6": 237,
+   "7": 250,
+   "8": 267,
+   "9": 323,
+   "10": 341,
+   "11": 456,
+   "12": 480,
+   "13": 501,
+   "14": 537,
+   "15": 599,
+   "16": 622,
+   "17": 636,
+   "18": 664,
+   "19": 695,
+   "20": 708,
+   "21": 858,
+   "22": 858,
+   "23": 903,
+   "24": 966,
+   "25": 986,
+   "26": 1035,
+   "27": 1102,
+   "28": 1124,
+   "29": 1153,
+   "30": 1176,
+   "31": 1325,
+   "32": 1339,
+   "33": 1356,
+   "34": 1374,
+   "35": 1395,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

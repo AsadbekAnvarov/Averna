@@ -1,0 +1,700 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-29",
+ "title": "CDI Listening Test 29",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "telephone conversation between a park reservations employee and a woman who wants to book a campsite",
+  "hotel manager talking to some new staff",
+  "conversation between an art history student called Terence and his tutor about the student’s plan for a class presentation",
+  "lecture on the subject of why living in the city may be better for the environment than living in rural areas"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-29-part-1",
+   "title": "Part 1",
+   "context": "You will hear a telephone conversation between a park reservations employee and a woman who wants to book a campsite.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "| Campsite Reservation Form |\n| Park region | [[1]] California |\n| Campground name | [[2]] Campground |\n| Type of site | [[3]] |\n| Type of vehicle | will be driving a [[4]] |\n| Licence plate number | [[5]] |\n| Departure date | [[6]] |\n| Bear-proof food container size | [[7]] |\n| Nature walk booked | the [[8]] walk |\n| Type of park pass | the [[9]] pass |\n| Donation programme | the [[10]] programme |",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Southern"
+       ],
+       "explanation": "'Is Mount Laguna in the central or southern region?' — 'That’s southern.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "Mountain"
+       ],
+       "explanation": "Fishing at Sunrise is only June–September. Since they’re going in April, the agent suggests Mountain Campground."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "tent"
+       ],
+       "explanation": "'Which type of site offers the most peace and quiet?' — 'A tent site would be your best bet.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "truck"
+       ],
+       "explanation": "'Cars tend to get stuck when it rains. If you have a truck, you won’t have any trouble.' — 'Luckily we do.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "QY0918"
+       ],
+       "explanation": "'I’ll just need to get your license plate number.' — 'That’s QY0918.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "April 12",
+        "April 12th",
+        "12 April",
+        "12th April"
+       ],
+       "explanation": "'We’ll be arriving on April 10th and leaving on the twelfth.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "small"
+       ],
+       "explanation": "'If you get the small size, it’s not so heavy.' — 'I really want something lightweight.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "flower"
+       ],
+       "explanation": "'The flower walk sounds interesting.' — 'Could you sign me up?'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "one-year",
+        "1-year",
+        "1 year"
+       ],
+       "explanation": "'The one year pass is a better deal if you plan to go to more parks.' — 'Let’s go ahead and get that.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "youth"
+       ],
+       "explanation": "'Let’s go with the youth program.' — for children to attend nature camp."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a telephone conversation between a park reservations employee and a woman who wants to book a campsite.\nNarrator: Part one. You will hear a telephone conversation between a park reservations employee and a woman who wants to book a campsite. First, you have some time to look at questions 1 to 6.\nNarrator: Now listen carefully and answer questions one to six.\nAgent: Nature Park Services. How may I help you today?\nSandra: Hello. I’m calling to make a campsite reservation.\nAgent: Great. Let me just pull up the reservation form and we can get started. Okay. First, could I get your name?\nSandra: Sure, it’s Sandra Kemp.\nAgent: Alright, Ms. Kemp. I can make reservations for the Northern, Central, and Southern California parks. Which region will you be traveling to?\nSandra: Is Mount Laguna in the central or southern region.\nAgent: Is that where you’re going? Yes. That’s southern. Do you know which campground?\nSandra: Actually, I was hoping you could help me with that. I’ve read a lot about two different campgrounds, sunrise and mountain, but I can’t decide. Mountain campground has many hiking trails close by.\nSandra: But then again, sunrise campground is next to the lake, and my husband loves to fish. Hmm.\nAgent: They’re both really beautiful spots. I guess it depends on when you’re going.\nSandra: Really? Well, we’re going in April.\nAgent: The thing is, fishing at Sunrise Campground is only allowed from June to September. So I suggest mountain.\nSandra: Okay then. That makes it easy.\nAgent: So we’ve selected the campground, so now we need to think about which sort of site. There are different options. You can stay at a cabin, a tent, or a recreational vehicle campsite.\nSandra: Which type of site offers the most peace and quiet?\nAgent: A tent site would be your best bet.\nSandra: Sounds good to me.\nAgent: Um so if you’ve read about the park, you probably know that some vehicles aren’t suitable for the park roads. Cars tend to get stuck when it rains. If you have a truck, you won’t have any trouble.\nSandra: Luckily we do. We’ll be driving that instead of our car. I hope we don’t get any rain, but I’d rather be safe than sorry.\nAgent: Perfect. I’ll just need to get your license plate number.\nSandra: That’s QY0918. Thanks.\nAgent: And what about your trip dates?\nSandra: Uh we’d like to stay for three days.\nAgent: Does that mean you’ll be staying two nights?\nSandra: That’s right. We’ll be arriving on April 10th and leaving on the twelfth.\nBefore you hear the rest of the conversation, you have some time to look at questions seven to ten. Now listen and answer questions seven to ten.\nAgent: Now, the park is home to some black bears, so you’ll need to rent a bearproof food container to lock your food inside for hikes. It’s really just a precaution. We have small, medium, and large food containers for campers.\nSandra: Oh, I’m familiar with food containers, but they can be heavy.\nAgent: Well, the large one is, but if you get the small size, it’s not so heavy.\nSandra: Uh let’s do that. I really want something lightweight.\nAgent: Would you be interested in signing up for a guided nature walk on the second day of your trip?\nSandra: What kind of walk?\nAgent: Well, at 7 a.m. there are three different ones near your campground. There’s the flower walk, the bird watching walk, and the waterfall walk.\nSandra: Really? I love gardening, so the flower walk sounds interesting. My son might be more into the waterfall one, but I can’t imagine him getting up in time. Maybe I could go alone. Could you sign me up?\nAgent: Sure. Now just a few more things. Visitors must purchase park passes as well. You have the option of the one day pass, which would be cheaper, or the one year pass, which is a better deal if you plan to go to more parks.\nSandra: Let’s go ahead and get that. I’m sure we’ll visit more parks soon.\nAgent: It’s a really good bargain. Plus, we donate five dollars of the pass fee to one of our three park programs. You get to choose which one.\nSandra: Park programs?\nAgent: Yes. We run a youth program for local kids to attend a nature camp in the summer. The other two options are conservation projects. There’s a wildlife program and a tree planting program.\nSandra: Wow, they all sound worthwhile. What should I do? Um, it’s important for children to appreciate the outdoors. Let’s go with the youth program.\nAgent: Okay. We just need to review the fee and payment information.\nThat is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-29-part-2",
+   "title": "Part 2",
+   "context": "You will hear a hotel manager talking to some new staff.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "Why was the manager late?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He had to complete a report"
+        },
+        {
+         "key": "B",
+         "text": "He had to speak to head office"
+        },
+        {
+         "key": "C",
+         "text": "He had to take a guest to hospital"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The manager was late because 'I had to finish writing [the weekly report] for her.'"
+      },
+      {
+       "n": 12,
+       "text": "What quality does the manager value most in new staff?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Experience"
+        },
+        {
+         "key": "B",
+         "text": "Enthusiasm"
+        },
+        {
+         "key": "C",
+         "text": "Good qualifications"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'What counts most is that you enjoy the contact with guests and really want to make a career' — enthusiasm."
+      },
+      {
+       "n": 13,
+       "text": "When was the current hotel building constructed?",
+       "options": [
+        {
+         "key": "A",
+         "text": "in the 18th century"
+        },
+        {
+         "key": "B",
+         "text": "in the 19th century"
+        },
+        {
+         "key": "C",
+         "text": "in the 20th century"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The hotel was built 'in the middle of the twentieth century' after houses were demolished."
+      },
+      {
+       "n": 14,
+       "text": "What is the typical length of time staff stay at the hotel?",
+       "options": [
+        {
+         "key": "A",
+         "text": "three years"
+        },
+        {
+         "key": "B",
+         "text": "five years"
+        },
+        {
+         "key": "C",
+         "text": "ten years"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Five is pretty standard, and in fact several of our staff have been here for ten years or more.'"
+      },
+      {
+       "n": 15,
+       "text": "What type of guest is the hotel getting more of recently?",
+       "options": [
+        {
+         "key": "A",
+         "text": "tourists visiting local attractions"
+        },
+        {
+         "key": "B",
+         "text": "people staying one or two nights on business"
+        },
+        {
+         "key": "C",
+         "text": "people working locally who go home at weekends"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'We’re getting more and more regulars … staying here for four nights every week … they go home for the weekend.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the plan below. Choose the correct letter, A–I, next to questions 16–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 16,
+       "text": "Office",
+       "answer": [
+        "I"
+       ],
+       "explanation": "The office is 'immediately behind' the desk, with a connecting door from the desk and another from the corridor."
+      },
+      {
+       "n": 17,
+       "text": "Function room",
+       "answer": [
+        "F"
+       ],
+       "explanation": "The function room is 'right at the front of the hotel, on the left of the reception area opposite the desk.'"
+      },
+      {
+       "n": 18,
+       "text": "Main conference room",
+       "answer": [
+        "B"
+       ],
+       "explanation": "For the main conference room, 'go past the fountain as far as you can, and the doors directly in front of you.'"
+      },
+      {
+       "n": 19,
+       "text": "Meeting room",
+       "answer": [
+        "H"
+       ],
+       "explanation": "The meeting room: 'turn into the corridor at the side of the reception desk … facing you at the end of the corridor.'"
+      },
+      {
+       "n": 20,
+       "text": "Restaurant",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The restaurant is open to the public and hotel residents, with a very good reputation locally."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening29-map.webp",
+      "alt": "Ocean Edge Hotel Plan"
+     }
+    }
+   ],
+   "transcript": "You will hear a hotel manager talking to some new staff.\nManager: Good morning, all of you. I do apologize for being a little late starting our meeting. One of our guests has been taken ill.\nManager: Susie, who’s our assistant manager has driven him to the hospital, but she was in the middle of compiling our weekly report for head office, which is urgent, and I had to finish writing it for her.\nManager: Now this is the first day of work at the Ocean Edge Hotel for all of you. Let me say something that might surprise you. You’ve all got a qualification in hospitality, and some of you have got very high grades.\nManager: But to me, what counts most is that you enjoy the contact with guests and really want to make a career in the hospitality industry. [Enthusiasm — B]\nManager: You’ll be getting some very valuable experience here, so make the most of it. A few words about the history of the Ocean Edge Hotel. There have been buildings on this site for about two hundred and fifty years.\nManager: We know that in the eighteenth century there was a bakery here, when the town was very new. The building was destroyed by fire in the early 19th century, and houses were constructed on the site.\nManager: These, in their turn, were demolished in the middle of the twentieth century and replaced by the hotel. I think it’s fair to say that this is a popular place to work.\nManager: We’re always getting job applications from local people.\nManager: Even when we haven’t any vacancies, and whereas in many hotels staff tend to stay for a year or even less, here five is pretty standard, and in fact several of our staff have been here for ten years or more.\nManager: You’re the first people we’ve appointed in the last three years, and we only needed to do that because we’re currently constructing twenty five new bedrooms.\nManager: Depending on their location, hotels usually have mostly business guests or mostly tourists. We attract a large number of tourists who come to spend a few days beside the ocean.\nManager: We also have quite a lot of people who are here on business, and perhaps stay for one or two nights.\nManager: What we’ve noticed recently, though, is that we’re getting more and more regulars, people staying here for four nights every week, because they have jobs in this locality, but live somewhere else in the country, so they go home for the weekend.\nBefore you hear the rest of the talk, you have some time to look at questions sixteen to twenty. Now listen and answer questions sixteen to twenty.\nManager: Now let me give you an idea of the layout of the hotel. All the bedrooms are along walkways in the gardens, and the main building which we’re in now has most of the other rooms that guests use.\nManager: Obviously, when they arrive, the first place they find themselves in is the reception area where we’re sitting. The desk is over on the right of the entrance, and the office is immediately behind it.\nManager: There’s a connecting door from the desk itself and another entrance from the corridor. A lot of local residents hire the function room for parties and other events.\nManager: This is right at the front of the hotel, on the left of the reception area opposite the desk. This room is booked several evenings a week and most weekends. It’s a major source of income.\nManager: Companies are very important customers for us, and a large number of local firms hold conferences here.\nManager: To reach the main conference room, you go past the fountain as far as you can, and the doors directly in front of you.\nManager: The meeting room is often hired by companies and other local organizations for small gatherings.\nManager: For this room, you turn into the corridor at the side of the reception desk, and you’ll see the room facing you at the end of the corridor. Our restaurant is open to the public.\nManager: As well as to hotel residents, and I’m pleased to say it has a very good reputation locally.\nManager: Next I should mention that there are…\nThat is the end of part two. You now have thirty seconds to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-29-part-3",
+   "title": "Part 3",
+   "context": "You will hear a conversation between an art history student called Terence and his tutor about the student’s plan for a class presentation.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What first attracted Terence to the topic of Ife sculptures?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He read several journal articles"
+        },
+        {
+         "key": "B",
+         "text": "He attended an exhibition"
+        },
+        {
+         "key": "C",
+         "text": "He spent some time in Nigeria"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Terence says: 'I got my introduction to this at a special display at the City Museum' — he attended an exhibition."
+      },
+      {
+       "n": 22,
+       "text": "In his presentation, Terence will focus on sculptures featuring",
+       "options": [
+        {
+         "key": "A",
+         "text": "abstract designs"
+        },
+        {
+         "key": "B",
+         "text": "fish and wild animals"
+        },
+        {
+         "key": "C",
+         "text": "people"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'I decided to concentrate on those as they’re the most typical' — sculptures of kings and queens (people)."
+      },
+      {
+       "n": 23,
+       "text": "How did Terence finance his trip to Ife?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He received money from an arts organisation"
+        },
+        {
+         "key": "B",
+         "text": "His parents paid for him"
+        },
+        {
+         "key": "C",
+         "text": "He wrote about the trip for a newspaper"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'I applied for a grant from the Arts Council, and in the end I got it.'"
+      },
+      {
+       "n": 24,
+       "text": "What was most memorable for Terence about his trip?",
+       "options": [
+        {
+         "key": "A",
+         "text": "helping at an archaeological site"
+        },
+        {
+         "key": "B",
+         "text": "the professor he met"
+        },
+        {
+         "key": "C",
+         "text": "the artists he got to know"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'That had to be meeting a professor … who had been a young boy when they first discovered the sculptures.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO correct answers.",
+     "title": "Which TWO additions will Terence make to the sculpture section?",
+     "options": [
+      {
+       "key": "A",
+       "text": "more information about how the sculptures were made"
+      },
+      {
+       "key": "B",
+       "text": "additional details about the artists"
+      },
+      {
+       "key": "C",
+       "text": "more about the subjects of the sculptures"
+      },
+      {
+       "key": "D",
+       "text": "larger photographs showing the fine detail"
+      },
+      {
+       "key": "E",
+       "text": "fewer personal reactions to the works"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Tutor says to add more about 'the details of the way they were made' — manufacturing techniques. 'Make some bigger photos so you can clearly see the fine detail' — larger photographs."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Tutor says to add more about 'the details of the way they were made' — manufacturing techniques. 'Make some bigger photos so you can clearly see the fine detail' — larger photographs."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO correct answers.",
+     "title": "Which TWO additions will Terence make to the history section?",
+     "options": [
+      {
+       "key": "A",
+       "text": "data about the rulers of the Ife area"
+      },
+      {
+       "key": "B",
+       "text": "extra information about the surrounding region"
+      },
+      {
+       "key": "C",
+       "text": "examination of the beliefs of the Ife people"
+      },
+      {
+       "key": "D",
+       "text": "an explanation of the development of modern Ife"
+      },
+      {
+       "key": "E",
+       "text": "more details of past activities of the Ife people"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "Tutor: 'I’d like to go into more depth about the history of that whole area … the countries around Nigeria' — surrounding region. 'Perhaps I should concentrate more on the religious beliefs' — examination of beliefs."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "Tutor: 'I’d like to go into more depth about the history of that whole area … the countries around Nigeria' — surrounding region. 'Perhaps I should concentrate more on the religious beliefs' — examination of beliefs."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO correct answers.",
+     "title": "Which TWO features of his Nigeria research will Terence discuss?",
+     "options": [
+      {
+       "key": "A",
+       "text": "the influence of the sculptures on western artists"
+      },
+      {
+       "key": "B",
+       "text": "the uncertainty over who made the sculptures"
+      },
+      {
+       "key": "C",
+       "text": "the sources of the materials used for the sculptures"
+      },
+      {
+       "key": "D",
+       "text": "the problems he faced in collecting information"
+      },
+      {
+       "key": "E",
+       "text": "the original discovery of the sculptures"
+      }
+     ],
+     "questions": [
+      {
+       "n": 29,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "'The theories about who the original sculptors were … a lot of them may have been made by the same person' — uncertainty over who made them. 'There were some interesting accounts of how the first sculptures were found' — the original discovery."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "'The theories about who the original sculptors were … a lot of them may have been made by the same person' — uncertainty over who made them. 'There were some interesting accounts of how the first sculptures were found' — the original discovery."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a conversation between an art history student called Terence and his tutor about the student’s plan for a class presentation.\nTutor: Okay, Terence. Now I’ve looked through your preliminary outline and notes for the presentation on the art of the Ife region in Africa. That’s in Nigeria, right? Yes.\nTerence: I’m concentrating on Ife sculptures from the twelfth to the fifteenth century. How did you get interested in that? I know there have been some recent articles in the journals about African sculpture.\nTerence: Well, I’ve read most of those now. But initially I got my introduction to this at a special display at the City Museum a few years ago. I just happened to be there and saw these works and thought they were fantastic. [exhibition — B]\nTerence: And I even went to Nigeria last summer to see more of them. I’ve seen the photos for your presentation, and I must say the sculptures are gorgeous portrayals of what appear to be kings and queens. Yes.\nTerence: I decided to concentrate on those as they’re the most typical. They’re interesting because they’re so naturalistic, unlike the abstract figures we often associate with African art. [people — C]\nTerence: There’s also a lovely sculpture of a mudfish and one of the scaly crocodile, but I didn’t get very good pictures of those, so I won’t spend long on them. Right.\nTutor: So what was the city of Ife like when these works were made? It’s on the Niger River, isn’t it? Yeah.\nTerence: The boat traffic’s what made it a centre of commerce then as it still is today, but nowadays it’s better known as the home of a big university. Speaking of modern day Ife, tell me about your trip.\nTerence: I was incredibly lucky to be able to get enough money to go.\nTerence: My parents encouraged me, but they couldn’t afford to send me. I applied for a grant from the Arts Council, and in the end I got it. [Arts Council grant — A] I also wrote a series of articles about my trip for the local newspaper, but I didn’t get any money for that.\nTerence: I was just pleased to get them published. And the highlight of the trip?\nTerence: That had to be meeting a professor, working on the site in Ife who had been a young boy when they first discovered the sculptures by accident at a building site in 1938. He had been working at the site.\nTerence: Of course, I also got to talk to lots of artists who were working there today, and I got to try my hand at making a little sculpture myself.\nBefore you hear the rest of the discussion, you have some time to look at questions 25 to 30. Now listen and answer Questions twenty five to thirty.\nTerence: Well, let’s see what you might do to improve what you’re planning for your presentation. About the sculptures themselves, I think I need to add as much as possible about the details of the way they were made.\nTerence: Of course, I can’t add anything about the artists who made them, because nobody really knows anything about them. All good points. And you’ve certainly said enough about what the sculptures depict, uh what the subjects are.\nTutor: That’s well covered. But I’d make some bigger photos of them so you can clearly see the fine detail. Okay. And I would limit my personal reactions to these works of art if I were you.\nTerence: I know you think they’re fantastic. You’re right. I’ll contain my enthusiasm. What about the section of the presentation which I call history?\nTutor: I’d like to go into more depth about the history of that whole area, you know, in the countries around Nigeria. That would make the presentation stronger.\nTutor: But I think you’ve covered the situation regarding the rulers of the country quite well, and you’ve got plenty already about what the Ife people were doing then and the way their society was structured.\nTutor: And in fact, I think you could cut out the bit about modern Nigerian history because it’s not relevant. I agree. That doesn’t fit. But perhaps I should concentrate more on the religious beliefs.\nTerence: Since all these sculptures do seem to have some kind of religious association.\nTutor: Good. I can lend you a book on that. Now, probably the part the class will find most interesting is the report of your trip to Nigeria and the research you did there.\nTutor: So I gather you managed to use the university library in Ife. Yes. As soon as I’d explained why I wanted the information, that was no problem. They couldn’t have been more helpful.\nTerence: There were some interesting accounts of how the first sculptures were found and what happened to them, which I want to include.\nTerence: What struck me when I saw the sculptures in Nigeria is the extent to which twentieth century European artists were influenced by them. But that’s beyond the scope of my presentation, I think. Yes.\nTutor: What about the sources of the materials they used? You don’t mention that anywhere. I didn’t manage to find out much about that. I want to cover the theories about who the original sculptors were, though.\nTutor: Yes, the idea that a lot of them may have been made by the same person. That’s very interesting. It is, isn’t it?\nTerence: Right, well, thanks for all the advice. Now I think I need to work.\nThat is the end of part three. You now have thirty seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-29-part-4",
+   "title": "Part 4",
+   "context": "You will hear part of a lecture on the subject of why living in the city may be better for the environment than living in rural areas.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Reasons for and against Urban Migration\nCities today\n- account for 3% of our planet’s land area\n- produce less [[31]] than non-urban areas\n- some [[32]] would recover\n- more energy efficient for services like electricity and water\n- [[33]] in the city is more environmentally friendly\n- recycling schemes: e.g. Seattle uses methane from the city’s [[34]]\nPopulation: urban women\n- start a family much later\n- are more likely to gain [[35]] at work\nDownsides of living in the city\n- possible loss of [[36]] amongst some migrants\n- the higher [[37]] rate among the population\n- the poor quality of the [[38]]\n- Economic factors: increased [[39]] leads to more energy consumption\n- citizens may find the quantity of daily [[40]] stressful",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "carbon"
+       ],
+       "explanation": "'Cities produce 30 to 40% of the carbon … a lower amount than the 60 to 70% from non-urban areas.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "forests"
+       ],
+       "explanation": "'This movement of people from the countryside should lift the pressure … allowing forests to regenerate.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "transport"
+       ],
+       "explanation": "'City dwellers have other more environmentally friendly forms of transport … such as buses and trains.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "rubbish"
+       ],
+       "explanation": "'Methane gas … is produced from the city’s rubbish which could not be collected so efficiently from rural areas.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "promotion"
+       ],
+       "explanation": "'It’s far easier to find a job, and once you have one, to get a promotion.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "culture"
+       ],
+       "explanation": "'Critics often mention … migrants may end up losing their culture.'"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "crime"
+       ],
+       "explanation": "'There is more crime occurring in cities' compared to rural areas."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "air"
+       ],
+       "explanation": "'Many cities … now suffer from high levels of pollution so that the air we breathe is far from pure.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "wealth"
+       ],
+       "explanation": "'When there is greater wealth in society, more energy is consumed.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "traffic"
+       ],
+       "explanation": "'The amount of traffic on the road … something that many citizens may well find stressful.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear part of a lecture on the subject of why living in the city may be better for the environment than living in rural areas.\nLecturer: Good morning everyone. Today we’re looking at urban migration, the movement of people migrating from outside cities into cities. I think it’s easy to jump to the conclusion that a rural lifestyle is greener.\nLecturer: However, recent studies have suggested otherwise.\nLecturer: First of all, if we take the land area of the Earth, the proportion that cities take up is a mere 3%, and these same cities actually produce 30 to 40% of the carbon that is released into the atmosphere, a lower amount than the 60 to 70% from non-urban areas.\nLecturer: Anyway, let’s imagine that most people decide to migrate to the city. What kind of impact would that have?\nLecturer: For a start, this movement of people from the countryside should lift the pressure of intensive agriculture from the land, allowing forests to regenerate.\nLecturer: Another point in favour of urban migration is that it can be far more energy efficient if services are concentrated in the city, for example. This is true for electricity and, as you can imagine, water.\nLecturer: Then, once you remember that rural communities are often very spread out, you can see yet another green reason to live in the city.\nLecturer: Rural citizens rely on the car to make their journeys far more than city dwellers who have other more environmentally friendly forms of transport that they can use, such as buses and trains. The journeys tend to be shorter too.\nLecturer: Yet another point in favour of urban migration is the kind of recycling schemes that can only take place where the population is concentrated.\nLecturer: Take for instance Seattle in the USA, where methane gas is being put to good use and is generating energy for the city. It’s produced from the city’s rubbish which could not be collected so efficiently from rural areas.\nLecturer: Now another factor that threatens the environment is the growing world population. It’s estimated that 75 million babies are now born every year, and in some countries the birth rate shows no signs of slowing down.\nLecturer: Urban migration may provide an answer here. Now in cities, one of the reasons that women tend to have fewer children is that they get married later and start their families later.\nLecturer: And the reason for this is that it’s far easier to find a job, and once you have one, to get a promotion. So yes, the focus isn’t on bearing children.\nLecturer: Well, it would be foolish to pretend that there are no downsides to urban living when clearly there are. The thing that critics often mention is the idea that migrants may end up losing their culture, although some studies have found the opposite is true.\nLecturer: Rather than give up their traditions, people actually work hard to maintain them. More evident is the fact that compared to the lower rate that is observed in rural areas, we can see that there is more crime occurring in cities.\nLecturer: There won’t be many of us here today who can say we haven’t been directly or indirectly affected by it. There’s another issue that we have to deal with.\nLecturer: So many cities, including our own, now suffer from high levels of pollution so that the air we breathe is far from pure. And another factor against the urban is greener idea is that urbanization often drives a country’s economy.\nLecturer: Put simply, when there is greater wealth in society, more energy is consumed.\nLecturer: One of the direct effects of a stronger economy, something that many citizens will now experience every day and may well find stressful, is the amount of traffic on the road, despite the other options we mentioned earlier.\nLecturer: This is a problem that is not about to go away, although there are some solutions that could be considered. Let’s have a look at some of those.\nThat is the end of part four. You now have one minute to check your answers to part four.\nThat is the end of the listening test."
+  }
+ ],
+ "audio": {
+  "file": "listening-29.mp3",
+  "durationSec": 1783,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

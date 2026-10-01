@@ -1,0 +1,750 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-82",
+ "title": "CDI Reading Test 82",
+ "description": "A full Academic Reading test from the CDI practice materials: Face Recognition in Everyday Life; Nanotechnology: the science of the very small; Risk taking.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Face Recognition in Everyday Life",
+  "Nanotechnology: the science of the very small",
+  "Risk taking"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Face Recognition in Everyday Life",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The human ability to recognise faces is extraordinary. We can identify hundreds of individuals, often in a fraction of a second, and despite vast changes in their appearance due to lighting, expression, age, or angle. This skill is so natural that we rarely pause to consider its complexity. Yet researchers have found that the processes underlying face recognition are far from perfect, and a range of factors can lead to surprising errors."
+    },
+    {
+     "label": "B",
+     "text": "One well-documented phenomenon is that people may become temporarily confused when attempting to identify someone who bears a strong resemblance to another person. This momentary uncertainty, while usually harmless, reveals how our visual system relies on distinctive features. When two individuals share many of those features, the brain struggles to resolve the ambiguity, leading to a brief lapse in recognition."
+    },
+    {
+     "label": "C",
+     "text": "In most everyday contexts, misidentifying a face has trivial consequences. However, there are situations where accurately remembering a face can be literally a matter of life or death. Eyewitness testimony in criminal investigations, for example, often depends on a witness's memory of a perpetrator's face. Similarly, security personnel at airports or border crossings must quickly match faces to identification documents, and an error could have serious repercussions."
+    },
+    {
+     "label": "D",
+     "text": "Despite the apparent ease with which we recognise familiar faces, research shows that when describing someone, people rarely give a holistic account of the whole face. Instead, they tend to focus on individual features such as hair, eyes, or nose shape, often omitting other crucial details. This partial description can be misleading, as it emphasises features that may change over time or be easily altered."
+    },
+    {
+     "label": "E",
+     "text": "Studies have also investigated which faces are best remembered. Contrary to what might be expected, the faces that stick most strongly in memory are not necessarily those seen frequently. Rather, faces encountered in varied poses, expressions, and lighting conditions are recalled more accurately than those always seen in the same pose. Familiarity alone is less important than the variety of visual experiences with a given face."
+    },
+    {
+     "label": "F",
+     "text": "The factors used to identify a person are remarkably variable. In some cases, we rely heavily on the eyes; in others, the shape of the jaw or the distance between features becomes critical. This variability makes it difficult to establish a universal model of face recognition, as the weighting of different facial components changes depending on context, familiarity, and even cultural background."
+    },
+    {
+     "label": "G",
+     "text": "Furthermore, research using eye-tracking technology has revealed that certain parts of the face receive disproportionate attention. The eyes and mouth, for instance, are fixated upon far more than the forehead or cheeks. This uneven distribution of visual attention suggests that not all facial information is processed equally, which has implications for both natural recognition and the design of artificial face recognition systems."
+    },
+    {
+     "label": "H",
+     "text": "Looking to the future, some experts express caution about the widespread application of face recognition research. While the technology has advanced rapidly, there is a reservation about how well laboratory findings will translate into real-world performance. Factors such as poor lighting, low image quality, and the natural variability of human faces mean that current systems – and our understanding of human recognition – may still fall short of expectations in practical settings."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in the text?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "People may be temporarily confused when attempting to identify a person who looks like someone else.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "A strong resemblance causes a brief lapse in recognition."
+      },
+      {
+       "n": 2,
+       "text": "When describing someone, people generally describe the person's whole face.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "People rarely describe the whole face; they focus on individual features."
+      },
+      {
+       "n": 3,
+       "text": "The best remembered faces are those that have been seen frequently in the same pose.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Varied poses are remembered better than the same pose seen repeatedly."
+      },
+      {
+       "n": 4,
+       "text": "Researchers have reached a clear consensus on the most effective method for studying face recognition.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage never says whether researchers agree on the best research method."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "The text has eight paragraphs, A–H. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 5,
+       "text": "a reference to the variability in the factors used to identify a person",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F is about the variability of the factors used."
+      },
+      {
+       "n": 6,
+       "text": "a reservation about the future usefulness of face recognition studies",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H expresses a reservation about future usefulness."
+      },
+      {
+       "n": 7,
+       "text": "situations in which remembering a face can be vitally important",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C gives life-or-death situations."
+      },
+      {
+       "n": 8,
+       "text": "the fact that some parts of the face may receive more attention than others",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G: the eyes and mouth are fixated on far more."
+      },
+      {
+       "n": 9,
+       "text": "an example of a common error in face recognition",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B gives the look-alike confusion as a common error."
+      },
+      {
+       "n": 10,
+       "text": "the finding that variety of viewing conditions aids memory",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E: variety of viewing conditions aids memory."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose THREE letters, A–G.",
+     "title": "Which THREE of the following problems are mentioned by the writer?",
+     "options": [
+      {
+       "key": "A",
+       "text": "the poor results obtained from face recognition studies"
+      },
+      {
+       "key": "B",
+       "text": "the difficulty of finding sufficiently well-known faces for research purposes"
+      },
+      {
+       "key": "C",
+       "text": "the effect of age on the reliability of face recognition data"
+      },
+      {
+       "key": "D",
+       "text": "the misleading nature of the descriptions people give"
+      },
+      {
+       "key": "E",
+       "text": "the difficulty of establishing a single model of face recognition"
+      },
+      {
+       "key": "F",
+       "text": "the high cost of carrying out face recognition research"
+      },
+      {
+       "key": "G",
+       "text": "a difficulty in applying information obtained from tests to everyday situations"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "D",
+        "E",
+        "G"
+       ],
+       "explanation": "The three problems mentioned are misleading descriptions (D), the difficulty of a single model (E) and applying laboratory findings to real life (G). The three problems mentioned are misleading descriptions (D), the difficulty of a single model (E) and applying laboratory findings to real life (G). The three problems mentioned are misleading descriptions (D), the difficulty of a single model (E) and applying laboratory findings to real life (G)."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "D",
+        "E",
+        "G"
+       ],
+       "explanation": "The three problems mentioned are misleading descriptions (D), the difficulty of a single model (E) and applying laboratory findings to real life (G). The three problems mentioned are misleading descriptions (D), the difficulty of a single model (E) and applying laboratory findings to real life (G). The three problems mentioned are misleading descriptions (D), the difficulty of a single model (E) and applying laboratory findings to real life (G)."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "D",
+        "E",
+        "G"
+       ],
+       "explanation": "The three problems mentioned are misleading descriptions (D), the difficulty of a single model (E) and applying laboratory findings to real life (G). The three problems mentioned are misleading descriptions (D), the difficulty of a single model (E) and applying laboratory findings to real life (G). The three problems mentioned are misleading descriptions (D), the difficulty of a single model (E) and applying laboratory findings to real life (G)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Nanotechnology: the science of the very small",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Nanoscience and nanotechnology have become very fashionable in recent times. Their prominence has inspired science fiction and raised a lot of hope and hype about the possibilities. But what exactly is nanotechnology? Most definitions agree that it is the manufacture of structures that measure up to 100 nanometres (nm). The diameter of an atom is typically one or three tenths of a nanometre while that of the human hair is around 1,000,000 nm. Essentially, we are now able to build new structures from atoms and molecules as if we were using the bricks of a children's construction toy."
+    },
+    {
+     "label": "B",
+     "text": "Most of the electronic consumer goods that we use today contain components that measure less than 100 nm. The lasers in our CD and DVD players make use of the properties of semiconductor layers that are just a few atoms in thickness, so we clearly are in the nanotechnology age. There are many other everyday items that we take for granted that have nanoparticles in them. One of these is sunscreen. In the 1990s, there were safety issues with many of the sunscreen products available, so scientists at Oxford University set about finding a solution. The product they developed uses nanoparticles of titanium dioxide that are doped with the element manganese. This reduces the hazard of potentially skin-damaging agents known as free radicals. The product is almost transparent to the eye when spread on the skin, and it is effective for much longer than many of the traditional preparations. In this case, we see an example of nanotechnology providing a solution to an existing problem rather than opening up new product areas."
+    },
+    {
+     "label": "C",
+     "text": "The technique of using nanotechnology to adapt existing products can also be applied to garments, upholstery, paint and plastics, to improve their longevity. Bearing this in mind, it is interesting to ask whether nanotechnology can help with some of the world's major current issues. The recent growth in climate change awareness calls a range of things into question. Can we use energy more effectively? Can we reduce the carbon dioxide in the atmosphere? Can we use and purify water more effectively? Can healthcare be improved? Nanotechnology may very well provide the solutions. There are few times in history when the application of science to improving the human condition has been so apparent."
+    },
+    {
+     "label": "D",
+     "text": "We are already making new types of solar cells and batteries by using our new-found ability to manipulate matter at the atomic and molecular scale. If we can capture some of the huge quantities of energy that arrive at the Earth's surface from the Sun, and store it effectively, we can reduce the need for fossil fuel-based power stations. We are already using nanoparticles and nanoporous materials to capture harmful greenhouse gases, and we may possibly convert some of them back into fuel. There are, however, many technical problems involved, and it will be another decade or so before some of these ideas are deployed."
+    },
+    {
+     "label": "E",
+     "text": "Water purification is increasingly challenging and many believe that water, which we take for granted, is going to become more valuable than oil. Currently we do not use water efficiently, and many industrial and food processes leave contamination in water that is potentially toxic and difficult to remove. Nanofiltration may provide the solution to these problems, and may also offer new routes to the desalination of brackish water and groundwater in some parts of the world."
+    },
+    {
+     "label": "F",
+     "text": "Food production and processing are becoming more important as the world's population increases. There are concerns that potentially harmful nano-products might enter the body via the gut. Such concerns are being addressed, but it is even more important to ask questions about how nanotechnology might increase the nutritious yield of food and be adapted to help preserve and package food. There is already evidence to show that it might also be helpful in the primary production of raw food materials, by way of better delivery of pesticides in the field and better extraction of protein and carbohydrates."
+    },
+    {
+     "label": "G",
+     "text": "Healthcare is an area where the application of nanotechnology is already exceeding the expectations of ten years ago. It is happening across several fronts: better appreciation of what the 'natural' nanoparticles circulating in body fluid do; better methods of delivering drugs to the body via nanoparticles that target the diseased body part; improvements to the diagnostic imaging techniques of ultrasound, magnetic resonance imaging and X-ray computerised tomography. We are now at the threshold of a new subject, 'theranostics', whereby nanoparticles will first deliver the diagnostic information to the clinician and then, using the same particle, deliver a form of therapy."
+    },
+    {
+     "label": "H",
+     "text": "Nanotechnology is a life-changing technology, making the quality of life better, enabling us to make use of our resources more effectively, thereby protecting our environment, and creating new business opportunities. There are many other examples in the world of 'new materials' that also make use of nanotechnology. The possibilities may well be limitless."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary. Choose ONE WORD ONLY from the text for each answer.",
+     "wordLimit": 1,
+     "title": "Nanotechnology",
+     "template": "In the same way that a child may use [[14]], scientists are now able to create new structures by combining the smallest particles known to man. We can fully appreciate the microscopic scale of this work by comparing the exact [[15]] of one atom with that of a single human hair.\nA lot of today's electronic consumer goods, such as lasers, have components that are microscopic in size. They are not the only products relying on nanotechnology. For example, a long-lasting [[16]] widely available today relies on minute nanoparticles for its effectiveness. This was developed in the 1990s as a result of concerns about the safety of existing products.",
+     "questions": [
+      {
+       "n": 14,
+       "answer": [
+        "bricks"
+       ],
+       "explanation": "Structures are built from atoms as with the bricks of a construction toy."
+      },
+      {
+       "n": 15,
+       "answer": [
+        "diameter"
+       ],
+       "explanation": "The scale is shown by comparing the diameter of an atom with that of a hair."
+      },
+      {
+       "n": 16,
+       "answer": [
+        "sunscreen"
+       ],
+       "explanation": "Sunscreen is the everyday product that relies on nanoparticles."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "The text has eight sections, A–H. Which section contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 17,
+       "text": "a comparison between two of the world's vital natural resources",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E compares water with oil."
+      },
+      {
+       "n": 18,
+       "text": "a mention of how nanotechnology could be dangerous for humans",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F raises the risk of nano-products entering the body."
+      },
+      {
+       "n": 19,
+       "text": "a claim that nanotechnology has influenced modern authors",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A says nanotechnology has inspired science fiction."
+      },
+      {
+       "n": 20,
+       "text": "a reference to the fact that nanotechnology has achieved more than was anticipated a decade ago",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G: healthcare is exceeding the expectations of ten years ago."
+      },
+      {
+       "n": 21,
+       "text": "a suggestion that nanotechnology could provide financial as well as ecological benefits",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H links environmental protection with new business opportunities."
+      },
+      {
+       "n": 22,
+       "text": "an acknowledgement that more time is required to realise some of nanotechnology's potential",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D says another decade or so is needed."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO statements does the writer make about nanotechnology and energy resources?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Nanotechnology means that solar energy will replace fossil fuel energy."
+      },
+      {
+       "key": "B",
+       "text": "We have made solar batteries for the first time by applying nanotechnology."
+      },
+      {
+       "key": "C",
+       "text": "Further research is needed to turn nanotechnology into practical energy solutions."
+      },
+      {
+       "key": "D",
+       "text": "Nanotechnology is being used to remove dangerous gases from the atmosphere."
+      },
+      {
+       "key": "E",
+       "text": "Nanotechnology has helped create cheaper sources of energy."
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "The writer says technical problems remain (C) and that harmful greenhouse gases are already being captured (D). The writer says technical problems remain (C) and that harmful greenhouse gases are already being captured (D)."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "The writer says technical problems remain (C) and that harmful greenhouse gases are already being captured (D). The writer says technical problems remain (C) and that harmful greenhouse gases are already being captured (D)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "In which TWO ways does the writer think nanotechnology could improve food production?",
+     "options": [
+      {
+       "key": "A",
+       "text": "by enabling crops to grow faster"
+      },
+      {
+       "key": "B",
+       "text": "by keeping food fresh for longer"
+      },
+      {
+       "key": "C",
+       "text": "by making food tastier"
+      },
+      {
+       "key": "D",
+       "text": "by protecting food from insects better"
+      },
+      {
+       "key": "E",
+       "text": "by increasing the variety of food"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "Nanotechnology could help preserve food (B) and deliver pesticides better, protecting crops from insects (D). Nanotechnology could help preserve food (B) and deliver pesticides better, protecting crops from insects (D)."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "Nanotechnology could help preserve food (B) and deliver pesticides better, protecting crops from insects (D). Nanotechnology could help preserve food (B) and deliver pesticides better, protecting crops from insects (D)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Risk taking",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "We run risks. Most of the time we ignore them; sometimes we stop and decide how to deal with them. That's life. Risks arise in sports, in business, in personal relationships; they are present in the laboratory, in political calculations, everywhere. Acting individually, we often prefer to gain some benefit by accepting some danger. Acting collectively, we make similar trade-offs."
+    },
+    {
+     "label": "B",
+     "text": "When society must assess risks, and those risks can be clarified, at least in part, by science, technology or mathematics, the responsibility of the research community is to be clear and complete. But that is not always so easy. Furthermore, too few people pay full attention to the best evidence, much less modify their behaviors as a result. Even when the evidence of high risk is clear – about smoking, for instance – many will deny the risk, or dispute it, or accept that it exists and still go ahead. As a former cigarette smoker, I understand denial."
+    },
+    {
+     "label": "C",
+     "text": "Perhaps more important than the basic facts of risk are the varied perception of it. Hearing the prediction of 60% chance of rain, or recognizing the minuscule likelihood of becoming ill from a flu shot, most people understand the right responses: take your umbrella and get your flu shot. But some, fearfully but irrationally, go to the extreme and stay at home and avoid all contact with other people. Irrational decisions occasionally affect us all. When it comes to risks the best odds do not always influence people to make the correct decision."
+    },
+    {
+     "label": "D",
+     "text": "In her book, The Universe and the Teacup, the science writer K. C. Cole reminds us that the risks of losing something and gaining something appear to be calculated in our minds according to quite different scales. People will risk a lot to prevent a loss, she notes; some people will rush into a burning building to save a pet. But they will usually risk very little if the only perceived outcome is a possible gain; many people won't even risk pursuing an exciting job, if the current job, though unfulfilling, remains comfortable. That psychological mechanism, a desire to maintain the status quo, helps explain the high hurdles that any rational risk assessment must confront."
+    },
+    {
+     "label": "E",
+     "text": "Organizations face the same hurdles whenever they must cope with major shifts in policy. In his classic examination of the character of high-tech industry, Only the Paranoid Survive, Andrew S. Grove gives a perceptive account of a crisis that took place during his tenure as Chairman of the Intel Corporation. The business environment for Intel and its competitors was transformed by a flood of low-cost memory chips from Japan, and Intel made the difficult decision to abandon its chip-making business. Such a period of change in the outside world is filled with danger, Grove notes, precisely because it is so easy for executives to try to disregard it or misinterpret the mounting evidence showing the profound risks of not making change at the very core. The distinction Cole cites is instructive here: one reason management and staff may not act is that they tend to focus on the potential gains of risking change (which they characterize as small), rather than on the catastrophic losses that risking change could prevent. The period becomes critical for a company, according to Grove, and deadly when unattended to."
+    },
+    {
+     "label": "F",
+     "text": "Likewise, at the national level, and even the global one, institutions tend to be more willing to take a risk if it means avoiding a loss, than they are if it might confer a gain. Almost everyone, for instance, sees the signs of ecological decay. Reid J. Lifset's article, 'Full Accounting', describes newly developed techniques for clarifying which critical decision would have the highest pay-offs for the environment. Once these 'leverage points' as he calls them, are located, many environmental organizations will be willing to risk the resources needed to prevent further deterioration."
+    },
+    {
+     "label": "G",
+     "text": "More complicated are decisions by nations to invest broadly in educational research. Some governmental leaders are oblivious to the risks posed by social under-investment, because the urgent needs of the present take precedence over actions that would give rise to even more substantial gains in the future. Their attitude is that today's risks must be manageable, and that tomorrow's gains are at the very least difficult to measure. Better consideration and decision making for what lies ahead is essential."
+    },
+    {
+     "label": "H",
+     "text": "Nevertheless, I confess to being an optimist. My glass is generally half full – though that may not help me handle risk. Whether one's temperament is optimistic or pessimistic, everyone in our scientific and engineering community has a social responsibility: measure with care and portray with honesty the level of risk involved in any action or decision."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–G, below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "planning for the future."
+      },
+      {
+       "key": "B",
+       "text": "predicting their errors."
+      },
+      {
+       "key": "C",
+       "text": "continuing in the present situation."
+      },
+      {
+       "key": "D",
+       "text": "recent findings on the most effective solutions to problems."
+      },
+      {
+       "key": "E",
+       "text": "achieving a gain."
+      },
+      {
+       "key": "F",
+       "text": "changes occurring externally."
+      },
+      {
+       "key": "G",
+       "text": "a high level of agreement."
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "K. C. Cole points out that avoiding a loss seems more important to people than",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Cole: people risk a lot to prevent a loss but little for a possible gain."
+      },
+      {
+       "n": 28,
+       "text": "According to Andrew S. Grove, it can be very dangerous for companies to ignore",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Grove warns about disregarding change in the outside world."
+      },
+      {
+       "n": 29,
+       "text": "Reid J. Lifset argues that environmental agencies can benefit from",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Lifset's newly developed techniques identify the highest pay-offs."
+      },
+      {
+       "n": 30,
+       "text": "The writer suggests that government leaders need to focus more on",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The writer calls for better decision making for what lies ahead."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "The text has eight paragraphs, A–H. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 31,
+       "text": "the areas of study that help us understand risk",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B names science, technology and mathematics."
+      },
+      {
+       "n": 32,
+       "text": "reference to key actions that might benefit the world",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F describes leverage points - the key actions."
+      },
+      {
+       "n": 33,
+       "text": "examples of statistical predictions that the majority of the public react to in the same way",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C gives the rain and flu-shot predictions."
+      },
+      {
+       "n": 34,
+       "text": "the variety of contexts in which risk occurs",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A lists the many contexts in which risk occurs."
+      },
+      {
+       "n": 35,
+       "text": "mention of a habit that has been proved to be very risky",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B mentions smoking."
+      },
+      {
+       "n": 36,
+       "text": "reference to market forces motivating change",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E: cheap chips from Japan forced Intel to change."
+      },
+      {
+       "n": 37,
+       "text": "the writer's current attitude towards risk",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H states the writer's own attitude."
+      },
+      {
+       "n": 38,
+       "text": "a reason why some individuals avoid making a career change",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D explains why people stay in a comfortable job."
+      },
+      {
+       "n": 39,
+       "text": "how some people over-react to information about risk",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C describes an over-reaction to risk information."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 40,
+       "text": "At the end of the passage the writer concludes that",
+       "options": [
+        {
+         "key": "A",
+         "text": "risk is something we must try to avoid."
+        },
+        {
+         "key": "B",
+         "text": "experts should be truthful about risk to the public."
+        },
+        {
+         "key": "C",
+         "text": "optimists are better able to deal with risk than pessimists."
+        },
+        {
+         "key": "D",
+         "text": "it is important to take risks in order to fulfil social obligations."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The scientific community must portray risk honestly."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

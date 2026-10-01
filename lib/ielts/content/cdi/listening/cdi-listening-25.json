@@ -1,0 +1,717 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-25",
+ "title": "CDI Listening Test 25",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "telephone conversation between a man who is finding out about a preschool for his young daughter and a woman who works there",
+  "talk about how students can get help finding a part-time job while they’re studying",
+  "sociology student called John discussing his research project about the use of public services with his tutor",
+  "tutor talking to a group of students about a project to build a driverless vehicle"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-25-part-1",
+   "title": "Part 1",
+   "context": "You will hear a telephone conversation between a man who is finding out about a preschool for his young daughter and a woman who works there.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Riverdale Pre-school\nExample\n- Children: 20 in a class\nClasses\n- First group – Mrs Oliver\n- Second group – Mrs [[1]]\nHours & Days\n- Susie will attend 3 days a week for a total of [[2]] hours\nActivities\nOutside time\n- running, playing, or something quieter\n- just got a new piece of equipment – intend to make a [[3]]\nIndoors\n- this year, [[4]] activities are popular\n- they hear a/an [[5]] every day\nFees\n- Now costs $ [[6]] per term\n- Fees include:\n- a trip to a/the [[7]] this year\n- chance to take home a [[8]] every week\nDo not forget\n- Put a [[9]] in Susie’s bag\n- Arrange a visit; phone number: [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Keogh"
+       ],
+       "explanation": "Sally says: 'The second group is taken by Mrs. Keogh.' Robert asks her to spell it: 'K-E-O-G-H.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "15"
+       ],
+       "explanation": "'The older ones, like Susie, are here for three days, which means 15 hours a week.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "garden"
+       ],
+       "explanation": "'We were hoping to build a playhouse, but that was too expensive. So we’re now making plans for a garden where the children will be able to grow flowers and vegetables.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "music"
+       ],
+       "explanation": "'This year the children seem to be very interested in music, so the teachers are doing a lot of activities related to that.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "story"
+       ],
+       "explanation": "'We always make time for a story each day. It’s a very important part of the program here.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "470",
+        "$470"
+       ],
+       "explanation": "Robert says: 'It used to be $420 … but it’s just gone up to $470.' Sally confirms: 'Yes. We had to add the extra $50 to cover costs.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "farm"
+       ],
+       "explanation": "'We did [go to the zoo] last year, but we’ll be going to a farm this year instead.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "toy"
+       ],
+       "explanation": "'Children can borrow a toy and keep it for a week, and choose a different one the following week.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "pillow"
+       ],
+       "explanation": "'We make up a little bed for them … But we advise parents to pack a pillow in the child’s bag, as we don’t provide one.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "0914638520",
+        "0914 638 520",
+        "0914-638-520"
+       ],
+       "explanation": "Sally gives the classroom mobile number: '0914 638 520.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a telephone conversation between a man who is finding out about a preschool for his young daughter and a woman who works there.\nSally: Good morning, Riverdale Preschool, Sally speaking.\nRobert: Hello, my name’s Robert. I’ve got a four-year-old daughter called Susie, and I’d like to get some information about your preschool, please.\nSally: Sure, Robert. Well, Susie’s the right age. We take three and four-year-olds in classes of 20 students.\nRobert: Oh great. And how many teachers do you have?\nSally: We have two. The first group is taught by Mrs. Oliver, and the second group is taken by Mrs. Keogh.\nRobert: Just a moment, I’ll write that down. Could you spell the last name please?\nSally: Yes, it’s K-E-O-G-H.\nRobert: Okay. Now, I know the children attend for two or three days a week.\nSally: That’s right. The older ones, like Susie, are here for three days, which means 15 hours a week. The younger ones, the three-year-olds, attend two days a week — 10 hours.\nRobert: And what do they do during that time?\nSally: Well, half the day is spent outside — running, playing, or a calmer activity like painting. We have a great outside play area that we’re improving all the time.\nRobert: You’ve recently put in a new slide, haven’t you?\nSally: Yes, we’re really pleased with it. The children love it.\nRobert: And are you thinking of adding anything else outdoors?\nSally: We were hoping to build a playhouse, but that was too expensive. So we’re now making plans for a garden where the children will be able to grow flowers and vegetables.\nSally: The other half of the day is spent indoors. This year the children seem to be very interested in music, so the teachers are doing a lot of activities related to that. Last year, there was more interest in dancing.\nSally: The teachers may sometimes play quiet games, but we always make time for a story each day. It’s a very important part of the program here.\nNow listen and answer questions 6 to 10.\nRobert: Now, I’d like to ask about the fees.\nSally: Sure. We actually had to put them up this term.\nRobert: I heard it used to be $420 but it’s just gone up to $470. Is that right?\nSally: Yes. We had to add the extra $50 to cover costs.\nRobert: My friend also told me about a trip to the local zoo.\nSally: Yes, we did that last year, but we’ll be going to a farm this year instead.\nSally: Also included in the price is membership of a special library. Children can borrow a toy and keep it for a week.\nSally: The children have a rest here during the day, and we make up a little bed. But we advise parents to pack a pillow in the child’s bag, as we don’t provide one.\nRobert: What if I want to come and look around?\nSally: The best thing is to call the teacher on the classroom mobile. The number is 0914 638 520."
+  },
+  {
+   "id": "cdi-listening-25-part-2",
+   "title": "Part 2",
+   "context": "You will hear part of a talk about how students can get help finding a part-time job while they’re studying.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "University Job Centre\nSpecial conditions may apply to [[11]] students looking for a job.\nThe university Job Centre is located on the [[12]] Campus.\nThe Job Centre remains open until [[13]] every evening.\nThe only day the employment lawyer is available is [[14]] .\nThe university [[15]] regularly advertises new jobs.",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "overseas"
+       ],
+       "explanation": "'If you are a student from overseas, there may be particular conditions attached to working in this country.'"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "Woodside"
+       ],
+       "explanation": "'It’s not on this main Hillston campus, it’s based in the student services building on the campus called Woodside. W-O-O-D-S-I-D-E.'"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "8",
+        "8 pm",
+        "8pm",
+        "eight"
+       ],
+       "explanation": "'It’s open six days a week … from ten in the morning until eight at night.'"
+      },
+      {
+       "n": 14,
+       "answer": [
+        "Tuesday"
+       ],
+       "explanation": "'A professional employment lawyer is on hand every Tuesday if you want any advice about your job.'"
+      },
+      {
+       "n": 15,
+       "answer": [
+        "website"
+       ],
+       "explanation": "'Part-time jobs … are advertised on the university website, which you can access through the library.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 16,
+       "text": "At present, the university is offering part-time work in…",
+       "options": [
+        {
+         "key": "A",
+         "text": "its offices."
+        },
+        {
+         "key": "B",
+         "text": "the IT centre."
+        },
+        {
+         "key": "C",
+         "text": "the car parks."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Marissa says 'they’re looking for people to check that all the vehicles using the university car parks have got up-to-date permits.'"
+      },
+      {
+       "n": 17,
+       "text": "Local employers visit the university…",
+       "options": [
+        {
+         "key": "A",
+         "text": "only in the first term."
+        },
+        {
+         "key": "B",
+         "text": "twice a term."
+        },
+        {
+         "key": "C",
+         "text": "throughout the year."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Recruitment open days … are held regularly during the year, when local employers come into the university.'"
+      },
+      {
+       "n": 18,
+       "text": "According to the speaker, a part-time job can…",
+       "options": [
+        {
+         "key": "A",
+         "text": "lead to a full-time job after graduation."
+        },
+        {
+         "key": "B",
+         "text": "provide a useful work record for the future."
+        },
+        {
+         "key": "C",
+         "text": "give the chance to develop team-work skills."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Part-time work is … a valuable way of building up an employment record that reflects your skills and capabilities.'"
+      },
+      {
+       "n": 19,
+       "text": "Students who work part-time…",
+       "options": [
+        {
+         "key": "A",
+         "text": "will be taxed."
+        },
+        {
+         "key": "B",
+         "text": "will be paid every week."
+        },
+        {
+         "key": "C",
+         "text": "will need private insurance."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Students who work part-time can no longer expect to be paid cash. An employer will deduct tax from what you earn.'"
+      },
+      {
+       "n": 20,
+       "text": "Part-time student workers are advised to…",
+       "options": [
+        {
+         "key": "A",
+         "text": "give notice in writing."
+        },
+        {
+         "key": "B",
+         "text": "communicate by email."
+        },
+        {
+         "key": "C",
+         "text": "have a mobile phone."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Make sure your employer knows in good time. That shouldn’t be a problem now that everyone has a mobile phone.' — advised to have a mobile phone."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear part of a talk about how students can get help finding a part-time job while they’re studying.\nMarissa: Hi, thanks for coming along. My name’s Marissa, and I’m going to tell you a bit about finding part-time jobs. Not everybody wants to work when they’re studying, but you may need to earn some extra cash. However, if you are a student from overseas, there may be particular conditions attached to working in this country.\nMarissa: The university has its own job centre on the campus. Well actually, it’s not on this main Hillston campus, it’s based in the student services building on the campus called Woodside. Spelt W-O-O-D-S-I-D-E. The centre works on a drop-in basis. It’s open six days a week, Monday to Saturday, nine hours a day, from ten in the morning until eight at night.\nMarissa: The centre is run by other students, but a professional employment lawyer is on hand every Tuesday if you want any advice.\nMarissa: Part-time jobs become available almost every day, and they are advertised on the university website, which you can access through the library if the computer centre is closed.\nNow listen and answer questions 16 to 20.\nMarissa: They’re looking for people to check that all the vehicles using the university car parks have got up-to-date permits. Office jobs rarely come up, but in future the university is hoping to offer jobs in the IT centre.\nMarissa: There are also recruitment open days, held regularly during the year, when local employers come into the university to recruit students.\nMarissa: Part-time work is also a valuable way of building up an employment record that reflects your skills and capabilities.\nMarissa: Students who work part-time can no longer expect to be paid cash. An employer will deduct tax from what you earn.\nMarissa: Make sure your employer knows in good time if you’re ill. That shouldn’t be a problem now that everyone has a mobile phone. And if you decide to leave the job, make sure you put this in writing."
+  },
+  {
+   "id": "cdi-listening-25-part-3",
+   "title": "Part 3",
+   "context": "You will hear a sociology student called John discussing his research project about the use of public services with his tutor.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "How did John choose the topic of his research project?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He thought the information would be useful for town planning."
+        },
+        {
+         "key": "B",
+         "text": "He has a special interest in the use of public services."
+        },
+        {
+         "key": "C",
+         "text": "He read about a similar study which had been done earlier."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "John says: 'I found a report in the college library about an investigation that was done 10 years ago, and I thought it’d be interesting to do a parallel one.'"
+      },
+      {
+       "n": 22,
+       "text": "During his research, John is expecting to find that…",
+       "options": [
+        {
+         "key": "A",
+         "text": "the use of public services has altered very little."
+        },
+        {
+         "key": "B",
+         "text": "a group of people has changed its habits."
+        },
+        {
+         "key": "C",
+         "text": "the most frequently used facility is the library."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "John hypothesises 'older people are using the sports center more often than they used to' — a group has changed its habits."
+      },
+      {
+       "n": 23,
+       "text": "What is the problem with using official records?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They may be lacking in detail."
+        },
+        {
+         "key": "B",
+         "text": "They may not be readily available."
+        },
+        {
+         "key": "C",
+         "text": "They may be difficult to analyse."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The tutor says: 'There might not be as much information as you’d like' — official records may be lacking in detail."
+      },
+      {
+       "n": 24,
+       "text": "What does the tutor think about John using a questionnaire?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He needs to do a course in questionnaire design first."
+        },
+        {
+         "key": "B",
+         "text": "He should use this method instead of looking at public records."
+        },
+        {
+         "key": "C",
+         "text": "He will find the practice he gets useful the following year."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The tutor says: 'It’ll be good to get experience, because next year you’ll have to do something similar for your final dissertation.'"
+      },
+      {
+       "n": 25,
+       "text": "Which new variable does John agree to add to his investigation?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Occupation"
+        },
+        {
+         "key": "B",
+         "text": "Income group"
+        },
+        {
+         "key": "C",
+         "text": "Qualifications"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The tutor asks about 'level of education … whether they have a degree' and John agrees: 'that’ll tie in nicely' — adding qualifications."
+      },
+      {
+       "n": 26,
+       "text": "How many questionnaires will John distribute?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The same number as in the previous study."
+        },
+        {
+         "key": "B",
+         "text": "A greater number than he needs for analysis."
+        },
+        {
+         "key": "C",
+         "text": "The number recommended in the project guidelines."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "John plans to analyse 50 but distribute 80 — 'a greater number than he needs for analysis' to allow for wastage."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO strategies will John use to encourage people to fill out his questionnaire?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Using simple language"
+      },
+      {
+       "key": "B",
+       "text": "Delivering the questionnaires in person"
+      },
+      {
+       "key": "C",
+       "text": "Making the questionnaires anonymous"
+      },
+      {
+       "key": "D",
+       "text": "Providing return envelopes"
+      },
+      {
+       "key": "E",
+       "text": "Trialling the questionnaire on friends"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "D",
+        "E"
+       ],
+       "explanation": "John says: 'I could enclose a stamped envelope for the return post.' — providing return envelopes. The tutor says: 'To make sure that your questions make sense, you should try them out beforehand.' John confirms: 'My friends will help.' — trialling on friends."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "D",
+        "E"
+       ],
+       "explanation": "John says: 'I could enclose a stamped envelope for the return post.' — providing return envelopes. The tutor says: 'To make sure that your questions make sense, you should try them out beforehand.' John confirms: 'My friends will help.' — trialling on friends."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO pieces of advice does the tutor give John about his questionnaire?",
+     "options": [
+      {
+       "key": "A",
+       "text": "There should be a mixture of question types"
+      },
+      {
+       "key": "B",
+       "text": "Some questions should elicit personal information"
+      },
+      {
+       "key": "C",
+       "text": "There should be an introduction to explain the survey’s purpose"
+      },
+      {
+       "key": "D",
+       "text": "A telephone number should be provided for queries"
+      },
+      {
+       "key": "E",
+       "text": "The questions should only take a few minutes to answer"
+      }
+     ],
+     "questions": [
+      {
+       "n": 29,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "The tutor says: 'You’ll need to get a bit of information about your subjects. What age group they’re in … how long they’ve lived in the area.' — eliciting personal info. John asks: 'Would it be a good idea to have a short paragraph at the top explaining what I’m doing and why?' The tutor replies: 'Definitely.' — an introduction."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "The tutor says: 'You’ll need to get a bit of information about your subjects. What age group they’re in … how long they’ve lived in the area.' — eliciting personal info. John asks: 'Would it be a good idea to have a short paragraph at the top explaining what I’m doing and why?' The tutor replies: 'Definitely.' — an introduction."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a sociology student called John discussing his research project about the use of public services with his tutor.\nTutor: Hello John. You’re here to discuss your research project, are you?\nJohn: Yes. I want to look at how people use public services in their local area.\nTutor: Do you have a special interest in public services?\nJohn: Not really. It’s just that I found a report in the college library about an investigation done 10 years ago, and I thought it’d be interesting to do a parallel one.\nJohn: I think there’ll be some differences. For example, the number of people going to the library will have decreased. And I’d guess that older people are using the sports centre more often than they used to.\nTutor: Now, what sort of data are you going to use?\nJohn: Official records from the local council. They should be easy to obtain.\nTutor: There might not be as much information as you’d like, but it’d certainly be the easiest kind of data to work with. Have you considered using a questionnaire as well?\nTutor: You’ve already done the module on questionnaire design. And it’ll be good to get experience, because next year you’ll have to do something similar for your final dissertation.\nTutor: Are you going to look at people’s level of education? Whether they have a degree?\nJohn: I hadn’t planned to.\nTutor: Well, you might see some interesting patterns.\nJohn: Okay. And that’ll tie in nicely with my plans to analyse the kind of work people do. — adding qualifications.\nJohn: I don’t think I can analyse more than 50, so I should probably distribute about 80 questionnaires altogether, to allow for wastage.\nNow listen and answer questions 27 to 30.\nTutor: To make sure that your questions make sense, you should try them out beforehand.\nJohn: My friends will help.\nJohn: I could enclose a stamped envelope for the return post. It’s a bit expensive, but I think it’d be worth it.\nJohn: Would it be a good idea to have a short paragraph at the top explaining what I’m doing and why?\nTutor: Definitely. And don’t forget, you’ll need to get a bit of information about your subjects. What age group they’re in and how long they’ve lived in the area.\nTutor: In this case, I’d stick to closed questions. The results will be much more manageable."
+  },
+  {
+   "id": "cdi-listening-25-part-4",
+   "title": "Part 4",
+   "context": "You will hear a tutor talking to a group of students about a project to build a driverless vehicle.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "Driverless Vehicle Competition\nUndergraduates from both the engineering school and the [[31]] department can definitely take part in the project.\nThe automated vehicles will have to avoid obstacles such as [[32]] .\nThe tutor mentions one vehicle which used technology such as [[33]] , lasers, and laptops to measure its surroundings.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "computer science"
+       ],
+       "explanation": "'The engineering school will be collaborating with the computer science department.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "rocks"
+       ],
+       "explanation": "'Identify and steer around corners and avoid unexpected hazards. Things like rocks, for example.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "video cameras"
+       ],
+       "explanation": "'That particular vehicle built a three-dimensional picture of its surroundings using video cameras and lasers.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 34,
+       "text": "The purpose of holding the race is to…",
+       "options": [
+        {
+         "key": "A",
+         "text": "interest students in careers in industry."
+        },
+        {
+         "key": "B",
+         "text": "help provide finance for universities."
+        },
+        {
+         "key": "C",
+         "text": "find useful new design features."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'The sponsors are hoping to see innovative design ideas that they can transfer into commercial production.' — find useful new design features."
+      },
+      {
+       "n": 35,
+       "text": "The tutor says success will depend on…",
+       "options": [
+        {
+         "key": "A",
+         "text": "the software design."
+        },
+        {
+         "key": "B",
+         "text": "good, solid construction."
+        },
+        {
+         "key": "C",
+         "text": "sophisticated mechanisms."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Programming skills will decide who eventually wins first prize.' — success depends on software design."
+      },
+      {
+       "n": 36,
+       "text": "This year’s competitors were surprised that the vehicles…",
+       "options": [
+        {
+         "key": "A",
+         "text": "were so easy to design."
+        },
+        {
+         "key": "B",
+         "text": "were as successful as they were."
+        },
+        {
+         "key": "C",
+         "text": "took such a short time to construct."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Many of the teams were amazed that the vehicles did what they wanted them to do at all' — surprised they were as successful as they were."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Schedule\n| When | What |\n| Early May | Introductory [[37]] about the project |\n| Late May | Essay giving information about relevant [[38]] and experience |\n| June | Visit to a factory |\n| September | Workshop – discuss [[39]] – learn to use design package |\n| December | Submission of initial designs |\n| January | Selection of the [[40]] |",
+     "questions": [
+      {
+       "n": 37,
+       "answer": [
+        "seminar"
+       ],
+       "explanation": "'At the beginning of May, we’ll be scheduling a seminar to introduce the project.'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "skills"
+       ],
+       "explanation": "'We’ll be asking you to submit a short essay … tell us about any particular skills that you have.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "ideas"
+       ],
+       "explanation": "'We thought we’d hold a weekend workshop to share ideas and see computer-aided design demonstrations.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "team"
+       ],
+       "explanation": "'The following month we’ll choose the team and start work in earnest.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a tutor talking to a group of students about a project to build a driverless vehicle.\nTutor: The university has decided to enter an international competition next year. The engineering school will be collaborating with the computer science department, and possibly the automotive design department.\nTutor: The vehicles must cover the whole distance without a human driver, and avoid unexpected hazards. Things like rocks, for example.\nTutor: There was one design which we will be analysing carefully. That particular vehicle built a three-dimensional picture of its surroundings using video cameras and lasers. It was equipped with seven laptop computers.\nTutor: The sponsors are hoping to see innovative design ideas that they can transfer into commercial production — to find useful new design features.\nTutor: Programming skills will decide who eventually wins first prize — success depends on the software design.\nTutor: Even after months of planning, many teams were amazed that the vehicles did what they wanted them to do at all — surprised they were as successful as they were.\nTutor: At the beginning of May, we’ll be scheduling a seminar to introduce the project. Later in May, we’ll be asking you to submit a short essay telling us about any particular skills that you have.\nTutor: In June, we’re organising a trip to a factory. Then in September, we’ll hold a weekend workshop to share ideas and see computer-aided design demonstrations.\nTutor: In December, submit your outline designs, and the following month we’ll choose the team and start work in earnest."
+  }
+ ],
+ "audio": {
+  "file": "listening-25.mp3",
+  "durationSec": 1753,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

@@ -1,0 +1,695 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-05",
+ "title": "CDI Reading Test 05",
+ "description": "A full Academic Reading test from the CDI practice materials: Evolution of the Calculator; Why Do We Need Sleep; New Zealand Home Textile Crafts.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Evolution of the Calculator",
+  "Why Do We Need Sleep",
+  "New Zealand Home Textile Crafts"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Evolution of the Calculator",
+   "paragraphs": [
+    {
+     "text": "Humans have been using mathematics for so long that it is uncertain what the earliest aids to mental arithmetic were. But the first was probably our fingers, and the second was small piles of stones which were used to keep a record of the objects being counted. However, these methods were insufficient, only useful for minimal amounts and, in the case of fingers, could only be employed for short periods before sore muscles set in. With the advent of prehistoric agriculture, commerce and astronomy, maintaining large piles of stones for counting became cumbersome and hopelessly inadequate."
+    },
+    {
+     "text": "A rudimentary version of the abacus, or counting frame, dating to around 2,500 BCE, was developed in Sumeria (present day Iraq) and subsequently spread to Europe and the rest of Asia. As the abacus was refined with the use of string and beads, calculations that had been considered extremely difficult became routine. For the next 4,500 years, the abacus was humanity's main counting tool and is still used in parts of Asia. However, it has its limitations; it is unable to multiply and divide as efficiently as it adds and subtracts."
+    },
+    {
+     "text": "In 1617, Scottish mathematician John Napier published a document entitled Rabdology (calculation with rods) describing a device that came to be known as Napier's bones. The 'bones' are thin rods, inscribed with multiplication tables. The user calculates the sum by adjusting the rods' vertical alignment, and then reads off the multiplication totals horizontally. With a few hours of study, the average person can use a set to solve large multiplication and division problems. Experts can even use them for difficult calculations such as extracting square roots from fairly large numbers. However, these manually operated devices were not calculators; although the simplification of the sums had been achieved, a human operator still had to perform them mentally."
+    },
+    {
+     "text": "In 1642, Blaise Pascal invented the Pascal calculator, a device truly capable of performing mathematical calculations by means of a clockwork-type mechanism. It was ingenious, attempting arithmetic functions previously thought impossible and it eventually performed all four arithmetic operations without relying on intelligence. It could add and subtract two numbers directly, and multiply and divide by repetition, but the machine was never a commercial success. This was due to the fact that the techniques for producing the interior parts were expensive to implement. In truth, the Pascal calculator did not replace Napier's bones or the abacus in many accountants' offices."
+    },
+    {
+     "text": "Thomas de Colmar, a French inventor and entrepreneur, invented and produced the first mechanical calculator robust enough for everyday use. It was known as the Arithmometer. Manufactured in 1851, this invention saw the rapid rise of faster calculating machines that could add, subtract, multiply and divide large numbers with greater accuracy. It became the first commercially successful unit. However, its biggest disadvantage was its size; it often filled a desktop and weighed 15 kilograms or more."
+    },
+    {
+     "text": "Another leading figure in the development of the calculator was Curt Herzstark. Born in Vienna, Austria, in 1902 into a family that produced calculators and other office machines, he regularly travelled through the former Austro-Hungarian Empire selling mechanical calculators to banks and other businesses and it was on these travels that he heard the same complaints from his customers. The impracticalities of the mechanical calculators in use were hindering them. They were large and heavy."
+    },
+    {
+     "text": "For 10 years, Herzstark thought about the problem of how to make calculators significantly smaller, but it was far from a simple task. His answer was to forget about the inside of his tiny calculator and concentrate first on designing the outside. Then in 1937, he had a breakthrough and began work on a calculator that was portable so it could be transported easily. The unit was approximately 10 centimetres high and only five centimetres in diameter with a cylindrical body. A year later, Herzstark had a finished design that achieved everything he wanted. In 1945, he took his plans to Vienna and was able to convince the Prince of Liechtenstein to provide financial backing for his Curta calculator."
+    },
+    {
+     "text": "His invention was a work of staggering ingenuity. From a distance, it resembles a short, stocky pepper grinder, yet it contains more than 600 precision parts, allowing the operator to add, subtract, multiply and perform long division with a mere turn of the crank. Advanced users could even calculate natural logs and square roots. Approximately 150,000 Curta calculators were made between 1948 and 1970, but by the early 1970s electronic pocket calculators ended the manufacture of mechanical calculators. However, the Curta still remains popular and people buy them to add to their collections. No truly mechanical calculators have been invented since; the Curta was the best and the last of its kind."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Counting methods before the abacus were limited to small quantities.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "TRUE - Paragraph 1 says earlier methods (fingers, piles of stones) were 'only useful for minimal amounts' - limited to small quantities."
+      },
+      {
+       "n": 2,
+       "text": "Development of trade helped spread the use of the abacus to Europe.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "NOT GIVEN - Passage says abacus spread to Europe and Asia but doesn't mention trade as the reason."
+      },
+      {
+       "n": 3,
+       "text": "For 4,500 years, the abacus was constantly being improved.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "NOT GIVEN - Passage says it was 'refined' early on, then became main tool for 4,500 years—but not that it was constantly improved during that whole time."
+      },
+      {
+       "n": 4,
+       "text": "The abacus can carry out some calculation tasks better than other tasks.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "TRUE - Paragraph 2: 'unable to multiply and divide as efficiently as it adds and subtracts' - some tasks done better."
+      },
+      {
+       "n": 5,
+       "text": "A complex knowledge of arithmetic was essential when using Napier's bones.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "FALSE - Paragraph 3: 'With a few hours of study, the average person can use a set to solve...' - complex knowledge not essential."
+      },
+      {
+       "n": 6,
+       "text": "Napier's bones were automated counting devices.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "FALSE - Paragraph 3: 'manually operated devices were not calculators' and 'human operator still had to perform them mentally' - not automated."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Evolution of the Calculator",
+     "template": "# Pascal Calculator (Blaise Pascal)\n- Pascal's calculator performed operations without relying on [[7]].\n- The [[8]] for producing the interior parts were expensive.\n# Arithmometer (Thomas de Colmar)\n- The Arithmometer could calculate with greater [[9]].\n- The Arithmometer's biggest disadvantage was its [[10]].\n# Curta (Curt Herzstark)\n- Herzstark heard the same [[11]] from his customers about previous calculators.\n- Herzstark decided to concentrate first on designing the [[12]] of the calculator.\n- Herzstark wanted a calculator that was [[13]] so it could be transported easily.\n- The Prince of Liechtenstein agreed to provide financial [[14]] for the Curta calculator.\n- The Curta allows all four arithmetic operations with a mere turn of the [[15]].\n- Today people buy Curta calculators to add to their [[16]].",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "intelligence"
+       ],
+       "explanation": "intelligence - Pascal's calculator performed operations 'without relying on intelligence.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "techniques"
+       ],
+       "explanation": "techniques - 'techniques for producing the interior parts were expensive.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "accuracy"
+       ],
+       "explanation": "accuracy - Arithmometer could calculate 'with greater accuracy.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "size"
+       ],
+       "explanation": "size - 'its biggest disadvantage was its size.'"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "complaints"
+       ],
+       "explanation": "complaints - Herzstark heard 'the same complaints from his customers' about previous calculators."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "outside"
+       ],
+       "explanation": "outside - 'concentrate first on designing the outside.'"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "portable"
+       ],
+       "explanation": "portable - 'calculator that was portable so it could be transported easily.'"
+      },
+      {
+       "n": 14,
+       "answer": [
+        "backing"
+       ],
+       "explanation": "backing - 'provide financial backing for his Curta calculator.'"
+      },
+      {
+       "n": 15,
+       "answer": [
+        "crank"
+       ],
+       "explanation": "crank - 'with a mere turn of the crank.'"
+      },
+      {
+       "n": 16,
+       "answer": [
+        "collections"
+       ],
+       "explanation": "collections - 'people buy them to add to their collections.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Why Do We Need Sleep",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": ". According to the United States (US) Centers for Disease Control and Prevention (CDC), more than 80 million American adults are chronically sleep deprived, meaning they sleep less than the recommended minimum of seven hours a night. The resulting fatigue contributes to more than a million auto accidents each year, as well as to a significant number of medical errors. Even small adjustments in sleep can be problematic. The Monday after a daylight-saving time change in the US—when the clocks are moved ahead one hour—there is a 24 percent increase in heart attacks and a jump in fatal car crashes, compared with other Mondays."
+    },
+    {
+     "label": "B",
+     "text": ". During their lifetimes, about a third of Americans will suffer from at least one of the recognized sleep disorders. They range from common sleep disorders to much rarer and stranger conditions such as sleep apnea and restless leg syndrome. For example, in exploding head syndrome, booming noises seem to reverberate in your brain as you try to sleep. Also, people with Kleine-Levin syndrome will, every few years, sleep almost non-stop for a week or two. However, insomnia is by far the most prevalent of these problems and the main reason 4 percent of US adults take sleeping pills in any given month."
+    },
+    {
+     "label": "C",
+     "text": ". Evolution endowed us with sleep that is flexible in its timing and easily disturbed, so that attention can be directed to higher priorities. The brain has an automatic override system that can wake us up in all stages of sleep when it perceives an emergency like the cry of a child. But the problem is that, in the modern world, our ancient innate wake-up call is constantly triggered by something that is non-life threatening, like worrying before an exam or the unexpected sound of a car alarm. Before the industrial revolution, which brought us alarm clocks and fixed work schedules, we could often counteract a sleep deficit by simply sleeping in. That is no longer possible."
+    },
+    {
+     "label": "D",
+     "text": ". The first segment of the brain that begins to fail when we don't get enough sleep is the prefrontal cortex, the center of decision-making and problem-solving. Dr. Chiara Cirelli, a neuroscientist in the US, suggests that, \"Every cognitive function to some extent seems to be affected by sleep loss,\" and she comments that people are often more irritable, moody, and irrational. For instance, sleep-deprived suspects held by the police will often confess to anything in exchange for rest. Other research has also found that people who regularly sleep less than six hours a night have an elevated risk of developing depression, as well as other mental and physical illnesses. In fact, lack of sleep has been directly tied to obesity: without enough sleep, the stomach and other organs overproduce ghrelin, the hunger hormone, causing us to eat more. However, proving a cause-and-effect relationship in this case is challenging because subjecting humans to the necessary experiments is unethical."
+    },
+    {
+     "label": "E",
+     "text": ". NREM (Non-Rapid Eye Movement) makes up the first of two distinct and repetitive phases of a night's sleep. As we fall into NREM sleep, our brain stays active and begins an editing process—deciding which memories to keep and which ones to ignore. The first of NREM's four stages is called the shallow end of sleep and is characterized by a distinctive regular pattern of brain activity, as shown on an EEG (electroencephalogram) device—a machine that measures electrical impulses. In stage two, the EEG measures electric sparks that strike the cerebral cortex (gray matter covering the outer layer of the brain) in regular half-second intervals. Researchers believe that this electrical activity helps the cortex preserve and store recently acquired information. Stages three and four have been described as a deep, coma-like sleep that is as essential to our brain as food is to our body. In stage three, big, rolling waves of brain activity as measured on an EEG are present less than half the time; in stage four, more than half the time. It is in this deep sleep that our cells produce most growth hormones, which are needed throughout life to serve bones and muscles."
+    },
+    {
+     "label": "F",
+     "text": ". REM (Rapid Eye Movement) sleep was at first believed to be only a variation of a stage in NREM sleep, and not particularly significant. However, once scientists documented the distinctive eye movements in REM, and found that virtually all dreaming takes place during this period, REM sleep was recognized as the second major phase of sleep. Today, scientists believe that the content of our approximately two hours of dreams each night in REM sleep is important in the processing of new memories. Some sleep theorists argue that REM sleep is when we are our most intelligent, insightful, creative, and free. It's when we truly come alive. \"REM sleep may be the thing that makes us the most human, both for what it does for the brain and body, and for the sheer experience of it,\" says Professor Michael Perlis."
+    },
+    {
+     "label": "G",
+     "text": ". The problem of sleep loss is not easily solved—whether by power naps or pharmaceuticals. Dr. Jeffrey Ellenbogen, a sleep scientist at Johns Hopkins University in the US, argues, \"It's tempting to manipulate sleep with drugs or devices, but we don't yet understand sleep enough to risk artificially manipulating the parts.\" Dr. Ellenbogen and other experts argue against shortcuts, especially the notion that we can mostly do without sleep. In fact, Dr. Steven Lockley, of Brigham Women's Hospital in Boston, suggests that sleep may be more essential to us than food."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Which paragraph contains the following information? Write the correct letter, A–G.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 17,
+       "text": "an example of how sleeplessness can influence a person accused of a crime",
+       "answer": [
+        "D"
+       ],
+       "explanation": "D - Paragraph D states 'sleep-deprived suspects held by the police will often confess to anything in exchange for rest.'"
+      },
+      {
+       "n": 18,
+       "text": "description of recordings of different types of brain activity during sleep",
+       "answer": [
+        "E"
+       ],
+       "explanation": "E - Paragraph E describes EEG recordings showing different patterns in each NREM stage."
+      },
+      {
+       "n": 19,
+       "text": "a description of how present-day society interrupts sleep",
+       "answer": [
+        "C"
+       ],
+       "explanation": "C - Paragraph C describes how in the modern world our wake-up call is constantly triggered by non-threatening things."
+      },
+      {
+       "n": 20,
+       "text": "information about the relationship between being overweight and sleep",
+       "answer": [
+        "D"
+       ],
+       "explanation": "D - Paragraph D states 'lack of sleep has been directly tied to obesity' and explains the ghrelin hormone connection."
+      },
+      {
+       "n": 21,
+       "text": "a suggestion that medication is an ineffective solution for sleeping problems",
+       "answer": [
+        "G"
+       ],
+       "explanation": "G - Paragraph G argues against manipulating sleep with drugs or devices."
+      },
+      {
+       "n": 22,
+       "text": "a discovery that changed ideas about how sleep is understood",
+       "answer": [
+        "F"
+       ],
+       "explanation": "F - Paragraph F describes how REM was recognized as the second major phase after scientists documented distinctive eye movements."
+      },
+      {
+       "n": 23,
+       "text": "examples of the life-threatening consequences of inadequate sleep",
+       "answer": [
+        "A"
+       ],
+       "explanation": "A - Paragraph A mentions auto accidents, medical errors, heart attacks, and fatal car crashes."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of these statements describe characteristics of NREM sleep?",
+     "options": [
+      {
+       "key": "A",
+       "text": "NREM sleep is important for maintaining brain function"
+      },
+      {
+       "key": "B",
+       "text": "NREM sleep consists of two distinct parts"
+      },
+      {
+       "key": "C",
+       "text": "The brain remains passive throughout NREM sleep"
+      },
+      {
+       "key": "D",
+       "text": "Each stage of NREM sleep has a unique EEG pattern"
+      },
+      {
+       "key": "E",
+       "text": "Hormones are released continuously throughout NREM sleep"
+      }
+     ],
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "A and D - Paragraph E states NREM is essential to our brain and describes unique EEG patterns for each stage. A and D - Paragraph E states NREM is essential to our brain and describes unique EEG patterns for each stage."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "A and D - Paragraph E states NREM is essential to our brain and describes unique EEG patterns for each stage. A and D - Paragraph E states NREM is essential to our brain and describes unique EEG patterns for each stage."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of these statements describe the characteristics of REM sleep?",
+     "options": [
+      {
+       "key": "A",
+       "text": "The REM stage is the longest phase of sleep"
+      },
+      {
+       "key": "B",
+       "text": "REM sleep can be identified by an unusual physical feature"
+      },
+      {
+       "key": "C",
+       "text": "REM sleep is important for removing unpleasant memories"
+      },
+      {
+       "key": "D",
+       "text": "REM sleep is another part of NREM sleep"
+      },
+      {
+       "key": "E",
+       "text": "Some scientists consider REM sleep to be a source of human innovation"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "B and E - Paragraph F mentions distinctive eye movements (B) and that REM is when we are most intelligent, insightful, creative (E). B and E - Paragraph F mentions distinctive eye movements (B) and that REM is when we are most intelligent, insightful, creative (E)."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "B and E - Paragraph F mentions distinctive eye movements (B) and that REM is when we are most intelligent, insightful, creative (E). B and E - Paragraph F mentions distinctive eye movements (B) and that REM is when we are most intelligent, insightful, creative (E)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "New Zealand Home Textile Crafts",
+   "paragraphs": [
+    {
+     "text": "Domestic crafts do not build monuments to their makers, nor do they create wealth, and too often, they have not survived. In consequence, the domestic crafts produced by mothers, grandmothers and great-grandmothers in New Zealand are often overlooked. But needlework should be preserved, for it helps to convey a sense of people's identity and past beliefs in these remote islands in the Pacific Ocean."
+    },
+    {
+     "text": "Women of previous generations were expected to sew; they had to dress their families at a time when few people could afford to buy what they were capable of making. For some women, this work may have been unwelcome drudgery, but for others it was an opportunity to explore their identities, beliefs and dreams with the only means readily at hand - a needle, some thread and a piece of fabric."
+    },
+    {
+     "text": "Textiles are frustrating to collect. They are fragile; they stain; they develop rust marks; they fray and rot. If they are used, they deteriorate. Yet if they are merely stored, the owner does not fully enjoy the pleasure of possession. That is probably why they have not been a popular thing to collect compared, for example, to antique furniture or fine china, which are more durable investments. It is also true that domestic crafts are seldom signed. We like signatures because we can more readily assign value - and high prices - if we can identify the maker. But most women at this time would never have considered signing their work. They were not expecting it to be seen outside their homes, where the creator's identity was never in doubt. And they probably did not even expect it to last very long."
+    },
+    {
+     "text": "It does not help that such work falls into the category of crafts either, rather than fine arts, because crafts are too often looked on as a poor cousin to true creativity. Worse, they are made in a domestic context, so do not belong in the consciously elevated tradition of craft objects which compete with the arts, such as furniture. If things are made to be useful, especially only within the home and by ordinary housewives, we seem to have agreed they cannot be art. Why not?"
+    },
+    {
+     "text": "It might be argued that the collector of textiles is a little like an archaeologist. Archaeology is a combination of history and detective work, and it involves treasure that is often beautiful. Likewise, digging for the past is what textile collectors do in junk shops, and the objects they find are a way of understanding the past through physical evidence."
+    },
+    {
+     "text": "The domestic crafts of this period, from 1930 to 1950, cannot be separated from the women's magazines that were so popular at the time. The primary purpose of these publications was to allow women to glimpse how more prosperous people lived by showing them photographs of the interiors of their homes. In these days before television, magazines provided realistic and achievable inducements to social betterment."
+    },
+    {
+     "text": "In parallel to this, women were provided with much more down-to-earth and useful means of improving their homes in the form of printed patterns, which were readily available from fabric shops at low cost from the 1920s and 1930s onwards. Mostly, such patterns were for everyday items that fulfilled some domestic purpose - aprons, tea cosies, curtains, bed-spreads, chair covers and the like. With the benefit of hindsight, it is possible to distinguish this regulated tradition of needlework, governed by printed patterns, from the more individual work that women dreamed up themselves and whose form and execution were reflections of their own ideals and imagination. Although both schools have their merits, it is surely the latter tradition that will provide the collector with the greatest enjoyment. Most intriguing of all is work which suggests serendipity, even a certain element of chance, the piece having taken on a life of its own, determined perhaps by what resources were available at the time and the skill levels of the item's maker. When it comes to needlework, flaws can be enjoyable, even failure may bring pleasure. In this respect, needlework can be contrasted with other art forms, where successful completion is paramount."
+    },
+    {
+     "text": "Some people collect out of a sense of nostalgia, a desire to evoke a comforting time that seems gentler than the present. But nostalgia should not always be trusted as it can be a sanitised form of history that blots out harsh reality. However, if a certain degree of nostalgia can be felt for the fabrics of the past, it is because they remind us of the care and attention with which women selected them. The texture of certain abstract patterned fabrics from the 1950s has the power to transport us all back to the dress and fabric shops of that time where women agonised over which choices to make, though they probably loved every minute of it. Old patchwork quilts in particular are evocative, because they represent an unknown family's compressed history: pyjamas, ball gowns, smart summer frocks and school dresses, all thrown together in a jumble of decorative traditions, past ceremonies and dreams. Women of the past would often keep offcuts from their dressmaking and use them for patchwork, as a means of recording their family's story for others to appreciate."
+    },
+    {
+     "text": "These may sound like nostalgic thoughts, but we should also remember how hard women's lives were, that family life was not always idyllic, and that having no money was no fun. Such fabrics, then, should be seen as a wish for ideals and imaginations, as well as a way of daydreaming about a life that would turn out well in the end."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 28,
+       "text": "What does the writer say about domestic crafts in the first paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They can be sold for high prices today."
+        },
+        {
+         "key": "B",
+         "text": "They were used to tell stories in the past."
+        },
+        {
+         "key": "C",
+         "text": "They are sources of information about society."
+        },
+        {
+         "key": "D",
+         "text": "They have been well documented by historians."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "C - The passage states needlework helps convey a sense of people's identity and past beliefs."
+      },
+      {
+       "n": 29,
+       "text": "What is the writer's main point in the second paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Women sewed to make money."
+        },
+        {
+         "key": "B",
+         "text": "Women used to have larger families."
+        },
+        {
+         "key": "C",
+         "text": "Sewing was enjoyed as a social activity."
+        },
+        {
+         "key": "D",
+         "text": "Sewing could be a means of self-expression."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "D - The passage states sewing was 'an opportunity to explore their identities, beliefs and dreams.'"
+      },
+      {
+       "n": 30,
+       "text": "According to the writer, domestic crafts are not frequently collected because",
+       "options": [
+        {
+         "key": "A",
+         "text": "they are difficult to see."
+        },
+        {
+         "key": "B",
+         "text": "they are easily damaged."
+        },
+        {
+         "key": "C",
+         "text": "they provide little enjoyment."
+        },
+        {
+         "key": "D",
+         "text": "they have no practical use today."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "B - The passage describes textiles as fragile, they stain, develop rust marks, fray and rot."
+      },
+      {
+       "n": 31,
+       "text": "What point does the writer make about signatures on textiles?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Many women at that time could not sign their names."
+        },
+        {
+         "key": "B",
+         "text": "The signatures have faded over time and cannot be seen."
+        },
+        {
+         "key": "C",
+         "text": "The style of stitching served as an alternative to a signature."
+        },
+        {
+         "key": "D",
+         "text": "They were unnecessary since everyone would know the maker."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "D - The passage states women were not expecting work to be seen outside their homes, where the creator's identity was never in doubt."
+      },
+      {
+       "n": 32,
+       "text": "What is the writer doing in the fourth paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "suggesting that needlework is not a true art form"
+        },
+        {
+         "key": "B",
+         "text": "challenging the usual distinction between 'arts' and crafts"
+        },
+        {
+         "key": "C",
+         "text": "arguing that functional objects were seldom made in the home"
+        },
+        {
+         "key": "D",
+         "text": "criticising the attitude of women today towards domestic crafts"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "B - The paragraph questions why crafts made to be useful cannot be art."
+      },
+      {
+       "n": 33,
+       "text": "Why does the writer compare textile collecting to archaeology?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They both require hard work."
+        },
+        {
+         "key": "B",
+         "text": "They involve similar processes."
+        },
+        {
+         "key": "C",
+         "text": "They can both be done on a low budget."
+        },
+        {
+         "key": "D",
+         "text": "They are both undervalued in society today."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "B - Both involve digging for the past and finding treasure through detective work."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–G, below. Write the correct letter, A–G.",
+     "title": "Home textile crafts",
+     "options": [
+      {
+       "key": "A",
+       "text": "skillful"
+      },
+      {
+       "key": "B",
+       "text": "practical"
+      },
+      {
+       "key": "C",
+       "text": "creative"
+      },
+      {
+       "key": "D",
+       "text": "imperfect"
+      },
+      {
+       "key": "E",
+       "text": "wealthy"
+      },
+      {
+       "key": "F",
+       "text": "industrious"
+      },
+      {
+       "key": "G",
+       "text": "detailed"
+      }
+     ],
+     "template": "Women's magazines in this period mainly influenced domestic crafts because of their aspirational character, as they focused on the [[34]] element of society. At the same time, more [[35]] assistance came in the form of printed patterns. The resulting aprons and similar items can be contrasted with work that demonstrates the [[36]] side of the maker. Most interestingly, many appreciate work that is [[37]] and it is this characteristic that is believed to distinguish needlework from other arts.",
+     "questions": [
+      {
+       "n": 34,
+       "answer": [
+        "E"
+       ],
+       "explanation": "E - Magazines showed how more prosperous (wealthy) people lived."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "B"
+       ],
+       "explanation": "B - Printed patterns were described as 'down-to-earth and useful' (practical)."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "C"
+       ],
+       "explanation": "C - Individual work reflected the maker's own ideals and imagination (creative)."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "D"
+       ],
+       "explanation": "D - The passage states flaws can be enjoyable, even failure may bring pleasure (imperfect)."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 38,
+       "text": "Nostalgia can promote an unreliable image of the past.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "YES - The passage states nostalgia 'can be a sanitised form of history that blots out harsh reality.'"
+      },
+      {
+       "n": 39,
+       "text": "In the 1950s, women chose fabric according to its durability.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "NOT GIVEN - The passage mentions women agonised over choices but doesn't mention durability as a criterion."
+      },
+      {
+       "n": 40,
+       "text": "Patchwork quilts are only of interest to the makers' family.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "NO - The passage states quilts were used for patchwork 'as a means of recording their family's story for others to appreciate.'"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

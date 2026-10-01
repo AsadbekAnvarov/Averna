@@ -1,0 +1,709 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-04",
+ "title": "CDI Listening Test 04",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-04-part-1",
+   "title": "Part 1",
+   "context": "You will hear a telephone conversation between a man who wants to rent an apartment and an agent at a property rental service. First, you have some time to look at questions 1 to 5.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "AA Property Rentals\nPersonal Details\n- Name: Kevin Walker\n- Address: [[1]] Road, West Bromwich\n- Phone: [[2]]\n- Occupation: [[3]]\nDetails of Property Wanted\n- A two-bedroom [[4]] apartment to rent\n- Maximum rent: £650 a month\n- The bedrooms must be [[5]]\n- Date required: [[6]]\nIf possible, the apartment should:\n- have a [[7]] or a [[8]]\n- be near a [[9]]\n- have a large [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "354 Forest"
+       ],
+       "explanation": "'The address is 354 Forest Road' — 'Is that Forest with 1R?' 'That's right. And that's in West Bromwich.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "07817983602",
+        "07817 983602",
+        "07817 983 602",
+        "0781 7983602"
+       ],
+       "explanation": "'07817 983602.' (contact phone number)"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "dentist"
+       ],
+       "explanation": "'I'm a dentist. And my wife's a teacher.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "unfurnished"
+       ],
+       "explanation": "'And did you want it furnished?' 'No, unfurnished.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "doubles",
+        "double"
+       ],
+       "explanation": "'Well, coming back to the bedrooms, they have to be doubles, both of them.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "1 November",
+        "1st November",
+        "November 1",
+        "November 1st",
+        "1/11",
+        "01/11",
+        "1-November"
+       ],
+       "explanation": "'It's October the 17th today, so we're probably looking at November the first at the earliest.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "balcony"
+       ],
+       "explanation": "'We'd like a balcony if possible. It's nice not to be too shut in.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "garden"
+       ],
+       "explanation": "'If you're in an older property, you might have use of a garden. Would that be a possible alternative?' 'Oh yes.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "station"
+       ],
+       "explanation": "'It'd be good to have somewhere not too far from a station if possible.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "kitchen"
+       ],
+       "explanation": "'We tend to eat in the kitchen. So it'd be good if that was large enough for us to do that.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a telephone conversation between a man who wants to rent an apartment and an agent at a property rental service. First, you have some time to look at questions 1 to 5.\nAgent: Good morning, AA Property. Can I help you?\nKevin: Yes, good morning. I’m looking for an apartment to rent.\nAgent: Okay. Is that here in Birmingham?\nKevin: That’s right.\nAgent: Right. I’ll just take some personal details if I may. So if I can just take your name?\nKevin: Kevin Walker.\nAgent: Right. And can I have your present address, please?\nKevin: Well, we’re staying with friends at present. So the address is 354 Forest Road.\nAgent: Is that Forest with one R?\nKevin: That’s right. And that’s in West Bromwich. I’m afraid I don’t know the postcode.\nAgent: That’s okay. And a contact phone number?\nKevin: 07817 983602.\nAgent: Lovely. And if I could just ask your occupation?\nKevin: Certainly. I’m a dentist. And my wife’s a teacher. But she’s at home at present looking after the children.\nAgent: Okay. So I’ll just put your occupation. Right. Well, now I’ll take some details about the kind of property you’re looking for. You said you’re looking for an apartment, is that right?\nKevin: Yeah.\nAgent: Okay. So how many bedrooms do you want?\nKevin: Two.\nAgent: And did you want it furnished?\nKevin: No, unfurnished.\nAgent: Right. Well, that gives you quite a bit more choice, so that’s good. And what’s the maximum rent you’d be prepared to pay?\nKevin: Well, we’d like to stay under six hundred pounds if possible. But we could go up to six hundred and fifty for the right place.\nAgent: Right. So do you have any other definite requirements?\nKevin: Well, coming back to the bedrooms, they have to be doubles, both of them.\nAgent: Okay, I’ll make a note of that.\nBefore you hear the rest of the conversation, you have some time to look at questions 6 to 10.\nAgent: Are you looking for something straight away? I assume you are if you’re staying with friends.\nKevin: Well, as soon as possible, yes.\nAgent: Well, it’s October the 17th today, so we’re probably looking at November the first (1 November) at the earliest. Would that be okay?\nKevin: Well, I’d have preferred something in October, but okay, let’s put that date down for now. Fine.\nAgent: Now, is there anything else you’d like?\nKevin: Well, our last flat had a garage, but actually we never used it, so I’m not really worried about that. But we’d like a balcony if possible. It’s nice not to be too shut in.\nAgent: Yes. You’ll find most modern apartments do have one. It’s only the converted properties that don’t. But of course, if you’re in an older property, you might have use of a garden. Would that be a possible alternative?\nKevin: Oh yes. Either of those would be good.\nAgent: What about transport? Would you want off-street parking?\nKevin: No, parking doesn’t matter. But it’d be good to have somewhere not too far from a station if possible. But it’s not essential. I’ve got a bike.\nAgent: Right. And what else? You’ll want a lounge, and will you want a separate dining room?\nKevin: Well, not really. We tend to eat in the kitchen. So it’d be good if that was large enough for us to do that.\nAgent: That might be difficult, but I’ll make a note of it anyway. Right. Well, let’s have a look.\nThat is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-04-part-2",
+   "title": "Part 2",
+   "context": "You will hear a local councillor giving advice on the radio about cleaning up after recent bad weather. First you have some time to look at questions 11 to 16.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "Compared to last year’s storm, this year",
+       "options": [
+        {
+         "key": "A",
+         "text": "more houses in the area were affected."
+        },
+        {
+         "key": "B",
+         "text": "the water levels rose much higher."
+        },
+        {
+         "key": "C",
+         "text": "there was more severe damage to trees."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'A much larger number of homes have been damaged this year due to flash flooding near the creek.' — more houses affected."
+      },
+      {
+       "n": 12,
+       "text": "According to the speaker, what should you do if your home has been flooded?",
+       "options": [
+        {
+         "key": "A",
+         "text": "switch off the electricity"
+        },
+        {
+         "key": "B",
+         "text": "try to drain the water"
+        },
+        {
+         "key": "C",
+         "text": "wait for a few days"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Please be patient as there's nothing you can do until the river level drops, hopefully in two or three days.' — wait for a few days."
+      },
+      {
+       "n": 13,
+       "text": "What does the speaker advise residents to do with their garden waste?",
+       "options": [
+        {
+         "key": "A",
+         "text": "put it in a special bin"
+        },
+        {
+         "key": "B",
+         "text": "take it to the council rubbish centre"
+        },
+        {
+         "key": "C",
+         "text": "pile it next to the road"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'We're asking people to simply stack them outside on the footpath ready for council collection.' — pile it next to the road."
+      },
+      {
+       "n": 14,
+       "text": "People who cannot cook food should",
+       "options": [
+        {
+         "key": "A",
+         "text": "pick up vouchers from the council office."
+        },
+        {
+         "key": "B",
+         "text": "get a meal in the community centre."
+        },
+        {
+         "key": "C",
+         "text": "arrange for food to be brought to their home."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'We'll be issuing vouchers that you can use to get food from any of the nominated restaurants. Just come to the council office to collect them.'"
+      },
+      {
+       "n": 15,
+       "text": "People who want to help out are asked to",
+       "options": [
+        {
+         "key": "A",
+         "text": "contact their local council office."
+        },
+        {
+         "key": "B",
+         "text": "come to the community centre in the morning."
+        },
+        {
+         "key": "C",
+         "text": "bring their tools to the council office."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'If you're available to help clean up, just turn up at the community centre by 8 AM tomorrow.'"
+      },
+      {
+       "n": 16,
+       "text": "What problem should residents report to the council?",
+       "options": [
+        {
+         "key": "A",
+         "text": "an increased number of mosquitoes"
+        },
+        {
+         "key": "B",
+         "text": "native animals found in unusual places"
+        },
+        {
+         "key": "C",
+         "text": "contaminated water"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Local wildlife can be forced out of their natural habitat... Let the council know of any unusual sightings.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What comment does the speaker make about each of the following places? Choose FOUR answers from the box and write the correct letter, A–F, next to questions 17–20.",
+     "title": "Comments",
+     "options": [
+      {
+       "key": "A",
+       "text": "It can’t be reached by car."
+      },
+      {
+       "key": "B",
+       "text": "Repairs are now finished."
+      },
+      {
+       "key": "C",
+       "text": "Planned work has been cancelled."
+      },
+      {
+       "key": "D",
+       "text": "Help is needed to move furniture."
+      },
+      {
+       "key": "E",
+       "text": "New equipment will be bought."
+      },
+      {
+       "key": "F",
+       "text": "Part of the building is damaged."
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "text": "The school",
+       "answer": [
+        "D"
+       ],
+       "explanation": "School — 'the principal is asking for volunteers to assist in getting the classroom set back up again, with the desks back in their proper places.'"
+      },
+      {
+       "n": 18,
+       "text": "The hospital",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Hospital — 'the only damage there was to the canteen where a tree branch broke a window.' — part of the building is damaged."
+      },
+      {
+       "n": 19,
+       "text": "The High Street",
+       "answer": [
+        "A"
+       ],
+       "explanation": "High Street — 'the high street is still a little flooded, so I'm afraid you'll have to collect your shopping on foot.' — can't be reached by car."
+      },
+      {
+       "n": 20,
+       "text": "The bikeway",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Bikeway — 'we've postponed our work there indefinitely and I'm afraid it's now unlikely that this will ever go ahead.' — planned work cancelled."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a local councillor giving advice on the radio about cleaning up after recent bad weather. First you have some time to look at questions 11 to 16.\nPresenter: Welcome to Radio OK, your community radio station. After our recent bad storm, we have Councillor Phil Evans joining us to tell us about the clean-up effort. Welcome, Phil.\nPhil: Hello, thanks for having me. Well, we had some pretty severe weather at the weekend. Thankfully it wasn’t quite as bad as last year’s storm.\nPhil: Although there was some damage to trees, it was definitely not on the same scale as last year, and we were expecting the river level to rise higher than it did. But having said that, a much larger number of homes have been damaged this year due to flash flooding near the creek. [more houses affected — A]\nPhil: Those of you who have experienced flooding, we ask you to be especially careful. I know it’s upsetting to see your home full of water, but please be patient as there’s nothing you can do until the river level drops, hopefully in two or three days. [wait for a few days — C] You won’t have any electricity at the moment, but we are working as fast as we can to get it reconnected.\nPhil: When it comes to cleaning up your garden, you might be tempted to just throw dead branches and so on into your normal garbage bin. Please don’t. We’re asking people to simply stack them outside on the footpath ready for council collection. [pile it next to the road — C] We plan to cut them up and use them for composting.\nPhil: For those of you who don’t have cooking facilities at the moment, I’m afraid we won’t be able to deliver hot meals to your home like the community centre did last year. Instead, we’ll be issuing vouchers that you can use to get food from any of the nominated restaurants. Just come to the council office to collect them. [vouchers from council office — A]\nPhil: We’ve had an overwhelming number of people offering to help out. Anyone who would like to volunteer, please don’t call the council office directly. Instead, if you’re available to help clean up, just turn up at the community centre by 8 AM tomorrow and you’ll be given the necessary tools and assigned a task by the council work supervisor. [come to community centre in morning — B]\nPhil: As the water level goes down, we may discover more problems. We’ll be assessing the drinking water regularly so that there’s no risk of contamination. Just be aware that local wildlife can be forced out of their natural habitat in this weather. Let the council know of any unusual sightings so we can safely relocate them. [native animals in unusual places — B] It may seem that mosquitoes are around in abundance right now, but the actual population is usual for this time of year.\nBefore you hear the rest of the talk, you have some time to look at questions 17 to 20.\nPhil: Now I’ll give you some information about key areas in the town. The school escaped any real problems and will be using its car park and some of the classrooms to coordinate the clean-up. Because of that, the principal is asking for volunteers to assist in getting the classrooms set back up again, with the desks back in their proper places before the new term begins after the holidays. [School: help needed to move furniture — D]\nPhil: The hospital is still fully functional, and the only damage there was to the canteen where a tree branch broke a window. [Hospital: part of the building is damaged — F] You can still access the area as normal, we just ask you park at the rear of the hospital until the repair work has been completed.\nPhil: If you need to get to the shops, the high street is still a little flooded, so I’m afraid you’ll have to collect your shopping on foot for a little while. [High Street: can’t be reached by car — A] Hopefully it won’t be long before you’ll be able to drive there again.\nPhil: Before the storm, we had hoped to begin work on modernising the bikeway that runs along the river. We were particularly looking forward to having bike storage facilities installed. While the bikeway itself is okay, unfortunately the area around it is covered in water. So we’ve postponed our work there indefinitely and I’m afraid it’s now unlikely that this will ever go ahead. [Bikeway: planned work cancelled — C] Well, that’s everything for now. I’ll be back with a further update tomorrow.\nThat is the end of part two. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-04-part-3",
+   "title": "Part 3",
+   "context": "You will hear a student talking to a tutor at her college about the possibility of changing her course. First you have some time to look at questions 21 to 24.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "Name of student: Sally Layman\n- Current course: [[21]]\n- Date started: [[22]]\n- Courses interested in:\n- 1st choice: [[23]]\n- 2nd choice: [[24]]\n| Problem | Strategies tried | Further strategies suggested |\n| finds [[25]] | recording them | join other students in a [[26]] |\n| [[27]] | talking to tutor | arrange meetings in advance |\n| bad assignment | more background reading | [[28]] |\n\n- Date for next meeting: [[29]] at 3.30 p.m.\n- With: [[30]]",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "Economic History"
+       ],
+       "explanation": "'What course are you doing at the present?' 'It's economic history.'"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "last September",
+        "September"
+       ],
+       "explanation": "'And when did you start?' 'Last September.'"
+      },
+      {
+       "n": 23,
+       "answer": [
+        "Politics"
+       ],
+       "explanation": "'What I'd like to do most is politics.'"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "Philosophy"
+       ],
+       "explanation": "'I had thought of changing course completely and trying business studies, but then I realised it wasn't really me. So I thought of philosophy.'"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "difficult",
+        "lectures difficult"
+       ],
+       "explanation": "'I'd have to say the worst thing is that I find the lectures difficult.'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "discussion group"
+       ],
+       "explanation": "'You might also like to try getting together with other fellow students to discuss lectures, in what we call a discussion group.'"
+      },
+      {
+       "n": 27,
+       "answer": [
+        "not enough tutorials",
+        "few tutorials"
+       ],
+       "explanation": "'The fact that there are not enough tutorials.'"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "visiting student services",
+        "student services",
+        "visit student services"
+       ],
+       "explanation": "'Another strategy might be visiting student services. They offer a lot of advice on assignment preparation.'"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "17th of February",
+        "17 February",
+        "17th February",
+        "February 17",
+        "February 17th",
+        "17/2",
+        "17/02"
+       ],
+       "explanation": "'That'd be on seventeenth of February at three thirty.'"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "senior advisor",
+        "senior adviser"
+       ],
+       "explanation": "'I'll leave this record on file and you'll be meeting our senior advisor.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a student talking to a tutor at her college about the possibility of changing her course. First you have some time to look at questions 21 to 24.\nTutor: Ah, hello. Do come in.\nSally: Thanks.\nTutor: I understand you wanted to see me about changing courses.\nSally: Yes, that’s right.\nTutor: Well, that’s fine. Do sit down. Now, you’re Sally Layman.\nSally: That’s it.\nTutor: Right then, Sally. And what course are you doing at the present?\nSally: It’s Economic History.\nTutor: Uh huh. And when did you start?\nSally: Last September.\nTutor: Right. Good. Now, of course we’ll have the chance to talk through any problems you’ve been having in a moment. But let me just make a note of what courses you might be interested in changing to.\nSally: Well, there are several that I’ve thought about, but what I’d like to do most is politics.\nTutor: Well, that is a very popular course.\nSally: I know. And there might not be places, but…\nTutor: Sure, I’ll certainly take a note of that. But what about another option?\nSally: Well, I had thought of changing course completely and trying business studies, but then I realised it wasn’t really me. So I thought of philosophy.\nBefore you hear the rest of the discussion, you have some time to look at questions 25 to 30.\nTutor: Right, well that’s useful to know, but if at all possible, it is good to talk through the problems you are having at the moment and see if there’s any way we can help or that you can help yourself. After all, with all the effort that you’ve put in already, it would be a pity to have to start all over again.\nSally: Oh no, I realise that. And actually I would like to have a go at staying with economic history.\nTutor: Good. Yeah. Well, let’s see. Let’s talk through some of the problems you’ve been having. What would you say was your major difficulty on the course?\nSally: I think I’d have to say the worst thing is that I find the lectures difficult.\nTutor: Aha. And how have you tried to overcome this?\nSally: Well, I did try recording lectures, you know.\nTutor: Yes, that’s a good idea. And did you find it helped?\nSally: To a certain extent, but…\nTutor: Well, I would certainly continue with that strategy, but you might also like to try getting together with other fellow students to discuss lectures, in what we call a discussion group.\nSally: Yeah, I’ve heard of some of my course mates doing that. I could certainly ask if I could join.\nTutor: Good. I’m sure you’d find it a help. And any other problems?\nSally: Well, this really worried me at the beginning. The fact that there are not enough tutorials.\nTutor: Not enough tutorials. Did you talk to your tutor about it?\nSally: Yeah, that was what I thought was the best strategy. It’s what all the student handbooks say.\nTutor: Yep, and what was the outcome?\nSally: Well, really, just that she’s very busy and I have to fit in tutorials when she’s available, which is really difficult.\nTutor: I agree it must seem that way. Why don’t you try arranging meetings in advance?\nSally: Well, I can certainly give it a go. But I suppose the thing that’s been really upsetting me recently is my bad assignment grade.\nTutor: How many have you had back?\nSally: Just the one.\nTutor: Well, you could say it was early days yet.\nSally: Well, for the last assignment, which we’ve just handed in, I did more background reading.\nTutor: And did you feel that helped?\nSally: Oh yes, I think so.\nTutor: Well, another strategy might be visiting student services. They offer a lot of advice on assignment preparation.\nSally: Well, I didn’t want to bother them.\nTutor: That’s their job. It’d be well worth trying.\nSally: Okay. I’ll certainly look into that.\nTutor: Now, what I’ve done here is to keep a record of our discussions and suggested strategies. And what we normally do is to ask you to try out our suggestions for a while and then come back to discuss the situation, see whether it’s improved. And if not, then we can start thinking seriously about those alternative courses.\nSally: So you’d like me to come back?\nTutor: Yes. Let’s say in a month’s time. Okay. That’d be on the 17th of February at three thirty. Is that all right?\nSally: Yes, sure. And will I meet with you?\nTutor: I’m afraid I’ll be on leave at that time, but I’ll leave this record on file and you’ll be meeting our senior advisor.\nSally: Senior advisor. Okay, fine.\nTutor: Lovely. Well, I do hope things improve, Sally, and that the change won’t be necessary. And if it is, well we can think about that later. Okay?\nSally: Okay. Thanks very much.\nTutor: Pleasure. Good luck.\nThat is the end of part three. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-04-part-4",
+   "title": "Part 4",
+   "context": "You will hear a museum curator giving a presentation about her museum’s collection of perfume containers, also known as perfume ornaments. First you have some time to look at questions 31 to 40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 31,
+       "text": "The museum started displaying perfume ornaments when",
+       "options": [
+        {
+         "key": "A",
+         "text": "a collection was donated."
+        },
+        {
+         "key": "B",
+         "text": "the public showed an interest in them."
+        },
+        {
+         "key": "C",
+         "text": "an expert decided some of them were valuable."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'A visiting professor from the Victoria and Albert Museum commented that some of the objects were worth a great deal, and so the display was created.'"
+      },
+      {
+       "n": 32,
+       "text": "People needed to wear perfume in the 11th century because",
+       "options": [
+        {
+         "key": "A",
+         "text": "washing was considered dangerous."
+        },
+        {
+         "key": "B",
+         "text": "soap was not generally available."
+        },
+        {
+         "key": "C",
+         "text": "water shortages were common."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Bathing and laundering were considered hazardous undertakings.' — washing was considered dangerous."
+      },
+      {
+       "n": 33,
+       "text": "The perfume ornament known as a ‘pomander’ took its name from",
+       "options": [
+        {
+         "key": "A",
+         "text": "the substance it was made of."
+        },
+        {
+         "key": "B",
+         "text": "the liquid inside it."
+        },
+        {
+         "key": "C",
+         "text": "the person who invented it."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'These pomanders are solid paste balls made of ambergris... The name was derived from the French for apple of ambergris.'"
+      },
+      {
+       "n": 34,
+       "text": "In medieval times, it was thought that wearing perfume made people",
+       "options": [
+        {
+         "key": "A",
+         "text": "more wealthy."
+        },
+        {
+         "key": "B",
+         "text": "more attractive."
+        },
+        {
+         "key": "C",
+         "text": "more cheerful."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Only recently researchers at our museum have found that they were also believed to significantly raise the spirits of the wearer.' — more cheerful."
+      },
+      {
+       "n": 35,
+       "text": "Craftsmen found ways of preventing liquid perfume from",
+       "options": [
+        {
+         "key": "A",
+         "text": "being spilled."
+        },
+        {
+         "key": "B",
+         "text": "drying up."
+        },
+        {
+         "key": "C",
+         "text": "losing its scent."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Craftsmen had to use precision techniques to ensure there was an airtight seal on the container.' (preserving the liquid perfume inside)"
+      },
+      {
+       "n": 36,
+       "text": "The perfume in a vinaigrette was",
+       "options": [
+        {
+         "key": "A",
+         "text": "preserved in solid form."
+        },
+        {
+         "key": "B",
+         "text": "absorbed by a sponge."
+        },
+        {
+         "key": "C",
+         "text": "heated over a flame."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'The vinaigrette was a miniature box which opened on a hinge, containing a tiny sponge soaked with perfume.'"
+      },
+      {
+       "n": 37,
+       "text": "Which part of the vinaigrette was made of gold?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the inside"
+        },
+        {
+         "key": "B",
+         "text": "the outside"
+        },
+        {
+         "key": "C",
+         "text": "the lid"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'The outer box could be made of any material, but the lining was gold because the perfume tended to corrode other substances.'"
+      },
+      {
+       "n": 38,
+       "text": "Perfume bottles used in the mid-19th century",
+       "options": [
+        {
+         "key": "A",
+         "text": "were imports from outside Europe."
+        },
+        {
+         "key": "B",
+         "text": "could be bought by large numbers of people."
+        },
+        {
+         "key": "C",
+         "text": "were usually made of horn."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'By now these beautiful objects were more affordable... the bottles were mass produced and thus available not just to the very wealthy.'"
+      },
+      {
+       "n": 39,
+       "text": "Tiffany bottles",
+       "options": [
+        {
+         "key": "A",
+         "text": "were produced by a number of companies."
+        },
+        {
+         "key": "B",
+         "text": "could only be bought from catalogues."
+        },
+        {
+         "key": "C",
+         "text": "showed skilled use of crystal."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Their particular achievement was their stylish and clever working of crystal.'"
+      },
+      {
+       "n": 40,
+       "text": "The ‘Vanity’ was",
+       "options": [
+        {
+         "key": "A",
+         "text": "used for storing cosmetics."
+        },
+        {
+         "key": "B",
+         "text": "the smallest perfume ornament ever made."
+        },
+        {
+         "key": "C",
+         "text": "developed in the 1950s."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'This was an ingeniously designed case used not only for holding perfume but also makeup in a whole maze of tiny additional compartments.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a museum curator giving a presentation about her museum’s collection of perfume containers, also known as perfume ornaments. First you have some time to look at questions 31 to 40.\nCurator: Good morning and welcome to the Walden Gallery. In today’s open lecture I’m going to be talking about our collection of perfume ornaments or containers. These beautiful objects now form a significant part of the museum’s collection and are very popular with the public. But this has not always been the case.\nCurator: Up until relatively recently, the large collection of perfume ornaments held in store, donated by Lady Walden at the beginning of the last century, was not considered to be of much interest, and was not on show to the general public. Then as late as 1989, a visiting professor from the Victoria and Albert Museum commented that some of the objects were worth a great deal, and so the display was created much as you see it here today. [an expert decided some were valuable — C]\nCurator: Now before I say anything more about the perfume containers, I thought I’d briefly touch on the background to the development of perfumes themselves. In the West, perfumery really began as late as the eleventh century. Bathing and laundering were considered hazardous undertakings, because even though there were ample supplies of water, it was often dirty or even infected. [washing was considered dangerous — A] As a consequence, as you can imagine, the air was heavy with unpleasant smells, which had to be countered or covered up.\nCurator: In those early days, perfumes were in solid form and mainly made from spices, leaves and animal fixatives in paste form, for example musk and ambergris. Wealthy people, the only people who could afford them, carried small globular vessels known as pomanders. I’ve brought out one ornament from the collection, the oldest one in fact, from the fourteenth century, which I’ll pass round for you to sample.\nCurator: These pomanders are solid paste balls made of ambergris, impregnated with fragrance. The name was derived from the French for apple of ambergris. [the substance it was made of — A] They must have had a powerful aroma in those days because even now you can smell the fragrance.\nCurator: Now, during the medieval period, basically up until the sixteenth century, perfumes not only made your surroundings smell sweeter, they were believed to have other special properties. Researchers in the nineteenth century revealed that in medieval times people thought perfumes could help overcome all kinds of bodily ills. But only recently researchers at our museum have found that they were also believed to significantly raise the spirits of the wearer. [more cheerful — C]\nCurator: Turning now to some more technical details, with the advent of liquid perfume from the mid-eighteenth century, craftsmen had to use precision techniques to ensure there was an airtight seal on the container. [preventing liquid perfume being spilled — A] It is clear that however beautiful these seemingly fragile objects were, they were essentially utilitarian — designed to stop the extremely valuable substances inside them from evaporating.\nCurator: Let’s turn now to have a look at some of the key developments in perfume containers in the last two hundred years or so. From the late eighteenth century onwards, the vinaigrette came into vogue. The vinaigrette was a miniature box which opened on a hinge, containing a tiny sponge soaked with perfume. [absorbed by a sponge — B] This was placed under a grill through which you could smell the fragrance.\nCurator: It was widely used to carry the highly corrosive scent, known as vinegar water, hence the name. The outer box could be made of any material, but the lining was gold because the perfume tended to corrode other substances. [the inside — A]\nCurator: From the mid-nineteenth century, vinaigrettes were replaced by more conventional bottles. They were often made of glass, of course, but metal was another common material used, and very occasionally they were made of more unusual materials like horn. By now these beautiful objects were more affordable. This was the age of the Industrial Revolution in Western Europe, and the bottles were mass-produced and thus available not just to the very wealthy. [could be bought by large numbers of people — B]\nCurator: In the last quarter of the nineteenth century, one company above all became associated with the design and production of perfume bottles — the Tiffany Company. They developed a wide range of designs, most notably based on those of the furniture of the period. Their particular achievement was their stylish and clever working of crystal. [skilled use of crystal — C] Although these perfume ornaments were very expensive, Tiffany and Co. were able to use catalogues to reach a wider clientele.\nCurator: Many innovative designs were used in perfume ornaments produced in the 1920s and 30s. The most notable was probably the vanity. This was an ingeniously designed case used not only for holding perfume but also makeup in a whole maze of tiny additional compartments. [used for storing cosmetics — A]\nCurator: If you’d like to come and gather…\nThat is the end of part four. You now have half a minute to check your answers.\nThat is the end of the listening test. You now have ten minutes to transfer your answers to the listening answer sheet."
+  }
+ ],
+ "audio": {
+  "file": "listening-4.mp3",
+  "durationSec": 1540,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

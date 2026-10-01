@@ -1,0 +1,615 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-39",
+ "title": "CDI Reading Test 39",
+ "description": "A full Academic Reading test from the CDI practice materials: The history of the pencil; The Changing Face of Farming in the Canterbury Region of New Zealand; Music soothes and awes – and may help us heal.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The history of the pencil",
+  "The Changing Face of Farming in the Canterbury Region of New Zealand",
+  "Music soothes and awes – and may help us heal"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The history of the pencil",
+   "paragraphs": [
+    {
+     "text": "How a violent thunderstorm led to a writing revolution"
+    },
+    {
+     "text": "The history of the pencil starts with a violent thunderstorm. When some particularly ferocious weather struck the Lake District in North West England in the sixteenth century, locals in the village of Borrowdale discovered a large uprooted tree. Underneath the tree lay an unknown black substance which we now know as graphite. When a local farmer tried to use it to mark his sheep, he quickly identified their use. However, others quickly realised the potential for using this intriguing substance to write on paper. When it was untreated the material was very soft, which meant that it left messy marks on the page. It took a little while for people to encase it with a thin core of the substance in stiff sheep hides or rope."
+    },
+    {
+     "text": "At this time chemistry was still in its infancy. People searched for a word to describe this increasingly useful substance and came up with plumbago which, in Latin, means 'act like lead'. Later the name graphite was derived from the Greek word 'graphein' meaning 'to write'. We still call graphite the lead of a pencil even though it is now known that there is no trace of real lead in graphite."
+    },
+    {
+     "text": "Graphite has a very high melting point at around 3,500 degrees Celsius. This made it invaluable to the British army and navy as a secret ingredient in the manufacture of cannon balls. The Royal Ordnance, the department of the British government responsible for the supply of weapons, used graphite as a lining inside the moulds for cannon balls, which as a result Britain could turn out faster and more cheaply than their European rivals. In addition to its value to the armed forces, the government quickly realised the commercial potential of the graphite at Borrowdale, and assumed control. Armed guards accompanied the precious graphite all the way down to the metal foundries by the naval shipyards in the south of England. The graphite was so valuable that the locals, who called it wadd, started to steal it. As a deterrent, an act of parliament was passed to make it a serious offence punishable by time in prison."
+    },
+    {
+     "text": "The Italians originally invented the wooden casing to hold a thin rod of plumbago firmly in place and a process was developed to bake the mixture. The Germans took this technique and developed it further by applying mass production techniques to pencils. At the same time Nicolas-Jacques Conte, a French officer in Napoleon Bonaparte's army during the late 1700s, developed a method of mixing powdered graphite with clay to make a stronger and more durable pencil. Adding more clay to the mixture helped make the pencil harder, sharper, and more precise in its mark. More graphite helped make a pencil mark that was softer, thicker and darker."
+    },
+    {
+     "text": "The varying quality of pencil leads eventually gave rise to a system for categorizing the fineness of the pencil mark. Pencil manufacturers all over the world still use this system, which was developed in Austria. The H stands for the Hardness of the pencil while the B stands for its Blackness. An HB pencil is a standard pencil and a variety of letters and numbers are used to designate different types of lead."
+    },
+    {
+     "text": "Significant seams of graphite exist in parts of China which now produce most of the world's pencils. Interestingly, the Borrowdale mine in the Lake District remains the only significant source of graphite in its near-pure form in the world. Nowadays the highest grade of graphite at Borrowdale is totally exhausted, although other grades can still be found, and England's pencil industry continues to thrive in the nearby town of Keswick."
+    },
+    {
+     "text": "The pencil has turned out to be a remarkably resilient and valuable tool whose use has survived well into our high-tech times. It is sometimes said that America spent millions of dollars to invent a pen capable of writing in the zero gravity of space, while Russia simply equipped their astronauts with good old-fashioned pencils — but this is merely fiction. In actual fact, both American and Russian astronauts were equipped with pencils in their respective country's first space flights before a private company developed pens capable of writing in zero gravity. But no matter — pencils remain in use in every classroom, every planning, building and drawing office, and in every art studio in the world."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "The black substance discovered under a tree in Borrowdale was later named [[1]].\nInitially, the substance was called [[2]], a Latin term meaning \"act like lead\".\nBritain could manufacture [[3]] faster and more cheaply using graphite as a mould lining.\nStealing graphite was made a criminal offence punishable by time in [[4]].\nNicolas-Jacques Conte mixed graphite with [[5]] to produce harder, more precise pencils.\nThe H and B grading system for pencils was developed in [[6]].\nEngland's pencil industry is centred in the town of [[7]].",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "graphite"
+       ],
+       "explanation": "'Underneath the tree lay an unknown black substance which we now know as graphite.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "plumbago"
+       ],
+       "explanation": "'People searched for a word to describe this increasingly useful substance and came up with plumbago which, in Latin, means act like lead.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "cannon balls"
+       ],
+       "explanation": "'used graphite as a lining inside the moulds for cannon balls, which as a result Britain could turn out faster and more cheaply.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "prison"
+       ],
+       "explanation": "'an act of parliament was passed to make it a serious offence punishable by time in prison.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "clay"
+       ],
+       "explanation": "'developed a method of mixing powdered graphite with clay to make a stronger and more durable pencil.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "Austria"
+       ],
+       "explanation": "'Pencil manufacturers all over the world still use this system, which was developed in Austria.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "Keswick"
+       ],
+       "explanation": "'England's pencil industry continues to thrive in the nearby town of Keswick.'"
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 8,
+       "text": "The substance found under the tree in Borrowdale was immediately identified as graphite.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'an unknown black substance which we now know as graphite' — it was not immediately identified."
+      },
+      {
+       "n": 9,
+       "text": "Graphite was chosen for use in cannon ball moulds because of its high melting point.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'Graphite has a very high melting point at around 3,500 degrees Celsius. This made it invaluable to the British army and navy as a secret ingredient in the manufacture of cannon balls.'"
+      },
+      {
+       "n": 10,
+       "text": "Stealing graphite from Borrowdale was made illegal.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'an act of parliament was passed to make it a serious offence punishable by time in prison.'"
+      },
+      {
+       "n": 11,
+       "text": "The Germans were the first to add clay to graphite to make pencils.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "It was Nicolas-Jacques Conte, a French officer, who developed the method of mixing graphite with clay, not the Germans."
+      },
+      {
+       "n": 12,
+       "text": "The Borrowdale mine is the world's only source of near-pure graphite.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'the Borrowdale mine in the Lake District remains the only significant source of graphite in its near-pure form in the world.'"
+      },
+      {
+       "n": 13,
+       "text": "American astronauts used pens rather than pencils on their first space flights.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'both American and Russian astronauts were equipped with pencils in their respective country's first space flights.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The Changing Face of Farming in the Canterbury Region of New Zealand",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The landscape of the rural Canterbury plains in the South Island of New Zealand has been changing since Europeans first arrived in the country some 200 years ago, but in recent decades the speed of change has increased dramatically. Today it is terms such as 'mechanisation', 'intensification' and 'conversion' that you'll hear on a typical farm. Modern agriculture's rhythms are urgent, its scale corporate. Driving across the Canterbury plains today, there are futuristic grain research stations and slick billboards promoting harvest-boosting technologies."
+    },
+    {
+     "label": "B",
+     "text": "Local farmer Graham Robertson has both observed and participated in the reinvention of Canterbury agriculture. 'The list of changes is as long as your arm,' says Robertson. 'We used to grow one crop, but today we've got a huge variety including grass seeds, clover seeds, seeds for American golf courses, legumes... One reason is that the big seed companies located in areas of the Northern Hemisphere are wanting to diversify, and because Canterbury is in the Southern Hemisphere, we can grow crops out of season, and have proved ourselves at producing the quality they demand.' He does not lament the vanishing rural world, however. 'I admire the technology,' says Robertson. 'One complaint was that this new approach would likely result in a dust bowl. But good management practices have meant the soil isn't blowing away after all.'"
+    },
+    {
+     "label": "C",
+     "text": "Today, it's not plant pests and disease that are the problem, but shortage of water caused by the new popularity of dairy farming. Mid-Canterbury farmer Richard Johnson is a case in point. He converted from growing crops to dairy farming five years ago, because he could see himself getting left behind by neighbours who'd made the switch. He says, 'We thought, if we don't go through this process, eventually we are going to get taken over.' Water, which they found by boring 60 metres below the ground, is essential for the green grass needed by dairy cows. The crucial piece of equipment on the farm has become the high-tech mechanical irrigation system. Soil moisture monitors in the earth beneath each irrigation station signal exactly when they need to turn the water pumps on. 'Public perception is that this water is being wasted,' says Johnson. 'But farmers think long and hard before they turn the irrigation on, because it's expensive.'"
+    },
+    {
+     "label": "D",
+     "text": "Murray Rogers, who heads the South Canterbury Water Trust, says that the unrestricted taking of water from local rivers has to be reconsidered. 'Reduced flow in the rivers means less dilution of pollutants and so we've been getting more toxic algal blooms,' says Rogers. He insists that the only long-term solution is for local government to take control of how much water farmers may take. Another critic is ecologist Colin Meurk, who argues that dairying has caused serious damage to Canterbury's biodiversity, waterways and indigenous ecosystems. He conducted a survey and found that precious little native habitat has survived — in terms of biodiversity Canterbury is 'one of the most diminished parts of the country'. However, Keith Woodford, professor of farm management at Lincoln University, doesn't accept that dairying is responsible for this problem with biodiversity. 'Much of the degradation you see in lowland areas is actually the result of practices going back to the 1960s,' he says, emphasising that modern farming techniques are not at fault."
+    },
+    {
+     "label": "E",
+     "text": "What is not in dispute is the extent to which the region has been transformed. In the 1980s, the rural Canterbury town of Ashburton was often deserted but today you will find a bustling community. Whereas the surrounding land was once known as 'sheep country', today there's no question that the increasing popularity of dairy production has been the single greatest contributor to the region's newfound prosperity. However, the reversal of fortunes for rural Canterbury has other aspects as well. In recent decades a significant portion of land has been given over to the production of wine, which has taken off in Canterbury and many other parts of the country. In addition, Canterbury's natural beauty has meant tourism has contributed to its prosperity for decades; and visitor numbers today are so high that the region's once quiet rural roads have never been so congested. Another important change is that more than 100,000 hectares of land are now divided into small blocks of land, tended by the so-called 'lifestylers' — people who once lived in urban areas but have come to enjoy the rural culture and keep a few animals, though they usually have another source of income to support themselves."
+    },
+    {
+     "label": "F",
+     "text": "But with the transformation have come new stresses. Farmers whose families have been here for generations, and who are focused on the production of crops, don't necessarily relate well to these recent arrivals, with disputes arising over such issues as the intensification of farming and the heavy dependence on chemicals. The social mix is made even more complex because the modern rural workforce, once made up entirely of locals, is increasingly reliant on migrants who are brought in at harvest time, introducing a cosmopolitan element to Canterbury, at least for a few months of the year."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has 6 paragraphs, A–F. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "an explanation of how water is distributed to plants in the right quantities",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Section C: 'Soil moisture monitors in the earth beneath each irrigation station signal exactly when they need to turn the water pumps on.'"
+      },
+      {
+       "n": 15,
+       "text": "some examples of current expressions used by Canterbury farmers",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section A: 'Today it is terms such as mechanisation, intensification and conversion that you'll hear on a typical farm.'"
+      },
+      {
+       "n": 16,
+       "text": "an argument for increased regulation of agriculture in Canterbury",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Section D: Rogers 'insists that the only long-term solution is for local government to take control of how much water farmers may take.'"
+      },
+      {
+       "n": 17,
+       "text": "a reference to an agricultural advantage Canterbury has over another part of the world",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B: 'because Canterbury is in the Southern Hemisphere, we can grow crops out of season' compared to the Northern Hemisphere."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people below. Match each statement with the correct person. NB You may use any letter more than once.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Graham Robertson"
+      },
+      {
+       "key": "B",
+       "text": "Richard Johnson"
+      },
+      {
+       "key": "C",
+       "text": "Murray Rogers"
+      },
+      {
+       "key": "D",
+       "text": "Colin Meurk"
+      },
+      {
+       "key": "E",
+       "text": "Keith Woodford"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 18,
+       "text": "We changed our farm because of what people around us were doing.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Richard Johnson: 'He converted... because he could see himself getting left behind by neighbours who'd made the switch.'"
+      },
+      {
+       "n": 19,
+       "text": "Today's problems with biodiversity have older origins than people realise.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Keith Woodford: 'Much of the degradation you see in lowland areas is actually the result of practices going back to the 1960s.'"
+      },
+      {
+       "n": 20,
+       "text": "Farmers are more cautious about water use than non-farmers realise.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Richard Johnson: 'farmers think long and hard before they turn the irrigation on, because it's expensive.'"
+      },
+      {
+       "n": 21,
+       "text": "The number of naturally occurring species has been seriously reduced by modern farming.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Colin Meurk: 'precious little native habitat has survived — Canterbury is one of the most diminished parts of the country.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The changing population of Ashburton",
+     "template": "The Canterbury town of Ashburton is thriving thanks in large part to wealth created by the dairy farming industry, which has replaced the more traditional farming of sheep. However, other factors have also been involved such as the success of the [[22]] industry in recent years. For a long time, [[23]] has brought wealth to the region, and today the industry is so successful that traffic is becoming a problem. The social make-up of Canterbury has also been affected by a group known as [[24]], who have moved out from the city. Disagreements between these newcomers and established farmers sometimes occur when it comes to the use of [[25]] on crops. This social diversity is increased when [[26]] are temporarily employed to work on farms.",
+     "questions": [
+      {
+       "n": 22,
+       "answer": [
+        "wine"
+       ],
+       "explanation": "'a significant portion of land has been given over to the production of wine, which has taken off in Canterbury.'"
+      },
+      {
+       "n": 23,
+       "answer": [
+        "tourism"
+       ],
+       "explanation": "'Canterbury's natural beauty has meant tourism has contributed to its prosperity for decades.'"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "lifestylers"
+       ],
+       "explanation": "'more than 100,000 hectares of land are now divided into small blocks of land, tended by the so-called lifestylers.'"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "chemicals"
+       ],
+       "explanation": "'disputes arising over such issues as the intensification of farming and the heavy dependence on chemicals.'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "migrants"
+       ],
+       "explanation": "'the modern rural workforce... is increasingly reliant on migrants who are brought in at harvest time.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Music soothes and awes – and may help us heal",
+   "paragraphs": [
+    {
+     "text": "Tapping into the brain's ability to process music, researchers are using songs and sounds in novel ways"
+    },
+    {
+     "text": "Dan Ellsey, 33, was sitting in his wheelchair, his virtually useless arms and weak torso strapped to the chair for safety. As we were introduced, he arched his back, grinned broadly, and aimed the power of his dark brown eyes at me, as if eye contact were his only means of transcending the prison of his body. But it isn't. In the last few years, Ellsey, who was born with cerebral palsy, has discovered another, almost miraculous way of expressing himself: composing music with a special computerized system called Hyperscore."
+    },
+    {
+     "text": "For Ellsey, as for most human beings, music has an almost inexplicable power. It can rouse armies to battle, soothe babies to sleep, and communicate peaks of joy and depths of sorrow that mere words cannot. Why evolution would have endowed our brains with the neural machinery to make music is a mystery. 'It's unclear why humans are so uniquely sensitive to music. Certainly, music shares many features with spoken language, and our brains are particularly developed to process the rapid tones and segments of sound that are common to both,' said neurologist and author Dr Oliver Sacks. 'Some researchers think that in primitive cultures, music and speech were not distinct. Other researchers debate which came first in evolution, speech or song.'"
+    },
+    {
+     "text": "What is clear is that the brain is abundantly wired to process music. Scientists at the Montreal Neurological Institute and Hospital have found dramatic evidence on brain scans that the chills, or visceral feelings of awe, that people report when listening to their favourite music are real. Reactions to music appear to vary greatly. Music that a person likes, but not music that is disliked, activates the higher thinking centers in the brain's cortex and, perhaps more importantly, the 'ancient circuitry, the motivation and reward system,' according to experimental psychologist Robert Zatorre. This primeval part of the brain also governs basic drives such as hunger, thirst and sex, suggesting that the brain may consider music on a par with them."
+    },
+    {
+     "text": "Music has the power not just to awe but also to heal. If a person has a stroke on the left side of the brain, where the speech centers in most people are, that 'wipes out a major part of communication,' said Dr Gottfried Schlaug. But if the right side, where a lot of music is processed, is intact, some stroke patients can use melodic intonation therapy, which involves singing using two tones relatively close in pitch, to communicate. Schlaug's research suggests that with intensive therapy, some patients can even move from this two-tone singing back to actual speech."
+    },
+    {
+     "text": "Stroke patients with gait problems also profit from music therapy. At the Center for Biomedical Research in Music at Colorado State University, director Michael Thaut and his team have shown that people who are partially paralyzed on one side of the body can be retrained to walk faster and in a more coordinated way if they practice walking rhythmically, cued by music or a metronome. 'Music helps us organize our movement,' said Kathleen Howland. In fact, researchers have found that auditory signals are more powerful than visual signals in coordinating movement in healthy people."
+    },
+    {
+     "text": "Patients undergoing colonoscopy seem to feel less pain and need fewer sedative drugs if they listen to music during the procedure, according to several studies. But not all studies have been so clear-cut. A 2007 review by the Cochrane Collaboration pooled data from 51 pain studies and concluded that, although listening to music can reduce the intensity of pain and the need for narcotic drugs, the benefit, overall, was small."
+    },
+    {
+     "text": "A number of studies show that music therapy can reduce pain, such as a 2001 study on burn patients, whose burns must be frequently scraped to reduce dead tissue. Music therapy may improve mental state and functioning in people with schizophrenia, and communication in children with autistic spectrum disorders, according to Cochrane reviews. Babies, as any parent knows, clearly respond to music. Premature infants who listen to lullabies learn to suck better and gain more weight than those who don't get music therapy. Deforia Lane, director of music therapy at the University Hospitals Ireland Cancer Center in Cleveland, has found an improvement in immune response among hospitalized children who played, sang and created music, compared with children who did not get music therapy. Indeed, the list of potential benefits from music therapy seems long. And for people such as Ellsey, the benefits can be nothing short of liberating."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the views of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Dan Ellsey has been able to communicate through music since he was very young.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "'In the last few years, Ellsey... has discovered another way of expressing himself' — not since childhood."
+      },
+      {
+       "n": 28,
+       "text": "Armies respond to music that is loud and rhythmic.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says music can 'rouse armies to battle' but gives no detail about what kind of music armies respond to."
+      },
+      {
+       "n": 29,
+       "text": "Researchers have determined why people react so emotionally to music.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "'It's unclear why humans are so uniquely sensitive to music.'"
+      },
+      {
+       "n": 30,
+       "text": "Both music and speech are composed of sound segments.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'our brains are particularly developed to process the rapid tones and segments of sound that are common to both.'"
+      },
+      {
+       "n": 31,
+       "text": "It is clear that song developed more quickly than speech.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "'Other researchers debate which came first in evolution, speech or song.' — not clear at all."
+      },
+      {
+       "n": 32,
+       "text": "Emotional reactions to music have been scientifically demonstrated.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'Scientists at the Montreal Neurological Institute have found dramatic evidence on brain scans that the chills... that people report when listening to their favourite music are real.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 33,
+       "text": "According to the article, music stimulates higher brain activity when it",
+       "options": [
+        {
+         "key": "A",
+         "text": "provokes hunger."
+        },
+        {
+         "key": "B",
+         "text": "requires thought."
+        },
+        {
+         "key": "C",
+         "text": "is soothing."
+        },
+        {
+         "key": "D",
+         "text": "is pleasing."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "'Music that a person likes... activates the higher thinking centers in the brain's cortex.'"
+      },
+      {
+       "n": 34,
+       "text": "According to Dr Schlaug's research, some stroke patients may regain speech if",
+       "options": [
+        {
+         "key": "A",
+         "text": "they practise making sounds that are close together."
+        },
+        {
+         "key": "B",
+         "text": "they reactivate the left side of the brain."
+        },
+        {
+         "key": "C",
+         "text": "they receive music therapy daily."
+        },
+        {
+         "key": "D",
+         "text": "they listen to tunes in groups."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'melodic intonation therapy, which involves singing using two tones relatively close in pitch.'"
+      },
+      {
+       "n": 35,
+       "text": "According to the Cochrane Collaboration review, research into the link between music and pain relief suggests",
+       "options": [
+        {
+         "key": "A",
+         "text": "the value of music is underestimated."
+        },
+        {
+         "key": "B",
+         "text": "the value of music may be limited."
+        },
+        {
+         "key": "C",
+         "text": "more studies are needed in these areas."
+        },
+        {
+         "key": "D",
+         "text": "patients welcome this research."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'the benefit, overall, was small.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–H, below.",
+     "title": "Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "rely less on drugs."
+      },
+      {
+       "key": "B",
+       "text": "get heavier."
+      },
+      {
+       "key": "C",
+       "text": "exhibit improved social interaction."
+      },
+      {
+       "key": "D",
+       "text": "experience psychological benefits."
+      },
+      {
+       "key": "E",
+       "text": "sleep more soundly."
+      },
+      {
+       "key": "F",
+       "text": "suffer less discomfort."
+      },
+      {
+       "key": "G",
+       "text": "accept their situation more easily."
+      },
+      {
+       "key": "H",
+       "text": "have stronger resistance to disease."
+      }
+     ],
+     "questions": [
+      {
+       "n": 36,
+       "text": "Burn victims who receive music therapy …",
+       "answer": [
+        "F"
+       ],
+       "explanation": "'music therapy can reduce pain' for burn patients — they suffer less discomfort."
+      },
+      {
+       "n": 37,
+       "text": "People with schizophrenia who receive music therapy …",
+       "answer": [
+        "D"
+       ],
+       "explanation": "'Music therapy may improve mental state and functioning in people with schizophrenia' — experience psychological benefits."
+      },
+      {
+       "n": 38,
+       "text": "Autistic children who receive music therapy …",
+       "answer": [
+        "C"
+       ],
+       "explanation": "'communication in children with autistic spectrum disorders' — exhibit improved social interaction."
+      },
+      {
+       "n": 39,
+       "text": "Premature babies who receive music therapy …",
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Premature infants who listen to lullabies learn to suck better and gain more weight' — get heavier."
+      },
+      {
+       "n": 40,
+       "text": "Hospitalised children who receive music therapy …",
+       "answer": [
+        "H"
+       ],
+       "explanation": "'improvement in immune response among hospitalized children' — have stronger resistance to disease."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

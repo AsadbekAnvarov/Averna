@@ -1,0 +1,659 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-10",
+ "title": "CDI Listening Test 10",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "A musician calls Music Alive, a networking agency, to enquire about membership",
+  "The organiser gives information to participants at the start of the competition",
+  "Two art students, Max and Abby, discuss their preparations for the end-of-year exhibition",
+  "A student gives a presentation about a mangrove forest conservation project on the Florida coast"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-10-part-1",
+   "title": "Part 1",
+   "context": "A musician calls Music Alive, a networking agency, to enquire about membership.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Music Alive Agency\nExample: Contact person: Jim Granley\n- Members’ details are on a [[1]]\n- Type of music represented: modern music ( [[2]] and jazz)\n- Newsletter comes out once a [[3]]\n- Cost of adult membership: £ [[4]]\n- Current number of members: [[5]]\n- Facilities include: rehearsal rooms and a [[6]]\n- There is no charge for [[7]] advice\nTo become a member, send:\n- a letter with contact details\n- a recent [[8]]\n- Address: 707, [[9]] Street, Marbury\n- Contact email: music. [[10]] @bsu.co.uk",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "database"
+       ],
+       "explanation": "\"We have all our members on our database.\""
+      },
+      {
+       "n": 2,
+       "answer": [
+        "rock"
+       ],
+       "explanation": "\"We deal with modern music, especially rock.\" — rock and jazz."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "month"
+       ],
+       "explanation": "\"No, every month.\" — the newsletter comes out monthly."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "45",
+        "£45"
+       ],
+       "explanation": "\"The standard rate is forty-five pounds.\" — £45 for adults over 18."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "750"
+       ],
+       "explanation": "\"Our membership has gone up recently from 700 to 750.\""
+      },
+      {
+       "n": 6,
+       "answer": [
+        "studio"
+       ],
+       "explanation": "\"We have rehearsal rooms and we've just opened a studio.\""
+      },
+      {
+       "n": 7,
+       "answer": [
+        "legal"
+       ],
+       "explanation": "\"We can offer legal advice if you need it, for contracts.\" — free legal advice."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "recording"
+       ],
+       "explanation": "\"Send a recording made within the last couple of months.\""
+      },
+      {
+       "n": 9,
+       "answer": [
+        "kippax"
+       ],
+       "explanation": "\"We're at 707 Kippax Street, Marbury.\" — K-I-Double P-A-X."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "talent"
+       ],
+       "explanation": "\"It's music.talent at bsu.co.uk.\" — the email includes the word talent."
+      }
+     ]
+    }
+   ],
+   "transcript": "A musician calls Music Alive, a networking agency, to enquire about membership.\nJim: Hello, Music Alive. How can I help you?\nMusician: Hi. I’ve just moved to the area and I saw your advert. I wanted to find out about your services.\nJim: Well, we’re basically a networking agency for musicians, but we don’t actually find you work. We have all our members on our database, the type of music they play, and we can put people in touch if they want to form a band.\nJim: We deal with modern music, especially rock, which is what most people seem to enjoy around here. But we do also represent some jazz musicians. We don’t accept classical music, I’m afraid.\nJim: We actually have a newsletter I could send you. The latest one came out this week.\nMusician: That would be great. Is it weekly?\nJim: No, every month. Weekly would be too much work, I think.\nJim: So to join is just thirty-five pounds — that’s the discounted rate for young musicians under eighteen. The standard rate is 45 pounds.\nJim: No, you can join any time. We don’t have a limit on the numbers of members. The more the merrier. Our membership’s gone up recently from 700 to 750.\nJim: Well, we do have a couple of rooms where you can rehearse. They’re soundproof. And we’ve just opened a studio, a small one. And it’s already proving popular with bands that want to send demo tapes to venues and record labels.\nJim: But we do have some free services. For example, we can offer legal advice if you need it, for contracts and things like that.\nJim: Just send us a letter with your contact details and a recording made within the last couple of months. That’ll give other members an idea of what you play.\nJim: We’re at 707 Kippax Street, Marbury. It’s K-I-Double P-A-X.\nJim: Yes, it’s music.talent@bsu.co.uk."
+  },
+  {
+   "id": "cdi-listening-10-part-2",
+   "title": "Part 2",
+   "context": "The organiser gives information to participants at the start of the competition.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What do participants need to take to the registration desk?",
+       "options": [
+        {
+         "key": "A",
+         "text": "a form of identification"
+        },
+        {
+         "key": "B",
+         "text": "a competitor number"
+        },
+        {
+         "key": "C",
+         "text": "cash for the entrance fee"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"We'll need to see some form of identification today.\" — A: a form of identification."
+      },
+      {
+       "n": 12,
+       "text": "What does the entrance fee to the competition include?",
+       "options": [
+        {
+         "key": "A",
+         "text": "equipment for fishing"
+        },
+        {
+         "key": "B",
+         "text": "all food for both days"
+        },
+        {
+         "key": "C",
+         "text": "fuel for the fishing boats"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"This is a fully catered competition. Just go down to the dining tent.\" — B: all food for both days."
+      },
+      {
+       "n": 13,
+       "text": "Participants without a fishing license are recommended to apply for one",
+       "options": [
+        {
+         "key": "A",
+         "text": "at the registration desk"
+        },
+        {
+         "key": "B",
+         "text": "over the phone"
+        },
+        {
+         "key": "C",
+         "text": "on the internet"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"You can always go online and they'll issue you one immediately.\" — C: on the internet."
+      },
+      {
+       "n": 14,
+       "text": "What will happen at 6pm on Sunday?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The time allocated for fishing will end."
+        },
+        {
+         "key": "B",
+         "text": "The fish caught will be judged."
+        },
+        {
+         "key": "C",
+         "text": "The prizes will be awarded to the winners."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"At 6pm exactly the judges will start weighing the fish.\" — B: fish will be judged."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map of the Albany Fishing Competition venue. Write the correct letter, A–I, next to questions 15–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 15,
+       "text": "Registration area",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"Take the road that heads to the east. Registration desk is on that road.\" — G."
+      },
+      {
+       "n": 16,
+       "text": "Shore fishing area",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Shore fishing area is directly to the north of the skate park.\" — A."
+      },
+      {
+       "n": 17,
+       "text": "Boat launching area",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Take the road on the right, follow to the beach — boat launching area.\" — C."
+      },
+      {
+       "n": 18,
+       "text": "Judging area",
+       "answer": [
+        "H"
+       ],
+       "explanation": "\"Head from the car park, take the first road on your left, past the first aid tent.\" — H."
+      },
+      {
+       "n": 19,
+       "text": "Dining area",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"Take the road that leads west, follow to the sharp bend — dining area.\" — D."
+      },
+      {
+       "n": 20,
+       "text": "Prize-giving area",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"North of the roundabout past the playground, right on the beach — prize giving.\" — B."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening10-map.webp",
+      "alt": "Albany Fishing Competition Map"
+     }
+    }
+   ],
+   "transcript": "The organiser gives information to participants at the start of the competition.\nOrganiser: Hello everyone and welcome to the Albany Fishing Competition. I’m going to give you some information you’ll need for the next two days.\nOrganiser: To fully complete your registration, we’ll need to see some form of identification today. Make sure you show that at the desk, otherwise you won’t be properly entered.\nOrganiser: What do you get for your entrance fee? This is a fully catered competition. So whenever you’re hungry, either today or tomorrow, just go down to the dining tent — all food for both days is included.\nOrganiser: As for things necessary for fishing — hooks, rods, all your gear — I’m sure you’ve brought all that with you. And if you fancy fishing from a boat, you’ll need to cover the cost of petrol.\nOrganiser: If you want to fish in this country, you must have a fishing license. If you don’t have one, don’t worry, you can always go online and they’ll issue you one immediately. We wanted to sell them here but the council wouldn’t allow it. You can call the Department of Fisheries, but they send them by post, so obviously you won’t get that in time.\nOrganiser: The competition starts today and ends on Sunday evening. At 5:30 pm you will all have to stop fishing and at 6pm exactly the judges will start weighing the fish to see how heavy they are and choose the winners. The prize giving will happen later in the evening.\nOrganiser: Right, have a look at your maps. First, the registration area. Go to the roundabout in the middle of your map. From there, take the road that heads to the east. You’ll find the registration desk on that road. It’s a nice shady area surrounded by trees.\nOrganiser: The shore fishing area is directly to the north of the skate park. You can’t just go anywhere on the coastline.\nOrganiser: For the boat launching area, go to the roundabout and take the road that’s on the right. Follow that road to the beach and that’s where you launch your boat.\nOrganiser: To get to the judging area, head out from the car park and take the first road on your left. Go past the first aid tent and the judging area will be set up down there.\nOrganiser: For the dining area, go to the roundabout and take the road that leads west. Follow that road to just where there’s a sharp bend and you’ll find where you can eat.\nOrganiser: For the prize giving area, it’s north of the roundabout past the playground. The prize giving area’s at the end of that road, right on the beach."
+  },
+  {
+   "id": "cdi-listening-10-part-3",
+   "title": "Part 3",
+   "context": "Two art students, Max and Abby, discuss their preparations for the end-of-year exhibition.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Max and Abby agree that in the art exhibition they are looking forward to",
+       "options": [
+        {
+         "key": "A",
+         "text": "showing people their work."
+        },
+        {
+         "key": "B",
+         "text": "getting feedback from their tutor."
+        },
+        {
+         "key": "C",
+         "text": "talking to other students about their work."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"I'm excited about letting my friends and family see all the stuff I've produced.\" Both agree — A: showing people their work."
+      },
+      {
+       "n": 22,
+       "text": "In last year’s exhibition, both students were impressed by",
+       "options": [
+        {
+         "key": "A",
+         "text": "a set of metal sculptures."
+        },
+        {
+         "key": "B",
+         "text": "a series of wooden models."
+        },
+        {
+         "key": "C",
+         "text": "a collection of textile designs."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Those ten wooden reproductions... little cars and trains.\" Both students mention it — B: a series of wooden models."
+      },
+      {
+       "n": 23,
+       "text": "What has Max decided to call his display?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Mother Nature"
+        },
+        {
+         "key": "B",
+         "text": "Views of Farmland"
+        },
+        {
+         "key": "C",
+         "text": "Seasons"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"I've gone for Mother Nature in the end.\" — A: Mother Nature."
+      },
+      {
+       "n": 24,
+       "text": "What does Abby think will be difficult when preparing for their displays?",
+       "options": [
+        {
+         "key": "A",
+         "text": "having enough time to set it up"
+        },
+        {
+         "key": "B",
+         "text": "choosing which pieces to show"
+        },
+        {
+         "key": "C",
+         "text": "filling up all the available space"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"I'm more concerned about how long it will take me to put everything in place.\" — A: having enough time to set it up."
+      },
+      {
+       "n": 25,
+       "text": "What does Abby say about the summary they have to write?",
+       "options": [
+        {
+         "key": "A",
+         "text": "She isn’t sure whether people will read it."
+        },
+        {
+         "key": "B",
+         "text": "It will be difficult to keep it short enough."
+        },
+        {
+         "key": "C",
+         "text": "It will be hard to clarify the reasons for her work."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"I've got a strict word limit to stick to, but I've got so much to say.\" — B: It will be difficult to keep it short."
+      },
+      {
+       "n": 26,
+       "text": "What aspect of the display will the students organise themselves?",
+       "options": [
+        {
+         "key": "A",
+         "text": "arranging the lighting"
+        },
+        {
+         "key": "B",
+         "text": "inviting local journalists"
+        },
+        {
+         "key": "C",
+         "text": "providing comment forms"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"One thing to do is copy a load of comment forms.\" — C: providing comment forms."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Which feature do the speakers identify as particularly interesting for each exhibition? Choose FOUR answers from the box and write the correct letter, A–F, next to questions 27–30.",
+     "options": [
+      {
+       "key": "A",
+       "text": "the realistic colours"
+      },
+      {
+       "key": "B",
+       "text": "the sense of space"
+      },
+      {
+       "key": "C",
+       "text": "the unusual interpretation of the theme"
+      },
+      {
+       "key": "D",
+       "text": "the painting technique"
+      },
+      {
+       "key": "E",
+       "text": "the variety of materials used"
+      },
+      {
+       "key": "F",
+       "text": "the use of light and shade"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "On the Water",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"On the Water — the brush strokes in the oil painting to create a sense of movement.\" — D: the painting technique."
+      },
+      {
+       "n": 28,
+       "text": "City Life",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"City Life — the display itself wasn't crowded at all... a more open feeling.\" — B: the sense of space."
+      },
+      {
+       "n": 29,
+       "text": "Faces",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Faces — the artist managed to reproduce the exact tones of the skin and hair.\" — A: the realistic colours."
+      },
+      {
+       "n": 30,
+       "text": "Moods",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Moods — I expected emotions but it was about plants. Not the most obvious choice.\" — C: the unusual interpretation."
+      }
+     ]
+    }
+   ],
+   "transcript": "Two art students, Max and Abby, discuss their preparations for the end-of-year exhibition.\nMax: So, Abby, we have to prepare our individual displays for the end of year exhibition to showcase all the work we’ve done for the first year of our art degree.\nAbby: Yeah, Max. I’ve been thinking about how to put it all together. I’m excited about letting my friends and family see all the stuff I’ve produced.\nMax: Me too. Actually, I’m really keen to see the work of the other students on our course. I mean, it’ll be great to see all the finished displays.\nAbby: But we’ve seen what they’ve been doing throughout the year already, really. Anyway, what about getting feedback on our exhibition from our tutor? I wonder what that’ll be like.\nMax: Hmm, I’m a bit nervous about that part.\nMax: Do you remember that display of printed textiles? Fantastic mixtures of silk and wool, all coloured with natural dyes.\nAbby: Yeah, I can’t actually remember that. What sticks in my mind are those ten wooden reproductions one student made, all of different types of transport — little cars and trains and stuff.\nMax: Yes. It was really delicate work and much harder to do than if he’d tried to construct them out of metal.\nAbby: So our tutor asked us to come up with a name for our display which reflects the work we’ve done. What have you gone for?\nMax: Well, most of what I’ve done has focused on the countryside. A lot of my larger pieces are views of farmland. I’ve gone for Mother Nature in the end, though I did think about the name Seasons.\nAbby: Well, I’ve pretty much come to a conclusion about which pieces I’ll include now. I’ll have to miss out some of my preparatory drawings. I’m more concerned about how long it will take me to put everything in place.\nAbby: What about writing the summary of our work? We’ve got a strict word limit to stick to, but I’ve got so much to say it won’t be easy to say it in so few words.\nMax: So what about other organizational stuff? We’ll need good lighting for one thing. The technical guys are doing that, aren’t they?\nAbby: Yeah. One thing to do is copy a load of comment forms so people can write what they think of the exhibition. Hopefully they’ll be kind.\nMax: So our tutor suggested visiting a few exhibitions to look at the way work is presented.\nAbby: Yeah, I liked the On the Water exhibition. The way the artist used the brush strokes in the oil painting to create a sense of movement was amazing.\nMax: What I liked about the City Life exhibition was the fact that although the paintings were of busy places, the display itself wasn’t crowded at all. A more open feeling to the exhibition — the sense of space.\nAbby: And then there was the Faces exhibition. What I did like was the way the artist managed to reproduce the exact tones of the skin and hair of the people in the pictures — the realistic colours.\nMax: And the last exhibition was Moods. I expected emotions but it was about plants. Not the most obvious choice of subject — the unusual interpretation of the theme."
+  },
+  {
+   "id": "cdi-listening-10-part-4",
+   "title": "Part 4",
+   "context": "A student gives a presentation about a mangrove forest conservation project on the Florida coast.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "The Mangrove Regeneration Project\nBackground — Mangrove forests:\n- protect coastal areas from [[31]] by the sea\n- are an important habitat for wildlife\nProblems:\n- mangroves had been used by farmers as [[32]]\n- mangroves were poisoned by the use of [[33]]\n- local people used the mangroves as a place to put their [[34]]\nActions taken to protect the mangroves:\n- a barrier which was made of [[35]] was constructed — but it failed\n- new mangroves had to be grown from seed\n- the seeds of the [[36]] mangrove were used\nFirst set of seedlings:\n- kept in small pots in a [[37]]\n- watered with [[38]] water\n- planted out on south side of a small island\n- at risk from the large [[39]] population\nSecond set of seedlings:\n- planted in the seabed near established mangrove roots\n- the young plants were destroyed in a [[40]]\nResults: The first set of seedlings was successful.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "flooding"
+       ],
+       "explanation": "\"Mangrove forests prevent flooding by acting as a barrier between the land and sea.\""
+      },
+      {
+       "n": 32,
+       "answer": [
+        "firewood"
+       ],
+       "explanation": "\"Many of the mangrove trees were initially burnt as firewood by local farmers.\""
+      },
+      {
+       "n": 33,
+       "answer": [
+        "fertilizer",
+        "fertiliser"
+       ],
+       "explanation": "\"The farmers used fertilizer to increase crop yields and this started to seep into the water.\""
+      },
+      {
+       "n": 34,
+       "answer": [
+        "trash"
+       ],
+       "explanation": "\"The area started to be used as somewhere to dump trash.\""
+      },
+      {
+       "n": 35,
+       "answer": [
+        "sand"
+       ],
+       "explanation": "\"The conservationists decided to construct a sand barrier — but it proved ineffective.\""
+      },
+      {
+       "n": 36,
+       "answer": [
+        "grey",
+        "gray"
+       ],
+       "explanation": "\"Several species of mangrove inhabit the forests, but it is the grey mangroves we are concerned with.\""
+      },
+      {
+       "n": 37,
+       "answer": [
+        "hothouse",
+        "hot house"
+       ],
+       "explanation": "\"The first set of seedlings was planted in small pots and left to germinate in a hothouse.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "rain",
+        "rainwater"
+       ],
+       "explanation": "\"They had, in fact, only been watered with rainwater.\""
+      },
+      {
+       "n": 39,
+       "answer": [
+        "rabbit"
+       ],
+       "explanation": "\"It was necessary to protect them from the large rabbit colony living in the area.\""
+      },
+      {
+       "n": 40,
+       "answer": [
+        "storm"
+       ],
+       "explanation": "\"The vast majority of these seedlings were washed away in a storm.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "A student gives a presentation about a mangrove forest conservation project on the Florida coast.\nStudent: Today I’m going to be talking about the first year of a regeneration project in a mangrove forest. Mangrove forests are found along river estuaries and coastlines and are important because they prevent flooding by acting as a barrier between the land and sea.\nStudent: The mangrove trees have special roots which can breathe and allow them to survive in thick, airless mud. They are also a very important habitat for wading birds, fish, and other animals.\nStudent: Many of the mangrove trees were initially burnt as firewood by local farmers.\nStudent: The mangrove forests were also poisoned by settlers’ farming methods because the farmers used fertilizer to increase crop yields and this started to seep into the water.\nStudent: Farming in the area wasn’t successful, and the mangrove forest area wasn’t valued by local people as crops couldn’t be grown there. And so the area started to be used as somewhere to dump trash.\nStudent: The conservationists decided to construct a sand barrier around the forests. But unfortunately this proved to be ineffective. The only way forward appeared to be to grow new mangroves from seed.\nStudent: Several species of mangrove inhabit the forests in this area, but it is the grey mangroves that we are concerned with here. The seed of this plant is about the size of an almond.\nStudent: The first set of seedlings was planted in small pots and left to germinate in a hothouse. The plants thrived, and large roots appeared at the bottom of the pots.\nStudent: Ideally, these seedlings should have been conditioned with increasingly salty water before being planted in the sea. They had, in fact, only been watered with rainwater.\nStudent: As the plants weren’t used to a saline environment, it was decided to plant them out on the south side of a small island nearby. There were over 100 plants planted in this particular spot.\nStudent: And it was necessary to protect them not from the wading birds but from the large rabbit colony living in the area.\nStudent: The process for the second set of seedlings was completely different. Young seedlings were collected from the forests and planted in the seabed behind old mangrove roots for protection. However, this method did not prove very successful, and the vast majority of these seedlings were washed away in a storm.\nStudent: Luckily, the first set of seedlings survived, and this method is the one which the project will continue to use in the future."
+  }
+ ],
+ "audio": {
+  "file": "listening-10.mp3",
+  "durationSec": 1580,
+  "questionTimes": {
+   "1": 168,
+   "2": 194,
+   "3": 216,
+   "4": 247,
+   "5": 281,
+   "6": 344,
+   "7": 366,
+   "8": 384,
+   "9": 397,
+   "10": 409,
+   "11": 525,
+   "12": 560,
+   "13": 587,
+   "14": 626,
+   "15": 693,
+   "16": 719,
+   "17": 743,
+   "18": 753,
+   "19": 765,
+   "20": 796,
+   "21": 921,
+   "22": 963,
+   "23": 1006,
+   "24": 1034,
+   "25": 1054,
+   "26": 1097,
+   "27": 1155,
+   "28": 1171,
+   "29": 1195,
+   "30": 1207,
+   "31": 1360,
+   "32": 1373,
+   "33": 1378,
+   "34": 1392,
+   "35": 1441,
+   "36": 1456,
+   "37": 1478,
+   "38": 1490,
+   "39": 1522,
+   "40": 1543
+  }
+ }
+}

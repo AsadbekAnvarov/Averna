@@ -1,0 +1,590 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-59",
+ "title": "CDI Reading Test 59",
+ "description": "A full Academic Reading test from the CDI practice materials: Carnivorous plant; Bird Migration; Does Class Size Matter?.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Carnivorous plant",
+  "Bird Migration",
+  "Does Class Size Matter?"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Carnivorous plant",
+   "subtitle": "They attract insects and then eat their flesh. Is that any way for a plant to behave?",
+   "paragraphs": [
+    {
+     "text": "The naturalist and author of Origin of Species, Charles Darwin, was fascinated by carnivorous plants. In 1860, soon after he came across his first carnivorous plant — the sundew, Drosera — he wrote, ‘I care more about Drosera than the origin of all the species in the world.’ He spent months running experiments on the plants. He dropped flies and bits of meat on their leaves and watched them slowly fold their sticky tentacles over their prey. He thought it incredible that brushing a leaf with a single strand of human hair was enough to bring about a response. Yet sundews, he observed, ignored raindrops. To react to such a false alarm, he reasoned, would obviously be a great evil to the plant. This was no accident. This was adaptation."
+    },
+    {
+     "text": "Darwin expanded his studies from sundews to other species in his book Insectivorous Plants. He was amazed at the quickness and power of the Venus flytrap. He showed that when one of its leaves snapped shut, it formed itself into a temporary ‘stomach’, secreting enzymes that could dissolve the prey. He noted that a leaf took more than a week to reopen after closing, and reasoned that the interlocking spines along the margin of the leaf allowed tiny insects to escape, saving the plant the expense of digesting an insufficient meal."
+    },
+    {
+     "text": "Today, biologists using 21st-century tools to study cells and DNA are beginning to understand how these plants hunt, eat, and digest — and how these strange adaptations came about in the first place. Alexander Volkov, a plant physiologist at Oakwood University in Alabama, believes he has figured out the Venus flytrap’s secret. ‘This,’ Volkov declares, ‘is an electrical plant.’"
+    },
+    {
+     "text": "When an insect brushes against a hair on the leaf of a Venus flytrap, the movement sets off an electric charge. The charge builds up inside the tissue of the leaf but is not enough to stimulate the snap, which keeps the Venus flytrap from reacting to false alarms, such as raindrops. An insect, however, is likely to brush a second hair, adding enough electric charge for the leaf to close."
+    },
+    {
+     "text": "Volkov’s experiments reveal that the electric charge travels down fluid-filled tunnels in a leaf, which opens up pores in cell membranes. Water rushes from the cells on the inside of the leaf to those on the outside, causing the leaf to rapidly flip in shape from convex to concave, like a soft contact lens. As the leaves flip, they snap together, trapping an insect inside."
+    },
+    {
+     "text": "The bladderwort plant has an equally sophisticated way of setting its underwater trap. It pumps water out of tiny air sacs or bladders, lowering the pressure inside. When a water flea or some other small creature swims past, it bends hairs on the bladder, causing a flap to spring apart. The low pressure sucks water in, carrying the creature along with it. In one five-hundredth of a second, the flap swings shut again. The cells in the bladder then begin to pump water out again, creating a new vacuum. Many other species of carnivorous plants act like living flypaper, catching animals on sticky tentacles. Pitcher plants use yet another strategy, growing long tube-shaped leaves into which insects fall. Some of the largest have pitchers up to 30cm deep and can consume whole frogs unlucky enough to fall into them. Sophisticated chemistry helps make the pitcher a death trap."
+    },
+    {
+     "text": "Nicholas Gotelli, of the University of Vermont, is trying to figure out what evolutionary forces pushed these plants towards meat. Carnivorous plants clearly benefit from eating animals; when scientists feed pitcher plants extra bugs, the plants get bigger. But the benefits of eating flesh are not the ones you might expect. Carnivorous animals, like ourselves, use the carbon in protein and the fat in meat to build muscles and store energy. Carnivorous plants, however, take nitrogen and phosphorus from the flesh in order to build light-harvesting enzymes. Eating animals, in other words, lets carnivorous plants do what all plants do: grow by taking energy directly from the sun."
+    },
+    {
+     "text": "Unfortunately, they do a really bad job of it. That’s because they have to use a lot of energy to make the equipment they need to catch animals — the enzymes, the pumps, the sticky tentacles, and so on. A pitcher or a flytrap is not very good at photosynthesis because, unlike plants with ordinary leaves, they do not have flat solar panels that can absorb lots of sunlight. Gotelli suspects that only under special conditions are the benefits of being carnivorous greater than the costs. The poor soil of bogs and swamps, where many carnivorous plants grow, offers little nitrogen and phosphorus, so carnivorous plants enjoy an advantage there over ‘conventional’ plants. Also, bogs are often flooded with sunshine, so even an inefficient carnivorous plant can carry out enough photosynthesis to survive. ‘They’re stuck, and they’re making the best of it,’ says Aaron Ellison of Harvard University."
+    },
+    {
+     "text": "Unfortunately, the adaptations that enable carnivorous plants to survive in harsh habitats also make them extremely sensitive to environmental changes. Chemical fertilizers used in agriculture and pollution from power plants are adding extra nitrogen to many bogs in North America. Carnivorous plants are so finely adapted to low levels of nitrogen that this extra fertilizer is overloading their systems. Humans also threaten carnivorous plants in other ways. The black market trade in exotic carnivorous plants is strong, but even if this can be prevented, carnivorous plants will continue to suffer from other dangers. Their habitat is disappearing, to be replaced by shopping centers and houses. The suppression of wildfires by government agencies allows other plants to grow quickly and outcompete the Venus flytraps. Good news, perhaps, for flies. But a loss for all who delight in the inventiveness of evolution."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Carnivorous plants",
+     "template": "# Darwin's experiments (Drosera)\n- He understood why the plant did not react to [[1]] .\n# Venus Flytrap\n- Leaves close and then, for a short period, act like a [[2]] .\n- The charge enters fluid-filled tunnels and opens [[3]] .\n# Bladderwort\n- When water is pumped out of bladder cells, a [[4]] builds up inside.\n# Pitcher Plants\n- Some plants are big enough to capture and eat [[5]] .",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "raindrops"
+       ],
+       "explanation": "Para 1: sundews ‘ignored raindrops’ — reacting to such a false alarm would be a great evil to the plant."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "stomach"
+       ],
+       "explanation": "Para 2: a snapped-shut leaf ‘formed itself into a temporary stomach’."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "pores"
+       ],
+       "explanation": "Para 5: the charge ‘opens up pores in cell membranes’."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "vacuum"
+       ],
+       "explanation": "Para 6: the cells pump water out ‘creating a new vacuum’."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "frogs"
+       ],
+       "explanation": "Para 6: the largest pitchers ‘can consume whole frogs’."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 6,
+       "text": "Pitcher plants increase in size after they have digested a lot of insects.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 7: ‘when scientists feed pitcher plants extra bugs, the plants get bigger.’"
+      },
+      {
+       "n": 7,
+       "text": "Carnivorous plants produce light-harvesting enzymes with the nutrients they extract from animals.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 7: they ‘take nitrogen and phosphorus from the flesh in order to build light-harvesting enzymes.’"
+      },
+      {
+       "n": 8,
+       "text": "Pitcher plants and Venus flytraps are more efficient at photosynthesis than plants with ordinary leaves.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 8: a pitcher or flytrap ‘is not very good at photosynthesis’ compared with ordinary-leaved plants."
+      },
+      {
+       "n": 9,
+       "text": "Venus flytraps are better adapted to the soil of swamps and bogs than other carnivorous plants.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para 8 compares carnivorous plants to ‘conventional’ plants, not Venus flytraps to other carnivorous plants."
+      },
+      {
+       "n": 10,
+       "text": "Carnivorous plants frequently find it difficult to photosynthesise in bogs due to a lack of sunlight.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 8: ‘bogs are often flooded with sunshine’ — there is plenty of sunlight."
+      },
+      {
+       "n": 11,
+       "text": "Scientists have campaigned to reduce the amount of nitrogen that is released into the soil by agricultural practices.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para 9 mentions extra nitrogen from fertilizers but not any campaign by scientists to reduce it."
+      },
+      {
+       "n": 12,
+       "text": "A lot of exotic carnivorous plants are sold illegally.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 9: ‘The black market trade in exotic carnivorous plants is strong.’"
+      },
+      {
+       "n": 13,
+       "text": "Preventing wildfires is beneficial to the Venus flytrap.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 9: suppressing wildfires lets other plants ‘outcompete the Venus flytraps’ — it harms them."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Bird Migration",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Birds have many unique design features that enable them to perform such amazing feats of endurance. They are equipped with lightweight, hollow bones, intricately designed feathers providing both lift and thrust for rapid flight, navigation systems superior to any that man has developed, and an ingenious heat conserving design that, among other things, concentrates all blood circulation beneath layers of warm, waterproof plumage, leaving them fit to face life in the harshest of climates. Their respiratory systems have to perform efficiently during sustained flights at altitude, so they have a system of extracting oxygen from their lungs that far exceeds that of any other animal. During the later stages of the summer breeding season, when food is plentiful, their bodies can accumulate considerable layers of fat, to provide sufficient energy for their long migratory flights."
+    },
+    {
+     "label": "B",
+     "text": "The fundamental reason that birds migrate is to find adequate food during the winter months when it is in short supply. This particularly applies to birds that breed in the temperate and Arctic regions of the Northern Hemisphere, where food is abundant during the short growing season. Many species can tolerate cold temperatures if food is plentiful, but when food is not available, they must migrate. However, intriguing questions remain."
+    },
+    {
+     "label": "C",
+     "text": "One puzzling fact is that many birds journey much further than would be necessary just to find food and good weather. Nobody knows, for instance, why British swallows, which could presumably survive equally well if they spent the winter in equatorial Africa, instead fly several thousands of miles further to their preferred winter home in South Africa’s Cape Province. Another mystery involves the huge migrations performed by arctic terns and mudflat-feeding shorebirds that breed close to Polar Regions. In general, the further north a migrant species breeds, the further south it spends the winter. For arctic terns, this necessitates an annual round trip of 25,000 miles. Yet, en route to their final destination in far-flung southern latitudes, all these individuals overfly other areas of seemingly suitable habitat spanning two hemispheres. While we may not fully understand birds’ reasons for going to particular places, we can marvel at their feats."
+    },
+    {
+     "label": "D",
+     "text": "One of the greatest mysteries is how young birds know how to find the traditional wintering areas without parental guidance. Very few adults migrate with juveniles in tow, and youngsters may even have little or no inkling of their parents’ appearance. A familiar example is that of the cuckoo, which lays its eggs in another species’ nest and never reencounters its young. It is mind-boggling to consider that, once raised by its host species, the young cuckoo makes its way to ancestral wintering grounds in the tropics before returning single-handedly to northern Europe the next season to seek out a mate among its kind. The obvious implication is that it inherits from its parents an inbuilt route map and direction-finding capability, as well as a mental image of what another cuckoo looks like. Yet nobody has the slightest idea as to how this is possible."
+    },
+    {
+     "label": "E",
+     "text": "Mounting evidence has confirmed that birds use the positions of the sun and stars to obtain compass directions. They also seem to be able to detect the earth’s magnetic field, probably due to having minute crystals of magnetite in the region of their brains. However, accurate navigation also requires an awareness of position and time, especially when lost. Experiments have shown that after being taken thousands of miles over an unfamiliar landmass, birds are still capable of returning rapidly to nest sites. Such phenomenal powers are the product of computing several sophisticated cues, including an inborn map of the night sky and the pull of the earth’s magnetic field. How the birds use their ‘instruments’ remains unknown, but one thing is clear: they see the world with a superior sensory perception to ours. Most small birds migrate at night and take their direction from the position of the setting sun. However, as well as seeing the sun go down, they also seem to see the plane of polarized light caused by it, which calibrates their compass. Travelling at night provides other benefits. Daytime predators are avoided and the danger of dehydration due to flying for long periods in warm, sunlit skies is reduced. Furthermore, at night the air is generally cool and less turbulent and so conducive to sustained, stable flight."
+    },
+    {
+     "label": "F",
+     "text": "Nevertheless, all journeys involve considerable risk, and part of the skill in arriving safely is setting off at the right time. This means accurate weather forecasting and utilizing favourable winds. Birds are adept at both, and, in laboratory tests, some have been shown to detect the minute difference in barometric pressure between the floor and ceiling of a room. Often birds react to weather changes before there is any visible sign of them. Lapwings, which feed on grassland, flee west from the Netherlands to the British Isles, France, and Spain at the onset of a cold snap. When the ground surface freezes, the birds could starve. Yet they return to Holland ahead of a thaw, their arrival linked to a pressure change presaging an improvement in the weather."
+    },
+    {
+     "label": "G",
+     "text": "In one instance a Welsh Manx shearwater carried to America and released was back in its burrow on Skokholm Island, off the Pembrokeshire coast, one day before a letter announcing its release! Conversely, each autumn a small number of North American birds are blown across the Atlantic by fast-moving westerly tailwinds. Not only do they arrive safely in Europe, but, based on ringing evidence, some make it back to North America the following spring, after probably spending the winter with European migrants in sunny African climes."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "The best moment to migrate"
+      },
+      {
+       "key": "ii",
+       "text": "The unexplained rejection of closer feeding ground"
+      },
+      {
+       "key": "iii",
+       "text": "The influence of weather on the migration route"
+      },
+      {
+       "key": "iv",
+       "text": "Physical characteristics that allow birds to migrate"
+      },
+      {
+       "key": "v",
+       "text": "The main reason why birds migrate"
+      },
+      {
+       "key": "vi",
+       "text": "The best wintering grounds for birds"
+      },
+      {
+       "key": "vii",
+       "text": "Research findings on how birds migrate"
+      },
+      {
+       "key": "viii",
+       "text": "Successful migration despite the trouble of wind"
+      },
+      {
+       "key": "ix",
+       "text": "The contrast between long-distance migration and short-distance migration"
+      },
+      {
+       "key": "x",
+       "text": "Mysterious migration despite lack of teaching"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Para A lists lightweight bones, feathers, navigation and heat-conserving design — ‘Physical characteristics that allow birds to migrate’ (iv)."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Para B: ‘The fundamental reason that birds migrate is to find adequate food’ — ‘The main reason why birds migrate’ (v)."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Para C: swallows fly past suitable closer habitat — ‘The unexplained rejection of closer feeding ground’ (ii)."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "x"
+       ],
+       "explanation": "Para D: young cuckoos migrate without parental guidance — ‘Mysterious migration despite lack of teaching’ (x)."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Para E reports experiments and evidence on navigation — ‘Research findings on how birds migrate’ (vii)."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Para F: ‘part of the skill in arriving safely is setting off at the right time’ — ‘The best moment to migrate’ (i)."
+      },
+      {
+       "n": 20,
+       "text": "Paragraph G",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Para G: birds blown across the Atlantic still arrive and return safely — ‘Successful migration despite the trouble of wind’ (viii)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of the following statements are true of bird migration?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Birds often fly further than they need to."
+      },
+      {
+       "key": "B",
+       "text": "Birds travelling in family groups are safe."
+      },
+      {
+       "key": "C",
+       "text": "Birds flying at night need less water."
+      },
+      {
+       "key": "D",
+       "text": "Birds have much sharper eyesight than humans."
+      },
+      {
+       "key": "E",
+       "text": "Only shorebirds are resistant to strong winds."
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "A: Para C — many birds ‘journey much further than would be necessary’. C: Para E — flying at night reduces ‘the danger of dehydration’, so they need less water. A: Para C — many birds fly further than necessary. C: Para E — flying at night reduces dehydration risk."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "A: Para C — many birds ‘journey much further than would be necessary’. C: Para E — flying at night reduces ‘the danger of dehydration’, so they need less water. A: Para C — many birds fly further than necessary. C: Para E — flying at night reduces dehydration risk."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- It is a great mystery that young birds like cuckoos can find their wintering grounds without [[23]] assistance.\n- Evidence shows birds can tell [[24]] like a compass by observing the sun and the stars.\n- One advantage for birds flying at night is that they can avoid contact with [[25]] .\n- Laboratory tests show that birds can detect weather without [[26]] signs.",
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "parental"
+       ],
+       "explanation": "Para D: young birds find wintering areas ‘without parental guidance’."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "directions"
+       ],
+       "explanation": "Para E: birds use the sun and stars ‘to obtain compass directions’."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "predators"
+       ],
+       "explanation": "Para E: travelling at night means ‘Daytime predators are avoided’."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "visible"
+       ],
+       "explanation": "Para F: ‘birds react to weather changes before there is any visible sign of them.’"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Does Class Size Matter?",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Of all the ideas for improving education, few are as simple or attractive as reducing the number of pupils per teacher. Unlike competing proposals for reform, class-size reductions rarely elicit huge outcries or involve structural change. The testing of educators, by contrast, generally arouses the anger of unions. Similarly, establishing special ‘charter’ schools involves privileging some schools over others, with the credits provided usually coming out of the budgets of struggling local schools. With its uncomplicated appeal, class-size reduction in the U.S. has lately gone from being a subject of primary academic interest to a policy juggernaut with over twenty states aiming at decreasing class sizes."
+    },
+    {
+     "label": "B",
+     "text": "Do small classes improve school achievement? To answer this, investigators have attempted to analyse existing data, such as records at the U.S. Department of Education. These reveal that there were steep drops in pupil-teacher ratios between 1969 and 1997, but no significant gains in academic performance. But do these findings mean that class size makes no difference? Not necessarily. For instance, schools strive for more than just high test scores; they also usually try to keep their drop-out rates low. And, indeed, the drop-out rate for older students fell considerably over that period. Because drop-outs generally come from the low end of the achievement distribution, a reduction in the drop-out rate could be expected to pull down average test scores. Another reason for discounting those data is the difficulty of ensuring a level playing field. In a perfect world, U.S. students would all come from well-off families, with two highly educated English-speaking parents who are involved in their children’s schooling. Teachers would all be creative and have complete mastery of the subject matter. The reality is very different."
+    },
+    {
+     "label": "C",
+     "text": "Over the past 35 years, some studies of existing data have produced evidence that smaller classes benefit students, but most of these studies were poorly designed. The exception was the Tennessee study called Project STAR (Student Teacher Achievement Ratio). Frederick Mosteller of Harvard University has called it ‘one of the greatest experiments in education in United States history’. Students entering kindergarten were randomly assigned to one of three kinds of classes: a small class of 13 to 17 students, a regular-size class of 22 to 26 or a regular size class with both a teacher and a full-time teacher’s aide. The students remained in whatever category they had been assigned to throughout the third grade, after which they joined a regular classroom in the fourth. To ensure that teaching quality did not differ, teachers were randomly assigned to small and regular-size classrooms. Few teachers received any special training for working with small classes, and there were no new curricular materials."
+    },
+    {
+     "label": "D",
+     "text": "At the end of STAR, researchers analysed the data. Jeremy Finn of New York University and Charles Achilles of Eastern Michigan University found evidence for ‘an array of benefits of small classes’. They calculated that students in smaller classes were outperforming their counterparts in regular-sized classes by the first grade and that this advantage persisted even after students returned to larger classes. They also found that the effect was stronger for black and Hispanic minority groups – a significant finding for policy-makers. Eric Hanushek of Stanford, however, criticises some of STAR’s key conclusions. He argues that STAR does not prove that gains persist long after students return to regular classes. It was debatable how much later improvement stemmed from other factors, such as a supportive home. Nor does he accept that the benefits accumulate, with participants widening the gap with their peers in larger classes year by year. Hanushek and others have also shown that during the study too many children moved from regular to small classes, probably because school personnel caved in to parent demands. And Hanushek also asserts that STAR failed to ensure good randomisation of teacher and student assignments. However, these points do not undermine STAR’s basic findings."
+    },
+    {
+     "label": "E",
+     "text": "The largest public class size reduction programme so far, California’s, stands more as a warning than as worthy of emulation. That state is trying to reduce classes in kindergarten through grade three despite a shortage of teachers that is most acute in low-income areas. This is exacerbating the disparity in resources available to rich and poor schools in California, because more affluent areas can attract the best teachers. Indeed, some of the extra teachers needed are being recruited from the poorer schools. Researchers found a statistically significant achievement advantage in reading, writing and mathematics for students in classes that had been reduced to 20. What is more, the effect did not vary for students of different backgrounds."
+    },
+    {
+     "label": "F",
+     "text": "Wisconsin’s Student Achievement Guarantee in Education (SAGE) was a five-year pilot study to do some of the groundwork for a major project. Class sizes were reduced in only 14 schools, but it was noteworthy for targeting schools at which 30% of the students were below poverty level, compared with California’s across-the-board approach. SAGE lowered the average pupil teacher ratio in kindergarten through third grade to 12-15:1 from 21-25:1. Analysts have studied the results of first-grade students in these schools and similar first-grade students elsewhere and found the results accord with those from STAR. STAR and SAGE have made it hard to argue against reducing class sizes. But the California initiative shows that reductions made with too little forethought can yield minuscule gains. Administrators need solid information before they can make sensible policy decisions."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has six paragraphs, A–F. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 27,
+       "text": "detailed criticism of the methodology of a project",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Section D: Hanushek criticises STAR's randomisation and other conclusions."
+      },
+      {
+       "n": 28,
+       "text": "a comparison of the data from class-reduction projects",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Section F: SAGE results are compared with those from STAR."
+      },
+      {
+       "n": 29,
+       "text": "the level of public interest in the issues of class-size reduction",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section A: class-size reduction became ‘a policy juggernaut’ with over twenty states involved."
+      },
+      {
+       "n": 30,
+       "text": "details of action taken to protect the validity of a project",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Section C: teachers and students were randomly assigned to ensure teaching quality did not differ."
+      },
+      {
+       "n": 31,
+       "text": "reasons why class composition changed during a project",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Section D: too many children moved to small classes ‘because school personnel caved in to parent demands’."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Classify the following statements as referring to A, B or C. NB You may use any letter more than once.",
+     "title": "List of Projects",
+     "options": [
+      {
+       "key": "A",
+       "text": "Project STAR"
+      },
+      {
+       "key": "B",
+       "text": "The California Project"
+      },
+      {
+       "key": "C",
+       "text": "SAGE"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 32,
+       "text": "The student composition of each class was left to chance.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section C (Project STAR): students were ‘randomly assigned’ to classes."
+      },
+      {
+       "n": 33,
+       "text": "A long-term improvement in performance was claimed.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section D (STAR): the advantage ‘persisted even after students returned to larger classes’."
+      },
+      {
+       "n": 34,
+       "text": "Similar results were obtained for all social groups.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section E (California): ‘the effect did not vary for students of different backgrounds’."
+      },
+      {
+       "n": 35,
+       "text": "The project was a preliminary to a more comprehensive study.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Section F (SAGE): ‘a five-year pilot study to do some of the groundwork for a major project’."
+      },
+      {
+       "n": 36,
+       "text": "Several different class types were involved in the project.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section C (STAR): three kinds of classes — small, regular, and regular with an aide."
+      },
+      {
+       "n": 37,
+       "text": "A special group of schools was selected to take part.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Section F (SAGE): it targeted schools where 30% of students were below the poverty level."
+      },
+      {
+       "n": 38,
+       "text": "Classroom assistants were used as part of the project.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section C (STAR): one class type had ‘a teacher and a full-time teacher’s aide’."
+      },
+      {
+       "n": 39,
+       "text": "The project was responsible for aggravating existing problems.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section E (California): it was ‘exacerbating the disparity in resources’ between rich and poor schools."
+      },
+      {
+       "n": 40,
+       "text": "Certain groups of pupils within the sample were identified as having benefited.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section D (STAR): the effect was ‘stronger for black and Hispanic minority groups’."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

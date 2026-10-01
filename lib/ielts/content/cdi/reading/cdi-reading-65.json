@@ -1,0 +1,679 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-65",
+ "title": "CDI Reading Test 65",
+ "description": "A full Academic Reading test from the CDI practice materials: The Origins of Weather Forecasting; From Princes to Paupers; Language Diversity.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Origins of Weather Forecasting",
+  "From Princes to Paupers",
+  "Language Diversity"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Origins of Weather Forecasting",
+   "paragraphs": [
+    {
+     "text": "The world’s first public weather forecast appeared in The Times newspaper over 150 years ago: the beginning of a service that gives everyone something to comment on. The pioneering forecast on August 1, 1861, was introduced with a deceptively simple heading: ‘General weather probable during next two days.’ But those few words started an ongoing controversy that still continues today – after all, everyone remembers the forecasts that go wrong, but rarely the ones that are right."
+    },
+    {
+     "text": "The first forecast was the idea of Admiral Robert FitzRoy, head of the newly founded Meteorological Department, and one of Britain’s greatest but least-known heroes. It was a brave undertaking, because in those days predicting the weather had gained a reputation similar to astrology or fortune-telling. The few people who attempted it had become a national joke when their forecasts inevitably went wrong. FitzRoy was different, though. His background was faultless, most famously his captaining of the ship HMS Beagle on Charles Darwin’s voyage around the world, which eventually led to the publication of Darwin’s well-known book On the Origin of Species."
+    },
+    {
+     "text": "When FitzRoy retired from active service as an admiral in Britain’s navy, he was looking for a new direction. He subsequently secured a job as chief statistician at the Meteorological Department, part of the Board of Trade. Parliament had voted to set up and fund the Meteorological Department on June 30, 1854, to chart the safest sailing routes across the Atlantic Ocean. However, the British Government was not impressed with the idea of collecting weather reports and establishing a weather forecast, and the suggestion by one Member of Parliament for this was met with laughter from the other MPs."
+    },
+    {
+     "text": "FitzRoy was given a staff of three clerks in a small office in London, but he soon grew bored with the tedium of transcribing thousands of ships’ reports. Instead, he focused on a much more pressing issue – the huge loss of life at sea from storms. This problem came to a head in 1859, when gale-force winds sank the ship named Royal Charter, with the loss of 430 lives, within sight of the shore. Even in those days when ships regularly sank in storms, the loss of the Royal Charter was considered a national tragedy. FitzRoy stirred up feelings even further when he wrote a letter to The Times newspaper explaining that the storm had been entirely predictable. That same year, a total of 1,645 lives were lost off the British coast, and FitzRoy wrote repeatedly to The Times pushing for a storm-warning service for shipping."
+    },
+    {
+     "text": "This was just the right moment for a national forecasting service. Knowledge of the weather was improving. Barometer readings gave warning of approaching storms, and the invention of the electric telegraph and Morse code in 1844 gave instant communication for the first time."
+    },
+    {
+     "text": "So in February 1861, FitzRoy pressed ahead with a storm-warning service. Previously, weather reports had been unreliable, but FitzRoy’s innovation was to issue ships with standardised instruments which allowed for accurate weather reports. At exactly the same time each day the information was sent to him by telegraph, and he was able to draw up more detailed weather maps. The approach of an incoming storm could be recognised, and from London, FitzRoy could telegraph warnings to ports on the coast, where an ingenious system of flags was hoisted up high for passing ships to read. This represented the biggest advance in shipping safety after the introduction of the lifeboat, and in subsequent years the number of lives lost around Britain fell by about a third. FitzRoy became a hero to the fishing and maritime fleets."
+    },
+    {
+     "text": "Encouraged by his storm-warning success, FitzRoy then started a public weather forecasting service. As he had a close connection with The Times, this newspaper introduced his daily forecast in August 1861. It attracted huge attention, including from Queen Victoria, who regularly sent messengers to FitzRoy’s office to get a forecast for the sea crossing over the Solent to an island which she liked to visit off the south coast of England. He was also popular with ordinary fishermen, who were happy not to be out at sea in bad weather. The owners of fishing vessels, however, were not supportive of FitzRoy’s forecasts, which often caused delays for them when bad weather was forecast."
+    },
+    {
+     "text": "Nevertheless, weather forecasting at that time was very difficult, and one mistake could result in much bad publicity. It wasn’t long before some forecasts turned out wrong, and the letters pages of The Times were full of heated correspondence. It is indisputable that FitzRoy was way ahead of his time, but it is only in recent years that he has been recognised as a towering figure in meteorology, with the honour of an area of sea being given his name in the shipping forecast (a radio broadcast of weather reports for the seas around Britain). His extraordinary determination to get forecasting established cost him dearly though, and he died prematurely. But his legacy lives on, because late in his life he published a book about weather forecasting which was recognised by other scientists to be well ahead of its time."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "In Robert FitzRoy's time, weather forecasting was a respected skill.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Predicting the weather had gained a reputation similar to astrology or fortune-telling, and forecasters had become a national joke."
+      },
+      {
+       "n": 2,
+       "text": "When FitzRoy retired from the navy, he had already had a successful career at sea.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "His background was faultless, most famously his captaining of HMS Beagle on Darwin's voyage."
+      },
+      {
+       "n": 3,
+       "text": "FitzRoy faced competition from other applicants for the chief statistician's job.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The text says he secured the job but gives no information about other applicants."
+      },
+      {
+       "n": 4,
+       "text": "The British Parliament supported the idea of regular weather forecasts in 1854.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The suggestion for a weather forecast was met with laughter from the other MPs."
+      },
+      {
+       "n": 5,
+       "text": "Progress in technology made it a good time for publicly available weather forecasting to begin.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Barometer readings and the invention of the electric telegraph and Morse code made it the right moment."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "# February 1861: Storm warning service\n- FitzRoy received weather reports produced by ships using reliable [[6]].\n- simultaneous weather reports were taken daily\n- Storm warnings were telegraphed to [[7]] along the shore.\n- Signals for ships were displayed using raised [[8]].\n- The storm warning service was the greatest development in sea safety since the [[9]] was introduced.\n# August 1861: Public weather forecasting service\n- very popular in The Times newspaper\n- Frequently used by the English Queen for safe trips to a favourite [[10]].\n- FitzRoy's forecasts were popular with fishermen but not with boat [[11]].\n- In modern times FitzRoy's [[12]] is used for a marine area.\n- FitzRoy produced a [[13]] which was respected by the scientific community.",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "instruments"
+       ],
+       "explanation": "FitzRoy issued ships with standardised instruments which allowed for accurate weather reports."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "ports"
+       ],
+       "explanation": "From London, FitzRoy could telegraph warnings to ports on the coast."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "flags"
+       ],
+       "explanation": "An ingenious system of flags was hoisted up high for passing ships to read."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "lifeboat"
+       ],
+       "explanation": "It represented the biggest advance in shipping safety after the introduction of the lifeboat."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "island"
+       ],
+       "explanation": "Queen Victoria got forecasts for the crossing to an island off the south coast she liked to visit."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "owners"
+       ],
+       "explanation": "The owners of fishing vessels were not supportive, as forecasts often caused delays for them."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "name"
+       ],
+       "explanation": "An area of sea was given his name in the shipping forecast."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "book"
+       ],
+       "explanation": "Late in his life he published a book about weather forecasting, recognised by other scientists."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "From Princes to Paupers",
+   "subtitle": "How Goya’s Portraits Tell the Story of Spain",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "There are, according to current scholarship, 160 existing portraits by Francisco de Goya – about a third of his painted output. The real number, though, is much greater since there are no pure landscapes in Goya’s work, in that everything he ever painted deals with people. In the work of no other great portraitist are a nation’s people, history, traumas, folk traditions, and superstitions so comprehensively and relentlessly captured. His subject was a good one since Goya lived in interesting times: his lifetime was a period that saw Spain pass through the effects of the French Revolution, the Napoleonic wars, and the restoration of the monarchy; it was ruled by a succession of authoritarian and liberal governments; and was simultaneously marked by the Enlightenment. Put his work together – the public and private paintings, the personal drawings and sketches, and the unsettling and sinister etching series – and what you have is a portrait in the round of Spain itself."
+    },
+    {
+     "label": "B",
+     "text": "His work as a portraitist has its origins in the 45 tapestry cartoons he painted after he moved to Madrid in 1775. Although his designs don’t show portraits, they do show types – the majos and majas who gave Madrid its street swagger, peasants and rich men, courting couples, singers, hunters, children, and young men and women playing blind man’s buff or tossing a mannequin into the air. The pictures have a light, rococo palette and the faces are individualised without being those of individuals. But in them, Goya practised poses and groupings and a way of handling light on and around figures that was to be invaluable."
+    },
+    {
+     "label": "C",
+     "text": "The tapestry designs also show social roles rather than the people inhabiting them, but when it came to painting portraits proper, Goya would turn this on its head. His greatest strength as a portraitist is that regardless of the status of the sitter, be they a king and queen, the Duke of Wellington, or a doctor or writer, it was the person he showed first and their position second. It was this trait, most apparent in his royal portraiture, that has led him to be seen as satirising the Bourbon monarchy rather than as a painter who depicted what he saw without showing obeisance to the usual flattering conventions. In Robert Hughes’s phrase, he did not ‘pay reflexive homage to authority’ but instead walked a fine line between respect and truth."
+    },
+    {
+     "label": "D",
+     "text": "Goya’s success was rapid; in 1785 he was made deputy director of painting at the Royal Academy (his main message to his students was subversive – ‘there are no rules in painting’) and in 1786 became pintor de cámara, required to paint ‘works required for royal service’. He immediately spent some of his 15,000-reales salary on a two-wheeled gig (one of only three in Madrid) which he promptly crashed on his first outing. His amour propre untouched, he wrote to his childhood friend Martín Zapater: ‘I have now established an enviable way of living: I do not wait on anyone in antechambers, and if anyone wants anything from me they must come to me; I have made myself more in demand and unless it is a person of rank or at the request of a friend I would do nothing for anyone...’"
+    },
+    {
+     "label": "E",
+     "text": "Part of the reason for his success was that, unlike Gainsborough, for example, he did not resent portraiture as an economically necessary chore that ate away at the time he could devote to higher art. Portraiture fascinated him; it was, after all, part of that ‘sacred science which requires so much study’ and his portraits reveal a fully engaged artist. There is hardly any repetition in his poses (to help, he drew on prints of English portraits as well as classical statuary), he worked hard to give his sitters in repose a sense of latent movement, and he defined them by the careful depiction of the space around them. When it came to clothing he allowed himself extraordinary freedom, the frogging on uniforms or lace on a dress sketched in thick impasto rather than being laboriously defined. From close up such three-dimensional scumblings look out of focus but from a distance, they coalesce into silks, braiding, and gauze. Such varieties of technique within a painting keep the eye entertained and moving."
+    },
+    {
+     "label": "F",
+     "text": "‘My work is very simple. My art reveals idealism and truth,’ Goya claimed. The truth though is always more apparent than the idealism. In the most important commission of his career, for example, the portrait of Charles IV and the royal family of 1800, he eschewed entirely the grandeur of majesty to portray the assembled Bourbons as they appeared – a motley grouping (a French visitor had likened Charles and his queen Maria Luisa to a butcher and his wife) in fancy clothes. Goya may have been a political liberal but he wouldn’t have jeopardised his hard-won new position as first court painter – the first Spaniard since Velázquez to hold the role – in order to score political points at the expense of his patrons. That his sitters didn’t regard the portrait as unflattering was evidenced by succeeding royal commissions, not least his 1815 portrait of Ferdinand VII. Ferdinand himself was physically unprepossessing, tyrannical, vicious, and small-minded and that is exactly how Goya shows him. The king, however, looking in Goya’s particular mirror, saw no such characteristics staring back at him."
+    },
+    {
+     "label": "G",
+     "text": "The private side of Goya’s portraiture was a world away from the public. The contrast between the Ferdinand portrait and the remarkable 1820 double portrait showing Goya with Dr Arrieta, represents a moral version of the three ages of man – the 73-year-old painter in the throes of a debilitating illness being tended by his doctor. If Ferdinand represents human malignity and Goya its frailty, then Arrieta stands for man’s innate kindness. While not all his portraits are successful (some have a doll-like stiffness), this is what Goya at his best could do: in the guise of representing individuals he showed, without judging, man as a universal being."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "a weakness in some of Goya's paintings",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G notes that not all his portraits are successful – some have a doll-like stiffness."
+      },
+      {
+       "n": 15,
+       "text": "a reason that might explain why some artists did not enjoy painting portraits",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E contrasts Goya with Gainsborough, who resented portraiture as an economically necessary chore."
+      },
+      {
+       "n": 16,
+       "text": "a genre Goya did not paint",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A states there are no pure landscapes in Goya's work."
+      },
+      {
+       "n": 17,
+       "text": "description of a reaction to a promotion",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D describes how, after becoming pintor de cámara, he bought a two-wheeled gig and wrote about his new way of living."
+      },
+      {
+       "n": 18,
+       "text": "a summary of the historical significance of Goya's works",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A explains how his combined work forms a portrait in the round of Spain itself through a period of great upheaval."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO statements are true about Goya's tapestry cartoons?",
+     "options": [
+      {
+       "key": "A",
+       "text": "They featured lively civilians and labourers that he observed."
+      },
+      {
+       "key": "B",
+       "text": "Individuals were portrayed without faces."
+      },
+      {
+       "key": "C",
+       "text": "They were used to develop techniques for his future works."
+      },
+      {
+       "key": "D",
+       "text": "People’s social standings were a secondary focus."
+      },
+      {
+       "key": "E",
+       "text": "He avoided painting political controversies."
+      }
+     ],
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "They featured lively civilians and labourers he observed (A) and were used to develop techniques for his future works (C). They featured lively civilians and labourers he observed (A) and were used to develop techniques for his future works (C)."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "They featured lively civilians and labourers he observed (A) and were used to develop techniques for his future works (C). They featured lively civilians and labourers he observed (A) and were used to develop techniques for his future works (C)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO statements are true about Goya's portraits?",
+     "options": [
+      {
+       "key": "A",
+       "text": "His depiction of royalty was typical of the time."
+      },
+      {
+       "key": "B",
+       "text": "He was meticulous about the details when painting clothes."
+      },
+      {
+       "key": "C",
+       "text": "He generally avoided using the same pose."
+      },
+      {
+       "key": "D",
+       "text": "He paid very close attention to the background in his paintings."
+      },
+      {
+       "key": "E",
+       "text": "He did not believe in using the works of other artists as inspiration."
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "He generally avoided using the same pose (C) and paid very close attention to the background (D). He generally avoided using the same pose (C) and paid very close attention to the background (D)."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "He generally avoided using the same pose (C) and paid very close attention to the background (D). He generally avoided using the same pose (C) and paid very close attention to the background (D)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- His most significant [[23]] was from Charles IV.\n- The monarch's depiction was later likened to a [[24]].\n- An ailing Goya is seen in the care of the good [[25]].\n- Individuals may have to be dependent on the [[26]] of their fellow men.",
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "commission"
+       ],
+       "explanation": "The portrait of Charles IV was the most important commission of his career."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "butcher"
+       ],
+       "explanation": "A French visitor had likened Charles and his queen to a butcher and his wife."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "doctor"
+       ],
+       "explanation": "In the 1820 double portrait, Goya is tended by his doctor, Dr Arrieta."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "kindness"
+       ],
+       "explanation": "Arrieta stands for man's innate kindness."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Language Diversity",
+   "paragraphs": [
+    {
+     "text": "One of the most influential ideas in the study of languages is that of universal grammar (UG). Put forward by Noam Chomsky in the 1960s, it is widely interpreted as meaning that all languages are basically the same, and that the human brain is born language-ready, with an inbuilt programme that is able to interpret the common rules underlying any mother tongue. For five decades this idea prevailed, and influenced work in linguistics, psychology and cognitive science. To understand language, it implied, you must sweep aside the huge diversity of languages, and find their common human core."
+    },
+    {
+     "text": "Since the theory of UG was proposed, linguists have identified many universal language rules. However, there are almost always exceptions. It was once believed, for example, that if a language had syllables that begin with a vowel and end with a consonant (VC), it would also have syllables that begin with a consonant and end with a vowel (CV). This universal lasted until 1999, when linguists showed that Arrernte, spoken by Indigenous Australians from the area around Alice Springs in the Northern Territory, has VC syllables but no CV syllables."
+    },
+    {
+     "text": "Other non-universal universals describe the basic rules of putting words together. Take the rule that every language contains four basic word classes: nouns, verbs, adjectives and adverbs. Work in the past two decades has shown that several languages lack an open adverb class, which means that new adverbs cannot be readily formed, unlike in English where you can turn any adjective into an adverb, for example ‘soft’ into ‘softly’. Others, such as Lao, spoken in Laos, have no adjectives at all. More controversially, some linguists argue that a few languages, such as Straits Salish, spoken by indigenous people from north-western regions of North America, do not even have distinct nouns or verbs. Instead, they have a single class of words to include events, objects and qualities."
+    },
+    {
+     "text": "Even apparently indisputable universals have been found lacking. This includes recursion, or the ability to infinitely place one grammatical unit inside a similar unit, such as ‘Jack thinks that Mary thinks that … the bus will be on time’. It is widely considered to be the most essential characteristic of human language, one that sets it apart from the communications of all other animals. Yet Dan Everett at Illinois State University recently published controversial work showing that Amazonian Piraha does not have this quality."
+    },
+    {
+     "text": "But what if the very diversity of languages is the key to understanding human communication? Linguists Nicholas Evans of the Australian National University in Canberra, and Stephen Levinson of the Max Planck Institute for Psycholinguistics in Nijmegen, the Netherlands, believe that languages do not share a common set of rules. Instead, they say, their sheer variety is a defining feature of human communication – something not seen in other animals. While there is no doubt that human thinking influences the form that language takes, if Evans and Levinson are correct, language in turn shapes our brains. This suggests that humans are more diverse than we thought, with our brains having differences depending on the language environment in which we grew up. And that leads to a disturbing conclusion: every time a language becomes extinct, humanity loses an important piece of diversity."
+    },
+    {
+     "text": "If languages do not obey a single set of shared rules, then how are they created? ‘Instead of universals, you get standard engineering solutions that languages adopt again and again, and then you get outliers,’ says Evans. He and Levinson argue that this is because any given language is a complex system shaped by many factors, including culture, genetics and history. There are no absolutely universal traits of language, they say, only tendencies. And it is a mix of strong and weak tendencies that characterises the ‘bio-cultural’ mix that we call language."
+    },
+    {
+     "text": "According to the two linguists, the strong tendencies explain why many languages display common patterns. A variety of factors tend to push language in a similar direction, such as the structure of the brain, the biology of speech, and the efficiencies of communication. Widely shared linguistic elements may also be the result of a particularly human kind of reasoning. For example, the fact that before we learn to speak we perceive the world as a place full of things causing actions (agents) and things having actions done to them (patients) explains why most languages deploy these grammatical categories."
+    },
+    {
+     "text": "Weak tendencies, in contrast, are explained by the idiosyncrasies of different languages. Evans and Levinson argue that many aspects of the particular natural history of a population may affect its language. For instance, Andy Butcher at Flinders University in Adelaide, South Australia, has observed that Indigenous Australian children have by far the highest incidence of chronic middle-ear infection of any population on the planet, and that most Indigenous Australian languages lack many sounds that are common in other languages, but which are hard to hear with a middle-ear infection. Whether this condition has shaped the sound systems of these languages is unknown, says Evans, but it is important to consider the idea."
+    },
+    {
+     "text": "Levinson and Evans are not the first to question the theory of universal grammar, but no one has summarised these ideas quite as persuasively, and given them as much reach. As a result, their arguments have generated widespread enthusiasm, particularly among those linguists who are tired of trying to squeeze their findings into the straitjacket of ‘absolute universals’. To some, it is the final nail in UG’s coffin. Michael Tomasello, co-director of the Max Planck Institute for Evolutionary Anthropology in Leipzig, Germany, has been a long-standing critic of the idea that all languages conform to a set of rules. “‘Universal grammar is dead,’” he says."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 27,
+       "text": "In the final decades of the twentieth century, a single theory of language learning was dominant.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "For five decades the idea of universal grammar prevailed and influenced linguistics, psychology and cognitive science."
+      },
+      {
+       "n": 28,
+       "text": "The majority of UG rules proposed by linguists do apply to all human languages.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The writer stresses that there are almost always exceptions to identified universal rules."
+      },
+      {
+       "n": 29,
+       "text": "There is disagreement amongst linguists about an aspect of Straits Salish grammar.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "The claim that Straits Salish lacks distinct nouns or verbs is described as more controversial."
+      },
+      {
+       "n": 30,
+       "text": "The search for new universal language rules has largely ended.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The writer does not comment on whether the search for new universals has stopped."
+      },
+      {
+       "n": 31,
+       "text": "If Evans and Levinson are right, people develop in the same way no matter what language they speak.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The writer says that if they are correct, our brains have differences depending on the language environment we grew up in."
+      },
+      {
+       "n": 32,
+       "text": "The loss of any single language might have implications for the human race.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Every time a language becomes extinct, humanity loses an important piece of diversity."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 33–37.",
+     "questions": [
+      {
+       "n": 33,
+       "text": "Which of the following views about language are held by Evans and Levinson?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Each of the world’s languages develops independently."
+        },
+        {
+         "key": "B",
+         "text": "The differences between languages outweigh the similarities."
+        },
+        {
+         "key": "C",
+         "text": "Only a few language features are universal."
+        },
+        {
+         "key": "D",
+         "text": "Each language is influenced by the characteristics of other languages."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "They argue there are no absolutely universal traits, only tendencies, and each language is a complex system shaped by many factors."
+      },
+      {
+       "n": 34,
+       "text": "According to Evans and Levinson, apparent similarities between languages could be due to",
+       "options": [
+        {
+         "key": "A",
+         "text": "close social contact."
+        },
+        {
+         "key": "B",
+         "text": "faulty analysis."
+        },
+        {
+         "key": "C",
+         "text": "shared modes of perception."
+        },
+        {
+         "key": "D",
+         "text": "narrow descriptive systems."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Widely shared elements may result from a particularly human kind of reasoning – a shared way of perceiving the world."
+      },
+      {
+       "n": 35,
+       "text": "In the eighth paragraph, what does the reference to a middle-ear infection serve as?",
+       "options": [
+        {
+         "key": "A",
+         "text": "A justification for something."
+        },
+        {
+         "key": "B",
+         "text": "A contrast with something."
+        },
+        {
+         "key": "C",
+         "text": "The possible cause of something."
+        },
+        {
+         "key": "D",
+         "text": "The likely result of something."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "It is offered as a possible cause of the sound systems of some Indigenous Australian languages."
+      },
+      {
+       "n": 36,
+       "text": "What does the writer suggest about Evans' and Levinson's theory of language development?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It had not been previously considered."
+        },
+        {
+         "key": "B",
+         "text": "It is presented in a convincing way."
+        },
+        {
+         "key": "C",
+         "text": "It has been largely rejected by other linguists."
+        },
+        {
+         "key": "D",
+         "text": "It is not supported by the evidence."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "No one has summarised these ideas quite as persuasively, generating widespread enthusiasm."
+      },
+      {
+       "n": 37,
+       "text": "Which of the following best describes the writer's purpose?",
+       "options": [
+        {
+         "key": "A",
+         "text": "To describe progress in the field of cognitive science."
+        },
+        {
+         "key": "B",
+         "text": "To defend a long-held view of language learning."
+        },
+        {
+         "key": "C",
+         "text": "To identify the similarities between particular languages."
+        },
+        {
+         "key": "D",
+         "text": "To outline opposing views concerning the nature of language."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "The passage sets the theory of universal grammar against the diversity-based view of Evans and Levinson."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–E, below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "words of a certain grammatical type."
+      },
+      {
+       "key": "B",
+       "text": "a sequence of sounds predicted by UG."
+      },
+      {
+       "key": "C",
+       "text": "words which can have more than one meaning."
+      },
+      {
+       "key": "D",
+       "text": "the language feature regarded as the most basic."
+      },
+      {
+       "key": "E",
+       "text": "sentences beyond a specified length."
+      }
+     ],
+     "questions": [
+      {
+       "n": 38,
+       "text": "The Arrernte language breaks a 'rule' concerning",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Arrernte has VC syllables but no CV syllables – a sequence of sounds predicted by UG."
+      },
+      {
+       "n": 39,
+       "text": "The Lao language has been identified as lacking",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Lao has no adjectives – words of a certain grammatical type."
+      },
+      {
+       "n": 40,
+       "text": "It has now been suggested that Amazonian Piraha does not have",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Piraha is said to lack recursion, the language feature regarded as the most basic."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

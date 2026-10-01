@@ -1,0 +1,677 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-06",
+ "title": "CDI Listening Test 06",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "A buyer calls a garage to enquire about second-hand cars for sale",
+  "A representative gives a talk about the Middletown Urban Farming Scheme (MUFS)",
+  "Two students, Katie and Daniel, discuss research on walking and creativity",
+  "A lecturer talks about gamification — the use of gaming techniques in non-game contexts"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-06-part-1",
+   "title": "Part 1",
+   "context": "A buyer calls a garage to enquire about second-hand cars for sale.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Second-hand Cars\nMaximum price: $4300\nCars Available\nNoda (silver)\n- One [[1]] is broken\nComina (white)\n- Used to belong to the [[2]]\nTelsta (orange)\n- It’s an [[3]] model\n- Has got new [[4]]\nAbrada (red)\n- Only [[5]] years old\nOther Information\n- Garage address: [[6]] Road, Mitchell\n- Day / Time: on [[7]] at 9:30 am\n- Ask for: [[8]] Smith\n- Parking available: outside the [[9]]\n- What to bring: [[10]] (for a test drive)",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "window"
+       ],
+       "explanation": "The Noda (silver) — one window is broken."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "police"
+       ],
+       "explanation": "The Comina (white) used to belong to the police."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "automatic"
+       ],
+       "explanation": "The Telsta (orange) is an automatic model."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "tyres",
+        "tires"
+       ],
+       "explanation": "The Telsta (orange) has got new tyres."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "two",
+        "2"
+       ],
+       "explanation": "The Abrada (red) is only two years old."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "smithfield"
+       ],
+       "explanation": "Garage address: Smithfield Road, Mitchell."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "saturday"
+       ],
+       "explanation": "Day/Time: on Saturday at 9:30 am."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "christine"
+       ],
+       "explanation": "Ask for Christine Smith."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "library"
+       ],
+       "explanation": "Parking available outside the library."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "licence",
+        "license"
+       ],
+       "explanation": "Bring a driving licence for a test drive."
+      }
+     ]
+    }
+   ],
+   "transcript": "A buyer calls a garage to enquire about second-hand cars for sale.\nSpeaker: Good morning. Mitchell Motors, how can I help you?\nBuyer: Hello. I’m calling about the second-hand cars you have for sale. Could you tell me a bit about them?\nSpeaker: Of course. We have four cars available at the moment — all under $4,300.\nBuyer: Great. What can you tell me about the Noda?\nSpeaker: The Noda is silver. There is one issue — one window is broken, but the price reflects that.\nBuyer: I see. What about the white car?\nSpeaker: The Comina is white. It used to belong to the police, so it’s been well maintained.\nBuyer: Interesting. And the orange one?\nSpeaker: The Telsta in orange — it’s an automatic model, which is popular. It also has got brand new tyres fitted recently.\nBuyer: And the red car?\nSpeaker: The Abrada in red is only two years old. Very low mileage.\nBuyer: Sounds good. Could I come and see them? Where is the garage?\nSpeaker: We’re on Smithfield Road, Mitchell.\nBuyer: And when would be a good time to visit?\nSpeaker: We can see you on Saturday at 9:30 in the morning.\nBuyer: Perfect. Who should I ask for?\nSpeaker: Ask for Christine Smith — she’s our sales manager.\nBuyer: Is there parking nearby?\nSpeaker: Yes, there’s space right outside the library just around the corner.\nBuyer: And is there anything I need to bring?\nSpeaker: If you’d like a test drive, you’ll need to bring your driving licence."
+  },
+  {
+   "id": "cdi-listening-06-part-2",
+   "title": "Part 2",
+   "context": "A representative gives a talk about the Middletown Urban Farming Scheme (MUFS).",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "Who founded the Middletown Urban Farming Scheme?",
+       "options": [
+        {
+         "key": "A",
+         "text": "university specialists"
+        },
+        {
+         "key": "B",
+         "text": "business people"
+        },
+        {
+         "key": "C",
+         "text": "town planners"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The MUFS was founded by town planners."
+      },
+      {
+       "n": 12,
+       "text": "What was the original reason for starting the MUFS?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to encourage more efficient land use"
+        },
+        {
+         "key": "B",
+         "text": "to help lessen CO2 emissions"
+        },
+        {
+         "key": "C",
+         "text": "to improve people’s eating habits"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Original reason: to encourage more efficient land use."
+      },
+      {
+       "n": 13,
+       "text": "For the coming year, the MUFS will focus on recruiting members from",
+       "options": [
+        {
+         "key": "A",
+         "text": "schools"
+        },
+        {
+         "key": "B",
+         "text": "companies"
+        },
+        {
+         "key": "C",
+         "text": "community centres"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "For the coming year, MUFS focuses on recruiting from companies."
+      },
+      {
+       "n": 14,
+       "text": "What kind of information is available from members of the MUFS committee?",
+       "options": [
+        {
+         "key": "A",
+         "text": "practical gardening tips"
+        },
+        {
+         "key": "B",
+         "text": "plant science"
+        },
+        {
+         "key": "C",
+         "text": "location of local garden sites"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Committee members provide information about location of local garden sites."
+      },
+      {
+       "n": 15,
+       "text": "What are provided by the MUFS for the physically disabled?",
+       "options": [
+        {
+         "key": "A",
+         "text": "soil and compost"
+        },
+        {
+         "key": "B",
+         "text": "containers for plants"
+        },
+        {
+         "key": "C",
+         "text": "gardening tools"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Containers for plants are provided for the physically disabled."
+      },
+      {
+       "n": 16,
+       "text": "According to school teachers, what has been an unexpected advantage of the MUFS?",
+       "options": [
+        {
+         "key": "A",
+         "text": "its usefulness as an aid for teaching science"
+        },
+        {
+         "key": "B",
+         "text": "its contribution to reducing costs of school meals"
+        },
+        {
+         "key": "C",
+         "text": "its help in encouraging community pride among students"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Unexpected advantage: encouraging community pride among students."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What free goods or services are offered by each of the following providers? Choose FOUR answers from the box and write the correct letter, A–F, next to questions 17–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "fertilisers"
+      },
+      {
+       "key": "B",
+       "text": "cooking lessons"
+      },
+      {
+       "key": "C",
+       "text": "advice on soil"
+      },
+      {
+       "key": "D",
+       "text": "eat-to-keep-fit course"
+      },
+      {
+       "key": "E",
+       "text": "use of a greenhouse"
+      },
+      {
+       "key": "F",
+       "text": "market stalls"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "text": "city hospital",
+       "answer": [
+        "D"
+       ],
+       "explanation": "City hospital provides an eat-to-keep-fit course."
+      },
+      {
+       "n": 18,
+       "text": "local government",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Local government provides fertilisers."
+      },
+      {
+       "n": 19,
+       "text": "university",
+       "answer": [
+        "C"
+       ],
+       "explanation": "University provides advice on soil."
+      },
+      {
+       "n": 20,
+       "text": "supermarket",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Supermarket provides market stalls."
+      }
+     ]
+    }
+   ],
+   "transcript": "A representative gives a talk about the Middletown Urban Farming Scheme (MUFS).\nSpeaker: Thank you for coming today. I’m here to tell you about the Middletown Urban Farming Scheme, or MUFS. The scheme was founded by town planners who were looking at ways to use the land in our city more productively.\nSpeaker: The original reason for starting the MUFS was to encourage more efficient land use. There was a lot of unused urban space, and the idea was to turn it into productive growing areas.\nSpeaker: In terms of growth, for the coming year we will be focusing on recruiting members from companies. We believe the business community can benefit greatly from involvement in urban farming.\nSpeaker: If you need advice, members of our committee can tell you about the location of local garden sites — we have a network of growing spaces across the city.\nSpeaker: We have also thought carefully about inclusion. For people who are physically disabled, we provide containers for plants so they can grow at home at a comfortable height.\nSpeaker: One unexpected benefit, noted by school teachers, has been helping to encourage community pride among students. Children who grow their own food feel a real sense of achievement.\nSpeaker: Now let me tell you about our sponsor partnerships. The city hospital is offering a free eat-to-keep-fit course to all MUFS members.\nSpeaker: From the local government, we are receiving free fertilisers to distribute to growers.\nSpeaker: The local university has very generously offered to provide free advice on soil analysis to any member who needs it.\nSpeaker: And finally, the supermarket chain Freshway has offered members access to their market stalls to sell surplus produce."
+  },
+  {
+   "id": "cdi-listening-06-part-3",
+   "title": "Part 3",
+   "context": "Two students, Katie and Daniel, discuss research on walking and creativity.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Daniel mentions the research about walking and creativity to Katie because",
+       "options": [
+        {
+         "key": "A",
+         "text": "she has read it too."
+        },
+        {
+         "key": "B",
+         "text": "what she says reminds him of it."
+        },
+        {
+         "key": "C",
+         "text": "he thinks she might like to do similar research."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Daniel mentions the research because what Katie says reminds him of it."
+      },
+      {
+       "n": 22,
+       "text": "In the experiments, researchers compared participants’ creativity when walking and when",
+       "options": [
+        {
+         "key": "A",
+         "text": "sitting."
+        },
+        {
+         "key": "B",
+         "text": "running."
+        },
+        {
+         "key": "C",
+         "text": "listening to music."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Researchers compared creativity when walking and when sitting."
+      },
+      {
+       "n": 23,
+       "text": "Daniel says that in each experiment, there was a different",
+       "options": [
+        {
+         "key": "A",
+         "text": "type of control group."
+        },
+        {
+         "key": "B",
+         "text": "pattern of activities."
+        },
+        {
+         "key": "C",
+         "text": "way of selecting participants."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Each experiment had a different type of control group."
+      },
+      {
+       "n": 24,
+       "text": "Daniel thinks the experiment with words is",
+       "options": [
+        {
+         "key": "A",
+         "text": "biased in favour of certain people."
+        },
+        {
+         "key": "B",
+         "text": "a good indicator of creativity."
+        },
+        {
+         "key": "C",
+         "text": "open to personal interpretation."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Daniel thinks the word experiment is biased in favour of certain people."
+      },
+      {
+       "n": 25,
+       "text": "What is Katie and Daniel’s attitude to the experiment on focused thinking?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They are doubtful about its aims."
+        },
+        {
+         "key": "B",
+         "text": "They are confused by its methods."
+        },
+        {
+         "key": "C",
+         "text": "They are cautious about its conclusions."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "They are cautious about the conclusions of the focused thinking experiment."
+      },
+      {
+       "n": 26,
+       "text": "Katie thinks that the best way forward is to consider",
+       "options": [
+        {
+         "key": "A",
+         "text": "whether other types of exercise affect creativity."
+        },
+        {
+         "key": "B",
+         "text": "the cause of the improvement in creativity."
+        },
+        {
+         "key": "C",
+         "text": "how the results can be applied to creativity in real life."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Katie thinks the best way forward is to consider the cause of the improvement."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What is the main physical benefit of each of the following walking situations? Choose FOUR answers from the box and write the correct letter, A–G, next to questions 27–30.",
+     "options": [
+      {
+       "key": "A",
+       "text": "improved balance"
+      },
+      {
+       "key": "B",
+       "text": "greater stamina"
+      },
+      {
+       "key": "C",
+       "text": "better eyesight"
+      },
+      {
+       "key": "D",
+       "text": "lower blood pressure"
+      },
+      {
+       "key": "E",
+       "text": "regular sleeping pattern"
+      },
+      {
+       "key": "F",
+       "text": "stronger bones"
+      },
+      {
+       "key": "G",
+       "text": "weight reduction"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "walking with thin-soled footwear",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Walking with thin-soled footwear improves balance."
+      },
+      {
+       "n": 28,
+       "text": "walking in the mountains",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Walking in the mountains builds greater stamina."
+      },
+      {
+       "n": 29,
+       "text": "walking for the elderly",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Walking for the elderly helps lower blood pressure."
+      },
+      {
+       "n": 30,
+       "text": "walking long distances",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Walking long distances leads to weight reduction."
+      }
+     ]
+    }
+   ],
+   "transcript": "Two students, Katie and Daniel, discuss research on walking and creativity.\nKatie: I was just reading about how some people say walking helps them think better.\nDaniel: Oh that’s interesting — what you’re saying reminds me of some research I came across. There was a study on walking and creativity.\nKatie: Really? What did it involve?\nDaniel: They compared people’s creativity when they were walking versus when they were sitting. The results showed walking produced much more creative thinking.\nKatie: How did they measure creativity?\nDaniel: They used different tests in each experiment. And each one had a different type of control group which made the experiments more robust.\nKatie: What about the word association test — where you come up with as many uses as possible for an object?\nDaniel: Ah yes, I think that test is biased in favour of certain people. Some people are more verbal than others, so it doesn’t measure creativity fairly.\nKatie: And what about the focused thinking test?\nDaniel: We should be careful about drawing firm conclusions from it. I think we need to be cautious about its conclusions until there’s more evidence.\nKatie: So what do you think is the best way forward for this research?\nDaniel: Good question. What do you think?\nKatie: I think we need to investigate the cause of the improvement in creativity. Once we understand why walking helps, we can apply it more usefully.\nKatie: Let’s move on to the physical benefits section. Different types of walking have different benefits.\nDaniel: Right. Walking with thin-soled footwear — the kind that lets you feel the ground — is known to improve your balance.\nKatie: What about hill walking or mountain walking?\nDaniel: That builds greater stamina because of the sustained effort required.\nKatie: And for older people specifically?\nDaniel: Regular gentle walking for the elderly has been shown to help lower blood pressure significantly.\nKatie: And walking long distances?\nDaniel: That’s primarily associated with weight reduction due to the calorie expenditure over time."
+  },
+  {
+   "id": "cdi-listening-06-part-4",
+   "title": "Part 4",
+   "context": "A lecturer talks about gamification — the use of gaming techniques in non-game contexts.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Gamification\nWhat is it?\n- The use of gaming techniques in non-game situations\n- In business, it is frequently used for [[31]]\n- Uses people’s desire to win a reward\n- Not a new idea — incentive schemes were first used by [[32]]\nUses\n- To get online [[33]] quickly\n- To persuade people to change their [[34]]\n- For training purposes, e.g. simulators used by [[35]] and town planners\nSuccessful examples\nOfficial campaigns\n- Australian government: to encourage people to [[36]] more\n- overseas local authority: to reward drivers for not speeding\nHealth\n- a staircase at a station that worked like a [[37]]\n- a game that helps recovery when old people hurt their [[38]] in a fall\nThings to consider\n- It’s important for gamification to be [[39]]\n- Need to think about the laws regarding [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "training"
+       ],
+       "explanation": "In business, gamification is frequently used for training."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "airlines"
+       ],
+       "explanation": "Incentive schemes were first used by airlines."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "community",
+        "communities"
+       ],
+       "explanation": "Used to get an online community together quickly."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "behaviour",
+        "behavior"
+       ],
+       "explanation": "To persuade people to change their behaviour."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "architects"
+       ],
+       "explanation": "Simulators used by architects and town planners for training."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "recycle",
+        "recycling"
+       ],
+       "explanation": "Australian government: to encourage people to recycle more."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "piano"
+       ],
+       "explanation": "A staircase at a station that worked like a piano."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "hips",
+        "hip"
+       ],
+       "explanation": "A game that helps recovery when old people hurt their hips in a fall."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "fun"
+       ],
+       "explanation": "Important for gamification to be fun."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "privacy"
+       ],
+       "explanation": "Need to think about the laws regarding privacy."
+      }
+     ]
+    }
+   ],
+   "transcript": "A lecturer talks about gamification — the use of gaming techniques in non-game contexts.\nLecturer: Today I’d like to talk about gamification — the use of gaming techniques in non-game situations. It’s a fascinating area that is growing rapidly.\nLecturer: In business, it is frequently used for training. Companies have found that training programmes based on game principles are more engaging and effective.\nLecturer: Now, this isn’t a new idea. Incentive schemes based on similar principles were first used by airlines when they introduced frequent flyer programmes decades ago.\nLecturer: Let’s look at the uses of gamification. First, it can be used to get an online community together quickly. When people are competing or collaborating, they gather faster.\nLecturer: Second, gamification is used to persuade people to change their behaviour. If you make the desired behaviour feel like a game, people adopt it more readily.\nLecturer: Third, for training purposes — simulators used by architects and town planners allow professionals to test ideas in a risk-free virtual environment.\nLecturer: There are many successful examples. The Australian government used gamification to encourage people to recycle more. The response was impressive.\nLecturer: In health, there was a staircase at a train station that was fitted with sensors to work like a piano — each step played a musical note. Use of the stairs increased dramatically.\nLecturer: Another health example: a game designed to help recovery after old people hurt their hips in a fall. The game exercises make physiotherapy feel enjoyable rather than painful.\nLecturer: Finally, things to consider. It’s important for gamification to be fun. If it doesn’t feel enjoyable, people won’t engage.\nLecturer: And there are legal considerations — designers need to think about the laws regarding privacy, particularly when collecting data about user behaviour."
+  }
+ ],
+ "audio": {
+  "file": "listening-6.mp3",
+  "durationSec": 1590,
+  "questionTimes": {
+   "1": 194,
+   "2": 209,
+   "3": 231,
+   "4": 254,
+   "5": 259,
+   "6": 285,
+   "7": 295,
+   "8": 360,
+   "9": 384,
+   "10": 410,
+   "11": 543,
+   "12": 555,
+   "13": 568,
+   "14": 605,
+   "15": 616,
+   "16": 698,
+   "17": 719,
+   "18": 746,
+   "19": 755,
+   "20": 758,
+   "21": 913,
+   "22": 950,
+   "23": 973,
+   "24": 1025,
+   "25": 1044,
+   "26": 1109,
+   "27": 1142,
+   "28": 1156,
+   "29": 1171,
+   "30": 1203,
+   "31": 1363,
+   "32": 1375,
+   "33": 1400,
+   "34": 1416,
+   "35": 1434,
+   "36": 1457,
+   "37": 1482,
+   "38": 1493,
+   "39": 1513,
+   "40": 1525
+  }
+ }
+}

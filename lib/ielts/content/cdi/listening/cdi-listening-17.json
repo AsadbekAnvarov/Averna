@@ -1,0 +1,698 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-17",
+ "title": "CDI Listening Test 17",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-17-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Pharmacy Notes\nName of manager:\nJohn Field\nJohn’s phone number:\n[[1]]\nWorking hours\n- Shift starts at [[2]]\n- Late night opening is on [[3]]\n- Start date: [[4]]\nThings to do\n- Speak to Barbara about the [[5]]\n- John will email more information about [[6]]\nServices\n- There is a [[7]] machine near the entrance for customers\n- If there are health concerns, speak to the [[8]] on duty\n- Be careful lifting heavy boxes to avoid hurting your [[9]]\n- The new pharmacy bags are now available in [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "0491570159"
+       ],
+       "explanation": "John's phone number: 0491570159."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "7:45",
+        "7.45"
+       ],
+       "explanation": "Shift starts at 7:45 a.m."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "Friday"
+       ],
+       "explanation": "Late night opening is on Friday."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "22 January",
+        "22nd January"
+       ],
+       "explanation": "Start date: 22nd of January."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "Uniform"
+       ],
+       "explanation": "Speak to Barbara about the uniform."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "Parking"
+       ],
+       "explanation": "John will email about parking."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "weight"
+       ],
+       "explanation": "There is a weight machine near the entrance."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "nurse"
+       ],
+       "explanation": "A nurse is always on duty."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "back"
+       ],
+       "explanation": "Lifting heavy boxes incorrectly can injure your back."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "purple"
+       ],
+       "explanation": "The new eco-friendly bags are purple."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a phone conversation between a new employee and a pharmacy receptionist.\nReceptionist: Good morning, this is Greenfield Pharmacy. How can I assist you?\nEmployee: Hi, I'm calling to check some details before I start my new job there. I was given a few notes, but I just want to confirm them.\nReceptionist: Of course. Our manager, John Field, is available if you need further clarification.\nEmployee: Great. I also need to save the pharmacy's contact number. Can you tell me?\nReceptionist: Certainly. It's 0491570159.\nEmployee: Got it. Now, regarding my shifts, I was told that I start quite early in the morning.\nReceptionist: Yes, most of our employees begin their shifts before the store opens. Your shift starts at 7.45 a.m. That way, you'll have time to prepare for the first customers.\nEmployee: All right. I also heard there's one late-night opening each week.\nReceptionist: That's correct. The store stays open late on Friday evenings. It's usually our busiest night, so we need all hands on deck.\nEmployee: Good to know. And my official start date?\nReceptionist: You'll be starting from the 22nd of January, so be sure to arrive a little early on your first day to complete any remaining paperwork.\nEmployee: Thanks. Also, I remember something about uniforms. Should I bring my own?\nReceptionist: No, that won't be necessary. We provide staff with a uniform, and Barbara will assist you in getting the right size.\nEmployee: All right, and I believe John is going to email me about another matter.\nReceptionist: Yes, he'll send you some details about parking, including where you can leave your vehicle and the spaces allocated for staff members.\nEmployee: Perfect. Now, about the facilities. I recall there's a machine available for customers to use, right?\nReceptionist: Yes, we have a weight machine near the entrance. Customers often use it to check their body weight. Just ensure that it's functioning properly at all times.\nEmployee: Will do. If a customer needs medical assistance, who should they speak to?\nReceptionist: We always have a nurse on duty so they can approach the counter and ask for help if necessary.\nEmployee: Got it. And I should be careful when lifting heavy stock, right?\nReceptionist: Absolutely. We store some large boxes at the back and if they aren't lifted correctly, you might injure your back. So, make sure to bend your knees and avoid straining yourself.\nEmployee: That makes sense. Oh, one last thing. I heard that the store has introduced new bags. What do they look like?\nReceptionist: Yes, we've recently switched to a more eco-friendly option. They now come in purple, so they're easy to spot.\nEmployee: That's helpful. Thanks for all the information."
+  },
+  {
+   "id": "cdi-listening-17-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "The Heritage Clothes Exhibition was put together by",
+       "options": [
+        {
+         "key": "A",
+         "text": "museum staff"
+        },
+        {
+         "key": "B",
+         "text": "local residents"
+        },
+        {
+         "key": "C",
+         "text": "clothing manufacturers"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The Heritage Clothes Exhibition was put together by local residents (people who live in the area)."
+      },
+      {
+       "n": 12,
+       "text": "The photographs show the clothes worn by",
+       "options": [
+        {
+         "key": "A",
+         "text": "their owners"
+        },
+        {
+         "key": "B",
+         "text": "professional models"
+        },
+        {
+         "key": "C",
+         "text": "design students"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Photos show clothes worn by their owners (the real people who wear them)."
+      },
+      {
+       "n": 13,
+       "text": "The exhibition “Toys from the Past” is",
+       "options": [
+        {
+         "key": "A",
+         "text": "displayed in a new gallery"
+        },
+        {
+         "key": "B",
+         "text": "on show for a limited time"
+        },
+        {
+         "key": "C",
+         "text": "specially aimed at children"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Toys from the Past' is on tour and here for ten weeks only — a limited time."
+      },
+      {
+       "n": 14,
+       "text": "Visitors to “Toys from the Past” are recommended to",
+       "options": [
+        {
+         "key": "A",
+         "text": "play with the toy trains"
+        },
+        {
+         "key": "B",
+         "text": "look at all the dolls"
+        },
+        {
+         "key": "C",
+         "text": "see the board games"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Visitors are recommended to see the board games, which 'should not be missed'."
+      },
+      {
+       "n": 15,
+       "text": "The miniature toys are",
+       "options": [
+        {
+         "key": "A",
+         "text": "made by the museum"
+        },
+        {
+         "key": "B",
+         "text": "bought by the museum"
+        },
+        {
+         "key": "C",
+         "text": "borrowed by the museum"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The miniature toys are borrowed (on loan) from countries all over the world."
+      },
+      {
+       "n": 16,
+       "text": "The biscuit factory made tins",
+       "options": [
+        {
+         "key": "A",
+         "text": "for people all over the world"
+        },
+        {
+         "key": "B",
+         "text": "in a variety of shapes"
+        },
+        {
+         "key": "C",
+         "text": "only for national events"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The biscuit factory made tins for various occasions — different shapes (round, square, triangular, hexagonal)."
+      },
+      {
+       "n": 17,
+       "text": "When the biscuit factory closed, it revealed that people's favourite biscuit was",
+       "options": [
+        {
+         "key": "A",
+         "text": "a plain savoury one"
+        },
+        {
+         "key": "B",
+         "text": "a chocolate biscuit"
+        },
+        {
+         "key": "C",
+         "text": "one filled with jam and cream"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "People's favourite biscuit was a plain, savoury one."
+      },
+      {
+       "n": 18,
+       "text": "At the end of the Biscuit Gallery, visitors can",
+       "options": [
+        {
+         "key": "A",
+         "text": "taste different biscuits"
+        },
+        {
+         "key": "B",
+         "text": "watch biscuits being made"
+        },
+        {
+         "key": "C",
+         "text": "fill their own biscuit tin"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Visitors can fill their own biscuit tin at the end of the Biscuit Gallery exhibition."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "- The gift shop is located next to the\n[[19]]\non the ground floor.\n- Visitors can leave their bags and coats in the complimentary\n[[20]]\nprovided by the museum.",
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "information desk"
+       ],
+       "explanation": "The gift shop is next to the information desk on the ground floor."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "lockers"
+       ],
+       "explanation": "Complimentary lockers are provided by the museum."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a recorded audio guide for visitors to the State Museum.\nWelcome to the State Museum, situated in the centre of this truly multicultural metropolis which is home to more than 30 different nationalities. The museum has a number of exciting displays and exhibitions, and this audio guide is designed to help you fully enjoy your visit. There are 15 galleries in total, and this season sees the opening of three new exhibitions. We suggest that you start your tour with these highlights of the season.\nThe Heritage Clothes Exhibition is located in Gallery 3 of the museum. People who live in the area have spent two years preparing this exhibition, which brings together some of the fascinating garments traditionally worn in their own communities. The photos that accompany each exhibit were taken by some of the city's college students, who are studying design and show the clothes being modelled by the real people who wear them in the course of their everyday lives.\nAnother remarkable highlight of the season is the exhibition known as Toys from the Past, which can be visited in Gallery 9. This exhibition, appealing to people of all ages, is on tour throughout the country and will be here for ten weeks only. The gigantic board games laid out on the gallery floor are among the most popular activities in the exhibition and should not be missed. A special display of miniature toys brings this exhibition to an end. These small objects are on loan from countries all over the world.\nThe final highlight of the season is the Biscuit Gallery, number 15. The factory manufactured round, square, triangular and hexagonal tins for a whole range of different occasions. When the factory finally closed, it announced that people's favourite biscuit was a plain, savoury one which was eaten with cheese. When you get to the end of the exhibition, there is an entertaining, hands-on activity to fill your own biscuit tin.\nIf you would like to buy a memento of your visit, there is a museum gift shop which sells postcards, souvenirs and handmade pottery next to the information desk on the ground floor. And finally, if you don't want to carry your coats and bags around with you during your visit, please make use of the complimentary lockers provided by the museum. Enjoy your visit!"
+  },
+  {
+   "id": "cdi-listening-17-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What is the topic of Jen and Rob’s forensic linguistics project?",
+       "options": [
+        {
+         "key": "A",
+         "text": "analysing written documents"
+        },
+        {
+         "key": "B",
+         "text": "voice identification"
+        },
+        {
+         "key": "C",
+         "text": "language and crime"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Rob says the recording is very unclear — difficult because of poor quality."
+      },
+      {
+       "n": 22,
+       "text": "Jen thinks it will be difficult to analyse the voice recording because",
+       "options": [
+        {
+         "key": "A",
+         "text": "it is not of good quality"
+        },
+        {
+         "key": "B",
+         "text": "the accent is difficult to understand"
+        },
+        {
+         "key": "C",
+         "text": "she doesn’t know if the speaker is male or female"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Jen says the recording is very unclear — she cannot tell if it is a man or a woman."
+      },
+      {
+       "n": 23,
+       "text": "Why does Jen think the ‘suspect’ might vary their voice patterns?",
+       "options": [
+        {
+         "key": "A",
+         "text": "because they are being recorded"
+        },
+        {
+         "key": "B",
+         "text": "because they have been told to"
+        },
+        {
+         "key": "C",
+         "text": "because they feel uncomfortable about their accent"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The suspect might vary their voice because the tutor suggests they do that."
+      },
+      {
+       "n": 24,
+       "text": "What does Rob think about Jen’s approach to study?",
+       "options": [
+        {
+         "key": "A",
+         "text": "She worries too much about her ability"
+        },
+        {
+         "key": "B",
+         "text": "She often ignores the most important issues"
+        },
+        {
+         "key": "C",
+         "text": "She has trouble getting started"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Rob tells Jen she worries too much — 'You usually do OK in the end.'."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO books do Jen and Rob decide to get from the library?",
+     "options": [
+      {
+       "key": "A",
+       "text": "A Voice Identification"
+      },
+      {
+       "key": "B",
+       "text": "B Modern Forensic Techniques"
+      },
+      {
+       "key": "C",
+       "text": "C Language and Crime"
+      },
+      {
+       "key": "D",
+       "text": "D Forensics Today"
+      },
+      {
+       "key": "E",
+       "text": "E Research Methods in Forensic Linguistics"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "They decide to borrow Modern Forensic Techniques (B) and Research Methods in Forensic Linguistics (E). Same group Q25–26 — two books from the library."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "They decide to borrow Modern Forensic Techniques (B) and Research Methods in Forensic Linguistics (E). Same group Q25–26 — two books from the library."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO practical considerations are both Jen and Rob concerned about?",
+     "options": [
+      {
+       "key": "A",
+       "text": "A how much time they have for writing up the project"
+      },
+      {
+       "key": "B",
+       "text": "B being able to do enough research"
+      },
+      {
+       "key": "C",
+       "text": "C only speaking to the ‘suspect’ once"
+      },
+      {
+       "key": "D",
+       "text": "D using recording equipment"
+      },
+      {
+       "key": "E",
+       "text": "E how easy it will be to contact the ‘suspect’"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Both concerned about using recording equipment (D) and fitting in the writing up (A). Same group Q27–28 — two practical concerns."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Both concerned about using recording equipment (D) and fitting in the writing up (A). Same group Q27–28 — two practical concerns."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO sections of the project will Rob write alone?",
+     "options": [
+      {
+       "key": "A",
+       "text": "A Methodology"
+      },
+      {
+       "key": "B",
+       "text": "B Literature review"
+      },
+      {
+       "key": "C",
+       "text": "C Introduction"
+      },
+      {
+       "key": "D",
+       "text": "D Analysis"
+      },
+      {
+       "key": "E",
+       "text": "E Discussion and conclusions"
+      }
+     ],
+     "questions": [
+      {
+       "n": 29,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "Rob writes Methodology (A) alone; Jen writes Introduction (C) alone. Same group Q29–30."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "Rob writes Methodology (A) alone; Jen writes Introduction (C) alone. Same group Q29–30."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear two university students, Jen and Rob, discussing their forensic linguistics project.\nJen: Hi, Rob.\nRob: Hi, Jen. We need to look at this project we're doing together in forensic linguistics.\nJen: Sure. I'm glad we chose voice identification as the topic.\nRob: Yeah, we've been given a voice recording of a possible suspect. We've got to listen to the recording and analyse their voice.\nJen: Well, I've already listened to the recording, and I can't even tell if it's a man or a woman. But where we're really going to get in trouble is that the recording is very unclear. I'm sure they've done that to test us.\nRob: Well, they weren't going to make it easy. And then we have to interview the suspect and make our own recording face-to-face and decide if it's the same person as on the original recording.\nJen: Yes. But they might do something like speaking with another accent because the tutor suggests they do that just to test us.\nRob: So let's get on with it then. Oh, and don't start your usual self-doubt about whether you can do the work or not. You usually do OK in the end. I reckon that as long as we focus on the main points of the assignment, we can think about the finer details later.\nJen: We'll have to do some background reading first. I'll go to the library later and get what we need.\nRob: OK. I've already looked at forensics today and it didn't say much about voice identification, so we needn't bother with that one. Research methods in forensic linguistics — I guess we ought to borrow that. And voice identification will be a useful one — I'll borrow that from our classmate George. But we should get out Modern Forensic Techniques. We need all the help we can get on that subject.\nJen: OK, that's that sorted out. Now on to the practical stuff. I'm not sure about how we're going to record the voices. I'm not too good on the technical side.\nRob: Me neither. We'd better work out what we're doing. I'm more worried about fitting in the writing up.\nJen: I know. We've got loads of other assignments to finish as well. Now, Rob, let's decide how we're going to split the writing between us. Are you any good at introductions?\nRob: They always seem to let me down.\nJen: OK, leave that to me. Are you OK to do the literature review, then?\nRob: Maybe we should split that part. I don't mind writing the methodology section if you feel comfortable doing the discussion and conclusions.\nJen: OK. And we can do the analysis between us as well."
+  },
+  {
+   "id": "cdi-listening-17-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "The Salamander\nFeatures\n- Often mistaken for a [[31]] because of its body shape\n- Some have distinctive [[32]] that help them camouflage or warn predators\n- Can regenerate their limbs, spinal cord, and even their [[33]]\nHabitat and Ecological Role\n- Inhabit damp environments where [[34]] accumulate on the forest floor\n- Help regulate [[35]] levels in ecosystems\n- Survival depends on healthy [[36]] for laying eggs and refuge\nThreats and Human Interaction\n- Major threat: environmental [[37]] contaminating their habitats\n- Historically used in traditional [[38]] for perceived healing properties\n- In their larval stage, some species resemble a [[39]] due to external gills\n- Climate change: fluctuations in [[40]] affect salamander survival and breeding",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "lizard"
+       ],
+       "explanation": "The salamander is often mistaken for a lizard due to its body shape."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "spots"
+       ],
+       "explanation": "Some salamanders have distinctive spots for camouflage or warning."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "heart"
+       ],
+       "explanation": "Salamanders can regenerate their limbs, spinal cord, and even their heart."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "leaves"
+       ],
+       "explanation": "They inhabit damp environments where leaves accumulate on the forest floor."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "carbon"
+       ],
+       "explanation": "By consuming leaf-litter insects, they help regulate carbon levels."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "soil"
+       ],
+       "explanation": "Survival depends on healthy soil for laying eggs and refuge."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "pollution"
+       ],
+       "explanation": "A major threat is environmental pollution contaminating their habitats."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "medicine"
+       ],
+       "explanation": "Salamanders have been used in traditional medicine for healing properties."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "frog"
+       ],
+       "explanation": "In their larval stage some species resemble a frog due to external gills."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "temperature"
+       ],
+       "explanation": "Fluctuations in temperature due to climate change threaten salamander survival."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a university lecture about the salamander.\nSalamander is a fascinating amphibian that is often mistaken for a lizard due to its elongated body, short legs and tail. However, unlike reptiles, salamanders have moist, permeable skin which they rely on for respiration. One of the most distinctive features of many salamanders is their spots, which serve as a form of camouflage or warning to potential predators. Some species have bright coloration, signaling their toxicity, while others blend into their surroundings to avoid detection.\nSalamanders possess an extraordinary ability: they can regenerate their limbs, and even parts of their spinal cord. And remarkably, they can also regenerate their heart. This makes them a subject of interest in scientific research, particularly in the field of regenerative medicine. Their diet consists of small insects, worms and other invertebrates, often found in damp environments where leaves accumulate on the forest floor. These areas provide both shelter and food sources for these amphibians.\nSalamanders also play a critical role in the carbon cycle. By consuming leaf litter insects, they indirectly help regulate carbon levels in ecosystems, preventing excess decomposition that releases carbon dioxide into the atmosphere. However, their survival is heavily dependent on the health of their habitat, particularly the soil, where they lay eggs and seek refuge. Contaminated soil can have devastating effects on their populations.\nOne of the biggest threats to salamanders today is environmental pollution. Chemicals from agricultural runoff, industrial waste, and even road salt seep into their habitats, causing declines in many species. Despite these challenges, salamanders have long been valued in traditional medicine. Some cultures believe that their secretions have healing properties, though modern science has yet to fully verify these claims.\nInterestingly, salamanders are sometimes confused with a frog, especially in their larval stage, when they have external gills similar to those of tadpoles. Finally, temperature plays a crucial role in their survival. Since they rely on external sources of heat, fluctuations in temperature due to climate change pose a significant threat to their populations, affecting their breeding patterns and metabolic rates."
+  }
+ ],
+ "audio": {
+  "file": "listening-17.mp3",
+  "durationSec": 1116,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

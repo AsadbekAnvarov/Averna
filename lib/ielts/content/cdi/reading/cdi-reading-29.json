@@ -1,0 +1,617 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-29",
+ "title": "CDI Reading Test 29",
+ "description": "A full Academic Reading test from the CDI practice materials: The history of tea; Biodiversity; Nature Works Polylactic Acid.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The history of tea",
+  "Biodiversity",
+  "Nature Works Polylactic Acid"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The history of tea",
+   "paragraphs": [
+    {
+     "text": "The story of tea begins in China. According to legend, in 2737 BC, the Chinese emperor Shen Nung was sitting beneath a tree while his servant boiled drinking water, when some leaves from the tree blew into the water. Shen Nung, a renowned herbalist, decided to try the infusion that his servant had accidentally created. The tree was a Camellia sinensis, and the resulting drink was what we now call tea."
+    },
+    {
+     "text": "Containers for tea have been found in tombs dating from the Han Dynasty (206 BC—220 AD) but it was under the Tang Dynasty (618—906 AD), that tea became firmly established as the national drink of China. It became such a favourite that during the late eighth century a writer called Lu Yu wrote the first book entirely about tea, the Ch'a Ching, or Tea Classic."
+    },
+    {
+     "text": "It was shortly after this that tea was first introduced to Japan, by Japanese Buddhist monks who had travelled to China to study. Tea received almost instant imperial sponsorship and spread rapidly from the royal court and monasteries to the other sections of Japanese society."
+    },
+    {
+     "text": "In the latter half of the sixteenth century there are the first brief mentions of tea as a drink among Europeans. These are mostly from Portuguese who were living in the East as traders and missionaries. But although some of these individuals may have brought back samples of tea to their native country, it was not the Portuguese who were the first to ship back tea as a commercial import. This was done by the Dutch, who in the last years of the sixteenth century began to encroach on Portuguese trading routes in the East. By the turn of the century they had established a trading post on the island of Java, and it was via Java that in 1606 the first consignment of tea was shipped from China to Holland. Tea soon became a fashionable drink among the Dutch, and from there spread to other countries in continental western Europe, but because of its high price it remained a drink for the wealthy."
+    },
+    {
+     "text": "Britain, always a little suspicious of continental trends, had yet to become the nation of tea drinkers that it is today. Starting in 1600, the British East India Company had a monopoly on importing goods from outside Europe. The first coffee house had been established in London in 1652, and tea was still somewhat unfamiliar to most people, so it is fair to assume that the drink was still something of a curiosity. Gradually, it became a popular drink in coffee houses. They were though the preserve of middle- and upper-class men; women drank tea in their own homes, and as yet tea was still too expensive to be widespread among the working classes."
+    },
+    {
+     "text": "In part, its high price was due to a punitive system of taxation. One unforeseen consequence of the taxation of tea was the growth of methods to avoid taxation—smuggling and adulteration. By the eighteenth century many Britons wanted to drink tea but could not afford the high prices, and their enthusiasm for the drink was matched by the enthusiasm of criminal gangs to smuggle it in. What began as a small-time illegal trade developed by the late eighteenth century into an astonishing organised crime network, perhaps importing as much as 7 million lbs annually, compared to a legal import of 5 million lbs! Worse for the drinkers was that taxation also encouraged the adulteration of tea. By 1784, the government realised that enough was enough, and that heavy taxation was creating more problems than it was worth. The new Prime Minister, William Pitt the Younger, slashed the tax from 119 per cent to 12.5 per cent. Suddenly legal tea was affordable, and smuggling stopped virtually overnight."
+    },
+    {
+     "text": "Another great impetus to tea drinking resulted from the end of the East India Company's monopoly on trade with China, in 1834. The end of its monopoly stimulated the East India Company to consider growing tea outside China. India had always been the centre of the Company's operations, which led to the increased cultivation of tea in India, beginning in Assam. There were a few false starts, including the destruction by cattle of one of the earliest tea nurseries, but by 1888 British tea imports from India were for the first time greater than those from China."
+    },
+    {
+     "text": "The end of the East India Company's monopoly on trade with China also ushered in the era of the tea clippers. After 1834 the tea trade became a virtual free-for-all. Individual merchants and sea captains with their own ships raced to bring home the tea and make the most money, using fast new clippers with sleek lines, tall masts and huge sails. In particular, there was a competition between British and American merchants, leading to the famous clipper races of the 1860s. But these races soon came to an end with the opening of the Suez Canal, which made the trade routes to China viable for steamships for the first time."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below with words taken from Reading Passage 1.",
+     "answerRule": "Choose NO MORE THAN ONE WORD from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "Tea containers detected in [[1]] from the Han Dynasty were the first evidence of the use of tea.\nLu Yu wrote a [[2]] about tea before anyone else in the eighth century.\nIt was Japanese Buddhist [[3]] who brought tea to their native country from China.\nTea was carried from China to Europe commercially by the [[4]].\nThe British government had to cut down the taxation on tea due to the serious crime of [[5]].\nTea was planted in [[6]] besides China in the 19th century.\nIn order to compete in shipping speed, traders used [[7]] for the race.",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "tombs"
+       ],
+       "explanation": "'Containers for tea have been found in tombs dating from the Han Dynasty.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "book"
+       ],
+       "explanation": "'Lu Yu wrote the first book entirely about tea.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "monks"
+       ],
+       "explanation": "'tea was first introduced to Japan, by Japanese Buddhist monks who had travelled to China to study.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "Dutch"
+       ],
+       "explanation": "'it was not the Portuguese... This was done by the Dutch.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "smuggling"
+       ],
+       "explanation": "'One unforeseen consequence of the taxation of tea was the growth of methods to avoid taxation—smuggling.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "India"
+       ],
+       "explanation": "'led to the increased cultivation of tea in India, beginning in Assam.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "clippers"
+       ],
+       "explanation": "'using fast new clippers with sleek lines, tall masts and huge sails.'"
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 8,
+       "text": "Tea was popular in Britain in the 16th century.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'tea was still somewhat unfamiliar to most people' in Britain; 'still something of a curiosity.'"
+      },
+      {
+       "n": 9,
+       "text": "Tea was more fashionable than coffee in Europe in the late 16th century.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions tea spreading in Europe but does not compare its popularity to coffee."
+      },
+      {
+       "n": 10,
+       "text": "Tea was enjoyed by all classes in Britain in the seventeenth century.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'tea was still too expensive to be widespread among the working classes.'"
+      },
+      {
+       "n": 11,
+       "text": "The adulteration of tea also prompted William Pitt the Younger to reduce the tax.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'taxation also encouraged the adulteration of tea... the government realised that enough was enough' and slashed the tax."
+      },
+      {
+       "n": 12,
+       "text": "Initial problems occurred when tea was planted outside China by the East India Company.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'There were a few false starts, including the destruction by cattle of one of the earliest tea nurseries.'"
+      },
+      {
+       "n": 13,
+       "text": "The fastest vessels were owned by Americans during the 19th century clipper races.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions competition between British and American merchants but does not say who owned the fastest."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Biodiversity",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "It seems biodiversity has become a buzzword beloved of politicians, conservationists, protesters and scientists alike. But what exactly is it? The Convention on Biological Diversity provides a good working definition: biodiversity comprises every form of life, from the smallest microbe to the largest animal or plant, the genes that give them their specific characteristics and the ecosystems of which they are a part."
+    },
+    {
+     "label": "B",
+     "text": "In October, the World Conservation Union (also known as the IUCN) published its updated Red List of Threatened Species, a roll call of 11,167 creatures facing extinction — 1,121 more than when the list was last published in 2000. But the new figures almost certainly underestimate the crisis. Some 1.2 million species of animals and 270,000 species of plants have been classified, but the well-being of only a fraction has been assessed. The resources are simply not available. The IUCN reports that 5714 plants are threatened, for example, but admits that only 4 per cent of known plants have been assessed. And there are thousands of species that we have yet to discover. Many of these could also be facing extinction."
+    },
+    {
+     "label": "C",
+     "text": "It is important to develop a picture of the diversity of life on Earth now so that comparisons can be made in the future and trends identified. But it isn't necessary to observe every single type of organism in an area to get a snapshot of the health of the ecosystem. In many habitats, there are species that are particularly susceptible to shifting conditions, and these can be used as indicator species."
+    },
+    {
+     "label": "D",
+     "text": "In the media, it is usually large, charismatic animals such as pandas, elephants, tigers and whales that get all the attention when a loss of biodiversity is discussed. However, animals or plants far lower down the food chain are often the ones vital for preserving habitats – in the process saving the skins of those more glamorous species. These are known as keystone species."
+    },
+    {
+     "label": "E",
+     "text": "By studying the complex feeding relationships within habitats, species can be identified that have a particularly important impact on the environment. For example, the members of the fig family are the staple food for hundreds of different species in many different countries, so important that scientists sometimes call figs \"jungle burgers\". A whole range of animals, from tiny insects to birds and large mammals, feed on everything from the tree's bark and leaves to its flowers and fruits. Many fig species have very specific pollinators. There are several dozen species of the fig tree in Costa Rica, and a different type of wasp has evolved to pollinate each one. If fig trees are affected by global warming, pollution, disease or any other catastrophe, the loss of biodiversity will be enormous."
+    },
+    {
+     "label": "F",
+     "text": "Similarly, sea otters play a major role in the survival of giant kelp forests along the coasts of California and Alaska. These \"marine rainforests\" provide a home for a wide range of other species. The kelp itself is the main food of purple and red sea urchins and in turn, the urchins are eaten by predators, particularly sea otters. Urchins that are not eaten tend to spend their time in rock crevices to avoid the predators. This allows the kelp to grow. The problems start when the sea otter population declines. As large predators they are vulnerable — their numbers are relatively small so disease or human hunters can wipe them out. The result is that the sea urchin population grows unchecked and they roam the seafloor eating young kelp fronds. This tends to keep the kelp very short and stops forests developing, which has a huge impact on biodiversity."
+    },
+    {
+     "label": "G",
+     "text": "Conversely, keystone species can also make dangerous alien species: they can wreak havoc if they end up in the wrong ecosystem. The cactus moth, whose caterpillar is a voracious eater of prickly pear was introduced to Australia to control the rampant cacti. It was so successful that someone thought it would be a good idea to introduce it to Caribbean islands that had the same problem. It solved the cactus menace, but unfortunately, some of the moths have now reached the US mainland – where they are devastating the native cactus populations of Florida."
+    },
+    {
+     "label": "H",
+     "text": "Organisations like the Convention on Biological Diversity work with groups such as the UN and with governments and scientists to raise awareness and fund research. A number of major international meetings have set targets for governments around the world to slow the loss of biodiversity."
+    },
+    {
+     "label": "I",
+     "text": "There is cause for optimism, however. There seems to be a growing understanding of the need for sustainable agriculture and sustainable tourism to conserve biodiversity. Problems such as illegal logging are being tackled through sustainable forestry programmes, with the emphasis on minimising the use of rainforest hardwoods in the developed world. CITES is playing its part by controlling trade in wood from endangered tree species. In the same way, sustainable farming techniques that minimise environmental damage and avoid monoculture are encouraged."
+    },
+    {
+     "label": "J",
+     "text": "Action at a national level often means investing in public education and awareness. Getting people like you and me involved can be very effective. Australia and many European countries are becoming increasingly efficient at recycling much of their domestic waste, for example, preserving natural resources and reducing the use of fossil fuels. Preserving ecosystems intact for future generations to enjoy is obviously important, but biodiversity is not some kind of optional extra. Variety may be the spice of life, but biological variety is also our life-support system."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 2?",
+     "questions": [
+      {
+       "n": 14,
+       "text": "The term \"biodiversity\" consists of living creatures and the environment that they live in.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'biodiversity comprises every form of life... the genes... and the ecosystems of which they are a part.'"
+      },
+      {
+       "n": 15,
+       "text": "There are species that have not been researched because it's unnecessary to study all creatures.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'The resources are simply not available' — it's a resource problem, not because it's unnecessary."
+      },
+      {
+       "n": 16,
+       "text": "It is not necessary to investigate all creatures in a certain place.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'it isn't necessary to observe every single type of organism in an area to get a snapshot of the health of the ecosystem.'"
+      },
+      {
+       "n": 17,
+       "text": "The press more often than not focuses on animals well-known.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'it is usually large, charismatic animals such as pandas, elephants, tigers and whales that get all the attention.'"
+      },
+      {
+       "n": 18,
+       "text": "There is a successful case that cactus moth plays a positive role in the US.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'some of the moths have now reached the US mainland – where they are devastating the native cactus populations of Florida.'"
+      },
+      {
+       "n": 19,
+       "text": "Usage of hardwoods is forbidden in some European countries.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says 'minimising the use of rainforest hardwoods' but does not say it is forbidden."
+      },
+      {
+       "n": 20,
+       "text": "Agriculture experts advise farmers to plant single crops in terms of sustainable farming.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'sustainable farming techniques that minimise environmental damage and avoid monoculture are encouraged' — the opposite."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the following summary of the paragraphs of Reading Passage 2.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "Because of the ignorance brought by media, people tend to neglect significant creatures called [[21]]. Every creature has diet connections with others, such as [[22]] which provide a majority of foods for other species. In some states of America, the decline in sea otters leads to the boom of [[23]]. An impressive case is that imported [[24]] successfully tackles the plant cacti in [[25]]. However, the government needs to increase its financial support in [[26]].",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "keystone species"
+       ],
+       "explanation": "'animals or plants far lower down the food chain are often the ones vital for preserving habitats. These are known as keystone species.'"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "figs"
+       ],
+       "explanation": "'members of the fig family are the staple food for hundreds of different species.'"
+      },
+      {
+       "n": 23,
+       "answer": [
+        "sea urchins"
+       ],
+       "explanation": "'the sea urchin population grows unchecked and they roam the seafloor eating young kelp fronds.'"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "cactus moth"
+       ],
+       "explanation": "'The cactus moth... was introduced to Australia to control the rampant cacti.'"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "Australia"
+       ],
+       "explanation": "'The cactus moth... was introduced to Australia to control the rampant cacti. It was so successful...'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "public education"
+       ],
+       "explanation": "'Action at a national level often means investing in public education and awareness.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Nature Works Polylactic Acid",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "A dozen years ago, scientists at Cargill got the idea of converting lactic acid made from corn into plastic while examining possible new uses for materials produced from corn wet milling processes. In the past, several efforts had been made to develop plastics from lactic acid, but with limited success. Achieving this technological breakthrough didn't come easily, but in time the efforts did succeed. A fermentation and distillation process using corn was designed to create a polymer suitable for a broad variety of applications."
+    },
+    {
+     "label": "B",
+     "text": "As an agricultural-based firm, Cargill had taken this product as far as it could by 1997. The company needed a partner with access to plastics markets and polymerization capabilities, and began discussions with The Dow Chemical Company. The next step was the formation of the joint venture that created Cargill Dow LLC. Cargill Dow's product is the world's first commercially available plastic made from annually renewable resources such as corn: Nature Works™ PLA is a family of packaging polymers (carbon-based molecules) made from non-petroleum-based resources. Ingeo is a family of polymers for fibers made in a similar manner."
+    },
+    {
+     "label": "C",
+     "text": "By applying their unique technology to the processing of natural plant sugars, Cargill Dow has created a more environmentally friendly material that reaches the consumer in clothes, cups, packaging and other products."
+    },
+    {
+     "label": "D",
+     "text": "The basic raw materials for PLA are carbon dioxide and water. Growing plants, like corn, take these building blocks from the atmosphere and the soil. They are combined in the plant to make carbohydrates (sucrose and starch) through a process driven by photosynthesis. The process for making Nature Works PLA begins when a renewable resource such as corn is milled, separating starch from the raw material. Unrefined dextrose, in turn, is processed from the starch."
+    },
+    {
+     "label": "E",
+     "text": "Cargill Dow turns the unrefined dextrose into lactic acid using a fermentation process similar to that used by beer and wine producers. This is the same lactic acid that is used as a food additive and is found in muscle tissue in the human body. Through a special condensation process, a lactide is formed. This lactide is purified through vacuum distillation and becomes a polymer (the base for NatureWorks PLA) that is ready for use through a solvent-free melt process. Development of this new technology allows the company to \"harvest\" the carbon that living plants remove from the air through photosynthesis."
+    },
+    {
+     "label": "F",
+     "text": "Nature Works PLA fits all disposal systems and is fully compostable in commercial composting facilities. With the proper infrastructure, products made from this polymer can be recycled back to a monomer and re-used as a polymer. Thus, at the end of its life cycle, a product made from Nature Works PLA can be broken down into its simplest parts so that no sign of it remains."
+    },
+    {
+     "label": "G",
+     "text": "PLA is now actively competing with traditional materials in packaging and fiber applications throughout the world. This new polymer now competes head-on with petroleum-based materials like polyester. Fiber and non-woven applications include clothing, fibril, blankets and wipes. Packaging applications include packaging films and food and beverage containers."
+    },
+    {
+     "label": "H",
+     "text": "As Nature Works PLA polymers are more oil- and grease-resistant and provide a better flavor and aroma barrier than existing petroleum-based polymers, grocery retailers are increasingly using this packaging for their fresh foods. PLA possesses two properties that are particularly useful for drape fabrics and window furnishings. Their resistance to ultraviolet light is particularly appealing as this reduces the amount of fading in such fabrics, and their refractive index is low, which means fabrics constructed from these polymers can be made with deep colors without requiring large amounts of dye. In addition, sportswear makers have been drawn to the product as it has an inherent ability to take moisture away from the skin and when blended with cotton and wool, the result is garments that are lighter and better at absorbing moisture."
+    },
+    {
+     "label": "I",
+     "text": "PLA combines inexpensive large-scale fermentation with chemical processing to produce a value-added polymer product that improves the environment as well. The source material for PLA is a natural sugar found in plants such as corn and using such renewable feedstock presents several environmental benefits. As an alternative to traditional petroleum-based polymers, the production of PLA uses 20–50% less fossil fuel and releases a lower amount of greenhouse gases than comparable petroleum-based plastic; carbon dioxide in the atmosphere is removed when the feedstock is grown and is returned to the earth when the polymer is degraded. Because the company is using raw materials that can be regenerated year after year, it is both cost-competitive and environmentally responsible."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Match each beginning with the correct ending, A–F, below.",
+     "title": "List of Options",
+     "options": [
+      {
+       "key": "A",
+       "text": "make things like clothes"
+      },
+      {
+       "key": "B",
+       "text": "produce plastic from plant"
+      },
+      {
+       "key": "C",
+       "text": "selling plastic in market"
+      },
+      {
+       "key": "D",
+       "text": "fermentation process"
+      },
+      {
+       "key": "E",
+       "text": "drape fabrics"
+      },
+      {
+       "key": "F",
+       "text": "wrapping products"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "scientists manage to",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph A: scientists at Cargill succeeded in producing plastic from plant-based lactic acid."
+      },
+      {
+       "n": 28,
+       "text": "Cargill needs to have contacts with",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph B: 'The company needed a partner with access to plastics markets.'"
+      },
+      {
+       "n": 29,
+       "text": "Nature Works is used for",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph B & G: 'NatureWorks PLA is a family of packaging polymers' — for wrapping/packaging products."
+      },
+      {
+       "n": 30,
+       "text": "Ingeo is used to",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph B: 'Ingeo is a family of polymers for fibers' — make things like clothes."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the following summary of the process.",
+     "answerRule": "Use NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Process: Polylactic acid product",
+     "template": "Corn → Milling → [[31]] → [[32]] → Unrefined dextrose → [[33]] → Lactic acid → Lactide → Vacuum distillation → get [[34]] → Solvent-free melting → NatureWorks and PLA",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "starch"
+       ],
+       "explanation": "'corn is milled, separating starch from the raw material.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "processing"
+       ],
+       "explanation": "'Unrefined dextrose, in turn, is processed from the starch.' The step is processing."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "fermentation"
+       ],
+       "explanation": "'Cargill Dow turns the unrefined dextrose into lactic acid using a fermentation process.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "polymer"
+       ],
+       "explanation": "'becomes a polymer (the base for NatureWorks PLA) that is ready for use through a solvent-free melt process.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 35,
+       "text": "Why did they choose PLA as material for food packaging?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It smells good"
+        },
+        {
+         "key": "B",
+         "text": "It can save food freshness"
+        },
+        {
+         "key": "C",
+         "text": "It can be used on other materials"
+        },
+        {
+         "key": "D",
+         "text": "Some other things need to be revised about it"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'PLA polymers... provide a better flavor and aroma barrier' — preserving the freshness of food."
+      },
+      {
+       "n": 36,
+       "text": "What is PLA packaging used for?",
+       "options": [
+        {
+         "key": "A",
+         "text": "absorbing moisture"
+        },
+        {
+         "key": "B",
+         "text": "composting facilities"
+        },
+        {
+         "key": "C",
+         "text": "packaging fresh food"
+        },
+        {
+         "key": "D",
+         "text": "manufacturing"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'grocery retailers are increasingly using this packaging for their fresh foods.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO features of PLA are correct?",
+     "options": [
+      {
+       "key": "A",
+       "text": "It takes moisture away from the skin"
+      },
+      {
+       "key": "B",
+       "text": "It is waterproof"
+      },
+      {
+       "key": "C",
+       "text": "It makes comfortable sportswear"
+      },
+      {
+       "key": "D",
+       "text": "It fades under the sun"
+      },
+      {
+       "key": "E",
+       "text": "It is only made in deep colour"
+      }
+     ],
+     "questions": [
+      {
+       "n": 37,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "A & C: PLA has an inherent ability to take moisture away from the skin, and it makes lighter, comfortable sportswear. A & C: PLA has an inherent ability to take moisture away from the skin, and it makes lighter, comfortable sportswear."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "A & C: PLA has an inherent ability to take moisture away from the skin, and it makes lighter, comfortable sportswear. A & C: PLA has an inherent ability to take moisture away from the skin, and it makes lighter, comfortable sportswear."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO features of PLA are correct?",
+     "options": [
+      {
+       "key": "A",
+       "text": "It is made of renewable raw materials"
+      },
+      {
+       "key": "B",
+       "text": "It involves the removal of carbon dioxide"
+      },
+      {
+       "key": "C",
+       "text": "It uses no fossil fuel at all"
+      },
+      {
+       "key": "D",
+       "text": "It uses renewable raw resources"
+      },
+      {
+       "key": "E",
+       "text": "It permanently absorbs CO2 from the atmosphere"
+      }
+     ],
+     "questions": [
+      {
+       "n": 39,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "A & D: PLA is made from annually renewable resources such as corn, and using such renewable feedstock presents several environmental benefits. A & D: PLA is made from annually renewable resources such as corn, and using such renewable feedstock presents several environmental benefits."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "A & D: PLA is made from annually renewable resources such as corn, and using such renewable feedstock presents several environmental benefits. A & D: PLA is made from annually renewable resources such as corn, and using such renewable feedstock presents several environmental benefits."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

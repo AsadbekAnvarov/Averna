@@ -37,7 +37,10 @@ function sequentialKeys(keys: string[]): boolean {
 
 /** Does the source text contain the answer (any accepted variant), ignoring case/punctuation? */
 function inSource(answer: string[], source: string): boolean {
-  const hay = ` ${normalizeAnswer(source.replace(/[^\p{L}\p{N}%£$€\s'-]/gu, " "))} `.replace(/\s+/g, " ");
+  // Typographic apostrophes (earth’s) become ' first, as normalizeAnswer does for the
+  // student's answer, so they aren't stripped as punctuation before the comparison.
+  const quotes = source.replace(/[\u2018\u2019\u201B\u2032]/g, "'");
+  const hay = ` ${normalizeAnswer(quotes.replace(/[^\p{L}\p{N}%£$€\s'-]/gu, " "))} `.replace(/\s+/g, " ");
   const plain = ` ${source.toLowerCase().replace(/\s+/g, " ")} `;
   return answer
     .flatMap(expandOptional)

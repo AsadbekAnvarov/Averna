@@ -1,0 +1,670 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-41",
+ "title": "CDI Listening Test 41",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Robert phones Medical Help Direct in the middle of the night about back pain",
+  "A school principal talks to parents about an upcoming three-day trip to an outdoor education centre",
+  "Liz from New Zealand and Scott from the UK plan a presentation about Stone Point, a historical site in New Zealand",
+  "A lecture on the Berber peoples of North Africa and the nomadic Tuaregs of the Sahara"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-41-part-1",
+   "title": "Part 1",
+   "context": "Robert phones Medical Help Direct in the middle of the night about back pain.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Medical Help Direct\nExample\n- Telephone number: 03786 439251\nPersonal Detail\n- Caller’s name: Robert [[1]]\n- Address: 27 [[2]]\n- Town/City: Moortown\n- Postcode: DP17 5HJ\n- Date of birth: [[3]] , 1975\nMedical Context\n- Doctor’s name: Dr Craven\n- Doctor’s address: Moortown Health Centre\n- Reason for call: Pain in his [[4]] back\n- Previous history: Similar back problem in June last year\nDetails of present problem\n- Started [[5]] ago\n- Got worse this [[6]]\n- No abdominal pain\nPossible cause\n- Lifting up a heavy [[7]]\nTreatment already applied\n- Has applied heat\n- Has taken [[8]]\nAdvice given\n- Try using [[9]]\n- Go to doctor tomorrow\n- Ask for information about [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Ridyard"
+       ],
+       "explanation": "\"Ridyard. That is R-I-D-Y-A-R-D.\" — caller spells his surname."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "Station Road"
+       ],
+       "explanation": "\"It is 27 Station Road.\" — Robert gives his address."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "25th February",
+        "25 February",
+        "25/2",
+        "25 Feb"
+       ],
+       "explanation": "\"The twenty fifth of February, nineteen seventy-five.\" — his date of birth."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "Lower"
+       ],
+       "explanation": "\"Can you tell me which part of the back?\" — \"Lower.\""
+      },
+      {
+       "n": 5,
+       "answer": [
+        "three days",
+        "3 days",
+        "three day"
+       ],
+       "explanation": "\"Since Monday, so that is three days now.\""
+      },
+      {
+       "n": 6,
+       "answer": [
+        "afternoon",
+        "this afternoon"
+       ],
+       "explanation": "\"Then this afternoon the pain suddenly got so bad that I [went to] bed.\""
+      },
+      {
+       "n": 7,
+       "answer": [
+        "box",
+        "a box"
+       ],
+       "explanation": "\"I lifted a box up from the floor that was heavier than I thought, and I think that is what did it.\""
+      },
+      {
+       "n": 8,
+       "answer": [
+        "painkillers",
+        "painkiller"
+       ],
+       "explanation": "\"And have you taken any painkillers?\" — \"Yes.\""
+      },
+      {
+       "n": 9,
+       "answer": [
+        "ice"
+       ],
+       "explanation": "\"One thing you could do now is to see if ice makes any difference. That sometimes helps.\""
+      },
+      {
+       "n": 10,
+       "answer": [
+        "exercise"
+       ],
+       "explanation": "\"You might get some advice from her about exercise. That is often the best way of dealing with this sort of problem.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "Robert phones Medical Help Direct in the middle of the night about back pain.\n▶ 00:02[Narrator] You will see that there is an example that has been done for you. On this occasion only, the conversation relating to this will be played first.\n▶ 00:16Narrator: Hello, this is Medical Help Direct. How can I help you?\n▶ 00:20Robert: Oh hello, I've got a problem with my back, um with it being the middle of the night. I can't go to the doctor, and I wonder if you could give me some advice.\n▶ 00:29Operator: Certainly. But first can I have your telephone number, please?\n▶ 00:33Robert: It's zero three seven eight six four three nine two five one.\n▶ 00:43Narrator: The man's telephone number is zero three seven eight six four three nine two five one.\n▶ 00:53[Narrator] So zero three seven eight six four three nine two five one has been written in the space. Now we shall begin.\n▶ 01:06[Narrator] You should answer the questions as you listen because you recording a second time. Listen carefully and answer questions what\n▶ 01:22Narrator: Hello?\n▶ 01:29Robert: With my back um with it being the middle of the night, I can't go to the doctor. And I wonder if you can give me some advice.\n▶ 01:35Operator: Certainly. But first, can I have your telephone number, please?\n▶ 01:40Robert: It's 03786 439251.\n▶ 01:46Operator: Okay. And if you could give me your first name, please?\n▶ 01:50Robert: Robert.\n▶ 01:51Operator: And your surname?\n▶ 01:52Robert: Ridyard. That's R I D Y A R D.\n▶ 01:58Operator: And now your address, please.\n▶ 02:00Robert: It's 27 Station Road.\n▶ 02:04Operator: Okay.\n▶ 02:05Robert: Moortown. And do you need the postcode?\n▶ 02:08Operator: Yes, please.\n▶ 02:09Robert: DP seventeen five H J.\n▶ 02:13Operator: And your date of birth?\n▶ 02:15Robert: The twenty fifth of February, nineteen seventy-five.\n▶ 02:19Operator: Fine. Now I just need to take details of your doctor.\n▶ 02:23Robert: She's called Doctor Craven.\n▶ 02:25Operator: And the surgery?\n▶ 02:26Robert: It's Moortown Health Centre Thanks.\n▶ 02:29Operator: Now can you tell me a bit more about what the problem is?\n▶ 02:32Robert: Well, like I said, it's my back.\n▶ 02:34Operator: Okay. Can you tell me which part of the back?\n▶ 02:38Robert: Lower.\n▶ 02:39Operator: And have you had any problems with your back before?\n▶ 02:42Robert: Yes, I had a bit of trouble last year, in June, I think. Or was it July? No, we went on holiday at the beginning of July and it had cleared up by then.\n▶ 02:52Operator: And when did it start this time? Has it just come on?\n▶ 02:55Robert: No, I've had it let's see.\n▶ 02:58Robert: Since Monday, so that's three days now. But it wasn't too bad at first. I mean I could just about get around though. I couldn't drive the car or anything. Then this afternoon the pet suddenly got so bad that I bed.\n▶ 03:13Robert: I've been since, but that hasn't helped.\n▶ 03:16Operator: And do you have any pain elsewhere? In your stomach or abdomen, for example? No.\n▶ 03:24[Narrator] Before you hear the rest of the conversation, you have some time to look at questions 7 to 10 on page 2.\n▶ 03:53[Narrator] Now listen and answer questions seven to ten.\n▶ 04:01Narrator: Okay.\n▶ 04:02Operator: Now have you any idea what caused the problem?\n▶ 04:05Robert: Well, I was tidying up my office and I lifted a box up from the floor that was heavier than I thought, and I think that's what did it.\n▶ 04:14Operator: Yes, it's easily done, isn't it? So you're in bed now?\n▶ 04:17Robert: Yes.\n▶ 04:18Operator: Have you tried applying heat to the back?\n▶ 04:20Robert: Yes, I've got a hot water bottle. That's usually the first thing I try.\n▶ 04:25Operator: And have you taken any painkillers?\n▶ 04:27Robert: Yes.\n▶ 04:28Operator: And other than that, you feel quite well.\n▶ 04:30Robert: I do, yes.\n▶ 04:31Operator: Right. Now, I can't diagnose or prescribe any medication, but I can offer you some advice. One thing you could do now is to see if ice makes any difference. That sometimes helps.\n▶ 04:44Operator: But don't put it directly onto your skin. Wrap it up in a towel or something. And don't leave it on for longer than twenty minutes.\n▶ 04:52Robert: Oh right. I haven't tried that before.\n▶ 04:54Operator: It can be useful sometimes. Now have you seen your doctor about this?\n▶ 04:59Robert: No, I just thought, well, everyone has back pain, but I've never had it as bad as this before.\n▶ 05:05Operator: I think you should go and see your doctor tomorrow, and she may be able to give you something to help.\n▶ 05:10Robert: Okay, I'll do that. I'm actually feeling a bit better now.\n▶ 05:13Operator: Good. And you might get some advice from her about exercise. That's often the best way of dealing with this sort of problem.\n▶ 05:20Robert: Okay, I'll ask her. Right.\n▶ 05:23Operator: Now, if you're worried about anything before tomorrow, you can always phone back. Our lines are open twenty four hours.\n▶ 05:29Robert: Thanks very much.\n▶ 05:34[Narrator] That is the end of section one. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-41-part-2",
+   "title": "Part 2",
+   "context": "A school principal talks to parents about an upcoming three-day trip to an outdoor education centre.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "A trip to the outdoor education centre will help the children",
+       "options": [
+        {
+         "key": "A",
+         "text": "create good relationships"
+        },
+        {
+         "key": "B",
+         "text": "manage without adult supervision"
+        },
+        {
+         "key": "C",
+         "text": "react positively to new challenges"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"We strongly believe children should be encouraged to try different things and not give up when it gets difficult.\" — react positively to new challenges (C)."
+      },
+      {
+       "n": 12,
+       "text": "To prepare their children for the trip, parents should",
+       "options": [
+        {
+         "key": "A",
+         "text": "let them try sleeping in a tent at home"
+        },
+        {
+         "key": "B",
+         "text": "make sure they get enough sleep before they leave"
+        },
+        {
+         "key": "C",
+         "text": "tell them that they will be in a tent with their friends"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"You can do this just by making sure they have some early nights before we go.\" — make sure they get enough sleep (B)."
+      },
+      {
+       "n": 13,
+       "text": "What do parents need to put in their children's backpack?",
+       "options": [
+        {
+         "key": "A",
+         "text": "plastic bags"
+        },
+        {
+         "key": "B",
+         "text": "snacks and biscuits"
+        },
+        {
+         "key": "C",
+         "text": "a small amount of money"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"What we do need in the backpacks are bags for cleaning up and for wet clothing, so plastic ones.\" — plastic bags (A). Biscuits go in the box; no money."
+      },
+      {
+       "n": 14,
+       "text": "What are children allowed to bring on the trip?",
+       "options": [
+        {
+         "key": "A",
+         "text": "electronic games"
+        },
+        {
+         "key": "B",
+         "text": "cell phones"
+        },
+        {
+         "key": "C",
+         "text": "penknives"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Cell phones are permitted, but they must be switched off at night.\" Penknives provided by centre; electronic games banned."
+      },
+      {
+       "n": 15,
+       "text": "How are parents selected to attend the trip?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The first ten parents to sign up will be able to go."
+        },
+        {
+         "key": "B",
+         "text": "Parents' names will be chosen from a box."
+        },
+        {
+         "key": "C",
+         "text": "Preference will be given to parents with camping skills."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"If you are absolutely sure you can come, put your name down on the sign up form and the first ten will be asked to come.\""
+      },
+      {
+       "n": 16,
+       "text": "Payment for the trip",
+       "options": [
+        {
+         "key": "A",
+         "text": "must be handed to the child's teacher."
+        },
+        {
+         "key": "B",
+         "text": "can be left at the school office."
+        },
+        {
+         "key": "C",
+         "text": "should be made directly to the outdoor education centre."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Payment to the centre is made by school, not by parents.\" — the school pays the centre directly (C). Parents can leave payment at office or use bank details."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Choose the correct letter, A–G, for each location.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "text": "Woodcarving studio",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"Just through the entrance you will see reception, [and to the side] the woodcarving studio. So you see where the main hall is located.\" — woodcarving studio is opposite reception, near the hall."
+      },
+      {
+       "n": 18,
+       "text": "Emergency meeting point",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"To the right of the hall and opposite the kitchen is the new barbecue area, and it is right next to that overlooking Forts Road.\" — Emergency meeting point is north of Forest Road."
+      },
+      {
+       "n": 19,
+       "text": "Conservation centre",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"The conservation centre is between the two bridges just below [the kayaks].\""
+      },
+      {
+       "n": 20,
+       "text": "Arts and crafts room",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"If your children likes drawing and painting, the arts and crafts room is to the right of the river, a little further up from the kayaks.\""
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening41-map.webp",
+      "alt": "Outdoor education centre map"
+     }
+    }
+   ],
+   "transcript": "A school principal talks to parents about an upcoming three-day trip to an outdoor education centre.\n▶ 06:10[Narrator] Now turn to section 2 on page 3. Part 2.\n▶ 06:16[Narrator] You will hear a principal of a school talking to a group of parents about a three-day trip for pupils to an outdoor education center. First, you have some time to look at questions 11 to 16.\n▶ 06:50[Narrator] Now listen carefully and answer questions eleven to sixteen. Good evening. It's good to see so many parents here. Let me begin by explaining why we go to the outdoor education center.\n▶ 07:03Principal: Well, by age ten, we feel the children are ready for a trip away from home, but still in a safe environment and under the guidance of a familiar adult.\n▶ 07:14Principal: At the school, we strongly believe children should be encouraged to try different things and not give up when it gets difficult. And that's what the center is all about, having a go.\n▶ 07:27Principal: Anyway, to start with, the sleeping arrangements. For some children, this will be their first time in a tent and away from home, so please prepare them.\n▶ 07:38Principal: You can do this just by making sure they have some early nights before we go. Another thing, there's space for three children per tent, so we can't guarantee your child will be in with their best friends.\n▶ 07:52Principal: So do make them aware of this. Now you should have received a list with the clothing the children will need in their backpack. But there are some extras. Please provide a packet of biscuits or maybe fruit bars.\n▶ 08:06Principal: But these need to go in the box in the school hall, not with the children. Actually, what we do need in the backpacks are bags for cleaning up and for wet clothing, so plastic ones, please.\n▶ 08:20Principal: A torch is a good idea, but don't worry about putting money in because there's nothing to buy. While we're on the subject, let's talk about some other items.\n▶ 08:31Principal: Cell phones are permitted, but they must be switched off at night and also off during the teaching sessions.\n▶ 08:38Principal: Also, for wood carving activities, knives will be provided by the centre so children shouldn't bring them from home.\n▶ 08:47Principal: Electronic games are banned, so rather than bring one of these, children should bring quiet board games.\n▶ 08:54Principal: Turning to the question of parent attendance, in the past we've had too many volunteers, so we have written names on bits of paper and pulled them out of the box. But then some parents have changed their minds.\n▶ 09:08Principal: So if you're absolutely sure you can come, put your name down on the sign up form and the first ten will be asked to come. Experience isn't required, we just want you to lend a hand.\n▶ 09:22Principal: Now I'm afraid the fee for the trip needs to be paid by the fifteenth. Payment to the center is made by school, not by parents.\n▶ 09:31Principal: And your teacher will be given your child a form with the school's bank account details if you want to use them to make payments. Otherwise, please leave payment in an envelope in the box at the school office.\n▶ 09:44[Narrator] Before you hear the rest of the talk, you have some time to look at questions 17 to 20.\n▶ 10:10[Narrator] Now listen and answer questions seventeen to twenty Right.\n▶ 10:15Principal: Let's have a look the centre. I hope you all have leaflet with a map on the back, and we'd like you to show this to your children before they go. Now, if you look at the map, you will see the entrance at the bottom.\n▶ 10:29Principal: Okay, so just through the entrance you'll see reception, now the wood carving studio. So you see where the main hall is located.\n▶ 10:39Principal: Well, to the right of the hall and opposite the kitchen is the new barbecue area, and it's right next to that overlooking Forts Road. It's crucial that children know where the emergency meeting point is.\n▶ 10:54Principal: If you look to the top of the map and to north of Forest Road, that's the location. It is on the same side of river as the tents. There's a lot going on at the river, for example, the conservation centre.\n▶ 11:08Principal: See the building marked kayaks on right side river bank? Well, the conservation centre is between the two bridges just below it.\n▶ 11:18Principal: I should also mention that if your child is not a confident swimmer, there are life jackets hanging all along the river bank.\n▶ 11:27Principal: If your children likes drawing and painting, the arts and crafts room is to the right of the river, a little further up from the kayaks. Okay, so are there any questions so far?\n▶ 11:40[Narrator] That is the end of part two."
+  },
+  {
+   "id": "cdi-listening-41-part-3",
+   "title": "Part 3",
+   "context": "Liz from New Zealand and Scott from the UK plan a presentation about Stone Point, a historical site in New Zealand.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "According to Liz, Stone Point played a key role in local history because",
+       "options": [
+        {
+         "key": "A",
+         "text": "it was used for defence or attack purposes."
+        },
+        {
+         "key": "B",
+         "text": "it was the landing point for the first Maori settlers."
+        },
+        {
+         "key": "C",
+         "text": "it was developed as a commercial port."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"It has been used by both Maori and European settlers as a place to shelter from attack or launch an attack for centuries.\" — defence or attack (A)."
+      },
+      {
+       "n": 22,
+       "text": "Scott and Liz agree that Maori originally chose to inhabit Stone Point because of",
+       "options": [
+        {
+         "key": "A",
+         "text": "its rich soil."
+        },
+        {
+         "key": "B",
+         "text": "the supply of fish."
+        },
+        {
+         "key": "C",
+         "text": "available building materials."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Initially the fishing opportunities would have been the attraction.\" — supply of fish (B)."
+      },
+      {
+       "n": 23,
+       "text": "Scott and Liz agree that using Maori terminology in their presentation",
+       "options": [
+        {
+         "key": "A",
+         "text": "will be of interest to international students."
+        },
+        {
+         "key": "B",
+         "text": "is required as a component of their research."
+        },
+        {
+         "key": "C",
+         "text": "would be best avoided."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"We need to keep most Maori terminology out of the presentation. Otherwise, a lot of the international students would not be able to follow us.\" — best avoided (C)."
+      },
+      {
+       "n": 24,
+       "text": "When Scott mentions the engines at Stone Point, Liz advises him to",
+       "options": [
+        {
+         "key": "A",
+         "text": "focus on the human aspect instead."
+        },
+        {
+         "key": "B",
+         "text": "check the accuracy of specific dates."
+        },
+        {
+         "key": "C",
+         "text": "explain complex technical language."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"I would not go into the technical side... it is more interesting to look at the impact Stone Point had on the people's lives at the time.\" — focus on the human aspect (A)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What do Liz and Scott agree they must do for each of the following sections of their presentation on Stone Point? Choose SIX answers from the box and write the correct letter, A–H, next to questions 25–30.",
+     "title": "Things to do",
+     "options": [
+      {
+       "key": "A",
+       "text": "provide further description"
+      },
+      {
+       "key": "B",
+       "text": "find images"
+      },
+      {
+       "key": "C",
+       "text": "set up an interview"
+      },
+      {
+       "key": "D",
+       "text": "check author's details"
+      },
+      {
+       "key": "E",
+       "text": "check the exact location"
+      },
+      {
+       "key": "F",
+       "text": "obtain official permission"
+      },
+      {
+       "key": "G",
+       "text": "be more objective"
+      },
+      {
+       "key": "H",
+       "text": "reduce it in length"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "text": "Early Maori inhabitation of Stone Point",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"For the early Maori habitation section, we have to look at the material we have used again and make sure we know who the writers were and when they wrote it.\" — check author's details (D)."
+      },
+      {
+       "n": 26,
+       "text": "The use of Stone Point as a lookout point",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"For the part about Stone Point being used as a lookout point, I am sure we can locate some drawings of how Stone Point looked then and the kind of ships.\" — find images (B)."
+      },
+      {
+       "n": 27,
+       "text": "The reconstruction of the fort",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"We haven't got a lot of detail for the reconstruction of the fort. We should add some more information about what it was the prisoners were adding to it.\" — provide further description (A)."
+      },
+      {
+       "n": 28,
+       "text": "Modernisation of the fort in the 1930s'40s",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"I will ring the Department of Conservation and see if they will agree to let me film the site.\" — obtain official permission (F)."
+      },
+      {
+       "n": 29,
+       "text": "Uses of Stone Point from 1950s to the present day",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"For the 1950s onwards, could you also arrange a meeting with someone from the Department of Conservation to ask them about their restoration work?\" — set up an interview (C)."
+      },
+      {
+       "n": 30,
+       "text": "The use of Stone Point as a public park",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"Where is the boundary exactly? Does it go all the way to the beach? Not sure. I'll check that out.\" — check the exact location (E)."
+      }
+     ]
+    }
+   ],
+   "transcript": "Liz from New Zealand and Scott from the UK plan a presentation about Stone Point, a historical site in New Zealand.\n▶ 11:42[Narrator] You now have half a minute between two students, Liz from New Zealand and Scott from the UK, who are working on a presentation about a key historical site in New Zealand.\n▶ 11:56[Narrator] First, you have some time to look at questions twenty-one to twenty-four on page five.\n▶ 12:32[Narrator] Now listen carefully and answer questions 21 to 24.\n▶ 12:40Liz: Hi Scott. Here are my notes. Let's sort this presentation out then. The first thing I found out about Stone Point is it's an extinct volcanic cone. You probably know that already, being a New Zealander.\n▶ 12:52Speaker: Yes, and there are two other cones nearby, which also overlook the harbor. Right. Yeah, the first settlers of New Zealand, the Maori, sailed to New Zealand thousands of years after these volcanoes erupted.\n▶ 13:05Speaker: I think the Tudor allocated us this topic, though, because of Stone Point's significant historical role.\n▶ 13:12Speaker: It's been used by both Maori and European settlers as a place to shelter from attack or launch an attack for centuries. Yeah, and the fact it was an ideal place for building a village, it would have been quite a sheltered spot.\n▶ 13:26Speaker: I suppose the Maori settled there because they thought the volcanic soil would help their crops grow. Well, they would have realized the benefits of the soil after a few good harvests, but initially the fishing opportunities would have been the attraction. Hmm, you're right.\n▶ 13:41Speaker: Actually, I also read that Maori regards Stone Point as taunga. I believe that means a treasured thing. Wow, your Maori vocabulary is improving, Scott. Hmm.\n▶ 13:54Speaker: We do have to deal with Stone Point's cultural value for Maori. That's still part of its historical significance. But we need to keep most Maori terminology out of the presentation.\n▶ 14:05Speaker: Otherwise, a lot of the international students won't be able to follow us.\n▶ 14:10Speaker: That's a shame, I'm sure they'd be interested. I mean, I am, but yeah, we wouldn't be able to explain it in the time allowed, so I guess we have to stick to English. Anyway, European migrants turned Stone Point into a lookout point for ships.\n▶ 14:25Speaker: Then it became a fort, an army base in the late 1880s, and then during the world wars, the fort was modernized again. It's also been a public park sometimes.\n▶ 14:36Speaker: I'd prefer to devote more of the presentation to the military use of Stone Point. There are some great websites about the engines they installed. Sorry, I wouldn't go into the technical side if I were you.\n▶ 14:48Speaker: If you start describing mechanical stuff, people will switch off. I think it's more interesting to look at the impact Stone Point had on the people's lives at the time.\n▶ 14:58Speaker: I mean, for example, there were about twenty-five years when they used local prisoners to build the tunnels and the underground runes. They lived there too.\n▶ 15:09Liz: Yeah, I guess if we can find some first hand accounts.\n▶ 15:16[Narrator] Before you hear the rest of the discussion, you have some time to look at questions twenty five to thirty on page six.\n▶ 15:54[Narrator] Now listen and answer questions 25 to 30.\n▶ 16:02Speaker: Okay, so let's make a checklist of things to do. For the early Maorian habitation section, we have to look at the material we've used again and make sure we know who the writers were and when they wrote it.\n▶ 16:15Speaker: Yes, that needs work. And for the part about Stone Point being used as a lookout point, I'm sure we can locate some drawings of how Stone Point looked then and the kind of ships coming in. Nice. And what else?\n▶ 16:28Speaker: We haven't got a lot of detail for the reconstruction of the fort. We should add some more information about what it was the prisoners were adding to it. Okay, I'll do that bit too.\n▶ 16:39Speaker: So I'll deal with the section regarding the modernization that happened in the 1930s and 40s. I mean, that's a bit where we have the most visible evidence of historic buildings.\n▶ 16:51Speaker: I'll ring the Department of Conservation and see if they'll agree to let me film the site. Maybe allow me access to some of the tunnels the public don't see. Okay.\n▶ 17:02Speaker: For the 1950s onwards, could you also arrange a meeting with someone from the Department of Conservation to ask them about their restoration work? I could try. Oh, and just about its use as a public park today. Where is the boundary exactly?\n▶ 17:16Speaker: Does it go all the way to the beach? Not sure. I'll check that out. Great. I suppose it would finish off the presentation nicely if we explain the future plans for the site.\n▶ 17:31[Narrator] That is the end of section 3. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-41-part-4",
+   "title": "Part 4",
+   "context": "A lecture on the Berber peoples of North Africa and the nomadic Tuaregs of the Sahara.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "The Berbers and Tuaregs of North Africa\nBackground\n- Inhabited North Africa as long ago as the 7th century\n- Bedouin Arab invasion in the 12th century destroyed their peasant economy\n- Many left settlements to wander with animals through [[31]] and mountains\nThree Types of Berber\n- [[32]] nomads — farmers (lowlands in winter, mountains in summer)\n- Fully nomadic Berbers — moved between oases\n- Oasis-settled Berbers — grew fruit and vegetables; made [[33]] for cooking\n- Increasingly relied on [[34]] for transport in the dry Sahel\nSettled Berber Life\n- Built single-story stone houses by quarrying local rock\n- Small-scale industries (pottery, weaving) done by women\n- Men met in the village [[35]] to discuss affairs\nTuaregs\n- Tents made from up to 40 goatskins sewn together\n- When skins not available, mats made of [[36]] or palm leaves were used\n- Society was strictly hierarchical — from nobles down to laborers whose ancestors were [[37]]\n- Men wore a [[38]] veil in front of women, strangers and in-laws (called ‘blue men’)\nModern Tuaregs\n- Numbers in the Sahel have declined due to droughts\n- Many moved into Burkina Faso to find new grazing lands for their [[39]]\n- Mali government employs Tuaregs as [[40]] for desert tourism",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "deserts",
+        "desert"
+       ],
+       "explanation": "\"Many Berbers left their settlements to lead a nomadic life by wandering with their animals through the deserts and across the different mountains.\""
+      },
+      {
+       "n": 32,
+       "answer": [
+        "seasonal"
+       ],
+       "explanation": "\"Some became farmers cultivating the lowlands in the winter and grazing their flocks of animals in the mountains during the summer. They are called seasonal nomads.\""
+      },
+      {
+       "n": 33,
+       "answer": [
+        "olive oil",
+        "olive-oil"
+       ],
+       "explanation": "\"A third group settled by the oases and grew fruit and vegetables... as well as making olive oil, which they used for cooking.\""
+      },
+      {
+       "n": 34,
+       "answer": [
+        "camels",
+        "camel"
+       ],
+       "explanation": "\"The Berbers relied more and more on camels for transporting their families and their goods.\""
+      },
+      {
+       "n": 35,
+       "answer": [
+        "square"
+       ],
+       "explanation": "\"The life of a settled community was governed by the men, who met regularly in the village square to discuss affairs and make decisions.\""
+      },
+      {
+       "n": 36,
+       "answer": [
+        "grass"
+       ],
+       "explanation": "\"If the skins were not available, they wove mats made of grass or palm leaves and hung them over a frame.\""
+      },
+      {
+       "n": 37,
+       "answer": [
+        "slaves",
+        "slave"
+       ],
+       "explanation": "\"Ranging from nobles or aristocrats downwards to laborers whose ancestors had once been slaves.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "dark blue",
+        "darkblue"
+       ],
+       "explanation": "\"All adult males wore a dark blue veil in the presence of women, strangers and in-laws.\""
+      },
+      {
+       "n": 39,
+       "answer": [
+        "herds",
+        "herd"
+       ],
+       "explanation": "\"Those whose animals were fortunate enough to survive have moved away from the Southern Sahara into Burkina Faso in order to find new grazing lands for their herds.\""
+      },
+      {
+       "n": 40,
+       "answer": [
+        "guides",
+        "guide"
+       ],
+       "explanation": "\"The tourism department of the Mali government employs some Tuaregs who act as guides.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "A lecture on the Berber peoples of North Africa and the nomadic Tuaregs of the Sahara.\n▶ 18:07[Narrator] Now turn to section four on page seven. Section four. You will hear part of a lecture on rural development.\n▶ 18:18[Narrator] First you have some time to look at questions thirty-one to forty on page seven.\n▶ 19:04[Narrator] Now listen carefully and answer questions 31 to 40.\n▶ 19:11Lecturer: Good morning everyone. Now you'll remember that last week we looked at the migration of people from the interior of West Africa to various coastal towns with special reference to Ghana.\n▶ 19:23Lecturer: Today we're going to focus on the people known as the Berbers who live in North Africa.\n▶ 19:29Lecturer: The Berbers inhabited this part of Africa as long ago as the 7th century, and their society was based on tribes which were scattered throughout a number of countries: Algeria, Morocco, Libya, and Mali.\n▶ 19:43Lecturer: However, at some point in the 12th century, the area was invaded by Bedouin Arabs. These people destroyed the Berbers' peasant economy.\n▶ 19:52Lecturer: As a result, many Berbers left their settlements to lead a nomadic life by wandering with their animals through the deserts and across the different mountains.\n▶ 20:02Lecturer: Over the centuries, many Berbers migrated to other countries like Spain and France to work as laborers, taking with them their culture and traditions, and their descendants remain there until this day.\n▶ 20:15Lecturer: Not all the Berbers led a fully nomadic life. There were three different groups. Some became farmers cultivating the lowlands in the winter and grazing their flocks of animals in the mountains during the summer.\n▶ 20:29Lecturer: They are called seasonal nomads. Some Berbers who led a completely nomadic life tended to move from one oasis to another. A third group settled by the Oases.\n▶ 20:41Lecturer: And grew fruit and vegetables like dates and eggplants, as well as making olive oil, which they used for cooking. Traditionally, Berbers kept cattle, sheep, and goats, together with oxen, mules, and horses.\n▶ 20:56Lecturer: Now, in the Sahel region of North Africa, that's the area south of the Sahara Desert, the region became and still is becoming increasingly dry and arid.\n▶ 21:06Lecturer: So the Berbers relied more and more on camels for transporting their families and their goods. How did these different groups of people survive in such harsh conditions? Where did they live?\n▶ 21:20Lecturer: Well, Berbers who stayed put in one place built single-story stone houses for protection by quarrying the local rock.\n▶ 21:29Lecturer: Whereas nomadic Berbers carried their homes with them and erected temporary tents, settled Berbers developed various small-scale industries such as pottery making and weaving, but these tasks were generally left to the Berber women.\n▶ 21:44Lecturer: As you might expect, though, the life of a settled community was governed by the men, who met regularly in the village square to discuss affairs and make decisions.\n▶ 21:58Lecturer: Now let's turn to the Tuaregs, who belong to a nomadic Berber group and move mainly in the central and western Sahara Desert, north of the river Niger.\n▶ 22:09Lecturer: The word Tuareg comes from the Arabic Tawarek and means God forsaken. Desert Tuareg carried tents made of strips of goatskins sewn together.\n▶ 22:21Lecturer: As many as forty skins were needed to make a complete tent. If the skins weren't available, they wove mats made of grass or palm leaves and hung them over a frame so that the tent looked like a humped dome.\n▶ 22:35Lecturer: Tuareg society was traditionally very feudal and organized as a strict hierarchy, ranging from nobles or aristocrats downwards to laborers whose ancestors had once been slaves.\n▶ 22:50Lecturer: Tuaregs were famous for their warlike qualities and fierce independence. In fact, one of the greatest insults was to suggest to a Tuareg that his father had died in his bed and not while fighting.\n▶ 23:04Lecturer: Tuareg men were sometimes called blue men, as all adult males wore a dark blue veil in the presence of women, strangers and in laws.\n▶ 23:13Lecturer: Legend had it that a Tuareg man couldn't be recognized unless he was wearing this veil. But this custom of the veil began to disappear as more and more Tuaregs became urbanized and moved to the towns.\n▶ 23:27Lecturer: I mentioned earlier how dry the Sahel region has become, and there have been very severe droughts over the past 30 years. This has meant that the number of Tuaregs living in the area has declined.\n▶ 23:39Lecturer: Those whose animals were fortunate enough to survive have moved away from the Southern Sahara into Burkina Faso in order to find new grazing lands for their herds.\n▶ 23:50Lecturer: If there's one city which people associate with the Sahara Desert, it's probably Timbuktu. But what most people don't know is that Timbuktu was founded by Tuareg nomads almost a thousand years ago.\n▶ 24:05Lecturer: The city became the focal point of the trans Saharan caravan routes. North African merchants flocked there to do business, and trading in gold and salt flourished.\n▶ 24:16Lecturer: For many years, Timbuktu was considered inaccessible. But today what is left of the city attracts a small number of tourists.\n▶ 24:26Lecturer: The tourism department of the Mali government employs some Tuaregs who act as guides.\n▶ 24:32Lecturer: Essential, really, when you realize that it's only the Tuaregs who can find their way around the desert using the sand dunes as landmarks.\n▶ 24:41Lecturer: Right, I'll take questions now before I go on to discuss Tamashek, the language spoken by the Tuaregs, which also has an alphabet called\n▶ 24:54[Narrator] That is the end of section four. You now have half a minute to check your answers."
+  }
+ ],
+ "audio": {
+  "file": "listening-41.mp3",
+  "durationSec": 1506,
+  "questionTimes": {
+   "1": 115,
+   "2": 120,
+   "3": 135,
+   "4": 158,
+   "5": 175,
+   "6": 183,
+   "7": 245,
+   "8": 265,
+   "9": 271,
+   "10": 320,
+   "11": 423,
+   "12": 458,
+   "13": 486,
+   "14": 511,
+   "15": 542,
+   "16": 562,
+   "17": 614,
+   "18": 654,
+   "19": 668,
+   "20": 687,
+   "21": 792,
+   "22": 806,
+   "23": 833,
+   "24": 888,
+   "25": 962,
+   "26": 975,
+   "27": 988,
+   "28": 999,
+   "29": 1022,
+   "30": 1036,
+   "31": 1192,
+   "32": 1218,
+   "33": 1241,
+   "34": 1266,
+   "35": 1304,
+   "36": 1341,
+   "37": 1355,
+   "38": 1384,
+   "39": 1419,
+   "40": 1466
+  }
+ }
+}

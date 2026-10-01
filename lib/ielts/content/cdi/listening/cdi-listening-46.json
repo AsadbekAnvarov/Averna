@@ -1,0 +1,670 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-46",
+ "title": "CDI Listening Test 46",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-46-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Music Lessons\nTeacher: Ruth Bracken Ages taught: 7 to 16\nInstrument Jamie will start with: [[1]]\nRuth also teaches [[2]] (only to lower levels)\nRuth also teaches [[3]] (for some students)\nCost for an hour’s lesson: £ [[4]]\nBooks & Shop\n- Beginners must buy book called “Easy [[5]] ”\n- Best shop to buy it in: [[6]] (on High Street)\nRewards & Motivation\n- Every month Ruth organizes a [[7]] for her students\n- Prizes/rewards given: gold stars, then a [[8]]\nPractical Details\n- Jamie must take a [[9]] to every lesson\n- Day and time of music lesson: [[10]] at 6 pm",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "piano"
+       ],
+       "explanation": "\"I specialize in piano.\" — Ruth's primary instrument."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "guitar"
+       ],
+       "explanation": "\"I do teach guitar, but that's only for the lower levels.\" — guitar for lower levels."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "drums"
+       ],
+       "explanation": "\"I do some work with drums on request.\" — drums on request only."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "17.50",
+        "17.5"
+       ],
+       "explanation": "\"For the one hour, which I always start with for beginners, it'd be just 17 pounds fifty.\" — £17.50 per hour."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "Tunes"
+       ],
+       "explanation": "\"I ask all my beginners to buy Easy Tunes, which is a small book to get them started.\" — the beginner book."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "Sound International"
+       ],
+       "explanation": "\"The name of the shop's Sound International. At the end of the High Street.\" — shop name."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "concert"
+       ],
+       "explanation": "\"I regularly hold about every four weeks, a concert for students.\" — monthly concert."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "CD"
+       ],
+       "explanation": "\"When they've won a certain number [of gold stars], I give them a CD.\" — CD as reward."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "notebook"
+       ],
+       "explanation": "\"Could you make sure that Jamie has a notebook? And if he could bring it to every lesson.\" — notebook required."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Tuesday"
+       ],
+       "explanation": "\"We'll try Tuesday then. Is that at six? Yes.\" — Jamie's lesson day."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 1:30[Narrator] Part one. You will hear a telephone conversation in which a father is arranging private music lessons for his son with a music teacher.\n▶ 1:35Peter: Hello? Is that Ruth Bracken?\n▶ 1:33Ruth: Yes, speaking.\n▶ 1:35Peter: My name's Peter Schole. I'm a friend of Jane Jenkinson. Her daughter takes lessons with you, and she recommended you highly.\n▶ 1:46Peter: I understand you do music lessons for children.\n▶ 1:49Ruth: That's right. Ages seven up to sixteen.\n▶ 1:53Peter: Great. I was wondering if you had a vacancy for a beginner. It's my son Jamie. He's thirteen years old.\n▶ 2:00Ruth: Yes, you're in luck. I do.\n▶ 2:04Ruth: What instrument were you thinking of? I specialize in piano .\n▶ 2:08Peter: Right. Fine. We'd like to start with that. But you do other instruments as well. How about violin?\n▶ 2:15Ruth: I'm afraid not. I do teach guitar , but that's only for the lower levels.\n▶ 2:23Ruth: And I do some work with drums on request, but I prefer to limit that.\n▶ 2:28Peter: He might like to try them too.\n▶ 2:30Ruth: Well, we'll see how it goes. I think it's best for students to decide for themselves when they've had some exposure to one instrument.\n▶ 2:39Peter: Right. And what do you charge? Jane mentioned £30 a lesson.\n▶ 2:44Ruth: Oh no, that was because her daughter had a full two-hour session. For the one hour, which I always start with for beginners, it'd be just 17 pounds fifty .\n▶ 2:54Peter: Oh, that's very reasonable.\n▶ 3:36[Narrator] Now listen and answer questions five to ten.\n▶ 3:43Peter: Now, can I ask a few questions about the lessons themselves?\n▶ 3:47Peter: Which book do you use?\n▶ 3:49Ruth: I ask all my beginners to buy Easy Tunes , which is a small book to get them started.\n▶ 3:56Peter: Fine. And where's the best place to buy the book?\n▶ 3:59Ruth: The name of the shop's Sound International . At the end of the High Street, next to the new bookshop.\n▶ 4:09Ruth: And something you might like to know is that I regularly hold, about every four weeks, a concert for students.\n▶ 4:16Peter: Oh yes, Jane mentioned that. And who comes to it?\n▶ 4:20Ruth: Anyone who wants to. I found it's a really good incentive for my pupils to show off what they've learned to their family and the other pupils.\n▶ 4:28Peter: Yes, it sounds a really good idea. I remember when I was learning the violin, I got quite demotivated after a while, because me and my music teacher were the only people who heard me.\n▶ 4:43Ruth: Yes, that's what I've found. And I also have a system of giving out small rewards and prizes. I give gold stars.\n▶ 4:54Ruth: And when they've won a certain number, I give them a CD .\n▶ 4:58Peter: That's right. I remember Jane mentioned her daughter was thrilled to get hers at the end of term. What a good idea.\n▶ 5:13Ruth: Now, is there anything else? Oh yes. Could you make sure that Jamie has a notebook ?\n▶ 5:18Ruth: And if he could bring it to every lesson, he can note down advice and I can put stickers and comments in there as well.\n▶ 5:26Ruth: Oh, we've forgotten the most important thing. Which day for Jamie's lessons?\n▶ 5:32Peter: How silly to have forgotten that. Any evening would suit us.\n▶ 5:36Ruth: Well, I'm full up six to nine on Monday, Wednesday, and Thursday. Would you prefer Tuesday or Friday?\n▶ 5:45Peter: You don't do Saturday?\n▶ 5:47Ruth: Sorry.\n▶ 5:48Peter: We'll try Tuesday then. Is that at six?\n▶ 5:51Ruth: Yes. So we'll see Jamie then.\n▶ 6:02[Narrator] That is the end of part one."
+  },
+  {
+   "id": "cdi-listening-46-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "Who is the speaker speaking on behalf of?",
+       "options": [
+        {
+         "key": "A",
+         "text": "her own company"
+        },
+        {
+         "key": "B",
+         "text": "a charity"
+        },
+        {
+         "key": "C",
+         "text": "local government"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"I actually run a company which I set up with the aim of matching the many people who'd like to volunteer...\" — her own company (A)."
+      },
+      {
+       "n": 12,
+       "text": "Immediately after the talk there will be the chance to",
+       "options": [
+        {
+         "key": "A",
+         "text": "watch a video."
+        },
+        {
+         "key": "B",
+         "text": "see an exhibition."
+        },
+        {
+         "key": "C",
+         "text": "ask questions."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Then you'll have time to pop into the next room where there'll be a display...\" — a display/exhibition (B)."
+      },
+      {
+       "n": 13,
+       "text": "The speaker says there is a particular need for volunteers who",
+       "options": [
+        {
+         "key": "A",
+         "text": "are willing to deal with local issues."
+        },
+        {
+         "key": "B",
+         "text": "possess specific practical skills."
+        },
+        {
+         "key": "C",
+         "text": "can work at evenings and weekends."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"But we especially welcome people who are willing to get to grips with matters affecting the local community.\" — local issues (A)."
+      },
+      {
+       "n": 14,
+       "text": "What do volunteers often receive?",
+       "options": [
+        {
+         "key": "A",
+         "text": "travel expenses"
+        },
+        {
+         "key": "B",
+         "text": "free meals"
+        },
+        {
+         "key": "C",
+         "text": "useful references"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"people can usually get letters of recommendation... of great benefit in helping them get a college place or paid work.\" — useful references (C)."
+      },
+      {
+       "n": 15,
+       "text": "Volunteers often say that volunteering has helped them become more",
+       "options": [
+        {
+         "key": "A",
+         "text": "contented."
+        },
+        {
+         "key": "B",
+         "text": "caring."
+        },
+        {
+         "key": "C",
+         "text": "cooperative."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"They feel they're now much more positive and happy about their own situation.\" — more contented/positive (A)."
+      },
+      {
+       "n": 16,
+       "text": "What kind of project did Hambleford volunteers complete last month?",
+       "options": [
+        {
+         "key": "A",
+         "text": "a construction project"
+        },
+        {
+         "key": "B",
+         "text": "a wildlife project"
+        },
+        {
+         "key": "C",
+         "text": "a street art project"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"some lovely paintings of flowers and birds on the walls of some local houses... all these were done by volunteers.\" — street art (C)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What information does the speaker give about volunteering in each of the following places? Choose FOUR answers from the box and write the correct letter, A–G, next to Questions 17–20.",
+     "title": "Information",
+     "options": [
+      {
+       "key": "A",
+       "text": "Physical strength is important."
+      },
+      {
+       "key": "B",
+       "text": "All ages of volunteer are welcome."
+      },
+      {
+       "key": "C",
+       "text": "It often leads to new friendships."
+      },
+      {
+       "key": "D",
+       "text": "It can help with career decisions."
+      },
+      {
+       "key": "E",
+       "text": "It can be an enjoyable way to spend a holiday."
+      },
+      {
+       "key": "F",
+       "text": "There is a range of opportunities."
+      },
+      {
+       "key": "G",
+       "text": "Training is provided."
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "text": "Hambleford Castle",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"there are really good workshops for volunteers to attend before they start.\" — training is provided (G)."
+      },
+      {
+       "n": 18,
+       "text": "the hospitals",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"just a friendly face to go around offering patients... simply a chat.\" — leads to new friendships (C)."
+      },
+      {
+       "n": 19,
+       "text": "the museum",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"The experience they get makes it easier for them to make up their mind one way or the other.\" — career decisions (D)."
+      },
+      {
+       "n": 20,
+       "text": "the schools",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"they're just as happy with people who haven't completed their own education yet as with young parents or pensioners.\" — all ages welcome (B)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 7:09[Narrator] Part two. You will hear a woman talking to a group of people in a town called Hambleford about opportunities to do voluntary work there.\n▶ 8:09[Narrator] Now listen carefully and answer questions 11 to 16.\n▶ 8:17Speaker: Thank you for responding to our advert and coming along this evening to find out more about volunteering in our area.\n▶ 8:27Speaker: You perhaps think I'm a local government official, but that's not the case, though they have given their support to my work.\n▶ 8:35Speaker: I actually run a company which I set up with the aim of matching the many people who'd like to volunteer to the charities and other organizations that need their help.\n▶ 8:46Speaker: The plan for the evening is that I'll give you a brief introductory talk.\n▶ 8:51Speaker: Then you'll have time to pop into the next room where there'll be a display giving a lot more detailed information about volunteering opportunities in the area. You can have a look round there for half an hour.\n▶ 9:05Speaker: Then we'll reassemble here to watch a short video before you have the opportunity to ask me any questions.\n▶ 9:14Speaker: One thing I'm often asked is what sort of people are required as volunteers? Are any special skills in demand? The answer is simple.\n▶ 9:26Speaker: People who can offer special skills are certainly welcome, but so is anyone else. Everyone can be useful, regardless of whether they can only offer one evening every now and then.\n▶ 9:41Speaker: But we especially welcome people who are willing to get to grips with matters affecting the local community.\n▶ 9:48Speaker: The fact that you're volunteering of course means that you won't receive any money for the work you do, though there's often a free cup of coffee.\n▶ 9:58Speaker: Volunteers are very unlikely to get their bus fares paid for, but people can usually get letters of recommendation from the place where they volunteered, and these can be of great benefit in helping them get a college place or paid work.\n▶ 10:14Speaker: And volunteers often report that volunteering has helped them psychologically too. They feel they're now much more positive and happy about their own situation.\n▶ 10:25Speaker: They say this isn't so much a matter of the experience gained through working with others; it's more that thinking about the circumstances of other people has affected their own mental attitude.\n▶ 10:38Speaker: Let me now give you an example of a project that volunteers in Hambleford completed last month. You may have seen some lovely paintings of flowers and birds on the walls of some local houses . These make the town look so much more colourful. Believe it or not, all these were done by volunteers.\n▶ 11:49[Narrator] Now listen and answer questions seventeen to twenty.\n▶ 11:56Speaker: So now, to help you decide what kind of volunteering to do, I'll tell you about some places that particularly need volunteers. First of all, Hambleford Castle.\n▶ 12:08Speaker: They need volunteers to take groups of visitors around this ancient building and explain its history.\n▶ 12:15Speaker: You will need to find out a bit about the history yourself, but don't worry, there are really good workshops for volunteers to attend before they start .\n▶ 12:29Speaker: The two local hospitals always need volunteers. They don't only need people to help with duties like making beds; they also need some office support, or just a friendly face... a cup of tea, a daily paper, or simply a chat .\n▶ 12:46Speaker: The town has an excellent museum which attracts visitors from all over the world, particularly during school holidays.\n▶ 12:55Speaker: Volunteering there is popular with young people who are considering taking up paid museum work when they complete their education. The experience they get makes it easier for them to make up their mind one way or the other.\n▶ 13:18Speaker: Some of you might be interested in working in schools. There are opportunities to help children with reading. Surprisingly, no special teaching experience or qualifications are needed. And they're just as happy with people who haven't completed their own education yet as with young parents or pensioners.\n▶ 13:33Speaker: For people who enjoy outdoor work, there are opportunities to help look after local parks, mainly jobs like picking up litter and so on.\n▶ 13:57Speaker: Sports groups also welcome volunteers prepared to help with coaching youngsters. Such people are particularly needed during school holidays. You don't need to be a top sports person yourself, but you should have played the sport in question.\n▶ 14:10Speaker: Finally, there's the local theatre. It's a building of considerable historic interest, and it attracts a lot of tourists. They're looking for people who are able to act as guides to people who don't speak English. So we need people who speak other languages.\n▶ 14:40[Narrator] That is the end of part two."
+  },
+  {
+   "id": "cdi-listening-46-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Maggie and Joe are working on their project together because",
+       "options": [
+        {
+         "key": "A",
+         "text": "their tutor arranged it that way."
+        },
+        {
+         "key": "B",
+         "text": "they are interested in the same topic area."
+        },
+        {
+         "key": "C",
+         "text": "they live conveniently close to each other."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"the tutor can't have known that when he said we should work in a pair.\" — tutor arranged it (A)."
+      },
+      {
+       "n": 22,
+       "text": "The tutor told the students that their choice of topic had to be",
+       "options": [
+        {
+         "key": "A",
+         "text": "relevant for their future career."
+        },
+        {
+         "key": "B",
+         "text": "clearly focused."
+        },
+        {
+         "key": "C",
+         "text": "original."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"It's more important that it isn't too broad and vague.\" — must be clearly focused (B)."
+      },
+      {
+       "n": 23,
+       "text": "Maggie and Joe decide that their project should deal with a particular",
+       "options": [
+        {
+         "key": "A",
+         "text": "historical period."
+        },
+        {
+         "key": "B",
+         "text": "social issue."
+        },
+        {
+         "key": "C",
+         "text": "film director."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"looking in-depth at films of the 1950s. Let's go with that.\" — a historical period (A)."
+      },
+      {
+       "n": 24,
+       "text": "Joe and Maggie agree that getting down to the project is likely to be",
+       "options": [
+        {
+         "key": "A",
+         "text": "similar to working on other assignments."
+        },
+        {
+         "key": "B",
+         "text": "the most enjoyable part of their course."
+        },
+        {
+         "key": "C",
+         "text": "hard to combine with their other work."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"It won't be easy given everything else we've got to do at the same time.\" — hard to combine with other work (C)."
+      },
+      {
+       "n": 25,
+       "text": "What do Maggie and Joe both expect to be a problem?",
+       "options": [
+        {
+         "key": "A",
+         "text": "getting access to all the resources they need"
+        },
+        {
+         "key": "B",
+         "text": "keeping to word limits for the project"
+        },
+        {
+         "key": "C",
+         "text": "sharing out the work that needs to be done"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"the main difficulty is likely to be making sure we don't get carried away and write more than we're allowed.\" — word limits (B)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What has the tutor recommended about each of the following projects done by previous students? Choose FIVE answers from the box and write the correct letter, A–H, next to Questions 26–30.",
+     "title": "Reasons for recommendation",
+     "options": [
+      {
+       "key": "A",
+       "text": "good choice of images"
+      },
+      {
+       "key": "B",
+       "text": "clearly presented references"
+      },
+      {
+       "key": "C",
+       "text": "idea for coping with extra material"
+      },
+      {
+       "key": "D",
+       "text": "clearly organized content"
+      },
+      {
+       "key": "E",
+       "text": "good use of the literature"
+      },
+      {
+       "key": "F",
+       "text": "the right level of detail"
+      },
+      {
+       "key": "G",
+       "text": "effectively argued"
+      },
+      {
+       "key": "H",
+       "text": "thorough proofreading"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "text": "Early French cinema",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The tutor said that was a good example of how to list our sources.\" — clearly presented references (B)."
+      },
+      {
+       "n": 27,
+       "text": "Black and white movies",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"An appropriate amount, the tutor said.\" — the right level of detail (F)."
+      },
+      {
+       "n": 28,
+       "text": "The development of the thriller",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"the section headings were very helpful and it was all presented in a very logical way.\" — clearly organized content (D)."
+      },
+      {
+       "n": 29,
+       "text": "The role of music in film",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"the tutor said it presented that point of view convincingly.\" — effectively argued (G)."
+      },
+      {
+       "n": 30,
+       "text": "The future of the cinema",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"The writer's selection of visual material was the particular strength of that project.\" — good choice of images (A)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 15:16[Narrator] Part three. You will hear two students called Maggie and Joe talking about a film studies project they are working on together.\n▶ 16:21[Narrator] Now listen carefully and answer questions 21 to 25.\n▶ 16:29Joe: Hi Maggie. I'm looking forward to working on the Film Studies project for our modern cinema course, are you?\n▶ 16:36Maggie: Yes, very much. I'm really glad we're working on it together.\n▶ 16:41Joe: Yes. It's so handy given that we live on the same street. But the tutor can't have known that when he said we should work in a pair.\n▶ 16:50Maggie: Yes, I think he just thought we tend to look at things in different ways. So we might end up with an interesting approach to whatever topic we go for.\n▶ 16:59Joe: At least we've got plenty of time to complete the project. We don't have to hand it in till we come back after the summer holiday, do we?\n▶ 17:07Maggie: Actually, that's when the tutors should give it back to us. We need to hand it in next term, after the end-of-year exams, before we break up for the holiday.\n▶ 17:18Maggie: And we need to have a rough plan for what we intend to do ready by the end of this term.\n▶ 17:23Joe: So we'd better get down to choosing our topic. The tutor said we shouldn't worry too much about going for something that no one else has ever done before. It's more important that it isn't too broad and vague.\n▶ 17:37Joe: And he said it really doesn't matter whether it's going to be useful in some way for whatever we'd like to do when we leave uni.\n▶ 17:45Maggie: That's good, because I've no idea what I want to do yet. Have you any thoughts about what exactly our project should deal with?\n▶ 17:54Maggie: I'm quite keen on the idea of discussing the relationship between politics and the cinema. Or perhaps looking in-depth at films of the 1950s .\n▶ 18:05Joe: Hmm, I'd wondered about that too. Let's go with that. I also quite liked the idea of picking one particular director and analysing his work, but I've gone off that now.\n▶ 18:18Maggie: Okay. Before we actually get started, I must tell you about an interesting article I read in the college magazine. It's about brainstorming — a good way to get things going.\n▶ 18:33Joe: Well, why don't we get together later in the week? We could try it out.\n▶ 18:45Joe: Okay. How do you feel about getting down to the project now? I can't wait. I think it should be fun to be able to look at something in more detail than in our normal essays.\n▶ 18:57Maggie: Well, I'm not sure fun is quite the right word. It won't be easy given everything else we've got to do at the same time.\n▶ 19:05Joe: That goes without saying. But I'm still looking forward to getting started.\n▶ 19:12Joe: I hope it won't be a problem deciding who does what exactly.\n▶ 19:16Maggie: Well, it'd be a waste of time if we both watch the same movies and read exactly the same sources. But it'll be fine if we make a careful plan.\n▶ 19:26Joe: Absolutely. We're lucky the college library is so extensive. In fact, the main difficulty is likely to be making sure we don't get carried away and write more than we're allowed.\n▶ 19:38Maggie: I know. And they're very strict about that.\n▶ 20:21[Narrator] Now listen and answer questions 26 to 30.\n▶ 20:28Maggie: The tutor recommended looking at projects done by students in previous years to get some examples of good practice. I've made a start on that.\n▶ 20:38Joe: Me too. I looked at one called Early French Cinema. The tutor said that was a good example of how to list our sources , though he thought the writer should have chosen his photos more carefully.\n▶ 20:51Joe: Did you find one called Black and White Movies? That sounded interesting. Yes, I thought it included lots of fascinating information. An appropriate amount, the tutor said.\n▶ 21:11Joe: One I really liked was about the development of the thriller. The tutor praised that because the section headings were very helpful and it was all presented in a very logical way.\n▶ 21:19Maggie: Yes, though he did say more time should have been spent checking spelling and grammar.\n▶ 21:25Joe: I haven't looked at films for children yet, have you?\n▶ 21:29Maggie: Yes. That's a good example of how you can deal with stuff you don't have room for in the main part of the project report — it suggests putting it in an appendix at the end. That one didn't have a bibliography though.\n▶ 21:44Joe: I also looked at one on the role of music in film. It was making a case for greater respect to be given to the composers of film scores. The tutor said it presented that point of view convincingly , although he felt more relevant examples and pictures could have been chosen.\n▶ 22:04Maggie: The only other one I looked at was called The Future of Cinema.\n▶ 22:10Joe: Was that the one where the tutor said they had made good use of quotes by experts on the topic?\n▶ 22:16Maggie: Uh, actually he said it was weak from that point of view. The writer's selection of visual material was the particular strength of that project , in fact.\n▶ 22:34[Narrator] That is the end of part three."
+  },
+  {
+   "id": "cdi-listening-46-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "The History of Soap Notes\nBabylon (modern-day Iraq)\n- Archaeologists found ancient cylinders made of [[31]] containing traces of soap-like material.\nAncient Egypt\n- A medical document describes a soap-like material used for washing and treating [[32]] conditions.\nAncient Greece\n- Instead of soap, the Greeks cleaned themselves with ashes and [[33]] , then applied oil.\nAncient Germany\n- People used a soap-like substance to dye their [[34]] red.\nAncient Rome\n- The English word ‘soap’ comes from the name of a mythical Roman [[35]] .\nAfter the 5th Century AD in Europe\n- A reduction in bathing contributed to outbreaks of [[36]] .\n- Soap makers began adding [[37]] to make their products smell better.\n- Special soaps were created for uses such as [[38]] .\nMajor Soap-Producing Regions\n- Italy, Spain and France led production because of their supply of [[39]] , used for oil.\n- Soap became more affordable for ordinary people when [[40]] were removed.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "clay"
+       ],
+       "explanation": "\"archaeologists uncovered 4,800-year-old cylinders formed out of clay.\" — clay cylinders."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "skin"
+       ],
+       "explanation": "\"used for washing the body as well as for treating certain skin conditions.\" — treating skin."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "sand"
+       ],
+       "explanation": "\"they cleaned themselves with ashes from the fire, mixed with sand and other substances.\" — ashes and sand."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "hair"
+       ],
+       "explanation": "\"people used a substance to dye their hair red.\" — used to dye hair."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "mountain"
+       ],
+       "explanation": "\"there was a fictitious mountain called Sapo, where animals were sacrificed and which gave its name to soap.\" — Sapo mountain."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "disease",
+        "diseases"
+       ],
+       "explanation": "\"This decline in bathing... undoubtedly contributed heavily to outbreaks of disease in Europe.\" — disease outbreaks."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "perfume"
+       ],
+       "explanation": "\"To make their smell more attractive, they started adding perfume to their products.\" — added perfume."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "shaving"
+       ],
+       "explanation": "\"special soap was devised to use for shaving.\" — shaving soap."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "olives",
+        "olive"
+       ],
+       "explanation": "\"This was largely due to their ready supply of olives, which provided the oil.\" — olive oil supply."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "taxes",
+        "tax"
+       ],
+       "explanation": "\"soap was regarded as a luxury item and taxes were imposed on it. When governments eventually removed those...\" — removal of taxes."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 23:11[Narrator] Part four. You will hear a presentation from a History of Science student about the history of soap.\n▶ 24:29[Narrator] Now listen carefully and answer questions 37 to 40.\n▶ 24:37Student: Today I want to talk about the history and development of one of the most common products used all over the world: soap.\n▶ 24:45Student: And yet, no one knows for sure when people first began using soap, and no one person actually seems to have invented it.\n▶ 24:54Student: Probably the earliest evidence of soap was found during excavations at the site of ancient Babylon in modern-day Iraq.\n▶ 25:03Student: There, archaeologists uncovered 4,800-year-old cylinders formed out of clay , which contained remains of a material similar to soap.\n▶ 25:15Student: Inscriptions on the cylinders say that fats were boiled with ashes in them, and these are the basic ingredients used in making soap. However, the inscriptions don't indicate what the substance was actually used for.\n▶ 25:37Student: Various historical records indicate that wealthy ancient Egyptians bathed regularly. A medical document known as the Ebers papyrus from about 1500 BC describes combining animal and vegetable oils with alkaline salts to form a material which sounds very much like a form of soap.\n▶ 25:51Student: The records explain that this was used for washing the body as well as for treating certain skin conditions.\n▶ 26:05Student: The early Greeks considered bathing to be essential for a beautiful personal appearance. But they didn't, in fact, use soap. Instead, they cleaned themselves with ashes from the fire, mixed with sand and other substances.\n▶ 26:15Student: Then they poured oil over their bodies and scraped everything off with a metal instrument known as a strigel. It must have been a particularly laborious and sometimes painful process.\n▶ 26:29Student: In ancient Germany, people used a substance to dye their hair red. It was made from animal fats and ashes in a similar way to soap.\n▶ 26:39Student: As the ancient Roman civilization advanced and the Roman Empire grew, elaborate public facilities for bathing were developed. The first of the famous Roman baths was built in 312 BC.\n▶ 26:56Student: By the second century AD, Galen, a prominent doctor employed by a succession of Roman emperors, is on record as advocating the use of soap for medicinal and cleansing purposes.\n▶ 27:09Student: In fact, the English word \"soap\" is probably derived from a well-known Roman myth. In the legend, there was a fictitious mountain called Sapo, where animals were sacrificed, and which gave its name to soap.\n▶ 27:24Student: According to the story, rain washed a mixture of animal fat and ashes into the soil along the river, which women found very effective for washing clothes.\n▶ 27:39Student: After the fall of the Roman Empire in the 5th century AD, there was a marked decrease in the frequency of bathing in the populations of Europe, and of course in the use of soap.\n▶ 27:51Student: This decline in bathing and related unsanitary living conditions undoubtedly contributed heavily to outbreaks of disease in Europe during the Middle Ages, from roughly the 5th to the 15th centuries.\n▶ 28:04Student: But in fact, soapmaking was an established craft in Europe by the 7th century. Guilds or organizations of soapmakers guarded their trade secrets closely.\n▶ 28:16Student: To make their smell more attractive, they started adding perfume to their products. Manufacturers also began making a large variety of special soaps for particular uses.\n▶ 28:28Student: For example, in addition to the more common products used for bathing and laundering, special soap was devised to use for shaving .\n▶ 28:37Student: Italy, Spain, and France were early centres of soap manufacturing in Europe. This was largely due to their ready supply of olives , which provided the oil which was an essential ingredient of soap.\n▶ 28:50Student: Soap making was introduced to England in the 12th century. In several European countries, soap was regarded as a luxury item and taxes were imposed on it. When governments eventually removed those, soap became more affordable for ordinary people and the general standards of public cleanliness improved.\n▶ 29:12Student: The science of modern soap making was born in the late 18th and early 19th centuries, when chemists in France and Belgium discovered details of the nature of fats and the other ingredients of soap.\n▶ 29:38Student: The chemistry of soap manufacturing stayed essentially the same until 1916, when the first synthetic detergent was developed in Germany in response to a shortage of fats for making soap.\n▶ 29:50Student: However, today, detergents have nearly completely replaced soap-based products for most household cleaning jobs.\n▶ 30:10[Narrator] That is the end of part four."
+  }
+ ],
+ "audio": {
+  "file": "listening-46.mp3",
+  "durationSec": 1819,
+  "questionTimes": {
+   "1": 124,
+   "2": 135,
+   "3": 143,
+   "4": 164,
+   "5": 229,
+   "6": 239,
+   "7": 249,
+   "8": 294,
+   "9": 313,
+   "10": 348,
+   "11": 515,
+   "12": 531,
+   "13": 581,
+   "14": 598,
+   "15": 614,
+   "16": 638,
+   "17": 735,
+   "18": 749,
+   "19": 775,
+   "20": 804,
+   "21": 1001,
+   "22": 1043,
+   "23": 1074,
+   "24": 1137,
+   "25": 1166,
+   "26": 1238,
+   "27": 1251,
+   "28": 1271,
+   "29": 1304,
+   "30": 1324,
+   "31": 1503,
+   "32": 1551,
+   "33": 1565,
+   "34": 1589,
+   "35": 1629,
+   "36": 1671,
+   "37": 1696,
+   "38": 1708,
+   "39": 1717,
+   "40": 1730
+  }
+ }
+}

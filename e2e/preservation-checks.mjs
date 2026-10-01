@@ -60,14 +60,17 @@ const COLOUR = [1, 2, 3, 4, 5, 6];
 const GEOMETRY = [7, 8, 9, 10];
 
 /**
- * A subset of PAGES in e2e/screens.mjs, plus the first Reading / Listening practice test.
+ * A subset of PAGES in e2e/screens.mjs, plus one Reading / Listening practice test.
+ * The exam pages are PINNED to the first built-in Averna paper (READING_SEED / LISTENING_SEED [0]):
+ * the libraries now list the CDI materials, so "the first test in the library" differs between the
+ * base commit and HEAD, while the built-in papers are archived but still open by id on both.
  * The student dashboard is not compared: it is intentionally redesigned on this branch (URL-driven
  * tabs, only the active tab rendered), so its baseline from the merge-base no longer applies.
  */
 const PAGES = {
   student: [
-    ["reading-test", { exam: "reading" }],
-    ["listening-test", { exam: "listening" }],
+    ["reading-test", { exam: "reading", href: "/learning/reading/averna-reading-01" }],
+    ["listening-test", { exam: "listening", href: "/learning/listening/averna-listening-01" }],
   ],
   teacher: [
     ["teacher-dashboard", "/teacher/dashboard"],
@@ -173,7 +176,7 @@ async function load(context, target, label, pinnedHref) {
     const res = await page.goto(`${BASE}${path}`, { waitUntil: "networkidle", timeout: 60_000 });
     if (res && res.status() >= 400) throw new Error(`HTTP ${res.status()}`);
   } else {
-    path = await openExam(page, target.exam, pinnedHref);
+    path = await openExam(page, target.exam, target.href ?? pinnedHref);
   }
   await page.addStyleTag({ content: FREEZE_CSS });
   await page.evaluate(async () => {

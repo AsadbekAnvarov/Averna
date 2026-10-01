@@ -1,0 +1,659 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-05",
+ "title": "CDI Listening Test 05",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "A travel agent named Pam helps Duncan White plan a family holiday",
+  "A council officer gives an information session on bicycle use in the inner city",
+  "Two students discuss their project on renewable energy products and survey design",
+  "A business student presents a review of literature concerning absence from the workplace"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-05-part-1",
+   "title": "Part 1",
+   "context": "A travel agent named Pam helps Duncan White plan a family holiday.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Customer Request Sheet — Beachheads Travel\nCustomer: Duncan White\n- Arriving: [[1]]\n- Staying for a fortnight (2 weeks)\nWeek 1 — Beach\n- Accommodation: [[2]] on the beach\n- Budget: $ [[3]] per night\n- Daughters' activity: [[4]] lessons\n- Pam to organise a [[5]] for daughters\n- Wife & mother: [[6]] (gentler activity)\n- Duncan: [[7]] (send leaflets about spots)\nWeek 2 — Mountains (National Park)\n- Accommodation: [[8]] ($100/night)\n- Wife’s birthday treat: [[9]] (after lunch)\n- Restaurant: Marco’s — send the [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "october 15",
+        "15 october",
+        "october the 15th",
+        "15th october",
+        "the 15th"
+       ],
+       "explanation": "The caller says she will be arriving on the 15th, during the school holidays that start on October 12th."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "hotel"
+       ],
+       "explanation": "Duncan says: \"In the first week we would like a bit of luxury... planning on staying in a hotel on the beach.\" Not a campsite."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "175",
+        "$175",
+        "175 dollars"
+       ],
+       "explanation": "Pam says: \"You would have to spend at least $175 for a big enough room.\""
+      },
+      {
+       "n": 4,
+       "answer": [
+        "sailing"
+       ],
+       "explanation": "Duncan says the daughters want to try sailing this year (last year it was surfing)."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "class"
+       ],
+       "explanation": "Pam offers to organise a sailing class for the daughters."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "golf"
+       ],
+       "explanation": "Pam suggests golf for the wife and mother as a gentler activity they can both do."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "fishing"
+       ],
+       "explanation": "Duncan asks for leaflets about fishing — he wants to take the boat out himself."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "caravan"
+       ],
+       "explanation": "Pam says they do not have cabins at the campground, so it would have to be a caravan ($100/night)."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "massage"
+       ],
+       "explanation": "For the wife's birthday, Pam suggests a massage after lunch."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "menu"
+       ],
+       "explanation": "Duncan asks Pam to send the restaurant menu for Marco's so he can check it suits his fussy daughters."
+      }
+     ]
+    }
+   ],
+   "transcript": "A travel agent named Pam helps Duncan White plan a family holiday.\nPam: Beachheads Travel, Pam speaking.\nDuncan: Hi, my name’s Duncan. I’m hoping you’ll be able to help me organise a trip to Beachheads.\nPam: Sure. Let me just fill in our customer request sheet while I’m speaking to you. Could you tell me your name again, please?\nDuncan: Yes, it’s Duncan. Duncan White.\nPam: Okay, and is the trip just for yourself?\nDuncan: No, there’s three adults, myself, my wife and my mother, and our two daughters, Chloe and Eden.\nPam: So when are you thinking of travelling?\nDuncan: During the next school holidays.\nPam: So they start on the 12th of October, don’t they?\nDuncan: Yes, but we’ll be arriving on the 15th, and we want to stay for a fortnight.\nPam: Right, got all that. Now I’ll just take a few notes about the type of holiday you want. Have you thought about where you want to stay while you’re here?\nDuncan: In the first week, we’d like a bit of luxury. We’re planning on staying in a hotel on the beach if possible. That’ll be so much better than a campsite. We usually stay in a tent when we go away, but we’re going to treat ourselves this time.\nPam: And do you have a figure in mind for how much you’d like to spend?\nDuncan: Are we likely to get anything for under $150 a night?\nPam: Hm, not really. You’d have to spend at least $175 for a big enough room.\nDuncan: Okay. We can stretch to that. I’ll just have to stop myself thinking that when we go camping we only pay about $200 for a whole week.\nPam: Well I’m sure it will be worth it. I can also organise some activities for your first week. Is there anything your daughters would particularly like to do?\nDuncan: They want to try sailing this year. Last year it was surfing. They were mad about it.\nPam: Kids change their minds a lot, don’t they? Mine are into cycling at the moment. I know someone who can teach them to sail. Would you like me to organise a class for them?\nDuncan: Wonderful. We’re bringing our own boat with us.\nPam: And what about your wife and your mother?\nDuncan: Well, my mother Susan goes bowling when she’s in Brisbane, but my wife Jenny doesn’t really like it. She loves bushwalking, but obviously my mother can’t manage that.\nPam: Can I suggest golf for them both? It’s a gentler kind of walk. There’s a beautiful course here with magnificent views of the sea.\nDuncan: Sounds perfect.\nPam: Okay, I’ll organise a time.\nDuncan: Thanks. Could you send me some leaflets about fishing in the area? I’d like to take the boat out myself.\nPam: Sure, there are some good spots around.\nDuncan: Great.\nPam: Okay, so let’s think about the second week now.\nDuncan: We want something totally different. We’d like to stay up in the mountains in the national park.\nPam: Very nice. And what kind of accommodation are you thinking of? There are some beautiful houses you can rent.\nDuncan: Yes, we did think about renting a house, but I’m worried about the cost. Is there anything a bit cheaper, say a caravan or even a cabin?\nPam: It’d have to be a caravan, because they don’t have cabins at the campground, but the standard is very high.\nDuncan: How much does it cost?\nPam: A hundred dollars a night, but they’re very roomy with all mod cons. The campground’s also in a really good spot. What activities are you thinking of doing in that second week?\nDuncan: Well, it’s actually going to be my wife’s birthday, so I’d like to do something a bit special for her.\nPam: I can book a really nice massage for her after lunch on that day.\nDuncan: Lovely.\nPam: Or would she rather try something more adventurous, like a walk in the treetops? It’s really exciting. You go along a really high wooden bridge.\nDuncan: Oh no. She’d be terrified. Stick with your first idea. Are there any nice places to eat near the campground?\nPam: Yes, there’s a fantastic wood-fired pizza restaurant called Marco’s.\nDuncan: Oh good. I’ve got two very fussy daughters. Could you send me their menu so we can check it’ll be okay?\nPam: No problem, Duncan."
+  },
+  {
+   "id": "cdi-listening-05-part-2",
+   "title": "Part 2",
+   "context": "A council officer gives an information session on bicycle use in the inner city.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "To subscribe to City Cycle you need to",
+       "options": [
+        {
+         "key": "A",
+         "text": "visit a station in person."
+        },
+        {
+         "key": "B",
+         "text": "register at a computer terminal."
+        },
+        {
+         "key": "C",
+         "text": "go online to the Council website."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Just go to the City Council website and follow the prompts.\" — subscribe online (C)."
+      },
+      {
+       "n": 12,
+       "text": "At the station you choose your bike by",
+       "options": [
+        {
+         "key": "A",
+         "text": "touching a screen showing available bikes."
+        },
+        {
+         "key": "B",
+         "text": "entering your password into a terminal."
+        },
+        {
+         "key": "C",
+         "text": "pressing a button on the bike rack."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"You will be shown a diagram of the bikes. Just choose the one you want by touching the screen.\" — A: touching a screen."
+      },
+      {
+       "n": 13,
+       "text": "After choosing your bike you have",
+       "options": [
+        {
+         "key": "A",
+         "text": "30 seconds to take it from the rack."
+        },
+        {
+         "key": "B",
+         "text": "about 10 seconds to take it from the rack."
+        },
+        {
+         "key": "C",
+         "text": "5 seconds before the alarm sounds."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"After you push the release button, you have about 10 seconds to take the bike out of the rack.\" — B: 10 seconds."
+      },
+      {
+       "n": 14,
+       "text": "To return the bike you must",
+       "options": [
+        {
+         "key": "A",
+         "text": "notify the City Cycle website."
+        },
+        {
+         "key": "B",
+         "text": "return it to the same station."
+        },
+        {
+         "key": "C",
+         "text": "make sure it is properly secured in the rack."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Make sure that the bike is properly secured, because you could be held liable if it goes missing.\" — C: properly secured."
+      },
+      {
+       "n": 15,
+       "text": "A green light on the rack means the bike",
+       "options": [
+        {
+         "key": "A",
+         "text": "is available for hire."
+        },
+        {
+         "key": "B",
+         "text": "needs to be recharged."
+        },
+        {
+         "key": "C",
+         "text": "has been properly locked in place."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"The green light on the rack will confirm that it has been locked into place.\" — C: locked in place."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the plan of the bicycle centre. Write the correct letter, A–I, next to questions 16–20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 16,
+       "text": "Coffee cart",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"That's it there between the reception desk and the vending machines\" — Coffee cart = F."
+      },
+      {
+       "n": 17,
+       "text": "Workshop",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"Just to the left of reception on the Donovan Street side... that's the workshop.\" — Workshop = G."
+      },
+      {
+       "n": 18,
+       "text": "Lockers",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"The locker room is in the top left hand corner of your plan.\" — Lockers = D."
+      },
+      {
+       "n": 19,
+       "text": "Showers",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Power showers are to the left of the hairdryers and just near the exit.\" — Showers = B."
+      },
+      {
+       "n": 20,
+       "text": "Towel",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Pick up a towel next to the water cooler.\" — Towel = A."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening5-map.webp",
+      "alt": "Bicycle Centre Floor Plan"
+     }
+    }
+   ],
+   "transcript": "A council officer gives an information session on bicycle use in the inner city.\nSpeaker: Thank you for all coming to today’s information session on bicycle use in the inner city. I’ll start by telling you about the City Council’s new bicycle hire scheme, which is called City Cycle.\nSpeaker: We want to provide people who don’t own a bike a convenient way to get around the inner city. Now to use City Cycle, first you need to subscribe to the service, and you can do that online.\nSpeaker: Just go to the City Council website and follow the prompts and you’ll be sent a card. Once you’ve done that, you can unlock one of our bikes from any station in the inner city area.\nSpeaker: Just go to the station and log on at the computer terminal. You’ll be shown a diagram of the bikes that are currently available at the station, so you just choose the one you want by touching the screen. You don’t need a password or anything.\nSpeaker: Once you’ve chosen your bike, you can then go to where the bikes are stored and push the release button. After you do that, you have about 10 seconds to take the bike out of the rack. You can now start your bike ride.\nSpeaker: Further down the track, we’re thinking about adding lockers for bags if the scheme is popular. Oh, at this point, can I just clarify something that a few people have been asking — do I have to wear a helmet?\nSpeaker: Well the answer is yes, you do. That’s a requirement by law in this state, so don’t forget to wear one at all times when riding. Now at the end of your trip.\nSpeaker: Just come back to one of the city cycle stations and wheel the bike into the bike rack. It’s important to make sure that the bike is properly secured, because you could be held liable if it goes missing.\nSpeaker: The green light on the rack will confirm that it has been locked into place. So we hope that with such a simple scheme we’ll have many users.\nSpeaker: Let’s turn to another initiative — the layout of the new council bicycle centre, which will be opening next week. This is for people who already own a bike.\nSpeaker: We wanted to provide a place for cyclists to store their bikes, then change before going on to work. Can you all see the plan?\nSpeaker: If you look at the bottom towards the right hand corner, you’ll see where the cyclists enter the centre. People want more than just a place to park their bikes. That’s why you’ll see a coffee cart.\nSpeaker: That’s it there between the reception desk and the vending machines — the coffee cart. I’m sure it’ll be very popular with commuters first thing in the morning.\nSpeaker: Now of course some of our cyclists have very expensive bikes, so we’ll have a totally secure place for them to park. That’s it in the top right hand corner.\nSpeaker: Now there’s another special service. Look back at the entry on the map. Just to the left of reception on the Donovan Street side of the building, you’ll see quite a large room — that’s the workshop, where cyclists will be able to leave their bikes for repairs while they are at work.\nSpeaker: We’ve put a lot of thought into the facilities of the centre. If you have any valuables with you, you can leave these in our lockers.\nSpeaker: The locker room is in the top left hand corner of your plan. So you can store your bag or wallet there before you head off for a shower.\nSpeaker: We’ve installed ten state of the art power showers. They are located in this room here, to the left of the hairdryers and just near the exit. There’s also a water cooler available, so you can grab a drink and then pick up a towel next to the water cooler there."
+  },
+  {
+   "id": "cdi-listening-05-part-3",
+   "title": "Part 3",
+   "context": "Two students discuss their project on renewable energy products and survey design.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Products using renewable energy sources\na) Kites produced by German company\n- Attached to ships by long cables, fly up to 500m above sea\n- Can use wind power in any [[21]]\n- Could reduce toxic emissions by 50%\nb) Sports car produced by US company\n- Uses [[22]] as a power source (not petrol)\n- Will have zero emissions\nc) Ethanol stoves in South Africa\n- Safer than paraffin stoves\n- Less likely to [[23]]",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "weather"
+       ],
+       "explanation": "\"They can be powered by the wind no matter what the weather.\" — the kites work in any weather conditions."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "electricity"
+       ],
+       "explanation": "\"A sports car which uses electricity as a power source — not petrol at all.\" — electricity."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "explode"
+       ],
+       "explanation": "\"Paraffin stoves are dangerous because they can explode quite easily.\" — ethanol stoves are safer and less likely to explode."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO groups will Sylvia and Greg survey?",
+     "options": [
+      {
+       "key": "A",
+       "text": "local residents (people who rent or own properties)"
+      },
+      {
+       "key": "B",
+       "text": "lecturers"
+      },
+      {
+       "key": "C",
+       "text": "local businesses"
+      },
+      {
+       "key": "D",
+       "text": "schoolchildren"
+      },
+      {
+       "key": "E",
+       "text": "university students"
+      }
+     ],
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "A: local residents who own or rent properties. E: university students. Not companies (5% response rate), not lecturers (too busy), not schoolchildren (want adults only). A: local residents/property owners. E: university students. Same answer pair as Q24."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "A: local residents who own or rent properties. E: university students. Not companies (5% response rate), not lecturers (too busy), not schoolchildren (want adults only). A: local residents/property owners. E: university students. Same answer pair as Q24."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 26,
+       "text": "What does Sylvia say about people's knowledge of renewable energy?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Many people know little about it."
+        },
+        {
+         "key": "B",
+         "text": "People understand it because it has been in the news recently."
+        },
+        {
+         "key": "C",
+         "text": "People are eager to find out more about it."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"I think a lot of people are still in the dark about it.\" — Sylvia thinks many people know little about renewable energy (A)."
+      },
+      {
+       "n": 27,
+       "text": "What do Sylvia and Greg decide to ask about traditional energy consumption?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The best way of preventing pollution."
+        },
+        {
+         "key": "B",
+         "text": "Possible future developments."
+        },
+        {
+         "key": "C",
+         "text": "How expensive people find it."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"We ought to see what they think is going to happen to the consumption of traditional energy sources.\" — possible future developments (B)."
+      },
+      {
+       "n": 28,
+       "text": "What does Greg say about nuclear power?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is not important for their survey."
+        },
+        {
+         "key": "B",
+         "text": "People today have a positive attitude towards it."
+        },
+        {
+         "key": "C",
+         "text": "Some people think it is unsafe."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"The safety factor has always worried people. I do not think everyone is convinced.\" — some people think nuclear power is unsafe (C)."
+      },
+      {
+       "n": 29,
+       "text": "What do Sylvia and Greg agree about the cost of renewable energy?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Prices will drop in the future."
+        },
+        {
+         "key": "B",
+         "text": "People won't pay the high price."
+        },
+        {
+         "key": "C",
+         "text": "The benefits outweigh the high cost."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Once enough people want it, it will be a viable prospect. It is always expensive to start with.\" — prices will drop in the future (A)."
+      },
+      {
+       "n": 30,
+       "text": "Sylvia and Greg agree that modern windmills",
+       "options": [
+        {
+         "key": "A",
+         "text": "are the most efficient way of harnessing energy."
+        },
+        {
+         "key": "B",
+         "text": "should be put in carefully selected locations."
+        },
+        {
+         "key": "C",
+         "text": "make the landscape look unattractive."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"It is a case of choosing the right place for them, where they look least out of place.\" — should be in carefully selected locations (B)."
+      }
+     ]
+    }
+   ],
+   "transcript": "Two students discuss their project on renewable energy products and survey design.\nSylvia: Greg, about this project on renewable energy.\nGreg: We’ve got to look at some products that use it and then see how aware people are of this kind of energy. Well, first we must clarify what renewable energy is. I’ve done that.\nGreg: It’s energy from a source which is replaced by a natural process such as wind, tidal energy from the sea, energy from the sun, and so on. And I’ve found some very interesting examples of products using these sources.\nSylvia: So have I. What have you got?\nGreg: Well, the first one is a company in Germany which is producing huge kites that pull ships along. The kites are attached by long cables, and they fly up to 500 metres above the sea.\nSylvia: They must be pretty big. And it means that they can be powered by the wind no matter what the weather. That sounds like a good idea. But will they really help reduce energy use?\nGreg: You bet. As well as that, apparently the shipping industry is one of the worst polluters on the planet as they use cheap diesel fuel which has terrible toxic emissions.\nGreg: The company believes these kites could cut the use of these fuels by 50% and reduce the emissions by the same amount.\nSylvia: Sounds good. And I found a company in the US which is developing a new type of car.\nSylvia: Apparently they’re producing a sports car which doesn’t use petrol at all, just electricity.\nGreg: But for the US market only.\nSylvia: Sounds intriguing. Do we know what it’ll look like?\nGreg: They’re very secretive about it. And all they say is that it won’t look ugly, and it’ll have zero emissions.\nSylvia: Wow. Really?\nGreg: So they say.\nSylvia: Any other products?\nGreg: I found an interesting article about a man in South Africa who’s selling stoves using ethanol to the local people. Ethanol is made from the sugar of certain crops. Most of the local people use paraffin stoves at the moment, and they are dangerous because they can explode quite easily.\nSylvia: Now for the next part. We have to do a survey to find out how aware the public is about this kind of energy. Who shall we approach? Local businesses?\nGreg: I think it’s easier to do a survey of the general public rather than local companies. Last time we sent all those email surveys to commercial organizations, and we only had replies from five percent of them.\nSylvia: Oh I forgot that. Okay then. What about the other students and the lecturers here in the university?\nGreg: You know what the lecturers are like. They’re so busy they won’t have the time, but the students will, I’m sure.\nSylvia: And as well as that, we could target the local schools like last time. School kids just love doing surveys.\nGreg: I think we want to stick to adults for this, don’t you?\nSylvia: You’re probably right.\nSylvia: Maybe we could approach people who rent or own properties around here, since they’re the ones who have to pay for the energy.\nGreg: Exactly.\nGreg: Now, what about the kind of questions we want to include in the survey?\nGreg: Well, we need to find out if they know what renewable energy is and how familiar people are with the concept. I know it’s been all over the news lately, but I think a lot of people are still in the dark about it.\nSylvia: Do you think so? I’m not sure I agree. But we can have that in if you want.\nSylvia: We also need to find out what they think about the use of traditional energy sources like gas and coal, and if they know what effect these types of energy have on their environment.\nGreg: And what they cost.\nSylvia: That’s not so important. But we ought to see what they think is going to happen to the consumption of traditional energy sources.\nGreg: You’re right. Then there’s nuclear power — that’s an interesting one, because it’s cleaner and more efficient in many ways than other fuels.\nGreg: But the safety factor has always worried people. I know that the technology has improved greatly since it was first used, but I don’t think everyone is convinced.\nSylvia: Are there any problems with renewable energy?\nGreg: Yes. And we need to know what people think about them. One argument is that it’s going to be too expensive to use solar or wind power.\nSylvia: But once people realise the benefits to us all, the price is bound to come down. It’s always expensive to start with. Once enough people want it, it’ll be a viable prospect.\nGreg: That’s true. But the other thing is people don’t like it. They say that some of the technology is ugly, like the big windmills. A lot of people think they spoil the countryside, and I agree.\nSylvia: They’re not that bad. They’re pretty efficient, so perhaps it’s a case of choosing the right place for them, where they look least out of place.\nGreg: A good point. It’ll be very interesting to see the results of this survey."
+  },
+  {
+   "id": "cdi-listening-05-part-4",
+   "title": "Part 4",
+   "context": "A business student presents a review of literature concerning absence from the workplace.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Absence from Work\nAbsence may be frequent or occasional.\nMain factors involved\n- a) The [[31]] of employees (e.g. females may have childcare responsibilities)\n- b) Employees’ [[32]] toward work (but evidence is inconclusive)\n- c) The [[33]] of the organization (absence may be accepted)\n- d) Type of work — higher absence among employees in [[34]]\n- e) The [[35]] of an employee’s work group\nPublic sector vs private sector\n- Public sector has higher absence levels\n- Possible explanation: public sector is less [[36]]\n- Systems more bureaucratic due to [[37]] factors (e.g. government control)\nMore recent literature: public sector organisations usually…\n- Have a [[38]] workforce\n- Employ more female and more older employees\n- Provide [[39]] for longer, with fewer restrictions\n- Are less likely to [[40]] employees for absence",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "gender"
+       ],
+       "explanation": "\"The gender of the employee may influence his or her ability to attend work.\" — gender is the first factor."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "attitude"
+       ],
+       "explanation": "\"The attitude of employees toward their work\" is the second factor, though evidence is inconclusive."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "culture"
+       ],
+       "explanation": "\"Some organizations have a culture in which absence is accepted.\" — the culture of the organization."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "industry"
+       ],
+       "explanation": "\"Workers in industry are more likely to have high absence rates than people who work in offices.\""
+      },
+      {
+       "n": 35,
+       "answer": [
+        "size"
+       ],
+       "explanation": "\"There is a connection between how often an employee is absent and what size of work group he or she belongs to.\" — size."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "efficient"
+       ],
+       "explanation": "\"Public sector organizations may not be as efficient.\" — less efficient is the possible explanation."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "external"
+       ],
+       "explanation": "\"Systems are more bureaucratic due to factors which are external rather than internal, like government control.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "larger"
+       ],
+       "explanation": "\"A public sector organization tends to have a workforce which is larger.\" — larger workforce."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "benefits"
+       ],
+       "explanation": "\"Public sector organizations are more likely to give their absent employees benefits for a longer period.\" — benefits."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "dismiss"
+       ],
+       "explanation": "\"Public sector employers have less of a tendency to dismiss employees for being absent.\" — less likely to dismiss."
+      }
+     ]
+    }
+   ],
+   "transcript": "A business student presents a review of literature concerning absence from the workplace.\nStudent: Hello everyone. For my assignment, I did a review of the literature concerning absence in the workplace, and I’m going to present a summary of what I found.\nStudent: I looked at some research on absence from work, that is, the number of days work people miss for various reasons.\nStudent: Researchers refer to two types of absence: frequent absence, which is obviously a more serious problem, and occasional absence.\nStudent: A lot of studies look at the factors involved in absence from work, and several have been identified. Firstly, the gender of the employee may influence his or her ability to attend work.\nStudent: For example, a female is more likely to have child care responsibility, and so could be absent as a result of that. The next factor that has been identified is the attitude of employees toward their work.\nStudent: But there has been a lot of debate about the extent to which this actually does influence absence, and some people argue that the research hasn’t been conclusive.\nStudent: Some researchers have suggested that another reason for high levels of absence is that some organizations have a culture in which absence is accepted, but others have criticized this model, arguing that it’s too much of a generalization.\nStudent: And then there are factors related to the type of work the employee does. It’s been claimed that workers in industry are more likely to have high absence rates than people who work in offices.\nStudent: It’s also important to recognize that groups within a single organization might behave differently.\nStudent: For example, one of the other underlying themes in the literature is that there is a connection between how often an employee is absent and what size of work group he or she belongs to.\nStudent: Specifically, it’s been found that the bigger the group, the higher the levels of absence.\nStudent: On a related theme, some writers have focused on a comparison between public sector and private sector organizations. There is some evidence that absence levels are higher in the public sector. One explanation is that public sector organizations may not be as efficient.\nStudent: It’s not exactly clear why this should be the case, but this might be because their systems are more bureaucratic.\nStudent: This might be due to factors which are external rather than internal, like the degree of control the government imposes on the public sector.\nStudent: However, most recent literature suggests a number of other explanations. Firstly, a public sector organization tends to have a workforce which is larger.\nStudent: Also, it tends to employ a higher number of female and older employees, both of which groups are likely to record higher absence rates.\nStudent: It is also suggested that public sector organizations are more likely to give their absent employees benefits for a longer period, and are less likely to place restrictions on these.\nStudent: In addition, it’s been found that public sector employers have less of a tendency to dismiss employees for being absent. And all of these could be additional or alternative reasons for higher absence rates in the public sector."
+  }
+ ],
+ "audio": {
+  "file": "listening-5.mp3",
+  "durationSec": 1591,
+  "questionTimes": {
+   "1": 194,
+   "2": 209,
+   "3": 231,
+   "4": 254,
+   "5": 259,
+   "6": 285,
+   "7": 295,
+   "8": 360,
+   "9": 384,
+   "10": 410,
+   "11": 543,
+   "12": 555,
+   "13": 568,
+   "14": 605,
+   "15": 616,
+   "16": 698,
+   "17": 719,
+   "18": 746,
+   "19": 755,
+   "20": 758,
+   "21": 913,
+   "22": 950,
+   "23": 973,
+   "24": 1025,
+   "25": 1044,
+   "26": 1109,
+   "27": 1142,
+   "28": 1156,
+   "29": 1171,
+   "30": 1203,
+   "31": 1363,
+   "32": 1375,
+   "33": 1400,
+   "34": 1416,
+   "35": 1434,
+   "36": 1457,
+   "37": 1482,
+   "38": 1493,
+   "39": 1513,
+   "40": 1525
+  }
+ }
+}

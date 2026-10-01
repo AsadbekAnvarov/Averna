@@ -1,0 +1,666 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-56",
+ "title": "CDI Listening Test 56",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-56-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "Manor Farm Application Form\nSummer fruit picking\nExample Name: Ben Miller\n- Country of origin: the USA\n- Age: 20\n- Visa type: a [[1]]\n- Visa valid until: November\n- Availability for work: from [[2]] to October\n- Heard about job: from the [[3]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "blue card",
+        "bluecard"
+       ],
+       "explanation": "\"I have a thing called a blue card. It's valid until November.\" — the visa type is a blue card."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "July"
+       ],
+       "explanation": "\"I'd like to do July, August, and September. And could do October if there's any work then.\" — availability runs from July to October."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "website",
+        "the website",
+        "web site"
+       ],
+       "explanation": "\"Did you find out about us through our website? That's right.\" — he heard about the job from the website (not an agency)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Manor Farm\nImportant information for fruit pickers\nPicking season:\n- Busiest month is [[4]]\n- Exact picking dates depend on the [[5]]\nPayment:\n- Pickers over 18 will earn £ [[6]] an hour\nAccommodation:\n- None on the farm, but there is a [[7]] nearby\nTransport:\n- Pickers are advised to travel around by [[8]]\nDocumentation:\n- Only pickers with a [[9]] will be allowed to work\nMeals:\n- Pickers must bring lunch and a day’s supply of [[10]]",
+     "questions": [
+      {
+       "n": 4,
+       "answer": [
+        "September"
+       ],
+       "explanation": "\"I see you need most pickers in September for apples and pears.\" — September is the busiest month."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "weather",
+        "the weather"
+       ],
+       "explanation": "\"It's a question of the weather. That determines how much fruit we grow... That's why I can't give you exact picking dates now.\""
+      },
+      {
+       "n": 6,
+       "answer": [
+        "5.60",
+        "5.6",
+        "£5.60",
+        "5.60 an hour"
+       ],
+       "explanation": "\"The rate is £4.50 an hour for the under 18s, but as you're over 18, it would rise to £5.60 an hour.\""
+      },
+      {
+       "n": 7,
+       "answer": [
+        "campsite",
+        "a campsite",
+        "camp site",
+        "camping site"
+       ],
+       "explanation": "\"There is no accommodation on the farm, but there is a campsite about fifteen minutes away.\""
+      },
+      {
+       "n": 8,
+       "answer": [
+        "bike",
+        "bicycle",
+        "a bike",
+        "a bicycle"
+       ],
+       "explanation": "\"Maybe I should bring my bike to get around. Yes, we always recommend that.\" — cars find the roads narrow and the bus is infrequent."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "passport",
+        "a passport"
+       ],
+       "explanation": "\"We will need proof of age, so we'll expect to see your passport. Pickers without one won't be allowed to work.\" A driving licence isn't suitable."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "water"
+       ],
+       "explanation": "\"You'll need to bring your own food for lunch and more importantly, enough water to last a full day.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 0:01[Narrator] You will hear a number of different recordings and you will have to answer questions on what you hear. All the recordings will be played once only. The test is in four sections.\n▶ 0:53[Narrator] Section 1. You will hear a telephone conversation between a man who is looking for a summer job as a fruit picker and a woman who owns a farm. First you have some time to look at questions 1 to 3.\n▶ 1:24[Narrator] You will see that there is an example that has been done for you. On this occasion only, the conversation relating to this will be played first.\n▶ 1:37Mrs Chandler: Manor Farm, hello.\n▶ 1:39Ben: Hi there. I'd like to apply to do fruit picking this summer.\n▶ 1:43Mrs Chandler: Oh hello. I'm Mrs Chandler. My husband and I own Manor Farm. Let me take some details. I'll just get a form to fill in. Hold on. Right, your name is—\n▶ 2:00Ben: It's Ben Miller.\n▶ 2:05[Narrator] The man's name is Ben Miller, so Ben Miller has been written in the space. Now we shall begin. You should answer the questions as you listen, because you will not hear the recording a second time. Listen carefully and answer questions 1 to 3.\n▶ 2:27Mrs Chandler: Manor Farm, hello?\n▶ 2:29Ben: Hi there. I'd like to apply to do fruit picking this summer.\n▶ 2:33Mrs Chandler: Oh hello. I'm Mrs Chandler. My husband and I own Manor Farm. Let me take some details. I'll just get a form to fill in. Hold on.\n▶ 2:48Mrs Chandler: Sorry. Right. Your name is—\n▶ 2:52Ben: It's Ben Miller.\n▶ 2:54Mrs Chandler: And where are you from?\n▶ 2:56Ben: I'm from the USA.\n▶ 2:58Mrs Chandler: Fine. Can I ask your age?\n▶ 3:00Ben: I'm twenty. You only take people over the age of sixteen, don't you?\n▶ 3:05Mrs Chandler: Yes, that's right. Are you able to work in the UK?\n▶ 3:09Ben: Sorry?\n▶ 3:10Mrs Chandler: I mean, do you have a visa?\n▶ 3:12Ben: Oh yeah. I have a thing called a blue card . It's valid until November.\n▶ 3:18Mrs Chandler: That's fine then. We'll need fruit pickers from the middle of June until the end of September. What's your availability?\n▶ 3:27Ben: When can I work? Um, I'd like to do July , August, and September. And could do October if there's any work then.\n▶ 3:36Mrs Chandler: Okay. Did you find out about us through our website ?\n▶ 3:41Ben: That's right. It's much easier than going through an agency.\n▶ 3:48[Narrator] Before you hear the rest of the conversation, you have some time to look at questions 4 to 10.\n▶ 4:31[Narrator] Now listen and answer questions 4 to 10.\n▶ 4:38Ben: I see you need most pickers in September for apples and pears, but the whole picking season can last about 16 weeks.\n▶ 4:45Mrs Chandler: Well, yes, but it's a question of the weather. That determines how much fruit we grow , of course. That's why I can't give you exact picking dates now.\n▶ 4:55Ben: I see. Oh well, no problem. Can you tell me what pickers earn?\n▶ 5:01Mrs Chandler: Well, that depends on age. The rate is £4.50 an hour for the under 18s, but as you're over 18, it would rise to £5.60 an hour .\n▶ 5:13Ben: Uh-huh. Your website says that you don't provide accommodation for pickers, so I guess I should arrange that in advance.\n▶ 5:21Mrs Chandler: Yes. There is no accommodation on the farm, but there is a campsite about fifteen minutes away .\n▶ 5:28Ben: Is that walking distance? What do you think? Uh, no, maybe I should bring my bike to get around.\n▶ 5:36Mrs Chandler: Yes, we always recommend that. Some pickers bring a car, but then find the roads rather narrow. And the bus is very infrequent. Do you have any questions?\n▶ 5:50Ben: I know that fruit picking is hard work, but is there anything special I need to bring with me?\n▶ 5:56Mrs Chandler: Well, firstly, documentation is extremely important. We will need proof of age, so we'll expect to see your passport. Pickers without one won't be allowed to work .\n▶ 6:08Ben: Oh, even if their age is written on their driving licence?\n▶ 6:11Mrs Chandler: Sorry, a driving licence isn't suitable.\n▶ 6:14Ben: Fair enough. I guess some lunch is provided for all the hungry fruit pickers.\n▶ 6:20Mrs Chandler: I'm afraid not. You'll need to bring your own food for lunch and more importantly, enough water to last a full day . It can get very hot, so drinking is vital.\n▶ 6:32Ben: Right. Like back home. Okay, well, thanks for all the information. What happens now?\n▶ 6:40Mrs Chandler: Well, I'll post a contract to you at the end.\n▶ 6:45[Narrator] That is the end of Section 1."
+  },
+  {
+   "id": "cdi-listening-56-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Label the plan below. Write the correct letter, A–I, next to Questions 11–16.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "text": "Shop",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Shop — \"To one side of us, and right in front of you as you enter the complex is the shop\" (position H)."
+      },
+      {
+       "n": 12,
+       "text": "Playground",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Playground — \"On the other side of the cafe, and ideally situated between the cafe and the childminding facilities, we have the playground\" (position G)."
+      },
+      {
+       "n": 13,
+       "text": "Spa",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Spa — \"In the corner nearest the changing rooms, we have a high-tech hot spa\" (position I)."
+      },
+      {
+       "n": 14,
+       "text": "Weights room",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Weights room — \"We have a large weights room located at the cafe end of the administration block\" (position D)."
+      },
+      {
+       "n": 15,
+       "text": "Gym",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Gym — \"the gym, which is shown on the map to the right of the changing rooms\" (position B)."
+      },
+      {
+       "n": 16,
+       "text": "Massage room",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Massage room — \"It's in the funny shaped room close to the administration area... the nickname of the bullet room\" (position E)."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening56-map.webp",
+      "alt": "Karrara Sports and Leisure Centre plan"
+     }
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO memberships have a special introductory price?",
+     "options": [
+      {
+       "key": "A",
+       "text": "off-peak"
+      },
+      {
+       "key": "B",
+       "text": "Gym and Weights"
+      },
+      {
+       "key": "C",
+       "text": "Swim Plus"
+      },
+      {
+       "key": "D",
+       "text": "All-in"
+      },
+      {
+       "key": "E",
+       "text": "Family Pack"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Two memberships with a special introductory price: All-in — \"for a short time we're offering 12 months for the price of nine\" (D); and off-peak — \"The other package we've reduced for this month only is the off-peak\" (A). Special introductory prices: off-peak (A) and All-in (D)."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Two memberships with a special introductory price: All-in — \"for a short time we're offering 12 months for the price of nine\" (D); and off-peak — \"The other package we've reduced for this month only is the off-peak\" (A). Special introductory prices: off-peak (A) and All-in (D)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO free gifts will new members get?",
+     "options": [
+      {
+       "key": "A",
+       "text": "sports towel"
+      },
+      {
+       "key": "B",
+       "text": "heart monitor"
+      },
+      {
+       "key": "C",
+       "text": "water bottle"
+      },
+      {
+       "key": "D",
+       "text": "sports socks"
+      },
+      {
+       "key": "E",
+       "text": "free massage"
+      }
+     ],
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Two free gifts for new members: \"a voucher for a session in our massage centre\" (E) and \"this great device that measures your heart rate\" (B). The drink bottle goes to everyone attending, not just new members. Free gifts for new members: heart monitor (B) and free massage (E)."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Two free gifts for new members: \"a voucher for a session in our massage centre\" (E) and \"this great device that measures your heart rate\" (B). The drink bottle goes to everyone attending, not just new members. Free gifts for new members: heart monitor (B) and free massage (E)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 7:27[Narrator] Section 2. You will hear the manager of a new sports centre talking to potential customers about the facilities there. First you have some time to look at questions 11 to 16.\n▶ 8:12[Narrator] Now listen carefully and answer questions 11 to 16.\n▶ 8:20Manager: Good evening and welcome to Karrara's brand new sports and leisure centre. First I'll tell you about our facilities, then feel free to wander around the centre.\n▶ 8:30Manager: Now, as you can see from the map I've given you, we're sitting in our cafe, which we hope will be a favourite place to visit after exercising.\n▶ 8:40Manager: To one side of us, and right in front of you as you enter the complex is the shop . Be sure to have a look in there later as we've got some great opening specials on footwear.\n▶ 8:52Manager: On the other side of the cafe, and ideally situated between the cafe and the childminding facilities, we have the playground . You can sit and relax there while your kids have a great time on the equipment.\n▶ 9:06Manager: And our childcare facilities are available to anyone using the centre. Let's talk a little bit about our heated swimming pool, which is also near the entrance on the other side from the cafe. It has a five metre water slide, which will be very popular with kids of all ages.\n▶ 9:19Manager: And in the corner nearest the changing rooms, we have a high-tech hot spa . The water is heated to 38 degrees centigrade, which is the ideal temperature to relax tired muscles after a workout. So, where can you do these workouts?\n▶ 9:43Manager: Well, we have a large weights room located at the cafe end of the administration block . In the weights room you'll find all the latest equipment. We also have trainers there who can put a programme together for you.\n▶ 9:58Manager: Another place to get a good workout is in the gym, which is shown on the map to the right of the changing rooms . There will be all sorts of classes offered there.\n▶ 10:10Manager: Our aim is to provide all your exercise and recovery needs. So as well as the spa to help aching bodies, we also have a special area for massage. It's in the funny shaped room close to the administration area. Its distinctive shape has already led to the nickname of the bullet room . We'll be offering Swedish and Chinese massage there.\n▶ 10:43[Narrator] Before you hear the rest of the talk, you have some time to look at questions 17 to 20.\n▶ 11:10[Narrator] Now listen and answer questions 17 to 20.\n▶ 11:17Manager: Now, let me tell you something about our different memberships. Firstly, we offer different types of membership to cater for different needs. If you are a fitness freak, then choose our all-in membership. This gives you access to everything in the centre, all the classes and sports.\n▶ 11:36Manager: It's usually our most expensive option, but for a short time we're offering 12 months for the price of nine, which is a huge saving .\n▶ 11:46Manager: If you prefer just the gym classes, you may want to consider the gym and weights package. It works out at $10 a week, which is good value. If you just want to swim, then we recommend getting a swim plus membership. With this, you have unlimited use of the pool and spa.\n▶ 12:05Manager: The other package we've reduced for this month only is the off-peak . This is aimed at people who are happy to come at less busy times. And finally, we have the family pack. We believe in keeping the whole family fit and healthy, so this package works out cheaper than buying it separately.\n▶ 12:30Manager: So anyone who signs up for a new membership tonight will receive two fantastic presents from us. We wanted to make these rewards something different from the norm. We could have just chosen a towel for you to use in the gym or some clothing from the shop. But we wanted to show our appreciation by giving you something special.\n▶ 12:52Manager: So not only are we going to give you a voucher for a session in our massage centre , a great way to unwind after your workout, but you'll also get this great device that measures your heart rate .\n▶ 13:05Manager: And finally, just for turning up tonight, we'd like to give everyone here a drink bottle to take away with them. That's all I wanted to say.\n▶ 13:18[Narrator] That is the end of Section 2."
+  },
+  {
+   "id": "cdi-listening-56-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "According to James and Anna, the Value Survey measured the cost of houses by calculating",
+       "options": [
+        {
+         "key": "A",
+         "text": "the total price of building a new house."
+        },
+        {
+         "key": "B",
+         "text": "the size of house a typical family can afford."
+        },
+        {
+         "key": "C",
+         "text": "the price of houses compared to average income."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"It started with average incomes across the whole workforce and then worked out house prices in relation to that.\" — price compared to average income (C)."
+      },
+      {
+       "n": 22,
+       "text": "Anna says the Value Survey is unusual because",
+       "options": [
+        {
+         "key": "A",
+         "text": "it compares prices in different cities."
+        },
+        {
+         "key": "B",
+         "text": "it is the oldest survey of its kind."
+        },
+        {
+         "key": "C",
+         "text": "it publishes its results annually."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"It stands out because it gives figures for a range of the largest urban centres, which none of the others do.\" — it compares prices in different cities (A)."
+      },
+      {
+       "n": 23,
+       "text": "The students decide that New Zealand house prices are high because of",
+       "options": [
+        {
+         "key": "A",
+         "text": "the cost of construction materials."
+        },
+        {
+         "key": "B",
+         "text": "the shortage of builders."
+        },
+        {
+         "key": "C",
+         "text": "the rules concerning land use."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"There are too many regulations and restrictions about where you can build. So if more building sites were created for housing, the costs would come down.\" — the rules concerning land use (C)."
+      },
+      {
+       "n": 24,
+       "text": "When the students talk about transport they are",
+       "options": [
+        {
+         "key": "A",
+         "text": "concerned there is no plan."
+        },
+        {
+         "key": "B",
+         "text": "worried about rising costs."
+        },
+        {
+         "key": "C",
+         "text": "alarmed by increasing congestion."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Is the survey proposing new roads, new rail networks? It should be a coordinated approach. Yeah, but the survey didn't mention it.\" — concerned there is no plan (A)."
+      },
+      {
+       "n": 25,
+       "text": "The students agree that the next Value Survey will",
+       "options": [
+        {
+         "key": "A",
+         "text": "compare a wider number of locations."
+        },
+        {
+         "key": "B",
+         "text": "indicate a future trend in house prices."
+        },
+        {
+         "key": "C",
+         "text": "advise against regulation of house prices."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The next one will give an idea of the way prices are moving.\" — it will indicate a future trend (B). It will look at exactly the same places, so not A."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What aspect of the Value Survey did each of the following people criticize? Choose FIVE answers from the box and write the correct letter, A–G, next to Questions 26–30.",
+     "title": "Aspects of the survey criticized",
+     "options": [
+      {
+       "key": "A",
+       "text": "organization of final text"
+      },
+      {
+       "key": "B",
+       "text": "researchers’ qualifications"
+      },
+      {
+       "key": "C",
+       "text": "period covered"
+      },
+      {
+       "key": "D",
+       "text": "level of funding"
+      },
+      {
+       "key": "E",
+       "text": "lack of public access to full information"
+      },
+      {
+       "key": "F",
+       "text": "old-fashioned systems of data analysis"
+      },
+      {
+       "key": "G",
+       "text": "way of defining home-buyers’ wealth"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "text": "Andrew Coleman",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Andrew Coleman — \"it only looked at a single year in isolation... he thought the survey should consider a longer time frame\" (C: period covered)."
+      },
+      {
+       "n": 27,
+       "text": "Professor Massey",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Professor Massey — \"the method used to calculate how much money people had didn't take savings into account\" (G: way of defining home-buyers' wealth)."
+      },
+      {
+       "n": 28,
+       "text": "Richard Bernard",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Richard Bernard — \"they were using quite outdated software to process all the information they gathered\" (F: old-fashioned systems of data analysis)."
+      },
+      {
+       "n": 29,
+       "text": "Professor Lowndes",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Professor Lowndes — \"the finished report was just too long and weakly structured, and there was too much unnecessary detail\" (A: organization of final text)."
+      },
+      {
+       "n": 30,
+       "text": "Maria Darling",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Maria Darling — \"they were never identified for privacy reasons. But she thought the actual properties used should have been revealed\" (E: lack of public access to full information)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 13:54[Narrator] Section 3. Following instructions from their tutor, you will hear two economics students called James and Anna discussing a recent survey about the cost of buying a house in New Zealand. First you have some time to look at questions 21 to 25.\n▶ 14:55[Narrator] Now listen carefully and answer questions 21 to 25.\n▶ 15:03Tutor: OK. For this week's assignment, you're going to assess the Value Survey on house prices. What were the survey's findings? Was it a reliable survey? Work in pairs, discuss what you've read, and generate some ideas for the assignment.\n▶ 15:18James: All right. Shall we work together, Anna?\n▶ 15:23Anna: Sure, James. So, first, how did the Value Survey actually measure the cost of houses? Because there are lots of ways of calculating it.\n▶ 15:32James: Well, it looked at all houses, didn't it? New and old. So it started with average incomes across the whole workforce and then worked out house prices in relation to that . I mean, to what people were earning. So it's about affordability. What people pay in real terms.\n▶ 15:50Anna: There's no information about the size of a house a typical family can buy.\n▶ 15:55James: No, that's a limitation. Okay, then in the assignment we should give some background. I mean, what's different about the Value Survey?\n▶ 16:04Anna: Yeah, there's lots of these surveys every year. Value is actually one of the newer ones, but it stands out because it gives figures for a range of the largest urban centres, which none of the others do .\n▶ 16:18James: Okay, good point. Then one finding was that New Zealand houses are relatively expensive. Why is that? Because most of them are built of wood, and that's quite cheap.\n▶ 16:30Anna: Yeah, it is. But the problem is there are too many regulations and restrictions about where you can build. So if more building sites were created for housing, the costs would come down . That's it, isn't it? Because there are plenty of contractors ready to do the work.\n▶ 16:44James: Exactly. So what else? Well, what about transport? I mean, it's all very well to talk about new housing, but how are people going to get there? Is the survey proposing new roads, new rail networks? It should be a coordinated approach .\n▶ 17:00Anna: Yeah, but the survey didn't mention it. It's a missed opportunity , because a commitment to funding public transport from the outset would improve air quality in our cities.\n▶ 17:11James: True. Okay then. The next survey, what can we expect? It'll look at all the same places, right?\n▶ 17:16Anna: Exactly the same. But the next one will give an idea of the way prices are moving . The government may have to think about how house prices are affecting society.\n▶ 17:29[Narrator] Before you hear the rest of the discussion, you have some time to look at questions 26 to 30.\n▶ 18:01[Narrator] Now listen and answer questions 26 to 30.\n▶ 18:08Anna: Then in the assignment we need to evaluate how reliable the survey was. So we should look at some of the criticism made by commentators. Okay. So there's the economist Andrew Coleman.\n▶ 18:20Anna: He actually questioned whether the survey was money well spent, because it only looked at a single year in isolation. A year when it was difficult to borrow money to buy a house, pushing up costs. So he thought the survey should consider a longer time frame .\n▶ 18:34Anna: Did you get that article by Professor Massey? Because he's the leading authority on this topic. Yeah, interesting. He realised the method used to calculate how much money people had didn't take savings into account . So actually people looking for a house were richer than the survey shows, making houses cheaper in real terms.\n▶ 18:52Anna: All right. Then Richard Bernard, his criticism was original. He found out they were using quite outdated software to process all the information they gathered , which was crazy because they actually had the money available for an upgrade. So even though it was a highly regarded team of people, the way the statistics were interpreted was open to question.\n▶ 19:20Anna: Okay. Then Professor Lowndes. He thought the report was just badly written. That's right. After all the work that went into gathering valid information, the finished report was just too long and weakly structured, and there was too much unnecessary detail .\n▶ 19:33Anna: And the last one, Maria Darling. She made a point about the properties that were evaluated. There weren't enough of them, you mean. No, it wasn't that. But they were never identified for privacy reasons. But she thought the actual properties used should have been revealed... The process should have been transparent if the people are going to have full confidence in the survey.\n▶ 19:52James: Right. So a lot of criticism. Yeah, but this sort of research is often controversial.\n▶ 20:00[Narrator] That is the end of Section 3."
+  },
+  {
+   "id": "cdi-listening-56-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Benefits of using drama activities in the classroom\nChild’s personal development\n- Group participation develops [[31]] in own ideas\n- Unscripted, imaginative activities allow children to take [[32]]\nChild’s educational development\n- Working as a group teaches the importance of [[33]] to others\n- Performing makes children [[34]] for their learning and behaviour\nRole-play can be used:\n- as a form of [[35]] for children experiencing problems\n- to help children be objective about their behaviour problems\n- to explore controversial issues with a class in a [[36]] environment\n- to explore children’s self-knowledge and understanding of [[37]]\nAdvantages of using role-play in the study of history\n- Drama activities increase children’s [[38]] in class\n- Makes it easier for children to [[39]] and understand historical events\n- Can find answers to [[40]] in history to see why certain decisions were made",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "confidence"
+       ],
+       "explanation": "\"Creating the space for children to express themselves freely in a group situation helps to give them confidence in their own opinions and ideas.\""
+      },
+      {
+       "n": 32,
+       "answer": [
+        "risks",
+        "risk"
+       ],
+       "explanation": "\"Unscripted improvisation activities where children work from their imagination... give children the opportunity to gain experience in taking risks.\""
+      },
+      {
+       "n": 33,
+       "answer": [
+        "listening"
+       ],
+       "explanation": "\"The emphasis placed on cooperative activities in drama means that group members must learn the value of listening to one another.\""
+      },
+      {
+       "n": 34,
+       "answer": [
+        "responsible"
+       ],
+       "explanation": "\"Being involved in any sort of performance... also helps children to be responsible, not only for their learning, but for their general behaviour.\""
+      },
+      {
+       "n": 35,
+       "answer": [
+        "therapy"
+       ],
+       "explanation": "\"The value of role play for children who are having difficulties as a means of therapy is now widely accepted.\""
+      },
+      {
+       "n": 36,
+       "answer": [
+        "safe"
+       ],
+       "explanation": "\"Role play also allows the teacher to explore potentially controversial or taboo subjects in a safe setting in which children feel at ease.\""
+      },
+      {
+       "n": 37,
+       "answer": [
+        "morality"
+       ],
+       "explanation": "\"Getting children to examine their thoughts and opinions carefully can lead to a deeper self-knowledge and a stronger awareness of morality.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "participation"
+       ],
+       "explanation": "\"Bringing characters from the past to life in the classroom... is an easy way to improve the level of the children's participation in the lesson.\""
+      },
+      {
+       "n": 39,
+       "answer": [
+        "remember"
+       ],
+       "explanation": "\"Getting children to reenact scenes from history can also be extremely useful as it helps them to remember what happened and why it was important.\""
+      },
+      {
+       "n": 40,
+       "answer": [
+        "problems",
+        "problem"
+       ],
+       "explanation": "\"Ask children to find solutions to historical problems using role play. This can help to focus attention on why certain decisions were taken.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 20:35[Narrator] Section 4. You will hear part of a lecture for teacher trainees on using drama activities in the classroom. First you have some time to look at questions 31 to 40.\n▶ 21:56[Narrator] Now listen carefully and answer questions 31 to 40.\n▶ 22:03Lecturer: So now we're going to look at some of the reasons why it's beneficial to include drama activities such as role play in your teaching practice in a range of subject areas. There's a lot of evidence to show that drama helps a child's personal development.\n▶ 22:21Lecturer: Firstly, creating the space for children to express themselves freely in a group situation helps to give them confidence in their own opinions and ideas , and of course, drama activities can work especially well for shy or introverted children who usually don't participate in other types of classroom situations.\n▶ 22:45Lecturer: Secondly, unscripted improvisation activities where children work from their imagination, if done in a supportive way, give children the opportunity to gain experience in taking risks and encourage them to say things that they might normally be afraid to say.\n▶ 23:06Lecturer: Drama can also support the child's educational development. For example, the emphasis placed on cooperative activities in drama means that group members must learn the value of listening to one another .\n▶ 23:21Lecturer: Being involved in any sort of performance which relies on everyone working together and playing their part also helps children to be responsible, not only for their learning, but for their general behaviour . These are just a couple of ways in which drama can benefit a child's learning.\n▶ 23:46Lecturer: Now I'd like to look at how role play can be such a valuable learning tool in the classroom. The value of role play for children who are having difficulties as a means of therapy is now widely accepted .\n▶ 24:00Lecturer: The experience of doing a role play where children act out aspects of their own life without explicitly stating that it is a direct representation of their own experiences can help children to judge their own behaviour in an objective way. One obvious example would be doing a role reversal with a bully role playing a victim. Because this approach doesn't involve direct confrontation, it may help the bully to see his or her behaviour in a different light.\n▶ 24:32Lecturer: More generally, role play also allows the teacher to explore potentially controversial or taboo subjects in a safe setting in which children feel at ease . It's obviously essential for children to feel they won't be criticised or judged for voicing certain views.\n▶ 24:52Lecturer: Getting children to examine their thoughts and opinions carefully can lead to a deeper self-knowledge and a stronger awareness of morality . This is an important factor in developing social skills.\n▶ 25:07Lecturer: Let's look at a specific subject area now and think about how drama can enrich the learning process for the study of history. Bringing characters from the past to life in the classroom by doing classroom drama activities is an easy way to improve the level of the children's participation in the lesson .\n▶ 25:28Lecturer: So, drama in the history classroom makes for a livelier atmosphere, but getting children to reenact scenes from history can also be extremely useful as it helps them to remember what happened and why it was important , as well as helping to bring the past alive.\n▶ 25:48Lecturer: Another way of doing this is to ask children to find solutions to historical problems using role play. This can help to focus attention on why certain decisions were taken . For example, children can be asked to decide how best to defend their town from attack or where to build a new settlement.\n▶ 26:26[Narrator] That is the end of the listening test."
+  }
+ ],
+ "audio": {
+  "file": "listening-56.mp3",
+  "durationSec": 1592,
+  "questionTimes": {
+   "1": 63,
+   "2": 82,
+   "3": 93,
+   "4": 126,
+   "5": 139,
+   "6": 208,
+   "7": 220,
+   "8": 231,
+   "9": 254,
+   "10": 266,
+   "11": 399,
+   "12": 413,
+   "13": 449,
+   "14": 473,
+   "15": 566,
+   "16": 580,
+   "17": 601,
+   "18": 616,
+   "19": 629,
+   "20": 642,
+   "21": 776,
+   "22": 788,
+   "23": 840,
+   "24": 865,
+   "25": 940,
+   "26": 970,
+   "27": 984,
+   "28": 1013,
+   "29": 1025,
+   "30": 1048,
+   "31": 1203,
+   "32": 1217,
+   "33": 1246,
+   "34": 1272,
+   "35": 1299,
+   "36": 1319,
+   "37": 1374,
+   "38": 1393,
+   "39": 1418,
+   "40": 1445
+  }
+ }
+}

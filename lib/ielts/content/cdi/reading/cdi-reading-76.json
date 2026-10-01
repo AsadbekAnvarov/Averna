@@ -1,0 +1,697 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-76",
+ "title": "CDI Reading Test 76",
+ "description": "A full Academic Reading test from the CDI practice materials: The Life of Louis Braille; A Study of Western Celebrity; The Vikings' Wayfaring Way.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Life of Louis Braille",
+  "A Study of Western Celebrity",
+  "The Vikings' Wayfaring Way"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Life of Louis Braille",
+   "subtitle": "Teacher and advocate for the blind, Louis Braille designed the coding system, based on raised dots, by which the blind can read through touch.",
+   "paragraphs": [
+    {
+     "text": "Louis Braille was born in Coupvray, France on January 4, 1809, the only child of Louis and Constance Braille. His father made leather saddles and harnesses for farmers in the area. At the age of three, while playing in his father's shop, young Louis was struck in the eye by a tool. Within weeks of the accident, the infection that had developed in his eyes took away his sight completely. Although there were few options for blind people at that time, Braille's parents wanted their son to be educated. He attended school in their village with sighted children and followed the lessons through listening alone. He was an excellent student, mostly because of his exceptional memory."
+    },
+    {
+     "text": "In 1819, Braille received a scholarship that enabled him to attend the Institut National des Jeunes Aveugles (National Institute for Blind Youth) in Paris, one of the first schools of its kind in the world. At that time, the school had only a handful of books for the blind, and these were massive volumes with raised letters of the standard alphabet pressed into the paper. Reading them was slow and laborious, and writing was nearly impossible. Moreover, the books were extremely expensive to produce, and the library contained no more than fourteen such volumes."
+    },
+    {
+     "text": "While at the institute, Braille learned of a communication system developed by Charles Barbier, a French army captain. Barbier had invented 'night writing' — a code of raised dots and dashes that soldiers could use to read and send messages in complete darkness without speaking. The system was based on grids of twelve dots, but it proved too complex for military use. Braille immediately saw the potential for the blind. He spent the next several years simplifying Barbier's system, reducing it to a six-dot cell (two columns of three dots each). This six-dot cell could produce sixty-four different combinations, enough to represent the letters of the alphabet, punctuation marks, numbers, and even musical notation."
+    },
+    {
+     "text": "By 1824, when Braille was just fifteen years old, he had completed the basic framework of his system. He later published a book explaining his method, titled Method of Writing Words, Music, and Plain Songs by Means of Dots, for the Use of the Blind and Arranged for Them . Despite its brilliance, the system was not immediately accepted. Many sighted teachers at the institute feared that Braille's code would isolate blind students from the sighted world. Instead, they continued to teach raised print letters. In 1839, Braille published further refinements, including symbols for mathematics and music, but the institute's directors remained resistant."
+    },
+    {
+     "text": "Tragically, Braille's own health began to decline. He had suffered from tuberculosis since his early twenties, and the disease gradually weakened him. In 1844, during a public exhibition, Braille demonstrated his system successfully, and the audience applauded enthusiastically. However, official recognition remained elusive. In 1852, at the age of 43, Louis Braille died from his illness. He never witnessed the widespread adoption of his invention."
+    },
+    {
+     "text": "After his death, Braille's system gradually gained acceptance. In 1854, one year after his passing, the Institut National officially adopted the Braille code. By the 1860s, schools for the blind across Europe and North America were teaching it. Over the ensuing decades, Braille has been adapted into nearly every major language on earth. Today, millions of blind and visually impaired people around the world read and write using the six-dot system that one determined teenager invented over two centuries ago. Louis Braille's legacy is not merely a code — it is the gift of literacy, independence, and dignity."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Louis Braille was the oldest child in his family.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “the only child of Louis and Constance Braille”"
+      },
+      {
+       "n": 2,
+       "text": "He lost his sight immediately after the accident in his father’s workshop.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “Within weeks of the accident, the infection that had developed in his eyes took away his sight completely”"
+      },
+      {
+       "n": 3,
+       "text": "Braille attended a school for blind children before going to Paris.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “He attended school in their village with sighted children and followed the lessons through listening alone”"
+      },
+      {
+       "n": 4,
+       "text": "Charles Barbier originally designed his code for military purposes.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “a code of raised dots and dashes that soldiers could use to read and send messages in complete darkness without speaking”"
+      },
+      {
+       "n": 5,
+       "text": "The Institut National officially adopted the Braille system before Braille died.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “In 1854, one year after his passing, the Institut National officially adopted the Braille code”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Use NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "- Braille’s father produced leather [[6]] for local farmers.\n- Before Braille’s system, books for the blind used raised letters of the [[7]].\n- Barbier’s ‘night writing’ was based on grids of [[8]] dots.\n- Braille published his first complete system when he was only [[9]] years old.",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "harnesses",
+        "saddles"
+       ],
+       "explanation": "The passage says: “His father made leather saddles and harnesses for farmers in the area”"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "standard alphabet"
+       ],
+       "explanation": "The passage says: “massive volumes with raised letters of the standard alphabet pressed into the paper”"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "twelve",
+        "12"
+       ],
+       "explanation": "The passage says: “The system was based on grids of twelve dots, but it proved too complex for military use”"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "fifteen",
+        "15"
+       ],
+       "explanation": "The passage says: “By 1824, when Braille was just fifteen years old, he had completed the basic framework of his system”"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 10,
+       "text": "Why did Braille succeed as a student in his village school?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He had excellent teachers."
+        },
+        {
+         "key": "B",
+         "text": "He possessed an extraordinary memory."
+        },
+        {
+         "key": "C",
+         "text": "He used special books for the blind."
+        },
+        {
+         "key": "D",
+         "text": "His parents helped him at home."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage says: “He was an excellent student, mostly because of his exceptional memory”"
+      },
+      {
+       "n": 11,
+       "text": "What was a major disadvantage of raised-print books?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They were too small to read."
+        },
+        {
+         "key": "B",
+         "text": "They could only be used during the day."
+        },
+        {
+         "key": "C",
+         "text": "They were slow to read and very expensive."
+        },
+        {
+         "key": "D",
+         "text": "They did not include musical notation."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “Reading them was slow and laborious, and writing was nearly impossible. Moreover, the books were extremely expensive to produce”"
+      },
+      {
+       "n": 12,
+       "text": "Why did some teachers initially reject Braille’s system?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They thought it was too difficult to learn."
+        },
+        {
+         "key": "B",
+         "text": "They feared it would separate blind people from the sighted world."
+        },
+        {
+         "key": "C",
+         "text": "They had invented their own system for reading."
+        },
+        {
+         "key": "D",
+         "text": "They believed blind people should not learn to read."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage says: “Many sighted teachers at the institute feared that Braille's code would isolate blind students from the sighted world”"
+      },
+      {
+       "n": 13,
+       "text": "What is the author’s main purpose in writing this passage?",
+       "options": [
+        {
+         "key": "A",
+         "text": "To describe the history of blind education in France."
+        },
+        {
+         "key": "B",
+         "text": "To compare different reading systems for the blind."
+        },
+        {
+         "key": "C",
+         "text": "To explain the life and achievements of Louis Braille."
+        },
+        {
+         "key": "D",
+         "text": "To argue that Braille was not recognised during his lifetime."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “Louis Braille's legacy is not merely a code — it is the gift of literacy, independence, and dignity”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "A Study of Western Celebrity",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "It seems that our current society cannot get enough information about the daily lives of celebrities. But how did celebrities become so much an important force in our culture? While people have always had a certain obsession for the fantastic and the famous, the notion of celebrity, as well as the types of people termed 'celebrities', has evolved greatly throughout the ages. The word 'celebrity' has its roots in the language of the ancient Roman civilization. The word we now know to mean 'a condition of being famous' or 'a famous person' is derived from the Latin word 'celeber', meaning 'frequented or populous'."
+    },
+    {
+     "label": "B",
+     "text": "The celebrities of the ancient world were the powerful and awesome deities of Greece and Rome, and the citizens of these civilizations believed in a vast number of immortals who had a direct impact on their lives. It was, therefore, important to know about these figures' personal lives. This need to know led to the creation of myths, which personalized the gods and involved them in ancient celebrity scandals that thrilled and excited the common people."
+    },
+    {
+     "label": "C",
+     "text": "During ancient times, amateur and professional athletes also began to make an impact on the celebrity culture. Victors in the ancient Olympic Games were treated as heroes and were often elevated to god-like status. In the ancient Roman civilization, gladiators — the equivalent of today's professional athletes — were also revered by the common people for their heroics and seemingly superhuman strength."
+    },
+    {
+     "label": "D",
+     "text": "As Europe moved into the Dark Ages (the years spanning approximately 400–1300 AD) and a time when athletics and the arts were largely forgotten, monarchs and rulers continued to maintain celebrity status, while religious figures took on newfound fame. The miraculous lives and fascinating deaths of spiritual figures lent excitement to the lives of common people when there was often little else to be excited about, as they faced war, disease, and food shortages."
+    },
+    {
+     "label": "E",
+     "text": "During the period 1300–1600 AD, or the Renaissance period as it is known, interest in ruling figures faded. As Europe emerged from its long neglect of the arts, there was greater appreciation for portraits, statues, and stone carvings. This period of appreciation for the arts lent a sense of celebrity to artists who were noted for their works and their personal achievements. It was a time when artists began to surpass political and religious individuals for supreme celebrity — a trend that would continue into later centuries."
+    },
+    {
+     "label": "F",
+     "text": "While the figures of the ancient and early modern civilizations were able to achieve moderate and sometimes lasting celebrity within particular cultures, the global reach of their fame was limited. It was not until the 1700s, when technological advances made publishing commercially viable, that the extent of a person's fame could spread further. The increase in the availability of the written word was accompanied by a huge rise in the number of common people who could read, allowing a mass audience to find out about celebrities for the first time. Suddenly, the lives of authors, politicians, war heroes, and other celebrities could now be read about in newspapers around the world. These gave ordinary people the opportunity to become intimately knowledgeable about the figures they most admired."
+    },
+    {
+     "label": "G",
+     "text": "In the modern era, particularly as radio and film took off in the 1900s, things really began to change. First, radio began to make its way into the average home in the 1920s and 1930s. Professional athletes also began to be regarded as stars, as their games and exploits could be broadcast over the air for an entirely new audience. Then, the rise of television in the 1950s only cemented the premier level of celebrity that film stars, athletes, and television actors were beginning to share. This also meant a huge increase in the individual salaries of these celebrities. Even a few animals gained fame through children's TV shows. The emergence of reality television shows in the late 1990s allowed all kinds of people with little ability to enjoy a short burst of fame on the television screen. All you needed, it seemed, was an attractive appearance. Today, reality television programmes make it possible to be famous not for doing anything in particular, but simply for being, with the audience deciding whether someone deserves to become a celebrity or not."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Why it is necessary to explain the meaning of the word celebrity"
+      },
+      {
+       "key": "ii",
+       "text": "The influence of non-human celebrities on societies"
+      },
+      {
+       "key": "iii",
+       "text": "The impact of broadcasting on concepts of celebrity"
+      },
+      {
+       "key": "iv",
+       "text": "Creativity having greater value"
+      },
+      {
+       "key": "v",
+       "text": "Admiration for physical achievement"
+      },
+      {
+       "key": "vi",
+       "text": "The advantages of celebrity status in the ancient world"
+      },
+      {
+       "key": "vii",
+       "text": "A result of hardship"
+      },
+      {
+       "key": "viii",
+       "text": "Literacy and widespread celebrity"
+      },
+      {
+       "key": "ix",
+       "text": "Attitudes of celebrities towards the media"
+      },
+      {
+       "key": "x",
+       "text": "The original definition of celebrity"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "x"
+       ],
+       "explanation": "A: original definition of celebrity (x)."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "B: celebrity status of ancient gods (vi)."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "v"
+       ],
+       "explanation": "C: admiration for physical achievement (v)."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "D: fame as a result of hardship (vii)."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "E: creativity having greater value (iv)."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "F: literacy and widespread celebrity (viii)."
+      },
+      {
+       "n": 20,
+       "text": "Paragraph G",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "G: impact of broadcasting (iii)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of periods below. Match each statement with the correct period, A–D.",
+     "title": "List of Periods",
+     "options": [
+      {
+       "key": "A",
+       "text": "Ancient times"
+      },
+      {
+       "key": "B",
+       "text": "Dark Ages"
+      },
+      {
+       "key": "C",
+       "text": "Renaissance"
+      },
+      {
+       "key": "D",
+       "text": "Modern era"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "text": "A wide variety of people achieve a brief period of fame.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Modern era / reality TV brief fame (D)."
+      },
+      {
+       "n": 22,
+       "text": "Stories are invented about celebrities' lives.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Ancient times myths (A)."
+      },
+      {
+       "n": 23,
+       "text": "The fame of rulers is starting to diminish.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Renaissance: rulers' fame fades (C)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Celebrity in the modern era",
+     "template": "Improvements in printing and literacy meant that the lives of well-known people could be followed in [[24]] across the world. Photography and, later, film placed a new emphasis on a celebrity’s [[25]], and broadcasting delivered them directly to a mass [[26]].",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "newspapers"
+       ],
+       "explanation": "Read newspapers about celebrities."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "appearance"
+       ],
+       "explanation": "Appearance can bring fame."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "audience"
+       ],
+       "explanation": "Depends on the audience."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The Vikings' Wayfaring Way",
+   "subtitle": "How Vikings have been perceived – and re-imagined – over the last century.",
+   "paragraphs": [
+    {
+     "text": "In the last century, Vikings have been perceived in numerous different ways – vilified as conquerors and romanticised as adventurers. How Vikings have been employed in nation-building is a topic of some interest."
+    },
+    {
+     "text": "In English, Vikings are also known as Norse or Norsemen. Their language greatly influenced English, with the nouns 'Hell', 'husband', 'law', and 'window', and the verbs 'blunder', 'snub', 'take', and 'want', all coming from Old Norse. However, the origins of the word 'Viking', itself, are obscure: it may mean 'a Scandinavian pirate', or it may refer to 'an inlet', or a place called Vik, in modern-day Norway, from where the pirates came. These various names – Vikings, Norse, or Norsemen – and doubts about the very word 'Viking' suggest historical confusion."
+    },
+    {
+     "text": "Loosely speaking, the Viking Age endured from the late eighth to the mid-eleventh centuries. Vikings sailed to England in AD 793 to storm coastal monasteries, and subsequently, large swathes of England fell under Viking rule – indeed several Viking kings sat on the English throne. It is generally agreed that the Battle of Hastings, in 1066, when the Norman French invaded, marks the end of the English Viking Age, but the Irish Viking age ended earlier, while Viking colonies in Iceland and Greenland did not dissolve until around AD 1500."
+    },
+    {
+     "text": "How much territory Vikings controlled is also in dispute – Scandinavia and Western Europe certainly, but their reach east and south is uncertain. They plundered and settled down the Volga and Dnieper rivers, and traded with modern-day Istanbul, but the archaeological record has yet to verify that Vikings raided as far away as Northwest Africa, as some writers claim."
+    },
+    {
+     "text": "The issue of control and extent is complex because many Vikings did not return to Scandinavia after raiding but assimilated into local populations, often becoming Christian. To some degree, the Viking Age is defined by religion. Initially, Vikings were polytheists, believing in many gods, but by the end of the age, they had permanently accepted a new monotheistic religious system – Christianity."
+    },
+    {
+     "text": "This transition from so-called pagan plunderers to civilised Christians is significant and is the view promulgated throughout much of recent history. In the UK, in the 1970s for example, schoolchildren were taught that until the Vikings accepted Christianity they were nasty heathens who rampaged throughout Britain. By contrast, today's children can visit museums where Vikings are celebrated as merchants, pastoralists, and artists with a unique worldview as well as conquerors."
+    },
+    {
+     "text": "What are some other interpretations of Vikings? In the nineteenth century, historians in Denmark, Norway, and Sweden constructed their own Viking ages for nationalistic reasons. At that time, all three countries were in crisis. Denmark had been beaten in war and ceded territory to what is now Germany. Norway had become independent from Sweden in 1905 but was economically vulnerable, so Norwegians sought to create a separate identity for themselves in the past as well as the present. The Norwegian historian, Gustav Storm, was adamant it was his forebears and not the Swedes' or Danes' who had colonised Iceland, Greenland, and Vinland, in what is now Canada. Sweden, meanwhile, had relinquished Norway to the Norwegians and Finland to the Russians; thus, in the late nineteenth century, Sweden was keen to boost its image with rich archaeological finds to show the glory of its Viking past."
+    },
+    {
+     "text": "In addition to augmenting nationalism, nineteenth-century thinkers were influenced by an Englishman, Herbert Spencer, who described peoples and cultures in evolutionary terms similar to those of Charles Darwin. Spencer coined the phrase 'survival of the fittest', which includes the notion that, over time, there is not only technological but also moral progress. Therefore, Viking heathens' adoption of Christianity was considered an advantageous move. These days, historians do not compare cultures in the same way, especially since, in this case, the archaeological record seems to show that heathen Vikings and Christian Europeans were equally brutal."
+    },
+    {
+     "text": "Views of Vikings change according not only to forces affecting historians at the time of their research but also according to the materials they read. Since much knowledge of Vikings comes from literature composed up to 300 years after the events they chronicle, some Danish historians call these sources 'mere legends'."
+    },
+    {
+     "text": "Vikings did have a written language carved on large stones, but as few of these survive today, the most reliable contemporary sources on Vikings come from writers from other cultures, like the ninth-century Persian geographer, Ibn Khordadbeh."
+    },
+    {
+     "text": "In the last four decades, there have been wildly varying interpretations of the Viking influence in Russia. Most non-Russian scholars believe the Vikings created a kingdom in western Russia and modern-day Ukraine led by a man called Rurik. After AD 862, Rurik's descendants continued to rule. There is considerable evidence of this colonisation: in Sweden, carved stones, still standing, describe the conquerors' journeys; both Russian and Ukrainian have loan words from Old Norse; and Scandinavian first names, like Igor and Olga, are still popular. However, during the Soviet period, there was an emphasis on the Slavic origins of most Russians. (Appearing in the historical record around the sixth century AD, the Slavs are thought to have originated in Eastern Europe.) This Slavic identity was promoted to contrast with that of the neighbouring Viking Swedes, who were enemies during the Cold War."
+    },
+    {
+     "text": "These days, many Russians consider themselves hybrids. Indeed, recent genetic studies support a Norse-colonisation theory: western Russian DNA is consistent with that of the inhabitants of a region north of Stockholm in Sweden."
+    },
+    {
+     "text": "The tools available to modern historians are many and varied, and their findings may seem less open to debate. There are linguistics, numismatics, dendrochronology, archaeozoology, palaeobotany, ice crystallography, climate and DNA analysis to add to the translation of runes and the raising of mighty warships. Despite these, historians remain children of their times."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "title": "The Vikings",
+     "template": "# Origins\n- Word ‘Viking’ is [[27]]\n- Vikings came from Scandinavia.\n# Dates of the Viking Age\n- In Britain: AD [[28]] – 1066\n- Length varies elsewhere\n# Territorial extent\n- In doubt – but most of Europe\n- Possibly raided as far away as [[29]]\n# End of the Viking Age\n- Vikings had assimilated into [[30]], and adopted a new [[31]] system.",
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "obscure"
+       ],
+       "explanation": "The passage says: “However, the origins of the word 'Viking', itself, are obscure: it may mean 'a Scandinavian pirate', or it may refer to 'an inlet', or a place called Vik, in modern-day Norway, from where the pirates came.”"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "793"
+       ],
+       "explanation": "The passage says: “Vikings sailed to England in AD 793 to storm coastal monasteries, and subsequently, large swathes of England fell under Viking rule – indeed several Viking kings sat on the English throne.”"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "Northwest Africa"
+       ],
+       "explanation": "The passage says: “the archaeological record has yet to verify that Vikings raided as far away as Northwest Africa, as some writers claim”"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "local populations"
+       ],
+       "explanation": "The passage says: “many Vikings did not return to Scandinavia after raiding but assimilated into local populations, often becoming Christian”"
+      },
+      {
+       "n": 31,
+       "answer": [
+        "religious"
+       ],
+       "explanation": "The passage says: “by the end of the age, they had permanently accepted a new monotheistic religious system – Christianity”"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of times and places below. Match each statement with the correct place or time, A–H. NB You may use any letter more than once.",
+     "title": "List of times &amp; places",
+     "options": [
+      {
+       "key": "A",
+       "text": "In the UK today"
+      },
+      {
+       "key": "B",
+       "text": "In 19th-century Norway"
+      },
+      {
+       "key": "C",
+       "text": "In 19th-century Sweden"
+      },
+      {
+       "key": "D",
+       "text": "In 19th-century England"
+      },
+      {
+       "key": "E",
+       "text": "In Denmark today"
+      },
+      {
+       "key": "F",
+       "text": "In 9th-century Persia"
+      },
+      {
+       "key": "G",
+       "text": "In mid-20th century Soviet Union"
+      },
+      {
+       "key": "H",
+       "text": "In Russia today"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 32,
+       "text": "A geographer documents Viking culture as it happens.",
+       "answer": [
+        "F"
+       ],
+       "explanation": "The passage says: “the most reliable contemporary sources on Vikings come from writers from other cultures, like the ninth-century Persian geographer, Ibn Khordadbeh”"
+      },
+      {
+       "n": 33,
+       "text": "A philosopher classifies cultures hierarchically.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "The passage says: “nineteenth-century thinkers were influenced by an Englishman, Herbert Spencer, who described peoples and cultures in evolutionary terms”"
+      },
+      {
+       "n": 34,
+       "text": "Historians assert that Viking history is based more on legends than facts.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "The passage says: “some Danish historians call these sources 'mere legends'”"
+      },
+      {
+       "n": 35,
+       "text": "Young people learn about Viking cultural and economic activities.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The passage says: “today's children can visit museums where Vikings are celebrated as merchants, pastoralists, and artists”"
+      },
+      {
+       "n": 36,
+       "text": "People see themselves as unrelated to Vikings.",
+       "answer": [
+        "G"
+       ],
+       "explanation": "The passage says: “during the Soviet period, there was an emphasis on the Slavic origins of most Russians”"
+      },
+      {
+       "n": 37,
+       "text": "A historian claims Viking colonists to modern-day Canada came from his land.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage says: “The Norwegian historian, Gustav Storm, was adamant it was his forebears and not the Swedes' or Danes' who had colonised Iceland, Greenland, and Vinland”"
+      },
+      {
+       "n": 38,
+       "text": "Viking conquests are exaggerated to bolster the country's ego after a territorial loss.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “Sweden was keen to boost its image with rich archaeological finds to show the glory of its Viking past”"
+      },
+      {
+       "n": 39,
+       "text": "DNA tests show locals are closely related to Swedes.",
+       "answer": [
+        "H"
+       ],
+       "explanation": "The passage says: “western Russian DNA is consistent with that of the inhabitants of a region north of Stockholm in Sweden”"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 40,
+       "text": "Which might be a suitable title for the passage?",
+       "options": [
+        {
+         "key": "A",
+         "text": "A brief history of Vikings"
+        },
+        {
+         "key": "B",
+         "text": "Recent Viking discoveries"
+        },
+        {
+         "key": "C",
+         "text": "A modern fascination with Vikings"
+        },
+        {
+         "key": "D",
+         "text": "Interpretations of Viking history"
+        },
+        {
+         "key": "E",
+         "text": "Viking history and nationalism"
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "The passage says: “Vikings have been perceived in numerous different ways – vilified as conquerors and romanticised as adventurers”"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

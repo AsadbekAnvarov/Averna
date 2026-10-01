@@ -1,0 +1,718 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-51",
+ "title": "CDI Reading Test 51",
+ "description": "A full Academic Reading test from the CDI practice materials: Why does music move us?; The culture of Chimpanzees; The ability to communicate using language.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Why does music move us?",
+  "The culture of Chimpanzees",
+  "The ability to communicate using language"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Why does music move us?",
+   "subtitle": "How is it that the combination of sound waves that we know as music can have such a moving effect, asks Roger Highfield.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "In the most basic terms, sound is merely a pressure wave that ripples through air. So how does the combination of sound waves that we know as music become, as Tolstoy put it, ‘the shorthand of emotion’? Or, to put it another way, how can mechanical vibrations have such a moving effect?"
+    },
+    {
+     "label": "B",
+     "text": "The answer, according to Philip Ball, author of The Music Instinct, lies not in the notes themselves, but in our brains. Recently, the author hosted an event with him at the Royal Institution, at which he explained to a packed audience why listening to much current pop music was as demanding as listening to Bach or Beethoven."
+    },
+    {
+     "label": "C",
+     "text": "Whatever your favourite genre of music, your brain has to work hard to make sense of it. Its remarkable skill at pattern detection will take the extraordinary harmonics-crammed richness of a note played on a piano or flute, and magically collapse it in your head, so that it is perceived as a single note rather than a forest of overtones."
+    },
+    {
+     "label": "D",
+     "text": "Philip Ball explained that we are pattern seekers, and that music helps us to find patterns in sound. We come equipped with all sorts of rules of thumb to make sense of what we hear. Those rules are the brain mechanisms that we use to organise sound and make sense of music."
+    },
+    {
+     "label": "E",
+     "text": "Medical scanners have shown that this process is not limited to one part of the brain. Different aspects of music activate different areas. We use our temporal lobe to process melody and pitch, our hippocampus to recover musical memories and what we might call ‘rhythm-processing circuits’ to fire up motor functions."
+    },
+    {
+     "label": "F",
+     "text": "Interestingly, the brain gives out the same signal of confusion when it encounters sentences that do not make sense as it does when the syntax of music sounds wrong and when chords do not complement one another. If you study the way we react to patterns of notes, you find there is something special about a pitch that is double the frequency of another; the interval better known as an octave."
+    },
+    {
+     "label": "G",
+     "text": "The biggest question, however, is whether this kind of mental circuitry is designed specifically to handle music, or if songs and tunes are just ‘auditory cheesecake’, as Harvard University’s Steven Pinker puts it. He claims that sounds accidentally generate pleasure via neural systems. The ability to hear them in the first place evolved to respond to other kinds of stimuli."
+    },
+    {
+     "label": "H",
+     "text": "The disappointing truth might be that we simply do not know. We do know, however, that the way we learn to appreciate music is profoundly affected by how we were raised. A few years ago, Philip Ball wrote about the fact that music seems to have a national character, probably as a result of the rhythms and cadences of the different languages spoken in each case. The English tend to vary the pitch of their speech, and the length of their vowels, more than the French, and their composers follow suit in the rhythms and intervals they use. On the latter measure, Elgar is considered by some to be the most ‘English’ of all composers, perhaps explaining why his music is so frequently the background to important national pageants."
+    },
+    {
+     "label": "I",
+     "text": "Similarly, concepts of what is harmonious boil down to a matter of convention, not acoustics. The older generation struggle with modern music and complain that it is dissonant — full of horrible jarring notes that are difficult to listen to. However, dissonance has always been in music. Beethoven and Chopin are full of it. It is all a matter of convention. What we regard as consonant now was thought dissonant in the Middle Ages. The augmented fourth was thought sinister back then, when it was dubbed ‘diabolus in musica’. We still find it slightly unsettling today, which might explain why it is so popularly used in heavy metal."
+    },
+    {
+     "label": "J",
+     "text": "Towards the end of an event at the Royal Institution, the question was asked whether music’s effects on the brain can be harnessed for good. It was a perfect set-up to examine the so-called ‘Mozart effect’ — the belief that playing your children classical music will make them brainier. Philip Ball cited an experiment conducted in 1996, which concluded that playing babies rock music had a more beneficial effect than did playing them Mozart. The essential factor was not the music per se, but the fact that it put the children in bright spirits."
+    },
+    {
+     "label": "K",
+     "text": "For Ball, the definition of the ‘music instinct’ is that we are predisposed to make the world a musical place. Apart from the tiny proportion of the population who really are tone-deaf, it is impossible to say: ‘I am not musical,’ even if it may seem that way whenever you get dragged along to participate in karaoke."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–I, from the box below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "is innate and allows the brain to simplify complex musical combinations."
+      },
+      {
+       "key": "B",
+       "text": "is an ability that most people do not possess."
+      },
+      {
+       "key": "C",
+       "text": "can affect us at a surprisingly deep level."
+      },
+      {
+       "key": "D",
+       "text": "activates our temporal lobe."
+      },
+      {
+       "key": "E",
+       "text": "has a very particular effect on most listeners."
+      },
+      {
+       "key": "F",
+       "text": "activates our hippocampus."
+      },
+      {
+       "key": "G",
+       "text": "is more challenging than most people think."
+      },
+      {
+       "key": "H",
+       "text": "depends on the genre of music you prefer listening to."
+      },
+      {
+       "key": "I",
+       "text": "has the same effect as reading sentences that do not make sense."
+      }
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "text": "Hearing mechanical vibrations",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para A: ‘how can mechanical vibrations have such a moving effect?’ — they can affect us at a surprisingly deep level."
+      },
+      {
+       "n": 2,
+       "text": "Listening to popular music",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Para B says listening to pop music ‘was as demanding as listening to Bach or Beethoven’ — more challenging than most people think."
+      },
+      {
+       "n": 3,
+       "text": "Recognising patterns",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para C: the brain’s ‘remarkable skill at pattern detection’ collapses complex harmonics into a single note — innate and simplifies complex combinations."
+      },
+      {
+       "n": 4,
+       "text": "Hearing music that we have previously heard",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Para E: ‘our hippocampus to recover musical memories’ — activates our hippocampus."
+      },
+      {
+       "n": 5,
+       "text": "Listening to discordant music",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Para F: the brain gives the same confusion signal as sentences that do not make sense."
+      },
+      {
+       "n": 6,
+       "text": "Hearing an octave",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para E says we use our temporal lobe to process melody and pitch; an octave is a pitch interval — activates our temporal lobe."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 7,
+       "text": "Steven Pinker believes that humans’ ability to enjoy sounds was an important development.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para G: Pinker says sounds ‘accidentally generate pleasure’ and evolved for other stimuli — not an important development."
+      },
+      {
+       "n": 8,
+       "text": "English and French musicians compose music that is similar in style.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para H: English composers use different rhythms and intervals from the French — their styles differ."
+      },
+      {
+       "n": 9,
+       "text": "Elgar composed music that typified his country of origin.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para H: Elgar is considered ‘the most English of all composers’ — his music typified England."
+      },
+      {
+       "n": 10,
+       "text": "Older people tend to listen to classical rather than popular music.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para I: the older generation struggle with modern music, implying a preference for classical."
+      },
+      {
+       "n": 11,
+       "text": "In heavy metal music, the effect of a particular note is recognised.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para I: the augmented fourth is used in heavy metal but its specific unsettling effect is not formally recognised within the genre."
+      },
+      {
+       "n": 12,
+       "text": "Philip Ball stresses the benefits of children listening to classical music.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para J: Ball cited research on the beneficial effects of music on children, referencing classical music (Mozart) among the examples."
+      },
+      {
+       "n": 13,
+       "text": "Karaoke tends to attract people who are not very musical.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para K mentions karaoke but says nothing about who it attracts — this information is not given."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The culture of Chimpanzees",
+   "subtitle": "Humankind’s nearest relative is even closer than we thought: chimpanzees display remarkable behaviours that can only be described as social customs passed on from generation to generation.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Researchers have studied the similarities between chimpanzees and humans for years, but in the past decade they have determined that these resemblances run much deeper than anyone first thought. For instance, the nut cracking observed in the Tai Forest is far from a simple chimpanzee behaviour; rather it is a singular adaptation found only in that particular part of Africa and a trait that biologists consider to be an expression of chimpanzee culture. Scientists frequently use the term “culture” to describe elementary animal behaviours, but as it turns out, the rich and varied cultural traditions found among chimpanzees are second in complexity only to human traditions."
+    },
+    {
+     "label": "B",
+     "text": "During the past two years, an unprecedented scientific collaboration, involving every major research group studying chimpanzees, has documented a multitude of distinct cultural patterns extending across Africa, in actions ranging from the animals’ use of tools to their forms of communications and social customs. This emerging picture of chimpanzees not only affects how we think of these amazing creatures but also alters human beings’ conception of our own uniqueness and hints at ancient foundations for extraordinary capacity for culture."
+    },
+    {
+     "label": "C",
+     "text": "Homo sapiens and Pan troglodytes have coexisted for hundreds of millennia and share more than 98 percent of their genetic material, yet only 40 years ago we still knew next to nothing about chimpanzee behaviour in the wild. That began to change in the 1960s, when Toshisada Nishida of Kyoto University in Japan and Jane Goodall began their studies of wild chimpanzees at two field sites in Tanzania. Goodall’s research station at Gombe—the first of its kind—is more famous."
+    },
+    {
+     "label": "D",
+     "text": "In these initial studies, as the chimpanzees became accustomed to close observation, the remarkable discoveries began. Researchers witnessed a range of unexpected behaviours, including fashioning and using tools, hunting, meat eating, food sharing and lethal fights between members of neighbouring communities. In the years that followed, other primatologists set up camp elsewhere, and, despite all the financial, political and logistical problems that can beset African fieldwork, several of these out-posts became truly long-term projects. As a result, we live in an unprecedented time, when an intimate and comprehensive scientific record of chimpanzees’ lives at last exists not just for one but for several communities spread across Africa."
+    },
+    {
+     "label": "E",
+     "text": "As early as 1973, Goodall recorded 13 forms of tool use as well as eight social activities that appeared to differ between the Gombe chimpanzees and chimpanzee populations elsewhere. She ventured that some variations had what she termed a cultural origin. But what exactly did Goodall mean by “culture”? The diversity of human cultures extends from technological variations to marriage rituals, from culinary habits to myths and legends. Animals do not have myths and legends, of course. But they do have the capacity to pass on behavioural traits from generation to generation, not through their genes but by learning. For biologists, this is the fundamental criterion for a cultural trait: it must be something that can be learned by observing the established skills of others and thus passed on to future generations."
+    },
+    {
+     "label": "F",
+     "text": "What of the implications for chimpanzees themselves? We must highlight the tragic loss of chimpanzees, whose populations are being decimated just when we are at last coming to appreciate these astonishing animals more completely. The bushmeat trade is particularly alarming: logging has driven roadways into the forests that are now used to ship wild-animal meat—including chimpanzee meat—to consumers as far afield as Europe. Such destruction threatens not only the animals themselves but also a host of fascinatingly different ape cultures."
+    },
+    {
+     "label": "G",
+     "text": "Perhaps the cultural richness of the ape may yet help in its salvation, however. Some conservation efforts have already altered the attitudes of some local people. A few organisations have begun to show videotapes illustrating the cognitive prowess of chimpanzees. One Zairian viewer was heard to exclaim, “Ah, this ape is so like me, I can no longer eat him.”"
+    },
+    {
+     "label": "H",
+     "text": "How did an international team of chimpanzee experts conduct the most comprehensive survey of the animals ever attempted? Scientists have been investigating chimpanzee culture for several decades, but too often their studies have contained a crucial flaw. Most attempts to document cultural diversity among chimpanzees have relied solely on officially published accounts of the behaviours recorded at each research site. But this approach probably overlooks a good deal of cultural variation for three reasons."
+    },
+    {
+     "label": "I",
+     "text": "Firstly, scientists typically don’t publish an extensive list of all the activities they do not see at a particular location. Yet this is exactly what we need to know—which behaviours were and were not observed at each site. Second, many reports describe chimpanzee behaviours without saying how common they are; without this information, we can’t determine whether a particular action was a once-in-a-lifetime aberration or a routine event that should be considered part of the animals’ culture. Finally, researchers’ descriptions of potentially significant chimpanzee behaviour frequently lack sufficient detail, making it difficult for scientists working at other spots to record the presence or absence of the activities."
+    },
+    {
+     "label": "J",
+     "text": "To remedy these problems, the two of us decided to take a new approach. We asked field researchers at each site for a list of all the behaviours they suspected were local traditions. With this information in hand, we pulled together a comprehensive list of 65 candidates for cultural behaviours."
+    },
+    {
+     "label": "K",
+     "text": "Then we distributed our list to the team leaders at each site. In consultation with their colleagues, they classified each behaviour in terms of its occurrence or absence in the chimpanzee community studied. The key categories were customary behaviour, habitual, present, absent, and unknown. We should note, however, that certain cultural traits are no doubt passed on by a combination of imitation and simpler kinds of social learning. Either way, learning from elders is crucial to growing up as a competent wild chimpanzee."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has eleven paragraphs, A–K. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      },
+      {
+       "key": "I",
+       "text": "Paragraph I"
+      },
+      {
+       "key": "J",
+       "text": "Paragraph J"
+      },
+      {
+       "key": "K",
+       "text": "Paragraph K"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "A problem of research on chimpanzee culture which is only based on official sources.",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Para H: studies ‘relied solely on officially published accounts’ — a crucial flaw."
+      },
+      {
+       "n": 15,
+       "text": "A new system designed by two scientists aiming to solve the problem.",
+       "answer": [
+        "J"
+       ],
+       "explanation": "Para J: the two researchers asked field sites for local traditions and compiled 65 candidate behaviours."
+      },
+      {
+       "n": 16,
+       "text": "Reasons why previous research on ape culture is inadequate.",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Para I lists three reasons why previous studies overlooked cultural variation."
+      },
+      {
+       "n": 17,
+       "text": "Classification of data observed or collected.",
+       "answer": [
+        "K"
+       ],
+       "explanation": "Para K: each behaviour was classified as customary, habitual, present, absent, or unknown."
+      },
+      {
+       "n": 18,
+       "text": "An example showing cognitive powers of animals leading to indication of change in local people’s attitude toward preservation.",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Para G: a Zairian viewer, after seeing a video of chimpanzee cognition, said he could no longer eat them."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 2?",
+     "questions": [
+      {
+       "n": 19,
+       "text": "Research found that chimpanzees will possess the same complex culture as humans.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage says chimpanzee culture is ‘second in complexity only to human traditions’ but makes no claim they will reach the same level."
+      },
+      {
+       "n": 20,
+       "text": "Human and ape ancestors lived together long ago and share most of their genetic substance.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para C: ‘coexisted for hundreds of millennia and share more than 98 percent of their genetic material.’"
+      },
+      {
+       "n": 21,
+       "text": "Jane Goodall has observed many surprising features of complex behaviours among chimpanzees.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para D: researchers witnessed ‘a range of unexpected behaviours’ including tool use, hunting, and food sharing."
+      },
+      {
+       "n": 22,
+       "text": "Chimpanzees, like humans, derive cultural behaviours mostly from genetic inheritance.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para E: cultural traits are passed on ‘not through their genes but by learning’."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "- When did the unexpected discoveries of chimpanzee behaviour start? [[23]]\n- Which country is the research site of Toshisada Nishida and Jane Goodall? [[24]]\n- What did the chimpanzees have to get used to in the initial study? [[25]]\n- What term did Jane Goodall use in 1973 to explain groups of chimpanzees using tools differently? [[26]]",
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "in the 1960s"
+       ],
+       "explanation": "Para C: ‘That began to change in the 1960s.’"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "Tanzania"
+       ],
+       "explanation": "Para C: both studied wild chimpanzees ‘at two field sites in Tanzania.’"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "close observation"
+       ],
+       "explanation": "Para D: ‘as the chimpanzees became accustomed to close observation.’"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "cultural origin"
+       ],
+       "explanation": "Para E: ‘She ventured that some variations had what she termed a cultural origin.’"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The ability to communicate using language",
+   "subtitle": "Daniel Everett has devoted his career to understanding a uniquely human attribute.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "A research question of continuing interest to modern academics concerns the origins of nouns, verbs, adjectives and so on — in other words, all the separate components that make up human language. Did they come about suddenly, or did they emerge gradually, adapted over time? Unlike fire, the use of language did not exist before humans first created it, so we must look elsewhere for any beneficial comparison. What is more, every culture in the history of the human race places its own mark on language. It is an invention that embraces all humans and provides us with our most intense source of happiness — focused and ordered thoughts. Homo sapiens has become Homo loquax, as well-known author Tom Wolfe puts it, or in other words ‘speaking man’. I would argue that our minds are enabled by language to accomplish tasks that we could otherwise never hope to complete, such as debating philosophy, following recipes and thinking about where our children are going after school."
+    },
+    {
+     "label": "B",
+     "text": "From each of the twenty or more languages I have studied in the Amazon, Mexico and United States over the past decades, I have learned things about our species and our ability to communicate. These are things I would never have learned by living a different life. I have learned about humans’ relation to nature, and about living and speaking among ancient cultures living in remote forests. I have learned how words reach into my heart and change my life. Language gives humans their humanity."
+    },
+    {
+     "label": "C",
+     "text": "The human species has the extraordinary ability to express thoughts and feelings with visual symbols and spoken sounds. So it is only natural that scholars should want to learn more about this communicative technology, for nothing has more to tell us about what it means to be human than the forms and uses to which we put language. Indeed, language is the foundation of every human advance, from prehistoric cave paintings, to Thomas Edison’s light bulb, to today’s digital revolution."
+    },
+    {
+     "label": "D",
+     "text": "No linguist or anthropologist would disagree that language is useful. But there is enormous division about where it came from. Some of these experts say that language was discovered by chance. Others believe that one brilliant Homo sapiens might have invented it about 75,000 years or so ago, as the Native American chief Sequoya invented writing for his people. Still others claim that language is genetically encoded in the human mind. What does seem clear is that all human abilities, including language, derive from identifiable sources — genes and environment. The idea that language is exclusively a product of our environment is as simplistic and wrong as the opposite idea that language grows like hair, shaped by our genes with no learning involved. Language, like human reasoning, is surely the result of both of these sources working together, although the relative proportions of each are more difficult to determine."
+    },
+    {
+     "label": "E",
+     "text": "My own views about human language are sometimes disputed, but this does not make them less worthy of consideration. One of my goals is to give alternatives a fair hearing, even if I ultimately reject them. In the process, it is sometimes necessary to make an argument opposing one particular view; this is standard scientific discourse and vital for progress. So long as we are polite and our evidence is valid, it is a healthy practice."
+    },
+    {
+     "label": "F",
+     "text": "I would define language as a ‘cultural tool’. And in order to understand this cultural tool properly, we need to understand something about its original birthplace on the African plains. In addition, we must examine the relationship between language and culture in as many different linguistic groups as possible over the course of history. Then there is the issue of genetic influence on language. Those who support the influence of genes often ask, if language is not genetic, why is it such a universal human characteristic? This is an area that many people feel passionately about. Even among scientists it is sometimes supposed that all languages are ‘equal’ in some way, and any suggestion to the contrary is not popular."
+    },
+    {
+     "label": "G",
+     "text": "However, as I have gone further into the issues, it has become clear that there is limited evidence that language is genetic. This does not mean that language speakers are not equal, but some languages are remarkably complex in terms of their form and framework — the tense systems, the parts of speech — and this is not true of some other languages. It is just not necessary for all languages to have the same form. Languages have developed over time to meet the requirements of their own cultural situation. And the beauty of each one lies in the fact that it is so well suited to its own purposes."
+    },
+    {
+     "label": "H",
+     "text": "So what do researchers need now? Much of the heated opinion in the debate about relative language complexity is actually irrelevant, for the simple reason that we do not have enough practical information about the languages in use today. And in order to gather such details, it is necessary for researchers to do fieldwork. Increasingly, the evidence points away from the idea that languages can be understood by sitting at a desk studying formulas and equations. And while it is beyond doubt that genetics are partly responsible for human languages, we will learn most about those languages by studying how different cultures have adapted them."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 27,
+       "text": "It is useful to equate the discovery of fire with the invention of language.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Para A states that ‘unlike fire, the use of language did not exist before humans first created it’ — the comparison is explicitly dismissed."
+      },
+      {
+       "n": 28,
+       "text": "The greatest pleasure people have is their ability to think clearly and rationally.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Para A: language ‘provides us with our most intense source of happiness — focused and ordered thoughts.’"
+      },
+      {
+       "n": 29,
+       "text": "Tom Wolfe uses an expression that is copied by other authors.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Tom Wolfe is quoted but there is no information about other authors copying his expression."
+      },
+      {
+       "n": 30,
+       "text": "Language allows human brains to do things that would be impossible without it.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Para A: ‘our minds are enabled by language to accomplish tasks that we could otherwise never hope to complete.’"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 31–34.",
+     "questions": [
+      {
+       "n": 31,
+       "text": "What is the writer doing in the second paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "highlighting his own language abilities"
+        },
+        {
+         "key": "B",
+         "text": "outlining his personal fascination with language"
+        },
+        {
+         "key": "C",
+         "text": "proposing his own theory about language development"
+        },
+        {
+         "key": "D",
+         "text": "describing the best way to learn a new language"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "In para B the writer describes personal experience studying languages — outlining his fascination with language."
+      },
+      {
+       "n": 32,
+       "text": "The writer refers to Thomas Edison in order to",
+       "options": [
+        {
+         "key": "A",
+         "text": "compare older and more modern languages."
+        },
+        {
+         "key": "B",
+         "text": "highlight a misconception about language."
+        },
+        {
+         "key": "C",
+         "text": "contrast the study of language and science."
+        },
+        {
+         "key": "D",
+         "text": "illustrate the role of language over time."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "In para C, Edison’s light bulb appears in a list from cave paintings to the digital revolution — illustrating the role of language over time."
+      },
+      {
+       "n": 33,
+       "text": "What does the writer suggest about human reasoning in the fourth paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is oversimplified by some academics."
+        },
+        {
+         "key": "B",
+         "text": "It cannot be compared to language."
+        },
+        {
+         "key": "C",
+         "text": "It has been shaped by two factors."
+        },
+        {
+         "key": "D",
+         "text": "It gives humans two distinct skills."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para D: language ‘like human reasoning, is surely the result of both of these sources [genes and environment] working together’ — shaped by two factors."
+      },
+      {
+       "n": 34,
+       "text": "What is the writer’s main point in the fifth paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Academics should not pay attention to criticism."
+        },
+        {
+         "key": "B",
+         "text": "Scientific knowledge is advanced by balanced debate."
+        },
+        {
+         "key": "C",
+         "text": "Researchers should not be influenced by public opinion."
+        },
+        {
+         "key": "D",
+         "text": "Criticism rarely leads to a scientific breakthrough."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para E: debating opposing views is ‘standard scientific discourse and vital for progress’ — balanced debate advances knowledge."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of phrases, A–H, below.",
+     "options": [
+      {
+       "key": "A",
+       "text": "similar structures"
+      },
+      {
+       "key": "B",
+       "text": "evolving needs"
+      },
+      {
+       "key": "C",
+       "text": "complicated grammar"
+      },
+      {
+       "key": "D",
+       "text": "strong emotions"
+      },
+      {
+       "key": "E",
+       "text": "intellectual abilities"
+      },
+      {
+       "key": "F",
+       "text": "mathematical analysis"
+      },
+      {
+       "key": "G",
+       "text": "numerous communities"
+      },
+      {
+       "key": "H",
+       "text": "useful descriptions"
+      }
+     ],
+     "template": "Language: the cultural tool\nTo understand language, it is necessary to learn about its original birthplace in Africa and also to study its use in [[35]] since then.\nThe debate about genetic influence on language causes [[36]], because some academics believe that all languages are equal. But this is wrong: language speakers are equal, but some languages have [[37]] and others do not. This is because each language has developed in order to meet the [[38]] of the people who use it.\nWhat researchers need now is [[39]] of more languages. This requires fieldwork, because we cannot learn about language by [[40]]. It’s true that language is partly the product of human genetics, but our languages have developed more from cultural experience.",
+     "questions": [
+      {
+       "n": 35,
+       "answer": [
+        "G"
+       ],
+       "explanation": "Para F: ‘examine the relationship between language and culture in as many different linguistic groups as possible.’"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para F: ‘This is an area that many people feel passionately about.’"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para G: some languages are ‘remarkably complex in terms of their form and framework — the tense systems, the parts of speech.’"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para G: ‘Languages have developed over time to meet the requirements of their own cultural situation.’"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "H"
+       ],
+       "explanation": "Para H: researchers need more practical information — useful descriptions of more languages."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "F"
+       ],
+       "explanation": "Para H: languages can’t be understood by ‘sitting at a desk studying formulas and equations’ — not by mathematical analysis."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

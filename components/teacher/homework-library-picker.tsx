@@ -369,7 +369,7 @@ function SelectedShell({ kind, title, onClear, clearLabel, children }: { kind: E
 // ---------------------------------------------------------------------------
 
 const DIFFICULTIES: ExamDifficulty[] = ["Easy", "Medium", "Hard"];
-const SOURCES: ExamSource[] = ["averna", "generated", "legacy"];
+const SOURCES: ExamSource[] = ["cdi", "generated", "averna", "legacy"];
 
 function objectiveText(i: LibraryObjective): string {
   return [i.title, i.description, ...i.topics, ...i.parts.map((p) => p.title), ...kindLabels(i.kinds), i.difficulty, SOURCE_LABEL[i.source]]

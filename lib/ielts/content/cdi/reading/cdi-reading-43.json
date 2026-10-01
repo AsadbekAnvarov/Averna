@@ -1,0 +1,691 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-43",
+ "title": "CDI Reading Test 43",
+ "description": "A full Academic Reading test from the CDI practice materials: Australia's Airborne Dentists; Antarctic Research; Learning to be bilingual.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Australia's Airborne Dentists",
+  "Antarctic Research",
+  "Learning to be bilingual"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Australia's Airborne Dentists",
+   "paragraphs": [
+    {
+     "text": "Australians living or travelling in rural and remote areas often face particular difficulties when they need medical care. Hundreds of kilometres from major cities and many hours by road from the closest hospital or clinic, some rural Australians do not have easy access to doctors, nurses and dentists. Organisations such as the Royal Flying Doctor Service (RFDS) have been established to bring health services to outback Australian communities. The RFDS provides free medical care to people who live, work or travel in remote and regional parts of Australia. This non-profit organisation is the oldest and largest airborne health service of its kind in the world, and since 1928 it has used small aircraft to send doctors and nurses to some of Australia's most far-away communities. In recent years, the RFDS has also started to fly dentists to regional Australia."
+    },
+    {
+     "text": "As well as offering mobile dental clinics, the RFDS offers a range of preventative and educational services. Looking after the teeth of people in remote areas presents special challenges. These include providing care to disparate communities with no established dental facilities, and dealing with higher incidences of other diseases which are linked to, or caused by poor dental health. People in remote areas have very infrequent visits by health staff. RFDS dentists might only visit a community once every few months, or sometimes once per year. Because of infrequent dentist visits, patients in these areas often need to put up with their dental problems before they can get treatment. Consequently, people in remote areas are more likely to have tooth decay (the blackening and deterioration of teeth) and develop gum and other mouth diseases."
+    },
+    {
+     "text": "In some locations that the RFDS visits, there are no suitable dental facilities, so dentists have to bring everything with them. This includes drills, dentist's chairs, portable X-ray machines, and computers for keeping track of patients' treatments. Equipment can weigh up to 100 kilograms, and since the small planes that transport dentists have limited space, dentists cannot always bring everything that they need."
+    },
+    {
+     "text": "While dentists in town or city centres can specialise in certain types of treatment, RFDS dentists need to be 'all-rounders'. They need to be able to do all kinds of dental procedures, as they don't have the ability to refer patients to more specialised dentists. Even with their broad experience, there are some services that are particularly challenging for RFDS dentists. For example, dentures (or artificial teeth) can be very difficult to provide, as they need to be the right shape and size for the patient, and this requires many visits over a long period of time. As a result, it is not practical to make dentures available."
+    },
+    {
+     "text": "Some chronic illnesses are more common in remote communities than in the rest of Australia. These illnesses can in turn lead to a lowered resistance to infection, including gum and other oral infections. As a result, people in outback Australian communities are more likely to experience oral health problems than city folk, and this poses extra challenges for the dentists and the doctors of the RFDS."
+    },
+    {
+     "text": "Because there aren't a lot of dental services in remote areas, people living in these areas also receive less education about good dental hygiene than their city counterparts do. Australians in very remote communities might not be aware of things that people in cities take for granted, such as the importance of daily tooth brushing. Also, basic dental hygiene items such as toothpaste and toothbrushes can be more expensive in outback areas. Many people are on low incomes, meaning they have extra difficulty affording these products. If this is the case, the RFDS supplies these."
+    },
+    {
+     "text": "As well as treating patients, RFDS dentists try to focus on preventative oral health and educate their patients on good oral hygiene, such as tooth brushing and flossing. The RFDS also provides mouthguards for young sports players. Playing contact sports, such as rugby league or Australian rules football, can damage young people's teeth, so mouthguards provide protection which prevents accidental injuries."
+    },
+    {
+     "text": "Adding fluoride to water supplies has been proven to reduce the incidence of tooth decay in many parts of the world. City dwellers in Australia use water supplies that have been fluoridated, and their rates of tooth decay are lower because of this. In remote areas, it is not practical to fluoridate drinking water supplies, and so people living in these areas are more subject to tooth decay. As a result, it is particularly important that people living in areas without fluoridated water pay special attention to regular brushing of their teeth with fluoridated toothpaste."
+    },
+    {
+     "text": "Despite many challenges, the RFDS continues to offer much needed dental and medical support. Its presence in isolated communities greatly improves the quality of dental health, and supports important oral hygiene and health initiatives."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Many of the RFDS doctors work as volunteers.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Not mentioned whether doctors are paid or volunteers."
+      },
+      {
+       "n": 2,
+       "text": "RFDS dentists make trips to outback communities each month.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'RFDS dentists might only visit a community once every few months, or sometimes once per year.'"
+      },
+      {
+       "n": 3,
+       "text": "RFDS dentists are accompanied on their journeys to remote areas by a dental nurse.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage does not mention dental nurses accompanying dentists."
+      },
+      {
+       "n": 4,
+       "text": "RFDS dentists must provide a wide range of dental services.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'RFDS dentists need to be all-rounders. They need to be able to do all kinds of dental procedures.'"
+      },
+      {
+       "n": 5,
+       "text": "Rural dental patients are more informed about oral hygiene than urban patients.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'people living in these areas also receive less education about good dental hygiene than their city counterparts do.'"
+      },
+      {
+       "n": 6,
+       "text": "RFDS dentists educate patients about good eating habits.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions educating about tooth brushing and flossing but not eating habits."
+      },
+      {
+       "n": 7,
+       "text": "Urban Australians generally have better teeth because their water is treated.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'City dwellers in Australia use water supplies that have been fluoridated, and their rates of tooth decay are lower because of this.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Challenges faced by RFDS dentists",
+     "template": "Need to bring equipment including:\n- [[8]] for records\nAircraft have restricted:\n- [[9]]\nProblems offering some services, e.g. fitting:\n- [[10]]\nProducts supplied by RFDS dentists if necessary:\n- [[11]] and [[12]] for regular use\n- [[13]] to limit dental accidents on the sports field",
+     "questions": [
+      {
+       "n": 8,
+       "answer": [
+        "computers"
+       ],
+       "explanation": "'computers for keeping track of patients' treatments.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "space"
+       ],
+       "explanation": "'the small planes that transport dentists have limited space.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "dentures"
+       ],
+       "explanation": "'dentures (or artificial teeth) can be very difficult to provide.'"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "toothpaste"
+       ],
+       "explanation": "'toothpaste and toothbrushes can be more expensive... the RFDS supplies these.'"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "toothbrushes"
+       ],
+       "explanation": "'toothpaste and toothbrushes can be more expensive in outback areas... the RFDS supplies these.'"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "mouthguards"
+       ],
+       "explanation": "'The RFDS also provides mouthguards for young sports players.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Antarctic Research",
+   "paragraphs": [
+    {
+     "text": "Thirteen nations took part in the recent International Polar Year"
+    },
+    {
+     "label": "A",
+     "text": "New Zealand's contribution to International Polar Year was a 52-day voyage by the ship Tangaroa in order to conduct research in Antarctica's Ross Sea. Lead scientist Mary Livingston emphasises just what a multi-faceted expedition this was, bringing together zoologists, oceanographers, meteorologists and other scientists from the Ministry of Fisheries, the National Institute for Water and Atmospheric Research, the National Museum and various universities, to study life beneath the seas of Antarctica. Competition for berths — the ship can carry 44 people, including 13 crew — was fierce. Voyage leader Stu Hanchet says, 'We could have filled the science positions four times over … we had so many people requesting a berth … We ended up with a really strong team.'"
+    },
+    {
+     "label": "B",
+     "text": "It would be hard to overstate how hostile the Antarctic environment is for scientists. The Tangaroa's captain, Graham Leachman, explains that the Ross Sea is subject to katabatic winds that sweep down off the Antarctic continent to create rough seas. Another danger is the possibility of the ship colliding with floating ice. 'Even though the ship's officers use all sorts of high tech equipment … none of it can tell you how thick the ice is,' says Leachman, 'and you still can't beat looking out of the window.' In the dark, he says, you can't tell how thick ice is, but if you can see its colour, it's possible to estimate. This is why he prefers sailing in summer, when the hours of daylight in these high latitudes are longest, even though this plays tricks with his passengers' body clocks."
+    },
+    {
+     "label": "C",
+     "text": "Analysis of what the expedition found continues, but it's likely that several new species have been discovered and numerous other secrets revealed of life 3000 metres below the surface. 'We have collected huge worms and strange crustaceans,' says Livingston, 'but most impressive of all were the starfish that measured more than half a metre across — that's most abnormal for creatures belonging to this species.' This phenomenon of Antarctic seas is called 'gigantism' — the fact that some species grow to unusually large sizes. Livingston suggests various possible causes for gigantism including the extreme cold, few predators and high levels of oxygen in the sea water, but as yet no final determination can be made. Another interesting discovery was that in some places every inch of the sea floor was covered with life, whereas elsewhere icebergs have scoured out deep scars and ravines in the sea floor as they go by."
+    },
+    {
+     "label": "D",
+     "text": "By using deep-sea trawl nets, hi-definition cameras and water samplers, the team has revealed that many of the creatures that live at extreme depths have a bizarre appearance. Among them were spotted tunicates, plankton-eating animals that are slender structures that appear to be fashioned from glass. The most fearsome-looking fish was the south ocean daggertooth, a species that is 'monocyclic', meaning the fish die after the first spawning. They are also unusual for being capable of shedding their teeth and growing a new set. Another predatory fish brought to the surface was the stareater, an extraordinary species that has an appendage like a piece of cord hanging from its chin. In these deep, dark waters, this glows red and attracts prey to swim within striking distance."
+    },
+    {
+     "label": "E",
+     "text": "But whatever exciting discoveries were made, everyday life onboard ship in the Ross Sea is unrelenting. Most people share a cabin with one other person — they're allocated so that as one person begins their 12 hours off duty, the other occupant is starting work on deck. The fresh food runs out in a few days and after that most provisions are frozen, canned or dried. Expedition general manager Fred Smits recognises that the cook has an essential role in ensuring the well-being of those onboard. 'When you are at sea for so long,' he says, 'you think a lot about your next meal.'"
+    },
+    {
+     "label": "F",
+     "text": "Perhaps most controversially, one of the precious berths on the Tangaroa was taken up by cameraman Max Quinn, who filmed a documentary about the voyage. Quinn's inclusion wasn't welcomed at first. 'Scientists by nature,' Livingston says, 'tend to be camera-shy and quiet. They're not into having cameras there, so it was difficult getting everyone's permission and agreement.' But in the end Quinn fitted in very well. 'The trick,' he says, 'is to mostly film the scientists at work, in their professional roles … rather than eating their breakfast.' He knows when not to intrude. The documentary is a window on a trip few people get to make and also a peek into what research really looks like. 'Science,' says Livingston, 'is intrepid, more so than people realise. It's not necessarily examining dry samples in the laboratory, but can also mean braving the elements on deck. That's what the documentary captures, the sense of real people with real lives.'"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has 6 paragraphs, A–F. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "details of some equipment used by the scientists",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D: 'deep-sea trawl nets, hi-definition cameras and water samplers.'"
+      },
+      {
+       "n": 15,
+       "text": "a description of the challenging sailing conditions in Antarctica",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B: 'katabatic winds... rough seas... possibility of the ship colliding with floating ice.'"
+      },
+      {
+       "n": 16,
+       "text": "information about the composition of the scientific group",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A: 'bringing together zoologists, oceanographers, meteorologists and other scientists.'"
+      },
+      {
+       "n": 17,
+       "text": "the identity of a potentially unpopular person on the ship",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F: 'one of the precious berths... was taken up by cameraman Max Quinn... Quinn's inclusion wasn't welcomed at first.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The expedition’s findings",
+     "template": "Analysis continues of the expedition's remarkable discoveries, including a [[18]], very notable for its unusual width.\nThe reasons why creatures grow so large may include the highly oxygenated water, the temperature, or the small number of [[19]].\nA further fascinating finding was the existence of canyons in the seabed caused by passing [[20]].\nMany creatures living at great depth look very strange, such as tunicates, which seem to be made of [[21]].\nOne frightening-looking fish species is characterised by loss of its [[22]] and the fact that it spawns only once.\nAnother fish has something like a length of string attached to its [[23]] that assists with hunting.",
+     "questions": [
+      {
+       "n": 18,
+       "answer": [
+        "starfish"
+       ],
+       "explanation": "'most impressive of all were the starfish that measured more than half a metre across.'"
+      },
+      {
+       "n": 19,
+       "answer": [
+        "predators"
+       ],
+       "explanation": "'few predators' listed as a possible cause of gigantism."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "icebergs"
+       ],
+       "explanation": "'icebergs have scoured out deep scars and ravines in the sea floor.'"
+      },
+      {
+       "n": 21,
+       "answer": [
+        "glass"
+       ],
+       "explanation": "'tunicates... slender structures that appear to be fashioned from glass.'"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "teeth"
+       ],
+       "explanation": "'capable of shedding their teeth and growing a new set.'"
+      },
+      {
+       "n": 23,
+       "answer": [
+        "chin"
+       ],
+       "explanation": "'the stareater... has an appendage like a piece of cord hanging from its chin.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Match each person with the correct opinion, A–G.",
+     "title": "List of Opinions",
+     "options": [
+      {
+       "key": "A",
+       "text": "The repetitive food was one of the hardships of the voyage."
+      },
+      {
+       "key": "B",
+       "text": "Respecting your subjects' privacy gets the best results."
+      },
+      {
+       "key": "C",
+       "text": "The summer is the best time to sail these waters."
+      },
+      {
+       "key": "D",
+       "text": "The kitchen is one of the most important parts of the ship."
+      },
+      {
+       "key": "E",
+       "text": "Being separated from family was difficult."
+      },
+      {
+       "key": "F",
+       "text": "The nature of scientific work may surprise some people."
+      },
+      {
+       "key": "G",
+       "text": "More applications to join the group were received than there were places."
+      }
+     ],
+     "questions": [
+      {
+       "n": 24,
+       "text": "Mary Livingston",
+       "answer": [
+        "F"
+       ],
+       "explanation": "F: The nature of scientific work may surprise some people."
+      },
+      {
+       "n": 25,
+       "text": "Stu Hanchet",
+       "answer": [
+        "G"
+       ],
+       "explanation": "G: More applications to join the group were received than there were places."
+      },
+      {
+       "n": 26,
+       "text": "Max Quinn",
+       "answer": [
+        "B"
+       ],
+       "explanation": "B: Respecting your subjects' privacy gets the best results."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Learning to be bilingual",
+   "paragraphs": [
+    {
+     "text": "Dr Chisato Danjo, Lecturer in Japanese and Linguistics, examines the bilingual family home"
+    },
+    {
+     "text": "Few people would consider mastering more than one language a bad idea. Consequently, parents who speak different languages from each other are generally keen for their children to learn both. They understand that the family setting they create is central to this, and seek ways to ensure their children thrive bilingually. One of the best-known approaches is the 'one-parent-one-language' strategy (OPOL). Each parent uses their native language when communicating with their children, so the children learn both simultaneously. OPOL emphasises consistency — each parent sticking to one language — as key to its approach. But this creates the myth that mixing languages should always be avoided. My recent study, part of a new wave of multilingualism studies, would suggest that this received wisdom is just that: a myth. My research looked at Japanese-British families living in the UK with pre- and early school-age children who were following a more-or-less strict OPOL language policy. I was particularly interested in examining the impact of OPOL in the family home — how does this unique language environment affect the way children use languages?"
+    },
+    {
+     "text": "Most of the Japanese mothers who participated were fluent in Japanese and English, while the fathers possessed merely an elementary grasp of Japanese. This made English the primary language of communication between the parents and outside the home. For this reason, the mothers were careful to carve out additional space for more sustained Japanese language learning with their children. In other words, this dedicated space for communicating in Japanese was time the children spent exclusively with their mother. This seemed to create a connection between 'Japanese language' and 'motherhood' in the children's perception. This link became apparent in the way the children used Japanese as a means of emotional bonding with their mother. In addition, they adopted a broader behavioural repertoire than that which is usually associated with a language. For example, switching to Japanese could sometimes serve as a method to appease Mum when she seemed unhappy. At other times, refusing to communicate in Japanese was a useful means of defiance, even when the dispute was not related to language."
+    },
+    {
+     "text": "The OPOL approach emphasises the need for parents to monitor children's language closely and correct them if they mix the two languages. In practice, many parents speaking the minority language are bilingual themselves — so they understand what their children are saying even when they do mix the two. In addition, parents feel it's problematic to keep correcting children when they mix languages. This is particularly the case when children show annoyance at being corrected. The parents believe it is a lot more important to have a meaningful conversation with their children."
+    },
+    {
+     "text": "But what if a child uses language that cannot readily be categorised as either one language or the other? An example from my study involved the use of English words adapted to accommodate Japanese pronunciation. One of these borrowed words, 'ice cream', is usually pronounced 'aisukurimu'. The distinction between singular and plural does not exist in Japanese nouns in the English language sense, so whether using singular or plural, even in a borrowed word, 'aisukurimu' is the form normally used. But one of my child participants showed his mother a drawing of two cones of ice cream and described them as 'aisukurimuzu', with a Japanese pronunciation but in English plural form. The child had created something in between."
+    },
+    {
+     "text": "Another example from my study focused on the interaction between Japanese-English bilingual siblings. In one case, a six-year-old girl was trying to convince her four-year-old brother to let her play with his toys. Following firm rejections by her brother, the girl drew on her communicative repertoire to convince him. To start with, she shifted from an authoritative demand to a softer and humbler appeal. She rephrased the question by using various polite forms. Then, her voice became more nasal, suggesting she was about to burst into tears. Even more interestingly, while the negotiation had begun in English, in the middle she shifted to Japanese. Although this may give the impression of language mixing, a considerably more complex process was taking place. The shift was accompanied by the incorporation of Japanese cultural elements, such as honorific titles that emphasise emotional attachment, a relationship of dependence between sister and brother, and an assumed obligation to care on the part of the brother. She succeeded."
+    },
+    {
+     "text": "These examples show how creatively and strategically human beings use language in their daily communication. Whether bilingual or not, we all constantly select from our repertoire anything that will best serve our purpose. For instance, imagine you want to ask a neighbour a favour. You would use polite language in a friendly voice. But what about your facial expression? Your body language? It is likely you would make appropriate choices. For bilinguals, shifting between languages is all part of their repertoire."
+    },
+    {
+     "text": "Our language repertoires are shaped by meaning, based on knowledge gathered throughout our lives, and the ways we use language also shape its meaning. The use of OPOL in the family brings specific meaning to language used at home, and children make full use of emergent meaning in their own interactions."
+    },
+    {
+     "text": "The popularity of OPOL amongst parents rests on the simplicity of its message, which is that it should be applied consistently. But when we see a child actively using, adapting and negotiating their repertoire, it casts doubt on the belief that it's bad for children to mix languages. What they could actually be doing is demonstrating high-level flexibility and interpersonal skills."
+    },
+    {
+     "text": "Being bilingual isn't simply about an ability to speak two languages. Rigidly policing consistency in the OPOL approach could actually inhibit bilingual children's linguistic ability and creativity. And in the same way, it could also limit their parents' ability to reveal their own bilingual skills, using their own repertoires."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "What does the writer say about families in which the parents speak different languages?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They constantly research ways to help their children learn both languages."
+        },
+        {
+         "key": "B",
+         "text": "They realise the importance of their role in their children's language learning."
+        },
+        {
+         "key": "C",
+         "text": "They prioritise their children's language learning over their own."
+        },
+        {
+         "key": "D",
+         "text": "They find the OPOL approach the easiest to adopt."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'They understand that the family setting they create is central to this.'"
+      },
+      {
+       "n": 28,
+       "text": "The writer uses the term 'received wisdom' to illustrate that",
+       "options": [
+        {
+         "key": "A",
+         "text": "the success of OPOL depends on the languages spoken by the parents."
+        },
+        {
+         "key": "B",
+         "text": "OPOL fails if the parents are not consistent in its use."
+        },
+        {
+         "key": "C",
+         "text": "one generally accepted principle of OPOL is incorrect."
+        },
+        {
+         "key": "D",
+         "text": "there has been a lack of research into OPOL."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The writer says mixing languages avoidance is 'received wisdom... just that: a myth'."
+      },
+      {
+       "n": 29,
+       "text": "The mothers who took part in the writer's research",
+       "options": [
+        {
+         "key": "A",
+         "text": "compensated for the fact that their children were exposed to more English than Japanese."
+        },
+        {
+         "key": "B",
+         "text": "took their children's language learning more seriously than their partners did."
+        },
+        {
+         "key": "C",
+         "text": "used language learning to increase the time they spent with their children."
+        },
+        {
+         "key": "D",
+         "text": "were reluctant for their partners to speak Japanese to their children."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'the mothers were careful to carve out additional space for more sustained Japanese language learning.'"
+      },
+      {
+       "n": 30,
+       "text": "The writer says that the children in her study",
+       "options": [
+        {
+         "key": "A",
+         "text": "preferred to use Japanese exclusively for communicating with their mothers."
+        },
+        {
+         "key": "B",
+         "text": "understood their mothers better as their knowledge of Japanese increased."
+        },
+        {
+         "key": "C",
+         "text": "argued about things that would be unimportant for monolingual children."
+        },
+        {
+         "key": "D",
+         "text": "used language in a way that is uncommon."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "'they adopted a broader behavioural repertoire than that which is usually associated with a language.'"
+      },
+      {
+       "n": 31,
+       "text": "What does the writer suggest about correcting children who are learning to be bilingual?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is usually avoided if it causes bad feeling."
+        },
+        {
+         "key": "B",
+         "text": "Parents tend to prioritise it over maintaining a conversation."
+        },
+        {
+         "key": "C",
+         "text": "It is unnecessary with the OPOL method of learning."
+        },
+        {
+         "key": "D",
+         "text": "Parents are less likely to do it if they speak both languages."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'parents feel it's problematic to keep correcting children when they mix languages. This is particularly the case when children show annoyance at being corrected.'"
+      },
+      {
+       "n": 32,
+       "text": "The writer gives the 'ice cream' example to show that",
+       "options": [
+        {
+         "key": "A",
+         "text": "bilingual children find the use of borrowed words less confusing than other children."
+        },
+        {
+         "key": "B",
+         "text": "bilingual children like to test their parents with words they know to be wrong."
+        },
+        {
+         "key": "C",
+         "text": "knowledge of two languages leads bilingual children to invent new word forms."
+        },
+        {
+         "key": "D",
+         "text": "it may be difficult to distinguish which language a bilingual child is using."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'The child had created something in between.' — a new hybrid word form."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–I, below.",
+     "title": "A bilingual child negotiates with her brother",
+     "options": [
+      {
+       "key": "A",
+       "text": "request"
+      },
+      {
+       "key": "B",
+       "text": "attempts"
+      },
+      {
+       "key": "C",
+       "text": "strategies"
+      },
+      {
+       "key": "D",
+       "text": "misunderstandings"
+      },
+      {
+       "key": "E",
+       "text": "responsibility"
+      },
+      {
+       "key": "F",
+       "text": "agreement"
+      },
+      {
+       "key": "G",
+       "text": "judgement"
+      },
+      {
+       "key": "H",
+       "text": "refusal"
+      },
+      {
+       "key": "I",
+       "text": "behavior"
+      }
+     ],
+     "template": "Faced with her little brother's [[33]] to let her play with his toys, a young bilingual child used all of her communication [[34]] to change his mind. First, she expressed her [[35]] in gentler, more polite language, and pretended to be about to cry. Having switched from English to Japanese, she exploited aspects of Japanese culture, such as reminding him of his [[36]] to her as her brother. She succeeded.",
+     "questions": [
+      {
+       "n": 33,
+       "answer": [
+        "H"
+       ],
+       "explanation": "H = refusal. The brother's 'firm rejections.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "C"
+       ],
+       "explanation": "C = strategies. 'drew on her communicative repertoire' = used her strategies."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "A"
+       ],
+       "explanation": "A = request. Shifted from authoritative demand to a softer appeal = gentler request."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "E"
+       ],
+       "explanation": "E = responsibility. 'an assumed obligation to care on the part of the brother.'"
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 37,
+       "text": "Even people who speak only one language know how to adapt their way of communicating according to the situation.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "'Whether bilingual or not, we all constantly select from our repertoire anything that will best serve our purpose.'"
+      },
+      {
+       "n": 38,
+       "text": "People who grow up in OPOL families will go on to use this approach with their own children.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage does not say whether children will use OPOL with their own future children."
+      },
+      {
+       "n": 39,
+       "text": "The reason the OPOL approach is favoured by many parents is that it encourages them to switch languages when necessary.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "'The popularity of OPOL amongst parents rests on the simplicity of its message, which is that it should be applied consistently.' OPOL is about NOT switching."
+      },
+      {
+       "n": 40,
+       "text": "Bilingual children who mix languages eventually develop a preference for one of the languages.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage does not mention children developing a preference for one language."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

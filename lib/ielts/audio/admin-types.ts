@@ -34,7 +34,7 @@ export interface PartAudioInfo {
 export interface TestAudioInfo {
   id: string;
   title: string;
-  source: "averna" | "generated" | "legacy";
+  source: "averna" | "generated" | "legacy" | "cdi";
   difficulty: string;
   /** Full 4-part, 40-question paper (used by the mock exam). */
   full: boolean;
@@ -59,6 +59,8 @@ export interface AudioOverview {
   /** The recordings table couldn't be read (e.g. prisma/sql/deploy.sql not applied yet). */
   dbError: string | null;
   tests: TestAudioInfo[];
+  /** Listed tests with a real recording (CDI) — never rendered with TTS, so not in `tests`. */
+  realAudioTests?: number;
   orphans: OrphanAudioInfo[];
   totals: {
     /** Bytes of every stored recording (stale and orphaned ones included — they still take space). */

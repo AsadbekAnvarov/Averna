@@ -1,0 +1,640 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-45",
+ "title": "CDI Listening Test 45",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-45-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Information about School Registration\nGrade Level: kindergarten\n- School: [[1]] Heights Elementary School\n- Registration: Monday to Thursday from 9.00 to 1.30\n- Can pick up packet from the school [[2]] any afternoon up to 5.00\nForms:\n- Immunisation records\n- Health forms from doctor and [[3]]\n- Emergency contact information\n- Residency verification form\n- Original birth certificate\nChildcare:\n- No [[4]] is provided\n- There is on-site licensed daycare for working [[5]]\n- This is organised by the City [[6]] Council\nOrientation:\n- Open house in July – details provided through the [[7]] and on the school’s website\n- Will tour the school, meet the [[8]] and schedule entrance testing\nSchedule:\n- First day of school will be on [[9]]\n- First week is 8.00 to 12.30\n- Regular schedule is 8.00 to [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Monterey"
+       ],
+       "explanation": "\"at that address, your child should attend Monterey Heights Elementary.\" — spelled out as M-O-N-T-E-R-E-Y."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "library"
+       ],
+       "explanation": "\"you can pick up a packet in the school library any day before five.\""
+      },
+      {
+       "n": 3,
+       "answer": [
+        "dentist"
+       ],
+       "explanation": "\"a general health history signed by your child's doctor, a form filled out by the dentist.\""
+      },
+      {
+       "n": 4,
+       "answer": [
+        "transportation",
+        "transport"
+       ],
+       "explanation": "\"Do you provide transportation after school? No, unfortunately we don't.\" — no transportation is provided."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "parents",
+        "parent"
+       ],
+       "explanation": "\"an on-site licensed daycare for working parents who need after school care.\""
+      },
+      {
+       "n": 6,
+       "answer": [
+        "Youth"
+       ],
+       "explanation": "\"It's run by the City Youth Council and comes highly recommended.\""
+      },
+      {
+       "n": 7,
+       "answer": [
+        "mail"
+       ],
+       "explanation": "\"you'll get all that information in the mail. And it'll be on the school website as well.\""
+      },
+      {
+       "n": 8,
+       "answer": [
+        "teacher"
+       ],
+       "explanation": "\"during the open house we get to tour the school and meet our child's teacher.\""
+      },
+      {
+       "n": 9,
+       "answer": [
+        "August 19th",
+        "19th August",
+        "August 19",
+        "19 August"
+       ],
+       "explanation": "\"The first day will be August nineteenth.\""
+      },
+      {
+       "n": 10,
+       "answer": [
+        "2:05",
+        "2.05",
+        "2 05"
+       ],
+       "explanation": "\"the regular schedule, eight o'clock to two oh five will be in force.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "[Narrator] Part one. You will hear a telephone conversation between a man looking for information on registering his child for school and a school district employee. First, you have some time to look at questions one to six. Now listen carefully and answer questions one to six.\nGood afternoon, Lemon Grove School District. Hi, I’m calling for information on school registration.\nI think my son should attend one of the schools in your district. What grade will your son be entering?\nHe just turned five. He’ll be starting school this year.\nOh, okay. Um one moment, please. I’ll get the information for kindergarten registration. Okay, thank you. Uh can you give me your address?\nYes, it’s 7418 DiMorino Street.\nOkay, thanks. Yes, at that address, your child should attend Monterey Heights Elementary.\nCan you spell that, please?\nYes, it’s M-O-N T E R E Y Heights.\nGreat. So how do I register him?\nWe have registration at each school site Monday through Thursday from 9 to 1. Oh, no, sorry, 130. You’ll need to pick up a kindergarten registration packet from the school beforehand, though. It has all the forms you’ll need to fill out.\nCan I pick up the packet any time?\nSure. The school office is usually open till 3 30 in the afternoons.\nOh no. I can’t really get there that early.\nWell, the school has late office hours until four on Thursdays, or I think you can pick up a packet in the school library any day before five.\nOh, okay. I’ll stop by there someday this week then, before five. Can you tell me what forms we’ll need? I’m sure you need his immunization records.\nYes, those, and we also need a general health history signed by your child’s doctor, a form filled out by the dentist , emergency contact information, and a residency verification form with proof of residence. Oh, and an original birth certificate.\nOkay. That shouldn’t be a problem. Can I ask one more question?\nSure, go ahead.\nI was wondering about before and after school care. Do you provide transportation after school?\nNo, unfortunately we don’t. Parents or caregivers need to pick up the children. There is, however, an on-site licensed daycare for working parents who need after school care for their children.\nIt’s housed within the school grounds, and someone from the daycare will walk to the main school building to pick up your child each day. It’s run by the City Youth Council and comes highly recommended.\nCan I get information about that as well?\nYes. Uh flyers and contact information will be included with your packet.\nOkay. Thank you.\n[Narrator] Before you hear the rest of the conversation, you have some time to look at questions seven to ten. Now listen and answer questions seven to ten.\nOh, and one more thing. I saw a flyer recently for an introduction event for new students and parents, an open house, I think it was called. But I can’t remember the date. Was it August 3rd?\nThat must have been last year’s Flyer. We haven’t put out information on this year’s open house yet. But it’ll probably be sometime in August. Ah, no, actually, it will be in July this year, since schools start a little early this year.\nOnce your child is registered, you’ll get all that information in the mail . And it’ll be on the school website as well.\nGreat. I’m assuming that during the open house we get to tour the school and meet our child’s teacher .\nYes, and you will set up a time for kindergarten entrance testing as well.\nWow. Testing already. That starts early.\nWell, we want to make sure children are properly placed and qualified for special services, if necessary.\nOkay. I guess that makes sense. Oh, and the first day of school?\nThe first day will be August nineteenth . We start in the middle of the week to help with the adjustment. And for kindergartners, the first three days or half days from eight to twelve thirty.\nOh, okay. And then the next week the regular schedule, eight o’clock to two oh five will be in force.\nYes, and you can access the full school calendar of holidays and breaks on the school website.\nOh yeah, I’ve seen that. The website is very helpful. Thank you so much for your time.\nYou’re welcome, sir."
+  },
+  {
+   "id": "cdi-listening-45-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Write the correct letter, A–I, next to Questions 11–14.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "text": "Toilets with baby changing facilities",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Toilets with baby changing: \"Follow the path that goes round to the west of the lake... until you come to the swimming pool, and they're just after that on your left.\" (F)"
+      },
+      {
+       "n": 12,
+       "text": "Ice-cream shop",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Ice-cream shop: \"way over to the north of the site... follow the path lined with trees... a sharp right bend. The shop's on the corner, just before the train track crosses the path.\" (B)"
+      },
+      {
+       "n": 13,
+       "text": "Gift shop",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Gift shop: \"the area called Young Fun and the road that's on... it's the last one you come to on that road... that road's a dead end.\" (I)"
+      },
+      {
+       "n": 14,
+       "text": "Film theatre",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Film theatre: \"right next to the track, just inside the mega adventure zone.\" (D)"
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening45-map2.webp",
+      "alt": "Brightwater Adventure Park map"
+     }
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 15,
+       "text": "On the ‘Flying Tigers’ ride, children have to be",
+       "options": [
+        {
+         "key": "A",
+         "text": "over 1.1 metres tall."
+        },
+        {
+         "key": "B",
+         "text": "over 1.3 metres tall."
+        },
+        {
+         "key": "C",
+         "text": "over 1.5 metres tall."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"we wanted more rides for children who are over one point one metres. So Flying Tigers is for them.\" (A)"
+      },
+      {
+       "n": 16,
+       "text": "Visitors should be warned that the Hidden Cove ride involves",
+       "options": [
+        {
+         "key": "A",
+         "text": "being in darkness."
+        },
+        {
+         "key": "B",
+         "text": "going underground."
+        },
+        {
+         "key": "C",
+         "text": "getting slightly wet."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"after about three minutes it suddenly goes dark. That can be scary if you're not expecting it.\" — being in darkness (A)."
+      },
+      {
+       "n": 17,
+       "text": "The speaker recommends the picnic area for families because",
+       "options": [
+        {
+         "key": "A",
+         "text": "there is plenty of space for children to run around."
+        },
+        {
+         "key": "B",
+         "text": "it has a children’s playground."
+        },
+        {
+         "key": "C",
+         "text": "children’s entertainment is provided there."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Picnic area: \"There's a clown there between eleven and two. He or she keeps the kids amused with jokes and stories.\" — entertainment provided (C)."
+      },
+      {
+       "n": 18,
+       "text": "What change to this Saturday night’s programme has been made?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The fireworks will start one hour later."
+        },
+        {
+         "key": "B",
+         "text": "The barbecue will be by the forest."
+        },
+        {
+         "key": "C",
+         "text": "The live band will play rock music."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"The barbecue won't finish until nine, so we're going to start the fireworks then instead of eight.\" — one hour later (A)."
+      },
+      {
+       "n": 19,
+       "text": "This month, as a special deal, visitors can get",
+       "options": [
+        {
+         "key": "A",
+         "text": "two photos for the price of one."
+        },
+        {
+         "key": "B",
+         "text": "a discount on tickets for future visits."
+        },
+        {
+         "key": "C",
+         "text": "a free soft drink when they buy lunch."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"There's also ten percent off tickets for another visit.\" — a discount on tickets for future visits (B)."
+      },
+      {
+       "n": 20,
+       "text": "The supervisor advises new employees to carry",
+       "options": [
+        {
+         "key": "A",
+         "text": "bus timetables."
+        },
+        {
+         "key": "B",
+         "text": "maps of the park."
+        },
+        {
+         "key": "C",
+         "text": "the park rules."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"please keep a copy of the Adventure Park rules on you.\" (C)"
+      }
+     ]
+    }
+   ],
+   "transcript": "[Narrator] Part two. You will hear a supervisor at Brightwater Adventure Park giving new summer employees some information about the park. First you have some time to look at questions eleven to fourteen. Now listen carefully and answer questions eleven to fourteen.\nHello everyone. Welcome to this information talk to help you during your first few days working at Brightwater Adventure Park. First, I’d like to give you this map of the site.\nIt’s important that you look round the whole site as soon as possible so that you can answer visitors’ questions. I’ll point out some of the main facilities now.\nFamilies often ask where the toilets that have baby changing facilities are. Well, you see the big lake in the centre of the site. Follow the path that goes round to the west of that. Keep going until you come to the swimming pool, and they’re just after that on your left . Okay, uh if it’s a really hot day, people buy lots of ice creams.\nThere’s an ice cream shop way over to the north of the site. From the station, follow the path that’s lined with trees and you come to a sharp right bend. The shop’s on the corner, just before the train track crosses the path . Most people want to get a present to take home and will ask you where the gift shop is.\nYou see the area called Young Fun and the road that that’s on? There are some shops there, and it’s the last one you come to on that road. In fact, as you see, that road’s a dead end .\nIf people want a rest, recommend the film theatre. Let me point out where that is. See the central lake and you can see that the railway track runs very close to the lake.\nOkay. The film theatre’s right next to the track, just inside the mega adventure zone . Got it? They show different films all day there on the three screens.\n[Narrator] Before you hear the rest of the talk, you have some time to look at questions fifteen to twenty. Now listen and answer questions fifteen to twenty.\nNow some important information about rides. As you probably know, we’ve got a new ride called Flying Tigers.\nWe already had lots of rides for older children, children taller than one point five metres, and we’ve got quite a few for children over one point three meters, but we wanted more rides for children who are over one point one metres .\nSo flying tigers is for them. It’s really exciting. Make sure you tell anyone going on the hidden cove ride that after about three minutes it suddenly goes dark .\nThat can be scary if you’re not expecting it.\nWe want visitors to feel as if they’re exploring deep underground. There’s no water splash on that ride though, so getting wet’s not an issue. If families want to have lunch, recommend the picnic area.\nIt’s nice and relaxing if the children have been running around all morning and they’ve used up lots of energy on the rides and play areas. There’s a clown there between eleven and two .\nHe or she keeps the kids amused with jokes and stories. I’d like to tell you about a change to the programme for Saturday night.\nThe barbecue won’t finish until nine, so we’re going to start the fireworks then instead of eight .\nThen there’s a rock band that’s very popular with teenagers. They’ll play on the stage near the lake, not the one by the forest.\nWe’ve got some special deals this month, so tell visitors that if they buy two soft drinks, they get a third one free. There’s also ten percent off tickets for another visit .\nAnd if they come back next month, they’ll be able to get a photo of themselves at the park completely free. Now just a small piece of advice to all you new employees.\nDo make sure you know where everything is. There are maps on boards on the path, so that’ll help.\nOh, and please keep a copy of the Adventure Park rules on you , so that if you see someone doing something that you think is dangerous or not acceptable, you can check.\nFor example, some people want buses to wait for them if a family member’s late, but the buses have to keep to their timetable. And if you have any problems."
+  },
+  {
+   "id": "cdi-listening-45-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Why does Katie say she will continue attending lectures on her present course?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to gain credits for part of the course"
+        },
+        {
+         "key": "B",
+         "text": "to get a good reference from her tutor"
+        },
+        {
+         "key": "C",
+         "text": "to see if she changes her mind about her decision"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"if I do them till the end of the module, it's only two weeks... Then at least I can get the credits.\" (A)"
+      },
+      {
+       "n": 22,
+       "text": "Why is Katie going to speak to her family?",
+       "options": [
+        {
+         "key": "A",
+         "text": "because they can give her good advice"
+        },
+        {
+         "key": "B",
+         "text": "because they may disapprove of her decision"
+        },
+        {
+         "key": "C",
+         "text": "because they are paying for the course"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"it's out of respect for my parents, because they're funding me.\" — they are paying for the course (C)."
+      },
+      {
+       "n": 23,
+       "text": "What does Stefan say about the Sports Education course?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It has a very good reputation."
+        },
+        {
+         "key": "B",
+         "text": "It would be easy to get a job afterwards."
+        },
+        {
+         "key": "C",
+         "text": "Katie would enjoy it more."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"certainly it's highly regarded, so you know you'd get the best training.\" — a very good reputation (A)."
+      },
+      {
+       "n": 24,
+       "text": "What problem does Katie agree to consider?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the extra financial support required"
+        },
+        {
+         "key": "B",
+         "text": "the amount of missed work to make up"
+        },
+        {
+         "key": "C",
+         "text": "the extra travelling that could be involved"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"it may be that they covered a lot of ground that you'll find it hard to catch up with.\" \"Yes, I'll look into it.\" — missed work to make up (B)."
+      },
+      {
+       "n": 25,
+       "text": "Katie has now decided that degrees",
+       "options": [
+        {
+         "key": "A",
+         "text": "are only useful if you enjoy what you study."
+        },
+        {
+         "key": "B",
+         "text": "are a means to getting a better job."
+        },
+        {
+         "key": "C",
+         "text": "contain too little practical experience."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"you need to like what you're doing if you're to get anything real out of the experience.\" (A)"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete the flow-chart below. Choose FIVE answers from the box and write the correct letter, A–G, next to Questions 26–30.",
+     "title": "List of people / places",
+     "options": [
+      {
+       "key": "A",
+       "text": "administration office"
+      },
+      {
+       "key": "B",
+       "text": "finance department"
+      },
+      {
+       "key": "C",
+       "text": "hall of residence"
+      },
+      {
+       "key": "D",
+       "text": "head of department"
+      },
+      {
+       "key": "E",
+       "text": "library"
+      },
+      {
+       "key": "F",
+       "text": "tutor"
+      },
+      {
+       "key": "G",
+       "text": "welfare advisor"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "text": "Speak to the about requirements for the new course",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"first of all, you need to find out what you need for the new course. So ask the tutor in that department.\" (F)"
+      },
+      {
+       "n": 27,
+       "text": "Give the a date for the change",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Then do I need to let the admin office know when I'll be moving?\" — give the administration office a date (A)."
+      },
+      {
+       "n": 28,
+       "text": "Email the",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"you must let finance know. You can just send them a quick email confirming it.\" (B)"
+      },
+      {
+       "n": 29,
+       "text": "Get the to change their data",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"the departmental information that the library has about you will be wrong... they'll have to update all their systems.\" (E)"
+      },
+      {
+       "n": 30,
+       "text": "Notify the",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"then the hall of residence, you need to let them know as well.\" (C)"
+      }
+     ]
+    }
+   ],
+   "transcript": "[Narrator] Part three. You will hear two students called Stefan and Katie discussing Katie’s plans to change her course. First, you have some time to look at questions twenty-one to twenty five. Now listen carefully and answer questions twenty-one to twenty five.\nHi Katie. I heard you wanted to change your course. Are you not happy on the sports science course you’re doing?\nI think I’m more interested in the sports education course. I haven’t quite made up my mind yet, but I’m pretty certain.\nSo what are you gonna do? Are you still coming to lectures?\nYes, I think I should. I’m sure they won’t affect my decision now, but if I do them till the end of the module, it’s only two weeks, you know. Then at least I can get the credits . And I asked Dr. Lang, my tutor about it, and he said he would give me a reference for a different course if I needed one. I know it’s a big decision, but I’m not too worried because I’m gonna talk to my family about it before I change.\nThat’s a good idea. Yes. I just feel I should.\nThey know me really well, so they will understand my decision to drop sports science and won’t try to change my mind. And it’s out of respect for my parents, because they’re funding me .\nThey wouldn’t be very happy if they thought I had taken them for granted. Yes, uh but the sports education course is more focused, so surely they’d be happy.\nI know it wouldn’t suit me as I’d want to squash more sports practice in, and you’d still have to actually find a job afterwards. Not always easy. But certainly it’s highly regarded, so you know you’d get the best training .\nYes. I know it’s more academic, which I may struggle with.\nBut I think I’d get more out of teaching than something like administration work. Yes. It sounds as if you’ve made up your mind, but I have to say, I found changing my course brought some practical problems.\nFor example, I had to get extra funding to cover the costs of the kits and all the travelling the teams have to do. In your case, it may be that they covered a lot of ground that you’ll find it hard to catch up with .\nYes, I’ll look into it, don’t worry. But the whole experience has certainly altered my view of degrees.\nI used to think they were incredibly important for my career, while at the same time being a bit useless because they were too academic and not practical enough.\nNow I realize that you need to like what you’re doing if you’re to get anything real out of the experience .\nI guess.\n[Narrator] Before you hear the rest of the discussion, you have some time to look at questions twenty six to thirty. Now listen and answer questions twenty-six to thirty.\nHow long does it take anyway? What exactly do I have to do?\nWell, basically, first of all, you need to find out what you need for the new course. So ask the tutor in that department . I’m sure you’ll be fine because it’s not a big switch. Okay. I’d better do that quickly.\nI hope it’ll be okay.\nBut as you say, the course is similar, so it should be okay. Then do I need to let the admin office know when I’ll be moving? Yeah.\nThat’s it then. Once you’ve done that, you’re committed to the change, so don’t do that until you’re absolutely sure. Okay. Once your switch is agreed, the departments will have to reallocate their funding, so you must let finance know. You can just send them a quick email confirming it .\nOh, the admin office doesn’t do that? No, you have to. Is that it? Um no. For example, the departmental information that the library has about you will be wrong, so you’ll have to go along and see them and get a new card .\nThey need to know where to contact you, so they’ll have to update all their systems. And then do I need to go and see my welfare advisor or notify him of the change? I think your department will do that, or the administration office.\nI guess then the hall of residence, you need to let them know as well . Yes. It’s just best if everybody has their record straight."
+  },
+  {
+   "id": "cdi-listening-45-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Translating ancient Mayan\n16th to early 20th centuries\n- Spanish colonists in Central America tried to destroy the written Mayan language.\n- They thought it represented a [[31]] to their control.\n- Researchers found ancient handbooks which were written for priests.\n- They identified some numbers and sections of the text relating to [[32]]\n- However, the rest could not be translated.\nDevelopments in the 1950s and 1960s\n- Heinrich Berlin found that certain ‘glyphs’ in the writing referred to some well-known [[33]] in the Mayan Empire.\n- Yuri Knorozov found that some ‘glyphs’ referred to a [[34]] rather than a word.\nA new approach in the 1980s\n- Young academics immersed themselves in present-day Mayan art, [[35]] and religion.\n- They found many of the manuscripts described the success of Mayan kings in [[36]]\n- Academics had to learn the [[37]] of each writer.\n- The process was very time-consuming.\nThe Maya Decipherment project\n- In 2003, David Stuart created a [[38]] that developed into a project for translating Mayan texts.\n- Now, feedback on translations can be provided with great [[39]] by translators around the world.\n- This led to new understanding – previously Mayans were believed to be only interested in [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "threat"
+       ],
+       "explanation": "\"this written language of the Mayans... could be a threat to the dominance of the Spanish language.\""
+      },
+      {
+       "n": 32,
+       "answer": [
+        "astronomy"
+       ],
+       "explanation": "\"some parts of the text... seemed to be on the subject of astronomy.\""
+      },
+      {
+       "n": 33,
+       "answer": [
+        "cities",
+        "city"
+       ],
+       "explanation": "\"these glyphs in fact represented famous cities that had once been a part of the Mayan Empire.\""
+      },
+      {
+       "n": 34,
+       "answer": [
+        "sound"
+       ],
+       "explanation": "\"they stood for a sound and not just a single word as previously thought.\""
+      },
+      {
+       "n": 35,
+       "answer": [
+        "culture"
+       ],
+       "explanation": "\"a greater appreciation of the culture of the Mayans... as well as of their religion.\""
+      },
+      {
+       "n": 36,
+       "answer": [
+        "wars",
+        "war"
+       ],
+       "explanation": "\"many of the manuscripts described successes when kings fought wars with one another.\""
+      },
+      {
+       "n": 37,
+       "answer": [
+        "style"
+       ],
+       "explanation": "\"once the young academics got familiar with the style used by a particular Mayan writer.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "blog"
+       ],
+       "explanation": "\"he started a blog that evolved into what is now the Maya Decipherment Project.\""
+      },
+      {
+       "n": 39,
+       "answer": [
+        "speed"
+       ],
+       "explanation": "\"Comments can be posted from anywhere in the world at high speed.\""
+      },
+      {
+       "n": 40,
+       "answer": [
+        "ceremony"
+       ],
+       "explanation": "\"Mayans were not necessarily peaceful people who were wholly preoccupied with ceremony.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "[Narrator] Part four. You will hear part of a history lecture about the translation of the language spoken by ancient Mayans who lived in Central America. First you have some time to look at questions thirty one to forty. Now listen carefully and answer questions thirty one to forty.\nWhen the Spanish arrived in Central America in the fifteen hundreds, they were surprised by the variety of Indian cultures there.\nOne of the most interesting of the cultures, the Maya, had partially collapsed hundreds of years before.\nThere were Mayan ruins everywhere, and they showed evidence of advanced engineering and a sophisticated tradition of writing.\nThe Spanish thought that this written language of the Mayans, which had survived, could be a threat to the dominance of the Spanish language in the region, and so they tried to destroy all traces of it.\nLuckily, three books written in Mayan survived the destruction and were rediscovered in the eighteenth and nineteenth century in Europe.\nEach of the books contained a vast collection of ancient Mayan writings. All of these books were basically handbooks to be used by the priests.\nBut for a long time no one could read them. In the nineteenth and early twentieth century, investigators managed to decode some numbers, and some parts of the text were which seemed to be on the subject of astronomy , but there were still large parts of the text they couldn’t understand.\nThen, in the nineteen fifties and nineteen sixties, there were some breakthroughs.\nAn amateur Mayan scholar called Heinrich Berlin, working in Mexico, decoded the first Mayan glyphs, which is the name given to the symbols that make up the Mayan script.\nHe showed that these glyphs in fact represented famous cities that had once been a part of the Mayan Empire.\nHe was then able to match these symbols with spoken words, because the name for somewhere famous doesn’t usually change much over the centuries.\nSo by studying modern day Mayan and listening to speakers of the evolved language, Berlin discovered how to say these symbols.\nNext to enter the picture was Yuri Norizov, a Soviet linguistics expert.\nHe discovered that many Mayan glyphs actually played a phonetic role in the text.\nThat means they stood for a sound and not just a single word as previously thought. So two phonetic symbols together could in fact be one word, not two separate words.\nThe door was open to crack the code. Beginning in the nineteen eighties, several younger academics took a new approach.\nUnlike their forebears, who studied Mayans from a distance, this new generation immersed themselves by living among the Central American indigenous people.\nThese young researchers came to have a deeper understanding of Mayan art, and also a greater appreciation of the culture of the Mayans, both past and present, as well as of their religion.\nAll this meant that there was a dramatic improvement in the quality and quantity of translation.\nThe young academics discovered that many of the great events of Mayan history were recorded.\nIn particular, many of the manuscripts described successes when kings fought wars with one another. But if the text was formal, the writing was not.\nThe Mayan scribes who carved and painted the glyphs were often trying to be creative.\nSo there simply wasn’t a standard system that scholars could refer to.\nBut once the young academics got familiar with the style used by a particular Mayan writer, steady translations became possible.\nBut this type of translation takes a lot of time. Help was needed.\nStarting in 2003, one prominent scholar, David Stewart, looked for an online way for scholars and amateurs to post new inscriptions, refine translations, and discuss the subtleties of Mayan language.\nSo he started a blog that evolved into what is now the Maya Decipherment Project.\nScholars in remote areas, who were often cut out of earlier research because of logistics, have become eager translation partners.\nComments can be posted from anywhere in the world at high speed .\nIt’s estimated that there are more than thirty translators in fifteen different countries currently at work studying and translating Maya script through the Maya Decipherment Project.\nText by text, they are giving the modern world a better understanding of the lost Mayan world.\nThe direction of this new understanding is that Mayans were not necessarily peaceful people who were wholly preoccupied with ceremony .\nThis had been the general conclusion when scholarship was limited to the handbooks for priests that survived the Spanish.\nThanks in part to the Maya Decipherment Project, new scholarship shows that the Mayans were interested in and wrote about the same topics as other ancient societies."
+  }
+ ],
+ "audio": {
+  "file": "listening-45.mp3",
+  "durationSec": 1668
+ }
+}

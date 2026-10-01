@@ -1,0 +1,539 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-61",
+ "title": "CDI Listening Test 61",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-61-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER in each gap.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "A conversation about a new school\nGeneral comment:\n- better than the old school\nTeachers:\n- the [[1]] is a nice person\n- others are more likely to be decent; the French teacher seems to be more native than the [[2]] accent\n- the school principal’s talk mentioned:\n- [[3]] (studying enjoyment, working hard of students)\n- other things on how to [[4]] a good shape, which helps you have a better [[5]]\nFitness centre:\n- the [[6]] is bigger than the one at the old school\n- the gym includes everything, i.e. cycling and [[7]] machines\nOther issues:\n- filming the teachers’ and students’ interviews for their [[8]] , and video project at the main [[9]]\n- they saw Mr Clark as their former teacher of [[10]] subject",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "headmaster"
+       ],
+       "explanation": "\"How do you think I should start? Introduce the headmaster?\" — and later, \"the new headmaster seems like a great guy.\""
+      },
+      {
+       "n": 2,
+       "answer": [
+        "Smith"
+       ],
+       "explanation": "\"The French teacher is really cool, and he's actually French, not like Smith at the old place. He sounded less French than even you do.\""
+      },
+      {
+       "n": 3,
+       "answer": [
+        "education"
+       ],
+       "explanation": "\"Why don't you start with what the headmaster told us this morning — you know, his ideas on education and things.\""
+      },
+      {
+       "n": 4,
+       "answer": [
+        "keep"
+       ],
+       "explanation": "\"Something about it's good to keep fit.\""
+      },
+      {
+       "n": 5,
+       "answer": [
+        "mood"
+       ],
+       "explanation": "After half an hour of exercise the brain is more creative — \"and puts you in a better mood.\""
+      },
+      {
+       "n": 6,
+       "answer": [
+        "pool"
+       ],
+       "explanation": "\"Olympic-sized pool, not like that tiny 25-metre thing we had before.\" The pool is bigger than at the old school."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "rowing"
+       ],
+       "explanation": "\"I counted ten exercise bikes, some rowing machines, really good ones.\""
+      },
+      {
+       "n": 8,
+       "answer": [
+        "article"
+       ],
+       "explanation": "\"Maybe I should interview some of the teachers and students for my article.\""
+      },
+      {
+       "n": 9,
+       "answer": [
+        "hall"
+       ],
+       "explanation": "\"The main hall is awesome. Really light, lots of windows, and a huge stage.\""
+      },
+      {
+       "n": 10,
+       "answer": [
+        "music"
+       ],
+       "explanation": "\"Did you see Mr Clark, the old music teacher? I think he's the only teacher here from the old school.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 0:01[Narrator] This is the IELTS listening test. You will hear a number of different recordings and you will have to answer questions on what you hear.\n▶ 0:12[Narrator] There will be time for you to read the instructions and questions and you will have a chance to check your work. All the recordings will be played once only.\n▶ 0:25[Narrator] The test is in four parts. At the end of the test, you will be given 10 minutes to transfer your answers to the answer sheet. Now turn to part one.\n▶ 0:44Part one\n▶ 0:47[Narrator] You will hear John and Joan talking about their new school. Look at questions one to five on the form now.\n▶ 1:16[Narrator] Listen carefully and answer questions one to five. Hi John, how's it going?\n▶ 1:24Pretty good. What about you?\n▶ 1:26Terrific. So what do you think of our new school?\n▶ 1:29A one, man. Much better than the old one. In fact, I'm going to write an article for the London Times about it.\n▶ 1:38Really?\n▶ 1:39Yeah. Have you got half an hour? Maybe you should give me some ideas.\n▶ 1:45If you buy me a coffee.\n▶ 1:47No problem. How do you think I should start? Introduce the headmaster ?\n▶ 1:52Why don't you compare it with the old one? You know, the buildings, laboratories, language lab, computer equipment, fitness center, pool, stuff like that.\n▶ 2:02Yeah, that sounds reasonable. I mean the old one was pretty bad, and the new headmaster seems like a great guy. Actually all the teachers I've met seem pretty decent.\n▶ 2:14Same here.\n▶ 2:15The French teacher is really cool, and he's actually French, not like Smith at the old place . He sounded less French than even you do.\n▶ 2:23Hey, my accent is perfect.\n▶ 2:25Dream on. But why don't you start with what the headmaster told us school this morning, you know, his ideas and education and things .\n▶ 2:33Yeah, I liked that. None of that stuff about how we must study hard for our futures and the honor of the school. There's no free lunch, that type of thing. He sounds pretty progressive.\n▶ 2:46What did he say? If we teachers succeed in stimulating your minds, stimulating you to ask questions and think critically, then you will discover the joy of learning. Enjoy your studies and therefore work hard.\n▶ 3:01Hey, what a memory. Those are his exact words. Do you remember what he said next?\n▶ 3:07Something about it's good to keep fit .\n▶ 3:09Yeah. Do you remember him mentioning those experiments showing that after half an hour of exercise, our brains are much more creative for ours?\n▶ 3:18And puts you in a better mood . Did you see the fitness center?\n▶ 3:23[Narrator] Look at questions six to ten.\n▶ 3:46[Narrator] Now listen to more of the conversation between John and Joan and answer questions six to ten.\n▶ 3:52I went early this morning for a workout. Fantastic. Olympic sized pool , not like that tiny twenty five meter thing we had before. And the gym has absolutely everything.\n▶ 4:04I counted ten exercise bikes, some rowing machines , really good ones. Are you gonna go?\n▶ 4:10I've been every other day for two weeks. Feel great. Hey, maybe I should interview some of the teachers and students for my article .\n▶ 4:20Of course you should. Wow, just thought of it. I'm doing a video project. Maybe I could film the interviews.\n▶ 4:27Makes sense. And I could take a few photos. Maybe the newspaper would use one or two of them. The main hall is awesome .\n▶ 4:36Really light, lots of windows, and a huge stage, big enough for a sixty or seventy person orchestra.\n▶ 4:44Did you see Mr. Clark, the old music teacher ? I think he's the only teacher here from the old school.\n▶ 4:51He is, and he was the only decent teacher. I met him in the hall. He's really happy. Planning to double the size of the school orchestra. It's great.\n▶ 5:01Okay, let's spam what we're going to do.\n▶ 5:08[Narrator] That is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-61-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What is the first thing that tourists are going to experience at the London Parks Society?",
+       "options": [
+        {
+         "key": "A",
+         "text": "enjoying coffee and biscuits during a brief history talk"
+        },
+        {
+         "key": "B",
+         "text": "listening to a brief talk about the history of some wonderful attractions"
+        },
+        {
+         "key": "C",
+         "text": "seeing some famous royal parks in London"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"For the next half an hour or so, while we enjoy our coffee and biscuits, I'll tell you something about these wonderful parks — a brief history.\""
+      },
+      {
+       "n": 12,
+       "text": "What is true about the “royal park” being built in London?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It has a harmonious natural landscape."
+        },
+        {
+         "key": "B",
+         "text": "It was built by members of the royal family."
+        },
+        {
+         "key": "C",
+         "text": "It is replicated all over the UK."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"They provide quiet and natural scenery, places we might not enjoy today if our former rulers had just put buildings everywhere\" — a harmonious natural landscape."
+      },
+      {
+       "n": 13,
+       "text": "Hyde Park is the most famous park in London and covers",
+       "options": [
+        {
+         "key": "A",
+         "text": "all of the finest sceneries in London."
+        },
+        {
+         "key": "B",
+         "text": "an area of about 260 hectares and a circumference of 6.5 km."
+        },
+        {
+         "key": "C",
+         "text": "613 acres, with a 4-mile perimeter."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Hyde Park \"covers 630 acres and a perimeter of four miles... That's about 260 hectares and 6.5 kilometres.\" The metric figures match option B."
+      },
+      {
+       "n": 14,
+       "text": "Hyde Park began to be constructed",
+       "options": [
+        {
+         "key": "A",
+         "text": "in the 1820s and its design was done by Decimus Burton."
+        },
+        {
+         "key": "B",
+         "text": "in 1536 after King Henry VIII occupied the land from the monks."
+        },
+        {
+         "key": "C",
+         "text": "from the 1500s and finished in the 1800s."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Hyde Park dates back to 1536, when King Henry VIII got the land from the monks of Westminster Abbey.\" The 1820s Decimus Burton work was the later design, not the start."
+      },
+      {
+       "n": 15,
+       "text": "The Crystal Palace was",
+       "options": [
+        {
+         "key": "A",
+         "text": "constructed on the Hyde Park site in 1851."
+        },
+        {
+         "key": "B",
+         "text": "used for the Great Exhibition in 1968."
+        },
+        {
+         "key": "C",
+         "text": "used for the Rolling Stones concert in 2010."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"It was the original site of the Crystal Palace, built for the Great Exhibition of 1851.\" The 1968 date belongs to the Rolling Stones concert, not the Exhibition."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Which sites in the London Parks Society are suitable for the following descriptions? Choose FIVE answers from the box and write the correct letter, A–G, next to Questions 16–20.",
+     "title": "Descriptions of Attractive Sites",
+     "options": [
+      {
+       "key": "A",
+       "text": "the largest park in the UK"
+      },
+      {
+       "key": "B",
+       "text": "followed Greek architectural design"
+      },
+      {
+       "key": "C",
+       "text": "the most ancient park of the Royal"
+      },
+      {
+       "key": "D",
+       "text": "the largest area for outdoor activities"
+      },
+      {
+       "key": "E",
+       "text": "included the oldest fountain"
+      },
+      {
+       "key": "F",
+       "text": "located near the Serpentine Lake"
+      },
+      {
+       "key": "G",
+       "text": "situated in the centre of London"
+      }
+     ],
+     "questions": [
+      {
+       "n": 16,
+       "text": "Grand Entrance",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Grand Entrance — \"the gates made of iron and bronze, with a beautiful Greek style flower design\" (B: followed Greek architectural design)."
+      },
+      {
+       "n": 17,
+       "text": "Princess of Wales",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Princess of Wales memorial — \"south of the Serpentine Lake is the memorial to Diana, Princess of Wales\" (F: located near the Serpentine Lake)."
+      },
+      {
+       "n": 18,
+       "text": "Regent’s Park",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Regent's Park — \"covers 487 acres... and has the largest outdoor sports area in London\" (D: the largest area for outdoor activities)."
+      },
+      {
+       "n": 19,
+       "text": "St James’s Park",
+       "answer": [
+        "G"
+       ],
+       "explanation": "St James's Park — \"with its royal, political and literary associations, is at the very heart of London\" (G: situated in the centre of London)."
+      },
+      {
+       "n": 20,
+       "text": "Greenwich Park",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Greenwich Park — \"which is the oldest enclosed royal park\" (C: the most ancient park of the Royal)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 6:19Part two\n▶ 6:22[Narrator] You are going to hear an introduction to some London parks. First look at questions eleven to fifteen.\n▶ 6:50[Narrator] As you listen to the first part of the talk, answer questions 11 to 15.\n▶ 6:58Good morning everybody, and welcome to the London Park Society. It's a lovely day, so in half an hour or so we'll go outside and start our tour of some of London's famous royal parks.\n▶ 7:12But for the next half an hour or so, while we enjoy our coffee and biscuits , I'll tell you something about some of these wonderful parks, a brief history and some of their special attractions.\n▶ 7:25I also have a few slides to show you. First, what do we mean by royal park?\n▶ 7:32In short, they once belonged to or were established by Order of a King or Queen of England, or at least a member of the Royal Family. And it's a good job they did.\n▶ 7:44They provide quiet and natural scenery , places that we might not be able to enjoy today if our former rulers had just put buildings everywhere. Let's start with the most famous, Hyde Park.\n▶ 7:58This park offers some of London's finest scenery and covers 630 acres and a perimeter of four miles. I know we have friends from France here, so I'd better give it in metric.\n▶ 8:12That's about 260 hectares and 6.5 kilometers .\n▶ 8:18Hyde Park dates back to 1536 , when King Henry VIII got the land from the monks of Westminster Abbey.\n▶ 8:27Much of the later design, its layout, was done by the architect Decimus Burton in the 1820s, who took full advantage of the area's high and low land.\n▶ 8:39It was the original site of the Crystal Palace, built for the Great Exhibition of 1851 , the original ancestor of today's world expos, like the one that will be held in Shanghai in 2010, I think.\n▶ 8:55So it's been popular for a long time, and not only the people who live and work near the park like it. Many famous rock bands like Pink Floyd and the Rolling Stones have put on big rock concerts here.\n▶ 9:10I still remember the Rolling Stones concert there in uh I forget the exact year. It was around 1968 when I was a university student.\n▶ 9:24[Narrator] Now look at questions sixteen to twenty.\n▶ 9:43[Narrator] As the talk continues, answer questions sixteen to twenty.\n▶ 9:49I mentioned the architect Decimus Burton. He designed the very impressive grand entrance to the park. The whole front is about a hundred and seven feet long.\n▶ 10:00Look at the four magnificent pillars that support the central entrance, and that carving on the wall.\n▶ 10:06Here's a close-up of a naval and military procession, and the gates made of iron and bronze, with a beautiful Greek style flower design .\n▶ 10:16One of the most popular sites in the park is Speaker's Corner, in the northeast corner, where you can hear British people exercise their right to free speech.\n▶ 10:27There may be a dozen or more at any one time, each standing on a soapbox and spouting, usually controversial views on any topic you can think of religion, politics, fox hunting, trade unions, Europe, tourists, etc.\n▶ 10:45Lots of arguing. It's great fun. And south of the Serpentine Lake is the memorial to Diana , Princess of Wales. It's an oval stone fountain that opened on july sixth, 2004.\n▶ 10:59Another memorial, in the southeast corner of the park, is the Albert Memorial, Queen Victoria's monument to her husband of that name. I see that time is getting short.\n▶ 11:12So I'll be a bit briefer with the other parks that we'll see today and tomorrow. Regents Park. It has a fantastic landscape and is known as the Jewel in the Crown.\n▶ 11:24Regents Park covers four hundred and eighty-seven acres, that's 197 hectares, including Primrose Hill, and has the largest outdoor sports area in London .\n▶ 11:36Rugby, basketball, soccer, netball, cricket. It's all here. St. James's Park, with its royal, political and literary associations, is at the very heart of London .\n▶ 11:48It's overlooked by not one but three royal palaces. The most ancient palace is Westminster, now known as the Houses of Parliament. Then there's St.\n▶ 11:59James's Palace, which used to be the King or Queen's residence, despite the fact that the monarch has lived in the third palace, Buckingham Palace, since 1837. There's so much to see in or by St.\n▶ 12:13James's Park. Bands give concerts twice a day in the park at weekends during the summer. And tomorrow is Saturday, so we're in luck. Then there's the changing of the guards.\n▶ 12:25The Queen's lifeguard changes daily at Whitehall, just nearby, Monday to Saturday at eleven AM, an hour earlier on Sundays, and at Buckingham Palace every day at eleven thirty, in April, May and June.\n▶ 12:40And on alternate days in July and March, if the weather is okay. Finally, we'll visit Greenwich Park, which is the oldest enclosed royal park .\n▶ 12:51It's situated on a hilltop, with impressive views over the River Thames to the Docklands, and the city of London.\n▶ 12:59It contains several historic buildings, including the Old Royal Observatory, the Royal Naval College, the National Maritime Museum, and the Queen's House.\n▶ 13:10Well, it's time to go, a ten minute walk and we'll be at Hyde Park.\n▶ 13:19[Narrator] That is the end of part two. You now have 30 seconds to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-61-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY in each gap.",
+     "wordLimit": 1,
+     "template": "Video Project on Student Life\nEnjoyments (Cristina):\n- using the camera\n- going to a British [[21]]\nEnjoyments (Ibrahim):\n- contact with students doing other courses by asking some to have [[22]]\nLanguage practice (Cristina):\n- listening to instructions\n- learning [[23]] words\nLanguage practice (Ibrahim):\n- listening to British students’ language because of:\n- normal speed\n- a lot of [[24]]\nUsefulness (Cristina):\n- operating a video camera\n- working with other people:\n- learning about [[25]]\n- compromising\n- [[26]] people who have different views\nUsefulness (Ibrahim):\n- the importance of [[27]]\nFuture works (Cristina):\n- decide when to [[28]] each stage at the beginning\n- make more effort to [[29]] with the camera\nFuture works (Ibrahim):\n- don’t make the film too [[30]]",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "home"
+       ],
+       "explanation": "Cristina enjoyed using the camera and going to a British home."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "dinner"
+       ],
+       "explanation": "Ibrahim enjoyed contact with students on other courses by asking some to have dinner."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "technical"
+       ],
+       "explanation": "Cristina practised language by listening to instructions and learning technical words."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "slang"
+       ],
+       "explanation": "Ibrahim listened to British students' language: normal speed and a lot of slang."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "cooperating",
+        "cooperation"
+       ],
+       "explanation": "Working with other people taught her about cooperating (and compromising)."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "persuading"
+       ],
+       "explanation": "Also useful: persuading people who have different views."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "editing"
+       ],
+       "explanation": "Ibrahim mentions the importance of editing."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "complete"
+       ],
+       "explanation": "Future work: decide when to complete each stage at the beginning."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "experiment"
+       ],
+       "explanation": "Cristina wants to make more effort to experiment with the camera."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "long"
+       ],
+       "explanation": "Ibrahim's advice for future work: don't make the film too long."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 13:58Part three\n▶ 14:01[Narrator] You will hear a discussion between a college tutor and two students, Christina and Ibrahim. First you have some time to look at questions twenty one to twenty six.\n▶ 14:36[Narrator] Now listen carefully and answer questions twenty one to twenty six.\n▶ 14:45First of all, I'd just like to say, Christina and Ibrahim, that I really enjoyed watching your video about student life last week. And I could see that the rest of the group did too.\n▶ 14:56You did really well, and I hope that you got a lot out of it. I'd like to use this tutorial as a feedback session where you reflect on the experience of doing the project.\n▶ 15:08So Christina, I was wondering what did you enjoy most about making the video? I liked using the camera. Is it the first time you've operated one like that? Yes it is.\n▶ 15:21Well the results were very good. Anything else? I also enjoyed visiting one of the British students we filmed. I'd never been inside a British home before . Okay, Christina, thanks. Uh what about you, Ibrahim?\n▶ 15:36What did you enjoy? Well, for me it was a very good chance to get to know students who are on other courses, because everyone in our group is studying English, and we don't usually have much to do with the rest of the college. Yes, good.\n▶ 15:50Do you think you'll maintain the contact note? Well, I hope so. I've invited three of them to have dinner with me next week. Great. If you haven't decided what to make yet, I can tell you they'll love trying Arab dishes.\n▶ 16:03And of course, it's good for your English too. Christina, what did you find? What was the most useful aspect of the project from the point of view of the English practice?\n▶ 16:15I think when we were being shown how to edit the film we had to follow the instructions and that was very good practice for me and I also learned some technical words that I hadn't heard before. Hm.\n▶ 16:29What about you, Ibrahim? What was the most useful for your English? It was listening to the British students, because they don't speak as slowly as most of the tutors on our course.\n▶ 16:40I think they speak at natural speed, so it forces me to get used to it. And they use a lot of slang . So you learn some new words which will be useful? Yes. Good. I'm glad it helped.\n▶ 16:53Well, we've talked a little bit about enjoyment and about language practice. Were there any other benefits? What else did you feel you'd learn from the project?\n▶ 17:04Was it useful in other ways? Yes. Well, firstly I learned how to use a video camera and also I think I really learned a lot about working together with other people.\n▶ 17:17I've never done anything with a group before, and we had to find ways of cooperating um and compromising and sometimes persuading people when they don't agree with you.\n▶ 17:31Yes, that is a very useful experience, I know.\n▶ 17:38[Narrator] Before you hear the rest of the discussion, you have some time to look at questions twenty seven to thirty.\n▶ 18:06[Narrator] Now listen and answer questions twenty seven to thirty.\n▶ 18:14What about you, Ibrahim? Well, I think I learnt a lot about how important editing is . When you're filming you think that everything's going to be interesting, but in fact we cut around half of it in the end, and then it was much better. Good.\n▶ 18:28Well, one last thing I'd like to ask. What mistakes do you think you, as a group, that is, made?\n▶ 18:37I mean, to put it another way, if you had to do it all over again, is there anything you'd do differently? We didn't plan very well.\n▶ 18:46For example, we didn't decide on dates when we'd complete each separate step of the project, and we should have agreed about that in the beginning, because we were always late with everything. Right. Anything else?\n▶ 19:01I think we should have tried to experiment more with the camera . I mean with angles and focus and that kind of thing.\n▶ 19:10So you should have been more ambitious. Do you agree, Ibrahim? Not really. In fact, I think we were too ambitious.\n▶ 19:17We were inexperienced and we didn't have a lot of time, and we tried to do too much to make a long film . Next time I would make a shorter one and try to get the quality better.\n▶ 19:29Well, that's very interesting. Next semester we will be doing another video project with a different content, of course. But you'll have an opportunity to put into practice what you've learnt this time.\n▶ 19:43Now do you have any ideas about uh\n▶ 19:49[Narrator] That is the end of part three. You now have thirty seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-61-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY OR A NUMBER in each gap.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "The Knowledge of Antarctica Continent\nGeography:\n- world’s highest, coldest and windiest continent\n- more than [[31]] times as big as the UK\n- most of the area is classified as [[32]]\nResearch Stations:\n- international teams work together\n- [[33]] is integrated with technical support\n- stations contain accommodation, work areas, a kitchen, a [[34]] , and a gym\n- supplies were brought to Zero One station by sledge from a/an [[35]] at the edge of the ice 15 km away\n- problem of snow build-ups solved by building stations on [[36]] with adjustable legs\nFood and Diet:\n- average daily requirement for an adult in Antarctica is approximately [[37]] kilocalories\n- rations for fieldwork prepared by process of freeze-drying\nResearch:\n- the most important research focuses on climate change, including:\n- measuring changes in the ice-cap (because of effects on sea levels and [[38]] )\n- monitoring the hole in the ozone layer\n- analysing air from bubbles in ice to measure [[39]] caused by human activity\nWork Opportunities:\n- many openings for [[40]] people, including:\n- research assistants\n- administrative and technical positions",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "58"
+       ],
+       "explanation": "\"Antarctica is a place of extremes — the highest, coldest and windiest continent, and over fifty-eight times the size of the UK.\""
+      },
+      {
+       "n": 32,
+       "answer": [
+        "desert"
+       ],
+       "explanation": "Most of the area is classified as desert."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "science"
+       ],
+       "explanation": "At the research stations, science is integrated with technical support."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "hospital"
+       ],
+       "explanation": "Stations contain accommodation, work areas, a kitchen, a hospital and a gym."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "ship"
+       ],
+       "explanation": "Supplies were brought to Zero One station by sledge from a ship at the edge of the ice 15 km away."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "platforms",
+        "platform"
+       ],
+       "explanation": "The problem of snow build-up was solved by building stations on platforms with adjustable legs."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "3500",
+        "3,500"
+       ],
+       "explanation": "\"An adult in the UK will probably need about 1,700 kilocalories a day... Someone in Antarctica will need about three thousand five hundred, just over double.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "currents",
+        "current"
+       ],
+       "explanation": "Measuring changes in the ice-cap matters because of effects on sea levels and currents."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "pollution"
+       ],
+       "explanation": "Analysing air from bubbles in ice measures pollution caused by human activity."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "young"
+       ],
+       "explanation": "There are many openings for young people, including research assistants and administrative and technical positions."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 20:29Part 4.\n▶ 20:32[Narrator] You will hear a talk about scientific research in the continent of Antarctica. First you have some time to look at questions 31 to 40.\n▶ 21:26[Narrator] Now listen carefully and answer questions thirty one to forty.\n▶ 21:34Tonight I'm going to talk to you about that remarkable continent Antarctica, remote, hostile, and at present uninhabited on a permanent basis.\n▶ 21:45For early explorers it was the ultimate survival contest.\n▶ 21:50For researchers like me, it remains a place of great intellectual challenge, while for the modern tourist it's simply a wilderness of great beauty. First, some facts and figures.\n▶ 22:03Antarctica is a place of extremes, the highest, coldest and windiest continent, and over fifty eight times the size of the UK .\n▶ 22:15The ice cap contains almost seventy percent of the world's fresh water and ninety percent of its ice.\n▶ 22:22But with very low snowfall, most of the continent technically falls unbelievably into the category of desert .\n▶ 22:31Huge icebergs break off the continent each year, while in winter half the surrounding ocean freezes over, which means its size almost doubles.\n▶ 22:43Research and exploration has been going on in Antarctica for more than two hundred years and has involved scientists from many different countries who work together on research stations.\n▶ 22:56Here science and technical support have been integrated in a very cost effective way.\n▶ 23:03Our Antarctic research program has several summers only stations and two all year round ones. I was based on one of the all year round ones.\n▶ 23:16The research stations are really self contained communities of about twenty people.\n▶ 23:22There's living and working space, a kitchen with a huge food store, a small hospital , and a well equipped gym to ensure everyone keeps fit in their spare time.\n▶ 23:35The station generates its own electricity and communicates with the outside world using a satellite link. Our station, zero one, had some special features.\n▶ 23:48It wasn't built on land but on an ice shelf, hundreds of meters thick. Supplies were brought to us on large sledges from a ship fifteen kilometers away at the ice edge.\n▶ 24:03Living in the Antarctic hasn't always been so comfortable.\n▶ 24:08Snow buildups caused enormous problems for four previous stations on the same site, which were buried and finally crushed by the weight.\n▶ 24:18Fortunately no one was hurt, but these buildings became a huge challenge to architects, who finally came up with a remarkable solution. The buildings are placed on platforms and\n▶ 24:31which can be raised above the changing snow level on legs which are extendable.\n▶ 24:42Fo is one of the most important aspects of survival in a polar climate.\n▶ 24:48People living there need to obtain a lot more energy from their food, both to keep warm and to undertake heavy physical work.\n▶ 24:58Maybe you know that an adult in the UK will probably need about seventeen hundred kilocalories a day on average.\n▶ 25:07Someone in Antarctica will need about three thousand five hundred , just over double.\n▶ 25:15This energy is provided by foods which are high in carbohydrate and fat. Rations for field work present an additional problem.\n▶ 25:27They need to provide maximum energy, but they must also be compact and light for easy transport.\n▶ 25:36Special boxes are prepared, each containing enough food for one person for twenty days.\n▶ 25:43You may be familiar with coffee processed by freeze drying, which preserves the quality of the food product while making a large saving in weight.\n▶ 25:54Well, this type of presentation is ideal in our situation. It wasn't available to earlier polar explorers whose diet was commonly insufficient for their health.\n▶ 26:08I think that being at the cutting edge of science has a special appeal for everyone working in Antarctica in whatever capacity.\n▶ 26:17As a marine biologist, my own research was fascinating, but it's perhaps climate change research that is the most crucial field of study.\n▶ 26:29Within this general field, surveying changes in the volume and stability of the ice cap is vital, since these may have profound effects on world sea levels and on ocean currents .\n▶ 26:44A second important area is monitoring the size of the hole in the ozone layer above Antarctica, since this is an indicator of global ultraviolet radiation levels.\n▶ 26:57Thirdly, bubbles in the ice sheet itself provide an index of pollution because frozen inside them are samples of previous atmospheres over the past five hundred thousand years, and these provide us with evidence for the effects of such human activities as agriculture and industry.\n▶ 27:19There are an increasing number of opportunities for young people to work for a period in Antarctica, not only as research assistants in projects like mine, but also in a wide range of junior administrative and technical positions, including vacancies for map makers.\n▶ 27:40I hope that the insights I've provided will encourage you to take up these opportunities in this fascinating continent.\n▶ 27:55[Narrator] That is the end of part four. You now have one minute to check your answers to part four. That is the end of the listening test.\n▶ 28:09In the IELTS test, you would now have ten minutes to transfer your answers to the answer sheet."
+  }
+ ],
+ "audio": {
+  "file": "listening-61.mp3",
+  "durationSec": 1672,
+  "questionTimes": {
+   "1": 63,
+   "2": 82,
+   "3": 93,
+   "4": 126,
+   "5": 139,
+   "6": 208,
+   "7": 220,
+   "8": 231,
+   "9": 254,
+   "10": 266,
+   "11": 399,
+   "12": 413,
+   "13": 449,
+   "14": 473,
+   "15": 566,
+   "16": 580,
+   "17": 601,
+   "18": 616,
+   "19": 629,
+   "20": 642,
+   "21": 776,
+   "22": 788,
+   "23": 840,
+   "24": 865,
+   "25": 940,
+   "26": 970,
+   "27": 984,
+   "28": 1013,
+   "29": 1025,
+   "30": 1048,
+   "31": 1203,
+   "32": 1217,
+   "33": 1246,
+   "34": 1272,
+   "35": 1299,
+   "36": 1319,
+   "37": 1374,
+   "38": 1393,
+   "39": 1418,
+   "40": 1445
+  }
+ }
+}

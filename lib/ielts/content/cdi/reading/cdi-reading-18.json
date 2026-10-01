@@ -1,0 +1,641 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-18",
+ "title": "CDI Reading Test 18",
+ "description": "A full Academic Reading test from the CDI practice materials: The Pyramid of Cestius; A New Look for Talbot Park; Neanderthal Technology.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Pyramid of Cestius",
+  "A New Look for Talbot Park",
+  "Neanderthal Technology"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Pyramid of Cestius",
+   "paragraphs": [
+    {
+     "text": "A 2000-year-old pyramid in the city of Rome has been restored by archaeologists"
+    },
+    {
+     "label": "A",
+     "text": "Though Rome draws tourists from around the world to its many impressive sites, one notable monument there has never attracted nearly as much interest: The Pyramid of Cestius. But why would there be a pyramid in Italy? After the Roman conquest of Egypt in 30 B.C., Egyptian architectural style became the fashion in Rome. Though obelisks and other monuments inspired by Egypt’s great pyramids sprung up around the city, only two actual pyramids are known to have been built. The only one left standing, the Pyramid of Cestius, was designed as the burial pyramid for a Roman politician named Caius Cestius, who ordered that the building work be completed within a period of 330 days."
+    },
+    {
+     "label": "B",
+     "text": "Construction took place at some point between 18 B.C. and 12 B.C. Cestius’ pyramid had a layer of white Carrara marble on the outside, and was constructed from brick held together by a basic kind of cement on the inside. One of the things that strikes you when you look at the pyramid is how steep it is, so that the shape of Cestius’ pyramid is quite unlike that of typical Egyptian ones. This is a difference that could have been the result of inaccurate information sent back to Rome by soldiers who saw the pyramids in person in Egypt. Alternatively, Roman builders could have drawn inspiration from the pyramids in Nubia, a region located in what is today northern Sudan and southern Egypt."
+    },
+    {
+     "label": "C",
+     "text": "At the time of its construction, since there was a strict Roman law prohibiting the placement of tombs within the city itself, the Pyramid of Cestius would have stood in countryside. Rome grew enormously during the next two centuries, and, by the 3rd century A.D., the pyramid would have been surrounded by buildings. We also know that in the 3rd century A.D., the Pyramid of Cestius was hidden behind a high wall on the orders of Emperor Aurelian; this probably helped it survive throughout the centuries to come, even as other ancient monuments disappeared."
+    },
+    {
+     "label": "D",
+     "text": "By the Middle Ages, the pyramid was covered in vegetation and thick dirt, and popular myth had developed that it might be a tomb for one of the twin brothers Romulus and Remus, who were regarded as the men who had established the city of Rome. Cestius’ actual tomb within the pyramid and the inscription identifying the pyramid as his, weren’t rediscovered until the 1660s when the pyramid underwent restoration. During excavations, when trees and plants were cleared away, two marble bases were found in front of the pyramid, as well as fragments of bronze statues that had once stood on them on either side of the pyramid. The people employed to excavate the pyramid did not find the urn that would have contained Cestius’ remains, but they did come across a tunnel. It was quite possible, therefore, that robbers had at some earlier time removed the contents of the tomb. But while some of the features of Cestius’ tomb no longer exist, at least the pyramid itself has survived."
+    },
+    {
+     "label": "E",
+     "text": "Today, the foundations of Cestius’ pyramid rest below street level near an intersection with heavy traffic, so that passing tourists and residents could easily fail to notice its full height of 119 feet. Across the intersection is the Piramide station, located on Line B of the Rome Metro. In 2011, the Japanese clothing company entrepreneur Yuzo Yagi, president of Yagi Tsusho Ltd, announced his intention to help the Italian government pay for an ambitious renovation of the Pyramid of Cestius. ‘It’s an act of gratitude,’ he later told journalists. ‘Our company has grown thanks to Italy.’ Work began at the site shortly after Yagi signed an official agreement with the Special Superintendency for the Archaeological Heritage of Rome, and was completed ahead of schedule thanks to his 2-million-euro contribution."
+    },
+    {
+     "label": "F",
+     "text": "As archaeologist Leonardo Guarnieri explained to journalists, officials are now conducting tours of the newly renovated pyramid twice a month by reservation. Visitors who take advantage of the tour can make their way through a narrow corridor in order to enter the burial chamber itself. It is within these walls that they can admire the frescoes: watercolour paintings typical of the time. In the chamber, it is possible to make out four frescoes of the winged Roman goddess of war, Victoria, a figure from Roman legend, as well as of a series of vases, the type that would have been used for special rituals and purification purposes. We know from the writings of earlier visitors that there used to be more here, but the majority have disappeared over time."
+    },
+    {
+     "label": "G",
+     "text": "Only one problem remains now that the restoration is complete. The white exterior of the Pyramid of Cestius will have to be cleaned every few months to remove the layer of urban pollution. A team of free-climbers will be employed to do the job, in order to avoid placing builder’s scaffolding around the newly welcoming monument."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "The Pyramid of Cestius has always been one of Rome’s most popular tourist attractions.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says it ‘has never attracted nearly as much interest’ as other monuments."
+      },
+      {
+       "n": 2,
+       "text": "The construction of the Pyramid was completed before Cestius’ death.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage gives the construction period but does not say when Cestius died."
+      },
+      {
+       "n": 3,
+       "text": "In the Middle Ages, people thought an original founder of Rome was buried in the Pyramid of Cestius.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Popular myth said it might be a tomb for Romulus or Remus, ‘regarded as the men who had established the city of Rome’."
+      },
+      {
+       "n": 4,
+       "text": "Today the height of the Pyramid is something that tourists and residents immediately notice.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says tourists and residents ‘could easily fail to notice its full height’."
+      },
+      {
+       "n": 5,
+       "text": "Japanese businessman Yuzo Yagi was an admirer of both Italian and Egyptian architecture.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Yagi spoke of gratitude to Italy but nothing is said about admiring Egyptian architecture."
+      },
+      {
+       "n": 6,
+       "text": "The restoration of the Pyramid of Cestius, which was funded by Yuzo Yagi, finished earlier than expected.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says work ‘was completed ahead of schedule’."
+      },
+      {
+       "n": 7,
+       "text": "Most of the original frescoes inside Cestius’ tomb have survived to this day.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says ‘the majority have disappeared over time’."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "History of the Pyramid of Cestius",
+     "template": "Construction of Cestius’ pyramid\n○ it was made from [[8]], marble and cement\n○ its [[9]] is different to the pyramids found in Egypt\n○ it was originally built in the [[10]] as building tombs in the city was forbidden\n○ Emperor Aurelian ordered that a wall had to be built around it\nRestoration of Cestius’ pyramid in the 1660s\n○ in the 1660s, some broken [[11]] were found next to it\n○ the [[12]] inside the tomb suggests that robbers had been there\n○ the frescoes show mythological scenes, and images of vases\nRestoration of Cestius’ pyramid today\n○ a Japanese businessman paid for its restoration\n○ climbers are helping to get rid of signs of [[13]]",
+     "questions": [
+      {
+       "n": 8,
+       "answer": [
+        "brick"
+       ],
+       "explanation": "The pyramid ‘was constructed from brick held together by a basic kind of cement’."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "shape"
+       ],
+       "explanation": "The ‘shape of Cestius’ pyramid is quite unlike that of typical Egyptian ones’."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "countryside"
+       ],
+       "explanation": "The pyramid ‘would have stood in countryside’ due to the law against tombs in the city."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "statues"
+       ],
+       "explanation": "Excavators found ‘fragments of bronze statues’ next to the pyramid."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "tunnel"
+       ],
+       "explanation": "Excavators ‘did come across a tunnel’ suggesting robbers had been there."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "pollution"
+       ],
+       "explanation": "The exterior must be cleaned ‘to remove the layer of urban pollution’."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "A New Look for Talbot Park",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Talbot Park, a housing project in Auckland, New Zealand, was once described as a ghetto, troubled by high rates of crime and vandalism. However, it has just been rebuilt at a cost of $48m and the project reflects some new thinking about urban design. The new Talbot Park is immediately eye-catching because the buildings look quite different to other state housing projects in Auckland. ‘There is no reason why state housing should look cheap in my view,’ says architect Neil Cotton, one of the design team. ‘In fact, I was anticipating a backlash by those who objected to the quality of what is provided with government money.’ The tidy brick and wood apartments and townhouses would not look out of place in some of the city’s most affluent suburbs and this is a central theme of the Talbot Park philosophy."
+    },
+    {
+     "label": "B",
+     "text": "Talbot Park is a triangle of government-owned land, which in the early 1960s was developed for state housing built around a linear garden that ran through the middle. Initially, there was a strong sense of neighbourliness. Former residents recall how the garden played a big part in their childhoods – a place where kids came together to play softball, cricket and bullrush. ‘We had respect for our neighbours and addressed them by title – Mr and Mrs so-and-so,’ recalls Georgie Thompson, who grew up there in the 1960s."
+    },
+    {
+     "label": "C",
+     "text": "Exactly what went wrong with Talbot Park is unclear. The community began to change in the late 1970s as more immigrants moved in. The new arrivals didn’t always integrate with the community and a ‘them and us’ mentality developed. In the process, standards dropped and the neighbourhood began to look shabbier. The buildings themselves were also deteriorating and becoming run down, petty crime was on the rise and the garden was considered unsafe. In 2002, Housing New Zealand decided the properties needed upgrading. The question was, how to avoid repeating the mistakes of the past?"
+    },
+    {
+     "label": "D",
+     "text": "One controversial aspect of the upgrade is that the new development has actually made the density of housing in Talbot Park greater, putting 52 more homes on the same site. Doing this required a fresh approach that can be summed up as ‘mix and match’. The first priority was to mix up the housing by employing a variety of plans by different architects: some of the accommodation is free-standing houses, some semi-detached, some low level, multi-apartment blocks. By doing this, the development avoids the uniform appearance of so many state housing projects, which residents complain denies them any sense of individual identity. The next goal was to prevent overspending by using efficient designs to maximise the sense of space from minimum room sizes. There was also a no-frills, industrial approach to kitchens, bathrooms and flooring, to optimise durability and ensure the project did not go over budget. Architecturally, the buildings are relatively conservative: fairly plain houses standing in a small garden. There’s a slight reflection of the traditional Pacific beach house (a fale) but it’s not overplayed. ‘It seems to us that low-cost housing is about getting as much amenity as you can for the money,’ says architect Michael Thompson. Another key aspect of the ‘mix and match’ approach is openness: one that not only lets residents see what is going on but also lets them know they are seen. The plan ensures there are no cul-de-sacs or properties hidden from view, that the gardens are not enclosed by trees and that most boundary fences are see-through – a community contained but without walls."
+    },
+    {
+     "label": "E",
+     "text": "The population today is cosmopolitan: 50% Pacific Islanders, 20% Maori, 15% Asian, 10% New Zealand European and the rest composed of immigrants from Russia, Ukraine and Iran. ‘It was important that the buildings were sufficiently flexible to cater for the needs of people from a wide variety of cultural backgrounds,’ explains designer James Lundy."
+    },
+    {
+     "label": "F",
+     "text": "Despite the quality of the buildings, however, there should be no doubt that Talbot Park and its surrounding suburb of Tamaki are low socio-economic areas. Of the 5,000 houses there, 55% are state houses, 28% privately owned (compared to about 65% nationally) and 17% private rental. The area has a high density of households with incomes in the $5,000 to $15,000 range and very few with an income over $70,000. That’s in sharp contrast to the more affluent suburbs in Auckland."
+    },
+    {
+     "label": "G",
+     "text": "Another important part of the new development is what Housing New Zealand calls ‘intensive tenancy management’. Opponents of the project call it social control. ‘The focus is on frequent inspections and setting clear guidelines and boundaries regarding the sort of behaviour we expect from tenants,’ says Graham Bodman, Housing New Zealand’s regional manager. The result is a code of sometimes strict rules: no loud parties after 10pm, no washing hung over balcony rails and a requirement to mow lawns and keep the property tidy. The Tenancy Manager walks the site every day, knows everyone by name and deals with problems quickly. ‘It’s all based on the intensification,’ says project manager Stuart Bracey. ‘We acknowledge that if you are going to ask people to live in these quite tightly-packed communities, you have to actually help them to get to know each other by organising morning teas and street barbecues.’ So far it seems to be working and many involved in the project believe Talbot Park represents the way forward for state housing."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Choose the correct heading for each paragraph from the list of headings below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Some of the problems that developed at Talbot Park"
+      },
+      {
+       "key": "ii",
+       "text": "Where the residents lived while the work was being completed"
+      },
+      {
+       "key": "iii",
+       "text": "The ethnic makeup of the new Talbot Park"
+      },
+      {
+       "key": "iv",
+       "text": "The unexpectedly high standard of the housing"
+      },
+      {
+       "key": "v",
+       "text": "Financial hardship in Talbot Park and a neighbouring community"
+      },
+      {
+       "key": "vi",
+       "text": "The experiences of one family living at Talbot Park today"
+      },
+      {
+       "key": "vii",
+       "text": "How to co-ordinate and assist the people who live at Talbot Park"
+      },
+      {
+       "key": "viii",
+       "text": "Raising the money to pay for the makeover"
+      },
+      {
+       "key": "ix",
+       "text": "A close community in the original Talbot Park development"
+      },
+      {
+       "key": "x",
+       "text": "Details of the style of buildings used in the makeover"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph A describes the unexpectedly high standard of the housing."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "ix"
+       ],
+       "explanation": "Paragraph B describes a close community in the original development."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Paragraph C describes problems that developed at Talbot Park."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "x"
+       ],
+       "explanation": "Paragraph D details the style of buildings used in the makeover."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Paragraph E describes the ethnic makeup of the new Talbot Park."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Paragraph F describes financial hardship in Talbot Park and Tamaki."
+      },
+      {
+       "n": 20,
+       "text": "Paragraph G",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Paragraph G describes how to co-ordinate and assist residents."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following people and the list of ideas below. Match each person with the correct idea, A–F.",
+     "title": "List of Ideas",
+     "options": [
+      {
+       "key": "A",
+       "text": "Good tenant management involves supervision and regulation."
+      },
+      {
+       "key": "B",
+       "text": "State housing must be built at minimum expense to the public."
+      },
+      {
+       "key": "C",
+       "text": "Organising social events helps tenants to live close together."
+      },
+      {
+       "key": "D",
+       "text": "Mixed-race communities require adaptable and responsive designs."
+      },
+      {
+       "key": "E",
+       "text": "Complaints were expected about the high standard of the development."
+      },
+      {
+       "key": "F",
+       "text": "Too many rules and regulations will cause resentment from tenants."
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "text": "James Lundy",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Lundy said buildings must be ‘sufficiently flexible to cater for… a wide variety of cultural backgrounds’."
+      },
+      {
+       "n": 22,
+       "text": "Graham Bodman",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Bodman focuses on ‘frequent inspections and setting clear guidelines and boundaries’."
+      },
+      {
+       "n": 23,
+       "text": "Stuart Bracey",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Bracey says you have to ‘help them to get to know each other by organising morning teas and street barbecues’."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The ‘mix and match’ strategy",
+     "template": "One aspect of the Talbot Park project that some critics are concerned about is that the higher [[24]] of accommodation would lead to the old social problems returning. To prevent this, a team of various [[25]] worked on the project to ensure the buildings were not uniform. Further, they created pleasant, functional interiors that could still be built within their [[26]]. Finally, the absence of walls means Talbot Park is characterised by openness, making it easier to regulate behaviour within the community.",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "density"
+       ],
+       "explanation": "The higher ‘density of housing’ is a controversial aspect."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "architects"
+       ],
+       "explanation": "A team of various ‘architects’ worked on the project."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "budget"
+       ],
+       "explanation": "Designs ensured the project ‘did not go over budget’."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Neanderthal Technology",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "We think of our prehistoric ancestors as people of the ice and snow, living in caves, and for many of the west European Neanderthalers that is a just picture of their life. But where there were no caves, further to the east on the Russian steppe, for example, open-air sites with some sort of constructed shelter were the only option."
+    },
+    {
+     "label": "B",
+     "text": "We now know much more about the cave sites than the open-air ones because, historically, it was the cave sites of Western Europe that were first explored by archaeologists and also because open-air sites are harder to find – many of them have disappeared under deep mud deposits or under the rising postglacial seas. Caves, moreover, aid the survival of archaeological material and can preserve the records of remote millennia."
+    },
+    {
+     "label": "C",
+     "text": "In south-west France, the limestone caves of the Périgord region made ideal homes for the Neanderthal people. There were good supplies of flint to hand for axes and the like, and the caves were often sited in small river valleys that offered protection against the worst of the weather. The Neanderthalers liked south-facing caves, for obvious reasons of sunshine and wind avoidance, and caves at some height above the valley floor offered refuge from floods and good game-watching vantage points."
+    },
+    {
+     "label": "D",
+     "text": "The Périgord region during the last ice age was, in fact, an exceptionally benign habitat for humans. It enjoyed a rather maritime climate with cooler summers that permitted the extension of tundra and steppe over its higher plateaux, and its year-round high levels of sunshine favoured the growth of the ground plants needed by reindeer, bison and horse. Winters were mildish for the ice age, animals never needed to migrate far from summer to winter, and men never needed to travel far from home to find abundant supplies of meat."
+    },
+    {
+     "label": "E",
+     "text": "In Central and Eastern Europe, where caves were unavailable, such open-air sites as have been discovered were mostly located near water – both because this was a good area to be for people and animals, and also because the sedimentation potential of lakes and stream courses has aided archaeological preservation – whereas erosion has presumably blown away sites which were out in the open. Some of the open-air sites in Germany, Central Europe and Russia have provided valuable information about Neanderthal man and his way of life. From Moldova, for example, comes evidence that has been interpreted as the remains of wind-break structures, or even a large tent: a ring, up to about 8 x 5m in size, of mainly mammoth bones enclosing a dense concentration of stone tools, animal bones and ash."
+    },
+    {
+     "label": "F",
+     "text": "From the west European caves more evidence of built structures is available, and some of it goes back a long way in time. In the Grotte du Lazaret, near Nice, at a date during the last ice age but one, claims for some sort of skin tent within the cave have been advanced, on the basis of arrangements of large stones out from the cave wall that might have supported timber struts for a covering of skins up to the rock face above. At Lazaret, what might be openings in the hypothesised tents seem to point away from the cave mouth, and finds of wolf and fox foot bones, without the rest of the skeletons, inside these ‘tents’ have been thought to indicate the use of animal pelts as bed coverings. The two patches of ash at Lazaret that mark ancient fires, with stone tools around them evidently made and used on the spot, are edged with small marine mollusc shells, prompting the excavator to suggest that seaweed had been used as bedding around the fires. The cave of Baume-Bonne in the Basses-Alpes region of France, another early site, boasts ten square metres of cobbles brought up from the local river and laid down, as though to take care of a puddle area in the cave, with the smoothest and roundest surfaces of the stones uppermost, and there are other similar cases."
+    },
+    {
+     "label": "G",
+     "text": "The ash encountered in concentrations at some sites testifies to the Neanderthal people’s use of fire: not surprising, since use of fire was, by Neanderthal times, an already ancient accomplishment of evolving humanity, and survival in the sub-arctic conditions faced by the Neanderthalers is inconceivable without control of fire. Fire gave warmth, light, heat for cooking and defence against predatory animals. A charred piece of birch from Krapina in Croatia is thought to be the remains of a fire-making twirl stick. But Neanderthal hearths, in the sense of specially constructed places for fire, are fewer and harder to identify with certainty than the mere ash piles that are a regular feature of their sites. They seem often to have just lit a small fire (40-50cm across) on the existing ground surface of the cave, without preparation. Judging from the shallow penetration of heat effects under the ash, this fire was only of a short duration. Sometimes the fires were larger in size, up to one metre across, and quite irregular in shape. It is not always easy to decide how much additional structure some fires possessed: claims of stone circles to contain the fire run up against the fact that stones tend to litter the cave floors everywhere and those around a fire can quite accidentally look as though they were arranged in a circle."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has five sections. Choose the correct heading for each section from the list of headings below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Evidence of outdoor dwellings"
+      },
+      {
+       "key": "ii",
+       "text": "Learning to make fire"
+      },
+      {
+       "key": "iii",
+       "text": "A perfect place to live"
+      },
+      {
+       "key": "iv",
+       "text": "Examining the cave contents"
+      },
+      {
+       "key": "v",
+       "text": "Contrasting two types of home"
+      },
+      {
+       "key": "vi",
+       "text": "A vital source of power"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "Paragraph A",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Paragraph A contrasts cave dwellers in Western Europe with open-air shelter builders in the east."
+      },
+      {
+       "n": 28,
+       "text": "Paragraph B",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Paragraph B continues the contrast, explaining why we know more about caves than open-air sites."
+      },
+      {
+       "n": 29,
+       "text": "Paragraph C",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Paragraph C describes the Périgord caves as ideal homes."
+      },
+      {
+       "n": 30,
+       "text": "Paragraph D",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph D continues describing the Périgord region as an exceptionally benign habitat."
+      },
+      {
+       "n": 31,
+       "text": "Paragraph E",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Paragraph E describes open-air sites discovered in Central/Eastern Europe."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following findings and the list of places below. Match each finding with the correct place, A–E. NB You may use any letter more than once.",
+     "title": "List of Places",
+     "options": [
+      {
+       "key": "A",
+       "text": "The Périgord region"
+      },
+      {
+       "key": "B",
+       "text": "Moldova"
+      },
+      {
+       "key": "C",
+       "text": "The Grotte du Lazaret"
+      },
+      {
+       "key": "D",
+       "text": "The cave of Baume-Bonne"
+      },
+      {
+       "key": "E",
+       "text": "Krapina"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 32,
+       "text": "a burnt piece of wood",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Krapina (E): ‘A charred piece of birch from Krapina in Croatia.’"
+      },
+      {
+       "n": 33,
+       "text": "evidence of efforts to prevent pools of water forming",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Baume-Bonne (D): cobbles laid down ‘as though to take care of a puddle area in the cave’."
+      },
+      {
+       "n": 34,
+       "text": "the remains of sea creatures",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Lazaret (C): ‘edged with small marine mollusc shells’."
+      },
+      {
+       "n": 35,
+       "text": "a circular arrangement of animal bones",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Moldova (B): ‘a ring… of mainly mammoth bones’."
+      },
+      {
+       "n": 36,
+       "text": "evidence suggesting the use of animal fur for warmth",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Lazaret (C): ‘wolf and fox foot bones… thought to indicate the use of animal pelts as bed coverings’."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "The use of fire",
+     "template": "Neanderthalers could not have survived without fire because the conditions they lived in were [[37]]. Most evidence of purpose-built fires takes the form of ash piles, features of which suggest that the fires lasted a [[38]] time. It is hard to be certain about the size and structure of the fires, though they were certainly needed to protect the occupants from dangerous [[39]], among other things.",
+     "questions": [
+      {
+       "n": 37,
+       "answer": [
+        "sub-arctic"
+       ],
+       "explanation": "Survival ‘in the sub-arctic conditions faced by the Neanderthalers is inconceivable without control of fire’."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "short"
+       ],
+       "explanation": "Judging from shallow heat effects, ‘this fire was only of a short duration’."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "animals"
+       ],
+       "explanation": "Fire gave ‘defence against predatory animals’."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 40,
+       "text": "The purpose of the writer of this article is to",
+       "options": [
+        {
+         "key": "A",
+         "text": "argue that Neanderthal homes were bigger than originally thought."
+        },
+        {
+         "key": "B",
+         "text": "explain why Neanderthal people migrated to Western Europe."
+        },
+        {
+         "key": "C",
+         "text": "discuss what is known about Neanderthal settlements."
+        },
+        {
+         "key": "D",
+         "text": "track the progress of early Neanderthal development."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage surveys various Neanderthal dwelling sites – caves, open-air, and fire use."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

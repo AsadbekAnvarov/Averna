@@ -12,6 +12,7 @@ import { toast } from "@/components/ui/toast";
 import { Task1Chart } from "@/components/learning/task1-chart";
 import { formatDateTime } from "@/lib/utils";
 import type { Task1ChartData } from "@/lib/writing-data";
+import { task1ImageAlt } from "@/lib/writing-visual";
 
 interface WritingEditorProps {
   prompt: {
@@ -195,10 +196,16 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
                 {prompt.chart && prompt.chart.length > 0 ? (
                   <Task1Chart charts={prompt.chart} />
                 ) : prompt.imageUrl ? (
-                  <div className="rounded-lg overflow-hidden border border-white/10">
+                  // White panel: scanned charts and maps stay readable in the dark theme too.
+                  <figure className="rounded-lg overflow-hidden border border-slate-300 bg-white p-2">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={prompt.imageUrl} alt={`${prompt.title} — task visual`} className="w-full h-auto" />
-                  </div>
+                    <img
+                      src={prompt.imageUrl}
+                      alt={task1ImageAlt(prompt)}
+                      decoding="async"
+                      className="mx-auto h-auto max-h-[60vh] w-auto max-w-full object-contain"
+                    />
+                  </figure>
                 ) : null}
 
                 {/* Stats */}

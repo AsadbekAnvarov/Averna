@@ -1,0 +1,724 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-79",
+ "title": "CDI Reading Test 79",
+ "description": "A full Academic Reading test from the CDI practice materials: A Brief History of Humans and Food; Born to Trade; Sea Change for Salinity.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "A Brief History of Humans and Food",
+  "Born to Trade",
+  "Sea Change for Salinity"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "A Brief History of Humans and Food",
+   "paragraphs": [
+    {
+     "text": "During the journey from our hunter-gatherer ancestors to the present day there have been three seismic changes that have had an impact on the food we eat: the discovery of cooking, the emergence of agriculture and the invention of methods of preserving food."
+    },
+    {
+     "text": "The 19th-century scientist Charles Darwin thought that cooking, after language, was the greatest discovery made by man. All of us eat some raw food, for instance fruit and vegetables, but the great majority of food we eat is cooked. Cooking can turn plants that are inedible into edible food by destroying toxic chemicals that plants often manufacture to protect themselves against attack by insects or other herbivorous animals. These toxic chemicals are referred to as ‘plant secondary compounds’, because they are not directly involved in the plant’s normal growth, development and reproduction, and are produced purely as chemical defences. They give many of the plants we consume, such as coffee or brussels sprouts, their bitter taste."
+    },
+    {
+     "text": "Cooked food is often more digestible, because heat breaks down tough cellulose cell walls in plants or tough connective tissue in animals. Chewing raw turnip, a plate of uncooked rice, or a raw leg of lamb is much harder work than eating the cooked equivalent. The energy expended in chewing to break down the tough material is replaced by energy from the fuel that is used in cooking the food, so the ratio of energy gained to energy expended by the body is greater when food is cooked."
+    },
+    {
+     "text": "Until the development of agriculture, hunter-gatherers spent up to seven hours a day gathering food. This all began to change around 10,500 years ago with the advent of farming, which led to some dramatic changes in human societies. People began to create a variety of new tools to help with survival, and in turn populations increased in size. These changes led to the possibility of specialisation of different tasks within society. It was around this time that writing became more sophisticated and allowed people to maintain records of the harvest and taxes. Eventually, formalised structures of government were established as people settled in one area."
+    },
+    {
+     "text": "The arrival of agriculture meant that, for the first time, our ancestors had more food than they could eat immediately. This, combined with the seasonality of production, led them to discover methods of preserving food: smoking, drying, adding acid by fermentation or adding salt. These four methods all share one feature in common: they make the food a more hostile environment for bacteria that can cause it to spoil. They also tend to slow down any natural chemical reactions in the food that would cause decay."
+    },
+    {
+     "text": "Although foods today are still preserved in the ancient ways, two more recent methods of preserving food have become more common: canning and freezing. Canning was invented by a Frenchman, Nicholas Appert, in the early-19th century. He sealed food in bottles fabricated from glass and then heated them in boiling water to cook the contents. Appert’s method had great advantages over older methods of food preservation: it could be applied to a wide range of foods, and the flavour of the food as well as the texture were similar to the freshly cooked product. His idea was soon copied by Englishman, Peter Durand. Until this point containers had weighed too much to be widely used, but he produced the first ones which were light and resistant to damage. Two years later, in 1812, two Englishmen, Bryan Donkin and John Hall, started the commercial canning of food, although the real take-off in popularity of canning had to wait until the can opener was invented in 1855. Up to this time, cans were opened with a chisel which was used to break open the top when hit with a hammer."
+    },
+    {
+     "text": "Canning is an extremely effective way of preserving food: one can which contained meat dating from 1824 was opened in 1939 and the contents were still in good condition. In the 21st century, the dominance of canning as a method of food preservation has been overtaken by another technology: freezing."
+    },
+    {
+     "text": "Chilling food to keep it fresh is an old idea. The earliest mentions of icehouses, thick-walled buildings, half underground, date back to 1,700BC in northwest Iran. In early 16th-century Italy, water was mixed with chemicals to lower its freezing point to -18 degrees Celsius, and several centuries later frozen fish and other goods were transported by ship from Australia to England. But the modern frozen food industry was started in the 1920s by an American, Clarence Birdseye. While Birdseye was on a fishing trip with the Inuit in the Canadian Arctic, he observed that very rapid freezing creates smaller ice crystals and therefore causes less damage to food. This was something he had not expected. Nevertheless, the big growth in demand for frozen food came about with the arrival of freezers in the homes of ordinary people. The advantages of frozen over canned food include the fact that the flavour and consistency are often identical to the equivalent fresh product, and that freezing can be used to preserve a huge variety of foods."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "According to Darwin, cooking was the most significant development in human history.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Darwin ranked cooking after language, so it was not the most significant development."
+      },
+      {
+       "n": 2,
+       "text": "The process of cooking gets rid of some plant poisons.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Cooking destroys the toxic chemicals - plant secondary compounds - that plants make to defend themselves."
+      },
+      {
+       "n": 3,
+       "text": "Eating cooked food is more energy efficient than eating raw food.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The ratio of energy gained to energy spent is greater for cooked food."
+      },
+      {
+       "n": 4,
+       "text": "Clarence Birdseye had previously worked in the Australian food industry.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Birdseye's earlier career is never mentioned; Australia appears only in connection with shipping frozen goods."
+      },
+      {
+       "n": 5,
+       "text": "Birdseye’s trip with the Inuit confirmed what he already believed about rapid freezing.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "What he observed about rapid freezing was something he had not expected."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Choose ONE WORD ONLY from the text for each answer.",
+     "wordLimit": 1,
+     "title": "The development of agriculture and food preservation",
+     "template": "# The changes agriculture brought about were:\n- the development of equipment and larger [[6]]\n- the ability to keep [[7]] as writing developed\n- the setting up of organised government\n# Food preservation\n- early methods of food preservation included: smoking, drying and combining food with acid or [[8]].\n- canning\n-- Nicholas Appert put food into containers made of [[9]].\n-- Appert’s method resulted in preserved food that had the same taste and [[10]] as fresh food\n-- Peter Durand introduced cans which had the advantage of being [[11]] and hard to break\n-- in 1855, the metal can opener replaced the [[12]] which had been used with a hammer to open cans\n-- some food was still found to be edible after more than a hundred years, e.g. an old can of [[13]].\n- freezing",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "populations"
+       ],
+       "explanation": "New tools helped survival and, in turn, populations increased in size."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "records"
+       ],
+       "explanation": "More sophisticated writing allowed people to keep records of the harvest and taxes."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "salt"
+       ],
+       "explanation": "The four early methods were smoking, drying, adding acid and adding salt."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "glass"
+       ],
+       "explanation": "Appert sealed food in bottles made from glass."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "texture"
+       ],
+       "explanation": "Both the flavour and the texture were similar to freshly cooked food."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "light"
+       ],
+       "explanation": "Durand's containers were light and resistant to damage."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "chisel"
+       ],
+       "explanation": "Before 1855, cans were opened with a chisel struck by a hammer."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "meat"
+       ],
+       "explanation": "A can of meat from 1824 was opened in 1939 and was still in good condition."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Born to Trade",
+   "subtitle": "Long before our ancestors had any trappings of civilization, they had a taste for material goods. Kate Douglas discovers where this ancient obsession has led us.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Humans are born to trade, and we don't need shops or money to do it—the heart of commerce is an instinctive ability for what anthropologists call reciprocity. This is an ability to exchange goods of equal worth, and it evolved as the brains of our ancient ancestors and societies became more complex, allowing individuals to keep a running tally of their interactions with others. Evidence from modern hunter-gatherers leaves little doubt that the exchange of food and flavors is innate, as is the ability to keep track of the credits and debits that accrue as a result. Combine this skill for mental bookkeeping with even the most basic material culture, and trade inevitably follows."
+    },
+    {
+     "label": "B",
+     "text": "Once trade gets off the ground, the economic benefits quickly make it irresistible. But exchanging tools, food, and other essentials of life in a barter economy is a far cry from the shopping mall. Modern consumerism sways beyond subsistence and utilitarianism to encompass everything from Gucci handbags and BMW convertibles to valuable paintings. Clearly, the worth of such goods is not inherent but resides in certain intangible qualities that we invest in them. When did humans start holding these goods in such high esteem?"
+    },
+    {
+     "label": "C",
+     "text": "All the archaeological evidence for the flowering of consumer culture has, up to now, pointed to a date of around 40,000 years ago. That's when early modern humans started making increasingly intricate bone and stone tools, carving patterns into rocks, and creating representational art such as carved figurines, jewelry, and cave paintings. However, discoveries in Africa are pushing the origins of consumerism much further back into human prehistory."
+    },
+    {
+     "text": "A few years ago, reports began to emerge of discoveries made at the Blombos cave, a site of ancient human habitation in South Africa. Christopher Henshilwood and colleagues from the University of Bergen in Norway dated thousands of pieces of ochre from the cave, and many of them proved to be more than 100,000 years old—before the time that early humans moved out of Africa. Ochre, a colored clay that comes in various shades from red to black, does not occur naturally around Blombos and must have been imported from quarries at least 30 kilometers away, either directly by Blombos residents or through trade. Although ochre can be used to dry and preserve (or \"cure\") animal hides, the researchers are convinced the Blombos ochre had a symbolic purpose. For a start, it is predominantly red—any of the other colors available would have sufficed for curing—and the surfaces of the clay had been scraped in a way that indicates they were used to yield pigment for dyes."
+    },
+    {
+     "label": "D",
+     "text": "An even more intriguing discovery from Blombos was of 41 beads dating from 76,000 years ago, found in clusters and made from the shells of a tiny mollusk. These cannot be natural deposits, argue the researchers, as each cluster contains shells of a similar size and color with consistently placed holes. What's more, all the beads display a pattern of wear suggesting friction from rubbing against thread, clothes, or other beads."
+    },
+    {
+     "text": "The previous oldest find of beads in Africa dates back to just 45,000 years ago. And it seems the Blombos people's taste for beautiful items was not an isolated phenomenon. Jessica Thompson of Arizona State University in Tempe has described finding shell fragments from a site in Tanzania that she believes may represent debris from bead manufacture. They are at least 45,000—and possibly 280,000—years old. Although there is no evidence of how the ancient beads were used, their modern counterparts are often traded. So it looks as though our taste for jewelry and art is much older than we thought."
+    },
+    {
+     "label": "E",
+     "text": "But why did we come to value these objects in the first place? In many animal species, individuals signal their genetic fitness by showing off with attention-grabbing adornment. Some researchers think that in humans, consumer products play a similar role. Archaeologist Aimee Plourde, from the University of California, also argues that even in egalitarian societies, some people are more successful than others. Among our ancestors, superior skills in areas such as hunting, crafts, environmental knowledge, and contact with neighboring groups would have brought respect—in other words, prestige."
+    },
+    {
+     "text": "And because prestige brings social benefits, people would want to show off their talents. The best way to do this would be through demonstrating possession of material items that are hard to fake. \"A good hunter, for instance, could advertise his skills by wearing the tooth of an animal that is elusive or dangerous,\" says Plourde. The benefits of prestige would also lead to competition to acquire it. As a result, the value and variety of prestige goods would spiral, and there would be a parallel increase in the ranking of social systems."
+    },
+    {
+     "text": "If Plourde is correct, prestige goods form a direct link between our innate drive for trade and the development of structured, hierarchical societies. They are arguably the first step on the road to modern civilization, paving the way for agriculture and urbanization. We may not be impressed by beads anymore, but their modern equivalents have the same fascination. Nobody believes the guy who spends €670,000 on a Bugatti Veyron car does so because he needs to travel at 250 mph. We all know in today's consumer society he's buying an exclusive status symbol."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "The text has five sections. Choose the correct heading for each section and move it into the gap.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "The desire to make expensive jewellery"
+      },
+      {
+       "key": "ii",
+       "text": "The clues that indicate ancient items were decorative"
+      },
+      {
+       "key": "iii",
+       "text": "Querying the changes in the value of traded items"
+      },
+      {
+       "key": "iv",
+       "text": "A natural human talent"
+      },
+      {
+       "key": "v",
+       "text": "How status can be gained from ownership of goods"
+      },
+      {
+       "key": "vi",
+       "text": "Recent finds alter theories about when consumerism started"
+      },
+      {
+       "key": "vii",
+       "text": "Changes in research methods"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Section A",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Section A says trade rests on an instinctive, innate human ability - a natural talent."
+      },
+      {
+       "n": 15,
+       "text": "Section B",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Section B questions how goods came to be valued beyond their usefulness."
+      },
+      {
+       "n": 16,
+       "text": "Section C",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "New finds in Africa move the origins of consumerism much further back."
+      },
+      {
+       "n": 17,
+       "text": "Section D",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "The size, colour, holes and wear of the beads show they were decorative items."
+      },
+      {
+       "n": 18,
+       "text": "Section E",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Section E explains how owning prestige goods brings status."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 19,
+       "text": "In section A, 'reciprocity' refers to our ancestors' ability to:",
+       "options": [
+        {
+         "key": "A",
+         "text": "keep written records of different goods traded"
+        },
+        {
+         "key": "B",
+         "text": "monitor the balance between goods given and received"
+        },
+        {
+         "key": "C",
+         "text": "produce more materials for trading purposes"
+        },
+        {
+         "key": "D",
+         "text": "make money from trading goods and services"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Reciprocity is exchanging goods of equal worth while keeping a running tally of credits and debits."
+      },
+      {
+       "n": 20,
+       "text": "What is said about the ochre found around Blombos?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is of a type only found in this particular area."
+        },
+        {
+         "key": "B",
+         "text": "It has all been dyed to give the same shade of red."
+        },
+        {
+         "key": "C",
+         "text": "It has been perfectly preserved despite its age."
+        },
+        {
+         "key": "D",
+         "text": "It appears it was selected for its color."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "The ochre is predominantly red although any colour would have done for curing hides - it was chosen for its colour."
+      },
+      {
+       "n": 21,
+       "text": "What made the researchers realize the purpose of the beads found at the Blombos caves?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They are a great variety of shapes and sizes."
+        },
+        {
+         "key": "B",
+         "text": "They were found in large numbers, all grouped around each other."
+        },
+        {
+         "key": "C",
+         "text": "They have patterns in many different colors."
+        },
+        {
+         "key": "D",
+         "text": "They have holes and markings suggesting they were joined together."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Consistently placed holes and wear from thread showed the beads had been strung together."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–E, below. Drag each word into the correct gap.",
+     "title": "Why certain objects are valued?",
+     "options": [
+      {
+       "key": "A",
+       "text": "competitiveness"
+      },
+      {
+       "key": "B",
+       "text": "respect"
+      },
+      {
+       "key": "C",
+       "text": "ancestors"
+      },
+      {
+       "key": "D",
+       "text": "species"
+      },
+      {
+       "key": "E",
+       "text": "city"
+      }
+     ],
+     "template": "Some researchers argue that we may use ownership of desirable goods to demonstrate our strength and fitness as other [[22]] use their attractive physical features. Showing off one's superiority is not a new phenomenon, and even in ancient times, successful people would have gained [[23]] from this. A desire for status could have led to an increase in the worth of prestige goods and to [[24]] among people wishing to achieve this status. It is thought that our natural desire to trade provided a basis for organized farming and [[25]] development and finally resulted in the complex societies which can be seen today. Whilst we do not value things such as beads nowadays, other items hold the same appeal for us and bring the same status as owning beads did for our [[26]].",
+     "questions": [
+      {
+       "n": 22,
+       "answer": [
+        "D"
+       ],
+       "explanation": "Other species signal their fitness with attention-grabbing adornment."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Superior skills would have brought respect - in other words, prestige."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "A"
+       ],
+       "explanation": "The benefits of prestige lead to competition to acquire it."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "E"
+       ],
+       "explanation": "Prestige goods paved the way for agriculture and urbanization - city development."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "C"
+       ],
+       "explanation": "Modern status symbols do for us what beads did for our ancestors."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Sea Change for Salinity",
+   "subtitle": "One of the most serious problems facing Australian farmers is an increase in the salt content in the soil. However, there are new weapons emerging in the fight against salinity.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Beneath the flat, impassive surface of Australia lie hidden mountains, valleys and gorges – ancient traps and channels for the deadly salt that is stealthily killing so much of the Australian landscape. The war on salt is calling forth new weapons. A suite of high technologies used by geologists to see underground and prospect for gold and minerals is now being used to pinpoint the presence of salt beneath the landscape, and predict where it might move."
+    },
+    {
+     "label": "B",
+     "text": "Unless this process is clearly understood, warns Chief of Exploration and Mining Dr Neil Phillips, the hard work now underway of planning and tree-planting on the surface may be rendered ineffective: salt can still sneak past and erupt, following one of the ancient river channels formed millions of years ago. The use of airborne electromagnetics to detect salt hidden beneath the landscape has been around for a decade, but the past two years have seen a major development in its precision and powers of detection. Like the use of radar in battles, it has the potential to turn the tide of the struggle in favour of the defence by helping to pinpoint, plot and predict the movements of the foe."
+    },
+    {
+     "label": "C",
+     "text": "Angus Howell, who farms near Warrenbayne, in Southeast Australia, saw his first outbreak of salt in 1948. Over the ensuing decades the patches spread and multiplied until they consumed almost 100 hectares. By the late 1970s, Howell and his fellow farmers had decided it was time for action and established a government-funded 'Landcare' group in a bid to save Australia's farmland. But despite a mounting effort by scientists, farmers and governments, the 'white death' continued to encroach. Small successes were eclipsed by larger defeats and fresh outbreaks."
+    },
+    {
+     "label": "D",
+     "text": "'The technical solutions just aren't there yet for dealing with broadacre salinity, nor are the social and economic solutions. How do you introduce the land-use changes that are needed when people still need to make a living?' Howell asks. There is no satisfactory solution yet. Part of the problem has lain in salt's ability to mount ambushes, emerging somewhere new, sometimes unexpected and unexplained, beating plans to intercept it. Only now are scientists starting to really disclose its secret subterranean stores and passages."
+    },
+    {
+     "label": "E",
+     "text": "The need for such knowledge is pressing. Salt has already afflicted six million hectares of once-productive country. At present rates it is predicted that, by 2050, it will have sterilised a total of 17 million hectares and the waters of Australia's Murray River will regularly exceed the World Health Organisation's salt limits for drinking water. Defeating this assault may take centuries, not decades."
+    },
+    {
+     "label": "F",
+     "text": "Electromagnetic surveys measure the electrical conductivity of soil to reveal the distribution of salt and the nature and variability of the regolith – the weathered rock and sediment that may lie above the bedrock. Magnetic surveys measure small differences in the Earth's magnetic field, enabling scientists to probe the deep past and reconstruct ancient landscapes – rivers, basins and faults now buried under tens of metres of sediments. These features help to reveal where groundwater is stored, dictate the direction of groundwater movement, and are critical to predicting or ruling out salinity hot-spots."
+    },
+    {
+     "label": "G",
+     "text": "Radiometric analysis is based on the detection of radiation emitted by elements contained in rocks and soils, allowing scientists to delineate landforms. These factors influence the mobility of salt through the soil profile and help determine where to plant particular crop species to tackle the problem. Using data from the Murray River region, scientists have revealed a network of ancient drainage channels buried metres beneath the current landscape. These buried channels may carry salt and sometimes run at right angles to channels on the surface. This implies that the salt could move underground in quite a different direction to what one would expect by looking at surface slope and drainage."
+    },
+    {
+     "label": "H",
+     "text": "One of the biggest advances in detection, says Professor Neil Phillips, has come with the integration of different techniques such as magnetics, electromagnetics and radiomagnetics, and ground mapping. Individually, these technologies only gave clues to what was going on underground. Together they provide a far more revealing picture of the subsurface landscape, several hundred metres deep. Advanced airborne electromagnetics, in particular, enables scientists to take 'slices' of the landscape at depths of five metres, ten metres, fifteen metres and so on, to determine where salt may be stored at depth. This is building up a four-dimensional picture of the subsurface landscape, enabling researchers to understand movements of salt in width, depth, breadth and time. From such technologies it will be possible to locate salt stores, identify how saline they are, look at man-made and natural changes to the landscape that may cause it to mobilise, and then predict where it will head to and over what time span. This in turn will give the salt warriors time to model various ways of containing or curbing the menace, see what works best and then try it out on the ground."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "The text has eight sections, A–H. Which section contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Section A"
+      },
+      {
+       "key": "B",
+       "text": "Section B"
+      },
+      {
+       "key": "C",
+       "text": "Section C"
+      },
+      {
+       "key": "D",
+       "text": "Section D"
+      },
+      {
+       "key": "E",
+       "text": "Section E"
+      },
+      {
+       "key": "F",
+       "text": "Section F"
+      },
+      {
+       "key": "G",
+       "text": "Section G"
+      },
+      {
+       "key": "H",
+       "text": "Section H"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 27,
+       "text": "a prediction of the future risk of salt to water supplies",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Section E predicts that by 2050 the Murray River will regularly exceed WHO salt limits for drinking water."
+      },
+      {
+       "n": 28,
+       "text": "the reason why technologies must be combined to be effective",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Section H explains that the technologies only gave clues individually; together they reveal far more."
+      },
+      {
+       "n": 29,
+       "text": "a reference to the recent improvements in the accuracy of airborne electromagnetics",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B notes a major development in the precision of airborne electromagnetics in the past two years."
+      },
+      {
+       "n": 30,
+       "text": "the organization of concerned farmers into an official body",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Section C describes farmers establishing a government-funded Landcare group."
+      },
+      {
+       "n": 31,
+       "text": "the estimated length of time salinity is likely to be a problem",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Section E says defeating the assault may take centuries, not decades."
+      },
+      {
+       "n": 32,
+       "text": "a summary of stages in a proposed plan of action to combat the salt problem",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Section H sets out the stages: detect, plot, predict and then plan action."
+      },
+      {
+       "n": 33,
+       "text": "the possibility that current re-vegetation practices are a waste of time",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B warns that tree-planting on the surface may be rendered ineffective."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following techniques and the list of uses below. Match each technique with the correct use, A–D.",
+     "title": "List of Uses",
+     "options": [
+      {
+       "key": "A",
+       "text": "can help farmers choose the best location for plants"
+      },
+      {
+       "key": "B",
+       "text": "can show the composition of the top layer of the ground"
+      },
+      {
+       "key": "C",
+       "text": "can detect how far below ground the salt is"
+      },
+      {
+       "key": "D",
+       "text": "can determine how old the salt is in a particular area"
+      }
+     ],
+     "questions": [
+      {
+       "n": 34,
+       "text": "Electromagnetic surveys",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Electromagnetic surveys reveal the nature of the regolith - the top layer above the bedrock."
+      },
+      {
+       "n": 35,
+       "text": "Radiometric analysis",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Radiometric data helps determine where to plant particular crop species."
+      },
+      {
+       "n": 36,
+       "text": "Airborne electromagnetics",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Airborne electromagnetics takes 'slices' at different depths to find where salt is stored."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 37,
+       "text": "What link does the writer make between salt and gold?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They can both be found in the same locations."
+        },
+        {
+         "key": "B",
+         "text": "Both have been found to have an impact on the landscape."
+        },
+        {
+         "key": "C",
+         "text": "The same techniques can be used to find both."
+        },
+        {
+         "key": "D",
+         "text": "Neither are present in mountainous areas."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The technologies used to prospect for gold and minerals are now used to find salt."
+      },
+      {
+       "n": 38,
+       "text": "What is the 'process' referred to in Section B?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the killing of vegetation by salt"
+        },
+        {
+         "key": "B",
+         "text": "salt's ability to travel below ground"
+        },
+        {
+         "key": "C",
+         "text": "the ability of trees to decrease salt levels"
+        },
+        {
+         "key": "D",
+         "text": "the detection of salt by tracing other minerals"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The process is salt sneaking past and erupting along ancient underground river channels."
+      },
+      {
+       "n": 39,
+       "text": "According to Angus Howell, one problem in the fight against salinity is that",
+       "options": [
+        {
+         "key": "A",
+         "text": "not enough farmers are concerned about the fight."
+        },
+        {
+         "key": "B",
+         "text": "farmers' requests for help have been ignored."
+        },
+        {
+         "key": "C",
+         "text": "some possible measures may cause farmers to lose income."
+        },
+        {
+         "key": "D",
+         "text": "the government has not provided farmers with sufficient financial support."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Howell asks how land-use changes can be introduced when people still need to make a living."
+      },
+      {
+       "n": 40,
+       "text": "Which of the following best describes the writer's view of the salinity problem in Australia?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Farmers are fighting an enemy that moves secretly and hides well."
+        },
+        {
+         "key": "B",
+         "text": "Farmers have been able to contain this enemy in a small area."
+        },
+        {
+         "key": "C",
+         "text": "Farmers have already had significant success in fighting this problem."
+        },
+        {
+         "key": "D",
+         "text": "Farmers need to form more organised groups to solve this problem."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The writer describes salt as a foe that moves stealthily and mounts ambushes from hidden stores."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

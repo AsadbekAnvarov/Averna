@@ -1,0 +1,671 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-62",
+ "title": "CDI Listening Test 62",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Part 1. You will hear a telephone conversation between a travel company employee and a customer",
+  "Part 3. You will hear two first-year students, Rosie and Martin, discussing a project about sports shoes they are working on",
+  "Part 4. You will hear part of a biology lecture about an animal called the African clawed frog"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-62-part-1",
+   "title": "Part 1",
+   "context": "Part 1. You will hear a telephone conversation between a travel company employee and a customer.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "title": "Accommodation for Countryside Holiday",
+     "template": "Holiday Details\n- Preferred location: [[1]]\n- Try to avoid: [[2]]\n- Length of stay: a [[3]]\nSpecial Requirements\n- Must be [[4]]\n- A good [[5]] for children\n- A [[6]] nearby\nAdditional Requirements\n- No stairs\n- Prefer a [[7]] instead of a balcony\nPersonal Details\n- Name: Mrs [[8]]\n- Contact number: [[9]]\n- Source of information: the ads from the Magazine of [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "northeast",
+        "north-east",
+        "north east",
+        "the northeast",
+        "the north-east"
+       ],
+       "explanation": "Last year they were in the south, “but this time we'd like to live in the northeast.”"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "peak season",
+        "peak-season",
+        "peak seasons"
+       ],
+       "explanation": "“At peak season the attractions are always crowded... so we try to avoid that.”"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "weekend",
+        "a weekend",
+        "week-end"
+       ],
+       "explanation": "“Our holiday will last three days, and we will stay there for a weekend.”"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "quiet",
+        "a quiet"
+       ],
+       "explanation": "“The first priority we've considered is, of course, a quiet environment.”"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "beach",
+        "a beach",
+        "good beach"
+       ],
+       "explanation": "“We'd prefer a cottage on a good beach where my children can play.”"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "restaurant",
+        "a restaurant",
+        "good restaurant"
+       ],
+       "explanation": "“I'd prefer a good restaurant not far away from where we live.”"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "garden",
+        "a garden"
+       ],
+       "explanation": "A balcony “is not necessary for us, but if possible, we need a garden.”"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "Cheffins"
+       ],
+       "explanation": "She spells it out: C-H-E-double F-I-N-S."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "0192477285",
+        "0192 477 285",
+        "0192477 285",
+        "01924 77285"
+       ],
+       "explanation": "“My telephone number is 0192 477 285.”"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Countryside Living"
+       ],
+       "explanation": "“I saw the ad of your travel agency in a magazine called Countryside Living.”"
+      }
+     ]
+    }
+   ],
+   "transcript": "Part 1. You will hear a telephone conversation between a travel company employee and a customer.\nJack: Great Countryside Holidays, Jack speaking. Can I help you?\nCustomer: Yes, I hope so. I’ve heard that your travel agency provides holidays in the countryside.\nJack: That’s right. We’ve specialised in countryside holidays with many years of experience, so we can ensure that we provide perfect holidays with several destinations.\nCustomer: That’s great. My husband and I are planning a countryside holiday with the whole family, and I’m calling just about the accommodation.\nJack: Okay. Where are you going to spend your holiday? There are some excellent options on our list in different destinations.\nCustomer: Well, last year we spent our holiday in the southern part of the city. But this time we’d like to live in the northeast. I have a friend who’s just returned and had great fun there.\nJack: Okay. And what about the time of your holiday?\nCustomer: It’ll be the first week of September, which we think will be off-peak travel time.\nCustomer: At peak season, the attractions are always crowded with people, and hotels or restaurants might overcharge you, so we try to avoid that.\nJack: Yes, arranging your holiday during off-peak time is wise, as you can enjoy the attractions and facilities better.\nCustomer: That’s right.\nJack: Then how long are you going to stay?\nCustomer: Our holiday will last three days, and we will stay there for a weekend.\nJack: That’s the location and time of the holiday. Then let’s turn to the accommodation itself. Do you have any particular requirements for the housing?\nCustomer: Yes. The first priority we’ve considered is, of course, a quiet environment, so that both young and old can have a good rest during our stay.\nJack: No problem.\nCustomer: Then we’d prefer a cottage on a good beach where my children can play with great fun. My little daughter loves collecting shells and building sandcastles.\nJack: Okay, I’ll take that down. A seaside cottage is excellent. It also means secluded nights and fresh sea air.\nCustomer: Right. Oh, another thing is, I’m kind of a foodie, and whenever I visit a new place I’m always desperate to try the local cuisine.\nCustomer: So if possible, I’d prefer a good restaurant not far away from where we live.\nJack: No problem. Tasting the local cuisine is one of the delights of the holiday.\nBefore you hear the rest of the conversation, you have some time to look at questions 7 to 10.\nJack: Then what about the actual room? Are there any other requirements?\nCustomer: Our family has five members, so we’ll need a cottage with three living rooms and a separate bathroom with a shower.\nJack: Okay. Three living rooms and a separate bathroom with a shower.\nCustomer: Oh, another important thing is my father got his backache last week and climbing stairs might cause trouble.\nCustomer: I’m concerned that he might not recover from it during our holiday, so there shouldn’t be any stairs in the cottage, I’m afraid.\nJack: No stairs. Okay, I’ve taken that down. Do you need a balcony?\nCustomer: Actually, it’s not necessary for us, but if possible, we need a garden, you know, where the children can play.\nJack: No problem. Several cottages cater to your need.\nCustomer: Great. Well, that’s all our needs for the accommodation.\nJack: Okay, I’ve written down all the details, and I’ll contact you as soon as I find the one which can satisfy your needs.\nCustomer: Thank you.\nJack: I’ll need your personal details. What’s your surname?\nCustomer: Cheffins. That’s C-H-E-double F-I-N-S.\nJack: Okay, Mrs Cheffins.\nCustomer: And my telephone number is 0192 477 285.\nJack: All right. Before we finish, I’d like to know where you heard about us. Did your friend tell you?\nCustomer: Actually not. I saw the ad of your travel agency in a magazine called Countryside Living.\nJack: I see. That’s a popular magazine.\nCustomer: Yes. Thank you very much.\nJack: My pleasure, Mrs Cheffins. Bye."
+  },
+  {
+   "id": "cdi-listening-62-part-2",
+   "title": "Part 2",
+   "context": "Part 2. You will hear an electronic toy company manager talking to a small group of new temporary staff who are starting work at the company.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer, A, B or C.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What point is made about the history of the company?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It was quickly established."
+        },
+        {
+         "key": "B",
+         "text": "It took a long time to establish."
+        },
+        {
+         "key": "C",
+         "text": "It was set up by a relative."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "“The company was set up and succeeded in a short period.” — it was quickly established. The grandfather gave money, he did not set it up, so C is wrong."
+      },
+      {
+       "n": 12,
+       "text": "Why should the company recruit more temporary staff?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It plans to develop new products."
+        },
+        {
+         "key": "B",
+         "text": "The old staff are having an illness."
+        },
+        {
+         "key": "C",
+         "text": "It aims to meet the new demands of customers."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "“We've decided to introduce new electronic toys to give that a boost, so we have to look for more workers.”"
+      },
+      {
+       "n": 13,
+       "text": "How long will the employees work in the company?",
+       "options": [
+        {
+         "key": "A",
+         "text": "a few weeks"
+        },
+        {
+         "key": "B",
+         "text": "half a year"
+        },
+        {
+         "key": "C",
+         "text": "indefinitely"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "“According to the contract, you'll be expected to work here for six months” — half a year."
+      },
+      {
+       "n": 14,
+       "text": "The largest number of positions are in the department of",
+       "options": [
+        {
+         "key": "A",
+         "text": "administration."
+        },
+        {
+         "key": "B",
+         "text": "production."
+        },
+        {
+         "key": "C",
+         "text": "package delivery."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "“70% of whom are responsible for sending out goods” — package delivery, not production."
+      },
+      {
+       "n": 15,
+       "text": "What’s the current problem with the company?",
+       "options": [
+        {
+         "key": "A",
+         "text": "outdated machines"
+        },
+        {
+         "key": "B",
+         "text": "inadequate skills"
+        },
+        {
+         "key": "C",
+         "text": "late payment"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The payroll manager is off sick, so “you won't get paid on time this month.”"
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Who is responsible for each area? Choose the correct answer for each person and move it into the gap.",
+     "options": [
+      {
+       "key": "A",
+       "text": "computer"
+      },
+      {
+       "key": "B",
+       "text": "wage"
+      },
+      {
+       "key": "C",
+       "text": "production"
+      },
+      {
+       "key": "D",
+       "text": "maintenance"
+      },
+      {
+       "key": "E",
+       "text": "research and development"
+      },
+      {
+       "key": "F",
+       "text": "maintaining customer relationship"
+      }
+     ],
+     "template": "Staff\n1st person [[16]]\n2nd person [[17]]\n3rd person [[18]]\n4th person [[19]]\n5th person [[20]]\nResponsibilities",
+     "questions": [
+      {
+       "n": 16,
+       "answer": [
+        "B"
+       ],
+       "explanation": "The first person deals with the salary problem so staff get paid — wage."
+      },
+      {
+       "n": 17,
+       "answer": [
+        "C"
+       ],
+       "explanation": "The second works “in the manufacturing line to help develop new products” — production."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "D"
+       ],
+       "explanation": "The third looks after “the mechanical side”, checking equipment and doing repairs — maintenance."
+      },
+      {
+       "n": 19,
+       "answer": [
+        "A"
+       ],
+       "explanation": "The fourth handles “software and hardware” and installs programs on new laptops — computer."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "F"
+       ],
+       "explanation": "The fifth keeps “a long term relationship with customers” — maintaining customer relationship."
+      }
+     ]
+    }
+   ],
+   "transcript": "Part 2. You will hear an electronic toy company manager talking to a small group of new temporary staff who are starting work at the company.\nJanet: Good morning, everyone. My name’s Janet Parker, and I’m the human resources manager of this company.\nJanet: Thank you for joining us and coming to this training session, which I hope will help you quickly learn about our company and know what you will do in your position.\nJanet: First, I’ll briefly introduce the history of our company. We’re quite an old company, specialising in electric toys for more than 30 years.\nJanet: The founder, Ronald Stevenson, got the idea of establishing his own company when he finished his apprenticeship.\nJanet: With the support of his grandfather, he got enough start-up capital, and the company was set up and succeeded in a short period (A — quickly established).\nJanet: To satisfy the demands of customers, we’ve expanded the premises considerably over the past years, and the number of staff members has grown on a regular basis.\nJanet: Recently we found the sales of our products creeping up very slowly, and we’ve decided to introduce new electronic toys to give that a boost, so we have to look for more workers to help us (A).\nJanet: And that’s the reason why you are here. The first week may be pretty challenging as there will be a lot of new information, but don’t worry too much about trying to remember everything.\nJanet: The important thing is to check with someone if you’re unsure what to do. According to the contract, you’ll be expected to work here for six months (B — half a year).\nJanet: Some of you asked me if there is a possibility for you to be employed as a full-time member. I can’t give you a definite answer now.\nJanet: It’ll depend on your job performance during the employment and whether we have job vacancies then.\nJanet: There are about 200 full-time staff members in our company, 70% of whom are responsible for sending out goods (C — package delivery), while the minority of jobs are in the manufacturing line.\nJanet: You will work in different departments according to our needs, which I’ll explain to you in detail later.\nJanet: Working in our company, you’ll be impressed by our modern machinery and production methods, advanced skills and friendly working atmosphere.\nJanet: However, I must tell you one thing which is not so pleasant. Because the manager of the payroll department is on sick leave these days,\nJanet: I’m afraid that you won’t get paid on time this month (C — late payment). But don’t worry too much, it’ll be solved very soon.\nBefore you hear the rest of the talk, you have some time to look at questions 16 to 20.\nJanet: In the second part of this training session, I’ll explain what you will be responsible for in the following working days. There are five positions and you’ll be working in different departments.\nJanet: As I’ve mentioned before, we’re in urgent need of someone who can deal with the salary problem so our staff can get paid as soon as possible (B — wage). And that’s the primary job for the first person.\nJanet: Then the second of you will be working in the manufacturing line to help develop new products (C — production), and I’m sure you will be pretty busy in the following days.\nJanet: The third person will work on the sixth floor, and your main job is to look after the mechanical side (D — maintenance).\nJanet: It includes checking equipment daily to ensure they are working correctly and doing some repair work if necessary.\nJanet: Without your help, many processes like manufacturing or packaging won’t work well.\nJanet: Then the fourth person will work in the technology department to deal with problems related to software and hardware (A — computer). We’re getting new laptops next week and you must install new programs.\nJanet: And the last of you will work in the after-sales service department.\nJanet: You are expected to keep a long-term relationship with customers (F), including collecting feedback regularly, dealing with customer complaints and enhancing customer satisfaction.\nJanet: Okay, now that’s all I want to share with you today. Are there any questions?"
+  },
+  {
+   "id": "cdi-listening-62-part-3",
+   "title": "Part 3",
+   "context": "Part 3. You will hear two first-year students, Rosie and Martin, discussing a project about sports shoes they are working on.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer, A, B or C.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What did the students get from the website?",
+       "options": [
+        {
+         "key": "A",
+         "text": "advice from others"
+        },
+        {
+         "key": "B",
+         "text": "ideas to fulfil the project requirements"
+        },
+        {
+         "key": "C",
+         "text": "relevant information about the case"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The websites gave her “some articles on sports shoes” — relevant information. The advice came from senior students, not the site."
+      },
+      {
+       "n": 22,
+       "text": "What did Martin use as an example of the research?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He downloaded a diagram from the internet."
+        },
+        {
+         "key": "B",
+         "text": "He took apart his old shoes."
+        },
+        {
+         "key": "C",
+         "text": "He borrowed a sample from the tutor."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "“I cut off my old sports shoes and separated them into different parts.” He rejected borrowing a sample."
+      },
+      {
+       "n": 23,
+       "text": "According to Martin, what other factors should be considered while designing shoes?",
+       "options": [
+        {
+         "key": "A",
+         "text": "foot shape"
+        },
+        {
+         "key": "B",
+         "text": "foot movement"
+        },
+        {
+         "key": "C",
+         "text": "raw materials"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Designers consider raw materials and foot shape, “but they've ignored the foot movement.”"
+      },
+      {
+       "n": 24,
+       "text": "What proportion of the essay does Martin suggest Rosie do?",
+       "options": [
+        {
+         "key": "A",
+         "text": "half"
+        },
+        {
+         "key": "B",
+         "text": "almost all"
+        },
+        {
+         "key": "C",
+         "text": "every part"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "“You can mainly finish the written sections” while Martin handles the presentation — almost all."
+      },
+      {
+       "n": 25,
+       "text": "What will Martin and Rosie do this weekend?",
+       "options": [
+        {
+         "key": "A",
+         "text": "carry out a plan"
+        },
+        {
+         "key": "B",
+         "text": "do some face-to-face interviews"
+        },
+        {
+         "key": "C",
+         "text": "answer the questions"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "“We'll have to finish the questionnaire left by the tutor... we can handle it this weekend.” Interviews are for the next assignment."
+      },
+      {
+       "n": 26,
+       "text": "What help can the students get from the tutor?",
+       "options": [
+        {
+         "key": "A",
+         "text": "borrow equipment"
+        },
+        {
+         "key": "B",
+         "text": "get some advice"
+        },
+        {
+         "key": "C",
+         "text": "have a tutorial"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "About the whiteboard: “He might have one and can lend it to us” — borrow equipment."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "What decision do the students make about each part of their essay? Choose the correct answer for each part and move it into the gap.",
+     "options": [
+      {
+       "key": "A",
+       "text": "change the layout"
+      },
+      {
+       "key": "B",
+       "text": "write it longer"
+      },
+      {
+       "key": "C",
+       "text": "give a detailed example"
+      },
+      {
+       "key": "D",
+       "text": "change to another part"
+      },
+      {
+       "key": "E",
+       "text": "use simple language"
+      },
+      {
+       "key": "F",
+       "text": "write in the last part"
+      }
+     ],
+     "template": "Parts of the essay\nSummary [[27]]\nResult [[28]]\nConclusion [[29]]\nDiscussion [[30]]\nDecisions",
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "F"
+       ],
+       "explanation": "The summary will go “at the end of the essay” — write in the last part."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "D"
+       ],
+       "explanation": "The result should “go directly behind the part of the research” — change to another part."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "E"
+       ],
+       "explanation": "Too many technical terms, so “we could replace them with straightforward explanations” — use simple language."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "A"
+       ],
+       "explanation": "The questions “look messy and need to be better sequenced. Maybe we could arrange them in a list” — change the layout."
+      }
+     ]
+    }
+   ],
+   "transcript": "Part 3. You will hear two first-year students, Rosie and Martin, discussing a project about sports shoes they are working on.\nRosie: Okay, Martin, before we plan our presentation for the project, let’s discuss what we’ve done so far.\nMartin: Okay, Rosie. When the tutor gave us the theme of sports shoes to base our project on, I was not all that interested. But I’m starting to get into it. I’ve pretty much finished the research stage.\nRosie: Me too.\nRosie: At first I had no idea what to write for the essay, so I asked some senior students for advice, and they gave me some websites to look at, where I found some articles on sports shoes and got some ideas (C — relevant information).\nMartin: Yes, I searched for pictures of sports shoes online and applied them in my research. It’s beneficial.\nRosie: Right.\nMartin: According to the project’s requirements, we have to find an example for the research, and I’ve just completed this part.\nRosie: What example do you use? You said you’d like to borrow a sample from the tutor.\nMartin: That was my first thought, but I realised maybe the tutor wanted us to do our own thing, not copy.\nMartin: Then I cut up my old sports shoes and separated them into different parts so that I could make a careful study of the internal structure (B).\nRosie: It’s a good idea.\nMartin: Then I drew a diagram which could show precisely each part of the shoes. Through the research, I found that sports shoes nowadays have significantly improved.\nRosie: What do you mean?\nMartin: For example, designers these days use better raw materials, which are not only durable, but also make the skin of the feet breathe more easily.\nMartin: Moreover, they also take into account the factor of foot shape. But they’ve ignored the foot movement, which is essential for sports people (B).\nRosie: Interesting. I think I can add this to the essay.\nMartin: Okay. Given that you’ve got most ideas for the essay so far, I think you can mainly finish the written sections of the project (B — almost all), and I can take care of every detail of the presentation. Does this appeal to you?\nRosie: I’m okay with that. I prefer written work to giving a presentation.\nMartin: That’s good. What do we need to do next?\nRosie: Well, according to the plan, we will give a presentation next Wednesday, and before that we’ll have to finish the questionnaire left by the tutor. And I think we can handle it this weekend (C).\nMartin: Okay. Do we have to do some face-to-face interviews?\nRosie: The tutor said that would be for the next assignment, not this one.\nMartin: Okay. Then about the presentation.\nMartin: I remember in the last tutorial the tutor advised us to use some slides to make the presentation more attractive. But I’ll also need a whiteboard because I like writing or drawing when necessary.\nRosie: We can ask our tutor for help. He might have one and can lend it to us (A — borrow equipment).\nBefore you hear the rest of the conversation, you have some time to look at questions 27 to 30.\nRosie: Well, Martin, let’s go through the draft of the essay together and see whether there are any changes we have to make.\nMartin: Okay, Rosie. I think the summary gives a brief and precise description of the project’s main ideas. Where will it go?\nRosie: I’d like to put it at the end of the essay (F — write in the last part). What do you think?\nMartin: Good idea. And I think the result part describes in detail what the research has achieved. But I’m wondering whether it should go directly behind the part of the research, as they are closely related (D — change to another part).\nRosie: Yes, I think that’d be better. I’ll move this part. Then the conclusion. I’m wondering whether I’ve used too many technical terms, which other students might struggle with.\nMartin: You’re right. Not everyone will be familiar with the subject.\nRosie: So I think we could replace them with straightforward explanations (E — use simple language).\nMartin: I agree. Lastly, the discussion. I like this part as it presents a series of questions that we can talk about with other students after the presentation.\nRosie: Yes, but I think the questions look messy and need to be better sequenced. Maybe we could arrange them in a list (A — change the layout).\nMartin: Okay, that’d be better.\nRosie: Alright. That’s all about the essay. Now let’s talk about the presentation."
+  },
+  {
+   "id": "cdi-listening-62-part-4",
+   "title": "Part 4",
+   "context": "Part 4. You will hear part of a biology lecture about an animal called the African clawed frog.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "title": "African Clawed Frog (Xenopus laevis)",
+     "template": "Description\n- They have no tongue or external ears.\n- Their skin is [[31]]\n- The mucus on their skin is for [[32]]\n- Male frogs are [[33]] the size of female frogs.\nHabitats\n- They prefer [[34]] water.\n- They live in oases or glacier-covered lakes.\n- They live in a condition with a high level of [[35]]\n- In the condition of drought, they can survive in [[36]] for a long period of time.\nDiet\n- They use the sense of [[37]] to capture food.\n- They use their claws to tear apart ample food.\n- They use their front feet and a unique [[38]] system when feeding.\nOther information\n- People in some states of the USA regard them as [[39]]\n- The mucus on their skin has [[40]] properties.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "smooth"
+       ],
+       "explanation": "“African clawed frogs have smooth skin, unlike the toad, whose skin has a rough texture.”"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "protection"
+       ],
+       "explanation": "The mucus “can give their sensitive skin protection.”"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "half"
+       ],
+       "explanation": "“Male frogs are about half as big as females.”"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "still"
+       ],
+       "explanation": "“They particularly like still water instead of fast flowing streams.”"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "salt"
+       ],
+       "explanation": "“They can even survive in water with high salt levels.”"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "mud"
+       ],
+       "explanation": "“In dry weather... they burrow themselves into mud, where they can survive for more than a year.”"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "smell"
+       ],
+       "explanation": "“African clawed frogs depend on the sense of smell to detect their prey.”"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "pump"
+       ],
+       "explanation": "“A distinctive pump system is used to draw or suck food in their mouths.”"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "pest",
+        "pests"
+       ],
+       "explanation": "In California, Washington and Arizona they “have been seen as a type of pest.”"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "antibiotic",
+        "antibiotics"
+       ],
+       "explanation": "The mucus “has properties of antibiotic”, killing bacteria and curing infection."
+      }
+     ]
+    }
+   ],
+   "transcript": "Part 4. You will hear part of a biology lecture about an animal called the African clawed frog.\nLecturer: Today I’d like to look at another type of amphibian, the African clawed frog, whose Latin name is Xenopus laevis.\nLecturer: Its name is derived from the three short claws on each hind foot, which it uses to tear apart its food. The Latin word xenopus means “strange foot” and laevis means “smooth”.\nLecturer: I’ll start with a general description. The African clawed frog is a species of frog that can be commonly found in the eastern and southern parts of Africa.\nLecturer: They have a flattened head and body, but no tongue or external ears.\nLecturer: As the Latin name suggests, African clawed frogs have smooth skin, unlike the toad, whose skin always has a rough texture.\nLecturer: The body of African clawed frogs is covered with mucus, which can give their sensitive skin protection, thus playing an indispensable role in their survival.\nLecturer: Male and female African clawed frogs can be easily distinguished through several characteristics, and the major one is their size. Generally, male frogs are about half as big as females.\nLecturer: Specifically, female frogs are usually 4.5 inches long, weighing around 7 ounces, while males are generally 2.5 inches long and 2 ounces heavy. Then let’s turn to their habitats.\nLecturer: African clawed frogs are entirely aquatic frogs, so they live in water all their life, whether they are tadpoles or adult frogs.\nLecturer: Although they can live in a wide range of freshwater environments, they particularly like still water instead of fast-flowing streams.\nLecturer: During the summer, African clawed frogs are mainly found in warm rivers, and during the rainy season they tend to move into flooded forests.\nLecturer: In the wild, African clawed frogs are highly adaptable to changes in the environment around them, whether in oases or glacier-covered lakes.\nLecturer: Besides, they can even survive in water with high salt levels.\nLecturer: It is because African clawed frogs have a unique physiological mechanism in their body that could automatically regulate the balance of water inside and outside their body.\nLecturer: In dry weather, African clawed frogs always burrow themselves into mud, where they can survive for more than a year.\nLecturer: They are incredibly hardy and long-lived, with an average lifespan of 5 to 15 years. Some are even recorded to have lived for 20 to 25 years.\nLecturer: However, African clawed frogs are susceptible to the pollution of the water, even though they are not listed as an endangered species.\nLecturer: Now let’s talk about the diet of African clawed frogs. They are carnivores that like hunting insects, spiders, worms, fish and so on.\nLecturer: African clawed frogs depend on the sense of smell to detect their prey. They first use the claws on their hind feet to tear pieces of ample food.\nLecturer: Then the front feet, which are not webbed, play an important role in feeding.\nLecturer: African clawed frogs use their front feet to push food into their mouths, and meanwhile a distinctive pump system is used to draw or suck food into their mouths.\nLecturer: So we can see African clawed frogs are voracious predators and can quickly adapt to many habitats.\nLecturer: Therefore, in some parts of the world, African clawed frogs act like invasive species, which will negatively affect other species in freshwater ecosystems.\nLecturer: The evidence shows that they have devastated the populations of native frogs and other creatures by eating their young.\nLecturer: As a result, African clawed frogs are illegal to own, transport or sell without a permit in some states of America, like California, Washington and Arizona, where African clawed frogs have been seen as a type of pest.\nLecturer: However, it’s legal to own African clawed frogs in Canada. But not many people know that African clawed frogs are also used in medicine.\nLecturer: As we mentioned before, the skin of African clawed frogs is covered with mucus, which has properties of antibiotic.\nLecturer: This chemical can help kill bacteria and cure infection, and is widely used by both the medical profession and the general public. So we shouldn’t ignore the medical value of African clawed frogs."
+  }
+ ],
+ "audio": {
+  "file": "listening-62.mp3",
+  "durationSec": 1711,
+  "partStarts": [
+   44,
+   460,
+   883,
+   1323
+  ],
+  "questionTimes": {
+   "1": 137,
+   "2": 161,
+   "3": 184,
+   "4": 201,
+   "5": 214,
+   "6": 247,
+   "7": 346,
+   "8": 376,
+   "9": 387,
+   "10": 404,
+   "11": 556,
+   "12": 580,
+   "13": 609,
+   "14": 641,
+   "15": 685,
+   "16": 753,
+   "17": 767,
+   "18": 778,
+   "19": 802,
+   "20": 822,
+   "21": 981,
+   "22": 1029,
+   "23": 1065,
+   "24": 1080,
+   "25": 1103,
+   "26": 1143,
+   "27": 1215,
+   "28": 1219,
+   "29": 1250,
+   "30": 1266,
+   "31": 1436,
+   "32": 1446,
+   "33": 1458,
+   "34": 1501,
+   "35": 1533,
+   "36": 1550,
+   "37": 1595,
+   "38": 1612,
+   "39": 1654,
+   "40": 1684
+  }
+ }
+}

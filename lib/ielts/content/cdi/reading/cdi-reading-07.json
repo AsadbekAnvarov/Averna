@@ -1,0 +1,681 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-07",
+ "title": "CDI Reading Test 07",
+ "description": "A full Academic Reading test from the CDI practice materials: Walking With Dinosaurs; The Power of Music; 200 Years of Australian Landscapes at the Royal Academy in London.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Walking With Dinosaurs",
+  "The Power of Music",
+  "200 Years of Australian Landscapes at the Royal Academy in London"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Walking With Dinosaurs",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Peter L. Falkingham and his colleagues at Manchester University are developing techniques which look set to revolutionize our understanding of how dinosaurs and other extinct animals behaved."
+    },
+    {
+     "label": "B",
+     "text": "The media image of palaeontologists who study prehistoric life is often of field workers camped in the desert in the hot sun, carefully picking away at the rock surrounding a large dinosaur bone. But Peter Falkingham has done little of that for a while now. Instead, he devotes himself to his computer. Not because he has become inundated with paperwork, but because he is a new kind of palaeontologist: a computational palaeontologist."
+    },
+    {
+     "label": "C",
+     "text": "What few people may consider is that uncovering a skeleton, or discovering a new species, is where the research begins, not where it ends. What we really want to understand is how the extinct animals and plants behaved in their natural habitats. Drs Bill Sellers and Phil Manning from the University of Manchester use a ‘genetic algorithm’ – a kind of computer code that can change itself and ‘evolve’ – to explore how extinct animals like dinosaurs, and our own early ancestors, walked and stalked."
+    },
+    {
+     "label": "D",
+     "text": "The fossilized bones of a complete dinosaur skeleton can tell scientists a lot about the animal, but they do not make up the complete picture and the computer can try to fill the gap. The computer model is given a digitized skeleton, and the locations of known muscles. The model then randomly activates the muscles. This, perhaps unsurprisingly, results almost without fail in the animal falling on its face. So the computer alters the activation pattern and tries again … usually to similar effect. The modeled dinosaurs quickly ‘evolve’. If there is any improvement, the computer discards the old pattern and adopts the new one as the base for alteration. Eventually, the muscle activation pattern evolves a stable way of moving, the best possible solution is reached, and the dinosaur can walk, run, chase or graze. Assuming natural selection evolves the best possible solution too, the modeled animal should be moving in a manner similar to its now-extinct counterpart. And indeed, using the same method for living animals (humans, emu and ostriches) similar top speeds were achieved on the computer as in reality. By comparing their cyberspace results with real measurements of living species, the Manchester team of palaeontologists can be confident in the results computed showing how extinct prehistoric animals such as dinosaurs moved."
+    },
+    {
+     "label": "E",
+     "text": "The Manchester University team have used the computer simulations to produce a model of a giant meat-eating dinosaur. It is called an acrocanthosaurus which literally means ‘high spined lizard’ because of the spines which run along its backbone. It is not really known why they are there but scientists have speculated they could have supported a hump that stored fat and water reserves. There are also those who believe that the spines acted as a support for a sail. Of these, one half think it was used as a display and could be flushed with blood and the other half think it was used as a temperature-regulating device. It may have been a mixture of the two. The skull seems out of proportion with its thick, heavy body because it is so narrow and the jaws are delicate and fine. The feet are also worthy of note as they look surprisingly small in contrast to the animal as a whole. It has a deep broad tail and powerful leg muscles to aid locomotion. It walked on its back legs and its front legs were much shorter with powerful claws."
+    },
+    {
+     "label": "F",
+     "text": "Falkingham himself is investigating fossilized tracks, or footprints, using computer simulations to help analyze how extinct animals moved. Modern-day trackers who study the habitats of wild animals can tell you what animal made a track, whether that animal was walking or running, sometimes even the sex of the animal. But a fossil track poses a more considerable challenge to interpret in the same way. A crucial consideration is knowing what the environment including the mud, or sediment, upon which the animal walked was like millions of years ago when the track was made. Experiments can answer these questions but the number of variables is staggering. To physically recreate each scenario with a box of mud is extremely time-consuming and difficult to repeat accurately. This is where computer simulation comes in."
+    },
+    {
+     "label": "G",
+     "text": "Falkingham uses computational techniques to model a volume of mud and control the moisture content, consistency, and other conditions to simulate the mud of prehistoric times. A footprint is then made in the digital mud by a virtual foot. This footprint can be chopped up and viewed from any angle and stress values can be extracted and calculated from inside it. By running hundreds of these simulations simultaneously on supercomputers, Falkingham can start to understand what types of footprint would be expected if an animal moved in a certain way over a given kind of ground. Looking at the variation in the virtual tracks, researchers can make sense of fossil tracks with greater confidence."
+    },
+    {
+     "label": "H",
+     "text": "The application of computational techniques in palaeontology is becoming more prevalent every year. As computer power continues to increase, the range of problems that can be tackled and questions that can be answered will only expand."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "In his study of prehistoric life, Peter Falkingham rarely spends time on outdoor research these days.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Paragraph B states, “But Peter Falkingham has done little of that [field work] for a while now. Instead, he devotes himself to his computer.”"
+      },
+      {
+       "n": 2,
+       "text": "Several attempts are usually needed before the computer model of a dinosaur used by Sellers and Manning manages to stay upright.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Paragraph D explains that the initial activation “results almost without fail in the animal falling on its face” and the computer tries again “usually to similar effect.” It takes time to evolve a stable way of moving."
+      },
+      {
+       "n": 3,
+       "text": "When the Sellers and Manning computer model was used for people, it showed them moving faster than they are physically able to.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Paragraph D states: “...using the same method for living animals... similar top speeds were achieved on the computer as in reality.” They were similar, not faster."
+      },
+      {
+       "n": 4,
+       "text": "Some palaeontologists have expressed reservations about the conclusions reached by the Manchester team concerning the movement of dinosaurs.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The text describes the confidence of the Manchester team in their results, but it does not mention other palaeontologists expressing reservations."
+      },
+      {
+       "n": 5,
+       "text": "An experienced tracker can analyse fossil footprints as easily as those made by live animals.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Paragraph F states: “But a fossil track poses a more considerable challenge to interpret in the same way.”"
+      },
+      {
+       "n": 6,
+       "text": "Research carried out into the composition of prehistoric mud has been found to be inaccurate.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Paragraph G discusses simulating mud, but there is no mention of previous research being found inaccurate."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Label the diagram below.",
+     "answerRule": "Choose NO MORE THAN ONE WORD from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Dinosaur’s name comes from spines. One theory: they were necessary to hold up a [[7]] which helped control body heat.\n- Skull is [[8]] compared with rest of body.\n- [[9]] made easier by wide tail and highly developed muscles in legs.",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "sail"
+       ],
+       "explanation": "Paragraph E: “There are also those who believe that the spines acted as a support for a sail… used as a temperature-regulating device.”"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "narrow"
+       ],
+       "explanation": "Paragraph E: “The skull seems out of proportion… because it is so narrow.”"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "locomotion"
+       ],
+       "explanation": "Paragraph E: “It has a deep broad tail and powerful leg muscles to aid locomotion.”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the flow-chart below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "- Mud is simulated with attention to its texture and thickness and how much [[10]] it contains.\n- Levels of [[11]] are measured within the footprint.\n- Multiple simulations relate footprints to different types of [[12]].\n- More accurate interpretation of [[13]] is possible.",
+     "questions": [
+      {
+       "n": 10,
+       "answer": [
+        "moisture"
+       ],
+       "explanation": "Paragraph G: “…control the moisture content…”"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "stress"
+       ],
+       "explanation": "Paragraph G: “…and stress values can be extracted and calculated…”"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "ground"
+       ],
+       "explanation": "Paragraph G: “…moved in a certain way over a given kind of ground.”"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "fossil tracks"
+       ],
+       "explanation": "Paragraph G: “…researchers can make sense of fossil tracks with greater confidence.”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The Power of Music",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Music is becoming ever more popular electronically. To meet our craving for music, internet sites are using increasingly sophisticated ways of putting us in touch with artists we may not even know we like. Most work by trawling our existing files or online listening habits and looking for patterns so they can recommend new artists for their subscribers to listen to. The search often turns up surprises. But is it possible to tease apart our likes and dislikes to identify precisely what it is about some music that thrills us or leaves us cold?"
+    },
+    {
+     "label": "B",
+     "text": "For centuries composers have sought to create unforgettable music using accepted notions about the emotional appeal of certain combinations of sounds, yet only now are scientists starting to uncover what it is about these combinations that can have such a dramatic effect on our minds. Given that archaeologists have found musical instruments played by Neanderthals at least 50,000 years ago, why have scientists taken so long to investigate such a source of pleasure?"
+    },
+    {
+     "label": "C",
+     "text": "“For psychologists, who are always desperate to show that their work is rigorous, there’s an image problem in tackling the emotionality of music,” says Professor Norman Cook of Kansai University in Osaka, Japan, one of the pioneers of the new science of music. “Emotion is such a slippery topic.” The other problem, says Cook, is the long-standing principle among psychologists that our response to music is an acquired one, rather than something that is stimulated by the effect of sound on our brain cells. Yet one of the first insights to emerge from this new branch of psychology is that music affects our brains at a very basic level."
+    },
+    {
+     "label": "D",
+     "text": "Together with his colleague, Professor Takefumi Hayashi, Cook has been investigating one of the best-known examples of the emotional impact of music: the difference between major and minor chords. For centuries, composers have known that notes arranged to form major chords sound happy and upbeat, while those in minor chords sound mournful. In tests, even three-year-olds have been shown to link music in a major mode to happy faces and minor modes to sad faces."
+    },
+    {
+     "label": "E",
+     "text": "According to Cook, analysis of how people respond to notes suggests a link with how our brains interpret certain sounds in everyday life. He points out that sad-sounding minor chords can be formed by raising the pitch of any of a set of notes, while dropping the pitch produces a major chord. The same change in pitch works as an emotional telltale in communication between some mammals, where rising pitch is used to communicate weakness or defeat, while falling pitch signals social dominance. It’s also present in our speech. “A rising inflection is used to denote questions, politeness or deference, whereas a falling inflection signals dominance,” says Cook."
+    },
+    {
+     "label": "F",
+     "text": "This suggests that music in major and minor modes taps into some very basic features of how we relate to the world and each other – perhaps dating back millions of years. Could music in general be doing something similar? Quite possibly, according to research into how music triggers certain types of brain activity. At McGill University in Canada, Professor Robert Zatorre and his colleagues have carried out studies in which volunteers listen to different types of music while their brain activity is monitored. The biggest surprise was the evidence that pleasurable music activates brain circuitry which has been in existence in the human brain for thousands of years says Zatorre. We share it with rats and other distant relatives on the evolutionary tree – and it’s typically associated with biological rewards, like food, for example."
+    },
+    {
+     "label": "G",
+     "text": "At the University of Oxford, Dr Joyce Chen has been looking into another celebrated feature of music – the irresistibility of rhythm. Her interest was sparked by studies involving patients with movement difficulties. If music that had a strong rhythm – say, a marching band – was played to these patients, they were able to improve their walking ability, says Chen. In an attempt to find out why the simple act of listening to music might help disabled patients, Dr Chen and colleagues from the International Laboratory for Brain, Music and Sound Research in Montreal carried out brain scans on volunteers who were listening to rhythmic sounds. The criteria for selecting these volunteers were that they should be in first-rate physical health but musically untrained. The results have been another revelation. Chen and her colleagues found the rhythms triggered activity in parts of the brain linked to hearing, but something even more surprising was that the rhythms also triggered activity in the motor regions of the brain, linked to active movement."
+    },
+    {
+     "label": "H",
+     "text": "“Somehow, the mere act of just listening triggers motor-neural activity. Maybe this is one reason why we often tap our feet, move or dance when hearing music,” says Chen. She believes the discovery of this deep connection between music and movement may cast light on why disabled patients can benefit from listening to music and could also prove useful with other impairments such as those involved in sound production. “It’s been shown that people who talk with a stutter might have problems in this auditory-motor loop.”"
+    },
+    {
+     "label": "I",
+     "text": "For researchers working in this new area of science, these early discoveries hold the promise of much more to come. Zatorre and his colleagues are investigating whether some people have more musical brains than others. We can see certain subtle brain features that can tell us how well somebody can do things like identify a slight change in a melody, explains Zatorre. “This ability could be enhanced by training – just like someone born with a predisposition to building strong muscles can enhance them by taking up weightlifting.”"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has nine paragraphs, A–I. Which paragraph contains the following information? You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      },
+      {
+       "key": "I",
+       "text": "Paragraph I"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "a reference to studies involving children",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D states: “In tests, even three-year-olds have been shown to link music in a major mode to happy faces...”"
+      },
+      {
+       "n": 15,
+       "text": "a mention of the discovery of significant artefacts",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B mentions: “...archaeologists have found musical instruments played by Neanderthals at least 50,000 years ago...”"
+      },
+      {
+       "n": 16,
+       "text": "reasons why a particular aspect of music has not been researched",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C discusses why scientists haven’t researched the emotionality of music: “image problem,” “slippery topic,” and a “long-standing principle.”"
+      },
+      {
+       "n": 17,
+       "text": "a mention of an unexpected discovery involving two different areas of the brain",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G mentions a study where rhythms triggered activity in “parts of the brain linked to hearing” but also surprisingly in the “motor regions” (two different areas)."
+      },
+      {
+       "n": 18,
+       "text": "a comparison of tone variations produced by certain animals and humans",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E discusses how pitch change works as an “emotional telltale in communication between some mammals” and is “also present in our speech.”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "- The participants in this study led by Dr Chen were chosen because they were not musicians, and they demonstrated a good state of 19 [[19]].\n- The participants were given 20 [[20]] while music with a very noticeable rhythm was being played.\n- Previous research had indicated that listening to this type of music seemed to be of assistance to some 21 [[21]] people.\n- By listening to it, their 22 [[22]] ability had definitely got better.",
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "physical health"
+       ],
+       "explanation": "Paragraph G states the criteria for volunteers were that they should be “in first-rate physical health but musically untrained.”"
+      },
+      {
+       "n": 20,
+       "answer": [
+        "brain scans"
+       ],
+       "explanation": "Paragraph G states Dr Chen and colleagues “carried out brain scans on volunteers.”"
+      },
+      {
+       "n": 21,
+       "answer": [
+        "disabled"
+       ],
+       "explanation": "Paragraph G discusses finding out why music “might help disabled patients.”"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "walking"
+       ],
+       "explanation": "Paragraph G states that if rhythmic music was played to these patients, they were able to “improve their walking ability.”"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of researchers below. Match each statement with the correct researcher, A, B or C. NB You may use any letter more than once.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Professor Norman Cook"
+      },
+      {
+       "key": "B",
+       "text": "Professor Robert Zatorre"
+      },
+      {
+       "key": "C",
+       "text": "Dr Joyce Chen"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 23,
+       "text": "Research into the brain activity set off by music may help people with speech defects.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph H quotes Dr Joyce Chen: “...people who talk with a stutter might have problems...” (Stutter is a speech defect)."
+      },
+      {
+       "n": 24,
+       "text": "It may be possible in time to improve a person’s ability to recognise certain musical characteristics.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph I quotes Professor Robert Zatorre: “This ability [to identify a slight change in a melody] could be enhanced by training...”"
+      },
+      {
+       "n": 25,
+       "text": "The way listeners react to certain musical combinations may be similar to the way they react to other noises.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph E quotes Professor Norman Cook discussing how our response to notes links to “how our brains interpret certain sounds in everyday life.”"
+      },
+      {
+       "n": 26,
+       "text": "When a person reacts positively to music, the same parts of the brain are stimulated as when certain animals react to a positive outcome.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph F quotes Zatorre saying pleasurable music activates brain circuitry that “We share... with rats... associated with biological rewards, like food.”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "200 Years of Australian Landscapes at the Royal Academy in London",
+   "subtitle": "This exhibition promises to chart the evolution of a nation through its art, but not everyone agrees with the reasons behind the choice of artwork.",
+   "paragraphs": [
+    {
+     "text": "For the casual viewer, the exhibition of landscapes, Australia, selected by the Royal Academy of Art, will be a spectacular guide through Australian art history. Included in the exhibition are a range of artists and styles, dating from the earliest days of colonial art and progressing through expressionism and modernism to the greats of the 20th century, culminating with the current generation of Australian artists. It is hardly surprising, then, that this results in a flexible, wide-ranging notion of landscape."
+    },
+    {
+     "text": "But this landmark exhibition gives rise to some questions, and perhaps problems, regarding Britain’s relationship with its former colony. By choosing a style of painting at which British artists excel, the Academy could be seen as inviting criticism that hints at a telling attitude towards Australian art by comparison. But it is the very theme of landscape that provides the strongest connection to Australian art from Britain. To consider it condescending is perhaps too strong, but for Joanna Mendelssohn, an Australian critic and Associate Professor at the University of NSW’s College of Fine Arts (COFA), there is a suggestion that British artistic values have directed this exhibition, rather than allowing Australia the freedom to demonstrate its maturity."
+    },
+    {
+     "text": "What Mendelssohn found surprising about this exhibition was that the underlying rules for the selection of works seemed to have been so conservative. Since the landscape is a very strong British artistic theme, it appeared to her that when the British looked to the art of a former colony, there was a tendency for them to think that those colonies would continue to be like the British themselves. In reviewing Australia, the British insisted on looking at the genre of landscape painting."
+    },
+    {
+     "text": "Because of colonial ties, it was inevitable during Australian art’s formative years that it would reflect Britain’s devotion to the beloved landscape before its own character and idiosyncrasies took shape. And while Mendelssohn’s concern over the exhibition’s conventional selection is valid, the Academy is nevertheless embracing the peculiarities of Australian art from the mid-19th century onward, albeit within the boundaries of landscape."
+    },
+    {
+     "text": "Australia is curated by Kathleen Soriano, director of exhibitions at the Royal Academy. “Certainly the influence of English, French, or German art is much more evident in the early periods, in the early 1800s to mid-1800s,” she says. “What I wanted to show was how Australian art develops a real distinctiveness, associated with the landscape and the light.”"
+    },
+    {
+     "text": "The fusion of tradition of the European kind with something more specifically Australian, and often personal, is crucial to the exhibition, and extends particularly to some of the more contemporary artists involved. Sydney-born video artist Shaun Gladwell is a good example of this. Gladwell’s most famous piece, which is featured in the exhibition, is Storm Sequence (2000), a video of Gladwell skateboarding on the Bondi seafront as one of Sydney’s signature brutal storms lingers offshore. It is his acknowledgment of landscape (or seascape) tradition, colored by Gladwell’s own individualism. ‘To exhibit my work in this show might make some sense because I was interested in Turner and the idea of atmosphere affecting vision, something I was really interested in around the time of Storm Sequence. I was thinking about this tradition of Romantic landscape, but I wanted to make it personal,’ says Gladwell. But he didn’t want to just embark on borrowing imagery from elsewhere. He wanted to bring it to his experience and his world through skateboarding and beach culture."
+    },
+    {
+     "text": "So while it may seem narrow for Britain to reduce Australian art to the genre of landscape, there can be little denying that British landscape painting is still relevant to a current generation of Australian practitioners, however indirectly."
+    },
+    {
+     "text": "Visitors to the exhibition encounter Australian Aboriginal art first, the idea being that these works warrant a prominent position because they were ‘first’. Over the last couple of decades, London has hosted many successful exhibitions of Aboriginal art in smaller spaces, but for Soriano, Australia represents an opportunity to place such art in a broader context, with new relationships to the art of the settlers and white Australia. ‘One of the reasons landscape makes sense as being the right theme was because Aboriginal art started in and on the landscape,’ she says. ‘[The exhibition] is a beautiful meshing of the two different kinds of art, that allowed me to bring them together comfortably and honestly within this theme. It was important for me to present Indigenous art to audiences, and I felt it was most authentic that it was seen as part of Australian art history, rather than a separate area with a world of its own.’"
+    },
+    {
+     "text": "Meanwhile, Australian critic Mendelssohn also points out that London is increasingly less important to today’s generation of artists, and this somewhat weakens the ceremony surrounding the exhibition in London. ‘China is the most important art market in the world,’ she says. ‘If you’ve made it in Shanghai, you’ve made it. The world has changed. My students in Australia, who come from all over the world, really want to see Venice Biennale and Art Basel, but they’re less interested in going to London. When I was growing up, London was the destination, and then when I was at university all the smart young things wanted to go to New York,’ she added. ‘Now they want to go everywhere. There’s no such thing as the centre and the periphery like there used to be. It’s much more complicated.’"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 27,
+       "text": "As expected, the artworks chosen for the exhibition reflect a narrow interpretation of landscape.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Paragraph 1 states, “It is hardly surprising, then, that this results in a flexible, wide-ranging notion of landscape.” This contradicts a narrow interpretation."
+      },
+      {
+       "n": 28,
+       "text": "The Academy rejected Australian suggestions for the subject of the exhibition.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "While the text mentions Mendelssohn’s criticism, there is no mention of the Academy explicitly rejecting suggestions made by Australians."
+      },
+      {
+       "n": 29,
+       "text": "The colonial relationship meant that early Australian landscape painting followed the traditions of English landscape painting.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Paragraph 4 states, “Because of colonial ties, it was inevitable during Australian art’s formative years that it would reflect Britain’s devotion to the beloved landscape...”"
+      },
+      {
+       "n": 30,
+       "text": "The exhibition reflects the fact that Australian art developed its own particular qualities.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Paragraph 5 quotes Soriano: “What I wanted to show was how Australian art develops a real distinctiveness...”"
+      },
+      {
+       "n": 31,
+       "text": "Contemporary Australian artists have generally rejected British landscape traditions.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Paragraph 7 states: “...there can be little denying that British landscape painting is still relevant to a current generation of Australian practitioners...”"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 32,
+       "text": "What is the writer’s main point in the second paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Australian landscape painting derives from the British tradition."
+        },
+        {
+         "key": "B",
+         "text": "Australian landscape painting is more highly regarded than British."
+        },
+        {
+         "key": "C",
+         "text": "Britain is still imposing its principles on Australian art."
+        },
+        {
+         "key": "D",
+         "text": "British art cannot be compared to Australian art."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The second paragraph discusses how British values directed the exhibition, implying Britain is imposing its principles."
+      },
+      {
+       "n": 33,
+       "text": "What does Joanna Mendelssohn find surprising?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Modern Australian landscape painting has great variety."
+        },
+        {
+         "key": "B",
+         "text": "The guidelines for the choice of work were very traditional."
+        },
+        {
+         "key": "C",
+         "text": "Landscape painting remains a popular subject for British artists."
+        },
+        {
+         "key": "D",
+         "text": "The British find the Australian landscape unsuitable as a subject."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph 3: “What Mendelssohn found surprising about this exhibition was that the underlying rules for the selection of works seemed to have been so conservative.”"
+      },
+      {
+       "n": 34,
+       "text": "Shaun Gladwell’s work is included in the exhibition because",
+       "options": [
+        {
+         "key": "A",
+         "text": "it adopts a subjective approach to depicting the landscape."
+        },
+        {
+         "key": "B",
+         "text": "skateboarding is an inspiration to many Australian artists."
+        },
+        {
+         "key": "C",
+         "text": "storms are a significant feature in the Australian landscape."
+        },
+        {
+         "key": "D",
+         "text": "Bondi is an iconic Australian location."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Gladwell says, “I wanted to make it personal.” The writer calls it an “acknowledgment of landscape... colored by Gladwell’s own individualism.” A subjective approach."
+      },
+      {
+       "n": 35,
+       "text": "What was the reason for Soriano including Aboriginal art in the exhibition?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is not well known in London art circles."
+        },
+        {
+         "key": "B",
+         "text": "Aboriginal landscape painting influenced Australian settlers."
+        },
+        {
+         "key": "C",
+         "text": "It is part of the Australian art tradition and not independent of it."
+        },
+        {
+         "key": "D",
+         "text": "Modern Aboriginal painting deals with changes to the landscape."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Soriano: “...it was most authentic that it was seen as part of Australian art history, rather than a separate area with a world of its own.”"
+      },
+      {
+       "n": 36,
+       "text": "By referring to China, Mendelssohn is making the point that",
+       "options": [
+        {
+         "key": "A",
+         "text": "having an exhibition in London is not as important as it used to be."
+        },
+        {
+         "key": "B",
+         "text": "young artists in Britain are not interested in Australian art."
+        },
+        {
+         "key": "C",
+         "text": "art from Shanghai is more important than Australian art."
+        },
+        {
+         "key": "D",
+         "text": "New York is still a preferred destination for young artists."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Mendelssohn says London is “increasingly less important” and mentions China/Shanghai as the new important market."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–F, below.",
+     "title": "Sentence Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "reflects the mood created by the natural environment."
+      },
+      {
+       "key": "B",
+       "text": "demonstrates that the dominant art form in Australia is landscape painting."
+      },
+      {
+       "key": "C",
+       "text": "demonstrates an understanding of the historical importance of the land."
+      },
+      {
+       "key": "D",
+       "text": "showcases a very small number of artists."
+      },
+      {
+       "key": "E",
+       "text": "demonstrates a strong European flavour."
+      },
+      {
+       "key": "F",
+       "text": "shows an acceptance of the unique qualities of Australian art."
+      }
+     ],
+     "questions": [
+      {
+       "n": 37,
+       "text": "In spite of its conservatism, the Royal Academy exhibition",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph 4: “...the Academy is nevertheless embracing the peculiarities of Australian art...” (Matches F: shows an acceptance of the unique qualities)."
+      },
+      {
+       "n": 38,
+       "text": "Australian art of the early to mid-1800s",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph 5: “Certainly the influence of English, French, or German art is much more evident in the early periods...” (Matches E)."
+      },
+      {
+       "n": 39,
+       "text": "The modern work by Gladwell chosen for the exhibition",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Gladwell mentions being interested in “the idea of atmosphere affecting vision” and the video features “brutal storms.” (Matches A)."
+      },
+      {
+       "n": 40,
+       "text": "Including Aboriginal art in the exhibition",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Soriano says landscape was the right theme because “Aboriginal art started in and on the landscape.” (Matches C: historical importance of the land)."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

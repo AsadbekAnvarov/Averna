@@ -1,0 +1,688 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-57",
+ "title": "CDI Reading Test 57",
+ "description": "A full Academic Reading test from the CDI practice materials: A Survivor's Story; Stress Less; Charles Darwin and Evolutionary Psychology.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "A Survivor's Story",
+  "Stress Less",
+  "Charles Darwin and Evolutionary Psychology"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "A Survivor's Story",
+   "paragraphs": [
+    {
+     "text": "One native bird in New Zealand that has managed to survive the introduction of non-native species"
+    },
+    {
+     "text": "As an island country with a fauna dominated by birds, New Zealand was once home to an owl species which is now extinct, the ‘laughing owl’, named for its distinctive cry. This bird was widespread throughout the islands when European settlers arrived in the middle of the 19th century and it remained in good numbers for some years thereafter. Where other native birds suffered from predation by the Polynesian rat, the laughing owl turned the tables and adapted its diet to include the rodent. It was also capable of catching and killing the other New Zealand owl, the morepork, and even larger birds, such as the weka. However, the laughing owl was wiped out around the beginning of the 20th century. Its demise was caused by specimen collectors, habitat changes, and non-native predators including cats and stoats."
+    },
+    {
+     "text": "Surprisingly, it is the smaller owl, the morepork, that has managed to survive until this day. Speckled dark brown, with yellow eyes and long tails, they are around 29 centimeters long from head to tail and 175 grams in weight. Moreporks have fringes on the edge of their feathers, so they can fly almost silently and not alert potential prey. They have acute hearing and their large eyes are very sensitive to light."
+    },
+    {
+     "text": "Moreporks nest in tree hollows, in clumps of plants, or in cavities among rocks and roots. In the wild, moreporks usually start nesting in October, although zoo specimens have been recorded nesting in midwinter, possibly stimulated by an ample food supply. The female lays up to three white eggs, which she incubates for 20 to 30 days. During this time, she rarely hunts, and the male brings food to her. Once the chicks hatch, she stays mainly on the nest until the young owls are fully feathered. When hatched, chicks are covered in light grey down, and have their eyes closed. The eyes do not open until the eighth day after hatching. They can fly at around 35 days."
+    },
+    {
+     "text": "By day, moreporks sleep in roosts. By night, they hunt a variety of animals – mainly large invertebrates including scarab and huhu beetles, moths, caterpillars and spiders. They also take small birds and mice. They can find suitable food in pine forests as well as native forest. A morepork uses its sharp talons to catch or stun its prey, which it then carries away in its bill. Moreporks are clever hunters, and birds such as robins, grey warblers and fantails can end up as their prey. In the day, these small birds sometimes mob drowsy moreporks and chase them away from their roosts. They force the sleepy predators to search for a more peaceful spot."
+    },
+    {
+     "text": "Moreporks have proved to be ungracious hosts. Scientists trying to establish a population of plovers on Motuora island found that only four birds survived out of 75 placed there. The culprits turned out to be five pairs of moreporks that ate or chased away the new arrivals."
+    },
+    {
+     "text": "Although moreporks are still considered to be relatively common, it is likely that numbers are in gradual decline due to predation and loss of habitat. As the female is a hole-nester, she is vulnerable to predators such as stoats and possums during the breeding season, and eggs and chicks will also be at risk from rats. The use of pesticides is another possible threat to the owls, though not directly. As moreporks are at the top of the food chain, they could be affected by an accumulative poison by consuming prey that has ingested poison."
+    },
+    {
+     "text": "The New Zealand Department of Conservation is taking steps to ensure the preservation of New Zealand’s only native owl. The department is involved in measuring the population of moreporks and has put transmitters on a number of birds to determine survival and mortality. As well as being New Zealand’s only native owl, the morepork has symbolic and spiritual importance, so in monitoring the birds it is hoped that the morepork will continue to survive and thrive."
+    },
+    {
+     "text": "At dusk, the melancholy sound of the morepork can be heard in forests and parks as it calls to other moreporks and claims territory. Its Maori name (ruru) echoes its two-part cry. In the tradition of the Maori people of New Zealand, the morepork, or ruru, was often seen as a careful guardian. A number of sayings referred to the bird’s alertness. As a bird of the night, it was associated with the spirit world. Moreporks were believed to act as messengers to the gods in the heavens, flying along spiritual paths in the sky. They were the mediums used to communicate with the gods. The occasional high, piercing call of the morepork signified bad news, but the lower-pitched and more common ‘ruru’ call heralded good news."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Early European settlers made detailed studies of the morepork.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage discusses the laughing owl in relation to settlers, but does not say settlers studied the morepork in detail."
+      },
+      {
+       "n": 2,
+       "text": "The Polynesian rat had a negative effect on the number of laughing owls.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The laughing owl actually turned the tables and adapted its diet to include the rat as prey – the rat harmed other native birds, not the laughing owl."
+      },
+      {
+       "n": 3,
+       "text": "The laughing owl was larger than the morepork.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The laughing owl was capable of catching and killing the morepork and even larger birds, implying it was bigger."
+      },
+      {
+       "n": 4,
+       "text": "Rats pose a risk to young moreporks.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Eggs and chicks will also be at risk from rats."
+      },
+      {
+       "n": 5,
+       "text": "The New Zealand Department of Conservation is hoping to limit the population of moreporks.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The department is working to ensure the preservation and survival of the morepork, not limit its population."
+      },
+      {
+       "n": 6,
+       "text": "Other bird species are frightened away when they hear the morepork's cry.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage describes small birds mobbing drowsy moreporks during the day, not being frightened away by its cry."
+      },
+      {
+       "n": 7,
+       "text": "In Maori tradition, the low call of the morepork had negative associations.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The lower-pitched, more common ‘ruru’ call heralded good news – the high, piercing call signified bad news."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "The Morepork",
+     "template": "# Appearance\n- approximately [[8]] in length\n- large yellow eyes • feathers with fringes to enable quiet flight\n# Nesting\n- nests in trees, plants or spaces in roots and [[9]]\n- after about 35 days, baby moreporks are capable of leaving the nest\n# Hunting\n- transports its prey using its [[10]]\n- can be chased away by other birds during the [[11]]\n- attacked [[12]] that had been introduced to Motuora island\n# Threats\n- may be exposed to [[13]] in their prey",
+     "questions": [
+      {
+       "n": 8,
+       "answer": [
+        "29 centimeters",
+        "29 centimetres"
+       ],
+       "explanation": "They are around 29 centimeters long from head to tail."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "rocks"
+       ],
+       "explanation": "Moreporks nest in tree hollows, in clumps of plants, or in cavities among rocks and roots."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "bill"
+       ],
+       "explanation": "A morepork uses its sharp talons to catch or stun its prey, which it then carries away in its bill."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "day"
+       ],
+       "explanation": "In the day, these small birds sometimes mob drowsy moreporks and chase them away from their roosts."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "plovers"
+       ],
+       "explanation": "Scientists trying to establish a population of plovers on Motuora island found only four survived – moreporks ate or chased them away."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "poison"
+       ],
+       "explanation": "As moreporks are at the top of the food chain, they could be affected by an accumulative poison from consuming prey that ingested poison."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Stress Less",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "How busy is too busy? For some it means sometimes having to have a short lunch; for others it may mean missing lunch altogether. For a few, it is not being able to take a day off once a month. Then there is a group of people for whom working every evening and weekend is normal, and feeling stressed is taken for granted. For most senior executives, workloads swing between extremely busy and frenzied. Neil Plumridge, vice-president of a management consultancy company, says that his weeks vary from a ‘manageable’ 45 hours to 80 hours, but average 60 hours."
+    },
+    {
+     "label": "B",
+     "text": "Three signs warn Plumridge about his workload: sleep, scheduling and family. He knows he is doing too much when he gets less than six hours’ sleep for three consecutive nights, when he is constantly having to reschedule appointments, and when he misses a family birthday or anniversary. ‘Then’, he says, ‘I know things are out of control’. Plumridge states that stress is often caused by his having unrealistic expectations of himself. ‘I’ll promise a client that I’ll do something tomorrow, and then I’ll promise another client that I’ll do the same thing, when I know it’s not going to happen. I could have said: “Why don’t I give that to you in 48 hours?” The client wouldn’t care.’"
+    },
+    {
+     "label": "C",
+     "text": "Over-committing is something people experience as an individual problem. However, new research indicates that people may be designed to over-commit. A study in the JOURNAL OF EXPERIMENTAL PSYCHOLOGY shows that people always believe that they will be less busy in the future. This is a misapprehension according to the authors of the report, Gal Zauberman of the University of North Carolina and John Lynch of Duke University. ‘On average, an individual will be just as busy two weeks or a month from now as he or she is today. But that is not how it appears in everyday life,’ they say. ‘People make commitments long in advance that they would never make if the same commitments required immediate action. They discount future time investments relatively steeply.’"
+    },
+    {
+     "label": "D",
+     "text": "Being ‘too busy’ is highly subjective, but for any individual there are some concrete signs of stress: disturbed sleep and declining mental and physical health are the most common examples. Figures for National Workers’ Compensation (insurance against injury caused by work) show that stress causes the most lost time of any workplace injury: employees suffering stress are absent from work for an average of 16.6 weeks. The effects of stress are also expensive. The Australian Government insurer reports that in 2003–2004, claims for stress-related psychological injury accounted for 7% of insurance claims, but almost 27% of the amount paid out in claim payments."
+    },
+    {
+     "label": "E",
+     "text": "Experts say the key to dealing with stress is not to focus on relief – a game of golf or a massage – but to reassess workloads. Neil Plumridge says he makes it a priority to work out what has to change: that might mean allocating extra staff to a job, allowing more time, or changing expectations. He also relies on the advice of colleagues, saying that his peers coach each other on business problems: ‘Just a fresh pair of eyes over an issue can help,’ he states."
+    },
+    {
+     "label": "F",
+     "text": "Executive stress is not confined to big organisations. Vanessa Stoykov has been running her own advertising agency and public relations business for seven years. Her company has grown so fast that it appeared on the BUSINESS REVIEW WEEKLY ‘Fast 100’ list of fastest-growing small enterprises in 2004, just after Stoykov had her first child. In 2005, revenue was projected to double to $2.4 million. She had just had her second child. With a fast-growing business and two small children, Stoykov says she has mastered the art of caring for children, typing, and talking on the phone at the same time. But, unlike many others, she appears to thrive on the mental stimulation of running her own business, despite the stress."
+    },
+    {
+     "label": "G",
+     "text": "Jan Elsner, a psychologist who specialises in executive coaching, says that doing well on a demanding workload is typical of senior executives. Some people work best with high-adrenaline periods followed by quieter times, while others thrive under sustained pressure. Elsner’s practice is based on a movement known as positive psychology, a school of thought that argues that positive experiences – feeling engaged and challenged, for example – do not balance out negative experiences such as stress; instead they help people increase their resilience over time. Elsner says that many of the senior business people she coaches are increasingly relying more on regulating stress through methods such as meditation. She points to research showing that meditation can alter the biochemistry of the brain and the way that brains and bodies react to stress."
+    },
+    {
+     "label": "H",
+     "text": "Some experts believe there is too much emphasis on treating job stress as an individual problem. Tony LaMontagne, of the University of Melbourne, says that while personality traits do have some effect on stress, it is systemic stressors – qualities of job roles and organisations themselves – that have a far greater effect. His recent research shows that the major predictor of stress is the level of job control a person has. The best type of job combines challenging work with high autonomy. The worst jobs combine challenging work and low control. People with demanding jobs but little autonomy have up to four times the probability of depression and more than double the risk of heart attack."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people below. Match each statement with the correct person, A–D. NB You may use any letter more than once.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Neil Plumridge"
+      },
+      {
+       "key": "B",
+       "text": "Gal Zauberman and John Lynch"
+      },
+      {
+       "key": "C",
+       "text": "Jan Elsner"
+      },
+      {
+       "key": "D",
+       "text": "Tony LaMontagne"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "High-level workers tend to react positively to stress.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para G: Jan Elsner says some executives thrive under sustained pressure and increase resilience through positive experiences."
+      },
+      {
+       "n": 15,
+       "text": "Stress levels are increased by trying to please customers.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para B: Plumridge describes making promises to multiple clients he can't keep, causing stress."
+      },
+      {
+       "n": 16,
+       "text": "Support from other workers may relieve stress.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para E: Plumridge relies on the advice of colleagues – 'a fresh pair of eyes over an issue can help'."
+      },
+      {
+       "n": 17,
+       "text": "Lack of independence at work is often responsible for stress.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para H: LaMontagne’s research shows job control (autonomy) is the major predictor of stress."
+      },
+      {
+       "n": 18,
+       "text": "Workers commonly expect their workloads to lessen over time.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para C: Zauberman and Lynch's research shows people always believe they will be less busy in future."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 19–21.",
+     "questions": [
+      {
+       "n": 19,
+       "text": "Which of the following is NOT mentioned by Neil Plumridge as an indication that his workload is too heavy?",
+       "options": [
+        {
+         "key": "A",
+         "text": "an inability to keep to his schedule"
+        },
+        {
+         "key": "B",
+         "text": "inattention to family celebrations"
+        },
+        {
+         "key": "C",
+         "text": "a lack of concentration on a task"
+        },
+        {
+         "key": "D",
+         "text": "a period of insufficient sleep"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para B: the three signs are sleep, scheduling and family – concentration is not mentioned."
+      },
+      {
+       "n": 20,
+       "text": "Which method of lessening work stress is NOT suggested by Neil Plumridge?",
+       "options": [
+        {
+         "key": "A",
+         "text": "rethinking ideas of what can be achieved"
+        },
+        {
+         "key": "B",
+         "text": "extending the deadline for completing the task"
+        },
+        {
+         "key": "C",
+         "text": "using more workers on a project"
+        },
+        {
+         "key": "D",
+         "text": "taking more time off for sport or other recreation"
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para E: Plumridge suggests allocating extra staff, allowing more time, or changing expectations – not taking time off for recreation."
+      },
+      {
+       "n": 21,
+       "text": "According to Jan Elsner, meditation offers a method of",
+       "options": [
+        {
+         "key": "A",
+         "text": "taking a worker's mind off his troubles."
+        },
+        {
+         "key": "B",
+         "text": "changing physical response to stress."
+        },
+        {
+         "key": "C",
+         "text": "resting more effectively."
+        },
+        {
+         "key": "D",
+         "text": "encouraging executives to take breaks."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para G: meditation can alter the biochemistry of the brain and the way brains and bodies react to stress."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "title": "Stress: its effects and how to reduce it",
+     "template": "Statistics on workers' compensation show that people take more time off work due to stress than for any other [[22]] at work. On average, workers who take time off because of stress stay away for [[23]] . This absence comes at a high price – while the number of insurance claims due to stress amount to only [[24]] of the total, they account for a much higher proportion of the cost of claims payments. Experts believe that seeking to relieve stress through physical therapies such as sport or [[25]] may be less effective than simply reviewing your [[26]] .",
+     "questions": [
+      {
+       "n": 22,
+       "answer": [
+        "injury"
+       ],
+       "explanation": "Stress causes the most lost time of any workplace injury."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "16.6 weeks"
+       ],
+       "explanation": "Employees suffering stress are absent from work for an average of 16.6 weeks."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "7%"
+       ],
+       "explanation": "Claims for stress-related psychological injury accounted for 7% of insurance claims."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "massage"
+       ],
+       "explanation": "Experts say the key to stress is not to focus on relief – a game of golf or a massage – but to reassess workloads."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "workloads"
+       ],
+       "explanation": "...but to reassess workloads."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Charles Darwin and Evolutionary Psychology",
+   "paragraphs": [
+    {
+     "text": "Charles Darwin, the brilliant anthropologist and creator of the theory of evolution, is not normally associated with the modern business world. Nevertheless, Darwinian evolutionary theory is the foundation of a new wave of ideas about human behavior in general and particularly the way people behave in the workplace; these ideas have given the title of ‘evolutionary psychology’."
+    },
+    {
+     "text": "Evolutionary psychology revolves around the notion that our brains, like our bodies, have an inherited evolutionary design that has scarcely changed for 10,000 years. As respected evolutionary psychology experts Leda Cosmides and John Tooby comment, ‘our modern skulls house a Stone Age mind.’ The US biologist Edward O Wilson sees evolutionary psychology as being a discipline which is based on both socio-biology, which is the study of the biological basis of social behavior, and psychology, which is the systematic study of human behavior."
+    },
+    {
+     "text": "Nigel Nicholson, an organisational psychologist from the London Business School, is a strong supporter of evolutionary psychology and on this subject has published Managing the Human Animal. His book takes the reader on a journey from the Stone Age plains of the savannah to the modern office, and includes a discussion of Darwinism and behavioural psychology together with a dissection of dysfunctional organisational behavior. It is an effective approach explaining why people behave as they do, particularly at work. Evolutionary psychology is increasingly being cited in management circles, where managers are trying to understand puzzling aspects of human behaviour and by doing so improve the workplace. Nicholson believes that evolutionary psychology can help managers understand what goes wrong in organisational life and what they can do about it."
+    },
+    {
+     "text": "Nicholson maintains that evolutionary psychology dismisses the long-held assumption that our minds are like blank pages just waiting for culture and experience to write on them and shape our nature. He points out that sophisticated research shows the brain actually houses a store of knowledge when we are born, and now genetic research is establishing there are certain genes that account for abilities, tastes and tendencies. The stored knowledge in the human brain has not changed much since the Stone Age. As Tooby and Cosmides stress, there have not been enough generations for a brain that is well adapted to our post-industrial life to evolve through natural selection."
+    },
+    {
+     "text": "The evolutionary psychology version of human nature revolves around some key elements which we have inherited from our hunter-gatherer minds. One key element is emotion. Emotion was originally essential to keep early man alive and safe from predators. Emotion was, and continues to be our radar, guiding us throughout today’s techno-defined business world. Despite this, the business world emphasises rational not emotional behaviour, and does not admit the importance of emotion. We still use the emotional part of our minds to make sense of other people’s behaviour and to create an impression, so we can often be taken in by appearances. This mental predisposition actually works best in small communities (the tribe), not in much larger environments filled with people we barely know (the modern workplace). Our minds naturally try to re-create our ancestral communities with networks of no more than 150 people, where there are clear hierarchies and leaders. As a consequence, it takes very little to trigger people’s innate distrust of others because our safety in antiquity depended on supporting our near family and friends whom we valued more than other people."
+    },
+    {
+     "text": "So what advice does Nicholson have for the corporate world? He thinks that by knowing the reasons for people’s behaviour it is possible to mould corporate environments into places that have more chance of working efficiently and being pleasant places to work in. Nicholson admits that not everybody in the business world agrees with his belief in the effectiveness of evolutionary psychology in the workplace. One group that resists the theory of evolutionary psychology is young MBA graduates who are just beginning their careers and feel that evolutionary psychology will make their lives at work more difficult. Older and wiser executives point out that they still tend to cling to the idea of a magic formula to bring people into line with corporate strategy. But that is back-to-front thinking according to Nicholson, who contends that we should be reinventing our business structures, not our fundamental human nature."
+    },
+    {
+     "text": "At the end of his book, Nicholson gives his forecast of what will and will not change in the business world. He believes that most people will still prefer more traditional forms of work and throughout their lives will continue to aim at lifelong status advancement. He also maintains that the line between work and home will be less defined, but that people will prefer traditional working patterns if working from home leaves them isolated from their work community. He doubts that the high-tech ideas of virtual companies will ever be very successful because people will still want to meet each other face-to-face. Nicholson describes his ideal organisation in the future: it would be decentralized, with small sub-units; the staff would be from diverse backgrounds and be allowed a high degree of self-determination. New endeavours and creativity would replace systems and rationality. Nicholson acknowledges that there is a long way to go in terms of the translation of his ideas of evolutionary psychology into practical propositions, but he is confident more and more people will come round to his way of thinking."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 27–31.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "The writer's purpose in the first paragraph is to",
+       "options": [
+        {
+         "key": "A",
+         "text": "oppose the views of Charles Darwin."
+        },
+        {
+         "key": "B",
+         "text": "compare experts' opinions of Darwin's theory."
+        },
+        {
+         "key": "C",
+         "text": "explain the theory of evolutionary psychology."
+        },
+        {
+         "key": "D",
+         "text": "name experts in the field of evolutionary psychology."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The first paragraph introduces evolutionary psychology as a new wave of ideas based on Darwinian theory."
+      },
+      {
+       "n": 28,
+       "text": "In the fourth paragraph, which view about evolutionary psychology matches Nicholson's opinion?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Our characters determine our career choices."
+        },
+        {
+         "key": "B",
+         "text": "We begin life without any preconceived notions."
+        },
+        {
+         "key": "C",
+         "text": "Our interests and skills depend on our environment."
+        },
+        {
+         "key": "D",
+         "text": "We inherit ideas and characteristics from our ancestors."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Nicholson dismisses the 'blank page' idea, saying the brain houses inherited knowledge and genes account for abilities and tendencies."
+      },
+      {
+       "n": 29,
+       "text": "The writer discusses the key element of emotion in order to",
+       "options": [
+        {
+         "key": "A",
+         "text": "criticise primitive survival strategies."
+        },
+        {
+         "key": "B",
+         "text": "explain attitudes and actions at work."
+        },
+        {
+         "key": "C",
+         "text": "demonstrate the slowness of evolution."
+        },
+        {
+         "key": "D",
+         "text": "suggest companies today are poorly structured."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The paragraph explains how our inherited emotional responses guide behaviour in the modern workplace."
+      },
+      {
+       "n": 30,
+       "text": "Which of the following does Nicholson predict will happen in the business world?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Companies will remain in city centres."
+        },
+        {
+         "key": "B",
+         "text": "Promotion will no longer motivate people."
+        },
+        {
+         "key": "C",
+         "text": "Employees will be less independent than now."
+        },
+        {
+         "key": "D",
+         "text": "Social interaction will remain important to workers."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Nicholson doubts virtual companies will succeed because people will still want to meet face-to-face."
+      },
+      {
+       "n": 31,
+       "text": "Which of the following is the most suitable title for Reading Passage 3?",
+       "options": [
+        {
+         "key": "A",
+         "text": "How successful companies manage change."
+        },
+        {
+         "key": "B",
+         "text": "Understanding the origins of workplace behavior."
+        },
+        {
+         "key": "C",
+         "text": "Darwin's theories rejected by modern management."
+        },
+        {
+         "key": "D",
+         "text": "Why post-industrial organisations need to evolve more quickly."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage as a whole explains how evolutionary psychology helps us understand the roots of workplace behaviour."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 32,
+       "text": "Nicholson makes a persuasive argument in his book.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The writer describes Nicholson's arguments but gives no personal judgement on how persuasive they are."
+      },
+      {
+       "n": 33,
+       "text": "Tooby and Cosmides believe natural selection through the generations has prepared us well for post-industrial life.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "They state there have not been enough generations for a brain well-adapted to post-industrial life to evolve."
+      },
+      {
+       "n": 34,
+       "text": "Our reliance on technology causes emotional problems in the workplace.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage discusses emotion and the 'techno-defined business world' but doesn't claim technology reliance causes emotional problems."
+      },
+      {
+       "n": 35,
+       "text": "People today are more trusting than they used to be.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The passage states it takes very little to trigger people's innate distrust of others in the modern workplace."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–I, below.",
+     "title": "Nicholson's advice to the corporate world",
+     "options": [
+      {
+       "key": "A",
+       "text": "business leaders"
+      },
+      {
+       "key": "B",
+       "text": "MBA graduates"
+      },
+      {
+       "key": "C",
+       "text": "promotion structures"
+      },
+      {
+       "key": "D",
+       "text": "reward strategy"
+      },
+      {
+       "key": "E",
+       "text": "magic formula"
+      },
+      {
+       "key": "F",
+       "text": "strategic planning"
+      },
+      {
+       "key": "G",
+       "text": "back-to-front thinking"
+      },
+      {
+       "key": "H",
+       "text": "business environments"
+      },
+      {
+       "key": "I",
+       "text": "human nature"
+      }
+     ],
+     "template": "Nicholson believes that if we know why people act the way they do, we can change [[36]] so employees will work more efficiently. Nicholson's ideas are unwelcome to [[37]] but some executives are more open to what evolutionary psychology says. However, these executives still believe that there is a [[38]] that will make employees act according to the company's practices. According to Nicholson, these senior executives are engaging in [[39]] and we should not try to change [[40]] but instead we should change our business structures.",
+     "questions": [
+      {
+       "n": 36,
+       "answer": [
+        "H"
+       ],
+       "explanation": "Nicholson believes understanding behaviour helps mould corporate/business environments to work more efficiently."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Young MBA graduates resist the theory, feeling it will make their careers more difficult."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "E"
+       ],
+       "explanation": "Older executives still cling to the idea of a magic formula to align employees with corporate strategy."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "G"
+       ],
+       "explanation": "Nicholson calls this 'back-to-front thinking'."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "I"
+       ],
+       "explanation": "Nicholson argues we should change business structures, not fundamental human nature."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

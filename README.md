@@ -39,7 +39,9 @@ Demo accounts (after seeding): `student1@averna.com` … `student5@averna.com` /
 
 Every variable is explained in [`.env.example`](.env.example): `DATABASE_URL` and
 `NEXTAUTH_SECRET` are required, the integrations (OpenAI, Vercel Blob, Telegram,
-Cron) are optional and documented next to their variables.
+Cron) are optional and documented next to their variables. `CDI_AUDIO_BASE_URL`
+(optional) points the CDI Listening tests at a mirror of their recordings; by
+default they stream from GitHub Pages.
 
 ## Scripts
 

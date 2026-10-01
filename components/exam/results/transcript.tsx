@@ -13,8 +13,10 @@ import { cn } from "@/lib/utils";
 const isNarrator = (speaker: string) => speaker.trim().toLowerCase() === "narrator";
 
 export function TranscriptDetails({ part, no }: { part: ListeningPart; no: number }) {
-  const lines = part.script.filter((l) => l && typeof l.text === "string" && l.text.trim());
-  if (!lines.length) return null;
+  const lines = (part.script ?? []).filter((l) => l && typeof l.text === "string" && l.text.trim());
+  // A real recording (CDI) has no script, only its transcript: plain text, line breaks kept.
+  const transcript = !lines.length && typeof part.transcript === "string" ? part.transcript.trim() : "";
+  if (!lines.length && !transcript) return null;
 
   return (
     <details className="group mt-4 rounded-xl border border-white/10 bg-white/[0.02] print:hidden">
@@ -38,6 +40,11 @@ export function TranscriptDetails({ part, no }: { part: ListeningPart; no: numbe
           Tip: select any word to look it up.
         </p>
         <LookupArea className="mt-4">
+          {transcript ? (
+            <p data-lookup-text="" className="whitespace-pre-line text-[15px] leading-relaxed text-gray-200">
+              {transcript}
+            </p>
+          ) : (
           <ol role="list" className="space-y-2.5 text-[15px] leading-relaxed">
             {lines.map((l, i) => {
               const narrator = isNarrator(l.speaker);
@@ -51,6 +58,7 @@ export function TranscriptDetails({ part, no }: { part: ListeningPart; no: numbe
               );
             })}
           </ol>
+          )}
         </LookupArea>
       </div>
     </details>

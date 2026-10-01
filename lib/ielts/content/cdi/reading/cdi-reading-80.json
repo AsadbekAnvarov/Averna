@@ -1,0 +1,547 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-80",
+ "title": "CDI Reading Test 80",
+ "description": "A full Academic Reading test from the CDI practice materials: New Understanding of Giraffes in the Wild; The Triune Brain; Looking for inspiration.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "New Understanding of Giraffes in the Wild",
+  "The Triune Brain",
+  "Looking for inspiration"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "New Understanding of Giraffes in the Wild",
+   "paragraphs": [
+    {
+     "text": "Even as the tallest animals on Earth, giraffes can be easy to overlook. Despite being a favorite in zoos, until recently almost nobody studied giraffes in the wild. 'When I first became interested in giraffes in 2008 and started looking through the scientific literature, I was really surprised to see how little had been done,' said Megan Strauss, an animal researcher at the University of Minnesota, USA. All that is changing fast, as a growing number of researchers seek to understand the biology and complex behavior of this graceful giant in its native habitat."
+    },
+    {
+     "text": "Giraffes, found throughout sub-Saharan Africa, are currently classified as a single species with up to nine varieties that differ by features like head shape and whether the fur on their legs is plain or patterned. The giraffe is not listed as endangered, but researchers point to evidence that in the past 15 years, the population has fallen some 40 percent."
+    },
+    {
+     "text": "Recent studies have allowed researchers new insights into giraffes' social structures. Groups of female giraffes, for example, have been found to form close friendships that can last for years. 'We're just at the beginnings of trying to understand this kind of behavior,' Dr Strauss said. Female giraffes can live 20 years or more, and it makes sense they might rely on each other for clues to the best feeding grounds, help with taking care of their young, or the reduction of stress, by staying in groups."
+    },
+    {
+     "text": "Mother giraffes have displayed signs of grief after losing their young, known as calves, to lions. Dr Strauss described one case in which a mother spent four days at the place where a lion had eaten her calf, refusing food, and often in the company of two other adult females. Giraffe calves are extremely vulnerable to predators, and though mothers will fight valiantly to keep their young alive — kicking forward and backward — half of all calves are killed in their first year of life."
+    },
+    {
+     "text": "Male giraffes, known as bulls, generally become more important with age, and older bulls display that dominance physically and behaviorally: as their neck muscles grow, the male's posture becomes prouder and more vertical. Recent observations show young bulls, when left on their own, mimicking their elders: head held high and neck puffed out. But should a dominant older bull come into view, the younger males instantly try to make themselves look small and innocent."
+    },
+    {
+     "text": "The younger bulls have reason to fear their elders. Clashes have been witnessed between adults when each bull repeatedly 'necks' the other, using his massive neck to slam his head against his rival. One bull somehow survived with a broken neck."
+    },
+    {
+     "text": "Physical features of giraffes: study findings"
+    },
+    {
+     "text": "The skin of a giraffe is mostly gray. The coat has dark patches separated by light hair, which serves as camouflage, allowing them to blend in with the light and shade patterns of the acacia trees from which they feed. Grazing giraffes are hard to see even a few meters away."
+    },
+    {
+     "text": "Research indicates that giraffes also have excellent sight, can see in color and over great distances, which helps them to spot lions and keep track of each other. In addition, a giraffe's extraordinary mouth has lips and tongue that can together grasp a branch and then pluck away the leaves while avoiding thorns, almost as humans would grab with their hands. Each day, a giraffe consumes about 30 kilograms of leaves, shoots and vines, all digested in its four-chambered stomach."
+    },
+    {
+     "text": "A giraffe can stand more than six meters tall, with its neck accounting for roughly a third of its height and its legs the same. The giraffe's long neck is due to the length of the vertebrae, not the number of vertebrae. The growth of the neck largely takes place during early childhood, as giraffe mothers would have a difficult time giving birth to young with longer necks. The giraffe's head and neck are held up by large muscles attached to the lower spine."
+    },
+    {
+     "text": "Recent studies show that the greatest challenge to the giraffe's cardiovascular system is how to both pump blood very high and retrieve it from far below. The outside of a giraffe's veins are extremely thick, to prevent blood leaking into surrounding tissue. Other adaptations in the cardiovascular system allow the giraffe to bend over for a drink of water, and then raise its head again quickly without fainting."
+    },
+    {
+     "text": "Researchers were also surprised to find that a giraffe does not have an unusually large heart. It is half a percent of body mass, the same as in a mouse. Moreover, the amount of blood pumped into circulation is modest, proportionally lower than it is in humans. That could help explain why giraffes rarely run for very long: enough oxygen cannot be delivered to their muscles fast enough for them to keep running. Or maybe the giraffes are worried about tripping over their own feet. This is because signals from the nerves travel at about the same speed in giraffes as in rats or other mammals. Given the greater distance they have to travel in the giraffe to reach the brain, it is possible the giraffe faces real challenges in reacting quickly to a rock beneath its hoof or a bite to its ankle."
+    },
+    {
+     "text": "New understanding of this wonderful animal sheds light on both its physiology and its behavior. Researchers hope to use this knowledge to increase their ability to work with preservation, as its habitat is reduced and the giraffe becomes scarcer."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in the text?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "The amount of research on giraffes in their natural environment has increased lately.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "A growing number of researchers now study giraffes in their native habitat."
+      },
+      {
+       "n": 2,
+       "text": "Megan Strauss disapproves of keeping giraffes in zoos.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Zoos are mentioned only as a place where giraffes are popular; Strauss gives no opinion on them."
+      },
+      {
+       "n": 3,
+       "text": "The number of giraffes in Africa has nearly doubled.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The population has fallen by about 40 percent, not doubled."
+      },
+      {
+       "n": 4,
+       "text": "Female giraffes tend to live longer than males.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Females can live 20 years or more, but the passage never compares their lifespan with males."
+      },
+      {
+       "n": 5,
+       "text": "Mother giraffes sometimes use their legs to defend their young.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Mothers fight to keep their calves alive, kicking forward and backward."
+      },
+      {
+       "n": 6,
+       "text": "Younger bulls hold their necks higher in the presence of more powerful males.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "When a dominant bull appears, young bulls make themselves look small - the opposite."
+      },
+      {
+       "n": 7,
+       "text": "Male giraffes have been observed fighting.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Clashes between adult bulls have been witnessed."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes. Choose ONE WORD ONLY from the text for each answer.",
+     "wordLimit": 1,
+     "title": "Physical features of giraffes: study findings",
+     "template": "# Skin / Coat\n- Provides [[8]] when standing near trees.\n# Mouth\n- Can be used like [[9]] to get leaves.\n# Neck\n- About equal in length to the legs; length develops in childhood to provide an easier [[10]] for mothers.\n# Cardiovascular system\n- Extra-strong [[11]] keep blood from spilling into other tissue.\n- [[12]]: normal size for such a large animal.\n# Nerves\n- Slower reaction time because [[13]] need to go farther to the brain.",
+     "questions": [
+      {
+       "n": 8,
+       "answer": [
+        "camouflage"
+       ],
+       "explanation": "The coat's patches serve as camouflage among the acacia trees."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "hands"
+       ],
+       "explanation": "The lips and tongue grasp a branch almost as humans would with their hands."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "birth"
+       ],
+       "explanation": "The neck grows mainly in childhood so that birth is easier for mothers."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "veins"
+       ],
+       "explanation": "Extra-thick veins stop blood leaking into surrounding tissue."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "heart"
+       ],
+       "explanation": "The heart is a normal size - half a percent of body mass, like a mouse's."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "signals"
+       ],
+       "explanation": "Nerve signals travel at ordinary speed but have much further to go to reach the brain."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The Triune Brain",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The first of our three brains to evolve is what scientists call the reptilian cortex. This brain sustains the elementary activities of animal survival such as respiration, adequate rest and a beating heart. We are not required to consciously \"think\" about these activities. The reptilian cortex also houses the \"startle centre\", a mechanism that facilitates swift reactions to unexpected occurrences in our surroundings. That panicked lurch you experience when a door slams shut somewhere in the house, or the heightened awareness you feel when a twig cracks in a nearby bush while out on an evening stroll are both examples of the reptilian cortex at work. When it comes to our interaction with others, the reptilian brain offers up only the most basic impulses: aggression, mating, and territorial defence. There is no great difference, in this sense, between a crocodile defending its spot along the river and a turf war between two urban gangs."
+    },
+    {
+     "label": "B",
+     "text": "Although the lizard may stake a claim to its habitat, it exerts total indifference toward the well-being of its young. Listen to the anguished squeal of a dolphin separated from its pod or witness the sight of elephants mourning their dead, however, and it is clear that a new development is at play. Scientists have identified this as the limbic cortex. Unique to mammals, the limbic cortex impels creatures to nurture their offspring by delivering feelings of tenderness and warmth to the parent when children are nearby. These same sensations also cause mammals to develop various types of social relations and kinship networks. When we are with others of \"our kind\" – be it at soccer practice, church, school or a nightclub – we experience positive sensations of togetherness, solidarity and comfort. If we spend too long away from these networks, then loneliness sets in and encourages us to seek companionship."
+    },
+    {
+     "label": "C",
+     "text": "Only human capabilities extend far beyond the scope of these two cortexes. Humans eat, sleep and play, but we also speak, plot, rationalise and debate finer points of morality. Our unique abilities are the result of an expansive third brain – the neocortex – which engages with logic, reason and ideas. The power of the neocortex comes from its ability to think beyond the present, concrete moment. While other mammals are mainly restricted to impulsive actions (although some, such as apes, can learn and remember simple lessons), humans can think about the \"big picture\". We can string together simple lessons (for example, an apple drops downwards from a tree; hurting others causes unhappiness) to develop complex theories of physical or social phenomena (such as the laws of gravity and a concern for human rights)."
+    },
+    {
+     "label": "D",
+     "text": "The neocortex is also responsible for the process by which we decide on and commit to particular courses of action. Strung together over time, these choices can accumulate into feats of progress unknown to other animals. Anticipating a better grade on the following morning's exam, a student can ignore the limbic urge to socialise and go to sleep early instead. Over three years, this ongoing sacrifice translates into a first class degree and a scholarship to graduate school; over a lifetime, it can mean ground-breaking contributions to human knowledge and development. The ability to sacrifice our drive for immediate satisfaction in order to benefit later is a product of the neocortex."
+    },
+    {
+     "label": "E",
+     "text": "Understanding the triune brain can help us appreciate the different natures of brain damage and psychological disorders. The most devastating form of brain damage, for example, is a condition in which someone is understood to be brain dead. In this state a person appears merely unconscious – sleeping, perhaps – but this is illusory. Here, the reptilian brain is functioning on autopilot despite the permanent loss of other cortexes."
+    },
+    {
+     "label": "F",
+     "text": "Disturbances to the limbic cortex are registered in a different manner. Pups with limbic damage can move around and feed themselves well enough but do not register the presence of their littermates. Scientists have observed how, after a limbic lobotomy, \"one impaired monkey stepped on his outraged peers as if treading on a log or a rock\". In our own species, limbic damage is closely related to sociopathic behaviour. Sociopaths in possession of fully-functioning neocortexes are often shrewd and emotionally intelligent people but lack any ability to relate to, empathise with or express concern for others."
+    },
+    {
+     "label": "G",
+     "text": "One of the neurological wonders of history occurred when a railway worker named Phineas Gage survived an incident during which a metal rod skewered his skull, taking a considerable amount of his neocortex with it. Though Gage continued to live and work as before, his fellow employees observed a shift in the equilibrium of his personality. Gage's animal propensities were now sharply pronounced while his intellectual abilities suffered; garrulous or obscene jokes replaced his once quick wit. New findings suggest, however, that Gage managed to soften these abrupt changes over time and rediscover an appropriate social manner. This would indicate that reparative therapy has the potential to help patients with advanced brain trauma to gain an improved quality of life."
+    },
+    {
+     "text": "¹ Triune = three-in-one"
+    },
+    {
+     "text": "² Lobotomy = surgical cutting of brain nerves"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Classify the following as typical of",
+     "options": [
+      {
+       "key": "A",
+       "text": "The reptilian cortex"
+      },
+      {
+       "key": "B",
+       "text": "The limbic cortex"
+      },
+      {
+       "key": "C",
+       "text": "The neocortex"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "Giving up short-term happiness for future gains",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Sacrificing immediate satisfaction for later benefit is a product of the neocortex."
+      },
+      {
+       "n": 15,
+       "text": "Maintaining the bodily functions necessary for life",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The reptilian cortex sustains breathing, rest and heartbeat."
+      },
+      {
+       "n": 16,
+       "text": "Experiencing the pain of losing another",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Grief at separation or death is identified with the limbic cortex."
+      },
+      {
+       "n": 17,
+       "text": "Forming communities and social groups",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The limbic cortex drives social relations and kinship networks."
+      },
+      {
+       "n": 18,
+       "text": "Making a decision and carrying it out",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Deciding on and committing to a course of action is a neocortex function."
+      },
+      {
+       "n": 19,
+       "text": "Guarding areas of land",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Territorial defence is one of the reptilian brain's basic impulses."
+      },
+      {
+       "n": 20,
+       "text": "Developing explanations for things",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Developing complex theories is the work of the neocortex."
+      },
+      {
+       "n": 21,
+       "text": "Looking after one's young",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The limbic cortex impels mammals to nurture their offspring."
+      },
+      {
+       "n": 22,
+       "text": "Responding quickly to sudden movement and noise",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The reptilian cortex houses the 'startle centre' for swift reactions."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences. Choose NO MORE THAN TWO WORDS from the text for each answer.",
+     "wordLimit": 2,
+     "template": "A person with only a functioning reptilian cortex is known as [[23]].\n[[24]] in humans is associated with limbic disruption.\nAn industrial accident caused Phineas Gage to lose part of his [[25]].\nAfter his accident, co-workers noticed an imbalance between Gage's [[26]] and higher-order thinking.",
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "brain dead"
+       ],
+       "explanation": "Only the reptilian brain works on autopilot - the person is brain dead."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "sociopathic behaviour"
+       ],
+       "explanation": "In humans, limbic damage is closely related to sociopathic behaviour."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "neocortex"
+       ],
+       "explanation": "The rod took a considerable amount of Gage's neocortex."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "animal propensities"
+       ],
+       "explanation": "Gage's animal propensities became pronounced while his intellect suffered."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Looking for inspiration",
+   "subtitle": "Helen Phillips asks what makes one person more creative than another",
+   "paragraphs": [
+    {
+     "text": "People have speculated about their own creativity for centuries—perhaps ever since we became able to think about thinking. Whatever creativity is, it results in new ideas and new ways of doing things. The only bit of the creative process we actually know about is the moment of insight, yet creative ideas and projects may incubate beyond our awareness for months. Not surprising, then, that creativity has long eluded scientific study."
+    },
+    {
+     "text": "In the early 1970s, it was still seen as a type of intelligence. But when more subtle tests of IQ and creative skills were developed in the 1970s, particularly by the father of creativity testing, Paul Torrance, it became clear that the link was not so simple. Creative people are intelligent, in terms of IQ tests at least, but only averagely or just above. While it depends on the discipline, in general, having beyond a certain level IQ does not help boost creativity."
+    },
+    {
+     "text": "Because of the difficulty of studying the actual process, most early attempts to study creativity concentrated on personality. According to creativity specialist Mark Runco of California State University, the creative personality tends to place a high value on aesthetic qualities and have broad interests, providing lots of resources to draw on and knowledge to recombine into novel solutions. 'Creatives' have an attraction to complexity and an ability to handle conflict. They are also highly self-motivated, perhaps even a little obsessive, when it comes to realising their ambitions."
+    },
+    {
+     "text": "But there may be a price to pay for having a creative personality. For centuries, a link has been made between creativity and mental illness. Psychiatrist and author Kay Redfield Jamison of Johns Hopkins University, who herself has bipolar disorder, found that established artists are significantly more likely to have mood disorders. But she also suggests that a switch of mood state might be the key to triggering a creative event, rather than the negative mood itself."
+    },
+    {
+     "text": "Jordan Peterson, a psychologist at the University of Toronto, has carried out work that suggests that the brains of creative people are more open to incoming stimuli than less creative types. Our senses are continuously feeding a mass of data into our brains, which have to block most of it to save us from being snowed under. Peterson calls this process latent inhibition and argues that people who have less of it, and who have a reasonably high IQ, can juggle more of the data, and so may be open to more ideas."
+    },
+    {
+     "text": "But what of the creative act itself? One of the first studies of the creative brain at work was by Colin Martindale, a psychologist from the University of Maine. Back in 1978, he used a network of scalp electrodes to record the pattern of brain waves as people made up stories. Creativity, he showed, has two stages: inspiration and elaboration, each characterized by very different states of mind. While people were dreaming up their stories, he found their brains were surprisingly quiet. The dominant activity was alpha waves, which is the same sort of brain activity as in some stages of dreaming or rest. This could explain why sleep and relaxation can help people be creative."
+    },
+    {
+     "text": "However, when these quiet-minded people were asked to work on their stories, the alpha wave activity dropped off and the brain became busier, revealing increased cortical arousal, and more organised thinking. Strikingly, it was the people who showed the biggest difference in brain activity between the two stages who produced the most creative storylines. Nothing in their background brain activity marked them as creative or uncreative. 'It's as if the less creative person can't shift a gear,' says Guy Claxton, a psychologist at the University of Bristol. 'Creativity requires different kinds of thinking. Very creative people move between these states intuitively.'"
+    },
+    {
+     "text": "Researchers are now trying to identify some of the specific anatomy of creativity. Brain studies of people with particular types of creativity show, perhaps not surprisingly, that active areas are determined by the specialist knowledge being used. Imagery, spatial awareness, language and so on—whatever the skill, it is localised to some extent to a particular brain part or parts. But it's not just these speciality areas that are active. Using information creatively needs coordination. 'Creative synthesis requires a new pattern, to put the brain in a state where many areas are simultaneously active,' says Claxton. When we concentrate in a less creative way, such as when reading the gas bill, there are fewer active centres and less synthesis."
+    },
+    {
+     "text": "But to be truly creative needs more than just the right personality and the right brain areas and networks. It's about using them effectively. Skills, situations and our social setting can shape our creativity just as dramatically as the brain resources we are born with. The most creative people also use the different rhythms of the day, the weekends and the holidays to help alter focus and brain state. They may spend two hours at their desk, then go for a walk, because they know that pattern works for them."
+    },
+    {
+     "text": "Another often forgotten aspect of creativity is social. Vera John-Steiner of the University of New Mexico says that to be really creative you need strong social networks and trusting relationships, not just active neural networks. One vital characteristic of a 'creative', she says, is that they have at least one other person in their life who doesn't think they are completely mad!"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people below. Match each statement with the correct person, A–G. NB You may use any letter more than once.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paul Torrance"
+      },
+      {
+       "key": "B",
+       "text": "Mark Runco"
+      },
+      {
+       "key": "C",
+       "text": "Kay Redfield Jamison"
+      },
+      {
+       "key": "D",
+       "text": "Jordan Peterson"
+      },
+      {
+       "key": "E",
+       "text": "Colin Martindale"
+      },
+      {
+       "key": "F",
+       "text": "Guy Claxton"
+      },
+      {
+       "key": "G",
+       "text": "Vera John-Steiner"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 27,
+       "text": "Creative people are receptive to the immense amount of information that the brain has to deal with.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Jordan Peterson: creative brains are more open to incoming stimuli."
+      },
+      {
+       "n": 28,
+       "text": "Creativity requires numerous parts of the brain to be active at the same time.",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Guy Claxton: creative synthesis needs many areas active at once."
+      },
+      {
+       "n": 29,
+       "text": "Creative people engage in, and are well-informed about, a wide range of subjects.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Mark Runco: the creative personality has broad interests."
+      },
+      {
+       "n": 30,
+       "text": "Creative people may have unstable personalities.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Kay Redfield Jamison found artists more likely to have mood disorders."
+      },
+      {
+       "n": 31,
+       "text": "Creative people are driven to achieve the goals they set themselves.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Mark Runco: creatives are highly self-motivated about their ambitions."
+      },
+      {
+       "n": 32,
+       "text": "Creative people need support from others.",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Vera John-Steiner: creativity needs strong social networks."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary. Choose NO MORE THAN TWO WORDS from the text for each answer.",
+     "wordLimit": 2,
+     "template": "Colin Martindale carried out research into the creative brain at work. For his study, volunteers had a series of [[33]] placed on their heads which were used to monitor brain activity while they made up stories. Martindale demonstrated that creativity consisted of [[34]] and elaboration phases. In the first of these, the brain was mostly inactive except for [[35]] and this corresponds to what takes place during dreaming or relaxation. In the second phase, when the volunteers worked on their stories, however, their brains became a lot busier. Interestingly, the most creative stories were produced by those volunteers with the greatest [[36]] in brain activity between the two phases.",
+     "questions": [
+      {
+       "n": 33,
+       "answer": [
+        "scalp electrodes"
+       ],
+       "explanation": "Martindale used a network of scalp electrodes."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "inspiration"
+       ],
+       "explanation": "The two stages are inspiration and elaboration."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "alpha waves"
+       ],
+       "explanation": "In the first stage the dominant activity was alpha waves."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "difference"
+       ],
+       "explanation": "The most creative stories came from those with the biggest difference between the two stages."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in the text?",
+     "questions": [
+      {
+       "n": 37,
+       "text": "People with very high IQs are more likely to be creative than those with average IQs.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Beyond a certain level, IQ does not boost creativity."
+      },
+      {
+       "n": 38,
+       "text": "Society tends to value aesthetic skills highly.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Creative people value aesthetic qualities; society's view is never mentioned."
+      },
+      {
+       "n": 39,
+       "text": "There can be disadvantages to having a creative personality.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "There may be a price to pay - a link with mood disorders."
+      },
+      {
+       "n": 40,
+       "text": "Language skills are more important than spatial awareness in any form of creativity.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Both are listed as skills localised in the brain; neither is ranked above the other."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

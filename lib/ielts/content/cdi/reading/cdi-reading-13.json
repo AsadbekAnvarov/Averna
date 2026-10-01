@@ -1,0 +1,594 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-13",
+ "title": "CDI Reading Test 13",
+ "description": "A full Academic Reading test from the CDI practice materials: Rubber; Lean Production innovation – in manufacturing systems; How Does Watching Sport Influence the Brain?.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Rubber",
+  "Lean Production innovation – in manufacturing systems",
+  "How Does Watching Sport Influence the Brain?"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Rubber",
+   "paragraphs": [
+    {
+     "text": "T and W Musgrove discuss the origins and early uses of rubber"
+    },
+    {
+     "text": "The plants that produce rubber are spread right across the globe, and grow in many different habitats. One might think it likely, therefore, that humankind has known about rubber for thousands of years. Yet, unlike other crops of economic importance, rubber led a relatively anonymous life until the last 150 years or so. The Indians of South America appear to be the first people to have understood the properties of rubber, and the Aztecs of what is now Mexico were the first to be recorded using the substance; a wall painting dating back to the sixth century depicts a scene of a tributary offering of crude rubber. With the arrival of Columbus in the Americas and the resulting Spanish influx, further evidence starts to appear concerning the Native Americans’ use of rubber. Antonio de Herrera y Tordesillas describes a ritual game played with a rubber ball at the court of the Aztec Emperor Montezuma II, and the Mayan and Toltec people are known to have taken part in similar activities. Rubber was also used to make raincoats, shoes, jars, torches and musical instruments, all of which must have been made from the indigenous Castilloa elastica, as the Para plant now favoured for rubber cultivation does not grow in the Mexican region."
+    },
+    {
+     "text": "The first description of latex (liquid rubber) extraction is made by Juan de Torquemada, who noted that if a receptacle was not at hand the Native Americans would place the latex on their bodies to allow it to solidify. However, no real interest in rubber was shown by any European until Charles de la Condamine, a French mathematician, published an account of his journey to South America in 1735. The journey was undertaken on behalf of the Paris Academy of Sciences to measure an arc of the meridian line on the equator, but the journey home was to turn out to be more significant than the true purpose of the trip. Condamine explored Brazil and Peru and discovered how the local people used one single piece of coagulated latex to make boots. The boots were impervious to water and, when smoked, looked like real leather. In 1747 the first description of the rubber tree and latex tapping was made by a military engineer and amateur botanist, François Fresneau, who was posted to French Guiana. The publications of Condamine and Fresneau created considerable excitement among French scientists, and an attempt was made to discover a solvent that could turn the crude rubber into a substance for commercial exploitation."
+    },
+    {
+     "text": "In 1818 a British medical student named James Syme first used rubber to make waterproof cloth. Another early use of the substance was as an eraser of pencil marks, hence the name ‘rubber’. This was complemented by balloons, rubber bands, braces, boots for the army and other ideas that met with varying degrees of success. In 1820 Thomas Hancock, an English manufacturer of rubber goods such as driving belts, industrial rollers and rubber hoses, invented a machine he called the ‘pickle’, which chewed up waste strips for re-use. It was discovered that the masticated rubber was more malleable, while maintaining much of its elasticity. In Scotland at the same time Charles Macintosh had discovered a way of using rubber as waterproofing material, by a process he patented in 1823. Hancock and Mackintosh joined forces in 1834, and three years later Hancock invented a machine for spreading rubber onto material."
+    },
+    {
+     "text": "Despite their beneficial qualities, such as waterproofing, rubber goods were still not particularly popular as they had some major flaws, including the fact that they dissolved malodorously. They also became pliant when warm and rigid when cold. Then in 1839 the American Charles Goodyear discovered that it was possible to stabilise rubber by mixing it with sulphur while exposing it to heat — a process he called vulcanisation — and the full versatility of this extraordinary substance became apparent."
+    },
+    {
+     "text": "Rubber goods could now be manufactured which had all the beneficial qualities of the material such as durability, elasticity and variability, but which were not sticky, soluble or governed by the vagaries of the weather. The economic potential of rubber was now clearly evident. It played an important role in the Industrial Revolution, being employed in the steam engines found in factories, mills, mines and railways. It made a triumphant entrance as a new and innovative material at the Great Exhibition of 1851, where shoes, airbeds, furniture and clothing made out of newly improved rubber were proudly displayed."
+    },
+    {
+     "text": "One of the most important rubber inventions was made in 1888, when an Irishman called John Boyd Dunlop produced the first pneumatic tyre. Solid rubber tyres had been used for the previous 18 years, but Dunlop’s new design, which he updated in 1890, immediately became popular. In 1895 Dunlop’s tyres were first used in motor cars, and with the mass production of cars just over the horizon the rubber industry had never looked healthier. The import levels of rubber over the nineteenth century bear witness to its irrepressible rise. In 1830 Britain had imported just 211 kg of crude rubber. This had risen to 10,000 kg in 1857, and by 1874 levels were just under six times as much again."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Rubber plants grow only in certain regions of the world.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The opening sentence says rubber-producing plants are ‘spread right across the globe’ and grow in ‘many different habitats’, so it is not limited to certain regions."
+      },
+      {
+       "n": 2,
+       "text": "The Aztecs were the earliest people known to have used rubber.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says the Aztecs were the first to be recorded using the substance, with a wall painting dating back to the sixth century."
+      },
+      {
+       "n": 3,
+       "text": "Castilloa elastica produces better quality rubber than the Para plant.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The text only says Castilloa elastica was indigenous in Mexico and the Para plant is now favoured; it does not compare their quality."
+      },
+      {
+       "n": 4,
+       "text": "Charles de la Condamine was the first European to show an interest in rubber.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage states that ‘no real interest in rubber was shown by any European until Charles de la Condamine’ published his account in 1735."
+      },
+      {
+       "n": 5,
+       "text": "The process of vulcanisation was discovered by accident.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Goodyear’s discovery of vulcanisation is described, but the passage does not say whether it happened by accident or not."
+      },
+      {
+       "n": 6,
+       "text": "Imports of crude rubber into Britain fell during the nineteenth century.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Import figures rise dramatically (211 kg in 1830 to 10,000 kg in 1857 and much higher by 1874), so they did not fall."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "title": "The Commercial Development of Rubber",
+     "template": "Early European travellers gave accounts of various rubber objects in use in Central and South America, and these accounts created interest in the commercial exploitation of rubber. In 1818, [[7]] was produced using rubber, and in 1820 a machine was invented for recycling [[8]] of rubber. Over the next few years, other attempts were made to improve rubber, but some problems remained. For example, rubber products smelt bad when they were dissolved, and could turn either soft or [[9]] depending on the temperature.\nHowever, in 1839 a new process to [[10]] the substance greatly increased its potential. For example, rubber was used in the creation of the [[11]] industry during the Industrial Revolution. Then in 1888 the [[12]] was developed, and a few years later the [[13]] of the motor car began.",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "waterproof cloth"
+       ],
+       "explanation": "In 1818 James Syme ‘first used rubber to make waterproof cloth’."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "waste strips"
+       ],
+       "explanation": "Hancock’s machine (‘pickle’) ‘chewed up waste strips’ for re-use."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "rigid"
+       ],
+       "explanation": "Rubber goods ‘became pliant when warm and rigid when cold’, so the opposite of soft here is ‘rigid’."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "stabilise"
+       ],
+       "explanation": "Goodyear found it was possible to ‘stabilise’ rubber by mixing it with sulphur and heat (vulcanisation)."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "steam engines"
+       ],
+       "explanation": "During the Industrial Revolution rubber was used in steam engines found in factories, mills, mines and railways."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "pneumatic tyre"
+       ],
+       "explanation": "In 1888 Dunlop produced the first ‘pneumatic tyre’."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "mass production"
+       ],
+       "explanation": "The passage says ‘mass production of cars’ was just over the horizon."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Lean Production innovation – in manufacturing systems",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "After the First World War, car makers Henry Ford and Arthur Sloan of General Motors moved world manufacturing from centuries of craft production into the age of mass production. Largely as a result of this, the United States soon dominated the world economy. After the Second World War, and approximately a hundred years after Japan opened up to the modern world, Eiji Toyoda and Taiichi Ohno pioneered the concept of lean production at the Toyota car company. And now, although superimposing the method on existing mass production systems causes pain and upheaval, manufacturers around the world are trying to embrace this innovative system."
+    },
+    {
+     "label": "B",
+     "text": "Perhaps the best way to describe lean production is to compare it with the two other major manufacturing systems: craft production and mass production. The craft producer uses highly skilled workers and simple but flexible tools to make exactly what the customer asks for – one item at a time. A present day example of this method is the customised production of a few exotic sports cars. The concept of craft production remains very popular, but the problem with it is obvious. Goods produced by the craft method – as cars once exclusively were – cost too much for most of us to afford. So at the beginning of the twentieth century, mass production was developed as an alternative method. The mass producer uses narrowly skilled professionals to design products which are then made by unskilled or semi-skilled workers, using expensive, single-purpose machines. These churn out standardised products in very high volumes. Because the machinery costs so much, and is so intolerant of disruption, the mass producer keeps standard designs in production for as long as possible. The result is that the customer gets lower costs, but at the expense of variety, and by means of work methods which most employees find boring and dispiriting. By contrast, the lean production system combines the advantages of craft and mass production, while avoiding the high cost of the former and the rigidity of the latter. Towards this end, companies appoint teams of multi-skilled workers to all levels of the organisation, and use highly flexible and increasingly automated machines to produce goods in enormous volume and variety."
+    },
+    {
+     "label": "C",
+     "text": "Lean production is so called because, compared with mass production, it uses less of everything – half the human effort in the factory, half the manufacturing space, half the investment in tools, and half the engineering hours to develop the new product. It also results in far fewer defects."
+    },
+    {
+     "label": "D",
+     "text": "Perhaps the most striking contrast between mass and lean production systems lies in their production standards. Mass producers have a limited goal for themselves: ‘good enough’, which translates into an acceptable number of defects, a maximum acceptable number of inventories, and a narrow range of standardised products. Lean producers, on the other hand, are unwilling to compromise standards in any of these areas."
+    },
+    {
+     "label": "E",
+     "text": "Although cost reduction is the primary objective of the lean production system, it must meet three other intermediate objectives in order to achieve this: quantity control, quality assurance and respect for humanity. Firstly, the system must be able to adapt to daily and monthly fluctuations in demand. Secondly, each separate process must supply only good units to the subsequent process. Thirdly, in as far as the system uses human resources to attain its cost objectives, respect for human needs must be cultivated. It should be emphasised that none of these three objectives can be achieved separately."
+    },
+    {
+     "label": "F",
+     "text": "The continuous flow of lean manufacturing production relies on two practical mechanisms: just-in-time and autonomation. Just-in-time means, for example, that in the process of assembling the parts to build a car, components from the preceding process should arrive at the next part of the line at exactly the right time and in the correct quantities. If just-in-time is fully realised throughout the company, then superfluous inventories are completely eliminated from the factory, making stores or warehouses unnecessary. However, relying solely on a central planning approach to control schedules for all stages of the production process simultaneously is very difficult in the case of cars, which consist of thousands of parts. So the lean system looks at the production flow in reverse; in other words, employees go to the preceding process to withdraw the necessary quantity of units at the appropriate time. The preceding process must produce only sufficient quantities of units to replace those that have been withdrawn, and in turn withdraws the requisite number of components from the process that precedes it."
+    },
+    {
+     "label": "G",
+     "text": "Autonomation is the automatic checking for abnormalities in the production process. In order to realise just-in-time perfectly, only units which are in perfect condition must be allowed to flow to the next process, and this flow must be regular and uninterrupted. In other words, quality control must coexist with just-in-time procedures throughout the system. Autonomation involves building in a mechanism to prevent the multiplication of defects in machines or product lines. For example, in Toyota factories almost all the machines have been fitted with stopping devices, and the concept of autonomation has been extended to manual production lines. If something abnormal happens there, the worker pushes a button to stop the whole line, and lights, which are hung so high in the factory that they are visible to everyone, indicate the position of the problem."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Global resistance to lean manufacturing"
+      },
+      {
+       "key": "ii",
+       "text": "The historical context"
+      },
+      {
+       "key": "iii",
+       "text": "Procedures for controlling quality"
+      },
+      {
+       "key": "iv",
+       "text": "The pros and cons of different production systems"
+      },
+      {
+       "key": "v",
+       "text": "The impact on profits"
+      },
+      {
+       "key": "vi",
+       "text": "Procedures for controlling supply"
+      },
+      {
+       "key": "vii",
+       "text": "The origin of the term"
+      },
+      {
+       "key": "viii",
+       "text": "A crucial difference in levels of quality"
+      },
+      {
+       "key": "ix",
+       "text": "Working conditions"
+      },
+      {
+       "key": "x",
+       "text": "Interdependent strategies for controlling expenditure"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Paragraph A traces the move from craft to mass production after WWI, then lean production at Toyota after WWII — this is the historical context."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph B compares craft, mass and lean production, highlighting advantages and disadvantages of each system."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Paragraph C explains why it is called ‘lean’: it uses less human effort, space, tools and engineering hours."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Paragraph D contrasts standards: mass production aims for ‘good enough’, while lean refuses to compromise — a key difference in quality."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "x"
+       ],
+       "explanation": "Paragraph E says cost reduction depends on three linked objectives and stresses they cannot be achieved separately — interdependent strategies."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Paragraph F explains just-in-time, removing inventories and making stores/warehouses unnecessary — controlling supply."
+      },
+      {
+       "n": 20,
+       "text": "Paragraph G",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Paragraph G explains autonomation and mechanisms to stop the line and signal problems — quality control procedures."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "template": "21. A small number of unusual cars are still produced by the [[21]] method.\n22. Lean production requires staff who are [[22]].\n23. Lean production employs fewer people, and uses less [[23]], equipment and time.\n24. Storage facilities are not needed if a procedure known as [[24]] is implemented in the lean production method.\n25. Autonomation is a procedure for spotting any [[25]] in the products on a production line.\n26. At Toyota factories, [[26]] are suspended above manual production lines in order to show where production has to be halted.",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "craft"
+       ],
+       "explanation": "Paragraph B gives ‘customised production of a few exotic sports cars’ as an example of the craft method."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "multi-skilled"
+       ],
+       "explanation": "Paragraph B says companies appoint teams of multi-skilled workers at all levels."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "manufacturing space"
+       ],
+       "explanation": "Paragraph C says lean uses less manufacturing space (as well as less human effort, tools and engineering hours)."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "just-in-time"
+       ],
+       "explanation": "Paragraph F states that if just-in-time is fully realised, inventories are eliminated and stores/warehouses are unnecessary."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "abnormalities"
+       ],
+       "explanation": "Paragraph G defines autonomation as automatic checking for abnormalities in the production process."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "lights"
+       ],
+       "explanation": "Paragraph G says lights are hung high and indicate where the problem is when the line is stopped."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "How Does Watching Sport Influence the Brain?",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "During the epoch when the poet Homer unveiled his grand epic, the ancient Greeks initiated a festival where men contended in a race of roughly 200 metres. The victor would be rewarded with a symbolic olive branch. This event, known as the Olympics, has transcended its humble origins to embody the human quest for progress. The captivating nature of these games raises an intriguing question: what exactly draws us in as spectators? Is it the thrill of competition, the beauty of human movement, or something happening within our brains?"
+    },
+    {
+     "label": "B",
+     "text": "In 1996, three Italian neuroscientists—Giacomo Rizzolatti, Leonardo Fogassi, and Vittorio Gallese—conducted research on the premotor cortex of monkeys and made a groundbreaking discovery. They revealed a cluster of cells that act as a repository for motor actions, similar to ‘grammar of movement’. These cellular networks represent the ‘sentences’ of full-body motions that our brains meticulously retain and refine. Take the art of swinging a golf club as an example. For those who only watch the Masters Tournament on television, playing golf may appear deceptively effortless. However, for novices, smoothly manoeuvring the asymmetrical metal club presents a nearly impossible challenge. This is because novices rely on conscious effort, utilising brain regions adjacent to the premotor cortex. Experts, by contrast, instinctively execute perfectly balanced movements, as their actions are deeply ingrained and intertwined with neurons in the premotor cortex. Their swing occurs with the serenity of a refined autopilot, requiring no conscious control. This neural distinction between novices and experts provides insight into how long-term training can physically reshape the brain."
+    },
+    {
+     "label": "C",
+     "text": "These neurons in the premotor cortex not only help explain why some athletes seem to have exceptional skills, but they also exhibit a wondrous characteristic that prompted Rizzolatti, Fogassi, and Gallese to bestow upon them the exalted label of ‘mirror neuron’. They point out that mirror neurons are activated when a primate performs a particular action, such as grasping or holding an object, or when it witnesses another individual performing a comparable action. Humans possess an even more intricate mirror neuron system that reflects the external world in our brains, enabling us to internalise the behaviours of others. Nonetheless, these cells necessitate what scientists refer to as ‘goal-oriented movements’ to activate. If we stare at a photograph, a static image of a runner striding ahead, our mirror neurons remain utterly silent. It is solely when the runner is in action, be it running, moving, or sprinting, that they are ignited. Movement, not stillness, is what speaks to our brains."
+    },
+    {
+     "label": "D",
+     "text": "Electrophysiological studies have shown that when we observe a golfer or a runner in action, our own premotor cortex mirror neurons respond as if we were participating in the activity. This neural mirroring was initially identified in 1954 by French physiologists Gastaut and Bert, who noticed specific alpha and mu brain wave patterns in humans. The mu signal plays a role in neural mirroring, remaining active during periods of bodily stillness but disappearing when we undertake active pursuits like playing a sport or changing TV channels. Notably, the mu signal also remains subdued while we observe someone else in action, such as on television, which alludes to the influence of mirror neurons. This suggests that our brains do not simply passively register what we see, but actively simulate it, engaging systems normally reserved for action."
+    },
+    {
+     "label": "E",
+     "text": "Rizzolatti, Fogassi, and Gallese have coined the term ‘direct matching hypothesis’ to delineate the concept of mirror neurons. They assert that to comprehend the movements of sports stars, we need to align the visual representation of the observed action with our own motor representation of the same action. According to this theory, watching an Olympic athlete can evoke a resonance in the observer’s motor system. The observer’s ‘motor knowledge’ is harnessed to decipher the observed action. However, mirror neurons extend beyond being merely neural foundations for our sporting inclinations. They also enable observers to enhance their athletic abilities through the process of observation. It turns out that watching a remarkable golfer improves our own golfing skills, and witnessing a skilled sprinter actually bolsters our running speed. This ability to learn through observation is a vital skill. From language acquisition in infancy to understanding facial expressions, mimicking plays a fundamental role in our consciousness. The most accomplished athletes possess a premotor cortex capable of envisioning victorious movements, supplemented by the physical attributes required to translate those movements into reality. In this way, action and imagination coalesce to drive performance."
+    },
+    {
+     "label": "F",
+     "text": "However, how many among us watch sport in order to enhance our athletic abilities? Most spectators tune in for the emotional roller coaster, the human drama it encompasses. This emotional connection finds its roots in mirror neurons, which allow spectators to perceive athletes’ victorious movements and to share in the emotion of their triumphs. This is because they are directly associated with the amygdala, a key area of the brain responsible for emotional processing. During the Olympics, mirror neurons in individuals around the world resonate in unison, and watching sport unifies people. The majority of us may never run a mile in under four minutes or hit a home run. Yet, as we gather around our televisions, we all briefly get a taste of the feeling of executing something flawlessly. In those fleeting moments, sport becomes more than entertainment—it becomes a shared human experience."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has six paragraphs, A–F. Which paragraph contains the following information? You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 27,
+       "text": "reasons why watching sport can bring emotional satisfaction",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F explains spectators watch for the emotional roller coaster and says this connection is rooted in mirror neurons linked to emotional processing (amygdala)."
+      },
+      {
+       "n": 28,
+       "text": "an explanation of why beginners struggle with sports tasks",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B contrasts novices and experts: beginners rely on conscious effort and adjacent brain regions."
+      },
+      {
+       "n": 29,
+       "text": "a factor that can work alongside mirroring in sports competitions to maintain peak performance",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E says elite performance comes from a premotor cortex that can envision movements, plus the physical attributes needed — imagination and action working together."
+      },
+      {
+       "n": 30,
+       "text": "a comparison between the mirror neurons of human beings and primates",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C explicitly compares primates and humans, noting humans have an even more intricate mirror-neuron system."
+      },
+      {
+       "n": 31,
+       "text": "mention of integrating visual and motor processes to understand athletic movements",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E (direct matching hypothesis) says we align the visual representation with our own motor representation."
+      },
+      {
+       "n": 32,
+       "text": "reference to the first discovery of brain activity associated with mirror neurons",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D gives the first identification (1954) of relevant brain-wave activity connected to observation and action mirroring."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 33,
+       "text": "What point does the writer make about professional athletes in Paragraph B?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They meticulously plan each phase of their movements."
+        },
+        {
+         "key": "B",
+         "text": "They engage in regular practice to retain and refine their skills."
+        },
+        {
+         "key": "C",
+         "text": "They actively consider and analyse the actions of their peers."
+        },
+        {
+         "key": "D",
+         "text": "They perform their actions without conscious contemplation."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "In Paragraph B, experts’ movements are described as ‘autopilot’ and ‘requiring no conscious control’."
+      },
+      {
+       "n": 34,
+       "text": "In this passage, the writer mentions the example of a remarkable golfer to illustrate",
+       "options": [
+        {
+         "key": "A",
+         "text": "the critical role of imitation in the formation of consciousness."
+        },
+        {
+         "key": "B",
+         "text": "the improvement of sporting ability through watching sport."
+        },
+        {
+         "key": "C",
+         "text": "the stimulation of a resonance in the observer’s motor system."
+        },
+        {
+         "key": "D",
+         "text": "the motivation of the observer’s interest and love for golf."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph E states that watching a remarkable golfer can improve our own golfing skills — an example of learning through observation."
+      },
+      {
+       "n": 35,
+       "text": "The principal motivation for watching sport mentioned by the writer is",
+       "options": [
+        {
+         "key": "A",
+         "text": "to improve our physical ability by analysing the athletes’ technical strategies."
+        },
+        {
+         "key": "B",
+         "text": "to unite viewers from different nations."
+        },
+        {
+         "key": "C",
+         "text": "to experience intense positive emotions by immersing oneself in sport."
+        },
+        {
+         "key": "D",
+         "text": "to become a sports professional."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph F says most spectators watch for the emotional experience and the feeling of flawless execution."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 36,
+       "text": "The emergence of Homer’s epic poetry occurred in the same historical period as the beginning of the Olympic Games.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Paragraph A links Homer’s era with the initiation of the early Olympic festival, indicating the same historical period."
+      },
+      {
+       "n": 37,
+       "text": "The Italian scientists concluded that the motor actions encoded within the premotor cortex have no discernible link to unrelated collections of neurons.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage describes the discovery of motor-action clusters but does not discuss conclusions about links to unrelated neuron collections."
+      },
+      {
+       "n": 38,
+       "text": "Spectators can achieve flawless golf swings merely by watching the Masters Tournament without physical practice.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The passage says watching can improve skills, but does not claim flawless swings can be achieved purely by watching."
+      },
+      {
+       "n": 39,
+       "text": "Some neuroscientists believe that certain types of still images might activate mirror neurons under specific experimental conditions.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Paragraph C says mirror neurons remain silent when viewing a static photograph; it does not suggest exceptions."
+      },
+      {
+       "n": 40,
+       "text": "The mu system is suppressed while we are dynamically involved in a particular activity.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Paragraph D says the mu signal disappears when we undertake active pursuits (i.e. during dynamic involvement)."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

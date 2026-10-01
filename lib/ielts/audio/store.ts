@@ -3,7 +3,8 @@
  * Vercel Blob store. Used by the admin routes and page.
  *
  * - audioOverview: the placement test's Listening (lib/placement/content) and
- *   every catalog Listening test (legacy short tests skipped) with each part's
+ *   every catalog Listening test (legacy short tests and CDI tests — which
+ *   ship real recordings — skipped; CDI is only counted) with each part's
  *   status (none / ready / stale / failed), size and length, plus recordings
  *   of tests that left the catalog, and storage totals.
  * - resolveAudioTest: the test behind an id the admin renders — a placement
@@ -24,7 +25,7 @@ import { monthlyAudioUploadLimit, speakingStorageUsage } from "@/lib/speaking/re
 import { TTS_MODEL, audioAiConfigured } from "@/lib/openai-audio";
 import { PLACEMENT_FORMS } from "@/lib/placement/content";
 import { getListeningExam, listListeningExams, listeningFromRow } from "../catalog";
-import { LISTENING_SEED } from "../content";
+import { CDI_LISTENING } from "../content/cdi";
 import { estimatePartSeconds } from "../format";
 import type { ExamListeningTest } from "../types";
 import type { AudioOverview, OrphanAudioInfo, PartAudioInfo, PartAudioStatus, TestAudioInfo } from "./admin-types";
@@ -115,12 +116,24 @@ export function partInfo(test: ExamListeningTest, index: number, row: AudioRow |
   };
 }
 
-/** Every Listening test of the catalog, in catalog order — the legacy short tests excluded. */
+/** The test ships with its own real recording (CDI) — nothing to render with TTS. */
+export function hasRealAudio(t: { source?: string; audio?: unknown }): boolean {
+  return t.source === "cdi" || !!t.audio;
+}
+
+/** Listed tests that play a real recording (shown to the admin as a read-only note). */
+export function realAudioTestCount(): number {
+  return CDI_LISTENING.length;
+}
+
+/**
+ * Every Listening test of the catalog that needs TTS, in catalog order — the
+ * legacy short tests and the CDI tests (real recordings) excluded.
+ */
 export async function catalogTests(): Promise<ExamListeningTest[]> {
-  const summaries = (await listListeningExams()).filter((s) => s.source !== "legacy");
+  const summaries = (await listListeningExams()).filter((s) => s.source !== "legacy" && !hasRealAudio(s));
   const byId = new Map<string, ExamListeningTest>();
-  for (const t of LISTENING_SEED) byId.set(t.id, t);
-  if (summaries.some((s) => !byId.has(s.id))) {
+  if (summaries.length) {
     try {
       const rows = (await db.generatedTest.findMany({
         where: { module: "LISTENING", published: true },
@@ -137,7 +150,7 @@ export async function catalogTests(): Promise<ExamListeningTest[]> {
   const out: ExamListeningTest[] = [];
   for (const s of summaries) {
     const t = byId.get(s.id) ?? (await getListeningExam(s.id));
-    if (t && t.source !== "legacy") out.push(t);
+    if (t && t.source !== "legacy" && !hasRealAudio(t)) out.push(t);
   }
   return out;
 }
@@ -265,6 +278,7 @@ export async function audioOverview(): Promise<AudioOverview> {
     voiceModel: model,
     dbError,
     tests: list,
+    realAudioTests: realAudioTestCount(),
     orphans,
     totals,
     speaking: speakingUsage ? { ...speakingUsage, monthlyLimit: monthlyAudioUploadLimit() } : null,

@@ -1,0 +1,677 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-12",
+ "title": "CDI Reading Test 12",
+ "description": "A full Academic Reading test from the CDI practice materials: The Pixar Story; A Mechanical Friend for Children; The Peopling of Patagonia.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Pixar Story",
+  "A Mechanical Friend for Children",
+  "The Peopling of Patagonia"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Pixar Story",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Between 2000 and 2005, under former Chief Executive Officer (CEO) Michael D. Eisner, the Walt Disney Company set its shareholder meetings in a series of cold-weather months. Many suspected that this had been done to discourage attendance by the company’s increasingly restless shareholders. In 2006, however, there was no need for such measures. In October 2005, Chief Operating Officer Robert Iger had replaced Eisner as CEO. On taking charge, Iger quickly carried out a bold move, negotiating a buyout of Pixar Animation Studios. Although the price was high, the acquisition proved to be overwhelmingly popular."
+    },
+    {
+     "label": "B",
+     "text": "Pixar had started life twenty years earlier as Pixar Inc., a computer hardware company, one of hundreds dotting the landscape of the San Francisco Bay Area in California. Within the company, a tiny animation group made short promotional films that brought in practically no revenue; the group came close more than once to being shut down. When the Pixar Image Computer proved unprofitable, the company ended to selling animation software and making animated commercials, but it continued to lose money year after year."
+    },
+    {
+     "label": "C",
+     "text": "In 1991, when Disney agreed to finance the production of Pixar’s first feature film for cinema release, Disney largely dictated the terms of the contract. In late 1993, Disney considered ordering Pixar to shut down production of the blockbuster-directed film Toy Story because of problems with the script. At the time, Hollywood commentators doubted whether audiences would even sit through a full-length film made using new technology of computer animation. It was unclear whether computer animation would prove to be a novelty that would quickly wear thin."
+    },
+    {
+     "label": "D",
+     "text": "Before long, however, circumstances changed dramatically. A succession of critically acclaimed and commercially successful animated feature films, beginning with the release of Toy Story in 1995 and followed by A Bug’s Life and Finding Nemo, made Pixar the world’s leading animation studio. Disney earned enormous profits from distributing the films. When Pixar’s majority owner and CEO, Steve Jobs, cut off contract talks with Disney in early 2004, the business press focused on how Disney would cope. By that time, Pixar films accounted for approximately 45 per cent of the operating income from Disney’s film operations."
+    },
+    {
+     "label": "E",
+     "text": "As a result of the 2005 acquisition, John Lasseter soon assumed the roles of Chief Creative Officer for both Disney and Pixar Animation, as well as Principal Creative Adviser for Disney’s theme parks and resorts worldwide. Having helped to create a new genre of film at Pixar, Lasseter returned to Disney on his own terms, despite having briefly worked there earlier in his career."
+    },
+    {
+     "label": "F",
+     "text": "When Iger invited Lasseter to speak at the 2006 shareholders’ meeting, he was greeted with enthusiastic applause accompanied by a few bars of the Toy Story theme music. Lasseter spoke about his childhood love of Bugs Bunny cartoons and described working as a ride operator on Disneyland’s Jungle Cruise, where telling jokes helped him gain confidence in public speaking. He also recalled studying at the California Institute of the Arts and the frustration he felt when Disney initially rejected computer animation technology. He concluded by explaining how he followed his dream to work with Ed Catmull."
+    },
+    {
+     "label": "G",
+     "text": "Dr Edwin Catmull, then sixty-one years old and president of Pixar, was seated among the shareholders. Originally a computer graphics researcher, Catmull had moved unexpectedly into business leadership. He was widely regarded as brilliant, yet known for listening rather than dominating conversations, and when he spoke his manner was consistently friendly and courteous."
+    },
+    {
+     "label": "H",
+     "text": "Although Catmull built on the work of others, the revolution in three-dimensional animation was largely his achievement. He maintained a long-term vision of fully computer-animated films and, while leading computer graphics laboratories at the New York Institute of Technology and at George Lucas’s Lucasfilm, assembled the technical and creative teams that would later form the core of Pixar Animation Studios."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Robert Iger expressed personal criticism of Michael D. Eisner.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "FALSE – Paragraph A says Iger replaced Eisner and made a bold move, but does not say Iger expressed personal criticism of Eisner."
+      },
+      {
+       "n": 2,
+       "text": "Pixar Inc. achieved very little financial success during its early years.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "TRUE – Paragraph B: the group made short promotional films that brought in practically no revenue and it continued to lose money year after year."
+      },
+      {
+       "n": 3,
+       "text": "The production of Toy Story encountered significant problems.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "TRUE – Paragraph C: Disney considered ordering Pixar to shut down production because of problems with the script."
+      },
+      {
+       "n": 4,
+       "text": "In the early 1990s, Hollywood commentators believed computer-animated films would be successful.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "FALSE – Paragraph C: Hollywood commentators doubted whether audiences would even sit through a full-length film."
+      },
+      {
+       "n": 5,
+       "text": "Finding Nemo was more successful than Toy Story.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "NOT GIVEN – Paragraph D: Both films are mentioned as critically acclaimed and successful, but no comparison of their relative success is given."
+      },
+      {
+       "n": 6,
+       "text": "Pixar made only a small contribution to Disney’s film income in 2004.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "FALSE – Paragraph D: Pixar films accounted for approximately 45 per cent of the operating income from Disney’s film operations."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- worked as a ride [[7]] at Disneyland\n- which increased his [[8]]\n- experienced [[9]] when Disney rejected new technology\n- was Pixar’s [[10]] at the 2006 shareholders’ meeting\n- preferred [[11]] to dominating conversations\n- remained committed to his [[12]] for computer-animated films\n- assembled the teams that formed the [[13]] of Pixar",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "operator"
+       ],
+       "explanation": "Paragraph F: Lasseter described working as a ride operator on Disneyland’s Jungle Cruise."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "confidence"
+       ],
+       "explanation": "Paragraph F: telling jokes helped him gain confidence in public speaking."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "frustration"
+       ],
+       "explanation": "Paragraph F: He recalled the frustration he felt when Disney initially rejected computer animation technology."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "president"
+       ],
+       "explanation": "Paragraph G: Dr Edwin Catmull, then sixty-one years old and president of Pixar."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "listening"
+       ],
+       "explanation": "Paragraph G: known for listening rather than dominating conversations."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "vision"
+       ],
+       "explanation": "Paragraph H: He maintained a long-term vision of fully computer-animated films."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "core"
+       ],
+       "explanation": "Paragraph H: assembled the technical and creative teams that would later form the core of Pixar Animation Studios."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "A Mechanical Friend for Children",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The development of robots that interact socially with people and assist them in everyday life has been an elusive goal of modern science. Despite impressive advances in the mechanical aspects of this problem, producing robots that bond and socialize with people for sustained periods of time has proven difficult. The most successful robots so far have been storytellers, but they have only been able to maintain human interest for a limited time and typically rely on roles telling stories that change over time. In practice, commercially available robots seldom cross the 10-hour barrier (i.e. individual users tend to spend less than a combined total of 10 hours with the robots before losing interest). This observation is in sharp contrast to the long-term interactions and bonding that commonly develop between humans and their pets."
+    },
+    {
+     "label": "B",
+     "text": "In a recent study, researchers from the Institute for Neural Computation in California introduced a state-of-the-art social robot into a classroom of 16 24-month-olds for five months as a way of studying human-robot interactions. The researchers, including Fumihide Tanaka and Xavier R. Movellan, introduced a toddler-sized humanoid robot into a classroom of a childhood education center. One of the QRIO series of robots, the 58cm machine, was originally developed by Sony. Children of toddler age were chosen because they have no preconceived notions of robots, according to Tanaka. One of the goals of the study was to establish whether it was possible for social robots to maintain the interest of children beyond the 10-hour barrier."
+    },
+    {
+     "label": "C",
+     "text": "The researchers sent instructions to the robot about every two minutes to do things like giggle, dance, sit down, fall down or walk in a certain direction. The 45 sessions were videotaped, and interactions between toddlers and the robot were later analyzed. The results showed that the quality of those interactions improved steadily over 27 sessions. The interactions deteriorated quickly over the next 15 sessions, when the robot was ordered to behave in a more limited, predictable manner. Finally, the human-robot relations improved in the last three sessions, after the robot had been instructed to display its full repertory of behaviors."
+    },
+    {
+     "label": "D",
+     "text": "‘Initially the children treated the robot very differently from the way they treated each other,’ Tanaka said. ‘Early in the study some children cried when QRIO fell. But a month into the study, the toddlers helped QRIO stand up by pushing it back on its hands.’ The most important aspect of interaction was touch, Tanaka said. At first the toddlers would touch the robot on its face, but later on they would touch it on its hands and arms, like they would with other humans. Another robot-like toy named Robby, which resembled QRIO but did not move, was used as a control in the study. While hugging of QRIO increased, hugging of Robby decreased throughout the study. Furthermore, when QRIO laid down on the floor as its batteries ran down, a toddler would put a blanket over his silver-colored ‘friend’ and say ‘night-night’. Care-taking behaviors were frequently observed toward QRIO but seldom toward Robby."
+    },
+    {
+     "label": "E",
+     "text": "The study concluded that after 45 days of immersion in a childcare center over a period of five months, long-term bonding and socialization occurred between toddlers and a state-of-the-art social robot. Overall, the interaction between children and the robot improved over time and the children progressively treated it more as a peer than a plaything. ‘To my knowledge, this is the first long-term study of this sort,’ said Ronald Arkin, a roboticist at the Georgia Institute of Technology in the US."
+    },
+    {
+     "label": "F",
+     "text": "Tanaka and Movellan are now developing autonomous robots for the toddler classroom. ‘It could have great potential in educational settings assisting teachers and enriching the classroom environment,’ Tanaka said. The researchers hope that more advanced versions of robots like QRIO could become personalized tutors to assist teachers in classrooms. A robotic tutor could react on the spot to social cues and approximate social skills like facial expression and eye gaze, they said. ‘It is becoming clear that, to achieve this goal, we are going to [need to] endow machines with something similar to emotion, not just traditional forms of intelligence,’ said Movellan."
+    },
+    {
+     "label": "G",
+     "text": "Associate professor David Powers, an expert in artificial intelligence and cognitive science at Flinders University in South Australia, commented, ‘In this study it is clearly demonstrated that limited range of robot behaviors, however impressive, is nowhere near as important to human-robot interaction as being able to make appropriate responses from a broad repertoire of behaviors’. Ronald Arkin was not surprised by the affection demonstrated by the toddlers toward the robot. ‘Humans have a tremendous propensity to bond with artifacts, whether it be a car, a doll, or a robot,’ he said. But he also cautioned that researchers do not yet understand the consequences of increased human-robot interaction. ‘Studying how robots and humans work together can give us insight into whether this is a good thing or a bad thing for society,’ Arkin said. ‘We need to find out what the consequences are of introducing a robot into a cadre of children. How will that enhance, or potentially interfere with, their social development? Do we really understand the long-term impact of having a robot as a childhood friend?’"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Which paragraph contains the following information? You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "a comparison of children’s reactions to two different robots",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D contrasts how children treated QRIO versus Robby."
+      },
+      {
+       "n": 15,
+       "text": "speculation about future ways robots may communicate",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F: Researchers hope robots could approximate social skills like facial expression and eye gaze."
+      },
+      {
+       "n": 16,
+       "text": "changes in how children physically interacted with a robot",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D: children’s touching changed from face to hands and arms."
+      },
+      {
+       "n": 17,
+       "text": "a comparison between human relationships with animals and robots",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G: Arkin says humans bond with artifacts like cars, dolls, or robots."
+      },
+      {
+       "n": 18,
+       "text": "a description of how a robot’s behaviour was controlled",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C: researchers sent instructions every two minutes."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of researchers below. Match each statement with the correct researcher, A–D. NB You may use any letter more than once.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Fumihide Tanaka"
+      },
+      {
+       "key": "B",
+       "text": "Xavier R. Movellan"
+      },
+      {
+       "key": "C",
+       "text": "Ronald Arkin"
+      },
+      {
+       "key": "D",
+       "text": "David Powers"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 19,
+       "text": "Robots may need emotional qualities as well as intelligence.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph F: Movellan said we need to endow machines with something similar to emotion."
+      },
+      {
+       "n": 20,
+       "text": "It is unclear whether increased human-robot interaction will be beneficial.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph G: Arkin cautioned that researchers do not yet understand the consequences."
+      },
+      {
+       "n": 21,
+       "text": "Toddlers have no pre-existing ideas about robots.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph B: Tanaka said toddlers have no preconceived notions of robots."
+      },
+      {
+       "n": 22,
+       "text": "A wide range of behaviours is essential for effective interaction.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph G: Powers said broad repertoire of behaviors is what matters."
+      },
+      {
+       "n": 23,
+       "text": "Robots could play a valuable role in education.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph F: Tanaka said great potential in educational settings."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Robots that best maintained people’s attention previously acted as [[24]]\n- Children treated QRIO more as a [[25]] than a toy.\n- Arkin expected children to show [[26]] towards the robot.",
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "storytellers"
+       ],
+       "explanation": "Paragraph A: The most successful robots so far have been storytellers."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "peer"
+       ],
+       "explanation": "Paragraph E: treated it more as a peer than a plaything."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "affection"
+       ],
+       "explanation": "Paragraph G: not surprised by the affection demonstrated by the toddlers."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The Peopling of Patagonia",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The human settlement of the southern extremity of the Americas has always fascinated pre-historians. Viewed from a global perspective, this was the last major continental land mass to be reached by human beings. The earliest occupation of Patagonia carries obvious implications for understanding when the North and South American continents were peopled, because it gives a baseline that all calculations regarding the rate of dispersal of humans throughout both continents must take into account."
+    },
+    {
+     "label": "B",
+     "text": "For many years the human settlement of North and South America has been conceived of as beginning in the far north and travelling progressively southwards to Patagonia. However, fundamental disagreements developed concerning the length of time involved. Some scholars accepted a human presence in the Americas as early as 20,000 years ago, while others proposed that it could date no earlier than 8,000 years ago, and the debate is still with us today."
+    },
+    {
+     "label": "C",
+     "text": "The idea of a relatively ‘late’ settlement of the Americas (around 8,000 years ago) implies that a rapid process of migration took place. Herein lies a second debate which revolves around the question of how migration is to be understood. The ‘late’ model demands a hypothetical migration conceived of as a single continually advancing wave of settlement. This has always been difficult to take seriously and many scholars now support the idea of an early model that sees migration as a less ordered migration, and this is surely the most realistic scenario as migrants slowly adapted to the diverse natural habitats they would have met while travelling through the continent."
+    },
+    {
+     "label": "D",
+     "text": "Those who argue for an earlier settlement, however, must contend with the lack of unequivocal evidence for archaeological sites older than around 14,000 years. Nevertheless, evidence for human occupation of the centre of South America is now securely dated to around 12,500 years ago at the Monte Verde site, which casts doubt on the ‘late’ model. The lack of archaeological evidence further south for this time period may be explained by the obstacle to humans on foot posed by the huge glacial streams that were present at that time."
+    },
+    {
+     "label": "E",
+     "text": "We can speculate then that the retreat of the Patagonian glaciers around 14,000 years ago allowed the initial human intrusion into a pristine environment, which was similar to that of early post-glacial Europe. Human settlement of the vast horizontal expanse of treeless high country must have been tenuous at best, and the evidence for this occupation remains relatively scant, most of it coming from rock shelters in Argentina and Chile. There is, however, reliable evidence from these sites to confirm the presence of humans by around 11,000 years ago in different habitats and some hints of an even older occupation. However, some other sites where evidence for even earlier human occupation was initially posited, have recently come under fresh scrutiny. This is because anthropologists have come to recognise that bones or other evidence may be deposited in caves by natural agency, in other words by other forces such as floods or predators, and not necessarily by humans."
+    },
+    {
+     "label": "F",
+     "text": "We shall turn now to a more detailed discussion of the archaeological evidence found in various parts of Patagonia. At the site located beside Chinchihuapi Creek, excavations have produced convincing evidence of human occupation, including hut foundations and wooden artefacts. They were buried in layers of peat, which has the property of preserving wood remarkably well, and a result radiocarbon dating tests have shown these artefacts to date from around 12,500 years ago. One of the most famous Patagonian sites is a cave known as Los Toldos. However, the evidence from this site has recently been called into question, because dispersed flecks of carbon used in the test process were taken unsystematically from many different places in the site. As a result, the association of this material with the artefacts is not at all clear. About 150 kilometres south is the site called El Ceibo, where a similar collection of artefacts to that found at Los Toldos has been discovered from the lowest levels of the dig, but as yet no radiocarbon dates are available and this sort of analysis of the existing evidence is required before the site’s value can be confirmed."
+    },
+    {
+     "label": "G",
+     "text": "The Arroyo Feo site is located very close to the high plateau. The artefacts from the earliest occupations were found at the same depth and have the same origins as those from Los Toldos, and have been securely dated to around 9,000 years ago. Another site that is mentioned in the debate is Las Buitreras, where a number of stone flakes associated with bone remains of various animals have been discovered. However, anthropologists now believe that presumed cut marks on the bones are somewhat dubious, and despite detailed testing there is no way to securely relating any of these remains with human occupation. Finally some 50 kilometres to the south is the site at Cueva Fell, which was the first Patagonian site to be systematically studied by modern archaeological method. However, it is now recognised that the utility of this must be restricted to its direct vicinity, given changes to the nearby area caused by flooding, and findings cannot be freely extrapolated further afield."
+    },
+    {
+     "label": "H",
+     "text": "In conclusion, based on the evidence from a number of reliable sites, it seems probable that human populations reached Patagonia around 11,000 years ago."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "The writer emphasises that migration to Patagonia",
+       "options": [
+        {
+         "key": "A",
+         "text": "occurred earlier than once believed"
+        },
+        {
+         "key": "B",
+         "text": "has been ignored by historians"
+        },
+        {
+         "key": "C",
+         "text": "affects research into both American continents"
+        },
+        {
+         "key": "D",
+         "text": "altered the local environment"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "C – Paragraph A: gives a baseline for all calculations regarding dispersal of humans throughout both continents."
+      },
+      {
+       "n": 28,
+       "text": "The purpose of paragraph B is to",
+       "options": [
+        {
+         "key": "A",
+         "text": "dispute previous findings"
+        },
+        {
+         "key": "B",
+         "text": "outline a continuing academic debate"
+        },
+        {
+         "key": "C",
+         "text": "suggest new research methods"
+        },
+        {
+         "key": "D",
+         "text": "explain why humans migrated"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "B – Paragraph B describes disagreements and states the debate is still with us today."
+      },
+      {
+       "n": 29,
+       "text": "The ‘late’ model is discussed in order to",
+       "options": [
+        {
+         "key": "A",
+         "text": "contrast it with an alternative theory"
+        },
+        {
+         "key": "B",
+         "text": "assess migration success"
+        },
+        {
+         "key": "C",
+         "text": "criticise academic research"
+        },
+        {
+         "key": "D",
+         "text": "compare global migrations"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "A – Paragraph C discusses the late model then introduces the early model as an alternative."
+      },
+      {
+       "n": 30,
+       "text": "The ‘early’ model is favoured because it",
+       "options": [
+        {
+         "key": "A",
+         "text": "supports rapid migration"
+        },
+        {
+         "key": "B",
+         "text": "reflects environmental realities"
+        },
+        {
+         "key": "C",
+         "text": "suggests earlier habitability"
+        },
+        {
+         "key": "D",
+         "text": "explains population growth"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "B – Paragraph C: migrants slowly adapted to the diverse natural habitats."
+      },
+      {
+       "n": 31,
+       "text": "The Monte Verde site is important because it",
+       "options": [
+        {
+         "key": "A",
+         "text": "contradicts previous dating"
+        },
+        {
+         "key": "B",
+         "text": "supports early settlement claims"
+        },
+        {
+         "key": "C",
+         "text": "lacks archaeological reliability"
+        },
+        {
+         "key": "D",
+         "text": "was revealed by glacial streams"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "B – Paragraph D: evidence securely dated to 12,500 years ago, casts doubt on the late model."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 32,
+       "text": "The first settlers encountered conditions found nowhere else in the world.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "NOT GIVEN – Paragraph E mentions conditions similar to early post-glacial Europe."
+      },
+      {
+       "n": 33,
+       "text": "Early settlers in highland areas relied mainly on hunting.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "NOT GIVEN – The passage does not specify what activities early highland settlers relied on."
+      },
+      {
+       "n": 34,
+       "text": "Archaeologists have drawn no conclusions from rock-shelter evidence.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "NO – Paragraph E: reliable evidence from these sites to confirm the presence of humans."
+      },
+      {
+       "n": 35,
+       "text": "Archaeological material can be relocated by natural processes.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "YES – Paragraph E: bones may be deposited in caves by natural agency."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary below. Choose the correct letter, A–J, from the list below.",
+     "title": "Patagonian Archaeological Sites",
+     "options": [
+      {
+       "key": "A",
+       "text": "fixed date"
+      },
+      {
+       "key": "B",
+       "text": "random collection"
+      },
+      {
+       "key": "C",
+       "text": "similar properties"
+      },
+      {
+       "key": "D",
+       "text": "good condition"
+      },
+      {
+       "key": "E",
+       "text": "scientific evaluation"
+      },
+      {
+       "key": "F",
+       "text": "huge quantities"
+      },
+      {
+       "key": "G",
+       "text": "new samples"
+      },
+      {
+       "key": "H",
+       "text": "reliable"
+      },
+      {
+       "key": "I",
+       "text": "skilled preservation"
+      },
+      {
+       "key": "J",
+       "text": "immediate surroundings"
+      }
+     ],
+     "template": "Building remains and other evidence have been found in [[36]] at the Chinchihuapi Creek site, and because of this it has been possible to date them at around 12,500 years ago. However, the [[37]] of the sample taken from Los Toldos means that this site is of doubtful value. El Ceibo is a more promising dig, where the [[38]] of artefacts would be beneficial in order to confirm the usefulness of discoveries there. The remains found at the Arroyo Feo site show [[39]] and date from around 9,000 years ago. Unfortunately, no [[40]] connection can be made between the samples taken from Las Buitreras and human presence. The findings of the work carried out at Cueva Fell cannot provide useful information beyond the immediate area.",
+     "questions": [
+      {
+       "n": 36,
+       "answer": [
+        "D"
+       ],
+       "explanation": "D (good condition) – wood was preserved remarkably well in peat."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "B"
+       ],
+       "explanation": "B (random collection) – carbon flecks taken unsystematically."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "E"
+       ],
+       "explanation": "E (scientific evaluation) – analysis required before the site’s value can be confirmed."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "C"
+       ],
+       "explanation": "C (similar properties) – same origins as those from Los Toldos."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "H"
+       ],
+       "explanation": "H (reliable) – no way to securely relate remains with human occupation."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

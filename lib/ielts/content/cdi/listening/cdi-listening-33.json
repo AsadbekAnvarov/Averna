@@ -1,0 +1,615 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-33",
+ "title": "CDI Listening Test 33",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-33-part-1",
+   "title": "Part 1",
+   "context": "You will hear a telephone conversation between a woman called Susan who is looking for accommodation to rent and a real estate agent. First, you have some time to look at questions 1 to 3.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Rental property application form\nExample Name: Susan Smith\nPhone number: [[1]] (mobile)\nEmail address: susansmith@ [[2]]\nCurrent address: 234 Becketts Road, Brisbane, 4054\nNew Zealand Employer: Auckland Hospital\nOccupation: a [[3]]\nRental start date: 8th February\nPreferred property type:\n- First preference: a house with a [[4]]\n- Second preference: an apartment with a big [[5]]\nBedrooms: two\nFurnishings: a [[6]] is required\nMaximum rent: [[7]] $ per week\nPreferred location: near the [[8]]\nOther requirements:\n- Must have [[9]] nearby\n- Would like [[10]] included in the rent",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "614381997",
+        "61438197",
+        "0614381997"
+       ],
+       "explanation": "'It’s 61438197.' (mobile phone number)"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "post.com"
+       ],
+       "explanation": "'It’s SusanSmith at post.com.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "chemist"
+       ],
+       "explanation": "'Most people assume that or think I’m a doctor, but actually I’m a chemist.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "garden"
+       ],
+       "explanation": "'My dream would be a house that has its own garden.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "balcony"
+       ],
+       "explanation": "'If you could find me one with a large balcony, I’d be happy.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "fridge",
+        "refrigerator"
+       ],
+       "explanation": "'All I really need in the place is a fridge. I don’t have one.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "400",
+        "$400"
+       ],
+       "explanation": "'You definitely won’t need to pay more than four hundred dollars.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "beach"
+       ],
+       "explanation": "'I’m a mad keen surfer, so it’s important for me to be close to the beach.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "parking"
+       ],
+       "explanation": "'We’ll need to have parking close to the doors so I won’t have to walk far at night.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "electricity",
+        "power"
+       ],
+       "explanation": "'It’d be great if electricity was part of the rent.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a telephone conversation between a woman called Susan who is looking for accommodation to rent and a real estate agent. First, you have some time to look at questions 1 to 3.\nYou will see that there is an example that has been done for you. On this occasion only, the conversation relating to this will be played first.\nPeter: Good morning, McMurray's Real Estate, Peter speaking. How may I help you?\nSusan: Hi, Peter. My name is Susan. I'm calling from Australia. I'll be moving to New Zealand soon, and I was hoping you could help me find somewhere to live in Auckland.\nPeter: Would be pleased to. I just need to get some information about what you want so we can find the perfect place.\nSusan: Sounds good.\nPeter: Let's start with some personal details. What's your last name?\nSusan: It's Smith.\nThe woman's last name is Smith, so Smith has been written in the space. Now we shall begin. You should answer the questions as you listen, because you will not hear the recording a second time. Listen carefully and answer questions 1 to 3.\nPeter: Good morning, McMurray's Real Estate. Peter speaking. How may I help you?\nSusan: Hi, Peter. My name is Susan. I'm calling from Australia. I'll be moving to New Zealand soon, and I was hoping you could help me find somewhere to live in Auckland.\nPeter: Would be pleased to. I just need to get some information about what you want so we can find the perfect place.\nSusan: Sounds good.\nPeter: Let's start with some personal details. What's your last name?\nSusan: It's Smith.\nPeter: And your phone number?\nSusan: I only have a mobile. Is that okay?\nPeter: That's fine.\nSusan: Okay. It's 614381997. But if you want to contact me, usually the best way is by email.\nPeter: Okay. What's your email address then?\nSusan: It's SusanSmith at post.com.\nPeter: Thanks. Now you said you're living in Australia.\nSusan: Right, in Brisbane.\nPeter: Okay. What's your address in Brisbane then?\nSusan: 234 Becketts. That's B-E-C-K-E-T-T-S. Road, Brisbane 4054.\nPeter: Right. Will you be working in New Zealand?\nSusan: Yes. I have a job at Auckland Hospital.\nPeter: Oh, are you a nurse?\nSusan: Most people assume that or think I'm a doctor, but actually I'm a chemist.\nPeter: Oh, sorry.\nSusan: That's okay.\nPeter: When will you need the accommodation from?\nSusan: Well, I don't start work until the twenty-fifth of February, but I'd like to give myself some time to settle in. A couple of weeks would be nice. Let's say from the tenth of February.\nPeter: At least it'd start from a Monday and the Monday closest to that is the eighth of February. Would that suit?\nSusan: That's fine.\nBefore you hear the rest of the conversation, you have some time to look at questions 4 to 10. Now listen and answer questions 4 to 10.\nPeter: Okay, let's talk about what kind of place you'd like to rent.\nSusan: Hmm. I like the outdoors, so my dream would be a house that has its own garden.\nPeter: Is there anything else you'd consider? An apartment, for example?\nSusan: I don't know. They usually don't have an outdoor area. But I guess as an alternative, if you could find me one with a large balcony, I'd be happy.\nPeter: How many rooms do you want?\nSusan: Usually one bedroom places are too small. Two would be ideal.\nPeter: Now what would you like to have in the place when you move in?\nSusan: I'm bringing most of what I need with me. I have beds and sofas and a television, all that sort of stuff, so none of that is necessary.\nPeter: Sounds like you want a partially furnished house with a washing machine.\nSusan: Actually, I'm bringing that too. All I really need in the place is a fridge. I don't have one, so we'll definitely need one. Okay. Can you find something like that for around three hundred and fifty dollars a week?\nPeter: Well, I'll certainly try. I'll start looking for places that cost around $300 and see if there's anything suitable. You definitely won't need to pay more than 400 dollars for something like that.\nSusan: Oh that's good. I couldn't pay more than that.\nPeter: All right, I'll see what I can find. You're working at the hospital. Do you want to live somewhere near there?\nSusan: Most people think it's strange, but I don't like living close to work. But I'm a mad keen surfer, so it's important for me to be close to the beach.\nPeter: Okay. Do you need to be near public transport?\nSusan: No, I usually drive to work because I work a lot of shift work. So wherever I live we'll need to have parking close to the doors so I won't have to walk far at night.\nPeter: Anything else?\nSusan: I've heard that power bills can get quite expensive, especially in the winter. It'd be great if electricity was part of the rent.\nPeter: Okay. Just one last question for our records. Where did you hear about us?\nThat is the end of section 1. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-33-part-2",
+   "title": "Part 2",
+   "context": "You will hear an introductory talk to a group of parents about a special centre for young children. First, you have some time to look at questions 11 to 14. Now listen carefully and answer questions 11 to 14.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "The Pre-school Family Centre\nFeatures of the Pre-school Family Centre\n- for children from [[11]] to 5 years old\n- run as a [[12]] by parents, who attend with their children\n- parents receive special [[13]] from the centre\n- children's activities organised in [[14]] age groups\nFacts about the Centre\n- sessions from 9:30–12:30 each morning\n- one afternoon session to help prepare older children for [[15]] at school\n- parents must make several [[16]] before they enroll their child\n- each centre is officially recognised and receives [[17]] funding\nParents' Commitments\n- take on responsibility for a special [[18]]\n- attend one [[19]]\nPractical Advice\n- attend regularly to help your child gain [[20]]\n- younger children may need to leave early\n- provide a snack for your child",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "3 months",
+        "three months",
+        "3 month"
+       ],
+       "explanation": "'A childhood education centre for children from three months up to five years old.'"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "cooperative",
+        "co-operative"
+       ],
+       "explanation": "'The preschool family centre is organised as a cooperative by the parents.'"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "training"
+       ],
+       "explanation": "'We offer training for parents, teaching them the skills they need.'"
+      },
+      {
+       "n": 14,
+       "answer": [
+        "mixed"
+       ],
+       "explanation": "'These are all done in groups of mixed ages.'"
+      },
+      {
+       "n": 15,
+       "answer": [
+        "reading"
+       ],
+       "explanation": "'We do some activities to help prepare them for reading before they start school.'"
+      },
+      {
+       "n": 16,
+       "answer": [
+        "visits",
+        "5 visits",
+        "five visits"
+       ],
+       "explanation": "'You need to make at least five visits with your child.'"
+      },
+      {
+       "n": 17,
+       "answer": [
+        "government"
+       ],
+       "explanation": "'Each centre is entitled to funding from the government.'"
+      },
+      {
+       "n": 18,
+       "answer": [
+        "job"
+       ],
+       "explanation": "'You will be asked to choose a particular job, like secretary or gardener or librarian.'"
+      },
+      {
+       "n": 19,
+       "answer": [
+        "meeting"
+       ],
+       "explanation": "'We have a meeting which we use to plan the program, and each parent is expected to attend this.'"
+      },
+      {
+       "n": 20,
+       "answer": [
+        "confidence"
+       ],
+       "explanation": "'Your child will develop confidence while he or she is here.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear an introductory talk to a group of parents about a special centre for young children. First, you have some time to look at questions 11 to 14. Now listen carefully and answer questions 11 to 14.\nSpeaker: Good evening everyone and welcome to the Pre-school Family Centre. It's really good to see so many parents here, and I hope this talk will help you to find out more about what we do here and how the centre works so you can decide if this sounds the right sort of place for your child.\nSpeaker: Okay, so first of all, what is the Pre-school Family Centre? Well, basically it's a childhood education centre for children from 3 months up to five years old.\nSpeaker: But we're different from a lot of other organizations for preschool children. We believe that the first educators of a child are their parents, and so the Pre-school Family Centre is organised as a cooperative by the parents, which means it is the parents themselves who are responsible for running the centre and also for running each session.\nSpeaker: So this means that we ask parents to attend the centre with their children on a regular basis. In order to make this work, we offer training for parents, teaching them the skills they need to work with children and run the sessions.\nSpeaker: The children do all sorts of different activities: art, music, singing and games, and these are all done in groups of mixed ages because we believe that by learning to play together, children learn how to make choices and how to respect people and things.\nBefore you hear the rest of the talk, you have some time to look at questions 15 to 20. Now, listen and answer questions 15 to 20.\nSpeaker: Now some factual information. Sessions run each morning from 9.30 to 12.30, and we have an extra session on Thursday afternoons, which is solely for older children, where we do some activities to help prepare them for reading before they start school. We feel this is really important and can make a big difference when they get to school.\nSpeaker: And now, before you enrol your child in the centre, you need to make at least five visits with your child. This is so you are fully aware of how the centre works before you enroll. The centres are recognised as official preschools and so each centre is entitled to funding from the government.\nSpeaker: The centre is a really wonderful experience but does require some work, so I'd just like to talk about some of the commitments you will need to make if you decide to go ahead and enrol your child. A couple of points first.\nSpeaker: Once you and your child have settled into the centre and are familiar with how things work, you will be asked to choose a particular job, like secretary or gardener or librarian, or something to be responsible for. And we have a meeting which we use to plan the program, and each parent is expected to attend this.\nSpeaker: Now, just before we move on to answer any questions you have, I'd just quickly like to mention some of the ways you and your child are able to get the most out of the centre. It's important that you attend regularly. This way you'll get to know other parents well and your child will develop confidence while he or she is here.\nSpeaker: Younger children might need to leave early. It's better to leave early than to go home with an overtired child. We do provide drinks for the children, but we ask you to make sure your child has a snack to eat during the morning. No crisps or chocolate, please. Right, I think I'll stop there and ask if anyone's got any questions.\nThat is the end of section 2. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-33-part-3",
+   "title": "Part 3",
+   "context": "You will hear two sports physiotherapy students called John and Cath preparing a joint presentation on foot injuries in sports players. First, you have some time to look at questions 21 to 26. Now listen carefully and answer questions 21 to 26.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "John and Cath's presentation plans are different in…",
+       "options": [
+        {
+         "key": "A",
+         "text": "the examples used."
+        },
+        {
+         "key": "B",
+         "text": "the order of information."
+        },
+        {
+         "key": "C",
+         "text": "the main points made."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'But the types of sports we’ve chosen to illustrate the possible injuries aren’t the same.' — examples used differ."
+      },
+      {
+       "n": 22,
+       "text": "What do the students agree about the anatomy section of their presentation?",
+       "options": [
+        {
+         "key": "A",
+         "text": "it would be better if Cath spoke about it."
+        },
+        {
+         "key": "B",
+         "text": "it should be kept quite short."
+        },
+        {
+         "key": "C",
+         "text": "it should be based on information from the internet."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'I do think we should limit this section though. We don’t want to spend much time on anatomy.'"
+      },
+      {
+       "n": 23,
+       "text": "What do the students agree to include in the last section?",
+       "options": [
+        {
+         "key": "A",
+         "text": "visuals of injuries"
+        },
+        {
+         "key": "B",
+         "text": "demonstrations of treatment"
+        },
+        {
+         "key": "C",
+         "text": "interviews with patients"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'I could be the patient and you could do the treatment.' — demonstrations of treatment."
+      },
+      {
+       "n": 24,
+       "text": "What is said about the different types of heel injury?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Diagnosis is straightforward."
+        },
+        {
+         "key": "B",
+         "text": "They are expensive to treat."
+        },
+        {
+         "key": "C",
+         "text": "Some are more serious than others."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'These vary enormously in how bad they are.' — some more serious than others."
+      },
+      {
+       "n": 25,
+       "text": "On the subject of causes of heel injuries, the students agree to…",
+       "options": [
+        {
+         "key": "A",
+         "text": "focus on a single reason."
+        },
+        {
+         "key": "B",
+         "text": "reject certain approaches."
+        },
+        {
+         "key": "C",
+         "text": "use a source written by their professor."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'For simplicity, let’s just pick one cause.' — focus on a single reason."
+      },
+      {
+       "n": 26,
+       "text": "What does Cath say about stretching as a treatment?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is potentially risky."
+        },
+        {
+         "key": "B",
+         "text": "It is commonly confused with strengthening."
+        },
+        {
+         "key": "C",
+         "text": "It is the least effective part of treatment."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'You have to be careful not to overstretch... otherwise you could do yourself more harm than good.' — potentially risky."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO treatment techniques did the female runner find useful for her swollen heel?",
+     "options": [
+      {
+       "key": "A",
+       "text": "massage"
+      },
+      {
+       "key": "B",
+       "text": "ultrasound"
+      },
+      {
+       "key": "C",
+       "text": "rest"
+      },
+      {
+       "key": "D",
+       "text": "balancing exercises"
+      },
+      {
+       "key": "E",
+       "text": "ice"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "Massage: 'She was shown how to use deep tissue massage techniques, and was surprised at how much freedom of movement this created in her foot.' Rest: 'Initially she rested the injury. This did help to reduce the swelling.'"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "A",
+        "C"
+       ],
+       "explanation": "Massage: 'She was shown how to use deep tissue massage techniques, and was surprised at how much freedom of movement this created in her foot.' Rest: 'Initially she rested the injury. This did help to reduce the swelling.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO sports did the male sprinter find most effective during his rehabilitation programme?",
+     "options": [
+      {
+       "key": "A",
+       "text": "swimming"
+      },
+      {
+       "key": "B",
+       "text": "weight-training"
+      },
+      {
+       "key": "C",
+       "text": "running on grass"
+      },
+      {
+       "key": "D",
+       "text": "cycling"
+      },
+      {
+       "key": "E",
+       "text": "jumping"
+      }
+     ],
+     "questions": [
+      {
+       "n": 29,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "Weight-training: 'If he used light weights, he could train without pain.' Cycling: 'He also tried cycling and found this beneficial as his foot was not making contact with the ground.'"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "Weight-training: 'If he used light weights, he could train without pain.' Cycling: 'He also tried cycling and found this beneficial as his foot was not making contact with the ground.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear two sports physiotherapy students called John and Cath preparing a joint presentation on foot injuries in sports players. First, you have some time to look at questions 21 to 26. Now listen carefully and answer questions 21 to 26.\nJohn: I've had a look at your draft presentation plan and compared it with mine, Cath, and we seem to have the same basic structure. We've both included the same three main sections, that's the anatomy of the foot, the injuries and the treatment, and we've organized our presentations in the same way. But the types of sports we've chosen to illustrate the possible injuries aren't the same. [examples used — A]\nCath: I'll deal with the anatomy bit. I've got notes and a handout on that from Professor Gilligan's lecture.\nJohn: Oh, I was hoping to do that. I've downloaded some useful stuff. I do think we should limit this section though. We don't want to spend much time on anatomy when the main focus is on the treatment. [kept short — B]\nCath: That's true, but in the last section, maybe the two of us could show how some of these therapies actually work. I could be the patient and you could do the treatment. [demonstrations of treatment — B]\nJohn: Hmm, good idea. Because it's hard to find pictures as injuries are mostly internal. It would be good to hear some first hand accounts from injured athletes, too.\nCath: Yeah, but we don't have time.\nJohn: No. Should we then discuss different types of heel injury? It's worth pointing out that these vary enormously in how bad they are. It might be just a pulled muscle or a bone injury which needs surgery. Sometimes only an expert can tell the difference. [some more serious than others — C]\nCath: Excellent. I'll do the slides on that. Leave that one to me.\nJohn: Now, what about causes of heel injuries?\nCath: Well, it's easy enough to list them — overuse, improper footwear...\nJohn: Yes, um... incorrect running style.\nCath: They're all relevant, but for simplicity, let's just pick one cause. Say stuff about changing your training habit suddenly. [focus on a single reason — A]\nJohn: You mean like suddenly doing a lot of mountain training, yes, that's a good idea. And there was research on that in the latest edition of Physio Journal, wasn't there? Professor Gilligan recommended it to us.\nCath: Great. Uh you can leave the bit on stretching techniques to me. I really like all that stuff.\nJohn: So what's going to be your approach there?\nCath: Well, I'll summarize all the various techniques with visual support, and then I'll make the point that the stretching should be carefully managed. Obviously, you have to be careful not to overstretch, and to stretch only when your muscles are warmed up. Otherwise you could do yourself more harm than good. [potentially risky — A] It's also important that on a supervised program, stretching is later on combined with balance exercises, which stretch and also strengthen the muscles.\nBefore you hear the rest of the discussion, you have some time to look at questions 27 to 30. Now listen and answer questions 27 to 30.\nCath: It's always useful to have some information on case studies at the end, in case we're short of material. Did you manage to find anything?\nJohn: Yes. A female runner in her 30s talking about her treatment for a swollen heel. Initially she rested the injury. This did help to reduce the swelling, although it was still a little bit uncomfortable.\nJohn: Then she applied an ice pack to the injury twice a day.\nCath: Did that work?\nJohn: Well, she persisted with this treatment for the first month, but decided it wasn't helping. After this period, she was shown how to use deep tissue massage techniques, and was surprised at how much freedom of movement this created in her foot.\nCath: Wasn't she having ultrasound treatment?\nJohn: Yes, she was having sessions at the hospital, but she remained unconvinced about its value. She felt the same about the balancing exercises she was prescribed.\nCath: Okay, that's interesting. I looked at the aftercare program of a male sprinter who was allowed to do some sports activity as part of his rehabilitation. After four months of treatment, he did some light running on grass, wearing shoes that gave plenty of support to his injured heel.\nJohn: So it didn't hurt.\nCath: Well, he found the heel was sore afterwards, and the same happened with some jumping exercises he was asked to try.\nJohn: Did he go to the gym and use weights?\nCath: Yes, after a few weeks. And if he used light weights, he could train without pain. He also tried cycling and found this beneficial as his foot was not making contact with the ground. He expected a similar result with swimming but found the repetitive kicking motion was actually aggravating the injury.\nJohn: Well, both these case studies have value.\nThat is the end of section 3. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-33-part-4",
+   "title": "Part 4",
+   "context": "You will hear part of a lecture on the ways that supermarkets use layout to increase sales. First, you have some time to look at questions 31 to 40. Now listen carefully and answer questions 31 to 40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the table below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS for each answer.",
+     "wordLimit": 3,
+     "template": "| Layout | Description | Advantages | Disadvantages |\n| Grid | parallel aisles | efficient use of floor space controls [[31]] | uninteresting layout shoppers can [[32]] through their shopping |\n| Free-form | [[33]] organization | customers need more [[34]] to find products | poor use of space, so less [[35]] |\n| Boutique | displays arranged around a food speciality | separates space into [[36]] Creates attractive image | poor use of space |",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "traffic flow"
+       ],
+       "explanation": "'This layout helps to manage traffic flow as it encourages people to all walk in one direction.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "rush"
+       ],
+       "explanation": "'It is easier for customers to rush through the supermarket without lingering.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "random"
+       ],
+       "explanation": "'Displays and aisles are arranged in a random pattern.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "time"
+       ],
+       "explanation": "'Customers tend to spend more time in the store as they wander about looking for different products.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "cost-effective",
+        "cost effective",
+        "costeffective"
+       ],
+       "explanation": "'The inefficient use of space, which means it is less cost effective.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "smaller areas",
+        "smaller area"
+       ],
+       "explanation": "'It divides parts of the store into smaller areas.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Which types of products are placed in each location in supermarkets? Choose the correct letter, A–F, next to questions 37–40.",
+     "title": "Types of Products",
+     "options": [
+      {
+       "key": "A",
+       "text": "more expensive products"
+      },
+      {
+       "key": "B",
+       "text": "most profitable products"
+      },
+      {
+       "key": "C",
+       "text": "products reduced in price"
+      },
+      {
+       "key": "D",
+       "text": "products aimed at children"
+      },
+      {
+       "key": "E",
+       "text": "products requiring careful selection"
+      },
+      {
+       "key": "F",
+       "text": "slow-moving products"
+      }
+     ],
+     "questions": [
+      {
+       "n": 37,
+       "text": "quieter areas",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Quieter areas: 'Items which consumers tend to spend more time considering before buying, such as cosmetics, are usually placed away from the busy areas.'"
+      },
+      {
+       "n": 38,
+       "text": "end of aisles",
+       "answer": [
+        "F"
+       ],
+       "explanation": "End of aisles: 'Supermarket managers often place products which are not selling quickly enough in these positions.' — slow-moving products."
+      },
+      {
+       "n": 39,
+       "text": "middle shelves",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Middle shelves: 'The eye level of the average woman is 1 meter 60 centimeters off the floor, which is the height of the middle shelves, so the things which cost more are placed here.'"
+      },
+      {
+       "n": 40,
+       "text": "near the entrance",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Near the entrance: 'The fruit and vegetable department is the first shoppers come to... These, together with flowers, produce a greater profit than any other department.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear part of a lecture on the ways that supermarkets use layout to increase sales. First, you have some time to look at questions 31 to 40. Now listen carefully and answer questions 31 to 40.\nLecturer: We've been looking at marketing techniques which influence buying decisions. Some of these techniques are related to the way the products are presented in the store. For supermarkets, the store layout is not as random as it seems. Decisions have to be made about the arrangement of the aisles where the customers walk, and the shelves and so on where the products are displayed.\nLecturer: The most common layout pattern is the grid layout, where parallel aisles are arranged in a rectangular pattern. Supermarkets like this layout as it allows them to utilize floor space efficiently by providing the greatest amount of display space proportionate to aisle space. Also, this layout helps to manage traffic flow as it encourages people to all walk in one direction.\nLecturer: The main weaknesses of the grid layout are the monotony of rows of aisles and the fact that it is easier for customers to rush through the supermarket without lingering.\nLecturer: Another layout pattern used by supermarkets is known as the free form. Here, displays and aisles are arranged in a random pattern. The good thing about this layout is that customers tend to spend more time in the store as they wander about looking for different products. Its main weakness is the inefficient use of space, which means it is less cost-effective.\nLecturer: Then we have the boutique layout where everything is organized around a food specialty, such as the bakery. The advantage of this layout is that it divides parts of the store into smaller areas, which may be distinguished by changes in flooring or displays. A further advantage is that this style of layout is attractive to shoppers. Space, however, is not used economically and it is therefore expensive.\nLecturer: The choice of location of particular types of items in the store is also important. A supermarket's design aims to direct customers to the store's side and rear walls. Items typically displayed along the rear length of the store include meat and dairy products, since these appear on the grocery list of the majority of shoppers. This means shoppers must pass by a large number of other items to get to them.\nLecturer: Items which consumers tend to spend more time considering before buying, such as cosmetics, are usually placed away from the busy areas so that people can look at them in comfort without feeling rushed. [quieter areas — E: products requiring careful selection]\nLecturer: Products placed at the end of aisles are clearly visible and therefore these locations provide a greater opportunity for shoppers to view the products. Consumers tend to assume that items on display at the end of an aisle are on sale, but this is often not the case. In fact, supermarket managers often place products which are not selling quickly enough in these positions. [end of aisles — F: slow-moving products]\nLecturer: The placement of products on shelves is very carefully planned. Supermarket executives use computer generated plans to help them place products on shelves in a way that ensures consumers spend more. The eye level of the average woman is 1 meter 60 centimeters off the floor, which is the height of the middle shelves, so the things which cost more are placed here. [middle shelves — A: more expensive products] While cheaper products are placed on higher or lower shelves. Only items targeted at children break this rule. They are placed on the lowest shelves.\nLecturer: Supermarkets also use a range of other marketing techniques to encourage consumers to spend more. It's no accident that in nearly every supermarket, the fruit and vegetable department is the first shoppers come to as they enter the store. These, together with flowers, produce a greater profit than any other department. [near the entrance — B: most profitable products]\nLecturer: After complaints from parents, many supermarkets no longer place popular products aimed at children on the shelves next to the checkout. Instead, you are most likely to find products aimed at impulse buyers, such as chocolate, magazines and other treats here. Many supermarkets have also expanded into non-food areas such as clothing, entertainment, and stationery.\nThat is the end of section 4. You now have half a minute to check your answers."
+  }
+ ],
+ "audio": {
+  "file": "listening-33.mp3",
+  "durationSec": 1571,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

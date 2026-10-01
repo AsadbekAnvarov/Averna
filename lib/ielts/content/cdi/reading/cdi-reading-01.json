@@ -1,0 +1,699 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-01",
+ "title": "CDI Reading Test 01",
+ "description": "A full Academic Reading test from the CDI practice materials: The History of the Bar Code; Should We Stop Eating Meat?; Some views on the use of headphones.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The History of the Bar Code",
+  "Should We Stop Eating Meat?",
+  "Some views on the use of headphones"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The History of the Bar Code",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The first step toward today's bar codes came in 1948, when Bernard Silver, a graduate student in the USA, overheard a conversation in the halls of Philadelphia's Drexel Institute of Technology. The president of a food chain was pleading with a professor to undertake research on a method of capturing product information automatically at store checkouts. The professor turned down the request, but Bernard Silver mentioned the conversation to his friend Norman Woodland, a twenty-seven-year-old teacher at Drexel."
+    },
+    {
+     "label": "B",
+     "text": "The problem fascinated the two friends, and they set about thinking of a solution. Their first idea was to use patterns printed with an ink that would glow under ultraviolet light, and they built a device to test the concept. It worked, but the printing costs were high and the patterns faded over time. Nonetheless, they were convinced they had a workable idea. After several months of work, they came up with the linear bar code, using elements from two established technologies: Morse code, in which letters and numbers are coded into a system of dots and dashes, and the method used to record soundtracks in movies. Silver and Woodland patented the idea in 1952, describing their invention as 'article classification... through the medium of identifying patterns'. But the cost, together with the fact that their scanning equipment was rather unreliable, made the idea a non-starter at that time."
+    },
+    {
+     "label": "C",
+     "text": "Scanning systems made little progress until the 1970s, when lasers became affordable. Following this, various systems came into use around the world in stores, libraries, factories, and the like, each with its own proprietary code, but there was no standardisation. A consortium of grocery manufacturers and retailers therefore set up a committee to look into bar codes and to standardise what became known formally as the Universal Product Code (UPC). At the heart of the committee's guidelines were a few basic principles. To make life easier for the cashier, bar codes would have to be readable from almost any angle and at a range of distances. Because they would be reproduced by the million, the labels would have to be cheap and easy to print. And to be affordable, automated checkout systems would have to pay for themselves in two and a half years."
+    },
+    {
+     "label": "D",
+     "text": "The committee considered more than a dozen versions of bar codes, including one based on multi-coloured dots and another using a circular bull's-eye design with lines radiating from a central point. On April 1, 1973, they unanimously agreed on a standardised UPC: a combination of black and white lines and numbers, based on Woodland and Silver's idea but developed by George Laurer at IBM. Alan Haberman, who headed the subcommittee as president of First National Stores, described the bar code as a kind of world language that worked for everyone. He recalls proudly, 'We showed that it could be done on a massive scale, that cooperation was possible for the common good, and that business didn't need the government to shove them in the right direction.'"
+    },
+    {
+     "label": "E",
+     "text": "The investment involved in the bar-code revolution was huge. Each of the tens of thousands of grocery outlets in the US had to spend at least $200,000 on new scanning equipment. Chains had to install new data-processing centres and retrain their employees. Printers had to develop new types of ink, plates, and other technology to reproduce the code with the exact tolerances it requires, and manufacturers had to spend millions of dollars a year on the labels."
+    },
+    {
+     "label": "F",
+     "text": "On June 26, 1974, all the tests were done, all the proposals were complete, and all the standards were set. At a supermarket in Ohio, a single pack of Juicy Fruit chewing gum became the first retail product sold with the help of a bar-code scanner. Decades of schemes and billions of dollars in investment now became a practical reality. The bar code on any product could be read and understood in every suitably equipped store."
+    },
+    {
+     "label": "G",
+     "text": "The advantages of the system were not clear immediately, as wholesalers, retailers and customers remained suspicious. Some customers believed bar codes were a form of surveillance. During the early weeks, Business Week magazine ran the headline 'The Supermarket Scanner That Failed'. However, the benefits eventually became apparent. 'It turns out there were massive savings in labour and other areas,' Haberman says. These included checking out items at twice the speed compared to using traditional equipment, which meant shorter queues. It did not take supermarkets long to see that, as well as vastly improving customer service, the bar code could hugely reduce the time spent checking inventory."
+    },
+    {
+     "label": "H",
+     "text": "Now, every day more than five billion bar codes are scanned in retail outlets throughout the world. Passengers' luggage is tagged with bar codes by airlines. Staff attach them to babies to ensure the right babies go home from hospitals with the right mothers. Runners in major marathons set off with bar codes on their vests, and librarians rely on them. Tiny bar codes have even been mounted on bees by researchers to track their movements."
+    },
+    {
+     "label": "I",
+     "text": "As for that original pack of Juicy Fruit, it is now, unchewed and unopened, in the Smithsonian Institution's National Museum of American History in Washington."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The Bar Code",
+     "template": "# Early invention attempts:\n- used ultraviolet light and a special type of [[1]]\n- based on technology used in Morse code and also for the [[2]] of films\n- problems: [[3]] and expensive\n# 1970s developments:\n- Availability of cheaper [[4]] meant scanning technology spread more widely.\n- Problem: lack of [[5]] in code systems.\n# Bar code uses today:\n- the [[6]] of checkouts increased\n- participants in [[7]]\n- scientists studying [[8]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "ink"
+       ],
+       "explanation": "Paragraph B: their first idea used patterns printed with an ink that would glow under ultraviolet light."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "soundtracks"
+       ],
+       "explanation": "Paragraph B: they combined Morse code with the method used to record soundtracks in movies."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "unreliable"
+       ],
+       "explanation": "Paragraph B: their scanning equipment was rather unreliable and costs were high."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "lasers"
+       ],
+       "explanation": "Paragraph C: scanning systems made progress in the 1970s when lasers became affordable."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "standardisation"
+       ],
+       "explanation": "Paragraph C: there was no standardisation across code systems."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "speed"
+       ],
+       "explanation": "Paragraph G: bar codes let items be checked out at twice the speed."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "marathons"
+       ],
+       "explanation": "Paragraph H: runners in major marathons set off with bar codes on their vests."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "bees"
+       ],
+       "explanation": "Paragraph H: tiny bar codes have been mounted on bees to track their movements."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 9,
+       "text": "Bernard Silver was invited to develop a system for capturing product information by the president of a food chain.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph A: Silver overheard the conversation; he was not invited by the president."
+      },
+      {
+       "n": 10,
+       "text": "A committee set up in the 1970s said bar codes should be easy to use and not too expensive.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph C: guidelines required bar codes readable from many angles, cheap to print, and systems affordable."
+      },
+      {
+       "n": 11,
+       "text": "Alan Haberman disagreed with government policies on business matters.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Paragraph D: Haberman said business did not need government to push them, but no disagreement with specific policies is mentioned."
+      },
+      {
+       "n": 12,
+       "text": "Many grocery outlets were unable to afford the necessary scanning equipment.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Paragraph E: costs are stated, but there is no information that many outlets could not afford the equipment."
+      },
+      {
+       "n": 13,
+       "text": "The advantages of the new bar-code scanner took some time to be accepted by users.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph G: wholesalers, retailers, and customers were initially suspicious; acceptance came after benefits became apparent."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Should We Stop Eating Meat?",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "A call for people to eat less meat to save the planet is growing louder, so if less is good, wouldn't none be better? To find out, let's imagine what would happen if the world eliminated meat, milk and eggs from its diet, then trace the effects. Last year, the world consumed 289 million tonnes of meat, 700 million tonnes of milk and 1.2 billion eggs. Environmentally speaking, this came at an enormous cost."
+    },
+    {
+     "label": "B",
+     "text": "All agriculture damages the environment. Take, for example, the felling of forests and the widespread use of irrigation systems. It may surprise you to know that agriculture creates more greenhouse gases than all methods of transport put together. Livestock farming does the most damage. In part, that is because most livestock eat grain that could be used to feed human populations, and farmers are forced to grow more than we would otherwise need to meet the demand. Altogether, if we switched to a vegan diet, meaning no meat, dairy or eggs, the land currently required for crops would drop by an estimated 21 per cent, about 3.4 million hectares, roughly the size of India."
+    },
+    {
+     "label": "C",
+     "text": "One environmental impact that would also lessen through a reduction in animal farming would be nitrogen emitted from agricultural processes, which spreads over both waterways and land. According to environmental scientist Alison Leach, if everyone eliminated dairy products and eggs, this kind of pollution would fall by 60 per cent. Livestock production has another serious environmental impact. UN statistics state that by 2010, the US at least, livestock account for 55 per cent of erosion, mostly from forests being cut down to make way for grazing land. On top of this, half of all antibiotics manufactured are fed to livestock as part of their normal diet, a practice resistant bacteria."
+    },
+    {
+     "label": "D",
+     "text": "A meat-free world, then, would be greener in many ways. However, if everyone opted to give up meat, there would be significant costs too. For most of human history, livestock grazed on land that wasn't suitable for ploughing, and in doing so they converted inedible grass into edible meat and milk. Even today, a flock of sheep or goats can be the most efficient way to get food from marginal land. In a world in which over a billion people do not have enough to eat, using this land for crop production would contribute to food insecurity."
+    },
+    {
+     "label": "E",
+     "text": "In some parts of the world today, livestock such as chickens can subsist on leftovers and whatever they find. Tara Garnett, who heads the Food Climate Research Network at the University of Surrey, points out the usefulness of these animals. By giving them your leftovers, she says, they deal with your rubbish, and you get meat. Garnett admits, though, that if this kind of approach were eventually adopted, it would require a major adjustment in food preferences: people would have to get used to chicken, for example, with less fat."
+    },
+    {
+     "label": "F",
+     "text": "Another downside to a meat-free world would be the disappearance of animal by-products. Such a world would have to replace the 11 million tonnes of leather and 2 million tonnes of wool that come annually from livestock farming and which are turned into clothing. Furthermore, even ardent vegetarians acknowledge that dairy products and meat may be a good thing in poorer countries. 'Whilst there's no doubt that considerable reduction of meat consumption would have an environmental benefit, we do have to be careful about saying it would be the best solution if the whole world went vegetarian,' says Annette Pinner, chief executive of the UK Vegetarian Society. For many of the world's poorest rural residents, an animal may represent their only realistic hope of an extra income, and a little animal protein can make a big difference to a marginal diet."
+    },
+    {
+     "label": "G",
+     "text": "What if we decided on a no-meat vegetarian diet, rather than a vegan diet? After all, milk and eggs are very efficient ways of producing animal calories. 'It's difficult to switch to a no-meat-but-milk diet,' says Helmut Haberl, a social ecologist at the University of Vienna. Dairy cows must calve every year to keep producing milk, and only half their offspring will be female. While many vegetarians see moral reasons not to kill and eat the males, there is surely no practical reason to waste so much meat.' Similar arguments apply to chickens kept for eggs."
+    },
+    {
+     "label": "H",
+     "text": "So even though a meat-free world sounds good on paper, it is likely that a utopian future will still have some animal products in it. The real questions, then, are how much meat do we want, and how will we produce it? The answers depend on how you approach these questions. The most straightforward approach is to argue that the world will continue to want ever more meat. The United Nations' best guess is that by 2050 the world will need to more than double its production of meat, an increase that would be environmentally disastrous."
+    },
+    {
+     "label": "I",
+     "text": "Under this scenario, the goal will have to be producing the most meat at the lowest environmental cost. According to Walter Falcon, an agricultural economist, this means fewer free-range cattle and sheep in green fields. 'If you're going to keep some livestock systems, I think the ones you'll want to keep are the intensive ones,' he says. Of course, this does not take into account animal welfare issues, as intensive farming usually means poor living conditions and the use of growth hormones."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has nine paragraphs, A–I. Which paragraph contains the following information? Write the correct letter, A–I.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      },
+      {
+       "key": "I",
+       "text": "Paragraph I"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "the suggestion that people may need to adapt to a different quality of meat",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E: mentions that people would have to get used to chicken with less fat if they adopt a leftover-based feeding approach."
+      },
+      {
+       "n": 15,
+       "text": "a description of the way animals were fed in the past",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D: describes how livestock grazed on land unsuitable for ploughing throughout most of human history."
+      },
+      {
+       "n": 16,
+       "text": "a prediction in regard to human demand for meat",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H: states the UN's prediction that by 2050 the world will need to more than double its meat production."
+      },
+      {
+       "n": 17,
+       "text": "the potential consequences of a meat-free world for textile industries",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F: discusses the disappearance of leather and wool used for clothing in a meat-free world."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The Environmental Impact of Farming",
+     "template": "Agriculture causes significant harm to the environment in a number of ways, including the frequent use of [[18]] in modern farming and the cutting down of trees. It is also responsible for the production of many greenhouse gases, more so than [[19]] is. However, it is livestock farming in particular that is most harmful. Because cows and sheep, for example, are given vast quantities of grain which could be consumed by people instead. A meat-free diet would mean that actually less [[20]] would be needed. A meat-free diet would also mean less chemical pollution, specifically in the form of [[21]], especially if consumers cut out dairy and egg products as well as meat. In the US, there is clear evidence that considerable [[22]] occurs, although there is no information on this from other countries.",
+     "questions": [
+      {
+       "n": 18,
+       "answer": [
+        "irrigation"
+       ],
+       "explanation": "Paragraph B: mentions the widespread use of irrigation systems as an example of agricultural damage."
+      },
+      {
+       "n": 19,
+       "answer": [
+        "transport"
+       ],
+       "explanation": "Paragraph B: agriculture creates more greenhouse gases than all methods of transport put together."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "land"
+       ],
+       "explanation": "Paragraph B: the land currently required for crops would drop by an estimated 21 per cent if we switched to a vegan diet."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "nitrogen"
+       ],
+       "explanation": "Paragraph C: nitrogen emitted from agricultural processes would lessen through a reduction in animal farming."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "erosion"
+       ],
+       "explanation": "Paragraph C: UN statistics state that in the US, livestock account for 55 per cent of erosion."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements (Questions 23–26) and the list of people below. Match each statement with the correct person, A–E. NB You may use any letter more than once.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Alison Leach"
+      },
+      {
+       "key": "B",
+       "text": "Tara Garnett"
+      },
+      {
+       "key": "C",
+       "text": "Annette Pinner"
+      },
+      {
+       "key": "D",
+       "text": "Helmut Haberl"
+      },
+      {
+       "key": "E",
+       "text": "Walter Falcon"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 23,
+       "text": "It is not possible to say that a vegetarian diet is right for everyone.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "C – Paragraph F: Annette Pinner (chief executive of UK Vegetarian Society) says we must be careful about saying a meat-free diet would be the best solution for everyone."
+      },
+      {
+       "n": 24,
+       "text": "It may be economically preferable to farm animals in limited space.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "E – Paragraph I: Walter Falcon (agricultural economist) says if you're going to keep livestock systems, the intensive ones (limited space) would be preferable."
+      },
+      {
+       "n": 25,
+       "text": "It does not make sense to give up meat without giving up dairy products too.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "D – Paragraph G: Helmut Haberl argues that since dairy cows must calve yearly and half offspring are male, there's no practical reason to waste the meat."
+      },
+      {
+       "n": 26,
+       "text": "Some animals can be fed in a way that allows waste to be recycled.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "B – Paragraph E: Tara Garnett (Food Climate Research Network) points out that chickens can subsist on leftovers and by giving them your rubbish, you get meat."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Some views on the use of headphones",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Whether wearing headphones at work, or in other areas of everyday life, is a good thing or a bad thing has generated a lot of research and opinion."
+    },
+    {
+     "text": "To visit a typical modern office today is to walk into a room with possibly a dozen songs playing simultaneously but to hear none of them. Up to half of younger workers listen to music on their headphones, and nearly all of them think it makes them better at their jobs. In survey after survey, people report with confidence that music makes them happier, better at concentrating, and more productive."
+    },
+    {
+     "label": "B",
+     "text": "Scientists do not share this belief; they maintain that listening to music hurts people's ability to recall other things they should be doing, and any pop song, loud or soft, reduces overall performance for both extroverts and introverts. A Taiwanese study linked music that has lyrics to lower marks on concentration tests for college students, and other research has shown music with lyrics scrambles our brains' verbal-processing skills. 'As silence has the best overall performance, it would still be advisable that people work in silence,' another reporter dryly concluded."
+    },
+    {
+     "label": "C",
+     "text": "The question is therefore: if headphones are so bad for productivity, why do so many people at work have them? One factor to consider is that countries like the USA have moved from a farming and manufacturing economy to a service economy, with an emphasis on jobs in offices that require higher levels of concentration, reflection and creativity. As an estimated 70 percent of office workers work in open-plan office spaces, it is more important to create one's own enclosing bubble of sound. Lending strength to the argument for headphones at work is evidence that music relaxes our muscles, improves our mood, and may even moderately reduce blood pressure, heart rate and anxiety."
+    },
+    {
+     "label": "D",
+     "text": "The story of headphones began in 1910, when the US Navy received an odd letter written in purple ink on blue-and-pink paper. The letter writer, an eccentric inventor and repairman named Nathaniel Baldwin, from the USA state of Utah, made what at the time was an astonishing claim: he had built, in his kitchen, a new kind of headset that could amplify sound. This was an opportune invention for the Navy, who asked for a sound test and then enthusiastically adopted the headsets, later called headphones, and used them in World War I for naval radio communication."
+    },
+    {
+     "label": "E",
+     "text": "The purpose of headphones is to concentrate a quiet and private sound in the ear of the listener, which is a radical departure from music's social purpose in history. 'Music, together with dance, co-evolved biologically and culturally to serve as a technology of social bonding,' Nills L Wallin and Bjorn Merker wrote in The Origins of Music. Songs don't leave behind fossils, but evidence of musical notation dates back to Sumeria, 3,500 years ago, and in 1995 archaeologists discovered a bone flute in southern Europe estimated to be 44,000 years old. If music evolved as a social glue for the species, as a way to make groups and keep them together, headphones have done what writing and literacy did for language — they made music private."
+    },
+    {
+     "label": "F",
+     "text": "Author and columnist Stephen Marche wrote that separation from other people is one of the first things ordinary Americans spend their money achieving. It is 'a by-product of a long-standing national appetite for independence,' he said. Americans are not alone in their desire for personal independence and privacy. Marche is right; wealth can buy — and modern technology can deliver — personal independence, and it is this that people have always sought."
+    },
+    {
+     "label": "G",
+     "text": "Dr Michael Bull, an expert on personal music devices from the University of Sussex in the UK, has repeatedly made the larger point that personal music devices change how we relate to public spaces. Controlling our public spaces is more important now that more people are moving from the edges of cities to live in urban centers. 'With the urban space, the more it's inhabited, the safer you feel,' Bull says. 'You feel safe if you can feel people there, but you don't want to interact with them.' Headphones create shields for wearers, separating them from other people and their surroundings. Headphones have their own rules of good manners; they are like wearing a 'Do not disturb' sign. We assume that people wearing them are busy and we should respect their privacy, so now people wear them to appear busy. In fact, it is now becoming quite common for people not to listen to anything at all, but just to wear headphones."
+    },
+    {
+     "label": "H",
+     "text": "However, as pointed out at the beginning of this piece, although scientists have stated that headphones are bad for productivity, people still wear them at work. It is not just that headphones create privacy out of public areas but also that music causes people to relax and reflect and pause. The outcome of relaxation, reflection and pausing at work won't be captured in minute-to-minute productivity metrics. What must be considered is that in moments of extreme focus, our attention radiates outward, toward the problem, rather than inward, on how to solve the problem. However, with music 'When our minds are at ease, we're more likely to direct the spotlight of attention inward,' Jonah Lehrer wrote in his book Imagine: How Creativity Works. 'The answers have been there all along. We just weren't listening.' In a crowded world, real estate is the ultimate scarce resource, and a headphone is a small invisible fence around our minds — making space, creating separation, and helping us listen to ourselves."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Young people are easily persuaded by surveys that listening to music is beneficial.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "NO – Paragraph A: workers themselves confidently report that music helps them; they are not persuaded by surveys but rather the surveys reflect their own existing belief."
+      },
+      {
+       "n": 28,
+       "text": "Different studies share the same conclusions about the desirability of working in silence.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "YES – Paragraph B: multiple studies (Taiwanese study, other research) all point toward silence being best for performance."
+      },
+      {
+       "n": 29,
+       "text": "Some doctors recommend wearing headphones to lower blood pressure.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "NOT GIVEN – Paragraph C mentions music may reduce blood pressure, but no doctors are mentioned as recommending headphones for this purpose."
+      },
+      {
+       "n": 30,
+       "text": "Nathaniel Baldwin was a respected government researcher.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "NO – Paragraph D describes Baldwin as an 'eccentric inventor and repairman', not a respected government researcher."
+      },
+      {
+       "n": 31,
+       "text": "The effect of the invention of headphones is comparable to the effect of the invention of writing.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "YES – Paragraph E: 'headphones have done what writing and literacy did for language — they made music private.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 32,
+       "text": "What does the writer suggest about a service economy?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The work is mentally demanding."
+        },
+        {
+         "key": "B",
+         "text": "It provides employment for younger workers."
+        },
+        {
+         "key": "C",
+         "text": "It is a small part of a country's economy."
+        },
+        {
+         "key": "D",
+         "text": "Workers have to live in urban centres."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "A – Paragraph C: a service economy emphasises 'jobs in offices that require higher levels of concentration, reflection and creativity'."
+      },
+      {
+       "n": 33,
+       "text": "When the writer mentions the historical evidence for early music he is",
+       "options": [
+        {
+         "key": "A",
+         "text": "emphasizing the diversity of musical forms."
+        },
+        {
+         "key": "B",
+         "text": "expressing his frustration with the limited archaeological evidence uncovered."
+        },
+        {
+         "key": "C",
+         "text": "lending support to the view that music has been important in human history."
+        },
+        {
+         "key": "D",
+         "text": "creating a geographical map of the evolution of music."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "C – Paragraph E: the ancient evidence (Sumerian notation, 44,000-year-old flute) supports the idea that music has long served as social bonding technology."
+      },
+      {
+       "n": 34,
+       "text": "What does the writer say about the social effects of listening to music through headphones?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It has caused a reduction in the number of people who listen to music."
+        },
+        {
+         "key": "B",
+         "text": "It has increased people's participation in music events."
+        },
+        {
+         "key": "C",
+         "text": "It has reduced the global variation of music styles."
+        },
+        {
+         "key": "D",
+         "text": "It has changed the traditional role of music in society."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "D – Paragraph E: headphones represent 'a radical departure from music's social purpose in history', changing music from a communal activity to a private one."
+      },
+      {
+       "n": 35,
+       "text": "What does the writer say about personal independence?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Americans are unique in their desire for personal independence."
+        },
+        {
+         "key": "B",
+         "text": "Personal independence is something that can be purchased."
+        },
+        {
+         "key": "C",
+         "text": "Striving for personal independence is a recent phenomenon."
+        },
+        {
+         "key": "D",
+         "text": "Personal independence destroys social connections."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "B – Paragraph F: 'wealth can buy — and modern technology can deliver — personal independence'."
+      },
+      {
+       "n": 36,
+       "text": "Why does the writer quote Jonah Lehrer in the last paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to support the writer's own view."
+        },
+        {
+         "key": "B",
+         "text": "to draw attention to an authoritative book about music."
+        },
+        {
+         "key": "C",
+         "text": "to raise awareness of people's loss of listening skills."
+        },
+        {
+         "key": "D",
+         "text": "to illustrate how music brings people closer to each other."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "A – Paragraph H: the Lehrer quote is used to back up the writer's argument that music encourages inward reflection and creativity at work."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–I, below. Write the correct letter, A–I.",
+     "title": "Headphones and city living",
+     "options": [
+      {
+       "key": "A",
+       "text": "courtesy"
+      },
+      {
+       "key": "B",
+       "text": "relationship"
+      },
+      {
+       "key": "C",
+       "text": "difficulty"
+      },
+      {
+       "key": "D",
+       "text": "countryside"
+      },
+      {
+       "key": "E",
+       "text": "suburbs"
+      },
+      {
+       "key": "F",
+       "text": "language"
+      },
+      {
+       "key": "G",
+       "text": "barriers"
+      },
+      {
+       "key": "H",
+       "text": "obstacles"
+      },
+      {
+       "key": "I",
+       "text": "disapproval"
+      }
+     ],
+     "template": "Dr Michael Bull believes that listening to music through headphones has changed the [[37]] the wearers of headphones have with public spaces. Living in the centre of cities is becoming popular, as people become less keen on living in the [[38]]. In densely populated city centres, headphones form [[39]] that isolate people from fellow citizens and from their environment. Wearers of headphones are treated with [[40]] that other people do not receive. This is because if we see someone wearing headphones, we believe they must be occupied in some way and should not be interrupted.",
+     "questions": [
+      {
+       "n": 37,
+       "answer": [
+        "B"
+       ],
+       "explanation": "B (relationship) – Paragraph G: 'personal music devices change how we relate to public spaces'."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "E"
+       ],
+       "explanation": "E (suburbs) – Paragraph G: 'more people are moving from the edges of cities to live in urban centers'."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "G"
+       ],
+       "explanation": "G (barriers) – Paragraph G: 'Headphones create shields for wearers, separating them from other people and their surroundings'."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "A"
+       ],
+       "explanation": "A (courtesy) – Paragraph G: 'We assume that people wearing them are busy and we should respect their privacy'."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

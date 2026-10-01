@@ -1,0 +1,633 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-83",
+ "title": "CDI Reading Test 83",
+ "description": "A full Academic Reading test from the CDI practice materials: Traditional Māori Fishing Hooks; How deserts are formed; The Persuaders.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Traditional Māori Fishing Hooks",
+  "How deserts are formed",
+  "The Persuaders"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Traditional Māori Fishing Hooks",
+   "paragraphs": [
+    {
+     "text": "The discovery of ancient fishing hooks in New Zealand has revealed that the Maori people were remarkably skilled at crafting highly effective tools for catching fish. These hooks, often made from organic materials such as bone or shell, functioned with surprising precision, even when compared to modern alternatives. However, for many centuries, their true purpose was misunderstood by researchers and collectors alike. Many assumed these intricately shaped hooks served only decorative, ceremonial, or ritualistic purposes due to their unusual appearance and craftsmanship. Ironically, in recent years, engineers and product designers have turned to modern technologies- such as 3D scanning and computer-aided manufacturing-to recreate these hooks. These reproductions, now made using high-tech materials, replicate the original Maori designs that were created over a millennium ago."
+    },
+    {
+     "text": "When the Maori first arrived in New Zealand from the Pacific Islands, they encountered an environment rich in natural resources. They quickly adapted by using familiar materials such as bones and stones to make their fishing hooks and began practicing intensive agriculture. Their fishing lines and nets, made from native plants like flax and cabbage trees, proved just as strong – if not stronger – than those used by Europeans, which were typically made from hemp. Although the structure of the Maori hooks was highly efficient for catching fish, their form was somewhat limited. This was because the materials they had access to could not be forged or bent like metal, thus restricting the range of shapes the hooks could take."
+    },
+    {
+     "text": "More than 230 years after the Maori settled, Europeans landed in New Zealand and began exploring the land. As they moved through the region, they came across various local fishing tools, including the Maori hooks. Despite their effectiveness, many Europeans viewed the tools with skepticism. They considered them awkward and ineffective, failing to recognize the ingenuity of the designs. Even modern archaeologists sometimes share this view, finding the hooks odd and questioning their efficiency. In 1777, however, William Anderson made an observation that challenged this view. He noted that although the hooks looked unconventional, the Maori had already developed advanced methods of intensive farming – evidence of their broader ingenuity. Still, the unusual appearance of the hooks overshadowed how successful they truly were."
+    },
+    {
+     "text": "Recent research conducted by Victoria University has revealed that Maori fishing hooks functioned quite differently from those used by Europeans. Rather than piercing directly like a standard hook, Maori hooks worked by rotating the fish away from the point and catching it securely under the jaw. This rotational mechanism proved remarkably effective in practice. Unlike the lever-based mechanisms common in European designs, the Maori hooks employed a unique principle that required neither barbs nor baiting in the same manner, showcasing a distinctly original approach to fishing. After the 1700s, Maori craftsmen began using new materials introduced by Europeans such as metals. However, they did not abandon their traditional designs. Instead, they incorporated the new materials into the same forms they had long used. As bones and stones fell out of use, hooks made from traded metals became more common. Some artisans even used rare and valuable materials like ivory or greenstone, crafting hooks that were later taken into luxury markets and sold as jewelry, blurring the line between utility and art."
+    },
+    {
+     "text": "Following the 1800s, Europe began exporting mass-produced hooks to New Zealand. These items were cheaper and quickly gained popularity among local users. Despite their affordability, the production of traditional Maori hooks declined due to the nails and other metallic materials required, which were difficult to manipulate without specialized tools. In the early 1900s, however, interest in Pacific culture grew, and collectors began to seek out original Maori fishing hooks once again. This renewed attention turned the hooks into coveted antique items. Unfortunately, the demand also led to a wave of imitations – many of the hooks appearing on the market today are fake, though they can usually be identified by their inconsistent design and materials."
+    },
+    {
+     "text": "The Maori did not only adapt their fishing hooks through European influence but also modified other traditional items using both metals and more recently, synthetic plastic. Importantly, these changes were often adaptations rather than complete replacements, preserving core aspects of Maori design. What is perhaps most remarkable is that many hooks found on boats in New Zealand today still bear a striking resemblance to the ancient forms crafted hundreds of years ago, a testament to the enduring utility and brilliance of traditional Maori design."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in the text?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "People have mistaken opinions about fishing hooks' functions.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Their true purpose was misunderstood: many assumed the hooks were only decorative or ceremonial."
+      },
+      {
+       "n": 2,
+       "text": "Fishing is more difficult in New Zealand than Pacific islands.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The text says the Maori found New Zealand rich in resources, but it never compares how difficult fishing is in the two places."
+      },
+      {
+       "n": 3,
+       "text": "Maoris use new materials to build hooks after they arrived New Zealand.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "On arrival they used familiar materials – bones and stones – not new ones. New materials came only after the 1700s."
+      },
+      {
+       "n": 4,
+       "text": "Maoris' hooks are limited in forms because of the material limitation it used.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The materials could not be forged or bent, which restricted the range of shapes."
+      },
+      {
+       "n": 5,
+       "text": "The fishing line of Maoris is worse than the European.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Maori lines were as strong as, or stronger than, the European hemp ones."
+      },
+      {
+       "n": 6,
+       "text": "Europeans are given fishing hooks as a gift from local Maoris.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Europeans came across the hooks while exploring, but the text never says any were given to them as gifts."
+      },
+      {
+       "n": 7,
+       "text": "According to William Anderson, Maoris have already engaged in crop growing.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "William Anderson noted in 1777 that the Maori had already developed advanced methods of intensive farming."
+      },
+      {
+       "n": 8,
+       "text": "Hooks of Maoris are functioned in the same way to the hooks of European.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Maori hooks rotated the fish and caught it under the jaw instead of piercing it like European hooks."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes.",
+     "answerRule": "Choose ONE WORD ONLY from the text for each answer.",
+     "wordLimit": 1,
+     "title": "How hooks changed after Europeans arrived",
+     "template": "# After 1700s\n- They did not abandon their previous hook designs.\n- Some valued hooks are made into [[9]].\n# After 1800s\n- Mass production makes production cheaper and Maoris import more.\n- The difficulty associated with the material like [[10]] and other metals makes the hooks production less.\n# After 1900s\n- [[11]] were again interested in hooks.\n- Some hooks are [[12]], which can be identified easily.\n# Conclusion\n- We can find the hooks' design of old times today on [[13]].",
+     "questions": [
+      {
+       "n": 9,
+       "answer": [
+        "jewelry",
+        "jewellery"
+       ],
+       "explanation": "Hooks of ivory or greenstone were sold as jewelry in luxury markets."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "nails"
+       ],
+       "explanation": "Nails and other metallic materials were hard to work without specialized tools."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "collectors"
+       ],
+       "explanation": "In the early 1900s collectors became interested in the hooks again."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "fake"
+       ],
+       "explanation": "Many hooks on the market are fake and can be identified by inconsistent design and materials."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "boats"
+       ],
+       "explanation": "The old designs can still be seen on boats in New Zealand today."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "How deserts are formed",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "A desert refers to a barren section of land, mainly in arid and semi-arid areas, where there is almost no precipitation, and the environment is hostile for any creature to inhabit. Deserts have been classified in a number of ways, generally combining total precipitation, how many days the rainfall occurs, temperature, humidity, and sometimes additional factors. In some places, deserts have clear boundaries marked by rivers, mountains or other landforms, while in other places, there are no clear-cut borders between desert and other landscape features."
+    },
+    {
+     "label": "B",
+     "text": "In arid areas where there is not any covering of vegetation protecting the land, sand and dust storms will frequently take place. This phenomenon often occurs along the desert margins instead of within the deserts, where there are already no finer materials left. When a steady wind starts to blow, fine particles on the open ground will begin vibrating. As the wind picks up, some of the particles are lifted into the air. When they fall onto the ground, they hit other particles which will then be jerked into the air in their turn, initiating a chain reaction."
+    },
+    {
+     "label": "C",
+     "text": "There has been a tremendous deal of publicity on how severe desertification can be, but the academic circle has never agreed on the causes of desertification. A common misunderstanding is that a shortage of precipitation causes the desertification—even the land in some barren areas will soon recover after the rain falls. In fact, more often than not, human activities are responsible for desertification. It might be true that the explosion in world population, especially in developing countries, is the primary cause of soil degradation and desertification. Since the population has become denser, the cultivation of crops has gone into progressively drier areas. It's especially possible for these regions to go through periods of severe drought, which explains why crop failures are common. The raising of most crops requires the natural vegetation cover to be removed first; when crop failures occur, extensive tracts of land are devoid of a plant cover and thus susceptible to wind and water erosion. All through the 1990s, dryland areas went through a population growth of 18.5 per cent, mostly in severely impoverished developing countries."
+    },
+    {
+     "label": "D",
+     "text": "Livestock farming in semi-arid areas accelerates the erosion of soil and becomes one of the reasons for advancing desertification. In such areas where the vegetation is dominated by grasses, the breeding of livestock is a major economic activity. Grasses are necessary for anchoring barren topsoil in a dryland area. When a specific field is used to graze an excessive herd, it will experience a loss in vegetation coverage, and the soil will be trampled as well as be pulverised, leaving the topsoil exposed to destructive erosion elements such as winds and unexpected thunderstorms. For centuries, nomads have grazed their flocks and herds to any place where pasture can be found, and oases have offered chances for a more settled way of living. For some nomads, wherever they move to, the desert follows."
+    },
+    {
+     "label": "E",
+     "text": "Trees are of great importance when it comes to maintaining topsoil and slowing down the wind speed. In many Asian countries, firewood is the chief fuel used for cooking and heating, which has caused uncontrolled clear-cutting of forests in dryland ecosystems. When too many trees are cut down, windstorms and dust storms tend to occur."
+    },
+    {
+     "label": "F",
+     "text": "What's worse, even political conflicts and wars can also contribute to desertification. To escape from the invading enemies, the refugees will move altogether into some of the most vulnerable ecosystems on the planet. They bring along their cultivation traditions, which might not be the right kind of practice for their new settlement."
+    },
+    {
+     "label": "G",
+     "text": "In the 20th century, one of the states of America had a large section of farmland that had turned into desert. Since then, actions have been enforced so that such a phenomenon of desertification will not happen again. To avoid the reoccurring of desertification, people shall find other livelihoods which do not rely on traditional land uses, are not as demanding on local land and natural resources, but can still generate viable income. Such livelihoods include but are not limited to dryland aquaculture for the raising of fish, crustaceans and industrial compounds derived from microalgae, greenhouse agriculture, and activities that are related to tourism. Another way to prevent the reoccurring of desertification is bringing about economic prospects in the city centres of drylands and places outside drylands. Changing the general economic and institutional structures that generate new chances for people to support themselves would alleviate the current pressures accompanying the desertification processes."
+    },
+    {
+     "label": "H",
+     "text": "In nowadays society, new technologies are serving as a method to resolve the problems brought by desertification. Satellites have been utilised to investigate the influence that people and livestock have on our planet Earth. Nevertheless, it doesn't mean that alternative technologies are not needed to help with the problems and process of desertification."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "The text has eight paragraphs, A–H. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "a reference to the irregular movement of particles",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B describes fine particles vibrating, being lifted, falling and striking other particles – an irregular, chain-reaction movement."
+      },
+      {
+       "n": 15,
+       "text": "mention of a productive land turning into a desert in the 20th century",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G opens with farmland in one American state turning into desert during the 20th century."
+      },
+      {
+       "n": 16,
+       "text": "types of deserts",
+       "answer": [
+        "A"
+       ],
+       "explanation": "“Classified in a number of ways” means there is more than one kind of desert: paragraph A lists the factors used to group them."
+      },
+      {
+       "n": 17,
+       "text": "mention of technical methods used to tackle the problems of deserts",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Paragraph H is about new technologies used against desertification, with satellites given as the example."
+      },
+      {
+       "n": 18,
+       "text": "the influence of migration on desertification",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D links the nomads’ movement to the spread of desert: “wherever they move to, the desert follows.”"
+      },
+      {
+       "n": 19,
+       "text": "lack of agreement among the scientists about the causes of desertification",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C states it directly: the academic circle has never agreed on the causes."
+      },
+      {
+       "n": 20,
+       "text": "a description of the fatal effects of farming practice",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C describes what crop farming does to the land: the plant cover is stripped, and after a crop failure the bare soil is open to wind and water erosion."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in the text?",
+     "questions": [
+      {
+       "n": 21,
+       "text": "It is difficult to ascertain where the deserts end in some areas.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph A says that in some places there are “no clear-cut borders” between desert and other landscapes."
+      },
+      {
+       "n": 22,
+       "text": "Media is uninterested in the problems of desertification.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "A “tremendous deal of publicity” is the opposite of an uninterested media."
+      },
+      {
+       "n": 23,
+       "text": "The most common cause of desertification is the lack of rainfall.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The text calls this a common misunderstanding and says human activities are usually responsible."
+      },
+      {
+       "n": 24,
+       "text": "Farming animals in semi-arid areas will increase soil erosion.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph D states that livestock farming in semi-arid areas accelerates soil erosion."
+      },
+      {
+       "n": 25,
+       "text": "People in Asian countries no longer use firewood as the chief fuel.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The text describes the present situation only. “No longer” asks about a change from the past, and the passage never mentions one."
+      },
+      {
+       "n": 26,
+       "text": "Technology studying the relationship of people, livestock and desertification has not yet been invented.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Satellites are already used for exactly this, which contradicts “has not yet been invented.”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The Persuaders",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "We have long lived in an age where powerful images, catchy soundbites and too-good-to-miss offers bombard us from every quarter. All around us the persuaders are at work. Occasionally their methods are unsubtle – the planting kiss on a baby’s head by a wanna be political leader, or a liquidation sale in a shop that has been “closing down” for well over a year, but generally the persuaders know what they are about and are highly capable. Be they politicians, supermarket chains, salespeople or advertisers, they know exactly what to do to sell us their images, ideas or produce. When it comes to persuasion, these giants rule supreme. They employ the most skilled image-makers and use the best psychological tricks to guarantee that even the most cautious among us are open to manipulation."
+    },
+    {
+     "label": "B",
+     "text": "We spend more time in them than we mean to, we buy 75 percent of our food from them and end up with products that we did not realize we wanted. Right from the start, supermarkets have been ahead of the game. For example, when Sainsbury introduced shopping baskets into its 1950s stores, it was a stroke of marketing genius. Now shoppers could browse and pick up items they previously would have ignored. Soon after came trolleys, and just as new roads attract more traffic, the same applied to trolley space. Prof Merlin Stone, IBM Professor of Relationship Marketing at Bristol Business School, says aisles are laid out to maximize profits. Stores pander to our money-rich, time-poor lifestyle. Low turnover products – clothes and electrical goods – are stocked at the back while high-turnover items command position at the front."
+    },
+    {
+     "label": "C",
+     "text": "Stone believes supermarkets work hard to “stall” us because the more time we spend in them, the more we buy. Thus, great efforts are made to make the environment pleasant. Stores play music to relax us and some even pipe air from the in-store bakery around the shop. In the USA, fake aromas are sometimes used. Smell is both the most evocative and subliminal sense. In experiments, pleasant smells are effective in increasing our spending. A casino that fragranced only half its premise saw profit soar in the aroma-filled areas. The other success story from the supermarkets’ perspective is the loyalty card. Punters may assume that they are being rewarded for their fidelity, but all the while they are trading information about their shopping habits. Loyal shoppers could be paying 30% more by sticking to their favourite shops for essential cosmetics."
+    },
+    {
+     "label": "D",
+     "text": "Research has shown that 75 percent of profit comes from just 30 percent of customers. Ultimately, reward cards could be used to identify and better accommodate these “elite” shoppers. It could also be used to make adverts more relevant to individual consumers – rather like Spielberg’s futuristic thriller Minority Report, in which Tom Cruise’s character is bombarded with interactive personalized ads. If this sounds far-fetched, the data-gathering revolution has already seen the introduction of radio-frequency identification – a way to electronically tag products to see who is buying what. RFID means they can follow the product into people’s homes."
+    },
+    {
+     "label": "E",
+     "text": "No matter how savvy we think we are to their ploys, the ad industry still wins. Adverts focus on what products do or on how they make us feel. Researcher Laurette Dube, in the Journal of Advertising Research, says when attitudes are based on “cognitive foundations” (logical reasoning), advertisers use informative appeals. This works for products with little emotional draw but high functionality, such as bleach. Where attitudes are based on effect (i.e., emotions), ad teams try to tap into our feelings. Researchers at the University of Florida recently concluded that our emotional responses to adverts dominate over “cognition”."
+    },
+    {
+     "label": "F",
+     "text": "Advertisers play on our need to be safe (commercials for insurance), to belong (make customer feel they are in the group in fashion ads) and for self-esteem (aspirational adverts). With time and space at a premium, celebrities are often used as a quick way of meeting these needs – either because the celeb epitomizes success or because they seem familiar and so make the product seem “safe”. A survey of 4,000 campaigns found ads with celebs were 10 percent more effective than without. Humor also stimulates a rapid emotional response. Hwiman Chung, writing in the International Journal of Advertising, found that funny ads were remembered for longer than straight ones. Combine humor with sexual imagery – as in Wonderbra’s “Hello Boys” ads – and you are on to a winner."
+    },
+    {
+     "label": "G",
+     "text": "Slice-of-life ads are another tried and tested method – they paint a picture of life as you would like it, but still one that feels familiar. Abhilasha Mehta, in the Journal of Advertising Research, noted that the more one’s self-image tallies with the brand being advertised, the stronger the commercial. Ad makers also use behaviorist theories, recognizing that the more sensation we receive from an object, the better we know it. If an advert for a chocolate bar fails to cause salivation, it has probably failed. No wonder advertisements have been dubbed the “nervous system of the business world”."
+    },
+    {
+     "label": "H",
+     "text": "Probably all of us could make a sale if the product was something we truly believed in, but professional salespeople are in a different league – the best of them can always sell different items to suitable customers in a best time. They do this by using very basic psychological techniques. Stripped to its simplest level, selling works by heightening the buyer’s perception of how much they need a product or service. Buyers normally have certain requirements by which they will judge the suitability of a product. The seller therefore attempts to tease out what these conditions are and then explains how their products’ benefit can meet these requirements."
+    },
+    {
+     "label": "I",
+     "text": "Richard Hession, author of Be a Great Salesperson says it is human nature to prefer to speak rather to listen, and good salespeople pander to this. They ask punters about their needs and offer to work with them to achieve their objectives. As a result, the buyer feels they are receiving a “consultation” rather than a sales pitch. All the while, the salesperson presents with a demeanour that takes it for granted that the sale will be made. Never will the words “if you buy” be used, but rather “when you buy”."
+    },
+    {
+     "label": "J",
+     "text": "Dr Rob Yeung, a senior consultant at business psychologists Kiddy and Partner, says most salespeople will build up a level of rapport by asking questions about hobbies, family and lifestyle. This has the double benefit of making the salesperson likeable while furnishing him or her with more information about the client’s wants. Yeung says effective salespeople try as far as possible to match their style of presenting themselves to how the buyer comes across. If the buyer cracks jokes, the salespeople will respond in kind. If the buyer wants detail, the seller provides it, if they are more interested in the feel of the product, the seller will focus on this. At its most extreme, appearing empathetic can even include the salesperson attempting to “mirror” the body language of the buyer."
+    },
+    {
+     "label": "K",
+     "text": "Whatever the method used, all salespeople work towards one aim: “closing the deal”. In fact, they will be looking for “closing signals” through their dealings with potential clients. Once again the process works by assuming success. The buyer is not asked “are you interested?” as this can invite a negative response. Instead the seller takes it for granted that the deal is effectively done: when the salesman asks you for a convenient delivery date or asks what color you want, you will probably respond accordingly. Only afterwards might you wonder why you proved such a pushover."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "What is the supermarket's purpose of using “basket” in paragraph B?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Create a convenient atmosphere of supermarket"
+        },
+        {
+         "key": "B",
+         "text": "Make customers spend more time on shopping"
+        },
+        {
+         "key": "C",
+         "text": "Relieve pressure on supermarket's traffic"
+        },
+        {
+         "key": "D",
+         "text": "More than half items bought need carried"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Baskets let shoppers browse instead of going straight to what they came for, which keeps them in the store longer."
+      },
+      {
+       "n": 28,
+       "text": "What is the quality of a best salesman possessed according to this passage?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Sell the right product to right person"
+        },
+        {
+         "key": "B",
+         "text": "Clearly state the instruction of one product"
+        },
+        {
+         "key": "C",
+         "text": "Show professional background of one product"
+        },
+        {
+         "key": "D",
+         "text": "Persuade customers to buy the product they sell"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph H says the best salespeople sell different items to suitable customers – the right product to the right person."
+      },
+      {
+       "n": 29,
+       "text": "What's the opinion of Richard Hession?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Pretend to be nice instead of selling goods"
+        },
+        {
+         "key": "B",
+         "text": "Prefer to speak a lot to customers"
+        },
+        {
+         "key": "C",
+         "text": "Help buyers to conclude their demands for ideal items"
+        },
+        {
+         "key": "D",
+         "text": "Show great interpersonal skill"
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Hession describes salespeople handling people well – letting the buyer talk, and making the pitch feel like a consultation."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "The text has eleven paragraphs, A–K. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      },
+      {
+       "key": "I",
+       "text": "Paragraph I"
+      },
+      {
+       "key": "J",
+       "text": "Paragraph J"
+      },
+      {
+       "key": "K",
+       "text": "Paragraph K"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 30,
+       "text": "how do supermarkets distract consumers",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C is about music, piped bakery air and fake aromas used to keep shoppers in the store."
+      },
+      {
+       "n": 31,
+       "text": "how to build a close relationship between salespeople and buyer",
+       "answer": [
+        "J"
+       ],
+       "explanation": "Paragraph J is about building rapport and mirroring the buyer."
+      },
+      {
+       "n": 32,
+       "text": "people would be impressed by humor advertisement",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F reports that funny ads are remembered longer than straight ones."
+      },
+      {
+       "n": 33,
+       "text": "methods for salespeople to get the order",
+       "answer": [
+        "K"
+       ],
+       "explanation": "Paragraph K is entirely about the techniques used to close the deal."
+      },
+      {
+       "n": 34,
+       "text": "how question work for salespeople",
+       "answer": [
+        "J"
+       ],
+       "explanation": "Paragraph J explains what the salesperson's questions achieve: likeability plus information about the client."
+      },
+      {
+       "n": 35,
+       "text": "different customer groups bring different profits",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D opens with the 75%/30% split between customer groups."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the text for each answer.",
+     "wordLimit": 2,
+     "title": "Supermarkets and advertising",
+     "template": "Trolleys are born for the increasing traffic in supermarket. The width of [[36]] in supermarkets is broadened in order to generate the most profits.\nResearch from [[37]] shows that satisfying aromas can motivate people to buy more products.\nBesides the effort of creating comfortable surroundings, the [[38]] is another card that supermarkets play to reward their regular customers.\nFor example, loyal customers spend 30% more in their favourite shops for everyday necessary [[39]].\nClothes shops use advertisements to make the buyer think they belong to a [[40]]; research on 4,000 campaigns showed that humorous advertisements produced a stronger emotional response.",
+     "questions": [
+      {
+       "n": 36,
+       "answer": [
+        "aisles"
+       ],
+       "explanation": "Prof Stone says the aisles are laid out to maximise profits."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "experiments"
+       ],
+       "explanation": "The finding about pleasant smells comes from experiments."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "loyalty card",
+        "loyalty cards"
+       ],
+       "explanation": "The loyalty card is the other device supermarkets use on regular customers."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "cosmetics"
+       ],
+       "explanation": "Loyal shoppers pay about 30% more for essential cosmetics."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "group"
+       ],
+       "explanation": "Fashion ads make the customer feel they belong to the group."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

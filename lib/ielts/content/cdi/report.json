@@ -1,0 +1,2690 @@
+{
+ "generatedAt": "2026-10-01T09:33:59.738Z",
+ "source": "Cdi tests",
+ "validators": "lib/ielts/validate.ts (bundled)",
+ "validatorException": "Listening parts carry the real recording (test.audio) and leave speakers/script empty; validateListeningPart requires a non-empty speakers list and a script of at least 4 lines. Validation substitutes the transcript for the script (scripts/cdi/import.mjs listeningForValidation, tests/cdi-content.test.ts) so every other rule — including 'gap answer appears in the script' — still runs.",
+ "reading": {
+  "converted": 70,
+  "skipped": 13,
+  "files": [
+   {
+    "file": "Reading-01.html",
+    "status": "ok",
+    "id": "cdi-reading-01",
+    "bytes": 36615,
+    "warnings": [
+     "validator: Passage 3: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-02.html",
+    "status": "ok",
+    "id": "cdi-reading-02",
+    "bytes": 35947,
+    "warnings": [
+     "validator: Passage 1: label every paragraph or none",
+     "validator: Passage 2: passage is short (628 words; IELTS passages are ~750–950)"
+    ]
+   },
+   {
+    "file": "Reading-03.html",
+    "status": "ok",
+    "id": "cdi-reading-03",
+    "bytes": 34576,
+    "warnings": [
+     "validator: Passage 1: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-04.html",
+    "status": "ok",
+    "id": "cdi-reading-04",
+    "bytes": 32250,
+    "warnings": []
+   },
+   {
+    "file": "Reading-05.html",
+    "status": "ok",
+    "id": "cdi-reading-05",
+    "bytes": 35515,
+    "warnings": [
+     "Q17–23: answers repeat; allowReuse set although the paper has no \"NB\""
+    ]
+   },
+   {
+    "file": "Reading-06.html",
+    "status": "skipped",
+    "reason": "Q27: answer \"YES\" is not valid for a TFNG group",
+    "note": "Q27–32 key is YES/NO/NOT GIVEN but the paper (instructions, buttons, question type) is TRUE/FALSE/NOT GIVEN"
+   },
+   {
+    "file": "Reading-07.html",
+    "status": "ok",
+    "id": "cdi-reading-07",
+    "bytes": 38188,
+    "warnings": [
+     "Q1–6: layout says TRUE/FALSE/NOT GIVEN but the questions and key are YES/NO/NOT GIVEN — emitted as YES/NO/NOT GIVEN"
+    ]
+   },
+   {
+    "file": "Reading-08.html",
+    "status": "ok",
+    "id": "cdi-reading-08",
+    "bytes": 34234,
+    "warnings": [
+     "validator: Passage 2: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-09.html",
+    "status": "ok",
+    "id": "cdi-reading-09",
+    "bytes": 35801,
+    "warnings": []
+   },
+   {
+    "file": "Reading-10.html",
+    "status": "ok",
+    "id": "cdi-reading-10",
+    "bytes": 34950,
+    "warnings": []
+   },
+   {
+    "file": "Reading-11.html",
+    "status": "ok",
+    "id": "cdi-reading-11",
+    "bytes": 35738,
+    "warnings": []
+   },
+   {
+    "file": "Reading-12.html",
+    "status": "ok",
+    "id": "cdi-reading-12",
+    "bytes": 32929,
+    "warnings": [
+     "validator: Passage 1: passage is short (633 words; IELTS passages are ~750–950)"
+    ]
+   },
+   {
+    "file": "Reading-13.html",
+    "status": "ok",
+    "id": "cdi-reading-13",
+    "bytes": 35196,
+    "warnings": []
+   },
+   {
+    "file": "Reading-14.html",
+    "status": "ok",
+    "id": "cdi-reading-14",
+    "bytes": 33360,
+    "warnings": [
+     "Q20–23: answers repeat; allowReuse set although the paper has no \"NB\""
+    ]
+   },
+   {
+    "file": "Reading-15.html",
+    "status": "ok",
+    "id": "cdi-reading-15",
+    "bytes": 35976,
+    "warnings": [
+     "validator: only 3 question types — real tests mix at least 4"
+    ]
+   },
+   {
+    "file": "Reading-16.html",
+    "status": "ok",
+    "id": "cdi-reading-16",
+    "bytes": 35788,
+    "warnings": []
+   },
+   {
+    "file": "Reading-17.html",
+    "status": "ok",
+    "id": "cdi-reading-17",
+    "bytes": 32533,
+    "warnings": [
+     "Q34–37: answers repeat; allowReuse set although the paper has no \"NB\"",
+     "validator: only 3 question types — real tests mix at least 4"
+    ]
+   },
+   {
+    "file": "Reading-18.html",
+    "status": "ok",
+    "id": "cdi-reading-18",
+    "bytes": 33151,
+    "warnings": [
+     "validator: Passage 1: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-19.html",
+    "status": "ok",
+    "id": "cdi-reading-19",
+    "bytes": 39550,
+    "warnings": [
+     "Q27–32: layout says TRUE/FALSE/NOT GIVEN but the questions and key are YES/NO/NOT GIVEN — emitted as YES/NO/NOT GIVEN",
+     "validator: Passage 1: passage is long (1369 words)"
+    ]
+   },
+   {
+    "file": "Reading-20.html",
+    "status": "ok",
+    "id": "cdi-reading-20",
+    "bytes": 39326,
+    "warnings": []
+   },
+   {
+    "file": "Reading-21.html",
+    "status": "ok",
+    "id": "cdi-reading-21",
+    "bytes": 34007,
+    "warnings": []
+   },
+   {
+    "file": "Reading-22.html",
+    "status": "ok",
+    "id": "cdi-reading-22",
+    "bytes": 34876,
+    "warnings": [
+     "Q14–19: answers repeat; allowReuse set although the paper has no \"NB\""
+    ]
+   },
+   {
+    "file": "Reading-23.html",
+    "status": "ok",
+    "id": "cdi-reading-23",
+    "bytes": 36093,
+    "warnings": [
+     "validator: Passage 1 group 1: use all three answers (TRUE, FALSE, NOT GIVEN) across the group"
+    ]
+   },
+   {
+    "file": "Reading-24.html",
+    "status": "ok",
+    "id": "cdi-reading-24",
+    "bytes": 35530,
+    "warnings": [
+     "validator: Passage 2: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-25.html",
+    "status": "ok",
+    "id": "cdi-reading-25",
+    "bytes": 35819,
+    "warnings": [
+     "Q14–18: answers repeat; allowReuse set although the paper has no \"NB\"",
+     "Q19–23: answers repeat; allowReuse set although the paper has no \"NB\""
+    ]
+   },
+   {
+    "file": "Reading-26.html",
+    "status": "ok",
+    "id": "cdi-reading-26",
+    "bytes": 36859,
+    "warnings": [
+     "validator: Passage 1: label every paragraph or none",
+     "validator: Passage 3 group 2: option keys are not sequential (A, B, C… or i, ii, iii…)"
+    ]
+   },
+   {
+    "file": "Reading-27.html",
+    "status": "ok",
+    "id": "cdi-reading-27",
+    "bytes": 36163,
+    "warnings": [
+     "validator: Passage 2: label every paragraph or none",
+     "validator: Passage 3: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-28.html",
+    "status": "ok",
+    "id": "cdi-reading-28",
+    "bytes": 35879,
+    "warnings": []
+   },
+   {
+    "file": "Reading-29.html",
+    "status": "ok",
+    "id": "cdi-reading-29",
+    "bytes": 32364,
+    "warnings": []
+   },
+   {
+    "file": "Reading-30.html",
+    "status": "skipped",
+    "reason": "Q37: answer \"G\" is not one of A,B,C,D,E",
+    "note": "Q37 key G is outside the paper's A–E list"
+   },
+   {
+    "file": "Reading-31.html",
+    "status": "skipped",
+    "reason": "validator: Passage 2 group 3 Q24: answer \"gravity\" does not appear in the passage",
+    "note": "Q24 key 'gravity' is not in the passage"
+   },
+   {
+    "file": "Reading-32.html",
+    "status": "ok",
+    "id": "cdi-reading-32",
+    "bytes": 34969,
+    "warnings": []
+   },
+   {
+    "file": "Reading-33.html",
+    "status": "skipped",
+    "reason": "validator: Reading: question numbers must run 1, 2, … without gaps (found 20 at position 19) · Reading: question numbers must run 1, 2, … without gaps (found 21 at position 20) · Reading: question numbers must run 1, 2, … without gaps (found 22 at position 21) (+19 more)",
+    "note": "Q19 is missing from the source (39 questions)"
+   },
+   {
+    "file": "Reading-34.html",
+    "status": "ok",
+    "id": "cdi-reading-34",
+    "bytes": 32440,
+    "warnings": []
+   },
+   {
+    "file": "Reading-35.html",
+    "status": "skipped",
+    "reason": "Q27: multiple choice with 0 options",
+    "note": "Q27–32 are YES/NO/NOT GIVEN statements laid out as A–D multiple choice with no options"
+   },
+   {
+    "file": "Reading-36.html",
+    "status": "skipped",
+    "reason": "Q23: answer \"YES\" is not valid for a TFNG group",
+    "note": "Q23–26 key is YES/NO/NOT GIVEN but the paper is TRUE/FALSE/NOT GIVEN throughout"
+   },
+   {
+    "file": "Reading-37.html",
+    "status": "ok",
+    "id": "cdi-reading-37",
+    "bytes": 33202,
+    "warnings": []
+   },
+   {
+    "file": "Reading-38.html",
+    "status": "skipped",
+    "reason": "passage 3: questions 27 are not in the layout",
+    "note": "Q27 is an empty placeholder (39 real questions)"
+   },
+   {
+    "file": "Reading-39.html",
+    "status": "ok",
+    "id": "cdi-reading-39",
+    "bytes": 32356,
+    "warnings": [
+     "validator: Passage 1 group 2: use all three answers (TRUE, FALSE, NOT GIVEN) across the group"
+    ]
+   },
+   {
+    "file": "Reading-40.html",
+    "status": "ok",
+    "id": "cdi-reading-40",
+    "bytes": 36365,
+    "warnings": []
+   },
+   {
+    "file": "Reading-41.html",
+    "status": "ok",
+    "id": "cdi-reading-41",
+    "bytes": 33092,
+    "warnings": [
+     "validator: Passage 2: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-42.html",
+    "status": "skipped",
+    "reason": "validator: a full Reading test has 40 questions (found 39)",
+    "note": "Q40 is missing from the source (39 questions)"
+   },
+   {
+    "file": "Reading-43.html",
+    "status": "ok",
+    "id": "cdi-reading-43",
+    "bytes": 35314,
+    "warnings": [
+     "validator: Passage 2: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-44.html",
+    "status": "skipped",
+    "reason": "validator: Passage 1 group 2 Q7: answer \"irrigation\" does not appear in the passage · Passage 2 group 3 Q23: answer \"civilisation\" does not appear in the passage",
+    "note": "Q7 'irrigation' and Q23 'civilisation' are not in the passage"
+   },
+   {
+    "file": "Reading-45.html",
+    "status": "ok",
+    "id": "cdi-reading-45",
+    "bytes": 37502,
+    "warnings": [
+     "validator: Passage 3 group 1: the word box should have extra distractors"
+    ]
+   },
+   {
+    "file": "Reading-46.html",
+    "status": "ok",
+    "id": "cdi-reading-46",
+    "bytes": 33579,
+    "warnings": [
+     "Q19–22: answers repeat; allowReuse set although the paper has no \"NB\""
+    ]
+   },
+   {
+    "file": "Reading-47.html",
+    "status": "ok",
+    "id": "cdi-reading-47",
+    "bytes": 37308,
+    "warnings": []
+   },
+   {
+    "file": "Reading-48.html",
+    "status": "skipped",
+    "reason": "validator: Passage 3 group 2 Q32: answer \"letters and numbers\" does not appear in the passage",
+    "note": "Q32 key 'letters and numbers' is not in the passage"
+   },
+   {
+    "file": "Reading-49.html",
+    "status": "ok",
+    "id": "cdi-reading-49",
+    "bytes": 36134,
+    "warnings": []
+   },
+   {
+    "file": "Reading-50.html",
+    "status": "ok",
+    "id": "cdi-reading-50",
+    "bytes": 36588,
+    "warnings": []
+   },
+   {
+    "file": "Reading-51.html",
+    "status": "ok",
+    "id": "cdi-reading-51",
+    "bytes": 36438,
+    "warnings": []
+   },
+   {
+    "file": "Reading-52.html",
+    "status": "skipped",
+    "reason": "validator: Passage 1 group 1 Q2: answer \"400\" does not appear in the passage",
+    "note": "Q2 key '400' is not in the passage"
+   },
+   {
+    "file": "Reading-53.html",
+    "status": "ok",
+    "id": "cdi-reading-53",
+    "bytes": 42216,
+    "warnings": [
+     "validator: Passage 2: passage is long (1223 words)",
+     "validator: Passage 3 group 3: use all three answers (TRUE, FALSE, NOT GIVEN) across the group"
+    ]
+   },
+   {
+    "file": "Reading-54.html",
+    "status": "ok",
+    "id": "cdi-reading-54",
+    "bytes": 39258,
+    "warnings": [
+     "validator: Passage 2: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-55.html",
+    "status": "ok",
+    "id": "cdi-reading-55",
+    "bytes": 29375,
+    "warnings": [
+     "Q13: dropped over-limit spellings \"mud brick\"",
+     "validator: Passage 1: passage is short (320 words; IELTS passages are ~750–950)",
+     "validator: only 3 question types — real tests mix at least 4"
+    ]
+   },
+   {
+    "file": "Reading-56.html",
+    "status": "skipped",
+    "reason": "Q7: every accepted answer (radiocarbon dating) exceeds the 1-word limit",
+    "note": "Q7 key 'radiocarbon dating' breaks the paper's ONE WORD ONLY rule"
+   },
+   {
+    "file": "Reading-57.html",
+    "status": "ok",
+    "id": "cdi-reading-57",
+    "bytes": 35540,
+    "warnings": [
+     "validator: Passage 3 group 2: use all three answers (YES, NO, NOT GIVEN) across the group"
+    ]
+   },
+   {
+    "file": "Reading-58.html",
+    "status": "ok",
+    "id": "cdi-reading-58",
+    "bytes": 33925,
+    "warnings": [
+     "Q37: dropped over-limit spellings \"up and down\""
+    ]
+   },
+   {
+    "file": "Reading-59.html",
+    "status": "ok",
+    "id": "cdi-reading-59",
+    "bytes": 34103,
+    "warnings": []
+   },
+   {
+    "file": "Reading-60.html",
+    "status": "ok",
+    "id": "cdi-reading-60",
+    "bytes": 29979,
+    "warnings": [
+     "validator: only 3 question types — real tests mix at least 4"
+    ]
+   },
+   {
+    "file": "Reading-61.html",
+    "status": "ok",
+    "id": "cdi-reading-61",
+    "bytes": 32225,
+    "warnings": []
+   },
+   {
+    "file": "Reading-62.html",
+    "status": "ok",
+    "id": "cdi-reading-62",
+    "bytes": 33658,
+    "warnings": [
+     "validator: Passage 2: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-63.html",
+    "status": "ok",
+    "id": "cdi-reading-63",
+    "bytes": 33660,
+    "warnings": []
+   },
+   {
+    "file": "Reading-64.html",
+    "status": "ok",
+    "id": "cdi-reading-64",
+    "bytes": 34145,
+    "warnings": [
+     "validator: Passage 3: label every paragraph or none"
+    ]
+   },
+   {
+    "file": "Reading-65.html",
+    "status": "ok",
+    "id": "cdi-reading-65",
+    "bytes": 36327,
+    "warnings": []
+   },
+   {
+    "file": "Reading-66.html",
+    "status": "ok",
+    "id": "cdi-reading-66",
+    "bytes": 35738,
+    "warnings": [
+     "Q39: dropped over-limit spellings \"the lamination and packing\", \"lamination and packing process\"",
+     "validator: Passage 2: label every paragraph or none",
+     "validator: Passage 3: passage is long (1249 words)",
+     "validator: only 3 question types — real tests mix at least 4"
+    ]
+   },
+   {
+    "file": "Reading-67.html",
+    "status": "ok",
+    "id": "cdi-reading-67",
+    "bytes": 35250,
+    "warnings": [
+     "validator: Passage 2: passage is short (638 words; IELTS passages are ~750–950)"
+    ]
+   },
+   {
+    "file": "Reading-68.html",
+    "status": "ok",
+    "id": "cdi-reading-68",
+    "bytes": 30686,
+    "warnings": [
+     "Q20–23: answers repeat; allowReuse set although the paper has no \"NB\"",
+     "validator: Passage 1 group 1 Q1: no explanation",
+     "validator: Passage 1 group 1 Q2: no explanation",
+     "validator: Passage 1 group 1 Q3: no explanation",
+     "validator: Passage 1 group 1 Q4: no explanation",
+     "validator: Passage 1 group 1 Q5: no explanation",
+     "validator: Passage 1 group 1 Q6: no explanation",
+     "validator: Passage 2 group 1 Q14: no explanation",
+     "validator: Passage 2 group 1 Q15: no explanation",
+     "validator: Passage 2 group 1 Q16: no explanation",
+     "validator: Passage 2 group 1 Q17: no explanation",
+     "validator: Passage 2 group 1 Q18: no explanation",
+     "validator: Passage 2 group 1 Q19: no explanation",
+     "validator: Passage 2 group 2 Q20: no explanation",
+     "validator: Passage 2 group 2 Q21: no explanation",
+     "validator: Passage 2 group 2 Q22: no explanation",
+     "validator: Passage 2 group 2 Q23: no explanation",
+     "validator: Passage 3 group 1 Q27: no explanation",
+     "validator: Passage 3 group 1 Q28: no explanation",
+     "validator: Passage 3 group 1 Q29: no explanation",
+     "validator: Passage 3 group 1 Q30: no explanation",
+     "validator: Passage 3 group 1 Q31: no explanation",
+     "validator: Passage 3 group 3 Q37: no explanation",
+     "validator: Passage 3 group 3 Q38: no explanation",
+     "validator: Passage 3 group 3 Q39: no explanation",
+     "validator: Passage 3 group 3 Q40: no explanation"
+    ]
+   },
+   {
+    "file": "Reading-69.html",
+    "status": "skipped",
+    "reason": "validator: a full Reading test has 40 questions (found 39)",
+    "note": "Q40 is missing from the source (39 questions)"
+   },
+   {
+    "file": "Reading-70.html",
+    "status": "ok",
+    "id": "cdi-reading-70",
+    "bytes": 32351,
+    "warnings": [
+     "validator: Passage 1 group 1 Q3: no explanation",
+     "validator: Passage 1 group 1 Q6: no explanation",
+     "validator: Passage 2: label every paragraph or none",
+     "validator: Passage 3 group 3 Q39: no explanation"
+    ]
+   },
+   {
+    "file": "Reading-71.html",
+    "status": "ok",
+    "id": "cdi-reading-71",
+    "bytes": 32070,
+    "warnings": [
+     "validator: Passage 1: passage is short (579 words; IELTS passages are ~750–950)",
+     "validator: Passage 1 group 1: use all three answers (TRUE, FALSE, NOT GIVEN) across the group",
+     "validator: Passage 3 group 2 Q32: no explanation",
+     "validator: Passage 3 group 2 Q33: no explanation",
+     "validator: Passage 3 group 2 Q36: no explanation"
+    ]
+   },
+   {
+    "file": "Reading-72.html",
+    "status": "ok",
+    "id": "cdi-reading-72",
+    "bytes": 33220,
+    "warnings": []
+   },
+   {
+    "file": "Reading-73.html",
+    "status": "ok",
+    "id": "cdi-reading-73",
+    "bytes": 33660,
+    "warnings": [
+     "validator: Passage 3 group 3: use all three answers (TRUE, FALSE, NOT GIVEN) across the group"
+    ]
+   },
+   {
+    "file": "Reading-74.html",
+    "status": "ok",
+    "id": "cdi-reading-74",
+    "bytes": 33982,
+    "warnings": []
+   },
+   {
+    "file": "Reading-75.html",
+    "status": "ok",
+    "id": "cdi-reading-75",
+    "bytes": 36194,
+    "warnings": [
+     "validator: Passage 1 group 1: use all three answers (TRUE, FALSE, NOT GIVEN) across the group"
+    ]
+   },
+   {
+    "file": "Reading-76.html",
+    "status": "ok",
+    "id": "cdi-reading-76",
+    "bytes": 33415,
+    "warnings": [
+     "validator: Passage 1: passage is short (590 words; IELTS passages are ~750–950)",
+     "validator: Passage 1 group 1: use all three answers (TRUE, FALSE, NOT GIVEN) across the group"
+    ]
+   },
+   {
+    "file": "Reading-77.html",
+    "status": "ok",
+    "id": "cdi-reading-77",
+    "bytes": 34436,
+    "warnings": [
+     "Q14: layout has an example ({\"para\":\"B\",\"val\":\"I\"}) — kept in the instructions",
+     "validator: Passage 2: label every paragraph or none",
+     "validator: Passage 2 group 1: option keys are not sequential (A, B, C… or i, ii, iii…)"
+    ]
+   },
+   {
+    "file": "Reading-78.html",
+    "status": "ok",
+    "id": "cdi-reading-78",
+    "bytes": 27290,
+    "warnings": [
+     "validator: Passage 2: passage is short (470 words; IELTS passages are ~750–950)",
+     "validator: Passage 2 group 2: use all three answers (TRUE, FALSE, NOT GIVEN) across the group",
+     "validator: only 2 question types — real tests mix at least 4"
+    ]
+   },
+   {
+    "file": "Reading-79.html",
+    "status": "ok",
+    "id": "cdi-reading-79",
+    "bytes": 35447,
+    "warnings": [
+     "validator: Passage 2: label every paragraph or none",
+     "validator: Passage 2 group 3: the word box should have extra distractors"
+    ]
+   },
+   {
+    "file": "Reading-80.html",
+    "status": "ok",
+    "id": "cdi-reading-80",
+    "bytes": 30506,
+    "warnings": [
+     "Q14–22: answers repeat; allowReuse set although the paper has no \"NB\"",
+     "validator: Passage 2: label every paragraph or none",
+     "validator: only 3 question types — real tests mix at least 4"
+    ]
+   },
+   {
+    "file": "Reading-81.html",
+    "status": "ok",
+    "id": "cdi-reading-81",
+    "bytes": 32910,
+    "warnings": []
+   },
+   {
+    "file": "Reading-82.html",
+    "status": "ok",
+    "id": "cdi-reading-82",
+    "bytes": 33536,
+    "warnings": [
+     "validator: Passage 1: passage is short (526 words; IELTS passages are ~750–950)"
+    ]
+   },
+   {
+    "file": "Reading-83.html",
+    "status": "ok",
+    "id": "cdi-reading-83",
+    "bytes": 35134,
+    "warnings": [
+     "validator: Passage 3: passage is long (1269 words)"
+    ]
+   }
+  ]
+ },
+ "listening": {
+  "converted": 54,
+  "skipped": 17,
+  "files": [
+   {
+    "file": "Listening-01.html",
+    "status": "ok",
+    "id": "cdi-listening-01",
+    "bytes": 39177,
+    "audio": "listening-1.mp3",
+    "durationSec": 1725,
+    "warnings": []
+   },
+   {
+    "file": "Listening-02.html",
+    "status": "ok",
+    "id": "cdi-listening-02",
+    "bytes": 36339,
+    "audio": "listening-2.mp3",
+    "durationSec": 1602,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "validator: Part 4 group 2: the word box should have extra distractors"
+    ]
+   },
+   {
+    "file": "Listening-03.html",
+    "status": "ok",
+    "id": "cdi-listening-03",
+    "bytes": 35450,
+    "audio": "listening-3.mp3",
+    "durationSec": 1437,
+    "warnings": [
+     "Q10: dropped over-limit spellings \"internet cafe\", \"internet café\"",
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-04.html",
+    "status": "ok",
+    "id": "cdi-listening-04",
+    "bytes": 37587,
+    "audio": "listening-4.mp3",
+    "durationSec": 1540,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-05.html",
+    "status": "ok",
+    "id": "cdi-listening-05",
+    "bytes": 35097,
+    "audio": "listening-5.mp3",
+    "durationSec": 1591,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-06.html",
+    "status": "ok",
+    "id": "cdi-listening-06",
+    "bytes": 24030,
+    "audio": "listening-6.mp3",
+    "durationSec": 1590,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-07.html",
+    "status": "ok",
+    "id": "cdi-listening-07",
+    "bytes": 34596,
+    "audio": "listening-7.mp3",
+    "durationSec": 1706,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-08.html",
+    "status": "ok",
+    "id": "cdi-listening-08",
+    "bytes": 37954,
+    "audio": "listening-8.mp3",
+    "durationSec": 1923,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q8: answer \"9286352271\" does not appear in the script",
+     "validator: Part 1 group 1: table rows have different numbers of cells"
+    ]
+   },
+   {
+    "file": "Listening-09.html",
+    "status": "ok",
+    "id": "cdi-listening-09",
+    "bytes": 34794,
+    "audio": "listening-9.mp3",
+    "durationSec": 1638,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-10.html",
+    "status": "ok",
+    "id": "cdi-listening-10",
+    "bytes": 27757,
+    "audio": "listening-10.mp3",
+    "durationSec": 1580,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-11.html",
+    "status": "skipped",
+    "reason": "validator: 4 gap answers not in the transcript: Part 1 group 1 Q2: answer \"53 Green Street\" does not appear in the script · Part 1 group 1 Q4: answer \"18th September 1978\" does not appear in the script",
+    "note": "4 gap keys are written differently in the transcript (more than the 3 tolerated)"
+   },
+   {
+    "file": "Listening-12.html",
+    "status": "ok",
+    "id": "cdi-listening-12",
+    "bytes": 35486,
+    "audio": "listening-12.mp3",
+    "durationSec": 1577,
+    "warnings": [
+     "transcript: Part 1 group 1 Q2: answer \"077896245\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-13.html",
+    "status": "ok",
+    "id": "cdi-listening-13",
+    "bytes": 33821,
+    "audio": "listening-13.mp3",
+    "durationSec": 1638,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-14.html",
+    "status": "ok",
+    "id": "cdi-listening-14",
+    "bytes": 31498,
+    "audio": "listening-14.mp3",
+    "durationSec": 1614,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q4: answer \"8.99\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-15.html",
+    "status": "skipped",
+    "reason": "validator: Part 2: script is missing or too short · Part 4: script is missing or too short · Listening: question numbers must run 1, 2, … without gaps (found 21 at position 11) (+11 more)",
+    "note": "transcripts for Parts 2 and 4 are placeholders; question numbers have gaps"
+   },
+   {
+    "file": "Listening-16.html",
+    "status": "skipped",
+    "reason": "validator: Part 1: script is missing or too short · Part 2: script is missing or too short · Part 3: script is missing or too short (+5 more)",
+    "note": "all four transcripts are 'will be added' placeholders"
+   },
+   {
+    "file": "Listening-17.html",
+    "status": "ok",
+    "id": "cdi-listening-17",
+    "bytes": 27352,
+    "audio": "listening-17.mp3",
+    "durationSec": 1116,
+    "warnings": [
+     "Q4: dropped over-limit spellings \"22nd of January\"",
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q4: answer \"22 January\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-18.html",
+    "status": "skipped",
+    "reason": "validator: Part 3: script is missing or too short · Part 4: script is missing or too short · Part 3 must have 10 questions (found 0) (+1 more)",
+    "note": "Part 3 has no questions; Parts 3–4 transcripts are placeholders"
+   },
+   {
+    "file": "Listening-19.html",
+    "status": "ok",
+    "id": "cdi-listening-19",
+    "bytes": 29870,
+    "audio": "listening-19.mp3",
+    "durationSec": 1210,
+    "warnings": [
+     "part 3: questions before the first section heading — grouped as multiple choice",
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-20.html",
+    "status": "skipped",
+    "reason": "validator: Part 1: script is missing or too short · Part 2: script is missing or too short · Part 3: script is missing or too short (+5 more)",
+    "note": "all four transcripts are 'will be added' placeholders"
+   },
+   {
+    "file": "Listening-21.html",
+    "status": "skipped",
+    "reason": "validator: Part 1: script is missing or too short · Part 2: script is missing or too short · Part 3: script is missing or too short (+5 more)",
+    "note": "all four transcripts are 'will be added' placeholders"
+   },
+   {
+    "file": "Listening-22.html",
+    "status": "ok",
+    "id": "cdi-listening-22",
+    "bytes": 28479,
+    "audio": "listening-22.mp3",
+    "durationSec": 1500,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-23.html",
+    "status": "ok",
+    "id": "cdi-listening-23",
+    "bytes": 26587,
+    "audio": "listening-23.mp3",
+    "durationSec": 1619,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-24.html",
+    "status": "ok",
+    "id": "cdi-listening-24",
+    "bytes": 33951,
+    "audio": "listening-24.mp3",
+    "durationSec": 1813,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-25.html",
+    "status": "ok",
+    "id": "cdi-listening-25",
+    "bytes": 30412,
+    "audio": "listening-25.mp3",
+    "durationSec": 1753,
+    "warnings": [
+     "Q5: dropped over-limit spellings \"a story\"",
+     "Q7: dropped over-limit spellings \"a farm\"",
+     "Q8: dropped over-limit spellings \"a toy\"",
+     "Q9: dropped over-limit spellings \"a pillow\"",
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-26.html",
+    "status": "skipped",
+    "reason": "validator: 20 gap answers not in the transcript: Part 1 group 1 Q1: answer \"bicycle\" does not appear in the script · Part 1 group 1 Q2: answer \"40\" does not appear in the script",
+    "note": "20 gap keys are not in the transcript (transcript and key don't belong together)"
+   },
+   {
+    "file": "Listening-27.html",
+    "status": "ok",
+    "id": "cdi-listening-27",
+    "bytes": 31703,
+    "audio": "listening-27.mp3",
+    "durationSec": 1639,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-28.html",
+    "status": "ok",
+    "id": "cdi-listening-28",
+    "bytes": 36087,
+    "audio": "listening-28.mp3",
+    "durationSec": 1783,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-29.html",
+    "status": "ok",
+    "id": "cdi-listening-29",
+    "bytes": 37552,
+    "audio": "listening-29.mp3",
+    "durationSec": 1783,
+    "warnings": [
+     "Q9: dropped over-limit spellings \"one year\"",
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q6: answer \"April 12\" does not appear in the script",
+     "validator: Part 1 group 1: table rows have different numbers of cells"
+    ]
+   },
+   {
+    "file": "Listening-30.html",
+    "status": "ok",
+    "id": "cdi-listening-30",
+    "bytes": 35048,
+    "audio": "listening-30.mp3",
+    "durationSec": 1697,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q7: answer \"25\" does not appear in the script",
+     "transcript: Part 1 group 1 Q8: answer \"16\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-31.html",
+    "status": "ok",
+    "id": "cdi-listening-31",
+    "bytes": 41341,
+    "audio": "listening-31.mp3",
+    "durationSec": 1655,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-32.html",
+    "status": "ok",
+    "id": "cdi-listening-32",
+    "bytes": 30086,
+    "audio": "listening-32.mp3",
+    "durationSec": 1676,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-33.html",
+    "status": "ok",
+    "id": "cdi-listening-33",
+    "bytes": 35616,
+    "audio": "listening-33.mp3",
+    "durationSec": 1571,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-34.html",
+    "status": "skipped",
+    "reason": "image outside images/: http://ielts-up.com/images/listening14.2.png",
+    "note": "Part 2 picture is hot-linked from another website, not in the source images"
+   },
+   {
+    "file": "Listening-35.html",
+    "status": "ok",
+    "id": "cdi-listening-35",
+    "bytes": 28545,
+    "audio": "listening-35.mp3",
+    "durationSec": 1546,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-36.html",
+    "status": "ok",
+    "id": "cdi-listening-36",
+    "bytes": 27510,
+    "audio": "listening-36.mp3",
+    "durationSec": 1580,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "validator: Part 4 group 1: table rows have different numbers of cells"
+    ]
+   },
+   {
+    "file": "Listening-37.html",
+    "status": "skipped",
+    "reason": "validator: Part 1 group 3 Q10: needs 3–5 options",
+    "note": "Q10 has more than 5 options (not an IELTS multiple-choice format)"
+   },
+   {
+    "file": "Listening-38.html",
+    "status": "ok",
+    "id": "cdi-listening-38",
+    "bytes": 30554,
+    "audio": "listening-38.mp3",
+    "durationSec": 1519,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-39.html",
+    "status": "skipped",
+    "reason": "Q35: every accepted answer (british airways) exceeds the 1-word limit",
+    "note": "Q35 key 'British Airways' breaks the paper's ONE WORD ONLY rule"
+   },
+   {
+    "file": "Listening-40.html",
+    "status": "ok",
+    "id": "cdi-listening-40",
+    "bytes": 38954,
+    "audio": "listening-40.mp3",
+    "durationSec": 1695,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q1: answer \"80\" does not appear in the script",
+     "transcript: Part 2 group 1 Q11: answer \"8:55\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-41.html",
+    "status": "ok",
+    "id": "cdi-listening-41",
+    "bytes": 41373,
+    "audio": "listening-41.mp3",
+    "durationSec": 1506,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q3: answer \"25th February\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-42.html",
+    "status": "ok",
+    "id": "cdi-listening-42",
+    "bytes": 38553,
+    "audio": "listening-42.mp3",
+    "durationSec": 1515,
+    "warnings": [
+     "Q1: dropped over-limit spellings \"BD 51 STR\", \"BD51 STR\", \"BD 51STR\"",
+     "Q9: dropped over-limit spellings \"an automatic\"",
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q1: answer \"BD51STR\" does not appear in the script",
+     "transcript: Part 1 group 1 Q10: answer \"07847 355780\" does not appear in the script",
+     "validator: Part 1 group 1: table rows have different numbers of cells"
+    ]
+   },
+   {
+    "file": "Listening-43.html",
+    "status": "ok",
+    "id": "cdi-listening-43",
+    "bytes": 38470,
+    "audio": "listening-43.mp3",
+    "durationSec": 1507,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "validator: Part 1 group 1: table rows have different numbers of cells"
+    ]
+   },
+   {
+    "file": "Listening-44.html",
+    "status": "ok",
+    "id": "cdi-listening-44",
+    "bytes": 33706,
+    "audio": "listening-44.mp3",
+    "durationSec": 1697,
+    "warnings": [
+     "no question timestamps",
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-45.html",
+    "status": "ok",
+    "id": "cdi-listening-45",
+    "bytes": 35641,
+    "audio": "listening-45.mp3",
+    "durationSec": 1668,
+    "warnings": [
+     "Q9: dropped over-limit spellings \"August nineteenth\"",
+     "Q10: dropped over-limit spellings \"two oh five\"",
+     "no question timestamps",
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q9: answer \"August 19th\" does not appear in the script",
+     "transcript: Part 1 group 1 Q10: answer \"2:05\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-46.html",
+    "status": "ok",
+    "id": "cdi-listening-46",
+    "bytes": 37447,
+    "audio": "listening-46.mp3",
+    "durationSec": 1819,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q4: answer \"17.50\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-47.html",
+    "status": "ok",
+    "id": "cdi-listening-47",
+    "bytes": 32845,
+    "audio": "listening-47.mp3",
+    "durationSec": 1536,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-48.html",
+    "status": "ok",
+    "id": "cdi-listening-48",
+    "bytes": 32100,
+    "audio": "listening-48.mp3",
+    "durationSec": 1474,
+    "warnings": [
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-49.html",
+    "status": "ok",
+    "id": "cdi-listening-49",
+    "bytes": 28578,
+    "audio": "listening-49.mp3",
+    "durationSec": 1822,
+    "warnings": [
+     "Q2: dropped over-limit spellings \"twelve hundred\"",
+     "Q5: dropped over-limit spellings \"nine hundred\"",
+     "Q7: dropped over-limit spellings \"thirteen hundred and fifty\"",
+     "Q8: dropped over-limit spellings \"the fifteenth\"",
+     "Q9: dropped over-limit spellings \"half past ten\"",
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q2: answer \"1200\" does not appear in the script",
+     "transcript: Part 1 group 1 Q7: answer \"1350\" does not appear in the script",
+     "transcript: Part 1 group 1 Q9: answer \"10:30\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-50.html",
+    "status": "ok",
+    "id": "cdi-listening-50",
+    "bytes": 39536,
+    "audio": "listening-50.mp3",
+    "durationSec": 1602,
+    "warnings": [
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q2: answer \"11 July\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-51.html",
+    "status": "ok",
+    "id": "cdi-listening-51",
+    "bytes": 36825,
+    "audio": "listening-51.mp3",
+    "durationSec": 1650,
+    "warnings": [
+     "Q3: dropped over-limit spellings \"one hundred and twenty five\", \"one hundred and twenty-five\"",
+     "Q5: dropped over-limit spellings \"2 times a month\", \"two times a month\"",
+     "Q36: dropped over-limit spellings \"the profit margin\"",
+     "Q37: dropped over-limit spellings \"the retail trade\"",
+     "Q40: dropped over-limit spellings \"full page ads\"",
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-52.html",
+    "status": "skipped",
+    "reason": "validator: Part 2 must have 10 questions (found 13) · Part 3 must have 10 questions (found 13) · Part 4 must have 10 questions (found 13)",
+    "note": "49 questions (13 per part) — not an IELTS-format paper"
+   },
+   {
+    "file": "Listening-53.html",
+    "status": "skipped",
+    "reason": "validator: Part 1 must have 10 questions (found 13) · Part 2 must have 10 questions (found 13) · Part 4 must have 10 questions (found 13)",
+    "note": "49 questions (13 per part) — not an IELTS-format paper"
+   },
+   {
+    "file": "Listening-54.html",
+    "status": "skipped",
+    "reason": "validator: Part 1 must have 10 questions (found 13) · Part 3 must have 10 questions (found 13) · Part 4 must have 10 questions (found 13)",
+    "note": "49 questions (13 per part) — not an IELTS-format paper"
+   },
+   {
+    "file": "Listening-55.html",
+    "status": "skipped",
+    "reason": "validator: Part 3 must have 10 questions (found 13) · Part 4 must have 10 questions (found 13)",
+    "note": "46 questions (13 in Parts 3–4) — not an IELTS-format paper"
+   },
+   {
+    "file": "Listening-56.html",
+    "status": "ok",
+    "id": "cdi-listening-56",
+    "bytes": 37716,
+    "audio": "listening-56.mp3",
+    "durationSec": 1592,
+    "warnings": [
+     "Q1: dropped over-limit spellings \"a blue card\"",
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-57.html",
+    "status": "skipped",
+    "reason": "validator: Part 1 must have 10 questions (found 13) · Part 2 must have 10 questions (found 13) · Part 4 must have 10 questions (found 13)",
+    "note": "49 questions (13 per part) — not an IELTS-format paper"
+   },
+   {
+    "file": "Listening-58.html",
+    "status": "ok",
+    "id": "cdi-listening-58",
+    "bytes": 37113,
+    "audio": "listening-58.mp3",
+    "durationSec": 1359,
+    "warnings": [
+     "Q2: dropped over-limit spellings \"a group\", \"group booking\"",
+     "Q6: dropped over-limit spellings \"wheel chair\", \"a wheelchair\"",
+     "Q7: dropped over-limit spellings \"the lift\"",
+     "Q8: dropped over-limit spellings \"the library\"",
+     "part start times not derivable from the transcript",
+     "transcript: Part 1 group 1 Q4: answer \"12.50\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-59.html",
+    "status": "ok",
+    "id": "cdi-listening-59",
+    "bytes": 35728,
+    "audio": "listening-59.mp3",
+    "durationSec": 1580,
+    "warnings": [
+     "Q6: dropped over-limit spellings \"a disco\"",
+     "Q9: dropped over-limit spellings \"a taxi\"",
+     "Q31: dropped over-limit spellings \"the bear\"",
+     "Q37: dropped over-limit spellings \"a gym\"",
+     "Q38: dropped over-limit spellings \"a threat\"",
+     "part start times not derivable from the transcript"
+    ]
+   },
+   {
+    "file": "Listening-60.html",
+    "status": "skipped",
+    "reason": "validator: Part 1: script is missing or too short · Part 2: script is missing or too short · Part 3: script is missing or too short (+5 more)",
+    "note": "all four transcripts are 'will be added' placeholders"
+   },
+   {
+    "file": "Listening-61.html",
+    "status": "ok",
+    "id": "cdi-listening-61",
+    "bytes": 36409,
+    "audio": "listening-61.mp3",
+    "durationSec": 1672,
+    "warnings": [
+     "Q1: dropped over-limit spellings \"the headmaster\"",
+     "Q8: dropped over-limit spellings \"an article\"",
+     "Q35: dropped over-limit spellings \"a ship\"",
+     "part start times not derivable from the transcript",
+     "transcript: Part 4 group 1 Q37: answer \"3500\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-62.html",
+    "status": "ok",
+    "id": "cdi-listening-62",
+    "bytes": 34909,
+    "audio": "listening-62.mp3",
+    "durationSec": 1711,
+    "warnings": [
+     "Q2: dropped over-limit spellings \"the peak season\"",
+     "validator: Part 2 group 2: the word box should have extra distractors"
+    ]
+   },
+   {
+    "file": "Listening-63.html",
+    "status": "ok",
+    "id": "cdi-listening-63",
+    "bytes": 33735,
+    "audio": "listening-63.mp3",
+    "durationSec": 1442,
+    "warnings": [
+     "Q4: dropped over-limit spellings \"28th of August\"",
+     "Q5: dropped over-limit spellings \"a degree\"",
+     "Q6: dropped over-limit spellings \"a report\", \"written report\"",
+     "Q9: dropped over-limit spellings \"the airport\"",
+     "Q10: dropped over-limit spellings \"a car\"",
+     "Q11: dropped over-limit spellings \"a farm\", \"an abandoned farm\", \"abandoned farm\"",
+     "Q34: dropped over-limit spellings \"your employers\"",
+     "Q36: dropped over-limit spellings \"a car\", \"new car\"",
+     "Q37: dropped over-limit spellings \"the calculation\"",
+     "Q40: dropped over-limit spellings \"a questionnaire\"",
+     "transcript: Part 1 group 1 Q4: answer \"28th August\" does not appear in the script",
+     "validator: Part 3 group 3: the word box should have extra distractors"
+    ]
+   },
+   {
+    "file": "Listening-64.html",
+    "status": "skipped",
+    "reason": "validator: 7 gap answers not in the transcript: Part 1 group 1 Q2: answer \"pk2@cat.com\" does not appear in the script · Part 1 group 1 Q3: answer \"5.30\" does not appear in the script",
+    "note": "7 gap keys are written differently in the transcript (more than the 3 tolerated)"
+   },
+   {
+    "file": "Listening-65.html",
+    "status": "ok",
+    "id": "cdi-listening-65",
+    "bytes": 41092,
+    "audio": "listening-65.mp3",
+    "durationSec": 1660,
+    "warnings": [
+     "transcript: Part 1 group 1 Q3: answer \"66 Lake\" does not appear in the script",
+     "transcript: Part 1 group 1 Q5: answer \"UK765024EG\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-66.html",
+    "status": "ok",
+    "id": "cdi-listening-66",
+    "bytes": 39288,
+    "audio": "listening-66.mp3",
+    "durationSec": 1531,
+    "warnings": [
+     "Q6: dropped over-limit spellings \"switched it off\"",
+     "transcript: Part 1 group 1 Q1: answer \"CWX576884\" does not appear in the script",
+     "transcript: Part 1 group 1 Q4: answer \"GO194KE\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-67.html",
+    "status": "ok",
+    "id": "cdi-listening-67",
+    "bytes": 36962,
+    "audio": "listening-67.mp3",
+    "durationSec": 1561,
+    "warnings": [
+     "Q19: dropped over-limit spellings \"the happy dragon\"",
+     "transcript: Part 1 group 1 Q4: answer \"24 months\" does not appear in the script",
+     "transcript: Part 1 group 1 Q7: answer \"30 June\" does not appear in the script",
+     "transcript: Part 2 group 2 Q20: answer \"3231190\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-68.html",
+    "status": "ok",
+    "id": "cdi-listening-68",
+    "bytes": 36773,
+    "audio": "listening-68.mp3",
+    "durationSec": 1421,
+    "warnings": [
+     "transcript: Part 1 group 1 Q1: answer \"Steven\" does not appear in the script",
+     "transcript: Part 1 group 1 Q2: answer \"Dynevor\" does not appear in the script",
+     "transcript: Part 1 group 1 Q5: answer \"Single\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-69.html",
+    "status": "ok",
+    "id": "cdi-listening-69",
+    "bytes": 38964,
+    "audio": "listening-69.mp3",
+    "durationSec": 1697,
+    "warnings": [
+     "transcript: Part 1 group 1 Q9: answer \"Cliffton\" does not appear in the script",
+     "transcript: Part 1 group 1 Q10: answer \"903036602\" does not appear in the script"
+    ]
+   },
+   {
+    "file": "Listening-70.html",
+    "status": "ok",
+    "id": "cdi-listening-70",
+    "bytes": 40171,
+    "audio": "listening-70.mp3",
+    "durationSec": 1640,
+    "warnings": [
+     "transcript: Part 1 group 2 Q9: answer \"279\" does not appear in the script",
+     "validator: Part 1 group 1: table rows have different numbers of cells"
+    ]
+   },
+   {
+    "file": "Listening-71.html",
+    "status": "ok",
+    "id": "cdi-listening-71",
+    "bytes": 37314,
+    "audio": "listening-71.mp3",
+    "durationSec": 1655,
+    "warnings": [
+     "Q2: dropped over-limit spellings \"13 Anglesea Road\", \"13 Anglesea Rd\", \"13 Anglesey Road\", \"13 Anglesey Rd\"",
+     "transcript: Part 1 group 1 Q3: answer \"040 4229160\" does not appear in the script",
+     "transcript: Part 3 group 1 Q25: answer \"26 November\" does not appear in the script",
+     "validator: Part 2 group 1: the word box should have extra distractors"
+    ]
+   }
+  ]
+ },
+ "writing": {
+  "converted": 52,
+  "skipped": 0,
+  "files": [
+   {
+    "file": "Writing-Task-01.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-01-t1",
+     "cdi-writing-01-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-02.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-02-t1",
+     "cdi-writing-02-t2"
+    ],
+    "types": [
+     "Chart",
+     "Two-part Question"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-03.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-03-t1",
+     "cdi-writing-03-t2"
+    ],
+    "types": [
+     "Table",
+     "Advantages/Disadvantages"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-04.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-04-t1",
+     "cdi-writing-04-t2"
+    ],
+    "types": [
+     "Table",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-05.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-05-t1",
+     "cdi-writing-05-t2"
+    ],
+    "types": [
+     "Map",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-06.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-06-t1",
+     "cdi-writing-06-t2"
+    ],
+    "types": [
+     "Process",
+     "Advantages/Disadvantages"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-07.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-07-t1",
+     "cdi-writing-07-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-08.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-08-t1",
+     "cdi-writing-08-t2"
+    ],
+    "types": [
+     "Chart",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-09.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-09-t1",
+     "cdi-writing-09-t2"
+    ],
+    "types": [
+     "Process",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-10.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-10-t1",
+     "cdi-writing-10-t2"
+    ],
+    "types": [
+     "Table",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-11.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-11-t1",
+     "cdi-writing-11-t2"
+    ],
+    "types": [
+     "Chart",
+     "Positive/Negative"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-12.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-12-t1",
+     "cdi-writing-12-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-13.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-13-t1",
+     "cdi-writing-13-t2"
+    ],
+    "types": [
+     "Chart",
+     "Two-part Question"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-14.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-14-t1",
+     "cdi-writing-14-t2"
+    ],
+    "types": [
+     "Chart",
+     "Positive/Negative"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-15.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-15-t1",
+     "cdi-writing-15-t2"
+    ],
+    "types": [
+     "Map",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-16.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-16-t1",
+     "cdi-writing-16-t2"
+    ],
+    "types": [
+     "Chart",
+     "Two-part Question"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-17.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-17-t1",
+     "cdi-writing-17-t2"
+    ],
+    "types": [
+     "Map",
+     "Positive/Negative"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-18.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-18-t1",
+     "cdi-writing-18-t2"
+    ],
+    "types": [
+     "Line Graph",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-19.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-19-t1",
+     "cdi-writing-19-t2"
+    ],
+    "types": [
+     "Process",
+     "Two-part Question"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-20.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-20-t1",
+     "cdi-writing-20-t2"
+    ],
+    "types": [
+     "Pie Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-21.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-21-t1",
+     "cdi-writing-21-t2"
+    ],
+    "types": [
+     "Line Graph",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-22.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-22-t1",
+     "cdi-writing-22-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-23.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-23-t1",
+     "cdi-writing-23-t2"
+    ],
+    "types": [
+     "Map",
+     "Two-part Question"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-24.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-24-t1",
+     "cdi-writing-24-t2"
+    ],
+    "types": [
+     "Map",
+     "Opinion"
+    ],
+    "warnings": [
+     "task1 topic duplicates cdi-writing-23-t1"
+    ]
+   },
+   {
+    "file": "Writing-Task-25.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-25-t1",
+     "cdi-writing-25-t2"
+    ],
+    "types": [
+     "Chart",
+     "Advantages/Disadvantages"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-26.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-26-t1",
+     "cdi-writing-26-t2"
+    ],
+    "types": [
+     "Chart",
+     "Positive/Negative"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-27.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-27-t1",
+     "cdi-writing-27-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-28.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-28-t1",
+     "cdi-writing-28-t2"
+    ],
+    "types": [
+     "Map",
+     "Advantages/Disadvantages"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-29.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-29-t1",
+     "cdi-writing-29-t2"
+    ],
+    "types": [
+     "Chart",
+     "Two-part Question"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-30.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-30-t1",
+     "cdi-writing-30-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-31.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-31-t1",
+     "cdi-writing-31-t2"
+    ],
+    "types": [
+     "Chart",
+     "Positive/Negative"
+    ],
+    "warnings": [
+     "task1 topic duplicates cdi-writing-30-t1"
+    ]
+   },
+   {
+    "file": "Writing-Task-32.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-32-t1",
+     "cdi-writing-32-t2"
+    ],
+    "types": [
+     "Table",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-33.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-33-t1",
+     "cdi-writing-33-t2"
+    ],
+    "types": [
+     "Chart",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-34.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-34-t1",
+     "cdi-writing-34-t2"
+    ],
+    "types": [
+     "Chart",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-35.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-35-t1",
+     "cdi-writing-35-t2"
+    ],
+    "types": [
+     "Chart",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-36.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-36-t1",
+     "cdi-writing-36-t2"
+    ],
+    "types": [
+     "Chart",
+     "Problem-Solution"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-37.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-37-t1",
+     "cdi-writing-37-t2"
+    ],
+    "types": [
+     "Chart",
+     "Two-part Question"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-38.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-38-t1",
+     "cdi-writing-38-t2"
+    ],
+    "types": [
+     "Map",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-39.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-39-t1",
+     "cdi-writing-39-t2"
+    ],
+    "types": [
+     "Line Graph",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-40.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-40-t1",
+     "cdi-writing-40-t2"
+    ],
+    "types": [
+     "Bar Chart",
+     "Positive/Negative"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-41.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-41-t1",
+     "cdi-writing-41-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-42.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-42-t1",
+     "cdi-writing-42-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-43.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-43-t1",
+     "cdi-writing-43-t2"
+    ],
+    "types": [
+     "Chart",
+     "Two-part Question"
+    ],
+    "warnings": [
+     "task2 topic duplicates cdi-writing-23-t2"
+    ]
+   },
+   {
+    "file": "Writing-Task-44.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-44-t1",
+     "cdi-writing-44-t2"
+    ],
+    "types": [
+     "Chart",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-45.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-45-t1",
+     "cdi-writing-45-t2"
+    ],
+    "types": [
+     "Chart",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-46.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-46-t1",
+     "cdi-writing-46-t2"
+    ],
+    "types": [
+     "Bar Chart",
+     "Two-part Question"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-47.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-47-t1",
+     "cdi-writing-47-t2"
+    ],
+    "types": [
+     "Table",
+     "Advantages/Disadvantages"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-48.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-48-t1",
+     "cdi-writing-48-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-49.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-49-t1",
+     "cdi-writing-49-t2"
+    ],
+    "types": [
+     "Table",
+     "Discussion + Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-50.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-50-t1",
+     "cdi-writing-50-t2"
+    ],
+    "types": [
+     "Table",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-51.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-51-t1",
+     "cdi-writing-51-t2"
+    ],
+    "types": [
+     "Table",
+     "Opinion"
+    ],
+    "warnings": []
+   },
+   {
+    "file": "Writing-Task-52.html",
+    "status": "ok",
+    "ids": [
+     "cdi-writing-52-t1",
+     "cdi-writing-52-t2"
+    ],
+    "types": [
+     "Chart",
+     "Opinion"
+    ],
+    "warnings": []
+   }
+  ],
+  "samples": [],
+  "unmatchedSamples": [
+   {
+    "file": "Writing-Sample-agree-disagree-water-basic-human-right.html",
+    "task": "task2",
+    "title": "Clean Water is a Basic Human Right - IELTS Writing Sample",
+    "topic": "Access to clean water is a basic human right. Therefore every home should have a water supply that is provided free of charge. To what extent do you agree or disagree?",
+    "words": 328,
+    "bestScore": 0.45,
+    "answer": "It is often argued that since access to clean water is a fundamental human right, it should be given to every household free of charge. I agree that clean water is essential and should be universally accessible, despite the potential expense of such a proposal.\n\nOne the one hand, providing unlimited free water to every home engenders serious logistical and financial challenges. Water treatment, maintenance of pipelines, and distribution all require funding, skilled labor, and dedicated infrastructure. If water were completely free, there would be little incentive for consumers to use it responsibly, leading to wastage and overconsumption. Consider the example of California during its 2011–2017 drought: despite public campaigns, many affluent neighborhoods continued to overwater their lawns and fill large swimming pools, as water prices were heavily subsidized. This overuse strained reservoirs and forced emergency water restrictions. As a response, nations like Singapore have implemented a tiered pricing system where basic water needs are affordable, but excessive use is charged at higher rates.\n\nOn the other hand, the argument that clean water is a human right is supported by strong moral and humanitarian reasoning. Water is vital not only for drinking, but for cooking, hygiene, and sanitation. Without it, communities are vulnerable to diseases such as cholera, dysentery, and typhoid, all of which are preventable with access to clean water. For example, in sub-Saharan Africa, where millions still lack safe water access, avoidable waterborne illnesses cause more deaths each year than armed conflicts. In this context, expecting individuals to pay for water they cannot afford fosters an unjust system where survival equates to income. Governments, therefore, have a duty to ensure that no citizens are denied this basic resource, especially in less affluent or rural areas.\n\nIn conclusion, I strongly agree that every individual deserves access to clean water as a basic human right, despite the practical challenges posed. A fair solution would safeguard free access to water for the general public regardless of the financial ramifications."
+   },
+   {
+    "file": "Writing-Sample-attention-spans-social-media.html",
+    "task": "task2",
+    "title": "Writing Sample: Attention Spans & Social Media",
+    "topic": "Many today feel that attention spans are becoming shorter due to the prevalence of social media. To what extent do you agree or disagree?",
+    "words": 300,
+    "bestScore": 0.47,
+    "answer": "Some today have argued that individuals now possess generally shorter attention spans largely as a result of the growth of various social media platforms . In my opinion, though this claim might be slightly overstated , it is true on the whole .\n\nThose who argue that shorter attention spans are not due to social media point out the influence of other new forms of media and technology . The length of a person's attention span was never a topic of consideration for debate before the onset of the digital age and the development of television, radio, the internet, and so on . The stimulation from these technologies represents unprecedented challenges for humans who have not evolved to live in a digital world . Although modern kinds of media lead to over-stimulation and an addictive craving for more, constant stimulation, social media is merely one distraction among many .\n\nHowever, social media is the greatest single cause of declining attention spans due to their unique design features . Social media companies have specifically crafted their applications to provide momentary bursts of pleasure . For instance, an application like TikTok is specifically designed to provide a stream of addictive videos under 10 seconds in length . As their algorithm perfects a curated feed for any given user , individuals easily become hooked on short entertainment and their attention spans concomitantly suffer . This is in marked contrast to the focus required to watch a film or listen to a radio broadcast .\n\nIn conclusion, I agree social media has caused the average person to struggle with concentration for extended periods due to the manner in which these websites have been constructed . Governments should therefore regulate them in order to mitigate the harms they cause for society as a whole ."
+   },
+   {
+    "file": "Writing-Sample-cities-vs-rural-areas.html",
+    "task": "task2",
+    "title": "Writing Sample: Cities vs Rural Areas",
+    "topic": "Some people think that cities are the best places to live. Others prefer to live in rural areas. Discuss both views and give your own opinion.",
+    "words": 315,
+    "bestScore": 0.61,
+    "answer": "There are fundamentally different reasons that dictate whether one lives in the countryside or an urban area . In my opinion, the health benefits of living in the countryside do not outweigh the range of opportunities available in cities.\n\nThe chief advantages of the countryside relate to health. City-dwelling lends itself to a more sedentary lifestyle and the threat of air pollution is ever-growing . In contrast, individuals living in the country are much more likely to walk or ride bikes as part of their daily routine. Over time this equates to healthier living habits and can reduce the risk of obesity and concomitant conditions such as cardiovascular disease and diabetes. Moreover, recent studies have found that worsening air quality in cities and the absorption of microparticles into the lungs is driving up rates of cancer and asthma. The countryside presents an alternative environment where cleaner air can result in both short and long-term health benefits.\n\nNonetheless , cities offer a wide array of options rural areas lack. This begins with the employment on offer. The vast majority of well-paid jobs are located in cities ranging from doctors to lawyers to managers in companies. Living in the countryside limits one to careers primarily centred around agriculture . Cities also contain a richer variety of educational and cultural opportunities. The best schools are usually found in cities and museums and concerts are rare in the countryside. Take New York City for example, where some of the most famous museums in the world are located next to beautiful concert venues and renowned five star restaurants . This broadens an individual's horizons and makes cities ideal for both single people and families.\n\nIn conclusion, despite the healthier overall lifestyle enjoyed in the countryside, city life allows too many modern conveniences to be ignored. Each individual must decide what they value highest but most should opt for city life."
+   },
+   {
+    "file": "Writing-Sample-cookery-dressmaking-woodwork.html",
+    "task": "task2",
+    "title": "Task 2 Sample: Cookery, Dressmaking & Woodwork",
+    "topic": "Schools should focus on academic success and passing examinations. Skills such as cookery, dressmaking and woodworking should not be taught at school as it is better to learn these from family. To what extent do you agree or disagree?",
+    "words": 347,
+    "bestScore": 0.42,
+    "answer": "A rapidly evolving world necessitates fundamental changes to educational institutions . While traditional subjects like mathematics, science, and literature are undoubtedly important , I strongly believe that schools should also incorporate practical skills such as cookery , dressmaking , and woodworking into their curricula .\n\nOn the one hand, teaching practical skills at home enables students to acquire essential life skills that are often overlooked in traditional academic settings . For instance, many parents consider it a responsibility to teach their children knowledge of nutrition , meal planning , and culinary techniques . By learning to prepare their own meals , young people can gain a deep understanding of healthy eating habits , portion control , and the value of balanced nutrition . These skills not only contribute to their physical well-being but also empower them to make informed choices about their diet , leading to a lifelong impact on their health. This process is best done in families where habits can form in the long-term .\n\nHowever, incorporating practical skills into the curriculum promotes a well-rounded education catering to diverse needs and interests . Not all students excel in academics, and by providing alternatives , schools can tap into the potential of students who might otherwise feel marginalized or disengaged . For example, a student who struggles with academic subjects might discover a natural talent and passion for woodworking. By nurturing their interest and providing opportunities to develop their woodworking skills, the student gains a feeling of purpose and accomplishment , boosting their overall engagement and motivation . In a fashion class, a student can learn to design , measure , cut , and sew garments . Both classes instill a sense of pride if students can produce useful wood objects or wear garments they have crafted themselves.\n\nIn conclusion, rather than relying on families , schools should prioritize incorporating practical skills into the curriculum while also maintaining rigorous standards for the current core subjects. By doing so, students will have a more comprehensive education that equips them with both theoretical knowledge and practical expertise ."
+   },
+   {
+    "file": "Writing-Sample-problem-neighbours.html",
+    "task": "task2",
+    "title": "Writing Sample: Neighbors in Cities",
+    "topic": "Today, many people do not know their neighbors in large cities. What problems does this cause? What can be done about this?",
+    "words": 324,
+    "bestScore": 0.33,
+    "answer": "It is increasingly common in large urban areas for neighbors to interact less. In my opinion, this results in a declining sense of community and the solutions must be individually motivated .\n\nIn most cities today, the lack of connection between neighbors has caused less culturally unique neighborhoods . An illustrative counter-example to this would be famous neighborhoods such as Venice Beach in Los Angeles and Greenwich Village in New York City. In the past, individuals living in these areas shared similar values and that led to a flourishing of a unique culture . One result of such a sense of community was the “Beat Poets” of Greenwich. Related to this is the fading distinctiveness of communities that have value for locals and tourists alike . An individual living in a district in a major metropolis today feels little sentiment for its streets, buildings and other inhabitants and therefore derives nearly nothing in the way of a singular shared identity .\n\nRemedies for the problems detailed above involve individual initiative . Governments attempting to contrive a sense of community will likely only provoke backlash . Instead, individuals could choose to live in parts of a city with a heritage that suits them and not join mass movements toward gentrification . A standout example of this would be expatriate enclaves in developing nations. These communities are able to preserve some of their cultural traditions and are entirely the result of individuals choosing to live together with those who represent their values and interests . This could be replicated on a larger scale if city residents choose their homes more thoughtfully and are more respectful of the traditions of any given community .\n\nIn conclusion, the problems stemming from less involvement between neighbors affect the community at large and should be dealt with by those most impacted by the ramifications . In this way , some cultural integrity can be preserved in a globalized world ."
+   },
+   {
+    "file": "Writing-Sample-social-centre-melbourne.html",
+    "task": "task1",
+    "title": "Task 1 Sample: Social Centre Activities",
+    "topic": "The line chart shows the number of participants for different activities at a social centre in Melbourne, Australia between 2000 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    "words": 211,
+    "bestScore": 0.57,
+    "answer": "The line chart details participants according to activity at a social center in the Australian city of Melbourne from 2000 to 2020. Looking from an overall perspective , it is readily apparent that participants for all activities increased to varying degrees except in terms of martial arts and amateur drama . Film club was by far the most popular activity throughout, though table tennis demonstrated the strongest growth .\n\nIn 2000, 64 individuals participated in film club, a figure that dipped to 60 in 2010 and then more than recovered to finish the period at 65. The trend for martial arts was similarly stable with a beginning data point of 38, a high of 39 in 2010, and a final figure of 37.\n\nThe remaining activities started the period lower with 27 participants for amateur drama, 18 for table tennis, and 0 for musical performances ( unavailable at the time). Over the next 10 years , amateur dramatics commenced a decline that would end at just 5 by 2020, while table tennis underwent the inverse transformation , peaking at 52 by the same year . Musical performances were only an option starting in 2005, with participants growing and levelling off to just under 20 by the end of the period ."
+   },
+   {
+    "file": "Writing-Sample-traditional-festivals.html",
+    "task": "task2",
+    "title": "Writing Sample: Traditional Festivals",
+    "topic": "In some parts of the world traditional festivals and celebrations have disappeared or are disappearing. What problems is this causing? What measures could be taken to counter this situation?",
+    "words": 279,
+    "bestScore": 0.23,
+    "answer": "Around the world, many traditional festivals these days are at risk of becoming outdated and irrelevant . In my opinion, this contributes to issues concerning cultural disintegration and should be countered by citizens in concert with governments .\n\nThe main issues resulting from abandoning traditional festivals concern culture. More commercial holidays such as Black Friday and Christmas are gaining in popularity which naturally threatens smaller cultural groups and their festivals. For example, in China there are numerous ethnic groups living in remote areas that struggle to preserve their traditions over time as locals learn more about the outside world and leave their hometowns . As these groups disperse further both physically and virtually it will be a challenge for old traditions to persist and the results may impact the stories they hand down through generations , their language, traditional dishes and other aspects of culture .\n\nThe optimal remedies for the weakening of traditional cultures are for governments and individuals to actively encourage traditional festivals . Governments can make the greatest difference . For instance, states could fund organizations that aim to promote traditional festivals by staging local events and reaching out to older members of the community . Younger people could likewise attempt to engage more with their roots and connect with the sources of their culture. This occurs to some extent already when traditional festivals are advertised on social media to bring in a wider audience and greater attention .\n\nIn conclusion, the loss of traditional festivals is a boon to globalization and injures the cultural identity of various groups . This development must be confronted by locals of their own individual initiative and encouraged by governments."
+   },
+   {
+    "file": "Writing-Sample-task1-foreign-tourists.html",
+    "task": "task1",
+    "title": "Task 1 Sample: Foreign Tourists Visiting a Country",
+    "topic": "The bar chart and table below show the number of tourists visiting Country X from various parts of the world and the income of different businesses in 2007 and 2008. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    "words": 236,
+    "bestScore": 0.45,
+    "answer": "The bar chart details the number of tourists visiting Country X from various parts of the world and the table delineates the income of different businesses in the nation in 2007 and 2008. Overall , tourism from all regions of the world declined , though less noticeably when coming from the main sources of tourists : China, Japan, and Australia. All forms of revenue also fell , with shops and tour services accounting for the majority of revenue by 2008.\n\nIn 2007, there were over 200,000 tourists from Europe and the US and Canada, with the North American nations slightly higher . By 2008, both figures had dropped dramatically to 100,000 for the former and approximately 250,000 for the latter . In contrast , the data points for China and Japan began the period much higher (nearly 300,000) and fell less significantly (200,000). Similarly , Australian tourists numbered 275,000 in 2007 and had declined marginally to 250,000 by the following year .\n\nIn terms of income in Country X, in 2007 hotels and resorts earned 3.5 million dollars, considerably more than restaurants, bars, and souvenir shops (2.4), transportation and travel agents (1.3), and tour guides, small vendors and other services (1.4). By 2008, hotels and resorts had plunged to just $0.5 million, dining options had halved to $1.2 million, and transportation had reduced to $0.4 million. The most marginal decline was for tour services ($1.1 million)."
+   }
+  ]
+ },
+ "questionTypes": {
+  "reading": {
+   "GAP_FILL": 580,
+   "TRUE_FALSE_NOT_GIVEN": 481,
+   "YES_NO_NOT_GIVEN": 215,
+   "PARAGRAPH_SELECTION": 87,
+   "MATCHING": 369,
+   "MULTIPLE_CHOICE": 270,
+   "SUMMARY_DROPDOWN": 4,
+   "NOTE_COMPLETION": 12,
+   "HEADING_MATCHING": 171,
+   "SENTENCE_COMPLETION": 97,
+   "MULTIPLE_CHOICE_TWO": 16,
+   "SENTENCE_COMPLETION_MC": 5,
+   "SENTENCE_ENDING": 25,
+   "SUMMARY_SELECT": 27,
+   "SUMMARY_DRAG_DROP": 5,
+   "PARA_MATCH": 16,
+   "RESEARCHER_MATCH": 4,
+   "WORD_LIST": 11,
+   "SHORT_ANSWER": 113,
+   "CHOOSE_TWO": 44,
+   "WORD_LIST_SELECT": 35,
+   "PARAGRAPH_MATCHING": 143,
+   "PARAGRAPH_INFO": 5,
+   "MATCHING_PEOPLE": 5,
+   "SENTENCE_ENDINGS": 5,
+   "PARAGRAPH_INFO_MATCHING": 11,
+   "PEOPLE_MATCHING": 9,
+   "WORD_LIST_MATCHING": 4,
+   "CHOOSE_THREE": 9,
+   "FLOW_CHART": 4,
+   "DIAGRAM": 5,
+   "SUMMARY_COMPLETION": 6,
+   "MULTIPLE_CHOICE_MULTI": 7
+  },
+  "readingLayout": {
+   "notes": 62,
+   "triple:TFNG": 86,
+   "letters": 127,
+   "summaryinput": 97,
+   "triple:YNG": 44,
+   "mcq": 68,
+   "summarydropdown": 18,
+   "headingdrag": 22,
+   "choosetwo": 36,
+   "gapbox": 6,
+   "worddrag": 1,
+   "summarydrag": 4,
+   "lettergrid": 15
+  },
+  "listeningLayout": {
+   "text": 143,
+   "radio": 89,
+   "radio+image+table": 1,
+   "drop": 15,
+   "select+image": 27,
+   "select": 42,
+   "checkbox": 47,
+   "drop+image": 1
+  },
+  "examKinds": {
+   "reading": {
+    "gap": 794,
+    "tfng": 483,
+    "matching": 842,
+    "ynng": 213,
+    "mcq": 265,
+    "gap-box": 127,
+    "mcq-multi": 76
+   },
+   "listening": {
+    "gap": 1179,
+    "mcq": 449,
+    "matching": 359,
+    "gap-box": 75,
+    "mcq-multi": 98
+   }
+  }
+ },
+ "images": {
+  "count": 81,
+  "bytes": 2597452,
+  "files": [
+   {
+    "file": "/cdi/images/listening/listening1-map-white.webp",
+    "bytes": 40764
+   },
+   {
+    "file": "/cdi/images/listening10-map.webp",
+    "bytes": 22552
+   },
+   {
+    "file": "/cdi/images/listening13-map.webp",
+    "bytes": 7662
+   },
+   {
+    "file": "/cdi/images/listening22-part3.webp",
+    "bytes": 21600
+   },
+   {
+    "file": "/cdi/images/listening23-map.webp",
+    "bytes": 25220
+   },
+   {
+    "file": "/cdi/images/listening27-map.webp",
+    "bytes": 21154
+   },
+   {
+    "file": "/cdi/images/listening28-map.webp",
+    "bytes": 17082
+   },
+   {
+    "file": "/cdi/images/listening29-map.webp",
+    "bytes": 15704
+   },
+   {
+    "file": "/cdi/images/listening3-map.webp",
+    "bytes": 36876
+   },
+   {
+    "file": "/cdi/images/listening30-map.webp",
+    "bytes": 41374
+   },
+   {
+    "file": "/cdi/images/listening31-label.webp",
+    "bytes": 22814
+   },
+   {
+    "file": "/cdi/images/listening31-map.webp",
+    "bytes": 17844
+   },
+   {
+    "file": "/cdi/images/listening32-map.webp",
+    "bytes": 18860
+   },
+   {
+    "file": "/cdi/images/listening35-map1.webp",
+    "bytes": 38462
+   },
+   {
+    "file": "/cdi/images/listening40-part2.webp",
+    "bytes": 19350
+   },
+   {
+    "file": "/cdi/images/listening41-map.webp",
+    "bytes": 44244
+   },
+   {
+    "file": "/cdi/images/listening42-map.webp",
+    "bytes": 30444
+   },
+   {
+    "file": "/cdi/images/listening43-map.webp",
+    "bytes": 28644
+   },
+   {
+    "file": "/cdi/images/listening45-map2.webp",
+    "bytes": 35014
+   },
+   {
+    "file": "/cdi/images/listening47-map.webp",
+    "bytes": 31832
+   },
+   {
+    "file": "/cdi/images/listening48-map.webp",
+    "bytes": 43802
+   },
+   {
+    "file": "/cdi/images/listening5-map.webp",
+    "bytes": 26014
+   },
+   {
+    "file": "/cdi/images/listening51-part2.webp",
+    "bytes": 9536
+   },
+   {
+    "file": "/cdi/images/listening56-map.webp",
+    "bytes": 19496
+   },
+   {
+    "file": "/cdi/images/listening63-part2.webp",
+    "bytes": 23318
+   },
+   {
+    "file": "/cdi/images/listening69-map.webp",
+    "bytes": 33414
+   },
+   {
+    "file": "/cdi/images/listening7-map.png",
+    "bytes": 40160
+   },
+   {
+    "file": "/cdi/images/listening70-map.webp",
+    "bytes": 55910
+   },
+   {
+    "file": "/cdi/images/listening8-map.webp",
+    "bytes": 49924
+   },
+   {
+    "file": "/cdi/images/mock4-task1.webp",
+    "bytes": 37080
+   },
+   {
+    "file": "/cdi/images/writing/writing52-task1-white.webp",
+    "bytes": 24368
+   },
+   {
+    "file": "/cdi/images/writing1-task1.webp",
+    "bytes": 27838
+   },
+   {
+    "file": "/cdi/images/writing10-task1.webp",
+    "bytes": 32506
+   },
+   {
+    "file": "/cdi/images/writing11-task1.webp",
+    "bytes": 25994
+   },
+   {
+    "file": "/cdi/images/writing12-task1.webp",
+    "bytes": 31748
+   },
+   {
+    "file": "/cdi/images/writing13-task1.webp",
+    "bytes": 20350
+   },
+   {
+    "file": "/cdi/images/writing14-task1.webp",
+    "bytes": 31852
+   },
+   {
+    "file": "/cdi/images/writing15-task1.webp",
+    "bytes": 65684
+   },
+   {
+    "file": "/cdi/images/writing16-task1.webp",
+    "bytes": 35442
+   },
+   {
+    "file": "/cdi/images/writing17-task1.webp",
+    "bytes": 42502
+   },
+   {
+    "file": "/cdi/images/writing18-task1.webp",
+    "bytes": 45636
+   },
+   {
+    "file": "/cdi/images/writing19-task1.webp",
+    "bytes": 42186
+   },
+   {
+    "file": "/cdi/images/writing2-task1.webp",
+    "bytes": 26948
+   },
+   {
+    "file": "/cdi/images/writing20-task1.webp",
+    "bytes": 95572
+   },
+   {
+    "file": "/cdi/images/writing21-task1.webp",
+    "bytes": 31580
+   },
+   {
+    "file": "/cdi/images/writing22-task1.webp",
+    "bytes": 39390
+   },
+   {
+    "file": "/cdi/images/writing23-task1.webp",
+    "bytes": 67656
+   },
+   {
+    "file": "/cdi/images/writing24-task1.webp",
+    "bytes": 32682
+   },
+   {
+    "file": "/cdi/images/writing25-task1.webp",
+    "bytes": 29592
+   },
+   {
+    "file": "/cdi/images/writing26-task1.webp",
+    "bytes": 24194
+   },
+   {
+    "file": "/cdi/images/writing27-task1.webp",
+    "bytes": 47444
+   },
+   {
+    "file": "/cdi/images/writing28-task1.webp",
+    "bytes": 25700
+   },
+   {
+    "file": "/cdi/images/writing29-task1.webp",
+    "bytes": 38748
+   },
+   {
+    "file": "/cdi/images/writing3-task1.webp",
+    "bytes": 27724
+   },
+   {
+    "file": "/cdi/images/writing30-task1.webp",
+    "bytes": 32608
+   },
+   {
+    "file": "/cdi/images/writing32-task1.webp",
+    "bytes": 39144
+   },
+   {
+    "file": "/cdi/images/writing33-task1.webp",
+    "bytes": 16558
+   },
+   {
+    "file": "/cdi/images/writing34-task1.webp",
+    "bytes": 14568
+   },
+   {
+    "file": "/cdi/images/writing35-task1.webp",
+    "bytes": 54278
+   },
+   {
+    "file": "/cdi/images/writing36-task1.webp",
+    "bytes": 31118
+   },
+   {
+    "file": "/cdi/images/writing37-task1.webp",
+    "bytes": 40662
+   },
+   {
+    "file": "/cdi/images/writing38-task1.webp",
+    "bytes": 57244
+   },
+   {
+    "file": "/cdi/images/writing39-task1.webp",
+    "bytes": 20274
+   },
+   {
+    "file": "/cdi/images/writing4-task1.1.webp",
+    "bytes": 31994
+   },
+   {
+    "file": "/cdi/images/writing40-task1.webp",
+    "bytes": 41224
+   },
+   {
+    "file": "/cdi/images/writing41-task1.webp",
+    "bytes": 30430
+   },
+   {
+    "file": "/cdi/images/writing42-task1.webp",
+    "bytes": 18088
+   },
+   {
+    "file": "/cdi/images/writing43-task1.webp",
+    "bytes": 17586
+   },
+   {
+    "file": "/cdi/images/writing44-task1v2.webp",
+    "bytes": 31732
+   },
+   {
+    "file": "/cdi/images/writing45-task1.webp",
+    "bytes": 37290
+   },
+   {
+    "file": "/cdi/images/writing46-task1.webp",
+    "bytes": 27896
+   },
+   {
+    "file": "/cdi/images/writing47-task1.webp",
+    "bytes": 31548
+   },
+   {
+    "file": "/cdi/images/writing48-task1.webp",
+    "bytes": 18754
+   },
+   {
+    "file": "/cdi/images/writing49-task1.webp",
+    "bytes": 23392
+   },
+   {
+    "file": "/cdi/images/writing5-task1.webp",
+    "bytes": 31598
+   },
+   {
+    "file": "/cdi/images/writing50-task1.webp",
+    "bytes": 17308
+   },
+   {
+    "file": "/cdi/images/writing51-task1.webp",
+    "bytes": 26620
+   },
+   {
+    "file": "/cdi/images/writing6-task1.webp",
+    "bytes": 34846
+   },
+   {
+    "file": "/cdi/images/writing7-task1.webp",
+    "bytes": 26190
+   },
+   {
+    "file": "/cdi/images/writing8-task1.webp",
+    "bytes": 13106
+   },
+   {
+    "file": "/cdi/images/writing9-task1.webp",
+    "bytes": 41910
+   }
+  ]
+ },
+ "json": {
+  "files": 125,
+  "bytes": 4394191,
+  "readingAvgBytes": 34639,
+  "listeningAvgBytes": 34713
+ },
+ "elapsedMs": 9298
+}

@@ -1,0 +1,650 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-20",
+ "title": "CDI Reading Test 20",
+ "description": "A full Academic Reading test from the CDI practice materials: Flying the Coast; Who Wrote Shakespeare’s Plays?; Saving Languages.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Flying the Coast",
+  "Who Wrote Shakespeare’s Plays?",
+  "Saving Languages"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Flying the Coast",
+   "paragraphs": [
+    {
+     "text": "Cut off from the rest of the country by a range of mountains, the west coast of New Zealand's South Island -or the \"Coast\" as it is commonly known -was the country's \"wild west\" frontier. But unlike Fiordland to the south, which was and still is an uninhabitable wilderness, the Coast in the 1930s was not only habitable, it was also potentially rich. Settlers hunted and fished, logged, milled and mined. They farmed where they managed to clear the forest and drain the swamps. It was pure survival at times. The isolation was inescapable, not so much because of the great distances that travellers had to cover, but rather due to the topography of the place -the mountains, gorges, glaciers, rivers and headlands-which necessitated long detours and careful timing with regard to weather and tides."
+    },
+    {
+     "text": "Bridges were few and far between in the early years, and even ferry crossings were often impossible after heavy rains. Each river had its attendant ferryman or woman whose attention a traveller would attract with a rifle shot. It was the kind of country where one would greatly benefit from a pair of wings."
+    },
+    {
+     "text": "Maurice Buckley, a World War I pilot, was the first to give Coasters, as the residents of the region were called, such wings, by establishing the Arrow Aviation Company in 1923. That year he bought an Avro biplane on the east coast, which he transported across the country by rail, wings off, before reassembling it in a local garage. When he opened for business the following year, the colourful Avro was an instant crowd-pleaser and Coasters queued up for joyrides. For the first major flight, Buckley invited Dr Teichelmann, a local mountaineer, to join him. They flew over the Franz Josef Glacier and landed at Okarito. Afterwards, Teichelmann wrote about how extraordinary it was to look at the world from the air, \"like taking the roof off the house and watching the performances from above.\""
+    },
+    {
+     "text": "Next came an aviator named Bert Mercer, who made a reconnaissance flight to the Coast in August 1933 and started Air Travel (NZ) the following year. Mercer's aircraft of choice was a DH83 Fox Moth. By comparison with the regular, open-air aircraft of the day, the Fox Moth was a plane that offered considerable luxury, housing four passengers in an enclosed forward area fully protected from the weather. Mercer opened for business in December 1934, picking up the airline's first passengers and, on the last day of that year, commenced a regular delivery of mail, carrying 73kg to Haast and Okuru. From that day on, the Fox Moth became a much-anticipated sight on the coast."
+    },
+    {
+     "text": "Mercer got on with everyone and won their respect by anticipating, then meeting their needs. One of those was setting up the first aerial shipping route to help transport a kind of small fish known as whitebait. Starting in 1935 Mercer would put the plane down where there was no airstrip, instead using remote beaches such as the one at the mouth of the Paringa River, collect the whitebait and whisk them off to the night train and waiting city markets in perfectly fresh condition. Mercer relied on his senses -what he could see and hear -to navigate, flying around the weather and contours of the land. Although often warned to do so by aviation authorities, he refused to develop the skills necessary to navigate the plane \"blind,\" using just its instruments on the console in front of him. The old habits were too hard to change."
+    },
+    {
+     "text": "With the outbreak of World War II, Mercer's aircraft were considered so essential to the remote Coast that they were not militarised. In fact, the business continued to grow in the early years, thanks in large part to a government-issued subsidy, which allowed him to expand into neighbouring areas. Despite the war in far-off lands, life on the Coast was business as usual. The settlers were always in need of mail and transportation. In time, though, this presented Mercer with a pressing issue: with so many now joining the Air Force, he no longer had enough pilots. In 1942 he wrote in his diary, \"I am back to where I started eight years ago - on my own.\""
+    },
+    {
+     "text": "The only solution to keep the airline going was to pack as much into every plane as possible and make every flight count. But some of Mercer's newly formed team objected to the amount of cargo they had to carry, which for a small rural airline was a fact of life. One man, Norm Suttle, left the airline after a few months in protest about carrying more than was appropriate for the aircraft. This marked another decline in the airline's fortunes. When Bert Mercer died in 1944, the airline was taken over by Fred Lucas, a man who shared Mercer's pioneering spirit. Under Lucas's leadership the newly formed West Coast Airways saw another decade of profitable returns. But in the following decade, times changed fast. Helicopters were soon found to be ideal machines for the Coast terrain, and quickly took over the vast majority of the local air transport business."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "In the 1930s, the Coast and Fiordland had populations of a similar size.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says Fiordland was ‘an uninhabitable wilderness’, unlike the Coast which was populated."
+      },
+      {
+       "n": 2,
+       "text": "Most settlers on the Coast were migrants from overseas.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions 'settlers' but never says where they came from — overseas or within NZ. No information = NOT GIVEN. ✨ Strategy: Don't assume! If the passage doesn't address it at all, it's NOT GIVEN even if it seems logical."
+      },
+      {
+       "n": 3,
+       "text": "The coast’s geographical features made moving around the region difficult.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Paragraph 1: 'the topography of the place — the mountains, gorges, glaciers, rivers and headlands — which necessitated long detours.' This directly confirms difficult movement. ✨ Strategy: Keywords 'geographical features' paraphrases 'topography'."
+      },
+      {
+       "n": 4,
+       "text": "The first bridges to be built on the Coast were swept away by floods.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions bridges were 'few and far between' but says nothing about any bridges being swept away by floods. No information = NOT GIVEN. ✨ Strategy: 'Heavy rains' affecting ferries ≠ bridges being swept away. Don't mix up details."
+      },
+      {
+       "n": 5,
+       "text": "Maurice Buckley flew his Avro biplane to the Coast in 1923.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph 3: Buckley 'bought an Avro biplane on the east coast' and 'transported across the country by rail, wings off.' He didn't fly it to the Coast. ✨ Strategy: The statement adds a detail (flew) that contradicts the passage (transported by rail)."
+      },
+      {
+       "n": 6,
+       "text": "Coasters were unwilling to fly at first.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Paragraph 3: 'the colourful Avro was an instant crowd-pleaser and Coasters queued up for joyrides.' They were eager, not unwilling. ✨ Strategy: 'Unwilling' is the opposite of 'queued up' — this is FALSE, not NOT GIVEN."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "Early Years\n○ Mercer set up Air Travel (NZ) in 1934\n○ The Fox Moth was noted for its [[7]] compared to other planes\n○ In 1934 Mercer’s company started to transport [[8]] and passengers\n○ From 1935 planes landed on [[9]] to pick up fresh produce\nWorld War II\n○ The airline expanded at first because it got a [[10]] from the state\n○ There was a shortage of [[11]] by 1942\n○ There were disputes at the airline about the quantity of [[12]] in each plane\nFinal Years\n○ 1950s: [[13]] became popular and the airline suffered",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "luxury"
+       ],
+       "explanation": "Paragraph 4: 'the Fox Moth was a plane that offered considerable luxury, housing four passengers in an enclosed forward area fully protected from the weather.' ✨ Strategy: For gap-fill, the answer must be the exact word from the passage."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "mail"
+       ],
+       "explanation": "Paragraph 4: 'commenced a regular delivery of mail, carrying 73kg to Haast and Okuru.' ✨ Strategy: Read the notes structure carefully — 'transport __8__ and passengers' matches 'delivery of mail'."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "beaches"
+       ],
+       "explanation": "Paragraph 5: 'using remote beaches such as the one at the mouth of the Paringa River.' ✨ Strategy: The note says 'landed on __9__ to pick up fresh produce' — beaches is the location."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "subsidy"
+       ],
+       "explanation": "Paragraph 6: 'thanks in large part to a government-issued subsidy, which allowed him to expand.' ✨ Strategy: 'Got a __10__ from the state' paraphrases 'government-issued subsidy'."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "pilots"
+       ],
+       "explanation": "Paragraph 6: 'he no longer had enough pilots. In 1942 he wrote in his diary...' ✨ Strategy: 'Shortage of __11__' directly matches 'no longer had enough pilots'."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "cargo"
+       ],
+       "explanation": "Paragraph 7: 'some of Mercer's newly formed team objected to the amount of cargo they had to carry.' ✨ Strategy: 'Disputes about the quantity of __12__' paraphrases 'objected to the amount of cargo'."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "helicopters"
+       ],
+       "explanation": "Paragraph 7: 'Helicopters were soon found to be ideal machines for the Coast terrain, and quickly took over.' ✨ Strategy: The timeline marker '1950s' helps locate this in the final paragraph."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Who Wrote Shakespeare’s Plays?",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Even today, almost 400 years after his death, the works of the famous English dramatist William Shakespeare have lost none of their appeal, nor have questions about the source of his genius. For is it really credible that an ordinary actor from the small town of Stratford-upon-Avon should metamorphose into so extraordinary a dramatist? For some, the answer is obvious: Shakespeare was a genius whose gift is no more suspicious than that of the physicist Albert Einstein, the German salesman's son who devised the theory of relativity. But others have insisted that a mere school leaver simply could not have penned such sophisticated works. They believe that Shakespeare was a pseudonym for someone with far more impressive qualifications who wrote the plays that still play to packed theatres today. But after long and largely fruitless debate, researchers are now turning to scientific methods to resolve the controversies surrounding Shakespeare. Ways of identifying the literary fingerprint of writers are currently being developed using computers. This analysis of features of literary style is known as 'stylometry' and with it researchers can recognise the work of Shakespeare and his contemporaries with impressive reliability."
+    },
+    {
+     "label": "B",
+     "text": "The idea of using these basic scientific techniques to probe questions of authorship dates back to 1851, when the Victorian mathematician Augustus de Morgan suggested that different authors might be identified through the frequency with which they used words of different lengths. His idea attracted the attention of Thomas Mendenhall, an American physicist who decided to use word length to investigate one of the oldest controversies about the works of Shakespeare: were they actually written by someone else?"
+    },
+    {
+     "label": "C",
+     "text": "As long ago as 1785, the Elizabethan writer and philosopher Sir Francis Bacon was identified as a possible contender for having written Shakespeare's works. Bacon's possible motivation for not wanting to be known as the author of such masterpieces is far from clear, but Mendenhall believed his methods might at least reveal telltale signs of Bacon's hand in the plays. However, his results, published in 1901, revealed Bacon's writing style to be quite unlike that of Shakespeare. But Mendenhall's methods also revealed some key concerns. Recognising the need to include large samples of writing from both authors, Mendenhall lumped all their works together, despite the fact that literary style can vary enormously between plays, poetry and philosophy, for example. His focus on word length as the sole 'fingerprint' of writing style was also questionable - for how could he be sure that some other characteristics would not give different results? But Mendenhall's biggest fault was perhaps simply that he was too far ahead of his time - he was attempting a task that cried out for the kind of computers not even conceivable over 100 years ago. More recently with their development scholars have been able to look for subtle peculiarities among the complete works of authors, which, in Shakespeare's case, amount to over 800,000 words."
+    },
+    {
+     "label": "D",
+     "text": "One of the key controversies now being probed is Shakespeare's relationship with other dramatists. Was he a lone genius or was his work the result of collaboration? Traditional methods of investigating such questions have relied on traits like the use of metaphor, but these may be shared by different authors simply on cultural grounds. In contrast, modern stylometry focuses on far more fundamental characteristics which are less likely to be shared by others. The text-crunching power of computers allows researchers to pinpoint phrases, words or even individual letters by their frequency in the work of different authors. Pattern recognition techniques are then used to develop a 'fingerprint' for each author."
+    },
+    {
+     "label": "E",
+     "text": "Stylometry has come up with little to encourage the continual number of experts who insist Shakespeare was simply too uneducated to create works of enduring brilliance. In 1996, literary scholar Ward Elliott and mathematician Robert Valenza of Claremont McKenna College, California, published the results of a stylometric comparison of the works of Shakespeare with those of over 30 of the proposed 'real' authors. Elliott and Valenza applied a battery of 51 tests to computerised texts and found that none of the claimants had a stylometric 'fingerprint' similar to that of Shakespeare. 'I think these claims were driven initially by a sense that Shakespeare is too \"important\" to be an ordinary person', says Professor Kate Mcluskie, director of the Shakespeare Institute at the University of Birmingham."
+    },
+    {
+     "label": "F",
+     "text": "Elliott and Valenza's research found something else too. Some of the earliest plays, notably Henry VI and the notoriously violent Titus Andronicus, seem to be a combination of Shakespeare and his brilliant contemporary the playwright Christopher Marlowe, who was born in the same year as Shakespeare. 'Traditional scholars accept that Marlowe influenced Shakespeare's early work,' says Dr Thomas Merriam, one of Britain's leading stylometry experts. He explains that, provisionally at least, stylometric studies suggest some of Marlowe's actual text exists within the early plays of Shakespeare."
+    },
+    {
+     "label": "G",
+     "text": "Some scholars remain cautious about basing new views of Shakespeare's career on stylometric analysis of centuries-old texts: 'If they have been edited, amended or shortened, then the data from them is highly compromised,' says Dr Markus Dahl of London University. Even so the results to date are in line with the growing view of Shakespeare as a hardworking professional who perfected his skills throughout his career."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "uncertainty why an author would wish to remain anonymous",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C: 'Bacon's possible motivation for not wanting to be known as the author of such masterpieces is far from clear.' This discusses uncertainty about anonymous authorship. ✨ Strategy: For Matching Information, scan each paragraph's main topic first."
+      },
+      {
+       "n": 15,
+       "text": "a reference to the continuing popularity of Shakespeare’s work",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A: 'the works of the famous English dramatist William Shakespeare have lost none of their appeal.' ✨ Strategy: 'Continuing popularity' = 'lost none of their appeal' — classic IELTS paraphrase."
+      },
+      {
+       "n": 16,
+       "text": "the reasons why a particular researcher’s approach proved unsatisfactory",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph C: Mendenhall's approach had problems: he 'lumped all their works together,' his focus on word length was 'questionable,' and he was 'too far ahead of his time.' ✨ Strategy: Three distinct reasons = rich paragraph for multiple questions."
+      },
+      {
+       "n": 17,
+       "text": "mention of the time when the use of stylometry was first proposed",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B: 'dates back to 1851, when the Victorian mathematician Augustus de Morgan suggested...' The date 1851 is the key locator. ✨ Strategy: Dates and names are reliable scanning anchors."
+      },
+      {
+       "n": 18,
+       "text": "support for the opinion that Shakespeare became more skilful as he grew older",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G: 'the growing view of Shakespeare as a hardworking professional who perfected his skills throughout his career.' This supports the idea he improved over time. ✨ Strategy: 'More skilful as he grew older' = 'perfected his skills throughout his career'."
+      },
+      {
+       "n": 19,
+       "text": "a similarity between Shakespeare and a scientist with exceptional ability",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A: 'Shakespeare was a genius whose gift is no more suspicious than that of the physicist Albert Einstein.' Both are compared as exceptional geniuses. ✨ Strategy: A 'similarity' between Shakespeare and a scientist — Einstein is the scientist."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "A key controversy is Shakespeare’s relationships with other writers. It has always been uncertain whether he worked in [[20]] with others or not. To investigate this issue, literary experts traditionally looked at stylistic features such as the writer’s choice of metaphor, although it was recognised that this approach had its limitations. Current stylometric analysis has been made possible by the invention of [[21]]. This has enabled experts to investigate patterns in a writer’s typical language use and, by analysing tiny details of the writing, a so-called [[22]] of a writer can be identified.",
+     "questions": [
+      {
+       "n": 20,
+       "answer": [
+        "collaboration"
+       ],
+       "explanation": "Paragraph D: 'Was he a lone genius or was his work the result of collaboration?' The gap asks about working with others. ✨ Strategy: The summary paraphrases the passage — find the original sentence and extract the exact word."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "computers"
+       ],
+       "explanation": "Paragraph C: 'he was attempting a task that cried out for the kind of computers not even conceivable over 100 years ago.' ✨ Strategy: 'Made possible by the invention of __21__' — the passage tells you what was missing in Mendenhall's time."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "fingerprint"
+       ],
+       "explanation": "Paragraph D: 'Pattern recognition techniques are then used to develop a fingerprint for each author.' ✨ Strategy: 'A so-called __22__ of a writer' matches 'fingerprint' exactly from the passage."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people below. Match each statement with the correct person, A–E.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Augustus de Morgan"
+      },
+      {
+       "key": "B",
+       "text": "Ward Elliott and Robert Valenza"
+      },
+      {
+       "key": "C",
+       "text": "Kate Mcluskie"
+      },
+      {
+       "key": "D",
+       "text": "Thomas Mendenhall"
+      },
+      {
+       "key": "E",
+       "text": "Markus Dahl"
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "text": "People search for a more distinguished author because they cannot accept that a normal individual could write so well.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Kate Mcluskie (C): 'I think these claims were driven initially by a sense that Shakespeare is too important to be an ordinary person.' People can't accept a commoner wrote brilliantly. ✨ Strategy: Match the opinion to the person who said it — look for quotation marks."
+      },
+      {
+       "n": 24,
+       "text": "It should be possible to recognise writers by examining the number of letters in the words they use.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Augustus de Morgan (A): 'different authors might be identified through the frequency with which they used words of different lengths.' Word length = number of letters. ✨ Strategy: 'Number of letters in words' paraphrases 'words of different lengths'."
+      },
+      {
+       "n": 25,
+       "text": "The fact that Shakespeare’s works are likely to have been altered over the years raises doubts about stylometric analysis.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Markus Dahl (E): 'If they have been edited, amended or shortened, then the data from them is highly compromised.' Alterations undermine analysis. ✨ Strategy: 'Altered over the years' = 'edited, amended or shortened'."
+      },
+      {
+       "n": 26,
+       "text": "Analysis proves that Shakespeare’s style differs from those of writers who have been suggested as the real authors.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Ward Elliott and Robert Valenza (B): 'none of the claimants had a stylometric fingerprint similar to that of Shakespeare.' His style is unique. ✨ Strategy: 'Style differs from those of writers suggested' = 'none of the claimants had a similar fingerprint'."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Saving Languages",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Ten years ago, Michael Krauss, a professor at the University of Alaska, shocked his colleagues in the discipline of linguistics with his prediction that half the 6,000 or so languages spoken in the world would disappear within a century. Krauss founded the Alaskan Native Language Center to preserve as much as possible of the 20 tongues still known to the state's indigenous people. Only two of those languages were being taught to children, and the rest were rapidly falling from use. Other linguists are making similar predictions. A survey in Australia found that 70 of the surviving 90 Aboriginal languages were no longer used regularly by all age groups. The same is true for all but 20 of the other 175 North American languages in the US."
+    },
+    {
+     "label": "B",
+     "text": "Outwardly, the consolidation of human language might seem like a good trend that could ease ethnic tensions and aid global commerce. Linguists don't deny those benefits, and they acknowledge that small communities often choose to switch to the majority language because they believe it will boost their social or economic status."
+    },
+    {
+     "label": "C",
+     "text": "Many experts in the field nonetheless mourn the loss of rare languages, for several reasons. Some of the most basic questions in linguistics have to do with the limits of human speech, still far from fully explored. Many researchers would like to know which elements of grammar and vocabulary - if any - are universal. An English researcher, Nicholas Ostler, offers an example: 'Ica, spoken in northern Colombia, seems to have nothing comparable to a personal pronoun system - I, we, you, etc. Otherwise, I would have thought that personal pronouns were a linguistic universal.' Other scientists try to reconstruct ancient migration patterns by comparing borrowed words in otherwise unrelated languages. In each of these cases, the wider the range of languages you study, the more likely you are to get the right answers."
+    },
+    {
+     "label": "D",
+     "text": "'I think the value is mostly in human terms,' says James Matisoff, a specialist in rare Asian languages at the University of California. 'Language is the most important element in the culture of a community. When it dies, you lose the special knowledge of that culture and a unique window on the world. But despite the constant talk about saving endangered languages over the past ten years, the field of descriptive linguistics has accomplished little in this respect. 'You would think that there would be some organised response to this situation, some attempt to determine which languages can be saved and which should be documented before they disappear,' says Sarah G Thomason, of the University of Michigan. 'But there isn't any such effort.'"
+    },
+    {
+     "label": "E",
+     "text": "However, there are some signs of progress. The Volkswagen Foundation, a German charity, has created a multimedia archive in the Netherlands that can house recordings, grammars, dictionaries and other data. Contributions from the Ford Foundation have helped a master-apprentice programme, in which fluent speakers receive $3,000 to teach a younger relative their native tongue through shared activities. So far, about 75 teams have completed the programme. 'It's too early to call this language revitalisation, admits Leanne Hinton of Berkeley. 'In California, the death rate of elderly speakers will always be greater than the recruitment rate of young speakers. But, if nothing else, we prolong the survival of the language.' This will give linguists more time to record these tongues before they vanish."
+    },
+    {
+     "label": "F",
+     "text": "Complicating matters, dozens of institutions around the world are setting up digital libraries on endangered languages. This could create chaos, because the projects use non-standardised data formats, terminology and even names of languages. Gary F Simons, of the Dallas-based research group SIL International, has been working to bring some order to this by building an 'open languages data community' - a kind of digital card catalogue. This system will allow researchers to check their theories against a vast array of data."
+    },
+    {
+     "label": "G",
+     "text": "However, even if a language has been fully documented, all that remains once it vanishes from use is a fossil skeleton. Linguists may be able to sketch an outline of the language and fix its place on the evolutionary tree, but little more. As yet, there is no discipline of conservation linguistics. Almost every strategy to keep people speaking a language has succeeded in some places but failed in others. One factor that always seems to occur in the death of a language, according to Hans-Jurgen Sasse of the University of Cologne in Germany, is that speakers start regarding their own language as inferior to the majority language. Children pick up on the attitude, and prefer to speak the dominant language. This is how Cornish and some dialects of Scottish Gaelic slipped into extinction."
+    },
+    {
+     "label": "H",
+     "text": "'Ultimately, the answer to the problem of language extinction is multilingualism,' argues James Matisoff. 'Even uneducated people can speak a number of languages if they start as children.' Many people in the world are at least bilingual, and in some places it is common to speak three or four languages. But in addition to the fact that children may reject minority languages, there is also the concern that speakers of a majority language may react badly to speakers of minority languages. The first step in saving dying languages may be to persuade the world's majorities to allow the minorities among them to speak with their own voices."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Choose the correct heading for paragraphs A–C and E–H from the list of headings below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Multilingualism as the ultimate answer"
+      },
+      {
+       "key": "ii",
+       "text": "Apparent benefits of fewer languages"
+      },
+      {
+       "key": "iii",
+       "text": "Languages that have already recovered"
+      },
+      {
+       "key": "iv",
+       "text": "Signs of progress in language preservation"
+      },
+      {
+       "key": "v",
+       "text": "A language centre"
+      },
+      {
+       "key": "vi",
+       "text": "The economic value of languages"
+      },
+      {
+       "key": "vii",
+       "text": "Complications from multiple institutions"
+      },
+      {
+       "key": "viii",
+       "text": "What remains after documentation"
+      },
+      {
+       "key": "ix",
+       "text": "Reasons linguists mourn language loss"
+      },
+      {
+       "key": "x",
+       "text": "A shocking prediction of language extinction"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "Paragraph A",
+       "answer": [
+        "x"
+       ],
+       "explanation": "Paragraph A: Krauss 'shocked his colleagues with his prediction that half the 6,000 or so languages would disappear within a century.' Heading x = 'A shocking prediction of language extinction.' ✨ Strategy: The word 'shocked' directly matches the heading."
+      },
+      {
+       "n": 28,
+       "text": "Paragraph B",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Paragraph B: 'the consolidation of human language might seem like a good trend that could ease ethnic tensions and aid global commerce.' Heading ii = 'Apparent benefits of fewer languages.' ✨ Strategy: 'Seem like a good trend' = 'apparent benefits'."
+      },
+      {
+       "n": 29,
+       "text": "Paragraph C",
+       "answer": [
+        "ix"
+       ],
+       "explanation": "Paragraph C: 'Many experts in the field nonetheless mourn the loss of rare languages, for several reasons.' Heading ix = 'Reasons linguists mourn language loss.' ✨ Strategy: Almost word-for-word match — but you still need to verify the whole paragraph supports it."
+      },
+      {
+       "n": 30,
+       "text": "Paragraph E",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Paragraph E: 'However, there are some signs of progress. The Volkswagen Foundation... has created a multimedia archive.' Heading iv = 'Signs of progress in language preservation.' ✨ Strategy: 'However' signals a contrast with previous negative paragraphs."
+      },
+      {
+       "n": 31,
+       "text": "Paragraph F",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Paragraph F: 'dozens of institutions around the world are setting up programs... But the sheer number of projects has made it difficult to coordinate.' Heading vii = 'Complications from multiple institutions.' ✨ Strategy: The 'But' clause reveals the paragraph's main point."
+      },
+      {
+       "n": 32,
+       "text": "Paragraph G",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "Paragraph G: 'even if a language has been fully documented, all that remains once it is no longer spoken is a historical curiosity.' Heading viii = 'What remains after documentation.' ✨ Strategy: 'All that remains' is the key phrase matching the heading."
+      },
+      {
+       "n": 33,
+       "text": "Paragraph H",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Paragraph H: 'Ultimately, the answer to the problem of language extinction is multilingualism.' Heading i = 'Multilingualism as the ultimate answer.' ✨ Strategy: Direct keyword match — 'ultimately' and 'multilingualism' both appear."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following opinions and the list of people below. Match each opinion with the correct person, A–G.",
+     "title": "List of People",
+     "options": [
+      {
+       "key": "A",
+       "text": "Michael Krauss"
+      },
+      {
+       "key": "B",
+       "text": "Nicholas Ostler"
+      },
+      {
+       "key": "C",
+       "text": "James Matisoff"
+      },
+      {
+       "key": "D",
+       "text": "Sarah Thomason"
+      },
+      {
+       "key": "E",
+       "text": "Leanne Hinton"
+      },
+      {
+       "key": "F",
+       "text": "Volkswagen Foundation"
+      },
+      {
+       "key": "G",
+       "text": "Hans-Jurgen Sasse"
+      }
+     ],
+     "questions": [
+      {
+       "n": 34,
+       "text": "In the long run, the California scheme will not have enough tutors.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Leanne Hinton (E): She is associated with the California Master-Apprentice program and concerns about its long-term sustainability. ✨ Strategy: Match the specific detail (California scheme) to the person discussing it."
+      },
+      {
+       "n": 35,
+       "text": "Decisions need to be made about priorities in language rescue.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Sarah Thomason (D): 'You would think that there would be some organised response... some attempt to determine which languages can be saved and which should be documented.' ✨ Strategy: 'Determine which can be saved' = decisions about priorities."
+      },
+      {
+       "n": 36,
+       "text": "Languages currently in use face extinction in the foreseeable future.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Michael Krauss (A): 'half the 6,000 or so languages spoken in the world would disappear within a century.' Languages currently spoken face extinction. ✨ Strategy: 'Currently in use' = 'spoken in the world'; 'foreseeable future' = 'within a century'."
+      },
+      {
+       "n": 37,
+       "text": "There is a solution to the problem of languages dying out.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "James Matisoff (C): He argues multilingualism is the answer and that documentation and revitalisation efforts can work. ✨ Strategy: 'There is a solution' — look for who proposes a positive way forward."
+      },
+      {
+       "n": 38,
+       "text": "A language may be dying when its speakers begin to value it less.",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Hans-Jurgen Sasse (G): 'speakers start regarding their own language as inferior to the majority language. Children pick up on the attitude.' ✨ Strategy: 'Value it less' = 'regarding their own language as inferior'."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 39,
+       "text": "The Alaskan Language Center was set up to",
+       "options": [
+        {
+         "key": "A",
+         "text": "teach indigenous languages to children."
+        },
+        {
+         "key": "B",
+         "text": "revive indigenous languages which have fallen from use."
+        },
+        {
+         "key": "C",
+         "text": "prevent further loss of indigenous languages."
+        },
+        {
+         "key": "D",
+         "text": "predict the rate of loss of indigenous languages."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Paragraph A: Krauss 'founded the Alaskan Native Language Center to preserve as much as possible of the 20 tongues still known.' The purpose was prevention of further loss, not revival of dead languages. ✨ Strategy: Read all four options carefully — 'preserve' ≠ 'revive' ≠ 'teach'."
+      },
+      {
+       "n": 40,
+       "text": "According to the writer, majority language speakers",
+       "options": [
+        {
+         "key": "A",
+         "text": "usually speak more than one language."
+        },
+        {
+         "key": "B",
+         "text": "generally have a high level of education."
+        },
+        {
+         "key": "C",
+         "text": "should make an effort to learn a minority language."
+        },
+        {
+         "key": "D",
+         "text": "should be more tolerant of minority languages."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph H: 'The first step in saving dying languages may be to persuade the world's majorities to allow the minorities among them to speak with their own voices.' ✨ Strategy: 'Allow minorities to speak' = 'be more tolerant of minority languages'."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

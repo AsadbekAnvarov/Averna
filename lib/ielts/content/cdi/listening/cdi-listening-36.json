@@ -1,0 +1,641 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-36",
+ "title": "CDI Listening Test 36",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "teenager asking about joining a film club. Now listen carefully and answer questions 1 to 10",
+  "expert giving a lecture to business students about how to review a project. Now listen carefully and answer questions 31 to 40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-36-part-1",
+   "title": "Part 1",
+   "context": "You will hear a teenager asking about joining a film club. Now listen carefully and answer questions 1 to 10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Film Club\nMembership information\nClub meets every 2 weeks\nNo 1 [[1]] limit\nStudent membership costs 2 £ [[2]] per season\nMembers get:\n- Free entry to club films\n- 3 £ [[3]] reduction on other films at cinema\nMembers are entitled to 3 hours' free 4 [[4]]\nFilms to be shown:\n# Oct 14: Pablo\n- about a child in 5 [[5]] who runs away from home and wins\na 6 [[6]] competition on TV\n# Oct 28: The Soldier\n- with live 7 [[7]] accompaniment\n- made in the year 8 [[8]]\n- type of film: a 9 [[9]]\n# Nov 11: Tiger\n- Cartoon aimed at adults\n- Followed by a 10 [[10]] by the director",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "age"
+       ],
+       "explanation": "'People of any age can join.' — no age limit."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "21.50",
+        "21,50",
+        "£21.50",
+        "21.5",
+        "21"
+       ],
+       "explanation": "'For people eligible for concessions it's twenty one pounds fifty.' (Edward is a student, gets concession rate)"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "2",
+        "£2",
+        "two"
+       ],
+       "explanation": "'Two pounds off tickets for all other films on at the cinema.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "parking"
+       ],
+       "explanation": "'Club members are also eligible for three hours complimentary parking.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "Argentina"
+       ],
+       "explanation": "'It's set in Argentina, isn't it? About a child who's run away from home.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "singing"
+       ],
+       "explanation": "'A singing competition, yeah.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "piano"
+       ],
+       "explanation": "'We have someone who'll accompany it on the piano.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "1923"
+       ],
+       "explanation": "'They had short feature films with sound by 1923.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "comedy"
+       ],
+       "explanation": "'Well, it's billed as a comedy.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "talk"
+       ],
+       "explanation": "'There's a talk afterwards given by the director.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a teenager asking about joining a film club. Now listen carefully and answer questions 1 to 10.\n[The caller asks about the film club at the cinema. The receptionist explains it meets every two weeks on Thursday nights.]\nCaller: I'm sixteen, so could I join?\nReceptionist: Sure. People of any age can join.\nCaller: How much does it cost to join?\nReceptionist: The basic charge is twenty-four pounds a season, but for people eligible for concessions it's 21.50.\nCaller: I'm a student.\nReceptionist: You'd get the concession rate then. That entitles you to free entry to the club films, and also to 2 pounds off tickets for all other films on at the cinema.\nReceptionist: Club members are also eligible for three hours complimentary parking when there's a film on.\n[The receptionist describes the upcoming films, starting with Pablo on October 14th.]\nCaller: It's set in Argentina, isn't it? About a child who's run away from home? And the kid wins a dance competition?\nReceptionist: A singing competition, yeah.\n[Next film: The Soldier on October 28th — an old American silent movie.]\nReceptionist: In this showing we have someone who'll accompany it on the piano.\nCaller: When did they release the first talkies? 1926 or 27?\nReceptionist: Yes. Though I think they had short feature films with sound by 1923.\nCaller: So what sort of film is it?\nReceptionist: Well, it's billed as a comedy.\n[Last film: Tiger on November 11th — an animated film aimed at adults.]\nReceptionist: There's a talk afterwards given by the director, so that should be very popular.\nThat is the end of part one."
+  },
+  {
+   "id": "cdi-listening-36-part-2",
+   "title": "Part 2",
+   "context": "You will hear the head teacher of Rivermead School talking to a group of journalists about facilities at the school. Now listen carefully and answer questions 11 to 20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What is the main aim of the school's new theatre?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to gain an international reputation"
+        },
+        {
+         "key": "B",
+         "text": "to give local people access to good performances"
+        },
+        {
+         "key": "C",
+         "text": "to provide support for talented amateur actors"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Its mission is to maximize opportunities for local audiences to experience productions of the highest quality.' — give local people access to good performances."
+      },
+      {
+       "n": 12,
+       "text": "The first season's theatre programme will include",
+       "options": [
+        {
+         "key": "A",
+         "text": "plays by modern writers."
+        },
+        {
+         "key": "B",
+         "text": "displays by Chinese acrobats."
+        },
+        {
+         "key": "C",
+         "text": "concerts performed by schoolchildren."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'There'll be drama from modern writers.' — plays by modern writers."
+      },
+      {
+       "n": 13,
+       "text": "Most of the theatre's funding will come from",
+       "options": [
+        {
+         "key": "A",
+         "text": "individual sponsors."
+        },
+        {
+         "key": "B",
+         "text": "government grants."
+        },
+        {
+         "key": "C",
+         "text": "ticket sales."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'The bulk of the revenue will be generated by the sale of tickets.'"
+      },
+      {
+       "n": 14,
+       "text": "Which facility at the school is open to the public on a limited basis only?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the sports hall"
+        },
+        {
+         "key": "B",
+         "text": "the museum"
+        },
+        {
+         "key": "C",
+         "text": "the cafeteria"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Sports hall: 'reserved for our students during term time, but anyone can use it in the school holidays.' — open on a limited basis only."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Match each location at the school with the correct description. Write the correct letter, A–G, next to questions 15–20.",
+     "title": "Descriptions of locations",
+     "options": [
+      {
+       "key": "A",
+       "text": "at the most northern end of the campus"
+      },
+      {
+       "key": "B",
+       "text": "at the junction of Park Road and Renny's Drive"
+      },
+      {
+       "key": "C",
+       "text": "past the classroom block, beyond the roundabout"
+      },
+      {
+       "key": "D",
+       "text": "just left after the main entrance"
+      },
+      {
+       "key": "E",
+       "text": "at the roundabout (bus turn-around)"
+      },
+      {
+       "key": "F",
+       "text": "opposite car park P2, on the south side"
+      },
+      {
+       "key": "G",
+       "text": "at the end of Park Road"
+      }
+     ],
+     "questions": [
+      {
+       "n": 15,
+       "text": "Theatre",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Theatre: 'opposite car park P2, on the south side.'"
+      },
+      {
+       "n": 16,
+       "text": "New car park",
+       "answer": [
+        "A"
+       ],
+       "explanation": "New car park: 'at the most northern end of the campus.'"
+      },
+      {
+       "n": 17,
+       "text": "Bus stop",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Bus stop: 'the bus stops at the roundabout.'"
+      },
+      {
+       "n": 18,
+       "text": "Sports hall",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Sports hall: 'right fork after the main entrance... straight across the roundabout... on the right hand side of that road.'"
+      },
+      {
+       "n": 19,
+       "text": "Cafeteria",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Cafeteria: 'at the junction of Park Road and Renny's Drive, on the north side of Park Road.'"
+      },
+      {
+       "n": 20,
+       "text": "Museum",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Museum: 'fairly central. Just go left after the main entrance.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear the head teacher of Rivermead School talking to a group of journalists about facilities at the school. Now listen carefully and answer questions 11 to 20.\nHead: I'd like to start by talking about the new theatre. Its mission is to maximize opportunities for local audiences to experience productions of the highest quality.\nHead: As well as music and dance, there'll be drama from modern writers, and there'll also be a high proportion of shows aimed at children and families.\n[The Chinese state acrobatic troupe has cancelled their November visit.]\nHead: A limited amount of money will come from various government subsidies, but the bulk of the revenue will be generated by the sale of tickets.\nHead: We also have a state of the art sports hall. This is reserved for our students during term time, but anyone can use it in the school holidays. The museum has free entrance, and our cafeteria is open all day to visitors as well as staff and students.\nNow listen and answer questions 15 to 20.\nHead: First of all the theatre. That's opposite car park P2, on the south side.\nHead: There are two car parks marked on your map, P1 and P2, but there's a new car park which has only just been completed, and that's at the most northern end of the campus.\nHead: Some people might want to consider coming by bus. There's a good service from the city centre to the school, and the bus stops at the roundabout. That's where it turns round to go back.\nHead: Then to get to the sports hall, you take the right fork after the main entrance and just keep going past the classroom block. You have to go straight across the roundabout and it's further on on the right hand side of that road.\nHead: Then there's the cafeteria. There are various ways to get there because it's at the junction of Park Road and Renny's Drive, on the north side of Park Road.\nHead: Then the museum is fairly central. Just go left after the main entrance.\nThat is the end of part two."
+  },
+  {
+   "id": "cdi-listening-36-part-3",
+   "title": "Part 3",
+   "context": "You will hear a business studies student called Edward talking to his tutor about some research he is doing on product development. Now listen carefully and answer questions 21 to 30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Edward heard about a particular type of mosquito net from",
+       "options": [
+        {
+         "key": "A",
+         "text": "an administrator."
+        },
+        {
+         "key": "B",
+         "text": "a doctor."
+        },
+        {
+         "key": "C",
+         "text": "a fellow student."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'I chatted to an administrator while my friend talked to one of the doctors, and I found out they've had far fewer cases of malaria since these mosquito nets became available.'"
+      },
+      {
+       "n": 22,
+       "text": "Edward believes that mosquito nets were first used in",
+       "options": [
+        {
+         "key": "A",
+         "text": "China."
+        },
+        {
+         "key": "B",
+         "text": "Japan."
+        },
+        {
+         "key": "C",
+         "text": "Egypt."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Apparently Queen Cleopatra slept under one in ancient Egypt. That was probably where they were invented.'"
+      },
+      {
+       "n": 23,
+       "text": "Chemical treatment of mosquito nets in the mid-twentieth century",
+       "options": [
+        {
+         "key": "A",
+         "text": "was first developed by the military."
+        },
+        {
+         "key": "B",
+         "text": "made the nets potentially dangerous to users."
+        },
+        {
+         "key": "C",
+         "text": "was made possible by modern textiles."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'They used an insecticide called DDT, but it was later found that this could be harmful to people as well as mosquitoes.'"
+      },
+      {
+       "n": 24,
+       "text": "The owners of present-day nets",
+       "options": [
+        {
+         "key": "A",
+         "text": "are likely to find they have an unpleasant smell."
+        },
+        {
+         "key": "B",
+         "text": "should avoid using them every night."
+        },
+        {
+         "key": "C",
+         "text": "may have difficulty obtaining the necessary chemical."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Distribution of the chemical can be a problem in remote areas. I mean people may not be able to get hold of it easily.'"
+      },
+      {
+       "n": 25,
+       "text": "According to Edward, Olyset nets are better than other nets because they",
+       "options": [
+        {
+         "key": "A",
+         "text": "remain effective for longer."
+        },
+        {
+         "key": "B",
+         "text": "use a greater number of chemicals."
+        },
+        {
+         "key": "C",
+         "text": "give protection against more types of insects."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'They give protection for at least five years compared with a year or two for other nets.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete the flow-chart below. Choose FIVE answers from the box and write the correct letter, A–G, next to questions 26–30.",
+     "title": "Topics",
+     "options": [
+      {
+       "key": "A",
+       "text": "workforce"
+      },
+      {
+       "key": "B",
+       "text": "sources of funding"
+      },
+      {
+       "key": "C",
+       "text": "investment opportunities"
+      },
+      {
+       "key": "D",
+       "text": "unique features of the product"
+      },
+      {
+       "key": "E",
+       "text": "future developments"
+      },
+      {
+       "key": "F",
+       "text": "production figures"
+      },
+      {
+       "key": "G",
+       "text": "national economies"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "text": "Diseases caused by mosquitoes — impact on",
+       "answer": [
+        "G"
+       ],
+       "explanation": "'It'd also be useful if you could find some statistical information on how malaria affects countries' economic output.' — national economies."
+      },
+      {
+       "n": 27,
+       "text": "Mosquito nets: history, then of Olyset nets",
+       "answer": [
+        "D"
+       ],
+       "explanation": "'You could just present a bulleted list of its characteristics, the things that make it different from other types of net.' — unique features."
+      },
+      {
+       "n": 28,
+       "text": "Production process — information about",
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Should I give some information about where the money for the project has come from? There are lots of government and private sponsors.' — sources of funding."
+      },
+      {
+       "n": 29,
+       "text": "Profile of the manufacturer — description of the",
+       "answer": [
+        "A"
+       ],
+       "explanation": "'Present figures about numbers of staff and the kinds of people they're employing on the Olyset project.' — workforce."
+      },
+      {
+       "n": 30,
+       "text": "(according to the company's website)",
+       "answer": [
+        "F"
+       ],
+       "explanation": "'Have you found out from the company's website how many nets they actually produce? Yes, it's over thirty million a year.' — production figures."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a business studies student called Edward talking to his tutor about some research he is doing on product development. Now listen carefully and answer questions 21 to 30.\nTutor: Have you decided what to focus on?\nEdward: Yes, the product I've chosen is a particular type of mosquito net. I spent last summer travelling round Africa with a friend who's studying medicine. We visited a medical centre. I chatted to an administrator while my friend talked to one of the doctors, and I found out they've had far fewer cases of malaria since these mosquito nets became available.\nTutor: Mosquito nets have quite a long history, don't they? I believe they've been used in Japan for centuries.\nEdward: That's right. Though apparently Queen Cleopatra slept under one in ancient Egypt. That was probably where they were invented. And much later, nets were used in China.\nEdward: It wasn't until the middle of the 20th century that they developed nets treated with insecticides for use by the military. They used an insecticide called DDT, but it was later found that this could be harmful to people as well as mosquitoes.\nEdward: The chemicals used nowadays are safe. But they have to be treated fairly often with the chemical, which the owners need to do themselves.\nTutor: Presumably distribution of the chemical can be a problem in remote areas. People may not be able to get hold of it easily.\nEdward: That's right.\nEdward: The brand name is Olyset. These nets are an improvement because the insecticide is contained inside the fibre and released gradually. They give protection for at least five years compared with a year or two for other nets.\nNow listen and answer questions 26 to 30.\nEdward: I thought I'd talk first about insect-borne diseases, particularly malaria. I've got some statistics about the numbers of people worldwide who get the disease each year.\nTutor: It'd also be useful if you could find some statistical information on how malaria affects countries' economic output and present that too. [G — national economies]\nEdward: After that, I'll talk about mosquito nets. First the historical development, then I'll introduce the Olyset mosquito net.\nTutor: You could just present a bulleted list of its characteristics, the things that make it different from other types of net. [D — unique features of the product]\nEdward: Then I thought I'd outline the production process. Should I give some information about where the money for the project has come from? There are lots of government and private sponsors. [B — sources of funding]\nTutor: Definitely. That's a very important aspect of any product development.\nEdward: Over half are made in Tanzania by a company called A to Z.\nTutor: I'd say a bit about the company profile as well, and then present figures about numbers of staff and the kinds of people they're employing on the Olyset project. [A — workforce]\nTutor: But you should provide some figures about output. Have you found out from the company's website how many nets they actually produce? [F — production figures]\nEdward: Yes, it's over thirty million a year.\nThat is the end of part three."
+  },
+  {
+   "id": "cdi-listening-36-part-4",
+   "title": "Part 4",
+   "context": "You will hear an expert giving a lecture to business students about how to review a project. Now listen carefully and answer questions 31 to 40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "| After-Action Review (AAR) Process |\n| Background | • A way of evaluating projects during their progress so that improvements can be made • Developed by the [[31]] |\n| Benefits | • Useful for various tasks — not just for large or formal projects • Can be used to debrief after a staff meeting or other regular operations • An effective tool to use after a [[32]] incident • Improves communication within working groups because the focus is on [[33]] |\n| What is an After-Action Review? | It is a meeting that: • concentrates on outcomes and the [[34]] for them • encourages active participation among the team • emphasises the need for the team to [[35]] one another |\n| Things to remember | • Use an external person to facilitate the review • To encourage participation, ask shy members to put their thoughts in [[36]] • Always use [[37]] questions • Pass recommendations on to non-participating team [[38]] • Follow up on ideas by organising staff [[39]] around them • Keep an eye on the [[40]] |",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "army",
+        "military"
+       ],
+       "explanation": "'It was for this reason that the Army devised the after-action review process.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "safety"
+       ],
+       "explanation": "'It's an extremely effective tool to use following a safety incident.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "learning"
+       ],
+       "explanation": "'Because the focus is on learning, it really improves communication within working groups.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "reasons",
+        "reason"
+       ],
+       "explanation": "'It focuses on the resulting outcomes and the reasons for these.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "trust"
+       ],
+       "explanation": "'Emphasises how vital it is for the team to trust one another.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "writing"
+       ],
+       "explanation": "'One way to encourage them to get involved is to ask people to put their comments in writing.'"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "open"
+       ],
+       "explanation": "'Always ask open questions. For example, what would you do differently next time?'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "leaders",
+        "leader"
+       ],
+       "explanation": "'Pass this information on to non participating team leaders so that they too can learn from the experience.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "training"
+       ],
+       "explanation": "'Ideas from the after action review are incorporated into your business by organising staff training around them.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "time"
+       ],
+       "explanation": "'Make sure you keep a constant eye on the time.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear an expert giving a lecture to business students about how to review a project. Now listen carefully and answer questions 31 to 40.\nLecturer: Today we're going to be looking at a way of judging just how successful your project has been. It's called the after-action review process. A typical project review is completed long after the project is finished and so it's too late to change the outcome.\nLecturer: It was for this reason that the Army devised the after-action review process as a way for everyone to learn quickly from experiences in the field.\nLecturer: Firstly, it's not just limited to very large or very formal projects, but is useful for all sorts of things. You may want to use it to debrief following a staff meeting. It's an extremely effective tool to use following a safety incident and can reveal important lessons so that accidents can be avoided in the future.\nLecturer: An added benefit of the review is that because the focus is on learning, it really improves communication within working groups.\nLecturer: So let's have a look at what an after-action review is. It's a structured session or meeting that does the following. It focuses on the resulting outcomes and the reasons for these.\nLecturer: It encourages active participation among the team and very importantly, emphasises how vital it is for the team to trust one another.\nLecturer: Where possible, it's really good to have an external person to facilitate the process. This helps to direct the discussion and can also prevent a stronger member of the review from dominating the others.\nLecturer: Make sure that you encourage active involvement. Often shy members won't say anything, so one way to encourage them to get involved is to ask people to put their comments in writing.\nLecturer: Another key element is to be aware of the type of questions you ask. In order to make sure that participants don't search for what they think is the perfect answer, always ask open questions. For example, what would you do differently next time?\nLecturer: It's also important to make sure you write down the specific recommendations made by everyone. But don't forget to pass this information on to non-participating team leaders so that they too can learn from the experience.\nLecturer: If no one follows up on these recommendations, then the process is wasted. You should also ensure that the ideas from the after-action review are incorporated into your business by organising staff training around them.\nLecturer: Finally, the last thing you want is to find that you don't get through everything because you've been talking too much, so make sure you keep a constant eye on the time. An after-action review is not something that you should ever plan on conducting in two sessions.\nThat is the end of part four."
+  }
+ ],
+ "audio": {
+  "file": "listening-36.mp3",
+  "durationSec": 1580,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

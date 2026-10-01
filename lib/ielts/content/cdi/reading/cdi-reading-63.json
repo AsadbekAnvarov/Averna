@@ -1,0 +1,643 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-63",
+ "title": "CDI Reading Test 63",
+ "description": "A full Academic Reading test from the CDI practice materials: Think Small; Australian Society Before European Settlement; Multitasking.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Think Small",
+  "Australian Society Before European Settlement",
+  "Multitasking"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Think Small",
+   "subtitle": "Izon is a New Zealand company specialising in nanoscience – the study of atoms, molecules and other very small pieces of matter",
+   "paragraphs": [
+    {
+     "text": "The new US headquarters of Izon are situated in Cambridge, Massachusetts, one of the most important global centres of scientific research and technology. Half the other offices in the building Izon shares have scientific names like Stemgent, or the word 'pharmaceutical' in the name. In the past three years, Izon has expanded to 17 times its previous size. It's done so selling only one product that it's been developing since 2004, the qNano. This is an adjustable tool for the measurement and analysis of tiny particles in scientific research, which comes with a $27,000 price tag. Izon's success results from the fact that the qNano machine provides precise measurements, while similar machines of the same price only offer averaging techniques. In effect, researchers using the qNano are able to gather information about very small things, and it has many possible applications from drug delivery analysis through to environmental research."
+    },
+    {
+     "text": "Kristoffer Bolen is Izon's US head of sales. Alongside his full-time role with the company, he's just finished the fifth semester of six for his High Tech Masters of Business Administration at Northeastern University, which will be his second Masters degree alongside a Masters of Science. These soon to be twin Masters degrees provide Bolen with the perfect combination of skills for his job, which depends on him being able to manage the sales process and also comprehend in depth a very complicated piece of technology. When a customer buys a qNano device, an Izon representative will fly anywhere in America to train them how to use the instrument. The representative then checks in with the client on an ongoing basis to be completely informed about how each qNano is being used, and then liaises with technicians back in New Zealand."
+    },
+    {
+     "text": "The Izon story started 8 years ago in New Zealand. Hans van der Voorn was aimless, having sold his own company, and was looking for something more taxing to set his mind to, when van der Voorn was introduced to three scientists with an idea that involved simply a small plastic membrane with a tiny adjustable hole to measure a range of very small particles. Initially he put up an investment of $1.5 million to move the process forwards to the development of a prototype, and this led to the founding of Izon and the production of the qNano. Van der Voorn believes that the worlds of science and business sometimes don't understand each other very well. However, he thinks that engineering can be a bridge between the two, and his long experience in that field has been crucial to the company's success. He soon realised that Izon was going to need people on the ground overseas if it was going to grow, so the US office was opened. For now Izon trades in the US as a foreign company, so avoids the high level of compliance that comes with being an American registered company. But he sees that one day soon this will change, as Izon's current position disallows it from entering into partnerships locally."
+    },
+    {
+     "text": "Marketing the qNano is complicated. Izon needs scientists both to buy and advertise the product. The science world may seem like a big playing field, but it's actually a small group. As a result, the critical part of the company's marketing is articles that clients publish describing work they have performed with the qNano. So for Izon the sale isn't enough in itself, it also has a stake in how customers are using the qNano. That's where Yaniv Gaynor comes in. As development and training manager, he's involved throughout the sales process and manages most of the customer's post-sale experience. The sales process is new for Gaynor, who shifted cities and switched from a role as teacher at the University of Minnesota to his first private sector role with Izon. 'It's tricky, it's challenging and it's not in my comfort zone,' he concedes. But nine out of ten times, if there's an unhappy customer, he's able to turn their experience around. And there's another part to this, because sitting with customers as they learn about the qNano, Gaynor gets to see how they are using the product. 'People ask very good questions and these are great triggers for future development,' he says."
+    },
+    {
+     "text": "'Our business is selling research tools,' van der Voorn says. But he knows that the application range of this tool is wide. For instance, Izon is engaged in a project with Harvard University, looking for a particular type of particle of blood that is a symptom of the medical condition of thrombosis. If in the future they can identify this particle, they can design a simple test for it."
+    },
+    {
+     "text": "This would make it easier for doctors to diagnose thrombosis. Another planned development is eventually to shift the US base to more spacious offices on the other side of town. With larger headquarters, the company will be able to bring clients into the Izon building for training with its product, rather than travelling to them, which will hopefully result in an even closer relationship between the company and its customers."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Izon's new US headquarters are located in an area popular with other science businesses.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Cambridge, Massachusetts is a major centre of scientific research; half the other offices are science businesses."
+      },
+      {
+       "n": 2,
+       "text": "Izon's growth in the last three years has been faster than the company predicted.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No comparison with the company's own predictions is given."
+      },
+      {
+       "n": 3,
+       "text": "Since 2004, Izon has developed a range of equipment for use in scientific research.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Izon's product is the qNano, not a range of equipment."
+      },
+      {
+       "n": 4,
+       "text": "One advantage of the qNano is that it is cheaper than its competitors.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage does not present price as an advantage — it contradicts this."
+      },
+      {
+       "n": 5,
+       "text": "Drug delivery analysis will be the most profitable application of the qNano.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No claim about which application is most profitable."
+      },
+      {
+       "n": 6,
+       "text": "Kristoffer Bolen is still completing his studies.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "He has just finished the fifth semester of six for his MBA."
+      },
+      {
+       "n": 7,
+       "text": "Bolen's job requires him to fully understand how the qNano works.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "As head of sales he must understand the technology to sell to scientists."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "The Izon Story",
+     "template": "- He made the [[8]] which enabled the prototype to be created.\n- His background in [[9]] as well as business gave him the skills to run Izon.\n- The company's marketing relies on [[10]] about its customers' research.\n- Yaniv Gaynor was formerly a [[11]] with no experience in sales.\n- To diagnose for thrombosis, a [[12]] may be developed.\n- [[13]] will be done at Izon's US headquarters.",
+     "questions": [
+      {
+       "n": 8,
+       "answer": [
+        "Investment"
+       ],
+       "explanation": "Van der Voorn made the investment that enabled the prototype."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "Engineering"
+       ],
+       "explanation": "His engineering background plus business gave him the skills."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "Articles"
+       ],
+       "explanation": "Marketing relies on articles about customers' research."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "Teacher"
+       ],
+       "explanation": "Gaynor was formerly a teacher."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "Test"
+       ],
+       "explanation": "A test may be developed to diagnose thrombosis."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "Training"
+       ],
+       "explanation": "Training will be done at the US headquarters."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Australian Society Before European Settlement",
+   "subtitle": "The Aboriginal people of Australia came to that continent between 40,000 and 60,000 years ago.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Traditionally, Australian Aboriginal people used to live in family groups, a few of which would join together to form larger groups known to sociologists as bands or hordes. To take part in important ceremonies or gatherings such as initiations, these bands came together as a single tribe, making a group of a hundred to several hundred people. In turn, these tribes sometimes met in still larger groups of a thousand or more. Aboriginal society was organised in three different ways: according to geographical structuring, religious/totemic structuring, and kinship structuring."
+    },
+    {
+     "label": "B",
+     "text": "Firstly, there was the geographical structuring of society, in which tribes of perhaps 500 people were made up of a number of bands of up to 20 people, each of which occupied a specific area. These bands were economic groups which would join together for day-to-day hunting and other food gathering. However, the term 'band' is given to this type of group by non-Aboriginal observers, and is not a distinct group in the minds of Aboriginal people, who regard themselves rather as belonging to a particular tribe or totemic group."
+    },
+    {
+     "label": "C",
+     "text": "In Aboriginal Australia, tribes are groups made up of people sharing the same language, customs and general laws. The people of a tribe share a common bond and, in their own language, the word for 'man' is often the word used for the name of the tribe. Some tribal groups now also use the English term 'nation' to describe themselves, as, for example, the Larrakeyah tribe around Darwin in Australia's Northern Territory who call themselves the 'Larrakeyah nation'. Tribes were generally not groups concerned with making war, and were not led by a chief. When Europeans first settled in Australia at the end of the 18th century there were an estimated 500 Aboriginal tribes. Of these, around 400 still have people representing them in the centre and north of Australia, where the tribal structure is still largely intact."
+    },
+    {
+     "label": "D",
+     "text": "The second way in which Aboriginal society was organised is religious and totemic. On a religious level, Aboriginal society in Australia was divided into two 'moieties' (a term used by European anthropologists) or halves. Within each moiety are significant animals, plants or places connected to the time of creation, which Aboriginal people call the 'Dreamtime'. For example, in the northern Kimberley area of Western Australia, the two moieties are represented by the two birds, Wodoi, the spotted nightjar, and Djungun, the owlet nightjar, who are said to have fought in the Dreamtime. Wodoi is associated with certain plants such as the edible cabbage palm, while Djungun is connected to a fish called the rock cod and a bird, the corella."
+    },
+    {
+     "label": "E",
+     "text": "Each person, as well as belonging to one or the other moiety, also belongs to a totemic group. A totem is an animal, plant or other object which is believed to be ancestrally related to a person. In the Kimberley example given above, people belonging to the Wodoi moiety call the spotted nightjar their father, but they also have other animal and plant associates. For example, Jack Kararlada, a Kimberley elder, is named after his totem, the butcher bird, or karadada in the local language. A totem can be represented by a large rock, a tree, hill, river or other land form, and may also have a man-made emblem such as a wooden pole or other decorated object. Much of Aboriginal art is connected with the imagery of totems. A person is born into one or the other moiety, with their own totems, and that does not change throughout their life. A person belonging to one moiety must marry a person of the opposite moiety, a custom which has the effect of increasing genetic variation in the group."
+    },
+    {
+     "label": "F",
+     "text": "The third way that the society is structured is through the kinship system, which regulates relations between people. The kinship system is complex, needing up to 70 relationship terms to describe it. It structures obligations and behaviour among families and between members of society in general, and defines such matters as who will look after children if a parent dies, who can marry whom, who is responsible for another person's misdeeds, and who will care for the sick and the elderly. Under kinship laws, Aboriginal people may have similar family obligations to their aunts and uncles as they would to their mother or father."
+    },
+    {
+     "label": "G",
+     "text": "A family group can be quite large, consisting of a man and his wives, the children from each wife, and sometimes his parents or in-laws. A man used to have from one to ten wives, but nowadays most men have just one. Interestingly, Aboriginal custom all over Australia bans a person from speaking directly to their mother-in-law. So, in traditional society, if you wanted your mother-in-law to do something for you, you would have to ask another person to ask her. When food was divided and shared around the camp fire, a mother-in-law would have her own small fire, and her son or daughter would take her some of the meat and stay to chat, or a grandchild would sit with her and act as a messenger."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "a description of the way Aboriginal society was organised for survival activities",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B: bands were economic groups joining for hunting and food gathering."
+      },
+      {
+       "n": 15,
+       "text": "an example of a person's name taken from that of a totem",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Section E: Jack Kararlada is named after his totem, the butcher bird."
+      },
+      {
+       "n": 16,
+       "text": "examples of special occasions when bands came together as tribes",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Section A: bands came together for ceremonies such as initiations."
+      },
+      {
+       "n": 17,
+       "text": "a mention of a change in Aboriginal marriage customs",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Section G: a man used to have up to ten wives, but nowadays most have one."
+      },
+      {
+       "n": 18,
+       "text": "a reference to the approximate number of Aboriginal tribes in existence at the time of colonisation",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Section C: an estimated 500 tribes when Europeans first settled."
+      },
+      {
+       "n": 19,
+       "text": "a mention of a biological outcome of the moiety system",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Section E: marrying the opposite moiety increases genetic variation."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of the following statements are made about a totem?",
+     "options": [
+      {
+       "key": "A",
+       "text": "It is another name for a moiety."
+      },
+      {
+       "key": "B",
+       "text": "It can be represented by a feature of the landscape."
+      },
+      {
+       "key": "C",
+       "text": "It is a type of religious ceremony."
+      },
+      {
+       "key": "D",
+       "text": "It changes when a person marries."
+      },
+      {
+       "key": "E",
+       "text": "It is thought to be an ancestor."
+      }
+     ],
+     "questions": [
+      {
+       "n": 20,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "B: a totem can be represented by a rock, tree, hill or river. E: a totem is believed to be ancestrally related to a person. B: a totem can be represented by a landscape feature. E: a totem is believed to be an ancestor."
+      },
+      {
+       "n": 21,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "B: a totem can be represented by a rock, tree, hill or river. E: a totem is believed to be ancestrally related to a person. B: a totem can be represented by a landscape feature. E: a totem is believed to be an ancestor."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "- The tribal system still exists in the north and [[22]] of Australia.\n- Aboriginal people refer to the beginning of the world as the [[23]].\n- A [[24]] made of wood is sometimes used to represent a totem.\n- Aboriginal languages have as many as [[25]] words to describe family relationships.\n- The social system of an Aboriginal tribe controls matters such as who should look after children, the old and the [[26]].",
+     "questions": [
+      {
+       "n": 22,
+       "answer": [
+        "Centre"
+       ],
+       "explanation": "The tribal structure is still intact in the centre and north."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "Dreamtime"
+       ],
+       "explanation": "The time of creation is called the 'Dreamtime'."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "Pole"
+       ],
+       "explanation": "A totem may have a man-made emblem such as a wooden pole."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "70"
+       ],
+       "explanation": "The kinship system needs up to 70 relationship terms."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "sick"
+       ],
+       "explanation": "Kinship defines who will care for the sick and the elderly."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Multitasking",
+   "subtitle": "Driving, eating, talking on the phone, sending emails… in today's busy world most of us find ourselves doing three things at once.",
+   "paragraphs": [
+    {
+     "text": "Scientific research has identified a bottleneck in our brains that could suggest we are fundamentally incapable of true multitasking. If experimental findings reflect real-world performance, people who think they are multitasking are probably just underperforming in all of their parallel pursuits."
+    },
+    {
+     "text": "The problem, according to René Marois, a psychologist at Vanderbilt University in Tennessee, is that there's a sticking point in the brain. In order to locate this, Marois asked volunteers to watch a screen and press a key with a specific finger when a particular image appeared. Then, in a separate activity, they learned to listen to different recordings and to respond by making a specific sound. In both tasks, typical response time was about half a second, and volunteers quickly reached their peak performance. The trouble came when Marois showed participants an image, then almost immediately played them a sound. It appeared that if the second task is introduced within the half-second or so it takes to process and react to the first, it will simply be delayed until the first one is done. Delays progressively shorten as the interval between presenting the tasks lengthens."
+    },
+    {
+     "text": "There are at least three points where we seem to get stuck, says Marois. The first is simply identifying what we're looking at. This can take a few tenths of a second, during which crucial window of concentration we are incapable of seeing and recognising a second item. This limitation is known as the attentional blink. A second limitation is our short-term visual memory. This capacity shortage is thought to explain, in part, our astonishing inability to detect even huge changes in scenes that are otherwise identical, so-called change blindness. A third limitation is that choosing a response also takes brainpower. Selecting a response to one stimulus will hold back by some tenths of a second your ability to respond to a parallel one. This is called the response selection bottleneck theory, first proposed in 1952, and elaborated on by Marois and his colleagues in 2006."
+    },
+    {
+     "text": "But David Meyer of the University of Michigan has other ideas. Known as something of an optimist by his peers, Meyer has written papers with titles like 'Virtually perfect timesharing in dual-task performance'. His experiments have shown that with enough practice – at least 200 tries – some people can execute two tasks simultaneously as competently as if they were doing them one after another. Not all people manage this harmonious time-share, however, Meyer argues that individual differences come down to variations in the character of the processor – some brains are just more 'cautious', some more 'daring'. And contrary to popular belief, there are no noticeable differences between men and women. Meyer believes that it's not a central bottleneck which causes dual-task 'interference' but rather adaptive executive control which 'schedules task processes appropriately to obey instructions about their relative priorities and serial order'."
+    },
+    {
+     "text": "Marois's volunteers have also shown a huge improvement at managing concurrent tasks through regular practice. Where he disagrees with Meyer is in what the brain is doing to achieve this. Marois speculates that practice might give us the chance to find less congested circuits to execute a task – like finding trusty back streets to avoid heavy traffic on main roads – effectively making our response to the task subconscious. But while some dual tasks benefit from practice, others simply do not, according to Pierre Jolicoeur of the University of Montreal. Dual tasks involving visual stimulus and a motor response* (which he dubs 'in the eye and out the hand') and auditory stimulus with a verbal response ('in the ear and out the mouth') can, with enough training, be performed as well together as apart. He speculates that the brain connections they use may be somehow special, because we learn to speak by hearing and learn to move by looking. But pair visual input with verbal response, or sound to motor, and there's no such dramatic improvement."
+    },
+    {
+     "text": "For research purposes, these experiments have to be kept simple. Real-world multitasking poses much greater challenges. Needless to say, there appear to be no researchers who believe that you can safely drive and have a phone conversation. And according to results from a study at the University of Utah, even using a hands-free phone does not improve a driver's response time. The study confirms that what distracts a driver so badly is the very act of talking to someone who isn't present in the car and therefore is unaware of the hazards facing the driver. And the general preconception that we tend to get worse at multitasking as we age is borne out. In one study conducted by Art Kramer at the University of Illinois, for example, both young and old participants were asked to do a simulated driving task while carrying on a conversation. He found that while younger drivers tended to miss background changes, older drivers failed to notice things that were highly relevant as well, and likewise had more trouble paying attention to the more important parts of the scene."
+    },
+    {
+     "text": "However, Kramer also found that older people improved their performance with practice, and that brain scans showed that underlying that improvement was a change in the way their brains became active. While it's clear that practice can often make a difference, the basic facts remain sobering. For most of our history, says Marois, we probably never needed to do more than one thing at a time, so we haven't evolved to be able to. 'We have this impression of an almighty, complex brain,' he says, 'and yet we have very humbling and crippling limits.'"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 27–31.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "The main purpose of Rene Marois's experiment was to establish",
+       "options": [
+        {
+         "key": "A",
+         "text": "whether some people are more capable of multitasking than others."
+        },
+        {
+         "key": "B",
+         "text": "the stage at which people become too overloaded with input to respond efficiently."
+        },
+        {
+         "key": "C",
+         "text": "whether a person can perform tasks simultaneously in different situations."
+        },
+        {
+         "key": "D",
+         "text": "the difference in a person's reactions to visual and auditory stimuli."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The experiment sought the stage at which overload occurs (B)."
+      },
+      {
+       "n": 28,
+       "text": "What does David Meyer say about dual-task performance?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Certain types of tasks are easier to carry out concurrently than others."
+        },
+        {
+         "key": "B",
+         "text": "Success rates vary according to the complexity of the responses required."
+        },
+        {
+         "key": "C",
+         "text": "Anybody can achieve dual-task competence if they repeat the exercise enough times."
+        },
+        {
+         "key": "D",
+         "text": "Success at dual-task activities depends on the person concerned."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Meyer says success depends on the person concerned (D)."
+      },
+      {
+       "n": 29,
+       "text": "On what point do Marois and Meyer agree?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the role of the subconscious in interpreting dual-task stimuli"
+        },
+        {
+         "key": "B",
+         "text": "the reason underlying the delay in response to dual-task stimuli"
+        },
+        {
+         "key": "C",
+         "text": "the value of repetition in improving performance in dual-task situations"
+        },
+        {
+         "key": "D",
+         "text": "the cognitive process enabling us to perform dual tasks competently"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "They agree on the value of repetition/practice (C)."
+      },
+      {
+       "n": 30,
+       "text": "According to Pierre Jolicoeur, the kind of dual tasks which can benefit from practice are those involving",
+       "options": [
+        {
+         "key": "A",
+         "text": "combinations which mirror the way people acquire basic skills."
+        },
+        {
+         "key": "B",
+         "text": "procedures which form part of people's everyday activities."
+        },
+        {
+         "key": "C",
+         "text": "a spoken response to a visual prompt."
+        },
+        {
+         "key": "D",
+         "text": "a motor response to an auditory stimulus."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Tasks mirroring how basic skills are acquired (A)."
+      },
+      {
+       "n": 31,
+       "text": "In his dual-task experiments, Art Kramer observed that, compared with younger participants, older people",
+       "options": [
+        {
+         "key": "A",
+         "text": "performed better in some aspects of the study."
+        },
+        {
+         "key": "B",
+         "text": "found it harder to concentrate on key aspects of driving."
+        },
+        {
+         "key": "C",
+         "text": "were less able to respond to the conversational input."
+        },
+        {
+         "key": "D",
+         "text": "gained little from repeated practice of the tasks."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Older people found it harder to concentrate on driving (B)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–E, below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "the delay in deciding on an appropriate reaction to a stimulus."
+      },
+      {
+       "key": "B",
+       "text": "variations between people in their ability to respond to dual-task situations."
+      },
+      {
+       "key": "C",
+       "text": "the period when we are processing input and therefore unable to take in further information."
+      },
+      {
+       "key": "D",
+       "text": "a mechanism which places tasks in sequence according to their perceived importance."
+      },
+      {
+       "key": "E",
+       "text": "a failure to identify differences between similar images."
+      }
+     ],
+     "questions": [
+      {
+       "n": 32,
+       "text": "The phrase 'attentional blink' describes",
+       "answer": [
+        "C"
+       ],
+       "explanation": "C: the period when we are processing input and therefore unable to take in further information."
+      },
+      {
+       "n": 33,
+       "text": "Scientists talk about 'change blindness' to denote",
+       "answer": [
+        "E"
+       ],
+       "explanation": "E: a failure to identify differences between similar images."
+      },
+      {
+       "n": 34,
+       "text": "The idea of the 'response selection bottleneck' was suggested as an explanation for",
+       "answer": [
+        "A"
+       ],
+       "explanation": "A: the delay in deciding on an appropriate reaction to a stimulus."
+      },
+      {
+       "n": 35,
+       "text": "Meyer uses the term 'adaptive executive control' to refer to",
+       "answer": [
+        "D"
+       ],
+       "explanation": "D: a mechanism which places tasks in sequence according to their perceived importance."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 36,
+       "text": "In the scientific community, Meyer's theories receive less support than those of Marois.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No comparison of the level of scientific support is made."
+      },
+      {
+       "n": 37,
+       "text": "It is commonly thought that gender plays a significant role in determining dual-task performance.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "The writer notes the common belief that gender matters."
+      },
+      {
+       "n": 38,
+       "text": "Jolicoeur's experiments on dual-task competence took place under laboratory conditions.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No information about the conditions of Jolicoeur's experiments."
+      },
+      {
+       "n": 39,
+       "text": "Research into phone use while driving has produced some surprising results.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The writer indicates the results were not surprising."
+      },
+      {
+       "n": 40,
+       "text": "Kramer's initial findings about cognitive abilities and ageing confirm popular assumptions.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Kramer's initial findings matched popular assumptions about ageing."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

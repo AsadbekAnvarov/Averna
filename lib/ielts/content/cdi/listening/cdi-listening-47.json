@@ -1,0 +1,636 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-47",
+ "title": "CDI Listening Test 47",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-47-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Corton Insurance — New Claim Form\nCustomer name: Andrew Smith\nPolicy number: [[1]]\nEmail address: asmith@fastmail.com\nDate of birth: [[2]] 1972\nPrevious claims (last 3 years): [[3]] stolen (last year)\nNew Claim\n- Item claimed: laptop\n- Where purchased: [[4]]\n- Approximate current value: £ [[5]]\n- Description of damage: the laptop’s [[6]] doesn’t work\n- Item is used for: [[7]] use\nDescription of Accident\n- Client was on a [[8]] when the accident happened\n- The laptop was placed on a [[9]] and a box fell on it\nAction to be Taken\n- Client to get a [[10]] made by a recognised dealer",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "WX717435T"
+       ],
+       "explanation": "\"Uh, yeah. W X717435 T.\" — the policy number, spelled out by Andrew."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "April 30th",
+        "30 April",
+        "April 30",
+        "30th April"
+       ],
+       "explanation": "\"April 30th, 1972.\" — date of birth given to the agent."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "bike"
+       ],
+       "explanation": "\"But my bike was stolen last year, so... And did you claim? For that, yeah.\" — bike stolen and claimed last year."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "COMPUCAN"
+       ],
+       "explanation": "\"Compucan. It's just a small shop... C O M P U C A N.\" — the shop where the laptop was purchased."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "560",
+        "£560"
+       ],
+       "explanation": "\"So I'll put £560. We take off ten percent per year. That's £70 for two years.\" — current value after depreciation."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "keyboard"
+       ],
+       "explanation": "\"I can't type anything in, so it must be the keyboard that's broken.\" — damaged part of the laptop."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "family"
+       ],
+       "explanation": "\"I've actually got a different one for work. This one's just for the family.\" — personal/family use, not work."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "train"
+       ],
+       "explanation": "\"No, I was on a train. I put the laptop down next to me.\" — mode of transport during incident."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "seat"
+       ],
+       "explanation": "\"On the seat, not on the floor. That's right.\" — where the laptop was placed on the train."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "report"
+       ],
+       "explanation": "\"Get the laptop seen by a recognized dealer. Ask them to make a report...\" — action required before claim proceeds."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 0:00[Narrator] You will hear a man telephoning an insurance company. First you have some time to look at questions 1 to 7.\n▶ 0:43[Narrator] Now listen carefully and answer questions one to seven.\n▶ 0:51Monica: Corton Insurance, New Claims Department. Can I take your name, please?\n▶ 0:55Andrew: Yes, it's Andrew Smith.\n▶ 0:58Monica: Hello, Mr. Smith. And do you have the number of your policy, please?\n▶ 1:02Andrew: WX717435T\n▶ 1:10Monica: And for security, can you just give me your email address as well?\n▶ 1:14Andrew: Yes, it's asmith at fastmail.com.\n▶ 1:20Monica: And your date of birth too, please?\n▶ 1:22Andrew: April 30th , 1972.\n▶ 1:24Monica: Thank you, Mr. Smith. You're speaking to Monica. How can I help you today?\n▶ 1:29Andrew: Well, I want to see if I can make a claim under my household insurance policy.\n▶ 1:34Monica: Have you made any previous claims in the last three years?\n▶ 1:38Andrew: Oh, someone did steal my mobile phone, but no, that was four years ago.\n▶ 1:45Andrew: But my bike was stolen last year, so... And did you claim for that? Yeah.\n▶ 1:50Monica: What are you claiming for this time?\n▶ 1:52Andrew: It's for my laptop. It's broken.\n▶ 1:55Monica: Okay. Now can you tell me where you bought it?\n▶ 1:58Andrew: Compucan . It's just a small shop.\n▶ 2:01Monica: How do you spell that?\n▶ 2:03Andrew: C O M P U C A N.\n▶ 2:12Monica: What would you say is the present value of the item?\n▶ 2:16Andrew: Well, I paid £700 for it two years ago.\n▶ 2:20Monica: So I'll put £560 . We take off ten percent per year. That's £70 for two years.\n▶ 2:30Monica: Right. So can you describe the damage to the laptop?\n▶ 2:34Andrew: Well, I can switch it on and stuff comes up on the screen, but I can't type anything in, so it must be the keyboard that's broken.\n▶ 2:43Monica: Have you tried to get it fixed?\n▶ 2:45Andrew: No, but my sister's had a look at it. She knows a lot about computers, and she says it's probably not worth the cost of repairing.\n▶ 2:53Monica: And do you use the laptop for work?\n▶ 2:53Andrew: I've actually got a different one for work. This one's just for the family .\n▶ 3:26[Narrator] Now listen and answer questions eight to ten.\n▶ 3:32Monica: Now I need to take some details about the actual incident that caused the damage. Where did the incident happen?\n▶ 3:39Andrew: It was during the rush hour. I was going to a friend's house.\n▶ 3:43Monica: Were you travelling by car?\n▶ 3:45Andrew: No, I was on a train . I put the laptop down next to me.\n▶ 3:49Monica: On the seat , not on the floor.\n▶ 3:51Andrew: That's right.\n▶ 3:52Monica: So did it fall onto the floor?\n▶ 3:54Andrew: Actually, someone was trying to get a box down from the luggage rack and dropped it on a laptop. I thought it would be okay because it was in a laptop case. But it wasn't, unfortunately.\n▶ 4:06Monica: Right. Well, before we do anything else, there's some action that I need to ask you to take. So what you need to do is to get the laptop seen by a recognized dealer. Ask them to make a report telling us whether it can be repaired or if it needs replacing.\n▶ 4:29[Narrator] That is the end of part one."
+  },
+  {
+   "id": "cdi-listening-47-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Write the correct letter, A–H, next to Questions 11–16.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "text": "Toilet block",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Cross the road from the car park, the first building you'll come to is the toilet block.\" — toilet block is at position A on the map."
+      },
+      {
+       "n": 12,
+       "text": "Shower block",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Built onto that... the new shower block.\" — shower block is attached to the toilet block, at position C."
+      },
+      {
+       "n": 13,
+       "text": "Tent site",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"Bottom left of your map, among the pine trees, there is a special flat site set up for pitching tents.\" — tent site is at G."
+      },
+      {
+       "n": 14,
+       "text": "Cabins",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"On the far right hand side there's a block of small cabins.\" — cabins at position D."
+      },
+      {
+       "n": 15,
+       "text": "Barbecue area",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"In this next block beside the flower beds, we have a lovely place for barbecues.\" — barbecue area at F."
+      },
+      {
+       "n": 16,
+       "text": "Bike trail",
+       "answer": [
+        "H"
+       ],
+       "explanation": "\"Below the flower beds and across Lakeside Drive you'll see a trail for mountain biking.\" — bike trail at H."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening47-map.webp",
+      "alt": "Forest Lake Campsite map"
+     }
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO items is it recommended that campers bring?",
+     "options": [
+      {
+       "key": "A",
+       "text": "earplugs"
+      },
+      {
+       "key": "B",
+       "text": "sunscreen"
+      },
+      {
+       "key": "C",
+       "text": "swimming toy"
+      },
+      {
+       "key": "D",
+       "text": "torch"
+      },
+      {
+       "key": "E",
+       "text": "boots"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "\"I'd say earplugs are more useful... bring boots isn't a bad idea.\" — earplugs (A) and boots (E) are the two recommended items. \"I'd say earplugs are more useful... bring boots isn't a bad idea.\" — earplugs (A) and boots (E) are both correct."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "\"I'd say earplugs are more useful... bring boots isn't a bad idea.\" — earplugs (A) and boots (E) are the two recommended items. \"I'd say earplugs are more useful... bring boots isn't a bad idea.\" — earplugs (A) and boots (E) are both correct."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which does the organizer suggest are the TWO most popular concert items?",
+     "options": [
+      {
+       "key": "A",
+       "text": "acting"
+      },
+      {
+       "key": "B",
+       "text": "dancing"
+      },
+      {
+       "key": "C",
+       "text": "poetry recital"
+      },
+      {
+       "key": "D",
+       "text": "singing"
+      },
+      {
+       "key": "E",
+       "text": "storytelling"
+      }
+     ],
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "\"You can't have a camp without a good sing along. That's our favourite... people much prefer to see some good dancing.\" — singing (D) and dancing (B). \"You can't have a camp without a good sing along. That's our favourite... people much prefer to see some good dancing.\" — singing (D) and dancing (B)."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "\"You can't have a camp without a good sing along. That's our favourite... people much prefer to see some good dancing.\" — singing (D) and dancing (B). \"You can't have a camp without a good sing along. That's our favourite... people much prefer to see some good dancing.\" — singing (D) and dancing (B)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 5:42[Narrator] Now listen carefully and answer questions 11 to 16.\n▶ 5:50Speaker: Hello everyone and welcome to this orientation session prior to our camp next week. Thank you for coming along to find out what you and your children will be doing on this year's camp.\n▶ 6:02Speaker: To start off with, let's tell you a bit about the campsite itself so that you'll be able to find your way around once you get there.\n▶ 6:11Speaker: Firstly, we'll be arriving by bus into the car park, which if you look at the plan you have in front of you, you'll see at the top of the picture on the left hand side.\n▶ 6:22Speaker: Now if you cross the road from the car park, the first building you'll come to is the toilet block . It's been recently upgraded, so it's very nice and clean in there now, with plenty of facilities.\n▶ 6:35Speaker: And built onto that, so this is across the road from the community hall, is the new shower block . The hot water does run out occasionally, but usually there's enough to cope with a group your size.\n▶ 6:49Speaker: If you now move to the bottom left of your map, among the pine trees, there is a special flat site set up for pitching tents with power points and outdoor taps for water.\n▶ 7:02Speaker: Now let's go back and move along the top of your map. There's another area of pine forest, and then over on the far right hand side there's a block of small cabins .\n▶ 7:24Speaker: Note that this is different from the main accommodation block which doesn't appear on this map but is further over again to the right. Now let's look down from there over the road, moving clockwise round your map.\n▶ 7:31Speaker: In this next block beside the flower beds, we have a lovely place for barbecues where you can cook in the open air.\n▶ 7:41Speaker: Below the flower beds and across Lakeside Drive you'll see a trail for mountain biking , which is always a popular activity.\n▶ 7:52Speaker: Moving on now, in the middle of the campsite you'll see the lake where you can canoe. And above that again the community hall. So that completes your introduction to the campsite.\n▶ 8:38[Narrator] Now listen and answer questions 17 to 20.\n▶ 8:46Speaker: Now let's think about what you need to bring with you. I'm sure you're all wondering what you need to pack.\n▶ 8:56Speaker: The lake is a bit cold for swimming at this time of year, so you can leave your togs out of the suitcase. And sunblock too can be left behind now that we're into April.\n▶ 9:13Speaker: Some campers like a torch, but actually the days are still so long that it's light outside till quite late, and the blocks all have outside lighting now.\n▶ 9:23Speaker: So I'd say that a pair of earplugs are more useful, as in my experience a lot of talking goes on after lights out.\n▶ 9:31Speaker: But in April, if it's wet it can get muddy around the campsite, so to bring boots isn't a bad idea.\n▶ 9:44Speaker: Finally, can you all please prepare something for the final night concert? Bring your musical instruments or whatever else you need. You can't have a camp without a good sing along . That's our favourite activity.\n▶ 9:52Speaker: Maybe you could recite a poem, act out a skit or charades for us if you're brave enough to try that. Or failing that, perhaps you can tell a joke or a funny story.\n▶ 10:03Speaker: But actually people much prefer to see some good dancing . I'll look forward to seeing you all perform next week.\n▶ 10:13[Narrator] That is the end of part two."
+  },
+  {
+   "id": "cdi-listening-47-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What is the students’ purpose in mentioning the way dolphins make sounds?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to show comparison with human speech"
+        },
+        {
+         "key": "B",
+         "text": "to show the unusual anatomy of a dolphin’s head"
+        },
+        {
+         "key": "C",
+         "text": "to show recent developments in understanding the meaning of the sounds"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The sounds are focused through an extraordinary organ called the melon, which most other sea mammals don't have.\" — unusual anatomy (B)."
+      },
+      {
+       "n": 22,
+       "text": "According to Fran, Hector’s dolphins are unaffected by",
+       "options": [
+        {
+         "key": "A",
+         "text": "tourist numbers."
+        },
+        {
+         "key": "B",
+         "text": "the threat from fishing nets."
+        },
+        {
+         "key": "C",
+         "text": "their slow breeding rate."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"I know that some conservationists are worried about the impact of the tourism industry on dolphin numbers, but I don't think that's a problem yet here.\" — tourist numbers not affecting them yet (A)."
+      },
+      {
+       "n": 23,
+       "text": "The New Zealand Government set up a marine sanctuary",
+       "options": [
+        {
+         "key": "A",
+         "text": "because of public pressure."
+        },
+        {
+         "key": "B",
+         "text": "as a result of scientific research."
+        },
+        {
+         "key": "C",
+         "text": "to protect a dolphin feeding ground."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"It was a consequence of a study done by some marine biologists.\" — scientific research led to the sanctuary (B)."
+      },
+      {
+       "n": 24,
+       "text": "Where is the largest population of Hector’s dolphins in New Zealand?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the east coast"
+        },
+        {
+         "key": "B",
+         "text": "Southland"
+        },
+        {
+         "key": "C",
+         "text": "the west coast"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"The biggest group surviving off the west coast.\" — west coast has the largest population (C)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What is special about each type of dolphin? Choose SIX answers from the box and write the correct letter, A–H, next to Questions 25–30.",
+     "title": "Special characteristics",
+     "options": [
+      {
+       "key": "A",
+       "text": "swim along behind boats"
+      },
+      {
+       "key": "B",
+       "text": "swim in unusually large groups"
+      },
+      {
+       "key": "C",
+       "text": "live along New Zealand’s entire coastline"
+      },
+      {
+       "key": "D",
+       "text": "swim beneath slow-moving boats"
+      },
+      {
+       "key": "E",
+       "text": "tend to be solitary"
+      },
+      {
+       "key": "F",
+       "text": "live only off New Zealand’s northwest coast"
+      },
+      {
+       "key": "G",
+       "text": "are the second largest dolphin species in New Zealand"
+      },
+      {
+       "key": "H",
+       "text": "are seen mostly in Kaikoura"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "text": "Common dolphins",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"The common dolphin, which inhabits the whole of the sea around New Zealand.\" — live along entire coastline (C)."
+      },
+      {
+       "n": 26,
+       "text": "Dusky dolphins",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The dusky dolphins travel in pods as big as eight hundred members.\" — unusually large groups (B)."
+      },
+      {
+       "n": 27,
+       "text": "Hector’s dolphins",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"The Hector's dolphins are different, in that they prefer to go in the wake of boats, that is coming along in the rear.\" — swim along behind boats (A)."
+      },
+      {
+       "n": 28,
+       "text": "Maui’s dolphins",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"There are only a hundred and fifty of them left, and they inhabit only the western coastal waters off the North Island of New Zealand.\" — live only off northwest coast (F)."
+      },
+      {
+       "n": 29,
+       "text": "Orcas",
+       "answer": [
+        "H"
+       ],
+       "explanation": "\"Kaikura in the South Island is the best place to spot orcas swimming by.\" — seen mostly in Kaikoura (H)."
+      },
+      {
+       "n": 30,
+       "text": "Bottlenose dolphins",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"It's bigger than nearly all the other dolphins, even the common dolphin. Oh, but still not as big as the orca.\" — second largest species (G)."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 10:50[Narrator] Section three. You will hear a discussion between two students called Mark and Fran about their presentation on some dolphins which are unique to New Zealand.\n▶ 11:40[Narrator] Now listen carefully and answer questions 21 to 24.\n▶ 11:48Mark: Hi Fran. No problem. We need to try and get this presentation finished. Let's start with the way dolphins make sounds. We all know that dolphins make clicking noises to communicate.\n▶ 12:02Fran: They have tongues and larynxes as humans do, but what's really strange about the dolphin is that\n▶ 12:03Fran: the sounds are focused through an extraordinary organ called the melon, which most other sea mammals don't have .\n▶ 12:16Mark: So shall I take over from there and speak about the different dolphin types?\n▶ 12:21Fran: I want to share what we found out about those rare dolphins that are special just to New Zealand. The rarest of all is the Hector's dolphin. They are endangered, aren't they?\n▶ 12:36Mark: I think that's mainly because so many of them get tangled up in fishing gear, especially gill nets, and die.\n▶ 12:43Fran: I know that some conservationists are worried about the impact of the tourism industry on dolphin numbers, but I don't think that's a problem yet here.\n▶ 12:52Mark: Also, remember that this species has a very long reproductive cycle, so their numbers don't get replenished quickly.\n▶ 13:00Fran: Yeah, that's really sad. But at least the New Zealand government established a sanctuary for them.\n▶ 13:06Mark: The fishing industry was against it, but it was a consequence of a study done by some marine biologists . Having a protected breeding area has made a big difference to the dolphin population already.\n▶ 13:23Fran: Yeah, I think their numbers have swelled to over seven thousand in total, with a tiny group of just 89 living down in Southland, nearly 2,000 living near Christchurch on the east coast, and the biggest group surviving off the west coast .\n▶ 14:24[Narrator] Now listen and answer questions 25 to 30.\n▶ 14:32Fran: Okay, so how do you suggest I structure my part of the talk?\n▶ 14:36Mark: Well you could start with the common dolphin, which inhabits the whole of the sea around New Zealand . And once you've covered everything to do with them, you could go on to the more unusual types.\n▶ 14:48Mark: The dusky dolphin is especially interesting because you know how all the dolphins travel in small social groups called pods? Well the dusky dolphins travel in pods as big as eight hundred members .\n▶ 15:00Mark: And I think the duskies like to travel along beside fishing and tourist boats, don't they? Whereas the Hector's dolphins are different, in that they prefer to go in the wake of boats, that is coming along in the rear .\n▶ 15:14Fran: Yeah, they do. But they also dive down deep to avoid fast boats.\n▶ 15:20Mark: Oh, let's not forget the Maui, because they are endangered too, aren't they?\n▶ 15:24Fran: There are only a hundred and fifty of them left, and they inhabit only the western coastal waters off the North Island of New Zealand . They also face problems because of their tiny size.\n▶ 15:51Mark: The orca is actually a dolphin too, right? Yes, surprisingly. In New Zealand, Kaikura in the South Island is the best place to spot orcas swimming by , so people mistakenly think that's where they live.\n▶ 16:00Fran: Let's not forget to mention the bottlenose. It's bigger than nearly all the other dolphins, even the common dolphin. Oh, but still not as big as the orca.\n▶ 16:19[Narrator] That is the end of section three."
+  },
+  {
+   "id": "cdi-listening-47-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "The Lontar Palm\nThe tree\n- grows on Rote, an Indonesian island\n- is known as the tree of life\n- produces delicious juice\n- has a fruit resembling a [[31]] (female trees only)\nPeople climbing the tree\n- fix [[32]] to the tree trunks to help them climb\n- keep their tools attached to a [[33]]\n- often own particular trees\n- contribute to the upkeep of the communal fence\nUsing the juice\n- quickly becomes [[34]] if left unprocessed\n- a concentrated form is drunk in the rainy season\n- it can be made into sugary [[35]]\nUsing other parts of the tree\nThe leaf is used:\n- to make containers, bags and roofing\n- as garden [[36]]\n- for brightly decorated hats worn at a [[37]]\n- for a musical instrument which sounds like a [[38]]\n- The stalk is used to make [[39]]\n- The trunk is used in the construction of [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "coconut"
+       ],
+       "explanation": "\"If the female tree is left untapped, a large fruit develops, like a coconut in appearance.\" — the fruit resembles a coconut."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "stones",
+        "stone"
+       ],
+       "explanation": "\"Make things easier for themselves by tying stones to the trunk.\" — stones tied to trunks to help climbing."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "belt"
+       ],
+       "explanation": "\"The men attach all the tools they need to a belt that they wear when climbing the tree.\" — tools kept on a belt."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "sour"
+       ],
+       "explanation": "\"Whatever juice isn't drunk immediately has to be processed as quickly as possible, as it turns sour very rapidly.\" — juice turns sour quickly."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "biscuits",
+        "biscuit"
+       ],
+       "explanation": "\"It can be used to make biscuits of brown sugar.\" — concentrated juice used for biscuits."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "fertiliser",
+        "fertilizer"
+       ],
+       "explanation": "\"When the leaves are replaced every five years or so, the old ones are burned on the garden as a fertilizer.\" — old leaves used as garden fertilizer."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "celebration"
+       ],
+       "explanation": "\"Larger and more elaborate hats used for a celebration, which are painted in bright colours.\" — decorated hats for celebrations."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "harp"
+       ],
+       "explanation": "\"Has strings attached which are plucked in the manner of a harp, and the sound produced is also similar.\" — the susando sounds like a harp."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "ropes",
+        "rope"
+       ],
+       "explanation": "\"The stalks of the launtar leaves... local people produce ropes from them.\" — stalks used to make ropes."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "houses",
+        "house"
+       ],
+       "explanation": "\"The whole tree is cut down and the thick trunk is utilized for building houses.\" — trunk used for house construction."
+      }
+     ]
+    }
+   ],
+   "transcript": "▶ 17:09[Narrator] Section four. You will hear a student presentation about a type of palm tree called the Lontar palm that grows on an island in Indonesia.\n▶ 18:17[Narrator] Now listen carefully and answer questions 31 to 40.\n▶ 18:26Student: As part of this semester's geography project, I'm going to talk about a tall palm tree called the Lontar, which mainly grows on the island of Roti in the south of the Indonesian archipelago.\n▶ 18:40Student: Now the Lontar is a truly amazing example of how one tree can sustain human life. The locals call it the tree of life, and with good reason, because the tree provides them with virtually everything they need in the way of food, drink, utensils, and shelter.\n▶ 19:00Student: The Lontar juice is the most amazingly refreshing juice you'll ever taste. The juice is collected from high in the tree in a process known as tapping. Basically, a slice is cut into part of the tree and the sap flows slowly from it into a container. It's then collected twice daily.\n▶ 19:24Student: Male and female Lontar trees are different. Male trees can be tapped all their lives, so they are preferred.\n▶ 19:29Student: If the female tree is left untapped, a large fruit develops, like a coconut in appearance.\n▶ 19:36Student: The watery interior of the fruit can be drunk, but these fruits are often left to fall to the ground as animal feed.\n▶ 19:50Student: Men and older boys climb to the tops of the trees to do the tapping. They don't use safety equipment.\n▶ 19:52Student: But make things easier for themselves by tying stones to the trunk. What is amazing is that so much of the equipment they use in the tapping process is actually made from the tree itself.\n▶ 20:06Student: The men attach all the tools they need to a belt that they wear when climbing the tree. In most cases, climbers own particular trees within their family.\n▶ 20:18Student: Ownership involves not only care of the trees themselves, but also a share in the maintenance of the fence, which belongs to the local community.\n▶ 20:32Student: Tapping reaches a peak at the end of the dry season, which runs from September to October, as villagers work frantically to get their harvest in before the rains come.\n▶ 20:47Student: Whatever juice isn't drunk immediately has to be processed as quickly as possible, as it turns sour very rapidly.\n▶ 21:00Student: In the rainy season when no fresh juice is available, the locals drink a concentrated form with water added.\n▶ 21:10Student: For example, it can be used to make biscuits of brown sugar.\n▶ 21:25Student: But the Lontar palm supplies much more than sustenance for the Rotanese. The broad Lontar leaves are woven into a huge number of things — containers for watering the garden and bags for transporting chickens to market.\n▶ 21:37Student: People also use them to cover the roofs of their homes. When the leaves are replaced every five years or so, the old ones are burned on the garden as a fertiliser .\n▶ 21:50Student: The Rotanese also make a distinctive hat out of the leaf. Design-wise they were inspired by sixteenth century Portuguese helmets.\n▶ 22:03Student: There are many for different occasions, ranging from simple ones for everyday use to larger and more elaborate hats used for a celebration , which are painted in bright colours.\n▶ 22:16Student: The Lontar leaf even provides the Rotanese people with a unique musical instrument known as the susando.\n▶ 22:25Student: The leaf is made into a sounding board and has strings attached which are plucked in the manner of a harp , and the sound produced is also similar.\n▶ 22:38Student: The stalks of the Lontar leaves can also be used. They are really strong and grow up to one point five metres long.\n▶ 22:47Student: And local people produce ropes from them.\n▶ 23:02Student: Even when a Lontar tree becomes old and unproductive, the whole tree is cut down and the thick trunk is utilized for building houses . Their immense strength means that they are highly valued for this purpose.\n▶ 23:14[Narrator] That is the end of section four."
+  }
+ ],
+ "audio": {
+  "file": "listening-47.mp3",
+  "durationSec": 1536,
+  "questionTimes": {
+   "1": 62,
+   "2": 82,
+   "3": 105,
+   "4": 118,
+   "5": 140,
+   "6": 154,
+   "7": 173,
+   "8": 225,
+   "9": 229,
+   "10": 246,
+   "11": 382,
+   "12": 395,
+   "13": 409,
+   "14": 422,
+   "15": 451,
+   "16": 461,
+   "17": 563,
+   "18": 571,
+   "19": 603,
+   "20": 584,
+   "21": 723,
+   "22": 763,
+   "23": 786,
+   "24": 803,
+   "25": 876,
+   "26": 888,
+   "27": 900,
+   "28": 924,
+   "29": 951,
+   "30": 960,
+   "31": 1169,
+   "32": 1192,
+   "33": 1206,
+   "34": 1247,
+   "35": 1270,
+   "36": 1297,
+   "37": 1323,
+   "38": 1345,
+   "39": 1367,
+   "40": 1382
+  }
+ }
+}

@@ -1,0 +1,655 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-43",
+ "title": "CDI Listening Test 43",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Janet phones Kiwi Air to complain about a problem booking flights online",
+  "The manager introduces the Linwood Apartment Complex to a group of new residents",
+  "Two students, Max and Izzy, plan a presentation about the history of the bicycle",
+  "Part of a lecture about archaeological research in the Patagonia region of South America"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-43-part-1",
+   "title": "Part 1",
+   "context": "Janet phones Kiwi Air to complain about a problem booking flights online.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "| Booking Details |\n| Name: | Janet [[1]] |\n| Ticket details: | one adult and three children (Wellington to Christchurch) — four [[2]] tickets |\n| Flight details: | November 10th–15th |\n| Time: | departing at [[3]] am |\n| Details of the Problem |\n| the website changes the rate for one child the website keeps giving the customer [[4]] messages |\n| Customer informed that Kiwi Air policy: |\n| allows no more than [[5]] child fares per adult (domestic flights only) |\n| Customer’s Reasons for Complaint |\n| none of her children are [[6]] years old or older child passengers require less [[7]] the rule is unfair for large families and [[8]] groups |\n| Customer Invited to Send Written Complaint |\n| letter to go to the [[9]] reply predicted within a week |\n| Reference number: | [[10]] |",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "Quigley"
+       ],
+       "explanation": "\"It's Janet Quigley. That's Q-U-I-G-L-E-Y.\" — she spells her surname."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "return",
+        "returns"
+       ],
+       "explanation": "\"Not one way, I mean, but return.\" — four return tickets."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "11.45",
+        "1145",
+        "11:45",
+        "11 45"
+       ],
+       "explanation": "\"We'd be leaving at 1145 in the morning.\" — departure time."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "error",
+        "errors"
+       ],
+       "explanation": "\"I've been getting error messages telling me to call you directly.\""
+      },
+      {
+       "n": 5,
+       "answer": [
+        "two",
+        "2"
+       ],
+       "explanation": "\"to allow a maximum of two children to travel on child fares with just the one adult.\""
+      },
+      {
+       "n": 6,
+       "answer": [
+        "12",
+        "twelve"
+       ],
+       "explanation": "\"an adult fare is for someone over the age of twelve.\" — children must be 12 or older."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "food"
+       ],
+       "explanation": "\"they actually eat less than an adult, so they wouldn't consume as much food.\" — require less food."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "school"
+       ],
+       "explanation": "\"families with lots of children. And what about school groups? That wouldn't be fair.\""
+      },
+      {
+       "n": 9,
+       "answer": [
+        "manager"
+       ],
+       "explanation": "\"just address it to the manager. Then it will reach the right person.\""
+      },
+      {
+       "n": 10,
+       "answer": [
+        "GBK8422",
+        "GBK 8422"
+       ],
+       "explanation": "\"It's GBK 8422.\" — the reference number."
+      }
+     ]
+    }
+   ],
+   "transcript": "Janet phones Kiwi Air to complain about a problem booking flights online.\n▶ 00:01[Narrator] You will hear a telephone conversation between a woman and a staff member of an airline. First you have some time to look at questions one to four.\n▶ 00:32[Narrator] Now listen carefully and answer questions one to four.\n▶ 00:39Agent: Kiwi Air, good morning. You're speaking with Roger. How may I help you?\n▶ 00:44Customer: Yes, hi. My name's Janet. I've just been trying to make a booking on the internet, and I'm having a problem that I'd like to complain about.\n▶ 00:53Agent: So let me just take down your full name.\n▶ 00:56Customer: It's Janet Quigley . That's Q U I G L E Y.\n▶ 01:03Agent: Thank you. And what's the problem exactly?\n▶ 01:06Customer: Well, yes. I'm trying to book myself and three children, so four tickets, to fly within New Zealand. We're wanting to fly from Wellington to Christchurch. Not one way, I mean, but return .\n▶ 01:20Customer: So it's just a simple booking.\n▶ 01:22Agent: Yes, and you've put your dates in, have you?\n▶ 01:25Customer: Yes. The dates are um what are we in now? It's September, isn't it? So I'm booking for October. Oh, sorry, I mean November, the 10th till the 15th.\n▶ 01:39Agent: Right. Let me just get that down on the form. And what time would that be?\n▶ 01:46Customer: We'd be leaving at 1145 in the morning, arriving into Christchurch at 1230.\n▶ 01:51Agent: Mm-hmm.\n▶ 01:52Customer: I know that it's cheaper to not make the reservation in person, so to save paying the fee, I've been trying to do it through your homepage.\n▶ 02:01Agent: Yes, so what's the problem exactly?\n▶ 02:04Customer: Well, every time I put in the number of adults and children traveling.\n▶ 02:08Customer: The website automatically alters the rate for one of the children to what you'd pay for an adult. It's very annoying. I'm getting so frustrated with it.\n▶ 02:18Customer: And each time I change it back, I've been getting error messages telling me to call you directly. I really can't understand it.\n▶ 02:29[Narrator] Before you hear the rest of the conversation, you have some time to look at questions 5 to 10.\n▶ 03:05[Narrator] Now listen and answer questions 5 to 10.\n▶ 03:12Agent: Alright, well yes, there is a reason for why that's happening. It's Kiwi Air policy, I'm afraid, to allow a maximum of two children to travel on child fares with just the one adult accompanying them.\n▶ 03:24Customer: So because there's three of them and just me, do you mean I have to pay an adult fare for one of my children?\n▶ 03:30Agent: Yes, that's right.\n▶ 03:32Customer: But I've flown to Australia before on my own with the children, and we didn't have to pay extra.\n▶ 03:37Agent: It's a policy that we've just introduced for domestic air travel. It may be extended later for international travel as well.\n▶ 03:45Customer: But an adult fare is for someone over the age of twelve . My children are only 11, 8, and 5. It's not fair to charge them for an adult rate.\n▶ 03:55Customer: Besides, they actually eat less than an adult, so they wouldn't consume as much food on the plane. I just don't think it's right.\n▶ 04:03Agent: Well, I'm sorry, but that's how we charge. We do look after children well on our flights, you know. We give them little packs of games and coloured pencils so they have something to do, you know.\n▶ 04:15Customer: Well, still, the difference to pay between the fares is a lot of extra money that I hadn't budgeted for.\n▶ 04:22Customer: It seems to me that your rules discriminate against a parent traveling on their own with the children, and also families with lots of children. And what about school groups? That wouldn't be fair.\n▶ 04:34Agent: Well, madam, yes, I can see your point.\n▶ 04:37Agent: You're welcome to put your complaint in writing if that's what you'd like to do.\n▶ 04:41Customer: Well, I certainly would. I'll be writing a letter to your customer services officer, is it?\n▶ 04:47Agent: Uh just address it to the manager . Then it will reach the right person. That's fine. That's your right to do that.\n▶ 04:54Customer: And how soon do you think they'll get back to me? I must say I really am shocked at this. I'm not happy about it at all.\n▶ 05:02Agent: Um, well, at busy times it sometimes takes a month, but it's low season now, so you should expect to receive a response probably inside a week. U You need to take down this reference number. I'll just give it to you.\n▶ 05:16Agent: It's GBK 8422 . All right then. I'll put that in the letter.\n▶ 05:24Customer: Well, thanks for your help.\n▶ 05:27Agent: Thank you for calling Kiwi Air.\n▶ 05:32[Narrator] That is the end of part one. You now have one minute to check your answers to part one."
+  },
+  {
+   "id": "cdi-listening-43-part-2",
+   "title": "Part 2",
+   "context": "The manager introduces the Linwood Apartment Complex to a group of new residents.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "When was the first apartment complex completed?",
+       "options": [
+        {
+         "key": "A",
+         "text": "1 year ago"
+        },
+        {
+         "key": "B",
+         "text": "3 years ago"
+        },
+        {
+         "key": "C",
+         "text": "5 years ago"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"one year ago the complex was finished and received its first residence.\" — completed 1 year ago (A)."
+      },
+      {
+       "n": 12,
+       "text": "What does the manager say he enjoys most about the job?",
+       "options": [
+        {
+         "key": "A",
+         "text": "resolving problems between residents"
+        },
+        {
+         "key": "B",
+         "text": "dealing with financial matters"
+        },
+        {
+         "key": "C",
+         "text": "organizing building maintenance"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"What I love is working with the people... helping neighbours deal with any little misunderstandings.\" — resolving problems (A)."
+      },
+      {
+       "n": 13,
+       "text": "Regarding restrictions in the complex, the manager says",
+       "options": [
+        {
+         "key": "A",
+         "text": "only some types of flowers can be planted"
+        },
+        {
+         "key": "B",
+         "text": "only the interiors of apartments can be painted"
+        },
+        {
+         "key": "C",
+         "text": "only certain colors can be used on the walls"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"You're welcome to redecorate inside your apartment... but you can't change the outward appearance.\" — only interiors (B)."
+      },
+      {
+       "n": 14,
+       "text": "What does the manager ask residents to do for the welcome party?",
+       "options": [
+        {
+         "key": "A",
+         "text": "bring food"
+        },
+        {
+         "key": "B",
+         "text": "prepare name tags"
+        },
+        {
+         "key": "C",
+         "text": "decorate the hall"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"it would be great if you could come along... to help put some party lights in the hall.\" — decorate the hall (C)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map. Choose the correct letter, A–K, for each label.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      },
+      {
+       "key": "I",
+       "text": "I"
+      },
+      {
+       "key": "J",
+       "text": "J"
+      },
+      {
+       "key": "K",
+       "text": "K"
+      }
+     ],
+     "questions": [
+      {
+       "n": 15,
+       "text": "Shop",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"go up from the car park into the arcade, you'll find the shop at the end on the right opposite the Internet Cafe.\""
+      },
+      {
+       "n": 16,
+       "text": "Barbecue area",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"walk from the car park and through the arcade, then turn right and follow the path, you'll see it at the end.\" — barbecue area."
+      },
+      {
+       "n": 17,
+       "text": "Childcare centre",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"until you reach the pond. You'll find it opposite the pond on the west side of the blue block.\" — childcare centre."
+      },
+      {
+       "n": 18,
+       "text": "Laundry",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"you'll see the gym, but keep going and it's directly next door to that.\" — the laundry."
+      },
+      {
+       "n": 19,
+       "text": "Recreation room",
+       "answer": [
+        "H"
+       ],
+       "explanation": "\"two buildings facing each other. You want the one to the north, opposite the cafe.\" — recreation room."
+      },
+      {
+       "n": 20,
+       "text": "Hall",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"take the path up to the left, and it's at the end of that path, just above the trees.\" — the hall."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening43-map.webp",
+      "alt": "Linwood Apartment Complex map"
+     }
+    }
+   ],
+   "transcript": "The manager introduces the Linwood Apartment Complex to a group of new residents.\n▶ 06:36[Narrator] Part 2 You will hear the manager of the Linwood Apartment Complex introducing the complex to a group of new residents.\n▶ 06:46[Narrator] First, you have some time to look at questions 11 to 14.\n▶ 07:21[Narrator] Now listen carefully and answer questions 11 to 14.\n▶ 07:30Manager: Good afternoon everyone and thank you for coming to the meeting. My name is Bob McDonald and I'm the manager of the Linwood Apartment Complex. Firstly, I'd like to welcome you all. I'm sure you'll enjoy living here.\n▶ 07:42Manager: Let's start with a little bit of history about the Linwood Apartments. The council first discussed the concept of this project five years ago, but there was a small delay initially while plans and administration were completed.\n▶ 07:54Manager: Work finally started three years later, and one year ago the complex was finished and received its first residence. And I'm happy to say it's been a great place to live ever since. So now just a little bit more about my role within the complex.\n▶ 08:08Manager: I'm responsible for ensuring that rent is paid on time, but I can't say I get a lot of satisfaction from that aspect of the job. Fortunately, because the building is quite new, there is generally little to do to keep everything in good working order.\n▶ 08:22Manager: What I love is working with the people who live here, especially helping neighbours deal with any little misunderstandings that might come up between them. We want you to feel at home here, but there are some restrictions on what you can do.\n▶ 08:35Manager: You're welcome to redecorate inside your apartment if you don't like the colour, but you can't change the outward appearance of the building in any way, and that also includes altering the plantings around the complex by putting in your own trees or flowers.\n▶ 08:48Manager: Now some of you were asking earlier about the welcome party. That will be held as planned next Friday evening, and we'll be doing all the catering so that there are no worries about food.\n▶ 08:58Manager: But it would be great if you could come along for a while on the day of the party to help put some party lights in the hall . When you arrive, you'll find there are badges already prepared for everybody, so one will have your name on it.\n▶ 09:13[Narrator] Before you hear the rest of the talk, you have some time to look at questions 15 to 20.\n▶ 09:49[Narrator] Now listen and answer questions 15 to 20.\n▶ 09:57Manager: Now if you'd all like to have a look at your map of the apartment complex, I'll just go over where you can find all the facilities. The complex is a pedestrian area, so you can park your car here in the car park at the bottom of the map.\n▶ 10:10Manager: There are two main apartment blocks, blue and red, with an open walkway up the middle called the arcade. When you first arrive, you'll probably want to know where the shop is.\n▶ 10:22Manager: So if you go up from the car park into the arcade, you'll find the shop at the end on the right opposite the Internet Cafe . One popular attraction, especially in summer, is the barbecue area.\n▶ 10:35Manager: So if you walk from the car park and through the arcade, then turn right and follow the path, you'll see it at the end . For those of you with young children, we have an excellent child care center.\n▶ 10:48Manager: From the car park, head north, but before you get to the arcade, turn left and follow the path around until you reach the pond. You'll find it opposite the pond on the west side of the blue block .\n▶ 11:02Manager: Now if you need to use the laundry, walk up from the car park and into the arcade. Look on your left and you'll see the gym, but keep going and it's directly next door to that . You all need to know where the recreation room is.\n▶ 11:16Manager: Head north from the car park and take the first turning on the right. Go straight on to the end and you'll find two buildings facing each other. You want the one to the north .\n▶ 11:26Manager: opposite the cafe. Finally, for the welcome party in the hall next week, from the car park go straight on to the end of the arcade.\n▶ 11:35Manager: But then don't go too far, take the path up to the left, and it's at the end of that path , just above the trees on your map. Well I look forward to welcoming you all.\n▶ 11:49[Narrator] That is the end of part two. You now have 30 seconds to check your answers to part two."
+  },
+  {
+   "id": "cdi-listening-43-part-3",
+   "title": "Part 3",
+   "context": "Two students, Max and Izzy, plan a presentation about the history of the bicycle.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Izzy believes the ‘safety bicycle’ is significant because it was",
+       "options": [
+        {
+         "key": "A",
+         "text": "specifically made for children to use."
+        },
+        {
+         "key": "B",
+         "text": "the first bicycle to be similar to modern bicycles."
+        },
+        {
+         "key": "C",
+         "text": "designed to travel at higher speeds than previous models."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"it was the first model that actually looked like a bike you'd see today.\" — similar to modern bicycles (B)."
+      },
+      {
+       "n": 22,
+       "text": "What effect of bicycles on the 19th-century working classes does Max want to highlight?",
+       "options": [
+        {
+         "key": "A",
+         "text": "how people spent their free time"
+        },
+        {
+         "key": "B",
+         "text": "where people were employed"
+        },
+        {
+         "key": "C",
+         "text": "the way people found romantic partners"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"that led them to marrying people they never could have met in the past.\" — finding romantic partners (C)."
+      },
+      {
+       "n": 23,
+       "text": "What will Max and Izzy stress about attitudes to bicycles in the 20th century?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The popularity of cars reduced the status of bicycles in the 1950s."
+        },
+        {
+         "key": "B",
+         "text": "New designs led to an increase in sales of bicycles in the 1960s."
+        },
+        {
+         "key": "C",
+         "text": "An interest in fitness promoted demand for bicycles in the 1980s."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"until the 1950s, when cars became available... That led to people losing interest in bikes.\" — cars reduced status (A)."
+      },
+      {
+       "n": 24,
+       "text": "What does Max say about a scheme to provide free bikes to school pupils?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He wants to see more evidence of its benefits."
+        },
+        {
+         "key": "B",
+         "text": "He thinks it could cost the government a lot of money."
+        },
+        {
+         "key": "C",
+         "text": "He questions whether all parents would support it."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"But does attendance actually improve? ...we need to include it, but I haven't found enough.\" — wants more evidence (A)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Which reason did each of the following people give for using a bike? Choose the correct answer, A–H, next to Questions 25–30.",
+     "title": "Reasons",
+     "options": [
+      {
+       "key": "A",
+       "text": "Cycling is a convenient way to travel."
+      },
+      {
+       "key": "B",
+       "text": "Bikes are environmentally friendly."
+      },
+      {
+       "key": "C",
+       "text": "Riding a bike can be a social activity."
+      },
+      {
+       "key": "D",
+       "text": "Bikes are a cheap form of transport."
+      },
+      {
+       "key": "E",
+       "text": "Cycling is a way to spend time outdoors."
+      },
+      {
+       "key": "F",
+       "text": "Riding a bike is good for mental health."
+      },
+      {
+       "key": "G",
+       "text": "Riding a bike is good exercise."
+      },
+      {
+       "key": "H",
+       "text": "Cycling can be done by all ages."
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "text": "David",
+       "answer": [
+        "C"
+       ],
+       "explanation": "David: \"he goes out with a cycling club... a way to connect with people.\" — social activity (C)."
+      },
+      {
+       "n": 26,
+       "text": "Marlene",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Marlene: \"cycling to work is a way for her to keep fit.\" — good exercise (G)."
+      },
+      {
+       "n": 27,
+       "text": "Annabelle",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Annabelle: \"her choice... was made for financial reasons, as she was paying so much for petrol.\" — cheap transport (D)."
+      },
+      {
+       "n": 28,
+       "text": "Rashid",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Rashid: \"it helps him think clearly and takes his mind off any worries.\" — good for mental health (F)."
+      },
+      {
+       "n": 29,
+       "text": "Sai",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Sai: \"she loves being on her bike in the open air and enjoying the beautiful environment.\" — spend time outdoors (E)."
+      },
+      {
+       "n": 30,
+       "text": "Giovanni",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Giovanni: \"it's just easier for him to use a bike to get around town than to drive.\" — convenient to travel (A)."
+      }
+     ]
+    }
+   ],
+   "transcript": "Two students, Max and Izzy, plan a presentation about the history of the bicycle.\n▶ 11:57[Narrator] Part three. You will hear two design and technology students, called Max and Izzy, planning their presentation about the history and development of the bicycle.\n▶ 12:10[Narrator] First you have some time to look at questions 21 to 24.\n▶ 12:45[Narrator] Now listen carefully and answer questions 21 to 24.\n▶ 12:52Discussion: Hi, Izzy. Can we talk about our presentation? Sure. So our topic's the bicycle, its history and its effect on society in the Western world. We should start with its invention in the 1800s.\n▶ 13:06Discussion: The first bike wasn't very successful, was it?\n▶ 13:10Discussion: I think the model they called the safety bicycle is more significant.\n▶ 13:14Discussion: Yes. Was that named because it was safe for cyclists of all ages, including young kids?\n▶ 13:20Discussion: I think it was more to do with the comparison to previous versions, which got their speed from one large wheel. This bike had equally sized wheels and its speed came from gears.\n▶ 13:33Discussion: It was an important development, as it was the first model that actually looked like a bike you'd see today .\n▶ 13:39Discussion: Right. And the development of that bicycle at the end of the 19th century had an enormous impact on the working classes.\n▶ 13:47Discussion: You mean how it gave them freedom to move around and look for jobs? I suppose before the bike they didn't have private transport, so were limited in where they could work.\n▶ 13:58Discussion: Right, because it took such a long time to go anywhere. But I'd really like to draw attention to how inhabitants of rural areas were able to travel outside their communities. And that led them to marrying people they never could have met in the past .\n▶ 14:12Discussion: That changed society, and I'd like to discuss it in our presentation. Oh, good idea.\n▶ 14:18Discussion: So what should we stress about changing attitudes to bicycles in the 20th century?\n▶ 14:23Discussion: Well, the bicycle was an important means of transport through the early 1900s, and that continued until the 1950s, when cars became available to the general population and much more popular.\n▶ 14:37Discussion: That led to people losing interest in bikes for a while. I hadn't realized the impact that people's love of motorised transport had on the bike's reputation. Yes, that's a key point we should make.\n▶ 14:50Discussion: Then the fold-up bike and others came along in the 60s, which helped sales pick up. Hmm. Then things stayed fairly stable until the fitness craze of the 80s piqued interest in mountain biking and sales went up.\n▶ 15:04Discussion: But the bike had lost its position as a key mode of transport. Right. I'd like to talk about some current projects around the world involving bikes. How about the scheme in an American school that provides bikes for all its pupils?\n▶ 15:18Discussion: I expect the pupils are delighted, not to mention the parents. I suppose so. Although I wonder how much it costs. Probably not as much as other initiatives. I just wonder if the advantages really justify the scheme.\n▶ 15:32Discussion: While it must enable pupils to get to school more easily. But does attendance actually improve? If there's any data to support that, we need to include it, but I haven't found enough . Let's look into that later.\n▶ 15:49[Narrator] Before you hear the rest of the discussion, you have some time to look at questions twenty five to thirty.\n▶ 16:25[Narrator] Now listen and answer questions 25 to 30.\n▶ 16:32Discussion: Could we look at the results of the survey we did with cyclists? We each spoke to different people. Yes. One of my first interviewees was David.\n▶ 16:42Discussion: He works from home and spends a lot of time indoors, so at weekends he goes out with a cycling club. He said it's a way to connect with people apart from the other benefits. Okay. Who else?\n▶ 16:56Discussion: Uh, I interviewed a woman called Marlene. I asked her what her main reason for using a bike was. She's got young children and doesn't have much free time, so cycling to work is a way for her to keep fit .\n▶ 17:10Discussion: That's what she liked about it. Okay. How about Annabelle? Was she the one who sold her car and uses a bike instead? Was that because of pollution?\n▶ 17:20Discussion: She did sell her car, but her choice to travel by bike was made for financial reasons , as she was paying so much for petrol.\n▶ 17:28Discussion: I see. And Rashid, he was probably the oldest person we spoke to. He's in his 70s, yes. And he's been cycling around the city for years.\n▶ 17:40Discussion: He said that there are several advantages, but he really loves the way it helps him think clearly and takes his mind off any worries he has. Great. What about you? Have you got notes about Syrah? Yes.\n▶ 17:54Discussion: I spoke to her last week.\n▶ 17:56Discussion: She lives in the countryside and she loves being on her bike in the open air and enjoying the beautiful environment and landscape around her. Right. The last person I interviewed was Giovanni.\n▶ 18:09Discussion: He's very practical, and he said it's just easier for him to use a bike to get around town than to drive. He finds sitting in traffic and looking for parking spaces too time consuming, so he switched to using a bike instead. Great.\n▶ 18:24Discussion: Shall we meet next week and then we can't.\n▶ 18:30[Narrator] That is the end of part three. You now have 30 seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-43-part-4",
+   "title": "Part 4",
+   "context": "Part of a lecture about archaeological research in the Patagonia region of South America.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "The Patagon People of South America\nNotes\nClothing\n- One type of coat is culturally important.\n- Young guanaco were used to make the coats because of their [[31]] skin.\n- Men hunted the guanaco.\n- Women sewed the skins together into coats.\n- Scrapers made from [[32]] are today displayed in museums.\n- Colours from natural [[33]] were used.\nThe Arrival of the Spanish\n- More guanaco were caught because of the use of the [[34]] for hunting.\n- Coats played a [[35]] role rather than just being for personal use.\n- New materials such as [[36]] improved the scraping process.\nConclusions\n- Coat designs date from pre-historic times — similar designs are found inside [[37]]\n- Coat designs may have been a link with people’s [[38]]\n- Large Patagon settlements were not built on the [[39]]\n- Shepherds still make [[40]] using similar techniques.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "soft"
+       ],
+       "explanation": "\"Young animals were preferred as their skin was soft, which made it easy to work with.\""
+      },
+      {
+       "n": 32,
+       "answer": [
+        "stone"
+       ],
+       "explanation": "\"They were constructed from specially sharpened stone so have survived remarkably well.\" — the scrapers."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "minerals",
+        "mineral"
+       ],
+       "explanation": "\"The colours themselves occurred naturally in minerals that were dug up from the ground.\""
+      },
+      {
+       "n": 34,
+       "answer": [
+        "horse"
+       ],
+       "explanation": "\"Many more guanaco were hunted after the introduction of the horse to the region.\""
+      },
+      {
+       "n": 35,
+       "answer": [
+        "commercial"
+       ],
+       "explanation": "\"now the coats were increasingly part of a commercial process.\" — bought and sold for money."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "glass"
+       ],
+       "explanation": "\"the old scrapers... were replaced with new ones made from glass.\" — more effective."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "caves",
+        "cave"
+       ],
+       "explanation": "\"similar designs have been found in examples of art painted on the rock walls of caves.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "ancestors",
+        "ancestor"
+       ],
+       "explanation": "\"the designs may have represented a way of connecting with ancestors from previous times.\""
+      },
+      {
+       "n": 39,
+       "answer": [
+        "coast"
+       ],
+       "explanation": "\"it seems unlikely that these were constructed around the coast, but rather in parts of the interior.\""
+      },
+      {
+       "n": 40,
+       "answer": [
+        "blankets",
+        "blanket"
+       ],
+       "explanation": "\"Patagon shepherds today do still employ some of the same techniques to make blankets.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "Part of a lecture about archaeological research in the Patagonia region of South America.\n▶ 19:04[Narrator] Part four. You will hear part of a lecture about archaeological research in the Patagonia region of South America. First you have some time to look at questions 31 to 40.\n▶ 20:08[Narrator] Now listen carefully and answer questions 31 to 40.\n▶ 20:16Lecturer: Afternoon everyone. Welcome to today's archaeology lecture. This afternoon's topic will be the Patagon civilization that flourished at the southern tip of the South American continent around 600 years ago.\n▶ 20:28Lecturer: Now, archaeologists don't know a great deal about the Patagon people, however, they did leave behind one important piece of evidence, a type of coat that was worn over the body for warmth that gives us valuable information about this lost culture.\n▶ 20:43Lecturer: The coat was made from the fur of the guanaco, that's a wild animal like a goat, and it took as many as 13 young guanaco to make a single coat. Young animals were preferred as their skin was soft , which made it easy to work with.\n▶ 20:58Lecturer: For the Patagan men, hunting was a way of life, particularly hunting guanaco. However, once the animals were killed, then different skills were needed, and it was the women who were mostly responsible for the manufacturing process.\n▶ 21:12Lecturer: In particular, it was their ability to sew together many small skins into a coat that made women integral to the process. So, the first thing they did was get the skins ready and for this they used a special scraper tool.\n▶ 21:26Lecturer: Several examples of the scrapers may still be seen today in various museums in the region. They were constructed from specially sharpened stone so have survived remarkably well.\n▶ 21:37Lecturer: Once the skins were clean, they were usually decorated, usually done by painting on colours, mostly some combination of red.\n▶ 21:45Lecturer: yellow and green. The colours themselves occurred naturally in minerals that were dug up from the ground and processed, usually by mixing with water.\n▶ 21:55Lecturer: This basically was the way the Patagum people made coats for, well, over a thousand years and perhaps longer. But the process changed dramatically after the Spanish arrived in the early 1500s.\n▶ 22:09Lecturer: The coming of the Spanish obviously had numerous impacts on the area. But in terms of coat making there was one significant development in the hunting technique.\n▶ 22:19Lecturer: Many more guanaco were hunted after the introduction of the horse to the region, which made the Patagum people more mobile.\n▶ 22:26Lecturer: Another important development was that the Spanish themselves liked, were great admirers of the coats and bought them for high prices.\n▶ 22:34Lecturer: So that while in the past guanaco had only been hunted to meet subsistence needs, now the coats were increasingly part of a commercial process. I mean something that could be bought and sold for money.\n▶ 22:47Lecturer: And that meant many more guanaco were hunted as well. Finally, the manufacturing process itself was changed by the arrival of the Spanish. That's because they bought many new materials with them that weren't previously known in the region.\n▶ 23:01Lecturer: Most important for coat making the old scrapers used for cleaning the skins were replaced with new ones made from glass and this was more effective and easier to keep sharp.\n▶ 23:17Lecturer: So what conclusions can we draw from Patagon coats? Well, the striking designs that were painted onto many of the more elaborate coats have always fascinated archaeologists.\n▶ 23:27Lecturer: These patterns must have their origins far back in prehistoric times. We are able to say this with some confidence because very similar designs have been found in examples of art painted on the rock walls of caves that have very ancient origins.\n▶ 23:42Lecturer: Did the designs have any significance or were they merely decorations? The answer isn't clear, but some archaeologists have been prepared to speculate.\n▶ 23:52Lecturer: One possibility is that the designs may have represented a way of connecting with ancestors from previous times, and this is certainly an idea that deserves further investigation.\n▶ 24:03Lecturer: Another interesting speculation concerns the location of large Patagon settlements.\n▶ 24:09Lecturer: Because the natural habitat of the young Guanaco was the rich grasslands of inland areas, it seems unlikely that these were constructed around the coast , but rather in parts of the interior.\n▶ 24:22Lecturer: Finally, we should note that the traditional art of coat making has long since been lost in this region.\n▶ 24:28Lecturer: But Patagon shepherds today do still employ some of the same techniques to make blankets in the winter months, though there is no painting or design work involved. Well, that is the end of my lecture, but if you have any questions, please feel free to.\n▶ 24:46[Narrator] That is the end of part four. You now have one minute to check your answers to part four."
+  }
+ ],
+ "audio": {
+  "file": "listening-43.mp3",
+  "durationSec": 1507,
+  "questionTimes": {
+   "1": 115,
+   "2": 120,
+   "3": 135,
+   "4": 158,
+   "5": 175,
+   "6": 183,
+   "7": 245,
+   "8": 265,
+   "9": 271,
+   "10": 320,
+   "11": 423,
+   "12": 458,
+   "13": 486,
+   "14": 511,
+   "15": 542,
+   "16": 562,
+   "17": 614,
+   "18": 654,
+   "19": 668,
+   "20": 687,
+   "21": 792,
+   "22": 806,
+   "23": 833,
+   "24": 888,
+   "25": 962,
+   "26": 975,
+   "27": 988,
+   "28": 999,
+   "29": 1022,
+   "30": 1036,
+   "31": 1192,
+   "32": 1218,
+   "33": 1241,
+   "34": 1266,
+   "35": 1304,
+   "36": 1341,
+   "37": 1355,
+   "38": 1384,
+   "39": 1419,
+   "40": 1466
+  }
+ }
+}

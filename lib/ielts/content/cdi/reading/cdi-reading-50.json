@@ -1,0 +1,736 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-50",
+ "title": "CDI Reading Test 50",
+ "description": "A full Academic Reading test from the CDI practice materials: William Gilbert and Magnetism; Dark Chocolate's Health-giving Benefits; The benefits of learning an instrument.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "William Gilbert and Magnetism",
+  "Dark Chocolate's Health-giving Benefits",
+  "The benefits of learning an instrument"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "William Gilbert and Magnetism",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The 16th and 17th centuries saw two great pioneers of modern science: Galileo and Gilbert. The impact of their findings is eminent. Gilbert was the first modern scientist, also the accredited father of the science of electricity and magnetism, an Englishman of learning and a physician at the court of Elizabeth. Prior to him, all that was known of electricity and magnetism was what the ancients knew, nothing more than that the lodestone possessed magnetic properties and that amber and jet, when rubbed, would attract bits of paper or other substances of small specific gravity. However, he is less well known than he deserves."
+    },
+    {
+     "label": "B",
+     "text": "Gilbert's birth pre-dated Galileo. Born in an eminent local family in Colchester County in the UK, on May 24, 1544, he went to grammar school, and then studied medicine at St John's College, Cambridge, graduating in 1573. Later he travelled in the continent and eventually settled down in London."
+    },
+    {
+     "label": "C",
+     "text": "He was a very successful and eminent doctor. All this culminated in his election to the president of the Royal Science Society. He was also appointed personal physician to the Queen (Elizabeth I), and later knighted by the Queen. He faithfully served her until her death. However, he didn't outlive the Queen for long and died on November 30, 1603, only a few months after his appointment as personal physician to King James."
+    },
+    {
+     "label": "D",
+     "text": "Gilbert was first interested in chemistry but later changed his focus due to the large portion of mysticism of alchemy involved (such as the transmutation of metal). He gradually developed his interest in physics after the great minds of the ancient, particularly about the knowledge the ancient Greeks had about lodestones, strange minerals with the power to attract iron. In the meantime, Britain became a major seafaring nation in 1588 when the Spanish Armada was defeated, opening the way to British settlement of America. British ships depended on the magnetic compass, yet no one understood why it worked. Did the Pole Star attract it, as Columbus once speculated; or was there a magnetic mountain at the pole, as described in Odyssey, which ships would never approach, because the sailors thought its pull would yank out all their iron nails and fittings? For nearly 20 years, William Gilbert conducted ingenious experiments to understand magnetism. His works include On the Magnet, Magnetic Bodies, and the Great Magnet of the Earth."
+    },
+    {
+     "label": "E",
+     "text": "Gilbert's discovery was so important to modern physics. He investigated the nature of magnetism and electricity. He even coined the word “electric”. Though the early beliefs of magnetism were also largely entangled with superstitions such as that rubbing garlic on lodestone can neutralise its magnetism, one example being that sailors even believed the smell of garlic would even interfere with the action of compass, which is why helmsmen were forbidden to eat it near a ship's compass. Gilbert also found that metals can be magnetised by rubbing materials such as fur, plastic or the like on them. He named the ends of a magnet “north pole” and “south pole”. The magnetic poles can attract or repel, depending on polarity. In addition, however, ordinary iron is always attracted to a magnet. Though he started to study the relationship between magnetism and electricity, sadly he didn't complete it. His research of static electricity using amber and jet only demonstrated that objects with electrical charges can work like magnets attracting small pieces of paper and stuff. It is a French guy named du Fay that discovered that there are actually two electrical charges, positive and negative."
+    },
+    {
+     "label": "F",
+     "text": "He also questioned the traditional astronomical beliefs. Though a Copernican, he didn't express in his quintessential beliefs whether the earth is at the centre of the universe or in orbit around the sun. However, he believed that stars are not equidistant from the earth but have their own earth-like planets orbiting around them. The earth itself is like a giant magnet, which is also why compasses always point north. They spin on an axis that is aligned with the earth's polarity. He even likened the polarity of the magnet to the polarity of the earth and built an entire magnetic philosophy on this analogy. In his explanation, magnetism is the soul of the earth. Thus a perfectly spherical lodestone, when aligned with the earth's poles, would wobble all by itself in 24 hours. Further, he also believed that the sun and other stars wobble just like the earth does around a crystal core, and speculated that the moon might also be a magnet caused to orbit by its magnetic attraction to the earth. This was perhaps the first proposal that a force might cause a heavenly orbit."
+    },
+    {
+     "label": "G",
+     "text": "His research method was revolutionary in that he used experiments rather than pure logic and reasoning like the ancient Greek philosophers did. It was a new attitude towards scientific investigation. Until then, scientific experiments were not in fashion. It was because of this scientific attitude, together with his contribution to our knowledge of magnetism, that a unit of magneto motive force, also known as magnetic potential, was named Gilbert in his honour. His approach of careful observation and experimentation rather than the authoritative opinion or deductive philosophy of others had laid the very foundation for modern science."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 1 has seven sections, A–G. Choose the correct heading for each section from the list of headings below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Early years of Gilbert"
+      },
+      {
+       "key": "ii",
+       "text": "What was new about his scientific research method"
+      },
+      {
+       "key": "iii",
+       "text": "The development of chemistry"
+      },
+      {
+       "key": "iv",
+       "text": "Questioning traditional astronomy"
+      },
+      {
+       "key": "v",
+       "text": "Pioneers of the early science"
+      },
+      {
+       "key": "vi",
+       "text": "Professional and social recognition"
+      },
+      {
+       "key": "vii",
+       "text": "Becoming the president of the Royal Science Society"
+      },
+      {
+       "key": "viii",
+       "text": "The great works of Gilbert"
+      },
+      {
+       "key": "ix",
+       "text": "His discovery about magnetism"
+      },
+      {
+       "key": "x",
+       "text": "His change of focus"
+      }
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "text": "Section A",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Para A introduces Galileo and Gilbert as the great pioneers of early modern science. (v)"
+      },
+      {
+       "n": 2,
+       "text": "Section B",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Para B covers Gilbert's birth, schooling and medical study – his early years. (i)"
+      },
+      {
+       "n": 3,
+       "text": "Section C",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Para C describes his success as a doctor, presidency of the Royal Society and knighthood – professional and social recognition. (vi)"
+      },
+      {
+       "n": 4,
+       "text": "Section D",
+       "answer": [
+        "x"
+       ],
+       "explanation": "Para D explains how he moved away from chemistry/alchemy towards physics and magnetism – his change of focus. (x)"
+      },
+      {
+       "n": 5,
+       "text": "Section E",
+       "answer": [
+        "ix"
+       ],
+       "explanation": "Para E details his findings about magnetism and electricity – his discovery about magnetism. (ix)"
+      },
+      {
+       "n": 6,
+       "text": "Section F",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "Para F describes how he questioned traditional astronomical beliefs. (iv)"
+      },
+      {
+       "n": 7,
+       "text": "Section G",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Para G explains his experimental method – what was new about his research. (ii)"
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 8,
+       "text": "He is less famous than he should be.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para A: 'he is less well known than he deserves.'"
+      },
+      {
+       "n": 9,
+       "text": "He was famous as a doctor before he was employed by the Queen.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para C: he was 'a very successful and eminent doctor' and was then 'appointed personal physician to the Queen.'"
+      },
+      {
+       "n": 10,
+       "text": "He lost faith in the medical theories of his time.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage discusses his move from alchemy to physics, but says nothing about losing faith in the medical theories of his time."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose THREE answers.",
+     "title": "Which THREE of the following are parts of Gilbert's discovery?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Metal can be transformed into another."
+      },
+      {
+       "key": "B",
+       "text": "Garlic can remove magnetism."
+      },
+      {
+       "key": "C",
+       "text": "Metals can be magnetised."
+      },
+      {
+       "key": "D",
+       "text": "Stars are at different distances from the earth."
+      },
+      {
+       "key": "E",
+       "text": "The earth wobbles on its axis."
+      },
+      {
+       "key": "F",
+       "text": "There are two charges of electricity."
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "C",
+        "D",
+        "E"
+       ],
+       "explanation": "Q11–13 (C/D/E): C – 'metals can be magnetised by rubbing'; D – 'stars are not equidistant from the earth'; E – a lodestone (and the earth and stars) 'would wobble'. A, B and F are NOT his discoveries (alchemy he abandoned, garlic was a superstition, two charges were found by du Fay). Q11–13 (C/D/E): see Q11. Q11–13 (C/D/E): see Q11."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "C",
+        "D",
+        "E"
+       ],
+       "explanation": "Q11–13 (C/D/E): C – 'metals can be magnetised by rubbing'; D – 'stars are not equidistant from the earth'; E – a lodestone (and the earth and stars) 'would wobble'. A, B and F are NOT his discoveries (alchemy he abandoned, garlic was a superstition, two charges were found by du Fay). Q11–13 (C/D/E): see Q11. Q11–13 (C/D/E): see Q11."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "C",
+        "D",
+        "E"
+       ],
+       "explanation": "Q11–13 (C/D/E): C – 'metals can be magnetised by rubbing'; D – 'stars are not equidistant from the earth'; E – a lodestone (and the earth and stars) 'would wobble'. A, B and F are NOT his discoveries (alchemy he abandoned, garlic was a superstition, two charges were found by du Fay). Q11–13 (C/D/E): see Q11. Q11–13 (C/D/E): see Q11."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Dark Chocolate's Health-giving Benefits",
+   "subtitle": "Researchers are investigating whether taking dark chocolate daily can reduce the risk of heart disease and stroke",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Dark chocolate is gaining a reputation as a heart-healthy food, and research suggests that there might be some substance behind those claims. Ginger Hultin, owner of Champagne Nutrition in Seattle and a spokesperson for the Academy of Nutrition and Dietetics says 'Cocoa contains antioxidants in addition to magnesium, potassium, zinc, and iron. Plus, studies have shown that there could be some benefit to consuming chocolate or cocoa for the cardiovascular system, including potentially lowering blood pressure.'"
+    },
+    {
+     "label": "B",
+     "text": "Dark chocolate's health benefits come from its cocoa – specifically its cocoa flavanols. Flavanols are a type of polyphenol, and polyphenols are one group of phytochemicals. Many fruits and vegetables contain flavanols, but they are especially rich in tea, wine, and cocoa. During digestion, cocoa is broken down into smaller chemical compounds. Some research suggests that these compounds have anti-inflammatory and antioxidant properties and may help protect against cardiovascular disease, which affects both the heart and brain. For example, research has found that even two weeks of eating dark chocolate or other flavanol-rich cocoa products is better than a placebo for lowering blood pressure in people who already have high blood pressure, although not to normal levels. In 2013, the European Food Safety Authority approved the claim that cocoa flavanols help maintain normal blood pressure, which means that the cost involved in future medical treatment may be less than scientists previously predicted."
+    },
+    {
+     "label": "C",
+     "text": "Researchers have also pointed out that people may digest cocoa differently. Variations in gut bacteria can influence how flavanols are processed and absorbed in the body. As a result, the health effects of cocoa may differ from person to person, depending on individual digestive systems and dietary habits."
+    },
+    {
+     "label": "D",
+     "text": "Data from the long-running Physicians' Health Study suggests that chocolate intake is associated with a reduced risk of developing Type 2 diabetes in younger and normal-weight men. However, take those findings with a grain of salt, because they were based on a single question about average yearly intake of chocolate that didn't ask what type of chocolate — white, milk, or dark — says Howard Sesso, an associate professor of preventive medicine at Brigham and Woman's Hospital in Boston. 'If we assume that any benefits from cocoa are attributable to its flavanol content, then dark chocolate should in theory confer greater benefits than milk chocolate.' Sesso and other researchers are investigating whether taking daily supplements of 600 mg of cocoa flavanols — not chocolate itself — reduces the risk for developing heart disease and stroke, as well as cancer. However, they have yet to determine how much people need to consume to reap benefits."
+    },
+    {
+     "label": "E",
+     "text": "What does that mean for the average person who enjoys chocolate and hopes they're getting some health benefit from it? Sadly, results from the large European Prospective Investigation of Cancer, EPIC-Norfolk study suggest that the amount of flavanols that the average person in Europe or the United States consumes is unlikely to do much to reduce risk of cardiovascular disease compared with taking medicine. The research also suggested that certain groups, particularly overweight individuals, may not receive the same protective effects from chocolate consumption as younger and normal-weight men."
+    },
+    {
+     "label": "F",
+     "text": "Even though cocoa is a key ingredient in milk and dark chocolate, you can't really be sure how many flavanols you're getting. 'Product packaging does not specify amounts of cocoa flavanols, only percent cacao,' Sesso says. 'Variable processing of the cocoa bean makes it difficult to equate percent cacao with cocoa flavanol content.' White chocolate contains no cocoa solids, milk chocolate contains relatively small amounts of cocoa, while dark chocolate contains a much higher percentage of cocoa. Cocoa may also appear in the form of cocoa powder, cocoa butter, or concentrated cocoa extracts."
+    },
+    {
+     "label": "G",
+     "text": "In the meantime, remember that chocolate products are typically high in calories and fats; therefore, Sesso says it's best not to think of dark chocolate as a health food. 'Moderation is key; if someone enjoys eating chocolate, it should be done in moderation along with other foods.' So for now, it's best not to put all your flavanol eggs in a dark chocolate basket. 'We get different phytochemicals and antioxidants from a wide variety of foods,' Hultin says. 'Including different colors of fruits, vegetables, whole grains and beans is the best way to gain access to fiber that could support health.' That said, she does recommend enjoying a bit of chocolate or cocoa. 'I put cocoa powder in my smoothies for an added boost of flavor, nutrients and antioxidants.'"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has 7 paragraphs, A–G. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "a description of different kinds of cocoa used in chocolate production",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Para F lists white, milk and dark chocolate and the forms cocoa takes (powder, butter, extracts)."
+      },
+      {
+       "n": 15,
+       "text": "an explanation that chemicals produced during cocoa digestion may reduce the risks of diseases",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para B: cocoa is broken down into compounds that 'may help protect against cardiovascular disease.'"
+      },
+      {
+       "n": 16,
+       "text": "a reference to a group of people who may not benefit from eating chocolate",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Para E: 'overweight individuals, may not receive the same protective effects.'"
+      },
+      {
+       "n": 17,
+       "text": "an example of a specific way cocoa can be added into beverage",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Para G: Hultin says 'I put cocoa powder in my smoothies.'"
+      },
+      {
+       "n": 18,
+       "text": "information about differences in the way people digest cocoa",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para C: 'Variations in gut bacteria can influence how flavanols are processed and absorbed.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following statements and the list of people or organizations below. Match each statement with the correct person or organization, A–D.",
+     "title": "List of People or Organizations",
+     "options": [
+      {
+       "key": "A",
+       "text": "Ginger Hultin"
+      },
+      {
+       "key": "B",
+       "text": "European Food Safety Authority"
+      },
+      {
+       "key": "C",
+       "text": "Howard Sesso"
+      },
+      {
+       "key": "D",
+       "text": "EPIC-Norfolk"
+      }
+     ],
+     "questions": [
+      {
+       "n": 19,
+       "text": "Eating cocoa together with dietary fiber may improve health.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Ginger Hultin (A) recommends a variety of foods and fiber, and adds cocoa for antioxidants (Para G)."
+      },
+      {
+       "n": 20,
+       "text": "Dark chocolate consumption could reduce medical spending in the future.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The European Food Safety Authority (B) approved the blood-pressure claim, implying lower future treatment costs (Para B)."
+      },
+      {
+       "n": 21,
+       "text": "Dark chocolate should not be considered a replacement for medicine.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "The EPIC-Norfolk study (D) found flavanol intake unlikely to reduce risk compared with taking medicine (Para E)."
+      },
+      {
+       "n": 22,
+       "text": "The amount of cocoa required for health benefits remains uncertain.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Howard Sesso (C): 'they have yet to determine how much people need to consume to reap benefits' (Para D)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "The digestive process turns cocoa into less complex chemical [[23]].\nThe [[24]] would vary according to chocolate type with dark chocolate outperforming milk chocolate.\nDark chocolate should not be regarded as healthy due to its richness of calories and [[25]].\nIn Hultin's view, dietary diversity is the best strategy for acquiring [[26]].",
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "compounds"
+       ],
+       "explanation": "Para B: cocoa 'is broken down into smaller chemical compounds.'"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "benefits"
+       ],
+       "explanation": "Para D: 'dark chocolate should in theory confer greater benefits than milk chocolate.'"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "fats"
+       ],
+       "explanation": "Para G: 'chocolate products are typically high in calories and fats.'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "fiber",
+        "fibre"
+       ],
+       "explanation": "Para G: a wide variety of foods is 'the best way to gain access to fiber.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The benefits of learning an instrument",
+   "subtitle": "Studies show that learning a musical instrument can bring about significant improvements in your brain",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Are music lessons the way to get smarter? That's what a lot of parents and experts believe: studying an instrument gives children an advantage in the development of their intellectual, perceptual, and cognitive skills. This may, however, turn out to be wishful thinking. Two highly convincing trials carried out recently have found no evidence to support this idea. The IQs of pre-school children who attended several weeks of music classes as part of these studies did not differ significantly from the IQs of those who had not."
+    },
+    {
+     "label": "B",
+     "text": "But that does not mean that the advantages of learning to play music are limited to expressing yourself, impressing friends, or just having fun. A growing number of studies show that learning an instrument in childhood can do something perhaps more valuable for the brain: it can provide benefits as we age, in the form of an added defense against memory loss, cognitive decline, and impaired hearing. Not only that you may well get those benefits even if you haven't picked up your instrument in years, or decide to take up music for the first time in mid-life or beyond. According to neuropsychologist Brenda Hanna-Pladdy of Emory University in Atlanta, the time spent learning and practicing specific types of motor control and coordination - each finger on each hand doing something different, and for wind and brass instruments also using your mouth and breathing - contributes to the brain boost that shows up later in life."
+    },
+    {
+     "label": "C",
+     "text": "You can even map the impact of musical training of the brain itself. In one study, Harvard neurologist Gottfried Schlaug found that the brains of adult professional musicians had a larger volume of grey matter than the brains of non-musicians had. Schlaug and colleagues also found that after 15 months of musical training in early childhood, structural brain changes associated with motor and auditory improvements begin to appear. 'What's unique about playing an instrument is that it requires a wide array of brain regions and cognitive functions to work together simultaneously, in both right and left hemispheres of the brain,' says Alison Balbag of the University of Southern California. 'Playing music may be an efficient way to stimulate the brain,' she says, 'cutting across a broad swath of its regions and cognitive functions and with ripple effects through the decades.'"
+    },
+    {
+     "label": "D",
+     "text": "More research is showing this might well be the case. In her first study on the subject, Hanna-Pladdy divided 70 healthy adults between the ages of 60 and 83 into three groups: musicians who had studied an instrument for at least ten years, those who had played between one and nine years, and a control group who had never learned an instrument. The group who had studied for at least ten years scored the highest when tested in such areas as nonverbal and visuo-spatial memory, naming objects, and taking in and adapting new information. Her follow-up study a year later confirmed those findings and further suggested that starting musical training before the age of nine and keeping at it for ten years or more may yield the greatest benefits. Interestingly, it was the group who had the lowest level of general education which showed the greatest gap in scores between those who had studied an instrument in childhood and those who had not. Hanna-Pladdy suspects that musical training could have made up for the lack of cognitive stimulation these people had academically."
+    },
+    {
+     "label": "E",
+     "text": "Neuroscientist Nina Kraus of Northwestern University in Chicago has found still more positive effects of early musical training. She measured the electrical activity in the auditory brainstem of adults, ages 55 to 76, as they responded to the synthesized speech syllable 'da'. Although none of the subjects had played a musical instrument in 40 years, those who had trained the longest - between four and fourteen years - responded the fastest. 'That's significant,' says Kraus, 'because hearing tends to decline as we age, including the ability to quickly and accurately discern consonants, a skill crucial to understanding and participating in conversation.' 'If your nervous system is not keeping up with the timing necessary for encoding consonants, you will lose out on the flow and meaning of the conversation, and that can potentially create to a downward spiral leading to a sense of social isolation,' says Kraus. 'In addition, the fact that musical training appears to enhance auditory working memory might help reinforce in later life the memory capacity that facilitates verbal interaction.'"
+    },
+    {
+     "label": "F",
+     "text": "In another study at the University of South Florida, assistant professor of music education Jennifer Bugos studied the impact of elementary piano instruction on adults between the ages of 60 and 85. After six months, those who had received piano lessons showed more robust gains in memory, verbal fluency, the speed at which they processed information, planning ability, and other cognitive functions, compared with those who had not received the lessons. Bugos believes that playing an instrument has beneficial effects, regardless of how old the person is when he or she begins. 'Musical training contains all the components of a cognitive training program that sometimes are overlooked,' she says, 'And just as we work out our bodies, we should work out our minds.'"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Many parents indicate that their children struggle to learn a musical instrument.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para A says parents believe music makes children smarter, but nothing about children struggling to learn."
+      },
+      {
+       "n": 28,
+       "text": "The findings of the recent research into pre-school children's IQs are unreliable.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Para A calls the trials 'highly convincing' – the opposite of unreliable."
+      },
+      {
+       "n": 29,
+       "text": "The main reasons people take up an instrument are that they enjoy playing music and being creative.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para B mentions fun and self-expression as advantages, but does not state these are the main reasons people take up an instrument."
+      },
+      {
+       "n": 30,
+       "text": "Evidence about the long-term advantages of learning an instrument is increasing.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Para B: 'A growing number of studies show that learning an instrument in childhood can ... provide benefits as we age.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 31,
+       "text": "The studies mentioned in the first paragraph",
+       "options": [
+        {
+         "key": "A",
+         "text": "confirm a link between musical training and intelligence."
+        },
+        {
+         "key": "B",
+         "text": "present misleading information about the value of learning an instrument."
+        },
+        {
+         "key": "C",
+         "text": "suggest that there are undiscovered benefits to studying music."
+        },
+        {
+         "key": "D",
+         "text": "cast doubt on a belief about the effects of taking music lessons."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para A: the trials 'found no evidence to support' the idea that music makes children smarter – casting doubt on that belief."
+      },
+      {
+       "n": 32,
+       "text": "According to the second paragraph, there may be many benefits to studying music,",
+       "options": [
+        {
+         "key": "A",
+         "text": "even for those who begin learning in adulthood."
+        },
+        {
+         "key": "B",
+         "text": "providing the person learns the correct techniques."
+        },
+        {
+         "key": "C",
+         "text": "especially if the person practises on a regular basis."
+        },
+        {
+         "key": "D",
+         "text": "particularly if the person plays a range of different instruments."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para B: benefits come even if you 'decide to take up music for the first time in mid-life or beyond.'"
+      },
+      {
+       "n": 33,
+       "text": "The phrase 'this might well be the case' in the fourth paragraph suggests that",
+       "options": [
+        {
+         "key": "A",
+         "text": "music lessons and long-term physical well-being may be connected."
+        },
+        {
+         "key": "B",
+         "text": "the ability to learn music may depend on neurological features."
+        },
+        {
+         "key": "C",
+         "text": "learning an instrument may have a lasting impact on brain function."
+        },
+        {
+         "key": "D",
+         "text": "older people's brains may be better suited to studying music than those of children."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para D follows claims that musical training boosts the ageing brain – 'this might well be the case' refers to a lasting impact on brain function."
+      },
+      {
+       "n": 34,
+       "text": "Which aspect of playing an instrument was included in Hanna-Pladdy's follow-up study but not in her first study?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the number of years that the person had played"
+        },
+        {
+         "key": "B",
+         "text": "at which age the person began having lessons"
+        },
+        {
+         "key": "C",
+         "text": "the length of time since the person last played"
+        },
+        {
+         "key": "D",
+         "text": "how the person had practised as a child"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para D: the follow-up 'further suggested that starting musical training before the age of nine' matters – i.e. the age of starting."
+      },
+      {
+       "n": 35,
+       "text": "What do Hanna-Pladdy's studies suggest about people's general education?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Studying music compensates for an otherwise limited level of education."
+        },
+        {
+         "key": "B",
+         "text": "Learning to play an instrument improves educational performance."
+        },
+        {
+         "key": "C",
+         "text": "Highly educated people are more likely to benefit from music training."
+        },
+        {
+         "key": "D",
+         "text": "Level of education makes no difference to a person's musical ability."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para D: 'musical training could have made up for the lack of cognitive stimulation these people had academically.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–F, below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "comparing the brains of people who had never played an instrument with those who played for a living."
+      },
+      {
+       "key": "B",
+       "text": "activating many different parts of the brain at the same time."
+      },
+      {
+       "key": "C",
+       "text": "teaching a group of older people to play an instrument."
+      },
+      {
+       "key": "D",
+       "text": "acquiring the particular set of physical skills needed to play an instrument."
+      },
+      {
+       "key": "E",
+       "text": "discovering which group of people become the best musicians."
+      },
+      {
+       "key": "F",
+       "text": "having played an instrument for a considerable length of time."
+      }
+     ],
+     "questions": [
+      {
+       "n": 36,
+       "text": "Brenda Hanna-Pladdy believes the cognitive benefits of music lessons are a result of",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para B: she links the benefits to learning 'specific types of motor control and coordination' – the physical skills (D)."
+      },
+      {
+       "n": 37,
+       "text": "The research undertaken by Gottfried Schlaug focused on",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para C: Schlaug compared the brains of 'adult professional musicians' with those of 'non-musicians' (A)."
+      },
+      {
+       "n": 38,
+       "text": "According to Alison Balbag, playing an instrument is a unique experience because it involves",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para C: it 'requires a wide array of brain regions and cognitive functions to work together simultaneously' (B)."
+      },
+      {
+       "n": 39,
+       "text": "Nina Kraus believes there is a link between better hearing in later life and the experience of",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Para E: those 'who had trained the longest - between four and fourteen years - responded the fastest' (F)."
+      },
+      {
+       "n": 40,
+       "text": "Jennifer Bugos's study involved",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para F: Bugos studied 'the impact of elementary piano instruction on adults between the ages of 60 and 85' (C)."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

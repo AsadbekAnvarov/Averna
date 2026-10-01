@@ -5,6 +5,7 @@ import { Flag } from "lucide-react";
 import type { ClientGroup, ClientQuestion, ExamAnswers, ExamSkill } from "@/lib/ielts/types";
 import { ROMAN, answerRuleFor, binaryChoices, groupRange, parseTemplate, rangeLabel, splitPlaceholders } from "@/lib/ielts/format";
 import { cn } from "@/lib/utils";
+import { GroupImage } from "./group-image";
 
 /**
  * Renders one IELTS question group (all seven kinds) in the CD-IELTS layout:
@@ -545,6 +546,7 @@ function QuestionGroupViewImpl({
       </h3>
       <p className={cn("mt-1 text-gray-300", !showRule && "mb-3")}>{group.instructions}</p>
       {showRule && <p className="mt-1 mb-3 font-semibold text-gray-100">{rule}</p>}
+      {group.image?.src && <GroupImage src={group.image.src} alt={group.image.alt} />}
       {body}
     </section>
   );

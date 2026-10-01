@@ -1,0 +1,605 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-23",
+ "title": "CDI Listening Test 23",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "conversation between a customer service representative and a customer who demands a full refund",
+  "organiser of a rock festival talking to exhibitors and performers at a planning meeting",
+  "conversation between Cressida, a student of journalism, and her tutor, Dr Erskine, about a work placement she has recently done",
+  "talk by a meteorologist about how we predict the weather"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-23-part-1",
+   "title": "Part 1",
+   "context": "You will hear a conversation between a customer service representative and a customer who demands a full refund.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Product Incident Report\n| Example — Product | rice cooker |\n| Model Number | [[1]] |\n| Price of the Product | £ [[2]] |\n| Name of the Branch | [[3]] |\n| Problem | [[4]] |",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "R242"
+       ],
+       "explanation": "The customer reads from the cooker: “Let’s see. Ah. It’s R242.”"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "89.99"
+       ],
+       "explanation": "The customer says: “£89.99. It was on sale.”"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "city centre",
+        "city center"
+       ],
+       "explanation": "The agent asks “The city centre branch?” and the customer confirms: “That’s the one.”"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "steam escaping",
+        "escaping steam"
+       ],
+       "explanation": "The fault: “The blasted thing shoots hot steam all over the place.” The agent summarises: “steam escaping.”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "Customer’s Information Details\n| Name | Herbert Hewitt |\n| Address | [[5]] |\n| Postcode | [[6]] |\n| Method of Payment | [[7]] |\n| Card’s Expiry Date | [[8]] |\n| Method of Compensation | [[9]] |\n| Shopping Frequency | [[10]] |",
+     "questions": [
+      {
+       "n": 5,
+       "answer": [
+        "84 Park Road"
+       ],
+       "explanation": "The customer gives his address: “84 Park Road.”"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "B0241DJ",
+        "B024 1DJ",
+        "B024-1DJ"
+       ],
+       "explanation": "He spells out the postcode: “B-0-2-4-1-D-J.”"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "credit card"
+       ],
+       "explanation": "The agent asks: “We can credit the money to your credit card. You do have one, don’t you?” — the customer confirms that is how they paid."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "April 2008"
+       ],
+       "explanation": "The customer gives the card expiry: “That will be April two thousand and eight.”"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "refund"
+       ],
+       "explanation": "The action agreed: “We’ll get that refund right to you probably by five o’clock this evening.”"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "once a month"
+       ],
+       "explanation": "The customer says: “I suppose maybe once a month” when asked how often he shops at the city centre branch."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a conversation between a customer service representative and a customer who demands a full refund.\nKelly: Hello and welcome to Under Pressure Enterprises, Customer Service Department. This is Kelly. How may I help you?\nCustomer: Yes, I’m calling about one of your rice cookers I just purchased. The blasted thing shoots hot steam all over the place. It nearly scalded my hand when I went to open it.\nKelly: I just need some basic information. Do you have the model number of the cooker?\nCustomer: Ah, here. Let’s see. It’s R242.\nKelly: And how much did you pay for the product?\nCustomer: £89.99. It was on sale, I guess I should tell you.\nKelly: Where did you buy the cooker? Which store and which branch?\nCustomer: At that big Electric Life appliance store downtown.\nKelly: The City Centre branch? That’s the one. And you say the problem is that steam escapes?\nCustomer: Yes, it does. So we have an R242 cooker with a steam escaping problem. It was bought from Electric Life City Centre branch for £89.99.\nNow listen and answer questions 5 to 10.\nKelly: When did you buy the cooker?\nCustomer: We bought it just six months ago. We hardly use it either.\nKelly: That’s well within the warranty period. What’s your name and address?\nCustomer: My name is Herbert Hewitt, and my address is 84 Park Road.\nKelly: Is that here in Coventry? The postal code?\nCustomer: It’s B024 1DJ.\nKelly: Don’t worry, Mr Hewitt. We can credit the money to your credit card. You do have one?\nCustomer: Yes, that’s how we paid. I only need to ask your card’s expiry date.\nKelly: That will be April 2008.\nKelly: Your card still has nearly two months left. We’ll get that refund right to you probably by five o’clock this evening.\nKelly: Just one more question — how often do you go shopping at the city centre branch?\nCustomer: I suppose maybe once a month. But if I don’t get my refund, I’ll never shop there again!"
+  },
+  {
+   "id": "cdi-listening-23-part-2",
+   "title": "Part 2",
+   "context": "You will hear the organiser of a rock festival talking to exhibitors and performers at a planning meeting.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Label the plan of the rock festival site below. Write the correct letter, A–I, next to questions 11–17.",
+     "title": "Options",
+     "options": [
+      {
+       "key": "A",
+       "text": "art exhibition"
+      },
+      {
+       "key": "B",
+       "text": "band entrance"
+      },
+      {
+       "key": "C",
+       "text": "car park"
+      },
+      {
+       "key": "D",
+       "text": "craft fair"
+      },
+      {
+       "key": "E",
+       "text": "exhibitors’ entrance"
+      },
+      {
+       "key": "F",
+       "text": "fringe stage"
+      },
+      {
+       "key": "G",
+       "text": "lock-up garages"
+      },
+      {
+       "key": "H",
+       "text": "main stage"
+      },
+      {
+       "key": "I",
+       "text": "restaurant"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "text": "11",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Position 11 on the map = craft fair (D). Stalls are set “just inside the gate on the left in a circle.”"
+      },
+      {
+       "n": 12,
+       "text": "12",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Position 12 = fringe stage (F). “On the left of the steps is the fringe stage” for folk singers and poets."
+      },
+      {
+       "n": 13,
+       "text": "13",
+       "answer": [
+        "I"
+       ],
+       "explanation": "Position 13 = restaurant (I). “On the opposite side of the steps is a restaurant.”"
+      },
+      {
+       "n": 14,
+       "text": "14",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Position 14 = band entrance (B). “The entrance for the rock bands is on the far side.”"
+      },
+      {
+       "n": 15,
+       "text": "15",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Position 15 = exhibitors’ entrance (E). “A third gate for exhibitors, opening onto a side path.”"
+      },
+      {
+       "n": 16,
+       "text": "16",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Position 16 = art exhibition (A). “A little way down the path… is the building where the art exhibition’s being housed.”"
+      },
+      {
+       "n": 17,
+       "text": "17",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Position 17 = lock-up garages (G). “Just one more building… quite near the main gate… divided into lock-up garages.”"
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening23-map.webp",
+      "alt": "Rock Festival Site Plan"
+     }
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "To show you are an official visitor, you have to wear the [[18]] provided.\nCars blocking paths could prevent access by [[19]] in an emergency.\nTo reclaim items from storage, you must show your [[20]] .",
+     "questions": [
+      {
+       "n": 18,
+       "answer": [
+        "armband"
+       ],
+       "explanation": "“An armband to indicate that you are an official visitor” is included in the welcome pack."
+      },
+      {
+       "n": 19,
+       "answer": [
+        "ambulance"
+       ],
+       "explanation": "“If there’s an emergency and access for an ambulance is blocked, the situation will become not just annoying, but also dangerous.”"
+      },
+      {
+       "n": 20,
+       "answer": [
+        "yellow ticket"
+       ],
+       "explanation": "“You’ll be issued with a yellow ticket to reclaim your property.”"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear the organiser of a rock festival talking to exhibitors and performers at a planning meeting.\nOrganiser: Good evening everyone. I’m glad you could all make this planning meeting for what promises to be the biggest and most colourful free rock festival ever held in the South East.\nOrganiser: Could we turn first to the plan so I can familiarise you with the layout of the site, which is an old football stadium. You can see the main gate at the bottom of the plan. That’s where most visitors will enter. Just inside the gate on the left, in a circle, are the craft fair stalls.\nOrganiser: If you walk straight ahead from the gate along the path, you’ll come to some steps up to the football stadium. On the left of the steps is the fringe stage — for folk singers, poets and alternative artists. On the opposite side of the steps is the restaurant, and adjoining that is the main festival information point.\nOrganiser: You go up the stairs to the stadium. The band entrance is on the far side, and on your right is the main stage with powerful illumination and amplification. There will probably be TV vehicles adjacent to the recording area.\nOrganiser: On the outside of the plan, you can see a third gate for exhibitors — that’s the exhibitors’ entrance, opening onto a side path. A little way down the path, before you get to the trees, is the building where the art exhibition is being housed. And finally, there’s just one more building quite near the main gate — divided into lock-up garages.\nNow listen and answer questions 18 to 20.\nOrganiser: In your welcome pack you should find two parking tickets, an armband to indicate that you are an official visitor, one of our brilliant yellow badges with the new festival logo, a festival programme and several sheets of information.\nOrganiser: Please note that all setting up should be completed by 9.30am — no vehicles can enter after that time. With crowds of several thousand, even a few vehicles in the wrong place can block the paths. If there’s an emergency and access for an ambulance is blocked, the situation will become not just annoying, but dangerous.\nOrganiser: Some exhibitors have asked about overnight storage. A limited amount of space has been made available in the building near the main gate. You’ll be issued with a yellow ticket to reclaim your property — but please understand this is entirely at your own risk."
+  },
+  {
+   "id": "cdi-listening-23-part-3",
+   "title": "Part 3",
+   "context": "You will hear a conversation between Cressida, a student of journalism, and her tutor, Dr Erskine, about a work placement she has recently done.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Which attitude is associated with the following people during the conversation? Choose the correct answer.",
+     "title": "Attitudes",
+     "options": [
+      {
+       "key": "A",
+       "text": "amused"
+      },
+      {
+       "key": "B",
+       "text": "critical"
+      },
+      {
+       "key": "C",
+       "text": "forgetful"
+      },
+      {
+       "key": "D",
+       "text": "impatient"
+      },
+      {
+       "key": "E",
+       "text": "polite"
+      },
+      {
+       "key": "F",
+       "text": "relaxed"
+      },
+      {
+       "key": "G",
+       "text": "sympathetic"
+      },
+      {
+       "key": "H",
+       "text": "unrealistic"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "text": "Cressida’s fellow students",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Cressida’s fellow students found her presentation amusing (A): “They enjoyed your humour.”"
+      },
+      {
+       "n": 22,
+       "text": "Cressida",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Cressida herself was unrealistic (H): “My expectations about what it would be like were too high. I’d been fantasising a bit.”"
+      },
+      {
+       "n": 23,
+       "text": "Ainsley Webb (producer)",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Ainsley Webb (producer) was critical (B): “He was quite negative about some of the things you did and your initial attitude.”"
+      },
+      {
+       "n": 24,
+       "text": "Dr Erskine",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Dr Erskine was sympathetic (G): “To be honest, I made the same kind of mistakes when I was your age.”"
+      },
+      {
+       "n": 25,
+       "text": "Professor Jenkins",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Professor Jenkins was impatient (D): “He can be a bit abrupt if he’s kept waiting. It’s the one thing he really doesn’t like.”"
+      },
+      {
+       "n": 26,
+       "text": "TV news centre staff",
+       "answer": [
+        "E"
+       ],
+       "explanation": "TV news centre staff were polite (E): “If I asked them how to do some operation, they were perfectly civil and would show me.”"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "What was Cressida asked to do at the beginning of her placement?",
+       "options": [
+        {
+         "key": "A",
+         "text": "go out to buy things for the production team."
+        },
+        {
+         "key": "B",
+         "text": "run errands to other parts of the TV news centre."
+        },
+        {
+         "key": "C",
+         "text": "meet visitors and escort them to the studio."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "At the start, Cressida was “rushing all over the building taking messages to various people and fetching things” — running errands (B)."
+      },
+      {
+       "n": 28,
+       "text": "What was fortunate for Cressida?",
+       "options": [
+        {
+         "key": "A",
+         "text": "She was familiar with a piece of equipment."
+        },
+        {
+         "key": "B",
+         "text": "She spent a lot of time in the editing suite."
+        },
+        {
+         "key": "C",
+         "text": "She was given a chance to interview someone."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Her piece of luck: “They got a new bit of equipment which was the same as we have here, and I knew how to use it, which none of them did” — she was familiar with a piece of equipment (A)."
+      },
+      {
+       "n": 29,
+       "text": "What does Cressida feel she needs to improve?",
+       "options": [
+        {
+         "key": "A",
+         "text": "her understanding of business."
+        },
+        {
+         "key": "B",
+         "text": "her organisational skills."
+        },
+        {
+         "key": "C",
+         "text": "her ability to work in a team."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Cressida says: “I need to think more about forward planning” — this maps to improving her organisational skills (B)."
+      },
+      {
+       "n": 30,
+       "text": "What has given her an idea for her final assignment?",
+       "options": [
+        {
+         "key": "A",
+         "text": "a meeting with a public relations professional."
+        },
+        {
+         "key": "B",
+         "text": "seeing a politician speaking to an audience."
+        },
+        {
+         "key": "C",
+         "text": "a disagreement with one of the TV presenters."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Her final assignment idea came from “a bit of an argument with one of the senior presenters” who changed a member of the public’s words — a disagreement with a TV presenter (C)."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a conversation between Cressida, a student of journalism, and her tutor, Dr Erskine, about a work placement she has recently done.\nDr Erskine: Well, Cressida, that was an interesting presentation you gave yesterday on your placement at the TV News Centre. They enjoyed your humour. Your fellow students were quite amused.\nCressida: Thank you. But I think some of the lessons weren’t ones I wanted to share with the whole group. I mean, my expectations about what it would be like were too high. I’d been fantasising a bit — I suppose I was quite unrealistic.\nDr Erskine: I heard something similar from the producer, Ainsley Webb, who assessed your performance. He was quite critical about some of the things you did and your initial attitude.\nDr Erskine: To be honest, I made the same kind of mistakes when I was your age. Sympathetic as I am, I think the presentation yesterday went extremely well and I will bear that in mind when I grade your work.\nCressida: I’ll email the diary to Professor Jenkins this afternoon.\nDr Erskine: He can be a bit abrupt if he’s kept waiting — rather impatient. It’s the one thing he really doesn’t like. Now, did you manage with the equipment?\nCressida: Some of it was quite old, but if I asked how to do a particular operation, the TV centre staff were perfectly civil — very polite — and would show me and even say thank you for what I did do.\nNow listen and answer questions 27 to 30.\nCressida: The first couple of days were manic. The production team was short of staff and I was rushing all over the building taking messages to various people and fetching things. Running errands to other parts of the TV news centre.\nCressida: Then I had a piece of luck at the end of the week, because they got a new bit of equipment which was the same as we have in the editing suite here, and I was familiar with a piece of equipment, which none of them were. So that gave me a bit of status.\nCressida: I know I need to learn from my mistakes. I need to think more about forward planning — basically I need to improve my organisational skills. But on the other hand, I feel much more confident now.\nCressida: One thing I want to take forward is some reflections on ethics. I had a bit of a disagreement with one of the TV presenters. He was editing part of an interview and just changed something someone said. When I questioned him, he just snubbed me."
+  },
+  {
+   "id": "cdi-listening-23-part-4",
+   "title": "Part 4",
+   "context": "You will hear a talk by a meteorologist about how we predict the weather.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "History of Weather Forecasting\nEarly methods\n- Almanacs connected the weather with the positions of different [[31]] at particular times.\nInvention of weather instruments\n- A hygrometer showed levels of [[32]] — Nicholas Cusa, c.1450\n- Temperature variations: first thermometer contained [[33]] instead of mercury — Galileo Galilei, 1593\n- A barometer indicated air pressure — Evangelista Torricelli, 1643\nTransmitting weather information\n- The use of the [[34]] allowed information to be passed around the world.\n- Daily [[35]] were produced by the French from 1863.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "planets"
+       ],
+       "explanation": "Early almanacs “relied heavily on making links between the weather and where the planets were in the sky on certain days.”"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "humidity"
+       ],
+       "explanation": "Nicholas Cusa’s hygrometer “told people how much humidity there was in the air.”"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "water"
+       ],
+       "explanation": "Galileo’s 1593 thermometer “had water inside it instead of mercury.”"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "electric telegraph",
+        "telegraph"
+       ],
+       "explanation": "“It wasn’t possible for them to share their information until the electric telegraph became more widespread.”"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "weather maps",
+        "maps"
+       ],
+       "explanation": "“In 1863, France started publishing weather maps each day. This hadn’t been done before.”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "Weather observation stations are found mostly at [[36]] around the country.\nSatellite images use the colour orange to show [[37]] .\nThe satellites give so much detail that meteorologists can distinguish a particular [[38]] .\nInformation about the upper atmosphere is sent from instruments attached to a [[39]] .\nRadar is particularly useful for following the movement of [[40]] .",
+     "questions": [
+      {
+       "n": 36,
+       "answer": [
+        "airports"
+       ],
+       "explanation": "“Observation reports are sent automatically from equipment at weather stations… They are nearly all based at airports.”"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "dry air"
+       ],
+       "explanation": "“Orange represents dry air” on satellite images shown on meteorologists’ screens."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "cloud"
+       ],
+       "explanation": "“It’s possible for us to make out an individual cloud and follow it as it moves across the landscape.”"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "balloon"
+       ],
+       "explanation": "A radio sonde “hangs from a balloon which is filled with gas” and transmits data back to the weather station."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "hurricanes"
+       ],
+       "explanation": "Radar “is one method for detecting and monitoring the progress of hurricanes.”"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a talk by a meteorologist about how we predict the weather.\nMeteorologist: Weather forecasting is actually an ancient art. The earliest weather forecasts appeared in the 1500s in almanacs. Their predictions relied heavily on making links between the weather and where the planets were in the sky on certain days.\nMeteorologist: In the mid-15th century, Nicholas Cusa designed a hygrometer, which told people how much humidity there was in the air, by monitoring the weight of sheep’s wool on a set of scales.\nMeteorologist: Changes in temperature couldn’t really be measured until Galileo Galilei invented his thermometer in 1593. It wasn’t like a modern-day thermometer because it had water inside it instead of mercury. In 1643, Evangelista Torricelli invented the first barometer, which measured atmospheric pressure.\nMeteorologist: In those days it was very difficult to send records from one part of the world to another — it wasn’t possible to share information until the electric telegraph became more widespread. By the 1860s, weather forecasts were becoming more accurate because they were based on observations taken over a wide area. In 1863, France started publishing daily weather maps. Other nations soon followed.\nMeteorologist: Even today, observation reports are sent automatically from equipment at weather stations. They are nearly all based at airports, although a few are in urban centres.\nMeteorologist: Meteorologists also rely heavily on satellites. On our screens, orange represents dry air and bright blue shows moisture levels in the atmosphere. The satellites are located 22,000 miles above the Earth, and despite that distance, it’s possible to make out an individual cloud and follow it as it moves across the landscape.\nMeteorologist: To know what’s happening in the upper levels of the atmosphere, we send radio sondes into the air. A radio sonde is a box of equipment hanging from a balloon filled with gas, which transmits data back to the weather station.\nMeteorologist: Finally, radar — first used over 150 years ago and still used today. It is one method for detecting and monitoring the progress of hurricanes. All this information is put into computer models, which we then use to produce the forecast you see on TV."
+  }
+ ],
+ "audio": {
+  "file": "listening-23.mp3",
+  "durationSec": 1619,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

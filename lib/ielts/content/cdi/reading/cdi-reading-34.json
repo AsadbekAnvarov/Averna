@@ -1,0 +1,597 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-34",
+ "title": "CDI Reading Test 34",
+ "description": "A full Academic Reading test from the CDI practice materials: The Development of Plastics; The Origin and Development of Applause; Memory Champions … or just good at tricks.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Development of Plastics",
+  "The Origin and Development of Applause",
+  "Memory Champions … or just good at tricks"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Development of Plastics",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The first plastics were developed as a substitute for natural rubber. Chemically, rubber is a polymer—a compound containing large molecules that are formed by the bonding of many smaller, simpler units, repeated over and over again. The same bonding principle—polymerization—is the basis of the creation of a huge range of plastics by the chemical industry."
+    },
+    {
+     "label": "B",
+     "text": "The first plastic was developed as a result of a competition in the USA. In the 1860s, $10,000 was offered to anybody who could replace ivory—supplies of which were declining—with something equally good as a material for making billiard balls. The prize was won by John Wesley Hyatt, with a material called celluloid. Celluloid was made by dissolving cellulose, a carbohydrate obtained from plants, in a solution of camphor dissolved in ethanol. This new material rapidly found other applications in the manufacture of everyday products such as knife handles and detachable collars and cuffs. But perhaps the best-known celluloid product was photographic film, without which the film industry could never have taken off at the end of the 19th century."
+    },
+    {
+     "label": "C",
+     "text": "Celluloid can be repeatedly softened and reshaped by heat, and is known as a thermoplastic. In 1907, Leo Baekeland (1863–1944), a Belgian chemist working in the USA, invented a different kind of plastic, by causing phenol and formaldehyde to react together. Baekeland called it Bakelite, and it was the first of the thermosets—plastics that can be cast and moulded while hot, but cannot be softened by heat and reshaped once they have set. Bakelite was a good insulator, and was resistant to water and acid. With these properties it was soon being used in the manufacture of electrical switches as well as a variety of domestic items."
+    },
+    {
+     "label": "D",
+     "text": "As the century went on, the range of newly developed plastics increased. Chemists began looking for other small molecules that could be strung together to make polymers. In the 1930s, chemists in Britain discovered that the gas ethylene would polymerize under heat and pressure to form a thermoplastic they called polythene. Polypropylene followed in the 1950s. Both are used to make bottles, pipes, and plastic bags. A small change in the starting material—replacing a hydrogen atom in ethylene with a chlorine atom—produced rigid PVC (polyvinyl chloride), a fireproof plastic suitable for drains and gutters. By adding certain chemicals, a soft form of PVC can be produced, suitable as a substitute for rubber in items such as waterproof clothing. A closely related plastic is Teflon or PTFE (polytetrafluoroethylene). It produces very little friction, making it ideal for products such as non-stick frying pans."
+    },
+    {
+     "label": "E",
+     "text": "Polystyrene, a hard, clear material like glass, was developed during the 1930s in Germany, and its applications included food containers and toys. Expanded polystyrene is rigid and is widely used in packaging and insulation. Polyurethane, developed in the same country, was commonly produced as a foam which was very useful in the production of insulating materials."
+    },
+    {
+     "label": "F",
+     "text": "In the 1930s, the first of the man-made fibres was created—nylon. Its inventor was a chemist called Wallace Carothers (1896–1937), who worked for the Du Pont company in the USA. He found that under the right conditions two particular chemicals would form a polymer that could be pumped out through holes and then stretched to form long glossy threads that could be woven like silk. Its first use was to make parachutes for the US armed forces in World War II. In the postwar years, it completely replaced silk in the manufacture of stockings."
+    },
+    {
+     "label": "G",
+     "text": "Many other synthetic fibres joined nylon, including Orion, Acrilan, and Terylene. Today most garments are made of a blend of natural fibres, such as cotton and wool, and man-made fibres that make fabrics easier to look after."
+    },
+    {
+     "label": "H",
+     "text": "Despite its enormous usefulness, plastic has its drawbacks. In fact, one of its great strengths—its indestructibility—is its greatest disadvantage. Beaches all over the world, even on the remotest islands, are littered with plastic bottles that nothing can destroy. Nor is it very easy to recycle plastics, as different types of plastics are often found in the same items and call for different treatments. Plastics can be made biodegradable by incorporating into their structure a material such as starch, which is attacked by bacteria and causes the plastic to fall apart. Other materials can be incorporated that gradually decay in sunlight—although bottles made of such materials have to be stored in the dark, to ensure they do not disintegrate before they have been used."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the table below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "title": "Plastics through the years",
+     "template": "Celluloid | 1860s | USA | can be softened and reshaped by heat | billiard balls; cutlery; clothing; [[1]]\n[[2]] | 1907 | USA | cannot be softened after setting; good insulator; resistant to water and acid | [[3]]\nPolythene | 1930s | [[4]] | can be softened and reshaped by heat | bottles; pipes; plastic bags\nPolypropylene | 1950s | | | bottles; pipes; plastic bags\nRigid PVC | | | is [[5]] | external piping\nPolystyrene | 1930s | Germany | resembles [[6]] | food containers; toys\nPolyurethane | | Germany | usually manufactured as a [[7]] | insulation",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "photographic film"
+       ],
+       "explanation": "'perhaps the best-known celluloid product was photographic film.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "Bakelite"
+       ],
+       "explanation": "Leo Baekeland invented Bakelite in 1907."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "electrical switches"
+       ],
+       "explanation": "'it was soon being used in the manufacture of electrical switches as well as a variety of domestic items.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "Britain"
+       ],
+       "explanation": "'In the 1930s, chemists in Britain discovered that the gas ethylene would polymerize.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "fireproof"
+       ],
+       "explanation": "'rigid PVC (polyvinyl chloride), a fireproof plastic suitable for drains and gutters.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "glass"
+       ],
+       "explanation": "'Polystyrene, a hard, clear material like glass.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "foam"
+       ],
+       "explanation": "'Polyurethane... was commonly produced as a foam which was very useful in the production of insulating materials.'"
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 8,
+       "text": "The chemical structure of rubber is very different to that of plastics.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Both rubber and plastics are polymers built on the same polymerization principle — they are chemically similar."
+      },
+      {
+       "n": 9,
+       "text": "John Wesley Hyatt was an industrial chemist.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage does not state Hyatt's profession — only that he won a competition."
+      },
+      {
+       "n": 10,
+       "text": "Celluloid and Bakelite react in the same way to heat.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Celluloid is a thermoplastic (can be reshaped); Bakelite is a thermoset (cannot be reshaped after setting)."
+      },
+      {
+       "n": 11,
+       "text": "If an object is made of several plastics, these prove hard to break down and reuse.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'different types of plastics are often found in the same items and call for different treatments.'"
+      },
+      {
+       "n": 12,
+       "text": "Adding starch to plastic makes it more durable.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "'incorporating starch... causes the plastic to fall apart' — it makes it less durable (biodegradable)."
+      },
+      {
+       "n": 13,
+       "text": "Containers which are designed to decompose need particular storage conditions.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "'bottles made of such materials have to be stored in the dark, to ensure they do not disintegrate before they have been used.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The Origin and Development of Applause",
+   "paragraphs": [
+    {
+     "text": "Paragraph 1 Whether you clap, cheer or whistle a great public performance, you are following a long tradition. Scholars aren't quite sure about the origins of applause, but the form that is still most common, clapping the hands together, was formalized in Western culture during and after performances. During the time of the Roman Republic (509BC – 27BC) the common way to end a play was for the chief actor to yell 'Valete et plaudite!' ('Goodbye and applause!') thus signaling to the audience that it was time for them to give praise by striking hands and making explosive noise. It's no surprise, then, that this became a means of crowd manipulation. Rome saw the rise of a professional class of laudiceni, or 'people who clapped for their dinner', hired to infiltrate crowds and manipulate their reaction to performances. Actors would hire a dozen or so people to spread out among their audiences and prolong the applause, or, if they were feeling especially bold, to start 'spontaneous' chants and shouts of praise."
+    },
+    {
+     "text": "Paragraph 2 The Roman Republic came to an end and was replaced by the Roman Empire (27 BC – 476 AD) where applause became a way for leaders to interact directly with their citizens. One of the chief methods they used to estimate their standing with the people was gauging the greetings they got when they entered the arena. Leaders became astute at reading the volume, the rhythm, and the length of the crowd's claps for clues about how well they were doing as officials and lawmakers. 'We should think of it as an ancient type of opinion poll,' says Greg Aldrete, a professor of history. 'This is how you gauge the people.' Roman leaders were gathering data about people by listening to applause."
+    },
+    {
+     "text": "Paragraph 3 Clever leaders of the ancient world researched their rivals, too. Cicero, the Roman lawyer, would send friends to stand around outside the arena, taking notes to see what kind of greeting each official got when he entered, the better to see who was beloved by the people, and who was not. They had a lot of information to assess. 'Ancient crowds were more interactive than they are today,' Aldrete points out. 'There was a lot of back and forth between speakers and crowds.' And particularly, in the Greco-Roman world, crowds, especially in cities, were really good at communicating messages through rhythmic clapping, sometimes coupled with shouts. The coding was, he says, invaluable when assessing an arena's fortunes."
+    },
+    {
+     "text": "Paragraph 4 Around the first centuries AD, those systems of applause became more and more elaborate. Applause no longer meant, simply, 'claps'. While Greco-Roman audiences certainly smacked their palms together the same way we do today, their overall strategies of applause were much more varied than clapping alone. Crowds expressed degrees of approval of the person or persons before them, ranging from claps, to snaps (of the finger and thumb), to waves (of the edge of the toga). The emperor Aurelian decided to replace this gesture by waving a special handkerchief instead, a prop which he then distributed to all Roman citizens, so they would never be without a way to praise him."
+    },
+    {
+     "text": "Paragraph 5 Although style of applause may have changed over the centuries, the need to manipulate remained. 16th-century French poet Jean Daurat is credited with bringing back the Roman practice of hiring professional applauders. In France, this group became known as a 'claque'. Daurat handed out tickets to his own performances to people who promised to applaud at the end. By the early 1820s, claques had become institutionalized, with an agency in Paris specializing in the distribution of the claqueurs' services. The historian William B. Cohen describes the intricate price lists agencies of this kind would hand out to potential patrons: polite clapping would cost this many francs, enthusiastic applause would cost this many. The claque also underwent a kind of classification: the rieurs (laughers) would laugh loudly at the jokes; the pleureurs (criers) would feign tears in reaction to performances; the commissaires (officers) would learn a play or a piece of music by heart and then call attention to its best parts. The practice spread to Milan, to Vienna, and to London before falling out of fashion. The claque lost its power once people became aware of its tricks."
+    },
+    {
+     "text": "Paragraph 6 And clapping itself evolved. In the 18th century, symphonies and concerts became more serious, aligning themselves with the reverence and spirituality associated with religious ceremonies. Knowing when to maintain silence, as well as when to clap, became a mark of sophistication, a kind of code for audiences to learn. Applause became a matter of 'do' or 'don't', so losing many old shades of meaning. Those changes changed performers, too. Applause became much less of a true dialogue with an audience, especially so with opera, where the singers saw it as part of a basic transaction with the crowd. So by the time the 19th century arrived, applause had become standardized and institutionalized, and had become an expectation rather than the reward it used to be."
+    },
+    {
+     "text": "Paragraph 7 In the 21st century we're reinventing applause, to make it what it used to be: a coded form of communication. More and more the digital world allows us to link and share through our devices. By connecting with others in this way, we become part of the performance by participating in it, demonstrating our appreciation by amplifying and extending the show through commenting and praising, but our kind of applause matters more now, in many ways, because it is no longer momentary and short-lived, but is far more permanent instead."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "The text has seven paragraphs. Choose the correct heading for each paragraph from the list of headings below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "A",
+       "text": "The use of applause by political figures to evaluate their own popularity"
+      },
+      {
+       "key": "B",
+       "text": "A form of applause that is more far-reaching than before"
+      },
+      {
+       "key": "C",
+       "text": "The initial emergence of applause as a behaviour in the theatre"
+      },
+      {
+       "key": "D",
+       "text": "The different methods of applause employed in ancient times, besides clapping"
+      },
+      {
+       "key": "E",
+       "text": "The impact of musical performance on the etiquette of applause"
+      },
+      {
+       "key": "F",
+       "text": "The re-emergence and disappearance of fake appreciation"
+      },
+      {
+       "key": "G",
+       "text": "The use of applause in working out how popular an opponent was"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph 1",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para 1 describes the initial emergence of applause in the Roman theatre."
+      },
+      {
+       "n": 15,
+       "text": "Paragraph 2",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para 2 describes how Roman leaders used applause to evaluate their own popularity."
+      },
+      {
+       "n": 16,
+       "text": "Paragraph 3",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Para 3 describes Cicero researching rivals by measuring the applause they received."
+      },
+      {
+       "n": 17,
+       "text": "Paragraph 4",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para 4 describes different methods of applause (snaps, waves, handkerchiefs) besides clapping."
+      },
+      {
+       "n": 18,
+       "text": "Paragraph 5",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Para 5 describes the re-emergence of the claque and its eventual disappearance."
+      },
+      {
+       "n": 19,
+       "text": "Paragraph 6",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Para 6 describes how musical concerts changed the etiquette of applause."
+      },
+      {
+       "n": 20,
+       "text": "Paragraph 7",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para 7 describes digital applause as more far-reaching and permanent than before."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of the following statements are true of the 'claque' in France?",
+     "options": [
+      {
+       "key": "A",
+       "text": "As a practice in France, it first appeared in the 16th century."
+      },
+      {
+       "key": "B",
+       "text": "It did not become a widespread practice within France."
+      },
+      {
+       "key": "C",
+       "text": "The cost of hire depended on the fame of the client."
+      },
+      {
+       "key": "D",
+       "text": "Claqueurs were divided into different categories."
+      },
+      {
+       "key": "E",
+       "text": "The practice did not extend beyond France to other countries."
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "A: '16th-century French poet Jean Daurat is credited with bringing back the Roman practice.' D: 'The claque also underwent a kind of classification: rieurs, pleureurs, commissaires.' D: 'The claque also underwent a kind of classification.'"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "A: '16th-century French poet Jean Daurat is credited with bringing back the Roman practice.' D: 'The claque also underwent a kind of classification: rieurs, pleureurs, commissaires.' D: 'The claque also underwent a kind of classification.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences.",
+     "answerRule": "Write ONE WORD ONLY from the text for each answer.",
+     "wordLimit": 1,
+     "template": "In the 18th century, people could show their superiority by understanding when either [[23]] or applause was appropriate.\nPerformers in the 18th century, in particular those singing in the [[24]], no longer had a meaningful dialogue with their audiences.\nIn the 19th century, applause was no longer offered as a [[25]] to performers.\nNowadays our expressions of approval are seen as [[26]] in comparison to the applause of the past.",
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "silence"
+       ],
+       "explanation": "'Knowing when to maintain silence, as well as when to clap, became a mark of sophistication.'"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "opera"
+       ],
+       "explanation": "'Applause became much less of a true dialogue with an audience, especially so with opera.'"
+      },
+      {
+       "n": 25,
+       "answer": [
+        "reward"
+       ],
+       "explanation": "'applause had become... an expectation rather than the reward it used to be.'"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "permanent"
+       ],
+       "explanation": "'it is no longer momentary and short-lived, but is far more permanent instead.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Memory Champions … or just good at tricks",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The Examinations School at Oxford University is where, last August, 34 contestants gathered at the World Memory Championships. It is an impressive historical venue, known for its austere yet grandiose setting of oak-paneled rooms, large Gothic windows, and looming portraits of eminent dukes and earls. It is here that generations of Oxford students have been tested in their final exams on their memory and knowledge, and it is here that these contestants were challenged to demonstrate their exceptional mnemonic abilities. Reciting poems, memorizing digit sequences, and recalling faces from photographs are just a few of the tasks that test the limits of human memory in this competitive setting."
+    },
+    {
+     "label": "B",
+     "text": "They are using a technique known as the loci method, reportedly originating in 477 BC with the Greek poet Simonides of Ceos. He was able to memorize the guest list at a dinner by closing his eyes and recalling each individual around the table. The loci method, which was rediscovered and popularized by Simonides, has become an integral part of historical and modern memory training. This method involves associating items to be remembered with specific physical locations, creating a mental map that facilitates recall. After Simonides's discovery, the loci method became widely embraced across ancient Greece, serving as a fundamental technique for orators and scholars. It was so effective that it was incorporated into educational curricula and became a cornerstone of rhetorical training. Aristotle wrote favorably about it, recognizing its value and effectiveness. Later, a number of treatises on the art of memory were published in Rome, further cementing its importance and utility in memory training."
+    },
+    {
+     "label": "C",
+     "text": "One memory champion, Ed Cooke, can memorize the order of ten decks of playing cards in less than one hour or one deck of cards in less than one minute. Psychologists Elizabeth Valentine and John Wilding have teamed up with Eleanor Maguire to study how memory champions like Cooke operate differently from average individuals. Their collaboration aims to explore the neural underpinnings that might explain the exceptional memory skills exhibited by competitors in high-pressure environments such as memory championships. When the researchers analyzed the brain scans from the number memorization, they found that the memory champions were activating some brain regions that were different from those the control subjects were using. These regions are known to be involved in visual memory and spatial navigation."
+    },
+    {
+     "label": "D",
+     "text": "To enable himself to memorize quickly, Ed Cooke has memorized a specific human being, verb, and object that he associates with every card in the deck. This detailed and highly personalized system allows him to rapidly encode and decode information during competitions. When Cooke commits a deck to memory, he does it three cards in one go, with every three-card group forming a composite picture of a person doing something to an object. He then places those images along a specific familiar path in his mind, creating a vivid mental journey that he can easily traverse. When it comes to recall, Cooke takes a mental walk along his route and translates the images into cards, effectively and efficiently converting his vivid mental images back into the specific order of the deck."
+    },
+    {
+     "label": "E",
+     "text": "The term 'photographic memory' is frequently used to describe people with exceptional recall. Yet, most researchers agree there is no proof that such a memory truly exists. If it is indeed a myth, it highlights how learned strategies are often more effective than natural talent. The belief in 'photographic memory' remains a point of contention among the public and scientists alike. Despite the absence of solid scientific evidence, this myth endures, reflecting how society's fascination with remarkable memory tends to ignore the practical techniques and training that genuinely drive mnemonic success."
+    },
+    {
+     "label": "F",
+     "text": "The most renowned of the naturals was the Russian journalist S.V. Shereshevski, who could remember long sequences of numbers learned decades before, as well as poems, strings of meaningless syllables, and nearly anything else he was asked to recall. Shereshevski also experienced synesthesia, a rare sensory condition where the senses are interconnected, which significantly improved his memorization ability. His skills were not limited to these accomplishments; his remarkable memory covered an almost endless range of information, making him a figure of great interest and study."
+    },
+    {
+     "label": "G",
+     "text": "K. Anders Ericsson, a well-known psychologist, claims that anyone can develop memory abilities comparable to those of memory champions through consistent practice and proper techniques. During two years of experimentation, S.V. increased his ability to recall numbers from seven to over eighty. This study led Ericsson to conclude that there is no such thing as an innately superior memory. When he revisited original case reports of natural memorizers, he discovered that their remarkable abilities were based on the use of specific techniques — sometimes unconsciously — combined with extensive practice. Strategists are usually outstanding at remembering only certain kinds of material, whereas naturals exhibit strong memory across many types of tasks and can retain those memories more easily."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has seven paragraphs, A–G. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "a description of how a contestant remembers complex sequences",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D describes Ed Cooke's method of memorizing three cards at a time along a familiar mental path."
+      },
+      {
+       "n": 28,
+       "text": "an example of how one person's memory was improved over time",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Paragraph G: 'S.V. increased his ability to recall numbers from seven to over eighty.'"
+      },
+      {
+       "n": 29,
+       "text": "a description of a memorizing competition",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A describes the World Memory Championships at Oxford."
+      },
+      {
+       "n": 30,
+       "text": "a commonly held belief about memory that many experts say is unproven",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E: 'most researchers agree there is no proof that photographic memory truly exists.'"
+      },
+      {
+       "n": 31,
+       "text": "a reference to the first recorded use of memorizing through location",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Paragraph B: 'reportedly originating in 477 BC with the Greek poet Simonides of Ceos.'"
+      },
+      {
+       "n": 32,
+       "text": "a reference to an unusual condition which results in improved memory",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F: 'Shereshevski also experienced synesthesia... which significantly improved his memorization ability.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary.",
+     "answerRule": "Write NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "title": "Using visual imagery and spatial navigation to remember numbers",
+     "template": "[[33]], an action, and a thing are assigned to consecutive cards in the pack. Combining these images allows Cooke to memorise [[34]] at a time. The mind pictures are then positioned on a [[35]]. The pack of cards is remembered by going for a [[36]], while the pictures are converted back into cards.",
+     "questions": [
+      {
+       "n": 33,
+       "answer": [
+        "A person"
+       ],
+       "explanation": "'Ed Cooke has memorized a specific human being, verb, and object' — a person, an action, and a thing."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "three cards"
+       ],
+       "explanation": "'he does it three cards in one go.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "familiar path"
+       ],
+       "explanation": "'He then places those images along a specific familiar path in his mind.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "mental walk"
+       ],
+       "explanation": "'Cooke takes a mental walk along his route.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–F, below.",
+     "title": "Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "used mainly for educational purposes."
+      },
+      {
+       "key": "B",
+       "text": "activated brain areas associated with visual and spatial memory."
+      },
+      {
+       "key": "C",
+       "text": "became widespread in ancient Greece for memorizing speeches and texts."
+      },
+      {
+       "key": "D",
+       "text": "the result of techniques and extensive practice."
+      },
+      {
+       "key": "E",
+       "text": "retaining a wide variety of tasks."
+      },
+      {
+       "key": "F",
+       "text": "benefited from additional cognitive abilities."
+      }
+     ],
+     "questions": [
+      {
+       "n": 37,
+       "text": "Valentine, Wilding and Maguire's experiment shows that the memory contestants",
+       "answer": [
+        "B"
+       ],
+       "explanation": "B: 'memory champions were activating brain regions... involved in visual memory and spatial navigation.'"
+      },
+      {
+       "n": 38,
+       "text": "After Simonides discovered the loci method in 477 BC, it was",
+       "answer": [
+        "C"
+       ],
+       "explanation": "C: 'the loci method became widely embraced across ancient Greece, serving as a fundamental technique for orators and scholars.'"
+      },
+      {
+       "n": 39,
+       "text": "Ericsson finds out that natural memorisers are better than strategic memorisers at",
+       "answer": [
+        "E"
+       ],
+       "explanation": "E: 'naturals exhibit strong memory across many types of tasks' — retaining a wide variety of tasks."
+      },
+      {
+       "n": 40,
+       "text": "According to K. Anders Ericsson, Shereshevski's skills were",
+       "answer": [
+        "D"
+       ],
+       "explanation": "D: 'their remarkable abilities were based on the use of specific techniques combined with extensive practice.'"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

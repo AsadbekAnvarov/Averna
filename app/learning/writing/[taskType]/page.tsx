@@ -7,7 +7,7 @@ import { db } from "@/lib/db";
 import WritingEditor from "@/components/learning/writing-editor";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { getWritingPrompts } from "@/lib/writing-content";
+import { getWritingTask, listWritingTasks } from "@/lib/ielts/catalog";
 import { examHomeworkFor } from "@/lib/homework/exam-homework";
 import { writingHomeworkRule } from "@/lib/homework/exam-attempt";
 import { ArrowLeft, PenTool, BookOpen, Sparkles, Lightbulb, ChevronRight, ClipboardList } from "lucide-react";
@@ -31,7 +31,6 @@ export default async function WritingTaskPage({
   }
   const promptParam = firstParam(searchParams.p);
 
-  const prompts = await getWritingPrompts(taskType);
   const taskConfig = {
     task1: { title: "IELTS Writing Task 1", timeLimit: 20, wordCount: 150, type: "task1" },
     task2: { title: "IELTS Writing Task 2", timeLimit: 40, wordCount: 250, type: "task2" },
@@ -39,6 +38,7 @@ export default async function WritingTaskPage({
 
   // No prompt selected → show list
   if (!promptParam) {
+    const prompts = await listWritingTasks(taskType);
     return (
       <div className="min-h-screen premium-gradient">
         <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl">
@@ -49,7 +49,7 @@ export default async function WritingTaskPage({
             <PenTool className="h-8 w-8 text-averna-purple" /> {taskConfig.title}
           </h1>
           <p className="text-gray-400 mb-8">
-            Choose a topic below. Each prompt includes a band 7–8 sample answer, useful phrases and an Uzbek strategy tip you can study before or after writing.
+            Choose a task below. Each one comes with a strategy tip in English and Uzbek you can study before or after writing, and many include a sample answer and useful phrases.
           </p>
 
           <div className="space-y-4">
@@ -101,9 +101,11 @@ export default async function WritingTaskPage({
     );
   }
 
-  // Prompt selected → show editor + study panel
-  const prompt = prompts.find((p) => p.id === promptParam);
+  // Prompt selected → show editor + study panel. By id, so archived built-in prompts (old links) still open.
+  const prompt = await getWritingTask(taskType, promptParam);
   if (!prompt) return redirect(`/learning/writing/${taskType}`);
+  const hasSample = !!prompt.sampleAnswer?.trim();
+  const phrases = prompt.usefulPhrases ?? [];
 
   // Exam homework (?hw): only kept when it really is this student's homework for this prompt.
   const hwParam = firstParam(searchParams.hw);
@@ -156,7 +158,9 @@ export default async function WritingTaskPage({
                 <CardContent className="py-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Sparkles className="h-5 w-5 text-averna-neon" />
-                    <span className="text-white font-semibold">Show Sample Answer, Useful Phrases &amp; Strategy</span>
+                    <span className="text-white font-semibold">
+                      {hasSample ? "Show Sample Answer, Useful Phrases & Strategy" : phrases.length ? "Show Useful Phrases & Strategy" : "Show Strategy"}
+                    </span>
                     <span className="text-xs text-gray-400">(open only when you have written your own answer or need help)</span>
                   </div>
                   <ChevronRight className="h-4 w-4 text-averna-neon group-open:rotate-90 transition-transform" />
@@ -164,34 +168,38 @@ export default async function WritingTaskPage({
               </Card>
             </summary>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4 pb-8">
-              <Card className="glass border-averna-neon/30">
-                <CardHeader>
-                  <CardTitle className="text-averna-neon flex items-center gap-2">
-                    <BookOpen className="h-5 w-5" /> Band 7–8 Sample Answer
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-200 whitespace-pre-line leading-relaxed text-sm">{prompt.sampleAnswer}</p>
-                </CardContent>
-              </Card>
-
-              <div className="space-y-6">
-                <Card className="glass border-averna-cyan/30">
+            <div className={`grid grid-cols-1 gap-6 mt-4 pb-8 ${hasSample ? "lg:grid-cols-2" : ""}`}>
+              {hasSample && (
+                <Card className="glass border-averna-neon/30">
                   <CardHeader>
-                    <CardTitle className="text-averna-cyan">Useful Phrases</CardTitle>
+                    <CardTitle className="text-averna-neon flex items-center gap-2">
+                      <BookOpen className="h-5 w-5" /> Band 7–8 Sample Answer
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="space-y-2 text-sm text-gray-300">
-                      {prompt.usefulPhrases.map((phrase, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="text-averna-cyan">•</span>
-                          <span>{phrase}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-gray-200 whitespace-pre-line leading-relaxed text-sm">{prompt.sampleAnswer}</p>
                   </CardContent>
                 </Card>
+              )}
+
+              <div className="space-y-6">
+                {phrases.length > 0 && (
+                  <Card className="glass border-averna-cyan/30">
+                    <CardHeader>
+                      <CardTitle className="text-averna-cyan">Useful Phrases</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2 text-sm text-gray-300">
+                        {phrases.map((phrase, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="text-averna-cyan">•</span>
+                            <span>{phrase}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                )}
 
                 <Card className="glass border-averna-purple/30">
                   <CardHeader>

@@ -1,0 +1,665 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-59",
+ "title": "CDI Listening Test 59",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-59-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Write ONLY ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "template": "Party Reservation\nExample Number of guests for the party: 60 people\n- Starting time of the party: [[1]] pm\nMenu options:\n- The standard ($25)\n- The [[2]] ($35)\n- The gold ($50)\n- Each course has some [[3]] option\n- One guest is allergic to [[4]]\n- Other requests: desserts and [[5]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "7.45",
+        "7:45",
+        "745",
+        "7.45pm",
+        "7:45pm"
+       ],
+       "explanation": "\"What time would you like the room for?\" \"Oh, I'm not sure. 7.45? Not too late.\""
+      },
+      {
+       "n": 2,
+       "answer": [
+        "celebration"
+       ],
+       "explanation": "Menus: The standard ($25), the celebration ($35), the gold ($50). \"Or the celebration menu, which is three courses. It's very popular. That's 35 pounds.\""
+      },
+      {
+       "n": 3,
+       "answer": [
+        "vegetarian"
+       ],
+       "explanation": "\"Each course has some vegetarian option, so that's not a problem.\""
+      },
+      {
+       "n": 4,
+       "answer": [
+        "strawberries",
+        "strawberry"
+       ],
+       "explanation": "\"One of the guests is allergic to strawberries, so please make sure there aren't any.\""
+      },
+      {
+       "n": 5,
+       "answer": [
+        "cheese"
+       ],
+       "explanation": "\"Could we also have some desserts and cheese at the end?\""
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Write ONLY ONE WORD for each answer.",
+     "wordLimit": 1,
+     "template": "- Entertainment: book a [[6]] after dinner\n- Room decoration: pink [[7]]\n- Special request: write [[8]] ‘Susie’ on the birthday cake\n- Book a [[9]] to take guests to the Forest Hotel\n- Phone number: [[10]]",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "disco"
+       ],
+       "explanation": "\"For entertainment, we'd like to book a disco after dinner.\""
+      },
+      {
+       "n": 7,
+       "answer": [
+        "flowers",
+        "flower"
+       ],
+       "explanation": "\"For the room decoration, could we have pink flowers?\""
+      },
+      {
+       "n": 8,
+       "answer": [
+        "congratulations"
+       ],
+       "explanation": "\"On the birthday cake, could you write 'Congratulations Susie'?\""
+      },
+      {
+       "n": 9,
+       "answer": [
+        "taxi"
+       ],
+       "explanation": "\"We'll also need to book a taxi to take the guests to the Forest Hotel afterwards.\""
+      },
+      {
+       "n": 10,
+       "answer": [
+        "07749132760",
+        "7749132760"
+       ],
+       "explanation": "The contact phone number given at the end of the call: 07749 132760."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a woman phoning a restaurant to book a room for a party.\nGood morning, Shaw's Restaurant.\nHi, I'd like to book one of your function rooms for a party, please.\nOK, fine. How many people are you expecting for the party?\nWell, I'm not quite sure yet, but about 60. (Example — 60)\nFine. So you will need a big room. And what day were you thinking of?\nThe party is for my daughter's birthday. It's her 21st. Her birthday is actually on the 17th of November, but that's a Friday, so we thought we'd have her party on the 18th, as that's a Saturday. There'll be lots of her friends there as well as all the family.\nAnd what time would you like the room for?\nOh, I'm not sure. 7.45 ? Not too late. And people will probably be leaving about 11.\nFine. We're open until 11.30.\nExcellent. And what about the menu? So do you want a sit-down meal with waiter service?\nYes. Not a buffet, right?\nWell, there are several options, including different menus at various prices. So there's the standard menu. That's 25 pounds per person. Or the celebration menu, which is three courses. It's very popular. That's 35 pounds. And there's also our gold menu. That's a five-course menu at 50 pounds.\nOK, I think I'd rather go with the celebration menu. No, the gold is definitely too expensive.\nOK. Now, not all the guests eat meat. Will there be something for them?\nOf course, we'll make sure there's a vegetarian option for each course.\nGreat. And do you know if any of the guests have food allergies, anything like shellfish, for example?\nI'll need to check. But I do know that one of my daughter's friends is very allergic to strawberries - even just being near them can be a problem.\nOK, I'll make a note to our chef to avoid those completely. Do you have any other requests for desserts?\nWell, I'd like a choice if possible. And could we have cheese as well?\nOf course, no problem. We can provide that.\nNow, do you have any other requests I could help with?\nWhat about after-dinner entertainment?\nYou can book a band if you'd like live music.\nActually, I think a disco would be best, if you can arrange that.\nNo problem.\nAnd I heard you might be able to put on a fireworks display. Is that possible?\nWe aren't offering that service anymore. I'm afraid it was just too expensive.\nOh, I see.\nNow, the menu package you've chosen includes a few other nice things.\nOh, like what?\nWe'll decorate the room for you, which creates a nice party atmosphere. We can use different colours for the balloons - silver, gold...\nShe loves pink, but actually I think she'd prefer flowers to balloons. So let's go for them instead, in the same colour.\nNo problem. Now, you mentioned that the party is for your daughter. We make birthday cakes if you'd like one.\nOK, yes, we'll definitely want a cake.\nAnd we can put a special message on top. What would you like?\nUm, ' congratulations '. And then her name, that's Susie.\nFine. Now, one or two of the guests are coming by train, but they stopped running quite early.\nSo they'll need a taxi to take them to the Forest Hotel after the party. Is that something you can sort out?\nAbsolutely. Anything else?\nI think that's all for now.\nOK, well just get in touch if you think of anything else. Now, if I can just take some contact details. I just need your name and phone number.\nMaria Nelson. And my number is 07749132760 ."
+  },
+  {
+   "id": "cdi-listening-59-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "When did James Brown start collecting vacuum cleaners?",
+       "options": [
+        {
+         "key": "A",
+         "text": "at 4 years old"
+        },
+        {
+         "key": "B",
+         "text": "at 8 years old"
+        },
+        {
+         "key": "C",
+         "text": "at 30 years old"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"I got my first one when I was 8.\" He's now 30 and the collection is huge, but he started at 8."
+      },
+      {
+       "n": 12,
+       "text": "James can listen to a vacuum cleaner and identify",
+       "options": [
+        {
+         "key": "A",
+         "text": "which company made it."
+        },
+        {
+         "key": "B",
+         "text": "what problem it might have."
+        },
+        {
+         "key": "C",
+         "text": "the age of the battery life."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"I can listen to the sound of the motor and tell you which company manufactured it.\""
+      },
+      {
+       "n": 13,
+       "text": "Before the 1950s, vacuum cleaners cost",
+       "options": [
+        {
+         "key": "A",
+         "text": "the same price as an average car."
+        },
+        {
+         "key": "B",
+         "text": "almost a whole year’s salary."
+        },
+        {
+         "key": "C",
+         "text": "about three months’ wages."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"Before the 1950s, a vacuum cleaner would cost you about three months' wages.\""
+      },
+      {
+       "n": 14,
+       "text": "Why did James make a trip to the USA a few years ago?",
+       "options": [
+        {
+         "key": "A",
+         "text": "to win an award in Texas"
+        },
+        {
+         "key": "B",
+         "text": "to visit the Kirby factory"
+        },
+        {
+         "key": "C",
+         "text": "to meet some vacuum collectors"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"A few years ago I travelled to the US specifically to visit the Kirby factory.\""
+      },
+      {
+       "n": 15,
+       "text": "On what day is the vacuum cleaner museum open late?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Tuesday to Saturday"
+        },
+        {
+         "key": "B",
+         "text": "Monday"
+        },
+        {
+         "key": "C",
+         "text": "Thursday"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"The museum is open Tuesday to Saturday, and on Thursday we stay open late.\""
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Which characteristic does each of the following vacuum cleaners have? Choose FIVE answers from the box and write the correct letter, A–G, next to Questions 16–20.",
+     "title": "Characteristics",
+     "options": [
+      {
+       "key": "A",
+       "text": "not available in shops"
+      },
+      {
+       "key": "B",
+       "text": "specially designed to be easy to move"
+      },
+      {
+       "key": "C",
+       "text": "as large as a horse"
+      },
+      {
+       "key": "D",
+       "text": "used two different sources of power"
+      },
+      {
+       "key": "E",
+       "text": "designed by a businessman"
+      },
+      {
+       "key": "F",
+       "text": "named after a person other than the inventor"
+      },
+      {
+       "key": "G",
+       "text": "associated with a style of building"
+      }
+     ],
+     "questions": [
+      {
+       "n": 16,
+       "text": "Puffing Billy",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Puffing Billy — \"it ran on both petrol and electricity\" (D: used two different sources of power)."
+      },
+      {
+       "n": 17,
+       "text": "Hoover",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Hoover — \"it wasn't invented by Mr Hoover at all; it was named after him\" (F: named after a person other than the inventor)."
+      },
+      {
+       "n": 18,
+       "text": "Electrolux Model V",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Electrolux Model V — \"it was specially designed with wheels so it could be moved around easily\" (B)."
+      },
+      {
+       "n": 19,
+       "text": "Electrolux Triple X",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Electrolux Triple X — \"its shape was based on a famous building\" (G: associated with a style of building)."
+      },
+      {
+       "n": 20,
+       "text": "Kirby",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Kirby — \"you can't buy it in shops; it's only sold door-to-door\" (A: not available in shops)."
+      }
+     ]
+    }
+   ],
+   "transcript": "Excellent. We look forward to seeing you soon.\nYou will hear a radio broadcast about a new museum which specialises in vacuum cleaners.\nA new museum has just opened dedicated to vacuum cleaners. Yes, that's right - vacuum cleaners, the machines powered by electricity that suck up the dust and dirt from the floor. The museum's opened in a town called Eastwood in central England. Until now, Eastwood used to be an industrial town where people used to be employed as coal miners. But then a local resident called James Brown became frustrated with the nation's failure to recognise the importance of vacuum cleaners, and he decided to set up his own museum.\nJames first fell in love with vacuum cleaners when he was only four years old. At the time, his mother was unwell, so he used to help her out by vacuuming the house, and it was to be the start of a lifelong love affair with this humble household appliance. However, it wasn't until James was eight years old that he first acquired his own vacuum cleaner , after it had been thrown away on the streets. He took it home, cleaned it up and plugged it in. Amazingly, it still worked. And that was the beginning of his collection. By the time he was in his teens, his collection had grown to 30. The collection continued to grow until it reached the final count of 126, which it stands at today.\nJames is delighted to share his enthusiasm for vacuum cleaners with visitors. One of his favourite party tricks is to blindfold his eyes so he can't see and ask someone to switch on one of the machines. When I tested him out on five different machines, switching them on and pushing them across the floor, he had no problem telling me the manufacturer of each one . And he could even tell its age.\nLoading up now a common household appliance, it wasn't until the 1950s that most people could afford to buy a vacuum cleaner, as before that they were very expensive. In today's money, you would have had to pay around a third of the price of an average car, which is around three months' wages for most people . Like most modern appliances, the invention of a production line brought the price down almost immediately.\nBut James is not the only vacuum cleaner aficionado out there. And a few years ago, he made a special trip to the USA to the factory of his favourite, the Kirby vacuum cleaner . There is also an American website called Vacuum Land that's dedicated to vacuum cleaner collectors. This year they're even holding a convention in Texas with competition awards and lectures on the subject. So James might want to pop back to the United States to meet some vacuum lovers.\nSo if you've been inspired and want to visit James's vacuum cleaner museum, what days could you go to visit? Well, they're open all year round from 9.30am to 5.30pm, from Tuesdays to Saturdays, except Thursdays when they're open until 7pm . And Mondays, when the museum is closed.\nThe history of the vacuum cleaner is an interesting one. The first commercially available powered vacuum cleaner was invented in 1901 and was called the Puffing Billy . It was so large it had to be pulled by horses and parked outside the house where the cleaning was being done. It was initially driven by an oil engine, although it was later adapted to be powered by electricity , and it was used to clean the carpets at the palace of King Edward the Seventh in London.\nOne of the most famous electric vacuum cleaners is known as the Hoover . This was developed in the USA in 1908. It's often thought that it was created by Mr Hoover, but in fact it was created by James Spangler , who worked as a cleaner in a department store. Mr Hoover was a businessman who bought the idea and then developed and marketed it in the USA and other countries.\nThe Electrolux Model V was developed in 1925. Up until that time, vacuum cleaners had been heavy devices, which were not easily moved. This was a lighter model, which laid on the floor and can be pulled along on two strips of metal. And this was an idea that was copied by many other manufacturers.\nThen there's the Electrolux 30, or Triple X , which was developed in 1937 in the USA, and is perhaps the most visually elegant vacuum cleaner of all, with its sleek lines inspired by the Art Deco architecture popular in the 1930s."
+  },
+  {
+   "id": "cdi-listening-59-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "In the context of Lisa’s research project, Dr Harris suggests she should",
+       "options": [
+        {
+         "key": "A",
+         "text": "re-think the focus of her research."
+        },
+        {
+         "key": "B",
+         "text": "be prepared to be flexible."
+        },
+        {
+         "key": "C",
+         "text": "narrow the scope."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"You may find you have to change direction once you start — so be prepared to be flexible.\""
+      },
+      {
+       "n": 22,
+       "text": "Which topic area does Dr Harris advise Lisa to avoid investigating?",
+       "options": [
+        {
+         "key": "A",
+         "text": "pre-schools"
+        },
+        {
+         "key": "B",
+         "text": "nurseries"
+        },
+        {
+         "key": "C",
+         "text": "child-minders"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"I'd steer clear of child-minders — it would be very hard to get the data you need.\""
+      },
+      {
+       "n": 23,
+       "text": "The main reason why Lisa wants to film very young children is",
+       "options": [
+        {
+         "key": "A",
+         "text": "to watch how they play."
+        },
+        {
+         "key": "B",
+         "text": "to look at their relationships."
+        },
+        {
+         "key": "C",
+         "text": "to study their language."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"The main thing I want to look at is how they develop language at that age.\""
+      },
+      {
+       "n": 24,
+       "text": "According to Dr Harris, how might the arrival of a new baby affect a family?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Other children may feel jealous."
+        },
+        {
+         "key": "B",
+         "text": "Parents may be put under pressure."
+        },
+        {
+         "key": "C",
+         "text": "Sufficient support may not be available."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"When a new baby arrives, the parents can come under a lot of pressure.\""
+      },
+      {
+       "n": 25,
+       "text": "Dr Harris agrees with Lisa that she needs to find out about",
+       "options": [
+        {
+         "key": "A",
+         "text": "legal constraints."
+        },
+        {
+         "key": "B",
+         "text": "family considerations."
+        },
+        {
+         "key": "C",
+         "text": "medical circumstances."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"You'll need to look carefully into the legal constraints of filming children.\" \"Yes, I hadn't thought of that.\""
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What features are identified for each of the following textbooks? Choose FIVE answers from the box and write the correct letter, A–G, next to Questions 26–30.",
+     "title": "Features",
+     "options": [
+      {
+       "key": "A",
+       "text": "global coverage but sometimes inaccurate"
+      },
+      {
+       "key": "B",
+       "text": "interesting but rather unrealistic"
+      },
+      {
+       "key": "C",
+       "text": "practical and full of thoughtful tips"
+      },
+      {
+       "key": "D",
+       "text": "up-to-date with an international approach"
+      },
+      {
+       "key": "E",
+       "text": "wide ranging but poorly organized"
+      },
+      {
+       "key": "F",
+       "text": "good value despite some omissions"
+      },
+      {
+       "key": "G",
+       "text": "extremely costly but comprehensive"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "text": "Worldwide Healthcare Policies",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Worldwide Healthcare Policies — \"it's bang up to date and takes an international approach\" (D)."
+      },
+      {
+       "n": 27,
+       "text": "Supporting Vulnerable Families",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Supporting Vulnerable Families — \"it's good value, though it does leave a few things out\" (F: good value despite some omissions)."
+      },
+      {
+       "n": 28,
+       "text": "Health Visitors and Child Protection",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Health Visitors and Child Protection — \"it's very expensive, but it does cover everything\" (G: extremely costly but comprehensive)."
+      },
+      {
+       "n": 29,
+       "text": "The Future of Health Visiting",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The Future of Health Visiting — \"a good read, but some of it is a bit far-fetched\" (B: interesting but rather unrealistic)."
+      },
+      {
+       "n": 30,
+       "text": "Resources for Health Visitors",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Resources for Health Visitors — \"it covers a huge range, but it's hard to find your way around\" (E: wide ranging but poorly organized)."
+      }
+     ]
+    }
+   ],
+   "transcript": "The most prized model in James's museum is the Kirby model, which is actually gold plated. Kirby made pieces trophy, but they also manufacture vacuum cleaners for everyday use, sold only by salesmen who demonstrated them only in the customer's home . But even the everyday model might eventually become a collector's item.\nYou will hear a tutor called Dr Harris and a student called Lisa discussing Lisa's postgraduate research project on the role of health visitors.\nHi, Lisa, good to see you again, especially since you've chosen to do your master's with us.\nWell, I enjoyed my first degree in nursing, and I decided I want to become a health visitor - you know, someone who promotes health and well-being as part of a team within a community, getting out and meeting people of all ages. So that's why I chose this research project.\nExcellent. And your focus, the role of a health visitor in the community, is spot on. But at this stage, you need to keep an open mind so you can respond to initial findings once you get underway .\nFrom what I read, the role seems to vary quite considerably.\nYes, some health visitors tend to focus on liaising with family doctors, others work independently with new patients. The work of health visitors in future is most likely to rely on the relationship between these roles. And I think that would be an interesting angle for you to pursue at some stage.\nYes. What I really want to impact is the problem of physical development checks, which start with babies when they are only a few days old.\nRight.\nAnother area which I am thinking of investigating is the monitoring of nurseries, which is currently under review. And there is the issue of pre-schools, at what age they should take very young children. I thought I'd also include child minders , the individuals in the area of Hanes that might not be qualified, but look after young children.\nThat's an area I'd stay clear of, as it's very complex.\nOK, we'll do anyway. I'd also like to make a short film about a few children.\nA good idea, but it will depend on building up a relationship with one or two health visitors willing to introduce you to a family. An opportunity like that would allow you to look at how young children begin to form words, for example, and peer relationships between children, as well as the ways in which they relate and play with each other, especially when they are around two to three years old.\nAlthough early use of language is my main interest.\nOK. But there are other topic areas I'd like you to consider before we finalise the content and structure of your research. An equally important area is the child's home environment and the effect of a newborn baby, right? You need to consider the impact of this on the parents, particularly if the family lives in poor economic circumstances. Of course, the additional expense could be a worry , especially if there are other children. Certainly all those matters are very sensitive and not necessarily easy to detect. There's plenty of help available, but many people often feel too proud to ask for it.\nThis is the area where I will need to be familiar with family law , isn't it?\nVery much so. By all means, be aware of the medical conditions, and you also need to consider social practice. But you'll find that in most circumstances, you will have to refer to the law to understand how far a health visitor can intervene .\nYes, I appreciate that.\nNow, your book list. I'm glad to see Worldwide Healthcare Policies tops your list.\nWell, I wasn't sure how relevant it would be.\nBut it's a new addition, so the information is current . Yes, some of it may not be relevant, but it's important to keep abreast of developments in other countries , which may inform our own government's legislation.\nI understand. What about Supporting Vulnerable Families ?\nIt's not as costly as some of the other books on my list. It's an excellent buy considering the price, even though it does leave a few things out.\nI've already ordered Health Visitors and Child Protection . I hope that was right.\nWell, it's very expensive, but it's a sound investment. And there aren't many textbooks which cover as much detail as this , it will be a valuable reference, even if the style is occasionally boring.\nAnd what about The Future of Health Visiting ? I'm unsure how useful it will be in a utilitarian sense.\nProbably not. But it's stimulating in the way the writer considers what health visiting could be like in a perfect world. I'd suggest dipping into it to discover the improvements which could be made if money were no object.\nAnd Resources for Health Visitors ?"
+  },
+  {
+   "id": "cdi-listening-59-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "The Sense of Smell\nBackground\n- People’s sense of smell is not as developed as that of some animals.\n- The animal with the most accurate sense of smell is the [[31]] .\n- There is a misconception that people’s sense of smell is weak.\n- In fact, subtle smells have great impacts on people’s mood.\n- People’s noses cannot detect the [[32]] of the odour.\nPractical examples of how smell affects us\n- Estate agents arranged the smell of newly made [[33]] to encourage clients to buy the property quickly.\n- Dutch researchers found that the odour of [[34]] makes people want to go to clubs.\n- The smell of detergent makes students [[35]] the kitchen after using it.\n- A recent study showed that people make decisions depending on [[36]] .\nExperiments on how smells tell us people’s feelings\n- A group of scientists chose some sweat samples from sky divers.\n- Then they picked the same subjects who worked out in a [[37]] .\n- The result showed people reacted more strongly to the sky-dive sweat.\n- Some scientists also found that angry faces pose a [[38]] .\n- Some psychologists tried to test some students on whether they could smell [[39]] .\n- A chef lost her sense of smell, but regained the ability by smelling [[40]] on a daily basis.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "bear"
+       ],
+       "explanation": "\"The animal with the most accurate sense of smell of all — the bear.\""
+      },
+      {
+       "n": 32,
+       "answer": [
+        "source"
+       ],
+       "explanation": "\"People's noses can't detect the source of the odour — where exactly it's coming from.\""
+      },
+      {
+       "n": 33,
+       "answer": [
+        "bread"
+       ],
+       "explanation": "\"Estate agents arranged the smell of newly made bread to encourage clients to buy quickly.\""
+      },
+      {
+       "n": 34,
+       "answer": [
+        "oranges",
+        "orange"
+       ],
+       "explanation": "\"Dutch researchers found that when the aroma of oranges was pumped into the venue, people wanted to go to clubs.\""
+      },
+      {
+       "n": 35,
+       "answer": [
+        "clean"
+       ],
+       "explanation": "\"The smell of detergent made students clean the kitchen after using it.\""
+      },
+      {
+       "n": 36,
+       "answer": [
+        "emotions",
+        "emotion"
+       ],
+       "explanation": "\"A recent study showed people rely on their emotions to make a decision.\""
+      },
+      {
+       "n": 37,
+       "answer": [
+        "gym"
+       ],
+       "explanation": "\"Then they picked the same subjects who had worked up their sweat in a gym.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "threat"
+       ],
+       "explanation": "\"People react to angry faces because they pose a threat.\""
+      },
+      {
+       "n": 39,
+       "answer": [
+        "chocolate"
+       ],
+       "explanation": "\"Psychologists tested whether students could sniff out a trail of chocolate.\""
+      },
+      {
+       "n": 40,
+       "answer": [
+        "spices",
+        "spice"
+       ],
+       "explanation": "\"A chef lost her sense of smell but retrained herself by sniffing spices for 10 minutes a day.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "Strangely enough, it's not as helpful as the title suggested. It offers a huge variety of activities and strategies which are great when working with young children. But they're presented in a rather haphazard way and the index isn't much use either. Be very careful when using it.\nYou are giving a talk to psychology students about people's sense of smell.\nGood afternoon. So far in this course on perception we have focused on sight. Today, we're going to move on to consider a sense that has received rather less attention in the literature on human perception. That is our sense of smell.\nIt's often said that our ability to sense smells is much less developed than that of animals such as the dog, or a fish such as the shark, or of course the creature which is believed to have the most acute sense of smell of all - the bear . Yet it seems that this belief that the human sense of smell is weak might actually be a misconception. According to a number of recent studies, our noses are sensitive instruments that influence us in surprising ways. Subtle smells can change your mood; smell can even influence what you go for when you have to make choices, perhaps about whether to buy something or not.\nYet the power that smell has over us is by and large not something that we are aware of. So the big mystery is why it is subconscious. One possible reason is that our noses aren't well equipped to detect the source of an odour , and so we dismiss it.\nLet's look at some practical examples of how smell can influence us. The power of smell will be no news to estate agents. They often suggest that people who want to sell a house arrange things so that there is a smell of newly baked bread on the property to encourage viewers to want to buy it.\nBut there are more subtle and surprising effects too. For instance, Dutch researchers carried out a study into the impact of smell in a nightclub. They discovered, rather to their surprise, that when the aroma of oranges was pumped into the venue, the guests partied harder, they danced more , rated their night as more enjoyable, and even thought the music was better than when there was no added scent.\nAnother study found that the hint of a smell wafting out of a hidden bucket of lemon-scented detergent was enough to persuade students to clean the communal kitchen after using it , even though the vast majority of them hadn't actually registered the smell.\nOther workers found that scent can influence our cognitive skills. A study this year gave participants a task to test their decision-making abilities. It found that subjecting people to a new smell, either good or bad, let people rely on their emotions to make a decision rather than relying on logic . As a result, these people performed significantly worse than normal when doing the task.\nOur sense of smell may even help us to pick up on how those around us are feeling. It has been shown that certain animals can smell each other's fear. Is it possible that humans can do the same thing?\nTo test the idea, one team of scientists took sweat samples from people doing a skydive for the first time. They also took sweat samples from the same people after they had worked up their sweat in a gym , a situation where no fear is involved. They presented the different samples in turn to a series of subjects who did not know the reason for the experiment. As they did this, the scientists observed the subjects' brain activity by means of a scanner, and they saw a much stronger reaction to the skydive sweat.\nThe team of scientists next tested whether the smell of fear sweat, that is the sweat of the skydivers, affected people's responses to various facial expressions. Normally, people pay more attention to angry faces because they pose a threat . However, after smelling the fear sweat, the participants gave the same amount of attention to neutral facial expressions.\nDespite the impact of smell, most people seem totally unaware of how they are being affected by scents. However, some psychologists have been trying to train people's noses. They persuaded 32 students to wear blindfolds and ear defenders and see whether they could sniff out a trail of chocolate . They found that after three days of practice, the students were all much more accurate in following the trail.\nFurther evidence of our ability to train our noses comes from a chef who lost her sense of smell after an illness. Knowing that her job depended on her having a good nose, she trained herself gradually by sniffing spices for 10 minutes a day . Gradually, her ability to smell returned. 1. 7.45 | 2. celebration | 3. vegetarian | 4. strawberries | 5. cheese | 6. disco | 7. flowers | 8. congratulations | 9. taxi | 10. 07749132760 11. B | 12. A | 13. C | 14. B | 15. C | 16. D | 17. F | 18. B | 19. G | 20. A 21. B | 22. C | 23. C | 24. B | 25. A | 26. D | 27. F | 28. G | 29. B | 30. E 31. bear | 32. source | 33. bread | 34. oranges | 35. clean | 36. emotions | 37. gym | 38. threat | 39. chocolate | 40. spices ‹ › Part 1 0 of 10 Part 2 0 of 10 Part 3 0 of 10 Part 4 0 of 10 Check Answers Highlight Note Clear Your Results ×"
+  }
+ ],
+ "audio": {
+  "file": "listening-59.mp3",
+  "durationSec": 1580,
+  "questionTimes": {
+   "1": 63,
+   "2": 82,
+   "3": 93,
+   "4": 126,
+   "5": 139,
+   "6": 208,
+   "7": 220,
+   "8": 231,
+   "9": 254,
+   "10": 266,
+   "11": 399,
+   "12": 413,
+   "13": 449,
+   "14": 473,
+   "15": 566,
+   "16": 580,
+   "17": 601,
+   "18": 616,
+   "19": 629,
+   "20": 642,
+   "21": 776,
+   "22": 788,
+   "23": 840,
+   "24": 865,
+   "25": 940,
+   "26": 970,
+   "27": 984,
+   "28": 1013,
+   "29": 1025,
+   "30": 1048,
+   "31": 1203,
+   "32": 1217,
+   "33": 1246,
+   "34": 1272,
+   "35": 1299,
+   "36": 1319,
+   "37": 1374,
+   "38": 1393,
+   "39": 1418,
+   "40": 1445
+  }
+ }
+}

@@ -1,0 +1,687 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-45",
+ "title": "CDI Reading Test 45",
+ "description": "A full Academic Reading test from the CDI practice materials: Andrew Carnegie: industrialist and philanthropist; Translating: a key to international understanding?; The mystery of Easter Island.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Andrew Carnegie: industrialist and philanthropist",
+  "Translating: a key to international understanding?",
+  "The mystery of Easter Island"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Andrew Carnegie: industrialist and philanthropist",
+   "paragraphs": [
+    {
+     "text": "The Scottish-born American industrialist and philanthropist Andrew Carnegie, who was the leader of the American steel industry from 1873 to 1901, donated large sums of his fortune to educational, cultural, and scientific institutions. He was born in 1835 in Scotland, the son of William Carnegie, a weaver, and Margaret Morrison Carnegie."
+    },
+    {
+     "text": "With the invention of weaving machines, William Carnegie's job disappeared, and eventually the family was forced into poverty. In 1848 the family left Scotland and settled in Pittsburgh, Pennsylvania, in the USA. William found a job in a cotton factory, but he soon quit to return to his home handloom, making linens and trying to sell them door-to-door. Andrew Carnegie also worked in the cotton factory, but after his father died in 1855, his strong desire to help take care of the family pushed him to educate himself. He became an avid reader, a theatergoer, and a lover of music."
+    },
+    {
+     "text": "Andrew Carnegie became a messenger boy in a telegraph office and later became a telegraph operator. Thomas A. Scott, superintendent of the western division of the Pennsylvania Railroad, made the eighteen-year-old his secretary. Carnegie was soon earning enough to buy a house for his mother. During the Civil War in the United States (1861–65), he helped organize the military telegraph system, but soon returned to Pittsburgh to take Scott's old job with the railroad."
+    },
+    {
+     "text": "Between 1865 and 1870 Carnegie made money through investments in several small iron mills and factories. He also traveled throughout England, selling the bonds of small United States railroads and bridge companies. Carnegie began to see that steel was eventually going to replace iron for the manufacture of rails, structural shapes, pipe, and wire. In 1873 he organized a steel rail company and continued building by cutting prices, driving out competitors, shaking off weak partners, and putting earnings back into the company. He never went public (sold shares of his company in order to raise money). Instead he obtained capital from profit, and when necessary from banks, and he kept on growing, making heavy steel alone."
+    },
+    {
+     "text": "In the 1880s Carnegie's purchases included a majority stake in the H C Frick Company in Pennsylvania that had vast coal interests, and also the Homestead mills business. Frick became his partner and eventually chairman of the Carnegie Company. Carnegie had moved to New York City in 1867 to be close to the marketing centers for steel products, while Frick stayed in Pennsylvania as the general manager. They made a good team. Behind the scenes, Carnegie planned new projects and the improvement of existing plants; Frick was the working director who watched over the mass-production programs that helped keep price down."
+    },
+    {
+     "text": "Carnegie spent his leisure time traveling. He also wrote several books, including Triumphant Democracy (1886), which pointed out what he thought were the advantages of life in the United States over the unequal societies of Britain and other European countries. To Carnegie, access to education was the key to America's political stability and industrial accomplishments. In 1889 he published an article, 'Wealth', stating his belief that the rich had a duty to use their money to improve the welfare of the community. Carnegie remained a bachelor until his mother died in 1886. A year later he married Louise Whitfield and they had one child together. The couple began to spend six months each year in Scotland, though Carnegie kept an eye on business developments and problems."
+    },
+    {
+     "text": "Carnegie's absence from the United States was a factor in the Homestead mills strike of 1892. After acquiring Homestead, Carnegie had invested in new plants and equipment, increased production, and automated many of the mill's operations, cutting down the number of workers that were needed. Carnegie believed that workers had a right to join unions and to bargain with management through their unions. He also recognized the right to strike, as long as the action was conducted peacefully. He viewed strikes as trials of strength, with peaceful discussion resolving the conflict. In contract talks during 1892, Frick wanted to lower the minimum wage because of the need for fewer workers. The union representing his workers would not accept this and organized a strike."
+    },
+    {
+     "text": "Following a violent confrontation that resulted in the death of eight workers, soldiers were sent in to restore order and Carnegie was criticized for his lack of action. In the 1890s Carnegie also began to meet with tougher competition from newer, bigger companies who were interested in controlled prices and sharing the market. Companies that he had sold to for years threatened to cut down their purchases unless he agreed to cooperate. These threats made him decide to fight back. He refused to enter into any agreements with other companies. Moreover, he decided to invade their territories by making similar products and by expanding his sales activities into the west of the country. Eventually, though, he decided to sell his company to the newly formed U.S. Steel Corporation in 1901 for almost $500 million. Carnegie's personal share was $225 million."
+    },
+    {
+     "text": "In retirement, Carnegie began to set up trust funds 'for the improvement of mankind'. He built some three thousand public libraries all over the English-speaking world and funded galleries, museums and concert halls in the US. He also built a group of technical schools, a research institute, and a foundation providing pensions for university professors. When Carnegie died in 1919, the continuation of his broad interests was put under the general charge of the Carnegie Corporation, with a donation of $125 million."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Carnegie's Life",
+     "template": "1835–1855\n- found employment in the same workplace as his [[1]]\n- educated himself through books, theatrical performances and [[2]]\n1855–1865\n- worked in a telegraph office\n- became [[3]] to Thomas A Scott at Pennsylvania Railroad\n1865–1870\n- made investments in the US and England\n- realised that changing engineering needs would require a greater demand for [[4]]\n1873\n- managed a rail manufacturing business by:\n° reducing [[5]]\n° restructuring\n° reinvesting profit and sometimes borrowing money from [[6]]\n1880s\n- Frick and Carnegie became partners\n- Carnegie's responsibilities:\n° arranging future [[7]] and innovations for factories\n- Frick's responsibilities: Production",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "father"
+       ],
+       "explanation": "Andrew worked in the cotton factory where his father William had also been employed. Para 2: 'William found a job in a cotton factory… Andrew Carnegie also worked in the cotton factory.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "music"
+       ],
+       "explanation": "The three things he used to educate himself were books, theatre, and music. Para 2: 'an avid reader, a theatergoer, and a lover of music.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "secretary"
+       ],
+       "explanation": "Scott appointed the 18-year-old Carnegie to this role. Para 3: 'Thomas A. Scott… made the eighteen-year-old his secretary.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "steel"
+       ],
+       "explanation": "He foresaw that steel would replace iron in rails, pipes, etc. Para 4: 'steel was eventually going to replace iron.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "prices"
+       ],
+       "explanation": "One of his strategies for growth was cutting prices. Para 4: 'cutting prices, driving out competitors.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "banks"
+       ],
+       "explanation": "Capital came from profit and, when needed, from banks. Para 4: 'from profit, and when necessary from banks.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "projects"
+       ],
+       "explanation": "Carnegie planned new projects while Frick handled production. Para 5: 'Carnegie planned new projects and the improvement of existing plants.'"
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 8,
+       "text": "Carnegie believed that the USA offered more opportunities than European countries did.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 6: 'advantages of life in the United States over the unequal societies of Britain and other European countries.'"
+      },
+      {
+       "n": 9,
+       "text": "A smaller workforce was required at the Homestead factory after Carnegie took control.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 7: 'automated many of the mill's operations, cutting down the number of workers that were needed.'"
+      },
+      {
+       "n": 10,
+       "text": "Carnegie prevented his workers from joining unions.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 7: 'Carnegie believed that workers had a right to join unions.'"
+      },
+      {
+       "n": 11,
+       "text": "Carnegie blamed Frick for the violent workers' strike in 1892.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The text says Carnegie was criticised, but nothing about him blaming Frick."
+      },
+      {
+       "n": 12,
+       "text": "In the 1890s Carnegie negotiated with his competitors.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 8: 'He refused to enter into any agreements with other companies.'"
+      },
+      {
+       "n": 13,
+       "text": "Carnegie's provision of funds for libraries was limited to those in the United States.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 9: 'three thousand public libraries all over the English-speaking world' — not just the US."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Translating: a key to international understanding?",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The term 'translation' is used for all cases where the meaning of expressions in one language (the 'source' language) is turned into the meaning in another (the target language), whether the medium is spoken, written, or signed. In specific professional contexts, however, a distinction is drawn between work with the spoken or signed language (interpreting), and work with the written language (translating), although certain tasks blur this distinction."
+    },
+    {
+     "label": "B",
+     "text": "It is sometimes said that there is no task more complex than translation — a claim that can be readily believed when all the variables involved are taken into account. Translators not only need to know their source language well; they must also have a thorough understanding in the field of knowledge covered by the source text, and of any social, cultural, or emotional connotations that need to be specified in the target language if the intended effect is to be conveyed. The same special awareness needs to be present for the target language, so that points of special phrasing, contemporary fashions in expression, local expectations, and so on, can all be taken into account. On the whole, translators work into their mother tongue (or language of habitual use), to ensure a result that sounds as natural as possible though some translators have argued that, for certain types of text (e.g., scientific material) where translation accuracy is more crucial than naturalness, it makes more sense for the translators to be more fluent in the source language."
+    },
+    {
+     "label": "C",
+     "text": "The aim of translation is to provide semantic equivalence between source and target language. This is what makes translation different from other linguistic activities, such as adapting, precise writing, and abstracting. However, there are many problems hidden within this apparently simple statement, all to do with what standards of 'equivalence' should be expected and accepted."
+    },
+    {
+     "label": "D",
+     "text": "Exact equivalence is of course impossible: no translator could provide a translation that was a perfect parallel to the source text, in such respects as rhythm, puns and cultural allusions. Such a parallel is not even possible when paraphrasing within a single language: there is always some loss of information."
+    },
+    {
+     "label": "E",
+     "text": "On the other hand, there are many kinds of inexact equivalence, any of which can be successful at a certain level of practical functioning. It therefore follows that there is no such thing as a best translation. The success of translation depends on the purpose for which it was made, which in turn reflects the needs of the people for whom it was made. A rough-and-ready translation of a letter can suffice to inform a firm of the nature of an enquiry. A translation of a scientific article requires careful attention to meaning but little attention to stylistic features. The provision of a dubbed film script will warrant scrupulous care over the synchronisation of lip movements, often at the expense of content. Literary work requires a sensitive consideration of form as well as content, and may prompt several translations, each of which emphasises a different aspect of the original. It is easy to see what might be 'best' for one set of circumstances may be entirely unsuitable for another."
+    },
+    {
+     "label": "F",
+     "text": "Several different kinds of translation have been proposed to allow for this range of possibilities. A pragmatic translation emphasises accuracy and knowledge of the subject, required for instruction manuals and much scientific research. In an aesthetic translation, important for literary material, the focus is on preserving the emotional as well as the cognitive content of the work, and on maintaining some level of stylistic equivalence. Ethnographic or sociolinguistic translations aim to pay full attention to the cultural backgrounds of the authors and the recipients, and take into account differences between source and target language, and the ways of life in which they are embedded. And there are various kinds of linguistic translation, where the aim is to convey the structural flavour of the original text, often in quite a literal manner, emphasising such features as archaisms, dialecticisms, and levels of formality. Most translations, of course, are mixtures of these theoretical types, reflecting the complex reality of language in use."
+    },
+    {
+     "label": "G",
+     "text": "At another level, in a word-for-word translation each word in the source language is translated by a word in the target language. The result often makes no sense, especially when idiomatic constructions are used. In a literal translation the linguistic structure of the source text is followed, but is normalised according to the rules of the target language. In a free translation the linguistic structure of the source language is ignored, and an equivalent is found based on the meaning it conveys."
+    },
+    {
+     "label": "H",
+     "text": "Translators aim to produce a text that is as faithful to the original as circumstances require or permit, and yet that reads as if it were written originally in the target language. They aim to be \"invisible people\" — transferring content without drawing attention to the considerable artistic and technical skills involved in the process. The complexity of the task is apparent, but its importance is often underestimated, and its practitioners' social status and legal rights undervalued. Some countries view translation as a menial, clerical task, and pay their translators accordingly, while others regard it as a major intellectual discipline in its own right. The question of status is currently much debated, particularly in Europe, where demand for translators is rocketing, especially in relation to the European Union."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has 8 paragraphs, A–H. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      },
+      {
+       "key": "H",
+       "text": "Paragraph H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "the effect that a client's requirements have on the nature of a translation",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Para E: 'The success of translation depends on the purpose for which it was made, which in turn reflects the needs of the people for whom it was made.'"
+      },
+      {
+       "n": 15,
+       "text": "contrasting attitudes towards translators",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Para H: 'Some countries view translation as a menial, clerical task… while others regard it as a major intellectual discipline.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from paragraphs C, D and E for each answer.",
+     "wordLimit": 2,
+     "title": "The goal of translation",
+     "template": "Translation is an attempt to create a text in the target language which displays [[16]] with a source text. It is inevitable that not all information can be conveyed, however, so translations are best judged according to their [[17]]. For example, the translator of a business letter or scientific text does not need to consider its [[18]] aspects, while someone dubbing a film may give a relatively low value to [[19]].",
+     "questions": [
+      {
+       "n": 16,
+       "answer": [
+        "semantic equivalence"
+       ],
+       "explanation": "Para C: 'The aim of translation is to provide semantic equivalence.'"
+      },
+      {
+       "n": 17,
+       "answer": [
+        "practical functioning"
+       ],
+       "explanation": "Para E: 'there are many kinds of inexact equivalence, any of which can be successful at a certain level of practical functioning.'"
+      },
+      {
+       "n": 18,
+       "answer": [
+        "stylistic"
+       ],
+       "explanation": "Para E: 'a scientific article requires careful attention to meaning but little attention to stylistic features.'"
+      },
+      {
+       "n": 19,
+       "answer": [
+        "content"
+       ],
+       "explanation": "Para E: 'scrupulous care over the synchronisation of lip movements, often at the expense of content.'"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following features of translating and the types of translation below. Match each feature with the correct type of translation, A–F.",
+     "title": "Types of Translation",
+     "options": [
+      {
+       "key": "A",
+       "text": "aesthetic"
+      },
+      {
+       "key": "B",
+       "text": "ethnographic"
+      },
+      {
+       "key": "C",
+       "text": "free"
+      },
+      {
+       "key": "D",
+       "text": "literal"
+      },
+      {
+       "key": "E",
+       "text": "pragmatic"
+      },
+      {
+       "key": "F",
+       "text": "word-for-word"
+      }
+     ],
+     "questions": [
+      {
+       "n": 20,
+       "text": "focuses on reproducing the content accurately",
+       "answer": [
+        "E"
+       ],
+       "explanation": "E (pragmatic). Para F: 'A pragmatic translation emphasises accuracy and knowledge of the subject.'"
+      },
+      {
+       "n": 21,
+       "text": "looks at important cultural aspects of language use",
+       "answer": [
+        "B"
+       ],
+       "explanation": "B (ethnographic). Para F: 'Ethnographic or sociolinguistic translations aim to pay full attention to the cultural backgrounds.'"
+      },
+      {
+       "n": 22,
+       "text": "follows the original grammatical structures as required by the target language",
+       "answer": [
+        "D"
+       ],
+       "explanation": "D (literal). Para G: 'the linguistic structure of the source text is followed, but is normalised according to the rules of the target language.'"
+      },
+      {
+       "n": 23,
+       "text": "focuses on meaning without necessarily using the original grammatical structures",
+       "answer": [
+        "C"
+       ],
+       "explanation": "C (free). Para G: 'the linguistic structure of the source language is ignored, and an equivalent is found based on the meaning.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose THREE letters, A–F.",
+     "title": "Which THREE of the following points are mentioned by the writer of the passage?",
+     "options": [
+      {
+       "key": "A",
+       "text": "The objectives of translating are always clearly different from those of interpreting."
+      },
+      {
+       "key": "B",
+       "text": "A translator may need to consider the culture of the target language."
+      },
+      {
+       "key": "C",
+       "text": "Translation is an activity which requires professional training."
+      },
+      {
+       "key": "D",
+       "text": "It is difficult to specify what constitutes a very good translation."
+      },
+      {
+       "key": "E",
+       "text": "The skill required for translation is increasingly gaining recognition."
+      },
+      {
+       "key": "F",
+       "text": "A translation should give the impression of being an original work."
+      }
+     ],
+     "questions": [
+      {
+       "n": 24,
+       "answer": [
+        "B",
+        "D",
+        "F"
+       ],
+       "explanation": "B: Para B mentions cultural connotations needing to be specified in the target language. D: Para E states there is no such thing as a best translation. F: Para H states a translation should read as if it were originally written in the target language. See Question 24. See Question 24."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "B",
+        "D",
+        "F"
+       ],
+       "explanation": "B: Para B mentions cultural connotations needing to be specified in the target language. D: Para E states there is no such thing as a best translation. F: Para H states a translation should read as if it were originally written in the target language. See Question 24. See Question 24."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "B",
+        "D",
+        "F"
+       ],
+       "explanation": "B: Para B mentions cultural connotations needing to be specified in the target language. D: Para E states there is no such thing as a best translation. F: Para H states a translation should read as if it were originally written in the target language. See Question 24. See Question 24."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The mystery of Easter Island",
+   "subtitle": "What could possibly explain the lack of vegetation on Easter Island?",
+   "paragraphs": [
+    {
+     "text": "The giant stone statues of Easter Island in the Pacific Ocean have perplexed archaeologists ever since European explorers first witnessed them three centuries ago. Jacob Roggeveen, the Dutch seaman who gave the island its name in 1722, was amazed by the statues, each of which clearly weighed several tonnes. But as there were no forests on the island, he could not comprehend how people devoid of heavy timber could build and erect something that size. It was also remarkable considering the absence of metal objects for carving and cutting, and the reliance on mere human strength as no draught animals could be seen either. Roggeveen was equally amazed as to how the islanders could have come to colonise such a remote place. Their canoes were leaky and frail, not the sort of ocean-going craft that could survive a three-week sea journey. At the time of his visit, it seemed evident the islanders were living in extremely poor conditions and that there was no cultivation of crops."
+    },
+    {
+     "text": "What was the mystery behind the statues? In the 1970s, the author Erich von Däniken suggested the statues were the work of extraterrestrial beings. It was hard to believe the stones were the work of humans who were more than 2,000 miles from the nearest mainland, so for a short period of time his theory appealed to those fascinated with space travel. But for serious academics, the puzzle of the statues has caused a deep divide. Some archaeologists see Easter Island as an example of what can happen when the lust for material splendour — ever bigger stone carvings in this case — is satisfied at the expense of the environment. Others, meanwhile, take a different view. The island, these scholars argue, suffered at the hands of introduced diseases, notably smallpox, and a slave trade that stole a huge proportion of its indigenous population. At the heart of the debate is the issue of the island's deforestation. There is no doubt that the island was once covered in palm trees. There is also no doubt that something happened that caused the island to become completely denuded over a short period of time. But was it the islanders who triggered this environmental degradation or another event beyond their control, such as the introduction of rats? It is an indisputable fact that rats found their way to the island, although exactly how is a matter of debate."
+    },
+    {
+     "text": "In 2005, the anthropologist Jared Diamond claimed the islanders started building ceremonial statues in an atmosphere of rivalry between the many clans. To move the statues from the island's quarry in the south-east, they needed to cut large logs for the construction of long 'canoe ladders' to carry them to the coast. For its transport alone, each statue would have required several trees to be cut down. As a result of the deforestation, Diamond believes food production fell dramatically. Consequently the population collapsed from perhaps as many as 15,000 to the few thousand that were eking out a living by the time Roggeveen arrived. Smallpox and slavery killed off those who remained, but the islanders were on the way to total collapse even without any European contact, says Diamond."
+    },
+    {
+     "text": "But not everyone is convinced. Professor Terry Hunt, an anthropologist at the University of Hawaii, says: 'There is no evidence that a population collapse occurred before European contact.' He is supported by Professor Carl Lipo of California State University. They argue that Easter Island was colonised by the first Polynesian seafarers nowhere near as early as supposed. They say the first people to arrive came around AD1200, about 400 years later than other scientists have suggested from radio-carbon dating. This makes it implausible for the population to have reached the 15,000 figure that would have caused such a fast ecocide. They also believe the deforestation occurred over a longer period as a result of climate change, and rats probably also played a part. The islanders did not go through a population collapse until after the arrival of Europeans, they say."
+    },
+    {
+     "text": "Hunt has examined new data from the Hawaiian and other Pacific islands that shows that by early historic times the deforestation of Easter Island was already complete, or nearly so. A dense forest of palm trees and shrubs had mostly disappeared and as a result, as many as six land bird species had also become extinct. Crucially, much of the forest damage appears to have been done before evidence of fires on the island. However, almost all of the palm seed shells discovered on the island were found to have been gnawed by rats which would have made them unable to germinate. Evidence from other Pacific islands also confirms how destructive rats can be. However, John Flenley of New Zealand's Massey University, who carried out much of the radio-carbon work on Easter Island, says there is ample evidence for a much earlier arrival of Polynesian settlers. He refutes the arguments of the sceptics: whilst admitting that the Europeans did bring certain disasters, he maintains that Hunt and Lipo are ignoring archaeological, botanical and sedimentological evidence proving the island was transformed from a subtropical rainforest to a treeless landscape. The radio-carbon dating points to an initial colonisation before AD900, Flenley argues. This was ample time for the rapid deforestation, environmental collapse and a population crash, he insists."
+    },
+    {
+     "text": "Why all this is important today is not, of course, lost in the age of globalisation, climate change and a rapidly growing world population in the billions. As Diamond says: 'The parallels between Easter Island and the whole of the modern world are chillingly obvious.'"
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words and phrases, A–D, below.",
+     "title": "Early European reaction to the discovery of Easter Island",
+     "options": [
+      {
+       "key": "A",
+       "text": "poverty"
+      },
+      {
+       "key": "B",
+       "text": "agriculture"
+      },
+      {
+       "key": "C",
+       "text": "boats"
+      },
+      {
+       "key": "D",
+       "text": "wood"
+      }
+     ],
+     "template": "When Dutchman Jacob Roggeveen sailed to Easter Island in 1722, he was amazed by the stone statues he saw for a number of reasons. Firstly, it was clear that they were immensely heavy, and there was no [[27]] around, which would have helped with their construction. Roggeveen did not think the inhabitants had any metal tools, or animals for heavy labour either. Another mystery was the poor quality of the local inhabitants' [[28]]; Roggeveen wondered how the people had managed to survive long trips. At the time of Roggeveen's visit, the islanders were living in [[29]], and there was little sign of [[30]] on the island.",
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "D"
+       ],
+       "explanation": "D = wood. Para 1: 'as there were no forests on the island, he could not comprehend how people devoid of heavy timber could build…'"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "C"
+       ],
+       "explanation": "C = boats. Para 1: 'Their canoes were leaky and frail, not the sort of ocean-going craft.'"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "A"
+       ],
+       "explanation": "A = poverty. Para 1: 'the islanders were living in extremely poor conditions.'"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "B"
+       ],
+       "explanation": "B = agriculture. Para 1: 'there was no cultivation of crops.'"
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 31,
+       "text": "Erich von Däniken's claims were briefly accepted by some sections of society.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Para 2: 'for a short period of time his theory appealed to those fascinated with space travel.'"
+      },
+      {
+       "n": 32,
+       "text": "Archaeologists removed valuable artefacts from the island.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage doesn't mention archaeologists taking artefacts."
+      },
+      {
+       "n": 33,
+       "text": "Smallpox continued to affect Easter Island's inhabitants for centuries.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Smallpox is mentioned as a disease that struck the island, but not how long it lasted."
+      },
+      {
+       "n": 34,
+       "text": "It remains open to question whether Easter Island was once covered in forest.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Para 2: 'There is no doubt that the island was once covered in palm trees.'"
+      },
+      {
+       "n": 35,
+       "text": "The way that rats arrived on Easter Island is still to be established.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Para 2: 'It is an indisputable fact that rats found their way to the island, although exactly how is a matter of debate.'"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 36,
+       "text": "What does Jared Diamond blame for the lack of vegetation on Easter Island?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The construction of stone statues"
+        },
+        {
+         "key": "B",
+         "text": "Climate change over a long period"
+        },
+        {
+         "key": "C",
+         "text": "A method of transportation"
+        },
+        {
+         "key": "D",
+         "text": "The arrival of Europeans"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para 3: 'To move the statues… they needed to cut large logs for the construction of long canoe ladders.' — the method of transportation."
+      },
+      {
+       "n": 37,
+       "text": "What do Hunt and Lipo suggest about the population of Easter Island?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It collapsed before European contact"
+        },
+        {
+         "key": "B",
+         "text": "The first settlers arrived much later than is widely accepted"
+        },
+        {
+         "key": "C",
+         "text": "It never exceeded a few thousand inhabitants"
+        },
+        {
+         "key": "D",
+         "text": "It declined mainly because of disease"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Para 4: 'the first people to arrive came around AD1200, about 400 years later than other scientists have suggested.'"
+      },
+      {
+       "n": 38,
+       "text": "What is suggested about rats on Easter Island in the fifth paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They were a likely cause of deforestation"
+        },
+        {
+         "key": "B",
+         "text": "They arrived after the forests had disappeared"
+        },
+        {
+         "key": "C",
+         "text": "They had no effect on plant regeneration"
+        },
+        {
+         "key": "D",
+         "text": "They were introduced by Europeans"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para 5: 'almost all of the palm seed shells… were found to have been gnawed by rats which would have made them unable to germinate.'"
+      },
+      {
+       "n": 39,
+       "text": "Flenley responds to Hunt and Lipo's theory by",
+       "options": [
+        {
+         "key": "A",
+         "text": "dismissing it"
+        },
+        {
+         "key": "B",
+         "text": "partially supporting it"
+        },
+        {
+         "key": "C",
+         "text": "expanding on their arguments"
+        },
+        {
+         "key": "D",
+         "text": "avoiding direct criticism"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para 5: 'He refutes the arguments of the sceptics… Hunt and Lipo are ignoring archaeological, botanical and sedimentological evidence.'"
+      },
+      {
+       "n": 40,
+       "text": "The writer's purpose in this article is to",
+       "options": [
+        {
+         "key": "A",
+         "text": "argue in favour of Diamond's interpretation"
+        },
+        {
+         "key": "B",
+         "text": "provide an overview of a series of arguments"
+        },
+        {
+         "key": "C",
+         "text": "prove that rats were the main cause of deforestation"
+        },
+        {
+         "key": "D",
+         "text": "criticise modern archaeological methods"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The writer presents multiple competing theories without endorsing one — an overview of arguments."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

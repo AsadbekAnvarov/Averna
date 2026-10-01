@@ -1,0 +1,531 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-19",
+ "title": "CDI Listening Test 19",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Listen and answer Questions 1–10",
+  "Listen and answer Questions 11–20",
+  "Listen and answer Questions 21–30",
+  "Listen and answer Questions 31–40"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-19-part-1",
+   "title": "Part 1",
+   "context": "Listen and answer Questions 1–10.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Sumerton – Activity Centre\n- Location: North Hill, opposite the [[1]]\n- A lot of areas for [[2]]\n- Free entry includes a free [[3]] to adults\n- New attractions include a large [[4]] for the \"Wildcat\"\n- Children can play in new [[5]] courses\nRequirements:\n- Children must wear [[6]]\n- Wear a pair of [[7]]\n- Give a label for their [[8]]\n- Minimum number of participants: [[9]]\n- Birthday parties include: food, drink, [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "toy factory"
+       ],
+       "explanation": "We're now opposite the toy factory."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "parking"
+       ],
+       "explanation": "There's plenty of parking available."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "drink"
+       ],
+       "explanation": "Adults receive a complimentary drink."
+      },
+      {
+       "n": 4,
+       "answer": [
+        "slide"
+       ],
+       "explanation": "A large slide, which we call the Wildcat."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "mini golf"
+       ],
+       "explanation": "A mini golf area with five themed courses."
+      },
+      {
+       "n": 6,
+       "answer": [
+        "trousers"
+       ],
+       "explanation": "All children must wear trousers."
+      },
+      {
+       "n": 7,
+       "answer": [
+        "socks"
+       ],
+       "explanation": "Every child must also wear socks."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "name"
+       ],
+       "explanation": "Bring a label with each child's name."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "8",
+        "eight"
+       ],
+       "explanation": "At least eight children minimum."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "decorations"
+       ],
+       "explanation": "Package includes food, drinks and decorations."
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a conversation between a woman and the receptionist of the Sumaton Child Care Centre.\nNow, answer all questions from 1 to 10.\nGood morning. You've reached Sumaton Child Care Centre. This is Sarah speaking. How can I assist you today?\nHi, Sarah. I'm planning to visit your centre with my children next weekend, and I'd like to get some information about your facilities and activities.\nOf course. I'd be happy to help. First, let me give you our location. We're on North Hill, right opposite the supermarket. Oh, wait. Sorry about that. That's our old location. We're now opposite the toy factory, just down the road.\nGot it. Is parking available there?\nAbsolutely. There's plenty of parking available, both in front of the center and in the overflow lot around the corner.\nYou'll find it much easier than the old location, which had limited space.\nThat's a relief. What about entry fees?\nEntry is actually free for everyone, and to make it even better, adults receive a complimentary drink.\nSome people think it's only coffee, but we offer tea, water, and even juice as options.\nThat's generous. Are there any new features or attractions at your centre?\nOh, yes. We've added a lot recently.\nThere's a large slide, which we call the Wildcat.\nIt's quite popular. It's bigger and steeper than our older slides, so it's a real hit.\nThen we've introduced a mini golf area for children, complete with five themed courses.\nWow, that sounds amazing. Are there any other play areas?\nWell, we still have the Jungle Gym and the Arts and Crafts Corner, but those aren't new.\nThere's also a sandpit, but it's currently under renovation.\nThe slide and the golf courses are the main attractions we're highlighting this year.\nGreat. Are there any special requirements for kids who want to participate?\nYes, there are a few.\nFirst, all children must wear trousers.\nThis is mainly for safety during activities like sliding or climbing.\nShorts just aren't suitable.\nOkay, that's good to know.\nOh, and every child must also wear socks.\nThis is particularly important for the indoor play zones, as we don't allow barefoot play for hygiene reasons.\nGot it. Anything else we need to prepare?\nYes. You'll need to bring a label with each child's name on it.\nWe can provide labels at the centre if you forget, but it's easier if you come prepared.\nSure, I can manage that. By the way, I'm also thinking of organising a birthday party for my son. Do you have any packages for that?\nAbsolutely. Our birthday party packages are very popular. To book a party, you'll need at least eight children. That's the minimum number of participants.\nAnd what's included in the package?\nThe basic package includes food, drinks and decorations.\nYou can also add optional extras like a cake or entertainment, say a magician or a clown for an additional fee.\nThat sounds nice. Do you cater for dietary restrictions?\nYes, we do. We have vegetarian and gluten-free options and we can customize the menu further if needed.\nJust let us know in advance so we can make the necessary arrangements.\nPerfect. Are there any discounts if we book early?\nActually yes If you book at least two weeks in advance you get a 10 discount on the total package price That applies to all parties booked for weekends That fantastic Thanks so much for the detailed information\nYou're welcome. Feel free to call back if you have any more questions, or you can visit our website for more details.\nWill do. Thanks again.\nThat is the end of part one."
+  },
+  {
+   "id": "cdi-listening-19-part-2",
+   "title": "Part 2",
+   "context": "Listen and answer Questions 11–20.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the flowchart below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Harvesting and Processing Cocoa Beans\nChocolate beans are [[11]] and then bags are shipped\n↓\nBags are then [[12]] and weighed by machines\n↓\nNext chocolate beans are [[13]] in a hopper\n↓\nAfter being roasted at a high temperature\n↓\nBoiled chocolate beans are [[14]] and cracked\n↓\nRoasted beans need to be [[15]]\n↓\nRoasted beans are [[16]] in the pocket",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "harvested"
+       ],
+       "explanation": "Chocolate beans are harvested."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "opened"
+       ],
+       "explanation": "Bags are then opened and weighed."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "cleaned"
+       ],
+       "explanation": "Next chocolate beans are cleaned in a hopper."
+      },
+      {
+       "n": 14,
+       "answer": [
+        "expanded"
+       ],
+       "explanation": "Beans will be expanded and cracked."
+      },
+      {
+       "n": 15,
+       "answer": [
+        "cooled"
+       ],
+       "explanation": "After cracking, they need to be cooled."
+      },
+      {
+       "n": 16,
+       "answer": [
+        "sealed"
+       ],
+       "explanation": "Roasted beans are sealed in pockets."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What does each type of coffee taste like? Write the correct letter, A–D, next to questions 17–20.",
+     "title": "Taste",
+     "options": [
+      {
+       "key": "A",
+       "text": "intense"
+      },
+      {
+       "key": "B",
+       "text": "mild"
+      },
+      {
+       "key": "C",
+       "text": "chocolaty"
+      },
+      {
+       "key": "D",
+       "text": "smoky"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "text": "First Crack",
+       "answer": [
+        "B"
+       ],
+       "explanation": "First Crack — mild taste."
+      },
+      {
+       "n": 18,
+       "text": "Green Beans",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Green Beans — smoky flavor."
+      },
+      {
+       "n": 19,
+       "text": "French Roast",
+       "answer": [
+        "C"
+       ],
+       "explanation": "French Roast — chocolaty flavor."
+      },
+      {
+       "n": 20,
+       "text": "Espresso Smoky",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Espresso Smoky — intense, concentrated."
+      }
+     ]
+    }
+   ],
+   "transcript": "Hello and welcome to today's talk.\nHere with me is the famous botanist, Professor Alison Downing.\nSo, Alison, tell us something about cocoa beans.\nCocoa beans, also called cacao beans, are the primary constituent in making chocolate.\nGrown in tropical areas in South and Central America, West Africa and Asia,\nthe cocoa tree is often raised on small family-owned farms.\nWhen the harvested pods are open to expose the beans, the pulp and cocoa seeds are removed and the rind is discarded.\nThe pulp and seeds are then piled in heaps, placed in bins or laid out on grates for several days.\nDuring this time, the seeds and pulp undergo a process called sweating, where the thick pulp liquefies as it ferments.\nThe fermented pulp trickles away, leaving cocoa seeds behind to be collected.\nThis is when the beans are harvested and then the bags holding them are ready to be transported.\nBut the most important step in processing the cocoa bean is cleaning it.\nOnce the beans are unloaded from the railroad cars, the packages are opened and then weighed by machines.\nThen, the pods are split and the seeds or beans are covered with a sweet white pulp or mucilage.\nOn arrival at the factory, the cocoa beans are sorted and put in a hopper to be cleaned more rigorously.\nThe wet beans are then transported to a facility so they can be fermented and dried.\nThey are fermented for 4 to 7 days and must be mixed every 2 days.\nThey are dried for 5 to 14 days depending on the climate conditions.\nThe fermented beans are dried by spreading them out over a large surface and constantly raking them.\nThen the beans are ready to be roasted.\nNow, roasting takes place at a high temperature and then the beans are boiled in a heated chamber.\nDuring the roasting process, the beans will be expanded and cracked.\nBut prior to this, the beans are trodden and shuffled about using bare human feet.\nDuring this process, red clay mixed with water is sprinkled over the beans to obtain a finer color, polish and protection against molds during shipment to factories in the United States, the Netherlands, the United Kingdom.\nand other countries. Now, back to what I was saying. After the beans are cracked, they\nneed to be cooled. Then the roasted beans are sealed in pockets.\nBefore you hear the rest of the talk, you have some time to look at questions 17 to 20.\nNow listen and answer questions 17 to 20 Wow that is not a simple process is it\nBut someone told me that different roasting levels of coffee can lead to different kinds of flavors.\nYes, roasting coffee transforms the chemical and physical properties of green coffee beans into roasted coffee products.\nThe roasting process is what produces the characteristic flavor of coffee by causing the green coffee beans to change in taste.\nUnroasted beans contain similar if not higher levels of acids, protein, sugars and caffeine as those that have been roasted.\nBut lack the taste of roasted coffee beans due to the maillard and other chemical reactions that occur during roasting.\nThe vast majority of coffee is roasted commercially on a large scale, but small-scale commercial roasting has grown significantly with the trend toward single-origin coffees served at specialty shops.\nSome coffee drinkers even roast coffee at home as a hobby in order to both experiment with the flavor profile of the beans and ensure the freshest possible roast.\nSo here I'm going to introduce some of these roasted coffee beans and their special flavors.\nNow, the first crack is lighter bodied and has a higher acidity level with no obvious roast flavor and is popular for its special mild taste.\nThis level of roast is ideal for tasting the full original character of the coffee.\nThe green beans are raw, unroasted coffee beans.\nThey are strictly hard beans with a smoky flavor and are slightly acidic.\nWe've also got French roast, and the flavor that comes across in French roast coffee usually has more to do with the roasting process than the actual quality of the beans.\nBy the time the beans are dark enough to qualify as French, most of their original flavor has dissipated.\nIn its place come the flavors of caramelizing sugar, bittersweet coffee, and often a bit of chocolate.\nAnd finally, espresso smoky, that is, coffee brewed by forcing a small amount of nearly boiling water under pressure through finely ground coffee beans.\nEspresso is generally thicker than coffee brewed through other methods, has a higher concentration of suspended and dissolved solids, and has creamer on top.\nAs a result of the pressurized brewing process, the flavors and chemicals in a typical cup of espresso are very concentrated.\nit. Espresso is also the base for other drinks, such as cafe latte, cappuccino, cafe machato,\ncafe mocha, flat white or cafe americano."
+  },
+  {
+   "id": "cdi-listening-19-part-3",
+   "title": "Part 3",
+   "context": "Listen and answer Questions 21–30.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Nicole received the best information from the",
+       "options": [
+        {
+         "key": "A",
+         "text": "staff."
+        },
+        {
+         "key": "B",
+         "text": "students."
+        },
+        {
+         "key": "C",
+         "text": "cleaners."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Cleaners revealed the most relevant facts."
+      },
+      {
+       "n": 22,
+       "text": "The product used most wastefully was",
+       "options": [
+        {
+         "key": "A",
+         "text": "copying paper."
+        },
+        {
+         "key": "B",
+         "text": "plastic."
+        },
+        {
+         "key": "C",
+         "text": "paper plates and cups."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Copying paper filled up most bins."
+      },
+      {
+       "n": 23,
+       "text": "The proportion of interviewed people who expressed concern over waste was",
+       "options": [
+        {
+         "key": "A",
+         "text": "30%."
+        },
+        {
+         "key": "B",
+         "text": "45%."
+        },
+        {
+         "key": "C",
+         "text": "55%."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "45% were more troubled about waste."
+      },
+      {
+       "n": 24,
+       "text": "The proportion who claim they take action over this problem was",
+       "options": [
+        {
+         "key": "A",
+         "text": "10%."
+        },
+        {
+         "key": "B",
+         "text": "one third."
+        },
+        {
+         "key": "C",
+         "text": "one half."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "An equal split — one half take action."
+      },
+      {
+       "n": 25,
+       "text": "Nicole thinks many people do nothing because they are",
+       "options": [
+        {
+         "key": "A",
+         "text": "lazy."
+        },
+        {
+         "key": "B",
+         "text": "uncaring."
+        },
+        {
+         "key": "C",
+         "text": "uninformed."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "If they knew what to do / uninformed."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the flowchart.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Procedure to Reduce Copying Waste\n[[26]] that the staff do double-sided copying\n↓\nUnwanted copies are [[27]] into a special recycling tray\n↓\n[[28]] these clearly, for easy reuse\n↓\nStack them in a special copying tray each morning\n↓\n[[29]] codes which allow each user to access this tray\n↓\nGive highest users a [[30]] (e.g. cinema tickets)",
+     "questions": [
+      {
+       "n": 26,
+       "answer": [
+        "Ensure"
+       ],
+       "explanation": "Ensure staff do double-sided copying."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "deposited"
+       ],
+       "explanation": "Unwanted copies are deposited into a tray."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "Display"
+       ],
+       "explanation": "Display these clearly for easy reuse."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "access"
+       ],
+       "explanation": "Codes allow each user to access this tray."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "reward"
+       ],
+       "explanation": "Give highest users a reward (cinema tickets)."
+      }
+     ]
+    }
+   ],
+   "transcript": "Hey Nicole, as you know we've got to decide on the best ways this university can reduce\nits waste. You inspected the eastern campus and I did the western buildings. Did you do\nall the interviews as well?\nYes, I interviewed all the staff who made some good observations\nand I interviewed some of the students.\nThe students said little that was interesting.\nThey don't seem to care that much.\nIt was the cleaners, surprisingly, who revealed the most relevant facts.\nThat's not surprising to me.\nThey empty all the bins so they see the waste firsthand,\nwhereas the staff just throw things away without thinking.\nWhat item was most commonly disposed of?\nWell it really depended on where I interviewed In the cafeteria precinct obviously paper plates and cups were thrown away all over the place There was almost no attempt at recycling However across the university in general it was paper copying that filled up most bins far more than plastic or other forms of waste\nDo people care about this then?\nWell, some do, if you can believe them. I must have interviewed about 30% of customers\nin the cafeteria, and the results were mixed. Out of all the people I interviewed, well\nover half, maybe about 55% of them were quite honest about it, telling me that they had little\nconcern. The other fraction, 45%, were more troubled. Yes, but do they do anything about it?\nSurprisingly, quite a significant percentage do do something, even if they aren't particularly\nconcerned. I mean, small things. About 10% bring their own cups to the cafeteria, for example,\nand at least one-third said they use recycling bins.\nSo, in total, it's an equal split between those who do something or those who don't.\nSo why do so many people remain inactive, particularly over an issue they should care about more?\nI think they do care, and many of them are prepared to do something.\nObviously, there's an element of laziness, but I'd say that it's relatively small.\nIf they knew what to do and if stringent systems existed, or if the importance of this was made clearer to them, I'm sure you'd see a much larger percentage of people actively working towards helping our environment.\nWell, there's cause for optimism at least.\nBefore you hear the rest of the conversation, you have some time to look at questions 26 to 30.\nNow listen and answer questions 26 to 30.\nClearly then, there's a significant waste of paper here at this university, so I've\nworked out one practical suggestion which could help reduce it, specifically the waste\nfrom the excess photocopying.\nLet me hear it then.\nAh, obviously, for a start, we've got to ensure that people, including the staff, without\nexception copy both sides of a page we can't tolerate single-sided copying it's\njust far too wasteful absolutely just more trees being chopped down but as\npeople are doing copying there may be adjustments and practice copying\nproducing single-sided copies or blank pages not wanted and not intended for\nuse these need to be deposited into a tray for intended recycling you know for\nrecopying onto the blank side of the page.\nBut people don't usually do that.\nI'm afraid it's just human nature.\nNo matter how unimportant the copying is,\nthey prefer to use fresh paper.\nYeah, I agree with you,\nwhich is why you need to display these papers\nright in front of everyone with a clear sign,\nplease reuse, to make it easy for them to do so.\nThey still won't do it.\nI know.\nThat's why you take some of these papers\nand regularly stack them inside the copier\nin a special tray once a day, say in the morning.\nWell, that's getting better, making it easier for them to use the paper.\nBut still, I'm afraid many won't.\nThat's why you allow everyone to select this tray when copying.\nYou distribute numbers or codes to every person,\ngiving them special access to this recycling tray.\nEvery time they use papers from this, it's tallied up to their account.\nI know I'm sounding a bit negative, or even cynical here,\nbut why should they bother using that tray?\nBecause the person who does the most copying from this recycling tray gets...\na cinema pass or lottery ticket or some other sort of reward.\nAh, right. Now that's a system which might just work.\nLet's trial it in the office and see what happens."
+  },
+  {
+   "id": "cdi-listening-19-part-4",
+   "title": "Part 4",
+   "context": "Listen and answer Questions 31–40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Transhumance\nTwo Types of Transhumance\n- fixed: mainly in countries with predictable seasons, e.g. Switzerland\n- nomadic: in areas with unpredictable climatic conditions, e.g. Somalia\nStudy on the Movement of Pastoralists\n- for fixed transhumance, the pattern of movement is described as [[31]]\n- while for nomadic transhumance, the pattern is more complex and varied\nDifferences in terms of Homes\n- fixed transhumance: live in a semi-permanent shelter on high ground such as [[32]]\n- nomadic transhumance: always stay in portable shelters, e.g. homes of the Gabra people carried on [[33]]\nNumber of People Involved\n- for fixed transhumance, only [[34]] pastoralists make the journey\n- however, all nomadic transhumance migrate with their livestock\nDiet and Goods\n- people who do not leave the valleys may become [[35]]\n- exchange animals with other communities for [[36]]\n- herds provide all needs — food and [[37]]\nResearch in Algeria in North Africa\n- they traditionally arrive in time to help local residents with the [[38]]\n- their homes are [[39]] which are temporary shelters\n- a better term to describe this type of transhumance might be [[40]]",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "vertical"
+       ],
+       "explanation": "The pattern is known as vertical."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "cabin"
+       ],
+       "explanation": "Semi-permanent shelter such as a cabin."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "camel"
+       ],
+       "explanation": "Gabra carries home frame on his camel."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "young"
+       ],
+       "explanation": "Normally the young ones travel."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "farmers"
+       ],
+       "explanation": "Those who stay may become farmers."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "grain"
+       ],
+       "explanation": "Trade animals for grain."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "clothing"
+       ],
+       "explanation": "Obtain food and also their clothing from herds."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "harvest"
+       ],
+       "explanation": "Assisted local farmers with the harvest."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "tents"
+       ],
+       "explanation": "They live in tents — movable and temporary."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "intermediate"
+       ],
+       "explanation": "More precisely referred to as intermediate."
+      }
+     ]
+    }
+   ],
+   "transcript": "Good afternoon, everyone.\nToday I'm going to talk about what may be a new concept to you,\nthe movement of people with their herds of animals from place to place.\nThis is known as transhumans.\nThese peoples are pastoralists,\nand their animals include cows, sheep, goats, horses, camels, and reindeer.\nNow, researchers sometimes make a distinction between two types of transhumans,\nfixed and nomadic, and talk about various factors which differentiate between them.\nThe first and most important distinction they make is to do with the climate.\nFixed transhumans occurs in countries such as Switzerland,\nwhere seasons are predictable in terms of weather and timing.\nNomadic transhumance, on the other hand, is generally practiced in areas\nwhere climatic conditions are difficult to predict.\nAn example of such a location is Somalia as the anticipated rains often just don appear Secondly researchers sometimes look at the type of journey that pastoralists make their movement For fixed transhumans the pattern is sometimes\nknown as vertical because it typically consists of a journey from lower ground in the winter season\nto higher ground in the summer, and vice versa. In the wild, of course, animals frequently follow\nthese kinds of migration patterns themselves. Nomadic transhumans generally takes place over\na longer distance, and it's far more complex. The actual pattern varies from year to year,\nand it's determined primarily by the animal's needs for grass and also for water.\nAnother distinction is sometimes made in terms of homes. In the case of fixed transhumans,\nthe group will typically have permanent homes in the valley and a shelter,\nwhich is semi-permanent in the mountains, such as a cabin, to offer some protection from the weather.\nIn nomadic transhumans, however, the pastoralists always live in temporary shelters,\nwhich are transported by their livestock from place to place and are usually light and portable In Northern Kenya for example the Gabra pastoralist carries the frame of his home on his camel and then covers it with branches when he stops for the night A fourth factor\noften mentioned is the number of people taking part. In the case of fixed transhumans, only the\npeople who actually look after the herds travel. These are normally the young ones, because they\ncan withstand adverse physical conditions more easily. By contrast, in nomadic transhumans,\nthe whole group moves with their livestock. The last points of comparison often made by\nresearchers are diet and goods. In fixed transhumans, those who do not move from the valleys\noften start working as farmers, cultivating the land. They build up contacts with other communities,\nand in some cases they may also trade animals for grain.\nIn nomadic transhumans, there are fewer contacts.\nThe group are generally regarded as providers of all their own needs\nand they obtain food such as cheese and meat and also their clothing from their herds.\nAnother example is found in Algeria in North Africa To see how far this model applies to transhumans there Fixed transhumans from valley to mountain pastures is common in the area but some recent pastoralists also take their herds on longer journeys at the end of spring\nfrom the Sahara in the south to the plains in the north, where there is more abundant rainfall.\nThey have traditionally assisted local farmers with the harvest,\nwhich takes place while they are temporarily a resident there.\nWe have to decide whether their move would fall within the category of fixed or nomadic transhumans.\nIt is true they live in tents, and these are movable and temporary right through the year,\nwhether they are in the Sahara or in the north of Algeria.\nSo, in considering their homes, they appear nomadic.\nOn the other hand, in relation to their patterns of movement, they do not.\nThey drive their livestock through the same passes in mountains each year, which suggests fixed transhumans.\nHere, in fact, we have a case showing some features of both types of transhumans,\nwhich we might more precisely refer to as intermediate.\nThis all goes to show that you should treat every theory with great care,\nand not force your case history into a model if it doesn't fit."
+  }
+ ],
+ "audio": {
+  "file": "listening-19.mp3",
+  "durationSec": 1210,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

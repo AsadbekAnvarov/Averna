@@ -1,0 +1,650 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-61",
+ "title": "CDI Reading Test 61",
+ "description": "A full Academic Reading test from the CDI practice materials: An early cultural tourist; Growing more for less; All in the Family.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "An early cultural tourist",
+  "Growing more for less",
+  "All in the Family"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "An early cultural tourist",
+   "paragraphs": [
+    {
+     "text": "Today we take it for granted that we travel around the world to admire the monuments of the past. We prepare for such trips by reading about what we are going to see, set out on the journey with a good idea of how we will get there and where we will stay and have a sense of what we will encounter on location. Cyriacus of Ancona (1391–1452), the first cultural tourist since antiquity, lacked these advantages when, in the first half of the 15th century, he sailed around the Mediterranean in search of the remains of Greek and Roman civilisations."
+    },
+    {
+     "text": "Cyriacus first became fascinated by ancient monuments while walking in his home city Ancona and looking at the marble arch, erected in AD 115, to honor the Roman emperor Trajan. He suddenly saw the structure in a new light. He no longer saw it as just a familiar and generally overlooked landmark, but as a doorway to the wonders of ancient imperial Rome. Not many people of Cyriacus’s time were interested in historical travel. They generally ignored old buildings and structures, or worse, dismantled them for their building materials."
+    },
+    {
+     "text": "Cyriacus decided to see the world for himself and to record details of whatever other antiquities remained to be discovered. His training as a merchant did not prepare him for this vocation; he did not know ancient languages, history or art. However, he set out to solve these failings, first by learning Latin at the age of 30 and then adding ancient Greek. Having done this, he then set off on voyages around the Mediterranean to find, investigate and understand ancient cultures from their buildings, sculptures and inscriptions. Thus, he became the first archaeologist and cultural tourist, predating other antiquarians by some 200 years."
+    },
+    {
+     "text": "Travel in the 15th century, however, was anything but simple or enjoyable. Overland journeys by foot or mule along bad roads, under constant threat from bandits, were bad; voyages by sea were even worse. When the weather cooperated, sailing went relatively smoothly, and ships proceeded along coasts from one recognizable landmark to another. However, when there was no wind, the ship did not move. Strong winds were no friends either. They drenched the ship with lashing waves and blew it off course. Water swamped the deck, splashed into the cabins and soaked mattresses, clothes and food. Remarkably, Cyriacus never complained about the miseries of travel. Optimistic by nature, he endured such hardships unafraid and saw opportunities where other people saw setbacks."
+    },
+    {
+     "text": "Among many of the important records made by Cyriacus was his crucial documenting, in 1431, of the remains of Cyzicus, an ancient Roman city that had relied on commerce for its financial success. He hired a local person to take him to the site and then had to work out for himself the significance of the ruins he was looking at because there was no guidebook on ancient architecture to help him."
+    },
+    {
+     "text": "Cyzicus had been a splendid city in its prime. Unfortunately, the area was highly seismic and in AD 123 the city was so devastated by a major earthquake that, when the Roman Emperor Hadrian visited it the following year, he was so saddened that he decided to subsidise a campaign to reconstruct Cyzicus. He made a substantial donation for a new temple to the Roman god Jupiter. Cyriacus thought the ruined city was awe-inspiring. He found the remains of the temple and examined it in great detail, looking for clues in ancient texts to help him understand what he was seeing. He sketched the great doorway adorned with carved foliage and mythological characters. Cyriacus’s account of this temple is the only record of this building, as in the following centuries it was entirely stripped of all its stonework and all that remains is its base."
+    },
+    {
+     "text": "Cyriacus also visited mainland Greece in 1436, when no one went to Greece in order to see the country’s ancient ruins. One of his destinations was the sanctuary of Delphi. The ancient Greeks considered Delphi as being situated in the most beautiful spot in Greece. When Cyriacus arrived at the site of Delphi, however, he found war, earthquakes and avalanches had all but obliterated its ruins. Determined to find any ancient traces, Cyriacus spent six days walking all over the area, peering at odd stone blocks sticking out of the ground, running his hands over inscriptions to trace fragments of words, and trying to puzzle out the few surviving structural remains. Climbing uphill towards the rocks that tower over the site, he came upon a theatre built into the slope. Soon after his visit, the site was buried by a rockslide and was not seen again until archaeologists began to excavate the area systematically in the late 19th century."
+    },
+    {
+     "text": "Cyriacus had hoped to visit Egypt and Ethiopia but he never got there. However, in his life he did record for posterity countless ancient monuments around the Mediterranean, paving the way for future archaeologists and cultural tourists."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Cyriacus was unable to research his journeys before he left.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para 2/3: guidebooks did not exist, so he could not research in advance."
+      },
+      {
+       "n": 2,
+       "text": "The Roman Emperor Trajan built the city of Ancona.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage mentions Ancona but does not say Trajan built the city."
+      },
+      {
+       "n": 3,
+       "text": "Respect for ancient architecture was widespread in the 15th century.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 1: appreciation of ancient monuments was not common at the time."
+      },
+      {
+       "n": 4,
+       "text": "Before leaving on his journey, Cyriacus studied ancient languages.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "He learned Latin and Greek to read ancient inscriptions."
+      },
+      {
+       "n": 5,
+       "text": "Travelling by sea in the 15th century was easier than travelling on land.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para 4: sea travel was dangerous and uncomfortable."
+      },
+      {
+       "n": 6,
+       "text": "Cyriacus tried to make his fellow sea travelers more comfortable.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No information about him helping fellow travellers is given."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Ancient Roman and Greek sites visited by Cyriacus",
+     "template": "- The wealth of the city had come from [[7]].\n- A [[8]] to the ancient city ruins not available when visited by Cyriacus.\n- The city was destroyed by a powerful [[9]] in AD 123.\n- A temple to Jupiter was built – helped by an especially large [[10]] from Emperor Hadrian.\n- Cyriacus made drawings of the [[11]] to the temple and its decorative carvings.\n- By the 15th century, Delphi had almost disappeared due to natural disasters and [[12]].\n- Cyriacus found a [[13]] above Delphi.",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "commerce"
+       ],
+       "explanation": "The city's wealth came from commerce/trade."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "guidebook"
+       ],
+       "explanation": "No guidebook to the ruins existed at the time."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "earthquake"
+       ],
+       "explanation": "An earthquake destroyed the city in AD 123."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "donation"
+       ],
+       "explanation": "Hadrian gave a large donation towards the temple."
+      },
+      {
+       "n": 11,
+       "answer": [
+        "doorway"
+       ],
+       "explanation": "He drew the doorway of the temple."
+      },
+      {
+       "n": 12,
+       "answer": [
+        "war"
+       ],
+       "explanation": "Delphi disappeared through natural disasters and war."
+      },
+      {
+       "n": 13,
+       "answer": [
+        "theatre"
+       ],
+       "explanation": "He found a theatre above Delphi."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Growing more for less",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "For farmers, working out the optimal amount of seed, fertiliser, pesticide and water to scatter on a field can be a matter of luck, despite several harvests. Regular laboratory analyses of soil and plant samples from various sections of a field can help — but such expertise is costly, and often unavailable. However, a new and cheaper method of doing this analysis is now on offer. Precise prescriptions for growing crops can be obtained quickly, and less expensively, by calculating the amount of electromagnetic radiation reflected from agricultural land. The data is collected by orbiting satellites."
+    },
+    {
+     "label": "B",
+     "text": "Examining the wavelength of radiation that is reflected can reveal, with surprising precision, the properties of the soil, the quality of crop being grown, and the levels in those crops of chlorophyll, various minerals, moisture and other indicators of their quality. If recent and forecast weather data is added, detailed maps can be produced indicating exactly how, where and when crops should be grown. The service usually costs less than US $15 per hectare for a handful of readings a year, and can increase yields by as much as 10%."
+    },
+    {
+     "label": "C",
+     "text": "Such precision farming using satellite-based intelligence is a relatively new technique. Even so, it is catching on quickly. Five years ago, for example, a French cereal-growers' co-operative called Sevepi purchased a satellite and makes it available to its members in the form of maps of their fields, divided into three or four colour-coded zones per hectare. For each zone, the exact and best fertiliser formula is recommended. On top of this, if the amount of rain in the field has already grown quite high early in the season, and heavy showers are expected, an appropriate dose of growth regulator is recommended for each zone. Then, farm vehicles equipped with global-positioning system locators automatically mix and apply the prescribed dose to each area."
+    },
+    {
+     "label": "D",
+     "text": "France is the pioneer in this sort of surveillance. More farmland is analysed by satellite there than in any other country, according to Infoterra (a subsidiary of EADS Astrium), the firm that is France's largest provider of such information, supplying data to companies such as Sevepi. Moreover, Henri Douche, head of Infoterra's agriculture sales in Toulouse, reckons the amount of monitored farmland will increase as weather patterns change and farmers can no longer rely on the past as a guide to the future. When confounded by the yield variations that these new weather patterns will bring, even farmers who are afraid of new technology will sign up, he says."
+    },
+    {
+     "label": "E",
+     "text": "Inexpensive data on the productivity of land is advantageous to governments too. Areas where fertilisers and pesticides are being applied excessively can be pinpointed, enabling a reduction in environmental and land-use damage. Guy Lafond, an agronomist with Agriculture and Agri-Food Canada, a government agency, says the satellite data it purchases is proving useful for the study of fields with declining productivity in the province of Saskatchewan. Over-application of nitrate fertilisers (which are also a source of greenhouse gases) appears partly responsible. And according to RapidEye, a German satellite operator, some companies are also studying satellite data with a view to selling insurance policies to governments of famine-prone countries that might be threatened by crop failure."
+    },
+    {
+     "label": "F",
+     "text": "In March, RapidEye began selling data that helps forecast harvests. \"Too often, farmers limit productivity by managing fields wrongly,\" says Fredrick Jung-Rothenhäuser, head of product development at the firm's headquarters in Brandenburg an der Havel. \"Our satellites are the first commercial satellites to include the Red-Edge band of the light spectrum, which is sensitive to changes in chlorophyll content. More research will be necessary to realise the full benefits of the Red-Edge band. However, this band can assist in monitoring vegetation health, improving species separation and also help in measuring protein and nitrogen content in biomass.\" The company's data, which comes from both Europe and the Americas, breaks field productivity down into patches just five metres square."
+    },
+    {
+     "label": "G",
+     "text": "The advantages that satellite technology provides in terms of precision farming do not have to be restricted to rich countries. In Africa, where many areas have become badly depleted of nutrients, better fertiliser management would help reverse this situation. As a consequence, the charitable trust World Agroforestry Centre, in the city of Nairobi, in Kenya, has begun to build up a collection of radiation patterns derived from around 100,000 samples of African soils. The aim of this work is to help by understanding the potential of these soils to be more agriculturally productive. Once passed on to the International Centre for Tropical Agriculture, based in Colombia, South America, it is intended that the information be used to build a database called the 'Digital Soil Map'. When complete, this will provide farmers with free forecasts, developed with regularly updated satellite imagery, across farmland in the poorest countries in Africa."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Which paragraph contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      },
+      {
+       "key": "G",
+       "text": "Paragraph G"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "An example of how farmers in one country are now using satellite data to determine fertiliser use.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Section C gives an example of satellite-based fertiliser decisions."
+      },
+      {
+       "n": 15,
+       "text": "A reference to climate change and its effects.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Section D refers to climate change and irregular weather."
+      },
+      {
+       "n": 16,
+       "text": "A reference to the effect on the soil of using too much fertiliser.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Section E notes over-fertilising damages the soil."
+      },
+      {
+       "n": 17,
+       "text": "An example of information that will be shared between different countries.",
+       "answer": [
+        "G"
+       ],
+       "explanation": "Section G describes data shared internationally."
+      },
+      {
+       "n": 18,
+       "text": "Mention of the country which is the leader in agricultural satellite technology.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Section D names France as the pioneer/leader."
+      },
+      {
+       "n": 19,
+       "text": "A description of an innovation in satellite imaging which requires further study.",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Section F describes RapidEye's new data needing further study."
+      },
+      {
+       "n": 20,
+       "text": "Evidence of the cost-effectiveness of using satellite technology in agriculture.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Section B gives evidence of cost-effectiveness."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO companies obtain information directly from satellites?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Sevepi"
+      },
+      {
+       "key": "B",
+       "text": "Infoterra"
+      },
+      {
+       "key": "C",
+       "text": "Agriculture and Agri-Food Canada"
+      },
+      {
+       "key": "D",
+       "text": "World Agroforestry Centre"
+      },
+      {
+       "key": "E",
+       "text": "RapidEye"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Infoterra (B) and RapidEye (E) obtain data directly from satellites. Infoterra (B) and RapidEye (E) obtain data directly from satellites."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Infoterra (B) and RapidEye (E) obtain data directly from satellites. Infoterra (B) and RapidEye (E) obtain data directly from satellites."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Answer the questions below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+     "wordLimit": 2,
+     "template": "- Initially, orbiting satellites are used to measure [[23]] coming from farmland.\n- Who says that additional irregular weather will raise the use of satellite technology? [[24]]\n- It may become possible to insure against the threat of [[25]] in some countries.\n- In Africa, much of the soil suffers from the loss of [[26]].",
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "electromagnetic radiation"
+       ],
+       "explanation": "Satellites measure the electromagnetic radiation from farmland."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "Henri Douche"
+       ],
+       "explanation": "Henri Douche links irregular weather to greater use of the technology."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "crop failure"
+       ],
+       "explanation": "Satellite technology may enable insurance against crop failure."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "nutrients"
+       ],
+       "explanation": "African soil suffers from a loss of nutrients."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "All in the Family",
+   "subtitle": "A person's brothers and sisters can have a powerful effect on their adult behaviour.",
+   "paragraphs": [
+    {
+     "text": "We can choose our friends, the saying goes, but we cannot choose our family of origin. Our parents provide the genetic material and make powerful early role models, but even more influential in determining what kind of adult we will become are our brothers and sisters — our siblings. They occupy a position of unique intimacy in our lives and cast a longer shadow than many recognize or are prepared to acknowledge. By turns enraging and lovable, familiar and mysterious, our brothers and sisters are the human beings who people our first social relationships. And a sibling relationship is the most enduring relationship many of us will ever have, less emotionally intense than the bonds we form with our spouses and our own children if only because they started when we were so young."
+    },
+    {
+     "text": "Surprising new research by Dr Gene Brody found that having older children who do well in school and are well liked by other children leads to parental 'basking' — increasing mothers' self-esteem. It is clear that in turn this is associated with more positive parenting of younger children, who display fewer behavioural problems as a result. Conversely, parents who get a difficult first child may in turn experience a negative spiral of household tension."
+    },
+    {
+     "text": "International sports star Piri Weepu is a rugby hard man, but at least some of his tough temperament was forged long ago in the family home. His older brother Billy started rugby-tackling little Piri when he was just four — to 'harden him up'. It seemed to work: Piri followed his brother in playing for the under-sevens league before he even started school. There are as many such stories as there are families: in the formative hothouse of the family, siblings interact in complex ways with the powerful force fields of parents, genetics and personality already at work. It starts with birth order, which determines play roles: the firstborn leader, the middle-child mediator and the rebellious youngest. These are roles that can stick for life."
+    },
+    {
+     "text": "Clinical psychologist Claire Cartwright says she has clients who believe, and it might not have been true, that they were treated differently from their siblings, that one child in the family was preferred over others. They are quite convinced that the parental judgments on them all those years ago were harsher, and that they were the ones who always got into trouble. Later, in the workplace, such a person might be particularly defensive, and so behave in a way more prone to attracting harsh judgements."
+    },
+    {
+     "text": "However, the research shows that being Mummy or Daddy's favourite has its own traps. If you were the easy-going, co-operative child at home, you probably excelled at pleasing parents and, later, bosses. But you might, as an adult, find it hard to be assertive with authority figures and lack direction. On the other hand, the sibling who is disruptive and annoying as a child may be able to reinterpret that role later, turning those attention-seeking characteristics into strengths like determination and leadership."
+    },
+    {
+     "text": "How is it that full siblings, despite sharing DNA, can turn out so differently? One answer is that, in fact, each sibling grows up in a different family, a unique micro-culture. For example, the firstborn is, for a while, an only child, and therefore has a completely different experience of the parents than those born later. The parents themselves are growing up too, weathering hardship or good fortune, so one sibling might experience stability and closeness while another might be raised in the midst of crisis."
+    },
+    {
+     "text": "Of course, there are many positive aspects of sibling relationships. Annette Henderson, a lecturer in psychology, says firstborn children learn vocabulary more quickly than their siblings because they are not competing to spend one-on-one time with parents. But younger children in turn benefit from unintentional instruction from their bigger brothers and sisters, acquiring entire phrases and an understanding of social concepts such as politeness. Similarly, a Cambridge University study of 140 children found that even when there is a great deal of conflict, siblings will still create a rich world of play and make-believe that extends them developmentally. Love-hate relationships were common among the children, but even those who fought the most had as many positive interactions as the other sibling pairs. It is also true that children compete for parental attention by making themselves different from their brothers and sisters, particularly if they are close in age. A 2003 research paper studied adolescents from 185 families over two years, finding that those who changed, to differentiate themselves from their siblings, increased the amount of warmth they gained from parents, and also developed stronger personalities and a better sense of their own identity."
+    },
+    {
+     "text": "Another consideration is that many families today are smaller and more intimate than their historical counterparts. This may be advantageous because siblings tend to know each other better and remain lifelong friends compared to children from bigger or more widely spaced families, who perhaps lose touch with one another after leaving home. Then there was a 2010 American study which found that having a sister, whether younger or older, meant that 10- to 14-year-olds were less likely to feel lonely, unloved, self-conscious or fearful. The same study found that having a loving sibling of either gender promoted good deeds, such as helping a neighbor around the house or helping other children at school."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Parents and siblings play equal roles in shaping people's adult personalities.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The writer argues siblings' role is often underestimated relative to parents."
+      },
+      {
+       "n": 28,
+       "text": "People's first social relationships tend to be with siblings of their own gender.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "No claim about the gender of first social relationships is made."
+      },
+      {
+       "n": 29,
+       "text": "People's relationships with their siblings tend to receive less attention when they marry.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The passage does not discuss marriage reducing sibling attention."
+      },
+      {
+       "n": 30,
+       "text": "Parental 'basking' is advantageous for later siblings.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "The writer indicates parental 'basking' benefits later-born siblings."
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 31–34.",
+     "questions": [
+      {
+       "n": 31,
+       "text": "What point does the writer make about birth order in the third paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Its role is underestimated by parents."
+        },
+        {
+         "key": "B",
+         "text": "It may shape the characteristics of adults."
+        },
+        {
+         "key": "C",
+         "text": "Its importance decreases as children grow up."
+        },
+        {
+         "key": "D",
+         "text": "It has more influence on personality than genetics."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "Birth order may shape adult characteristics (B)."
+      },
+      {
+       "n": 32,
+       "text": "What are we told about some of Claire Cartwright's clients?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Their parents treated them fairly."
+        },
+        {
+         "key": "B",
+         "text": "They were treated harshly by their siblings."
+        },
+        {
+         "key": "C",
+         "text": "Their perceptions of childhood may be inaccurate."
+        },
+        {
+         "key": "D",
+         "text": "They have closer relations with their siblings as adults."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Their memories/perceptions of childhood may be inaccurate (C)."
+      },
+      {
+       "n": 33,
+       "text": "What is the writer's main point about siblings in the fifth paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Parents tend to repeat their own parents' mistakes."
+        },
+        {
+         "key": "B",
+         "text": "Favored children are likely to make good leaders as adults."
+        },
+        {
+         "key": "C",
+         "text": "Negative characteristics in children can become positive in adults."
+        },
+        {
+         "key": "D",
+         "text": "Attention-seeking children are unlikely to please bosses in later life."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Negative childhood traits can become positive adult traits (C)."
+      },
+      {
+       "n": 34,
+       "text": "Which of the following best summarises the writer's argument in the sixth paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Many children have a favourite parent."
+        },
+        {
+         "key": "B",
+         "text": "Parenting skills improve with later children."
+        },
+        {
+         "key": "C",
+         "text": "Siblings are born with different personalities."
+        },
+        {
+         "key": "D",
+         "text": "The family environment may change over time."
+        }
+       ],
+       "answer": [
+        "D"
+       ],
+       "explanation": "The family environment may change over time (D)."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary using the list of words, A–K, below.",
+     "title": "The positive aspects of sibling relationships",
+     "options": [
+      {
+       "key": "A",
+       "text": "parental love"
+      },
+      {
+       "key": "B",
+       "text": "imaginative games"
+      },
+      {
+       "key": "C",
+       "text": "physical development"
+      },
+      {
+       "key": "D",
+       "text": "generous behaviour"
+      },
+      {
+       "key": "E",
+       "text": "strong marriages"
+      },
+      {
+       "key": "F",
+       "text": "greater individuality"
+      },
+      {
+       "key": "G",
+       "text": "learning experiences"
+      },
+      {
+       "key": "H",
+       "text": "career success"
+      },
+      {
+       "key": "I",
+       "text": "closer relationships"
+      },
+      {
+       "key": "J",
+       "text": "healthy competition"
+      },
+      {
+       "key": "K",
+       "text": "mental well-being"
+      }
+     ],
+     "template": "Annette Henderson suggests that young children's interactions with older siblings involve [[35]]. Also, a Cambridge study found that siblings still enjoy [[36]] even when they have a tendency to fight. Research conducted in 2003 suggests that children develop [[37]] as a result of seeking attention. Another factor is the trend for smaller families, which may mean that today's siblings enjoy [[38]] as adults. A 2010 American study linked having a sister with [[39]]. Finally, having a sibling may promote [[40]].",
+     "questions": [
+      {
+       "n": 35,
+       "answer": [
+        "G"
+       ],
+       "explanation": "Interactions with older siblings are learning experiences (G)."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Siblings still enjoy imaginative games despite fighting (B)."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "F"
+       ],
+       "explanation": "Seeking attention leads to greater individuality (F)."
+      },
+      {
+       "n": 38,
+       "answer": [
+        "I"
+       ],
+       "explanation": "Smaller families may mean closer relationships as adults (I)."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "K"
+       ],
+       "explanation": "Having a sister was linked with mental well-being (K)."
+      },
+      {
+       "n": 40,
+       "answer": [
+        "D"
+       ],
+       "explanation": "Having a sibling may promote generous behaviour (D)."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

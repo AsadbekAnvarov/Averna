@@ -1,0 +1,658 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-31",
+ "title": "CDI Listening Test 31",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-31-part-1",
+   "title": "Part 1",
+   "context": "You will hear a conversation between a housing agent and a college student who wants to rent a house. First, you have some time to look at questions 1 to 4. You will see that there is an example which has been done for you. On this occasion only, the conversation relating to this will be played first.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the table below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "| Address | Rooms | Facilities | Provided | Fee | Drawback |\n| Beatle Road | 3 bedrooms, a bathroom, a [[1]] | a nearby restaurant | Internet and utilities | $ [[2]] | Garden too big to clean up |\n| Oakington Avenue | 3 bedrooms, a kitchen, a living room | Shared living room, bathroom, kitchen and [[3]] | Living room furniture | $340–$400 | Due to shared facilities, it seems [[4]] |\n| Meade Street | 2 bedrooms, a living room, [[5]] | TV and VCR | a [[6]] | $600 | Sometimes it is quite [[7]] |\n| Devon Close complex | 1 bedroom, a living room, a study | a lamp with [[8]] ; a dining hall | free [[9]] | $500 | Not including [[10]] |",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "living room"
+       ],
+       "explanation": "'The first one is on Beetle Road... It’s a three-bedroom with a bathroom and a living room.'"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "435"
+       ],
+       "explanation": "'Well, it’s $435 a month, including internet and utilities.'"
+      },
+      {
+       "n": 3,
+       "answer": [
+        "washing machine"
+       ],
+       "explanation": "'Since it’s a dormitory, the living room, bathroom, kitchen and washing machine are all shared.'"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "inconvenient"
+       ],
+       "explanation": "'Even with the air conditioner, it sounds really inconvenient to have to share facilities.'"
+      },
+      {
+       "n": 5,
+       "answer": [
+        "a study",
+        "study"
+       ],
+       "explanation": "'It only has two bedrooms plus a living room and a study.'"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "washbasin",
+        "wash basin"
+       ],
+       "explanation": "'As you said, weird enough, it also comes with a wash basin.'"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "noisy"
+       ],
+       "explanation": "'It’s 2500 Meade Street where there are a lot of bars... it would get pretty noisy.'"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "different settings",
+        "settings"
+       ],
+       "explanation": "'It comes with a living room and a study and includes a really nice lamp in the study that has a bunch of different settings.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "evening meals",
+        "meals"
+       ],
+       "explanation": "'There’s a dining hall downstairs so all evening meals are free.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "bathroom"
+       ],
+       "explanation": "'It’s alright, $500 per month but there’s no bathroom.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a conversation between a housing agent and a college student who wants to rent a house. First, you have some time to look at questions 1 to 4. You will see that there is an example which has been done for you. On this occasion only, the conversation relating to this will be played first.\nAgent: Good afternoon and welcome to Habitat Hunters. You must be Joseph.\nJoseph: Yes, that’s right.\nAgent: You said on the phone that I could come by at 2 o’clock. Sorry, I’m a little early.\nAgent: No problem at all. In Calgary’s market, you have to move fast if you want a good apartment.\nJoseph: Actually, I’d settle for almost anything. I’ve been here 10 days and the hotel is ruining me.\nJoseph: My father has me on a strict budget.\nAgent: Sit right down here now, sir. Let’s talk a little about the places before we go have a look.\nAgent: Now, we have four apartments available.\nJoseph: OK. Could you tell me more about those four apartments?\nAgent: Sure. The first one is on Beetle Road, just a block off campus. It’s a three-bedroom with a bathroom and a living room and a great Italian restaurant right next to it.\nThe agent says that the first apartment is a three-bedroom apartment with a great Italian restaurant right next to it. So, restaurant has been written in the space. Now, we shall begin. You should answer the questions as you listen because you will not hear the recording a second time. Listen carefully and answer questions one to four.\nAgent: Good afternoon and welcome to Habitat Hunters. You must be Joseph.\nJoseph: Yes, that’s right. You said on the phone that I could come by at 2 o’clock. Sorry, I’m a little early.\nAgent: No problem at all. In Calgary’s market, you have to move fast if you want a good apartment.\nJoseph: Actually, I’d settle for almost anything.\nJoseph: I’ve been here ten days and the hotel is ruining me. My father has me on a strict budget.\nAgent: Sit right down here now, sir. Let’s talk a little about the places before we go have a look. Now, we have four apartments available.\nJoseph: OK. Could you tell me more about those four apartments?\nAgent: Sure. The first one is on Beetle Road, just a block off campus. It’s a three-bedroom with a bathroom and a living room and a great Italian restaurant right next to it.\nJoseph: How much?\nAgent: Well, it’s $435 a month, including internet and utilities.\nJoseph: OK, that sounds reasonable. Any drawbacks to the house?\nAgent: There’s a really big garden but it hasn’t been taken care of over the years and it’s just too big to clean up nicely.\nJoseph: Hmm, that sounds OK. Tell me about the next option.\nAgent: The other three-bedroom apartment is on Oakington Avenue on campus.\nAgent: It is right near the building where you have classes and the kitchen and living room are newly furnished.\nJoseph: Wow, that sounds like a pretty good option.\nAgent: Well, it is a cool apartment but since it’s a dormitory, the living room, bathroom, kitchen and washing machine are all shared.\nJoseph: It would be nice not to have to buy living room furniture though. And how much is this one?\nAgent: $400 per month for a bedroom with an air conditioner. For a bedroom without an air conditioner, you would pay less, $340 for it.\nJoseph: Yikes! Even with the air conditioner, it sounds really inconvenient to have to share facilities. I’ll never cook if I have to walk down the hall to use the kitchen.\nAgent: Yeah, that’s true.\nBefore you hear the rest of the conversation, you have some time to look at questions 5 to 10. Now listen and answer questions 5 to 10.\nAgent: Anyway, the next place is a two-bedroom on Meade Street.\nJoseph: Oh, I like Meade Street. That’s off campus, right?\nAgent: Yep, it’s pretty cool but it only has two bedrooms plus a living room and a study.\nJoseph: But I want to live together with my two friends.\nAgent: So, you could make the study into a small bedroom if you end up living with them.\nJoseph: Also, we guys want a TV and DVD player since we’re all so much into movies.\nAgent: Well, this place has a great TV and VCR but no DVD player.\nJoseph: No DVD? That’s so weird. Are any other facilities provided?\nAgent: As you said, weird enough, it also comes with a washbasin.\nJoseph: Is there a washing machine? I think we need that more than just a wash basin.\nAgent: I’m afraid there’s no washing machine in the apartment.\nJoseph: Wow, that’s so old-fashioned. Maybe it’s not the best choice for three college guys.\nJoseph: How much is it?\nAgent: Well, it’s $600 per month but, of course, it would be cheaper if you made it into three bedrooms instead of two.\nJoseph: Where is the apartment located?\nAgent: It’s 2500 Meade Street where there are a lot of bars.\nJoseph: It would be affordable but it would get pretty noisy and that sounds really expensive for an old place in a noisy area.\nJoseph: How about the last place?\nAgent: This one’s on campus in the Devon Close Complex. It’s a one-bedroom so it will be a little quieter than the Meade Street place.\nJoseph: One-bedroom, huh? That could be good for focusing on my studies. What else does it have?\nAgent: It comes with a living room and a study and includes a really nice lamp in the study that has a bunch of different settings.\nAgent: You know what else is cool? There’s a dining hall downstairs so all evening meals are free. You can purchase breakfast and lunch but meals after 6pm are free.\nJoseph: Wow, this place sounds too good to be true. Is it really expensive?\nAgent: It’s alright, $500 per month but there’s no bathroom.\nJoseph: What? No bathroom?\nAgent: Well, there’s no bathroom in the apartment but there’s one at the end of the hall.\nJoseph: Thanks, I think now I just have to decide whether I want to live alone or not.\nAgent: Yeah, which one do you prefer?\nJoseph: I think I’d choose either this apartment or the one on Beetle Road.\nAgent: OK, you’d better think about it and then you can contact me ASAP.\nJoseph: Fine, thanks for your help.\nAgent: You’re welcome.\nThat is the end of section 1. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-31-part-2",
+   "title": "Part 2",
+   "context": "You will hear an audio guide to a public library. First, you have some time to look at questions 11 to 15. Pause the recording for 30 seconds. Now listen carefully and answer questions 11 to 15.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Choose the correct letter, A–H, next to questions 11–15.",
+     "title": "Options",
+     "options": [
+      {
+       "key": "A",
+       "text": "biography"
+      },
+      {
+       "key": "B",
+       "text": "fiction"
+      },
+      {
+       "key": "C",
+       "text": "magazines"
+      },
+      {
+       "key": "D",
+       "text": "newspapers"
+      },
+      {
+       "key": "E",
+       "text": "non-fiction"
+      },
+      {
+       "key": "F",
+       "text": "photocopiers"
+      },
+      {
+       "key": "G",
+       "text": "reference books"
+      },
+      {
+       "key": "H",
+       "text": "study area"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "text": "Place 11 on the map",
+       "answer": [
+        "B"
+       ],
+       "explanation": "'Shelves of books in the left-hand corner... a large number of novels and short stories' — fiction (B)."
+      },
+      {
+       "n": 12,
+       "text": "Place 12 on the map",
+       "answer": [
+        "H"
+       ],
+       "explanation": "'The next area, directly opposite the issue desk, is a section where people can study.' — study area (H)."
+      },
+      {
+       "n": 13,
+       "text": "Place 13 on the map",
+       "answer": [
+        "C"
+       ],
+       "explanation": "'You can also take magazines into the cafe... on the racks to the left of the cafe.' — magazines (C)."
+      },
+      {
+       "n": 14,
+       "text": "Place 14 on the map",
+       "answer": [
+        "E"
+       ],
+       "explanation": "'The largest collection of books in the library is fiction and the next largest is non-fiction, which is in the corner of this floor opposite the cafe.' — non-fiction (E)."
+      },
+      {
+       "n": 15,
+       "text": "Place 15 on the map",
+       "answer": [
+        "A"
+       ],
+       "explanation": "'A door leading onto a gallery... also houses the biography section.' — biography (A)."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening31-map.webp",
+      "alt": "Selmore Public Library Map"
+     }
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 16,
+       "text": "After two years, library members have to",
+       "options": [
+        {
+         "key": "A",
+         "text": "show proof of their current address"
+        },
+        {
+         "key": "B",
+         "text": "pay for a new membership card"
+        },
+        {
+         "key": "C",
+         "text": "bring a passport or identity card into the library"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "'After a period of two years, all readers are required to go to the desk with a document that has their name and current address on it.'"
+      },
+      {
+       "n": 17,
+       "text": "What happens if you reserve a book?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It will be available after five days"
+        },
+        {
+         "key": "B",
+         "text": "You can collect it a week later"
+        },
+        {
+         "key": "C",
+         "text": "You will be contacted when it is available"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'Either way, we notify you by phone or email when the item is available to be picked up.'"
+      },
+      {
+       "n": 18,
+       "text": "Which materials can be borrowed for one week only?",
+       "options": [
+        {
+         "key": "A",
+         "text": "some reference books"
+        },
+        {
+         "key": "B",
+         "text": "CD-ROMs"
+        },
+        {
+         "key": "C",
+         "text": "children’s DVDs"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "'DVDs, both children’s and adults, can only be borrowed for up to seven days.'"
+      },
+      {
+       "n": 19,
+       "text": "On which day does the library stay open later than it used to?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Wednesday"
+        },
+        {
+         "key": "B",
+         "text": "Saturday"
+        },
+        {
+         "key": "C",
+         "text": "Sunday"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'We will close at 7 instead of 5:30 on Saturdays.' — stays open later on Saturday."
+      },
+      {
+       "n": 20,
+       "text": "Large bags should be left on the",
+       "options": [
+        {
+         "key": "A",
+         "text": "first floor"
+        },
+        {
+         "key": "B",
+         "text": "second floor"
+        },
+        {
+         "key": "C",
+         "text": "third floor"
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "'There are lockers beside the reference area on the second floor where you can deposit them.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear an audio guide to a public library. First, you have some time to look at questions 11 to 15. Pause the recording for 30 seconds. Now listen carefully and answer questions 11 to 15.\nGuide: Welcome to the Selmore Public Library, which has just been reopened after major refurbishment. This tour will introduce you to the building and its services.\nGuide: At any time you can stop the tour. We enter by the cafe and our tour begins at the issue desk. If you stand between the information desk and the issue desk and look at the opposite wall, you will see shelves of books in the left-hand corner.\nGuide: This is where you will find a large number of novels and short stories. They are arranged alphabetically. [fiction — B] If you are looking for something in particular and it’s not on the shelf, you can reserve it.\nGuide: The next area, directly opposite the issue desk, is a section where people can study. [study area — H] The library provides computers for users free of charge on the next floor, beside the reference books, but this area is for people to use their own laptops. You should ask for the internet passcode at the information desk.\nGuide: In the right-hand corner of this floor, there is a cafe. A selection of daily newspapers is always available there, but you can also take magazines into the cafe to read while you have a drink. You will find these on the racks to the left of the cafe and there is a large selection. [magazines — C]\nGuide: They are for reference only and cannot be borrowed, but you are welcome to photocopy any articles of interest. We ask you to return them when you have finished. You are not allowed to take fiction or any other books from the shelves into the cafe.\nGuide: Next to the cafe is the exit door leading to the stairs and escalator to the other floors. The largest collection of books in the library is fiction and the next largest is non-fiction, which is in the corner of this floor opposite the cafe. [non-fiction — E] These can all be borrowed as opposed to the reference books on the next floor, most of which cannot be taken out of the library, but they can be photocopied.\nGuide: There are several photocopiers available for this purpose downstairs in the basement. To one side of the issue desk is a door leading onto a gallery. This was added to the library as a public space where talks are given once a week on a Saturday by visiting authors of both fiction and non-fiction.\nGuide: It also houses the biography section. [biography — A] There are notices advertising the talks in the study area. Any books that you want to borrow should be taken to the issue desk.\nGuide: Before we leave this floor, I will give you some information about using the library. There are also helpful notices by the information desk.\nBefore you hear the rest of the talk, you have some time to look at questions 16 to 20. Pause the recording for 30 seconds. Now listen and answer questions 16 to 20.\nGuide: To join the library and take books out, you need a membership card.\nGuide: Take your passport or identity card, as well as proof of your home address, to the information desk and you will be issued with a card. After a period of two years, all readers are required to go to the desk with a document that has their name and current address on it, so the library can keep up-to-date records of where people are living. [show proof of current address — A] There’s no need to show a passport again and there is no charge for this, but any lost cards are charged at £5.\nGuide: If you can’t find the book you want on the shelves, you can reserve it. If it’s in another library in the city, we can usually get it for you within a week. If someone else has borrowed it, it can take a few weeks.\nGuide: Either way, we notify you by phone or email when the item is available to be picked up. [contacted when available — C] We will hold it for you for five days. Books can be borrowed for 14 days and can be renewed for a further two weeks.\nGuide: Children’s books also have a two-week borrowing period. The same system exists for CD-ROMs and CDs, but DVDs, both children’s and adults, can only be borrowed for up to seven days. [children’s DVDs — C] It isn’t possible to renew them.\nGuide: Some reference books can be borrowed, but normally only for one day, so 24 hours. The library opening hours have been changed slightly. Instead of opening late on Wednesday evenings till 8pm, we will be closing at 6, as on other weekdays, but we will close at 7 instead of 5:30 on Saturdays [Saturday — B] and, a new development, we are going to open on Sunday mornings from next month 9 to 1. We are closed on public holidays and notices are posted in the library about these.\nGuide: Before you go upstairs, please note that if you are going to the exhibition area on the third floor, large bags are not allowed. There are lockers beside the reference area on the second floor where you can deposit them. [second floor — B] If you need change, you can get that from the information desk on the first floor.\nGuide: Now press pause and proceed to the second floor. When you reach the top of the stairs, press play.\nThat is the end of section two. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-31-part-3",
+   "title": "Part 3",
+   "context": "You will hear a student of landscape architecture discussing a project with his tutor. First, you have some time to look at questions 21 to 24. Pause the recording for 30 seconds. Now listen carefully and answer questions 21 to 24.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO correct answers.",
+     "title": "Which TWO possible objections to a roof garden are discussed?",
+     "options": [
+      {
+       "key": "A",
+       "text": "problems of access"
+      },
+      {
+       "key": "B",
+       "text": "the cost of construction"
+      },
+      {
+       "key": "C",
+       "text": "the time needed to install it"
+      },
+      {
+       "key": "D",
+       "text": "who will look after it"
+      },
+      {
+       "key": "E",
+       "text": "how to support the weight of it"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "'Why do you think a supermarket chain would be willing to meet the expense of construction?' — cost of construction. 'They might feel the expense of maintenance would be an issue. After all, supermarkets don’t normally employ gardeners.' — who will look after it."
+      },
+      {
+       "n": 22,
+       "answer": [
+        "B",
+        "D"
+       ],
+       "explanation": "'Why do you think a supermarket chain would be willing to meet the expense of construction?' — cost of construction. 'They might feel the expense of maintenance would be an issue. After all, supermarkets don’t normally employ gardeners.' — who will look after it."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO correct answers.",
+     "title": "Which TWO recent developments in roof-garden building are mentioned?",
+     "options": [
+      {
+       "key": "A",
+       "text": "waterproof barrier materials"
+      },
+      {
+       "key": "B",
+       "text": "drainage systems"
+      },
+      {
+       "key": "C",
+       "text": "tank designs"
+      },
+      {
+       "key": "D",
+       "text": "lightweight construction materials"
+      },
+      {
+       "key": "E",
+       "text": "watering systems"
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "'The material used between the building and the garden... the barrier fabric, which ensures no rainwater leaking.' — waterproof barrier materials. 'Storage tanks... linked to modern automatic watering systems.' — watering systems."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "'The material used between the building and the garden... the barrier fabric, which ensures no rainwater leaking.' — waterproof barrier materials. 'Storage tanks... linked to modern automatic watering systems.' — watering systems."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the diagram below. Choose the correct letter, A–H, next to questions 25–30.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      },
+      {
+       "key": "G",
+       "text": "G"
+      },
+      {
+       "key": "H",
+       "text": "H"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "text": "wall",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Wall: 'You have this low wall on the right.' Position F in the diagram."
+      },
+      {
+       "n": 26,
+       "text": "electric wire",
+       "answer": [
+        "H"
+       ],
+       "explanation": "Electric wire: 'The heavy-duty electric wiring comes up through the floor just outside the planted area and into the wall.' Position H."
+      },
+      {
+       "n": 27,
+       "text": "fibre optic cable",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Fibre optic cable: 'A beam of light along the fibre optic cable... the fibre optic goes across the surface of the soil.' Position C."
+      },
+      {
+       "n": 28,
+       "text": "wooden post",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Wooden post: 'The cable goes past a wooden post which is between the shrubs.' Position D."
+      },
+      {
+       "n": 29,
+       "text": "glass cap",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Glass cap: 'A kind of conical glass cap' at the top of each element. Position B."
+      },
+      {
+       "n": 30,
+       "text": "acrylic rod",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Acrylic rod: 'A slender acrylic rod like the stem of a flower or mushroom which the cable runs up inside of.' Position A."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening31-label.webp",
+      "alt": "Light Feature Diagram"
+     }
+    }
+   ],
+   "transcript": "You will hear a student of landscape architecture discussing a project with his tutor. First, you have some time to look at questions 21 to 24. Pause the recording for 30 seconds. Now listen carefully and answer questions 21 to 24.\nTutor: So, let’s hear what you’re doing for your next project.\nStudent: I’ve decided to design a roof garden for a supermarket. I’ve been looking at some on the web and I think that a garden on top of a building is the up-and-coming thing.\nTutor: Okay, so you’ve done a bit of reading already.\nTutor: What benefits would there be for the client? Why do you think a supermarket chain would be willing to meet the expense of construction? You do realise that would be the first thing they raise. [cost of construction — B]\nStudent: Yes, I know. But I’d explain that in spite of the initially high expense, they would save that much in approximately five years.\nTutor: Well, I’d have to do sums. I mean, calculate specifically. Yes, how would the saving come about?\nStudent: Mainly through lower heating and air-con bills.\nStudent: The extra insulation offered by having a layer of living plants in the soil would make a huge difference.\nTutor: Okay, but they might feel the expense of maintenance would be an issue. After all, supermarkets don’t normally employ gardeners. [who will look after it — D]\nStudent: What I thought was, if they made it a community garden rather than a simple low-maintenance green roof...\nTutor: So there’d be public access?\nStudent: Oh yes. Then there’d be a sense of ownership in the local community and people could take responsibility for it instead of the supermarket paying a commercial company and it’ll really boost their public relations.\nTutor: That’s a good point.\nTutor: And have you been looking into how roof gardens are built nowadays?\nStudent: I’m still exploring that. But if I take advantage of the latest technologies for roof gardens, it shouldn’t be too difficult. But in any case, you have to use lightweight materials.\nTutor: But that’s a matter of making the right choices. You can even use quite traditional ones such as wood for the planting areas.\nStudent: Yes, that’s what I thought. It’ll look good and it isn’t too heavy. But for the basic construction, the issue you have to address first is the material used between the building and the garden.\nTutor: You mean the barrier fabric, which ensures there’s no chance of rainwater leaking down into the building. [waterproof barrier materials — A]\nStudent: Yes, nowadays that is very good and quite easily sourced. Then on the other hand, there’s the business of water within the roof garden itself.\nTutor: You mean drainage? That’s an important feature of the construction in any roof design.\nStudent: Yes, but I think most drainage issues have been well understood for quite a long time. OK, but another thing is with plants in an exposed situation, you usually need to find ways to optimise rainfall.\nTutor: Yes, because rainwater is best for the garden if you can store it for when it’s needed.\nStudent: What I’ve been looking at are some buildings which use fairly conventional storage tanks, the kind that have been in use for decades, but have them linked to modern automatic watering systems. [watering systems — E]\nTutor: Sounds complicated.\nStudent: It’s less so in practice than it sounds, I think. I’ve been researching them and actually the latest ones definitely work very well and they can be electronically regulated to suit the local microclimate.\nTutor: That sounds interesting. You seem to have been doing some thorough research.\nTutor: Make sure you reference all your sources when you write it up.\nStudent: Yes, sure. Um, there’s one more aspect I’d just like to run past you if there’s time.\nStudent: I want to include a light feature in the design.\nTutor: Of course.\nStudent: I’ve got a sketch here.\nTutor: Let’s have a look then.\nBefore you hear the rest of the conversation, you have some time to look at questions 25 to 30. Pause the recording for 30 seconds. Now listen and answer questions 25 to 30.\nStudent: Well, I was really impressed by something I saw on a roof in Cornwall and I’d like to design something similar. You have an area of planting and I’m thinking of installing this lighting in an area filled with low-growing evergreen shrubs.\nTutor: You’d have to have lights and things well away from anywhere children might be. But I can see this could be very effective, if a bit complicated. How would it work?\nStudent: On this drawing, this is a section view, you have this low wall on the right.\nTutor: Yes, that’s it.\nStudent: This is just one element and these areas would be repeated all round the planted area. I think this will probably be a wooden wall using reclaimed timbers with an angled ceramic top surface.\nTutor: Perhaps even ridge tiles like they use on roofs?\nStudent: Oh yes, that’d be just the sort of thing.\nTutor: And that’d make it weatherproof.\nStudent: And then the heavy-duty electric wiring comes up through the floor just outside the planted area and into the wall.\nStudent: Then it’s brought through to a projector low in the side of the wall and that sends a beam of light along the fibre optic cable.\nStudent: So there’s no electricity in the actual lights. The fibre optic goes across the surface of the soil in the planting area.\nTutor: Yes, that’s the beauty of it.\nStudent: The shrubs will soon grow to cover it up of course and then the cable goes past a wooden post which is between the shrubs and can be a support for them as they grow bigger and then runs up into each element of the installation.\nStudent: So the light beam is carried up to the top of each element and illuminates a kind of conical glass cap.\nTutor: I see. Is that the bit which would glow in the dark?\nStudent: Yes.\nTutor: And what’s the cap supported on? Is it a wall?\nStudent: No, it’s a slender acrylic rod like the stem of a flower or mushroom which the cable runs up inside of.\nTutor: Well, I’ll be interested to see the final drawings.\nStudent: Thank you. I’m looking forward to putting it all together.\nThat is the end of section 3. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-31-part-4",
+   "title": "Part 4",
+   "context": "You will hear a geography student giving a presentation about sand to fellow students. First, you have some time to look at questions 31 to 40. Pause the recording for one minute. Now listen carefully and answer questions 31 to 40.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "The Argus System\n- Developed by Rob Holman in N. Carolina with other researchers\n- Research is vital for understanding of [[31]]\n- Matches information from under the water with information from [[32]]\n- According to S. Jeffress Williams, useful because can make observations during a [[33]]\nDr Holman’s sand collection\n- Dr H. has samples from every [[34]]\n- Used in teaching students of [[35]]\n- e.g. US East Coast display: grains from south are small, light-coloured and [[36]] in shape",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "beach erosion"
+       ],
+       "explanation": "'This research is critical to the study of beach erosion in places where the coastline is being worn away.'"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "fixed camera",
+        "camera"
+       ],
+       "explanation": "'The system correlates the data from under the water with what Dr Holman gets from his fixed camera.'"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "storm"
+       ],
+       "explanation": "'A lot of these take place when there is a storm or at other times when it is difficult to have people out on the beach.'"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "continent"
+       ],
+       "explanation": "'The collection includes sand from each continent, including Antarctica.'"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "geology"
+       ],
+       "explanation": "'It’s mainly geology students at the university who study his collection.'"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "rounded",
+        "round"
+       ],
+       "explanation": "'So the grains are fine and rounded, because most of the time sand is not stationary on the beach.'"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the flow-chart below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS for each answer.",
+     "wordLimit": 3,
+     "template": "Taking Samples When Travelling\nto dig sand, a plastic or metal [[37]] is ideal\n↓\nstore in plastic bags\n↓\nwrite date and place, using a [[38]]\nAfter reaching home\nlog samples, noting location including which part of beach\n↓\ndry sample on [[39]]\n↓\ntransfer to container\n↓\nadd at least one [[40]] immediately",
+     "questions": [
+      {
+       "n": 37,
+       "answer": [
+        "spoon"
+       ],
+       "explanation": "'One really handy thing for digging sand, especially if it’s hard or frozen, is a spoon.'"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "permanent marker",
+        "marker"
+       ],
+       "explanation": "'You must also have a permanent marker with you, because you can never assume you will remember.'"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "layers of newspaper",
+        "newspaper"
+       ],
+       "explanation": "'You can just air it out on layers of newspaper, which is suitably absorbent.'"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "identification label",
+        "label"
+       ],
+       "explanation": "'You must stick an identification label on straight away.'"
+      }
+     ]
+    }
+   ],
+   "transcript": "You will hear a geography student giving a presentation about sand to fellow students. First, you have some time to look at questions 31 to 40. Pause the recording for one minute. Now listen carefully and answer questions 31 to 40.\nStudent: First, I would like to tell you how the Argus computerised photography system has helped marine researchers. Then I shall talk a bit about sand collecting.\nStudent: Well, Argus is the system Dr Rob Holman developed when he was working at a research pier on the coast of North Carolina about 20 years ago. This pier stretches out over the water and it’s the longest research pier in the world with an observation tower on the end of it. The researchers there make precise measurements of how the sand moves about under the waves.\nStudent: This research is critical to the study of beach erosion in places where the coastline is being worn away. The Argus system helps to solve the difficulties encountered by these researchers. The system correlates the data from under the water with what Dr Holman gets from his fixed camera, which is mounted above the water on the pier and uses time-lapse photography.\nStudent: Some of Dr Holman’s results have changed the way people understand how sand moves. To quote S. Jeffreys Williams, a coastal geologist with the United States Geological Survey, the system is a critical piece of new technology and the Argus system allows us to quantify and document visually the changes to the coast on a variety of different time frames. A lot of these take place when there is a storm or at other times when it is difficult to have people out on the beach making observations and taking measurements.\nStudent: Up to now, Argus installations have been installed in places in Oregon, California, Hawaii, England, the Netherlands, Australia, New Zealand, Spain, Italy and Brazil, as well as in North Carolina. Now I’d like to introduce Dr Holman’s sand collection. He started collecting sand in the 1980s and he still collects it now, even though he has around a thousand samples.\nStudent: They come from his travels and from geologists and amateurs all over the world and the collection includes sand from each continent, including Antarctica. People send him sand in envelopes, plastic bags, paper towels and all sorts. Each is stored in a glass jar, which Dr Holman labels by latitude and longitude of its origin, as well as he can work them out.\nStudent: Sometimes the information is a bit sketchy. Anyway, it’s mainly geology students at the university who study his collection and they can learn a lot from it. For instance, one set of tubes displays sand from the east coast of the US, so you can see that the sand gets lighter and finer from north to south.\nStudent: By the time a grain of sand eventually washes up on a beach in Florida, at the southern end of that journey, it has been battered by waves for a long time, so the grains are fine and rounded, because most of the time sand is not stationary on the beach.\nStudent: Okay, so if you’d like to collect sand and maybe even send some to Dr Holman, how should you go about it? Well, the list of equipment is very short and easy to find, but you should keep a supply when you’re travelling, as you never know when you’ll come across an interesting sand sample. One really handy thing for digging sand, especially if it’s hard or frozen, is a spoon.\nStudent: It’s perfect for that. If you’re travelling by air, it’ll have to be plastic, but metal is preferable, as plastic tends to break. You need something to put the samples in that is damp-proof and easy to carry.\nStudent: You can just use plastic bags, but you need to record the location and date on the bag, so you must also have a permanent marker with you, because you can never assume you will remember where you gathered a sample from later on, and you don’t want it to rub off before you get home. And that’s about all you need in the field to collect sand.\nStudent: When you get home, your samples should be logged in a notebook or computer.\nStudent: You need to note the location and be really specific as to exactly whereabouts on the beach you gathered your sample — low tide mark, under cliff area, etc. Then you store your sample. You want to keep everything in good condition and avoid contamination.\nStudent: So, first you make absolutely sure that each sample is perfectly dry. You don’t need any complicated apparatus for this. You can just air it out on layers of newspaper, which is suitably absorbent.\nStudent: Most people find that’s the best way. Then, lastly, but this is really important, before there can be any chance of confusing this later sample with another, you put it in a clean small bag or a jar, and you must stick an identification label on straight away. Some people put one inside as well, in case the outer label falls off, but that’s up to you.\nStudent: Well, that’s about all you need to know to get started as a sand collector. Any questions?\nThat is the end of section four. You now have half a minute to check your answers."
+  }
+ ],
+ "audio": {
+  "file": "listening-31.mp3",
+  "durationSec": 1655,
+  "questionTimes": {
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0,
+   "16": 0,
+   "17": 0,
+   "18": 0,
+   "19": 0,
+   "20": 0,
+   "21": 0,
+   "22": 0,
+   "23": 0,
+   "24": 0,
+   "25": 0,
+   "26": 0,
+   "27": 0,
+   "28": 0,
+   "29": 0,
+   "30": 0,
+   "31": 0,
+   "32": 0,
+   "33": 0,
+   "34": 0,
+   "35": 0,
+   "36": 0,
+   "37": 0,
+   "38": 0,
+   "39": 0,
+   "40": 0
+  }
+ }
+}

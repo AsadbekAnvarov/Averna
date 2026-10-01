@@ -1,0 +1,687 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-38",
+ "title": "CDI Listening Test 38",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Greg and Jenny talk about a horseback riding trip Jenny is planning to do",
+  "A talk about a summer sports camp for people interested in working there",
+  "Mike discusses his oral-history project on a local football team with his tutor",
+  "A medical-science student presents recommendations for improving local hospital services"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-38-part-1",
+   "title": "Part 1",
+   "context": "Greg and Jenny talk about a horseback riding trip Jenny is planning to do.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS for each answer.",
+     "wordLimit": 2,
+     "template": "Horseback-trip\nTwo-day mini break\n- Length of trip: two days\n- Best month to go: September\n- Might see large numbers of [[1]]\n- Type of accommodation: a [[2]]\nDay one\n- Final destination: [[3]]\n- Evening activity: chance to have a [[4]]\nDay two\n- Explore the valley and have lunch by a [[5]]\n- Afternoon trip to a [[6]]\nTips for the holiday\n- unsuitable if you have [[7]] problems\n- rocky paths so take [[8]]\nBooking details\n- Book online to get a [[9]]\n- Inform your [[10]] company about the type of holiday booked",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "birds"
+       ],
+       "explanation": "Greg saw a huge flock of birds migrating during their picnic — another reason September is a good time to go."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "tent"
+       ],
+       "explanation": "\"You do not stay in a hotel. You stay in a tent, so you do not have to come back to town in the evening.\""
+      },
+      {
+       "n": 3,
+       "answer": [
+        "mountains"
+       ],
+       "explanation": "\"Where you are really heading for is the mountains, and when you set out, you can only see them in the far distance.\""
+      },
+      {
+       "n": 4,
+       "answer": [
+        "swim"
+       ],
+       "explanation": "\"On that first evening, when you have been riding all day, you get the opportunity to go for a swim.\""
+      },
+      {
+       "n": 5,
+       "answer": [
+        "waterfall"
+       ],
+       "explanation": "\"At the end of it, there is a waterfall. It is an amazing place to stop for lunch.\""
+      },
+      {
+       "n": 6,
+       "answer": [
+        "cave"
+       ],
+       "explanation": "\"In the afternoon, there is a trip that goes to a cave. You can even ride into it.\""
+      },
+      {
+       "n": 7,
+       "answer": [
+        "back"
+       ],
+       "explanation": "\"What you have got to watch for is that you do not have any trouble with your back. Riding can really aggravate that.\""
+      },
+      {
+       "n": 8,
+       "answer": [
+        "walking boots",
+        "walking-boots"
+       ],
+       "explanation": "\"Make sure you have walking boots, not just normal riding boots.\" — for steep, uneven paths."
+      },
+      {
+       "n": 9,
+       "answer": [
+        "discount"
+       ],
+       "explanation": "\"If I register online, I can get a discount.\" — Jenny saw this on the website."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "insurance"
+       ],
+       "explanation": "\"You have to make sure that your insurance company know that you are going on an adventure trip.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "Greg and Jenny talk about a horseback riding trip Jenny is planning to do.\n▶ 01:39Jenny: Hi Greg, great to see you. And thanks for emailing me with the details of the horseback riding trip you went on.\n▶ 01:50Greg: Yeah, I went on the two-day mini break. Is that what you are thinking about?\n▶ 01:54Jenny: Yes, that is the one. Do you think they would have places now in July or will it be full?\n▶ 02:01Greg: If you can, hang on till September. That is when I went, and it was a really great time to go. It is not so hot for a start.\n▶ 02:12Greg: And also, at one point when we stopped for a picnic, I was lying in a field looking up and saw a huge flock of birds. They were obviously migrating. [Answer 1 — birds]\n▶ 02:26Greg: Oh, and another thing, you do not stay in a hotel. You stay in a tent, so you do not have to come back to town in the evening. [Answer 2 — tent]\n▶ 02:34Jenny: I am up for that. So where do you go on the first day?\n▶ 02:39Greg: Through some amazing wooded valleys full of chestnut and beech trees. But that is just the morning. Where you are really heading for is the mountains, and when you set out, you can only see them in the far distance. You do not actually get there until sunset. [Answer 3 — mountains]\n▶ 02:56Jenny: Is it hard work riding all day?\n▶ 02:58Greg: No. The pace is easy and there are plenty of breaks built in. But on that first evening, when you have been riding all day, you get the opportunity to go for a swim and you really enjoy that. [Answer 4 — swim]\n▶ 03:15Jenny: And what is on day two? You said something about the national park?\n▶ 03:20Greg: No, day two you go up this incredible valley. At the end of it, there is a waterfall. It is an amazing place to stop for lunch. We even spotted an eagle while we were sitting there. [Answer 5 — waterfall]\n▶ 03:33Greg: And in the afternoon, there is a trip that goes to a cave. You can even ride into it. [Answer 6 — cave]\n▶ 04:19Jenny: Okay, so what are your tips for a horseback riding weekend?\n▶ 04:29Greg: Well, I had had a sore knee before I went, and I was pretty worried about that. It was okay actually, but what you have got to watch for is that you do not have any trouble with your back. Riding can really aggravate that. [Answer 7 — back]\n▶ 04:43Greg: Another thing I had not realised is that you actually walk the horses down some pretty steep and uneven paths. So make sure you have walking boots, not just normal riding boots. [Answer 8 — walking boots]\n▶ 05:04Jenny: I think you have convinced me to sign up. When I was looking at the website, I saw that if I register online, I can get a discount. [Answer 9 — discount]\n▶ 05:24Jenny: The other important thing I read was that you have to make sure that your insurance company know that you are going on an adventure trip. [Answer 10 — insurance]"
+  },
+  {
+   "id": "cdi-listening-38-part-2",
+   "title": "Part 2",
+   "context": "A talk about a summer sports camp for people interested in working there.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "The speaker says that he is happy to answer questions during his talk about",
+       "options": [
+        {
+         "key": "A",
+         "text": "the general operation of the camp."
+        },
+        {
+         "key": "B",
+         "text": "the children who attend."
+        },
+        {
+         "key": "C",
+         "text": "the job responsibilities."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Feel free to interrupt if there is anything you do not understand about the way the camp is administered.\" — questions about the general operation (A) are welcome during the talk."
+      },
+      {
+       "n": 12,
+       "text": "Why do parents send their children to the camp again and again?",
+       "options": [
+        {
+         "key": "A",
+         "text": "They like the fact that it is cheaper than other camps."
+        },
+        {
+         "key": "B",
+         "text": "They are pleased with the wide range of facilities on offer."
+        },
+        {
+         "key": "C",
+         "text": "They know their children will be looked after at the camp."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"We make sure our team are caring and enthusiastic, and that is why parents want their children to keep coming back.\" — children will be looked after (C)."
+      },
+      {
+       "n": 13,
+       "text": "One special thing about this summer camp is",
+       "options": [
+        {
+         "key": "A",
+         "text": "the number of international students."
+        },
+        {
+         "key": "B",
+         "text": "the preparation for professional sports."
+        },
+        {
+         "key": "C",
+         "text": "the inclusion of non-sports activities."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"We also have special coaching for those who might be able to make a career in their chosen sport.\" — preparation for professional sports (B)."
+      },
+      {
+       "n": 14,
+       "text": "The speaker says that this year, the camp particularly needs people",
+       "options": [
+        {
+         "key": "A",
+         "text": "who would like to work in the office."
+        },
+        {
+         "key": "B",
+         "text": "who have experience of cooking."
+        },
+        {
+         "key": "C",
+         "text": "who young children can talk to."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"What we would particularly like this summer are people willing to be in charge of looking after our younger kids.\" — people young children can talk to (C)."
+      },
+      {
+       "n": 15,
+       "text": "What should the new cameraperson have?",
+       "options": [
+        {
+         "key": "A",
+         "text": "artistic talents"
+        },
+        {
+         "key": "B",
+         "text": "good camera equipment"
+        },
+        {
+         "key": "C",
+         "text": "a qualification in photography"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"We will supply first class equipment, but we need you to supply your creative abilities.\" — artistic talents (A), not equipment or qualifications."
+      },
+      {
+       "n": 16,
+       "text": "What does the speaker say about working conditions?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Sports coaches earn the most."
+        },
+        {
+         "key": "B",
+         "text": "Kitchen staff work the longest hours."
+        },
+        {
+         "key": "C",
+         "text": "Cleaners work in the mornings and evenings."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Daytime coaching roles pay the highest wages because of the sports skills required and the longer hours.\" — sports coaches earn the most (A)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO benefits are provided free of charge to camp workers?",
+     "options": [
+      {
+       "key": "A",
+       "text": "a sports bag"
+      },
+      {
+       "key": "B",
+       "text": "a T-shirt"
+      },
+      {
+       "key": "C",
+       "text": "use of sports facilities"
+      },
+      {
+       "key": "D",
+       "text": "meals"
+      },
+      {
+       "key": "E",
+       "text": "internet access"
+      }
+     ],
+     "questions": [
+      {
+       "n": 17,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "Free of charge: \"access to all our facilities\" (C — sports facilities) and \"we will give everyone UK summer camp t-shirts\" (B). Sports bags cost a small fee; meals are discounted; internet has a small charge. Same as Q17 — free items are the T-shirt (B) and use of sports facilities (C)."
+      },
+      {
+       "n": 18,
+       "answer": [
+        "B",
+        "C"
+       ],
+       "explanation": "Free of charge: \"access to all our facilities\" (C — sports facilities) and \"we will give everyone UK summer camp t-shirts\" (B). Sports bags cost a small fee; meals are discounted; internet has a small charge. Same as Q17 — free items are the T-shirt (B) and use of sports facilities (C)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO answers.",
+     "title": "Which TWO things do applicants need in order to get a job at the camp?",
+     "options": [
+      {
+       "key": "A",
+       "text": "experience of working with children"
+      },
+      {
+       "key": "B",
+       "text": "an ability to make decisions on their own"
+      },
+      {
+       "key": "C",
+       "text": "a friendly personality"
+      },
+      {
+       "key": "D",
+       "text": "relevant qualifications"
+      },
+      {
+       "key": "E",
+       "text": "to be over a certain age"
+      }
+     ],
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "\"You need to be sociable and enjoy meeting people\" (C — friendly personality) and \"we cannot accept applications from people under the age of eighteen\" (E — over a certain age). Same as Q19. Formal certificates are NOT needed; experience with kids is just an advantage; supervisors make important decisions."
+      },
+      {
+       "n": 20,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "\"You need to be sociable and enjoy meeting people\" (C — friendly personality) and \"we cannot accept applications from people under the age of eighteen\" (E — over a certain age). Same as Q19. Formal certificates are NOT needed; experience with kids is just an advantage; supervisors make important decisions."
+      }
+     ]
+    }
+   ],
+   "transcript": "A talk about a summer sports camp for people interested in working there.\n▶ 07:25Speaker: Welcome to this talk about the UK summer sports camp. Later on, I will tell you how to apply if you would like to work with us this year. Feel free to interrupt if there is anything you do not understand about the way the camp is administered, though if you could save any questions about the work itself until the end, that would be good. [Answer 11 — A: general operation]\n▶ 08:07Speaker: The reason we are successful is because parents trust us and send their children to us summer after summer. We are not the cheapest camp around, but we make sure our team are caring and enthusiastic, and that is why parents want their children to keep coming back, rather than because of the facilities on offer. [Answer 12 — C: looked after]\n▶ 08:39Speaker: We run all the activities you would expect — arts, music, sports. But we also have special coaching for those who might be able to make a career in their chosen sport. [Answer 13 — B: professional sports]\n▶ 09:03Speaker: What we would particularly like this summer are people who are willing to be in charge of looking after our younger kids, making sure they are happy. [Answer 14 — C: young children]\n▶ 09:27Speaker: New role: cameraperson. We will supply first class equipment, but we need you to supply your creative abilities. [Answer 15 — A: artistic talents]\n▶ 09:51Speaker: Daytime coaching roles pay the highest wages because of the sports skills required and the longer hours. [Answer 16 — A: sports coaches earn most]\n▶ 10:59Speaker: Benefits in addition to money: you will be given access to all our facilities — swim or play football without paying anything. Internet cafe has a small charge; meals are discounted. We will give everyone UK summer camp t-shirts. Sports bags available for a small fee. [Answers 17&18 — B (T-shirt) & C (sports facilities)]\n▶ 11:35Speaker: What we expect from you: we do not need to see any formal certificates. Working with kids is an advantage but not essential. Of course you need to be sociable and enjoy meeting people. We cannot accept applications from people under the age of eighteen. [Answers 19&20 — C (friendly) & E (over a certain age)]"
+  },
+  {
+   "id": "cdi-listening-38-part-3",
+   "title": "Part 3",
+   "context": "Mike discusses his oral-history project on a local football team with his tutor.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "What source did Mike use for his definition?",
+       "options": [
+        {
+         "key": "A",
+         "text": "a history textbook"
+        },
+        {
+         "key": "B",
+         "text": "an academic article"
+        },
+        {
+         "key": "C",
+         "text": "a lecture handout"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"I use the definition you gave us last year in our research methodology class. I found the handout in my file.\" — a lecture handout (C)."
+      },
+      {
+       "n": 22,
+       "text": "According to Mike and his tutor, what is the most important contribution of the internet to oral history?",
+       "options": [
+        {
+         "key": "A",
+         "text": "the permanent preservation of recordings"
+        },
+        {
+         "key": "B",
+         "text": "an increase in student interest"
+        },
+        {
+         "key": "C",
+         "text": "wide access to the interviews by the public"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"The real contribution of the internet is that the recording of the interviews will be preserved forever.\" — permanent preservation (A)."
+      },
+      {
+       "n": 23,
+       "text": "Mike says he chose his particular topic because",
+       "options": [
+        {
+         "key": "A",
+         "text": "he is a football fan."
+        },
+        {
+         "key": "B",
+         "text": "his father loves football."
+        },
+        {
+         "key": "C",
+         "text": "his friends encouraged him."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"Actually, I do not even like football very much. But my dad is a huge fan and he might be able to help me.\" — chose it because his father loves football (B)."
+      },
+      {
+       "n": 24,
+       "text": "What does Mike say was his best source of information about the team?",
+       "options": [
+        {
+         "key": "A",
+         "text": "doing research in the local newspaper archives"
+        },
+        {
+         "key": "B",
+         "text": "speaking to the team manager"
+        },
+        {
+         "key": "C",
+         "text": "looking at materials in the local library"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"I looked at all the old news stories about the team in the town newspaper office. That was where I got the most helpful information.\" — local newspaper archives (A)."
+      },
+      {
+       "n": 25,
+       "text": "How did Mike find the former players he has arranged to interview?",
+       "options": [
+        {
+         "key": "A",
+         "text": "on the internet"
+        },
+        {
+         "key": "B",
+         "text": "in the team records"
+        },
+        {
+         "key": "C",
+         "text": "in the phone book"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"You managed to locate ten of the original 18 members using an old-fashioned method... just the telephone directory.\" — phone book (C)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What problems with the following aspects of the proposed interviews do the speakers identify? Choose FIVE answers from the box and write the correct letter, A–H, next to questions 26–30.",
+     "title": "Problems",
+     "options": [
+      {
+       "key": "A",
+       "text": "too unreliable"
+      },
+      {
+       "key": "B",
+       "text": "too short"
+      },
+      {
+       "key": "C",
+       "text": "too noisy"
+      },
+      {
+       "key": "D",
+       "text": "too long"
+      },
+      {
+       "key": "E",
+       "text": "too formal"
+      },
+      {
+       "key": "F",
+       "text": "too factual"
+      },
+      {
+       "key": "G",
+       "text": "too complicated"
+      },
+      {
+       "key": "H",
+       "text": "too vague"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "text": "Questions drafted",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"I felt most of them are rather complex to be processed as oral questions.\" — questions are too complicated (G)."
+      },
+      {
+       "n": 27,
+       "text": "Time allotted",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"I think you may have scheduled too much time for each. You want them to be tight, not going on and on.\" — time allotted is too long (D)."
+      },
+      {
+       "n": 28,
+       "text": "Recording equipment used",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"It sometimes just does not seem to work. It stopped during an interview I tried out with my dad.\" — recording equipment too unreliable (A)."
+      },
+      {
+       "n": 29,
+       "text": "Subjects chosen",
+       "answer": [
+        "H"
+       ],
+       "explanation": "\"The topics seem quite general, not very specific... You need to talk about more exact things.\" — subjects too vague (H)."
+      },
+      {
+       "n": 30,
+       "text": "Proposed report",
+       "answer": [
+        "F"
+       ],
+       "explanation": "\"The plan for my report seems to be just to report back more or less what the players say... change it to indicate that you plan to include your own evaluation.\" — too factual (F)."
+      }
+     ]
+    }
+   ],
+   "transcript": "Mike discusses his oral-history project on a local football team with his tutor.\n▶ 14:05Tutor: I have read the proposal for your project. But first, how do you define oral history?\n▶ 14:26Mike: Well, in fact, I use the definition you gave us last year in our research methodology class. I found the handout in my file. [Answer 21 — C: lecture handout]\n▶ 15:06Mike: I was also interested in how the internet has contributed to oral history.\n▶ 15:10Tutor: Lots of people can access the material. But the real contribution of the internet is that the recording of the interviews will be preserved forever. [Answer 22 — A: permanent preservation]\n▶ 15:45Tutor: Why did you decide to study a sports team?\n▶ 15:52Mike: Actually, I do not even like football very much. But my dad is a huge fan, and he might be able to help me. [Answer 23 — B: father loves football]\n▶ 16:13Tutor: How did you find out background about the team?\n▶ 16:16Mike: I talked to the team manager. And I looked at all the old news stories about the team in the town newspaper office. That was where I got the most helpful information. The local library does not keep records for more than ten years. [Answer 24 — A: newspaper archives]\n▶ 16:36Tutor: You located ten of the original 18 members using an old-fashioned method?\n▶ 16:43Mike: Just the telephone directory. I did not even need the local team records. [Answer 25 — C: phone book]\n▶ 17:34Tutor: I have read your list of questions. I felt most of them are rather complex to be processed as oral questions. [Answer 26 — G: too complicated]\n▶ 17:55Tutor: The time you have allotted for each interview — I think you may have scheduled too much time for each. You want them to be tight, not going on and on. [Answer 27 — D: too long]\n▶ 18:08Mike: I am nervous about the recording equipment. It sometimes just does not seem to work. It stopped during an interview I tried out with my dad. [Answer 28 — A: too unreliable]\n▶ 18:37Tutor: I am a little concerned with the subjects you have chosen. The topics seem quite general, not very specific. You need to talk about more exact things and feelings. [Answer 29 — H: too vague]\n▶ 19:00Mike: The plan for my report seems to be just to report back what the players say.\n▶ 19:05Tutor: Change it to indicate that you plan to include your own evaluation of the data. [Answer 30 — F: too factual]"
+  },
+  {
+   "id": "cdi-listening-38-part-4",
+   "title": "Part 4",
+   "context": "A medical-science student presents recommendations for improving local hospital services.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Improving the Local Hospital Services\nFeedback from questionnaire\nMain reasons for choosing a hospital:\n- convenient [[31]] services\n- the hospital building should be [[32]]\n- staff providing [[33]] prior to hospital treatment\nIntended action over the next year\n- develop web pages for local [[34]] and for hospital staff\n- a [[35]] may be given as a reward to some staff for success and effort\n- [[36]] will be asked to give their opinions of the hospital\n- effectiveness of [[37]] will be assessed at all levels\nRecommendations\n- new units should be opened, e.g. for patients that suffer from [[38]] disturbance or who need [[39]] surgery\n- The hospital has adequate equipment and space but needs improved [[40]] to maximise use of its facilities",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "transport"
+       ],
+       "explanation": "\"It was really important, not the distance the hospital was from their homes, but how easy it was to get transport there.\" — convenient transport services."
+      },
+      {
+       "n": 32,
+       "answer": [
+        "clean"
+       ],
+       "explanation": "\"How clean it was, however, certainly was. One in two people surveyed listed this as a major concern.\" — hospital should be clean."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "information"
+       ],
+       "explanation": "\"A member of the hospital staff would be prepared to give them information they needed about their treatment before they had it.\""
+      },
+      {
+       "n": 34,
+       "answer": [
+        "doctors"
+       ],
+       "explanation": "\"A plan to add to the existing hospital website to advise doctors who practise in the area, as well as on-site staff.\""
+      },
+      {
+       "n": 35,
+       "answer": [
+        "bonus"
+       ],
+       "explanation": "\"It is likely to be a bonus of some kind, I think.\" — given as reward to staff for success and effort."
+      },
+      {
+       "n": 36,
+       "answer": [
+        "visitors"
+       ],
+       "explanation": "\"Find a way to assess the views of visitors to the hospital. People coming in to see their friends or relatives.\" — visitors will give opinions."
+      },
+      {
+       "n": 37,
+       "answer": [
+        "communication"
+       ],
+       "explanation": "\"The hospital will be looking at how good the communication is between managers and staff and... between staff and patients.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "sleep"
+       ],
+       "explanation": "\"People have to travel to another hospital sixty miles away for treatment of illnesses associated with interrupted sleep.\" — sleep disturbance."
+      },
+      {
+       "n": 39,
+       "answer": [
+        "plastic"
+       ],
+       "explanation": "\"I would also suggest investigating the possibility of funding a new plastic surgery unit, because that is another service patients cannot receive locally.\""
+      },
+      {
+       "n": 40,
+       "answer": [
+        "planning"
+       ],
+       "explanation": "\"If better planning was implemented, these and other facilities could be in use twenty four hours a day.\" — improved planning maximises use."
+      }
+     ]
+    }
+   ],
+   "transcript": "A medical-science student presents recommendations for improving local hospital services.\n▶ 21:18Speaker: I asked 200 local people which things would influence their choice of which hospital they would want to be treated in.\n▶ 21:42Speaker: People felt it was really important, not the distance the hospital was from their homes, but how easy it was to get transport there. [Answer 31 — transport]\n▶ 22:05Speaker: How clean it was, however, certainly was. One in two people surveyed listed this as a major concern. [Answer 32 — clean]\n▶ 22:15Speaker: People also said it was important for them to know that a member of the hospital staff would be prepared to give them information they needed about their treatment before they had it. [Answer 33 — information]\n▶ 22:38Speaker: There is a plan to add to the existing hospital website to advise doctors who practise in the area, as well as on-site staff. [Answer 34 — doctors]\n▶ 23:00Speaker: A scheme to celebrate success and recognise effort is being introduced. It is likely to be a bonus of some kind. [Answer 35 — bonus]\n▶ 23:24Speaker: Find a way to assess the views of visitors to the hospital — people coming in to see their friends or relatives. [Answer 36 — visitors]\n▶ 23:35Speaker: The hospital will be looking at how good the communication is between managers and staff and in turn that between staff and patients. [Answer 37 — communication]\n▶ 24:13Speaker: People have to travel to another hospital sixty miles away for treatment of illnesses associated with interrupted sleep, so a unit to support that would be really useful. [Answer 38 — sleep]\n▶ 24:25Speaker: I would also suggest investigating the possibility of funding a new plastic surgery unit, because that is another service patients cannot receive locally. [Answer 39 — plastic]\n▶ 24:45Speaker: The hospital is adequately equipped, but many operating theatres are empty for long periods. If better planning was implemented, these facilities could be in use twenty four hours a day. [Answer 40 — planning]"
+  }
+ ],
+ "audio": {
+  "file": "listening-38.mp3",
+  "durationSec": 1519,
+  "questionTimes": {
+   "1": 138,
+   "2": 148,
+   "3": 159,
+   "4": 186,
+   "5": 200,
+   "6": 213,
+   "7": 259,
+   "8": 283,
+   "9": 304,
+   "10": 324,
+   "11": 445,
+   "12": 487,
+   "13": 519,
+   "14": 543,
+   "15": 567,
+   "16": 591,
+   "17": 651,
+   "18": 651,
+   "19": 695,
+   "20": 695,
+   "21": 845,
+   "22": 906,
+   "23": 952,
+   "24": 973,
+   "25": 996,
+   "26": 1054,
+   "27": 1075,
+   "28": 1088,
+   "29": 1117,
+   "30": 1140,
+   "31": 1278,
+   "32": 1325,
+   "33": 1335,
+   "34": 1358,
+   "35": 1380,
+   "36": 1404,
+   "37": 1415,
+   "38": 1453,
+   "39": 1465,
+   "40": 1480
+  }
+ }
+}

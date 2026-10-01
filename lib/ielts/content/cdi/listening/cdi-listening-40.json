@@ -1,0 +1,587 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-40",
+ "title": "CDI Listening Test 40",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Two students, Peter and Jim, talk about sharing a house together",
+  "The assistant head teacher talks to new parents about the junior school",
+  "Two architecture students, Luke and Millie, discuss their assignment on plastic as a building material",
+  "A biology lecture on how plants and animals deal with environmental changes through dormancy"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-40-part-1",
+   "title": "Part 1",
+   "context": "Two students, Peter and Jim, talk about sharing a house together.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 3,
+     "allowNumber": true,
+     "template": "Sharing a House — Peter & Jim\n- Jim's weekly rent will be $ [[1]]\n- Jim can park his car in the [[2]]\n- The telephone is in the [[3]]\n- Jim will bring a [[4]]\n- Peter would like Jim to bring a [[5]]\n- Peter and Jim will probably watch TV on [[6]]\n- Jim works in a [[7]] twice a week\n- Peter will share the cost of [[8]] with Jim\n- Peter wants Jim to move in by [[9]]\n- Jim agrees to move in after his [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "80"
+       ],
+       "explanation": "\"Yours is eighty dollars because it is a bit smaller.\" — Jim takes the smaller room."
+      },
+      {
+       "n": 2,
+       "answer": [
+        "garage"
+       ],
+       "explanation": "\"You are lucky because this house has a garage... there is still plenty of room for your car.\""
+      },
+      {
+       "n": 3,
+       "answer": [
+        "kitchen"
+       ],
+       "explanation": "\"It is in the kitchen. It was in the living room, but it was hard to hear over the television.\""
+      },
+      {
+       "n": 4,
+       "answer": [
+        "heater"
+       ],
+       "explanation": "\"It does get quite cold at night in that room and it does not have a heater.\" Jim: \"My friend has just given me one, so I will bring that.\""
+      },
+      {
+       "n": 5,
+       "answer": [
+        "toaster"
+       ],
+       "explanation": "\"It would be great if you had a toaster. Mine has just broken.\""
+      },
+      {
+       "n": 6,
+       "answer": [
+        "friday evening",
+        "friday"
+       ],
+       "explanation": "\"I usually watch the game on TV on Friday evening.\" — Peter: \"Me too, so that is good.\""
+      },
+      {
+       "n": 7,
+       "answer": [
+        "supermarket"
+       ],
+       "explanation": "\"I work at the supermarket on Tuesday and Thursday nights.\""
+      },
+      {
+       "n": 8,
+       "answer": [
+        "petrol",
+        "gas"
+       ],
+       "explanation": "\"Mine are in the afternoons too. You could give me a lift. We can share the petrol.\""
+      },
+      {
+       "n": 9,
+       "answer": [
+        "1st of june",
+        "1 June",
+        "1st June",
+        "first of June",
+        "June 1st",
+        "June 1"
+       ],
+       "explanation": "\"I need someone by the first of June when the new rent period starts.\""
+      },
+      {
+       "n": 10,
+       "answer": [
+        "exam",
+        "exams"
+       ],
+       "explanation": "\"I have got an exam next week, so I will move in after that if that is okay.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "Two students, Peter and Jim, talk about sharing a house together.\n▶ 00:00[Narrator] Recordings, and you will have to answer questions on what you hear. There will be time for you to read the instructions and questions, and you will have a chance to check your work.\n▶ 00:12[Narrator] All the recordings will be played once only. The test is in four sections. Write all your answers in the listening question booklet.\n▶ 00:25[Narrator] At the end of the test, you will be given ten minutes to transfer your answers to an answer sheet. Now turn to section one on page two of your question booklet.\n▶ 00:44[Narrator] Section one You will hear two students called Peter and Jim talking about sharing a house together. First you have some time to look at questions one to five on page two.\n▶ 01:18[Narrator] You will see that there is an example that has been done for you. On this occasion only, the conversation relating to this will be played first.\n▶ 01:31Jim: Hi, I'm Jim. I'm here about the room.\n▶ 01:34Peter: Hi, I'm Peter. Uh we talked on the phone, didn't we? Come on in.\n▶ 01:38Jim: Great. I just need to find out a few things before I make up my mind.\n▶ 01:46[Narrator] Jim is here to find out about a room, so room has been written in the space. Now we shall begin.\n▶ 01:55[Narrator] You should answer the questions as you listen, because you will not hear the recording a second time. Listen carefully and answer questions one to five.\n▶ 02:09Jim: Hi, I'm Jim. I'm here about the room.\n▶ 02:12Peter: Hi, I'm Peter. Uh we talked on the phone, didn't we? Come on in.\n▶ 02:16Jim: Great. I just need to find out a few things before I make up my mind.\n▶ 02:20Peter: Okay.\n▶ 02:21Jim: Well, first of all, I wasn't quite clear about the rent.\n▶ 02:25Peter: Hm it depends on the room you have. I have the large bedrooms, so I pay a hundred and ten dollars a week. Yours is eighty dollars because it's a bit smaller.\n▶ 02:34Jim: That's not too bad. The last place I was in was one hundred dollars a week and it was much smaller. And it seems like a good location. Yeah.\n▶ 02:42Peter: And the shops are pretty close. The only thing is it's not very good for public transport. Um the nearest bus stop is quite a walk.\n▶ 02:51Jim: That's not a problem. I've got a car. By the way, is there anywhere I can park?\n▶ 02:55Peter: Hm. Well, you're lucky because this house has a garage. U at the moment there is some empty boxes in there, but there's still plenty of room for your car. You can't park in the street, it's zoned no parking, and the back lane is too narrow.\n▶ 03:10Jim: Fine. Now what about phone calls? Uh I didn't see a phone in the hall when I came in. I've got a mobile which my friends usually call me on, but a phone in the house is useful.\n▶ 03:21Peter: Yeah. It's in the kitchen. It was in the living room, but it was hard to hear over the television. Oh, and we pay for our own calls.\n▶ 03:28Jim: That's fair enough. And what about my room?\n▶ 03:32Peter: Yes, uh we'll go up and look in a minute.\n▶ 03:34Peter: It's at the front of the house. It's a nice room and there's a cupboard and desk in there already. But it does get quite cold at night in that room and it doesn't have a heater.\n▶ 03:45Jim: No problem. My friend has just given me one, so I'll bring that. He's gone travelling and has left me with a big box of things to mind. Um anything else I can bring?\n▶ 03:54Peter: Well, we've just got a microwave and my mother bought me a rice cooker, but it would be great if you had a toaster. Mine's just broken.\n▶ 04:02Jim: I'll have a look in the box.\n▶ 04:07[Narrator] Before you hear the rest of the conversation, you have some time to look at questions six to ten on page two.\n▶ 04:34[Narrator] Now listen and answer questions six to ten.\n▶ 04:41Jim: One thing, I'm a keen sports fan and I usually watch the game on TV on Friday evening. Would that be okay?\n▶ 04:47Peter: Me too, so that's good.\n▶ 04:49Jim: Ah. And I work at the supermarket on Tuesday and Thursday nights.\n▶ 04:54Peter: Great. You can do the shopping then. And do you have most of your lectures in the morning or afternoon?\n▶ 04:59Jim: In the afternoons, why?\n▶ 05:01Peter: Mine are in the afternoons too. You could give me a lift. We can share the petrol.\n▶ 05:05Jim: Good idea. Um when do you think I could move in?\n▶ 05:09Peter: Well, if you're interested, and the rent is okay, I need someone by the first of June when the new rent period starts.\n▶ 05:16Jim: Yes, that should be fine. The house seems big enough, the rent's reasonable. I've got an exam next week, so I'll move in after that if that's okay.\n▶ 05:25Peter: Yeah, that sounds fine.\n▶ 05:29[Narrator] That is the end of section one. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-40-part-2",
+   "title": "Part 2",
+   "context": "The assistant head teacher talks to new parents about the junior school.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "template": "Spring Down Junior School\n- The school day starts at [[11]] with registration, and finishes at 4 p.m.\n- The school canteen offers a [[12]] for lunch\n- The morning and afternoon breaks each last for [[13]]\n- On Thursday afternoons all children must take part in [[14]]\n- Every term the children do a special [[15]]\n- The children are given tests each [[16]]\n- The children can go to [[17]] after school to learn new skills such as music",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "8:55",
+        "8.55",
+        "08:55",
+        "8:55 am",
+        "8.55 am",
+        "8:55 a.m",
+        "8.55 a.m"
+       ],
+       "explanation": "\"The bell is rung for everybody to go to their classrooms at eight fifty five so that we can take the register.\""
+      },
+      {
+       "n": 12,
+       "answer": [
+        "hot meal"
+       ],
+       "explanation": "\"Children can bring their own packed lunch or a hot meal is available.\""
+      },
+      {
+       "n": 13,
+       "answer": [
+        "15 minutes",
+        "fifteen minutes",
+        "15 mins",
+        "15 min"
+       ],
+       "explanation": "\"There are two breaks of fifteen minutes when the children also generally go outside.\""
+      },
+      {
+       "n": 14,
+       "answer": [
+        "sports"
+       ],
+       "explanation": "\"On Thursday afternoons, rather than continuing with lessons, we expect the whole school to do sports.\""
+      },
+      {
+       "n": 15,
+       "answer": [
+        "poster"
+       ],
+       "explanation": "\"For each of the three terms, they are expected to produce a poster.\""
+      },
+      {
+       "n": 16,
+       "answer": [
+        "month"
+       ],
+       "explanation": "\"Every month... they have to do tests, and we record their performance over the year.\""
+      },
+      {
+       "n": 17,
+       "answer": [
+        "clubs",
+        "club"
+       ],
+       "explanation": "\"At the end of the school day, many of them have set up clubs that the children go to for an extra hour.\""
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the plan below. Choose the correct letter, A–H, for each label.",
+     "title": "Options:",
+     "options": [
+      {
+       "key": "A",
+       "text": "assembly hall"
+      },
+      {
+       "key": "B",
+       "text": "computer room"
+      },
+      {
+       "key": "C",
+       "text": "gym"
+      },
+      {
+       "key": "D",
+       "text": "head's office"
+      },
+      {
+       "key": "E",
+       "text": "music room"
+      },
+      {
+       "key": "F",
+       "text": "reception"
+      },
+      {
+       "key": "G",
+       "text": "cloakroom"
+      },
+      {
+       "key": "H",
+       "text": "lunch canteen"
+      }
+     ],
+     "questions": [
+      {
+       "n": 18,
+       "text": "Place 18 on the plan",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"On the right, where you would normally expect to find reception, you will see the head's office.\" — D on the map."
+      },
+      {
+       "n": 19,
+       "text": "Place 19 on the plan",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"On the left of the classrooms, we have converted one of the old cloakrooms to create a music room.\" — E."
+      },
+      {
+       "n": 20,
+       "text": "Place 20 on the plan",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"The old assembly hall next door... has now been turned into a gym for the children.\" — C on the map."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening40-part2.webp",
+      "alt": "Spring Down Junior School floor plan"
+     }
+    }
+   ],
+   "transcript": "The assistant head teacher talks to new parents about the junior school.\n▶ 06:05[Narrator] Now turn to section two on page three. Section two You will hear a teacher giving a talk about a junior school to a group of parents.\n▶ 06:19[Narrator] First you have some time to look at questions eleven to seventeen on page three.\n▶ 06:50[Narrator] Now listen carefully and answer questions eleven to seventeen.\n▶ 06:58Speaker: OK, can everybody hear me? Good. Well, I'd like to welcome all the new parents to Springdown Junior School.\n▶ 07:08Speaker: My name is Anne Rawson, and I'm the assistant head teacher.\n▶ 07:13Speaker: What I'd like to do is tell you about the school day and show you round the school, and perhaps you can ask me any questions you may have at the end. Right.\n▶ 07:25Speaker: First of all, let me start by telling you a little bit about what happens here and what's on offer.\n▶ 07:33Speaker: Children are expected to arrive at school between 845 and 850, and the bell is rung for everybody to go to their classrooms at eight fifty five so that we can take the register.\n▶ 07:47Speaker: We then have assembly at nine o'clock, when the whole school meets in the hall for the head to talk to the children.\n▶ 07:56Speaker: He may discuss what's happened in the news or something that is important for the school. Lessons run until four PM with an hour for lunch.\n▶ 08:08Speaker: Lunch is served in the canteen, and children can bring their own packed lunch or a hot meal is available. They also have time to play outside and get some fresh air.\n▶ 08:22Speaker: In the middle of the morning and the middle of the afternoon,\n▶ 08:26Speaker: There are two breaks of fifteen minutes when the children also generally go outside, unless it's wet.\n▶ 08:35Speaker: Now we encourage the children to do as much as they can, and we offer them several ways of achieving this.\n▶ 08:42Speaker: For example, on Thursday afternoons, rather than continuing with lessons, we expect the whole school to do sports.\n▶ 08:51Speaker: We vary these between summer and winter, and everything is supervised by the teachers.\n▶ 08:58Speaker: Also, we like the children to work on something artistic over a long period of time, so for each of the three terms, they are expected to produce a poster.\n▶ 09:11Speaker: This will normally be on something particular that they have studied that term, such as the environment.\n▶ 09:18Speaker: We also make sure we keep a close eye on how each child is doing in their schoolwork, and every month, rather than the teacher giving the children a report, as I know some schools do, they have to do tests, and we record their performance over the year.\n▶ 09:37Speaker: We're very proud of our school and of the very good results we achieve.\n▶ 09:43Speaker: Our teachers are all very committed to the school, and at the end of the school day, many of them have set up clubs that the children go to for an extra hour to learn a new skill.\n▶ 09:56Speaker: Such as music.\n▶ 10:00[Narrator] Before you hear the rest of the talk, you have some time to look at questions eighteen to twenty on page four.\n▶ 10:33[Narrator] Now listen and answer questions eighteen to twenty.\n▶ 10:40Speaker: Okay, I'll quickly show you where everything is. We're here at the main entrance, and on the right, where you would normally expect to find reception, you'll see the head's office.\n▶ 10:54Speaker: He likes to see visitors personally, and his door is always open. Opposite this are two of the classrooms, but most of the classrooms are down the long corridor.\n▶ 11:08Speaker: The library, then, is situated between those two classrooms, and we are hoping that we will be able to create a computer room within that, so that the children can have somewhere quiet to work on their own.\n▶ 11:24Speaker: On the left of the classrooms, we have converted one of the old cloakrooms to create a music room, and children can go in there at lunchtime if they want to.\n▶ 11:36Speaker: Now, if you come with me through the main hall here.\n▶ 11:41Speaker: Okay, now, as you can probably see, this main hall is a new addition this year, and we are very pleased with it.\n▶ 11:52Speaker: We used to be squashed into the old assembly hall next door, which, as you can see, has now been turned into a gym for the children, and we have weekly lessons here.\n▶ 12:05Speaker: Do feel free to go and look round the classrooms.\n▶ 12:08Speaker: And I'll be waiting here to answer your questions.\n▶ 12:14[Narrator] That is the end of section two. You now have half a minute to check your answers."
+  },
+  {
+   "id": "cdi-listening-40-part-3",
+   "title": "Part 3",
+   "context": "Two architecture students, Luke and Millie, discuss their assignment on plastic as a building material.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 21,
+       "text": "Why did buildings made of plastic fail to please the public in the 1960s?",
+       "options": [
+        {
+         "key": "A",
+         "text": "People did not think they were good for the environment."
+        },
+        {
+         "key": "B",
+         "text": "People did not want to live in them."
+        },
+        {
+         "key": "C",
+         "text": "People did not find them visually appealing."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"People liked their modern design, but the idea of that sort of building as a home just did not appeal.\" — They did not want to live in them (B)."
+      },
+      {
+       "n": 22,
+       "text": "In the 1960s and 1970s, engineers were unable to overcome the problem of",
+       "options": [
+        {
+         "key": "A",
+         "text": "damage caused in the production process."
+        },
+        {
+         "key": "B",
+         "text": "the effects of light and water."
+        },
+        {
+         "key": "C",
+         "text": "the potential danger of wind."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"When the plastic was exposed to the light, it developed fine cracks. And when rain got into these cracks, the plastic would deform and lose its strength.\" — light and water (B)."
+      },
+      {
+       "n": 23,
+       "text": "Luke and Millie agree to try to get more information about present-day plastics from",
+       "options": [
+        {
+         "key": "A",
+         "text": "journals."
+        },
+        {
+         "key": "B",
+         "text": "a PhD student."
+        },
+        {
+         "key": "C",
+         "text": "websites."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"Maybe we should research more academic sources like the journals we have in the library.\" \"That way we can reference everything properly.\" — journals (A)."
+      },
+      {
+       "n": 24,
+       "text": "What do Luke and Millie agree about the article by Peterson?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It provided useful examples."
+        },
+        {
+         "key": "B",
+         "text": "It was easy to understand."
+        },
+        {
+         "key": "C",
+         "text": "It was a good introduction to the topic."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"It was not too technical, but you did need to know a bit about plastic houses before you read it.\" — They agree it was easy to understand (B), though Millie also liked the organisation."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "What description applies to each of the following structures? Choose SIX answers from the box and write the correct letter, A–G, next to questions 25–30.",
+     "title": "Descriptions",
+     "options": [
+      {
+       "key": "A",
+       "text": "easy to transport"
+      },
+      {
+       "key": "B",
+       "text": "not much room inside"
+      },
+      {
+       "key": "C",
+       "text": "made from recycled materials"
+      },
+      {
+       "key": "D",
+       "text": "designed to promote technology"
+      },
+      {
+       "key": "E",
+       "text": "never actually built"
+      },
+      {
+       "key": "F",
+       "text": "easy to keep clean"
+      },
+      {
+       "key": "G",
+       "text": "very strong construction"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "text": "The ‘House of the Future’ (1957)",
+       "answer": [
+        "G"
+       ],
+       "explanation": "\"It was really built to last. They couldn't break the plastic up.\" — The House of the Future (1957) had very strong construction (G)."
+      },
+      {
+       "n": 26,
+       "text": "The ‘Wonderhouse’ (1964)",
+       "answer": [
+        "E"
+       ],
+       "explanation": "\"Noyes only made a small model and the design wasn't implemented.\" — The Wonderhouse (1964) was never actually built (E)."
+      },
+      {
+       "n": 27,
+       "text": "Spaceship houses (1968–78)",
+       "answer": [
+        "B"
+       ],
+       "explanation": "\"The living area was quite limited, and they had really low ceilings.\" — Spaceship houses (1968-78) had not much room inside (B)."
+      },
+      {
+       "n": 28,
+       "text": "Foam houses (1979–83)",
+       "answer": [
+        "D"
+       ],
+       "explanation": "\"They were partly built to show what computers could do in the home. Things like controlling heat and lights.\" — Foam houses (1979-83) were designed to promote technology (D)."
+      },
+      {
+       "n": 29,
+       "text": "Plastic exhibition hall",
+       "answer": [
+        "A"
+       ],
+       "explanation": "\"You just put it on a truck and take it to wherever you want it, then inflate it... you just take it down again, and you can reuse it.\" — The plastic exhibition hall is easy to transport (A)."
+      },
+      {
+       "n": 30,
+       "text": "New Zealand house",
+       "answer": [
+        "C"
+       ],
+       "explanation": "\"There's a house in New Zealand that's built from household and industrial waste, like plastic boxes.\" — Made from recycled materials (C)."
+      }
+     ]
+    }
+   ],
+   "transcript": "Two architecture students, Luke and Millie, discuss their assignment on plastic as a building material.\n▶ 00:00[Narrator] Part three You will hear two architecture students called Luke and Millie discussing their assignment about the use of plastic as a building material.\n▶ 00:12[Narrator] First, you have some time to look at questions twenty-one to twenty four.\n▶ 00:48[Narrator] Now listen carefully and answer questions twenty one to twenty four.\n▶ 00:56Luke: Hi Millie.\n▶ 00:57Millie: Hi, Luke. So we're here to talk over our first assignment on alternative building materials.\n▶ 01:04Luke: Yeah, I think it will be really interesting to learn more about how plastic has been used.\n▶ 01:10Millie: I found lots of information from the 1960s.\n▶ 01:14Luke: So did you find out why the idea of plastic buildings wasn't popular with the public at that time?\n▶ 01:20Millie: It wasn't the materials' environmental credentials. The concept of plastic houses was just too futuristic.\n▶ 01:28Luke: So you mean it was their appearance?\n▶ 01:30Millie: No. People liked their modern design, but the idea of that sort of building as a home just didn't appeal.\n▶ 01:38Luke: Right. I did some research on the kind of problems engineers had with the old plastics in the 1960s and 1970s.\n▶ 01:47Millie: What did you learn?\n▶ 01:48Luke: Well, firstly, because plastic doesn't weigh very much, the buildings weren't very good in windy weather.\n▶ 01:55Luke: They managed to fix that by amending the shape of the buildings, but the real disadvantage was that when the plastic was exposed to the light, it developed fine cracks.\n▶ 02:05Luke: And when rain got into these cracks, the plastic would deform and lose its strength.\n▶ 02:11Millie: Right.\n▶ 02:12Luke: I wonder where we can find some more information about the situation nowadays.\n▶ 02:17Millie: Maybe we could ask one of the PhD students.\n▶ 02:21Luke: I expect they'll be too busy.\n▶ 02:23Millie: Yeah, that's true.\n▶ 02:25Millie: Well, we could always use the internet.\n▶ 02:28Luke: Maybe we should research more academic sources like the journals we have in the library.\n▶ 02:34Millie: Hmm, okay. That way we can reference everything properly at the end of the assignment. Have you read Peterson's article about plastic houses?\n▶ 02:44Luke: Yeah, it was really good.\n▶ 02:46Millie: But it didn't have enough illustrations of the houses. That was a shame. They'd have been useful for us as examples in our presentation. I liked the way it was organized, though. That was really clear.\n▶ 02:58Luke: Yeah, and it wasn't too technical, but you did need to know a bit about plastic houses before you read it to get the most out of it.\n▶ 03:06Millie: That's true.\n▶ 03:10[Narrator] Before you hear the rest of the discussion, you have some time to look at questions twenty-five to thirty.\n▶ 03:47[Narrator] Now listen and answer questions twenty five to thirty.\n▶ 03:55Millie: OK. Well, shall we start comparing our findings then?\n▶ 03:59Luke: Sure. I'll make some notes.\n▶ 04:01Millie: Well, the earliest one I read about was a plastic house called The House of the Future that was built in 1957, though no one actually lived in it.\n▶ 04:13Millie: It was on show at a theme park in America for ten years. After that they demolished it. But they had a hard time. It was really built to last. They couldn't break the plastic up.\n▶ 04:26Luke: Was that the one that had an ultrasonic dishwashing machine?\n▶ 04:30Millie: Yes. That would still be pretty revolutionary today.\n▶ 04:34Luke: Did you read about the Wonder House? It was designed in 1964 by an industrial designer called Alfred Noyes.\n▶ 04:42Millie: Oh, the one with the roof like a sort of tent or an umbrella.\n▶ 04:47Luke: That's right. The roof was made of fiberglass and it curved down to the ground at each corner, enclosing a big central space. Then the sides were filled with glass or plastic.\n▶ 04:59Luke: It was a really innovative idea for the time, but Noise only made a small model and the design wasn't implemented.\n▶ 05:06Millie: Hmm, pity.\n▶ 05:08Luke: What about those spaceship houses they built between 1968 and 1978? Like flying saucers. They built over a hundred of them.\n▶ 05:18Millie: I don't know if I'd want to live in one. The living area was quite limited, and they had really low ceilings.\n▶ 05:25Millie: But they do look really futuristic, don't they?\n▶ 05:27Luke: With their white walls and circular shape, yes. But the plastic houses I like are the foam houses they built between 1979 and 1983. They've got really curvy shapes.\n▶ 05:40Luke: They built them by spraying foam over a great big balloon.\n▶ 05:45Millie: They were partly built to show what computers could do in the home. Things like controlling heat and lights and so on. Quite new ideas at the time. And they were very well insulated as well, so they saved energy.\n▶ 06:00Millie: People were just beginning to get into that.\n▶ 06:02Luke: I read about a plastic exhibition hall that can all be packed away in a relatively small container. You just put it on a truck and take it to wherever you want it, then inflate it.\n▶ 06:14Luke: You know, fill it up with air, and there's room for hundreds of people. And when the exhibition or whatever's over, you just take it down again, and you can reuse it again and again.\n▶ 06:25Millie: And there's a house in New Zealand that's built from household and industrial waste, like plastic boxes. They say it's a much better construction material than bricks, from the point of view of insulation.\n▶ 06:38Luke: Yes, they're using that idea to build houses in other parts of the world, too. Okay, well it looks as if we've got plenty of\n▶ 06:50[Narrator] That is the end of part three. You now have 30 seconds to check your answers to part three."
+  },
+  {
+   "id": "cdi-listening-40-part-4",
+   "title": "Part 4",
+   "context": "A biology lecture on how plants and animals deal with environmental changes through dormancy.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD ONLY for each answer.",
+     "wordLimit": 1,
+     "template": "Dormancy\nOrganisms enter a state of dormancy, or inactivity, to:\n- save available [[31]]\n- reduce demands on their environment\nValue of dormancy\nOrganisms which become dormant:\n- can live in conditions which are environmentally [[32]]\n- can live in a wider range of places\n- have less [[33]] from other animals\nCauses of dormancy\n- changes in temperature and [[34]]\n- availability of food, water, oxygen\nDormancy in insects\n- There may be a [[35]] in their metabolism (diapause)\n- Diapause occurs during extreme conditions, or as part of the life cycle\nDormancy in fish — African lungfish\n- burrows deep in the [[36]]\n- to combat [[37]] , relies on stored fat\n- reduces urine production to combat desiccation\nDormancy in snails\n- some seal off the shell with a membrane of dried mucus\n- others have brightly coloured shells (often yellow) to minimise [[38]]\nHibernation — Arctic ground squirrel\n- digs underground and builds a [[39]] that is insulated\n- loses nearly 40% of body weight during hibernation\n- when awakening, the area around the [[40]] warms more quickly than the rest of the animal",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "resources"
+       ],
+       "explanation": "\"Dormancy is a state of inactivity that organisms enter when they need to conserve the resources available to them.\""
+      },
+      {
+       "n": 32,
+       "answer": [
+        "stressful"
+       ],
+       "explanation": "\"Animals that have the ability to become dormant can survive conditions which are stressful in environmental terms.\""
+      },
+      {
+       "n": 33,
+       "answer": [
+        "competition"
+       ],
+       "explanation": "\"The amount of competition they have to deal with from other creatures is greatly reduced.\""
+      },
+      {
+       "n": 34,
+       "answer": [
+        "light"
+       ],
+       "explanation": "\"The ones that are the most significant are changes in temperature and the amount of light organisms get.\""
+      },
+      {
+       "n": 35,
+       "answer": [
+        "reduction"
+       ],
+       "explanation": "\"Insects can experience a reduction in their metabolism, which is a form of dormancy called diapause.\""
+      },
+      {
+       "n": 36,
+       "answer": [
+        "mud"
+       ],
+       "explanation": "\"When the water supply is low, the African lungfish burrows deep into the mud.\""
+      },
+      {
+       "n": 37,
+       "answer": [
+        "starvation"
+       ],
+       "explanation": "\"One is the possibility of starvation, and to overcome this it relies on fat it has stored up in its body.\""
+      },
+      {
+       "n": 38,
+       "answer": [
+        "evaporation"
+       ],
+       "explanation": "\"Snails that remain outside during their dormancy can usually be recognised by a rather brightly coloured shell, reflecting the sunlight and so minimising evaporation.\""
+      },
+      {
+       "n": 39,
+       "answer": [
+        "nest"
+       ],
+       "explanation": "\"This squirrel digs underground and builds a nest that is insulated.\""
+      },
+      {
+       "n": 40,
+       "answer": [
+        "heart"
+       ],
+       "explanation": "\"There is a rapid rise in the heartbeat and circulation is affected. The area around the heart warms more quickly than the rest of the animal.\""
+      }
+     ]
+    }
+   ],
+   "transcript": "A biology lecture on how plants and animals deal with environmental changes through dormancy.\n▶ 19:24[Narrator] Now turn to section four on page seven.\n▶ 19:29[Narrator] Section four You will hear a biology lecture on how living things deal with changes in their environment by entering a state called dormancy.\n▶ 19:41[Narrator] First you have some time to look at questions thirty one to forty on page seven.\n▶ 20:37[Narrator] Now listen carefully and answer questions thirty one to forty.\n▶ 20:45Lecturer: We've been talking about some ways in which plants and animals deal with changes in their environment. And today we'll continue that discussion by looking at dormancy.\n▶ 20:56Lecturer: First, we'll cover what dormancy is and why organisms become dormant.\n▶ 21:03Lecturer: Dormancy is a state of inactivity that organisms or living things enter when they need to conserve the resources available to them and reduce their demands on their environment.\n▶ 21:16Lecturer: Most major groups of plants and animals have some representatives that can become dormant. So what is the value of dormancy?\n▶ 21:26Lecturer: To start with, animals that have the ability to become dormant can survive conditions which are stressful in environmental terms.\n▶ 21:36Lecturer: For instance, when lakes, ponds or rivers dry up, aquatic organisms that have the ability to enter dormancy can survive the drought, while others that cannot do this will die.\n▶ 21:50Lecturer: Another advantage is that creatures that can become dormant in very inhospitable conditions, such as extreme cold, can live in a larger range of places than other organisms.\n▶ 22:03Lecturer: And because of this, because they can live in places where other animals can't survive, when they are actually active and looking for food,\n▶ 22:12Lecturer: The amount of competition they have to deal with from other creatures is greatly reduced. Let's move on to look at what causes dormancy.\n▶ 22:23Lecturer: There are a number of variables, but the ones that are the most significant are changes in temperature and the amount of light organisms get.\n▶ 22:34Lecturer: Availability of food, water and oxygen is also very important.\n▶ 22:45Lecturer: Now we'll explore some specific examples. Let us first look at dormancy in insects.\n▶ 22:52Lecturer: Insects can experience a reduction in their metabolism, which is a form of dormancy called diapause.\n▶ 23:00Lecturer: In insects, diapause is either a reaction to difficult environmental conditions or a necessary part of the life cycle, such as with butterflies or certain moths.\n▶ 23:14Lecturer: In terms of environment, it's interesting to note that through dormancy insects can survive when it's very cold. Another creature we'll look at is fish.\n▶ 23:28Lecturer: Fish share the same main environmental causes for dormancy as other creatures, but as one might imagine, they are particularly sensitive to drought.\n▶ 23:39Lecturer: Let's take the African lungfish as an example. When the water supply is low, the African lungfish burrows deep into the mud.\n▶ 23:50Lecturer: It surrounds itself with a cocoon of slime and remains inactive. While dormant it faces two dangers.\n▶ 23:59Lecturer: One is the possibility of starvation, and to overcome this it relies on fat it has stored up in its body. The other is desiccation or drying up.\n▶ 24:12Lecturer: Which is addressed through a reduction in the production of urine. Snails are also known to become dormant.\n▶ 24:20Lecturer: Some snails seal off their shell with a membrane of dried mucus after settling at their place of dormancy. Other snails do not have this possibility. They trust the protection of their shell.\n▶ 24:34Lecturer: Snails that remain outside during their dormancy can usually be recognized by a rather brightly colored shell, reflecting the sunlight and so minimizing evaporation.\n▶ 24:47Lecturer: That is why in open habitats, banded snails usually have a yellow shell.\n▶ 24:55Lecturer: Probably the most well-known type of dormancy is hibernation, which occurs in warm blooded creatures during the winter. We know that warm blooded animals maintain a regular body temperature.\n▶ 25:10Lecturer: So what's really interesting about hibernators, true hibernators, that is, is they can actually adapt to extreme conditions by turning off their internal thermostat, so to speak, and hibernating until conditions improve.\n▶ 25:29Lecturer: Let's examine the behavior of a true hibernator, the Arctic ground squirrel. This squirrel digs underground and builds a nest that is insulated.\n▶ 25:41Lecturer: Once in its nest it curls up into a ball and tucks in its arms, legs, and tail. Its body temperature mirrors the cold of its surroundings.\n▶ 25:53Lecturer: At this point the squirrel barely breathes and doesn't react to stimulus in a normal way. During this period of hibernation, the squirrel loses nearly forty percent of its weight.\n▶ 26:07Lecturer: The process of awakening for the Arctic ground squirrel takes about three hours. When this happens, there is a rapid rise in the heartbeat and circulation is affected.\n▶ 26:19Lecturer: The area around the heart warms more quickly than the rest of the animal, and despite the strain of hibernation, within twenty four hours of coming out of it, the squirrel's body processes are basically normal.\n▶ 26:37[Narrator] That is the end of section four. You now have half a minute to check your answers.\n▶ 27:13[Narrator] That is the end of the listening test. You now have ten minutes to transfer your answers to the listening answer sheet."
+  }
+ ],
+ "audio": {
+  "file": "listening-40.mp3",
+  "durationSec": 1695,
+  "questionTimes": {
+   "1": 144,
+   "2": 171,
+   "3": 201,
+   "4": 216,
+   "5": 236,
+   "6": 281,
+   "7": 290,
+   "8": 301,
+   "9": 309,
+   "10": 316,
+   "11": 453,
+   "12": 488,
+   "13": 506,
+   "14": 522,
+   "15": 538,
+   "16": 558,
+   "17": 583,
+   "18": 654,
+   "19": 684,
+   "20": 712,
+   "21": 80,
+   "22": 115,
+   "23": 137,
+   "24": 164,
+   "25": 241,
+   "26": 274,
+   "27": 308,
+   "28": 340,
+   "29": 362,
+   "30": 385,
+   "31": 1263,
+   "32": 1296,
+   "33": 1332,
+   "34": 1343,
+   "35": 1372,
+   "36": 1430,
+   "37": 1439,
+   "38": 1487,
+   "39": 1541,
+   "40": 1582
+  }
+ }
+}

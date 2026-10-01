@@ -1,0 +1,672 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-74",
+ "title": "CDI Reading Test 74",
+ "description": "A full Academic Reading test from the CDI practice materials: Mungo Lady and Mungo Man; The Constant Evolution of the Humble Tomato; A New Voyage Round the World.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Mungo Lady and Mungo Man",
+  "The Constant Evolution of the Humble Tomato",
+  "A New Voyage Round the World"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Mungo Lady and Mungo Man",
+   "subtitle": "Controversies in Australian Prehistory",
+   "paragraphs": [
+    {
+     "text": "Fifty thousand years ago, a lush landscape greeted the first Australians moving towards the south-east of the continent. Temperatures were cooler than now. Megafauna – giant prehistoric animals such as marsupial lions and the rhinoceros-sized diprotodon – were abundant. Freshwater lakes in areas of western New South Wales (NSW) were brimming with fish. But change was coming. By 40,000 years ago, water levels had started to drop."
+    },
+    {
+     "text": "A study of the sediments and graves of Lake Mungo, a dry lake bed in western NSW, has uncovered the muddy layers deposited as the lake began to dry up. Forty thousand years ago, families took refuge at the lake from the encroaching desert, leaving artefacts such as stone tools, which researchers used to determine that the first wanderers came to the area between 46,000 and 50,000 years ago. By 20,000 years ago, the lake had become the dry, dusty hole it is today. This area was first examined by the University of Melbourne geologist Professor Jim Bowler in 1969. He was searching for ancient lakes and came across the remains of a woman who had been buried with some ceremony; she was given the name ‘Mungo Lady’. In 1974, he found a second set of remains, Mungo Man, buried 300 metres away. Bowler’s comprehensive study of different sediment layers has concluded that both graves are 40,000 years old."
+    },
+    {
+     "text": "This is much younger than the 62,000 years Mungo Man was attributed with in 1999 by a team led by Professor Alan Thorne, of the Australian National University. Thorne is the country’s leading opponent of the ‘Out of Africa’ theory – that modern humans spread around the globe from Africa about 100,000 years ago. The revision of Mungo Man’s age has refocused attention on academic disputes about mankind’s origins."
+    },
+    {
+     "text": "The arrival date of these early Australians is linked to another vexed question: the reason for the disappearance of the megafauna. Dr Tim Flannery, a proponent of the controversial theory that these animals were wiped out by the extreme hunting practices of humans, claims that the new Mungo dates support this view. For Bowler, however, these debates are speculative distractions. At 40,000 years old, he argues, Mungo Man and Mungo Lady remain Australia’s oldest human burials and the earliest evidence on Earth of cultural sophistication. ‘At Lake Mungo, we have a cameo of people reacting to environmental change. It is one of the great stories of the people of the world.’"
+    },
+    {
+     "text": "Two rival groups of researchers have each attacked the techniques used by the other to ascertain the date of Mungo Man. In the 1999 study, Thorne’s team used three techniques to date Mungo Man – bone, tooth enamel and sand. Bowler has strongly challenged the results ever since. Dating human bones is ‘notoriously unreliable’, he says. In addition, the sand sample used by Thorne’s group was taken hundreds of metres from the burial site. Bowler has stated that it is not difficult ‘to realise that the age of sand is not the same as the age of the grave’. He says his team’s results are based on careful fieldwork, crosschecked between four laboratories, while Thorne’s team misinterpreted the evidence, ‘locked in a laboratory in Canberra’. Thorne counters that Bowler’s team used one dating technique, while his used three. Best practice is to have at least two methods producing the same result. A Thorne team member, Professor Rainer Grün, says the fact that the latest results were consistent between laboratories doesn’t mean they are correct. ‘We now have two data sets that are contradictory. I do not have a plausible explanation.’"
+    },
+    {
+     "text": "Thorne recently made headlines with a study of Mungo Man’s DNA, which he claimed supported his idea that modern humans developed from archaic humans in several places around the world, rather than emerging from Africa a relatively short time ago. Now, however, Thorne says the age of Mungo Man is irrelevant. Recent fossil finds show that modern humans were in China 110,000 years ago. ‘So he has a long time to arrive in Australia. It doesn’t matter if he is 40,000 or 60,000 years old.’"
+    },
+    {
+     "text": "In 2001, a member of Bowler’s team, Dr Richard Roberts of Wollongong University, along with Flannery, Director of the South Australian Museum, published research on the extinction of the megafauna. They dated 28 sites across the continent, arguing that their analysis showed that the megafauna died out suddenly 46,600 years ago. This conclusion has been challenged by other scientists, including Dr Judith Field of the University of Sydney and Dr Richard Fullager of the Australian Museum, who point to the presence of megafauna fossils at the 36,000-year-old Cuddie Springs site in NSW."
+    },
+    {
+     "text": "Flannery praises the Bowler team’s research as thorough and rigorous. He says the finding that humans arrived at Lake Mungo between 46,000 and 50,000 years ago supports the idea that that was a critical time in Australia’s history. There is no evidence of a dramatic climate change at that time, he says. ‘It’s my view that humans arrived and megafauna extinction took place in almost the same geological instant.’ Bowler, however, is sceptical of Flannery’s theory about the disappearance of the giant animals. He argues that climate-change 40,000 years ago was more intense than has been previously realised and could have played an important role in their extinction."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Look at the following theories (Questions 1–8) and the list of researchers below. Match each theory with the correct researcher(s), A–F. NB You may use any letter more than once.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Jim Bowler"
+      },
+      {
+       "key": "B",
+       "text": "Alan Thorne"
+      },
+      {
+       "key": "C",
+       "text": "Tim Flannery"
+      },
+      {
+       "key": "D",
+       "text": "Rainer Grün"
+      },
+      {
+       "key": "E",
+       "text": "Richard Roberts and Tim Flannery"
+      },
+      {
+       "key": "F",
+       "text": "Judith Field and Richard Fullager"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 1,
+       "text": "Our human ancestors did not originate in only one area.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Thorne claimed his DNA study supported the idea that modern humans arose in several places, not one."
+      },
+      {
+       "n": 2,
+       "text": "The extinction of the megafauna happened within a brief period.",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Roberts and Flannery dated 28 sites and argued the megafauna died out suddenly."
+      },
+      {
+       "n": 3,
+       "text": "The megafauna died out as a result of human activity.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Flannery is named as the proponent of the hunting theory."
+      },
+      {
+       "n": 4,
+       "text": "The similarity of results does not always guarantee their validity.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Grün makes exactly this point about consistency and correctness."
+      },
+      {
+       "n": 5,
+       "text": "How old Mungo Man is, is unimportant.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Thorne himself says the age no longer matters."
+      },
+      {
+       "n": 6,
+       "text": "There is evidence to disprove the theory of mass megafauna extinction.",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Field and Fullager cite later fossils that contradict a sudden extinction."
+      },
+      {
+       "n": 7,
+       "text": "An extreme environmental change occurred at the time that humans first moved into the Lake Mungo area.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Bowler argues the climate change of that period was more intense than realised."
+      },
+      {
+       "n": 8,
+       "text": "The earliest evidence of advanced human culture is found in Australia.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Bowler makes this claim for the two Mungo burials."
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 9,
+       "text": "Objects found in the Lake Mungo area were used to date the arrival of humans.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The stone tools were exactly what researchers used to date the arrival."
+      },
+      {
+       "n": 10,
+       "text": "Ancient weapons were found in the Lake Mungo area.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Stone tools are mentioned, but nothing in the passage calls them weapons."
+      },
+      {
+       "n": 11,
+       "text": "Scientists agree about the age of Mungo Man.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage describes a running dispute, so the statement is contradicted."
+      },
+      {
+       "n": 12,
+       "text": "Thorne’s research involved analysing more than one material.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Three materials are named, so more than one is correct."
+      },
+      {
+       "n": 13,
+       "text": "Bowler has criticised the research methods used by Thorne.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Bowler attacks both the bone dating and the sand sample."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "The Constant Evolution of the Humble Tomato",
+   "subtitle": "Heirloom tomatoes — varieties that have been passed down through several generations of a family because they are thought to have a particularly good flavor — are really no more ‘natural’ than the varieties available in grocery stores. New studies promise to restore their lost, healthy genes.",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Famous for their taste, color, and organic appearance, heirloom tomatoes are favorites of gardeners and advocates of locally grown foods. The tomato enthusiast might conclude that, given the immense varieties, heirlooms must have a more diverse and superior set of genes than the tomatoes available in grocery stores, those ordinary hybrid varieties such as cherry and plum. However, their seeming diversity is only skin-deep: heirlooms are actually feeble and inbred — the defective product of breeding experiments that began hundreds of years ago, and exploded thanks to enthusiastic backyard gardeners. ‘The irony of all this,’ says Steven Tanksley, a geneticist at Cornell University, ‘is all that diversity of heirlooms can be accounted for by a handful of genes. There’re probably no more than 10 mutant genes that create the diversity of heirlooms you see.’ But rather than simply proving that the myth about the heirloom’s diversity is wrong, Tanksley’s deconstruction of the tomato genome, along with work by others, is showing how a small berry-like fruit from the Andes became one of the world’s top crops."
+    },
+    {
+     "label": "B",
+     "text": "The cultivated tomato is a member of the nightshade family that includes New World crops such as the potato, which spread around the globe after Christopher Columbus brought them back to Spain in the 15th century. But whereas scientists have uncovered a wealth of archaeological evidence on early farming practices in the New World, the record is blank when it comes to the tomato. The modern tomato seems to have its origins in the Andes in South America and may have been domesticated in Vera Cruz, Mexico. Primitive varieties still grow throughout the Americas. All told, botanists call as many as 13 species ‘tomatoes’ and consider an additional four to be closely related."
+    },
+    {
+     "label": "C",
+     "text": "One might assume that one of these known wild species became today’s cultivated crop, but that’s not the case: the Mother Tomato has never been found. The closest relative is the currant tomato, which, based on genetic comparisons, split from today’s tomato some 1.4 million years ago. So researchers like Tanksley have to work backward, crossing tomato varieties and species in order to understand how various genes influence shape and size. Once isolated, Tanksley later inserts those genes into other tomato varieties to make his case with a dramatic transformation."
+    },
+    {
+     "label": "D",
+     "text": "Tanksley concludes from his analyses that in their effort to make bigger, tastier, and faster-growing fruit, our ancestors ultimately exploited just 30 mutations out of the tomato’s 35,000 genes. Most of these genes have only small effects on tomato size and shape, but recently Tanksley and his colleagues reported that they found a gene that increases fruit size by 50 percent. It was probably the most important event in domestication. The first written record of tomatoes — from Spain in the 1500s — confirms that this mutation, which enlarges tomatoes by producing compartments known as locules, existed back in the same yellow tomatoes that gave Italians the word pomodoro, or golden apple. Besides size, tomato farmers also selected for shape. To discover those genes, Esther van der Knaap, a Tanksley alumnus now at The Ohio State University, took a gene from one heirloom tomato and inserted it into a wild relative. She observed that, as a result, the tiny fruits became shaped like pears."
+    },
+    {
+     "label": "E",
+     "text": "The selection of these traits has, however, affected the heirloom’s hardiness. They often suffer from infections that cause the fruit to crack, split, and otherwise rot quickly. Wild plants must continuously evolve to fend off such infections, points out Roger Chetelat of the Tomato Genetics Resource Center at the University of California. But in their quest for size, shape, and flavor, humans have inadvertently eliminated defensive genes. As a result, most possess only a single disease-resistant gene. Chetelat elaborates that heirlooms’ taste may have less to do with their genes than with the productivity of the plant and the growing environment. Any plant that produces only two fruits, as heirlooms sometimes do, is highly likely to produce juicier, sweeter, and more flavorful fruit than varieties that produce 100, as commercial types do. In addition, heirlooms are sold ripened on the vine, a certain way to get tastier results than allowing them to mature on the shelf. This means breeders feel confident that getting germ-beating genes back into heirlooms won’t harm the desirable aspects of the fruit. Modern breeding has resuscitated grocery store tomatoes with an influx of wild genes; in the past 50 years, as many as 40 disease-resistant genes have been bred back into commercial crops."
+    },
+    {
+     "label": "F",
+     "text": "In 1996, a tomato breeder and former Tanksley student named Doug Heath began a favorite project. After 12 years of traditional breeding with the help of molecular markers, he created a new multi-colored tomato less prone to cracking and also endowed with 12 disease-resistant genes. The original heirloom plant, Heath explains, had defective flowers, which is one reason why it produced only two fruits compared with the 30 he gets from his new variety. He claims he is also able to maintain a comparable flavor and sugar profile even on productive plants. The heirloom’s defects are, after all, just an accident of a narrow breeding strategy left over from the very beginning of genetic modification."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six paragraphs, A–F. Which paragraph contains the following information?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "An explanation of research aimed at restoring the health of the heirloom tomato",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Paragraph F describes Heath’s project to breed a hardier heirloom."
+      },
+      {
+       "n": 15,
+       "text": "A reference to a false belief about the heirloom tomato",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Paragraph A corrects the myth that heirlooms are genetically diverse."
+      },
+      {
+       "n": 16,
+       "text": "A description of the flavor of the heirloom tomato",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Paragraph E explains what makes heirlooms taste as they do."
+      },
+      {
+       "n": 17,
+       "text": "A reference to a single gene that significantly improves the cultivation of tomatoes",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Paragraph D reports the single size gene."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Match each statement with the correct researcher, A, B, C or D.",
+     "title": "List of Researchers",
+     "options": [
+      {
+       "key": "A",
+       "text": "Steven Tanksley"
+      },
+      {
+       "key": "B",
+       "text": "Esther van der Knaap"
+      },
+      {
+       "key": "C",
+       "text": "Roger Chetelat"
+      },
+      {
+       "key": "D",
+       "text": "Doug Heath"
+      }
+     ],
+     "questions": [
+      {
+       "n": 18,
+       "text": "The transplanting of certain genes into tomatoes can change their shape.",
+       "answer": [
+        "B"
+       ],
+       "explanation": "Van der Knaap’s transplant changed the fruit’s shape."
+      },
+      {
+       "n": 19,
+       "text": "The flavor of the heirloom tomato is largely dependent on actual yield and cultivation.",
+       "answer": [
+        "C"
+       ],
+       "explanation": "Chetelat ties taste to yield and growing conditions."
+      },
+      {
+       "n": 20,
+       "text": "A new type of tomato can be produced that is stronger than the original heirloom tomato yet equally sweet and flavorsome.",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Heath claims both hardiness and comparable flavour."
+      },
+      {
+       "n": 21,
+       "text": "The wide variety of heirloom tomatoes is due to only a small number of genes.",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Tanksley says a handful of genes explains the whole range."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- There is little information on the origin of the tomato despite the existence of [[22]] data on the growing of other New World crops.\n- Although it is uncertain, the tomato is thought to have first grown in the [[23]].\n- In regard to genetic similarities, the [[24]] type of tomato is the nearest to the earliest.\n- A genetic [[25]] which is evident in pomodoro produced larger tomatoes.\n- [[26]] are a problem for heirloom tomatoes because they frequently lead to damage and deterioration.",
+     "questions": [
+      {
+       "n": 22,
+       "answer": [
+        "archaeological"
+       ],
+       "explanation": "The passage contrasts archaeological evidence for other crops with the blank record for tomatoes."
+      },
+      {
+       "n": 23,
+       "answer": [
+        "Andes"
+       ],
+       "explanation": "The origin given is the Andes."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "currant"
+       ],
+       "explanation": "The currant tomato is named as the closest relative."
+      },
+      {
+       "n": 25,
+       "answer": [
+        "mutation"
+       ],
+       "explanation": "The enlarging change is called a mutation, and pomodoro is named in the same sentence."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "infections"
+       ],
+       "explanation": "Infections are what cause the cracking and rotting."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "A New Voyage Round the World",
+   "subtitle": "A very old travel book that holds an unusual place in English literature.",
+   "paragraphs": [
+    {
+     "text": "Part travelogue, part historical record of the Caribbean pirates, part scientific treatise, A New Voyage Round the World was William Dampier’s account of his twelve-year series of journeys around the globe from 1679 to 1691. The wealth and novelty of Dampier’s descriptions, combined with the highly comical accounts of his comrades’ escapades, proved so popular with a public hungry for tales of discovery and adventure that A New Voyage went into its third reprint within a year of publication. So ground-breaking was Dampier’s account that the writers Swift and Defoe were inspired to create two of the most famous books in the English language, Gulliver’s Travels and Robinson Crusoe."
+    },
+    {
+     "text": "Dampier’s commentators have portrayed him as an unusual, not to say peculiar, man. Notwithstanding his undoubted qualities as an observer, he has been variously characterised as aloof, arrogant, hot-tempered and a weak leader of men. When he arrived on the western coast of Australia, he promptly elected to leave and head north out of dislike for the cold of more southerly latitudes. This physical sensitivity has often been seized on by his detractors, who point out that, as a result, Dampier missed out on becoming the name forever associated with the European discovery of Australia, that honour instead going to Captain James Cook some 80 years later. Yet it should be remembered that he was able to endure a never-ending plague of discomforts and ailments in the tropics. And once, wrecked off Ascension Island in the South Atlantic Ocean, he managed with his crew to survive for five weeks without help, living entirely on turtles and goats."
+    },
+    {
+     "text": "What of his early life, then? Dampier was born in 1651 in Somerset, England, the son of a tenant farmer, George, and his wife Ann. His birthplace, Hymerford House, stands to this day. His parents died before he reached seniority and his guardians apprenticed the young William to a ship’s captain, the boy having shown ‘very early inclinations to see the world’. There was nothing in his childhood to set Dampier apart from the numerous other young boys who were sent to sea at this time. Having made brief passages to France and Newfoundland, he completed a more extended voyage to Java, where he began to learn the art of navigation. Returning briefly to Somerset, a neighbour offered Dampier a position overseeing his plantation in Jamaica, which he took up for a time, but he soon returned to sea on a trading voyage among the Caribbean islands. From the viewpoint of posterity, the most significant aspect of this time was that, as plantation manager, Dampier first started to keep a journal."
+    },
+    {
+     "text": "Although Dampier wrote several books, A New Voyage Round the World is the most important and it is worth considering just why this text met with such success. Certainly, the book would not have done so well purely on merits of Dampier’s findings regarding meteorology and natural history, even though they broke new ground at the time. What appealed more to book buyers of this era was his narrative of life among the pirates of the Caribbean islands, whom he joined for several years after leaving Jamaica. These tales of adventure among rogues and villains who had no regard for the law sparked widespread interest among his countrymen back home. More important even than this, however, it is the superb nature of Dampier’s prose, and his ability to communicate so vividly that raised the book above the common lot. Dampier himself admits in the book’s preface that he received help with the writing of the book, and other evidence exists to suggest that he was assisted by an unknown source. But whatever outside assistance he may have had, the book still has certain problems. In particular his observations about nature are sometimes roughly dropped into the narrative at very odd junctures and these asides can sometimes interrupt the flow of the story. Dampier kept his observations about nature entirely separate from the main body of his travels, and we should therefore hold James Knapton responsible, as he was in charge of checking and revising Dampier’s text, and his publishing company brought the finished book to a wider audience."
+    },
+    {
+     "text": "Dampier’s life has been chronicled in full by numerous biographers, and I refer the reader in particular to Clennell Wilkinson’s excellent (and sadly out-of-print) 1929 biography, as well as the recent portrait by Anton Gill. In short, despite wide acclaim for his writing, Dampier was not blessed in the art of wealth accumulation. Travelling with the pirates, while providing subsistence and adventure, never netted him the treasure chest that a more astute financial operative might have acquired. He died in 1715, aged sixty-three, in Coleman Street, London. We have then a man of myriad and colourful parts, and perhaps not always the easiest of sailors to get along with because of his arrogance and hot temper. But to dwell on these aspects today is to miss the point: it is A New Voyage Round the World that should provide the most illuminating and entertaining of Dampier’s legacies. Above all, the text is studded with some wonderfully colourful expressions, and readers will enjoy some of the finest descriptions of storms in the English language, and the liberal wit throughout."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct letter, A, B, C or D.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "Which of the following best summarizes the writer’s point in the first paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Dampier’s book does not fall into a single category."
+        },
+        {
+         "key": "B",
+         "text": "Readers were not interested in books on the subject of travel."
+        },
+        {
+         "key": "C",
+         "text": "Today’s readers do not appreciate the style of Dampier’s writing."
+        },
+        {
+         "key": "D",
+         "text": "Dampier sailed round the world more quickly than anyone before."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The opening lists three different kinds of book at once."
+      },
+      {
+       "n": 28,
+       "text": "The writer refers to Swift and Defoe in order to",
+       "options": [
+        {
+         "key": "A",
+         "text": "provide more information regarding Dampier’s sources."
+        },
+        {
+         "key": "B",
+         "text": "compare Dampier to two earlier writers."
+        },
+        {
+         "key": "C",
+         "text": "give an example of Dampier’s influence."
+        },
+        {
+         "key": "D",
+         "text": "highlight two of Dampier’s critics."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "They are cited as writers he inspired."
+      },
+      {
+       "n": 29,
+       "text": "Dampier left the western coast of Australia because",
+       "options": [
+        {
+         "key": "A",
+         "text": "he wanted to get to the north before Cook arrived."
+        },
+        {
+         "key": "B",
+         "text": "he found the temperature there unpleasant."
+        },
+        {
+         "key": "C",
+         "text": "he had problems with the crew."
+        },
+        {
+         "key": "D",
+         "text": "he required medical attention."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "He disliked the cold."
+      },
+      {
+       "n": 30,
+       "text": "What point does the writer make about Dampier in the second paragraph?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He could cope with physical hardship."
+        },
+        {
+         "key": "B",
+         "text": "He was a more adventurous explorer than Cook was."
+        },
+        {
+         "key": "C",
+         "text": "He had a kinder personality than he is given credit for."
+        },
+        {
+         "key": "D",
+         "text": "He was calm in a crisis."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "The writer balances the criticism by noting his endurance."
+      },
+      {
+       "n": 31,
+       "text": "What information is given about Dampier’s early life?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He had difficult relationship with the people looking after him."
+        },
+        {
+         "key": "B",
+         "text": "He was different from other youths who went to sea."
+        },
+        {
+         "key": "C",
+         "text": "He wanted to travel from a young age."
+        },
+        {
+         "key": "D",
+         "text": "He came from a family of sailors."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "His wish to travel is described as very early."
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "Complete the summary below using the list of words, A–I. Drag a word into each gap. On a phone, tap a word and then tap the gap.",
+     "title": "Why the book succeeded",
+     "options": [
+      {
+       "key": "A",
+       "text": "detailed illustrations"
+      },
+      {
+       "key": "B",
+       "text": "traveller"
+      },
+      {
+       "key": "C",
+       "text": "nature"
+      },
+      {
+       "key": "D",
+       "text": "scientific observations"
+      },
+      {
+       "key": "E",
+       "text": "the crew"
+      },
+      {
+       "key": "F",
+       "text": "editor"
+      },
+      {
+       "key": "G",
+       "text": "writer"
+      },
+      {
+       "key": "H",
+       "text": "artists"
+      },
+      {
+       "key": "I",
+       "text": "plain language"
+      }
+     ],
+     "template": "The success of the book cannot solely be attributed to the originality of Dampier’s [[32]]. Readers of the time were fascinated with his stories of the time he spent with outlaws and his colourful way of writing. It seems certain that Dampier worked on the book with a mystery [[33]]. Some aspects of A New Voyage Round the World are problematic: descriptions of [[34]] were inserted into the account of Dampier’s adventures in a way that distracted the reader. It seems that the responsibility for the final version of the book lies with the [[35]].",
+     "questions": [
+      {
+       "n": 32,
+       "answer": [
+        "D"
+       ],
+       "explanation": "His original findings were scientific observations."
+      },
+      {
+       "n": 33,
+       "answer": [
+        "G"
+       ],
+       "explanation": "The passage says an unknown source helped him. NEEDS VERIFICATION: the source key gives G (writer) here."
+      },
+      {
+       "n": 34,
+       "answer": [
+        "C"
+       ],
+       "explanation": "It is the nature passages that interrupt the story."
+      },
+      {
+       "n": 35,
+       "answer": [
+        "F"
+       ],
+       "explanation": "Knapton checked and revised the text, so the editor is responsible."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 36,
+       "text": "Many people wrote biographies of Dampier as a result of personal contact with him.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Biographers are mentioned, but nothing is said about personal contact."
+      },
+      {
+       "n": 37,
+       "text": "Dampier was skilled at making money.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "The writer says the opposite."
+      },
+      {
+       "n": 38,
+       "text": "Dampier’s patience was appreciated by his crew.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "He is called hot-tempered, but the crew’s view of his patience is not given."
+      },
+      {
+       "n": 39,
+       "text": "A New Voyage Round the World is longer than most modern books.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "The book’s length is never discussed."
+      },
+      {
+       "n": 40,
+       "text": "Dampier’s accounts of bad weather are impressive.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "The writer calls them among the finest in English."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

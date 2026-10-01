@@ -1,0 +1,634 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-71",
+ "title": "CDI Reading Test 71",
+ "description": "A full Academic Reading test from the CDI practice materials: Sunlight Soap Story; How Plants Fight Back; The Cause of Linguistic Change.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "Sunlight Soap Story",
+  "How Plants Fight Back",
+  "The Cause of Linguistic Change"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "Sunlight Soap Story",
+   "subtitle": "How William Lever turned an everyday product into a global business",
+   "paragraphs": [
+    {
+     "text": "The first bars of Sunlight soap rolled off a manufacturing line operated by Lever Brothers in England in January 1886. The company was founded by William and James Lever, the only sons among ten siblings, ranking seventh and eighth in birth order. Their father worked as a shopkeeper, and both boys were trained within the family enterprise from a young age. During this period, William quickly distinguished himself through strong commercial instincts and a flair for enterprise. By his mid-twenties, he had effectively taken control of the business and was eager to pursue more ambitious ventures, which ultimately led him to the soap industry."
+    },
+    {
+     "text": "At that time, soap was a basic necessity, but it was typically sold in plain, unappealing blocks from general stores. William Lever recognised that there was an opportunity to transform this mundane product into something desirable. He believed that if soap could be manufactured to a consistently high quality, given an attractive name and packaging, and marketed aggressively, it would appeal to a growing middle class eager for products that promised cleanliness and respectability. The name 'Sunlight' was chosen to evoke purity, freshness, and the natural bleaching power of the sun."
+    },
+    {
+     "text": "Lever's innovation was not merely in branding but also in production. He invested in the latest manufacturing technology, allowing his factory at Port Sunlight, near Liverpool, to produce soap on a scale never seen before. Port Sunlight was more than a factory; it was a purpose-built village for the workers, with good quality housing, schools, libraries, and recreational facilities. Lever believed that contented workers would be productive workers, and his model village became famous around the world as an example of enlightened industrial paternalism."
+    },
+    {
+     "text": "The marketing of Sunlight soap was equally revolutionary. Lever was one of the first manufacturers to advertise his product nationally. He used eye-catching posters, newspaper advertisements, and even gave away free samples to entice customers. The advertisements emphasised not just the cleaning power of Sunlight but also the social benefits of using it – cleaner clothes meant a cleaner home, and a cleaner home meant a more respectable family. This appeal to aspiration proved enormously successful."
+    },
+    {
+     "text": "By the 1890s, Sunlight soap was selling in huge quantities across Britain and in export markets around the world. Lever Brothers expanded rapidly, acquiring other soap companies and diversifying into new products. In 1929, the company merged with Dutch margarine producer Margarine Unie to form Unilever, which today is one of the world's largest consumer goods companies, with products sold in over 190 countries."
+    },
+    {
+     "text": "William Lever, who was made a baronet in 1911 and later became Viscount Leverhulme, never forgot his principles. He remained committed to the welfare of his workers and to the idea that business should serve society, not just shareholders. He once wrote: 'I do not believe that commerce can be permanently successful unless it is conducted on ethical principles.' His legacy lives on not only in the global giant that Unilever has become but also in the continued existence of Port Sunlight village, which remains a thriving community more than a century after it was built."
+    },
+    {
+     "text": "The story of Sunlight soap is more than a tale of commercial success; it is a story of how vision, innovation, and social responsibility can combine to create something lasting. From a small family grocery business in Victorian England, William Lever built an industrial empire by understanding that even the simplest product could be transformed through quality, branding, and a genuine concern for people."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "As young adults, William and James Lever were involved in the family grocery business.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “both boys were trained within the family enterprise from a young age”"
+      },
+      {
+       "n": 2,
+       "text": "William Lever was the eldest child in his family.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “the only sons among ten siblings, ranking seventh and eighth in birth order”"
+      },
+      {
+       "n": 3,
+       "text": "Soap was considered a luxury product in nineteenth-century England.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “soap was a basic necessity”"
+      },
+      {
+       "n": 4,
+       "text": "The name 'Sunlight' was chosen to suggest purity and freshness.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “to evoke purity, freshness, and the natural bleaching power of the sun”"
+      },
+      {
+       "n": 5,
+       "text": "Lever Brothers merged with a Dutch company in 1929.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “the company merged with Dutch margarine producer Margarine Unie”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Lever Brothers and Port Sunlight",
+     "template": "Lever built a factory at Port [[6]] , near Liverpool. The village provided workers with housing, schools, libraries and [[7]] facilities. Lever gave away free [[8]] to encourage people to try Sunlight soap. The advertisements suggested that using Sunlight soap would make a family more [[9]] . William Lever believed that business should be conducted on [[10]] principles.",
+     "questions": [
+      {
+       "n": 6,
+       "answer": [
+        "Sunlight"
+       ],
+       "explanation": "The passage says: “his factory at Port Sunlight, near Liverpool”"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "recreational"
+       ],
+       "explanation": "The passage says: “good quality housing, schools, libraries, and recreational facilities”"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "samples"
+       ],
+       "explanation": "The passage says: “gave away free samples to entice customers”"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "respectable"
+       ],
+       "explanation": "The passage says: “a cleaner home meant a more respectable family”"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "ethical"
+       ],
+       "explanation": "The passage says: “unless it is conducted on ethical principles”"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 11–13.",
+     "questions": [
+      {
+       "n": 11,
+       "text": "What was William Lever's main innovation in soap manufacturing?",
+       "options": [
+        {
+         "key": "A",
+         "text": "He was the first person to make soap in England."
+        },
+        {
+         "key": "B",
+         "text": "He produced soap on a large scale using modern technology."
+        },
+        {
+         "key": "C",
+         "text": "He invented a new type of soap that cleaned better than others."
+        },
+        {
+         "key": "D",
+         "text": "He sold soap only to wealthy customers."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage says: “He invested in the latest manufacturing technology”"
+      },
+      {
+       "n": 12,
+       "text": "Why did Lever build the village of Port Sunlight?",
+       "options": [
+        {
+         "key": "A",
+         "text": "To reduce the cost of transporting workers to the factory"
+        },
+        {
+         "key": "B",
+         "text": "To create a tourist attraction near Liverpool"
+        },
+        {
+         "key": "C",
+         "text": "To provide good living conditions for his employees"
+        },
+        {
+         "key": "D",
+         "text": "To house his own family and relatives"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “Lever believed that contented workers would be productive workers”"
+      },
+      {
+       "n": 13,
+       "text": "What does the author suggest is William Lever's lasting legacy?",
+       "options": [
+        {
+         "key": "A",
+         "text": "The fortune he left to his descendants"
+        },
+        {
+         "key": "B",
+         "text": "The numerous soap brands he created"
+        },
+        {
+         "key": "C",
+         "text": "The combination of commercial success with social responsibility"
+        },
+        {
+         "key": "D",
+         "text": "The introduction of advertising to the soap industry"
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “vision, innovation, and social responsibility can combine to create something lasting”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "How Plants Fight Back",
+   "subtitle": "New research reveals how plants warn themselves of an attack",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Recent research has shown that plants are more aware of their environment and more active in their responses than was ever previously imagined. Simon Gilroy, a professor of botany at the University of Wisconsin-Madison in the USA, has spent much of his career trying to understand how plants work. Now, Gilroy and one of his post-doctoral researchers, Masatsugu Toyota, have produced a series of videos that shows how plants responded when they subjected them to wounds, including scissor cuts and caterpillar bites."
+    },
+    {
+     "label": "B",
+     "text": "Gilroy and Toyota discovered that when one part of a plant is attacked or damaged, a wave of calcium spreads throughout the rest of the plant. The calcium alerts the plant to danger and the need to deploy defence tactics. The team were able to see this by utilising a naturally occurring fluorescent-green protein which binds to the calcium, making its path visible. While scientists already knew that plants reacted to danger via an electrical charge that moves across the plant, they didn't know exactly how it happened. Gilroy and Toyota suspected it had something to do with calcium and were able to confirm their suspicions. They were also able to reveal how glutamate – an abundant neurotransmitter in animals – triggers this wave of calcium."
+    },
+    {
+     "label": "C",
+     "text": "The find was fortuitous given that Gilroy hadn't intended to study wounding at all. His real passion is understanding how plants sense gravity and seem to know which way is up – something that's proving extremely hard to work out. It was during the early stages of an experiment into gravity that Toyota came across the wounding response. 'We work very intensely on the calcium signal, because it's a ubiquitous signal. Biology uses it absolutely everywhere,' explains Gilroy. 'It makes your heart beat, it makes your muscles contract. Plants use it for a lot of their signalling machinery. We had some hints that the gravity-sensing system is based around the calcium signal, and so we were developing the technology to image calcium cells in real-time.' It was during this process that Gilroy and Toyota realised they'd captured something never usually visible to humans."
+    },
+    {
+     "label": "D",
+     "text": "The team found that the calcium travels at one millimetre per second, fast enough to spread to other leaves in just a couple of minutes. From the data collected up to now, it appears that how far the calcium travels depends on the extent of the wound, or, as Gilroy puts it, 'The more you hurt it, the louder it screams.' That 'scream' can result in a range of responses. 'Plants are masters of chemistry,' says Gilroy. 'We deal with the world by running away from it, plants deal with the world by growing in response to it, or by making a tonne of stuff.' That 'tonne of stuff' could be chemicals that poison a hungry insect, or that make the plant unattractive, tough or unpalatable. Some plants even make proteins that block the ability of a caterpillar's gut to digest the plant material. This is dinner that fights back."
+    },
+    {
+     "label": "E",
+     "text": "The next step for Gilroy and his team is to delve deeper into the signalling response on a cellular level, dissecting the genes and proteins responsible. In contrast to our understanding of human nerve cells, Gilroy admits that the equivalent responses in plants are still barely understood. He is also going to widen the scope of the study and look at other signals that plants send out – signals regarding temperature and changes in light and touch. Gilroy explains that there may be a wider use for the research, albeit a long way in the future. Once scientists have managed to identify the specific genes that make the signalling process work and can understand what happens when you switch those genes on and off, it's not hard to think about the potential. 'You can imagine that we should be able to take a crop plant and switch on its defences on-call,' says Gilroy. 'We're nowhere near that point yet, but once we get there – say you're in a field and you predict there's going to be an outbreak of some pest, you could go in and pre-defend all of the plants in the field, but you do it on-call so the plants aren't wasting their resources defending themselves the whole time.'"
+    },
+    {
+     "label": "F",
+     "text": "For now, though, Gilroy is happy to simply increase understanding of plants. He is energetic in his insistence that they are not the inactive and unreceptive organisms that people generally believe them to be. For that reason, he's as enthusiastic about the way the videos bring the response process to life as he is about the future potential of the research. 'When you look at a plant, just because it doesn't do what we do, and it doesn't move, that doesn't mean it isn't doing anything. They're hugely dynamic organisms,' he says."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six sections, A–F. Which section contains the following information? NB You may use any letter more than once.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Paragraph A"
+      },
+      {
+       "key": "B",
+       "text": "Paragraph B"
+      },
+      {
+       "key": "C",
+       "text": "Paragraph C"
+      },
+      {
+       "key": "D",
+       "text": "Paragraph D"
+      },
+      {
+       "key": "E",
+       "text": "Paragraph E"
+      },
+      {
+       "key": "F",
+       "text": "Paragraph F"
+      }
+     ],
+     "allowReuse": true,
+     "questions": [
+      {
+       "n": 14,
+       "text": "an explanation of how scientists were able to observe plants sending warning signals",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage says: “utilising a naturally occurring fluorescent-green protein which binds to the calcium”"
+      },
+      {
+       "n": 15,
+       "text": "examples of the means used by scientists to provoke plants' signalling response",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The passage says: “wounds, including scissor cuts and caterpillar bites”"
+      },
+      {
+       "n": 16,
+       "text": "reference to the idea that we could one day manipulate plants' signalling abilities",
+       "answer": [
+        "E"
+       ],
+       "explanation": "The passage says: “we should be able to take a crop plant and switch on its defences on-call”"
+      },
+      {
+       "n": 17,
+       "text": "the purpose of the research which led to Gilroy and Toyota's discovery",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “His real passion is understanding how plants sense gravity”"
+      },
+      {
+       "n": 18,
+       "text": "a comparison regarding levels of scientific knowledge about responses in plants and humans",
+       "answer": [
+        "E"
+       ],
+       "explanation": "The passage says: “the equivalent responses in plants are still barely understood”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Gilroy and Toyota's Research",
+     "template": "As part of their research at the University of Wisconsin-Madison, Simon Gilroy and Masatsugu Toyota made several [[19]] revealing plants' reactions to cuts, bites and other wounds. These indicated how the spread of calcium warns plants about the presence of [[20]] . The use of a brightly coloured [[21]] enabled the researchers to see the movement of calcium through the plant. The research also showed how [[22]] activates the release of calcium in the plant.",
+     "questions": [
+      {
+       "n": 19,
+       "answer": [
+        "videos"
+       ],
+       "explanation": "The passage says: “produced a series of videos”"
+      },
+      {
+       "n": 20,
+       "answer": [
+        "danger"
+       ],
+       "explanation": "The passage says: “The calcium alerts the plant to danger”"
+      },
+      {
+       "n": 21,
+       "answer": [
+        "protein"
+       ],
+       "explanation": "The passage says: “fluorescent-green protein which binds to the calcium, making its path visible”"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "glutamate"
+       ],
+       "explanation": "The passage says: “triggers this wave of calcium”"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose the correct answers in questions 23 and 24.",
+     "title": "Which TWO aspects of the calcium signal in plants does the writer mention?",
+     "options": [
+      {
+       "key": "A",
+       "text": "the volume of calcium released following an attack"
+      },
+      {
+       "key": "B",
+       "text": "the rate at which calcium flows through plants"
+      },
+      {
+       "key": "C",
+       "text": "the different parts of the plant where calcium is produced"
+      },
+      {
+       "key": "D",
+       "text": "the species of plants which produce calcium as a warning signal"
+      },
+      {
+       "key": "E",
+       "text": "the link between the severity of an attack and the distance calcium moves"
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Q23–24 (B/E): B — the calcium moves at one millimetre per second; E — how far it travels depends on the extent of the wound. Q23–24 (B/E): B — the calcium moves at one millimetre per second; E — how far it travels depends on the extent of the wound."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "B",
+        "E"
+       ],
+       "explanation": "Q23–24 (B/E): B — the calcium moves at one millimetre per second; E — how far it travels depends on the extent of the wound. Q23–24 (B/E): B — the calcium moves at one millimetre per second; E — how far it travels depends on the extent of the wound."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose the correct answers in questions 25 and 26.",
+     "title": "Gilroy's team have made certain plans for the future. Which TWO plans are mentioned by the writer?",
+     "options": [
+      {
+       "key": "A",
+       "text": "research plants' reactions to heat and cold"
+      },
+      {
+       "key": "B",
+       "text": "use their findings to help grow a greater variety of crops"
+      },
+      {
+       "key": "C",
+       "text": "investigate warning signals in organisms other than plants"
+      },
+      {
+       "key": "D",
+       "text": "analyse further the chemical processes involved in signalling responses"
+      },
+      {
+       "key": "E",
+       "text": "conduct studies to compare human cell and plant cell behaviour"
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Q25–26 (A/D): A — the team will look at signals about temperature, light and touch; D — they will dissect the genes and proteins behind the response. Q25–26 (A/D): A — the team will look at signals about temperature, light and touch; D — they will dissect the genes and proteins behind the response."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "A",
+        "D"
+       ],
+       "explanation": "Q25–26 (A/D): A — the team will look at signals about temperature, light and touch; D — they will dissect the genes and proteins behind the response. Q25–26 (A/D): A — the team will look at signals about temperature, light and touch; D — they will dissect the genes and proteins behind the response."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The Cause of Linguistic Change",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The changes that have caused the most disagreement are those in pronunciation. We have various sources of evidence for the pronunciations of earlier times, such as the spellings, the treatment of words borrowed from other languages or borrowed by them, the descriptions of contemporary grammarians and spelling-reformers, and the modern pronunciations in all the languages and dialects concerned. From the middle of the sixteenth century, there are in England writers who attempt to describe the position of the speech-organs for the production of English phonemes, and who invent what are in effect systems of phonetic symbols. These various kinds of evidence, combined with a knowledge of the mechanisms of speech-production, can often give us a very good idea of the pronunciation of an earlier age, though absolute certainty is never possible."
+    },
+    {
+     "label": "B",
+     "text": "When we study the pronunciation of a language over any period of a few generations or more, we find there are always large-scale regularities in the changes: for example, over a certain period of time, just about all the long [a:] vowels in a language may change into long [e:] vowels, or all the [b] consonants in a certain position (for example at the end of a word) may change into [p] consonants. Such regular changes are often called sound laws. There are no universal sound laws (even though sound laws often reflect universal tendencies), but simply particular sound laws for one given language (or dialect) at one given period."
+    },
+    {
+     "label": "C",
+     "text": "It is also possible that fashion plays a part in the process of change. It certainly plays a part in the spread of change: one person imitates another, and people with the most prestige are most likely to be imitated, so that a change that takes place in one social group may be imitated (more or less accurately) by speakers in another group. When a social group goes up or down in the world, its pronunciation of Russian, which had formerly been considered desirable, became, on the contrary, an undesirable kind of accent to have, so that people tried to disguise it. Some of the changes in accepted English pronunciation in the seventeenth and eighteenth centuries have been shown to consist in the replacement of one style of pronunciation by another style already existing, and it is likely that such substitutions were a result of the great social changes of the period: the increased power and wealth of the middle classes, and their steady infiltration upwards into the ranks of the landed gentry, probably carried elements of middle-class pronunciation into upper-class speech."
+    },
+    {
+     "label": "D",
+     "text": "A less specific variant of the argument is that the imitation of children is imperfect: they copy their parents' speech, but never reproduce it exactly. This is true, but it is also true that such deviations from adult speech are usually corrected in later childhood. Perhaps it is more significant that even adults show a certain amount of random variation in their pronunciation of a given phoneme, even if the phonetic context is kept unchanged. This, however, cannot explain changes in pronunciation unless it can be shown that there is some systematic trend in the failures of imitation: if they are merely random deviations they will cancel one another out and there will be no net change in the language."
+    },
+    {
+     "label": "E",
+     "text": "One such force which is often invoked is the principle of ease, or minimization of effort. The change from fussy to fuzzy would be an example of assimilation, which is a very common kind of change. Assimilation is the changing of a sound under the influence of a neighbouring one. For example, the word scant was once skamt, but the /m/ has been changed to /n/ under the influence of the following /t/. Greater efficiency has hereby been achieved, because /n/ and /t/ are articulated in the same place (with the tip of the tongue against the teeth-ridge), whereas /m/ is articulated elsewhere (with the two lips). So the place of articulation of the nasal consonant has been changed to conform with that of the following plosive. A more recent example of the same kind of thing is the common pronunciation of football as football."
+    },
+    {
+     "label": "F",
+     "text": "Assimilation is not the only way in which we change our pronunciation in order to increase efficiency. It is very common for consonants to be lost at the end of a word: in Middle English, word-final [-n] was often lost in unstressed syllables, so that baken 'to bake' changed from ['ba:kan] to ['ba:kə], and later to [ba:k]. Consonant-clusters are often simplified. At one time there was a [t] in words like castle and Christmas, and an initial [k] in words like knight and know. Sometimes a whole syllable is dropped out when two successive syllables begin with the same consonant (haplology): a recent example is temporary, which in Britain is often pronounced as if it were temporary."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+     "wordLimit": 3,
+     "title": "Linguistic Change",
+     "template": "The pronunciation of a living language undergoes changes over thousands of years. Large scale regular changes are usually called [[27]] . There are three reasons for these changes. Firstly, the influence of one speaker on another: when one person imitates the pronunciation of the most prestigious group, the imitation always partly involves the factor of [[28]] . Secondly, the imitation of adults' language by children is sometimes [[29]] , and may also contribute to this change, although such deviations are usually corrected later. Finally, for those random variations in pronunciation, the deeper explanation lies in the [[30]] , or minimization of effort.",
+     "questions": [
+      {
+       "n": 27,
+       "answer": [
+        "sound laws"
+       ],
+       "explanation": "The passage says: “Such regular changes are often called sound laws”"
+      },
+      {
+       "n": 28,
+       "answer": [
+        "fashion"
+       ],
+       "explanation": "The passage says: “It is also possible that fashion plays a part in the process of change”"
+      },
+      {
+       "n": 29,
+       "answer": [
+        "imperfect"
+       ],
+       "explanation": "The passage says: “the imitation of children is imperfect”"
+      },
+      {
+       "n": 30,
+       "answer": [
+        "principle of ease"
+       ],
+       "explanation": "The passage says: “One such force which is often invoked is the principle of ease”"
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 31,
+       "text": "It is impossible for modern people to find the pronunciation of words in an earlier age.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “can often give us a very good idea of the pronunciation of an earlier age”"
+      },
+      {
+       "n": 32,
+       "text": "The great change of language in Russian history is related to the rising status and fortune of the middle classes.",
+       "answer": [
+        "NOT GIVEN"
+       ]
+      },
+      {
+       "n": 33,
+       "text": "All children learn speech from adults while they assume that certain language is difficult to imitate exactly.",
+       "answer": [
+        "NOT GIVEN"
+       ]
+      },
+      {
+       "n": 34,
+       "text": "Pronunciation with casual inaccuracy will not exert a big influence on language changes.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “if they are merely random deviations they will cancel one another out”"
+      },
+      {
+       "n": 35,
+       "text": "The word scant can be pronounced more easily than skamt.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “Greater efficiency has hereby been achieved”"
+      },
+      {
+       "n": 36,
+       "text": "The [g] in gnat not being pronounced will not be spelt out in the future.",
+       "answer": [
+        "NOT GIVEN"
+       ]
+      },
+      {
+       "n": 37,
+       "text": "The sound of temporary cannot wholly present its spelling.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “often pronounced as if it were temporary”"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Look at the following sentences and the list of statements below. Match each sentence with the correct statement, A–D.",
+     "title": "List of Statements",
+     "options": [
+      {
+       "key": "A",
+       "text": "Since the speakers can pronounce it with less effort"
+      },
+      {
+       "key": "B",
+       "text": "Assimilation of a sound under the influence of a neighbouring one"
+      },
+      {
+       "key": "C",
+       "text": "It is a trend for changes in pronunciation on a large scale in a given period"
+      },
+      {
+       "key": "D",
+       "text": "Because the speaker can pronounce [n] and [t] in the same place"
+      }
+     ],
+     "questions": [
+      {
+       "n": 38,
+       "text": "As a consequence, 'b' will be pronounced as 'p'",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “may change into [p] consonants”"
+      },
+      {
+       "n": 39,
+       "text": "The pronunciation of [mt] changed to [nt]",
+       "answer": [
+        "D"
+       ],
+       "explanation": "The passage says: “because /n/ and /t/ are articulated in the same place”"
+      },
+      {
+       "n": 40,
+       "text": "The omission of 't' in the sound of Christmas",
+       "answer": [
+        "A"
+       ],
+       "explanation": "The passage says: “Consonant-clusters are often simplified”"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

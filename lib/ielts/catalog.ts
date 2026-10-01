@@ -1,14 +1,15 @@
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { db } from "@/lib/db";
-import { READING_TESTS } from "@/lib/reading-tests-data";
-import { LISTENING_TESTS } from "@/lib/listening-tests-data";
 import { readingTestSchema, listeningTestSchema, speakingTestSchema } from "@/lib/test-schema";
 import { getWritingPrompts } from "@/lib/writing-content";
 import type { WritingPrompt } from "@/lib/writing-data";
-import { LISTENING_SEED, READING_SEED, SPEAKING_SEED } from "./content";
+import { SPEAKING_SEED } from "./content";
+import { ARCHIVED_LISTENING, ARCHIVED_READING, ARCHIVED_WRITING } from "./content/archive";
+import { CDI_LISTENING, CDI_READING, CDI_WRITING } from "./content/cdi";
 import { convertLegacyListening, convertLegacyReading } from "./convert";
 import { summarizeListening, summarizeReading } from "./format";
+import { listedExams } from "./listing";
 import { validateListeningTest, validateReadingTest, validateSpeakingSet } from "./validate";
 import type {
   ExamListeningTest,
@@ -19,10 +20,18 @@ import type {
 
 /**
  * The exam library — every Reading / Listening / Speaking / Writing item a
- * student can take, from three sources:
- *   1. hand-written Averna tests (lib/ielts/content),
- *   2. published AI-generated tests (GeneratedTest rows, exam-v2 or legacy JSON),
- *   3. the original short practice tests, converted (source "legacy").
+ * student can take.
+ *
+ * LISTED (library pages, homework picker, mock exam, recommendations):
+ *   1. the CDI materials (lib/ielts/content/cdi — server-only), by number,
+ *   2. then published AI-generated tests (GeneratedTest rows, exam-v2 or legacy JSON).
+ *   Speaking keeps its hand-written sets (the CDI materials have no Speaking).
+ *
+ * ARCHIVED (lib/ielts/content/archive): the built-in Averna papers, the old
+ * short practice tests and the original Writing prompts. Never listed, but
+ * every get* lookup still resolves them by id — CDI first, then the archive,
+ * then the database — so past results, old homework links and mock sittings
+ * keep working.
  *
  * Lists are summaries only (no passages, scripts or answers) and are cached for
  * a few minutes across requests; publishing a test revalidates EXAM_CATALOG_TAG.
@@ -36,7 +45,7 @@ type Row = { id: string; data: unknown; title: string; createdAt: Date };
 /**
  * Published rows of one module. Runs INSIDE unstable_cache, so it must throw on
  * a database error (an empty result would be cached for minutes); the list
- * functions below catch outside the cache and fall back to the built-in content.
+ * functions below catch outside the cache and fall back to the CDI content alone.
  */
 async function publishedRows(module: string): Promise<Row[]> {
   return db.generatedTest.findMany({
@@ -91,27 +100,45 @@ export function speakingFromRow(row: { id: string; data: unknown }): SpeakingExa
   };
 }
 
-const LEGACY_READING = Object.values(READING_TESTS).map((t) => convertLegacyReading(t, "legacy"));
-const LEGACY_LISTENING = LISTENING_TESTS.map((t) => convertLegacyListening(t, "legacy"));
+// ---------------------------------------------------------------------------
+// Archive (resolvable by id, never listed)
+// ---------------------------------------------------------------------------
 
-function order(a: ExamTestSummary, b: ExamTestSummary): number {
-  // Full exam papers first, then Averna originals before generated, legacy last.
-  if (a.full !== b.full) return a.full ? -1 : 1;
-  const rank = { averna: 0, generated: 1, legacy: 2 } as const;
-  return rank[a.source] - rank[b.source];
+export function findArchivedReading(id: string): ExamReadingTest | null {
+  return ARCHIVED_READING.find((t) => t.id === id) ?? null;
+}
+
+export function findArchivedListening(id: string): ExamListeningTest | null {
+  return ARCHIVED_LISTENING.find((t) => t.id === id) ?? null;
+}
+
+export function findArchivedWritingTask(task: "task1" | "task2", id: string): WritingPrompt | null {
+  return ARCHIVED_WRITING[task].find((p) => p.id === id) ?? null;
+}
+
+/** The id belongs to archived built-in content (any skill) — not offered for new homework / mocks. */
+export function isArchivedContent(id: string): boolean {
+  return (
+    !!findArchivedReading(id) ||
+    !!findArchivedListening(id) ||
+    !!findArchivedWritingTask("task1", id) ||
+    !!findArchivedWritingTask("task2", id)
+  );
 }
 
 // ---------------------------------------------------------------------------
 // Reading
 // ---------------------------------------------------------------------------
 
+const CDI_READING_SUMMARIES = CDI_READING.map(summarizeReading);
+
 const cachedReadingSummaries = unstable_cache(
   async (): Promise<ExamTestSummary[]> => {
     const rows = await publishedRows("READING");
     const generated = rows.map(readingFromRow).filter((t): t is ExamReadingTest => t !== null);
-    return [...READING_SEED, ...generated, ...LEGACY_READING].map(summarizeReading).sort(order);
+    return listedExams(CDI_READING_SUMMARIES, generated.map(summarizeReading));
   },
-  ["exam-catalog-reading-v1"],
+  ["exam-catalog-reading-v2"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -119,15 +146,15 @@ export const listReadingExams = cache(async (): Promise<ExamTestSummary[]> => {
   try {
     return await cachedReadingSummaries();
   } catch {
-    return [...READING_SEED, ...LEGACY_READING].map(summarizeReading).sort(order);
+    return listedExams(CDI_READING_SUMMARIES, []);
   }
 });
 
 export const getReadingExam = cache(async (id: string): Promise<ExamReadingTest | null> => {
-  const seed = READING_SEED.find((t) => t.id === id);
-  if (seed) return seed;
-  const legacy = LEGACY_READING.find((t) => t.id === id);
-  if (legacy) return legacy;
+  const cdi = CDI_READING.find((t) => t.id === id);
+  if (cdi) return cdi;
+  const archived = findArchivedReading(id);
+  if (archived) return archived;
   try {
     const row = await db.generatedTest.findUnique({ where: { id }, select: { id: true, data: true, module: true, published: true } });
     if (!row || row.module !== "READING" || !row.published) return null;
@@ -141,13 +168,15 @@ export const getReadingExam = cache(async (id: string): Promise<ExamReadingTest 
 // Listening
 // ---------------------------------------------------------------------------
 
+const CDI_LISTENING_SUMMARIES = CDI_LISTENING.map(summarizeListening);
+
 const cachedListeningSummaries = unstable_cache(
   async (): Promise<ExamTestSummary[]> => {
     const rows = await publishedRows("LISTENING");
     const generated = rows.map(listeningFromRow).filter((t): t is ExamListeningTest => t !== null);
-    return [...LISTENING_SEED, ...generated, ...LEGACY_LISTENING].map(summarizeListening).sort(order);
+    return listedExams(CDI_LISTENING_SUMMARIES, generated.map(summarizeListening));
   },
-  ["exam-catalog-listening-v1"],
+  ["exam-catalog-listening-v2"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -155,15 +184,15 @@ export const listListeningExams = cache(async (): Promise<ExamTestSummary[]> => 
   try {
     return await cachedListeningSummaries();
   } catch {
-    return [...LISTENING_SEED, ...LEGACY_LISTENING].map(summarizeListening).sort(order);
+    return listedExams(CDI_LISTENING_SUMMARIES, []);
   }
 });
 
 export const getListeningExam = cache(async (id: string): Promise<ExamListeningTest | null> => {
-  const seed = LISTENING_SEED.find((t) => t.id === id);
-  if (seed) return seed;
-  const legacy = LEGACY_LISTENING.find((t) => t.id === id);
-  if (legacy) return legacy;
+  const cdi = CDI_LISTENING.find((t) => t.id === id);
+  if (cdi) return cdi;
+  const archived = findArchivedListening(id);
+  if (archived) return archived;
   try {
     const row = await db.generatedTest.findUnique({ where: { id }, select: { id: true, data: true, module: true, published: true } });
     if (!row || row.module !== "LISTENING" || !row.published) return null;
@@ -224,18 +253,23 @@ export const getSpeakingSet = cache(async (id: string): Promise<SpeakingExamSet 
 });
 
 // ---------------------------------------------------------------------------
-// Writing (built-in + seeds + generated, via lib/writing-content)
+// Writing (CDI + generated listed via lib/writing-content; built-in archived)
 // ---------------------------------------------------------------------------
 
 export const listWritingTasks = cache(async (task: "task1" | "task2"): Promise<WritingPrompt[]> => {
   try {
     return await getWritingPrompts(task);
   } catch {
-    return [];
+    return CDI_WRITING[task];
   }
 });
 
+/** One prompt by id: CDI first, then the archive, then the published generated prompts. */
 export const getWritingTask = cache(async (task: "task1" | "task2", id: string): Promise<WritingPrompt | null> => {
+  const cdi = CDI_WRITING[task].find((p) => p.id === id);
+  if (cdi) return cdi;
+  const archived = findArchivedWritingTask(task, id);
+  if (archived) return archived;
   const all = await listWritingTasks(task);
   return all.find((p) => p.id === id) ?? null;
 });

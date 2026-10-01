@@ -1,0 +1,730 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-54",
+ "title": "CDI Reading Test 54",
+ "description": "A full Academic Reading test from the CDI practice materials: The Development of Exploration and Scientific Research in Antarctica; Effects of changes in world population; The lost animals of Australia.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "The Development of Exploration and Scientific Research in Antarctica",
+  "Effects of changes in world population",
+  "The lost animals of Australia"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "The Development of Exploration and Scientific Research in Antarctica",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The modern scientific age in Antarctica really began with the introduction of aircraft in the 1920s. Aircraft transformed the possibilities of exploring the frozen continent around the South Pole, because before that Antarctic travel had been limited to the use of dog teams pulling sledges. A plane could survey thousands of square kilometres an hour, equivalent to a whole summer's work using previous techniques. However, the first planes in Antarctica, such as the Lockheed Vega and the Ford Trimotor, were unreliable in freezing conditions. This made polar flying particularly hazardous, since there was little chance of rescue if a plane was forced down in a remote region."
+    },
+    {
+     "label": "B",
+     "text": "It was in 1928 that Herbert Wilkins hoped to make the first flight in Antarctica, attempting to cross the continent. A further attempt in 1930 was also unsuccessful, but Wilkins’ aerial photographs seemed to show that the Antarctic Peninsula was in fact an island, not part of the continent as had previously been thought. This new theory caused some excitement among geographers and cartographers. However, the British Grahamland Expedition of 1934–37 proved conclusively that the Antarctic Peninsula was attached to the rest of the continent."
+    },
+    {
+     "label": "C",
+     "text": "In 1929, the famous American pilot Richard Byrd flew over the South Pole, and another American, Lincoln Ellsworth, made a successful Antarctic flight in 1935. Although Ellsworth claimed a sector of the continent for the USA, the American government did not follow it up. In 1938, the German explorer, Alfred Ritscher, led an expedition south across the sea. Once Antarctica was reached, the aircraft that had been stored in pieces on the ship’s deck was reconstructed. The aeroplane was then launched and used to stake a claim to one section of Antarctica by dropping thousands of tiny flags from the air."
+    },
+    {
+     "label": "D",
+     "text": "A significant motivation behind many Antarctic expeditions right up to the 1940s was simply the spirit of adventure. Many of these expeditions had a large measure of private funding, and often the subsequent book about the expedition was a means of clearing debts incurred. The vast majority of Antarctic expeditions since 1940 have been funded by governments, usually for political reasons and scientific research."
+    },
+    {
+     "label": "E",
+     "text": "The setting up of the Research and Development Committee in Britain was a significant development in the history of science in the Antarctic. The Committee’s report, published in 1920, focused particularly on the sea that circles the Antarctic continent. The report proposed detailed scientific investigations of the physiology and behaviour of the whales inhabiting the region. As a result, a shore station at Grytviken on the island of South Georgia near Antarctica was occupied by scientists for six years. In addition, three research ships were commissioned. They travelled through the Southern Ocean all year, researching physical and chemical oceanography. The high quality of the specimens and data collected by scientists produced nearly 40 large volumes of reports. This entire project came to be known as the Discovery Investigations. The costs of the Discovery Investigations were completely covered by the proceeds of a tax that was placed on whaling businesses operating in the area."
+    },
+    {
+     "label": "F",
+     "text": "It was in 1875 that the idea of international scientific collaboration at the poles was first proposed, with the aim of collecting valuable data. The result was the first Polar Year in 1882–83. A second Polar Year was organised 50 years later, involving 44 nations and scientific bodies. Both of these Polar Years had been timed to coincide with a period when the sun was at its lowest level of activity, in order to monitor the impact this had. So much interest was aroused by this process that a third Polar Year was organised 25 years later. In 1951 it was decided that this scientific programme should be expanded to cover the globe. This new project was renamed the International Geophysical Year (IGY). Antarctica was chosen as an area for particular attention because of its important influence on global weather. Throughout this period, politics were kept firmly in the background."
+    },
+    {
+     "label": "G",
+     "text": "The IGY took place in 1957–58 and it was during this period that the last great Antarctic journey was accomplished. Dr Vivian Fuchs’ privately-funded Trans Antarctic Expedition finally achieved what the explorer Ernest Shackleton had first set out to do in 1914. Driving modified tractors, Fuchs’ team traversed Antarctica from coast to coast in 99 days and covered 2,180 miles or roughly 3,500 kilometres. But there were scientific objectives as well, because the expedition’s measurements allowed the first estimates to be made of the volume of ice that existed across the whole continent. So successful was the IGY that it was extended for a further year in order to promote Antarctic science. It also led directly to the signing of a treaty by members of the international community to regulate human conduct in Antarctica over the years ahead."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "Until the 1920s, humans relied on animals to explore Antarctica.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para A: 'before that Antarctic travel had been limited to the use of dog teams pulling sledges' — animals (dogs) were used before the 1920s."
+      },
+      {
+       "n": 2,
+       "text": "Herbert Wilkins failed to fly across the Antarctic continent in 1928.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para B: 'It was in 1928 that Herbert Wilkins hoped to make the first flight in Antarctica, attempting to cross the continent' and 'A further attempt in 1930 was also unsuccessful' — both attempts failed."
+      },
+      {
+       "n": 3,
+       "text": "The expedition of 1934–37 confirmed a new theory about the Antarctic Peninsula.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para B: The expedition 'proved conclusively that the Antarctic Peninsula was attached to the rest of the continent' — it disproved the new theory, not confirmed it."
+      },
+      {
+       "n": 4,
+       "text": "Lincoln Ellsworth was influenced by the flight of Richard Byrd.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para C mentions both men but says nothing about whether Ellsworth was influenced by Byrd."
+      },
+      {
+       "n": 5,
+       "text": "The government of the USA claimed part of Antarctica in 1935.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "Para C: 'Although Ellsworth claimed a sector of the continent for the USA, the American government did not follow it up' — the government did not officially claim it."
+      },
+      {
+       "n": 6,
+       "text": "After 1940, nations rather than individuals paid for most Antarctic expeditions.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "Para D: 'The vast majority of Antarctic expeditions since 1940 have been funded by governments' — governments (nations) funded them."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "Antarctic science",
+     "template": "- Notes completion: researchers worked from the station at Grytviken and also from several [[7]]\n- Notes completion: local companies paid a [[8]] which funded the Discovery Investigations\n- Notes completion: the first two Polar Years researched the effects of the [[9]]\n- Notes completion: Antarctica affects the world’s [[10]] so it was a focus for the IGY\n- Notes completion: Vivian Fuchs’ expedition crossed Antarctica using special [[11]]\n- Notes completion: the total amount of [[12]] in Antarctica was calculated by Fuchs’ expedition\n- Notes completion: one result of the IGY was the establishment of a [[13]] to control aspects of Antarctica’s future",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "ships"
+       ],
+       "explanation": "Para E: 'three research ships were commissioned. They travelled through the Southern Ocean all year' — the answer is ships."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "tax"
+       ],
+       "explanation": "Para E: 'The costs of the Discovery Investigations were completely covered by the proceeds of a tax that was placed on whaling businesses.'"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "sun"
+       ],
+       "explanation": "Para F: 'Both of these Polar Years had been timed to coincide with a period when the sun was at its lowest level of activity.'"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "weather"
+       ],
+       "explanation": "Para F: 'Antarctica was chosen as an area for particular attention because of its important influence on global weather.'"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "tractors"
+       ],
+       "explanation": "Para G: 'Driving modified tractors, Fuchs’ team traversed Antarctica from coast to coast.'"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "ice"
+       ],
+       "explanation": "Para G: 'the expedition’s measurements allowed the first estimates to be made of the volume of ice that existed across the whole continent.'"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "treaty"
+       ],
+       "explanation": "Para G: 'It also led directly to the signing of a treaty by members of the international community to regulate human conduct in Antarctica.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "Effects of changes in world population",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Human fertility rates around the world are dropping for a variety of complex reasons. While the population itself continues to increase, the rate of increase is slowing, and sometime in the next 80 years, world population will peak somewhere in the vicinity of nine billion before contracting. That raises an important question: is population contraction a bad thing?"
+    },
+    {
+     "text": "Some think not. There is a school of thought that argues that smaller populations are good. Population control proponents claim variously that (1) we do not have the food to sustain higher populations; (2) our planet already suffers from overcrowding; (3) the environmental impact of increased populations will bring catastrophe either through pollution or consumption of finite natural resources; or in contrast, they argue decreased populations will lead to higher wages and a better quality of life as available supplies exceed reduced demands. These arguments seem reasonable at first, but do not withstand scrutiny."
+    },
+    {
+     "label": "B",
+     "text": "Let’s start with food. The worry about mass starvation is a remnant of Paul Ehrlich’s 1968 book The Population Bomb. Ehrlich, Professor of Population Studies in the department of Biological Sciences at Stanford University in California, wrote that in the face of expanding populations, ‘the world will undergo famines — hundreds of millions of people are going to starve to death.’ As Ehrlich himself now admits, this prediction proved faulty. Instead, the availability of food has greatly increased, even with a growing population. Demographer Philip Longman notes that food shortages have become ‘a political problem, related to fair distribution, not an issue of inadequate supply’. How did this happen? In 1965, Danish economist Ester Boserup proposed that population increase fosters agricultural innovation, which in turn increases production. Her theories have been borne out by events, which show that some areas of the world may lack sufficient supplies while the world has an overall surplus."
+    },
+    {
+     "label": "C",
+     "text": "What about overcrowding? Everywhere you go today, you find traffic jams and sprawl, with people packed into crowded places. But this is a problem of density, not population. There’s plenty of land available out there. The problem is that people who used to live in the rural areas have relocated to cities. This massive migration into cities has caused urbanization, which is different from overpopulation, and the problems associated with this include air pollution, lower wages, and limited access to healthcare and educational opportunities."
+    },
+    {
+     "label": "D",
+     "text": "Environmental concerns are more interesting, but such end-of-the-world warnings are not new. Global warming and the fact that the Earth has only finite amounts of natural resources that we will surely deplete, are the two main concerns of environmentalists."
+    },
+    {
+     "text": "This, too, is an argument we have heard before. As Massimo Livi-Bacci, Professor of Demography at the University of Florence, Italy, explains in his Concise History of World Population, more than 100 years ago economists ‘feared that coal supplies would be exhausted, and about 30 years ago the Club of Rome made similar predictions regarding other natural resources’. Instead, innovation stepped in to provide greater efficiency. For instance, in the America of 1850, you needed an average of 4.6 tons of petroleum equivalent to produce $1,000 of goods and services. By 1950, you needed only 1.8 tons, and by 1978, 1.5 tons."
+    },
+    {
+     "label": "E",
+     "text": "This leaves us with the economy. In 1971, Simon Smith Kuznets won the Nobel Prize in Economics for his theory of ‘tested knowledge’. Kuznets explained, ‘More population means more creators and producers, both of goods along established production patterns and of new knowledge and inventions.’"
+    },
+    {
+     "text": "Kuznets was codifying what others had noticed before. Political economist Adam Smith remarked that ‘the most decisive mark of the prosperity of any country is the increase of the number of its inhabitants.’ As Livi-Bacci observes, ‘All things being equal, population increase is followed by increased per capita production.’ So the proposed ‘benefits’ of population decline are, at the very least, suspect. In addition, there are worrying potential costs of population decline. Of course, this worry is theoretical because we’ve never seen population decline on the massive scale that’s coming our way. Or rather, we’ve never seen it in the modern world."
+    },
+    {
+     "label": "F",
+     "text": "There are, however, two historical examples. Between 400 BC and AD 1, world population increased from about 153 million to 252 million. For the next 200 years, growth slowed almost to a halt. Then, between AD 200 and AD 600, the population shrank from 257 million to 208 million. It took an additional 400 years for the population to recover to the level it had attained in AD 1."
+    },
+    {
+     "text": "The other drop in population occurred between 1340 and 1400, when the Black Death, one of the most deadly pandemics in human history, ravaged the world. Global population fell from 442 million to 375 million. Neither of these drops was a particularly pleasant period in human history. Or, as Canadian journalist Mark Steyn notes in America Alone, ‘There is no precedent in human history for economic growth on declining human capital.’"
+    },
+    {
+     "text": "It is impossible to anticipate with certainty the effects of population decline. But there is good reason to believe it will be bad for us. Innovation will suffer as the demand for nearly everything slackens. Instead of producing windfalls of excess supply, economies will probably contract. As Livi-Bacci observes, ‘Historically, areas depopulated or in the process of losing population have almost always been characterized by backward economies.’"
+    },
+    {
+     "text": "The real question therefore is whether or not falling populations will lead to the demise of civilization as we know it."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has six sections, A–F. Choose the correct heading for each section from the list below, and drag it into the box next to the section.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Do we have sufficient resources to feed the human population?"
+      },
+      {
+       "key": "ii",
+       "text": "Will population increase pose disaster for our supply of raw materials?"
+      },
+      {
+       "key": "iii",
+       "text": "Would population decline benefit the world?"
+      },
+      {
+       "key": "iv",
+       "text": "Is disease a key factor?"
+      },
+      {
+       "key": "v",
+       "text": "Is population decrease good for productivity?"
+      },
+      {
+       "key": "vi",
+       "text": "What is the impact of population movement?"
+      },
+      {
+       "key": "vii",
+       "text": "What can past events tell us about the effects of population decline?"
+      },
+      {
+       "key": "viii",
+       "text": "What can our governments do to guarantee supplies of food and resources?"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Section A",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "Section A raises the question of whether population contraction is bad — i.e. would population decline benefit the world? (iii)."
+      },
+      {
+       "n": 15,
+       "text": "Section B",
+       "answer": [
+        "i"
+       ],
+       "explanation": "Section B addresses the food supply argument — do we have sufficient resources to feed the population? (i)."
+      },
+      {
+       "n": 16,
+       "text": "Section C",
+       "answer": [
+        "vi"
+       ],
+       "explanation": "Section C discusses people moving from rural to urban areas — the impact of population movement (vi)."
+      },
+      {
+       "n": 17,
+       "text": "Section D",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "Section D addresses concerns about finite natural resources and the environment — will population increase pose disaster for raw materials? (ii)."
+      },
+      {
+       "n": 18,
+       "text": "Section E",
+       "answer": [
+        "v"
+       ],
+       "explanation": "Section E examines whether population decrease is good for the economy and productivity (v)."
+      },
+      {
+       "n": 19,
+       "text": "Section F",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "Section F discusses two historical examples of population decline — what past events tell us about population decline (vii)."
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the sentences below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "template": "- Boserup’s ideas explain why overall, the world can have a food [[20]] while some areas do not have enough.\n- In the last 100 years or so, [[21]] has led to a more efficient use of resources.\n- Adam Smith argued that a country’s [[22]] is caused by a growth in population.",
+     "questions": [
+      {
+       "n": 20,
+       "answer": [
+        "surplus"
+       ],
+       "explanation": "Para B: 'some areas of the world may lack sufficient supplies while the world has an overall surplus.'"
+      },
+      {
+       "n": 21,
+       "answer": [
+        "innovation"
+       ],
+       "explanation": "Para D: 'Instead, innovation stepped in to provide greater efficiency.'"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "prosperity"
+       ],
+       "explanation": "Para E: Adam Smith remarked that ‘the most decisive mark of the prosperity of any country is the increase of the number of its inhabitants.’"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of the following statements agree with the views of the writer?",
+     "options": [
+      {
+       "key": "A",
+       "text": "The availability of food is greater now than previously."
+      },
+      {
+       "key": "B",
+       "text": "A decrease in population will lead to a higher standard of education."
+      },
+      {
+       "key": "C",
+       "text": "Smaller populations result in higher wages."
+      },
+      {
+       "key": "D",
+       "text": "Cities will become overcrowded if they are unsuitably located."
+      },
+      {
+       "key": "E",
+       "text": "People have moved from rural areas to urban centres."
+      }
+     ],
+     "questions": [
+      {
+       "n": 23,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "Para B: 'the availability of food has greatly increased, even with a growing population' (A). Para C: 'people who used to live in the rural areas have relocated to cities' (E). Para C confirms that people have moved from rural areas to urban centres (E), and Para B confirms food availability has increased (A)."
+      },
+      {
+       "n": 24,
+       "answer": [
+        "A",
+        "E"
+       ],
+       "explanation": "Para B: 'the availability of food has greatly increased, even with a growing population' (A). Para C: 'people who used to live in the rural areas have relocated to cities' (E). Para C confirms that people have moved from rural areas to urban centres (E), and Para B confirms food availability has increased (A)."
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO claims does the writer make about future population decline?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Recovery may take at least 400 years."
+      },
+      {
+       "key": "B",
+       "text": "It may be caused by disease."
+      },
+      {
+       "key": "C",
+       "text": "It might mean a decrease in the number of new ideas."
+      },
+      {
+       "key": "D",
+       "text": "There may be an overabundance of food as a result."
+      },
+      {
+       "key": "E",
+       "text": "It could result in economies becoming smaller."
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "Para F: 'Innovation will suffer as the demand for nearly everything slackens' — fewer people means fewer new ideas (C). 'economies will probably contract' (E). Para F: 'economies will probably contract' (E), and innovation will suffer as demand slackens — fewer new ideas (C)."
+      },
+      {
+       "n": 26,
+       "answer": [
+        "C",
+        "E"
+       ],
+       "explanation": "Para F: 'Innovation will suffer as the demand for nearly everything slackens' — fewer people means fewer new ideas (C). 'economies will probably contract' (E). Para F: 'economies will probably contract' (E), and innovation will suffer as demand slackens — fewer new ideas (C)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "The lost animals of Australia",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The history of Australia’s animals over the past 50,000 years has been largely one of extinction. The time has been too short for new species of large animals to evolve and, over this period, nearly one-third of Australia’s mammal species have become extinct, along with nearly all the large reptiles and many of the flightless birds. The cause of these extinctions is still hotly debated. One school of thought suggests that humans caused the extinctions, and another that they were due to changes in climate."
+    },
+    {
+     "label": "B",
+     "text": "The greatest problem in evaluating these theories is that we do not know exactly when these animals became extinct. Fossils from a number of well-dated cave and lakeside sites suggest that all the now-extinct species had already vanished 35,000 years ago, but a few other sites suggest that giant marsupials might have survived until 25,000 years ago, or even as late as 6,000 years ago."
+    },
+    {
+     "label": "C",
+     "text": "One certainty is that Australia’s climate has changed greatly over the past 40,000 years. Between 25,000 and 15,000 years ago, the sea level dropped by more than 100 metres and the continent experienced an extremely arid phase. Clearly, the timing of the extinctions is of critical importance. If they can be shown to coincide with the arrival of humans, about 50,000 years ago, then circumstantial evidence would point to humans as the cause. If, however, the giant marsupials survived until 25,000 years ago, the increased aridity would seem to be the more likely cause."
+    },
+    {
+     "label": "D",
+     "text": "Before these extinctions, Australia was a very different place. Naturally occurring fires were probably less frequent than they are now, because large marsupial herbivores (of which there were about forty species) reduced the standing crop of vegetation. Rainforest plants were widespread in the parts of Australia which are now very dry. The largest marsupial species was the diprotodon, which, like other Australian marsupial giants, was about one-third the weight of its ecological equivalent elsewhere. It probably weighed between 1,000 and 2,000 kilograms, while the elephant of Afro-Asia weighed about 5,000 kilograms. The relatively small size of the Australian marsupial giants has been attributed to Australia’s extraordinarily poor soils and erratic climate, both factors which typically limit plant growth."
+    },
+    {
+     "label": "E",
+     "text": "Judging by the teeth of extinct species, there were many specialist grazers and browsers, paralleling the great mammal communities of Africa today. But the Australian carnivores were very different to their African equivalents. For example, the Australian marsupial lion was only about the size of a leopard; there was no equivalent of the large group of cat- and dog-like carnivores of Africa. The marsupial lion was Australia’s only cat-like species; there was one dog-like species, the thylocine, which vanished from mainland Australia about 3,000 years ago, but seems to have survived on the Australian island of Tasmania until the 1930s, and one scavenger/carnivore, the Tasmanian devil. The larger Australian carnivores were all reptiles. The largest of these, the gigantic snakes of the genus Wonambi, were more than 8 metres long, and together with the 7-metre goanna and the 3-metre land crocodile, were the main predators. There were never vast numbers of most species. Large, warm-blooded creatures were at a disadvantage, their prey being limited by the nature of the soil and the climate. The cold-blooded reptilian carnivores, which required less energy, were therefore able to dominate."
+    },
+    {
+     "label": "F",
+     "text": "There is strong evidence to support the theory that humans were responsible for the decline of large animals in Australia. In their Afro-Eurasian homeland, humans were medium-sized members of a very large community of carnivores and omnivores. But by 40,000 years ago, they were taking a very broad range of prey, including mammals much larger than themselves. Studies have shown that when humans or other predators arrive in areas where there have previously been no ecologically equivalent species, they invariably have a profound impact. For example, over the past 1,000 years, Polynesians in Hawaii have destroyed more than 70% of the bird species, and, during the 1800s, hunters on islands close to Antarctica severely depleted many seal species."
+    },
+    {
+     "label": "G",
+     "text": "Australian animals were particularly vulnerable to the impact of humans. Marsupial herbivores were adapted only to avoiding predation by large but relatively unintelligent reptiles, while humans are the most efficient predators that have ever existed. From the mountain rainforests to the desert centre, extinctions emptied landscape after landscape, until finally the largest surviving mammals were humans themselves. Medium-sized animal species weighing between 10 and 100 kilograms either also became extinct or became smaller over thousands of years. Grey kangaroos are now only half the size they once were, while koalas and Tasmanian devils weigh, on average, one-third less than they once did."
+    },
+    {
+     "label": "H",
+     "text": "In general, in Australia, the larger the species, the more it has reduced in size, with the exception of humans and wombats; the latter may have been protected by their burrowing habits. This shrinking may also be attributable to human hunting practices. If hunters claimed the largest individuals of these species, fast-maturing small specimens would have been more likely to survive to maturity. Increasingly, they would have produced smaller offspring. Only the smallest mammals, those weighing less than 10 kilograms, survived unaltered, although some may have been restricted to a smaller number of areas. This extinction pattern changed with the arrival of Europeans towards the end of the 18th century. As a result of this, a large number of smaller species also became extinct over the course of the following century, together with 21 medium-sized mammals and one large mammal species."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answers in questions 27–32.",
+     "questions": [
+      {
+       "n": 27,
+       "text": "The writer states that it is difficult to decide why prehistoric Australian animals became extinct because",
+       "options": [
+        {
+         "key": "A",
+         "text": "relevant fossils are scarce."
+        },
+        {
+         "key": "B",
+         "text": "fossil evidence has been destroyed."
+        },
+        {
+         "key": "C",
+         "text": "the evidence is somewhat contradictory."
+        },
+        {
+         "key": "D",
+         "text": "there has not been enough time to carry out research."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para B: fossil evidence from different sites gives contradictory dates — the evidence is somewhat contradictory (C)."
+      },
+      {
+       "n": 28,
+       "text": "The writer suggests that Australia’s larger mammals were smaller than those of Africa and Asia because",
+       "options": [
+        {
+         "key": "A",
+         "text": "there was an insufficient supply of food."
+        },
+        {
+         "key": "B",
+         "text": "the country was covered with thick forest."
+        },
+        {
+         "key": "C",
+         "text": "smaller animals escaped predators more easily."
+        },
+        {
+         "key": "D",
+         "text": "they had difficulty digesting the available food."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para D: 'attributed to Australia’s extraordinarily poor soils and erratic climate, both factors which typically limit plant growth' — insufficient food supply (A)."
+      },
+      {
+       "n": 29,
+       "text": "According to the writer, large Australian carnivores were mostly reptiles because",
+       "options": [
+        {
+         "key": "A",
+         "text": "mammals were less skilful at hunting."
+        },
+        {
+         "key": "B",
+         "text": "reptiles had faster breeding rates."
+        },
+        {
+         "key": "C",
+         "text": "reptiles were more suited to the environment."
+        },
+        {
+         "key": "D",
+         "text": "mammals had to compete for territory."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para E: 'The cold-blooded reptilian carnivores, which required less energy, were therefore able to dominate' — reptiles were better suited to the environment (C)."
+      },
+      {
+       "n": 30,
+       "text": "According to the writer, the effect of the first humans in Australia was particularly great because Australian animals",
+       "options": [
+        {
+         "key": "A",
+         "text": "were slow and awkward."
+        },
+        {
+         "key": "B",
+         "text": "had skins that could be used for several purposes."
+        },
+        {
+         "key": "C",
+         "text": "had little experience in escaping from such skilful hunters."
+        },
+        {
+         "key": "D",
+         "text": "were attracted towards human settlements because of the food available there."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para G: 'Marsupial herbivores were adapted only to avoiding predation by large but relatively unintelligent reptiles' — they had little experience escaping such skilful hunters (C)."
+      },
+      {
+       "n": 31,
+       "text": "What, according to the writer, does the wombat have in common with humans?",
+       "options": [
+        {
+         "key": "A",
+         "text": "Its size has remained the same."
+        },
+        {
+         "key": "B",
+         "text": "Its diet was similar to the human diet."
+        },
+        {
+         "key": "C",
+         "text": "It made shelters to protect itself."
+        },
+        {
+         "key": "D",
+         "text": "It was able to evade reptiles easily."
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para H: 'the larger the species, the more it has reduced in size, with the exception of humans and wombats' — both kept their size (A)."
+      },
+      {
+       "n": 32,
+       "text": "The writer suggests that Australian mammals have become smaller because",
+       "options": [
+        {
+         "key": "A",
+         "text": "they were able to live underground."
+        },
+        {
+         "key": "B",
+         "text": "they were vulnerable to human diseases."
+        },
+        {
+         "key": "C",
+         "text": "bigger examples of the species were killed."
+        },
+        {
+         "key": "D",
+         "text": "their territories expanded in size."
+        }
+       ],
+       "answer": [
+        "C"
+       ],
+       "explanation": "Para H: 'If hunters claimed the largest individuals of these species, fast-maturing small specimens would have been more likely to survive' — bigger examples were killed (C)."
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–F, from the box below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "is due to the fact that not enough time has passed."
+      },
+      {
+       "key": "B",
+       "text": "is evidenced by the remains of their teeth."
+      },
+      {
+       "key": "C",
+       "text": "is responsible for the disappearance of habitat."
+      },
+      {
+       "key": "D",
+       "text": "is often responsible for a significant number of extinctions."
+      },
+      {
+       "key": "E",
+       "text": "is theoretically based on a large herbivore population."
+      },
+      {
+       "key": "F",
+       "text": "is a crucial factor that has yet to be resolved."
+      }
+     ],
+     "questions": [
+      {
+       "n": 33,
+       "text": "The failure of a new species of large mammals to evolve",
+       "answer": [
+        "A"
+       ],
+       "explanation": "Para A: 'The time has been too short for new species of large animals to evolve' — not enough time has passed (A)."
+      },
+      {
+       "n": 34,
+       "text": "The extinction date of the large Australian animals",
+       "answer": [
+        "F"
+       ],
+       "explanation": "Para B: 'The greatest problem in evaluating these theories is that we do not know exactly when these animals became extinct' — a crucial factor that has yet to be resolved (F)."
+      },
+      {
+       "n": 35,
+       "text": "A reduction in the number of forest fires",
+       "answer": [
+        "E"
+       ],
+       "explanation": "Para D: 'Naturally occurring fires were probably less frequent than they are now, because large marsupial herbivores reduced the standing crop of vegetation' — theoretically based on a large herbivore population (E)."
+      },
+      {
+       "n": 36,
+       "text": "The arrival of humans in a previously uninhabited area",
+       "answer": [
+        "D"
+       ],
+       "explanation": "Para F: 'when humans or other predators arrive in areas where there have previously been no ecologically equivalent species, they invariably have a profound impact' — often responsible for significant extinctions (D)."
+      }
+     ]
+    },
+    {
+     "kind": "ynng",
+     "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 37,
+       "text": "Mass extinction in Australia was limited to giant mammals.",
+       "answer": [
+        "NO"
+       ],
+       "explanation": "Para A: extinctions affected 'nearly one-third of Australia’s mammal species… along with nearly all the large reptiles and many of the flightless birds' — not limited to giant mammals."
+      },
+      {
+       "n": 38,
+       "text": "Australia’s climate became cooler about 50,000 years ago.",
+       "answer": [
+        "NOT GIVEN"
+       ],
+       "explanation": "Para C mentions climate change over 40,000 years (arid conditions) but does not specify whether it became cooler around 50,000 years ago."
+      },
+      {
+       "n": 39,
+       "text": "The wonambi snake was the biggest Australian carnivore.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Para E: 'The largest of these, the gigantic snakes of the genus Wonambi, were more than 8 metres long' — the Wonambi was the largest reptilian carnivore."
+      },
+      {
+       "n": 40,
+       "text": "Europeans caused the extinction of some smaller Australian mammals.",
+       "answer": [
+        "YES"
+       ],
+       "explanation": "Para H: 'This extinction pattern changed with the arrival of Europeans… a large number of smaller species also became extinct over the course of the following century.'"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

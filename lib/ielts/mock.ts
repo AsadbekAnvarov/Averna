@@ -39,7 +39,7 @@ import {
   listWritingTasks,
   type SpeakingSetSummary,
 } from "./catalog";
-import { estimateListeningMinutes } from "./format";
+import { estimateListeningMinutes, summarizeListening, summarizeReading } from "./format";
 import { toClientReading } from "./sanitize";
 import { listeningClientContent } from "./audio/client";
 import { examPrompt, submitObjectiveExam, submitSpeakingTest, submitWritingExam } from "./submit";
@@ -586,8 +586,13 @@ const SECTION_TITLE: Record<MockSection, string> = {
 
 async function sectionViews(papers: MockPapers, current: number, results: MockResults): Promise<MockSectionView[]> {
   const [listening, reading] = await Promise.all([listListeningExams(), listReadingExams()]);
-  const l = listening.find((t) => t.id === papers.listening);
-  const r = reading.find((t) => t.id === papers.reading);
+  // A sitting started before the CDI switch may use an archived paper: not listed, still resolvable by id.
+  const l =
+    listening.find((t) => t.id === papers.listening) ??
+    (await getListeningExam(papers.listening).then((t) => (t ? summarizeListening(t) : undefined)));
+  const r =
+    reading.find((t) => t.id === papers.reading) ??
+    (await getReadingExam(papers.reading).then((t) => (t ? summarizeReading(t) : undefined)));
   const detail: Record<MockSection, { detail: string; minutes: number }> = {
     LISTENING: { detail: `4 parts · ${l?.questions ?? 40} questions · the recording plays once`, minutes: l?.timeLimit ?? 35 },
     READING: { detail: `3 passages · ${r?.questions ?? 40} questions`, minutes: r?.timeLimit ?? 60 },

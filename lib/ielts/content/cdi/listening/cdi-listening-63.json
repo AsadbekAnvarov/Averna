@@ -1,0 +1,578 @@
+{
+ "format": "exam-v2",
+ "skill": "LISTENING",
+ "id": "cdi-listening-63",
+ "title": "CDI Listening Test 63",
+ "description": "A full Listening test from the CDI practice materials, with the original recording. 4 parts, 40 questions.",
+ "difficulty": "Medium",
+ "topics": [
+  "Section 1. You will hear a company manager who wants to employ some new staff phoning a recruitment agency",
+  "Section 2. You will hear a tour guide introducing a museum to a group of tourists",
+  "Section 3. You will hear two students, Alice and Tim, talking about the lectures they have had recently",
+  "Section 4. You will hear a man from a tax agency introducing taxation"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "cdi-listening-63-part-1",
+   "title": "Part 1",
+   "context": "Section 1. You will hear a company manager who wants to employ some new staff phoning a recruitment agency.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the form below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "Morgan Recruitment Agency – Request for new staff",
+     "template": "- Example — Name: Peter Smith\n- Phone number: [[1]]\n- Company name: [[2]] Transport\n- Type of company: trucking company – transports a lot of [[3]] food\n- Date employees required: from [[4]]\nDetails of Jobs\nOffice Manager\n- experience working with supermarkets is needed\n- must have a [[5]]\nMechanic\n- duties involve repairing trucks and writing a [[6]] for every vehicle\n- the job will not involve much travelling\nTruck Driver\n- will cover long distances\n- will need to transport [[7]] , so experience handling them is preferred\n- all drivers also have to [[8]] their truck\nWarehouse Supervisor\n- managing the warehouse near the [[9]]\n- they need their own [[10]]",
+     "questions": [
+      {
+       "n": 1,
+       "answer": [
+        "0478883925",
+        "0478 883 925"
+       ],
+       "explanation": "“Our number here is 0478 883 925.”"
+      },
+      {
+       "n": 2,
+       "answer": [
+        "Vander"
+       ],
+       "explanation": "“It’s Vander Transport.” — spelt V-A-N, D for November... D-E-R."
+      },
+      {
+       "n": 3,
+       "answer": [
+        "frozen"
+       ],
+       "explanation": "“We have a fleet of refrigerated trucks, so we mostly carry frozen goods.”"
+      },
+      {
+       "n": 4,
+       "answer": [
+        "28th August",
+        "28 August",
+        "August 28"
+       ],
+       "explanation": "The 27th is a Sunday, so the agent asks “do you mean the 28th?” and he agrees."
+      },
+      {
+       "n": 5,
+       "answer": [
+        "degree"
+       ],
+       "explanation": "“Do they need a university education, like a degree?” — “Candidates would definitely have one.”"
+      },
+      {
+       "n": 6,
+       "answer": [
+        "report"
+       ],
+       "explanation": "“One of the other key responsibilities is to produce a written report for each vehicle.”"
+      },
+      {
+       "n": 7,
+       "answer": [
+        "animals",
+        "animal"
+       ],
+       "explanation": "“It involves moving animals”, and they want a driver with that kind of experience."
+      },
+      {
+       "n": 8,
+       "answer": [
+        "clean"
+       ],
+       "explanation": "“It is up to all our drivers to clean their vehicle between trips.”"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "airport"
+       ],
+       "explanation": "The new warehouse “is located close to the airport”, having moved out of the city centre."
+      },
+      {
+       "n": 10,
+       "answer": [
+        "car"
+       ],
+       "explanation": "Buses and trains don’t run at those hours, so the candidate needs their own car."
+      }
+     ]
+    }
+   ],
+   "transcript": "Section 1. You will hear a company manager who wants to employ some new staff phoning a recruitment agency.\nAgent: Hello, Morgan Recruitment Agency. How may I help you?\nManager: Hello. I need to employ some new staff for my company, and I believe your agency can help with that.\nAgent: Yes, of course. First I’ll get some details from you. Can I have your name, please?\nManager: Sure. My name is Peter Smith. (Example — Smith)\nAgent: And can I also get a contact number?\nManager: Our number here is 0478 883 925.\nAgent: Thank you. Can I also take down some details about your company? What’s your company name?\nManager: It’s Vander Transport.\nAgent: Is that V-A-N?\nManager: That’s N for November, D-E-R. That’s right. We are a large trucking company.\nAgent: The transport industry is really booming, especially for fresh fruit and vegetables, isn’t it?\nManager: Yes. We have a fleet of refrigerated trucks though, so we mostly carry frozen goods — fish, vegetables, pizza, all sorts.\nAgent: I see. So you said that you need some new staff members. When would you need them to start?\nManager: We’d like them to start around the 27th of August.\nAgent: Just looking at my calendar here, the 27th is a Sunday. So do you mean the 28th of August?\nManager: Ah, yes, that’s right. We’re hoping to hold any interviews around July 29th.\nBefore you hear the rest of the conversation, you have some time to look at questions 5 to 10.\nAgent: Okay. Now could you tell me about the jobs you have available, so we can hopefully find some suitable candidates?\nManager: Sure. The first position is an office manager.\nAgent: So does the job involve typical management duties?\nManager: Yes, but they also have to liaise with our main client, which is a large supermarket chain, so a background in a company like that is essential.\nAgent: Okay, I’ll note that down. It sounds like an important role. What are the minimum qualifications? Do they need a university education, like a degree?\nManager: Yes. Candidates would definitely have one.\nAgent: Okay. Can you tell me about the next position?\nManager: We’re looking for a full-time mechanic.\nAgent: So I assume the job will involve doing general repairs on trucks.\nManager: Yes, that’s right. And one of the other key responsibilities is to produce a written report for each vehicle.\nAgent: I think we have several people on our books that would be suitable. And will the mechanic be doing much travelling?\nManager: Some, yes, but not a great deal. Unlike our next vacancy — that’s for a full-time truck driver.\nAgent: Right. What kind of shifts are they expected to work?\nManager: They usually travel around 1,000 kilometres over a five-day period.\nAgent: I see.\nManager: This job is different to our usual ones, though. It involves moving animals. Our company has just got a new contract, so we’ve bought new trucks and want a driver with that kind of experience.\nAgent: Great. Is there anything else I should make a note of?\nManager: Well, we own all of the trucks, but apart from their driving duties, it is up to all our drivers to clean their vehicle between trips. We do give them extra time for that.\nAgent: Okay. And are there any other positions available?\nManager: Yes. We’re looking for a warehouse supervisor.\nAgent: And what will this involve?\nManager: They’ll be in charge of our new warehouse. It’s located close to the airport. We’ve recently moved out of the city centre.\nAgent: Oh, that must be more convenient. And what are some of the requirements for this role?\nManager: The successful candidate would be able to work effectively in a busy environment. Sometimes they’ll be on call twenty-four hours for our night-time deliveries.\nAgent: So given the hours they’ll be working, I assume it will be necessary for the candidate to have a car?\nManager: Yes, that’s right. Buses and trains just don’t operate at those times, unfortunately.\nAgent: Okay, Mr Smith. I’ll have a look at the job seekers we have on our books and see if we have any suitable candidates."
+  },
+  {
+   "id": "cdi-listening-63-part-2",
+   "title": "Part 2",
+   "context": "Section 2. You will hear a tour guide introducing a museum to a group of tourists.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "Barton House",
+     "template": "- Before Barton bought this house, it was a [[11]]\n- The Chinese wallpaper was painted in the [[12]] century.\n- Barton died in the [[13]] room.\n- The dining room has many antiques, such as the [[14]] sold by Japanese merchants.\nBackyard Garden\n- [[15]] plants that have been there for years.\n- [[16]] were introduced by the government.\n- The most popular animal is the [[17]]",
+     "questions": [
+      {
+       "n": 11,
+       "answer": [
+        "farm"
+       ],
+       "explanation": "“This place was a vast expanse of land where an abandoned farm was situated.”"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "18th",
+        "18",
+        "eighteenth"
+       ],
+       "explanation": "“The Chinese wallpaper, which was painted in the 18th century.”"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "bird",
+        "birds"
+       ],
+       "explanation": "“He was building a new bird room in which he collapsed and never came to himself.”"
+      },
+      {
+       "n": 14,
+       "answer": [
+        "chairs",
+        "chair"
+       ],
+       "explanation": "“The chairs were bought from some Japanese merchants in the area then.”"
+      },
+      {
+       "n": 15,
+       "answer": [
+        "rare"
+       ],
+       "explanation": "“They are not ordinary trees, but some rare ones, and they have been alive for decades.”"
+      },
+      {
+       "n": 16,
+       "answer": [
+        "flamingos",
+        "flamingoes",
+        "flamingo"
+       ],
+       "explanation": "“Recently the government brought in some flamingos here.”"
+      },
+      {
+       "n": 17,
+       "answer": [
+        "swans",
+        "swan"
+       ],
+       "explanation": "“Swans are still the most popular animal here.”"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Label the map below. Drag each place onto its letter on the map, or choose the letter from the list.",
+     "options": [
+      {
+       "key": "A",
+       "text": "A"
+      },
+      {
+       "key": "B",
+       "text": "B"
+      },
+      {
+       "key": "C",
+       "text": "C"
+      },
+      {
+       "key": "D",
+       "text": "D"
+      },
+      {
+       "key": "E",
+       "text": "E"
+      },
+      {
+       "key": "F",
+       "text": "F"
+      }
+     ],
+     "questions": [
+      {
+       "n": 18,
+       "text": "gallery",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The gallery is “just at the right side of the road, a few feet from the entrance” — C."
+      },
+      {
+       "n": 19,
+       "text": "woodland",
+       "answer": [
+        "F"
+       ],
+       "explanation": "The woodland is “halfway down the path to the east of the toilet” — F."
+      },
+      {
+       "n": 20,
+       "text": "gift shop",
+       "answer": [
+        "E"
+       ],
+       "explanation": "The gift shop is “to the west of the site... beside the toilet” — E."
+      }
+     ],
+     "image": {
+      "src": "/cdi/images/listening63-part2.webp",
+      "alt": "Map of the Barton Museum site showing locations A to F, the toilet, the entrance and the exit."
+     }
+    }
+   ],
+   "transcript": "Section 2. You will hear a tour guide introducing a museum to a group of tourists.\nCarly: Good afternoon. Welcome to Barton Museum. I am Carly and I am your tour guide. I would be taking you through all the places of interest in this museum before we actually set out to go.\nCarly: The first building we stop at is the Barton House, which was built by the man himself, Barton.\nCarly: When he first came to this area, it was largely uninhabited, and as a matter of fact, this place was a vast expanse of land where an abandoned farm was situated.\nCarly: After he bought it, he began building, and in about three years the basic structure was complete, although he never really stopped building. As a man who loved the arts, Barton spent a good fortune on them.\nCarly: He had several paintings from all over the world, and his gallery is still considered one of the best in town. One of the most notable of his collection is the Chinese wallpaper, which was painted in the 18th century.\nCarly: Rumour has it that he paid hundreds of thousands of dollars for the piece of art. Barton kept adding some features to his house every year. He did this until the night he died.\nCarly: He was building a new bird room, in which he collapsed and never came to himself. His dining room is also beautifully adorned with antiquity, from the tables to the stools to the maps.\nCarly: The chairs were bought from some Japanese merchants in the area then.\nCarly: Looking at the location of his house, which sits some feet higher than surrounding lands, it is possible to see areas of just green, lush vegetation that run for miles.\nCarly: At the backyard there is a garden which he started himself. He used to care for the plants there personally and made sure they never lacked water.\nCarly: He detested fertilizers, as he believed that it would spoil the cycle of growth of the plants in the garden. He had some trees in the garden. They are not ordinary trees, but some rare ones, and they have been alive for decades now.\nCarly: Under one of those trees was his favourite spot, and history tells us that he used to sing and pray under the tree.\nCarly: Recently the government brought in some flamingos here, as the environment supports their growth and development well. They are believed to make the scenery livelier and more beautiful.\nCarly: Although there are many exotic animals in the garden, swans are still the most popular animal here. They seem to be everywhere, and it was said that Barton thought that they were a gift from the heavens.\nCarly: It was forbidden to kill or hurt any of these animals in his time.\nBefore you hear the rest of the talk, you have some time to look at questions 18 to 20.\nCarly: Now let’s take a look at other interesting places this site has to offer.\nCarly: Away from the backyard there is a gallery just at the right side of the road, a few feet from the entrance (C), and there is usually a history exhibition every week.\nCarly: Halfway down the path to the east of the toilet, we have the woodland (F), and the area is just beautiful. Barton decided to have it just because he loved the view.\nCarly: If you keep walking down the path in front of you to the west of the site, you will see a large gift shop beside the toilet (E). It has a large collection of handicrafts.\nCarly: These handicrafts are not actually made by Barton himself, but are imitations of his artistic works. As you have heard enough about this man, we would now proceed to see these things for ourselves."
+  },
+  {
+   "id": "cdi-listening-63-part-3",
+   "title": "Part 3",
+   "context": "Section 3. You will hear two students, Alice and Tim, talking about the lectures they have had recently.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose THREE letters, A–G.",
+     "title": "Which THREE kinds of help did both Tim and Alice get from their mentor?",
+     "options": [
+      {
+       "key": "A",
+       "text": "building up confidence"
+      },
+      {
+       "key": "B",
+       "text": "preparation for exams"
+      },
+      {
+       "key": "C",
+       "text": "preparation for seminars"
+      },
+      {
+       "key": "D",
+       "text": "course selection"
+      },
+      {
+       "key": "E",
+       "text": "information about the subjects"
+      },
+      {
+       "key": "F",
+       "text": "advice about future career"
+      },
+      {
+       "key": "G",
+       "text": "suggestions on conducting experiments"
+      }
+     ],
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "A",
+        "B",
+        "D"
+       ],
+       "explanation": "Both grew in confidence: Alice “wasn’t particularly confident before starting” and Tim says “I felt the same way, but with help from Mr Jarvis, I’m growing in self-confidence.” Both were helped with exams: “Mr Jarvis has been coaching me in this respect” — “I’m grateful for his help in this respect too.” Both discussed course choice: “I did discuss with him some options for next semester, which course I might choose”, and the tutor “suggested I should continue studying in this field.”"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "A",
+        "B",
+        "D"
+       ],
+       "explanation": "Both grew in confidence: Alice “wasn’t particularly confident before starting” and Tim says “I felt the same way, but with help from Mr Jarvis, I’m growing in self-confidence.” Both were helped with exams: “Mr Jarvis has been coaching me in this respect” — “I’m grateful for his help in this respect too.” Both discussed course choice: “I did discuss with him some options for next semester, which course I might choose”, and the tutor “suggested I should continue studying in this field.”"
+      },
+      {
+       "n": 23,
+       "answer": [
+        "A",
+        "B",
+        "D"
+       ],
+       "explanation": "Both grew in confidence: Alice “wasn’t particularly confident before starting” and Tim says “I felt the same way, but with help from Mr Jarvis, I’m growing in self-confidence.” Both were helped with exams: “Mr Jarvis has been coaching me in this respect” — “I’m grateful for his help in this respect too.” Both discussed course choice: “I did discuss with him some options for next semester, which course I might choose”, and the tutor “suggested I should continue studying in this field.”"
+      }
+     ]
+    },
+    {
+     "kind": "mcq",
+     "instructions": "Choose the correct answer.",
+     "questions": [
+      {
+       "n": 24,
+       "text": "What do they think about the essay writing?",
+       "options": [
+        {
+         "key": "A",
+         "text": "It’s easier than expected."
+        },
+        {
+         "key": "B",
+         "text": "It’s as difficult as they have expected."
+        },
+        {
+         "key": "C",
+         "text": "It’s harder than expected."
+        }
+       ],
+       "answer": [
+        "B"
+       ],
+       "explanation": "“I thought it can be difficult, and it is actually, but I’m just able to deal with it” — as difficult as expected."
+      },
+      {
+       "n": 25,
+       "text": "Why does Alice think it is difficult to learn economics?",
+       "options": [
+        {
+         "key": "A",
+         "text": "because it’s her first time to learn economics"
+        },
+        {
+         "key": "B",
+         "text": "because she is not good at numbers"
+        },
+        {
+         "key": "C",
+         "text": "because she is not interested in it"
+        }
+       ],
+       "answer": [
+        "A"
+       ],
+       "explanation": "“I’ve had no previous experience in economics, so this is all new ground for me.”"
+      }
+     ]
+    },
+    {
+     "kind": "gap-box",
+     "instructions": "What do Alice and Tim think of the course? Choose the correct answer for each item and move it into the gap.",
+     "options": [
+      {
+       "key": "A",
+       "text": "Only Alice"
+      },
+      {
+       "key": "B",
+       "text": "Only Tim"
+      },
+      {
+       "key": "C",
+       "text": "Both Alice and Tim"
+      }
+     ],
+     "template": "Aspects of the course\nput theory into practice [[26]]\nhave networking opportunity [[27]]\nhave experience of working in large organizations [[28]]\nhave communication skills [[29]]\nidentify a career plan [[30]]\nOpinions",
+     "questions": [
+      {
+       "n": 26,
+       "answer": [
+        "A"
+       ],
+       "explanation": "Alice complains theory has “no practical application”; Tim disagrees, so only Alice."
+      },
+      {
+       "n": 27,
+       "answer": [
+        "C"
+       ],
+       "explanation": "Alice praises the chance to “expand our networks” and Tim has met “many successful economists and businessmen” — both."
+      },
+      {
+       "n": 28,
+       "answer": [
+        "A"
+       ],
+       "explanation": "Alice lists the work-placement programme and excursions; Tim says “now I’m not so sure” — only Alice."
+      },
+      {
+       "n": 29,
+       "answer": [
+        "B"
+       ],
+       "explanation": "Alice feels there hasn’t been enough emphasis on communication; Tim believes “we’ve been taught the necessary skills” — only Tim."
+      },
+      {
+       "n": 30,
+       "answer": [
+        "C"
+       ],
+       "explanation": "Both agree Miss Hathaway’s classes showed the possibilities and “they have made it very clear what our options are.”"
+      }
+     ]
+    }
+   ],
+   "transcript": "Section 3. You will hear two students, Alice and Tim, talking about the lectures they have had recently.\nAlice: Tim, the lectures we’ve been attending recently have been very informative. I love the diversity of the information we’re learning. It gives a broad overall picture of the subject.\nTim: True, Alice. And it’s useful to have a mentor help us get the most out of our studies. I admit, I wasn’t particularly confident before starting this course. I felt my skills were not at the level required to succeed.\nAlice: I felt the same way, but with help from Mr Jarvis, I’m growing in self-confidence and ability every day (A — both). I’m grateful he has the time to spend one-on-one with the students.\nTim: Yeah, I improved a lot. I would like him to be able to give us more information on other subjects, however — he does give a very narrow view of economics.\nAlice: And I would like some advice on how to prepare for our seminars. I’m never sure what to expect. I’m focusing on passing my exams at the moment. Mr Jarvis has been coaching me in this respect. He saw I was worried and offered to help.\nTim: I’m grateful for his help in this respect too (B — both). I’ll think about what to study next year once I’ve passed. I’m not sure what I should do with my life. I can’t see myself pursuing a career in economics.\nAlice: You have many skills that could be useful in several different fields. You’ve talked with the tutor about it previously, haven’t you?\nTim: Not regarding my career. I did discuss with him some options for next semester, which course I might choose. He had some great advice.\nAlice: He suggested that I should continue studying in this field for now (D — both). I wonder if he might help me with the experiments I need to conduct. I should ask him.\nTim: Great idea. How do you feel about the essays we’ve been required to write?\nAlice: I thought it can be difficult, and it is actually, but I’m just able to deal with it (B — as difficult as expected). There are so many assignments to complete. If they were any harder, I don’t think I could manage.\nTim: I feel the same way. I was talking with John yesterday, and he believes the level of difficulty for our assignments could be higher — that they are too basic for him.\nAlice: I’m happy for him. I think this subject poses many challenges though.\nTim: Why do you say that? Your mathematical skills are very high. I heard you aced all your exams throughout high school.\nAlice: At first the subject didn’t pique my interest. I’ve had no previous experience in economics, so this is all new ground for me (A).\nBefore you hear the rest of the discussion, you have some time to look at questions 26 to 30.\nTim: Well, you seem to be succeeding despite your misgivings.\nAlice: My one concern is that we don’t have the opportunity to put the theory we learn into any practical use. We learn many formulas and strategies, but with no practical application, it feels like we are wasting our time.\nTim: I don’t agree. I feel that the project we worked on last month was very practical (A — only Alice). We had the chance to test our skills and ascertain the areas we need to improve.\nAlice: I will say that this course is giving us many opportunities to expand our networks, which will be of benefit when we have graduated and are seeking employment.\nTim: Yes, I’ve had the opportunity to meet many successful economists and businessmen, and hear how they rose to their positions through hard work and dedication (C — both). This has been of great value.\nAlice: Do you feel we have had enough opportunities to experience what it is like to work in a large organisation?\nTim: At first I believed that to be the case. Now I’m not so sure.\nAlice: I think we’ve been given ample opportunities, first through the work-placement programme, and then by means of the excursions we’ve taken to some of the most prominent financial institutions in the country (A — only Alice).\nAlice: I feel though that through the course we haven’t put enough emphasis on communication. Communication is vital in the workplace, especially in an environment where one mistake can have serious consequences.\nTim: But I believe we’ve been taught the necessary skills. Our lecture yesterday covered this topic thoroughly (B — only Tim).\nAlice: You mentioned you may not continue with economics. Is it perhaps because you believe we haven’t been shown the career possibilities in this field?\nTim: No, our classes with Miss Hathaway have been beneficial in showing the possibilities. It seems the teachers here would like us all to continue in our study.\nAlice: They take every opportunity to assist us in identifying what specific career to pursue. I agree. They have made it very clear what our options are, which I’m thankful for (C — both)."
+  },
+  {
+   "id": "cdi-listening-63-part-4",
+   "title": "Part 4",
+   "context": "Section 4. You will hear a man from a tax agency introducing taxation.",
+   "speakers": [],
+   "script": [],
+   "groups": [
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": 1,
+     "allowNumber": true,
+     "title": "Introduction to Taxation",
+     "template": "To certify income\n- enough [[31]] is needed, including:\n- wage statements\n- independent freelancer statements\n- invoices\n- [[32]] statements\nA tax year\n- starts from [[33]]\n- requires a statement of employment from [[34]]\nPenalty for failing to pay tax\n- the maximum amount is $ [[35]]\nTips\n- Tax rate will be changed when buying a [[36]]\n- [[37]] for one single kind of tax is easier.\nOnline tax service\n- Information occupies small [[38]] space.\n- Fewer [[39]] are made.\n- A [[40]] is helpful to find the right kind of form.",
+     "questions": [
+      {
+       "n": 31,
+       "answer": [
+        "evidence"
+       ],
+       "explanation": "“Evidence that can confirm your actual income has to be adequate.”"
+      },
+      {
+       "n": 32,
+       "answer": [
+        "bank"
+       ],
+       "explanation": "“Apart from invoices, we also take bank statements.”"
+      },
+      {
+       "n": 33,
+       "answer": [
+        "April"
+       ],
+       "explanation": "“It runs from April to the end of March next year.”"
+      },
+      {
+       "n": 34,
+       "answer": [
+        "employers",
+        "employer"
+       ],
+       "explanation": "“You need to ask your employers to provide the employment statement.”"
+      },
+      {
+       "n": 35,
+       "answer": [
+        "3,000",
+        "3000",
+        "$3,000",
+        "$3000"
+       ],
+       "explanation": "“You may find that you will have to pay a penalty, up to $3,000 in some instances.”"
+      },
+      {
+       "n": 36,
+       "answer": [
+        "car"
+       ],
+       "explanation": "“When you purchase a new car during the tax period... work out the latest tax rate.”"
+      },
+      {
+       "n": 37,
+       "answer": [
+        "calculation",
+        "calculations"
+       ],
+       "explanation": "“The calculation will be more straightforward with just one type of tax.”"
+      },
+      {
+       "n": 38,
+       "answer": [
+        "storage"
+       ],
+       "explanation": "“The tax information won’t take much of the storage space.”"
+      },
+      {
+       "n": 39,
+       "answer": [
+        "mistakes",
+        "mistake"
+       ],
+       "explanation": "“Mistakes are less likely to happen, as the online tax preparation programs have safeguards.”"
+      },
+      {
+       "n": 40,
+       "answer": [
+        "questionnaire"
+       ],
+       "explanation": "“Complete a questionnaire, which will give you advice on which type of form you should fill in.”"
+      }
+     ]
+    }
+   ],
+   "transcript": "Section 4. You will hear a man from a tax agency introducing taxation.\nMr Dawkins: Hello all. Thank you for attending tonight’s presentation. I am Mr Dawkins from the Central Government Tax Agency, and I am here to provide you with information regarding filing and paying your taxes.\nMr Dawkins: First off, let me tell you that in preparing to file your taxes, evidence that can confirm your actual income has to be adequate. Then it should be submitted to the local authority.\nMr Dawkins: You can’t just guess what your income was, or you may be charged a large sum of penalty. Income can come in different forms, including wage statements and independent freelancer statements.\nMr Dawkins: Currently, apart from invoices, we also take bank statements. Our tax period usually lasts for one year. Different states have different policies, but here it runs from April to the end of March next year.\nMr Dawkins: All of your current supervisors within the tax period are required to provide you with a wage statement.\nMr Dawkins: If you have not received an annual wage statement within one month of the end of the fiscal year, you should contact us and we will request them to send this statement immediately.\nMr Dawkins: But you need to ask your employers to provide the employment statement, because that’s something we can’t help with. A failure to pay, along with the evasion of or resistance to taxation, is punishable by law.\nMr Dawkins: If you do not file an annual tax return, you may find that you will have to pay a penalty, up to $3,000 in some instances. So you’d better file your taxes promptly, since the government does not tolerate this.\nMr Dawkins: Everyone should make sure they file a tax return in a timely manner.\nBefore you hear the rest of the talk, you have some time to look at questions 36 to 40.\nMr Dawkins: Now I suppose you have known something about tax. They are very important. I hope you can always keep them in mind. And here are some random tips which are also helpful.\nMr Dawkins: When you purchase a new car during the tax period, please note that you will need to work out the latest tax rate and pay a line item tax for this.\nMr Dawkins: For those who just started getting to know tax filing, I do not recommend that you take multiple types of taxes into consideration at your first attempt. The calculation will be more straightforward with just one type of tax.\nMr Dawkins: Please know that most people use their computers to deal with their taxes. When using your computer to do your taxes, or subscribing to an online tax service, you will find many advantages that don’t exist when you do it at an office.\nMr Dawkins: One of the advantages of preparing your taxes online is that you can save whatever information you have gathered and then resume your preparations at another time.\nMr Dawkins: In doing this, since the tax information won’t take much of the storage space, you don’t have to worry about whether your computer will be able to accommodate the information you have gathered.\nMr Dawkins: Also, in doing your taxes online or in using an online tax service, you will find that mistakes are less likely to happen, as the online tax preparation programs have safeguards that prevent you from omitting required information.\nMr Dawkins: Generally, to begin working on your taxes, you will go to the tax office, inquire of the office workers and finally fill in some forms. But for now, you can go to our website and download some.\nMr Dawkins: If necessary, you can take some time to complete a questionnaire, which will give you advice on which type of form you should fill in. If there are any questions you cannot answer, you can call to speak to someone in person.\nMr Dawkins: Thank you for attending tonight’s presentation. My Central Government Tax Agency associates and I are always willing to help you with your tax preparation by answering any questions you might have."
+  }
+ ],
+ "audio": {
+  "file": "listening-63.mp3",
+  "durationSec": 1442,
+  "partStarts": [
+   46,
+   473,
+   787,
+   1131
+  ],
+  "questionTimes": {
+   "1": 157,
+   "2": 170,
+   "3": 188,
+   "4": 206,
+   "5": 290,
+   "6": 314,
+   "7": 345,
+   "8": 363,
+   "9": 383,
+   "10": 405,
+   "11": 558,
+   "12": 582,
+   "13": 609,
+   "14": 622,
+   "15": 647,
+   "16": 669,
+   "17": 683,
+   "18": 732,
+   "19": 741,
+   "20": 752,
+   "21": 840,
+   "22": 875,
+   "23": 908,
+   "24": 930,
+   "25": 960,
+   "26": 1005,
+   "27": 1027,
+   "28": 1060,
+   "29": 1075,
+   "30": 1099,
+   "31": 1188,
+   "32": 1212,
+   "33": 1212,
+   "34": 1244,
+   "35": 1257,
+   "36": 1324,
+   "37": 1337,
+   "38": 1376,
+   "39": 1387,
+   "40": 1415
+  }
+ }
+}

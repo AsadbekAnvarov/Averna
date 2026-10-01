@@ -53,6 +53,7 @@ export async function POST(req: NextRequest) {
   const test = await resolveAudioTest(testId);
   if (!test) return fail(404, "not_found", "Test topilmadi (u katalogdan olib tashlangan boʻlishi mumkin).");
   if (test.source === "legacy") return fail(400, "invalid", "Eski qisqa mashq testlari uchun audio yaratilmaydi.");
+  if (test.source === "cdi" || test.audio) return fail(400, "invalid", "CDI testlarida haqiqiy audio bor — TTS kerak emas.");
   if (!test.parts[partIndex]) return fail(400, "invalid", `Bu testda ${partIndex + 1}-qism yoʻq.`);
 
   const key = `${test.id}#${partIndex}`;

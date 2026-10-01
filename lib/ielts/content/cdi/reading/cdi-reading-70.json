@@ -1,0 +1,618 @@
+{
+ "format": "exam-v2",
+ "skill": "READING",
+ "id": "cdi-reading-70",
+ "title": "CDI Reading Test 70",
+ "description": "A full Academic Reading test from the CDI practice materials: History of the Globe Theatre; John Ray and the Study of Plants; Asian space: return of an Asian invention.",
+ "difficulty": "Medium",
+ "timeLimit": 60,
+ "topics": [
+  "History of the Globe Theatre",
+  "John Ray and the Study of Plants",
+  "Asian space: return of an Asian invention"
+ ],
+ "source": "cdi",
+ "parts": [
+  {
+   "id": "passage-1",
+   "title": "History of the Globe Theatre",
+   "subtitle": "The rise, fall and rebirth of London's most famous playhouse",
+   "paragraphs": [
+    {
+     "text": "The original Globe Theatre opened in autumn 1599 on the south bank of the River Thames, in London. It was one of several major theatres in the area, the others being the Swan, the Rose and the Hope. The Globe was the main playhouse of the Lord Chamberlain's Men, later called the King's Men, a theatrical company to which the playwright William Shakespeare belonged. Most of Shakespeare's post-1599 plays were staged at the Globe, including Julius Caesar, Macbeth, Othello, King Lear and Hamlet."
+    },
+    {
+     "text": "The Globe was built in 1576, using timber from an earlier theatre in Shoreditch, east London, by James Burbage, the father of one of the actors. Called simply The Theatre, this structure was taken down after a 20-year lease on its land expired, and the timber from it was then transported over the Thames to construct the Globe."
+    },
+    {
+     "text": "The Globe Theatre was highly successful. Since there was little artificial light, performances were held in the afternoon, usually beginning in May. Flags waving in the wind advertised plays by the King's Men, and all about the grounds of the theatre, playgoers would be buying merchandise and refreshments from stalls. People from all walks of life could enjoy the tragedies and comedies of Shakespeare. Both men and women would attend the plays, but the well-off would frequently wear masks to conceal their identity."
+    },
+    {
+     "text": "After years of success, the Globe was destroyed by fire on 29 June 1613, during a performance of Henry VIII. A theatrical cannon, set off during the performance, misfired, igniting the building's roof and wooden beams. According to one of the few surviving contemporary accounts of the event, no one was hurt except a man who put out his burning trousers with a bottle of ale. A new Globe was created by the theatre company on the foundations of its predecessor before Shakespeare's death in 1616."
+    },
+    {
+     "text": "However, after the Puritans gained control of Parliament, their campaign to enforce a higher standard of morality meant the end of the Globe. Their strict views gave rise to restrictions on many social activities, and like all the other theatres in London, the Globe was closed down in 1642. In 1644, the Puritans destroyed the Globe altogether to make room for housing. Its exact location was forgotten and remained unknown until remnants of its foundations were discovered in 1989 near a row of eighteenth-century buildings. There may be further remains under these buildings but they are themselves listed as historical buildings, and currently may not be disturbed by archaeologists."
+    },
+    {
+     "text": "The Globe's shape and size have been the subject of scholarly inquiry over the last two centuries. The evidence suggests that it was a three-storey, 100-foot-wide, open-air amphitheatre. It was probably a polygon in shape, with twenty sides. At the base of the stage there was an area called the 'pit', where spectators (called 'groundlings') would either stand or sit on the ground to watch the performance. They paid one penny to see the play, and the box into which they put their entrance fee gave rise to the term 'box office'."
+    },
+    {
+     "text": "A rectangular platform, also known as an 'apron stage', thrust out into the middle of the open-air yard. On this, there was a trap door for use by performers to enter from the 'cellarage' area beneath the stage. Large columns on either side of the stage supported a roof over the rear portion of the stage. This would have been constructed using thatch. The inner ceiling was called the 'heavens', and was possibly painted with images of the sky. An opening in the heavens enabled performers to descend, using some form of rope and harness."
+    },
+    {
+     "text": "The back wall of the stage had three doors on the first floor and a balcony on the second. The doors led into the 'tiring house' where the actors dressed and awaited their cue. The balcony was where the musicians performed and could also be used for scenes requiring an upper space, such as the balcony scene in Shakespeare's Romeo and Juliet. In addition, it could be used as the 'Lord's Room', where higher-paying audience members could be seated."
+    },
+    {
+     "text": "When the foundations of Shakespeare's Globe were discovered in London's Bankside district, public interest in building a modern version was reignited. Workers began construction in 1993, close to the site of the original. Completed in 1996, the current Globe Theatre was officially opened on 12 June 1997 with a production of Henry V. The reconstruction was carefully researched, so that the new building would be as faithful a replica as possible. It had the first thatched roof permitted in the city since the Great Fire of London in 1666. Modernisations include the addition of sprinklers on the roof to protect against fire. Due to modern health and safety regulations, only 1,300 people can attend a show, under half the estimated 3,000 of Shakespeare's time."
+    },
+    {
+     "text": "Tickets to stand in the open — no sitting allowed in this section — are available for every performance at £5 each. The only covered parts of the amphitheatre are the stage and the more expensive seated areas. Plays are normally performed between May and October, and in winter the theatre is used for educational purposes."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 1?",
+     "questions": [
+      {
+       "n": 1,
+       "text": "The Lord Chamberlain's Men performed plays only in the Globe Theatre.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “The Globe was the main playhouse of the Lord Chamberlain”"
+      },
+      {
+       "n": 2,
+       "text": "Recycled wood was used in the construction of the original Globe.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “using timber from an earlier theatre in Shoreditch”"
+      },
+      {
+       "n": 3,
+       "text": "Performances at the Globe were so popular that advance booking was necessary.",
+       "answer": [
+        "NOT GIVEN"
+       ]
+      },
+      {
+       "n": 4,
+       "text": "Some people who watched the plays tried to avoid recognition.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “the well-off would frequently wear masks to conceal their identity”"
+      },
+      {
+       "n": 5,
+       "text": "When the original Globe burned down, it was rebuilt on the same site.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “created by the theatre company on the foundations of its predecessor”"
+      },
+      {
+       "n": 6,
+       "text": "The Globe was the first theatre to be closed down by the Puritans.",
+       "answer": [
+        "NOT GIVEN"
+       ]
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the notes below.",
+     "answerRule": "Choose NO MORE THAN TWO WORDS AND/OR A NUMBER from the passage for each answer.",
+     "wordLimit": 2,
+     "allowNumber": true,
+     "title": "The Globe",
+     "template": "# Parts of the original Globe\n- The [[7]] — for members of the audience (one penny per person)\n- The apron stage — a protruding platform\n- The trap door — giving access to the stage from below\n- Roof made of [[8]]\n- The [[9]] — for performers to change into costumes\n- Balcony for the use of [[10]] , actors or wealthy spectators\n# The modern Globe\n- 1993–1996 — the modern Globe was built\n# The building\n- It was designed to be a mainly accurate replica\n- [[11]] were a new safety feature\n- Audience capacity was reduced by more than [[12]]\n# The performances\n- The price of outdoor tickets is fixed\n- Tickets for seats in the [[13]] spaces cost more\n- There are no performances during winter",
+     "questions": [
+      {
+       "n": 7,
+       "answer": [
+        "pit"
+       ],
+       "explanation": "The passage says: “an area called the 'pit', where spectators”"
+      },
+      {
+       "n": 8,
+       "answer": [
+        "thatch"
+       ],
+       "explanation": "The passage says: “This would have been constructed using thatch”"
+      },
+      {
+       "n": 9,
+       "answer": [
+        "tiring house"
+       ],
+       "explanation": "The passage says: “the 'tiring house' where the actors dressed”"
+      },
+      {
+       "n": 10,
+       "answer": [
+        "musicians"
+       ],
+       "explanation": "The passage says: “The balcony was where the musicians performed”"
+      },
+      {
+       "n": 11,
+       "answer": [
+        "sprinklers"
+       ],
+       "explanation": "The passage says: “the addition of sprinklers on the roof to protect against fire”"
+      },
+      {
+       "n": 12,
+       "answer": [
+        "half"
+       ],
+       "explanation": "The passage says: “only 1,300 people can attend a show, under half the estimated 3,000”"
+      },
+      {
+       "n": 13,
+       "answer": [
+        "covered"
+       ],
+       "explanation": "The passage says: “The only covered parts of the amphitheatre are the stage and the more expensive seated areas”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-2",
+   "title": "John Ray and the Study of Plants",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "The 17th-century English scholar and botanist John Ray was well aware that he lived through, and participated in, a profound revolution in the way people interacted with nature. In the preface to his Synopsis of British Plants, published in 1690, he gave thanks that he had been born at a time when traditional dependence on the teaching of the Greek philosopher Aristotle (384–322 BCE) had given way to a new philosophy, based on experiment and observation of the real world, that we now call science."
+    },
+    {
+     "label": "B",
+     "text": "Ray was born in 1627. His father was a village blacksmith, and his mother was also a respected member of the community, a healer who was an expert in folk medicine and the use of herbs to treat ailments. Ray must have stood out as an unusually bright boy among his schoolmates, and his talents were recognised by a church official, Samuel Covell, who had graduated from Cambridge University in 1600, and maintained his links with his university. Through his influence, Ray was admitted to Cambridge University in 1644 at the age of seventeen — a huge step for a village blacksmith's son. There he made a solid start, and quickly gained a reputation as a brilliant student. He studied the classics (Greek, Latin and Hebrew) and mathematics, but there was nothing yet we would now call science in the curriculum. After graduating in 1648, he became a minor member of staff at Trinity College, Cambridge. He was appointed Lecturer in Greek in 1651, Lecturer in Mathematics in 1653, and Lecturer in Humanities in 1655."
+    },
+    {
+     "label": "C",
+     "text": "Almost immediately after graduating, Ray also seems to have developed the interest to which he would devote the rest of his life: the study of the natural world. He explains this conversion into a naturalist — in particular into a botanist — in the preface to his first book, the Cambridge Catalogue of English Plants. Here Ray tells us that he suffered an illness in his early twenties, and was advised to take long walks and ride in the fresh air while recovering. While doing this, he became interested in the local flora, and finding nobody able to teach him, Ray investigated it for himself. He then went on to pass on the knowledge he acquired to others."
+    },
+    {
+     "label": "D",
+     "text": "By the mid-1650s, even the first-year students at Trinity College were able to identify the plants and flowers around Cambridge, as they were being taught unofficially — none of this was part of their formal education — by Ray. Many of them were the sons of landowners, and so had a natural, if amateurish, interest in country matters. But a few of them took his efforts to understand the natural world much more seriously. One of these, Francis Willughby, later played an important part in Ray's life."
+    },
+    {
+     "label": "E",
+     "text": "Having himself had no authority on the subject of plants on which to draw, Ray also started work on what would become his Cambridge Catalogue of English Plants. The work was not published until 1660 because, as Ray explained in the preface, he had to start from scratch:"
+    },
+    {
+     "text": "“I had first to become familiar with the literature, to compare the plants that I found with the pictures, and when there seemed to be a resemblance, to go fully into any unknown descriptions. Gaining skill by experience, I acquired at last the ability to recognise to what tribe and family similars could be assigned; this taught me to search for similarities and saved a vast deal of labour, which others would have spent in their difficulties. I was eager to make the most of this and was fortunate to share my enthusiasm with my friends...”"
+    },
+    {
+     "label": "F",
+     "text": "Ray's Cambridge Catalogue of English Plants was much more than a simple list of species. It gave the names of plants found in the area around Cambridge and included information about where they grew and how common they were. In doing this, Ray was producing something that would be of practical use to students and other readers interested in the local natural world. At the same time, the book showed his determination to describe plants accurately, on the basis of direct examination rather than reliance on old authorities. In this respect, it reflected the spirit of the new learning that Ray admired."
+    },
+    {
+     "label": "G",
+     "text": "Ray's studies of plants were only the beginning of a much larger ambition. With the support of Francis Willughby, he began to imagine a more comprehensive investigation of nature, one that would attempt to classify living things according to careful observation of their shared characteristics. This was an ambitious undertaking, especially at a time when many aspects of the natural world remained poorly described. Yet Ray believed that by collecting evidence systematically and comparing related forms, it would be possible to build a more reliable understanding of nature than scholars had possessed before."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 2 has seven paragraphs, A–G. Choose the correct heading for each paragraph from the list below, and drag it into the box next to the paragraph.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Ray's account of his working methods"
+      },
+      {
+       "key": "ii",
+       "text": "The botanical expert who inspired Ray"
+      },
+      {
+       "key": "iii",
+       "text": "A succession of academic achievements"
+      },
+      {
+       "key": "iv",
+       "text": "Ray's informal tuition"
+      },
+      {
+       "key": "v",
+       "text": "Ray's appreciation of his contemporary academic culture"
+      },
+      {
+       "key": "vi",
+       "text": "A childhood interest in plants"
+      },
+      {
+       "key": "vii",
+       "text": "Plans for a bold new project"
+      },
+      {
+       "key": "viii",
+       "text": "A description of the content of Ray's first book"
+      },
+      {
+       "key": "ix",
+       "text": "A change of direction for Ray"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "text": "Paragraph A",
+       "answer": [
+        "v"
+       ],
+       "explanation": "The passage says: “he gave thanks that he had been born at a time when traditional dependence on the teaching”"
+      },
+      {
+       "n": 15,
+       "text": "Paragraph B",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "The passage says: “He was appointed Lecturer in Greek in 1651, Lecturer in Mathematics in 1653”"
+      },
+      {
+       "n": 16,
+       "text": "Paragraph C",
+       "answer": [
+        "ix"
+       ],
+       "explanation": "The passage says: “Ray also seems to have developed the interest to which he would devote the rest of his life”"
+      },
+      {
+       "n": 17,
+       "text": "Paragraph D",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "The passage says: “they were being taught unofficially”"
+      },
+      {
+       "n": 18,
+       "text": "Paragraph E",
+       "answer": [
+        "i"
+       ],
+       "explanation": "The passage says: “I had first to become familiar with the literature”"
+      },
+      {
+       "n": 19,
+       "text": "Paragraph F",
+       "answer": [
+        "viii"
+       ],
+       "explanation": "The passage says: “It gave the names of plants found in the area around Cambridge”"
+      },
+      {
+       "n": 20,
+       "text": "Paragraph G",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "The passage says: “he began to imagine a more comprehensive investigation of nature”"
+      }
+     ]
+    },
+    {
+     "kind": "gap",
+     "instructions": "Complete the summary below.",
+     "answerRule": "Choose ONE WORD ONLY from the passage for each answer.",
+     "wordLimit": 1,
+     "title": "A New Approach to Knowledge",
+     "template": "John Ray was a scholar and self-taught botanist, whose work reflected the [[21]] that was taking place during the 17th century in people's way of thinking about the natural world. This new approach is the basis of the modern field of [[22]] . As Ray himself explained, his interest in plants was aroused after graduating, when he had to spend time outdoors after a period of [[23]] . He taught himself, and then recorded the knowledge he acquired in the Cambridge [[24]] of English Plants, which was published in 1660.",
+     "questions": [
+      {
+       "n": 21,
+       "answer": [
+        "revolution"
+       ],
+       "explanation": "The passage says: “a profound revolution in the way people interacted with nature”"
+      },
+      {
+       "n": 22,
+       "answer": [
+        "science"
+       ],
+       "explanation": "The passage says: “a new philosophy, based on experiment and observation of the real world, that we now call science”"
+      },
+      {
+       "n": 23,
+       "answer": [
+        "illness"
+       ],
+       "explanation": "The passage says: “Ray tells us that he suffered an illness in his early twenties”"
+      },
+      {
+       "n": 24,
+       "answer": [
+        "Catalogue"
+       ],
+       "explanation": "The passage says: “his first book, the Cambridge Catalogue of English Plants”"
+      }
+     ]
+    },
+    {
+     "kind": "mcq-multi",
+     "instructions": "Choose TWO letters, A–E.",
+     "title": "Which TWO of the following statements are true of Ray's early life?",
+     "options": [
+      {
+       "key": "A",
+       "text": "His teacher recommended that he should go to university."
+      },
+      {
+       "key": "B",
+       "text": "His school record was not exceptional in any way."
+      },
+      {
+       "key": "C",
+       "text": "He was helped by a former student of Cambridge University."
+      },
+      {
+       "key": "D",
+       "text": "His parents were both valued by the people in their local area."
+      },
+      {
+       "key": "E",
+       "text": "He originally planned to take up his father's occupation."
+      }
+     ],
+     "questions": [
+      {
+       "n": 25,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "The passage says: “his talents were recognised by a church official, Samuel Covell, who had graduated from Cambridge University in 1600” The passage says: “his mother was also a respected member of the community”"
+      },
+      {
+       "n": 26,
+       "answer": [
+        "C",
+        "D"
+       ],
+       "explanation": "The passage says: “his talents were recognised by a church official, Samuel Covell, who had graduated from Cambridge University in 1600” The passage says: “his mother was also a respected member of the community”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passage-3",
+   "title": "Asian space: return of an Asian invention",
+   "paragraphs": [
+    {
+     "label": "A",
+     "text": "Planet Earth is today circled by scores of satellites, orbiting like tiny moons after being sent aloft by rockets to perform a variety of useful tasks. Their story began long ago but rocket technology has progressed considerably since the days when bamboo poles filled with gunpowder were first used in China as fireworks around 500 BC, and since the Sung dynasty when rockets were first used to repel invaders at the battle of Kaifeng (Kai-fung-fu) in AD 1232. In Asia in recent years there has been a dramatic growth in space activities both in the utilisation of space-based services and the production of satellites and launchers. This rapid expansion has led many analysts to predict that Asia will become an important provider of services in space."
+    },
+    {
+     "label": "B",
+     "text": "Worldwide there have been dramatic developments in space technology, and these have been eagerly embraced by Asian nations, which have found them to be especially adaptable for their particular problems. Asia, and Southeast Asia in particular, experiences recurrent large-scale environmental problems including storms and flooding, forest fires, and crop failures. The space application that has attracted the most attention in this region, therefore, is remote sensing. Remote sensing satellites, equipped with instruments to take photographs of the ground using different wavelengths, provide essential information about natural ground cover and planted crops, and this information facilitates work in environmental management, disaster prevention, and sustainable planning."
+    },
+    {
+     "label": "C",
+     "text": "Imaginative and innovative applications of satellites are constantly being explored, with potentially revolutionary effects. To take a specific example, small antennas no more than 40 cm across and 15 cm high are embedded in slabs of stone, which are themselves embedded in the earth. Every 15 seconds a global positioning system measures the distance between each antenna and a satellite. The data is transferred to one of 200 monitoring stations around the world and provides a constant flow of information invaluable for the prediction of earthquakes. Asian nations have also eagerly embraced satellite technology in the field of health and telemedicine: patients in remote rural communities can be diagnosed and carers can be advised on medical treatment. Such things as pictures of the patient, pulse rate, temperature, blood pressure and blood oxygen can be monitored and transmitted to doctors thousands of kilometres away for reliable diagnosis and advice. There have also been beneficial advances in distance education programmes, and agricultural planning and production have improved."
+    },
+    {
+     "label": "D",
+     "text": "Access to the benefits of satellites was not always as straightforward as it might seem today. For decades, Japan has been the dominant space power in Asia. To achieve its pre-eminence, however, Japan had to face serious time-consuming technological challenges and high risks through many trials. This experimentation was problematic at first because Japan based its satellite manufacturing on traditional and very expensive Western military technological practices."
+    },
+    {
+     "label": "E",
+     "text": "In more recent times, fundamental changes in satellites have dramatically reduced costs. ‘Small satellites’ have given Asian countries a way to develop low-cost satellite technology and rapidly establish a space capability of their own. The new entrants in the industry are able to shorten the time for trials by as much as a decade or more. Small satellites, which have opened the space age to developing countries, are classified in three groups: nano satellites have a mass less than 10 kg, micro satellites range from 10 to 100 kg and mini satellites are between 100 and 500 kg. Such is the appeal of small satellites that low-cost launcher rockets are being developed exclusively for mini satellites. The saving is even greater for nano and micro satellites, which can be launched as secondary passengers, hitching a ride on large launchers with payload to spare. Small satellites allow individual countries to select more convenient orbits for their own particular purposes. A low polar orbit is good for mapping. As the earth rotates from west to east, the satellite orbits north and south allowing it repeatedly to photograph any chosen parts of the Earth's surface."
+    },
+    {
+     "label": "F",
+     "text": "Space technology in Asia has been facilitated by the competitive commercial sector and its production of low-cost mini satellites. The globalisation of industrial and financial markets has improved avenues for transferring technological innovation, and the availability of ready-made commercial technology may well result in a highly competitive Asian satellite industry. The laws of physics are the same all over the world, and the principles of electronics and mechanics know no political or cultural boundaries. However, engineering practice and management practice are not so readily transferable but are influenced by education, culture and history. These practices have an effect on costs, lead times, product designs and, eventually, international sales. Nevertheless, it can be expected that the acquisition of technical expertise, combined with the world-renowned Japanese manufacturing and management techniques, will soon produce world-class satellites at reduced costs."
+    }
+   ],
+   "groups": [
+    {
+     "kind": "matching",
+     "instructions": "Reading Passage 3 has six sections, A–F. Choose the correct heading for each section from the list of headings below.",
+     "title": "List of Headings",
+     "options": [
+      {
+       "key": "i",
+       "text": "Asian need for new space technology"
+      },
+      {
+       "key": "ii",
+       "text": "Independence through the greater adaptability of satellites"
+      },
+      {
+       "key": "iii",
+       "text": "Ancient inventions linked to the future"
+      },
+      {
+       "key": "iv",
+       "text": "An early start but slow initial progress"
+      },
+      {
+       "key": "v",
+       "text": "Non-technical factors affecting Asia's entry to the space age"
+      },
+      {
+       "key": "vi",
+       "text": "Application of rocket technology to warfare"
+      },
+      {
+       "key": "vii",
+       "text": "New and wide-ranging uses of space technology"
+      },
+      {
+       "key": "viii",
+       "text": "The difficulty of identifying types of satellites"
+      }
+     ],
+     "questions": [
+      {
+       "n": 27,
+       "text": "Section A",
+       "answer": [
+        "iii"
+       ],
+       "explanation": "The passage says: “bamboo poles filled with gunpowder were first used in China as fireworks”"
+      },
+      {
+       "n": 28,
+       "text": "Section B",
+       "answer": [
+        "i"
+       ],
+       "explanation": "The passage says: “Asia, and Southeast Asia in particular, experiences recurrent large-scale environmental problems”"
+      },
+      {
+       "n": 29,
+       "text": "Section C",
+       "answer": [
+        "vii"
+       ],
+       "explanation": "The passage says: “Imaginative and innovative applications of satellites are constantly being explored”"
+      },
+      {
+       "n": 30,
+       "text": "Section D",
+       "answer": [
+        "iv"
+       ],
+       "explanation": "The passage says: “Japan had to face serious time-consuming technological challenges and high risks”"
+      },
+      {
+       "n": 31,
+       "text": "Section E",
+       "answer": [
+        "ii"
+       ],
+       "explanation": "The passage says: “given Asian countries a way to develop low-cost satellite technology”"
+      },
+      {
+       "n": 32,
+       "text": "Section F",
+       "answer": [
+        "v"
+       ],
+       "explanation": "The passage says: “engineering practice and management practice are not so readily transferable”"
+      }
+     ]
+    },
+    {
+     "kind": "matching",
+     "instructions": "Complete each sentence with the correct ending, A–G, below.",
+     "title": "List of Endings",
+     "options": [
+      {
+       "key": "A",
+       "text": "they are seeking plants with medicinal value"
+      },
+      {
+       "key": "B",
+       "text": "they can take pictures of any area required"
+      },
+      {
+       "key": "C",
+       "text": "they depend on what has happened in the past"
+      },
+      {
+       "key": "D",
+       "text": "they do not take up a lot of space aboard rockets"
+      },
+      {
+       "key": "E",
+       "text": "they have locations that are difficult to reach"
+      },
+      {
+       "key": "F",
+       "text": "they help students with their studies"
+      },
+      {
+       "key": "G",
+       "text": "they suffer from such things as forest fires"
+      }
+     ],
+     "questions": [
+      {
+       "n": 33,
+       "text": "Southeast Asian countries wish to photograph vegetation from above because",
+       "answer": [
+        "G"
+       ],
+       "explanation": "The passage says: “provide essential information about natural ground cover and planted crops”"
+      },
+      {
+       "n": 34,
+       "text": "Asian countries are interested in advances in medical treatment using satellite technology because",
+       "answer": [
+        "E"
+       ],
+       "explanation": "The passage says: “patients in remote rural communities can be diagnosed”"
+      },
+      {
+       "n": 35,
+       "text": "Satellites in polar orbits are useful for mapping because",
+       "answer": [
+        "B"
+       ],
+       "explanation": "The passage says: “allowing it repeatedly to photograph any chosen parts of the Earth's surface”"
+      },
+      {
+       "n": 36,
+       "text": "Management practices are not universally adaptable because",
+       "answer": [
+        "C"
+       ],
+       "explanation": "The passage says: “but are influenced by education, culture and history”"
+      }
+     ]
+    },
+    {
+     "kind": "tfng",
+     "instructions": "Do the following statements agree with the information given in Reading Passage 3?",
+     "questions": [
+      {
+       "n": 37,
+       "text": "In 500 BC rockets were used in battle in China.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “rockets were first used to repel invaders at the battle of Kaifeng”"
+      },
+      {
+       "n": 38,
+       "text": "The distance between satellites and antennas on Earth can be used to detect movement in the Earth's crust.",
+       "answer": [
+        "TRUE"
+       ],
+       "explanation": "The passage says: “provides a constant flow of information invaluable for the prediction of earthquakes”"
+      },
+      {
+       "n": 39,
+       "text": "Distance education has increased literacy levels in Asia.",
+       "answer": [
+        "NOT GIVEN"
+       ]
+      },
+      {
+       "n": 40,
+       "text": "Commercial competition prevents technological innovation spreading.",
+       "answer": [
+        "FALSE"
+       ],
+       "explanation": "The passage says: “The globalisation of industrial and financial markets has improved avenues for transferring technological innovation”"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

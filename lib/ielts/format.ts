@@ -247,10 +247,62 @@ export function estimatePartSeconds(part: HasScript): number {
   return Math.round((words / 150) * 60 + pauses + 45);
 }
 
-export function estimateListeningMinutes(test: { parts: HasScript[] }, partIndex?: number): number {
+/** Timing of one real recording for the whole test (ExamListeningTest.audio / ClientListeningTest.recording). */
+export type RecordingTiming = { durationSec?: number; partStarts?: number[] };
+
+/**
+ * Where each part sits in a test's one real recording (seconds, [start, end)).
+ * Part 1 starts at 0 (the file's opening announcement belongs to it); the last
+ * part ends with the file. Without usable `partStarts` the length is split
+ * evenly (`estimated`). Null when neither the length nor the part starts are known.
+ */
+export function recordingWindows(
+  rec: RecordingTiming | undefined,
+  partCount: number
+): { windows: { start: number; end: number }[]; estimated: boolean } | null {
+  if (!rec || partCount < 1) return null;
+  const dur = Number(rec.durationSec);
+  const length = Number.isFinite(dur) && dur > 0 ? dur : null;
+  const s = rec.partStarts;
+  const valid =
+    Array.isArray(s) &&
+    s.length === partCount &&
+    s.every((t, i) => typeof t === "number" && Number.isFinite(t) && t >= 0 && (i === 0 || t > s[i - 1])) &&
+    (length == null || s[s.length - 1] < length);
+  if (valid) {
+    const starts = s as number[];
+    return {
+      windows: starts.map((t, i) => ({ start: i === 0 ? 0 : t, end: i + 1 < starts.length ? starts[i + 1] : length ?? Infinity })),
+      estimated: false,
+    };
+  }
+  if (length == null) return null;
+  const step = length / partCount;
+  return {
+    windows: Array.from({ length: partCount }, (_, i) => ({ start: i * step, end: i + 1 === partCount ? length : (i + 1) * step })),
+    estimated: true,
+  };
+}
+
+/**
+ * Minutes for a run: the audio (a real recording's length when the test has
+ * one, else the browser-voice estimate of the scripts) plus the time to check
+ * answers (2 min for a full test, 1 for one part).
+ */
+export function estimateListeningMinutes(
+  test: { parts: HasScript[]; audio?: RecordingTiming; recording?: RecordingTiming },
+  partIndex?: number
+): number {
+  const review = partIndex == null ? LISTENING_FULL.reviewMinutes * 60 : 60;
+  const rec = test.recording ?? test.audio;
+  const recWindows = recordingWindows(rec, test.parts.length);
+  if (recWindows && Number(rec?.durationSec) > 0) {
+    const w = partIndex == null ? null : recWindows.windows[partIndex];
+    const secs = w ? w.end - w.start : Number(rec?.durationSec);
+    if (Number.isFinite(secs) && secs > 0) return Math.max(1, Math.round((secs + review) / 60));
+  }
   const parts = partIndex == null ? test.parts : test.parts.slice(partIndex, partIndex + 1);
   const secs = parts.reduce((s, p) => s + estimatePartSeconds(p), 0);
-  const review = partIndex == null ? LISTENING_FULL.reviewMinutes * 60 : 60;
   return Math.max(1, Math.round((secs + review) / 60));
 }
 
