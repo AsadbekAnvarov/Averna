@@ -1,8 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BarChart3, BookOpen, Calendar, CheckCircle2, ChevronRight, Clock } from "lucide-react";
+import { ArrowRight, BarChart3, BookOpen, Calendar, CheckCircle2, ChevronRight, Clock, PartyPopper } from "lucide-react";
 import Link from "next/link";
 import { cn, formatDate } from "@/lib/utils";
+import { homeworkCounts, type HomeworkCounts } from "@/lib/dashboard/homework";
 import { examHomeworkHref } from "@/lib/homework/exam-homework";
 import { EXAM_KIND_INFO, dueState, examHomeworkLabel, examResultHref, isLibraryKind } from "@/lib/homework/library-shared";
 
@@ -35,6 +36,8 @@ interface UpcomingHomeworkProps {
     /** The student's submission, when the caller includes done homework. */
     submission?: { band: number | null; testId: string | null } | null;
   }>;
+  /** Overdue / upcoming totals; pass them when `homework` is truncated. Computed from `homework` when absent. */
+  counts?: HomeworkCounts;
 }
 
 const getModuleColor = (module: string) => {
@@ -52,27 +55,37 @@ const getModuleColor = (module: string) => {
   }
 };
 
-export function UpcomingHomework({ homework }: UpcomingHomeworkProps) {
+export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
   if (homework.length === 0) {
     return (
       <Card className="glass border-averna-primary/30 animate-fade-in">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-averna-neon" />
-            Upcoming Homework
+            Homework
           </CardTitle>
           <CardDescription>Your pending assignments</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="text-center py-8 text-gray-400">
-            <BookOpen className="h-12 w-12 mx-auto mb-3 opacity-50" />
-            <p>No upcoming homework</p>
-            <p className="text-sm mt-1">Check back later for new assignments</p>
+            <PartyPopper className="h-12 w-12 mx-auto mb-3 text-averna-neon opacity-70" aria-hidden />
+            <p className="font-semibold text-white">All caught up</p>
+            <p className="text-sm mt-1">No homework right now. A short practice keeps your streak going.</p>
+            <Link
+              href="/learning"
+              className="mt-4 inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-averna-primary px-4 text-sm font-semibold text-white transition-colors hover:bg-averna-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon"
+            >
+              Practice something
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
           </div>
         </CardContent>
       </Card>
     );
   }
+
+  // Counts come from the caller when the list is truncated; otherwise count what we have (unsubmitted only).
+  const { overdue, upcoming } = counts ?? homeworkCounts(homework.filter((hw) => !hw.submission));
 
   return (
     <Card className="glass border-averna-primary/30 animate-fade-in">
@@ -81,16 +94,20 @@ export function UpcomingHomework({ homework }: UpcomingHomeworkProps) {
           <div>
             <CardTitle className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-averna-neon" />
-              Upcoming Homework
+              Homework
             </CardTitle>
-            <CardDescription>{homework.length} pending assignment{homework.length !== 1 ? 's' : ''}</CardDescription>
+            <CardDescription>
+              {overdue > 0
+                ? `${upcoming} upcoming · ${overdue} overdue`
+                : `${upcoming} pending assignment${upcoming !== 1 ? "s" : ""}`}
+            </CardDescription>
           </div>
-          <Link href="/homework">
-            <Button variant="ghost" size="sm" className="text-averna-neon hover:bg-averna-primary/20">
-              View All
-              <ChevronRight className="h-4 w-4 ml-1" />
-            </Button>
-          </Link>
+          <Button asChild variant="ghost" size="sm" className="min-h-[36px] text-averna-neon hover:bg-averna-primary/20">
+            <Link href="/homework">
+              View all
+              <ChevronRight className="h-4 w-4 ml-1" aria-hidden />
+            </Link>
+          </Button>
         </div>
       </CardHeader>
       <CardContent>

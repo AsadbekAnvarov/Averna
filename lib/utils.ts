@@ -501,6 +501,12 @@ export function tashkentWeekday(now: Date = new Date()): number {
   return DAY_TOKENS[wd] ?? new Date(now).getDay();
 }
 
+/** Monday 00:00 in Tashkent of the week containing `now` (weeks run Monday–Sunday). Tashkent has no DST. */
+export function tashkentWeekStart(now: Date = new Date()): Date {
+  const daysSinceMonday = (tashkentWeekday(now) + 6) % 7;
+  return new Date(tashkentDayStart(now).getTime() - daysSinceMonday * 86_400_000);
+}
+
 export const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 

@@ -1,5 +1,4 @@
-import { auth, signOut } from "@/lib/auth";
-import { db } from "@/lib/db";
+import { signOut } from "@/lib/auth";
 import { Logo } from "@/components/logo";
 import { NotificationBell } from "@/components/notification-bell";
 import { TashkentClock } from "@/components/tashkent-clock";
@@ -15,15 +14,13 @@ interface DashboardHeaderProps {
   tools?: React.ReactNode;
 }
 
-export async function DashboardHeader({ user, tools }: DashboardHeaderProps) {
-  // Always read the freshest avatar from the DB so it updates everywhere
-  const session = await auth();
-  let image = user.image ?? null;
-  if (session?.user?.id) {
-    const u = await db.user.findUnique({ where: { id: session.user.id }, select: { image: true } });
-    image = u?.image ?? image;
-  }
-
+/**
+ * Student dashboard header: logo, page tools, clock, notifications and the
+ * avatar menu. The caller (app/dashboard/layout.tsx) passes a fresh user row,
+ * read from the DB in this same request, so the avatar is used as-is with no
+ * second lookup.
+ */
+export function DashboardHeader({ user, tools }: DashboardHeaderProps) {
   return (
     <header className="flex items-center gap-3 mb-4 lg:mb-6 animate-fade-in">
       {/* The mobile top app bar already shows the brand — no duplicate logo on phones. */}
@@ -34,7 +31,8 @@ export async function DashboardHeader({ user, tools }: DashboardHeaderProps) {
       <div className="ml-auto lg:ml-0 flex items-center gap-2">
         <TashkentClock />
         <NotificationBell />
-        <UserAvatarDropdown user={{ ...user, image }} role="STUDENT" />
+        {/* Only the fields the client menu needs: the caller's row is the full user record. */}
+        <UserAvatarDropdown user={{ name: user.name, email: user.email, image: user.image }} role="STUDENT" />
       </div>
 
       {/* Hidden sign-out form for the dropdown */}

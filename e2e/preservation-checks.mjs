@@ -11,9 +11,10 @@
  *
  * Scenarios (snapshot = DOM path + computed colours, borders, shadows and box of every visible
  * element under the page content, or under .exam-shell on exams):
- *   dark-desktop  1440×900  student dashboard, Reading + Listening test, teacher and admin pages → full identity
+ *   dark-desktop  1440×900  Reading + Listening test, teacher and admin pages → full identity
  *   dark-phone    390×844   the same pages → colours identical for elements present in both (sizes may change)
- *   light-desktop 1440×900  non-exam dashboards of the three roles → full identity
+ *   light-desktop 1440×900  teacher and admin dashboards → full identity
+ * (The student dashboard is intentionally redesigned on this branch and not compared; see PAGES.)
  * Extra checks in --compare (no baseline): Reading test at sampled widths 1024–1920 keeps the panes side
  * by side and the header text-size control visible (3.5); on 390×844 inputs use 16px (3.12) and the
  * bottom tab bar has 5 tabs for every role (3.10).
@@ -58,10 +59,13 @@ const PROPS = ["background-color", "color", "border-color", "box-shadow", "outli
 const COLOUR = [1, 2, 3, 4, 5, 6];
 const GEOMETRY = [7, 8, 9, 10];
 
-/** A subset of PAGES in e2e/screens.mjs, plus the first Reading / Listening practice test. */
+/**
+ * A subset of PAGES in e2e/screens.mjs, plus the first Reading / Listening practice test.
+ * The student dashboard is not compared: it is intentionally redesigned on this branch (URL-driven
+ * tabs, only the active tab rendered), so its baseline from the merge-base no longer applies.
+ */
 const PAGES = {
   student: [
-    ["dashboard", "/dashboard"],
     ["reading-test", { exam: "reading" }],
     ["listening-test", { exam: "listening" }],
   ],
@@ -84,7 +88,9 @@ const SCENARIOS = [
     theme: "light",
     phone: false,
     compare: "full",
-    pages: { student: [PAGES.student[0]], teacher: [PAGES.teacher[0]], admin: [PAGES.admin[0]] },
+    // No student page: the dashboard is redesigned (see PAGES) and the light exam screens are
+    // intentionally different, so PAGES.student[0] (now the Reading test) must not be compared here.
+    pages: { student: [], teacher: [PAGES.teacher[0]], admin: [PAGES.admin[0]] },
   },
 ];
 
@@ -270,6 +276,9 @@ function diff(base, cur, mode) {
 
 async function runScenario(browser, sc) {
   for (const [role, pages] of Object.entries(sc.pages)) {
+    // A role with nothing to snapshot and no extra check in this scenario needs no sign-in.
+    const checks = MODE === "compare" && ((sc.id === "dark-desktop" && role === "student") || sc.id === "dark-phone");
+    if (!pages.length && !checks) continue;
     const context = await newContext(browser, role, sc);
     try {
       for (const [name, target] of pages) {
