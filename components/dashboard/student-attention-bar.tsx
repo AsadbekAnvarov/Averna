@@ -57,7 +57,9 @@ export async function StudentAttentionBar({
   return (
     <nav
       aria-label="Focus today"
-      className="no-scrollbar -mx-4 flex items-center gap-2 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:gap-2.5 sm:overflow-visible sm:px-0"
+      // Phones: horizontal scroll with a right-edge fade as a "more" hint; pr-10 lets the
+      // last chip scroll fully out of the faded zone. sm+: wrapped row, no mask.
+      className="no-scrollbar -mx-4 flex items-center gap-2 overflow-x-auto pl-4 pr-10 [mask-image:linear-gradient(to_right,#000_calc(100%-2.5rem),transparent)] sm:mx-0 sm:flex-wrap sm:gap-2.5 sm:overflow-visible sm:px-0 sm:pr-0 sm:[mask-image:none]"
     >
       <span className="shrink-0 text-sm text-gray-400 font-medium flex items-center gap-1.5">
         <Sparkles className="h-4 w-4 text-averna-neon" aria-hidden /> Focus today:

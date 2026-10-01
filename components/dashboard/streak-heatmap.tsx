@@ -48,39 +48,43 @@ export async function StreakHeatmap({ studentId }: { studentId: string }) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div
-          role="img"
-          aria-label={heatmapSummary(activeDays, total)}
-          className="grid w-full max-w-[40rem] grid-cols-[auto_repeat(12,minmax(0,1fr))] gap-1"
-        >
-          {ROW_LABELS.map((label, row) => [
-            <span
-              key={`label-${row}`}
-              aria-hidden="true"
-              className="flex items-center pr-1 text-[10px] leading-none text-gray-500"
-            >
-              {label}
-            </span>,
-            ...weeks.map((week) => {
-              const c = week[row];
-              return (
-                <div
-                  key={c.key}
-                  aria-hidden="true"
-                  title={c.future ? undefined : heatmapCellTitle(c)}
-                  className={cellClass(c)}
-                />
-              );
-            }),
-          ])}
-        </div>
-        <div className="flex items-center gap-1 mt-3 text-[10px] text-gray-500">
-          <span>Less</span>
-          <span className="h-3 w-3 rounded-sm bg-white/5" />
-          <span className="h-3 w-3 rounded-sm bg-averna-neon/30" />
-          <span className="h-3 w-3 rounded-sm bg-averna-neon/60" />
-          <span className="h-3 w-3 rounded-sm bg-averna-neon" />
-          <span>More</span>
+        {/* Grid + legend share one centred, capped column: full width on phones,
+            compact and centred on wide cards (legend stays aligned to the grid's left edge). */}
+        <div className="mx-auto w-full max-w-[34rem]">
+          <div
+            role="img"
+            aria-label={heatmapSummary(activeDays, total)}
+            className="grid w-full grid-cols-[auto_repeat(12,minmax(0,1fr))] gap-1"
+          >
+            {ROW_LABELS.map((label, row) => [
+              <span
+                key={`label-${row}`}
+                aria-hidden="true"
+                className="flex items-center pr-1 text-[10px] leading-none text-gray-500"
+              >
+                {label}
+              </span>,
+              ...weeks.map((week) => {
+                const c = week[row];
+                return (
+                  <div
+                    key={c.key}
+                    aria-hidden="true"
+                    title={c.future ? undefined : heatmapCellTitle(c)}
+                    className={cellClass(c)}
+                  />
+                );
+              }),
+            ])}
+          </div>
+          <div className="flex items-center gap-1 mt-3 text-[10px] text-gray-500">
+            <span>Less</span>
+            <span className="h-3 w-3 rounded-sm bg-white/5" />
+            <span className="h-3 w-3 rounded-sm bg-averna-neon/30" />
+            <span className="h-3 w-3 rounded-sm bg-averna-neon/60" />
+            <span className="h-3 w-3 rounded-sm bg-averna-neon" />
+            <span>More</span>
+          </div>
         </div>
       </CardContent>
     </Card>
