@@ -1,77 +1,78 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Flame } from "lucide-react";
 import { db } from "@/lib/db";
+import { BUDGETED_ACTIONS } from "@/lib/engine/xp-engine";
+import { buildHeatmap, heatmapCellTitle, heatmapRange, heatmapSummary, type HeatmapCell } from "@/lib/dashboard/heatmap";
 
-const DAYS = 84; // 12 weeks
+// Class names stay in this file: lib/ is outside Tailwind's content scan.
+const LEVEL_CLASS = ["bg-white/5", "bg-averna-neon/30", "bg-averna-neon/60", "bg-averna-neon"] as const;
+// Rows are Mon..Sun; only every other weekday is labelled to keep the column narrow.
+const ROW_LABELS = ["Mon", "", "Wed", "", "Fri", "", ""];
 
-function dateKey(d: Date): string {
-  return d.toISOString().slice(0, 10);
+function cellClass(c: HeatmapCell): string {
+  const fill = c.future ? "bg-transparent" : LEVEL_CLASS[c.level];
+  return `aspect-square rounded-[3px] ${fill}${c.today ? " ring-1 ring-averna-cyan/70" : ""}`;
 }
 
-function colorFor(count: number): string {
-  if (count <= 0) return "bg-white/5";
-  if (count === 1) return "bg-averna-neon/30";
-  if (count <= 3) return "bg-averna-neon/60";
-  return "bg-averna-neon";
-}
-
+/** Study activity per Tashkent day for the last 12 Monday–Sunday weeks. */
 export async function StreakHeatmap({ studentId }: { studentId: string }) {
-  const since = new Date();
-  since.setDate(since.getDate() - (DAYS - 1));
-  since.setHours(0, 0, 0, 0);
+  const now = new Date();
+  const { from } = heatmapRange(now);
 
   let logs: { createdAt: Date }[] = [];
   try {
+    // Real study only — the same filter the rest of the dashboard counts.
     logs = await db.activityLog.findMany({
-      where: { studentId, createdAt: { gte: since } },
+      where: { studentId, createdAt: { gte: from }, action: { in: BUDGETED_ACTIONS }, points: { gt: 0 } },
       select: { createdAt: true },
     });
   } catch {
     logs = [];
   }
 
-  const counts: Record<string, number> = {};
-  for (const l of logs) {
-    const k = dateKey(new Date(l.createdAt));
-    counts[k] = (counts[k] ?? 0) + 1;
-  }
-
-  // Build last 84 days, oldest -> newest, chunked into weeks (columns)
-  const cells: { key: string; count: number; label: string }[] = [];
-  for (let i = DAYS - 1; i >= 0; i--) {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    const k = dateKey(d);
-    cells.push({ key: k, count: counts[k] ?? 0, label: d.toLocaleDateString("en-GB") });
-  }
-  const weeks: typeof cells[] = [];
-  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
-
-  const activeDays = Object.keys(counts).length;
+  const { weeks, activeDays, total } = buildHeatmap(
+    logs.map((l) => new Date(l.createdAt)),
+    now,
+  );
 
   return (
     <Card className="glass border-averna-neon/30">
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
+        <CardTitle className="flex items-center justify-between gap-2">
           <span className="flex items-center gap-2 text-averna-neon">
-            <Flame className="h-5 w-5" /> Activity (last 12 weeks)
+            <Flame className="h-5 w-5" /> Study activity (last 12 weeks)
           </span>
-          <span className="text-sm font-normal text-gray-400">{activeDays} active days</span>
+          <span className="shrink-0 text-sm font-normal text-gray-400">
+            {activeDays} active {activeDays === 1 ? "day" : "days"}
+          </span>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex gap-1 overflow-x-auto pb-1">
-          {weeks.map((week, wi) => (
-            <div key={wi} className="flex flex-col gap-1">
-              {week.map((c) => (
+        <div
+          role="img"
+          aria-label={heatmapSummary(activeDays, total)}
+          className="grid w-full max-w-[40rem] grid-cols-[auto_repeat(12,minmax(0,1fr))] gap-1"
+        >
+          {ROW_LABELS.map((label, row) => [
+            <span
+              key={`label-${row}`}
+              aria-hidden="true"
+              className="flex items-center pr-1 text-[10px] leading-none text-gray-500"
+            >
+              {label}
+            </span>,
+            ...weeks.map((week) => {
+              const c = week[row];
+              return (
                 <div
                   key={c.key}
-                  title={`${c.label}: ${c.count} ${c.count === 1 ? "activity" : "activities"}`}
-                  className={`h-3.5 w-3.5 rounded-sm ${colorFor(c.count)}`}
+                  aria-hidden="true"
+                  title={c.future ? undefined : heatmapCellTitle(c)}
+                  className={cellClass(c)}
                 />
-              ))}
-            </div>
-          ))}
+              );
+            }),
+          ])}
         </div>
         <div className="flex items-center gap-1 mt-3 text-[10px] text-gray-500">
           <span>Less</span>
