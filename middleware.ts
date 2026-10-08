@@ -5,13 +5,13 @@ import { authConfig } from "@/lib/auth.config";
 // Edge-safe NextAuth instance (no Prisma / bcrypt imported here).
 const { auth } = NextAuth(authConfig);
 
-const PUBLIC_PREFIXES = ["/auth/signin", "/auth/signup", "/auth/error", "/about"];
+const PUBLIC_PREFIXES = ["/auth/signin", "/auth/signup", "/auth/error", "/auth/forgot-password", "/auth/reset-password", "/auth/verify-email", "/about"];
 
 function isPublicPath(pathname: string): boolean {
   // NOTE: the landing page "/" must be matched EXACTLY — using startsWith("/")
   // would match every path and disable auth protection for the whole app.
   return (
-    pathname === "/" ||
+    pathname === "/" || pathname === "/sw.js" || pathname === "/offline.html" || pathname === "/manifest.webmanifest" ||
     PUBLIC_PREFIXES.some((route) => pathname === route || pathname.startsWith(route + "/"))
   );
 }

@@ -3,6 +3,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
   reactStrictMode: true,
+  devIndicators: false,
   poweredByHeader: false,
   // (No ignoreBuildErrors / ignoreDuringBuilds: type and lint errors fail the
   // build and CI instead of reaching production.)
@@ -19,6 +20,12 @@ const nextConfig = {
       { source: "/achievements", destination: "/progress/achievements", permanent: true },
       { source: "/leagues", destination: "/rankings/leagues", permanent: true },
       { source: "/team-challenge", destination: "/rankings/teams", permanent: true },
+    ];
+  },
+  async headers() {
+    return [
+      { source: "/auth/:path*", headers: [{ key: "Referrer-Policy", value: "no-referrer" }, { key: "Cache-Control", value: "no-store" }] },
+      { source: "/:path*", headers: [{ key: "X-Content-Type-Options", value: "nosniff" }, { key: "Permissions-Policy", value: "camera=(), geolocation=(), microphone=(self)" }] },
     ];
   },
   images: {

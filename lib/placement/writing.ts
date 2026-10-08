@@ -72,7 +72,7 @@ export async function assessPlacementWriting(o: {
   let a: WritingAssessment | null = null;
   let assessedBy: "ai" | "heuristic" = "heuristic";
 
-  if (words >= MIN_AI_WORDS && hasOpenAI() && guardAi(o.userId, "placement").ok) {
+  if (words >= MIN_AI_WORDS && hasOpenAI() && (await guardAi(o.userId, "placement")).ok) {
     const task =
       `${o.prompt.prompt}\n\n` +
       `(Placement test writing sample: the candidate had 15 minutes and was asked for ${o.prompt.minWords}–${o.prompt.maxWords} words. ` +

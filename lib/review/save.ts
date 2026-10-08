@@ -246,10 +246,14 @@ export async function saveTestReview(viewer: Viewer, testId: string, body: unkno
     siblingId: string | null;
   } = await db.$transaction(
     async (tx: Tx) => {
+      // Serialize teacher review with delayed AI completion. Read the current AI band
+      // after taking the lock (the initial authorization read may predate completion).
+      await tx.$queryRaw`SELECT "id" FROM "ielts_tests" WHERE "id" = ${testId} FOR UPDATE`;
+      const current = await tx.iELTSTest.findUniqueOrThrow({ where: { id: testId }, select: { score: true, aiAnalysis: true } });
       const existing: { band: number; aiBand: number | null; criteria: unknown; comment: string | null } | null =
         await tx.testReview.findUnique({ where: { testId }, select: { band: true, aiBand: true, criteria: true, comment: true } });
       // The AI's band before the first review; test.score is the AI band until then.
-      const aiBand = existing ? existing.aiBand : aiBandOf(skill, test.aiAnalysis) ?? test.score;
+      const aiBand = existing ? existing.aiBand : aiBandOf(skill, current.aiAnalysis) ?? current.score;
       const review = await tx.testReview.upsert({
         where: { testId },
         create: {

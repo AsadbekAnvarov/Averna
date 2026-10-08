@@ -70,7 +70,8 @@
     ["exam-orb-bottom", "#06120e", "#ffffff"],
     ["exam-mark", "#fffbeb", "#0f172a"],
     ["surface-raised", "#0b1a16", "#ffffff"],
-    ["surface-well", "#000000", "#ffffff"]
+    ["surface-well", "#000000", "#ffffff"],
+    ["study-ink", "#00e5ff", "#006681"]
   ],
   "keepWhiteInk": ["bg-white", "bg-averna-primary", "bg-averna-primary/90", "bg-averna-primary/80", "bg-averna-primary/70", "bg-averna-light", "bg-averna-purple", "bg-averna-pink", "bg-averna-blue", "bg-red-500", "bg-red-600", "bg-emerald-500", "bg-emerald-600", "bg-green-500", "bg-green-600", "bg-blue-500", "bg-blue-600", "bg-purple-500", "bg-purple-600", "bg-indigo-500", "bg-pink-500", "bg-orange-500"]
 }

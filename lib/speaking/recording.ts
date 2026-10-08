@@ -759,7 +759,7 @@ async function saveTake(o: {
   const cacheKey = `${o.studentId}\n${sha256}`;
   let pending = cachedTranscription(cacheKey, Date.now());
   if (!pending) {
-    const guard = guardAi(o.userId, "speaking-answer");
+    const guard = await guardAi(o.userId, "speaking-answer");
     if (!guard.ok) {
       return fail(429, "rate-limited", guard.message ?? "Too many recordings at once — try again in a moment.", guard.retryAfterSeconds ?? 60);
     }

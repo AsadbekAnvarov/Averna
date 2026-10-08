@@ -43,28 +43,29 @@ enum AchievementType {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
+  id                String    @id @default(cuid())
+  email             String    @unique
   /// Unique sign-in name (lower case, see lib/account/username-rules); null until the user picks one.
-  username      String?   @unique
-  name          String?
-  password      String
-  role          UserRole  @default(STUDENT)
-  image         String?
-  emailVerified DateTime?
+  username          String?   @unique
+  name              String?
+  password          String
+  role              UserRole  @default(STUDENT)
+  image             String?
+  emailVerified     DateTime?
   /// Last password change: sessions signed in before it end (lib/account/session-guard).
   passwordChangedAt DateTime?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 
   // Relations
-  student       Student?
-  teacher       Teacher?
-  sessions      Session[]
-  accounts      Account[]
-  notifications Notification[]
-  sentMessages     Message[] @relation("SentMessages")
-  receivedMessages Message[] @relation("ReceivedMessages")
+  student          Student?
+  teacher          Teacher?
+  sessions         Session[]
+  accountTokens    AccountToken[]
+  accounts         Account[]
+  notifications    Notification[]
+  sentMessages     Message[]      @relation("SentMessages")
+  receivedMessages Message[]      @relation("ReceivedMessages")
   telegramLinks    TelegramLink[] @relation("TelegramUser")
 
   @@map("users")
@@ -101,57 +102,58 @@ model Session {
 }
 
 model Student {
-  id                String   @id @default(cuid())
-  userId            String   @unique
-  groupId           String?
-  personalGoal      String?
-  level             String?  // CEFR/IELTS level, set during enrollment
-  phone             String?
-  nativeLanguage    String?
-  targetBand        String?
-  bio               String?
-  enrolledAt        DateTime?
-  blacklisted       Boolean  @default(false)
-  blacklistReason   String?
-  totalPoints       Int      @default(0)
-  globalRank        Int      @default(0)
-  groupRank         Int      @default(0)
-  currentStreak     Int      @default(0)
-  longestStreak     Int      @default(0)
-  streakFreezes     Int      @default(1)
-  balance           Int      @default(0)
-  cosmetics         String[] @default([])
-  featuredCosmetic  String?
-  cosmeticBoxAt     DateTime?
-  lastActiveDate    DateTime @default(now())
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  id               String    @id @default(cuid())
+  userId           String    @unique
+  groupId          String?
+  personalGoal     String?
+  level            String? // CEFR/IELTS level, set during enrollment
+  phone            String?
+  nativeLanguage   String?
+  targetBand       String?
+  bio              String?
+  enrolledAt       DateTime?
+  blacklisted      Boolean   @default(false)
+  blacklistReason  String?
+  totalPoints      Int       @default(0)
+  globalRank       Int       @default(0)
+  groupRank        Int       @default(0)
+  currentStreak    Int       @default(0)
+  longestStreak    Int       @default(0)
+  streakFreezes    Int       @default(1)
+  balance          Int       @default(0)
+  cosmetics        String[]  @default([])
+  featuredCosmetic String?
+  cosmeticBoxAt    DateTime?
+  lastActiveDate   DateTime  @default(now())
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 
   // Relations
-  user              User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  group             Group?               @relation(fields: [groupId], references: [id])
+  user                User                      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  group               Group?                    @relation(fields: [groupId], references: [id])
   homeworkSubmissions HomeworkSubmission[]
-  ieltsTests        IELTSTest[]
-  achievements      StudentAchievement[]
-  speakingSessions  SpeakingSession[]
-  activityLogs      ActivityLog[]
-  commitments       Commitment[]
-  parentLinks       ParentStudentLink[]
-  tutorBookings     TutorSlot[]
-  attendances       Attendance[]
-  grades            Grade[]
-  redemptions       RewardRedemption[]
-  payments          Payment[]
-  reviewItems       ReviewItem[]
-  skillStates       SkillState[]
-  learningEvents    LearningEvent[]
-  learningProfile   LearningProfile?
-  learningSnapshots LearningProfileSnapshot[]
-  xpTransactions    XpTransaction[]
-  mockAttempts      MockAttempt[]
-  speakingRecordings SpeakingRecording[]
-  placementAttempts PlacementAttempt[]
-  telegramParentLinks TelegramLink[] @relation("TelegramParentChild")
+  ieltsTests          IELTSTest[]
+  achievements        StudentAchievement[]
+  speakingSessions    SpeakingSession[]
+  activityLogs        ActivityLog[]
+  commitments         Commitment[]
+  parentLinks         ParentStudentLink[]
+  tutorBookings       TutorSlot[]
+  attendances         Attendance[]
+  grades              Grade[]
+  redemptions         RewardRedemption[]
+  payments            Payment[]
+  mistakeEntries      MistakeEntry[]
+  reviewItems         ReviewItem[]
+  skillStates         SkillState[]
+  learningEvents      LearningEvent[]
+  learningProfile     LearningProfile?
+  learningSnapshots   LearningProfileSnapshot[]
+  xpTransactions      XpTransaction[]
+  mockAttempts        MockAttempt[]
+  speakingRecordings  SpeakingRecording[]
+  placementAttempts   PlacementAttempt[]
+  telegramParentLinks TelegramLink[]            @relation("TelegramParentChild")
 
   @@index([groupId])
   @@index([totalPoints])
@@ -163,7 +165,7 @@ model Teacher {
   userId          String   @unique
   bio             String?
   specialty       String?
-  ieltsBand       Float?   // teacher's own IELTS overall band (0-9), shown to students
+  ieltsBand       Float? // teacher's own IELTS overall band (0-9), shown to students
   isSecondTeacher Boolean  @default(false)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
@@ -195,12 +197,12 @@ model Group {
   updatedAt   DateTime @updatedAt
 
   // Relations
-  teacher     Teacher      @relation(fields: [teacherId], references: [id])
-  students    Student[]
+  teacher       Teacher         @relation(fields: [teacherId], references: [id])
+  students      Student[]
   rosterMembers RosterStudent[]
-  homework    Homework[]
-  attendances Attendance[]
-  lessonLogs  LessonLog[]
+  homework      Homework[]
+  attendances   Attendance[]
+  lessonLogs    LessonLog[]
 
   @@index([teacherId])
   @@map("groups")
@@ -234,15 +236,15 @@ model RosterStudent {
 }
 
 model Homework {
-  id          String         @id @default(cuid())
-  title       String
-  description String         @db.Text
-  teacherId   String
-  groupId     String
-  dueDate     DateTime
-  points      Int            @default(10)
-  difficulty  Int            @default(1)
-  module      IELTSModule
+  id           String      @id @default(cuid())
+  title        String
+  description  String      @db.Text
+  teacherId    String
+  groupId      String
+  dueDate      DateTime
+  points       Int         @default(10)
+  difficulty   Int         @default(1)
+  module       IELTSModule
   /// Exam homework from the test library (null = classic free-text homework):
   /// READING | LISTENING | WRITING_TASK1 | WRITING_TASK2 | WRITING_EXAM | SPEAKING
   contentKind  String?
@@ -251,8 +253,8 @@ model Homework {
   /// Reading passage / Listening part (0-based); null = the whole paper.
   contentPart  Int?
   contentTitle String?
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
 
   // Relations
   teacher     Teacher              @relation(fields: [teacherId], references: [id])
@@ -266,21 +268,21 @@ model Homework {
 }
 
 model HomeworkSubmission {
-  id           String         @id @default(cuid())
-  studentId    String
-  homeworkId   String
-  content      String         @db.Text
-  status       HomeworkStatus @default(SUBMITTED)
-  position     Int?
-  pointsAwarded Int           @default(0)
-  feedback     String?        @db.Text
-  gradedBy     String?
+  id            String         @id @default(cuid())
+  studentId     String
+  homeworkId    String
+  content       String         @db.Text
+  status        HomeworkStatus @default(SUBMITTED)
+  position      Int?
+  pointsAwarded Int            @default(0)
+  feedback      String?        @db.Text
+  gradedBy      String?
   /// Exam homework: the IELTSTest that completed it (Writing exam: the Task 2 row).
-  testId       String?
+  testId        String?
   /// Exam homework: band of that attempt (teacher review may update it).
-  band         Float?
-  submittedAt  DateTime       @default(now())
-  gradedAt     DateTime?
+  band          Float?
+  submittedAt   DateTime       @default(now())
+  gradedAt      DateTime?
 
   // Relations
   student  Student  @relation(fields: [studentId], references: [id])
@@ -295,18 +297,19 @@ model HomeworkSubmission {
 }
 
 model IELTSTest {
-  id              String      @id @default(cuid())
-  studentId       String
-  module          IELTSModule
-  score           Float
-  answers         Json
-  aiAnalysis      Json?
-  timeSpent       Int // in seconds
-  completedAt     DateTime    @default(now())
+  id          String      @id @default(cuid())
+  studentId   String
+  module      IELTSModule
+  score       Float
+  answers     Json
+  aiAnalysis  Json?
+  timeSpent   Int // in seconds
+  completedAt DateTime    @default(now())
 
   // Relations
-  student Student @relation(fields: [studentId], references: [id])
-  review  TestReview?
+  student       Student          @relation(fields: [studentId], references: [id])
+  review        TestReview?
+  assessmentJob AiAssessmentJob?
 
   @@index([studentId])
   @@index([module])
@@ -314,13 +317,13 @@ model IELTSTest {
 }
 
 model Achievement {
-  id          String            @id @default(cuid())
-  type        AchievementType   @unique
+  id          String          @id @default(cuid())
+  type        AchievementType @unique
   name        String
   description String
   icon        String
-  points      Int               @default(0)
-  createdAt   DateTime          @default(now())
+  points      Int             @default(0)
+  createdAt   DateTime        @default(now())
 
   // Relations
   students StudentAchievement[]
@@ -344,14 +347,14 @@ model StudentAchievement {
 }
 
 model SpeakingSession {
-  id          String   @id @default(cuid())
-  studentId   String
-  teacherId   String?
-  duration    Int // in minutes
-  points      Int      @default(0)
-  feedback    String?  @db.Text
-  rating      Int? // 1-5 stars from teacher
-  date        DateTime @default(now())
+  id        String   @id @default(cuid())
+  studentId String
+  teacherId String?
+  duration  Int // in minutes
+  points    Int      @default(0)
+  feedback  String?  @db.Text
+  rating    Int? // 1-5 stars from teacher
+  date      DateTime @default(now())
 
   // Relations
   student Student  @relation(fields: [studentId], references: [id])
@@ -367,9 +370,9 @@ model SpeakingSession {
 model Commitment {
   id         String   @id @default(cuid())
   studentId  String
-  targetDays Int      // number of study days required in the window
-  stake      Int      // points escrowed (deducted at creation)
-  reward     Int      // bonus points awarded on success
+  targetDays Int // number of study days required in the window
+  stake      Int // points escrowed (deducted at creation)
+  reward     Int // bonus points awarded on success
   startAt    DateTime
   endAt      DateTime
   status     String   @default("active") // active | succeeded | failed
@@ -398,11 +401,11 @@ model ActivityLog {
 }
 
 model ParentStudentLink {
-  id         String   @id @default(cuid())
-  parentName String
+  id          String   @id @default(cuid())
+  parentName  String
   parentEmail String
-  studentId  String
-  createdAt  DateTime @default(now())
+  studentId   String
+  createdAt   DateTime @default(now())
 
   // Relations
   student Student @relation(fields: [studentId], references: [id])
@@ -638,14 +641,14 @@ model HomeworkTemplate {
 }
 
 model Announcement {
-  id        String   @id @default(cuid())
-  authorId  String
+  id         String   @id @default(cuid())
+  authorId   String
   authorName String
-  scope     String   @default("ALL") // ALL | GROUP
-  groupId   String?
-  title     String
-  body      String   @db.Text
-  createdAt DateTime @default(now())
+  scope      String   @default("ALL") // ALL | GROUP
+  groupId    String?
+  title      String
+  body       String   @db.Text
+  createdAt  DateTime @default(now())
 
   @@index([scope])
   @@map("announcements")
@@ -735,12 +738,12 @@ model StudyMaterial {
 }
 
 model DailyArticle {
-  id          String   @id @default(cuid())
-  title       String
-  body        String   @db.Text
-  vocabulary  Json?
-  date        DateTime @unique @default(now())
-  createdAt   DateTime @default(now())
+  id         String   @id @default(cuid())
+  title      String
+  body       String   @db.Text
+  vocabulary Json?
+  date       DateTime @unique @default(now())
+  createdAt  DateTime @default(now())
 
   @@map("daily_articles")
 }
@@ -757,8 +760,6 @@ model AuditLog {
   @@index([createdAt])
   @@map("audit_logs")
 }
-
-
 
 /// Original, generated practice tests (Reading first; extensible to other modules).
 /// The full test payload lives in `data` (same shape as lib/reading-tests-data.ts).
@@ -777,7 +778,6 @@ model GeneratedTest {
 
   @@index([module, published])
 }
-
 
 // ============================================================================
 // LEARNING DNA ENGINE (AVERNA-001)
@@ -803,16 +803,16 @@ model GeneratedTest {
 /// - PRIVACY. Only measurements are stored, never learner content. `errorTags`
 ///   holds short category slugs (e.g. "articles", "time_pressure"), not answers.
 model LearningEvent {
-  id        String   @id @default(cuid())
+  id        String @id @default(cuid())
   studentId String
 
   /// test | review | homework | speaking | focus | ai_chat | checkin | game | lesson
-  kind      String
+  kind    String
   /// READING | LISTENING | WRITING | SPEAKING | GRAMMAR | VOCABULARY | null (mixed)
-  skill     String?
+  skill   String?
   /// Delivery channel the learner actually used — the basis of learning-style
   /// detection: reading | audio | writing | speaking | flashcard | conversation | video | grammar
-  channel   String
+  channel String
 
   /// 0-1 normalised correctness. Null when the activity has no notion of correct.
   accuracy    Float?
@@ -898,15 +898,15 @@ model LearningProfile {
   skillBalance       Int?
 
   // --- What they know ---
-  strongestSkill     String?
-  weakestSkill       String?
+  strongestSkill      String?
+  weakestSkill        String?
   fastestGrowingSkill String?
-  vocabularyGrowth   Int?
-  grammarGrowth      Int?
-  speakingConfidence Int?
-  writingComplexity  Int?
-  readingSpeedWpm    Int?
-  listeningAccuracy  Int?
+  vocabularyGrowth    Int?
+  grammarGrowth       Int?
+  speakingConfidence  Int?
+  writingComplexity   Int?
+  readingSpeedWpm     Int?
+  listeningAccuracy   Int?
 
   /// Full profile detail: per-skill metrics, style scores, insights (with their
   /// evidence), recommendations and the study plan.
@@ -941,7 +941,7 @@ model LearningProfileSnapshot {
   motivationScore  Int?
   learningSpeed    Float?
   focusMinutes     Int?
-  dataPoints       Int    @default(0)
+  dataPoints       Int     @default(0)
   preferredStyle   String?
 
   createdAt DateTime @default(now())
@@ -955,7 +955,6 @@ model LearningProfileSnapshot {
   @@index([studentId, dayKey])
   @@map("learning_profile_snapshots")
 }
-
 
 // ============================================================================
 // PROGRESSION ENGINE — XP LEDGER
@@ -997,7 +996,6 @@ model XpTransaction {
   @@map("xp_transactions")
 }
 
-
 /// One sitting of the full IELTS mock exam (Listening → Reading → Writing →
 /// Speaking). Papers are picked at random from the full-format library when the
 /// attempt starts; each section is graded and saved as an IELTSTest the moment
@@ -1027,7 +1025,6 @@ model MockAttempt {
   @@index([studentId, status])
   @@map("mock_attempts")
 }
-
 
 /// Pre-rendered Listening audio — one MP3 per part (all voices, pauses and exam
 /// announcements baked in), stored in Vercel Blob. When a part has ready audio
@@ -1215,4 +1212,65 @@ model CronRun {
 
   @@unique([job, day])
   @@map("cron_runs")
+}
+
+/// Student-owned corrections. The SRS ledger stores timing, not this content.
+model MistakeEntry {
+  id              String    @id
+  studentId       String
+  wrong           String    @db.Text
+  right           String    @db.Text
+  note            String?   @db.Text
+  sourceTestId    String?
+  practiceCount   Int       @default(0)
+  lastPracticedAt DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  student         Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId, createdAt])
+  @@map("mistake_entries")
+}
+
+/// Only hashes of emailed, one-use tokens are retained.
+model AccountToken {
+  tokenHash String   @id
+  userId    String
+  purpose   String
+  email     String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, purpose])
+  @@index([expiresAt])
+  @@map("account_tokens")
+}
+
+/// Shared, atomic fixed-window counters. No raw email addresses or IPs.
+model RateLimitBucket {
+  id        String   @id
+  hits      Int      @default(0)
+  expiresAt DateTime
+
+  @@index([expiresAt])
+  @@map("rate_limit_buckets")
+}
+
+// Durable retry of a single Writing practice fallback. Payload lives on IELTSTest.
+model AiAssessmentJob {
+  id            String    @id @default(cuid())
+  testId        String    @unique
+  status        String    @default("pending")
+  attempts      Int       @default(0)
+  nextAttemptAt DateTime  @default(now())
+  leaseToken    String?
+  leaseUntil    DateTime?
+  lastError     String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  test          IELTSTest @relation(fields: [testId], references: [id], onDelete: Cascade)
+
+  @@index([status, nextAttemptAt])
+  @@map("ai_assessment_jobs")
 }

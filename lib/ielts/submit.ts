@@ -556,7 +556,7 @@ export async function submitSpeakingTest(o: {
     const k = o.maxSeconds / claimed;
     answers = answers.map((a) => ({ ...a, seconds: Math.floor(a.seconds * k) }));
   }
-  const allowAi = guardAi(o.userId, "speaking-test").ok;
+  const allowAi = (await guardAi(o.userId, "speaking-test")).ok;
   // The recordings' timing only speaks for a fully recorded attempt.
   const a = await assessSpeakingAnswers(answers, { allowAi, metrics: typedAnswers === 0 ? metrics : null });
   const inputMode = recorded ? "recorded" : typed ? "typed" : "speech";
@@ -850,7 +850,7 @@ export async function submitWritingExam(o: {
   const essay1 = typeof o.essays.task1 === "string" ? o.essays.task1.slice(0, 20000) : "";
   const essay2 = typeof o.essays.task2 === "string" ? o.essays.task2.slice(0, 20000) : "";
   const total = clampTime(o.timeSpent);
-  const allowAi = guardAi(o.userId, "writing-exam").ok;
+  const allowAi = (await guardAi(o.userId, "writing-exam")).ok;
 
   const [a1, a2] = await Promise.all([
     prev1 ? null : assessWritingEssay("task1", o.task1, essay1, allowAi),
