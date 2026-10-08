@@ -56,7 +56,8 @@ function bucketOf(date: Date): "Today" | "This week" | "Earlier" {
   return "Earlier";
 }
 
-export default async function NotificationsPage({ searchParams }: { searchParams: { type?: string } }) {
+export default async function NotificationsPage(props: { searchParams: Promise<{ type?: string }> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 

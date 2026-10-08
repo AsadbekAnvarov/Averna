@@ -127,7 +127,8 @@ async function submittedResult(studentId: string, attempt: string): Promise<Writ
   }
 }
 
-export default async function WritingExamPage({ searchParams = {} }: { searchParams?: SearchParams }) {
+export default async function WritingExamPage(props: { searchParams?: Promise<SearchParams> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

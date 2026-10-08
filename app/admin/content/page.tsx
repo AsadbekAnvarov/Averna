@@ -35,7 +35,8 @@ async function addMaterial(formData: FormData) {
   redirect("/admin/content?saved=material");
 }
 
-export default async function AdminContentPage({ searchParams }: { searchParams: { saved?: string } }) {
+export default async function AdminContentPage(props: { searchParams: Promise<{ saved?: string }> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {

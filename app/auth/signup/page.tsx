@@ -85,7 +85,7 @@ export default function SignUpPage() {
       
       // Redirect to sign in after 2 seconds
       setTimeout(() => {
-        router.push("/auth/signin");
+        router.push(data.verificationRequired ? "/auth/verify-email" : "/auth/signin");
       }, 2000);
     } catch (error: any) {
       setError(error.message || "Something went wrong. Please try again.");
@@ -110,7 +110,7 @@ export default function SignUpPage() {
           <CardHeader>
             <CardTitle className="text-2xl text-center">Create Account</CardTitle>
             <CardDescription className="text-center">
-              Join thousands of students achieving their IELTS goals
+              Build your IELTS practice with Averna
             </CardDescription>
           </CardHeader>
 

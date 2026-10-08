@@ -1,7 +1,9 @@
+import { trustedMutation } from "@/lib/security/same-origin";
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { assessWritingTask, analyzeWritingIssues } from "@/lib/ai";
+import { guardAi } from "@/lib/engine/ai-guard";
+import { assessWritingTask, analyzeWritingIssues, heuristicWritingAssessment, hasOpenAI } from "@/lib/ai";
 import { saveIELTSTest } from "@/lib/db-helpers";
 import { isGenuineWriting, isOnTopic } from "@/lib/utils";
 import { assessSubmission, logAssessment } from "@/lib/engine/integrity-engine";
@@ -16,6 +18,7 @@ import { isHomeworkRetryOf } from "@/lib/homework/library-shared";
 import type { WritingPrompt } from "@/lib/writing-data";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 const sameText = (a: unknown, b: unknown) =>
   String(a ?? "").replace(/\s+/g, " ").trim() === String(b ?? "").replace(/\s+/g, " ").trim();
@@ -43,10 +46,11 @@ async function writingHomework(
 }
 
 function homeworkSummary(task: "task1" | "task2", words: number, band: number): string {
-  return `Writing ${task === "task1" ? "Task 1" : "Task 2"} · ${words} words · band ${band.toFixed(1)} (AI estimate)`;
+  return `Writing ${task === "task1" ? "Task 1" : "Task 2"} · ${words} words · band ${band.toFixed(1)} (practice estimate)`;
 }
 
 export async function POST(req: NextRequest) {
+  if (!trustedMutation(req)) return NextResponse.json({ error: "Untrusted request origin." }, { status: 403 });
   try {
     const user = await requireAuth();
     
@@ -66,7 +70,7 @@ export async function POST(req: NextRequest) {
     const { essay, taskType, prompt, timeSpent } = body;
 
     // Validate
-    if (!essay || !taskType || !prompt) {
+    if (typeof essay !== "string" || !essay.trim() || essay.length > 20000 || !["task1", "task2"].includes(taskType) || typeof prompt !== "string" || !prompt.trim() || prompt.length > 10000) {
       return NextResponse.json(
         { error: "Your essay is missing its task or text. Reload the task and try again." },
         { status: 400 }
@@ -74,6 +78,12 @@ export async function POST(req: NextRequest) {
     }
 
     const task: "task1" | "task2" = taskType === "task1" ? "task1" : "task2";
+    const libraryPrompt = typeof body.promptId === "string" && body.promptId.length <= 200
+      ? await getWritingTask(task, body.promptId)
+      : null;
+    if (!libraryPrompt || !sameText(libraryPrompt.prompt, prompt)) {
+      return NextResponse.json({ error: "This task no longer matches the library. Reload the task; your local draft will remain." }, { status: 400 });
+    }
     // Anti-cheat: only award XP for a genuine, on-topic, long-enough essay.
     // Weak essays are still assessed and saved (feedback is the point) — the
     // XP engine explains exactly what was missing.
@@ -111,11 +121,15 @@ export async function POST(req: NextRequest) {
     const contentKey = `${task}:${hashString(String(prompt))}`;
 
     // Get AI assessment
-    const assessment = await assessWritingTask(
-      essay,
-      taskType,
-      prompt
-    );
+    const limit = hasOpenAI() ? await guardAi(user.id, "writing-submit") : { ok: false, retryAfterSeconds: undefined };
+    let assessment = heuristicWritingAssessment(essay, task);
+    if (hasOpenAI() && limit.ok) {
+      try { assessment = await assessWritingTask(essay, task, prompt); }
+      catch { assessment.fallbackReason = "unavailable"; }
+    } else if (hasOpenAI()) {
+      assessment.fallbackReason = "limit";
+    }
+    // Preserve the submitted attempt even when AI is unavailable. Never label a heuristic as AI.
     // Prefer the model's inline issues (richer — includes strong-phrase
     // highlights) and top up with mechanical heuristic checks it may miss.
     // Falls back cleanly to heuristics-only when no OpenAI key is configured.
@@ -198,6 +212,10 @@ export async function POST(req: NextRequest) {
         contentKey,
         idempotencyKey: typeof body.submissionId === "string" ? body.submissionId : undefined,
         xp,
+        // Limits and provider failures retry later; no key => honest heuristic only.
+        writingRetryAt: hasOpenAI() && assessment.source !== "ai"
+          ? new Date(Date.now() + Math.max(300, limit.retryAfterSeconds ?? 300) * 1000)
+          : undefined,
         logDetails: { words: wordTotal, task },
         dna,
       }

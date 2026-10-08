@@ -133,7 +133,8 @@ function metricsLine(m: SpeechMetrics | null): string | null {
  * while it's kept — its recording, the examiner's feedback, XP and the
  * teacher's review. For the student, a teacher of their group, or an admin.
  */
-export default async function SpeakingResultPage({ params }: { params: { testId: string } }) {
+export default async function SpeakingResultPage(props: { params: Promise<{ testId: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

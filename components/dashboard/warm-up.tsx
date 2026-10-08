@@ -1,5 +1,6 @@
 "use client";
 
+import { useOwnedMistakes } from "@/components/learning/use-owned-mistakes";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,8 +8,7 @@ import { DECKS, type Flashcard } from "@/lib/flashcards-data";
 import { tashkentDateKey } from "@/lib/utils";
 import { Zap, Flame, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 
-const STORAGE_KEY = "averna_warmup_v1";
-const MISTAKES_KEY = "averna_mistakes_v1";
+
 const N = 5;
 
 interface WarmStore {
@@ -17,12 +17,6 @@ interface WarmStore {
   sessions: number;
 }
 
-interface Mistake {
-  id: string;
-  wrong: string;
-  right: string;
-  note?: string;
-}
 
 interface Q {
   label: string;
@@ -55,10 +49,12 @@ function daysBetween(a: string, b: string) {
  * 60-Second Warm-Up — a one-tap micro session that lowers the barrier to
  * studying. Five rapid questions mixing the student's own Mistake Bank with
  * vocabulary, then a "word of the day" takeaway. Builds a daily warm-up streak
- * to make starting a habit. Fully client-side; reuses averna_mistakes_v1 and
+ * to make starting a habit. Uses the account-owned correction bank and
  * the DECKS vocabulary.
  */
 export function WarmUp() {
+  const { owner, items: mistakes } = useOwnedMistakes();
+  const storageKey = `averna_warmup_v2:${owner}`;
   const [loaded, setLoaded] = useState(false);
   const [store, setStore] = useState<WarmStore>({ lastDate: "", streak: 0, sessions: 0 });
   const [phase, setPhase] = useState<Phase>("idle");
@@ -76,8 +72,9 @@ export function WarmUp() {
 
   useEffect(() => {
     mounted.current = true;
+    setPhase("idle"); setQuestions([]); setStore({ lastDate: "", streak: 0, sessions: 0 });
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(storageKey);
       if (raw) setStore(JSON.parse(raw));
     } catch {
       /* ignore */
@@ -88,7 +85,7 @@ export function WarmUp() {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (timer.current) clearTimeout(timer.current);
     };
-  }, []);
+  }, [storageKey]);
 
   const today = tashkentDateKey();
   const warmedToday = store.lastDate === today;
@@ -97,14 +94,6 @@ export function WarmUp() {
   const wotd = ALL_CARDS[Number(today.replaceAll("-", "")) % ALL_CARDS.length];
 
   const buildQuestions = useCallback((): Q[] => {
-    let mistakes: Mistake[] = [];
-    try {
-      const raw = localStorage.getItem(MISTAKES_KEY);
-      if (raw) mistakes = JSON.parse(raw);
-    } catch {
-      /* ignore */
-    }
-
     const out: Q[] = [];
 
     // Up to 2 mistake questions (need >=4 mistakes for clean distractors)
@@ -139,7 +128,7 @@ export function WarmUp() {
     }
 
     return shuffle(out).slice(0, N);
-  }, []);
+  }, [mistakes]);
 
   const loop = useCallback(() => {
     if (!mounted.current) return;
@@ -172,14 +161,14 @@ export function WarmUp() {
       }
       const next = { streak, sessions, lastDate };
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+        localStorage.setItem(storageKey, JSON.stringify(next));
       } catch {
         /* ignore */
       }
       return next;
     });
     setPhase("done");
-  }, [today]);
+  }, [today, storageKey]);
 
   const choose = (opt: string) => {
     if (locked) return;
@@ -199,7 +188,7 @@ export function WarmUp() {
     }, 550);
   };
 
-  if (!loaded) {
+  if (!loaded || !owner) {
     return (
       <Card className="glass border-averna-pink/30">
         <CardContent className="h-20" />

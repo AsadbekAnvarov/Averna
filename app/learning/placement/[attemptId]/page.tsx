@@ -13,7 +13,8 @@ import { PlacementOrchestrator } from "@/components/placement/placement-orchestr
 export const metadata = { title: "Placement test" };
 
 /** One sitting of the placement test. */
-export default async function PlacementRunPage({ params }: { params: { attemptId: string } }) {
+export default async function PlacementRunPage(props: { params: Promise<{ attemptId: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

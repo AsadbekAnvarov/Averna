@@ -17,7 +17,8 @@ const firstParam = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0
  * Set homework. ?group=<id> preselects one of the teacher's groups;
  * ?mode=classic opens the free-text form.
  */
-export default async function CreateHomeworkPage({ searchParams = {} }: { searchParams?: SearchParams }) {
+export default async function CreateHomeworkPage(props: { searchParams?: Promise<SearchParams> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
   if (session.user.role === "STUDENT") return redirect("/dashboard");

@@ -1,3 +1,7 @@
+> Release update: a generated baseline and feature migration are now checked in. Follow
+> [Production learning release](PRODUCTION_LEARNING_RELEASE.md) for adoption on an existing database.
+> The older steps below are historical context; do not generate or apply a second baseline blindly.
+
 # Runbook — adopt Prisma migrations (S0b)
 
 **Why.** The database used to have two sources of truth: `prisma/schema.prisma` and a

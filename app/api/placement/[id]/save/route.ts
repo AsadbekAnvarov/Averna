@@ -6,7 +6,8 @@ import { savePlacementDraft } from "@/lib/placement/placement";
 export const dynamic = "force-dynamic";
 
 /** Autosave the running section. Body: { section: number, draft: { answers } | { essay } } */
-export async function POST(req: Request, { params }: { params: { id: string } }) {
+export async function POST(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   let userId: string;
   try {
     userId = (await requireAuth()).id;

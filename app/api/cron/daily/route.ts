@@ -1,8 +1,10 @@
+import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 import { runOncePerDay } from "@/lib/cron/once";
 import { telegramReady } from "@/lib/telegram/config";
 import { runTelegramDaily } from "@/lib/telegram/daily";
 import { cleanupSpeakingRecordings } from "@/lib/speaking/cleanup";
+import { processWritingRetry } from "@/lib/assessment/writing-queue";
 import { blobConfigured } from "@/lib/storage/blob";
 
 export const dynamic = "force-dynamic";
@@ -24,10 +26,19 @@ export async function GET(req: NextRequest) {
   if (!secret || req.headers.get("authorization") !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const [telegram, recordings] = await Promise.all([
+  const [writingRetry, accountCleanup, telegram, recordings] = await Promise.all([
+    // Per-job leases deduplicate across deployments; do not claim the whole day.
+    processWritingRetry().catch(() => "storage_unavailable"),
+    runOncePerDay("account-security-cleanup", async () => {
+      const [limits, tokens] = await Promise.all([
+        db.rateLimitBucket.deleteMany({ where: { expiresAt: { lt: new Date(Date.now() - 86400000) } } }),
+        db.accountToken.deleteMany({ where: { expiresAt: { lt: new Date() } } }),
+      ]);
+      return { expiredCounters: limits.count, expiredTokens: tokens.count };
+    }, { ready: () => true }),
     runOncePerDay("telegram-daily", () => runTelegramDaily(new Date(), { startedAt }), { ready: telegramReady }),
     runOncePerDay("speaking-recordings-cleanup", () => cleanupSpeakingRecordings(), { ready: blobConfigured }),
   ]);
-  const ok = !telegram.error && !recordings.error;
-  return NextResponse.json({ ok, telegram, recordings }, { status: ok ? 200 : 500 });
+  const ok = !telegram.error && !recordings.error && !accountCleanup.error && writingRetry !== "storage_unavailable";
+  return NextResponse.json({ ok, telegram, recordings, accountCleanup, writingRetry }, { status: ok ? 200 : 500 });
 }

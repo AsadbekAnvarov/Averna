@@ -6,7 +6,8 @@ import { beginSection } from "@/lib/ielts/mock";
 export const dynamic = "force-dynamic";
 
 /** Start the clock of the current section. Body: { section: number } */
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   let userId: string;
   try {
     userId = (await requireAuth()).id;

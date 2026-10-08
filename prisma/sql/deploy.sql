@@ -437,3 +437,83 @@ CREATE UNIQUE INDEX IF NOT EXISTS "users_username_key" ON "users" ("username");
 -- ============================================================================
 -- End of additive deploy script. Nothing above can remove or modify data.
 -- ============================================================================
+
+-- Production learning: additive, rerunnable; generated migration has equivalent DDL.
+-- CreateTable
+CREATE TABLE IF NOT EXISTS "mistake_entries" (
+    "id" TEXT NOT NULL,
+    "studentId" TEXT NOT NULL,
+    "wrong" TEXT NOT NULL,
+    "right" TEXT NOT NULL,
+    "note" TEXT,
+    "sourceTestId" TEXT,
+    "practiceCount" INTEGER NOT NULL DEFAULT 0,
+    "lastPracticedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "mistake_entries_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE IF NOT EXISTS "account_tokens" (
+    "tokenHash" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "purpose" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "expiresAt" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "account_tokens_pkey" PRIMARY KEY ("tokenHash")
+);
+
+-- CreateTable
+CREATE TABLE IF NOT EXISTS "rate_limit_buckets" (
+    "id" TEXT NOT NULL,
+    "hits" INTEGER NOT NULL DEFAULT 0,
+    "expiresAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "rate_limit_buckets_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE INDEX IF NOT EXISTS "mistake_entries_studentId_createdAt_idx" ON "mistake_entries"("studentId", "createdAt");
+
+-- CreateIndex
+CREATE INDEX IF NOT EXISTS "account_tokens_userId_purpose_idx" ON "account_tokens"("userId", "purpose");
+
+-- CreateIndex
+CREATE INDEX IF NOT EXISTS "account_tokens_expiresAt_idx" ON "account_tokens"("expiresAt");
+
+-- CreateIndex
+CREATE INDEX IF NOT EXISTS "rate_limit_buckets_expiresAt_idx" ON "rate_limit_buckets"("expiresAt");
+
+-- AddForeignKey
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'mistake_entries_studentId_fkey' AND conrelid = '"mistake_entries"'::regclass) THEN
+    ALTER TABLE "mistake_entries" ADD CONSTRAINT "mistake_entries_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "students"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  END IF;
+END $$;
+
+-- AddForeignKey
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'account_tokens_userId_fkey' AND conrelid = '"account_tokens"'::regclass) THEN
+    ALTER TABLE "account_tokens" ADD CONSTRAINT "account_tokens_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  END IF;
+END $$;
+
+-- Durable Writing retry queue: no essay copies, FK deletion with the saved attempt.
+CREATE TABLE IF NOT EXISTS "ai_assessment_jobs" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "testId" TEXT NOT NULL UNIQUE REFERENCES "ielts_tests"("id") ON DELETE CASCADE,
+  "status" TEXT NOT NULL DEFAULT 'pending',
+  "attempts" INTEGER NOT NULL DEFAULT 0,
+  "nextAttemptAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "leaseToken" TEXT,
+  "leaseUntil" TIMESTAMP(3),
+  "lastError" TEXT,
+  "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS "ai_assessment_jobs_status_nextAttemptAt_idx"
+  ON "ai_assessment_jobs"("status", "nextAttemptAt");

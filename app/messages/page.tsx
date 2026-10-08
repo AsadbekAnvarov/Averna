@@ -56,11 +56,12 @@ function homeHref(role: string) {
   return "/dashboard";
 }
 
-export default async function MessagesPage({
-  searchParams,
-}: {
-  searchParams: { with?: string };
-}) {
+export default async function MessagesPage(
+  props: {
+    searchParams: Promise<{ with?: string }>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   const me = session.user.id;

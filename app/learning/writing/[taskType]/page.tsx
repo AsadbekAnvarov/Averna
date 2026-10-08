@@ -15,13 +15,14 @@ import { ArrowLeft, PenTool, BookOpen, Sparkles, Lightbulb, ChevronRight, Clipbo
 type SearchParams = Record<string, string | string[] | undefined>;
 const firstParam = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
 
-export default async function WritingTaskPage({
-  params,
-  searchParams = {},
-}: {
-  params: { taskType: string };
-  searchParams?: SearchParams;
-}) {
+export default async function WritingTaskPage(
+  props: {
+    params: Promise<{ taskType: string }>;
+    searchParams?: Promise<SearchParams>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

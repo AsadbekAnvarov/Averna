@@ -12,7 +12,8 @@ export const dynamic = "force-dynamic";
  * the optional Writing intro, the sitting is finished without Writing instead
  * (it gets a level): → { ok: true, finished: true }, and the client opens the result.
  */
-export async function POST(_req: Request, { params }: { params: { id: string } }) {
+export async function POST(_req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   let userId: string;
   try {
     userId = (await requireAuth()).id;

@@ -14,7 +14,8 @@ import { hrefWith, parseDifficulty, parseTypeFilter, type SearchParams } from "@
 
 const PATH = "/learning/listening";
 
-export default async function ListeningLibraryPage({ searchParams = {} }: { searchParams?: SearchParams }) {
+export default async function ListeningLibraryPage(props: { searchParams?: Promise<SearchParams> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 

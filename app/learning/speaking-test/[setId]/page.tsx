@@ -60,18 +60,20 @@ async function alreadySubmitted(userId: string, attempt: string): Promise<boolea
   }
 }
 
-export async function generateMetadata({ params }: { params: { setId: string } }) {
+export async function generateMetadata(props: { params: Promise<{ setId: string }> }) {
+  const params = await props.params;
   const set = await getSpeakingSet(safeDecode(params.setId)).catch(() => null);
   return { title: set ? `${set.title} · Speaking test` : "Speaking test" };
 }
 
-export default async function SpeakingTestPage({
-  params,
-  searchParams = {},
-}: {
-  params: { setId: string };
-  searchParams?: SearchParams;
-}) {
+export default async function SpeakingTestPage(
+  props: {
+    params: Promise<{ setId: string }>;
+    searchParams?: Promise<SearchParams>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

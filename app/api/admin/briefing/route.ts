@@ -13,7 +13,7 @@ export async function GET() {
       return NextResponse.json({ error: "Ruxsat yoʻq" }, { status: 403 });
     }
 
-    const guard = guardAi(user.id, "admin-briefing");
+    const guard = await guardAi(user.id, "admin-briefing");
     if (!guard.ok) {
       return NextResponse.json({ error: guard.message }, { status: 429 });
     }

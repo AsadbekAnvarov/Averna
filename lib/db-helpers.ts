@@ -450,6 +450,8 @@ export async function saveIELTSTest(
     idempotencyKey?: string;
     /** Integrity trust multiplier (0..1) — only applied to `pointsOverride`/legacy XP. */
     trustMultiplier?: number;
+    /** Persist a Writing fallback retry in the SAME transaction as the attempt and XP. */
+    writingRetryAt?: Date;
     /** Skip reward settlement (a caller saving several sections settles once, last). */
     skipSettle?: boolean;
     /** Extra fields for the ActivityLog entry (accuracy, mock flag …). */
@@ -505,7 +507,9 @@ export async function saveIELTSTest(
     breakdown: xpResult ? { lines: xpResult.lines, notes: xpResult.notes } : { lines: [{ label: "Attempt", amount: points }] },
     atomicWith: [
       db.iELTSTest.create({
-        data: { id: testId, studentId, module, score: safeScore, answers, aiAnalysis, timeSpent: safeTime },
+        data: { id: testId, studentId, module, score: safeScore, answers, aiAnalysis, timeSpent: safeTime,
+          ...(module === "WRITING" && options?.writingRetryAt ? { assessmentJob: { create: { nextAttemptAt: options.writingRetryAt } } } : {}),
+        },
       }),
     ],
   });

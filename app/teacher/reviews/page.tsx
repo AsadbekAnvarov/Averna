@@ -36,7 +36,8 @@ const TAB_BASE =
 const SELECT =
   "h-10 w-full rounded-lg border border-white/15 bg-averna-dark/70 px-2.5 text-sm text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60";
 
-export default async function ReviewQueuePage({ searchParams = {} }: { searchParams?: SearchParams }) {
+export default async function ReviewQueuePage(props: { searchParams?: Promise<SearchParams> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
   const role: string = session.user.role;

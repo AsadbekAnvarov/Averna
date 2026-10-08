@@ -30,7 +30,8 @@ function bonusFor(count: number): number {
   return count === 0 ? 10 : count === 1 ? 8 : count === 2 ? 6 : 0;
 }
 
-export default async function HomeworkDetailPage({ params }: { params: { id: string } }) {
+export default async function HomeworkDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

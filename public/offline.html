@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Reconnect · Averna</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: #191919;
+        color: #fff;
+        font:
+          16px/1.6 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 460px;
+        padding: 32px;
+        border: 1px solid #454545;
+        border-radius: 12px;
+      }
+      h1 {
+        font-size: 28px;
+        line-height: 1.2;
+      }
+      p {
+        color: #ccc;
+      }
+      a {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        padding: 8px 18px;
+        border: 1px solid #6ecfff;
+        border-radius: 8px;
+        color: #6ecfff;
+        text-decoration: none;
+      }
+      a:focus-visible {
+        outline: 3px solid #6ecfff;
+        outline-offset: 4px;
+      }
+      @media (prefers-color-scheme: light) {
+        body {
+          background: #fff;
+          color: #2c2c2b;
+        }
+        main {
+          border-color: #ddd;
+        }
+        p {
+          color: #555;
+        }
+        a {
+          color: #176695;
+          border-color: #176695;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>Averna Learning Centre</p>
+      <h1>A moment to reconnect.</h1>
+      <p>
+        You are offline. Personal pages are not cached on shared devices.
+        Reconnect, then return to your dashboard.
+      </p>
+      <p>
+        If you were writing, reopen the same task in the same account to restore
+        a locally saved draft.
+      </p>
+      <a href="/dashboard">Try again</a>
+    </main>
+  </body>
+</html>

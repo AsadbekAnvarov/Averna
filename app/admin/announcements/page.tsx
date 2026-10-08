@@ -48,7 +48,8 @@ async function postGlobal(formData: FormData) {
   redirect("/admin/announcements?saved=1");
 }
 
-export default async function AdminAnnouncementsPage({ searchParams }: { searchParams: { saved?: string } }) {
+export default async function AdminAnnouncementsPage(props: { searchParams: Promise<{ saved?: string }> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {

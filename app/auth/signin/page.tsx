@@ -39,7 +39,7 @@ export default function SignInPage() {
       });
 
       if (result?.error) {
-        setError("Wrong email / username or password");
+        setError("Check your email / username and password. If email confirmation is enabled, confirm your email first.");
       } else {
         // Route to the correct area based on the user's role
         const session = await getSession();
@@ -83,6 +83,10 @@ export default function SignInPage() {
             </CardDescription>
           </CardHeader>
 
+          <div className="flex flex-wrap gap-x-4 gap-y-2 px-6 pb-2 text-sm">
+            <Link href="/auth/forgot-password" className="inline-flex min-h-11 items-center text-averna-cyan underline">Forgot password?</Link>
+            <Link href="/auth/verify-email" className="inline-flex min-h-11 items-center text-averna-cyan underline">Confirm email / resend link</Link>
+          </div>
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               {passwordChanged && !error && (

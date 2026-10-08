@@ -17,7 +17,7 @@ export const maxDuration = 60;
 export async function POST(req: NextRequest) {
   try {
     const user = await requireTeacherOrAdmin();
-    const guard = guardAi(user.id, "generate-test");
+    const guard = await guardAi(user.id, "generate-test");
     if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
   } catch {
     return NextResponse.json({ error: "Teacher or admin access required." }, { status: 403 });

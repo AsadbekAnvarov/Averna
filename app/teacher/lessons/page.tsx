@@ -46,11 +46,12 @@ async function addLesson(formData: FormData) {
   redirect(`/teacher/lessons?group=${groupId}&saved=1`);
 }
 
-export default async function LessonLogPage({
-  searchParams,
-}: {
-  searchParams: { group?: string; saved?: string };
-}) {
+export default async function LessonLogPage(
+  props: {
+    searchParams: Promise<{ group?: string; saved?: string }>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "STUDENT") redirect("/dashboard");

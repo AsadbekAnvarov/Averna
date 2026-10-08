@@ -18,7 +18,7 @@ on desktop, a left sidebar. `⌘K` / the search button opens the command palette
 
 ## Stack
 
-Next.js 14 (App Router, server components) · TypeScript · Tailwind CSS · Prisma +
+Next.js 15 (App Router, server components) · TypeScript · Tailwind CSS · Prisma +
 PostgreSQL · NextAuth v5 (credentials) · OpenAI (marking, AI tutor, text-to-speech,
 Whisper) · Vercel (hosting, Blob storage, Cron).
 
@@ -96,3 +96,20 @@ setup is described next to its variables in `.env.example`.
 - [`docs/RUNBOOK_DB_MIGRATIONS.md`](docs/RUNBOOK_DB_MIGRATIONS.md) — adopting Prisma migrations
 - [`docs/BUSINESS_OS_PLAN.md`](docs/BUSINESS_OS_PLAN.md) — admin / business roadmap
 - `prisma/schema.prisma` — the data model (commented)
+
+## Production-learning release
+
+The next-session guide lives at `/study/next`. Correction Studio (`/studio/mistakes`)
+now stores content per student and supports explicit imports of old browser cards.
+Writing feedback can open a correction draft; matching a rewrite is recall practice,
+not a new IELTS grade. Local essay drafts are per-account/per-task and are **not**
+cross-device drafts. Submitted results and correction cards are server-backed.
+
+Account confirmation and password-reset routes use hashed, expiring, single-use
+links. Set the Resend variables in `.env.example`, test delivery, then explicitly
+enable `REQUIRE_EMAIL_VERIFICATION`. No credentials belong in Git.
+
+**Before release**, follow [`docs/PRODUCTION_LEARNING_RELEASE.md`](docs/PRODUCTION_LEARNING_RELEASE.md).
+The generated baseline is for fresh databases; do **not** run it as creation SQL
+against an existing database. Do not seed a real database. Shared rate limits
+fail closed if their new table is missing; apply/test the schema before deploying.

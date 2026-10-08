@@ -47,11 +47,12 @@ async function redeemReward(formData: FormData) {
   redirect("/rewards?success=1");
 }
 
-export default async function RewardsPage({
-  searchParams,
-}: {
-  searchParams: { error?: string; success?: string };
-}) {
+export default async function RewardsPage(
+  props: {
+    searchParams: Promise<{ error?: string; success?: string }>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "TEACHER") redirect("/teacher/dashboard");

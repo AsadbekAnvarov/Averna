@@ -62,11 +62,12 @@ async function addGrade(formData: FormData) {
   redirect(`/teacher/gradebook?group=${group.id}&saved=1`);
 }
 
-export default async function GradebookPage({
-  searchParams,
-}: {
-  searchParams: { group?: string; saved?: string };
-}) {
+export default async function GradebookPage(
+  props: {
+    searchParams: Promise<{ group?: string; saved?: string }>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "STUDENT") redirect("/dashboard");

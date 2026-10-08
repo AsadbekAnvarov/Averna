@@ -123,7 +123,10 @@ async function deleteTeacher(formData: FormData) {
   redirect("/admin/teachers?deleted=1");
 }
 
-export default async function AdminTeachersPage({ searchParams }: { searchParams: { saved?: string; error?: string; deleted?: string; sort?: string } }) {
+export default async function AdminTeachersPage(
+  props: { searchParams: Promise<{ saved?: string; error?: string; deleted?: string; sort?: string }> }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {

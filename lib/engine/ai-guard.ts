@@ -1,23 +1,10 @@
-/**
- * AI Guard — rate limits, response caching and request de-duplication for every
- * model-backed endpoint.
- *
- * Why: each AI route called GPT-4o on every request with no ceiling. On a public
- * site that is an unbounded spend and a "denial of wallet" vector — one user (or
- * a script) can burn the month's budget in minutes.
- *
- * Scope & honesty: this is an in-process guard (per serverless instance), not a
- * distributed one. It reliably stops the realistic abuse pattern — rapid-fire
- * requests, which land on a warm instance — and removes duplicate spend, with
- * zero new infrastructure and no schema change. A hard cross-instance ceiling
- * needs a shared store (Redis or a counter table); tracked as follow-up.
+/** Shared fixed-window AI limits + per-instance response deduplication.
+ * Limit reservations are atomic in PostgreSQL across all instances. The global
+ * ceiling limits requests, not dollars: audio rendering and dual-task exams can
+ * make several model calls per request. Configure billing limits at the provider too.
  */
 
-interface Window {
-  hits: number[];
-}
-
-const windows = new Map<string, Window>();
+import { reserveLimits } from "@/lib/security/rate-limit";
 
 interface CacheEntry {
   value: unknown;
@@ -63,6 +50,7 @@ export const AI_LIMITS: Record<string, RouteLimit> = {
   // Exam-format assessment: when exhausted, scoring falls back to heuristics
   // (the attempt is still saved) — never a failed submission.
   "speaking-test": { perHour: 6, perDay: 20 },
+  "writing-submit": { perHour: 8, perDay: 24 },
   "writing-exam": { perHour: 8, perDay: 24 },
   // Admin bulk generator: one request = one passage / part / task. Filling the
   // library to 70 per skill is ~700 steps (Reading 3, Listening 4, others 1).
@@ -79,12 +67,6 @@ export const AI_LIMITS: Record<string, RouteLimit> = {
 
 const DEFAULT_LIMIT: RouteLimit = { perHour: 20, perDay: 100 };
 
-function countWithin(key: string, windowMs: number, now: number): number {
-  const w = windows.get(key);
-  if (!w) return 0;
-  return w.hits.filter((t) => now - t < windowMs).length;
-}
-
 export interface GuardResult {
   ok: boolean;
   /** Student/teacher-facing message when blocked. */
@@ -96,37 +78,22 @@ export interface GuardResult {
  * Check and record one AI request for a user on a route. Call this BEFORE the
  * model call; when it returns `ok: false`, respond 429 with `message`.
  */
-export function guardAi(userId: string, route: string): GuardResult {
+export async function guardAi(userId: string, route: string): Promise<GuardResult> {
   const limit = AI_LIMITS[route] ?? DEFAULT_LIMIT;
-  const now = Date.now();
-  const key = `${route}:${userId}`;
-
-  const hour = countWithin(key, 3_600_000, now);
-  const day = countWithin(key, 86_400_000, now);
-
-  if (hour >= limit.perHour) {
-    return {
-      ok: false,
-      message: "You've used a lot of AI help in the last hour — take a short break and try again soon.",
-      retryAfterSeconds: 600,
-    };
-  }
-  if (day >= limit.perDay) {
-    return {
-      ok: false,
-      message: "You've reached today's AI limit. It resets tomorrow — your learning data is all still here.",
-      retryAfterSeconds: 3600,
-    };
-  }
-
-  const w = windows.get(key) ?? { hits: [] };
-  // Drop anything older than a day so the array can't grow unbounded.
-  w.hits = w.hits.filter((t) => now - t < 86_400_000);
-  w.hits.push(now);
-  windows.set(key, w);
-  prune(windows);
-
-  return { ok: true };
+  const globalDaily = Math.max(1, Number.parseInt(process.env.AI_DAILY_REQUEST_LIMIT || "2000", 10) || 2000);
+  const result = await reserveLimits([
+    { key: `ai:${route}:${userId}:hour`, limit: limit.perHour, seconds: 3600 },
+    { key: `ai:${route}:${userId}:day`, limit: limit.perDay, seconds: 86400 },
+    { key: "ai:platform:day", limit: globalDaily, seconds: 86400 },
+  ]);
+  if (result.ok) return { ok: true };
+  return {
+    ok: false,
+    message: result.unavailable
+      ? "AI help is temporarily unavailable. Your learning data is safe — please try again shortly."
+      : "The AI request limit has been reached. Your learning data is safe — please try again later.",
+    retryAfterSeconds: result.retryAfterSeconds,
+  };
 }
 
 /**

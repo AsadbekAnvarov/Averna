@@ -15,7 +15,8 @@ const MAX_BODY_BYTES = 32_000;
  *
  * Teachers review the students of their own groups; admins everyone.
  */
-export async function POST(req: NextRequest, { params }: { params: { testId: string } }) {
+export async function POST(req: NextRequest, props: { params: Promise<{ testId: string }> }) {
+  const params = await props.params;
   let user: { id: string; role?: string | null };
   try {
     user = await requireTeacherOrAdmin();

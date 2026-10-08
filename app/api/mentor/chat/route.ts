@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export async function POST(req: NextRequest) {
   try {
     const user = await requireAuth();
-    const guard = guardAi(user.id, "mentor-chat");
+    const guard = await guardAi(user.id, "mentor-chat");
     if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
 
     const { message, history } = await req.json();

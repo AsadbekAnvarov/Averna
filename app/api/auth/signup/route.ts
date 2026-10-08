@@ -1,3 +1,9 @@
+import { trustedMutation } from "@/lib/security/same-origin";
+import { reserveLimits } from "@/lib/security/rate-limit";
+import { clientAddress } from "@/lib/security/rate-policy";
+import { accountMailConfigured, verificationRequired } from "@/lib/account/mail";
+import { issueAccountLink } from "@/lib/account/recovery";
+import { passwordProblem } from "@/lib/account/password-rules";
 import { NextRequest, NextResponse } from "next/server";
 import { hash } from "bcryptjs";
 import { db } from "@/lib/db";
@@ -52,7 +58,11 @@ function describeDbError(error: unknown): { message: string; code?: string } | n
 }
 
 export async function POST(req: NextRequest) {
+  if (!trustedMutation(req)) return NextResponse.json({ error: "Untrusted request origin." }, { status: 403 });
   try {
+    if (verificationRequired() && !accountMailConfigured()) return NextResponse.json({ error: "Registration email is not configured. Contact Averna support." }, { status: 503 });
+    const limit = await reserveLimits([{ key: `signup:${clientAddress(req.headers)}`, limit: 5, seconds: 3600 }]);
+    if (!limit.ok) return NextResponse.json({ error: "Please wait before creating another account." }, { status: limit.unavailable ? 503 : 429 });
     const body = await req.json().catch(() => null);
     if (!body || typeof body !== "object") {
       return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
@@ -87,9 +97,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (password.length < 8) {
+    if (name.length > 100 || email.length > 254 || personalGoal.length > 200 || passwordProblem(password, { email, username })) {
       return NextResponse.json(
-        { error: "Password must be at least 8 characters" },
+        { error: "Use 8+ characters, a letter and a number; avoid common passwords (maximum 72 bytes)." },
         { status: 400 }
       );
     }
@@ -127,7 +137,7 @@ export async function POST(req: NextRequest) {
           username,
           password: hashedPassword,
           role: "STUDENT",
-          emailVerified: new Date(),
+          emailVerified: null,
         },
       });
 
@@ -141,9 +151,15 @@ export async function POST(req: NextRequest) {
       return created;
     });
 
+    let verificationSent = false;
+    if (accountMailConfigured()) {
+      try { await issueAccountLink(user, "verify"); verificationSent = true; } catch { console.error("Signup verification email delivery failed"); }
+    }
     return NextResponse.json(
       {
-        message: "Account created successfully",
+        verificationRequired: verificationRequired(),
+        verificationSent,
+        message: verificationRequired() ? "Account created. Confirm your email before signing in; you can request a new link on the sign-in page." : "Account created successfully",
         user: {
           id: user.id,
           email: user.email,

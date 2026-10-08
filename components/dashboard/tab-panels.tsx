@@ -4,6 +4,7 @@
  * that tab's data. Each panel reads what it needs in parallel; the student row
  * and the homework list come from React cache (shared with the layout).
  */
+import { NextSessionCard } from "@/components/study/next-session-card";
 import { Suspense } from "react";
 import { Dumbbell, Gamepad2, Newspaper } from "lucide-react";
 import { db } from "@/lib/db";
@@ -80,6 +81,7 @@ export async function HomeTab({ student }: TabPanelProps) {
         quote={dailyQuote}
         featuredCosmetic={student.featuredCosmetic}
       />
+      <NextSessionCard />
       <Suspense fallback={null}>
         <HabitNudge studentId={student.id} streak={student.currentStreak} />
       </Suspense>

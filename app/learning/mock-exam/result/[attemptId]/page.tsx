@@ -72,7 +72,8 @@ const FOCUS_TIP: Record<MockSection, string> = {
 const fmt = (b: number) => (Number.isFinite(b) ? b.toFixed(1) : "–");
 const trim = (x: number) => String(Math.round(x * 1000) / 1000);
 
-export default async function MockResultPage({ params }: { params: { attemptId: string } }) {
+export default async function MockResultPage(props: { params: Promise<{ attemptId: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

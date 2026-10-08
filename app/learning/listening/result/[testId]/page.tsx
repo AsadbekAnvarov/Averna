@@ -29,7 +29,8 @@ async function xpForTest(studentId: string, testId: string): Promise<number | nu
  * Listening practice has no result page, so anything else goes back to the
  * library.
  */
-export default async function ListeningResultPage({ params }: { params: { testId: string } }) {
+export default async function ListeningResultPage(props: { params: Promise<{ testId: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

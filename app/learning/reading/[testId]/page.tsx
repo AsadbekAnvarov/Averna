@@ -57,18 +57,20 @@ async function submittedResultId(userId: string, attempt: string): Promise<strin
   }
 }
 
-export async function generateMetadata({ params }: { params: { testId: string } }) {
+export async function generateMetadata(props: { params: Promise<{ testId: string }> }) {
+  const params = await props.params;
   const test = await getReadingExam(safeDecode(params.testId)).catch(() => null);
   return { title: test ? `${test.title} · Reading` : "Reading test" };
 }
 
-export default async function ReadingTestPage({
-  params,
-  searchParams = {},
-}: {
-  params: { testId: string };
-  searchParams?: SearchParams;
-}) {
+export default async function ReadingTestPage(
+  props: {
+    params: Promise<{ testId: string }>;
+    searchParams?: Promise<SearchParams>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 
