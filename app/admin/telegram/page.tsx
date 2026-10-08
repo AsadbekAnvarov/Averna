@@ -24,7 +24,7 @@ export default async function AdminTelegramPage() {
 
   let initial: TelegramAdminStatus | null = null;
   try {
-    initial = await telegramAdminStatus(requestOrigin(headers()), session.user.id);
+    initial = await telegramAdminStatus(requestOrigin(await headers()), session.user.id);
   } catch (e) {
     console.error("admin telegram page: status failed", e);
     initial = null; // the panel offers "Qayta urinish"

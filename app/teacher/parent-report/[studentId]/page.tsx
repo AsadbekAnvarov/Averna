@@ -17,7 +17,8 @@ function attLabel(status: string) {
   return { t: "Absent", c: "text-red-400", I: XCircle };
 }
 
-export default async function ParentReportPage({ params }: { params: { studentId: string } }) {
+export default async function ParentReportPage(props: { params: Promise<{ studentId: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "STUDENT") redirect("/dashboard");

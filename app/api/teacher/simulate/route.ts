@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export async function POST(req: NextRequest) {
   try {
     const user = await requireAuth();
-    const guard = guardAi(user.id, "teacher-tool");
+    const guard = await guardAi(user.id, "teacher-tool");
     if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
     if (user.role !== "TEACHER" && user.role !== "ADMIN") {
       return NextResponse.json({ error: "Teachers only" }, { status: 403 });

@@ -14,7 +14,8 @@ export const metadata = { title: "IELTS mock exam" };
 const HUB = "/learning/mock-exam";
 
 /** One sitting of the real mock exam. `examId` is the MockAttempt id (old demo ids simply lead back to the hub). */
-export default async function MockExamRunPage({ params }: { params: { examId: string } }) {
+export default async function MockExamRunPage(props: { params: Promise<{ examId: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

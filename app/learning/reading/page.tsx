@@ -12,7 +12,8 @@ import { parseDifficulty, parseTypeFilter, type SearchParams } from "@/component
 
 const PATH = "/learning/reading";
 
-export default async function ReadingLibraryPage({ searchParams = {} }: { searchParams?: SearchParams }) {
+export default async function ReadingLibraryPage(props: { searchParams?: Promise<SearchParams> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 

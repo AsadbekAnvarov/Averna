@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export async function POST(req: NextRequest) {
   try {
     const user = await requireAuth();
-    const guard = guardAi(user.id, "roleplay");
+    const guard = await guardAi(user.id, "roleplay");
     if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
 
     const { scenarioId, message, history } = await req.json();

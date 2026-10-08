@@ -179,11 +179,12 @@ type GroupWithMembers = {
   rosterMembers: RosterMemberRow[];
 };
 
-export default async function AdminGroupsPage({
-  searchParams,
-}: {
-  searchParams: { saved?: string; deleted?: string; sort?: string };
-}) {
+export default async function AdminGroupsPage(
+  props: {
+    searchParams: Promise<{ saved?: string; deleted?: string; sort?: string }>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {

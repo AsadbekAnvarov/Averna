@@ -28,7 +28,8 @@ async function updateAdminProfile(formData: FormData) {
   redirect("/admin/profile?saved=1");
 }
 
-export default async function AdminProfilePage({ searchParams }: { searchParams: { saved?: string } }) {
+export default async function AdminProfilePage(props: { searchParams: Promise<{ saved?: string }> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {

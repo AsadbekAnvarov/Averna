@@ -59,11 +59,12 @@ function fmt(n: number) {
   return n.toLocaleString("en-US");
 }
 
-export default async function BillingPage({
-  searchParams,
-}: {
-  searchParams: { success?: string; error?: string };
-}) {
+export default async function BillingPage(
+  props: {
+    searchParams: Promise<{ success?: string; error?: string }>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "TEACHER") redirect("/teacher/dashboard");

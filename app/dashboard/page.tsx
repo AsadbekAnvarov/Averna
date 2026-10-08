@@ -25,7 +25,8 @@ const PANELS: Record<DashboardTabKey, (props: TabPanelProps) => Promise<JSX.Elem
   fun: PlayTab,
 };
 
-export default async function DashboardPage({ searchParams }: { searchParams: { tab?: string | string[] } }) {
+export default async function DashboardPage(props: { searchParams: Promise<{ tab?: string | string[] }> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   // The layout redirects teachers / admins and shows the notice for a missing profile.

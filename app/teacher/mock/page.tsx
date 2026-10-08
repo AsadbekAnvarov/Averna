@@ -39,7 +39,8 @@ const NOTICE = "mb-4 flex items-start gap-2 rounded-xl border px-4 py-2.5 text-s
 
 const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
 
-export default async function TeacherMockPage({ searchParams = {} }: { searchParams?: SearchParams }) {
+export default async function TeacherMockPage(props: { searchParams?: Promise<SearchParams> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
   const role: string = session.user.role;

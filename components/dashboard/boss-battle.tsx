@@ -1,13 +1,13 @@
 "use client";
 
+import { useOwnedMistakes } from "@/components/learning/use-owned-mistakes";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
 import { Swords, Heart, Trophy, Flame, Skull, Zap, ShieldAlert } from "lucide-react";
 
-const MISTAKES_KEY = "averna_mistakes_v1";
-const STATS_KEY = "averna_boss_v1";
+
 
 interface Mistake {
   id: string;
@@ -60,12 +60,13 @@ function norm(s: string) {
  * by picking the correct fix. Right answers deal damage (streaks land crits),
  * wrong answers cost a heart. Defeat the boss to bank Battle Points.
  *
- * Fully client-side: reuses the same localStorage the Mistake Bank writes
- * (averna_mistakes_v1) so there's nothing to seed and no backend dependency.
+ * Correction content comes from the student-owned bank; local battle records
+ * are scoped to the signed-in account.
  */
 export function BossBattle() {
   const [loaded, setLoaded] = useState(false);
-  const [mistakes, setMistakes] = useState<Mistake[]>([]);
+  const { owner, items: mistakes, loading: bankLoading } = useOwnedMistakes();
+  const statsKey = `averna_boss_v2:${owner}`;
   const [stats, setStats] = useState<BossStats>({ wins: 0, bestCombo: 0, battlePoints: 0 });
 
   const [phase, setPhase] = useState<Phase>("idle");
@@ -88,10 +89,9 @@ export function BossBattle() {
 
   useEffect(() => {
     mounted.current = true;
+    setPhase("idle"); setQ(null); setStats({ wins: 0, bestCombo: 0, battlePoints: 0 });
     try {
-      const raw = localStorage.getItem(MISTAKES_KEY);
-      if (raw) setMistakes(JSON.parse(raw));
-      const s = localStorage.getItem(STATS_KEY);
+      const s = localStorage.getItem(statsKey);
       if (s) setStats(JSON.parse(s));
     } catch {
       /* ignore */
@@ -102,7 +102,7 @@ export function BossBattle() {
       mounted.current = false;
       pending.forEach(clearTimeout);
     };
-  }, []);
+  }, [statsKey]);
 
   const later = useCallback((fn: () => void, ms: number) => {
     const t = setTimeout(() => {
@@ -154,7 +154,7 @@ export function BossBattle() {
           battlePoints: prev.battlePoints + reward,
         };
         try {
-          localStorage.setItem(STATS_KEY, JSON.stringify(next));
+          localStorage.setItem(statsKey, JSON.stringify(next));
         } catch {
           /* ignore */
         }
@@ -163,7 +163,7 @@ export function BossBattle() {
       setPhase("win");
       toast.success(`Boss defeated! +${reward} Battle Points ⚔️`);
     },
-    [bossMaxHp],
+    [bossMaxHp, statsKey],
   );
 
   const choose = (option: string) => {
@@ -213,7 +213,7 @@ export function BossBattle() {
   const bossPct = Math.round((bossHp / bossMaxHp) * 100);
 
   // ---- Idle / gate ----
-  if (!loaded) {
+  if (!loaded || bankLoading || !owner) {
     return (
       <Card className="glass border-red-500/30">
         <CardHeader>

@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
   const key = `${test.id}#${partIndex}`;
   if (inFlight.has(key)) return fail(409, "busy", "Bu qism hozir yaratilmoqda — biroz kuting.");
 
-  const guard = guardAi(user.id, "listening-audio");
+  const guard = await guardAi(user.id, "listening-audio");
   if (!guard.ok) {
     const wait = guard.retryAfterSeconds ?? 600;
     return fail(429, "rate_limit", `AI limiti tugadi — taxminan ${Math.max(1, Math.round(wait / 60))} daqiqadan keyin davom etadi.`, {

@@ -46,6 +46,41 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
     typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `a-${Date.now()}`
   );
 
+  const draftKey = `averna_writing_draft_v1:${userId}:${prompt.id}:${homework?.id ?? "practice"}`;
+  const submittedRef = useRef(false);
+  const [draftLoaded, setDraftLoaded] = useState(false);
+  const [draftStatus, setDraftStatus] = useState("Draft saves on this device");
+  useEffect(() => {
+    try {
+      const draft = JSON.parse(localStorage.getItem(draftKey) || "null");
+      if (draft && typeof draft.essay === "string") {
+        setEssay(draft.essay.slice(0, 20000));
+        if (typeof draft.attemptId === "string") attemptIdRef.current = draft.attemptId;
+        if (typeof draft.timeLeft === "number" && Number.isFinite(draft.timeLeft)) setTimeLeft(Math.max(0, Math.min(config.timeLimit * 60, draft.timeLeft)));
+        setDraftStatus("Draft restored from this device");
+      }
+    } catch { setDraftStatus("Local draft could not be restored"); }
+    setDraftLoaded(true);
+  }, [draftKey, config.timeLimit]);
+  useEffect(() => {
+    if (!draftLoaded || isSubmitting || submittedRef.current) return;
+    const id = window.setTimeout(() => {
+      try { localStorage.setItem(draftKey, JSON.stringify({ essay, timeLeft, attemptId: attemptIdRef.current })); setDraftStatus("Draft saved on this device"); }
+      catch { setDraftStatus("Local saving unavailable — keep this tab open"); }
+    }, 400);
+    return () => window.clearTimeout(id);
+  }, [draftKey, draftLoaded, essay, timeLeft, isSubmitting]);
+
+  useEffect(() => {
+    if (!draftLoaded) return;
+    const saveBeforeLeaving = () => {
+      if (submittedRef.current) return;
+      try { localStorage.setItem(draftKey, JSON.stringify({ essay, timeLeft, attemptId: attemptIdRef.current })); } catch {}
+    };
+    window.addEventListener("pagehide", saveBeforeLeaving);
+    return () => window.removeEventListener("pagehide", saveBeforeLeaving);
+  }, [draftKey, draftLoaded, essay, timeLeft]);
+
   // Calculate word count
   useEffect(() => {
     const words = essay.trim().split(/\s+/).filter((word) => word.length > 0);
@@ -124,6 +159,8 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
 
       const data = await response.json();
 
+      submittedRef.current = true;
+      try { localStorage.removeItem(draftKey); } catch {}
       // Redirect to results page
       router.push(`/learning/writing/result/${data.testId}`);
     } catch (error) {
@@ -213,7 +250,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Assessment:</span>
-                    <span className="text-averna-neon">AI Powered</span>
+                    <span className="text-averna-neon">Practice estimate</span>
                   </div>
                 </div>
               </CardContent>
@@ -225,8 +262,8 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
             {/* Stats Bar */}
             <Card className="glass border-averna-primary/30 animate-fade-in">
               <CardContent className="py-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-6">
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="flex flex-wrap items-center gap-4">
                     {/* Timer */}
                     <div className="flex items-center gap-2">
                       <Clock className={`h-5 w-5 ${getTimerColor()}`} />
@@ -259,7 +296,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
                     ) : (
                       <>
                         <Send className="mr-2 h-4 w-4" />
-                        Submit for AI Review
+                        Submit for feedback
                       </>
                     )}
                   </Button>
@@ -267,6 +304,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
               </CardContent>
             </Card>
 
+            <p role="status" className="text-sm text-gray-300">{draftStatus}. This draft is not synced to another device; submitted results save to your account.</p>
             {/* Warning */}
             {showWarning && (
               <Card className="glass border-red-500/50 bg-red-500/10 animate-fade-in">

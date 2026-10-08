@@ -3,11 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle } from "lucide-react";
 
-export default function AuthErrorPage({
-  searchParams,
-}: {
-  searchParams: { error?: string };
-}) {
+export default async function AuthErrorPage(
+  props: {
+    searchParams: Promise<{ error?: string }>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const error = searchParams.error;
 
   const errorMessages: { [key: string]: string } = {

@@ -6,7 +6,8 @@ import { beginPlacementSection } from "@/lib/placement/placement";
 export const dynamic = "force-dynamic";
 
 /** Start the clock of the current section. Body: { section: number } */
-export async function POST(req: Request, { params }: { params: { id: string } }) {
+export async function POST(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   let userId: string;
   try {
     userId = (await requireAuth()).id;

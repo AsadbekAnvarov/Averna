@@ -1,5 +1,6 @@
 "use client";
 
+import { useOwnedMistakes } from "@/components/learning/use-owned-mistakes";
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Lock, Timer, Swords, Ghost, Gauge, CalendarDays, Zap, BookMarked, Flame, Gift } from "lucide-react";
@@ -31,17 +32,17 @@ interface Trophy {
  * client-side — reads the same localStorage keys those features write.
  */
 export function RecordsWall({ mysteryCount = 0 }: { mysteryCount?: number }) {
+  const { owner, items: mistakes } = useOwnedMistakes();
   const [loaded, setLoaded] = useState(false);
   const [trophies, setTrophies] = useState<Trophy[]>([]);
 
   useEffect(() => {
     const focus = read<{ totalMs: number; sessions: number; bestSessionMs: number }>("averna_focus_v1");
-    const boss = read<{ wins: number; bestCombo: number; battlePoints: number }>("averna_boss_v1");
+    const boss = read<{ wins: number; bestCombo: number; battlePoints: number }>(`averna_boss_v2:${owner}`);
     const ghost = read<Record<string, { bestMs: number; splits: number[] }>>("averna_ghost_v1");
     const conf = read<{ bestScore: number; lifetime: Record<string, { c: number; t: number }> }>("averna_confidence_v1");
     const duel = read<{ byDay: Record<string, { bestCorrect: number; bestMs: number }>; streak: number }>("averna_wordduel_v1");
-    const warm = read<{ streak: number; sessions: number }>("averna_warmup_v1");
-    const mistakes = read<unknown[]>("averna_mistakes_v1");
+    const warm = read<{ streak: number; sessions: number }>(`averna_warmup_v2:${owner}`);
 
     const focusMs = focus?.totalMs ?? 0;
     const focusLabel = focusMs >= 3_600_000 ? `${(focusMs / 3_600_000).toFixed(1)}h` : `${Math.round(focusMs / 60000)}m`;
@@ -143,7 +144,7 @@ export function RecordsWall({ mysteryCount = 0 }: { mysteryCount?: number }) {
 
     setTrophies(list);
     setLoaded(true);
-  }, [mysteryCount]);
+  }, [mysteryCount, owner, mistakes]);
 
   const unlockedCount = trophies.filter((t) => t.unlocked).length;
 

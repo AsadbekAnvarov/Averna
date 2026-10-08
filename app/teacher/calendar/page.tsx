@@ -22,7 +22,8 @@ function weekdaysFromText(text: string | null | undefined): number[] {
   return Object.entries(DOW).filter(([abbr]) => t.includes(abbr)).map(([, n]) => n);
 }
 
-export default async function TeacherCalendarPage({ searchParams }: { searchParams: { m?: string; d?: string } }) {
+export default async function TeacherCalendarPage(props: { searchParams: Promise<{ m?: string; d?: string }> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "STUDENT") redirect("/dashboard");

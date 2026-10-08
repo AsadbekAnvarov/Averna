@@ -22,11 +22,12 @@ import { LearningDnaPanel } from "@/components/teacher/learning-dna-panel";
  * who is in one of their own groups. A behavioural profile is more revealing than
  * a grade, so it doesn't inherit the looser "any teacher" convention.
  */
-export default async function TeacherLearningDnaPage({
-  params,
-}: {
-  params: { studentId: string };
-}) {
+export default async function TeacherLearningDnaPage(
+  props: {
+    params: Promise<{ studentId: string }>;
+  }
+) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "STUDENT") redirect("/learning-dna");

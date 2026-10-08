@@ -6,7 +6,8 @@ import { abandonMock } from "@/lib/ielts/mock";
 export const dynamic = "force-dynamic";
 
 /** Leave the mock exam for good (sections already submitted stay saved). */
-export async function POST(_req: Request, { params }: { params: { id: string } }) {
+export async function POST(_req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   let userId: string;
   try {
     userId = (await requireAuth()).id;

@@ -11,7 +11,8 @@ export const maxDuration = 60;
  * Submit the current section.
  * Body: { section: number, payload: { answers } | { essay } | { skip: true } } → { ok: true, done, section }
  */
-export async function POST(req: Request, { params }: { params: { id: string } }) {
+export async function POST(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   let userId: string;
   try {
     userId = (await requireAuth()).id;

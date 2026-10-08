@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     if (!student) return NextResponse.json({ error: "No student profile" }, { status: 403 });
 
     // Cost/abuse ceiling before any model call.
-    const guard = guardAi(user.id, "averna-ai");
+    const guard = await guardAi(user.id, "averna-ai");
     if (!guard.ok) {
       return NextResponse.json({ reply: guard.message }, { status: 429 });
     }

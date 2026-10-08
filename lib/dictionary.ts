@@ -358,7 +358,7 @@ export async function lookupWord(opts: {
   if (cached && !upgrade) return fromCache(cached);
 
   // A miss (or an upgrade) costs a model / network call: guarded per user.
-  const guard = guardAi(userId, "dictionary");
+  const guard = await guardAi(userId, "dictionary");
   if (!guard.ok) {
     if (cached) return fromCache(cached);
     return { kind: "limited", message: LIMIT_MESSAGE, retryAfterSeconds: guard.retryAfterSeconds };

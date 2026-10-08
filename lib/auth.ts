@@ -1,3 +1,6 @@
+import { reserveLimits } from "@/lib/security/rate-limit";
+import { clientAddress } from "@/lib/security/rate-policy";
+import { verificationRequired } from "@/lib/account/mail";
 import NextAuth, { DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
@@ -48,20 +51,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: { label: "Email or username", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(credentials, request) {
         const login = typeof credentials?.email === "string" ? credentials.email.trim() : "";
         if (!login || !credentials?.password) {
           throw new Error("Invalid credentials");
         }
 
+        if (login.length > 254 || typeof credentials.password !== "string" || credentials.password.length > 200) throw new Error("Invalid credentials");
+        const limit = await reserveLimits([
+          { key: `signin:account:${login.toLowerCase().replace(/^@/, "")}`, limit: 10, seconds: 900 },
+          { key: `signin:ip:${clientAddress(request.headers)}`, limit: 50, seconds: 900 },
+        ]);
+        if (!limit.ok) throw new Error("Sign-in temporarily limited");
+
         // An email (normalised the same way signup does, so logins are
         // case/whitespace-insensitive) or a username (stored lower case, "@" optional).
-        const select = { id: true, email: true, name: true, role: true, image: true, password: true, passwordChangedAt: true };
+        const select = { id: true, email: true, name: true, role: true, image: true, password: true, passwordChangedAt: true, emailVerified: true };
         const user = looksLikeEmail(login)
           ? await db.user.findUnique({ where: { email: login.toLowerCase() }, select })
           : await db.user.findUnique({ where: { username: normalizeUsername(login) }, select });
 
-        if (!user || !user.password) {
+        if (!user || !user.password || (verificationRequired() && !user.emailVerified)) {
           throw new Error("Invalid credentials");
         }
 

@@ -16,7 +16,7 @@ const MODULE_LABEL: Record<string, string> = {
 export async function GET() {
   try {
     const user = await requireAuth();
-    const guard = guardAi(user.id, "podcast");
+    const guard = await guardAi(user.id, "podcast");
     if (!guard.ok) return NextResponse.json({ error: guard.message }, { status: 429 });
 
     const student = await db.student.findUnique({

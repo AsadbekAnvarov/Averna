@@ -50,7 +50,8 @@ interface HomeworkRow {
   }[];
 }
 
-export default async function TeacherHomeworkPage({ searchParams = {} }: { searchParams?: SearchParams }) {
+export default async function TeacherHomeworkPage(props: { searchParams?: Promise<SearchParams> }) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
   if (session.user.role === "STUDENT") return redirect("/dashboard");

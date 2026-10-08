@@ -1,3 +1,4 @@
+import { trustedMutation } from "@/lib/security/same-origin";
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -59,8 +60,7 @@ export async function GET() {
     }
     return NextResponse.json({ items });
   } catch {
-    // Never break the review UI because sync is unavailable.
-    return NextResponse.json({ items: {} });
+    return NextResponse.json({ error: "Review timing is temporarily unavailable. Please retry." }, { status: 503 });
   }
 }
 
@@ -74,6 +74,7 @@ export async function GET() {
  * so a fast game round can't be farmed for XP.
  */
 export async function POST(req: NextRequest) {
+  if (!trustedMutation(req)) return NextResponse.json({ error: "Untrusted request origin." }, { status: 403 });
   try {
     const user = await requireAuth();
     const student = await db.student.findUnique({ where: { userId: user.id }, select: { id: true } });
@@ -84,6 +85,13 @@ export async function POST(req: NextRequest) {
     const reviews = raw.map(parseReview).filter((r): r is ReviewInput => r !== null);
     if (reviews.length === 0) {
       return NextResponse.json({ error: "Invalid review" }, { status: 400 });
+    }
+
+    const mistakeIds = reviews.filter((r) => r.source === "mistake").map((r) => r.itemKey);
+    if (mistakeIds.length) {
+      const owned = await db.mistakeEntry.findMany({ where: { studentId: student.id, id: { in: mistakeIds } }, select: { id: true } });
+      const ids = new Set(owned.map((r) => r.id));
+      if (mistakeIds.some((id) => !ids.has(id))) return NextResponse.json({ error: "Review a correction saved in your own account." }, { status: 403 });
     }
 
     // One budget lookup for the whole request.

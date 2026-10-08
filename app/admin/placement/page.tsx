@@ -58,11 +58,12 @@ async function allowRetake(formData: FormData) {
   revalidatePath("/admin/placement");
 }
 
-export default async function AdminPlacementPage({
-  searchParams,
-}: {
-  searchParams: Record<string, string | string[] | undefined>;
-}) {
+export default async function AdminPlacementPage(
+  props: {
+    searchParams: Promise<Record<string, string | string[] | undefined>>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role !== "ADMIN") {

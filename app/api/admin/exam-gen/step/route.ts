@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
   const draftId = typeof body?.draftId === "string" ? body.draftId.trim() : "";
   if (!draftId) return json({ error: "draftId is required." }, 400);
   if (!hasOpenAI()) return json({ error: "OpenAI is not configured — set OPENAI_API_KEY to generate tests." }, 400);
-  const guard = guardAi(user.id, "exam-gen");
+  const guard = await guardAi(user.id, "exam-gen");
   if (!guard.ok) return json({ error: guard.message ?? "AI limit reached.", retryAfterSec: guard.retryAfterSeconds ?? 600 }, 429);
 
   try {

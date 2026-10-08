@@ -48,7 +48,8 @@ const ENTER =
 const fmt = (b: number | undefined | null) => (typeof b === "number" && Number.isFinite(b) ? b.toFixed(1) : "–");
 const pct = (w: number | undefined) => `${Math.round((w ?? 0) * 100)} %`;
 
-export default async function PlacementResultPage({ params }: { params: { attemptId: string } }) {
+export default async function PlacementResultPage(props: { params: Promise<{ attemptId: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 

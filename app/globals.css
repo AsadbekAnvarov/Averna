@@ -122,6 +122,7 @@
   --c-exam-mark: 255 251 235;
   --c-surface-raised: 11 26 22;
   --c-surface-well: 0 0 0;
+  --c-study-ink: 0 229 255;
 }
 html.light {
   --c-white: 15 23 42;
@@ -194,6 +195,7 @@ html.light {
   --c-exam-mark: 15 23 42;
   --c-surface-raised: 255 255 255;
   --c-surface-well: 255 255 255;
+  --c-study-ink: 0 102 129;
 }
 /* Solid white and saturated fills keep white ink (button labels, switch knobs …). */
 html.light .bg-white,
@@ -1210,3 +1212,8 @@ body { -webkit-tap-highlight-color: transparent; text-rendering: optimizeLegibil
 .averna-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; height: 18px; width: 18px; border-radius: 9999px; background: #fff; box-shadow: 0 0 0 4px rgba(0,229,255,0.25); cursor: pointer; }
 .averna-range::-moz-range-thumb { height: 18px; width: 18px; border: 0; border-radius: 9999px; background: #fff; box-shadow: 0 0 0 4px rgba(0,229,255,0.25); cursor: pointer; }
 html.light .averna-range { background: rgba(15,23,42,0.12); }
+
+/* New study/account surfaces: readable placeholder ink without changing legacy pages. */
+html.light .correction-studio input::placeholder,
+html.light .correction-studio textarea::placeholder,
+html.light .account-link-form input::placeholder { color: #475569; }

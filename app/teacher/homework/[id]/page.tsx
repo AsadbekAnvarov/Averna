@@ -109,7 +109,8 @@ function Tile({ label, value, sub, tone = "text-white" }: { label: string; value
 const linkCls =
   "inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border px-3 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon";
 
-export default async function TeacherHomeworkDetailPage({ params }: { params: { id: string } }) {
+export default async function TeacherHomeworkDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
   if (session.user.role === "STUDENT") return redirect("/dashboard");

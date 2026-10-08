@@ -27,7 +27,7 @@ export const STUDIO_TOOLS: StudioTool[] = [
   { slug: "voice-journal", title: "Voice Journal", blurb: "A 60-second spoken diary that tracks your fluency", icon: Mic, color: "text-averna-pink", bg: "bg-averna-pink/15", group: "practice" },
   { slug: "roleplay", title: "Roleplay", blurb: "Chat in character — airport, interview, café and more", icon: Clapperboard, color: "text-averna-purple", bg: "bg-averna-purple/15", group: "practice" },
   { slug: "teach", title: "Teach to Learn", blurb: "Explain a concept and get a clarity score", icon: Lightbulb, color: "text-amber-400", bg: "bg-amber-400/15", group: "practice" },
-  { slug: "mistakes", title: "Mistake Bank", blurb: "Save your errors and beat them with spaced repetition", icon: BookMarked, color: "text-averna-cyan", bg: "bg-averna-cyan/15", group: "practice" },
+  { slug: "mistakes", title: "Correction Studio", blurb: "Save, rewrite and revisit your own corrections across devices", icon: BookMarked, color: "text-averna-cyan", bg: "bg-averna-cyan/15", group: "practice" },
   { slug: "essay-xray", title: "Essay X-Ray", blurb: "Examiner-style diagnosis with issues highlighted", icon: ScanLine, color: "text-averna-cyan", bg: "bg-averna-cyan/15", group: "practice" },
   { slug: "podcast", title: "Daily Podcast", blurb: "90 seconds on your weakest skill, read aloud", icon: Headphones, color: "text-averna-purple", bg: "bg-averna-purple/15", group: "practice" },
   { slug: "focus", title: "Focus Room", blurb: "A Pomodoro timer and the deep-focus vault", icon: Timer, color: "text-averna-neon", bg: "bg-averna-neon/15", group: "practice" },

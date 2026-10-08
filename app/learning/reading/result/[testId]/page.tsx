@@ -102,7 +102,8 @@ function QuestionReview({
   );
 }
 
-export default async function ReadingResultPage({ params }: { params: { testId: string } }) {
+export default async function ReadingResultPage(props: { params: Promise<{ testId: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 

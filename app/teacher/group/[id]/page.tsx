@@ -16,7 +16,8 @@ import {
 } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 
-export default async function TeacherGroupPage({ params }: { params: { id: string } }) {
+export default async function TeacherGroupPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
   if (session.user.role === "STUDENT") redirect("/dashboard");

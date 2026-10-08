@@ -1,5 +1,8 @@
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
+import { canRunAfterResponse, runAfterResponse } from "@/lib/after-response";
+import { processWritingRetry } from "@/lib/assessment/writing-queue";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -18,11 +21,12 @@ import { HomeworkNoticeCard } from "@/components/homework/homework-notice";
 import { canViewStudent } from "@/lib/access";
 import { homeworkNoticeFor } from "@/lib/homework/exam-homework";
 
-export default async function WritingResultPage({
-  params,
-}: {
-  params: { testId: string };
-}) {
+export default async function WritingResultPage(
+  props: {
+    params: Promise<{ testId: string }>;
+  }
+) {
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 
@@ -35,6 +39,7 @@ export default async function WritingResultPage({
         },
       },
       review: { select: { band: true } },
+      assessmentJob: { select: { status: true } },
     },
   });
 
@@ -43,6 +48,10 @@ export default async function WritingResultPage({
   const viewerIsOwner = test.student.userId === session.user.id;
   if (!viewerIsOwner && !(await canViewStudent(session.user, test.studentId))) {
     redirect("/learning/writing");
+  }
+  const retryStatus = test.assessmentJob?.status;
+  if (viewerIsOwner && (retryStatus === "pending" || retryStatus === "running") && canRunAfterResponse()) {
+    void runAfterResponse("Writing assessment retry", () => processWritingRetry(test.id));
   }
   const student = test.student;
   // Open homework for this prompt (or prompt pair) that this attempt didn't complete (owner only).
@@ -88,14 +97,24 @@ export default async function WritingResultPage({
             {viewerIsOwner ? "Back to Writing" : "Review queue"}
           </Link>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
-            {viewerIsOwner ? "AI Assessment Results" : `${studentName} — Writing`}
+            {viewerIsOwner ? "Writing Feedback" : `${studentName} — Writing`}
           </h1>
           <p className="text-gray-400">
-            {viewerIsOwner ? "Detailed feedback on your writing" : "The AI examiner's assessment of this attempt"}
+            {viewerIsOwner ? "Detailed feedback on your writing" : "The original practice assessment of this attempt"}
           </p>
         </div>
 
         {homeworkNotice && <HomeworkNoticeCard notice={homeworkNotice} className="mb-8" />}
+
+        {teacherBand === null && assessment.source === "heuristic" && (
+          <p role="status" className="text-sm text-gray-400 mb-6">
+            {retryStatus === "pending" || retryStatus === "running"
+              ? "Your essay is saved. AI feedback is awaiting an automatic retry; the estimate below is provisional. Reopen this page later to see any update."
+              : retryStatus === "failed"
+                ? "Your essay is saved, but automatic AI retries did not complete. This is a text-metric estimate; your teacher can still review it."
+                : "Your essay is saved. This is a text-metric estimate, not AI examiner feedback."}
+          </p>
+        )}
 
         {/* Overall Band Score */}
         <Card className="glass border-averna-primary/30 mb-8 animate-fade-in">
@@ -103,7 +122,7 @@ export default async function WritingResultPage({
             <div className="text-center">
               <p className="text-gray-400 mb-2 inline-flex items-center justify-center gap-1.5">
                 {teacherBand !== null && <BadgeCheck className="h-4 w-4 text-averna-neon" aria-hidden />}
-                {teacherBand !== null ? "Teacher's band" : "Overall Band Score"}
+                {teacherBand !== null ? "Teacher's band" : "Estimated band (not an official IELTS result)"}
               </p>
               <div className={`text-7xl font-bold mb-2 block animate-pop ${getBandColor(shownBand)}`}>
                 {shownBand.toFixed(1)}
@@ -113,7 +132,7 @@ export default async function WritingResultPage({
               </p>
               {teacherBand !== null && typeof assessment.overallBand === "number" && (
                 <p className="mt-2 text-sm text-gray-400">
-                  AI examiner&apos;s estimate: {assessment.overallBand.toFixed(1)} — the criterion scores below are the AI&apos;s.
+                  Original practice estimate: {assessment.overallBand.toFixed(1)} — the criterion scores below are from the original assessment.
                 </p>
               )}
               <div className="mt-6 max-w-md mx-auto">
@@ -199,56 +218,7 @@ export default async function WritingResultPage({
             </CardContent>
           </Card>
 
-          {/* AI Detection */}
-          <Card className="glass border-averna-primary/30 animate-fade-in">
-            <CardHeader>
-              <CardTitle className="text-averna-neon">AI Detection Analysis</CardTitle>
-              <CardDescription>Originality assessment</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center mb-6">
-                <p className="text-gray-400 text-sm mb-2">AI-Generated Content Score</p>
-                <div className="text-5xl font-bold mb-2">
-                  <span className={assessment.aiDetectionScore > 50 ? "text-red-400" : "text-green-400"}>
-                    {assessment.aiDetectionScore}%
-                  </span>
-                </div>
-                <Progress value={assessment.aiDetectionScore} className="h-2 mt-4" />
-              </div>
-
-              {assessment.aiDetectionScore <= 30 ? (
-                <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 text-center">
-                  <CheckCircle className="h-8 w-8 text-green-400 mx-auto mb-2" />
-                  <p className="text-green-400 font-semibold mb-1">Appears Original</p>
-                  <p className="text-xs text-gray-400">
-                    Your writing shows strong human characteristics
-                  </p>
-                </div>
-              ) : assessment.aiDetectionScore <= 60 ? (
-                <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 text-center">
-                  <AlertCircle className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
-                  <p className="text-yellow-400 font-semibold mb-1">Moderate AI Similarity</p>
-                  <p className="text-xs text-gray-400">
-                    Some patterns suggest AI assistance
-                  </p>
-                </div>
-              ) : (
-                <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 text-center">
-                  <AlertCircle className="h-8 w-8 text-red-400 mx-auto mb-2" />
-                  <p className="text-red-400 font-semibold mb-1">High AI Similarity</p>
-                  <p className="text-xs text-gray-400">
-                    Writing shows strong AI characteristics
-                  </p>
-                </div>
-              )}
-
-              <div className="mt-6 p-4 bg-averna-primary/10 rounded-lg">
-                <p className="text-xs text-gray-400 text-center">
-                  💡 Note: This is an estimate. Write naturally to improve authenticity.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+          <Card className="glass border-white/15"><CardHeader><CardTitle className="text-white">A note on originality</CardTitle></CardHeader><CardContent><p className="text-sm text-gray-300">Automated text patterns cannot prove who wrote an essay. Your teacher can discuss your process and ask you to explain or revise your work.</p></CardContent></Card>
         </div>
 
         {/* Strengths */}
@@ -327,6 +297,11 @@ export default async function WritingResultPage({
           </CardContent>
         </Card>
 
+        <div className="mt-6 rounded-xl border border-white/15 bg-white/5 p-4 text-sm text-gray-300">
+          <p className="font-medium text-white">{teacherBand !== null ? "Reviewed by your teacher" : assessment.source === "heuristic" ? "Automatic text-metric estimate" : assessment.source === "ai" ? "AI-assisted practice estimate" : "Earlier assessment — source not recorded"}</p>
+          <p className="mt-2">{assessment.source === "heuristic" ? "This estimate uses text length and language patterns. It is not a full examiner assessment." : "Practice feedback is guidance, not an official IELTS score. Teacher feedback is shown separately when available."}</p>
+          {viewerIsOwner && <p className="mt-2">Next: choose one issue below, write your correction, then practise recalling it.</p>}
+        </div>
         {/* Writing Heatmap — essay with issues highlighted inline */}
         {answers?.essay && Array.isArray(assessment.issues) && assessment.issues.length > 0 && (
           <Card className="glass border-averna-cyan/30 mt-6 animate-fade-in">
@@ -364,7 +339,8 @@ export default async function WritingResultPage({
                       <p className="text-sm text-white">
                         <span className="text-red-300">&ldquo;{issue.text}&rdquo;</span>
                       </p>
-                      <p className="text-xs text-gray-400">{issue.suggestion}</p>
+                      <p className="text-sm text-gray-300">{issue.suggestion}</p>
+                      {viewerIsOwner && issue.type !== "good" && <Link href={`/studio/mistakes?from=${encodeURIComponent(test.id)}&issue=${index}`} className="inline-flex min-h-11 items-center mt-2 text-sm text-averna-cyan underline">Turn this into a correction →</Link>}
                     </div>
                   </div>
                 ))}

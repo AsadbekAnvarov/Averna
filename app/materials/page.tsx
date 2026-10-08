@@ -30,11 +30,12 @@ const MODULE_COLORS: Record<string, string> = {
   GENERAL: "text-averna-cyan border-averna-cyan/30",
 };
 
-export default async function MaterialsPage({
-  searchParams,
-}: {
-  searchParams: { module?: string; level?: string; q?: string };
-}) {
+export default async function MaterialsPage(
+  props: {
+    searchParams: Promise<{ module?: string; level?: string; q?: string }>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
 

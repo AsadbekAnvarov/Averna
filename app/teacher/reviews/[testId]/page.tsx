@@ -52,13 +52,14 @@ const CARD = "glass rounded-2xl border border-white/10 p-5 sm:p-6";
 const LINK_BTN =
   "inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 text-sm font-semibold text-gray-100 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60";
 
-export default async function ReviewAttemptPage({
-  params,
-  searchParams = {},
-}: {
-  params: { testId: string };
-  searchParams?: SearchParams;
-}) {
+export default async function ReviewAttemptPage(
+  props: {
+    params: Promise<{ testId: string }>;
+    searchParams?: Promise<SearchParams>;
+  }
+) {
+  const searchParams = (await props.searchParams) ?? {};
+  const params = await props.params;
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
   const role: string = session.user.role;

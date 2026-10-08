@@ -12,7 +12,8 @@ export const maxDuration = 60;
  * Body: { section: number, payload: { answers } | { essays: { task1, task2 } } | { answers: SpeakingAnswer[], inputMode } }
  * → { ok: true, done: boolean }
  */
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   let userId: string;
   try {
     userId = (await requireAuth()).id;
