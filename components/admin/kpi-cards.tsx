@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, FileCheck2, Activity, Wallet } from "lucide-react";
+import { Users, FileCheck2, Activity } from "lucide-react";
 import { db } from "@/lib/db";
 import { Sparkline } from "@/components/ui/sparkline";
 import { CountUp } from "@/components/ui/count-up";
@@ -30,25 +30,19 @@ function pctDelta(series: number[]): number | null {
 export async function AdminKpis() {
   const since = new Date(Date.now() - 14 * 86400000);
 
-  const [students, submissions, payments, activeCount] = await Promise.all([
+  const [students, submissions, activeCount] = await Promise.all([
     db.student.findMany({ select: { createdAt: true } }),
     db.homeworkSubmission.findMany({
       where: { submittedAt: { gte: since } },
       select: { submittedAt: true },
-    }),
-    db.payment.findMany({
-      where: { status: "COMPLETED", createdAt: { gte: since } },
-      select: { createdAt: true, amount: true },
     }),
     db.student.count({ where: { lastActiveDate: { gte: new Date(Date.now() - 7 * 86400000) } } }),
   ]);
 
   const studentSeries = dailySeries(students.map((s) => s.createdAt), 14);
   const subSeries = dailySeries(submissions.map((s) => s.submittedAt), 14);
-  const paySeries = dailySeries(payments.map((p) => p.createdAt), 14, (i) => payments[i].amount);
   const activitySeries = subSeries; // submissions are a good proxy for activity
 
-  const totalRevenue = payments.reduce((a, p) => a + p.amount, 0);
 
   interface Kpi {
     label: string;
@@ -106,25 +100,10 @@ export async function AdminKpis() {
       stroke: "#00ff94",
       fill: "rgba(0,255,148,0.14)",
     },
-    {
-      label: "Daromad (14 kun)",
-      value: totalRevenue,
-      prefix: "",
-      suffix: " ball",
-      delta: pctDelta(paySeries),
-      series: paySeries,
-      icon: Wallet,
-      accent: "text-amber-400",
-      ring: "ring-amber-400/30",
-      glow: "from-amber-400/20",
-      iconBg: "bg-amber-400/15 text-amber-400",
-      stroke: "#fbbf24",
-      fill: "rgba(251,191,36,0.14)",
-    },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {cards.map((c) => {
         const Icon = c.icon;
         return (

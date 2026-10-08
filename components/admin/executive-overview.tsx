@@ -36,8 +36,8 @@ export async function ExecutiveOverview() {
 
   const metrics = [
     {
-      label: "Bugungi daromad",
-      value: fmt(snapshot.revenueToday),
+      label: "Bugungi sof tushum",
+      value: snapshot.financeAvailable ? fmt(snapshot.revenueToday) : "—",
       suffix: "UZS",
       icon: Banknote,
       accent: "text-averna-neon",
@@ -46,8 +46,8 @@ export async function ExecutiveOverview() {
       hint: "Bugun qabul qilingan toʻlovlar",
     },
     {
-      label: "Oylik daromad",
-      value: fmt(snapshot.revenueMonth),
+      label: "Oylik sof tushum",
+      value: snapshot.financeAvailable ? fmt(snapshot.revenueMonth) : "—",
       suffix: "UZS",
       icon: Wallet,
       accent: "text-averna-cyan",
@@ -60,18 +60,18 @@ export async function ExecutiveOverview() {
       trend: snapshot.revenueGrowthPct,
     },
     {
-      label: "Sof foyda (oylik)",
-      value: "—",
-      suffix: "",
+      label: "Hisoblangan natija (oylik)",
+      value: snapshot.netProfitMonth == null ? "—" : fmt(snapshot.netProfitMonth),
+      suffix: "UZS",
       icon: Gauge,
       accent: "text-gray-400",
       bg: "bg-white/5 text-gray-400",
       href: "/admin/finance",
-      hint: "Xarajatlar moduli qoʻshilgach hisoblanadi — taxmin qilinmaydi",
+      hint: "Sof tushum − xarajat − hisoblangan ish haqi. Soliq va toʻliq buxgalteriya foydasi emas.",
     },
     {
       label: "Qarzdor oʻquvchilar",
-      value: fmt(snapshot.outstandingStudents),
+      value: snapshot.financeAvailable ? fmt(snapshot.outstandingStudents) : "—",
       suffix: "",
       icon: AlertTriangle,
       accent: snapshot.outstandingStudents > 0 ? "text-averna-pink" : "text-averna-neon",
@@ -111,13 +111,13 @@ export async function ExecutiveOverview() {
     },
     {
       label: "Naqd / boshqa (oylik)",
-      value: `${fmt(snapshot.revenueByMethod.cash)} / ${fmt(snapshot.revenueByMethod.other)}`,
+      value: snapshot.financeAvailable ? `${fmt(snapshot.revenueByMethod.cash)} / ${fmt(snapshot.revenueByMethod.other)}` : "—",
       suffix: "",
       icon: TrendingUp,
       accent: "text-emerald-400",
       bg: "bg-emerald-400/15 text-emerald-400",
       href: "/admin/finance",
-      hint: "Toʻliq toʻlov usullari uchun ERP maydonlari kerak",
+      hint: "Haqiqiy registr: Naqd / Plastik + Terminal + Bank",
     },
   ];
 

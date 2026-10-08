@@ -34,6 +34,7 @@ import { ExecutiveOverview } from "@/components/admin/executive-overview";
 import { ActivityFeed } from "@/components/admin/activity-feed";
 import { EnrollmentFunnel } from "@/components/admin/enrollment-funnel";
 import { TeacherWorkload } from "@/components/admin/teacher-workload";
+import { DashboardFinance } from "@/components/admin/finance/dashboard-finance";
 import { FinanceSummary } from "@/components/admin/finance-summary";
 import { AdminAttentionBar } from "@/components/admin/attention-bar";
 import { SeedDemoButton } from "@/components/admin/seed-demo-button";
@@ -178,6 +179,7 @@ export default async function AdminDashboard() {
 
   const tabs = [
     { key: "overview", label: "Umumiy", icon: "overview", active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
+    { key: "finance", label: "Moliya va nazorat", icon: "finance", active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
     { key: "people", label: "Oʻquvchilar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
     { key: "insights", label: "Tahlillar", icon: "analytics", active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
     { key: "manage", label: "Boshqarish", icon: "manage", active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
@@ -190,7 +192,7 @@ export default async function AdminDashboard() {
     { href: "/admin/rewards", label: "Mukofotlar va soʻrovlar", desc: "Almashtirishlarni tasdiqlash", icon: Gift, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
     { href: "/admin/announcements", label: "Eʼlonlar", desc: "Yangiliklarni tarqatish", icon: Megaphone, iconBg: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
     { href: "/admin/content", label: "Kontent", desc: "Darslar va materiallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
-    { href: "/admin/finance", label: "Moliya", desc: "Toʻlovlar va hisob-kitob", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
+    { href: "/admin/finance", label: "Moliya va nazorat", desc: "Oʻquvchilar, ish haqi va pul oqimi", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
     { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
     { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
     { href: "/admin/generate-tests", label: "Test generatori", desc: "Original testlar yaratish", icon: Sparkles, iconBg: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
@@ -260,6 +262,7 @@ export default async function AdminDashboard() {
                 </div>
               </>
             ),
+            finance: (<Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}><DashboardFinance /></Suspense>),
             people: (
               <>
                 <div>

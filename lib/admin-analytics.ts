@@ -1,3 +1,4 @@
+import { incomeRows } from "@/lib/finance/indicators";
 import { db } from "@/lib/db";
 
 /**
@@ -83,18 +84,18 @@ export async function getPredictions(): Promise<Prediction[]> {
   const [students, tests, payments] = await Promise.all([
     db.student.findMany({ where: { createdAt: { gte: since } }, select: { createdAt: true } }),
     db.iELTSTest.findMany({ where: { completedAt: { gte: since } }, select: { completedAt: true } }),
-    db.payment.findMany({ where: { status: "COMPLETED", createdAt: { gte: since } }, select: { amount: true, createdAt: true } }),
+    incomeRows(since),
   ]);
 
   return [
     project("students", "Yangi oʻquvchilar", "hafta", weeklyBuckets(students.map((s) => s.createdAt))),
     project("tests", "Topshirilgan testlar", "hafta", weeklyBuckets(tests.map((t) => t.completedAt))),
-    project(
+    ...(payments?.length ? [project(
       "revenue",
-      "Daromad (ball)",
+      "Sof tushum (UZS)",
       "hafta",
       weeklySum(payments.map((p) => ({ date: p.createdAt, value: p.amount }))),
-    ),
+    )] : []),
   ];
 }
 

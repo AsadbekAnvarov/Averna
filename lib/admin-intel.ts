@@ -1,3 +1,4 @@
+import { incomeRows, pendingInvoiceBalances } from "@/lib/finance/indicators";
 import { db } from "@/lib/db";
 
 /**
@@ -40,8 +41,8 @@ export interface McStats {
   submissionsToday: number;
   activeWeek: number;
   inactive14: number;
-  revenueWeek: number;
-  pendingPayments: number;
+  revenueWeek: number | null;
+  pendingPayments: number | null;
   pendingRewards: number;
   unplaced: number;
   peakHour: number | null;
@@ -88,8 +89,8 @@ export async function getMissionControl(): Promise<MissionControl> {
         select: { completedAt: true, module: true, score: true },
       }),
       db.homeworkSubmission.count({ where: { submittedAt: { gte: today0 } } }),
-      db.payment.findMany({ where: { status: "PENDING" }, select: { amount: true } }),
-      db.payment.findMany({ where: { status: "COMPLETED", createdAt: { gte: weekAgo } }, select: { amount: true } }),
+      pendingInvoiceBalances(),
+      incomeRows(weekAgo),
       db.rewardRedemption.count({ where: { status: "PENDING" } }),
       db.teacher.findMany({ select: { groups: { select: { students: { select: { id: true } } } } } }),
       db.activityLog.findMany({ where: { createdAt: { gte: weekAgo } }, select: { createdAt: true } }),
@@ -126,9 +127,9 @@ export async function getMissionControl(): Promise<MissionControl> {
   }
 
   // --- Finance ---
-  const revenueWeek = weekPayments.reduce((s, p) => s + p.amount, 0);
-  const pendingPaymentsCount = pendingPayments.length;
-  const pendingPaymentsTotal = pendingPayments.reduce((s, p) => s + p.amount, 0);
+  const revenueWeek = weekPayments?.reduce((s, p) => s + p.amount, 0) ?? null;
+  const pendingPaymentsCount = (pendingPayments??[]).length;
+  const pendingPaymentsTotal = (pendingPayments??[]).reduce((s, p) => s + p.amount, 0);
 
   // --- Teacher load ---
   const loads = teachers.map((t) => t.groups.reduce((s, g) => s + g.students.length, 0));
@@ -154,7 +155,7 @@ export async function getMissionControl(): Promise<MissionControl> {
     activeWeek,
     inactive14,
     revenueWeek,
-    pendingPayments: pendingPaymentsCount,
+    pendingPayments: pendingPayments === null ? null : pendingPaymentsCount,
     pendingRewards,
     unplaced,
     peakHour,
@@ -176,6 +177,8 @@ export async function getMissionControl(): Promise<MissionControl> {
     );
   }
 
+  if (weekPayments === null || pendingPayments === null) bullets.push("Moliyaviy registr yuklanmadi — bu nol tushum yoki qarz yoʻq degani emas.");
+
   // --- Priorities / risks / actions ---
   const priorities: string[] = [];
   const risks: string[] = [];
@@ -190,7 +193,7 @@ export async function getMissionControl(): Promise<MissionControl> {
     actions.push({ text: "Mukofotlarni tasdiqlash", href: "/admin/rewards" });
   }
   if (pendingPaymentsCount > 0) {
-    priorities.push(`${pendingPaymentsCount} ta toʻlovni tasdiqlash.`);
+    priorities.push(`${pendingPaymentsCount} ta muddati oʻtgan hisobni tekshirish.`);
     actions.push({ text: "Moliyani koʻrish", href: "/admin/finance" });
   }
 
@@ -228,8 +231,8 @@ export async function getMissionControl(): Promise<MissionControl> {
     events.push({
       id: "payments",
       severity: pendingPaymentsCount >= 10 ? "high" : "medium",
-      title: `${pendingPaymentsCount} ta toʻlov tasdiqlanmagan`,
-      impact: `${pendingPaymentsTotal.toLocaleString()} ball kutilmoqda.`,
+      title: `${pendingPaymentsCount} ta hisob muddati oʻtgan`,
+      impact: `${pendingPaymentsTotal.toLocaleString()} UZS hisob qarzi.`,
       action: "Toʻlovlarni koʻrib chiqing.",
       href: "/admin/finance",
     });

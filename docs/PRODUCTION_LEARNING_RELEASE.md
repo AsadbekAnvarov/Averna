@@ -28,11 +28,12 @@ No production database, mail provider, OpenAI account, or storage was used durin
 
 ## Database rollout
 
-Three migration directories are provided:
+Four migration directories are provided:
 
 - `20261008000100_baseline`: the original main schema before this change set.
 - `20261008000200_production_learning`: only the new correction, token, and limit tables.
 - `20261008000300_writing_retry`: the durable single-task Writing retry queue.
+- `20261008000400_admin_finance`: the separate manual finance register; read `docs/ADMIN_FINANCE_RELEASE.md` before deployment.
 
 ### Fresh disposable database
 
@@ -48,7 +49,7 @@ Never execute the baseline CREATE statements against populated tables.
    If a different history already exists, stop and reconcile it; do not overwrite it.
 2. Generate a read-only diff:
    `npx prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --script`.
-   On the old production schema it should propose **only** the four new tables, their indexes and FKs.
+   On the old production schema it should propose **only** the feature tables described in these migrations, their indexes and FKs (including the eight finance tables).
    Any unrelated drift, DROP, enum recreation, or existing-column change needs review before continuing.
    This diff is evidence of schema compatibility, not a backup.
 3. Only after confirming that the old schema is the baseline, mark it applied:
