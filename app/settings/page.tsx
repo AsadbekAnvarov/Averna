@@ -7,7 +7,7 @@ import { SettingsPanel } from "@/components/settings/settings-panel";
 import { TelegramConnect } from "@/components/settings/telegram-connect";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PageHeader } from "@/components/ui/page-header";
-import { Settings, User, Bell, Wallet, ChevronRight } from "lucide-react";
+import { Settings, User, Bell, ChevronRight } from "lucide-react";
 
 export default async function SettingsPage() {
   const session = await auth();
@@ -20,9 +20,6 @@ export default async function SettingsPage() {
   const accountLinks = [
     { href: profileHref, label: "Edit profile", desc: "Name, avatar and goal", icon: User },
     { href: "/notifications", label: "Notifications", desc: "View recent alerts", icon: Bell },
-    ...(role === "STUDENT"
-      ? [{ href: "/billing", label: "Billing", desc: "Payments and plan", icon: Wallet }]
-      : []),
   ];
 
   return (
