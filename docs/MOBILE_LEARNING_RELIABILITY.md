@@ -91,3 +91,33 @@ NODE_PATH=/path/to/qa/node_modules CHROMIUM_PATH=/path/to/chromium node e2e/mobi
 ```
 
 UI fixture uses real components and app Tailwind/theme tokens with synthetic text and mocked network/navigation; no login, cloud provider or real DB. Screenshots require visual review. The fast synthetic mobile check is ready to run separately from the existing authenticated Screens workflow. Mandatory CI wiring is prepared locally but not included in this commit: the connection rejected workflow writes. Apply the workflow patch only with an appropriately authorised connection.
+
+## Calendar / Screens follow-up
+
+The Screens job exposed two independent failures: repeated seeded sign-ins exhausted
+an existing authentication limit, and mobile day links fetched a correct calendar
+response without committing the selected day in the client interface.
+
+- E2E suites now authenticate each seeded role once per origin/process, then copy
+  only browser cookies into otherwise fresh scenario contexts. Theme, viewport and
+  local/session storage remain isolated. Cookies are memory-only, never written to
+  artifacts; application sign-in limits are unchanged.
+- Phone day selection uses the month's already supplied items and native URL history
+  integrated with Next search parameters. It updates immediately without an extra
+  server request or resetting scroll. Real anchors still support a new tab and the
+  server-rendered fallback; Back, Forward and reload retain the selected date.
+- Month changes use normal document links to obtain the new server-owned dataset.
+  Icon links have explicit Previous/Next month labels and retain the shared button
+  styling, without nesting a button inside an anchor. Desktop month layout is retained.
+- Calendar regression coverage includes full names after touch, history navigation,
+  reload and month changes for both student and teacher. New component tests cover
+  modified clicks, role paths, invalid dates and repeated selection.
+- Local validation: all nine original bug-condition cases pass on a production build
+  with a newly seeded isolated PostgreSQL 16 database. Twelve additional calendar
+  cases passed at 320/390/1440px, both roles and themes, with touch, keyboard, history,
+  reload, month changes, no page overflow and no JavaScript exceptions. The 346 unit
+  tests and four in-memory session-cache checks pass. These are Chromium checks, not
+  real iOS/Android device certification or cloud-draft concurrency acceptance.
+
+The cloud-draft and scheduler flags remain OFF; this follow-up does not enable them
+or migrate any hosted database. GitHub checks on the final commit remain the merge gate.

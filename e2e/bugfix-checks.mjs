@@ -762,6 +762,8 @@ async function checkCalendar(context, id, label, path) {
     violation(id, label, `day ${day} can't be tapped: no visible ?d=${day} link (full names only in title tooltips)`);
   } else {
     if (cell.h < TOUCH - 0.5) violation(id, label, `day cell is ${px(cell.h)} high (expected ≥ 44px)`);
+    const originalUrl = page.url();
+    const originalHeading = await page.locator('section[aria-label="Selected day"] h4').innerText();
     try {
       await Promise.all([
         page.waitForURL((u) => u.searchParams.get("d") === String(day), { timeout: 15_000 }),
@@ -775,6 +777,32 @@ async function checkCalendar(context, id, label, path) {
     const text = await page.evaluate(() => (document.querySelector(".premium-gradient") || document.body).innerText);
     const missing = names.filter((n) => !text.includes(n));
     if (missing.length) violation(id, label, `day ${day} panel misses ${missing.map((n) => `“${n}”`).join(", ")}`);
+    const selectedHeading = await page.locator('section[aria-label="Selected day"] h4').innerText();
+    if (page.url() !== originalUrl) {
+      await page.goBack();
+      await page.waitForURL(originalUrl, { timeout: 15_000 });
+      await page.getByRole("heading", { name: originalHeading, exact: true }).waitFor();
+      await page.goForward();
+      await page.waitForURL((u) => u.searchParams.get("d") === String(day), { timeout: 15_000 });
+      await page.getByRole("heading", { name: selectedHeading, exact: true }).waitFor();
+    }
+    await page.reload({ waitUntil: "networkidle" });
+    await page.getByRole("heading", { name: selectedHeading, exact: true }).waitFor();
+    const reloadedText = await page.locator('section[aria-label="Selected day"]').innerText();
+    if (names.some((name) => !reloadedText.includes(name))) violation(id, label, "reload lost selected day items");
+    const monthUrl = page.url();
+    const nextMonth = page.getByRole("link", { name: "Next month", exact: true });
+    const targetMonth = new URL(await nextMonth.getAttribute("href"), BASE).searchParams.get("m");
+    await Promise.all([
+      page.waitForURL((u) => u.searchParams.get("m") === targetMonth, { timeout: 15_000 }),
+      nextMonth.tap(),
+    ]);
+    const previousMonth = page.getByRole("link", { name: "Previous month", exact: true });
+    const originalMonth = new URL(monthUrl).searchParams.get("m");
+    await Promise.all([
+      page.waitForURL((u) => u.searchParams.get("m") === originalMonth, { timeout: 15_000 }),
+      previousMonth.tap(),
+    ]);
   }
   await page.close();
 }
