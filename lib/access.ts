@@ -10,7 +10,10 @@
  * SERVER ONLY.
  */
 
+import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
+
+type AccessClient = Pick<Prisma.TransactionClient, "student" | "teacher">;
 
 export interface Viewer {
   id: string;
@@ -18,9 +21,9 @@ export interface Viewer {
 }
 
 /** The Teacher row of a user, or null. */
-export async function teacherOf(userId: string): Promise<{ id: string } | null> {
+export async function teacherOf(userId: string, client: AccessClient = db): Promise<{ id: string } | null> {
   try {
-    return await db.teacher.findUnique({ where: { userId }, select: { id: true } });
+    return await client.teacher.findUnique({ where: { userId }, select: { id: true } });
   } catch {
     return null;
   }
@@ -68,18 +71,18 @@ export async function visibleStudentIds(viewer: Viewer): Promise<"all" | string[
 }
 
 /** True when the viewer may see this student's attempts, recordings and homework. */
-export async function canViewStudent(viewer: Viewer, studentId: string): Promise<boolean> {
+export async function canViewStudent(viewer: Viewer, studentId: string, client: AccessClient = db): Promise<boolean> {
   if (!studentId) return false;
   if (viewer.role === "ADMIN") return true;
   try {
-    const student = await db.student.findUnique({
+    const student = await client.student.findUnique({
       where: { id: studentId },
       select: { userId: true, group: { select: { teacherId: true } } },
     });
     if (!student) return false;
     if (student.userId === viewer.id) return true;
     if (viewer.role !== "TEACHER" || !student.group) return false;
-    const t = await teacherOf(viewer.id);
+    const t = await teacherOf(viewer.id, client);
     return !!t && student.group.teacherId === t.id;
   } catch {
     return false;
@@ -91,18 +94,18 @@ export async function canViewStudent(viewer: Viewer, studentId: string): Promise
  * never the student themself, even a teacher or admin who owns that Student row
  * (nobody re-bands their own attempts).
  */
-export async function canReviewStudent(viewer: Viewer, studentId: string): Promise<boolean> {
+export async function canReviewStudent(viewer: Viewer, studentId: string, client: AccessClient = db): Promise<boolean> {
   if (viewer.role !== "ADMIN" && viewer.role !== "TEACHER") return false;
   if (!studentId) return false;
   try {
-    const student = await db.student.findUnique({
+    const student = await client.student.findUnique({
       where: { id: studentId },
       select: { userId: true, group: { select: { teacherId: true } } },
     });
     if (!student || student.userId === viewer.id) return false;
     if (viewer.role === "ADMIN") return true;
     if (!student.group) return false;
-    const t = await teacherOf(viewer.id);
+    const t = await teacherOf(viewer.id, client);
     return !!t && student.group.teacherId === t.id;
   } catch {
     return false;

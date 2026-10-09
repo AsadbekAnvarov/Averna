@@ -68,6 +68,8 @@ model User {
   receivedMessages Message[]      @relation("ReceivedMessages")
   telegramLinks    TelegramLink[] @relation("TelegramUser")
 
+  learningCycleReviews LearningCycleReview[]
+
   @@map("users")
 }
 
@@ -310,6 +312,7 @@ model IELTSTest {
   student       Student          @relation(fields: [studentId], references: [id])
   review        TestReview?
   assessmentJob AiAssessmentJob?
+  learningCycle LearningCycle?
 
   @@index([studentId])
   @@index([module])
@@ -1419,4 +1422,45 @@ model FinanceRequest {
   createdAt   DateTime @default(now())
 
   @@map("finance_requests")
+}
+
+/// Private, frozen context for one formative feedback loop. Raw SQL service keeps
+/// writes serialized with original test reviews; source IELTS grades and XP stay untouched.
+model LearningCycle {
+  id         String   @id @default(uuid())
+  originalId String   @unique
+  plan       Json
+  createdAt  DateTime @default(now())
+  original   IELTSTest @relation(fields: [originalId], references: [id], onDelete: Cascade)
+  entries    LearningCycleEntry[]
+  @@index([createdAt])
+  @@map("learning_cycles")
+}
+model LearningCycleEntry {
+  id         String   @id @default(uuid())
+  cycleId    String
+  kind       String
+  status     String   @default("DRAFT")
+  body       String   @db.Text
+  reflection String   @default("") @db.Text
+  version    Int      @default(1)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  cycle      LearningCycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  review     LearningCycleReview?
+  @@unique([cycleId, kind])
+  @@index([status, createdAt])
+  @@map("learning_cycle_entries")
+}
+model LearningCycleReview {
+  id           String   @id @default(uuid())
+  entryId      String   @unique
+  reviewerId   String?
+  reviewerName String
+  outcomes     Json
+  comment      String   @db.Text
+  createdAt    DateTime @default(now())
+  entry        LearningCycleEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  reviewer     User? @relation(fields: [reviewerId], references: [id], onDelete: SetNull)
+  @@map("learning_cycle_reviews")
 }

@@ -1,5 +1,7 @@
 export const dynamic = "force-dynamic";
 
+import Link from "next/link";
+import { learningCycleEnabled } from "@/lib/learning-cycle/rules";
 import { Suspense } from "react";
 import { db } from "@/lib/db";
 import { getPageStudent } from "@/lib/student-page";
@@ -23,6 +25,7 @@ export default async function ProgressOverviewPage() {
 
   return (
     <div className="space-y-6">
+      {learningCycleEnabled() && <Link href="/progress/portfolio" className="glass flex min-h-11 flex-wrap items-center justify-between gap-3 rounded-2xl border border-averna-cyan/25 p-5 text-white"><span><strong className="block text-base">Your progress portfolio</strong><span className="mt-1 block text-sm text-gray-400">Original work, revisions and teacher-reviewed evidence.</span></span><span className="text-sm font-semibold text-averna-cyan">Open portfolio →</span></Link>}
       {testsCount === 0 && <FirstRunGuide name={session.user.name} />}
 
       <Suspense fallback={<WidgetSkeleton rows={3} />}>
