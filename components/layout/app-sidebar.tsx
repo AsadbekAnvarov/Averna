@@ -23,7 +23,6 @@ import {
   Gift,
   CalendarDays,
   Library,
-  Wallet,
   Bot,
   Notebook,
   Settings,
@@ -104,7 +103,6 @@ const STUDENT_NAV: NavSection[] = [
     label: "Account",
     items: [
       { name: "Notifications", href: "/notifications", icon: Bell },
-      { name: "Billing", href: "/billing", icon: Wallet },
       { name: "Profile", href: "/profile", icon: User },
       { name: "Settings", href: "/settings", icon: Settings },
     ],
