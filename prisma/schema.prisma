@@ -70,6 +70,10 @@ model User {
 
   learningCycleReviews LearningCycleReview[]
 
+  classroomSessions ClassroomSession[]
+  calibrationReferences CalibrationReference[]
+  calibrationRatings CalibrationRating[]
+
   @@map("users")
 }
 
@@ -159,6 +163,9 @@ model Student {
 
   @@index([groupId])
   @@index([totalPoints])
+  classroomSignals ClassroomSignal[]
+  classroomAnswers ClassroomAnswer[]
+
   @@map("students")
 }
 
@@ -207,6 +214,8 @@ model Group {
   lessonLogs    LessonLog[]
 
   @@index([teacherId])
+  classroomSessions ClassroomSession[]
+
   @@map("groups")
 }
 
@@ -1463,4 +1472,92 @@ model LearningCycleReview {
   entry        LearningCycleEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
   reviewer     User? @relation(fields: [reviewerId], references: [id], onDelete: SetNull)
   @@map("learning_cycle_reviews")
+}
+
+/// Formative classroom participation. Partial one-open indexes live in SQL.
+model ClassroomSession {
+  id String @id @default(uuid())
+  groupId String
+  createdBy String?
+  topic String
+  status String @default("OPEN")
+  openedAt DateTime @default(now())
+  closedAt DateTime?
+  group Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  creator User? @relation(fields: [createdBy], references: [id], onDelete: SetNull)
+  signals ClassroomSignal[]
+  polls ClassroomPoll[]
+  @@index([groupId, openedAt])
+  @@map("classroom_sessions")
+}
+
+model ClassroomSignal {
+  id String @id @default(uuid())
+  sessionId String
+  studentId String
+  kind String
+  question String @default("") @db.Text
+  version Int @default(1)
+  updatedAt DateTime @default(now())
+  session ClassroomSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  @@unique([sessionId, studentId])
+  @@map("classroom_signals")
+}
+
+model ClassroomPoll {
+  id String @id @default(uuid())
+  sessionId String
+  prompt String @db.Text
+  options Json
+  correct Int
+  explanation String @db.Text
+  status String @default("OPEN")
+  createdAt DateTime @default(now())
+  session ClassroomSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  answers ClassroomAnswer[]
+  @@index([sessionId, createdAt])
+  @@map("classroom_polls")
+}
+
+model ClassroomAnswer {
+  id String @id @default(uuid())
+  pollId String
+  studentId String
+  option Int
+  createdAt DateTime @default(now())
+  poll ClassroomPoll @relation(fields: [pollId], references: [id], onDelete: Cascade)
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  @@unique([pollId, studentId])
+  @@map("classroom_answers")
+}
+/// Centre-approved references; no official-score claim or public staff leaderboard.
+model CalibrationReference {
+  id String @id @default(uuid())
+  authorId String?
+  title String
+  module String
+  prompt String @db.Text
+  body String @db.Text
+  scores Json
+  rationale String @db.Text
+  createdAt DateTime @default(now())
+  author User? @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  ratings CalibrationRating[]
+  @@map("calibration_references")
+}
+
+model CalibrationRating {
+  id String @id @default(uuid())
+  referenceId String
+  userId String
+  scores Json
+  quote String @db.Text
+  rationale String @db.Text
+  createdAt DateTime @default(now())
+  reference CalibrationReference @relation(fields: [referenceId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([referenceId, userId])
+  @@index([userId, createdAt])
+  @@map("calibration_ratings")
 }

@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+import { classroomEnabled } from "@/lib/teacher-tools/rules";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
@@ -51,6 +52,7 @@ export default async function TeacherGroupPage(props: { params: Promise<{ id: st
   }
 
   const actions = [
+    ...(classroomEnabled() ? [{ href: `/teacher/classroom?group=${group.id}`, label: "Live Classroom", desc: "Open this lesson", icon: Users, color: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" }] : []),
     { href: `/teacher/attendance?group=${group.id}`, label: "Attendance", desc: "Take the roll call", icon: ClipboardCheck, color: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
     { href: "/teacher/gradebook", label: "Gradebook", desc: "Track grades", icon: NotebookPen, color: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
     { href: "/teacher/homework/create", label: "Set Homework", desc: "Assign a task", icon: BookOpen, color: "bg-amber-400/15 text-amber-400", hover: "hover:border-amber-400/40" },

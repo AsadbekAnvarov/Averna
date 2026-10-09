@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+import { classroomEnabled, calibrationEnabled } from "@/lib/teacher-tools/rules";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -123,6 +124,8 @@ export default async function TeacherDashboard() {
       icon: GraduationCap,
       accent: "text-averna-cyan",
       items: [
+        ...(classroomEnabled() ? [{ href: "/teacher/classroom", label: "Live Classroom", desc: "Signals & understanding checks", icon: Users, color: "text-averna-cyan", bg: "bg-averna-cyan/15" }] : []),
+        ...(calibrationEnabled() ? [{ href: "/teacher/calibration", label: "Assessment Calibration", desc: "Private criterion practice", icon: ClipboardCheck, color: "text-averna-cyan", bg: "bg-averna-cyan/15" }] : []),
         { href: "/teacher/homework/create", label: "Create Homework", desc: "Assign new tasks", icon: PlusCircle, color: "text-averna-purple", bg: "bg-averna-purple/15" },
         { href: "/teacher/homework", label: "Grade Work", desc: "Review & score", icon: CheckSquare, color: "text-amber-400", bg: "bg-amber-400/15" },
         { href: "/teacher/reviews", label: "Review Queue", desc: "Writing & Speaking bands", icon: ClipboardCheck, color: "text-averna-pink", bg: "bg-averna-pink/15" },
