@@ -1,5 +1,7 @@
 export const dynamic = "force-dynamic";
 
+import Link from "next/link";
+import { classroomEnabled, calibrationEnabled } from "@/lib/teacher-tools/rules";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -55,6 +57,8 @@ export default async function AdminSystemPage() {
           title={<>Tizim <span className="neon-text">holati</span></>}
           subtitle="Asosiy xizmatlar va platforma maʼlumotlari holati."
         />
+
+        {(classroomEnabled() || calibrationEnabled()) && <section className="glass mb-6 space-y-3 rounded-2xl border border-averna-cyan/30 p-5"><h2 className="font-semibold text-white">O‘qitish vositalari</h2><div className="flex flex-wrap gap-3">{classroomEnabled() && <Link className="inline-flex min-h-11 items-center rounded-xl border border-white/20 px-4 text-sm text-averna-cyan" href="/teacher/classroom">Jonli dars paneli →</Link>}{calibrationEnabled() && <Link className="inline-flex min-h-11 items-center rounded-xl border border-white/20 px-4 text-sm text-averna-cyan" href="/teacher/calibration">Baholash etalonlarini boshqarish →</Link>}</div></section>}
 
         <Card className="glass border-averna-neon/30 mb-6">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-neon"><Database className="h-5 w-5" /> Xizmatlar</CardTitle></CardHeader>

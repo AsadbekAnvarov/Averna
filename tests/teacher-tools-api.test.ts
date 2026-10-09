@@ -1,0 +1,20 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
+const m = vi.hoisted(() => ({ auth: vi.fn(), limit: vi.fn(), getClass: vi.fn(), mutateClass: vi.fn(), getCal: vi.fn(), mutateCal: vi.fn() }));
+vi.mock("@/lib/auth", () => ({ requireAuth: m.auth })); vi.mock("@/lib/security/rate-limit", () => ({ reserveLimits: m.limit })); vi.mock("@/lib/teacher-tools/classroom", () => ({ getClassroom: m.getClass, mutateClassroom: m.mutateClass })); vi.mock("@/lib/teacher-tools/calibration", () => ({ getCalibration: m.getCal, mutateCalibration: m.mutateCal }));
+import { GET as classGet, POST as classPost } from "@/app/api/classroom/route";
+import { GET as calGet, POST as calPost } from "@/app/api/calibration/route";
+const req = (body: unknown, headers: Record<string, string> = {}) => new Request("https://averna.test/api/classroom", { method: "POST", headers: { "content-type": "application/json", origin: "https://averna.test", ...headers }, body: JSON.stringify(body) });
+beforeEach(() => { vi.clearAllMocks(); process.env.LIVE_CLASSROOM = "on"; process.env.TEACHER_CALIBRATION = "on"; m.auth.mockResolvedValue({ id: "teacher-1", role: "TEACHER" }); m.limit.mockResolvedValue({ ok: true }); m.getClass.mockResolvedValue({ groupId: "group-1" }); m.getCal.mockResolvedValue({ items: [] }); m.mutateCal.mockResolvedValue("reference-1"); });
+describe("Teacher tools HTTP guards", () => {
+  it("classroom feature off makes no auth/DB call", async () => { delete process.env.LIVE_CLASSROOM; expect((await classGet(new Request("https://averna.test/api/classroom?group=group-1"))).status).toBe(404); expect(m.auth).not.toHaveBeenCalled(); });
+  it("calibration feature off denies POST", async () => { delete process.env.TEACHER_CALIBRATION; expect((await calPost(req({}))).status).toBe(404); expect(m.mutateCal).not.toHaveBeenCalled(); });
+  it("requires sign-in", async () => { m.auth.mockRejectedValue(new Error("session")); expect((await classGet(new Request("https://averna.test/api/classroom?group=group-1"))).status).toBe(401); });
+  it("sends server actor to mutation", async () => { const r = await classPost(req({ action: "SIGNAL", groupId: "group-1", userId: "someone-else" })); expect(r.status).toBe(200); expect(m.mutateClass.mock.calls[0][0]).toEqual({ id: "teacher-1", role: "TEACHER" }); expect(r.headers.get("cache-control")).toContain("no-store"); });
+  it("denies cross-origin input", async () => { expect((await classPost(req({}, { origin: "https://attacker.test" }))).status).toBe(403); expect(m.mutateClass).not.toHaveBeenCalled(); });
+  it("rejects wrong content type", async () => expect((await calPost(req({}, { "content-type": "text/plain" }))).status).toBe(415));
+  it("bounds streamed body without content-length", async () => expect((await classPost(req({ body: "x".repeat(91000) }))).status).toBe(413));
+  it("fails closed if rate limiter unavailable", async () => { m.limit.mockResolvedValue({ ok: false, unavailable: true }); expect((await classPost(req({ groupId: "group-1" }))).status).toBe(503); expect(m.mutateClass).not.toHaveBeenCalled(); });
+  it("limits frequent writes", async () => { m.limit.mockResolvedValue({ ok: false }); expect((await calPost(req({}))).status).toBe(429); });
+  it("keeps DB details out of error payloads", async () => { m.mutateClass.mockRejectedValue(new Error("secret SQL with pupil answer")); const r = await classPost(req({ groupId: "group-1" })); expect(r.status).toBe(503); expect(await r.text()).not.toContain("secret SQL"); });
+  it("loads own reference comparison", async () => { await calGet(new Request("https://averna.test/api/calibration?reference=reference-1&page=2")); expect(m.getCal).toHaveBeenCalledWith({ id: "teacher-1", role: "TEACHER" }, "reference-1", 2); });
+});

@@ -1,0 +1,23 @@
+import { describe, expect, it } from "vitest";
+import { comparison, identifier, object, poll, rating, reference, scores, text, classroomEnabled, calibrationEnabled } from "@/lib/teacher-tools/rules";
+const bands = { taskAchievement: 6, coherenceCohesion: 5.5, lexicalResource: 6.5, grammarAccuracy: 6 };
+const body = "Public transport connects people to schools and workplaces. More reliable buses can reduce long journeys and make daily life easier for a community.";
+const benchmark = { title: "Transport reference", module: "TASK2", prompt: "Discuss how reliable public transport can help a community.", body, scores: bands, rationale: "The centre agreed each criterion after discussion, using the supporting examples in the response.", confirmed: true };
+describe("Teacher-tool validation", () => {
+  it("defaults both features off", () => { expect(classroomEnabled()).toBe(false); expect(calibrationEnabled()).toBe(false); });
+  it.each([null, [], "hi", 4])("rejects malformed objects %s", raw => expect(() => object(raw)).toThrow());
+  it.each(["", "a", "../group", "g/secret", 123])("rejects unsafe IDs %s", v => expect(() => identifier(v)).toThrow());
+  it("trims bounded text", () => expect(text(" lesson ", "Topic", 3, 20)).toBe("lesson"));
+  it("requires every criterion", () => expect(() => scores({ taskAchievement: 6 })).toThrow());
+  it.each([-1, 10, 6.2, NaN, Infinity, "6", null])("rejects invalid band %s", value => expect(() => scores({ ...bands, grammarAccuracy: value })).toThrow());
+  it("keeps valid zero and half bands", () => expect(scores({ ...bands, grammarAccuracy: 0 })).toEqual({ ...bands, grammarAccuracy: 0 }));
+  it("returns signed per-criterion differences, not a teacher rating", () => expect(comparison(bands, { ...bands, grammarAccuracy: 5.5 }).at(-1)?.difference).toBe(0.5));
+  it("accepts a teacher authored check", () => expect(poll({ prompt: "Which sentence is clearer?", options: ["A", "B"], correct: 1, explanation: "B states the main idea directly." }).correct).toBe(1));
+  it.each([{ options: ["A"] }, { options: ["A", "a"] }, { options: ["A", "B", "C", "D", "E"] }])("rejects invalid options $options", ({ options }) => expect(() => poll({ prompt: "A question?", options, correct: 0, explanation: "An explanation." })).toThrow());
+  it("rejects an out-of-range answer key", () => expect(() => poll({ prompt: "Question?", options: ["A", "B"], correct: 2, explanation: "Explanation here." })).toThrow());
+  it("requires agreed anonymised reference confirmation", () => expect(() => reference({ ...benchmark, confirmed: false })).toThrow());
+  it("rejects speaking references without audio protocol", () => expect(() => reference({ ...benchmark, module: "SPEAKING" })).toThrow());
+  it("accepts an agreed Writing reference", () => expect(reference(benchmark).title).toBe(benchmark.title));
+  it("requires actual quoted evidence", () => expect(() => rating({ scores: bands, quote: "Invented quoted evidence", rationale: "The idea is developed with supporting detail." }, body)).toThrow());
+  it("retains a valid independent rating", () => expect(rating({ scores: bands, quote: "Public transport connects people", rationale: "The idea is developed with supporting detail." }, body).scores).toEqual(bands));
+});

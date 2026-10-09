@@ -1,5 +1,7 @@
 export const dynamic = "force-dynamic";
 
+import Link from "next/link";
+import { classroomEnabled } from "@/lib/teacher-tools/rules";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { getDashboardStudent } from "@/lib/dashboard/data";
@@ -36,5 +38,5 @@ export default async function DashboardPage(props: { searchParams: Promise<{ tab
   if (!student) return null;
 
   const Panel = PANELS[parseDashboardTab(searchParams.tab)];
-  return <Panel student={student} userId={session.user.id} />;
+  return <>{parseDashboardTab(searchParams.tab) === "class" && classroomEnabled() && <Link href="/learning/classroom" className="glass mb-6 flex min-h-11 items-center justify-between gap-4 rounded-2xl border border-averna-cyan/30 p-5 text-white"><span><strong className="block">Your live lesson</strong><span className="mt-1 block text-sm text-gray-400">Send a signal or answer your teacher’s quick check.</span></span><span className="text-averna-cyan">Join →</span></Link>}<Panel student={student} userId={session.user.id} /></>;
 }
