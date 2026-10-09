@@ -13,6 +13,9 @@
  * and a real on-screen keyboard (B7 is approximated by a 390×400 viewport).
  */
 import { chromium } from "playwright";
+import { createRoleSessionCache } from "./role-session.mjs";
+
+const ensureSignedIn = createRoleSessionCache();
 import fc from "fast-check";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
@@ -191,8 +194,16 @@ async function withContext(browser, opts, fn) {
       { theme, onboardingDone, storage }
     );
     await context.addInitScript(installHelpers);
-    await signIn(context, USERS[user]);
+    await ensureSignedIn(context, BASE, user, USERS[user], signIn);
     await fn(context);
+  } catch (error) {
+    // Keep navigation failures actionable without weakening the assertions.
+    mkdirSync("screens", { recursive: true });
+    for (const [index, page] of context.pages().entries()) {
+      note("navigation-debug", user, `page ${index}: ${page.url()}`);
+      await page.screenshot({ path: `screens/bugfix-failure-${user}-${index}.png`, fullPage: true }).catch(() => {});
+    }
+    throw error;
   } finally {
     await context.close();
   }
@@ -751,8 +762,15 @@ async function checkCalendar(context, id, label, path) {
     violation(id, label, `day ${day} can't be tapped: no visible ?d=${day} link (full names only in title tooltips)`);
   } else {
     if (cell.h < TOUCH - 0.5) violation(id, label, `day cell is ${px(cell.h)} high (expected ≥ 44px)`);
-    await page.locator("[data-bf-day]").tap();
-    await page.waitForURL((u) => new URL(u).searchParams.get("d") === String(day), { timeout: 15_000 });
+    try {
+      await Promise.all([
+        page.waitForURL((u) => u.searchParams.get("d") === String(day), { timeout: 15_000 }),
+        page.locator("[data-bf-day]").tap(),
+      ]);
+    } catch (error) {
+      const target = await page.locator("[data-bf-day]").getAttribute("href").catch(() => null);
+      throw new Error(`calendar tap did not reach day ${day}; current=${page.url()}; target=${target}; ${error.message}`);
+    }
     await page.waitForTimeout(500);
     const text = await page.evaluate(() => (document.querySelector(".premium-gradient") || document.body).innerText);
     const missing = names.filter((n) => !text.includes(n));

@@ -9,6 +9,9 @@
  * the screenshots are uploaded as the "screens" artifact.
  */
 import { chromium } from "playwright";
+import { createRoleSessionCache } from "./role-session.mjs";
+
+const ensureSignedIn = createRoleSessionCache();
 import { mkdirSync, writeFileSync } from "node:fs";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3000";
@@ -297,7 +300,7 @@ try {
           localStorage.setItem("averna_seasonal", "0");
           sessionStorage.setItem("averna_pwa_dismissed", "1");
         }, theme);
-        await signIn(context, creds);
+        await ensureSignedIn(context, BASE, role, creds, signIn);
         await shoot(context, role, theme, device);
         if (role === "student") await shootExams(context, theme, device);
         if (role === "student" && theme === "dark" && device === "phone") {
