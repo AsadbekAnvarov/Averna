@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, ClipboardCheck, Flag, Keyboard, Mic, RotateCcw, 
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { canViewStudent } from "@/lib/access";
+import { CycleEntryPoint } from "@/components/learning-cycle/entry-point";
 import { TeacherReviewCard } from "@/components/review/teacher-review-card";
 import { HomeworkNoticeCard } from "@/components/homework/homework-notice";
 import { homeworkNoticeFor } from "@/lib/homework/exam-homework";
@@ -380,6 +381,7 @@ export default async function SpeakingResultPage(props: { params: Promise<{ test
         )}
 
         <TeacherReviewCard testId={row.id} viewerIsOwner={viewerIsOwner} />
+        {viewerIsOwner && <CycleEntryPoint testId={row.id} />}
 
         <section aria-labelledby="speaking-criteria-title" className="av-panel rounded-2xl p-5 sm:p-6">
           <h2 id="speaking-criteria-title" className="text-sm font-semibold text-white">

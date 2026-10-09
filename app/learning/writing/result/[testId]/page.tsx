@@ -16,6 +16,7 @@ import { SessionOutcomeSection } from "@/components/progression/session-outcome-
 import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { ResultCelebration } from "@/components/learning/result-celebration";
 import { WritingHeatmap } from "@/components/learning/writing-heatmap";
+import { CycleEntryPoint } from "@/components/learning-cycle/entry-point";
 import { TeacherReviewCard } from "@/components/review/teacher-review-card";
 import { HomeworkNoticeCard } from "@/components/homework/homework-notice";
 import { canViewStudent } from "@/lib/access";
@@ -150,6 +151,7 @@ export default async function WritingResultPage(
           </Suspense>
           )}
           <TeacherReviewCard testId={test.id} viewerIsOwner={viewerIsOwner} />
+          {viewerIsOwner && <CycleEntryPoint testId={test.id} />}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

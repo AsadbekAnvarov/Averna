@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+import { learningCycleEnabled } from "@/lib/learning-cycle/rules";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle2, ClipboardCheck, Filter, Inbox, Volume2, VolumeX } from "lucide-react";
@@ -75,6 +76,8 @@ export default async function ReviewQueuePage(props: { searchParams?: Promise<Se
           title="Review queue"
           subtitle="Writing and Speaking attempts waiting for your band and feedback — homework and mock exams first, then the oldest."
         />
+
+        {learningCycleEnabled() && <Link href="/teacher/reviews/practice" className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-xl border border-averna-cyan/30 px-4 text-sm font-semibold text-averna-cyan">Practice follow-ups <ArrowRight className="h-4 w-4" aria-hidden /></Link>}
 
         {saved && (
           <p role="status" className="mb-5 flex items-center gap-2 rounded-xl border border-averna-neon/30 bg-averna-neon/10 px-4 py-3 text-sm text-averna-neon">
