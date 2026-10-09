@@ -143,6 +143,7 @@ model Student {
   grades              Grade[]
   redemptions         RewardRedemption[]
   payments            Payment[]
+  writingDrafts       WritingDraft[]
   mistakeEntries      MistakeEntry[]
   reviewItems         ReviewItem[]
   skillStates         SkillState[]
@@ -311,6 +312,7 @@ model IELTSTest {
   review        TestReview?
   assessmentJob AiAssessmentJob?
 
+  @@index([studentId, completedAt])
   @@index([studentId])
   @@index([module])
   @@map("ielts_tests")
@@ -1419,4 +1421,21 @@ model FinanceRequest {
   createdAt   DateTime @default(now())
 
   @@map("finance_requests")
+}
+
+// Private single-task practice drafts. Empty rows are versioned tombstones.
+model WritingDraft {
+  id         String   @id @default(cuid())
+  studentId  String
+  scope      String
+  promptHash String
+  essay      String   @db.Text
+  attemptId  String
+  timeLeft   Int
+  version    Int      @default(1)
+  updatedAt  DateTime @updatedAt
+  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, scope])
+  @@map("writing_drafts")
 }

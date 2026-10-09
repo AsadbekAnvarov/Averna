@@ -5,14 +5,13 @@ import { predictBand } from "@/lib/utils";
 /**
  * Student "companion" intelligence (read-only).
  *
- * - getExamReadiness (F3 AI Clone): per-skill predicted exam band + an "if your
- *   exam were tomorrow…" verdict and personalised recommendations.
+ * - getExamReadiness (F3 AI Clone): source-aware recent practice evidence; no official-score forecast.
  * - getMemoryTimeline (F1): a forgetting-curve estimate per skill — retention %,
  *   memory strength and the recommended next review.
  *
  * All derived from data already stored (IELTSTest module/score/completedAt).
- * Reuses the existing predictBand() so numbers stay consistent with the rest of
- * the dashboard. Student UI is English.
+ * Readiness uses its own conservative policy; legacy companion helpers below
+ * still use predictBand() and are outside this release. Student UI is English.
  */
 
 const DAY = 86_400_000;
@@ -63,54 +62,8 @@ export interface ExamReadiness {
   recommendations: string[];
 }
 
-export const getExamReadiness = cache(async function getExamReadiness(studentId: string): Promise<ExamReadiness> {
-  const tests = await getStudentTests(studentId);
-
-  const perSkill: SkillPrediction[] = MODULES.map((m) => {
-    const scores = tests.filter((t) => t.module === m.key).map((t) => t.score).filter((s) => s > 0);
-    const p = predictBand(scores);
-    return {
-      key: m.key,
-      label: m.label,
-      predicted: p ? p.predicted : null,
-      current: p ? p.current : null,
-      trend: p ? p.trend : null,
-      sampleSize: scores.length,
-    };
-  });
-
-  const allScores = tests.map((t) => t.score).filter((s) => s > 0);
-  const overallP = predictBand(allScores);
-
-  const withData = perSkill.filter((s) => s.predicted != null);
-  const weakest = withData.length
-    ? withData.reduce((lo, s) => (s.predicted! < lo.predicted! ? s : lo))
-    : null;
-
-  let narrative = "Take a test in each skill and your AI clone will predict your exam bands.";
-  if (withData.length && weakest) {
-    const strong = withData.reduce((hi, s) => (s.predicted! > hi.predicted! ? s : hi));
-    narrative =
-      `If your exam were tomorrow, ${strong.label} would likely score around Band ${strong.predicted!.toFixed(1)}, ` +
-      `while ${weakest.label} may stay near Band ${weakest.predicted!.toFixed(1)} — that's where focus pays off fastest.`;
-  }
-
-  const recommendations: string[] = [];
-  if (weakest) recommendations.push(`Prioritise ${weakest.label} — it's your lowest predicted band right now.`);
-  const up = withData.filter((s) => s.trend === "up").map((s) => s.label);
-  if (up.length) recommendations.push(`Keep the momentum in ${up.join(" & ")} — you're trending up.`);
-  const noData = perSkill.filter((s) => s.sampleSize === 0).map((s) => s.label);
-  if (noData.length) recommendations.push(`No data yet for ${noData.join(", ")} — take one test so your clone can read it.`);
-
-  return {
-    overall: overallP ? overallP.predicted : null,
-    confidence: overallP ? overallP.confidence : null,
-    perSkill,
-    weakest,
-    narrative,
-    recommendations,
-  };
-});
+/** Compatibility name: descriptive evidence only, no future-band projection. */
+export { getPracticeReadiness as getExamReadiness } from "@/lib/assessment/readiness-data";
 
 // ---------------- F1 — Memory Timeline ----------------
 export type MemoryStatus = "mastered" | "strong" | "fading" | "forgotten";

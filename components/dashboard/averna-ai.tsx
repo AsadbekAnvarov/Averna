@@ -64,7 +64,7 @@ export function AvernaAi({ greeting }: { greeting: string }) {
         <CardTitle className="flex items-center gap-2 text-averna-neon">
           <Sparkles className="h-5 w-5" /> Averna AI
         </CardTitle>
-        <p className="text-xs text-gray-400">Your personal mentor — it knows your whole learning journey</p>
+        <p className="text-sm text-gray-300">Practice guidance based on your available learning data</p>
       </CardHeader>
       <CardContent className="space-y-3 relative">
         <div className="max-h-64 overflow-y-auto space-y-2.5 pr-1">
@@ -96,7 +96,7 @@ export function AvernaAi({ greeting }: { greeting: string }) {
               key={q}
               onClick={() => ask(q)}
               disabled={loading}
-              className="text-[11px] px-2.5 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:border-averna-neon/40 hover:text-averna-neon transition-colors disabled:opacity-50"
+              className="min-h-11 text-sm px-3 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:border-averna-neon/40 hover:text-averna-neon transition-colors disabled:opacity-50"
             >
               {q}
             </button>
@@ -110,7 +110,8 @@ export function AvernaAi({ greeting }: { greeting: string }) {
             onKeyDown={(e) => e.key === "Enter" && ask(input)}
             placeholder="Ask Averna AI anything about your learning…"
             disabled={loading}
-            className="bg-background/50"
+            aria-label="Question for Averna AI"
+            className="min-h-11 min-w-0 bg-background/50 text-base"
           />
           <Button onClick={() => ask(input)} disabled={loading || !input.trim()} aria-label="Send" className="neon-button bg-averna-neon hover:bg-averna-neon/80 text-black shrink-0">
             <Send className="h-4 w-4" />

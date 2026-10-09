@@ -56,9 +56,9 @@ export default async function WritingTaskPage(
           <div className="space-y-4">
             {prompts.map((p) => (
               <Card key={p.id} className="glass border-averna-purple/30 hover:border-averna-neon/40 transition-colors">
-                <CardContent className="py-5 flex items-start justify-between gap-4">
+                <CardContent className="py-5 flex flex-col items-stretch gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
                       <h3 className="text-lg font-bold text-white">{p.title}</h3>
                       <span className="text-xs px-2 py-0.5 rounded-full bg-averna-purple/20 text-averna-purple border border-averna-purple/40">
                         {p.type}
@@ -67,7 +67,7 @@ export default async function WritingTaskPage(
                     <p className="text-sm text-gray-400 whitespace-pre-line line-clamp-3">{p.prompt}</p>
                   </div>
                   <Link href={`/learning/writing/${taskType}?p=${p.id}`} className="shrink-0">
-                    <Button className="neon-button bg-averna-primary hover:bg-averna-light">
+                    <Button className="w-full min-h-11 sm:w-auto neon-button bg-averna-primary hover:bg-averna-light">
                       Start <ChevronRight className="ml-1 h-4 w-4" />
                     </Button>
                   </Link>
@@ -121,6 +121,8 @@ export default async function WritingTaskPage(
   return (
     <>
       <WritingEditor
+        key={`${session.user.id}:${taskType}:${prompt.id}:${homework?.homeworkId ?? "practice"}`}
+        cloudDraftsEnabled={process.env.CLOUD_WRITING_DRAFTS === "on"}
         // Only what the editor renders — the sample answer, phrases and strategy stay on the server.
         prompt={{ id: prompt.id, title: prompt.title, prompt: prompt.prompt, type: prompt.type, imageUrl: prompt.imageUrl, chart: prompt.chart }}
         config={taskConfig}
