@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Users,
   GraduationCap,
@@ -34,10 +34,11 @@ import { ExecutiveOverview } from "@/components/admin/executive-overview";
 import { ActivityFeed } from "@/components/admin/activity-feed";
 import { EnrollmentFunnel } from "@/components/admin/enrollment-funnel";
 import { TeacherWorkload } from "@/components/admin/teacher-workload";
-import { DashboardFinance } from "@/components/admin/finance/dashboard-finance";
+import { DashboardFinance, DashboardLeads } from "@/components/admin/finance/dashboard-finance";
 import { FinanceSummary } from "@/components/admin/finance-summary";
 import { AdminAttentionBar } from "@/components/admin/attention-bar";
-import { SeedDemoButton } from "@/components/admin/seed-demo-button";
+import { AdminQuickActions, AdminToolsDisclosure } from "@/components/admin/dashboard-tools";
+import { ADMIN_DASHBOARD_TABS, ADMIN_TAB_ALIASES } from "@/components/admin/dashboard-navigation";
 import { StudentRoster } from "@/components/admin/student-roster";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -177,13 +178,7 @@ export default async function AdminDashboard() {
   const pending = students.filter((s) => !s.groupId);
   const firstName = (session.user.name ?? "Admin").split(" ")[0];
 
-  const tabs = [
-    { key: "overview", label: "Umumiy", icon: "overview", active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
-    { key: "finance", label: "Moliya va nazorat", icon: "finance", active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
-    { key: "people", label: "Oʻquvchilar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
-    { key: "insights", label: "Tahlillar", icon: "analytics", active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
-    { key: "manage", label: "Boshqarish", icon: "manage", active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
-  ];
+  const tabs = ADMIN_DASHBOARD_TABS;
 
   const actions = [
     { href: "/admin/analytics", label: "Tahlil", desc: "Platforma tahlili", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
@@ -243,9 +238,12 @@ export default async function AdminDashboard() {
         <PanelTabs
           tabs={tabs}
           storageKey="averna_admin_tab"
+          aliases={ADMIN_TAB_ALIASES}
+          wrapOnMobile
           content={{
             overview: (
               <>
+                <AdminQuickActions />
                 <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                   <ExecutiveOverview />
                 </Suspense>
@@ -265,15 +263,15 @@ export default async function AdminDashboard() {
             finance: (<Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}><DashboardFinance /></Suspense>),
             people: (
               <>
+                <details className="space-y-4" id="leads">
+                  <summary className="cursor-pointer min-h-11 text-lg font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-averna-cyan">Lidlar va sinov darslari</summary>
+                  <p className="text-sm text-gray-400 my-3">Kelishi rejalashtirilganlar. Lidni qabul qilish sayt akkaunti yoki toʻlov hisobini avtomatik yaratmaydi.</p>
+                  <Suspense fallback={<div className="h-32 rounded-xl bg-white/5 animate-pulse" />}><DashboardLeads/></Suspense>
+                </details>
                 <div>
                   <SectionHeader icon={UserPlus} title={`Yangi oʻquvchilarni qabul qilish (${pending.length})`} subtitle="Daraja belgilang va guruhga biriktiring" accent="text-averna-pink" />
                   <Card id="enroll" className="glass border-averna-pink/30 scroll-mt-6">
-                    <CardHeader>
-                      <CardTitle className="flex items-center justify-end gap-2">
-                        <SeedDemoButton />
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
+                    <CardContent className="pt-6">
                       <StudentRoster
                         students={pendingRoster}
                         groups={rosterGroups}
@@ -332,10 +330,7 @@ export default async function AdminDashboard() {
                   <SectionHeader icon={Trophy} title="Shon-shuhrat zali" subtitle="Platformadagi eng faol oʻquvchilar" accent="text-amber-400" />
                   <TopPerformers />
                 </div>
-              </>
-            ),
-            manage: (
-              <>
+                <AdminToolsDisclosure>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <VoiceControl />
                   <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
@@ -359,8 +354,8 @@ export default async function AdminDashboard() {
                               <Icon className="h-6 w-6" />
                             </div>
                             <div className="min-w-0 w-full">
-                              <p className="font-semibold text-white text-sm truncate">{action.label}</p>
-                              <p className="text-[11px] text-gray-400 truncate">{action.desc}</p>
+                              <p className="font-semibold text-white text-sm">{action.label}</p>
+                              <p className="text-sm text-gray-400">{action.desc}</p>
                             </div>
                           </Link>
                         );
@@ -369,6 +364,7 @@ export default async function AdminDashboard() {
                   </CardContent>
                 </Card>
                 </div>
+                </AdminToolsDisclosure>
               </>
             ),
           }}

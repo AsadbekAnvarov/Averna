@@ -2,7 +2,7 @@
 
 ## Scope
 
-Replaces the old Moliya demo view and adds a finance workspace to the admin Dashboard. Uzbek UI, whole UZS, Asia/Tashkent dates, dark/light layouts and mobile summary cards. Only ADMIN sessions can read or write finance API data. No student Billing is reintroduced.
+Replaces the old Moliya demo view and adds a finance workspace to the admin Dashboard. Uzbek UI, whole UZS, Asia/Tashkent dates, shared Averna dark/light theme tokens and glass cards, and mobile summary cards. Embedded finance is a section, not a nested page/main with a separate background. Only ADMIN sessions can read or write finance API data. No student Billing is reintroduced.
 
 Modules: learner registry/tariffs, monthly invoices/debts, partial tuition receipts, cash/card/terminal/bank-transfer channels, teacher/center shares, advances, salary payouts, fixed salary/bonus/correction accruals, operating expenses, other income, intake leads, immutable journal/CSV export, opening balances and month closure.
 
@@ -19,6 +19,16 @@ The source workbook combines a finance summary, month close, settings/group mapp
 - Hidden intake sheets, checkboxes, signed debts and identities cannot be assigned operational meaning automatically.
 
 No real names, contacts, salaries or original workbook are included here. Formula/schema audit is not a certification of the center's financial statements.
+
+## Admin usability follow-up
+
+- Four primary Dashboard tabs (all visible in a two-column layout on phones; the mobile tab bar does not stick over forms): overview, people/intake, finance, analytics/tools. The duplicate Manage tab is folded into a clearly labelled expandable tools section; old `?tab=manage` and remembered Manage selections map to analytics/tools. Tools/routes and account controls remain available.
+- Daily quick actions stay on overview. Intake leads live with people, not in the cash workspace. The demo-seeding shortcut is removed from normal learner admission; no records or seed API are deleted by this UI change.
+- Finance has six task tabs and reuses global theme variables, glass surfaces and brand accents. Embedded mode removes duplicate back-link, identity badge, page background and oversized heading. Standalone Moliya remains accessible.
+- Payment action on an unpaid invoice or mobile learner card chooses its exact ID, fills its remaining amount and focuses the editable amount. Staff can reduce it for a partial payment. Existing invoices are excluded from bulk billing selection; each batch is capped at 200.
+- Entered cash forms survive write/refresh failure and retain the same retry key. Successful forms clear only after both write and refresh succeed; fields/tab changes are locked while pending, with a synchronous rapid-submit guard.
+- Dashboard summary/finance/intake reuse one authorized React request-scoped snapshot. No persistent/global financial cache is introduced.
+- No additional database/schema, access-policy or financial-calculation changes are part of this design follow-up. Hosted migration/concurrency release gates below still apply.
 
 ## Register semantics
 
