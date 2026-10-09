@@ -14,6 +14,9 @@ import { AccountNotice } from "@/components/account-notice";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { notifyUser } from "@/lib/notifications";
+import { MAX_LEVEL } from "@/lib/engine/progression/levels";
+import { setRewardAvailability, updateReward } from "@/lib/admin/reward-actions";
+import { ConfirmedAction } from "@/components/admin/confirmed-action";
 import { formatDate } from "@/lib/utils";
 
 async function addReward(formData: FormData) {
@@ -21,13 +24,14 @@ async function addReward(formData: FormData) {
   const session = await auth();
   if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
   const name = (formData.get("name") as string)?.trim();
-  const cost = parseInt(formData.get("cost") as string) || 0;
+  const cost = Number(formData.get("cost"));
   const description = (formData.get("description") as string)?.trim();
   const icon = (formData.get("icon") as string)?.trim() || "🎁";
-  const minLevel = Math.max(1, parseInt(formData.get("minLevel") as string) || 1);
-  if (!name || cost <= 0) return;
+  const minLevel = Number(formData.get("minLevel") ?? 1);
+  if (!name || name.length > 200 || !Number.isSafeInteger(cost) || cost < 1 || cost > 2147483647 || !Number.isInteger(minLevel) || minLevel < 1 || minLevel > MAX_LEVEL) return;
   await db.reward.create({ data: { name, cost, description: description || null, icon, minLevel } });
   revalidatePath("/admin/rewards");
+  revalidatePath("/rewards");
 }
 
 async function moderate(formData: FormData) {
@@ -36,6 +40,7 @@ async function moderate(formData: FormData) {
   if (!session?.user || session.user.role !== "ADMIN") redirect("/auth/signin");
   const id = formData.get("id") as string;
   const action = formData.get("action") as string;
+  if (action !== "approve" && action !== "reject") return;
 
   const red = await db.rewardRedemption.findUnique({
     where: { id },
@@ -68,6 +73,7 @@ async function moderate(formData: FormData) {
     });
   }
   revalidatePath("/admin/rewards");
+  revalidatePath("/rewards");
 }
 
 export default async function AdminRewardsPage() {
@@ -85,6 +91,9 @@ export default async function AdminRewardsPage() {
     }),
     db.reward.findMany({ orderBy: { cost: "asc" } }),
   ]);
+
+  const activeRewards = rewards.filter(r => r.active);
+  const removedRewards = rewards.filter(r => !r.active);
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -150,7 +159,7 @@ export default async function AdminRewardsPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="minLevel">Min. daraja (cheklov)</Label>
-                <Input id="minLevel" name="minLevel" type="number" min="1" max="15" defaultValue="1" placeholder="1" className="bg-background/50" />
+                <Input id="minLevel" name="minLevel" type="number" min="1" max={MAX_LEVEL} defaultValue="1" placeholder="1" className="bg-background/50" />
               </div>
               <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="description">Tavsif</Label>
@@ -163,23 +172,42 @@ export default async function AdminRewardsPage() {
           </CardContent>
         </Card>
 
-        {/* Catalog */}
+        {/* Catalog: equal-height cards; removal retains redemption history. */}
         <Card className="glass border-white/10">
-          <CardHeader><CardTitle className="text-white">Katalog ({rewards.length})</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="text-white">Katalog ({activeRewards.length})</CardTitle><p className="text-sm text-gray-400">Oʻchirish mukofotni doʻkondan olib tashlaydi. Oldingi soʻrovlar va ball tarixi saqlanadi.</p></CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {rewards.map((r) => (
-                <div key={r.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
-                  <span className="text-white text-sm">
-                    {r.icon} {r.name}
-                    {(r.minLevel ?? 1) > 1 && (
-                      <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300">Lvl {r.minLevel}+</span>
-                    )}
-                  </span>
-                  <span className="text-averna-cyan font-semibold flex items-center gap-1"><Coins className="h-3.5 w-3.5" /> {r.cost}</span>
-                </div>
+            {activeRewards.length === 0 && <p className="text-sm text-gray-400 py-4">Doʻkonda mukofotlar yoʻq. Yuqoridan yangi mukofot qoʻshing.</p>}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+              {activeRewards.map(r => (
+                <article key={r.id} className="flex min-w-0 flex-col gap-4 rounded-xl bg-white/5 border border-white/10 p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <h2 className="text-white font-medium break-words min-w-0">{r.icon} {r.name}</h2>
+                    <span className="text-averna-cyan font-semibold inline-flex items-center gap-1 shrink-0"><Coins className="h-4 w-4" aria-hidden />{r.cost}</span>
+                  </div>
+                  {r.description && <p className="text-sm text-gray-400 break-words">{r.description}</p>}
+                  <p className="text-xs text-amber-300">Lvl {r.minLevel}+</p>
+                  <div className="mt-auto flex flex-wrap gap-2 items-start">
+                    <details className="min-w-0 w-full">
+                      <summary className="cursor-pointer min-h-11 flex items-center text-sm text-averna-cyan focus-visible:outline focus-visible:outline-2">Tahrirlash</summary>
+                      <form action={updateReward} className="grid gap-3 pb-4">
+                        <input type="hidden" name="id" value={r.id} />
+                        <label className="text-sm text-gray-400">Nomi<Input name="name" defaultValue={r.name} maxLength={200} required /></label>
+                        <label className="text-sm text-gray-400">Narxi (ball)<Input name="cost" type="number" min={1} max={2147483647} defaultValue={r.cost} required /></label>
+                        <label className="text-sm text-gray-400">Min. daraja<Input name="minLevel" type="number" min={1} max={MAX_LEVEL} defaultValue={r.minLevel} required /></label>
+                        <label className="text-sm text-gray-400">Belgi (emoji)<Input name="icon" defaultValue={r.icon ?? "🎁"} /></label>
+                        <label className="text-sm text-gray-400">Tavsif<Input name="description" defaultValue={r.description ?? ""} /></label>
+                        <Button type="submit" className="min-h-11">Saqlash</Button>
+                      </form>
+                    </details>
+                    <ConfirmedAction action={setRewardAvailability} fields={{ id: r.id, action: "remove" }} title={`“${r.name}” oʻchirilsinmi?`} description="Mukofot oʻquvchilar doʻkonidan olib tashlanadi. Oldingi soʻrovlar saqlanadi va ularni odatdagidek tasdiqlash yoki rad etish mumkin. Mukofotni keyin tiklashingiz mumkin." />
+                  </div>
+                </article>
               ))}
             </div>
+            {removedRewards.length > 0 && <details className="mt-6 border-t border-white/10 pt-4">
+              <summary className="cursor-pointer min-h-11 text-sm text-gray-400">Oʻchirilgan mukofotlar ({removedRewards.length})</summary>
+              <div className="mt-3 space-y-3">{removedRewards.map(r => <div key={r.id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 p-3"><span className="min-w-0 text-sm text-gray-400 break-words">{r.icon} {r.name} · {r.cost} ball</span><ConfirmedAction action={setRewardAvailability} fields={{ id: r.id, action: "restore" }} label="Tiklash" destructive={false} title="Mukofot tiklansinmi?" description="Mukofot yana oʻquvchilar doʻkonida koʻrinadi." /></div>)}</div>
+            </details>}
           </CardContent>
         </Card>
       </div>

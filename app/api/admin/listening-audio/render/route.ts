@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { requireAdmin } from "@/lib/auth";
+import { requireTeacherOrAdmin } from "@/lib/auth";
 import { guardAi } from "@/lib/engine/ai-guard";
 import { blobConfigured } from "@/lib/storage/blob";
 import { audioAiConfigured } from "@/lib/openai-audio";
@@ -20,7 +20,7 @@ function fail(status: number, code: AudioErrorCode, error: string, extra: Partia
 
 function authError(e: unknown) {
   const signedOut = e instanceof Error && e.message === "Unauthorized";
-  return fail(signedOut ? 401 : 403, "invalid", signedOut ? "Tizimga kiring." : "Faqat administratorlar uchun.");
+  return fail(signedOut ? 401 : 403, "invalid", signedOut ? "Tizimga kiring." : "Faqat oʻqituvchi va administratorlar uchun.");
 }
 
 /** Parts being rendered on this instance — a double click must not render (and pay for) a part twice. */
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
   const startedAt = Date.now();
   let user: { id: string };
   try {
-    user = (await requireAdmin()) as { id: string };
+    user = (await requireTeacherOrAdmin()) as { id: string };
   } catch (e) {
     return authError(e);
   }

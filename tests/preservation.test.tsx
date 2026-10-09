@@ -568,21 +568,12 @@ const ADMIN_PALETTE: [group: string, label: string][] = [
 ];
 
 /** components/layout/app-sidebar.tsx: ADMIN_NAV (section → [name, href]). */
+// Requested staff-navigation reorganization; Uzbek labels and unchanged mobile tabs remain protected.
 const ADMIN_SIDEBAR: [section: string, items: [name: string, href: string][]][] = [
   ["Umumiy koʻrinish", [["Boshqaruv paneli", "/admin/dashboard"], ["Tahlil", "/admin/analytics"], ["Bildirishnomalar", "/notifications"]]],
-  ["Odamlar", [["Oʻqituvchilar", "/admin/teachers"], ["Guruhlar", "/admin/groups"]]],
-  ["Oʻqitish", [["Tekshiruv navbati", "/teacher/reviews"], ["Mock natijalari", "/teacher/mock"], ["Kirish testi", "/admin/placement"]]],
-  [
-    "Kontent",
-    [
-      ["Oʻquv kontenti", "/admin/content"],
-      ["Test generatori", "/admin/generate-tests"],
-      ["Listening audio", "/admin/listening-audio"],
-      ["Eʼlonlar", "/admin/announcements"],
-      ["Mukofotlar", "/admin/rewards"],
-    ],
-  ],
-  ["Operatsiyalar", [["Moliya", "/admin/finance"], ["Audit jurnali", "/admin/logs"], ["Tizim", "/admin/system"]]],
+  ["Odamlar", [["Oʻquvchilar va qabul", "/admin/dashboard?tab=people"], ["Oʻqituvchilar", "/admin/teachers"], ["Guruhlar", "/admin/groups"]]],
+  ["Markaz boshqaruvi", [["Moliya", "/admin/finance"], ["Kirish testi", "/admin/placement"], ["Mukofotlar", "/admin/rewards"], ["Eʼlonlar", "/admin/announcements"]]],
+  ["Tizim va nazorat", [["Audit jurnali", "/admin/logs"], ["Tizim", "/admin/system"]]],
   ["Muloqot", [["Xabarlar", "/messages"], ["Telegram bot", "/admin/telegram"]]],
   ["Hisob", [["Profil va parol", "/admin/profile"]]],
 ];

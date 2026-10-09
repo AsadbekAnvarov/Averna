@@ -1,3 +1,4 @@
+import { financeIndicators } from "@/lib/finance/indicators";
 import { db } from "@/lib/db";
 
 /**
@@ -30,9 +31,10 @@ export interface ExecutiveSnapshot {
   revenueByMethod: RevenueBreakdown;
   outstandingStudents: number;
   pendingPayments: number;
-  /** null until an Expense model exists — never guessed. */
-  expensesMonth: null;
-  netProfitMonth: null;
+  /** null when the finance register/period is unavailable — never guessed. */
+  expensesMonth: number | null;
+  netProfitMonth: number | null;
+  financeAvailable: boolean;
 
   // --- People ---
   activeStudents: number;
@@ -50,46 +52,24 @@ export interface ExecutiveSnapshot {
 
 export async function getExecutiveSnapshot(): Promise<ExecutiveSnapshot> {
   const now = new Date();
-  const startToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const startMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-  const startPrevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-  const startYear = new Date(now.getFullYear(), 0, 1);
   const monthAgo = new Date(Date.now() - 30 * DAY);
   const weekAgo = new Date(Date.now() - 7 * DAY);
 
-  const [payments, pendingPayments, students, attendance, groups, teachers] = await Promise.all([
-    // Completed income for the year — one scan, then bucketed in memory.
-    db.payment.findMany({
-      where: { status: "COMPLETED", createdAt: { gte: startYear } },
-      select: { amount: true, type: true, createdAt: true },
-    }),
-    db.payment.count({ where: { status: "PENDING" } }),
+  const [financial, students, attendance, groups, teachers] = await Promise.all([
+    financeIndicators(now),
     db.student.findMany({ select: { createdAt: true, balance: true, groupId: true, lastActiveDate: true } }),
     db.attendance.findMany({ where: { date: { gte: monthAgo } }, select: { status: true } }),
     db.group.findMany({ select: { _count: { select: { students: true } } } }),
     db.teacher.count(),
   ]);
 
-  const sum = (rows: { amount: number }[]) => rows.reduce((a, p) => a + p.amount, 0);
-  const positive = payments.filter((p) => p.amount > 0);
-
-  const revenueToday = sum(positive.filter((p) => p.createdAt >= startToday));
-  const monthRows = positive.filter((p) => p.createdAt >= startMonth);
-  const revenueMonth = sum(monthRows);
-  const revenueYear = sum(positive);
-  const revenuePrevMonth = sum(positive.filter((p) => p.createdAt >= startPrevMonth && p.createdAt < startMonth));
-
-  const revenueGrowthPct =
-    revenuePrevMonth > 0 ? Math.round(((revenueMonth - revenuePrevMonth) / revenuePrevMonth) * 100) : null;
-
-  // Payment "method" is only partially expressible today: the schema has a
-  // coarse `type` (TOPUP | COURSE | SUBSCRIPTION | CASH), not a real method
-  // field. Cash is distinguishable because admins record it explicitly.
-  const revenueByMethod: RevenueBreakdown = {
-    cash: sum(monthRows.filter((p) => p.type === "CASH")),
-    other: sum(monthRows.filter((p) => p.type !== "CASH")),
-  };
-
+  const revenueToday=financial.today;
+  const revenueMonth=financial.month;
+  const revenueYear=financial.year;
+  const revenuePrevMonth=financial.previous;
+  const revenueGrowthPct=financial.growth;
+  const revenueByMethod={cash:financial.cash,other:financial.other};
   const present = attendance.filter((a) => a.status === "PRESENT" || a.status === "LATE").length;
   const attendanceRate = attendance.length >= 5 ? Math.round((present / attendance.length) * 100) : null;
 
@@ -103,10 +83,11 @@ export async function getExecutiveSnapshot(): Promise<ExecutiveSnapshot> {
     revenuePrevMonth,
     revenueGrowthPct,
     revenueByMethod,
-    outstandingStudents: students.filter((s) => s.groupId && s.balance <= 0).length,
-    pendingPayments,
-    expensesMonth: null,
-    netProfitMonth: null,
+    outstandingStudents: financial.debtors,
+    pendingPayments: financial.pending,
+    financeAvailable: financial.available,
+    expensesMonth: financial.available?financial.expenses:null,
+    netProfitMonth: financial.available?financial.profit:null,
 
     activeStudents: students.filter((s) => s.lastActiveDate && s.lastActiveDate >= weekAgo).length,
     totalStudents: students.length,
@@ -173,22 +154,11 @@ export async function getBusinessHealth(snapshot?: ExecutiveSnapshot): Promise<B
   const drivers: HealthDriver[] = [];
   const missing: string[] = [];
 
-  // 1. Payment collection — share of enrolled students who are not in arrears.
-  const enrolled = s.totalStudents - s.unplacedStudents;
-  if (enrolled > 0) {
-    const collected = Math.round(((enrolled - s.outstandingStudents) / enrolled) * 100);
-    drivers.push({
-      label: "Toʻlov yigʻilishi",
-      score: collected,
-      weight: 25,
-      note: `${enrolled} ta oʻquvchidan ${s.outstandingStudents} tasining balansi nol yoki manfiy.`,
-    });
-  } else {
-    missing.push("Toʻlov yigʻilishi — hali guruhga biriktirilgan oʻquvchi yoʻq.");
-  }
+  // 1. Platform enrollment and accounting registries differ; do not invent a collection ratio.
+  missing.push("Toʻlov yigʻilishi — moliyaviy registrdagi chiqarilgan hisoblar boʻyicha tekshiriladi; platforma balansi qarz emas.");
 
   // 2. Revenue growth — month over month.
-  if (s.revenueGrowthPct != null) {
+  if (s.financeAvailable && s.revenueGrowthPct != null) {
     // -20% → 0, 0% → 60, +20% and above → 100.
     const score = Math.max(0, Math.min(100, Math.round(60 + s.revenueGrowthPct * 2)));
     drivers.push({

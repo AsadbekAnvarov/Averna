@@ -1274,3 +1274,149 @@ model AiAssessmentJob {
   @@index([status, nextAttemptAt])
   @@map("ai_assessment_jobs")
 }
+
+// Admin-only finance register. Platform identifiers are trace references;
+// retained financial snapshots do not disappear when a learning account is deleted.
+model FinancePeriod {
+  id              String           @id @default(cuid())
+  month           String           @unique
+  status          String           @default("OPEN")
+  opening         Json
+  closedAt        DateTime?
+  closedBy        String?
+  closingSnapshot Json?
+  createdAt       DateTime         @default(now())
+  entries         FinanceEntry[]
+  invoices        FinanceInvoice[]
+  accruals        FinanceAccrual[]
+
+  @@map("finance_periods")
+}
+
+model FinanceStaff {
+  id                String           @id @default(cuid())
+  fullName          String
+  platformTeacherId String?          @unique
+  shareBps          Int?
+  active            Boolean          @default(true)
+  createdAt         DateTime         @default(now())
+  learners          FinanceLearner[]
+  invoices          FinanceInvoice[]
+  entries           FinanceEntry[]
+  accruals          FinanceAccrual[]
+
+  @@map("finance_staff")
+}
+
+model FinanceLearner {
+  id                String           @id @default(cuid())
+  fullName          String
+  phone             String?
+  groupName         String
+  platformStudentId String?          @unique
+  rosterStudentId   String?          @unique
+  sourceKey         String?          @unique
+  staffId           String
+  monthlyFee        Decimal          @db.Decimal(15, 0)
+  dueDay            Int              @default(5)
+  status            String           @default("ACTIVE")
+  enrolledOn        DateTime         @default(now())
+  note              String?
+  createdAt         DateTime         @default(now())
+  staff             FinanceStaff     @relation(fields: [staffId], references: [id], onDelete: Restrict)
+  invoices          FinanceInvoice[]
+
+  @@index([status, groupName])
+  @@map("finance_learners")
+}
+
+model FinanceInvoice {
+  id          String         @id @default(cuid())
+  periodId    String
+  learnerId   String
+  staffId     String
+  learnerName String
+  groupName   String
+  staffName   String
+  shareBps    Int
+  amount      Decimal        @db.Decimal(15, 0)
+  dueAt       DateTime
+  createdAt   DateTime       @default(now())
+  period      FinancePeriod  @relation(fields: [periodId], references: [id], onDelete: Restrict)
+  learner     FinanceLearner @relation(fields: [learnerId], references: [id], onDelete: Restrict)
+  staff       FinanceStaff   @relation(fields: [staffId], references: [id], onDelete: Restrict)
+  entries     FinanceEntry[]
+
+  @@unique([periodId, learnerId])
+  @@map("finance_invoices")
+}
+
+model FinanceEntry {
+  id          String          @id @default(cuid())
+  periodId    String
+  kind        String
+  amount      Decimal         @db.Decimal(15, 0)
+  earned      Decimal         @default(0) @db.Decimal(15, 0)
+  channel     String
+  category    String?
+  invoiceId   String?
+  staffId     String?
+  description String
+  occurredAt  DateTime
+  actorId     String
+  actorName   String
+  reversesId  String?         @unique
+  refundOfId  String?
+  createdAt   DateTime        @default(now())
+  period      FinancePeriod   @relation(fields: [periodId], references: [id], onDelete: Restrict)
+  invoice     FinanceInvoice? @relation(fields: [invoiceId], references: [id], onDelete: Restrict)
+  staff       FinanceStaff?   @relation(fields: [staffId], references: [id], onDelete: Restrict)
+  original    FinanceEntry?   @relation("FinanceReversal", fields: [reversesId], references: [id], onDelete: Restrict)
+  reversal    FinanceEntry?   @relation("FinanceReversal")
+  refundOf    FinanceEntry?   @relation("FinanceRefund", fields: [refundOfId], references: [id], onDelete: Restrict)
+  refunds     FinanceEntry[]  @relation("FinanceRefund")
+
+  @@index([periodId, occurredAt])
+  @@index([staffId])
+  @@index([invoiceId])
+  @@map("finance_entries")
+}
+
+model FinanceAccrual {
+  id        String        @id @default(cuid())
+  periodId  String
+  staffId   String
+  amount    Decimal       @db.Decimal(15, 0)
+  reason    String
+  actorId   String
+  createdAt DateTime      @default(now())
+  period    FinancePeriod @relation(fields: [periodId], references: [id], onDelete: Restrict)
+  staff     FinanceStaff  @relation(fields: [staffId], references: [id], onDelete: Restrict)
+
+  @@index([periodId, staffId])
+  @@map("finance_accruals")
+}
+
+model FinanceLead {
+  id            String    @id @default(cuid())
+  fullName      String
+  phone         String
+  groupName     String?
+  status        String    @default("NEW")
+  appointmentAt DateTime?
+  note          String?
+  createdAt     DateTime  @default(now())
+
+  @@index([status])
+  @@map("finance_leads")
+}
+
+model FinanceRequest {
+  id          String   @id
+  actorId     String
+  payloadHash String
+  result      Json
+  createdAt   DateTime @default(now())
+
+  @@map("finance_requests")
+}

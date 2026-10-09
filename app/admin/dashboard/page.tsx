@@ -4,9 +4,10 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Users,
+  BookOpen,
   GraduationCap,
   Layers,
   UserPlus,
@@ -34,9 +35,11 @@ import { ExecutiveOverview } from "@/components/admin/executive-overview";
 import { ActivityFeed } from "@/components/admin/activity-feed";
 import { EnrollmentFunnel } from "@/components/admin/enrollment-funnel";
 import { TeacherWorkload } from "@/components/admin/teacher-workload";
+import { DashboardFinance, DashboardLeads } from "@/components/admin/finance/dashboard-finance";
 import { FinanceSummary } from "@/components/admin/finance-summary";
 import { AdminAttentionBar } from "@/components/admin/attention-bar";
-import { SeedDemoButton } from "@/components/admin/seed-demo-button";
+import { AdminQuickActions, AdminToolsDisclosure } from "@/components/admin/dashboard-tools";
+import { ADMIN_DASHBOARD_TABS, ADMIN_TAB_ALIASES } from "@/components/admin/dashboard-navigation";
 import { StudentRoster } from "@/components/admin/student-roster";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -176,12 +179,7 @@ export default async function AdminDashboard() {
   const pending = students.filter((s) => !s.groupId);
   const firstName = (session.user.name ?? "Admin").split(" ")[0];
 
-  const tabs = [
-    { key: "overview", label: "Umumiy", icon: "overview", active: "bg-averna-neon/15 text-averna-neon ring-1 ring-averna-neon/40" },
-    { key: "people", label: "Oʻquvchilar", icon: "people", active: "bg-averna-cyan/15 text-averna-cyan ring-1 ring-averna-cyan/40" },
-    { key: "insights", label: "Tahlillar", icon: "analytics", active: "bg-averna-purple/15 text-averna-purple ring-1 ring-averna-purple/40" },
-    { key: "manage", label: "Boshqarish", icon: "manage", active: "bg-averna-pink/15 text-averna-pink ring-1 ring-averna-pink/40" },
-  ];
+  const tabs = ADMIN_DASHBOARD_TABS;
 
   const actions = [
     { href: "/admin/analytics", label: "Tahlil", desc: "Platforma tahlili", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
@@ -190,9 +188,12 @@ export default async function AdminDashboard() {
     { href: "/admin/rewards", label: "Mukofotlar va soʻrovlar", desc: "Almashtirishlarni tasdiqlash", icon: Gift, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
     { href: "/admin/announcements", label: "Eʼlonlar", desc: "Yangiliklarni tarqatish", icon: Megaphone, iconBg: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
     { href: "/admin/content", label: "Kontent", desc: "Darslar va materiallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
-    { href: "/admin/finance", label: "Moliya", desc: "Toʻlovlar va hisob-kitob", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
+    { href: "/admin/finance", label: "Moliya va nazorat", desc: "Oʻquvchilar, ish haqi va pul oqimi", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
     { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
     { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
+    { href: "/teacher/reviews", label: "Tekshiruv navbati", desc: "Barcha tekshiruvlarni nazorat qilish", icon: ShieldCheck, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
+    { href: "/teacher/mock", label: "Mock natijalari", desc: "Guruhlar natijalarini koʻrish", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+    { href: "/admin/listening-audio", label: "Listening audio", desc: "Audio kutubxonasini boshqarish", icon: BookOpen, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
     { href: "/admin/generate-tests", label: "Test generatori", desc: "Original testlar yaratish", icon: Sparkles, iconBg: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
     { href: "/notifications", label: "Bildirishnomalar", desc: "Tizim xabarlari", icon: Bell, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
     { href: "/messages", label: "Xabarlar", desc: "Oʻquvchilar bilan yozishma", icon: MessageSquare, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
@@ -241,9 +242,12 @@ export default async function AdminDashboard() {
         <PanelTabs
           tabs={tabs}
           storageKey="averna_admin_tab"
+          aliases={ADMIN_TAB_ALIASES}
+          wrapOnMobile
           content={{
             overview: (
               <>
+                <AdminQuickActions />
                 <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                   <ExecutiveOverview />
                 </Suspense>
@@ -254,23 +258,24 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-32 rounded-2xl bg-white/5 animate-pulse" />}>
                   <OutcomeKpis />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <ActivityFeed />
                   <FinanceSummary />
                 </div>
               </>
             ),
+            finance: (<Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}><DashboardFinance /></Suspense>),
             people: (
               <>
+                <details className="space-y-4" id="leads">
+                  <summary className="cursor-pointer min-h-11 text-lg font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-averna-cyan">Lidlar va sinov darslari</summary>
+                  <p className="text-sm text-gray-400 my-3">Kelishi rejalashtirilganlar. Lidni qabul qilish sayt akkaunti yoki toʻlov hisobini avtomatik yaratmaydi.</p>
+                  <Suspense fallback={<div className="h-32 rounded-xl bg-white/5 animate-pulse" />}><DashboardLeads/></Suspense>
+                </details>
                 <div>
                   <SectionHeader icon={UserPlus} title={`Yangi oʻquvchilarni qabul qilish (${pending.length})`} subtitle="Daraja belgilang va guruhga biriktiring" accent="text-averna-pink" />
                   <Card id="enroll" className="glass border-averna-pink/30 scroll-mt-6">
-                    <CardHeader>
-                      <CardTitle className="flex items-center justify-end gap-2">
-                        <SeedDemoButton />
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
+                    <CardContent className="pt-6">
                       <StudentRoster
                         students={pendingRoster}
                         groups={rosterGroups}
@@ -303,7 +308,7 @@ export default async function AdminDashboard() {
             ),
             insights: (
               <>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                     <PredictionEngine />
                   </Suspense>
@@ -317,7 +322,7 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                   <JourneyReplaySection />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <EnrollmentFunnel />
                   <TeacherWorkload />
                 </div>
@@ -329,11 +334,8 @@ export default async function AdminDashboard() {
                   <SectionHeader icon={Trophy} title="Shon-shuhrat zali" subtitle="Platformadagi eng faol oʻquvchilar" accent="text-amber-400" />
                   <TopPerformers />
                 </div>
-              </>
-            ),
-            manage: (
-              <>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <AdminToolsDisclosure>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <VoiceControl />
                   <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
                     <ContentHealth />
@@ -356,8 +358,8 @@ export default async function AdminDashboard() {
                               <Icon className="h-6 w-6" />
                             </div>
                             <div className="min-w-0 w-full">
-                              <p className="font-semibold text-white text-sm truncate">{action.label}</p>
-                              <p className="text-[11px] text-gray-400 truncate">{action.desc}</p>
+                              <p className="font-semibold text-white text-sm">{action.label}</p>
+                              <p className="text-sm text-gray-400">{action.desc}</p>
                             </div>
                           </Link>
                         );
@@ -366,6 +368,7 @@ export default async function AdminDashboard() {
                   </CardContent>
                 </Card>
                 </div>
+                </AdminToolsDisclosure>
               </>
             ),
           }}
