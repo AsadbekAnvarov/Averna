@@ -7,6 +7,7 @@ import { db } from "@/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Users,
+  BookOpen,
   GraduationCap,
   Layers,
   UserPlus,
@@ -190,6 +191,9 @@ export default async function AdminDashboard() {
     { href: "/admin/finance", label: "Moliya va nazorat", desc: "Oʻquvchilar, ish haqi va pul oqimi", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
     { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
     { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
+    { href: "/teacher/reviews", label: "Tekshiruv navbati", desc: "Barcha tekshiruvlarni nazorat qilish", icon: ShieldCheck, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
+    { href: "/teacher/mock", label: "Mock natijalari", desc: "Guruhlar natijalarini koʻrish", icon: BarChart3, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
+    { href: "/admin/listening-audio", label: "Listening audio", desc: "Audio kutubxonasini boshqarish", icon: BookOpen, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
     { href: "/admin/generate-tests", label: "Test generatori", desc: "Original testlar yaratish", icon: Sparkles, iconBg: "bg-averna-neon/15 text-averna-neon", hover: "hover:border-averna-neon/40" },
     { href: "/notifications", label: "Bildirishnomalar", desc: "Tizim xabarlari", icon: Bell, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
     { href: "/messages", label: "Xabarlar", desc: "Oʻquvchilar bilan yozishma", icon: MessageSquare, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
@@ -254,7 +258,7 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-32 rounded-2xl bg-white/5 animate-pulse" />}>
                   <OutcomeKpis />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <ActivityFeed />
                   <FinanceSummary />
                 </div>
@@ -304,7 +308,7 @@ export default async function AdminDashboard() {
             ),
             insights: (
               <>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                     <PredictionEngine />
                   </Suspense>
@@ -318,7 +322,7 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                   <JourneyReplaySection />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <EnrollmentFunnel />
                   <TeacherWorkload />
                 </div>
@@ -331,7 +335,7 @@ export default async function AdminDashboard() {
                   <TopPerformers />
                 </div>
                 <AdminToolsDisclosure>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <VoiceControl />
                   <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
                     <ContentHealth />

@@ -4,28 +4,30 @@ import { redirect } from "next/navigation";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { auth, requireTeacherOrAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { generatedTestOwnerFilter } from "@/lib/ielts/generated-test-access";
+import { ConfirmedAction } from "@/components/admin/confirmed-action";
 import { EXAM_CATALOG_TAG } from "@/lib/ielts/catalog";
+import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { TestGeneratorPanel } from "@/components/admin/test-generator-panel";
 import { ExamBulkGenerator } from "@/components/admin/exam-bulk-generator";
 import { Card, CardContent } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
-import { Sparkles, FileText, Trash2, BookOpen, ChevronDown } from "lucide-react";
+import { Sparkles, FileText, BookOpen, ChevronDown } from "lucide-react";
 
 async function deleteGeneratedTest(formData: FormData) {
   "use server";
-  await requireTeacherOrAdmin();
-  const id = String(formData.get("id") || "");
-  if (id) {
-    try {
-      await db.generatedTest.delete({ where: { id } });
-    } catch {
-      /* ignore — may already be gone */
-    }
-  }
+  const user = await requireTeacherOrAdmin();
+  const id = String(formData.get("id") || "").trim();
+  if (!id) return;
+  await db.generatedTest.deleteMany({ where: {
+    id, ...generatedTestOwnerFilter(user),
+    OR: [{ level: null }, { NOT: { level: { startsWith: "exam-gen" } } }],
+  } });
   revalidateTag(EXAM_CATALOG_TAG);
   revalidatePath("/admin/generate-tests");
+  revalidatePath("/teacher/generate-tests");
 }
 
 export default async function GenerateTestsPage() {
@@ -43,6 +45,7 @@ export default async function GenerateTestsPage() {
   try {
     tests = await db.generatedTest.findMany({
       where: {
+        ...generatedTestOwnerFilter(session.user),
         module: { in: ["READING", "LISTENING", "WRITING", "WRITING_TASK1", "SPEAKING"] },
         OR: [{ level: null }, { NOT: { level: { startsWith: "exam-gen" } } }],
       },
@@ -75,10 +78,10 @@ export default async function GenerateTestsPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl pb-10 lg:pb-8">
-        <AdminHeader user={{ name: dbUser?.name ?? "Admin", email: dbUser?.email ?? "", image: dbUser?.image ?? null }} />
+        {role === "TEACHER" ? <TeacherHeader user={{ name: dbUser?.name ?? "Teacher", email: dbUser?.email ?? "", image: dbUser?.image ?? null }} /> : <AdminHeader user={{ name: dbUser?.name ?? "Admin", email: dbUser?.email ?? "", image: dbUser?.image ?? null }} />}
 
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
+          back={{ href: role === "TEACHER" ? "/teacher/dashboard" : "/admin/dashboard", label: role === "TEACHER" ? "Teacher dashboard" : "Admin paneliga qaytish" }}
           icon={Sparkles}
           iconClassName="text-averna-purple"
           title={<>Test <span className="neon-text-purple">generatori</span></>}
@@ -122,7 +125,7 @@ export default async function GenerateTestsPage() {
               ) : (
                 <div className="space-y-2">
                   {tests.map((t) => (
-                    <div key={t.id} className="glass rounded-xl border border-white/5 p-4 flex items-center gap-4">
+                    <div key={t.id} className="glass rounded-xl border border-white/5 p-4 flex flex-wrap items-center gap-4">
                       <FileText className="h-5 w-5 text-averna-cyan shrink-0" />
                       <div className="min-w-0 flex-1">
                         <p className="font-semibold text-white truncate">{t.title}</p>
@@ -148,16 +151,7 @@ export default async function GenerateTestsPage() {
                       >
                         {t.published ? "Eʼlon qilingan" : "Qoralama"}
                       </span>
-                      <form action={deleteGeneratedTest}>
-                        <input type="hidden" name="id" value={t.id} />
-                        <button
-                          type="submit"
-                          aria-label="Testni oʻchirish"
-                          className="text-gray-500 hover:text-red-400 transition-colors shrink-0"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </button>
-                      </form>
+                      <ConfirmedAction action={deleteGeneratedTest} fields={{ id: t.id }} label="Testni oʻchirish" title={`“${t.title}” oʻchirilsinmi?`} description="Test kutubxonadan olib tashlanadi. Bu amalni bekor qilib boʻlmaydi." />
                     </div>
                   ))}
                 </div>

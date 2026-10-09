@@ -14,7 +14,6 @@ import {
   Trophy,
   Film,
   MessageSquare,
-  BarChart,
   User,
   Zap,
   AudioLines,
@@ -26,15 +25,9 @@ import {
   Library,
   Wallet,
   Bot,
-  Users,
-  ClipboardCheck,
-  Megaphone,
   Notebook,
-  DollarSign,
-  Activity,
   Settings,
   GraduationCap,
-  FolderOpen,
   Bell,
   Menu,
   X,
@@ -44,9 +37,6 @@ import {
   SpellCheck,
   Dna,
   Compass,
-  ListChecks,
-  BarChart3,
-  Send,
   Search,
   LayoutGrid,
   Dumbbell,
@@ -57,6 +47,7 @@ import { avatarSrc } from "@/lib/avatars";
 
 type NavItem = { name: string; href: string; icon: LucideIcon; badge?: string; /** only active on this exact path */ exact?: boolean };
 type NavSection = { label: string; items: NavItem[] };
+import { ADMIN_NAV, TEACHER_NAV } from "@/components/layout/portal-navigation";
 
 // Five groups, in the order a student thinks about them. Merged pages
 // (Analytics → My Progress, Leagues/Team Challenge → Rankings, Achievements →
@@ -120,110 +111,9 @@ const STUDENT_NAV: NavSection[] = [
   },
 ];
 
-const TEACHER_NAV: NavSection[] = [
-  {
-    label: "Overview",
-    items: [
-      { name: "Dashboard", href: "/teacher/dashboard", icon: LayoutDashboard },
-      { name: "Calendar", href: "/teacher/calendar", icon: CalendarDays },
-      { name: "Notifications", href: "/notifications", icon: Bell },
-    ],
-  },
-  {
-    label: "Students",
-    items: [
-      { name: "All Students", href: "/teacher/students", icon: Users },
-      { name: "Attendance", href: "/teacher/attendance", icon: ClipboardCheck },
-      { name: "Gradebook", href: "/teacher/gradebook", icon: BookOpen },
-    ],
-  },
-  {
-    label: "Teaching",
-    items: [
-      { name: "Homework", href: "/teacher/homework", icon: Notebook },
-      { name: "Create Homework", href: "/teacher/homework/create", icon: PenTool },
-      { name: "Review Queue", href: "/teacher/reviews", icon: ListChecks },
-      { name: "Mock Results", href: "/teacher/mock", icon: BarChart3 },
-      { name: "Lessons Log", href: "/teacher/lessons", icon: GraduationCap },
-      { name: "1-on-1 Tutoring", href: "/teacher/tutoring", icon: UserCheck },
-    ],
-  },
-  {
-    label: "Communication",
-    items: [
-      { name: "Announcements", href: "/teacher/announcements", icon: Megaphone },
-      { name: "Messages", href: "/messages", icon: MessageSquare },
-    ],
-  },
-  {
-    label: "Account",
-    items: [
-      { name: "Profile", href: "/teacher/profile", icon: User },
-      { name: "Settings", href: "/settings", icon: Settings },
-    ],
-  },
-];
-
-// Admin portal is used by our fully Uzbek-speaking administrator, so its
-// navigation is presented entirely in Uzbek (o‘zbekcha).
-const ADMIN_NAV: NavSection[] = [
-  {
-    label: "Umumiy koʻrinish",
-    items: [
-      { name: "Boshqaruv paneli", href: "/admin/dashboard", icon: LayoutDashboard },
-      { name: "Tahlil", href: "/admin/analytics", icon: BarChart },
-      { name: "Bildirishnomalar", href: "/notifications", icon: Bell },
-    ],
-  },
-  {
-    label: "Odamlar",
-    items: [
-      { name: "Oʻqituvchilar", href: "/admin/teachers", icon: GraduationCap },
-      { name: "Guruhlar", href: "/admin/groups", icon: Users },
-    ],
-  },
-  {
-    label: "Oʻqitish",
-    items: [
-      { name: "Tekshiruv navbati", href: "/teacher/reviews", icon: ListChecks },
-      { name: "Mock natijalari", href: "/teacher/mock", icon: BarChart3 },
-      { name: "Kirish testi", href: "/admin/placement", icon: Compass },
-    ],
-  },
-  {
-    label: "Kontent",
-    items: [
-      { name: "Oʻquv kontenti", href: "/admin/content", icon: FolderOpen },
-      { name: "Test generatori", href: "/admin/generate-tests", icon: Sparkles },
-      { name: "Listening audio", href: "/admin/listening-audio", icon: Headphones },
-      { name: "Eʼlonlar", href: "/admin/announcements", icon: Megaphone },
-      { name: "Mukofotlar", href: "/admin/rewards", icon: Gift },
-    ],
-  },
-  {
-    label: "Operatsiyalar",
-    items: [
-      { name: "Moliya", href: "/admin/finance", icon: DollarSign },
-      { name: "Audit jurnali", href: "/admin/logs", icon: Activity },
-      { name: "Tizim", href: "/admin/system", icon: Settings },
-    ],
-  },
-  {
-    label: "Muloqot",
-    items: [
-      { name: "Xabarlar", href: "/messages", icon: MessageSquare },
-      { name: "Telegram bot", href: "/admin/telegram", icon: Send },
-    ],
-  },
-  {
-    label: "Hisob",
-    items: [
-      { name: "Profil va parol", href: "/admin/profile", icon: User },
-    ],
-  },
-];
 
 function matches(pathname: string, item: NavItem): boolean {
+  if (item.href.includes("?")) return false; // query-only shortcuts must not highlight the whole dashboard
   if (item.href === pathname) return true;
   return !item.exact && pathname.startsWith(item.href + "/");
 }

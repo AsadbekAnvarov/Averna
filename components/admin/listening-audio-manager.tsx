@@ -151,7 +151,7 @@ function pauseOtherPlayers(e: { currentTarget: HTMLAudioElement }) {
   });
 }
 
-export function ListeningAudioManager({ initial }: { initial: AudioOverview | null }) {
+export function ListeningAudioManager({ initial, canDelete = true }: { initial: AudioOverview | null; canDelete?: boolean }) {
   const [data, setData]: State<AudioOverview | null> = useState<AudioOverview | null>(initial);
   const [loading, setLoading]: State<boolean> = useState<boolean>(!initial);
   const [refreshing, setRefreshing]: State<boolean> = useState<boolean>(false);
@@ -462,7 +462,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
   };
 
   const removeParts = async (testId: string, partIndex: number | null, confirmText: string) => {
-    if (!window.confirm(confirmText)) return;
+    if (!canDelete || !window.confirm(confirmText)) return;
     const busyKey = partIndex == null ? testId : keyOf(testId, partIndex);
     setDeleting((d: Record<string, boolean>) => ({ ...d, [busyKey]: true }));
     try {
@@ -977,7 +977,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
                           {todo.length === 0 ? <CheckCircle2 className="mr-1.5 h-4 w-4" aria-hidden /> : <Wand2 className="mr-1.5 h-4 w-4" aria-hidden />}
                           {todo.length === 0 ? "Hammasi tayyor" : "Audio yaratish"}
                         </Button>
-                        {hasFiles && (
+                        {canDelete && hasFiles && (
                           <Button
                             type="button"
                             size="sm"
@@ -1043,7 +1043,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
                                   <RefreshCw className="mr-1.5 h-3.5 w-3.5" aria-hidden />
                                   {again ? "Qayta yaratish" : "Yaratish"}
                                 </Button>
-                                {(p.url || p.status === "failed") && (
+                                {canDelete && (p.url || p.status === "failed") && (
                                   <Button
                                     type="button"
                                     size="sm"
@@ -1102,7 +1102,7 @@ export function ListeningAudioManager({ initial }: { initial: AudioOverview | nu
                     type="button"
                     size="sm"
                     onClick={() => void removeParts(o.testId, null, `“${o.testId}” audiolari oʻchirilsinmi?`)}
-                    disabled={!!deleting[o.testId]}
+                    disabled={!canDelete || !!deleting[o.testId]}
                     className={BTN_DANGER}
                   >
                     {deleting[o.testId] ? (

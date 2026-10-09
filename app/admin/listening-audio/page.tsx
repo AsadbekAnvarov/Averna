@@ -6,6 +6,7 @@ import { auth } from "@/lib/auth";
 import { audioOverview } from "@/lib/ielts/audio/store";
 import type { AudioOverview } from "@/lib/ielts/audio/admin-types";
 import { AccountNotice } from "@/components/account-notice";
+import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { ListeningAudioManager } from "@/components/admin/listening-audio-manager";
@@ -21,7 +22,7 @@ import { ListeningAudioManager } from "@/components/admin/listening-audio-manage
 export default async function ListeningAudioPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/signin");
-  if (session.user.role !== "ADMIN") {
+  if (session.user.role !== "ADMIN" && session.user.role !== "TEACHER") {
     return <AccountNotice title="Faqat adminlar uchun" message="Bu boʻlim faqat administratorlar uchun." />;
   }
 
@@ -36,9 +37,9 @@ export default async function ListeningAudioPage() {
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto max-w-5xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
-        <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
+        {session.user.role === "TEACHER" ? <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} /> : <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />}
         <PageHeader
-          back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
+          back={{ href: session.user.role === "TEACHER" ? "/teacher/dashboard" : "/admin/dashboard", label: session.user.role === "TEACHER" ? "Teacher dashboard" : "Admin paneliga qaytish" }}
           icon={Headphones}
           iconClassName="text-averna-cyan"
           title={
@@ -48,7 +49,7 @@ export default async function ListeningAudioPage() {
           }
           subtitle="Har bir Listening qismi uchun tayyor MP3 yozuv: turli ovozlar, diktor eʼlonlari va pauzalar ichida. Oʻquvchilar uni brauzer ovozi oʻrniga tinglaydi."
         />
-        <ListeningAudioManager initial={initial} />
+        <ListeningAudioManager initial={initial} canDelete={session.user.role === "ADMIN"} />
       </div>
     </div>
   );

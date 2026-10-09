@@ -143,6 +143,15 @@ export default async function TeacherDashboard() {
       ],
     },
     {
+      title: "Content & Preparation",
+      icon: Sparkles,
+      accent: "text-averna-purple",
+      items: [
+        { href: "/teacher/generate-tests", label: "Test Generator", desc: "Prepare exam tasks", icon: Wand2, color: "text-averna-purple", bg: "bg-averna-purple/15" },
+        { href: "/teacher/listening-audio", label: "Listening Audio", desc: "Prepare recordings", icon: BookOpen, color: "text-averna-cyan", bg: "bg-averna-cyan/15" },
+      ],
+    },
+    {
       title: "Communicate",
       icon: Megaphone,
       accent: "text-averna-purple",
@@ -303,6 +312,7 @@ export default async function TeacherDashboard() {
         <PanelTabs
           tabs={tabs}
           storageKey="averna_teacher_tab"
+          wrapOnMobile
           content={{
             overview: (
               <>
@@ -318,7 +328,7 @@ export default async function TeacherDashboard() {
                 </Suspense>
                 <div>
                   <SectionHeader icon={CheckSquare} title="Needs Action" subtitle="Grade work and keep your groups in the loop" accent="text-amber-400" />
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                     <Suspense fallback={<WidgetSkeleton rows={4} />}>
                       <GradingInbox teacherId={teacher.id} />
                     </Suspense>
@@ -339,7 +349,7 @@ export default async function TeacherDashboard() {
                   <div className="space-y-6">
                     <LessonBuilder />
                     <SmartEssayReview />
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                       <Suspense fallback={<WidgetSkeleton rows={3} />}>
                         <FutureClassSimulatorSection teacherId={teacher.id} />
                       </Suspense>
@@ -367,7 +377,7 @@ export default async function TeacherDashboard() {
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
                   <StudentRadar teacherId={teacher.id} />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <Suspense fallback={<WidgetSkeleton rows={4} />}>
                     <TeachingDNA teacherId={teacher.id} />
                   </Suspense>
