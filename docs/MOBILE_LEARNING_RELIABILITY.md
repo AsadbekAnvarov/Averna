@@ -121,3 +121,15 @@ response without committing the selected day in the client interface.
 
 The cloud-draft and scheduler flags remain OFF; this follow-up does not enable them
 or migrate any hosted database. GitHub checks on the final commit remain the merge gate.
+
+## Student Billing removal
+
+Billing is no longer part of the student sidebar/mobile drawer, command palette,
+or account links in Settings. The legacy `/billing` bookmark requires authentication
+and redirects to the role's dashboard. The retired page no longer exports its demo
+balance top-up/course-payment server actions. No financial tables, payment history,
+stored balances, rewards points, or admin finance features are deleted or changed.
+
+Eight regression tests cover student navigation/search/settings, legacy redirects
+for each role and signed-out visitors, and retained admin finance navigation. Screens
+also checks that student pages contain no Billing links and that the old URL redirects.

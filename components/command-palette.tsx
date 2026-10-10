@@ -75,7 +75,6 @@ const STUDENT_COMMANDS: Cmd[] = [
   { group: "Class", label: "Messages", href: "/messages", icon: MessageSquare, keywords: "chat teacher" },
 
   { group: "Account", label: "Notifications", href: "/notifications", icon: Bell, keywords: "alerts" },
-  { group: "Account", label: "Billing", href: "/billing", icon: Wallet, keywords: "payment balance topup" },
   { group: "Account", label: "My Profile", href: "/profile", icon: User, keywords: "account avatar" },
   { group: "Account", label: "Settings", href: "/settings", icon: Settings, keywords: "preferences theme sound" },
 ];

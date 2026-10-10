@@ -118,6 +118,7 @@ const EXAM_NOISE = new RegExp(
 
 /** Old URLs that must keep working. */
 const REDIRECTS = [
+  ["/billing", "/dashboard"],
   ["/analytics", "/progress"],
   ["/achievements", "/progress/achievements"],
   ["/leagues", "/rankings/leagues"],
@@ -169,6 +170,9 @@ async function shoot(context, role, theme, device) {
     if (action) {
       await action(page).catch((e) => problems.push(`${label}: action failed: ${e.message}`));
       await page.waitForTimeout(700);
+    }
+    if (role === "student" && await page.locator('a[href="/billing"]').count()) {
+      problems.push(`${label}: retired Billing link is still rendered for students`);
     }
     await inspect(page, label, device, `${OUT}/${theme}-${device}-${role}-${name}.png`);
     page.removeAllListeners("pageerror");
