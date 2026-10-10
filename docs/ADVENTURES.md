@@ -1,6 +1,6 @@
 # Adventures — mobile-first guided practice
 
-One Practice Studio shelf item and one student quick-jump entry lead to `/studio/adventures`; six modes live under that route. Existing dashboards, exams, grading, XP, finance and paid AI services are not replaced or changed by this block.
+A prominent Today dashboard card, a direct student menu item (also in the phone drawer), one Practice Studio shelf item and one student quick-jump entry lead to `/studio/adventures`; six modes live under that route. Existing dashboards, exams, grading, XP, finance and paid AI services are not replaced or changed by this block.
 
 ## What is implemented
 
@@ -43,6 +43,7 @@ Flag-off rollback stops sharing/API access without deleting stored submissions. 
 - New Vitest tests cover activity graphs, answer/schema/permission/byte bounds, owner isolation and quota-preserved text, response gating, sharing-OFF, teacher approval boundaries, origin/current-role/body/limit/cache API rules, and WCAG AA token contrast.
 - `scripts/verify-adventure-workshops.cjs` runs the **actual service and migration** on isolated PGlite: idempotency, own/group/role isolation, current teacher approval, withheld publication, stale versions, blacklist/transfer, withdrawal and FK cascade. It does not certify production PostgreSQL concurrency.
 - `e2e/adventures.cjs` bundles the actual UI with synthetic account/content/API fixtures. It checks all eight screens at 320/390/1440 px in light/dark (48 layout checks), completion flows and actual Chromium MediaRecorder + IndexedDB save/reload/playback/compare/export/delete/capacity/owner cleanup and denial/negative states. PNGs must be inspected individually; rendering alone is not visual approval.
+- `e2e/adventures-entry.cjs` checks the visible Today entry at 320/390/1440 px in both themes and follows its link to all six modes. Navigation tests cover the desktop/phone drawer shortcut, most-specific active highlighting and keeping staff menus separate.
 - Existing `e2e/screens.mjs` now includes the catalogue, six student routes and teacher page in its seeded authenticated screenshots. Existing Screens workflow runs on `[screens]` commit messages. The separate synthetic QA script is **not automatically wired** into CI, and this PR does not claim otherwise.
 
 Local optional QA tooling (kept outside the repository dependency lock):

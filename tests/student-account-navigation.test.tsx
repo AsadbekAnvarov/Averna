@@ -13,6 +13,7 @@ vi.mock("@/components/theme/theme-provider", () => ({ useTheme: () => ({ mode: "
 vi.mock("@/components/settings/settings-panel", () => ({ SettingsPanel: () => <p>Display settings</p> }));
 vi.mock("@/components/settings/telegram-connect", () => ({ TelegramConnect: () => <p>Telegram settings</p> }));
 vi.mock("next/link", () => ({ default: ({ href, children, ...rest }: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children?: ReactNode }) => <a href={href} {...rest}>{children}</a> }));
+import { AdventuresEntry } from "@/components/dashboard/adventures-entry";
 import { AppSidebar } from "@/components/layout/app-sidebar";
 import { CommandPalette } from "@/components/command-palette";
 import SettingsPage from "@/app/settings/page";
@@ -65,5 +66,30 @@ describe("student account without Billing", () => {
   it("still requires sign-in for a legacy Billing bookmark", async () => {
     m.auth.mockResolvedValue(null);
     await expect(BillingPage()).rejects.toThrow("redirect:/auth/signin");
+  });
+});
+
+
+describe("discoverable student Adventures", () => {
+  it("gives Today a clearly labelled direct link without waiting for class sharing", () => {
+    render(<AdventuresEntry />);
+    expect(screen.getByRole("heading", { name: "Adventures" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Explore Adventures" }).getAttribute("href")).toBe("/studio/adventures");
+  });
+  it("shows a direct student menu entry on desktop and in the phone drawer", () => {
+    const { container } = render(<AppSidebar />);
+    expect(container.querySelector('a[href="/studio/adventures"]')).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Open navigation" }));
+    expect(screen.getByRole("link", { name: /Adventures/ }).getAttribute("href")).toBe("/studio/adventures");
+  });
+  it("highlights Adventures on child routes, not its parent Studio", () => {
+    m.pathname = "/studio/adventures/series";
+    const { container } = render(<AppSidebar />);
+    expect(container.querySelector('a[href="/studio/adventures"]')?.getAttribute("aria-current")).toBe("page");
+    expect(container.querySelector('a[href="/studio"]')?.getAttribute("aria-current")).toBeNull();
+  });
+  it("does not add the student menu shortcut to staff navigation", () => {
+    m.role = "TEACHER"; const { container } = render(<AppSidebar />);
+    expect(container.querySelector('a[href="/studio/adventures"]')).toBeNull();
   });
 });
