@@ -67,6 +67,7 @@ model User {
   sentMessages     Message[]      @relation("SentMessages")
   receivedMessages Message[]      @relation("ReceivedMessages")
   telegramLinks    TelegramLink[] @relation("TelegramUser")
+  adventureWorkshopReviews AdventureWorkshop[] @relation("AdventureReviewer")
 
   @@map("users")
 }
@@ -143,6 +144,7 @@ model Student {
   grades              Grade[]
   redemptions         RewardRedemption[]
   payments            Payment[]
+  adventureWorkshops  AdventureWorkshop[]
   writingDrafts       WritingDraft[]
   mistakeEntries      MistakeEntry[]
   reviewItems         ReviewItem[]
@@ -200,6 +202,7 @@ model Group {
   // Relations
   teacher       Teacher         @relation(fields: [teacherId], references: [id])
   students      Student[]
+  adventureWorkshops AdventureWorkshop[]
   rosterMembers RosterStudent[]
   homework      Homework[]
   attendances   Attendance[]
@@ -1438,4 +1441,27 @@ model WritingDraft {
 
   @@unique([studentId, scope])
   @@map("writing_drafts")
+}
+
+/// Teacher-reviewed, class-scoped student-authored practice. Not an IELTS exam.
+model AdventureWorkshop {
+  id              String @id @default(cuid())
+  authorStudentId String
+  groupId         String
+  requestId       String
+  fingerprint     String
+  title           String
+  payload         Json
+  status          String @default("SUBMITTED")
+  version         Int @default(1)
+  feedback        String?
+  reviewerUserId  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  author          Student @relation(fields: [authorStudentId], references: [id], onDelete: Cascade)
+  group           Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  reviewer        User? @relation("AdventureReviewer", fields: [reviewerUserId], references: [id], onDelete: SetNull)
+  @@unique([authorStudentId, requestId])
+  @@index([groupId, status, updatedAt])
+  @@map("adventure_workshops")
 }

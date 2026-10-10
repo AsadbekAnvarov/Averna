@@ -120,3 +120,7 @@ See [`docs/MOBILE_LEARNING_RELIABILITY.md`](docs/MOBILE_LEARNING_RELIABILITY.md)
 for explicit private Writing practice drafts, bounded single-task assessment scheduling,
 source-aware descriptive practice evidence, mobile fixes and rollout boundaries.
 New draft/scheduler features are OFF by default; do not migrate production automatically.
+
+## Adventures practice modes
+
+Six mobile-first guided practice modes are grouped under `/studio/adventures`. Personal text/audio stays on the device; moderated class sharing defaults OFF. Setup, privacy boundaries and acceptance checks: [Adventures](docs/ADVENTURES.md).

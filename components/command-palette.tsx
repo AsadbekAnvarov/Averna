@@ -29,6 +29,7 @@ interface Cmd {
 // Same five groups as the student sidebar. The palette also lists the hub
 // sub-pages and every Practice Studio tool, so anything is one search away.
 const STUDENT_COMMANDS: Cmd[] = [
+  { group: "Practice", label: "Adventures", href: "/studio/adventures", icon: Compass, keywords: "story detective debate rescue workshop voice capsule" },
   { group: "Study", label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, keywords: "home main today" },
   { group: "Study", label: "Learning Center", href: "/learning", icon: GraduationCap, keywords: "practice modules hub all skills" },
   { group: "Study", label: "Reading", href: "/learning/reading", icon: BookOpen, keywords: "passage test" },
