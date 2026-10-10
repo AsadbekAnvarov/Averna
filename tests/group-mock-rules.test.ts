@@ -1,0 +1,12 @@
+import { describe, expect, it } from "vitest";
+import { assignedPaper, capacity, manualBands, reviewSchema, createSchema, joinSchema } from "@/lib/group-mock/rules";
+const pool={listening:[{id:"l1",milliseconds:1},{id:"l2",milliseconds:2}],reading:["r1","r2","r3"],task1:["w1","w2"],task2:["t1","t2"]};
+const w={taskAchievement:6,coherenceCohesion:6,lexicalResource:6,grammarAccuracy:6};const s={fluency:7,lexical:7,grammar:7,pronunciation:7};const input={participantId:"p",version:0,task1:w,task2:{...w,taskAchievement:8,coherenceCohesion:8,lexicalResource:8,grammarAccuracy:8},speaking:s,speakingConducted:true,comment:"Reviewed on site",publish:true};
+describe("teacher-led mock policy",()=>{
+ it("limits strict uniqueness by the smallest prepared pool",()=>{expect(capacity(pool)).toBe(2);const a=assignedPaper(pool,0,"unique","s"),b=assignedPaper(pool,1,"unique","s");for(const k of ["listening","reading","task1","task2"] as const)expect(a[k]).not.toBe(b[k]);expect(()=>assignedPaper(pool,2,"unique","s")).toThrow();});
+ it("permits bounded explicit balanced repeats, never invents material",()=>{expect(assignedPaper(pool,2,"balanced","s").listening).toBe("l1");expect(()=>assignedPaper(pool,30,"balanced","s")).toThrow();expect(()=>assignedPaper({...pool,reading:[]},0,"balanced","s")).toThrow();});
+ it("keeps incomplete review drafts private and blocks publication",()=>{const draft={...input,task1:{},speaking:{},speakingConducted:false,publish:false};expect(reviewSchema.safeParse(draft).success).toBe(true);expect(reviewSchema.safeParse({...draft,publish:true}).success).toBe(false);expect(reviewSchema.safeParse({...input,speakingConducted:false}).success).toBe(false);});
+ it("uses full teacher criteria and Task 2 double weight",()=>{expect(reviewSchema.safeParse(input).success).toBe(true);const bands=manualBands(input,7,7);expect(bands.task1).toBe(6);expect(bands.task2).toBe(8);expect(bands.writing).toBe(7.5);expect(bands.speaking).toBe(7);expect(bands.overall).toBe(7);});
+ it.each([-1,9.5,6.2,NaN])("rejects invalid criterion %s",n=>expect(reviewSchema.safeParse({...input,speaking:{...s,pronunciation:n}}).success).toBe(false));
+ it("rejects owner injection and malformed codes",()=>{expect(createSchema.safeParse({groupId:"g",title:"Mock",teacherId:"other"}).success).toBe(false);expect(joinSchema.safeParse({code:"../other"}).success).toBe(false);expect(reviewSchema.safeParse({...input,studentId:"other"}).success).toBe(false);});
+});

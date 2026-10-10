@@ -1,6 +1,9 @@
-import Link from "next/link";
+"use client";
+
+import { useSearchParams } from "next/navigation";
+import type { MouseEvent } from "react";
 import { cn } from "@/lib/utils";
-import { daysInMonthOf, type DayItem, type DayItemKind } from "@/lib/calendar-days";
+import { daysInMonthOf, parseSelectedDay, type DayItem, type DayItemKind } from "@/lib/calendar-days";
 
 /** Same colours as the calendar legend (Lesson / 1-on-1 tutoring / Homework due). */
 const KIND_DOT: Record<DayItemKind, string> = {
@@ -41,7 +44,19 @@ export function PhoneMonth({
   selectedDay: number;
   items: Record<number, DayItem[]>;
 }) {
+  const searchParams = useSearchParams();
   const daysInMonth = daysInMonthOf(year, month);
+  // All of this month's items are already present. Day selection is local URL
+  // state, not another server navigation; reload / Back / Forward retain it.
+  const activeDay = parseSelectedDay(searchParams.get("d") ?? String(selectedDay), daysInMonth, todayDay);
+  const selectDay = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const href = event.currentTarget.getAttribute("href");
+    if (href && window.location.pathname === basePath && window.location.search !== new URL(href, window.location.origin).search) {
+      window.history.pushState(null, "", href);
+    }
+  };
   const startOffset = (new Date(year, month, 1).getDay() + 6) % 7; // Monday-first
   const cells: (number | null)[] = [];
   for (let i = 0; i < startOffset; i++) cells.push(null);
@@ -53,7 +68,7 @@ export function PhoneMonth({
       month: "long",
       day: "numeric",
     });
-  const selected = items[selectedDay] ?? [];
+  const selected = items[activeDay] ?? [];
 
   return (
     <div className="sm:hidden">
@@ -67,13 +82,13 @@ export function PhoneMonth({
           if (day === null) return <div key={`pad-${i}`} />;
           const dayItems = items[day] ?? [];
           const kinds = KIND_ORDER.filter((k) => dayItems.some((it) => it.kind === k));
-          const isSelected = day === selectedDay;
+          const isSelected = day === activeDay;
           const isToday = day === todayDay;
           return (
-            <Link
+            <a
               key={day}
               href={`${basePath}?m=${year}-${month + 1}&d=${day}`}
-              scroll={false}
+              onClick={selectDay}
               aria-current={isSelected ? "date" : undefined}
               aria-label={`${dateLabel(day, false)}${dayItems.length ? `, ${dayItems.length} scheduled` : ""}`}
               className={cn(
@@ -92,13 +107,13 @@ export function PhoneMonth({
                   <span key={k} className={cn("h-2 w-2 rounded-full", KIND_DOT[k])} />
                 ))}
               </span>
-            </Link>
+            </a>
           );
         })}
       </div>
 
       <section aria-label="Selected day" className="mt-4 rounded-lg border border-white/10 bg-white/5 p-3">
-        <h4 className="text-sm font-semibold text-white">{dateLabel(selectedDay, true)}</h4>
+        <h4 className="text-sm font-semibold text-white">{dateLabel(activeDay, true)}</h4>
         {selected.length ? (
           <ul className="mt-2 space-y-2">
             {selected.map((it, i) => (

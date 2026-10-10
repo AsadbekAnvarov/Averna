@@ -13,6 +13,9 @@
  * and a real on-screen keyboard (B7 is approximated by a 390×400 viewport).
  */
 import { chromium } from "playwright";
+import { createRoleSessionCache } from "./role-session.mjs";
+
+const ensureSignedIn = createRoleSessionCache();
 import fc from "fast-check";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
@@ -191,8 +194,16 @@ async function withContext(browser, opts, fn) {
       { theme, onboardingDone, storage }
     );
     await context.addInitScript(installHelpers);
-    await signIn(context, USERS[user]);
+    await ensureSignedIn(context, BASE, user, USERS[user], signIn);
     await fn(context);
+  } catch (error) {
+    // Keep navigation failures actionable without weakening the assertions.
+    mkdirSync("screens", { recursive: true });
+    for (const [index, page] of context.pages().entries()) {
+      note("navigation-debug", user, `page ${index}: ${page.url()}`);
+      await page.screenshot({ path: `screens/bugfix-failure-${user}-${index}.png`, fullPage: true }).catch(() => {});
+    }
+    throw error;
   } finally {
     await context.close();
   }
@@ -751,12 +762,47 @@ async function checkCalendar(context, id, label, path) {
     violation(id, label, `day ${day} can't be tapped: no visible ?d=${day} link (full names only in title tooltips)`);
   } else {
     if (cell.h < TOUCH - 0.5) violation(id, label, `day cell is ${px(cell.h)} high (expected ≥ 44px)`);
-    await page.locator("[data-bf-day]").tap();
-    await page.waitForURL((u) => new URL(u).searchParams.get("d") === String(day), { timeout: 15_000 });
+    const originalUrl = page.url();
+    const originalHeading = await page.locator('section[aria-label="Selected day"] h4').innerText();
+    try {
+      await Promise.all([
+        page.waitForURL((u) => u.searchParams.get("d") === String(day), { timeout: 15_000 }),
+        page.locator("[data-bf-day]").tap(),
+      ]);
+    } catch (error) {
+      const target = await page.locator("[data-bf-day]").getAttribute("href").catch(() => null);
+      throw new Error(`calendar tap did not reach day ${day}; current=${page.url()}; target=${target}; ${error.message}`);
+    }
     await page.waitForTimeout(500);
     const text = await page.evaluate(() => (document.querySelector(".premium-gradient") || document.body).innerText);
     const missing = names.filter((n) => !text.includes(n));
     if (missing.length) violation(id, label, `day ${day} panel misses ${missing.map((n) => `“${n}”`).join(", ")}`);
+    const selectedHeading = await page.locator('section[aria-label="Selected day"] h4').innerText();
+    if (page.url() !== originalUrl) {
+      await page.goBack();
+      await page.waitForURL(originalUrl, { timeout: 15_000 });
+      await page.getByRole("heading", { name: originalHeading, exact: true }).waitFor();
+      await page.goForward();
+      await page.waitForURL((u) => u.searchParams.get("d") === String(day), { timeout: 15_000 });
+      await page.getByRole("heading", { name: selectedHeading, exact: true }).waitFor();
+    }
+    await page.reload({ waitUntil: "networkidle" });
+    await page.getByRole("heading", { name: selectedHeading, exact: true }).waitFor();
+    const reloadedText = await page.locator('section[aria-label="Selected day"]').innerText();
+    if (names.some((name) => !reloadedText.includes(name))) violation(id, label, "reload lost selected day items");
+    const monthUrl = page.url();
+    const nextMonth = page.getByRole("link", { name: "Next month", exact: true });
+    const targetMonth = new URL(await nextMonth.getAttribute("href"), BASE).searchParams.get("m");
+    await Promise.all([
+      page.waitForURL((u) => u.searchParams.get("m") === targetMonth, { timeout: 15_000 }),
+      nextMonth.tap(),
+    ]);
+    const previousMonth = page.getByRole("link", { name: "Previous month", exact: true });
+    const originalMonth = new URL(monthUrl).searchParams.get("m");
+    await Promise.all([
+      page.waitForURL((u) => u.searchParams.get("m") === originalMonth, { timeout: 15_000 }),
+      previousMonth.tap(),
+    ]);
   }
   await page.close();
 }

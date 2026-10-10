@@ -14,6 +14,7 @@ const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffec
 export function useExamAnswers(opts: {
   storageKey: string;
   initial?: ExamAnswers;
+  preferInitial?: boolean;
   onChange?: (answers: ExamAnswers) => void;
 }) {
   const { storageKey, initial, onChange } = opts;
@@ -29,7 +30,7 @@ export function useExamAnswers(opts: {
       const raw = window.localStorage.getItem(storageKey);
       if (raw) {
         const saved = JSON.parse(raw) as { answers?: ExamAnswers; flagged?: number[] };
-        if (!initial || Object.keys(initial).length === 0) {
+        if (!opts.preferInitial && (!initial || Object.keys(initial).length === 0)) {
           if (saved.answers && typeof saved.answers === "object") {
             setAnswers(saved.answers);
             // Answers restored from this device never reached the server mirror

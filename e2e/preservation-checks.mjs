@@ -26,6 +26,9 @@
  * against HEAD, both on the same seeded database. Exit code 1 on any difference or failed check.
  */
 import { chromium } from "playwright";
+import { createRoleSessionCache } from "./role-session.mjs";
+
+const ensureSignedIn = createRoleSessionCache();
 import fc from "fast-check";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -136,7 +139,7 @@ async function newContext(browser, role, { theme, phone }) {
       return Promise.reject(new DOMException("play() blocked by preservation checks", "NotAllowedError"));
     };
   }, theme);
-  await signIn(context, USERS[role]);
+  await ensureSignedIn(context, BASE, role, USERS[role], signIn);
   await context.clock.install({ time: new Date(FIXED_TIME) });
   return context;
 }

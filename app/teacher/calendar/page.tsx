@@ -4,9 +4,8 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, CalendarDays } from "lucide-react";
-import Link from "next/link";
 import { AccountNotice } from "@/components/account-notice";
 import { TeacherHeader } from "@/components/teacher/teacher-header";
 import { PageHeader } from "@/components/ui/page-header";
@@ -99,9 +98,13 @@ export default async function TeacherCalendarPage(props: { searchParams: Promise
         <Card className="glass border-averna-cyan/30">
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
-              <Link href={`/teacher/calendar?m=${prev}`}><Button size="icon" variant="ghost" className="text-gray-300"><ChevronLeft className="h-5 w-5" /></Button></Link>
+              <a href={`/teacher/calendar?m=${prev}`} aria-label="Previous month" className={`${buttonVariants({ size: "icon", variant: "ghost" })} text-gray-300`}>
+                <ChevronLeft className="h-5 w-5" />
+              </a>
               <span className="text-white">{MONTHS[month]} {year}</span>
-              <Link href={`/teacher/calendar?m=${next}`}><Button size="icon" variant="ghost" className="text-gray-300"><ChevronRight className="h-5 w-5" /></Button></Link>
+              <a href={`/teacher/calendar?m=${next}`} aria-label="Next month" className={`${buttonVariants({ size: "icon", variant: "ghost" })} text-gray-300`}>
+                <ChevronRight className="h-5 w-5" />
+              </a>
             </CardTitle>
           </CardHeader>
           <CardContent>

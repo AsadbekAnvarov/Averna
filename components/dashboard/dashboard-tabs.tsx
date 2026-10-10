@@ -94,7 +94,7 @@ export function DashboardTabs({ children }: { children: ReactNode }) {
                   prefetch={false}
                   onClick={(e) => onClick(e, t.key)}
                   {...(t.key === "fun" ? { "data-gamified": "" } : {})}
-                  className={`flex flex-1 md:flex-none flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 min-h-[44px] px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
+                  className={`flex flex-1 md:flex-none flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 min-h-[44px] px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
                     isActive ? `${t.active} shadow-lg` : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
                   aria-current={isActive ? "page" : undefined}

@@ -3,6 +3,8 @@ export const dynamic = "force-dynamic";
 // (Writing / Speaking go to the AI examiner).
 export const maxDuration = 60;
 
+import { groupAttemptState } from "@/lib/group-mock/service";
+import { isGroupMock } from "@/lib/group-mock/rules";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -19,9 +21,12 @@ export default async function MockExamRunPage(props: { params: Promise<{ examId:
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 
-  const student = await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true } });
-  if (!student) return redirect(HUB);
+  if (session.user.role !== "STUDENT") return redirect(HUB);
+  const student = await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true, blacklisted: true, user: { select: { role: true } } } });
+  if (!student || student.blacklisted || student.user.role !== "STUDENT") return redirect(HUB);
 
+  const attempt = await db.mockAttempt.findFirst({where:{id:params.examId,studentId:student.id},select:{papers:true}});
+  if (isGroupMock(attempt?.papers)) { const g = await groupAttemptState(student.id,params.examId); if (g.state === "lobby" || (g.startAt != null && Date.now() < g.startAt)) return redirect(`${HUB}/group/${g.sessionId}`); }
   const view = await getMockView(student.id, session.user.id, params.examId);
   if (!view) return redirect(HUB);
   if (view.stage.kind === "finished") return redirect(`${HUB}/result/${encodeURIComponent(view.attemptId)}`);

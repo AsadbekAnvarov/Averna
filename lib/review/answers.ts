@@ -41,7 +41,7 @@ export function examAttemptIdOf(answers: Record<string, unknown>): string | null
 
 /** A full Speaking test (Parts 1–3), not a legacy single-answer practice. */
 export function isFullSpeakingTest(answers: Record<string, unknown>): boolean {
-  return Array.isArray(answers.answers);
+  return Array.isArray(answers.answers) || (answers.inputMode === "in-person" && answers.teacherConducted === true);
 }
 
 /**

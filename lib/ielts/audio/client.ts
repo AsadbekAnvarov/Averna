@@ -16,7 +16,9 @@
  * again. Environment variables apply to new deployments, so redeploy after
  * changing it on Vercel.
  *
- * One query per test; never throws (any problem → browser voices, as before).
+ * One query per test. recordingsOnly is fail-closed: any missing/stale/disabled
+ * asset returns null, never scripts or generated/browser voices. Legacy/practice
+ * callers retain their original fallback.
  * SERVER ONLY.
  */
 
@@ -27,7 +29,8 @@ import type { ClientListeningTest, ExamListeningTest } from "../types";
 import { partAudioHash } from "./hash";
 import { sanitizeTimeline } from "./timeline";
 
-interface ReadyRow {
+export interface ReadyRow {
+  testId?: string;
   partIndex: number;
   url: string | null;
   durationMs: number;
@@ -40,20 +43,22 @@ export function listeningAudioEnabled(): boolean {
   return String(process.env.LISTENING_AUDIO ?? "").trim().toLowerCase() !== "off";
 }
 
-export async function listeningClientContent(test: ExamListeningTest): Promise<ClientListeningTest> {
+export function listeningClientContent(test: ExamListeningTest): Promise<ClientListeningTest>;
+export function listeningClientContent(test: ExamListeningTest, options: { recordingsOnly: true; rows?: ReadyRow[] }): Promise<ClientListeningTest | null>;
+export async function listeningClientContent(test: ExamListeningTest, options?: { recordingsOnly: true; rows?: ReadyRow[] }): Promise<ClientListeningTest | null> {
   const base = toClientListening(test);
   // Switched off: scripts for every part, no recordings.
-  if (!listeningAudioEnabled()) return base;
+  if (!listeningAudioEnabled()) return options?.recordingsOnly ? null : base;
   // The old short practice tests never get recordings (the admin skips them).
-  if (test.source === "legacy" || !test.parts.length) return base;
+  if (test.source === "legacy" || !test.parts.length) return options?.recordingsOnly ? null : base;
   try {
-    const rows = (await db.listeningAudio.findMany({
+    const rows = options?.rows ?? (await db.listeningAudio.findMany({
       where: { testId: test.id, status: "ready" },
       select: { partIndex: true, url: true, durationMs: true, scriptHash: true, timeline: true },
     })) as ReadyRow[];
-    if (!Array.isArray(rows) || !rows.length) return base;
+    if (!Array.isArray(rows) || !rows.length) return options?.recordingsOnly ? null : base;
     const model = TTS_MODEL();
-    return {
+    const content = {
       ...base,
       parts: base.parts.map((p, i) => {
         const row = rows.find((r) => r.partIndex === i);
@@ -66,7 +71,9 @@ export async function listeningClientContent(test: ExamListeningTest): Promise<C
         };
       }),
     };
+    if (options?.recordingsOnly && content.parts.some(p => !p.audio)) return null;
+    return content;
   } catch {
-    return base;
+    return options?.recordingsOnly ? null : base;
   }
 }

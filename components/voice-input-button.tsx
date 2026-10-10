@@ -65,7 +65,7 @@ export function VoiceInputButton({
       aria-label={listening ? "Stop dictation" : "Dictate with your voice"}
       aria-pressed={listening}
       title={listening ? "Stop dictation" : "Dictate with your voice"}
-      className={`inline-flex items-center justify-center h-9 w-9 rounded-md border transition-colors ${
+      className={`inline-flex items-center justify-center h-11 w-11 sm:h-9 sm:w-9 rounded-md border transition-colors ${
         listening
           ? "border-red-500/60 text-red-300 bg-red-500/10 animate-pulse"
           : "border-averna-cyan/40 text-averna-cyan hover:bg-averna-cyan/10"

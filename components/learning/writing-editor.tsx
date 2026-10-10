@@ -11,6 +11,7 @@ import { VoiceInputButton } from "@/components/voice-input-button";
 import { toast } from "@/components/ui/toast";
 import { Task1Chart } from "@/components/learning/task1-chart";
 import { formatDateTime } from "@/lib/utils";
+import { AccountDraftPanel, useAccountDraft } from "./account-draft-panel";
 import type { Task1ChartData } from "@/lib/writing-data";
 
 interface WritingEditorProps {
@@ -29,11 +30,12 @@ interface WritingEditorProps {
     type: string;
   };
   userId: string;
+  cloudDraftsEnabled?: boolean;
   /** This essay completes exam homework (sent with the submission; the server re-validates it). */
   homework?: { id: string; title: string; due: string; /** e.g. "Your first attempt with at least 120 words on the task counts." */ rule?: string };
 }
 
-export default function WritingEditor({ prompt, config, userId, homework }: WritingEditorProps) {
+export default function WritingEditor({ prompt, config, userId, homework, cloudDraftsEnabled = false }: WritingEditorProps) {
   const router = useRouter();
   const [essay, setEssay] = useState("");
   const [timeLeft, setTimeLeft] = useState(config.timeLimit * 60);
@@ -55,8 +57,8 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
       const draft = JSON.parse(localStorage.getItem(draftKey) || "null");
       if (draft && typeof draft.essay === "string") {
         setEssay(draft.essay.slice(0, 20000));
-        if (typeof draft.attemptId === "string") attemptIdRef.current = draft.attemptId;
-        if (typeof draft.timeLeft === "number" && Number.isFinite(draft.timeLeft)) setTimeLeft(Math.max(0, Math.min(config.timeLimit * 60, draft.timeLeft)));
+        if (typeof draft.attemptId === "string" && /^[A-Za-z0-9_-]{8,80}$/.test(draft.attemptId)) attemptIdRef.current = draft.attemptId;
+        if (typeof draft.timeLeft === "number" && Number.isFinite(draft.timeLeft)) setTimeLeft(Math.floor(Math.max(0, Math.min(config.timeLimit * 60, draft.timeLeft))));
         setDraftStatus("Draft restored from this device");
       }
     } catch { setDraftStatus("Local draft could not be restored"); }
@@ -80,6 +82,19 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
     window.addEventListener("pagehide", saveBeforeLeaving);
     return () => window.removeEventListener("pagehide", saveBeforeLeaving);
   }, [draftKey, draftLoaded, essay, timeLeft]);
+
+  const accountDraft = useAccountDraft({
+    enabled: cloudDraftsEnabled && draftLoaded && !homework,
+    taskType: config.type, promptId: prompt.id, essay, timeLeft,
+    attemptId: attemptIdRef.current,
+    restore: (copy) => {
+      setIsTimerRunning(false);
+      attemptIdRef.current = copy.attemptId;
+      setEssay(copy.essay);
+      setTimeLeft(Math.min(config.timeLimit * 60, copy.timeLeft));
+      setDraftStatus("Account copy restored; saving to this device");
+    },
+  });
 
   // Calculate word count
   useEffect(() => {
@@ -160,6 +175,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
       const data = await response.json();
 
       submittedRef.current = true;
+      accountDraft.clearSubmitted(attemptIdRef.current);
       try { localStorage.removeItem(draftKey); } catch {}
       // Redirect to results page
       router.push(`/learning/writing/result/${data.testId}`);
@@ -194,7 +210,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
       <div className="container mx-auto px-4 py-6 max-w-7xl">
         {/* Header */}
         <div className="mb-6 animate-fade-in">
-          <Link href={homework ? "/homework" : "/learning/writing"} className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
+          <Link href={homework ? "/homework" : "/learning/writing"} className="text-study-ink hover:underline text-sm mb-2 inline-flex min-h-11 items-center gap-1">
             <ArrowLeft className="h-4 w-4" />
             {homework ? "Back to Homework" : "Back to Writing"}
           </Link>
@@ -217,7 +233,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left: Prompt */}
           <div className="lg:col-span-1 space-y-4">
-            <Card className="glass border-purple-500/30 sticky top-6 animate-fade-in">
+            <Card className="glass border-purple-500/30 lg:sticky lg:top-6 animate-fade-in">
               <CardHeader>
                 <CardTitle className="text-purple-400">Task Prompt</CardTitle>
               </CardHeader>
@@ -286,12 +302,12 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
                   <Button
                     onClick={handleSubmit}
                     disabled={isSubmitting || wordCount === 0}
-                    className="neon-button bg-averna-primary hover:bg-averna-light"
+                    className="min-h-11 h-auto w-full whitespace-normal py-3 sm:w-auto neon-button bg-averna-primary hover:bg-averna-light"
                   >
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Analyzing...
+                        Submitting…
                       </>
                     ) : (
                       <>
@@ -304,7 +320,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
               </CardContent>
             </Card>
 
-            <p role="status" className="text-sm text-gray-300">{draftStatus}. This draft is not synced to another device; submitted results save to your account.</p>
+            <p role="status" className="text-sm text-gray-300">{draftStatus}. Submitted results save to your account.</p>
             {/* Warning */}
             {showWarning && (
               <Card className="glass border-red-500/50 bg-red-500/10 animate-fade-in">
@@ -340,11 +356,12 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
                   value={essay}
                   onChange={handleTextChange}
                   placeholder="Start writing your essay here..."
-                  className="min-h-[500px] text-base leading-relaxed bg-background/50 border-averna-primary/20 focus:border-averna-neon resize-none"
+                  aria-label="Your essay"
+                  className="min-h-[320px] sm:min-h-[500px] text-base leading-relaxed bg-background/50 border-averna-primary/20 focus:border-averna-neon resize-none"
                   disabled={isSubmitting}
                 />
-                <div className="mt-4 flex items-center justify-between gap-2">
-                  <p className="text-xs text-gray-400">
+                <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-sm text-gray-300">
                     💡 Tips: Focus on clear structure, varied vocabulary, and accurate grammar.
                   </p>
                   <div className="flex items-center gap-2 shrink-0">
@@ -362,6 +379,7 @@ export default function WritingEditor({ prompt, config, userId, homework }: Writ
                 </div>
               </CardContent>
             </Card>
+            <AccountDraftPanel draft={accountDraft} disabled={isSubmitting} />
           </div>
         </div>
       </div>

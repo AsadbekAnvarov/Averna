@@ -1,4 +1,6 @@
 "use client";
+import { ExamThemeToggle } from "./exam-preferences";
+import { MockSaveStatus } from "./mock-save-status";
 
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import Link from "next/link";
@@ -382,7 +384,7 @@ export function ExamShell(props: ExamShellProps) {
   return (
     <div className="exam-shell fixed inset-0 z-[70] flex flex-col bg-exam-bg pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] text-gray-100">
       {/* Header */}
-      <header className="relative z-20 flex shrink-0 items-center gap-1.5 border-b border-white/10 bg-exam-bar/95 px-2 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top))] backdrop-blur sm:gap-3 sm:px-5">
+      <header className="relative z-20 flex shrink-0 flex-wrap items-center gap-1.5 sm:flex-nowrap border-b border-white/10 bg-exam-bar/95 px-2 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top))] backdrop-blur sm:gap-3 sm:px-5">
         {exitHref && (
           <Link
             href={exitHref}
@@ -392,7 +394,7 @@ export function ExamShell(props: ExamShellProps) {
             <ChevronLeft className="h-4 w-4" aria-hidden />
           </Link>
         )}
-        <div className="min-w-0 flex-1 truncate">
+        <div className={cn("min-w-0 flex-1 truncate", exitHref ? "basis-[calc(100%-3.5rem)] sm:basis-auto" : "basis-full sm:basis-auto")}>
           <p className="truncate text-sm font-bold text-white sm:text-base">{title}</p>
           {subtitle && <p className="truncate text-xs text-gray-400">{subtitle}</p>}
         </div>
@@ -420,6 +422,7 @@ export function ExamShell(props: ExamShellProps) {
           </button>
         </div>
         <MobileTextSize fontScale={fontScale} onFontScale={onFontScale} />
+        <ExamThemeToggle />
         <button
           type="button"
           onClick={() => setReviewOpen(true)}
@@ -501,6 +504,7 @@ export function ExamShell(props: ExamShellProps) {
         )}
       </div>
 
+      <MockSaveStatus />
       {footerExtra && <div className="shrink-0 border-t border-white/10 bg-exam-bar">{footerExtra}</div>}
 
       {/* Navigator */}

@@ -31,6 +31,7 @@ export const TEACHER_NAV: PortalNavSection[] = [
     label: "Content & Preparation",
     items: [
       { name: "Test Generator", href: "/teacher/generate-tests", icon: Sparkles },
+      { name: "Student Workshops", href: "/teacher/adventures", icon: BookOpen },
       { name: "Listening Audio", href: "/teacher/listening-audio", icon: Headphones },
     ],
   },

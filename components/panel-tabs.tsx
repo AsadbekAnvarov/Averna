@@ -101,7 +101,7 @@ export function PanelTabs({
                 <button
                   key={t.key}
                   onClick={() => select(t.key)}
-                  className={`flex flex-1 md:flex-none ${wrapOnMobile?"flex-row min-h-11 text-sm whitespace-normal sm:whitespace-nowrap":"flex-col sm:flex-row text-[11px] sm:text-sm whitespace-nowrap"} items-center justify-center gap-1 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-semibold transition-all duration-300 ${
+                  className={`flex flex-1 md:flex-none ${wrapOnMobile?"flex-row min-h-11 text-sm whitespace-normal sm:whitespace-nowrap":"flex-col sm:flex-row min-h-11 text-sm whitespace-nowrap"} items-center justify-center gap-1 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-semibold transition-all duration-300 ${
                     isActive ? `${t.active} shadow-lg` : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
                   aria-current={isActive ? "page" : undefined}

@@ -8,7 +8,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 // Tests live in tests/ and are type-checked by `npx tsc --noEmit` like the app.
 export default defineConfig({
   // tsconfig keeps `jsx: preserve` for Next.js, so JSX in tests needs its own transform.
-  esbuild: { jsx: "automatic" },
+  oxc: { jsx: { runtime: "automatic" } },
   resolve: {
     // Same "@/…" imports as the app (tsconfig paths: "@/*" → "./*").
     alias: { "@": root },

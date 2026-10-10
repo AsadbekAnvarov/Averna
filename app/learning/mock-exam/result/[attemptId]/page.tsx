@@ -20,8 +20,8 @@ import {
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { canViewStudent } from "@/lib/access";
-import { getMockResult, MOCK_SECTIONS, type MockResultView, type MockSection, type MockSectionResult } from "@/lib/ielts/mock";
-import { overallBand } from "@/lib/ielts/bands";
+import { getMockResult, type MockResultView, type MockSection, type MockSectionResult } from "@/lib/ielts/mock";
+
 import { Aurora } from "@/components/motion/aurora";
 import { Reveal } from "@/components/motion/reveal";
 import { BandCountUp } from "@/components/exam/results/band-count-up";
@@ -94,23 +94,25 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
   const studentName = owner.student.user?.name?.trim() || "Student";
 
   const r = await getMockResult(owner.studentId, attemptId);
+  if (r?.groupSessionId && !r.groupPublished) return redirect(viewerIsOwner ? `${HUB}/group/${r.groupSessionId}` : `/teacher/mock/sessions/${r.groupSessionId}`);
   if (!r) return redirect(viewerIsOwner ? HUB : STAFF_HUB);
   if (r.status !== "finished") {
     if (!viewerIsOwner) return redirect(STAFF_HUB);
     return redirect(r.status === "abandoned" ? HUB : `${HUB}/${encodeURIComponent(r.attemptId)}`);
   }
 
-  const bands = MOCK_SECTIONS.map((s) => r.results[s]?.band ?? 0);
-  const overall = r.overall ?? overallBand(bands);
+  const sections = r.sections;
+  const bands = sections.map((s) => r.results[s]?.band ?? 0);
+  const overall = r.overall;
   const mean = bands.reduce((a, b) => a + b, 0) / bands.length;
-  const totalXp = MOCK_SECTIONS.reduce((sum, s) => sum + Math.max(0, Math.round(r.results[s]?.xp ?? 0)), 0);
+  const totalXp = sections.reduce((sum, s) => sum + Math.max(0, Math.round(r.results[s]?.xp ?? 0)), 0);
   const startedAt = new Date(r.startedAt);
   const finishedAt = r.finishedAt ? new Date(r.finishedAt) : null;
   const totalSeconds = finishedAt ? Math.max(0, Math.round((finishedAt.getTime() - startedAt.getTime()) / 1000)) : 0;
 
   const lowest = Math.min(...bands);
   const level = bands.every((b) => b === bands[0]);
-  const weakest = level ? null : MOCK_SECTIONS[bands.indexOf(lowest)];
+  const weakest = level ? null : sections[bands.indexOf(lowest)];
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -148,7 +150,7 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
                 {totalSeconds > 0 && (
                   <li className="inline-flex items-center gap-1.5">
                     <Clock className="h-4 w-4 text-gray-500" aria-hidden />
-                    {formatDuration(totalSeconds)} in total, including breaks
+                    {formatDuration(totalSeconds)} {r.mode === "cd-v1" ? "elapsed since registration" : "in total, including breaks"}
                   </li>
                 )}
                 <li className="inline-flex items-center gap-1.5">
@@ -158,7 +160,7 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
               </ul>
 
               <ul role="list" aria-label="Section bands" className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-                {MOCK_SECTIONS.map((s, i) => (
+                {sections.map((s, i) => (
                   <li key={s} className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5">
                     <p className={cn("text-xs font-medium", SKILL_TONE[s].text)}>{TITLE[s]}</p>
                     <p className="mt-0.5 text-xl font-bold tabular-nums text-white">{fmt(bands[i])}</p>
@@ -169,11 +171,11 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
 
             <div className="mx-auto flex flex-col items-center text-center md:mx-0 md:pl-4">
               <div className="flex h-40 w-40 flex-col items-center justify-center rounded-full border-2 border-averna-neon/40 bg-averna-neon/[0.06] shadow-[0_0_60px_-20px_rgba(0,255,148,0.55)]">
-                <BandCountUp value={overall} className="text-6xl font-bold tabular-nums tracking-tight text-white" />
+                {overall == null ? <span className="text-5xl font-bold text-white">—</span> : <BandCountUp value={overall} className="text-6xl font-bold tabular-nums tracking-tight text-white" />}
                 <span aria-hidden className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-400">
-                  Overall band
+                  {overall == null ? "Speaking separate" : "Overall band"}
                 </span>
-                <span className="sr-only">Overall band {fmt(overall)}</span>
+                <span className="sr-only">{overall == null ? "No four-skill overall: Speaking is separate" : `Overall band ${fmt(overall)}`}</span>
               </div>
             </div>
           </div>
@@ -181,8 +183,8 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
           <p className="mt-6 flex items-start gap-2.5 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-relaxed text-gray-300">
             <Info className="mt-0.5 h-4 w-4 shrink-0 text-averna-cyan" aria-hidden />
             <span>
-              {viewerIsOwner ? "Your" : "The"} overall band is the average of the four section bands, rounded to the nearest half band, the way IELTS
-              reports it: ({bands.map(fmt).join(" + ")}) ÷ 4 = {trim(mean)} → <strong className="text-white">{fmt(overall)}</strong>.
+              {overall == null ? <>This sitting contains Listening, Reading and Writing. Speaking is separate, so no four-skill overall is calculated. <Link href="/learning/speaking" className="underline text-averna-cyan">Open Speaking</Link>.</> : <>{viewerIsOwner ? "Your" : "The"} overall band is the average of the four section bands, rounded to the nearest half band, the way IELTS
+              reports it: ({bands.map(fmt).join(" + ")}) ÷ 4 = {trim(mean)} → <strong className="text-white">{fmt(overall)}</strong>.</>}
             </span>
           </p>
         </section>
@@ -193,7 +195,7 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
             Section by section
           </h2>
           <ul role="list" className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {MOCK_SECTIONS.map((s, i) => (
+            {sections.map((s, i) => (
               <SectionCard key={s} skill={s} result={r.results[s]} papers={r.papers} delay={150 + i * 90} viewerIsOwner={viewerIsOwner} />
             ))}
           </ul>
@@ -229,10 +231,10 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
                 <div className="min-w-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">Focus next</p>
                   <h2 id="mock-focus-title" className="mt-0.5 text-lg font-semibold text-white">
-                    {viewerIsOwner ? "Your" : "The"} four bands are level
+                    {viewerIsOwner ? "Your" : "The"} section bands are level
                   </h2>
                   <p className="mt-1 max-w-2xl text-sm leading-relaxed text-gray-400">
-                    No skill is holding the others back. Keep practising all four — and take another mock in a few weeks to
+                    No skill is holding the others back. Keep practising these sections — and take another mock in a few weeks to
                     see the whole picture move.
                   </p>
                 </div>

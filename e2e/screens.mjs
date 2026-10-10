@@ -9,6 +9,9 @@
  * the screenshots are uploaded as the "screens" artifact.
  */
 import { chromium } from "playwright";
+import { createRoleSessionCache } from "./role-session.mjs";
+
+const ensureSignedIn = createRoleSessionCache();
 import { mkdirSync, writeFileSync } from "node:fs";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3000";
@@ -52,6 +55,14 @@ const PAGES = {
     ["rankings-teams", "/rankings/teams"],
     ["studio", "/studio"],
     ["studio-warm-up", "/studio/warm-up"],
+    ["adventures", "/studio/adventures"],
+    ["adventures-series", "/studio/adventures/series"],
+    ["adventures-detective", "/studio/adventures/detective"],
+    ["adventures-debate", "/studio/adventures/debate"],
+    ["adventures-rescue", "/studio/adventures/rescue"],
+    ["adventures-builder", "/studio/adventures/builder"],
+    ["adventures-capsules", "/studio/adventures/capsules"],
+
     ["learning", "/learning"],
     ["settings", "/settings"],
     ["profile", "/profile"],
@@ -65,6 +76,7 @@ const PAGES = {
     ["teacher-reviews", "/teacher/reviews"],
     ["teacher-students", "/teacher/students"],
     ["teacher-calendar", "/teacher/calendar"],
+    ["teacher-adventures", "/teacher/adventures"],
     ["teacher-homework", "/teacher/homework"],
     ["teacher-gradebook", "/teacher/gradebook"],
     ["teacher-attendance", "/teacher/attendance"],
@@ -115,6 +127,7 @@ const EXAM_NOISE = new RegExp(
 
 /** Old URLs that must keep working. */
 const REDIRECTS = [
+  ["/billing", "/dashboard"],
   ["/analytics", "/progress"],
   ["/achievements", "/progress/achievements"],
   ["/leagues", "/rankings/leagues"],
@@ -166,6 +179,9 @@ async function shoot(context, role, theme, device) {
     if (action) {
       await action(page).catch((e) => problems.push(`${label}: action failed: ${e.message}`));
       await page.waitForTimeout(700);
+    }
+    if (role === "student" && await page.locator('a[href="/billing"]').count()) {
+      problems.push(`${label}: retired Billing link is still rendered for students`);
     }
     await inspect(page, label, device, `${OUT}/${theme}-${device}-${role}-${name}.png`);
     page.removeAllListeners("pageerror");
@@ -297,7 +313,7 @@ try {
           localStorage.setItem("averna_seasonal", "0");
           sessionStorage.setItem("averna_pwa_dismissed", "1");
         }, theme);
-        await signIn(context, creds);
+        await ensureSignedIn(context, BASE, role, creds, signIn);
         await shoot(context, role, theme, device);
         if (role === "student") await shootExams(context, theme, device);
         if (role === "student" && theme === "dark" && device === "phone") {

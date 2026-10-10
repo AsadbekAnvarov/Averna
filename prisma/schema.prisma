@@ -67,6 +67,7 @@ model User {
   sentMessages     Message[]      @relation("SentMessages")
   receivedMessages Message[]      @relation("ReceivedMessages")
   telegramLinks    TelegramLink[] @relation("TelegramUser")
+  adventureWorkshopReviews AdventureWorkshop[] @relation("AdventureReviewer")
 
   @@map("users")
 }
@@ -143,6 +144,8 @@ model Student {
   grades              Grade[]
   redemptions         RewardRedemption[]
   payments            Payment[]
+  adventureWorkshops  AdventureWorkshop[]
+  writingDrafts       WritingDraft[]
   mistakeEntries      MistakeEntry[]
   reviewItems         ReviewItem[]
   skillStates         SkillState[]
@@ -150,6 +153,7 @@ model Student {
   learningProfile     LearningProfile?
   learningSnapshots   LearningProfileSnapshot[]
   xpTransactions      XpTransaction[]
+  mockParticipants    MockParticipant[]
   mockAttempts        MockAttempt[]
   speakingRecordings  SpeakingRecording[]
   placementAttempts   PlacementAttempt[]
@@ -182,6 +186,7 @@ model Teacher {
   lessonLogs        LessonLog[]
   studentNotes      StudentNote[]
   homeworkTemplates HomeworkTemplate[]
+  mockSessions      MockSession[]
 
   @@map("teachers")
 }
@@ -199,6 +204,8 @@ model Group {
   // Relations
   teacher       Teacher         @relation(fields: [teacherId], references: [id])
   students      Student[]
+  adventureWorkshops AdventureWorkshop[]
+  mockSessions  MockSession[]
   rosterMembers RosterStudent[]
   homework      Homework[]
   attendances   Attendance[]
@@ -311,6 +318,7 @@ model IELTSTest {
   review        TestReview?
   assessmentJob AiAssessmentJob?
 
+  @@index([studentId, completedAt])
   @@index([studentId])
   @@index([module])
   @@map("ielts_tests")
@@ -1021,6 +1029,7 @@ model MockAttempt {
   updatedAt        DateTime  @updatedAt
 
   student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  participant MockParticipant?
 
   @@index([studentId, status])
   @@map("mock_attempts")
@@ -1419,4 +1428,90 @@ model FinanceRequest {
   createdAt   DateTime @default(now())
 
   @@map("finance_requests")
+}
+
+// Private single-task practice drafts. Empty rows are versioned tombstones.
+model WritingDraft {
+  id         String   @id @default(cuid())
+  studentId  String
+  scope      String
+  promptHash String
+  essay      String   @db.Text
+  attemptId  String
+  timeLeft   Int
+  version    Int      @default(1)
+  updatedAt  DateTime @updatedAt
+  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, scope])
+  @@map("writing_drafts")
+}
+
+/// Teacher-reviewed, class-scoped student-authored practice. Not an IELTS exam.
+model AdventureWorkshop {
+  id              String @id @default(cuid())
+  authorStudentId String
+  groupId         String
+  requestId       String
+  fingerprint     String
+  title           String
+  payload         Json
+  status          String @default("SUBMITTED")
+  version         Int @default(1)
+  feedback        String?
+  reviewerUserId  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  author          Student @relation(fields: [authorStudentId], references: [id], onDelete: Cascade)
+  group           Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  reviewer        User? @relation("AdventureReviewer", fields: [reviewerUserId], references: [id], onDelete: SetNull)
+  @@unique([authorStudentId, requestId])
+  @@index([groupId, status, updatedAt])
+  @@map("adventure_workshops")
+}
+
+/// In-centre sessions owned by one teacher. Manual rollout only.
+model MockSession {
+  id           String            @id @default(cuid())
+  teacherId    String
+  groupId      String
+  title        String
+  code         String            @unique
+  state        String            @default("lobby")
+  distribution String            @default("unique")
+  pool         Json
+  version      Int               @default(0)
+  startedAt    DateTime?
+  endedAt      DateTime?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  teacher      Teacher           @relation(fields: [teacherId], references: [id], onDelete: Restrict)
+  group        Group             @relation(fields: [groupId], references: [id], onDelete: Restrict)
+  participants MockParticipant[]
+
+  @@index([teacherId, createdAt])
+  @@index([groupId, state])
+  @@map("mock_sessions")
+}
+
+model MockParticipant {
+  id          String      @id @default(cuid())
+  sessionId   String
+  studentId   String
+  attemptId   String      @unique
+  ordinal     Int
+  ready       Boolean     @default(false)
+  version     Int         @default(0)
+  work        Json?
+  review      Json?
+  publishedAt DateTime?
+  joinedAt    DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  session     MockSession @relation(fields: [sessionId], references: [id], onDelete: Restrict)
+  student     Student     @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  attempt     MockAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, studentId])
+  @@unique([sessionId, ordinal])
+  @@map("mock_participants")
 }

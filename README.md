@@ -24,7 +24,7 @@ Whisper) · Vercel (hosting, Blob storage, Cron).
 
 ## Run it locally
 
-Requirements: Node.js 20+, PostgreSQL.
+Requirements: Node.js 20.19+, 22.12+ or 24, PostgreSQL.
 
 ```bash
 npm install
@@ -113,3 +113,14 @@ enable `REQUIRE_EMAIL_VERIFICATION`. No credentials belong in Git.
 The generated baseline is for fresh databases; do **not** run it as creation SQL
 against an existing database. Do not seed a real database. Shared rate limits
 fail closed if their new table is missing; apply/test the schema before deploying.
+
+## Mobile-first reliability (staging-gated)
+
+See [`docs/MOBILE_LEARNING_RELIABILITY.md`](docs/MOBILE_LEARNING_RELIABILITY.md)
+for explicit private Writing practice drafts, bounded single-task assessment scheduling,
+source-aware descriptive practice evidence, mobile fixes and rollout boundaries.
+New draft/scheduler features are OFF by default; do not migrate production automatically.
+
+## Adventures practice modes
+
+Six mobile-first guided practice modes are grouped under `/studio/adventures`. Personal text/audio stays on the device; moderated class sharing defaults OFF. Setup, privacy boundaries and acceptance checks: [Adventures](docs/ADVENTURES.md).

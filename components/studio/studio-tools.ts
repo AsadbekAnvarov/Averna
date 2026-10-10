@@ -1,5 +1,5 @@
 import {
-  Zap, Mic, Clapperboard, Lightbulb, BookMarked, ScanLine, Headphones, Timer, Swords, Skull, Ghost, Gauge,
+  Zap, Mic, Clapperboard, Lightbulb, BookMarked, ScanLine, Headphones, Timer, Swords, Skull, Ghost, Gauge, Compass,
   type LucideIcon,
 } from "lucide-react";
 
@@ -23,6 +23,7 @@ export interface StudioTool {
  * shelf automatically.
  */
 export const STUDIO_TOOLS: StudioTool[] = [
+  { slug: "adventures", title: "Adventures", blurb: "Stories, mysteries, debates and your own creations", icon: Compass, color: "text-averna-cyan", bg: "bg-averna-cyan/15", group: "practice" },
   { slug: "warm-up", title: "60-Second Warm-Up", blurb: "Five quick questions to get your brain going", icon: Zap, color: "text-averna-neon", bg: "bg-averna-neon/15", group: "practice" },
   { slug: "voice-journal", title: "Voice Journal", blurb: "A 60-second spoken diary that tracks your fluency", icon: Mic, color: "text-averna-pink", bg: "bg-averna-pink/15", group: "practice" },
   { slug: "roleplay", title: "Roleplay", blurb: "Chat in character — airport, interview, café and more", icon: Clapperboard, color: "text-averna-purple", bg: "bg-averna-purple/15", group: "practice" },

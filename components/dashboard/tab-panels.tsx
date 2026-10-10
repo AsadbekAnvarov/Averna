@@ -15,6 +15,7 @@ import { getDashboardHomework, type DashboardStudent } from "@/lib/dashboard/dat
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
 // Today
+import { AdventuresEntry } from "@/components/dashboard/adventures-entry";
 import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { HabitNudge } from "@/components/dashboard/habit-nudge";
 import { PlacementPrompt } from "@/components/placement/placement-prompt";
@@ -81,6 +82,7 @@ export async function HomeTab({ student }: TabPanelProps) {
         quote={dailyQuote}
         featuredCosmetic={student.featuredCosmetic}
       />
+      <AdventuresEntry />
       <NextSessionCard />
       <Suspense fallback={null}>
         <HabitNudge studentId={student.id} streak={student.currentStreak} />

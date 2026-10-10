@@ -23,7 +23,6 @@ import {
   Gift,
   CalendarDays,
   Library,
-  Wallet,
   Bot,
   Notebook,
   Settings,
@@ -74,6 +73,7 @@ const STUDENT_NAV: NavSection[] = [
       { name: "Placement Test", href: "/learning/placement", icon: Compass },
       { name: "Daily Challenge", href: "/challenge", icon: Zap },
       { name: "Practice Studio", href: "/studio", icon: Dumbbell },
+      { name: "Adventures", href: "/studio/adventures", icon: Compass, badge: "New" },
       { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
       { name: "AI Mentor", href: "/mentor", icon: Sparkles },
       { name: "Daily Article", href: "/article", icon: Newspaper },
@@ -104,7 +104,6 @@ const STUDENT_NAV: NavSection[] = [
     label: "Account",
     items: [
       { name: "Notifications", href: "/notifications", icon: Bell },
-      { name: "Billing", href: "/billing", icon: Wallet },
       { name: "Profile", href: "/profile", icon: User },
       { name: "Settings", href: "/settings", icon: Settings },
     ],

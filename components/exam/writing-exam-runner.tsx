@@ -486,7 +486,7 @@ export function WritingExamRunner(props: WritingExamRunnerProps) {
   useEffect(() => {
     const saved = readSaved(storageKey);
     const fromServer = normalizeEssays(initial);
-    const restore = !!saved && !hasText(fromServer) && hasText(saved.essays);
+    const restore = !props.preferInitial && !!saved && !hasText(fromServer) && hasText(saved.essays);
     const start = restore && saved ? saved.essays : fromServer;
     essaysRef.current = start;
     setEssays(start);
@@ -583,13 +583,14 @@ export function WritingExamRunner(props: WritingExamRunnerProps) {
       essaysRef.current = next;
       setEssays(next);
       localSave.schedule();
-      remoteSave.schedule();
+      if (props.preferInitial) onAutosaveRef.current?.({ ...next });
+      else remoteSave.schedule();
       const min = MIN_WORDS[n];
       if (countWords(before) < min && countWords(value) >= min) {
         setAnnouncement(`Task ${n}: ${min}-word minimum reached.`);
       }
     },
-    [localSave, remoteSave]
+    [localSave, remoteSave, props.preferInitial]
   );
 
   // Focus after the commit — the shell may be revealing the editor pane in the same update.

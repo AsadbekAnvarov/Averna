@@ -1,0 +1,7 @@
+import Link from "next/link";
+import { ArrowUpRight, Clapperboard, Search, MessagesSquare, LifeBuoy, PencilRuler, Mic, Compass } from "lucide-react";
+import { ADVENTURES } from "@/lib/adventures/catalog";
+const ICONS = { film: Clapperboard, search: Search, messages: MessagesSquare, life: LifeBuoy, pencil: PencilRuler, mic: Mic };
+export function AdventureHub() {
+  return <div className="adventure-space"><section className="adv-hub-intro"><p className="adv-kicker"><Compass size={18} /> Six ways to step into English</p><h2>Less watching.<br />More being there.</h2><p>Follow a story. Solve a case. Make yourself heard. Start small, and leave with something you actually practised.</p><p className="adv-note">Guided practice with original prepared content. No exam predictions, automatic XP or paid AI calls.</p></section><div className="adv-hub-grid">{ADVENTURES.map((tool, index) => { const Icon = ICONS[tool.icon]; return <Link href={`/studio/adventures/${tool.slug}`} key={tool.slug} className="adv-hub-card"><div className="adv-card-top"><span className="adv-icon"><Icon size={24} /></span><span className="adv-number">0{index + 1}</span></div><p className="adv-kicker">{tool.kind}</p><h3>{tool.title}</h3><p>{tool.description}</p><div className="adv-card-bottom"><span>{tool.skill}<br /><b>{tool.minutes}</b></span><ArrowUpRight size={22} aria-hidden="true" /></div></Link>; })}</div></div>;
+}

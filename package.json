@@ -70,10 +70,10 @@
     "jsdom": "26.1.0",
     "postcss": "8.5.29",
     "prisma": "^5.14.0",
+    "tailwindcss-animate": "^1.0.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
-    "vitest": "3.2.4",
-    "tailwindcss-animate": "^1.0.7"
+    "vitest": "4.1.11"
   },
   "overrides": {
     "postcss": "$postcss",

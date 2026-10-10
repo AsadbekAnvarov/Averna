@@ -1,0 +1,21 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+const m = vi.hoisted(() => ({ auth: vi.fn(), student: vi.fn(), prompt: vi.fn(), limit: vi.fn(), read: vi.fn(), write: vi.fn() }));
+vi.mock("@/lib/auth", () => ({ auth: m.auth }));
+vi.mock("@/lib/db", () => ({ db: { student: { findUnique: m.student } } }));
+vi.mock("@/lib/ielts/catalog", () => ({ getWritingTask: m.prompt }));
+vi.mock("@/lib/security/rate-limit", () => ({ reserveLimits: m.limit }));
+vi.mock("@/lib/writing-drafts/service", () => ({ DraftError: class extends Error { constructor(public status: number, message: string) { super(message); } }, promptHash: () => "hash", readDraft: m.read, writeDraft: m.write }));
+import { GET, PUT } from "@/app/api/learning/writing/draft/route";
+const body = { taskType: "task2", promptId: "topic", essay: "Local text", timeLeft: 100, attemptId: "attempt-1", version: 0 };
+const request = (extra = {}) => new Request("https://averna.test/api/learning/writing/draft", { method: "PUT", headers: { "Content-Type": "application/json", origin: "https://averna.test" }, body: JSON.stringify({ ...body, ...extra }) });
+beforeEach(() => { vi.resetAllMocks(); vi.stubEnv("CLOUD_WRITING_DRAFTS", "on"); m.auth.mockResolvedValue({ user: { id: "u1", role: "STUDENT" } }); m.student.mockResolvedValue({ id: "s1", blacklisted: false }); m.prompt.mockResolvedValue({ prompt: "Original task" }); m.limit.mockResolvedValue({ ok: true }); m.read.mockResolvedValue(null); m.write.mockResolvedValue(null); });
+afterEach(() => vi.unstubAllEnvs());
+describe("Writing draft route", () => {
+  it("is gated before storage", async () => { vi.stubEnv("CLOUD_WRITING_DRAFTS", "off"); expect((await PUT(request())).status).toBe(404); expect(m.auth).not.toHaveBeenCalled(); });
+  it("denies signed-out and staff users", async () => { m.auth.mockResolvedValue(null); expect((await PUT(request())).status).toBe(401); m.auth.mockResolvedValue({ user: { id: "staff", role: "TEACHER" } }); expect((await PUT(request())).status).toBe(403); expect(m.write).not.toHaveBeenCalled(); });
+  it("denies cross-site writes", async () => { const req = request(); req.headers.set("origin", "https://evil.test"); expect((await PUT(req)).status).toBe(403); expect(m.auth).not.toHaveBeenCalled(); });
+  it("rejects ownership injection and oversized requests", async () => { expect((await PUT(request({ studentId: "other" }))).status).toBe(400); expect((await PUT(request({ essay: "a".repeat(100001) }))).status).toBe(400); expect(m.write).not.toHaveBeenCalled(); });
+  it("writes using authenticated identity, never a client owner", async () => { expect((await PUT(request())).status).toBe(200); expect(m.write).toHaveBeenCalledWith("u1", body, "hash", false); });
+  it("reads only current student's scope and disables caching", async () => { const r = await GET(new Request("https://averna.test/api/learning/writing/draft?taskType=task2&promptId=topic")); expect(m.read).toHaveBeenCalledWith("s1", "task2", "topic", "hash"); expect(r.headers.get("cache-control")).toBe("private, no-store"); });
+  it("fails closed on limiter/storage errors", async () => { m.limit.mockResolvedValue({ ok: false }); expect((await PUT(request())).status).toBe(429); expect(m.write).not.toHaveBeenCalled(); m.limit.mockResolvedValue({ ok: true }); m.write.mockRejectedValue(new Error("private essay / SQL")); const r = await PUT(request()); expect(r.status).toBe(503); expect(await r.text()).not.toContain("private essay / SQL"); });
+});
