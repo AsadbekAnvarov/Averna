@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
   AlertTriangle,
@@ -129,6 +130,7 @@ export default async function TeacherMockPage(props: { searchParams?: Promise<Se
   return (
     <Shell header={header} pageHeader={pageHeader}>
       {/* Group selector + export */}
+      <Link href="/teacher/mock/sessions" className="mb-5 inline-flex min-h-[44px] items-center rounded-lg border border-white/20 px-4 text-sm font-semibold text-averna-cyan">Open teacher-led group sessions →</Link>
       <form
         method="get"
         action="/teacher/mock"

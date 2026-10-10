@@ -103,7 +103,7 @@ export interface SpeakingPartView {
 
 export interface SpeakingDetail {
   fullTest: boolean;
-  inputMode: "speech" | "typed" | null;
+  inputMode: "speech" | "typed" | "in-person" | null;
   /** Some answers were recorded on the server. */
   recorded: boolean;
   /** When the first still-available recording expires. */
@@ -269,7 +269,8 @@ async function writingDetail(
       : null,
   ]);
 
-  const chart = taskType === "task1" && prompt?.chart && prompt.chart.length > 0 ? prompt.chart : null;
+  const frozenChart = typeof a.groupSessionId === "string" && Array.isArray(a.chart) ? a.chart as Task1ChartData[] : null;
+  const chart = taskType === "task1" ? (frozenChart?.length ? frozenChart : prompt?.chart?.length ? prompt.chart : null) : null;
   const issues: WritingIssue[] = (Array.isArray(ai.issues) ? ai.issues : [])
     .map((x) => asRec(x))
     .filter((x): x is Record<string, unknown> => !!x && typeof x.text === "string" && x.text.trim().length > 0)
@@ -281,7 +282,7 @@ async function writingDetail(
     prompt: str(a.prompt) || prompt?.prompt || "",
     promptType: prompt?.type || null,
     chart,
-    imageUrl: taskType === "task1" && !chart && prompt?.imageUrl ? prompt.imageUrl : null,
+    imageUrl: taskType === "task1" && !chart ? (typeof a.groupSessionId === "string" && typeof a.imageUrl === "string" ? a.imageUrl : prompt?.imageUrl ?? null) : null,
     essay,
     words: num(ai.wordCount) ?? countWords(essay),
     minWords: MIN_TASK_WORDS[taskType ?? "task2"],
@@ -422,7 +423,7 @@ async function speakingDetail(t: Row, a: Record<string, unknown>, ai: Record<str
   const allAnswers = items.map((i) => i.view);
   return {
     fullTest,
-    inputMode: a.inputMode === "typed" ? "typed" : a.inputMode === "speech" ? "speech" : null,
+    inputMode: a.inputMode === "in-person" && a.teacherConducted === true ? "in-person" : a.inputMode === "typed" ? "typed" : a.inputMode === "speech" ? "speech" : null,
     recorded: recordings.length > 0,
     audioUntil: live.length ? new Date(Math.min(...live)) : null,
     parts,

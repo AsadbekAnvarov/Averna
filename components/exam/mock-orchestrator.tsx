@@ -52,6 +52,7 @@ import {
 } from "./mock-start-button";
 import type { SpeakingTestSubmission, WritingEssays } from "./types";
 import { MockDraftQueue } from "./mock-draft-queue";
+import { ExamThemeToggle } from "./exam-preferences";
 import { MockSaveContext } from "./mock-save-status";
 import { useDeadline, formatClock } from "./use-exam";
 
@@ -185,6 +186,7 @@ interface Session {
   watchFrom: number | null;
   saves: MockDraftQueue;
   strict: boolean;
+  teacherLed: boolean;
 }
 
 function sessionKeyOf(view: MockView): string {
@@ -203,6 +205,7 @@ function createSession(view: MockView, key: string): Session {
   return {
     key,
     strict,
+    teacherLed: !!view.groupSessionId,
     attemptId: view.attemptId,
     index: stage.kind === "intro" || stage.kind === "running" ? stage.index : -1,
     section,
@@ -247,7 +250,7 @@ class SectionSubmitError extends Error {
 }
 
 type Overlay =
-  | { kind: "marking"; section: MockSection }
+  | { kind: "marking"; section: MockSection; teacherLed?: boolean }
   | { kind: "advancing"; section: MockSection; done: boolean }
   | { kind: "timeup"; section: MockSection; busy: boolean; error: string | null }
   | { kind: "fatal"; message: string };
@@ -312,7 +315,7 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
       if (s.saves.conflict && !collecting) return Promise.reject(new Error("Another device changed this draft. Reload and compare before submitting."));
       const marked = s.section === "WRITING" || s.section === "SPEAKING";
       pauseSaves(s);
-      if (marked && !collecting) show(s, { kind: "marking", section: s.section });
+      if (marked && !collecting) show(s, { kind: "marking", section: s.section, teacherLed: s.teacherLed });
       const run = async () => {
         await s.saves.settle();
         if (s.saves.conflict && !collecting) { resumeSaves(s); show(s, null); throw new Error("Draft conflict: reload and compare the copies before submitting."); }
@@ -708,7 +711,7 @@ function IntroScreen({
               Section {stage.index + 1} of {total}
             </p>
           </div>
-          <MockLeaveButton attemptId={view.attemptId} redirectTo={MOCK_HUB_HREF} />
+          <div className="flex items-center gap-2"><ExamThemeToggle /><MockLeaveButton attemptId={view.attemptId} redirectTo={MOCK_HUB_HREF} /></div>
         </header>
 
         <ProgressRail sections={view.sections} />
@@ -892,11 +895,12 @@ function OverlayView({
     case "marking":
       busy = true;
       icon = overlay.section === "SPEAKING" ? Mic : PenLine;
-      title = "Marking your answers…";
+      title = overlay.teacherLed ? "Collecting essays for your teacher…" : "Marking your answers…";
       body =
         overlay.section === "SPEAKING"
           ? "The examiner is assessing your Speaking test. This usually takes 10–40 seconds — please keep this page open."
           : "The examiner is reading your Task 1 and Task 2. This usually takes 10–40 seconds — please keep this page open.";
+      if (overlay.teacherLed) body = "Your Writing work is being saved for manual review. It will not be assessed by AI. Speaking is conducted by your teacher in person.";
       break;
     case "advancing":
       busy = !stuck;

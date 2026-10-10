@@ -196,7 +196,7 @@ function sectionOf(results: Record<string, unknown> | null | undefined, s: MockS
       if (v !== null) criteria[k] = v;
     }
   }
-  return { band: bandOf(r.band), testIds, criteria };
+  return { band: r.pendingReview === true ? null : bandOf(r.band), testIds, criteria };
 }
 
 /** Per-kind marks of a Reading / Listening attempt: aiAnalysis.byKind, else counted from its items. */

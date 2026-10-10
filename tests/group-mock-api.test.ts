@@ -1,0 +1,13 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+const m=vi.hoisted(()=>({auth:vi.fn(),limit:vi.fn(),read:vi.fn(),list:vi.fn(),create:vi.fn(),join:vi.fn(),ready:vi.fn(),control:vi.fn(),review:vi.fn()}));
+vi.mock("@/lib/auth",()=>({auth:m.auth}));vi.mock("@/lib/security/rate-limit",()=>({reserveLimits:m.limit}));vi.mock("@/lib/group-mock/service",()=>({GroupMockError:class extends Error{constructor(public status:number,message:string){super(message)}},readSession:m.read,listSessions:m.list,createSession:m.create,joinSession:m.join,markReady:m.ready,controlSession:m.control,saveReview:m.review}));
+import { groupRequest } from "@/lib/group-mock/api";
+const req=(method="GET",body:unknown=null)=>new Request("https://averna.test/api/mock-sessions/s",{method,headers:{origin:"https://averna.test","content-type":"application/json"},...(method==="GET"?{}:{body:JSON.stringify(body)})});
+beforeEach(()=>{vi.resetAllMocks();vi.stubEnv("GROUP_MOCK_SESSIONS","on");m.auth.mockResolvedValue({user:{id:"real",role:"TEACHER"}});m.limit.mockResolvedValue({ok:true});m.read.mockResolvedValue({id:"s"});});afterEach(()=>vi.unstubAllEnvs());
+describe("private session API",()=>{
+ it("defaults off before authentication",async()=>{vi.stubEnv("GROUP_MOCK_SESSIONS","off");expect((await groupRequest(req(),"s")).status).toBe(404);expect(m.auth).not.toHaveBeenCalled();});
+ it("rejects CSRF before identity",async()=>{const r=req("POST",{action:"start",version:0});r.headers.set("origin","https://evil.test");expect((await groupRequest(r,"s")).status).toBe(403);expect(m.auth).not.toHaveBeenCalled();});
+ it("uses authenticated caller and never client ownership",async()=>{const r=await groupRequest(req(),"s");expect(m.read).toHaveBeenCalledWith("real","s",undefined);expect(r.headers.get("cache-control")).toBe("private, no-store");expect((await groupRequest(req("POST",{code:"ABCDEF12",studentId:"forged"}))).status).toBe(400);expect(m.join).not.toHaveBeenCalled();});
+ it("returns sign-in expiration and shared limiter failure",async()=>{m.auth.mockResolvedValueOnce(null);expect((await groupRequest(req(),"s")).status).toBe(401);m.limit.mockResolvedValueOnce({ok:false,unavailable:true});expect((await groupRequest(req(),"s")).status).toBe(503);expect(m.read).not.toHaveBeenCalled();});
+ it("bounds JSON and refuses incomplete publication",async()=>{expect((await groupRequest(req("POST",{junk:"x".repeat(30001)}),"s")).status).toBe(400);expect((await groupRequest(req("PUT",{participantId:"p",version:0,task1:{},task2:{},speaking:{},speakingConducted:false,comment:"",publish:true}),"s")).status).toBe(400);expect(m.review).not.toHaveBeenCalled();});
+});

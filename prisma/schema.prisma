@@ -153,6 +153,7 @@ model Student {
   learningProfile     LearningProfile?
   learningSnapshots   LearningProfileSnapshot[]
   xpTransactions      XpTransaction[]
+  mockParticipants    MockParticipant[]
   mockAttempts        MockAttempt[]
   speakingRecordings  SpeakingRecording[]
   placementAttempts   PlacementAttempt[]
@@ -185,6 +186,7 @@ model Teacher {
   lessonLogs        LessonLog[]
   studentNotes      StudentNote[]
   homeworkTemplates HomeworkTemplate[]
+  mockSessions      MockSession[]
 
   @@map("teachers")
 }
@@ -203,6 +205,7 @@ model Group {
   teacher       Teacher         @relation(fields: [teacherId], references: [id])
   students      Student[]
   adventureWorkshops AdventureWorkshop[]
+  mockSessions  MockSession[]
   rosterMembers RosterStudent[]
   homework      Homework[]
   attendances   Attendance[]
@@ -1026,6 +1029,7 @@ model MockAttempt {
   updatedAt        DateTime  @updatedAt
 
   student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  participant MockParticipant?
 
   @@index([studentId, status])
   @@map("mock_attempts")
@@ -1464,4 +1468,50 @@ model AdventureWorkshop {
   @@unique([authorStudentId, requestId])
   @@index([groupId, status, updatedAt])
   @@map("adventure_workshops")
+}
+
+/// In-centre sessions owned by one teacher. Manual rollout only.
+model MockSession {
+  id           String            @id @default(cuid())
+  teacherId    String
+  groupId      String
+  title        String
+  code         String            @unique
+  state        String            @default("lobby")
+  distribution String            @default("unique")
+  pool         Json
+  version      Int               @default(0)
+  startedAt    DateTime?
+  endedAt      DateTime?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  teacher      Teacher           @relation(fields: [teacherId], references: [id], onDelete: Restrict)
+  group        Group             @relation(fields: [groupId], references: [id], onDelete: Restrict)
+  participants MockParticipant[]
+
+  @@index([teacherId, createdAt])
+  @@index([groupId, state])
+  @@map("mock_sessions")
+}
+
+model MockParticipant {
+  id          String      @id @default(cuid())
+  sessionId   String
+  studentId   String
+  attemptId   String      @unique
+  ordinal     Int
+  ready       Boolean     @default(false)
+  version     Int         @default(0)
+  work        Json?
+  review      Json?
+  publishedAt DateTime?
+  joinedAt    DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  session     MockSession @relation(fields: [sessionId], references: [id], onDelete: Restrict)
+  student     Student     @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  attempt     MockAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, studentId])
+  @@unique([sessionId, ordinal])
+  @@map("mock_participants")
 }

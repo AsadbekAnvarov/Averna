@@ -24,6 +24,8 @@
  * SERVER ONLY.
  */
 
+import { isGroupPublished } from "@/lib/group-mock/rules";
+import { assertSessionReviewer } from "@/lib/group-mock/reviewer";
 import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { canReviewStudent, teacherOf, type Viewer } from "@/lib/access";
@@ -192,7 +194,7 @@ async function updateMock(
       where: { id: row.id, updatedAt: row.updatedAt },
       data: {
         results: json(next),
-        ...(row.status === "finished" ? { overall: isCdMock(row.papers) ? null : mockOverallBand(next, MOCK_SECTIONS) } : {}),
+        ...(row.status === "finished" ? { overall: isCdMock(row.papers) && !isGroupPublished(row.papers) ? null : mockOverallBand(next, MOCK_SECTIONS) } : {}),
       },
     });
     if (r.count > 0) return;
@@ -228,6 +230,7 @@ export async function saveTestReview(viewer: Viewer, testId: string, body: unkno
     return { ok: false, status: 403, error: "You can only review the work of students in your own groups." };
   }
 
+  if (!(await assertSessionReviewer(viewer.id,test.answers))) return {ok:false,status:403,error:"Only the owner of this group mock session can correct its grades."};
   const skill: ReviewSkill = test.module;
   const answers = answersOf(test.answers);
   const taskType = skill === "WRITING" ? taskTypeOf(answers) : null;
@@ -245,8 +248,9 @@ export async function saveTestReview(viewer: Viewer, testId: string, body: unkno
     created: boolean;
     changed: boolean;
     siblingId: string | null;
-  } = await db.$transaction(
+  } | null = await db.$transaction(
     async (tx: Tx) => {
+      if (!(await assertSessionReviewer(viewer.id,test.answers,tx,test.studentId))) return null;
       // Serialize teacher review with delayed AI completion. Read the current AI band
       // after taking the lock (the initial authorization read may predate completion).
       await tx.$queryRaw`SELECT "id" FROM "ielts_tests" WHERE "id" = ${testId} FOR UPDATE`;
@@ -289,6 +293,7 @@ export async function saveTestReview(viewer: Viewer, testId: string, body: unkno
     { maxWait: 5000, timeout: 15000 }
   );
 
+  if (!saved) return {ok:false,status:403,error:"Group-session review access changed. Nothing was saved."};
   if (saved.changed && test.student?.userId) {
     const label = attemptLabel(skill, taskType, isFullSpeakingTest(answers));
     const { title, message } = reviewNotification(label, input.band, !saved.created);

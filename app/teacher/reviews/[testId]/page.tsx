@@ -334,6 +334,7 @@ function WritingWork({ attempt, w, filters }: { attempt: ReviewAttempt; w: Writi
 // ---------------------------------------------------------------------------
 
 function SpeakingWork({ s }: { s: SpeakingDetail }) {
+  if (s.inputMode === "in-person") return <p className="rounded-xl border border-white/15 p-4 text-sm text-gray-300">The session teacher conducted Speaking Parts 1–3 in person and assessed pronunciation. No browser transcript, recording or measured Speaking time was captured. Use the recorded teacher rubric and feedback when correcting the result.</p>;
   const recordedCount = s.parts.reduce((n, p) => n + p.answers.filter((x) => x.audioUrl).length, 0);
   const expiredCount = s.parts.reduce((n, p) => n + p.answers.filter((x) => x.audioExpired).length, 0);
   const budgetCount = s.parts.reduce((n, p) => n + p.answers.filter((x) => x.audioNotKept === "monthly-limit").length, 0);

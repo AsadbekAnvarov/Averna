@@ -94,6 +94,7 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
   const studentName = owner.student.user?.name?.trim() || "Student";
 
   const r = await getMockResult(owner.studentId, attemptId);
+  if (r?.groupSessionId && !r.groupPublished) return redirect(viewerIsOwner ? `${HUB}/group/${r.groupSessionId}` : `/teacher/mock/sessions/${r.groupSessionId}`);
   if (!r) return redirect(viewerIsOwner ? HUB : STAFF_HUB);
   if (r.status !== "finished") {
     if (!viewerIsOwner) return redirect(STAFF_HUB);

@@ -156,6 +156,7 @@ export default async function SpeakingResultPage(props: { params: Promise<{ test
   const title = str(answersJson.title).trim() || (examId ? "Speaking test" : "Speaking practice");
   const recorded = answersJson.recorded === true;
   const typedMode = answersJson.inputMode === "typed";
+  const inPerson = answersJson.inputMode === "in-person" && answersJson.teacherConducted === true;
   const mock = answersJson.mock === true;
   const mockAttemptId = str(answersJson.mockAttemptId) || null;
   const auto = answersJson.auto === true;
@@ -310,6 +311,7 @@ export default async function SpeakingResultPage(props: { params: Promise<{ test
             </div>
           </div>
 
+          {inPerson && <p className="mt-4 rounded-xl border border-white/15 p-4 text-sm text-gray-300">Speaking Parts 1–3 were conducted in person and graded by the session teacher, including pronunciation. No transcript or recording was captured by this app.</p>}
           {(mock || auto || recorded || typedMode) && (
             <ul role="list" aria-label="About this attempt" className="mt-4 flex flex-wrap gap-2">
               {mockHref && (

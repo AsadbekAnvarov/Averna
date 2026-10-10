@@ -20,6 +20,8 @@
  * SERVER ONLY.
  */
 
+import { isGroupMock, isGroupPublished } from "@/lib/group-mock/rules";
+import { groupAttemptState, commitManualWork } from "@/lib/group-mock/service";
 import { randomInt } from "crypto";
 import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
@@ -56,6 +58,8 @@ export type MockPapers = {
   task2: string;
   speaking: string;
   mode?: typeof CD_MOCK_MODE;
+  groupSessionId?: string;
+  groupPublished?: boolean;
 };
 
 export type MockSectionResult = {
@@ -77,6 +81,7 @@ export type MockSectionResult = {
   feedback?: string[];
   assessedBy?: "ai" | "heuristic";
   submittedAt: string;
+  pendingReview?: boolean;
 };
 export type MockResults = Partial<Record<MockSection, MockSectionResult>>;
 
@@ -151,7 +156,7 @@ async function seenKeys(studentId: string): Promise<Set<string>> {
   }
   for (const m of mocks) {
     const p = papersOf(m.papers);
-    if (p) Object.values(p).forEach((id) => seen.add(id));
+    if (p) Object.values(p).forEach((id) => { if (typeof id === "string" && id !== "cd-v1" && id !== p.groupSessionId) seen.add(id); });
   }
   return seen;
 }
@@ -308,6 +313,7 @@ export async function beginSection(
 ): Promise<{ ok: true } | { ok: false; error: string }> {
   const row = await loadRow(studentId, attemptId);
   if (!row || row.status !== "active") return { ok: false, error: "This mock exam is no longer active." };
+  if (isGroupMock(row.papers)) return { ok: false, error: "Only your teacher can start this group session." };
   if (row.current !== section) return { ok: false, error: "This section has already finished — reloading the exam." };
   if (row.sectionStartedAt) return { ok: true };
   const papers = papersOf(row.papers);
@@ -325,6 +331,7 @@ export async function beginSection(
 export async function saveMockDraft(studentId: string, attemptId: string, section: number, draft: unknown, revision?: number): Promise<{ ok: boolean; revision?: number; conflict?: boolean }> {
   const row = await loadRow(studentId, attemptId);
   if (!row || row.status !== "active" || row.current !== section || !row.sectionStartedAt || !validMockDraft(section, draft)) return { ok: false };
+  if (isGroupMock(row.papers)) { const group = await groupAttemptState(studentId, attemptId); if (group.state !== "running" || (group.startAt != null && Date.now() < group.startAt)) return { ok: false }; }
   const now = Date.now();
   if (row.sectionDeadline && now > row.sectionDeadline.getTime() + mockGrace(row.papers)) return { ok: false };
   const size = JSON.stringify(draft).length;
@@ -433,6 +440,8 @@ export async function submitMockSection(o: {
   const papers = papersOf(row.papers);
   if (!papers) return { ok: false, error: "This mock exam is damaged. Please start a new one.", status: 500 };
 
+  const group = isGroupMock(papers) ? await groupAttemptState(o.studentId, o.attemptId) : null;
+  if (group && (group.state === "lobby" || (group.startAt != null && Date.now() < group.startAt))) return { ok: false, status: 409, error: "Wait for your teacher to start the session." };
   const now = Date.now();
   const deadline = row.sectionDeadline?.getTime() ?? now;
   const late = now > deadline + mockGrace(papers);
@@ -457,7 +466,9 @@ export async function submitMockSection(o: {
   // payload / autosave — a section is only blank when nothing was recorded either.
   let blank = isBlankSection(skill, payload);
   if (blank && skill === "SPEAKING") blank = !(await hasRecordedSpeech(o.studentId, `${row.id}-S`, papers.speaking));
-  if (blank) {
+  if (skill === "WRITING" && group) {
+    result = { band: 0, testIds: [], xp: 0, pendingReview: true, auto, submittedAt };
+  } else if (blank) {
     // Nothing was answered (time ran out while away): the section scores 0, as
     // in the real exam, but no empty attempt is written into the student's
     // skill history.
@@ -549,8 +560,9 @@ export async function submitMockSection(o: {
     const overall = done && !isCdMock(papers) ? overallBand(MOCK_SECTIONS.map((s) => merged[s]?.band ?? 0)) : null;
     const continueClock = isCdMock(papers) && !done;
     const nextStart = nextClock(deadline, now);
-    const nextMinutes = continueClock ? await sectionMinutes(mockSections(papers)[next], papers) : 0;
-    const r: { count: number } = await db.mockAttempt.updateMany({
+    const nextMinutes = continueClock && group?.state !== "review" ? await sectionMinutes(mockSections(papers)[next], papers) : 0;
+    if (group && skill === "WRITING" && fresh.updatedAt.getTime() !== row.updatedAt.getTime()) return {ok:false,status:409,error:"The account changed while collecting Writing. Reload and compare your saved copies."};
+    const change = {
       where: { id: row.id, current: o.section, status: "active", updatedAt: fresh.updatedAt },
       data: {
         current: next,
@@ -560,7 +572,8 @@ export async function submitMockSection(o: {
         sectionDeadline: continueClock ? new Date(nextStart + nextMinutes * 60_000) : null,
         ...(done ? { status: "finished", finishedAt: new Date(now), overall } : {}),
       },
-    });
+    };
+    const r = group && skill === "WRITING" ? await commitManualWork(row.id,payload,change.where,change.data) : await db.mockAttempt.updateMany(change);
     if (r.count > 0) return { ok: true, done, section: skill };
   }
   console.warn(`Mock attempt ${row.id}: the ${skill} section kept changing while it was saved; not moved on.`);
@@ -600,6 +613,8 @@ export interface MockView {
   stage: MockStage;
   startedAt: string;
   mode?: typeof CD_MOCK_MODE;
+  groupSessionId?: string;
+  groupPublished?: boolean;
 }
 
 const SECTION_TITLE: Record<MockSection, string> = {
@@ -660,6 +675,7 @@ async function sectionContent(section: MockSection, papers: MockPapers): Promise
 export async function getMockView(studentId: string, userId: string, attemptId: string): Promise<MockView | null> {
   let row = await loadRow(studentId, attemptId);
   if (!row) return null;
+  if (isGroupMock(row.papers)) await groupAttemptState(studentId,attemptId);
 
   for (let guard = 0; guard < MOCK_SECTIONS.length && row && row.status === "active"; guard++) {
     const deadline = row.sectionDeadline?.getTime();
@@ -686,7 +702,7 @@ export async function getMockView(studentId: string, userId: string, attemptId: 
   if (!papers) return null;
   const results = resultsOf(row.results);
   const sections = await sectionViews(papers, row.current, results);
-  const base = { attemptId: row.id, sections, startedAt: row.startedAt.toISOString(), ...(isCdMock(papers) ? { mode: CD_MOCK_MODE } : {}) };
+  const base = { ...(isGroupMock(papers) ? { groupSessionId: papers.groupSessionId } : {}), attemptId: row.id, sections, startedAt: row.startedAt.toISOString(), ...(isCdMock(papers) ? { mode: CD_MOCK_MODE } : {}) };
 
   if (row.status === "finished" || row.current >= mockSections(papers).length) return { ...base, stage: { kind: "finished" } };
   if (row.status !== "active") return { ...base, stage: { kind: "abandoned" } };
@@ -730,6 +746,8 @@ export interface MockResultView {
   papers: { listening: string; reading: string; task1: string; task2: string; speaking: string };
   sections: MockSection[];
   mode?: typeof CD_MOCK_MODE;
+  groupSessionId?: string;
+  groupPublished?: boolean;
 }
 
 export async function getMockResult(studentId: string, attemptId: string): Promise<MockResultView | null> {
@@ -747,8 +765,9 @@ export async function getMockResult(studentId: string, attemptId: string): Promi
   return {
     attemptId: row.id,
     status: row.status,
-    overall: isCdMock(papers) ? null : row.overall,
-    sections: [...mockSections(papers)],
+    overall: isCdMock(papers) && !isGroupPublished(papers) ? null : row.overall,
+    ...(isGroupMock(papers) ? { groupSessionId: papers.groupSessionId, groupPublished: isGroupPublished(papers) } : {}),
+    sections: isGroupPublished(papers) ? [...MOCK_SECTIONS] : [...mockSections(papers)],
     ...(isCdMock(papers) ? { mode: CD_MOCK_MODE } : {}),
     startedAt: row.startedAt.toISOString(),
     finishedAt: row.finishedAt?.toISOString() ?? null,
@@ -758,12 +777,14 @@ export async function getMockResult(studentId: string, attemptId: string): Promi
       reading: reading.find((t) => t.id === papers.reading)?.title ?? "Reading paper",
       task1: t1?.title ?? "Writing Task 1",
       task2: t2?.title ?? "Writing Task 2",
-      speaking: speaking.find((s) => s.id === papers.speaking)?.title ?? "Speaking set",
+      speaking: isGroupMock(papers) ? "Teacher-conducted Speaking · Parts 1–3" : speaking.find((s) => s.id === papers.speaking)?.title ?? "Speaking set",
     },
   };
 }
 
 export interface MockHistoryItem {
+  groupSessionId?: string;
+  groupPublished?: boolean;
   attemptId: string;
   status: string;
   overall: number | null;
@@ -786,16 +807,17 @@ export async function listMockAttempts(studentId: string, take = 12): Promise<Mo
   return (rows as { id: string; status: string; overall: number | null; current: number; startedAt: Date; finishedAt: Date | null; results: unknown; papers: unknown }[]).map((r) => {
     const res = resultsOf(r.results);
     const bands: Partial<Record<MockSection, number>> = {};
-    for (const s of MOCK_SECTIONS) if (res[s]) bands[s] = res[s]!.band;
+    for (const s of MOCK_SECTIONS) if (res[s] && !res[s]?.pendingReview) bands[s] = res[s]!.band;
     return {
+      ...(isGroupMock(r.papers) ? {groupSessionId: papersOf(r.papers)?.groupSessionId,groupPublished:isGroupPublished(r.papers)} : {}),
       attemptId: r.id,
       status: r.status,
-      overall: isCdMock(r.papers) ? null : r.overall,
+      overall: isCdMock(r.papers) && !isGroupPublished(r.papers) ? null : r.overall,
       current: r.current,
       startedAt: r.startedAt.toISOString(),
       finishedAt: r.finishedAt?.toISOString() ?? null,
       bands,
-      sections: [...mockSections(r.papers)],
+      sections: isGroupPublished(r.papers) ? [...MOCK_SECTIONS] : [...mockSections(r.papers)],
     };
   });
 }

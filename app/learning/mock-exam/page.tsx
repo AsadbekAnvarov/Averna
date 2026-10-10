@@ -1,5 +1,7 @@
 export const dynamic = "force-dynamic";
 
+import { GroupJoin } from "@/components/group-mock/session-ui";
+import { groupMockEnabled } from "@/lib/group-mock/rules";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
@@ -92,7 +94,9 @@ export default async function MockExamHubPage() {
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto max-w-6xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
         <Hero />
-        <div className="mt-6">
+        <nav aria-label="Mock modes" className="mt-5 flex flex-wrap gap-3"><a href="#independent-mock" className={PRIMARY_BTN}>Independent mock</a><a href="#group-session" className={PRIMARY_BTN}>Teacher-led group mock</a></nav>
+        <div className="mt-5"><GroupJoin enabled={groupMockEnabled()}/></div>
+        <div id="independent-mock" className="mt-6">
           {active ? <ActiveMock item={active} /> : <StartMock availability={availability} isStudent={!!student} />}
         </div>
         <PastMocks items={finished} />
@@ -222,7 +226,7 @@ function ActiveMock({ item }: { item: MockHistoryItem }) {
   const SECTIONS = ALL_SECTIONS.filter(s => item.sections.includes(s.skill));
   const idx = Math.max(0, Math.min(SECTIONS.length - 1, item.current));
   const section = SECTIONS[idx];
-  const href = `/learning/mock-exam/${encodeURIComponent(item.attemptId)}`;
+  const href = item.groupSessionId ? `/learning/mock-exam/group/${encodeURIComponent(item.groupSessionId)}` : `/learning/mock-exam/${encodeURIComponent(item.attemptId)}`;
 
   return (
     <section aria-labelledby="mock-active-title" className="av-panel av-panel-hero rounded-3xl p-5 sm:p-6">
@@ -233,10 +237,10 @@ function ActiveMock({ item }: { item: MockHistoryItem }) {
             In progress
           </p>
           <h2 id="mock-active-title" className="mt-2 text-lg font-semibold text-white sm:text-xl">
-            You have a mock exam in progress
+            {item.groupSessionId ? "You joined a teacher-led mock session" : "You have a mock exam in progress"}
           </h2>
           <p className="mt-1 text-sm text-gray-400">
-            Started {formatDateTime(item.startedAt)} · you&apos;re on section {idx + 1} of {SECTIONS.length}, {section.title}.
+            {item.groupSessionId ? <>Joined {formatDateTime(item.startedAt)} · your teacher controls the start and collection. Open the session to wait or resume.</> : <>Started {formatDateTime(item.startedAt)} · you&apos;re on section {idx + 1} of {SECTIONS.length}, {section.title}.</>}
           </p>
           <ol role="list" aria-label="Sections" className="mt-4 flex flex-wrap gap-2">
             {SECTIONS.map((s, i) => {
@@ -270,10 +274,10 @@ function ActiveMock({ item }: { item: MockHistoryItem }) {
         <div className="flex shrink-0 flex-col items-stretch gap-2 sm:flex-row sm:items-center lg:flex-col lg:items-end">
           {/* A full page load, not a client navigation: the exam always opens from the server's latest state. */}
           <a href={href} className={PRIMARY_BTN}>
-            Resume — section {idx + 1} of {SECTIONS.length}
+            {item.groupSessionId ? "Open teacher session" : <>Resume — section {idx + 1} of {SECTIONS.length}</>}
             <ArrowRight className="h-4 w-4" aria-hidden />
           </a>
-          <MockLeaveButton attemptId={item.attemptId} label="Leave this mock" />
+          {!item.groupSessionId && <MockLeaveButton attemptId={item.attemptId} label="Leave this mock" />}
         </div>
       </div>
     </section>
@@ -318,7 +322,7 @@ function HistoryRow({ item }: { item: MockHistoryItem }) {
   const bands = SECTIONS.map((s) => item.bands[s.skill]);
   const overall = item.overall;
   const date = item.finishedAt ?? item.startedAt;
-  const href = `/learning/mock-exam/result/${encodeURIComponent(item.attemptId)}`;
+  const href = item.groupSessionId && !item.groupPublished ? `/learning/mock-exam/group/${encodeURIComponent(item.groupSessionId)}` : `/learning/mock-exam/result/${encodeURIComponent(item.attemptId)}`;
 
   return (
     <li className="av-panel glow-hover relative rounded-2xl p-4 focus-within:border-averna-neon/40 sm:p-5">
@@ -330,7 +334,7 @@ function HistoryRow({ item }: { item: MockHistoryItem }) {
           </div>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-white">{formatDate(date)}</p>
-            <p className="text-xs text-gray-500">{item.sections.length === 3 ? "Computer block · 3 sections" : "Legacy mock · 4 sections"}</p>
+            <p className="text-xs text-gray-500">{item.groupSessionId ? (item.groupPublished ? "Teacher-led mock · 4 reviewed sections" : "Teacher-led mock · review pending") : item.sections.length === 3 ? "Computer block · 3 sections" : "Legacy mock · 4 sections"}</p>
           </div>
         </div>
         <dl className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-4">

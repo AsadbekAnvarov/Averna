@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import { createRoot } from "react-dom/client";
 import MockResultPage from "@/app/learning/mock-exam/result/[attemptId]/page";
 import MockHubPage from "@/app/learning/mock-exam/page";
@@ -23,6 +24,6 @@ if(state==="local"||state==="conflict")localStorage.setItem(`averna-mock-draft:s
 let view:MockView={attemptId:"synthetic-mock",startedAt:new Date().toISOString(),mode:"cd-v1",sections,stage:kind==="intro"?{kind:"intro",section:"LISTENING",index:0,soundCheckUrl:location.origin+"/tone.wav"}:{kind:"running",index,section:sections[index].skill,deadline,draft:serverDraft,content:index===2?{skill:"WRITING",task1:WRITING_SEED.task1[0],task2:WRITING_SEED.task2[0]}:index===1?{skill:"READING",test:reading}:{skill:"LISTENING",test:listening}}};
 function App(){const [v,setView]=useState(view); refresh=()=>{(window as any).__refreshCount++;if((window as any).__begun){view={...view,stage:{kind:"running",index:0,section:"LISTENING",deadline:Date.now()+144000,draft:serverDraft,content:{skill:"LISTENING",test:listening}}};(window as any).__begun=false;}if ((window as any).__next === 1 || (window as any).__next === 2) { const next=(window as any).__next; (window as any).__next=null; revision=0; view={...view,sections:sections.map((s,i)=>({...s,status:i<next?"done":i===next?"current":"upcoming"})),stage:{kind:"running",index:next,section:next===1?"READING":"WRITING",deadline:Date.now()+3600000,draft:null,content:next===1?{skill:"READING",test:reading}:{skill:"WRITING",task1:WRITING_SEED.task1[0],task2:WRITING_SEED.task2[0]}}};} setView({...view});};return <MockOrchestrator view={v} serverNow={Date.now()}/>;}
 const root=createRoot(document.getElementById("root")!);
-if(kind==="result") void MockResultPage({params:Promise.resolve({attemptId:"synthetic-mock"})}).then(node=>root.render(node));
-else if(kind==="hub") void MockHubPage().then(node=>root.render(node));
-else root.render(<App/>);
+if(kind==="result") void MockResultPage({params:Promise.resolve({attemptId:"synthetic-mock"})}).then(node=>root.render(<ThemeProvider>{node}</ThemeProvider>));
+else if(kind==="hub") void MockHubPage().then(node=>root.render(<ThemeProvider>{node}</ThemeProvider>));
+else root.render(<ThemeProvider><App/></ThemeProvider>);

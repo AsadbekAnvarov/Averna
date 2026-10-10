@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { HIGHLIGHT_COLORS, type HighlightColor } from "./exam-preferences";
 import { Eraser, Highlighter, Search } from "lucide-react";
 import type { ExamParagraph } from "@/lib/ielts/types";
 import { cn } from "@/lib/utils";
@@ -59,6 +60,7 @@ export const highlightStorageKey = (attemptId: string) => `averna-exam-hl:${atte
 export function clearPassageHighlights(attemptId: string) {
   try {
     window.localStorage.removeItem(highlightStorageKey(attemptId));
+    window.localStorage.removeItem(`averna-exam-hl-colors:${attemptId}`);
   } catch {
     /* storage unavailable */
   }
@@ -271,9 +273,10 @@ interface ParagraphProps {
   label?: string;
   withLabels: boolean;
   spans: HighlightSpan[];
+  colors: Record<string, HighlightColor>;
 }
 
-function ParagraphImpl({ index, text, label, withLabels, spans }: ParagraphProps) {
+function ParagraphImpl({ index, text, label, withLabels, spans, colors }: ParagraphProps) {
   const pieces = useMemo(() => buildPieces(text, spans), [text, spans]);
   return (
     <div className="flex gap-[0.9em]">
@@ -295,7 +298,8 @@ function ParagraphImpl({ index, text, label, withLabels, spans }: ParagraphProps
               data-p={index}
               data-s={pc.s}
               data-e={pc.e}
-              className="cursor-pointer rounded-[0.2em] bg-amber-300/25 text-exam-mark box-decoration-clone transition-colors hover:bg-amber-300/35 motion-reduce:transition-none"
+              className="cursor-pointer rounded-[0.2em] box-decoration-clone outline-offset-2 hover:outline hover:outline-1 motion-reduce:transition-none"
+              style={{backgroundColor:HIGHLIGHT_COLORS.find(c=>c.id===colors[`${index}:${pc.s}:${pc.e}`])?.fill??HIGHLIGHT_COLORS[0].fill,color:"inherit"}}
             >
               {text.slice(pc.s, pc.e)}
             </mark>
@@ -316,6 +320,10 @@ const Paragraph = memo(ParagraphImpl);
 
 function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: PassagePaneProps) {
   const storageKey = highlightStorageKey(attemptId);
+  const [color, setColor] = useState<HighlightColor>("yellow");
+  const [colors, setColors] = useState<Record<string, HighlightColor>>({});
+  const colorsKey=`averna-exam-hl-colors:${attemptId}`;
+  useEffect(()=>{try {const x=JSON.parse(localStorage.getItem(colorsKey)||"{}");if(x&&typeof x==="object"&&!Array.isArray(x)){const clean:Record<string,HighlightColor>={};for(const [k,v] of Object.entries(x))if(HIGHLIGHT_COLORS.some(c=>c.id===v))clean[k]=v as HighlightColor;setColors(clean);}const c=localStorage.getItem("averna-highlight-color");if(HIGHLIGHT_COLORS.some(x=>x.id===c))setColor(c as HighlightColor);}catch{}},[colorsKey]);
   const [store, setStore] = useState<HighlightStore>({});
   const storeRef = useRef<HighlightStore>({});
   const passageRef = useRef(passage);
@@ -563,6 +571,9 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
       const nextStore: HighlightStore = { ...storeRef.current };
       if (Object.keys(nextPart).length) nextStore[src.id] = nextPart;
       else delete nextStore[src.id];
+      const palette={...colors};
+      for(const g of t.segments){const list=nextPart[g.p]??[];for(const [s,e] of list){if(action==="add"&&s<g.e&&e>g.s)palette[`${src.id}:${g.p}:${s}:${e}`]=color;else{const old=(cur[g.p]??[]).find(([a,b])=>a<=s&&b>=e);if(old)palette[`${src.id}:${g.p}:${s}:${e}`]=colors[`${src.id}:${g.p}:${old[0]}:${old[1]}`]??"yellow";}}}
+      setColors(palette);try{localStorage.setItem(colorsKey,JSON.stringify(palette));}catch{}
       commit(nextStore);
       pressing.current = false;
       setTool(null);
@@ -573,7 +584,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
       }
       say(action === "add" ? "Highlight added" : "Highlight removed");
     },
-    [commit, say]
+    [commit, say, colors, colorsKey, color]
   );
 
   // ---- dictionary: "Look up" in the toolbar (a double-click stays a plain selection) ----
@@ -673,6 +684,8 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
     }
     const next: HighlightStore = { ...storeRef.current };
     delete next[passage.id];
+    const remaining=Object.fromEntries(Object.entries(colors).filter(([key])=>!key.startsWith(`${passage.id}:`)));
+    setColors(remaining);try{localStorage.setItem(colorsKey,JSON.stringify(remaining));}catch{}
     commit(next);
     setConfirmClear(false);
     setTool(null);
@@ -719,6 +732,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
           {intro && <p className="mt-[0.3em] break-words text-[0.9em] leading-relaxed text-gray-400">{intro}</p>}
           <h2 className="mt-[0.8em] break-words text-[1.4em] font-bold leading-snug text-white">{passage.title}</h2>
           {passage.subtitle && <p className="mt-[0.35em] break-words italic leading-relaxed text-gray-400">{passage.subtitle}</p>}
+          <fieldset className="mt-4 flex flex-wrap items-center gap-1.5"><legend className="mb-1 text-sm text-gray-400">Highlight color</legend>{HIGHLIGHT_COLORS.map(c=><button key={c.id} type="button" aria-label={`${c.label} highlight`} aria-pressed={color===c.id} title={c.label} onClick={()=>{setColor(c.id);try{localStorage.setItem("averna-highlight-color",c.id);}catch{}}} className={cn("flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border",color===c.id?"border-averna-neon text-white":"border-white/15 text-gray-400")}><span aria-hidden className="h-5 w-5 rounded-full border border-white/20" style={{backgroundColor:c.fill}} />{color===c.id&&<span className="ml-1 text-xs">✓</span>}</button>)}</fieldset>
           {highlightCount === 0 && (
             <p className="mt-[0.9em] flex items-center gap-[0.45em] text-[0.8em] text-gray-500">
               <Highlighter className="h-[1.1em] w-[1.1em] shrink-0" aria-hidden />
@@ -744,6 +758,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
               label={para.label}
               withLabels={withLabels}
               spans={partSpans[i] ?? EMPTY_SPANS}
+              colors={Object.fromEntries(Object.entries(colors).filter(([key])=>key.startsWith(`${passage.id}:`)).map(([key,value])=>[key.slice(passage.id.length+1),value]))}
             />
           ))}
         </div>
