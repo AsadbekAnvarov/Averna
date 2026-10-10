@@ -1,4 +1,5 @@
 "use client";
+import { MockSaveStatus } from "./mock-save-status";
 
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import Link from "next/link";
@@ -501,6 +502,7 @@ export function ExamShell(props: ExamShellProps) {
         )}
       </div>
 
+      <MockSaveStatus />
       {footerExtra && <div className="shrink-0 border-t border-white/10 bg-exam-bar">{footerExtra}</div>}
 
       {/* Navigator */}

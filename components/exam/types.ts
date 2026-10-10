@@ -30,6 +30,7 @@ export interface ReadingExamRunnerProps {
   /** Absolute deadline (ms epoch) from the server — a refresh can't reset the clock (mock). */
   deadline?: number;
   initialAnswers?: ExamAnswers;
+  preferInitial?: boolean;
   /** Mock mode: receive the answers. Practice mode (omitted): POST /api/learning/reading/submit, then open the result page. */
   onSubmit?: (answers: ExamAnswers, meta: SubmitMeta) => Promise<void> | void;
   /** Mirror answers while working (the mock saves them server-side). */
@@ -49,6 +50,7 @@ export interface ListeningExamRunnerProps {
   mode: RunnerMode;
   attemptId: string;
   initialAnswers?: ExamAnswers;
+  preferInitial?: boolean;
   onSubmit?: (answers: ExamAnswers, meta: SubmitMeta) => Promise<void> | void;
   onAutosave?: (answers: ExamAnswers) => void;
   exitHref?: string;
@@ -72,6 +74,7 @@ export interface WritingExamRunnerProps {
   minutes?: number;
   deadline?: number;
   initial?: WritingEssays;
+  preferInitial?: boolean;
   onSubmit: (essays: WritingEssays, meta: SubmitMeta) => Promise<void> | void;
   onAutosave?: (essays: WritingEssays) => void;
   exitHref?: string;

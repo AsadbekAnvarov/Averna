@@ -1,7 +1,7 @@
 /**
  * The real IELTS mock exam — server logic.
  *
- * One sitting = Listening → Reading → Writing → Speaking, in that order, with
+ * New sitting = Listening → Reading → Writing (Speaking separately); legacy sittings retain four sections, with
  * papers picked at RANDOM from the full-format library (40-question Listening
  * and Reading papers, one Task 1 + one Task 2, one full Speaking set),
  * preferring papers the student has never taken.
@@ -37,9 +37,10 @@ import {
   listReadingExams,
   listSpeakingSets,
   listWritingTasks,
-  type SpeakingSetSummary,
 } from "./catalog";
 import { estimateListeningMinutes } from "./format";
+import { CD_MOCK_MODE, isCdMock, mockSections, mockGrace, paperSchema, validMockDraft, nextClock } from "./mock-policy";
+import { mockListeningLibrary, mockReadingLibrary, recordingMinutes, isFullObjective } from "./mock-library";
 import { toClientReading } from "./sanitize";
 import { listeningClientContent } from "./audio/client";
 import { examPrompt, submitObjectiveExam, submitSpeakingTest, submitWritingExam } from "./submit";
@@ -54,6 +55,7 @@ export type MockPapers = {
   task1: string;
   task2: string;
   speaking: string;
+  mode?: typeof CD_MOCK_MODE;
 };
 
 export type MockSectionResult = {
@@ -79,7 +81,6 @@ export type MockSectionResult = {
 export type MockResults = Partial<Record<MockSection, MockSectionResult>>;
 
 /** Accept a submission this long after the deadline as on time (network, auto-submit). */
-const GRACE_MS = 2 * 60 * 1000;
 /** An active sitting untouched for this long is abandoned when a new one starts. */
 const STALE_MS = 24 * 60 * 60 * 1000;
 const MAX_DRAFT_CHARS = 80_000;
@@ -89,10 +90,8 @@ const asRec = (x: unknown): Record<string, unknown> | null =>
   x && typeof x === "object" && !Array.isArray(x) ? (x as Record<string, unknown>) : null;
 
 function papersOf(raw: unknown): MockPapers | null {
-  const p = asRec(raw);
-  if (!p) return null;
-  const keys = ["listening", "reading", "task1", "task2", "speaking"] as const;
-  return keys.every((k) => typeof p[k] === "string" && p[k]) ? (p as unknown as MockPapers) : null;
+  const parsed = paperSchema.safeParse(raw);
+  return parsed.success ? parsed.data as MockPapers : null;
 }
 
 export function resultsOf(raw: unknown): MockResults {
@@ -120,14 +119,15 @@ export async function getMockAvailability(): Promise<MockAvailability> {
     listWritingTasks("task2"),
     listSpeakingSets(),
   ]);
+  const [readyAudio, readyReading] = await Promise.all([mockListeningLibrary(listening), mockReadingLibrary(reading)]);
   const a = {
-    listening: listening.filter((t) => t.full).length,
-    reading: reading.filter((t) => t.full).length,
+    listening: readyAudio.size,
+    reading: readyReading.size,
     task1: t1.length,
     task2: t2.length,
     speaking: speaking.length,
   };
-  return { ...a, ready: a.listening > 0 && a.reading > 0 && a.task1 > 0 && a.task2 > 0 && a.speaking > 0 };
+  return { ...a, ready: a.listening > 0 && a.reading > 0 && a.task1 > 0 && a.task2 > 0 };
 }
 
 /** Every paper id / content key this student has already met. */
@@ -165,23 +165,22 @@ function pickOne<T>(items: T[], isSeen: (t: T) => boolean): T | null {
 }
 
 async function pickPapers(studentId: string): Promise<MockPapers | null> {
-  const [seen, listening, reading, t1, t2, speaking] = await Promise.all([
+  const [seen, listening, reading, t1, t2] = await Promise.all([
     seenKeys(studentId),
     listListeningExams(),
     listReadingExams(),
     listWritingTasks("task1"),
     listWritingTasks("task2"),
-    listSpeakingSets(),
   ]);
   const writingSeen = (task: "task1" | "task2") => (p: WritingPrompt) =>
     seen.has(p.id) || seen.has(`${task}:${hashString(String(p.prompt))}`);
-  const l = pickOne<ExamTestSummary>(listening.filter((t: ExamTestSummary) => t.full), (t) => seen.has(t.id));
-  const r = pickOne<ExamTestSummary>(reading.filter((t: ExamTestSummary) => t.full), (t) => seen.has(t.id));
+  const [readyAudio, readyReading] = await Promise.all([mockListeningLibrary(listening), mockReadingLibrary(reading)]);
+  const l = pickOne<ExamTestSummary>(listening.filter(t => readyAudio.has(t.id)), (t) => seen.has(t.id));
+  const r = pickOne<ExamTestSummary>(reading.filter((t: ExamTestSummary) => readyReading.has(t.id)), (t) => seen.has(t.id));
   const w1 = pickOne<WritingPrompt>(t1, writingSeen("task1"));
   const w2 = pickOne<WritingPrompt>(t2, writingSeen("task2"));
-  const s = pickOne<SpeakingSetSummary>(speaking, (x) => seen.has(x.id) || seen.has(`speaking-test:${x.id}`));
-  if (!l || !r || !w1 || !w2 || !s) return null;
-  return { listening: l.id, reading: r.id, task1: w1.id, task2: w2.id, speaking: s.id };
+  if (!l || !r || !w1 || !w2) return null;
+  return { listening: l.id, reading: r.id, task1: w1.id, task2: w2.id, speaking: "", mode: CD_MOCK_MODE };
 }
 
 // ---------------------------------------------------------------------------
@@ -202,7 +201,7 @@ export async function startMock(studentId: string): Promise<StartResult> {
   }
   const papers = await pickPapers(studentId);
   if (!papers) {
-    return { ok: false, error: "The mock exam needs at least one full Listening and Reading paper, a Writing Task 1 and Task 2, and a Speaking set. Ask your teacher to publish more tests." };
+    return { ok: false, error: "The computer mock needs a full 40-question Listening paper with all four existing recordings ready, a full Reading paper and existing Writing Task 1 and Task 2 prompts. Ask your teacher to check the library; no voice is generated automatically." };
   }
   try {
     const row = await db.mockAttempt.create({
@@ -238,7 +237,7 @@ export async function paperLockedByMock(studentId: string, examId: string): Prom
       return !!p && ((p.reading === examId && !done.READING) || (p.listening === examId && !done.LISTENING));
     });
   } catch {
-    return false;
+    return true; // fail closed: database failure must not unlock answer-bearing practice
   }
 }
 
@@ -276,6 +275,13 @@ async function loadRow(studentId: string, attemptId: string): Promise<AttemptRow
 async function sectionMinutes(section: MockSection, papers: MockPapers): Promise<number> {
   switch (section) {
     case "LISTENING": {
+      if (isCdMock(papers)) {
+        const test = await getListeningExam(papers.listening);
+        const content = test ? await listeningClientContent(test, { recordingsOnly: true }) : null;
+        const minutes = content ? recordingMinutes(content) : null;
+        if (minutes == null) throw new Error("The selected Listening recordings are not ready.");
+        return minutes;
+      }
       // Browser voices speak at slightly different speeds and may need a retry,
       // so the server window is generous; the runner itself ends the section
       // after the recording and the 2-minute check.
@@ -284,7 +290,8 @@ async function sectionMinutes(section: MockSection, papers: MockPapers): Promise
     }
     case "READING": {
       const t = await getReadingExam(papers.reading);
-      return t?.timeLimit ?? 60;
+      if (isCdMock(papers) && (!t || !isFullObjective(t, 3))) throw new Error("The selected Reading paper is not a full exam.");
+      return isCdMock(papers) ? 60 : t?.timeLimit ?? 60;
     }
     case "WRITING":
       return 60;
@@ -305,7 +312,8 @@ export async function beginSection(
   if (row.sectionStartedAt) return { ok: true };
   const papers = papersOf(row.papers);
   if (!papers) return { ok: false, error: "This mock exam is damaged. Please start a new one." };
-  const minutes = await sectionMinutes(MOCK_SECTIONS[section], papers);
+  if (!Number.isInteger(section) || !mockSections(papers)[section]) return { ok: false, error: "Invalid exam section." };
+  const minutes = await sectionMinutes(mockSections(papers)[section], papers);
   const now = Date.now();
   await db.mockAttempt.updateMany({
     where: { id: row.id, current: section, sectionStartedAt: null, status: "active" },
@@ -314,23 +322,28 @@ export async function beginSection(
   return { ok: true };
 }
 
-export async function saveMockDraft(studentId: string, attemptId: string, section: number, draft: unknown): Promise<boolean> {
+export async function saveMockDraft(studentId: string, attemptId: string, section: number, draft: unknown, revision?: number): Promise<{ ok: boolean; revision?: number; conflict?: boolean }> {
   const row = await loadRow(studentId, attemptId);
-  if (!row || row.status !== "active" || row.current !== section || !row.sectionStartedAt) return false;
-  if (row.sectionDeadline && Date.now() > row.sectionDeadline.getTime() + GRACE_MS) return false;
-  let size = 0;
-  try {
-    size = JSON.stringify(draft ?? null).length;
-  } catch {
-    return false;
-  }
-  if (size > MAX_DRAFT_CHARS) return false;
+  if (!row || row.status !== "active" || row.current !== section || !row.sectionStartedAt || !validMockDraft(section, draft)) return { ok: false };
+  const now = Date.now();
+  if (row.sectionDeadline && now > row.sectionDeadline.getTime() + mockGrace(row.papers)) return { ok: false };
+  const size = JSON.stringify(draft).length;
+  if (size > MAX_DRAFT_CHARS) return { ok: false };
+  const oldMeta = asRec(asRec(row.draft)?.__mock);
+  const version = typeof oldMeta?.revision === "number" ? oldMeta.revision : 0;
+  const { __mock: _meta, ...oldPayload } = asRec(row.draft) ?? {};
+  if (isCdMock(row.papers) && revision === version - 1 && JSON.stringify(oldPayload) === JSON.stringify(draft)) return { ok: true, revision: version };
+  if (isCdMock(row.papers) && revision !== version) return { ok: false, conflict: true, revision: version };
+  const nextRevision = version + 1;
+  const stored = { ...asRec(draft), __mock: { revision: nextRevision, savedAt: now } };
   const r = await db.mockAttempt.updateMany({
-    where: { id: row.id, current: section, status: "active" },
-    // A nullable Json column takes Prisma.DbNull, never a plain JS null.
-    data: { draft: draft == null ? Prisma.DbNull : json(draft) },
+    where: { id: row.id, studentId, current: section, status: "active", updatedAt: row.updatedAt, ...(isCdMock(row.papers) ? { draft: { equals: row.draft == null ? Prisma.AnyNull : json(row.draft) } } : {}), ...(row.sectionDeadline ? { sectionDeadline: { gte: new Date(now - mockGrace(row.papers)) } } : {}) },
+    data: { draft: json(stored) },
   });
-  return r.count > 0;
+  if (r.count === 1) return { ok: true, revision: nextRevision };
+  const fresh = await loadRow(studentId, attemptId);
+  const currentRevision = asRec(asRec(fresh?.draft)?.__mock)?.revision;
+  return { ok: false, conflict: true, ...(typeof currentRevision === "number" ? { revision: currentRevision } : {}) };
 }
 
 function isBlankSection(skill: MockSection, payload: unknown): boolean {
@@ -402,12 +415,13 @@ export async function submitMockSection(o: {
   attemptId: string;
   section: number;
   payload: unknown;
+  revision?: number;
   /** Force grading from the autosave (the deadline passed). */
   fromDraft?: boolean;
 }): Promise<SectionSubmitResult> {
   const row = await loadRow(o.studentId, o.attemptId);
   if (!row) return { ok: false, error: "This mock exam couldn't be found.", status: 404 };
-  const skill = MOCK_SECTIONS[o.section];
+  const skill = mockSections(row.papers)[o.section];
   if (!skill) return { ok: false, error: "Unknown section.", status: 400 };
   const results = resultsOf(row.results);
   if (results[skill] || row.current > o.section || row.status === "finished") {
@@ -421,7 +435,14 @@ export async function submitMockSection(o: {
 
   const now = Date.now();
   const deadline = row.sectionDeadline?.getTime() ?? now;
-  const late = now > deadline + GRACE_MS;
+  const late = now > deadline + mockGrace(papers);
+  if (o.fromDraft && now < deadline) return { ok: false, status: 409, error: "The section clock has not ended yet." };
+  if (isCdMock(papers) && !o.fromDraft && !late) {
+    const meta = asRec(asRec(row.draft)?.__mock);
+    const version = typeof meta?.revision === "number" ? meta.revision : 0;
+    if (o.revision !== version) return { ok: false, status: 409, error: "The account draft changed. Reload and compare both copies before submitting." };
+    if (!validMockDraft(o.section, o.payload)) return { ok: false, status: 400, error: "Invalid section answers." };
+  }
   const auto = o.fromDraft || late;
   // After the deadline only the autosaved answers count — papers are collected.
   // Speaking has no autosave (answers are spoken live, not edited), so a late
@@ -511,7 +532,7 @@ export async function submitMockSection(o: {
 
   result = await withTeacherReviews(skill, result);
   const next = o.section + 1;
-  const done = next >= MOCK_SECTIONS.length;
+  const done = next >= mockSections(papers).length;
   // Re-read: grading can take ~30 s (AI examiner) and a teacher may have reviewed
   // an earlier section meanwhile — never write back a stale copy of the results.
   // The write is guarded by the row's updatedAt too: a review (lib/review/save
@@ -525,15 +546,18 @@ export async function submitMockSection(o: {
     // A review of this section's own tests saved since the last look.
     if (attempt > 0) result = await withTeacherReviews(skill, result);
     const merged: MockResults = { ...resultsOf(fresh.results), [skill]: result };
-    const overall = done ? overallBand(MOCK_SECTIONS.map((s) => merged[s]?.band ?? 0)) : null;
+    const overall = done && !isCdMock(papers) ? overallBand(MOCK_SECTIONS.map((s) => merged[s]?.band ?? 0)) : null;
+    const continueClock = isCdMock(papers) && !done;
+    const nextStart = nextClock(deadline, now);
+    const nextMinutes = continueClock ? await sectionMinutes(mockSections(papers)[next], papers) : 0;
     const r: { count: number } = await db.mockAttempt.updateMany({
       where: { id: row.id, current: o.section, status: "active", updatedAt: fresh.updatedAt },
       data: {
         current: next,
         results: json(merged),
         draft: Prisma.DbNull,
-        sectionStartedAt: null,
-        sectionDeadline: null,
+        sectionStartedAt: continueClock ? new Date(nextStart) : null,
+        sectionDeadline: continueClock ? new Date(nextStart + nextMinutes * 60_000) : null,
         ...(done ? { status: "finished", finishedAt: new Date(now), overall } : {}),
       },
     });
@@ -565,7 +589,7 @@ export type MockContent =
   | { skill: "SPEAKING"; set: SpeakingExamSet };
 
 export type MockStage =
-  | { kind: "intro"; section: MockSection; index: number }
+  | { kind: "intro"; section: MockSection; index: number; soundCheckUrl?: string }
   | { kind: "running"; section: MockSection; index: number; deadline: number; content: MockContent; draft: unknown }
   | { kind: "finished" }
   | { kind: "abandoned" };
@@ -575,6 +599,7 @@ export interface MockView {
   sections: MockSectionView[];
   stage: MockStage;
   startedAt: string;
+  mode?: typeof CD_MOCK_MODE;
 }
 
 const SECTION_TITLE: Record<MockSection, string> = {
@@ -589,12 +614,12 @@ async function sectionViews(papers: MockPapers, current: number, results: MockRe
   const l = listening.find((t) => t.id === papers.listening);
   const r = reading.find((t) => t.id === papers.reading);
   const detail: Record<MockSection, { detail: string; minutes: number }> = {
-    LISTENING: { detail: `4 parts · ${l?.questions ?? 40} questions · the recording plays once`, minutes: l?.timeLimit ?? 35 },
+    LISTENING: { detail: `4 parts · ${l?.questions ?? 40} questions · the recording plays once`, minutes: isCdMock(papers) ? Math.ceil(await sectionMinutes("LISTENING", papers).catch(() => l?.timeLimit ?? 35)) : l?.timeLimit ?? 35 },
     READING: { detail: `3 passages · ${r?.questions ?? 40} questions`, minutes: r?.timeLimit ?? 60 },
     WRITING: { detail: "Task 1 (150+ words) and Task 2 (250+ words)", minutes: 60 },
     SPEAKING: { detail: "Parts 1–3 with the examiner", minutes: 14 },
   };
-  return MOCK_SECTIONS.map((skill, index) => ({
+  return mockSections(papers).map((skill, index) => ({
     skill,
     index,
     title: SECTION_TITLE[skill],
@@ -608,7 +633,9 @@ async function sectionContent(section: MockSection, papers: MockPapers): Promise
   switch (section) {
     case "LISTENING": {
       const t = await getListeningExam(papers.listening);
-      return t ? { skill: "LISTENING", test: await listeningClientContent(t) } : null;
+      if (!t) return null;
+      const content = isCdMock(papers) ? await listeningClientContent(t, { recordingsOnly: true }) : await listeningClientContent(t);
+      return content ? { skill: "LISTENING", test: content } : null;
     }
     case "READING": {
       const t = await getReadingExam(papers.reading);
@@ -636,7 +663,7 @@ export async function getMockView(studentId: string, userId: string, attemptId: 
 
   for (let guard = 0; guard < MOCK_SECTIONS.length && row && row.status === "active"; guard++) {
     const deadline = row.sectionDeadline?.getTime();
-    if (!row.sectionStartedAt || !deadline || Date.now() <= deadline + GRACE_MS) break;
+    if (!row.sectionStartedAt || !deadline || Date.now() <= deadline + mockGrace(row.papers)) break;
     // Never let grading break the page: on a failure the running section is
     // shown as usual — its runner submits at once (the clock is over) and
     // offers Try again if marking fails again.
@@ -659,14 +686,15 @@ export async function getMockView(studentId: string, userId: string, attemptId: 
   if (!papers) return null;
   const results = resultsOf(row.results);
   const sections = await sectionViews(papers, row.current, results);
-  const base = { attemptId: row.id, sections, startedAt: row.startedAt.toISOString() };
+  const base = { attemptId: row.id, sections, startedAt: row.startedAt.toISOString(), ...(isCdMock(papers) ? { mode: CD_MOCK_MODE } : {}) };
 
-  if (row.status === "finished" || row.current >= MOCK_SECTIONS.length) return { ...base, stage: { kind: "finished" } };
+  if (row.status === "finished" || row.current >= mockSections(papers).length) return { ...base, stage: { kind: "finished" } };
   if (row.status !== "active") return { ...base, stage: { kind: "abandoned" } };
 
-  const section = MOCK_SECTIONS[row.current];
+  const section = mockSections(papers)[row.current];
   if (!row.sectionStartedAt || !row.sectionDeadline) {
-    return { ...base, stage: { kind: "intro", section, index: row.current } };
+    const preflight = isCdMock(papers) && section === "LISTENING" ? await sectionContent(section, papers) : null;
+    return { ...base, stage: { kind: "intro", section, index: row.current, ...(preflight?.skill === "LISTENING" ? { soundCheckUrl: preflight.test.parts[0]?.audio?.url } : {}) } };
   }
   const content = await sectionContent(section, papers);
   if (!content) {
@@ -700,6 +728,8 @@ export interface MockResultView {
   finishedAt: string | null;
   results: MockResults;
   papers: { listening: string; reading: string; task1: string; task2: string; speaking: string };
+  sections: MockSection[];
+  mode?: typeof CD_MOCK_MODE;
 }
 
 export async function getMockResult(studentId: string, attemptId: string): Promise<MockResultView | null> {
@@ -717,7 +747,9 @@ export async function getMockResult(studentId: string, attemptId: string): Promi
   return {
     attemptId: row.id,
     status: row.status,
-    overall: row.overall,
+    overall: isCdMock(papers) ? null : row.overall,
+    sections: [...mockSections(papers)],
+    ...(isCdMock(papers) ? { mode: CD_MOCK_MODE } : {}),
     startedAt: row.startedAt.toISOString(),
     finishedAt: row.finishedAt?.toISOString() ?? null,
     results: resultsOf(row.results),
@@ -739,6 +771,7 @@ export interface MockHistoryItem {
   startedAt: string;
   finishedAt: string | null;
   bands: Partial<Record<MockSection, number>>;
+  sections: MockSection[];
 }
 
 export async function listMockAttempts(studentId: string, take = 12): Promise<MockHistoryItem[]> {
@@ -747,21 +780,22 @@ export async function listMockAttempts(studentId: string, take = 12): Promise<Mo
       where: { studentId, status: { in: ["active", "finished"] } },
       orderBy: { startedAt: "desc" },
       take,
-      select: { id: true, status: true, overall: true, current: true, startedAt: true, finishedAt: true, results: true },
+      select: { id: true, status: true, overall: true, current: true, startedAt: true, finishedAt: true, results: true, papers: true },
     })
     .catch(() => [] as never[]);
-  return (rows as { id: string; status: string; overall: number | null; current: number; startedAt: Date; finishedAt: Date | null; results: unknown }[]).map((r) => {
+  return (rows as { id: string; status: string; overall: number | null; current: number; startedAt: Date; finishedAt: Date | null; results: unknown; papers: unknown }[]).map((r) => {
     const res = resultsOf(r.results);
     const bands: Partial<Record<MockSection, number>> = {};
     for (const s of MOCK_SECTIONS) if (res[s]) bands[s] = res[s]!.band;
     return {
       attemptId: r.id,
       status: r.status,
-      overall: r.overall,
+      overall: isCdMock(r.papers) ? null : r.overall,
       current: r.current,
       startedAt: r.startedAt.toISOString(),
       finishedAt: r.finishedAt?.toISOString() ?? null,
       bands,
+      sections: [...mockSections(r.papers)],
     };
   });
 }

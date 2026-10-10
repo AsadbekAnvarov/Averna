@@ -19,7 +19,7 @@ import {
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getMockAvailability, listMockAttempts, type MockAvailability, type MockHistoryItem, type MockSection } from "@/lib/ielts/mock";
-import { overallBand } from "@/lib/ielts/bands";
+
 import { Aurora } from "@/components/motion/aurora";
 import { Reveal, RevealGroup } from "@/components/motion/reveal";
 import { SKILL_TONE, SkillIcon } from "@/components/progression/ui";
@@ -32,18 +32,19 @@ export const metadata = { title: "IELTS mock exam" };
 const PRIMARY_BTN =
   "glow-cta inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-averna-primary px-6 text-base font-semibold text-white transition-colors hover:bg-averna-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/70 motion-reduce:transition-none";
 
-const SECTIONS: { skill: MockSection; title: string; time: string; detail: string }[] = [
-  { skill: "LISTENING", title: "Listening", time: "~30 min + 2 min to check", detail: "4 parts · 40 questions — the recording plays ONCE" },
+const ALL_SECTIONS: { skill: MockSection; title: string; time: string; detail: string }[] = [
+  { skill: "LISTENING", title: "Listening", time: "Recording length + 2 min", detail: "4 parts · 40 questions — the recording plays ONCE" },
   { skill: "READING", title: "Reading", time: "60 min", detail: "3 passages · 40 questions" },
   { skill: "WRITING", title: "Writing", time: "60 min", detail: "Task 1 (150+ words) and Task 2 (250+ words)" },
   { skill: "SPEAKING", title: "Speaking", time: "11–14 min", detail: "Parts 1–3 with the examiner" },
 ];
 
+const SECTIONS = ALL_SECTIONS.filter(s => s.skill !== "SPEAKING");
 const RULES = [
   { icon: ShieldCheck, text: "The clock runs on our server — a refresh or a second tab can't pause or reset it." },
-  { icon: Save, text: "Your answers autosave as you work, so a dropped connection doesn't cost you anything." },
+  { icon: Save, text: "Account saves are confirmed on screen. Keep the page open if saving fails; only answers received before the cutoff can be marked." },
   { icon: Shuffle, text: "Papers are chosen at random from the library, preferring ones you haven't taken yet." },
-  { icon: Coffee, text: "You can rest between sections — the next clock starts only when you press Start." },
+  { icon: Coffee, text: "Listening → Reading → Writing run without breaks. Speaking is taken separately." },
 ];
 
 const NEEDS: { key: Exclude<keyof MockAvailability, "ready">; one: string; many: string }[] = [
@@ -51,14 +52,13 @@ const NEEDS: { key: Exclude<keyof MockAvailability, "ready">; one: string; many:
   { key: "reading", one: "full Reading paper", many: "full Reading papers" },
   { key: "task1", one: "Writing Task 1 prompt", many: "Writing Task 1 prompts" },
   { key: "task2", one: "Writing Task 2 prompt", many: "Writing Task 2 prompts" },
-  { key: "speaking", one: "Speaking set", many: "Speaking sets" },
 ];
 
 const TIPS = [
   { title: "Sit it like test day", text: "One sitting, phone away, ideally at the time of day your real exam starts." },
   {
     title: "Check your tech first",
-    text: "Headphones for Listening, a microphone for Speaking, and Chrome or Edge on a computer with a stable connection.",
+    text: "Headphones and Chrome or Edge on a computer with a stable connection. Set aside uninterrupted time; microphone checks belong to the separate Speaking test.",
   },
   { title: "Never leave a blank", text: "Wrong answers don't lose marks in Listening or Reading — a guess can only help." },
   { title: "Split your Writing hour", text: "About 20 minutes for Task 1 and 40 for Task 2 — Task 2 counts twice as much." },
@@ -125,16 +125,17 @@ function Hero() {
         <div className="min-w-0">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">IELTS mock exam</p>
           <h1 id="mock-hub-title" className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            A real, full IELTS mock
+            Computer-delivered mock exam
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-300 sm:text-base">
-            The complete test in the real order, with full 40-question papers and the official timings — about 2 h 50 min in
-            total. Your bands for all four skills, and an overall band, arrive at the end.
+            Listening → Reading → Writing in one uninterrupted sitting, using existing papers and recordings.
+            Full 40-question Listening and Reading papers, then both Writing tasks. Speaking is separate. This is an Averna simulation, not an official IELTS test.
           </p>
         </div>
       </div>
 
-      <ol role="list" aria-label="The four sections, in order" className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <p className="mt-4 text-sm text-gray-300"><Link href="/learning/speaking" className="underline underline-offset-4 text-averna-cyan">Take Speaking separately</Link> · A four-skill overall requires Speaking as well; this block does not calculate one.</p>
+      <ol role="list" aria-label="The three sections, in order" className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {SECTIONS.map((s, i) => (
           <li key={s.skill} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
             <div className="flex items-center gap-3">
@@ -181,7 +182,7 @@ function StartMock({ availability, isStudent }: { availability: MockAvailability
           </h2>
           <p className="mt-1 max-w-xl text-sm leading-relaxed text-gray-400">
             {ready
-              ? "Set aside about 3 hours with headphones and a microphone. Your papers are drawn the moment you start."
+              ? "Set aside uninterrupted time with headphones. Reading and Writing each have 60 minutes; Listening follows the existing recordings."
               : `It needs at least one ${joinAnd(missing.map((m) => m.one))} in the library. Ask your teacher to publish more tests.`}
           </p>
           {availability && (
@@ -218,6 +219,7 @@ function StartMock({ availability, isStudent }: { availability: MockAvailability
 }
 
 function ActiveMock({ item }: { item: MockHistoryItem }) {
+  const SECTIONS = ALL_SECTIONS.filter(s => item.sections.includes(s.skill));
   const idx = Math.max(0, Math.min(SECTIONS.length - 1, item.current));
   const section = SECTIONS[idx];
   const href = `/learning/mock-exam/${encodeURIComponent(item.attemptId)}`;
@@ -286,7 +288,7 @@ function PastMocks({ items }: { items: MockHistoryItem[] }) {
           Your past mocks
           {items.length > 0 && <span className="text-sm font-normal tabular-nums text-gray-500">{items.length}</span>}
         </h2>
-        <p className="mt-0.5 text-sm text-gray-400">The overall band and the four section bands of the mocks you&apos;ve finished.</p>
+        <p className="mt-0.5 text-sm text-gray-400">Section bands from completed mocks. Older four-section sittings retain their overall band.</p>
       </Reveal>
       {items.length === 0 ? (
         <Reveal>
@@ -296,7 +298,7 @@ function PastMocks({ items }: { items: MockHistoryItem[] }) {
             </span>
             <p className="mt-4 text-base font-semibold text-white">No finished mocks yet</p>
             <p className="mx-auto mt-1 max-w-md text-sm text-gray-400">
-              When you finish a mock, its overall band and section bands appear here, with a link to the full result.
+              When you finish a mock, its section bands appear here, with a link to the result.
             </p>
           </div>
         </Reveal>
@@ -312,8 +314,9 @@ function PastMocks({ items }: { items: MockHistoryItem[] }) {
 }
 
 function HistoryRow({ item }: { item: MockHistoryItem }) {
+  const SECTIONS = ALL_SECTIONS.filter(s => item.sections.includes(s.skill));
   const bands = SECTIONS.map((s) => item.bands[s.skill]);
-  const overall = item.overall ?? overallBand(bands.map((b) => b ?? 0));
+  const overall = item.overall;
   const date = item.finishedAt ?? item.startedAt;
   const href = `/learning/mock-exam/result/${encodeURIComponent(item.attemptId)}`;
 
@@ -322,12 +325,12 @@ function HistoryRow({ item }: { item: MockHistoryItem }) {
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
         <div className="flex items-center gap-4 md:w-56 md:shrink-0">
           <div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl border border-averna-neon/30 bg-averna-neon/[0.07]">
-            <span className="text-2xl font-bold tabular-nums leading-none text-white">{overall.toFixed(1)}</span>
+            <span className="text-2xl font-bold tabular-nums leading-none text-white">{overall == null ? "—" : overall.toFixed(1)}</span>
             <span className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-gray-400">Overall</span>
           </div>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-white">{formatDate(date)}</p>
-            <p className="text-xs text-gray-500">Full mock · 4 sections</p>
+            <p className="text-xs text-gray-500">{item.sections.length === 3 ? "Computer block · 3 sections" : "Legacy mock · 4 sections"}</p>
           </div>
         </div>
         <dl className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-4">

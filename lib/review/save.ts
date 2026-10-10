@@ -29,6 +29,7 @@ import { db } from "@/lib/db";
 import { canReviewStudent, teacherOf, type Viewer } from "@/lib/access";
 import { notifyUser } from "@/lib/notifications";
 import { MOCK_SECTIONS, resultsOf } from "@/lib/ielts/mock";
+import { isCdMock } from "@/lib/ielts/mock-policy";
 import {
   aiBandOf,
   applyReviewToMockResults,
@@ -158,9 +159,9 @@ async function updateMock(
   o: { mockAttemptId: string; studentId: string; testId: string; skill: ReviewSkill; input: ReviewInput }
 ): Promise<void> {
   for (let attempt = 0; attempt < 3; attempt++) {
-    const row: { id: string; status: string; results: unknown; updatedAt: Date } | null = await tx.mockAttempt.findFirst({
+    const row: { id: string; status: string; results: unknown; papers: unknown; updatedAt: Date } | null = await tx.mockAttempt.findFirst({
       where: { id: o.mockAttemptId, studentId: o.studentId },
-      select: { id: true, status: true, results: true, updatedAt: true },
+      select: { id: true, status: true, results: true, papers: true, updatedAt: true },
     });
     if (!row) return;
     const results = resultsOf(row.results);
@@ -191,7 +192,7 @@ async function updateMock(
       where: { id: row.id, updatedAt: row.updatedAt },
       data: {
         results: json(next),
-        ...(row.status === "finished" ? { overall: mockOverallBand(next, MOCK_SECTIONS) } : {}),
+        ...(row.status === "finished" ? { overall: isCdMock(row.papers) ? null : mockOverallBand(next, MOCK_SECTIONS) } : {}),
       },
     });
     if (r.count > 0) return;

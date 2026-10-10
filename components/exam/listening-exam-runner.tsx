@@ -86,6 +86,9 @@ export type ListeningRunnerProps = ListeningExamRunnerProps & {
    * otherwise "mock".
    */
   context?: ScriptContext;
+  /** CD sitting: existing recordings only, anchored to the server clock. */
+  recordingsOnly?: boolean;
+  deadline?: number;
 };
 
 interface ScopePart {
@@ -289,6 +292,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const examName = props.examName?.trim() || "Mock exam";
   const router = useRouter();
   const practice = mode === "practice";
+  const recordingsOnly = props.recordingsOnly === true;
   const single = partIndex != null;
   const scriptContext: ScriptContext = props.context ?? runContext(mode, test.id);
 
@@ -331,6 +335,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const { answers, setAnswer, flagged, toggleFlag, hydrated, clearSaved } = useExamAnswers({
     storageKey: `averna-exam:listening:${test.id}:${attemptId}`,
     initial: initialAnswers,
+    preferInitial: props.preferInitial,
     onChange: onAutosave,
   });
   const answered: Set<number> = useMemo(() => answeredNumbers(allGroups, answers), [allGroups, answers]);
@@ -417,6 +422,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   // Support check, voice loading, and stopping speech when leaving.
   useEffect(() => {
     if (mountedAtRef.current == null) mountedAtRef.current = Date.now();
+    if (recordingsOnly) { setSupported(true); return; }
     const ok = isTtsSupported();
     setSupported(ok);
     if (!ok) return;
@@ -445,7 +451,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       soundRef.current = null;
       cancelSpeech();
     };
-  }, []);
+  }, [recordingsOnly]);
 
   // Recordings: stop (keeping the place) when the page is hidden for good; release the element on unmount.
   useEffect(() => {
@@ -489,6 +495,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   // Back after a refresh: offer "Continue from Part N", or resume the checking time.
   useEffect(() => {
     if (!hydrated) return;
+    if (recordingsOnly) { syncRecordedClock(); return; }
     const saved = readAudioSave(audioKey);
     if (!saved) return;
     const pos = partIndex == null ? saved.part : saved.part === partIndex ? 0 : -1;
@@ -522,6 +529,24 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     setResumeFrom(pos);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hydrated]);
+
+  useEffect(() => {
+    if (!recordingsOnly || !hydrated || !props.deadline) return;
+    const tick = () => {
+      if (doneRef.current || submittingRef.current) return;
+      const total = scopeRef.current.reduce((n, e) => n + (e.part.audio?.durationMs ?? 0), 0);
+      let elapsed = Date.now() - (props.deadline! - checkMs - total);
+      let target = 0;
+      while (target < scopeRef.current.length && elapsed >= (scopeRef.current[target].part.audio?.durationMs ?? 0)) { elapsed -= scopeRef.current[target].part.audio?.durationMs ?? 0; target++; }
+      if (target < scopeRef.current.length && target !== playingPosRef.current) syncRecordedClock();
+      else if (target >= scopeRef.current.length && phase !== "check") startCheck();
+    };
+    const id = window.setInterval(tick, 1000);
+    document.addEventListener("visibilitychange", tick);
+    return () => { window.clearInterval(id); document.removeEventListener("visibilitychange", tick); };
+  // Player callbacks are deliberately read from refs; a tick must not restart playback.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recordingsOnly, hydrated, props.deadline, phase]);
 
   // Part switches: land on the requested question, otherwise at the top of the part.
   useEffect(() => {
@@ -617,6 +642,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
    * read by browser voices (`voiced`).
    */
   function loadScript(index: number): Promise<ScriptResult> {
+    if (recordingsOnly) return Promise.resolve({ ok: false, reason: "denied" });
     const have = voicedRef.current[index];
     if (have) return Promise.resolve({ ok: true, script: have });
     const pending = scriptLoadsRef.current.get(index);
@@ -637,6 +663,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   function startPart(pos: number, fromScript = false, fromMs?: number, resume?: VoiceResume) {
     const entry = scopeRef.current[pos];
     if (!entry || doneRef.current) return;
+    if (recordingsOnly) { syncRecordedClock(); return; }
     runTokenRef.current += 1;
     const index = entry.no - 1;
     const script = voicedRef.current[index];
@@ -821,6 +848,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
    * recover, or when a recording of this run has already failed for good.
    */
   function onFileError(pos: number, entry: ScopePart, player: AudioFilePlayer, code: FileErrorCode) {
+    if (recordingsOnly) { setRecovering(null); setAudioError("The existing recording could not play. Check your connection, then press Try again. No generated voice will replace it; the exam clock keeps running."); return; }
     const offline = typeof navigator !== "undefined" && navigator.onLine === false;
     if (code === "not-allowed" || offline) {
       setRecovering(null);
@@ -856,6 +884,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
    * go on to the next part — skipPart).
    */
   async function switchToVoices(pos: number, opts: { posMs?: number; resume?: VoiceResume }) {
+    if (recordingsOnly) { setRecovering(null); setAudioError("The existing recording is unavailable. Try again; no generated voice is used."); return; }
     const entry = scopeRef.current[pos];
     if (!entry || doneRef.current) return;
     const index = entry.no - 1;
@@ -916,8 +945,26 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     startVoicePart(pos, voicedEntry, opts.resume ? { resume: opts.resume } : audio && opts.posMs != null ? { file: { audio, posMs: opts.posMs } } : {});
   }
 
+  /** Resume by elapsed server time, not by the editable device playback snapshot. */
+  function syncRecordedClock() {
+    if (!props.deadline || doneRef.current || submittingRef.current) return;
+    const entries = scopeRef.current;
+    const total = entries.reduce((n, e) => n + (e.part.audio?.durationMs ?? 0), 0);
+    const started = props.deadline - checkMs - total;
+    startedAtRef.current = started;
+    let elapsed = Math.max(0, Date.now() - started);
+    for (let pos = 0; pos < entries.length; pos++) {
+      const audio = entries[pos].part.audio;
+      if (!audio) { setAudioError("This mock requires all four existing recordings. Leave and ask your teacher to check the library."); return; }
+      if (elapsed < audio.durationMs) { startFilePart(pos, entries[pos], audio, false, elapsed); return; }
+      elapsed -= audio.durationMs;
+    }
+    startCheck();
+  }
+
   /** Start (or continue) the run from a tap: unlock whatever later parts will need, then play. */
   function beginRun(pos: number, resume: boolean) {
+    if (recordingsOnly) { syncRecordedClock(); return; }
     const entry = scopeRef.current[pos];
     if (!entry || doneRef.current) return;
     // Browser voices may be needed later — for a part without a recording, or for a recording that can't
@@ -959,7 +1006,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     setRecovering(null);
     setStuck(null);
     if (doneRef.current) return;
-    const ends = Date.now() + checkMs;
+    const ends = recordingsOnly && props.deadline ? props.deadline : Date.now() + checkMs;
     setCheckEndsAt(ends);
     setPhase("check");
     setSnap((s: PlayerSnapshot) => ({ ...s, state: "ended", silenceEndsAt: null }));
@@ -1065,14 +1112,16 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     void submit(true);
   });
   // useDeadline's clock only ticks once a deadline exists — never show more than the checking time.
-  const shownMs = phase === "check" && remainingMs != null ? Math.min(remainingMs, checkMs) : null;
-  const timeUp = phase === "check" && remainingMs === 0;
+  const { remainingMs: serverRemaining } = useDeadline(recordingsOnly ? props.deadline : null);
+  const shownMs = recordingsOnly ? serverRemaining : phase === "check" && remainingMs != null ? Math.min(remainingMs, checkMs) : null;
+  const timeUp = serverRemaining === 0 || (phase === "check" && remainingMs === 0);
   const locked = submitting || finished || timeUp;
 
   const inProgress = !finished && (phase !== "intro" || answered.size > 0);
   useLeaveGuard(inProgress);
 
   function toggleSoundCheck() {
+    if (recordingsOnly) return;
     if (soundRef.current || fileSoundRef.current) {
       stopSoundCheck();
       return;
@@ -1115,7 +1164,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       player.play();
       return;
     }
-    if (!isTtsSupported()) return;
+    if (recordingsOnly || !isTtsSupported()) return;
     setSoundFailed(false);
     const player: ScriptPlayer = new ScriptPlayer(
       [{ speaker: NARRATOR, text: "This is a sound check. If you can hear this voice clearly, you're ready to start the test." }],
@@ -1193,6 +1242,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
    * tried to take over and their script didn't load, that again.
    */
   function continueFile() {
+    if (recordingsOnly) { syncRecordedClock(); return; }
     if (doneRef.current || submittingRef.current) return;
     const pos = playingPosRef.current;
     const entry = scopeRef.current[pos];
@@ -1383,7 +1433,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
         onStart={submitting ? undefined : barStart}
         startLabel={barStartLabel}
         startDisabled={barAudio ? false : supported == null}
-        message={barStatus === "error" ? audioError ?? (barAudio ? fileErrorText(fileSnap.error ?? "") : audioErrorText("")) : null}
+        message={barStatus === "error" ? recordingsOnly ? "Recording unavailable. The clock continues." : audioError ?? (barAudio ? fileErrorText(fileSnap.error ?? "") : audioErrorText("")) : null}
         timeMs={barAudio ? (phase === "intro" ? resumeAtMs ?? 0 : fileSnap.positionMs) : undefined}
         durationMs={barAudio ? barAudio.durationMs : undefined}
         bufferedMs={fileLive ? fileSnap.bufferedMs : undefined}

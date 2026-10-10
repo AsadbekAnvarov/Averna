@@ -1,3 +1,4 @@
+import { isCdMock } from "../mock-policy";
 /**
  * Who may read a recorded Listening part's script — GET /api/listening/script,
  * the runner's fail-open fallback (./script). Only the student whose run needs
@@ -248,6 +249,7 @@ export async function decideScript(q: ScriptQuery, studentId: string, deps: Scri
       for (const r of await deps.activeMocks(studentId)) {
         const start = timeOf(r.sectionStartedAt);
         if (start == null || !mockListeningOpen(r, q.testId, deps.mockSections)) continue;
+        if (isCdMock(r.papers)) return forbidden("This computer mock uses existing recordings only. Script fallback is not available.");
         // (Normally one running mock; with more, the longest-running clock.)
         if (!clock || start < clock.start) clock = { context: "mock", start, attemptId: idOf(r.id) };
       }

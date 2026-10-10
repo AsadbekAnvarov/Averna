@@ -1,0 +1,14 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
+const m=vi.hoisted(()=>({auth:vi.fn(),student:vi.fn(),limit:vi.fn(),save:vi.fn(),submit:vi.fn(),begin:vi.fn(),start:vi.fn(),abandon:vi.fn()}));
+vi.mock("@/lib/auth",()=>({auth:m.auth})); vi.mock("@/lib/db",()=>({db:{student:{findUnique:m.student}}})); vi.mock("@/lib/security/rate-limit",()=>({reserveLimits:m.limit})); vi.mock("@/lib/ielts/mock",()=>({saveMockDraft:m.save,submitMockSection:m.submit,beginSection:m.begin,startMock:m.start,abandonMock:m.abandon}));
+import { mockPost } from "@/lib/ielts/mock-api";
+const body={section:0,draft:{answers:{"1":"A"}},revision:0};
+const req=(data:unknown=body,origin="https://averna.test")=>new Request("https://averna.test/api/mock/a/save",{method:"POST",headers:{origin,"content-type":"application/json"},body:JSON.stringify(data)});
+beforeEach(()=>{vi.resetAllMocks();m.auth.mockResolvedValue({user:{id:"u",role:"STUDENT"}});m.student.mockResolvedValue({id:"s",blacklisted:false,user:{role:"STUDENT"}});m.limit.mockResolvedValue({ok:true});m.save.mockResolvedValue({ok:true,revision:1});});
+describe("mock mutation trust boundaries",()=>{
+ it("blocks cross-site calls before auth",async()=>{expect((await mockPost("save",req(body,"https://evil.test"),"a")).status).toBe(403);expect(m.auth).not.toHaveBeenCalled();});
+ it("uses live role, blacklist and authenticated owner",async()=>{m.student.mockResolvedValueOnce({id:"s",blacklisted:true,user:{role:"STUDENT"}});expect((await mockPost("save",req(),"a")).status).toBe(403);m.student.mockResolvedValueOnce({id:"s",blacklisted:false,user:{role:"TEACHER"}});expect((await mockPost("save",req(),"a")).status).toBe(403);expect(m.save).not.toHaveBeenCalled();const r=await mockPost("save",req(),"a");expect(m.save).toHaveBeenCalledWith("s","a",0,body.draft,0);expect(r.headers.get("cache-control")).toBe("private, no-store");});
+ it("rejects owner injection and oversized bodies",async()=>{expect((await mockPost("save",req({...body,studentId:"other"}),"a")).status).toBe(400);expect((await mockPost("save",req({junk:"x".repeat(256001)}),"a")).status).toBe(400);expect(m.save).not.toHaveBeenCalled();});
+ it("returns sign-in expiry and conflict visibly",async()=>{m.auth.mockResolvedValueOnce(null);expect((await mockPost("save",req(),"a")).status).toBe(401);m.save.mockResolvedValue({ok:false,conflict:true,revision:4});const r=await mockPost("save",req(),"a");expect(r.status).toBe(409);expect((await r.json()).revision).toBe(4);});
+ it("fails closed on limiter/storage errors without text leak",async()=>{m.limit.mockResolvedValueOnce({ok:false,unavailable:true});expect((await mockPost("save",req(),"a")).status).toBe(503);m.save.mockRejectedValue(new Error("PRIVATE essay SQL"));const r=await mockPost("save",req(),"a");expect(r.status).toBe(503);expect(await r.text()).not.toContain("PRIVATE");});
+});

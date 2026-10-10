@@ -1,28 +1,10 @@
 "use client";
 
 /**
- * The real IELTS mock exam in the browser: Listening → Reading → Writing →
- * Speaking, with a rules / break screen before every section. The server owns
- * the sitting (lib/ielts/mock.ts): it picked the papers, runs each section's
- * clock and grades a section the moment it is submitted. This component:
- *
- * - shows the progress rail and, before each section, its rules and a Start
- *   button (POST /api/mock/{id}/begin → refresh → the section's runner);
- * - renders the runner in mode="mock", keyed per section so every section
- *   starts from a clean state;
- * - mirrors answers to the server (POST …/save): changes are coalesced for
- *   ~4 s, a save never overlaps another (the latest draft waits its turn), and
- *   anything pending is flushed with `keepalive` when the tab is hidden or
- *   closed. Failures stay silent — the runners keep their own local copy;
- * - submits the section (POST …/section). Writing and Speaking are marked by
- *   the examiner, so a calm "Marking your answers…" overlay covers the wait. A
- *   failure rejects `onSubmit`, so the runner keeps every answer and offers
- *   Try again (retries are idempotent on the server);
- * - enforces the server clock where a runner has none: Listening answers are
- *   collected just before the server stops accepting them, and a Speaking test
- *   that runs past its window is closed with an explanation.
- *
- * Bands stay hidden until the result page, as in the real exam.
+ * Versioned computer sitting: Listening → Reading → Writing, no breaks.
+ * Legacy sittings retain their four-section flow. Server-owned clocks, serial
+ * acknowledged autosave with a device backup, explicit conflict comparison,
+ * and idempotent submission. Bands remain hidden until the result page.
  */
 
 import { useCallback, useEffect, useId, useRef, useState, useTransition } from "react";
@@ -69,18 +51,13 @@ import {
   postJson,
 } from "./mock-start-button";
 import type { SpeakingTestSubmission, WritingEssays } from "./types";
+import { MockDraftQueue } from "./mock-draft-queue";
+import { MockSaveContext } from "./mock-save-status";
+import { useDeadline, formatClock } from "./use-exam";
 
 type RunningStage = Extract<MockStage, { kind: "running" }>;
 type IntroStage = Extract<MockStage, { kind: "intro" }>;
 
-/** Answers are coalesced this long before a save goes out. */
-const AUTOSAVE_MS = 4000;
-/** Browsers cap keepalive request bodies at 64 KB. */
-const KEEPALIVE_MAX_BYTES = 60_000;
-/** Mirrors GRACE_MS in lib/ielts/mock.ts: answers still count this long after the deadline. */
-const SERVER_GRACE_MS = 2 * 60_000;
-/** Listening has no clock of its own: its answers are collected this long before the server stops taking them. */
-const COLLECT_MARGIN_MS = 20_000;
 const OBJECTIVE_TIMEOUT_MS = 45_000;
 /** Writing / Speaking are assessed by the AI examiner (the route may run for up to 60 s). */
 const MARKED_TIMEOUT_MS = 95_000;
@@ -190,20 +167,6 @@ function draftEssays(draft: unknown): WritingEssays | undefined {
 // One section's session: submission state + the autosave queue
 // ---------------------------------------------------------------------------
 
-interface SaveQueue {
-  pending: { draft: unknown } | null;
-  timer: number;
-  inFlight: boolean;
-  /** A save was due while another was in flight — send the latest draft when it returns. */
-  again: boolean;
-  /** Submitting: hold new saves. */
-  paused: boolean;
-  /** Section over (or Speaking, which has no autosave): drop everything. */
-  closed: boolean;
-  /** The runner is unmounting / the page is going away: send immediately. */
-  detached: boolean;
-}
-
 interface Session {
   key: string;
   attemptId: string;
@@ -220,7 +183,8 @@ interface Session {
   collected: boolean;
   /** When this page started watching the clock (Listening / Speaking). */
   watchFrom: number | null;
-  saves: SaveQueue;
+  saves: MockDraftQueue;
+  strict: boolean;
 }
 
 function sessionKeyOf(view: MockView): string {
@@ -232,9 +196,13 @@ function createSession(view: MockView, key: string): Session {
   const stage = view.stage;
   const running = stage.kind === "running";
   const section: MockSection = stage.kind === "intro" || stage.kind === "running" ? stage.section : "LISTENING";
-  const draft = running ? stage.draft ?? null : null;
+  const strict = view.mode === "cd-v1";
+  const saves = new MockDraftQueue(view.attemptId, stage.kind === "running" || stage.kind === "intro" ? stage.index : -1, strict, running ? stage.draft : null);
+  if (!running || section === "SPEAKING") saves.closed = true;
+  const draft = saves.latest;
   return {
     key,
+    strict,
     attemptId: view.attemptId,
     index: stage.kind === "intro" || stage.kind === "running" ? stage.index : -1,
     section,
@@ -246,15 +214,7 @@ function createSession(view: MockView, key: string): Session {
     done: false,
     collected: false,
     watchFrom: null,
-    saves: {
-      pending: null,
-      timer: 0,
-      inFlight: false,
-      again: false,
-      paused: false,
-      closed: !running || section === "SPEAKING",
-      detached: false,
-    },
+    saves,
   };
 }
 
@@ -271,95 +231,11 @@ function addSession(sessions: Map<string, Session>, view: MockView, key: string)
   return s;
 }
 
-function byteLength(text: string): number {
-  try {
-    return new TextEncoder().encode(text).length;
-  } catch {
-    return text.length * 3;
-  }
-}
-
-function clearSaveTimer(q: SaveQueue) {
-  if (q.timer) window.clearTimeout(q.timer);
-  q.timer = 0;
-}
-
-/** Send the pending draft. `urgent` (tab hidden / closing): right away, with keepalive. */
-function sendSave(s: Session, urgent: boolean): void {
-  const q = s.saves;
-  clearSaveTimer(q);
-  if (q.closed || !q.pending) return;
-  if (q.inFlight && !urgent) {
-    q.again = true;
-    return;
-  }
-  const { draft } = q.pending;
-  q.pending = null;
-  let body: string;
-  try {
-    body = JSON.stringify({ section: s.index, draft });
-  } catch {
-    return;
-  }
-  q.inFlight = true;
-  fetch(`/api/mock/${encodeURIComponent(s.attemptId)}/save`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body,
-    credentials: "same-origin",
-    keepalive: urgent && byteLength(body) <= KEEPALIVE_MAX_BYTES,
-  })
-    .catch(() => undefined) // silent: the runner keeps a local copy, and the next change saves again
-    .then(() => {
-      q.inFlight = false;
-      if (!q.again) return;
-      q.again = false;
-      if (q.pending && !q.paused && !q.closed) sendSave(s, false);
-    });
-}
-
-function scheduleSave(s: Session) {
-  const q = s.saves;
-  if (q.timer || q.paused || q.closed || !q.pending) return;
-  q.timer = window.setTimeout(() => {
-    q.timer = 0;
-    sendSave(s, false);
-  }, AUTOSAVE_MS);
-}
-
-/**
- * The runner reported new answers. Listening / Reading call this from inside a
- * state updater, so it must not touch React state — it only queues.
- */
-function queueSave(s: Session, draft: unknown) {
-  s.latest = draft;
-  const q = s.saves;
-  if (q.closed) return;
-  q.pending = { draft };
-  if (q.detached) sendSave(s, true);
-  else scheduleSave(s);
-}
-
-function pauseSaves(s: Session) {
-  s.saves.paused = true;
-  clearSaveTimer(s.saves);
-}
-
-function resumeSaves(s: Session) {
-  s.saves.paused = false;
-  scheduleSave(s);
-}
-
-function closeSaves(s: Session) {
-  const q = s.saves;
-  q.closed = true;
-  q.pending = null;
-  clearSaveTimer(q);
-}
-
-function flushSaves(s: Session) {
-  if (!s.saves.paused) sendSave(s, true);
-}
+function queueSave(s: Session, draft: unknown) { s.latest = draft; s.saves.queue(draft); }
+function pauseSaves(s: Session) { s.saves.pause(); }
+function resumeSaves(s: Session) { s.saves.resume(); }
+function closeSaves(s: Session) { s.saves.close(); }
+function flushSaves(s: Session) { if (!s.saves.paused) void s.saves.send(true); }
 
 class SectionSubmitError extends Error {
   status: number;
@@ -433,13 +309,16 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
     (s: Session, payload: unknown, collecting = false): Promise<void> => {
       if (s.done) return Promise.resolve();
       if (s.inFlight) return s.inFlight; // the runner's auto-submit racing a click, or our own collection
+      if (s.saves.conflict && !collecting) return Promise.reject(new Error("Another device changed this draft. Reload and compare before submitting."));
       const marked = s.section === "WRITING" || s.section === "SPEAKING";
       pauseSaves(s);
       if (marked && !collecting) show(s, { kind: "marking", section: s.section });
       const run = async () => {
+        await s.saves.settle();
+        if (s.saves.conflict && !collecting) { resumeSaves(s); show(s, null); throw new Error("Draft conflict: reload and compare the copies before submitting."); }
         const r = await postJson(
           `/api/mock/${encodeURIComponent(s.attemptId)}/section`,
-          { section: s.index, payload },
+          { section: s.index, payload, ...(s.strict ? { revision: s.saves.revision } : {}), ...(collecting && s.saves.conflict ? { fromDraft: true } : {}) },
           {
             timeoutMs: marked ? MARKED_TIMEOUT_MS : OBJECTIVE_TIMEOUT_MS,
             timeoutMessage: marked
@@ -452,12 +331,13 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
           finish(s, r.data.done === true);
           return;
         }
-        if (r.status === 409) {
+        if (r.status === 409 && !s.strict) {
           // Already graded, or this screen is out of date (e.g. another tab) — reload the exam.
           finish(s, false);
           return;
         }
         resumeSaves(s);
+        if (r.status === 409 && s.strict) { window.location.reload(); }
         if (r.status === 410) show(s, { kind: "fatal", message: r.error });
         else if (marked && !collecting) show(s, null);
         throw new SectionSubmitError(r.error, r.status);
@@ -485,7 +365,7 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
       show(s, { kind: "timeup", section: s.section, busy: true, error: null });
       // Speaking has no autosave: past its window the server marks the section from the (empty) draft.
       const payload =
-        s.section === "SPEAKING" ? { answers: [], inputMode: "speech" } : { answers: draftAnswers(s.latest) ?? {} };
+        s.section === "SPEAKING" ? { answers: [], inputMode: "speech" } : s.section === "WRITING" ? { essays: draftEssays(s.latest) ?? { task1: "", task2: "" } } : { answers: draftAnswers(s.latest) ?? {} };
       submit(s, payload, true).catch((err: unknown) => {
         if (err instanceof SectionSubmitError && err.status === 410) return; // the fatal overlay is up
         show(s, {
@@ -504,6 +384,9 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
     const s = session;
     if (!s.running) return;
     s.saves.detached = false;
+    s.saves.schedule();
+    const onOnline = () => void s.saves.send();
+    window.addEventListener("online", onOnline);
     const onVisibility = () => {
       if (document.visibilityState === "hidden") flushSaves(s);
     };
@@ -513,6 +396,7 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
     // A reload requests the new page before the old one fires pagehide — send pending answers first.
     window.addEventListener("beforeunload", onPageHide);
     return () => {
+      window.removeEventListener("online", onOnline);
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("pagehide", onPageHide);
       window.removeEventListener("beforeunload", onPageHide);
@@ -522,28 +406,25 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
     };
   }, [session]);
 
-  // The Listening runner has no deadline prop — watch the server clock for it. While the student is
-  // working, give them every second the server still accepts (the grace period, which also covers the
-  // runner's own late auto-submit); a section opened after its clock ran out is closed at once.
-  // Speaking is NOT cut off here: its answers are spoken live (no autosave), and the server still
-  // marks a late Speaking submission from what the student said (lib/ielts/mock.ts).
+  // CD answers freeze exactly at the deadline, not at the transport cutoff.
+  // Legacy Listening retains its old collection buffer; Speaking retains its own flow.
   const runningDeadline = stage.kind === "running" ? stage.deadline : null;
   useEffect(() => {
     const s = session;
     if (!s.running || runningDeadline == null) return;
-    if (s.section !== "LISTENING") return;
+    if (s.section !== "LISTENING" && !s.strict) return;
     if (s.watchFrom == null) s.watchFrom = Date.now();
     const deadline = runningDeadline + skew;
     const fireAt =
       s.watchFrom >= deadline
         ? 0
-        : deadline + (s.section === "LISTENING" ? SERVER_GRACE_MS - COLLECT_MARGIN_MS : SERVER_GRACE_MS);
+        : deadline + (s.strict ? 0 : 100_000);
     let fired = false;
     const check = () => {
       if (fired || s.done || s.inFlight || Date.now() < fireAt) return;
       fired = true;
       s.collected = true;
-      if (s.section === "LISTENING") collect(s);
+      if (s.strict || s.section === "LISTENING") collect(s);
       else show(s, { kind: "timeup", section: "SPEAKING", busy: false, error: null });
     };
     check();
@@ -592,6 +473,7 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
   }
   if (stage.kind !== "running") return <Redirecting view={view} />;
 
+  if (session.strict && session.saves.conflict && !session.collected) return <DraftConflict session={session} serverDraft={stage.draft} deadline={stage.deadline + skew} onResolve={() => { setOverlayState(null); refresh(); }} />;
   const next = view.sections[stage.index + 1]?.title ?? null;
 
   return (
@@ -600,7 +482,7 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
       {session.collected ? (
         <div aria-hidden className="exam-shell fixed inset-0 z-[70] bg-exam-bg" />
       ) : (
-        <SectionRunner
+        <MockSaveContext.Provider value={session.saves}><SectionRunner
           stage={stage}
           attemptId={view.attemptId}
           deadline={stage.deadline + skew}
@@ -610,7 +492,7 @@ export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNo
           onEssaysAutosave={onEssaysAutosave}
           onEssaysSubmit={onEssaysSubmit}
           onSpeakingSubmit={onSpeakingSubmit}
-        />
+        /></MockSaveContext.Provider>
       )}
       {overlay && (
         <OverlayView
@@ -667,8 +549,11 @@ function SectionRunner({
           test={c.test}
           mode="mock"
           context="mock"
+          recordingsOnly={session.strict}
+          deadline={session.strict ? deadline : undefined}
           attemptId={runnerId}
-          initialAnswers={session.initialAnswers}
+          initialAnswers={session.initialAnswers ?? (session.strict ? {} : undefined)}
+          preferInitial={session.strict}
           onAutosave={onAnswersAutosave}
           onSubmit={onAnswersSubmit}
         />
@@ -681,7 +566,8 @@ function SectionRunner({
           mode="mock"
           attemptId={runnerId}
           deadline={deadline}
-          initialAnswers={session.initialAnswers}
+          initialAnswers={session.initialAnswers ?? (session.strict ? {} : undefined)}
+          preferInitial={session.strict}
           onAutosave={onAnswersAutosave}
           onSubmit={onAnswersSubmit}
         />
@@ -695,7 +581,8 @@ function SectionRunner({
           mode="mock"
           attemptId={runnerId}
           deadline={deadline}
-          initial={session.initialEssays}
+          initial={session.initialEssays ?? (session.strict ? { task1: "", task2: "" } : undefined)}
+          preferInitial={session.strict}
           onAutosave={onEssaysAutosave}
           onSubmit={onEssaysSubmit}
         />
@@ -712,7 +599,7 @@ function SectionRunner({
 function ProgressRail({ sections }: { sections: MockSectionView[] }) {
   return (
     <nav aria-label="Mock exam progress">
-      <ol role="list" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <ol role="list" className={cn("grid grid-cols-1 gap-2", sections.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-4")}>
         {sections.map((s) => {
           const done = s.status === "done";
           const current = s.status === "current";
@@ -772,6 +659,10 @@ function IntroScreen({
   refreshing: boolean;
   onBegun: () => void;
 }) {
+  const [heard, setHeard] = useState(false);
+  const [soundPlayed, setSoundPlayed] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const cd = view.mode === "cd-v1";
   const [starting, setStarting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -790,7 +681,7 @@ function IntroScreen({
   }, [stage.index]);
 
   const begin = async () => {
-    if (busy) return;
+    if (busy || (cd && (!heard || !soundPlayed))) return;
     setStarting(true);
     setError(null);
     const r = await postJson(
@@ -864,20 +755,22 @@ function IntroScreen({
             {info.rules.map(({ icon: Icon, text }) => (
               <li key={text} className="flex gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-relaxed text-gray-200">
                 <Icon className="mt-0.5 h-4 w-4 shrink-0 text-averna-neon" aria-hidden />
-                <span>{text}</span>
+                <span>{cd ? text.replace("on the next screen", "below") : text}</span>
               </li>
             ))}
           </ul>
 
           <p className="mt-5 flex items-start gap-2.5 text-sm leading-relaxed text-gray-300">
             <Timer className="mt-0.5 h-4 w-4 shrink-0 text-averna-cyan" aria-hidden />
-            <span>{info.clock}</span>
+            <span>{cd ? "The clock starts with Listening. The next section begins automatically; closing the page does not pause any clock." : info.clock}</span>
           </p>
 
+          {cd && <section className="mt-6 rounded-xl border border-white/15 p-4" aria-label="Sound check"><h2 className="font-semibold text-white">Before the clock starts</h2><p className="mt-2 text-sm text-gray-300">Check your headphones using the introduction from the existing recording. Listening → Reading → Writing run without breaks. Reading and Writing each have 60 minutes. Speaking is separate.</p>{stage.soundCheckUrl ? <><audio ref={audioRef} src={stage.soundCheckUrl} preload="metadata" onTimeUpdate={() => { const a = audioRef.current; if (a && a.currentTime >= 8) { a.pause(); a.currentTime = 0; } }} onPlaying={() => setSoundPlayed(true)} onError={() => { setSoundPlayed(false); setError("The existing recording cannot play. Check your connection before starting."); }} /><button type="button" className={cn(MOCK_BTN.secondary, "mt-3")} onClick={() => { const a = audioRef.current; if (a) { a.currentTime = 0; void a.play().catch(() => setError("Sound check blocked. Try again and check your device volume.")); } }}>Play headphone check</button></> : <p role="alert" className="mt-3 text-red-200">The existing recording is unavailable. Ask your teacher to check the library.</p>}<label className="mt-3 flex min-h-[44px] items-center gap-3 text-sm text-white"><input type="checkbox" checked={heard} disabled={!soundPlayed} onChange={e => setHeard(e.target.checked)} />I heard the recording clearly and am ready for all three sections.</label></section>}
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <button
               type="button"
               onClick={() => void begin()}
+              disabled={busy || (cd && (!heard || !soundPlayed))}
               aria-disabled={busy || undefined}
               className={cn(MOCK_BTN.primary, "min-h-[52px] px-7 text-base")}
             >
@@ -885,7 +778,7 @@ function IntroScreen({
               {busy ? `Starting ${title}…` : info.start}
             </button>
             <p className="text-xs leading-relaxed text-gray-500">
-              No bands until the end — like the real exam, you&apos;ll see your results after Speaking.
+              {cd ? "Bands appear after Writing. Speaking is taken separately. No overall band is shown without Speaking." : "No bands until the end — you will see your results after Speaking."}
             </p>
           </div>
           <p aria-live="polite" className="sr-only">
@@ -1009,7 +902,7 @@ function OverlayView({
       busy = !stuck;
       icon = CheckCircle2;
       if (overlay.done) {
-        title = "All four sections are done";
+        title = "Your exam is complete";
         body = stuck ? "Your results are ready, but this page hasn't moved on yet." : "Well done. Opening your results…";
         if (stuck) {
           actions = (
@@ -1127,4 +1020,12 @@ function Redirecting({ view }: { view: MockView }) {
       </p>
     </div>
   );
+}
+
+function DraftConflict({ session, serverDraft, deadline, onResolve }: { session: Session; serverDraft: unknown; deadline: number; onResolve: () => void }) {
+  const { remainingMs } = useDeadline(deadline);
+  const [resolved, setResolved] = useState(false);
+  if (resolved) return null;
+  const describe = (draft: unknown) => JSON.stringify(asRec(draft)?.essays ?? asRec(draft)?.answers ?? {}, null, 2);
+  return <div className="exam-shell fixed inset-0 z-[80] overflow-auto bg-exam-bg p-6 text-white"><h1 className="text-2xl font-bold">Compare your saved copies</h1><p className="mt-3 text-sm text-gray-300" role="timer">Section time remaining: {formatClock(remainingMs ?? 0)}</p><p className="my-4 text-gray-300">The account changed while this device had unsaved work. The exam clock is still running. Choose deliberately; neither copy is silently merged.</p><div className="grid gap-4 md:grid-cols-2">{[["This device", session.saves.latest], ["Account", serverDraft]].map(([label, draft]) => <section key={String(label)}><h2 className="text-lg">{String(label)}</h2><pre className="mt-2 max-h-[45vh] overflow-auto whitespace-pre-wrap break-words rounded-lg border border-white/20 p-4 text-sm">{describe(draft)}</pre></section>)}</div><div className="mt-6 flex flex-wrap gap-3"><button className={MOCK_BTN.primary} onClick={() => { session.saves.keepDevice(); setResolved(true); onResolve(); }}>Keep this device copy</button><button className={MOCK_BTN.secondary} onClick={() => { session.saves.close(); for (const k of Object.keys(localStorage)) if (k.includes(`${session.attemptId}-${RUNNER_SUFFIX[session.section]}`)) localStorage.removeItem(k); window.location.reload(); }}>Load account copy</button></div></div>;
 }

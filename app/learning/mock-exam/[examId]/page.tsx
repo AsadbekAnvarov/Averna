@@ -19,8 +19,9 @@ export default async function MockExamRunPage(props: { params: Promise<{ examId:
   const session = await auth();
   if (!session?.user) return redirect("/auth/signin");
 
-  const student = await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true } });
-  if (!student) return redirect(HUB);
+  if (session.user.role !== "STUDENT") return redirect(HUB);
+  const student = await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true, blacklisted: true, user: { select: { role: true } } } });
+  if (!student || student.blacklisted || student.user.role !== "STUDENT") return redirect(HUB);
 
   const view = await getMockView(student.id, session.user.id, params.examId);
   if (!view) return redirect(HUB);

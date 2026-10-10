@@ -346,6 +346,7 @@ export function ReadingExamRunner(props: ReadingExamRunnerProps) {
   const { answers, setAnswer, flagged, toggleFlag, hydrated, clearSaved } = useExamAnswers({
     storageKey: `averna-exam:reading:${test.id}:${attemptId}`,
     initial: initialAnswers,
+    preferInitial: props.preferInitial,
     onChange: onAutosave,
   });
   const answersRef = useRef<ExamAnswers>(answers);
