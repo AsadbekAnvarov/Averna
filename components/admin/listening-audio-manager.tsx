@@ -451,7 +451,7 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
   };
 
   const renderAll = () => {
-    const keys = (dataRef.current?.tests ?? []).flatMap((t) => t.parts.filter(needsAudio).map((p) => keyOf(t.id, p.index)));
+    const keys = (dataRef.current?.tests ?? []).filter(t => t.source !== "imported").flatMap((t) => t.parts.filter(needsAudio).map((p) => keyOf(t.id, p.index)));
     if (!keys.length) return;
     const secs = (dataRef.current?.tests ?? []).flatMap((t) => t.parts.filter(needsAudio)).reduce((s, p) => s + (p.durationMs ? p.durationMs / 1000 : p.estimatedSeconds), 0);
     const bps = totals.bytesPerSecond ?? DEFAULT_BYTES_PER_SECOND;
@@ -917,7 +917,7 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
       ) : (
         <ul className="space-y-4">
           {visible.map((t) => {
-            const todo = t.parts.filter(needsAudio);
+            const todo = t.source === "imported" ? [] : t.parts.filter(needsAudio);
             const readyCount = t.parts.length - todo.length;
             const bytes = t.parts.reduce((n, p) => n + (p.url ? p.bytes : 0), 0);
             const ms = t.parts.reduce((n, p) => n + (p.status === "ready" ? p.durationMs : 0), 0);
@@ -937,7 +937,7 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
                               Kirish testi
                             </span>
                           ) : (
-                            <span>{t.source === "averna" ? "Averna" : "AI yaratgan"}</span>
+                            <span>{t.source === "imported" ? "CDI import" : t.source === "averna" ? "Averna" : "AI yaratgan"}</span>
                           )}
                           <span aria-hidden>·</span>
                           <span>{t.difficulty}</span>
@@ -1036,14 +1036,14 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
                                     if (p.status === "ready" && !window.confirm(`“${title}” — ${p.title} tayyor. Qayta yaratilsinmi?`)) return;
                                     queueParts([k]);
                                   }}
-                                  disabled={!canRender || !!job}
+                                  disabled={!canRender || !!job || t.source === "imported"}
                                   aria-label={`${title}, ${p.title}: ${again ? "qayta yaratish" : "audio yaratish"}`}
                                   className={cn("h-9", p.status === "stale" ? BTN_PRIMARY : BTN_OUTLINE)}
                                 >
                                   <RefreshCw className="mr-1.5 h-3.5 w-3.5" aria-hidden />
                                   {again ? "Qayta yaratish" : "Yaratish"}
                                 </Button>
-                                {canDelete && (p.url || p.status === "failed") && (
+                                {canDelete && p.index >= 0 && (p.url || p.status === "failed") && (
                                   <Button
                                     type="button"
                                     size="sm"

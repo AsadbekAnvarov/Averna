@@ -65,6 +65,10 @@ export function validateGroup(raw: unknown, ctx: GroupContext, report: Validatio
     return [];
   }
   const g = raw as unknown as ExamGroup;
+  if (g.images !== undefined && (!Array.isArray(g.images) || g.images.some(image =>
+    !isObj(image) || !isStr(image.url) || !image.url.startsWith("https://") || !isStr(image.alt)))) {
+    errors.push(`${at}: diagrams need HTTPS media URLs and alternative text`);
+  }
   if (!KINDS.includes(g.kind)) errors.push(`${at}: unknown kind "${String(g.kind)}"`);
   if (!isStr(g.instructions)) errors.push(`${at}: missing instructions`);
   if (!Array.isArray(g.questions) || g.questions.length === 0) {
@@ -279,7 +283,7 @@ export function validateReadingTest(raw: unknown, opts: ValidateOptions = {}): V
   return report;
 }
 
-export function validateListeningPart(raw: unknown, where: string, report: ValidationReport): number[] {
+export function validateListeningPart(raw: unknown, where: string, report: ValidationReport, suppliedRecording = false): number[] {
   if (!isObj(raw)) {
     report.errors.push(`${where}: part is not an object`);
     return [];
@@ -289,11 +293,11 @@ export function validateListeningPart(raw: unknown, where: string, report: Valid
   if (!isStr(p.title)) report.errors.push(`${where}: missing title`);
   if (!isStr(p.context)) report.errors.push(`${where}: missing context sentence`);
   const speakers = Array.isArray(p.speakers) ? p.speakers : [];
-  if (!speakers.length || !speakers.every((s) => isObj(s) && isStr(s.name) && (s.gender === "female" || s.gender === "male"))) {
+  if ((!suppliedRecording && !speakers.length) || !speakers.every((s) => isObj(s) && isStr(s.name) && (s.gender === "female" || s.gender === "male"))) {
     report.errors.push(`${where}: speakers must be a non-empty list of { name, gender }`);
   }
   const names = new Set(speakers.map((s) => s.name));
-  if (!Array.isArray(p.script) || p.script.length < 4) {
+  if (!Array.isArray(p.script) || (!suppliedRecording && p.script.length < 4)) {
     report.errors.push(`${where}: script is missing or too short`);
     return [];
   }
@@ -310,7 +314,9 @@ export function validateListeningPart(raw: unknown, where: string, report: Valid
     report.errors.push(`${where}: no question groups`);
     return [];
   }
-  const source = p.script.map((l) => String(l?.text ?? "")).join("\n");
+  // Supplied audio is the evidence; an archive's optional transcript may be
+  // incomplete or use written-out numbers. Never synthesise or invent it.
+  const source = suppliedRecording ? "" : p.script.map((l) => String(l?.text ?? "")).join("\n");
   return p.groups.flatMap((g, i) => validateGroup(g, { where: `${where} group ${i + 1}`, skill: "LISTENING", source }, report));
 }
 
@@ -320,6 +326,10 @@ export function validateListeningTest(raw: unknown, opts: ValidateOptions = {}):
   const t = raw as unknown as ExamListeningTest;
   if (t.format !== "exam-v2") report.errors.push('format must be "exam-v2"');
   if (t.skill !== "LISTENING") report.errors.push('skill must be "LISTENING"');
+  if (t.recordingMode === "whole") {
+    if (!Number.isFinite(t.recordingDurationMs) || t.recordingDurationMs! <= 0) report.errors.push("supplied audio needs a measured positive duration");
+    if (!/^[a-f0-9]{64}$/.test(t.recordingSha256 ?? "")) report.errors.push("supplied audio needs its file checksum");
+  }
   for (const k of ["id", "title", "description"] as const) if (!isStr(t[k])) report.errors.push(`missing ${k}`);
   if (!["Easy", "Medium", "Hard"].includes(t.difficulty)) report.errors.push("difficulty must be Easy, Medium or Hard");
   if (!Array.isArray(t.parts) || !t.parts.length) {
@@ -328,7 +338,7 @@ export function validateListeningTest(raw: unknown, opts: ValidateOptions = {}):
   }
   const perPart: number[] = [];
   const all = t.parts.flatMap((p, i) => {
-    const ns = validateListeningPart(p, `Part ${i + 1}`, report);
+    const ns = validateListeningPart(p, `Part ${i + 1}`, report, t.recordingMode === "whole");
     perPart.push(ns.length);
     return ns;
   });

@@ -76,7 +76,8 @@ export default async function ListeningTestPage(
   const test = await getListeningExam(safeDecode(params.testId));
   if (!test) return redirect(LIBRARY);
 
-  const part = resolvePartIndex(test, firstParam(searchParams.part));
+  // No guessed part boundaries for an uncut supplied recording.
+  const part = test.recordingMode === "whole" ? null : resolvePartIndex(test, firstParam(searchParams.part));
   // Exam homework: only kept when it really is this student's homework for this paper / part.
   const hwParam = firstParam(searchParams.hw);
   const student = hwParam

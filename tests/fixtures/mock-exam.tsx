@@ -9,6 +9,7 @@ import { toClientReading, toClientListening } from "@/lib/ielts/sanitize";
 import type { MockView } from "@/lib/ielts/mock";
 const q=new URLSearchParams(location.search); const kind=q.get("kind")||"reading"; const state=q.get("state")||"normal";
 const listening=toClientListening(LISTENING_SEED[0]); listening.parts=listening.parts.map(p=>({...p,script:[],audio:{url:location.origin+"/tone.wav",durationMs:6000,timeline:[]}}));
+if(state==="whole-recording"){listening.recordingMode="whole";listening.fullRecording={url:location.origin+"/tone.wav",durationMs:6000,timeline:[]};listening.parts=listening.parts.map(({audio:_audio,...p})=>p);}
 const reading=toClientReading(READING_SEED[0]);
 let revision=1; let fail=state==="offline"; let pending=0; let maxPending=0; const writes:unknown[]=[]; (window as any).__requests=[]; (window as any).__writes=writes;(window as any).__pending=()=>maxPending;(window as any).__fail=()=>{fail=false;window.dispatchEvent(new Event("online"));};
 let refresh:()=>void;
@@ -18,6 +19,7 @@ window.fetch=async(url,init)=>{ const s=String(url); (window as any).__requests.
 const sections=[{skill:"LISTENING",title:"Listening",detail:"4 parts · 40 questions · existing recordings",minutes:1},{skill:"READING",title:"Reading",detail:"3 passages · 40 questions",minutes:60},{skill:"WRITING",title:"Writing",detail:"Both tasks · 60 minutes",minutes:60}].map((s,index)=>({...s,index,status:(index<(kind==="writing"?2:kind==="reading"?1:0)?"done":index===(kind==="writing"?2:kind==="reading"?1:0)?"current":"upcoming")})) as MockView["sections"];
 const index=kind==="writing"?2:kind==="reading"?1:0;
 let deadline=state==="deadline"?Date.now()+4000:Date.now()+(kind==="listening"?144000:3600000);
+if(state==="whole-recording")deadline=Date.now()+126000;
 if (state==="resume") deadline-=13000;
 const serverDraft=index===2?{essays:{task1:"Account task one",task2:"Account task two"},__mock:{revision}}:{answers:{"1":"ii","8":"TRUE"},__mock:{revision}};
 if(state==="local"||state==="conflict")localStorage.setItem(`averna-mock-draft:synthetic-mock:${index}`,JSON.stringify({revision:state==="conflict"?0:revision,draft:index===2?{essays:{task1:"Newer local task one",task2:"Newer local task two"}}:{answers:{"1":"iv","8":"FALSE"}}}));

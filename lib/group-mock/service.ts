@@ -17,7 +17,7 @@ function shuffled<T>(items: T[]) { const a=[...items]; for(let i=a.length-1;i>0;
 export async function buildPool(): Promise<PaperPool> {
  const [ls,rs,t1,t2] = await Promise.all([listListeningExams(),listReadingExams(),listWritingTasks("task1"),listWritingTasks("task2")]);
  const [l,r] = await Promise.all([mockListeningLibrary(ls),mockReadingLibrary(rs)]);
- return { listening:shuffled([...l].map(([id,test])=>({id,milliseconds:test.parts.reduce((n,p)=>n+p.audio!.durationMs,120000)}))),reading:shuffled([...r]),task1:shuffled(t1.map(p=>p.id)),task2:shuffled(t2.map(p=>p.id)) };
+ return { listening:shuffled([...l].map(([id,test])=>({id,milliseconds:120000+(test.fullRecording?.durationMs??test.parts.reduce((n,p)=>n+(p.audio?.durationMs??0),0))}))),reading:shuffled([...r]),task1:shuffled(t1.map(p=>p.id)),task2:shuffled(t2.map(p=>p.id)) };
 }
 async function liveUser(tx: Tx,userId:string,role:string) {
  const rows=await tx.$queryRaw<{role:string}[]>`SELECT "role" FROM "users" WHERE "id"=${userId} FOR SHARE`;
@@ -35,7 +35,7 @@ async function owner(tx:Tx,userId:string,sessionId:string) {
  return session;
 }
 export async function createSession(userId:string,input:{groupId:string;title:string;distribution:string}) {
- const pool=await buildPool();if(!capacity(pool))throw new GroupMockError(422,"Prepare full existing Reading/Listening papers, four matching Listening recordings, and both Writing tasks first.");
+ const pool=await buildPool();if(!capacity(pool))throw new GroupMockError(422,"Prepare full existing Reading/Listening papers, matching complete Listening recordings, and both Writing tasks first.");
  return db.$transaction(async tx=>{await liveUser(tx,userId,"TEACHER");await groupLock(tx,input.groupId);const group=await tx.group.findUnique({where:{id:input.groupId},include:{teacher:{select:{userId:true}}}});if(!group||group.teacher.userId!==userId)throw new GroupMockError(403,"Choose a group you currently teach.");
  const running=await tx.mockSession.findFirst({where:{groupId:group.id,state:{in:["lobby","running"]}}});if(running)throw new GroupMockError(409,"This group already has an open session. Open it or cancel it first.");
  return tx.mockSession.create({data:{teacherId:group.teacherId,groupId:group.id,title:input.title,distribution:input.distribution,pool:json(pool),code:randomBytes(4).toString("hex").toUpperCase()}});});
@@ -95,7 +95,7 @@ export async function readSession(userId:string,sessionId:string,participantId?:
  const all=await db.mockParticipant.findMany({where:{sessionId,student:{groupId:s.groupId,blacklisted:false,user:{role:"STUDENT"}},...(!teacher?{studentId:student!.id}:{})},select:{id:true,attemptId:true,ordinal:true,ready:true,version:true,publishedAt:true,student:{select:{user:{select:{name:true}}}},attempt:{select:{current:true,status:true,sectionDeadline:true,updatedAt:true,results:true}}},orderBy:{ordinal:"asc"}});
  let detail=null;if(teacher&&participantId){detail=await db.mockParticipant.findFirst({where:{id:participantId,sessionId,student:{groupId:s.groupId,blacklisted:false,user:{role:"STUDENT"}}},select:{id:true,version:true,work:true,review:true,publishedAt:true}});if(!detail)throw new GroupMockError(404,"Participant unavailable.");}
  const mine=!teacher?all[0]:null;let audioUrl:string|undefined;
- if(mine&&s.state==="lobby"){const attempt=await db.mockAttempt.findUnique({where:{id:mine.attemptId},select:{papers:true}});const t=await getListeningExam(rec(attempt?.papers).listening);const c=t?await listeningClientContent(t,{recordingsOnly:true}):null;audioUrl=c?.parts[0]?.audio?.url;}
+ if(mine&&s.state==="lobby"){const attempt=await db.mockAttempt.findUnique({where:{id:mine.attemptId},select:{papers:true}});const t=await getListeningExam(rec(attempt?.papers).listening);const c=t?await listeningClientContent(t,{recordingsOnly:true}):null;audioUrl=c?.fullRecording?.url??c?.parts[0]?.audio?.url;}
  return {serverNow:Date.now(),id:s.id,title:s.title,groupName:s.group.name,state:s.state,version:s.version,code:teacher?s.code:undefined,distribution:s.distribution,capacity:s.distribution==="unique"?capacity(s.pool as PaperPool):30,uniqueCapacity:capacity(s.pool as PaperPool),startedAt:s.startedAt?.toISOString()??null,endedAt:s.endedAt?.toISOString()??null,teacher,participants:all.map(p=>({...p,name:p.student.user.name,student:undefined,attempt:teacher||p.publishedAt?p.attempt:{...p.attempt,results:undefined}})),detail,audioUrl};
 }
 export async function listSessions(userId:string) {

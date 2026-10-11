@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { WRITING_PROMPTS, type WritingPrompt } from "@/lib/writing-data";
-import { writingPromptSchema, writingTask1Schema } from "@/lib/test-schema";
+import { writingPromptSchema, writingTask1Schema, importedWritingPromptSchema } from "@/lib/test-schema";
 import { WRITING_SEED } from "@/lib/ielts/content/writing";
 
 /**
@@ -25,6 +25,11 @@ export async function getWritingPrompts(taskType: "task1" | "task2"): Promise<Wr
     });
     generated = rows
       .map((r) => {
+        const supplied = importedWritingPromptSchema.safeParse(r.data);
+        if (supplied.success) {
+          if (taskType === "task1" && !supplied.data.imageUrl) return null;
+          return { ...supplied.data, id: r.id } as WritingPrompt;
+        }
         const parsed =
           taskType === "task1"
             ? writingTask1Schema.safeParse(r.data)

@@ -141,7 +141,7 @@ export function ReadingExamCard({ exam }: { exam: ExamTestSummary }) {
 
 export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
   const href = `/learning/listening/${slug(exam.id)}`;
-  const multi = exam.partInfo.length > 1;
+  const multi = exam.partInfo.length > 1 && exam.recordingMode !== "whole";
   const perPart = Math.max(1, Math.round(exam.timeLimit / Math.max(1, exam.partInfo.length)));
   const parts = `${exam.parts} ${exam.parts === 1 ? "part" : "parts"}`;
 
@@ -156,7 +156,7 @@ export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
 
       {exam.partInfo.length > 0 && (
         <div className="mt-4">
-          <SectionLabel>{multi ? "Parts · practise one at a time" : "Recording"}</SectionLabel>
+          <SectionLabel>{exam.recordingMode === "whole" ? "One complete recording · Parts 1–4" : multi ? "Parts · practise one at a time" : "Recording"}</SectionLabel>
           <ol role="list" className="mt-2 space-y-2">
             {exam.partInfo.map((p, i) => {
               const custom = p.title && !/^part\s*\d+$/i.test(p.title.trim()) ? p.title : null;

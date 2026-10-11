@@ -52,7 +52,8 @@ function isV2(data: unknown): boolean {
 
 export function readingFromRow(row: { id: string; data: unknown }): ExamReadingTest | null {
   if (isV2(row.data)) {
-    const t = { ...(row.data as ExamReadingTest), id: row.id, source: "generated" as const };
+    const data = row.data as ExamReadingTest;
+    const t = { ...data, id: row.id, source: data.source === "imported" ? "imported" as const : "generated" as const };
     return validateReadingTest(t).errors.length ? null : t;
   }
   const parsed = readingTestSchema.safeParse(row.data);
@@ -61,7 +62,8 @@ export function readingFromRow(row: { id: string; data: unknown }): ExamReadingT
 
 export function listeningFromRow(row: { id: string; data: unknown }): ExamListeningTest | null {
   if (isV2(row.data)) {
-    const t = { ...(row.data as ExamListeningTest), id: row.id, source: "generated" as const };
+    const data = row.data as ExamListeningTest;
+    const t = { ...data, id: row.id, source: data.source === "imported" ? "imported" as const : "generated" as const };
     return validateListeningTest(t).errors.length ? null : t;
   }
   const parsed = listeningTestSchema.safeParse(row.data);
@@ -97,7 +99,7 @@ const LEGACY_LISTENING = LISTENING_TESTS.map((t) => convertLegacyListening(t, "l
 function order(a: ExamTestSummary, b: ExamTestSummary): number {
   // Full exam papers first, then Averna originals before generated, legacy last.
   if (a.full !== b.full) return a.full ? -1 : 1;
-  const rank = { averna: 0, generated: 1, legacy: 2 } as const;
+  const rank = { averna: 0, imported: 1, generated: 2, legacy: 3 } as const;
   return rank[a.source] - rank[b.source];
 }
 

@@ -33,12 +33,14 @@ export function DifficultyBadge({ difficulty, className }: { difficulty: ExamDif
 export const SOURCE_LABEL: Record<ExamSource, string> = {
   averna: "Averna original",
   generated: "AI-generated",
+  imported: "Imported CDI",
   legacy: "Short practice",
 };
 
 const SOURCE: Record<ExamSource, { icon: typeof BadgeCheck; tone: string }> = {
   averna: { icon: BadgeCheck, tone: "text-averna-light border-averna-primary/40 bg-averna-primary/10" },
   generated: { icon: Sparkles, tone: "text-averna-purple border-averna-purple/25 bg-averna-purple/[0.07]" },
+  imported: { icon: BadgeCheck, tone: "text-averna-light border-averna-primary/40 bg-averna-primary/10" },
   legacy: { icon: Timer, tone: "text-gray-300 border-white/10 bg-white/5" },
 };
 

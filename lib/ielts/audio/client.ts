@@ -26,7 +26,7 @@ import { db } from "@/lib/db";
 import { TTS_MODEL } from "@/lib/openai-audio";
 import { toClientListening } from "../sanitize";
 import type { ClientListeningTest, ExamListeningTest } from "../types";
-import { partAudioHash } from "./hash";
+import { partAudioHash, wholeRecordingHash } from "./hash";
 import { sanitizeTimeline } from "./timeline";
 
 export interface ReadyRow {
@@ -46,7 +46,11 @@ export function listeningAudioEnabled(): boolean {
 export function listeningClientContent(test: ExamListeningTest): Promise<ClientListeningTest>;
 export function listeningClientContent(test: ExamListeningTest, options: { recordingsOnly: true; rows?: ReadyRow[] }): Promise<ClientListeningTest | null>;
 export async function listeningClientContent(test: ExamListeningTest, options?: { recordingsOnly: true; rows?: ReadyRow[] }): Promise<ClientListeningTest | null> {
-  const base = toClientListening(test);
+  const rawBase = toClientListening(test);
+  // Imported whole-file papers never substitute speech synthesis when missing.
+  const base = test.recordingMode === "whole"
+    ? { ...rawBase, parts: rawBase.parts.map(p => ({ ...p, script: [] })) }
+    : rawBase;
   // Switched off: scripts for every part, no recordings.
   if (!listeningAudioEnabled()) return options?.recordingsOnly ? null : base;
   // The old short practice tests never get recordings (the admin skips them).
@@ -57,6 +61,17 @@ export async function listeningClientContent(test: ExamListeningTest, options?: 
       select: { partIndex: true, url: true, durationMs: true, scriptHash: true, timeline: true },
     })) as ReadyRow[];
     if (!Array.isArray(rows) || !rows.length) return options?.recordingsOnly ? null : base;
+    if (test.recordingMode === "whole") {
+      const row = rows.find(r => r.partIndex === -1);
+      if (!row || typeof row.url !== "string" || !row.url.startsWith("https://") ||
+          !Number.isFinite(row.durationMs) || row.durationMs <= 0 ||
+          row.scriptHash !== wholeRecordingHash(test)) return options?.recordingsOnly ? null : base;
+      return {
+        ...base,
+        parts: base.parts.map(p => ({ ...p, script: [] })),
+        fullRecording: { url: row.url, durationMs: row.durationMs, timeline: [] },
+      };
+    }
     const model = TTS_MODEL();
     const content = {
       ...base,
