@@ -74,7 +74,7 @@ export default async function ListeningTestPage(
   if (!session?.user) return redirect("/auth/signin");
 
   const test = await getListeningExam(safeDecode(params.testId));
-  if (!test) return redirect(LIBRARY);
+  if (!test || test.source === "averna") return redirect(LIBRARY);
 
   // No guessed part boundaries for an uncut supplied recording.
   const part = test.recordingMode === "whole" ? null : resolvePartIndex(test, firstParam(searchParams.part));

@@ -295,7 +295,8 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const recordingsOnly = props.recordingsOnly === true;
   const wholeRecording = test.fullRecording;
   const suppliedWhole = test.recordingMode === "whole";
-  const single = partIndex != null && !suppliedWhole;
+  const practicePart = mode === "practice" && !suppliedWhole && typeof partIndex === "number" && Number.isInteger(partIndex) && partIndex >= 0 && partIndex < test.parts.length ? partIndex : undefined;
+  const single = practicePart != null;
   const scriptContext: ScriptContext = props.context ?? runContext(mode, test.id);
 
   /** Scripts fetched for recorded parts that browser voices read instead (part index in the full test → script). */
@@ -304,10 +305,10 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const scope: ScopePart[] = useMemo(() => {
     const all = test.parts ?? [];
     const picked =
-      partIndex == null || suppliedWhole
+      practicePart == null
         ? all.map((part, i) => ({ part, i }))
-        : all[partIndex]
-          ? [{ part: all[partIndex], i: partIndex }]
+        : all[practicePart]
+          ? [{ part: all[practicePart], i: practicePart }]
           : [];
     // A recording that couldn't be played: from then on the part is read by browser voices from its fetched script.
     return picked.map(({ part, i }) => ({
@@ -317,7 +318,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       no: i + 1,
       numbers: partNumbers(part),
     }));
-  }, [test, partIndex, voiced, wholeRecording, suppliedWhole]);
+  }, [test, practicePart, voiced, wholeRecording]);
 
   const readingSeconds = mode === "mock" || !single ? EXAM_READING_SECONDS : PRACTICE_READING_SECONDS;
   const checkMinutes = single ? 1 : LISTENING_FULL.reviewMinutes;
@@ -503,7 +504,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     if (recordingsOnly) { syncRecordedClock(); return; }
     const saved = readAudioSave(audioKey);
     if (!saved) return;
-    const pos = partIndex == null ? saved.part : saved.part === partIndex ? 0 : -1;
+    const pos = practicePart == null ? saved.part : saved.part === practicePart ? 0 : -1;
     if (pos < 0 || pos >= scope.length) return;
     if (saved.startedAt) startedAtRef.current = saved.startedAt;
     setPlayingPos(pos);
@@ -1081,7 +1082,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
         body: JSON.stringify({
           format: "exam-v2",
           testId: test.id,
-          part: partIndex ?? null,
+          part: practicePart ?? null,
           answers: payload,
           timeSpent: meta.timeSpent,
           auto: meta.auto,
@@ -1467,7 +1468,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
 
   return (
     <ExamShell
-      title={test.title}
+      title="Averna CDI · Listening"
       subtitle={mode === "mock" ? `${examName} · Listening` : single ? `Listening practice · Part ${scope[0].no}` : "Listening practice"}
       remainingMs={shownMs}
       parts={navParts}

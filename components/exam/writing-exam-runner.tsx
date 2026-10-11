@@ -810,7 +810,9 @@ export function WritingExamRunner(props: WritingExamRunnerProps) {
 
   return (
     <ExamShell
-      title="IELTS Writing"
+      title="Averna CDI · Writing"
+      itemLabel="tasks"
+      reviewDescription={`Task 1: ${words1} words. Task 2: ${words2} words. Check both answers before submitting; recommended minimums are 150 and 250 words.`}
       subtitle={`${mode === "mock" ? "Mock exam" : "Practice test"} · Task 1 + Task 2 · ${minutes} minutes`}
       remainingMs={remainingMs}
       parts={PARTS}

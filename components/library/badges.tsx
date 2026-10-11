@@ -33,7 +33,7 @@ export function DifficultyBadge({ difficulty, className }: { difficulty: ExamDif
 export const SOURCE_LABEL: Record<ExamSource, string> = {
   averna: "Averna original",
   generated: "AI-generated",
-  imported: "Imported CDI",
+  imported: "Averna CDI",
   legacy: "Short practice",
 };
 

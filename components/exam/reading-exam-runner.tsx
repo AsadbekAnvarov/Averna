@@ -2,6 +2,7 @@
 
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { AlertCircle, ArrowRight, CheckCircle2, Loader2, RotateCcw } from "lucide-react";
 import { ExamShell, FONT_STEPS, type ExamPartNav } from "./exam-shell";
@@ -291,7 +292,7 @@ export function ReadingExamRunner(props: ReadingExamRunnerProps) {
   // ---- scope ---------------------------------------------------------------
   // An out-of-range partIndex falls back to the full test, consistently for the UI, the clock and the payload.
   const single =
-    typeof partIndex === "number" && Number.isInteger(partIndex) && partIndex >= 0 && partIndex < test.parts.length
+    mode === "practice" && typeof partIndex === "number" && Number.isInteger(partIndex) && partIndex >= 0 && partIndex < test.parts.length
       ? partIndex
       : undefined;
 
@@ -597,8 +598,16 @@ export function ReadingExamRunner(props: ReadingExamRunnerProps) {
 
   return (
     <ExamShell
-      title={test.title}
-      subtitle={subtitle}
+      title={`Averna CDI · Reading`}
+      subtitle={`${test.title} · ${subtitle}`}
+      scopeExtra={mode === "practice" && !homeworkId && test.parts.length > 1 ? (
+        <div className="flex items-center gap-2 overflow-x-auto px-4 py-2 text-sm" aria-label="Reading practice scope">
+          <span className="shrink-0 text-gray-400">Practise:</span>
+          {[{ label: "Full Reading", href: `/learning/reading/${encodeURIComponent(test.id)}`, selected: single == null }, ...test.parts.map((_, i) => ({ label: `Passage ${i + 1}`, href: `/learning/reading/${encodeURIComponent(test.id)}?part=${i}`, selected: single === i }))].map(item => (
+            <Link key={item.label} href={item.href} aria-current={item.selected ? "page" : undefined} className={cn("inline-flex min-h-[44px] shrink-0 items-center rounded-lg border px-3", item.selected ? "border-averna-neon/50 bg-averna-neon/10 text-averna-neon" : "border-white/15 text-gray-300")} onClick={event => { if (!window.confirm("Start a new practice attempt? Your current answers remain saved in this attempt.")) event.preventDefault(); }}>{item.label}</Link>
+          ))}
+        </div>
+      ) : undefined}
       remainingMs={remainingMs}
       parts={navParts}
       activePart={activeIdx}

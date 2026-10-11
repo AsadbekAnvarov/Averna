@@ -937,7 +937,7 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
                               Kirish testi
                             </span>
                           ) : (
-                            <span>{t.source === "imported" ? "CDI import" : t.source === "averna" ? "Averna" : "AI yaratgan"}</span>
+                            <span>{t.source === "imported" ? "Averna CDI" : t.source === "averna" ? "Averna" : "AI yaratgan"}</span>
                           )}
                           <span aria-hidden>·</span>
                           <span>{t.difficulty}</span>
