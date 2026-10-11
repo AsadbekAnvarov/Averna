@@ -31,6 +31,15 @@ describe("supplied whole Listening recordings", () => {
     vi.stubEnv("LISTENING_AUDIO", "on"); m.audio.mockResolvedValue([{ partIndex: -1, url: "http://cdn.test/cdi.mp3", durationMs: 1, scriptHash: wholeRecordingHash(test) }]);
     expect(await listeningClientContent(test, { recordingsOnly: true })).toBeNull();
   });
+  it("keeps the recording ready after JSONB reorders nested object keys", async () => {
+    const reorder = (value: unknown): unknown => Array.isArray(value) ? value.map(reorder)
+      : value && typeof value === "object" ? Object.fromEntries(Object.entries(value).reverse().map(([key, v]) => [key, reorder(v)])) : value;
+    const stored = reorder(test) as typeof test;
+    expect(wholeRecordingHash(stored)).toBe(wholeRecordingHash(test));
+    expect((await listeningClientContent(stored, { recordingsOnly: true }))?.fullRecording?.url).toBe("https://cdn.test/cdi.mp3");
+    const reorderedQuestions = structuredClone(stored); reorderedQuestions.parts[0].groups.reverse();
+    expect(wholeRecordingHash(reorderedQuestions)).not.toBe(wholeRecordingHash(test));
+  });
   it("uses a content fingerprint, not an AI provider model", () => {
     const edited = structuredClone(test); edited.parts[0].script[0].text += " edited";
     expect(wholeRecordingHash(edited)).not.toBe(wholeRecordingHash(test));

@@ -20,9 +20,20 @@ import { VOICE_CAST_VERSION, castVoices } from "./voices";
 /** Bump when render.ts changes how a file is put together (gaps, chunking, silence). */
 export const AUDIO_RENDER_VERSION = 1;
 
+/** PostgreSQL JSONB may reorder object keys; array order remains significant. */
+function canonicalJson(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(canonicalJson);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.keys(value).sort().map(key => [
+      key, canonicalJson((value as Record<string, unknown>)[key]),
+    ]));
+  }
+  return value;
+}
+
 /** Supplied full-test recordings do not depend on an AI voice/model selection. */
 export function wholeRecordingHash(test: Pick<ExamListeningTest, "parts" | "recordingSha256">): string {
-  return createHash("sha256").update(JSON.stringify({
+  return createHash("sha256").update(JSON.stringify(canonicalJson({
     version: "supplied-whole-v1",
     recording: test.recordingSha256 ?? null,
     parts: test.parts.map(p => ({
@@ -30,7 +41,7 @@ export function wholeRecordingHash(test: Pick<ExamListeningTest, "parts" | "reco
       script: p.script,
       groups: p.groups,
     })),
-  })).digest("hex");
+  }))).digest("hex");
 }
 
 export function partAudioHash(test: Pick<ExamListeningTest, "parts">, partIndex: number, voiceModel: string): string | null {
