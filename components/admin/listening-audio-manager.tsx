@@ -982,7 +982,7 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
                             type="button"
                             size="sm"
                             onClick={() =>
-                              void removeParts(t.id, null, `“${title}” testining barcha audiolari oʻchirilsinmi?\n\nOʻquvchilar bu testda yana brauzer ovozini eshitadi.`)
+                              void removeParts(t.id, null, `“${title}” testining barcha audiolari oʻchirilsinmi?\n\n${t.source === "imported" ? "Asl yozuv qayta yuklanmaguncha bu testda audio va Group Mock mavjud boʻlmaydi. Brauzer ovozi ishlatilmaydi." : "Oʻquvchilar bu testda yana brauzer ovozini eshitadi."}`)
                             }
                             disabled={!!deleting[t.id] || t.parts.some((p) => jobs[keyOf(t.id, p.index)] === "rendering")}
                             className={BTN_DANGER}
