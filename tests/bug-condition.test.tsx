@@ -344,7 +344,7 @@ describe("B1–B4 (PBT): ExamShell on phones and tablets", () => {
     );
   });
 
-  it("B3: previous/next are h-11 w-11 and question numbers h-10", () => {
+  it("B3: previous/next are h-11 w-11 and question numbers h-11", () => {
     fc.assert(
       fc.property(shellCase, (c) =>
         withShell(c, ({ nav }) => {
@@ -356,7 +356,7 @@ describe("B1–B4 (PBT): ExamShell on phones and tablets", () => {
           }
           const numbers = Array.from(nav.querySelectorAll('button[aria-label^="Question "]'));
           expect(numbers).toHaveLength(c.questions);
-          for (const btn of numbers) expect(classes(btn), "question number classes").toContain("h-10");
+          for (const btn of numbers) expect(classes(btn), "question number classes").toContain("h-11");
         })
       ),
       RUNS

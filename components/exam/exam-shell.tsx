@@ -42,6 +42,10 @@ export interface ExamShellProps {
   rightLabel?: string;
   children: React.ReactNode;
   headerExtra?: React.ReactNode;
+  /** Practice scope only. Never supplied in Mock. */
+  scopeExtra?: React.ReactNode;
+  reviewDescription?: React.ReactNode;
+  itemLabel?: "questions" | "tasks";
   /** Shown above the navigator (e.g. audio progress). */
   footerExtra?: React.ReactNode;
   onSubmit: () => void | Promise<void>;
@@ -182,6 +186,7 @@ function ReviewDialog({
   onJump,
   submitting,
   submitLabel,
+  description,
 }: {
   parts: ExamPartNav[];
   answered: Set<number>;
@@ -191,6 +196,7 @@ function ReviewDialog({
   onJump: (n: number) => void;
   submitting?: boolean;
   submitLabel: string;
+  description?: React.ReactNode;
 }) {
   const all = parts.flatMap((p) => p.numbers);
   const unanswered = all.filter((n) => !answered.has(n));
@@ -228,7 +234,7 @@ function ReviewDialog({
       type="button"
       onClick={() => onJump(n)}
       className={cn(
-        "h-9 min-w-[2.25rem] rounded-lg border px-2 text-sm font-bold transition hover:border-averna-neon/60",
+        "h-11 min-w-[2.75rem] rounded-lg border px-2 text-sm font-semibold transition hover:border-averna-neon/60",
         tone === "amber" ? "border-amber-300/50 bg-amber-400/10 text-amber-200" : "border-white/15 bg-white/[0.04] text-gray-200"
       )}
     >
@@ -248,7 +254,7 @@ function ReviewDialog({
         aria-modal="true"
         aria-labelledby="review-title"
         onClick={(e) => e.stopPropagation()}
-        className="av-modal-panel av-panel w-full max-w-lg rounded-2xl p-5 sm:p-6"
+        className="av-modal-panel av-panel max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-y-auto rounded-xl p-5 sm:p-6"
       >
         <div className="flex items-start justify-between gap-3">
           <h2 id="review-title" className="text-lg font-bold text-white">
@@ -259,13 +265,13 @@ function ReviewDialog({
           </button>
         </div>
         <p className="mt-1 text-sm text-gray-300">
-          You answered <span className="font-semibold text-white">{all.length - unanswered.length}</span> of {all.length} questions.
-          Blank answers score zero — it&apos;s always worth a guess.
+          {description ?? <>You answered <span className="font-semibold text-white">{all.length - unanswered.length}</span> of {all.length} questions.
+          Blank answers score zero — it&apos;s always worth a guess.</>}
         </p>
         {unanswered.length > 0 && (
           <div className="mt-4">
             <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">Unanswered</p>
-            <div className="flex max-h-32 flex-wrap gap-1.5 overflow-y-auto">{unanswered.map((n) => chip(n, "gray"))}</div>
+            <div className="flex max-h-[45vh] flex-wrap gap-1.5 overflow-y-auto">{unanswered.map((n) => chip(n, "gray"))}</div>
           </div>
         )}
         {flaggedList.length > 0 && (
@@ -319,6 +325,9 @@ export function ExamShell(props: ExamShellProps) {
     rightLabel = "Questions",
     children,
     headerExtra,
+    scopeExtra,
+    reviewDescription,
+    itemLabel = "questions",
     footerExtra,
     onSubmit,
     submitting,
@@ -427,12 +436,14 @@ export function ExamShell(props: ExamShellProps) {
           type="button"
           onClick={() => setReviewOpen(true)}
           disabled={submitting}
-          className="glow-cta inline-flex min-h-[40px] items-center gap-2 rounded-xl bg-averna-primary px-3 text-sm font-semibold text-white transition hover:bg-averna-light disabled:opacity-60 sm:px-4"
+          className="glow-cta inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-averna-primary px-3 text-sm font-semibold text-white transition hover:bg-averna-light disabled:opacity-60 sm:px-4"
         >
           {submitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
           {submitLabel}
         </button>
       </header>
+
+      {scopeExtra && <div className="shrink-0 border-b border-white/10 bg-exam-bar">{scopeExtra}</div>}
 
       {/* Mobile pane switcher */}
       {left && (
@@ -478,6 +489,16 @@ export function ExamShell(props: ExamShellProps) {
               role="separator"
               aria-orientation="vertical"
               aria-label="Resize panes"
+              tabIndex={0}
+              aria-valuemin={28}
+              aria-valuemax={72}
+              aria-valuenow={Math.round(split)}
+              onKeyDown={event => {
+                if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+                  event.preventDefault();
+                  setSplit(value => Math.max(28, Math.min(72, value + (event.key === "ArrowLeft" ? -2 : 2))));
+                }
+              }}
               onPointerDown={(e: React.PointerEvent<HTMLDivElement>) => {
                 // Dragging the divider must not start a text selection or let a
                 // touch gesture scroll the page (touch-none below stops panning).
@@ -509,6 +530,10 @@ export function ExamShell(props: ExamShellProps) {
 
       {/* Navigator */}
       <nav aria-label="Question navigator" className="shrink-0 border-t border-white/10 bg-exam-bar/95 px-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur sm:px-4">
+        <div className="mb-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-400" aria-label="Answer status legend">
+          <span>{answered.size}/{allNumbers.length} {itemLabel === "tasks" ? "tasks started" : "answered"}</span>
+          <span className="inline-flex items-center gap-1"><Flag className="h-3.5 w-3.5" aria-hidden />{flagged.size} for review</span>
+        </div>
         <div className="flex items-center gap-2">
           <button
             type="button"
@@ -529,7 +554,7 @@ export function ExamShell(props: ExamShellProps) {
                     onClick={() => onPartChange(i)}
                     aria-current={active ? "true" : undefined}
                     className={cn(
-                      "whitespace-nowrap rounded-lg px-2.5 py-2 text-xs font-bold transition",
+                      "min-h-[44px] whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-semibold transition",
                       active ? "bg-averna-neon/15 text-averna-neon" : "text-gray-400 hover:text-white"
                     )}
                   >
@@ -550,7 +575,7 @@ export function ExamShell(props: ExamShellProps) {
                             aria-label={`Question ${n}${answered.has(n) ? ", answered" : ", not answered"}${flagged.has(n) ? ", flagged" : ""}`}
                             aria-current={isCur ? "true" : undefined}
                             className={cn(
-                              "relative h-10 min-w-[2.5rem] rounded-md border px-1 text-xs font-bold transition sm:h-8 sm:min-w-[2rem]",
+                              "relative h-11 min-w-[2.75rem] rounded-md border px-1 text-sm font-semibold transition",
                               answered.has(n)
                                 ? "border-averna-cyan/40 bg-averna-cyan/15 text-white"
                                 : "border-white/15 bg-transparent text-gray-400 hover:text-white",
@@ -590,6 +615,7 @@ export function ExamShell(props: ExamShellProps) {
           onJump={jump}
           submitting={submitting}
           submitLabel={submitLabel}
+          description={reviewDescription}
           onConfirm={async () => {
             await onSubmit();
             setReviewOpen(false);

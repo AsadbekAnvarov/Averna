@@ -75,7 +75,7 @@ export default async function ReadingTestPage(
   if (!session?.user) return redirect("/auth/signin");
 
   const test = await getReadingExam(safeDecode(params.testId));
-  if (!test) return redirect(LIBRARY);
+  if (!test || test.source === "averna") return redirect(LIBRARY);
 
   const part = resolvePartIndex(test, firstParam(searchParams.part));
   // Exam homework: only kept when it really is this student's homework for this paper / part.

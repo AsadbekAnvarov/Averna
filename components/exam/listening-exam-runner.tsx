@@ -293,7 +293,10 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const router = useRouter();
   const practice = mode === "practice";
   const recordingsOnly = props.recordingsOnly === true;
-  const single = partIndex != null;
+  const wholeRecording = test.fullRecording;
+  const suppliedWhole = test.recordingMode === "whole";
+  const practicePart = mode === "practice" && !suppliedWhole && typeof partIndex === "number" && Number.isInteger(partIndex) && partIndex >= 0 && partIndex < test.parts.length ? partIndex : undefined;
+  const single = practicePart != null;
   const scriptContext: ScriptContext = props.context ?? runContext(mode, test.id);
 
   /** Scripts fetched for recorded parts that browser voices read instead (part index in the full test → script). */
@@ -302,18 +305,20 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const scope: ScopePart[] = useMemo(() => {
     const all = test.parts ?? [];
     const picked =
-      partIndex == null
+      practicePart == null
         ? all.map((part, i) => ({ part, i }))
-        : all[partIndex]
-          ? [{ part: all[partIndex], i: partIndex }]
+        : all[practicePart]
+          ? [{ part: all[practicePart], i: practicePart }]
           : [];
     // A recording that couldn't be played: from then on the part is read by browser voices from its fetched script.
     return picked.map(({ part, i }) => ({
-      part: voiced[i] ? { ...part, script: voiced[i], audio: undefined } : part,
+      part: wholeRecording
+        ? { ...part, script: [], audio: i === 0 ? wholeRecording : undefined }
+        : voiced[i] ? { ...part, script: voiced[i], audio: undefined } : part,
       no: i + 1,
       numbers: partNumbers(part),
     }));
-  }, [test, partIndex, voiced]);
+  }, [test, practicePart, voiced, wholeRecording]);
 
   const readingSeconds = mode === "mock" || !single ? EXAM_READING_SECONDS : PRACTICE_READING_SECONDS;
   const checkMinutes = single ? 1 : LISTENING_FULL.reviewMinutes;
@@ -321,13 +326,14 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const audioKey = `averna-exam-audio:${attemptId}`;
   /** Some part plays a pre-rendered recording / some part needs browser voices. */
   const anyFile: boolean = useMemo(() => scope.some((s) => !!s.part.audio), [scope]);
-  const needsTts: boolean = useMemo(() => scope.some((s) => !s.part.audio), [scope]);
+  const needsTts: boolean = useMemo(() => !suppliedWhole && scope.some((s) => !s.part.audio), [scope, suppliedWhole]);
   // Recordings know their length; browser voices only have the script-based estimate.
   const totalMinutes: number = useMemo(() => {
-    const secs = scope.reduce((n, s) => n + (s.part.audio ? s.part.audio.durationMs / 1000 : estimatePartSeconds(s.part)), 0);
+    const secs = wholeRecording ? wholeRecording.durationMs / 1000 :
+      scope.reduce((n, s) => n + (s.part.audio ? s.part.audio.durationMs / 1000 : estimatePartSeconds(s.part)), 0);
     const review = single ? 60 : LISTENING_FULL.reviewMinutes * 60;
     return Math.max(1, Math.round((secs + review) / 60));
-  }, [scope, single]);
+  }, [scope, single, wholeRecording]);
 
   const navParts: ExamPartNav[] = useMemo(() => scope.map((s) => ({ title: `Part ${s.no}`, numbers: s.numbers })), [scope]);
   const allGroups: ClientGroup[] = useMemo(() => scope.flatMap((s) => s.part.groups), [scope]);
@@ -422,7 +428,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   // Support check, voice loading, and stopping speech when leaving.
   useEffect(() => {
     if (mountedAtRef.current == null) mountedAtRef.current = Date.now();
-    if (recordingsOnly) { setSupported(true); return; }
+    if (recordingsOnly || suppliedWhole) { setSupported(true); return; }
     const ok = isTtsSupported();
     setSupported(ok);
     if (!ok) return;
@@ -451,7 +457,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       soundRef.current = null;
       cancelSpeech();
     };
-  }, [recordingsOnly]);
+  }, [recordingsOnly, suppliedWhole]);
 
   // Recordings: stop (keeping the place) when the page is hidden for good; release the element on unmount.
   useEffect(() => {
@@ -498,7 +504,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     if (recordingsOnly) { syncRecordedClock(); return; }
     const saved = readAudioSave(audioKey);
     if (!saved) return;
-    const pos = partIndex == null ? saved.part : saved.part === partIndex ? 0 : -1;
+    const pos = practicePart == null ? saved.part : saved.part === practicePart ? 0 : -1;
     if (pos < 0 || pos >= scope.length) return;
     if (saved.startedAt) startedAtRef.current = saved.startedAt;
     setPlayingPos(pos);
@@ -642,7 +648,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
    * read by browser voices (`voiced`).
    */
   function loadScript(index: number): Promise<ScriptResult> {
-    if (recordingsOnly) return Promise.resolve({ ok: false, reason: "denied" });
+    if (recordingsOnly || suppliedWhole) return Promise.resolve({ ok: false, reason: "denied" });
     const have = voicedRef.current[index];
     if (have) return Promise.resolve({ ok: true, script: have });
     const pending = scriptLoadsRef.current.get(index);
@@ -663,7 +669,15 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   function startPart(pos: number, fromScript = false, fromMs?: number, resume?: VoiceResume) {
     const entry = scopeRef.current[pos];
     if (!entry || doneRef.current) return;
+    if (suppliedWhole && !wholeRecording) {
+      setAudioError("The supplied full recording is unavailable. Ask your teacher to check the library; no generated voice is used.");
+      return;
+    }
     if (recordingsOnly) { syncRecordedClock(); return; }
+    if (wholeRecording) {
+      startFilePart(0, scopeRef.current[0], wholeRecording, false, fromMs);
+      return;
+    }
     runTokenRef.current += 1;
     const index = entry.no - 1;
     const script = voicedRef.current[index];
@@ -784,7 +798,8 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     if (activePartRef.current !== pos) setActivePart(pos);
     setCurrent((c: number | null) => (c != null && entry.numbers.includes(c) ? c : entry.numbers[0] ?? null));
     const range = partRange(entry.part);
-    setAnnounce(`Part ${entry.no} is starting.${range ? ` ${rangeLabel(range.from, range.to)}.` : ""}`);
+    setAnnounce(wholeRecording ? "The complete Listening recording is starting. Questions 1–40." :
+      `Part ${entry.no} is starting.${range ? ` ${rangeLabel(range.from, range.to)}.` : ""}`);
     const startMs = fromScript ? scriptStartMs(audio) : Math.max(0, Math.min(fromMs ?? 0, audio.durationMs - 1000));
     const el = ensureMedia();
     if (!el) {
@@ -804,7 +819,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       endAtMs,
       rate: practice ? rateRef.current : 1,
       lockControls: !practice,
-      title: `${test.title} · Part ${entry.no}`,
+      title: wholeRecording ? `${test.title} · Full recording` : `${test.title} · Part ${entry.no}`,
       onChange: (s) => {
         if (fileRef.current !== player) return;
         setFileSnap(s);
@@ -821,7 +836,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       },
       onEnd: () => {
         if (fileRef.current !== player) return;
-        if (pos + 1 < scopeRef.current.length) startPartRef.current(pos + 1);
+        if (!wholeRecording && pos + 1 < scopeRef.current.length) startPartRef.current(pos + 1);
         else startCheckRef.current();
       },
       onError: (code) => {
@@ -848,7 +863,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
    * recover, or when a recording of this run has already failed for good.
    */
   function onFileError(pos: number, entry: ScopePart, player: AudioFilePlayer, code: FileErrorCode) {
-    if (recordingsOnly) { setRecovering(null); setAudioError("The existing recording could not play. Check your connection, then press Try again. No generated voice will replace it; the exam clock keeps running."); return; }
+    if (recordingsOnly || suppliedWhole) { setRecovering(null); setAudioError("The supplied recording could not play. Check your connection, then press Try again. No generated voice will replace it; an exam deadline keeps running."); return; }
     const offline = typeof navigator !== "undefined" && navigator.onLine === false;
     if (code === "not-allowed" || offline) {
       setRecovering(null);
@@ -884,7 +899,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
    * go on to the next part — skipPart).
    */
   async function switchToVoices(pos: number, opts: { posMs?: number; resume?: VoiceResume }) {
-    if (recordingsOnly) { setRecovering(null); setAudioError("The existing recording is unavailable. Try again; no generated voice is used."); return; }
+    if (recordingsOnly || suppliedWhole) { setRecovering(null); setAudioError("The supplied recording is unavailable. Try again; no generated voice is used."); return; }
     const entry = scopeRef.current[pos];
     if (!entry || doneRef.current) return;
     const index = entry.no - 1;
@@ -953,6 +968,11 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     const started = props.deadline - checkMs - total;
     startedAtRef.current = started;
     let elapsed = Math.max(0, Date.now() - started);
+    if (wholeRecording) {
+      if (elapsed < wholeRecording.durationMs) startFilePart(0, entries[0], wholeRecording, false, elapsed);
+      else startCheck();
+      return;
+    }
     for (let pos = 0; pos < entries.length; pos++) {
       const audio = entries[pos].part.audio;
       if (!audio) { setAudioError("This mock requires all four existing recordings. Leave and ask your teacher to check the library."); return; }
@@ -1062,7 +1082,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
         body: JSON.stringify({
           format: "exam-v2",
           testId: test.id,
-          part: partIndex ?? null,
+          part: practicePart ?? null,
           answers: payload,
           timeSpent: meta.timeSpent,
           auto: meta.auto,
@@ -1409,9 +1429,9 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       <AudioBar
         mode={mode}
         status={barStatus}
-        partLabel={`Part ${barEntry.no}`}
-        partPosition={(phase === "intro" ? startPos : playingPos) + 1}
-        partCount={scope.length}
+        partLabel={wholeRecording ? "Full recording · Parts 1–4" : `Part ${barEntry.no}`}
+        partPosition={wholeRecording ? 1 : (phase === "intro" ? startPos : playingPos) + 1}
+        partCount={wholeRecording ? 1 : scope.length}
         line={barLine}
         lines={barLines}
         silenceEndsAt={barAudio ? null : snap.silenceEndsAt}
@@ -1443,11 +1463,12 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     </>
   );
 
-  const partsWord = scope.length === 1 ? "one recording" : `${countWord(scope.length)} recordings`;
+  const partsWord = wholeRecording ? "one complete recording covering all four parts" :
+    scope.length === 1 ? "one recording" : `${countWord(scope.length)} recordings`;
 
   return (
     <ExamShell
-      title={test.title}
+      title="Averna CDI · Listening"
       subtitle={mode === "mock" ? `${examName} · Listening` : single ? `Listening practice · Part ${scope[0].no}` : "Listening practice"}
       remainingMs={shownMs}
       parts={navParts}
@@ -1539,7 +1560,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
                 <Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" aria-hidden />
                 <span>
                   {resumeRecording ? (
-                    <>Your answers are saved. The recording of Part {startEntry.no} will continue from where it stopped.</>
+                    <>Your answers are saved. {wholeRecording ? "The full recording" : `The recording of Part ${startEntry.no}`} will continue from where it stopped.</>
                   ) : resumeVoices ? (
                     <>Your answers are saved. Part {startEntry.no} will continue from the sentence where it stopped.</>
                   ) : practice ? (
@@ -1598,7 +1619,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
                 className={primaryBtn}
               >
                 <Play className="h-4 w-4" aria-hidden />
-                {resumeFrom != null ? `Continue from Part ${startEntry.no}` : "Start the test"}
+                {resumeFrom != null ? wholeRecording ? "Continue the recording" : `Continue from Part ${startEntry.no}` : "Start the test"}
               </button>
               <button
                 type="button"
@@ -1795,7 +1816,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
             )}
           </div>
 
-          {phase === "playing" && playingPos !== activePart && (
+          {phase === "playing" && playingPos !== activePart && !wholeRecording && (
             <div className="mb-5 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-averna-cyan/25 bg-averna-cyan/[0.06] px-3 py-1.5 text-[0.9em] text-gray-200">
               <span>The recording is on Part {playingEntry.no} now.</span>
               <button

@@ -81,6 +81,26 @@ export const writingPromptSchema = z.object({
 
 export type GeneratedWritingPrompt = z.infer<typeof writingPromptSchema>;
 
+/** Supplied prompts may have an actual scanned chart and no model answer.
+ * Do not invent an essay or chart data to satisfy the AI-generation schema. */
+export const importedWritingPromptSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(2),
+  prompt: z.string().min(20),
+  type: z.string(),
+  imageUrl: z.string().url().refine(v => v.startsWith("https://")).optional(),
+  sampleAnswer: z.string().default(""),
+  usefulPhrases: z.array(z.string()).default([]),
+  strategyEn: z.string().default(""),
+  strategyUz: z.string().default(""),
+  imported: z.object({
+    provider: z.literal("user-supplied-cdi"),
+    file: z.string().min(1),
+    sha256: z.string().regex(/^[a-f0-9]{64}$/),
+    importVersion: z.literal(1),
+  }),
+});
+
 
 
 /**
