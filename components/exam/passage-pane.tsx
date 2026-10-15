@@ -1,5 +1,6 @@
 "use client";
 
+import { useMockCdi } from "./mock-cdi-interface";
 import { Fragment, memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { HIGHLIGHT_COLORS, type HighlightColor } from "./exam-preferences";
 import { Eraser, Highlighter, Search } from "lucide-react";
@@ -836,6 +837,16 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
   );
 }
 
-export const PassagePane = memo(PassagePaneImpl);
+function ContextPassagePane(props: PassagePaneProps) {
+  const cdi = useMockCdi();
+  if (!cdi) return <PassagePaneImpl {...props} />;
+  return <article className="mc-passage" data-cdi-anchor={`passage-${props.passage.id}`}>
+    {props.intro && <p className="mc-rubric">{props.intro}</p>}
+    <h1>{props.passage.title}</h1>
+    {props.passage.subtitle && <p className="mc-byline">{props.passage.subtitle}</p>}
+    {props.passage.paragraphs.map((p, i) => <p key={i}>{p.label && <b className="mc-paragraph-label">{p.label}</b>}{p.text}</p>)}
+  </article>;
+}
+export const PassagePane = memo(ContextPassagePane);
 
 export default PassagePane;

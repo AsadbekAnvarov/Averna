@@ -1030,6 +1030,7 @@ model MockAttempt {
 
   student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
   participant MockParticipant?
+  focusEvents MockFocusEvent[]
 
   @@index([studentId, status])
   @@map("mock_attempts")
@@ -1514,4 +1515,21 @@ model MockParticipant {
   @@unique([sessionId, studentId])
   @@unique([sessionId, ordinal])
   @@map("mock_participants")
+}
+
+/// Advisory, client-observed tab visibility. Never used for scoring or automatic failure.
+model MockFocusEvent {
+  id String @id @default(cuid())
+  attemptId String
+  eventId String
+  kind String
+  section Int
+  leftAt DateTime
+  returnedAt DateTime?
+  durationMs Int?
+  createdAt DateTime @default(now())
+  attempt MockAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  @@unique([attemptId, eventId])
+  @@index([attemptId, leftAt])
+  @@map("mock_focus_events")
 }
