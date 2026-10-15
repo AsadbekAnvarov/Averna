@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { compareTestTitles } from "@/lib/ielts/catalog-order";
 import {
   type Part1Topic,
   type Part2Card,
@@ -23,7 +24,7 @@ export async function getSpeakingContent(): Promise<SpeakingContent> {
       where: { module: "SPEAKING", published: true },
       orderBy: { createdAt: "desc" },
     });
-    for (const r of rows) {
+    for (const r of [...rows].sort(compareTestTitles)) {
       const parsed = speakingTestSchema.safeParse(r.data);
       if (!parsed.success) continue;
       const t = parsed.data;

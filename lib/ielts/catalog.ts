@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { compareTestTitles } from "./catalog-order";
 import { unstable_cache } from "next/cache";
 import { db } from "@/lib/db";
 import { READING_TESTS } from "@/lib/reading-tests-data";
@@ -93,7 +94,7 @@ function order(a: ExamTestSummary, b: ExamTestSummary): number {
   // Full papers first, then Averna CDI. Retired seeds resolve only for existing history.
   if (a.full !== b.full) return a.full ? -1 : 1;
   const rank = { imported: 0, generated: 1, legacy: 2, averna: 3 } as const;
-  return rank[a.source] - rank[b.source];
+  return rank[a.source] - rank[b.source] || compareTestTitles(a, b);
 }
 
 // ---------------------------------------------------------------------------
@@ -106,7 +107,7 @@ const cachedReadingSummaries = unstable_cache(
     const generated = rows.map(readingFromRow).filter((t): t is ExamReadingTest => t !== null);
     return [...generated, ...LEGACY_READING].map(summarizeReading).sort(order);
   },
-  ["exam-catalog-reading-cdi-v2"],
+  ["exam-catalog-reading-cdi-v3-natural-order"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -142,7 +143,7 @@ const cachedListeningSummaries = unstable_cache(
     const generated = rows.map(listeningFromRow).filter((t): t is ExamListeningTest => t !== null);
     return [...generated, ...LEGACY_LISTENING].map(summarizeListening).sort(order);
   },
-  ["exam-catalog-listening-cdi-v2"],
+  ["exam-catalog-listening-cdi-v3-natural-order"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -192,9 +193,9 @@ const cachedSpeakingSets = unstable_cache(
   async (): Promise<SpeakingExamSet[]> => {
     const rows = await publishedRows("SPEAKING");
     const generated = rows.map(speakingFromRow).filter((s): s is SpeakingExamSet => s !== null);
-    return generated;
+    return generated.sort(compareTestTitles);
   },
-  ["exam-catalog-speaking-cdi-v2"],
+  ["exam-catalog-speaking-cdi-v3-natural-order"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
