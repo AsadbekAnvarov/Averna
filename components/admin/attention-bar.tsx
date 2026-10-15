@@ -1,16 +1,15 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
-import { UserPlus, Wallet, Gift, Scale, CheckCircle2 } from "lucide-react";
+import { UserPlus, Gift, Scale, CheckCircle2 } from "lucide-react";
 
 /**
  * Admin focus bar — the few things across the whole platform that need a
- * decision right now: students awaiting placement, pending payments, reward
+ * decision right now: students awaiting placement, reward
  * requests to approve, and overloaded teachers. Each chip deep-links to action.
  */
 export async function AdminAttentionBar() {
-  const [unplaced, pendingPayments, pendingRewards, teachers] = await Promise.all([
+  const [unplaced, pendingRewards, teachers] = await Promise.all([
     db.student.count({ where: { groupId: null } }),
-    db.payment.count({ where: { status: "PENDING" } }),
     db.rewardRedemption.count({ where: { status: "PENDING" } }),
     db.teacher.findMany({ include: { groups: { include: { students: { select: { id: true } } } } } }),
   ]);
@@ -26,12 +25,6 @@ export async function AdminAttentionBar() {
       icon: UserPlus,
       label: `${unplaced} ta joylashtirish kerak`,
       cls: "border-averna-pink/30 bg-averna-pink/10 text-averna-pink hover:border-averna-pink/60",
-    },
-    pendingPayments > 0 && {
-      href: "/admin/finance",
-      icon: Wallet,
-      label: `${pendingPayments} ta toʻlov kutilmoqda`,
-      cls: "border-amber-400/30 bg-amber-400/10 text-amber-300 hover:border-amber-400/60",
     },
     pendingRewards > 0 && {
       href: "/admin/rewards",

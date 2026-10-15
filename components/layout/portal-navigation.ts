@@ -1,4 +1,4 @@
-import { LayoutDashboard, CalendarDays, Bell, Users, ClipboardCheck, BookOpen, Notebook, ListChecks, BarChart3, GraduationCap, UserCheck, Sparkles, Headphones, Megaphone, MessageSquare, User, Settings, BarChart, Compass, Gift, DollarSign, Activity, Send, type LucideIcon } from "lucide-react";
+import { LayoutDashboard, CalendarDays, Bell, Users, ClipboardCheck, BookOpen, Notebook, ListChecks, BarChart3, GraduationCap, UserCheck, Sparkles, Headphones, Megaphone, MessageSquare, User, Settings, BarChart, Compass, Gift, Activity, Send, type LucideIcon } from "lucide-react";
 export type PortalNavSection = { label: string; items: { name: string; href: string; icon: LucideIcon; exact?: boolean }[] };
 export const TEACHER_NAV: PortalNavSection[] = [
   {
@@ -73,7 +73,6 @@ export const ADMIN_NAV: PortalNavSection[] = [
   {
     label: "Markaz boshqaruvi",
     items: [
-      { name: "Moliya", href: "/admin/finance", icon: DollarSign },
       { name: "Kirish testi", href: "/admin/placement", icon: Compass },
       { name: "Mukofotlar", href: "/admin/rewards", icon: Gift },
       { name: "Eʼlonlar", href: "/admin/announcements", icon: Megaphone },

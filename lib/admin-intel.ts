@@ -1,4 +1,3 @@
-import { incomeRows, pendingInvoiceBalances } from "@/lib/finance/indicators";
 import { db } from "@/lib/db";
 
 /**
@@ -7,7 +6,7 @@ import { db } from "@/lib/db";
  * Aggregates real platform data into an executive briefing, a rule-based
  * critical-event feed, data-derived recommendations and a daily insight — all
  * in one parallel pass. Everything here is READ-ONLY and derived from data that
- * already exists (students, tests, payments, activity), so it is safe and
+ * already exists (students, tests, activity), so it is safe and
  * deterministic. All user-facing strings are in Uzbek (admin UI language).
  */
 
@@ -41,8 +40,6 @@ export interface McStats {
   submissionsToday: number;
   activeWeek: number;
   inactive14: number;
-  revenueWeek: number | null;
-  pendingPayments: number | null;
   pendingRewards: number;
   unplaced: number;
   peakHour: number | null;
@@ -81,7 +78,7 @@ export async function getMissionControl(): Promise<MissionControl> {
   const weekAgo = new Date(now.getTime() - 7 * 86_400_000);
   const twoWeeksAgo = new Date(now.getTime() - 14 * 86_400_000);
 
-  const [students, tests, submissionsToday, pendingPayments, weekPayments, pendingRewards, teachers, recentActivity] =
+  const [students, tests, submissionsToday, pendingRewards, teachers, recentActivity] =
     await Promise.all([
       db.student.findMany({ select: { createdAt: true, groupId: true, lastActiveDate: true } }),
       db.iELTSTest.findMany({
@@ -89,8 +86,6 @@ export async function getMissionControl(): Promise<MissionControl> {
         select: { completedAt: true, module: true, score: true },
       }),
       db.homeworkSubmission.count({ where: { submittedAt: { gte: today0 } } }),
-      pendingInvoiceBalances(),
-      incomeRows(weekAgo),
       db.rewardRedemption.count({ where: { status: "PENDING" } }),
       db.teacher.findMany({ select: { groups: { select: { students: { select: { id: true } } } } } }),
       db.activityLog.findMany({ where: { createdAt: { gte: weekAgo } }, select: { createdAt: true } }),
@@ -126,11 +121,6 @@ export async function getMissionControl(): Promise<MissionControl> {
     }
   }
 
-  // --- Finance ---
-  const revenueWeek = weekPayments?.reduce((s, p) => s + p.amount, 0) ?? null;
-  const pendingPaymentsCount = (pendingPayments??[]).length;
-  const pendingPaymentsTotal = (pendingPayments??[]).reduce((s, p) => s + p.amount, 0);
-
   // --- Teacher load ---
   const loads = teachers.map((t) => t.groups.reduce((s, g) => s + g.students.length, 0));
   const avgLoad = loads.length ? loads.reduce((a, b) => a + b, 0) / loads.length : 0;
@@ -154,8 +144,6 @@ export async function getMissionControl(): Promise<MissionControl> {
     submissionsToday,
     activeWeek,
     inactive14,
-    revenueWeek,
-    pendingPayments: pendingPayments === null ? null : pendingPaymentsCount,
     pendingRewards,
     unplaced,
     peakHour,
@@ -177,7 +165,6 @@ export async function getMissionControl(): Promise<MissionControl> {
     );
   }
 
-  if (weekPayments === null || pendingPayments === null) bullets.push("Moliyaviy registr yuklanmadi — bu nol tushum yoki qarz yoʻq degani emas.");
 
   // --- Priorities / risks / actions ---
   const priorities: string[] = [];
@@ -191,10 +178,6 @@ export async function getMissionControl(): Promise<MissionControl> {
   if (pendingRewards > 0) {
     priorities.push(`${pendingRewards} ta mukofot soʻrovini koʻrib chiqish.`);
     actions.push({ text: "Mukofotlarni tasdiqlash", href: "/admin/rewards" });
-  }
-  if (pendingPaymentsCount > 0) {
-    priorities.push(`${pendingPaymentsCount} ta muddati oʻtgan hisobni tekshirish.`);
-    actions.push({ text: "Moliyani koʻrish", href: "/admin/finance" });
   }
 
   if (inactive14 > 0) risks.push(`${inactive14} ta oʻquvchi 2 haftadan beri faol emas — ketib qolish xavfi bor.`);
@@ -225,16 +208,6 @@ export async function getMissionControl(): Promise<MissionControl> {
       impact: "Kichik navbat — tez hal qilinadi.",
       action: "Guruhga biriktiring.",
       href: "/admin/dashboard?tab=people#enroll",
-    });
-  }
-  if (pendingPaymentsCount > 0) {
-    events.push({
-      id: "payments",
-      severity: pendingPaymentsCount >= 10 ? "high" : "medium",
-      title: `${pendingPaymentsCount} ta hisob muddati oʻtgan`,
-      impact: `${pendingPaymentsTotal.toLocaleString()} UZS hisob qarzi.`,
-      action: "Toʻlovlarni koʻrib chiqing.",
-      href: "/admin/finance",
     });
   }
   if (pendingRewards > 0) {

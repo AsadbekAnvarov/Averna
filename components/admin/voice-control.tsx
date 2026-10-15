@@ -15,7 +15,6 @@ interface Command {
 const COMMANDS: Command[] = [
   { keywords: ["test", "generat", "yarat"], href: "/admin/generate-tests", label: "Test generatori" },
   { keywords: ["mukofot", "reward", "sovg"], href: "/admin/rewards", label: "Mukofotlar" },
-  { keywords: ["moliya", "tolov", "finance", "pul", "hisob"], href: "/admin/finance", label: "Moliya" },
   { keywords: ["oqituvchi", "teacher", "ustoz"], href: "/admin/teachers", label: "Oʻqituvchilar" },
   { keywords: ["guruh", "group", "sinf"], href: "/admin/groups", label: "Guruhlar" },
   { keywords: ["elon", "announce", "xabar"], href: "/admin/announcements", label: "Eʼlonlar" },
@@ -151,7 +150,7 @@ export function VoiceControl() {
               {!transcript && !listening && (
                 <p className="text-sm text-gray-400">
                   Tugmani bosing va ayting: <span className="text-averna-pink">“Testlar”</span>,{" "}
-                  <span className="text-averna-pink">“Moliya”</span>,{" "}
+                  <span className="text-averna-pink">“Guruhlar”</span>,{" "}
                   <span className="text-averna-pink">“Mukofotlar”</span>…
                 </p>
               )}

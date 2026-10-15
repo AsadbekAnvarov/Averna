@@ -1090,6 +1090,7 @@ QATTIY QOIDALAR:
 - Faqat OʻZBEK tilida (lotin yozuvi), toʻgʻri imlo bilan (oʻ, gʻ, ʼ).
 - 3-5 jumla, xotirjam va ishonchli ohangda.
 - Berilgan maʼlumotlardan tashqari raqam yoki dalil OʻYLAB TOPMANG.
+- Faqat oʻquv va maʼmuriy boshqaruv haqida yozing. Buxgalteriya, toʻlov, qarz, daromad va ish haqi haqida tavsiya bermang.
 - Salomlashish bilan boshlang, keyin eng muhim holat, ustuvorlik va xavf haqida ayting, ijobiy yakun bilan tugating.
 Faqat matnni qaytaring (JSON emas).
 
