@@ -52,3 +52,14 @@ copied into the app. The raw source is not part of the deployment.
   notes, finish review, audio playback, writing and save failure.
 - Browser tests use synthetic attempts and a short generated test tone; no
   student attempt or production answer is written during QA.
+
+## Advisory focus mode (CDI only)
+
+- Running cd-v1 sittings make background Averna chrome inert and suppress the global command-palette shortcut. A global student-only guard checks the authenticated owner's active CDI attempt and covers other Averna pages with Return to Mock / confirmed Leave. This is a UI restriction, not kiosk software, an OS/browser tab lock or authorization for other APIs.
+- Optional fullscreen is offered before independent and group starts. Unsupported devices can continue. Exiting fullscreen does not fail an attempt.
+- `visibilitychange` hidden→visible creates one advisory episode (not window blur). On return the student sees a warning; clocks, recording, drafts, grading and progression are unchanged. Closing/reloading uses the browser's native unsaved-page prompt.
+- The bounded device queue retries with stable UUIDs. Beacon delivery is best-effort and retained until an acknowledged POST. Duplicate insertions cannot inflate counts; late returns update only their own matching attempt/event. Up to 64 pending device reports / 1000 stored reports per sitting; overflow, offline devices, cleared storage and disabled JS can cause incomplete coverage. This is not secure proctoring.
+- New additive `mock_focus_events` storage contains attempt/event IDs, kind, section, client-observed leave/return times, capped duration and receipt time. No URLs, tab titles, clipboard, camera or screen content. No score penalties. Unconfirmed returns have unknown duration; timestamps/durations are client-observed and unverified.
+- `/api/mock/[id]/focus` enforces origin, live student role/blacklist, owner, version, bounded JSON/schema/time range and rate/cap limits. It never writes attempts, clocks, answers or results. `/api/mock/active` returns only an owned active CDI ID with private/no-store headers.
+- Teacher journal `/teacher/mock/attention`: current teacher-group scope (admin all), paged attempts, batched count/duration summaries and bounded episode detail. Coverage is explicit; zero reports never proves continuous attention. Linked from Mock analytics and group participant cards. Existing group cancellation remains teacher-controlled; students cannot cancel a whole class by leaving.
+- Rollout: generate Prisma client; normal additive `prisma/sql/deploy.sql` creates the table/indexes without replacing content. Migration is also recorded under `20261011000100_mock_focus`. Older attempts do not receive invented historical events.

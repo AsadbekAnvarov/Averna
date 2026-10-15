@@ -15,3 +15,12 @@
 /* The orchestrator's collection, retry and fatal dialogs use the same paper palette. */
 .mock-cdi[data-contrast] .av-panel{background:var(--mc-bg);color:var(--mc-text);border:1px solid var(--mc-border);box-shadow:0 4px 20px #0003;backdrop-filter:none}
 .mock-cdi[data-contrast] .av-panel .glow-cta{background:var(--mc-button);color:var(--mc-button-text);box-shadow:none}
+
+/* Focus protection is only mounted by the CDI orchestrator, never by practice. */
+.mock-cdi .mc-focus-intro { margin: 20px 0; padding: 16px; border: 1px solid var(--mc-border); border-radius: 6px; line-height: 1.55; }
+.mock-cdi .mc-focus-intro p { margin: 8px 0 16px; }
+.mock-cdi .mc-focus-intro button { min-height:44px; padding:8px 14px; border:1px solid var(--mc-border); border-radius:4px; }
+.mock-cdi .mc-header-leave { min-height:44px; padding:4px 8px; font-size:12px; border:1px solid var(--mc-border); border-radius:4px; color:var(--mc-text); background:var(--mc-bg); }
+.mock-cdi .mc-header-leave svg { display:none; }
+.mock-cdi .av-panel button.text-red-100 { color:var(--mc-accent); background:var(--mc-bg); border:1px solid var(--mc-accent); }
+.mock-cdi .av-panel .text-red-200,.mock-cdi .av-panel .text-red-300 { color:var(--mc-accent); }

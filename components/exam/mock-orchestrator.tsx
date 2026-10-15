@@ -8,6 +8,7 @@
  */
 
 import { useCallback, useEffect, useId, useRef, useState, useTransition } from "react";
+import { MockFocusGuard } from "./mock-focus-guard";
 import { MockCdiProvider, MockCdiIntro } from "./mock-cdi-interface";
 import { useRouter } from "next/navigation";
 import {
@@ -261,7 +262,7 @@ type Overlay =
 // ---------------------------------------------------------------------------
 
 export function MockOrchestrator(props: { view: MockView; serverNow?: number }) {
-  return <MockCdiProvider enabled={props.view.mode === "cd-v1"} key={props.view.attemptId}><MockOrchestratorBody {...props} /></MockCdiProvider>;
+  return <MockCdiProvider enabled={props.view.mode === "cd-v1"} attemptId={props.view.stage.kind === "running" ? props.view.attemptId : undefined} key={props.view.attemptId}><MockOrchestratorBody {...props} />{props.view.mode === "cd-v1" && props.view.stage.kind === "running" && <MockFocusGuard attemptId={props.view.attemptId} section={props.view.stage.index} />}</MockCdiProvider>;
 }
 
 function MockOrchestratorBody({ view, serverNow }: { view: MockView; serverNow?: number }) {

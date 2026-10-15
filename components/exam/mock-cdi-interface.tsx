@@ -9,10 +9,13 @@ import { MockSaveStatus } from "./mock-save-status";
 import { ReviewDialog } from "./exam-review-dialog";
 import { formatClock } from "./use-exam";
 import "./mock-cdi.css";
+import { FullscreenOffer } from "./mock-focus-guard";
+import { MockLeaveButton, MOCK_HUB_HREF } from "./mock-start-button";
 
 type Contrast = "bw" | "wb" | "yb";
 type Annotation = { id: string; anchor: string; from: number; to: number; quote: string; note: string | null };
 type CdiState = {
+  attemptId?: string;
   contrast: Contrast; setContrast: (v: Contrast) => void;
   scale: number; setScale: (v: number) => void;
   notes: Annotation[]; setNotes: React.Dispatch<React.SetStateAction<Annotation[]>>;
@@ -21,13 +24,13 @@ type CdiState = {
 const MockCdiContext = createContext<CdiState | null>(null);
 export const useMockCdi = () => useContext(MockCdiContext);
 
-export function MockCdiProvider({ enabled, children }: { enabled: boolean; children: ReactNode }) {
+export function MockCdiProvider({ enabled, children, attemptId }: { enabled: boolean; children: ReactNode; attemptId?: string }) {
   const [contrast, setContrast] = useState<Contrast>("bw");
   const [scale, setScale] = useState(1);
   const [notes, setNotes] = useState<Annotation[]>([]);
   const [notesOpen, setNotesOpen] = useState(false);
   if (!enabled) return <>{children}</>;
-  return <MockCdiContext.Provider value={{ contrast, setContrast, scale, setScale, notes, setNotes, notesOpen, setNotesOpen }}>
+  return <MockCdiContext.Provider value={{ attemptId, contrast, setContrast, scale, setScale, notes, setNotes, notesOpen, setNotesOpen }}>
     <div className="mock-cdi" data-contrast={contrast} style={{ "--mc-scale": scale } as CSSProperties}>{children}</div>
   </MockCdiContext.Provider>;
 }
@@ -90,8 +93,9 @@ function MockHeader({ remainingMs, exam = false }: { remainingMs: number | null;
   }, [remainingMs]);
   return <><header className="mc-topbar"><div className="mc-brand"><span className="mc-logo">IELTS<span>™</span></span><div><div className="mc-candidate">Averna Full Mock</div><div className={`mc-timer ${remainingMs != null && remainingMs <= 300000 ? "mc-low" : ""}`} role="timer" aria-label={remainingMs != null ? `Time remaining ${formatClock(remainingMs)}` : "Exam not started"}>{remainingMs != null ? `${formatClock(remainingMs)} remaining` : "Listening, Reading and Writing"}</div></div></div><div className="mc-top-right">
     {exam && <button className="mc-icon" onClick={() => cdi.setNotesOpen(!cdi.notesOpen)} aria-label="Notes" aria-pressed={cdi.notesOpen}><Pencil size={21} /></button>}
-    <button className="mc-icon" onClick={() => setNotice(notice === "connection" ? null : "connection")} aria-label="Connection" aria-expanded={notice === "connection"}><Wifi size={22} /></button>
-    <button className="mc-icon" onClick={() => setNotice(notice === "notifications" ? null : "notifications")} aria-label="Notifications" aria-expanded={notice === "notifications"}><Bell size={22} /></button>
+    {!exam && <button className="mc-icon" onClick={() => setNotice(notice === "connection" ? null : "connection")} aria-label="Connection" aria-expanded={notice === "connection"}><Wifi size={22} /></button>}
+    {!exam && <button className="mc-icon" onClick={() => setNotice(notice === "notifications" ? null : "notifications")} aria-label="Notifications" aria-expanded={notice === "notifications"}><Bell size={22} /></button>}
+    {exam && cdi.attemptId && <MockLeaveButton attemptId={cdi.attemptId} redirectTo={MOCK_HUB_HREF} label="Leave" className="mc-header-leave" />}
     <button className="mc-icon" onClick={() => { setNotice(null); setMenu(true); }} aria-label="Options"><Menu size={23} /></button>
   </div></header><span className="sr-only" aria-live="assertive">{announcement}</span>
   {notice && <div className="mc-notice" role="status">{notice === "connection" ? online ? "Your device is online. Account save status is shown below the exam." : "Your device is offline. Keep this page open; check the save status below." : "Exam notices and save warnings appear in the exam screen."}<button className="mc-icon" aria-label="Close notification" onClick={() => setNotice(null)}><X size={18} /></button></div>}
@@ -101,7 +105,7 @@ function MockHeader({ remainingMs, exam = false }: { remainingMs: number | null;
 export function MockCdiIntro({ sections, active, busy, ready, error, onBegin, children }: { sections: MockView["sections"]; active: number; busy: boolean; ready: boolean; error: string | null; onBegin: () => void; children: ReactNode }) {
   return <div className="mc-screen mc-intro"><MockHeader remainingMs={null} /><main className="mc-home"><div className="mc-home-inner"><section className="mc-test-card"><h1>Averna Full Mock – Listening, Reading and Writing</h1><p>Complete the sound check before you begin. The next section starts automatically.</p></section>
     {sections.map((section, index) => <section className="mc-test-card" key={section.skill}><h2>{section.title}</h2><p className={`mc-status ${section.status === "done" ? "mc-done" : ""}`}>{section.status === "done" ? "Completed" : "Not completed"}</p><p className="mc-timing">{section.detail} · {section.minutes} minutes</p>
-      {index === active ? <>{children}<button className="mc-start" onClick={onBegin} disabled={busy || !ready}><ArrowRight size={18} />{busy ? `Starting ${section.title}…` : `Start ${section.title}`}</button>{error && <p className="mc-error" role="alert">{error}</p>}</> : <><div className="mc-info-line">▾ Test information. {index > active ? "Starts automatically after the previous section." : "Section completed."}</div><button className="mc-start" disabled><ArrowRight size={18} />Start {section.title}</button></>}
+      {index === active ? <>{index === 0 && <FullscreenOffer />}{children}<button className="mc-start" onClick={onBegin} disabled={busy || !ready}><ArrowRight size={18} />{busy ? `Starting ${section.title}…` : `Start ${section.title}`}</button>{error && <p className="mc-error" role="alert">{error}</p>}</> : <><div className="mc-info-line">▾ Test information. {index > active ? "Starts automatically after the previous section." : "Section completed."}</div><button className="mc-start" disabled><ArrowRight size={18} />Start {section.title}</button></>}
     </section>)}<p className="mc-muted">The clock starts only when you start Listening. No overall band is shown without Speaking.</p></div></main></div>;
 }
 
