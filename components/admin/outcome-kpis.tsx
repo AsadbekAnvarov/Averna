@@ -5,7 +5,7 @@ import { CountUp } from "@/components/ui/count-up";
 
 /**
  * Learning-outcome KPIs for admins. Sits beside the existing volume KPIs
- * (students / submissions / revenue) and answers what counts cannot: is the
+ * (students / submissions / activity) and answers what counts cannot: is the
  * activity real learning, is mastery advancing, is knowledge retained, and who
  * is slipping. Same visual language as AdminKpis — no redesign. Uzbek UI.
  */

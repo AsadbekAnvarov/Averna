@@ -15,7 +15,6 @@ import {
   Gift,
   Megaphone,
   Activity,
-  Wallet,
   ScrollText,
   ShieldCheck,
   Trophy,
@@ -31,12 +30,10 @@ import { AdminHeader } from "@/components/admin/admin-header";
 import { TopPerformers } from "@/components/top-performers";
 import { AdminKpis } from "@/components/admin/kpi-cards";
 import { OutcomeKpis } from "@/components/admin/outcome-kpis";
-import { ExecutiveOverview } from "@/components/admin/executive-overview";
 import { ActivityFeed } from "@/components/admin/activity-feed";
 import { EnrollmentFunnel } from "@/components/admin/enrollment-funnel";
 import { TeacherWorkload } from "@/components/admin/teacher-workload";
-import { DashboardFinance, DashboardLeads } from "@/components/admin/finance/dashboard-finance";
-import { FinanceSummary } from "@/components/admin/finance-summary";
+import { DashboardLeads } from "@/components/admin/dashboard-leads";
 import { AdminAttentionBar } from "@/components/admin/attention-bar";
 import { AdminQuickActions, AdminToolsDisclosure } from "@/components/admin/dashboard-tools";
 import { ADMIN_DASHBOARD_TABS, ADMIN_TAB_ALIASES } from "@/components/admin/dashboard-navigation";
@@ -188,7 +185,6 @@ export default async function AdminDashboard() {
     { href: "/admin/rewards", label: "Mukofotlar va soʻrovlar", desc: "Almashtirishlarni tasdiqlash", icon: Gift, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
     { href: "/admin/announcements", label: "Eʼlonlar", desc: "Yangiliklarni tarqatish", icon: Megaphone, iconBg: "bg-orange-400/15 text-orange-400", hover: "hover:border-orange-400/40" },
     { href: "/admin/content", label: "Kontent", desc: "Darslar va materiallar", icon: Layers, iconBg: "bg-averna-purple/15 text-averna-purple", hover: "hover:border-averna-purple/40" },
-    { href: "/admin/finance", label: "Moliya va nazorat", desc: "Oʻquvchilar, ish haqi va pul oqimi", icon: Wallet, iconBg: "bg-emerald-400/15 text-emerald-400", hover: "hover:border-emerald-400/40" },
     { href: "/admin/system", label: "Tizim holati", desc: "Holatni kuzatish", icon: Activity, iconBg: "bg-averna-cyan/15 text-averna-cyan", hover: "hover:border-averna-cyan/40" },
     { href: "/admin/logs", label: "Audit jurnali", desc: "Barcha amallarni kuzatish", icon: ScrollText, iconBg: "bg-gray-400/15 text-gray-300", hover: "hover:border-white/30" },
     { href: "/teacher/reviews", label: "Tekshiruv navbati", desc: "Barcha tekshiruvlarni nazorat qilish", icon: ShieldCheck, iconBg: "bg-averna-pink/15 text-averna-pink", hover: "hover:border-averna-pink/40" },
@@ -248,9 +244,6 @@ export default async function AdminDashboard() {
             overview: (
               <>
                 <AdminQuickActions />
-                <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
-                  <ExecutiveOverview />
-                </Suspense>
                 <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
                   <MissionControl firstName={firstName} />
                 </Suspense>
@@ -260,16 +253,15 @@ export default async function AdminDashboard() {
                 </Suspense>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
                   <ActivityFeed />
-                  <FinanceSummary />
+                  <TeacherWorkload />
                 </div>
               </>
             ),
-            finance: (<Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}><DashboardFinance /></Suspense>),
             people: (
               <>
                 <details className="space-y-4" id="leads">
                   <summary className="cursor-pointer min-h-11 text-lg font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-averna-cyan">Lidlar va sinov darslari</summary>
-                  <p className="text-sm text-gray-400 my-3">Kelishi rejalashtirilganlar. Lidni qabul qilish sayt akkaunti yoki toʻlov hisobini avtomatik yaratmaydi.</p>
+                  <p className="text-sm text-gray-400 my-3">Kelishi rejalashtirilganlar. Lidni qabul qilish sayt akkauntini avtomatik yaratmaydi. Akkaunt va guruhga biriktirish alohida tasdiqlanadi.</p>
                   <Suspense fallback={<div className="h-32 rounded-xl bg-white/5 animate-pulse" />}><DashboardLeads/></Suspense>
                 </details>
                 <div>

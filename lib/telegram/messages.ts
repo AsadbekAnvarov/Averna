@@ -936,7 +936,6 @@ export function adminSummaryText(lang: Lang, s: AdminSummary, mode: "daily" | "s
     `📊 <b>${L.adminTitle(mode)}</b> · ${fmtDate(s.day, lang)}`,
     `• ${L.adminNewStudents(s.newStudents)}`,
     `• ${L.adminPlacements(s.placementsFinished)}`,
-    `• ${L.adminPayments(s.pendingPayments)}`,
     `• ${L.adminReviews(s.reviewsWaiting)}`,
     `• ${L.adminHomework(s.homeworkCreated)}`,
   ]);
