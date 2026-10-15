@@ -12,3 +12,6 @@
 .mock-cdi{background:var(--mc-bg)}
 .mock-cdi .exam-shell{background:var(--mc-bg);color:var(--mc-text);--c-averna-neon:var(--c-white);--c-averna-cyan:var(--c-white)}
 .mock-cdi .exam-shell button{background:var(--mc-bg);color:var(--mc-text);border:1px solid var(--mc-field);box-shadow:none}
+/* The orchestrator's collection, retry and fatal dialogs use the same paper palette. */
+.mock-cdi[data-contrast] .av-panel{background:var(--mc-bg);color:var(--mc-text);border:1px solid var(--mc-border);box-shadow:0 4px 20px #0003;backdrop-filter:none}
+.mock-cdi[data-contrast] .av-panel .glow-cta{background:var(--mc-button);color:var(--mc-button-text);box-shadow:none}
