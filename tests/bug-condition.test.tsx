@@ -452,7 +452,7 @@ const MODAL_SOURCES = [
   "components/dashboard/brain-break.tsx",
   "components/dashboard/level-up-celebration.tsx",
   "components/dashboard/dashboard-preferences.tsx",
-  "components/exam/exam-shell.tsx",
+  "components/exam/exam-review-dialog.tsx",
 ];
 
 /** Class string of the first `fixed` container in a file. */
