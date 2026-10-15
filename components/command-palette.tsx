@@ -54,7 +54,7 @@ const STUDENT_COMMANDS: Cmd[] = [
   })),
   { group: "Practice", label: "AI Examiner", href: "/learning/examiner", icon: Sparkles, keywords: "assess feedback score" },
   { group: "Practice", label: "AI Mentor", href: "/mentor", icon: Bot, keywords: "ask help chatbot assistant" },
-  { group: "Practice", label: "Daily Article", href: "/article", icon: FileText, keywords: "reading news read" },
+  { group: "Practice", label: "Articles", href: "/article", icon: FileText, keywords: "reading news read" },
   { group: "Practice", label: "Movies", href: "/movies", icon: Clapperboard, keywords: "films watch subtitles" },
 
   { group: "Progress", label: "My Progress", href: "/progress", icon: BarChart3, keywords: "overview band analytics 30 days tests" },

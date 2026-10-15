@@ -34,7 +34,7 @@ const ALSO = [
   { href: "/learning/pronunciation", label: "Pronunciation", desc: "Speak & get scored", icon: Mic, color: "bg-averna-pink/15 text-averna-pink" },
   { href: "/grammar", label: "Grammar", desc: "Essentials & tips", icon: SpellCheck, color: "bg-averna-purple/15 text-averna-purple" },
   { href: "/flashcards", label: "Vocabulary", desc: "Flashcards & word lists", icon: Layers, color: "bg-averna-cyan/15 text-averna-cyan" },
-  { href: "/article", label: "Daily Article", desc: "Read & learn words", icon: Newspaper, color: "bg-averna-neon/15 text-averna-neon" },
+  { href: "/article", label: "Articles", desc: "Read & learn words", icon: Newspaper, color: "bg-averna-neon/15 text-averna-neon" },
 ];
 
 const TESTS = [

@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { compareTestTitles } from "@/lib/ielts/catalog-order";
 import { type WritingPrompt } from "@/lib/writing-data";
 import { writingPromptSchema, writingTask1Schema, importedWritingPromptSchema } from "@/lib/test-schema";
 
@@ -31,5 +32,5 @@ export async function getWritingPrompts(taskType: "task1" | "task2"): Promise<Wr
     generated = [];
   }
 
-  return generated;
+  return generated.sort(compareTestTitles);
 }
