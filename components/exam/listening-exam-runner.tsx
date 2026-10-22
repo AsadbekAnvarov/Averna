@@ -35,6 +35,7 @@ import type { ScriptContext } from "@/lib/ielts/audio/script";
 import { ExamShell } from "./exam-shell";
 import type { ExamPartNav } from "./exam-shell";
 import { QuestionGroupView } from "./question-group";
+import { QuestionHighlights, clearQuestionHighlights } from "./question-highlights";
 import { AudioBar, FILE_RATES } from "./audio-bar";
 import type { AudioBarStatus } from "./audio-bar";
 import { AudioFilePlayer, FILE_IDLE, createAudioElement, releaseMediaSession } from "./audio-file-player";
@@ -1069,6 +1070,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
         doneRef.current = true;
         setFinished(true);
         clearSaved();
+        clearQuestionHighlights(attemptId);
         try {
           window.localStorage.removeItem(audioKey);
         } catch {
@@ -1098,6 +1100,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       doneRef.current = true;
       setFinished(true);
       clearSaved();
+      clearQuestionHighlights(attemptId);
       try {
         window.localStorage.removeItem(audioKey);
       } catch {
@@ -1485,7 +1488,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       submitting={submitting || finished}
       exitHref={exitHref}
     >
-      <div className="mx-auto w-full max-w-3xl px-4 pb-12 pt-5 sm:px-6">
+      <div className="mx-auto w-full max-w-5xl px-4 pb-8 pt-4 sm:px-6">
         <div ref={topRef} className="scroll-mt-4" aria-hidden />
         <p className="sr-only" aria-live="polite">
           {announce}
@@ -1829,6 +1832,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
             </div>
           )}
 
+          <QuestionHighlights attemptId={attemptId} scope={`listening:${test.id}:${activeEntry.part.id}`}>
           {activeEntry.part.groups.map((g, gi) => (
             <QuestionGroupView
               key={`${activeEntry.part.id}-${gi}`}
@@ -1844,6 +1848,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
             />
           ))}
           {!activeEntry.part.groups.length && <p className="text-gray-400">This part has no questions.</p>}
+          </QuestionHighlights>
         </section>
       </div>
     </ExamShell>

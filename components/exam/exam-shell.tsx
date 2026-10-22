@@ -359,7 +359,7 @@ function AvernaExamShell(props: ExamShellProps) {
           <>
             <div
               className={cn(
-                "min-h-0 overflow-y-auto overscroll-contain",
+                "min-h-0 min-w-0 overflow-y-auto overscroll-contain",
                 mobilePane === "left" ? "block w-full" : "hidden",
                 "lg:block lg:basis-[var(--exam-left)]"
               )}
@@ -393,7 +393,7 @@ function AvernaExamShell(props: ExamShellProps) {
             </div>
             <div
               className={cn(
-                "min-h-0 overflow-y-auto overscroll-contain",
+                "min-h-0 min-w-0 overflow-y-auto overscroll-contain",
                 mobilePane === "right" ? "block w-full" : "hidden",
                 "lg:block lg:basis-[var(--exam-right)]"
               )}
@@ -410,8 +410,8 @@ function AvernaExamShell(props: ExamShellProps) {
       {footerExtra && <div className="shrink-0 border-t border-white/10 bg-exam-bar">{footerExtra}</div>}
 
       {/* Navigator */}
-      <nav aria-label="Question navigator" className="shrink-0 border-t border-white/10 bg-exam-bar/95 px-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur sm:px-4">
-        <div className="mb-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-400" aria-label="Answer status legend">
+      <nav aria-label="Question navigator" className="relative shrink-0 border-t border-white/10 bg-exam-bar/95 px-2 pb-[calc(0.25rem+env(safe-area-inset-bottom))] pt-1 backdrop-blur sm:px-4 lg:pr-[15rem]">
+        <div className="mb-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-400 lg:absolute lg:right-4 lg:top-1/2 lg:mb-0 lg:max-w-[13rem] lg:-translate-y-1/2 lg:justify-end lg:text-xs" aria-label="Answer status legend">
           <span>{answered.size}/{allNumbers.length} {itemLabel === "tasks" ? "tasks started" : "answered"}</span>
           <span className="inline-flex items-center gap-1"><Flag className="h-3.5 w-3.5" aria-hidden />{flagged.size} for review</span>
         </div>
