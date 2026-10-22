@@ -43,7 +43,7 @@ function PartRow({ n, href, title, detail, tone }: { n: number; href?: string; t
       </span>
       <span className="min-w-0 flex-1">
         <span className="block truncate text-sm font-medium text-white">{title}</span>
-        <span className="block text-xs text-gray-400">{detail}</span>
+        <span className="block text-sm text-gray-400">{detail}</span>
       </span>
     </>
   );
@@ -114,10 +114,10 @@ export function ReadingExamCard({ exam }: { exam: ExamTestSummary }) {
                   <PartRow
                     n={i + 1}
                     href={multi ? `${href}?part=${i}` : undefined}
-                    title={p.title || `Passage ${i + 1}`}
+                    title={`Reading Passage ${i + 1}`}
                     detail={
                       multi
-                        ? [r, `Practise passage ${i + 1} · ${perPart} min`].filter(Boolean).join(" · ")
+                        ? [p.title, r, `${perPart} min · Open this passage only`].filter(Boolean).join(" · ")
                         : r ?? `${exam.questions} questions`
                     }
                     tone="bg-averna-cyan/10 text-averna-cyan"
@@ -141,7 +141,7 @@ export function ReadingExamCard({ exam }: { exam: ExamTestSummary }) {
 
 export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
   const href = `/learning/listening/${slug(exam.id)}`;
-  const multi = exam.partInfo.length > 1;
+  const multi = exam.partInfo.length > 1 && exam.recordingMode !== "whole";
   const perPart = Math.max(1, Math.round(exam.timeLimit / Math.max(1, exam.partInfo.length)));
   const parts = `${exam.parts} ${exam.parts === 1 ? "part" : "parts"}`;
 
@@ -156,7 +156,7 @@ export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
 
       {exam.partInfo.length > 0 && (
         <div className="mt-4">
-          <SectionLabel>{multi ? "Parts · practise one at a time" : "Recording"}</SectionLabel>
+          <SectionLabel>{exam.recordingMode === "whole" ? "One complete recording · Parts 1–4" : multi ? "Parts · practise one at a time" : "Recording"}</SectionLabel>
           <ol role="list" className="mt-2 space-y-2">
             {exam.partInfo.map((p, i) => {
               const custom = p.title && !/^part\s*\d+$/i.test(p.title.trim()) ? p.title : null;
@@ -177,6 +177,7 @@ export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
         </div>
       )}
 
+      {exam.recordingMode === "whole" && <p className="mt-3 text-sm text-gray-400">Original, uncut audio. Separate part playback is unavailable until recording boundaries are verified.</p>}
       <KindChips kinds={exam.kinds} className="mt-4" />
       <CardCta href={href} label={exam.full ? "Start full test" : "Start practice test"} context={exam.title} />
     </SpotlightCard>

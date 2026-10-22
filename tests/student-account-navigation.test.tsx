@@ -52,12 +52,13 @@ describe("student account without Billing", () => {
     expect(screen.getByRole("link", { name: /Edit profile/ })).toBeTruthy();
     expect(screen.getByRole("link", { name: /Notifications/ })).toBeTruthy();
   });
-  it("retains the admin finance navigation and command", () => {
+  it("removes retired admin finance navigation and command", () => {
     m.role = "ADMIN"; m.pathname = "/admin/dashboard";
     const { container } = render(<><AppSidebar /><CommandPalette /></>);
-    expect(container.querySelector('a[href="/admin/finance"]')).toBeTruthy();
+    expect(container.querySelector('a[href="/admin/finance"]')).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Open command palette" }));
-    expect(screen.getByRole("button", { name: "Moliya" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Moliya" })).toBeNull();
+    expect(screen.getByRole("button", { name: "Oʻqituvchilar" })).toBeTruthy();
   });
   it.each([["STUDENT", "/dashboard"], ["TEACHER", "/teacher/dashboard"], ["ADMIN", "/admin/dashboard"]])("redirects the legacy Billing URL for %s", async (role, destination) => {
     m.auth.mockResolvedValue({ user: { id: "demo", role } });

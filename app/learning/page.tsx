@@ -34,7 +34,7 @@ const ALSO = [
   { href: "/learning/pronunciation", label: "Pronunciation", desc: "Speak & get scored", icon: Mic, color: "bg-averna-pink/15 text-averna-pink" },
   { href: "/grammar", label: "Grammar", desc: "Essentials & tips", icon: SpellCheck, color: "bg-averna-purple/15 text-averna-purple" },
   { href: "/flashcards", label: "Vocabulary", desc: "Flashcards & word lists", icon: Layers, color: "bg-averna-cyan/15 text-averna-cyan" },
-  { href: "/article", label: "Daily Article", desc: "Read & learn words", icon: Newspaper, color: "bg-averna-neon/15 text-averna-neon" },
+  { href: "/article", label: "Articles", desc: "Read & learn words", icon: Newspaper, color: "bg-averna-neon/15 text-averna-neon" },
 ];
 
 const TESTS = [
@@ -131,7 +131,6 @@ export default async function LearningCenterPage() {
         .filter(Boolean)
         .join(" · ") || "New prompts are on the way"
     : "Task 1 and Task 2 prompts";
-  const speakingSets = stats?.speaking.sets ?? 0;
 
   const skills: SkillCardData[] = [
     {
@@ -161,7 +160,7 @@ export default async function LearningCenterPage() {
     {
       skill: "SPEAKING",
       title: "Speaking",
-      count: !stats ? "Full speaking tests" : speakingSets > 0 ? `${speakingSets} full ${speakingSets === 1 ? "test" : "tests"}` : "New tests are on the way",
+      count: "Teacher-led practice and assessment",
       format: "3 parts · 11–14 min",
       inside: ["Part 1 interview", "Part 2 cue card", "Part 3 discussion"],
       href: "/learning/speaking-test",

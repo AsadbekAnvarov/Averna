@@ -557,7 +557,6 @@ const ADMIN_PALETTE: [group: string, label: string][] = [
   ["Kontent", "Listening audio"],
   ["Kontent", "Eʼlonlar"],
   ["Kontent", "Mukofotlar va soʻrovlar"],
-  ["Operatsiyalar", "Moliya"],
   ["Operatsiyalar", "Tizim holati"],
   ["Operatsiyalar", "Audit jurnali"],
   ["Operatsiyalar", "Xabarlar"],
@@ -572,7 +571,7 @@ const ADMIN_PALETTE: [group: string, label: string][] = [
 const ADMIN_SIDEBAR: [section: string, items: [name: string, href: string][]][] = [
   ["Umumiy koʻrinish", [["Boshqaruv paneli", "/admin/dashboard"], ["Tahlil", "/admin/analytics"], ["Bildirishnomalar", "/notifications"]]],
   ["Odamlar", [["Oʻquvchilar va qabul", "/admin/dashboard?tab=people"], ["Oʻqituvchilar", "/admin/teachers"], ["Guruhlar", "/admin/groups"]]],
-  ["Markaz boshqaruvi", [["Moliya", "/admin/finance"], ["Kirish testi", "/admin/placement"], ["Mukofotlar", "/admin/rewards"], ["Eʼlonlar", "/admin/announcements"]]],
+  ["Markaz boshqaruvi", [["Kirish testi", "/admin/placement"], ["Mukofotlar", "/admin/rewards"], ["Eʼlonlar", "/admin/announcements"]]],
   ["Tizim va nazorat", [["Audit jurnali", "/admin/logs"], ["Tizim", "/admin/system"]]],
   ["Muloqot", [["Xabarlar", "/messages"], ["Telegram bot", "/admin/telegram"]]],
   ["Hisob", [["Profil va parol", "/admin/profile"]]],
@@ -582,7 +581,7 @@ const ADMIN_SIDEBAR: [section: string, items: [name: string, href: string][]][] 
 const ADMIN_TABS: [name: string, href: string][] = [
   ["Panel", "/admin/dashboard"],
   ["Guruhlar", "/admin/groups"],
-  ["Moliya", "/admin/finance"],
+  ["Ustozlar", "/admin/teachers"],
   ["Tahlil", "/admin/analytics"],
   ["Xabarlar", "/messages"],
 ];

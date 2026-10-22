@@ -1,0 +1,5257 @@
+[
+  {
+    "slug": "street-food-around-the-world",
+    "title": "Street Food Around the World",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "A meal on every corner",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Walk through almost any big city in the world, and you will smell something delicious before you see it. That smell often comes from ",
+            "highlight": false
+          },
+          {
+            "text": "street food",
+            "highlight": true
+          },
+          {
+            "text": ": simple, cheap meals cooked at a small ",
+            "highlight": false
+          },
+          {
+            "text": "stall",
+            "highlight": true
+          },
+          {
+            "text": " or from a cart on wheels. In Thailand, Mexico, Turkey and dozens of other countries, millions of people eat their lunch this way every single day.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Why do people love it?",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Street food is popular for three simple reasons: it is fast, it is cheap, and it is often extremely tasty. A cook can prepare a hot ",
+            "highlight": false
+          },
+          {
+            "text": "dish",
+            "highlight": true
+          },
+          {
+            "text": " in front of you in just a few minutes, and you can watch every step, from the sizzling pan to the final touch. The ",
+            "highlight": false
+          },
+          {
+            "text": "aroma",
+            "highlight": true
+          },
+          {
+            "text": " of grilled meat, fresh herbs or warm bread fills the air and pulls hungry customers closer.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🍳Fresh food, cooked right in front of you.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "A trip around the world in food",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Every country has its own famous street snack. In Mexico, people enjoy soft tacos filled with meat, onion and lime. In Thailand, cooks fry noodles with prawns and egg in a dish called pad thai, which can be quite ",
+            "highlight": false
+          },
+          {
+            "text": "spicy",
+            "highlight": true
+          },
+          {
+            "text": ". In Turkey, a sandwich called a döner is cut from meat that turns slowly on a large spit. These dishes are not fancy, but they tell you a great deal about the history and ",
+            "highlight": false
+          },
+          {
+            "text": "culture",
+            "highlight": true
+          },
+          {
+            "text": " of a place.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🗺️Different countries, different flavours.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "More than just a snack",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "For many families, selling street food is also an important job. It helps them pay for their homes and send their children to school. Today, some famous chefs even say that the best cooking in a city is not always found in expensive restaurants — sometimes it is found on a busy street corner, cooked by someone who has made the same dish for thirty years. So next time you travel, try the food from a stall. It might become your favourite memory of the whole trip.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "A meal on every corner\n\nWalk through almost any big city in the world, and you will smell something delicious before you see it. That smell often comes from street food: simple, cheap meals cooked at a small stall or from a cart on wheels. In Thailand, Mexico, Turkey and dozens of other countries, millions of people eat their lunch this way every single day.\n\nWhy do people love it?\n\nStreet food is popular for three simple reasons: it is fast, it is cheap, and it is often extremely tasty. A cook can prepare a hot dish in front of you in just a few minutes, and you can watch every step, from the sizzling pan to the final touch. The aroma of grilled meat, fresh herbs or warm bread fills the air and pulls hungry customers closer.\n\nA trip around the world in food\n\nEvery country has its own famous street snack. In Mexico, people enjoy soft tacos filled with meat, onion and lime. In Thailand, cooks fry noodles with prawns and egg in a dish called pad thai, which can be quite spicy. In Turkey, a sandwich called a döner is cut from meat that turns slowly on a large spit. These dishes are not fancy, but they tell you a great deal about the history and culture of a place.\n\nMore than just a snack\n\nFor many families, selling street food is also an important job. It helps them pay for their homes and send their children to school. Today, some famous chefs even say that the best cooking in a city is not always found in expensive restaurants — sometimes it is found on a busy street corner, cooked by someone who has made the same dish for thirty years. So next time you travel, try the food from a stall. It might become your favourite memory of the whole trip.",
+    "vocabulary": [
+      {
+        "word": "street food",
+        "meaning": "cheap food that is cooked and sold outside, not in a restaurant",
+        "group": ""
+      },
+      {
+        "word": "stall",
+        "meaning": "a small open shop, often in the street or a market",
+        "group": ""
+      },
+      {
+        "word": "aroma",
+        "meaning": "a strong, pleasant smell, usually of food",
+        "group": ""
+      },
+      {
+        "word": "spicy",
+        "meaning": "food with a strong, hot taste from chilli or pepper",
+        "group": ""
+      },
+      {
+        "word": "dish",
+        "meaning": "a particular type of food prepared in a certain way",
+        "group": ""
+      },
+      {
+        "word": "culture",
+        "meaning": "the ideas, food, art and customs of a group of people",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "Street food is usually cooked in expensive restaurants.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Street food is often fast, cheap and tasty.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Tacos are a famous street food from Mexico.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Pad thai comes from Turkey.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "A döner is cut from meat on a spit.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Selling street food never helps a family earn money.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "The article says street food can teach you about a country's culture.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "What is street food?",
+            "options": [
+              "Food cooked and sold outside",
+              "Food only in supermarkets",
+              "Food that is always free"
+            ],
+            "answer": "Food cooked and sold outside",
+            "explanation": ""
+          },
+          {
+            "prompt": "Why do people like street food?",
+            "options": [
+              "It is slow and expensive",
+              "It is fast, cheap and tasty",
+              "It has no taste"
+            ],
+            "answer": "It is fast, cheap and tasty",
+            "explanation": ""
+          },
+          {
+            "prompt": "Which food is from Thailand?",
+            "options": [
+              "Tacos",
+              "Döner",
+              "Pad thai"
+            ],
+            "answer": "Pad thai",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is a döner made from?",
+            "options": [
+              "Meat cooked on a spit",
+              "Only vegetables",
+              "Sweet bread"
+            ],
+            "answer": "Meat cooked on a spit",
+            "explanation": ""
+          },
+          {
+            "prompt": "What does the writer suggest at the end?",
+            "options": [
+              "Never eat street food",
+              "Try street food when you travel",
+              "Only eat in restaurants"
+            ],
+            "answer": "Try street food when you travel",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "street food",
+            "options": [
+              "cheap food that is cooked and sold outside, not in a restaurant",
+              "a small open shop, often in the street or a market",
+              "a strong, pleasant smell, usually of food",
+              "food with a strong, hot taste from chilli or pepper",
+              "a particular type of food prepared in a certain way",
+              "the ideas, food, art and customs of a group of people"
+            ],
+            "answer": "cheap food that is cooked and sold outside, not in a restaurant",
+            "explanation": ""
+          },
+          {
+            "prompt": "stall",
+            "options": [
+              "cheap food that is cooked and sold outside, not in a restaurant",
+              "a small open shop, often in the street or a market",
+              "a strong, pleasant smell, usually of food",
+              "food with a strong, hot taste from chilli or pepper",
+              "a particular type of food prepared in a certain way",
+              "the ideas, food, art and customs of a group of people"
+            ],
+            "answer": "a small open shop, often in the street or a market",
+            "explanation": ""
+          },
+          {
+            "prompt": "aroma",
+            "options": [
+              "cheap food that is cooked and sold outside, not in a restaurant",
+              "a small open shop, often in the street or a market",
+              "a strong, pleasant smell, usually of food",
+              "food with a strong, hot taste from chilli or pepper",
+              "a particular type of food prepared in a certain way",
+              "the ideas, food, art and customs of a group of people"
+            ],
+            "answer": "a strong, pleasant smell, usually of food",
+            "explanation": ""
+          },
+          {
+            "prompt": "spicy",
+            "options": [
+              "cheap food that is cooked and sold outside, not in a restaurant",
+              "a small open shop, often in the street or a market",
+              "a strong, pleasant smell, usually of food",
+              "food with a strong, hot taste from chilli or pepper",
+              "a particular type of food prepared in a certain way",
+              "the ideas, food, art and customs of a group of people"
+            ],
+            "answer": "food with a strong, hot taste from chilli or pepper",
+            "explanation": ""
+          },
+          {
+            "prompt": "dish",
+            "options": [
+              "cheap food that is cooked and sold outside, not in a restaurant",
+              "a small open shop, often in the street or a market",
+              "a strong, pleasant smell, usually of food",
+              "food with a strong, hot taste from chilli or pepper",
+              "a particular type of food prepared in a certain way",
+              "the ideas, food, art and customs of a group of people"
+            ],
+            "answer": "a particular type of food prepared in a certain way",
+            "explanation": ""
+          },
+          {
+            "prompt": "culture",
+            "options": [
+              "cheap food that is cooked and sold outside, not in a restaurant",
+              "a small open shop, often in the street or a market",
+              "a strong, pleasant smell, usually of food",
+              "food with a strong, hot taste from chilli or pepper",
+              "a particular type of food prepared in a certain way",
+              "the ideas, food, art and customs of a group of people"
+            ],
+            "answer": "the ideas, food, art and customs of a group of people",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 What is your favourite street food?",
+      "💬 Have you ever eaten food from a stall or a food cart?",
+      "💬 Which country's street food would you like to try?",
+      "💬 Do you think street food is healthy? Why or why not?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "01-street-food-around-the-world.html",
+    "sourceSha256": "f9159bfbca58f3085f5d17acf1d4eb50af8700a0f8391f0995f9c4778dddf076"
+  },
+  {
+    "slug": "the-secret-life-of-bees",
+    "title": "The Secret Life of Bees",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Small insect, big job",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Bees are tiny, but the work they do is enormous. A single ",
+            "highlight": false
+          },
+          {
+            "text": "hive",
+            "highlight": true
+          },
+          {
+            "text": " can hold up to sixty thousand bees, and every one of them has a job. Some bees clean the hive, some guard the entrance, and others fly out to search for flowers. Without bees, many of the fruits and vegetables that we eat every day would simply disappear.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🏠A busy hive full of worker bees.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "How bees talk to each other",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Bees cannot speak, but they still share information in a clever way. When a worker bee finds a good flower, it flies back to the hive and performs a special ",
+            "highlight": false
+          },
+          {
+            "text": "dance",
+            "highlight": true
+          },
+          {
+            "text": ". The direction and speed of the dance tell the other bees exactly where the flowers are and how far away they are. Scientists call this the \"waggle dance\", and it is one of the most amazing forms of animal communication ever discovered.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "From flower to food",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "When a bee lands on a flower, tiny grains of ",
+            "highlight": false
+          },
+          {
+            "text": "pollen",
+            "highlight": true
+          },
+          {
+            "text": " stick to its legs and body. As the bee moves from flower to flower, it carries the pollen with it, helping plants make seeds and fruit. This process is called pollination, and farmers depend on it for many of their ",
+            "highlight": false
+          },
+          {
+            "text": "crops",
+            "highlight": true
+          },
+          {
+            "text": ", including apples, almonds and coffee. One bee alone cannot do very much, but millions of bees working together keep entire farms alive.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🐝Pollen sticks to a bee's legs as it flies.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "A hive with a queen",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Inside every hive there is one very important bee: the ",
+            "highlight": false
+          },
+          {
+            "text": "queen",
+            "highlight": true
+          },
+          {
+            "text": ". She does not collect pollen or build the hive; her only job is to lay eggs, sometimes more than a thousand a day. All the other bees protect her and feed her because the whole hive depends on her.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Why bees need our help",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Sadly, the number of bees in the world is falling fast. Pollution, disease and the loss of wild flowers have made bees more ",
+            "highlight": false
+          },
+          {
+            "text": "endangered",
+            "highlight": true
+          },
+          {
+            "text": " every year. Scientists warn that if bees disappear, our food supply could be in serious trouble. That is why more and more people are now planting flowers in their gardens just to give these small but powerful insects a place to live.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "Small insect, big job\n\nBees are tiny, but the work they do is enormous. A single hive can hold up to sixty thousand bees, and every one of them has a job. Some bees clean the hive, some guard the entrance, and others fly out to search for flowers. Without bees, many of the fruits and vegetables that we eat every day would simply disappear.\n\nHow bees talk to each other\n\nBees cannot speak, but they still share information in a clever way. When a worker bee finds a good flower, it flies back to the hive and performs a special dance. The direction and speed of the dance tell the other bees exactly where the flowers are and how far away they are. Scientists call this the \"waggle dance\", and it is one of the most amazing forms of animal communication ever discovered.\n\nFrom flower to food\n\nWhen a bee lands on a flower, tiny grains of pollen stick to its legs and body. As the bee moves from flower to flower, it carries the pollen with it, helping plants make seeds and fruit. This process is called pollination, and farmers depend on it for many of their crops, including apples, almonds and coffee. One bee alone cannot do very much, but millions of bees working together keep entire farms alive.\n\nA hive with a queen\n\nInside every hive there is one very important bee: the queen. She does not collect pollen or build the hive; her only job is to lay eggs, sometimes more than a thousand a day. All the other bees protect her and feed her because the whole hive depends on her.\n\nWhy bees need our help\n\nSadly, the number of bees in the world is falling fast. Pollution, disease and the loss of wild flowers have made bees more endangered every year. Scientists warn that if bees disappear, our food supply could be in serious trouble. That is why more and more people are now planting flowers in their gardens just to give these small but powerful insects a place to live.",
+    "vocabulary": [
+      {
+        "word": "hive",
+        "meaning": "the home where a large group of bees lives together",
+        "group": ""
+      },
+      {
+        "word": "pollen",
+        "meaning": "the yellow powder inside a flower that helps new plants grow",
+        "group": ""
+      },
+      {
+        "word": "dance",
+        "meaning": "here: special movements a bee makes to give other bees information",
+        "group": ""
+      },
+      {
+        "word": "queen",
+        "meaning": "the one female bee in a hive who lays all the eggs",
+        "group": ""
+      },
+      {
+        "word": "crop",
+        "meaning": "a plant, like wheat or fruit, grown by farmers for food",
+        "group": ""
+      },
+      {
+        "word": "endangered",
+        "meaning": "in danger of disappearing completely",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "A hive can hold thousands of bees.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Bees speak human words to communicate.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "The waggle dance tells other bees where flowers are.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Pollen never helps plants make fruit.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "The queen bee's main job is to lay eggs.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "The number of bees in the world is growing quickly.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Planting flowers can help protect bees.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "How many bees can live in one hive?",
+            "options": [
+              "Only ten",
+              "Up to sixty thousand",
+              "Exactly one hundred"
+            ],
+            "answer": "Up to sixty thousand",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is the waggle dance used for?",
+            "options": [
+              "Sharing information about flowers",
+              "Cleaning the hive",
+              "Fighting other bees"
+            ],
+            "answer": "Sharing information about flowers",
+            "explanation": ""
+          },
+          {
+            "prompt": "What does pollen help plants do?",
+            "options": [
+              "Fly",
+              "Make seeds and fruit",
+              "Sleep"
+            ],
+            "answer": "Make seeds and fruit",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is the queen bee's job?",
+            "options": [
+              "Guarding the hive",
+              "Laying eggs",
+              "Finding flowers"
+            ],
+            "answer": "Laying eggs",
+            "explanation": ""
+          },
+          {
+            "prompt": "Why are bees becoming endangered?",
+            "options": [
+              "Pollution and loss of flowers",
+              "Too much rain",
+              "Too many farms"
+            ],
+            "answer": "Pollution and loss of flowers",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "hive",
+            "options": [
+              "the home where a large group of bees lives together",
+              "the yellow powder inside a flower that helps new plants grow",
+              "here: special movements a bee makes to give other bees information",
+              "the one female bee in a hive who lays all the eggs",
+              "a plant, like wheat or fruit, grown by farmers for food",
+              "in danger of disappearing completely"
+            ],
+            "answer": "the home where a large group of bees lives together",
+            "explanation": ""
+          },
+          {
+            "prompt": "pollen",
+            "options": [
+              "the home where a large group of bees lives together",
+              "the yellow powder inside a flower that helps new plants grow",
+              "here: special movements a bee makes to give other bees information",
+              "the one female bee in a hive who lays all the eggs",
+              "a plant, like wheat or fruit, grown by farmers for food",
+              "in danger of disappearing completely"
+            ],
+            "answer": "the yellow powder inside a flower that helps new plants grow",
+            "explanation": ""
+          },
+          {
+            "prompt": "dance",
+            "options": [
+              "the home where a large group of bees lives together",
+              "the yellow powder inside a flower that helps new plants grow",
+              "here: special movements a bee makes to give other bees information",
+              "the one female bee in a hive who lays all the eggs",
+              "a plant, like wheat or fruit, grown by farmers for food",
+              "in danger of disappearing completely"
+            ],
+            "answer": "here: special movements a bee makes to give other bees information",
+            "explanation": ""
+          },
+          {
+            "prompt": "queen",
+            "options": [
+              "the home where a large group of bees lives together",
+              "the yellow powder inside a flower that helps new plants grow",
+              "here: special movements a bee makes to give other bees information",
+              "the one female bee in a hive who lays all the eggs",
+              "a plant, like wheat or fruit, grown by farmers for food",
+              "in danger of disappearing completely"
+            ],
+            "answer": "the one female bee in a hive who lays all the eggs",
+            "explanation": ""
+          },
+          {
+            "prompt": "crop",
+            "options": [
+              "the home where a large group of bees lives together",
+              "the yellow powder inside a flower that helps new plants grow",
+              "here: special movements a bee makes to give other bees information",
+              "the one female bee in a hive who lays all the eggs",
+              "a plant, like wheat or fruit, grown by farmers for food",
+              "in danger of disappearing completely"
+            ],
+            "answer": "a plant, like wheat or fruit, grown by farmers for food",
+            "explanation": ""
+          },
+          {
+            "prompt": "endangered",
+            "options": [
+              "the home where a large group of bees lives together",
+              "the yellow powder inside a flower that helps new plants grow",
+              "here: special movements a bee makes to give other bees information",
+              "the one female bee in a hive who lays all the eggs",
+              "a plant, like wheat or fruit, grown by farmers for food",
+              "in danger of disappearing completely"
+            ],
+            "answer": "in danger of disappearing completely",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 Are you afraid of bees? Why or why not?",
+      "💬 What could people in your city do to help bees?",
+      "💬 Which fruits or vegetables do you eat that need bees?",
+      "💬 Do you have flowers or plants near your home?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "02-the-secret-life-of-bees.html",
+    "sourceSha256": "a1ea7eda9067814c6eae9c6a0d27a77dc90033ad101620cb90e1ed648413240c"
+  },
+  {
+    "slug": "why-do-we-dream",
+    "title": "Why Do We Dream?",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "A strange nightly show",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Every night, while your body lies quiet and still, your mind can take you flying over mountains, walking through your old school, or talking to someone who lives far away. This is what happens when we dream. Almost everyone dreams while they are ",
+            "highlight": false
+          },
+          {
+            "text": "asleep",
+            "highlight": true
+          },
+          {
+            "text": ", even if they do not always remember it in the morning.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🛌The mind stays busy while the body sleeps.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "What happens in the brain?",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Scientists have studied sleep for many years, but they still do not fully understand why we dream. We know that during a stage of sleep called REM sleep, the ",
+            "highlight": false
+          },
+          {
+            "text": "brain",
+            "highlight": true
+          },
+          {
+            "text": " becomes very active, almost as active as when we are awake. During this stage, the eyes move quickly under closed eyelids, and this is when the most detailed and colourful dreams usually happen.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Different ideas, different answers",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "One popular idea is that dreams help the brain sort out the events of the day, keeping useful ",
+            "highlight": false
+          },
+          {
+            "text": "memory",
+            "highlight": true
+          },
+          {
+            "text": " and throwing away information we do not need. Another idea is that dreaming is simply a side effect of a busy brain, with no real purpose at all. A third idea suggests that dreams let us practise dealing with danger and difficult emotions in a safe way, using nothing but our own ",
+            "highlight": false
+          },
+          {
+            "text": "imagination",
+            "highlight": true
+          },
+          {
+            "text": ".",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "💭A brain full of pictures and ideas.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "When dreams turn scary",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Not every dream is pleasant. A ",
+            "highlight": false
+          },
+          {
+            "text": "nightmare",
+            "highlight": true
+          },
+          {
+            "text": " can wake a person up feeling frightened, with a fast heartbeat and sweaty hands. Nightmares often happen after a stressful day, after watching a scary film, or during a difficult time in someone's life. Most nightmares are completely harmless, even though they can feel very real while they last.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Still a mystery",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Even with modern machines that can look inside the brain, every ",
+            "highlight": false
+          },
+          {
+            "text": "researcher",
+            "highlight": true
+          },
+          {
+            "text": " agrees on one thing: dreaming is still one of the biggest mysteries of the human mind. Perhaps that is exactly what makes dreams so interesting. Tonight, when you close your eyes, remember that your brain is about to begin its own private film — and you are the only person who will ever see it.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "A strange nightly show\n\nEvery night, while your body lies quiet and still, your mind can take you flying over mountains, walking through your old school, or talking to someone who lives far away. This is what happens when we dream. Almost everyone dreams while they are asleep, even if they do not always remember it in the morning.\n\nWhat happens in the brain?\n\nScientists have studied sleep for many years, but they still do not fully understand why we dream. We know that during a stage of sleep called REM sleep, the brain becomes very active, almost as active as when we are awake. During this stage, the eyes move quickly under closed eyelids, and this is when the most detailed and colourful dreams usually happen.\n\nDifferent ideas, different answers\n\nOne popular idea is that dreams help the brain sort out the events of the day, keeping useful memory and throwing away information we do not need. Another idea is that dreaming is simply a side effect of a busy brain, with no real purpose at all. A third idea suggests that dreams let us practise dealing with danger and difficult emotions in a safe way, using nothing but our own imagination.\n\nWhen dreams turn scary\n\nNot every dream is pleasant. A nightmare can wake a person up feeling frightened, with a fast heartbeat and sweaty hands. Nightmares often happen after a stressful day, after watching a scary film, or during a difficult time in someone's life. Most nightmares are completely harmless, even though they can feel very real while they last.\n\nStill a mystery\n\nEven with modern machines that can look inside the brain, every researcher agrees on one thing: dreaming is still one of the biggest mysteries of the human mind. Perhaps that is exactly what makes dreams so interesting. Tonight, when you close your eyes, remember that your brain is about to begin its own private film — and you are the only person who will ever see it.",
+    "vocabulary": [
+      {
+        "word": "asleep",
+        "meaning": "not awake; resting with your eyes closed",
+        "group": ""
+      },
+      {
+        "word": "brain",
+        "meaning": "the organ inside your head that controls thinking and feeling",
+        "group": ""
+      },
+      {
+        "word": "imagination",
+        "meaning": "the ability to create pictures or ideas in your mind",
+        "group": ""
+      },
+      {
+        "word": "nightmare",
+        "meaning": "a frightening or unpleasant dream",
+        "group": ""
+      },
+      {
+        "word": "memory",
+        "meaning": "something you remember from the past",
+        "group": ""
+      },
+      {
+        "word": "researcher",
+        "meaning": "a person who studies a subject carefully to learn new facts",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "Only some people dream while they sleep.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "The brain becomes very active during REM sleep.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Scientists fully understand exactly why we dream.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "One idea says dreams help sort memories.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "A nightmare is always a happy dream.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Nightmares can make your heart beat faster.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "The article says dreaming is no longer a mystery.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "What is the main topic of the article?",
+            "options": [
+              "Why people cannot sleep",
+              "Why we dream",
+              "How to build a bed"
+            ],
+            "answer": "Why we dream",
+            "explanation": ""
+          },
+          {
+            "prompt": "When do the most detailed dreams usually happen?",
+            "options": [
+              "Before falling asleep",
+              "During REM sleep",
+              "While eating breakfast"
+            ],
+            "answer": "During REM sleep",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is one idea about why we dream?",
+            "options": [
+              "Dreams sort out memories",
+              "Dreams control the weather",
+              "Dreams stop the heart"
+            ],
+            "answer": "Dreams sort out memories",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is a nightmare?",
+            "options": [
+              "A happy song",
+              "A frightening dream",
+              "A type of food"
+            ],
+            "answer": "A frightening dream",
+            "explanation": ""
+          },
+          {
+            "prompt": "According to the article, dreaming is...",
+            "options": [
+              "completely understood",
+              "still a mystery",
+              "not real at all"
+            ],
+            "answer": "still a mystery",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "asleep",
+            "options": [
+              "not awake; resting with your eyes closed",
+              "the organ inside your head that controls thinking and feeling",
+              "the ability to create pictures or ideas in your mind",
+              "a frightening or unpleasant dream",
+              "something you remember from the past",
+              "a person who studies a subject carefully to learn new facts"
+            ],
+            "answer": "not awake; resting with your eyes closed",
+            "explanation": ""
+          },
+          {
+            "prompt": "brain",
+            "options": [
+              "not awake; resting with your eyes closed",
+              "the organ inside your head that controls thinking and feeling",
+              "the ability to create pictures or ideas in your mind",
+              "a frightening or unpleasant dream",
+              "something you remember from the past",
+              "a person who studies a subject carefully to learn new facts"
+            ],
+            "answer": "the organ inside your head that controls thinking and feeling",
+            "explanation": ""
+          },
+          {
+            "prompt": "imagination",
+            "options": [
+              "not awake; resting with your eyes closed",
+              "the organ inside your head that controls thinking and feeling",
+              "the ability to create pictures or ideas in your mind",
+              "a frightening or unpleasant dream",
+              "something you remember from the past",
+              "a person who studies a subject carefully to learn new facts"
+            ],
+            "answer": "the ability to create pictures or ideas in your mind",
+            "explanation": ""
+          },
+          {
+            "prompt": "nightmare",
+            "options": [
+              "not awake; resting with your eyes closed",
+              "the organ inside your head that controls thinking and feeling",
+              "the ability to create pictures or ideas in your mind",
+              "a frightening or unpleasant dream",
+              "something you remember from the past",
+              "a person who studies a subject carefully to learn new facts"
+            ],
+            "answer": "a frightening or unpleasant dream",
+            "explanation": ""
+          },
+          {
+            "prompt": "memory",
+            "options": [
+              "not awake; resting with your eyes closed",
+              "the organ inside your head that controls thinking and feeling",
+              "the ability to create pictures or ideas in your mind",
+              "a frightening or unpleasant dream",
+              "something you remember from the past",
+              "a person who studies a subject carefully to learn new facts"
+            ],
+            "answer": "something you remember from the past",
+            "explanation": ""
+          },
+          {
+            "prompt": "researcher",
+            "options": [
+              "not awake; resting with your eyes closed",
+              "the organ inside your head that controls thinking and feeling",
+              "the ability to create pictures or ideas in your mind",
+              "a frightening or unpleasant dream",
+              "something you remember from the past",
+              "a person who studies a subject carefully to learn new facts"
+            ],
+            "answer": "a person who studies a subject carefully to learn new facts",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 Do you remember your dreams? How often?",
+      "💬 Have you ever had a strange or funny dream?",
+      "💬 What do you think happens in the brain when we dream?",
+      "💬 Do you believe dreams can tell us something about our lives?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "03-why-do-we-dream.html",
+    "sourceSha256": "3cd7f6a2b9c03ca83633922374494c23715cc75de121ac721446af3be218b149"
+  },
+  {
+    "slug": "the-history-of-money",
+    "title": "The History of Money",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Before money existed",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Long before coins and banknotes were invented, people still needed a way to get the things they did not have. A farmer with extra eggs might ",
+            "highlight": false
+          },
+          {
+            "text": "trade",
+            "highlight": true
+          },
+          {
+            "text": " them for a fisherman's fish, and a fisherman might trade fish for warm clothes made by a weaver. This system worked, but it had one big problem: what happened if the weaver did not want any fish that day?",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "The first coins",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "To solve this problem, people slowly began using objects that almost everyone agreed had ",
+            "highlight": false
+          },
+          {
+            "text": "value",
+            "highlight": true
+          },
+          {
+            "text": ", such as salt, shells or animal teeth. Around 2,700 years ago, in a place called Lydia, in what is now Turkey, people made the first metal ",
+            "highlight": false
+          },
+          {
+            "text": "coin",
+            "highlight": true
+          },
+          {
+            "text": "s. Coins were easy to carry, hard to copy, and everyone could agree on how much they were worth. This simple invention changed the way the whole world did business.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🪙One of the first metal coins in history.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Paper, plastic and banks",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Many centuries later, in China, merchants started using paper money instead of heavy bags of coins. Over time, buildings called ",
+            "highlight": false
+          },
+          {
+            "text": "bank",
+            "highlight": true
+          },
+          {
+            "text": "s appeared, where people could keep their money safely and borrow money when they needed it. In the twentieth century, small plastic cards arrived, allowing people to pay for things without carrying any cash at all.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🏦A bank keeps money safe for its customers.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Money without any coins",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Today, many payments are completely ",
+            "highlight": false
+          },
+          {
+            "text": "cashless",
+            "highlight": true
+          },
+          {
+            "text": ". People tap a card or a phone at a shop, and the money moves instantly from one bank account to another. Some countries are even experimenting with digital money that only exists on computers, with no physical coins or notes at all.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "The real secret of money",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Whether it is a shiny coin, a paper note, or a number on a screen, money only works because people ",
+            "highlight": false
+          },
+          {
+            "text": "trust",
+            "highlight": true
+          },
+          {
+            "text": " it. If everybody suddenly stopped believing that money had value, the whole system would collapse overnight. In many ways, money is less about metal and paper, and more about the shared trust between millions of strangers.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "Before money existed\n\nLong before coins and banknotes were invented, people still needed a way to get the things they did not have. A farmer with extra eggs might trade them for a fisherman's fish, and a fisherman might trade fish for warm clothes made by a weaver. This system worked, but it had one big problem: what happened if the weaver did not want any fish that day?\n\nThe first coins\n\nTo solve this problem, people slowly began using objects that almost everyone agreed had value, such as salt, shells or animal teeth. Around 2,700 years ago, in a place called Lydia, in what is now Turkey, people made the first metal coins. Coins were easy to carry, hard to copy, and everyone could agree on how much they were worth. This simple invention changed the way the whole world did business.\n\nPaper, plastic and banks\n\nMany centuries later, in China, merchants started using paper money instead of heavy bags of coins. Over time, buildings called banks appeared, where people could keep their money safely and borrow money when they needed it. In the twentieth century, small plastic cards arrived, allowing people to pay for things without carrying any cash at all.\n\nMoney without any coins\n\nToday, many payments are completely cashless. People tap a card or a phone at a shop, and the money moves instantly from one bank account to another. Some countries are even experimenting with digital money that only exists on computers, with no physical coins or notes at all.\n\nThe real secret of money\n\nWhether it is a shiny coin, a paper note, or a number on a screen, money only works because people trust it. If everybody suddenly stopped believing that money had value, the whole system would collapse overnight. In many ways, money is less about metal and paper, and more about the shared trust between millions of strangers.",
+    "vocabulary": [
+      {
+        "word": "trade",
+        "meaning": "to exchange one thing for another",
+        "group": ""
+      },
+      {
+        "word": "coin",
+        "meaning": "a small, round piece of metal used as money",
+        "group": ""
+      },
+      {
+        "word": "value",
+        "meaning": "how much something is worth",
+        "group": ""
+      },
+      {
+        "word": "bank",
+        "meaning": "a place where people keep and borrow money",
+        "group": ""
+      },
+      {
+        "word": "cashless",
+        "meaning": "using cards or phones to pay, instead of coins or notes",
+        "group": ""
+      },
+      {
+        "word": "trust",
+        "meaning": "a strong belief that something or someone is reliable",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "Before money, people used trade to get things they needed.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "The first metal coins were made in Lydia.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Paper money was first used in China.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Banks were invented to make trading fish easier.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Cashless payment means paying without cash.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Some countries are experimenting with digital money.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "The article says money works without any trust at all.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "What problem did trading have?",
+            "options": [
+              "It was too fast",
+              "Both people had to want each other's item",
+              "It used too much paper"
+            ],
+            "answer": "Both people had to want each other's item",
+            "explanation": ""
+          },
+          {
+            "prompt": "Where were the first metal coins made?",
+            "options": [
+              "China",
+              "Lydia",
+              "A bank"
+            ],
+            "answer": "Lydia",
+            "explanation": ""
+          },
+          {
+            "prompt": "Who first used paper money?",
+            "options": [
+              "Merchants in China",
+              "Farmers in Lydia",
+              "Modern banks"
+            ],
+            "answer": "Merchants in China",
+            "explanation": ""
+          },
+          {
+            "prompt": "What does 'cashless' mean?",
+            "options": [
+              "Paying only with coins",
+              "Paying without cash",
+              "Having no money"
+            ],
+            "answer": "Paying without cash",
+            "explanation": ""
+          },
+          {
+            "prompt": "According to the article, why does money work?",
+            "options": [
+              "Because it is heavy",
+              "Because people trust it",
+              "Because it is always paper"
+            ],
+            "answer": "Because people trust it",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "trade",
+            "options": [
+              "to exchange one thing for another",
+              "a small, round piece of metal used as money",
+              "how much something is worth",
+              "a place where people keep and borrow money",
+              "using cards or phones to pay, instead of coins or notes",
+              "a strong belief that something or someone is reliable"
+            ],
+            "answer": "to exchange one thing for another",
+            "explanation": ""
+          },
+          {
+            "prompt": "coin",
+            "options": [
+              "to exchange one thing for another",
+              "a small, round piece of metal used as money",
+              "how much something is worth",
+              "a place where people keep and borrow money",
+              "using cards or phones to pay, instead of coins or notes",
+              "a strong belief that something or someone is reliable"
+            ],
+            "answer": "a small, round piece of metal used as money",
+            "explanation": ""
+          },
+          {
+            "prompt": "value",
+            "options": [
+              "to exchange one thing for another",
+              "a small, round piece of metal used as money",
+              "how much something is worth",
+              "a place where people keep and borrow money",
+              "using cards or phones to pay, instead of coins or notes",
+              "a strong belief that something or someone is reliable"
+            ],
+            "answer": "how much something is worth",
+            "explanation": ""
+          },
+          {
+            "prompt": "bank",
+            "options": [
+              "to exchange one thing for another",
+              "a small, round piece of metal used as money",
+              "how much something is worth",
+              "a place where people keep and borrow money",
+              "using cards or phones to pay, instead of coins or notes",
+              "a strong belief that something or someone is reliable"
+            ],
+            "answer": "a place where people keep and borrow money",
+            "explanation": ""
+          },
+          {
+            "prompt": "cashless",
+            "options": [
+              "to exchange one thing for another",
+              "a small, round piece of metal used as money",
+              "how much something is worth",
+              "a place where people keep and borrow money",
+              "using cards or phones to pay, instead of coins or notes",
+              "a strong belief that something or someone is reliable"
+            ],
+            "answer": "using cards or phones to pay, instead of coins or notes",
+            "explanation": ""
+          },
+          {
+            "prompt": "trust",
+            "options": [
+              "to exchange one thing for another",
+              "a small, round piece of metal used as money",
+              "how much something is worth",
+              "a place where people keep and borrow money",
+              "using cards or phones to pay, instead of coins or notes",
+              "a strong belief that something or someone is reliable"
+            ],
+            "answer": "a strong belief that something or someone is reliable",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 Do you usually pay with cash or with a card?",
+      "💬 What would you trade if there was no money?",
+      "💬 Do you think the world will use cash in fifty years?",
+      "💬 Why do people trust money, in your opinion?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "04-the-history-of-money.html",
+    "sourceSha256": "367b080c11e532056adfecbf2e79371f5d081d7cccb0478ad35d838ae7876bb2"
+  },
+  {
+    "slug": "robots-in-everyday-life",
+    "title": "Robots in Everyday Life",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Not just in films",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "When you hear the word ",
+            "highlight": false
+          },
+          {
+            "text": "robot",
+            "highlight": true
+          },
+          {
+            "text": ", you might imagine a metal character from a science-fiction film. But real robots are already all around us — in factories, hospitals, and even inside our homes — quietly doing jobs that used to take hours of human effort.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🏠Robots are already part of daily life.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Working on the factory floor",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Inside a modern ",
+            "highlight": false
+          },
+          {
+            "text": "factory",
+            "highlight": true
+          },
+          {
+            "text": ", long metal arms lift heavy car parts, weld pieces of metal together, and paint vehicles with perfect, even lines. These robots can repeat the same ",
+            "highlight": false
+          },
+          {
+            "text": "task",
+            "highlight": true
+          },
+          {
+            "text": " thousands of times a day without ever getting tired or making a mistake. Building a single ",
+            "highlight": false
+          },
+          {
+            "text": "vehicle",
+            "highlight": true
+          },
+          {
+            "text": " once needed dozens of workers; today, robots can complete many of the same steps in a fraction of the time.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Helping doctors save lives",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Robots are not only useful for heavy or repeated work. In some hospitals, surgeons now use robotic arms to perform delicate ",
+            "highlight": false
+          },
+          {
+            "text": "surgery",
+            "highlight": true
+          },
+          {
+            "text": ". These robotic tools can move more precisely than a human hand, which allows the doctor to make smaller cuts, and this often helps patients recover faster.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🩺A robotic arm assisting during an operation.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Robots at home",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "At home, small robots can now vacuum the floor, cut the grass in the garden, or answer simple questions when you speak to them. None of these robots are as clever as the ones in movies, but they still save people a great deal of time every week.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Will robots take our jobs?",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Many people worry that robots will completely ",
+            "highlight": false
+          },
+          {
+            "text": "replace",
+            "highlight": true
+          },
+          {
+            "text": " human workers. It is true that robots have already changed some jobs, especially in factories. However, most experts believe that robots are better at repeating simple tasks, while humans are still much better at being creative, solving new problems, and caring for other people. The future, most scientists agree, is likely to be one where humans and robots work together, not against each other.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "Not just in films\n\nWhen you hear the word robot, you might imagine a metal character from a science-fiction film. But real robots are already all around us — in factories, hospitals, and even inside our homes — quietly doing jobs that used to take hours of human effort.\n\nWorking on the factory floor\n\nInside a modern factory, long metal arms lift heavy car parts, weld pieces of metal together, and paint vehicles with perfect, even lines. These robots can repeat the same task thousands of times a day without ever getting tired or making a mistake. Building a single vehicle once needed dozens of workers; today, robots can complete many of the same steps in a fraction of the time.\n\nHelping doctors save lives\n\nRobots are not only useful for heavy or repeated work. In some hospitals, surgeons now use robotic arms to perform delicate surgery. These robotic tools can move more precisely than a human hand, which allows the doctor to make smaller cuts, and this often helps patients recover faster.\n\nRobots at home\n\nAt home, small robots can now vacuum the floor, cut the grass in the garden, or answer simple questions when you speak to them. None of these robots are as clever as the ones in movies, but they still save people a great deal of time every week.\n\nWill robots take our jobs?\n\nMany people worry that robots will completely replace human workers. It is true that robots have already changed some jobs, especially in factories. However, most experts believe that robots are better at repeating simple tasks, while humans are still much better at being creative, solving new problems, and caring for other people. The future, most scientists agree, is likely to be one where humans and robots work together, not against each other.",
+    "vocabulary": [
+      {
+        "word": "robot",
+        "meaning": "a machine that can do jobs, sometimes by itself",
+        "group": ""
+      },
+      {
+        "word": "task",
+        "meaning": "a piece of work that needs to be done",
+        "group": ""
+      },
+      {
+        "word": "factory",
+        "meaning": "a large building where things are made by machines",
+        "group": ""
+      },
+      {
+        "word": "vehicle",
+        "meaning": "a machine, such as a car or a bus, used for travelling",
+        "group": ""
+      },
+      {
+        "word": "surgery",
+        "meaning": "a medical operation on a person's body",
+        "group": ""
+      },
+      {
+        "word": "replace",
+        "meaning": "to take the place of someone or something",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "Robots only exist in science-fiction films.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Robots in factories can repeat tasks many times a day.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Robotic arms are never used in hospitals.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Robotic surgery can help patients recover faster.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "No robot has ever been used at home.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Most experts think robots and humans will work together in future.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "The article says humans are better than robots at being creative.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "Where do robots often help build cars?",
+            "options": [
+              "In a factory",
+              "In a hospital",
+              "In a garden"
+            ],
+            "answer": "In a factory",
+            "explanation": ""
+          },
+          {
+            "prompt": "Why are robots useful in surgery?",
+            "options": [
+              "They can talk to patients",
+              "They can move very precisely",
+              "They can cook food"
+            ],
+            "answer": "They can move very precisely",
+            "explanation": ""
+          },
+          {
+            "prompt": "Which of these can a home robot do?",
+            "options": [
+              "Perform surgery",
+              "Vacuum the floor",
+              "Build a car"
+            ],
+            "answer": "Vacuum the floor",
+            "explanation": ""
+          },
+          {
+            "prompt": "According to the article, humans are better at...",
+            "options": [
+              "repeating simple tasks",
+              "being creative",
+              "never getting tired"
+            ],
+            "answer": "being creative",
+            "explanation": ""
+          },
+          {
+            "prompt": "What do most experts believe about the future?",
+            "options": [
+              "Robots will disappear",
+              "Humans and robots will work together",
+              "Only robots will work"
+            ],
+            "answer": "Humans and robots will work together",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "robot",
+            "options": [
+              "a machine that can do jobs, sometimes by itself",
+              "a piece of work that needs to be done",
+              "a large building where things are made by machines",
+              "a machine, such as a car or a bus, used for travelling",
+              "a medical operation on a person's body",
+              "to take the place of someone or something"
+            ],
+            "answer": "a machine that can do jobs, sometimes by itself",
+            "explanation": ""
+          },
+          {
+            "prompt": "task",
+            "options": [
+              "a machine that can do jobs, sometimes by itself",
+              "a piece of work that needs to be done",
+              "a large building where things are made by machines",
+              "a machine, such as a car or a bus, used for travelling",
+              "a medical operation on a person's body",
+              "to take the place of someone or something"
+            ],
+            "answer": "a piece of work that needs to be done",
+            "explanation": ""
+          },
+          {
+            "prompt": "factory",
+            "options": [
+              "a machine that can do jobs, sometimes by itself",
+              "a piece of work that needs to be done",
+              "a large building where things are made by machines",
+              "a machine, such as a car or a bus, used for travelling",
+              "a medical operation on a person's body",
+              "to take the place of someone or something"
+            ],
+            "answer": "a large building where things are made by machines",
+            "explanation": ""
+          },
+          {
+            "prompt": "vehicle",
+            "options": [
+              "a machine that can do jobs, sometimes by itself",
+              "a piece of work that needs to be done",
+              "a large building where things are made by machines",
+              "a machine, such as a car or a bus, used for travelling",
+              "a medical operation on a person's body",
+              "to take the place of someone or something"
+            ],
+            "answer": "a machine, such as a car or a bus, used for travelling",
+            "explanation": ""
+          },
+          {
+            "prompt": "surgery",
+            "options": [
+              "a machine that can do jobs, sometimes by itself",
+              "a piece of work that needs to be done",
+              "a large building where things are made by machines",
+              "a machine, such as a car or a bus, used for travelling",
+              "a medical operation on a person's body",
+              "to take the place of someone or something"
+            ],
+            "answer": "a medical operation on a person's body",
+            "explanation": ""
+          },
+          {
+            "prompt": "replace",
+            "options": [
+              "a machine that can do jobs, sometimes by itself",
+              "a piece of work that needs to be done",
+              "a large building where things are made by machines",
+              "a machine, such as a car or a bus, used for travelling",
+              "a medical operation on a person's body",
+              "to take the place of someone or something"
+            ],
+            "answer": "to take the place of someone or something",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 What jobs do you think robots will do in the future?",
+      "💬 Would you like a robot at home? What would it do?",
+      "💬 Are you worried that robots could take people's jobs?",
+      "💬 What can humans do better than robots, in your opinion?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "05-robots-in-everyday-life.html",
+    "sourceSha256": "4d917c8dc050a7bf83158621a2d39bf815bfbbdd2a82a7a8d1e0b8f0f781162e"
+  },
+  {
+    "slug": "extreme-weather-and-climate",
+    "title": "Extreme Weather and a Changing Climate",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "A hotter planet",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "In the last few decades, scientists have measured something worrying: the average ",
+            "highlight": false
+          },
+          {
+            "text": "temperature",
+            "highlight": true
+          },
+          {
+            "text": " of the Earth is slowly rising. This might not sound serious, but even a small change in temperature can affect oceans, forests and the weather that we experience every day.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🌡️Earth's temperature has slowly risen for decades.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Too much water, or not enough",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "One clear result of a warming planet is more extreme weather. In some regions, heavy rain now causes serious ",
+            "highlight": false
+          },
+          {
+            "text": "flood",
+            "highlight": true
+          },
+          {
+            "text": "s, pushing water into streets and homes within hours. In other regions, the opposite happens: a long ",
+            "highlight": false
+          },
+          {
+            "text": "drought",
+            "highlight": true
+          },
+          {
+            "text": " dries up rivers and makes it very difficult for farmers to grow food. The same warming planet can create these two very different, and equally dangerous, problems.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Stronger storms",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Warmer oceans also give more energy to ",
+            "highlight": false
+          },
+          {
+            "text": "storm",
+            "highlight": true
+          },
+          {
+            "text": "s. Hurricanes and typhoons that form over warm water can grow bigger and stronger than they did in the past, bringing dangerous winds and huge waves to coastal cities. Weather experts now warn people earlier, but strong storms can still cause enormous damage in just a few hours.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🌀Storms can grow bigger over warm ocean water.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Why is the climate changing?",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Most scientists agree that the main cause of these changes is human activity, especially burning coal, oil and gas for energy. This releases gases into the air that trap heat, slowly changing the ",
+            "highlight": false
+          },
+          {
+            "text": "climate",
+            "highlight": true
+          },
+          {
+            "text": " of the whole planet, not just one country.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "What can be done?",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "The good news is that people can act. Governments are building more wind farms and solar panels, cities are planting more trees, and many families are trying to ",
+            "highlight": false
+          },
+          {
+            "text": "reduce",
+            "highlight": true
+          },
+          {
+            "text": " the amount of energy they use every day. No single action will solve the problem alone, but scientists say that millions of small changes, made together, can still make a real difference.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "A hotter planet\n\nIn the last few decades, scientists have measured something worrying: the average temperature of the Earth is slowly rising. This might not sound serious, but even a small change in temperature can affect oceans, forests and the weather that we experience every day.\n\nToo much water, or not enough\n\nOne clear result of a warming planet is more extreme weather. In some regions, heavy rain now causes serious floods, pushing water into streets and homes within hours. In other regions, the opposite happens: a long drought dries up rivers and makes it very difficult for farmers to grow food. The same warming planet can create these two very different, and equally dangerous, problems.\n\nStronger storms\n\nWarmer oceans also give more energy to storms. Hurricanes and typhoons that form over warm water can grow bigger and stronger than they did in the past, bringing dangerous winds and huge waves to coastal cities. Weather experts now warn people earlier, but strong storms can still cause enormous damage in just a few hours.\n\nWhy is the climate changing?\n\nMost scientists agree that the main cause of these changes is human activity, especially burning coal, oil and gas for energy. This releases gases into the air that trap heat, slowly changing the climate of the whole planet, not just one country.\n\nWhat can be done?\n\nThe good news is that people can act. Governments are building more wind farms and solar panels, cities are planting more trees, and many families are trying to reduce the amount of energy they use every day. No single action will solve the problem alone, but scientists say that millions of small changes, made together, can still make a real difference.",
+    "vocabulary": [
+      {
+        "word": "temperature",
+        "meaning": "how hot or cold something is",
+        "group": ""
+      },
+      {
+        "word": "flood",
+        "meaning": "when water covers land that is usually dry",
+        "group": ""
+      },
+      {
+        "word": "drought",
+        "meaning": "a long period with little or no rain",
+        "group": ""
+      },
+      {
+        "word": "storm",
+        "meaning": "very bad weather with strong wind and heavy rain",
+        "group": ""
+      },
+      {
+        "word": "climate",
+        "meaning": "the usual weather pattern of a place over a long time",
+        "group": ""
+      },
+      {
+        "word": "reduce",
+        "meaning": "to make something smaller or less in amount",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "The average temperature of the Earth has stayed exactly the same.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Heavy rain can cause floods.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "A drought means there is too much rain.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Warmer oceans can make storms stronger.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Most scientists say human activity is a main cause of climate change.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Burning coal and oil releases gases that trap heat.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "The article says nothing at all can be done about climate change.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "What is happening to the Earth's temperature?",
+            "options": [
+              "It is falling quickly",
+              "It is slowly rising",
+              "It never changes"
+            ],
+            "answer": "It is slowly rising",
+            "explanation": ""
+          },
+          {
+            "prompt": "What can heavy rain cause?",
+            "options": [
+              "Floods",
+              "Droughts",
+              "Cold winters"
+            ],
+            "answer": "Floods",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is a drought?",
+            "options": [
+              "Too much snow",
+              "A long period with little rain",
+              "A strong storm"
+            ],
+            "answer": "A long period with little rain",
+            "explanation": ""
+          },
+          {
+            "prompt": "Why do storms get stronger over warm oceans?",
+            "options": [
+              "They lose energy",
+              "They gain more energy",
+              "They stop moving"
+            ],
+            "answer": "They gain more energy",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is one way to help the climate?",
+            "options": [
+              "Burning more oil",
+              "Using wind and solar energy",
+              "Cutting down more trees"
+            ],
+            "answer": "Using wind and solar energy",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "temperature",
+            "options": [
+              "how hot or cold something is",
+              "when water covers land that is usually dry",
+              "a long period with little or no rain",
+              "very bad weather with strong wind and heavy rain",
+              "the usual weather pattern of a place over a long time",
+              "to make something smaller or less in amount"
+            ],
+            "answer": "how hot or cold something is",
+            "explanation": ""
+          },
+          {
+            "prompt": "flood",
+            "options": [
+              "how hot or cold something is",
+              "when water covers land that is usually dry",
+              "a long period with little or no rain",
+              "very bad weather with strong wind and heavy rain",
+              "the usual weather pattern of a place over a long time",
+              "to make something smaller or less in amount"
+            ],
+            "answer": "when water covers land that is usually dry",
+            "explanation": ""
+          },
+          {
+            "prompt": "drought",
+            "options": [
+              "how hot or cold something is",
+              "when water covers land that is usually dry",
+              "a long period with little or no rain",
+              "very bad weather with strong wind and heavy rain",
+              "the usual weather pattern of a place over a long time",
+              "to make something smaller or less in amount"
+            ],
+            "answer": "a long period with little or no rain",
+            "explanation": ""
+          },
+          {
+            "prompt": "storm",
+            "options": [
+              "how hot or cold something is",
+              "when water covers land that is usually dry",
+              "a long period with little or no rain",
+              "very bad weather with strong wind and heavy rain",
+              "the usual weather pattern of a place over a long time",
+              "to make something smaller or less in amount"
+            ],
+            "answer": "very bad weather with strong wind and heavy rain",
+            "explanation": ""
+          },
+          {
+            "prompt": "climate",
+            "options": [
+              "how hot or cold something is",
+              "when water covers land that is usually dry",
+              "a long period with little or no rain",
+              "very bad weather with strong wind and heavy rain",
+              "the usual weather pattern of a place over a long time",
+              "to make something smaller or less in amount"
+            ],
+            "answer": "the usual weather pattern of a place over a long time",
+            "explanation": ""
+          },
+          {
+            "prompt": "reduce",
+            "options": [
+              "how hot or cold something is",
+              "when water covers land that is usually dry",
+              "a long period with little or no rain",
+              "very bad weather with strong wind and heavy rain",
+              "the usual weather pattern of a place over a long time",
+              "to make something smaller or less in amount"
+            ],
+            "answer": "to make something smaller or less in amount",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 Have you noticed any extreme weather where you live?",
+      "💬 What can ordinary people do to help the climate?",
+      "💬 Do you think governments are doing enough about climate change?",
+      "💬 How do you feel when you hear news about extreme weather?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "06-extreme-weather-and-climate.html",
+    "sourceSha256": "d1b2e4978b8bed1378970bb2c05e14a64e74f9538e3e834dc092dc3abbfb702a"
+  },
+  {
+    "slug": "the-world-of-silent-movies",
+    "title": "The World of Silent Movies",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Movies before words",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Before actors could speak on screen, cinemas were full of ",
+            "highlight": false
+          },
+          {
+            "text": "silent film",
+            "highlight": true
+          },
+          {
+            "text": "s. For almost thirty years, from the 1890s until the late 1920s, every movie in the world was silent, and audiences still filled theatres night after night.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🎞️Old film reels from the silent movie era.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "How could a movie be silent?",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Without recorded sound, filmmakers had to be extremely creative. Actors used big, clear body movements and dramatic facial ",
+            "highlight": false
+          },
+          {
+            "text": "expression",
+            "highlight": true
+          },
+          {
+            "text": "s so the audience could understand the story without hearing a single word. In the cinema itself, a pianist or a small band played ",
+            "highlight": false
+          },
+          {
+            "text": "live music",
+            "highlight": true
+          },
+          {
+            "text": " next to the screen, adding excitement to chase scenes and sadness to emotional moments.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "The kings and queens of comedy",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Some of the biggest stars of this era were ",
+            "highlight": false
+          },
+          {
+            "text": "comedian",
+            "highlight": true
+          },
+          {
+            "text": "s. Charlie Chaplin, dressed as a clumsy but kind character called the Tramp, made millions of people laugh using nothing but movement and timing. Buster Keaton became famous for performing incredibly dangerous stunts himself, never once smiling on camera, which somehow made his films even funnier.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🎩A silent film comedian in his famous costume.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "A remarkable invention",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Making moving pictures at all was seen as a remarkable ",
+            "highlight": false
+          },
+          {
+            "text": "invention",
+            "highlight": true
+          },
+          {
+            "text": " at the time; many early audiences had never seen anything like it and were amazed simply by images that moved. As cameras and film technology slowly improved, directors learned new tricks, using close-ups, fast cuts and clever lighting to tell more and more exciting stories.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "The end of an era",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "In 1927, a film called \"The Jazz Singer\" surprised audiences with a few moments of recorded speech, and within just a few years, almost every studio was making \"talkies\" instead. Silent films quickly disappeared from cinemas, but many of their stars became ",
+            "highlight": false
+          },
+          {
+            "text": "legend",
+            "highlight": true
+          },
+          {
+            "text": "s who are still studied and admired by filmmakers today.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "Movies before words\n\nBefore actors could speak on screen, cinemas were full of silent films. For almost thirty years, from the 1890s until the late 1920s, every movie in the world was silent, and audiences still filled theatres night after night.\n\nHow could a movie be silent?\n\nWithout recorded sound, filmmakers had to be extremely creative. Actors used big, clear body movements and dramatic facial expressions so the audience could understand the story without hearing a single word. In the cinema itself, a pianist or a small band played live music next to the screen, adding excitement to chase scenes and sadness to emotional moments.\n\nThe kings and queens of comedy\n\nSome of the biggest stars of this era were comedians. Charlie Chaplin, dressed as a clumsy but kind character called the Tramp, made millions of people laugh using nothing but movement and timing. Buster Keaton became famous for performing incredibly dangerous stunts himself, never once smiling on camera, which somehow made his films even funnier.\n\nA remarkable invention\n\nMaking moving pictures at all was seen as a remarkable invention at the time; many early audiences had never seen anything like it and were amazed simply by images that moved. As cameras and film technology slowly improved, directors learned new tricks, using close-ups, fast cuts and clever lighting to tell more and more exciting stories.\n\nThe end of an era\n\nIn 1927, a film called \"The Jazz Singer\" surprised audiences with a few moments of recorded speech, and within just a few years, almost every studio was making \"talkies\" instead. Silent films quickly disappeared from cinemas, but many of their stars became legends who are still studied and admired by filmmakers today.",
+    "vocabulary": [
+      {
+        "word": "silent film",
+        "meaning": "an old kind of movie with no recorded speech or sound",
+        "group": ""
+      },
+      {
+        "word": "live music",
+        "meaning": "music played by real musicians, not recorded",
+        "group": ""
+      },
+      {
+        "word": "comedian",
+        "meaning": "a performer who makes people laugh",
+        "group": ""
+      },
+      {
+        "word": "expression",
+        "meaning": "the look on someone's face that shows their feelings",
+        "group": ""
+      },
+      {
+        "word": "invention",
+        "meaning": "a new machine or idea created for the first time",
+        "group": ""
+      },
+      {
+        "word": "legend",
+        "meaning": "a famous person remembered for a very long time",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "Silent films had actors speaking recorded words.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Silent movies were popular for about thirty years.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Live music was often played during silent films.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Charlie Chaplin was a famous silent film comedian.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Buster Keaton always smiled on camera.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "\"The Jazz Singer\" included some recorded speech.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Silent film stars are completely forgotten today.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "What is a silent film?",
+            "options": [
+              "A movie with no recorded sound",
+              "A movie with only music",
+              "A movie with no actors"
+            ],
+            "answer": "A movie with no recorded sound",
+            "explanation": ""
+          },
+          {
+            "prompt": "How did audiences understand the story in silent films?",
+            "options": [
+              "Through subtitles only",
+              "Through body movement and expression",
+              "Through recorded speech"
+            ],
+            "answer": "Through body movement and expression",
+            "explanation": ""
+          },
+          {
+            "prompt": "Who played music during silent films in the cinema?",
+            "options": [
+              "A pianist or a small band",
+              "The actors themselves",
+              "No one"
+            ],
+            "answer": "A pianist or a small band",
+            "explanation": ""
+          },
+          {
+            "prompt": "What was special about Buster Keaton?",
+            "options": [
+              "He sang songs",
+              "He performed dangerous stunts himself",
+              "He never appeared on screen"
+            ],
+            "answer": "He performed dangerous stunts himself",
+            "explanation": ""
+          },
+          {
+            "prompt": "What changed cinema in 1927?",
+            "options": [
+              "Colour was invented",
+              "\"The Jazz Singer\" used recorded speech",
+              "Cinemas closed down"
+            ],
+            "answer": "\"The Jazz Singer\" used recorded speech",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "silent film",
+            "options": [
+              "an old kind of movie with no recorded speech or sound",
+              "music played by real musicians, not recorded",
+              "a performer who makes people laugh",
+              "the look on someone's face that shows their feelings",
+              "a new machine or idea created for the first time",
+              "a famous person remembered for a very long time"
+            ],
+            "answer": "an old kind of movie with no recorded speech or sound",
+            "explanation": ""
+          },
+          {
+            "prompt": "live music",
+            "options": [
+              "an old kind of movie with no recorded speech or sound",
+              "music played by real musicians, not recorded",
+              "a performer who makes people laugh",
+              "the look on someone's face that shows their feelings",
+              "a new machine or idea created for the first time",
+              "a famous person remembered for a very long time"
+            ],
+            "answer": "music played by real musicians, not recorded",
+            "explanation": ""
+          },
+          {
+            "prompt": "comedian",
+            "options": [
+              "an old kind of movie with no recorded speech or sound",
+              "music played by real musicians, not recorded",
+              "a performer who makes people laugh",
+              "the look on someone's face that shows their feelings",
+              "a new machine or idea created for the first time",
+              "a famous person remembered for a very long time"
+            ],
+            "answer": "a performer who makes people laugh",
+            "explanation": ""
+          },
+          {
+            "prompt": "expression",
+            "options": [
+              "an old kind of movie with no recorded speech or sound",
+              "music played by real musicians, not recorded",
+              "a performer who makes people laugh",
+              "the look on someone's face that shows their feelings",
+              "a new machine or idea created for the first time",
+              "a famous person remembered for a very long time"
+            ],
+            "answer": "the look on someone's face that shows their feelings",
+            "explanation": ""
+          },
+          {
+            "prompt": "invention",
+            "options": [
+              "an old kind of movie with no recorded speech or sound",
+              "music played by real musicians, not recorded",
+              "a performer who makes people laugh",
+              "the look on someone's face that shows their feelings",
+              "a new machine or idea created for the first time",
+              "a famous person remembered for a very long time"
+            ],
+            "answer": "a new machine or idea created for the first time",
+            "explanation": ""
+          },
+          {
+            "prompt": "legend",
+            "options": [
+              "an old kind of movie with no recorded speech or sound",
+              "music played by real musicians, not recorded",
+              "a performer who makes people laugh",
+              "the look on someone's face that shows their feelings",
+              "a new machine or idea created for the first time",
+              "a famous person remembered for a very long time"
+            ],
+            "answer": "a famous person remembered for a very long time",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 Have you ever watched a silent film? What was it like?",
+      "💬 Do you think acting without words is difficult?",
+      "💬 Who is your favourite comedian today?",
+      "💬 How do you think cinema will change in the future?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "07-the-world-of-silent-movies.html",
+    "sourceSha256": "82e976a35d4fd0dd1a4cd9e4b88e7a954dd1ea609041345962879ecbaab6d9f6"
+  },
+  {
+    "slug": "how-the-internet-changed-shopping",
+    "title": "How the Internet Changed Shopping",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Shopping without leaving home",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Thirty years ago, buying a new pair of shoes or a book meant travelling to a shop, choosing an item from a shelf, and paying at a till. Today, millions of people complete the same ",
+            "highlight": false
+          },
+          {
+            "text": "purchase",
+            "highlight": true
+          },
+          {
+            "text": " from their sofa, using nothing but a phone or a laptop.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "📱Shopping is now just a few taps away.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "The rise of online shopping",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Large online ",
+            "highlight": false
+          },
+          {
+            "text": "platform",
+            "highlight": true
+          },
+          {
+            "text": "s now sell almost anything imaginable, from fresh vegetables to furniture, cars and even houses. A shopper can compare prices from different ",
+            "highlight": false
+          },
+          {
+            "text": "retailer",
+            "highlight": true
+          },
+          {
+            "text": "s in seconds, something that used to take an entire afternoon of walking between different shops.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Trusting a stranger's opinion",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Since online shoppers cannot touch or try a product before buying it, they often rely on a customer ",
+            "highlight": false
+          },
+          {
+            "text": "review",
+            "highlight": true
+          },
+          {
+            "text": " instead. Reading what hundreds of other buyers thought about a product's quality helps people feel more confident before clicking the \"buy\" button, even though they have never met any of those reviewers.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "⭐Reviews help shoppers decide what to buy.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "From click to doorstep",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Once an order is placed, the real journey begins. Warehouses use fast machines to find and pack items, and companies compete to offer the quickest ",
+            "highlight": false
+          },
+          {
+            "text": "delivery",
+            "highlight": true
+          },
+          {
+            "text": ", sometimes bringing a package to your door on the very same day it was ordered. This speed would have seemed almost impossible a generation ago.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Staying safe online",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Of course, shopping online also brings new worries, especially about money and personal information. Trustworthy websites use a ",
+            "highlight": false
+          },
+          {
+            "text": "secure",
+            "highlight": true
+          },
+          {
+            "text": " connection to protect card details, shown by a small padlock symbol in the browser. Experts still advise shoppers to be careful, check reviews, and only buy from websites they trust, because not every online shop is honest.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "Shopping without leaving home\n\nThirty years ago, buying a new pair of shoes or a book meant travelling to a shop, choosing an item from a shelf, and paying at a till. Today, millions of people complete the same purchase from their sofa, using nothing but a phone or a laptop.\n\nThe rise of online shopping\n\nLarge online platforms now sell almost anything imaginable, from fresh vegetables to furniture, cars and even houses. A shopper can compare prices from different retailers in seconds, something that used to take an entire afternoon of walking between different shops.\n\nTrusting a stranger's opinion\n\nSince online shoppers cannot touch or try a product before buying it, they often rely on a customer review instead. Reading what hundreds of other buyers thought about a product's quality helps people feel more confident before clicking the \"buy\" button, even though they have never met any of those reviewers.\n\nFrom click to doorstep\n\nOnce an order is placed, the real journey begins. Warehouses use fast machines to find and pack items, and companies compete to offer the quickest delivery, sometimes bringing a package to your door on the very same day it was ordered. This speed would have seemed almost impossible a generation ago.\n\nStaying safe online\n\nOf course, shopping online also brings new worries, especially about money and personal information. Trustworthy websites use a secure connection to protect card details, shown by a small padlock symbol in the browser. Experts still advise shoppers to be careful, check reviews, and only buy from websites they trust, because not every online shop is honest.",
+    "vocabulary": [
+      {
+        "word": "purchase",
+        "meaning": "the act of buying something",
+        "group": ""
+      },
+      {
+        "word": "delivery",
+        "meaning": "when goods are brought to a person's home or a shop",
+        "group": ""
+      },
+      {
+        "word": "platform",
+        "meaning": "a website or app used for a particular activity, like shopping",
+        "group": ""
+      },
+      {
+        "word": "review",
+        "meaning": "a written opinion about a product, written by a customer",
+        "group": ""
+      },
+      {
+        "word": "retailer",
+        "meaning": "a business that sells goods directly to customers",
+        "group": ""
+      },
+      {
+        "word": "secure",
+        "meaning": "safe from danger, damage or theft",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "In the past, people had to travel to a shop to buy most things.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Online platforms only sell books.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Comparing prices online is usually faster than visiting many shops.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Reviews are written by the shop owners only.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Some online orders can be delivered on the same day.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "A secure website never protects card details.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Experts say every online shop can be trusted completely.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "What has changed the most about shopping?",
+            "options": [
+              "Nothing has changed",
+              "People can now shop online easily",
+              "Shops have disappeared completely"
+            ],
+            "answer": "People can now shop online easily",
+            "explanation": ""
+          },
+          {
+            "prompt": "Why do online shoppers read reviews?",
+            "options": [
+              "Because they cannot touch the product first",
+              "Because reviews are free games",
+              "Because shops require it"
+            ],
+            "answer": "Because they cannot touch the product first",
+            "explanation": ""
+          },
+          {
+            "prompt": "What happens after an order is placed?",
+            "options": [
+              "It is deleted",
+              "It is packed and delivered",
+              "It is forgotten"
+            ],
+            "answer": "It is packed and delivered",
+            "explanation": ""
+          },
+          {
+            "prompt": "What does a padlock symbol in a browser usually mean?",
+            "options": [
+              "The website is broken",
+              "The connection is secure",
+              "The item is out of stock"
+            ],
+            "answer": "The connection is secure",
+            "explanation": ""
+          },
+          {
+            "prompt": "What do experts advise online shoppers to do?",
+            "options": [
+              "Trust every website",
+              "Check reviews and be careful",
+              "Never buy anything online"
+            ],
+            "answer": "Check reviews and be careful",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "purchase",
+            "options": [
+              "the act of buying something",
+              "when goods are brought to a person's home or a shop",
+              "a website or app used for a particular activity, like shopping",
+              "a written opinion about a product, written by a customer",
+              "a business that sells goods directly to customers",
+              "safe from danger, damage or theft"
+            ],
+            "answer": "the act of buying something",
+            "explanation": ""
+          },
+          {
+            "prompt": "delivery",
+            "options": [
+              "the act of buying something",
+              "when goods are brought to a person's home or a shop",
+              "a website or app used for a particular activity, like shopping",
+              "a written opinion about a product, written by a customer",
+              "a business that sells goods directly to customers",
+              "safe from danger, damage or theft"
+            ],
+            "answer": "when goods are brought to a person's home or a shop",
+            "explanation": ""
+          },
+          {
+            "prompt": "platform",
+            "options": [
+              "the act of buying something",
+              "when goods are brought to a person's home or a shop",
+              "a website or app used for a particular activity, like shopping",
+              "a written opinion about a product, written by a customer",
+              "a business that sells goods directly to customers",
+              "safe from danger, damage or theft"
+            ],
+            "answer": "a website or app used for a particular activity, like shopping",
+            "explanation": ""
+          },
+          {
+            "prompt": "review",
+            "options": [
+              "the act of buying something",
+              "when goods are brought to a person's home or a shop",
+              "a website or app used for a particular activity, like shopping",
+              "a written opinion about a product, written by a customer",
+              "a business that sells goods directly to customers",
+              "safe from danger, damage or theft"
+            ],
+            "answer": "a written opinion about a product, written by a customer",
+            "explanation": ""
+          },
+          {
+            "prompt": "retailer",
+            "options": [
+              "the act of buying something",
+              "when goods are brought to a person's home or a shop",
+              "a website or app used for a particular activity, like shopping",
+              "a written opinion about a product, written by a customer",
+              "a business that sells goods directly to customers",
+              "safe from danger, damage or theft"
+            ],
+            "answer": "a business that sells goods directly to customers",
+            "explanation": ""
+          },
+          {
+            "prompt": "secure",
+            "options": [
+              "the act of buying something",
+              "when goods are brought to a person's home or a shop",
+              "a website or app used for a particular activity, like shopping",
+              "a written opinion about a product, written by a customer",
+              "a business that sells goods directly to customers",
+              "safe from danger, damage or theft"
+            ],
+            "answer": "safe from danger, damage or theft",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 Do you prefer shopping online or in a shop? Why?",
+      "💬 Have you ever read reviews before buying something?",
+      "💬 What was the last thing you bought online?",
+      "💬 What worries do you have about shopping on the internet?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "08-how-the-internet-changed-shopping.html",
+    "sourceSha256": "287eb3a3473b67eb22c9790da9832ca35ca31f6ff3b3a122e97feade98b0d730"
+  },
+  {
+    "slug": "festivals-around-the-world",
+    "title": "Festivals Around the World",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "A world full of celebration",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "No matter where you travel, you will almost always find people preparing to ",
+            "highlight": false
+          },
+          {
+            "text": "celebrate",
+            "highlight": true
+          },
+          {
+            "text": " something. Festivals bring communities together, filling streets with music, colour, and the smell of special food, even when the reasons for the celebration are completely different from one culture to another.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🎊Colourful festivals bring whole communities together.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Lights, colour and fire",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "In India, during the festival of Diwali, millions of small lamps and bright ",
+            "highlight": false
+          },
+          {
+            "text": "fireworks",
+            "highlight": true
+          },
+          {
+            "text": " light up the night sky to celebrate the victory of light over darkness. In Spain, the town of Valencia holds a huge festival called Las Fallas, where enormous, colourful statues are built and then dramatically burned in the street.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Dressing up for the occasion",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Many festivals also involve wearing a special ",
+            "highlight": false
+          },
+          {
+            "text": "costume",
+            "highlight": true
+          },
+          {
+            "text": ". During Carnival in Brazil, dancers wear extremely bright, feathered outfits and perform in huge parades that last for days. In Venice, Italy, people wear elegant masks during their famous Carnival, hiding their identity while they enjoy the celebrations.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🎭A traditional festival costume and mask.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Remembering the past",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Not every festival is only about fun; some are about remembering. In Mexico, during the Day of the Dead, families build colourful altars covered in flowers and photographs to honour an ",
+            "highlight": false
+          },
+          {
+            "text": "ancestor",
+            "highlight": true
+          },
+          {
+            "text": " who has died. Instead of being sad, families remember these relatives with music, stories, and a shared ",
+            "highlight": false
+          },
+          {
+            "text": "feast",
+            "highlight": true
+          },
+          {
+            "text": " of their loved one's favourite food.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Why festivals matter",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Every festival follows its own ",
+            "highlight": false
+          },
+          {
+            "text": "tradition",
+            "highlight": true
+          },
+          {
+            "text": ", passed down from parents to children for many generations. Even though the customs are different everywhere, festivals always seem to do the same important job: they bring people together, strengthen communities, and give everyone, for at least one day, a good reason to smile.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "A world full of celebration\n\nNo matter where you travel, you will almost always find people preparing to celebrate something. Festivals bring communities together, filling streets with music, colour, and the smell of special food, even when the reasons for the celebration are completely different from one culture to another.\n\nLights, colour and fire\n\nIn India, during the festival of Diwali, millions of small lamps and bright fireworks light up the night sky to celebrate the victory of light over darkness. In Spain, the town of Valencia holds a huge festival called Las Fallas, where enormous, colourful statues are built and then dramatically burned in the street.\n\nDressing up for the occasion\n\nMany festivals also involve wearing a special costume. During Carnival in Brazil, dancers wear extremely bright, feathered outfits and perform in huge parades that last for days. In Venice, Italy, people wear elegant masks during their famous Carnival, hiding their identity while they enjoy the celebrations.\n\nRemembering the past\n\nNot every festival is only about fun; some are about remembering. In Mexico, during the Day of the Dead, families build colourful altars covered in flowers and photographs to honour an ancestor who has died. Instead of being sad, families remember these relatives with music, stories, and a shared feast of their loved one's favourite food.\n\nWhy festivals matter\n\nEvery festival follows its own tradition, passed down from parents to children for many generations. Even though the customs are different everywhere, festivals always seem to do the same important job: they bring people together, strengthen communities, and give everyone, for at least one day, a good reason to smile.",
+    "vocabulary": [
+      {
+        "word": "celebrate",
+        "meaning": "to do something enjoyable because of a special event",
+        "group": ""
+      },
+      {
+        "word": "tradition",
+        "meaning": "a custom that has continued for a long time",
+        "group": ""
+      },
+      {
+        "word": "fireworks",
+        "meaning": "small explosions in the sky that make colourful light and noise",
+        "group": ""
+      },
+      {
+        "word": "costume",
+        "meaning": "special clothes worn to look like someone or something else",
+        "group": ""
+      },
+      {
+        "word": "feast",
+        "meaning": "a large, special meal shared with other people",
+        "group": ""
+      },
+      {
+        "word": "ancestor",
+        "meaning": "a member of your family who lived a long time ago",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "Festivals only exist in one country.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Diwali involves lamps and fireworks.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Las Fallas takes place in Brazil.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "During Carnival in Brazil, dancers wear bright costumes.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "People in Venice wear masks during Carnival.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "The Day of the Dead is celebrated in Mexico.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "The article says festivals never involve any traditions.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "What do festivals usually do for communities?",
+            "options": [
+              "Separate people",
+              "Bring people together",
+              "Stop all traditions"
+            ],
+            "answer": "Bring people together",
+            "explanation": ""
+          },
+          {
+            "prompt": "What happens during Diwali?",
+            "options": [
+              "Statues are burned",
+              "Lamps and fireworks light the sky",
+              "Masks are worn"
+            ],
+            "answer": "Lamps and fireworks light the sky",
+            "explanation": ""
+          },
+          {
+            "prompt": "Where does Las Fallas take place?",
+            "options": [
+              "Valencia, Spain",
+              "Mexico",
+              "Venice, Italy"
+            ],
+            "answer": "Valencia, Spain",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is the Day of the Dead mainly about?",
+            "options": [
+              "Sport competitions",
+              "Remembering ancestors",
+              "Building fireworks"
+            ],
+            "answer": "Remembering ancestors",
+            "explanation": ""
+          },
+          {
+            "prompt": "According to the article, what do festivals give people?",
+            "options": [
+              "A reason to be sad",
+              "A reason to smile",
+              "A reason to work more"
+            ],
+            "answer": "A reason to smile",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "celebrate",
+            "options": [
+              "to do something enjoyable because of a special event",
+              "a custom that has continued for a long time",
+              "small explosions in the sky that make colourful light and noise",
+              "special clothes worn to look like someone or something else",
+              "a large, special meal shared with other people",
+              "a member of your family who lived a long time ago"
+            ],
+            "answer": "to do something enjoyable because of a special event",
+            "explanation": ""
+          },
+          {
+            "prompt": "tradition",
+            "options": [
+              "to do something enjoyable because of a special event",
+              "a custom that has continued for a long time",
+              "small explosions in the sky that make colourful light and noise",
+              "special clothes worn to look like someone or something else",
+              "a large, special meal shared with other people",
+              "a member of your family who lived a long time ago"
+            ],
+            "answer": "a custom that has continued for a long time",
+            "explanation": ""
+          },
+          {
+            "prompt": "fireworks",
+            "options": [
+              "to do something enjoyable because of a special event",
+              "a custom that has continued for a long time",
+              "small explosions in the sky that make colourful light and noise",
+              "special clothes worn to look like someone or something else",
+              "a large, special meal shared with other people",
+              "a member of your family who lived a long time ago"
+            ],
+            "answer": "small explosions in the sky that make colourful light and noise",
+            "explanation": ""
+          },
+          {
+            "prompt": "costume",
+            "options": [
+              "to do something enjoyable because of a special event",
+              "a custom that has continued for a long time",
+              "small explosions in the sky that make colourful light and noise",
+              "special clothes worn to look like someone or something else",
+              "a large, special meal shared with other people",
+              "a member of your family who lived a long time ago"
+            ],
+            "answer": "special clothes worn to look like someone or something else",
+            "explanation": ""
+          },
+          {
+            "prompt": "feast",
+            "options": [
+              "to do something enjoyable because of a special event",
+              "a custom that has continued for a long time",
+              "small explosions in the sky that make colourful light and noise",
+              "special clothes worn to look like someone or something else",
+              "a large, special meal shared with other people",
+              "a member of your family who lived a long time ago"
+            ],
+            "answer": "a large, special meal shared with other people",
+            "explanation": ""
+          },
+          {
+            "prompt": "ancestor",
+            "options": [
+              "to do something enjoyable because of a special event",
+              "a custom that has continued for a long time",
+              "small explosions in the sky that make colourful light and noise",
+              "special clothes worn to look like someone or something else",
+              "a large, special meal shared with other people",
+              "a member of your family who lived a long time ago"
+            ],
+            "answer": "a member of your family who lived a long time ago",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 What is your favourite festival, and why?",
+      "💬 Do you have any special traditions in your family?",
+      "💬 Which festival from another country would you like to see?",
+      "💬 What food do people eat at festivals in your country?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "09-festivals-around-the-world.html",
+    "sourceSha256": "6da31c5790baf1b44f676da990686074b71f51d10cb59365671c57775ed87f91"
+  },
+  {
+    "slug": "the-science-of-laughter",
+    "title": "The Science of Laughter",
+    "level": "Pre-intermediate",
+    "description": "Read the article, learn new words, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "More than just a sound",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "A short burst of ",
+            "highlight": false
+          },
+          {
+            "text": "laughter",
+            "highlight": true
+          },
+          {
+            "text": " might seem like a small, simple thing, but scientists who study it have discovered something surprising: laughing changes what happens inside your entire body, from your brain to your heart.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "😄Laughing changes what happens in the whole body.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "What happens when we laugh?",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "When something makes you laugh, your brain quickly releases special chemicals, including a ",
+            "highlight": false
+          },
+          {
+            "text": "hormone",
+            "highlight": true
+          },
+          {
+            "text": " that reduces pain and improves your mood almost immediately. At the same time, laughing exercises your chest and stomach muscles, and it can even lower your blood pressure for a short time afterwards.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "A natural instinct",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Interestingly, laughing appears to be an ",
+            "highlight": false
+          },
+          {
+            "text": "instinct",
+            "highlight": true
+          },
+          {
+            "text": ", not something we learn from watching others. Babies who were born completely deaf, and who have never heard another person laugh, still laugh in exactly the same way as everyone else. This suggests that laughter is written into human biology from the very beginning of life.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "👶Even babies who cannot hear still laugh naturally.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Why we rarely laugh alone",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Researchers have also found that laughter is deeply ",
+            "highlight": false
+          },
+          {
+            "text": "social",
+            "highlight": true
+          },
+          {
+            "text": ". People are around thirty times more likely to laugh when they are with other people than when they are completely alone, even while watching the exact same funny video. This might explain why comedy shows feel funnier in a full cinema than they do at home by yourself.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Good medicine for the body",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Doctors now believe that regular laughter can even help protect the ",
+            "highlight": false
+          },
+          {
+            "text": "immune system",
+            "highlight": true
+          },
+          {
+            "text": ", making it a little easier for the body to fight off illness. Laughing also reduces ",
+            "highlight": false
+          },
+          {
+            "text": "stress",
+            "highlight": true
+          },
+          {
+            "text": ", helping people feel calmer after a difficult day. So the next time you share a joke with a friend, remember: you are not just having fun, you are doing something genuinely good for your health.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "More than just a sound\n\nA short burst of laughter might seem like a small, simple thing, but scientists who study it have discovered something surprising: laughing changes what happens inside your entire body, from your brain to your heart.\n\nWhat happens when we laugh?\n\nWhen something makes you laugh, your brain quickly releases special chemicals, including a hormone that reduces pain and improves your mood almost immediately. At the same time, laughing exercises your chest and stomach muscles, and it can even lower your blood pressure for a short time afterwards.\n\nA natural instinct\n\nInterestingly, laughing appears to be an instinct, not something we learn from watching others. Babies who were born completely deaf, and who have never heard another person laugh, still laugh in exactly the same way as everyone else. This suggests that laughter is written into human biology from the very beginning of life.\n\nWhy we rarely laugh alone\n\nResearchers have also found that laughter is deeply social. People are around thirty times more likely to laugh when they are with other people than when they are completely alone, even while watching the exact same funny video. This might explain why comedy shows feel funnier in a full cinema than they do at home by yourself.\n\nGood medicine for the body\n\nDoctors now believe that regular laughter can even help protect the immune system, making it a little easier for the body to fight off illness. Laughing also reduces stress, helping people feel calmer after a difficult day. So the next time you share a joke with a friend, remember: you are not just having fun, you are doing something genuinely good for your health.",
+    "vocabulary": [
+      {
+        "word": "laughter",
+        "meaning": "the sound and action people make when they find something funny",
+        "group": ""
+      },
+      {
+        "word": "stress",
+        "meaning": "a feeling of worry caused by a difficult situation",
+        "group": ""
+      },
+      {
+        "word": "hormone",
+        "meaning": "a chemical made by the body that affects how you feel",
+        "group": ""
+      },
+      {
+        "word": "instinct",
+        "meaning": "a natural feeling or ability, not something you learn",
+        "group": ""
+      },
+      {
+        "word": "social",
+        "meaning": "connected to spending time with other people",
+        "group": ""
+      },
+      {
+        "word": "immune system",
+        "meaning": "the part of the body that fights illness",
+        "group": ""
+      }
+    ],
+    "notes": [],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "Laughter only affects the mouth and nothing else.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Laughing can release hormones that reduce pain.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Deaf babies never laugh because they cannot hear others laugh.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "People laugh more often when they are with others.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Laughter can lower blood pressure for a short time.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Doctors believe laughter can help the immune system.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "The article says laughter has no connection to stress.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "What does laughing release in the brain?",
+            "options": [
+              "Water",
+              "A hormone that improves mood",
+              "Nothing at all"
+            ],
+            "answer": "A hormone that improves mood",
+            "explanation": ""
+          },
+          {
+            "prompt": "What does the example of deaf babies show?",
+            "options": [
+              "Laughter must be taught",
+              "Laughter is a natural instinct",
+              "Babies never laugh"
+            ],
+            "answer": "Laughter is a natural instinct",
+            "explanation": ""
+          },
+          {
+            "prompt": "When are people more likely to laugh?",
+            "options": [
+              "When they are alone",
+              "When they are with other people",
+              "When they are asleep"
+            ],
+            "answer": "When they are with other people",
+            "explanation": ""
+          },
+          {
+            "prompt": "How can laughter affect the immune system?",
+            "options": [
+              "It can help protect it",
+              "It always damages it",
+              "It has no effect"
+            ],
+            "answer": "It can help protect it",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is one overall benefit of laughter mentioned in the article?",
+            "options": [
+              "It reduces stress",
+              "It stops all illness completely",
+              "It makes people taller"
+            ],
+            "answer": "It reduces stress",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each word with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "laughter",
+            "options": [
+              "the sound and action people make when they find something funny",
+              "a feeling of worry caused by a difficult situation",
+              "a chemical made by the body that affects how you feel",
+              "a natural feeling or ability, not something you learn",
+              "connected to spending time with other people",
+              "the part of the body that fights illness"
+            ],
+            "answer": "the sound and action people make when they find something funny",
+            "explanation": ""
+          },
+          {
+            "prompt": "stress",
+            "options": [
+              "the sound and action people make when they find something funny",
+              "a feeling of worry caused by a difficult situation",
+              "a chemical made by the body that affects how you feel",
+              "a natural feeling or ability, not something you learn",
+              "connected to spending time with other people",
+              "the part of the body that fights illness"
+            ],
+            "answer": "a feeling of worry caused by a difficult situation",
+            "explanation": ""
+          },
+          {
+            "prompt": "hormone",
+            "options": [
+              "the sound and action people make when they find something funny",
+              "a feeling of worry caused by a difficult situation",
+              "a chemical made by the body that affects how you feel",
+              "a natural feeling or ability, not something you learn",
+              "connected to spending time with other people",
+              "the part of the body that fights illness"
+            ],
+            "answer": "a chemical made by the body that affects how you feel",
+            "explanation": ""
+          },
+          {
+            "prompt": "instinct",
+            "options": [
+              "the sound and action people make when they find something funny",
+              "a feeling of worry caused by a difficult situation",
+              "a chemical made by the body that affects how you feel",
+              "a natural feeling or ability, not something you learn",
+              "connected to spending time with other people",
+              "the part of the body that fights illness"
+            ],
+            "answer": "a natural feeling or ability, not something you learn",
+            "explanation": ""
+          },
+          {
+            "prompt": "social",
+            "options": [
+              "the sound and action people make when they find something funny",
+              "a feeling of worry caused by a difficult situation",
+              "a chemical made by the body that affects how you feel",
+              "a natural feeling or ability, not something you learn",
+              "connected to spending time with other people",
+              "the part of the body that fights illness"
+            ],
+            "answer": "connected to spending time with other people",
+            "explanation": ""
+          },
+          {
+            "prompt": "immune system",
+            "options": [
+              "the sound and action people make when they find something funny",
+              "a feeling of worry caused by a difficult situation",
+              "a chemical made by the body that affects how you feel",
+              "a natural feeling or ability, not something you learn",
+              "connected to spending time with other people",
+              "the part of the body that fights illness"
+            ],
+            "answer": "the part of the body that fights illness",
+            "explanation": ""
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 What makes you laugh the most?",
+      "💬 Do you laugh more with friends or alone? Why?",
+      "💬 Can you remember a time you laughed a lot? What happened?",
+      "💬 Do you agree that laughter is good medicine? Why or why not?"
+    ],
+    "writingInstruction": "Write five sentences about this topic.",
+    "sourceFile": "10-the-science-of-laughter.html",
+    "sourceSha256": "c950ffbed91f7db0a6024cc56dcae9a2de54bd5f44da22b6d72d780342a45871"
+  },
+  {
+    "slug": "what-are-they-like",
+    "title": "What Are They Like?",
+    "level": "Intermediate",
+    "description": "Meet a family with 22 different personalities. Read, learn the adjectives, then test yourself.",
+    "blocks": [
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "The Morales family",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Every family has many different personalities, and the Morales family is no exception. Let's meet them and find out what they are like.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Grandma Rosa and Dad",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Grandma Rosa is extremely ",
+            "highlight": false
+          },
+          {
+            "text": "affectionate",
+            "highlight": true
+          },
+          {
+            "text": ": she hugs everybody who walks into her kitchen. She is also ",
+            "highlight": false
+          },
+          {
+            "text": "honest",
+            "highlight": true
+          },
+          {
+            "text": ", so she always tells you the truth, even when you do not want to hear it. Best of all, she is ",
+            "highlight": false
+          },
+          {
+            "text": "patient",
+            "highlight": true
+          },
+          {
+            "text": " and never loses her temper. Her son Carlos is completely different. He is ",
+            "highlight": false
+          },
+          {
+            "text": "ambitious",
+            "highlight": true
+          },
+          {
+            "text": " and wants to become the manager of his company before he is forty. He is very ",
+            "highlight": false
+          },
+          {
+            "text": "competitive",
+            "highlight": true
+          },
+          {
+            "text": " too: he hates losing, even in a simple family card game! At home he can be ",
+            "highlight": false
+          },
+          {
+            "text": "bossy",
+            "highlight": true
+          },
+          {
+            "text": " and tells everybody what to do.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🤗🏆Affectionate Grandma Rosa and competitive Carlos.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Mum and Uncle Marco",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Carlos's wife, Elena, is the calm centre of the family. She is ",
+            "highlight": false
+          },
+          {
+            "text": "sensible",
+            "highlight": true
+          },
+          {
+            "text": ", so she makes good decisions, and she is ",
+            "highlight": false
+          },
+          {
+            "text": "reliable",
+            "highlight": true
+          },
+          {
+            "text": ": if she says she will do something, she does it. She is ",
+            "highlight": false
+          },
+          {
+            "text": "self-confident",
+            "highlight": true
+          },
+          {
+            "text": " as well, so she is never afraid to speak in a meeting. Uncle Marco is the most ",
+            "highlight": false
+          },
+          {
+            "text": "sociable",
+            "highlight": true
+          },
+          {
+            "text": " person in the house. He loves parties and meeting new people. He is also ",
+            "highlight": false
+          },
+          {
+            "text": "charming",
+            "highlight": true
+          },
+          {
+            "text": ", and everybody likes him within five minutes.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🧠🥳Sensible Elena and sociable Uncle Marco.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "The teenagers",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Lucas, who is sixteen, is a typical teenager. He is ",
+            "highlight": false
+          },
+          {
+            "text": "rebellious",
+            "highlight": true
+          },
+          {
+            "text": " and hates rules. He is ",
+            "highlight": false
+          },
+          {
+            "text": "independent",
+            "highlight": true
+          },
+          {
+            "text": " and wants to do everything on his own. He is also ",
+            "highlight": false
+          },
+          {
+            "text": "moody",
+            "highlight": true
+          },
+          {
+            "text": ", happy at breakfast and silent at dinner, and very ",
+            "highlight": false
+          },
+          {
+            "text": "stubborn",
+            "highlight": true
+          },
+          {
+            "text": ", so arguing with him is useless. His cousin Ana is only fourteen, but she is very ",
+            "highlight": false
+          },
+          {
+            "text": "mature",
+            "highlight": true
+          },
+          {
+            "text": " for her age and talks like an adult. She is ",
+            "highlight": false
+          },
+          {
+            "text": "sensitive",
+            "highlight": true
+          },
+          {
+            "text": ", which means that small comments can hurt her feelings, and sometimes she feels ",
+            "highlight": false
+          },
+          {
+            "text": "insecure",
+            "highlight": true
+          },
+          {
+            "text": " about herself. Before every exam she becomes ",
+            "highlight": false
+          },
+          {
+            "text": "anxious",
+            "highlight": true
+          },
+          {
+            "text": " and cannot sleep.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "The youngest",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Finally, there is six-year-old Sofia. Everybody gives her everything she wants, so she has become ",
+            "highlight": false
+          },
+          {
+            "text": "spoilt",
+            "highlight": true
+          },
+          {
+            "text": ". She can also be ",
+            "highlight": false
+          },
+          {
+            "text": "selfish",
+            "highlight": true
+          },
+          {
+            "text": ", and she never shares her sweets. But Sofia is very ",
+            "highlight": false
+          },
+          {
+            "text": "imaginative",
+            "highlight": true
+          },
+          {
+            "text": " too. She invents wonderful stories about talking animals and magic forests, and the whole family loves to listen.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "caption",
+        "parts": [
+          {
+            "text": "🧸💭Spoilt but imaginative Sofia.",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "parts": [
+          {
+            "text": "Is anybody perfect?",
+            "highlight": false
+          }
+        ]
+      },
+      {
+        "kind": "paragraph",
+        "parts": [
+          {
+            "text": "Nobody in the Morales family is perfect, and that is what makes them interesting. Every personality has good and difficult sides. Learning the right adjectives helps us to describe other people, and ourselves, more accurately.",
+            "highlight": false
+          }
+        ]
+      }
+    ],
+    "body": "The Morales family\n\nEvery family has many different personalities, and the Morales family is no exception. Let's meet them and find out what they are like.\n\nGrandma Rosa and Dad\n\nGrandma Rosa is extremely affectionate: she hugs everybody who walks into her kitchen. She is also honest, so she always tells you the truth, even when you do not want to hear it. Best of all, she is patient and never loses her temper. Her son Carlos is completely different. He is ambitious and wants to become the manager of his company before he is forty. He is very competitive too: he hates losing, even in a simple family card game! At home he can be bossy and tells everybody what to do.\n\nMum and Uncle Marco\n\nCarlos's wife, Elena, is the calm centre of the family. She is sensible, so she makes good decisions, and she is reliable: if she says she will do something, she does it. She is self-confident as well, so she is never afraid to speak in a meeting. Uncle Marco is the most sociable person in the house. He loves parties and meeting new people. He is also charming, and everybody likes him within five minutes.\n\nThe teenagers\n\nLucas, who is sixteen, is a typical teenager. He is rebellious and hates rules. He is independent and wants to do everything on his own. He is also moody, happy at breakfast and silent at dinner, and very stubborn, so arguing with him is useless. His cousin Ana is only fourteen, but she is very mature for her age and talks like an adult. She is sensitive, which means that small comments can hurt her feelings, and sometimes she feels insecure about herself. Before every exam she becomes anxious and cannot sleep.\n\nThe youngest\n\nFinally, there is six-year-old Sofia. Everybody gives her everything she wants, so she has become spoilt. She can also be selfish, and she never shares her sweets. But Sofia is very imaginative too. She invents wonderful stories about talking animals and magic forests, and the whole family loves to listen.\n\nIs anybody perfect?\n\nNobody in the Morales family is perfect, and that is what makes them interesting. Every personality has good and difficult sides. Learning the right adjectives helps us to describe other people, and ourselves, more accurately.",
+    "vocabulary": [
+      {
+        "word": "affectionate",
+        "meaning": "showing love with hugs and kind words",
+        "group": "👍 Kind and trustworthy"
+      },
+      {
+        "word": "honest",
+        "meaning": "always telling the truth",
+        "group": "👍 Kind and trustworthy"
+      },
+      {
+        "word": "patient",
+        "meaning": "calm when you have to wait or when things are difficult",
+        "group": "👍 Kind and trustworthy"
+      },
+      {
+        "word": "reliable",
+        "meaning": "someone you can trust to do what they promise",
+        "group": "👍 Kind and trustworthy"
+      },
+      {
+        "word": "sensible",
+        "meaning": "making good, practical decisions",
+        "group": "👍 Kind and trustworthy"
+      },
+      {
+        "word": "ambitious",
+        "meaning": "wanting very much to be successful",
+        "group": "🚀 Drive and confidence"
+      },
+      {
+        "word": "competitive",
+        "meaning": "wanting very much to win",
+        "group": "🚀 Drive and confidence"
+      },
+      {
+        "word": "self-confident",
+        "meaning": "sure about your own abilities",
+        "group": "🚀 Drive and confidence"
+      },
+      {
+        "word": "independent",
+        "meaning": "able to do things without help from others",
+        "group": "🚀 Drive and confidence"
+      },
+      {
+        "word": "mature",
+        "meaning": "behaving like an adult",
+        "group": "🚀 Drive and confidence"
+      },
+      {
+        "word": "imaginative",
+        "meaning": "full of new, original ideas",
+        "group": "🚀 Drive and confidence"
+      },
+      {
+        "word": "sociable",
+        "meaning": "enjoying being with other people",
+        "group": "🎉 With other people"
+      },
+      {
+        "word": "charming",
+        "meaning": "pleasant and attractive; easy to like",
+        "group": "🎉 With other people"
+      },
+      {
+        "word": "bossy",
+        "meaning": "always telling other people what to do",
+        "group": "🎉 With other people"
+      },
+      {
+        "word": "rebellious",
+        "meaning": "refusing to obey rules",
+        "group": "🎉 With other people"
+      },
+      {
+        "word": "selfish",
+        "meaning": "thinking only about yourself",
+        "group": "😤 Difficult sides"
+      },
+      {
+        "word": "spoilt",
+        "meaning": "behaving badly because you are given everything you want",
+        "group": "😤 Difficult sides"
+      },
+      {
+        "word": "stubborn",
+        "meaning": "refusing to change your mind",
+        "group": "😤 Difficult sides"
+      },
+      {
+        "word": "moody",
+        "meaning": "having feelings that change quickly",
+        "group": "😤 Difficult sides"
+      },
+      {
+        "word": "anxious",
+        "meaning": "worried and nervous",
+        "group": "💓 Feelings inside"
+      },
+      {
+        "word": "insecure",
+        "meaning": "not confident about yourself",
+        "group": "💓 Feelings inside"
+      },
+      {
+        "word": "sensitive",
+        "meaning": "easily upset or hurt by what people say",
+        "group": "💓 Feelings inside"
+      }
+    ],
+    "notes": [
+      "un- , in- , dis- are common negative prefixes: honest → dishonest , reliable → unreliable . in- changes to im- before b, m, p ( patient → impatient ), to ir- before r, and to il- before l.",
+      "🖼️ Picture it Link each word to an image: stubborn = a goat that will not move 🐐.",
+      "🤝 Use word partners Learn the adjective with a noun: a reliable friend, a spoilt child, an imaginative story.",
+      "👤 Think of a real person Match each word to someone you know. Personal examples stay in your memory.",
+      "🧩 Learn the opposite honest ↔ dishonest · patient ↔ impatient · sociable ↔ unsociable. Two words for the price of one!"
+    ],
+    "exercises": [
+      {
+        "id": "tf",
+        "title": "True or false?",
+        "instruction": "Read the sentences. Choose True or False. If it is false, write the correct sentence.",
+        "questions": [
+          {
+            "prompt": "Grandma Rosa always tells the truth.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Carlos does not mind losing, even in a card game.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Elena is afraid to speak in meetings.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Uncle Marco loves parties and meeting new people.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Lucas likes rules and does everything he is told.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "Ana is only fourteen, but she is very mature.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "True",
+            "explanation": ""
+          },
+          {
+            "prompt": "Sofia always shares her sweets.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          },
+          {
+            "prompt": "The article says that everybody in the family is perfect.",
+            "options": [
+              "True",
+              "False"
+            ],
+            "answer": "False",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "mc",
+        "title": "Reading test",
+        "instruction": "Choose the best answer: a, b or c.",
+        "questions": [
+          {
+            "prompt": "Which adjective describes Carlos's wish to become a manager?",
+            "options": [
+              "Reliable",
+              "Ambitious",
+              "Anxious"
+            ],
+            "answer": "Ambitious",
+            "explanation": ""
+          },
+          {
+            "prompt": "Why is Elena reliable?",
+            "options": [
+              "She does what she says she will do",
+              "She loves parties",
+              "She hates losing"
+            ],
+            "answer": "She does what she says she will do",
+            "explanation": ""
+          },
+          {
+            "prompt": "What does “sensitive” mean for Ana?",
+            "options": [
+              "She never feels worried",
+              "Small comments can hurt her feelings",
+              "She always tells the truth"
+            ],
+            "answer": "Small comments can hurt her feelings",
+            "explanation": ""
+          },
+          {
+            "prompt": "Why is Sofia spoilt?",
+            "options": [
+              "She is afraid of exams",
+              "She tells wonderful stories",
+              "Everybody gives her everything she wants"
+            ],
+            "answer": "Everybody gives her everything she wants",
+            "explanation": ""
+          },
+          {
+            "prompt": "What is the main idea of the article?",
+            "options": [
+              "Every personality has good and difficult sides",
+              "Teenagers are always moody",
+              "Only ambitious people are successful"
+            ],
+            "answer": "Every personality has good and difficult sides",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "match",
+        "title": "Vocabulary matching",
+        "instruction": "Match each adjective with its correct meaning. Choose from the dropdown list.",
+        "questions": [
+          {
+            "prompt": "affectionate",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "showing love with hugs and kind words",
+            "explanation": ""
+          },
+          {
+            "prompt": "anxious",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "worried and nervous",
+            "explanation": ""
+          },
+          {
+            "prompt": "bossy",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "always telling other people what to do",
+            "explanation": ""
+          },
+          {
+            "prompt": "charming",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "pleasant and attractive; easy to like",
+            "explanation": ""
+          },
+          {
+            "prompt": "competitive",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "wanting very much to win",
+            "explanation": ""
+          },
+          {
+            "prompt": "imaginative",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "full of new, original ideas",
+            "explanation": ""
+          },
+          {
+            "prompt": "rebellious",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "refusing to obey rules",
+            "explanation": ""
+          },
+          {
+            "prompt": "sensitive",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "easily upset or hurt by what people say",
+            "explanation": ""
+          },
+          {
+            "prompt": "sociable",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "enjoying being with other people",
+            "explanation": ""
+          },
+          {
+            "prompt": "spoilt",
+            "options": [
+              "showing love with hugs and kind words",
+              "worried and nervous",
+              "always telling other people what to do",
+              "pleasant and attractive; easy to like",
+              "wanting very much to win",
+              "full of new, original ideas",
+              "refusing to obey rules",
+              "easily upset or hurt by what people say",
+              "enjoying being with other people",
+              "behaving badly because you are given everything you want"
+            ],
+            "answer": "behaving badly because you are given everything you want",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "gap",
+        "title": "What are they like?",
+        "instruction": "Complete each sentence with an adjective from the list. Two words are extra.",
+        "questions": [
+          {
+            "prompt": "Dan always tells the truth, even when it is difficult. He is very ______.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "honest",
+            "explanation": ""
+          },
+          {
+            "prompt": "She never asks for help and does everything on her own. She is very ______.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "independent",
+            "explanation": ""
+          },
+          {
+            "prompt": "My brother is only fifteen, but he behaves like an adult. He is very ______.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "mature",
+            "explanation": ""
+          },
+          {
+            "prompt": "Maria speaks in front of 200 people without any fear. She is ______.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "self-confident",
+            "explanation": ""
+          },
+          {
+            "prompt": "He only thinks about himself and never shares anything. He is ______.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "selfish",
+            "explanation": ""
+          },
+          {
+            "prompt": "I can always trust Tim to arrive on time. He is very ______.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "reliable",
+            "explanation": ""
+          },
+          {
+            "prompt": "Our teacher stays calm when students ask the same question many times. She is ______.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "patient",
+            "explanation": ""
+          },
+          {
+            "prompt": "She wants to become a doctor and she works very hard. She is ______.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "ambitious",
+            "explanation": ""
+          },
+          {
+            "prompt": "He will not change his opinion, even when people show him he is wrong. He is ______.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "stubborn",
+            "explanation": ""
+          },
+          {
+            "prompt": "Wearing a helmet when you ride a bike is a ______ decision.",
+            "options": [
+              "ambitious",
+              "honest",
+              "independent",
+              "insecure",
+              "mature",
+              "moody",
+              "patient",
+              "reliable",
+              "self-confident",
+              "selfish",
+              "sensible",
+              "stubborn"
+            ],
+            "answer": "sensible",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "pre",
+        "title": "Negative prefixes",
+        "instruction": "Which prefix do you use to make the opposite? Choose un-, dis-, in-, im- or ir-.",
+        "questions": [
+          {
+            "prompt": "honest",
+            "options": [
+              "un-",
+              "dis-",
+              "in-",
+              "im-",
+              "ir-"
+            ],
+            "answer": "dis-",
+            "explanation": "dishonest"
+          },
+          {
+            "prompt": "patient",
+            "options": [
+              "un-",
+              "dis-",
+              "in-",
+              "im-",
+              "ir-"
+            ],
+            "answer": "im-",
+            "explanation": "impatient"
+          },
+          {
+            "prompt": "reliable",
+            "options": [
+              "un-",
+              "dis-",
+              "in-",
+              "im-",
+              "ir-"
+            ],
+            "answer": "un-",
+            "explanation": "unreliable"
+          },
+          {
+            "prompt": "mature",
+            "options": [
+              "un-",
+              "dis-",
+              "in-",
+              "im-",
+              "ir-"
+            ],
+            "answer": "im-",
+            "explanation": "immature"
+          },
+          {
+            "prompt": "sensitive",
+            "options": [
+              "un-",
+              "dis-",
+              "in-",
+              "im-",
+              "ir-"
+            ],
+            "answer": "in-",
+            "explanation": "insensitive"
+          },
+          {
+            "prompt": "sociable",
+            "options": [
+              "un-",
+              "dis-",
+              "in-",
+              "im-",
+              "ir-"
+            ],
+            "answer": "un-",
+            "explanation": "unsociable"
+          },
+          {
+            "prompt": "imaginative",
+            "options": [
+              "un-",
+              "dis-",
+              "in-",
+              "im-",
+              "ir-"
+            ],
+            "answer": "un-",
+            "explanation": "unimaginative"
+          },
+          {
+            "prompt": "selfish",
+            "options": [
+              "un-",
+              "dis-",
+              "in-",
+              "im-",
+              "ir-"
+            ],
+            "answer": "un-",
+            "explanation": "unselfish"
+          }
+        ]
+      }
+    ],
+    "discussion": [
+      "💬 Which person in the Morales family is most like you? Why?",
+      "💬 Which three adjectives describe your best friend?",
+      "💬 Are you competitive? Are you sociable? Give examples.",
+      "💬 Which adjectives from the list describe a good boss? And a good teacher?"
+    ],
+    "writingInstruction": "✏️ Write five sentences about people in your family. Use at least five new adjectives.",
+    "sourceFile": "06-what-are-they-like.html",
+    "sourceSha256": "d79b87925f9fab6048826aeb4cbcd61c830bb73169d09490f45815f0b176b2ea"
+  }
+]

@@ -1217,3 +1217,26 @@ html.light .averna-range { background: rgba(15,23,42,0.12); }
 html.light .correction-studio input::placeholder,
 html.light .correction-studio textarea::placeholder,
 html.light .account-link-form input::placeholder { color: #475569; }
+
+/* Computer-test workspace. Keep Averna's app theme, use a neutral exam canvas. */
+.exam-shell {
+  --c-exam-bg: 25 29 35;
+  --c-exam-bar: 32 38 46;
+  --c-exam-strip: 32 38 46;
+  --c-averna-primary: 29 92 158;
+  --c-averna-light: 34 105 180;
+  --c-averna-neon: 147 197 253;
+  --c-averna-cyan: 147 197 253;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.light .exam-shell {
+  --c-exam-bg: 255 255 255;
+  --c-exam-bar: 241 245 249;
+  --c-exam-strip: 241 245 249;
+  --c-averna-primary: 29 92 158;
+  --c-averna-light: 34 105 180;
+  --c-averna-neon: 29 92 158;
+  --c-averna-cyan: 29 92 158;
+}
+.exam-shell .glow-cta, .exam-shell .glow-hover { box-shadow: none; }
+.exam-shell [role="separator"]:focus-visible { outline: 2px solid rgb(var(--c-averna-neon)); outline-offset: -2px; }

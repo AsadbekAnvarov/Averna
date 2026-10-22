@@ -14,7 +14,7 @@
 export type ExamSkill = "READING" | "LISTENING";
 export type ExamDifficulty = "Easy" | "Medium" | "Hard";
 /** Where a test came from. "legacy" = converted from the old short practice format. */
-export type ExamSource = "averna" | "generated" | "legacy";
+export type ExamSource = "averna" | "generated" | "imported" | "legacy";
 
 export type GroupKind =
   | "tfng" // TRUE / FALSE / NOT GIVEN
@@ -56,6 +56,8 @@ export interface ExamQuestion {
 
 export interface ExamGroup {
   kind: GroupKind;
+  /** Imported maps/diagrams. Plain media only; never executable archive HTML. */
+  images?: { url: string; alt: string }[];
   /** e.g. "Do the following statements agree with the information given in Reading Passage 1?" */
   instructions: string;
   /** Bold answer rule. Derived from kind / wordLimit / allowNumber when omitted (see answerRuleFor). */
@@ -149,6 +151,10 @@ export interface ExamListeningTest {
   topics?: string[];
   source: ExamSource;
   parts: ListeningPart[];
+  /** A supplied recording covers all four parts without guessed cuts. */
+  recordingMode?: "whole";
+  recordingDurationMs?: number;
+  recordingSha256?: string;
 }
 
 export type ExamTest = ExamReadingTest | ExamListeningTest;
@@ -192,6 +198,7 @@ export interface ExamTestSummary {
   full: boolean;
   source: ExamSource;
   topics?: string[];
+  recordingMode?: "whole";
 }
 
 // ---------------------------------------------------------------------------
@@ -221,7 +228,10 @@ export interface ListeningPartAudio {
  * contains every gap answer — never reaches the client.
  */
 export type ClientListeningPart = Omit<ListeningPart, "groups"> & { groups: ClientGroup[]; audio?: ListeningPartAudio };
-export type ClientListeningTest = Omit<ExamListeningTest, "parts"> & { parts: ClientListeningPart[] };
+export type ClientListeningTest = Omit<ExamListeningTest, "parts"> & {
+  parts: ClientListeningPart[];
+  fullRecording?: ListeningPartAudio;
+};
 
 /** Result of grading one question (server-side). */
 export interface GradeItem {

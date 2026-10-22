@@ -1,11 +1,13 @@
 import { cache } from "react";
+import { compareTestTitles } from "./catalog-order";
 import { unstable_cache } from "next/cache";
 import { db } from "@/lib/db";
 import { READING_TESTS } from "@/lib/reading-tests-data";
 import { LISTENING_TESTS } from "@/lib/listening-tests-data";
 import { readingTestSchema, listeningTestSchema, speakingTestSchema } from "@/lib/test-schema";
 import { getWritingPrompts } from "@/lib/writing-content";
-import type { WritingPrompt } from "@/lib/writing-data";
+import { WRITING_PROMPTS, type WritingPrompt } from "@/lib/writing-data";
+import { WRITING_SEED } from "./content/writing";
 import { LISTENING_SEED, READING_SEED, SPEAKING_SEED } from "./content";
 import { convertLegacyListening, convertLegacyReading } from "./convert";
 import { summarizeListening, summarizeReading } from "./format";
@@ -17,16 +19,8 @@ import type {
   SpeakingExamSet,
 } from "./types";
 
-/**
- * The exam library — every Reading / Listening / Speaking / Writing item a
- * student can take, from three sources:
- *   1. hand-written Averna tests (lib/ielts/content),
- *   2. published AI-generated tests (GeneratedTest rows, exam-v2 or legacy JSON),
- *   3. the original short practice tests, converted (source "legacy").
- *
- * Lists are summaries only (no passages, scripts or answers) and are cached for
- * a few minutes across requests; publishing a test revalidates EXAM_CATALOG_TAG.
- */
+/** Published Averna CDI/generated content and short practice. Retired originals are
+ * excluded from new libraries/pools; by-id resolvers preserve existing attempts. */
 
 export const EXAM_CATALOG_TAG = "exam-catalog";
 const REVALIDATE_SECONDS = 300;
@@ -36,7 +30,7 @@ type Row = { id: string; data: unknown; title: string; createdAt: Date };
 /**
  * Published rows of one module. Runs INSIDE unstable_cache, so it must throw on
  * a database error (an empty result would be cached for minutes); the list
- * functions below catch outside the cache and fall back to the built-in content.
+ * functions below catch outside the cache without resurrecting retired originals.
  */
 async function publishedRows(module: string): Promise<Row[]> {
   return db.generatedTest.findMany({
@@ -52,7 +46,8 @@ function isV2(data: unknown): boolean {
 
 export function readingFromRow(row: { id: string; data: unknown }): ExamReadingTest | null {
   if (isV2(row.data)) {
-    const t = { ...(row.data as ExamReadingTest), id: row.id, source: "generated" as const };
+    const data = row.data as ExamReadingTest;
+    const t = { ...data, id: row.id, source: data.source === "imported" ? "imported" as const : "generated" as const };
     return validateReadingTest(t).errors.length ? null : t;
   }
   const parsed = readingTestSchema.safeParse(row.data);
@@ -61,7 +56,8 @@ export function readingFromRow(row: { id: string; data: unknown }): ExamReadingT
 
 export function listeningFromRow(row: { id: string; data: unknown }): ExamListeningTest | null {
   if (isV2(row.data)) {
-    const t = { ...(row.data as ExamListeningTest), id: row.id, source: "generated" as const };
+    const data = row.data as ExamListeningTest;
+    const t = { ...data, id: row.id, source: data.source === "imported" ? "imported" as const : "generated" as const };
     return validateListeningTest(t).errors.length ? null : t;
   }
   const parsed = listeningTestSchema.safeParse(row.data);
@@ -95,10 +91,10 @@ const LEGACY_READING = Object.values(READING_TESTS).map((t) => convertLegacyRead
 const LEGACY_LISTENING = LISTENING_TESTS.map((t) => convertLegacyListening(t, "legacy"));
 
 function order(a: ExamTestSummary, b: ExamTestSummary): number {
-  // Full exam papers first, then Averna originals before generated, legacy last.
+  // Full papers first, then Averna CDI. Retired seeds resolve only for existing history.
   if (a.full !== b.full) return a.full ? -1 : 1;
-  const rank = { averna: 0, generated: 1, legacy: 2 } as const;
-  return rank[a.source] - rank[b.source];
+  const rank = { imported: 0, generated: 1, legacy: 2, averna: 3 } as const;
+  return rank[a.source] - rank[b.source] || compareTestTitles(a, b);
 }
 
 // ---------------------------------------------------------------------------
@@ -109,9 +105,9 @@ const cachedReadingSummaries = unstable_cache(
   async (): Promise<ExamTestSummary[]> => {
     const rows = await publishedRows("READING");
     const generated = rows.map(readingFromRow).filter((t): t is ExamReadingTest => t !== null);
-    return [...READING_SEED, ...generated, ...LEGACY_READING].map(summarizeReading).sort(order);
+    return [...generated, ...LEGACY_READING].map(summarizeReading).sort(order);
   },
-  ["exam-catalog-reading-v1"],
+  ["exam-catalog-reading-cdi-v3-natural-order"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -119,7 +115,7 @@ export const listReadingExams = cache(async (): Promise<ExamTestSummary[]> => {
   try {
     return await cachedReadingSummaries();
   } catch {
-    return [...READING_SEED, ...LEGACY_READING].map(summarizeReading).sort(order);
+    return [...LEGACY_READING].map(summarizeReading).sort(order);
   }
 });
 
@@ -145,9 +141,9 @@ const cachedListeningSummaries = unstable_cache(
   async (): Promise<ExamTestSummary[]> => {
     const rows = await publishedRows("LISTENING");
     const generated = rows.map(listeningFromRow).filter((t): t is ExamListeningTest => t !== null);
-    return [...LISTENING_SEED, ...generated, ...LEGACY_LISTENING].map(summarizeListening).sort(order);
+    return [...generated, ...LEGACY_LISTENING].map(summarizeListening).sort(order);
   },
-  ["exam-catalog-listening-v1"],
+  ["exam-catalog-listening-cdi-v3-natural-order"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -155,7 +151,7 @@ export const listListeningExams = cache(async (): Promise<ExamTestSummary[]> => 
   try {
     return await cachedListeningSummaries();
   } catch {
-    return [...LISTENING_SEED, ...LEGACY_LISTENING].map(summarizeListening).sort(order);
+    return [...LEGACY_LISTENING].map(summarizeListening).sort(order);
   }
 });
 
@@ -197,9 +193,9 @@ const cachedSpeakingSets = unstable_cache(
   async (): Promise<SpeakingExamSet[]> => {
     const rows = await publishedRows("SPEAKING");
     const generated = rows.map(speakingFromRow).filter((s): s is SpeakingExamSet => s !== null);
-    return [...SPEAKING_SEED, ...generated];
+    return generated.sort(compareTestTitles);
   },
-  ["exam-catalog-speaking-v1"],
+  ["exam-catalog-speaking-cdi-v3-natural-order"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -207,7 +203,7 @@ export const listSpeakingSets = cache(async (): Promise<SpeakingSetSummary[]> =>
   try {
     return (await cachedSpeakingSets()).map(summarizeSpeaking);
   } catch {
-    return SPEAKING_SEED.map(summarizeSpeaking);
+    return [];
   }
 });
 
@@ -237,7 +233,8 @@ export const listWritingTasks = cache(async (task: "task1" | "task2"): Promise<W
 
 export const getWritingTask = cache(async (task: "task1" | "task2", id: string): Promise<WritingPrompt | null> => {
   const all = await listWritingTasks(task);
-  return all.find((p) => p.id === id) ?? null;
+  // Keep old Mock attempts and saved results readable; these are never in new pools.
+  return all.find((p) => p.id === id) ?? [...WRITING_PROMPTS[task], ...WRITING_SEED[task]].find((p) => p.id === id) ?? null;
 });
 
 // ---------------------------------------------------------------------------

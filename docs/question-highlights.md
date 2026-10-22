@@ -1,0 +1,8 @@
+# Question highlights and a roomier exam workspace
+
+- Reading and Listening practice questions now support four-colour selection highlights, recolouring and removal. Instructions, headings, options, templates and question copy use the same scoped selection layer.
+- Highlights are optional local exam aids, not answers. They are stored per attempt and stable test/part ID, restored on part changes/reload, and cleared only after a confirmed successful submission. No answer payload, scoring, timer, recording or database schema changes.
+- CSS Custom Highlights paint ranges without editing React-owned DOM, replacing answer elements or flattening formatted templates. Inputs, selects, buttons, hidden labels and answer values are excluded from offsets. Persisted quotes must match current question text before rendering. Unsupported browsers receive an explicit notice rather than a fake saved highlight.
+- The versioned CDI Mock retains its existing single selection/notes toolbar and highlight implementation. No competing practice toolbar is mounted inside its provider.
+- Reading uses the available split-pane width with smaller gutters. The passage colour palette appears in the selection toolbar rather than permanently consuming reading space. Desktop status counters share the bottom navigation row; mobile counters and tabs remain accessible. Listening's single-column workspace is wider too.
+- Verification: unit tests for persistence, isolation, colours, removal, exclusion of controls, malformed/stale storage, unsupported API and dismissal; real Chromium checks for Reading/Listening selection, answer editing, reload, passage switching, original passage highlighting and Mock compatibility; desktop/mobile and light/dark visual checks with synthetic test data.

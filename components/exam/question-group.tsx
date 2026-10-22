@@ -545,6 +545,13 @@ function QuestionGroupViewImpl({
       </h3>
       <p className={cn("mt-1 text-gray-300", !showRule && "mb-3")}>{group.instructions}</p>
       {showRule && <p className="mt-1 mb-3 font-semibold text-gray-100">{rule}</p>}
+      {group.images?.map(image => (
+        <figure key={image.url} className="my-4 overflow-auto rounded-xl bg-white p-3">
+          {/* Supplied exam diagrams retain their labels and aspect ratio. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={image.url} alt={image.alt} className="mx-auto h-auto max-w-full" loading="lazy" />
+        </figure>
+      ))}
       {body}
     </section>
   );

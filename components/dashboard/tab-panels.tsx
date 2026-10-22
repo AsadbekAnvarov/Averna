@@ -125,7 +125,7 @@ export async function LearnTab({ student }: TabPanelProps) {
         <StudioShelf group="practice" />
       </section>
       <section>
-        <SectionHeader icon={Newspaper} title="Daily reading" subtitle="A little input every day goes a long way" accent="text-averna-cyan" />
+        <SectionHeader icon={Newspaper} title="Reading & vocabulary" subtitle="Choose a lesson and build your vocabulary" accent="text-averna-cyan" />
         <div className="grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-2">
           <DailyArticle />
           <WordOfTheDay />

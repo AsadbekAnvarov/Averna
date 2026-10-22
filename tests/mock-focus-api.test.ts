@@ -1,0 +1,26 @@
+import { beforeEach, describe, it, expect, vi } from "vitest";
+const m=vi.hoisted(()=>({auth:vi.fn(),student:vi.fn(),attempt:vi.fn(),count:vi.fn(),create:vi.fn(),update:vi.fn(),limit:vi.fn()}));
+vi.mock("@/lib/auth",()=>({auth:m.auth}));
+vi.mock("@/lib/db",()=>({db:{student:{findUnique:m.student},mockAttempt:{findFirst:m.attempt},mockFocusEvent:{count:m.count,createMany:m.create,updateMany:m.update}}}));
+vi.mock("@/lib/security/rate-limit",()=>({reserveLimits:m.limit}));
+import { mockFocusPost, activeMockGet } from "@/lib/ielts/mock-focus-api";
+const now=Date.now();
+const event={eventId:"f014449f-665d-48fa-b997-a145fe9c52e1",kind:"hidden",section:1,leftAt:new Date(now-20000).toISOString(),returnedAt:new Date(now-10000).toISOString()};
+const request=(body:unknown={events:[event]},origin="https://averna.test")=>new Request("https://averna.test/api/mock/a/focus",{method:"POST",headers:{origin,"Content-Type":"application/json"},body:JSON.stringify(body)});
+beforeEach(()=>{vi.resetAllMocks();m.auth.mockResolvedValue({user:{id:"u",role:"STUDENT"}});m.student.mockResolvedValue({id:"s",blacklisted:false,user:{role:"STUDENT"}});m.attempt.mockResolvedValue({id:"a",papers:{mode:"cd-v1"},startedAt:new Date(now-60000),sectionStartedAt:new Date(now-60000),status:"active",finishedAt:null,updatedAt:new Date()});m.count.mockResolvedValue(0);m.limit.mockResolvedValue({ok:true});m.create.mockResolvedValue({count:1});m.update.mockResolvedValue({count:1});});
+describe("focus API authorization and isolation",()=>{
+ it("rejects cross-origin before database access",async()=>{expect((await mockFocusPost(request(undefined,"https://evil.test"),"a")).status).toBe(403);expect(m.auth).not.toHaveBeenCalled();});
+ it("rejects missing sign-in",async()=>{m.auth.mockResolvedValue(null);expect((await mockFocusPost(request(),"a")).status).toBe(403);expect(m.create).not.toHaveBeenCalled();});
+ it.each([{id:"s",blacklisted:true,user:{role:"STUDENT"}},{id:"s",blacklisted:false,user:{role:"TEACHER"}},null])("requires live active student",async student=>{m.student.mockResolvedValue(student);expect((await mockFocusPost(request(),"a")).status).toBe(403);});
+ it("does not accept teacher JWT for logging",async()=>{m.auth.mockResolvedValue({user:{id:"u",role:"TEACHER"}});expect((await mockFocusPost(request(),"a")).status).toBe(403);expect(m.student).not.toHaveBeenCalled();});
+ it("scopes the attempt to the owner",async()=>{m.attempt.mockResolvedValue(null);expect((await mockFocusPost(request(),"a")).status).toBe(404);expect(m.attempt.mock.calls[0][0].where).toEqual({id:"a",studentId:"s"});expect(m.create).not.toHaveBeenCalled();});
+ it("does not log practice or legacy mocks",async()=>{m.attempt.mockResolvedValue({papers:{},sectionStartedAt:new Date()});expect((await mockFocusPost(request(),"a")).status).toBe(404);});
+ it("rejects unstarted attempts",async()=>{m.attempt.mockResolvedValue({papers:{mode:"cd-v1"},status:"active",sectionStartedAt:null});expect((await mockFocusPost(request(),"a")).status).toBe(404);});
+ it("bounds streamed body and batch shape",async()=>{expect((await mockFocusPost(request({events:[{...event,url:"private"}]}),"a")).status).toBe(400);expect((await mockFocusPost(request({padding:"x".repeat(11000)}),"a")).status).toBe(400);expect(m.create).not.toHaveBeenCalled();});
+ it("uses idempotent insert and owner-scoped closing updates without changing attempts",async()=>{expect((await mockFocusPost(request(),"a")).status).toBe(200);expect(m.create.mock.calls[0][0]).toMatchObject({skipDuplicates:true,data:[{attemptId:"a",eventId:event.eventId,durationMs:10000}]});expect(m.update.mock.calls[0][0].where).toMatchObject({attemptId:"a",eventId:event.eventId,returnedAt:null});});
+ it("accepts a delayed return after finish, capped to finish time",async()=>{m.attempt.mockResolvedValue({papers:{mode:"cd-v1"},status:"finished",startedAt:new Date(now-60000),sectionStartedAt:null,finishedAt:new Date(now-15000)});expect((await mockFocusPost(request(),"a")).status).toBe(200);expect(m.create.mock.calls[0][0].data[0].durationMs).toBe(5000);});
+ it("rate-limits before writing",async()=>{m.limit.mockResolvedValue({ok:false});expect((await mockFocusPost(request(),"a")).status).toBe(429);expect(m.create).not.toHaveBeenCalled();});
+ it("enforces bounded event count",async()=>{m.count.mockResolvedValue(1000);expect((await mockFocusPost(request(),"a")).status).toBe(429);expect(m.create).not.toHaveBeenCalled();});
+ it("returns only the active own CDI id",async()=>{const r=await activeMockGet();expect(await r.json()).toEqual({attemptId:"a"});expect(r.headers.get("cache-control")).toContain("no-store");expect(m.attempt.mock.calls[0][0]).toMatchObject({where:{studentId:"s",status:"active",papers:{path:["mode"],equals:"cd-v1"}},select:{id:true}});});
+ it("does not disrupt the exam on database failure",async()=>{m.count.mockRejectedValue(new Error("db"));expect((await mockFocusPost(request(),"a")).status).toBe(503);});
+});

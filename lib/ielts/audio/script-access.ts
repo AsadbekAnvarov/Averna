@@ -123,7 +123,8 @@ export function placementListeningOpen(
 }
 
 /** One part's script in the client shape (what a part without a recording carries); null when there is none. */
-export function partScript(test: Pick<ExamListeningTest, "parts">, part: number): ScriptLine[] | null {
+export function partScript(test: Pick<ExamListeningTest, "parts" | "recordingMode">, part: number): ScriptLine[] | null {
+  if (test.recordingMode === "whole") return null;
   if (!Number.isInteger(part) || part < 0) return null;
   const p = test.parts[part];
   if (!p || !Array.isArray(p.script)) return null;

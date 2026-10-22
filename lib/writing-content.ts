@@ -1,20 +1,11 @@
 import { db } from "@/lib/db";
-import { WRITING_PROMPTS, type WritingPrompt } from "@/lib/writing-data";
-import { writingPromptSchema, writingTask1Schema } from "@/lib/test-schema";
-import { WRITING_SEED } from "@/lib/ielts/content/writing";
+import { compareTestTitles } from "@/lib/ielts/catalog-order";
+import { type WritingPrompt } from "@/lib/writing-data";
+import { writingPromptSchema, writingTask1Schema, importedWritingPromptSchema } from "@/lib/test-schema";
 
-/**
- * All Writing prompts for a given task type: the built-in ("core") prompts plus
- * any published, AI-generated prompts from the database.
- *
- * Generated content is stored under distinct modules so the two task types
- * never mix: Task 2 essays under "WRITING", Task 1 chart tasks under
- * "WRITING_TASK1". DB access is defensive — if the GeneratedTest table isn't
- * there yet (before `db:push`), the core prompts still work perfectly.
- */
+/** Published Writing tasks only. Retired originals resolve separately for saved Mock history. */
 export async function getWritingPrompts(taskType: "task1" | "task2"): Promise<WritingPrompt[]> {
-  // Built-in prompts plus the hand-written Averna exam tasks.
-  const core = [...(WRITING_PROMPTS[taskType] ?? []), ...(WRITING_SEED[taskType] ?? [])];
+  // Retired original prompts are not offered for new practice or Mock allocation.
   const moduleKey = taskType === "task1" ? "WRITING_TASK1" : "WRITING";
 
   let generated: WritingPrompt[] = [];
@@ -25,6 +16,11 @@ export async function getWritingPrompts(taskType: "task1" | "task2"): Promise<Wr
     });
     generated = rows
       .map((r) => {
+        const supplied = importedWritingPromptSchema.safeParse(r.data);
+        if (supplied.success) {
+          if (taskType === "task1" && !supplied.data.imageUrl) return null;
+          return { ...supplied.data, type: supplied.data.type.replace(/Imported CDI/gi, "Averna CDI"), id: r.id } as WritingPrompt;
+        }
         const parsed =
           taskType === "task1"
             ? writingTask1Schema.safeParse(r.data)
@@ -36,5 +32,5 @@ export async function getWritingPrompts(taskType: "task1" | "task2"): Promise<Wr
     generated = [];
   }
 
-  return [...core, ...generated];
+  return generated.sort(compareTestTitles);
 }

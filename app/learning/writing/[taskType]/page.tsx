@@ -50,7 +50,7 @@ export default async function WritingTaskPage(
             <PenTool className="h-8 w-8 text-averna-purple" /> {taskConfig.title}
           </h1>
           <p className="text-gray-400 mb-8">
-            Choose a topic below. Each prompt includes a band 7–8 sample answer, useful phrases and an Uzbek strategy tip you can study before or after writing.
+            Choose Task 1 or Task 2 independently. Averna CDI tasks use the supplied prompts and original chart images; sample essays are only shown when provided.
           </p>
 
           <div className="space-y-4">

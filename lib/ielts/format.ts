@@ -290,9 +290,11 @@ export function summarizeListening(test: ExamListeningTest): ExamTestSummary {
     questions,
     parts: test.parts.length,
     partInfo,
-    timeLimit: estimateListeningMinutes(test),
+    timeLimit: test.recordingMode === "whole" && Number.isFinite(test.recordingDurationMs) && test.recordingDurationMs! > 0
+      ? Math.ceil((test.recordingDurationMs! + 120000) / 60000) : estimateListeningMinutes(test),
     kinds: kindsOf(test.parts),
     full: test.parts.length === LISTENING_FULL.parts && questions === LISTENING_FULL.questions,
+    recordingMode: test.recordingMode,
     source: test.source,
     topics: test.topics,
   };

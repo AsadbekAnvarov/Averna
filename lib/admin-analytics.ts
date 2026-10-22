@@ -1,4 +1,3 @@
-import { incomeRows } from "@/lib/finance/indicators";
 import { db } from "@/lib/db";
 
 /**
@@ -44,16 +43,6 @@ function weeklyBuckets(dates: Date[], now = Date.now()): number[] {
   return buckets;
 }
 
-function weeklySum(items: { date: Date; value: number }[], now = Date.now()): number[] {
-  const buckets = new Array(8).fill(0);
-  for (const it of items) {
-    const age = now - new Date(it.date).getTime();
-    const wk = Math.floor(age / (7 * DAY));
-    if (wk >= 0 && wk < 8) buckets[7 - wk] += it.value;
-  }
-  return buckets;
-}
-
 // ==================== M7 — Prediction Engine ====================
 export interface Prediction {
   id: string;
@@ -81,21 +70,14 @@ function project(id: string, label: string, unit: string, series: number[]): Pre
 export async function getPredictions(): Promise<Prediction[]> {
   const since = new Date(Date.now() - 56 * DAY);
 
-  const [students, tests, payments] = await Promise.all([
+  const [students, tests] = await Promise.all([
     db.student.findMany({ where: { createdAt: { gte: since } }, select: { createdAt: true } }),
     db.iELTSTest.findMany({ where: { completedAt: { gte: since } }, select: { completedAt: true } }),
-    incomeRows(since),
   ]);
 
   return [
     project("students", "Yangi oʻquvchilar", "hafta", weeklyBuckets(students.map((s) => s.createdAt))),
     project("tests", "Topshirilgan testlar", "hafta", weeklyBuckets(tests.map((t) => t.completedAt))),
-    ...(payments?.length ? [project(
-      "revenue",
-      "Sof tushum (UZS)",
-      "hafta",
-      weeklySum(payments.map((p) => ({ date: p.createdAt, value: p.amount }))),
-    )] : []),
   ];
 }
 

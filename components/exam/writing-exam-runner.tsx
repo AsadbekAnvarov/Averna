@@ -796,7 +796,7 @@ export function WritingExamRunner(props: WritingExamRunnerProps) {
           </div>
         </div>
       )}
-      <div className="flex min-h-[1.75rem] items-center justify-between gap-3 text-xs sm:text-[0.8125rem]">
+      <div data-cdi-writing-tally className="flex min-h-[1.75rem] items-center justify-between gap-3 text-xs sm:text-[0.8125rem]">
         <p className="flex min-w-0 flex-wrap items-center gap-x-5 gap-y-0.5 tabular-nums">
           <Tally n={1} words={words1} active={active === 1} />
           <Tally n={2} words={words2} active={active === 2} />
@@ -810,10 +810,13 @@ export function WritingExamRunner(props: WritingExamRunnerProps) {
 
   return (
     <ExamShell
-      title="IELTS Writing"
+      title="Averna CDI · Writing"
+      itemLabel="tasks"
+      reviewDescription={`Task 1: ${words1} words. Task 2: ${words2} words. Check both answers before submitting; recommended minimums are 150 and 250 words.`}
       subtitle={`${mode === "mock" ? "Mock exam" : "Practice test"} · Task 1 + Task 2 · ${minutes} minutes`}
       remainingMs={remainingMs}
       parts={PARTS}
+      partSummaries={[`${words1} words`, `${words2} words`]}
       activePart={active - 1}
       onPartChange={onPartChange}
       answered={answered}

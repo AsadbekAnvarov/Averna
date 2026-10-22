@@ -710,7 +710,15 @@ export async function getMockView(studentId: string, userId: string, attemptId: 
   const section = mockSections(papers)[row.current];
   if (!row.sectionStartedAt || !row.sectionDeadline) {
     const preflight = isCdMock(papers) && section === "LISTENING" ? await sectionContent(section, papers) : null;
-    return { ...base, stage: { kind: "intro", section, index: row.current, ...(preflight?.skill === "LISTENING" ? { soundCheckUrl: preflight.test.parts[0]?.audio?.url } : {}) } };
+    // Imported CDI papers carry one uncut file in fullRecording, not four
+    // per-part audio fields. Check the same verified recording the runner uses.
+    // A whole-file paper must never fall back to an unrelated part or voice.
+    const soundCheckUrl = preflight?.skill === "LISTENING"
+      ? preflight.test.recordingMode === "whole"
+        ? preflight.test.fullRecording?.url
+        : preflight.test.parts[0]?.audio?.url
+      : undefined;
+    return { ...base, stage: { kind: "intro", section, index: row.current, ...(soundCheckUrl ? { soundCheckUrl } : {}) } };
   }
   const content = await sectionContent(section, papers);
   if (!content) {
