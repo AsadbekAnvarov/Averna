@@ -78,6 +78,8 @@ const PAGES = {
       async (p) => {
         const f = p.frameLocator('iframe[title*="interactive lesson"]');
         await f.locator("#app *").first().waitFor({ timeout: 30_000 });
+        // The bridge works: the lesson's own localStorage writes reach the app's storage.
+        await p.waitForFunction(() => Object.keys(localStorage).some((k) => k.startsWith("averna_lesson:")), null, { timeout: 10_000 });
       },
     ],
   ],
@@ -321,6 +323,8 @@ try {
       for (const device of ["phone", "desktop"]) {
         const context = await browser.newContext(device === "phone" ? PHONE : DESKTOP);
         await context.addInitScript((t) => {
+          // Init scripts run in every frame; the interactive lesson's sandboxed frame has no storage access.
+          if (window !== window.top) return;
           localStorage.setItem("averna_theme", t);
           localStorage.setItem("averna_onboarding_done_v1", "1");
           localStorage.setItem("averna_setup_done_v1", "1");
