@@ -337,9 +337,16 @@ try {
         if (role === "student" && theme === "dark" && device === "phone") {
           const page = await context.newPage();
           for (const [from, to] of REDIRECTS) {
-            await page.goto(`${BASE}${from}`);
+            // A redirect chain can interrupt goto(); record it as a problem instead of aborting the run.
+            let note = "";
+            try {
+              await page.goto(`${BASE}${from}`);
+            } catch (err) {
+              note = ` (goto: ${String(err?.message ?? err).split("\n")[0].slice(0, 160)})`;
+              await page.waitForLoadState("load").catch(() => {});
+            }
             const got = new URL(page.url()).pathname;
-            if (got !== to) problems.push(`redirect ${from}: ended on ${got}, expected ${to}`);
+            if (got !== to) problems.push(`redirect ${from}: ended on ${got}, expected ${to}${note}`);
           }
           await page.close();
         }
