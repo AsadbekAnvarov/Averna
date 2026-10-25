@@ -1,5 +1,7 @@
 "use client";
 
+import { clearQuestionHighlights } from "./question-highlights";
+import { useMockCdi } from "./mock-cdi-interface";
 import { Fragment, memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { HIGHLIGHT_COLORS, type HighlightColor } from "./exam-preferences";
 import { Eraser, Highlighter, Search } from "lucide-react";
@@ -58,6 +60,7 @@ export const highlightStorageKey = (attemptId: string) => `averna-exam-hl:${atte
 
 /** Drop an attempt's highlights (call after a successful submit). */
 export function clearPassageHighlights(attemptId: string) {
+  clearQuestionHighlights(attemptId);
   try {
     window.localStorage.removeItem(highlightStorageKey(attemptId));
     window.localStorage.removeItem(`averna-exam-hl-colors:${attemptId}`);
@@ -240,7 +243,7 @@ export function selectionSegments(
   }
 }
 
-const TOOLBAR_H = 56;
+const TOOLBAR_H = 108;
 
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
@@ -441,6 +444,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
       if (pressing.current) return;
       const next = fromSelection();
       if (next) {
+        try { const saved = localStorage.getItem("averna-highlight-color"); if (HIGHLIGHT_COLORS.some(c => c.id === saved)) setColor(saved as HighlightColor); } catch {}
         setTool(next);
         return;
       }
@@ -703,9 +707,9 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
 
   return (
     <article ref={rootRef} className="relative min-h-full w-full" aria-label={label ? `${label}: ${passage.title}` : passage.title}>
-      <div className="mx-auto max-w-[70ch] px-5 pb-16 pt-6 leading-[1.75] text-gray-200 sm:px-8 sm:pt-8">
-        <header className="mb-[1.5em]">
-          <div className="flex min-h-[44px] items-center justify-between gap-3">
+      <div className="w-full px-4 pb-8 pt-4 leading-[1.65] text-gray-200 sm:px-6">
+        <header className="mb-[1em]">
+          <div className="flex min-h-[28px] items-center justify-between gap-3">
             {label ? (
               <p className="text-[0.72em] font-bold uppercase tracking-[0.18em] text-averna-neon/80">{label}</p>
             ) : (
@@ -732,7 +736,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
           {intro && <p className="mt-[0.3em] break-words text-[0.9em] leading-relaxed text-gray-400">{intro}</p>}
           <h2 className="mt-[0.8em] break-words text-[1.4em] font-bold leading-snug text-white">{passage.title}</h2>
           {passage.subtitle && <p className="mt-[0.35em] break-words italic leading-relaxed text-gray-400">{passage.subtitle}</p>}
-          <fieldset className="mt-4 flex flex-wrap items-center gap-1.5"><legend className="mb-1 text-sm text-gray-400">Highlight color</legend>{HIGHLIGHT_COLORS.map(c=><button key={c.id} type="button" aria-label={`${c.label} highlight`} aria-pressed={color===c.id} title={c.label} onClick={()=>{setColor(c.id);try{localStorage.setItem("averna-highlight-color",c.id);}catch{}}} className={cn("flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border",color===c.id?"border-averna-neon text-white":"border-white/15 text-gray-400")}><span aria-hidden className="h-5 w-5 rounded-full border border-white/20" style={{backgroundColor:c.fill}} />{color===c.id&&<span className="ml-1 text-xs">✓</span>}</button>)}</fieldset>
+
           {highlightCount === 0 && (
             <p className="mt-[0.9em] flex items-center gap-[0.45em] text-[0.8em] text-gray-500">
               <Highlighter className="h-[1.1em] w-[1.1em] shrink-0" aria-hidden />
@@ -781,8 +785,10 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
             aria-label={lookup ? "Text tools" : "Highlight tools"}
             onPointerDown={keepSelection}
             onMouseDown={keepSelection}
-            className="pointer-events-auto flex select-none items-center gap-1 rounded-xl border border-white/15 bg-surface-raised/95 av-float p-1 shadow-[0_14px_36px_-12px_rgba(0,0,0,0.9)] backdrop-blur motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95 motion-safe:duration-150"
+            className="pointer-events-auto flex max-w-[calc(100vw-16px)] flex-col select-none gap-1 rounded-xl border border-white/15 bg-surface-raised/95 av-float p-1 shadow-[0_14px_36px_-12px_rgba(0,0,0,0.9)] backdrop-blur motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95 motion-safe:duration-150"
           >
+            <fieldset className="flex flex-wrap items-center gap-1.5 px-1"><legend className="sr-only">Highlight color</legend>{HIGHLIGHT_COLORS.map(c=><button key={c.id} type="button" aria-label={`${c.label} highlight`} aria-pressed={color===c.id} title={c.label} onClick={()=>{setColor(c.id);try{localStorage.setItem("averna-highlight-color",c.id);}catch{}}} className={cn("flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border",color===c.id?"border-averna-neon text-white":"border-white/15 text-gray-400")}><span aria-hidden className="h-5 w-5 rounded-full border border-white/20" style={{backgroundColor:c.fill}} />{color===c.id&&<span className="ml-1 text-xs">✓</span>}</button>)}</fieldset>
+            <div className="flex flex-wrap items-center gap-1">
             {tool.canHighlight && (
               <button
                 type="button"
@@ -823,6 +829,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
                 Remove
               </button>
             )}
+            </div>
           </div>
         </div>
       )}
@@ -836,6 +843,16 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
   );
 }
 
-export const PassagePane = memo(PassagePaneImpl);
+function ContextPassagePane(props: PassagePaneProps) {
+  const cdi = useMockCdi();
+  if (!cdi) return <PassagePaneImpl {...props} />;
+  return <article className="mc-passage" data-cdi-anchor={`passage-${props.passage.id}`}>
+    {props.intro && <p className="mc-rubric">{props.intro}</p>}
+    <h1>{props.passage.title}</h1>
+    {props.passage.subtitle && <p className="mc-byline">{props.passage.subtitle}</p>}
+    {props.passage.paragraphs.map((p, i) => <p key={i}>{p.label && <b className="mc-paragraph-label">{p.label}</b>}{p.text}</p>)}
+  </article>;
+}
+export const PassagePane = memo(ContextPassagePane);
 
 export default PassagePane;

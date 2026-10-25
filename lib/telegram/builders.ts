@@ -299,8 +299,6 @@ export interface AdminSummary {
   day: Date;
   newStudents: number;
   placementsFinished: number;
-  /** Every payment still PENDING (a to-do, not just today's). */
-  pendingPayments: number;
   reviewsWaiting: number;
   homeworkCreated: number;
 }

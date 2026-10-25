@@ -245,14 +245,13 @@ async function countOr0(label: string, p: Promise<number>): Promise<number> {
 /** Today's school summary (Tashkent day). `viewerId` is an admin's user id. */
 export async function loadAdminSummary(now: Date, viewerId: string): Promise<AdminSummary> {
   const { today } = dayBounds(now);
-  const [newStudents, placementsFinished, pendingPayments, homeworkCreated, reviewsWaiting] = await Promise.all([
+  const [newStudents, placementsFinished, homeworkCreated, reviewsWaiting] = await Promise.all([
     countOr0("new students", db.student.count({ where: { createdAt: { gte: today } } })),
     countOr0("placements", db.placementAttempt.count({ where: { status: "finished", finishedAt: { gte: today } } })),
-    countOr0("payments", db.payment.count({ where: { status: "PENDING" } })),
     countOr0("homework", db.homework.count({ where: { createdAt: { gte: today } } })),
     pendingReviewCount({ id: viewerId, role: "ADMIN" }, REVIEW_WINDOW_DAYS),
   ]);
-  return { day: today, newStudents, placementsFinished, pendingPayments, reviewsWaiting, homeworkCreated };
+  return { day: today, newStudents, placementsFinished, reviewsWaiting, homeworkCreated };
 }
 
 // ---------------------------------------------------------------------------

@@ -76,7 +76,7 @@ const STUDENT_NAV: NavSection[] = [
       { name: "Adventures", href: "/studio/adventures", icon: Compass, badge: "New" },
       { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
       { name: "AI Mentor", href: "/mentor", icon: Sparkles },
-      { name: "Daily Article", href: "/article", icon: Newspaper },
+      { name: "Articles", href: "/article", icon: Newspaper },
       { name: "Movie Time", href: "/movies", icon: Film },
     ],
   },

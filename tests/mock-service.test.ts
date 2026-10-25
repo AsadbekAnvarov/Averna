@@ -6,7 +6,8 @@ vi.mock("@/lib/ielts/audio/client",()=>({listeningClientContent:m.content}));
 vi.mock("@/lib/ielts/mock-library",()=>({recordingMinutes:()=>3,isFullObjective:()=>true,mockListeningLibrary:vi.fn().mockResolvedValue(new Map()),mockReadingLibrary:vi.fn().mockResolvedValue(new Set())}));
 vi.mock("@/lib/ielts/submit",()=>({submitObjectiveExam:m.objective,submitWritingExam:m.writing,submitSpeakingTest:m.speaking,examPrompt:(x:unknown)=>x}));
 vi.mock("@/lib/speaking/recording",()=>({hasRecordedSpeech:vi.fn().mockResolvedValue(false)}));
-import { beginSection, saveMockDraft, submitMockSection, paperLockedByMock } from "@/lib/ielts/mock";
+import { getMockView, beginSection, saveMockDraft, submitMockSection, paperLockedByMock } from "@/lib/ielts/mock";
+import { listListeningExams, listReadingExams } from "@/lib/ielts/catalog";
 const papers={mode:"cd-v1",listening:"l",reading:"r",task1:"w1",task2:"w2",speaking:""};
 let row:any;
 beforeEach(()=>{vi.resetAllMocks();row={id:"a",studentId:"s",status:"active",papers,current:0,sectionStartedAt:new Date(Date.now()-1000),sectionDeadline:new Date(Date.now()+100000),draft:{answers:{"1":"A"},__mock:{revision:1}},results:{},updatedAt:new Date(),startedAt:new Date()};m.find.mockImplementation(async({where}:any)=>where.studentId==="s"?{...row}:null);m.update.mockImplementation(async({where,data}:any)=>{if(where.current!==undefined && where.current!==row.current)return {count:0};row={...row,...data,updatedAt:new Date()};return {count:1};});m.listening.mockResolvedValue({id:"l",parts:[]});m.reading.mockResolvedValue({id:"r",parts:[]});m.content.mockResolvedValue({parts:[]});m.objective.mockResolvedValue({band:7,testId:"t",correct:30,total:40,answered:40,xpAwarded:10});});
@@ -24,4 +25,42 @@ describe("mock server lifecycle",()=>{
  it("cannot force collection before the deadline",async()=>{const r=await submitMockSection({studentId:"s",userId:"u",attemptId:"a",section:0,payload:{answers:{}},fromDraft:true});expect(r).toMatchObject({ok:false,status:409});expect(m.objective).not.toHaveBeenCalled();});
  it("retains four-section legacy progression",async()=>{row.papers={...papers,mode:undefined,speaking:"set"};row.current=2;row.draft=null;await submitMockSection({studentId:"s",userId:"u",attemptId:"a",section:2,payload:{essays:{task1:"",task2:""}}});expect(row.current).toBe(3);expect(row.status).toBe("active");expect(row.sectionStartedAt).toBeNull();});
  it("fails closed rather than leaking practice answer keys during DB outage",async()=>{m.list.mockRejectedValue(new Error("db"));expect(await paperLockedByMock("s","l")).toBe(true);});
+});
+
+
+describe("CDI Mock intro headphone check", () => {
+ beforeEach(() => {
+   row.sectionStartedAt = null;
+   row.sectionDeadline = null;
+   vi.mocked(listListeningExams).mockResolvedValue([]);
+   vi.mocked(listReadingExams).mockResolvedValue([]);
+ });
+ it("uses the uncut whole recording when imported parts have no individual audio", async () => {
+   m.content.mockResolvedValue({ recordingMode: "whole", fullRecording: { url: "https://cdn.test/cdi-original.mp3", durationMs: 2160000, timeline: [] }, parts: [{ script: [] }, { script: [] }, { script: [] }, { script: [] }] });
+   const view = await getMockView("s", "u", "a");
+   expect(view?.stage).toMatchObject({ kind: "intro", section: "LISTENING", soundCheckUrl: "https://cdn.test/cdi-original.mp3" });
+   expect(row.sectionStartedAt).toBeNull();
+   expect(m.update).not.toHaveBeenCalled();
+ });
+ it("prefers the whole recording over a stray per-part field", async () => {
+   m.content.mockResolvedValue({ recordingMode: "whole", fullRecording: { url: "https://cdn.test/whole.mp3", durationMs: 2160000, timeline: [] }, parts: [{ audio: { url: "https://cdn.test/stray-part.mp3" } }] });
+   expect((await getMockView("s", "u", "a"))?.stage).toMatchObject({ soundCheckUrl: "https://cdn.test/whole.mp3" });
+ });
+ it("retains Part 1 audio for verified four-file tests", async () => {
+   m.content.mockResolvedValue({ parts: [0,1,2,3].map(i => ({ script: [], audio: { url: `https://cdn.test/part-${i}.mp3`, durationMs: 60000, timeline: [] } })) });
+   expect((await getMockView("s", "u", "a"))?.stage).toMatchObject({ soundCheckUrl: "https://cdn.test/part-0.mp3" });
+ });
+ it("does not bypass the sound gate if the whole recording is genuinely missing", async () => {
+   m.content.mockResolvedValue({ recordingMode: "whole", parts: [{ audio: { url: "https://cdn.test/not-the-original.mp3" } }] });
+   expect((await getMockView("s", "u", "a"))?.stage).not.toHaveProperty("soundCheckUrl");
+   expect(m.update).not.toHaveBeenCalled();
+ });
+ it("keeps the check unavailable when recordings-only preflight fails", async () => {
+   m.content.mockResolvedValue(null);
+   expect((await getMockView("s", "u", "a"))?.stage).not.toHaveProperty("soundCheckUrl");
+ });
+ it("does not add a new sound gate to legacy mock intros", async () => {
+   row.papers = { ...papers, mode: undefined, speaking: "set" };
+   expect((await getMockView("s", "u", "a"))?.stage).not.toHaveProperty("soundCheckUrl");
+ });
 });

@@ -1,8 +1,6 @@
 import { db } from "@/lib/db";
+import { compareTestTitles } from "@/lib/ielts/catalog-order";
 import {
-  PART1_TOPICS,
-  PART2_CARDS,
-  PART3_QUESTIONS,
   type Part1Topic,
   type Part2Card,
   type Part3Question,
@@ -15,15 +13,7 @@ export interface SpeakingContent {
   part3Questions: Part3Question[];
 }
 
-/**
- * All Speaking practice content: the built-in ("core") Part 1/2/3 material plus
- * any published, AI-generated sets from the database. Each generated set adds
- * one Part 1 topic, one Part 2 cue card and a few Part 3 questions. Inner `id`
- * fields are derived from the row id here (the generator doesn't produce them).
- *
- * DB access is defensive — if the GeneratedTest table isn't there yet (before
- * `db:push`), the core content still works perfectly.
- */
+/** Published legacy practice data only; teacher-led CDI entry points do not use AI scoring. */
 export async function getSpeakingContent(): Promise<SpeakingContent> {
   const genP1: Part1Topic[] = [];
   const genP2: Part2Card[] = [];
@@ -34,7 +24,7 @@ export async function getSpeakingContent(): Promise<SpeakingContent> {
       where: { module: "SPEAKING", published: true },
       orderBy: { createdAt: "desc" },
     });
-    for (const r of rows) {
+    for (const r of [...rows].sort(compareTestTitles)) {
       const parsed = speakingTestSchema.safeParse(r.data);
       if (!parsed.success) continue;
       const t = parsed.data;
@@ -48,12 +38,12 @@ export async function getSpeakingContent(): Promise<SpeakingContent> {
       t.part3.forEach((q, i) => genP3.push({ id: `gen-${r.id}-p3-${i}`, ...q }));
     }
   } catch {
-    /* table not migrated yet — fall back to core content only */
+    /* Unavailable content stays empty, rather than resurrecting retired originals. */
   }
 
   return {
-    part1Topics: [...PART1_TOPICS, ...genP1],
-    part2Cards: [...PART2_CARDS, ...genP2],
-    part3Questions: [...PART3_QUESTIONS, ...genP3],
+    part1Topics: genP1,
+    part2Cards: genP2,
+    part3Questions: genP3,
   };
 }

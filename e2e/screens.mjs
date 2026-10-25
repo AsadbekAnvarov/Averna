@@ -70,6 +70,18 @@ const PAGES = {
     ["calendar", "/calendar"],
     ["learning-reading", "/learning/reading"],
     ["learning-listening", "/learning/listening"],
+    ["articles-intermediate", "/article?level=Intermediate"],
+    // An interactive lesson: the supplied file runs in a sandboxed frame; wait until its engine has built the page.
+    [
+      "article-interactive",
+      "/article/food-and-cooking",
+      async (p) => {
+        const f = p.frameLocator('iframe[title*="interactive lesson"]');
+        await f.locator("#app *").first().waitFor({ timeout: 30_000 });
+        // The bridge works: the lesson's own localStorage writes reach the app's storage.
+        await p.waitForFunction(() => Object.keys(localStorage).some((k) => k.startsWith("averna_lesson:")), null, { timeout: 10_000 });
+      },
+    ],
   ],
   teacher: [
     ["teacher-dashboard", "/teacher/dashboard"],
@@ -167,7 +179,11 @@ function watch(page, label, ignore) {
 
 async function shoot(context, role, theme, device) {
   const page = await context.newPage();
-  const pages = device === "desktop" ? PAGES[role].filter(([n]) => !n.startsWith("menu")).slice(0, 3) : PAGES[role];
+  // Desktop: the first three pages, plus the Articles pages (library + interactive lesson frame).
+  const pages =
+    device === "desktop"
+      ? [...PAGES[role].filter(([n]) => !n.startsWith("menu")).slice(0, 3), ...PAGES[role].filter(([n]) => n.startsWith("article"))]
+      : PAGES[role];
   for (const [name, path, action] of pages) {
     const label = `${theme}/${device}/${name}`;
     watch(page, label);
@@ -307,6 +323,8 @@ try {
       for (const device of ["phone", "desktop"]) {
         const context = await browser.newContext(device === "phone" ? PHONE : DESKTOP);
         await context.addInitScript((t) => {
+          // Init scripts run in every frame; the interactive lesson's sandboxed frame has no storage access.
+          if (window !== window.top) return;
           localStorage.setItem("averna_theme", t);
           localStorage.setItem("averna_onboarding_done_v1", "1");
           localStorage.setItem("averna_setup_done_v1", "1");
@@ -319,9 +337,16 @@ try {
         if (role === "student" && theme === "dark" && device === "phone") {
           const page = await context.newPage();
           for (const [from, to] of REDIRECTS) {
-            await page.goto(`${BASE}${from}`);
+            // A redirect chain can interrupt goto(); record it as a problem instead of aborting the run.
+            let note = "";
+            try {
+              await page.goto(`${BASE}${from}`);
+            } catch (err) {
+              note = ` (goto: ${String(err?.message ?? err).split("\n")[0].slice(0, 160)})`;
+              await page.waitForLoadState("load").catch(() => {});
+            }
             const got = new URL(page.url()).pathname;
-            if (got !== to) problems.push(`redirect ${from}: ended on ${got}, expected ${to}`);
+            if (got !== to) problems.push(`redirect ${from}: ended on ${got}, expected ${to}${note}`);
           }
           await page.close();
         }

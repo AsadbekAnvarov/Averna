@@ -2,12 +2,11 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { ExamShell } from "@/components/exam/exam-shell";
 import { Textarea } from "@/components/ui/textarea";
-import { Clock, FileText, Send, Loader2, ArrowLeft, AlertCircle, ClipboardList } from "lucide-react";
-import Link from "next/link";
-import { VoiceInputButton } from "@/components/voice-input-button";
+
+
+
 import { toast } from "@/components/ui/toast";
 import { Task1Chart } from "@/components/learning/task1-chart";
 import { formatDateTime } from "@/lib/utils";
@@ -37,6 +36,7 @@ interface WritingEditorProps {
 
 export default function WritingEditor({ prompt, config, userId, homework, cloudDraftsEnabled = false }: WritingEditorProps) {
   const router = useRouter();
+  const [fontScale, setFontScale] = useState(1);
   const [essay, setEssay] = useState("");
   const [timeLeft, setTimeLeft] = useState(config.timeLimit * 60);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
@@ -57,6 +57,7 @@ export default function WritingEditor({ prompt, config, userId, homework, cloudD
       const draft = JSON.parse(localStorage.getItem(draftKey) || "null");
       if (draft && typeof draft.essay === "string") {
         setEssay(draft.essay.slice(0, 20000));
+        setIsTimerRunning(draft.essay.trim().length > 0);
         if (typeof draft.attemptId === "string" && /^[A-Za-z0-9_-]{8,80}$/.test(draft.attemptId)) attemptIdRef.current = draft.attemptId;
         if (typeof draft.timeLeft === "number" && Number.isFinite(draft.timeLeft)) setTimeLeft(Math.floor(Math.max(0, Math.min(config.timeLimit * 60, draft.timeLeft))));
         setDraftStatus("Draft restored from this device");
@@ -124,12 +125,6 @@ export default function WritingEditor({ prompt, config, userId, homework, cloudD
   }, [isTimerRunning, timeLeft]);
 
   // Format time display
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
-  };
-
   // Start timer on first character
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
@@ -190,199 +185,41 @@ export default function WritingEditor({ prompt, config, userId, homework, cloudD
     }
   };
 
-  // Get timer color based on remaining time
-  const getTimerColor = () => {
-    const percentage = (timeLeft / (config.timeLimit * 60)) * 100;
-    if (percentage > 50) return "text-green-400";
-    if (percentage > 25) return "text-yellow-400";
-    return "text-red-400";
-  };
-
-  // Get word count color
-  const getWordCountColor = () => {
-    if (wordCount >= config.wordCount) return "text-green-400";
-    if (wordCount >= config.wordCount * 0.8) return "text-yellow-400";
-    return "text-gray-400";
-  };
-
+  const taskNumber = config.type === "task1" ? 1 : 2;
   return (
-    <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 max-w-7xl">
-        {/* Header */}
-        <div className="mb-6 animate-fade-in">
-          <Link href={homework ? "/homework" : "/learning/writing"} className="text-study-ink hover:underline text-sm mb-2 inline-flex min-h-11 items-center gap-1">
-            <ArrowLeft className="h-4 w-4" />
-            {homework ? "Back to Homework" : "Back to Writing"}
-          </Link>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">{config.title}</h1>
-          <p className="text-gray-400 text-sm mt-1">{prompt.type}</p>
-          {homework && (
-            <p className="mt-3 inline-flex flex-wrap items-center gap-2 rounded-xl border border-averna-neon/30 bg-averna-neon/[0.07] px-3 py-2 text-sm text-gray-200">
-              <ClipboardList className="h-4 w-4 shrink-0 text-averna-neon" aria-hidden />
-              <span>
-                Homework: <span className="font-semibold text-white">{homework.title}</span>
-              </span>
-              <span className="text-gray-400">
-                · due {formatDateTime(homework.due)}
-                {homework.rule ? ` · ${homework.rule}` : ""}
-              </span>
-            </p>
-          )}
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left: Prompt */}
-          <div className="lg:col-span-1 space-y-4">
-            <Card className="glass border-purple-500/30 lg:sticky lg:top-6 animate-fade-in">
-              <CardHeader>
-                <CardTitle className="text-purple-400">Task Prompt</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <h3 className="font-semibold text-white mb-2">{prompt.title}</h3>
-                  <p className="text-sm text-gray-300 whitespace-pre-line leading-relaxed">
-                    {prompt.prompt}
-                  </p>
-                </div>
-
-                {prompt.chart && prompt.chart.length > 0 ? (
-                  <Task1Chart charts={prompt.chart} />
-                ) : prompt.imageUrl ? (
-                  <div className="rounded-lg overflow-hidden border border-white/10">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={prompt.imageUrl} alt={`${prompt.title} — task visual`} className="w-full h-auto" />
-                  </div>
-                ) : null}
-
-                {/* Stats */}
-                <div className="space-y-2 pt-4 border-t border-purple-500/20">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Time Limit:</span>
-                    <span className="text-white">{config.timeLimit} minutes</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Min. Words:</span>
-                    <span className="text-white">{config.wordCount}+ words</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Assessment:</span>
-                    <span className="text-averna-neon">Practice estimate</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Right: Editor */}
-          <div className="lg:col-span-2 space-y-4">
-            {/* Stats Bar */}
-            <Card className="glass border-averna-primary/30 animate-fade-in">
-              <CardContent className="py-4">
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex flex-wrap items-center gap-4">
-                    {/* Timer */}
-                    <div className="flex items-center gap-2">
-                      <Clock className={`h-5 w-5 ${getTimerColor()}`} />
-                      <span className={`text-2xl font-bold ${getTimerColor()}`}>
-                        {formatTime(timeLeft)}
-                      </span>
-                    </div>
-
-                    {/* Word Count */}
-                    <div className="flex items-center gap-2">
-                      <FileText className={`h-5 w-5 ${getWordCountColor()}`} />
-                      <span className={`text-2xl font-bold ${getWordCountColor()}`}>
-                        {wordCount}
-                      </span>
-                      <span className="text-sm text-gray-400">/ {config.wordCount}</span>
-                    </div>
-                  </div>
-
-                  {/* Submit Button */}
-                  <Button
-                    onClick={handleSubmit}
-                    disabled={isSubmitting || wordCount === 0}
-                    className="min-h-11 h-auto w-full whitespace-normal py-3 sm:w-auto neon-button bg-averna-primary hover:bg-averna-light"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Submitting…
-                      </>
-                    ) : (
-                      <>
-                        <Send className="mr-2 h-4 w-4" />
-                        Submit for feedback
-                      </>
-                    )}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <p role="status" className="text-sm text-gray-300">{draftStatus}. Submitted results save to your account.</p>
-            {/* Warning */}
-            {showWarning && (
-              <Card className="glass border-red-500/50 bg-red-500/10 animate-fade-in">
-                <CardContent className="py-4">
-                  <div className="flex items-center gap-2 text-red-400">
-                    <AlertCircle className="h-5 w-5" />
-                    <p className="text-sm">
-                      Your essay must be at least {config.wordCount} words. Current: {wordCount} words
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Time's up warning */}
-            {timeLeft === 0 && (
-              <Card className="glass border-yellow-500/50 bg-yellow-500/10 animate-fade-in">
-                <CardContent className="py-4">
-                  <div className="flex items-center gap-2 text-yellow-400">
-                    <Clock className="h-5 w-5" />
-                    <p className="text-sm">
-                      Time’s up! You can still submit your essay for review.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Text Editor */}
-            <Card className="glass border-averna-primary/30 animate-fade-in">
-              <CardContent className="pt-6">
-                <Textarea
-                  value={essay}
-                  onChange={handleTextChange}
-                  placeholder="Start writing your essay here..."
-                  aria-label="Your essay"
-                  className="min-h-[320px] sm:min-h-[500px] text-base leading-relaxed bg-background/50 border-averna-primary/20 focus:border-averna-neon resize-none"
-                  disabled={isSubmitting}
-                />
-                <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="text-sm text-gray-300">
-                    💡 Tips: Focus on clear structure, varied vocabulary, and accurate grammar.
-                  </p>
-                  <div className="flex items-center gap-2 shrink-0">
-                    <span className="text-xs text-averna-cyan hidden sm:inline">Dictate:</span>
-                    <VoiceInputButton
-                      onText={(t) =>
-                        setEssay((prev) => {
-                          const next = (prev ? prev + " " : "") + t.trim();
-                          if (!isTimerRunning && next.length > 0) setIsTimerRunning(true);
-                          return next;
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <AccountDraftPanel draft={accountDraft} disabled={isSubmitting} />
-          </div>
-        </div>
+    <ExamShell
+      title="Averna CDI · Writing"
+      itemLabel="tasks"
+      reviewDescription={`Task ${taskNumber}: ${wordCount} words. Check your answer before submitting. The recommended minimum is ${config.wordCount} words.`}
+      subtitle={`${prompt.title} · Task ${taskNumber} only · ${config.timeLimit} minutes`}
+      remainingMs={timeLeft * 1000}
+      parts={[{title: `Task ${taskNumber}`, numbers: [taskNumber]}]}
+      activePart={0} onPartChange={() => {}}
+      answered={new Set(essay.trim() ? [taskNumber] : [])} flagged={new Set()}
+      current={taskNumber} onJump={() => document.querySelector<HTMLTextAreaElement>('textarea[aria-label="Your essay"]')?.focus()}
+      fontScale={fontScale} onFontScale={setFontScale}
+      left={<div className="mx-auto max-w-3xl p-4 sm:p-6" style={{fontSize: `${fontScale}rem`}}>
+        <h2 className="text-lg font-semibold text-white">Writing Task {taskNumber}</h2>
+        <p className="mt-3 text-gray-300">You should spend about {config.timeLimit} minutes on this task.</p>
+        <p className="mt-4 whitespace-pre-line leading-relaxed text-gray-200">{prompt.prompt}</p>
+        {/* Original supplied image: avoid transformations of exam diagrams. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        {prompt.imageUrl && <img src={prompt.imageUrl} alt="Original Task 1 diagram" className="mt-5 h-auto w-full rounded-lg border border-white/15 bg-white" />}
+        {prompt.chart && <Task1Chart charts={prompt.chart} />}
+        <p className="mt-4 text-gray-300">Write at least {config.wordCount} words.</p>
+        {homework && <p className="mt-4 text-sm text-gray-300">Homework: {homework.title} · {formatDateTime(homework.due)}. {homework.rule}</p>}
+      </div>}
+      leftLabel={`Task ${taskNumber}`} rightLabel="Your answer"
+      footerExtra={<p role="status" className="px-4 py-2 text-sm text-gray-300">Words: {wordCount} · {draftStatus}. {isTimerRunning ? "Practice timer running" : "Timer starts when you begin writing"}</p>}
+      onSubmit={handleSubmit} submitting={isSubmitting} submitLabel="Submit" exitHref={homework ? "/homework" : `/learning/writing/${config.type}`}
+    >
+      <div className="mx-auto flex max-w-3xl flex-col gap-4 p-4 sm:p-6">
+        <h2 className="text-lg font-semibold text-white">Your answer · Task {taskNumber}</h2>
+        {showWarning && <p role="alert" className="text-sm text-red-400">Write at least {config.wordCount} words before submitting. Current: {wordCount}.</p>}
+        {timeLeft === 0 && <p role="status" className="text-sm text-amber-300">Time is up. This is practice: you can still submit for feedback.</p>}
+        <Textarea value={essay} onChange={handleTextChange} placeholder="Write your answer here…" aria-label="Your essay" spellCheck={false} autoCorrect="off" autoCapitalize="off" className="min-h-[500px] resize-y border-white/20 bg-exam-bg leading-relaxed" style={{fontSize: `${fontScale}rem`}} disabled={isSubmitting} />
+        <AccountDraftPanel draft={accountDraft} disabled={isSubmitting} />
       </div>
-    </div>
+    </ExamShell>
   );
 }

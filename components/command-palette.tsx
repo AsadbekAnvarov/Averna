@@ -8,7 +8,7 @@ import {
   Search, LayoutDashboard, PenTool, BookOpen, Headphones, Mic, Zap, Layers,
   UserCheck, CalendarClock, Gift, MessageSquare, CalendarDays, Trophy, User, Bell,
   GraduationCap, ClipboardCheck, NotebookPen, PlusCircle, Megaphone, BarChart3,
-  Wallet, Activity, ScrollText, Users, Command as CommandIcon, Settings, LogOut,
+  Activity, ScrollText, Users, Command as CommandIcon, Settings, LogOut,
   Sun, Moon, SpellCheck, Sparkles, CornerDownLeft, ArrowUpDown,
   Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, type LucideIcon,
 } from "lucide-react";
@@ -54,7 +54,7 @@ const STUDENT_COMMANDS: Cmd[] = [
   })),
   { group: "Practice", label: "AI Examiner", href: "/learning/examiner", icon: Sparkles, keywords: "assess feedback score" },
   { group: "Practice", label: "AI Mentor", href: "/mentor", icon: Bot, keywords: "ask help chatbot assistant" },
-  { group: "Practice", label: "Daily Article", href: "/article", icon: FileText, keywords: "reading news read" },
+  { group: "Practice", label: "Articles", href: "/article", icon: FileText, keywords: "reading news read" },
   { group: "Practice", label: "Movies", href: "/movies", icon: Clapperboard, keywords: "films watch subtitles" },
 
   { group: "Progress", label: "My Progress", href: "/progress", icon: BarChart3, keywords: "overview band analytics 30 days tests" },
@@ -121,7 +121,6 @@ const ADMIN_COMMANDS: Cmd[] = [
   { group: "Kontent", label: "Eʼlonlar", href: "/admin/announcements", icon: Megaphone, keywords: "announcements broadcast" },
   { group: "Kontent", label: "Mukofotlar va soʻrovlar", href: "/admin/rewards", icon: Gift, keywords: "rewards redemptions store" },
 
-  { group: "Operatsiyalar", label: "Moliya", href: "/admin/finance", icon: Wallet, keywords: "finance payments revenue" },
   { group: "Operatsiyalar", label: "Tizim holati", href: "/admin/system", icon: Activity, keywords: "system status monitor" },
   { group: "Operatsiyalar", label: "Audit jurnali", href: "/admin/logs", icon: ScrollText, keywords: "audit log history" },
   { group: "Operatsiyalar", label: "Xabarlar", href: "/messages", icon: MessageSquare, keywords: "messages chat" },

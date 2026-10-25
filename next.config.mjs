@@ -28,6 +28,11 @@ const nextConfig = {
       { source: "/:path*", headers: [{ key: "X-Content-Type-Options", value: "nosniff" }, { key: "Permissions-Policy", value: "camera=(), geolocation=(), microphone=(self)" }] },
     ];
   },
+  // The interactive lesson files are read at request time (app/api/articles/lesson/[slug]/route.ts),
+  // so they must ship with that serverless function.
+  outputFileTracingIncludes: {
+    "/api/articles/lesson/[slug]": ["./content/articles/intermediate/*.html"],
+  },
   images: {
     // Serve modern, smaller image formats when next/image is used.
     formats: ["image/avif", "image/webp"],

@@ -29,7 +29,7 @@ import { estimatePartSeconds } from "../format";
 import type { ExamListeningTest } from "../types";
 import type { AudioOverview, OrphanAudioInfo, PartAudioInfo, PartAudioStatus, TestAudioInfo } from "./admin-types";
 import { listeningAudioEnabled } from "./client";
-import { partAudioHash } from "./hash";
+import { partAudioHash, wholeRecordingHash } from "./hash";
 import { fileProgramme } from "./programme";
 import { RenderError, renderListeningPart } from "./render";
 import type { RenderedPart } from "./render";
@@ -97,6 +97,14 @@ function statusOf(row: AudioRow | undefined, hash: string | null): PartAudioStat
 }
 
 export function partInfo(test: ExamListeningTest, index: number, row: AudioRow | undefined, model: string): PartAudioInfo {
+  if (test.recordingMode === "whole" && index === -1) {
+    const status = statusOf(row, wholeRecordingHash(test));
+    const hasFile = status === "ready" || status === "stale";
+    return { index, title: "Full recording", status, url: hasFile ? row?.url ?? null : null,
+      bytes: hasFile ? row?.bytes ?? 0 : 0, durationMs: hasFile ? row?.durationMs ?? 0 : 0,
+      error: row?.error ?? null, updatedAt: iso(row?.updatedAt), lines: 0,
+      estimatedSeconds: (test.recordingDurationMs ?? 0) / 1000 };
+  }
   const part = test.parts[index];
   const programme = fileProgramme(test, index);
   const status = statusOf(row, partAudioHash(test, index, model));
@@ -226,7 +234,9 @@ export async function audioOverview(): Promise<AudioOverview> {
   const list: TestAudioInfo[] = tests.map((t) => {
     known.add(t.id);
     const rowsOf = byTest.get(t.id);
-    const parts = t.parts.map((_p, i) => partInfo(t, i, rowsOf?.get(i), model));
+    const parts = t.recordingMode === "whole"
+      ? [partInfo(t, -1, rowsOf?.get(-1), model)]
+      : t.parts.map((_p, i) => partInfo(t, i, rowsOf?.get(i), model));
     for (const p of parts) {
       if (p.status === "ready") {
         totals.ready += 1;
@@ -305,6 +315,7 @@ export interface StoredRender {
 
 /** Render one part, upload it and record it. Throws RenderError / StoreError. */
 export async function renderAndStore(test: ExamListeningTest, partIndex: number, startedAt: number): Promise<StoredRender> {
+  if (test.recordingMode === "whole") throw new StoreError("server", "This paper uses a supplied full recording. AI regeneration is not permitted.");
   const model = TTS_MODEL();
   const prev = await findRow(test.id, partIndex);
 

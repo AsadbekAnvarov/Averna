@@ -78,7 +78,7 @@ export default async function SpeakingTestPage(
   if (!session?.user) return redirect("/auth/signin");
 
   const set = await getSpeakingSet(safeDecode(params.setId));
-  if (!set) return redirect(LIBRARY);
+  if (!set || set.source === "averna") return redirect(LIBRARY);
 
   const requested = firstParam(searchParams.attempt);
   const attempt = requested && ATTEMPT_RE.test(requested) && !MOCK_KEY_RE.test(requested) ? requested : null;

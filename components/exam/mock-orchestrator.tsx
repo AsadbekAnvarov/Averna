@@ -8,6 +8,8 @@
  */
 
 import { useCallback, useEffect, useId, useRef, useState, useTransition } from "react";
+import { MockFocusGuard } from "./mock-focus-guard";
+import { MockCdiProvider, MockCdiIntro } from "./mock-cdi-interface";
 import { useRouter } from "next/navigation";
 import {
   AlertCircle,
@@ -259,7 +261,11 @@ type Overlay =
 // Orchestrator
 // ---------------------------------------------------------------------------
 
-export function MockOrchestrator({ view, serverNow }: { view: MockView; serverNow?: number }) {
+export function MockOrchestrator(props: { view: MockView; serverNow?: number }) {
+  return <MockCdiProvider enabled={props.view.mode === "cd-v1"} attemptId={props.view.stage.kind === "running" ? props.view.attemptId : undefined} key={props.view.attemptId}><MockOrchestratorBody {...props} />{props.view.mode === "cd-v1" && props.view.stage.kind === "running" && <MockFocusGuard attemptId={props.view.attemptId} section={props.view.stage.index} />}</MockCdiProvider>;
+}
+
+function MockOrchestratorBody({ view, serverNow }: { view: MockView; serverNow?: number }) {
   const router = useRouter();
   const [refreshing, startTransition] = useTransition();
   const stage = view.stage;
@@ -700,6 +706,21 @@ function IntroScreen({
     }
     setError(r.error);
   };
+
+  if (cd) return <MockCdiIntro sections={view.sections} active={stage.index} busy={busy} onBegin={() => void begin()} ready={heard && soundPlayed} error={error}>
+    <section aria-label="Sound check" className="mc-sound-check">
+      <h3>Before the clock starts</h3>
+      <p>Check your headphones. Listening → Reading → Writing run without breaks. Reading and Writing each have 60 minutes. Speaking is separate.</p>
+      {stage.soundCheckUrl ? <>
+        <audio ref={audioRef} src={stage.soundCheckUrl} preload="metadata"
+          onTimeUpdate={() => { const a = audioRef.current; if (a && a.currentTime >= 8) { a.pause(); a.currentTime = 0; } }}
+          onPlaying={() => setSoundPlayed(true)}
+          onError={() => { setSoundPlayed(false); setHeard(false); setError("The existing recording cannot play. Check your connection before starting."); }} />
+        <button type="button" className="mc-secondary" onClick={() => { const a = audioRef.current; if (a) { a.currentTime = 0; void a.play().catch(() => { setSoundPlayed(false); setHeard(false); setError("Sound check blocked. Try again and check your device volume."); }); } }}>Play headphone check</button>
+      </> : <p role="alert">The existing recording is unavailable. Ask your teacher to check the library.</p>}
+      <label><input type="checkbox" checked={heard} disabled={!soundPlayed} onChange={e => setHeard(e.target.checked)} /> I heard the recording clearly and am ready for all three sections.</label>
+    </section>
+  </MockCdiIntro>;
 
   return (
     <div className="min-h-screen premium-gradient">

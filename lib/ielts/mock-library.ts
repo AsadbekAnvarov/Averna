@@ -17,15 +17,20 @@ export async function mockListeningLibrary(summaries: ExamTestSummary[]): Promis
   for (const row of rows) { if (row.testId) grouped.set(row.testId, [...(grouped.get(row.testId) || []), row]); }
   for (const summary of full) {
     const files = grouped.get(summary.id) || [];
-    if (![0, 1, 2, 3].every(i => files.some(row => row.partIndex === i && !!row.url && row.durationMs > 0))) continue;
     const test = await getListeningExam(summary.id);
     if (!test || !isFullObjective(test, 4)) continue;
+    if (test.recordingMode !== "whole" &&
+        ![0, 1, 2, 3].every(i => files.some(row => row.partIndex === i && !!row.url && row.durationMs > 0))) continue;
     const content = await listeningClientContent(test, { recordingsOnly: true, rows: files });
     if (content) ready.set(summary.id, content);
   }
   return ready;
 }
 export function recordingMinutes(test: ClientListeningTest): number | null {
+  if (test.parts.length === 4 && test.fullRecording &&
+      Number.isFinite(test.fullRecording.durationMs) && test.fullRecording.durationMs > 0) {
+    return (test.fullRecording.durationMs + 120_000) / 60_000;
+  }
   if (test.parts.length !== 4 || test.parts.some(p => !p.audio || p.audio.durationMs <= 0)) return null;
   const duration = test.parts.reduce((n, p) => n + p.audio!.durationMs, 0);
   // Existing recordings include announcements/reading pauses. Only the final two-minute answer check is added.

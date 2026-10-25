@@ -34,7 +34,7 @@ export interface PartAudioInfo {
 export interface TestAudioInfo {
   id: string;
   title: string;
-  source: "averna" | "generated" | "legacy";
+  source: "averna" | "generated" | "imported" | "legacy";
   difficulty: string;
   /** Full 4-part, 40-question paper (used by the mock exam). */
   full: boolean;

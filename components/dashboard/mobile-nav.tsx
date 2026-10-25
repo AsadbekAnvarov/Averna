@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
   LayoutDashboard, GraduationCap, Dumbbell, TrendingUp, User, Users, ListChecks, Notebook,
-  MessageSquare, DollarSign, BarChart, type LucideIcon,
+  MessageSquare, BarChart, type LucideIcon,
 } from "lucide-react";
 
 type Role = "STUDENT" | "TEACHER" | "ADMIN";
@@ -31,7 +31,7 @@ const ITEMS: Record<Role, Item[]> = {
   ADMIN: [
     { name: "Panel", href: "/admin/dashboard", icon: LayoutDashboard },
     { name: "Guruhlar", href: "/admin/groups", icon: Users },
-    { name: "Moliya", href: "/admin/finance", icon: DollarSign },
+    { name: "Ustozlar", href: "/admin/teachers", icon: GraduationCap },
     { name: "Tahlil", href: "/admin/analytics", icon: BarChart },
     { name: "Xabarlar", href: "/messages", icon: MessageSquare },
   ],

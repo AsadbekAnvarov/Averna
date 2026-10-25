@@ -1,3 +1,4 @@
+import { MockNavigationGuard } from "@/components/exam/mock-navigation-guard";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -85,8 +86,8 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Providers>
-          <AppShell>{children}</AppShell>
-          <CommandPalette />
+          <MockNavigationGuard><AppShell>{children}</AppShell>
+          <CommandPalette /></MockNavigationGuard>
         </Providers>
         <PwaInstaller />
         <LiveNotifications />
