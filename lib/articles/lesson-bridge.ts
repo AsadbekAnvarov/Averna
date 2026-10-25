@@ -76,7 +76,8 @@ function keysWithPrefix(storage: StorageLike, prefix: string) {
 /** This student's lesson values (key without the prefix → value), valid entries only. */
 export function readLessonItems(storage: StorageLike, userId: string): Record<string, string> {
   const prefix = lessonStoragePrefix(userId);
-  const items: Record<string, string> = {};
+  // No prototype: a key like "__proto__" (allowed by the pattern) is kept as a normal entry.
+  const items: Record<string, string> = Object.create(null);
   try {
     for (const full of keysWithPrefix(storage, prefix)) {
       const key = full.slice(prefix.length);

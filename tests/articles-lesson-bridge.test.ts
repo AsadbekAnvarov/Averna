@@ -50,6 +50,7 @@ describe("lesson storage bridge", () => {
         for (let i = 0; i < storage.length; i++) expect(storage.key(i)!.startsWith(prefix)).toBe(true);
         expect(readLessonItems(storage, user)).toEqual(Object.fromEntries(expected));
       }),
+      { examples: [["u1", [{ key: "__proto__", value: "v" }]]] },
     );
   });
 
@@ -75,6 +76,8 @@ describe("lesson storage bridge", () => {
           expect(storage.getItem("averna_theme")).toBe("dark");
         },
       ),
+      // Counterexample found in CI before the fix: "__proto__" was dropped on read.
+      { examples: [["u1", "u2", { ["__proto__"]: "" }, {}]] },
     );
   });
 
@@ -87,6 +90,9 @@ describe("lesson storage bridge", () => {
     expect(applyLessonWrite(storage, "u1", { type: "set", key: "big", value: "x".repeat(LESSON_VALUE_MAX + 1) })).toBe(false);
     expect(readLessonItems(storage, "u1")).toEqual({ "efvocab-v1-food-draft": "My text" });
     expect(storage.getItem("averna_lesson:u1:efvocab-v1-food-draft")).toBe("My text");
+    // fast-check counterexample: "__proto__" is a valid key and must round-trip as data.
+    expect(applyLessonWrite(storage, "u2", { type: "set", key: "__proto__", value: "" })).toBe(true);
+    expect(Object.entries(readLessonItems(storage, "u2"))).toEqual([["__proto__", ""]]);
     const full = { ...memoryStorage(), length: 0, key: () => null, setItem: () => { throw new Error("QuotaExceededError"); } };
     expect(applyLessonWrite(full, "u1", { type: "set", key: "k", value: "v" })).toBe(false);
   });
