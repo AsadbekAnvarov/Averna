@@ -1,0 +1,2 @@
+# Interactive lesson sources are served byte-for-byte; their SHA-256 is checked in tests.
+content/articles/**/*.html -text
