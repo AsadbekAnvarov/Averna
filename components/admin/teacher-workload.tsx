@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { Scale, Layers } from "lucide-react";
 import { db } from "@/lib/db";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -36,7 +37,7 @@ export async function TeacherWorkload() {
   const avg = rows.length > 0 ? Math.round(rows.reduce((a, r) => a + r.students, 0) / rows.length) : 0;
 
   return (
-    <Card className="glass border-averna-blue/30">
+    <Card className={`${DASH_CARD} glass border-averna-blue/30`}>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-averna-blue">

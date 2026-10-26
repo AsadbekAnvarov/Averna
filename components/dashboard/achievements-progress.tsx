@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award } from "lucide-react";
 import { db } from "@/lib/db";
+import { cn } from "@/lib/utils";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { buildAchievementSnapshot, achievementProgress } from "@/lib/engine/achievement-engine";
 import { rankAchievementRows } from "@/lib/dashboard/achievements";
 
@@ -34,7 +36,7 @@ export async function AchievementsProgress({
   const unlockedCount = unlockedIds.size;
 
   return (
-    <Card className="glass border-amber-400/30" data-gamified>
+    <Card className={cn(DASH_CARD, "glass border-amber-400/30")} data-gamified>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-amber-400">

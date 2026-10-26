@@ -1,7 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Crown } from "lucide-react";
 import { db } from "@/lib/db";
-import { getLevelInfo, initialsOf } from "@/lib/utils";
+import { cn, getLevelInfo, initialsOf } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 import { avatarSrc } from "@/lib/avatars";
 
 /**
@@ -53,9 +54,10 @@ export async function StudentOfTheWeek() {
   const initials = initialsOf(student.user.name);
 
   return (
-    <Card className="glass border-yellow-400/40 relative overflow-hidden">
+    <Card className={cn(DASH_CARD, "glass border-yellow-400/40 relative overflow-hidden")}>
       <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-transparent" />
-      <CardContent className="relative py-5">
+      {/* No header: top padding matches the Card header's (p-4 sm:p-5). Centred when stretched. */}
+      <CardContent className={cn(DASH_CENTER, "relative pt-4 sm:pt-5")}>
         <div className="flex items-center gap-2 text-yellow-400 mb-3">
           <Crown className="h-5 w-5" />
           <span className="text-sm font-semibold uppercase tracking-wide">Student of the Week</span>

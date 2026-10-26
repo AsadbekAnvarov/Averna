@@ -40,6 +40,7 @@ import { ADMIN_DASHBOARD_TABS, ADMIN_TAB_ALIASES } from "@/components/admin/dash
 import { StudentRoster } from "@/components/admin/student-roster";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { SectionHeader } from "@/components/ui/section-header";
+import { DashRow } from "@/components/ui/dash-row";
 import { PanelTabs } from "@/components/panel-tabs";
 import { MissionControl } from "@/components/admin/mission-control";
 import { PredictionEngine } from "@/components/admin/prediction-engine";
@@ -251,10 +252,10 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-32 rounded-2xl bg-white/5 animate-pulse" />}>
                   <OutcomeKpis />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-5 items-stretch [&>*]:h-full">
+                <DashRow className="gap-3 sm:gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <ActivityFeed />
                   <TeacherWorkload />
-                </div>
+                </DashRow>
               </>
             ),
             people: (
@@ -300,24 +301,24 @@ export default async function AdminDashboard() {
             ),
             insights: (
               <>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
+                <DashRow className="gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                     <PredictionEngine />
                   </Suspense>
                   <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                     <FeatureHeatmap />
                   </Suspense>
-                </div>
+                </DashRow>
                 <Suspense fallback={<div className="h-40 rounded-2xl bg-white/5 animate-pulse" />}>
                   <TeacherIntelligence />
                 </Suspense>
                 <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                   <JourneyReplaySection />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
+                <DashRow className="gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <EnrollmentFunnel />
                   <TeacherWorkload />
-                </div>
+                </DashRow>
                 <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                   <PublishImpactSection />
                 </Suspense>
@@ -327,12 +328,12 @@ export default async function AdminDashboard() {
                   <TopPerformers />
                 </div>
                 <AdminToolsDisclosure>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
+                <DashRow className="gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <VoiceControl />
                   <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
                     <ContentHealth />
                   </Suspense>
-                </div>
+                </DashRow>
                 <div>
                 <SectionHeader icon={ShieldCheck} title="Boshqaruv vositalari" subtitle="Butun platformani shu yerdan boshqaring" accent="text-averna-purple" />
                 <Card className="glass border-averna-primary/30">

@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpenCheck, Sparkles } from "lucide-react";
-import { tashkentDayOfYear } from "@/lib/utils";
+import { cn, tashkentDayOfYear } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 
 interface VocabEntry {
   word: string;
@@ -37,7 +38,7 @@ export function WordOfTheDay() {
   const entry = VOCAB[getDayIndex()];
 
   return (
-    <Card className="glass border-averna-cyan/30 relative overflow-hidden">
+    <Card className={cn(DASH_CARD, "glass border-averna-cyan/30 relative overflow-hidden")}>
       <div className="absolute inset-0 bg-gradient-to-br from-averna-cyan/10 to-transparent" />
       <CardHeader className="relative">
         <CardTitle className="flex items-center gap-2 text-averna-cyan">
@@ -45,7 +46,8 @@ export function WordOfTheDay() {
           Word of the Day
         </CardTitle>
       </CardHeader>
-      <CardContent className="relative space-y-3">
+      {/* Centred in the space left when stretched to its row's height. */}
+      <CardContent className={cn(DASH_CENTER, "relative space-y-3")}>
         <div>
           <div className="flex items-baseline gap-2 flex-wrap">
             <span className="text-2xl font-bold text-white">{entry.word}</span>

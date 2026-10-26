@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/toast";
@@ -46,7 +47,7 @@ export function TeacherTwin({ learned, avgLen }: { learned: number; avgLen: numb
   };
 
   return (
-    <Card className="glass border-averna-neon/30 relative overflow-hidden">
+    <Card className={`${DASH_CARD} glass border-averna-neon/30 relative overflow-hidden`}>
       <div className="pointer-events-none absolute -top-14 -right-14 h-48 w-48 rounded-full bg-averna-neon/10 blur-3xl" />
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-neon">

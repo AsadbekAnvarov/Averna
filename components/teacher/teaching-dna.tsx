@@ -1,5 +1,6 @@
 import { getTeachingDNA } from "@/lib/teacher-intel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { Dna, Users, CheckCircle2, Clock, MessageSquare, Star, TrendingUp } from "lucide-react";
 
 function reviewLabel(hrs: number | null): string {
@@ -27,7 +28,7 @@ export async function TeachingDNA({ teacherId }: { teacherId: string }) {
   ];
 
   return (
-    <Card className="glass border-averna-cyan/30 relative overflow-hidden">
+    <Card className={`${DASH_CARD} glass border-averna-cyan/30 relative overflow-hidden`}>
       <div className="pointer-events-none absolute -top-14 -left-14 h-48 w-48 rounded-full bg-averna-cyan/10 blur-3xl" />
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-cyan">

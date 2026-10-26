@@ -1,8 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Flame } from "lucide-react";
 import { db } from "@/lib/db";
-import { timeAgo, initialsOf } from "@/lib/utils";
+import { cn, timeAgo, initialsOf } from "@/lib/utils";
 import { EmptyState } from "@/components/ui/empty-state";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 
 /**
  * Classmates activity feed — light social motivation. Shows what groupmates
@@ -20,13 +21,14 @@ export async function GroupFeed({ studentId, groupId }: { studentId: string; gro
   });
 
   return (
-    <Card className="glass border-averna-pink/30" data-gamified>
+    <Card className={cn(DASH_CARD, "glass border-averna-pink/30")} data-gamified>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-pink">
           <Users className="h-5 w-5" /> Class Activity
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      {/* The feed stays top-aligned; the empty state is centred when stretched. */}
+      <CardContent className={logs.length === 0 ? DASH_CENTER : undefined}>
         {logs.length === 0 ? (
           <EmptyState
             icon={Users}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Compass, Clock, ArrowRight } from "lucide-react";
 import type { Recommendation } from "@/lib/engine/progression/recommendations";
 import { Panel, PanelTitle, SkillIcon, XpChip } from "./ui";
+import { DASH_CENTER } from "@/components/ui/dash-row";
 
 /**
  * "Averna Recommendation" — the single best next activity, with the reason.
@@ -35,7 +36,8 @@ export function NextActivity({ rec, title = "Averna recommends", compact = false
   return (
     <Panel labelledBy="rec-title">
       <PanelTitle id="rec-title" icon={Compass} title={title} hint="Chosen from your recent results" />
-      {body}
+      {/* Centred when the card is stretched to its row's height. */}
+      <div className={DASH_CENTER}>{body}</div>
     </Panel>
   );
 }

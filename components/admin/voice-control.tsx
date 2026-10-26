@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { Mic, MicOff, Loader2, ArrowRight } from "lucide-react";
 
 interface Command {
@@ -120,7 +121,7 @@ export function VoiceControl() {
   };
 
   return (
-    <Card className="glass border-averna-pink/30 relative overflow-hidden">
+    <Card className={`${DASH_CARD} glass border-averna-pink/30 relative overflow-hidden`}>
       <div className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-averna-pink/10 blur-3xl" />
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-pink">

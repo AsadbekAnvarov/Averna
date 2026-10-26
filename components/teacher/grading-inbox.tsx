@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { CheckSquare, ArrowRight, PenTool, BookOpen, Headphones, Mic } from "lucide-react";
 import Link from "next/link";
 import { db } from "@/lib/db";
@@ -40,7 +41,7 @@ export async function GradingInbox({ teacherId }: { teacherId: string }) {
   const total = await db.homeworkSubmission.count({ where });
 
   return (
-    <Card className="glass border-amber-400/30">
+    <Card className={`${DASH_CARD} glass border-amber-400/30`}>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-amber-400">
@@ -49,7 +50,8 @@ export async function GradingInbox({ teacherId }: { teacherId: string }) {
           <span className="text-sm font-normal text-gray-400">{total}</span>
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      {/* Top-aligned list; the "View all" footer sits at the bottom of a stretched card. */}
+      <CardContent className="flex flex-1 flex-col">
         {submissions.length === 0 ? (
           <p className="text-sm text-averna-neon py-2">✓ All caught up — nothing waiting to be graded!</p>
         ) : (
@@ -82,12 +84,14 @@ export async function GradingInbox({ teacherId }: { teacherId: string }) {
               })}
             </div>
             {total > submissions.length && (
-              <Link
-                href="/teacher/homework"
-                className="mt-3 inline-flex items-center gap-1 text-sm text-amber-400 hover:underline"
-              >
-                View all {total} submissions <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
+              <div className="mt-auto pt-3">
+                <Link
+                  href="/teacher/homework"
+                  className="inline-flex items-center gap-1 text-sm text-amber-400 hover:underline"
+                >
+                  View all {total} submissions <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
             )}
           </>
         )}

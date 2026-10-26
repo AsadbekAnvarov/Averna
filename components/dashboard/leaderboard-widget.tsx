@@ -2,6 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Trophy, ArrowRight, Globe, Users } from "lucide-react";
 import Link from "next/link";
 import { db } from "@/lib/db";
+import { cn } from "@/lib/utils";
+import { DASH_CARD } from "@/components/ui/dash-row";
 
 /**
  * A compact leaderboard showing the student's global rank and the few rivals
@@ -41,7 +43,7 @@ export async function LeaderboardWidget({ studentId, groupId }: { studentId: str
   const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : `#${rank}`);
 
   return (
-    <Card className="glass border-amber-400/30">
+    <Card className={cn(DASH_CARD, "glass border-amber-400/30")}>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-amber-400">

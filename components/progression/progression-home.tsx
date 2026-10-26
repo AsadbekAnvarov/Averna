@@ -8,6 +8,7 @@ import { RecentBadges } from "./recent-badges";
 import { LevelCard } from "./level-card";
 import { ErrorPanel } from "./error-panel";
 import { Reveal } from "@/components/motion/reveal";
+import { DashRow } from "@/components/ui/dash-row";
 
 async function load(studentId: string) {
   return getProgression(studentId).catch((e) => {
@@ -56,26 +57,33 @@ export async function ProgressionHome({
         <TodayMission mission={p.mission} firstName={p.firstName} isNew={p.isNew} />
       </Reveal>
 
-      <Reveal className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-3">
-        <div className="lg:col-span-2">{homework}</div>
-        <div className="space-y-3 md:space-y-6">
-          <NextActivity rec={p.recommendation} />
-          {aside}
-        </div>
+      <Reveal>
+        <DashRow cols={3}>
+          <div className="lg:col-span-2">{homework}</div>
+          {/* The stack fills the row's height; its last card grows (and centres its content). */}
+          <div className="flex flex-col gap-3 md:gap-6 [&>*]:h-auto [&>:last-child]:flex-1">
+            <NextActivity rec={p.recommendation} />
+            {aside}
+          </div>
+        </DashRow>
       </Reveal>
 
-      <Reveal className="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5 lg:grid-cols-5">
-        <div className="lg:col-span-3">
-          <SkillProgress profile={p.profile} targetBand={p.targetBand} insight={p.insight} weakestSkill={p.weakest?.skill ?? null} />
-        </div>
-        <div className="lg:col-span-2">
-          <StreakWeek streak={p.streak} />
-        </div>
+      <Reveal>
+        <DashRow cols={5}>
+          <div className="lg:col-span-3">
+            <SkillProgress profile={p.profile} targetBand={p.targetBand} insight={p.insight} weakestSkill={p.weakest?.skill ?? null} />
+          </div>
+          <div className="lg:col-span-2">
+            <StreakWeek streak={p.streak} />
+          </div>
+        </DashRow>
       </Reveal>
 
-      <Reveal className="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5 md:grid-cols-2">
-        <ChallengesCard daily={p.daily} weekly={p.weekly} />
-        <RecentBadges badges={p.badges} recent={p.recentBadges} />
+      <Reveal>
+        <DashRow at="md">
+          <ChallengesCard daily={p.daily} weekly={p.weekly} />
+          <RecentBadges badges={p.badges} recent={p.recentBadges} />
+        </DashRow>
       </Reveal>
     </div>
   );

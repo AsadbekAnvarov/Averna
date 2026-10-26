@@ -75,10 +75,14 @@ export function XpChip({ xp, className }: { xp: number; className?: string }) {
   );
 }
 
-/** The standard progression surface. */
+/**
+ * The standard progression surface. Like every dashboard widget frame
+ * (DASH_CARD in components/ui/dash-row.tsx) it fills its row cell and lays
+ * its children out in a column, so a body can grow or centre itself.
+ */
 export function Panel({ children, className, as: Tag = "section", labelledBy }: { children: React.ReactNode; className?: string; as?: "section" | "div"; labelledBy?: string }) {
   return (
-    <Tag aria-labelledby={labelledBy} className={cn("av-panel rounded-2xl p-3.5 sm:p-6", className)}>
+    <Tag aria-labelledby={labelledBy} className={cn("av-panel dash-card flex h-full flex-col rounded-2xl p-3.5 sm:p-6", className)}>
       {children}
     </Tag>
   );

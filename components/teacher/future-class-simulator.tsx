@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/toast";
@@ -74,7 +75,7 @@ export function FutureClassSimulator({ groups }: { groups: GroupBrief[] }) {
   };
 
   return (
-    <Card className="glass border-averna-pink/30">
+    <Card className={`${DASH_CARD} glass border-averna-pink/30`}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-pink">
           <FlaskConical className="h-5 w-5" /> Future Class Simulator

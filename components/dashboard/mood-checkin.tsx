@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Swords, Zap, Ghost, Lock, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 
 type Rec = { href: string; activity: string; icon: typeof Swords; reason: string };
 
@@ -67,8 +69,9 @@ export function MoodCheckin() {
   if (!loaded) return null;
 
   return (
-    <Card className="glass border-averna-purple/30">
-      <CardContent className="p-5">
+    <Card className={cn(DASH_CARD, "glass border-averna-purple/30")}>
+      {/* No header: top padding matches the Card header's (p-4 sm:p-5). Centred when stretched. */}
+      <CardContent className={cn(DASH_CENTER, "pt-4 sm:pt-5")}>
         {picked === null ? (
           <>
             <p className="text-sm font-semibold text-white mb-3">How are you feeling today?</p>

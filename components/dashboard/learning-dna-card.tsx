@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowRight, Dna, Lightbulb } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLearningDna } from "@/lib/engine/learning-dna";
+import { cn } from "@/lib/utils";
+import { DASH_CARD } from "@/components/ui/dash-row";
 
 /**
  * Compact Learning DNA teaser for the student dashboard.
@@ -41,7 +43,7 @@ export async function LearningDnaCard({ studentId }: { studentId: string }) {
     const established = traits.filter((t) => t.value != null).length;
 
     return (
-      <Card className="glass border-averna-purple/30">
+      <Card className={cn(DASH_CARD, "glass border-averna-purple/30")}>
         <CardHeader>
           <CardTitle className="flex items-center justify-between gap-2">
             <span className="flex items-center gap-2 text-averna-purple">
@@ -53,43 +55,46 @@ export async function LearningDnaCard({ studentId }: { studentId: string }) {
           </CardTitle>
         </CardHeader>
 
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            {traits.map((trait) => (
-              <div key={trait.label} className="rounded-lg bg-white/5 border border-white/10 p-3">
-                <p className="text-[10px] uppercase tracking-wider text-gray-400 mb-1 truncate">
-                  {trait.label}
-                </p>
-                <p
-                  className={`text-sm font-semibold leading-snug ${
-                    trait.value != null ? "text-white" : "text-gray-500"
-                  }`}
-                >
-                  {trait.value ?? "Forming…"}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {top ? (
-            <div className="flex items-start gap-2.5 rounded-lg border border-averna-neon/25 bg-averna-neon/5 p-3">
-              <Lightbulb className="h-4 w-4 text-averna-neon shrink-0 mt-0.5" />
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-white leading-snug">{top.title}</p>
-                <p className="text-xs text-gray-300 mt-0.5 leading-relaxed line-clamp-2">{top.text}</p>
-              </div>
+        {/* Top-aligned; the body grows so the footer link sits at the bottom of a stretched card. */}
+        <CardContent className="flex flex-1 flex-col space-y-4">
+          <div className="flex-1 space-y-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {traits.map((trait) => (
+                <div key={trait.label} className="rounded-lg bg-white/5 border border-white/10 p-3">
+                  <p className="text-[10px] uppercase tracking-wider text-gray-400 mb-1 truncate">
+                    {trait.label}
+                  </p>
+                  <p
+                    className={`text-sm font-semibold leading-snug ${
+                      trait.value != null ? "text-white" : "text-gray-500"
+                    }`}
+                  >
+                    {trait.value ?? "Forming…"}
+                  </p>
+                </div>
+              ))}
             </div>
-          ) : (
-            <p className="text-xs text-gray-400 leading-relaxed">
-              {established === 0
-                ? "Keep practising — after a few varied, timed sessions this profile will start telling you how you learn best."
-                : "Your profile is forming. Insights appear as soon as there's enough evidence to back one up."}
-            </p>
-          )}
+
+            {top ? (
+              <div className="flex items-start gap-2.5 rounded-lg border border-averna-neon/25 bg-averna-neon/5 p-3">
+                <Lightbulb className="h-4 w-4 text-averna-neon shrink-0 mt-0.5" />
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-white leading-snug">{top.title}</p>
+                  <p className="text-xs text-gray-300 mt-0.5 leading-relaxed line-clamp-2">{top.text}</p>
+                </div>
+              </div>
+            ) : (
+              <p className="text-xs text-gray-400 leading-relaxed">
+                {established === 0
+                  ? "Keep practising — after a few varied, timed sessions this profile will start telling you how you learn best."
+                  : "Your profile is forming. Insights appear as soon as there's enough evidence to back one up."}
+              </p>
+            )}
+          </div>
 
           <Link
             href="/learning-dna"
-            className="inline-flex items-center gap-1.5 text-sm text-averna-purple hover:text-white transition-colors"
+            className="self-start inline-flex items-center gap-1.5 text-sm text-averna-purple hover:text-white transition-colors"
           >
             Open your full Learning DNA
             <ArrowRight className="h-4 w-4" />

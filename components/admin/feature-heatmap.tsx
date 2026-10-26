@@ -1,5 +1,6 @@
 import { getFeatureHeatmap, type FeatureUsage } from "@/lib/admin-analytics";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { Grid3x3 } from "lucide-react";
 
 const LEVEL: Record<FeatureUsage["level"], { bar: string; dot: string }> = {
@@ -17,7 +18,7 @@ export async function FeatureHeatmap() {
   const features = await getFeatureHeatmap();
 
   return (
-    <Card className="glass border-averna-purple/30">
+    <Card className={`${DASH_CARD} glass border-averna-purple/30`}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-purple">
           <Grid3x3 className="h-5 w-5" /> Funksiyalar Issiqlik Xaritasi

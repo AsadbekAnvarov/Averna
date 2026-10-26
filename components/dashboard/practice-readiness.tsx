@@ -2,14 +2,17 @@ import type { practiceReadiness } from "@/lib/assessment/readiness";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Target } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { DASH_CARD } from "@/components/ui/dash-row";
 type Summary = ReturnType<typeof practiceReadiness>;
 /** Presentational component also exercised in mobile browser fixtures. */
 export function PracticeReadiness({ summary, targetBand }: { summary: Summary; targetBand?: string | null }) {
   const target = targetBand ? Number(targetBand.replace(/[^0-9.]/g, "")) : NaN;
-  return <Card className="glass min-w-0 border-averna-cyan/30">
+  return <Card className={cn(DASH_CARD, "glass min-w-0 border-averna-cyan/30")}>
     <CardHeader><CardTitle className="flex items-start gap-2 text-white"><Target aria-hidden className="mt-0.5 h-5 w-5 shrink-0 text-study-ink" />Practice evidence</CardTitle>
       <p className="text-sm text-gray-300">The last 90 days. No predicted IELTS score.</p></CardHeader>
-    <CardContent className="space-y-5">
+    {/* Top-aligned; the note grows so the footer link sits at the bottom of a stretched card. */}
+    <CardContent className="flex flex-1 flex-col space-y-5">
       <div className="rounded-xl border border-white/15 bg-white/5 p-4">
         <p className="text-sm text-gray-300">Four-skill practice summary</p>
         <p className="mt-2 text-3xl font-bold text-white">{summary.overall == null ? "Not enough evidence" : summary.overall.toFixed(1)}</p>
@@ -26,8 +29,8 @@ export function PracticeReadiness({ summary, targetBand }: { summary: Summary; t
           {!!s.excluded && <p className="mt-2 text-sm text-gray-300">{s.excluded} repeated or ineligible record{s.excluded === 1 ? "" : "s"} excluded.</p>}
         </li>)}
       </ul>
-      <p className="text-sm text-gray-300">Observed ranges describe past practice, not future scores. Two complete, distinct-content results on different days per skill are needed for the overall summary. This threshold is an evidence rule, not a validated confidence level.</p>
-      <Link href="/learning" className="inline-flex min-h-11 items-center rounded-lg border border-averna-cyan/40 px-4 text-sm font-medium text-study-ink focus-visible:outline focus-visible:outline-2">Open practice library →</Link>
+      <p className="flex-1 text-sm text-gray-300">Observed ranges describe past practice, not future scores. Two complete, distinct-content results on different days per skill are needed for the overall summary. This threshold is an evidence rule, not a validated confidence level.</p>
+      <Link href="/learning" className="self-start inline-flex min-h-11 items-center rounded-lg border border-averna-cyan/40 px-4 text-sm font-medium text-study-ink focus-visible:outline focus-visible:outline-2">Open practice library →</Link>
     </CardContent>
   </Card>;
 }

@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { Filter, UserPlus, Users, GraduationCap } from "lucide-react";
 import { db } from "@/lib/db";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -25,7 +26,7 @@ export async function EnrollmentFunnel() {
   const max = Math.max(registered, 1);
 
   return (
-    <Card className="glass border-averna-purple/30">
+    <Card className={`${DASH_CARD} glass border-averna-purple/30`}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-purple">
           <Filter className="h-5 w-5" /> Qabul voronkasi

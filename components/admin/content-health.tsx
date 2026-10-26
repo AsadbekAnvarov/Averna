@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getContentHealth, type HealthSeverity } from "@/lib/admin-health";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { HeartPulse, ArrowRight, CheckCircle2, Wrench } from "lucide-react";
 
 const SEV: Record<HealthSeverity, { dot: string; chip: string; label: string }> = {
@@ -24,7 +25,7 @@ export async function ContentHealth() {
   const { score, checked, issues } = await getContentHealth();
 
   return (
-    <Card className="glass border-averna-neon/30 relative overflow-hidden">
+    <Card className={`${DASH_CARD} glass border-averna-neon/30 relative overflow-hidden`}>
       <div className="pointer-events-none absolute -top-12 -left-12 h-44 w-44 rounded-full bg-averna-neon/10 blur-3xl" />
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
