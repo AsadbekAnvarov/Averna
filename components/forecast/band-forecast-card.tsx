@@ -44,7 +44,8 @@ function SkillRow({ s, f, now }: { s: SkillForecast; f: BandForecast; now: numbe
   return (
     <li className="flex min-h-[44px] items-start gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-3" data-testid={`forecast-${s.skill}`}>
       <div className="min-w-0 flex-1">
-        <div className="flex items-baseline justify-between gap-2">
+        {/* Wraps on 320 px phones, where the sparkline leaves ~120 px for the label + band. */}
+        <div className="flex flex-wrap items-baseline justify-between gap-x-2">
           <h4 className="text-sm font-semibold text-white">{s.label}</h4>
           <span className="flex items-center gap-1 text-base font-bold tabular-nums text-white">
             {s.nowBand != null ? `≈ ${formatBand(s.nowBand)}` : "—"}

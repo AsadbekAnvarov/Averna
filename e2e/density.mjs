@@ -62,6 +62,8 @@ const PAGES = {
     "/dashboard?tab=class",
     "/dashboard?tab=fun",
     "/progress",
+    // The AI Coach hub (elegance roadmap, idea 9); "new on head" until the base has it.
+    "/coach",
     "/learning",
     "/homework",
     "/article",
