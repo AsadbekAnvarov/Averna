@@ -133,6 +133,11 @@ jobs:
         # Runs even when the screenshots found problems, so both reports are available.
         if: ${{ !cancelled() && steps.start.outcome == 'success' }}
         run: node e2e/bugfix-checks.mjs
+      - name: Peer speaking flow
+        # Two students with fake media: match → same room → ready → start → card → end → feedback form.
+        # Voice (WebRTC) connection is not asserted. Report in the "report-peer-speaking" artifact.
+        if: ${{ !cancelled() && steps.start.outcome == 'success' }}
+        run: node e2e/peer-speaking.mjs
       - name: Server log
         if: always()
         run: |
@@ -159,6 +164,13 @@ jobs:
           path: |
             e2e/report-preservation.json
             e2e/baseline/
+          if-no-files-found: warn
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-peer-speaking
+          path: e2e/report-peer-speaking.json
           if-no-files-found: warn
           retention-days: 7
       - uses: actions/upload-artifact@v4

@@ -73,6 +73,9 @@ const PAGES = {
     ["calendar", "/calendar"],
     ["learning-reading", "/learning/reading"],
     ["learning-listening", "/learning/listening"],
+    // Peer speaking hub (the mic is only requested on "Test microphone") and the solo runner.
+    ["speaking-hub", "/learning/speaking"],
+    ["speaking-solo", "/learning/speaking/solo"],
     ["articles-intermediate", "/article?level=Intermediate"],
     // An interactive lesson: the supplied file runs in a sandboxed frame; wait until its engine has built the page.
     [
@@ -95,6 +98,7 @@ const PAGES = {
     ["teacher-homework", "/teacher/homework"],
     ["teacher-gradebook", "/teacher/gradebook"],
     ["teacher-attendance", "/teacher/attendance"],
+    ["teacher-speaking", "/teacher/speaking"],
     ["teacher-messages", "/messages"],
   ],
   admin: [

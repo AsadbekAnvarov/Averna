@@ -1,4 +1,4 @@
-import { LayoutDashboard, CalendarDays, Bell, Users, ClipboardCheck, BookOpen, Notebook, ListChecks, BarChart3, GraduationCap, UserCheck, Sparkles, Headphones, Megaphone, MessageSquare, User, Settings, BarChart, Compass, Gift, Activity, Send, type LucideIcon } from "lucide-react";
+import { LayoutDashboard, CalendarDays, Bell, Users, ClipboardCheck, BookOpen, Notebook, ListChecks, BarChart3, GraduationCap, UserCheck, Sparkles, Headphones, Megaphone, MessageSquare, User, Settings, BarChart, Compass, Gift, Activity, Send, Mic, type LucideIcon } from "lucide-react";
 export type PortalNavSection = { label: string; items: { name: string; href: string; icon: LucideIcon; exact?: boolean }[] };
 export const TEACHER_NAV: PortalNavSection[] = [
   {
@@ -14,6 +14,7 @@ export const TEACHER_NAV: PortalNavSection[] = [
     items: [
       { name: "All Students", href: "/teacher/students", icon: Users },
       { name: "Attendance", href: "/teacher/attendance", icon: ClipboardCheck },
+      { name: "Peer Speaking", href: "/teacher/speaking", icon: Mic },
     ],
   },
   {

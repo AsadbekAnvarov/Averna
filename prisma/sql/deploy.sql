@@ -709,3 +709,85 @@ CREATE TABLE IF NOT EXISTS "mock_focus_events" (
 );
 CREATE UNIQUE INDEX IF NOT EXISTS "mock_focus_events_attemptId_eventId_key" ON "mock_focus_events"("attemptId", "eventId");
 CREATE INDEX IF NOT EXISTS "mock_focus_events_attemptId_leftAt_idx" ON "mock_focus_events"("attemptId", "leftAt");
+-- Peer speaking (docs/peer-speaking.md): level-aware matching, room state machine,
+-- peer feedback, blocks and reports. The queue and room tables already exist on
+-- live databases (created by an earlier push); they are created here only for a
+-- fresh database, then extended with additive columns.
+CREATE TABLE IF NOT EXISTS "speaking_queue" (
+    "id"          TEXT NOT NULL,
+    "studentId"   TEXT NOT NULL,
+    "studentName" TEXT NOT NULL,
+    "roomId"      TEXT,
+    "topic"       TEXT,
+    "createdAt"   TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "speaking_queue_pkey" PRIMARY KEY ("id")
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "speaking_queue_studentId_key" ON "speaking_queue" ("studentId");
+ALTER TABLE "speaking_queue" ADD COLUMN IF NOT EXISTS "format" TEXT NOT NULL DEFAULT 'conversation';
+ALTER TABLE "speaking_queue" ADD COLUMN IF NOT EXISTS "level" DOUBLE PRECISION NOT NULL DEFAULT 5;
+ALTER TABLE "speaking_queue" ADD COLUMN IF NOT EXISTS "groupId" TEXT;
+ALTER TABLE "speaking_queue" ADD COLUMN IF NOT EXISTS "lastSeenAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
+CREATE INDEX IF NOT EXISTS "speaking_queue_roomId_format_lastSeenAt_idx"
+    ON "speaking_queue" ("roomId", "format", "lastSeenAt");
+CREATE TABLE IF NOT EXISTS "speaking_rooms" (
+    "id"           TEXT NOT NULL,
+    "topic"        TEXT NOT NULL,
+    "studentAId"   TEXT NOT NULL,
+    "studentAName" TEXT NOT NULL,
+    "studentBId"   TEXT NOT NULL,
+    "studentBName" TEXT NOT NULL,
+    "status"       TEXT NOT NULL DEFAULT 'ACTIVE',
+    "createdAt"    TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "endedAt"      TIMESTAMP(3),
+    CONSTRAINT "speaking_rooms_pkey" PRIMARY KEY ("id")
+);
+ALTER TABLE "speaking_rooms" ADD COLUMN IF NOT EXISTS "format" TEXT NOT NULL DEFAULT 'conversation';
+ALTER TABLE "speaking_rooms" ADD COLUMN IF NOT EXISTS "state" JSONB;
+ALTER TABLE "speaking_rooms" ADD COLUMN IF NOT EXISTS "version" INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE "speaking_rooms" ADD COLUMN IF NOT EXISTS "level" DOUBLE PRECISION;
+CREATE INDEX IF NOT EXISTS "speaking_rooms_studentAId_createdAt_idx" ON "speaking_rooms" ("studentAId", "createdAt");
+CREATE INDEX IF NOT EXISTS "speaking_rooms_studentBId_createdAt_idx" ON "speaking_rooms" ("studentBId", "createdAt");
+CREATE TABLE IF NOT EXISTS "speaking_peer_feedback" (
+    "id"            TEXT NOT NULL,
+    "roomId"        TEXT NOT NULL,
+    "fromStudentId" TEXT NOT NULL,
+    "toStudentId"   TEXT NOT NULL,
+    "fluency"       INTEGER NOT NULL,
+    "lexical"       INTEGER NOT NULL,
+    "grammar"       INTEGER NOT NULL,
+    "pronunciation" INTEGER NOT NULL,
+    "strength"      TEXT,
+    "tip"           TEXT,
+    "createdAt"     TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "speaking_peer_feedback_pkey" PRIMARY KEY ("id")
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "speaking_peer_feedback_roomId_fromStudentId_key"
+    ON "speaking_peer_feedback" ("roomId", "fromStudentId");
+CREATE INDEX IF NOT EXISTS "speaking_peer_feedback_toStudentId_createdAt_idx"
+    ON "speaking_peer_feedback" ("toStudentId", "createdAt");
+CREATE TABLE IF NOT EXISTS "speaking_blocks" (
+    "id"        TEXT NOT NULL,
+    "blockerId" TEXT NOT NULL,
+    "blockedId" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "speaking_blocks_pkey" PRIMARY KEY ("id")
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "speaking_blocks_blockerId_blockedId_key"
+    ON "speaking_blocks" ("blockerId", "blockedId");
+CREATE INDEX IF NOT EXISTS "speaking_blocks_blockedId_idx" ON "speaking_blocks" ("blockedId");
+CREATE TABLE IF NOT EXISTS "speaking_reports" (
+    "id"           TEXT NOT NULL,
+    "roomId"       TEXT NOT NULL,
+    "reporterId"   TEXT NOT NULL,
+    "reportedId"   TEXT NOT NULL,
+    "reason"       TEXT NOT NULL,
+    "note"         TEXT,
+    "status"       TEXT NOT NULL DEFAULT 'OPEN',
+    "createdAt"    TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "resolvedAt"   TIMESTAMP(3),
+    "resolvedById" TEXT,
+    CONSTRAINT "speaking_reports_pkey" PRIMARY KEY ("id")
+);
+CREATE INDEX IF NOT EXISTS "speaking_reports_reportedId_status_idx" ON "speaking_reports" ("reportedId", "status");
+CREATE INDEX IF NOT EXISTS "speaking_reports_status_createdAt_idx" ON "speaking_reports" ("status", "createdAt");
+CREATE INDEX IF NOT EXISTS "speaking_reports_roomId_idx" ON "speaking_reports" ("roomId");

@@ -11,7 +11,7 @@ interface Step { icon: any; title: string; text: string; }
 const STEPS: Step[] = [
   { icon: Sparkles, title: "Welcome to Averna! 🎉", text: "Let's take a 30-second tour of your new IELTS platform. You can skip anytime." },
   { icon: PenTool, title: "Practise every skill", text: "Writing, Reading, Listening and Speaking — each with instant feedback and an estimated band score." },
-  { icon: Mic, title: "Live Speaking practice", text: "During Speaking Time, tap 'Find a Partner' to be paired 1-on-1 with another student and chat on the daily topic." },
+  { icon: Mic, title: "Live Speaking practice", text: "In Speaking, tap 'Find a partner' to talk 1-on-1 with a student near your level, with clear roles and timers." },
   { icon: Zap, title: "Earn points daily", text: "Daily Challenge, homework and tests give you points — but only for genuine effort. Build streaks and climb the rankings!" },
   { icon: CalendarClock, title: "Stay organised", text: "Your Schedule and Calendar show lessons, homework deadlines and attendance in one place." },
   { icon: Gift, title: "Spend your points", text: "Visit the Rewards Store to swap points for trial lessons, discounts and merch. Let's go! 🚀" },

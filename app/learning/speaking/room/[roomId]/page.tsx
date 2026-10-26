@@ -1,228 +1,72 @@
-"use client";
+export const dynamic = "force-dynamic";
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Mic, Send, LogOut, Users, Sparkles } from "lucide-react";
-import { getTodayTopic } from "@/lib/speaking-topics";
-import { VoiceCall } from "@/components/speaking/voice-call";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { hasOpenAI } from "@/lib/ai";
+import { peerSessionAward } from "@/lib/speaking/peer-xp";
+import { isPeerSessionState, type Seat } from "@/lib/speaking/session";
+import { finishedNaturally, sessionView, type SessionRoomRow } from "@/lib/speaking/session-view";
+import { PeerRoom } from "@/components/speaking/peer-room";
 
-interface Msg { id: string; senderId: string; senderName: string; content: string; createdAt: string; }
-interface RoomInfo { id: string; topic: string; studentAName: string; studentBName: string; status: string; }
+export const metadata = { title: "Speaking room" };
 
-const EMOJIS = ["😀", "👍", "🎉", "🤔", "❤️", "😂", "🙌", "🔥", "👏", "🤝"];
+type Props = { params: Promise<{ roomId: string }> };
 
-export default function SpeakingRoomPage() {
-  const params = useParams();
-  const router = useRouter();
-  const roomId = params.roomId as string;
-
-  const [room, setRoom] = useState<RoomInfo | null>(null);
-  const [messages, setMessages] = useState<Msg[]>([]);
-  const [meId, setMeId] = useState("");
-  const [isInitiator, setIsInitiator] = useState<boolean | null>(null);
-  const [text, setText] = useState("");
-  const [error, setError] = useState("");
-  const [ended, setEnded] = useState(false);
-  const bottomRef = useRef<HTMLDivElement>(null);
-  const topic = getTodayTopic();
-
-  const load = useCallback(async () => {
-    try {
-      const res = await fetch(`/api/speaking/room?roomId=${roomId}`);
-      if (!res.ok) {
-        const d = await res.json();
-        setError(d.error || "Could not load room");
-        return;
-      }
-      const data = await res.json();
-      setRoom(data.room);
-      setMessages(data.messages);
-      setMeId(data.meId);
-      setIsInitiator(data.isInitiator ?? false);
-      if (data.room.status === "ENDED") setEnded(true);
-    } catch {
-      setError("Connection error");
-    }
-  }, [roomId]);
-
-  useEffect(() => {
-    load();
-    const id = setInterval(load, 2500);
-    return () => clearInterval(id);
-  }, [load]);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages.length]);
-
-  const send = async (content: string) => {
-    const body = content.trim();
-    if (!body) return;
-    setText("");
-    await fetch("/api/speaking/room", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ roomId, content: body }),
-    });
-    load();
-  };
-
-  // Push-to-talk: transcribe speech and send as a voice message
-  const [talking, setTalking] = useState(false);
-  const [voiceSupported, setVoiceSupported] = useState(true);
-  const recRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) { setVoiceSupported(false); return; }
-    const rec = new SR();
-    rec.lang = "en-US";
-    rec.interimResults = false;
-    rec.continuous = false;
-    rec.onresult = (e: any) => {
-      const t = Array.from(e.results).map((r: any) => r[0].transcript).join(" ").trim();
-      if (t) send("🎤 " + t);
-    };
-    rec.onend = () => setTalking(false);
-    rec.onerror = () => setTalking(false);
-    recRef.current = rec;
-    return () => { try { rec.abort(); } catch {} };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [roomId]);
-
-  const toggleTalk = () => {
-    if (talking) { recRef.current?.stop(); setTalking(false); }
-    else { try { recRef.current?.start(); setTalking(true); } catch { setTalking(false); } }
-  };
-
-  const leave = async () => {
-    await fetch(`/api/speaking/room?roomId=${roomId}`, { method: "DELETE" });
-    router.push("/learning/speaking");
-  };
-
-  if (error) {
-    return (
-      <div className="min-h-screen premium-gradient flex items-center justify-center px-4">
-        <Card className="glass border-red-500/30 max-w-md w-full text-center">
-          <CardContent className="py-8 space-y-4">
-            <p className="text-red-300">{error}</p>
-            <Button onClick={() => router.push("/learning/speaking")} className="neon-button bg-averna-primary">
-              Back to Speaking
-            </Button>
-          </CardContent>
-        </Card>
+function Notice({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="min-h-screen premium-gradient">
+      <div className="container mx-auto max-w-md px-4 py-10">
+        <section className="av-panel rounded-2xl p-6 text-center">
+          <h1 className="text-xl font-semibold text-white">{title}</h1>
+          <p className="mt-2 text-sm text-gray-300">{text}</p>
+          <Link
+            href="/learning/speaking"
+            className="mt-4 inline-flex min-h-[44px] items-center rounded-lg bg-averna-primary px-5 text-sm font-semibold text-white"
+          >
+            Back to Speaking
+          </Link>
+        </section>
       </div>
-    );
+    </div>
+  );
+}
+
+/** A peer speaking room (docs/peer-speaking.md, Phase B): the two students of the room only. */
+export default async function SpeakingRoomPage({ params }: Props) {
+  const session = await auth();
+  if (!session?.user) redirect("/auth/signin");
+  const { roomId } = await params;
+
+  if (session.user.role !== "STUDENT") {
+    return <Notice title="Peer rooms are for students" text="Only the two students in a session can join its room." />;
   }
+  const unavailable = <Notice title="This session isn't available" text="It may belong to other students, or the link is wrong. Find a new partner on the Speaking page." />;
+  if (!/^[A-Za-z0-9_-]{1,64}$/.test(roomId)) return unavailable;
+
+  const [student, room] = await Promise.all([
+    db.student.findUnique({ where: { userId: session.user.id }, select: { id: true } }).catch(() => null),
+    db.speakingRoom.findUnique({ where: { id: roomId } }).catch(() => null) as Promise<SessionRoomRow | null>,
+  ]);
+  if (!student || !room) return unavailable;
+  const seat: Seat | null = room.studentAId === student.id ? "A" : room.studentBId === student.id ? "B" : null;
+  if (!seat) return unavailable;
+  if (!isPeerSessionState(room.state)) {
+    return <Notice title="This session has ended" text="It was made with the old room, which is no longer available. Find a new partner on the Speaking page." />;
+  }
+
+  const xp = finishedNaturally(room.state) ? await peerSessionAward(room.id, student.id).catch(() => null) : null;
+  const view = sessionView(room, seat, Date.now(), xp);
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 max-w-3xl pb-10 lg:pb-6">
-        {/* Header */}
-        <Card className="glass border-averna-neon/30 mb-4">
-          <CardContent className="py-4 flex items-center justify-between gap-3">
-            <div className="min-w-0">
-              <p className="text-averna-neon text-xs font-semibold uppercase flex items-center gap-1">
-                <Mic className="h-4 w-4" /> Face-to-Face Speaking
-              </p>
-              <p className="text-white font-bold truncate flex items-center gap-2">
-                <Users className="h-4 w-4 text-averna-cyan" />
-                {room?.studentAName} &amp; {room?.studentBName}
-              </p>
-              <p className="text-xs text-averna-cyan">Topic: {room?.topic}</p>
-            </div>
-            <Button onClick={leave} variant="outline" size="sm" className="border-red-500/50 text-red-300 shrink-0">
-              <LogOut className="h-4 w-4 mr-1" /> Leave
-            </Button>
-          </CardContent>
-        </Card>
-
-        {/* Suggested questions */}
-        <Card className="glass border-averna-purple/30 mb-4">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm flex items-center gap-2 text-averna-purple">
-              <Sparkles className="h-4 w-4" /> Discuss these questions
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="text-sm text-gray-300 space-y-1 list-disc list-inside">
-              {topic.questions.map((q) => <li key={q}>{q}</li>)}
-            </ul>
-            <p className="text-[11px] text-gray-500 mt-2">⚠️ Please keep the conversation on topic.</p>
-          </CardContent>
-        </Card>
-
-        {/* Chat */}
-        <Card className="glass border-averna-cyan/30">
-          <CardContent className="py-4 flex flex-col h-[50vh]">
-            {/* Real-time voice call */}
-            {!ended && isInitiator !== null && (
-              <VoiceCall roomId={roomId} isInitiator={isInitiator} />
-            )}
-            <div className="flex-1 overflow-y-auto space-y-2 pr-1">
-              {messages.length === 0 ? (
-                <p className="text-sm text-gray-400 text-center mt-6">
-                  You&apos;re connected! Start the conversation — say hello 👋
-                </p>
-              ) : (
-                messages.map((m) => {
-                  const mine = m.senderId === meId;
-                  return (
-                    <div key={m.id} className={`flex ${mine ? "justify-end" : "justify-start"}`}>
-                      <div className={`max-w-[75%] px-3 py-2 rounded-2xl text-sm ${mine ? "bg-averna-primary text-white rounded-br-sm" : "bg-white/10 text-gray-100 rounded-bl-sm"}`}>
-                        {!mine && <p className="text-[10px] text-averna-cyan mb-0.5">{m.senderName}</p>}
-                        {m.content}
-                      </div>
-                    </div>
-                  );
-                })
-              )}
-              <div ref={bottomRef} />
-            </div>
-
-            {ended ? (
-              <div className="mt-3 border-t border-white/10 pt-3 text-center">
-                <p className="text-gray-400 text-sm mb-2">This session has ended.</p>
-                <Button onClick={() => router.push("/learning/speaking")} className="neon-button bg-averna-primary">
-                  Back to Speaking
-                </Button>
-              </div>
-            ) : (
-              <>
-                <div className="flex gap-1 mt-3 flex-wrap">
-                  {EMOJIS.map((e) => (
-                    <button key={e} onClick={() => send(e)} className="text-lg hover:scale-125 transition-transform" type="button">
-                      {e}
-                    </button>
-                  ))}
-                </div>
-                <form
-                  onSubmit={(e) => { e.preventDefault(); send(text); }}
-                  className="flex gap-2 mt-2 border-t border-white/10 pt-3"
-                >
-                  {voiceSupported && (
-                    <Button
-                      type="button"
-                      onClick={toggleTalk}
-                      title="Push to talk — speak and it sends as a voice message"
-                      className={`shrink-0 ${talking ? "bg-red-500 hover:bg-red-600 animate-pulse" : "neon-button bg-averna-pink hover:opacity-90"}`}
-                    >
-                      <Mic className="h-4 w-4" />
-                    </Button>
-                  )}
-                  <Input value={text} onChange={(e) => setText(e.target.value)} placeholder="Type your message..." autoComplete="off" className="bg-background/50" />
-                  <Button type="submit" className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
-                    <Send className="h-4 w-4" />
-                  </Button>
-                </form>
-              </>
-            )}
-          </CardContent>
-        </Card>
+      <div className="container mx-auto max-w-3xl px-3 py-4 pb-10 sm:px-4 sm:py-6 lg:pb-6">
+        <Link href="/learning/speaking" className="mb-3 inline-flex min-h-[44px] items-center text-sm text-averna-neon hover:underline">
+          ← Back to Speaking
+        </Link>
+        <h1 className="sr-only">Speaking room</h1>
+        <PeerRoom initial={{ ...view, state: room.state }} coachAvailable={hasOpenAI()} />
       </div>
     </div>
   );
