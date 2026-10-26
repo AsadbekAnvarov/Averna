@@ -3,6 +3,7 @@ import { CheckCircle2, XCircle } from "lucide-react";
 import type { ExamGroup, ExamSkill, GradeItem } from "@/lib/ielts/types";
 import { answerRuleFor, groupRange, rangeLabel, splitPlaceholders } from "@/lib/ielts/format";
 import { cn } from "@/lib/utils";
+import { L1Hint } from "@/components/l1/l1-hint";
 
 /**
  * Post-submission review of one question group: the student's answer, the
@@ -45,6 +46,8 @@ export function ReviewGroup({
       <p className="text-sm text-gray-400">
         {group.instructions} <span className="text-gray-300">{answerRuleFor(group, skill)}</span>
       </p>
+      {/* Native-language hint for the whole line, or nothing (client component; hints off → null). */}
+      <L1Hint text={`${group.instructions ?? ""} ${answerRuleFor(group, skill)}`} />
       {group.kind === "mcq-multi" && group.title && <p className="mt-1 text-sm font-medium text-gray-200">{group.title}</p>}
       <ul className="mt-3 space-y-2">
         {group.questions.map((q) => {

@@ -8,6 +8,8 @@ import type { WritingEssays, WritingExamRunnerProps } from "./types";
 import { Task1Chart } from "@/components/learning/task1-chart";
 import type { WritingPrompt } from "@/lib/writing-data";
 import { cn } from "@/lib/utils";
+import { L1Hint } from "@/components/l1/l1-hint";
+import { writingInstructionText } from "@/lib/l1/hints";
 
 /**
  * Computer-delivered IELTS Writing: Task 1 and Task 2 in one timed session
@@ -233,6 +235,7 @@ interface TaskPromptProps {
 
 const TaskPrompt = memo(function TaskPrompt({ n, prompt, minutes, showType }: TaskPromptProps) {
   const { statement, afterBox, extra } = useMemo(() => splitPrompt(prompt.prompt), [prompt.prompt]);
+  const statementRubric = useMemo(() => writingInstructionText(statement), [statement]);
   const chart = n === 1 && prompt.chart && prompt.chart.length > 0 ? prompt.chart : null;
   const image = n === 1 && !chart && prompt.imageUrl ? prompt.imageUrl : null;
   const headingId = `writing-task-${n}-heading`;
@@ -250,22 +253,43 @@ const TaskPrompt = memo(function TaskPrompt({ n, prompt, minutes, showType }: Ta
         )}
       </div>
 
-      <p className="mt-3 leading-relaxed text-gray-200">You should spend about {minutes} minutes on this task.</p>
-      {n === 2 && <p className="mt-2 leading-relaxed text-gray-200">Write about the following topic:</p>}
+      <p className="mt-3 leading-relaxed text-gray-200">
+        You should spend about {minutes} minutes on this task.
+        <L1Hint text={`You should spend about ${minutes} minutes on this task.`} fit="em" />
+      </p>
+      {n === 2 && (
+        <p className="mt-2 leading-relaxed text-gray-200">
+          Write about the following topic:
+          <L1Hint text="Write about the following topic:" fit="em" />
+        </p>
+      )}
 
       {statement && (
         <div className="mt-4 whitespace-pre-wrap rounded-xl border border-white/15 bg-white/[0.035] px-4 py-4 leading-[1.75] text-gray-100 sm:px-5">
           {statement}
         </div>
       )}
-      {afterBox && <p className="mt-4 whitespace-pre-wrap leading-relaxed text-gray-200">{afterBox}</p>}
+      {/* The standard rubric inside the prompt ("Summarise the information …", "To what extent …?"). */}
+      <L1Hint text={statementRubric} fit="em" className="mt-2" />
+      {afterBox && (
+        <p className="mt-4 whitespace-pre-wrap leading-relaxed text-gray-200">
+          {afterBox}
+          <L1Hint text={afterBox} fit="em" className="whitespace-normal" />
+        </p>
+      )}
 
-      <p className="mt-4 font-semibold text-white">Write at least {MIN_WORDS[n]} words.</p>
+      <p className="mt-4 font-semibold text-white">
+        Write at least {MIN_WORDS[n]} words.
+        <L1Hint text={`Write at least ${MIN_WORDS[n]} words.`} fit="em" />
+      </p>
 
       {n === 2 && (
         <p className="mt-4 flex items-start gap-2 rounded-lg border border-averna-cyan/20 bg-averna-cyan/[0.06] px-3 py-2.5 text-[0.85em] leading-snug text-gray-200">
           <Scale className="mt-0.5 h-4 w-4 shrink-0 text-averna-cyan" aria-hidden />
-          <span>Task 2 counts twice as much as Task 1.</span>
+          <span>
+            Task 2 counts twice as much as Task 1.
+            <L1Hint text="Task 2 counts twice as much as Task 1." fit="em" />
+          </span>
         </p>
       )}
 

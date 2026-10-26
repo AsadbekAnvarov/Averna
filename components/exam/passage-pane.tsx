@@ -2,6 +2,7 @@
 
 import { clearQuestionHighlights } from "./question-highlights";
 import { useMockCdi } from "./mock-cdi-interface";
+import { L1Hint } from "@/components/l1/l1-hint";
 import { Fragment, memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { HIGHLIGHT_COLORS, type HighlightColor } from "./exam-preferences";
 import { Eraser, Highlighter, Search } from "lucide-react";
@@ -734,6 +735,7 @@ function PassagePaneImpl({ passage, label, intro, attemptId, lookup = false }: P
             )}
           </div>
           {intro && <p className="mt-[0.3em] break-words text-[0.9em] leading-relaxed text-gray-400">{intro}</p>}
+          {intro && <L1Hint text={intro} fit="em" />}
           <h2 className="mt-[0.8em] break-words text-[1.4em] font-bold leading-snug text-white">{passage.title}</h2>
           {passage.subtitle && <p className="mt-[0.35em] break-words italic leading-relaxed text-gray-400">{passage.subtitle}</p>}
 

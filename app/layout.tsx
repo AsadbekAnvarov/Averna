@@ -1,6 +1,6 @@
 import { MockNavigationGuard } from "@/components/exam/mock-navigation-guard";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Atkinson_Hyperlegible, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { PwaInstaller } from "@/components/pwa-installer";
@@ -9,8 +9,18 @@ import { LiveNotifications } from "@/components/live-notifications";
 import { AppShell } from "@/components/layout/app-sidebar";
 import { GFX_TIER_SCRIPT } from "@/components/motion/gfx-tier";
 import { THEME_COLORS, THEME_SCRIPT } from "@/components/theme/theme-script";
+import { COMFORT_SCRIPT } from "@/components/comfort/comfort-script";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
+// Settings → Reading comfort → Readable font (html.font-readable). Not preloaded:
+// the files load only for people who switch it on.
+const readable = Atkinson_Hyperlegible({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "700"],
+  display: "swap",
+  preload: false,
+  variable: "--font-readable",
+});
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? process.env.NEXTAUTH_URL ?? "https://averna.vercel.app";
@@ -73,9 +83,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // suppressHydrationWarning: the <head> scripts set html[data-gfx] and the saved theme class
-    // before React hydrates, so <html>'s attributes legitimately differ from the server HTML.
-    <html lang="en" className="dark" suppressHydrationWarning>
+    // suppressHydrationWarning: the <head> scripts set html[data-gfx], the saved theme class and
+    // the reading-comfort classes before React hydrates, so <html>'s attributes legitimately
+    // differ from the server HTML.
+    <html lang="en" className={`dark ${readable.variable}`} suppressHydrationWarning>
       <head>
         {/* Graphics tier (html[data-gfx]) before first paint — components/motion/gfx-tier.ts */}
         <script dangerouslySetInnerHTML={{ __html: GFX_TIER_SCRIPT }} />
@@ -83,6 +94,8 @@ export default function RootLayout({
         <meta name="theme-color" content={THEME_COLORS.dark} suppressHydrationWarning />
         {/* Saved light/dark theme before first paint (no dark flash) — components/theme/theme-script.ts */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        {/* Saved text size, readable font, line spacing and contrast — components/comfort/comfort-script.ts */}
+        <script dangerouslySetInnerHTML={{ __html: COMFORT_SCRIPT }} />
       </head>
       <body className={inter.className}>
         <Providers>

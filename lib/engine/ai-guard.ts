@@ -65,6 +65,8 @@ export const AI_LIMITS: Record<string, RouteLimit> = {
   placement: { perHour: 6, perDay: 12 },
   // Opt-in AI coach on the student's own peer-speaking captions (3 a day).
   "peer-coach": { perHour: 3, perDay: 3 },
+  // "Explain in Oʻzbekcha / по-русски" on a result's wrong answers (40 a day).
+  "l1-explain": { perHour: 20, perDay: 40 },
 };
 
 const DEFAULT_LIMIT: RouteLimit = { perHour: 20, perDay: 100 };

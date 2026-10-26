@@ -14,6 +14,7 @@ import { evidenceSeconds, partEvidence } from "@/lib/review/evidence";
 import { cn } from "@/lib/utils";
 import type { ObjectiveSkill } from "./attempt";
 import { EvidenceActions, EvidenceScope, ResultRecording } from "./evidence";
+import { ExplainInL1 } from "@/components/l1/explain-in-l1";
 import { docHasText, evidenceDoc } from "./evidence-doc";
 
 /**
@@ -161,6 +162,7 @@ function FallbackList({ items }: { items: GradeItem[] }) {
                   </p>
                 )}
                 {it.explanation && <p className="mt-1 text-gray-400">{it.explanation}</p>}
+                {!it.correct && <ExplainInL1 text={it.explanation} />}
               </div>
               {it.correct ? (
                 <CheckCircle2 className="h-5 w-5 shrink-0 text-averna-neon" aria-label="Correct" />
@@ -222,7 +224,13 @@ function PartReview({
             skill={skill}
             items={items}
             extra={(n) =>
-              items.get(n)?.correct ? null : <EvidenceActions n={n} span={evidence[n] ?? null} seconds={seconds(n)} />
+              items.get(n)?.correct ? null : (
+                <>
+                  {/* "Explain in Oʻzbekcha / по-русски" (native-language hints on; nothing otherwise). */}
+                  <ExplainInL1 text={items.get(n)?.explanation} />
+                  <EvidenceActions n={n} span={evidence[n] ?? null} seconds={seconds(n)} />
+                </>
+              )
             }
           />
         </div>

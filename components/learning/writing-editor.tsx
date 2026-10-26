@@ -12,6 +12,8 @@ import { Task1Chart } from "@/components/learning/task1-chart";
 import { formatDateTime } from "@/lib/utils";
 import { AccountDraftPanel, useAccountDraft } from "./account-draft-panel";
 import type { Task1ChartData } from "@/lib/writing-data";
+import { L1Hint } from "@/components/l1/l1-hint";
+import { writingInstructionText } from "@/lib/l1/hints";
 
 interface WritingEditorProps {
   prompt: {
@@ -200,13 +202,21 @@ export default function WritingEditor({ prompt, config, userId, homework, cloudD
       fontScale={fontScale} onFontScale={setFontScale}
       left={<div className="mx-auto max-w-3xl p-4 sm:p-6" style={{fontSize: `${fontScale}rem`}}>
         <h2 className="text-lg font-semibold text-white">Writing Task {taskNumber}</h2>
-        <p className="mt-3 text-gray-300">You should spend about {config.timeLimit} minutes on this task.</p>
+        <p className="mt-3 text-gray-300">
+          You should spend about {config.timeLimit} minutes on this task.
+          <L1Hint text={`You should spend about ${config.timeLimit} minutes on this task.`} fit="em" />
+        </p>
         <p className="mt-4 whitespace-pre-line leading-relaxed text-gray-200">{prompt.prompt}</p>
+        {/* The prompt's standard rubric sentences only; the topic stays English. */}
+        <L1Hint text={writingInstructionText(prompt.prompt)} fit="em" />
         {/* Original supplied image: avoid transformations of exam diagrams. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         {prompt.imageUrl && <img src={prompt.imageUrl} alt="Original Task 1 diagram" className="mt-5 h-auto w-full rounded-lg border border-white/15 bg-white" />}
         {prompt.chart && <Task1Chart charts={prompt.chart} />}
-        <p className="mt-4 text-gray-300">Write at least {config.wordCount} words.</p>
+        <p className="mt-4 text-gray-300">
+          Write at least {config.wordCount} words.
+          <L1Hint text={`Write at least ${config.wordCount} words.`} fit="em" />
+        </p>
         {homework && <p className="mt-4 text-sm text-gray-300">Homework: {homework.title} · {formatDateTime(homework.due)}. {homework.rule}</p>}
       </div>}
       leftLabel={`Task ${taskNumber}`} rightLabel="Your answer"

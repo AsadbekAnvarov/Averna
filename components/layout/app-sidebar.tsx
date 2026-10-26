@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { Suspense, useEffect, useState } from "react";
 import { cn, initialsOf } from "@/lib/utils";
 import { SessionReturnBar } from "@/components/session/session-return-bar";
+import { ReadingRuler } from "@/components/comfort/reading-ruler";
 import { Menu, X, Search } from "lucide-react";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { avatarSrc } from "@/lib/avatars";
@@ -271,6 +272,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         )}
         {children}
       </div>
+      {/* Settings → Reading comfort → Reading ruler (Alt+R): a fixed overlay over every page. */}
+      <ReadingRuler />
     </>
   );
 }

@@ -4,55 +4,68 @@ import { useEffect, useState, type ReactNode } from "react";
 import { signOut } from "next-auth/react";
 import {
   Eye, EyeOff, Type, Snowflake, LogOut, Volume2, Music, Moon, Sun, Palette, Sparkles, Play, Headphones,
+  Glasses, AlignJustify, Contrast, Ruler, Languages, BookOpenText,
   type LucideIcon,
 } from "lucide-react";
 import { useTheme } from "@/components/theme/theme-provider";
 import { useSound } from "@/components/audio/sound-provider";
 import { UI_PACKS, SCENES } from "@/components/audio/sound-engine";
+import { useComfortPrefs } from "@/components/comfort/use-comfort-prefs";
+import { primeStudentLevel } from "@/components/l1/use-l1";
+import { DEFAULT_PREFS, type L1Choice } from "@/lib/comfort/prefs";
+import { L1_NAME, l1Hint, type L1Lang } from "@/lib/l1/hints";
+import { levelWantsHints, suggestL1 } from "@/lib/l1/level";
 import { cn } from "@/lib/utils";
 
-type FontScale = "sm" | "md" | "lg";
+/** What the student sees when hints are on: one real instruction and its hint. */
+const SAMPLE_INSTRUCTION = "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.";
+const LANGUAGE_NAME: Record<L1Lang, string> = { uz: "Uzbek", ru: "Russian" };
 
 /**
  * Device preferences, grouped the way people look for them:
- *   Display (theme, text size) → Comfort (focus mode, effects) → Sound.
- * Uses the SAME localStorage keys and root classes as the dashboard's quick
- * "Customize" panel, so changes stay in sync everywhere:
+ *   Display (theme, text size) → Reading comfort (font, spacing, contrast,
+ *   ruler) → Native-language hints (students) → Comfort (focus mode, effects)
+ *   → Sound.
+ * Text size and reading comfort go through lib/comfort/prefs.ts (the same keys
+ * and <html> classes as the dashboard's quick "Customize" panel and the
+ * pre-paint COMFORT_SCRIPT), so changes stay in sync everywhere:
+ *   - averna_text_scale / _font / _line_spacing / _contrast / _ruler / _l1 / _l1_when
  *   - averna_focus_mode  -> body.focus-mode
- *   - averna_text_scale  -> html.text-scale-sm / .text-scale-lg
  *   - averna_seasonal    -> seasonal decorations ("averna-seasonal" event)
  *   - averna_ambiance    -> time-of-day ambiance ("averna-ambiance" event)
  *   - averna_sound_*     -> components/audio/sound-provider.tsx
  */
-export function SettingsPanel() {
+export function SettingsPanel({
+  student,
+}: {
+  /** Students only: their level and profile language (native-language hints). */
+  student?: { level: string | null; nativeLanguage: string | null } | null;
+} = {}) {
   const { mode, setMode } = useTheme();
   const { prefs, setPrefs, preview } = useSound();
+  const { prefs: comfortPrefs, update: updateComfort } = useComfortPrefs();
+  const comfort = comfortPrefs ?? DEFAULT_PREFS;
   const [focus, setFocus] = useState(false);
-  const [scale, setScale] = useState<FontScale>("md");
   const [seasonal, setSeasonal] = useState(true);
   const [ambiance, setAmbiance] = useState(true);
   const [signingOut, setSigningOut] = useState(false);
 
   useEffect(() => {
     setFocus(localStorage.getItem("averna_focus_mode") === "1");
-    setScale((localStorage.getItem("averna_text_scale") as FontScale) || "md");
     setSeasonal(localStorage.getItem("averna_seasonal") !== "0");
     setAmbiance(localStorage.getItem("averna_ambiance") !== "0");
   }, []);
+
+  // The server already knows the student's level: hints elsewhere need not ask again.
+  const studentLevel = student?.level ?? null;
+  useEffect(() => {
+    if (student) primeStudentLevel(studentLevel);
+  }, [student, studentLevel]);
 
   const applyFocus = (v: boolean) => {
     setFocus(v);
     document.body.classList.toggle("focus-mode", v);
     localStorage.setItem("averna_focus_mode", v ? "1" : "0");
-  };
-
-  const applyScale = (v: FontScale) => {
-    setScale(v);
-    const el = document.documentElement;
-    el.classList.remove("text-scale-sm", "text-scale-lg");
-    if (v === "sm") el.classList.add("text-scale-sm");
-    if (v === "lg") el.classList.add("text-scale-lg");
-    localStorage.setItem("averna_text_scale", v);
   };
 
   const applySeasonal = (v: boolean) => {
@@ -79,6 +92,7 @@ export function SettingsPanel() {
       <Group icon={Palette} title="Display" subtitle="How Averna looks on this device" accent="text-averna-cyan">
         <Row icon={mode === "dark" ? Moon : Sun} iconClass={mode === "dark" ? "text-averna-purple" : "text-amber-400"} title="Theme">
           <Segmented
+            label="Theme"
             value={mode}
             onChange={setMode}
             options={[
@@ -89,8 +103,9 @@ export function SettingsPanel() {
         </Row>
         <Row icon={Type} iconClass="text-averna-cyan" title="Text size">
           <Segmented
-            value={scale}
-            onChange={applyScale}
+            label="Text size"
+            value={comfort.textScale}
+            onChange={(textScale) => updateComfort({ textScale })}
             options={[
               { value: "sm", label: "Small" },
               { value: "md", label: "Medium" },
@@ -99,6 +114,64 @@ export function SettingsPanel() {
           />
         </Row>
       </Group>
+
+      {/* -------------------------------------------------- Reading comfort */}
+      <Group icon={Glasses} title="Reading comfort" subtitle="Easier reading on this device, on every page" accent="text-averna-cyan">
+        <ToggleRow
+          icon={BookOpenText}
+          title="Readable font"
+          desc="Atkinson Hyperlegible with a little more space between letters and words. Helps with dyslexia and tired eyes."
+          on={comfort.font === "readable"}
+          onChange={(v) => updateComfort({ font: v ? "readable" : "default" })}
+          tone="bg-averna-cyan/70"
+          iconOn="text-averna-cyan"
+        />
+        <Row icon={AlignJustify} iconClass="text-averna-cyan" title="Line spacing">
+          <Segmented
+            label="Line spacing"
+            value={comfort.lineSpacing}
+            onChange={(lineSpacing) => updateComfort({ lineSpacing })}
+            options={[
+              { value: "normal", label: "Normal" },
+              { value: "relaxed", label: "Relaxed" },
+              { value: "loose", label: "Loose" },
+            ]}
+          />
+        </Row>
+        <ToggleRow
+          icon={Contrast}
+          title="High contrast"
+          desc="Brighter secondary text, stronger borders and a clear focus ring, in light and dark"
+          on={comfort.contrast === "high"}
+          onChange={(v) => updateComfort({ contrast: v ? "high" : "normal" })}
+          tone="bg-averna-neon/70"
+          iconOn="text-averna-neon"
+        />
+        <ToggleRow
+          icon={Ruler}
+          title="Reading ruler"
+          desc="A bright band that follows your finger or cursor · Alt+R"
+          on={comfort.ruler === "on"}
+          onChange={(v) => updateComfort({ ruler: v ? "on" : "off" })}
+          tone="bg-averna-purple/70"
+          iconOn="text-averna-purple"
+        />
+        <div className="p-4">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400" id="comfort-preview-label">
+            Preview
+          </p>
+          <div aria-labelledby="comfort-preview-label" className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <p className="text-base text-gray-100">
+              The museum opened in 1998 and now welcomes over two million visitors a year. Most of them come to see its
+              collection of early aircraft, which is the largest in the region.
+            </p>
+            <p className="mt-2 text-sm text-gray-400">Questions 1–6 · Write ONE WORD ONLY for each answer.</p>
+          </div>
+        </div>
+      </Group>
+
+      {/* ------------------------------------------- Native-language hints */}
+      {student && <L1HintsGroup level={student.level} nativeLanguage={student.nativeLanguage} l1={comfort.l1} l1When={comfort.l1When} onChange={updateComfort} />}
 
       {/* ---------------------------------------------------------- Comfort */}
       <Group icon={Sparkles} title="Comfort & effects" subtitle="Keep the screen as calm or as lively as you like" accent="text-averna-neon">
@@ -283,10 +356,15 @@ function Row({ icon: Icon, iconClass, title, children }: { icon: LucideIcon; ico
 }
 
 function Segmented<T extends string>({
-  value, onChange, options,
-}: { value: T; onChange: (v: T) => void; options: { value: T; label: string }[] }) {
+  value, onChange, options, label,
+}: { value: T; onChange: (v: T) => void; options: { value: T; label: string; lang?: string }[]; label?: string }) {
   return (
-    <div className="grid gap-1 rounded-xl border border-white/10 bg-white/[0.03] p-1" style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}>
+    <div
+      role="group"
+      aria-label={label}
+      className="grid gap-1 rounded-xl border border-white/10 bg-white/[0.03] p-1"
+      style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}
+    >
       {options.map((o) => (
         <button
           key={o.value}
@@ -294,14 +372,104 @@ function Segmented<T extends string>({
           aria-pressed={value === o.value}
           onClick={() => onChange(o.value)}
           className={cn(
-            "rounded-lg py-2 text-sm font-medium transition-colors",
+            // 44 px tall on phones; the label may wrap onto two lines.
+            "min-h-11 rounded-lg px-2 py-2 text-sm font-medium leading-tight transition-colors sm:min-h-9",
             value === o.value ? "bg-white/10 text-white shadow" : "text-gray-400 hover:text-white"
           )}
         >
-          {o.label}
+          <span lang={o.lang}>{o.label}</span>
         </button>
       ))}
     </div>
+  );
+}
+
+/**
+ * Native-language hints (students): a short Uzbek or Russian line under the
+ * exam's standard instructions, question types and task rubrics, plus "Explain
+ * in …" on a result's wrong answers. Off by default; the profile's language
+ * is only a suggestion.
+ */
+function L1HintsGroup({
+  level, nativeLanguage, l1, l1When, onChange,
+}: {
+  level: string | null;
+  nativeLanguage: string | null;
+  l1: L1Choice;
+  l1When: "level" | "always";
+  onChange: (patch: { l1?: L1Choice; l1When?: "level" | "always" }) => void;
+}) {
+  const suggested = suggestL1(nativeLanguage);
+  const lang = l1 === "off" ? null : l1;
+  const shownAtLevel = levelWantsHints(level);
+  const levelText = level?.trim() ? level.trim() : null;
+  const status = !lang
+    ? null
+    : l1When === "always"
+      ? "Hints show on every exam screen and result."
+      : shownAtLevel
+        ? levelText
+          ? `Your level is ${levelText}, so hints show.`
+          : "Your level isn't set yet, so hints show."
+        : `Your level is ${levelText}, so hints are hidden. Choose Always to keep them.`;
+
+  return (
+    <Group
+      icon={Languages}
+      title="Native-language hints"
+      subtitle="Short Uzbek or Russian lines under exam instructions. The exam itself stays in English."
+      accent="text-averna-purple"
+    >
+      <Row icon={Languages} iconClass="text-averna-purple" title="Hint language">
+        <Segmented
+          label="Hint language"
+          value={l1}
+          onChange={(v) => onChange({ l1: v })}
+          options={[
+            { value: "off", label: "Off" },
+            { value: "uz", label: L1_NAME.uz, lang: "uz" },
+            { value: "ru", label: L1_NAME.ru, lang: "ru" },
+          ]}
+        />
+      </Row>
+      {!lang && suggested && (
+        <p className="px-4 py-3 text-sm text-gray-300">
+          Your profile says {LANGUAGE_NAME[suggested]} — choose <span lang={suggested} className="font-semibold text-white">{L1_NAME[suggested]}</span> to turn hints on.
+        </p>
+      )}
+      {lang && (
+        <>
+          <Row icon={Eye} iconClass="text-averna-purple" title="Show hints">
+            <Segmented
+              label="Show hints"
+              value={l1When}
+              onChange={(v) => onChange({ l1When: v })}
+              options={[
+                { value: "level", label: "At my level (A2–B1)" },
+                { value: "always", label: "Always" },
+              ]}
+            />
+          </Row>
+          <div className="space-y-3 p-4">
+            <p role="status" className="text-sm text-gray-300">{status}</p>
+            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <p className="text-sm font-semibold text-gray-100">{SAMPLE_INSTRUCTION}</p>
+              <p className="mt-1 flex items-start gap-1.5 text-[13px] leading-snug text-gray-400 sm:text-sm">
+                <span aria-hidden="true" className="mt-[0.1em] shrink-0 rounded border border-white/15 px-1 text-[11px] font-semibold leading-[1.45]">
+                  {lang.toUpperCase()}
+                </span>
+                <span lang={lang}>{l1Hint(SAMPLE_INSTRUCTION, lang)}</span>
+              </p>
+            </div>
+            <p className="text-xs text-gray-400">
+              Hints cover question instructions, question types and the Writing and Speaking task wording. On a result,
+              wrong answers get an “<span lang={lang}>{lang === "uz" ? "Explain in Oʻzbekcha" : "Объяснить по-русски"}</span>” button (AI,
+              up to 40 a day). Text without a checked translation gets no hint.
+            </p>
+          </div>
+        </>
+      )}
+    </Group>
   );
 }
 

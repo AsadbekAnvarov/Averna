@@ -4,6 +4,7 @@ import type { ExamListeningTest, ExamReadingTest, GradeItem, PracticeKind } from
 import { practiseLabel, type MistakeRow, type PracticePick } from "@/lib/review/practice-by-type";
 import { cn } from "@/lib/utils";
 import { practiceHref, scopeLabel, type ObjectiveSkill } from "./attempt";
+import { L1Hint } from "@/components/l1/l1-hint";
 
 /**
  * "Your mistakes by type": wrong and blank answers grouped by question type,
@@ -49,6 +50,7 @@ export function MistakesByTypeCard({ skill, lines, className }: { skill: Objecti
                   <span className="font-semibold text-white">{l.wrong}</span> of {l.total} wrong
                 </span>
               </p>
+              <L1Hint kind={l.kind} />
               {l.pick ? (
                 <>
                   <a

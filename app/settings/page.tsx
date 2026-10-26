@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
 import { SettingsPanel } from "@/components/settings/settings-panel";
 import { TelegramConnect } from "@/components/settings/telegram-connect";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -16,6 +17,16 @@ export default async function SettingsPage() {
   const role = (session.user as { role?: string }).role;
   const profileHref =
     role === "ADMIN" ? "/admin/profile" : role === "TEACHER" ? "/teacher/profile" : "/profile";
+
+  // Native-language hints are a student setting: their level decides "At my level",
+  // their profile language becomes a suggestion. A failed read still shows the setting.
+  const student =
+    role === "STUDENT"
+      ? await db.student
+          .findUnique({ where: { userId: (session.user as { id?: string }).id ?? "" }, select: { level: true, nativeLanguage: true } })
+          .then((s) => ({ level: s?.level ?? null, nativeLanguage: s?.nativeLanguage ?? null }))
+          .catch(() => ({ level: null, nativeLanguage: null }))
+      : null;
 
   const accountLinks = [
     { href: profileHref, label: "Edit profile", desc: "Name, avatar and goal", icon: User },
@@ -56,8 +67,8 @@ export default async function SettingsPage() {
         {/* Telegram bot */}
         <TelegramConnect />
 
-        {/* Display · Comfort · Sound (saved on this device) */}
-        <SettingsPanel />
+        {/* Display · Reading comfort · Native-language hints · Comfort · Sound (saved on this device) */}
+        <SettingsPanel student={student} />
       </div>
     </div>
   );

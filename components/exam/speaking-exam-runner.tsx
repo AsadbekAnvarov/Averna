@@ -96,6 +96,7 @@ import {
 } from "@/lib/speaking/upload-queue";
 import { formatClock, useLeaveGuard } from "./use-exam";
 import type { SpeakingAnswer, SpeakingExamRunnerProps, SpeakingTestResult, SpeakingTestSubmission } from "./types";
+import { L1Hint } from "@/components/l1/l1-hint";
 
 // ---------------------------------------------------------------------------
 // Script & timings
@@ -514,6 +515,7 @@ function CueCard({
         {card.cue}
       </h2>
       <p className="mt-3 text-sm font-medium text-gray-300">You should say:</p>
+      <L1Hint text="You should say:" />
       <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-gray-200 marker:text-averna-neon/70">
         {card.points.map((pt, i) => (
           <li key={i}>{pt}</li>
@@ -2054,6 +2056,7 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
               </p>
               <p className="mt-1 font-semibold text-white">{PART_INFO[p].name}</p>
               <p className="mt-1 text-sm text-gray-400">{PART_INFO[p].about}</p>
+              <L1Hint text={PART_INFO[p].about} />
             </li>
           ))}
         </ol>
@@ -2189,6 +2192,8 @@ export function SpeakingExamRunner({ set, mode, attemptId, onSubmit, exitHref, h
           <div className="av-panel mt-6 w-full rounded-2xl p-5 text-left sm:p-6">
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">{activity.kind === "examiner" ? "Examiner" : "Question"}</p>
             <p className="mt-2 text-lg leading-relaxed text-white sm:text-xl">{caption}</p>
+            {/* The examiner's standard lines get a native-language hint; the questions stay English. */}
+            {activity.kind === "examiner" && <L1Hint text={caption} className="mt-2" />}
           </div>
         )}
 
