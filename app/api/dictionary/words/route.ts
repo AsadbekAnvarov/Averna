@@ -10,8 +10,7 @@ import {
 } from "@/lib/dictionary-core";
 
 export const dynamic = "force-dynamic";
-// Saving a word the cache doesn't have yet looks it up first (model, then the free dictionary).
-export const maxDuration = 30;
+// Saving an uncached word looks it up first (model, then the free dictionary); relies on the project default duration (300 s with Fluid).
 
 const NO_STORE = { "Cache-Control": "private, no-store" };
 const INVALID_WORD = "Select one English word or a short phrase (up to 3 words).";

@@ -1,7 +1,5 @@
 export const dynamic = "force-dynamic";
-// Telegram copies of the announcement are sent after the response (lib/notifications) — give them
-// time: up to 45 s of sending (TELEGRAM_BULK_BUDGET_MAX_MS) fits inside these 60 s.
-export const maxDuration = 60;
+// Telegram copies (up to 45 s of sending after the response) rely on the project default duration (300 s with Fluid).
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";

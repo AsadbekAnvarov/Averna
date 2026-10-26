@@ -65,6 +65,8 @@ migrations is described in [`docs/RUNBOOK_DB_MIGRATIONS.md`](docs/RUNBOOK_DB_MIG
 `vercel.json` runs `/api/cron/daily` once a day (needs `CRON_SECRET`). Telegram
 setup is described next to its variables in `.env.example`.
 
+Storage limits, previews on request (`[preview]` in the commit message) and where new resources go: [`docs/vercel-resources.md`](docs/vercel-resources.md).
+
 ## Quality checks
 
 - **CI** (`.github/workflows/ci.yml`) — TypeScript, ESLint, unit tests (`npm test`)

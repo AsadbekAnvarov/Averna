@@ -7,8 +7,7 @@ import { isMissingTableError, markRecordingUnavailable, saveRecordedAnswer } fro
 import { MAX_UPLOAD_BYTES, flattenSpeakingQuestions, type SpeakingApiError, type SpeakingErrorCode } from "@/lib/speaking/shared";
 
 export const dynamic = "force-dynamic";
-// One transcription (up to ~40 s for a long Part 2 answer) plus the audio upload.
-export const maxDuration = 60;
+// One transcription (up to ~40 s for a long Part 2 answer) plus the audio upload; relies on the project default duration (300 s with Fluid).
 
 /**
  * One recorded Speaking answer.

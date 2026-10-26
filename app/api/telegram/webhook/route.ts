@@ -6,7 +6,6 @@ import { botDeps } from "@/lib/telegram/store";
 import { handleUpdate } from "@/lib/telegram/webhook";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 30;
 
 /** Telegram updates are a few KB; anything bigger isn't one. */
 const MAX_BODY_CHARS = 256 * 1024;

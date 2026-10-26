@@ -4,8 +4,7 @@ import { dictStudent, isWordSaved, lookupTooFast, lookupWord } from "@/lib/dicti
 import { hasTranslations, isDictLang, normalizeWord, sanitizeContext, type LookupResponse } from "@/lib/dictionary-core";
 
 export const dynamic = "force-dynamic";
-// A miss may wait for the model (12 s) and then the free dictionary (6 s) — past the 10 s default.
-export const maxDuration = 30;
+// A miss may wait for the model (12 s) and then the free dictionary (6 s); relies on the project default duration (300 s with Fluid).
 
 const NO_STORE = { "Cache-Control": "private, no-store" };
 

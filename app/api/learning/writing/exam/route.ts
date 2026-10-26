@@ -7,8 +7,7 @@ import { examHomeworkFor, recordExamHomework, writingExamContentId, writingVerdi
 import { writingExamGate } from "@/lib/homework/exam-attempt";
 
 export const dynamic = "force-dynamic";
-// Two essays are assessed by the AI examiner (in parallel).
-export const maxDuration = 60;
+// Two essays are assessed by the AI examiner (in parallel); relies on the project default duration (300 s with Fluid).
 
 /**
  * Full Writing test (Task 1 + Task 2 in 60 minutes) — practice mode.

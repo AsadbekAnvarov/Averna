@@ -4,8 +4,7 @@ import { generateReadingTest, generateListeningTest, generateWritingPrompt, gene
 import { guardAi } from "@/lib/engine/ai-guard";
 
 export const dynamic = "force-dynamic";
-// Full-test generation is a large model call; request a longer function budget.
-export const maxDuration = 60;
+// Full-test generation is a large model call; relies on the project default duration (300 s with Fluid).
 
 /**
  * Admin/teacher endpoint that generates an ORIGINAL IELTS test and returns the

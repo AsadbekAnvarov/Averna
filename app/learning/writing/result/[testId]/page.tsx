@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
 
 import { canRunAfterResponse, runAfterResponse } from "@/lib/after-response";
 import { processWritingRetry } from "@/lib/assessment/writing-queue";

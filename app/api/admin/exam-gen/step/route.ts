@@ -25,8 +25,7 @@ import {
 import type { StepResponse } from "@/lib/ielts/generation-types";
 
 export const dynamic = "force-dynamic";
-// One step = one model call (aborted after ≤ 50 s) + two small DB writes.
-export const maxDuration = 60;
+// One step = one model call (aborted after ≤ 50 s) + two small DB writes; relies on the project default duration (300 s with Fluid).
 
 const json = (body: unknown, status = 200) => NextResponse.json(body, { status });
 const asJson = (v: unknown) => v as Prisma.InputJsonValue;
