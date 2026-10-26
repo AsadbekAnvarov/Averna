@@ -4,22 +4,20 @@
  * that tab's data. Each panel reads what it needs in parallel; the student row
  * and the homework list come from React cache (shared with the layout).
  */
-import { NextSessionCard } from "@/components/study/next-session-card";
 import { Suspense } from "react";
 import { Dumbbell, Gamepad2, Newspaper } from "lucide-react";
 import { db } from "@/lib/db";
 import { getGlobalRank } from "@/lib/db-helpers";
 import { BUDGETED_ACTIONS } from "@/lib/engine/xp-engine";
-import { tashkentDayStart, tashkentWeekStart } from "@/lib/utils";
+import { tashkentWeekStart } from "@/lib/utils";
 import { getDashboardHomework, type DashboardStudent } from "@/lib/dashboard/data";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
 import { DashRow } from "@/components/ui/dash-row";
 // Today
-import { DashboardHero } from "@/components/dashboard/dashboard-hero";
-import { HabitNudge } from "@/components/dashboard/habit-nudge";
+import { TodaySessionHero, TodaySessionSkeleton } from "@/components/session/today-session-hero";
 import { PlacementPrompt } from "@/components/placement/placement-prompt";
-import { ProgressionHome, ProgressionLevel } from "@/components/progression/progression-home";
+import { ProgressionHome, ProgressionLevel, ProgressionStreak } from "@/components/progression/progression-home";
 import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { UpcomingHomework } from "@/components/dashboard/upcoming-homework";
 import { ExamCountdown } from "@/components/dashboard/exam-countdown";
@@ -57,45 +55,38 @@ export interface TabPanelProps {
   userId: string;
 }
 
-/** Today: who I am, today's mission, what's due, skills, streak, challenges. */
+/**
+ * Today: ONE calm hero — today's session behind a single Continue button —
+ * with this week's streak and the exam countdown beside it; then what's due,
+ * skills, challenges and badges. (The welcome hero, "My next 15 minutes",
+ * Today's Mission, "Averna recommends" and the habit nudge only repeated the
+ * session, so they left; /study/next still works on its own.)
+ */
 export async function HomeTab({ student }: TabPanelProps) {
-  // The streak is advanced by VERIFIED learning (see updateStudentPoints), not
-  // by opening the dashboard. Rank is computed on read (cheap indexed count).
-  const today = tashkentDayStart();
-  const [globalRank, dailyQuote, hw] = await Promise.all([
-    getGlobalRank(student.totalPoints),
-    db.dailyQuote.findFirst({
-      where: { date: { gte: today, lt: new Date(today.getTime() + 24 * 60 * 60 * 1000) } },
-    }),
-    getDashboardHomework(student.id, student.groupId),
-  ]);
+  const hw = await getDashboardHomework(student.id, student.groupId);
 
   return (
     <>
-      <DashboardHero
-        name={student.user.name}
-        image={student.user.image}
-        points={student.totalPoints}
-        streak={student.currentStreak}
-        globalRank={globalRank}
-        goal={student.personalGoal}
-        quote={dailyQuote}
-        featuredCosmetic={student.featuredCosmetic}
-      />
-      <NextSessionCard />
-      <Suspense fallback={null}>
-        <HabitNudge studentId={student.id} streak={student.currentStreak} />
-      </Suspense>
+      <DashRow cols={3}>
+        <div className="lg:col-span-2">
+          <Suspense fallback={<TodaySessionSkeleton />}>
+            <TodaySessionHero studentId={student.id} />
+          </Suspense>
+        </div>
+        {/* The stack fills the row's height; its last card grows (and centres its content). */}
+        <div className="flex flex-col gap-3 md:gap-6 [&>*]:h-auto [&>:last-child]:flex-1">
+          <Suspense fallback={null}>
+            <ProgressionStreak studentId={student.id} />
+          </Suspense>
+          <ExamCountdown />
+        </div>
+      </DashRow>
       {/* New students: find your level (hidden once a placement test is finished). */}
       <Suspense fallback={null}>
         <PlacementPrompt studentId={student.id} />
       </Suspense>
       <Suspense fallback={<ProgressionSkeleton rows={3} />}>
-        <ProgressionHome
-          studentId={student.id}
-          homework={<UpcomingHomework homework={hw.shown} counts={hw.counts} />}
-          aside={<ExamCountdown />}
-        />
+        <ProgressionHome studentId={student.id} homework={<UpcomingHomework homework={hw.shown} counts={hw.counts} />} />
       </Suspense>
     </>
   );

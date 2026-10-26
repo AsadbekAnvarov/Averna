@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { cn, initialsOf } from "@/lib/utils";
+import { SessionReturnBar } from "@/components/session/session-return-bar";
 import { Menu, X, Search } from "lucide-react";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { avatarSrc } from "@/lib/avatars";
@@ -262,6 +263,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           chrome && tabBar && "pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0"
         )}
       >
+        {/* "Back to today's session" on pages opened from the Daily Session (?from=session). */}
+        {chrome && (
+          <Suspense fallback={null}>
+            <SessionReturnBar />
+          </Suspense>
+        )}
         {children}
       </div>
     </>

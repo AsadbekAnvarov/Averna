@@ -168,6 +168,8 @@ export function WarmUp() {
       return next;
     });
     setPhase("done");
+    // Lets today's Daily Session tick its warm-up step (no XP; once per day server-side).
+    if (typeof fetch === "function") fetch("/api/session/warmup", { method: "POST" }).catch(() => {});
   }, [today, storageKey]);
 
   const choose = (opt: string) => {

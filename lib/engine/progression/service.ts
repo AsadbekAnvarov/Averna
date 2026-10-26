@@ -245,7 +245,7 @@ export interface Progression {
  * attempts in that skill. Never throws: when the catalog can't be read, the
  * links fall back to the library pages.
  */
-async function contentHints(
+export async function contentHints(
   sessions: { row: TestRow }[],
   profile: SkillSnapshot[],
   now: number
@@ -750,6 +750,7 @@ export interface HistoryDay {
 const ACTION_TITLE: Record<string, string> = {
   HOMEWORK_SUBMITTED: "Homework submitted",
   DAILY_CHALLENGE: "Daily 5-question challenge",
+  WARMUP_COMPLETED: "60-second warm-up",
   SRS_REVIEW: "Flashcard review",
   ACHIEVEMENT_UNLOCKED: "Achievement unlocked",
   MISSION_COMPLETED: "Daily Mission complete",
