@@ -117,9 +117,21 @@ try {
     })) &&
     (await step("open the hub, pick Guided conversation, Find a partner (both)", async () => {
       for (const u of users) {
+        // The hub's first match poll runs in an effect, so its response means the page is hydrated
+        // (a click before hydration would do nothing).
+        const hydrated = u.page.waitForResponse(
+          (r) => r.url().includes("/api/speaking/match") && r.request().method() === "GET",
+          { timeout: 60_000 }
+        );
         await u.page.goto(`${BASE}/learning/speaking`, { waitUntil: "domcontentloaded", timeout: 60_000 });
         await u.page.getByRole("heading", { name: "Speak with a partner" }).waitFor({ timeout: 30_000 });
-        await u.page.locator('input[name="peer-format"][value="conversation"]').check();
+        await hydrated;
+        // Role locators skip hidden copies (e.g. a streamed segment not yet swapped in).
+        const radios = await u.page.locator('input[name="peer-format"][value="conversation"]').evaluateAll((els) =>
+          els.map((e) => `${e.getClientRects().length ? "visible" : "hidden"} in <${e.closest("[hidden],template,[aria-hidden]")?.tagName.toLowerCase() ?? "page"}>`)
+        );
+        if (radios.length !== 1) notes.push(`${u.id}: ${radios.length} conversation radios: ${radios.join(", ")}`);
+        await u.page.getByRole("radio", { name: /^Guided conversation/ }).check();
         const find = u.page.getByRole("button", { name: "Find a partner" });
         await find.waitFor({ timeout: 15_000 });
         if (!(await find.isEnabled())) throw new Error(`${u.id}: "Find a partner" is disabled`);
@@ -151,8 +163,14 @@ try {
           null,
           { timeout: 20_000 }
         );
-        await ready.click();
-        await u.page.getByRole("button", { name: "Ready", exact: true }).waitFor({ timeout: 15_000 });
+        const done = u.page.getByRole("button", { name: "Ready", exact: true });
+        // A press can lose a race with the partner's (409); a real student presses again.
+        for (let i = 0; i < 3; i++) {
+          await ready.click({ timeout: 5_000 }).catch(() => {});
+          if (await done.waitFor({ timeout: 6_000 }).then(() => true, () => false)) break;
+          notes.push(`${u.id}: pressed "I'm ready" again`);
+        }
+        await done.waitFor({ timeout: 5_000 });
       }
       await shot(users[0].page, "lobby-ready-s1");
     })) &&
@@ -173,7 +191,12 @@ try {
       }
       lead.lead = true;
       notes.push(`lead: ${lead.id}`);
-      await lead.page.getByRole("button", { name: "Start", exact: true }).click();
+      const start = lead.page.getByRole("button", { name: "Start", exact: true });
+      for (let i = 0; i < 3; i++) {
+        await start.click({ timeout: 5_000 }).catch(() => {});
+        if (await start.waitFor({ state: "detached", timeout: 6_000 }).then(() => true, () => false)) break;
+        notes.push(`${lead.id}: pressed "Start" again`);
+      }
     })) &&
     (await step("the conversation card is visible for both", async () => {
       for (const u of users) {
@@ -191,9 +214,12 @@ try {
     })) &&
     (await step("the lead ends the session (confirm dialog)", async () => {
       const lead = users.find((u) => u.lead);
-      await lead.page.getByRole("button", { name: "End session" }).first().click();
       const dialog = lead.page.getByRole("dialog");
-      await dialog.waitFor({ timeout: 10_000 });
+      for (let i = 0; i < 2; i++) {
+        await lead.page.getByRole("button", { name: "End session" }).first().click({ timeout: 10_000 });
+        if (await dialog.waitFor({ timeout: 5_000 }).then(() => true, () => false)) break;
+      }
+      await dialog.waitFor({ timeout: 5_000 });
       await dialog.getByRole("button", { name: "End session" }).click();
       await dialog.waitFor({ state: "detached", timeout: 10_000 });
     })) &&
