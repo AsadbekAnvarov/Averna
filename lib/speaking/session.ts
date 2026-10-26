@@ -66,6 +66,14 @@ export interface PeerSessionState {
   endedBy: Seat | null;
   levels: { A: number; B: number };
   content: PeerContent;
+  /**
+   * Time actually spent in timed phases (ms), banked whenever a timer stops (next card,
+   * next phase, skip, end); each stretch is capped at its timer × TIMED_CAP. States
+   * saved before this field existed count as 0. XP needs ≥ 50% of plannedTimedMs.
+   */
+  timedMs?: number;
+  /** Set by the server when a natural finish earned no XP for a seat (lib/speaking/xp-rules.ts). */
+  xpHold?: Partial<Record<Seat, "unfinished" | "pair" | "daily">>;
 }
 
 export const other = (s: Seat): Seat => (s === "A" ? "B" : "A");
@@ -142,6 +150,24 @@ export function currentPhase(state: PeerSessionState): PhaseSpec {
   return plan[Math.min(state.phase, plan.length - 1)];
 }
 
+/** A timed stretch counts for at most its timer × this (a forgotten tab can't farm time). */
+export const TIMED_CAP = 1.5;
+
+/** The plan's total timed duration in ms (conversation cards: one timer per card). */
+export function plannedTimedMs(state: Pick<PeerSessionState, "content" | "starter">): number {
+  return phasePlan(state)
+    .filter((p) => p.kind === "timed")
+    .reduce((sum, p) => sum + p.durationSec * 1000 * (p.timerPerPrompt ? p.prompts : 1), 0);
+}
+
+/** `timedMs` plus the running timer's stretch (capped), when a timer is running. */
+function banked(state: PeerSessionState, now: number): number {
+  const before = state.timedMs ?? 0;
+  if (state.startAt === null || !state.durationSec) return before;
+  const stretch = Math.min(Math.max(0, now - state.startAt), state.durationSec * 1000 * TIMED_CAP);
+  return before + stretch;
+}
+
 export function initialSessionState(content: PeerContent, starter: Seat, levels: { A: number; B: number }): PeerSessionState {
   return {
     v: 1,
@@ -156,6 +182,7 @@ export function initialSessionState(content: PeerContent, starter: Seat, levels:
     endedBy: null,
     levels,
     content,
+    timedMs: 0,
   };
 }
 
@@ -171,9 +198,10 @@ export function advancer(state: PeerSessionState): Seat | null {
 
 function enter(state: PeerSessionState, plan: PhaseSpec[], index: number, now: number): PeerSessionState {
   const p = plan[index];
-  if (p.kind === "done") return { ...state, phase: index, prompt: 0, startAt: null, durationSec: null, endedAt: now, endedBy: null };
-  if (p.kind === "timed") return { ...state, phase: index, prompt: 0, startAt: now, durationSec: p.durationSec };
-  return { ...state, phase: index, prompt: 0, startAt: null, durationSec: null };
+  const timedMs = banked(state, now);
+  if (p.kind === "done") return { ...state, phase: index, prompt: 0, startAt: null, durationSec: null, endedAt: now, endedBy: null, timedMs };
+  if (p.kind === "timed") return { ...state, phase: index, prompt: 0, startAt: now, durationSec: p.durationSec, timedMs };
+  return { ...state, phase: index, prompt: 0, startAt: null, durationSec: null, timedMs };
 }
 
 /** Apply one action by `by` at `now`. Returns the same object when the action is not allowed. */
@@ -185,7 +213,7 @@ export function advance(state: PeerSessionState, action: SessionAction, by: Seat
 
   switch (action) {
     case "end":
-      return { ...state, phase: plan.length - 1, prompt: 0, startAt: null, durationSec: null, endedAt: now, endedBy: by };
+      return { ...state, phase: plan.length - 1, prompt: 0, startAt: null, durationSec: null, endedAt: now, endedBy: by, timedMs: banked(state, now) };
     case "ready":
       if (p.kind !== "lobby" || state.ready[by]) return state;
       return { ...state, ready: { ...state.ready, [by]: true } };
@@ -198,7 +226,7 @@ export function advance(state: PeerSessionState, action: SessionAction, by: Seat
       if (p.kind !== "timed" || p.lead !== by) return state;
       if (state.prompt < p.prompts - 1) {
         return p.timerPerPrompt
-          ? { ...state, prompt: state.prompt + 1, startAt: now, durationSec: p.durationSec }
+          ? { ...state, prompt: state.prompt + 1, startAt: now, durationSec: p.durationSec, timedMs: banked(state, now) }
           : { ...state, prompt: state.prompt + 1 };
       }
       return enter(state, plan, index + 1, now);

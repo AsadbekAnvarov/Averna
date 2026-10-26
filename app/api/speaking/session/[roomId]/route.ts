@@ -4,9 +4,11 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { boundedJson } from "@/lib/security/json-body";
 import { trustedMutation } from "@/lib/security/same-origin";
-import { awardPeerSession, peerSessionAward } from "@/lib/speaking/peer-xp";
+import { awardPeerSession, peerSessionAward, peerXpHolds } from "@/lib/speaking/peer-xp";
+import { cleanupEndedRoom } from "@/lib/speaking/room-end";
 import { applyVersioned, isDone, isPeerSessionState, isSessionAction, type Seat } from "@/lib/speaking/session";
 import { finishedNaturally, sessionView, type SessionRoomRow } from "@/lib/speaking/session-view";
+import type { PeerXpHold } from "@/lib/speaking/xp-rules";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +16,9 @@ export const dynamic = "force-dynamic";
  * Peer speaking room session (docs/peer-speaking.md §4). Members only.
  *   GET                       → SessionView (+ `xp` once the session finished naturally)
  *   POST { action, version }  → { state, version, changed, xp? } | 409 { error, state, version } on a stale version
- * The POST that finishes both rounds awards SPEAKING_SESSION_COMPLETED XP to both students.
+ * The POST that finishes both rounds awards SPEAKING_SESSION_COMPLETED XP to both students
+ * when the fair-XP rules allow it (else `xpHold` says why). Reaching done deletes the
+ * room's queue rows and signals.
  */
 
 type Params = { params: Promise<{ roomId: string }> };
@@ -78,10 +82,23 @@ export async function POST(request: Request, { params }: Params) {
     if (!next.changed) return reply({ state: room.state, version: room.version, changed: false });
 
     const done = isDone(next.state);
+    const natural = done && finishedNaturally(next.state);
+    // Fair-XP rules (lib/speaking/xp-rules.ts) are decided before the write and stored
+    // with the state, so both done screens can say why no XP was given.
+    let holds: Record<Seat, PeerXpHold | null> | null = null;
+    if (natural) {
+      holds = await peerXpHolds(room, next.state, now).catch((e) => {
+        console.error("Peer speaking XP rules failed", e instanceof Error ? e.name : "unknown");
+        return null;
+      });
+    }
+    const xpHold = holds ? Object.fromEntries((["A", "B"] as const).filter((s) => holds![s]).map((s) => [s, holds![s]])) : null;
+    const state = xpHold && Object.keys(xpHold).length ? { ...next.state, xpHold } : next.state;
+
     const saved = await db.speakingRoom.updateMany({
       where: { id: room.id, version: room.version, status: "ACTIVE" },
       data: {
-        state: next.state as unknown as Prisma.InputJsonValue,
+        state: state as unknown as Prisma.InputJsonValue,
         version: next.version,
         ...(done ? { status: "ENDED", endedAt: new Date(now) } : {}),
       },
@@ -90,17 +107,21 @@ export async function POST(request: Request, { params }: Params) {
       const latest = (await db.speakingRoom.findUnique({ where: { id: room.id } })) as SessionRoomRow | null;
       return reply({ error: "The session moved on — refresh.", state: latest?.state ?? null, version: latest?.version ?? room.version }, 409);
     }
-    if (done) await db.speakingQueue.deleteMany({ where: { roomId: room.id } }).catch(() => undefined);
+    if (done) await cleanupEndedRoom(room.id);
 
     // Only the one write that finished both rounds gets here; the idempotency keys
-    // make any repeat a no-op. `end` (endedBy set) earns nothing.
-    if (done && finishedNaturally(next.state)) {
+    // make any repeat a no-op. `end` (endedBy set) earns nothing; neither does a seat
+    // the fair-XP rules hold back (or any seat when the rules couldn't be checked).
+    if (natural) {
       const durationSec = room.createdAt instanceof Date ? Math.max(0, Math.round((now - room.createdAt.getTime()) / 1000)) : null;
-      const award = (studentId: string) => awardPeerSession({ roomId: room.id, studentId, format: next.state.format, durationSec });
-      const [a, b] = await Promise.all([award(room.studentAId), award(room.studentBId)]);
-      return reply({ state: next.state, version: next.version, changed: true, xp: seat === "A" ? a : b });
+      const award = async (s: Seat) =>
+        holds && !holds[s]
+          ? awardPeerSession({ roomId: room.id, studentId: s === "A" ? room.studentAId : room.studentBId, format: next.state.format, durationSec })
+          : 0;
+      const [a, b] = await Promise.all([award("A"), award("B")]);
+      return reply({ state, version: next.version, changed: true, xp: seat === "A" ? a : b, xpHold: holds?.[seat] ?? null });
     }
-    return reply({ state: next.state, version: next.version, changed: true });
+    return reply({ state, version: next.version, changed: true });
   } catch (e) {
     console.error("Speaking session update failed", e instanceof Error ? e.name : "unknown");
     return reply({ error: "Session unavailable right now." }, 503);

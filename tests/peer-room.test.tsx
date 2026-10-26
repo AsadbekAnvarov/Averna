@@ -66,7 +66,9 @@ let onPost: (body: { action: string; version: number }) => Reply | Promise<Reply
 const posts: { action: string; version: number }[] = [];
 const res = (r: Reply) => ({ ok: r.status < 400, status: r.status, json: async () => r.body });
 
-const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+  if (String(url).startsWith("/api/speaking/feedback"))
+    return res({ status: 200, body: { allowed: true, mine: null, received: { locked: true, partnerSubmitted: false } } });
   if (!init?.method || init.method === "GET") return res({ status: 200, body: view(server.state, server.version, server.seat) });
   const body = JSON.parse(String(init.body));
   posts.push(body);
@@ -220,20 +222,49 @@ describe("PeerRoom", () => {
     expect(posts).toEqual([{ action: "end", version: 3 }]);
   });
 
-  it("done: a natural finish shows XP and the feedback slot; an early end says who ended it", () => {
+  it("done: a natural finish shows XP and the feedback form; an early end says who ended it", async () => {
     const done = finished("quick");
     mount(done, 9, "A", { xp: 25 });
     expect(screen.getByText("Session complete")).toBeTruthy();
     expect(screen.getByText("+25 XP")).toBeTruthy();
-    expect(screen.getByText("Feedback coming soon.")).toBeTruthy();
+    expect(await screen.findByRole("button", { name: "Send feedback" })).toBeTruthy();
     expect(screen.getByText(/Duration: \d+ min/)).toBeTruthy();
     expect(screen.queryByRole("button", { name: "End session" })).toBeNull();
+    expect(screen.getByRole("button", { name: "Report or block" })).toBeTruthy();
+    // No captions were used: no AI coach offer.
+    expect(screen.queryByRole("button", { name: /AI feedback/ })).toBeNull();
     cleanup();
 
     const early = advance(started("quick"), "end", "B", Date.now());
     mount(early, 4, "A");
     expect(screen.getByText("Session ended by Bek")).toBeTruthy();
-    expect(screen.getByText("XP is given when both rounds are finished.")).toBeTruthy();
-    expect(screen.queryByText(/XP$/)).toBeNull();
+    expect(screen.getByText("Finish both rounds to earn XP")).toBeTruthy();
+    expect(screen.queryByText(/^\+\d+ XP$/)).toBeNull();
+  });
+
+  it("done: says why a natural finish earned no XP", () => {
+    mount(finished("quick"), 9, "B", { xp: null, xpHold: "pair" });
+    expect(screen.getByText("XP is limited to one session per partner per day")).toBeTruthy();
+    cleanup();
+    mount(finished("quick"), 9, "B", { xp: null, xpHold: "daily" });
+    expect(screen.getByText("Daily peer-speaking XP limit reached")).toBeTruthy();
+  });
+
+  it("block from the room ends the session for this client too", async () => {
+    const s = started("conversation");
+    const ended = advance(s, "end", "A", Date.now());
+    onPost = () => {
+      server = { ...server, state: ended, version: 4 };
+      return { status: 200, body: { ok: true, state: ended, version: 4 } };
+    };
+    mount(s, 3, "A");
+    fireEvent.click(screen.getByRole("button", { name: "Report or block" }));
+    const dialog = screen.getByRole("dialog", { name: "Report or block Bek" });
+    expect(within(dialog).getByText(/never matched with you again/)).toBeTruthy();
+    expect(within(dialog).getByText(/Two open reports pause/)).toBeTruthy();
+    fireEvent.click(within(dialog).getByRole("button", { name: "Block Bek" }));
+    fireEvent.click(within(dialog).getByRole("button", { name: "Yes, block Bek" }));
+    expect(await screen.findByRole("heading", { name: "Session ended by you" })).toBeTruthy();
+    expect(fetchMock.mock.calls.some(([u, i]) => u === "/api/speaking/block" && JSON.parse(String(i?.body)).roomId === "room-1")).toBe(true);
   });
 });

@@ -9,8 +9,9 @@ const m = vi.hoisted(() => ({
   findAward: vi.fn(),
   db: {
     student: { findUnique: vi.fn() },
-    speakingRoom: { findUnique: vi.fn(), updateMany: vi.fn() },
+    speakingRoom: { findUnique: vi.fn(), updateMany: vi.fn(), count: vi.fn() },
     speakingQueue: { deleteMany: vi.fn() },
+    speakingSignal: { deleteMany: vi.fn() },
     activityLog: { findMany: vi.fn(), create: vi.fn() },
   },
 }));
@@ -33,17 +34,24 @@ const post = (body: unknown) =>
   new Request(URL_, { method: "POST", headers: { origin: "https://averna.test", "content-type": "application/json" }, body: JSON.stringify(body) });
 
 const base = initialSessionState(buildPeerContent("quick", 6, () => 0.4), "A", { A: 6, B: 5.5 });
-/** Walk the session to the last timed phase of round 2 (one `next` from done). */
-function lastPhase(): PeerSessionState {
-  let s = advance(advance(base, "ready", "A", 1), "ready", "B", 1);
+/**
+ * Walk the session to the last timed phase of round 2 (one `next` from done), spending
+ * `share` of each phase's timer (the last phase's timer started 10 min ago, so it counts in full).
+ */
+function lastPhase(share = 1): PeerSessionState {
+  let t = Date.now() - 60 * 60_000;
+  let s = advance(advance(base, "ready", "A", t), "ready", "B", t);
   const plan = phasePlan(s);
   while (s.phase < plan.length - 2) {
     const p = plan[s.phase];
     const by = p.kind === "timed" ? p.lead! : (plan[s.phase + 1].lead ?? "A");
-    s = advance(s, p.kind === "timed" ? "skip" : "start", by, 2);
+    if (p.kind === "timed") t += p.durationSec * 1000 * share;
+    if (s.phase === plan.length - 3) t = Date.now() - 10 * 60_000;
+    s = advance(s, p.kind === "timed" ? "skip" : "start", by, t);
   }
   return s;
 }
+const peerLog = (roomId: string) => ({ points: 25, details: { kind: "peer", roomId } });
 const room = (state: PeerSessionState) => ({
   id: "room-1",
   topic: "Cue card",
@@ -64,6 +72,8 @@ beforeEach(() => {
   m.db.student.findUnique.mockResolvedValue({ id: "st-b" });
   m.db.speakingRoom.updateMany.mockResolvedValue({ count: 1 });
   m.db.speakingQueue.deleteMany.mockResolvedValue({ count: 2 });
+  m.db.speakingSignal.deleteMany.mockResolvedValue({ count: 5 });
+  m.db.speakingRoom.count.mockResolvedValue(0);
   m.db.activityLog.findMany.mockResolvedValue([]);
   m.db.activityLog.create.mockReturnValue({ kind: "activity-log-write" });
   m.awardXp.mockImplementation(async (input: { amount: number }) => ({ applied: true, amount: input.amount, duplicate: false }));
@@ -128,5 +138,52 @@ describe("peer speaking XP", () => {
     const view = await (await GET(new Request(URL_), ctx())).json();
     expect(view).toMatchObject({ xp: 25, me: { seat: "B" }, status: "ENDED" });
     expect(m.findAward).toHaveBeenLastCalledWith("st-b", "peer-speaking:room-1:st-b");
+  });
+
+  it("deletes the room's signals and queue rows at the done transition", async () => {
+    m.db.speakingRoom.findUnique.mockResolvedValue(room(lastPhase()));
+    await POST(post({ action: "end", version: 9 }), ctx());
+    expect(m.db.speakingSignal.deleteMany).toHaveBeenCalledWith({ where: { roomId: "room-1" } });
+    expect(m.db.speakingQueue.deleteMany).toHaveBeenCalledWith({ where: { roomId: "room-1" } });
+  });
+
+  it("holds XP back when less than half the timed duration was spent, and says why", async () => {
+    const s = lastPhase(0.1);
+    // Only the last phase ran in full: far below 50% of the plan.
+    m.db.speakingRoom.findUnique.mockResolvedValue(room({ ...s, timedMs: 0, startAt: Date.now() - 1000 }));
+    const body = await (await POST(post({ action: "skip", version: 9 }), ctx())).json();
+    expect(body).toMatchObject({ xp: 0, xpHold: "unfinished", state: { xpHold: { A: "unfinished", B: "unfinished" } } });
+    expect(m.awardXp).not.toHaveBeenCalled();
+  });
+
+  it("pays a pair at most once per day, and a student at most 3 times per day", async () => {
+    const s = lastPhase();
+    m.db.speakingRoom.findUnique.mockResolvedValue(room(s));
+    m.db.activityLog.findMany.mockResolvedValue([peerLog("room-0")]);
+    m.db.speakingRoom.count.mockResolvedValue(1); // room-0 was with the same partner
+    let body = await (await POST(post({ action: "skip", version: 9 }), ctx())).json();
+    expect(body).toMatchObject({ xp: 0, xpHold: "pair" });
+    expect(m.awardXp).not.toHaveBeenCalled();
+
+    m.db.activityLog.findMany.mockResolvedValue([peerLog("r1"), peerLog("r2"), peerLog("r3")]);
+    m.db.speakingRoom.count.mockResolvedValue(0);
+    body = await (await POST(post({ action: "skip", version: 9 }), ctx())).json();
+    expect(body).toMatchObject({ xp: 0, xpHold: "daily" });
+    expect(m.awardXp).not.toHaveBeenCalled();
+
+    // The same room's own log (a repeat) never counts against it.
+    m.db.activityLog.findMany.mockResolvedValue([peerLog("room-1"), peerLog("r1")]);
+    body = await (await POST(post({ action: "skip", version: 9 }), ctx())).json();
+    expect(body.xpHold).toBeNull();
+    expect(m.awardXp).toHaveBeenCalledTimes(2);
+  });
+
+  it("GET reports the stored hold for the caller's seat", async () => {
+    const s = lastPhase();
+    const done = { ...advance(s, "skip", phasePlan(s)[s.phase].lead!, Date.now()), xpHold: { B: "daily" as const } };
+    m.db.speakingRoom.findUnique.mockResolvedValue({ ...room(done), status: "ENDED", version: 10 });
+    m.findAward.mockResolvedValue(null);
+    const view = await (await GET(new Request(URL_), ctx())).json();
+    expect(view).toMatchObject({ xp: null, xpHold: "daily" });
   });
 });

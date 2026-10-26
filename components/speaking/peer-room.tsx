@@ -18,7 +18,9 @@ import {
   Volume2,
 } from "lucide-react";
 import { MicCheck } from "@/components/speaking/mic-check";
-import { PeerFeedbackSlot } from "@/components/speaking/peer-feedback-slot";
+import { PeerCoach } from "@/components/speaking/peer-coach";
+import { PeerFeedback } from "@/components/speaking/peer-feedback";
+import { PeerSafetyMenu } from "@/components/speaking/peer-safety-menu";
 import { useOwnCaptions } from "@/components/speaking/use-own-captions";
 import { usePeerVoice, type PeerVoice, type VoiceStatus } from "@/components/speaking/use-peer-voice";
 import { FORMAT_INFO } from "@/lib/speaking/formats";
@@ -47,6 +49,10 @@ import {
   windowTotals,
   type TalkBucket,
 } from "@/lib/speaking/talk-time";
+import { XP_HOLD_TEXT, type PeerXpHold } from "@/lib/speaking/xp-rules";
+
+/** The AI coach needs at least this many caption words. */
+const COACH_MIN_WORDS = 25;
 
 /**
  * The peer speaking room (docs/peer-speaking.md, Phase B) on the session API:
@@ -56,7 +62,9 @@ import {
  *     their client sends one `next` (or `skip` while a shared-timer part has questions left);
  *   - role-aware screens: lobby, examiner/candidate, conversation cards, debate turns,
  *     swap, done;
- *   - client-only helpers: talk-time balance, phrase drawer, own-speech captions.
+ *   - client-only helpers: talk-time balance, phrase drawer, own-speech captions;
+ *   - Phase C: "Report or block" (any time), give-to-get peer feedback + next step,
+ *     the reason when no XP was given, and the opt-in AI coach on the done screen.
  */
 
 export const POLL_MS = 2000;
@@ -72,6 +80,7 @@ interface ActionReply {
   version?: number;
   changed?: boolean;
   xp?: number;
+  xpHold?: PeerXpHold | null;
   error?: string;
 }
 
@@ -272,7 +281,7 @@ function VoiceIssues({ voice, partnerName }: { voice: PeerVoice; partnerName: st
   );
 }
 
-export function PeerRoom({ initial }: { initial: RoomView }) {
+export function PeerRoom({ initial, coachAvailable = false }: { initial: RoomView; coachAvailable?: boolean }) {
   const roomId = initial.roomId;
   const me = initial.me;
   const partner = initial.partner;
@@ -280,6 +289,7 @@ export function PeerRoom({ initial }: { initial: RoomView }) {
 
   const [view, setView] = useState({ state: initial.state, version: initial.version, status: initial.status });
   const [xp, setXp] = useState<number | null>(initial.xp);
+  const [xpHold, setXpHold] = useState<PeerXpHold | null>(initial.xpHold ?? null);
   const [offset, setOffset] = useState(0);
   const [now, setNow] = useState(() => Date.now());
   const [error, setError] = useState("");
@@ -326,6 +336,7 @@ export function PeerRoom({ initial }: { initial: RoomView }) {
       }
       if (typeof d.serverNow === "number") setOffset(clockOffset(d.serverNow, sent, received));
       if (typeof d.xp === "number") setXp(d.xp);
+      if (d.xpHold) setXpHold(d.xpHold);
       if (busy.current) return; // the action's reply brings the newer state
       adopt(d.state, d.version, d.status);
     } catch {
@@ -352,6 +363,7 @@ export function PeerRoom({ initial }: { initial: RoomView }) {
         if (res.ok) {
           adopt(d.state, d.version);
           if (typeof d.xp === "number") setXp(d.xp);
+          if (d.xpHold) setXpHold(d.xpHold);
         } else if (res.status === 409) {
           // Someone else moved first (or the room ended): take the server's state.
           adopt(d.state, d.version, undefined, true);
@@ -419,6 +431,7 @@ export function PeerRoom({ initial }: { initial: RoomView }) {
   const voice = usePeerVoice({ roomId, initiator: me.seat === "A", enabled: !ended, onLevels });
   const captions = useOwnCaptions("en-GB");
   const captionsFrom = useRef(0);
+  const [captionsUsed, setCaptionsUsed] = useState(false);
   const setCaptions = captions.setOn;
 
   useEffect(() => {
@@ -488,6 +501,10 @@ export function PeerRoom({ initial }: { initial: RoomView }) {
   const allTalk = { me: talk.r0.me + talk.r1.me, partner: talk.r0.partner + talk.r1.partner };
   const nudge = state.format === "conversation" && phase.kind === "timed" && dominantSide(talk.win) === "me";
   const timeUp = left !== null && left <= 0;
+  const ownStats = captionsUsed && words > 0 ? { words, wpm, fillers: fillers.total } : null;
+  // No XP: an early end, or a fair-XP rule (lib/speaking/xp-rules.ts) held it back.
+  const shownHold: PeerXpHold | null = phase.kind === "done" ? (natural ? xpHold : "unfinished") : null;
+  const holdText = shownHold && !(natural && xp !== null && xp > 0) ? XP_HOLD_TEXT[shownHold] : null;
 
   // ----- screens ---------------------------------------------------------------------
   const timer =
@@ -821,9 +838,12 @@ export function PeerRoom({ initial }: { initial: RoomView }) {
           {minutes !== null && <span className="rounded-full border border-white/15 px-3 py-1 text-gray-200">Duration: {minutes} min</span>}
           {natural && xp !== null && xp > 0 && <span className="rounded-full bg-averna-neon/15 px-3 py-1 font-semibold text-averna-neon">+{xp} XP</span>}
         </div>
-        {!natural && phase.kind === "done" && <p className="text-sm text-gray-300">XP is given when both rounds are finished.</p>}
+        {holdText && <p className="text-sm text-gray-300">{holdText}</p>}
         {(allTalk.me > 0 || allTalk.partner > 0) && <TalkBar me={allTalk.me} partner={allTalk.partner} partnerName={pName} title="Talk time" />}
-        <PeerFeedbackSlot roomId={roomId} partnerName={pName} />
+        <PeerFeedback roomId={roomId} partnerName={pName} own={ownStats} />
+        {coachAvailable && ownStats && ownStats.words >= COACH_MIN_WORDS && (
+          <PeerCoach roomId={roomId} transcript={captions.transcript} stats={ownStats} />
+        )}
         <Link href="/learning/speaking" className={primaryBtn}>
           Back to Speaking
         </Link>
@@ -855,6 +875,7 @@ export function PeerRoom({ initial }: { initial: RoomView }) {
           </p>
           <ConnectionPill status={ended ? "idle" : voice.status} />
         </div>
+        <PeerSafetyMenu roomId={roomId} partnerName={pName} onEnded={(s, v) => adopt(s, v, "ENDED", true)} />
         {!ended && (
           <div className="flex flex-wrap items-center gap-2">
             <button
@@ -904,7 +925,10 @@ export function PeerRoom({ initial }: { initial: RoomView }) {
               <button
                 type="button"
                 onClick={() => {
-                  if (!captions.on) captionsFrom.current = vad.current.me.totalMs;
+                  if (!captions.on) {
+                    captionsFrom.current = vad.current.me.totalMs;
+                    setCaptionsUsed(true);
+                  }
                   captions.setOn(!captions.on);
                 }}
                 aria-pressed={captions.on}

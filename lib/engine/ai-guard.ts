@@ -63,6 +63,8 @@ export const AI_LIMITS: Record<string, RouteLimit> = {
   "speaking-answer": { perHour: 90, perDay: 300 },
   // Placement test writing sample (one AI assessment per sitting).
   placement: { perHour: 6, perDay: 12 },
+  // Opt-in AI coach on the student's own peer-speaking captions (3 a day).
+  "peer-coach": { perHour: 3, perDay: 3 },
 };
 
 const DEFAULT_LIMIT: RouteLimit = { perHour: 20, perDay: 100 };

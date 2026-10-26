@@ -4,6 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { hasOpenAI } from "@/lib/ai";
 import { peerSessionAward } from "@/lib/speaking/peer-xp";
 import { isPeerSessionState, type Seat } from "@/lib/speaking/session";
 import { finishedNaturally, sessionView, type SessionRoomRow } from "@/lib/speaking/session-view";
@@ -65,7 +66,7 @@ export default async function SpeakingRoomPage({ params }: Props) {
           ← Back to Speaking
         </Link>
         <h1 className="sr-only">Speaking room</h1>
-        <PeerRoom initial={{ ...view, state: room.state }} />
+        <PeerRoom initial={{ ...view, state: room.state }} coachAvailable={hasOpenAI()} />
       </div>
     </div>
   );

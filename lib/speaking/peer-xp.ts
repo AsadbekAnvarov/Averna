@@ -2,13 +2,16 @@
  * XP for a finished peer speaking session (docs/peer-speaking.md, Phase B). Server only.
  * Both students get SPEAKING_SESSION_COMPLETED once per room through awardXp — the
  * ledger's (studentId, idempotencyKey) index makes a repeat a no-op — after the
- * daily learning budget taper.
+ * daily learning budget taper — and only when the fair-XP rules allow it
+ * (lib/speaking/xp-rules.ts: ≥ 50% timed, one award per partner per day, 3 per day).
  */
 import { db } from "@/lib/db";
 import { awardXp, BUDGETED_ACTIONS, findAward } from "@/lib/engine/xp-engine";
 import { XP_CONFIG } from "@/lib/engine/progression/config";
 import { applyDailyBudget } from "@/lib/engine/progression/xp";
 import { tashkentDayStart } from "@/lib/utils";
+import { plannedTimedMs, type PeerSessionState, type Seat } from "./session";
+import { peerXpHold, type PeerXpHold } from "./xp-rules";
 
 export const peerXpKey = (roomId: string, studentId: string) => `peer-speaking:${roomId}:${studentId}`;
 
@@ -21,6 +24,49 @@ async function earnedToday(studentId: string): Promise<number> {
     select: { points: true },
   });
   return logs.reduce((s, l) => s + (l.points ?? 0), 0);
+}
+
+/**
+ * Peer awards a student already got today (Tashkent), overall and with `partnerId`,
+ * excluding `roomId` itself. Reads the SPEAKING_SESSION_COMPLETED rows written with
+ * each award (details.kind "peer") and their rooms.
+ */
+export async function peerAwardsToday(studentId: string, partnerId: string, roomId: string, now = Date.now()) {
+  const logs = await db.activityLog.findMany({
+    where: { studentId, action: "SPEAKING_SESSION_COMPLETED", createdAt: { gte: tashkentDayStart(new Date(now)) } },
+    select: { details: true },
+    take: 50,
+  });
+  const roomIds = [
+    ...new Set(
+      logs
+        .map((l) => l.details as { kind?: unknown; roomId?: unknown } | null)
+        .filter((d) => d?.kind === "peer" && typeof d.roomId === "string" && d.roomId !== roomId)
+        .map((d) => d!.roomId as string),
+    ),
+  ];
+  if (!roomIds.length) return { awardsToday: 0, pairAwardsToday: 0 };
+  const withPartner = await db.speakingRoom.count({
+    where: { id: { in: roomIds }, OR: [{ studentAId: partnerId }, { studentBId: partnerId }] },
+  });
+  return { awardsToday: roomIds.length, pairAwardsToday: withPartner };
+}
+
+/** Rule check for both seats of a naturally finished room. Throws on a database error (the caller pays nothing then). */
+export async function peerXpHolds(
+  room: { id: string; studentAId: string; studentBId: string },
+  state: PeerSessionState,
+  now = Date.now(),
+): Promise<Record<Seat, PeerXpHold | null>> {
+  const natural = state.endedBy === null;
+  const base = { natural, timedMs: state.timedMs ?? 0, plannedMs: plannedTimedMs(state) };
+  const first = peerXpHold({ ...base, pairAwardsToday: 0, awardsToday: 0 });
+  if (first) return { A: first, B: first };
+  const [a, b] = await Promise.all([
+    peerAwardsToday(room.studentAId, room.studentBId, room.id, now),
+    peerAwardsToday(room.studentBId, room.studentAId, room.id, now),
+  ]);
+  return { A: peerXpHold({ ...base, ...a }), B: peerXpHold({ ...base, ...b }) };
 }
 
 /** Award one student; returns the XP paid (the original amount when it was already paid). Never throws. */

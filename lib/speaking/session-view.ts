@@ -3,6 +3,7 @@
  * by the room page for its first render. Pure and client-safe.
  */
 import { isDone, isPeerSessionState, type PeerSessionState, type Seat } from "./session";
+import type { PeerXpHold } from "./xp-rules";
 
 export interface SessionPerson {
   seat: Seat;
@@ -24,6 +25,15 @@ export interface SessionView {
   partner: SessionPerson;
   /** XP the caller got for a naturally finished session; null otherwise. */
   xp: number | null;
+  /** Once done: why the caller got no XP (lib/speaking/xp-rules.ts), else null. */
+  xpHold: PeerXpHold | null;
+}
+
+/** Why the caller's seat earned no XP: stored by the finishing POST, or "unfinished" for an early end. */
+export function xpHoldFor(state: PeerSessionState | null, seat: Seat): PeerXpHold | null {
+  if (!state || !isDone(state)) return null;
+  if (state.endedBy !== null) return "unfinished";
+  return state.xpHold?.[seat] ?? null;
 }
 
 export interface SessionRoomRow {
@@ -59,7 +69,17 @@ export function sessionView(room: SessionRoomRow, seat: Seat, now: number, xp: n
     me: person(seat),
     partner: person(seat === "A" ? "B" : "A"),
     xp,
+    xpHold: xpHoldFor(state, seat),
   };
+}
+
+/**
+ * Peer feedback is open once the room has ENDED, if the first timed phase was reached
+ * (a natural finish, or time was spent in a timed phase before an early end).
+ */
+export function feedbackAllowed(status: string, state: PeerSessionState | null): boolean {
+  if (status !== "ENDED" || !state || !isDone(state)) return false;
+  return state.endedBy === null || (state.timedMs ?? 0) > 0;
 }
 
 /** A session that finished naturally (both rounds), the only kind that earns XP. */

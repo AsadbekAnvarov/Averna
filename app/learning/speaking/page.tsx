@@ -8,7 +8,9 @@ import { db } from "@/lib/db";
 import { isSpeakingTime } from "@/lib/utils";
 import { levelLabel } from "@/lib/speaking/level";
 import { PAUSED_MESSAGE, isPeerSpeakingPaused, peerPresence, studentPeerLevel } from "@/lib/speaking/peer-store";
+import { peerProgress, type PeerProgress } from "@/lib/speaking/peer-progress";
 import { PeerSpeakingHub, type PeerHubProps } from "@/components/speaking/peer-hub";
+import { PeerProgressCard } from "@/components/speaking/peer-progress-card";
 
 export const metadata = { title: "Speaking" };
 
@@ -49,19 +51,22 @@ export default async function SpeakingPage() {
   };
 
   const now = Date.now();
+  let progress: PeerProgress | null = null;
   if (role === "STUDENT") {
     const student = await db.student
       .findUnique({ where: { userId: session.user.id }, select: { id: true, level: true, targetBand: true } })
       .catch(() => null);
     if (student) {
-      const [level, paused, presence] = await Promise.all([
+      const [level, paused, presence, mine] = await Promise.all([
         studentPeerLevel(student),
         isPeerSpeakingPaused(student.id).catch(() => false),
         peerPresence(now, student.id).catch(() => null),
+        peerProgress(student.id, new Date(now)).catch(() => null),
       ]);
       hub.levelLabel = levelLabel(level);
       hub.paused = paused;
       hub.initialLooking = presence?.total ?? 0;
+      progress = mine;
     } else {
       hub.mode = "viewer";
     }
@@ -76,6 +81,7 @@ export default async function SpeakingPage() {
           ← Back to Learning
         </Link>
         <PeerSpeakingHub {...hub} />
+        {progress && <PeerProgressCard progress={progress} />}
 
         <section aria-labelledby="speaking-more-title" className="mt-6">
           <h2 id="speaking-more-title" className="mb-3 text-lg font-semibold text-white">

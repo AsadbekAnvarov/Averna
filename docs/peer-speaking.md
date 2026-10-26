@@ -2,8 +2,9 @@
 
 The contract for the three phases. **Phase A** (done): hub, smart matching, session
 state machine, data model. **Phase B** (done, §7): the room UI on the session API (voice
-call, phases, timers, prompts, live helpers), XP. **Phase C**: peer feedback, report/block,
-teacher monitor.
+call, phases, timers, prompts, live helpers), XP. **Phase C** (done, §8): give-to-get peer
+feedback + next step, report/block, fair XP, signal cleanup, opt-in AI coach, teacher
+monitor, hub progress card.
 
 ## What it replaces
 
@@ -29,8 +30,8 @@ Speaking Time only shows a "Speaking Time is live" badge.
   match UI; uses published sets, else the peer bank's questions without sample answers),
   AI Examiner (`/learning/examiner`), Full Speaking test (`/learning/speaking-test`, which
   still renders `TeacherSpeakingPractice`).
-- Teachers/admins: the hub without matching + a link to `/teacher/speaking` (placeholder
-  until Phase C). Parents: the hub without matching.
+- Teachers/admins: the hub without matching + a link to `/teacher/speaking` (the monitor,
+  §8). Parents: the hub without matching. Students also get "Your peer speaking" (§8).
 
 ## 2. Formats
 
@@ -93,7 +94,8 @@ questions, <7 `SPEAKING_TOPICS`, ≥7 seed Part 3), debate motions by tier (<5 e
 `prompts`, `timerPerPrompt`, `side` (debate).
 
 State (`room.state`): `{ v: 1, format, starter, phase, prompt, ready: {A,B}, startAt,
-durationSec, endedAt, endedBy, levels: {A,B}, content }` (times in epoch ms).
+durationSec, endedAt, endedBy, levels: {A,B}, content, timedMs?, xpHold? }` (times in
+epoch ms; `timedMs`/`xpHold` since Phase C, §8 — older states count `timedMs` as 0).
 
 `advance(state, action, by, now)` — invalid actions return the same object:
 
@@ -113,9 +115,10 @@ durationSec, endedAt, endedBy, levels: {A,B}, content }` (times in epoch ms).
 **`/api/speaking/session/[roomId]`** (members only: 401/403/404; id `^[A-Za-z0-9_-]{1,64}$`):
 
 - `GET` → `{ roomId, status, format, topic, state | null, version, serverNow, createdAt,
-  me: { seat, firstName, level }, partner: { seat, firstName, level }, xp }`
+  me: { seat, firstName, level }, partner: { seat, firstName, level }, xp, xpHold }`
   (`state` is null for rooms made before formats existed; `xp` = the caller's award once
-  the session finished naturally, else null). Shape: `lib/speaking/session-view.ts`.
+  the session finished naturally, else null; `xpHold` = why no XP once done, §8).
+  Shape: `lib/speaking/session-view.ts`.
 - `POST { action, version }` (same-origin) → `{ state, version, changed, xp? }`;
   409 `{ error, state, version }` when `version` is stale, another write won, or the room
   ended; 400 on a bad body. Reaching done sets the room ENDED and deletes both queue rows;
@@ -127,7 +130,9 @@ durationSec, endedAt, endedBy, levels: {A,B}, content }` (times in epoch ms).
 - `SpeakingQueue` + `format`, `level`, `groupId`, `lastSeenAt` (`createdAt` = join time).
 - `SpeakingRoom` + `format`, `state` (Json), `version`, `level`; indexes on (studentAId|studentBId, createdAt).
 - `SpeakingPeerFeedback` (roomId, fromStudentId, toStudentId, fluency/lexical/grammar/
-  pronunciation 1–5, strength?, tip?; unique roomId+fromStudentId).
+  pronunciation 1–5, strength?, tip?; unique roomId+fromStudentId). `strength` = a strength
+  preset id; `tip` = `"<tipId>"`, `"<tipId>|<note>"` or `"|<note>"` (the free-text line;
+  `packTip`/`unpackTip` in `lib/speaking/feedback-presets.ts`) — no schema change.
 - `SpeakingBlock` (blockerId, blockedId; unique pair) — honoured both ways by matching.
 - `SpeakingReport` (roomId, reporterId, reportedId, reason, note?, status OPEN|RESOLVED,
   resolvedAt?, resolvedById?). `PAUSE_REPORTS = 2` OPEN reports pause the reported student.
@@ -175,8 +180,8 @@ follow-up, "Thank you, that's the end of Part N" on the last question or ≤ 20 
 candidate only the cue card in Part 2 (with private notes) and "Listen to your examiner"
 otherwise; conversation — the card for both, "Next card" for the lead; debate — motion,
 side, whose turn, "Finish my turn", private rebuttal notes for the listener; swap; done —
-"Session complete" / "Session ended by {name}", duration, "+N XP", and
-`components/speaking/peer-feedback-slot.tsx` (placeholder for Phase C). Always: "End
+"Session complete" / "Session ended by {name}", duration, "+N XP" (or why not, §8), peer
+feedback, the AI coach offer (§8). Always: "End
 session" (confirm dialog), mute (≥ 44 px), connection pill, partner first name + level.
 Timers are announced at 1 min / 30 s / 0 and on each new phase (aria-live).
 
@@ -199,23 +204,98 @@ debate 35) after the daily budget taper (`applyDailyBudget` over today's
 `BUDGETED_ACTIONS` XP), via `awardXp` (source `test`, ActivityLog
 `SPEAKING_SESSION_COMPLETED` written atomically with the ledger row) with
 `idempotencyKey: "peer-speaking:<roomId>:<studentId>"`. `end` at any time earns nothing.
+Phase C adds the fair-XP rules (§8).
 
 **Removed:** the room's text chat, emoji bar and push-to-talk, `/api/speaking/room`
 (GET/POST/DELETE — the hub leaves the queue with `/api/speaking/match` DELETE, the room
 ends with the session `end`), and `components/speaking/voice-call.tsx`. The
 `SpeakingMessage` table stays (old data). The solo runner is unchanged.
 
-## Notes for Phase C
+## 8. Phase C — feedback, safety, fair XP, AI coach, teacher monitor
 
-- Replace `PeerFeedbackSlot` (props `roomId`, `partnerName`) on the done screen. The room
-  knows both seats; the API knows the student ids. An opt-in AI summary of the student's
-  own captions would need `hasOpenAI()` (lib/ai.ts) and an explicit consent step (the
-  transcript currently never leaves the browser).
-- `usePeerVoice` exposes a peer-to-peer data channel (`send`, `onMessage`) — unused so far.
-- `SpeakingSignal` rows are never cleaned up; a cron or the done transition could delete
-  a room's signals.
-- `POST` feedback/report/block endpoints (students in the room only; one feedback per
-  room per student). A block also ends any shared ACTIVE room.
-- Teacher monitor `/teacher/speaking`: sessions of the teacher's groups (room ↔ students
-  ↔ `Student.groupId`), open reports, resolve (sets RESOLVED, resolvedAt, resolvedById).
-  Admin-only views must be in Uzbek (.kiro/steering/admin-language.md).
+All new student endpoints are members-of-the-room only (`lib/speaking/room-member.ts`:
+401 / 400 bad id / 404 / 403), `Cache-Control: private, no-store`; POSTs are same-origin
+(`trustedMutation`) with `boundedJson`.
+
+**Peer feedback — "give to get"** (`/api/speaking/feedback`, `components/speaking/peer-feedback.tsx`).
+- `POST { roomId, fluency, lexical, grammar, pronunciation (1–5 ints), strength?, tip?, note? }`
+  — about the partner, once per room (unique roomId+fromStudentId → 409), only for an ENDED
+  room whose first timed phase was reached (`feedbackAllowed`: a natural finish, or
+  `timedMs > 0` before an early end; else 409). `strength`/`tip` must be preset ids
+  (`lib/speaking/feedback-presets.ts`: 8 strengths, 10 tips, each mapped to a criterion);
+  `note` is one free-text line, whitespace-collapsed, ≤ 140 chars, rejected (400) when it
+  looks like a link, domain, e-mail, @handle or phone number (`hasContactInfo`).
+- `GET ?roomId=` → `{ allowed, mine, received }`: `received` is the partner's feedback for
+  me only after I sent mine (null while they haven't), else `{ locked: true, partnerSubmitted }`.
+- Done screen: four accessible 1–5 star radio groups (native radios, descriptors per level),
+  strength/tip chips (`aria-pressed`), the note, Send (enabled once all four are rated).
+  After sending, the partner's feedback is revealed; while waiting the client polls every
+  5 s for up to 2 min. "Your next step" (`lib/speaking/next-step.ts#nextStepFor`): the
+  weakest received criterion (ties: fluency, lexical, grammar, pronunciation); own caption
+  stats (≥ 30 words; fillers > 5% of words or < 100 wpm) lower fluency by 1 →
+  pronunciation `/learning/pronunciation`, lexical `/flashcards`, grammar `/grammar`,
+  fluency `/learning/speaking/solo`. Without partner ratings (after the wait) only own stats.
+
+**Report & block** (`components/speaking/peer-safety-menu.tsx`, in the room header — any
+time, also on the done screen). The dialog says: blocked students are never matched again
+(blocking also ends this session); reports go to teachers; two open reports pause a
+student's peer speaking.
+- `POST /api/speaking/report { roomId, reason ∈ inappropriate|harassment|not-speaking-english|no-show|other, note? ≤ 300 }`
+  — one OPEN report per reporter per room (409), 5 per day per student (`reserveLimits`
+  `speaking-report:<id>`, 429/503). The partner is the reported student.
+- `POST /api/speaking/block { roomId }` — upserts `SpeakingBlock(blocker = me, blocked =
+  partner)`; matching honours it both ways. An ACTIVE room ends via the state machine
+  (`end` by the blocker, `lib/speaking/room-end.ts#endRoomBy`, versioned write with one
+  retry) → `{ ok, state, version }`, so the blocker's client adopts done and the partner's
+  next poll shows it.
+
+**Fair XP** (`lib/speaking/xp-rules.ts`, pure; DB reads in `peer-xp.ts#peerXpHolds`). The
+finishing POST pays a seat only when (a) `state.timedMs ≥ 50%` of `plannedTimedMs(state)`
+(sum of timed durations; conversation: one timer per card) — the state machine banks
+`now − startAt` whenever a timer stops (next card, next phase, skip, end), each stretch
+capped at its timer × 1.5; (b) the student has no peer award today (Tashkent) from a room
+with the same partner; (c) fewer than 3 peer awards today. Awards are counted from the
+`SPEAKING_SESSION_COMPLETED` logs with `details.kind = "peer"` (the room itself excluded).
+The decision is written with the done state as `state.xpHold { A?, B? }`
+(`"unfinished" | "pair" | "daily"`); a rules read error pays nothing. The done screen shows
+"Finish both rounds to earn XP" (early end or < 50%) / "XP is limited to one session per
+partner per day" / "Daily peer-speaking XP limit reached".
+
+**Signal cleanup.** The done transition (session POST or block) deletes the room's queue
+rows and `SpeakingSignal` rows (best effort). The daily cron (`/api/cron/daily`, job
+`peer-speaking-cleanup`, once per Tashkent day) deletes signals and queue rows older than
+a day.
+
+**AI coach** (`/api/speaking/coach`, `components/speaking/peer-coach.tsx`, `lib/ai.ts#coachPeerSpeaking`).
+Offered on the done screen only when `hasOpenAI()` and the student turned captions on
+(≥ 25 caption words). Consent text: "Your captions transcript (your words only) is sent to
+our AI provider to give feedback. Nothing of your partner is sent." + a checkbox.
+`POST { roomId, consent: true, transcript ≤ 6000 chars, stats: { words, wpm, fillers } }` —
+consent required (400), members only, `guardAi(userId, "peer-coach")` = 3 per hour/day
+per student plus the platform ceiling (429). gpt-4o with a strict JSON schema →
+`{ bandEstimate: { low, high } (≤ 1.0 apart, shown as "Estimated band 5.5–6.0", an
+estimate), strengths[2], improvements[3] { point, original, rewrite }, vocabularyUpgrades[3]
+{ instead, try } }` (`parsePeerCoach` validates); failure → 502 with a friendly message.
+The transcript is never stored, and logs carry only error names.
+
+**Teacher monitor** `/teacher/speaking` (TEACHER + ADMIN; English, shared with admins).
+Scope: `visibleStudentIds` — a teacher's group students, admins all
+(`lib/speaking/teacher-monitor.ts`). Summary (sessions this week, unique students, average
+session length, students paused); open reports (reason, note, reporter → reported with
+first names + groups, paused badge, "Resolve" + "Resolving unpauses {name}…" when it drops
+the open count below `PAUSE_REPORTS`); this week's sessions (Tashkent week: date, both
+first names + groups, format, length, Completed / Ended early / In progress, average peer
+rating each way). `POST /api/teacher/speaking/reports/[id]/resolve` — same-origin, role
+check, teachers only when the reporter or reported student is in their groups (403), sets
+RESOLVED, resolvedAt, resolvedById (user id) → `{ ok, stillPaused }`. Teacher nav: "Peer
+Speaking" under Students.
+
+**Hub progress card** (students, `components/speaking/peer-progress-card.tsx`,
+`lib/speaking/peer-progress.ts`): sessions this week, different partners this calendar
+month, average received rating per criterion over the last 10 feedbacks with a trend
+(newest half vs the half before, ±0.3), and the current next step; an empty state before
+the first session.
+
+**Still open:** `usePeerVoice`'s data channel is unused; reports have no unique index, so
+two simultaneous reports from the same student for one room could both land (the 5/day
+limit bounds it).

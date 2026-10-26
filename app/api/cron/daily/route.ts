@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
   if (!secret || req.headers.get("authorization") !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const [writingRetry, accountCleanup, telegram, recordings] = await Promise.all([
+  const [writingRetry, accountCleanup, telegram, recordings, peerSpeaking] = await Promise.all([
     // Per-job leases deduplicate across deployments; do not claim the whole day.
     processWritingRetry().catch(() => "storage_unavailable"),
     runOncePerDay("account-security-cleanup", async () => {
@@ -37,7 +37,17 @@ export async function GET(req: NextRequest) {
     }, { ready: () => true }),
     runOncePerDay("telegram-daily", () => runTelegramDaily(new Date(), { startedAt }), { ready: telegramReady }),
     runOncePerDay("speaking-recordings-cleanup", () => cleanupSpeakingRecordings(), { ready: blobConfigured }),
+    // Peer speaking leftovers (docs/peer-speaking.md, Phase C): WebRTC signals and queue
+    // rows older than a day. Deleting by age is idempotent.
+    runOncePerDay("peer-speaking-cleanup", async () => {
+      const before = new Date(Date.now() - 86400000);
+      const [signals, queue] = await Promise.all([
+        db.speakingSignal.deleteMany({ where: { createdAt: { lt: before } } }),
+        db.speakingQueue.deleteMany({ where: { lastSeenAt: { lt: before } } }),
+      ]);
+      return { oldSignals: signals.count, oldQueueRows: queue.count };
+    }, { ready: () => true }),
   ]);
-  const ok = !telegram.error && !recordings.error && !accountCleanup.error && writingRetry !== "storage_unavailable";
-  return NextResponse.json({ ok, telegram, recordings, accountCleanup, writingRetry }, { status: ok ? 200 : 500 });
+  const ok = !telegram.error && !recordings.error && !accountCleanup.error && !peerSpeaking.error && writingRetry !== "storage_unavailable";
+  return NextResponse.json({ ok, telegram, recordings, accountCleanup, writingRetry, peerSpeaking }, { status: ok ? 200 : 500 });
 }
