@@ -16,7 +16,7 @@ import type { ExamTestSummary, GroupKind } from "@/lib/ielts/types";
 import { AccountNotice } from "@/components/account-notice";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
-import { BandProgress } from "@/components/dashboard/band-progress";
+import { PathToTargetSection } from "@/components/forecast/forecast-sections";
 import { SkillRadar } from "@/components/dashboard/skill-radar";
 import { SkillJourney } from "@/components/learning/skill-journey";
 import { FirstRunGuide } from "@/components/learning/first-run-guide";
@@ -231,7 +231,7 @@ export default async function LearningCenterPage() {
         ) : (
           <Reveal className="mb-4 grid grid-cols-1 gap-3 sm:mb-6 sm:gap-4 lg:gap-5 lg:grid-cols-2">
             <Suspense fallback={<WidgetSkeleton rows={3} />}>
-              <BandProgress studentId={student.id} targetBand={student.targetBand} />
+              <PathToTargetSection studentId={student.id} targetBand={student.targetBand} />
             </Suspense>
             <Suspense fallback={<WidgetSkeleton rows={3} />}>
               <SkillRadar studentId={student.id} />

@@ -11,8 +11,9 @@ function classStrings(src: string): string[] {
 
 /** The side-by-side widget rows: one DashRow per row, so their frames line up. */
 const ROW_FILES: Record<string, number> = {
-  // Today: the Daily Session hero row (hero 2/3 + streak / exam countdown 1/3) lives in HomeTab.
-  "components/dashboard/tab-panels.tsx": 10,
+  // Today: the Daily Session hero row (hero 2/3 + streak / path to target 1/3) lives in HomeTab.
+  // Progress: the band forecast is a full-width hero, so that tab has two rows.
+  "components/dashboard/tab-panels.tsx": 9,
   "components/progression/progression-home.tsx": 1,
   "app/teacher/dashboard/page.tsx": 3,
   "app/admin/dashboard/page.tsx": 4,

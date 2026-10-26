@@ -7,12 +7,12 @@ import { AccountNotice } from "@/components/account-notice";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
 import { FirstRunGuide } from "@/components/learning/first-run-guide";
 import { ThirtyDaySummary } from "@/components/progress/thirty-day-summary";
-import { BandProgress } from "@/components/dashboard/band-progress";
+import { BandForecastSection } from "@/components/forecast/forecast-sections";
 import { PersonalBests } from "@/components/dashboard/personal-bests";
 import { TestHistory } from "@/components/dashboard/test-history";
 import { AdaptivePractice } from "@/components/dashboard/adaptive-practice";
 
-/** Progress → Overview: the last 30 days, the band journey and recent tests. */
+/** Progress → Overview: the band forecast, the last 30 days, personal bests and recent tests. */
 export default async function ProgressOverviewPage() {
   const { session, student } = await getPageStudent();
   if (!student) {
@@ -25,20 +25,21 @@ export default async function ProgressOverviewPage() {
     <div className="space-y-4 sm:space-y-5">
       {testsCount === 0 && <FirstRunGuide name={session.user.name} />}
 
+      {testsCount > 0 && (
+        <Suspense fallback={<WidgetSkeleton rows={5} />}>
+          <BandForecastSection studentId={student.id} targetBand={student.targetBand} />
+        </Suspense>
+      )}
+
       <Suspense fallback={<WidgetSkeleton rows={3} />}>
         <ThirtyDaySummary studentId={student.id} />
       </Suspense>
 
       {testsCount > 0 && (
         <>
-          <div className="grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-2">
-            <Suspense fallback={<WidgetSkeleton rows={3} />}>
-              <BandProgress studentId={student.id} targetBand={student.targetBand} />
-            </Suspense>
-            <Suspense fallback={<WidgetSkeleton rows={3} />}>
-              <PersonalBests studentId={student.id} />
-            </Suspense>
-          </div>
+          <Suspense fallback={<WidgetSkeleton rows={3} />}>
+            <PersonalBests studentId={student.id} />
+          </Suspense>
           <div className="grid grid-cols-1 items-start gap-4 lg:gap-5 lg:grid-cols-2">
             <Suspense fallback={<WidgetSkeleton rows={4} />}>
               <TestHistory studentId={student.id} />
