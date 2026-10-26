@@ -115,6 +115,24 @@ describe("PeerRoom", () => {
     expect(await screen.findByRole("heading", { name: "Part 2 · Preparation" })).toBeTruthy();
   });
 
+  it("lobby: pressing I'm ready at the same time as the partner retries once on the newer version", async () => {
+    const s0 = fresh("conversation");
+    const partnerReady = advance(s0, "ready", "B", Date.now());
+    onPost = ({ action, version }) => {
+      if (version === 0) return { status: 409, body: { error: "stale", state: partnerReady, version: 1 } };
+      server = { ...server, state: advance(partnerReady, action as "ready", "A", Date.now()), version: 2 };
+      return { status: 200, body: { state: server.state, version: 2, changed: true } };
+    };
+    mount(s0, 0);
+    fireEvent.click(screen.getByRole("button", { name: "I'm ready" }));
+    await screen.findByText("You: ready");
+    expect(posts).toEqual([
+      { action: "ready", version: 0 },
+      { action: "ready", version: 1 },
+    ]);
+    expect(await screen.findByRole("button", { name: "Start" })).toBeTruthy();
+  });
+
   it("lobby: the partner waits for the lead to start", () => {
     const both = advance(advance(fresh("quick"), "ready", "A", 1), "ready", "B", 1);
     mount(both, 2, "B");

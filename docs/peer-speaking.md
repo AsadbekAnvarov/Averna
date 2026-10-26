@@ -150,7 +150,9 @@ parents, other students, bad ids and pre-format rooms get a friendly notice). Re
 
 **Sync.** GET every **2 s** while the tab is visible (skipped when hidden; immediate fetch
 on `visibilitychange`), stopped once done. Actions POST with the current `version`; the
-reply (or a 409's `state`/`version`) is adopted, a 409 also triggers one refetch. Older
+reply (or a 409's `state`/`version`) is adopted, a 409 also triggers one refetch; `ready`
+and `end` are retried once on the 409's version while still allowed (both pressing "I'm
+ready" at once). Older
 versions from a slow GET are ignored. Clock: `offset = serverNow − request midpoint`;
 time left = `startAt + durationSec·1000 − (Date.now() + offset)`. When the **lead's** timer
 reaches 0 their client sends one action per state version (`lib/speaking/room-timer.ts
@@ -295,6 +297,11 @@ Speaking" under Students.
 month, average received rating per criterion over the last 10 feedbacks with a trend
 (newest half vs the half before, ±0.3), and the current next step; an empty state before
 the first session.
+
+**Checks.** `tests/deploy-sql-additive.test.ts` keeps `deploy.sql` additive (previews may
+share the production database with older code). `e2e/peer-speaking.mjs` (Screens workflow):
+two seeded students with fake media match in "conversation", get ready, start, see the card,
+end, and both see the feedback form — the voice connection itself is not asserted.
 
 **Still open:** `usePeerVoice`'s data channel is unused; reports have no unique index, so
 two simultaneous reports from the same student for one room could both land (the 5/day

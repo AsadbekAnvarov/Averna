@@ -29,6 +29,7 @@ import { cefrForBand, levelLabel } from "@/lib/speaking/level";
 import { phraseGroupsFor, type PhraseRole } from "@/lib/speaking/phrases";
 import { clockOffset, formatClock, timeLeftMs, timerMark, timeUpAction } from "@/lib/speaking/room-timer";
 import {
+  advance,
   advancer,
   currentPhase,
   isPeerSessionState,
@@ -353,13 +354,27 @@ export function PeerRoom({ initial, coachAvailable = false }: { initial: RoomVie
       setPending(action);
       setError("");
       let refetch = false;
-      try {
+      const post = async (version: number) => {
         const res = await fetch(`/api/speaking/session/${encodeURIComponent(roomId)}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action, version: versionRef.current }),
+          body: JSON.stringify({ action, version }),
         });
-        const d = (await res.json().catch(() => ({}))) as ActionReply;
+        return { res, d: (await res.json().catch(() => ({}))) as ActionReply };
+      };
+      try {
+        let { res, d } = await post(versionRef.current);
+        // "ready" and "end" don't depend on what the partner just did (e.g. both pressing
+        // "I'm ready" at once): retry once on the newer version while still allowed.
+        if (
+          res.status === 409 &&
+          (action === "ready" || action === "end") &&
+          isPeerSessionState(d.state) &&
+          typeof d.version === "number" &&
+          advance(d.state, action, me.seat, Date.now()) !== d.state
+        ) {
+          ({ res, d } = await post(d.version));
+        }
         if (res.ok) {
           adopt(d.state, d.version);
           if (typeof d.xp === "number") setXp(d.xp);
@@ -379,7 +394,7 @@ export function PeerRoom({ initial, coachAvailable = false }: { initial: RoomVie
       }
       if (refetch) void refresh();
     },
-    [adopt, refresh, roomId],
+    [adopt, refresh, roomId, me.seat],
   );
 
   // Poll every 2 s while visible; refetch as soon as the tab is visible again.
