@@ -41,7 +41,7 @@ export async function TopPerformers() {
     .slice(0, 3);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
       {/* Top Students */}
       <Card className="glass border-averna-neon/30">
         <CardHeader>

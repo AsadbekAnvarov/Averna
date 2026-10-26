@@ -116,7 +116,7 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-5xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-5xl px-4 py-4 pb-8 sm:py-6 lg:pb-6">
         {/* Overall band */}
         <section
           aria-labelledby="mock-result-title"
@@ -134,7 +134,7 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
             {viewerIsOwner ? "Mock exams" : "Mock results"}
           </Link>
 
-          <div className="mt-2 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+          <div className="mt-2 grid gap-4 lg:gap-5 md:grid-cols-[1fr_auto] md:items-center">
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">IELTS mock exam · Result</p>
               <h1 id="mock-result-title" className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">
@@ -190,7 +190,7 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
         </section>
 
         {/* The four sections */}
-        <section aria-labelledby="mock-sections-title" className="mt-8">
+        <section aria-labelledby="mock-sections-title" className="mt-6">
           <h2 id="mock-sections-title" className={cn("mb-4 text-lg font-semibold text-white", ENTER)}>
             Section by section
           </h2>
@@ -202,7 +202,7 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
         </section>
 
         {/* What next */}
-        <Reveal as="section" aria-labelledby="mock-focus-title" className="mt-8">
+        <Reveal as="section" aria-labelledby="mock-focus-title" className="mt-6">
           <div className="av-panel rounded-2xl p-5 sm:p-6">
             {weakest ? (
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -243,7 +243,7 @@ export default async function MockResultPage(props: { params: Promise<{ attemptI
           </div>
         </Reveal>
 
-        <Reveal as="nav" aria-label="What to do next" className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:items-center print:hidden">
+        <Reveal as="nav" aria-label="What to do next" className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center print:hidden">
           {viewerIsOwner ? (
             <>
               <Link href={HUB} className={PRIMARY_BTN}>

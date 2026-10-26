@@ -56,7 +56,7 @@ export async function NextStepCard({
   const focus = focusKey ? MODULE_META[focusKey] : null;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-averna-neon/30 glass-strong p-6 mt-8 animate-fade-in">
+    <div className="relative overflow-hidden rounded-2xl border border-averna-neon/30 glass-strong p-6 mt-6 animate-fade-in">
       <div aria-hidden className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-averna-neon/10 blur-3xl" />
       <div className="relative">
         <div className="flex items-center gap-2 mb-2">

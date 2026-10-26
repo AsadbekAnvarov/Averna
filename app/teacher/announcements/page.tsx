@@ -87,7 +87,7 @@ export default async function AnnouncementsPage(
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-3xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
@@ -104,7 +104,7 @@ export default async function AnnouncementsPage(
         {teacher.groups.length === 0 ? (
           <Card className="glass border-averna-primary/30"><CardContent className="py-8 text-center text-gray-300">No groups yet.</CardContent></Card>
         ) : (
-          <Card className="glass border-averna-pink/30 mb-8">
+          <Card className="glass border-averna-pink/30 mb-6">
             <CardHeader><CardTitle className="flex items-center gap-2 text-averna-pink"><Send className="h-5 w-5" /> New Announcement</CardTitle></CardHeader>
             <CardContent>
               <form action={postAnnouncement} className="space-y-4">

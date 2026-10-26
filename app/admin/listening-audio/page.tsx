@@ -36,7 +36,7 @@ export default async function ListeningAudioPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-5xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
+      <div className="container mx-auto max-w-5xl px-4 py-4 sm:py-6 pb-8 lg:pb-6">
         {session.user.role === "TEACHER" ? <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} /> : <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />}
         <PageHeader
           back={{ href: session.user.role === "TEACHER" ? "/teacher/dashboard" : "/admin/dashboard", label: session.user.role === "TEACHER" ? "Teacher dashboard" : "Admin paneliga qaytish" }}

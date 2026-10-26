@@ -80,7 +80,7 @@ export default async function LessonLogPage(
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-3xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/teacher/dashboard", label: "Back to Dashboard" }}
@@ -109,7 +109,7 @@ export default async function LessonLogPage(
               ))}
             </div>
 
-            <Card className="glass border-averna-cyan/30 mb-8">
+            <Card className="glass border-averna-cyan/30 mb-6">
               <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><Plus className="h-5 w-5" /> Add Lesson Entry</CardTitle></CardHeader>
               <CardContent>
                 <form action={addLesson} className="space-y-4">

@@ -99,7 +99,7 @@ export function ProfilePassport({
 
   return (
     <div className="relative overflow-hidden rounded-3xl glass-vibrant aurora-bg p-6 sm:p-8">
-      <div className="flex flex-col sm:flex-row items-center gap-6">
+      <div className="flex flex-col sm:flex-row items-center gap-4 lg:gap-5">
         {/* Avatar + level ring */}
         <div className="relative shrink-0">
           <svg width="120" height="120" viewBox="0 0 120 120" className="rotate-[-90deg]">

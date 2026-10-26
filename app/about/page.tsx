@@ -49,7 +49,7 @@ export default function AboutPage() {
           <div className="flex justify-center mb-6">
             <Logo size={88} showText={false} className="animate-float" />
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Why <span className="neon-text">Averna</span> is Different
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
@@ -59,7 +59,7 @@ export default function AboutPage() {
         </div>
 
         {/* Key differentiators */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 mb-16">
           {/* Elite teachers */}
           <div className="glass rounded-2xl p-8 border border-averna-neon/30">
             <div className="flex items-center gap-3 mb-4">
@@ -175,7 +175,7 @@ export default function AboutPage() {
 
         {/* CTA */}
         <div className="glass rounded-3xl p-10 text-center border border-averna-neon/30">
-          <h2 className="text-3xl font-bold text-white mb-3">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
             Ready to reach your target band? 🎯
           </h2>
           <p className="text-gray-300 mb-6 max-w-xl mx-auto">

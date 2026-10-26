@@ -77,7 +77,7 @@ export function DashboardTabs({ children }: { children: ReactNode }) {
   return (
     <div>
       {/* Sticky tab bar */}
-      <div className="sticky top-[var(--app-bar-h,0px)] z-30 -mx-4 px-4 py-2 mb-4">
+      <div className="sticky top-[var(--app-bar-h,0px)] z-30 -mx-4 px-4 py-1.5 mb-3">
         <div className="no-scrollbar overflow-x-auto">
           <nav
             aria-label="Dashboard sections"
@@ -113,7 +113,7 @@ export function DashboardTabs({ children }: { children: ReactNode }) {
         key={active}
         aria-label={TAB_META[active].label}
         aria-busy={isPending || undefined}
-        className={cn("tab-stagger space-y-6 transition-opacity duration-200", isPending && "opacity-60")}
+        className={cn("tab-stagger space-y-4 sm:space-y-5 transition-opacity duration-200", isPending && "opacity-60")}
       >
         {children}
       </section>

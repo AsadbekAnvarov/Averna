@@ -18,7 +18,7 @@ export default function NotFound() {
             Oops! The page you&apos;re looking for doesn&apos;t exist.
           </p>
         </CardHeader>
-        <CardContent className="text-center space-y-6">
+        <CardContent className="text-center space-y-4 sm:space-y-5">
           <div className="bg-averna-primary/20 rounded-lg p-6 border border-averna-primary/30">
             <Search className="h-16 w-16 text-averna-neon mx-auto mb-3 opacity-50" />
             <p className="text-gray-300 text-sm">

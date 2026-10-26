@@ -178,7 +178,7 @@ export default async function TeacherDashboard() {
             className={`glass relative overflow-hidden ring-1 ${stat.ring} border-transparent transition-transform duration-300 hover:-translate-y-1`}
           >
             <div className={`pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br ${stat.glow} to-transparent blur-2xl`} />
-            <CardContent className="p-4 sm:p-6 relative">
+            <CardContent className="p-4 sm:p-5 relative">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
                   <p className="text-xs sm:text-sm text-gray-400 font-medium leading-snug">{stat.label}</p>
@@ -197,7 +197,7 @@ export default async function TeacherDashboard() {
 
   const myGroups = (
     <Card className="glass border-averna-primary/30">
-      <CardContent className="pt-6">
+      <CardContent className="pt-4 sm:pt-5">
         {teacher.groups.length === 0 ? (
           <p className="text-sm text-gray-400 py-4 text-center">No groups assigned yet.</p>
         ) : (
@@ -284,7 +284,7 @@ export default async function TeacherDashboard() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-6xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
 
         {/* Welcome banner */}
@@ -296,7 +296,7 @@ export default async function TeacherDashboard() {
             </div>
             <LiveRefresh />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
             Welcome back, <span className="neon-text">{firstName}</span>
           </h1>
           <p className="text-gray-400 mt-1">Here&apos;s what&apos;s happening across your classes today.</p>
@@ -328,7 +328,7 @@ export default async function TeacherDashboard() {
                 </Suspense>
                 <div>
                   <SectionHeader icon={CheckSquare} title="Needs Action" subtitle="Grade work and keep your groups in the loop" accent="text-amber-400" />
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                     <Suspense fallback={<WidgetSkeleton rows={4} />}>
                       <GradingInbox teacherId={teacher.id} />
                     </Suspense>
@@ -346,10 +346,10 @@ export default async function TeacherDashboard() {
               <>
                 <div>
                   <SectionHeader icon={Wand2} title="AI Teaching Tools" subtitle="Prep lessons, mark essays and get AI backup — grounded in your class data" accent="text-averna-purple" />
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-5">
                     <LessonBuilder />
                     <SmartEssayReview />
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                       <Suspense fallback={<WidgetSkeleton rows={3} />}>
                         <FutureClassSimulatorSection teacherId={teacher.id} />
                       </Suspense>
@@ -377,7 +377,7 @@ export default async function TeacherDashboard() {
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
                   <StudentRadar teacherId={teacher.id} />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <Suspense fallback={<WidgetSkeleton rows={4} />}>
                     <TeachingDNA teacherId={teacher.id} />
                   </Suspense>

@@ -169,11 +169,11 @@ export default async function LearningCenterPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-5xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-5xl px-4 py-4 pb-8 sm:py-6 lg:pb-6">
         {/* Hero */}
         <section
           aria-labelledby="learning-hero-title"
-          className="av-panel av-panel-hero relative isolate mb-8 overflow-hidden rounded-3xl px-5 pb-8 pt-3 sm:px-10 sm:pb-12 sm:pt-6"
+          className="av-panel av-panel-hero relative isolate mb-6 overflow-hidden rounded-3xl px-5 pb-8 pt-3 sm:px-10 sm:pb-12 sm:pt-6"
         >
           <Aurora />
           <Link
@@ -189,7 +189,7 @@ export default async function LearningCenterPage() {
           </p>
           <h1
             id="learning-hero-title"
-            className="mt-3 max-w-2xl text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl"
+            className="mt-3 max-w-2xl text-2xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl"
           >
             Real IELTS practice, every day
           </h1>
@@ -229,7 +229,7 @@ export default async function LearningCenterPage() {
             <FirstRunGuide name={session.user.name} />
           </Reveal>
         ) : (
-          <Reveal className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <Reveal className="mb-6 grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-2">
             <Suspense fallback={<WidgetSkeleton rows={3} />}>
               <BandProgress studentId={student.id} targetBand={student.targetBand} />
             </Suspense>
@@ -241,7 +241,7 @@ export default async function LearningCenterPage() {
 
         <Reveal>
           <SectionHeader icon={ClipboardList} title="Your Skill Journey" subtitle="Your level and next step in each IELTS skill" accent="text-averna-cyan" />
-          <div className="mb-8">
+          <div className="mb-6">
             <Suspense fallback={<WidgetSkeleton rows={2} />}>
               <SkillJourney studentId={student.id} targetBand={student.targetBand} />
             </Suspense>
@@ -251,7 +251,7 @@ export default async function LearningCenterPage() {
         <Reveal>
           <SectionHeader icon={Sparkles} title="Also Practise" subtitle="Round out your English beyond the four skills" accent="text-averna-purple" />
         </Reveal>
-        <RevealGroup as="ul" role="list" className="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <RevealGroup as="ul" role="list" className="mb-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
           {ALSO.map((s) => (
             <li key={s.href}>
               <Tile item={s} />

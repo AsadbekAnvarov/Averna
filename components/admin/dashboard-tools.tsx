@@ -2,7 +2,7 @@ import Link from "next/link";
 import { UserPlus,GraduationCap,Layers,MessageSquare } from "lucide-react";
 import type { ReactNode } from "react";
 export function AdminQuickActions(){
- return <div className="glass rounded-2xl p-4 sm:p-6">
+ return <div className="glass rounded-2xl p-4 sm:p-5">
                   <h2 className="text-lg font-semibold text-white">Tezkor amallar</h2>
                   <p className="text-sm text-gray-400 mt-1">Qabul, oʻqituvchilar va guruhlar — eng koʻp ishlatiladigan amallar.</p>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
@@ -16,7 +16,7 @@ export function AdminQuickActions(){
                 </div>;
 }
 export function AdminToolsDisclosure({children}:{children:ReactNode}){
- return <details className="glass rounded-2xl p-4 sm:p-6">
+ return <details className="glass rounded-2xl p-4 sm:p-5">
   <summary className="cursor-pointer min-h-11 text-lg font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-averna-purple">Qoʻshimcha boshqaruv vositalari</summary>
   <p className="text-sm text-gray-400 mt-2 mb-5">Kontent, xabarlar va tizim vositalari. Kundalik amallar uchun yuqoridagi asosiy boʻlimlardan foydalaning.</p>
   {children}

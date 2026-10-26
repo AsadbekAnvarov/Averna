@@ -6,7 +6,7 @@ import { HubNav } from "@/components/ui/hub-nav";
 export default function RankingsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-6xl px-4 py-6 pb-10 sm:py-8">
+      <div className="container mx-auto max-w-6xl px-4 py-4 pb-10 sm:py-6">
         <PageHeader
           className="mb-4 sm:mb-5"
           back={{ href: "/dashboard", label: "Back to Dashboard" }}

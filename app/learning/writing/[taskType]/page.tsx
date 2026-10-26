@@ -42,14 +42,14 @@ export default async function WritingTaskPage(
   if (!promptParam) {
     return (
       <div className="min-h-screen premium-gradient">
-        <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl">
+        <div className="container mx-auto px-4 py-4 sm:py-6 max-w-5xl">
           <Link href="/learning/writing" className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
             <ArrowLeft className="h-4 w-4" /> Back to Writing
           </Link>
           <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-3">
             <PenTool className="h-8 w-8 text-averna-purple" /> {taskConfig.title}
           </h1>
-          <p className="text-gray-400 mb-8">
+          <p className="text-gray-400 mb-6">
             Choose Task 1 or Task 2 independently. Averna CDI tasks use the supplied prompts and original chart images; sample essays are only shown when provided.
           </p>
 
@@ -76,7 +76,7 @@ export default async function WritingTaskPage(
             ))}
           </div>
 
-          <Card className="glass border-averna-cyan/30 mt-8">
+          <Card className="glass border-averna-cyan/30 mt-6">
             <CardHeader>
               <CardTitle className="text-averna-cyan flex items-center gap-2">
                 <Lightbulb className="h-5 w-5" /> IELTS Band Descriptors — {taskType === "task1" ? "Task 1" : "Task 2"}
@@ -167,7 +167,7 @@ export default async function WritingTaskPage(
               </Card>
             </summary>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4 pb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 mt-4 pb-8">
               <Card className="glass border-averna-neon/30">
                 <CardHeader>
                   <CardTitle className="text-averna-neon flex items-center gap-2">
@@ -179,7 +179,7 @@ export default async function WritingTaskPage(
                 </CardContent>
               </Card>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-5">
                 <Card className="glass border-averna-cyan/30">
                   <CardHeader>
                     <CardTitle className="text-averna-cyan">Useful Phrases</CardTitle>

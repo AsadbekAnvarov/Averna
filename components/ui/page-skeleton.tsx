@@ -31,18 +31,18 @@ export function PageSkeleton({
   const body = (
     <>
       {pills > 0 && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
           {Array.from({ length: pills }).map((_, i) => (
             <Block key={i} className="h-24" />
           ))}
         </div>
       )}
 
-      {banner && <Block className="h-28 mb-6" />}
+      {banner && <Block className="h-24 mb-4 sm:mb-5" />}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
         {Array.from({ length: cards }).map((_, i) => (
-          <Block key={i} className="h-44" />
+          <Block key={i} className="h-40" />
         ))}
       </div>
     </>
@@ -51,12 +51,12 @@ export function PageSkeleton({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className={`container mx-auto px-4 py-6 sm:py-8 ${maxWidth} pb-10 lg:pb-8`}>
+      <div className={`container mx-auto px-4 py-4 sm:py-6 ${maxWidth} pb-8 lg:pb-6`}>
         {/* Header */}
-        <div className="mb-8">
-          <Block className="h-4 w-40 mb-4" />
+        <div className="mb-4 sm:mb-6">
+          <Block className="h-4 w-40 mb-3" />
           <div className="flex items-center gap-3">
-            <Block className="h-11 w-11 rounded-xl" />
+            <Block className="h-9 w-9 rounded-xl" />
             <div className="space-y-2">
               <Block className="h-6 w-52" />
               <Block className="h-3 w-72 max-w-full" />

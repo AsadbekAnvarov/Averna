@@ -41,7 +41,7 @@ export async function AdminAttentionBar() {
   ].filter(Boolean) as { href: string; icon: any; label: string; cls: string }[];
 
   return (
-    <div className="flex flex-wrap items-center gap-2.5 mb-8">
+    <div className="flex flex-wrap items-center gap-2.5 mb-6">
       <span className="text-sm text-gray-400 font-medium">Eʼtibor talab qiladi:</span>
       {chips.length === 0 ? (
         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-averna-neon/30 bg-averna-neon/10 text-averna-neon text-sm">

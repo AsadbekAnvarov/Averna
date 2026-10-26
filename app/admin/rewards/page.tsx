@@ -97,7 +97,7 @@ export default async function AdminRewardsPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
@@ -108,7 +108,7 @@ export default async function AdminRewardsPage() {
         />
 
         {/* Pending requests */}
-        <Card className="glass border-averna-pink/30 mb-8">
+        <Card className="glass border-averna-pink/30 mb-6">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-pink">Kutilayotgan soʻrovlar ({pending.length})</CardTitle></CardHeader>
           <CardContent>
             {pending.length === 0 ? (
@@ -141,7 +141,7 @@ export default async function AdminRewardsPage() {
         </Card>
 
         {/* Add reward */}
-        <Card className="glass border-averna-cyan/30 mb-8">
+        <Card className="glass border-averna-cyan/30 mb-6">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-cyan"><Plus className="h-5 w-5" /> Mukofot qoʻshish</CardTitle></CardHeader>
           <CardContent>
             <form action={addReward} className="grid grid-cols-1 sm:grid-cols-2 gap-4">

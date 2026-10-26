@@ -291,10 +291,10 @@ export function AppSidebar() {
         </div>
 
         {/* Sections */}
-        <nav className="px-3 py-4 space-y-5 pb-[calc(2rem+env(safe-area-inset-bottom))]">
+        <nav className="px-3 py-3 space-y-4 pb-[calc(2rem+env(safe-area-inset-bottom))]">
           {sections.map((section) => (
             <div key={section.label}>
-              <div className="sidebar-label px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
+              <div className="sidebar-label px-3 mb-1 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
                 {section.label}
               </div>
               <div className="space-y-0.5">
@@ -307,7 +307,7 @@ export function AppSidebar() {
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "group flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                        "group flex min-h-[44px] lg:min-h-10 items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                         active
                           ? cn("bg-white/10 text-white", `border-l-2 border-${accent}`)
                           : "text-gray-400 hover:bg-white/5 hover:text-white border-l-2 border-transparent"

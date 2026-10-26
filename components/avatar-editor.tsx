@@ -117,7 +117,7 @@ export function AvatarEditor({ currentImage, name }: { currentImage: string | nu
         </CardTitle>
       </CardHeader>
       <CardContent className="p-5 pt-0 sm:p-6 sm:pt-0">
-        <div className="flex flex-col gap-6 md:flex-row">
+        <div className="flex flex-col gap-4 lg:gap-5 md:flex-row">
           {/* Live preview + actions */}
           <div className="flex items-center gap-4 md:w-40 md:shrink-0 md:flex-col md:items-stretch">
             <div className="mx-0 h-24 w-24 shrink-0 overflow-hidden rounded-full border-4 border-averna-neon/40 bg-averna-dark shadow-lg shadow-averna-neon/10 flex items-center justify-center md:mx-auto md:h-32 md:w-32">

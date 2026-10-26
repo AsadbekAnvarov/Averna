@@ -210,7 +210,7 @@ export default async function AdminDashboard() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-5xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
 
         {/* Welcome banner */}
@@ -222,7 +222,7 @@ export default async function AdminDashboard() {
             </div>
             <LiveRefresh />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
             Xush kelibsiz, <span className="neon-text">{firstName}</span>
           </h1>
           <p className="text-gray-400 mt-1">Oʻquvchilar, xodimlar va butun platformani shu yerdan boshqaring.</p>
@@ -251,7 +251,7 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-32 rounded-2xl bg-white/5 animate-pulse" />}>
                   <OutcomeKpis />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <ActivityFeed />
                   <TeacherWorkload />
                 </div>
@@ -267,7 +267,7 @@ export default async function AdminDashboard() {
                 <div>
                   <SectionHeader icon={UserPlus} title={`Yangi oʻquvchilarni qabul qilish (${pending.length})`} subtitle="Daraja belgilang va guruhga biriktiring" accent="text-averna-pink" />
                   <Card id="enroll" className="glass border-averna-pink/30 scroll-mt-6">
-                    <CardContent className="pt-6">
+                    <CardContent className="pt-4 sm:pt-5">
                       <StudentRoster
                         students={pendingRoster}
                         groups={rosterGroups}
@@ -283,7 +283,7 @@ export default async function AdminDashboard() {
                 <div>
                   <SectionHeader icon={Users} title={`Barcha oʻquvchilar (${students.length})`} subtitle="Platformadagi barcha oʻquvchilar" accent="text-averna-cyan" />
                   <Card className="glass border-averna-cyan/30">
-                    <CardContent className="pt-6">
+                    <CardContent className="pt-4 sm:pt-5">
                       <StudentRoster
                         students={studentsRoster}
                         groups={rosterGroups}
@@ -300,7 +300,7 @@ export default async function AdminDashboard() {
             ),
             insights: (
               <>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                     <PredictionEngine />
                   </Suspense>
@@ -314,7 +314,7 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-72 rounded-2xl bg-white/5 animate-pulse" />}>
                   <JourneyReplaySection />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <EnrollmentFunnel />
                   <TeacherWorkload />
                 </div>
@@ -327,7 +327,7 @@ export default async function AdminDashboard() {
                   <TopPerformers />
                 </div>
                 <AdminToolsDisclosure>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch [&>*]:h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <VoiceControl />
                   <Suspense fallback={<div className="h-64 rounded-2xl bg-white/5 animate-pulse" />}>
                     <ContentHealth />
@@ -336,7 +336,7 @@ export default async function AdminDashboard() {
                 <div>
                 <SectionHeader icon={ShieldCheck} title="Boshqaruv vositalari" subtitle="Butun platformani shu yerdan boshqaring" accent="text-averna-purple" />
                 <Card className="glass border-averna-primary/30">
-                  <CardContent className="pt-6">
+                  <CardContent className="pt-4 sm:pt-5">
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                       {actions.map((action) => {
                         const Icon = action.icon;

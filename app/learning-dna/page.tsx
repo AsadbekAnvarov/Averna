@@ -34,7 +34,7 @@ async function DnaContent({ studentId }: { studentId: string }) {
   ]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-5">
       <DnaOverview profile={profile} />
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
@@ -93,7 +93,7 @@ export default async function LearningDnaPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-7xl pb-10 lg:pb-8">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-7xl pb-8 lg:pb-6">
         <PageHeader
           back={{ href: "/dashboard", label: "Back to Dashboard" }}
           icon={Dna}

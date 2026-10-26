@@ -20,11 +20,11 @@ export default async function ProgressSkillsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-5">
       <Suspense fallback={<WidgetSkeleton rows={4} />}>
         <AiClone studentId={student.id} />
       </Suspense>
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-2">
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <SkillRadar studentId={student.id} />
         </Suspense>

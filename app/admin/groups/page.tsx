@@ -244,7 +244,7 @@ export default async function AdminGroupsPage(
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-4xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
@@ -258,7 +258,7 @@ export default async function AdminGroupsPage(
         {searchParams.deleted && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Guruh oʻchirildi.</div>}
 
         {/* Create group */}
-        <Card className="glass border-averna-purple/30 mb-8">
+        <Card className="glass border-averna-purple/30 mb-6">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-purple"><Plus className="h-5 w-5" /> Yangi guruh</CardTitle></CardHeader>
           <CardContent>
             <form action={createGroup} className="grid grid-cols-1 sm:grid-cols-2 gap-4">

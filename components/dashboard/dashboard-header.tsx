@@ -22,7 +22,7 @@ interface DashboardHeaderProps {
  */
 export function DashboardHeader({ user, tools }: DashboardHeaderProps) {
   return (
-    <header className="flex items-center gap-3 mb-4 lg:mb-6 animate-fade-in">
+    <header className="flex items-center gap-3 mb-3 lg:mb-4 animate-fade-in">
       {/* The mobile top app bar already shows the brand — no duplicate logo on phones. */}
       <div className="hidden lg:block"><Logo href="/dashboard" size={40} className="text-xl" /></div>
 

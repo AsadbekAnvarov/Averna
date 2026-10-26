@@ -78,7 +78,7 @@ export default async function ReviewAttemptPage(
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-7xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
+      <div className="container mx-auto max-w-7xl px-4 py-4 sm:py-6 pb-8 lg:pb-6">
         {role === "ADMIN" ? <AdminHeader user={user} /> : <TeacherHeader user={user} />}
 
         <Link href={back} className="mb-4 inline-flex items-center gap-1 text-sm text-averna-neon hover:underline">
@@ -144,8 +144,8 @@ export default async function ReviewAttemptPage(
           </p>
         )}
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
-          <div className="min-w-0 space-y-6">
+        <div className="grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-[minmax(0,1fr)_380px]">
+          <div className="min-w-0 space-y-4 sm:space-y-5">
             {a.writing && <WritingWork attempt={a} w={a.writing} filters={filters} />}
             {a.speaking && <SpeakingWork s={a.speaking} />}
             <AiAssessment attempt={a} taskType={taskType} />

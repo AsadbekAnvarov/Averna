@@ -48,7 +48,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
     <div className="min-h-screen premium-gradient dashboard-anim">
       <DaypartAmbiance />
       <SeasonalDecor />
-      <div className="container relative z-10 mx-auto px-4 py-4 sm:py-6 max-w-7xl pb-8 lg:pb-6">
+      <div className="container relative z-10 mx-auto px-4 py-3 sm:py-5 max-w-7xl pb-8 lg:pb-6">
         <h1 className="sr-only">Student dashboard</h1>
         <DashboardHeader
           user={student.user}
@@ -61,7 +61,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
         />
 
         {/* What needs you today (swipes sideways on phones) */}
-        <div className="mb-4">
+        <div className="mb-3">
           <Suspense fallback={<div className="h-8" />}>
             <StudentAttentionBar
               userId={session.user.id}

@@ -17,7 +17,7 @@ export async function BadgeGrid({ studentId }: { studentId: string }) {
     return <ErrorPanel title="We couldn't load your milestones." detail="Your badges are safe — this is only a display problem." retryHref="/progress/achievements" />;
   }
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-5">
       {GROUPS.map((g) => {
         const items = p.badges.filter((b) => b.def.skill === g);
         if (!items.length) return null;

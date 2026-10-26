@@ -85,9 +85,9 @@ export default async function WritingResultPage(
   return (
     <div className="min-h-screen premium-gradient">
       {viewerIsOwner && <ResultCelebration score={shownBand} target={target} />}
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-6xl">
         {/* Header */}
-        <div className="mb-8 animate-fade-in">
+        <div className="mb-6 animate-fade-in">
           <Link
             href={viewerIsOwner ? "/learning/writing" : "/teacher/reviews"}
             className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1"
@@ -103,7 +103,7 @@ export default async function WritingResultPage(
           </p>
         </div>
 
-        {homeworkNotice && <HomeworkNoticeCard notice={homeworkNotice} className="mb-8" />}
+        {homeworkNotice && <HomeworkNoticeCard notice={homeworkNotice} className="mb-6" />}
 
         {teacherBand === null && assessment.source === "heuristic" && (
           <p role="status" className="text-sm text-gray-400 mb-6">
@@ -116,7 +116,7 @@ export default async function WritingResultPage(
         )}
 
         {/* Overall Band Score */}
-        <Card className="glass border-averna-primary/30 mb-8 animate-fade-in">
+        <Card className="glass border-averna-primary/30 mb-6 animate-fade-in">
           <CardContent className="py-8">
             <div className="text-center">
               <p className="text-gray-400 mb-2 inline-flex items-center justify-center gap-1.5">
@@ -142,7 +142,7 @@ export default async function WritingResultPage(
         </Card>
 
         {/* One more thing: what improved, what you earned, what's next */}
-        <div className="mb-8">
+        <div className="mb-6">
           {viewerIsOwner && (
             <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
             <SessionOutcomeSection studentId={student.id} testId={test.id} label="Writing" score={shownBand} />
@@ -151,14 +151,14 @@ export default async function WritingResultPage(
           <TeacherReviewCard testId={test.id} viewerIsOwner={viewerIsOwner} />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
           {/* Criterion Scores */}
           <Card className="glass border-purple-500/30 animate-fade-in">
             <CardHeader>
               <CardTitle className="text-purple-400">Criterion Scores</CardTitle>
               <CardDescription>Breakdown by IELTS assessment criteria</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4 sm:space-y-5">
               {/* Task Achievement */}
               <div>
                 <div className="flex items-center justify-between mb-2">
@@ -351,7 +351,7 @@ export default async function WritingResultPage(
 
         {/* Actions */}
         {viewerIsOwner ? (
-          <div className="flex gap-4 mt-8 animate-fade-in">
+          <div className="flex gap-4 mt-6 animate-fade-in">
             <Link href="/learning/writing" className="flex-1">
               <Button className="w-full neon-button bg-averna-primary hover:bg-averna-light">
                 <RotateCcw className="mr-2 h-4 w-4" />
@@ -365,7 +365,7 @@ export default async function WritingResultPage(
             </Link>
           </div>
         ) : (
-          <div className="flex gap-4 mt-8 animate-fade-in">
+          <div className="flex gap-4 mt-6 animate-fade-in">
             <Link href="/teacher/reviews" className="flex-1">
               <Button variant="outline" className="w-full border-averna-neon text-averna-neon">
                 <ArrowLeft className="mr-2 h-4 w-4" />

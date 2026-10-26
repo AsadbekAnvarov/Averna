@@ -108,7 +108,7 @@ export async function LearningDnaAnalytics() {
         </p>
       </CardHeader>
 
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-4 sm:space-y-5">
         {data.suppressed ? (
           <div className="rounded-xl border border-white/10 bg-white/[0.02] p-5 text-center">
             <Lock className="mx-auto h-6 w-6 text-gray-400 mb-2" />
@@ -173,7 +173,7 @@ export async function LearningDnaAnalytics() {
               />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
               {/* ---- Oʻrganish uslublari ---- */}
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-averna-purple mb-3">

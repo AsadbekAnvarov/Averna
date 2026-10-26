@@ -143,7 +143,7 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
   const totalActive = (Object.keys(counts) as LinkRole[]).reduce((n, r) => n + counts[r].active, 0);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-5">
       {/* Status */}
       <section className="glass rounded-2xl border border-white/10 p-5">
         <div className="mb-4 flex items-center justify-between gap-3">

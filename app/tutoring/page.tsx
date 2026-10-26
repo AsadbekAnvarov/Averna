@@ -98,7 +98,7 @@ export default async function TutoringPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-4xl">
         <PageHeader
           back={{ href: "/dashboard", label: "Back to Dashboard" }}
           icon={UserCheck}
@@ -108,7 +108,7 @@ export default async function TutoringPage() {
         />
 
         {/* My booked sessions */}
-        <Card className="glass border-averna-neon/30 mb-8">
+        <Card className="glass border-averna-neon/30 mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-averna-neon">
               <Sparkles className="h-5 w-5" /> My Booked Sessions
@@ -161,7 +161,7 @@ export default async function TutoringPage() {
           </Card>
         )}
 
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-5">
           {secondTeachers.map((t) => {
             const openSlots = t.tutorSlots.filter((s) => !s.studentId);
             return (

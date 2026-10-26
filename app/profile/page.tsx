@@ -111,7 +111,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-4xl">
         <PageHeader
           back={{ href: "/dashboard", label: "Back to Dashboard" }}
           icon={User}
@@ -120,7 +120,7 @@ export default function ProfilePage() {
         />
 
         {/* Passport — premium identity card */}
-        <div className="mb-8">
+        <div className="mb-6">
           <ProfilePassport
             name={profile.name || "Student"}
             image={profile.image}
@@ -133,17 +133,17 @@ export default function ProfilePage() {
         </div>
 
         {/* Avatar editor */}
-        <div className="mb-8">
+        <div className="mb-6">
           <AvatarEditor currentImage={profile.image || null} name={profile.name || "Student"} />
         </div>
 
         {/* Username (loads its own value) */}
-        <div className="mb-8">
+        <div className="mb-6">
           <UsernameForm lang="en" />
         </div>
 
         {/* Enrollment info (set by admin) */}
-        <Card className="glass border-averna-neon/30 mb-8">
+        <Card className="glass border-averna-neon/30 mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-averna-neon">
               <GraduationCap className="h-5 w-5" /> My Enrollment
@@ -180,8 +180,8 @@ export default function ProfilePage() {
           <CardHeader>
             <CardTitle>Edit My Profile</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <CardContent className="space-y-4 sm:space-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
               <div className="space-y-2">
                 <Label htmlFor="name" className="flex items-center gap-2">
                   <User className="h-4 w-4" /> Full Name

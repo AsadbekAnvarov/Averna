@@ -66,7 +66,7 @@ export default async function ReviewQueuePage(props: { searchParams?: Promise<Se
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-7xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
+      <div className="container mx-auto max-w-7xl px-4 py-4 sm:py-6 pb-8 lg:pb-6">
         {role === "ADMIN" ? <AdminHeader user={user} /> : <TeacherHeader user={user} />}
         <PageHeader
           back={{ href: role === "ADMIN" ? "/admin/dashboard" : "/teacher/dashboard", label: "Back to Dashboard" }}

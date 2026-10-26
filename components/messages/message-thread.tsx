@@ -42,7 +42,7 @@ export function MessageThread({
   };
 
   if (messages.length === 0) {
-    return <p className="text-sm text-gray-400 text-center mt-8">No messages yet. Say hello! 👋</p>;
+    return <p className="text-sm text-gray-400 text-center mt-6">No messages yet. Say hello! 👋</p>;
   }
 
   return (

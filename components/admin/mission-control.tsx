@@ -38,7 +38,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
   const { stats, bullets, priorities, risks, actions, events, recommendations, insight } = mc;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-5">
       {/* Module 1 — AI Executive Briefing */}
       <Card className="glass border-averna-neon/30 relative overflow-hidden">
         <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-averna-neon/10 blur-3xl" />
@@ -115,7 +115,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
         {/* Module 2 — Critical Event Center */}
         <Card className="glass border-red-500/30">
           <CardHeader>

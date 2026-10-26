@@ -29,7 +29,7 @@ export async function MockSummaryCard({ groupId, studentIds }: { groupId: string
   return (
     <section
       aria-labelledby="group-mock-summary"
-      className="mb-8 flex flex-col gap-3 rounded-xl border border-white/5 bg-averna-dark/30 p-4 sm:flex-row sm:items-center"
+      className="mb-6 flex flex-col gap-3 rounded-xl border border-white/5 bg-averna-dark/30 p-4 sm:flex-row sm:items-center"
     >
       <div className="flex min-w-0 flex-1 items-center gap-3">
         <div aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-averna-neon/15 text-averna-neon">

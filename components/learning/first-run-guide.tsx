@@ -17,7 +17,7 @@ export function FirstRunGuide({ name }: { name?: string | null }) {
   const firstName = name?.trim().split(/\s+/)[0];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-averna-neon/30 glass-strong p-6 mb-8">
+    <div className="relative overflow-hidden rounded-2xl border border-averna-neon/30 glass-strong p-6 mb-6">
       {/* decorative glow */}
       <div aria-hidden className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-averna-neon/10 blur-3xl" />
 

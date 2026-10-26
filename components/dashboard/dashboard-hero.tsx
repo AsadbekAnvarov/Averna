@@ -56,13 +56,13 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
     <Card className="glass relative overflow-hidden border-averna-primary/30">
       <div className="absolute inset-0 animated-gradient opacity-60" />
       <div className={`pointer-events-none absolute -top-24 -right-20 h-60 w-60 rounded-full ${daypart.glow} blur-3xl transition-colors duration-1000`} />
-      <CardContent className="relative p-5 sm:p-8">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
+      <CardContent className="relative p-4 sm:p-6">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-6">
           {/* Left: greeting + pills + quote */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-4 sm:gap-5">
               <div className="relative shrink-0">
-                <div className="h-16 w-16 sm:h-24 sm:w-24 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shadow-lg shadow-averna-neon/20">
+                <div className="h-14 w-14 sm:h-20 sm:w-20 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shadow-lg shadow-averna-neon/20">
                   {image ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={image} alt={name ?? "Avatar"} className="h-full w-full object-cover" />
@@ -81,7 +81,7 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm sm:text-base text-gray-200">{daypart.greeting} {daypart.emoji}</p>
-                <h2 className="text-2xl sm:text-4xl font-bold text-white truncate">
+                <h2 className="text-xl sm:text-3xl font-bold text-white truncate">
                   <span className="text-gradient-animate">{firstName}</span> <span className="inline-block">👋</span>
                 </h2>
                 <p className="text-xs sm:text-sm text-gray-300 mt-1.5 animate-fade-in">{smartLine}</p>
@@ -94,11 +94,11 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
             </div>
 
             {/* Stat pills */}
-            <div className="grid grid-cols-3 gap-2 mt-5 sm:flex sm:flex-wrap sm:gap-3 sm:mt-6">
+            <div className="grid grid-cols-3 gap-2 mt-4 sm:flex sm:flex-wrap sm:gap-3 sm:mt-5">
               {pills.map((p) => {
                 const Icon = p.icon;
                 return (
-                  <div key={p.label} className="flex min-w-0 items-center gap-2 sm:gap-2.5 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur">
+                  <div key={p.label} className="flex min-w-0 items-center gap-2 sm:gap-2.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur">
                     <span className={`hidden min-[380px]:flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-xl ${p.bg} ${p.color}`}>
                       <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                     </span>
@@ -114,9 +114,9 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
             </div>
 
             {/* Daily quote */}
-            <div className="mt-5 sm:mt-6 flex items-start gap-2.5 border-t border-white/10 pt-4">
+            <div className="mt-4 flex items-start gap-2.5 border-t border-white/10 pt-3">
               <Quote className="h-4 w-4 sm:h-5 sm:w-5 text-averna-cyan shrink-0 mt-0.5" />
-              <p className="text-[13px] sm:text-base leading-relaxed text-gray-200 italic">
+              <p className="text-[13px] sm:text-sm leading-relaxed text-gray-200 italic">
                 &ldquo;{displayQuote.text}&rdquo; <span className="text-gray-400 not-italic">— {displayQuote.author}</span>
               </p>
             </div>
@@ -124,7 +124,7 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
 
           {/* Right: Level ring (balances the layout) */}
           <div className="flex lg:flex-col items-center gap-4 lg:gap-2 shrink-0 border-t border-white/10 pt-4 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-8">
-            <div className="relative h-24 w-24 sm:h-36 sm:w-36 shrink-0">
+            <div className="relative h-20 w-20 sm:h-28 sm:w-28 shrink-0">
               <svg viewBox="0 0 144 144" className="h-full w-full -rotate-90">
                 <circle cx="72" cy="72" r={R} fill="none" className="stroke-white/[0.08]" strokeWidth="10" />
                 <circle
@@ -143,7 +143,7 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-[10px] uppercase tracking-wider text-gray-400">Level</span>
-                <span className="text-3xl sm:text-4xl font-bold neon-text leading-none animate-breathe">{level.level}</span>
+                <span className="text-2xl sm:text-3xl font-bold neon-text leading-none animate-breathe">{level.level}</span>
               </div>
             </div>
             <div className="text-left lg:text-center">

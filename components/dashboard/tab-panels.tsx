@@ -126,7 +126,7 @@ export async function LearnTab({ student }: TabPanelProps) {
       </section>
       <section>
         <SectionHeader icon={Newspaper} title="Reading & vocabulary" subtitle="Choose a lesson and build your vocabulary" accent="text-averna-cyan" />
-        <div className="grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 md:grid-cols-2">
           <DailyArticle />
           <WordOfTheDay />
         </div>
@@ -152,7 +152,7 @@ export async function ProgressTab({ student }: TabPanelProps) {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <BandProgress studentId={student.id} targetBand={student.targetBand} />
         </Suspense>
@@ -160,13 +160,13 @@ export async function ProgressTab({ student }: TabPanelProps) {
           <SkillRadar studentId={student.id} />
         </Suspense>
       </div>
-      <div className="grid grid-cols-1 items-start gap-4 md:gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <ProgressionLevel studentId={student.id} />
         </Suspense>
         <WeeklyGoal completed={weeklyCompleted} />
       </div>
-      <div className="grid grid-cols-1 items-start gap-4 md:gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <LearningDnaCard studentId={student.id} />
         </Suspense>
@@ -186,7 +186,7 @@ export async function ProgressTab({ student }: TabPanelProps) {
 export async function ClassTab({ student, userId }: TabPanelProps) {
   return (
     <>
-      <div className="grid grid-cols-1 items-start gap-4 md:gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
         <Suspense fallback={<WidgetSkeleton rows={2} />}>
           <TeacherCard groupId={student.groupId} />
         </Suspense>
@@ -197,7 +197,7 @@ export async function ClassTab({ student, userId }: TabPanelProps) {
       <Suspense fallback={<WidgetSkeleton rows={4} />}>
         <StudySquad groupId={student.groupId} studentId={student.id} />
       </Suspense>
-      <div className="grid grid-cols-1 items-start gap-4 md:gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
         <Suspense fallback={<WidgetSkeleton rows={4} />}>
           <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
         </Suspense>
@@ -216,13 +216,13 @@ export async function ClassTab({ student, userId }: TabPanelProps) {
 export async function PlayTab({ student }: TabPanelProps) {
   return (
     <>
-      <div className="grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 md:grid-cols-2">
         <MoodCheckin />
         <div data-gamified>
           <DailySpin />
         </div>
       </div>
-      <div className="grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-2" data-gamified>
+      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 md:grid-cols-2" data-gamified>
         <DailyQuests studentId={student.id} streakFreezes={student.streakFreezes} />
         <MysteryBox />
       </div>
@@ -236,7 +236,7 @@ export async function PlayTab({ student }: TabPanelProps) {
         />
         <StudioShelf group="games" />
       </section>
-      <div className="grid grid-cols-1 items-start gap-4 md:gap-6 md:grid-cols-2" data-gamified>
+      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 md:grid-cols-2" data-gamified>
         <StudyPet streak={student.currentStreak} points={student.totalPoints} />
         <Suspense fallback={<WidgetSkeleton rows={2} />}>
           <StudentOfTheWeek />

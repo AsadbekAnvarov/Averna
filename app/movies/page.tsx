@@ -62,7 +62,7 @@ export default async function MoviesPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-6xl">
         <PageHeader
           back={{ href: "/dashboard", label: "Back to Dashboard" }}
           icon={Film}
@@ -72,7 +72,7 @@ export default async function MoviesPage() {
         />
 
         {/* How It Works */}
-        <Card className="glass border-pink-500/30 mb-8">
+        <Card className="glass border-pink-500/30 mb-6">
           <CardHeader>
             <CardTitle className="text-pink-400">How It Works</CardTitle>
           </CardHeader>
@@ -103,7 +103,7 @@ export default async function MoviesPage() {
         </Card>
 
         {/* Movies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
           {movies.map((movie) => (
             <Card
               key={movie.id}
@@ -186,12 +186,12 @@ export default async function MoviesPage() {
         </div>
 
         {/* Features Preview */}
-        <Card className="glass border-averna-primary/30 mt-8">
+        <Card className="glass border-averna-primary/30 mt-6">
           <CardHeader>
             <CardTitle className="text-averna-neon">Coming Soon Features</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
               <div>
                 <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
                   <Star className="h-5 w-5 text-yellow-400" />

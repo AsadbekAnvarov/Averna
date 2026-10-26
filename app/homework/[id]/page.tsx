@@ -86,9 +86,9 @@ export default async function HomeworkDetailPage(props: { params: Promise<{ id: 
   if (existingSubmission) {
     return (
       <div className="min-h-screen premium-gradient">
-        <div className="container mx-auto max-w-4xl px-4 py-6 sm:py-8">
+        <div className="container mx-auto max-w-4xl px-4 py-4 sm:py-6">
           <div className="text-center text-white">
-            <h1 className="mb-4 text-3xl font-bold">Already Submitted! ✓</h1>
+            <h1 className="mb-4 text-2xl sm:text-3xl font-bold">Already Submitted! ✓</h1>
             <p className="mb-2 text-gray-300">You&apos;ve already submitted this homework.</p>
             <p className="mb-6 text-sm text-gray-400">
               {existingSubmission.status === "GRADED" ? "Graded by your teacher" : "Waiting for your teacher to grade it"} ·{" "}
@@ -154,7 +154,7 @@ function ExamHomeworkView({
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-3xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
+      <div className="container mx-auto max-w-3xl px-4 py-4 sm:py-6 pb-8 lg:pb-6">
         <Link href="/homework" className="mb-4 block text-sm text-averna-neon hover:underline">
           ← Back to Homework
         </Link>

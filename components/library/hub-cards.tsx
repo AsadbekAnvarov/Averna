@@ -65,7 +65,7 @@ export function MockExamCard({ href = "/learning/mock-exam" }: { href?: string }
       aria-labelledby="mock-exam-title"
       className="av-panel av-panel-hero glow-hover rounded-3xl p-5 sm:p-8"
     >
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-4 lg:gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <div className="flex items-center gap-3">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-averna-neon/10 text-averna-neon" aria-hidden>

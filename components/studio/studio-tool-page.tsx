@@ -16,7 +16,7 @@ export async function StudioToolPage({ slug, children }: { slug: string; childre
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-4xl px-4 py-6 pb-10 sm:py-8">
+      <div className="container mx-auto max-w-4xl px-4 py-4 pb-10 sm:py-6">
         <PageHeader
           back={{ href: "/studio", label: "Practice Studio" }}
           icon={tool.icon}
@@ -24,7 +24,7 @@ export async function StudioToolPage({ slug, children }: { slug: string; childre
           title={tool.title}
           subtitle={tool.blurb}
         />
-        <div className="space-y-6">{children}</div>
+        <div className="space-y-4 sm:space-y-5">{children}</div>
 
         <div className="mt-10" {...(tool.group === "games" ? { "data-gamified": "" } : {})}>
           <SectionHeader

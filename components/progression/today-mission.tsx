@@ -16,7 +16,7 @@ export function TodayMission({ mission, firstName, isNew }: { mission: DailyMiss
   return (
     <section aria-labelledby="mission-title" className="av-panel av-panel-hero relative overflow-hidden rounded-3xl p-5 sm:p-7">
       <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-averna-neon/10 blur-3xl" aria-hidden />
-      <div className="relative flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
+      <div className="relative flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-10">
         {/* Left: headline + progress + CTA */}
         <div className="lg:w-[38%] lg:shrink-0">
           <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-averna-neon">

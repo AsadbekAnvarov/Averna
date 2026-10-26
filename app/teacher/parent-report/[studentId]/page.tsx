@@ -56,7 +56,7 @@ export default async function ParentReportPage(props: { params: Promise<{ studen
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl pb-12">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-3xl pb-12">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <Link href="/teacher/students" className="text-averna-neon hover:underline text-sm">← Back to Students</Link>

@@ -21,7 +21,7 @@ function Podium({ top, currentUserId }: { top: Ranked[]; currentUserId: string }
 
   return (
     <Card className="glass border-yellow-500/30 mb-6 overflow-hidden">
-      <CardContent className="pt-6">
+      <CardContent className="pt-4 sm:pt-5">
         <div className="flex items-end justify-center gap-2 sm:gap-5">
           {slots.map((slot) => {
             const isMe = slot.s.userId === currentUserId;
@@ -71,7 +71,7 @@ export default async function RankingsPage() {
     <div>
       <Podium top={globalRankings.slice(0, 3)} currentUserId={student.id} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
         {/* Global Rankings */}
         <Card className="glass border-yellow-500/30">
           <CardHeader>

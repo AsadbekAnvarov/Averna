@@ -597,7 +597,7 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-5">
       <p className="sr-only" aria-live="polite">
         {announcement}
       </p>

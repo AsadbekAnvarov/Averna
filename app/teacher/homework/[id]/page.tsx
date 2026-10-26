@@ -265,7 +265,7 @@ export default async function TeacherHomeworkDetailPage(props: { params: Promise
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-5xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
+      <div className="container mx-auto max-w-5xl px-4 py-4 sm:py-6 pb-8 lg:pb-6">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/teacher/homework", label: "Back to Homework" }}

@@ -141,7 +141,7 @@ export default function DailyChallengePage() {
             <CardContent className="py-10 space-y-4">
               <Trophy className="h-16 w-16 text-yellow-400 mx-auto" />
               {score >= Math.ceil(questions.length / 2) && <Confetti />}
-              <h2 className="text-3xl font-bold text-white">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">
                 You scored {score} / {questions.length}
               </h2>
               <p className="text-gray-300">

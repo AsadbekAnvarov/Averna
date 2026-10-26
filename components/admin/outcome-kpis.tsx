@@ -78,7 +78,7 @@ export async function OutcomeKpis() {
             className={`glass relative overflow-hidden ring-1 ${c.ring} border-transparent transition-transform duration-300 hover:-translate-y-1`}
           >
             <div className={`pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br ${c.glow} to-transparent blur-2xl`} />
-            <CardContent className="p-5 relative">
+            <CardContent className="p-4 sm:p-5 relative">
               <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${c.iconBg} mb-2`}>
                 <Icon className="h-5 w-5" />
               </div>

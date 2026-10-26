@@ -59,7 +59,7 @@ export default async function AdminAnalyticsPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-5xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
 
         <PageHeader
@@ -70,7 +70,7 @@ export default async function AdminAnalyticsPage() {
         />
 
         {/* Summary cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           <Stat icon={<Users className="h-4 w-4" />} label="Oʻquvchilar" value={students.length} color="text-averna-cyan" border="border-averna-cyan/30" />
           <Stat icon={<Layers className="h-4 w-4" />} label="Guruhlar" value={groups.length} color="text-averna-neon" border="border-averna-neon/30" />
           <Stat icon={<ClipboardCheck className="h-4 w-4" />} label="Davomat yozuvlari" value={attendance} color="text-averna-purple" border="border-averna-purple/30" />
@@ -79,14 +79,14 @@ export default async function AdminAnalyticsPage() {
 
         {/* Learning DNA — platforma boʻylab xatti-harakat tahlili (anonim).
             Oʻz maʼlumotini oʻzi yuklaydi, shuning uchun Suspense ichida. */}
-        <div className="mb-8">
+        <div className="mb-6">
           <Suspense fallback={<WidgetSkeleton rows={6} />}>
             <LearningDnaAnalytics />
           </Suspense>
         </div>
 
         {/* Growth chart */}
-        <Card className="glass border-averna-cyan/30 mb-8">
+        <Card className="glass border-averna-cyan/30 mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-averna-cyan">
               <TrendingUp className="h-5 w-5" /> Yangi oʻquvchilar (soʻnggi 6 oy)

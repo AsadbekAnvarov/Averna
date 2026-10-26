@@ -66,7 +66,7 @@ export async function TodayPanel({ teacherId }: { teacherId: string }) {
   return (
     <Card className="glass relative overflow-hidden border-averna-cyan/30">
       <div className="pointer-events-none absolute -top-16 -right-16 h-44 w-44 rounded-full bg-gradient-to-br from-averna-cyan/15 to-transparent blur-3xl" />
-      <CardContent className="p-6 relative">
+      <CardContent className="p-4 sm:p-5 relative">
         <div className="flex items-center gap-2 text-averna-cyan mb-4">
           <CalendarClock className="h-5 w-5" />
           <h3 className="font-semibold">Up Next</h3>

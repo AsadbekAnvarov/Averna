@@ -67,7 +67,7 @@ export default async function TeacherProfilePage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-4xl">
         <TeacherHeader user={{ name: teacher.user.name ?? "Teacher", email: teacher.user.email, image: teacher.user.image }} />
 
         <PageHeader
@@ -78,12 +78,12 @@ export default async function TeacherProfilePage() {
         />
 
         {/* Avatar editor */}
-        <div className="mb-8">
+        <div className="mb-6">
           <AvatarEditor currentImage={teacher.user.image ?? null} name={teacher.user.name ?? "Teacher"} />
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5 mb-6">
           <Card className="glass border-averna-cyan/30">
             <CardHeader>
               <CardTitle className="text-sm flex items-center gap-2 text-averna-cyan">
@@ -117,7 +117,7 @@ export default async function TeacherProfilePage() {
         </div>
 
         {/* My Groups - detailed list with level & schedule */}
-        <Card className="glass border-averna-neon/30 mb-8">
+        <Card className="glass border-averna-neon/30 mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-averna-neon">
               <Layers className="h-5 w-5" />
@@ -161,7 +161,7 @@ export default async function TeacherProfilePage() {
             <CardTitle>Edit Profile &amp; Settings</CardTitle>
           </CardHeader>
           <CardContent>
-            <form action={updateTeacherProfile} className="space-y-6">
+            <form action={updateTeacherProfile} className="space-y-4 sm:space-y-5">
               <div className="space-y-2">
                 <Label htmlFor="name" className="flex items-center gap-2">
                   <User className="h-4 w-4" /> Full Name
@@ -239,17 +239,17 @@ export default async function TeacherProfilePage() {
         </Card>
 
         {/* Username */}
-        <div className="mt-8">
+        <div className="mt-6">
           <UsernameForm lang="en" initial={teacher.user.username ?? null} />
         </div>
 
         {/* Password */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ChangePasswordForm lang="en" email={teacher.user.email} username={teacher.user.username} />
         </div>
 
         {/* Top performers showcase */}
-        <div className="mt-8">
+        <div className="mt-6">
           <h2 className="text-2xl font-bold text-white mb-4">🏆 Hall of Fame</h2>
           <TopPerformers />
         </div>
