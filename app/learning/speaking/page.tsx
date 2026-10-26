@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowRight, Bot, ClipboardList, Mic } from "lucide-react";
+import { ArrowRight, AudioLines, Bot, ClipboardList, Mic } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { isSpeakingTime } from "@/lib/utils";
@@ -32,6 +32,12 @@ const MORE = [
     icon: ClipboardList,
     title: "Full Speaking test",
     text: "The complete three-part interview.",
+  },
+  {
+    href: "/learning/pronunciation",
+    icon: AudioLines,
+    title: "Pronunciation",
+    text: "Say a sentence out loud and get it scored.",
   },
 ];
 
@@ -87,7 +93,7 @@ export default async function SpeakingPage() {
           <h2 id="speaking-more-title" className="mb-3 text-lg font-semibold text-white">
             More ways to practise
           </h2>
-          <ul role="list" className="grid gap-3 sm:grid-cols-3">
+          <ul role="list" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {MORE.map((m) => (
               <li key={m.href}>
                 <Link href={m.href} className="av-panel glow-hover group flex h-full min-h-[44px] flex-col gap-2 rounded-2xl p-4">

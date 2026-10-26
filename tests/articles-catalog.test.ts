@@ -38,10 +38,15 @@ describe("permanent article library", () => {
       expect(readFileSync(file, "utf8")).toContain('if (!session?.user) redirect("/auth/signin")');
     }
     expect(readFileSync("app/article/[slug]/page.tsx", "utf8")).toContain("if (!article) notFound()");
-    for (const file of ["components/layout/app-sidebar.tsx", "components/command-palette.tsx", "app/learning/page.tsx", "components/dashboard/daily-article.tsx"]) {
+    // Articles left the sidebar (idea 9, simpler navigation): the Learning Center
+    // hub, the dashboard card and ⌘K search are its entry points now.
+    for (const file of ["components/command-palette.tsx", "app/learning/page.tsx", "components/dashboard/daily-article.tsx"]) {
       const source = readFileSync(file, "utf8");
       expect(source).not.toContain('"Daily Article"');
       expect(source).toContain("Articles");
+    }
+    for (const file of ["components/layout/app-sidebar.tsx", "components/layout/portal-navigation.ts"]) {
+      expect(readFileSync(file, "utf8")).not.toContain('"Daily Article"');
     }
   });
 });

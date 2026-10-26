@@ -5,131 +5,24 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { cn, initialsOf } from "@/lib/utils";
-import {
-  LayoutDashboard,
-  PenTool,
-  BookOpen,
-  Headphones,
-  Mic,
-  Trophy,
-  Film,
-  MessageSquare,
-  User,
-  Zap,
-  AudioLines,
-  Layers,
-  UserCheck,
-  CalendarClock,
-  Gift,
-  CalendarDays,
-  Library,
-  Bot,
-  Notebook,
-  Settings,
-  GraduationCap,
-  Bell,
-  Menu,
-  X,
-  TrendingUp,
-  Sparkles,
-  Newspaper,
-  SpellCheck,
-  Dna,
-  Compass,
-  Search,
-  LayoutGrid,
-  Dumbbell,
-  type LucideIcon,
-} from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { avatarSrc } from "@/lib/avatars";
-
-type NavItem = { name: string; href: string; icon: LucideIcon; badge?: string; /** only active on this exact path */ exact?: boolean };
-type NavSection = { label: string; items: NavItem[] };
-import { ADMIN_NAV, TEACHER_NAV } from "@/components/layout/portal-navigation";
-
-// Five groups, in the order a student thinks about them. Merged pages
-// (Analytics → My Progress, Leagues/Team Challenge → Rankings, Achievements →
-// My Progress) redirect from their old URLs — see next.config.mjs.
-const STUDENT_NAV: NavSection[] = [
-  {
-    label: "Study",
-    items: [
-      { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-      { name: "Learning Center", href: "/learning", icon: LayoutGrid, exact: true },
-      { name: "Reading", href: "/learning/reading", icon: BookOpen },
-      { name: "Listening", href: "/learning/listening", icon: Headphones },
-      { name: "Writing", href: "/learning/writing", icon: PenTool },
-      { name: "Speaking", href: "/learning/speaking", icon: Mic },
-      { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
-      { name: "Grammar", href: "/grammar", icon: SpellCheck },
-      { name: "Vocabulary", href: "/flashcards", icon: Layers },
-    ],
-  },
-  {
-    label: "Practice",
-    items: [
-      { name: "Mock Exams", href: "/learning/mock-exam", icon: GraduationCap },
-      { name: "Placement Test", href: "/learning/placement", icon: Compass },
-      { name: "Daily Challenge", href: "/challenge", icon: Zap },
-      { name: "Practice Studio", href: "/studio", icon: Dumbbell },
-      { name: "Adventures", href: "/studio/adventures", icon: Compass, badge: "New" },
-      { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
-      { name: "AI Mentor", href: "/mentor", icon: Sparkles },
-      { name: "Articles", href: "/article", icon: Newspaper },
-      { name: "Movie Time", href: "/movies", icon: Film },
-    ],
-  },
-  {
-    label: "Progress",
-    items: [
-      { name: "My Progress", href: "/progress", icon: TrendingUp },
-      { name: "Learning DNA", href: "/learning-dna", icon: Dna, badge: "New" },
-      { name: "Rankings", href: "/rankings", icon: Trophy },
-      { name: "Rewards", href: "/rewards", icon: Gift },
-    ],
-  },
-  {
-    label: "Class",
-    items: [
-      { name: "Homework", href: "/homework", icon: Notebook },
-      { name: "My Schedule", href: "/schedule", icon: CalendarClock },
-      { name: "Calendar", href: "/calendar", icon: CalendarDays },
-      { name: "Materials", href: "/materials", icon: Library },
-      { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
-      { name: "Messages", href: "/messages", icon: MessageSquare },
-    ],
-  },
-  {
-    label: "Account",
-    items: [
-      { name: "Notifications", href: "/notifications", icon: Bell },
-      { name: "Profile", href: "/profile", icon: User },
-      { name: "Settings", href: "/settings", icon: Settings },
-    ],
-  },
-];
-
-
-function matches(pathname: string, item: NavItem): boolean {
-  if (item.href.includes("?")) return false; // query-only shortcuts must not highlight the whole dashboard
-  if (item.href === pathname) return true;
-  return !item.exact && pathname.startsWith(item.href + "/");
-}
+import {
+  ADMIN_NAV,
+  STUDENT_NAV,
+  TEACHER_NAV,
+  activeNavHref,
+  navBadge,
+  type PortalNavSection as NavSection,
+} from "@/components/layout/portal-navigation";
 
 /**
- * The single nav item to highlight: the most specific match wins, so
- * /teacher/homework/create lights up "Create Homework" only (not "Homework"
- * too), and /learning/reading lights up "Reading", not "Learning Center".
+ * The single nav item to highlight: the most specific (longest) matching
+ * route prefix wins — see activeNavHref in portal-navigation.ts.
  */
 function activeHref(pathname: string, sections: NavSection[]): string | null {
-  let best: string | null = null;
-  for (const section of sections) {
-    for (const item of section.items) {
-      if (matches(pathname, item) && (!best || item.href.length > best.length)) best = item.href;
-    }
-  }
-  return best;
+  return activeNavHref(pathname, sections.flatMap((s) => s.items));
 }
 
 function getNavForRole(role: string | undefined): { sections: NavSection[]; label: string; accent: string } {
@@ -302,9 +195,13 @@ export function AppSidebar() {
                 {section.items.map((item) => {
                   const Icon = item.icon;
                   const active = item.href === current;
+                  const badge = navBadge(item);
                   return (
+                    <div key={item.href}>
+                    {item.subgroup && (
+                      <div className="px-3 pb-1 pt-2 text-[11px] font-medium text-gray-500">{item.subgroup}</div>
+                    )}
                     <Link
-                      key={item.href}
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
@@ -321,12 +218,13 @@ export function AppSidebar() {
                         )}
                       />
                       <span className="truncate">{item.name}</span>
-                      {item.badge && (
+                      {badge && (
                         <span className="ml-auto text-[11px] leading-4 px-1.5 py-0.5 rounded-full bg-averna-primary/30 text-white">
-                          {item.badge}
+                          {badge}
                         </span>
                       )}
                     </Link>
+                    </div>
                   );
                 })}
               </div>

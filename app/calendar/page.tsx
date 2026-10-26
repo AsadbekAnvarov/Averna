@@ -5,7 +5,8 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, CalendarDays, Download } from "lucide-react";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight, CalendarDays, CalendarClock, Download } from "lucide-react";
 import { AccountNotice } from "@/components/account-notice";
 import { PageHeader } from "@/components/ui/page-header";
 import { PhoneMonth } from "@/components/calendar/phone-month";
@@ -117,12 +118,21 @@ export default async function CalendarPage(
           iconClassName="text-averna-cyan"
           title={<>My <span className="neon-text-cyan">Calendar</span></>}
           action={
-            <a
-              href="/api/calendar/ics"
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-averna-cyan/40 text-averna-cyan text-sm hover:bg-averna-cyan/10 transition-colors"
-            >
-              <Download className="h-4 w-4" /> Export (.ics)
-            </a>
+            <div className="flex flex-wrap gap-2">
+              {/* My Schedule (attendance + lessons) left the sidebar; it lives here now. */}
+              <Link
+                href="/schedule"
+                className="inline-flex min-h-[44px] items-center gap-2 px-3 py-2 rounded-lg border border-white/15 text-gray-200 text-sm hover:bg-white/5 transition-colors"
+              >
+                <CalendarClock className="h-4 w-4" /> My schedule
+              </Link>
+              <a
+                href="/api/calendar/ics"
+                className="inline-flex min-h-[44px] items-center gap-2 px-3 py-2 rounded-lg border border-averna-cyan/40 text-averna-cyan text-sm hover:bg-averna-cyan/10 transition-colors"
+              >
+                <Download className="h-4 w-4" /> Export (.ics)
+              </a>
+            </div>
           }
         />
 

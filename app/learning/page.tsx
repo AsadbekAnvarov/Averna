@@ -25,7 +25,7 @@ import { Reveal, RevealGroup } from "@/components/motion/reveal";
 import { kindLabels } from "@/components/library/badges";
 import { MockExamCard, SkillLibraryCard, type SkillCardData } from "@/components/library/hub-cards";
 import {
-  ArrowLeft, GraduationCap, Target, Mic, Bot, Trophy,
+  ArrowLeft, GraduationCap, Target, Mic, Compass, Trophy,
   Zap, Layers, Library, Newspaper, ClipboardList, SpellCheck, Sparkles,
 } from "lucide-react";
 
@@ -39,7 +39,7 @@ const ALSO = [
 
 const TESTS = [
   { href: "/learning/mock-exam", label: "Mock Exam", desc: "Full timed test", icon: Trophy, color: "bg-yellow-500/15 text-yellow-400" },
-  { href: "/learning/examiner", label: "AI Examiner", desc: "Speak, get a band", icon: Bot, color: "bg-averna-cyan/15 text-averna-cyan" },
+  { href: "/learning/placement", label: "Placement Test", desc: "Find your level", icon: Compass, color: "bg-averna-cyan/15 text-averna-cyan" },
   { href: "/challenge", label: "Daily Challenge", desc: "Quick daily quiz", icon: Zap, color: "bg-averna-purple/15 text-averna-purple" },
   { href: "/materials", label: "Materials", desc: "Guides & word lists", icon: Library, color: "bg-averna-pink/15 text-averna-pink" },
 ];
@@ -260,7 +260,7 @@ export default async function LearningCenterPage() {
         </RevealGroup>
 
         <Reveal>
-          <SectionHeader icon={Trophy} title="Tests & Tools" subtitle="Exams, guides and AI help" accent="text-averna-neon" />
+          <SectionHeader icon={Trophy} title="Tests & Tools" subtitle="Exams, a level check and study guides" accent="text-averna-neon" />
         </Reveal>
         <RevealGroup as="ul" role="list" className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
           {TESTS.map((t) => (
