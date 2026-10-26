@@ -43,7 +43,9 @@ Functions Storage grew because of two multipliers:
 - set the project env var `AVERNA_FORCE_PREVIEW=1` (Preview environment) while you need
   previews for every push.
 
-Deploy hooks, `vercel` CLI deploys and manual redeploys (no commit message) always build.
+The tag matches anywhere in the message, body included, so don't quote it literally in a
+commit that only describes this feature. Deploy hooks, `vercel` CLI deploys and manual
+redeploys (no commit message) always build.
 Run `node scripts/vercel-ignore-build.mjs` with `VERCEL_ENV` / `VERCEL_GIT_COMMIT_MESSAGE`
 set to check a case locally (exit 1 = build, 0 = skip).
 
