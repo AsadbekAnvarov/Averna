@@ -97,6 +97,12 @@ export const XP_CONFIG = {
     typedMultiplier: 0.5,
   },
 
+  /**
+   * A finished 1-on-1 peer speaking session (both rounds, docs/peer-speaking.md), by
+   * format — roughly in line with its length (~25 / 10 / 12 / 15 minutes). Daily budget applies.
+   */
+  peerSpeaking: { exam: 60, quick: 25, conversation: 30, debate: 35 } as Record<string, number>,
+
   /** Full mock exam sections pay a little more: they are timed, mixed practice. */
   mock: { sectionMultiplier: 1.2 },
 

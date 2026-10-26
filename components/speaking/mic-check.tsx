@@ -18,7 +18,14 @@ const LABEL: Record<MicState, string> = {
  * Mic check before matching: asks for permission, shows a live level meter, and
  * stops the microphone again when done or unmounted. Nothing is recorded or sent.
  */
-export function MicCheck({ onChange }: { onChange?: (state: MicState) => void }) {
+export function MicCheck({
+  onChange,
+  stream: shared,
+}: {
+  onChange?: (state: MicState) => void;
+  /** A live mic stream to meter instead of asking again (the peer room's call); never stopped here. */
+  stream?: MediaStream | null;
+}) {
   const [state, setState] = useState<MicState>("unknown");
   const [level, setLevel] = useState(0);
   const stop = useRef<() => void>(() => {});
@@ -43,10 +50,12 @@ export function MicCheck({ onChange }: { onChange?: (state: MicState) => void })
 
   const check = async () => {
     stop.current();
-    if (!navigator.mediaDevices?.getUserMedia) return update("unsupported");
+    const reuse = !!shared && shared.getAudioTracks().some((t) => t.readyState === "live");
+    if (!reuse && !navigator.mediaDevices?.getUserMedia) return update("unsupported");
     update("checking");
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+      const stream =
+        reuse && shared ? shared : await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
       const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       const ctx = new Ctx();
       const analyser = ctx.createAnalyser();
@@ -77,7 +86,7 @@ export function MicCheck({ onChange }: { onChange?: (state: MicState) => void })
       };
       stop.current = () => {
         cancelAnimationFrame(frame);
-        stream.getTracks().forEach((t) => t.stop());
+        if (!reuse) stream.getTracks().forEach((t) => t.stop());
         ctx.close().catch(() => undefined);
         setLevel(0);
         stop.current = () => {};

@@ -4,14 +4,17 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { boundedJson } from "@/lib/security/json-body";
 import { trustedMutation } from "@/lib/security/same-origin";
+import { awardPeerSession, peerSessionAward } from "@/lib/speaking/peer-xp";
 import { applyVersioned, isDone, isPeerSessionState, isSessionAction, type Seat } from "@/lib/speaking/session";
+import { finishedNaturally, sessionView, type SessionRoomRow } from "@/lib/speaking/session-view";
 
 export const dynamic = "force-dynamic";
 
 /**
  * Peer speaking room session (docs/peer-speaking.md §4). Members only.
- *   GET                       → SessionView
- *   POST { action, version }  → { state, version, changed } | 409 { error, state, version } on a stale version
+ *   GET                       → SessionView (+ `xp` once the session finished naturally)
+ *   POST { action, version }  → { state, version, changed, xp? } | 409 { error, state, version } on a stale version
+ * The POST that finishes both rounds awards SPEAKING_SESSION_COMPLETED XP to both students.
  */
 
 type Params = { params: Promise<{ roomId: string }> };
@@ -19,50 +22,17 @@ type Params = { params: Promise<{ roomId: string }> };
 const reply = (body: unknown, status = 200) =>
   NextResponse.json(body, { status, headers: { "Cache-Control": "private, no-store", Vary: "Cookie" } });
 
-type RoomRow = {
-  id: string;
-  topic: string;
-  format: string;
-  status: string;
-  state: unknown;
-  version: number;
-  studentAId: string;
-  studentAName: string;
-  studentBId: string;
-  studentBName: string;
-};
-
 /** The caller's seat in the room, or a ready error response. */
 async function member(roomId: string) {
   const session = await auth();
   if (!session?.user) return { fail: reply({ error: "Please sign in again.", code: "auth" }, 401) } as const;
   if (!/^[A-Za-z0-9_-]{1,64}$/.test(roomId)) return { fail: reply({ error: "Invalid room" }, 400) } as const;
   const student = await db.student.findUnique({ where: { userId: session.user.id }, select: { id: true } });
-  const room = (await db.speakingRoom.findUnique({ where: { id: roomId } })) as RoomRow | null;
+  const room = (await db.speakingRoom.findUnique({ where: { id: roomId } })) as SessionRoomRow | null;
   if (!room) return { fail: reply({ error: "Room not found" }, 404) } as const;
   const seat: Seat | null = !student ? null : room.studentAId === student.id ? "A" : room.studentBId === student.id ? "B" : null;
-  if (!seat) return { fail: reply({ error: "Not your room" }, 403) } as const;
-  return { room, seat } as const;
-}
-
-function view(room: RoomRow, seat: Seat) {
-  const state = isPeerSessionState(room.state) ? room.state : null;
-  const person = (s: Seat) => ({
-    seat: s,
-    firstName: s === "A" ? room.studentAName : room.studentBName,
-    level: state ? state.levels[s] : null,
-  });
-  return {
-    roomId: room.id,
-    status: room.status,
-    format: room.format,
-    topic: room.topic,
-    state,
-    version: room.version,
-    serverNow: Date.now(),
-    me: person(seat),
-    partner: person(seat === "A" ? "B" : "A"),
-  };
+  if (!seat || !student) return { fail: reply({ error: "Not your room" }, 403) } as const;
+  return { room, seat, studentId: student.id } as const;
 }
 
 export async function GET(_request: Request, { params }: Params) {
@@ -70,7 +40,9 @@ export async function GET(_request: Request, { params }: Params) {
     const { roomId } = await params;
     const m = await member(roomId);
     if (m.fail) return m.fail;
-    return reply(view(m.room, m.seat));
+    const state = isPeerSessionState(m.room.state) ? m.room.state : null;
+    const xp = finishedNaturally(state) ? await peerSessionAward(m.room.id, m.studentId).catch(() => null) : null;
+    return reply(sessionView(m.room, m.seat, Date.now(), xp));
   } catch (e) {
     console.error("Speaking session read failed", e instanceof Error ? e.name : "unknown");
     return reply({ error: "Session unavailable right now." }, 503);
@@ -115,10 +87,19 @@ export async function POST(request: Request, { params }: Params) {
       },
     });
     if (saved.count !== 1) {
-      const latest = (await db.speakingRoom.findUnique({ where: { id: room.id } })) as RoomRow | null;
+      const latest = (await db.speakingRoom.findUnique({ where: { id: room.id } })) as SessionRoomRow | null;
       return reply({ error: "The session moved on — refresh.", state: latest?.state ?? null, version: latest?.version ?? room.version }, 409);
     }
     if (done) await db.speakingQueue.deleteMany({ where: { roomId: room.id } }).catch(() => undefined);
+
+    // Only the one write that finished both rounds gets here; the idempotency keys
+    // make any repeat a no-op. `end` (endedBy set) earns nothing.
+    if (done && finishedNaturally(next.state)) {
+      const durationSec = room.createdAt instanceof Date ? Math.max(0, Math.round((now - room.createdAt.getTime()) / 1000)) : null;
+      const award = (studentId: string) => awardPeerSession({ roomId: room.id, studentId, format: next.state.format, durationSec });
+      const [a, b] = await Promise.all([award(room.studentAId), award(room.studentBId)]);
+      return reply({ state: next.state, version: next.version, changed: true, xp: seat === "A" ? a : b });
+    }
     return reply({ state: next.state, version: next.version, changed: true });
   } catch (e) {
     console.error("Speaking session update failed", e instanceof Error ? e.name : "unknown");

@@ -1,8 +1,9 @@
 # Peer speaking (1-on-1 between students)
 
 The contract for the three phases. **Phase A** (done): hub, smart matching, session
-state machine, data model. **Phase B**: the room UI on the session API (voice call,
-phases, timers, prompts), XP. **Phase C**: peer feedback, report/block, teacher monitor.
+state machine, data model. **Phase B** (done, §7): the room UI on the session API (voice
+call, phases, timers, prompts, live helpers), XP. **Phase C**: peer feedback, report/block,
+teacher monitor.
 
 ## What it replaces
 
@@ -10,8 +11,8 @@ Before commit 7103f2a, `/learning/speaking` was `components/learning/speaking-ru
 solo Part 1/2/3 practice plus a "Find a Partner" button. The old `/api/speaking/match`
 paired the two oldest waiting students (FIFO, no level, no format, no heartbeat; a
 `PENDING` claim that could get stuck). Rooms at `/learning/speaking/room/[roomId]` had
-text chat (`/api/speaking/room`) and WebRTC voice (`components/speaking/voice-call.tsx`,
-signalled through `/api/speaking/signal`). **There was no time-window rule**: the page
+text chat (`/api/speaking/room`, removed in Phase B) and WebRTC voice (`components/speaking/voice-call.tsx`,
+now the `usePeerVoice` hook; signalled through `/api/speaking/signal`). **There was no time-window rule**: the page
 showed the Speaking Time schedule (19:00–21:00 Tashkent, `isSpeakingTime()`) but said
 "you can practise pairing any time". The new flow keeps that: matching is always open;
 Speaking Time only shows a "Speaking Time is live" badge.
@@ -111,12 +112,15 @@ durationSec, endedAt, endedBy, levels: {A,B}, content }` (times in epoch ms).
 
 **`/api/speaking/session/[roomId]`** (members only: 401/403/404; id `^[A-Za-z0-9_-]{1,64}$`):
 
-- `GET` → `{ roomId, status, format, topic, state | null, version, serverNow,
-  me: { seat, firstName, level }, partner: { seat, firstName, level } }`
-  (`state` is null for rooms made before formats existed).
-- `POST { action, version }` (same-origin) → `{ state, version, changed }`;
+- `GET` → `{ roomId, status, format, topic, state | null, version, serverNow, createdAt,
+  me: { seat, firstName, level }, partner: { seat, firstName, level }, xp }`
+  (`state` is null for rooms made before formats existed; `xp` = the caller's award once
+  the session finished naturally, else null). Shape: `lib/speaking/session-view.ts`.
+- `POST { action, version }` (same-origin) → `{ state, version, changed, xp? }`;
   409 `{ error, state, version }` when `version` is stale, another write won, or the room
-  ended; 400 on a bad body. Reaching done sets the room ENDED and deletes both queue rows.
+  ended; 400 on a bad body. Reaching done sets the room ENDED and deletes both queue rows;
+  a natural finish (`endedBy: null`) also awards XP to both students (§7) and returns the
+  caller's amount as `xp`.
 
 ## 5. Data model (schema.prisma + additive `prisma/sql/deploy.sql`)
 
@@ -130,24 +134,86 @@ durationSec, endedAt, endedBy, levels: {A,B}, content }` (times in epoch ms).
 
 ## 6. Safety baseline
 
-Students only queue/join; room, signal and session APIs check membership (room DELETE
-too, since Phase A); voice only; only first names + level are shown; nothing is
+Students only queue/join; the room page, signal and session APIs check membership; voice only; only first names + level are shown; nothing is
 recorded (said in the UI).
 
-## Notes for Phase B
+## 7. Phase B — the room (`/learning/speaking/room/[roomId]`)
 
-- Rebuild `/learning/speaking/room/[roomId]` on the session API; keep `VoiceCall`
-  (`isInitiator` = seat A). Drop the text chat and push-to-talk messages (voice only);
-  `/api/speaking/room` GET/POST can then go.
-- Lobby: each partner runs the mic check, then sends `ready`; `advancer(state)` sees
-  "Start". Poll GET every 2–3 s while visible; on 409 refetch.
-- XP: on natural completion award `SPEAKING_SESSION_COMPLETED` (in `BUDGETED_ACTIONS`,
-  lib/engine/xp-engine.ts) to both students via `awardXp` with
-  `idempotencyKey: "peer-speaking:<roomId>:<studentId>"`; not for `end` before round 2.
-- Partner never shows up: the lobby should offer "Leave" (`end`) after ~60 s.
+**Page** (server): signed-in students who are a member of the room only (teachers,
+parents, other students, bad ids and pre-format rooms get a friendly notice). Renders
+`components/speaking/peer-room.tsx` with the first `SessionView`.
+
+**Sync.** GET every **2 s** while the tab is visible (skipped when hidden; immediate fetch
+on `visibilitychange`), stopped once done. Actions POST with the current `version`; the
+reply (or a 409's `state`/`version`) is adopted, a 409 also triggers one refetch. Older
+versions from a slow GET are ignored. Clock: `offset = serverNow − request midpoint`;
+time left = `startAt + durationSec·1000 − (Date.now() + offset)`. When the **lead's** timer
+reaches 0 their client sends one action per state version (`lib/speaking/room-timer.ts
+#timeUpAction`): `next` for conversation cards and on a phase's last prompt, `skip` while a
+shared-timer part (Part 1 / Part 3) still has questions — time is up for the whole part.
+The other partner sees "Time is up — waiting for {lead}…".
+
+**Voice** (`components/speaking/use-peer-voice.ts`, the old `VoiceCall` as a hook):
+seat A offers, seat B answers, signalled through `/api/speaking/signal` with per-attempt
+`sid` + ICE-restart `gen` (stale signals ignored); B sends `hello` on (re)join. Signal
+polling: **1 s** while connecting/reconnecting, **5 s** after giving up (to notice the
+partner's Reconnect), **none** while connected (a closed data channel or `disconnected`
+resumes it). On `failed` or no connection within 25 s: one automatic ICE restart (B asks A
+with `restart`), then a "Reconnect" button. The mic is released on done, unmount and
+`pagehide`. ICE servers come from `/api/speaking/capabilities` → `iceServers`
+(`lib/speaking/ice.ts`): public STUN, plus TURN for students when `TURN_URLS`
+(comma-separated `turn:`/`turns:`), `TURN_USERNAME` and `TURN_CREDENTIAL` are all set.
+**Without TURN ~10–20% of mobile/CGNAT calls can fail; set TURN to fix.** The TURN
+credential is visible to signed-in students' browsers (WebRTC needs it): use a dedicated
+user with bandwidth limits (or short-lived credentials later).
+
+**Screens** (role-aware, from `currentPhase(state)` + `state.content`): lobby (mic check on
+the call's own stream, the partner's voice meter, ready per seat, "Start" for
+`advancer(state)`, "Leave" (= `end`) after 60 s with the partner not ready); exam/quick —
+the examiner gets the script (questions with "Next question", "Say: …" lines, cue card,
+follow-up, "Thank you, that's the end of Part N" on the last question or ≤ 20 s), the
+candidate only the cue card in Part 2 (with private notes) and "Listen to your examiner"
+otherwise; conversation — the card for both, "Next card" for the lead; debate — motion,
+side, whose turn, "Finish my turn", private rebuttal notes for the listener; swap; done —
+"Session complete" / "Session ended by {name}", duration, "+N XP", and
+`components/speaking/peer-feedback-slot.tsx` (placeholder for Phase C). Always: "End
+session" (confirm dialog), mute (≥ 44 px), connection pill, partner first name + level.
+Timers are announced at 1 min / 30 s / 0 and on each new phase (aria-live).
+
+**Live helpers** — client-side only, nothing recorded or uploaded by Averna:
+- Talk-time balance (`lib/speaking/talk-time.ts`): a VAD (RMS ≥ 0.025, 400 ms hangover)
+  on the own mic and on the partner's incoming stream, counted only in timed phases;
+  "You 55% · Bek 45%" per round (exam/quick) or overall (conversation/debate). In
+  conversation, > 70% of ≥ 45 s of talk in the last 2 minutes shows the dominant student
+  "Invite {partner} in — ask a follow-up question".
+- Phrase drawer (`lib/speaking/phrases.ts`): functional phrases by format/phase/role.
+- Own-speech captions (opt-in, hidden when unsupported): Web Speech API, `en-GB`, own mic
+  only, shown only to that student; words, words per minute (over own VAD speaking time)
+  and fillers (`lib/speaking/fluency.ts`). Transcript in memory only. The UI says the
+  browser's speech service may process audio online (Chrome does) and to turn captions
+  off if the partner can't hear them on a phone.
+
+**XP** (`lib/speaking/peer-xp.ts`): the POST that reaches done with `endedBy: null` awards
+both students `XP_CONFIG.peerSpeaking[format]` (exam 60, quick 25, conversation 30,
+debate 35) after the daily budget taper (`applyDailyBudget` over today's
+`BUDGETED_ACTIONS` XP), via `awardXp` (source `test`, ActivityLog
+`SPEAKING_SESSION_COMPLETED` written atomically with the ledger row) with
+`idempotencyKey: "peer-speaking:<roomId>:<studentId>"`. `end` at any time earns nothing.
+
+**Removed:** the room's text chat, emoji bar and push-to-talk, `/api/speaking/room`
+(GET/POST/DELETE — the hub leaves the queue with `/api/speaking/match` DELETE, the room
+ends with the session `end`), and `components/speaking/voice-call.tsx`. The
+`SpeakingMessage` table stays (old data). The solo runner is unchanged.
 
 ## Notes for Phase C
 
+- Replace `PeerFeedbackSlot` (props `roomId`, `partnerName`) on the done screen. The room
+  knows both seats; the API knows the student ids. An opt-in AI summary of the student's
+  own captions would need `hasOpenAI()` (lib/ai.ts) and an explicit consent step (the
+  transcript currently never leaves the browser).
+- `usePeerVoice` exposes a peer-to-peer data channel (`send`, `onMessage`) — unused so far.
+- `SpeakingSignal` rows are never cleaned up; a cron or the done transition could delete
+  a room's signals.
 - `POST` feedback/report/block endpoints (students in the room only; one feedback per
   room per student). A block also ends any shared ACTIVE room.
 - Teacher monitor `/teacher/speaking`: sessions of the teacher's groups (room ↔ students
