@@ -10,7 +10,7 @@ vi.mock("next/navigation", () => ({
 vi.mock("next-auth/react", () => ({ useSession: () => ({ status: "authenticated", data: { user: { id: "demo", role: m.role, name: "Demo user", email: "demo@example.test" } } }), signOut: vi.fn() }));
 vi.mock("@/lib/auth", () => ({ auth: m.auth }));
 vi.mock("@/components/theme/theme-provider", () => ({ useTheme: () => ({ mode: "dark", toggleMode: vi.fn() }) }));
-vi.mock("@/components/settings/settings-panel", () => ({ SettingsPanel: () => <p>Display settings</p> }));
+vi.mock("@/components/settings/settings-panel", () => ({ SettingsPanel: ({ account }: { account?: ReactNode }) => <>{account}<p>Display settings</p></> }));
 vi.mock("@/components/settings/telegram-connect", () => ({ TelegramConnect: () => <p>Telegram settings</p> }));
 vi.mock("next/link", () => ({ default: ({ href, children, ...rest }: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children?: ReactNode }) => <a href={href} {...rest}>{children}</a> }));
 import { STUDIO_TOOLS } from "@/components/studio/studio-tools";
@@ -52,6 +52,8 @@ describe("student account without Billing", () => {
   it("keeps profile and notifications, without a payments card in settings", async () => {
     const { container } = render(await SettingsPage());
     expect(container.querySelector('a[href="/billing"]')).toBeNull();
+    // Account is a collapsed group on phones: its header opens it.
+    fireEvent.click(screen.getByRole("button", { name: "Account" }));
     expect(screen.getByRole("link", { name: /Edit profile/ })).toBeTruthy();
     expect(screen.getByRole("link", { name: /Notifications/ })).toBeTruthy();
   });

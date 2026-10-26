@@ -10,7 +10,7 @@ import {
   GraduationCap, ClipboardCheck, NotebookPen, PlusCircle, Megaphone, BarChart3,
   Activity, ScrollText, Users, Command as CommandIcon, Settings, LogOut,
   Sun, Moon, SpellCheck, Sparkles, CornerDownLeft, ArrowUpDown,
-  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, AudioLines, HardDrive, type LucideIcon,
+  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, AudioLines, HardDrive, Glasses, type LucideIcon,
 } from "lucide-react";
 import { STUDIO_TOOLS } from "@/components/studio/studio-tools";
 import { COACH_TOOLS } from "@/components/coach/coach-tools";
@@ -89,6 +89,7 @@ export const STUDENT_COMMANDS: Cmd[] = [
   { group: "Me", label: "Team race", href: "/rankings/teams", icon: Users, keywords: "team challenge group goal", searchOnly: true },
   { group: "Me", label: "Profile", href: "/profile", icon: User, keywords: "my profile account avatar" },
   { group: "Me", label: "Settings", href: "/settings", icon: Settings, keywords: "preferences theme sound comfort" },
+  { group: "Me", label: "Reading comfort", href: "/settings#reading-comfort", icon: Glasses, keywords: "readable font dyslexia line spacing contrast reading ruler accessibility eyes", searchOnly: true },
   { group: "Me", label: "Offline library", href: "/offline", icon: HardDrive, keywords: "offline saved downloads device no internet connection packs save", searchOnly: true },
 ];
 
@@ -267,7 +268,18 @@ export function CommandPalette() {
       void wipeOfflineData().finally(() => signOut({ callbackUrl: "/auth/signin" }));
       return;
     }
-    if (cmd.href) { setOpen(false); router.push(cmd.href); }
+    if (cmd.href) {
+      setOpen(false);
+      // A section of the page we're on (/settings#reading-comfort on /settings): a client-side push
+      // changes the URL without a hashchange, so set the hash itself and let the page react to it.
+      const [path, hash] = cmd.href.split("#");
+      if (hash && path === pathname) {
+        if (window.location.hash === `#${hash}`) window.dispatchEvent(new HashChangeEvent("hashchange"));
+        else window.location.hash = hash;
+        return;
+      }
+      router.push(cmd.href);
+    }
   };
 
   if (hidden) return null;

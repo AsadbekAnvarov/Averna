@@ -15,6 +15,8 @@
  * Idea 8 (reading comfort, native-language hints) as student1 on the phone and on a desktop
  * (1280×800), suffixed /phone and /desktop. Each case clears every comfort key of
  * lib/comfort/prefs.ts before and after it, so no other check sees its settings:
+ *                    (Settings groups are disclosures and phones open only Display, so cases 5 and 6
+ *                    first open the groups they use from their headers — expandGroup.)
  *   5 comfort        /settings shows "Reading comfort"; Readable font, Line spacing "Loose", High
  *                    contrast and Text size "Large" put font-readable, leading-loose-ui,
  *                    contrast-high and text-scale-lg on <html>; with all of them on, /settings does
@@ -166,6 +168,23 @@ const clearComfort = (page) =>
       return had;
     }, COMFORT_KEYS)
     .catch(() => false);
+
+/**
+ * Opens a Settings group (components/settings/settings-group.tsx: `section#<id>` with a header
+ * button carrying aria-expanded). Phones start with only Display open; desktops with all open.
+ * Clicks only while aria-expanded is "false" (a click before hydration is retried); true when open.
+ */
+async function expandGroup(page, id) {
+  const button = page.locator(`section#${id} > h2 > button[aria-expanded]`);
+  if (!(await button.waitFor({ state: "visible", timeout: 30_000 }).then(() => true, () => false))) return false;
+  await until(() => isHydrated(button), 15_000);
+  for (let i = 0; i < 3; i++) {
+    if ((await button.getAttribute("aria-expanded")) !== "false") return true;
+    await button.click();
+    if (await until(async () => (await button.getAttribute("aria-expanded")) === "true", 5_000)) return true;
+  }
+  return false;
+}
 
 /** `open`, with the comfort keys cleared first (reloaded when any was set, so <html> starts clean). */
 async function openClean(context, path) {
@@ -354,6 +373,10 @@ async function caseComfort(context, { id, device }) {
     if (!(await heading.waitFor({ state: "visible", timeout: 30_000 }).then(() => true, () => false))) {
       return violation(id, "/settings shows no “Reading comfort” group");
     }
+    // Phones open only Display (Theme, Text size): Reading comfort opens from its header.
+    for (const group of ["display", "reading-comfort"]) {
+      if (!(await expandGroup(page, group))) return violation(id, `/settings: the “${group}” group does not open from its header`);
+    }
     const font = page.getByRole("switch", { name: /^Readable font/ });
     const controls = [
       ["Readable font", font, "aria-checked"],
@@ -447,6 +470,10 @@ async function caseRuler(context, { id, device }) {
   const page = await openClean(context, "/settings");
   try {
     const ruler = page.locator("[data-reading-ruler]");
+    // On phones Account and Reading comfort start collapsed: open them from their headers.
+    for (const group of ["account", "reading-comfort"]) {
+      if (!(await expandGroup(page, group))) return violation(id, `/settings: the “${group}” group does not open from its header`);
+    }
     const link = page.getByRole("link", { name: /Edit profile/ }).first();
     await link.waitFor({ state: "visible", timeout: 30_000 });
     await until(() => isHydrated(page.getByRole("switch", { name: /^Reading ruler/ })), 15_000);

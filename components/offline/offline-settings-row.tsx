@@ -30,16 +30,18 @@ export function OfflineSettingsRow() {
       ? `${usage.count} saved · ${formatBytes(usage.bytes)} of ${formatBytes(OFFLINE_CAP_BYTES)} on this device`
       : "Save flashcards, articles and Listening parts to use without a connection";
 
+  // id="offline": /settings#offline opens the Account group here (components/settings/settings-group.tsx).
+  // The description is one truncated line; the link's accessible name keeps all of it.
   return (
-    <Link href="/offline" className="flex items-center gap-4 p-4 hover:bg-white/[0.04] transition-colors">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-averna-primary/20 text-averna-neon">
+    <Link id="offline" href="/offline" className="flex items-center gap-3 p-3 transition-colors hover:bg-white/[0.04] sm:px-4">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-averna-primary/20 text-averna-neon">
         <HardDrive className="h-5 w-5" aria-hidden />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="font-semibold text-white text-sm">Offline library</p>
-        <p className="text-xs text-gray-400">{desc}</p>
+        <p className="text-sm font-semibold text-white">Offline library</p>
+        <p className="truncate text-xs text-gray-400">{desc}</p>
       </div>
-      <ChevronRight className="h-4 w-4 text-gray-500" aria-hidden />
+      <ChevronRight className="h-4 w-4 shrink-0 text-gray-500" aria-hidden />
     </Link>
   );
 }

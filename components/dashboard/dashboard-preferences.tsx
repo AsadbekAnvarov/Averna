@@ -156,7 +156,7 @@ export function DashboardPreferences() {
             />
 
             <Link
-              href="/settings"
+              href="/settings#reading-comfort"
               onClick={() => setOpen(false)}
               className="mt-4 flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-white/10 py-2.5 text-sm text-gray-300 transition-colors hover:border-white/20 hover:text-white"
             >

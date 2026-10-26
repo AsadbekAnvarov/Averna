@@ -22,9 +22,17 @@ const html = () => document.documentElement;
 
 beforeEach(() => {
   localStorage.clear();
+  sessionStorage.clear();
   html().className = "dark";
   primeStudentLevel(null);
 });
+
+/** Settings groups other than Display start collapsed on phones (jsdom has no desktop media query). */
+const expand = (name: string) => {
+  const header = screen.getByRole("button", { name });
+  if (header.getAttribute("aria-expanded") === "false") fireEvent.click(header);
+  expect(header.getAttribute("aria-expanded")).toBe("true");
+};
 afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
@@ -34,6 +42,7 @@ describe("Settings → Reading comfort", () => {
   it("switches the readable font, line spacing, contrast and ruler on <html> and in storage", () => {
     render(<SettingsPanel />);
     expect(screen.getByRole("heading", { name: "Reading comfort" })).toBeTruthy();
+    expand("Reading comfort");
 
     fireEvent.click(screen.getByRole("switch", { name: /Readable font/ }));
     expect(html().classList.contains("font-readable")).toBe(true);
@@ -59,10 +68,12 @@ describe("Settings → Reading comfort", () => {
     expect(ruler.getAttribute("aria-checked")).toBe("true");
   });
 
-  it("segmented buttons are 44 px tall on phones", () => {
+  it("segmented buttons and toggle rows are 44 px tall on phones", () => {
     render(<SettingsPanel />);
+    expand("Reading comfort");
     const loose = screen.getByRole("button", { name: "Loose" });
     expect(loose.className.split(/\s+/)).toEqual(expect.arrayContaining(["min-h-11", "sm:min-h-9"]));
+    expect(screen.getByRole("switch", { name: /High contrast/ }).className.split(/\s+/)).toContain("min-h-11");
   });
 
   it("shows native-language hints to students only, suggests the profile language and never switches it on", () => {
@@ -72,6 +83,7 @@ describe("Settings → Reading comfort", () => {
 
     render(<SettingsPanel student={{ level: "B2", nativeLanguage: "Uzbek" }} />);
     expect(screen.getByRole("heading", { name: "Native-language hints" })).toBeTruthy();
+    expand("Native-language hints");
     expect(screen.getByText(/Your profile says Uzbek/)).toBeTruthy();
     expect(screen.getByRole("button", { name: "Off" }).getAttribute("aria-pressed")).toBe("true");
     expect(localStorage.getItem("averna_l1")).toBeNull();

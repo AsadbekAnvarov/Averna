@@ -326,7 +326,7 @@ export function TelegramPanel({ initial }: { initial: TelegramAdminStatus | null
               <>
                 {" "}
                 — avval{" "}
-                <Link href="/settings" className="text-averna-cyan hover:underline">
+                <Link href="/settings#telegram" className="text-averna-cyan hover:underline">
                   Settings → Telegram
                 </Link>{" "}
                 orqali ulaning
