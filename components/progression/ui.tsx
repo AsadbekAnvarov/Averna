@@ -78,7 +78,7 @@ export function XpChip({ xp, className }: { xp: number; className?: string }) {
 /** The standard progression surface. */
 export function Panel({ children, className, as: Tag = "section", labelledBy }: { children: React.ReactNode; className?: string; as?: "section" | "div"; labelledBy?: string }) {
   return (
-    <Tag aria-labelledby={labelledBy} className={cn("av-panel rounded-2xl p-5 sm:p-6", className)}>
+    <Tag aria-labelledby={labelledBy} className={cn("av-panel rounded-2xl p-3.5 sm:p-6", className)}>
       {children}
     </Tag>
   );
@@ -86,7 +86,7 @@ export function Panel({ children, className, as: Tag = "section", labelledBy }: 
 
 export function PanelTitle({ id, icon: Icon, title, hint, action }: { id?: string; icon?: LucideIcon; title: string; hint?: string; action?: React.ReactNode }) {
   return (
-    <div className="mb-4 flex items-start justify-between gap-3">
+    <div className="mb-3 flex items-start justify-between gap-3 sm:mb-4">
       <div className="min-w-0">
         <h2 id={id} className="flex items-center gap-2 text-base font-semibold text-white">
           {Icon && <Icon className="h-4 w-4 text-averna-neon" aria-hidden />}

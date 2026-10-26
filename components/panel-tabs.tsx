@@ -115,7 +115,7 @@ export function PanelTabs({
         </div>
       </div>
 
-      <div key={active} className="tab-stagger space-y-4 sm:space-y-5">
+      <div key={active} className="tab-stagger space-y-3 sm:space-y-5">
         {content[active]}
       </div>
     </div>

@@ -113,7 +113,7 @@ export function DashboardTabs({ children }: { children: ReactNode }) {
         key={active}
         aria-label={TAB_META[active].label}
         aria-busy={isPending || undefined}
-        className={cn("tab-stagger space-y-4 sm:space-y-5 transition-opacity duration-200", isPending && "opacity-60")}
+        className={cn("tab-stagger space-y-3 sm:space-y-5 transition-opacity duration-200", isPending && "opacity-60")}
       >
         {children}
       </section>

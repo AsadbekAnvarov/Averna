@@ -6,7 +6,7 @@ import "@/components/adventures/adventures.css";
 export function AdventuresEntry() {
   return (
     <section className="adventure-space" aria-labelledby="dashboard-adventures-title">
-      <div className="adv-card">
+      <div className="adv-card adv-entry">
         <p className="adv-kicker"><Compass size={20} aria-hidden="true" /> Six ways to practise English</p>
         <h2 id="dashboard-adventures-title">Adventures</h2>
         <p className="adv-muted">Stories, mysteries, debates and real voice recordings. Choose a short adventure and make English something you do.</p>

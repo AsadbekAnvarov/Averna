@@ -208,23 +208,24 @@ export function AppSidebar() {
             aria-label={uz ? "Menyuni ochish" : "Open navigation"}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(true)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-gray-200 hover:bg-white/5 active:scale-95 transition"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-gray-200 hover:bg-white/5 active:scale-95 transition"
           >
             <Menu className="h-5 w-5" />
           </button>
-          <Link href={homeHref} className="flex min-w-0 flex-1 items-center gap-2">
+          {/* 44 px tall tap target, vertically centred in the 3.5rem bar */}
+          <Link href={homeHref} className="inline-flex min-h-[44px] min-w-0 flex-1 items-center gap-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.png" alt="" width={28} height={28} className="h-7 w-7 rounded-md object-contain" />
             <span className="min-w-0 leading-tight">
               <span className="block text-[15px] font-bold text-white">Averna</span>
-              <span className={cn("block truncate text-[10px] uppercase tracking-wider", `text-${accent}`)}>{label}</span>
+              <span className={cn("block truncate text-[11px] uppercase tracking-wider", `text-${accent}`)}>{label}</span>
             </span>
           </Link>
           <button
             type="button"
             aria-label={uz ? "Qidirish" : "Search"}
             onClick={() => window.dispatchEvent(new Event("averna-command-palette"))}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-gray-200 hover:bg-white/5 active:scale-95 transition"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-gray-200 hover:bg-white/5 active:scale-95 transition"
           >
             <Search className="h-5 w-5" />
           </button>
@@ -259,13 +260,13 @@ export function AppSidebar() {
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-base font-bold text-white leading-tight">Averna</div>
-              <div className={cn("text-[10px] uppercase tracking-wider", `text-${accent}`)}>{label}</div>
+              <div className={cn("text-[11px] uppercase tracking-wider", `text-${accent}`)}>{label}</div>
             </div>
             <button
               type="button"
               aria-label={uz ? "Menyuni yopish" : "Close navigation"}
               onClick={() => setMobileOpen(false)}
-              className="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 hover:bg-white/5 hover:text-white"
+              className="lg:hidden -mr-1 inline-flex h-11 w-11 items-center justify-center rounded-lg text-gray-400 hover:bg-white/5 hover:text-white"
             >
               <X className="h-5 w-5" />
             </button>
@@ -321,7 +322,7 @@ export function AppSidebar() {
                       />
                       <span className="truncate">{item.name}</span>
                       {item.badge && (
-                        <span className="ml-auto text-[10px] px-1.5 py-0.5 rounded-full bg-averna-primary/30 text-white">
+                        <span className="ml-auto text-[11px] leading-4 px-1.5 py-0.5 rounded-full bg-averna-primary/30 text-white">
                           {item.badge}
                         </span>
                       )}

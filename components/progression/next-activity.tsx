@@ -14,7 +14,7 @@ export function NextActivity({ rec, title = "Averna recommends", compact = false
       <p className="mt-1 text-sm text-gray-200">{rec.reason}</p>
       <Link
         href={rec.href}
-        className="glow-hover mt-4 flex min-h-[64px] items-center gap-3 rounded-2xl border border-averna-neon/30 bg-white/[0.03] p-3.5 transition"
+        className="glow-hover mt-3 flex min-h-[56px] items-center gap-3 rounded-2xl border border-averna-neon/30 bg-white/[0.03] p-3 transition sm:mt-4 sm:min-h-[64px] sm:p-3.5"
       >
         <SkillIcon skill={rec.skill} />
         <div className="min-w-0 flex-1">

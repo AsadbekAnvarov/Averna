@@ -67,13 +67,13 @@ export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
           <CardDescription>Your pending assignments</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="text-center py-8 text-gray-400">
-            <PartyPopper className="h-12 w-12 mx-auto mb-3 text-averna-neon opacity-70" aria-hidden />
+          <div className="text-center py-5 sm:py-8 text-gray-400">
+            <PartyPopper className="h-9 w-9 sm:h-12 sm:w-12 mx-auto mb-2 sm:mb-3 text-averna-neon opacity-70" aria-hidden />
             <p className="font-semibold text-white">All caught up</p>
             <p className="text-sm mt-1">No homework right now. A short practice keeps your streak going.</p>
             <Link
               href="/learning"
-              className="mt-4 inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-averna-primary px-4 text-sm font-semibold text-white transition-colors hover:bg-averna-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon"
+              className="mt-3 sm:mt-4 inline-flex min-h-[44px] lg:min-h-[40px] items-center gap-1.5 rounded-lg bg-averna-primary px-4 text-sm font-semibold text-white transition-colors hover:bg-averna-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon"
             >
               Practice something
               <ArrowRight className="h-4 w-4" aria-hidden />
@@ -102,7 +102,7 @@ export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
                 : `${upcoming} pending assignment${upcoming !== 1 ? "s" : ""}`}
             </CardDescription>
           </div>
-          <Button asChild variant="ghost" size="sm" className="min-h-[36px] text-averna-neon hover:bg-averna-primary/20">
+          <Button asChild variant="ghost" size="sm" className="min-h-[44px] lg:min-h-[36px] text-averna-neon hover:bg-averna-primary/20">
             <Link href="/homework">
               View all
               <ChevronRight className="h-4 w-4 ml-1" aria-hidden />
@@ -111,7 +111,7 @@ export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <ul role="list" className="space-y-3">
+        <ul role="list" className="space-y-2 sm:space-y-3">
           {homework.map((hw) => {
             const due = dueState(hw.dueDate);
             const kind = isLibraryKind(hw.contentKind) ? hw.contentKind : null;
@@ -124,7 +124,7 @@ export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
             return (
               <li
                 key={hw.id}
-                className="relative p-4 rounded-lg border border-averna-primary/20 hover:border-averna-neon/50 transition-all duration-300 hover:shadow-neon-green bg-averna-dark/30"
+                className="relative p-3 sm:p-4 rounded-lg border border-averna-primary/20 hover:border-averna-neon/50 transition-all duration-300 hover:shadow-neon-green bg-averna-dark/30"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">
@@ -178,7 +178,7 @@ export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
                         {done.testId && (
                           <Link
                             href={examResultHref(kind, done.testId)}
-                            className="relative z-10 inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border border-white/10 px-3 text-xs text-gray-200 hover:border-averna-cyan/40 hover:text-white"
+                            className="relative z-10 inline-flex min-h-[44px] lg:min-h-[36px] items-center gap-1.5 rounded-lg border border-white/10 px-3 text-xs text-gray-200 hover:border-averna-cyan/40 hover:text-white"
                           >
                             <BarChart3 className="h-3.5 w-3.5" aria-hidden /> View result
                           </Link>
@@ -188,7 +188,7 @@ export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
                       <Link
                         href={startHref}
                         className={cn(
-                          "relative z-10 inline-flex min-h-[36px] items-center gap-1.5 rounded-lg px-3 text-xs font-semibold text-white transition-colors",
+                          "relative z-10 inline-flex min-h-[44px] lg:min-h-[36px] items-center gap-1.5 rounded-lg px-3 text-xs font-semibold text-white transition-colors",
                           "bg-averna-primary hover:bg-averna-light"
                         )}
                       >

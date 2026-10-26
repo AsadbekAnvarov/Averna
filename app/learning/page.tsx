@@ -51,16 +51,16 @@ function Tile({ item }: { item: TileItem }) {
   return (
     <Link
       href={item.href}
-      className="av-panel glow-hover group flex h-full min-h-[44px] flex-col items-center gap-2.5 rounded-2xl p-4 text-center"
+      className="av-panel glow-hover group flex h-full min-h-[44px] flex-row items-center gap-2.5 rounded-2xl p-3 text-left sm:flex-col sm:p-4 sm:text-center"
     >
       <span
         aria-hidden
-        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${item.color} transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl sm:h-12 sm:w-12 ${item.color} transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
       >
-        <Icon className="h-6 w-6" />
+        <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
       </span>
       <span className="block w-full min-w-0">
-        <span className="block truncate text-sm font-semibold text-white">{item.label}</span>
+        <span className="block text-sm font-semibold leading-snug text-white sm:truncate">{item.label}</span>
         <span className="block truncate text-[11px] text-gray-400">{item.desc}</span>
       </span>
     </Link>
@@ -173,7 +173,7 @@ export default async function LearningCenterPage() {
         {/* Hero */}
         <section
           aria-labelledby="learning-hero-title"
-          className="av-panel av-panel-hero relative isolate mb-6 overflow-hidden rounded-3xl px-5 pb-8 pt-3 sm:px-10 sm:pb-12 sm:pt-6"
+          className="av-panel av-panel-hero relative isolate mb-4 overflow-hidden rounded-3xl px-4 pb-5 pt-2 sm:mb-6 sm:px-10 sm:pb-12 sm:pt-6"
         >
           <Aurora />
           <Link
@@ -183,20 +183,20 @@ export default async function LearningCenterPage() {
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Dashboard
           </Link>
-          <p className="mt-4 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">
+          <p className="mt-2 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon sm:mt-4">
             <GraduationCap className="h-4 w-4" aria-hidden />
             Learning Center
           </p>
           <h1
             id="learning-hero-title"
-            className="mt-3 max-w-2xl text-2xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl"
+            className="mt-2 max-w-2xl text-2xl font-bold leading-[1.1] tracking-tight text-white sm:mt-3 sm:text-4xl lg:text-5xl"
           >
             Real IELTS practice, every day
           </h1>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
+          <p className="mt-2 max-w-xl text-base leading-snug text-gray-300 sm:mt-4 sm:text-lg sm:leading-relaxed">
             Full papers in the real computer-delivered format — timed like test day and scored on the IELTS band scale.
           </p>
-          <ul role="list" aria-label="What you get" className="mt-6 flex flex-wrap gap-2">
+          <ul role="list" aria-label="What you get" className="mt-3 flex flex-wrap gap-1.5 sm:mt-6 sm:gap-2">
             {HERO_FACTS.map((f) => (
               <li
                 key={f}
@@ -213,14 +213,14 @@ export default async function LearningCenterPage() {
         <Reveal>
           <SectionHeader icon={Target} title="Choose a skill" subtitle="Full exam papers or short, focused practice" accent="text-averna-neon" />
         </Reveal>
-        <RevealGroup as="ul" role="list" className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <RevealGroup as="ul" role="list" className="mb-4 grid grid-cols-1 gap-2.5 sm:mb-6 sm:grid-cols-2 sm:gap-4">
           {skills.map((s) => (
             <SkillLibraryCard key={s.skill} data={s} />
           ))}
         </RevealGroup>
 
         {/* Full mock */}
-        <Reveal className="mb-10">
+        <Reveal className="mb-6 sm:mb-10">
           <MockExamCard />
         </Reveal>
 
@@ -229,7 +229,7 @@ export default async function LearningCenterPage() {
             <FirstRunGuide name={session.user.name} />
           </Reveal>
         ) : (
-          <Reveal className="mb-6 grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-2">
+          <Reveal className="mb-4 grid grid-cols-1 gap-3 sm:mb-6 sm:gap-4 lg:gap-5 lg:grid-cols-2">
             <Suspense fallback={<WidgetSkeleton rows={3} />}>
               <BandProgress studentId={student.id} targetBand={student.targetBand} />
             </Suspense>
@@ -241,7 +241,7 @@ export default async function LearningCenterPage() {
 
         <Reveal>
           <SectionHeader icon={ClipboardList} title="Your Skill Journey" subtitle="Your level and next step in each IELTS skill" accent="text-averna-cyan" />
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <Suspense fallback={<WidgetSkeleton rows={2} />}>
               <SkillJourney studentId={student.id} targetBand={student.targetBand} />
             </Suspense>
@@ -251,7 +251,7 @@ export default async function LearningCenterPage() {
         <Reveal>
           <SectionHeader icon={Sparkles} title="Also Practise" subtitle="Round out your English beyond the four skills" accent="text-averna-purple" />
         </Reveal>
-        <RevealGroup as="ul" role="list" className="mb-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <RevealGroup as="ul" role="list" className="mb-4 grid grid-cols-2 gap-2.5 sm:mb-6 sm:gap-3 lg:grid-cols-4">
           {ALSO.map((s) => (
             <li key={s.href}>
               <Tile item={s} />
@@ -262,7 +262,7 @@ export default async function LearningCenterPage() {
         <Reveal>
           <SectionHeader icon={Trophy} title="Tests & Tools" subtitle="Exams, guides and AI help" accent="text-averna-neon" />
         </Reveal>
-        <RevealGroup as="ul" role="list" className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <RevealGroup as="ul" role="list" className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
           {TESTS.map((t) => (
             <li key={t.href}>
               <Tile item={t} />

@@ -214,8 +214,8 @@ export default async function AdminDashboard() {
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
 
         {/* Welcome banner */}
-        <div className="mb-5 animate-fade-in">
-          <div className="flex items-center justify-between gap-3 mb-3">
+        <div className="mb-3 sm:mb-5 animate-fade-in">
+          <div className="flex items-center justify-between gap-3 mb-2 sm:mb-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-averna-purple/10 border border-averna-purple/20 text-averna-purple text-xs font-medium">
               <ShieldCheck className="h-3.5 w-3.5" />
               Admin boshqaruv markazi
@@ -229,7 +229,7 @@ export default async function AdminDashboard() {
         </div>
 
         {/* What needs attention */}
-        <div className="mb-4">
+        <div className="mb-3 sm:mb-4">
           <Suspense fallback={<div className="h-10" />}>
             <AdminAttentionBar />
           </Suspense>
@@ -251,7 +251,7 @@ export default async function AdminDashboard() {
                 <Suspense fallback={<div className="h-32 rounded-2xl bg-white/5 animate-pulse" />}>
                   <OutcomeKpis />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <ActivityFeed />
                   <TeacherWorkload />
                 </div>

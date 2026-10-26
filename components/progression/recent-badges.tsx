@@ -26,17 +26,17 @@ export function RecentBadges({ badges, recent }: { badges: BadgeState[]; recent:
         title="Achievements"
         hint={`${earnedCount} of ${badges.length} milestones`}
         action={
-          <Link href="/progress/achievements" className="text-xs font-medium text-averna-neon hover:underline">
+          <Link href="/progress/achievements" className="-my-3 inline-flex min-h-[44px] shrink-0 items-center text-xs font-medium text-averna-neon hover:underline">
             View all
           </Link>
         }
       />
       {recent.length === 0 ? (
-        <p className="mb-4 rounded-xl border border-dashed border-white/15 p-3 text-sm text-gray-400">
+        <p className="mb-3 rounded-xl border border-dashed border-white/15 p-3 text-sm text-gray-400 sm:mb-4">
           No achievements yet. Complete your first activity to unlock one.
         </p>
       ) : (
-        <ul className="mb-4 grid grid-cols-2 gap-2.5">
+        <ul className="mb-3 grid grid-cols-2 gap-2.5 sm:mb-4">
           {recent.map((b) => (
             <li key={b.def.id} className="flex items-center gap-2.5 rounded-xl bg-white/[0.03] p-2.5">
               <SkillIcon skill={b.def.skill} className={cn("h-9 w-9 ring-1", TIER_RING[b.def.tier])} />

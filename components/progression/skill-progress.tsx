@@ -26,12 +26,12 @@ export function SkillProgress({
         title="Your four skills"
         hint={`Progress toward your target band ${targetBand.toFixed(1)}`}
         action={
-          <Link href="/progress" className="text-xs font-medium text-averna-neon hover:underline">
+          <Link href="/progress" className="-my-3 inline-flex min-h-[44px] shrink-0 items-center text-xs font-medium text-averna-neon hover:underline">
             See my progress
           </Link>
         }
       />
-      <ul className="space-y-4">
+      <ul className="space-y-3 sm:space-y-4">
         {profile.map((s) => {
           const tone = SKILL_TONE[s.skill];
           const TrendIcon = s.trend === "up" ? TrendingUp : s.trend === "down" ? TrendingDown : Minus;
@@ -44,7 +44,7 @@ export function SkillProgress({
                   <p className="flex items-center gap-2 text-sm font-medium text-white">
                     {s.label}
                     {weakest && (
-                      <span className="rounded-full bg-amber-400/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-300">
+                      <span className="rounded-full bg-amber-400/10 px-2 py-0.5 text-[11px] leading-4 font-semibold uppercase tracking-wide text-amber-300">
                         Focus
                       </span>
                     )}
@@ -67,7 +67,7 @@ export function SkillProgress({
           );
         })}
       </ul>
-      <p className="mt-5 border-t border-white/10 pt-4 text-sm text-gray-300">{insight}</p>
+      <p className="mt-3 border-t border-white/10 pt-3 text-sm text-gray-300 sm:mt-5 sm:pt-4">{insight}</p>
     </Panel>
   );
 }

@@ -39,7 +39,7 @@ export async function ProgressionHome({
   const p = await load(studentId);
   if (!p) {
     return (
-      <div className="space-y-4 md:space-y-6">
+      <div className="space-y-3 md:space-y-6">
         <ErrorPanel
           title="We couldn't load your mission."
           detail="Your progress is safe — this is only a display problem."
@@ -51,14 +51,14 @@ export async function ProgressionHome({
   }
 
   return (
-    <div className="space-y-4 md:space-y-6">
+    <div className="space-y-3 md:space-y-6">
       <Reveal>
         <TodayMission mission={p.mission} firstName={p.firstName} isNew={p.isNew} />
       </Reveal>
 
       <Reveal className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-3">
         <div className="lg:col-span-2">{homework}</div>
-        <div className="space-y-4 md:space-y-6">
+        <div className="space-y-3 md:space-y-6">
           <NextActivity rec={p.recommendation} />
           {aside}
         </div>

@@ -74,7 +74,7 @@ export function MobileNav({ role }: { role: Role }) {
               key={item.href}
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className="relative flex flex-1 flex-col items-center justify-center gap-1 px-1 py-2 text-[10px] transition-transform active:scale-95"
+              className="relative flex min-h-[44px] flex-1 flex-col items-center justify-center gap-1 px-1 py-2 text-[11px] leading-[14px] transition-transform active:scale-95"
             >
               {/* Top active indicator */}
               <span

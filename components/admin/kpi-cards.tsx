@@ -103,18 +103,18 @@ export async function AdminKpis() {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {cards.map((c) => {
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-5">
+      {cards.map((c, i) => {
         const Icon = c.icon;
         return (
           <Card
             key={c.label}
-            className={`glass relative overflow-hidden ring-1 ${c.ring} border-transparent transition-transform duration-300 hover:-translate-y-1`}
+            className={`glass relative overflow-hidden ring-1 ${c.ring} border-transparent transition-transform duration-300 hover:-translate-y-1 ${i === cards.length - 1 && cards.length % 2 === 1 ? "col-span-2 lg:col-span-1" : ""}`}
           >
             <div className={`pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br ${c.glow} to-transparent blur-2xl`} />
-            <CardContent className="p-4 sm:p-5 relative">
-              <div className="flex items-start justify-between mb-2">
-                <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${c.iconBg}`}>
+            <CardContent className="p-3 sm:p-5 relative">
+              <div className="flex items-start justify-between gap-1 mb-1.5 sm:mb-2">
+                <div className={`flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl ${c.iconBg}`}>
                   <Icon className="h-5 w-5" />
                 </div>
                 <TrendBadge value={c.delta} title="oʻtgan haftaga nisbatan" />
@@ -124,9 +124,9 @@ export async function AdminKpis() {
                 value={c.value}
                 prefix={c.prefix ?? ""}
                 suffix={c.suffix ?? ""}
-                className={`block text-3xl font-bold mt-1 ${c.accent}`}
+                className={`block text-2xl sm:text-3xl font-bold mt-0.5 sm:mt-1 ${c.accent}`}
               />
-              <div className="mt-3">
+              <div className="mt-2 sm:mt-3">
                 <Sparkline data={c.series} width={200} height={32} stroke={c.stroke} fill={c.fill} className="w-full" />
               </div>
             </CardContent>

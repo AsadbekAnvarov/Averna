@@ -5,7 +5,7 @@ import { Meter, Panel, PanelTitle, XpChip } from "./ui";
 
 function Row({ c }: { c: ChallengeState }) {
   return (
-    <Link href={c.def.href} className="glow-hover block rounded-2xl border border-white/10 bg-white/[0.02] p-3.5 transition">
+    <Link href={c.def.href} className="glow-hover block rounded-2xl border border-white/10 bg-white/[0.02] p-3 transition sm:p-3.5">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
@@ -22,7 +22,7 @@ function Row({ c }: { c: ChallengeState }) {
           <XpChip xp={c.def.xp} className="shrink-0" />
         )}
       </div>
-      <div className="mt-3 flex items-center gap-3">
+      <div className="mt-2 flex items-center gap-3 sm:mt-3">
         <Meter value={c.percent} label={`${c.def.title} progress`} size="sm" />
         <span className="shrink-0 text-xs text-gray-400">
           {c.current}/{c.target}
@@ -37,7 +37,7 @@ export function ChallengesCard({ daily, weekly }: { daily: ChallengeState; weekl
   return (
     <Panel labelledBy="challenges-title">
       <PanelTitle id="challenges-title" icon={Swords} title="Challenges" hint="Rewards are added automatically when you finish" />
-      <div className="space-y-2.5">
+      <div className="space-y-2 sm:space-y-2.5">
         <Row c={daily} />
         <Row c={weekly} />
       </div>

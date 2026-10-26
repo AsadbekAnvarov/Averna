@@ -56,18 +56,18 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
     <Card className="glass relative overflow-hidden border-averna-primary/30">
       <div className="absolute inset-0 animated-gradient opacity-60" />
       <div className={`pointer-events-none absolute -top-24 -right-20 h-60 w-60 rounded-full ${daypart.glow} blur-3xl transition-colors duration-1000`} />
-      <CardContent className="relative p-4 sm:p-6">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-6">
+      <CardContent className="relative p-3.5 sm:p-6">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-3 sm:gap-4 lg:gap-6">
           {/* Left: greeting + pills + quote */}
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-4 sm:gap-5">
+            <div className="flex items-center gap-3 sm:gap-5">
               <div className="relative shrink-0">
-                <div className="h-14 w-14 sm:h-20 sm:w-20 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shadow-lg shadow-averna-neon/20">
+                <div className="h-12 w-12 sm:h-20 sm:w-20 rounded-full overflow-hidden border-[3px] border-averna-neon/50 flex items-center justify-center bg-averna-dark shadow-lg shadow-averna-neon/20">
                   {image ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={image} alt={name ?? "Avatar"} className="h-full w-full object-cover" />
                   ) : (
-                    <span className="text-2xl sm:text-3xl font-bold text-averna-neon">{initials}</span>
+                    <span className="text-xl sm:text-3xl font-bold text-averna-neon">{initials}</span>
                   )}
                 </div>
                 {cosmetic && (
@@ -94,7 +94,7 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
             </div>
 
             {/* Stat pills */}
-            <div className="grid grid-cols-3 gap-2 mt-4 sm:flex sm:flex-wrap sm:gap-3 sm:mt-5">
+            <div className="grid grid-cols-3 gap-2 mt-3 sm:flex sm:flex-wrap sm:gap-3 sm:mt-5">
               {pills.map((p) => {
                 const Icon = p.icon;
                 return (
@@ -114,17 +114,17 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
             </div>
 
             {/* Daily quote */}
-            <div className="mt-4 flex items-start gap-2.5 border-t border-white/10 pt-3">
+            <div className="mt-3 flex items-start gap-2.5 border-t border-white/10 pt-2.5 sm:mt-4 sm:pt-3">
               <Quote className="h-4 w-4 sm:h-5 sm:w-5 text-averna-cyan shrink-0 mt-0.5" />
-              <p className="text-[13px] sm:text-sm leading-relaxed text-gray-200 italic">
+              <p className="text-[13px] leading-snug sm:text-sm sm:leading-relaxed text-gray-200 italic">
                 &ldquo;{displayQuote.text}&rdquo; <span className="text-gray-400 not-italic">— {displayQuote.author}</span>
               </p>
             </div>
           </div>
 
           {/* Right: Level ring (balances the layout) */}
-          <div className="flex lg:flex-col items-center gap-4 lg:gap-2 shrink-0 border-t border-white/10 pt-4 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-8">
-            <div className="relative h-20 w-20 sm:h-28 sm:w-28 shrink-0">
+          <div className="flex lg:flex-col items-center gap-3 sm:gap-4 lg:gap-2 shrink-0 border-t border-white/10 pt-3 sm:pt-4 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-8">
+            <div className="relative h-[72px] w-[72px] sm:h-28 sm:w-28 shrink-0">
               <svg viewBox="0 0 144 144" className="h-full w-full -rotate-90">
                 <circle cx="72" cy="72" r={R} fill="none" className="stroke-white/[0.08]" strokeWidth="10" />
                 <circle
@@ -142,7 +142,7 @@ export function DashboardHero({ name, image: rawImage, points, streak, globalRan
                 </defs>
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-[10px] uppercase tracking-wider text-gray-400">Level</span>
+                <span className="text-[11px] leading-tight uppercase tracking-wider text-gray-400">Level</span>
                 <span className="text-2xl sm:text-3xl font-bold neon-text leading-none animate-breathe">{level.level}</span>
               </div>
             </div>

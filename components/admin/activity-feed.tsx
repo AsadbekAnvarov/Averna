@@ -66,9 +66,9 @@ export async function ActivityFeed() {
               return (
                 <li
                   key={log.id}
-                  className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-white/5 transition-colors"
+                  className="flex items-start gap-2.5 p-2 sm:gap-3 sm:p-2.5 rounded-lg hover:bg-white/5 transition-colors"
                 >
-                  <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${color}`}>
+                  <div className={`flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-lg ${color}`}>
                     <Icon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -81,7 +81,7 @@ export async function ActivityFeed() {
                     )}
                   </div>
                   <div className="flex flex-col items-end gap-1 shrink-0">
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${badge}`}>{log.role}</span>
+                    <span className={`text-[11px] leading-4 px-1.5 py-0.5 rounded-full ${badge}`}>{log.role}</span>
                     <span className="text-[11px] text-gray-500">{timeAgo(log.createdAt)}</span>
                   </div>
                 </li>
