@@ -90,6 +90,11 @@ export async function DELETE(req: NextRequest) {
 
     const room = await db.speakingRoom.findUnique({ where: { id: roomId } });
     if (!room) return NextResponse.json({ ok: true });
+    // Only a member may end the room.
+    const student = await myStudent(user.id);
+    if (!student || (room.studentAId !== student.id && room.studentBId !== student.id)) {
+      return NextResponse.json({ error: "Not your room" }, { status: 403 });
+    }
 
     await db.speakingRoom.update({
       where: { id: roomId },

@@ -555,14 +555,24 @@ model RewardRedemption {
   @@map("reward_redemptions")
 }
 
+/// Peer speaking matchmaking (docs/peer-speaking.md). One row per waiting or
+/// just-matched student; `createdAt` is the join time, `lastSeenAt` the heartbeat.
 model SpeakingQueue {
   id          String   @id @default(cuid())
   studentId   String   @unique
+  /// First name only — the only identity a partner sees.
   studentName String
   roomId      String?
   topic       String?
+  /// exam | quick | conversation | debate
+  format      String   @default("conversation")
+  /// Band estimate 3.0–9.0 used for matching (lib/speaking/level.ts).
+  level       Float    @default(5)
+  groupId     String?
+  lastSeenAt  DateTime @default(now())
   createdAt   DateTime @default(now())
 
+  @@index([roomId, format, lastSeenAt])
   @@map("speaking_queue")
 }
 
@@ -574,10 +584,71 @@ model SpeakingRoom {
   studentBId   String
   studentBName String
   status       String    @default("ACTIVE") // ACTIVE | ENDED
+  /// exam | quick | conversation | debate ("conversation" for rooms made before formats existed)
+  format       String    @default("conversation")
+  /// Session state machine (lib/speaking/session.ts): phase, timers, roles, chosen content.
+  state        Json?
+  /// Optimistic-concurrency counter for `state`.
+  version      Int       @default(0)
+  /// Average band of the pair when matched.
+  level        Float?
   createdAt    DateTime  @default(now())
   endedAt      DateTime?
 
+  @@index([studentAId, createdAt])
+  @@index([studentBId, createdAt])
   @@map("speaking_rooms")
+}
+
+/// A student's 1–5 ratings of their partner after a peer session (Phase C).
+model SpeakingPeerFeedback {
+  id             String   @id @default(cuid())
+  roomId         String
+  fromStudentId  String
+  toStudentId    String
+  fluency        Int
+  lexical        Int
+  grammar        Int
+  pronunciation  Int
+  strength       String?
+  tip            String?
+  createdAt      DateTime @default(now())
+
+  @@unique([roomId, fromStudentId])
+  @@index([toStudentId, createdAt])
+  @@map("speaking_peer_feedback")
+}
+
+/// "Never match me with this student again" — honoured in both directions.
+model SpeakingBlock {
+  id        String   @id @default(cuid())
+  blockerId String
+  blockedId String
+  createdAt DateTime @default(now())
+
+  @@unique([blockerId, blockedId])
+  @@index([blockedId])
+  @@map("speaking_blocks")
+}
+
+/// A report about a peer session. Two OPEN reports pause the reported student's peer speaking.
+model SpeakingReport {
+  id           String    @id @default(cuid())
+  roomId       String
+  reporterId   String
+  reportedId   String
+  reason       String
+  note         String?
+  /// OPEN | RESOLVED
+  status       String    @default("OPEN")
+  createdAt    DateTime  @default(now())
+  resolvedAt   DateTime?
+  resolvedById String?
+
+  @@index([reportedId, status])
+  @@index([status, createdAt])
+  @@index([roomId])
+  @@map("speaking_reports")
 }
 
 model SpeakingMessage {
