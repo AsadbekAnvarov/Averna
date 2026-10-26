@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, BookOpen, Calendar, CheckCircle2, ChevronRight, Clock, PartyPopper } from "lucide-react";
 import Link from "next/link";
 import { cn, formatDate } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 import { homeworkCounts, type HomeworkCounts } from "@/lib/dashboard/homework";
 import { examHomeworkHref } from "@/lib/homework/exam-homework";
 import { EXAM_KIND_INFO, dueState, examHomeworkLabel, examResultHref, isLibraryKind } from "@/lib/homework/library-shared";
@@ -58,7 +59,7 @@ const getModuleColor = (module: string) => {
 export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
   if (homework.length === 0) {
     return (
-      <Card className="glass border-averna-primary/30 animate-fade-in">
+      <Card className={cn(DASH_CARD, "glass border-averna-primary/30 animate-fade-in")}>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-averna-neon" />
@@ -66,7 +67,7 @@ export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
           </CardTitle>
           <CardDescription>Your pending assignments</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className={DASH_CENTER}>
           <div className="text-center py-5 sm:py-8 text-gray-400">
             <PartyPopper className="h-9 w-9 sm:h-12 sm:w-12 mx-auto mb-2 sm:mb-3 text-averna-neon opacity-70" aria-hidden />
             <p className="font-semibold text-white">All caught up</p>
@@ -88,7 +89,7 @@ export function UpcomingHomework({ homework, counts }: UpcomingHomeworkProps) {
   const { overdue, upcoming } = counts ?? homeworkCounts(homework.filter((hw) => !hw.submission));
 
   return (
-    <Card className="glass border-averna-primary/30 animate-fade-in">
+    <Card className={cn(DASH_CARD, "glass border-averna-primary/30 animate-fade-in")}>
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>

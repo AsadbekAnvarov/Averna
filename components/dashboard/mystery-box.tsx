@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Gift, Sparkles, Lock, Star, Loader2 } from "lucide-react";
 import { fireConfetti } from "@/lib/confetti";
 import { COSMETICS, RARITY_META, cosmeticById, type Cosmetic } from "@/lib/cosmetics";
+import { cn } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 
 /**
  * F4 — Mystery Rewards (server-backed). A daily surprise box granting
@@ -82,13 +84,13 @@ export function MysteryBox() {
 
   if (loading) {
     return (
-      <Card className="glass border-averna-pink/30">
+      <Card className={cn(DASH_CARD, "glass border-averna-pink/30")}>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-averna-pink">
             <Gift className="h-5 w-5" /> Mystery Box
           </CardTitle>
         </CardHeader>
-        <CardContent className="h-32 flex items-center justify-center">
+        <CardContent className="flex-1 min-h-[8rem] flex items-center justify-center">
           <Loader2 className="h-5 w-5 animate-spin text-averna-pink" />
         </CardContent>
       </Card>
@@ -98,7 +100,7 @@ export function MysteryBox() {
   const openedToday = !canOpen && phase === "idle";
 
   return (
-    <Card className="glass border-averna-pink/30 relative overflow-hidden">
+    <Card className={cn(DASH_CARD, "glass border-averna-pink/30 relative overflow-hidden")}>
       <div className="pointer-events-none absolute -top-14 -right-14 h-48 w-48 rounded-full bg-averna-pink/10 blur-3xl" />
       <CardHeader>
         <CardTitle className="flex items-center justify-between text-averna-pink">
@@ -109,7 +111,8 @@ export function MysteryBox() {
         </CardTitle>
         <p className="text-xs text-gray-400">A daily surprise — cosmetic only, just for fun ✨</p>
       </CardHeader>
-      <CardContent className="space-y-4 relative">
+      {/* Centred in the space left when stretched to its row's height. */}
+      <CardContent className={cn(DASH_CENTER, "space-y-4 relative")}>
         <div className="text-center py-2">
           {phase === "revealed" && reward ? (
             <div className="animate-fade-in">

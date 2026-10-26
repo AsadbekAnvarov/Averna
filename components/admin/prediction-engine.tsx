@@ -1,5 +1,6 @@
 import { getPredictions } from "@/lib/admin-analytics";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { TrendingUp, TrendingDown, Minus, Sparkles } from "lucide-react";
 
 /**
@@ -12,7 +13,7 @@ export async function PredictionEngine() {
   const max = (s: number[]) => Math.max(1, ...s);
 
   return (
-    <Card className="glass border-averna-cyan/30 relative overflow-hidden">
+    <Card className={`${DASH_CARD} glass border-averna-cyan/30 relative overflow-hidden`}>
       <div className="pointer-events-none absolute -top-12 -right-12 h-44 w-44 rounded-full bg-averna-cyan/10 blur-3xl" />
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-cyan">

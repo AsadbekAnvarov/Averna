@@ -2,7 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { MessageSquare, CalendarClock, GraduationCap } from "lucide-react";
 import Link from "next/link";
 import { db } from "@/lib/db";
-import { parseSchedule, tashkentWeekday, WEEKDAY_NAMES, initialsOf } from "@/lib/utils";
+import { cn, parseSchedule, tashkentWeekday, WEEKDAY_NAMES, initialsOf } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 import { avatarSrc } from "@/lib/avatars";
 
 /**
@@ -36,8 +37,9 @@ export async function TeacherCard({ groupId }: { groupId: string | null }) {
   const initials = initialsOf(teacher.user.name);
 
   return (
-    <Card className="glass border-averna-cyan/30">
-      <CardContent className="p-5">
+    <Card className={cn(DASH_CARD, "glass border-averna-cyan/30")}>
+      {/* No header: top padding matches the Card header's (p-4 sm:p-5). Centred when stretched. */}
+      <CardContent className={cn(DASH_CENTER, "pt-4 sm:pt-5")}>
         <div className="flex items-center gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-averna-cyan/15 text-averna-cyan font-bold text-lg overflow-hidden shrink-0">
             {avatarSrc(teacher.user.image) ? (

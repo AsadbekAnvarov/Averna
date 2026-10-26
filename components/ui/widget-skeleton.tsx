@@ -1,12 +1,15 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { DASH_CARD } from "@/components/ui/dash-row";
 
 /**
  * Shimmer placeholder shown via <Suspense> while a heavy dashboard widget
  * streams in. Makes panels appear instantly instead of blocking on data.
+ * Wears the dashboard widget frame so a streaming row keeps its shape.
  */
 export function WidgetSkeleton({ rows = 4, title = true }: { rows?: number; title?: boolean }) {
   return (
-    <Card className="glass border-white/10">
+    <Card className={cn(DASH_CARD, "glass border-white/10")}>
       {title && (
         <CardHeader>
           <div className="skeleton h-5 w-40" />

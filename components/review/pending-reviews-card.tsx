@@ -6,6 +6,7 @@ import { queueHref, reviewHref } from "@/lib/review/filters";
 import { formatBand } from "@/lib/review/scoring";
 import { timeAgo } from "@/lib/utils";
 import { SkillIconBox, SourceBadge } from "@/components/review/review-badges";
+import { DASH_CARD } from "@/components/ui/dash-row";
 
 /**
  * "Reviews waiting" — a compact card for the teacher dashboard: how many
@@ -22,7 +23,7 @@ export async function PendingReviewsCard({ viewer }: { viewer: Viewer }) {
 
   const total = s.total;
   return (
-    <section aria-labelledby="pending-reviews-title" className="glass rounded-2xl border border-averna-pink/30 p-5">
+    <section aria-labelledby="pending-reviews-title" className={`${DASH_CARD} glass border-averna-pink/30 p-5`}>
       <div className="flex items-center justify-between gap-3">
         <h2 id="pending-reviews-title" className="flex items-center gap-2 text-lg font-semibold text-averna-pink">
           <ClipboardCheck className="h-5 w-5" aria-hidden />
@@ -72,13 +73,16 @@ export async function PendingReviewsCard({ viewer }: { viewer: Viewer }) {
         </>
       )}
 
-      <Link
-        href={queueHref()}
-        className="mt-3 inline-flex min-h-[40px] items-center gap-1 text-sm font-medium text-averna-pink hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-pink/60 rounded"
-      >
-        {total > 0 ? `Open the review queue (${total}${s.truncated ? "+" : ""})` : "Open the review queue"}
-        <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-      </Link>
+      {/* Footer link sits at the bottom of a stretched card. */}
+      <div className="mt-auto pt-3">
+        <Link
+          href={queueHref()}
+          className="inline-flex min-h-[40px] items-center gap-1 text-sm font-medium text-averna-pink hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-pink/60 rounded"
+        >
+          {total > 0 ? `Open the review queue (${total}${s.truncated ? "+" : ""})` : "Open the review queue"}
+          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+        </Link>
+      </div>
     </section>
   );
 }

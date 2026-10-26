@@ -1,5 +1,6 @@
 import { getTeacherAchievements } from "@/lib/teacher-intel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import { Medal, Lock } from "lucide-react";
 
 /**
@@ -12,7 +13,7 @@ export async function AchievementStudio({ teacherId }: { teacherId: string }) {
   const unlocked = achievements.filter((a) => a.unlocked).length;
 
   return (
-    <Card className="glass border-amber-500/30 relative overflow-hidden">
+    <Card className={`${DASH_CARD} glass border-amber-500/30 relative overflow-hidden`}>
       <div className="pointer-events-none absolute -top-14 -right-14 h-48 w-48 rounded-full bg-amber-500/10 blur-3xl" />
       <CardHeader>
         <CardTitle className="flex items-center justify-between">

@@ -1,5 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heart } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 
 interface Props {
   streak: number;
@@ -37,14 +39,15 @@ export function StudyPet({ streak, points }: Props) {
   const hearts = Math.min(5, Math.max(1, Math.ceil(streak / 3)));
 
   return (
-    <Card className="glass border-averna-pink/30 relative overflow-hidden">
+    <Card className={cn(DASH_CARD, "glass border-averna-pink/30 relative overflow-hidden")}>
       <div className="absolute inset-0 bg-gradient-to-br from-averna-pink/10 to-transparent" />
       <CardHeader className="relative">
         <CardTitle className="flex items-center gap-2 text-averna-pink">
           <Heart className="h-5 w-5" /> Study Buddy
         </CardTitle>
       </CardHeader>
-      <CardContent className="relative text-center">
+      {/* Centred in the space left when stretched to its row's height. */}
+      <CardContent className={cn(DASH_CENTER, "relative text-center")}>
         <div className="text-6xl mb-2 animate-float">{stage.emoji}</div>
         <p className="text-white font-bold">{stage.name}</p>
         <p className="text-xs text-gray-400 italic mb-3">&ldquo;{stage.mood}&rdquo;</p>

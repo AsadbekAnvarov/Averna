@@ -3,6 +3,8 @@ import { Radar as RadarIcon, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getStudentTests } from "@/lib/student-intel";
 import { EmptyState } from "@/components/ui/empty-state";
+import { cn } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 
 const MODULES = [
   { key: "WRITING", label: "Writing", href: "/learning/writing" },
@@ -53,13 +55,14 @@ export async function SkillRadar({ studentId }: { studentId: string }) {
   const rings = [0.25, 0.5, 0.75, 1];
 
   return (
-    <Card className="glass border-averna-purple/30">
+    <Card className={cn(DASH_CARD, "glass border-averna-purple/30")}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-purple">
           <RadarIcon className="h-5 w-5" /> Skill Radar
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      {/* The radar stays top-aligned; the empty state is centred when stretched. */}
+      <CardContent className={tested.length === 0 ? DASH_CENTER : undefined}>
         {tested.length === 0 ? (
           <EmptyState
             icon={RadarIcon}

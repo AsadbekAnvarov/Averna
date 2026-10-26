@@ -941,6 +941,21 @@ html.light .aurora-bg::after {
 
 
 /* ===================================================================== */
+/* ===== Even dashboard rows (components/ui/dash-row.tsx) =============== */
+/* ===================================================================== */
+/*
+ * Every cell of a side-by-side widget row is as tall as the tallest card in
+ * that row, so frames line up. A wrapper div (e.g. <div data-gamified>) passes
+ * the height on to its single card, and a cell whose widget rendered nothing
+ * takes no space.
+ */
+.dash-row { align-items: stretch; }
+.dash-row > * { min-width: 0; height: 100%; }
+.dash-row > :not(.dash-card):only-child,
+.dash-row > * > :only-child { height: 100%; }
+.dash-row > :empty { display: none; }
+
+/* ===================================================================== */
 /* ===== Progression surfaces & the green-glow system =================== */
 /* ===================================================================== */
 /*

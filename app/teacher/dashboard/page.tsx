@@ -43,6 +43,7 @@ import { PanelTabs } from "@/components/panel-tabs";
 import { SectionHeader } from "@/components/ui/section-header";
 import { LiveRefresh } from "@/components/ui/live-refresh";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
+import { DashRow } from "@/components/ui/dash-row";
 import { CalendarClock as CalendarClockIcon, LayoutGrid, Zap } from "lucide-react";
 
 export default async function TeacherDashboard() {
@@ -328,7 +329,7 @@ export default async function TeacherDashboard() {
                 </Suspense>
                 <div>
                   <SectionHeader icon={CheckSquare} title="Needs Action" subtitle="Grade work and keep your groups in the loop" accent="text-amber-400" />
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
+                  <DashRow className="gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                     <Suspense fallback={<WidgetSkeleton rows={4} />}>
                       <GradingInbox teacherId={teacher.id} />
                     </Suspense>
@@ -338,7 +339,7 @@ export default async function TeacherDashboard() {
                     <div className="lg:col-span-2">
                       <GroupBroadcast groups={groupOptions} />
                     </div>
-                  </div>
+                  </DashRow>
                 </div>
               </>
             ),
@@ -349,14 +350,14 @@ export default async function TeacherDashboard() {
                   <div className="space-y-4 sm:space-y-5">
                     <LessonBuilder />
                     <SmartEssayReview />
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
+                    <DashRow className="gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                       <Suspense fallback={<WidgetSkeleton rows={3} />}>
                         <FutureClassSimulatorSection teacherId={teacher.id} />
                       </Suspense>
                       <Suspense fallback={<WidgetSkeleton rows={3} />}>
                         <TeacherTwinSection teacherId={teacher.id} />
                       </Suspense>
-                    </div>
+                    </DashRow>
                   </div>
                 </div>
                 {quickActions}
@@ -377,14 +378,14 @@ export default async function TeacherDashboard() {
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
                   <StudentRadar teacherId={teacher.id} />
                 </Suspense>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 items-stretch [&>*]:h-full">
+                <DashRow className="gap-4 lg:gap-5 items-stretch [&>*]:h-full">
                   <Suspense fallback={<WidgetSkeleton rows={4} />}>
                     <TeachingDNA teacherId={teacher.id} />
                   </Suspense>
                   <Suspense fallback={<WidgetSkeleton rows={4} />}>
                     <AchievementStudio teacherId={teacher.id} />
                   </Suspense>
-                </div>
+                </DashRow>
                 <Suspense fallback={<WidgetSkeleton rows={4} />}>
                   <LessonReflectionSection teacherId={teacher.id} />
                 </Suspense>

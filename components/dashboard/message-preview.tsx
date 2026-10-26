@@ -2,7 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageSquare, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { db } from "@/lib/db";
-import { timeAgo, initialsOf } from "@/lib/utils";
+import { cn, timeAgo, initialsOf } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 import { EmptyState } from "@/components/ui/empty-state";
 
 /**
@@ -47,7 +48,7 @@ export async function MessagePreview({ userId }: { userId: string }) {
   }
 
   return (
-    <Card className="glass border-averna-cyan/30">
+    <Card className={cn(DASH_CARD, "glass border-averna-cyan/30")}>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-averna-cyan">
@@ -58,7 +59,8 @@ export async function MessagePreview({ userId }: { userId: string }) {
           </Link>
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      {/* The list stays top-aligned; the empty state is centred when stretched. */}
+      <CardContent className={threads.length === 0 ? DASH_CENTER : undefined}>
         {threads.length === 0 ? (
           <EmptyState
             icon={MessageSquare}

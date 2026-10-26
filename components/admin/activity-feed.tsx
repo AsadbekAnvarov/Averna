@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DASH_CARD } from "@/components/ui/dash-row";
 import {
   Radio, UserPlus, Megaphone, Gift, CheckSquare, Layers, GraduationCap,
   Trash2, Pencil, Settings, ShieldCheck, Activity as ActivityIcon,
@@ -39,7 +40,7 @@ export async function ActivityFeed() {
   });
 
   return (
-    <Card className="glass border-averna-neon/30">
+    <Card className={`${DASH_CARD} glass border-averna-neon/30`}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-averna-neon">
           <span className="relative flex h-2.5 w-2.5">

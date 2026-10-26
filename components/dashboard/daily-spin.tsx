@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sparkles } from "lucide-react";
 import { fireConfetti } from "@/lib/confetti";
+import { cn } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 
 /** Light, cosmetic daily rewards — a fun once-a-day pick-me-up. */
 const REWARDS = [
@@ -61,47 +63,51 @@ export function DailySpin() {
   const seg = 360 / REWARDS.length;
 
   return (
-    <Card className="glass border-averna-neon/30">
-      <CardContent className="p-5 text-center">
-        <p className="text-sm font-semibold text-white flex items-center justify-center gap-2 mb-3">
-          <Sparkles className="h-4 w-4 text-averna-neon" /> Daily Spin
-        </p>
+    <Card className={cn(DASH_CARD, "glass border-averna-neon/30")}>
+      {/* No header: top padding matches the Card header's (p-4 sm:p-5). Centred when stretched. */}
+      <CardContent className={cn(DASH_CENTER, "pt-4 sm:pt-5 text-center")}>
+        {/* One block child keeps the original flow (centred inline Spin button) inside the flex body. */}
+        <div>
+          <p className="text-sm font-semibold text-white flex items-center justify-center gap-2 mb-3">
+            <Sparkles className="h-4 w-4 text-averna-neon" /> Daily Spin
+          </p>
 
-        <div className="relative mx-auto h-40 w-40">
-          {/* pointer */}
-          <div className="absolute left-1/2 -top-1.5 -translate-x-1/2 z-10 text-averna-neon text-xl drop-shadow">▼</div>
-          <div
-            className="h-40 w-40 rounded-full border-4 border-white/10 shadow-inner"
-            style={{
-              transform: `rotate(${rotation}deg)`,
-              transition: spinning ? "transform 3.1s cubic-bezier(0.17,0.67,0.17,0.98)" : "none",
-              background: `conic-gradient(${REWARDS.map((_, i) => {
-                const c = ["#0B8F6A", "#00e5ff", "#b14eff", "#ff3dbb"][i % 4];
-                return `${c}55 ${i * seg}deg ${(i + 1) * seg}deg`;
-              }).join(",")})`,
-            }}
-          />
-          {/* center hub showing the current/result emoji */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-14 w-14 rounded-full bg-averna-dark border-2 border-averna-neon/40 flex items-center justify-center text-2xl">
-            {result !== null ? REWARDS[result].emoji : spinning ? "🎰" : "🎁"}
+          <div className="relative mx-auto h-40 w-40">
+            {/* pointer */}
+            <div className="absolute left-1/2 -top-1.5 -translate-x-1/2 z-10 text-averna-neon text-xl drop-shadow">▼</div>
+            <div
+              className="h-40 w-40 rounded-full border-4 border-white/10 shadow-inner"
+              style={{
+                transform: `rotate(${rotation}deg)`,
+                transition: spinning ? "transform 3.1s cubic-bezier(0.17,0.67,0.17,0.98)" : "none",
+                background: `conic-gradient(${REWARDS.map((_, i) => {
+                  const c = ["#0B8F6A", "#00e5ff", "#b14eff", "#ff3dbb"][i % 4];
+                  return `${c}55 ${i * seg}deg ${(i + 1) * seg}deg`;
+                }).join(",")})`,
+              }}
+            />
+            {/* center hub showing the current/result emoji */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-14 w-14 rounded-full bg-averna-dark border-2 border-averna-neon/40 flex items-center justify-center text-2xl">
+              {result !== null ? REWARDS[result].emoji : spinning ? "🎰" : "🎁"}
+            </div>
           </div>
+
+          {result !== null ? (
+            <div className="mt-4">
+              <p className="text-2xl">{REWARDS[result].emoji}</p>
+              <p className="text-sm text-white mt-1">{REWARDS[result].text}</p>
+              <p className="text-[11px] text-gray-500 mt-2">Come back tomorrow for another spin!</p>
+            </div>
+          ) : (
+            <button
+              onClick={spin}
+              disabled={spinning}
+              className="mt-4 px-5 py-2 rounded-lg bg-averna-primary/80 hover:bg-averna-primary text-white text-sm font-medium disabled:opacity-60"
+            >
+              {spinning ? "Spinning…" : "Spin!"}
+            </button>
+          )}
         </div>
-
-        {result !== null ? (
-          <div className="mt-4">
-            <p className="text-2xl">{REWARDS[result].emoji}</p>
-            <p className="text-sm text-white mt-1">{REWARDS[result].text}</p>
-            <p className="text-[11px] text-gray-500 mt-2">Come back tomorrow for another spin!</p>
-          </div>
-        ) : (
-          <button
-            onClick={spin}
-            disabled={spinning}
-            className="mt-4 px-5 py-2 rounded-lg bg-averna-primary/80 hover:bg-averna-primary text-white text-sm font-medium disabled:opacity-60"
-          >
-            {spinning ? "Spinning…" : "Spin!"}
-          </button>
-        )}
       </CardContent>
     </Card>
   );

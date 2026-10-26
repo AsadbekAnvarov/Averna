@@ -13,11 +13,15 @@
  *   minFont     smallest computed font-size of visible text (aria-hidden and sr-only text ignored)
  *   small       phone only: visible a, button, [role=tab], input, select, summary under 44px high or
  *               24px wide (links inside running text and anything inside an iframe are not counted)
+ *   uneven      desktop only: every .dash-row (components/ui/dash-row.tsx); its visible direct children
+ *               are grouped into visual rows by their top (±2px), and a visual row whose cells differ
+ *               in height by more than 2px is listed (row selector path, y, heights)
  *
- * --compare prints a table and fails (exit 1) only on COMFORT regressions:
+ * --compare prints a table and fails (exit 1) only on COMFORT problems:
  *   - more than 2 extra small targets on a phone page,
  *   - smallest text below 11px where the base was at 11px or more,
- *   - a page more than 15% longer (screens).
+ *   - a page more than 15% longer (screens),
+ *   - any uneven dashboard row on HEAD (absolute check; needs no base).
  * Denser pages are the goal, so shorter pages and more content above the fold never fail.
  * A page that is missing (404) on both sides is skipped. Runs in CI (.github/workflows/screens.yml)
  * against the same seeded database as the preservation checks.
@@ -51,9 +55,12 @@ const USERS = {
 
 const PAGES = {
   student: [
+    // All five dashboard tabs (Today, Learn, Progress, Class, Play).
     "/dashboard",
+    "/dashboard?tab=learn",
     "/dashboard?tab=progress",
     "/dashboard?tab=class",
+    "/dashboard?tab=fun",
     "/progress",
     "/learning",
     "/homework",
@@ -73,8 +80,8 @@ const DEVICES = {
 
 const FREEZE_CSS = "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}";
 
-/** Comfort limits (see the header). */
-const LIMITS = { extraSmallTargets: 2, minFont: 11, screensGrowth: 0.15 };
+/** Comfort limits (see the header). evenRowTop / evenRowHeight in px. */
+const LIMITS = { extraSmallTargets: 2, minFont: 11, screensGrowth: 0.15, evenRowTop: 2, evenRowHeight: 2 };
 
 const notes = [];
 
@@ -113,7 +120,7 @@ async function newContext(browser, role, device) {
 // Measurement (in the page)
 // ---------------------------------------------------------------------------------------------
 
-function measure(phone) {
+function measure({ phone, tolerance }) {
   const vw = innerWidth;
   const vh = innerHeight;
   const opacityZero = new Map();
@@ -181,8 +188,47 @@ function measure(phone) {
     }
   }
 
+  // Even rows (desktop): the cells of one visual row of a .dash-row must be equally tall.
+  let uneven = null;
+  if (!phone) {
+    uneven = [];
+    const pathOf = (el) => {
+      const parts = [];
+      for (let n = el; n && n !== document.body && parts.length < 5; n = n.parentElement) {
+        if (n.id) {
+          parts.unshift(`#${n.id}`);
+          break;
+        }
+        // First plain class name (skip Tailwind variants such as md:gap-4 or w-1/2).
+        const cls = [...n.classList].find((c) => /^[a-z][\w-]*$/i.test(c));
+        const nth = n.parentElement ? [...n.parentElement.children].indexOf(n) + 1 : 1;
+        parts.unshift(`${n.tagName.toLowerCase()}${cls ? `.${cls}` : ""}:nth-child(${nth})`);
+      }
+      return parts.join(" > ");
+    };
+    for (const row of document.querySelectorAll(".dash-row")) {
+      if (silent(row) || !shown(row)) continue;
+      const cells = [...row.children]
+        .map((c) => shown(c))
+        .filter(Boolean)
+        .sort((a, b) => a.top - b.top);
+      const lines = [];
+      for (const r of cells) {
+        const line = lines.find((l) => Math.abs(l.top - r.top) <= tolerance.top);
+        if (line) line.heights.push(r.height);
+        else lines.push({ top: r.top, heights: [r.height] });
+      }
+      for (const l of lines) {
+        if (l.heights.length < 2) continue;
+        if (Math.max(...l.heights) - Math.min(...l.heights) > tolerance.height) {
+          uneven.push({ row: pathOf(row), top: Math.round(l.top + scrollY), heights: l.heights.map((h) => Math.round(h * 10) / 10) });
+        }
+      }
+    }
+  }
+
   const notFound = /\bPage Not Found\b/i.test(document.body.innerText.slice(0, 2_000));
-  return { screens, aboveFold, minFont, minFontSample, small, smallExamples, notFound };
+  return { screens, aboveFold, minFont, minFontSample, small, smallExamples, uneven, notFound };
 }
 
 async function measurePage(context, role, path, device) {
@@ -203,7 +249,10 @@ async function measurePage(context, role, path, device) {
       await document.fonts.ready;
     });
     await page.waitForTimeout(800);
-    const m = await page.evaluate(measure, device === "phone");
+    const m = await page.evaluate(measure, {
+      phone: device === "phone",
+      tolerance: { top: LIMITS.evenRowTop, height: LIMITS.evenRowHeight },
+    });
     const missing = (status != null && status >= 400) || m.notFound;
     return { role, path, device, status, url: new URL(page.url()).pathname + new URL(page.url()).search, missing, ...m };
   } catch (e) {
@@ -228,8 +277,9 @@ async function measureAll() {
             out.push(r);
             const summary = r.error
               ? `error: ${r.error}`
-              : `${r.missing ? "missing, " : ""}screens ${r.screens}, aboveFold ${r.aboveFold}, minFont ${r.minFont}px${r.small == null ? "" : `, small ${r.small}`}`;
+              : `${r.missing ? "missing, " : ""}screens ${r.screens}, aboveFold ${r.aboveFold}, minFont ${r.minFont}px${r.small == null ? "" : `, small ${r.small}`}${r.uneven == null ? "" : `, uneven rows ${r.uneven.length}`}`;
             console.log(`${keyOf(r)}: ${summary}`);
+            for (const u of r.uneven ?? []) console.log(`  uneven row ${u.row} at y=${u.top}: heights ${u.heights.join(" / ")} px`);
           }
         } finally {
           await context.close();
@@ -259,6 +309,14 @@ function compare(base, head) {
     const b = byKey.get(key);
     const row = { key, role: h.role, path: h.path, device: h.device, base: b ?? null, head: h, issues: [] };
     rows.push(row);
+    // Even rows are an absolute check on HEAD: reported whatever the base looked like.
+    if (!h.error && !h.missing && h.device === "desktop") {
+      for (const u of h.uneven ?? []) {
+        const issue = `uneven row ${u.row} at y=${u.top}: heights ${u.heights.join(" / ")} px (differ by more than ${LIMITS.evenRowHeight}px)`;
+        row.issues.push(issue);
+        regressions.push({ key, message: issue });
+      }
+    }
     if (h.error || b?.error) {
       row.status = "error";
       notes.push({ key, message: `not compared: ${h.error ? `head ${h.error}` : `base ${b.error}`}` });
@@ -280,26 +338,30 @@ function compare(base, head) {
     }
     row.status = "compared";
     row.screensDelta = pct(b.screens, h.screens);
+    const issues = [];
     if (h.device === "phone" && b.small != null && h.small != null && h.small > b.small + LIMITS.extraSmallTargets) {
-      row.issues.push(`small targets ${b.small} → ${h.small} (more than +${LIMITS.extraSmallTargets}), e.g. ${h.smallExamples.join("; ")}`);
+      issues.push(`small targets ${b.small} → ${h.small} (more than +${LIMITS.extraSmallTargets}), e.g. ${h.smallExamples.join("; ")}`);
     }
     if (h.minFont != null && b.minFont != null && h.minFont < LIMITS.minFont && b.minFont >= LIMITS.minFont) {
-      row.issues.push(`smallest text ${b.minFont}px → ${h.minFont}px (below ${LIMITS.minFont}px): ${h.minFontSample}`);
+      issues.push(`smallest text ${b.minFont}px → ${h.minFont}px (below ${LIMITS.minFont}px): ${h.minFontSample}`);
     }
     if (b.screens > 0 && (h.screens - b.screens) / b.screens > LIMITS.screensGrowth) {
-      row.issues.push(`page length ${b.screens} → ${h.screens} screens (${fmtPct(row.screensDelta)}, limit +${LIMITS.screensGrowth * 100}%)`);
+      issues.push(`page length ${b.screens} → ${h.screens} screens (${fmtPct(row.screensDelta)}, limit +${LIMITS.screensGrowth * 100}%)`);
     }
-    for (const issue of row.issues) regressions.push({ key, message: issue });
+    row.issues.push(...issues);
+    for (const issue of issues) regressions.push({ key, message: issue });
   }
   return { rows, regressions };
 }
 
 function printTable(rows) {
-  const header = ["page", "device", "screens base → head (Δ)", "aboveFold", "min font", "small targets", "status"];
+  const header = ["page", "device", "screens base → head (Δ)", "aboveFold", "min font", "small targets", "uneven rows", "status"];
   const lines = rows.map((r) => {
     const b = r.base;
     const h = r.head;
-    if (r.status !== "compared") return [`${r.role} ${r.path}`, r.device, "", "", "", "", r.status];
+    const uneven = h.device === "desktop" && h.uneven ? String(h.uneven.length) : "–";
+    const comfort = r.issues.length ? `COMFORT (${r.issues.length})` : "ok";
+    if (r.status !== "compared") return [`${r.role} ${r.path}`, r.device, "", "", "", "", uneven, r.issues.length ? `${r.status}, ${comfort}` : r.status];
     return [
       `${r.role} ${r.path}`,
       r.device,
@@ -307,7 +369,8 @@ function printTable(rows) {
       `${b.aboveFold} → ${h.aboveFold}`,
       `${fmtFont(b.minFont)} → ${fmtFont(h.minFont)}`,
       h.device === "phone" ? `${b.small} → ${h.small}` : "–",
-      r.issues.length ? `COMFORT (${r.issues.length})` : "ok",
+      uneven,
+      comfort,
     ];
   });
   const widths = header.map((c, i) => Math.max(c.length, ...lines.map((l) => String(l[i]).length)));
@@ -335,10 +398,14 @@ if (MODE === "capture") {
   const { rows, regressions } = compare(base, measured);
   console.log("");
   printTable(rows);
+  // Every uneven dashboard row found on HEAD (desktop), also counted in `regressions`.
+  const unevenRows = measured.flatMap((r) =>
+    r.device === "desktop" && !r.error && !r.missing ? (r.uneven ?? []).map((u) => ({ key: keyOf(r), ...u })) : []
+  );
   mkdirSync(dirname(REPORT), { recursive: true });
   writeFileSync(
     REPORT,
-    JSON.stringify({ mode: MODE, baseUrl: BASE, baseFile: FILE, limits: LIMITS, regressions, notes, rows }, null, 2)
+    JSON.stringify({ mode: MODE, baseUrl: BASE, baseFile: FILE, limits: LIMITS, regressions, unevenRows, notes, rows }, null, 2)
   );
   console.log(`\nReport: ${REPORT}`);
   for (const n of notes) console.log(`note ${n.key}: ${n.message}`);

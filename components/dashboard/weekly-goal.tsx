@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, Minus, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 
 const MIN_GOAL = 1;
 const MAX_GOAL = 21;
@@ -37,8 +39,9 @@ export function WeeklyGoal({ completed }: { completed: number }) {
   const reached = completed >= target;
 
   return (
-    <Card className="glass border-averna-neon/30">
-      <CardContent className="p-5">
+    <Card className={cn(DASH_CARD, "glass border-averna-neon/30")}>
+      {/* No header: top padding matches the Card header's (p-4 sm:p-5). Centred when stretched. */}
+      <CardContent className={cn(DASH_CENTER, "pt-4 sm:pt-5")}>
         <div className="flex items-center gap-4">
           <div className="relative h-28 w-28 shrink-0">
             <svg width={112} height={112} viewBox="0 0 112 112" className="-rotate-90">

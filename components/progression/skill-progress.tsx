@@ -31,7 +31,8 @@ export function SkillProgress({
           </Link>
         }
       />
-      <ul className="space-y-3 sm:space-y-4">
+      {/* flex-1 keeps the insight footer at the bottom of a stretched card. */}
+      <ul className="flex-1 space-y-3 sm:space-y-4">
         {profile.map((s) => {
           const tone = SKILL_TONE[s.skill];
           const TrendIcon = s.trend === "up" ? TrendingUp : s.trend === "down" ? TrendingDown : Minus;

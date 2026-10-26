@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Target, CheckCircle2, Circle, Snowflake } from "lucide-react";
 import { db } from "@/lib/db";
+import { cn } from "@/lib/utils";
+import { DASH_CARD, DASH_CENTER } from "@/components/ui/dash-row";
 
 interface Props {
   studentId: string;
@@ -40,7 +42,7 @@ export async function DailyQuests({ studentId, streakFreezes }: Props) {
   const allDone = completed === quests.length;
 
   return (
-    <Card className="glass border-averna-cyan/30">
+    <Card className={cn(DASH_CARD, "glass border-averna-cyan/30")}>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-averna-cyan">
@@ -49,7 +51,8 @@ export async function DailyQuests({ studentId, streakFreezes }: Props) {
           <span className="text-sm font-normal text-gray-400">{completed}/{quests.length}</span>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2">
+      {/* Centred in the space left when stretched to the Mystery Box next to it. */}
+      <CardContent className={cn(DASH_CENTER, "space-y-2")}>
         {quests.map((q) => (
           <div
             key={q.label}

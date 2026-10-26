@@ -14,8 +14,8 @@ import { tashkentDayStart, tashkentWeekStart } from "@/lib/utils";
 import { getDashboardHomework, type DashboardStudent } from "@/lib/dashboard/data";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
+import { DashRow } from "@/components/ui/dash-row";
 // Today
-import { AdventuresEntry } from "@/components/dashboard/adventures-entry";
 import { DashboardHero } from "@/components/dashboard/dashboard-hero";
 import { HabitNudge } from "@/components/dashboard/habit-nudge";
 import { PlacementPrompt } from "@/components/placement/placement-prompt";
@@ -82,7 +82,6 @@ export async function HomeTab({ student }: TabPanelProps) {
         quote={dailyQuote}
         featuredCosmetic={student.featuredCosmetic}
       />
-      <AdventuresEntry />
       <NextSessionCard />
       <Suspense fallback={null}>
         <HabitNudge studentId={student.id} streak={student.currentStreak} />
@@ -126,10 +125,10 @@ export async function LearnTab({ student }: TabPanelProps) {
       </section>
       <section>
         <SectionHeader icon={Newspaper} title="Reading & vocabulary" subtitle="Choose a lesson and build your vocabulary" accent="text-averna-cyan" />
-        <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 md:grid-cols-2">
+        <DashRow at="md">
           <DailyArticle />
           <WordOfTheDay />
-        </div>
+        </DashRow>
       </section>
     </>
   );
@@ -152,28 +151,28 @@ export async function ProgressTab({ student }: TabPanelProps) {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
+      <DashRow>
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <BandProgress studentId={student.id} targetBand={student.targetBand} />
         </Suspense>
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <SkillRadar studentId={student.id} />
         </Suspense>
-      </div>
-      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
+      </DashRow>
+      <DashRow>
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <ProgressionLevel studentId={student.id} />
         </Suspense>
         <WeeklyGoal completed={weeklyCompleted} />
-      </div>
-      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
+      </DashRow>
+      <DashRow>
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <LearningDnaCard studentId={student.id} />
         </Suspense>
         <Suspense fallback={<WidgetSkeleton rows={4} />}>
           <AchievementsProgress studentId={student.id} longestStreak={student.longestStreak} globalRank={globalRank} />
         </Suspense>
-      </div>
+      </DashRow>
       <Suspense fallback={<WidgetSkeleton rows={4} />}>
         <StreakHeatmap studentId={student.id} />
       </Suspense>
@@ -186,25 +185,25 @@ export async function ProgressTab({ student }: TabPanelProps) {
 export async function ClassTab({ student, userId }: TabPanelProps) {
   return (
     <>
-      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
+      <DashRow>
         <Suspense fallback={<WidgetSkeleton rows={2} />}>
           <TeacherCard groupId={student.groupId} />
         </Suspense>
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <MessagePreview userId={userId} />
         </Suspense>
-      </div>
+      </DashRow>
       <Suspense fallback={<WidgetSkeleton rows={4} />}>
         <StudySquad groupId={student.groupId} studentId={student.id} />
       </Suspense>
-      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-2">
+      <DashRow>
         <Suspense fallback={<WidgetSkeleton rows={4} />}>
           <LeaderboardWidget studentId={student.id} groupId={student.groupId} />
         </Suspense>
         <Suspense fallback={<WidgetSkeleton rows={4} />}>
           <GroupFeed studentId={student.id} groupId={student.groupId} />
         </Suspense>
-      </div>
+      </DashRow>
       <Suspense fallback={<WidgetSkeleton rows={4} />}>
         <CommunityChallenge studentId={student.id} />
       </Suspense>
@@ -216,16 +215,17 @@ export async function ClassTab({ student, userId }: TabPanelProps) {
 export async function PlayTab({ student }: TabPanelProps) {
   return (
     <>
-      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 md:grid-cols-2">
+      <DashRow at="md">
         <MoodCheckin />
+        {/* The wrapper's single card fills the cell (see .dash-row in globals.css). */}
         <div data-gamified>
           <DailySpin />
         </div>
-      </div>
-      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 md:grid-cols-2" data-gamified>
+      </DashRow>
+      <DashRow at="md" data-gamified>
         <DailyQuests studentId={student.id} streakFreezes={student.streakFreezes} />
         <MysteryBox />
-      </div>
+      </DashRow>
       <section data-gamified>
         <SectionHeader
           icon={Gamepad2}
@@ -236,12 +236,12 @@ export async function PlayTab({ student }: TabPanelProps) {
         />
         <StudioShelf group="games" />
       </section>
-      <div className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 md:grid-cols-2" data-gamified>
+      <DashRow at="md" data-gamified>
         <StudyPet streak={student.currentStreak} points={student.totalPoints} />
         <Suspense fallback={<WidgetSkeleton rows={2} />}>
           <StudentOfTheWeek />
         </Suspense>
-      </div>
+      </DashRow>
     </>
   );
 }

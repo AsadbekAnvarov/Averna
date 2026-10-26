@@ -13,7 +13,7 @@ vi.mock("@/components/theme/theme-provider", () => ({ useTheme: () => ({ mode: "
 vi.mock("@/components/settings/settings-panel", () => ({ SettingsPanel: () => <p>Display settings</p> }));
 vi.mock("@/components/settings/telegram-connect", () => ({ TelegramConnect: () => <p>Telegram settings</p> }));
 vi.mock("next/link", () => ({ default: ({ href, children, ...rest }: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children?: ReactNode }) => <a href={href} {...rest}>{children}</a> }));
-import { AdventuresEntry } from "@/components/dashboard/adventures-entry";
+import { STUDIO_TOOLS } from "@/components/studio/studio-tools";
 import { AppSidebar } from "@/components/layout/app-sidebar";
 import { CommandPalette } from "@/components/command-palette";
 import SettingsPage from "@/app/settings/page";
@@ -72,10 +72,10 @@ describe("student account without Billing", () => {
 
 
 describe("discoverable student Adventures", () => {
-  it("gives Today a clearly labelled direct link without waiting for class sharing", () => {
-    render(<AdventuresEntry />);
-    expect(screen.getByRole("heading", { name: "Adventures" })).toBeTruthy();
-    expect(screen.getByRole("link", { name: "Explore Adventures" }).getAttribute("href")).toBe("/studio/adventures");
+  it("lists Adventures as a Practice Studio tool (the Learn tab's shelf), not as a Today card", () => {
+    const tool = STUDIO_TOOLS.find((t) => t.slug === "adventures");
+    expect(tool?.group).toBe("practice");
+    expect(tool?.title).toBe("Adventures");
   });
   it("shows a direct student menu entry on desktop and in the phone drawer", () => {
     const { container } = render(<AppSidebar />);

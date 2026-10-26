@@ -1,5 +1,6 @@
 import {
   Zap, Mic, Clapperboard, Lightbulb, BookMarked, ScanLine, Headphones, Timer, Swords, Skull, Ghost, Gauge, Compass,
+  LayoutGrid, LifeBuoy, Shuffle,
   type LucideIcon,
 } from "lucide-react";
 
@@ -36,6 +37,9 @@ export const STUDIO_TOOLS: StudioTool[] = [
   { slug: "boss-battle", title: "Boss Battle", blurb: "Defeat a boss built from your own mistakes", icon: Skull, color: "text-red-400", bg: "bg-red-400/15", group: "games" },
   { slug: "ghost-race", title: "Ghost Race", blurb: "A timed vocabulary sprint against your ghost", icon: Ghost, color: "text-averna-cyan", bg: "bg-averna-cyan/15", group: "games" },
   { slug: "confidence", title: "Confidence Meter", blurb: "Bet on your answers and calibrate your gut", icon: Gauge, color: "text-amber-400", bg: "bg-amber-400/15", group: "games" },
+  { slug: "memory-match", title: "Memory Match", blurb: "Flip cards and pair each word with its meaning", icon: LayoutGrid, color: "text-averna-cyan", bg: "bg-averna-cyan/15", group: "games" },
+  { slug: "word-rescue", title: "Word Rescue", blurb: "Guess the word from its meaning before the balloons pop", icon: LifeBuoy, color: "text-averna-purple", bg: "bg-averna-purple/15", group: "games" },
+  { slug: "word-scramble", title: "Word Scramble", blurb: "Unscramble the letters against the clock", icon: Shuffle, color: "text-orange-400", bg: "bg-orange-400/15", group: "games" },
 ];
 
 export function studioTool(slug: string): StudioTool {

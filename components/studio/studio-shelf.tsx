@@ -5,7 +5,8 @@ import { STUDIO_TOOLS, type StudioGroup } from "@/components/studio/studio-tools
 
 /**
  * A tidy grid of Practice Studio tiles (2 per row on phones). Each tile opens
- * the tool on its own page.
+ * the tool on its own page. Tiles fill their grid cell and clamp the blurb to
+ * two lines, so every tile in a row has the same height.
  */
 export function StudioShelf({
   group,
@@ -26,7 +27,7 @@ export function StudioShelf({
         <Link
           key={slug}
           href={`/studio/${slug}`}
-          className="group glass flex flex-col gap-3 rounded-2xl border border-white/10 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20"
+          className="group glass flex h-full flex-col gap-3 rounded-2xl border border-white/10 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20"
         >
           <div className="flex items-center justify-between">
             <span className={cn("grid h-10 w-10 place-items-center rounded-xl", bg, color)}>
