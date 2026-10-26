@@ -11,6 +11,7 @@ import {
   orderDashboardHomework,
   overdueWindowStart,
 } from "@/lib/dashboard/homework";
+import { forStudent } from "@/lib/homework/audience";
 
 /**
  * The signed-in user's student profile, or null. Only the user fields the
@@ -37,6 +38,7 @@ export const getDashboardHomework = cache(async (studentId: string, groupId: str
       groupId,
       dueDate: { gte: overdueWindowStart(now) },
       submissions: { none: { studentId } },
+      ...forStudent(studentId),
     },
     orderBy: { dueDate: "asc" },
     take: 50,

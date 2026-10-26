@@ -5,8 +5,9 @@ import { Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
 
 /**
  * F6 — AI Teaching Assistant. Proactive, data-backed recommendations for the
- * class: weakest skill to review, students who've gone quiet, who needs speaking
- * practice, grading to clear. Read-only. Every tip is grounded in real data.
+ * class: weakest skill to review, who needs speaking practice, grading to
+ * clear. Read-only. Every tip is grounded in real data. Individual students who
+ * went quiet are in "Who needs help today" at the top of the dashboard.
  */
 export async function TeachingAssistant({ teacherId }: { teacherId: string }) {
   const tips = await getTeachingAssistant(teacherId);

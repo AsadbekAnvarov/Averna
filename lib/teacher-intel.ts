@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { isForStudent } from "@/lib/homework/audience";
 import { predictBand } from "@/lib/utils";
 
 /**
@@ -50,7 +51,7 @@ async function loadSignals(teacherId: string): Promise<StudentSignals[]> {
     where: { teacherId },
     select: {
       name: true,
-      homework: { select: { id: true } },
+      homework: { select: { id: true, assigneeId: true } },
       students: {
         select: {
           id: true,
@@ -64,7 +65,8 @@ async function loadSignals(teacherId: string): Promise<StudentSignals[]> {
   });
 
   const roster = groups.flatMap((g) =>
-    g.students.map((s) => ({ s, groupName: g.name, assigned: g.homework.length })),
+    // Whole-group homework plus the student's own personal tasks (lib/homework/audience).
+    g.students.map((s) => ({ s, groupName: g.name, assigned: g.homework.filter((h) => isForStudent(h, s.id)).length })),
   );
   const ids = roster.map((r) => r.s.id);
   if (ids.length === 0) return [];
@@ -263,15 +265,8 @@ export async function getTeachingAssistant(teacherId: string): Promise<TeachingT
     });
   }
 
-  const inactive = signals.filter((s) => s.daysSinceActive != null && s.daysSinceActive >= 7);
-  if (inactive.length > 0) {
-    tips.push({
-      id: "inactive",
-      text: `${inactive.length} student${inactive.length === 1 ? "" : "s"} haven't practised in a week.`,
-      detail: `Send a quick nudge: ${inactive.slice(0, 3).map((s) => s.name.split(" ")[0]).join(", ")}${inactive.length > 3 ? "…" : ""}.`,
-      href: "/teacher/announcements",
-    });
-  }
+  // Students who went quiet are listed one by one in "Who needs help today" (lib/teacher/needs-help),
+  // with a one-tap message — no separate class-level tip for them here.
 
   const weakSpeaking = signals.filter((s) => s.band != null && s.band < 6);
   if (weakSpeaking.length >= 3) {

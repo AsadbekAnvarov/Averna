@@ -67,6 +67,11 @@ export const AI_LIMITS: Record<string, RouteLimit> = {
   "peer-coach": { perHour: 3, perDay: 3 },
   // "Explain in Oʻzbekcha / по-русски" on a result's wrong answers (40 a day).
   "l1-explain": { perHour: 20, perDay: 40 },
+  // Teacher review inbox: "Regenerate" / first draft of an AI review (idea 10). A busy
+  // teacher reviews ~30 a day; regenerating every one twice still fits.
+  "review-draft": { perHour: 30, perDay: 80 },
+  // "Who needs help today" → Message: an AI-drafted first message (idea 10).
+  "teacher-nudge": { perHour: 20, perDay: 60 },
 };
 
 const DEFAULT_LIMIT: RouteLimit = { perHour: 20, perDay: 100 };

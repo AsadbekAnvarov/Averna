@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { forStudent } from "@/lib/homework/audience";
 import { parseSchedule } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -39,7 +40,7 @@ export async function GET() {
   const now = new Date();
   const homework = student.groupId
     ? await db.homework.findMany({
-        where: { groupId: student.groupId, dueDate: { gte: new Date(now.getTime() - 30 * 86400000) } },
+        where: { groupId: student.groupId, dueDate: { gte: new Date(now.getTime() - 30 * 86400000) }, ...forStudent(student.id) },
         select: { id: true, title: true, dueDate: true },
       })
     : [];

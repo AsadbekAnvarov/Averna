@@ -28,6 +28,11 @@ import { AdminHeader } from "@/components/admin/admin-header";
 import { Task1Chart } from "@/components/learning/task1-chart";
 import { WritingHeatmap } from "@/components/learning/writing-heatmap";
 import { ReviewForm } from "@/components/review/review-form";
+import { AiDraftReview } from "@/components/review/ai-draft-review";
+import { MiniTaskButton } from "@/components/teacher/mini-task-sheet";
+import { hasOpenAI } from "@/lib/ai";
+import { canGenerate, draftContext, storedDraft } from "@/lib/review/draft";
+import { pendingNeighbours } from "@/lib/review/queue";
 import { SkillIconBox, SourceBadge } from "@/components/review/review-badges";
 import { formatDuration } from "@/components/exam/results/attempt";
 import { loadReviewAttempt, type ReviewAttempt, type SpeakingDetail, type WritingDetail } from "@/lib/review/detail";
@@ -76,6 +81,13 @@ export default async function ReviewAttemptPage(
   const back = queueHref(filters);
   const taskType: WritingTask | null = a.writing?.taskType ?? null;
 
+  // Teachers get the AI draft with one-tap approval on attempts still waiting for a review (idea 10);
+  // admins and already-reviewed attempts keep the manual form.
+  const teacher = role === "TEACHER";
+  const [ctx, nav] = teacher && !a.review ? await Promise.all([draftContext(a.testId), pendingNeighbours(viewer, a.testId, filters)]) : [null, null];
+  const draft = ctx ? storedDraft(ctx) : null;
+  const generateOnOpen = !!ctx && !!draft && (draft.source === "none" || draft.source === "heuristic") && canGenerate(ctx);
+
   return (
     <div className="min-h-screen premium-gradient">
       <div className="container mx-auto max-w-7xl px-4 py-4 sm:py-6 pb-8 lg:pb-6">
@@ -122,10 +134,13 @@ export default async function ReviewAttemptPage(
               </ul>
             </div>
           </div>
-          <Link href={a.resultHref} className={cn(LINK_BTN, "shrink-0")}>
-            Student&apos;s result page
-            <ExternalLink className="h-4 w-4" aria-hidden />
-          </Link>
+          <div className="flex shrink-0 flex-wrap gap-2">
+            {teacher && <MiniTaskButton studentId={a.studentId} studentName={a.studentName} />}
+            <Link href={a.resultHref} className={cn(LINK_BTN, "shrink-0")}>
+              Student&apos;s result page
+              <ExternalLink className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
         </header>
 
         {saved && (
@@ -155,17 +170,33 @@ export default async function ReviewAttemptPage(
             aria-label="Your review"
             className="lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain lg:rounded-2xl lg:p-0.5"
           >
-            <ReviewForm
-              key={a.testId}
-              testId={a.testId}
-              skill={a.skill}
-              taskType={taskType}
-              studentName={a.studentName}
-              aiBand={a.aiBand}
-              aiCriteria={a.aiCriteria}
-              existing={a.review ? { band: a.review.band, criteria: a.review.criteria, comment: a.review.comment } : null}
-              filters={filters}
-            />
+            {draft && nav ? (
+              <AiDraftReview
+                key={a.testId}
+                testId={a.testId}
+                skill={a.skill}
+                taskType={taskType}
+                studentName={a.studentName}
+                aiBand={a.aiBand}
+                draft={draft}
+                generateOnOpen={generateOnOpen}
+                aiAvailable={hasOpenAI()}
+                filters={filters}
+                nav={nav}
+              />
+            ) : (
+              <ReviewForm
+                key={a.testId}
+                testId={a.testId}
+                skill={a.skill}
+                taskType={taskType}
+                studentName={a.studentName}
+                aiBand={a.aiBand}
+                aiCriteria={a.aiCriteria}
+                existing={a.review ? { band: a.review.band, criteria: a.review.criteria, comment: a.review.comment } : null}
+                filters={filters}
+              />
+            )}
             <SaveEffects attempt={a} />
           </aside>
         </div>

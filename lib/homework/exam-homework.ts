@@ -19,6 +19,7 @@
 import { randomUUID } from "crypto";
 import { db } from "@/lib/db";
 import { teacherOf } from "@/lib/access";
+import { forStudent, isForStudent } from "./audience";
 import { checkAndAwardAchievements } from "@/lib/db-helpers";
 import { isGenuineWriting, isOnTopic } from "@/lib/utils";
 import { awardXp } from "@/lib/engine/xp-engine";
@@ -161,12 +162,13 @@ export async function examHomeworkFor(
           contentId: true,
           contentPart: true,
           contentTitle: true,
+          assigneeId: true,
           createdAt: true,
         },
       }),
       db.student.findUnique({ where: { id: studentId }, select: { groupId: true } }),
     ]);
-    if (!hw || !student || !student.groupId || hw.groupId !== student.groupId) return null;
+    if (!hw || !student || !student.groupId || hw.groupId !== student.groupId || !isForStudent(hw, studentId)) return null;
     if (!isExamHomeworkKind(hw.contentKind) || !hw.contentId) return null;
     const kinds = Array.isArray(expect.kind) ? expect.kind : [expect.kind];
     if (!kinds.includes(hw.contentKind)) return null;
@@ -432,6 +434,7 @@ export async function homeworkNoticeFor(
         createdAt: { lte: new Date(completedAt + HOMEWORK_CLOCK_SKEW_MS) },
         dueDate: { gte: new Date(Date.now() - TODO_OVERDUE_DAYS * 86_400_000) },
         submissions: { none: { studentId } },
+        ...forStudent(studentId),
       },
       orderBy: { dueDate: "asc" },
       select: { id: true, title: true, contentTitle: true },

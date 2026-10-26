@@ -58,7 +58,7 @@ function homeHref(role: string) {
 
 export default async function MessagesPage(
   props: {
-    searchParams: Promise<{ with?: string }>;
+    searchParams: Promise<{ with?: string; draft?: string }>;
   }
 ) {
   const searchParams = (await props.searchParams) ?? {};
@@ -72,6 +72,11 @@ export default async function MessagesPage(
   const active = contacts.find((c) => c.userId === activeId) ?? contacts[0];
   // Phones (< md) show one half at a time; md+ keeps both cards side by side.
   const phoneView = messagesPhoneView(searchParams.with, contacts.length);
+  // "Who needs help today" → Message opens the thread with an editable first draft (teachers only, never sent by itself).
+  const draft =
+    role === "TEACHER" && typeof searchParams.draft === "string" && active?.userId === searchParams.with
+      ? searchParams.draft.slice(0, 1000)
+      : "";
 
   let messages: { id: string; senderId: string; content: string; createdAt: Date; read: boolean; reaction: string | null }[] = [];
   if (active) {
@@ -181,7 +186,7 @@ export default async function MessagesPage(
                 <div className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1">
                   <MessageThread messages={threadMessages} meId={me} />
                 </div>
-                <MessageComposer receiverId={active!.userId} role={role} />
+                <MessageComposer key={`${active!.userId}:${draft ? "draft" : ""}`} receiverId={active!.userId} role={role} initialText={draft} />
               </CardContent>
             </Card>
           </div>

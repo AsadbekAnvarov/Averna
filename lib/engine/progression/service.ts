@@ -1,6 +1,7 @@
 import { cache } from "react";
 import type { IELTSModule } from "@prisma/client";
 import { db } from "@/lib/db";
+import { forStudent } from "@/lib/homework/audience";
 import { tashkentDateKey, tashkentDayDiff, tashkentDayStart } from "@/lib/utils";
 import { awardXp, BUDGETED_ACTIONS, findAward } from "@/lib/engine/xp-engine";
 import { notifyUser } from "@/lib/notifications";
@@ -318,7 +319,7 @@ async function computeProgression(studentId: string): Promise<Progression | null
     db.homeworkSubmission.count({ where: { studentId, submittedAt: { gte: dayStart } } }),
     student.groupId
       ? db.homework.findFirst({
-          where: { groupId: student.groupId, dueDate: { gte: now }, submissions: { none: { studentId } } },
+          where: { groupId: student.groupId, dueDate: { gte: now }, submissions: { none: { studentId } }, ...forStudent(studentId) },
           orderBy: { dueDate: "asc" },
           select: { id: true, title: true, module: true },
         })

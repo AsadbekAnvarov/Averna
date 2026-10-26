@@ -39,6 +39,7 @@ import { PendingReviewsCard } from "@/components/review/pending-reviews-card";
 import { GroupPulse } from "@/components/teacher/group-pulse";
 import { GroupBroadcast } from "@/components/teacher/group-broadcast";
 import { TeacherAttentionBar } from "@/components/teacher/attention-bar";
+import { NeedsHelpCard } from "@/components/teacher/needs-help-card";
 import { PanelTabs } from "@/components/panel-tabs";
 import { SectionHeader } from "@/components/ui/section-header";
 import { LiveRefresh } from "@/components/ui/live-refresh";
@@ -303,10 +304,15 @@ export default async function TeacherDashboard() {
           <p className="text-gray-400 mt-1">Here&apos;s what&apos;s happening across your classes today.</p>
         </div>
 
-        {/* What needs attention today */}
+        {/* What needs attention today: work counts, then the students who need a hand (idea 10). */}
         <div className="mb-4">
           <Suspense fallback={<div className="h-10" />}>
             <TeacherAttentionBar teacherId={teacher.id} userId={session.user.id} />
+          </Suspense>
+        </div>
+        <div className="mb-6">
+          <Suspense fallback={<WidgetSkeleton rows={3} />}>
+            <NeedsHelpCard teacherId={teacher.id} />
           </Suspense>
         </div>
 

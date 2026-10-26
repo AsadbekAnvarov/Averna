@@ -21,7 +21,9 @@
  *   - more than 2 extra small targets on a phone page,
  *   - smallest text below 11px where the base was at 11px or more,
  *   - a page more than 15% longer (screens),
- *   - any uneven dashboard row on HEAD (absolute check; needs no base).
+ *   - any uneven dashboard row on HEAD (absolute check; needs no base),
+ *   - the teacher dashboard at 320×640 without the "Who needs help today" card (or its empty state),
+ *     or scrolling sideways (absolute check on HEAD).
  * Denser pages are the goal, so shorter pages and more content above the fold never fail.
  * A page that is missing (404) on both sides is skipped. Runs in CI (.github/workflows/screens.yml)
  * against the same seeded database as the preservation checks.
@@ -266,10 +268,47 @@ async function measurePage(context, role, path, device) {
 
 const keyOf = (r) => `${r.role} ${r.path} ${r.device}`;
 
+/**
+ * Absolute check (HEAD only, no base needed): the teacher dashboard renders "Who needs help today"
+ * (its list or its empty state, [data-testid="needs-help"]) and nothing scrolls sideways at 320 px.
+ */
+async function needsHelpCheck(browser) {
+  const context = await browser.newContext({ viewport: { width: 320, height: 640 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, reducedMotion: "reduce" });
+  try {
+    await context.addInitScript(() => {
+      if (window !== window.top) return;
+      localStorage.setItem("averna_theme", "dark");
+      localStorage.setItem("averna_onboarding_done_v1", "1");
+      localStorage.setItem("averna_setup_done_v1", "1");
+    });
+    await ensureSignedIn(context, BASE, "teacher", USERS.teacher, signIn);
+    const page = await context.newPage();
+    await page.goto(`${BASE}/teacher/dashboard`, { waitUntil: "load", timeout: 60_000 });
+    await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
+    await page.waitForSelector('[data-testid="needs-help"]', { timeout: 15_000 }).catch(() => {});
+    const r = await page.evaluate(() => ({
+      card: !!document.querySelector('[data-testid="needs-help"]'),
+      overflow: Math.round(document.documentElement.scrollWidth - innerWidth),
+    }));
+    const issues = [];
+    if (!r.card) issues.push('the "Who needs help today" card (or its empty state) is missing');
+    if (r.overflow > 1) issues.push(`the page scrolls sideways by ${r.overflow}px at 320px`);
+    console.log(`teacher /teacher/dashboard 320px: needs-help card ${r.card ? "shown" : "MISSING"}, horizontal overflow ${r.overflow}px`);
+    return issues.map((message) => ({ key: "teacher /teacher/dashboard 320px", message }));
+  } catch (e) {
+    return [{ key: "teacher /teacher/dashboard 320px", message: `not checked: ${String(e?.message ?? e).split("\n")[0].slice(0, 160)}` }];
+  } finally {
+    await context.close();
+  }
+}
+
+let headChecks = [];
+
 async function measureAll() {
   const out = [];
   const browser = await chromium.launch();
   try {
+    headChecks = await needsHelpCheck(browser);
     for (const [role, paths] of Object.entries(PAGES)) {
       for (const device of Object.keys(DEVICES)) {
         const context = await newContext(browser, role, device);
@@ -398,6 +437,11 @@ if (MODE === "capture") {
 } else {
   const base = existsSync(FILE) ? JSON.parse(readFileSync(FILE, "utf8")).pages ?? [] : [];
   const { rows, regressions } = compare(base, measured);
+  // Teacher dashboard at 320 px (idea 10): an absolute check on HEAD; "not checked" is only a note.
+  for (const c of headChecks) {
+    if (c.message.startsWith("not checked")) notes.push(c);
+    else regressions.push(c);
+  }
   console.log("");
   printTable(rows);
   // Every uneven dashboard row found on HEAD (desktop), also counted in `regressions`.

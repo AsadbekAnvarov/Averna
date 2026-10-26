@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { forStudent } from "@/lib/homework/audience";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
@@ -64,7 +65,7 @@ export default async function CalendarPage(
   // Homework deadlines in this month
   const homework = student.groupId
     ? await db.homework.findMany({
-        where: { groupId: student.groupId, dueDate: { gte: monthStart, lte: new Date(year, month + 1, 0, 23, 59) } },
+        where: { groupId: student.groupId, dueDate: { gte: monthStart, lte: new Date(year, month + 1, 0, 23, 59) }, ...forStudent(student.id) },
       })
     : [];
   const hwByDay: Record<number, string[]> = {};

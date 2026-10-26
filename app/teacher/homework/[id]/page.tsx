@@ -42,6 +42,8 @@ interface HomeworkRow {
   contentId: string | null;
   contentPart: number | null;
   contentTitle: string | null;
+  /** Set for one student only (a mini task); null = the whole group. */
+  assigneeId: string | null;
   group: { id: string; name: string; teacherId: string } | null;
 }
 
@@ -136,6 +138,7 @@ export default async function TeacherHomeworkDetailPage(props: { params: Promise
         contentId: true,
         contentPart: true,
         contentTitle: true,
+        assigneeId: true,
         group: { select: { id: true, name: true, teacherId: true } },
       },
     })
@@ -150,7 +153,11 @@ export default async function TeacherHomeworkDetailPage(props: { params: Promise
 
   const [students, submissions]: [StudentRow[], SubmissionRow[]] = await Promise.all([
     db.student
-      .findMany({ where: { groupId: hw.groupId }, select: { id: true, user: { select: { name: true, email: true } } } })
+      // A personal task (mini task) is for its one student only.
+      .findMany({
+        where: { groupId: hw.groupId, ...(hw.assigneeId ? { id: hw.assigneeId } : {}) },
+        select: { id: true, user: { select: { name: true, email: true } } },
+      })
       .catch(() => []),
     db.homeworkSubmission
       .findMany({
@@ -310,7 +317,13 @@ export default async function TeacherHomeworkDetailPage(props: { params: Promise
           <Tile
             label="Submitted"
             value={`${memberSubs.length}/${students.length}`}
-            sub={students.length ? `${Math.round((memberSubs.length / students.length) * 100)}% of the group` : "No students yet"}
+            sub={
+              hw.assigneeId
+                ? `Set for ${students[0]?.user?.name?.trim() || "one student"} only`
+                : students.length
+                  ? `${Math.round((memberSubs.length / students.length) * 100)}% of the group`
+                  : "No students yet"
+            }
           />
           <Tile label="Late" value={late} sub={late ? "after the due date" : "none"} tone={late ? "text-amber-300" : "text-white"} />
           {kind ? (
