@@ -10,8 +10,7 @@ import { buildSessionOutcome } from "@/lib/engine/progression/service";
 import type { SpeakingTestResult } from "@/components/exam/types";
 
 export const dynamic = "force-dynamic";
-// The whole test is assessed by the AI examiner in one call.
-export const maxDuration = 60;
+// The whole test is assessed by the AI examiner in one call; relies on the project default duration (300 s with Fluid).
 
 /**
  * The mock exam records its Speaking section under "<mockAttemptId>-S"

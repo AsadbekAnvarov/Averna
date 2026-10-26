@@ -165,7 +165,7 @@ export default function SpeakingRoomPage() {
             )}
             <div className="flex-1 overflow-y-auto space-y-2 pr-1">
               {messages.length === 0 ? (
-                <p className="text-sm text-gray-400 text-center mt-8">
+                <p className="text-sm text-gray-400 text-center mt-6">
                   You&apos;re connected! Start the conversation — say hello 👋
                 </p>
               ) : (

@@ -9,20 +9,20 @@ function Block({ className = "" }: { className?: string }) {
 
 export default function DashboardLoading() {
   return (
-    <div aria-busy="true" className="space-y-6">
+    <div aria-busy="true" className="space-y-4 sm:space-y-5">
       <span className="sr-only">Loading…</span>
 
       {/* Hero */}
-      <Block className="h-40 md:h-48" />
+      <Block className="h-36 md:h-44" />
 
       {/* Content grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-        <Block className="h-44" />
-        <Block className="h-44" />
-        <Block className="h-44" />
-        <Block className="h-36" />
-        <Block className="h-36" />
-        <Block className="h-36" />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
+        <Block className="h-40" />
+        <Block className="h-40" />
+        <Block className="h-40" />
+        <Block className="h-32" />
+        <Block className="h-32" />
+        <Block className="h-32" />
       </div>
     </div>
   );

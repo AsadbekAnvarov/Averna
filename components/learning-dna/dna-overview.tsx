@@ -81,7 +81,7 @@ export function DnaOverview({ profile }: { profile: LearningDnaProfile }) {
     <div className="space-y-5">
       {/* ---------- Hero ---------- */}
       <div className="glass-strong rounded-2xl border border-averna-purple/30 p-5 sm:p-6">
-        <div className="flex flex-col sm:flex-row items-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-4 lg:gap-5">
           <MaturityRing value={profile.maturity.value ?? 0} confidence={profile.confidence} />
 
           <div className="min-w-0 flex-1 text-center sm:text-left">

@@ -137,7 +137,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
   if (!test) {
     return (
       <div className="min-h-screen premium-gradient">
-        <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl pb-10 lg:pb-8">
+        <div className="container mx-auto px-4 py-4 sm:py-6 max-w-3xl pb-8 lg:pb-6">
           <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 flex items-center gap-3">
             <Headphones className="h-9 w-9 text-averna-neon" />
@@ -191,7 +191,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
   let globalIndex = 0;
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl pb-10 lg:pb-8">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-3xl pb-8 lg:pb-6">
         <button onClick={backToBank} className="text-averna-neon hover:underline text-sm mb-4 flex items-center gap-1">
           <ArrowLeft className="h-4 w-4" /> Back to tests
         </button>
@@ -204,7 +204,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
         </p>
 
         {/* Audio player */}
-        <Card className="glass border-averna-cyan/30 mb-8">
+        <Card className="glass border-averna-cyan/30 mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-averna-cyan"><Volume2 className="h-5 w-5" /> Audio Player</CardTitle>
           </CardHeader>
@@ -240,7 +240,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
         </Card>
 
         {/* Questions */}
-        <div className="space-y-8">
+        <div className="space-y-6">
           {sections.map((section) => (
             <div key={section.title}>
               <h2 className="text-xl font-semibold text-white mb-3">{section.title}</h2>
@@ -281,7 +281,7 @@ export function ListeningRunner({ tests }: { tests: ListeningTest[] }) {
         </div>
 
         {/* Submit / Result */}
-        <div className="mt-8">
+        <div className="mt-6">
           {!submitted ? (
             <Button onClick={handleSubmit} disabled={Object.keys(answers).length < allQuestions.length}
               className="w-full neon-button bg-averna-primary hover:bg-averna-light disabled:opacity-50">

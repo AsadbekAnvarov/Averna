@@ -111,15 +111,15 @@ export default async function HomeworkPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-6xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
+      <div className="container mx-auto max-w-6xl px-4 py-4 sm:py-6 pb-8 lg:pb-6">
         <Link href="/dashboard" className="mb-4 block text-sm text-averna-neon hover:underline">
           ← Back to Dashboard
         </Link>
-        <h1 className="mb-2 flex items-center gap-3 text-3xl font-bold text-white sm:text-4xl">
+        <h1 className="mb-2 flex items-center gap-3 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
           <BookOpen className="h-8 w-8 text-purple-400 sm:h-10 sm:w-10" aria-hidden />
           Homework
         </h1>
-        <p className="mb-8 text-gray-300">Submit first for bonus points! 🥇 1st: +10pts | 🥈 2nd: +8pts | 🥉 3rd: +6pts</p>
+        <p className="mb-6 text-gray-300">Submit first for bonus points! 🥇 1st: +10pts | 🥈 2nd: +8pts | 🥉 3rd: +6pts</p>
 
         <section className="mb-10" aria-labelledby="hw-todo">
           <h2 id="hw-todo" className="mb-4 text-2xl font-bold text-white">

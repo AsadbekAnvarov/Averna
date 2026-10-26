@@ -66,12 +66,12 @@ export async function TeacherWorkload() {
                     <span className="flex items-center gap-2 text-white min-w-0">
                       <span className="truncate">{r.name}</span>
                       {r.isSecond && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-averna-pink/20 text-averna-pink shrink-0">
+                        <span className="text-[11px] leading-4 px-1.5 py-0.5 rounded-full bg-averna-pink/20 text-averna-pink shrink-0">
                           1-on-1
                         </span>
                       )}
                       {overloaded && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-red-400/20 text-red-400 shrink-0">
+                        <span className="text-[11px] leading-4 px-1.5 py-0.5 rounded-full bg-red-400/20 text-red-400 shrink-0">
                           yuqori yuklama
                         </span>
                       )}

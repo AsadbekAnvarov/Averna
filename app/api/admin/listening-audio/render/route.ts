@@ -8,8 +8,7 @@ import { StoreError, currentPartInfo, renderAndStore, resolveAudioTest, shortErr
 import type { AudioErrorBody, AudioErrorCode, RenderOk } from "@/lib/ielts/audio/admin-types";
 
 export const dynamic = "force-dynamic";
-// One part = ~20–50 text-to-speech requests (≤ 40 s) + the upload.
-export const maxDuration = 60;
+// One part = ~20–50 text-to-speech requests (≤ 40 s) + the upload; relies on the project default duration (300 s with Fluid).
 
 const json = (body: unknown, status = 200) => NextResponse.json(body, { status, headers: { "cache-control": "no-store" } });
 

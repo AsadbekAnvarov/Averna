@@ -146,7 +146,7 @@ export function HomeworkQuestionStats({ stats, maxQuestions }: { stats: ClassSta
   const hardIds = new Set(stats.hardest.map((e) => e.id));
   const total = maxQuestions ?? stats.meanTotal;
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-5">
       <p className="text-sm text-gray-400">
         Based on {stats.attempts} attempt{stats.attempts === 1 ? "" : "s"} · average{" "}
         <span className="font-semibold text-white">

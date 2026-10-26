@@ -22,12 +22,12 @@ export default async function ProgressStreaksPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-5">
       <StreakStory currentStreak={student.currentStreak} longestStreak={student.longestStreak} />
       <Suspense fallback={<WidgetSkeleton rows={4} />}>
         <StreakHeatmap studentId={student.id} />
       </Suspense>
-      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-4 lg:gap-5 lg:grid-cols-2">
         <Suspense fallback={<WidgetSkeleton rows={3} />}>
           <CommitmentCard studentId={student.id} />
         </Suspense>
@@ -35,7 +35,7 @@ export default async function ProgressStreaksPage() {
           <ActivityHistory studentId={student.id} />
         </Suspense>
       </div>
-      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-4 lg:gap-5 lg:grid-cols-2">
         <Suspense fallback={<WidgetSkeleton rows={4} />}>
           <LearningJournal studentId={student.id} />
         </Suspense>

@@ -5,10 +5,7 @@ import { formatDateTime } from "@/lib/utils";
 import { resolveExamContent } from "@/lib/homework/library";
 import { homeworkStaff } from "@/lib/homework/staff";
 
-// Telegram copies of the "new homework" notice are sent after the response (lib/notifications) — give
-// them time: up to 45 s of sending (TELEGRAM_BULK_BUDGET_MAX_MS, shared by the groups) fits inside these 60 s.
-export const maxDuration = 60;
-
+// Telegram copies (up to 45 s of sending after the response) rely on the project default duration (300 s with Fluid).
 export const dynamic = "force-dynamic";
 
 /**

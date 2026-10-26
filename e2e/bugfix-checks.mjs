@@ -17,7 +17,7 @@ import { createRoleSessionCache } from "./role-session.mjs";
 
 const ensureSignedIn = createRoleSessionCache();
 import fc from "fast-check";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 
 const BASE = process.env.BASE_URL ?? "http://localhost:3000";
@@ -297,13 +297,32 @@ async function caseLightExam(browser) {
 // Case 2 — dictionary on /article in the light theme (A2)
 // ---------------------------------------------------------------------------------------------
 
+/**
+ * /article is now the lesson library (cards, no body text), so the check opens the first structured
+ * lesson of lib/articles/catalog.json, whose text sits in `.article-body p` inside the LookupArea.
+ */
+function firstArticlePath() {
+  try {
+    const slug = JSON.parse(readFileSync(new URL("../lib/articles/catalog.json", import.meta.url), "utf8"))[0]?.slug;
+    if (typeof slug === "string" && slug) return `/article/${encodeURIComponent(slug)}`;
+  } catch {
+    // Fall through to the library page and the old selectors.
+  }
+  return "/article";
+}
+
 async function caseDictionary(browser) {
   const id = "2-dictionary";
-  const label = "light/desktop/article";
+  const path = firstArticlePath();
+  const label = `light/desktop${path}`;
   await withContext(browser, { theme: "light" }, async (context) => {
-    const page = await open(context, "/article");
+    const page = await open(context, path);
     const word = await page.evaluate(() => {
-      const p = document.querySelector("p.whitespace-pre-line") || document.querySelector("[data-lookup-text]");
+      // Structured article lessons first; the old article page's selectors stay as fallbacks.
+      const p =
+        document.querySelector(".article-body p:not(.article-caption)") ||
+        document.querySelector("p.whitespace-pre-line") ||
+        document.querySelector("[data-lookup-text]");
       if (!p) return null;
       const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
       for (let node = walker.nextNode(); node; node = walker.nextNode()) {
@@ -320,7 +339,7 @@ async function caseDictionary(browser) {
       return null;
     });
     if (!word) {
-      violation(id, label, "setup: no article text to select");
+      violation(id, label, `setup: no article text to select on ${path}`);
       return;
     }
     const chip = page.locator('button[aria-label^="Look up"]').first();

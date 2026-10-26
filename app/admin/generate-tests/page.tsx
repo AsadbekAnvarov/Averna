@@ -77,7 +77,7 @@ export default async function GenerateTestsPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl pb-10 lg:pb-8">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-5xl pb-8 lg:pb-6">
         {role === "TEACHER" ? <TeacherHeader user={{ name: dbUser?.name ?? "Teacher", email: dbUser?.email ?? "", image: dbUser?.image ?? null }} /> : <AdminHeader user={{ name: dbUser?.name ?? "Admin", email: dbUser?.email ?? "", image: dbUser?.image ?? null }} />}
 
         <PageHeader
@@ -102,7 +102,7 @@ export default async function GenerateTestsPage() {
             <ChevronDown className="h-4 w-4 text-gray-500 transition-transform motion-reduce:transition-none group-open:rotate-180" aria-hidden />
           </summary>
 
-          <div className="space-y-8 px-4 pb-5 pt-1">
+          <div className="space-y-6 px-4 pb-5 pt-1">
             <TestGeneratorPanel />
 
             <div>

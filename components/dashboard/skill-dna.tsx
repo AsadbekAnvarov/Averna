@@ -70,7 +70,7 @@ export async function SkillDna({ studentId }: { studentId: string }) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col sm:flex-row items-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-4 lg:gap-5">
           {/* Helix */}
           <div className="shrink-0">
             <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="dna-float">

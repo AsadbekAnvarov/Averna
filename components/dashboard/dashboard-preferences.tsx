@@ -64,7 +64,7 @@ export function DashboardPreferences() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 text-[11px] text-gray-400 hover:text-white transition-colors"
+        className="inline-flex min-h-[44px] lg:min-h-9 items-center gap-1.5 text-[11px] text-gray-400 hover:text-white transition-colors"
         title="Comfort settings"
       >
         <Settings className="h-4 w-4" /> Customize

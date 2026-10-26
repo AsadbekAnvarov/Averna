@@ -27,17 +27,17 @@ export interface SkillCardData {
 export function SkillLibraryCard({ data }: { data: SkillCardData }) {
   const tone = SKILL_TONE[data.skill];
   return (
-    <SpotlightCard as="li" className="av-panel glow-hover flex h-full flex-col rounded-2xl p-5 focus-within:border-averna-neon/40 sm:p-6">
+    <SpotlightCard as="li" className="av-panel glow-hover flex h-full flex-col rounded-2xl p-3.5 focus-within:border-averna-neon/40 sm:p-6">
       <div className="flex items-center gap-3">
-        <SkillIcon skill={data.skill} className="h-11 w-11" />
+        <SkillIcon skill={data.skill} className="h-10 w-10 sm:h-11 sm:w-11" />
         <div className="min-w-0">
           <h3 className="text-lg font-semibold leading-tight text-white">{data.title}</h3>
           <p className={cn("mt-0.5 text-xs font-medium", tone.text)}>{data.format}</p>
         </div>
       </div>
-      <p className="mt-4 text-sm font-medium text-gray-200">{data.count}</p>
-      <Chips items={data.inside} max={4} label={`${data.title} — what's inside`} className="mt-3" />
-      <div className="mt-auto pt-5">
+      <p className="mt-3 text-sm font-medium text-gray-200 sm:mt-4">{data.count}</p>
+      <Chips items={data.inside} max={4} label={`${data.title} — what's inside`} className="mt-2 sm:mt-3" />
+      <div className="mt-auto pt-3 sm:pt-5">
         <Link
           href={data.href}
           className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-averna-neon/30 bg-averna-neon/[0.06] px-4 text-sm font-semibold text-averna-neon transition-colors after:absolute after:inset-0 after:rounded-2xl hover:bg-averna-neon/10"
@@ -63,17 +63,17 @@ export function MockExamCard({ href = "/learning/mock-exam" }: { href?: string }
     <SpotlightCard
       as="section"
       aria-labelledby="mock-exam-title"
-      className="av-panel av-panel-hero glow-hover rounded-3xl p-5 sm:p-8"
+      className="av-panel av-panel-hero glow-hover rounded-3xl p-3.5 sm:p-8"
     >
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-averna-neon/10 text-averna-neon" aria-hidden>
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-averna-neon/10 text-averna-neon sm:h-11 sm:w-11" aria-hidden>
               <Trophy className="h-5 w-5" />
             </span>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">Mock exam</p>
           </div>
-          <h2 id="mock-exam-title" className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+          <h2 id="mock-exam-title" className="mt-3 text-2xl font-bold tracking-tight text-white sm:mt-4 sm:text-3xl">
             Full IELTS mock
           </h2>
           <p className="mt-1.5 flex flex-wrap items-center gap-x-2 text-sm text-gray-300 sm:text-base">
@@ -84,7 +84,7 @@ export function MockExamCard({ href = "/learning/mock-exam" }: { href?: string }
               new random papers every time
             </span>
           </p>
-          <ul role="list" aria-label="Sections" className="mt-4 flex flex-wrap gap-2">
+          <ul role="list" aria-label="Sections" className="mt-3 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
             {MOCK_SECTIONS.map((s) => {
               const Icon = SKILL_ICON[s.skill];
               return (

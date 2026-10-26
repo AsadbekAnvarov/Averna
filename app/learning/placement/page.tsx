@@ -73,7 +73,7 @@ export default async function PlacementHubPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-6xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-6xl px-4 py-4 pb-8 sm:py-6 lg:pb-6">
         <Hero />
         <div className="mt-6">
           {!overview ? (
@@ -186,7 +186,7 @@ function StartCard({ overview }: { overview: PlacementOverview }) {
   }
   return (
     <section aria-labelledby="placement-start-title" className="av-panel rounded-3xl p-5 sm:p-6">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-4 lg:gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <h2 id="placement-start-title" className="text-lg font-semibold text-white sm:text-xl">
             {last ? "Ready to measure your progress?" : "Ready when you are"}
@@ -209,7 +209,7 @@ function ActiveSitting({ active }: { active: NonNullable<PlacementOverview["acti
   const idx = Math.max(0, Math.min(PLACEMENT_SECTIONS.length - 1, active.current));
   return (
     <section aria-labelledby="placement-active-title" className="av-panel av-panel-hero rounded-3xl p-5 sm:p-6">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-4 lg:gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <p className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">
             <span aria-hidden className="h-2 w-2 rounded-full bg-averna-neon motion-safe:animate-pulse-slow" />
@@ -267,7 +267,7 @@ function ActiveSitting({ active }: { active: NonNullable<PlacementOverview["acti
 
 function LastResult({ last }: { last: NonNullable<PlacementOverview["last"]> }) {
   return (
-    <section aria-labelledby="placement-last-title" className="mt-8">
+    <section aria-labelledby="placement-last-title" className="mt-6">
       <h2 id="placement-last-title" className="mb-4 text-lg font-semibold text-white">
         Your last result
       </h2>
@@ -308,7 +308,7 @@ function LastResult({ last }: { last: NonNullable<PlacementOverview["last"]> }) 
 
 function SpeakingNote() {
   return (
-    <section aria-labelledby="placement-speaking-title" className="mt-8">
+    <section aria-labelledby="placement-speaking-title" className="mt-6">
       <div className="av-panel flex items-start gap-3 rounded-2xl p-4 sm:p-5">
         <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-400/10 text-amber-300">
           <Mic className="h-5 w-5" />

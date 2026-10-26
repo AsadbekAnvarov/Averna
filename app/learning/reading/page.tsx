@@ -33,7 +33,7 @@ export default async function ReadingLibraryPage(props: { searchParams?: Promise
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-6xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-6xl px-4 py-4 pb-8 sm:py-6 lg:pb-6">
         <LibraryHero
           skill="READING"
           eyebrow="Academic Reading"

@@ -38,7 +38,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
   const { stats, bullets, priorities, risks, actions, events, recommendations, insight } = mc;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-3 sm:space-y-5">
       {/* Module 1 — AI Executive Briefing */}
       <Card className="glass border-averna-neon/30 relative overflow-hidden">
         <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-averna-neon/10 blur-3xl" />
@@ -47,7 +47,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
             <Brain className="h-5 w-5" /> AI Ijrochi Xulosasi
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4 relative">
+        <CardContent className="space-y-3 sm:space-y-4 relative">
           <p className="text-lg font-semibold text-white">
             {greeting()}, {firstName}.
           </p>
@@ -62,7 +62,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
           </ul>
 
           {/* Priorities / risks / actions */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-3">
             <div className="rounded-xl border border-white/10 bg-white/5 p-3">
               <p className="text-[11px] uppercase tracking-wider text-averna-cyan mb-1.5 flex items-center gap-1">
                 <ListChecks className="h-3.5 w-3.5" /> Ustuvor vazifalar
@@ -115,7 +115,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
         {/* Module 2 — Critical Event Center */}
         <Card className="glass border-red-500/30">
           <CardHeader>
@@ -142,12 +142,12 @@ export async function MissionControl({ firstName }: { firstName: string }) {
                           <span className={`h-2 w-2 rounded-full shrink-0 ${st.dot}`} />
                           <span className="truncate">{e.title}</span>
                         </span>
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full border shrink-0 ${st.chip}`}>{st.label}</span>
+                        <span className={`text-[11px] leading-4 px-2 py-0.5 rounded-full border shrink-0 ${st.chip}`}>{st.label}</span>
                       </div>
                       <p className="text-xs text-gray-400 mt-1">{e.impact}</p>
                       <div className="flex items-center justify-between mt-1.5">
                         <span className="text-xs text-gray-300">{e.action}</span>
-                        <Link href={e.href} className="text-xs text-red-300 hover:underline inline-flex items-center gap-1 shrink-0">
+                        <Link href={e.href} className="-my-3 min-h-[44px] text-xs text-red-300 hover:underline inline-flex items-center gap-1 shrink-0">
                           Hal qilish <ArrowRight className="h-3 w-3" />
                         </Link>
                       </div>
@@ -181,7 +181,7 @@ export async function MissionControl({ firstName }: { firstName: string }) {
                       <span className="text-[11px] text-averna-neon">{r.expected}</span>
                       <Link
                         href={r.href}
-                        className="text-xs px-2.5 py-1 rounded-lg border border-averna-purple/40 bg-averna-purple/10 text-averna-purple hover:bg-averna-purple/20 inline-flex items-center gap-1 shrink-0 transition-colors"
+                        className="-my-2 min-h-[44px] lg:min-h-9 lg:my-0 text-xs px-2.5 py-1 rounded-lg border border-averna-purple/40 bg-averna-purple/10 text-averna-purple hover:bg-averna-purple/20 inline-flex items-center gap-1 shrink-0 transition-colors"
                       >
                         <Sparkles className="h-3 w-3" /> {r.cta}
                       </Link>

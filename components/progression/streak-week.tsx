@@ -38,7 +38,7 @@ export function StreakWeek({ streak }: { streak: StreakView }) {
         )}
       </div>
 
-      <ul className="mt-5 grid grid-cols-7 gap-1.5" aria-label="Last 7 days">
+      <ul className="mt-3 grid grid-cols-7 gap-1.5 sm:mt-5" aria-label="Last 7 days">
         {streak.week.map((d) => (
           <li key={d.dayKey} className="flex flex-col items-center gap-1">
             <span
@@ -53,12 +53,12 @@ export function StreakWeek({ streak }: { streak: StreakView }) {
             >
               {d.studied ? "✓" : ""}
             </span>
-            <span className={cn("text-[10px]", d.isToday ? "text-white" : "text-gray-500")}>{d.label}</span>
+            <span className={cn("text-[11px] leading-4", d.isToday ? "text-white" : "text-gray-500")}>{d.label}</span>
           </li>
         ))}
       </ul>
 
-      <p className="mt-4 text-sm text-gray-300">{STATUS_COPY[streak.status]}</p>
+      <p className="mt-3 text-sm text-gray-300 sm:mt-4">{STATUS_COPY[streak.status]}</p>
       {next && (
         <p className="mt-1 text-xs text-gray-400">
           Next milestone: {next} days ({next - streak.current} to go). A new freeze every {STREAK_CONFIG.freezeEvery} days.

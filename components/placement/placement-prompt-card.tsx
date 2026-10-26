@@ -48,9 +48,9 @@ export function PlacementPromptCard({ activeAttemptId }: { activeAttemptId: stri
   return (
     <section
       aria-labelledby="placement-prompt-title"
-      className="av-panel relative overflow-hidden rounded-2xl border border-averna-neon/20 px-4 py-4 sm:px-5 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-500"
+      className="av-panel relative overflow-hidden rounded-2xl border border-averna-neon/20 px-3.5 py-3.5 sm:px-5 sm:py-4 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-500"
     >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
         <div className="flex min-w-0 flex-1 items-start gap-3">
           <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-averna-neon/10 text-averna-neon">
             <Compass className="h-5 w-5" />

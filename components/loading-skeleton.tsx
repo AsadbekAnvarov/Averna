@@ -3,8 +3,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function DashboardSkeleton() {
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="space-y-4 sm:space-y-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
         <Card className="glass border-averna-primary/30">
           <CardHeader>
             <Skeleton className="h-6 w-3/4" />
@@ -26,7 +26,7 @@ export function DashboardSkeleton() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map((i) => (
           <Card key={i} className="glass border-averna-primary/30">
-            <CardContent className="pt-6">
+            <CardContent className="pt-4 sm:pt-5">
               <Skeleton className="h-16 w-full mb-2" />
               <Skeleton className="h-4 w-3/4" />
             </CardContent>

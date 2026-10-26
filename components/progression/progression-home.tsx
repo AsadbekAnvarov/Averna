@@ -39,7 +39,7 @@ export async function ProgressionHome({
   const p = await load(studentId);
   if (!p) {
     return (
-      <div className="space-y-4 md:space-y-6">
+      <div className="space-y-3 md:space-y-6">
         <ErrorPanel
           title="We couldn't load your mission."
           detail="Your progress is safe — this is only a display problem."
@@ -51,20 +51,20 @@ export async function ProgressionHome({
   }
 
   return (
-    <div className="space-y-4 md:space-y-6">
+    <div className="space-y-3 md:space-y-6">
       <Reveal>
         <TodayMission mission={p.mission} firstName={p.firstName} isNew={p.isNew} />
       </Reveal>
 
-      <Reveal className="grid grid-cols-1 items-start gap-4 md:gap-6 lg:grid-cols-3">
+      <Reveal className="grid grid-cols-1 items-start gap-3 md:gap-4 lg:gap-5 lg:grid-cols-3">
         <div className="lg:col-span-2">{homework}</div>
-        <div className="space-y-4 md:space-y-6">
+        <div className="space-y-3 md:space-y-6">
           <NextActivity rec={p.recommendation} />
           {aside}
         </div>
       </Reveal>
 
-      <Reveal className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-5">
+      <Reveal className="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5 lg:grid-cols-5">
         <div className="lg:col-span-3">
           <SkillProgress profile={p.profile} targetBand={p.targetBand} insight={p.insight} weakestSkill={p.weakest?.skill ?? null} />
         </div>
@@ -73,7 +73,7 @@ export async function ProgressionHome({
         </div>
       </Reveal>
 
-      <Reveal className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-2">
+      <Reveal className="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5 md:grid-cols-2">
         <ChallengesCard daily={p.daily} weekly={p.weekly} />
         <RecentBadges badges={p.badges} recent={p.recentBadges} />
       </Reveal>

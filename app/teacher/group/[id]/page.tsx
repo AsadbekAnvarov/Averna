@@ -59,7 +59,7 @@ export default async function TeacherGroupPage(props: { params: Promise<{ id: st
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl pb-10 lg:pb-8">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-5xl pb-8 lg:pb-6">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
 
         <Link href="/teacher/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
@@ -82,7 +82,7 @@ export default async function TeacherGroupPage(props: { params: Promise<{ id: st
         </div>
 
         {/* Quick actions for this group */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {actions.map((a) => {
             const Icon = a.icon;
             return (
@@ -105,8 +105,8 @@ export default async function TeacherGroupPage(props: { params: Promise<{ id: st
 
         {/* Students */}
         <SectionHeader icon={Users} title={`Students (${group.students.length})`} subtitle="Ranked by points · attendance shown" accent="text-averna-cyan" />
-        <Card className="glass border-averna-cyan/30 mb-8">
-          <CardContent className="pt-6">
+        <Card className="glass border-averna-cyan/30 mb-6">
+          <CardContent className="pt-4 sm:pt-5">
             {group.students.length === 0 ? (
               <EmptyState icon={Users} title="No students yet" description="Students assigned to this group will appear here." accent="text-averna-cyan" compact />
             ) : (
@@ -137,11 +137,11 @@ export default async function TeacherGroupPage(props: { params: Promise<{ id: st
         </Card>
 
         {/* Recent homework + lessons */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
           <div>
             <SectionHeader icon={BookOpen} title="Recent Homework" accent="text-amber-400" action={{ label: "All", href: "/teacher/homework" }} />
             <Card className="glass border-amber-400/30">
-              <CardContent className="pt-6">
+              <CardContent className="pt-4 sm:pt-5">
                 {group.homework.length === 0 ? (
                   <EmptyState icon={BookOpen} title="No homework yet" action={{ label: "Create homework", href: "/teacher/homework/create" }} accent="text-amber-400" compact />
                 ) : (
@@ -164,7 +164,7 @@ export default async function TeacherGroupPage(props: { params: Promise<{ id: st
           <div>
             <SectionHeader icon={NotebookPen} title="Recent Lessons" accent="text-averna-blue" action={{ label: "All", href: "/teacher/lessons" }} />
             <Card className="glass border-averna-blue/30">
-              <CardContent className="pt-6">
+              <CardContent className="pt-4 sm:pt-5">
                 {group.lessonLogs.length === 0 ? (
                   <EmptyState icon={NotebookPen} title="No lessons logged" description="Record what you covered to keep a history." accent="text-averna-blue" compact />
                 ) : (

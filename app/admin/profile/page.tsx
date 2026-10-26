@@ -46,7 +46,7 @@ export default async function AdminProfilePage(props: { searchParams: Promise<{ 
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-4xl">
         <AdminHeader user={{ name: dbUser.name ?? "Admin", email: dbUser.email, image: dbUser.image }} />
 
         <PageHeader
@@ -62,7 +62,7 @@ export default async function AdminProfilePage(props: { searchParams: Promise<{ 
         )}
 
         {/* Avatar editor */}
-        <div className="mb-8">
+        <div className="mb-6">
           <AvatarEditor currentImage={dbUser.image ?? null} name={dbUser.name ?? "Admin"} />
         </div>
 
@@ -72,7 +72,7 @@ export default async function AdminProfilePage(props: { searchParams: Promise<{ 
             <CardTitle>Akkaunt maʼlumotlari</CardTitle>
           </CardHeader>
           <CardContent>
-            <form action={updateAdminProfile} className="space-y-6">
+            <form action={updateAdminProfile} className="space-y-4 sm:space-y-5">
               <div className="space-y-2">
                 <Label htmlFor="name" className="flex items-center gap-2">
                   <User className="h-4 w-4" /> Toʻliq ism
@@ -95,12 +95,12 @@ export default async function AdminProfilePage(props: { searchParams: Promise<{ 
         </Card>
 
         {/* Username */}
-        <div className="mt-8">
+        <div className="mt-6">
           <UsernameForm lang="uz" initial={dbUser.username ?? null} allowReserved />
         </div>
 
         {/* Password */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ChangePasswordForm lang="uz" email={dbUser.email} username={dbUser.username} />
         </div>
       </div>

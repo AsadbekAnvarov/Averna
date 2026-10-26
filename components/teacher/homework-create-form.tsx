@@ -282,7 +282,7 @@ export function HomeworkCreateForm({
     );
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5" noValidate>
       <div role="group" aria-label="Kind of homework" className="grid grid-cols-2 gap-1 rounded-2xl border border-white/10 bg-white/[0.03] p-1">
         <button type="button" aria-pressed={mode === "library"} onClick={() => switchMode("library")} className={modeBtn(mode === "library")}>
           <Library className="h-4 w-4" aria-hidden /> From the test library

@@ -91,7 +91,7 @@ export function PanelTabs({
 
   return (
     <div>
-      <div className={`${wrapOnMobile?"relative sm:sticky sm:top-[var(--app-bar-h,0px)]":"sticky top-[var(--app-bar-h,0px)]"} z-30 -mx-4 px-4 py-2 mb-4`}>
+      <div className={`${wrapOnMobile?"relative sm:sticky sm:top-[var(--app-bar-h,0px)]":"sticky top-[var(--app-bar-h,0px)]"} z-30 -mx-4 px-4 py-1.5 mb-3`}>
         <div className="no-scrollbar overflow-x-auto">
           <div className={`${wrapOnMobile?"grid grid-cols-2 sm:flex w-full sm:w-max":"flex w-max"} min-w-full md:min-w-0 gap-1 md:mx-auto glass-strong border border-white/10 rounded-2xl p-1.5 shadow-xl`}>
             {tabs.map((t) => {
@@ -115,7 +115,7 @@ export function PanelTabs({
         </div>
       </div>
 
-      <div key={active} className="tab-stagger space-y-6">
+      <div key={active} className="tab-stagger space-y-3 sm:space-y-5">
         {content[active]}
       </div>
     </div>

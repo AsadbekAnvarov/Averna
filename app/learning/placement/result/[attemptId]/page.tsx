@@ -70,7 +70,7 @@ export default async function PlacementResultPage(props: { params: Promise<{ att
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-5xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-5xl px-4 py-4 pb-8 sm:py-6 lg:pb-6">
         {/* Level + recommendation */}
         <section
           aria-labelledby="placement-result-title"
@@ -85,7 +85,7 @@ export default async function PlacementResultPage(props: { params: Promise<{ att
             Placement test
           </Link>
 
-          <div className="mt-2 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+          <div className="mt-2 grid gap-4 lg:gap-5 md:grid-cols-[1fr_auto] md:items-center">
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">Placement test · Result</p>
               <h1 id="placement-result-title" className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">
@@ -139,7 +139,7 @@ export default async function PlacementResultPage(props: { params: Promise<{ att
         </section>
 
         {/* Sections */}
-        <section aria-labelledby="placement-sections-title" className="mt-8">
+        <section aria-labelledby="placement-sections-title" className="mt-6">
           <h2 id="placement-sections-title" className={cn("mb-4 text-lg font-semibold text-white", ENTER)}>
             Section by section
           </h2>
@@ -151,7 +151,7 @@ export default async function PlacementResultPage(props: { params: Promise<{ att
         </section>
 
         {/* Strengths + weaknesses */}
-        <Reveal as="section" aria-labelledby="placement-sw-title" className="mt-8">
+        <Reveal as="section" aria-labelledby="placement-sw-title" className="mt-6">
           <h2 id="placement-sw-title" className="mb-4 text-lg font-semibold text-white">
             What stood out
           </h2>
@@ -197,7 +197,7 @@ export default async function PlacementResultPage(props: { params: Promise<{ att
 
         {/* What to study first */}
         {s.studyFirst.length > 0 && (
-          <Reveal as="section" aria-labelledby="placement-study-title" className="mt-8">
+          <Reveal as="section" aria-labelledby="placement-study-title" className="mt-6">
             <h2 id="placement-study-title" className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
               <TrendingUp className="h-5 w-5 text-averna-neon" aria-hidden />
               What to study first
@@ -222,7 +222,7 @@ export default async function PlacementResultPage(props: { params: Promise<{ att
 
         {/* Grammar points to review */}
         {s.review.length > 0 && (
-          <Reveal as="section" aria-labelledby="placement-review-title" className="mt-8">
+          <Reveal as="section" aria-labelledby="placement-review-title" className="mt-6">
             <div className="av-panel rounded-2xl p-5 sm:p-6">
               <h2 id="placement-review-title" className="flex items-center gap-2 text-lg font-semibold text-white">
                 <BookMarked className="h-5 w-5 text-averna-cyan" aria-hidden />
@@ -253,7 +253,7 @@ export default async function PlacementResultPage(props: { params: Promise<{ att
         )}
 
         {/* Speaking + how the level was worked out */}
-        <Reveal as="section" aria-label="About this result" className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <Reveal as="section" aria-label="About this result" className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="av-panel flex items-start gap-3 rounded-2xl p-5">
             <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-400/10 text-amber-300">
               <Mic className="h-5 w-5" />
@@ -292,7 +292,7 @@ export default async function PlacementResultPage(props: { params: Promise<{ att
           </div>
         </Reveal>
 
-        <Reveal as="nav" aria-label="What to do next" className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:items-center print:hidden">
+        <Reveal as="nav" aria-label="What to do next" className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center print:hidden">
           <Link href="/learning" className={PRIMARY_BTN}>
             <Sparkles className="h-4 w-4" aria-hidden />
             Start learning

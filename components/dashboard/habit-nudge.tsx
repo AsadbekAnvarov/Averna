@@ -22,7 +22,7 @@ export async function HabitNudge({ studentId, streak = 0 }: { studentId: string;
   const Icon = insight.icon === "flame" ? Flame : Clock;
 
   return (
-    <div className={`relative overflow-hidden glass border ${t.ring} rounded-2xl px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-3 animate-fade-in`}>
+    <div className={`relative overflow-hidden glass border ${t.ring} rounded-2xl px-3.5 py-3 sm:px-4 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-3 animate-fade-in`}>
       <div className={`pointer-events-none absolute -top-10 -left-6 h-24 w-24 rounded-full ${t.glow} blur-2xl`} />
 
       <div className="relative flex items-start gap-3 flex-1 min-w-0">
@@ -38,7 +38,7 @@ export async function HabitNudge({ studentId, streak = 0 }: { studentId: string;
       {insight.cta && (
         <Link
           href={insight.cta.href}
-          className={`relative shrink-0 inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 py-2 text-sm font-medium bg-white/5 border ${t.ring} text-white hover:bg-white/10 transition-colors`}
+          className={`relative shrink-0 inline-flex min-h-[44px] lg:min-h-9 items-center justify-center gap-1.5 rounded-xl px-3.5 py-2 text-sm font-medium bg-white/5 border ${t.ring} text-white hover:bg-white/10 transition-colors`}
         >
           {insight.cta.label} <ArrowRight className="h-4 w-4" />
         </Link>

@@ -1172,7 +1172,7 @@ function renderDraft(summary: DraftSummary | null, t: Obj, idBase: string): Reac
       {parts.length === 0 ? (
         <p className="text-sm text-gray-400">Hali hech qanday qism yaratilmagan.</p>
       ) : renderPart ? (
-        <div className="space-y-6">{parts.map((p, i) => renderPart(p, i))}</div>
+        <div className="space-y-4 sm:space-y-5">{parts.map((p, i) => renderPart(p, i))}</div>
       ) : (
         <pre className="overflow-auto whitespace-pre-wrap break-words rounded-lg border border-white/10 bg-black/40 p-3 text-[11px] text-gray-300">
           {safeJson(parts)}
@@ -1195,7 +1195,7 @@ function renderPreviewBody(summary: DraftSummary | null, test: unknown, idBase: 
         const description = asText(test.description);
         const minutes = asNum(test.timeLimit, 0);
         body = (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-5">
             {(description || minutes > 0) && (
               <p className="text-xs text-gray-400">
                 {description}

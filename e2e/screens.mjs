@@ -98,7 +98,7 @@ const PAGES = {
     ["admin-dashboard", "/admin/dashboard"],
     ["admin-placement", "/admin/placement"],
     ["admin-groups", "/admin/groups"],
-    ["admin-finance", "/admin/finance"],
+    // /admin/finance is retired (accounting left the admin portal): it is a redirect, checked in REDIRECTS.
     ["admin-analytics", "/admin/analytics"],
     ["admin-teachers", "/admin/teachers"],
     ["admin-content", "/admin/content"],
@@ -137,14 +137,21 @@ const EXAM_NOISE = new RegExp(
   "i"
 );
 
-/** Old URLs that must keep working. */
-const REDIRECTS = [
-  ["/billing", "/dashboard"],
-  ["/analytics", "/progress"],
-  ["/achievements", "/progress/achievements"],
-  ["/leagues", "/rankings/leagues"],
-  ["/team-challenge", "/rankings/teams"],
-];
+/**
+ * Old URLs that must keep working, per role. Some are HTTP redirects (next.config.mjs); retired pages
+ * such as /billing and /admin/finance redirect from the server component, and because app/loading.tsx
+ * streams a 200 shell first, that redirect completes in the browser after "load".
+ */
+const REDIRECTS = {
+  student: [
+    ["/billing", "/dashboard"],
+    ["/analytics", "/progress"],
+    ["/achievements", "/progress/achievements"],
+    ["/leagues", "/rankings/leagues"],
+    ["/team-challenge", "/rankings/teams"],
+  ],
+  admin: [["/admin/finance", "/admin/dashboard"]],
+};
 
 const problems = [];
 const report = [];
@@ -334,9 +341,9 @@ try {
         await ensureSignedIn(context, BASE, role, creds, signIn);
         await shoot(context, role, theme, device);
         if (role === "student") await shootExams(context, theme, device);
-        if (role === "student" && theme === "dark" && device === "phone") {
+        if (REDIRECTS[role] && theme === "dark" && device === "phone") {
           const page = await context.newPage();
-          for (const [from, to] of REDIRECTS) {
+          for (const [from, to] of REDIRECTS[role]) {
             // A redirect chain can interrupt goto(); record it as a problem instead of aborting the run.
             let note = "";
             try {
@@ -345,6 +352,8 @@ try {
               note = ` (goto: ${String(err?.message ?? err).split("\n")[0].slice(0, 160)})`;
               await page.waitForLoadState("load").catch(() => {});
             }
+            // A streamed (client-side) redirect lands after "load": give it time before reading the URL.
+            await page.waitForURL((u) => u.pathname === to, { timeout: 15_000 }).catch(() => {});
             const got = new URL(page.url()).pathname;
             if (got !== to) problems.push(`redirect ${from}: ended on ${got}, expected ${to}${note}`);
           }

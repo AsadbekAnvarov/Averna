@@ -37,9 +37,9 @@ export default async function WritingPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-6xl">
         {/* Header */}
-        <div className="mb-8 animate-fade-in">
+        <div className="mb-6 animate-fade-in">
           <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-2 block">
             ← Back to Dashboard
           </Link>
@@ -56,9 +56,9 @@ export default async function WritingPage() {
         <SpotlightCard
           as="section"
           aria-labelledby="full-writing-test-title"
-          className="av-panel av-panel-hero glow-hover mb-8 rounded-3xl p-5 animate-fade-in sm:p-8"
+          className="av-panel av-panel-hero glow-hover mb-6 rounded-3xl p-5 animate-fade-in sm:p-8"
         >
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-4 lg:gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <div className="flex items-center gap-3">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-averna-neon/10 text-averna-neon" aria-hidden>
@@ -111,7 +111,7 @@ export default async function WritingPage() {
         </SpotlightCard>
 
         {/* Overview Card */}
-        <Card className="glass border-purple-500/30 mb-8 animate-fade-in">
+        <Card className="glass border-purple-500/30 mb-6 animate-fade-in">
           <CardHeader>
             <CardTitle className="text-purple-400">How It Works</CardTitle>
             <CardDescription>Get instant AI feedback on your writing</CardDescription>
@@ -143,7 +143,7 @@ export default async function WritingPage() {
         </Card>
 
         {/* Task Selection */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 animate-fade-in">
           {tasks.map((task) => (
             <Card
               key={task.id}
@@ -192,7 +192,7 @@ export default async function WritingPage() {
         </div>
 
         {/* AI Assessment Info */}
-        <Card className="glass border-averna-primary/30 mt-8 animate-fade-in">
+        <Card className="glass border-averna-primary/30 mt-6 animate-fade-in">
           <CardHeader>
             <CardTitle className="text-averna-neon">AI Assessment Features</CardTitle>
           </CardHeader>

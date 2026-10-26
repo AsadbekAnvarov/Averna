@@ -166,8 +166,8 @@ export default async function ReadingResultPage(props: { params: Promise<{ testI
   return (
     <div className="min-h-screen premium-gradient">
       <ResultCelebration score={test.score} target={target} />
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
-        <div className="mb-8 animate-fade-in">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-4xl">
+        <div className="mb-6 animate-fade-in">
           <Link href="/learning/reading" className="text-averna-neon hover:underline text-sm mb-2 flex items-center gap-1">
             <ArrowLeft className="h-4 w-4" />
             Back to Reading
@@ -179,7 +179,7 @@ export default async function ReadingResultPage(props: { params: Promise<{ testI
         </div>
 
         {/* Band Score */}
-        <Card className="glass border-blue-500/30 mb-8 animate-fade-in">
+        <Card className="glass border-blue-500/30 mb-6 animate-fade-in">
           <CardContent className="py-8">
             <div className="text-center">
               <p className="text-gray-400 mb-2">IELTS Reading Band Score</p>
@@ -195,7 +195,7 @@ export default async function ReadingResultPage(props: { params: Promise<{ testI
         </Card>
 
         {/* One more thing: what improved, what you earned, what's next */}
-        <div className="mb-8">
+        <div className="mb-6">
           {viewerIsOwner && (
             <Suspense fallback={<ProgressionSkeleton rows={1} label="Calculating your progress…" />}>
             <SessionOutcomeSection studentId={student.id} testId={test.id} label="Reading" score={test.score} />
@@ -204,7 +204,7 @@ export default async function ReadingResultPage(props: { params: Promise<{ testI
         </div>
 
         {/* Score Breakdown */}
-        <Card className="glass border-averna-primary/30 mb-8 animate-fade-in">
+        <Card className="glass border-averna-primary/30 mb-6 animate-fade-in">
           <CardHeader>
             <CardTitle className="text-averna-neon">Score Breakdown</CardTitle>
           </CardHeader>
@@ -233,7 +233,7 @@ export default async function ReadingResultPage(props: { params: Promise<{ testI
 
         {/* Per-passage question review */}
         {testData ? (
-          <div className="space-y-6 mb-8 animate-fade-in">
+          <div className="space-y-4 sm:space-y-5 mb-6 animate-fade-in">
             <div className="flex items-center gap-2 text-averna-cyan">
               <BookOpen className="h-5 w-5" />
               <h2 className="text-xl font-semibold">Question Review</h2>
@@ -270,7 +270,7 @@ export default async function ReadingResultPage(props: { params: Promise<{ testI
           </div>
         ) : (
           // Fallback for older submissions without stored testId
-          <Card className="glass border-averna-primary/30 mb-8 animate-fade-in">
+          <Card className="glass border-averna-primary/30 mb-6 animate-fade-in">
             <CardHeader>
               <CardTitle>Question Review</CardTitle>
             </CardHeader>
@@ -302,7 +302,7 @@ export default async function ReadingResultPage(props: { params: Promise<{ testI
 
 
         {/* Actions */}
-        <div className="flex gap-4 mt-8 animate-fade-in">
+        <div className="flex gap-4 mt-6 animate-fade-in">
           <Link href="/learning/reading" className="flex-1">
             <Button className="w-full neon-button bg-blue-500 hover:bg-blue-600">
               <RotateCcw className="mr-2 h-4 w-4" />

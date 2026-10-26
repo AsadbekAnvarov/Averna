@@ -69,7 +69,7 @@ export async function OutcomeKpis() {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
       {cards.map((c) => {
         const Icon = c.icon;
         return (
@@ -78,17 +78,17 @@ export async function OutcomeKpis() {
             className={`glass relative overflow-hidden ring-1 ${c.ring} border-transparent transition-transform duration-300 hover:-translate-y-1`}
           >
             <div className={`pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br ${c.glow} to-transparent blur-2xl`} />
-            <CardContent className="p-5 relative">
-              <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${c.iconBg} mb-2`}>
+            <CardContent className="p-3 sm:p-5 relative">
+              <div className={`flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl ${c.iconBg} mb-1.5 sm:mb-2`}>
                 <Icon className="h-5 w-5" />
               </div>
               <p className="text-sm text-gray-400 font-medium">{c.label}</p>
               {c.value == null ? (
-                <p className={`text-3xl font-bold mt-1 ${c.accent}`}>—</p>
+                <p className={`text-2xl sm:text-3xl font-bold mt-0.5 sm:mt-1 ${c.accent}`}>—</p>
               ) : (
-                <CountUp value={c.value} suffix={c.suffix} className={`block text-3xl font-bold mt-1 ${c.accent}`} />
+                <CountUp value={c.value} suffix={c.suffix} className={`block text-2xl sm:text-3xl font-bold mt-0.5 sm:mt-1 ${c.accent}`} />
               )}
-              <p className="text-[11px] text-gray-500 mt-2 leading-snug">{c.hint}</p>
+              <p className="text-[11px] text-gray-500 mt-1 sm:mt-2 leading-snug">{c.hint}</p>
             </CardContent>
           </Card>
         );

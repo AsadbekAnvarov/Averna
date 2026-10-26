@@ -387,7 +387,7 @@ export function TelegramConnect() {
   return (
     <>
       <SectionHeader icon={Send} title="Telegram" subtitle="Homework, reviews and reminders in Telegram" accent="text-averna-cyan" />
-      <div className="glass mb-8 rounded-2xl border border-white/5 p-5">{body}</div>
+      <div className="glass mb-6 rounded-2xl border border-white/5 p-5">{body}</div>
     </>
   );
 }

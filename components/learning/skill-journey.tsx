@@ -61,7 +61,7 @@ export async function SkillJourney({
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-4">
       {MODULES.map((m) => {
         const Icon = m.icon;
         const r = stats.get(m.key);
@@ -74,7 +74,7 @@ export async function SkillJourney({
           <Link
             key={m.key}
             href={m.href}
-            className={`group block rounded-2xl glass border border-white/5 p-5 transition-all duration-300 hover:-translate-y-0.5 ${m.ring}`}
+            className={`group block rounded-2xl glass border border-white/5 p-3.5 sm:p-5 transition-all duration-300 hover:-translate-y-0.5 ${m.ring}`}
           >
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3 min-w-0">
@@ -89,13 +89,13 @@ export async function SkillJourney({
                 </div>
               </div>
               {isFocus && (
-                <span className="shrink-0 text-[10px] px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-400 font-medium">
+                <span className="shrink-0 text-[11px] leading-4 px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-400 font-medium">
                   Focus
                 </span>
               )}
             </div>
 
-            <div className="mt-4 flex items-end justify-between gap-3">
+            <div className="mt-3 sm:mt-4 flex items-end justify-between gap-3">
               <div>
                 <p className="text-[11px] uppercase tracking-wider text-gray-500">Current level</p>
                 <p className={`text-3xl font-bold leading-none mt-1 ${started ? "text-white" : "text-gray-600"}`}>

@@ -224,7 +224,7 @@ export default async function TeacherMockPage(props: { searchParams?: Promise<Se
           <MockKpiTiles kpis={kpis} />
 
           {kpis.withMock === 0 ? (
-            <div className="glass mt-8 rounded-2xl border border-white/10">
+            <div className="glass mt-6 rounded-2xl border border-white/10">
               <EmptyState
                 icon={ClipboardList}
                 accent="text-averna-neon"
@@ -271,7 +271,7 @@ export default async function TeacherMockPage(props: { searchParams?: Promise<Se
                 </p>
               </section>
 
-              <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-5">
+              <div className="mt-10 grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-5">
                 <section className="lg:col-span-2">
                   <SectionHeader icon={Layers} title="Band distribution" subtitle="Latest overall band" accent="text-averna-cyan" />
                   <div className="glass rounded-2xl border border-white/10 p-4 sm:p-5">
@@ -320,7 +320,7 @@ export default async function TeacherMockPage(props: { searchParams?: Promise<Se
 function Shell({ header, pageHeader, children }: { header: React.ReactNode; pageHeader: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-6xl px-4 py-6 sm:py-8 pb-10 lg:pb-8">
+      <div className="container mx-auto max-w-6xl px-4 py-4 sm:py-6 pb-8 lg:pb-6">
         {header}
         {pageHeader}
         {children}

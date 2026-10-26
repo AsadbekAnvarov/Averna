@@ -10,20 +10,28 @@
  *   TOLERANCE=0.5       px allowed on width/height/x/y (sub-pixel noise); colours must match exactly
  *
  * Scenarios (snapshot = DOM path + computed colours, borders, shadows and box of every visible
- * element under the page content, or under .exam-shell on exams):
- *   dark-desktop  1440×900  Reading + Listening test, teacher and admin pages → full identity
- *   dark-phone    390×844   the same pages → colours identical for elements present in both (sizes may change)
- *   light-desktop 1440×900  teacher and admin dashboards → full identity
+ * element under the page content, or under .exam-shell on exams). Every scenario compares COLOURS
+ * only, for elements present in both snapshots: spacing and type size are being tightened app-wide
+ * on purpose, so boxes may move and resize. Geometry and comfort (page length, small touch targets,
+ * smallest text) are guarded by e2e/density.mjs instead.
+ *   dark-desktop  1440×900  Reading + Listening test, teacher and admin pages
+ *   dark-phone    390×844   the same pages
+ *   light-desktop 1440×900  teacher and admin dashboards
  * (The student dashboard is intentionally redesigned on this branch and not compared; see PAGES.)
  * Extra checks in --compare (no baseline): Reading test at sampled widths 1024–1920 keeps the panes side
  * by side and the header text-size control visible (3.5); on 390×844 inputs use 16px (3.12) and the
  * bottom tab bar has 5 tabs for every role (3.10).
  *
+ * Exams: --compare reopens the test the baseline used. A pinned paper that no longer opens (retired
+ * originals such as averna-reading-01 now redirect to the library; 404s) falls back to the library's
+ * first test on that server. A server with no test at all is recorded as a note, not a problem.
+ *
  * Determinism: frozen clock (page.clock), seeded Math.random, fonts loaded, CSS animations and
  * transitions off, prefers-reduced-motion, media play() rejected like a blocked autoplay, relative
  * times ("5s ago") pinned to "just now" before each snapshot.
- * In CI (.github/workflows/screens.yml) --capture runs against the merge-base with main and --compare
- * against HEAD, both on the same seeded database. Exit code 1 on any difference or failed check.
+ * In CI (.github/workflows/screens.yml) --capture runs against the PR's nearest parent branch (else the
+ * merge-base with main) and --compare against HEAD, both on the same seeded database. Exit code 1 on
+ * any difference or failed check.
  */
 import { chromium } from "playwright";
 import { createRoleSessionCache } from "./role-session.mjs";
@@ -83,14 +91,15 @@ const PAGES = {
   ],
 };
 
+/** All "colour": geometry is intentionally changing (compact layout) and checked by e2e/density.mjs. */
 const SCENARIOS = [
-  { id: "dark-desktop", theme: "dark", phone: false, compare: "full", pages: PAGES },
+  { id: "dark-desktop", theme: "dark", phone: false, compare: "colour", pages: PAGES },
   { id: "dark-phone", theme: "dark", phone: true, compare: "colour", pages: PAGES },
   {
     id: "light-desktop",
     theme: "light",
     phone: false,
-    compare: "full",
+    compare: "colour",
     // No student page: the dashboard is redesigned (see PAGES) and the light exam screens are
     // intentionally different, so PAGES.student[0] (now the Reading test) must not be compared here.
     pages: { student: [], teacher: [PAGES.teacher[0]], admin: [PAGES.admin[0]] },
@@ -151,23 +160,71 @@ function watch(page, label) {
   });
 }
 
-/** Opens the first Reading/Listening test from its library (or `href`); returns its path. */
-async function openExam(page, skill, href) {
-  if (!href) {
-    await page.goto(`${BASE}/learning/${skill}`, { waitUntil: "networkidle", timeout: 60_000 });
-    href = await page.evaluate((skill) => {
-      const links = Array.from(document.querySelectorAll(`a[href^="/learning/${skill}/"]`)).map((a) => a.getAttribute("href"));
-      return links.find((h) => h && !/\/result(\/|$|\?)/.test(h)) ?? null;
-    }, skill);
-    if (!href) throw new Error(`no ${skill} test link on /learning/${skill}`);
-  }
-  await page.goto(`${BASE}${href}`, { waitUntil: "domcontentloaded", timeout: 60_000 });
-  await page.waitForSelector('.exam-shell nav[aria-label="Question navigator"]', { timeout: 60_000 });
-  await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
-  return href;
+const EXAM_SHELL = '.exam-shell nav[aria-label="Question navigator"]';
+
+/** The first Reading/Listening test linked from its library on this server, or null. */
+async function firstExamLink(page, skill) {
+  await page.goto(`${BASE}/learning/${skill}`, { waitUntil: "networkidle", timeout: 60_000 });
+  return page.evaluate((skill) => {
+    const links = Array.from(document.querySelectorAll(`a[href^="/learning/${skill}/"]`)).map((a) => a.getAttribute("href"));
+    return links.find((h) => h && !/\/result(\/|$|\?)/.test(h)) ?? null;
+  }, skill);
 }
 
-/** Opens a page in the frozen state used for snapshots. Close with page.close() (skips the exam leave guard). */
+/**
+ * Opens `href` and waits for the exam shell. "moved" when the page left the test (a retired paper's
+ * server redirect to the library lands after the streamed shell, so the URL changes late), "http"
+ * on an error status, "timeout" when no exam shell appeared.
+ */
+async function tryExam(page, href) {
+  const res = await page.goto(`${BASE}${href}`, { waitUntil: "domcontentloaded", timeout: 60_000 }).catch(() => null);
+  if (!res) return "timeout";
+  if (res.status() >= 400) return "http";
+  const testPath = new URL(href, BASE).pathname;
+  const outcome = await Promise.race([
+    page.waitForSelector(EXAM_SHELL, { timeout: 60_000 }).then(
+      () => "exam",
+      () => "timeout"
+    ),
+    page.waitForURL((u) => !u.pathname.startsWith(testPath), { timeout: 60_000 }).then(
+      () => "moved",
+      () => "timeout"
+    ),
+  ]);
+  if (outcome === "exam") await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
+  return outcome;
+}
+
+/**
+ * Opens a Reading/Listening test and returns its path, or null when this server has none to open.
+ * `pinned` (the baseline's test) is tried first; when it doesn't open — the original Averna papers
+ * (averna-reading-01, averna-listening-01) are retired and now redirect to the library — the first
+ * test of the library is used instead. Base and HEAD share the library, so both sides pick the same.
+ */
+async function openExam(page, skill, pinned, label = `exam/${skill}`) {
+  if (pinned) {
+    const outcome = await tryExam(page, pinned);
+    if (outcome === "exam") return pinned;
+    notes.push({ label, message: `pinned ${pinned} did not open (${outcome}, at ${new URL(page.url()).pathname}); using the library's first ${skill} test` });
+  }
+  const href = await firstExamLink(page, skill).catch(() => null);
+  if (!href) {
+    notes.push({ label, message: `no ${skill} test link on /learning/${skill}` });
+    return null;
+  }
+  const outcome = await tryExam(page, href);
+  if (outcome === "exam") {
+    if (pinned && href !== pinned) notes.push({ label, message: `compared ${href} against the baseline of ${pinned}` });
+    return href;
+  }
+  notes.push({ label, message: `${href} did not open an exam (${outcome}, at ${new URL(page.url()).pathname})` });
+  return null;
+}
+
+/**
+ * Opens a page in the frozen state used for snapshots, or returns null when an exam target has no
+ * test on this server (recorded as a note). Close with page.close() (skips the exam leave guard).
+ */
 async function load(context, target, label, pinnedHref) {
   const page = await context.newPage();
   watch(page, label);
@@ -176,7 +233,11 @@ async function load(context, target, label, pinnedHref) {
     const res = await page.goto(`${BASE}${path}`, { waitUntil: "networkidle", timeout: 60_000 });
     if (res && res.status() >= 400) throw new Error(`HTTP ${res.status()}`);
   } else {
-    path = await openExam(page, target.exam, pinnedHref);
+    path = await openExam(page, target.exam, pinnedHref, label);
+    if (!path) {
+      await page.close();
+      return null;
+    }
   }
   await page.addStyleTag({ content: FREEZE_CSS });
   await page.evaluate(async () => {
@@ -293,7 +354,18 @@ async function runScenario(browser, sc) {
             problem(label, `no baseline ${file} (run --capture on the unfixed code first)`);
             continue;
           }
-          const { page, path } = await load(context, target, label, baseline?.path);
+          if (baseline?.skipped) {
+            notes.push({ label, message: `not compared: the base server had nothing to capture (${baseline.skipped})` });
+            continue;
+          }
+          const loaded = await load(context, target, label, baseline?.path);
+          if (!loaded) {
+            const reason = `no ${target.exam} test could be opened`;
+            if (MODE === "capture") writeFileSync(file, JSON.stringify({ label, skipped: reason, fixedTime: FIXED_TIME }));
+            notes.push({ label, message: `skipped: ${reason} on this server` });
+            continue;
+          }
+          const { page, path } = loaded;
           const elements = await page.evaluate(snapshot);
           await page.close();
           if (MODE === "capture") {
@@ -328,7 +400,7 @@ async function desktopCheck(context) {
   const page = await context.newPage();
   watch(page, "desktop/reading");
   try {
-    await openExam(page, "reading");
+    if (!(await openExam(page, "reading", null, "desktop/reading"))) return; // noted by openExam
     for (const w of widths) {
       const label = `desktop/reading/${w}px`;
       await page.setViewportSize({ width: w, height: 900 });
@@ -399,7 +471,7 @@ async function phoneChecks(context, role) {
         await page.close();
         page = await context.newPage();
         watch(page, label);
-        await openExam(page, "reading");
+        if (!(await openExam(page, "reading", null, `${label}${where}`))) continue; // noted by openExam
       }
       const fields = await visibleCount(page, FIELDS);
       seen += fields.length;

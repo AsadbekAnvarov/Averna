@@ -74,7 +74,7 @@ export function SettingsPanel() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* ---------------------------------------------------------- Display */}
       <Group icon={Palette} title="Display" subtitle="How Averna looks on this device" accent="text-averna-cyan">
         <Row icon={mode === "dark" ? Moon : Sun} iconClass={mode === "dark" ? "text-averna-purple" : "text-amber-400"} title="Theme">

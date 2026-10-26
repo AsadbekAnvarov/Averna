@@ -1,4 +1,7 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "fluid": true,
+  "ignoreCommand": "node scripts/vercel-ignore-build.mjs",
   "crons": [
     { "path": "/api/cron/daily", "schedule": "0 14 * * *" }
   ]

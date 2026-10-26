@@ -8,7 +8,6 @@ import { processWritingRetry } from "@/lib/assessment/writing-queue";
 import { blobConfigured } from "@/lib/storage/blob";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
 
 /**
  * The daily scheduled job (vercel.json → "0 14 * * *": 19:00 Tashkent — the

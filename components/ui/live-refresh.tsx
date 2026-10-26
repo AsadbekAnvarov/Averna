@@ -55,7 +55,7 @@ export function LiveRefresh({ label = "Live" }: { intervalMs?: number; label?: s
       onClick={manual}
       title={`${formatAgo(secondsAgo)} — click to refresh`}
       aria-label={`${label}, ${formatAgo(secondsAgo)}. Refresh`}
-      className="inline-flex items-center gap-1.5 whitespace-nowrap text-[11px] text-gray-400 hover:text-white transition-colors"
+      className="inline-flex min-h-[44px] lg:min-h-9 items-center gap-1.5 whitespace-nowrap text-[11px] text-gray-400 hover:text-white transition-colors"
     >
       <span className="relative flex h-2 w-2">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-averna-neon opacity-75" />

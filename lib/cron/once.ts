@@ -11,7 +11,7 @@
  *   - only a unique violation (P2002) means "already claimed"; any other
  *     database error comes back as { error } (the route answers 500);
  *   - a `failed` run, or one still "running" after STALE_RUN_MS (killed at the
- *     route's 60 s maxDuration), is taken over by a compare-and-set — of two
+ *     project's 300 s function limit), is taken over by a compare-and-set — of two
  *     late invocations only one wins.
  *
  * SERVER ONLY.
@@ -23,8 +23,8 @@ import { tashkentDateKey } from "@/lib/utils";
 
 export type JobResult = Record<string, string | number | boolean | null>;
 
-/** More than twice the cron route's maxDuration (60 s): a "running" row this old belongs to a killed invocation. */
-export const STALE_RUN_MS = 3 * 60 * 1000;
+/** Longer than the project's function limit (300 s with Fluid): a "running" row this old belongs to a killed invocation. */
+export const STALE_RUN_MS = 6 * 60 * 1000;
 
 export interface RunOnceOptions {
   /** Picks the Tashkent day (default: now). */

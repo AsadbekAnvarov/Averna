@@ -1,7 +1,5 @@
 export const dynamic = "force-dynamic";
-// Telegram copies of the announcement are sent after the response (lib/notifications) — give them
-// time: up to 45 s of sending (TELEGRAM_BULK_BUDGET_MAX_MS) fits inside these 60 s.
-export const maxDuration = 60;
+// Telegram copies (up to 45 s of sending after the response) rely on the project default duration (300 s with Fluid).
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
@@ -64,7 +62,7 @@ export default async function AdminAnnouncementsPage(props: { searchParams: Prom
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-3xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-3xl">
         <AdminHeader user={{ name: session.user.name ?? "Admin", email: session.user.email ?? "" }} />
         <PageHeader
           back={{ href: "/admin/dashboard", label: "Admin paneliga qaytish" }}
@@ -76,7 +74,7 @@ export default async function AdminAnnouncementsPage(props: { searchParams: Prom
 
         {searchParams.saved && <div className="mb-6 p-3 rounded-lg bg-averna-neon/10 border border-averna-neon/30 text-averna-neon">✓ Hammaga yuborildi va bildirishnoma joʻnatildi!</div>}
 
-        <Card className="glass border-averna-neon/30 mb-8">
+        <Card className="glass border-averna-neon/30 mb-6">
           <CardHeader><CardTitle className="flex items-center gap-2 text-averna-neon"><Send className="h-5 w-5" /> Yangi umumiy eʼlon</CardTitle></CardHeader>
           <CardContent>
             <form action={postGlobal} className="space-y-4">

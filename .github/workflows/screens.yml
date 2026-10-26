@@ -7,10 +7,14 @@ name: Screens
 # (e2e/bugfix-checks.mjs, report in the "report-bugfix" artifact). They encode the
 # fixed behaviour, so they fail until that fix lands.
 # Preservation checks of the same spec (e2e/preservation-checks.mjs): computed-style
-# baselines are captured on the merge-base with main (port 3001), then compared on
-# HEAD (port 3000), both against the same seeded database. On main the base is HEAD
-# itself, which checks that the snapshots are deterministic. Report and baselines are
-# in the "report-preservation" artifact.
+# baselines are captured on the base commit (port 3001), then compared on HEAD
+# (port 3000), both against the same seeded database. The base is the PR's own parent:
+# the nearest origin/* branch that is an ancestor of HEAD (fewest commits behind it),
+# so a stacked PR is compared with the PR below it, not with main. Without one it is
+# the merge-base with main. Report and baselines are in the "report-preservation"
+# artifact. The density / comfort check (e2e/density.mjs) measures the same two
+# servers: page length, content above the fold, smallest text and small phone touch
+# targets ("report-density" artifact).
 on:
   push:
   workflow_dispatch:
@@ -53,7 +57,7 @@ jobs:
           npx playwright install --with-deps chromium
       - run: npx prisma db push --skip-generate
       - run: npm run db:seed
-      - name: Build the base commit (merge-base with main)
+      - name: Build the base commit (nearest parent branch)
         # A broken base must not hide the HEAD checks: --compare then reports the missing baselines.
         continue-on-error: true
         env:
@@ -62,8 +66,29 @@ jobs:
           # One frozen clock for --capture and --compare.
           echo "FIXED_TIME=$(date -u +%Y-%m-%d)T09:00:00Z" >> "$GITHUB_ENV"
           git fetch origin main
-          BASE_SHA=$(git merge-base HEAD origin/main)
-          echo "Base commit: $BASE_SHA (HEAD: $(git rev-parse HEAD))"
+          # The PR's own parent: among origin/* (not this branch, not origin/HEAD) the ancestor of
+          # HEAD with the fewest commits up to HEAD. Needs the full history (fetch-depth: 0).
+          BASE_REF=""
+          BEST=""
+          for R in $(git for-each-ref --format='%(refname)' refs/remotes/origin/); do
+            case "$R" in
+              refs/remotes/origin/HEAD | "refs/remotes/origin/$GITHUB_REF_NAME") continue ;;
+            esac
+            git merge-base --is-ancestor "$R" HEAD || continue
+            N=$(git rev-list --count "$R..HEAD")
+            [ "$N" -gt 0 ] || continue
+            if [ -z "$BEST" ] || [ "$N" -lt "$BEST" ]; then
+              BEST=$N
+              BASE_REF=$R
+            fi
+          done
+          if [ -n "$BASE_REF" ]; then
+            BASE_SHA=$(git rev-parse "$BASE_REF")
+            echo "Preservation base: ${BASE_REF#refs/remotes/} at $BASE_SHA ($BEST commit(s) below HEAD $(git rev-parse HEAD))"
+          else
+            BASE_SHA=$(git merge-base HEAD origin/main)
+            echo "Preservation base: merge-base with origin/main at $BASE_SHA (no parent branch found; HEAD $(git rev-parse HEAD))"
+          fi
           git worktree add --detach ../base "$BASE_SHA"
           cd ../base
           npm ci
@@ -77,6 +102,16 @@ jobs:
           trap 'pkill -f "next start -p 3001" || true; fuser -k 3001/tcp || true' EXIT
           npx -y wait-on@8 -t 90000 http-get://localhost:3001/auth/signin
           BASE_URL=http://localhost:3001 node e2e/preservation-checks.mjs --capture
+      - name: Density baseline (base commit, port 3001)
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        env:
+          NEXTAUTH_URL: http://localhost:3001
+        run: |
+          (cd ../base && exec node_modules/.bin/next start -p 3001 >> "$GITHUB_WORKSPACE/next-base.log" 2>&1) &
+          trap 'pkill -f "next start -p 3001" || true; fuser -k 3001/tcp || true' EXIT
+          npx -y wait-on@8 -t 90000 http-get://localhost:3001/auth/signin
+          BASE_URL=http://localhost:3001 node e2e/density.mjs --capture e2e/density-base.json
       - run: npm run build
       - name: Start the app
         id: start
@@ -87,6 +122,10 @@ jobs:
         # First on HEAD, so the database is as close as possible to the one the baseline saw.
         if: ${{ !cancelled() && steps.start.outcome == 'success' }}
         run: node e2e/preservation-checks.mjs --compare
+      - name: Density and comfort (HEAD vs base)
+        # Fails only on comfort regressions: small phone targets, text under 11px, pages > 15% longer.
+        if: ${{ !cancelled() && steps.start.outcome == 'success' }}
+        run: BASE_URL=http://localhost:3000 node e2e/density.mjs --compare e2e/density-base.json
       - name: Screenshots
         if: ${{ !cancelled() && steps.start.outcome == 'success' }}
         run: node e2e/screens.mjs
@@ -120,5 +159,14 @@ jobs:
           path: |
             e2e/report-preservation.json
             e2e/baseline/
+          if-no-files-found: warn
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-density
+          path: |
+            e2e/report-density.json
+            e2e/density-base.json
           if-no-files-found: warn
           retention-days: 7

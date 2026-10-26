@@ -101,7 +101,7 @@ export default async function GradebookPage(
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-4xl">
         <TeacherHeader user={{ name: session.user.name ?? "Teacher", email: session.user.email ?? "" }} />
 
         <PageHeader
@@ -134,7 +134,7 @@ export default async function GradebookPage(
             </div>
 
             {/* Add grade */}
-            <Card className="glass border-averna-purple/30 mb-8">
+            <Card className="glass border-averna-purple/30 mb-6">
               <CardHeader><CardTitle className="flex items-center gap-2 text-averna-purple"><Plus className="h-5 w-5" /> Add Grade</CardTitle></CardHeader>
               <CardContent>
                 <form action={addGrade} className="grid grid-cols-1 sm:grid-cols-2 gap-4">

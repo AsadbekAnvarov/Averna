@@ -128,9 +128,9 @@ export default function ExaminerPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-2xl pb-10 lg:pb-8">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-2xl pb-8 lg:pb-6">
         <Link href="/dashboard" className="text-averna-neon hover:underline text-sm mb-4 block">← Back to Dashboard</Link>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 flex items-center gap-3">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 flex items-center gap-3">
           <Bot className="h-8 w-8 text-averna-cyan" />
           AI Speaking <span className="neon-text-cyan">Examiner</span>
         </h1>

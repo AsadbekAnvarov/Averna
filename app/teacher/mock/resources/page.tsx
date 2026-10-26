@@ -16,7 +16,7 @@ export default async function Page() {
   if (session.user.role !== "TEACHER") return redirect("/dashboard");
   const rows = await db.generatedTest.findMany({ where: { module: "CDI_SAMPLE", published: true }, select: { id: true, data: true }, orderBy: { title: "asc" } });
   const samples = rows.flatMap(row => { const parsed = resourceSchema.safeParse(row.data); return parsed.success ? [{ ...parsed.data, id: row.id }] : []; }).sort(compareTestTitles);
-  return <main className="container mx-auto max-w-5xl space-y-6 px-4 py-8">
+  return <main className="container mx-auto max-w-5xl space-y-4 sm:space-y-5 px-4 py-6">
     <Link href="/teacher/mock/sessions" className="inline-flex min-h-[44px] items-center text-averna-light">← Teacher-led sessions</Link>
     <header className="av-panel rounded-2xl p-6"><h1 className="text-2xl font-bold">CDI teaching resources</h1>
       <p className="mt-3 text-gray-300">Supplied Writing samples and discussion prompts. A sample is not a verified band score. Speaking remains a teacher-conducted Parts 1–3 assessment; these prompts do not prove that an interview took place.</p>

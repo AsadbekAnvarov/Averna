@@ -4,8 +4,7 @@ import { db } from "@/lib/db";
 import { submitPlacementSection } from "@/lib/placement/placement";
 
 export const dynamic = "force-dynamic";
-// Writing may go to the AI examiner.
-export const maxDuration = 60;
+// Writing may go to the AI examiner; relies on the project default duration (300 s with Fluid).
 
 /**
  * Submit the current section.

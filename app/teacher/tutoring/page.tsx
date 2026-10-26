@@ -79,18 +79,18 @@ export default async function TeacherTutoringPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-4xl">
         <TeacherHeader user={{ name: teacher.user.name ?? "Teacher", email: teacher.user.email }} />
 
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 flex items-center gap-3">
           <UserCheck className="h-9 w-9 text-averna-pink" />
           1-on-1 <span className="neon-text-purple">Tutoring</span>
         </h1>
-        <p className="text-gray-400 mb-8">
+        <p className="text-gray-400 mb-6">
           Offer free time slots for students to book personal practice sessions.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5 mb-6">
           <Card className="glass border-averna-cyan/30">
             <CardHeader><CardTitle className="text-sm text-averna-cyan">Open Slots</CardTitle></CardHeader>
             <CardContent><p className="text-3xl font-bold text-averna-cyan">{open.length}</p></CardContent>
@@ -106,7 +106,7 @@ export default async function TeacherTutoringPage() {
         </div>
 
         {/* Add slot */}
-        <Card className="glass border-averna-pink/30 mb-8">
+        <Card className="glass border-averna-pink/30 mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-averna-pink">
               <Plus className="h-5 w-5" /> Add a Time Slot

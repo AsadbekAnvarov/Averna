@@ -18,7 +18,6 @@ import { isHomeworkRetryOf } from "@/lib/homework/library-shared";
 import type { WritingPrompt } from "@/lib/writing-data";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
 
 const sameText = (a: unknown, b: unknown) =>
   String(a ?? "").replace(/\s+/g, " ").trim() === String(b ?? "").replace(/\s+/g, " ").trim();

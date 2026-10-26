@@ -89,7 +89,7 @@ export default async function GrammarPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-5xl pb-10 lg:pb-8">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-5xl pb-8 lg:pb-6">
         <PageHeader
           back={{ href: "/learning", label: "Back to Learning Center" }}
           icon={BookOpen}
@@ -137,7 +137,7 @@ export default async function GrammarPage() {
           })}
         </div>
 
-        <div className="mt-8 glass rounded-2xl border border-white/5 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mt-6 glass rounded-2xl border border-white/5 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p className="font-semibold text-white">Ready to apply it?</p>
             <p className="text-sm text-gray-400">Practise these structures in a real Writing task and get AI feedback.</p>

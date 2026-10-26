@@ -92,7 +92,7 @@ export default async function MockExamHubPage() {
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto max-w-6xl px-4 py-6 pb-10 sm:py-8 lg:pb-8">
+      <div className="container mx-auto max-w-6xl px-4 py-4 pb-8 sm:py-6 lg:pb-6">
         <Hero />
         <nav aria-label="Mock modes" className="mt-5 flex flex-wrap gap-3"><a href="#independent-mock" className={PRIMARY_BTN}>Independent mock</a><a href="#group-session" className={PRIMARY_BTN}>Teacher-led group mock</a></nav>
         <div className="mt-5"><GroupJoin enabled={groupMockEnabled()}/></div>
@@ -179,7 +179,7 @@ function StartMock({ availability, isStudent }: { availability: MockAvailability
 
   return (
     <section aria-labelledby="mock-start-title" className="av-panel rounded-3xl p-5 sm:p-6">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-4 lg:gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <h2 id="mock-start-title" className="text-lg font-semibold text-white sm:text-xl">
             {ready ? "Ready when you are" : "The mock exam isn't available yet"}
@@ -230,7 +230,7 @@ function ActiveMock({ item }: { item: MockHistoryItem }) {
 
   return (
     <section aria-labelledby="mock-active-title" className="av-panel av-panel-hero rounded-3xl p-5 sm:p-6">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-4 lg:gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <p className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-averna-neon">
             <span aria-hidden className="h-2 w-2 rounded-full bg-averna-neon motion-safe:animate-pulse-slow" />

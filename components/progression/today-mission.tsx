@@ -14,15 +14,15 @@ export function TodayMission({ mission, firstName, isNew }: { mission: DailyMiss
   const cta = mission.allDone ? null : started ? "Continue Today's Mission" : "Start Today's Mission";
 
   return (
-    <section aria-labelledby="mission-title" className="av-panel av-panel-hero relative overflow-hidden rounded-3xl p-5 sm:p-7">
+    <section aria-labelledby="mission-title" className="av-panel av-panel-hero relative overflow-hidden rounded-3xl p-3.5 sm:p-7">
       <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-averna-neon/10 blur-3xl" aria-hidden />
-      <div className="relative flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
+      <div className="relative flex flex-col gap-3 sm:gap-4 lg:flex-row lg:items-start lg:gap-10">
         {/* Left: headline + progress + CTA */}
         <div className="lg:w-[38%] lg:shrink-0">
           <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-averna-neon">
             <Target className="h-3.5 w-3.5" aria-hidden /> Today&apos;s Mission
           </p>
-          <h2 id="mission-title" className="mt-2 text-2xl font-bold leading-tight text-white sm:text-3xl">
+          <h2 id="mission-title" className="mt-1.5 text-xl font-bold leading-tight text-white sm:mt-2 sm:text-3xl">
             {mission.allDone
               ? `Mission complete, ${firstName}.`
               : isNew
@@ -37,7 +37,7 @@ export function TodayMission({ mission, firstName, isNew }: { mission: DailyMiss
               : `Built around your weakest skill. Finish every step for a +${mission.completionBonus} XP bonus.`}
           </p>
 
-          <div className="mt-5">
+          <div className="mt-3 sm:mt-5">
             <div className="mb-1.5 flex items-baseline justify-between text-sm">
               <span className="font-semibold text-white">
                 {mission.completed}/{mission.total} complete
@@ -45,7 +45,7 @@ export function TodayMission({ mission, firstName, isNew }: { mission: DailyMiss
               <span className="text-gray-400">{mission.percent}%</span>
             </div>
             <Meter value={mission.percent} label="Mission progress" />
-            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400">
+            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 sm:mt-3">
               <span className="inline-flex items-center gap-1">
                 <Clock className="h-3.5 w-3.5" aria-hidden />
                 {mission.allDone ? `${mission.estMinutes} min planned` : `About ${mission.remainingMinutes} min left`}
@@ -57,19 +57,19 @@ export function TodayMission({ mission, firstName, isNew }: { mission: DailyMiss
           {cta && next ? (
             <Link
               href={next.href}
-              className="glow-cta mt-6 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-averna-primary px-5 text-sm font-semibold text-white transition hover:bg-averna-light sm:w-auto"
+              className="glow-cta mt-4 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-averna-primary px-5 text-sm font-semibold text-white transition hover:bg-averna-light sm:mt-6 sm:w-auto"
             >
               {cta} <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           ) : (
-            <p className="mt-6 inline-flex items-center gap-2 rounded-xl border border-averna-neon/30 bg-averna-neon/10 px-4 py-3 text-sm text-averna-neon">
+            <p className="mt-4 inline-flex items-center gap-2 rounded-xl border border-averna-neon/30 bg-averna-neon/10 px-4 py-3 text-sm text-averna-neon sm:mt-6">
               <PartyPopper className="h-4 w-4" aria-hidden /> Come back tomorrow for a new mission.
             </p>
           )}
         </div>
 
         {/* Right: the steps, in session order */}
-        <ol className="flex-1 space-y-2.5" aria-label="Mission steps">
+        <ol className="flex-1 space-y-2 sm:space-y-2.5" aria-label="Mission steps">
           {mission.steps.map((step, i) => {
             const isNext = !step.done && next?.id === step.id;
             return (
@@ -78,7 +78,7 @@ export function TodayMission({ mission, firstName, isNew }: { mission: DailyMiss
                   href={step.href}
                   aria-label={`${step.roleLabel}: ${step.title}${step.done ? " (done)" : ""}`}
                   className={cn(
-                    "group flex min-h-[64px] items-center gap-3 rounded-2xl border p-3 transition sm:p-3.5",
+                    "group flex min-h-[56px] items-center gap-3 rounded-2xl border p-3 transition sm:min-h-[64px] sm:p-3.5",
                     step.done
                       ? "border-averna-neon/20 bg-averna-neon/[0.04]"
                       : isNext

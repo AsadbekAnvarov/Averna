@@ -38,31 +38,31 @@ export function ExamCountdown() {
 
   return (
     <Card className="glass border-averna-pink/30">
-      <CardContent className="p-5">
-        <div className="flex items-center gap-2 text-averna-pink mb-3">
+      <CardContent className="p-3.5 sm:p-5">
+        <div className="flex min-h-[44px] items-center gap-2 text-averna-pink mb-2 sm:mb-3">
           <CalendarClock className="h-5 w-5" />
           <h3 className="font-semibold">Exam Countdown</h3>
           {!editing && (
-            <button onClick={() => setEditing(true)} className="ml-auto text-gray-400 hover:text-white" title="Change date">
+            <button onClick={() => setEditing(true)} className="-mr-2.5 ml-auto inline-flex h-11 w-11 items-center justify-center rounded-lg text-gray-400 hover:text-white" title="Change date" aria-label="Change date">
               <Pencil className="h-4 w-4" />
             </button>
           )}
         </div>
 
         {editing ? (
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             <p className="text-sm text-gray-400">When is your IELTS exam?</p>
             <div className="flex gap-2">
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="flex-1 rounded-md border border-input bg-background/60 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-pink"
+                className="min-h-[44px] min-w-0 flex-1 rounded-md border border-input bg-background/60 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-pink"
               />
               <button
                 onClick={save}
                 disabled={!date}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-averna-primary/80 hover:bg-averna-primary text-white text-sm font-medium disabled:opacity-50"
+                className="inline-flex min-h-[44px] items-center gap-1.5 px-3 py-2 rounded-lg bg-averna-primary/80 hover:bg-averna-primary text-white text-sm font-medium disabled:opacity-50"
               >
                 <Save className="h-4 w-4" /> Save
               </button>
@@ -70,7 +70,7 @@ export function ExamCountdown() {
           </div>
         ) : daysLeft !== null && daysLeft >= 0 ? (
           <div className="text-center py-2">
-            <p className="text-5xl font-bold neon-text-cyan leading-none">{daysLeft}</p>
+            <p className="text-4xl sm:text-5xl font-bold neon-text-cyan leading-none">{daysLeft}</p>
             <p className="text-sm text-gray-400 mt-1">day{daysLeft === 1 ? "" : "s"} to go</p>
             <p className="text-xs text-gray-500 mt-2">
               {daysLeft === 0
@@ -83,7 +83,7 @@ export function ExamCountdown() {
         ) : (
           <div className="text-center py-2">
             <p className="text-sm text-gray-400">Your exam date has passed. 🎉 Set a new goal?</p>
-            <button onClick={() => setEditing(true)} className="mt-2 text-sm text-averna-pink hover:underline">
+            <button onClick={() => setEditing(true)} className="mt-1 inline-flex min-h-[44px] items-center text-sm text-averna-pink hover:underline">
               Set a new date
             </button>
           </div>

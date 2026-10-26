@@ -2,7 +2,6 @@ import { timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import { processAssessmentBatch } from "@/lib/assessment/batch";
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
 export async function POST(req: Request) {
   if (process.env.ASSESSMENT_SCHEDULER !== "on") return NextResponse.json({ error: "Not available" }, { status: 404 });
   const secret = process.env.ASSESSMENT_SCHEDULER_SECRET;

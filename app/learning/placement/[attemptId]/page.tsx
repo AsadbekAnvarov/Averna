@@ -1,7 +1,5 @@
 export const dynamic = "force-dynamic";
-// Opening the view may first mark a section whose clock ran out while the student was away
-// (Writing may go to the AI examiner).
-export const maxDuration = 60;
+// Marking a timed-out section (AI examiner) on open relies on the project default duration (300 s with Fluid).
 
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";

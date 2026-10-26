@@ -10,6 +10,7 @@
 /screens/
 /e2e/baseline/
 /e2e/report*.json
+/e2e/density-base.json
 
 # next.js
 /.next/

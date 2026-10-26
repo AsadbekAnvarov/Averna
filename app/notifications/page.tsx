@@ -78,14 +78,14 @@ export default async function NotificationsPage(props: { searchParams: Promise<{
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-2xl pb-10 lg:pb-8">
+      <div className="container mx-auto px-4 py-4 sm:py-6 max-w-2xl pb-8 lg:pb-6">
         <Link href={homeHref(session.user.role)} className="text-averna-neon hover:underline text-sm mb-4 block">
           ← Back to Dashboard
         </Link>
 
         <InboxTabs unreadMessages={unreadMessages} unreadNotifications={unreadCount} />
         <div className="flex items-center justify-between mb-5">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white flex items-center gap-3">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white flex items-center gap-3">
             <Bell className="h-8 w-8 text-averna-cyan" />
             Notifications
             {unreadCount > 0 && (
@@ -129,7 +129,7 @@ export default async function NotificationsPage(props: { searchParams: Promise<{
             </CardContent>
           </Card>
         ) : (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-5">
             {(["Today", "This week", "Earlier"] as const).map((label) =>
               buckets[label].length === 0 ? null : (
                 <div key={label}>
