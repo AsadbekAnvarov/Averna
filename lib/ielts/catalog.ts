@@ -107,7 +107,7 @@ const cachedReadingSummaries = unstable_cache(
     const generated = rows.map(readingFromRow).filter((t): t is ExamReadingTest => t !== null);
     return [...generated, ...LEGACY_READING].map(summarizeReading).sort(order);
   },
-  ["exam-catalog-reading-cdi-v3-natural-order"],
+  ["exam-catalog-reading-cdi-v3-natural-order-part-kinds"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -143,7 +143,7 @@ const cachedListeningSummaries = unstable_cache(
     const generated = rows.map(listeningFromRow).filter((t): t is ExamListeningTest => t !== null);
     return [...generated, ...LEGACY_LISTENING].map(summarizeListening).sort(order);
   },
-  ["exam-catalog-listening-cdi-v3-natural-order"],
+  ["exam-catalog-listening-cdi-v3-natural-order-part-kinds"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 

@@ -7,7 +7,7 @@ Shared tracker for the `feat/elegance-roadmap` branch. One commit per idea, work
 | 9 | Simpler navigation | Done |
 | 1 | One Continue button — Daily Session | Done |
 | 2 | Band forecast and path to target | Done |
-| 5 | Show me where — evidence in results | Planned |
+| 5 | Show me where — evidence in results | Done |
 | 8 | Native-language hints + comfort settings | Planned |
 | 10 | AI + teacher loop | Planned |
 | 7 | Instant and offline | Planned |
@@ -33,6 +33,13 @@ Evidence comes from the progression engine's cached `loadSessions`. Only full-is
 UI: Progress (page and tab) opens on `BandForecastCard`: overall "Now ≈ X.X (range) · at this pace 7.0 by …", four skill rows with an accessible sparkline (past results + dashed projection), trend arrow, path window or a practice link, a 0 / +1 / +2 / +3 segmented what-if with an aria-live summary, and the footnote "Estimates from N results. Real exam conditions vary."
 Today: `PathToTargetCard` ("Path to 7.0" + exam date, same `averna_exam_date` key) sits under the streak and links to `/progress#forecast`.
 Replaced: Exam Countdown (merged into Path to target), and BandProgress / "Practice evidence" on Progress, the Progress tab and `/learning` (where the compact card now sits beside the Skill Radar). `PracticeReadiness` stays behind the AI Clone entry point. The Progress tab now opens on the forecast; Skill Radar pairs with Level, and Weekly goal sits under DNA + achievements.
+
+### 5 — Show me where (done)
+
+The pure locator `lib/review/evidence.ts` finds the sentence that answers each wrong or blank question. Explicit quotes come first: the ‘…’ / “…” / '…' segments of the explanation, matched despite whitespace, quote-mark and case noise, then punctuation-blind, then by token overlap. Without a usable quote it derives the sentence: the gap answer as an exact phrase dominates, then shared content words from the explanation, question, template line and accepted option (stop-words out, light stemming, rarer words weigh more), with "Paragraph C" / "sixth paragraph" references preferred (required when the answer or question names the paragraph). Below the threshold it returns null instead of a random sentence. On the built-in papers 318 of 320 questions resolve from quotes and 2 are derived.
+Reading result: each mistake gets "Show in text". On desktop the passage sits beside the answers (sticky, own scroll) and the sentence is highlighted in place. On phones a bottom sheet opens on the sentence with "Back to question N". The highlight is a `<mark>` in the exam highlight colour (no padding, so no layout shift), focused with tabindex −1 and announced ("Evidence for question 7 highlighted"); a second tap ("Hide") removes it.
+Listening result: the page now loads each part's ready recording (`listeningClientContent`, after submission only) into a small result player. "Hear it" plays from the evidence time − 2 s (the line's timeline start plus the evidence's share of the line); "Show in transcript" highlights the transcript sentence the same way. Single-file recordings have no line timeline, so they get the transcript only.
+"Your mistakes by type" sits beside "Accuracy by question type" (DashRow, owner only): "Matching headings — 3 of 5 wrong → Practise matching headings" links to one part of another test of the same skill. The picker `lib/review/practice-by-type.ts` goes through: another paper not done yet → another paper → this paper. Catalog summaries now carry per-part kinds, with matching split into headings / information (`practiceKindOf`). Done keys come from a key-only SQL projection.
 
 Not in scope now: 4 (personal mistake deck) and 6 (Telegram Mini App — to be discussed separately with the owner).
 

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import type { ExamGroup, ExamSkill, GradeItem } from "@/lib/ielts/types";
 import { answerRuleFor, groupRange, rangeLabel, splitPlaceholders } from "@/lib/ielts/format";
@@ -12,10 +13,13 @@ export function ReviewGroup({
   group,
   skill,
   items,
+  extra,
 }: {
   group: ExamGroup;
   skill: ExamSkill;
   items: Map<number, GradeItem>;
+  /** Shown under a question's explanation (result pages: "Show in text" / "Hear it"). */
+  extra?: (n: number) => ReactNode;
 }) {
   const { from, to } = groupRange(group);
   const optionText = (key: string) => group.options?.find((o) => o.key.toLowerCase() === key.toLowerCase())?.text;
@@ -79,6 +83,7 @@ export function ReviewGroup({
                     </p>
                   )}
                   {it?.explanation && <p className="mt-1 text-gray-400">{it.explanation}</p>}
+                  {extra?.(q.n)}
                 </div>
                 {ok ? (
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-averna-neon" aria-label="Correct" />

@@ -8,6 +8,8 @@ import { ObjectiveResult } from "@/components/exam/results/objective-result";
 import { parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
 import { canViewStudent } from "@/lib/access";
 import { homeworkNoticeFor } from "@/lib/homework/exam-homework";
+import { listeningClientContent } from "@/lib/ielts/audio/client";
+import type { ExamListeningTest, ListeningPartAudio } from "@/lib/ielts/types";
 
 export const metadata = { title: "Listening results" };
 
@@ -54,6 +56,8 @@ export default async function ListeningResultPage(props: { params: Promise<{ tes
     // Open homework for this paper / part that this attempt didn't complete (owner only).
     viewerIsOwner ? homeworkNoticeFor(student.id, row) : Promise.resolve(null),
   ]);
+  // The parts' ready recordings (after submission, for "Hear it"); none when switched off or not rendered.
+  const audio = exam ? await partRecordings(exam) : undefined;
 
   return (
     <ObjectiveResult
@@ -68,6 +72,18 @@ export default async function ListeningResultPage(props: { params: Promise<{ tes
       viewerIsOwner={viewerIsOwner}
       studentName={student.user?.name ?? undefined}
       homeworkNotice={homeworkNotice}
+      audio={audio}
     />
   );
+}
+
+/** Each part's pre-rendered recording (with its line timeline), by part index. */
+async function partRecordings(exam: ExamListeningTest): Promise<(ListeningPartAudio | undefined)[] | undefined> {
+  try {
+    const client = await listeningClientContent(exam);
+    const out = client.parts.map((p) => p.audio);
+    return out.some(Boolean) ? out : undefined;
+  } catch {
+    return undefined;
+  }
 }

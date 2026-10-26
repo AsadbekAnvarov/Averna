@@ -25,6 +25,9 @@ export type GroupKind =
   | "gap" // type words: sentence / summary / notes / table / flow-chart / short answer
   | "gap-box"; // pick words (by key) from a box to complete a summary
 
+/** A GroupKind, with matching split into headings / information when the options say so (results, practice by type). */
+export type PracticeKind = GroupKind | "matching-headings" | "matching-information";
+
 export interface ExamOption {
   /** "A", "B" … for letters; "i", "ii" … for headings. */
   key: string;
@@ -189,8 +192,11 @@ export interface ExamTestSummary {
   difficulty: ExamDifficulty;
   questions: number;
   parts: number;
-  /** Per part: title + question range, e.g. { title: "The Silk Moth", from: 1, to: 13 }. */
-  partInfo: { title: string; from: number; to: number }[];
+  /**
+   * Per part: title + question range, e.g. { title: "The Silk Moth", from: 1, to: 13 },
+   * and the part's question types (practiceKindOf; absent in summaries cached before it existed).
+   */
+  partInfo: { title: string; from: number; to: number; kinds?: PracticeKind[] }[];
   /** Minutes (Reading: time limit; Listening: estimated audio + review time). */
   timeLimit: number;
   kinds: GroupKind[];
