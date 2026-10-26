@@ -10,10 +10,11 @@ import {
   GraduationCap, ClipboardCheck, NotebookPen, PlusCircle, Megaphone, BarChart3,
   Activity, ScrollText, Users, Command as CommandIcon, Settings, LogOut,
   Sun, Moon, SpellCheck, Sparkles, CornerDownLeft, ArrowUpDown,
-  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, AudioLines, type LucideIcon,
+  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, AudioLines, HardDrive, type LucideIcon,
 } from "lucide-react";
 import { STUDIO_TOOLS } from "@/components/studio/studio-tools";
 import { COACH_TOOLS } from "@/components/coach/coach-tools";
+import { wipeOfflineData } from "@/lib/offline/store";
 
 type ActionId = "theme" | "signout";
 interface Cmd {
@@ -88,6 +89,7 @@ export const STUDENT_COMMANDS: Cmd[] = [
   { group: "Me", label: "Team race", href: "/rankings/teams", icon: Users, keywords: "team challenge group goal", searchOnly: true },
   { group: "Me", label: "Profile", href: "/profile", icon: User, keywords: "my profile account avatar" },
   { group: "Me", label: "Settings", href: "/settings", icon: Settings, keywords: "preferences theme sound comfort" },
+  { group: "Me", label: "Offline library", href: "/offline", icon: HardDrive, keywords: "offline saved downloads device no internet connection packs save", searchOnly: true },
 ];
 
 const TEACHER_COMMANDS: Cmd[] = [
@@ -259,7 +261,12 @@ export function CommandPalette() {
 
   const select = (cmd: Cmd) => {
     if (cmd.actionId === "theme") { toggleMode(); setOpen(false); return; }
-    if (cmd.actionId === "signout") { setOpen(false); signOut({ callbackUrl: "/auth/signin" }); return; }
+    if (cmd.actionId === "signout") {
+      setOpen(false);
+      // Offline packs and waiting grades leave the device with the account (idea 7).
+      void wipeOfflineData().finally(() => signOut({ callbackUrl: "/auth/signin" }));
+      return;
+    }
     if (cmd.href) { setOpen(false); router.push(cmd.href); }
   };
 

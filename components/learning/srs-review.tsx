@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Volume2, Sparkles, RotateCcw, PartyPopper } from "lucide-react";
+import { Volume2, Sparkles, RotateCcw, PartyPopper, CloudOff } from "lucide-react";
 import type { Flashcard } from "@/lib/flashcards-data";
 import {
   loadSrs,
@@ -17,6 +17,12 @@ import {
   type Rating,
   type SrsMap,
 } from "@/lib/srs";
+import { queueGrade } from "@/lib/offline/queue-store";
+import { jsonBytes, packIds } from "@/lib/offline/packs";
+import { deckCards, saveDueCards } from "@/lib/offline/save";
+import { dueSnapshot } from "@/lib/offline/study";
+import { SaveOfflineButton } from "@/components/offline/save-offline-button";
+import { syncInBackground, syncLabel, useSyncStatus, useUserId } from "@/components/offline/use-offline";
 
 const NEW_PER_SESSION = 20;
 const MAX_QUEUE = 60;
@@ -82,18 +88,32 @@ export function SrsReview({ cards }: { cards: Flashcard[] }) {
   }, [pool]);
 
   const current = queue[0];
+  const userId = useUserId();
+  const sync = useSyncStatus(userId);
+  // "Save my due cards": today's queue as an offline pack (size shown before saving).
+  const dueBytes = useMemo(
+    () => (ready ? jsonBytes(dueSnapshot(deckCards(pool), mapRef.current, Date.now())) : 0),
+    [ready, pool],
+  );
 
   const rate = (rating: Rating) => {
     if (!current) return;
     const map = mapRef.current;
-    map[current.word] = schedule(map[current.word], rating);
+    const now = Date.now();
+    map[current.word] = schedule(map[current.word], rating, now);
     saveSrs(map);
-    // Mirror to the server ledger so retention syncs across devices + earns XP.
-    fetch("/api/srs/review", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ itemKey: current.word, rating, source: "vocab" }),
-    }).catch(() => {});
+    // Optimistic: the next card shows at once. The grade is queued with its moment and sent in
+    // the background (idempotent), so a dropped connection never loses it (idea 7).
+    if (userId) {
+      queueGrade({ ownerId: userId, itemKey: current.word, rating, source: "vocab", reviewedAt: now });
+      syncInBackground(userId);
+    } else {
+      fetch("/api/srs/review", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ itemKey: current.word, rating, source: "vocab" }),
+      }).catch(() => {});
+    }
     setReviewed((n) => n + 1);
     setFlipped(false);
 
@@ -106,20 +126,31 @@ export function SrsReview({ cards }: { cards: Flashcard[] }) {
 
   if (!ready) return null;
 
+  // Grades waiting on this device: offline they say so; online they are being sent.
+  const syncNote = sync.state ? (
+    <p role="status" className="mb-3 flex items-center gap-2 text-sm text-amber-200">
+      <CloudOff className="h-4 w-4 shrink-0" aria-hidden />
+      {syncLabel(sync.pending, sync.state)}
+    </p>
+  ) : null;
+
   // Completion state
   if (!current) {
     return (
-      <Card className="glass border-averna-neon/40">
-        <CardContent className="text-center py-16">
-          <PartyPopper className="h-12 w-12 text-averna-neon mx-auto mb-4" />
-          <p className="text-xl font-bold text-white">All caught up! 🎉</p>
-          <p className="text-sm text-gray-400 mt-2">
-            {reviewed > 0
-              ? `You reviewed ${reviewed} card${reviewed === 1 ? "" : "s"}. Come back later for the next batch.`
-              : "No cards are due right now — new words unlock as you study, and reviews come back on schedule."}
-          </p>
-        </CardContent>
-      </Card>
+      <>
+        {syncNote}
+        <Card className="glass border-averna-neon/40">
+          <CardContent className="text-center py-16">
+            <PartyPopper className="h-12 w-12 text-averna-neon mx-auto mb-4" />
+            <p className="text-xl font-bold text-white">All caught up! 🎉</p>
+            <p className="text-sm text-gray-400 mt-2">
+              {reviewed > 0
+                ? `You reviewed ${reviewed} card${reviewed === 1 ? "" : "s"}. Come back later for the next batch.`
+                : "No cards are due right now — new words unlock as you study, and reviews come back on schedule."}
+            </p>
+          </CardContent>
+        </Card>
+      </>
     );
   }
 
@@ -135,6 +166,16 @@ export function SrsReview({ cards }: { cards: Flashcard[] }) {
 
   return (
     <div>
+      {syncNote}
+      {/* Today's due cards as an offline pack: study them on the bus, grades sync later (idea 7). */}
+      <SaveOfflineButton
+        className="mb-4"
+        packId={packIds.due()}
+        label="Save my due cards"
+        bytes={dueBytes}
+        estimated
+        onSave={(owner) => saveDueCards(owner, pool, mapRef.current)}
+      />
       {/* Progress */}
       <div className="flex items-center justify-between mb-4 text-sm">
         <span className="text-gray-400">{queue.length} left in this session</span>
@@ -152,9 +193,9 @@ export function SrsReview({ cards }: { cards: Flashcard[] }) {
           <Card className="glass border-averna-purple/40 absolute inset-0 flex items-center justify-center" style={{ backfaceVisibility: "hidden" }}>
             <CardContent className="text-center py-10">
               {newBadge ? (
-                <span className="inline-block text-[10px] uppercase tracking-widest text-averna-pink mb-3">new word</span>
+                <span className="inline-block text-[11px] uppercase tracking-widest text-averna-pink mb-3">new word</span>
               ) : (
-                <span className="inline-block text-[10px] uppercase tracking-widest text-averna-cyan mb-3">review</span>
+                <span className="inline-block text-[11px] uppercase tracking-widest text-averna-cyan mb-3">review</span>
               )}
               <p className="text-4xl font-bold text-white">{current.word}</p>
               <p className="text-xs text-gray-500 mt-4">tap to reveal</p>
@@ -191,7 +232,7 @@ export function SrsReview({ cards }: { cards: Flashcard[] }) {
               className={`flex flex-col items-center gap-0.5 py-2.5 rounded-lg border bg-white/5 transition-colors ${r.cls}`}
             >
               <span className="text-sm font-medium">{r.label}</span>
-              <span className="text-[10px] opacity-70">{intervalHint(prevState, r.key)}</span>
+              <span className="text-[11px] opacity-70">{intervalHint(prevState, r.key)}</span>
             </button>
           ))}
         </div>

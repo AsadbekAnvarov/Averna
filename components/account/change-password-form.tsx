@@ -10,6 +10,7 @@ import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { CheckCircle2, Eye, EyeOff, KeyRound, Loader2, AlertCircle } from "lucide-react";
 import { PASSWORD_MIN_CHARS, passwordProblem } from "@/lib/account/password-rules";
+import { wipeOfflineData } from "@/lib/offline/store";
 
 type Lang = "uz" | "en";
 
@@ -108,7 +109,8 @@ export function ChangePasswordForm({ lang, email, username }: { lang: Lang; emai
       setNext("");
       setConfirm("");
       // Every session of the account has ended (this one too): sign in again with the new password.
-      window.setTimeout(() => void signOut({ callbackUrl: "/auth/signin?changed=1" }), 1800);
+      // Offline packs leave the device with the session (idea 7); the ended session can't sync any more.
+      window.setTimeout(() => void wipeOfflineData({ sync: false }).finally(() => signOut({ callbackUrl: "/auth/signin?changed=1" })), 1800);
     } catch {
       setError("server");
     } finally {

@@ -105,7 +105,7 @@ export const STUDENT_NAV: PortalNavSection[] = [
     items: [
       { name: "Progress", href: "/progress", icon: TrendingUp, also: ["/certificate"] },
       { name: "Rankings", href: "/rankings", icon: Trophy },
-      { name: "Profile", href: "/profile", icon: User, also: ["/settings"] },
+      { name: "Profile", href: "/profile", icon: User, also: ["/settings", "/offline"] },
     ],
   },
 ];
@@ -116,7 +116,7 @@ export const STUDENT_TABS: PortalNavItem[] = [
   { name: "Skills", href: "/learning", icon: LayoutGrid, also: ["/grammar", "/flashcards", "/article", "/materials"] },
   { name: "Practice", href: "/studio", icon: Dumbbell, also: ["/learning/mock-exam", "/learning/placement", "/challenge", "/movies", "/rewards"] },
   { name: "Coach", href: "/coach", icon: Bot, also: ["/mentor", "/learning/examiner", "/studio/essay-xray", "/studio/roleplay", "/learning-dna", "/tutoring"] },
-  { name: "Me", href: "/progress", icon: TrendingUp, also: ["/rankings", "/profile", "/settings", "/certificate"] },
+  { name: "Me", href: "/progress", icon: TrendingUp, also: ["/rankings", "/profile", "/settings", "/certificate", "/offline"] },
 ];
 
 export const TEACHER_NAV: PortalNavSection[] = [

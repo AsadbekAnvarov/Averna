@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTheme } from "@/components/theme/theme-provider";
 import { initialsOf } from "@/lib/utils";
 import { avatarSrc } from "@/lib/avatars";
+import { wipeOfflineData } from "@/lib/offline/store";
 import {
   User, Settings, Sun, Moon, LogOut, ChevronDown,
   Shield, GraduationCap, Palette, KeyRound,
@@ -58,7 +59,8 @@ export function UserAvatarDropdown({ user: rawUser, role }: Props) {
   const handleSignOut = () => {
     setOpen(false);
     const form = document.getElementById("signout-form") as HTMLFormElement | null;
-    if (form) form.requestSubmit();
+    // Offline packs and waiting grades leave the device with the account (idea 7).
+    void wipeOfflineData().finally(() => form?.requestSubmit());
   };
 
   return (

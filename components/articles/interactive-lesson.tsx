@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowLeft, Loader2, RotateCcw } from "lucide-react";
 import { useTheme } from "@/components/theme/theme-provider";
 import { applyLessonWrite, isAllowedLessonMessage, LESSON_NS, LESSON_SANDBOX, parseLessonMessage, readLessonItems } from "@/lib/articles/lesson-bridge";
@@ -13,6 +13,12 @@ type Props = {
   lesson: { slug: string; title: string; topic: string };
   /** The signed-in student: lesson progress is kept per student on shared devices. */
   userId: string;
+  /** Another document URL for the frame (the offline library's saved copy, a blob: URL). */
+  src?: string;
+  /** Replaces the "Back to Articles" link (the offline library goes back to its list). */
+  onBack?: () => void;
+  /** Extra controls at the end of the top bar (e.g. Save for offline). */
+  actions?: ReactNode;
 };
 
 /**
@@ -21,7 +27,7 @@ type Props = {
  * or storage). Its localStorage calls arrive here as messages and are kept in the app's
  * localStorage under `averna_lesson:{userId}:{key}` (lib/articles/lesson-bridge.ts).
  */
-export function InteractiveLesson({ lesson, userId }: Props) {
+export function InteractiveLesson({ lesson, userId, src, onBack, actions }: Props) {
   const frameRef = useRef<HTMLIFrameElement>(null);
   const helloRef = useRef(false);
   const { mode } = useTheme();
@@ -88,21 +94,29 @@ export function InteractiveLesson({ lesson, userId }: Props) {
   return (
     <div className="article-space interactive-lesson fixed inset-0 z-[60] flex flex-col bg-background pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
       <header className="interactive-lesson-bar flex shrink-0 items-center gap-2 px-2 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top))] sm:gap-4 sm:px-5">
-        <Link href="/article?level=Intermediate" className="interactive-lesson-back inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-2 rounded-lg px-2 text-sm font-semibold">
-          <ArrowLeft size={18} aria-hidden="true" />
-          <span>Back to Articles</span>
-        </Link>
-        <div className="min-w-0">
+        {onBack ? (
+          <button type="button" onClick={onBack} className="interactive-lesson-back inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-2 rounded-lg px-2 text-sm font-semibold">
+            <ArrowLeft size={18} aria-hidden="true" />
+            <span>Saved lessons</span>
+          </button>
+        ) : (
+          <Link href="/article?level=Intermediate" className="interactive-lesson-back inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-2 rounded-lg px-2 text-sm font-semibold">
+            <ArrowLeft size={18} aria-hidden="true" />
+            <span>Back to Articles</span>
+          </Link>
+        )}
+        <div className="min-w-0 flex-1">
           <h1 className="truncate text-base font-bold leading-tight">{lesson.title}</h1>
           <p className="article-muted truncate text-xs leading-tight">Intermediate · {lesson.topic}</p>
         </div>
+        {actions && <div className="shrink-0">{actions}</div>}
       </header>
       <div className="relative flex min-h-0 flex-1 flex-col">
         <iframe
           key={attempt}
           ref={frameRef}
           title={`${lesson.title} — interactive lesson`}
-          src={`/api/articles/lesson/${encodeURIComponent(lesson.slug)}`}
+          src={src ?? `/api/articles/lesson/${encodeURIComponent(lesson.slug)}`}
           sandbox={LESSON_SANDBOX}
           allow="clipboard-write *; web-share *; autoplay *"
           referrerPolicy="no-referrer"

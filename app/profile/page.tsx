@@ -18,6 +18,7 @@ import {
   GraduationCap,
   CalendarClock,
   Settings,
+  HardDrive,
 } from "lucide-react";
 import Link from "next/link";
 import { AvatarEditor } from "@/components/avatar-editor";
@@ -120,13 +121,22 @@ export default function ProfilePage() {
           iconClassName="text-averna-cyan"
           title="My Profile"
           action={
-            // Settings left the sidebar; Profile is its home now.
-            <Link
-              href="/settings"
-              className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-white/15 px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-white/5"
-            >
-              <Settings className="h-4 w-4" aria-hidden /> Settings
-            </Link>
+            <div className="flex flex-wrap gap-2">
+              {/* Settings left the sidebar; Profile is its home now. */}
+              <Link
+                href="/settings"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-white/15 px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-white/5"
+              >
+                <Settings className="h-4 w-4" aria-hidden /> Settings
+              </Link>
+              {/* Saved on this device (idea 7). */}
+              <Link
+                href="/offline"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-white/15 px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-white/5"
+              >
+                <HardDrive className="h-4 w-4" aria-hidden /> Offline library
+              </Link>
+            </div>
           }
         />
 

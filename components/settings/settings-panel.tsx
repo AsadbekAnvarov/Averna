@@ -16,6 +16,7 @@ import { DEFAULT_PREFS, type L1Choice } from "@/lib/comfort/prefs";
 import { L1_NAME, l1Hint, type L1Lang } from "@/lib/l1/hints";
 import { levelWantsHints, suggestL1 } from "@/lib/l1/level";
 import { cn } from "@/lib/utils";
+import { wipeOfflineData } from "@/lib/offline/store";
 
 /** What the student sees when hints are on: one real instruction and its hint. */
 const SAMPLE_INSTRUCTION = "Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.";
@@ -311,7 +312,8 @@ export function SettingsPanel({
         type="button"
         onClick={() => {
           setSigningOut(true);
-          signOut({ callbackUrl: "/" });
+          // Offline packs and waiting grades leave the device with the account (idea 7).
+          void wipeOfflineData().finally(() => signOut({ callbackUrl: "/" }));
         }}
         disabled={signingOut}
         className="w-full flex items-center justify-center gap-2 p-3 rounded-xl border border-red-500/30 text-red-300 hover:bg-red-500/10 transition-colors disabled:opacity-60"

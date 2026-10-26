@@ -6,6 +6,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { SettingsPanel } from "@/components/settings/settings-panel";
 import { TelegramConnect } from "@/components/settings/telegram-connect";
+import { OfflineSettingsRow } from "@/components/offline/offline-settings-row";
 import { SectionHeader } from "@/components/ui/section-header";
 import { PageHeader } from "@/components/ui/page-header";
 import { Settings, User, Bell, ChevronRight } from "lucide-react";
@@ -62,6 +63,8 @@ export default async function SettingsPage() {
               <ChevronRight className="h-4 w-4 text-gray-500" />
             </Link>
           ))}
+          {/* Saved on this device: flashcards, articles, Listening parts (idea 7). */}
+          {role === "STUDENT" && <OfflineSettingsRow />}
         </div>
 
         {/* Telegram bot */}

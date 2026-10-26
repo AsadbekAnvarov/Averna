@@ -10,7 +10,7 @@ Shared tracker for the `feat/elegance-roadmap` branch. One commit per idea, work
 | 5 | Show me where — evidence in results | Done |
 | 8 | Native-language hints + comfort settings | Done |
 | 10 | AI + teacher loop | Done |
-| 7 | Instant and offline | Planned |
+| 7 | Instant and offline | Done |
 | 3 | Realtime AI speaking partner + pronunciation map | Planned |
 
 ### 9 — Simpler navigation (done)
@@ -75,6 +75,27 @@ One-button mini task (needs-help row, student's Learning DNA page, review page):
 Per-student homework is the additive nullable `Homework.assigneeId` (schema, deploy.sql, migration). Every student-facing homework read filters with `forStudent()` (lib/homework/audience). Teacher lists count a personal task against its one student and label it "Only <name>".
 Every new route checks the session, the TEACHER role and `canReviewStudent`, validates with zod, and uses `trustedMutation` + `boundedJson`. No route sets its own function config.
 Limits: homework targets a whole passage or part, so a Reading mini task is ~20 min (a Listening part ~8). `MistakeEntry` holds free-text corrections with no question type, so it doesn't steer the pick. TestReview has no field for "came from an AI draft", so that isn't recorded. A Telegram copy of an undone review notification can't be recalled. Old production code on a shared preview database would show a personal task to the whole group until production deploys. e2e/density.mjs checks the needs-help card at 320 px.
+
+### 7 — Instant and offline (done)
+
+Service worker v4 (`public/sw.js`). Its routing decisions live in the pure `public/sw-routes.js`, which the worker loads with `importScripts` and the tests run as-is.
+- Cached: hashed `/_next/static/**` and fonts cache-first (at most 400 entries, oldest out); public images and icons stale-while-revalidate (80); the precached offline screen, logo and manifest. Activate deletes old `averna-*` versions only.
+- Never cached: authenticated HTML, RSC payloads (`_rsc` / `RSC` header), anything under `/api`, other origins, non-GET, range requests, frames, and any response that is not a plain same-origin 200 or says `no-store` / `private`.
+- The one page kept is `/offline`, a static client shell (`force-static`) with no personal data in its HTML. The worker stores it with every static file it names, all or nothing, when the first pack is saved, and refreshes it on visits (network first, cache after 4 s or offline). With it saved, a failed navigation redirects to `/offline?from=<page>` ("That page needs a connection"); without it, `/offline.html`, which links to saved lessons when they exist.
+
+Instant: calm skeletons (`motion-safe` pulse, token colours) for Coach, Practice Studio, Homework, Articles, Flashcards and the Writing result; the others already had one. Flashcard grades are optimistic: the card advances at once, and the grade goes into a queue (`lib/offline/sync-queue.ts`, localStorage) with a client UUID and its moment, then syncs in the background. Offline it shows "Saved offline — N reviews will sync"; a server error gets one toast with Retry. A connection line ("You're offline — saved lessons still work · Open" / "Back online · syncing N reviews…", aria-live polite) sits above the phone tab bar and below drawers and full-screen lessons.
+
+Offline packs ("Save for offline", 44 px, size shown first) live in IndexedDB (`lib/offline/idb.ts`, a small wrapper, no dependency), with their files in Cache Storage:
+- Flashcards: a deck, or "Save my due cards" (today's queue as a snapshot, at most 200: overdue first, then 20 new).
+- Articles: a reading lesson's text, words and exercises; an interactive lesson's HTML file, run offline in the same sandboxed, opaque-origin frame from a blob: URL, with its CSP as a `<meta>` tag.
+- Listening: one recorded practice part, with its recording and questions. Answers can be typed but are not marked offline (the key never reaches the browser).
+- `/offline` ("Saved on this device") lists the packs with size, date and Study / Read / Listen / Remove, storage used of 150 MB and Remove all. Views switch with `history.pushState`, so they need no server. It is linked from Settings → Account → Offline library, Profile and ⌘K "Offline library", not the sidebar.
+
+Sync and conflict rule (`lib/srs-sync.ts`, no DB change). A queued grade is scheduled with the same SM-2 maths as of its moment, and `lastReviewedAt` is set to exactly that moment. The same grade again matches it and is ignored (duplicate); a grade older than the card's last review loses to the server state (stale), and the device adopts that state. Moments more than 10 minutes in the future or 60 days in the past are refused. Online reviews without a moment behave as before. Only applied reviews count toward XP, the streak, the activity log and Learning DNA. Grades are sent only while their author is signed in (checked against `/api/auth/session`).
+
+Storage and privacy: everything saved stays under 150 MB and below 90 % of the browser quota (`navigator.storage.estimate`); saving asks for `navigator.storage.persist()`. Packs carry the user id. Another user signing in on the device wipes them, and every sign-out path (Settings, ⌘K, the avatar menu, change password, "Sign in as another user") first syncs waiting grades (≤ 2.5 s), then deletes the database, both offline caches and the queue, and sends `CLEAR_PRIVATE_CACHE`. Before this, nothing sent that message.
+
+Limits: a recording is saved only when its host allows CORS; it is never stored as an opaque response, and the button says so. The browser may still evict packs under storage pressure: iOS Safari clears site data after about 7 days without a visit unless the app is on the home screen, and persistence is a request, not a guarantee. Parts read by browser voices, whole-test recordings, vocabulary games and the dictionary don't work offline. Images inside saved Listening questions and the lessons' web fonts need a connection. Playwright's offline mode doesn't cut the worker's own fetches, so e2e case 9 checks the page side and `tests/offline-privacy.test.ts` checks the worker.
 
 Not in scope now: 4 (personal mistake deck) and 6 (Telegram Mini App — to be discussed separately with the owner).
 

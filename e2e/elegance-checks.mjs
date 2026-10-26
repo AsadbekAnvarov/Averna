@@ -38,6 +38,14 @@
  *                    button and link in the card is at least 44 px tall. Sideways scrolling at
  *                    320 px is checked by e2e/density.mjs
  *
+ * Idea 7 as student1 on the phone:
+ *   9 offline        /flashcards "Save for offline" (≥ 44 px) saves the first deck and the worker keeps
+ *                    /offline; with the context offline, /offline lists the deck, one card is graded
+ *                    ("Saved offline — … will sync") and queued; back online the queue drains through
+ *                    POST /api/srs/review. Playwright's offline mode doesn't cut the worker's own
+ *                    fetches, so the worker's offline serving is unit-tested (tests/offline-privacy).
+ *                    Skipped with a note without a service worker or a due card; cleans up after itself
+ *
  *   BASE_URL=http://localhost:3000 node e2e/elegance-checks.mjs   → e2e/report-elegance.json
  *
  * Exit code 1 when any check fails. Runs in CI after the screenshots (.github/workflows/screens.yml).
@@ -617,6 +625,82 @@ async function caseNeedsHelp(context, { id, device }) {
   }
 }
 
+// ------------------------------------------------------------------- idea 7: instant and offline
+
+/** Removes this device's offline packs, saved shell and grade queue (so no later check sees them). */
+const clearOffline = (page) =>
+  page
+    .evaluate(async () => {
+      await new Promise((resolve) => {
+        const req = indexedDB.deleteDatabase("averna-offline");
+        req.onsuccess = req.onerror = req.onblocked = () => resolve();
+      });
+      for (const key of await caches.keys()) if (key.startsWith("averna-offline-")) await caches.delete(key);
+      for (const key of ["averna_offline_queue_v1", "averna_offline_owner"]) localStorage.removeItem(key);
+    })
+    .catch(() => {});
+
+async function caseOffline(context, { id }) {
+  const page = await open(context, "/flashcards");
+  try {
+    const worker = await page.evaluate(() => ("serviceWorker" in navigator ? navigator.serviceWorker.getRegistration().then((r) => !!r) : false)).catch(() => false);
+    if (!worker && !(await until(() => page.evaluate(() => navigator.serviceWorker?.getRegistration().then((r) => !!r)), 15_000))) {
+      return note(id, "no service worker registered on this build: skipped");
+    }
+    await page.evaluate(() => navigator.serviceWorker.ready);
+    if (!(await page.evaluate(() => !!navigator.serviceWorker.controller))) {
+      await page.reload({ waitUntil: "load", timeout: 60_000 });
+    }
+    const save = page.getByRole("button", { name: /^Save for offline/ }).first();
+    if (!(await until(() => save.isVisible(), 15_000))) return note(id, "/flashcards shows no “Save for offline” button (no deck, or this browser can't keep packs): skipped");
+    const b = await save.boundingBox();
+    if (b && b.height < TOUCH) violation(id, `“Save for offline” is ${round(b.height)}px tall (< ${TOUCH}px)`);
+    await until(() => isHydrated(save), 15_000);
+    await save.click();
+    if (!(await until(() => page.getByText(/Saved for offline ·/).first().isVisible(), 15_000))) return violation(id, "the deck did not save for offline");
+    const shellFiles = async () =>
+      page.evaluate(async () => {
+        const c = await caches.open("averna-offline-shell-v1");
+        return (await c.match("/offline", { ignoreSearch: true })) ? (await c.keys()).length : 0;
+      });
+    if (!(await until(async () => (await shellFiles()) > 0, 30_000))) violation(id, "the worker did not keep the /offline page after the first save");
+
+    // Playwright's offline mode cuts the page's network, not the worker's own fetches: the worker's
+    // offline serving is covered by tests/offline-privacy.test.ts; this checks IndexedDB packs,
+    // grading with no connection and the queue sync.
+    await context.setOffline(true);
+    let queued = 0;
+    try {
+      await page.goto(`${BASE}/offline`, { waitUntil: "load", timeout: 60_000 });
+      const heading = page.getByRole("heading", { name: "Saved on this device" });
+      if (!(await until(() => heading.isVisible(), 15_000))) return violation(id, "offline: /offline shows no “Saved on this device”");
+      const study = page.getByRole("button", { name: /^Study: / }).first();
+      if (!(await until(() => study.isVisible(), 10_000))) return violation(id, "offline: the saved deck is not listed on /offline");
+      await until(() => isHydrated(study), 15_000);
+      await study.click();
+      const cardButton = page.getByRole("button", { name: /Tap to reveal the meaning/ });
+      if (!(await until(() => cardButton.isVisible(), 10_000))) return note(id, "the saved deck has no card due right now (the seed reviewed them all): grading skipped");
+      await cardButton.click();
+      await page.getByRole("button", { name: /^Good/ }).click();
+      if (!(await until(() => page.getByText(/Saved offline — \d+ reviews? will sync/).isVisible(), 5_000))) violation(id, "offline: no “Saved offline — … will sync” after grading a card");
+      queued = await page.evaluate(() => JSON.parse(localStorage.getItem("averna_offline_queue_v1") || "[]").length);
+      if (queued < 1) violation(id, "offline: the grade was not queued");
+    } finally {
+      await context.setOffline(false);
+    }
+    await page.evaluate(() => window.dispatchEvent(new Event("online")));
+    if (queued && !(await until(() => page.evaluate(() => !localStorage.getItem("averna_offline_queue_v1")), 20_000))) {
+      violation(id, "back online: the queued review did not sync");
+    }
+    note(id, `deck saved, shell kept (${await shellFiles()} entries), ${queued} review(s) graded offline and synced`);
+  } finally {
+    // The worker may still be refreshing the saved /offline page from the last visit: let it finish first.
+    await page.waitForTimeout(1_500).catch(() => {});
+    await clearOffline(page);
+    await page.close();
+  }
+}
+
 // ---------------------------------------------------------------------------------------------
 
 /** One signed-in context per role and device; its cases run in order. */
@@ -632,6 +716,7 @@ const SUITES = [
       ["5-comfort/phone", caseComfort],
       ["6-reading-ruler/phone", caseRuler],
       ["7-l1-hints/phone", caseL1Hints],
+      ["9-offline/phone", caseOffline],
     ],
   },
   {

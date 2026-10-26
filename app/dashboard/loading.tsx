@@ -4,7 +4,7 @@
  * screen, so only the tab area is mocked: a hero-sized block and a grid.
  */
 function Block({ className = "" }: { className?: string }) {
-  return <div className={`animate-pulse rounded-2xl bg-white/5 border border-white/5 ${className}`} />;
+  return <div aria-hidden className={`motion-safe:animate-pulse rounded-2xl bg-white/5 border border-white/5 ${className}`} />;
 }
 
 export default function DashboardLoading() {

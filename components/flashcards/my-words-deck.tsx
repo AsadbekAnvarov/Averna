@@ -349,7 +349,7 @@ function Session({
       >
         <span
           className={cn(
-            "inline-block text-[10px] uppercase tracking-widest",
+            "inline-block text-[11px] uppercase tracking-widest",
             fresh ? "text-averna-pink" : "text-averna-cyan"
           )}
         >
@@ -402,7 +402,7 @@ function Session({
               className={cn("flex min-h-[52px] flex-col items-center justify-center gap-0.5 rounded-lg border bg-white/5 py-2 transition-colors motion-reduce:transition-none", r.cls, FOCUS_RING)}
             >
               <span className="text-sm font-medium">{r.label}</span>
-              <span className="text-[10px] opacity-70">{intervalHint(prev, r.key)}</span>
+              <span className="text-[11px] opacity-70">{intervalHint(prev, r.key)}</span>
             </button>
           ))}
         </div>

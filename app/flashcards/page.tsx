@@ -13,6 +13,9 @@ import { SrsReview } from "@/components/learning/srs-review";
 import { MyWordsDeck } from "@/components/flashcards/my-words-deck";
 import { useMyWords } from "@/components/flashcards/use-my-words";
 import { loadSrs, countDue } from "@/lib/srs";
+import { jsonBytes, packIds } from "@/lib/offline/packs";
+import { deckCards, saveDeck } from "@/lib/offline/save";
+import { SaveOfflineButton } from "@/components/offline/save-offline-button";
 
 /** "words" = My words: saved from the in-text dictionary, reviewed with the same SRS schedule. */
 type Mode = "study" | "quiz" | "srs" | "words";
@@ -196,7 +199,7 @@ export default function FlashcardsPage() {
         <div className="flex flex-wrap items-center gap-2 mb-4">
           <button
             onClick={() => setModeAndReset("study")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors ${
+            className={`flex min-h-11 sm:min-h-0 items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors ${
               mode === "study"
                 ? "bg-averna-purple/20 border-averna-purple text-averna-purple"
                 : "border-white/10 text-gray-300 hover:border-averna-purple/40"
@@ -206,7 +209,7 @@ export default function FlashcardsPage() {
           </button>
           <button
             onClick={() => setModeAndReset("quiz")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors ${
+            className={`flex min-h-11 sm:min-h-0 items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors ${
               mode === "quiz"
                 ? "bg-averna-neon/20 border-averna-neon text-averna-neon"
                 : "border-white/10 text-gray-300 hover:border-averna-neon/40"
@@ -216,7 +219,7 @@ export default function FlashcardsPage() {
           </button>
           <button
             onClick={() => setModeAndReset("srs")}
-            className={`relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors ${
+            className={`relative flex min-h-11 sm:min-h-0 items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors ${
               mode === "srs"
                 ? "bg-averna-cyan/20 border-averna-cyan text-averna-cyan"
                 : "border-white/10 text-gray-300 hover:border-averna-cyan/40"
@@ -224,13 +227,13 @@ export default function FlashcardsPage() {
           >
             <RotateCcw className="h-4 w-4" /> Review
             {dueCount > 0 && mode !== "srs" && (
-              <span className="ml-1 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-averna-cyan text-black">{dueCount}</span>
+              <span className="ml-1 text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-averna-cyan text-black">{dueCount}</span>
             )}
           </button>
           <button
             onClick={() => setModeAndReset("words")}
             aria-pressed={mode === "words"}
-            className={`relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 ${
+            className={`relative flex min-h-11 sm:min-h-0 items-center gap-2 px-4 py-2 rounded-lg text-sm border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60 ${
               mode === "words"
                 ? "bg-averna-neon/15 border-averna-neon text-averna-neon"
                 : "border-white/10 text-gray-300 hover:border-averna-neon/40"
@@ -238,7 +241,7 @@ export default function FlashcardsPage() {
           >
             <BookMarked className="h-4 w-4" aria-hidden /> My words
             {myWords.dueCount > 0 && mode !== "words" && (
-              <span className="ml-1 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-averna-neon text-black">
+              <span className="ml-1 text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-averna-neon text-black">
                 {myWords.dueCount}
                 <span className="sr-only"> due</span>
               </span>
@@ -261,7 +264,7 @@ export default function FlashcardsPage() {
               <button
                 key={d.id}
                 onClick={() => selectDeck(d.id)}
-                className={`px-3 py-1.5 rounded-full text-sm border transition-colors ${
+                className={`min-h-11 sm:min-h-0 px-3 py-1.5 rounded-full text-sm border transition-colors ${
                   deckId === d.id
                     ? "bg-averna-purple/20 border-averna-purple text-averna-purple"
                     : "bg-white/5 border-white/10 text-gray-300 hover:border-averna-purple/40"
@@ -276,6 +279,18 @@ export default function FlashcardsPage() {
             );
           })}
         </div>
+        )}
+
+        {/* This deck as an offline pack: studied with the same review schedule, grades sync later (idea 7). */}
+        {mode !== "srs" && mode !== "words" && (
+          <SaveOfflineButton
+            key={deck.id}
+            className="mb-4"
+            packId={packIds.deck(deck.id)}
+            bytes={jsonBytes(deckCards(deck.cards))}
+            estimated
+            onSave={(owner) => saveDeck(owner, deck, loadSrs())}
+          />
         )}
 
         {/* Search + filter (study mode only) */}

@@ -5,6 +5,8 @@ import { LookupArea } from "@/components/dictionary/lookup-area";
 import { ArticleListen } from "@/components/article-listen";
 import { ArticleExercises } from "./article-exercises";
 import { ARTICLE_LESSONS, articleReadingMinutes, type ArticleLesson as Lesson } from "@/lib/articles/catalog";
+import { offlineArticle } from "@/lib/offline/packs";
+import { SaveArticleOffline } from "@/components/offline/save-article-offline";
 
 export function ArticleLesson({ article }: { article: Lesson }) {
   const position = ARTICLE_LESSONS.findIndex(item => item.slug === article.slug);
@@ -12,7 +14,7 @@ export function ArticleLesson({ article }: { article: Lesson }) {
   return <main className="article-space min-h-screen premium-gradient">
     <div className="article-container article-reader">
       <PageHeader back={{ href: `/article?level=${encodeURIComponent(article.level)}`, label: "Back to Articles" }} icon={BookOpen} title={article.title} subtitle={<>{article.level} · Reading lesson</>} />
-      <div className="article-reader-tools"><p className="article-meta"><Clock size={16} aria-hidden="true" />{articleReadingMinutes(article)} min read · {article.vocabulary.length} key words</p><ArticleListen text={article.body} title={article.title} /></div>
+      <div className="article-reader-tools"><p className="article-meta"><Clock size={16} aria-hidden="true" />{articleReadingMinutes(article)} min read · {article.vocabulary.length} key words</p><ArticleListen text={article.body} title={article.title} /><SaveArticleOffline article={offlineArticle(article)} /></div>
       <nav className="article-filters" aria-label="Lesson sections"><a href="#reading">Read the article</a><a href="#vocabulary">Key vocabulary</a><a href="#exercises">Exercises</a></nav>
       <section id="reading" className="article-card article-section">
         <h2>The article</h2>

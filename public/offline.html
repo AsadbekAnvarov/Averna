@@ -48,6 +48,14 @@
         outline: 3px solid #6ecfff;
         outline-offset: 4px;
       }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      a[hidden] {
+        display: none;
+      }
       @media (prefers-color-scheme: light) {
         body {
           background: #fff;
@@ -78,7 +86,18 @@
         If you were writing, reopen the same task in the same account to restore
         a locally saved draft.
       </p>
-      <a href="/dashboard">Try again</a>
+      <p class="actions">
+        <a href="/dashboard">Try again</a>
+        <a id="saved" href="/offline" hidden>Open saved lessons</a>
+      </p>
     </main>
+    <script>
+      // Saved lessons (the offline library) open with no network once one was saved on this device.
+      try {
+        caches.match("/offline", { cacheName: "averna-offline-shell-v1", ignoreSearch: true }).then(function (hit) {
+          if (hit) document.getElementById("saved").hidden = false;
+        });
+      } catch (e) {}
+    </script>
   </body>
 </html>

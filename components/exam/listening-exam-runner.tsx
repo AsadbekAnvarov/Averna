@@ -43,6 +43,7 @@ import type { FileErrorCode, FileSnapshot } from "./audio-file-player";
 import { focusQuestion, useDeadline, useExamAnswers, useLeaveGuard } from "./use-exam";
 import type { ListeningExamRunnerProps } from "./types";
 import { cn } from "@/lib/utils";
+import { SaveListeningOffline } from "@/components/offline/save-listening-offline";
 
 /**
  * Computer-delivered IELTS Listening. Every part in scope plays either
@@ -1650,6 +1651,10 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
               <p role="status" className="mt-3 text-sm text-amber-200">
                 We couldn&apos;t play the sound check. Check that your device isn&apos;t muted and the volume is up, then try again.
               </p>
+            )}
+            {/* One recorded practice part: its recording and questions for the offline library (idea 7). */}
+            {practicePart != null && test.parts[practicePart]?.audio && (
+              <SaveListeningOffline className="mt-4" test={test} partIndex={practicePart} />
             )}
 
             <div className="mt-5 border-t border-white/10 pt-4">
