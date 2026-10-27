@@ -48,6 +48,12 @@
  *                    fetches, so the worker's offline serving is unit-tested (tests/offline-privacy).
  *                    Skipped with a note without a service worker or a due card; cleans up after itself
  *
+ * Idea 3 as student1 on the phone and the desktop (no call is placed):
+ *  10 live-partner   /coach/live renders the setup screen (one "Start call") or, without an OpenAI
+ *                    key (CI), the "isn't available" card linking to the AI Examiner with no Start
+ *                    button; on the phone every link, button, select and mode option is at least
+ *                    44 px tall and the page doesn't scroll sideways at 320 px
+ *
  *   BASE_URL=http://localhost:3000 node e2e/elegance-checks.mjs   → e2e/report-elegance.json
  *
  * Exit code 1 when any check fails. Runs in CI after the screenshots (.github/workflows/screens.yml).
@@ -728,6 +734,50 @@ async function caseOffline(context, { id }) {
   }
 }
 
+// ------------------------------------------------------- idea 3: live speaking partner (no call)
+
+async function caseLivePartner(context, { id, device }) {
+  const page = await open(context, "/coach/live");
+  try {
+    const card = page.locator('[data-testid="live-setup"], [data-testid="live-unavailable"]').first();
+    if (!(await card.waitFor({ state: "visible", timeout: 30_000 }).then(() => true, () => false))) {
+      return violation(id, "/coach/live shows neither the setup screen nor the “isn't available” card");
+    }
+    const kind = await card.getAttribute("data-testid");
+    if (kind === "live-unavailable") {
+      const link = card.getByRole("link", { name: /AI Examiner/ });
+      if ((await link.getAttribute("href")) !== "/learning/examiner") violation(id, "the “isn't available” card does not link to the AI Examiner");
+      if ((await card.getByRole("button", { name: /Start/ }).count()) > 0) violation(id, "the “isn't available” card shows a Start button");
+    } else if ((await card.getByRole("button", { name: /Start call/ }).count()) !== 1) {
+      violation(id, "the setup screen has no “Start call” button");
+    }
+    if (device === "phone") {
+      const targets = card.locator('a, button, select, label:has(input[type="radio"])');
+      for (let i = 0; i < (await targets.count()); i++) {
+        const t = targets.nth(i);
+        if (!(await t.isVisible())) continue;
+        const b = await t.boundingBox();
+        const name = ((await t.innerText().catch(() => "")) || (await t.getAttribute("aria-label")) || "").replace(/\s+/g, " ").trim().slice(0, 40);
+        if (b && b.height < TOUCH - 0.5) violation(id, `“${name}” is ${round(b.height)}px tall (< ${TOUCH}px)`);
+      }
+      const size = page.viewportSize() ?? DEVICES[device].viewport;
+      await page.setViewportSize({ width: NARROW, height: size.height });
+      try {
+        await until(() => page.evaluate((w) => innerWidth === w, NARROW), 5_000);
+        const o = await page.evaluate(sidewaysOverflow);
+        if (o.scrollWidth > o.clientWidth + 1) {
+          violation(id, `/coach/live ${NARROW}px scrolls sideways (scrollWidth ${o.scrollWidth}px > clientWidth ${o.clientWidth}px + 1)${o.wide.length ? `: ${o.wide.join("; ")}` : ""}`);
+        }
+      } finally {
+        await page.setViewportSize(size);
+      }
+    }
+    note(id, kind === "live-unavailable" ? "no OpenAI key on this build: the “isn't available” card with the AI Examiner link" : "setup screen with Start call");
+  } finally {
+    await page.close();
+  }
+}
+
 // ---------------------------------------------------------------------------------------------
 
 /** One signed-in context per role and device; its cases run in order. */
@@ -744,6 +794,7 @@ const SUITES = [
       ["6-reading-ruler/phone", caseRuler],
       ["7-l1-hints/phone", caseL1Hints],
       ["9-offline/phone", caseOffline],
+      ["10-live-partner/phone", caseLivePartner],
     ],
   },
   {
@@ -753,6 +804,7 @@ const SUITES = [
       ["5-comfort/desktop", caseComfort],
       ["6-reading-ruler/desktop", caseRuler],
       ["7-l1-hints/desktop", caseL1Hints],
+      ["10-live-partner/desktop", caseLivePartner],
     ],
   },
   { role: "teacher", device: "phone", cases: [["8-needs-help/phone", caseNeedsHelp]] },

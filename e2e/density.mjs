@@ -66,6 +66,8 @@ const PAGES = {
     "/progress",
     // The AI Coach hub (elegance roadmap, idea 9); "new on head" until the base has it.
     "/coach",
+    // Live speaking partner (idea 3): the setup screen, or "isn't available" without an OpenAI key (CI).
+    "/coach/live",
     "/learning",
     "/homework",
     "/article",

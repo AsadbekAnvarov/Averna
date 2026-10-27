@@ -1,4 +1,4 @@
-import { Sparkles, MessageSquare, Bot, ScanLine, Clapperboard, Dna, Users, UserCheck, type LucideIcon } from "lucide-react";
+import { Sparkles, MessageSquare, Bot, ScanLine, Clapperboard, Dna, Users, UserCheck, AudioLines, type LucideIcon } from "lucide-react";
 
 export type CoachGroup = "ai" | "people";
 
@@ -54,6 +54,16 @@ export const COACH_TOOLS: CoachTool[] = [
     group: "ai",
     keywords: "examiner speaking band score assess feedback test",
     tone: "bg-averna-cyan/15 text-averna-cyan",
+  },
+  {
+    name: "Live speaking partner",
+    href: "/coach/live",
+    icon: AudioLines,
+    useWhen: "Use it when you want a short live voice chat with an AI partner, then words to practise.",
+    cta: "Start a call",
+    group: "ai",
+    keywords: "live speaking partner voice call talk conversation realtime real-time chat speak pronunciation ai partner",
+    tone: "bg-averna-neon/15 text-averna-neon",
   },
   {
     name: "Essay X-Ray",

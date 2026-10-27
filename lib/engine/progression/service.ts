@@ -780,6 +780,8 @@ export async function getActivityHistory(studentId: string, days = 7): Promise<H
   for (const l of logs) {
     const d = asRec(l.details) ?? {};
     if (l.action === "IELTS_TEST_COMPLETED" && l.points === 0 && d.module == null) continue;
+    // Live-call minute accounting (lib/realtime/live-store.ts); a finished call shows as its XP row.
+    if (l.action === "LIVE_SPEAKING") continue;
     let title = ACTION_TITLE[l.action] ?? l.action.toLowerCase().replace(/_/g, " ");
     let detail: string | null = null;
     if (l.action === "IELTS_TEST_COMPLETED") {
