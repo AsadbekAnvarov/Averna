@@ -4,11 +4,13 @@ import { Reveal } from "@/components/motion/reveal";
 import { SessionOutcomeSection } from "@/components/progression/session-outcome-section";
 import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { READING_FULL } from "@/lib/ielts/format";
-import type { ExamListeningTest, ExamReadingTest } from "@/lib/ielts/types";
+import type { ExamListeningTest, ExamReadingTest, ListeningPartAudio } from "@/lib/ielts/types";
 import type { HomeworkNotice } from "@/lib/homework/exam-homework";
 import { HomeworkNoticeCard } from "@/components/homework/homework-notice";
+import { DashRow } from "@/components/ui/dash-row";
 import { AnswerReview } from "./answer-review";
 import { KindBreakdown } from "./kind-breakdown";
+import { MistakesByTypeSection } from "./mistakes-by-type";
 import { NextBand } from "./next-band";
 import { PRIMARY_BTN, ResultActions, SECONDARY_BTN } from "./result-actions";
 import { ResultHero } from "./result-hero";
@@ -30,6 +32,7 @@ export function ObjectiveResult({
   viewerIsOwner = true,
   studentName,
   homeworkNotice = null,
+  audio,
 }: {
   attempt: ObjectiveAttempt;
   /** The paper, or null when it can't be loaded any more. */
@@ -47,6 +50,8 @@ export function ObjectiveResult({
   studentName?: string;
   /** Owner only: open homework for this content that this attempt didn't complete (homeworkNoticeFor). */
   homeworkNotice?: HomeworkNotice | null;
+  /** Listening: each part's ready recording (by part index), for "Hear it". */
+  audio?: (ListeningPartAudio | undefined)[];
 }) {
   const { skill, part } = attempt;
   const word = skillWord(skill);
@@ -127,11 +132,29 @@ export function ObjectiveResult({
           </div>
         )}
 
-        <Reveal>
-          <KindBreakdown skill={skill} byKind={attempt.byKind} items={attempt.items} blanks={blanks} />
-        </Reveal>
+        {viewerIsOwner && attempt.items.some((it) => !it.correct) ? (
+          <Reveal>
+            <DashRow>
+              <KindBreakdown skill={skill} byKind={attempt.byKind} items={attempt.items} blanks={blanks} />
+              <Suspense fallback={<ProgressionSkeleton rows={2} label="Finding practice for your mistakes…" />}>
+                <MistakesByTypeSection
+                  skill={skill}
+                  examId={attempt.examId}
+                  studentId={studentId}
+                  items={attempt.items}
+                  test={test}
+                  className="h-full"
+                />
+              </Suspense>
+            </DashRow>
+          </Reveal>
+        ) : (
+          <Reveal>
+            <KindBreakdown skill={skill} byKind={attempt.byKind} items={attempt.items} blanks={blanks} />
+          </Reveal>
+        )}
 
-        <AnswerReview skill={skill} test={test} part={part} items={attempt.items} />
+        <AnswerReview skill={skill} test={test} part={part} items={attempt.items} audio={audio} />
 
         {viewerIsOwner && (
           <Reveal>

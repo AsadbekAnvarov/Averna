@@ -27,12 +27,16 @@ const QUICK_TEACHER = [
 export function MessageComposer({
   receiverId,
   role,
+  initialText = "",
 }: {
   receiverId: string;
   role: string;
+  /** A prefilled, editable draft (teacher "Who needs help today" → Message). Never sent by itself. */
+  initialText?: string;
 }) {
   const router = useRouter();
-  const [text, setText] = useState("");
+  const draftMode = initialText.trim().length > 0;
+  const [text, setText] = useState(initialText);
   const [showEmoji, setShowEmoji] = useState(false);
   const [showQuick, setShowQuick] = useState(false);
   const [sending, setSending] = useState(false);
@@ -51,7 +55,9 @@ export function MessageComposer({
       });
       setText("");
       setShowQuick(false);
-      router.refresh();
+      // Drop the draft from the address so a reload doesn't bring it back.
+      if (draftMode) router.replace(`/messages?with=${encodeURIComponent(receiverId)}`);
+      else router.refresh();
     } finally {
       setSending(false);
     }
@@ -59,6 +65,9 @@ export function MessageComposer({
 
   return (
     <div className="mt-3 border-t border-white/10 pt-3">
+      {draftMode && text === initialText && (
+        <p className="mb-2 text-xs text-gray-400">A suggested first message — edit it before you send.</p>
+      )}
       {/* Quick replies */}
       {showQuick && (
         <div className="flex flex-wrap gap-2 mb-2 animate-fade-in">
@@ -91,7 +100,17 @@ export function MessageComposer({
         <Button type="button" variant="ghost" size="icon" onClick={() => { setShowQuick((s) => !s); setShowEmoji(false); }} className="text-averna-cyan shrink-0" aria-label="Quick replies" aria-pressed={showQuick} title="Quick replies">
           <Zap className="h-5 w-5" />
         </Button>
-        <Input value={text} onChange={(e) => setText(e.target.value)} placeholder="Type a message..." autoComplete="off" className="bg-background/50" />
+        {draftMode ? (
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            rows={3}
+            aria-label="Message draft — edit before sending"
+            className="min-h-[44px] w-full flex-1 resize-y rounded-md border border-input bg-background/50 px-3 py-2 text-sm text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          />
+        ) : (
+          <Input value={text} onChange={(e) => setText(e.target.value)} placeholder="Type a message..." autoComplete="off" className="bg-background/50" />
+        )}
         <Button type="submit" disabled={sending} aria-label="Send message" className="neon-button bg-averna-primary hover:bg-averna-light shrink-0">
           <Send className="h-4 w-4" />
         </Button>

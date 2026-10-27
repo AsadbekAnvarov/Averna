@@ -11,6 +11,7 @@
  */
 
 import { db } from "@/lib/db";
+import { forStudent, isForStudent } from "@/lib/homework/audience";
 import { BUDGETED_ACTIONS } from "@/lib/engine/xp-engine";
 import { STREAK_CONFIG } from "@/lib/engine/progression/config";
 import { pendingReviewCount } from "@/lib/review/queue";
@@ -40,7 +41,7 @@ export const REVIEW_WINDOW_DAYS = 14;
 /** Days ahead covered by a teacher's /status. */
 const UPCOMING_DAYS = 7;
 
-const HW_SELECT = { id: true, title: true, contentTitle: true, groupId: true, dueDate: true } as const;
+const HW_SELECT = { id: true, title: true, contentTitle: true, groupId: true, dueDate: true, assigneeId: true } as const;
 const STUDENT_SELECT = {
   id: true,
   userId: true,
@@ -128,7 +129,7 @@ export async function loadStudentStatus(userId: string, now: Date): Promise<Stud
   let next: { title: string | null; contentTitle: string | null; dueDate: Date } | null = null;
   let pending = 0;
   if (s.groupId) {
-    const where = { groupId: s.groupId, dueDate: { gte: now }, submissions: { none: { studentId: s.id } } };
+    const where = { groupId: s.groupId, dueDate: { gte: now }, submissions: { none: { studentId: s.id } }, ...forStudent(s.id) };
     [next, pending] = await Promise.all([
       db.homework.findFirst({ where, orderBy: { dueDate: "asc" }, select: { title: true, contentTitle: true, dueDate: true } }),
       db.homework.count({ where }),
@@ -313,7 +314,7 @@ export async function loadWeeklyReports(studentIds: string[], now: Date): Promis
         student: { id: s.id, name: s.user?.name ?? null, currentStreak: s.currentStreak, lastActiveDate: s.lastActiveDate, streakFreezes: s.streakFreezes },
         logs: logsBy.get(s.id) ?? [],
         tests: testsBy.get(s.id) ?? [],
-        homework: s.groupId ? hwBy.get(s.groupId) ?? [] : [],
+        homework: s.groupId ? (hwBy.get(s.groupId) ?? []).filter((h) => isForStudent(h, s.id)) : [],
         submittedHomeworkIds: new Set((subsBy.get(s.id) ?? []).map((x) => x.homeworkId)),
         attendance: attBy.get(s.id) ?? [],
         reviews: (reviewsBy.get(s.id) ?? []).length,

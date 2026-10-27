@@ -11,6 +11,7 @@ import { describeExamHomework, type ExamHomeworkInfo } from "@/lib/homework/libr
 import { reviewedTestIds } from "@/lib/homework/reviews";
 import { EXAM_KIND_INFO, dueState, examResultHref } from "@/lib/homework/library-shared";
 import { isWritingHomeworkKind, writingHomeworkRule } from "@/lib/homework/exam-attempt";
+import { isForStudent } from "@/lib/homework/audience";
 import { KindIcon, ExamKindBadge } from "@/components/homework/exam-kind";
 import { DueChip } from "@/components/homework/homework-cards";
 import { cn, formatDateTime } from "@/lib/utils";
@@ -57,8 +58,9 @@ export default async function HomeworkDetailPage(props: { params: Promise<{ id: 
     select: { id: true, status: true, band: true, testId: true, submittedAt: true, pointsAwarded: true, position: true, feedback: true },
   });
 
-  // Students only see their own group's homework (or homework they have already handed in).
-  if (homework.groupId !== student.groupId && !existingSubmission) return redirect("/homework");
+  // Students only see their own group's homework — a classmate's personal task (assigneeId) is
+  // not theirs — or homework they have already handed in.
+  if ((homework.groupId !== student.groupId || !isForStudent(homework, student.id)) && !existingSubmission) return redirect("/homework");
 
   const submissionCount: number = homework._count?.submissions ?? 0;
 

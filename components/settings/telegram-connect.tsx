@@ -11,7 +11,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AlertTriangle, CheckCircle2, ExternalLink, Loader2, PauseCircle, RefreshCw, Send, Unlink } from "lucide-react";
-import { SectionHeader } from "@/components/ui/section-header";
+import { SettingsGroup } from "@/components/settings/settings-group";
 import { toast } from "@/components/ui/toast";
 import type { LinkRole, PrefKey, TelegramCodeResponse, TelegramLinkStatus } from "@/lib/telegram/types";
 
@@ -218,14 +218,18 @@ export function TelegramConnect() {
 
   const role: LinkRole = status?.role ?? "student";
   let body: React.ReactNode;
+  // The collapsed group's one-line summary (components/settings/settings-group.tsx).
+  let summary: string;
 
   if (!status && !loadError) {
+    summary = "Loading…";
     body = (
       <p className="flex items-center gap-2 text-sm text-gray-400">
         <Loader2 className="h-4 w-4 animate-spin" /> Loading…
       </p>
     );
   } else if (!status) {
+    summary = "Couldn't load the connection";
     body = (
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="flex items-center gap-2 text-sm text-red-300">
@@ -234,13 +238,14 @@ export function TelegramConnect() {
         <button
           type="button"
           onClick={() => void load()}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-3 py-1.5 text-sm text-gray-200 hover:bg-white/5"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-white/15 px-3 py-1.5 text-sm text-gray-200 hover:bg-white/5 sm:min-h-0"
         >
           <RefreshCw className="h-4 w-4" /> Try again
         </button>
       </div>
     );
   } else if (!status.available && !status.linked) {
+    summary = status.reason === "parent_account" ? "Parents join with an invite link" : "Not available yet";
     body =
       status.reason === "parent_account" ? (
         <p className="text-sm text-gray-400">Parents connect with an invite link from their child&apos;s teacher.</p>
@@ -253,8 +258,9 @@ export function TelegramConnect() {
   } else if (status.linked) {
     const keys = status.prefKeys.filter((k) => PREF_TEXT[role][k]);
     const who = status.username ? `@${status.username}` : status.firstName || "your Telegram";
+    summary = status.active ? `Connected as ${who}` : `Paused · ${who}`;
     body = (
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="flex items-center gap-2 text-sm text-white">
             <CheckCircle2 className="h-5 w-5 shrink-0 text-averna-neon" />
@@ -267,7 +273,7 @@ export function TelegramConnect() {
               href={status.botUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-averna-cyan hover:underline"
+              className="inline-flex min-h-11 items-center gap-1 text-xs text-averna-cyan hover:underline sm:min-h-0"
             >
               Open the bot <ExternalLink className="h-3.5 w-3.5" />
             </a>
@@ -296,7 +302,7 @@ export function TelegramConnect() {
                   onClick={() => void toggle(key)}
                   disabled={busy === key}
                   aria-pressed={on}
-                  className="flex w-full items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 p-3.5 text-left transition-colors hover:border-white/20 disabled:opacity-70"
+                  className="flex w-full items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 p-3 text-left transition-colors hover:border-white/20 disabled:opacity-70"
                 >
                   <span className="min-w-0 text-sm text-white">
                     {t.label}
@@ -316,7 +322,7 @@ export function TelegramConnect() {
               <button
                 type="button"
                 onClick={() => setConfirming(false)}
-                className="rounded-lg px-3 py-1.5 text-sm text-gray-300 hover:bg-white/5 hover:text-white"
+                className="min-h-11 rounded-lg px-3 py-1.5 text-sm text-gray-300 hover:bg-white/5 hover:text-white sm:min-h-0"
               >
                 Cancel
               </button>
@@ -324,7 +330,7 @@ export function TelegramConnect() {
                 type="button"
                 onClick={() => void disconnect()}
                 disabled={busy === "disconnect"}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-red-400/40 px-3 py-1.5 text-sm text-red-300 hover:bg-red-500/10 disabled:opacity-60"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-red-400/40 px-3 py-1.5 text-sm text-red-300 hover:bg-red-500/10 disabled:opacity-60 sm:min-h-0"
               >
                 {busy === "disconnect" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Unlink className="h-4 w-4" />} Disconnect
               </button>
@@ -333,7 +339,7 @@ export function TelegramConnect() {
             <button
               type="button"
               onClick={() => setConfirming(true)}
-              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-gray-400 hover:bg-red-500/10 hover:text-red-300"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-gray-400 hover:bg-red-500/10 hover:text-red-300 sm:min-h-0"
             >
               <Unlink className="h-4 w-4" /> Disconnect
             </button>
@@ -342,6 +348,7 @@ export function TelegramConnect() {
       </div>
     );
   } else if (pending) {
+    summary = "Waiting for Telegram…";
     body = (
       <div className="space-y-3">
         <p className="flex items-center gap-2 text-sm text-white">
@@ -353,14 +360,14 @@ export function TelegramConnect() {
             href={pending.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="neon-button inline-flex items-center gap-1.5 rounded-lg bg-averna-primary px-3.5 py-2 text-sm font-medium text-white hover:bg-averna-light"
+            className="neon-button inline-flex min-h-11 items-center gap-1.5 rounded-lg bg-averna-primary px-3.5 py-2 text-sm font-medium text-white hover:bg-averna-light sm:min-h-0"
           >
             <Send className="h-4 w-4" /> Open Telegram
           </a>
           <button
             type="button"
             onClick={() => setPending(null)}
-            className="rounded-lg px-3 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-white"
+            className="min-h-11 rounded-lg px-3 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-white sm:min-h-0"
           >
             Cancel
           </button>
@@ -369,14 +376,15 @@ export function TelegramConnect() {
       </div>
     );
   } else {
+    summary = "Not connected";
     body = (
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <p className="min-w-0 flex-1 text-sm text-gray-300">{INTRO[role] || INTRO.student}</p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="min-w-0 flex-1 basis-60 text-sm text-gray-300">{INTRO[role] || INTRO.student}</p>
         <button
           type="button"
           onClick={() => void connect()}
           disabled={busy === "connect"}
-          className="neon-button inline-flex items-center gap-2 rounded-lg bg-averna-primary px-4 py-2 text-sm font-medium text-white hover:bg-averna-light disabled:opacity-60"
+          className="neon-button inline-flex min-h-11 items-center gap-2 rounded-lg bg-averna-primary px-4 py-2 text-sm font-medium text-white hover:bg-averna-light disabled:opacity-60 sm:min-h-0"
         >
           {busy === "connect" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />} Connect Telegram
         </button>
@@ -385,9 +393,15 @@ export function TelegramConnect() {
   }
 
   return (
-    <>
-      <SectionHeader icon={Send} title="Telegram" subtitle="Homework, reviews and reminders in Telegram" accent="text-averna-cyan" />
-      <div className="glass mb-6 rounded-2xl border border-white/5 p-5">{body}</div>
-    </>
+    <SettingsGroup
+      id="telegram"
+      icon={<Send />}
+      title="Telegram"
+      subtitle="Homework, reviews and reminders in Telegram"
+      summary={summary}
+      accent="text-averna-cyan"
+    >
+      <div className="p-3 sm:p-4">{body}</div>
+    </SettingsGroup>
   );
 }

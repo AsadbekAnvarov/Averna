@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { signOut } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
+import { SignOutSubmit } from "@/components/offline/sign-out-submit";
 
 /**
  * A friendly fallback shown when a logged-in user lands on a page that
@@ -35,9 +36,9 @@ export function AccountNotice({
               await signOut({ redirectTo: "/auth/signin" });
             }}
           >
-            <Button className="w-full neon-button bg-averna-primary hover:bg-averna-light">
+            <SignOutSubmit className="w-full neon-button bg-averna-primary hover:bg-averna-light">
               Sign in as another user
-            </Button>
+            </SignOutSubmit>
           </form>
         </div>
       </div>

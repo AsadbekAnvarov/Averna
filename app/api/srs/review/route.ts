@@ -4,7 +4,8 @@ import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { awardXp, advanceStreak } from "@/lib/engine/xp-engine";
 import { recordLearningEvent } from "@/lib/engine/learning-dna";
-import { schedule, type Rating, type SrsCardState } from "@/lib/srs";
+import { type Rating, type SrsCardState } from "@/lib/srs";
+import { CLIENT_ID_RE, decideReview, type ReviewStatus } from "@/lib/srs-sync";
 import { STREAK_CONFIG, XP_CONFIG } from "@/lib/engine/progression/config";
 import { computeSrsReviewXp } from "@/lib/engine/progression/xp";
 import { settleProgression } from "@/lib/engine/progression/service";
@@ -22,14 +23,24 @@ interface ReviewInput {
   itemKey: string;
   rating: Rating;
   source: "vocab" | "mistake";
+  /** Device-made id of a queued grade (idea 7): echoed back so the device can drop it from its queue. */
+  clientId?: string;
+  /** When the grade was made on the device (epoch ms). Makes the review idempotent — see lib/srs-sync.ts. */
+  reviewedAt?: number;
 }
 
 function parseReview(raw: unknown): ReviewInput | null {
-  const r = raw as { itemKey?: unknown; rating?: unknown; source?: unknown };
+  const r = raw as { itemKey?: unknown; rating?: unknown; source?: unknown; clientId?: unknown; reviewedAt?: unknown };
   const itemKey = typeof r?.itemKey === "string" ? r.itemKey.trim().slice(0, 200) : "";
   const rating = r?.rating as Rating;
   if (!itemKey || !VALID.includes(rating)) return null;
-  return { itemKey, rating, source: r?.source === "mistake" ? "mistake" : "vocab" };
+  return {
+    itemKey,
+    rating,
+    source: r?.source === "mistake" ? "mistake" : "vocab",
+    ...(typeof r?.clientId === "string" && CLIENT_ID_RE.test(r.clientId) ? { clientId: r.clientId } : {}),
+    ...(typeof r?.reviewedAt === "number" ? { reviewedAt: r.reviewedAt } : {}),
+  };
 }
 
 /**
@@ -69,7 +80,12 @@ export async function GET() {
  * (`{ reviews: [...] }`, used by the recall mini-games in S10).
  *
  * Scheduling reuses the same SM-2 maths as the client (lib/srs.ts) so both stay
- * in sync. Retention-XP is granted only for a genuine, successful review of an
+ * in sync. A review may carry `clientId` + `reviewedAt` (grades queued on the
+ * device while offline or after a failed save): it is then scheduled as of
+ * `reviewedAt`, a replay is ignored and a grade older than the card's last
+ * review loses to the server state (lib/srs-sync.ts). Each result has a
+ * `status` (applied | duplicate | stale | invalid); only applied reviews count
+ * toward XP, the streak, the activity log and Learning DNA. Retention-XP is granted only for a genuine, successful review of an
  * item that was actually DUE, and the 24h cap is shared across the whole batch —
  * so a fast game round can't be farmed for XP.
  */
@@ -103,11 +119,29 @@ export async function POST(req: NextRequest) {
     let spent = todays.reduce((s, l) => s + (l.points || 0), 0);
 
     let totalXp = 0;
-    const results: { itemKey: string; dueAt: number; xp: number }[] = [];
+    const results: {
+      itemKey: string;
+      dueAt?: number;
+      xp: number;
+      status: ReviewStatus;
+      clientId?: string;
+      /** The server's state for a duplicate or stale grade: the device adopts it (server wins). */
+      state?: SrsCardState;
+    }[] = [];
+    /** Reviews that changed the schedule (duplicates and stale grades don't count twice). */
+    const applied: ReviewInput[] = [];
+    const seenClientIds = new Set<string>();
     /** Recall quality per review, for the Learning DNA accuracy signal. */
     const RECALL_QUALITY: Record<Rating, number> = { again: 0, hard: 0.5, good: 0.85, easy: 1 };
 
     for (const rev of reviews) {
+      const ids = rev.clientId ? { clientId: rev.clientId } : {};
+      if (rev.clientId && seenClientIds.has(rev.clientId)) {
+        results.push({ itemKey: rev.itemKey, xp: 0, status: "duplicate", ...ids });
+        continue;
+      }
+      if (rev.clientId) seenClientIds.add(rev.clientId);
+
       const now = Date.now();
       const key = { studentId_itemKey: { studentId: student.id, itemKey: rev.itemKey } };
       const existing = await db.reviewItem.findUnique({ where: key });
@@ -121,9 +155,25 @@ export async function POST(req: NextRequest) {
             lapses: existing.lapses,
           }
         : undefined;
-      const wasDue = !existing || existing.dueAt.getTime() <= now;
+      // Idempotent and conflict-safe for queued grades (lib/srs-sync.ts); unchanged for online ones.
+      const decision = decideReview(
+        existing && prev ? { state: prev, lastReviewedAt: existing.lastReviewedAt.getTime() } : null,
+        rev.rating,
+        rev.reviewedAt,
+        now,
+      );
+      if (decision.status !== "applied") {
+        results.push({
+          itemKey: rev.itemKey,
+          xp: 0,
+          status: decision.status,
+          ...ids,
+          ...(prev ? { dueAt: prev.due, state: prev } : {}),
+        });
+        continue;
+      }
 
-      const next = schedule(prev, rev.rating, now);
+      const next = decision.next;
       const data = {
         source: rev.source,
         ease: next.ease,
@@ -131,23 +181,27 @@ export async function POST(req: NextRequest) {
         reps: next.reps,
         lapses: next.lapses,
         dueAt: new Date(next.due),
-        lastReviewedAt: new Date(now),
+        lastReviewedAt: new Date(decision.at),
       };
       await db.reviewItem.upsert({
         where: key,
         create: { studentId: student.id, itemKey: rev.itemKey, ...data },
         update: data,
       });
+      applied.push(rev);
 
       // Only a successful review of a due item earns retention-XP.
       let awarded = 0;
-      if (wasDue && rev.rating !== "again") {
+      if (decision.wasDue && rev.rating !== "again") {
         awarded = spent >= DAILY_SRS_XP_CAP ? 0 : Math.min(DAILY_SRS_XP_CAP - spent, computeSrsReviewXp(next.interval));
         spent += awarded;
         totalXp += awarded;
       }
-      results.push({ itemKey: rev.itemKey, dueAt: next.due, xp: awarded });
+      results.push({ itemKey: rev.itemKey, dueAt: next.due, xp: awarded, status: "applied", ...ids });
     }
+
+    // A replayed queue (every grade already recorded) changes nothing else either.
+    if (applied.length === 0) return NextResponse.json({ ok: true, xp: 0, results });
 
     // Flashcards keep the streak alive only after a real review session
     // (STREAK_CONFIG.srsMinReviewsPerDay reviews in this Tashkent day). This is
@@ -161,7 +215,7 @@ export async function POST(req: NextRequest) {
       (n, r) => n + (Number((r.details as { count?: number } | null)?.count) || 0),
       0
     );
-    const reviewedToday = reviewedBefore + reviews.length;
+    const reviewedToday = reviewedBefore + applied.length;
 
     if (totalXp > 0) {
       await awardXp({
@@ -170,7 +224,7 @@ export async function POST(req: NextRequest) {
         source: "srs_review",
         skipLog: true,
         activity: "FLASHCARDS",
-        breakdown: { lines: [{ label: `${reviews.length} reviews`, amount: totalXp }] },
+        breakdown: { lines: [{ label: `${applied.length} reviews`, amount: totalXp }] },
         countsTowardStreak: false,
       });
     }
@@ -183,7 +237,7 @@ export async function POST(req: NextRequest) {
         data: {
           studentId: student.id,
           action: "SRS_REVIEW",
-          details: { count: reviews.length, source: reviews[0].source },
+          details: { count: applied.length, source: applied[0].source },
           points: totalXp,
         },
       })
@@ -194,15 +248,15 @@ export async function POST(req: NextRequest) {
     // improves the rest of this student's session. One event per request keeps the
     // write cost flat for a fast game round while preserving both signals.
     const quality =
-      reviews.reduce((sum, r) => sum + RECALL_QUALITY[r.rating], 0) / reviews.length;
+      applied.reduce((sum, r) => sum + RECALL_QUALITY[r.rating], 0) / applied.length;
     await recordLearningEvent({
       studentId: student.id,
       kind: "review",
-      skill: reviews[0].source === "mistake" ? "GRAMMAR" : "VOCABULARY",
+      skill: applied[0].source === "mistake" ? "GRAMMAR" : "VOCABULARY",
       channel: "flashcard",
       accuracy: quality,
-      items: reviews.length,
-      correct: reviews.filter((r) => r.rating !== "again").length,
+      items: applied.length,
+      correct: applied.filter((r) => r.rating !== "again").length,
       errorTags: quality < 0.5 ? ["vocabulary_recall"] : [],
     });
 

@@ -1,16 +1,27 @@
 import { Check, CheckCircle2, Minus, X, XCircle } from "lucide-react";
 import { ReviewGroup } from "@/components/exam/review-group";
 import { groupRange, partNumbers, partRange, rangeLabel } from "@/lib/ielts/format";
-import type { ExamGroup, ExamListeningTest, ExamReadingTest, GradeItem, ListeningPart, ReadingPart } from "@/lib/ielts/types";
+import type {
+  ExamGroup,
+  ExamListeningTest,
+  ExamReadingTest,
+  GradeItem,
+  ListeningPart,
+  ListeningPartAudio,
+  ReadingPart,
+} from "@/lib/ielts/types";
+import { evidenceSeconds, partEvidence } from "@/lib/review/evidence";
 import { cn } from "@/lib/utils";
 import type { ObjectiveSkill } from "./attempt";
-import { PassageDetails } from "./passage";
-import { TranscriptDetails } from "./transcript";
+import { EvidenceActions, EvidenceScope, ResultRecording } from "./evidence";
+import { ExplainInL1 } from "@/components/l1/explain-in-l1";
+import { docHasText, evidenceDoc } from "./evidence-doc";
 
 /**
  * Full answer review for an exam-v2 attempt: a question map to jump around,
- * then every attempted part with its passage / transcript (collapsed) and each
- * question group reviewed by ReviewGroup. When the paper can't be loaded any
+ * then every attempted part with its passage (beside the answers on desktop)
+ * or recording + transcript, and each question group reviewed by ReviewGroup
+ * with "Show in text" / "Hear it" under every mistake. When the paper can't be loaded any
  * more (unpublished, edited) it falls back to a plain list built from the
  * stored grading. Server component.
  */
@@ -151,6 +162,7 @@ function FallbackList({ items }: { items: GradeItem[] }) {
                   </p>
                 )}
                 {it.explanation && <p className="mt-1 text-gray-400">{it.explanation}</p>}
+                {!it.correct && <ExplainInL1 text={it.explanation} />}
               </div>
               {it.correct ? (
                 <CheckCircle2 className="h-5 w-5 shrink-0 text-averna-neon" aria-label="Correct" />
@@ -169,17 +181,78 @@ function FallbackList({ items }: { items: GradeItem[] }) {
 // Review
 // ---------------------------------------------------------------------------
 
+/**
+ * One part's passage / transcript and question groups inside an EvidenceScope:
+ * every wrong or blank answer gets "Show in text" (and, with a timed
+ * recording, "Hear it") pointing at its evidence (lib/review/evidence).
+ */
+function PartReview({
+  part,
+  index,
+  skill,
+  items,
+  audio,
+}: {
+  part: AnyPart;
+  index: number;
+  skill: ObjectiveSkill;
+  items: Map<number, GradeItem>;
+  audio?: ListeningPartAudio;
+}) {
+  const no = index + 1;
+  const doc = evidenceDoc(part);
+  const evidence = partEvidence(part, items);
+  const reading = "paragraphs" in part;
+  const seconds = (n: number): number | null => {
+    const span = evidence[n];
+    if (!span || !audio || reading) return null;
+    const line = part.script[span.paragraphIndex]?.text ?? "";
+    return evidenceSeconds(audio.timeline, span, line.length);
+  };
+
+  return (
+    <EvidenceScope
+      no={no}
+      doc={doc}
+      sideBySide={reading && docHasText(doc)}
+      media={audio ? <ResultRecording url={audio.url} no={no} durationMs={audio.durationMs} /> : null}
+    >
+      {part.groups.map((g: ExamGroup, gi: number) => (
+        <div key={`${part.id}-${gi}`} id={groupAnchor(g)} className="scroll-mt-24">
+          <ReviewGroup
+            group={g}
+            skill={skill}
+            items={items}
+            extra={(n) =>
+              items.get(n)?.correct ? null : (
+                <>
+                  {/* "Explain in Oʻzbekcha / по-русски" (native-language hints on; nothing otherwise). */}
+                  <ExplainInL1 text={items.get(n)?.explanation} />
+                  <EvidenceActions n={n} span={evidence[n] ?? null} seconds={seconds(n)} />
+                </>
+              )
+            }
+          />
+        </div>
+      ))}
+    </EvidenceScope>
+  );
+}
+
 export function AnswerReview({
   skill,
   test,
   part,
   items,
+  audio,
 }: {
   skill: ObjectiveSkill;
   test: ExamReadingTest | ExamListeningTest | null;
   /** Practised part, or null for the whole paper. */
   part: number | null;
   items: GradeItem[];
+  /** Listening: each part's recording (by part index) when one is ready — "Hear it". */
+  audio?: (ListeningPartAudio | undefined)[];
 }) {
   const byNumber = new Map<number, GradeItem>(items.map((i) => [i.n, i]));
   const scoped = scopedParts(test, part);
@@ -196,7 +269,7 @@ export function AnswerReview({
           {items.length === 0
             ? "The answer details for this attempt aren't available."
             : full
-              ? "Every question with your answer, the correct answer and why. Tap a number to jump to it."
+              ? `Every question with your answer, the correct answer and why. Tap a number to jump to it. Under a mistake, “Show in ${skill === "READING" ? "text" : "transcript"}” points to the sentence that answers it.`
               : `This ${test ? "paper has changed" : "paper is no longer available"} since you took it, so here are your answers on their own.`}
         </p>
         {items.length > 0 && (
@@ -251,19 +324,7 @@ export function AnswerReview({
                 </p>
               </header>
 
-              {"paragraphs" in s.part ? (
-                <PassageDetails part={s.part} no={no} />
-              ) : (
-                <TranscriptDetails part={s.part} no={no} />
-              )}
-
-              <div className="mt-6">
-                {s.part.groups.map((g: ExamGroup, gi: number) => (
-                  <div key={`${s.part.id}-${gi}`} id={groupAnchor(g)} className="scroll-mt-24">
-                    <ReviewGroup group={g} skill={skill} items={byNumber} />
-                  </div>
-                ))}
-              </div>
+              <PartReview part={s.part} index={s.index} skill={skill} items={byNumber} audio={audio?.[s.index]} />
             </section>
           );
         })}

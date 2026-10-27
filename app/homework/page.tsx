@@ -11,6 +11,7 @@ import { examHomeworkHref, isExamHomeworkKind } from "@/lib/homework/exam-homewo
 import { describeExamHomework } from "@/lib/homework/library";
 import { reviewedTestIds } from "@/lib/homework/reviews";
 import { dueState, examResultHref } from "@/lib/homework/library-shared";
+import { forStudent } from "@/lib/homework/audience";
 import { DoneCard, TodoCard, type DoneHomework, type ExamFacts } from "@/components/homework/homework-cards";
 
 /** Overdue homework stays on the to-do list this long (it can still be handed in late). */
@@ -64,7 +65,7 @@ export default async function HomeworkPage() {
   const [todo, done]: [TodoRow[], DoneRow[]] = await Promise.all([
     student.groupId
       ? db.homework.findMany({
-          where: { groupId: student.groupId, dueDate: { gte: since }, submissions: { none: { studentId: student.id } } },
+          where: { groupId: student.groupId, dueDate: { gte: since }, submissions: { none: { studentId: student.id } }, ...forStudent(student.id) },
           orderBy: { dueDate: "asc" },
           select: {
             id: true,

@@ -7,15 +7,28 @@ import { cn } from "@/lib/utils";
 
 type ToastType = "success" | "error" | "info";
 
+/** An optional one-tap action on a toast (e.g. "Undo"). The toast closes when it is used. */
+export interface ToastAction {
+  label: string;
+  onClick: () => void;
+}
+
+export interface ToastOptions {
+  action?: ToastAction;
+  /** Milliseconds on screen (default 4200). */
+  duration?: number;
+}
+
 interface ToastItem {
   id: number;
   message: string;
   type: ToastType;
+  action?: ToastAction;
 }
 
 interface ToastState {
   toasts: ToastItem[];
-  add: (message: string, type: ToastType) => void;
+  add: (message: string, type: ToastType, options?: ToastOptions) => number;
   remove: (id: number) => void;
 }
 
@@ -24,16 +37,17 @@ const DURATION = 4200;
 
 const useToastStore = create<ToastState>((set) => ({
   toasts: [],
-  add: (message, type) => {
+  add: (message, type, options) => {
     const id = ++counter;
-    set((s) => ({ toasts: [...s.toasts, { id, message, type }] }));
+    set((s) => ({ toasts: [...s.toasts, { id, message, type, ...(options?.action ? { action: options.action } : {}) }] }));
     if (typeof window !== "undefined") {
       // Lets the (opt-in) sound system chime along — see components/audio/sound-provider.tsx
       window.dispatchEvent(new CustomEvent("averna-toast", { detail: type }));
       window.setTimeout(() => {
         set((s) => ({ toasts: s.toasts.filter((t) => t.id !== id) }));
-      }, DURATION);
+      }, options?.duration ?? DURATION);
     }
+    return id;
   },
   remove: (id) => set((s) => ({ toasts: s.toasts.filter((t) => t.id !== id) })),
 }));
@@ -41,11 +55,14 @@ const useToastStore = create<ToastState>((set) => ({
 /**
  * Imperative toast API — callable from anywhere (event handlers, async code):
  *   toast.success("Saved!"); toast.error("Something went wrong");
+ *   toast.success("Approved", { action: { label: "Undo", onClick }, duration: 6000 });
+ * Each call returns the toast's id (toast.dismiss(id) closes it early).
  */
 export const toast = {
-  success: (message: string) => useToastStore.getState().add(message, "success"),
-  error: (message: string) => useToastStore.getState().add(message, "error"),
-  info: (message: string) => useToastStore.getState().add(message, "info"),
+  success: (message: string, options?: ToastOptions) => useToastStore.getState().add(message, "success", options),
+  error: (message: string, options?: ToastOptions) => useToastStore.getState().add(message, "error", options),
+  info: (message: string, options?: ToastOptions) => useToastStore.getState().add(message, "info", options),
+  dismiss: (id: number) => useToastStore.getState().remove(id),
 };
 
 const STYLES: Record<ToastType, { icon: typeof Info; accent: string; bar: string }> = {
@@ -63,7 +80,22 @@ function ToastCard({ item, onClose }: { item: ToastItem; onClose: () => void }) 
     >
       <span className={cn("absolute left-0 top-0 h-full w-1", bar)} aria-hidden />
       <Icon className={cn("h-5 w-5 shrink-0 mt-0.5", accent)} />
-      <p className="text-sm text-white break-words leading-snug">{item.message}</p>
+      <p className="min-w-0 flex-1 text-sm text-white break-words leading-snug">{item.message}</p>
+      {item.action && (
+        <button
+          type="button"
+          onClick={() => {
+            onClose();
+            item.action?.onClick();
+          }}
+          className={cn(
+            "-my-1 inline-flex min-h-[36px] shrink-0 items-center rounded-lg px-2.5 text-sm font-semibold underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-neon/60",
+            accent
+          )}
+        >
+          {item.action.label}
+        </button>
+      )}
       <button
         type="button"
         onClick={onClose}

@@ -1,5 +1,5 @@
-/** Limit actual streamed bytes, not just the untrusted Content-Length header. */
-export async function boundedJson(request: Request, maxBytes = 100_000): Promise<unknown> {
+/** Read at most `maxBytes` of the actual streamed body (not just the untrusted Content-Length header). */
+export async function boundedBytes(request: Request, maxBytes = 100_000): Promise<Uint8Array> {
   const reader = request.body?.getReader();
   if (!reader) throw new Error("Invalid body");
   let size = 0;
@@ -16,5 +16,11 @@ export async function boundedJson(request: Request, maxBytes = 100_000): Promise
   const bytes = new Uint8Array(size);
   let at = 0;
   for (const chunk of chunks) { bytes.set(chunk, at); at += chunk.length; }
+  return bytes;
+}
+
+/** Limit actual streamed bytes, not just the untrusted Content-Length header. */
+export async function boundedJson(request: Request, maxBytes = 100_000): Promise<unknown> {
+  const bytes = await boundedBytes(request, maxBytes);
   return JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
 }

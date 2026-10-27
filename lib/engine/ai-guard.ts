@@ -65,6 +65,20 @@ export const AI_LIMITS: Record<string, RouteLimit> = {
   placement: { perHour: 6, perDay: 12 },
   // Opt-in AI coach on the student's own peer-speaking captions (3 a day).
   "peer-coach": { perHour: 3, perDay: 3 },
+  // "Explain in Oʻzbekcha / по-русски" on a result's wrong answers (40 a day).
+  "l1-explain": { perHour: 20, perDay: 40 },
+  // Teacher review inbox: "Regenerate" / first draft of an AI review (idea 10). A busy
+  // teacher reviews ~30 a day; regenerating every one twice still fits.
+  "review-draft": { perHour: 30, perDay: 80 },
+  // "Who needs help today" → Message: an AI-drafted first message (idea 10).
+  "teacher-nudge": { perHour: 20, perDay: 60 },
+  // Live speaking partner (idea 3): one Realtime call per request. Minutes are capped
+  // separately (lib/realtime/limits.ts); this caps the number of calls, reconnects included.
+  "realtime-speaking": { perHour: 4, perDay: 6 },
+  // "How it went": one cheap text-model call per finished live call.
+  "live-speaking-tips": { perHour: 6, perDay: 8 },
+  // "Words to practise" → Say it: one short transcription per try.
+  "live-word-check": { perHour: 40, perDay: 80 },
 };
 
 const DEFAULT_LIMIT: RouteLimit = { perHour: 20, perDay: 100 };

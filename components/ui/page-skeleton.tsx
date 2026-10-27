@@ -4,9 +4,11 @@
  * and content doesn't jump in. Mirrors the common layout: page header,
  * optional stat pills, then a responsive grid of cards.
  */
-function Block({ className = "" }: { className?: string }) {
-  return <div className={`animate-pulse rounded-2xl bg-white/5 border border-white/5 ${className}`} />;
+/** A calm placeholder block (token colours; it only pulses when motion is OK). */
+export function SkeletonBlock({ className = "" }: { className?: string }) {
+  return <div aria-hidden className={`motion-safe:animate-pulse rounded-2xl bg-white/5 border border-white/5 ${className}`} />;
 }
+const Block = SkeletonBlock;
 
 interface PageSkeletonProps {
   /** Number of stat pills to show under the header (0 hides the row). */
@@ -47,11 +49,18 @@ export function PageSkeleton({
       </div>
     </>
   );
-  if (bare) return <div aria-busy="true">{body}</div>;
+  if (bare)
+    return (
+      <div aria-busy="true">
+        <span className="sr-only">Loading…</span>
+        {body}
+      </div>
+    );
 
   return (
     <div className="min-h-screen premium-gradient">
-      <div className={`container mx-auto px-4 py-4 sm:py-6 ${maxWidth} pb-8 lg:pb-6`}>
+      <div aria-busy="true" className={`container mx-auto px-4 py-4 sm:py-6 ${maxWidth} pb-8 lg:pb-6`}>
+        <span className="sr-only">Loading…</span>
         {/* Header */}
         <div className="mb-4 sm:mb-6">
           <Block className="h-4 w-40 mb-3" />

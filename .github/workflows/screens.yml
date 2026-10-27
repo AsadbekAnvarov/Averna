@@ -14,7 +14,10 @@ name: Screens
 # the merge-base with main. Report and baselines are in the "report-preservation"
 # artifact. The density / comfort check (e2e/density.mjs) measures the same two
 # servers: page length, content above the fold, smallest text and small phone touch
-# targets ("report-density" artifact).
+# targets ("report-density" artifact). Last, the elegance checks (e2e/elegance-checks.mjs) cover
+# the Today session, the phone tab bar, the session return bar, the band forecast, reading comfort
+# (settings, pre-paint classes, 320 px, reading ruler), native-language hints and the teacher's
+# "Who needs help today" card ("report-elegance" artifact).
 on:
   push:
   workflow_dispatch:
@@ -138,6 +141,16 @@ jobs:
         # Voice (WebRTC) connection is not asserted. Report in the "report-peer-speaking" artifact.
         if: ${{ !cancelled() && steps.start.outcome == 'success' }}
         run: node e2e/peer-speaking.mjs
+      - name: Elegance checks
+        # Phone 390×844 as student1: Today session hero + Start/Continue in the first viewport,
+        # the Home · Skills · Practice · Coach · Me tab bar, the ?from=session return bar and the
+        # band forecast's what-if control. Phone and desktop 1280×800 as student1: Reading comfort
+        # settings → <html> classes before hydration, no sideways scroll at 320 px, the reading
+        # ruler (Alt+R, click-through) and Uzbek hints in a Reading practice test. Teacher, phone and
+        # desktop: the "Who needs help today" card, 44 px buttons on the phone. Report in the
+        # "report-elegance" artifact.
+        if: ${{ !cancelled() && steps.start.outcome == 'success' }}
+        run: node e2e/elegance-checks.mjs
       - name: Server log
         if: always()
         run: |
@@ -180,5 +193,12 @@ jobs:
           path: |
             e2e/report-density.json
             e2e/density-base.json
+          if-no-files-found: warn
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-elegance
+          path: e2e/report-elegance.json
           if-no-files-found: warn
           retention-days: 7

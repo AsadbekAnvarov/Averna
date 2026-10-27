@@ -4,6 +4,7 @@ import type { GradeItem, GroupKind } from "@/lib/ielts/types";
 import { cn } from "@/lib/utils";
 import { GROUP_KINDS, type KindStats, type ObjectiveSkill } from "./attempt";
 import { blankTip, tipFor } from "./tips";
+import { L1Hint } from "@/components/l1/l1-hint";
 
 /**
  * Accuracy per question type (TRUE/FALSE/NOT GIVEN, matching, completion …)
@@ -83,6 +84,7 @@ export function KindBreakdown({
                   <span className="ml-2 inline-block w-10 text-right">{r.pct}%</span>
                 </span>
               </div>
+              <L1Hint kind={r.kind} />
               <div
                 role="progressbar"
                 aria-label={`${label}: ${r.correct} of ${r.total} correct`}
@@ -110,6 +112,7 @@ export function KindBreakdown({
             </span>
           </p>
           <p className="mt-1.5 pl-[1.625rem] text-sm leading-relaxed text-gray-200">{tip.tip}</p>
+          <L1Hint kind={weakest.kind} part="tip" className="pl-[1.625rem]" />
         </div>
       ) : (
         <p className="mt-6 flex items-start gap-2.5 rounded-2xl border border-averna-neon/25 bg-averna-neon/[0.05] p-4 text-sm text-gray-200">

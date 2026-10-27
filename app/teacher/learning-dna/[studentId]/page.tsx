@@ -10,6 +10,7 @@ import { AccountNotice } from "@/components/account-notice";
 import { PageHeader } from "@/components/ui/page-header";
 import { WidgetSkeleton } from "@/components/ui/widget-skeleton";
 import { LearningDnaPanel } from "@/components/teacher/learning-dna-panel";
+import { MiniTaskButton } from "@/components/teacher/mini-task-sheet";
 
 /**
  * Teacher view of one student's Learning DNA.
@@ -78,13 +79,17 @@ export default async function TeacherLearningDnaPage(
             student.targetBand ? ` · target Band ${student.targetBand}` : ""
           }`}
           action={
-            <Link
-              href={`/teacher/parent-report/${student.id}`}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-averna-cyan/40 px-3 py-2 text-xs text-averna-cyan hover:bg-averna-cyan/10 transition-colors"
-            >
-              <FileText className="h-4 w-4" />
-              Parent report
-            </Link>
+            <div className="flex flex-wrap items-center gap-2">
+              {/* Teachers only (admins open this page too, and admin UI is Uzbek): one-button mini task, idea 10. */}
+              {session.user.role === "TEACHER" && <MiniTaskButton studentId={student.id} studentName={student.user.name ?? "Student"} />}
+              <Link
+                href={`/teacher/parent-report/${student.id}`}
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-averna-cyan/40 px-3 py-2 text-xs text-averna-cyan hover:bg-averna-cyan/10 transition-colors lg:min-h-0"
+              >
+                <FileText className="h-4 w-4" />
+                Parent report
+              </Link>
+            </div>
           }
         />
 

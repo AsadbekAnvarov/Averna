@@ -128,6 +128,23 @@ export const LESSON_CSP = [
   `sandbox ${LESSON_SANDBOX}`,
 ].join("; ");
 
+/**
+ * The same policy for a saved offline copy (idea 7), which opens from a blob: URL with no HTTP
+ * headers: as a <meta> tag, without the two directives a <meta> can't carry (frame-ancestors,
+ * sandbox). The frame's own sandbox attribute (LESSON_SANDBOX) still keeps it opaque-origin.
+ */
+export const LESSON_META_CSP = LESSON_CSP.split("; ")
+  .filter(directive => !/^(frame-ancestors|sandbox)\b/.test(directive))
+  .join("; ");
+
+/** A saved lesson document with LESSON_META_CSP as the very first element of <head>. */
+export function offlineLessonDocument(html: string): string {
+  const headAt = html.indexOf(HEAD);
+  if (headAt < 0) throw new Error("offlineLessonDocument: <head> not found");
+  const end = headAt + HEAD.length;
+  return `${html.slice(0, end)}<meta http-equiv="Content-Security-Policy" content="${LESSON_META_CSP}">${html.slice(end)}`;
+}
+
 /** No X-Frame-Options: it would also block the app's own (opaque-origin) frame. */
 export const LESSON_HEADERS: Record<string, string> = {
   "Content-Type": "text/html; charset=utf-8",

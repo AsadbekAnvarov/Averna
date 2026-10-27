@@ -165,7 +165,7 @@ export default function DailyChallengePage() {
                 </Button>
                 <Link href="/dashboard">
                   <Button className="neon-button bg-averna-primary hover:bg-averna-light">
-                    Continue Today&apos;s Mission
+                    Continue today&apos;s session
                   </Button>
                 </Link>
               </div>

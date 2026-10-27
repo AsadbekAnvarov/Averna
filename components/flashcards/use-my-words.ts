@@ -4,6 +4,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { wordItemKey, type DictLang, type SavedWord } from "@/lib/dictionary-core";
 import { fetchMyWords, getPreferredLang, removeMyWord } from "@/components/dictionary/client";
 import { isDue, loadSrs, mergeSrs, saveSrs, schedule, type Rating, type SrsCardState, type SrsMap } from "@/lib/srs";
+import { queueGrade } from "@/lib/offline/queue-store";
+import { syncInBackground, useUserId } from "@/components/offline/use-offline";
 
 /**
  * The student's saved dictionary words ("My words") with their spaced-
@@ -79,19 +81,31 @@ export function useMyWords(): MyWordsState {
 
   const reload = useCallback(() => setAttempt((n: number) => n + 1), []);
 
+  const userId = useUserId();
+  const userRef = useRef<string | null>(null);
+  userRef.current = userId;
+
   const rate = useCallback((itemKey: string, rating: Rating): SrsCardState => {
-    const next = schedule(srsRef.current[itemKey], rating);
+    const now = Date.now();
+    const next = schedule(srsRef.current[itemKey], rating, now);
     srsRef.current = { ...srsRef.current, [itemKey]: next };
     setSrs(srsRef.current);
     // Re-read the device map so progress made in the other decks meanwhile is never overwritten.
     const local = loadSrs();
     local[itemKey] = next;
     saveSrs(local);
-    fetch("/api/srs/review", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ itemKey, rating, source: "vocab" }),
-    }).catch(() => {});
+    // Optimistic: queued with its moment and sent in the background, idempotently (idea 7).
+    const owner = userRef.current;
+    if (owner) {
+      queueGrade({ ownerId: owner, itemKey, rating, source: "vocab", reviewedAt: now });
+      syncInBackground(owner);
+    } else {
+      fetch("/api/srs/review", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ itemKey, rating, source: "vocab" }),
+      }).catch(() => {});
+    }
     return next;
   }, []);
 

@@ -17,6 +17,7 @@ const ACTION_LABEL_UZ: Record<string, string> = {
   IELTS_TEST_COMPLETED: "IELTS test yakunlandi",
   HOMEWORK_SUBMITTED: "Uy vazifasi yuborildi",
   SPEAKING_SESSION_COMPLETED: "Gapirish mashqi",
+  LIVE_SPEAKING: "AI bilan jonli suhbat",
   DAILY_CHALLENGE: "Kunlik challenge",
   ACHIEVEMENT_UNLOCKED: "Yutuq ochildi",
 };

@@ -791,3 +791,11 @@ CREATE TABLE IF NOT EXISTS "speaking_reports" (
 CREATE INDEX IF NOT EXISTS "speaking_reports_reportedId_status_idx" ON "speaking_reports" ("reportedId", "status");
 CREATE INDEX IF NOT EXISTS "speaking_reports_status_createdAt_idx" ON "speaking_reports" ("status", "createdAt");
 CREATE INDEX IF NOT EXISTS "speaking_reports_roomId_idx" ON "speaking_reports" ("roomId");
+
+-- ============================================================================
+-- AI + teacher loop (docs/elegance-roadmap.md, idea 10): a homework row can be
+-- set for ONE student of its group (the teacher's one-button "mini task").
+-- Nullable: NULL = the whole group, exactly as before.
+-- ============================================================================
+ALTER TABLE "homework" ADD COLUMN IF NOT EXISTS "assigneeId" TEXT;
+CREATE INDEX IF NOT EXISTS "homework_assigneeId_idx" ON "homework" ("assigneeId");

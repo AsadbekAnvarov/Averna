@@ -179,7 +179,7 @@ export function OnboardingWizard() {
         className="w-full rounded-md border border-input bg-background/60 px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-averna-pink"
       />
       <p className="text-xs text-gray-500 mt-3">
-        Optional — powers your Exam Countdown and daily pace. You can set or change it anytime.
+        Optional — powers your path to target and daily pace. You can set or change it anytime.
       </p>
     </div>,
   ];

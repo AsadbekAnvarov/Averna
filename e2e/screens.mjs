@@ -67,6 +67,8 @@ const PAGES = {
     ["adventures-capsules", "/studio/adventures/capsules"],
 
     ["learning", "/learning"],
+    // AI Coach hub: the sidebar's and the phone tab bar's single entry to every AI helper.
+    ["coach-hub", "/coach"],
     ["settings", "/settings"],
     ["profile", "/profile"],
     ["messages", "/messages"],

@@ -10,7 +10,7 @@ import { ClassTab, HomeTab, LearnTab, PlayTab, ProgressTab, type TabPanelProps }
  * Student dashboard — five calm tabs, each with a handful of blocks and no
  * repeats. The active tab is the `?tab=` param and only that tab is rendered
  * (the shell lives in ./layout.tsx):
- *   Today    (/dashboard)               who I am, today's mission, what's due, skills, streak, challenges
+ *   Today    (/dashboard)               today's session (one Continue button), streak, what's due, skills, challenges
  *   Learn    (/dashboard?tab=learn)     AI tutor, the skill map, Practice Studio shelf, daily reading
  *   Progress (/dashboard?tab=progress)  bands & skills, level & weekly goal, DNA & achievements, heatmap
  *   Class    (/dashboard?tab=class)     teacher & messages, squad goal, rivals & class feed, community

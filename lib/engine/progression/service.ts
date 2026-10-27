@@ -1,6 +1,7 @@
 import { cache } from "react";
 import type { IELTSModule } from "@prisma/client";
 import { db } from "@/lib/db";
+import { forStudent } from "@/lib/homework/audience";
 import { tashkentDateKey, tashkentDayDiff, tashkentDayStart } from "@/lib/utils";
 import { awardXp, BUDGETED_ACTIONS, findAward } from "@/lib/engine/xp-engine";
 import { notifyUser } from "@/lib/notifications";
@@ -245,7 +246,7 @@ export interface Progression {
  * attempts in that skill. Never throws: when the catalog can't be read, the
  * links fall back to the library pages.
  */
-async function contentHints(
+export async function contentHints(
   sessions: { row: TestRow }[],
   profile: SkillSnapshot[],
   now: number
@@ -318,7 +319,7 @@ async function computeProgression(studentId: string): Promise<Progression | null
     db.homeworkSubmission.count({ where: { studentId, submittedAt: { gte: dayStart } } }),
     student.groupId
       ? db.homework.findFirst({
-          where: { groupId: student.groupId, dueDate: { gte: now }, submissions: { none: { studentId } } },
+          where: { groupId: student.groupId, dueDate: { gte: now }, submissions: { none: { studentId } }, ...forStudent(studentId) },
           orderBy: { dueDate: "asc" },
           select: { id: true, title: true, module: true },
         })
@@ -750,6 +751,7 @@ export interface HistoryDay {
 const ACTION_TITLE: Record<string, string> = {
   HOMEWORK_SUBMITTED: "Homework submitted",
   DAILY_CHALLENGE: "Daily 5-question challenge",
+  WARMUP_COMPLETED: "60-second warm-up",
   SRS_REVIEW: "Flashcard review",
   ACHIEVEMENT_UNLOCKED: "Achievement unlocked",
   MISSION_COMPLETED: "Daily Mission complete",
@@ -778,6 +780,8 @@ export async function getActivityHistory(studentId: string, days = 7): Promise<H
   for (const l of logs) {
     const d = asRec(l.details) ?? {};
     if (l.action === "IELTS_TEST_COMPLETED" && l.points === 0 && d.module == null) continue;
+    // Live-call minute accounting (lib/realtime/live-store.ts); a finished call shows as its XP row.
+    if (l.action === "LIVE_SPEAKING") continue;
     let title = ACTION_TITLE[l.action] ?? l.action.toLowerCase().replace(/_/g, " ");
     let detail: string | null = null;
     if (l.action === "IELTS_TEST_COMPLETED") {

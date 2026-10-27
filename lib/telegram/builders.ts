@@ -9,6 +9,7 @@
  */
 
 import { streakStatus } from "@/lib/engine/progression/streak";
+import { isForStudent } from "@/lib/homework/audience";
 import { tashkentDateKey, tashkentDayDiff, tashkentDayStart, tashkentWeekday } from "@/lib/utils";
 
 export const DAY_MS = 86_400_000;
@@ -82,6 +83,8 @@ export interface HomeworkRow {
   contentTitle?: string | null;
   groupId: string;
   dueDate: Date;
+  /** Set for one student of the group only (lib/homework/audience); null/absent = the whole group. */
+  assigneeId?: string | null;
 }
 
 export interface DueItem {
@@ -118,7 +121,9 @@ export interface HomeworkProgress {
 }
 
 export function buildHomeworkProgress(hw: HomeworkRow, group: GroupRow, submittedStudentIds: Set<string>, now: Date): HomeworkProgress {
-  const missing = group.students
+  // A personal task (assigneeId) is counted against that one student only.
+  const students = hw.assigneeId ? group.students.filter((s) => s.id === hw.assigneeId) : group.students;
+  const missing = students
     .filter((s) => !submittedStudentIds.has(s.id))
     .map((s) => personName(s.name))
     .sort(byName);
@@ -129,8 +134,8 @@ export function buildHomeworkProgress(hw: HomeworkRow, group: GroupRow, submitte
     group: personName(group.name, "Group"),
     dueDate: hw.dueDate,
     when: gap === 1 ? "yesterday" : gap === 0 ? "today" : gap === -1 ? "tomorrow" : "other",
-    submitted: group.students.length - missing.length,
-    total: group.students.length,
+    submitted: students.length - missing.length,
+    total: students.length,
     missing,
   };
 }
@@ -187,7 +192,7 @@ export function buildStudentReminder(
 ): StudentReminder | null {
   const dueTomorrow = student.groupId
     ? homework
-        .filter((h) => h.groupId === student.groupId && !submitted.has(pairKey(student.id, h.id)))
+        .filter((h) => h.groupId === student.groupId && isForStudent(h, student.id) && !submitted.has(pairKey(student.id, h.id)))
         .sort(byDue)
         .map((h) => ({ title: homeworkTitle(h), dueDate: h.dueDate }))
     : [];

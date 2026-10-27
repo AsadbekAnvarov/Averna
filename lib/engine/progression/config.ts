@@ -103,6 +103,12 @@ export const XP_CONFIG = {
    */
   peerSpeaking: { exam: 60, quick: 25, conversation: 30, debate: 35 } as Record<string, number>,
 
+  /**
+   * A live AI speaking-partner call (≤ 4 min, docs/elegance-roadmap.md idea 3): a small
+   * award when the student spoke at least a minute, at most `callsPerDay` a day. Daily budget applies.
+   */
+  liveSpeaking: { perCall: 10, minSpeechSec: 60, callsPerDay: 3 },
+
   /** Full mock exam sections pay a little more: they are timed, mixed practice. */
   mock: { sectionMultiplier: 1.2 },
 

@@ -1,7 +1,5 @@
 import { getProgression } from "@/lib/engine/progression/service";
-import { TodayMission } from "./today-mission";
 import { SkillProgress } from "./skill-progress";
-import { NextActivity } from "./next-activity";
 import { StreakWeek } from "./streak-week";
 import { ChallengesCard } from "./challenges-card";
 import { RecentBadges } from "./recent-badges";
@@ -18,31 +16,25 @@ async function load(studentId: string) {
 }
 
 /**
- * The Today tab's learning loop, in priority order:
- *   Today's Mission → What's due (+ the single best next step) → Four skills
- *   + Streak → Challenges + Achievements.
+ * The Today tab below the Daily Session hero, in priority order:
+ *   What's due → Four skills → Challenges + Achievements.
  *
- * `homework` / `aside` are slots for the page's own widgets so the whole tab
- * reads as one calm column. getProgression is cached per request, so the
- * Progress tab's <ProgressionLevel/> reuses the same computation for free.
- * It settles earned rewards first (idempotent), so a reward the evidence
- * supports is always shown as earned.
+ * The old Today's Mission card and the "Averna recommends" card are gone: the
+ * Daily Session hero (components/session) covers both with one plan and one
+ * Continue button. The Daily Mission rules still run here for the XP bonus and
+ * badges. `homework` is a slot for the page's own widget so the tab reads as
+ * one calm column. getProgression is cached per request, so <ProgressionStreak/>
+ * next to the hero and the Progress tab's <ProgressionLevel/> reuse the same
+ * computation for free. It settles earned rewards first (idempotent), so a
+ * reward the evidence supports is always shown as earned.
  */
-export async function ProgressionHome({
-  studentId,
-  homework,
-  aside,
-}: {
-  studentId: string;
-  homework?: React.ReactNode;
-  aside?: React.ReactNode;
-}) {
+export async function ProgressionHome({ studentId, homework }: { studentId: string; homework?: React.ReactNode }) {
   const p = await load(studentId);
   if (!p) {
     return (
       <div className="space-y-3 md:space-y-6">
         <ErrorPanel
-          title="We couldn't load your mission."
+          title="We couldn't load your progress."
           detail="Your progress is safe — this is only a display problem."
           retryHref="/dashboard"
         />
@@ -53,30 +45,10 @@ export async function ProgressionHome({
 
   return (
     <div className="space-y-3 md:space-y-6">
-      <Reveal>
-        <TodayMission mission={p.mission} firstName={p.firstName} isNew={p.isNew} />
-      </Reveal>
+      <Reveal>{homework}</Reveal>
 
       <Reveal>
-        <DashRow cols={3}>
-          <div className="lg:col-span-2">{homework}</div>
-          {/* The stack fills the row's height; its last card grows (and centres its content). */}
-          <div className="flex flex-col gap-3 md:gap-6 [&>*]:h-auto [&>:last-child]:flex-1">
-            <NextActivity rec={p.recommendation} />
-            {aside}
-          </div>
-        </DashRow>
-      </Reveal>
-
-      <Reveal>
-        <DashRow cols={5}>
-          <div className="lg:col-span-3">
-            <SkillProgress profile={p.profile} targetBand={p.targetBand} insight={p.insight} weakestSkill={p.weakest?.skill ?? null} />
-          </div>
-          <div className="lg:col-span-2">
-            <StreakWeek streak={p.streak} />
-          </div>
-        </DashRow>
+        <SkillProgress profile={p.profile} targetBand={p.targetBand} insight={p.insight} weakestSkill={p.weakest?.skill ?? null} />
       </Reveal>
 
       <Reveal>
@@ -87,6 +59,13 @@ export async function ProgressionHome({
       </Reveal>
     </div>
   );
+}
+
+/** This week's streak strip (beside the Daily Session hero). Renders nothing if progression can't load. */
+export async function ProgressionStreak({ studentId }: { studentId: string }) {
+  const p = await load(studentId);
+  if (!p) return null;
+  return <StreakWeek streak={p.streak} />;
 }
 
 /** Level tier card on its own (Progress tab). Renders nothing if progression can't load. */

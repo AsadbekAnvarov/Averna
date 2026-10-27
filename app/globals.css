@@ -1255,3 +1255,121 @@ html.light .account-link-form input::placeholder { color: #475569; }
 }
 .exam-shell .glow-cta, .exam-shell .glow-hover { box-shadow: none; }
 .exam-shell [role="separator"]:focus-visible { outline: 2px solid rgb(var(--c-averna-neon)); outline-offset: -2px; }
+
+
+/* ===================================================================
+   READING COMFORT — Settings → Reading comfort (lib/comfort/prefs.ts).
+   Root classes are set before the first paint by COMFORT_SCRIPT
+   (components/comfort/comfort-script.ts). Additive; the Mock CDI keeps its
+   own exam typography, spacing and contrast modes (.mock-cdi).
+   =================================================================== */
+
+/* --- Readable font (Atkinson Hyperlegible, --font-readable from app/layout.tsx) */
+html.font-readable body {
+  font-family: var(--font-readable), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  word-spacing: 0.08em;
+}
+/* The practice exam workspace uses Arial; with the readable font on it follows it too. */
+html.font-readable .exam-shell { font-family: var(--font-readable), Arial, Helvetica, sans-serif; }
+/* Code and the Mock CDI stay as they are. */
+html.font-readable :where(code, pre, kbd, samp, .font-mono) { letter-spacing: normal; word-spacing: normal; }
+html.font-readable .mock-cdi,
+html.font-readable .mock-cdi .exam-shell,
+html.font-readable .mc-screen {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+/* --- Line spacing: reading text only (paragraphs, list items, definitions, quotes,
+   passage and explanation bodies). Elements that set a tight line height on purpose,
+   and anything inside nav, buttons, labels, tables, tab lists or the Mock CDI, keep theirs. */
+html.leading-relaxed-ui :where(p, li, dd, blockquote, figcaption):not(:where([class*="leading-"])):not(:where(nav, button, label, table, select, [role="tablist"], [role="menu"], .mock-cdi) *),
+html.leading-relaxed-ui :where(.leading-normal, .leading-relaxed):not(:where(nav, button, label, table, select, [role="tablist"], [role="menu"], .mock-cdi) *) {
+  line-height: 1.75;
+}
+html.leading-loose-ui :where(p, li, dd, blockquote, figcaption):not(:where([class*="leading-"])):not(:where(nav, button, label, table, select, [role="tablist"], [role="menu"], .mock-cdi) *),
+html.leading-loose-ui :where(.leading-normal, .leading-relaxed, .leading-loose):not(:where(nav, button, label, table, select, [role="tablist"], [role="menu"], .mock-cdi) *) {
+  line-height: 2;
+}
+
+/* --- High contrast: tokens for both themes. Muted text ≥ 4.5:1, stronger
+   borders, opaque surfaces (no blur behind text) and a clear focus ring. */
+html.contrast-high:not(.light) {
+  --c-gray-50: 255 255 255;
+  --c-gray-100: 255 255 255;
+  --c-gray-200: 248 250 252;
+  --c-gray-300: 241 245 249;
+  --c-gray-400: 226 232 240;
+  --c-gray-500: 203 213 225;
+  --c-gray-600: 160 174 192;
+  --muted-foreground: 0 0% 88%;
+  --border: 200 15% 45%;
+  --hc-surface: 5 11 14;
+  --hc-focus: var(--c-yellow-300);
+}
+html.light.contrast-high {
+  --c-white: 0 0 0;
+  --c-gray-50: 2 6 23;
+  --c-gray-100: 2 6 23;
+  --c-gray-200: 15 23 42;
+  --c-gray-300: 15 23 42;
+  --c-gray-400: 30 41 59;
+  --c-gray-500: 51 65 85;
+  --c-gray-600: 51 65 85;
+  --c-averna-neon: 4 92 62;
+  --c-averna-accent: 4 92 62;
+  --c-averna-cyan: 8 94 122;
+  --muted-foreground: 0 0% 22%;
+  --border: 0 0% 45%;
+  --hc-surface: 255 255 255;
+  --hc-focus: var(--c-blue-300);
+}
+html.contrast-high :is(.glass, .glass-strong, .glass-vibrant, .av-panel, .av-panel-hero, .app-topbar) {
+  background: rgb(var(--hc-surface) / 0.97);
+  border-color: rgb(var(--c-white) / 0.4);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+html.contrast-high :is(.border-white\/5, .border-white\/10, .border-white\/15) { border-color: rgb(var(--c-white) / 0.4); }
+html.contrast-high :is(.divide-white\/5, .divide-white\/10) > * + * { border-color: rgb(var(--c-white) / 0.4); }
+html.contrast-high :focus-visible {
+  outline: 3px solid rgb(var(--hc-focus));
+  outline-offset: 2px;
+}
+html.light.contrast-high input::placeholder,
+html.light.contrast-high textarea::placeholder { color: #334155; }
+
+/* --- Reading ruler (components/comfort/reading-ruler.tsx) */
+.reading-ruler {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: none;
+}
+.reading-ruler__dim,
+.reading-ruler__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  will-change: transform;
+}
+.reading-ruler__dim { height: 200vh; background: rgb(var(--c-gray-950) / 0.58); }
+.reading-ruler__band {
+  box-sizing: border-box;
+  height: 2.4rem;
+  border-block: 2px solid rgb(var(--c-averna-cyan) / 0.85);
+  background: rgb(var(--c-yellow-300) / 0.07);
+}
+html.contrast-high .reading-ruler__dim { background: rgb(var(--c-gray-950) / 0.78); }
+html.contrast-high .reading-ruler__band { border-color: rgb(var(--hc-focus)); }
+@media (prefers-reduced-motion: no-preference) {
+  .reading-ruler { transition: opacity 0.12s ease; }
+}
+
+/* --- Native-language hints inside the Mock CDI: its own muted ink, no chip. */
+.mock-cdi .l1-hint { color: var(--mc-muted); }
+.mock-cdi .l1-hint__tag { border-color: var(--mc-border); color: var(--mc-muted); }

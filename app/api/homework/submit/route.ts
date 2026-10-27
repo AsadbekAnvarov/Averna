@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { submitHomework } from "@/lib/db-helpers";
+import { isForStudent } from "@/lib/homework/audience";
 
 export const dynamic = "force-dynamic";
 
@@ -23,15 +24,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    const homework: { groupId: string; contentKind: string | null } | null = await db.homework.findUnique({
+    const homework: { groupId: string; contentKind: string | null; assigneeId: string | null } | null = await db.homework.findUnique({
       where: { id: homeworkId },
-      select: { groupId: true, contentKind: true },
+      select: { groupId: true, contentKind: true, assigneeId: true },
     });
     if (!homework) {
       return NextResponse.json({ error: "Homework not found" }, { status: 404 });
     }
-    // Only homework set for the student's own group.
-    if (homework.groupId !== student.groupId) {
+    // Only homework set for the student's own group (and, for a personal task, for this student).
+    if (homework.groupId !== student.groupId || !isForStudent(homework, student.id)) {
       return NextResponse.json({ error: "This homework isn't set for your group." }, { status: 403 });
     }
     // Exam homework (a test from the library) is completed by taking that test.

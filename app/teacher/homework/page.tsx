@@ -26,7 +26,7 @@ const LIMIT = 150;
 interface GroupRow {
   id: string;
   name: string;
-  students: { id: string }[];
+  students: { id: string; user: { name: string | null } | null }[];
 }
 
 interface HomeworkRow {
@@ -38,6 +38,8 @@ interface HomeworkRow {
   contentKind: string | null;
   contentPart: number | null;
   contentTitle: string | null;
+  /** Set for one student only (a mini task); null = the whole group. */
+  assigneeId: string | null;
   group: { name: string } | null;
   submissions: {
     id: string;
@@ -69,7 +71,7 @@ export default async function TeacherHomeworkPage(props: { searchParams?: Promis
   const groups: GroupRow[] = await db.group
     .findMany({
       where: { teacherId: teacher.id },
-      select: { id: true, name: true, students: { select: { id: true } } },
+      select: { id: true, name: true, students: { select: { id: true, user: { select: { name: true } } } } },
       orderBy: { name: "asc" },
     })
     .catch(() => []);
@@ -93,6 +95,7 @@ export default async function TeacherHomeworkPage(props: { searchParams?: Promis
             contentKind: true,
             contentPart: true,
             contentTitle: true,
+            assigneeId: true,
             group: { select: { name: true } },
             submissions: {
               orderBy: { submittedAt: "asc" },
@@ -117,6 +120,7 @@ export default async function TeacherHomeworkPage(props: { searchParams?: Promis
   );
 
   const members = new Map(groups.map((g) => [g.id, new Set(g.students.map((s) => s.id))]));
+  const studentName = new Map(groups.flatMap((g) => g.students.map((s) => [s.id, s.user?.name?.trim() || "Student"] as const)));
 
   return (
     <div className="min-h-screen premium-gradient">
@@ -180,7 +184,11 @@ export default async function TeacherHomeworkPage(props: { searchParams?: Promis
         ) : (
           <div className="space-y-4">
             {homework.map((hw) => {
-              const inGroup = members.get(hw.groupId) ?? new Set<string>();
+              const groupMembers = members.get(hw.groupId) ?? new Set<string>();
+              // A personal task (mini task) counts against its one student only.
+              const inGroup = hw.assigneeId
+                ? new Set(groupMembers.has(hw.assigneeId) ? [hw.assigneeId] : [])
+                : groupMembers;
               const subs = hw.submissions.filter((s) => inGroup.has(s.studentId));
               const total = inGroup.size;
               const due = new Date(hw.dueDate);
@@ -202,6 +210,11 @@ export default async function TeacherHomeworkPage(props: { searchParams?: Promis
                         <div className="mb-2 flex flex-wrap items-center gap-2">
                           {exam ? <ExamKindBadge kind={exam} part={hw.contentPart} /> : <ModuleBadge module={hw.module} />}
                           <span className="text-xs text-gray-400">{hw.group?.name}</span>
+                          {hw.assigneeId && (
+                            <span className="rounded-full border border-averna-cyan/30 bg-averna-cyan/10 px-2 py-0.5 text-xs text-averna-cyan">
+                              Only {studentName.get(hw.assigneeId) ?? "one student"}
+                            </span>
+                          )}
                         </div>
                         <CardTitle className="text-lg leading-snug sm:text-xl">
                           <Link href={href} className="hover:underline focus-visible:underline">

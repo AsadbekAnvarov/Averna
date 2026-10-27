@@ -10,9 +10,11 @@ import {
   GraduationCap, ClipboardCheck, NotebookPen, PlusCircle, Megaphone, BarChart3,
   Activity, ScrollText, Users, Command as CommandIcon, Settings, LogOut,
   Sun, Moon, SpellCheck, Sparkles, CornerDownLeft, ArrowUpDown,
-  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, type LucideIcon,
+  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, AudioLines, HardDrive, Glasses, type LucideIcon,
 } from "lucide-react";
 import { STUDIO_TOOLS } from "@/components/studio/studio-tools";
+import { COACH_TOOLS } from "@/components/coach/coach-tools";
+import { wipeOfflineData } from "@/lib/offline/store";
 
 type ActionId = "theme" | "signout";
 interface Cmd {
@@ -26,58 +28,69 @@ interface Cmd {
   searchOnly?: boolean;
 }
 
-// Same five groups as the student sidebar. The palette also lists the hub
-// sub-pages and every Practice Studio tool, so anything is one search away.
-const STUDENT_COMMANDS: Cmd[] = [
-  { group: "Practice", label: "Adventures", href: "/studio/adventures", icon: Compass, keywords: "story detective debate rescue workshop voice capsule" },
-  { group: "Study", label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, keywords: "home main today" },
-  { group: "Study", label: "Learning Center", href: "/learning", icon: GraduationCap, keywords: "practice modules hub all skills" },
-  { group: "Study", label: "Reading", href: "/learning/reading", icon: BookOpen, keywords: "passage test" },
-  { group: "Study", label: "Listening", href: "/learning/listening", icon: Headphones, keywords: "audio test" },
-  { group: "Study", label: "Writing", href: "/learning/writing", icon: PenTool, keywords: "essay task" },
-  { group: "Study", label: "Speaking", href: "/learning/speaking", icon: Mic, keywords: "partner talk" },
-  { group: "Study", label: "Pronunciation", href: "/learning/pronunciation", icon: Mic, keywords: "record voice" },
-  { group: "Study", label: "Grammar", href: "/grammar", icon: SpellCheck, keywords: "rules tenses" },
-  { group: "Study", label: "Vocabulary", href: "/flashcards", icon: Layers, keywords: "flashcards words deck" },
+// Same five sections as the student sidebar (Home · Skills · Practice · Coach ·
+// Me). The palette also lists the hub sub-pages, every Practice Studio tool and
+// every AI Coach tool, so anything that is not in the sidebar is one search
+// away by its name or a common synonym ("mentor", "duel", "flashcards"…).
+const COACH_HREFS = new Set(COACH_TOOLS.map((t) => t.href));
+const STUDIO_EXTRA_KEYWORDS: Record<string, string> = {
+  adventures: "adventures story detective debate rescue workshop voice capsule",
+  "word-duel": "duel words vocabulary",
+  "memory-match": "words cards pairs",
+  "word-rescue": "words balloons",
+  "word-scramble": "words letters anagram",
+  "ghost-race": "words vocabulary sprint",
+};
 
-  { group: "Practice", label: "Mock Exam", href: "/learning/mock-exam", icon: Trophy, keywords: "test band full" },
-  { group: "Practice", label: "Placement Test", href: "/learning/placement", icon: Compass, keywords: "level entry cefr test" },
-  { group: "Practice", label: "Daily Challenge", href: "/challenge", icon: Zap, keywords: "quiz daily" },
-  { group: "Practice", label: "Practice Studio", href: "/studio", icon: Dumbbell, keywords: "tools games warm-up roleplay mistakes podcast focus" },
-  ...STUDIO_TOOLS.map((t): Cmd => ({
+export const STUDENT_COMMANDS: Cmd[] = [
+  { group: "Home", label: "Today", href: "/dashboard", icon: LayoutDashboard, keywords: "dashboard home main today start" },
+  { group: "Home", label: "Homework", href: "/homework", icon: NotebookPen, keywords: "assignments due tasks" },
+  { group: "Home", label: "Calendar", href: "/calendar", icon: CalendarDays, keywords: "month deadlines dates events" },
+  { group: "Home", label: "My Schedule", href: "/schedule", icon: CalendarClock, keywords: "schedule attendance grades lessons timetable class", searchOnly: true },
+  { group: "Home", label: "Inbox", href: "/messages", icon: MessageSquare, keywords: "messages chat teacher inbox" },
+  { group: "Home", label: "Notifications", href: "/notifications", icon: Bell, keywords: "alerts notifications inbox bell", searchOnly: true },
+
+  { group: "Skills", label: "Learning Center", href: "/learning", icon: GraduationCap, keywords: "skills hub all modules learn practice" },
+  { group: "Skills", label: "Reading", href: "/learning/reading", icon: BookOpen, keywords: "passage test" },
+  { group: "Skills", label: "Listening", href: "/learning/listening", icon: Headphones, keywords: "audio test" },
+  { group: "Skills", label: "Writing", href: "/learning/writing", icon: PenTool, keywords: "essay task" },
+  { group: "Skills", label: "Speaking", href: "/learning/speaking", icon: Mic, keywords: "speaking partner peer talk conversation" },
+  { group: "Skills", label: "Grammar", href: "/grammar", icon: SpellCheck, keywords: "rules tenses language" },
+  { group: "Skills", label: "Vocabulary", href: "/flashcards", icon: Layers, keywords: "vocab flashcards words deck language" },
+  { group: "Skills", label: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines, keywords: "record voice sounds accent language", searchOnly: true },
+  { group: "Skills", label: "Articles", href: "/article", icon: FileText, keywords: "reading news read lessons language", searchOnly: true },
+  { group: "Skills", label: "Materials", href: "/materials", icon: Library, keywords: "resources guides bank study word lists", searchOnly: true },
+
+  { group: "Practice", label: "Mock exams", href: "/learning/mock-exam", icon: Trophy, keywords: "mock exam test band full" },
+  { group: "Practice", label: "Practice Studio", href: "/studio", icon: Dumbbell, keywords: "studio tools games warm-up adventures roleplay mistakes podcast focus" },
+  { group: "Practice", label: "Placement Test", href: "/learning/placement", icon: Compass, keywords: "level entry cefr test", searchOnly: true },
+  { group: "Practice", label: "Daily Challenge", href: "/challenge", icon: Zap, keywords: "quiz daily", searchOnly: true },
+  ...STUDIO_TOOLS.filter((t) => !COACH_HREFS.has(`/studio/${t.slug}`)).map((t): Cmd => ({
     group: "Practice",
     label: t.title,
     href: `/studio/${t.slug}`,
     icon: t.icon,
-    keywords: `${t.group === "games" ? "game " : ""}studio ${t.blurb.toLowerCase()}`,
+    keywords: `${t.group === "games" ? "game games " : ""}studio ${STUDIO_EXTRA_KEYWORDS[t.slug] ?? ""} ${t.blurb.toLowerCase()}`,
     searchOnly: true,
   })),
-  { group: "Practice", label: "AI Examiner", href: "/learning/examiner", icon: Sparkles, keywords: "assess feedback score" },
-  { group: "Practice", label: "AI Mentor", href: "/mentor", icon: Bot, keywords: "ask help chatbot assistant" },
-  { group: "Practice", label: "Articles", href: "/article", icon: FileText, keywords: "reading news read" },
-  { group: "Practice", label: "Movies", href: "/movies", icon: Clapperboard, keywords: "films watch subtitles" },
+  { group: "Practice", label: "Movie Time", href: "/movies", icon: Clapperboard, keywords: "movies films watch subtitles", searchOnly: true },
+  { group: "Practice", label: "Rewards", href: "/rewards", icon: Gift, keywords: "points store prizes shop", searchOnly: true },
 
-  { group: "Progress", label: "My Progress", href: "/progress", icon: BarChart3, keywords: "overview band analytics 30 days tests" },
-  { group: "Progress", label: "Skills deep-dive", href: "/progress/skills", icon: Sparkles, keywords: "skill radar predicted band memory writing growth", searchOnly: true },
-  { group: "Progress", label: "Streaks & journal", href: "/progress/streaks", icon: Zap, keywords: "streak heatmap commitment recap journal", searchOnly: true },
-  { group: "Progress", label: "Achievements", href: "/progress/achievements", icon: Award, keywords: "badges medals milestones" },
-  { group: "Progress", label: "Certificate", href: "/certificate", icon: Award, keywords: "diploma award download", searchOnly: true },
-  { group: "Progress", label: "Learning DNA", href: "/learning-dna", icon: Dna, keywords: "how i learn style focus retention confidence consistency motivation personalised profile" },
-  { group: "Progress", label: "Leaderboard", href: "/rankings", icon: Trophy, keywords: "rankings top global group" },
-  { group: "Progress", label: "Leagues", href: "/rankings/leagues", icon: Trophy, keywords: "rank division weekly", searchOnly: true },
-  { group: "Progress", label: "Team race", href: "/rankings/teams", icon: Users, keywords: "team challenge group goal", searchOnly: true },
-  { group: "Progress", label: "Rewards", href: "/rewards", icon: Gift, keywords: "points store prizes shop" },
+  { group: "Coach", label: "AI Coach", href: "/coach", icon: Bot, keywords: "coach ai helpers assistant tools hub mentor examiner" },
+  ...COACH_TOOLS.map((t): Cmd => ({ group: "Coach", label: t.name, href: t.href, icon: t.icon, keywords: t.keywords, searchOnly: true })),
 
-  { group: "Class", label: "Homework", href: "/homework", icon: NotebookPen, keywords: "assignments due" },
-  { group: "Class", label: "My Schedule", href: "/schedule", icon: CalendarClock, keywords: "attendance grades lessons" },
-  { group: "Class", label: "Calendar", href: "/calendar", icon: CalendarDays, keywords: "month deadlines" },
-  { group: "Class", label: "Materials", href: "/materials", icon: Library, keywords: "resources guides bank study" },
-  { group: "Class", label: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck, keywords: "second teacher book" },
-  { group: "Class", label: "Messages", href: "/messages", icon: MessageSquare, keywords: "chat teacher" },
-
-  { group: "Account", label: "Notifications", href: "/notifications", icon: Bell, keywords: "alerts" },
-  { group: "Account", label: "My Profile", href: "/profile", icon: User, keywords: "account avatar" },
-  { group: "Account", label: "Settings", href: "/settings", icon: Settings, keywords: "preferences theme sound" },
+  { group: "Me", label: "Progress", href: "/progress", icon: BarChart3, keywords: "my progress overview band analytics 30 days tests" },
+  { group: "Me", label: "Skills deep-dive", href: "/progress/skills", icon: Sparkles, keywords: "skill radar predicted band memory writing growth", searchOnly: true },
+  { group: "Me", label: "Streaks & journal", href: "/progress/streaks", icon: Zap, keywords: "streak heatmap commitment recap journal", searchOnly: true },
+  { group: "Me", label: "Achievements", href: "/progress/achievements", icon: Award, keywords: "badges medals milestones", searchOnly: true },
+  { group: "Me", label: "Certificate", href: "/certificate", icon: Award, keywords: "diploma award download", searchOnly: true },
+  { group: "Me", label: "Rankings", href: "/rankings", icon: Trophy, keywords: "leaderboard rankings top global group" },
+  { group: "Me", label: "Leagues", href: "/rankings/leagues", icon: Trophy, keywords: "rank division weekly", searchOnly: true },
+  { group: "Me", label: "Team race", href: "/rankings/teams", icon: Users, keywords: "team challenge group goal", searchOnly: true },
+  { group: "Me", label: "Profile", href: "/profile", icon: User, keywords: "my profile account avatar" },
+  { group: "Me", label: "Settings", href: "/settings", icon: Settings, keywords: "preferences theme sound comfort" },
+  { group: "Me", label: "Reading comfort", href: "/settings#reading-comfort", icon: Glasses, keywords: "readable font dyslexia line spacing contrast reading ruler accessibility eyes", searchOnly: true },
+  { group: "Me", label: "Offline library", href: "/offline", icon: HardDrive, keywords: "offline saved downloads device no internet connection packs save", searchOnly: true },
 ];
 
 const TEACHER_COMMANDS: Cmd[] = [
@@ -128,6 +141,11 @@ const ADMIN_COMMANDS: Cmd[] = [
   { group: "Operatsiyalar", label: "Profil va parol", href: "/admin/profile", icon: User, keywords: "profile password parol profil" },
 ];
 
+/** Whether a command matches a typed (trimmed, lower-cased) query: its name or one of its search words. */
+export function commandMatches(cmd: Pick<Cmd, "label" | "keywords">, q: string): boolean {
+  return cmd.label.toLowerCase().includes(q) || !!cmd.keywords?.includes(q);
+}
+
 /**
  * The visible part of the layout viewport (shrinks when the on-screen keyboard
  * opens on phones). `null` where `window.visualViewport` isn't supported.
@@ -151,7 +169,7 @@ function useVisualViewport(enabled = true): { height: number; offsetTop: number 
 
 // Group render order per role
 const GROUP_ORDER: Record<string, string[]> = {
-  student: ["Study", "Practice", "Progress", "Class", "Account", "Actions"],
+  student: ["Home", "Skills", "Practice", "Coach", "Me", "Actions"],
   teacher: ["Overview", "Students", "Teaching", "Communication", "Actions"],
   admin: ["Umumiy koʻrinish", "Odamlar", "Oʻqitish", "Kontent", "Operatsiyalar", "Amallar"],
 };
@@ -228,9 +246,7 @@ export function CommandPalette() {
   // Flat, display-ordered list of matches (groups in role order)
   const ordered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const matches = q
-      ? commands.filter((c) => c.label.toLowerCase().includes(q) || c.keywords?.includes(q))
-      : commands.filter((c) => !c.searchOnly);
+    const matches = q ? commands.filter((c) => commandMatches(c, q)) : commands.filter((c) => !c.searchOnly);
     const order = GROUP_ORDER[roleKey] ?? [];
     return [...matches].sort((a, b) => {
       const ga = order.indexOf(a.group);
@@ -246,8 +262,24 @@ export function CommandPalette() {
 
   const select = (cmd: Cmd) => {
     if (cmd.actionId === "theme") { toggleMode(); setOpen(false); return; }
-    if (cmd.actionId === "signout") { setOpen(false); signOut({ callbackUrl: "/auth/signin" }); return; }
-    if (cmd.href) { setOpen(false); router.push(cmd.href); }
+    if (cmd.actionId === "signout") {
+      setOpen(false);
+      // Offline packs and waiting grades leave the device with the account (idea 7).
+      void wipeOfflineData().finally(() => signOut({ callbackUrl: "/auth/signin" }));
+      return;
+    }
+    if (cmd.href) {
+      setOpen(false);
+      // A section of the page we're on (/settings#reading-comfort on /settings): a client-side push
+      // changes the URL without a hashchange, so set the hash itself and let the page react to it.
+      const [path, hash] = cmd.href.split("#");
+      if (hash && path === pathname) {
+        if (window.location.hash === `#${hash}`) window.dispatchEvent(new HashChangeEvent("hashchange"));
+        else window.location.hash = hash;
+        return;
+      }
+      router.push(cmd.href);
+    }
   };
 
   if (hidden) return null;

@@ -15,6 +15,7 @@ import type {
   ExamTestSummary,
   GroupKind,
   ListeningPart,
+  PracticeKind,
   ReadingPart,
   ScriptLine,
 } from "./types";
@@ -258,8 +259,29 @@ function kindsOf(parts: { groups: ExamGroup[] }[]): GroupKind[] {
   return Array.from(new Set(parts.flatMap((p) => p.groups.map((g) => g.kind))));
 }
 
+/**
+ * A group's question type for results and "Practise this type": matching is
+ * split into headings (roman keys i, ii …) and information (options
+ * "Paragraph A" …); every other kind is itself.
+ */
+export function practiceKindOf(group: Pick<ExamGroup, "kind" | "options">): PracticeKind {
+  if (group.kind !== "matching") return group.kind;
+  const options = group.options ?? [];
+  if (options.length && options.every((o) => ROMAN.includes(o.key.trim().toLowerCase()))) return "matching-headings";
+  if (options.length && options.every((o) => /^(paragraph|section)\s+[A-Z]$/i.test(o.text.trim()))) return "matching-information";
+  return "matching";
+}
+
+function partKinds(part: { groups: ExamGroup[] }): PracticeKind[] {
+  return Array.from(new Set(part.groups.map(practiceKindOf)));
+}
+
+function partInfoOf(p: { title: string; groups: ExamGroup[] }) {
+  return { title: p.title, ...(partRange(p) ?? { from: 0, to: 0 }), kinds: partKinds(p) };
+}
+
 export function summarizeReading(test: ExamReadingTest): ExamTestSummary {
-  const partInfo = test.parts.map((p) => ({ title: p.title, ...(partRange(p) ?? { from: 0, to: 0 }) }));
+  const partInfo = test.parts.map(partInfoOf);
   const questions = questionCount(test);
   return {
     id: test.id,
@@ -279,7 +301,7 @@ export function summarizeReading(test: ExamReadingTest): ExamTestSummary {
 }
 
 export function summarizeListening(test: ExamListeningTest): ExamTestSummary {
-  const partInfo = test.parts.map((p) => ({ title: p.title, ...(partRange(p) ?? { from: 0, to: 0 }) }));
+  const partInfo = test.parts.map(partInfoOf);
   const questions = questionCount(test);
   return {
     id: test.id,
@@ -308,4 +330,11 @@ export const KIND_LABEL: Record<GroupKind, string> = {
   matching: "Matching",
   gap: "Completion",
   "gap-box": "Summary (word box)",
+};
+
+/** KIND_LABEL plus the two named matching tasks. */
+export const PRACTICE_KIND_LABEL: Record<PracticeKind, string> = {
+  ...KIND_LABEL,
+  "matching-headings": "Matching headings",
+  "matching-information": "Matching information",
 };

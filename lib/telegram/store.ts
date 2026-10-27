@@ -145,7 +145,7 @@ export function createBotStore(): BotStore {
       // Committed: an account this chat was taken from hears it in the app (its Telegram link is gone).
       if (out.status === "ok" && out.kind === "user" && out.link.ok) {
         for (const d of displaced) {
-          await notifyUser(d.userId, { type: "system", link: "/settings", ...displacedNotice(d.role, out.link.name) });
+          await notifyUser(d.userId, { type: "system", link: "/settings#telegram", ...displacedNotice(d.role, out.link.name) });
         }
       }
       return out;

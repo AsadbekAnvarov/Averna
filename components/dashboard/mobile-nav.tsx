@@ -4,23 +4,18 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
-  LayoutDashboard, GraduationCap, Dumbbell, TrendingUp, User, Users, ListChecks, Notebook,
-  MessageSquare, BarChart, type LucideIcon,
+  LayoutDashboard, GraduationCap, Users, ListChecks, Notebook, MessageSquare, BarChart,
 } from "lucide-react";
+import { STUDENT_TABS, activeNavHref, type PortalNavItem } from "@/components/layout/portal-navigation";
 
 type Role = "STUDENT" | "TEACHER" | "ADMIN";
-type Item = { name: string; href: string; icon: LucideIcon };
+type Item = PortalNavItem;
 
-// The five destinations each role uses most. Admin labels are Uzbek, like the
-// rest of the admin panel.
+// The five destinations each role uses most. Students get one tab per sidebar
+// section (Home · Skills · Practice · Coach · Me). Admin labels are Uzbek, like
+// the rest of the admin panel.
 const ITEMS: Record<Role, Item[]> = {
-  STUDENT: [
-    { name: "Home", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Learn", href: "/learning", icon: GraduationCap },
-    { name: "Practice", href: "/studio", icon: Dumbbell },
-    { name: "Progress", href: "/progress", icon: TrendingUp },
-    { name: "Profile", href: "/profile", icon: User },
-  ],
+  STUDENT: STUDENT_TABS,
   TEACHER: [
     { name: "Home", href: "/teacher/dashboard", icon: LayoutDashboard },
     { name: "Students", href: "/teacher/students", icon: Users },
@@ -52,10 +47,9 @@ export function MobileNav({ role }: { role: Role }) {
   const pathname = usePathname() || "";
   const items = ITEMS[role];
   const accent = ACCENT[role];
-  // Most specific match wins (e.g. /teacher/homework/create → Homework).
-  const current = items
-    .filter((i) => pathname === i.href || pathname.startsWith(i.href + "/"))
-    .sort((a, b) => b.href.length - a.href.length)[0]?.href;
+  // Most specific match wins (e.g. /teacher/homework/create → Homework,
+  // /studio/essay-xray → Coach rather than Practice).
+  const current = activeNavHref(pathname, items);
 
   return (
     <nav

@@ -523,6 +523,37 @@ export async function nextPendingReview(
   }
 }
 
+export interface PendingNeighbours {
+  prev: string | null;
+  next: string | null;
+  /** 1-based place of the current attempt in the pending queue (null when it isn't in it). */
+  position: number | null;
+  total: number;
+}
+
+/**
+ * The pending attempts before and after `currentTestId` in queue order under
+ * the same filters — J / K in the review inbox (idea 10). When the current
+ * attempt isn't pending (or is filtered out), `next` is the first in the queue.
+ * Never throws.
+ */
+export async function pendingNeighbours(viewer: Viewer, currentTestId: string, filters: Partial<QueueFilters> = {}): Promise<PendingNeighbours> {
+  try {
+    const ctx = await reviewContext(viewer);
+    if (!ctx) return { prev: null, next: null, position: null, total: 0 };
+    const f = scoped(ctx, { ...DEFAULT_FILTERS, ...filters, tab: "pending", page: 1 });
+    const { rows } = await candidates(ctx, f, "pending");
+    const sources = await sourcesOf(rows.map((r) => r.id));
+    const list = orderPending(withSources(rows, sources, f.source));
+    const i = list.findIndex((c) => c.id === currentTestId);
+    if (i < 0) return { prev: null, next: list[0]?.id ?? null, position: null, total: list.length };
+    return { prev: list[i - 1]?.id ?? null, next: list[i + 1]?.id ?? null, position: i + 1, total: list.length };
+  } catch (e) {
+    console.error("pendingNeighbours failed:", e);
+    return { prev: null, next: null, position: null, total: 0 };
+  }
+}
+
 /**
  * Attempts waiting for this viewer's review (last `days` days, every group,
  * skill and source) — for a nav badge. 0 for non-staff. Never throws.
