@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn, initialsOf } from "@/lib/utils";
 import {
   LayoutDashboard,
@@ -42,72 +42,66 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
+import { StudentSidebarSections } from "@/components/layout/student-sidebar-sections";
 import { avatarSrc } from "@/lib/avatars";
 
 type NavItem = { name: string; href: string; icon: LucideIcon; badge?: string; /** only active on this exact path */ exact?: boolean };
 type NavSection = { label: string; items: NavItem[] };
 import { ADMIN_NAV, TEACHER_NAV } from "@/components/layout/portal-navigation";
 
-// Five groups, in the order a student thinks about them. Merged pages
-// (Analytics → My Progress, Leagues/Team Challenge → Rankings, Achievements →
-// My Progress) redirect from their old URLs — see next.config.mjs.
+// Student destinations are grouped by intent, not a single long skills/tools list.
 const STUDENT_NAV: NavSection[] = [
-  {
-    label: "Study",
-    items: [
-      { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-      { name: "Learning Center", href: "/learning", icon: LayoutGrid, exact: true },
-      { name: "Reading", href: "/learning/reading", icon: BookOpen },
-      { name: "Listening", href: "/learning/listening", icon: Headphones },
-      { name: "Writing", href: "/learning/writing", icon: PenTool },
-      { name: "Speaking", href: "/learning/speaking", icon: Mic },
-      { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
-      { name: "Grammar", href: "/grammar", icon: SpellCheck },
-      { name: "Vocabulary", href: "/flashcards", icon: Layers },
-    ],
-  },
-  {
-    label: "Practice",
-    items: [
-      { name: "Mock Exams", href: "/learning/mock-exam", icon: GraduationCap },
-      { name: "Placement Test", href: "/learning/placement", icon: Compass },
-      { name: "Daily Challenge", href: "/challenge", icon: Zap },
-      { name: "Practice Studio", href: "/studio", icon: Dumbbell },
-      { name: "Adventures", href: "/studio/adventures", icon: Compass, badge: "New" },
-      { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
-      { name: "AI Mentor", href: "/mentor", icon: Sparkles },
-      { name: "Articles", href: "/article", icon: Newspaper },
-      { name: "Movie Time", href: "/movies", icon: Film },
-    ],
-  },
-  {
-    label: "Progress",
-    items: [
-      { name: "My Progress", href: "/progress", icon: TrendingUp },
-      { name: "Learning DNA", href: "/learning-dna", icon: Dna, badge: "New" },
-      { name: "Rankings", href: "/rankings", icon: Trophy },
-      { name: "Rewards", href: "/rewards", icon: Gift },
-    ],
-  },
-  {
-    label: "Class",
-    items: [
-      { name: "Homework", href: "/homework", icon: Notebook },
-      { name: "My Schedule", href: "/schedule", icon: CalendarClock },
-      { name: "Calendar", href: "/calendar", icon: CalendarDays },
-      { name: "Materials", href: "/materials", icon: Library },
-      { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
-      { name: "Messages", href: "/messages", icon: MessageSquare },
-    ],
-  },
-  {
-    label: "Account",
-    items: [
-      { name: "Notifications", href: "/notifications", icon: Bell },
-      { name: "Profile", href: "/profile", icon: User },
-      { name: "Settings", href: "/settings", icon: Settings },
-    ],
-  },
+  { label: "Overview", items: [
+    { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Learning Center", href: "/learning", icon: LayoutGrid, exact: true },
+  ] },
+  { label: "IELTS skills", items: [
+    { name: "Reading", href: "/learning/reading", icon: BookOpen },
+    { name: "Listening", href: "/learning/listening", icon: Headphones },
+    { name: "Writing", href: "/learning/writing", icon: PenTool },
+    { name: "Speaking", href: "/learning/speaking", icon: Mic },
+    { name: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines },
+  ] },
+  { label: "Language essentials", items: [
+    { name: "Grammar", href: "/grammar", icon: SpellCheck },
+    { name: "Vocabulary", href: "/flashcards", icon: Layers },
+  ] },
+  { label: "Exams & assessment", items: [
+    { name: "Mock Exams", href: "/learning/mock-exam", icon: GraduationCap },
+    { name: "Placement Test", href: "/learning/placement", icon: Compass },
+  ] },
+  { label: "Practice & games", items: [
+    { name: "Practice Studio", href: "/studio", icon: Dumbbell },
+    { name: "Daily Challenge", href: "/challenge", icon: Zap },
+    { name: "Adventures", href: "/studio/adventures", icon: Compass },
+  ] },
+  { label: "AI assistants", items: [
+    { name: "AI Examiner", href: "/learning/examiner", icon: Bot },
+    { name: "AI Mentor", href: "/mentor", icon: Sparkles },
+  ] },
+  { label: "Library", items: [
+    { name: "Articles", href: "/article", icon: Newspaper },
+    { name: "Movie Time", href: "/movies", icon: Film },
+  ] },
+  { label: "My class", items: [
+    { name: "Homework", href: "/homework", icon: Notebook },
+    { name: "My Schedule", href: "/schedule", icon: CalendarClock },
+    { name: "Calendar", href: "/calendar", icon: CalendarDays },
+    { name: "Materials", href: "/materials", icon: Library },
+    { name: "1-on-1 Tutoring", href: "/tutoring", icon: UserCheck },
+    { name: "Messages", href: "/messages", icon: MessageSquare },
+  ] },
+  { label: "My progress", items: [
+    { name: "My Progress", href: "/progress", icon: TrendingUp },
+    { name: "Learning DNA", href: "/learning-dna", icon: Dna },
+    { name: "Rankings", href: "/rankings", icon: Trophy },
+    { name: "Rewards", href: "/rewards", icon: Gift },
+  ] },
+  { label: "Account", items: [
+    { name: "Notifications", href: "/notifications", icon: Bell },
+    { name: "Profile", href: "/profile", icon: User },
+    { name: "Settings", href: "/settings", icon: Settings },
+  ] },
 ];
 
 
@@ -163,6 +157,7 @@ export function AppSidebar() {
   const pathname = usePathname() || "";
   const { data: session, status } = useSession();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const asideRef = useRef<HTMLElement>(null);
 
   // Close drawer on route change
   useEffect(() => {
@@ -174,11 +169,22 @@ export function AppSidebar() {
     if (!mobileOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMobileOpen(false);
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const focusable = () => Array.from(asideRef.current?.querySelectorAll<HTMLElement>('a[href], button, input') ?? []).filter(el => !el.closest('[hidden]') && !(el as HTMLButtonElement).disabled);
+    focusable()[0]?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+      if (e.key === "Tab") {
+        const elements = focusable(), first = elements[0], last = elements[elements.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+      }
+    };
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
+      previousFocus?.focus();
     };
   }, [mobileOpen]);
 
@@ -242,17 +248,18 @@ export function AppSidebar() {
       />
 
       <aside
+        ref={asideRef}
         aria-label={uz ? "Navigatsiya" : "Navigation"}
         className={cn(
-          "app-sidebar fixed left-0 top-0 z-[55] lg:z-40 h-[100dvh] w-[min(18rem,86vw)] lg:w-64 overflow-y-auto overscroll-contain pl-[env(safe-area-inset-left)]",
+          "app-sidebar fixed left-0 top-0 z-[55] lg:z-40 h-[100dvh] w-[min(18rem,86vw)] lg:w-64 flex-col overflow-hidden overscroll-contain pl-[env(safe-area-inset-left)]",
           "border-r border-white/5",
           "transition-transform duration-300 ease-out",
-          mobileOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full",
+          mobileOpen ? "flex translate-x-0 shadow-2xl" : "hidden -translate-x-full lg:flex",
           "lg:translate-x-0 lg:shadow-none"
         )}
       >
         {/* Brand */}
-        <div className="px-5 pt-[calc(1.25rem+env(safe-area-inset-top))] lg:pt-5 pb-3 border-b border-white/5">
+        <div className="shrink-0 px-5 pt-[calc(1.25rem+env(safe-area-inset-top))] lg:pt-5 pb-3 border-b border-white/5">
           <div className="flex items-center gap-2">
             <div className={cn("h-9 w-9 rounded-lg grid place-items-center font-bold text-black", `bg-${accent}`)}>
               A
@@ -273,7 +280,7 @@ export function AppSidebar() {
         </div>
 
         {/* User strip */}
-        <div className="px-5 py-3 border-b border-white/5">
+        <div className="shrink-0 px-5 py-3 border-b border-white/5">
           <div className="flex items-center gap-3">
             <div className="h-9 w-9 shrink-0 overflow-hidden rounded-full bg-averna-primary/30 grid place-items-center text-white text-sm font-semibold ring-1 ring-white/10">
               {image ? (
@@ -291,7 +298,7 @@ export function AppSidebar() {
         </div>
 
         {/* Sections */}
-        <nav className="px-3 py-4 space-y-5 pb-[calc(2rem+env(safe-area-inset-bottom))]">
+        {role === "STUDENT" || !role ? <StudentSidebarSections sections={sections} current={current} /> : <nav className="sidebar-scroll min-h-0 flex-1 overflow-y-auto px-3 py-4 space-y-5 pb-[calc(2rem+env(safe-area-inset-bottom))]">
           {sections.map((section) => (
             <div key={section.label}>
               <div className="sidebar-label px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
@@ -331,7 +338,7 @@ export function AppSidebar() {
               </div>
             </div>
           ))}
-        </nav>
+        </nav>}
       </aside>
 
       {/* Mobile bottom tab bar — the 5 most-used destinations of this role */}

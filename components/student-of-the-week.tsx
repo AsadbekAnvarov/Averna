@@ -1,8 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Crown } from "lucide-react";
 import { db } from "@/lib/db";
-import { getLevelInfo, initialsOf } from "@/lib/utils";
-import { avatarSrc } from "@/lib/avatars";
+import { getLevelInfo } from "@/lib/utils";
+import { StudentOfTheWeekCard } from "@/components/student-of-the-week-card";
 
 /**
  * Highlights the student who earned the most points over the last 7 days.
@@ -50,32 +48,6 @@ export async function StudentOfTheWeek() {
   if (!student) return null;
 
   const lvl = getLevelInfo(student.totalPoints);
-  const initials = initialsOf(student.user.name);
-
-  return (
-    <Card className="glass border-yellow-400/40 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-transparent" />
-      <CardContent className="relative py-5">
-        <div className="flex items-center gap-2 text-yellow-400 mb-3">
-          <Crown className="h-5 w-5" />
-          <span className="text-sm font-semibold uppercase tracking-wide">Student of the Week</span>
-        </div>
-        <div className="flex items-center gap-3">
-          {avatarSrc(student.user.image) ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={avatarSrc(student.user.image)!} alt={student.user.name ?? "student"} className="h-14 w-14 rounded-full object-cover border-2 border-yellow-400/60" />
-          ) : (
-            <div className="h-14 w-14 rounded-full flex items-center justify-center font-bold text-white bg-yellow-500/30 border-2 border-yellow-400/60">
-              {initials}
-            </div>
-          )}
-          <div className="min-w-0">
-            <p className="text-white font-bold truncate">{student.user.name ?? "Student"} 🏆</p>
-            <p className="text-xs text-averna-cyan">Lvl {lvl.level} · {lvl.title}</p>
-            <p className="text-xs text-yellow-300 font-semibold mt-0.5">+{weeklyPoints} pts this week</p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
+  return <StudentOfTheWeekCard name={student.user.name} image={student.user.image}
+    level={lvl.level} title={lvl.title} points={weeklyPoints} weekly={!!topStudentId} />;
 }

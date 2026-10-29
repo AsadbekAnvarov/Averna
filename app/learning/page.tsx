@@ -213,7 +213,7 @@ export default async function LearningCenterPage() {
         <Reveal>
           <SectionHeader icon={Target} title="Choose a skill" subtitle="Full exam papers or short, focused practice" accent="text-averna-neon" />
         </Reveal>
-        <RevealGroup as="ul" role="list" className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <RevealGroup as="ul" role="list" className="av-card-grid mb-6 grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2">
           {skills.map((s) => (
             <SkillLibraryCard key={s.skill} data={s} />
           ))}
@@ -229,7 +229,7 @@ export default async function LearningCenterPage() {
             <FirstRunGuide name={session.user.name} />
           </Reveal>
         ) : (
-          <Reveal className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <Reveal className="av-card-grid mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
             <Suspense fallback={<WidgetSkeleton rows={3} />}>
               <BandProgress studentId={student.id} targetBand={student.targetBand} />
             </Suspense>
@@ -251,7 +251,7 @@ export default async function LearningCenterPage() {
         <Reveal>
           <SectionHeader icon={Sparkles} title="Also Practise" subtitle="Round out your English beyond the four skills" accent="text-averna-purple" />
         </Reveal>
-        <RevealGroup as="ul" role="list" className="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <RevealGroup as="ul" role="list" className="av-card-grid mb-8 grid auto-rows-fr grid-cols-2 gap-3 lg:grid-cols-4">
           {ALSO.map((s) => (
             <li key={s.href}>
               <Tile item={s} />
@@ -262,7 +262,7 @@ export default async function LearningCenterPage() {
         <Reveal>
           <SectionHeader icon={Trophy} title="Tests & Tools" subtitle="Exams, guides and AI help" accent="text-averna-neon" />
         </Reveal>
-        <RevealGroup as="ul" role="list" className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <RevealGroup as="ul" role="list" className="av-card-grid grid auto-rows-fr grid-cols-2 gap-3 lg:grid-cols-4">
           {TESTS.map((t) => (
             <li key={t.href}>
               <Tile item={t} />

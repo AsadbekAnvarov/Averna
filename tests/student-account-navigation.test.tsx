@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -72,15 +73,18 @@ describe("student account without Billing", () => {
 
 
 describe("discoverable student Adventures", () => {
-  it("gives Today a clearly labelled direct link without waiting for class sharing", () => {
+  it("keeps Adventures off the dashboard while leaving the Studio entry available", () => {
+    const source = readFileSync("components/dashboard/tab-panels.tsx", "utf8");
+    expect(source).not.toContain("<AdventuresEntry");
+    expect(source).toContain('group="practice" exclude="adventures"');
     render(<AdventuresEntry />);
-    expect(screen.getByRole("heading", { name: "Adventures" })).toBeTruthy();
-    expect(screen.getByRole("link", { name: "Explore Adventures" }).getAttribute("href")).toBe("/studio/adventures");
+    expect(screen.getByRole("link", {name: "Explore Adventures"}).getAttribute("href")).toBe("/studio/adventures");
   });
   it("shows a direct student menu entry on desktop and in the phone drawer", () => {
     const { container } = render(<AppSidebar />);
     expect(container.querySelector('a[href="/studio/adventures"]')).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "Open navigation" }));
+    fireEvent.click(screen.getByRole("button", { name: "Practice & games" }));
     expect(screen.getByRole("link", { name: /Adventures/ }).getAttribute("href")).toBe("/studio/adventures");
   });
   it("highlights Adventures on child routes, not its parent Studio", () => {

@@ -1240,3 +1240,21 @@ html.light .account-link-form input::placeholder { color: #475569; }
 }
 .exam-shell .glow-cta, .exam-shell .glow-hover { box-shadow: none; }
 .exam-shell [role="separator"]:focus-visible { outline: 2px solid rgb(var(--c-averna-neon)); outline-offset: -2px; }
+
+/* Matched widget/tile grids. Opt-in only: exam panes, tables and forms stay content-sized. */
+.av-card-grid { align-items: stretch; }
+.av-card-grid > * { min-width: 0; }
+.av-card-grid .av-card { border-radius: 1rem; }
+@media (min-width: 768px) {
+  .av-card-grid > * { height: 100%; }
+  .av-card-grid > * > .av-card:only-child,
+  .av-card-grid > * > .av-panel:only-child { height: 100%; }
+  .av-card-grid-feature > .av-card { min-height: 320px; }
+}
+/* Calm, narrow rail scrollbar instead of the page's bright decorative thumb. */
+.sidebar-scroll { scrollbar-width: thin; scrollbar-color: rgba(148,163,184,.3) transparent; }
+.sidebar-scroll::-webkit-scrollbar { width: 5px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: rgba(148,163,184,.3); border-radius: 8px; }
+.sidebar-scroll::-webkit-scrollbar-thumb:hover { background: rgba(148,163,184,.5); }
+.av-card-grid .glass:hover { transform: none; }

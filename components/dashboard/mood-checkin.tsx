@@ -68,7 +68,7 @@ export function MoodCheckin() {
 
   return (
     <Card className="glass border-averna-purple/30">
-      <CardContent className="p-5">
+      <CardContent className="flex h-full flex-col justify-center p-5">
         {picked === null ? (
           <>
             <p className="text-sm font-semibold text-white mb-3">How are you feeling today?</p>
