@@ -28,6 +28,7 @@ import { toClientListening } from "../sanitize";
 import type { ClientListeningTest, ExamListeningTest } from "../types";
 import { partAudioHash, wholeRecordingHash, suppliedPartRecordingHash } from "./hash";
 import { sanitizeTimeline } from "./timeline";
+import { privateMediaUrl } from "./private-media";
 
 export interface ReadyRow {
   testId?: string;
@@ -46,7 +47,11 @@ export function listeningAudioEnabled(): boolean {
 export function listeningClientContent(test: ExamListeningTest): Promise<ClientListeningTest>;
 export function listeningClientContent(test: ExamListeningTest, options: { recordingsOnly: true; rows?: ReadyRow[] }): Promise<ClientListeningTest | null>;
 export async function listeningClientContent(test: ExamListeningTest, options?: { recordingsOnly: true; rows?: ReadyRow[] }): Promise<ClientListeningTest | null> {
-  const rawBase = toClientListening(test);
+  const sanitized = toClientListening(test);
+  // Keep stored content and recording fingerprints intact; only browser media URLs change.
+  const rawBase = { ...sanitized, parts: sanitized.parts.map(p => ({ ...p, groups: p.groups.map(g => ({ ...g,
+    ...(g.images ? { images: g.images.map(image => ({ ...image, url: privateMediaUrl(image.url) })) } : {}),
+  })) })) };
   // Imported whole-file papers never substitute speech synthesis when missing.
   const base = test.recordingMode === "whole"
     ? { ...rawBase, parts: rawBase.parts.map(p => ({ ...p, script: [] })) }
@@ -72,9 +77,9 @@ export async function listeningClientContent(test: ExamListeningTest, options?: 
           const hash = suppliedPartRecordingHash(test, i);
           const clip = rows.find(r => r.partIndex === i);
           const ready = hash && clip && clip.scriptHash === hash && typeof clip.url === "string" && clip.url.startsWith("https://") && Number.isFinite(clip.durationMs) && clip.durationMs > 0;
-          return { ...p, script: [], ...(ready ? { audio: {url: clip.url!, durationMs: clip.durationMs, timeline: []} } : {}) };
+          return { ...p, script: [], ...(ready ? { audio: {url: privateMediaUrl(clip.url!), durationMs: clip.durationMs, timeline: []} } : {}) };
         }),
-        fullRecording: { url: row.url, durationMs: row.durationMs, timeline: [] },
+        fullRecording: { url: privateMediaUrl(row.url), durationMs: row.durationMs, timeline: [] },
       };
     }
     const model = TTS_MODEL();
@@ -87,7 +92,7 @@ export async function listeningClientContent(test: ExamListeningTest, options?: 
         return {
           ...p,
           script: [],
-          audio: { url: row.url, durationMs: row.durationMs, timeline: sanitizeTimeline(row.timeline, row.durationMs) },
+          audio: { url: privateMediaUrl(row.url), durationMs: row.durationMs, timeline: sanitizeTimeline(row.timeline, row.durationMs) },
         };
       }),
     };

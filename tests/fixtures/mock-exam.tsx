@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import { createRoot } from "react-dom/client";
 import MockResultPage from "@/app/learning/mock-exam/result/[attemptId]/page";
 import MockHubPage from "@/app/learning/mock-exam/page";
+import { ListeningExamRunner } from "@/components/exam/listening-exam-runner";
 import { ReadingExamRunner } from "@/components/exam/reading-exam-runner";
 import WritingEditor from "@/components/learning/writing-editor";
 import { TeacherSpeakingPractice } from "@/components/learning/teacher-speaking-practice";
@@ -33,6 +34,7 @@ function App(){const [v,setView]=useState(view); refresh=()=>{(window as any).__
 const root=createRoot(document.getElementById("root")!);
 if(kind==="result") void MockResultPage({params:Promise.resolve({attemptId:"synthetic-mock"})}).then(node=>root.render(<ThemeProvider>{node}</ThemeProvider>));
 else if(kind==="hub") void MockHubPage().then(node=>root.render(<ThemeProvider>{node}</ThemeProvider>));
+else if(kind === "listening-practice") root.render(<ThemeProvider><ListeningExamRunner test={listening} mode="practice" attemptId="synthetic-listening-practice" exitHref="/learning/listening" /></ThemeProvider>);
 else if(kind === "reading-practice" || kind === "reading-scope-mock") root.render(<ThemeProvider><ReadingExamRunner test={reading} mode={kind === "reading-practice" ? "practice" : "mock"} partIndex={1} attemptId="synthetic-passage-two" exitHref="/learning/reading" onSubmit={kind === "reading-scope-mock" ? async () => {} : undefined} /></ThemeProvider>);
 else if(kind === "writing-practice" || kind === "writing-practice-task1") { const task=kind.endsWith("task1") ? "task1" : "task2"; root.render(<ThemeProvider><WritingEditor prompt={WRITING_SEED[task][0]} config={{title:"Writing practice",timeLimit:task === "task1" ? 20 : 40,wordCount:task === "task1" ? 150 : 250,type:task}} userId="synthetic-user" /></ThemeProvider>); }
 else if(kind === "speaking-practice") root.render(<ThemeProvider><TeacherSpeakingPractice /></ThemeProvider>);
