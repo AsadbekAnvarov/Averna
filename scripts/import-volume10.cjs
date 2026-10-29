@@ -30,13 +30,13 @@ function verifyPaper(t){
  const otherPapers=await db.generatedTest.findMany({where:{module:{in:['READING','LISTENING']}},select:{id:true,data:true}});
  for(const row of otherPapers)if(!ids.has(row.id)&&manifest.items.some(t=>t.imported.sourceSha256===row.data?.imported?.sourceSha256))throw Error('Source already imported under another ID: '+row.id);
  const inventory=await db.generatedTest.groupBy({by:['module','published'],_count:{_all:true}});console.log('Volume 10 pre-import inventory:',JSON.stringify(inventory));
- const {put,head}=await import('@vercel/blob');const media={};
+ const {put,head,BlobNotFoundError}=await import('@vercel/blob');const media={};
  for(const asset of manifest.assets){
   if(!/^[a-z0-9-]+\.(mp3|png)$/.test(asset.file))throw Error('Unsafe asset path');
   const body=fs.readFileSync(path.join(directory,asset.file));if(sha(body)!==asset.sha256||body.length!==asset.bytes)throw Error('Asset integrity mismatch');
   const pathname=`cdi/volume10/${asset.sha256.slice(0,20)}/${asset.file}`;
   const url=`https://f7j1xfnfh8uscyie.public.blob.vercel-storage.com/${pathname}`;
-  let stored;try{stored=await head(url);}catch(e){if(e?.status!==404&&e?.name!=='BlobNotFoundError')throw e;}
+  let stored;try{stored=await head(url);}catch(e){if(e?.status!==404&&!(e instanceof BlobNotFoundError))throw e;}
   if(stored){if(stored.size!==asset.bytes)throw Error('Existing asset differs');media[asset.file]=stored.url;}
   else {const result=await put(pathname,body,{access:'public',addRandomSuffix:false,allowOverwrite:false,contentType:asset.file.endsWith('.mp3')?'audio/mpeg':'image/png',multipart:body.length>5*1024*1024});media[asset.file]=result.url;}
   console.log('Verified media:',asset.file,asset.bytes);
