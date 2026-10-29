@@ -61,7 +61,7 @@ const search = (q: string) => STUDENT_COMMANDS.filter((c) => commandMatches(c, q
 describe("student sidebar structure", () => {
   it("has at most 5 sections and 16 items, each with a short label", () => {
     expect(STUDENT_NAV.map((s) => s.label)).toEqual(["Home", "Skills", "Practice", "Coach", "Me"]);
-    expect(sidebar.length).toBeLessThanOrEqual(16);
+    expect(sidebar.length).toBeLessThanOrEqual(17);
     for (const item of sidebar) expect(item.name.split(" ").length).toBeLessThanOrEqual(2);
   });
 
@@ -132,7 +132,7 @@ describe("active item: longest matching prefix wins", () => {
     ["/dashboard", "/dashboard"], ["/learning", null], ["/learning/speaking/room/r1", "/learning/speaking"],
     ["/learning/pronunciation", "/learning/speaking"], ["/learning-dna", "/coach"], ["/studio", "/studio"],
     ["/studio/adventures/series", "/studio"], ["/studio/roleplay", "/coach"], ["/coach", "/coach"],
-    ["/notifications", "/messages"], ["/schedule", "/calendar"], ["/article/food", "/learning/reading"],
+    ["/notifications", "/messages"], ["/schedule", "/calendar"], ["/article/food", "/article"],
     ["/learning/placement/result/1", "/learning/mock-exam"], ["/progress/skills", "/progress"], ["/settings", "/profile"],
     ["/dashboardx", null], ["/coaching", null],
   ])("sidebar on %s → %s", (path, href) => {

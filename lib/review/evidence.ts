@@ -434,16 +434,35 @@ export function questionQuery(group: ExamGroup, q: ExamQuestion, item?: GradeIte
  */
 export function partEvidence(part: ReadingPart | ListeningPart, items: Map<number, GradeItem>): Record<number, EvidenceSpan> {
   const { texts, labels } = evidenceTexts(part);
+  const marked = "script" in part ? markedSpans(part) : new Map<number, EvidenceSpan>();
   const out: Record<number, EvidenceSpan> = {};
   for (const g of part.groups) {
     for (const q of g.questions) {
       const it = items.get(q.n);
       if (it?.correct) continue;
-      const span = locateEvidence(texts, { ...questionQuery(g, q, it), labels });
+      // The source's own answer marker first (imported transcripts), then the text search.
+      const span = marked.get(q.n) ?? locateEvidence(texts, { ...questionQuery(g, q, it), labels });
       if (span) out[q.n] = span;
     }
   }
   return out;
+}
+
+/** Answer markers of an imported transcript (ScriptLine.marks) → the first marked span per question. */
+function markedSpans(part: ListeningPart): Map<number, EvidenceSpan> {
+  const out = new Map<number, EvidenceSpan>();
+  part.script.forEach((line, i) => {
+    for (const m of line.marks ?? []) {
+      if (!(m.end > m.start) || m.start < 0 || m.end > line.text.length) continue;
+      for (const n of m.n) if (!out.has(n)) out.set(n, { paragraphIndex: i, start: m.start, end: m.end, source: "quote" });
+    }
+  });
+  return out;
+}
+
+/** "Hear it" for an answer window of a whole recording: 2 s of lead-in, stop at the window's end. */
+export function hearRange(w: { startMs: number; endMs: number }): { fromMs: number; untilMs: number } {
+  return { fromMs: Math.max(0, w.startMs - HEAR_LEAD_SECONDS * 1000), untilMs: w.endMs };
 }
 
 // ---------------------------------------------------------------------------

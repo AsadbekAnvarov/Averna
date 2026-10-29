@@ -40,6 +40,13 @@ export interface AudioFilePlayerOptions {
   startMs?: number;
   /** Stop here instead of at the end of the file. */
   endAtMs?: number;
+  /**
+   * Play only [startMs, endMs) of the file (one part of a whole recording when a
+   * frame-exact clip couldn't be built). Every position of this API (startMs,
+   * seek, snapshot, durationMs, endAtMs) is then relative to the window start,
+   * and durationMs should be the window length.
+   */
+  window?: { startMs: number; endMs: number };
   rate?: number;
   /** Exam conditions: lock-screen / headset controls can't pause or seek. */
   lockControls?: boolean;
@@ -124,10 +131,13 @@ export class AudioFilePlayer {
   private watchdog: number | null = null;
   private endTimer: number | null = null;
   private readonly detach: (() => void)[] = [];
+  /** Window start in the file (ms); 0 without a window. */
+  private readonly off: number;
 
   constructor(el: HTMLAudioElement, opts: AudioFilePlayerOptions) {
     this.el = el;
     this.opts = opts;
+    this.off = opts.window ? Math.max(0, opts.window.startMs) : 0;
     this.pos = this.clamp(opts.startMs ?? 0);
     const on = (type: string, fn: () => void) => {
       el.addEventListener(type, fn);
@@ -229,7 +239,7 @@ export class AudioFilePlayer {
     this.lastAdvanceAt = Date.now();
     if (this.el.readyState >= 1) {
       try {
-        this.el.currentTime = target / 1000;
+        this.el.currentTime = (target + this.off) / 1000;
         this.pendingSeek = null;
       } catch {
         this.pendingSeek = target;
@@ -279,8 +289,14 @@ export class AudioFilePlayer {
 
   // ---- internals -----------------------------------------------------------
 
+  /** Where playback stops (relative): endAtMs, else the window length with a window. */
+  private get endAt(): number | undefined {
+    if (this.opts.endAtMs != null) return this.opts.endAtMs;
+    return this.opts.window ? Math.max(0, this.opts.window.endMs - this.opts.window.startMs) : undefined;
+  }
+
   private clamp(ms: number): number {
-    const end = this.opts.endAtMs ?? this.opts.durationMs;
+    const end = this.endAt ?? this.opts.durationMs;
     return Math.max(0, Math.min(Number.isFinite(ms) ? ms : 0, Math.max(0, end - 250)));
   }
 
@@ -311,14 +327,14 @@ export class AudioFilePlayer {
   private capture(): void {
     if (this.pendingSeek != null) return;
     const t = this.el.currentTime;
-    if (Number.isFinite(t)) this.pos = t * 1000;
+    if (Number.isFinite(t)) this.pos = Math.max(0, t * 1000 - this.off);
   }
 
   private buffered(): number {
     try {
       const b = this.el.buffered;
-      const t = this.pos / 1000;
-      for (let i = 0; i < b.length; i++) if (b.start(i) <= t + 0.5 && b.end(i) >= t) return b.end(i) * 1000;
+      const t = (this.pos + this.off) / 1000;
+      for (let i = 0; i < b.length; i++) if (b.start(i) <= t + 0.5 && b.end(i) >= t) return Math.max(0, b.end(i) * 1000 - this.off);
     } catch {
       /* ignore */
     }
@@ -328,7 +344,7 @@ export class AudioFilePlayer {
   private applySeek(): void {
     if (this.disposed || this.el.readyState < 1) return;
     if (this.pendingSeek != null) {
-      const target = this.pendingSeek / 1000;
+      const target = (this.pendingSeek + this.off) / 1000;
       try {
         if (Math.abs(this.el.currentTime - target) > 0.05) this.el.currentTime = target;
         this.pendingSeek = null;
@@ -340,7 +356,7 @@ export class AudioFilePlayer {
     }
     // iOS can drop a seek made right after loadedmetadata and start from 0: apply it again.
     const t = this.seekTarget;
-    if (t != null && this.el.currentTime < 0.5) {
+    if (t != null && this.el.currentTime < this.off / 1000 + 0.5) {
       try {
         this.el.currentTime = t;
       } catch {
@@ -384,7 +400,7 @@ export class AudioFilePlayer {
     if (this.disposed || this.done) return;
     if (this.seekTarget != null && this.el.currentTime >= this.seekTarget - 1) this.seekTarget = null;
     this.capture();
-    const end = this.opts.endAtMs;
+    const end = this.endAt;
     if (end != null) {
       if (this.pos >= end) {
         this.finish();
@@ -457,7 +473,7 @@ export class AudioFilePlayer {
       this.endTimer = null;
       if (this.disposed || this.done) return;
       this.capture();
-      const end = this.opts.endAtMs;
+      const end = this.endAt;
       if (end == null) return;
       if (this.pos >= end - 120) this.finish();
       else if (!this.el.paused) this.armEndTimer((end - this.pos) / Math.max(0.25, this.el.playbackRate || 1));

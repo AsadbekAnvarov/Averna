@@ -8,6 +8,8 @@ import { findAward } from "@/lib/engine/xp-engine";
 import { getListeningExam } from "@/lib/ielts/catalog";
 import { listeningClientContent } from "@/lib/ielts/audio/client";
 import { resolvePartIndex } from "@/lib/ielts/submit";
+import { resolvePracticePart } from "@/lib/ielts/parts";
+import { getVerifiedSegments } from "@/lib/ielts/segments-store";
 import { examHomeworkFor } from "@/lib/homework/exam-homework";
 import { ListeningExamRunner } from "@/components/exam/listening-exam-runner";
 
@@ -76,8 +78,12 @@ export default async function ListeningTestPage(
   const test = await getListeningExam(safeDecode(params.testId));
   if (!test || test.source === "averna") return redirect(LIBRARY);
 
-  // No guessed part boundaries for an uncut supplied recording.
-  const part = test.recordingMode === "whole" ? null : resolvePartIndex(test, firstParam(searchParams.part));
+  // A whole recording plays one part only once staff have verified its boundaries (fresh read).
+  const whole = test.recordingMode === "whole";
+  const segments = whole ? await getVerifiedSegments(test) : null;
+  const part = whole
+    ? resolvePracticePart(test, firstParam(searchParams.part), !!segments)
+    : resolvePartIndex(test, firstParam(searchParams.part));
   // Exam homework: only kept when it really is this student's homework for this paper / part.
   const hwParam = firstParam(searchParams.hw);
   const student = hwParam
@@ -93,7 +99,7 @@ export default async function ListeningTestPage(
 
   return (
     <ListeningExamRunner
-      test={await listeningClientContent(test)}
+      test={await listeningClientContent(test, { segmentPart: segments && part != null ? { index: part, segments } : null })}
       partIndex={part ?? undefined}
       mode="practice"
       attemptId={attempt}

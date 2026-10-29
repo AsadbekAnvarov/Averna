@@ -15,7 +15,7 @@ Shared tracker for the `feat/elegance-roadmap` branch. One commit per idea, work
 
 ### 9 — Simpler navigation (done)
 
-Student sidebar went from 31 items in 5 overlapping groups to 16 items in Home · Skills · Practice · Coach · Me (data in `components/layout/portal-navigation.ts`, longest-prefix highlighting incl. hub children).
+Student sidebar went from 31 items in 5 overlapping groups to 17 items in Home · Skills · Practice · Coach · Me (Articles is back in Skills, right after Reading) (data in `components/layout/portal-navigation.ts`, longest-prefix highlighting incl. hub children).
 New `/coach` hub gathers AI Examiner, AI Mentor, Averna AI, Essay X-Ray, Roleplay, Learning DNA, Speaking partner and 1-on-1 tutoring; the phone tab bar is Home · Skills · Practice · Coach · Me.
 Pages that left the sidebar are linked from their hub (Studio, Learning Center, Speaking, Calendar, Profile, Inbox) and found in ⌘K by name or synonym; "New" badges expire on `NEW_BADGE_UNTIL`.
 

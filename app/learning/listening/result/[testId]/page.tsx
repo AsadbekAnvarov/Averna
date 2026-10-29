@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { getListeningExam } from "@/lib/ielts/catalog";
+import { getListeningExamForAttempt } from "@/lib/ielts/catalog-attempt";
 import { ObjectiveResult } from "@/components/exam/results/objective-result";
 import { parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
 import { canViewStudent } from "@/lib/access";
@@ -51,7 +51,8 @@ export default async function ListeningResultPage(props: { params: Promise<{ tes
   if (attempt.skill !== "LISTENING") return redirect(resultHref(attempt.skill, row.id));
 
   const [exam, xp, homeworkNotice] = await Promise.all([
-    getListeningExam(attempt.examId),
+    // Published or not: a paper taken offline keeps its review (17.6).
+    getListeningExamForAttempt(attempt.examId),
     xpForTest(student.id, row.id),
     // Open homework for this paper / part that this attempt didn't complete (owner only).
     viewerIsOwner ? homeworkNoticeFor(student.id, row) : Promise.resolve(null),
@@ -73,6 +74,7 @@ export default async function ListeningResultPage(props: { params: Promise<{ tes
       studentName={student.user?.name ?? undefined}
       homeworkNotice={homeworkNotice}
       audio={audio}
+      windows={audio && exam?.recordingMode === "whole" ? exam.evidenceWindows : undefined}
     />
   );
 }
@@ -81,6 +83,8 @@ export default async function ListeningResultPage(props: { params: Promise<{ tes
 async function partRecordings(exam: ExamListeningTest): Promise<(ListeningPartAudio | undefined)[] | undefined> {
   try {
     const client = await listeningClientContent(exam);
+    // One whole recording: every part reviews against the complete file (positions from its start).
+    if (client.fullRecording) return client.parts.map(() => client.fullRecording);
     const out = client.parts.map((p) => p.audio);
     return out.some(Boolean) ? out : undefined;
   } catch {

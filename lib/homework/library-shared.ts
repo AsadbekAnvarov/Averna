@@ -189,6 +189,8 @@ export interface LibraryObjective {
   kinds: GroupKind[];
   topics: string[];
   parts: LibraryPart[];
+  /** Parts can be set one at a time (Reading always; Listening per-part files or a verified whole recording). */
+  splittable?: boolean;
 }
 
 export interface LibraryWriting {
@@ -218,6 +220,18 @@ export interface HomeworkLibrary {
   speaking: LibrarySpeaking[];
 }
 
+/** Same rule as canPractiseParts (lib/ielts/parts): a whole recording splits only with verified boundaries. */
+function canPractiseParts(s: Pick<ExamTestSummary, "partInfo" | "recordingMode" | "splittable">): boolean {
+  return s.partInfo.length > 1 && (s.recordingMode !== "whole" || s.splittable === true);
+}
+
+/** Same rule as listeningPartMinutes (lib/ielts/parts): a verified segment's length + 1 minute to check. */
+function listeningPartMinutes(s: Pick<ExamTestSummary, "partInfo" | "timeLimit">, part: number): number {
+  const ms = s.partInfo[part]?.durationMs;
+  if (typeof ms === "number" && ms > 0) return Math.ceil(ms / 60000) + 1;
+  return Math.max(1, Math.round(s.timeLimit / Math.max(1, s.partInfo.length)));
+}
+
 function partMinutes(s: Pick<ExamTestSummary, "skill" | "timeLimit" | "parts">): number {
   if (s.skill === "READING") return READING_PASSAGE_MINUTES;
   // Listening: whole = Σ parts + 2 min checking; one part carries ~1 min of its own.
@@ -238,13 +252,15 @@ export function toLibraryObjective(s: ExamTestSummary): LibraryObjective {
     source: s.source,
     kinds: s.kinds,
     topics: (s.topics ?? []).slice(0, 6),
-    parts: s.partInfo.map((p) => ({
+    parts: s.partInfo.map((p, i) => ({
       title: p.title,
       from: p.from,
       to: p.to,
       questions: p.to > 0 ? p.to - p.from + 1 : 0,
-      minutes,
+      // A verified part of a whole recording: its own length + 1 minute to check.
+      minutes: s.skill === "LISTENING" && s.recordingMode === "whole" && s.splittable ? listeningPartMinutes(s, i) : minutes,
     })),
+    splittable: s.skill === "READING" ? s.partInfo.length > 1 : canPractiseParts(s),
   };
 }
 
@@ -274,7 +290,7 @@ export function scopeOptions(kind: "READING" | "LISTENING", item: LibraryObjecti
     minutes: item.minutes,
     range: to > 0 ? `Questions ${from}–${to}` : null,
   };
-  if (item.parts.length <= 1) return [whole];
+  if (item.parts.length <= 1 || item.splittable === false) return [whole];
   return [
     whole,
     ...item.parts.map((p, i): ScopeOption => {

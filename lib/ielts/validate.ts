@@ -306,7 +306,8 @@ export function validateListeningPart(raw: unknown, where: string, report: Valid
       report.errors.push(`${where} line ${i + 1}: needs speaker and text`);
       continue;
     }
-    if (l.speaker !== "Narrator" && !names.has(l.speaker)) report.errors.push(`${where} line ${i + 1}: unknown speaker "${l.speaker}"`);
+    // A supplied recording is never voiced: its transcript keeps the source's speaker labels as they are.
+    if (!suppliedRecording && l.speaker !== "Narrator" && !names.has(l.speaker)) report.errors.push(`${where} line ${i + 1}: unknown speaker "${l.speaker}"`);
   }
   const words = p.script.reduce((n, l) => n + wordCount(String(l?.text ?? "")), 0);
   if (words < 350) report.warnings.push(`${where}: script is short (${words} words; parts run ~500–900)`);

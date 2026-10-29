@@ -25,7 +25,8 @@
 import { db } from "@/lib/db";
 import { TTS_MODEL } from "@/lib/openai-audio";
 import { toClientListening } from "../sanitize";
-import type { ClientListeningTest, ExamListeningTest } from "../types";
+import type { ClientListeningTest, ClientSegment, ExamListeningTest } from "../types";
+import type { StoredSegments } from "../segments";
 import { partAudioHash, wholeRecordingHash } from "./hash";
 import { sanitizeTimeline } from "./timeline";
 
@@ -43,9 +44,18 @@ export function listeningAudioEnabled(): boolean {
   return String(process.env.LISTENING_AUDIO ?? "").trim().toLowerCase() !== "off";
 }
 
-export function listeningClientContent(test: ExamListeningTest): Promise<ClientListeningTest>;
+/** Practice of one part of a whole recording with verified boundaries. */
+export interface SegmentPartOption {
+  index: number;
+  segments: StoredSegments;
+}
+
+export function listeningClientContent(test: ExamListeningTest, options?: { segmentPart?: SegmentPartOption | null }): Promise<ClientListeningTest>;
 export function listeningClientContent(test: ExamListeningTest, options: { recordingsOnly: true; rows?: ReadyRow[] }): Promise<ClientListeningTest | null>;
-export async function listeningClientContent(test: ExamListeningTest, options?: { recordingsOnly: true; rows?: ReadyRow[] }): Promise<ClientListeningTest | null> {
+export async function listeningClientContent(
+  test: ExamListeningTest,
+  options?: { recordingsOnly?: true; rows?: ReadyRow[]; segmentPart?: SegmentPartOption | null },
+): Promise<ClientListeningTest | null> {
   const rawBase = toClientListening(test);
   // Imported whole-file papers never substitute speech synthesis when missing.
   const base = test.recordingMode === "whole"
@@ -66,6 +76,28 @@ export async function listeningClientContent(test: ExamListeningTest, options?: 
       if (!row || typeof row.url !== "string" || !row.url.startsWith("https://") ||
           !Number.isFinite(row.durationMs) || row.durationMs <= 0 ||
           row.scriptHash !== wholeRecordingHash(test)) return options?.recordingsOnly ? null : base;
+      const seg = options?.segmentPart;
+      const part = seg ? seg.segments.parts[seg.index] : undefined;
+      if (seg && part && !options?.recordingsOnly) {
+        // One verified part: only its byte range plays (no fullRecording, so the runner stays in part mode).
+        const segment: ClientSegment = {
+          startMs: part.startMs,
+          endMs: part.endMs,
+          frameStart: part.frameStart,
+          frameEnd: part.frameEnd,
+          byteStart: part.byteStart,
+          byteEnd: part.byteEnd,
+          sampleRate: seg.segments.sampleRate,
+          samplesPerFrame: seg.segments.samplesPerFrame,
+          sourceDurationMs: row.durationMs,
+        };
+        return {
+          ...base,
+          parts: base.parts.map((p, i) => i === seg.index
+            ? { ...p, script: [], audio: { url: row.url!, durationMs: part.endMs - part.startMs, timeline: [], segment } }
+            : { ...p, script: [] }),
+        };
+      }
       return {
         ...base,
         parts: base.parts.map(p => ({ ...p, script: [] })),

@@ -218,7 +218,7 @@ function mainDataBegin(b: Uint8Array, at: number, h: Mp3FrameHeader): number {
 const MAX_LEADING_DROPS = 20;
 
 /** A header frame of an encoder (not audio): "xing" | "info" | "lame" | "vbri", else null. */
-function tagOf(b: Uint8Array, at: number, h: Mp3FrameHeader): string | null {
+export function tagOf(b: Uint8Array, at: number, h: Mp3FrameHeader): string | null {
   for (const o of tagOffsets(h)) {
     if (o + 4 > h.frameLength) continue;
     if (ascii(b, at + o, "Xing")) return "xing";

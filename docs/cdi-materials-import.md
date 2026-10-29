@@ -27,3 +27,6 @@ Keep source archive, question keys, manifest, credentials and uploads outside th
 
 - `npm test`, `npx tsc --noEmit`, `npm run lint`, `npm run build`.
 - With esbuild/playwright available: `node e2e/imported-recordings.cjs` (local Chromium). It checks mobile/desktop whole playback, navigation without restart, clock transition, no transcript fallback and overflow/errors. This is not certification of physical phones or a live teacher interview.
+
+## Volume 10
+The 8 Reading and 6 Listening papers of Volume 10 have their own offline importer and owner steps: [cdi-volume-10-import.md](cdi-volume-10-import.md).

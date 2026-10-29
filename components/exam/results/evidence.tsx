@@ -42,7 +42,8 @@ interface Active {
 }
 
 interface Player {
-  playFrom(seconds: number): void;
+  /** Play from `seconds`; with `until`, stop there (seconds from the start of the file). */
+  playFrom(seconds: number, until?: number | null): void;
   pause(): void;
 }
 
@@ -58,7 +59,7 @@ interface ScopeValue {
   markRef: MutableRefObject<HTMLElement | null>;
   registerPlayer(player: Player | null): void;
   hasPlayer: boolean;
-  hear(n: number, seconds: number): void;
+  hear(n: number, seconds: number, until?: number | null): void;
   stop(): void;
   playing: number | null;
   setPlaying(n: number | null): void;
@@ -132,11 +133,11 @@ export function EvidenceScope({
     setHasPlayer(!!p);
   }, []);
 
-  const hear = useCallback((n: number, seconds: number) => {
+  const hear = useCallback((n: number, seconds: number, until?: number | null) => {
     const p = playerRef.current;
     if (!p) return;
     const from = hearFrom(seconds);
-    p.playFrom(from);
+    p.playFrom(from, until);
     setPlaying(n);
     setMessage(`Playing question ${n} from ${clock(from)}`);
   }, []);
@@ -425,7 +426,18 @@ function EvidenceSheet() {
 // Per question: Show in text / Hide · Hear it
 // ---------------------------------------------------------------------------
 
-export function EvidenceActions({ n, span, seconds = null }: { n: number; span: EvidenceSpan | null; seconds?: number | null }) {
+export function EvidenceActions({
+  n,
+  span,
+  seconds = null,
+  until = null,
+}: {
+  n: number;
+  span: EvidenceSpan | null;
+  seconds?: number | null;
+  /** Stop at this time (s): the end of the question's answer window. */
+  until?: number | null;
+}) {
   const { doc, active, show, hide, hasPlayer, hear, stop, playing } = useScope();
   const shown = active?.n === n;
   const canHear = seconds != null && hasPlayer;
@@ -437,7 +449,7 @@ export function EvidenceActions({ n, span, seconds = null }: { n: number; span: 
       {canHear && (
         <button
           type="button"
-          onClick={() => (playing === n ? stop() : hear(n, seconds!))}
+          onClick={() => (playing === n ? stop() : hear(n, seconds!, until))}
           className={cn(ACTION_BTN, "border-averna-purple/35 bg-averna-purple/[0.08] text-gray-100 hover:bg-averna-purple/15")}
         >
           {playing === n ? <Pause className="h-4 w-4" aria-hidden /> : <Headphones className="h-4 w-4" aria-hidden />}
@@ -471,15 +483,51 @@ export function EvidenceActions({ n, span, seconds = null }: { n: number; span: 
 // ---------------------------------------------------------------------------
 
 /** The part's recording on the result page; "Hear it" seeks and plays it. */
-export function ResultRecording({ url, no, durationMs }: { url: string; no: number; durationMs?: number }) {
+export function ResultRecording({
+  url,
+  no,
+  durationMs,
+  whole = false,
+}: {
+  url: string;
+  no: number;
+  durationMs?: number;
+  /** The paper's one complete recording (positions from its start). */
+  whole?: boolean;
+}) {
   const { registerPlayer, setPlaying } = useScope();
   const ref = useRef<HTMLAudioElement | null>(null);
+  const stopRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     const player: Player = {
-      playFrom(seconds: number) {
+      playFrom(seconds: number, until?: number | null) {
         const a = ref.current;
         if (!a) return;
+        stopRef.current?.();
+        stopRef.current = null;
+        if (until != null && until > seconds) {
+          // Stop within 0.5 s after the window: timeupdate, plus a timer for the last stretch.
+          let timer: number | null = null;
+          const end = () => {
+            a.pause();
+            cleanup();
+          };
+          const check = () => {
+            if (a.currentTime >= until) return end();
+            if (timer == null && until - a.currentTime < 1) {
+              timer = window.setTimeout(end, Math.max(0, ((until - a.currentTime) * 1000) / Math.max(0.25, a.playbackRate || 1)));
+            }
+          };
+          const cleanup = () => {
+            a.removeEventListener("timeupdate", check);
+            if (timer != null) window.clearTimeout(timer);
+            timer = null;
+            if (stopRef.current === cleanup) stopRef.current = null;
+          };
+          a.addEventListener("timeupdate", check);
+          stopRef.current = cleanup;
+        }
         try {
           a.currentTime = seconds;
         } catch {
@@ -500,7 +548,7 @@ export function ResultRecording({ url, no, durationMs }: { url: string; no: numb
     <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 print:hidden">
       <p className="flex items-center gap-2 text-sm font-semibold text-gray-100">
         <Headphones className="h-4 w-4 shrink-0 text-averna-purple" aria-hidden />
-        Recording · Part {no}
+        {whole ? "Full recording" : `Recording · Part ${no}`}
         {durationMs && durationMs > 0 ? <span className="font-normal text-gray-500">· {clock(durationMs / 1000)}</span> : null}
       </p>
       {/* The transcript below is the text alternative. */}
@@ -510,7 +558,7 @@ export function ResultRecording({ url, no, durationMs }: { url: string; no: numb
         src={url}
         controls
         preload="none"
-        aria-label={`Recording of Part ${no}`}
+        aria-label={whole ? "Full recording of the test" : `Recording of Part ${no}`}
         className="mt-2 w-full"
         onPause={() => setPlaying(null)}
         onEnded={() => setPlaying(null)}

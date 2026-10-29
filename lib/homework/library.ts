@@ -22,6 +22,7 @@ import {
   type SpeakingSetSummary,
 } from "@/lib/ielts/catalog";
 import { summarizeListening, summarizeReading } from "@/lib/ielts/format";
+import { getVerifiedSegments } from "@/lib/ielts/segments-store";
 import type { ExamListeningTest, ExamReadingTest, ExamTestSummary, SpeakingExamSet } from "@/lib/ielts/types";
 import type { WritingPrompt } from "@/lib/writing-data";
 import {
@@ -177,9 +178,22 @@ export async function resolveExamContent(raw: {
         : await getListeningExam(id).then((t: ExamListeningTest | null) => t && { test: t, summary: summarizeListening(t) });
     if (!loaded) return { ok: false, error: `That ${kind === "READING" ? "Reading" : "Listening"} test is no longer in the library.` };
     const { test } = loaded;
-    const lib = toLibraryObjective(loaded.summary);
     let p: number | null = part;
     if (p != null && test.parts.length <= 1) p = null;
+    // A whole recording can be set one part at a time only once its boundaries are verified.
+    if (test.skill === "LISTENING" && test.recordingMode === "whole") {
+      const segments = await getVerifiedSegments(test);
+      if (!segments) {
+        if (p != null) return { ok: false, error: "Separate parts of this Listening test aren't available yet. Set the full test instead." };
+      } else {
+        loaded.summary = {
+          ...loaded.summary,
+          splittable: true,
+          partInfo: loaded.summary.partInfo.map((x, i) => ({ ...x, durationMs: segments.parts[i].endMs - segments.parts[i].startMs })),
+        };
+      }
+    }
+    const lib = toLibraryObjective(loaded.summary);
     if (p != null && p >= test.parts.length) return { ok: false, error: "That passage / part doesn't exist in this test." };
 
     const noun = kind === "READING" ? "Passage" : "Part";

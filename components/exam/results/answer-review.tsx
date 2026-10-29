@@ -192,22 +192,32 @@ function PartReview({
   skill,
   items,
   audio,
+  windows,
 }: {
   part: AnyPart;
   index: number;
   skill: ObjectiveSkill;
   items: Map<number, GradeItem>;
   audio?: ListeningPartAudio;
+  /** A whole recording: `audio` is the complete file and "Hear it" plays each question's answer window. */
+  windows?: Record<string, { startMs: number; endMs: number }>;
 }) {
   const no = index + 1;
   const doc = evidenceDoc(part);
   const evidence = partEvidence(part, items);
   const reading = "paragraphs" in part;
   const seconds = (n: number): number | null => {
+    if (!audio || reading) return null;
+    const w = windows?.[String(n)];
+    if (w) return w.startMs / 1000;
     const span = evidence[n];
-    if (!span || !audio || reading) return null;
+    if (!span || windows) return null;
     const line = part.script[span.paragraphIndex]?.text ?? "";
     return evidenceSeconds(audio.timeline, span, line.length);
+  };
+  const until = (n: number): number | null => {
+    const w = windows?.[String(n)];
+    return audio && w ? w.endMs / 1000 : null;
   };
 
   return (
@@ -215,7 +225,7 @@ function PartReview({
       no={no}
       doc={doc}
       sideBySide={reading && docHasText(doc)}
-      media={audio ? <ResultRecording url={audio.url} no={no} durationMs={audio.durationMs} /> : null}
+      media={audio ? <ResultRecording url={audio.url} no={no} durationMs={audio.durationMs} whole={!!windows} /> : null}
     >
       {part.groups.map((g: ExamGroup, gi: number) => (
         <div key={`${part.id}-${gi}`} id={groupAnchor(g)} className="scroll-mt-24">
@@ -228,7 +238,7 @@ function PartReview({
                 <>
                   {/* "Explain in Oʻzbekcha / по-русски" (native-language hints on; nothing otherwise). */}
                   <ExplainInL1 text={items.get(n)?.explanation} />
-                  <EvidenceActions n={n} span={evidence[n] ?? null} seconds={seconds(n)} />
+                  <EvidenceActions n={n} span={evidence[n] ?? null} seconds={seconds(n)} until={until(n)} />
                 </>
               )
             }
@@ -245,6 +255,7 @@ export function AnswerReview({
   part,
   items,
   audio,
+  windows,
 }: {
   skill: ObjectiveSkill;
   test: ExamReadingTest | ExamListeningTest | null;
@@ -253,6 +264,8 @@ export function AnswerReview({
   items: GradeItem[];
   /** Listening: each part's recording (by part index) when one is ready — "Hear it". */
   audio?: (ListeningPartAudio | undefined)[];
+  /** Listening with one whole recording: each question's answer window (ms from the start of the file). */
+  windows?: Record<string, { startMs: number; endMs: number }>;
 }) {
   const byNumber = new Map<number, GradeItem>(items.map((i) => [i.n, i]));
   const scoped = scopedParts(test, part);
@@ -324,7 +337,7 @@ export function AnswerReview({
                 </p>
               </header>
 
-              <PartReview part={s.part} index={s.index} skill={skill} items={byNumber} audio={audio?.[s.index]} />
+              <PartReview part={s.part} index={s.index} skill={skill} items={byNumber} audio={audio?.[s.index]} windows={windows} />
             </section>
           );
         })}

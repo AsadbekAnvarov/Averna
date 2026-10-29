@@ -27,7 +27,9 @@ import { getListeningExam, listListeningExams, listeningFromRow } from "../catal
 import { LISTENING_SEED } from "../content";
 import { estimatePartSeconds } from "../format";
 import type { ExamListeningTest } from "../types";
-import type { AudioOverview, OrphanAudioInfo, PartAudioInfo, PartAudioStatus, TestAudioInfo } from "./admin-types";
+import type { AudioOverview, BoundaryInfo, OrphanAudioInfo, PartAudioInfo, PartAudioStatus, TestAudioInfo } from "./admin-types";
+import { boundaryValues, isVerified, windowsByPart } from "../segments";
+import { loadSegmentRecords, type SegmentRecord } from "../segments-store";
 import { listeningAudioEnabled } from "./client";
 import { partAudioHash, wholeRecordingHash } from "./hash";
 import { fileProgramme } from "./programme";
@@ -100,7 +102,7 @@ export function partInfo(test: ExamListeningTest, index: number, row: AudioRow |
   if (test.recordingMode === "whole" && index === -1) {
     const status = statusOf(row, wholeRecordingHash(test));
     const hasFile = status === "ready" || status === "stale";
-    return { index, title: "Full recording", status, url: hasFile ? row?.url ?? null : null,
+    return { index, title: "Toʻliq yozuv", status, url: hasFile ? row?.url ?? null : null,
       bytes: hasFile ? row?.bytes ?? 0 : 0, durationMs: hasFile ? row?.durationMs ?? 0 : 0,
       error: row?.error ?? null, updatedAt: iso(row?.updatedAt), lines: 0,
       estimatedSeconds: (test.recordingDurationMs ?? 0) / 1000 };
@@ -169,6 +171,76 @@ export async function resolveAudioTest(testId: string): Promise<ExamListeningTes
   return placementListeningTests().find((t) => t.id === testId) ?? (await getListeningExam(testId));
 }
 
+function isCdiImport(data: unknown): boolean {
+  const imported = data && typeof data === "object" ? (data as { imported?: { provider?: unknown } }).imported : null;
+  return !!imported && imported.provider === "user-supplied-cdi";
+}
+
+/**
+ * Imported whole-recording papers not published yet: staff confirm their part
+ * boundaries before the owner publishes them (marked "Nashr qilinmagan").
+ */
+export async function unpublishedImports(ids?: string[]): Promise<ExamListeningTest[]> {
+  try {
+    const rows = (await db.generatedTest.findMany({
+      where: { module: "LISTENING", published: false, ...(ids ? { id: { in: ids } } : {}) },
+      select: { id: true, data: true },
+    })) as { id: string; data: unknown }[];
+    return rows
+      .filter((r) => isCdiImport(r.data))
+      .map(listeningFromRow)
+      .filter((t): t is ExamListeningTest => !!t && t.recordingMode === "whole");
+  } catch {
+    return [];
+  }
+}
+
+/** A paper whose boundaries staff may save: a published catalog paper or an unpublished CDI import, with a whole recording. */
+export async function resolveSegmentsTest(testId: string): Promise<ExamListeningTest | null> {
+  const t = (await getListeningExam(testId)) ?? (await unpublishedImports([testId]))[0] ?? null;
+  return t && t.recordingMode === "whole" && t.recordingSha256 && (t.recordingDurationMs ?? 0) > 0 ? t : null;
+}
+
+/** The boundary block of a whole recording with a ready file (undefined otherwise). */
+export function boundaryInfoOf(
+  test: ExamListeningTest,
+  row: AudioRow | undefined,
+  rec: SegmentRecord | null,
+  verifierName: string | null,
+): BoundaryInfo | undefined {
+  if (test.recordingMode !== "whole" || !test.recordingSha256 || !test.recordingDurationMs) return undefined;
+  if (!row || row.status !== "ready" || !row.url || row.scriptHash !== wholeRecordingHash(test)) return undefined;
+  const durationMs = test.recordingDurationMs;
+  const sameRecording = !!rec && rec.recordingSha256 === test.recordingSha256 && rec.durationMs === durationMs;
+  const shown = boundaryValues(sameRecording ? rec : null, rec?.candidates ?? null, durationMs);
+  const verified = isVerified(rec, test);
+  return {
+    revision: rec?.revision ?? 0,
+    status: verified ? "verified" : "unverified",
+    verifiedBy: verified ? verifierName : null,
+    verifiedAt: verified ? iso(rec?.verifiedAt ?? null) : null,
+    source: shown.source,
+    boundaries: shown.boundaries,
+    durationMs,
+    recordingSha256: test.recordingSha256,
+    url: row.url,
+    bytes: row.bytes,
+    windowsByPart: windowsByPart(test),
+  };
+}
+
+async function verifierNames(ids: string[]): Promise<Map<string, string>> {
+  const out = new Map<string, string>();
+  if (!ids.length) return out;
+  try {
+    const users = (await db.user.findMany({ where: { id: { in: ids } }, select: { id: true, name: true, email: true } })) as { id: string; name: string | null; email: string }[];
+    for (const u of users) out.set(u.id, u.name?.trim() || u.email);
+  } catch {
+    /* names are optional */
+  }
+  return out;
+}
+
 async function findRow(testId: string, partIndex: number): Promise<AudioRow | null> {
   try {
     return ((await db.listeningAudio.findUnique({
@@ -208,7 +280,15 @@ export async function audioOverview(): Promise<AudioOverview> {
   // The placement test's Listening first (every new student sits it), then the library.
   const placement = placementListeningTests();
   const placementIds = new Set(placement.map((t) => t.id));
-  const tests = [...placement, ...catalog.filter((t) => !placementIds.has(t.id))];
+  const catalogIds = new Set(catalog.map((t) => t.id));
+  const unpublished = (await unpublishedImports()).filter((t) => !catalogIds.has(t.id) && !placementIds.has(t.id));
+  const unpublishedIds = new Set(unpublished.map((t) => t.id));
+  const tests = [...placement, ...catalog.filter((t) => !placementIds.has(t.id)), ...unpublished];
+  const wholeIds = tests.filter((t) => t.recordingMode === "whole").map((t) => t.id);
+  const segmentRecords = await loadSegmentRecords(wholeIds);
+  const names = await verifierNames(
+    Array.from(segmentRecords.values()).map((r) => r.verifiedById).filter((v): v is string => !!v),
+  );
 
   const byTest = new Map<string, Map<number, AudioRow>>();
   for (const r of rows) {
@@ -254,6 +334,11 @@ export async function audioOverview(): Promise<AudioOverview> {
       full: t.parts.length === 4 && questions === 40,
       placement: placementIds.has(t.id),
       parts,
+      published: !unpublishedIds.has(t.id),
+      boundaries: (() => {
+        const rec = segmentRecords.get(t.id) ?? null;
+        return boundaryInfoOf(t, rowsOf?.get(-1), rec, rec?.verifiedById ? names.get(rec.verifiedById) ?? null : null);
+      })(),
     };
   });
 

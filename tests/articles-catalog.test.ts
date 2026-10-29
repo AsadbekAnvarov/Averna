@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { ARTICLE_LESSONS, articlesForLevel, findArticle, articleReadingMinutes } from "@/lib/articles/catalog";
+import { STUDENT_NAV } from "@/components/layout/portal-navigation";
 
 describe("permanent article library", () => {
   it("imports exactly the two supplied level folders without daily rotation", () => {
@@ -38,8 +39,10 @@ describe("permanent article library", () => {
       expect(readFileSync(file, "utf8")).toContain('if (!session?.user) redirect("/auth/signin")');
     }
     expect(readFileSync("app/article/[slug]/page.tsx", "utf8")).toContain("if (!article) notFound()");
-    // Articles left the sidebar (idea 9, simpler navigation): the Learning Center
-    // hub, the dashboard card and ⌘K search are its entry points now.
+    // Articles is back in the student sidebar: Skills, right after Reading.
+    const skills = STUDENT_NAV.find((s) => s.label === "Skills")!.items;
+    const reading = skills.findIndex((i) => i.href === "/learning/reading");
+    expect(skills[reading + 1]).toMatchObject({ name: "Articles", href: "/article" });
     for (const file of ["components/command-palette.tsx", "app/learning/page.tsx", "components/dashboard/daily-article.tsx"]) {
       const source = readFileSync(file, "utf8");
       expect(source).not.toContain('"Daily Article"');

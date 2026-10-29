@@ -33,6 +33,7 @@ export function ObjectiveResult({
   studentName,
   homeworkNotice = null,
   audio,
+  windows,
 }: {
   attempt: ObjectiveAttempt;
   /** The paper, or null when it can't be loaded any more. */
@@ -52,6 +53,8 @@ export function ObjectiveResult({
   homeworkNotice?: HomeworkNotice | null;
   /** Listening: each part's ready recording (by part index), for "Hear it". */
   audio?: (ListeningPartAudio | undefined)[];
+  /** Listening with one whole recording: each question's answer window (server-rendered after submission). */
+  windows?: Record<string, { startMs: number; endMs: number }>;
 }) {
   const { skill, part } = attempt;
   const word = skillWord(skill);
@@ -154,7 +157,7 @@ export function ObjectiveResult({
           </Reveal>
         )}
 
-        <AnswerReview skill={skill} test={test} part={part} items={attempt.items} audio={audio} />
+        <AnswerReview skill={skill} test={test} part={part} items={attempt.items} audio={audio} windows={windows} />
 
         {viewerIsOwner && (
           <Reveal>

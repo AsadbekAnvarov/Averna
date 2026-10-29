@@ -18,6 +18,7 @@
  */
 
 import { PRACTICE_KIND_LABEL } from "@/lib/ielts/format";
+import { canPractiseParts, listeningPartMinutes } from "@/lib/ielts/parts";
 import type { ExamSkill, PracticeKind } from "@/lib/ielts/types";
 import { READING_PASSAGE_MINUTES } from "@/lib/homework/library-shared";
 import { addDays } from "@/lib/forecast/band-forecast";
@@ -67,12 +68,14 @@ export interface MiniTask {
 export const MINI_TASK_DUE_TIME = "20:00";
 const SKILL_LABEL: Record<ExamSkill, string> = { READING: "Reading", LISTENING: "Listening" };
 
-const isWhole = (t: MiniCatalogEntry) => t.recordingMode === "whole" || t.partInfo.length <= 1;
+const isWhole = (t: MiniCatalogEntry) => !canPractiseParts(t);
 
 /** Minutes of one part (the homework library's estimate) or of the whole paper. */
 export function miniTaskMinutes(t: MiniCatalogEntry, part: number | null): number {
   if (part == null) return Math.max(1, Math.round(t.timeLimit));
   if (t.skill === "READING") return READING_PASSAGE_MINUTES;
+  // A verified part of a whole recording: its own length + 1 minute to check.
+  if (t.recordingMode === "whole" && t.splittable) return listeningPartMinutes(t, part);
   const parts = Math.max(1, t.parts || t.partInfo.length);
   return Math.max(1, Math.round((t.timeLimit - 2) / parts + 1));
 }

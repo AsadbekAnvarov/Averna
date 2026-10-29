@@ -121,15 +121,26 @@ export interface ListeningPartInput {
   partTitle: string;
   context: string;
   groups: ClientGroup[];
-  audio: { url: string; durationMs: number };
+  /**
+   * One part of a whole recording: clip builds the part's own file (null when it can't),
+   * stored under ile so it never collides with the full recording.
+   */
+  audio: { url: string; durationMs: number; file?: string; clip?: () => Promise<Blob | null> };
 }
 
 export async function saveListeningPart(ownerId: string, part: ListeningPartInput): Promise<SaveResult> {
   let blob: Blob;
+  const file = part.audio.file ?? part.audio.url;
   try {
-    const res = await fetch(part.audio.url, { mode: "cors", credentials: "omit" });
-    if (!res.ok || res.type === "opaque") throw new Error("unreadable");
-    blob = await res.blob();
+    if (part.audio.clip) {
+      const clip = await part.audio.clip();
+      if (!clip) throw new Error("unreadable");
+      blob = clip;
+    } else {
+      const res = await fetch(part.audio.url, { mode: "cors", credentials: "omit" });
+      if (!res.ok || res.type === "opaque") throw new Error("unreadable");
+      blob = await res.blob();
+    }
   } catch {
     return { ok: false, reason: "error", message: "This recording can't be saved for offline use. Listen to it online instead." };
   }
@@ -147,8 +158,8 @@ export async function saveListeningPart(ownerId: string, part: ListeningPartInpu
       savedAt: Date.now(),
       bytes: 0,
       groups: part.groups,
-      audio: { file: part.audio.url, durationMs: part.audio.durationMs },
+      audio: { file, durationMs: part.audio.durationMs },
     },
-    [{ url: part.audio.url, blob: blob.type ? blob : new Blob([blob], { type: "audio/mpeg" }) }],
+    [{ url: file, blob: blob.type ? blob : new Blob([blob], { type: "audio/mpeg" }) }],
   );
 }

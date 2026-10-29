@@ -1,4 +1,4 @@
-import { LayoutDashboard, CalendarDays, Bell, Users, ClipboardCheck, BookOpen, Notebook, ListChecks, BarChart3, GraduationCap, UserCheck, Sparkles, Headphones, Megaphone, MessageSquare, User, Settings, BarChart, Compass, Gift, Activity, Send, Mic, PenTool, SpellCheck, Layers, Dumbbell, Bot, TrendingUp, Trophy, LayoutGrid, type LucideIcon } from "lucide-react";
+import { LayoutDashboard, CalendarDays, Bell, Users, ClipboardCheck, BookOpen, Notebook, ListChecks, BarChart3, GraduationCap, UserCheck, Sparkles, Headphones, Megaphone, MessageSquare, User, Settings, BarChart, Compass, Gift, Activity, Send, Mic, PenTool, SpellCheck, Layers, Dumbbell, Bot, TrendingUp, Trophy, LayoutGrid, Newspaper, type LucideIcon } from "lucide-react";
 
 export type PortalNavItem = {
   name: string;
@@ -61,7 +61,7 @@ export function activeNavHref(pathname: string, items: Pick<PortalNavItem, "href
 }
 
 /**
- * Student sidebar: five calm sections, 16 items. Rarely used pages live in
+ * Student sidebar: five calm sections, 17 items. Rarely used pages live in
  * their hub instead (Coach → /coach, Practice Studio → /studio, Skills →
  * /learning, Speaking → /learning/speaking, Calendar → /schedule) and stay
  * findable in the ⌘K palette.
@@ -79,7 +79,8 @@ export const STUDENT_NAV: PortalNavSection[] = [
   {
     label: "Skills",
     items: [
-      { name: "Reading", href: "/learning/reading", icon: BookOpen, also: ["/article"] },
+      { name: "Reading", href: "/learning/reading", icon: BookOpen },
+      { name: "Articles", href: "/article", icon: Newspaper },
       { name: "Listening", href: "/learning/listening", icon: Headphones },
       { name: "Writing", href: "/learning/writing", icon: PenTool },
       { name: "Speaking", href: "/learning/speaking", icon: Mic, fresh: true, also: ["/learning/speaking-test", "/learning/pronunciation"] },

@@ -3,6 +3,7 @@ import { ArrowRight, Clock, MessageCircle, Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { READING_FULL, rangeLabel } from "@/lib/ielts/format";
 import type { ExamTestSummary } from "@/lib/ielts/types";
+import { listeningCardModel } from "@/lib/ielts/parts";
 import type { SpeakingSetSummary } from "@/lib/ielts/catalog";
 import { SpotlightCard } from "@/components/motion/spotlight-card";
 import { SkillIcon, type SkillLike } from "@/components/progression/ui";
@@ -140,9 +141,7 @@ export function ReadingExamCard({ exam }: { exam: ExamTestSummary }) {
 // ---------------------------------------------------------------------------
 
 export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
-  const href = `/learning/listening/${slug(exam.id)}`;
-  const multi = exam.partInfo.length > 1 && exam.recordingMode !== "whole";
-  const perPart = Math.max(1, Math.round(exam.timeLimit / Math.max(1, exam.partInfo.length)));
+  const model = listeningCardModel(exam);
   const parts = `${exam.parts} ${exam.parts === 1 ? "part" : "parts"}`;
 
   return (
@@ -154,36 +153,25 @@ export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
       </div>
       {exam.description && <p className="mt-3 line-clamp-2 text-sm text-gray-300">{exam.description}</p>}
 
-      {exam.partInfo.length > 0 && (
+      {model.rows.length > 0 && (
         <div className="mt-4">
-          <SectionLabel>{exam.recordingMode === "whole" ? "One complete recording · Parts 1–4" : multi ? "Parts · practise one at a time" : "Recording"}</SectionLabel>
+          <SectionLabel>{model.label}</SectionLabel>
           <ol role="list" className="mt-2 space-y-2">
-            {exam.partInfo.map((p, i) => {
-              const custom = p.title && !/^part\s*\d+$/i.test(p.title.trim()) ? p.title : null;
-              const detail = [custom, range(p), multi ? `~${perPart} min` : null].filter(Boolean).join(" · ");
-              return (
-                <li key={`${i}-${p.title}`}>
-                  <PartRow
-                    n={i + 1}
-                    href={multi ? `${href}?part=${i}` : undefined}
-                    title={multi ? `Practise Part ${i + 1}` : custom ?? `Part ${i + 1}`}
-                    detail={detail || `${exam.questions} questions`}
-                    tone="bg-averna-purple/10 text-averna-purple"
-                  />
-                </li>
-              );
-            })}
+            {model.rows.map((row) => (
+              <li key={`${row.n}-${row.title}`}>
+                <PartRow n={row.n} href={row.href} title={row.title} detail={row.detail} tone="bg-averna-purple/10 text-averna-purple" />
+              </li>
+            ))}
           </ol>
         </div>
       )}
 
-      {exam.recordingMode === "whole" && <p className="mt-3 text-sm text-gray-400">Original, uncut audio. Separate part playback is unavailable until recording boundaries are verified.</p>}
+      {model.note && <p className="mt-3 text-sm text-gray-400">{model.note}</p>}
       <KindChips kinds={exam.kinds} className="mt-4" />
-      <CardCta href={href} label={exam.full ? "Start full test" : "Start practice test"} context={exam.title} />
+      <CardCta href={model.cta.href} label={model.cta.label} context={exam.title} />
     </SpotlightCard>
   );
 }
-
 // ---------------------------------------------------------------------------
 // Speaking
 // ---------------------------------------------------------------------------

@@ -30,9 +30,8 @@ import type { WritingPrompt } from "@/lib/writing-data";
 import { overallBand, writingBand } from "./bands";
 import { hasRecordedSpeech } from "@/lib/speaking/recording";
 import { readCriteria } from "@/lib/review/scoring";
+import { getListeningExamForAttempt, getReadingExamForAttempt } from "./catalog-attempt";
 import {
-  getListeningExam,
-  getReadingExam,
   getSpeakingSet,
   getWritingTask,
   listListeningExams,
@@ -151,7 +150,7 @@ async function seenKeys(studentId: string): Promise<Set<string>> {
     if (!a) continue;
     for (const k of ["examId", "testId", "promptId"]) {
       const v = a[k];
-      if (typeof v === "string" && v) seen.add(v.replace(/#p\d+$/, ""));
+      if (typeof v === "string" && v) seen.add(seenKeyOf(v));
     }
   }
   for (const m of mocks) {
@@ -161,8 +160,13 @@ async function seenKeys(studentId: string): Promise<Set<string>> {
   return seen;
 }
 
+/** A content key as a paper id: a practised part ("<id>#p2") counts as meeting the paper. */
+export function seenKeyOf(key: string): string {
+  return key.replace(/#p\d+$/, "");
+}
+
 /** Random pick, preferring unseen items. */
-function pickOne<T>(items: T[], isSeen: (t: T) => boolean): T | null {
+export function pickOne<T>(items: T[], isSeen: (t: T) => boolean): T | null {
   if (!items.length) return null;
   const fresh = items.filter((t) => !isSeen(t));
   const pool = fresh.length ? fresh : items;
@@ -281,7 +285,7 @@ async function sectionMinutes(section: MockSection, papers: MockPapers): Promise
   switch (section) {
     case "LISTENING": {
       if (isCdMock(papers)) {
-        const test = await getListeningExam(papers.listening);
+        const test = await getListeningExamForAttempt(papers.listening);
         const content = test ? await listeningClientContent(test, { recordingsOnly: true }) : null;
         const minutes = content ? recordingMinutes(content) : null;
         if (minutes == null) throw new Error("The selected Listening recordings are not ready.");
@@ -290,11 +294,11 @@ async function sectionMinutes(section: MockSection, papers: MockPapers): Promise
       // Browser voices speak at slightly different speeds and may need a retry,
       // so the server window is generous; the runner itself ends the section
       // after the recording and the 2-minute check.
-      const t = await getListeningExam(papers.listening);
+      const t = await getListeningExamForAttempt(papers.listening);
       return (t ? estimateListeningMinutes(t) : 40) + 12;
     }
     case "READING": {
-      const t = await getReadingExam(papers.reading);
+      const t = await getReadingExamForAttempt(papers.reading);
       if (isCdMock(papers) && (!t || !isFullObjective(t, 3))) throw new Error("The selected Reading paper is not a full exam.");
       return isCdMock(papers) ? 60 : t?.timeLimit ?? 60;
     }
@@ -474,7 +478,7 @@ export async function submitMockSection(o: {
     // skill history.
     result = { band: 0, testIds: [], correct: 0, answered: 0, xp: 0, auto, submittedAt };
   } else if (skill === "LISTENING" || skill === "READING") {
-    const test = skill === "LISTENING" ? await getListeningExam(papers.listening) : await getReadingExam(papers.reading);
+    const test = skill === "LISTENING" ? await getListeningExamForAttempt(papers.listening) : await getReadingExamForAttempt(papers.reading);
     if (!test) return { ok: false, error: "This paper is no longer available.", status: 410 };
     const r = await submitObjectiveExam({
       studentId: o.studentId,
@@ -647,13 +651,13 @@ async function sectionViews(papers: MockPapers, current: number, results: MockRe
 async function sectionContent(section: MockSection, papers: MockPapers): Promise<MockContent | null> {
   switch (section) {
     case "LISTENING": {
-      const t = await getListeningExam(papers.listening);
+      const t = await getListeningExamForAttempt(papers.listening);
       if (!t) return null;
       const content = isCdMock(papers) ? await listeningClientContent(t, { recordingsOnly: true }) : await listeningClientContent(t);
       return content ? { skill: "LISTENING", test: content } : null;
     }
     case "READING": {
-      const t = await getReadingExam(papers.reading);
+      const t = await getReadingExamForAttempt(papers.reading);
       return t ? { skill: "READING", test: toClientReading(t) } : null;
     }
     case "WRITING": {
