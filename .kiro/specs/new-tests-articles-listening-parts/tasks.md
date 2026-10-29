@@ -40,7 +40,7 @@ Work on branch `feat/v10-tests-articles-listening-parts`, stacked on `feat/elega
   - [x] 5.4 L1 instruction fixture and coverage test for the new papers
     - _Requirements: 21.1–21.7_
 
-- [ ] 6. Mock and Group Mock checks, `validate.ts` relaxation for supplied recordings, attempt resolvers for unpublished papers
+- [x] 6. Mock and Group Mock checks, `validate.ts` relaxation for supplied recordings, attempt resolvers for unpublished papers
   - _Requirements: 3.1–3.8, 6.1–6.10, 7.1–7.8, 17.6, 17.8_
 
 - [ ] 7. Docs, e2e and final verification

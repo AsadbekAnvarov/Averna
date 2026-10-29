@@ -14,7 +14,7 @@ import { Suspense } from "react";
 import { SessionOutcomeSection } from "@/components/progression/session-outcome-section";
 import { ProgressionSkeleton } from "@/components/progression/progression-skeleton";
 import { ResultCelebration } from "@/components/learning/result-celebration";
-import { getReadingExam } from "@/lib/ielts/catalog";
+import { getReadingExamForAttempt } from "@/lib/ielts/catalog-attempt";
 import { ObjectiveResult } from "@/components/exam/results/objective-result";
 import { isExamV2, parseObjectiveAttempt, parseTargetBand, resultHref } from "@/components/exam/results/attempt";
 import { canViewStudent } from "@/lib/access";
@@ -124,7 +124,7 @@ export default async function ReadingResultPage(props: { params: Promise<{ testI
     if (!attempt) return redirect("/learning/reading"); // exam-v2 Writing / Speaking rows have their own pages
     if (attempt.skill !== "READING") return redirect(resultHref(attempt.skill, test.id));
     const [exam, xp, homeworkNotice] = await Promise.all([
-      getReadingExam(attempt.examId),
+      getReadingExamForAttempt(attempt.examId),
       xpForTest(student.id, test.id),
       // Open homework for this paper / passage that this attempt didn't complete (owner only).
       viewerIsOwner ? homeworkNoticeFor(student.id, test) : Promise.resolve(null),
