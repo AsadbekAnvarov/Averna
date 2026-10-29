@@ -37,17 +37,17 @@ export function StudyPet({ streak, points }: Props) {
   const hearts = Math.min(5, Math.max(1, Math.ceil(streak / 3)));
 
   return (
-    <Card className="glass border-averna-pink/30 relative overflow-hidden">
+    <Card className="glass flex h-full flex-col border-averna-pink/30 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-averna-pink/10 to-transparent" />
       <CardHeader className="relative">
         <CardTitle className="flex items-center gap-2 text-averna-pink">
           <Heart className="h-5 w-5" /> Study Buddy
         </CardTitle>
       </CardHeader>
-      <CardContent className="relative text-center">
+      <CardContent className="relative flex flex-1 flex-col justify-center text-center">
         <div className="text-6xl mb-2 animate-float">{stage.emoji}</div>
         <p className="text-white font-bold">{stage.name}</p>
-        <p className="text-xs text-gray-400 italic mb-3">&ldquo;{stage.mood}&rdquo;</p>
+        <p className="text-sm text-gray-400 italic mb-4">&ldquo;{stage.mood}&rdquo;</p>
 
         {/* Happiness hearts */}
         <div className="flex justify-center gap-0.5 mb-3">
@@ -67,12 +67,12 @@ export function StudyPet({ streak, points }: Props) {
                 style={{ width: `${into}%` }}
               />
             </div>
-            <p className="text-[11px] text-gray-500 mt-1">
+            <p className="text-sm text-gray-400 mt-2">
               {next.min - points} pts to evolve into {next.emoji} {next.name}
             </p>
           </div>
         ) : (
-          <p className="text-[11px] text-averna-neon">Max evolution reached! 🎉</p>
+          <p className="text-sm text-averna-neon">Max evolution reached! 🎉</p>
         )}
       </CardContent>
     </Card>
