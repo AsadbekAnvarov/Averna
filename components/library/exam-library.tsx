@@ -5,6 +5,8 @@ import { Reveal, RevealGroup } from "@/components/motion/reveal";
 import { ListeningExamCard, ReadingExamCard } from "./exam-cards";
 import { DIFFICULTIES, FilterRow, TYPE_LABEL, hrefWith, matchesType, type ExamTypeFilter, type FilterOption } from "./filters";
 import { LibraryEmpty } from "./library-empty";
+import { compareTestTitles } from "@/lib/ielts/catalog-order";
+import { objectiveCollection } from "@/lib/ielts/catalog-policy";
 
 type Format = "full" | "practice";
 
@@ -56,9 +58,17 @@ export function ExamLibrary({ skill, exams, path, type, difficulty, difficultyPa
   ];
 
   const formats: Format[] = type === "all" ? ["full", "practice"] : [type];
-  const groups = formats
-    .map((f) => ({ key: f, ...copy[f], items: shown.filter((e) => matchesType(e, f)) }))
-    .filter((g) => g.items.length > 0);
+  const groups = formats.flatMap(f => {
+    const collections = new Map<string, ExamTestSummary[]>();
+    for (const exam of shown.filter(e => matchesType(e, f))) {
+      const collection = objectiveCollection(exam);
+      collections.set(collection, [...(collections.get(collection) ?? []), exam]);
+    }
+    return [...collections].sort(([a], [b]) => {
+      if (a === "Medium practice" || b === "Medium practice") return a === b ? 0 : a === "Medium practice" ? 1 : -1;
+      return compareTestTitles({ title: a, id: a }, { title: b, id: b });
+    }).map(([collection, items]) => ({ key: `${f}-${collection}`, collection, ...copy[f], items: [...items].sort(compareTestTitles) }));
+  });
 
   if (exams.length === 0) {
     return (
@@ -100,12 +110,12 @@ export function ExamLibrary({ skill, exams, path, type, difficulty, difficultyPa
         />
       ) : (
         groups.map((g) => {
-          const headingId = `${skill.toLowerCase()}-${g.key}-heading`;
+          const headingId = `${skill.toLowerCase()}-${g.key.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}-heading`;
           return (
             <section key={g.key} aria-labelledby={headingId} className="mb-10">
               <Reveal className="mb-4">
                 <h2 id={headingId} className="flex items-baseline gap-2 text-lg font-semibold text-white">
-                  {g.title}
+                  {g.collection} — {g.title}
                   <span className="text-sm font-normal tabular-nums text-gray-500">{g.items.length}</span>
                 </h2>
                 <p className="mt-0.5 text-sm text-gray-400">{g.hint}</p>

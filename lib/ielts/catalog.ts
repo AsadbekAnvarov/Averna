@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { compareTestTitles } from "./catalog-order";
+import { isVisibleObjectivePaper } from "./catalog-policy";
 import { unstable_cache } from "next/cache";
 import { db } from "@/lib/db";
 import { READING_TESTS } from "@/lib/reading-tests-data";
@@ -105,9 +106,9 @@ const cachedReadingSummaries = unstable_cache(
   async (): Promise<ExamTestSummary[]> => {
     const rows = await publishedRows("READING");
     const generated = rows.map(readingFromRow).filter((t): t is ExamReadingTest => t !== null);
-    return [...generated, ...LEGACY_READING].map(summarizeReading).sort(order);
+    return [...generated, ...LEGACY_READING].map(summarizeReading).filter(isVisibleObjectivePaper).sort(order);
   },
-  ["exam-catalog-reading-cdi-v3-natural-order"],
+  ["exam-catalog-reading-cdi-v4-supplied-and-medium"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -115,7 +116,7 @@ export const listReadingExams = cache(async (): Promise<ExamTestSummary[]> => {
   try {
     return await cachedReadingSummaries();
   } catch {
-    return [...LEGACY_READING].map(summarizeReading).sort(order);
+    return [...LEGACY_READING].map(summarizeReading).filter(isVisibleObjectivePaper).sort(order);
   }
 });
 
@@ -141,9 +142,9 @@ const cachedListeningSummaries = unstable_cache(
   async (): Promise<ExamTestSummary[]> => {
     const rows = await publishedRows("LISTENING");
     const generated = rows.map(listeningFromRow).filter((t): t is ExamListeningTest => t !== null);
-    return [...generated, ...LEGACY_LISTENING].map(summarizeListening).sort(order);
+    return [...generated, ...LEGACY_LISTENING].map(summarizeListening).filter(isVisibleObjectivePaper).sort(order);
   },
-  ["exam-catalog-listening-cdi-v3-natural-order"],
+  ["exam-catalog-listening-cdi-v4-supplied-and-medium"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -151,7 +152,7 @@ export const listListeningExams = cache(async (): Promise<ExamTestSummary[]> => 
   try {
     return await cachedListeningSummaries();
   } catch {
-    return [...LEGACY_LISTENING].map(summarizeListening).sort(order);
+    return [...LEGACY_LISTENING].map(summarizeListening).filter(isVisibleObjectivePaper).sort(order);
   }
 });
 
