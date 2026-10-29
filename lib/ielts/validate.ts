@@ -336,6 +336,12 @@ export function validateListeningTest(raw: unknown, opts: ValidateOptions = {}):
     report.errors.push("no parts");
     return report;
   }
+  if (t.recordingParts !== undefined) {
+    if (t.recordingMode !== "whole" || !Array.isArray(t.recordingParts) || t.recordingParts.length !== t.parts.length) report.errors.push("verified recording parts must cover every supplied part");
+    else t.recordingParts.forEach((clip, i) => {
+      if (!clip || !Number.isFinite(clip.startMs) || !Number.isFinite(clip.endMs) || clip.startMs < 0 || clip.endMs <= clip.startMs || clip.endMs > (t.recordingDurationMs ?? 0) || !/^[a-f0-9]{64}$/.test(clip.sha256) || (i === 0 ? clip.startMs !== 0 : clip.startMs !== t.recordingParts![i - 1].endMs) || (i === t.parts.length - 1 && clip.endMs !== t.recordingDurationMs)) report.errors.push(`Part ${i + 1}: invalid verified recording bounds`);
+    });
+  }
   const perPart: number[] = [];
   const all = t.parts.flatMap((p, i) => {
     const ns = validateListeningPart(p, `Part ${i + 1}`, report, t.recordingMode === "whole");

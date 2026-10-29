@@ -141,7 +141,7 @@ export function ReadingExamCard({ exam }: { exam: ExamTestSummary }) {
 
 export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
   const href = `/learning/listening/${slug(exam.id)}`;
-  const multi = exam.partInfo.length > 1 && exam.recordingMode !== "whole";
+  const multi = exam.partInfo.length > 1 && (exam.recordingMode !== "whole" || exam.separateParts === true);
   const perPart = Math.max(1, Math.round(exam.timeLimit / Math.max(1, exam.partInfo.length)));
   const parts = `${exam.parts} ${exam.parts === 1 ? "part" : "parts"}`;
 
@@ -156,11 +156,11 @@ export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
 
       {exam.partInfo.length > 0 && (
         <div className="mt-4">
-          <SectionLabel>{exam.recordingMode === "whole" ? "One complete recording · Parts 1–4" : multi ? "Parts · practise one at a time" : "Recording"}</SectionLabel>
+          <SectionLabel>{exam.recordingMode === "whole" && !multi ? "One complete recording · Parts 1–4" : multi ? "Parts · practise one at a time" : "Recording"}</SectionLabel>
           <ol role="list" className="mt-2 space-y-2">
             {exam.partInfo.map((p, i) => {
               const custom = p.title && !/^part\s*\d+$/i.test(p.title.trim()) ? p.title : null;
-              const detail = [custom, range(p), multi ? `~${perPart} min` : null].filter(Boolean).join(" · ");
+              const detail = [custom, range(p), multi ? `~${perPart} min · Open this part only` : null].filter(Boolean).join(" · ");
               return (
                 <li key={`${i}-${p.title}`}>
                   <PartRow
@@ -177,7 +177,7 @@ export function ListeningExamCard({ exam }: { exam: ExamTestSummary }) {
         </div>
       )}
 
-      {exam.recordingMode === "whole" && <p className="mt-3 text-sm text-gray-400">Original, uncut audio. Separate part playback is unavailable until recording boundaries are verified.</p>}
+      {exam.recordingMode === "whole" && !multi && <p className="mt-3 text-sm text-gray-400">Original, uncut audio. Separate part playback is unavailable until recording boundaries are verified.</p>}
       <KindChips kinds={exam.kinds} className="mt-4" />
       <CardCta href={href} label={exam.full ? "Start full test" : "Start practice test"} context={exam.title} />
     </SpotlightCard>

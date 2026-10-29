@@ -77,7 +77,8 @@ export default async function ListeningTestPage(
   if (!test || test.source === "averna") return redirect(LIBRARY);
 
   // No guessed part boundaries for an uncut supplied recording.
-  const part = test.recordingMode === "whole" ? null : resolvePartIndex(test, firstParam(searchParams.part));
+  const clientTest = await listeningClientContent(test);
+  const part = test.recordingMode === "whole" && !clientTest.parts.every(p => p.audio) ? null : resolvePartIndex(test, firstParam(searchParams.part));
   // Exam homework: only kept when it really is this student's homework for this paper / part.
   const hwParam = firstParam(searchParams.hw);
   const student = hwParam
@@ -93,7 +94,7 @@ export default async function ListeningTestPage(
 
   return (
     <ListeningExamRunner
-      test={await listeningClientContent(test)}
+      test={clientTest}
       partIndex={part ?? undefined}
       mode="practice"
       attemptId={attempt}

@@ -44,6 +44,13 @@ export function wholeRecordingHash(test: Pick<ExamListeningTest, "parts" | "reco
   }))).digest("hex");
 }
 
+/** Fingerprint a verified original-audio clip, never synthesized speech. */
+export function suppliedPartRecordingHash(test: ExamListeningTest, partIndex: number): string | null {
+  const clip = test.recordingParts?.[partIndex];
+  if (test.recordingMode !== "whole" || !clip || !Number.isFinite(clip.startMs) || !Number.isFinite(clip.endMs) || clip.startMs < 0 || clip.endMs <= clip.startMs || clip.endMs > (test.recordingDurationMs ?? 0) || !/^[a-f0-9]{64}$/.test(clip.sha256)) return null;
+  return createHash("sha256").update(JSON.stringify({version: "supplied-part-v1", whole: wholeRecordingHash(test), partIndex, clip: canonicalJson(clip)})).digest("hex");
+}
+
 export function partAudioHash(test: Pick<ExamListeningTest, "parts">, partIndex: number, voiceModel: string): string | null {
   const part = test.parts[partIndex];
   const programme = fileProgramme(test, partIndex);

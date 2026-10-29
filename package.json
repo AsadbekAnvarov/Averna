@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "prisma generate && node scripts/import-volume10.cjs && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
@@ -63,7 +63,9 @@
     "@types/node": "^20.12.12",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
+    "@vercel/blob": "^2.5.0",
     "autoprefixer": "^10.4.19",
+    "esbuild": "^0.25.12",
     "eslint": "^8.57.0",
     "eslint-config-next": "15.5.27",
     "fast-check": "4.10.2",

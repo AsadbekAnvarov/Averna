@@ -33,6 +33,7 @@ import type { LineRef } from "@/lib/ielts/audio/timeline";
 import { nextAfterPart, partCantBeHeard, readScriptLines, runContext, scriptUrl, scriptWaitMs } from "@/lib/ielts/audio/script";
 import type { ScriptContext } from "@/lib/ielts/audio/script";
 import { ExamShell } from "./exam-shell";
+import { ListeningPracticeScope } from "./listening-practice-scope";
 import type { ExamPartNav } from "./exam-shell";
 import { QuestionGroupView } from "./question-group";
 import { QuestionHighlights, clearQuestionHighlights } from "./question-highlights";
@@ -294,10 +295,11 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const router = useRouter();
   const practice = mode === "practice";
   const recordingsOnly = props.recordingsOnly === true;
-  const wholeRecording = test.fullRecording;
   const suppliedWhole = test.recordingMode === "whole";
-  const practicePart = mode === "practice" && !suppliedWhole && typeof partIndex === "number" && Number.isInteger(partIndex) && partIndex >= 0 && partIndex < test.parts.length ? partIndex : undefined;
+  const hasPracticeParts = !suppliedWhole || test.parts.every(p => !!p.audio);
+  const practicePart = mode === "practice" && hasPracticeParts && typeof partIndex === "number" && Number.isInteger(partIndex) && partIndex >= 0 && partIndex < test.parts.length ? partIndex : undefined;
   const single = practicePart != null;
+  const wholeRecording = single ? undefined : test.fullRecording;
   const scriptContext: ScriptContext = props.context ?? runContext(mode, test.id);
 
   /** Scripts fetched for recorded parts that browser voices read instead (part index in the full test → script). */
@@ -670,7 +672,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   function startPart(pos: number, fromScript = false, fromMs?: number, resume?: VoiceResume) {
     const entry = scopeRef.current[pos];
     if (!entry || doneRef.current) return;
-    if (suppliedWhole && !wholeRecording) {
+    if (suppliedWhole && !wholeRecording && !(single && entry.part.audio)) {
       setAudioError("The supplied full recording is unavailable. Ask your teacher to check the library; no generated voice is used.");
       return;
     }
@@ -1472,7 +1474,20 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   return (
     <ExamShell
       title="Averna CDI · Listening"
-      subtitle={mode === "mock" ? `${examName} · Listening` : single ? `Listening practice · Part ${scope[0].no}` : "Listening practice"}
+      subtitle={mode === "mock" ? `${examName} · Listening` : `${test.title} · ${single ? `Part ${scope[0].no} practice` : "Full Listening practice"}`}
+      scopeExtra={practice && !homeworkId ? (
+        <ListeningPracticeScope testId={test.id} partCount={test.parts.length} partIndex={practicePart}
+          wholeRecording={suppliedWhole && !hasPracticeParts} disabled={submitting || finished}
+          beforeSwitch={() => {
+            try {
+              localStorage.setItem(`averna-exam:listening:${test.id}:${attemptId}`, JSON.stringify({ answers: answersRef.current, flagged: Array.from(flagged), savedAt: Date.now() }));
+              return true;
+            } catch {
+              window.alert("This browser could not save your current attempt. Stay in this attempt or submit your answers before changing practice mode.");
+              return false;
+            }
+          }} />
+      ) : undefined}
       remainingMs={shownMs}
       parts={navParts}
       activePart={activePart}
@@ -1593,10 +1608,10 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
                 </p>
                 <ul className="mt-3 space-y-2 text-sm text-gray-300">
                   {[
-                    `Each part starts with a short introduction, then ${introReadingSeconds} seconds to look at the questions${
+                    suppliedWhole ? "The original recording includes its own instructions and reading time. No generated voice is used." : `Each part starts with a short introduction, then ${introReadingSeconds} seconds to look at the questions${
                       practice && startEntry.part.audio ? " (press Skip to start sooner)" : ""
                     }.`,
-                    "Answer while you listen. You can move between parts and change answers at any time.",
+                    single ? "Answer while you listen. This practice attempt covers only the selected part." : "Answer while you listen. You can move between question parts and change answers at any time.",
                     `When the recording ends you have ${minutesPhrase(checkMinutes)} to check your answers — then the test is submitted automatically.`,
                   ].map((t) => (
                     <li key={t} className="flex gap-2.5">
