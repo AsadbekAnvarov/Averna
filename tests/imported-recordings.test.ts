@@ -71,3 +71,10 @@ describe("verified supplied-audio parts", () => {
     expect(suppliedPartRecordingHash(test,0)).toBeNull();
   });
 });
+
+it("does not repeat a supplied question's printed number beside the runner badge", async () => {
+  const {toClientListening}=await import("@/lib/ielts/sanitize");
+  const source=structuredClone(test); source.id="cdi-vol10-listening-1";const q=source.parts[0].groups[0].questions[0];q.text=`${q.n}. Original question`;
+  expect(toClientListening(source).parts[0].groups[0].questions[0].text).toBe("Original question");
+  expect(q.text).toBe(`${q.n}. Original question`);
+});
