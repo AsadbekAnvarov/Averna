@@ -10,7 +10,7 @@ import {
   GraduationCap, ClipboardCheck, NotebookPen, PlusCircle, Megaphone, BarChart3,
   Activity, ScrollText, Users, Command as CommandIcon, Settings, LogOut,
   Sun, Moon, SpellCheck, Sparkles, CornerDownLeft, ArrowUpDown,
-  Library, FileText, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, AudioLines, HardDrive, Glasses, type LucideIcon,
+  Library, Newspaper, Clapperboard, Award, Bot, Dna, Compass, ListChecks, Send, Dumbbell, AudioLines, HardDrive, Glasses, type LucideIcon,
 } from "lucide-react";
 import { STUDIO_TOOLS } from "@/components/studio/studio-tools";
 import { COACH_TOOLS } from "@/components/coach/coach-tools";
@@ -58,7 +58,7 @@ export const STUDENT_COMMANDS: Cmd[] = [
   { group: "Skills", label: "Grammar", href: "/grammar", icon: SpellCheck, keywords: "rules tenses language" },
   { group: "Skills", label: "Vocabulary", href: "/flashcards", icon: Layers, keywords: "vocab flashcards words deck language" },
   { group: "Skills", label: "Pronunciation", href: "/learning/pronunciation", icon: AudioLines, keywords: "record voice sounds accent language", searchOnly: true },
-  { group: "Skills", label: "Articles", href: "/article", icon: FileText, keywords: "reading news read lessons language", searchOnly: true },
+  { group: "Skills", label: "Articles", href: "/article", icon: Newspaper, keywords: "reading news read lessons language" },
   { group: "Skills", label: "Materials", href: "/materials", icon: Library, keywords: "resources guides bank study word lists", searchOnly: true },
 
   { group: "Practice", label: "Mock exams", href: "/learning/mock-exam", icon: Trophy, keywords: "mock exam test band full" },

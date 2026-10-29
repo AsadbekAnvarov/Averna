@@ -1,6 +1,9 @@
 export const dynamic = "force-dynamic";
 
 import { redirect } from "next/navigation";
+import Link from "next/link";
+import { ArrowRight, Newspaper } from "lucide-react";
+import { libraryCount } from "@/lib/articles/library";
 import { auth } from "@/lib/auth";
 import { listReadingExams } from "@/lib/ielts/catalog";
 import type { ExamTestSummary } from "@/lib/ielts/types";
@@ -23,6 +26,7 @@ export default async function ReadingLibraryPage(props: { searchParams?: Promise
   const exams = await listReadingExams().catch((): ExamTestSummary[] => []);
   const full = exams.filter((e) => e.full).length;
   const practice = exams.length - full;
+  const articleCount = libraryCount();
 
   const facts = [
     full > 0 ? `${full} full ${full === 1 ? "test" : "tests"}` : null,
@@ -41,6 +45,18 @@ export default async function ReadingLibraryPage(props: { searchParams?: Promise
           subtitle="Full Academic papers in the computer-delivered format, or one passage at a time when you have 20 minutes. Every test is marked instantly and converted to a band."
           facts={facts}
         />
+
+        <Link
+          href="/article"
+          className="glass mb-4 flex min-h-[44px] items-center gap-3 rounded-2xl border border-averna-cyan/30 px-4 py-3 text-white transition-colors hover:border-averna-cyan/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-cyan"
+        >
+          <Newspaper className="h-5 w-5 shrink-0 text-averna-cyan" aria-hidden />
+          <span className="min-w-0 flex-1 text-sm">
+            <span className="font-semibold">Articles</span>
+            <span className="text-gray-300"> · {articleCount} {articleCount === 1 ? "lesson" : "lessons"} to read and learn words</span>
+          </span>
+          <ArrowRight className="h-4 w-4 shrink-0 text-gray-300" aria-hidden />
+        </Link>
 
         <ExamLibrary
           skill="READING"
