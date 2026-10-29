@@ -30,14 +30,14 @@ Work on branch `feat/v10-tests-articles-listening-parts`, stacked on `feat/elega
 
 - [x] 4. Checkpoint: tsc, lint, vitest, build, function-size green; commit
 
-- [ ] 5. Volume 10 Content_Importer
-  - [ ] 5.1 Pure modules in `lib/cdi-import/**` (payloads, dom, literals, packed-audio, groups, reading, listening, transcript, evidence-windows, images, silence, boundaries, key-check, guard, instructions, manifest, report, budget)
+- [x] 5. Volume 10 Content_Importer
+  - [x] 5.1 Pure modules in `lib/cdi-import/**` (payloads, dom, literals, packed-audio, groups, reading, listening, transcript, evidence-windows, images, silence, boundaries, key-check, guard, instructions, manifest, report, budget)
     - _Requirements: 1.1–1.12, 4.1–4.13, 5.1–5.3, 10.4, 10.11, 18.4, 18.5, 18.7_
-  - [ ] 5.2 CLI `scripts/cdi-v10/import.ts` (dry-run, stage, verify), publish script and extended `import-cdi-manifest.cjs`
+  - [x] 5.2 CLI `scripts/cdi-v10/import.ts` (dry-run, stage, verify), publish script and extended `import-cdi-manifest.cjs`
     - _Requirements: 5.4–5.11, 16.3–16.9, 17.1–17.10, 20.6, 20.7_
-  - [ ]* 5.3 Synthetic fixtures and tests: key → 40/40, determinism, no script execution, import guard
+  - [x]* 5.3 Synthetic fixtures and tests: key → 40/40, determinism, no script execution, import guard
     - _Requirements: 22.2, 22.5, 22.6_
-  - [ ] 5.4 L1 instruction fixture and coverage test for the new papers
+  - [x] 5.4 L1 instruction fixture and coverage test for the new papers
     - _Requirements: 21.1–21.7_
 
 - [ ] 6. Mock and Group Mock checks, `validate.ts` relaxation for supplied recordings, attempt resolvers for unpublished papers

@@ -116,7 +116,7 @@ const LETTER_RANGE = `[A-Z]\\s*${D}\\s*[A-Z]`;
 const LETTER_LIST = `(?:${LETTER_RANGE}|[A-Z](?:,\\s*[A-Z])*,?\\s+(?:or|and)\\s+[A-Z])`;
 const ROMAN_RANGE = `[ivxl]+\\s*${D}\\s*[ivxl]+`;
 const NUMWORD = "(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)";
-const LIMIT = `(?:NO MORE THAN ${NUMWORD} WORDS?|ONE WORD(?: ONLY)?)(?: AND\\/OR A NUMBER)?`;
+const LIMIT = `(?:NO MORE THAN ${NUMWORD} WORDS?(?:\\/NUMBERS)?|ONE WORD(?: ONLY)?)(?: (?:AND\\/OR|OR) A NUMBER)?`;
 const SOURCE = "the (?:reading )?passage|the text|Reading Passage \\d+";
 
 const rx = (body: string) => new RegExp(`^${body}$`, "i");
@@ -128,11 +128,12 @@ interface Limit {
 }
 
 function parseLimit(raw: string): Limit | null {
-  const m = raw.match(new RegExp(`^(?:NO MORE THAN (${NUMWORD}) WORDS?|ONE WORD( ONLY)?)( AND\\/OR A NUMBER)?$`, "i"));
+  // "WORDS/NUMBERS" and "OR A NUMBER" (Listening papers) mean the same as "AND/OR A NUMBER".
+  const m = raw.match(new RegExp(`^(?:NO MORE THAN (${NUMWORD}) WORDS?(\\/NUMBERS)?|ONE WORD( ONLY)?)( (?:AND\\/OR|OR) A NUMBER)?$`, "i"));
   if (!m) return null;
   const n = m[1] ? enNumber(m[1]) : 1;
   if (n == null || n < 1 || n > 12) return null;
-  return { n, only: !!m[2], number: !!m[3] };
+  return { n, only: !!m[3], number: !!m[2] || !!m[4] };
 }
 
 function limitClause(l: Limit, lang: L1Lang): string {
@@ -349,6 +350,38 @@ const RULES: Rule[] = [
       return `${each ? "Для каждого ответа выберите" : "Выберите"} ${noun}${list ? `: ${list}` : ""}.`;
     },
   },
+  // "Choose the correct letter, A–I, for questions 6–8." / "…, next to questions 15–20."
+  {
+    re: rx(`Choose the correct letter,? (${LETTER_LIST}),? (?:for|next to) questions? (${NUMS})\\.?`),
+    out: (m, lang) =>
+      lang === "uz"
+        ? `${uzQuestions(m[2])} uchun toʻgʻri harfni tanlang: ${letters(m[1], "uz")}.`
+        : `Выберите правильную букву (${letters(m[1], "ru")}) для ${plural(m[2]) ? "вопросов" : "вопроса"} ${nums(m[2], "ru")}.`,
+  },
+  // "Choose TRUE, FALSE or NOT GIVEN." / "Choose YES, NO or NOT GIVEN."
+  {
+    re: rx("Choose (TRUE), (FALSE) or (NOT GIVEN)\\.?|Choose (YES), (NO) or (NOT GIVEN)\\.?"),
+    out: (m, lang) => {
+      const [a, b, c] = m[1] ? [m[1], m[2], m[3]] : [m[4], m[5], m[6]];
+      return lang === "uz" ? `${a}, ${b} yoki ${c} ni tanlang.` : `Выберите ${a}, ${b} или ${c}.`;
+    },
+  },
+  // "Choose A, B or C."
+  {
+    re: rx(`Choose (${LETTER_LIST})\\.?`),
+    out: (m, lang) => (lang === "uz" ? `Bittasini tanlang: ${letters(m[1], "uz")}.` : `Выберите один вариант: ${letters(m[1], "ru")}.`),
+  },
+  // "Choose FIVE correct answers, A–G, next to questions 16–20." / "Choose TWO correct answers, A–E."
+  {
+    re: rx(`Choose (${NUMWORD}) correct answers(?:,? (${LETTER_LIST}))?(?:,? next to questions? (${NUMS}))?\\.?`),
+    out: (m, lang) => {
+      const n = enNumber(m[1]);
+      if (n == null || n < 1 || n > 12) return null;
+      const list = m[2] ? `: ${letters(m[2], lang)}` : "";
+      if (lang === "uz") return `${uzTa(n).toUpperCase()} toʻgʻri javobni tanlang${list}${m[3] ? ` (${uzQuestions(m[3])})` : ""}.`;
+      return `Выберите ${ruWord(RU_MASC, n).toUpperCase()} ${ruPlural(n, "правильный ответ", "правильных ответа", "правильных ответов")}${list}${m[3] ? ` (${ruQuestions(m[3], "nom")})` : ""}.`;
+    },
+  },
   // "Choose TWO letters, A–E."
   {
     re: rx(`Choose (${NUMWORD}) (letters|answers|options)(?:,? (${LETTER_LIST}))?\\.?`),
@@ -498,6 +531,21 @@ const RULES: Rule[] = [
         ? `${m[1] ? "Eslatma: istalgan" : "Istalgan"} harfni bir necha marta ishlatishingiz mumkin.`
         : `${m[1] ? "Примечание: любую" : "Любую"} букву можно использовать более одного раза.`,
   },
+  // "NB You may choose any paragraph more than once."
+  {
+    re: rx("(NB:?\\s+)?You may (use|choose) any (paragraph|section|person|practice|option|answer) more than once\\.?"),
+    out: (m, lang) => {
+      const choose = m[2].toLowerCase() === "choose";
+      const noun = m[3].toLowerCase();
+      if (lang === "uz") {
+        const acc = { paragraph: "xatboshini", section: "boʻlimni", person: "odamni", practice: "amaliyotni", option: "variantni", answer: "javobni" }[noun as "paragraph"];
+        return `${m[1] ? "Eslatma: istalgan" : "Istalgan"} ${acc} bir necha marta ${choose ? "tanlashingiz" : "ishlatishingiz"} mumkin.`;
+      }
+      const any = { paragraph: "любой абзац", section: "любой раздел", person: "любого человека", practice: "любую практику", option: "любой вариант", answer: "любой ответ" }[noun as "paragraph"];
+      const phrase = m[1] ? `Примечание: ${any}` : cap(any);
+      return `${phrase} можно ${choose ? "выбрать" : "использовать"} более одного раза.`;
+    },
+  },
   // Matching features
   {
     re: rx(`Look at the following (\\w+) \\(questions? (${NUMS})\\) and the list of (\\w+) below\\.?`),
@@ -531,7 +579,7 @@ const RULES: Rule[] = [
   },
   // Completion
   {
-    re: rx(`Complete the (${COMPLETE_KEYS}) below\\.?`),
+    re: rx(`Complete the (${COMPLETE_KEYS})(?: below)?\\.?`),
     out: (m, lang) => {
       const o = own(COMPLETE_OBJECTS, m[1].toLowerCase());
       if (!o) return null;
