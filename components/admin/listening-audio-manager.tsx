@@ -33,6 +33,7 @@ import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
+import { ListeningBoundaries } from "./listening-boundaries";
 import {
   DEFAULT_BYTES_PER_SECOND,
   FULL_TEST_MINUTES,
@@ -941,6 +942,11 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
                           )}
                           <span aria-hidden>·</span>
                           <span>{t.difficulty}</span>
+                          {t.published === false && (
+                            <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 text-[11px] font-semibold text-amber-200">
+                              Nashr qilinmagan
+                            </span>
+                          )}
                           {t.full && (
                             <span className="rounded-full border border-averna-cyan/40 bg-averna-cyan/10 px-2 py-0.5 text-[10px] font-semibold text-averna-cyan">
                               Toʻliq test
@@ -1008,7 +1014,7 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
                           <li key={k} className="px-3 py-2.5">
                             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
                               <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-1">
-                                <span className="w-14 shrink-0 text-sm font-semibold text-white">{p.title}</span>
+                                <span className="min-w-[3.5rem] shrink-0 text-sm font-semibold text-white">{p.title}</span>
                                 <StatusBadge status={job ?? p.status} />
                                 <span className="text-xs tabular-nums text-gray-400">
                                   {p.durationMs > 0 ? clockText(p.durationMs) : `≈ ${clockText(p.estimatedSeconds * 1000)}`}
@@ -1028,21 +1034,24 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
                                 />
                               )}
                               <div className="flex shrink-0 items-center gap-1.5">
-                                <Button
-                                  type="button"
-                                  size="sm"
-                                  onClick={() => {
-                                    // A current recording costs money to redo — ask first.
-                                    if (p.status === "ready" && !window.confirm(`“${title}” — ${p.title} tayyor. Qayta yaratilsinmi?`)) return;
-                                    queueParts([k]);
-                                  }}
-                                  disabled={!canRender || !!job || t.source === "imported"}
-                                  aria-label={`${title}, ${p.title}: ${again ? "qayta yaratish" : "audio yaratish"}`}
-                                  className={cn("h-9", p.status === "stale" ? BTN_PRIMARY : BTN_OUTLINE)}
-                                >
-                                  <RefreshCw className="mr-1.5 h-3.5 w-3.5" aria-hidden />
-                                  {again ? "Qayta yaratish" : "Yaratish"}
-                                </Button>
+                                {/* An imported paper's recording is supplied, never generated: no render buttons at all. */}
+                                {t.source !== "imported" && (
+                                  <Button
+                                    type="button"
+                                    size="sm"
+                                    onClick={() => {
+                                      // A current recording costs money to redo — ask first.
+                                      if (p.status === "ready" && !window.confirm(`“${title}” — ${p.title} tayyor. Qayta yaratilsinmi?`)) return;
+                                      queueParts([k]);
+                                    }}
+                                    disabled={!canRender || !!job}
+                                    aria-label={`${title}, ${p.title}: ${again ? "qayta yaratish" : "audio yaratish"}`}
+                                    className={cn("h-9", p.status === "stale" ? BTN_PRIMARY : BTN_OUTLINE)}
+                                  >
+                                    <RefreshCw className="mr-1.5 h-3.5 w-3.5" aria-hidden />
+                                    {again ? "Qayta yaratish" : "Yaratish"}
+                                  </Button>
+                                )}
                                 {canDelete && p.index >= 0 && (p.url || p.status === "failed") && (
                                   <Button
                                     type="button"
@@ -1070,6 +1079,18 @@ export function ListeningAudioManager({ initial, canDelete = true }: { initial: 
                         );
                       })}
                     </ul>
+                    {t.boundaries && (
+                      <ListeningBoundaries
+                        testId={t.id}
+                        title={title}
+                        info={t.boundaries}
+                        onSaved={(next) =>
+                          setData((d: AudioOverview | null) =>
+                            d ? { ...d, tests: d.tests.map((x) => (x.id === t.id ? { ...x, boundaries: next } : x)) } : d
+                          )
+                        }
+                      />
+                    )}
                   </CardContent>
                 </Card>
               </li>

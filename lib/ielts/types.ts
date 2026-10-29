@@ -113,6 +113,15 @@ export interface ExamReadingTest {
   topics?: string[];
   source: ExamSource;
   parts: ReadingPart[];
+  imported?: ImportedProvenance;
+}
+
+/** Where an imported paper came from (the offline CDI importer). */
+export interface ImportedProvenance {
+  provider: "user-supplied-cdi";
+  file: string;
+  sha256: string;
+  importVersion: number;
 }
 
 export type VoiceGender = "female" | "male";
@@ -131,6 +140,8 @@ export interface ScriptLine {
   text: string;
   /** Silent pause AFTER this line, in seconds (e.g. time to read the next questions). */
   pauseAfter?: number;
+  /** Source answer markers: question numbers and [start, end) in `text`. Server only (stripped by toClientListening). */
+  marks?: { n: number[]; start: number; end: number }[];
 }
 
 export interface ListeningPart {
@@ -158,6 +169,9 @@ export interface ExamListeningTest {
   recordingMode?: "whole";
   recordingDurationMs?: number;
   recordingSha256?: string;
+  imported?: ImportedProvenance;
+  /** Where each answer is heard, ms from the start of the whole recording (question number → window). Server only. */
+  evidenceWindows?: Record<string, { startMs: number; endMs: number }>;
 }
 
 export type ExamTest = ExamReadingTest | ExamListeningTest;
@@ -196,7 +210,7 @@ export interface ExamTestSummary {
    * Per part: title + question range, e.g. { title: "The Silk Moth", from: 1, to: 13 },
    * and the part's question types (practiceKindOf; absent in summaries cached before it existed).
    */
-  partInfo: { title: string; from: number; to: number; kinds?: PracticeKind[] }[];
+  partInfo: { title: string; from: number; to: number; kinds?: PracticeKind[]; durationMs?: number }[];
   /** Minutes (Reading: time limit; Listening: estimated audio + review time). */
   timeLimit: number;
   kinds: GroupKind[];
@@ -205,6 +219,8 @@ export interface ExamTestSummary {
   source: ExamSource;
   topics?: string[];
   recordingMode?: "whole";
+  /** Listening: parts can be practised one at a time (per-part files, or a whole recording with verified boundaries). */
+  splittable?: boolean;
 }
 
 // ---------------------------------------------------------------------------
@@ -227,6 +243,23 @@ export interface ListeningPartAudio {
     /** Which announcement (i = -1): part intro, reading-time preview, end of part, end of the test. */
     kind?: "intro" | "preview" | "end" | "final";
   }[];
+  /** One part of a whole recording: the frame-exact byte range the runner fetches and plays. */
+  segment?: ClientSegment;
+  /** Client only: play just this window of `url` (the fallback when a part clip couldn't be built). */
+  window?: { startMs: number; endMs: number };
+}
+
+/** A verified part segment of a whole recording, as sent to the runner (positions from the start of the file). */
+export interface ClientSegment {
+  startMs: number;
+  endMs: number;
+  frameStart: number;
+  frameEnd: number;
+  byteStart: number;
+  byteEnd: number;
+  sampleRate: number;
+  samplesPerFrame: number;
+  sourceDurationMs: number;
 }
 /**
  * A part as sent to the browser. With `audio` the script is omitted (empty

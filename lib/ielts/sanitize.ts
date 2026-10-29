@@ -22,10 +22,20 @@ export function toClientGroup(g: ExamGroup): ClientGroup {
 
 export function toClientReading(test: ExamReadingTest, partIndex?: number): ClientReadingTest {
   const parts = partIndex == null ? test.parts : test.parts.slice(partIndex, partIndex + 1);
-  return { ...test, parts: parts.map((p) => ({ ...p, groups: p.groups.map(toClientGroup) })) };
+  const { imported: _i, ...rest } = test;
+  return { ...rest, parts: parts.map((p) => ({ ...p, groups: p.groups.map(toClientGroup) })) };
 }
 
 export function toClientListening(test: ExamListeningTest, partIndex?: number): ClientListeningTest {
   const parts = partIndex == null ? test.parts : test.parts.slice(partIndex, partIndex + 1);
-  return { ...test, parts: parts.map((p) => ({ ...p, groups: p.groups.map(toClientGroup) })) };
+  // Answer windows and transcript answer markers point at the answers: server only.
+  const { evidenceWindows: _w, imported: _i, ...rest } = test;
+  return {
+    ...rest,
+    parts: parts.map((p) => ({
+      ...p,
+      script: (p.script ?? []).map(({ marks: _m, ...line }) => line),
+      groups: p.groups.map(toClientGroup),
+    })),
+  };
 }

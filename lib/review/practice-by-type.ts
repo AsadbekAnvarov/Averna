@@ -5,6 +5,7 @@
  * and the student's done keys come in as data).
  */
 
+import { canPractiseParts } from "@/lib/ielts/parts";
 import { PRACTICE_KIND_LABEL } from "@/lib/ielts/format";
 import type { ExamSkill, ExamTestSummary, GradeItem, PracticeKind } from "@/lib/ielts/types";
 
@@ -17,7 +18,7 @@ export interface PracticePick {
 }
 
 export type CatalogEntry = Pick<ExamTestSummary, "id" | "skill" | "title" | "partInfo"> &
-  Partial<Pick<ExamTestSummary, "recordingMode">>;
+  Partial<Pick<ExamTestSummary, "recordingMode" | "splittable">>;
 
 export interface PickInput {
   kind: PracticeKind;
@@ -46,7 +47,8 @@ export function pickPracticePart({ kind, skill, currentTestId, catalog, done }: 
   let best: { tier: number; pick: PracticePick } | null = null;
   for (const t of catalog) {
     if (t.skill !== skill) continue;
-    const whole = t.recordingMode === "whole" || t.partInfo.length <= 1;
+    // Only papers that can be practised by part are split (a whole recording needs verified boundaries).
+    const whole = !canPractiseParts(t);
     const parts = t.partInfo
       .map((p, i) => ({ p, i }))
       .filter(({ p }) => Array.isArray(p.kinds) && p.kinds.includes(kind));

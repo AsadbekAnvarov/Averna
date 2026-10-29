@@ -44,6 +44,10 @@ import { focusQuestion, useDeadline, useExamAnswers, useLeaveGuard } from "./use
 import type { ListeningExamRunnerProps } from "./types";
 import { cn } from "@/lib/utils";
 import { SaveListeningOffline } from "@/components/offline/save-listening-offline";
+import { loadSegmentClip, type PlayableSegment } from "./segment-clip";
+
+/** Shown when a part of a whole recording was submitted after its boundaries stopped being verified (409 part_unavailable). */
+export const PART_GONE_TEXT = "This part can no longer be practised on its own. Take the full test instead.";
 
 /**
  * Computer-delivered IELTS Listening. Every part in scope plays either
@@ -297,8 +301,33 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const recordingsOnly = props.recordingsOnly === true;
   const wholeRecording = test.fullRecording;
   const suppliedWhole = test.recordingMode === "whole";
-  const practicePart = mode === "practice" && !suppliedWhole && typeof partIndex === "number" && Number.isInteger(partIndex) && partIndex >= 0 && partIndex < test.parts.length ? partIndex : undefined;
+  const validPart = typeof partIndex === "number" && Number.isInteger(partIndex) && partIndex >= 0 && partIndex < test.parts.length;
+  // A whole recording plays one part only with a verified segment (the server sends it, and no fullRecording).
+  const segment = validPart && suppliedWhole && !wholeRecording ? test.parts[partIndex]?.audio?.segment : undefined;
+  const practicePart = mode === "practice" && validPart && (!suppliedWhole || !!segment) ? partIndex : undefined;
   const single = practicePart != null;
+  /** The part clip of a whole recording (frame-exact Blob, or the full file with a window). */
+  const [clip, setClip]: State<PlayableSegment | null> = useState<PlayableSegment | null>(null);
+  const [clipProgress, setClipProgress]: State<number> = useState(0);
+  const segmentUrl = segment ? test.parts[partIndex as number]?.audio?.url : undefined;
+  useEffect(() => {
+    if (!segment || !segmentUrl) return;
+    const ctl = new AbortController();
+    let made: string | null = null;
+    void loadSegmentClip({ ...segment, url: segmentUrl }, {
+      signal: ctl.signal,
+      onProgress: (loaded, total) => setClipProgress(total > 0 ? Math.min(99, Math.floor((loaded * 100) / total)) : 0),
+    }).then((c) => {
+      if (ctl.signal.aborted) return;
+      if (c.mode === "clip") made = c.url;
+      setClip(c);
+    }, () => undefined);
+    return () => {
+      ctl.abort();
+      if (made) URL.revokeObjectURL(made);
+    };
+  }, [segment, segmentUrl]);
+  const clipLoading = !!segment && !clip;
   const scriptContext: ScriptContext = props.context ?? runContext(mode, test.id);
 
   /** Scripts fetched for recorded parts that browser voices read instead (part index in the full test → script). */
@@ -316,11 +345,20 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
     return picked.map(({ part, i }) => ({
       part: wholeRecording
         ? { ...part, script: [], audio: i === 0 ? wholeRecording : undefined }
-        : voiced[i] ? { ...part, script: voiced[i], audio: undefined } : part,
+        : segment && part.audio
+          ? {
+              ...part,
+              script: [],
+              // Positions run from 0 to the part's length either way (a clip, or the file's window).
+              audio: clip
+                ? { url: clip.url, durationMs: clip.durationMs, timeline: [], segment, window: clip.mode === "window" ? clip.window : undefined }
+                : part.audio,
+            }
+          : voiced[i] ? { ...part, script: voiced[i], audio: undefined } : part,
       no: i + 1,
       numbers: partNumbers(part),
     }));
-  }, [test, practicePart, voiced, wholeRecording]);
+  }, [test, practicePart, voiced, wholeRecording, segment, clip]);
 
   const readingSeconds = mode === "mock" || !single ? EXAM_READING_SECONDS : PRACTICE_READING_SECONDS;
   const checkMinutes = single ? 1 : LISTENING_FULL.reviewMinutes;
@@ -372,6 +410,8 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
   const [checkEndsAt, setCheckEndsAt]: State<number | null> = useState<number | null>(null);
   const [submitting, setSubmitting]: State<boolean> = useState(false);
   const [submitError, setSubmitError]: State<string | null> = useState<string | null>(null);
+  /** The server said this part of a whole recording can no longer be practised alone (boundaries unverified). */
+  const [partGone, setPartGone]: State<boolean> = useState(false);
   const [finished, setFinished]: State<boolean> = useState(false);
   const [audioError, setAudioError]: State<string | null> = useState<string | null>(null);
   const [showTranscript, setShowTranscript]: State<boolean> = useState(false);
@@ -819,6 +859,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
       durationMs: audio.durationMs,
       startMs,
       endAtMs,
+      window: audio.window,
       rate: practice ? rateRef.current : 1,
       lockControls: !practice,
       title: wholeRecording ? `${test.title} · Full recording` : `${test.title} · Part ${entry.no}`,
@@ -1093,7 +1134,11 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
           ...(homeworkId ? { homeworkId } : {}),
         }),
       });
-      const data = (await res.json().catch(() => null)) as { testId?: unknown; error?: unknown } | null;
+      const data = (await res.json().catch(() => null)) as { testId?: unknown; error?: unknown; code?: unknown } | null;
+      if (res.status === 409 && data?.code === "part_unavailable") {
+        setPartGone(true);
+        throw new Error(PART_GONE_TEXT);
+      }
       const id = data?.testId;
       if (!res.ok || (typeof id !== "string" && typeof id !== "number") || String(id) === "") {
         throw new Error(typeof data?.error === "string" && data.error ? data.error : "The server didn't confirm your submission.");
@@ -1168,6 +1213,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
         durationMs: audio.durationMs,
         startMs: 0,
         endAtMs,
+        window: audio.window,
         rate: practice ? rateRef.current : 1,
         onEnd: () => {
           if (fileSoundRef.current !== player) return;
@@ -1424,6 +1470,14 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
           <p className="min-w-0 flex-1 text-sm text-red-200">
             Your answers weren&apos;t submitted. {submitError} They&apos;re still saved on this device.
           </p>
+          {partGone && (
+            <a
+              href={`/learning/listening/${encodeURIComponent(test.id)}`}
+              className="inline-flex min-h-[44px] items-center rounded-lg px-3 text-sm font-semibold text-white underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-averna-cyan"
+            >
+              Take the full test
+            </a>
+          )}
           <button type="button" onClick={() => void submit(timeUp)} disabled={submitting} className={dangerBtn}>
             {submitting ? <Loader2 className="h-4 w-4 motion-safe:animate-spin" aria-hidden /> : <RotateCcw className="h-4 w-4" aria-hidden />}
             Try again
@@ -1619,16 +1673,18 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
               <button
                 type="button"
                 onClick={() => beginRun(startPos, resumeFrom != null)}
-                disabled={(!startEntry.part.audio && supported == null) || submitting}
+                disabled={(!startEntry.part.audio && supported == null) || submitting || clipLoading}
                 className={primaryBtn}
               >
-                <Play className="h-4 w-4" aria-hidden />
-                {resumeFrom != null ? wholeRecording ? "Continue the recording" : `Continue from Part ${startEntry.no}` : "Start the test"}
+                {clipLoading ? <Loader2 className="h-4 w-4 motion-safe:animate-spin" aria-hidden /> : <Play className="h-4 w-4" aria-hidden />}
+                {clipLoading
+                  ? `Loading the Part ${startEntry.no} recording… ${clipProgress}%`
+                  : resumeFrom != null ? wholeRecording ? "Continue the recording" : `Continue from Part ${startEntry.no}` : "Start the test"}
               </button>
               <button
                 type="button"
                 onClick={toggleSoundCheck}
-                disabled={!startEntry.part.audio && supported == null}
+                disabled={(!startEntry.part.audio && supported == null) || clipLoading}
                 aria-pressed={soundPlaying}
                 className={secondaryBtn}
               >
@@ -1654,7 +1710,7 @@ export function ListeningExamRunner(props: ListeningRunnerProps) {
             )}
             {/* One recorded practice part: its recording and questions for the offline library (idea 7). */}
             {practicePart != null && test.parts[practicePart]?.audio && (
-              <SaveListeningOffline className="mt-4" test={test} partIndex={practicePart} />
+              <SaveListeningOffline className="mt-4" test={test} partIndex={practicePart} clip={clip?.mode === "clip" ? clip.bytes : null} />
             )}
 
             <div className="mt-5 border-t border-white/10 pt-4">

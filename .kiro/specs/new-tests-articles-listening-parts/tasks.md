@@ -14,21 +14,21 @@ Work on branch `feat/v10-tests-articles-listening-parts`, stacked on `feat/elega
 
 - [x] 2. Checkpoint: tsc, lint, vitest green; commit
 
-- [ ] 3. Part boundaries for whole recordings
-  - [ ] 3.1 Pure `lib/ielts/segments.ts` (validateSegments, isVerified) and `lib/ielts/audio/mp3-index.ts` (indexMp3, framesInRange, buildClip)
+- [x] 3. Part boundaries for whole recordings
+  - [x] 3.1 Pure `lib/ielts/segments.ts` (validateSegments, isVerified) and `lib/ielts/audio/mp3-index.ts` (indexMp3, framesInRange, buildClip)
     - _Requirements: 10.1, 10.2, 10.3, 10.5, 10.7, 10.9, 10.10_
-  - [ ]* 3.2 fast-check properties for segment validation and clip assembly
+  - [x]* 3.2 fast-check properties for segment validation and clip assembly
     - _Requirements: 22.7_
-  - [ ] 3.3 Additive `listening_part_segments` table (schema.prisma, deploy.sql, migration) and `lib/ielts/segments-store.ts` with revision-based concurrency
+  - [x] 3.3 Additive `listening_part_segments` table (schema.prisma, deploy.sql, migration) and `lib/ielts/segments-store.ts` with revision-based concurrency
     - _Requirements: 10.6, 10.8, 11.9, 20.2_
-  - [ ] 3.4 `PUT /api/admin/listening-audio/segments` (session, ADMIN/TEACHER, zod, rules, 409 on stale revision) and the Uzbek «Qismlar chegaralari» block in the Audio_Manager
+  - [x] 3.4 `PUT /api/admin/listening-audio/segments` (session, ADMIN/TEACHER, zod, rules, 409 on stale revision) and the Uzbek «Qismlar chegaralari» block in the Audio_Manager
     - _Requirements: 11.1–11.10, 18.2, 18.6_
-  - [ ] 3.5 Catalog Splittable_Paper state, Listening_Library part rows, Listening_Runner `?part=` single-part mode, submit 409 `part_unavailable`
+  - [x] 3.5 Catalog Splittable_Paper state, Listening_Library part rows, Listening_Runner `?part=` single-part mode, submit 409 `part_unavailable`
     - _Requirements: 12.1–12.5, 13.1–13.9, 14.1–14.8_
-  - [ ] 3.6 Homework, mini task, practice picker, offline pack and evidence integration for verified parts
+  - [x] 3.6 Homework, mini task, practice picker, offline pack and evidence integration for verified parts
     - _Requirements: 15.1–15.10_
 
-- [ ] 4. Checkpoint: tsc, lint, vitest, build, function-size green; commit
+- [x] 4. Checkpoint: tsc, lint, vitest, build, function-size green; commit
 
 - [ ] 5. Volume 10 Content_Importer
   - [ ] 5.1 Pure modules in `lib/cdi-import/**` (payloads, dom, literals, packed-audio, groups, reading, listening, transcript, evidence-windows, images, silence, boundaries, key-check, guard, instructions, manifest, report, budget)

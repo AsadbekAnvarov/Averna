@@ -54,6 +54,7 @@ model User {
   emailVerified     DateTime?
   /// Last password change: sessions signed in before it end (lib/account/session-guard).
   passwordChangedAt DateTime?
+  verifiedPartSegments ListeningPartSegments[] @relation("PartSegmentsVerifier")
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 
@@ -1136,6 +1137,30 @@ model ListeningAudio {
 
   @@unique([testId, partIndex])
   @@map("listening_audio")
+}
+
+/// Part boundaries of a supplied whole Listening recording (one row per paper).
+/// Kept outside GeneratedTest.data and listening_audio, so saving boundaries never
+/// changes the paper, its wholeRecordingHash or the recording row.
+model ListeningPartSegments {
+  testId          String    @id
+  /// The recording these boundaries were checked against (verification lapses when it changes).
+  recordingSha256 String
+  durationMs      Int
+  /// Importer suggestions: { v: 1, boundaries: (BoundaryCandidate | null)[3] }.
+  candidates      Json?
+  /// StoredSegments: { v: 1, sampleRate, samplesPerFrame, parts: 4 × { startMs, endMs, frameStart, frameEnd, byteStart, byteEnd } }.
+  segments        Json?
+  verifiedById    String?
+  verifiedAt      DateTime?
+  /// Optimistic concurrency: a save must name the revision it was loaded with.
+  revision        Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  verifiedBy User? @relation("PartSegmentsVerifier", fields: [verifiedById], references: [id], onDelete: SetNull)
+
+  @@map("listening_part_segments")
 }
 
 /// One recorded Speaking answer, transcribed on the server (Whisper). The audio

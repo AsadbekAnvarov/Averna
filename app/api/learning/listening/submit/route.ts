@@ -10,6 +10,7 @@ import { buildSessionOutcome, findSubmittedTest, loadXpHistory } from "@/lib/eng
 import { getListeningExam } from "@/lib/ielts/catalog";
 import { clientAttemptKey, resolvePartIndex, submitObjectiveExam } from "@/lib/ielts/submit";
 import { paperLockedByMock } from "@/lib/ielts/mock";
+import { getVerifiedSegments } from "@/lib/ielts/segments-store";
 import { examHomeworkFor, recordExamHomework } from "@/lib/homework/exam-homework";
 import { objectiveGate } from "@/lib/homework/exam-attempt";
 
@@ -48,10 +49,18 @@ export async function POST(req: NextRequest) {
           { status: 409 }
         );
       }
+      // One part of a whole recording only while its boundaries are verified (fresh read).
+      const requested = resolvePartIndex(exam, body.part);
+      if (exam.recordingMode === "whole" && requested != null && !(await getVerifiedSegments(exam))) {
+        return NextResponse.json(
+          { error: "Separate parts of this test are no longer available. Take the full test instead.", code: "part_unavailable" },
+          { status: 409 }
+        );
+      }
       const r = await submitObjectiveExam({
         studentId: student.id,
         test: exam,
-        partIndex: resolvePartIndex(exam, body.part),
+        partIndex: requested,
         rawAnswers: body.answers,
         timeSpent: body.timeSpent,
         idempotencyKey: clientAttemptKey(body.submissionId),

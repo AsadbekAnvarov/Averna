@@ -12,6 +12,8 @@ import { LISTENING_SEED, READING_SEED, SPEAKING_SEED } from "./content";
 import { convertLegacyListening, convertLegacyReading } from "./convert";
 import { summarizeListening, summarizeReading } from "./format";
 import { validateListeningTest, validateReadingTest, validateSpeakingSet } from "./validate";
+import { isVerified } from "./segments";
+import { loadSegmentRecords } from "./segments-store";
 import type {
   ExamListeningTest,
   ExamReadingTest,
@@ -141,9 +143,20 @@ const cachedListeningSummaries = unstable_cache(
   async (): Promise<ExamTestSummary[]> => {
     const rows = await publishedRows("LISTENING");
     const generated = rows.map(listeningFromRow).filter((t): t is ExamListeningTest => t !== null);
-    return [...generated, ...LEGACY_LISTENING].map(summarizeListening).sort(order);
+    // Whole recordings: parts can be practised alone only with verified boundaries (fails closed).
+    const whole = generated.filter((t) => t.recordingMode === "whole");
+    const records = await loadSegmentRecords(whole.map((t) => t.id));
+    const summaries = [...generated, ...LEGACY_LISTENING].map((t) => {
+      const s = summarizeListening(t);
+      if (t.recordingMode !== "whole") return s;
+      const rec = records.get(t.id) ?? null;
+      if (!rec || !rec.segments || !isVerified(rec, t)) return { ...s, splittable: false };
+      const parts = rec.segments.parts;
+      return { ...s, splittable: true, partInfo: s.partInfo.map((p, i) => ({ ...p, durationMs: parts[i].endMs - parts[i].startMs })) };
+    });
+    return summaries.sort(order);
   },
-  ["exam-catalog-listening-cdi-v3-natural-order-part-kinds"],
+  ["exam-catalog-listening-cdi-v3-natural-order-part-kinds-segments-v4"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 

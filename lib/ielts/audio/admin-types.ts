@@ -41,6 +41,27 @@ export interface TestAudioInfo {
   /** The placement (entry) test's Listening — not in the library; with a recording its script stays off the page. */
   placement: boolean;
   parts: PartAudioInfo[];
+  /** False for an imported paper not published yet (its boundaries can be confirmed before publishing). */
+  published?: boolean;
+  /** A supplied whole recording with a ready file: its part boundaries (block "Qismlar chegaralari"). */
+  boundaries?: BoundaryInfo;
+}
+
+/** Part boundaries of a whole recording, as the Audio_Manager edits them. */
+export interface BoundaryInfo {
+  revision: number;
+  status: "verified" | "unverified";
+  verifiedBy: string | null;
+  verifiedAt: string | null;
+  source: "saved" | "candidates" | "empty";
+  /** 3 inner boundaries in ms; null = an empty field. Part 1 always starts at 0, Part 4 always ends at durationMs. */
+  boundaries: [number | null, number | null, number | null];
+  durationMs: number;
+  recordingSha256: string;
+  url: string;
+  bytes: number;
+  /** Answer windows of each part (hints and the same checks as the server). */
+  windowsByPart: { startMs: number; endMs: number }[][];
 }
 
 /** Recordings of tests that are no longer in the catalog (unpublished / deleted). */
