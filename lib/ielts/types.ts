@@ -155,6 +155,8 @@ export interface ExamListeningTest {
   recordingMode?: "whole";
   recordingDurationMs?: number;
   recordingSha256?: string;
+  /** Verified cuts of the original file; full and Mock keep the uncut recording. */
+  recordingParts?: { startMs: number; endMs: number; sha256: string }[];
 }
 
 export type ExamTest = ExamReadingTest | ExamListeningTest;
@@ -199,6 +201,7 @@ export interface ExamTestSummary {
   source: ExamSource;
   topics?: string[];
   recordingMode?: "whole";
+  separateParts?: boolean;
 }
 
 // ---------------------------------------------------------------------------

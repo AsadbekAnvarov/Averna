@@ -55,3 +55,26 @@ describe("supplied Writing prompts", () => {
     expect(importedWritingPromptSchema.safeParse({ ...data, imported: undefined }).success).toBe(false);
   });
 });
+
+describe("verified supplied-audio parts", () => {
+  it("serves checked original clips alongside the unchanged full recording", async () => {
+    const { suppliedPartRecordingHash } = await import("@/lib/ielts/audio/hash");
+    const split = {...test, recordingParts: test.parts.map((_, i) => ({startMs:i*450000,endMs:(i+1)*450000,sha256:String(i).repeat(64)}))};
+    const rows = [{partIndex:-1,url:"https://cdn.test/full.mp3",durationMs:1800000,scriptHash:wholeRecordingHash(split),timeline:[]}, ...split.parts.map((_,i)=>({partIndex:i,url:`https://cdn.test/part-${i}.mp3`,durationMs:450000,scriptHash:suppliedPartRecordingHash(split,i)!,timeline:[]}))];
+    const c = await listeningClientContent(split,{recordingsOnly:true,rows});
+    expect(c?.fullRecording?.url).toBe("https://cdn.test/full.mp3"); expect(c?.parts.every(p=>p.audio && !p.script.length)).toBe(true);
+    expect(JSON.stringify(c)).not.toMatch(/"answer"|"explanation"/); expect(summarizeListening(split).separateParts).toBe(true);
+    rows[2].scriptHash="stale";
+    const stale = await listeningClientContent(split,{recordingsOnly:true,rows}); expect(stale?.parts[1].audio).toBeUndefined(); expect(stale?.fullRecording).toBeTruthy();
+    const edited=structuredClone(split);edited.recordingParts[0].endMs+=1000;expect(suppliedPartRecordingHash(edited,0)).not.toBe(suppliedPartRecordingHash(split,0));
+    edited.recordingParts[0].startMs=-1;expect(suppliedPartRecordingHash(edited,0)).toBeNull();
+    expect(suppliedPartRecordingHash(test,0)).toBeNull();
+  });
+});
+
+it("does not repeat a supplied question's printed number beside the runner badge", async () => {
+  const {toClientListening}=await import("@/lib/ielts/sanitize");
+  const source=structuredClone(test); source.id="cdi-vol10-listening-1";const q=source.parts[0].groups[0].questions[0];q.text=`${q.n}. Original question`;
+  expect(toClientListening(source).parts[0].groups[0].questions[0].text).toBe("Original question");
+  expect(q.text).toBe(`${q.n}. Original question`);
+});

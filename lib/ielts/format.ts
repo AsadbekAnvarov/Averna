@@ -295,6 +295,7 @@ export function summarizeListening(test: ExamListeningTest): ExamTestSummary {
     kinds: kindsOf(test.parts),
     full: test.parts.length === LISTENING_FULL.parts && questions === LISTENING_FULL.questions,
     recordingMode: test.recordingMode,
+    separateParts: test.recordingMode === "whole" && test.recordingParts?.length === test.parts.length,
     source: test.source,
     topics: test.topics,
   };

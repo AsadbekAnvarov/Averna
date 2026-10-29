@@ -26,7 +26,7 @@ import { db } from "@/lib/db";
 import { TTS_MODEL } from "@/lib/openai-audio";
 import { toClientListening } from "../sanitize";
 import type { ClientListeningTest, ExamListeningTest } from "../types";
-import { partAudioHash, wholeRecordingHash } from "./hash";
+import { partAudioHash, wholeRecordingHash, suppliedPartRecordingHash } from "./hash";
 import { sanitizeTimeline } from "./timeline";
 
 export interface ReadyRow {
@@ -68,7 +68,12 @@ export async function listeningClientContent(test: ExamListeningTest, options?: 
           row.scriptHash !== wholeRecordingHash(test)) return options?.recordingsOnly ? null : base;
       return {
         ...base,
-        parts: base.parts.map(p => ({ ...p, script: [] })),
+        parts: base.parts.map((p, i) => {
+          const hash = suppliedPartRecordingHash(test, i);
+          const clip = rows.find(r => r.partIndex === i);
+          const ready = hash && clip && clip.scriptHash === hash && typeof clip.url === "string" && clip.url.startsWith("https://") && Number.isFinite(clip.durationMs) && clip.durationMs > 0;
+          return { ...p, script: [], ...(ready ? { audio: {url: clip.url!, durationMs: clip.durationMs, timeline: []} } : {}) };
+        }),
         fullRecording: { url: row.url, durationMs: row.durationMs, timeline: [] },
       };
     }
