@@ -43,10 +43,10 @@ Work on branch `feat/v10-tests-articles-listening-parts`, stacked on `feat/elega
 - [x] 6. Mock and Group Mock checks, `validate.ts` relaxation for supplied recordings, attempt resolvers for unpublished papers
   - _Requirements: 3.1–3.8, 6.1–6.10, 7.1–7.8, 17.6, 17.8_
 
-- [ ] 7. Docs, e2e and final verification
-  - [ ] 7.1 Volume 10 import doc linked from `docs/cdi-materials-import.md`; idea 9 update in `docs/elegance-roadmap.md`
+- [x] 7. Docs, e2e and final verification
+  - [x] 7.1 Volume 10 import doc linked from `docs/cdi-materials-import.md`; idea 9 update in `docs/elegance-roadmap.md`
     - _Requirements: 22.4_
-  - [ ] 7.2 `e2e/screens.mjs` additions for the sidebar Articles item and Listening part rows
+  - [x] 7.2 `e2e/screens.mjs` additions for the sidebar Articles item and Listening part rows
     - _Requirements: 22.3_
-  - [ ] 7.3 tsc, lint, vitest, build, function-size; commit tagged `[screens] [preview]`; push and check the preview
+  - [x] 7.3 tsc, lint, vitest, build, function-size; commit tagged `[screens] [preview]`; push and check the preview
     - _Requirements: 20.1, 20.3, 22.1_

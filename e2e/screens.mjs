@@ -79,6 +79,18 @@ const PAGES = {
     ["speaking-hub", "/learning/speaking"],
     ["speaking-solo", "/learning/speaking/solo"],
     ["articles-intermediate", "/article?level=Intermediate"],
+    // Articles is back in the student sidebar (Skills, after Reading) and is the active item on /article.
+    // On the phone it is checked in the open drawer.
+    [
+      "articles-sidebar",
+      "/article",
+      async (p) => {
+        if ((p.viewportSize()?.width ?? 1440) < 1024) await p.getByRole("button", { name: "Open navigation" }).click();
+        const link = p.locator('nav a[href="/article"]:visible', { hasText: "Articles" }).first();
+        await link.waitFor({ timeout: 15_000 });
+        if ((await link.getAttribute("aria-current")) !== "page") throw new Error("the sidebar's Articles item isn't marked as the current page");
+      },
+    ],
     // An interactive lesson: the supplied file runs in a sandboxed frame; wait until its engine has built the page.
     [
       "article-interactive",
@@ -270,6 +282,36 @@ async function shootExams(context, theme, device) {
     page.removeAllListeners("pageerror");
     page.removeAllListeners("console");
     await page.close();
+  }
+  // Listening by part: the library offers "Practise Part N" links (?part=) and one opens a single part.
+  const lib = `${theme}/${device}/listening-parts`;
+  const okLib = await list.goto(`${BASE}/learning/listening`, { waitUntil: "networkidle", timeout: 60_000 }).catch((e) => {
+    problems.push(`${lib}: library navigation failed: ${e.message}`);
+    return null;
+  });
+  if (okLib) {
+    const partHref = await list
+      .$$eval('a[href*="/learning/listening/"][href*="?part="]', (as) => as.map((a) => a.getAttribute("href")).find(Boolean))
+      .catch(() => undefined);
+    if (!partHref) problems.push(`${lib}: no "Practise Part N" link (?part=) on /learning/listening`);
+    else {
+      const page = await context.newPage();
+      const label = `${theme}/${device}/exam-listening-part`;
+      watch(page, label, EXAM_NOISE);
+      const res = await page.goto(new URL(partHref, BASE).href, { waitUntil: "networkidle", timeout: 60_000 }).catch((e) => {
+        problems.push(`${label}: navigation failed: ${e.message}`);
+        return null;
+      });
+      if (res && res.status() >= 400) problems.push(`${label}: HTTP ${res.status()}`);
+      if (res) {
+        await page.waitForTimeout(700);
+        if (!/Listening practice · Part \d/.test((await page.textContent("body").catch(() => "")) ?? "")) problems.push(`${label}: the single-part header is missing`);
+        await inspect(page, label, device, `${OUT}/${theme}-${device}-student-exam-listening-part.png`);
+      }
+      page.removeAllListeners("pageerror");
+      page.removeAllListeners("console");
+      await page.close();
+    }
   }
   await list.close();
 }
