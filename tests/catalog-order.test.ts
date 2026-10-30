@@ -28,7 +28,7 @@ describe("CDI natural library ordering", () => {
     const catalog = readFileSync("lib/ielts/catalog.ts", "utf8");
     expect(catalog).toContain("rank[a.source] - rank[b.source] || compareTestTitles(a, b)");
     expect(catalog).toContain("return generated.sort(compareTestTitles)");
-    for (const skill of ["reading", "listening"]) expect(catalog).toContain(`exam-catalog-${skill}-cdi-v4-supplied-and-medium`);
+    for (const skill of ["reading", "listening"]) expect(catalog).toContain(`exam-catalog-${skill}-cdi-v5-contiguous-display`);
     expect(catalog).toContain("exam-catalog-speaking-cdi-v3-natural-order");
     for (const path of ["lib/writing-content.ts", "lib/speaking-content.ts", "app/teacher/mock/resources/page.tsx"]) {
       expect(readFileSync(path, "utf8")).toContain(".sort(compareTestTitles)");

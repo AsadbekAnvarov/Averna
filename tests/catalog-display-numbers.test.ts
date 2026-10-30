@@ -1,0 +1,16 @@
+import {describe,expect,it} from 'vitest';
+import {compareTestTitles,sequentialCatalogTitles} from '@/lib/ielts/catalog-order';
+const paper=(n:number,skill='Listening',extra:{url?:string;answers?:string[];level?:string;full?:boolean}={})=>({id:`source-${skill}-${n}`,title:`Averna CDI ${skill} ${n}`,...extra});
+describe('contiguous CDI display numbers',()=>{
+ for(const skill of ['Listening','Reading','Writing'])it(`${skill}: fills visual gaps while preserving IDs, content and canonical order`,()=>{
+  const source=[37,34,35,10].map(n=>paper(n,skill,{answers:['original'],url:`audio-${n}`})).sort(compareTestTitles);const before=structuredClone(source);const shown=sequentialCatalogTitles(source);
+  expect(shown.map(t=>t.title)).toEqual([1,2,3,4].map(n=>`Averna CDI ${skill} ${n}`));expect(shown.map(t=>t.id)).toEqual(source.map(t=>t.id));expect(shown.map(t=>t.url)).toEqual(source.map(t=>t.url));expect(shown.map(t=>t.answers)).toEqual(source.map(t=>t.answers));expect(source).toEqual(before);
+ });
+ it('starts at one even when the first supplied file is missing',()=>{expect(sequentialCatalogTitles([paper(4),paper(6)]).map(t=>t.title)).toEqual(['Averna CDI Listening 1','Averna CDI Listening 2']);});
+ it('numbers Volume 10 separately without changing its volume label',()=>{const rows=[paper(1),paper(3),{id:'v2',title:'Averna CDI Volume 10 · Listening Test 2'},{id:'v5',title:'Averna CDI Volume 10 · Listening Test 5'}];expect(sequentialCatalogTitles(rows).map(t=>t.title)).toEqual(['Averna CDI Listening 1','Averna CDI Listening 2','Averna CDI Volume 10 · Listening Test 1','Averna CDI Volume 10 · Listening Test 2']);});
+ it('keeps Writing Task 1 and Task 2 as separate numbered series',()=>{const rows=[{id:'a',title:'Averna CDI Writing 3 · Task 1'},{id:'b',title:'Averna CDI Writing 3 · Task 2'},{id:'c',title:'Averna CDI Writing 8 · Task 1'},{id:'d',title:'Averna CDI Writing 9 · Task 2'}];expect(sequentialCatalogTitles(rows).map(t=>t.title)).toEqual(['Averna CDI Writing 1 · Task 1','Averna CDI Writing 1 · Task 2','Averna CDI Writing 2 · Task 1','Averna CDI Writing 2 · Task 2']);});
+ it('preserves descriptive topics and numbered suffixes',()=>{const input=[{id:'topic',title:'Transport and cities'},{id:'x',title:'Averna CDI Reading 09 — A journey in 1950'}];expect(sequentialCatalogTitles(input).map(t=>t.title)).toEqual(['Transport and cities','Averna CDI Reading 1 — A journey in 1950']);});
+ it('assigns numbers before filtering, so filters do not rename a test',()=>{const all=sequentialCatalogTitles([paper(1,'Reading',{level:'Easy'}),paper(3,'Reading',{level:'Hard'}),paper(8,'Reading',{level:'Easy'})]);expect(all.filter(t=>t.level==='Easy').map(t=>t.title)).toEqual(['Averna CDI Reading 1','Averna CDI Reading 3']);});
+ it('keeps full papers and practice in separate scopes and is idempotent',()=>{const rows=[paper(2,'Listening',{full:true}),paper(5,'Listening',{full:false}),paper(7,'Listening',{full:true})];const once=sequentialCatalogTitles(rows,t=>String(t.full));expect(once.map(t=>t.title)).toEqual(['Averna CDI Listening 1','Averna CDI Listening 1','Averna CDI Listening 2']);expect(sequentialCatalogTitles(once,t=>String(t.full))).toEqual(once);});
+ it('handles an empty catalog',()=>expect(sequentialCatalogTitles([])).toEqual([]));
+});

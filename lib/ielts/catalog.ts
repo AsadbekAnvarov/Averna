@@ -1,5 +1,5 @@
 import { cache } from "react";
-import { compareTestTitles } from "./catalog-order";
+import { compareTestTitles, sequentialCatalogTitles } from "./catalog-order";
 import { isVisibleObjectivePaper } from "./catalog-policy";
 import { unstable_cache } from "next/cache";
 import { db } from "@/lib/db";
@@ -106,9 +106,9 @@ const cachedReadingSummaries = unstable_cache(
   async (): Promise<ExamTestSummary[]> => {
     const rows = await publishedRows("READING");
     const generated = rows.map(readingFromRow).filter((t): t is ExamReadingTest => t !== null);
-    return [...generated, ...LEGACY_READING].map(summarizeReading).filter(isVisibleObjectivePaper).sort(order);
+    return sequentialCatalogTitles([...generated, ...LEGACY_READING].map(summarizeReading).filter(isVisibleObjectivePaper).sort(order), t => `${t.source}:${t.full ? "full" : "practice"}`);
   },
-  ["exam-catalog-reading-cdi-v4-supplied-and-medium"],
+  ["exam-catalog-reading-cdi-v5-contiguous-display"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -116,7 +116,7 @@ export const listReadingExams = cache(async (): Promise<ExamTestSummary[]> => {
   try {
     return await cachedReadingSummaries();
   } catch {
-    return [...LEGACY_READING].map(summarizeReading).filter(isVisibleObjectivePaper).sort(order);
+    return sequentialCatalogTitles([...LEGACY_READING].map(summarizeReading).filter(isVisibleObjectivePaper).sort(order), t => `${t.source}:${t.full ? "full" : "practice"}`);
   }
 });
 
@@ -128,7 +128,10 @@ export const getReadingExam = cache(async (id: string): Promise<ExamReadingTest 
   try {
     const row = await db.generatedTest.findUnique({ where: { id }, select: { id: true, data: true, module: true, published: true } });
     if (!row || row.module !== "READING" || !row.published) return null;
-    return readingFromRow(row);
+    const test = readingFromRow(row);
+    if (!test || test.source !== "imported") return test;
+    const summary = (await listReadingExams()).find(t => t.id === id);
+    return summary ? { ...test, title: summary.title } : test;
   } catch {
     return null;
   }
@@ -142,9 +145,9 @@ const cachedListeningSummaries = unstable_cache(
   async (): Promise<ExamTestSummary[]> => {
     const rows = await publishedRows("LISTENING");
     const generated = rows.map(listeningFromRow).filter((t): t is ExamListeningTest => t !== null);
-    return [...generated, ...LEGACY_LISTENING].map(summarizeListening).filter(isVisibleObjectivePaper).sort(order);
+    return sequentialCatalogTitles([...generated, ...LEGACY_LISTENING].map(summarizeListening).filter(isVisibleObjectivePaper).sort(order), t => `${t.source}:${t.full ? "full" : "practice"}`);
   },
-  ["exam-catalog-listening-cdi-v4-supplied-and-medium"],
+  ["exam-catalog-listening-cdi-v5-contiguous-display"],
   { revalidate: REVALIDATE_SECONDS, tags: [EXAM_CATALOG_TAG] }
 );
 
@@ -152,7 +155,7 @@ export const listListeningExams = cache(async (): Promise<ExamTestSummary[]> => 
   try {
     return await cachedListeningSummaries();
   } catch {
-    return [...LEGACY_LISTENING].map(summarizeListening).filter(isVisibleObjectivePaper).sort(order);
+    return sequentialCatalogTitles([...LEGACY_LISTENING].map(summarizeListening).filter(isVisibleObjectivePaper).sort(order), t => `${t.source}:${t.full ? "full" : "practice"}`);
   }
 });
 
@@ -164,7 +167,10 @@ export const getListeningExam = cache(async (id: string): Promise<ExamListeningT
   try {
     const row = await db.generatedTest.findUnique({ where: { id }, select: { id: true, data: true, module: true, published: true } });
     if (!row || row.module !== "LISTENING" || !row.published) return null;
-    return listeningFromRow(row);
+    const test = listeningFromRow(row);
+    if (!test || test.source !== "imported") return test;
+    const summary = (await listListeningExams()).find(t => t.id === id);
+    return summary ? { ...test, title: summary.title } : test;
   } catch {
     return null;
   }

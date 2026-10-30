@@ -7,7 +7,7 @@ export function isVisibleObjectivePaper(test: Pick<ExamTestSummary, "source" | "
   return test.source === "imported" || test.difficulty === "Medium";
 }
 
-/** Keep each supplied collection together without changing original numbering. */
+/** Keep each supplied collection together with independent display numbering. */
 export function objectiveCollection(test: Pick<ExamTestSummary, "source" | "title">): string {
   if (test.source !== "imported") return "Medium practice";
   const volume = /\bVolume\s*(\d+)\b/i.exec(test.title);
