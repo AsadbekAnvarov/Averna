@@ -32,8 +32,7 @@ export const metadata: Metadata = {
   appleWebApp: { capable: true, title: "Averna", statusBarStyle: "black-translucent" },
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/logo.png", type: "image/png" },
+      { url: "/icon.svg?v=averna-gold", type: "image/svg+xml" },
     ],
     apple: "/logo.png",
   },

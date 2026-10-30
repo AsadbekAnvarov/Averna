@@ -65,7 +65,7 @@ export function MobileNav({ role }: { role: Role }) {
         accent.border
       )}
     >
-      <div className="flex items-stretch justify-around">
+      <div className="grid grid-cols-5 items-stretch">
         {items.map((item) => {
           const Icon = item.icon;
           const active = item.href === current;
@@ -74,7 +74,7 @@ export function MobileNav({ role }: { role: Role }) {
               key={item.href}
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className="relative flex flex-1 flex-col items-center justify-center gap-1 px-1 py-2 text-[10px] transition-transform active:scale-95"
+              className="relative flex min-h-16 min-w-0 flex-col items-center justify-center gap-0.5 px-0.5 py-1 text-xs transition-transform active:scale-95"
             >
               {/* Top active indicator */}
               <span
@@ -86,7 +86,7 @@ export function MobileNav({ role }: { role: Role }) {
               />
               <span
                 className={cn(
-                  "flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-300",
+                  "flex h-8 w-8 items-center justify-center rounded-xl transition-all duration-300",
                   active ? cn(accent.pill, "-translate-y-0.5") : "text-gray-400"
                 )}
               >

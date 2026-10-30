@@ -1,7 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Trophy, Target, Users } from "lucide-react";
 import { Logo } from "@/components/logo";
+
+// Prefer the configured primary domain rather than deployment aliases in search.
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function HomePage() {
   return (
