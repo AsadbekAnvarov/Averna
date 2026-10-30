@@ -28,8 +28,7 @@ const TABS = DASHBOARD_TAB_KEYS.map((key) => ({ key, ...TAB_META[key] }));
  * active tab is the URL's `?tab=` param: a tab is a real link, switching pushes
  * the new URL in a transition (the old tab stays dimmed until the server has
  * rendered the new one), and Back / Forward / reload keep the student's place.
- * The bar is sticky, colour-coded per section, finger-friendly and scrolls on
- * phones.
+ * The bar is sticky, colour-coded per section, finger-friendly; all five sections fit across the phone without clipping.
  */
 export function DashboardTabs({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -78,10 +77,10 @@ export function DashboardTabs({ children }: { children: ReactNode }) {
     <div>
       {/* Sticky tab bar */}
       <div className="sticky top-[var(--app-bar-h,0px)] z-30 -mx-4 px-4 py-2 mb-4">
-        <div className="no-scrollbar overflow-x-auto">
+        <div className="min-w-0">
           <nav
             aria-label="Dashboard sections"
-            className="flex w-max min-w-full md:min-w-0 gap-1 md:mx-auto glass-strong border border-white/10 rounded-2xl p-1.5 shadow-xl"
+            className="grid w-full auto-cols-fr grid-flow-col gap-0.5 rounded-2xl border border-white/10 p-1 glass-strong shadow-xl sm:flex sm:gap-1 sm:p-1.5 md:mx-auto"
           >
             {TABS.map((t) => {
               const Icon = t.icon;
@@ -94,7 +93,7 @@ export function DashboardTabs({ children }: { children: ReactNode }) {
                   prefetch={false}
                   onClick={(e) => onClick(e, t.key)}
                   {...(t.key === "fun" ? { "data-gamified": "" } : {})}
-                  className={`flex flex-1 md:flex-none flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 min-h-[44px] px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
+                  className={`flex min-w-0 flex-1 md:flex-none flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 min-h-[44px] px-0 sm:px-5 py-2 sm:py-2.5 rounded-xl text-[12px] min-[380px]:text-[13px] sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
                     isActive ? `${t.active} shadow-lg` : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
                   aria-current={isActive ? "page" : undefined}

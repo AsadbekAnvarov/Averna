@@ -40,8 +40,8 @@ export function HubNav({ hub, label }: { hub: HubKey; label: string }) {
 
   return (
     <nav aria-label={label} className="sticky top-[var(--app-bar-h,0px)] z-30 -mx-4 mb-6 px-4 py-2">
-      <div className="no-scrollbar overflow-x-auto">
-        <div className="flex w-max min-w-full gap-1 rounded-2xl border border-white/10 p-1.5 shadow-xl glass-strong md:min-w-0">
+      <div className="min-w-0">
+        <div className={cn("grid w-full gap-1 rounded-2xl border border-white/10 p-1 shadow-xl glass-strong sm:flex sm:p-1.5", items.length === 4 ? "grid-cols-2" : "grid-cols-3")}>
           {items.map((t) => {
             const Icon = t.icon;
             const active = t.href === current;
@@ -51,7 +51,7 @@ export function HubNav({ hub, label }: { hub: HubKey; label: string }) {
                 href={t.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex min-h-11 flex-1 flex-col items-center justify-center gap-1 whitespace-nowrap rounded-xl px-2 py-2 text-sm font-semibold transition-all duration-300 sm:flex-row sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm md:flex-none",
+                  "flex min-w-0 min-h-11 flex-1 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-xs sm:whitespace-nowrap font-semibold transition-all duration-300 sm:flex-row sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm md:flex-none",
                   active ? cn(t.active, "shadow-lg") : "text-gray-400 hover:bg-white/5 hover:text-white"
                 )}
               >

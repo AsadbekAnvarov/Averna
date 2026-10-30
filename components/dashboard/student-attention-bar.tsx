@@ -57,11 +57,10 @@ export async function StudentAttentionBar({
   return (
     <nav
       aria-label="Focus today"
-      // Phones: horizontal scroll with a right-edge fade as a "more" hint; pr-10 lets the
-      // last chip scroll fully out of the faded zone. sm+: wrapped row, no mask.
-      className="no-scrollbar -mx-4 flex items-center gap-2 overflow-x-auto pl-4 pr-10 [mask-image:linear-gradient(to_right,#000_calc(100%-2.5rem),transparent)] sm:mx-0 sm:flex-wrap sm:gap-2.5 sm:overflow-visible sm:px-0 sm:pr-0 sm:[mask-image:none]"
+      // Keep every action visible on phones instead of fading/clipping the last chip.
+      className="flex min-w-0 flex-wrap items-center gap-2 sm:gap-2.5"
     >
-      <span className="shrink-0 text-sm text-gray-400 font-medium flex items-center gap-1.5">
+      <span className="w-full shrink-0 text-xs sm:w-auto sm:text-sm text-gray-400 font-medium flex items-center gap-1.5">
         <Sparkles className="h-4 w-4 text-averna-neon" aria-hidden /> Focus today:
       </span>
       {chips.map((c) => {
@@ -70,7 +69,7 @@ export async function StudentAttentionBar({
           <Link
             key={c.label}
             href={c.href}
-            className={`inline-flex min-h-[36px] shrink-0 items-center gap-1.5 whitespace-nowrap px-3 py-1.5 rounded-full border text-[13px] sm:text-sm font-medium transition-colors ${c.cls}`}
+            className={`inline-flex min-h-11 max-w-full items-center gap-1.5 px-3 py-1.5 rounded-full border text-[13px] sm:text-sm font-medium transition-colors ${c.cls}`}
           >
             <Icon className="h-4 w-4" aria-hidden />
             {c.label}
