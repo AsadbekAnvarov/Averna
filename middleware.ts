@@ -11,7 +11,7 @@ function isPublicPath(pathname: string): boolean {
   // NOTE: the landing page "/" must be matched EXACTLY — using startsWith("/")
   // would match every path and disable auth protection for the whole app.
   return (
-    pathname === "/" || pathname === "/sw.js" || pathname === "/offline.html" || pathname === "/manifest.webmanifest" ||
+    pathname === "/" || pathname === "/robots.txt" || pathname === "/sitemap.xml" || pathname === "/sw.js" || pathname === "/offline.html" || pathname === "/manifest.webmanifest" ||
     PUBLIC_PREFIXES.some((route) => pathname === route || pathname.startsWith(route + "/"))
   );
 }
